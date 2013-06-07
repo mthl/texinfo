@@ -1,14 +1,18 @@
+2013-06-07  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.txi (Preparing for @TeX{}): texinfo.cnf
+	is a "configuration" file, other wording tweaks.
+
 2013-06-07  Sergey Poznyakoff  <gray@gnu.org.ua>
 
         Handle "index" tag.
-
         * info/tag.c (tags_expand): Accept NULL handler as a no-op.
         (tagtab): Add an entry for "index".
 
 2013-04-29  Stefano Lattarini  <stefano.lattarini@gmail.com>  (tiny change)
 
 	* tp/Makefile.am,
-	* tp/tests/Makefile.am: prefer $(MKDIR_P) to $(mkdir_p).
+	* tp/tests/Makefile.am: use $(MKDIR_P) instead of $(mkdir_p).
 
 2013-04-16  Sergey Poznyakoff  <gray@gnu.org.ua>
 

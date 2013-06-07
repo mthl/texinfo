@@ -9861,7 +9861,7 @@ For Docbook, @code{makeinfo} outputs references to
 @file{@var{filename}.eps}, @file{@var{filename}.gif}
 @file{@var{filename}.jpg}, @file{@var{filename}.pdf},
 @file{@var{filename}.png} and @file{@var{filename}.svg}, for every
-file found.  Als, @file{@var{filename}.txt} is included verbatim, if
+file found.  Also, @file{@var{filename}.txt} is included verbatim, if
 present.
 
 @item
@@ -14537,7 +14537,7 @@ this:
 @example
 @@ifset txicommandconditionals
 @@ifcommandnotdefined foobarnode
-(Good, @@foobarnode is not defined.)
+(Good, @samp{@@foobarnode} is not defined.)
 @@end ifcommandnotdefined
 @@end ifset
 @end example
@@ -14549,9 +14549,9 @@ available.
 We recommend avoiding these tests whenever possible---which is usually
 the case.  For many software packages, it is reasonable for all
 developers to have a given version of Texinfo (or newer) installed,
-and thus no reason to worry about older versions.  (It is simple to
-download and install the Texinfo source; it does not have any
-problematic dependencies.)
+and thus no reason to worry about older versions.  (It is
+straightforward for anyone to download and install the Texinfo source;
+it does not have any problematic dependencies.)
 
 The issue of Texinfo versions does not generally arise for end-users.
 With properly distributed packages, users need not process the Texinfo
@@ -16363,16 +16363,15 @@ Euro font, if it is not already installed.  @xref{@t{@@euro}}.
 @pindex texinfo.cnf @r{installation}
 @cindex Customizing of @TeX{} for Texinfo
 @cindex Site-wide Texinfo configuration file
-Optionally, you may create an additional @file{texinfo.cnf}, and
-install it as well.  This file is read by @TeX{} when the
-@code{@@setfilename} command is executed
-(@pxref{@t{@@setfilename}}).  You can put any commands you like
-there, according to local site-wide conventions.  They will be read by
-@TeX{} when processing any Texinfo document.  For example, if
-@file{texinfo.cnf} contains the line @samp{@@afourpaper} (@pxref{A4
-Paper}), then all Texinfo documents will be processed with that page
-size in effect.  If you have nothing to put in @file{texinfo.cnf}, you
-do not need to create it.
+Optionally, you may create a file @file{texinfo.cnf} for site
+configuration.  This file is read by @TeX{} when the
+@code{@@setfilename} command is executed (@pxref{@t{@@setfilename}}).
+You can put any commands you like there, according to local site-wide
+conventions.  They will be read by @TeX{} when processing any Texinfo
+document.  For example, if @file{texinfo.cnf} contains the line
+@samp{@@afourpaper} (@pxref{A4 Paper}), then all Texinfo documents
+will be processed with that page size in effect.  If you have nothing
+to put in @file{texinfo.cnf}, you do not need to create it.
 
 @cindex Environment variable @code{TEXINPUTS}
 @vindex TEXINPUTS
@@ -16382,22 +16381,13 @@ you, you can specify the directories explicitly.  For
 file after the @code{\input} command.  Another way, that works for both
 @file{texinfo.tex} and @file{texinfo.cnf} (and any other file @TeX{}
 might read), is to set the @code{TEXINPUTS} environment variable in your
-@file{.cshrc} or @file{.profile} file.
+@file{.profile} or @file{.cshrc} file.
 
-Which you use of @file{.cshrc} or @file{.profile} depends on
+Whether you use @file{.profile} or @file{.cshrc} depends on
 whether you use a Bourne shell-compatible (@code{sh}, @code{bash},
 @code{ksh}, @dots{}) or C shell-compatible (@code{csh}, @code{tcsh})
-command interpreter.  The latter read the @file{.cshrc} file for
-initialization information, and the former read @file{.profile}.
+command interpreter, respeictvely.
 
-In a @file{.cshrc} file, you could use the following @code{csh} command
-sequence:
-
-@example
-setenv TEXINPUTS .:/home/me/mylib:
-@end example
-
-@need 1000
 In a @file{.profile} file, you could use the following @code{sh} command
 sequence:
 
@@ -16408,9 +16398,17 @@ export TEXINPUTS
 @end group
 @end example
 
+@need 1000
+While in a @file{.cshrc} file, you could use the following @code{csh}
+command sequence:
+
+@example
+setenv TEXINPUTS .:/home/me/mylib:
+@end example
+
+
 On MS-DOS/MS-Windows, you would say it like this@footnote{Note the use
-of the @samp{;} character, instead of @samp{:}, as directory separator
-on these systems.}:
+of the @samp{;} character as directory separator, instead of @samp{:}.}:
 
 @example
 @group
