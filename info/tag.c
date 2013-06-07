@@ -187,6 +187,7 @@ tag_image (char *text, struct text_buffer *outbuf)
 
 static struct tag_handler tagtab[] = {
   { "image", 5, tag_image },
+  { "index", 5, NULL },
   { NULL }
 };
 
@@ -239,7 +240,7 @@ tags_expand (char *input, size_t inputlen, char **pbuf, size_t *pbuflen)
 		    ++len;                      /* move past whitespace */
 	      
 		  text_buffer_add_string (&outbuf, input, p - input - 3);
-		  if (tp->handler (p + len, &outbuf) == 0)
+		  if (!tp->handler || tp->handler (p + len, &outbuf) == 0)
 		    {
 		      input = q + 3;
 		      continue;
