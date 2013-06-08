@@ -64,5 +64,6 @@ extern int cursor_movement_scrolls_p;
 extern int ISO_Latin_p;
 extern int scroll_last_node;
 extern int min_search_length;
+extern int search_skip_screen_p;
 
 #endif /* not INFO_VARIABLES_H */

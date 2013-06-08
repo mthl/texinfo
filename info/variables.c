@@ -86,6 +86,9 @@ VARIABLE_ALIST info_variables[] = {
     N_("Minimal length of a search string"),
     &min_search_length, NULL },
 
+  { "search-skip-screen",
+      N_("Skip current window when searching"),
+    &search_skip_screen_p, (char **)on_off_choices },
   { NULL }
 };
 

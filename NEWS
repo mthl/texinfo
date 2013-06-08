@@ -26,13 +26,15 @@ one of the relevant sections:
 
 * info
 
-New option -x (--debug) enables additional debugging output.
+  . new option -x (--debug) enables additional debugging output.
+  . new option -v (--variable) assigns a value to an info variable.
+    The syntax is the same as for many other GNU utilities: -v VARIABLE=VALUE
+  . new variable search-skip-screen controls the starting position for
+    repeated search commands ({ and }).  When set to On, repeated
+    searches skip the lines displayed on the screen, i.e. forward searches
+    (}) start at the beginning of the next page, and backward searches
+    ({) start at the end of the previous page.
 
-New option -v (--variable) assigns a value to an info variable.  The
-syntax is the same as for many other GNU utilities:
-
-  -v VARIABLE=VALUE
-  
 
 5.1 (12 March 2013)
 * texi2any:

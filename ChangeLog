@@ -1,3 +1,23 @@
+2013-06-08  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Skip the current screen when repeating searches.
+
+	* NEWS: Update.
+	* doc/info-stnd.texi: Document the -a (--all) option and
+	the search-skip-screen. Mention '}' and '{' commands when
+	discussing repeated searches.
+	* doc/version-stnd.texi: Update.
+	* doc/version.texi: Update.
+	* info/session.c (search_skip_screen_p): New variable.
+	(info_search_1): Take additional argument, supplying the
+	starting position for the search. All uses changed
+	(DFL_START): New define.
+	(info_search_next,info_search_previous): If search_skip_screen_p
+	is set, skip the lines displayed on the screen.
+	* info/variables.c (info_variables): New variable
+	"search-skip-screen".
+	* info/variables.h (min_search_length): New proto.
+
 2013-06-07  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.txi (Preparing for @TeX{}): texinfo.cnf

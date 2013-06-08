@@ -142,6 +142,26 @@ info [@var{option}]@dots{} [@var{menu-item}@dots{}]
 The program accepts the following options:
 
 @table @code
+@anchor{--all}
+@item --all
+@itemx -a
+Find all files matching the given file or node name.  There are three
+possible usage patterns.  When this option is used together with the
+@option{--where} (@option{-w}) option, @command{info} prints the names
+of the files on the standard output and exits.  If used
+together with the @option{--output} (@option{-o}) option, the contents
+of all matched files are dumped to the specified output file.
+
+Otherwise, an interactive session is initiated.  If more than one file
+matches, you are presented a menu node, listing the matches and
+allowing you to select one of them.  This menu node can be brought
+back anytime by pressing @kbd{C-x f}.
+
+Otherwise, @command{info} starts as usual.
+
+The @option{--index-search} and @option{--node} options cannot be used
+together with this option.
+
 @anchor{--apropos}
 @item --apropos=@var{string}
 @itemx -k @var{string}
@@ -1035,9 +1055,12 @@ if the string includes only lower-case letters.  With a numeric argument
 of @var{N}, search for @var{N}th occurrence of the string.  Negative
 arguments search backwards.
 
+@anchor{repeated search}
 @item @kbd{C-x @kbd{n}} (@code{search-next})
+@itemx @kbd{@}}
 @itemx @kbd{n}, vi-like operation
 @kindex C-x n
+@kindex @}
 @kindex n, vi-like operation
 @findex search-next
 @cindex repeated search
@@ -1045,14 +1068,28 @@ Search for the same string used in the last search command, in the same
 direction, and with the same case-sensitivity option.  With a numeric
 argument of @var{N}, search for @var{N}th next occurrence.
 
+By default, the search starts at the position immediately following
+the cursor.  However, if the variable @code{search-skip-screen}
+(@pxref{Variables, , search-skip-screen}) is set, it starts at the
+beginning of the next page, thereby skipping all lines displayed on
+the screen.
+
 @item @kbd{C-x @kbd{N}} (@code{search-previous})
+@itemx @kbd{@{}
 @itemx @kbd{N}, vi-like operation
 @kindex C-x N
+@kindex @{
 @kindex n, vi-like operation
 @findex search-previous
 Search for the same string used in the last search command, and with the
 same case-sensitivity option, but in the reverse direction.  With a
 numeric argument of @var{N}, search for @var{N}th previous occurrence.
+
+By default, the search starts at the position immediately preceding
+the cursor.  If the variable @code{search-skip-screen}
+(@pxref{Variables, , search-skip-screen}) is set, it starts at the
+end of the previous page, skipping all lines displayed on
+the screen.
 
 @item @kbd{C-s} (@code{isearch-forward})
 @kindex C-s
@@ -2060,6 +2097,17 @@ is done.  The default value of this variable is 0, thus placing the
 cursor (and the text it is attached to) in the center of the window.
 Setting this variable to 1 causes a kind of ``smooth scrolling'' which
 some people prefer.
+
+@item search-skip-screen
+@vindex search-skip-screen
+Change the starting point of the repeated searches (@pxref{repeated
+search}).  When set to @code{Off} (the default), repeated searches
+start at the position immediately following (when searching in forward
+direction), or immediately preceding (when searching backwards) the
+cursor.  When set to @code{On} repeated searches skip the lines
+displayed on the screen.  In other words, forward searches
+(@kbd{@}}) start at the beginning of the next page, and backward
+searches (@kbd{@{}) start at the end of the previous page.
 
 @item show-index-match
 @vindex show-index-match

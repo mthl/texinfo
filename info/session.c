@@ -1108,6 +1108,8 @@ char *info_scroll_choices[] = {
 /* Controls whether scroll-behavior affects line movement commands */
 int cursor_movement_scrolls_p = 1;
 
+int search_skip_screen_p = 0;
+
 /* Choices for the scroll-last-node variable */
 char *scroll_last_node_choices[] = {
   "Stop", "Scroll", "Top", NULL
@@ -3719,7 +3721,11 @@ int gc_compressed_files = 0;
 
 static void info_gc_file_buffers (void);
 static void info_search_1 (WINDOW *window, int count,
-    unsigned char key, int case_sensitive, int ask_for_string);
+			   unsigned char key, int case_sensitive,
+			   int ask_for_string, long start);
+#define DFL_START (-1) /* a special value for the START argument of
+			  info_search_1, meaning to use the default
+			  starting position */
 
 static char *search_string = NULL;
 static int search_string_size = 0;
@@ -4067,14 +4073,14 @@ DECLARE_INFO_COMMAND (info_search_case_sensitively,
 {
   last_search_direction = count > 0 ? 1 : -1;
   last_search_case_sensitive = 1;
-  info_search_1 (window, count, key, 1, 1);
+  info_search_1 (window, count, key, 1, 1, DFL_START);
 }
 
 DECLARE_INFO_COMMAND (info_search, _("Read a string and search for it"))
 {
   last_search_direction = count > 0 ? 1 : -1;
   last_search_case_sensitive = 0;
-  info_search_1 (window, count, key, 0, 1);
+  info_search_1 (window, count, key, 0, 1, DFL_START);
 }
 
 DECLARE_INFO_COMMAND (info_search_backward,
@@ -4082,17 +4088,38 @@ DECLARE_INFO_COMMAND (info_search_backward,
 {
   last_search_direction = count > 0 ? -1 : 1;
   last_search_case_sensitive = 0;
-  info_search_1 (window, -count, key, 0, 1);
+  info_search_1 (window, -count, key, 0, 1, DFL_START);
 }
 
+/* Common entry point for the search functions.  Arguments:
+   WINDOW           The window to search in
+   COUNT            The sign of this argument defines the search
+                    direction (negative for searching backwards);
+		    its absolute value gives number of repetitions.
+   CASE_SENSITIVE   Whether the search is case-sensitive or not.
+   ASK_FOR_STRING   When true, ask for the search string.  Otherwise
+                    use the previously supplied one (repeated search).
+   START            Start position for the search.  If DFL_START, use
+                    the default start position (see info_search_internal
+		    for details.
+*/
 static void
 info_search_1 (WINDOW *window, int count, unsigned char key,
-    int case_sensitive, int ask_for_string)
+	       int case_sensitive, int ask_for_string, long start)
 {
   char *line, *prompt;
   int result, old_pagetop;
   int direction;
+  SEARCH_BINDING bind, *bindp;
 
+  if (start == DFL_START)
+    bindp = NULL;
+  else
+    {
+      bind.start = start;
+      bindp = &bind;
+    }
+  
   if (count < 0)
     {
       direction = -1;
@@ -4138,8 +4165,9 @@ info_search_1 (WINDOW *window, int count, unsigned char key,
       if (*line)
         {
           if (strlen (line) + 1 > (unsigned int) search_string_size)
-            search_string = xrealloc
-              (search_string, (search_string_size += 50 + strlen (line)));
+            search_string =
+	      xrealloc (search_string,
+			(search_string_size += 50 + strlen (line)));
 
           strcpy (search_string, line);
           free (line);
@@ -4166,7 +4194,7 @@ info_search_1 (WINDOW *window, int count, unsigned char key,
   for (result = 0; result == 0 && count--; )
     result = info_search_internal (search_string,
                                    active_window, direction, case_sensitive,
-				   NULL);
+				   bindp);
 
   if (result != 0 && !info_error_was_printed)
     info_error ("%s", _("Search failed."));
@@ -4191,9 +4219,20 @@ DECLARE_INFO_COMMAND (info_search_next,
 {
   if (!last_search_direction)
     info_error ("%s", _("No previous search string"));
+  else if (search_skip_screen_p)
+    {
+      /* Find window bottom */
+      long n = window->height + window->pagetop;
+      if (n < window->line_count)
+	n = window->line_starts[n] - window->node->contents;
+      else
+	n = window->node->nodelen;
+      info_search_1 (window, last_search_direction * count,
+		     key, last_search_case_sensitive, 0, n);
+    }
   else
     info_search_1 (window, last_search_direction * count,
-                   key, last_search_case_sensitive, 0);
+                   key, last_search_case_sensitive, 0, DFL_START);
 }
 
 DECLARE_INFO_COMMAND (info_search_previous,
@@ -4201,9 +4240,20 @@ DECLARE_INFO_COMMAND (info_search_previous,
 {
   if (!last_search_direction)
     info_error ("%s", _("No previous search string"));
+  else if (search_skip_screen_p)
+    {
+      /* Find window bottom */
+      long n;
+
+      n = window->line_starts[window->pagetop] - window->node->contents - 1;
+      if (n < 0)
+	n = 0;
+      info_search_1 (window, -last_search_direction * count,
+		     key, last_search_case_sensitive, 0, n);
+    }
   else
     info_search_1 (window, -last_search_direction * count,
-                   key, last_search_case_sensitive, 0);
+                   key, last_search_case_sensitive, 0, DFL_START);
 }
 
 /* **************************************************************** */
