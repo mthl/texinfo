@@ -1360,7 +1360,10 @@ run_makeinfo ()
        # close stdin.
        $TEX txiversion.tex </dev/null >txiversion.out 2>txiversion.err
     ); then :; else
-      report "texinfo.tex appears to be broken:"
+      report "texinfo.tex appears to be broken.
+This may be due to the environment variable TEX set to something
+other than (plain) tex, a corrupt texinfo.tex file, or 
+to tex itself simply not working."
       cat "$version_test_dir/txiversion.out"
       cat "$version_test_dir/txiversion.err" >&2
       error 1 "quitting."

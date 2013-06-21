@@ -1,3 +1,9 @@
+2013-06-21  Karl Berry  <karl@gnu.org>
+
+	* texi2dvi (run_makeinfo): more verbose error message if our
+	test reading texinfo.tex fails.  Suggestion from Vincent B,
+	25 May 2013 23:10:58.
+
 2013-06-08  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	Skip the current screen when repeating searches.
