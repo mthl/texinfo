@@ -1,5 +1,12 @@
 2013-06-21  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.tex (\codedash): use \futurelet.
+	(\codedashfinish): new definition for - inside @code et al.,
+	which does not allow a break after a - when it is preceded or
+	followed by another -, or when it is first.
+	(\code): initialize \codedashprev for the - as first char case.
+	Report from Arnold Robbins, 04 Apr 2013 01:30:28 -0600.
+
 	* texi2dvi (run_makeinfo): more verbose error message if our
 	test reading texinfo.tex fails.  Suggestion from Vincent B,
 	25 May 2013 23:10:58.
