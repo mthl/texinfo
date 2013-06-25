@@ -644,14 +644,14 @@ my %BUTTONS_REL =
  'Overview',    '',
  'Index',       'index',
  'This',        '',
- 'Back',        'previous',
+ 'Back',        'prev',
  'FastBack',    '',
- 'Prev',        'previous',
+ 'Prev',        'prev',
  'Up',          'up',
  'Next',        'next',
  'NodeUp',      'up',
  'NodeNext',    'next',
- 'NodePrev',    'previous',
+ 'NodePrev',    'prev',
  'NodeForward', '',
  'NodeBack',    '',
  'Forward',     'next',
@@ -660,7 +660,7 @@ my %BUTTONS_REL =
  'First',       '',
  'Last',        '',
  'NextFile',    'next',
- 'PrevFile',    'previous',
+ 'PrevFile',    'prev',
 );
 
 my %BUTTONS_ACCESSKEY =
