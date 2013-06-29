@@ -40,9 +40,13 @@ all: $(texi_pod_doc_incl)
 
 $(texi_pod_doc_incl): $(perl_pod_subdir)/*.pod
 	rm -rf $(texi_pod_subdir)
-# we omit the numerous delta pods, which are uninteresting when searching
-# (and take tons of time and space).
+# We remove all X<...> cross-reference constructs from the pods
+# before processing, since they are not parsed properly, resulting
+# in many chapters called simply "NAME", e.g., perldebug and perlsyn.
+# And we omit the numerous delta pods, which are uninteresting when
+# searching (and take tons of time and space to process).  
 	cd $(perl_pod_subdir) \
+	&& perl -p -i.bak -e 's,X<.*?>,,g' *.pod \
 	&& $(pod2texi) -o $@ $(pod2texi_args) \
 	  `ls *.pod | fgrep -v delta` \
 	&& mv $(texi_pod_subdir) $@ ../..
@@ -50,8 +54,8 @@ $(texi_pod_doc_incl): $(perl_pod_subdir)/*.pod
 www_target = $(HOME)/gnu/www/www/software/perl/manual
 install:
 	cp -arf manual/. $(www_target)/.
-	ls -ltu $(www_target)/html_chapter | tail  # cvs rm -f obsolete files
-                                                   # and cvs add new.
+	ls -lt $(www_target)/html_chapter | tail  # cvs rm -f obsolete files
+                                                  # and cvs add new (status ?).
 
 # when running make dist, ensure we have none of the build files.
 # (Since the whole contrib/ directory is included in its entirety.)
