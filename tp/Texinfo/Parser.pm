@@ -2973,7 +2973,7 @@ sub _end_line($$$)
                         $current->{'cmdname'});
           }
           my $arg = $current->{'extra'}->{'block_command_line_contents'}->[0]->[0];
-          if (!defined($arg->{'text'}) or $arg->{'text'} !~ /^[[:alnum:]]$/) {
+          if (!defined($arg->{'text'}) or $arg->{'text'} !~ /^(([[:digit:]]+)|([[:alpha:]]+))$/) {
             $self->_command_error($current, $line_nr, 
                         $self->__("bad argument to \@%s"),
                         $current->{'cmdname'});

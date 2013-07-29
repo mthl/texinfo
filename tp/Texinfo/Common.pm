@@ -1382,7 +1382,7 @@ sub enumerate_item_representation($$)
   my $specification = shift;
   my $number = shift;
 
-  if ($specification =~ /^[0-9]$/) {
+  if ($specification =~ /^[0-9]+$/) {
     return $specification + $number -1;
   }
 

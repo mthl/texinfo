@@ -707,6 +707,11 @@ explanation
 in para
 @image{f--ile,,,a very long alt argument that could span more than one line who knows}.
 '],
+['enumerate_above_ten',
+'@enumerate 14
+@item a
+@end enumerate
+'],
 ['footnote_no_number',
 '@node Top
 

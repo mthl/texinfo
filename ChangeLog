@@ -1,3 +1,9 @@
+2013-07-29  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Common.pm (enumerate_item_representation), Texinfo/Parser.pm:
+	handle correctly @enumerate specification greater than 10.  Report
+	from Dmitry Shachnev.
+
 2013-06-28  Karl Berry  <karl@gnu.org>
 
 	* contrib/perldoc-all/GNUmakefile (texi_pod_doc_incl): remove X<...>
