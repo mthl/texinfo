@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2013-04-19.17; # UTC
+htmlxrefversion=2013-08-03.16; # UTC
 
 # Copyright 2010, 2011, 2012, 2013 Free Software Foundation, Inc.
 # 
@@ -86,6 +86,11 @@ cflow		node	${GS}/cflow/manual/html_node/
 
 chess		mono	${GS}/chess/manual/gnuchess.html
 chess		node	${GS}/chess/manual/html_node/
+
+combine		mono	${GS}/combine/manual/combine.html
+combine		chapter	${GS}/combine/manual/html_chapter/
+combine		section	${GS}/combine/manual/html_section/
+combine		node	${GS}/combine/manual/html_node/
 
 complexity	mono	${GS}/complexity/manual/complexity.html
 complexity	node	${GS}/complexity/manual/html_node/
