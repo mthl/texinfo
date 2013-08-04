@@ -2008,7 +2008,7 @@ sub _expand_macro_arguments($$$$)
         if ($braces_level == 1) {
           if (scalar(@$arguments) < $args_total) {
             push @$arguments, '';
-            $line =~ s/^\s*//;
+            $line =~ s/^[^\S\f]*//;
             print STDERR "MACRO NEW ARG\n" if ($self->{'DEBUG'});
           } else {
             # implicit quoting when there is one argument.
@@ -2109,7 +2109,10 @@ sub _abort_empty_line($$;$)
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_after_close_brace')) {
     print STDERR "ABORT EMPTY additional text |$additional_text|, current |$current->{'contents'}->[-1]->{'text'}|\n" if ($self->{'DEBUG'});
     $current->{'contents'}->[-1]->{'text'} .= $additional_text;
+    # remove empty 'empty*before'.
     if ($current->{'contents'}->[-1]->{'text'} eq '') {
+      # as we remove 'empty_spaces_before_argument', 'spaces_before_argument'
+      # is removed from 'extra' too.
       if ($current->{'extra'} 
           and $current->{'extra'}->{'spaces_before_argument'}
           and $current->{'extra'}->{'spaces_before_argument'} 
@@ -2143,6 +2146,12 @@ sub _isolate_last_space($$;$)
   $type = 'spaces_at_end' if (!defined($type));
   if ($current->{'contents'} and @{$current->{'contents'}}) {
     my $index = -1;
+    # we ignore space before a misc command that is last on line.
+    # This is primarily to tag spaces before comments, but this will
+    # also tag and, in most converter lead to removal of spaces
+    # before any misc command, which is not really problematic as 
+    # in most cases, if it is not a comment, we are in an invalid 
+    # nesting of misc command on another @-command line.
     $index = -2 
       if (scalar(@{$current->{'contents'}}) > 1 
         and $current->{'contents'}->[-1]->{'cmdname'}
@@ -3889,9 +3898,9 @@ sub _parse_texi($;$)
         my $expanded_macro = $self->{'macros'}->{$command};
         my $args_number = scalar(@{$expanded_macro->{'args'}}) -1;
         my $arguments = [];
-        if ($line =~ s/^\s*{\s*//) { # macro with args
+        if ($line =~ s/^\s*{[^\S\f]*//) { # macro with args
           ($arguments, $line, $line_nr) = 
-            _expand_macro_arguments ($self, $expanded_macro, $line, $line_nr);
+            _expand_macro_arguments($self, $expanded_macro, $line, $line_nr);
         } elsif (($args_number >= 2) or ($args_number <1)) {
         # as agreed on the bug-texinfo mailing list, no warn when zero
         # arg and not called with {}.
@@ -3904,7 +3913,7 @@ sub _parse_texi($;$)
             ($line, $line_nr) = _new_line($self, $line_nr, $expanded_macro);
             $line = '' if (!defined($line));
           }
-          $line =~ s/^\s*// if ($line =~ /\S/);
+          $line =~ s/^[^\S\f]*// if ($line =~ /[\S\f]/);
           my $has_end_of_line = chomp $line;
           $arguments = [$line];
           $line = "\n" if ($has_end_of_line);

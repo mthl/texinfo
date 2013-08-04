@@ -1,6 +1,10 @@
+2013-08-04  Patrice Dumas  <pertusus@free.fr>
+
+	* Texinfo/Parser.pm: keep form-feed in macro arguments.
+
 2013-07-29  Patrice Dumas  <pertusus@free.fr>
 
-	* tp/Common.pm (enumerate_item_representation), Texinfo/Parser.pm:
+	* Texinfo//Common.pm (enumerate_item_representation), Texinfo/Parser.pm:
 	handle correctly @enumerate specification greater than 10.  Report
 	from Dmitry Shachnev.
 

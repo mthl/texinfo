@@ -129,6 +129,7 @@ sub _print_tree($$;$$)
   if (defined($root->{'text'})) {
     my $text = $root->{'text'};
     $text =~ s/\n/\\n/g;
+    $text =~ s/\f/\\f/g;
     $result .= "|$text|";
   }
   $result .= "\n";

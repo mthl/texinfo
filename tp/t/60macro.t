@@ -954,6 +954,9 @@ a
 
 @mymacro{}
 ', {'MACRO_BODY_IGNORES_LEADING_SPACE' => 1}],
+['form_feeds',
+undef, {'test_file' => 'macros_form_feed.texi'}
+],
 );
 
 my @todo =(

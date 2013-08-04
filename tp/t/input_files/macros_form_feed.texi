@@ -1,0 +1,12 @@
+@macro mymacro{a, b}
+f \a\ n \b\
+@end macro
+
+@macro oneargmacro{c}
+g \c\ v
+@end macro
+
+@mymacro  {  arg1, arg2}
+
+@oneargmacro   a@{rgline
+
