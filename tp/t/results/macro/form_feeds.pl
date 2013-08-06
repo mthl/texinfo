@@ -135,7 +135,67 @@ $result_trees{'form_feeds'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'f  arg1 n  arg2
+          'text' => 'f '
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'parent' => {},
+      'text' => '',
+      'type' => 'empty_line'
+    },
+    {
+      'parent' => {},
+      'text' => ' ',
+      'type' => 'empty_spaces_before_paragraph'
+    },
+    {
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => 'arg1'
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'parent' => {},
+      'text' => '',
+      'type' => 'empty_line'
+    },
+    {
+      'parent' => {},
+      'text' => ' ',
+      'type' => 'empty_spaces_before_paragraph'
+    },
+    {
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => 'n '
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'parent' => {},
+      'text' => '',
+      'type' => 'empty_line'
+    },
+    {
+      'parent' => {},
+      'text' => ' ',
+      'type' => 'empty_spaces_before_paragraph'
+    },
+    {
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => 'arg2
 '
         }
       ],
@@ -152,7 +212,27 @@ $result_trees{'form_feeds'} = {
       'contents' => [
         {
           'parent' => {},
-          'text' => 'g   a'
+          'text' => 'g '
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'parent' => {},
+      'text' => '',
+      'type' => 'empty_line'
+    },
+    {
+      'parent' => {},
+      'text' => '  ',
+      'type' => 'empty_spaces_before_paragraph'
+    },
+    {
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => 'a'
         },
         {
           'cmdname' => '{',
@@ -198,11 +278,27 @@ $result_trees{'form_feeds'}{'contents'}[5]{'parent'} = $result_trees{'form_feeds
 $result_trees{'form_feeds'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'form_feeds'}{'contents'}[6];
 $result_trees{'form_feeds'}{'contents'}[6]{'parent'} = $result_trees{'form_feeds'};
 $result_trees{'form_feeds'}{'contents'}[7]{'parent'} = $result_trees{'form_feeds'};
-$result_trees{'form_feeds'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'form_feeds'}{'contents'}[8];
-$result_trees{'form_feeds'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'form_feeds'}{'contents'}[8];
-$result_trees{'form_feeds'}{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'form_feeds'}{'contents'}[8];
 $result_trees{'form_feeds'}{'contents'}[8]{'parent'} = $result_trees{'form_feeds'};
+$result_trees{'form_feeds'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'form_feeds'}{'contents'}[9];
 $result_trees{'form_feeds'}{'contents'}[9]{'parent'} = $result_trees{'form_feeds'};
+$result_trees{'form_feeds'}{'contents'}[10]{'parent'} = $result_trees{'form_feeds'};
+$result_trees{'form_feeds'}{'contents'}[11]{'parent'} = $result_trees{'form_feeds'};
+$result_trees{'form_feeds'}{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'form_feeds'}{'contents'}[12];
+$result_trees{'form_feeds'}{'contents'}[12]{'parent'} = $result_trees{'form_feeds'};
+$result_trees{'form_feeds'}{'contents'}[13]{'parent'} = $result_trees{'form_feeds'};
+$result_trees{'form_feeds'}{'contents'}[14]{'parent'} = $result_trees{'form_feeds'};
+$result_trees{'form_feeds'}{'contents'}[15]{'contents'}[0]{'parent'} = $result_trees{'form_feeds'}{'contents'}[15];
+$result_trees{'form_feeds'}{'contents'}[15]{'parent'} = $result_trees{'form_feeds'};
+$result_trees{'form_feeds'}{'contents'}[16]{'parent'} = $result_trees{'form_feeds'};
+$result_trees{'form_feeds'}{'contents'}[17]{'contents'}[0]{'parent'} = $result_trees{'form_feeds'}{'contents'}[17];
+$result_trees{'form_feeds'}{'contents'}[17]{'parent'} = $result_trees{'form_feeds'};
+$result_trees{'form_feeds'}{'contents'}[18]{'parent'} = $result_trees{'form_feeds'};
+$result_trees{'form_feeds'}{'contents'}[19]{'parent'} = $result_trees{'form_feeds'};
+$result_trees{'form_feeds'}{'contents'}[20]{'contents'}[0]{'parent'} = $result_trees{'form_feeds'}{'contents'}[20];
+$result_trees{'form_feeds'}{'contents'}[20]{'contents'}[1]{'parent'} = $result_trees{'form_feeds'}{'contents'}[20];
+$result_trees{'form_feeds'}{'contents'}[20]{'contents'}[2]{'parent'} = $result_trees{'form_feeds'}{'contents'}[20];
+$result_trees{'form_feeds'}{'contents'}[20]{'parent'} = $result_trees{'form_feeds'};
+$result_trees{'form_feeds'}{'contents'}[21]{'parent'} = $result_trees{'form_feeds'};
 
 $result_texis{'form_feeds'} = '@macro mymacro{a, b}
 f \\a\\ n \\b\\
@@ -221,9 +317,9 @@ g   a@{rgline v
 
 $result_texts{'form_feeds'} = '
 
-f  arg1 n  arg2
+f arg1n arg2
 
-g   a{rgline v
+g a{rgline v
 
 ';
 

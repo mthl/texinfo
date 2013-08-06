@@ -1,3 +1,8 @@
+2013-08-06  Patrice Dumas  <pertusus@free.fr>
+
+	* Texinfo/Parser.pm: form-feed in paragraph stops the current paragraph.
+	For that consider \f to be a separator.
+
 2013-08-04  Patrice Dumas  <pertusus@free.fr>
 
 	* Texinfo/Parser.pm: keep form-feed in macro arguments.

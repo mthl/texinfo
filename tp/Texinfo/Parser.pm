@@ -1147,6 +1147,8 @@ sub _begin_paragraph($$;$)
   my $current = shift;
   my $line_nr = shift;
 
+  # !$current->{'type'} is true for @-commands.  In fact it is unclear
+  # that there may be cases of !$current->{'type'} and !$current->{'cmdname'}
   if ((!$current->{'type'} or $type_with_paragraph{$current->{'type'}})
       and !$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
     if (!defined($current->{'contents'})) {
@@ -2042,7 +2044,7 @@ sub _expand_macro_arguments($$$$)
       }
     }
   }
-  if ($args_total == 0 and $arguments->[0] =~ /\S/) {
+  if ($args_total == 0 and $arguments->[0] =~ /[\S\f]/) {
     $self->line_error(sprintf($self->__(
                "macro `%s' declared without argument called with an argument"), 
                                 $name), $line_nr);
@@ -2739,12 +2741,12 @@ sub _end_line($$$)
       while (@{$menu_entry->{'args'}}) {
         my $arg = shift @{$menu_entry->{'args'}};
         if (defined($arg->{'text'})) {
-          $current = _merge_text ($self, $current, $arg->{'text'});
+          $current = _merge_text($self, $current, $arg->{'text'});
         } else {
           while (@{$arg->{'contents'}}) {
             my $content = shift @{$arg->{'contents'}};
             if (defined($content->{'text'})) {
-              $current = _merge_text ($self, $current, 
+              $current = _merge_text($self, $current, 
                                     $content->{'text'});
               $content = undef;
             } else {
@@ -3007,7 +3009,7 @@ sub _end_line($$$)
         }
       }
       # This code checks that the command_as_argument of the @itemize
-      # is alone on the line, otherwise it is not an command_as_argument.
+      # is alone on the line, otherwise it is not a command_as_argument.
       if ($current->{'extra'}
           and $current->{'extra'}->{'command_as_argument'}
           and $current->{'cmdname'} eq 'itemize') {
@@ -4870,7 +4872,7 @@ sub _parse_texi($;$)
                                       $command), $line_nr);
         }
 
-      } elsif ($line =~ s/^([{}@,:\t.])//) {
+      } elsif ($line =~ s/^([{}@,:\t.\f])//) {
         my $separator = $1;
         print STDERR "SEPARATOR: $separator\n" if ($self->{'DEBUG'});
         if ($separator eq '@') {
@@ -4927,7 +4929,7 @@ sub _parse_texi($;$)
                 }
               }
               push @{$self->{'context_stack'}}, $command;
-              $line =~ s/([^\S\n]*)//;
+              $line =~ s/([^\S\f\n]*)//;
               $current->{'type'} = 'brace_command_context';
               push @{$current->{'contents'}}, { 'type' => 'empty_spaces_before_argument', 
                                         'text' => $1,
@@ -5263,11 +5265,22 @@ sub _parse_texi($;$)
           push @{$current->{'args'}}, { 'type' => 'menu_entry_separator',
                                  'text' => $separator,
                                  'parent' => $current };
+        } elsif ($separator eq "\f" and $current->{'type'}
+                 and $current->{'type'} eq 'paragraph') {
+          # form feed stops and restart a paragraph.
+          $current = $self->_end_paragraph($current);
+          push @{$current->{'contents'}}, {'text' => $separator, 
+                                           'type' => 'empty_line',
+                                            'parent' => $current };
+          push @{$current->{'contents'}}, { 'type' => 'empty_line', 
+                                            'text' => '',
+                                            'parent' => $current };
+          
         } else {
           $current = _merge_text($self, $current, $separator);
         }
       # Misc text except end of line
-      } elsif ($line =~ s/^([^{}@,:\t.\n]+)//) {
+      } elsif ($line =~ s/^([^{}@,:\t.\n\f]+)//) {
         my $new_text = $1;
         $current = _merge_text($self, $current, $new_text);
       # end of line
