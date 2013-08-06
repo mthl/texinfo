@@ -1843,7 +1843,9 @@ sub protect_text($$) {
 sub _default_protect_text($$) {
   my $self = shift;
   my $text = shift;
-  return $self->xml_protect_text($text);
+  my $result = $self->xml_protect_text($text);
+  $result =~ s/\f/&#12;/g;
+  return $result;
 }
 
 sub _default_heading_text($$$$$)
