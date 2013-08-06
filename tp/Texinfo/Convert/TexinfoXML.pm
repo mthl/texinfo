@@ -141,7 +141,7 @@ sub protect_text($$)
 {
   my $self = shift;
   my $string = shift;
-  return $self->xml_protect_text($string);
+  return $self->_protect_text($string);
 }
 
 sub _xml_attributes($$)
@@ -153,7 +153,11 @@ sub _xml_attributes($$)
   }
   my $result = '';
   for (my $i = 0; $i < scalar(@$attributes); $i += 2) {
-    $result .= " $attributes->[$i]=\"".$self->xml_protect_text($attributes->[$i+1])."\"";
+    my $text = $self->xml_protect_text($attributes->[$i+1]);
+    # in fact form feed is not allowed at all in XML, even protected
+    # but there isn't much else to do
+    $text =~ s/\f/&#12;/g;
+    $result .= " $attributes->[$i]=\"".$text."\"";
   }
   return $result;
 }
@@ -212,12 +216,22 @@ sub format_comment($$)
   return $self->xml_comment($string);
 }
 
+# form feed is not accepted in xml, replace it.
+sub _protect_text($$)
+{
+  my $self = shift;
+  my $text = shift;
+  my $result = $self->xml_protect_text($text);
+  $result =~ s/\f/&formfeed;/g;
+  return $result;
+}
+
 # format specific
 sub format_text($$)
 {
   my $self = shift;
   my $root = shift;
-  my $result = $self->xml_protect_text($root->{'text'});
+  my $result = $self->_protect_text($root->{'text'});
   if (! defined($root->{'type'}) or $root->{'type'} ne 'raw') {
     if (!$self->{'document_context'}->[-1]->{'monospace'}->[-1]) {
       $result =~ s/``/&textldquo;/g;
@@ -550,6 +564,7 @@ sub _protect_end_of_lines($)
 {
   my $text = shift;
   $text =~ s/\n/\\n/g;
+  $text =~ s/\f/\\f/g;
   return $text;
 }
 
@@ -626,7 +641,7 @@ sub _trailing_spaces_arg($$)
   if (defined($spaces[1])) {
     chomp($spaces[1]);
     if ($spaces[1] ne '') {
-      return ('trailingspaces', $spaces[1]);
+      return ('trailingspaces', _protect_end_of_lines($spaces[1]));
     }
   }
   return ();
@@ -658,7 +673,7 @@ sub _leading_trailing_spaces_arg($$)
   if (defined($spaces[1])) {
     chomp($spaces[1]);
     if ($spaces[1] ne '') {
-      push @result, ('trailingspaces', $spaces[1]);
+      push @result, ('trailingspaces', _protect_end_of_lines($spaces[1]));
     }
   }
   return @result;

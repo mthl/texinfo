@@ -151,7 +151,7 @@
 <!ENTITY % Inline.reference "xref | ref | pxref | inforef | email | uref | url">
 <!ENTITY % Inline.misc "click | clicksequence | logo | punct | spacecmd | today
                         | linebreak | accent | dotless | ctrl | inlineraw 
-                        | inlinefmt | infoenclose">
+                        | inlinefmt | infoenclose | noeos | formfeed ">
 
 <!-- on lines -->
 <!ENTITY % Inline.linetext "%Inline.emphasize; | %Inline.misc; | %Inline.fonts;
@@ -1220,6 +1220,7 @@
 <!ELEMENT logo      (#PCDATA)>
 <!ELEMENT linebreak EMPTY>
 <!ELEMENT noeos EMPTY>
+<!ELEMENT formfeed EMPTY>
 
 <!ENTITY tex        "<logo>TeX</logo>">
 <!ENTITY latex      "<logo>LaTeX</logo>">
@@ -1252,6 +1253,7 @@
 <!ENTITY rsaquo     "&#x203a;">
 <!ENTITY textmdash      "&#x2014;">
 <!ENTITY textndash      "&#x2013;">
+<!ENTITY formfeed       "<formfeed/>">
 <!ENTITY period     "<punct end-of-sentence='no'>.</punct>">
 <!ENTITY eosperiod  "<punct end-of-sentence='yes'>.</punct>">
 <!ENTITY quest      "<punct end-of-sentence='no'>?</punct>">

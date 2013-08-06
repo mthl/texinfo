@@ -300,6 +300,10 @@ $result_errors{'form_feed_in_brace_commands'} = [];
 
 
 
+$result_converted{'xml'}->{'form_feed_in_brace_commands'} = '<para><option> &formfeed;aa</option> <anchor name="aa">aa</anchor></para>&formfeed;<para>something <email spaces="\\f"><emailaddress>aaa</emailaddress><emailname spaces=" \\f ">fff</emailname></email><footnote spaces=" \\n">&formfeed; <para>f1 </para>&formfeed;</footnote> <footnote spaces=" \\f "><para>gg</para>&formfeed;<para>jj</para></footnote>.
+</para>';
+
+
 $result_converted{'plaintext'}->{'form_feed_in_brace_commands'} = '\' aa\'
 
    something fff <aaa>(1) (2).

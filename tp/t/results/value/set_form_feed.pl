@@ -162,4 +162,12 @@ $result_errors{'set_form_feed'} = [
 ];
 
 
+
+$result_converted{'xml'}->{'set_form_feed'} = '<set name="gg" line=" gg &#12; aa">&formfeed; aa</set>
+<set line=" hh&#12;"></set>
+<set name="ll" line=" ll &#12;">&formfeed;</set>
+
+<para><code>&formfeed; aa. . &formfeed;</code>.
+</para>';
+
 1;

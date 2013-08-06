@@ -242,7 +242,7 @@ $two_footnotes_in_nodes_text,
 ['form_feed_in_brace_commands',
 '@option{ aa} @anchor{aa}something @email{aaa,  fff}@footnote{ 
  f1 } @footnote{  ggjj}.
-']
+', {'test_formats' => ['xml']}]
 );
 
 my @test_invalid = (

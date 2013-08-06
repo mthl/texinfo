@@ -1,6 +1,10 @@
 2013-08-06  Patrice Dumas  <pertusus@free.fr>
 
 	* Texinfo/Parser.pm: keep form-feed in @set value.
+	* util/texinfo.dtd, util/txixml2texi.pl, 
+	tp/Texinfo/Convert/TexinfoXML.pm(_protect_text): output form-feed
+	as entity in XML, when possible.  Handle form-feeds in 
+	txixml2texi.pl too.
 
 2013-08-06  Karl Berry  <karl@gnu.org>
 
