@@ -447,6 +447,15 @@ sub _parse_attribute($)
   return ($element, $attributes);
 }
 
+sub _protect_text($$)
+{
+  my $self = shift;
+  my $text = shift;
+  my $result = $self->xml_protect_text($text);
+  # form feed not allowed in XML
+  $result =~ s/\f//g;
+  return $result;
+}
 
 sub _convert($$;$);
 
@@ -473,7 +482,7 @@ sub _convert($$;$)
     } elsif ($self->{'document_context'}->[-1]->{'raw'}) {
       return $root->{'text'};
     }
-    $result = $self->xml_protect_text($root->{'text'});
+    $result = $self->_protect_text($root->{'text'});
     if (! defined($root->{'type'}) or $root->{'type'} ne 'raw') {
       if (!$self->{'document_context'}->[-1]->{'monospace'}->[-1]) {
         $result =~ s/``/$ldquo/g;
@@ -906,7 +915,7 @@ sub _convert($$;$)
             = $self->Texinfo::Convert::Plaintext::_image_text($root, $basefile);
           if (defined($image_text)) {
             $result .= "<textobject><literallayout>"
-               .$self->xml_protect_text($image_text)
+               .$self->_protect_text($image_text)
                .'</literallayout></textobject>';
           }
           if (!defined($image_text) and !$image_file_found) {
@@ -933,7 +942,7 @@ sub _convert($$;$)
           if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
             $email = $root->{'extra'}->{'brace_command_contents'}->[0];
             $email_text 
-              = $self->xml_protect_text(Texinfo::Convert::Text::convert(
+              = $self->_protect_text(Texinfo::Convert::Text::convert(
                                          {'contents' => $email},
                                          {'code' => 1,
                                   Texinfo::Common::_convert_text_options($self)}));
@@ -954,7 +963,7 @@ sub _convert($$;$)
           my ($url_text, $url_content);
           if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
             $url_content = $root->{'extra'}->{'brace_command_contents'}->[0];
-            $url_text = $self->xml_protect_text(Texinfo::Convert::Text::convert(
+            $url_text = $self->_protect_text(Texinfo::Convert::Text::convert(
                                          {'contents' => $url_content},
                                          {'code' => 1,
                                   Texinfo::Common::_convert_text_options($self)}));

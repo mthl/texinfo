@@ -2,6 +2,8 @@
 
 	* tp/Texinfo/Convert/TexinfoXML.pm(_xml_attributes):
 	do not protect \f and \ in spaces or trailingspaces attributes.
+	* tp/Texinfo/Convert/DocBook.pm(_protect_text): remove
+	form-feed from output, as it is not allowed in XML.
 
 2013-08-06  Patrice Dumas  <pertusus@free.fr>
 
