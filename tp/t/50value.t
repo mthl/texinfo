@@ -332,6 +332,13 @@ line
 @item xx @set n@c
 @item jj
 @end table
+'],
+['set_form_feed',
+'@set gg  aa
+@set hh
+@set ll 
+
+@code{@value{gg}. @value{hh}. @value{ll}}.
 ']
 );
 

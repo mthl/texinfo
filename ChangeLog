@@ -1,3 +1,7 @@
+2013-08-06  Patrice Dumas  <pertusus@free.fr>
+
+	* Texinfo/Parser.pm: keep form-feed in @set value.
+
 2013-08-06  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\smartitaliccorrection): also omit italic
