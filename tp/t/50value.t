@@ -334,7 +334,7 @@ line
 @end table
 '],
 ['set_form_feed',
-'@set gg  aa
+'@set gg  a\\a\\f\\\\
 @set hh
 @set ll 
 

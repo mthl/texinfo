@@ -16,17 +16,17 @@ $result_trees{'set_form_feed'} = {
         },
         {
           'parent' => {},
-          'text' => ' aa',
+          'text' => ' a\\a\\f\\\\',
           'type' => 'misc_arg'
         }
       ],
       'cmdname' => 'set',
       'extra' => {
-        'arg_line' => ' gg  aa
+        'arg_line' => ' gg  a\\a\\f\\\\
 ',
         'misc_args' => [
           'gg',
-          ' aa'
+          ' a\\a\\f\\\\'
         ]
       },
       'parent' => {}
@@ -77,7 +77,7 @@ $result_trees{'set_form_feed'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' aa. '
+                  'text' => ' a\\a\\f\\\\. '
                 },
                 {
                   'cmdname' => 'value',
@@ -128,16 +128,16 @@ $result_trees{'set_form_feed'}{'contents'}[4]{'contents'}[0]{'parent'} = $result
 $result_trees{'set_form_feed'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'set_form_feed'}{'contents'}[4];
 $result_trees{'set_form_feed'}{'contents'}[4]{'parent'} = $result_trees{'set_form_feed'};
 
-$result_texis{'set_form_feed'} = '@set gg  aa
+$result_texis{'set_form_feed'} = '@set gg  a\\a\\f\\\\
 @set hh
 @set ll 
 
-@code{ aa. @value{hh}. }.
+@code{ a\\a\\f\\\\. @value{hh}. }.
 ';
 
 
 $result_texts{'set_form_feed'} = '
- aa. . .
+ a\\a\\f\\\\. . .
 ';
 
 $result_errors{'set_form_feed'} = [
@@ -163,11 +163,11 @@ $result_errors{'set_form_feed'} = [
 
 
 
-$result_converted{'xml'}->{'set_form_feed'} = '<set name="gg" line=" gg &#12; aa">&formfeed; aa</set>
-<set line=" hh&#12;"></set>
-<set name="ll" line=" ll &#12;">&formfeed;</set>
+$result_converted{'xml'}->{'set_form_feed'} = '<set name="gg" line=" gg &attrformfeed; a\\\\a\\\\f\\\\\\\\">&formfeed; a\\a\\f\\\\</set>
+<set line=" hh&attrformfeed;"></set>
+<set name="ll" line=" ll &attrformfeed;">&formfeed;</set>
 
-<para><code>&formfeed; aa. . &formfeed;</code>.
+<para><code>&formfeed; a\\a\\f\\\\. . &formfeed;</code>.
 </para>';
 
 1;

@@ -153,10 +153,17 @@ sub _xml_attributes($$)
   }
   my $result = '';
   for (my $i = 0; $i < scalar(@$attributes); $i += 2) {
+    # this cannot be used, because of formfeed, as in 
+    # attribute < which is substituted from &formfeed; is not allowed
+    #my $text = $self->_protect_text($attributes->[$i+1]);
     my $text = $self->xml_protect_text($attributes->[$i+1]);
     # in fact form feed is not allowed at all in XML, even protected
-    # but there isn't much else to do
-    $text =~ s/\f/&#12;/g;
+    # and even in xml 1.1 in contrast to what is said on internet.
+    # maybe this is a limitation of libxml?
+    #$text =~ s/\f/&#12;/g;
+    $text =~ s/\f/&attrformfeed;/g;
+    # &attrformfeed; resolves to \f so \ are doubled
+    $text =~ s/\\/\\\\/g;
     $result .= " $attributes->[$i]=\"".$text."\"";
   }
   return $result;
