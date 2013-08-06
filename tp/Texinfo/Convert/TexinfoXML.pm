@@ -161,9 +161,12 @@ sub _xml_attributes($$)
     # and even in xml 1.1 in contrast to what is said on internet.
     # maybe this is a limitation of libxml?
     #$text =~ s/\f/&#12;/g;
-    $text =~ s/\f/&attrformfeed;/g;
-    # &attrformfeed; resolves to \f so \ are doubled
-    $text =~ s/\\/\\\\/g;
+    if ($attributes->[$i] ne 'spaces' 
+        and $attributes->[$i] ne 'trailingspaces') {
+      $text =~ s/\f/&attrformfeed;/g;
+      # &attrformfeed; resolves to \f so \ are doubled
+      $text =~ s/\\/\\\\/g;
+    }
     $result .= " $attributes->[$i]=\"".$text."\"";
   }
   return $result;
@@ -567,7 +570,7 @@ sub convert_tree($$)
   return $self->_convert($root);
 }
 
-sub _protect_end_of_lines($)
+sub _protect_in_spaces($)
 {
   my $text = shift;
   $text =~ s/\n/\\n/g;
@@ -580,7 +583,7 @@ sub _leading_spaces($)
   my $root = shift;
   if ($root->{'extra'} and $root->{'extra'}->{'spaces_after_command'}
       and $root->{'extra'}->{'spaces_after_command'}->{'type'} eq 'empty_spaces_after_command') {
-    return ('spaces', _protect_end_of_lines(
+    return ('spaces', _protect_in_spaces(
          $root->{'extra'}->{'spaces_after_command'}->{'text'}));
   } else {
     return ();
@@ -593,7 +596,7 @@ sub _leading_spaces_before_argument($)
   if ($root->{'extra'} and $root->{'extra'}->{'spaces_before_argument'}
       and $root->{'extra'}->{'spaces_before_argument'}->{'type'} eq 'empty_spaces_before_argument'
       and $root->{'extra'}->{'spaces_before_argument'}->{'text'} ne '') {
-    return ('spaces', _protect_end_of_lines(
+    return ('spaces', _protect_in_spaces(
                  $root->{'extra'}->{'spaces_before_argument'}->{'text'}));
   } else {
     return ();
@@ -648,7 +651,7 @@ sub _trailing_spaces_arg($$)
   if (defined($spaces[1])) {
     chomp($spaces[1]);
     if ($spaces[1] ne '') {
-      return ('trailingspaces', _protect_end_of_lines($spaces[1]));
+      return ('trailingspaces', _protect_in_spaces($spaces[1]));
     }
   }
   return ();
@@ -662,7 +665,7 @@ sub _leading_spaces_arg($$)
   my @result = ();
   my @spaces = $self->_collect_leading_trailing_spaces_arg($root);
   if (defined($spaces[0]) and $spaces[0] ne '') {
-    @result = ('spaces', _protect_end_of_lines($spaces[0]));
+    @result = ('spaces', _protect_in_spaces($spaces[0]));
   }
   return @result;
 }
@@ -675,12 +678,12 @@ sub _leading_trailing_spaces_arg($$)
   my @result;
   my @spaces = $self->_collect_leading_trailing_spaces_arg($root);
   if (defined($spaces[0]) and $spaces[0] ne '') {
-    push @result, ('spaces', _protect_end_of_lines($spaces[0]));
+    push @result, ('spaces', _protect_in_spaces($spaces[0]));
   }
   if (defined($spaces[1])) {
     chomp($spaces[1]);
     if ($spaces[1] ne '') {
-      push @result, ('trailingspaces', _protect_end_of_lines($spaces[1]));
+      push @result, ('trailingspaces', _protect_in_spaces($spaces[1]));
     }
   }
   return @result;
