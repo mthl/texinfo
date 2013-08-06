@@ -1,7 +1,13 @@
+2013-08-06  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\smartitaliccorrection): also omit italic
+	correction if next command is @. or @comma.
+	Report from Vincent Lefevre, 5 Aug 2013 02:47:31.
+
 2013-08-06  Patrice Dumas  <pertusus@free.fr>
 
-	* Texinfo/Parser.pm: form-feed in paragraph stops the current paragraph.
-	For that consider \f to be a separator.
+	* Texinfo/Parser.pm: form-feed in paragraph stops the current
+	paragraph.  For that consider \f to be a separator.
 
 2013-08-04  Patrice Dumas  <pertusus@free.fr>
 
@@ -9,9 +15,10 @@
 
 2013-07-29  Patrice Dumas  <pertusus@free.fr>
 
-	* Texinfo//Common.pm (enumerate_item_representation), Texinfo/Parser.pm:
-	handle correctly @enumerate specification greater than 10.  Report
-	from Dmitry Shachnev.
+	* Texinfo//Common.pm (enumerate_item_representation),
+	* Texinfo/Parser.pm:
+	handle correctly @enumerate specification greater than 10.
+	Report from Dmitry Shachnev.
 
 2013-06-28  Karl Berry  <karl@gnu.org>
 
