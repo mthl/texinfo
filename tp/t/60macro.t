@@ -955,7 +955,19 @@ a
 @mymacro{}
 ', {'MACRO_BODY_IGNORES_LEADING_SPACE' => 1}],
 ['form_feeds',
-undef, {'test_file' => 'macros_form_feed.texi'}
+'@macro mymacro{a, b}
+f \a\ n \b\
+@end macro
+
+@macro oneargmacro{c}
+g \c\ v
+@end macro
+
+@mymacro  {  arg1, arg2}
+
+@oneargmacro   a@{rgline
+
+'
 ],
 );
 

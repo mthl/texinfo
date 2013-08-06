@@ -59,7 +59,7 @@ $result_trees{'form_feeds'} = {
         }
       },
       'line_nr' => {
-        'file_name' => 'macros_form_feed.texi',
+        'file_name' => '',
         'line_nr' => 1,
         'macro' => ''
       },
@@ -118,7 +118,7 @@ $result_trees{'form_feeds'} = {
         }
       },
       'line_nr' => {
-        'file_name' => 'macros_form_feed.texi',
+        'file_name' => '',
         'line_nr' => 5,
         'macro' => ''
       },
