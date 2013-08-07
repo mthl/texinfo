@@ -229,15 +229,24 @@ my %upper_case_commands = (
  'var' => 1
 );
 
-my %ignored_types;
-foreach my $type ('empty_line_after_command', 'preamble',
-            'preamble_before_setfilename',
+my %ignorable_space_types;
+foreach my $type ('empty_line_after_command',
             'empty_spaces_after_command', 'spaces_at_end',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
             'empty_spaces_after_close_brace', 
             'empty_space_at_end_def_bracketed') {
-  #$ignored_types{$type} = 1;
+  $ignorable_space_types{$type} = 1;
+}
+
+my %ignored_types;
+foreach my $type ('preamble',
+            'preamble_before_setfilename') {
   $ignored_types{$type} = 1;
+}
+
+my %ignorable_types = %ignorable_space_types;
+foreach my $ignored_type(keys(%ignored_types)) {
+  $ignorable_types{$ignored_type} = 1;
 }
 
 # All those commands run with the text.
@@ -350,6 +359,7 @@ sub converter_initialize($)
                                      'locations' => []};
 
   %{$self->{'ignored_types'}} = %ignored_types;
+  %{$self->{'ignorable_space_types'}} = %ignorable_space_types;
   %{$self->{'ignored_commands'}} = %ignored_commands;
   # this is dynamic because raw formats may either be full commands if
   # isolated, or simple text if in a paragraph
@@ -1434,6 +1444,14 @@ sub _image($$)
   return ('', 0);
 }
 
+sub _get_form_feeds($)
+{
+  my $form_feeds = shift;
+  $form_feeds =~ s/^[^\f]*//;
+  $form_feeds =~ s/[^\f]$//;
+  return $form_feeds;
+}
+
 sub _convert($$);
 
 sub _convert($$)
@@ -1472,9 +1490,7 @@ sub _convert($$)
     }
   }
 
-  if (($root->{'type'} and $self->{'ignored_types'}->{$root->{'type'}}
-       and ($root->{'type'} ne 'empty_spaces_before_paragraph'
-            or $self->get_conf('paragraphindent') ne 'asis'))
+  if (($root->{'type'} and $self->{'ignored_types'}->{$root->{'type'}})
        or ($root->{'cmdname'} 
             and ($self->{'ignored_commands'}->{$root->{'cmdname'}}
                  or ($inline_format_commands{$root->{'cmdname'}}
@@ -1484,6 +1500,18 @@ sub _convert($$)
     return '';
   }
   my $result = '';
+
+  # in ignorable spaces, keep only form feeds.
+  if ($root->{'type'} and $self->{'ignorable_space_types'}->{$root->{'type'}}
+      and ($root->{'type'} ne 'empty_spaces_before_paragraph'
+           or $self->get_conf('paragraphindent') ne 'asis')) {
+    if ($root->{'text'} =~ /\f/) {
+      $result = _get_form_feeds($root->{'text'});
+    }
+    $self->_add_text_count($result);
+    print STDERR "IGNORABLE SPACE: ($result)\n" if ($self->{'debug'});
+    return $result;
+  }
 
   # First handle empty lines. This has to be done before the handling
   # of text below to be sure that an empty line is always processed
@@ -1501,10 +1529,7 @@ sub _convert($$)
         or $self->{'preformatted_context_commands'}->{$self->{'context'}->[-1]}) {
       $result = "\n";
       if ($root->{'text'} =~ /\f/) {
-        my $form_feeds = $root->{'text'};
-        $form_feeds =~ s/^[^\f]*//;
-        $form_feeds =~ s/[^\f]$//;
-        $result = $form_feeds .$result;
+        $result = _get_form_feeds($root->{'text'}) .$result;
       }
       $self->_add_text_count($result);
       $self->_add_lines_count(1);
@@ -1571,7 +1596,7 @@ sub _convert($$)
         foreach my $following_content (@$parent_content) {
           unless (($following_content->{'type'} 
                 and ($following_content->{'type'} eq 'empty_line'
-                    or $ignored_types{$following_content->{'type'}}))
+                    or $ignorable_types{$following_content->{'type'}}))
               or ($following_content->{'cmdname'} 
                   and ($following_content->{'cmdname'} eq 'c'  
                        or $following_content->{'cmdname'} eq 'comment'))) {

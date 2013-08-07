@@ -43,6 +43,7 @@ sub _convert($$)
     $command_type .= ":text";
     my $text = $root->{'text'};
     $text =~ s/\n/\\n/g;
+    $text =~ s/\f/\\f/g;
     $command_type .= "|$text|";
   }
   my $string_before = ' ' x $self->{'level'}. "$command_nr $number_before $command_type\n";

@@ -1,3 +1,8 @@
+2013-08-08  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/Plaintext.pm: output ^L in ignorable
+	spaces.
+
 2013-08-07  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Convert/HTML.pm(_default_protect_text), 

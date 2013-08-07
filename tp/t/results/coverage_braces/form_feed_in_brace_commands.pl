@@ -310,9 +310,9 @@ $result_converted{'plaintext'}->{'form_feed_in_brace_commands'} = '\' aa\'
 
    ---------- Footnotes ----------
 
-   (1) f1
+   (1) f1
 
-   (2) gg
+   (2) gg
 
    jj
 

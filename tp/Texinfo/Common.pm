@@ -1587,6 +1587,11 @@ sub count_bytes($$;$)
     return length(Encode::encode($encoding, $string));
   } else {
     return length($string);
+    #my $length = length($string);
+    #$string =~ s/\n/\\n/g;
+    #$string =~ s/\f/\\f/g;
+    #print STDERR "Count($length): $string\n";
+    #return $length;
   }
   # FIXME is the following required for correct count of end of lines?
   #if ($encoding) {
