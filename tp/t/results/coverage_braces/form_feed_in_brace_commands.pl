@@ -305,15 +305,15 @@ $result_converted{'xml'}->{'form_feed_in_brace_commands'} = '<para><option> &for
 
 
 $result_converted{'plaintext'}->{'form_feed_in_brace_commands'} = '\' aa\'
-
+
    something fff <aaa>(1) (2).
 
    ---------- Footnotes ----------
 
    (1) f1
-
+
    (2) gg
-
+
    jj
 
 ';

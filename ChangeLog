@@ -2,6 +2,8 @@
 
 	* tp/Texinfo/Convert/HTML.pm(_default_protect_text), 
 	tp/init/html32.pm: protect ^L with an entity.
+	* tp/Texinfo/Convert/Plaintext.pm: output ^L between 
+	paragraphs.
 
 2013-08-06  Patrice Dumas  <pertusus@free.fr>
 

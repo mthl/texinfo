@@ -1500,6 +1500,12 @@ sub _convert($$)
     if ($self->{'empty_lines_count'} <= 1
         or $self->{'preformatted_context_commands'}->{$self->{'context'}->[-1]}) {
       $result = "\n";
+      if ($root->{'text'} =~ /\f/) {
+        my $form_feeds = $root->{'text'};
+        $form_feeds =~ s/^[^\f]*//;
+        $form_feeds =~ s/[^\f]$//;
+        $result = $form_feeds .$result;
+      }
       $self->_add_text_count($result);
       $self->_add_lines_count(1);
       return $result;
