@@ -22,18 +22,17 @@ one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
-5.1.90 (SVN)
-
 * info
-
   . new option -x (--debug) enables additional debugging output.
-  . new option -v (--variable) assigns a value to an info variable.
+  . new option -v (--variable) assigns a value to an Info variable.
     The syntax is the same as for many other GNU utilities: -v VARIABLE=VALUE
   . new variable search-skip-screen controls the starting position for
     repeated search commands ({ and }).  When set to On, repeated
-    searches skip the lines displayed on the screen, i.e. forward searches
-    (}) start at the beginning of the next page, and backward searches
-    ({) start at the end of the previous page.
+    searches skip the lines displayed on the screen, i.e.,
+    forward searches (}) start at the beginning of the next page, and
+    backward searches ({) start at the end of the previous page.
+
+* Distribution: automake-1.14.
 
 
 5.1 (12 March 2013)
