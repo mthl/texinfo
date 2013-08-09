@@ -203,7 +203,8 @@ sub _add_next($;$$$$$)
            and $paragraph->{'counter'} != 0 and $paragraph->{'space'}) {
         # do not to double space if there are leading spaces in word
         if ($word !~ /^\s/) {
-          $paragraph->{'space'} = '  ';
+          #$paragraph->{'space'} = '  ';
+          $paragraph->{'space'} .= ' ' x (2 - length($paragraph->{'space'}));
         }
         delete $paragraph->{'end_sentence'};
       }
@@ -294,7 +295,7 @@ sub set_space_protection($$;$$$)
   if (!$paragraph->{'frenchspacing'} and $frenchspacing
     and $paragraph->{'end_sentence'} and $paragraph->{'counter'} != 0 
     and $paragraph->{'space'} and !defined($paragraph->{'word'})) {
-    $paragraph->{'space'} = '  ';
+    $paragraph->{'space'} .= ' ' x (2 - length($paragraph->{'space'}));
     print STDERR "SWITCH frenchspacing end sentence space\n" 
        if ($paragraph->{'DEBUG'});
     delete $paragraph->{'end_sentence'};
@@ -343,10 +344,16 @@ sub add_text($$;$)
            and $paragraph->{'end_sentence'} > 0) {
           $paragraph->{'word'} =~ /(\s*)$/;
           if (length($1) < 2) {
-            $paragraph->{'word'} =~ s/(\s*)$/  /;
-            $paragraph->{'underlying_word'} =~ s/(\s*)$/  /;
-            my $removed = $1;
-            $paragraph->{'word_counter'} += length('  ') - length($removed);
+            #$paragraph->{'word'} =~ s/(\s*)$/  /;
+            #$paragraph->{'underlying_word'} =~ s/(\s*)$/  /;
+            #my $removed = $1;
+            #$paragraph->{'word_counter'} += length('  ') - length($removed);
+            my $added = ' ' x (2 - length($1));
+            $paragraph->{'word'} .= $added;
+            $paragraph->{'word'} =~ /(\s*)$/;
+            my $end_spaces = $1;
+            $paragraph->{'underlying_word'} =~ s/(\s*)$/$end_spaces/;
+            $paragraph->{'word_counter'} += length($added);
           }
         }
         # The $paragraph->{'counter'} != 0 is here to avoid having an
@@ -363,13 +370,23 @@ sub add_text($$;$)
               and $paragraph->{'end_sentence'} 
               and $paragraph->{'end_sentence'} > 0) {
             if (length($paragraph->{'space'}) >= 1 or length($spaces) > 1) {
-              $paragraph->{'space'} = '  ';
+              # more than one space, we can make sure tht there are only 
+              # 2 spaces
+              my $all_spaces = substr($paragraph->{'space'} . $spaces, 0, 2);
+              $all_spaces =~ s/[\n\r]/ /g;
+              $all_spaces .= ' ' x (2 - length($all_spaces));
+              $paragraph->{'space'} = $all_spaces;
               delete $paragraph->{'end_sentence'};
             } else {
-              $paragraph->{'space'} = ' ';
+              # if there is only one space, we let it accumulate
+              my $new_space = $spaces;
+              $new_space =~ s/^[\n\r]/ /;
+              $paragraph->{'space'} = $new_space;
             }
           } else {
-            $paragraph->{'space'} = ' ';
+            my $new_space = substr($spaces, 0, 1);
+            $new_space =~ s/^[\n\r]/ /;
+            $paragraph->{'space'} = $new_space;
           }
         }
       }
