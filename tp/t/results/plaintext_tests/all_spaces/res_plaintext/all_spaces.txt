@@ -10,7 +10,6 @@ SPACE: | | FIGURE SPACE: | | OGHAM SPACE MARK: | | CHARACTER TABULATION:
    | PUNCTUATION SPACE: | |
 
    NO-BREAK SPACE:
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-bbbbbbbbbbbbbbbbbbbbb NARROW NO-BREAK SPACE:
-ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-dddddddddddddddddddd
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbb
+NARROW NO-BREAK SPACE:
+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc dddddddddddddddddddd

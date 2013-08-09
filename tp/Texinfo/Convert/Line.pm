@@ -280,8 +280,9 @@ sub add_text($$;$)
       $word = $line->{'word'} if (defined($line->{'word'}));
       print STDERR "s `$line->{'space'}', w `$word'\n";
     }
-    if ($text =~ s/^([^\S\n]+)//) {
-      $underlying_text =~ s/^([^\S\n]+)//;
+    # \x{202f}\x{00a0} are non breaking spaces
+    if ($text =~ s/^([^\S\x{202f}\x{00a0}\n]+)//) {
+      $underlying_text =~ s/^([^\S\x{202f}\x{00a0}\n]+)//;
       my $spaces = $1;
       print STDERR "SPACES.L\n" if ($line->{'DEBUG'});
       if ($line->{'protect_spaces'}) {
@@ -313,9 +314,9 @@ sub add_text($$;$)
           }
         }
       }
-    } elsif ($text =~ s/^([^\s\p{InFullwidth}]+)//) {
+    } elsif ($text =~ s/^(([^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)//) {
       my $added_word = $1;
-      $underlying_text =~ s/^([^\s\p{InFullwidth}]+)//;
+      $underlying_text =~ s/^(([^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)//;
       my $underlying_added_word = $1;
 
       $result .= $line->_add_next($added_word, $underlying_added_word);

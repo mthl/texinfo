@@ -328,9 +328,10 @@ sub add_text($$;$)
       $word = $paragraph->{'word'} if (defined($paragraph->{'word'}));
       print STDERR "p ($paragraph->{'counter'}+$paragraph->{'word_counter'}) s `$paragraph->{'space'}', w `$word'\n";
     }
-    if ($text =~ s/^(\s+)//) {
+    # \x{202f}\x{00a0} are non breaking spaces
+    if ($text =~ s/^([^\S\x{202f}\x{00a0}]+)//) {
       my $spaces = $1;
-      $underlying_text =~ s/^(\s+)//;
+      $underlying_text =~ s/^([^\S\x{202f}\x{00a0}]+)//;
       print STDERR "SPACES($paragraph->{'counter'}) `$spaces'\n" if ($paragraph->{'DEBUG'});
       #my $added_word = $paragraph->{'word'};
       if ($paragraph->{'protect_spaces'}) {
@@ -421,9 +422,9 @@ sub add_text($$;$)
       $result .= $paragraph->_add_pending_word();
       delete $paragraph->{'end_sentence'};
       $paragraph->{'space'} = '';
-    } elsif ($text =~ s/^([^\s\p{InFullwidth}]+)//) {
+    } elsif ($text =~ s/^(([^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)//) {
       my $added_word = $1;
-      $underlying_text =~ s/^([^\s\p{InFullwidth}]+)//;
+      $underlying_text =~ s/^(([^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)//;
       my $underlying_added_word = $1;
 
       $result .= $paragraph->_add_next($added_word, $underlying_added_word);
