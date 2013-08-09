@@ -453,7 +453,7 @@ sub _protect_text($$)
   my $text = shift;
   my $result = $self->xml_protect_text($text);
   # form feed not allowed in XML
-  $result =~ s/\f//g;
+  $result =~ s/\f/ /g;
   return $result;
 }
 
