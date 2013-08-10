@@ -326,13 +326,14 @@ sub add_text($$;$)
     if ($paragraph->{'DEBUG'}) {
       my $word = 'UNDEF';
       $word = $paragraph->{'word'} if (defined($paragraph->{'word'}));
-      print STDERR "p ($paragraph->{'counter'}+$paragraph->{'word_counter'}) s `$paragraph->{'space'}', w `$word'\n";
+      print STDERR "p ($paragraph->{'counter'}+$paragraph->{'word_counter'}) s `"._print_escaped_spaces($paragraph->{'space'})."', w `$word'\n";
+      #print STDERR "TEXT: "._print_escaped_spaces($text)."|\n"
     }
     # \x{202f}\x{00a0} are non breaking spaces
     if ($text =~ s/^([^\S\x{202f}\x{00a0}]+)//) {
       my $spaces = $1;
       $underlying_text =~ s/^([^\S\x{202f}\x{00a0}]+)//;
-      print STDERR "SPACES($paragraph->{'counter'}) `$spaces'\n" if ($paragraph->{'DEBUG'});
+      print STDERR "SPACES($paragraph->{'counter'}) `"._print_escaped_spaces($spaces)."'\n" if ($paragraph->{'DEBUG'});
       #my $added_word = $paragraph->{'word'};
       if ($paragraph->{'protect_spaces'}) {
         $paragraph->{'word'} .= $spaces;
@@ -454,6 +455,32 @@ sub add_text($$;$)
       # invalid in a given encoding?
       #die "Unknown caracter leading $text";
       last;
+    }
+  }
+  return $result;
+}
+
+# for debug
+sub _print_escaped_spaces($)
+{
+  my $spaces = shift;
+  my $result = '';
+  foreach my $pos (0 .. length($spaces)-1) {
+    my $char = substr($spaces, $pos, 1);
+    if ($char eq ' ') {
+      $result .= $char;
+    } elsif ($char =~ /[\f\n]/) {
+      $char =~ s/\f/\\f/;
+      $char =~ s/\n/\\n/;
+      $result .= $char;
+    } elsif ($char =~ /\s/) {
+      if (ord($char) <= hex(0xFFFF)) {
+        $result .= '\x'.sprintf("%04x",ord($char));
+      } else {
+        $result .= '\x'.sprintf("%06x",ord($char));
+      }
+    } else {
+      $result .= $char;
     }
   }
   return $result;

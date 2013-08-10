@@ -1472,8 +1472,9 @@ sub _convert($$)
     print STDERR " type: $root->{'type'}" if ($root->{'type'});
     my $text = $root->{'text'}; 
     if (defined($text)) {
-      $text =~ s/\n/\\n/;
-      print STDERR " text: $text";
+      my $text_escaped_spaces 
+          = Texinfo::Convert::Paragraph::_print_escaped_spaces($text);
+      print STDERR " text: $text_escaped_spaces";
     }
     print STDERR "\n";
    

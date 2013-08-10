@@ -962,6 +962,9 @@ undef, {'test_file' => 'japanese_utf8.texi'}
 ['chinese_mixed_with_en',
 undef, {'test_file' => 'chinese_mixed_with_en.texi'}
 ],
+['non_break_spaces',
+undef, {'test_file' => 'non_break_spaces.texi'}
+],
 ['all_spaces',
 undef, {'test_file' => 'all_spaces.texi'}
 ],

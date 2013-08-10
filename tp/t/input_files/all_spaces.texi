@@ -2,34 +2,56 @@
 
 @node Top
 
-EN SPACE: | |
-EN QUAD: | |
-SPACE: | |
-IDEOGRAPHIC SPACE: |　|
-PARAGRAPH SEPARATOR: | |
-LINE TABULATION: ||
-EM QUAD: | |
-CARRIAGE RETURN (CR): ||
-MEDIUM MATHEMATICAL SPACE: | |
-NARROW NO-BREAK SPACE: | |
-THIN SPACE: | |
-EM SPACE: | |
-THREE-PER-EM SPACE: | |
-NEXT LINE (NEL): ||
-FOUR-PER-EM SPACE: | |
-SIX-PER-EM SPACE: | |
-NO-BREAK SPACE: | |
-HAIR SPACE: | |
-FIGURE SPACE: | |
-OGHAM SPACE MARK: | |
 CHARACTER TABULATION: |	|
-MONGOLIAN VOWEL SEPARATOR: |᠎|
+
 LINE FEED (LF): |
 |
-LINE SEPARATOR: | |
+
+LINE TABULATION: ||
+
 FORM FEED (FF): ||
+
+CARRIAGE RETURN (CR): ||
+
+SPACE: | |
+
+NEXT LINE (NEL): ||
+
+NO-BREAK SPACE: | |
+
+OGHAM SPACE MARK: | |
+
+MONGOLIAN VOWEL SEPARATOR: |᠎|
+
+EN QUAD: | |
+
+EM QUAD: | |
+
+EN SPACE: | |
+
+EM SPACE: | |
+
+THREE-PER-EM SPACE: | |
+
+FOUR-PER-EM SPACE: | |
+
+SIX-PER-EM SPACE: | |
+
+FIGURE SPACE: | |
+
 PUNCTUATION SPACE: | |
 
+THIN SPACE: | |
 
-NO-BREAK SPACE: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbbbbbbb
-NARROW NO-BREAK SPACE: ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc dddddddddddddddddddd
+HAIR SPACE: | |
+
+LINE SEPARATOR: | |
+
+PARAGRAPH SEPARATOR: | |
+
+NARROW NO-BREAK SPACE: | |
+
+MEDIUM MATHEMATICAL SPACE: | |
+
+IDEOGRAPHIC SPACE: |　|
+
