@@ -1138,7 +1138,14 @@ while(@input_files) {
   my $input_file_base = $input_file_name;
   $input_file_base =~ s/\.te?x(i|info)?$//;
 
-  my @htmlxref_dirs = @language_config_dirs;
+  my @htmlxref_dirs;
+  if (get_conf('TEST')) {
+    # to have reproducible tests, do not use system or user
+    # directories if TEST is set.
+    @htmlxref_dirs = File::Spec->catdir($curdir, '.texinfo');
+  } else {
+    @htmlxref_dirs = @language_config_dirs;
+  }
   if ($input_directory ne '.' and $input_directory ne '') {
     unshift @htmlxref_dirs, $input_directory;
   }
