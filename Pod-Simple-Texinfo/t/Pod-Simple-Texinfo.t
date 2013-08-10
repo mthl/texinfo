@@ -50,6 +50,10 @@ X<aaa>
 
 ', 'index in head');
 
+TODO: {
+
+local $TODO = 'Pod::Simple not ignoring correctly X<>';
+
 run_test ('=head1 NAME
 X<aaa>
 ',
@@ -58,6 +62,8 @@ X<aaa>
 @cindex aaa
 
 ', 'index in head node', 1, 2);
+
+}
 
 run_test ('=head1 NAME
 
