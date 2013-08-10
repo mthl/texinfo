@@ -1910,6 +1910,10 @@ sub _next_text($$$)
       my $fh = $input->{'fh'};
       my $line = <$fh>;
       while (defined($line)) {
+        # add an end of line if there is none at the end of file
+        if (eof($fh) and $line !~ /\n/) {
+          $line .= "\n";
+        }
         $line =~ s/\x{7F}.*\s*//;
         if ($self->{'CPP_LINE_DIRECTIVES'}
             # no cpp directives in ignored/macro/verbatim

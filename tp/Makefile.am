@@ -112,6 +112,7 @@ test_files = \
  t/include/fextext \
  t/include/file_with_cpp_lines.texi \
  t/include/file_with_xml_chars.texi \
+ t/include/include_noeol.texi \
  t/include/image.txt \
  t/include/image_encoded.txt \
  t/include/inc_@f--ile.texi \
@@ -133,24 +134,26 @@ test_files = \
  t/init/l2h.init \
  t/manual_tree.pl \
  t/test_utils.pl \
- t/input_files/delcomment.texi \
+ t/input_files/all_spaces.texi \
  t/input_files/char_latin1_utf8_in_refs.texi \
  t/input_files/char_latin1_latin1_in_refs.texi \
  t/input_files/char_latin2_latin2_in_refs.texi \
- t/input_files/sample_utf8.texi \
- t/input_files/japanese_utf8.texi \
- t/input_files/japanese_shift_jis.texi \
  t/input_files/chinese_mixed_with_en.texi \
- t/input_files/things_before_setfilename_no_element.texi \
- t/input_files/empty_lines_at_beginning_no_setfilename.texi \
- t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi \
- t/input_files/things_before_setfilename.texi \
  t/input_files/contents_at_document_begin.texi \
  t/input_files/contents_at_end_document_after_node.texi \
  t/input_files/contents_at_end_document.texi \
  t/input_files/contents_in_document.texi \
  t/input_files/contents_no_section.texi \
  t/input_files/cpp_lines.texi \
+ t/input_files/delcomment.texi \
+ t/input_files/empty_lines_at_beginning_no_setfilename.texi \
+ t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi \
+ t/input_files/japanese_utf8.texi \
+ t/input_files/japanese_shift_jis.texi \
+ t/input_files/non_break_spaces.texi \
+ t/input_files/sample_utf8.texi \
+ t/input_files/things_before_setfilename_no_element.texi \
+ t/input_files/things_before_setfilename.texi \
  #
 
 document_domain = $(PACKAGE)_document

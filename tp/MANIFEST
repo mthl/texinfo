@@ -188,6 +188,7 @@ t/include/file_with_xml_chars.texi
 t/include/image.txt
 t/include/image_encoded.txt
 t/include/inc_@f--ile.texi
+t/include/include_noeol.texi
 t/include/included_file_with_setfilename.texi
 t/include/this_is_a_long_unknown_file.png
 t/include/verbatim_encoded.texi
@@ -221,6 +222,7 @@ t/init/redefine_need.init
 t/init/t2h_singular.init
 t/init/test_directions.init
 t/init/test_renamed_nodes.init
+t/input_files/all_spaces.texi
 t/input_files/char_latin1_latin1_in_refs.texi
 t/input_files/char_latin1_utf8_in_refs.texi
 t/input_files/char_latin2_latin2_in_refs.texi
@@ -236,6 +238,7 @@ t/input_files/empty_lines_at_beginning_no_setfilename.texi
 t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi
 t/input_files/japanese_shift_jis.texi
 t/input_files/japanese_utf8.texi
+t/input_files/non_break_spaces.texi
 t/input_files/sample_utf8.texi
 t/input_files/things_before_setfilename.texi
 t/input_files/things_before_setfilename_no_element.texi
@@ -631,6 +634,7 @@ t/results/include/include_with_setfilename.pl
 t/results/include/macro_and_commands_in_early_commands.pl
 t/results/include/macro_definition_in_include.pl
 t/results/include/macro_in_early_commands.pl
+t/results/include/no_eol_in_included_file.pl
 t/results/include/simple.pl
 t/results/include/simple_no_eol.pl
 t/results/include/test_include_directories.pl
@@ -1015,6 +1019,8 @@ t/results/paragraph/two_lines.pl
 t/results/plaintext_tests/accent_command_punctuation.pl
 t/results/plaintext_tests/accents_in_var_enable_encoding.pl
 t/results/plaintext_tests/after_punctuation_character_in_command.pl
+t/results/plaintext_tests/all_spaces.pl
+t/results/plaintext_tests/all_spaces/res_plaintext/all_spaces.txt
 t/results/plaintext_tests/anchor_and_empty_lines.pl
 t/results/plaintext_tests/at_commands_glued_in_example.pl
 t/results/plaintext_tests/at_commands_glued_in_paragraph.pl
@@ -1052,6 +1058,8 @@ t/results/plaintext_tests/nested_multitable.pl
 t/results/plaintext_tests/no_empty_line_after_section.pl
 t/results/plaintext_tests/no_punctuation_commands.pl
 t/results/plaintext_tests/no_punctuation_commands_frenchspacing.pl
+t/results/plaintext_tests/non_break_spaces.pl
+t/results/plaintext_tests/non_break_spaces/res_plaintext/non_break_spaces.txt
 t/results/plaintext_tests/paragraphindent.pl
 t/results/plaintext_tests/protect_spaces_on_line.pl
 t/results/plaintext_tests/protected_space_end_line.pl

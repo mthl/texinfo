@@ -7,6 +7,11 @@
 	with a =back, as reported by newer Pod::Simple.  Report by Karl.
 	Mark as TODO the test that changes depending on Pod::Simple version.
 	Report by Karl.
+	* tp/Texinfo/Parser.pm(_next_text): add a end of line at the end of
+	files when there is one missing.  Found out in 
+	https://bugzilla.redhat.com/show_bug.cgi?id=950644
+	* tp/Makefile.am: reorder alphabetically test input files.  
+	Distribute missing test files.
 
 2013-08-09  Patrice Dumas  <pertusus@free.fr>
 
