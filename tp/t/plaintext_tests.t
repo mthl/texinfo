@@ -966,7 +966,9 @@ undef, {'test_file' => 'chinese_mixed_with_en.texi'}
 undef, {'test_file' => 'non_break_spaces.texi'}
 ],
 ['all_spaces',
-undef, {'test_file' => 'all_spaces.texi'}
+undef, {'test_file' => 'all_spaces.texi', 
+        'todo' => {'file_plaintext' => 
+                          'NEL handled differently between perl versions'}}
 ],
 );
 
