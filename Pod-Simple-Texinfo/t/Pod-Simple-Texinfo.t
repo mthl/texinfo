@@ -138,6 +138,8 @@ Para
 run_test('=over
 
 =item L</somewhere>
+
+=back
 ', '@table @asis
 @item @ref{somewhere}
 @anchor{somewhere}
@@ -176,6 +178,7 @@ run_test('=over
 
 =item a L<pod2latex|pod2latex>
 
+=back
 ', '@table @asis
 @item a @ref{, pod2text,, pod2text}
 @anchor{a pod2text}

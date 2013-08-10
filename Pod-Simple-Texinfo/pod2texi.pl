@@ -25,6 +25,7 @@ use File::Basename;
 use File::Spec;
 
 Getopt::Long::Configure("gnu_getopt");
+#use Pod::Simple::Debug (4);
 
 BEGIN
 {
