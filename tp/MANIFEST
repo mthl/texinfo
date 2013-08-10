@@ -388,6 +388,7 @@ t/results/converters_tests/complex_nestings.pl
 t/results/converters_tests/documentencoding_utf8_and_insertions.pl
 t/results/converters_tests/email_table_command_as_argument.pl
 t/results/converters_tests/empty_accent.pl
+t/results/converters_tests/enumerate_above_ten.pl
 t/results/converters_tests/footnote_no_number.pl
 t/results/converters_tests/footnote_no_number_separate.pl
 t/results/converters_tests/image_extension.pl
@@ -507,6 +508,7 @@ t/results/coverage_braces/footnote_ending_on_empty_line.pl
 t/results/coverage_braces/footnote_in_command_not_closed.pl
 t/results/coverage_braces/footnote_no_node.pl
 t/results/coverage_braces/footnote_not_closed.pl
+t/results/coverage_braces/form_feed_in_brace_commands.pl
 t/results/coverage_braces/format_on_first_footnote_line.pl
 t/results/coverage_braces/heading_in_footnote.pl
 t/results/coverage_braces/inforef_too_much_args.pl
@@ -572,6 +574,7 @@ t/results/def/space_in_def_for_index.pl
 t/results/def/wrong_braces_simple.pl
 t/results/def/wrong_braces_with_end_of_lines.pl
 t/results/docbook_tests/empty_quotation_with_arg_followed_by_quotation.pl
+t/results/docbook_tests/special_docbook_unnumbered.pl
 t/results/float/anchor_in_caption.pl
 t/results/float/cindex_in_caption.pl
 t/results/float/comment_space_comand_in_float.pl
@@ -849,6 +852,7 @@ t/results/macro/empty_macro_in_text_no_arg.pl
 t/results/macro/empty_macro_no_arg.pl
 t/results/macro/expand_two_same.pl
 t/results/macro/expansion_order.pl
+t/results/macro/form_feeds.pl
 t/results/macro/ifclear_in_macro.pl
 t/results/macro/ifset_and_end_isef_in_macro.pl
 t/results/macro/ifset_in_macro.pl
@@ -1277,7 +1281,9 @@ t/results/value/bad_syntax.pl
 t/results/value/comment_on_set_line.pl
 t/results/value/empty_set.pl
 t/results/value/empty_value_in_line.pl
+t/results/value/not_only_characters.pl
 t/results/value/set_flag_command_equivalent.pl
+t/results/value/set_form_feed.pl
 t/results/value/set_in_item_missing_line.pl
 t/results/value/set_on_item_line.pl
 t/results/value/simple.pl

@@ -64,6 +64,7 @@ Archiving
 * Cpio: (cpio).                 Copy-in-copy-out archiver to tape or disk.
 * Shar utilities: (sharutils).  Shell archiver, uuencode/uudecode.
 * Tar: (tar).                   Making tape (or disk) archives.
+* Xorrecord: (xorrecord).       Emulates CD/DVD/BD program cdrecord
 * Xorriso: (xorriso).           Burns ISO 9660 on CD, DVD, BD.
 * Xorrisofs: (xorrisofs).       Emulates ISO 9660 program mkisofs
 
