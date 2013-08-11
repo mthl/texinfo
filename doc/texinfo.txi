@@ -1335,6 +1335,36 @@ any number of hyphens in the source remain as they are in literal
 contexts, such as @code{@@code} and @code{@@example}.
 
 @item
+@cindex Form feed characters
+@cindex @kbd{CTRL-l}
+Form feed (@kbd{CTRL-l}) characters in the input are handled as
+follows:
+
+@table @asis
+@item PDF/DVI
+In normal text, treated as ending any open paragraph; essentially
+ignored between paragraphs.
+
+@item Info
+Output as-is, as part of the normal text stream.
+
+@item HTML
+Written as a numeric entity except contexts where spaces are ignored;
+for example, in @samp{@@footnote@{ ^L foo@}}, the form feed is
+ignored.
+
+@item XML
+Keep them everywhere; in attributes, escaped as @samp{\f}; also,
+@samp{\} is escaped as @samp{\\} and newline as @samp{\n}.
+
+@item Docbook
+Completely removed, as they are not allowed.
+@end table
+
+As you can see, because of these differing requirements of the output
+formats, it's not possible to use form feeds completely portably.
+
+@item
 @cindex Tabs; don't use!
 @strong{Caution:} Last, do not use tab characters in a Texinfo file!
 (Except perhaps in verbatim modes.)  @TeX{} uses variable-width fonts,
@@ -7318,6 +7348,8 @@ Here is a list of the recommended names for keys:
 @cindex Keys, recommended names
 @cindex Names recommended for keys
 @cindex Abbreviations for keys
+@cindex Control keys, specifying
+@cindex Meta keys, specifying
 
 @quotation
 @table @t
@@ -19086,8 +19118,8 @@ Leading or doubled colons are not treated specially.
 When you create your own @file{dir} file for use with
 @code{Info-directory-list} or @env{INFOPATH}, it's easiest to start by
 copying an existing @file{dir} file and replace all the text after the
-@samp{* Menu:} with your desired entries.  That way, the punctuation and
-special CTRL-_ characters that Info needs will be present.
+@samp{* Menu:} with your desired entries.  That way, the punctuation
+and special @kbd{CTRL-_} characters that Info needs will be present.
 
 As one final alternative, which works only with Emacs Info, you can
 change the @code{Info-directory-list} variable.  For example:
