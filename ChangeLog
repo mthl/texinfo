@@ -2,6 +2,9 @@
 
 	* tp/Texinfo/Convert/HTML.pm(output): sort when processing renamed
 	nodes to have a reproducible error output.  Report by Karl.
+	* Texinfo/Convert/Converter.pm(_informative_command_value,
+	_informative_command): do not set informative command value if 
+	value is not defined.
 
 2013-08-10  Patrice Dumas  <pertusus@free.fr>
 
