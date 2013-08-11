@@ -7071,7 +7071,7 @@ sub output($$)
       $parser_for_renamed_nodes = $self->{'parser'}->parser();
     }
     my %warned_new_node;
-    foreach my $old_node_name (keys(%{$self->{'renamed_nodes'}})) {
+    foreach my $old_node_name (sort(keys(%{$self->{'renamed_nodes'}}))) {
       my $parsed_old_node = $self->_parse_node_and_warn_external(
          $old_node_name, $parser_for_renamed_nodes,
          $self->{'renamed_nodes_lines'}->{$old_node_name},
