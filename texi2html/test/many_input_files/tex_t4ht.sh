@@ -1,5 +1,7 @@
 #! /bin/sh
 
+LC_ALL=C; export LC_ALL
+
 basename=tex_t4ht
 diffs_dir=diffs
 logfile=$basename.log
@@ -26,8 +28,8 @@ fi
 
 [ -d $basename ] && rm -rf $basename
 mkdir $basename
-echo "perl -w -x $srcdir/../../texi2html.pl --set-init-var 'TEST 1' --set-init-var 'L2H_TMP $tmp_dir' --conf-dir $srcdir/../../maintained_extra --init-file tex4ht.init --expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2" >> $logfile
-perl -w -x $srcdir/../../texi2html.pl --set-init-var 'TEST 1' --set-init-var "L2H_TMP $tmp_dir" --conf-dir $srcdir/../../maintained_extra --init tex4ht.init --expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2
+echo "perl -w -x $srcdir/../../texi2html.pl --set-init-var 'TEST 1' --set-init-var 'L2H_TMP $tmp_dir' --conf-dir $srcdir/../../maintained_extra --init-file tex4ht.pm --expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2" >> $logfile
+perl -w -x $srcdir/../../texi2html.pl --set-init-var 'TEST 1' --set-init-var "L2H_TMP $tmp_dir" --conf-dir $srcdir/../../maintained_extra --init tex4ht.pm --expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2
 
 return_code=0
 ret=$?

@@ -4248,7 +4248,9 @@ if ($T2H_VERBOSE)
     print STDERR "\n";
 }
 
-$T2H_DEBUG |= $DEBUG_TEXI if (get_conf('DUMP_TEXI'));
+# The following lines seems to be incorrect.  We don't wat to set T2H_DEBUG
+# everytime DUMP_TEXI is set.
+#$T2H_DEBUG |= $DEBUG_TEXI if (get_conf('DUMP_TEXI'));
 
 # no user provided USE_UNICODE, use configure provided
 if (!defined(get_conf('USE_UNICODE')))
@@ -4461,6 +4463,10 @@ sub prepare_htmlxref($)
 {
     my $input_directory = shift; 
     my @htmlxref_dirs = @language_config_dirs;
+    if (get_conf('TEST'))
+    {
+        @htmlxref_dirs = ('./.texinfo');
+    }
     if ($input_directory ne '.' and $input_directory ne '')
     {
         unshift @htmlxref_dirs, $input_directory;
@@ -17152,7 +17158,8 @@ while(@input_files)
 
    collect_renamed_nodes() if (get_conf('RENAMED_NODES_REDIRECTIONS'));
 
-   dump_texi($texi_lines, 'texi', $lines_numbers) if ($T2H_DEBUG & $DEBUG_TEXI);
+   dump_texi($texi_lines, 'texi', $lines_numbers) if (($T2H_DEBUG & $DEBUG_TEXI)
+                                                      or get_conf('DUMP_TEXI'));
    if (defined(get_conf('MACRO_EXPAND')))
    {
        my @texi_lines = (@$first_texi_lines, @$texi_lines);
@@ -17274,7 +17281,7 @@ while(@input_files)
        &$handler;
    }
 
-   if ($T2H_DEBUG & $DEBUG_TEXI)
+   if (($T2H_DEBUG & $DEBUG_TEXI) or get_conf('DUMP_TEXI'))
    {
       dump_texi($doc_lines, 'first', $doc_numbers);
       if (defined(get_conf('MACRO_EXPAND') and get_conf('DUMP_TEXI')))

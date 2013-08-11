@@ -1,6 +1,9 @@
-EXTRA_DIST = $(TESTS) indices_res index_split_res tex_l2h_res tex_t4ht_res
+html_tex_tests = tex_l2h.sh tex_t4ht.sh
 
-TESTS = indices.sh tex_l2h.sh tex_t4ht.sh
+EXTRA_DIST = $(TESTS) indices_res index_split_res tex_l2h_res tex_t4ht_res $(html_tex_tests)
+
+TESTS = indices.sh 
+# $(html_tex_tests)
 #TESTS = tex_l2h.sh tex_t4ht.sh
 
 test_dirs = indices index_split tex_l2h tex_t4ht
