@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_PREREQ(2.53)
+AC_PREREQ(2.60)
 AC_INIT([texi2html], [5.0], [bug-texinfo@gnu.org])
 dnl 1.9 because we need tar-ustar, and tar-ustar because we have long 
 dnl filenames for some test files
@@ -17,18 +17,12 @@ dnl not fully used. Set to whatever gettextize inserts.
 AM_GNU_GETTEXT_VERSION([0.18.3])
 
 dnl Misc variable settings
-PACKAGE_DATE=`${SHELL} "$srcdir"/mdate-sh "$srcdir"/configure.ac`
-AC_SUBST([PACKAGE_DATE])
+dnl PACKAGE_DATE=`${SHELL} "$srcdir"/mdate-sh "$srcdir"/configure.ac`
+dnl AC_SUBST([PACKAGE_DATE])
 
 dnl Checks for programs.
 AC_PROG_LN_S
-AM_PROG_MKDIR_P
-
-# Happens with some automake version
-if test z"$MKDIR_P" = 'z'; then
-  MKDIR_P=$mkdir_p
-  AC_SUBST([MKDIR_P])
-fi
+AC_PROG_MKDIR_P
 
 AC_ARG_VAR([PERL], [The path to the 'perl' executable.])
 AC_PATH_PROG([PERL], [perl], [/usr/bin/env perl], [/opt/perl5/bin:"$PATH"])

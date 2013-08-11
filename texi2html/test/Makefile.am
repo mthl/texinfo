@@ -57,7 +57,7 @@ all-checks: check long-check
 all-local:
 	for dir in $(htmlxref_cnf_tests); do \
 		if [ -f "$(srcdir)/$$dir/htmlxref.cnf-texinfo" ]; then \
-			$(mkdir_p) $$dir/.texinfo/ ; \
+			$(MKDIR_P) $$dir/.texinfo/ ; \
 			${INSTALL_DATA} "$(srcdir)/$$dir/htmlxref.cnf-texinfo" $$dir/.texinfo/ ; \
 		fi; \
 		if [ -f $(srcdir)/$$dir/htmlxref.cnf-ref ]; then \
