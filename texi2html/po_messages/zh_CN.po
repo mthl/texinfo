@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2011-09-25 20:41+0200\n"
+"POT-Creation-Date: 2013-08-11 14:30+0200\n"
 "PO-Revision-Date: 2009-05-21 15:08中国标准时间\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -17,61 +17,61 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: texi2html/texi2html.pl:2392
+#: texi2html.pl:2392
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "试用“%s --help”以获取更多信息。\n"
 
-#: texi2html/texi2html.pl:2495
+#: texi2html.pl:2495
 #, fuzzy, perl-format
 msgid "%s is not a valid language code"
 msgstr "%s 在 ISO 639 语言编码中是无效的"
 
-#: texi2html/texi2html.pl:2499
+#: texi2html.pl:2499
 #, fuzzy, perl-format
 msgid "%s is not a valid region code"
 msgstr "%s 在 ISO 639 语言编码中是无效的"
 
-#: texi2html/texi2html.pl:2569
+#: texi2html.pl:2569
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr "%s：--footnote-style 的参数必须为“separate”或“end”，而不是“%s”。\n"
 
-#: texi2html/texi2html.pl:2574
+#: texi2html.pl:2574
 #, fuzzy, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr "%s：--footnote-style 的参数必须为“separate”或“end”，而不是“%s”。\n"
 
-#: texi2html/texi2html.pl:2625
+#: texi2html.pl:2625
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr "%s：--paragraph-indent 的参数必须为数值/“none”/“asis”，而不是“%s”。\n"
 
-#: texi2html/texi2html.pl:2629
+#: texi2html.pl:2629
 #, fuzzy, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr "%s：--paragraph-indent 的参数必须为数值/“none”/“asis”，而不是“%s”。\n"
 
-#: texi2html/texi2html.pl:2649
+#: texi2html.pl:2649
 #, perl-format
 msgid "unrecognized encoding name `%s'"
 msgstr "不能识别的编码名称“%s”"
 
-#: texi2html/texi2html.pl:2666
+#: texi2html.pl:2666
 #, fuzzy, perl-format
 msgid "Encoding %s certainly poorly supported"
 msgstr "抱歉，不支持编码“%s”"
 
-#: texi2html/texi2html.pl:2790 texi2html/texi2html.pl:2794
+#: texi2html.pl:2795 texi2html.pl:2799
 msgid "translation"
 msgstr ""
 
-#: texi2html/texi2html.pl:3828
+#: texi2html.pl:3833
 #, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "用法：%s [选项]... TEXINFO-文件...\n"
 
-#: texi2html/texi2html.pl:3830
+#: texi2html.pl:3835
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -79,7 +79,7 @@ msgstr ""
 "将 Texinfo 源文件转换为其它各种格式，默认转换为适于\n"
 "由 Emacs 或独立 GNU Info 在线浏览的 Info 文件。\n"
 
-#: texi2html/texi2html.pl:3833
+#: texi2html.pl:3838
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -107,7 +107,7 @@ msgstr ""
 "  -v, --verbose               解释都做了些什么。\n"
 "      --version               显示版本信息并退出。\n"
 
-#: texi2html/texi2html.pl:3847
+#: texi2html.pl:3852
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -121,7 +121,7 @@ msgstr ""
 "      --xml                 输出 XML (TexinfoML) 而不是 Info。\n"
 "      --plaintext           输出普通文本而不是 Info。\n"
 
-#: texi2html/texi2html.pl:3853
+#: texi2html.pl:3858
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -160,7 +160,7 @@ msgstr ""
 "      --number-sections     输出章节编号。\n"
 "  -o, --output=FILE         输出到文件 FILE (如果是分割的 HTML 则为目录)。\n"
 
-#: texi2html/texi2html.pl:3870
+#: texi2html.pl:3875
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -194,7 +194,7 @@ msgstr ""
 "                                “asis”，保留现有的对齐。\n"
 "      --split-size=NUM        在大小 NUM 的时候拆分 Info 文件 (默认为 %d)。\n"
 
-#: texi2html/texi2html.pl:3885
+#: texi2html.pl:3890
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -215,13 +215,13 @@ msgstr ""
 "      --transliterate-file-names\n"
 "                              以 ASCII 字义生成文件名。\n"
 
-#: texi2html/texi2html.pl:3895
+#: texi2html.pl:3900
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: texi2html/texi2html.pl:3905
+#: texi2html.pl:3910
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -238,7 +238,7 @@ msgstr ""
 "  -P DIR                         将 DIR 追加到 @include 搜索路径之前。\n"
 "  -U VAR                         取消变量 VAR 的定义，就象 @clear。\n"
 
-#: texi2html/texi2html.pl:3912
+#: texi2html.pl:3917
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -269,7 +269,7 @@ msgstr ""
 "  --no-ifplaintext  不要处理 @ifplaintext 文本。\n"
 "  --no-iftex        不要处理 @iftex 和 @tex 文本。\n"
 
-#: texi2html/texi2html.pl:3929
+#: texi2html.pl:3934
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating HTML, --ifhtml is on and the others are off;\n"
@@ -283,7 +283,7 @@ msgstr ""
 "  如果生成普通文本，则 --ifplaintext 默认开启而其它默认关闭；\n"
 "  如果生成 XML，则 --ifxml 默认开启而其它默认关闭。\n"
 
-#: texi2html/texi2html.pl:3935
+#: texi2html.pl:3940
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -309,7 +309,7 @@ msgstr ""
 "  makeinfo --number-sections foo.texi   输出带有编号的节的 Info\n"
 "  makeinfo --no-split foo.texi          输出单个 Info 文件而不论大小\n"
 
-#: texi2html/texi2html.pl:3946
+#: texi2html.pl:3951
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -319,7 +319,7 @@ msgstr ""
 "一般的问题和讨论请发送到 help-texinfo@gnu.org。\n"
 "Texinfo 主页：http://www.gnu.org/software/texinfo/"
 
-#: texi2html/texi2html.pl:4026
+#: texi2html.pl:4031
 #, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -334,851 +334,842 @@ msgstr ""
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 
-#: texi2html/texi2html.pl:4056
+#: texi2html.pl:4061
 #, perl-format
 msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
 msgstr "%s: 忽略不可辨认的 TEXINFO_OUTPUT_FORMAT 值“%s”。\n"
 
-#: texi2html/texi2html.pl:4090
+#: texi2html.pl:4095
 #, perl-format
 msgid "when generating %s, only one input FILE may be specified with -o"
 msgstr ""
 
-#: texi2html/texi2html.pl:4499
+#: texi2html.pl:4510
 msgid "Missing type"
 msgstr ""
 
-#: texi2html/texi2html.pl:4504
+#: texi2html.pl:4515
 #, fuzzy, perl-format
 msgid "Unrecognized type: %s"
 msgstr "不能识别的编码名称“%s”"
 
-#: texi2html/texi2html.pl:4578
+#: texi2html.pl:4589
 #, perl-format
 msgid "Ignoring splitting for format %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:4674
+#: texi2html.pl:4685
 #, fuzzy, perl-format
 msgid "Cannot split output %s"
 msgstr "无法创建输出文件“%s”"
 
-#: texi2html/texi2html.pl:4749
+#: texi2html.pl:4760
 #, fuzzy, perl-format
 msgid "Can't create directories `%s' or `%s': %s"
 msgstr "无法创建目录“%s”：%s"
 
-#: texi2html/texi2html.pl:4755
+#: texi2html.pl:4766
 #, perl-format
 msgid "Can't create directory `%s': %s"
 msgstr "无法创建目录“%s”：%s"
 
-#: texi2html/texi2html.pl:4774
+#: texi2html.pl:4785
 msgid "current directory not writable"
 msgstr ""
 
-#: texi2html/texi2html.pl:4778
+#: texi2html.pl:4789
 #, fuzzy, perl-format
 msgid "%s not writable"
 msgstr "忽略多列表格外的 @tab"
 
-#: texi2html/texi2html.pl:5126
+#: texi2html.pl:5137
 #, fuzzy
 msgid " end of file"
 msgstr "寻找文件："
 
-#: texi2html/texi2html.pl:5491
+#: texi2html.pl:5502
 msgid "Superfluous arguments for node"
 msgstr ""
 
-#: texi2html/texi2html.pl:5499
+#: texi2html.pl:5510
 #, fuzzy, perl-format
 msgid "Node `%s' previously defined %s"
 msgstr "节点“%s”在前面的(第 %d 行)定义"
 
-#: texi2html/texi2html.pl:5504 texi2html/texi2html.pl:13289
-#: texi2html/texi2html.pl:13794
+#: texi2html.pl:5515 texi2html.pl:13300 texi2html.pl:13805
 #, perl-format
 msgid "Syntax for an external node used for `%s'"
 msgstr ""
 
-#: texi2html/texi2html.pl:5630
+#: texi2html.pl:5641
 #, fuzzy, perl-format
 msgid "@%s requires an argument"
 msgstr "%c%s 需要一个名字"
 
-#: texi2html/texi2html.pl:5721 texi2html/texi2html.pl:15854
+#: texi2html.pl:5732 texi2html.pl:15865
 #, fuzzy, perl-format
 msgid "Expected @end %s"
 msgstr "应为“%s”"
 
-#: texi2html/texi2html.pl:5770
+#: texi2html.pl:5781
 #, perl-format
 msgid "Translations for `%s' not found. Reverting to `%s'"
 msgstr ""
 
-#: texi2html/texi2html.pl:5802 texi2html/texi2html.pl:5813
-#: texi2html/texi2html.pl:10386
+#: texi2html.pl:5813 texi2html.pl:5824 texi2html.pl:10397
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s 需要一个名字"
 
-#: texi2html/texi2html.pl:5825
+#: texi2html.pl:5836
 #, fuzzy, perl-format
 msgid "@%s should only accept a @-command as argument, not `%s'"
 msgstr "使用花括号将一个命令用作 @%s 的参数"
 
-#: texi2html/texi2html.pl:5863
+#: texi2html.pl:5874
 #, fuzzy, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr "%s：--paragraph-indent 的参数必须为数值/“none”/“asis”，而不是“%s”。\n"
 
-#: texi2html/texi2html.pl:5878
+#: texi2html.pl:5889
 #, fuzzy, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr "%s：--paragraph-indent 的参数必须为数值/“none”/“asis”，而不是“%s”。\n"
 
-#: texi2html/texi2html.pl:5889
+#: texi2html.pl:5900
 #, perl-format
 msgid "Expected @%s on or off, not `%s'"
 msgstr "应当 @%s 开启或关闭，而不是“%s”"
 
-#: texi2html/texi2html.pl:5900
+#: texi2html.pl:5911
 #, fuzzy, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr "%s：--footnote-style 的参数必须为“separate”或“end”，而不是“%s”。\n"
 
-#: texi2html/texi2html.pl:5924
+#: texi2html.pl:5935
 #, fuzzy, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr "%s：--footnote-style 的参数必须为“separate”或“end”，而不是“%s”。\n"
 
-#: texi2html/texi2html.pl:5942 texi2html/texi2html.pl:6160
-#: texi2html/texi2html.pl:6188 texi2html/texi2html.pl:6253
-#: texi2html/texi2html.pl:6417 texi2html/texi2html.pl:13222
-#: texi2html/texi2html.pl:14620
+#: texi2html.pl:5953 texi2html.pl:6171 texi2html.pl:6199 texi2html.pl:6264
+#: texi2html.pl:6428 texi2html.pl:13233 texi2html.pl:14631
 #, perl-format
 msgid "Bad argument to @%s: %s"
 msgstr "@%s 的错误参数: %s"
 
-#: texi2html/texi2html.pl:5973
+#: texi2html.pl:5984
 #, perl-format
 msgid "Encoding %s is not a canonical texinfo encoding"
 msgstr ""
 
-#: texi2html/texi2html.pl:5992
+#: texi2html.pl:6003
 #, fuzzy, perl-format
 msgid "@%s arg must be an encoding"
 msgstr "%s：--footnote-style 的参数必须为“separate”或“end”，而不是“%s”。\n"
 
-#: texi2html/texi2html.pl:6003 texi2html/texi2html.pl:6014
+#: texi2html.pl:6014 texi2html.pl:6025
 #, fuzzy, perl-format
 msgid "Bad argument to @%s"
 msgstr "%c%s 的错误参数"
 
-#: texi2html/texi2html.pl:6133
+#: texi2html.pl:6144
 #, fuzzy, perl-format
 msgid "Unknown from index `%s' in @%s"
 msgstr "未知的索引“%s”"
 
-#: texi2html/texi2html.pl:6135
+#: texi2html.pl:6146
 #, fuzzy, perl-format
 msgid "Unknown to index name `%s' in @%s"
 msgstr "未知的索引“%s”"
 
-#: texi2html/texi2html.pl:6170
+#: texi2html.pl:6181
 #, perl-format
 msgid "Reserved index name %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:6200
+#: texi2html.pl:6211
 #, fuzzy, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr "%s：--footnote-style 的参数必须为“separate”或“end”，而不是“%s”。\n"
 
-#: texi2html/texi2html.pl:6211
+#: texi2html.pl:6222
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "仅支持 @%s 10 或 11，而不是“%s”"
 
-#: texi2html/texi2html.pl:6241
+#: texi2html.pl:6252
 #, fuzzy, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr "%s：--footnote-style 的参数必须为“separate”或“end”，而不是“%s”。\n"
 
-#: texi2html/texi2html.pl:6301
+#: texi2html.pl:6312
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "在“@titlepage”和“@quotation”环境变量外 @%s 无意义"
 
-#: texi2html/texi2html.pl:6369
+#: texi2html.pl:6380
 #, perl-format
 msgid "@sp requires a positive numeric argument, not `%s'"
 msgstr "@sp 需要正数参数，而不是“%s”"
 
-#: texi2html/texi2html.pl:6389 texi2html/texi2html.pl:16980
+#: texi2html.pl:6400 texi2html.pl:16991
 #, fuzzy, perl-format
 msgid "Cannot read %s: %s"
 msgstr "无法创建目录“%s”：%s"
 
-#: texi2html/texi2html.pl:6412 texi2html/texi2html.pl:13217
+#: texi2html.pl:6423 texi2html.pl:13228
 #, fuzzy, perl-format
 msgid "@%s: Cannot find %s"
 msgstr "无法寻找“%s”。"
 
-#: texi2html/texi2html.pl:6592
+#: texi2html.pl:6603
 #, perl-format
 msgid "Empty node name after expansion `%s'"
 msgstr ""
 
-#: texi2html/texi2html.pl:7225
+#: texi2html.pl:7236
 #, fuzzy, perl-format
 msgid "%s reference to nonexistent `%s'"
 msgstr "未引用的节点“%s”"
 
-#: texi2html/texi2html.pl:7296
+#: texi2html.pl:7307
 #, perl-format
 msgid "unreferenced node `%s'"
 msgstr "未引用的节点“%s”"
 
-#: texi2html/texi2html.pl:7350
+#: texi2html.pl:7361
 #, perl-format
 msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr "尽管节点“%s”是“%s”的上层节点，但缺少相关的菜单项"
 
-#: texi2html/texi2html.pl:7368
+#: texi2html.pl:7379
 #, perl-format
 msgid "For `%s', up in menu `%s' and up `%s' don't match"
 msgstr ""
 
-#: texi2html/texi2html.pl:7421
+#: texi2html.pl:7432
 #, perl-format
 msgid "No node following `%s' in menu, but `%s' follows in sectioning"
 msgstr ""
 
-#: texi2html/texi2html.pl:7422
+#: texi2html.pl:7433
 #, perl-format
 msgid "Node following `%s' in menu `%s' and in sectioning `%s' differ"
 msgstr ""
 
-#: texi2html/texi2html.pl:8457
+#: texi2html.pl:8468
 #, perl-format
 msgid "Unknown index `%s'"
 msgstr "未知的索引“%s”"
 
-#: texi2html/texi2html.pl:8462 texi2html/formats/info.pm:3075
+#: texi2html.pl:8473 formats/info.pm:3075
 #, perl-format
 msgid "Entry for index `%s' outside of any node"
 msgstr "关于索引“%s”的条目超出了所有节点"
 
-#: texi2html/texi2html.pl:8925
+#: texi2html.pl:8936
 #, perl-format
 msgid "@%s after the first element"
 msgstr ""
 
-#: texi2html/texi2html.pl:9391
+#: texi2html.pl:9402
 #, fuzzy, perl-format
 msgid "File empty for renamed node `%s'"
 msgstr "未引用的节点“%s”"
 
-#: texi2html/texi2html.pl:9395
+#: texi2html.pl:9406
 #, perl-format
 msgid "Node to be renamed as, `%s' not found"
 msgstr ""
 
-#: texi2html/texi2html.pl:9399
+#: texi2html.pl:9410
 #, fuzzy, perl-format
 msgid "Node `%s' that is to be renamed exists "
 msgstr "节点“%s”已被引用了 %d 次"
 
-#: texi2html/texi2html.pl:9599
+#: texi2html.pl:9610
 #, perl-format
 msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
 msgstr "%s：由于错误删除宏输出文件“%s”；用 --force 保留宏输出。\n"
 
-#: texi2html/texi2html.pl:9603
+#: texi2html.pl:9614
 #, fuzzy, perl-format
 msgid "%s: Removing output files due to errors; use --force to preserve.\n"
 msgstr "%s：由于错误删除宏输出文件“%s”；用 --force 保留宏输出。\n"
 
-#: texi2html/texi2html.pl:9650
+#: texi2html.pl:9661
 msgid "Too many errors!  Gave up.\n"
 msgstr "过多的错误！放弃。\n"
 
-#: texi2html/texi2html.pl:9742
+#: texi2html.pl:9753
 #, fuzzy, perl-format
 msgid "%s:%d: warning: %s (possibly involving @%s)\n"
 msgstr "%s：%d：警告："
 
-#: texi2html/texi2html.pl:9746
+#: texi2html.pl:9757
 #, fuzzy, perl-format
 msgid "%s:%d: warning: %s\n"
 msgstr "%s：%d：警告："
 
-#: texi2html/texi2html.pl:9779
+#: texi2html.pl:9790
 #, perl-format
 msgid "(in %s l. %d possibly involving @%s)"
 msgstr ""
 
-#: texi2html/texi2html.pl:9783
+#: texi2html.pl:9794
 #, perl-format
 msgid "(l. %d possibly involving @%s)"
 msgstr ""
 
-#: texi2html/texi2html.pl:9788
+#: texi2html.pl:9799
 #, fuzzy, perl-format
 msgid "(in %s l. %d)"
 msgstr "(行 %*d)"
 
-#: texi2html/texi2html.pl:9792
+#: texi2html.pl:9803
 #, fuzzy, perl-format
 msgid "(l. %d)"
 msgstr "(行 %*d)"
 
-#: texi2html/texi2html.pl:9949
+#: texi2html.pl:9960
 #, perl-format
 msgid "Too much '}' in @%s"
 msgstr ""
 
-#: texi2html/texi2html.pl:9959
+#: texi2html.pl:9970
 #, fuzzy, perl-format
 msgid "Missing `}' on @%s line"
 msgstr "@def 的参数遗漏了“}”"
 
-#: texi2html/texi2html.pl:10109
+#: texi2html.pl:10120
 #, fuzzy, perl-format
 msgid "Anchor `%s' ignored in %s expanded more than once"
 msgstr "Anchor“%s”和节点“%s”映射到同一个文件名"
 
-#: texi2html/texi2html.pl:10460
+#: texi2html.pl:10471
 #, fuzzy, perl-format
 msgid "Region %s inside region %s is not allowed"
 msgstr "脚注内的脚注是不允许的"
 
-#: texi2html/texi2html.pl:10739
+#: texi2html.pl:10750
 #, perl-format
 msgid "column fraction not a number: %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:10760
+#: texi2html.pl:10771
 #, perl-format
 msgid "ignoring stray text `%s' after @multitable"
 msgstr "忽略 @multitable 之后的过剩文本“%s”"
 
-#: texi2html/texi2html.pl:10782
+#: texi2html.pl:10793
 #, perl-format
 msgid "Too many %s closed"
 msgstr ""
 
-#: texi2html/texi2html.pl:10847 texi2html/texi2html.pl:10874
-#: texi2html/texi2html.pl:14483
+#: texi2html.pl:10858 texi2html.pl:10885 texi2html.pl:14494
 #, perl-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "“@end”需要“%s”，但看到“%s”"
 
-#: texi2html/texi2html.pl:10852 texi2html/formats/info.pm:899
+#: texi2html.pl:10863 formats/info.pm:899
 #, perl-format
 msgid "@%s has text but no @item"
 msgstr ""
 
-#: texi2html/texi2html.pl:11012
+#: texi2html.pl:11023
 #, fuzzy, perl-format
 msgid "Unknown format %s"
 msgstr "未知的命令“%s”"
 
-#: texi2html/texi2html.pl:11036
+#: texi2html.pl:11047
 #, perl-format
 msgid "mismatched @end %s with @%s"
 msgstr "@end %s 和 @%s 不匹配"
 
-#: texi2html/texi2html.pl:11169
+#: texi2html.pl:11180
 #, perl-format
 msgid "Must be in `@%s' environment to use `@%s'"
 msgstr "必须在“@%s”环境变量中使用“@%s”"
 
-#: texi2html/texi2html.pl:11228 texi2html/texi2html.pl:11666
+#: texi2html.pl:11239 texi2html.pl:11677
 #, fuzzy, perl-format
 msgid "@%s (argument nr %d)"
 msgstr "@%s 的参数错误"
 
-#: texi2html/texi2html.pl:11309
+#: texi2html.pl:11320
 #, perl-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s 需要一个参数: %citem 的格式化参数"
 
-#: texi2html/texi2html.pl:11312
+#: texi2html.pl:11323
 #, perl-format
 msgid "prepended for @%s"
 msgstr ""
 
-#: texi2html/texi2html.pl:11328
+#: texi2html.pl:11339
 #, fuzzy
 msgid "empty multitable"
 msgstr "忽略多列表格外的 @tab"
 
-#: texi2html/texi2html.pl:11338
+#: texi2html.pl:11349
 #, perl-format
 msgid "@columnfraction (argument nr %d)"
 msgstr ""
 
-#: texi2html/texi2html.pl:11526 texi2html/texi2html.pl:11540
+#: texi2html.pl:11537 texi2html.pl:11551
 msgid "node name in menu"
 msgstr ""
 
-#: texi2html/texi2html.pl:11527
+#: texi2html.pl:11538
 msgid "normalized node name in menu"
 msgstr ""
 
-#: texi2html/texi2html.pl:11533
+#: texi2html.pl:11544
 msgid "menu entry name"
 msgstr ""
 
-#: texi2html/texi2html.pl:11568
+#: texi2html.pl:11579
 #, fuzzy, perl-format
 msgid "Menu reference to nonexistent node `%s'"
 msgstr "未引用的节点“%s”"
 
-#: texi2html/texi2html.pl:11642
+#: texi2html.pl:11653
 #, fuzzy, perl-format
 msgid "First argument to @%s may not be empty"
 msgstr "@inforef 的第一个参数不能为空"
 
-#: texi2html/texi2html.pl:11779
+#: texi2html.pl:11790
 #, perl-format
 msgid "@%s not in text (in anchor, node, section...)"
 msgstr ""
 
-#: texi2html/texi2html.pl:11791 texi2html/texi2html.pl:14562
+#: texi2html.pl:11802 texi2html.pl:14573
 msgid "@listoffloats @float type"
 msgstr ""
 
-#: texi2html/texi2html.pl:11810
+#: texi2html.pl:11821
 #, fuzzy, perl-format
 msgid "@%s reference to nonexistent node `%s'"
 msgstr "未引用的节点“%s”"
 
-#: texi2html/texi2html.pl:11893
+#: texi2html.pl:11904
 #, perl-format
 msgid "@%s not meaningful outside `@float' environment"
 msgstr "“@float”环境变量外的 @%s 是没有意义的"
 
-#: texi2html/texi2html.pl:11951
+#: texi2html.pl:11962
 msgid "@float style"
 msgstr ""
 
-#: texi2html/texi2html.pl:12083 texi2html/texi2html.pl:12084
+#: texi2html.pl:12094 texi2html.pl:12095
 msgid "@image base name"
 msgstr ""
 
-#: texi2html/texi2html.pl:12093 texi2html/texi2html.pl:12094
+#: texi2html.pl:12104 texi2html.pl:12105
 msgid "@image extension"
 msgstr ""
 
-#: texi2html/texi2html.pl:12101
+#: texi2html.pl:12112
 #, fuzzy
 msgid "@image file name"
 msgstr "@image 文件“%s”不可读：%s"
 
-#: texi2html/texi2html.pl:12123
+#: texi2html.pl:12134
 msgid "@image alt text"
 msgstr ""
 
-#: texi2html/texi2html.pl:12206
+#: texi2html.pl:12217
 #, fuzzy, perl-format
 msgid "Macro `%s' called with too many args"
 msgstr "在第 %2$d 行中以过多的参数调用宏“%1$s”"
 
-#: texi2html/texi2html.pl:12230
+#: texi2html.pl:12241
 #, fuzzy, perl-format
 msgid "\\ in macro expansion followed `%s' instead of parameter name or \\"
 msgstr "\\ 以带有“%s”的宏展开式代替参数名称"
 
-#: texi2html/texi2html.pl:12425
+#: texi2html.pl:12436
 #, fuzzy, perl-format
 msgid "No index prefix found for @%s"
 msgstr "找不到含有“%s”的索引\n"
 
-#: texi2html/texi2html.pl:12847 texi2html/texi2html.pl:13379
-#: texi2html/texi2html.pl:14410 texi2html/texi2html.pl:14430
-#: texi2html/texi2html.pl:14472
+#: texi2html.pl:12858 texi2html.pl:13390 texi2html.pl:14421 texi2html.pl:14441
+#: texi2html.pl:14483
 #, perl-format
 msgid "Unmatched `%c%s'"
 msgstr "未匹配的“%c%s”"
 
-#: texi2html/texi2html.pl:12907 texi2html/texi2html.pl:14692
+#: texi2html.pl:12918 texi2html.pl:14703
 #, fuzzy, perl-format
 msgid "@%s not allowed in argument to @%s"
 msgstr "参数中不允许 @item 改为 @itemize"
 
-#: texi2html/texi2html.pl:12935
+#: texi2html.pl:12946
 #, perl-format
 msgid "macro `%s' previously defined"
 msgstr "宏“%s”已在前面定义"
 
-#: texi2html/texi2html.pl:12936
+#: texi2html.pl:12947
 #, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "这里是“%s”前面的定义"
 
-#: texi2html/texi2html.pl:12969
+#: texi2html.pl:12980
 #, perl-format
 msgid "Macro definition without macro name: %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:13010
+#: texi2html.pl:13021
 #, perl-format
 msgid "undefined flag: %s"
 msgstr "未定义的标识: %s"
 
-#: texi2html/texi2html.pl:13022
+#: texi2html.pl:13033
 msgid "Bad syntax for @value"
 msgstr ""
 
-#: texi2html/texi2html.pl:13059
+#: texi2html.pl:13070
 #, perl-format
 msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr ""
 
-#: texi2html/texi2html.pl:13082
+#: texi2html.pl:13093
 #, perl-format
 msgid "@%s without associated character"
 msgstr ""
 
-#: texi2html/texi2html.pl:13232
+#: texi2html.pl:13243
 #, fuzzy, perl-format
 msgid "@%s already set"
 msgstr "索引“%s”已经存在"
 
-#: texi2html/texi2html.pl:13284
+#: texi2html.pl:13295
 #, fuzzy, perl-format
 msgid "Anchor `%s' previously defined %s"
 msgstr "宏“%s”已在前面定义"
 
-#: texi2html/texi2html.pl:13320
+#: texi2html.pl:13331
 #, fuzzy, perl-format
 msgid "No closing brace for specially handled command %s"
 msgstr "脚注“%s”没有闭合花括号"
 
-#: texi2html/texi2html.pl:13607
+#: texi2html.pl:13618
 #, fuzzy, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s 已过时"
 
-#: texi2html/texi2html.pl:13611
+#: texi2html.pl:13622
 #, fuzzy, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s 已过时"
 
-#: texi2html/texi2html.pl:13627
+#: texi2html.pl:13638
 #, perl-format
 msgid "Unknown index `%s' in @printindex"
 msgstr "@printindex 中的未知索引“%s”"
 
-#: texi2html/texi2html.pl:13632
+#: texi2html.pl:13643
 #, perl-format
 msgid "Printindex before document beginning: @printindex %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:13699
+#: texi2html.pl:13710
 #, perl-format
 msgid "ignored @%s already in an @%s entry"
 msgstr ""
 
-#: texi2html/texi2html.pl:13724 texi2html/texi2html.pl:13772
+#: texi2html.pl:13735 texi2html.pl:13783
 #, fuzzy, perl-format
 msgid "@%s seen before first @node"
 msgstr "在第一个节点之前遇到 @menu，正在创建“顶”节点"
 
-#: texi2html/texi2html.pl:13725
+#: texi2html.pl:13736
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "您的 @top 节点可能应该包含在 @ifnottex 而不是 @ifinfo 中？"
 
-#: texi2html/texi2html.pl:13729
+#: texi2html.pl:13740
 #, perl-format
 msgid "Multiple @%s"
 msgstr ""
 
-#: texi2html/texi2html.pl:13741
+#: texi2html.pl:13752
 #, fuzzy, perl-format
 msgid "@%s not allowed within %s"
 msgstr "参数中不允许 @item 改为 @itemize"
 
-#: texi2html/texi2html.pl:13790
+#: texi2html.pl:13801
 #, fuzzy, perl-format
 msgid "Float label `%s' previously defined %s"
 msgstr "节点“%s”在前面的(第 %d 行)定义"
 
-#: texi2html/texi2html.pl:13964
+#: texi2html.pl:13975
 #, perl-format
 msgid "Bad argument `%s' to `@%s', using `%s'"
 msgstr "“%s”的错误参数“@%s”，使用“%s”"
 
-#: texi2html/texi2html.pl:14109 texi2html/texi2html.pl:14110
-#: texi2html/texi2html.pl:14113
+#: texi2html.pl:14120 texi2html.pl:14121 texi2html.pl:14124
 msgid "new menu entry"
 msgstr ""
 
-#: texi2html/texi2html.pl:14243
+#: texi2html.pl:14254
 msgid "paragraph end"
 msgstr ""
 
-#: texi2html/texi2html.pl:14555
+#: texi2html.pl:14566
 msgid "@listoffloats type"
 msgstr ""
 
-#: texi2html/texi2html.pl:14578
+#: texi2html.pl:14589
 #, perl-format
 msgid "Requested float type `%s' not previously used"
 msgstr "所要的浮点类型“%s”不是上次所用的"
 
-#: texi2html/texi2html.pl:14747
+#: texi2html.pl:14758
 #, perl-format
 msgid "Accent command `@%s' must not be followed by whitespace"
 msgstr ""
 
-#: texi2html/texi2html.pl:14751
+#: texi2html.pl:14762
 #, perl-format
 msgid "Use braces to give a command as an argument to @%s"
 msgstr "使用花括号将一个命令用作 @%s 的参数"
 
-#: texi2html/texi2html.pl:14769
+#: texi2html.pl:14780
 #, fuzzy, perl-format
 msgid "@%s expected braces"
 msgstr "%c%s 需要花括号"
 
-#: texi2html/texi2html.pl:14911 texi2html/texi2html.pl:14924
+#: texi2html.pl:14922 texi2html.pl:14935
 #, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "在“@%2$s”块中“@%1$s”是没有意义的"
 
-#: texi2html/texi2html.pl:14960
+#: texi2html.pl:14971
 #, perl-format
 msgid "@%s outside of table or list"
 msgstr ""
 
-#: texi2html/texi2html.pl:14978
+#: texi2html.pl:14989
 #, fuzzy, perl-format
 msgid "@%s in empty multitable"
 msgstr "忽略多列表格外的 @tab"
 
-#: texi2html/texi2html.pl:14993
+#: texi2html.pl:15004
 msgid "ignoring @tab outside of multitable"
 msgstr "忽略多列表格外的 @tab"
 
-#: texi2html/texi2html.pl:15000
+#: texi2html.pl:15011
 #, fuzzy
 msgid "ignoring @tab in empty multitable"
 msgstr "忽略多列表格外的 @tab"
 
-#: texi2html/texi2html.pl:15004
+#: texi2html.pl:15015
 #, perl-format
 msgid "Too many columns in multitable item (max %d)"
 msgstr "在多列表格项目中含有太多的列 (最大为 %d)"
 
-#: texi2html/texi2html.pl:15035
+#: texi2html.pl:15046
 msgid "@center should not appear in another format"
 msgstr ""
 
-#: texi2html/texi2html.pl:15075 texi2html/texi2html.pl:15095
+#: texi2html.pl:15086 texi2html.pl:15106
 #, perl-format
 msgid "Misplaced %c"
 msgstr "错误放置的 %c"
 
-#: texi2html/texi2html.pl:15417
+#: texi2html.pl:15428
 msgid "@tab before @item"
 msgstr ""
 
-#: texi2html/texi2html.pl:15648
+#: texi2html.pl:15659
 #, perl-format
 msgid "%c%s expects a single character `i' or `j' as argument"
 msgstr "%c%s 需要以单个字符“i”或“j”为参数"
 
-#: texi2html/texi2html.pl:15652
+#: texi2html.pl:15663
 #, fuzzy, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s 的参数应为“i”或“j”，而不是“%c”"
 
-#: texi2html/texi2html.pl:15704
+#: texi2html.pl:15715
 #, fuzzy, perl-format
 msgid "Unknown command with braces `@%s'"
 msgstr "未知的命令“%s”"
 
-#: texi2html/texi2html.pl:15740
+#: texi2html.pl:15751
 #, perl-format
 msgid "%c%s expected braces"
 msgstr "%c%s 需要花括号"
 
-#: texi2html/texi2html.pl:15744
+#: texi2html.pl:15755
 #, fuzzy, perl-format
 msgid "Unexpected command `%s' here"
 msgstr "未定义的命令: %s"
 
-#: texi2html/texi2html.pl:15748
+#: texi2html.pl:15759
 #, perl-format
 msgid "Unknown command `%s'"
 msgstr "未知的命令“%s”"
 
-#: texi2html/texi2html.pl:15826
+#: texi2html.pl:15837
 #, perl-format
 msgid "Reached eof before matching @end %s"
 msgstr "文件在遇到匹配的 @end %s 前就结束了"
 
-#: texi2html/texi2html.pl:15834
+#: texi2html.pl:15845
 #, perl-format
 msgid "%cend macro not found"
 msgstr "找不到宏 %cend"
 
-#: texi2html/texi2html.pl:15839
+#: texi2html.pl:15850
 #, fuzzy, perl-format
 msgid "@%s missing close brace"
 msgstr "%c%s 遗漏闭合花括号"
 
-#: texi2html/texi2html.pl:16003
+#: texi2html.pl:16014
 #, perl-format
 msgid "No matching `%cend %s'"
 msgstr "没有匹配的“%cend %s”"
 
-#: texi2html/texi2html.pl:16035
+#: texi2html.pl:16046
 #, fuzzy, perl-format
 msgid "@%s missing closing delimiter sequence: %s}"
 msgstr "%c%s 遗漏闭合花括号"
 
-#: texi2html/texi2html.pl:16039 texi2html/texi2html.pl:16067
+#: texi2html.pl:16050 texi2html.pl:16078
 #, perl-format
 msgid "%c%s missing close brace"
 msgstr "%c%s 遗漏闭合花括号"
 
-#: texi2html/texi2html.pl:16148
+#: texi2html.pl:16159
 #, fuzzy, perl-format
 msgid "%s should not appear in %s"
 msgstr "%s: 无法打开 --css-file: %s"
 
-#: texi2html/texi2html.pl:16625
+#: texi2html.pl:16636
 #, perl-format
 msgid "Index entry not caught: `%s' in %s"
 msgstr ""
 
-#: texi2html/texi2html.pl:16723
+#: texi2html.pl:16734
 #, fuzzy, perl-format
 msgid "Empty index entry for @%s"
 msgstr "找不到含有“%s”的索引\n"
 
-#: texi2html/texi2html.pl:16859
+#: texi2html.pl:16870
 #, perl-format
 msgid "%s:%d: string not closed in css file"
 msgstr ""
 
-#: texi2html/texi2html.pl:16860
+#: texi2html.pl:16871
 #, perl-format
 msgid "%s:%d: --css-file ended in comment"
 msgstr "%s:%d: --css-file 以注释结尾"
 
-#: texi2html/texi2html.pl:16861
+#: texi2html.pl:16872
 #, perl-format
 msgid "%s:%d @import not finished in css file"
 msgstr ""
 
-#: texi2html/texi2html.pl:16891
+#: texi2html.pl:16902
 #, fuzzy, perl-format
 msgid "%s: could not open --css-file %s: %s\n"
 msgstr "%s: 无法打开 --css-file: %s"
 
-#: texi2html/texi2html.pl:16963
+#: texi2html.pl:16974
 #, perl-format
 msgid "%s:%d: no node to be renamed\n"
 msgstr ""
 
-#: texi2html/texi2html.pl:16974
+#: texi2html.pl:16985
 #, perl-format
 msgid "%s:%d: nodes without a new name at the end of file\n"
 msgstr ""
 
-#: texi2html/texi2html.pl:17006
+#: texi2html.pl:17017
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s：遗漏文件参数。\n"
 
-#: texi2html/texi2html.pm:1275
+#: texi2html.pm:1275
 msgid "Document encoding is utf8, but there is no unicode support"
 msgstr ""
 
-#: texi2html/texi2html.pm:2227
+#: texi2html.pm:2227
 msgid "recursion is always allowed"
 msgstr ""
 
-#: texi2html/texi2html.pm:2228
+#: texi2html.pm:2228
 #, fuzzy
 msgid "arguments are quoted by default"
 msgstr "不赞成使用 @quote-arg；参数是默认引用的"
 
-#: texi2html/texi2html.pm:6682 texi2html/formats/docbook.pm:1498
-#: texi2html/formats/html.pm:2352 texi2html/maintained_extra/mediawiki.pm:1141
+#: texi2html.pm:6682 formats/docbook.pm:1498 formats/html.pm:2352
+#: maintained_extra/mediawiki.pm:1141
 #, perl-format
 msgid "Raw format %s is not converted"
 msgstr ""
 
-#: texi2html/formats/docbook.pm:1021 texi2html/formats/info.pm:2996
-#: texi2html/formats/plaintext.pm:151
+#: formats/docbook.pm:1021 formats/info.pm:2996 formats/plaintext.pm:151
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "@image 文件“%s”不可读：%s"
 
-#: texi2html/formats/docbook.pm:1026 texi2html/formats/info.pm:3001
-#: texi2html/formats/plaintext.pm:156
+#: formats/docbook.pm:1026 formats/info.pm:3001 formats/plaintext.pm:156
 #, fuzzy, perl-format
 msgid "Cannot find @image file `%s.txt'"
 msgstr "无法找到节点“%s”。"
 
-#: texi2html/formats/html.pm:2470
+#: formats/html.pm:2470
 #, fuzzy, perl-format
 msgid "@image file `%s' (for HTML) not found, using `%s'"
 msgstr "@image 文件“%s”(对 HTML)不可读：%s"
 
-#: texi2html/formats/info.pm:1188
+#: formats/info.pm:1188
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
 msgstr "@strong{Note...} 在 Info 中形成了一个假的交叉引用；可通过重写避免此事"
 
-#: texi2html/formats/info.pm:1352
+#: formats/info.pm:1352
 #, fuzzy
 msgid "`.' or `,' must follow @xref."
 msgstr "“.”或“,”之后必须为 @%s，而不是“%c”"
 
-#: texi2html/formats/info.pm:1357
+#: formats/info.pm:1357
 #, fuzzy, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "“.”或“,”之后必须为 @%s，而不是“%c”"
 
-#: texi2html/formats/info.pm:2465
+#: formats/info.pm:2465
 msgid "anchor outside of any node, it won't be registered"
 msgstr ""
 
-#: texi2html/formats/info.pm:2780
+#: formats/info.pm:2780
 #, fuzzy
 msgid "@menu before first node"
 msgstr "在第一个节点之前遇到 @menu，正在创建“顶”节点"
 
-#: texi2html/formats/info.pm:2785
+#: formats/info.pm:2785
 #, fuzzy
 msgid "@direntry after first node"
 msgstr "在第一个节点之前遇到 @menu，正在创建“顶”节点"
 
-#: texi2html/formats/info.pm:3199
+#: formats/info.pm:3199
 msgid "Footnote defined without parent node"
 msgstr "定义的脚注没有父节点"
 
-#: texi2html/formats/info.pm:3539
+#: formats/info.pm:3539
 msgid "float reference outside of any node, it won't be registered"
 msgstr ""
 
-#: texi2html/formats/info.pm:3642
+#: formats/info.pm:3642
 msgid "@dircategory after first node"
 msgstr ""
 
-#: texi2html/maintained_extra/mediawiki.pm:1100
+#: maintained_extra/mediawiki.pm:1100
 #, fuzzy, perl-format
 msgid "@image file `%s' not found, using `%s'"
 msgstr "@image 文件“%s”(对 HTML)不可读：%s"
@@ -1742,8 +1733,8 @@ msgstr "@image 文件“%s”(对 HTML)不可读：%s"
 
 #~ msgid ""
 #~ "  %-10s  Move to node specified by name.\n"
-#~ "              You may include a filename as well, as in (FILENAME)"
-#~ "NODENAME.\n"
+#~ "              You may include a filename as well, as in "
+#~ "(FILENAME)NODENAME.\n"
 #~ msgstr ""
 #~ "  %-10s   移动到由名字指定的节点。\n"
 #~ "              您也可在 (FILENAME)NODENAME 中包含文件名。\n"
@@ -3185,8 +3176,8 @@ msgstr "@image 文件“%s”(对 HTML)不可读：%s"
 #~ msgstr "              并选择第一个找到的条目所引用的节点。\n"
 
 #~ msgid ""
-#~ "              You may include a filename as well, as in (FILENAME)"
-#~ "NODENAME.\n"
+#~ "              You may include a filename as well, as in "
+#~ "(FILENAME)NODENAME.\n"
 #~ msgstr "              您还可以同时给出文件名，形式为 (文件名)节点名。\n"
 
 #~ msgid ""
