@@ -303,7 +303,17 @@ sub sectioning_structure($$)
         $sec_root->{'level'} = $level - 1;
         $sec_root->{'section_childs'} = [$content];
         $number_top_level = $level;
+        # if $level of top sectioning element is 0, which means that
+        # it is a @top, $number_top_level is 1 as it is associated to
+        # the level of chapter/unnumbered...
         $number_top_level++ if (!$number_top_level);
+        if ($content->{'cmdname'} ne 'top') {
+          if (!$unnumbered_commands{$content->{'cmdname'}}) {
+            $command_unnumbered[$content->{'level'}] = 0;
+          } else {
+            $command_unnumbered[$content->{'level'}] = 1;
+          }
+        }
       }
       if (!defined($command_numbers[$content->{'level'}])) {
         if ($unnumbered_commands{$content->{'cmdname'}}) {

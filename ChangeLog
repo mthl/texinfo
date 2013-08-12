@@ -2,6 +2,8 @@
 
 	* tp/init/chm.pm: sort indices names to get a reproducible output.
 	Report by Karl.
+	* tp/Texinfo/Structuring.pm: set @command_unnumbered for the toplevel
+	@-command if not @top.  Report from Karl.
 
 2013-08-11  Karl Berry  <karl@gnu.org>
 
