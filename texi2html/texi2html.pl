@@ -4659,11 +4659,6 @@ sub set_docu_names($$)
       $docu_name = $docu_base_name;
    }
 
-   @Texi2HTML::Config::INCLUDE_DIRS = @include_dirs_orig;
-   my @prependended_include_directories = ('.');
-   push @prependended_include_directories, $Texi2HTML::THISDOC{'input_directory'} if ($Texi2HTML::THISDOC{'input_directory'} ne '.');
-   unshift(@Texi2HTML::Config::INCLUDE_DIRS, @prependended_include_directories);
-   unshift(@Texi2HTML::Config::INCLUDE_DIRS, @Texi2HTML::Config::PREPEND_DIRS);
 # AAAA
    if (get_conf('PREFIX') and ($file_nr == 0))
    {
@@ -17127,6 +17122,11 @@ while(@input_files)
    {
       init_with_file_name ($input_file_base);
    }
+   @Texi2HTML::Config::INCLUDE_DIRS = @include_dirs_orig;
+   my @prependended_include_directories = ('.');
+   push @prependended_include_directories, $Texi2HTML::THISDOC{'input_directory'} if ($Texi2HTML::THISDOC{'input_directory'} ne '.');
+   unshift(@Texi2HTML::Config::INCLUDE_DIRS, @prependended_include_directories);
+   unshift(@Texi2HTML::Config::INCLUDE_DIRS, @Texi2HTML::Config::PREPEND_DIRS);
 
    # FIXME when to do that?
    ($Texi2HTML::THISDOC{'css_import_lines'}, $Texi2HTML::THISDOC{'css_rule_lines'}) 

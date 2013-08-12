@@ -1,0 +1,9 @@
+tex ../formatting/tex.texi --set-init-var 'L2H 1' --iftex
+tex_httex ../formatting/tex.texi --init tex4ht.pm --iftex
+tex_mediawiki ../formatting/tex.texi --init mediawiki.pm --iftex
+tex_httex_mediawiki ../formatting/tex.texi --html --init tex4ht.pm --init mediawiki.pm --iftex
+tex_l2h_mediawiki ../formatting/tex.texi --html --set-init-var 'L2H 1' --iftex --init mediawiki.pm
+block_EOL_tex ../formatting/block_EOL.texi --set-init-var 'L2H 1' --iftex
+tex_not_closed ../invalid/tex_not_closed.texi --set-init-var 'L2H 1' --iftex
+math_not_closed ../invalid/math_not_closed.texi --set-init-var 'L2H 1' --iftex
+tex_in_copying ../invalid/tex_in_copying.texi --set-init-var 'L2H 1' --iftex

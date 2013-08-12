@@ -70,14 +70,8 @@ float_with_at_commands float_with_at_commands.texi
 float_copying float_copying.texi --split chapter
 macro_in_menu macro_in_menu.texi
 ref_in_anchor ref_in_anchor.texi
-tex tex.texi --set-customization-variable 'L2H 1' --iftex
 tex_notex tex.texi
-tex_httex tex.texi --init tex4ht.pm --iftex
-#tex_mediawiki tex.texi --init mediawiki.pm --iftex
-tex_httex_mediawiki tex.texi --html --init tex4ht.pm --init mediawiki.pm --iftex
-tex_l2h_mediawiki tex.texi --html --set-customization-variable 'L2H 1' --iftex --init mediawiki.pm
 block_EOL block_EOL.texi
-block_EOL_tex block_EOL.texi --set-customization-variable 'L2H 1' --iftex
 detailmenus detailmenus.texi
 detailmenus_simple detailmenus.texi --set-customization-variable 'SIMPLE_MENU 1'
 commands_in_ifset commands_in_ifset.texi

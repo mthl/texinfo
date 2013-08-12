@@ -1,0 +1,3 @@
+mini_ker_l2h ../manuals/mini_ker.texi --set-init-var 'L2H 1' --iftex
+mini_ker_httex ../manuals/mini_ker.texi --init tex4ht.pm --iftex
+mini_ker ../manuals/mini_ker.texi --init book.pm --split section --node-files --set-init-var 'USE_NODES 1' --iftex --init mini_ker_t2h.init --init tex4ht.pm

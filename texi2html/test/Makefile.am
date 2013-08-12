@@ -7,8 +7,9 @@ base_tests = \
 long_tests = \
  misc manuals xemacs_manual texi2html_manual tar_manual singular_manual
 htmlxref_cnf_tests = htmlxref htmlxref-only_mono htmlxref-only_split
+tex_html_tests = tex_html tex_html_manuals tex_html_singular
 
-DIST_SUBDIRS = $(base_tests) $(long_tests) many_input_files
+DIST_SUBDIRS = $(base_tests) $(long_tests) $(tex_html_tests) many_input_files
 SUBDIRS = . many_input_files
 
 copy-tests: copy-base copy-long
@@ -22,7 +23,10 @@ copy-long:
 	$(srcdir)/tests.sh all -copy $(long_tests)
 
 clean-tests:
-	$(srcdir)/tests.sh all -clean $(base_tests) $(long_tests)
+	$(srcdir)/tests.sh all -clean $(base_tests) $(long_tests) $(tex_html_tests)
+
+copy-tex-html:
+	$(srcdir)/tests.sh all -copy $(tex_html_tests)
 
 TESTS = base_tests
 
@@ -48,6 +52,29 @@ long-check:
 	  echo "================"; \
 	  echo "long_test passed"; \
 	  echo "================"; \
+	fi ;\
+	test "$$failed" -eq 0;
+
+tex-html-check:
+	@srcdir=$(srcdir); export srcdir; \
+	tst=tests.sh; failed=0; \
+	if test -f ./$$tst; then dir=./; \
+	elif test -f $$tst; then dir=; \
+	else dir="$(srcdir)/"; fi; \
+	if $(TESTS_ENVIRONMENT) $${dir}$$tst all $(tex_html_tests); then :; \
+	else failed="1"; fi ; \
+	if  test "$$failed" -ne 0; then \
+	  echo "FAIL: tex_html"; \
+	  echo "========================================="; \
+	  echo "Failure of tex_html"; \
+	  if test -n "$(PACKAGE_BUGREPORT)"; then \
+	    echo "Please report to $(PACKAGE_BUGREPORT)"; \
+	  fi; \
+	  echo "========================================="; \
+	else \
+	  echo "PASS: tex_html"; \
+	  echo "=============="; \
+	  echo "tex_html passed"; \
 	fi ;\
 	test "$$failed" -eq 0;
 
