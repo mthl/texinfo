@@ -1346,7 +1346,9 @@ In normal text, treated as ending any open paragraph; essentially
 ignored between paragraphs.
 
 @item Info
-Output as-is, as part of the normal text stream.
+Output as-is between paragraphs (their most common use); in other
+contexts, they may be treated as regular spaces (and thus consolidated
+with surrounding whitespace).
 
 @item HTML
 Written as a numeric entity except contexts where spaces are ignored;
