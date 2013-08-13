@@ -145,19 +145,21 @@ The program accepts the following options:
 @anchor{--all}
 @item --all
 @itemx -a
-Find all files matching the given file or node name.  There are three
-possible usage patterns.  When this option is used together with the
-@option{--where} (@option{-w}) option, @command{info} prints the names
-of the files on the standard output and exits.  If used
-together with the @option{--output} (@option{-o}) option, the contents
-of all matched files are dumped to the specified output file.
+Find all files matching the given @var{menu-item} (a file or node
+name).  Three usage patterns are supported, as follows.
+
+First, if @code{--all} is used together with @option{--where},
+@command{info} prints the names of all matching files found on
+standard output and exits.
+
+Second, if @code{--all} is used together with @option{--output}, the
+contents of all matched files are dumped to the specified output file.
 
 Otherwise, an interactive session is initiated.  If more than one file
-matches, you are presented a menu node, listing the matches and
-allowing you to select one of them.  This menu node can be brought
-back anytime by pressing @kbd{C-x f}.
-
-Otherwise, @command{info} starts as usual.
+matches, a menu node is displayed listing the matches and allowing you
+to select one.  This menu node can be brought back at any time by
+pressing @kbd{C-x f}.  If there is only one match, @command{info}
+starts as usual.
 
 The @option{--index-search} and @option{--node} options cannot be used
 together with this option.
@@ -1055,7 +1057,7 @@ if the string includes only lower-case letters.  With a numeric argument
 of @var{N}, search for @var{N}th occurrence of the string.  Negative
 arguments search backwards.
 
-@anchor{repeated search}
+@anchor{repeated-search}
 @item @kbd{C-x @kbd{n}} (@code{search-next})
 @itemx @kbd{@}}
 @itemx @kbd{n}, vi-like operation
@@ -1064,15 +1066,15 @@ arguments search backwards.
 @kindex n, vi-like operation
 @findex search-next
 @cindex repeated search
-Search for the same string used in the last search command, in the same
-direction, and with the same case-sensitivity option.  With a numeric
-argument of @var{N}, search for @var{N}th next occurrence.
+Search for the same string used in the last search command, in the
+same direction, and with the same case-sensitivity option.  With a
+numeric argument of @var{n}, search for @var{n}th next occurrence.
 
 By default, the search starts at the position immediately following
 the cursor.  However, if the variable @code{search-skip-screen}
-(@pxref{Variables, , search-skip-screen}) is set, it starts at the
-beginning of the next page, thereby skipping all lines displayed on
-the screen.
+(@pxref{Variables,, @code{search-skip-screen}}) is set, it starts at
+the beginning of the next page, thereby skipping all visibly displayed
+lines (but not any further lines in the current node).
 
 @item @kbd{C-x @kbd{N}} (@code{search-previous})
 @itemx @kbd{@{}
@@ -1081,15 +1083,15 @@ the screen.
 @kindex @{
 @kindex n, vi-like operation
 @findex search-previous
-Search for the same string used in the last search command, and with the
-same case-sensitivity option, but in the reverse direction.  With a
-numeric argument of @var{N}, search for @var{N}th previous occurrence.
+Search for the same string used in the last search command, and with
+the same case-sensitivity option, but in the reverse direction.  With
+a numeric argument of @var{n}, search for the @var{n}th previous
+occurrence.
 
 By default, the search starts at the position immediately preceding
-the cursor.  If the variable @code{search-skip-screen}
-(@pxref{Variables, , search-skip-screen}) is set, it starts at the
-end of the previous page, skipping all lines displayed on
-the screen.
+the cursor, but skips visible lines if the variable
+@code{search-skip-screen} is set, as with @code{@}} (see preceding
+item).
 
 @item @kbd{C-s} (@code{isearch-forward})
 @kindex C-s
@@ -1433,10 +1435,11 @@ Select the previous window on the screen.  This is identical to
 @kindex C-x 2
 @findex split-window
 Split the current window into two windows, both showing the same node.
-Each window is one half the size of the original window, and the cursor
-remains in the original window.  The variable @code{automatic-tiling}
-can cause all of the windows on the screen to be resized for you
-automatically (@pxref{Variables, , automatic-tiling}).
+Each window is one half the size of the original window, and the
+cursor remains in the original window.  The variable
+@code{automatic-tiling} can cause all of the windows on the screen to
+be resized for you automatically (@pxref{Variables,,
+@code{automatic-tiling}}).
 
 @item @kbd{C-x @kbd{0}} (@code{delete-window})
 @cindex windows, deleting
@@ -1470,10 +1473,10 @@ shrink the window instead.
 @kindex C-x t
 @findex tile-windows
 Divide the available screen space among all of the visible windows.
-Each window is given an equal portion of the screen in which to display
-its contents.  The variable @code{automatic-tiling} can cause
+Each window is given an equal portion of the screen in which to
+display its contents.  The variable @code{automatic-tiling} can cause
 @code{tile-windows} to be called when a window is created or deleted.
-@xref{Variables, , @code{automatic-tiling}}.
+@xref{Variables,, @code{automatic-tiling}}.
 @end table
 
 @node The Echo Area
@@ -1909,10 +1912,11 @@ be associated with the current node that you are viewing:
 @kindex ESC C-f
 @findex show-footnotes
 @cindex footnotes, displaying
-Show the footnotes (if any) associated with the current node in another
-window.  You can have Info automatically display the footnotes
-associated with a node when the node is selected by setting the variable
-@code{automatic-footnotes}.  @xref{Variables, , @code{automatic-footnotes}}.
+Show the footnotes (if any) associated with the current node in
+another window.  You can have Info automatically display the footnotes
+associated with a node when the node is selected by setting the
+variable @code{automatic-footnotes}.  @xref{Variables,,
+@code{automatic-footnotes}}.
 @end table
 
 
@@ -1941,12 +1945,12 @@ Key Bindings}.
 @item @kbd{M-x set-variable}
 @cindex variables, setting
 @findex set-variable
-Read the name of a variable, and the value for it, in the echo area and
-then set the variable to that value.  Completion is available when
-reading the variable name (@pxref{The Echo Area, completion}); often,
-completion is available when reading the value to give to the variable,
-but that depends on the variable itself.  If a variable does @emph{not}
-supply multiple choices to complete over, it expects a numeric value.
+Read the name of a variable, and the value for it, in the echo area
+and then set the variable to that value.  Completion is available when
+reading the variable name (@pxref{The Echo Area}); often, completion
+is available when reading the value to give to the variable, but that
+depends on the variable itself.  If a variable does @emph{not} supply
+multiple choices to complete over, it expects a numeric value.
 
 @item @kbd{M-x describe-variable}
 @cindex variables, describing
@@ -2100,14 +2104,15 @@ some people prefer.
 
 @item search-skip-screen
 @vindex search-skip-screen
-Change the starting point of the repeated searches (@pxref{repeated
-search}).  When set to @code{Off} (the default), repeated searches
-start at the position immediately following (when searching in forward
-direction), or immediately preceding (when searching backwards) the
-cursor.  When set to @code{On} repeated searches skip the lines
-displayed on the screen.  In other words, forward searches
-(@kbd{@}}) start at the beginning of the next page, and backward
-searches (@kbd{@{}) start at the end of the previous page.
+Change the starting point of the repeated searches
+(@pxref{repeated-search}).  When set to @code{Off} (the default),
+repeated searches start at the position immediately following (when
+searching in forward direction), or immediately preceding (when
+searching backwards) the cursor.  When set to @code{On}, repeated
+searches omit lines visibly displayed on the screen.  In other words,
+forward searches (@kbd{@}}) start at the beginning of the next page,
+and backward searches (@kbd{@{}) start at the end of the previous
+page.
 
 @item show-index-match
 @vindex show-index-match
@@ -2299,14 +2304,13 @@ identical to that for the key definitions for the Info area, described
 above.
 
 @item #var
-Variable initializations.
-The start of this section is indicated by a line containing just
-@code{#var} by itself.  Following this line is a list of variable
-assignments, one per line.  Each line consists of a variable name
-(@xref{Variables},) followed by @code{=} followed by a value.
-There may be no white space between the variable name and the @code{=},
-and all characters following the @code{=}, including white space,
-are included in the value.
+Variable initializations.  The start of this section is indicated by a
+line containing just @code{#var} by itself.  Following this line is a
+list of variable assignments, one per line.  Each line consists of a
+variable name (@pxref{Variables}) followed by @code{=} followed by a
+value.  There may be no white space between the variable name and the
+@code{=}, and all characters following the @code{=}, including white
+space, are included in the value.
 @end table
 
 Blank lines and lines starting with @code{#} are ignored, except for
