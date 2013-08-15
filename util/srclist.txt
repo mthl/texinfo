@@ -14,7 +14,10 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-$EMACSSRC/doc/misc/info.texi			doc
+
+# Maintained in Emacs, which uses doclicense.texi instead of the usual
+# fdl.texi; seems cleaner to change it than to have two copies of the FDL.
+$EMACSSRC/doc/misc/info.texi			doc	doclicense
 
 
 $GETTEXT/gettext-runtime/ABOUT-NLS		.
@@ -41,10 +44,12 @@ $GNULIBSRC/build-aux/mdate-sh		build-aux
 $GNULIBSRC/doc/COPYINGv3		./COPYING
 $GNULIBSRC/doc/INSTALL			./INSTALL.generic
 $GNULIBSRC/doc/fdl.texi			doc
-#
-# Should only update at releases.  
+
+
+# Should only need to be updated after major Automake releases.
 $AUTOMAKE/tap-driver.sh			build-aux
 $AUTOMAKE/test-driver			build-aux
 $AUTOMAKE/missing			build-aux
-#
+
+
 $GSASL/doc/gdoc 			contrib
