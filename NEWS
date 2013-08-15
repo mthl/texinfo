@@ -22,7 +22,7 @@ one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
-* info
+* info:
   . new option -x (--debug) enables additional debugging output.
   . new option -v (--variable) assigns a value to an Info variable.
     The syntax is the same as for many other GNU utilities: -v VARIABLE=VALUE
@@ -32,7 +32,7 @@ one of the relevant sections:
     forward searches (}) start at the beginning of the next page, and
     backward searches ({) start at the end of the previous page.
 
-* Distribution: automake-1.14.
+* Distribution: automake-1.14, gettext-0.18.3.
 
 
 5.1 (12 March 2013)

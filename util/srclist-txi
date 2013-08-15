@@ -17,7 +17,7 @@
 case $LOGNAME in
 karl)
   : ${EMACSSRC=/usr/local/gnu/src/emacs-24.3};      export EMACSSRC
-  : ${GETTEXT=/usr/local/gnu/src/gettext-0.18.2};   export GETTEXT
+  : ${GETTEXT=/usr/local/gnu/src/gettext-0.18.3};   export GETTEXT
   : ${AUTOMAKE=/usr/local/gnu/share/automake-1.13}; export AUTOMAKE
   : ${GSASL=$HOME/gnu/src/gsasl};                   export GSASL
   : ${GNULIB=$HOME/gnu/src/gnulib};                 export GNULIB

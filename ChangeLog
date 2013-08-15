@@ -1,9 +1,14 @@
+2013-08-15  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* gnulib/m4/po.m4: Upgrade to gettext-0.18.3.
+	* configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.18.3.
+
 2013-08-15  Karl Berry  <karl@gnu.org>
 
 	* install-info/install-info.c (ensure_dirfile_exists): do not
 	translate the ^_ byte; the Italian translation missed it,
 	and it makes more sense to consider it a keyword anyway.
-	Report frmo Thien-Thi Nguyen, 17 May 2013 11:16:41.
+	Report from Thien-Thi Nguyen, 17 May 2013 11:16:41.
 
 2013-08-13  Karl Berry  <karl@gnu.org>
 
