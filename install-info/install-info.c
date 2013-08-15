@@ -630,7 +630,7 @@ ensure_dirfile_exists (char *dirfile)
           fprintf (f, _("This is the file .../info/dir, which contains the\n\
 topmost node of the Info hierarchy, called (dir)Top.\n\
 The first time you invoke Info you start off looking at this node.\n\
-\x1f\n\
+%c\n\
 %s\tThis is the top of the INFO tree\n\
 \n\
   This (the Directory node) gives a menu of major topics.\n\
@@ -642,9 +642,9 @@ The first time you invoke Info you start off looking at this node.\n\
   to select it.\n\
 \n\
 %s\n\
-"), "File: dir,\tNode: Top",  /* These keywords must not be translated.  */
-    "* Menu:"
-);
+"),         /* These keywords must not be translated:  */
+            '\x1f',  "File: dir,\tNode: Top",  "* Menu:"
+          );
           if (fclose (f) < 0)
             pfatal_with_name (dirfile);
         }
