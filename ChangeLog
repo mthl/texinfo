@@ -1,3 +1,15 @@
+2013-08-15  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi: @setfilename texinfo.info, not just
+	texinfo, per automake 1.14 complaint.
+
+	* configure.ac (AM_INIT_AUTOMAKE): add info-in-builddir,
+	per automake 1.14 complaint.
+
+	* doc/Makefile.am (info_TEXINFOS),
+	* doc/texinfo.texi: rename from doc/texinfo.texi,
+	per automake 1.14 deprecation.
+
 2013-08-15  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* gnulib/m4/po.m4: Upgrade to gettext-0.18.3.

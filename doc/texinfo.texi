@@ -9,10 +9,7 @@
 @c %**start of header
 
 @c makeinfo and texinfo.tex ignore all text before @setfilename.
-@c
-@c Ordinarily, the setfilename argument ends with .info.  But
-@c texinfo.info-13 is too long for 14-character filesystems.
-@setfilename texinfo
+@setfilename texinfo.info
 
 @c Automake automatically updates version.texi to @set VERSION and
 @c @set UPDATED to appropriate values.
