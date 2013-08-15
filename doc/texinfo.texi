@@ -3130,7 +3130,7 @@ description in the @samp{<head>} part
 
 When the title page is used in the output, the title in the
 @code{@@settitle} command does not affect the title as it appears on
-the title page.  Thus, the two do not need not match exactly.  A
+the title page.  Thus, the two do not need not to match exactly.  A
 practice we recommend is to include the version or edition number of
 the manual in the @code{@@settitle} title; on the title page, the
 version number generally appears as an @code{@@subtitle} so it would
@@ -7025,23 +7025,11 @@ program.  Also, you can emphasize text, in several different ways.
 @cindex Highlighting text
 @cindex Indicating commands, definitions, etc.
 
-Texinfo has commands for indicating just what kind of object a piece of
-text refers to.  For example, metasyntactic variables are marked by
-@code{@@var}, and code by @code{@@code}.  Since the pieces of text are
-labeled by commands that tell what kind of object they are, it is easy
-to change the way the Texinfo formatters prepare such text.  (Texinfo is
-an @emph{intentional} formatting language rather than a @emph{typesetting}
-formatting language.)
-
-For example, in a printed manual,
-code is usually illustrated in a typewriter font;
-@code{@@code} tells @TeX{} to typeset this text in this font.  But it
-would be easy to change the way @TeX{} highlights code to use another
-font, and this change would not affect how keystroke examples are
-highlighted.  If straight typesetting commands were used in the body
-of the file and you wanted to make a change, you would need to check
-every single occurrence to make sure that you were changing code and
-not something else that should not be changed.
+Texinfo has commands for indicating just what kind of object a piece
+of text refers to.  For example, email addresses are marked by
+@code{@@email}; that way, the result can be a live link to send email
+when the output format supports it.  If the email address was simply
+marked as ``print in a typewriter font'', that would not be possible.
 
 @menu
 * Useful Highlighting::         Highlighting provides useful information.
@@ -14648,7 +14636,8 @@ for nesting purposes.
 @cindex Texinfo commands, defining new
 @cindex User-defined Texinfo commands
 
-Texinfo provides several ways to define new commands:
+Texinfo provides several ways to define new commands (in all cases,
+it's not recommended to try redefining existing commands):
 
 @itemize @bullet
 @item
@@ -14671,8 +14660,8 @@ customized output for all non-@TeX{} output formats.
 
 @end itemize
 
-Most generally of all, not just for defining new commands, it is
-possible to invoke an external macro processor and have Texinfo
+Most generally of all (not just for defining new commands), it is
+possible to invoke any external macro processor and have Texinfo
 recognize so-called @code{#line} directives for error reporting.
 
 If you want to do simple text substitution, @code{@@set} and
@@ -16840,13 +16829,13 @@ The rest of this chapter goes into the details.
 Above, we called @command{texi2any} ``the'' translator for Texinfo
 instead of just ``a'' translator, even though (of course) it's
 technically and legally possible for other implementations to be
-written.  The reason is that alternative implementations are highly
+written.  The reason is that alternative implementations are very
 likely to have subtle, or not-so-subtle, differences in behavior, and
 thus Texinfo documents would become dependent on the processor.
 Therefore, it is important to have a reference implementation that
 defines parts of the language not fully specified by the manual (often
 intentionally so).  It is equally important to have consistent
-command-line options and other behavior for processors.
+command-line options and other behavior for all processors.
 
 @cindex Tree representation of documents
 @cindex Syntax tree representation of documents
@@ -16854,13 +16843,13 @@ command-line options and other behavior for processors.
 For this reason, the once-independent @command{texi2html} Perl Texinfo
 processor was made compatible with the C implementation of
 @command{makeinfo}, to avoid continuing with two different
-implementations (@pxref{History}).  The current reference
-implementation, @command{texi2any}, inherited the design of
-customization and other features from @command{texi2html} (for more on
-@command{texi2html} compatibility, @pxref{@t{texi2html}}).
-However, @code{texi2any} is a full reimplementation: it constructs a
-tree-based representation of the input document for all back-ends to
-work from.
+implementations (@pxref{History}).  The current implementation,
+@command{texi2any}, serves as the reference implementation.  It
+inherited the design of customization and other features from
+@command{texi2html} (for more on @command{texi2html} compatibility,
+@pxref{@t{texi2html}}).  However, @code{texi2any} is a full
+reimplementation: it constructs a tree-based representation of the
+input document for all back-ends to work from.
 
 @cindex Texinfo language tests
 @cindex Tests, of Texinfo language
@@ -16871,12 +16860,12 @@ to parse Texinfo input to at least make use of these tests.
 @cindex Examples of using @command{texi2any}
 @findex Texinfo::Parser module
 The @command{texi2html} wrapper script (@pxref{@t{texi2html}})
-provides a simple example of calling @command{texi2any} from a shell
-script; it's in @file{util/texi2html} in the Texinfo sources.  More
-consequentially, @command{texi-elements-by-size} is an example Perl
-script using the @code{Texinfo::Parser} module interface; it's in
-@file{util/texi-elements-by-size}.  (Its functionality may also be
-useful to authors; @pxref{texi-elements-by-size}.)
+provides a very simple example of calling @command{texi2any} from a
+shell script; it's in @file{util/texi2html} in the Texinfo sources.
+More consequentially, @command{texi-elements-by-size} is an example
+Perl script using the @code{Texinfo::Parser} module interface; it's
+also in the @file{util} source directory.  (Its functionality may also
+be useful to authors; @pxref{texi-elements-by-size}.)
 
 @cindex Future of Texinfo implementations
 With the release of @command{texi2any} as the reference

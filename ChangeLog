@@ -1,5 +1,14 @@
 2013-08-15  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.texi (@settitle): typo (missing "to"), report from
+	Alex Sassmannshausen, 26 Apr 2013 14:21:38.
+	
+	* doc/texinfo.texi (Indicating): rewrite intro to avoid implying
+	that users can change at will what Texinfo's commands output.
+	(Defining New Texinfo Commands): and avoid implying that macros
+	should be used to redefine existing commands.
+	Thread with Robert Dodier, starting 26 Apr 2013 09:33:42.
+
 	* doc/texinfo.texi: @setfilename texinfo.info, not just
 	texinfo, per automake 1.14 complaint.
 
