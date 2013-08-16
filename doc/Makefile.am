@@ -14,9 +14,9 @@
 
 SUBDIRS = tp_api
 
-# Put texinfo.txi first because that's the most important.
+# Put the Texinfo manual first because that's the most important.
 info_TEXINFOS = texinfo.texi info-stnd.texi info.texi
-DISTCLEANFILES = texinfo texinfo-* info*.info*
+DISTCLEANFILES = texinfo.info* info*.info*
 
 # Use the programs built in our distribution, taking account of possible
 # cross-compiling.

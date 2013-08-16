@@ -27,7 +27,7 @@ exit (&main ());
 sub main {
   my $no_common = $ARGV[0] eq "--no-common";
   
-  my @man_vars = &read_refman ("../texinfo.txi");
+  my @man_vars = &read_refman ("../texinfo.texi");
   my @tp_vars = &read_tp ("../../util/txicustomvars");
 
   my (%man_vars, %tp_vars);  # list to hash

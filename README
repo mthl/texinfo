@@ -76,7 +76,7 @@ This distribution includes the following files, among others:
     NEWS                   Summary of new features by release.
 
 Texinfo documentation files (in ./doc):
-    texinfo.txi            Describes the Texinfo language and many
+    texinfo.texi           Describes the Texinfo language and many
                            of the associated tools.  It tells how to use
                            Texinfo to write documentation, how to use
                            Texinfo mode in GNU Emacs, TeX,

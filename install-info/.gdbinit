@@ -11,4 +11,5 @@ end
 
 #http://savannah.gnu.org/bugs/?32975
 set env LC_ALL=ru_RU  
-set args
+set env LC_ALL=it_IT.UTF-8
+set args --info-dir=/tmp/idir $HOME/tmp/install-info-bug/foo.info

@@ -28,7 +28,7 @@ tsrc=`cd \`dirname $0\` && pwd`/../..
 PATH=$tsrc/util:$PATH
 
 tdoc=$tsrc/doc
-default_manuals="$tdoc/texinfo.txi $tdoc/info.texi $tdoc/info-stnd.texi"
+default_manuals="$tdoc/texinfo.texi $tdoc/info.texi $tdoc/info-stnd.texi"
 
 olddir=$tsrc/../gnulib/config
 newdir=$tdoc

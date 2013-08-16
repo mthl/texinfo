@@ -1,3 +1,16 @@
+2013-08-16  Karl Berry  <karl@gnu.org>
+
+        * README,
+        * INSTALL,
+        * tp/TODO,
+	* doc/texinfo.texi,
+        * doc/texi2oldapi.texi,
+        * doc/refcard/txicmdcheck,
+        * doc/refcard/txirefcard.tex,
+        * doc/refcard/txivarcheck,
+        * doc/Makefile.am,
+        * util/tests/txitextest: texinfo.txi -> texinfo.texi.
+
 2013-08-15  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (@settitle): typo (missing "to"), report from

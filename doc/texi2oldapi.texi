@@ -4,8 +4,10 @@
 @c Doesn't format on its own, is just here (for now) for archival purposes.
 @c
 @c   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000,
-@c   2001, 2002, 2003, 2004, 2009, 2010, 2011 Free Software Foundation, Inc.
-@c See texinfo.txi for copying conditions.
+@c   2001, 2002, 2003, 2004, 2009, 2010, 2011, 2013 Free Software
+@c   Foundation, Inc.
+@c
+@c See texinfo.etxi for copying conditions.
 
 @node Texi2HTML
 @appendix Texi2HTML history and relations with @command{makeinfo}

@@ -1,7 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
 @c $Id$
-@c Ordinarily, Texinfo files have the extension .texi.  But texinfo.texi
-@c clashes with texinfo.tex on 8.3 filesystems, so we use texinfo.txi.
 
 @c Everything between the start/end of header lines will be passed by
 @c Emacs's {texinfo,makeinfo}-format region commands.  See the `start of
@@ -20210,7 +20208,7 @@ Therefore, Texinfo provides a way for manual authors to specify old
 node names and the new nodes to which the old names should be
 redirected, via the file @var{manual}@file{-noderename.cnf}, where
 @var{manual} is the base name of the manual.  For example, the manual
-@file{texinfo.txi} would be supplemented by a file
+@file{texinfo.texi} would be supplemented by a file
 @file{texinfo-noderename}.cnf.  (This name can be overridden by
 setting the @file{RENAMED_NODES_FILE} customization variable;
 @pxref{Customization Variables}).
