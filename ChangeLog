@@ -1,5 +1,10 @@
 2013-08-16  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.texi (Conventions): remove statement about
+	CRLF not being recognized.  It seems that both TeX and tp
+	are agnostic about line endings.
+	Report frmo vincent.belaiche@gmail.com, 21 Apr 2013 19:02:39.
+
         * README,
         * INSTALL,
         * tp/TODO,
