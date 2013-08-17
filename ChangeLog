@@ -1,5 +1,25 @@
 2013-08-17  Sergey Poznyakoff  <gray@gnu.org.ua>
 
+	The -x option takes a numeric argument.
+
+	* NEWS: Document -a.
+	* doc/info-stnd.texi: Document existing debugging levels.
+	Document -x -1.
+	* info/info.c (debug_level): Change type to unsigned.
+	(long_options, short_options): -x now requires argument.
+	(set_debug_level): New function.
+	(main): Change -x handling.
+	* info/info.h (debug_level): Change declaration.
+
+	Minor fixes:
+
+	* info/echo-area.c (ea_possible_completions)
+	[SPLIT_BEFORE_ACTIVE]: Declare start here.
+	(ea_scroll_completions_window): Remove unused variable.
+	(pause_or_input): Likewise.
+
+2013-08-17  Sergey Poznyakoff  <gray@gnu.org.ua>
+
 	Fix -a functionality.
 
 	* info/info.c (all_files): Clear cached data to avoid

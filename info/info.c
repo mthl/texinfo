@@ -87,7 +87,7 @@ static int all_matches_p = 0;
 static int print_where_p = 0;
 
 /* Debugging level */
-int debug_level;
+unsigned debug_level;
 
 /* Non-zero means don't try to be smart when searching for nodes.  */
 int strict_node_location_p = 0;
@@ -110,7 +110,7 @@ int speech_friendly = 0;
 static struct option long_options[] = {
   { "all", 0, 0, 'a' },
   { "apropos", 1, 0, 'k' },
-  { "debug", 0, 0, 'x' },
+  { "debug", 1, 0, 'x' },
   { "directory", 1, 0, 'd' },
   { "dribble", 1, 0, DRIBBLE_OPTION },
   { "file", 1, 0, 'f' },
@@ -140,9 +140,9 @@ static struct option long_options[] = {
 
 /* String describing the shorthand versions of the long options found above. */
 #if defined(__MSDOS__) || defined(__MINGW32__)
-static char *short_options = "ak:d:n:f:ho:ORsv:wbx";
+static char *short_options = "ak:d:n:f:ho:ORsv:wbx:";
 #else
-static char *short_options = "ak:d:n:f:ho:ORv:wsx";
+static char *short_options = "ak:d:n:f:ho:ORv:wsx:";
 #endif
 
 /* When non-zero, the Info window system has been initialized. */
@@ -462,7 +462,23 @@ all_files (char *filename, int argc, char **argv)
   begin_info_session (allfiles_create_node (argc ? argv[0] : fname, fref));
   return EXIT_SUCCESS;
 }
-
+
+static void
+set_debug_level (const char *arg)
+{
+  char *p;
+  long n = strtol (arg, &p, 10);
+  if (*p)
+    {
+      fprintf (stderr, _("invalid number: %s\n"), arg);
+      exit (EXIT_FAILURE);
+    }
+  if (n < 0 || n > UINT_MAX)
+    debug_level = UINT_MAX;
+  else
+    debug_level = n;
+}
+      
 
 /* **************************************************************** */
 /*                                                                  */
@@ -631,7 +647,7 @@ main (int argc, char *argv[])
 	  break;
 	  
 	case 'x':
-	  debug_level++;
+	  set_debug_level (optarg);
 	  break;
 	  
         default:
@@ -876,7 +892,7 @@ Options:\n\
       --vi-keys                use vi-like and less-like key bindings.\n\
       --version                display version information and exit.\n\
   -w, --where, --location      print physical location of Info file.\n\
-  -x, --debug                  increase debugging level.\n"));
+  -x, --debug=NUMBER           set debugging level.\n"));
 
   puts (_("\n\
 The first non-option argument, if present, is the menu entry to start from;\n\

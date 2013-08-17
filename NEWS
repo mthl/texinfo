@@ -26,6 +26,10 @@ one of the relevant sections:
   . new option -x (--debug) enables additional debugging output.
   . new option -v (--variable) assigns a value to an Info variable.
     The syntax is the same as for many other GNU utilities: -v VARIABLE=VALUE
+  . new option -a (--all) instructs info to display all documents
+    matching the command line arguments, not just the first.  In
+    conjunction with the -w option, it shows full names of the info
+    files matching the command line arguments.
   . new variable search-skip-screen controls the starting position for
     repeated search commands ({ and }).  When set to On, repeated
     searches skip the lines displayed on the screen, i.e.,

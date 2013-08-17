@@ -129,7 +129,7 @@ extern int raw_escapes_p;
 /* Non-zero means don't try to be smart when searching for nodes.  */
 extern int strict_node_location_p;
 
-extern int debug_level;
+extern unsigned debug_level;
 
 #define debug(n,c)							\
   do									\

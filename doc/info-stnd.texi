@@ -181,10 +181,21 @@ You can invoke the apropos command from inside Info; see
 @ref{Searching Commands}.
 
 @cindex debugging
-@item -x
-@itemx --debug
-Print additional debugging information.  Each subsequent occurrence of
-this option increases the debugging output verbosity.
+@item --debug=@var{number}
+@itemx -x @var{number} 
+Print additional debugging information.  The argument specifies the
+requested verbosity level.  To request maximum level, use
+@option{-x -1}.
+
+The version @value{VERSION} of GNU info defines two verbosity levels:
+
+@table @asis
+@item 1
+Print information about file lookups.
+
+@item 2
+Print operations over the @env{INFOPATH}.
+@end table
 
 Unless the window system is initialized, debugging output goes to the
 standard error.  When it is initialized, it is diverted to the file

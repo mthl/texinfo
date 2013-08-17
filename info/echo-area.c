@@ -1028,15 +1028,17 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
             if (calling_window->height > (iterations * 2)
 		&& calling_window->height / 2 >= WINDOW_MIN_SIZE)
               {
-                int start, pagetop;
+                int pagetop;
 #ifdef SPLIT_BEFORE_ACTIVE
-                int end;
+                int start, end;
 #endif
 
                 active_window = calling_window;
 
                 /* Perhaps we can scroll this window on redisplay. */
+#ifdef SPLIT_BEFORE_ACTIVE
                 start = calling_window->first_row;
+#endif
                 pagetop = calling_window->pagetop;
 
                 compwin =
@@ -1343,14 +1345,11 @@ remove_completion_duplicates (void)
 DECLARE_INFO_COMMAND (ea_scroll_completions_window, _("Scroll the completions window"))
 {
   WINDOW *compwin;
-  int old_pagetop;
 
   compwin = get_internal_info_window (compwin_name);
 
   if (!compwin)
     compwin = calling_window;
-
-  old_pagetop = compwin->pagetop;
 
   /* Let info_scroll_forward () do the work, and print any messages that
      need to be displayed. */
@@ -1488,13 +1487,12 @@ pause_or_input (void)
 #ifdef FD_SET
   struct timeval timer;
   fd_set readfds;
-  int ready;
 
   FD_ZERO (&readfds);
   FD_SET (fileno (stdin), &readfds);
   timer.tv_sec = 2;
   timer.tv_usec = 0;
-  ready = select (fileno (stdin) + 1, &readfds, NULL, NULL, &timer);
+  select (fileno (stdin) + 1, &readfds, NULL, NULL, &timer);
 #endif /* FD_SET */
 }
 
