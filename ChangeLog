@@ -1,3 +1,10 @@
+2013-08-17  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Fix -a functionality.
+
+	* info/info.c (all_files): Clear cached data to avoid
+	reading the same file again.
+
 2013-08-16  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (Conventions): remove statement about

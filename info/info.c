@@ -394,7 +394,8 @@ all_files (char *filename, int argc, char **argv)
   for (i = 0; fref[i].filename; )
     {
       NODE *node;
-      
+
+      forget_file_names ();
       if (!user_filename)
 	{
 	  char *p = dirname (fref[i].filename);
@@ -446,10 +447,12 @@ all_files (char *filename, int argc, char **argv)
 			       dump_subnodes);
 	  else
 	    fref[i].nodename = xstrdup (node->nodename);
+
+	  forget_info_file (fref[i].filename);
 	  ++i;
 	}
     }
-  
+
   if (print_where_p || user_output_filename)
     return EXIT_SUCCESS;
 
