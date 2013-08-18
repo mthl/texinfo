@@ -648,12 +648,7 @@ apropos_in_all_indices (char *search_string, int inform)
                  100, REFERENCE *);
             }
           else
-            {
-              maybe_free (entry->label);
-              maybe_free (entry->filename);
-              maybe_free (entry->nodename);
-              free (entry);
-            }
+            info_reference_free (entry);
         }
 
       free (all_indices);
@@ -876,7 +871,6 @@ DECLARE_INFO_COMMAND (info_virtual_index,
    _("List all matches of a string in the index"))
 {
   char *line;
-  size_t linelen;
   FILE_BUFFER *fb, *tfb;
   NODE *node;
   struct text_buffer text;
@@ -916,7 +910,6 @@ DECLARE_INFO_COMMAND (info_virtual_index,
       free (line);
       return;
     }
-  linelen = strlen (line);
   
   text_buffer_init (&text);
   text_buffer_printf (&text, _("Index for `%s'"), line);
@@ -964,13 +957,12 @@ DECLARE_INFO_COMMAND (info_virtual_index,
 static NODE *allfiles_node;
 
 NODE *
-allfiles_create_node (char *term, REFERENCE *fref)
+allfiles_create_node (char *term, REFERENCE **fref)
 {
   int i;
   struct text_buffer text;
   size_t off;
   FILE_BUFFER *fb;
-  NODE *node;
   
   text_buffer_init (&text);
   text_buffer_printf (&text, _("File names matching `%s'"), term);
@@ -989,11 +981,11 @@ allfiles_create_node (char *term, REFERENCE *fref)
   memmove (text.base, text.base + off, text.off - off);
   text.off -= off;
 
-  for (i = 0; fref[i].filename; i++)
+  for (i = 0; fref[i]; i++)
     {
-      text_buffer_printf (&text, "* %4i: (%s)", i+1, fref[i].filename);
-      if (fref[i].nodename)
-	text_buffer_printf (&text, "%s", fref[i].nodename);
+      text_buffer_printf (&text, "* %4i: (%s)", i+1, fref[i]->filename);
+      if (fref[i]->nodename)
+	text_buffer_printf (&text, "%s", fref[i]->nodename);
       text_buffer_printf (&text, ".\n");
     }
 

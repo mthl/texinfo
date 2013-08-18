@@ -1778,12 +1778,14 @@ DECLARE_INFO_COMMAND (info_prev_window, _("Select the previous window"))
 DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
 {
   WINDOW *split, *old_active;
+#if defined (SPLIT_BEFORE_ACTIVE)
   int pagetop;
 
   /* Remember the current pagetop of the window being split.  If it doesn't
      change, we can scroll its contents around after the split. */
   pagetop = window->pagetop;
-
+#endif
+  
   /* Make the new window. */
   old_active = active_window;
   active_window = window;
@@ -2644,13 +2646,7 @@ info_menu_or_ref_item (WINDOW *window, int count,
         }
 
       free (line);
-      if (defentry)
-        {
-          free (defentry->label);
-          maybe_free (defentry->filename);
-          maybe_free (defentry->nodename);
-          free (defentry);
-        }
+      info_reference_free (defentry);
     }
 
   info_free_references (menu);
@@ -2870,8 +2866,7 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
             {
               if (mbscasecmp (entry->label, arg) == 0)
                 break;
-              else
-                if ((best_guess == -1)
+              else if (!strict && (best_guess == -1)
                     && (mbsncasecmp (entry->label, arg, strlen (arg)) == 0))
                   best_guess = i;
             }
@@ -2884,14 +2879,14 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
          node anyway.  It is probably a misspelling. */
       if (!entry)
         {
-	  if (strict)
-	    return NULL;
           if (arg == first_arg)
             {
               /* Maybe they typed "info foo" instead of "info -f foo".  */
               node = info_get_node (first_arg, NULL, PARSE_NODE_DFLT);
               if (node)
                 add_file_directory_to_path (first_arg);
+	      else if (strict)
+		return NULL;
               else
                 node = make_manpage_node (first_arg);
               if (node)
@@ -2915,7 +2910,7 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
       /* Try to find this node.  */
       node = info_get_node (entry->filename, entry->nodename, 
                             PARSE_NODE_VERBATIM);
-      if (!node && arg == first_arg)
+      if (!strict && !node && arg == first_arg)
         {
           node = make_manpage_node (first_arg);
           if (node)

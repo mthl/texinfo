@@ -435,6 +435,18 @@ info_copy_reference (REFERENCE *src)
 
 
 
+void
+info_reference_free (REFERENCE *ref)
+{
+  if (ref)
+    {
+      maybe_free (ref->label);
+      maybe_free (ref->filename);
+      maybe_free (ref->nodename);
+      free (ref);
+    }
+}
+
 /* Free the data associated with REFERENCES. */
 void
 info_free_references (REFERENCE **references)
@@ -445,13 +457,7 @@ info_free_references (REFERENCE **references)
   if (references)
     {
       for (i = 0; references && (entry = references[i]); i++)
-        {
-          maybe_free (entry->label);
-          maybe_free (entry->filename);
-          maybe_free (entry->nodename);
-
-          free (entry);
-        }
+        info_reference_free (entry);
 
       free (references);
     }

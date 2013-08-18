@@ -344,16 +344,16 @@ dirname (const char *file)
   return p;
 }
 
-REFERENCE *
+REFERENCE **
 info_find_matching_files (char *filename)
 {
   size_t argc = 0;
   size_t argn = 0;
-  REFERENCE *argv = NULL;
+  REFERENCE **argv = NULL;
   int i = 0;
   char *p;
   
-  do
+  while (1)
     {
       p = info_file_find_next_in_path (filename, infopath (), &i);
       if (argc == argn)
@@ -362,22 +362,63 @@ info_find_matching_files (char *filename)
 	    argn = 2;
 	  argv = x2nrealloc (argv, &argn, sizeof (argv[0]));
 	}
-      memset (&argv[argc], 0, sizeof (argv[argc]));
-      argv[argc++].filename = p;
+      if (!p)
+	{
+	  argv[argc] = NULL;
+	  break;
+	}
+
+      argv[argc] = xzalloc (sizeof (*argv[0]));
+      argv[argc]->filename = p;
+      ++argc;
     }
-  while (p);
+
   return argv;
 }
+
+struct namelist_ent
+{
+  struct namelist_ent *next;
+  char name[1];
+};
 
+static int
+namelist_add (struct namelist_ent **ptop, const char *name)
+{
+  struct namelist_ent *p;
+
+  for (p = *ptop; p; p = p->next)
+    if (strcmp (p->name, name) == 0)
+      return 1;
+
+  p = xmalloc (sizeof (*p) + strlen (name));
+  strcpy (p->name, name);
+  p->next = *ptop;
+  *ptop = p;
+  return 0;
+}
+
+static void
+namelist_free (struct namelist_ent *top)
+{
+  while (top)
+    {
+      struct namelist_ent *next = top->next;
+      free (top);
+      top = next;
+    }
+}
+
+
 static int
 all_files (char *filename, int argc, char **argv)
 {
-  REFERENCE *fref;
+  REFERENCE **fref;
   char *fname;
   int i, j;
   int dirok;
-  size_t count;
-  
+  struct namelist_ent *nlist = NULL;
+
   if (user_filename)
     {
       fname = user_filename;
@@ -391,30 +432,27 @@ all_files (char *filename, int argc, char **argv)
   
   fref = info_find_matching_files (fname);
   
-  for (i = 0; fref[i].filename; )
+  for (i = 0; fref[i]; )
     {
       NODE *node;
-
+      
       forget_file_names ();
       if (!user_filename)
 	{
-	  char *p = dirname (fref[i].filename);
+	  char *p = dirname (fref[i]->filename);
 	  infopath_add (p, INFOPATH_INIT);
 	  free (p);
 	}
-      node = info_get_node (fref[i].filename,
+      node = info_get_node (fref[i]->filename,
 			    user_nodenames ? user_nodenames[0] : 0,
 			    PARSE_NODE_DFLT);
       
       if (node)
 	{
-	  NODE *errnode;
-	  NODE *subnode = info_follow_menus (node, argv, &errnode, 1);
-	  if (errnode)
-	    show_error_node (errnode);
+	  NODE *subnode = info_follow_menus (node, argv, NULL, 1);
 	  if (!subnode)
 	    {
-	      forget_info_file (fref[i].filename);
+	      forget_info_file (fref[i]->filename);
 	      node = NULL;
 	    }
 	  else
@@ -428,30 +466,40 @@ all_files (char *filename, int argc, char **argv)
 	    node = NULL;
 	  else
 	    {
-	      free (fref[i].filename);
-	      fref[i].filename = xstrdup (name);
+	      free (fref[i]->filename);
+	      fref[i]->filename = xstrdup (name);
 	    }
 	}
       
       if (!node)
 	{
-	  free (fref[i].filename);
-	  for (j = i; (fref[j] = fref[j + 1]).filename; j++);
+	  info_reference_free (fref[i]);
+	  for (j = i; (fref[j] = fref[j + 1]); j++);
 	}
       else
 	{
-	  if (print_where_p)
-	    printf ("%s\n", fref[i].filename);
-	  else if (user_output_filename)
-	    dump_node_to_file (node, user_output_filename,
-			       dump_subnodes);
+	  if (namelist_add (&nlist, fref[i]->filename) == 0)
+	    {
+	      if (print_where_p)
+		printf ("%s\n", fref[i]->filename);
+	      else if (user_output_filename)
+		dump_node_to_file (node, user_output_filename,
+				   dump_subnodes);
+	      else
+		fref[i]->nodename = xstrdup (node->nodename);
+	      forget_info_file (fref[i]->filename);
+	      ++i;
+	    }
 	  else
-	    fref[i].nodename = xstrdup (node->nodename);
-
-	  forget_info_file (fref[i].filename);
-	  ++i;
+	    {
+	      forget_info_file (fref[i]->filename);
+	      info_reference_free (fref[i]);
+	      for (j = i; (fref[j] = fref[j + 1]); j++);
+	    }
 	}
     }
+  
+  namelist_free (nlist);
 
   if (print_where_p || user_output_filename)
     return EXIT_SUCCESS;
@@ -703,7 +751,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   
   if (all_matches_p)
     return all_files (user_filename, argc, argv);
-  
+
   return single_file (user_filename, argc, argv);
 }
 

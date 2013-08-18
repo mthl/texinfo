@@ -89,7 +89,7 @@ typedef struct {
   char *filename;               /* The file where this node can be found. */
   char *nodename;               /* The node pointed to by this tag. */
   long nodestart;               /* The offset of the start of this node. */
-  long nodelen;                 /* The length of this node. */
+  size_t nodelen;               /* The length of this node. */
   char *content_cache;          /* Cache of the node contents; used if the
 				   node contents must be preprocessed before
 				   displaying it. */

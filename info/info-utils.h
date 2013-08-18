@@ -99,6 +99,9 @@ REFERENCE **info_concatenate_references (REFERENCE **ref1, REFERENCE **ref2);
 /* Copy an existing reference into new memory.  */
 extern REFERENCE *info_copy_reference (REFERENCE *src);
 
+/* Free the data associated with a single REF */
+void info_reference_free (REFERENCE *ref);
+
 /* Free the data associated with REFERENCES. */
 extern void info_free_references (REFERENCE **references);
 

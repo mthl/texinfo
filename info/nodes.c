@@ -25,6 +25,7 @@
 #include "search.h"
 #include "filesys.h"
 #include "info-utils.h"
+#include "tag.h"
 
 #if defined (HANDLE_MAN_PAGES)
 #  include "man.h"
@@ -953,9 +954,8 @@ info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer, char *nodename)
   int i;
 
   /* If no tags at all (possibly a misformatted info file), quit.  */
-  if (!file_buffer->tags) {
+  if (!file_buffer->tags)
     return NULL;
-  }
 
   for (i = 0; (tag = file_buffer->tags[i]); i++)
     if (strcmp (nodename, tag->nodename) == 0)

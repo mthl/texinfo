@@ -1,3 +1,31 @@
+2013-08-18  Sergey Poznyakoff  <gray@gnu.org.ua>
+
+	Improve info -a: process manpages, filter out duplicate names.
+
+	* info/info-utils.c (info_reference_free): New function.
+	(info_free_references): Use info_reference_free.
+	* info/info-utils.h (info_reference_free): New proto.
+	* info/info.c (info_find_matching_files): Return
+	REFERENCE **.
+	(namelist_add,namelist_free): New static functions.
+	(all_files): Select unique file names.
+	* info/session.c (info_split_window)
+	[SPLIT_BEFORE_ACTIVE]: Declare pagetop.
+	(info_menu_or_ref_item): Use info_reference_free.
+	(info_follow_menus): Fix processing in strict mode.
+
+	* info/filesys.c: Remove unused variable.
+	* info/filesys.h (forget_file_names): New proto.
+	* info/indices.c (apropos_in_all_indices): Use info_reference_free
+	to free a pointer to REFERENCE.
+	(info_virtual_index): Remove unused variable.
+	(allfiles_create_node): Second argument is REFERENCE **.
+	* info/indices.h (allfiles_create_node): Change signature.
+	* info/man.c (manpage_xrefs_in_binding): Use info_reference_free.
+	* info/nodes.c: Include tag.h
+	* info/nodes.h (TAG)<nodelen>: Change type to size_t.
+	* info/window.h (window_log_to_phys_line): New proto.
+
 2013-08-17  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	The -x option takes a numeric argument.

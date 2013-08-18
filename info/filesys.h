@@ -52,6 +52,9 @@ char *infopath_next (int *idx);
    If it can't find the file, it returns NULL. */
 extern char *info_find_fullpath (char *partial);
 
+/* Forget all cached file names */
+extern void forget_file_names (void);
+
 /* Given a chunk of text and its length, convert all CRLF pairs at the
    EOLs into a single Newline character.  Return the length of produced
    text.  */

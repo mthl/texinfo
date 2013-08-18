@@ -671,17 +671,10 @@ manpage_xrefs_in_binding (NODE *node, SEARCH_BINDING *binding)
   for (i = 0; (entry = all_refs[i]); i++)
     {
       if ((entry->start > start) && (entry->end < end))
-        {
-          add_pointer_to_array
-            (entry, brefs_index, brefs, brefs_slots, 10, REFERENCE *);
-        }
+        add_pointer_to_array (entry, brefs_index, brefs, brefs_slots, 10, 
+                              REFERENCE *);
       else
-        {
-          maybe_free (entry->label);
-          maybe_free (entry->filename);
-          maybe_free (entry->nodename);
-          free (entry);
-        }
+        info_reference_free (entry);
     }
 
   free (all_refs);

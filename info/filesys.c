@@ -163,7 +163,7 @@ info_file_find_next_in_path (char *filename, char *path, int *diridx)
 {
   struct stat finfo;
   char *temp_dirname;
-  int statable, dirname_index;
+  int statable;
 
   /* Reject ridiculous cases up front, to prevent infinite recursion
      later on.  E.g., someone might say "info '(.)foo'"...  */

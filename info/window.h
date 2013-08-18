@@ -279,14 +279,16 @@ extern size_t process_node_text
 		     size_t, size_t),
 	 void *closure);
 
-void clean_manpage (char *manpage);
+extern void clean_manpage (char *manpage);
 
 extern void window_compute_line_map (WINDOW *win);
 
-int window_point_to_column (WINDOW *win, long point, long *np);
+extern int window_point_to_column (WINDOW *win, long point, long *np);
 
-void window_line_map_init (WINDOW *win);
+extern void window_line_map_init (WINDOW *win);
 
-long window_end_of_line (WINDOW *win);
+extern long window_end_of_line (WINDOW *win);
+
+extern size_t window_log_to_phys_line (WINDOW *window, size_t ln);
 
 #endif /* not INFO_WINDOW_H */
