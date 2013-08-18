@@ -9865,10 +9865,11 @@ reference to @file{@var{filename}.jpg} anyway.
 @cindex SVG images, used in Docbook
 For Docbook, @code{makeinfo} outputs references to
 @file{@var{filename}.eps}, @file{@var{filename}.gif}
-@file{@var{filename}.jpg}, @file{@var{filename}.pdf},
-@file{@var{filename}.png} and @file{@var{filename}.svg}, for every
-file found.  Also, @file{@var{filename}.txt} is included verbatim, if
-present.
+@file{@var{filename}.jpeg}, @file{@var{filename}.jpg},
+@file{@var{filename}.pdf}, @file{@var{filename}.png} and
+@file{@var{filename}.svg}, for every file found.  Also,
+@file{@var{filename}.txt} is included verbatim, if present.  (The
+subsequent Docbook processor is supposed to choose the appropriate one.)
 
 @item
 For Info and HTML output, @code{makeinfo} uses the optional fifth

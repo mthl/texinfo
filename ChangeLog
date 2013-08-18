@@ -1,3 +1,13 @@
+2013-08-18  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (Image Syntax): a bit more about Docbook.
+
+	* doc/info-stnd.texi (Invoking Info),
+	(Variables): editing throughout.
+	* info/info.c (info_short_help): use MANUAL instead of FILENAME
+	for -f.  Report from Arne Babenhauserheide,
+	11 Apr 2013 11:05:37.
+
 2013-08-18  Sergey Poznyakoff  <gray@gnu.org.ua>
 
 	Improve info -a: process manpages, filter out duplicate names.

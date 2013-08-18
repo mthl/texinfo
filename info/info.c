@@ -910,22 +910,22 @@ Read documentation in Info format.\n"), program_name);
 
   puts (_("\
 Options:\n\
-  -a, --all                    visit all matching documents.\n\
+  -a, --all                    use all matching manuals.\n\
   -k, --apropos=STRING         look up STRING in all indices of all manuals.\n\
   -d, --directory=DIR          add DIR to INFOPATH.\n\
-      --dribble=FILENAME       remember user keystrokes in FILENAME.\n\
-  -f, --file=FILENAME          specify Info file to visit."));
+      --dribble=FILE           remember user keystrokes in FILENAME.\n\
+  -f, --file=MANUAL            specify Info manual to visit."));
 
   puts (_("\
   -h, --help                   display this help and exit.\n\
       --index-search=STRING    go to node pointed by index entry STRING.\n\
   -n, --node=NODENAME          specify nodes in first visited Info file.\n\
-  -o, --output=FILENAME        output selected nodes to FILENAME."));
+  -o, --output=FILE            output selected nodes to FILE."));
 
   puts (_("\
   -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n\
       --no-raw-escapes         output escapes as literal text.\n\
-      --restore=FILENAME       read initial keystrokes from FILENAME.\n\
+      --restore=FILE           read initial keystrokes from FILE.\n\
   -O, --show-options, --usage  go to command-line options node."));
 
 #if defined(__MSDOS__) || defined(__MINGW32__)
@@ -936,7 +936,7 @@ Options:\n\
   puts (_("\
       --strict-node-location   (for debugging) use Info file pointers as-is.\n\
       --subnodes               recursively output menu items.\n\
-  -v, --variable VAR=VALUE     assign VALUE to the info variable VAR.\n\
+  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR.\n\
       --vi-keys                use vi-like and less-like key bindings.\n\
       --version                display version information and exit.\n\
   -w, --where, --location      print physical location of Info file.\n\
