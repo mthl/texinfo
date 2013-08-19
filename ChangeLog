@@ -1,8 +1,15 @@
 2013-08-19  Sergey Poznyakoff  <gray@nxc.no>
 
+	New interactive command "display-file".
+
+	* info/session.c (info_display_file): New command.
+	* info/infomap.c: Bind '=' to display-file.
+
+2013-08-19  Sergey Poznyakoff  <gray@nxc.no>
+
 	Don't return dir entries when called with -a.  Fix interaction of
 	-a and --output.
-	
+
 	* info/session.c (info_follow_menus): Add debugging output
 	on level 3.
 	In strict mode, return NULL if no matching node was found (by

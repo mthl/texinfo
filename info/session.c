@@ -2823,7 +2823,7 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
       REFERENCE *entry;
       char *arg = *menus; /* Remember the name of the menu entry we want. */
 
-      debug(3, ("looking for %s in %s", arg, initial_node->filename,
+      debug(3, ("looking for %s in %s:%s", arg, initial_node->filename,
 		initial_node->nodename));
       /* A leading space is certainly NOT part of a node name.  Most
          probably, they typed a space after the separating comma.  The
@@ -5366,6 +5366,21 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
         }
       key = 0;
     }
+}
+
+DECLARE_INFO_COMMAND (info_display_file,
+		      _("Show full file name of the node being displayed"))
+{
+  const char *fname = info_find_fullpath (window->node->filename);
+  if (fname)
+    {
+      int line = window_line_of_point (window);
+      window_message_in_echo_area ("File name: %s, line %d of %ld (%d%%)",
+				   fname, line, window->line_count,
+				   line * 100 / window->line_count);
+    }
+  else
+    window_message_in_echo_area ("Internal node");
 }
 
 /* **************************************************************** */
