@@ -95,10 +95,15 @@ extern long info_target_search_node (NODE *node, char *string,
 extern void info_select_reference (WINDOW *window, REFERENCE *entry);
 extern int info_any_buffered_input_p (void);
 extern void print_node (NODE *node);
+
+#define DUMP_APPEND   0x01
+#define DUMP_SUBNODES 0x02
+
 extern void dump_node_to_file (NODE *node, char *filename,
-    int dump_subnodes);
+			       int flags);
 extern void dump_nodes_to_file (char *filename, char **nodenames,
-    char *output_filename, int dump_subnodes);
+				char *output_filename, int flags);
+
 extern char *program_name_from_file_name (char *file_name);
 
 /* Do the physical deletion of WINDOW, and forget this window and

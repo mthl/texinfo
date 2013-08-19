@@ -1,3 +1,22 @@
+2013-08-19  Sergey Poznyakoff  <gray@nxc.no>
+
+	Don't return dir entries when called with -a.  Fix interaction of
+	-a and --output.
+	
+	* info/session.c (info_follow_menus): Add debugging output
+	on level 3.
+	In strict mode, return NULL if no matching node was found (by
+	default initial node is returned).
+	(dump_nodes_to_file,dump_node_to_file): Take flags in the
+	last parameter.  If DUMP_APPEND is set, append to the output
+	file instead of overwriting it.
+	* info/session.h (DUMP_APPEND, DUMP_SUBNODES): New flags.
+	* info/filesys.c (info_file_find_next_in_path): Improve
+	debugging output
+	* info/info.c (all_files): Set DUMP_APPEND for all but the
+	first call to dump_node_to_file.
+	(main): Initialize dump_subnodes.
+
 2013-08-18  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (Image Syntax): a bit more about Docbook.

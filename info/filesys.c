@@ -179,9 +179,7 @@ info_file_find_next_in_path (char *filename, char *path, int *diridx)
       /* Expand a leading tilde if one is present. */
       if (*temp_dirname == '~')
         {
-          char *expanded_dirname;
-
-          expanded_dirname = tilde_expand_word (temp_dirname);
+          char *expanded_dirname = tilde_expand_word (temp_dirname);
           free (temp_dirname);
           temp_dirname = expanded_dirname;
         }
@@ -208,7 +206,7 @@ info_file_find_next_in_path (char *filename, char *path, int *diridx)
             {
               if (S_ISREG (finfo.st_mode))
                 {
-		  debug(1, (_("found %s"), temp));
+		  debug(1, (_("found file %s"), temp));
                   return temp;
                 }
               else if (S_ISDIR (finfo.st_mode))
@@ -223,7 +221,7 @@ info_file_find_next_in_path (char *filename, char *path, int *diridx)
                   if (newtemp)
                     {
                       free (temp);
-		      debug(1, (_("found %s"), newtemp));
+		      debug(1, (_("found file %s"), newtemp));
                       return newtemp;
                     }
                 }
@@ -244,7 +242,7 @@ info_file_find_next_in_path (char *filename, char *path, int *diridx)
                   statable = (stat (temp, &finfo) == 0);
                   if (statable && (S_ISREG (finfo.st_mode)))
 		    {
-		      debug(1, (_("found %s"), temp));
+		      debug(1, (_("found file %s"), temp));
 		      return temp;
 		    }
                 }

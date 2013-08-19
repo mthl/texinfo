@@ -2823,6 +2823,8 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
       REFERENCE *entry;
       char *arg = *menus; /* Remember the name of the menu entry we want. */
 
+      debug(3, ("looking for %s in %s", arg, initial_node->filename,
+		initial_node->nodename));
       /* A leading space is certainly NOT part of a node name.  Most
          probably, they typed a space after the separating comma.  The
          strings in menus[] have their whitespace canonicalized, so
@@ -2840,16 +2842,20 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
          realize it. */
       if (!menu)
         {
+	  debug(3, ("no menu found"));
           if (arg == first_arg && !strict)
             {
               node = make_manpage_node (first_arg);
               if (node)
-                goto maybe_got_node;
+		{
+		  debug(3, ("falling back to manpage node"));
+		  goto maybe_got_node;
+		}
             }
 	  if (err_node)
 	    *err_node = format_message_node (_("No menu in node `%s'."),
 					     node_printed_rep (initial_node));
-          return initial_node;
+          return strict ? NULL : initial_node;
         }
 
       /* Find the specified menu item. */
@@ -2862,6 +2868,7 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
           int i;
           int best_guess = -1;
 
+	  debug(3, ("no entry found: guessing"));
           for (i = 0; (entry = menu[i]); i++)
             {
               if (mbscasecmp (entry->label, arg) == 0)
@@ -2898,7 +2905,7 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
 	    *err_node = format_message_node (_("No menu item `%s' in node `%s'."),
 					     arg,
 					     node_printed_rep (initial_node));
-          return initial_node;
+          return strict ? NULL : initial_node;
         }
 
       /* We have found the reference that the user specified.  If no
@@ -2907,6 +2914,8 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
         entry->filename = xstrdup (initial_node->parent ? initial_node->parent
                                                      : initial_node->filename);
 
+      debug(3, ("entry: %s, %s", entry->filename, entry->nodename));
+      
       /* Try to find this node.  */
       node = info_get_node (entry->filename, entry->nodename, 
                             PARSE_NODE_VERBATIM);
@@ -2926,15 +2935,18 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
     maybe_got_node:
       if (!node)
         {
+	  debug(3, ("no matching node found"));
 	  if (err_node)
 	    *err_node = format_message_node (
 		     _("Unable to find node referenced by `%s' in `%s'."),
 		     entry->label,
 		     node_printed_rep (initial_node));
           info_free_references (menu);
-          return initial_node;
+          return strict ? NULL : initial_node;
         }
 
+      debug(3, ("node: %s, %s", node->filename, node->nodename));
+      
       info_free_references (menu);
 
       /* Success.  Go round the loop again.  */
@@ -3480,11 +3492,11 @@ static void dump_node_to_stream (char *filename, char *nodename,
 static void initialize_dumping (void);
 
 /* Dump the nodes specified by FILENAME and NODENAMES to the file named
-   in OUTPUT_FILENAME.  If DUMP_SUBNODES is non-zero, recursively dump
+   in OUTPUT_FILENAME.  If DUMP_SUBNODES is set, recursively dump
    the nodes which appear in the menu of each node dumped. */
 void
 dump_nodes_to_file (char *filename, char **nodenames,
-    char *output_filename, int dump_subnodes)
+		    char *output_filename, int flags)
 {
   register int i;
   FILE *output_stream;
@@ -3494,7 +3506,7 @@ dump_nodes_to_file (char *filename, char **nodenames,
   if (strcmp (output_filename, "-") == 0)
     output_stream = stdout;
   else
-    output_stream = fopen (output_filename, "w");
+    output_stream = fopen (output_filename, flags & DUMP_APPEND ? "a" : "w");
 
   if (!output_stream)
     {
@@ -3505,7 +3517,8 @@ dump_nodes_to_file (char *filename, char **nodenames,
   /* Print each node to stream. */
   initialize_dumping ();
   for (i = 0; nodenames[i]; i++)
-    dump_node_to_stream (filename, nodenames[i], output_stream, dump_subnodes);
+    dump_node_to_stream (filename, nodenames[i], output_stream,
+			 flags & DUMP_SUBNODES);
 
   if (output_stream != stdout)
     fclose (output_stream);
@@ -3598,10 +3611,10 @@ dump_node_to_stream (char *filename, char *nodename,
   free (node);
 }
 
-/* Dump NODE to FILENAME.  If DUMP_SUBNODES is non-zero, recursively dump
+/* Dump NODE to FILENAME.  If DUMP_SUBNODES is set, recursively dump
    the nodes which appear in the menu of each node dumped. */
 void
-dump_node_to_file (NODE *node, char *filename, int dump_subnodes)
+dump_node_to_file (NODE *node, char *filename, int flags)
 {
   FILE *output_stream;
   char *nodes_filename;
@@ -3611,7 +3624,7 @@ dump_node_to_file (NODE *node, char *filename, int dump_subnodes)
   if (strcmp (filename, "-") == 0)
     output_stream = stdout;
   else
-    output_stream = fopen (filename, "w");
+    output_stream = fopen (filename, flags & DUMP_APPEND ? "a" : "w");
 
   if (!output_stream)
     {
@@ -3625,8 +3638,10 @@ dump_node_to_file (NODE *node, char *filename, int dump_subnodes)
     nodes_filename = node->filename;
 
   initialize_dumping ();
-  dump_node_to_stream
-    (nodes_filename, node->nodename, output_stream, dump_subnodes);
+  if (flags & DUMP_APPEND)
+    fputc ('\f', output_stream);
+  dump_node_to_stream (nodes_filename, node->nodename,
+		       output_stream, flags & DUMP_SUBNODES);
 
   if (output_stream != stdout)
     fclose (output_stream);

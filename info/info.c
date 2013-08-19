@@ -418,7 +418,8 @@ all_files (char *filename, int argc, char **argv)
   int i, j;
   int dirok;
   struct namelist_ent *nlist = NULL;
-
+  int dump_flags = dump_subnodes;
+  
   if (user_filename)
     {
       fname = user_filename;
@@ -483,8 +484,10 @@ all_files (char *filename, int argc, char **argv)
 	      if (print_where_p)
 		printf ("%s\n", fref[i]->filename);
 	      else if (user_output_filename)
-		dump_node_to_file (node, user_output_filename,
-				   dump_subnodes);
+		{
+		  dump_node_to_file (node, user_output_filename, dump_flags);
+		  dump_flags |= DUMP_APPEND;
+		}
 	      else
 		fref[i]->nodename = xstrdup (node->nodename);
 	      forget_info_file (fref[i]->filename);
@@ -713,6 +716,9 @@ main (int argc, char *argv[])
       dump_subnodes = 1;
     }
 
+  if (dump_subnodes)
+    dump_subnodes = DUMP_SUBNODES;
+  
   /* If the user specified --version, then show the version and exit. */
   if (print_version_p)
     {
