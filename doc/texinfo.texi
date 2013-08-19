@@ -4545,8 +4545,28 @@ just as with @code{@@chapter}.
 Texinfo also provides a command @code{@@centerchap}, which is analogous
 to @code{@@unnumbered}, but centers its argument in the printed and HTML
 outputs.  This kind of stylistic choice is not usually offered by
-Texinfo.
+Texinfo.  It may be suitable for short documents.
 @c but the Hacker's Dictionary wanted it, before they quit Texinfo.
+
+@cindex Docbook and prefatory sections
+@cindex Preface, etc., and Docbook
+With @code{@@unnumbered}, if the name of the associated node is one of
+these English words (case-insensitive):
+
+@example
+Acknowledgements  Colophon  Dedication  Preface
+@end example
+
+@cindex @code{<acknowledgements>} Docbook tag
+@cindex @code{<colophon>} Docbook tag
+@cindex @code{<dedication>} Docbook tag
+@cindex @code{<preface>} Docbook tag
+@cindex @code{<chapter>} Docbook tag
+@cindex @code{<title>} Docbook tag
+@noindent then the Docbook output uses corresponding special tags
+(@code{<preface>}, etc.)@: instead of the default @code{<chapter>}.
+The argument to @code{@@unnumbered} itself can be anything, and is
+output as the following @code{<title>} text as usual.
 
 
 @node @t{@@majorheading @@chapheading}
@@ -8251,16 +8271,21 @@ This is
 a foo.
 @end quotation
 
-If the @code{@@quotation} argument is exactly one of these English words:
+If the @code{@@quotation} argument is one of these English words
+(case-insensitive):
 
 @example
 Caution  Important  Note  Tip  Warning
 @end example
 
+@cindex @code{<caution>} Docbook tag
+@cindex @code{<important>} Docbook tag
 @cindex @code{<note>} Docbook tag
+@cindex @code{<tip>} Docbook tag
+@cindex @code{<warning>} Docbook tag
 @cindex @code{<blockquote>} HTML tag
 @noindent then the Docbook output uses corresponding special tags
-(@code{<note>}, etc.) instead of the default @code{<blockquote>}.
+(@code{<note>}, etc.)@: instead of the default @code{<blockquote>}.
 HTML output always uses @code{<blockquote>}.
 
 If the author of the quotation is specified in the @code{@@quotation}
@@ -18264,7 +18289,8 @@ differences before installing the updates in the original document.
 This will be remedied in a future release.)
 
 The following transformations are currently supported (many are used
-in the @code{pod2texi} utility distributed with Texinfo):
+in the @code{pod2texi} utility distributed with Texinfo;
+@pxref{Invoking @t{pod2texi}}):
 
 @ftable @samp
 @item complete_tree_nodes_menus
@@ -18272,9 +18298,9 @@ Add menu entries or whole menus for nodes associated with sections of
 any level, based on the sectioning tree.
 
 @item fill_gaps_in_sectioning
-Adds empty @code{@@unnumbered} in a tree to fill gaps in sectioning.
-For example, an @code{@@unnumberedsec} will be inserted if an
-@code{@@chapter} is followed by an @code{@@subsection}.
+Adds empty @code{@@unnumbered...} sections in a tree to fill gaps in
+sectioning.  For example, an @code{@@unnumberedsec} will be inserted
+if an @code{@@chapter} is followed by an @code{@@subsection}.
 
 @item indent_menu_descriptions
 Reformat menus so that descriptions start at column
@@ -18440,7 +18466,7 @@ appropriately in many languages.
 
 
 @node Invoking @t{pod2texi}
-@section Invoking @t{pod2texi}: 
+@section Invoking @t{pod2texi}: Convert POD to Texinfo
 
 @pindex pod2texi
 @cindex Invoking @code{pod2texi}

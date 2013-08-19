@@ -1,3 +1,8 @@
+2013-08-19  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (@t{@@unnumbered @@appendix}): mention special
+	Docbook output for acknowledgements, colophon, etc.
+
 2013-08-19  Sergey Poznyakoff  <gray@gnu.org>
 
 	New interactive command "display-file".
