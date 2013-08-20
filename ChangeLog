@@ -1,5 +1,27 @@
 2013-08-20  Sergey Poznyakoff  <gray@gnu.org>
 
+	Check for I/O errors when dumping nodes to file.
+	Use a general-purpose interface for storing and looking up in
+	a list of names.
+
+	* info/info-utils.c (info_namelist_add)
+	(info_namelist_free): New functions.
+	* info/info-utils.h: Likewise.
+	* info/info.c (namelist_add,namelist_free): Move to
+	info-utils.c, redeclare as extern.
+	(all_files): Update accordingly.
+	* info/session.c [VERBOSE_NODE_DUMPING]: Replace with
+	calls to debug.
+	(write_node_to_stream)
+	(dump_node_to_stream): Return error code.
+	(dump_nodes_to_file): Check for I/O errors,
+	(dumped_already): Change data type to struct
+	info_namelist_entry *.
+	(dumped_already_index, dumped_already_slots): Remove.
+	(initialize_dumping): Rewrite.
+
+2013-08-20  Sergey Poznyakoff  <gray@gnu.org>
+
 	Bind display-file to C-g in vi mode.
 
 	* info/infomap.c (default_vi_like_info_keys): Bind display-file to

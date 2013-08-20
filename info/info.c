@@ -199,8 +199,8 @@ single_file (char *filename, int argc, char **argv)
       if (print_where_p)
         printf ("%s\n", filename ? filename : "unknown?!");
       else if (user_output_filename)
-        dump_nodes_to_file
-          (filename, user_nodenames, user_output_filename, dump_subnodes);
+        dump_nodes_to_file (filename, user_nodenames,
+			    user_output_filename, dump_subnodes);
       else
         begin_multiple_window_info_session (filename, user_nodenames);
 
@@ -376,40 +376,6 @@ info_find_matching_files (char *filename)
   return argv;
 }
 
-struct namelist_ent
-{
-  struct namelist_ent *next;
-  char name[1];
-};
-
-static int
-namelist_add (struct namelist_ent **ptop, const char *name)
-{
-  struct namelist_ent *p;
-
-  for (p = *ptop; p; p = p->next)
-    if (strcmp (p->name, name) == 0)
-      return 1;
-
-  p = xmalloc (sizeof (*p) + strlen (name));
-  strcpy (p->name, name);
-  p->next = *ptop;
-  *ptop = p;
-  return 0;
-}
-
-static void
-namelist_free (struct namelist_ent *top)
-{
-  while (top)
-    {
-      struct namelist_ent *next = top->next;
-      free (top);
-      top = next;
-    }
-}
-
-
 static int
 all_files (char *filename, int argc, char **argv)
 {
@@ -417,7 +383,7 @@ all_files (char *filename, int argc, char **argv)
   char *fname;
   int i, j;
   int dirok;
-  struct namelist_ent *nlist = NULL;
+  struct info_namelist_entry *nlist = NULL;
   int dump_flags = dump_subnodes;
   
   if (user_filename)
@@ -479,7 +445,7 @@ all_files (char *filename, int argc, char **argv)
 	}
       else
 	{
-	  if (namelist_add (&nlist, fref[i]->filename) == 0)
+	  if (info_namelist_add (&nlist, fref[i]->filename) == 0)
 	    {
 	      if (print_where_p)
 		printf ("%s\n", fref[i]->filename);
@@ -502,7 +468,7 @@ all_files (char *filename, int argc, char **argv)
 	}
     }
   
-  namelist_free (nlist);
+  info_namelist_free (nlist);
 
   if (print_where_p || user_output_filename)
     return EXIT_SUCCESS;

@@ -169,5 +169,9 @@ size_t text_buffer_printf (struct text_buffer *buf, const char *format, ...);
 #define text_buffer_reset(buf) ((buf)->off = 0)
 #define text_buffer_base(buf) ((buf)->base)
 #define text_buffer_off(buf) ((buf)->off)
+
+struct info_namelist_entry;
+int info_namelist_add (struct info_namelist_entry **ptop, const char *name);
+void info_namelist_free (struct info_namelist_entry *top);
 
 #endif /* not INFO_UTILS_H */
