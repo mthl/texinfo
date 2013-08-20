@@ -7,6 +7,9 @@
 
 2013-08-20  Karl Berry  <karl@gnu.org>
 
+	* configure.ac (AM_INIT_AUTOMAKE): require 1.14 for info-in-builddir.
+	Noted by Patrice.
+
 	* doc/texinfo.tex (\sectionheading): must do
 	\global\let\prevsectiondefs, since we're inside a group.
 	Otherwise, \thissection is lost in PDF output if an xref intervenes

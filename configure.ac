@@ -18,7 +18,7 @@ dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
 dnl tar-ustar because we have long filenames for some test files.
 dnl parallel-tests as recommended by stefano.
-AM_INIT_AUTOMAKE([1.13 dist-xz 
+AM_INIT_AUTOMAKE([1.14 dist-xz 
                  info-in-builddir parallel-tests readme-alpha tar-ustar])
 
 # Where to generate output; srcdir location.
