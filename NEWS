@@ -35,7 +35,9 @@ one of the relevant sections:
     searches skip the lines displayed on the screen, i.e.,
     forward searches (}) start at the beginning of the next page, and
     backward searches ({) start at the end of the previous page.
-
+  . new command '=' (C-g in vi mode) shows full file name of the node
+    being displayed and position in it.
+  
 * Distribution: automake-1.14, gettext-0.18.3.1.
 
 

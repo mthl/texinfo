@@ -4734,8 +4734,9 @@ info_gc_file_buffers (void)
         {
           for (i = 0; iw->nodes && iw->nodes[i]; i++)
             {
-              if ((FILENAME_CMP (fb->fullpath, iw->nodes[i]->filename) == 0) ||
-                  (FILENAME_CMP (fb->filename, iw->nodes[i]->filename) == 0))
+              if (iw->nodes[i]->filename &&
+		  ((FILENAME_CMP (fb->fullpath, iw->nodes[i]->filename) == 0) ||
+		   (FILENAME_CMP (fb->filename, iw->nodes[i]->filename) == 0)))
                 {
                   fb_referenced_p = 1;
                   break;

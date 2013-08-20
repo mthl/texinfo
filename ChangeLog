@@ -1,3 +1,12 @@
+2013-08-20  Sergey Poznyakoff  <gray@gnu.org>
+
+	Bind display-file to C-g in vi mode.
+
+	* info/infomap.c (default_vi_like_info_keys): Bind display-file to
+	C-g and abort to C-c.
+	* info/session.c (info_gc_file_buffers): Fix null pointer dereference.
+	* NEWS: Update.
+
 2013-08-19  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (@t{@@unnumbered @@appendix}): mention special
