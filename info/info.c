@@ -58,8 +58,8 @@ static int print_help_p = 0;
 /* Array of the names of nodes that the user specified with "--node" on the
    command line. */
 static char **user_nodenames = NULL;
-static int user_nodenames_index = 0;
-static int user_nodenames_slots = 0;
+static size_t user_nodenames_index = 0;
+static size_t user_nodenames_slots = 0;
 
 /* String specifying the first file to load.  This string can only be set
    by the user specifying "--file" on the command line. */
@@ -525,8 +525,8 @@ main (int argc, char *argv[])
     {
       int option_character;
 
-      option_character = getopt_long
-        (argc, argv, short_options, long_options, &getopt_long_index);
+      option_character = getopt_long (argc, argv, short_options, long_options,
+				      &getopt_long_index);
 
       /* getopt_long returns EOF when there are no more long options. */
       if (option_character == EOF)
@@ -554,7 +554,7 @@ main (int argc, char *argv[])
           /* User is specifying a particular node. */
         case 'n':
           add_pointer_to_array (optarg, user_nodenames_index, user_nodenames,
-                                user_nodenames_slots, 10, char *);
+                                user_nodenames_slots, 10);
           break;
 
           /* User is specifying a particular Info file. */
@@ -610,7 +610,7 @@ main (int argc, char *argv[])
           /* User has specified a string to search all indices for. */
         case 'k':
           apropos_p = 1;
-          maybe_free (apropos_search_string);
+          free (apropos_search_string);
           apropos_search_string = xstrdup (optarg);
           break;
 
@@ -628,7 +628,7 @@ main (int argc, char *argv[])
           /* User has specified a string to search all indices for. */
         case IDXSRCH_OPTION:
           index_search_p = 1;
-          maybe_free (index_search_string);
+          free (index_search_string);
           index_search_string = xstrdup (optarg);
           break;
 

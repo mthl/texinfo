@@ -51,8 +51,8 @@ typedef struct {
 
 /* An array associating index nodenames with index offset ranges. */
 static INDEX_NAME_ASSOC **index_nodenames = NULL;
-static int index_nodenames_index = 0;
-static int index_nodenames_slots = 0;
+static size_t index_nodenames_index = 0;
+static size_t index_nodenames_slots = 0;
 
 /* Add the name of NODE, and the range of the associated index elements
    (passed in ARRAY) to index_nodenames. */
@@ -77,9 +77,8 @@ add_index_to_index_nodenames (REFERENCE **array, NODE *node)
       assoc->first = 1 + index_nodenames[i]->last;
       assoc->last = assoc->first + last;
     }
-  add_pointer_to_array
-    (assoc, index_nodenames_index, index_nodenames, index_nodenames_slots,
-     10, INDEX_NAME_ASSOC *);
+  add_pointer_to_array (assoc, index_nodenames_index, index_nodenames, 
+                        index_nodenames_slots, 10);
 }
 
 /* Find and return the indices of WINDOW's file.  The indices are defined
@@ -108,8 +107,8 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
     return NULL;
 
   /* Reset globals describing where the index was found. */
-  maybe_free (initial_index_filename);
-  maybe_free (initial_index_nodename);
+  free (initial_index_filename);
+  free (initial_index_nodename);
   initial_index_filename = NULL;
   initial_index_nodename = NULL;
 
@@ -189,7 +188,7 @@ do_info_index_search (WINDOW *window, int count, char *search_string)
   index_offset = 0;
 
   /* The user is selecting a new search string, so flush the old one. */
-  maybe_free (index_search);
+  free (index_search);
   index_search = NULL;
 
   /* If this window's file is not the same as the one that we last built an
@@ -536,7 +535,7 @@ DECLARE_INFO_COMMAND (info_next_index_match,
 REFERENCE **
 apropos_in_all_indices (char *search_string, int inform)
 {
-  register int i, dir_index;
+  size_t i, dir_index;
   REFERENCE **all_indices = NULL;
   REFERENCE **dir_menu = NULL;
   NODE *dir_node;
@@ -636,16 +635,15 @@ apropos_in_all_indices (char *search_string, int inform)
   if (all_indices)
     {
       REFERENCE *entry, **apropos_list = NULL;
-      int apropos_list_index = 0;
-      int apropos_list_slots = 0;
+      size_t apropos_list_index = 0;
+      size_t apropos_list_slots = 0;
 
       for (i = 0; (entry = all_indices[i]); i++)
         {
           if (string_in_line (search_string, entry->label) != -1)
             {
-              add_pointer_to_array
-                (entry, apropos_list_index, apropos_list, apropos_list_slots,
-                 100, REFERENCE *);
+              add_pointer_to_array (entry, apropos_list_index, apropos_list, 
+                                    apropos_list_slots, 100);
             }
           else
             info_reference_free (entry);
@@ -874,7 +872,7 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   FILE_BUFFER *fb, *tfb;
   NODE *node;
   struct text_buffer text;
-  int i;
+  size_t i;
   size_t cnt, off;
   
   fb = file_buffer_of_window (window);

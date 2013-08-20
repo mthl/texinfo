@@ -1,3 +1,10 @@
+2013-08-20  Sergey Poznyakoff  <gray@gnu.org>
+
+	* info/info.h (add_pointer_to_array): Use x2nrealloc.
+	Remove sixth argument.  All uses updated.
+	(maybe_free): Remove.  Use free() instead.  All uses
+	updated.
+
 2013-08-20  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\sectionheading): must do

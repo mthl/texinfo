@@ -272,7 +272,7 @@ info_references_internal (char *label, SEARCH_BINDING *binding)
 {
   SEARCH_BINDING tmp_search;
   REFERENCE **refs = NULL;
-  int refs_index = 0, refs_slots = 0;
+  size_t refs_index = 0, refs_slots = 0;
   int searching_for_menu_items = 0;
   long position;
 
@@ -354,8 +354,7 @@ info_references_internal (char *label, SEARCH_BINDING *binding)
           entry->line_number = info_parsed_line_number;
         }
 
-      add_pointer_to_array
-        (entry, refs_index, refs, refs_slots, 50, REFERENCE *);
+      add_pointer_to_array (entry, refs_index, refs, refs_slots, 50);
     }
   return refs;
 }
@@ -440,9 +439,9 @@ info_reference_free (REFERENCE *ref)
 {
   if (ref)
     {
-      maybe_free (ref->label);
-      maybe_free (ref->filename);
-      maybe_free (ref->nodename);
+      free (ref->label);
+      free (ref->filename);
+      free (ref->nodename);
       free (ref);
     }
 }

@@ -64,10 +64,10 @@ int quit_info_immediately = 0;
 INFO_WINDOW **info_windows = NULL;
 
 /* Where to add the next window, if we need to add one. */
-static int info_windows_index = 0;
+static size_t info_windows_index = 0;
 
 /* Number of slots allocated to `info_windows'. */
-static int info_windows_slots = 0;
+static size_t info_windows_slots = 0;
 
 /* Whether to use regexps or not for search.  */
 static int use_regex = 1;
@@ -366,7 +366,7 @@ remember_window_and_node (WINDOW *window, NODE *node)
       info_win->nodes_slots = 0;
 
       add_pointer_to_array (info_win, info_windows_index, info_windows,
-                            info_windows_slots, 10, INFO_WINDOW *);
+                            info_windows_slots, 10);
     }
 
   /* If this node, the current pagetop, and the current point are the
@@ -409,7 +409,7 @@ remember_window_and_node (WINDOW *window, NODE *node)
 static void
 consistency_check_info_windows (void)
 {
-  register int i;
+  size_t i;
 
   for (i = 0; i < info_windows_index; i++)
     {
@@ -429,7 +429,7 @@ consistency_check_info_windows (void)
 void
 forget_window_and_nodes (WINDOW *window)
 {
-  register int i;
+  size_t i;
   INFO_WINDOW *info_win = NULL;
 
   for (i = 0; info_windows && (info_win = info_windows[i]); i++)
@@ -458,8 +458,8 @@ forget_window_and_nodes (WINDOW *window)
               free (info_win->nodes[i]);
           free (info_win->nodes);
 
-          maybe_free (info_win->pagetops);
-          maybe_free (info_win->points);
+          free (info_win->pagetops);
+          free (info_win->points);
         }
 
       free (info_win);
@@ -2071,7 +2071,7 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
           node = info_get_node (entry->label, "Top", PARSE_NODE_DFLT);
           if (!node && info_recent_file_error)
             {
-              maybe_free (file_system_error);
+              free (file_system_error);
               file_system_error = xstrdup (info_recent_file_error);
             }
         }
@@ -2085,9 +2085,9 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
         info_error (msg_cant_find_node, nodename);
     }
 
-  maybe_free (file_system_error);
-  maybe_free (filename);
-  maybe_free (nodename);
+  free (file_system_error);
+  free (filename);
+  free (nodename);
 
   if (node)
     info_set_node_of_window (1, window, node);
@@ -2547,7 +2547,7 @@ info_menu_or_ref_item (WINDOW *window, int count,
       /* User aborts, just quit. */
       if (!line)
         {
-          maybe_free (defentry);
+          free (defentry);
           info_free_references (menu);
           info_abort_key (window, 0, 0);
           return;
@@ -2732,8 +2732,8 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
     register int fbi, i;
     FILE_BUFFER *current;
     REFERENCE **items = NULL;
-    int items_index = 0;
-    int items_slots = 0;
+    size_t items_index = 0;
+    size_t items_slots = 0;
 
     current = file_buffer_of_window (window);
 
@@ -2751,8 +2751,7 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
         entry->label = xmalloc (4 + strlen (fb->filename));
         sprintf (entry->label, "(%s)*", fb->filename);
 
-        add_pointer_to_array
-          (entry, items_index, items, items_slots, 10, REFERENCE *);
+        add_pointer_to_array (entry, items_index, items, items_slots, 10);
 
         if (fb->tags)
           {
@@ -2771,8 +2770,8 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
                              fb->filename, fb->tags[i]->nodename);
                   }
 
-                add_pointer_to_array
-                  (entry, items_index, items, items_slots, 100, REFERENCE *);
+                add_pointer_to_array (entry, items_index, items, 
+                                      items_slots, 100);
               }
           }
       }
@@ -3280,7 +3279,7 @@ read_nodename_to_kill (WINDOW *window)
   char *nodename;
   INFO_WINDOW *info_win;
   REFERENCE **menu = NULL;
-  int menu_index = 0, menu_slots = 0;
+  size_t menu_index = 0, menu_slots = 0;
   char *default_nodename = xstrdup (active_window->node->nodename);
   char *prompt = xmalloc (strlen (_("Kill node (%s): ")) + strlen (default_nodename));
 
@@ -3292,8 +3291,7 @@ read_nodename_to_kill (WINDOW *window)
       entry->label = xstrdup (info_win->window->node->nodename);
       entry->filename = entry->nodename = NULL;
 
-      add_pointer_to_array (entry, menu_index, menu, menu_slots, 10,
-                            REFERENCE *);
+      add_pointer_to_array (entry, menu_index, menu, menu_slots, 10);
     }
 
   nodename = info_read_completing_in_echo_area (window, prompt, menu);
@@ -4316,8 +4314,8 @@ static unsigned char isearch_terminate_search_key = ESC;
 
 /* Array of search states. */
 static SEARCH_STATE **isearch_states = NULL;
-static int isearch_states_index = 0;
-static int isearch_states_slots = 0;
+static size_t isearch_states_index = 0;
+static size_t isearch_states_slots = 0;
 
 /* Push the state of this search. */
 static void
@@ -4332,7 +4330,7 @@ push_isearch (WINDOW *window, int search_index, int direction, int failing)
   state->failing = failing;
 
   add_pointer_to_array (state, isearch_states_index, isearch_states,
-                        isearch_states_slots, 20, SEARCH_STATE *);
+                        isearch_states_slots, 20);
 }
 
 /* Pop the state of this search to WINDOW, SEARCH_INDEX, and DIRECTION. */
@@ -4414,7 +4412,7 @@ show_isearch_prompt (int dir, unsigned char *string, int failing_p)
            p_rep ? p_rep : "");
 
   window_message_in_echo_area ("%s", prompt);
-  maybe_free (p_rep);
+  free (p_rep);
   free (prompt);
   display_cursor_at_point (active_window);
 }
@@ -4597,7 +4595,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
              then push it into pending input. */
           if (isearch_string_index && func != (VFunction *) info_abort_key)
             {
-              maybe_free (last_isearch_accepted);
+              free (last_isearch_accepted);
               last_isearch_accepted = xstrdup (isearch_string);
             }
 

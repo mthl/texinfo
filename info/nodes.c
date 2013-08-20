@@ -66,7 +66,7 @@ char *info_recent_file_error = NULL;
 FILE_BUFFER **info_loaded_files = NULL;
 
 /* The number of slots currently allocated to LOADED_FILES. */
-int info_loaded_files_slots = 0;
+size_t info_loaded_files_slots = 0;
 
 /* Public functions for node manipulation.  */
 
@@ -517,7 +517,7 @@ static void
 get_nodes_of_info_file (FILE_BUFFER *file_buffer)
 {
   long nodestart;
-  int tags_index = 0;
+  size_t tags_index = 0;
   SEARCH_BINDING binding;
 
   binding.buffer = file_buffer->contents;
@@ -585,7 +585,7 @@ get_nodes_of_info_file (FILE_BUFFER *file_buffer)
 
       /* Add this tag to the array of tag structures in this FILE_BUFFER. */
       add_pointer_to_array (entry, tags_index, file_buffer->tags,
-                            file_buffer->tags_slots, 100, TAG *);
+                            file_buffer->tags_slots, 100);
     }
 }
 
@@ -614,7 +614,7 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
   int name_offset;
   SEARCH_BINDING *tmp_search;
   long position;
-  int tags_index = 0;
+  size_t tags_index = 0;
 
   tmp_search = copy_binding (buffer_binding);
 
@@ -698,7 +698,7 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
       /* Add this node structure to the array of node structures in this
          FILE_BUFFER. */
       add_pointer_to_array (entry, tags_index, file_buffer->tags,
-                            file_buffer->tags_slots, 100, TAG *);
+                            file_buffer->tags_slots, 100);
     }
   free (tmp_search);
 }
@@ -719,7 +719,7 @@ get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
 {
   int i;
   SUBFILE **subfiles = NULL;
-  int subfiles_index = 0, subfiles_slots = 0;
+  size_t subfiles_index = 0, subfiles_slots = 0;
   TAG *entry;
 
   /* First get the list of tags from the tags table.  Then lookup the
@@ -751,8 +751,8 @@ get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
         subfile->filename[colon - 1] = 0;
         subfile->first_byte = (long) atol (line + colon);
 
-        add_pointer_to_array
-          (subfile, subfiles_index, subfiles, subfiles_slots, 10, SUBFILE *);
+        add_pointer_to_array (subfile, subfiles_index, subfiles, 
+                              subfiles_slots, 10);
 
         while (*line++ != '\n');
       }
@@ -1113,7 +1113,7 @@ remember_info_file (FILE_BUFFER *file_buffer)
     ;
 
   add_pointer_to_array (file_buffer, i, info_loaded_files,
-                        info_loaded_files_slots, 10, FILE_BUFFER *);
+                        info_loaded_files_slots, 10);
 }
 
 /* Forget the contents, tags table, nodes list, and names of FILENAME. */

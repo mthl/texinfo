@@ -96,13 +96,13 @@ typedef struct {
   char *filename;               /* Name of the file containing entries. */
   long entrylen;                /* Total number of characters in tag block. */
   EMACS_TAG **entries;          /* Entries found in FILENAME. */
-  int entries_index;
-  int entries_slots;
+  size_t entries_index;
+  size_t entries_slots;
 } EMACS_TAG_BLOCK;
 
 EMACS_TAG_BLOCK **emacs_tags = NULL;
-int emacs_tags_index = 0;
-int emacs_tags_slots = 0;
+size_t emacs_tags_index = 0;
+size_t emacs_tags_slots = 0;
 
 #define DECLARATION_STRING "\nDECLARE_INFO_COMMAND"
 
@@ -243,7 +243,7 @@ main (int argc, char **argv)
 static void
 maybe_dump_tags (FILE *stream)
 {
-  register int i;
+  size_t i;
 
   /* Emacs needs its TAGS file to be in Unix text format (i.e., only
      newline at end of every line, no CR), so when we generate a
@@ -254,7 +254,7 @@ maybe_dump_tags (FILE *stream)
   /* Print out the information for each block. */
   for (i = 0; i < emacs_tags_index; i++)
     {
-      register int j;
+      size_t j;
       register EMACS_TAG_BLOCK *block;
       register EMACS_TAG *etag;
       long block_len;
@@ -313,7 +313,7 @@ add_tag_to_block (EMACS_TAG_BLOCK *block,
   tag->line = line;
   tag->char_offset = char_offset;
   add_pointer_to_array (tag, block->entries_index, block->entries,
-                        block->entries_slots, 50, EMACS_TAG *);
+                        block->entries_slots, 50);
 }
 
 /* Read the file represented by FILENAME into core, and search it for Info
@@ -542,7 +542,7 @@ process_one_file (char *filename, FILE *doc_stream,
      free the memory already allocated to it. */
   if (block->entries)
     add_pointer_to_array (block, emacs_tags_index, emacs_tags,
-                          emacs_tags_slots, 10, EMACS_TAG_BLOCK *);
+                          emacs_tags_slots, 10);
   else
     {
       free (block->filename);

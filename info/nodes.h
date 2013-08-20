@@ -110,7 +110,7 @@ typedef struct {
   size_t filesize;              /* The number of bytes this file expands to. */
   char **subfiles;              /* If non-null, the list of subfiles. */
   TAG **tags;                   /* If non-null, the indirect tags table. */
-  int tags_slots;               /* Number of slots allocated for TAGS. */
+  size_t tags_slots;            /* Number of slots allocated for TAGS. */
   int flags;                    /* Various flags.  Mimics of N_* flags. */
 } FILE_BUFFER;
 
@@ -120,7 +120,7 @@ typedef struct {
 extern FILE_BUFFER **info_loaded_files;
 
 /* The number of slots currently allocated to INFO_LOADED_FILES. */
-extern int info_loaded_files_slots;
+extern size_t info_loaded_files_slots;
 
 /* Locate the file named by FILENAME, and return the information structure
    describing this file.  The file may appear in our list of loaded files

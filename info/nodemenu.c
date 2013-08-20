@@ -132,7 +132,7 @@ get_visited_nodes (Function *filter_func)
   INFO_WINDOW *info_win;
   NODE *node;
   char **lines = NULL;
-  int lines_index = 0, lines_slots = 0;
+  size_t lines_index = 0, lines_slots = 0;
 
   if (!info_windows)
     return NULL;
@@ -153,8 +153,7 @@ get_visited_nodes (Function *filter_func)
               char *line;
 
               line = format_node_info (node);
-              add_pointer_to_array
-                (line, lines_index, lines, lines_slots, 20, char *);
+              add_pointer_to_array (line, lines_index, lines, lines_slots, 20);
             }
         }
     }

@@ -541,8 +541,8 @@ xrefs_of_manpage (NODE *node)
 {
   SEARCH_BINDING *reference_section;
   REFERENCE **refs = NULL;
-  int refs_index = 0;
-  int refs_slots = 0;
+  size_t refs_index = 0;
+  size_t refs_slots = 0;
   long position;
 
   reference_section = find_reference_section (node);
@@ -594,8 +594,7 @@ xrefs_of_manpage (NODE *node)
           entry->start = start;
           entry->end = end;
 
-          add_pointer_to_array
-            (entry, refs_index, refs, refs_slots, 10, REFERENCE *);
+          add_pointer_to_array (entry, refs_index, refs, refs_slots, 10);
         }
 
       reference_section->start = position + 1;
@@ -654,12 +653,12 @@ locate_manpage_xref (NODE *node, long int start, int dir)
 REFERENCE **
 manpage_xrefs_in_binding (NODE *node, SEARCH_BINDING *binding)
 {
-  register int i;
+  size_t i;
   REFERENCE **all_refs = xrefs_of_manpage (node);
   REFERENCE **brefs = NULL;
   REFERENCE *entry;
-  int brefs_index = 0;
-  int brefs_slots = 0;
+  size_t brefs_index = 0;
+  size_t brefs_slots = 0;
   int start, end;
 
   if (!all_refs)
@@ -671,8 +670,7 @@ manpage_xrefs_in_binding (NODE *node, SEARCH_BINDING *binding)
   for (i = 0; (entry = all_refs[i]); i++)
     {
       if ((entry->start > start) && (entry->end < end))
-        add_pointer_to_array (entry, brefs_index, brefs, brefs_slots, 10, 
-                              REFERENCE *);
+        add_pointer_to_array (entry, brefs_index, brefs, brefs_slots, 10);
       else
         info_reference_free (entry);
     }

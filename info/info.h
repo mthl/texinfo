@@ -63,15 +63,19 @@ typedef char *CFunction ();
    array where POINTER should be added.  GROW is the number of slots to grow
    ARRAY by, in the case that it needs growing.  TYPE is a cast of the type
    of object stored in ARRAY (e.g., NODE_ENTRY *. */
-#define add_pointer_to_array(pointer, idx, array, slots, grow, type) \
-  do { \
-    if (idx + 2 >= slots) \
-      array = (type *)(xrealloc (array, (slots += grow) * sizeof (type))); \
-    array[idx++] = (type)pointer; \
-    array[idx] = (type)NULL; \
-  } while (0)
-
-#define maybe_free(x) do { if (x) free (x); } while (0)
+#define add_pointer_to_array(pointer, idx, array, slots, minslots)	\
+  do									\
+    {									\
+       if (idx + 2 >= slots)						\
+	 {								\
+	   if (slots == 0)						\
+	     slots = minslots;						\
+	   array = x2nrealloc (array, &slots, sizeof(array[0]));	\
+	 }								\
+       array[idx++] = pointer;						\
+       array[idx] = NULL;						\
+    }									\
+  while (0)
 
 #if !defined (zero_mem) && defined (HAVE_MEMSET)
 #  define zero_mem(mem, length) memset (mem, 0, length)

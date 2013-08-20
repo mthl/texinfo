@@ -166,8 +166,8 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
       {
         register int i;
         REFERENCE **array = NULL;
-        int array_index = 0;
-        int array_slots = 0;
+        size_t array_index = 0;
+        size_t array_slots = 0;
 
         for (i = 0; var->choices[i]; i++)
           {
@@ -178,8 +178,7 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
             entry->nodename = NULL;
             entry->filename = NULL;
 
-            add_pointer_to_array
-              (entry, array_index, array, array_slots, 10, REFERENCE *);
+            add_pointer_to_array (entry, array_index, array, array_slots, 10);
           }
 
         sprintf (prompt, _("Set %s to value (%s): "),
@@ -272,7 +271,7 @@ make_variable_completions_array (void)
 {
   register int i;
   REFERENCE **array = NULL;
-  int array_index = 0, array_slots = 0;
+  size_t array_index = 0, array_slots = 0;
 
   for (i = 0; info_variables[i].name; i++)
     {
@@ -283,8 +282,7 @@ make_variable_completions_array (void)
       entry->nodename = NULL;
       entry->filename = NULL;
 
-      add_pointer_to_array
-        (entry, array_index, array, array_slots, 200, REFERENCE *);
+      add_pointer_to_array (entry, array_index, array, array_slots, 200);
     }
 
   return array;

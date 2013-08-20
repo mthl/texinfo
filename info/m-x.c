@@ -37,7 +37,7 @@ read_function_name (const char *prompt, WINDOW *window)
   register int i;
   char *line;
   REFERENCE **array = NULL;
-  int array_index = 0, array_slots = 0;
+  size_t array_index = 0, array_slots = 0;
 
   /* Make an array of REFERENCE which actually contains the names of
      the functions available in Info. */
@@ -50,8 +50,7 @@ read_function_name (const char *prompt, WINDOW *window)
       entry->nodename = NULL;
       entry->filename = NULL;
 
-      add_pointer_to_array
-        (entry, array_index, array, array_slots, 200, REFERENCE *);
+      add_pointer_to_array (entry, array_index, array, array_slots, 200);
     }
 
   line = info_read_completing_in_echo_area (window, prompt, array);

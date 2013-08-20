@@ -358,7 +358,7 @@ create_internal_info_help_node (int help_is_only_window_p)
       if (printed_one_mx)
         printf_to_message_buffer ("\n");
 
-      maybe_free (exec_keys);
+      free (exec_keys);
 #endif /* NAMED_FUNCTIONS */
 
       node = message_buffer_to_node ();
@@ -863,7 +863,7 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
   register int i, start, next;
   static char *result = NULL;
 
-  maybe_free (result);
+  free (result);
   result = xmalloc (1 + reslen);
 
   i = next = start = 0;
@@ -1014,7 +1014,7 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
                 start++;
             }
 
-          maybe_free (fmt);
+          free (fmt);
         }
     }
   strcpy (result + next, string + start);
