@@ -1,8 +1,8 @@
 /* nodes.c -- how to get an Info file and node.
    $Id$
 
-   Copyright (C) 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
-   2008, 2009, 2011, 2012 Free Software Foundation, Inc.
+   Copyright 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
+   2008, 2009, 2011, 2012, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Originally written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #include "info.h"
 

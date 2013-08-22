@@ -1,7 +1,7 @@
 /* session.c -- user windowing interface to Info.
    $Id$
 
-   Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
+   Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
    2004, 2007, 2008, 2009, 2011, 2012, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Originally written by Brian Fox (bfox@ai.mit.edu). */
+   Originally written by Brian Fox. */
 
 #include "info.h"
 #include "search.h"

@@ -1,8 +1,8 @@
-/*  man.c: How to read and format man files.
-    $Id$
+/* man.c: How to read and format man files.
+   $Id$
 
-   Copyright (C) 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 
-   2007, 2008, 2009, 2011, 2012 Free Software Foundation, Inc.
+   Copyright 1995, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 
+   2007, 2008, 2009, 2011, 2012, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
