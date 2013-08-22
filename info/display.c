@@ -1,7 +1,7 @@
 /* display.c -- How to display Info windows.
    $Id$
 
-   Copyright (C) 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012, 2013
+   Copyright 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012, 2013
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify

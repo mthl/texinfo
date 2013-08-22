@@ -16,7 +16,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Written by Andrew Bettison <andrewb@zip.com.au>.
+   Originally written by Andrew Bettison.
 
    This design was derived from the "lesskey" system in less 3.4.0. by
    Mark Nudelman.

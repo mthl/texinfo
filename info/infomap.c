@@ -1,7 +1,7 @@
 /* infomap.c -- keymaps for Info.
    $Id$
 
-   Copyright (C) 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007,
+   Copyright 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007,
    2008, 2011, 2012, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify

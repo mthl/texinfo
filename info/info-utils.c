@@ -1,7 +1,7 @@
 /* info-utils.c -- miscellanous.
    $Id$
 
-   Copyright (C) 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012,
+   Copyright 1993, 1998, 2003, 2004, 2007, 2008, 2009, 2011, 2012,
    2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
