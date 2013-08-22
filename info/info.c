@@ -912,7 +912,7 @@ Options:\n\
       --vi-keys                use vi-like and less-like key bindings.\n\
       --version                display version information and exit.\n\
   -w, --where, --location      print physical location of Info file.\n\
-  -x, --debug=NUMBER           set debugging level.\n"));
+  -x, --debug=NUMBER           set debugging level (-1 for all).\n"));
 
   puts (_("\n\
 The first non-option argument, if present, is the menu entry to start from;\n\

@@ -151,10 +151,11 @@ name).  Three usage patterns are supported, as follows.
 
 First, if @code{--all} is used together with @option{--where},
 @command{info} prints the names of all matching files found on
-standard output and exits.
+standard output (including @samp{*manpages*} if relevant) and exits.
 
 Second, if @code{--all} is used together with @option{--output}, the
-contents of all matched files are dumped to the specified output file.
+contents of all matched files are dumped to the specified output
+file.
 
 Otherwise, an interactive session is initiated.  If more than one file
 matches, a menu node is displayed listing the matches and allowing you
@@ -187,21 +188,26 @@ You can invoke the apropos command from inside Info; see
 @cindex @code{--debug} (@code{-x}) command line option
 @cindex debugging
 Print additional debugging information.  The argument specifies the
-verbosity level.  For all available debugging output, use @option{-x
--1}.  Version @value{VERSION} has two specific verbosity levels:
+verbosity level, so a higher level includes all the information from
+lower levels.  For all available debugging output, use
+@option{-x@tie{}-1}.  Info version @value{VERSION} has these levels:
 
-@table @asis
+@table @code
 @item 1
-Print information about file lookups.
+Print information about file handling, such as looking for @file{dir}
+files and nodes written with @samp{--output}.
 
 @item 2
 Print operations relating to @env{INFOPATH}.
+
+@item 3
+Print information about node searching.
 @end table
 
 @cindex @file{infodebug} output file
-Unless the window system is initialized, debugging output goes to the
-standard error.  When it is initialized, it is diverted to the file
-@file{infodebug} in the current working directory.
+Before Info's full-screen output is initialized, debugging output goes
+to standard error.  After it is initialized, the debugging output is
+written to the file @file{infodebug} in the current working directory.
 
 @item --directory @var{directory-path}
 @itemx -d @var{directory-path}
@@ -248,6 +254,19 @@ that it finds).  With this option, it starts by trying to visit
 @code{(@var{manual})Top}, i.e., the @code{Top} node in (typically)
 @file{@var{manual}.info}.  If no such file (or node) can be found,
 Info just exits immediately.
+
+Thus, @code{info -f emacs} is rather different from @code{info emacs}.
+With the latter, @samp{emacs} is treated as a menu item, meaning a
+case-insensitive match to the text before the colon in a typical
+@code{dir} entry:
+
+@example
+* Emacs: (emacs).  The extensible ...
+@end example
+
+An exact match (@samp{* emacs:})@: is preferred to a case-folding
+match.  This can often happen when the name of a utility and its
+containing manual are the same.
 
 @cindex relative Info file names
 @cindex file names, relative
@@ -1832,6 +1851,16 @@ Try hard to visit the node @code{(info)Help}.  The Info file
 @file{info.texi} distributed with GNU Info contains this node.  Of
 course, the file must first be processed with @code{makeinfo}, and then
 placed into the location of your Info directory.
+
+@item @kbd{=} (@code{display-file-info})
+@cindex current file, information about
+@findex display-file-info
+@kindex =, in Info windows
+@kindex C-g, vi-like operation
+Show information about what's currently being viewed in the echo area:
+the Info file name, and current line number and percentage within the
+current node.
+
 @end table
 
 Here are the commands for creating a numeric argument:
@@ -1890,17 +1919,17 @@ be able to insert the @samp{-} character itself; use @kbd{M--} instead,
 if you need to specify negative arguments in the echo area.
 @end table
 
-@samp{C-g} is used to abort the reading of a multi-character key
-sequence, to cancel lengthy operations (such as multi-file searches) and
-to cancel reading input in the echo area.
+@key{C-g} (@kbd{C-c} in vi-like mode) is used to abort the reading of
+a multi-character key sequence, to cancel lengthy operations (such as
+multi-file searches) and to cancel reading input in the echo area.
 
 @table @asis
 @item @kbd{C-g} (@code{abort-key})
-@itemx @kbd{C-u}, vi-like operation
+@itemx @kbd{C-c}, vi-like operation
 @cindex cancelling typeahead
 @cindex cancelling the current operation
 @kindex C-g, in Info windows
-@kindex C-u cancels typeahead, vi-like operation
+@kindex C-c, vi-like operation
 @findex abort-key
 Cancel current operation.
 @end table

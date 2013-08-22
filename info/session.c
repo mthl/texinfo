@@ -2,7 +2,7 @@
    $Id$
 
    Copyright (C) 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-   2004, 2007, 2008, 2009, 2011, 2012 Free Software Foundation, Inc.
+   2004, 2007, 2008, 2009, 2011, 2012, 2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -5384,8 +5384,8 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
     }
 }
 
-DECLARE_INFO_COMMAND (info_display_file,
-		      _("Show full file name of the node being displayed"))
+DECLARE_INFO_COMMAND (info_display_file_info,
+		      _("Show full file name of node being displayed"))
 {
   const char *fname = info_find_fullpath (window->node->filename);
   if (fname)

@@ -28,15 +28,16 @@ one of the relevant sections:
     with the usual syntax, -v VARIABLE=VALUE.
   . new option -a (--all) instructs Info to display all documents
     matching the command line arguments, not just the first.  In
-    conjunction with the -w option, it shows full names of the info
-    files matching the command line arguments.
+    conjunction with the -w option, it shows full names of all Info
+    files matching the command line arguments; with -o, it outputs all
+    matching files.
   . new variable search-skip-screen controls the starting position for
     repeated search commands ({ and }).  When set to On, repeated
     searches skip the lines displayed on the screen, i.e.,
     forward searches (}) start at the beginning of the next page, and
     backward searches ({) start at the end of the previous page.
-  . new command '=' (C-g in vi mode) shows full file name of the node
-    being displayed and position in it.
+  . new command display-file-info (bound to = by default, C-g in vi mode)
+    shows full file name of the node being displayed and position in it.
   
 * Distribution: automake-1.14, gettext-0.18.3.1.
 
