@@ -1,4 +1,5 @@
 /* infopath.c -- INFOPATH handling.
+   $Id$
 
    Copyright 1993, 1997, 1998, 2000, 2002, 2003, 2004, 2007, 2008, 2009, 2011,
    2012, 2013 Free Software Foundation, Inc.
