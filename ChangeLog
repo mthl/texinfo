@@ -1,3 +1,10 @@
+2013-08-24  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/Info.pm (output), 
+	tp/Texinfo/Convert/Plaintext.pm: collect text before first node
+	and output the same header for every Info output files using that
+	text.
+
 2013-08-22  Karl Berry  <karl@gnu.org>
 
 	* info/infomap.c (default_{emacs,vi}_like_info_keys),

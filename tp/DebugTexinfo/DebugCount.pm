@@ -17,6 +17,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # 
 # Original author: Patrice Dumas <pertusus@free.fr>
+# ./texi2any.pl --set TEXINFO_OUTPUT_FORMAT=debugcount file.texi
 
 use strict;
 

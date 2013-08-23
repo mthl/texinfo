@@ -830,13 +830,59 @@ HHH
 '],
 );
 
+my @file_tests = (
+['split_test_before_first_node',
+'@setfilename split_test_before_first_node.info
+
+truc machin et reuc machin  ze aze zea zae eaz eaz zae
+
+@node Top
+@top top
+
+In top node
+
+@menu
+* chap1::
+@end menu
+
+@node chap1
+@chapter chap
+
+In chap1.
+
+',{},{'SPLIT_SIZE' => 10}],
+['split_test_before_first_node_no_empty_line',
+'@setfilename split_test_before_first_node.info
+
+truc machin et reuc machin  ze aze zea zae eaz eaz zae
+@node Top
+@top top
+
+In top node
+
+@menu
+* chap1::
+@end menu
+
+@node chap1
+@chapter chap
+
+In chap1.
+
+',{},{'SPLIT_SIZE' => 10}],
+);
+
 foreach my $test (@test_cases) {
   push @{$test->[2]->{'test_formats'}}, 'info';
 }
 
+foreach my $test (@file_tests) {
+  push @{$test->[2]->{'test_formats'}}, 'file_info';
+}
+
 our ($arg_test_case, $arg_generate, $arg_debug);
 
-run_all ('info_tests', [@test_cases], $arg_test_case,
+run_all ('info_tests', [@test_cases, @file_tests], $arg_test_case,
    $arg_generate, $arg_debug);
 
 1;

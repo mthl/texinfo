@@ -416,13 +416,14 @@ sub _count_context_bug_message($$$)
   my $precision = shift; 
   my $element = shift;
 
-  my $element_text;
-  if ($element) {
-    $element_text = Texinfo::Structuring::_print_element_command_texi($element);
-  } else {
-    $element_text = '';
-  }
   if (scalar(@{$self->{'count_context'}}) != 1) {
+    my $element_text;
+    if ($element) {
+      $element_text 
+         = Texinfo::Structuring::_print_element_command_texi($element);
+    } else {
+      $element_text = '';
+    }
     $self->_bug_message("Too much count_context ${precision}(".
       scalar(@{$self->{'count_context'}}). "): ". $element_text, $element);
     die;
@@ -2973,6 +2974,8 @@ sub _convert($$)
       $self->{'format_context'}->[-1]->{'row_counts'} = [];
       $self->{'format_context'}->[-1]->{'row_empty_lines_count'} 
         = $self->{'empty_lines_count'};
+    } elsif ($root->{'type'} eq 'text_root') {
+      $self->{'text_before_first_node'} = $result;
     }
   }
   # close paragraphs and preformatted
