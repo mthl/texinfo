@@ -899,9 +899,13 @@ xref_files_changed ()
   if grep "Rerun to get" "$in_noext.log" >&6 2>&1; then
     return 0
   fi
+  # biblatex report of whether rerunning is needed.
+  if grep "biblatex.*(re)run" "$in_noext.log" >&6 2>&1; then
+    return 0
+  fi
 
-  # If old and new lists don't at least have the same file list,
-  # then one file or another has definitely changed.
+  # If old and new lists don't have the same file list,
+  # then something has definitely changed.
   xref_files_new=`generated_files_get "$in_noext" xref_file_p`
   verbose "Original xref files = $xref_files_orig"
   verbose "New xref files      = $xref_files_new"
@@ -1073,20 +1077,19 @@ run_tex ()
 
 # run_bibtex ()
 # -------------
-# Run bibtex on current file.
+# Run bibtex on (or biber) current file.
 # - If its input (AUX) exists.
 # - If some citations are missing (LOG contains `Citation').
 #   or the LOG complains of a missing .bbl
 #
 # Don't try to be too smart:
-#
 # 1. Running bibtex only if the bbl file exists and is older than
 # the LaTeX file is wrong, since the document might include files
 # that have changed.
 #
 # 3. Because there can be several AUX (if there are \include's),
 # but a single LOG, looking for missing citations in LOG is
-# easier, though we take the risk to match false messages.
+# easier, though we take the risk of matching false messages.
 run_bibtex ()
 {
   case $in_lang in
@@ -1107,10 +1110,14 @@ run_bibtex ()
               && grep '^\\bibdata' "$in_noext.aux")) \
         >&6 2>&1; \
   then
-    for f in `generated_files_get "$in_noext" bibaux_file_p`
-    do
+    for f in `generated_files_get "$in_noext" bibaux_file_p`; do
       run $bibtex "$f"
     done
+  fi
+
+  # biber(+biblatex) check.
+  if test -r "$in_noext.bcf"; then
+    run biber "$in_noext"
   fi
 }
 

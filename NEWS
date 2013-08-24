@@ -38,7 +38,10 @@ one of the relevant sections:
     backward searches ({) start at the end of the previous page.
   . new command display-file-info (bound to = by default, C-g in vi mode)
     shows full file name of the node being displayed and position in it.
-  
+
+* texi2dvi:
+  . support for biblatex+biber.
+
 * Distribution: automake-1.14, gettext-0.18.3.1.
 
 

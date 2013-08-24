@@ -1,3 +1,9 @@
+2013-08-24  Karl Berry  <karl@gnu.org>  (tiny change)
+
+	* util/texi2dvi (run_bibtex): run biber if .bcf file exists.
+	(xref_files_changed): check for biblatex rerun warning.
+	Report from Jozef Vesely, 24 Aug 2013 12:15:40.
+
 2013-08-24  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Convert/Info.pm (output), 
@@ -8,6 +14,8 @@
 	http://lists.gnu.org/archive/html/bug-gnu-emacs/2013-04/msg00039.html
 
 2013-08-22  Karl Berry  <karl@gnu.org>
+
+	* info/*: update copyright notices.
 
 	* info/infomap.c (default_{emacs,vi}_like_info_keys),
 	* info/session.c (info_display_file_info): rename from
