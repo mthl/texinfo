@@ -3,7 +3,9 @@
 	* tp/Texinfo/Convert/Info.pm (output), 
 	tp/Texinfo/Convert/Plaintext.pm: collect text before first node
 	and output the same header for every Info output files using that
-	text.
+	text.  Based on a report from Juri Linkov and analysis of Sergey.
+	Thread started at
+	http://lists.gnu.org/archive/html/bug-gnu-emacs/2013-04/msg00039.html
 
 2013-08-22  Karl Berry  <karl@gnu.org>
 
