@@ -854,7 +854,8 @@ sub _compute_spaces_align_line($$$;$)
   if ($line_width > $max_column or $no_align) {
     $spaces_prepended = 0;
   } elsif ($direction eq 'center') {
-    $spaces_prepended = (($max_column -1 - $line_width) /2);
+    # if no int we may end up with floats...
+    $spaces_prepended = int(($max_column -1 - $line_width) /2);
   } else {
     $spaces_prepended = ($max_column -1 - $line_width);
   }
@@ -907,6 +908,8 @@ sub _align_lines($$$$$$)
   foreach my $line (split /^/, $text) {
     my $line_bytes_begin = 0;
     my $line_bytes_end = 0;
+    my $removed_line_bytes_end = 0;
+    my $removed_line_bytes_begin = 0;
 
     my ($new_image, $new_image_prepended_spaces);
     if ($images_marks->{$line_index}) {
@@ -922,15 +925,19 @@ sub _align_lines($$$$$$)
       }
     }
 
+    my $orig_line;
     if (!$image) {
       my $chomped = chomp($line);
       # for debugging.
-      my $orig_line = $line;
-      $line_bytes_end -= $self->count_bytes($chomped);
+      $orig_line = $line;
+      $removed_line_bytes_end -= $self->count_bytes($chomped);
+      #$line_bytes_end -= $self->count_bytes($chomped);
       $line =~ s/^(\s*)//;
-      $line_bytes_begin -= $self->count_bytes($1);
+      $removed_line_bytes_begin -= $self->count_bytes($1);
+      #$line_bytes_begin -= $self->count_bytes($1);
       $line =~ s/(\s*)$//;
-      $line_bytes_end -= $self->count_bytes($1);
+      $removed_line_bytes_end -= $self->count_bytes($1);
+      #$line_bytes_end -= $self->count_bytes($1);
       my $line_width = Texinfo::Convert::Unicode::string_width($line);
       if ($line_width == 0) {
         $result .= "\n";
@@ -971,12 +978,14 @@ sub _align_lines($$$$$$)
 
     if ($updated_locations->{$line_index}) {
       foreach my $location (@{$updated_locations->{$line_index}}) {
-        $location->{'bytes'} += $line_bytes_begin + $delta_bytes;
+        $location->{'bytes'} += $line_bytes_begin + $removed_line_bytes_begin 
+                                + $delta_bytes;
         #print STDERR "UPDATE ALIGN: $location->{'root'}->{'extra'}->{'normalized'}: ($location->{'bytes'})\n";
       }
     }
-    $delta_bytes += $line_bytes_begin + $line_bytes_end;
-    #print STDERR "ALIGN $orig_line ($line_index. lbb $line_bytes_begin, lbe $line_bytes_end, delta $delta_bytes, bytes_count $bytes_count)\n";
+    $delta_bytes += $line_bytes_begin + $line_bytes_end 
+             + $removed_line_bytes_begin + $removed_line_bytes_end;
+    #print STDERR "ALIGN $orig_line ($line_index. lbb $line_bytes_begin, lbe $line_bytes_end, rlbb $removed_line_bytes_begin, rlbe $removed_line_bytes_end delta $delta_bytes, bytes_count $bytes_count)\n";
     $line_index++;
   }
   return ($result, $bytes_count);
