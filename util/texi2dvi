@@ -391,7 +391,7 @@ directory, occasionally TeX won't be able to find some files (e.g., when
 using \\graphicspath): in that case, use -I to specify the additional
 directories to consider.
 
-The values of the BIBTEX, DVIPDF, DVIPS, HEVEA, LATEX, MAKEINDEX,
+The values of the BIBER, BIBTEX, DVIPDF, DVIPS, HEVEA, LATEX, MAKEINDEX,
 MAKEINFO, PDFLATEX, PDFTEX, T4HT, TEX, TEX4HT, TEXINDEX, and THUMBPDF
 environment variables are used to run those commands, if they are set.
 
@@ -1116,8 +1116,9 @@ run_bibtex ()
   fi
 
   # biber(+biblatex) check.
-  if test -r "$in_noext.bcf"; then
-    run biber "$in_noext"
+  if test -r "$in_noext.bcf" \
+     && grep '</bcf:controlfile>' "$in_noext.bcf" >/dev/null; then
+    run ${BIBER:-biber} "$in_noext"
   fi
 }
 
