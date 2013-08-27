@@ -3490,7 +3490,7 @@ sub _start_empty_line_after_command($$$) {
   my $line = shift;
   my $current = shift;
   my $command = shift;
-  $line =~ s/^([^\S\n]*)//;
+  $line =~ s/^([^\S\r\n]*)//;
   push @{$current->{'contents'}}, { 'type' => 'empty_line_after_command',
                                     'text' => $1,
                                     'parent' => $current, 
@@ -3622,7 +3622,7 @@ sub _command_with_command_as_argument($)
            or (scalar(@{$current->{'contents'}}) == 2
             and defined($current->{'contents'}->[0]->{'text'})
             and $current->{'contents'}->[0]->{'text'}
-                               =~ /^[^\S\n]*/)))
+                               =~ /^[^\S\r\n]*/)))
 }
 
 # $marked_as_invalid_command may be undef, if there is no
@@ -3714,7 +3714,7 @@ sub _parse_texi($;$)
         # not def line
         and $self->{'context_stack'}->[-1] ne 'def') {
       print STDERR "BEGIN LINE\n" if ($self->{'DEBUG'});
-      $line =~ s/^([^\S\n]*)//;
+      $line =~ s/^([^\S\r\n]*)//;
       push @{$current->{'contents'}}, { 'type' => 'empty_line', 
                                         'text' => $1,
                                         'parent' => $current };
@@ -3992,9 +3992,9 @@ sub _parse_texi($;$)
           $current = $current->{'parent'};
         # now accent commands
         } elsif ($accent_commands{$current->{'cmdname'}}) {
-          if ($line =~ /^[^\S\n]/) {
+          if ($line =~ /^[^\S\r\n]/) {
             if ($current->{'cmdname'} =~ /^[a-zA-Z]/) {
-              $line =~ s/^([^\S\n]+)//;
+              $line =~ s/^([^\S\r\n]+)//;
               $current->{'extra'}->{'spaces'} = '' 
                 if (!defined($current->{'extra'}->{'spaces'}));
               $current->{'extra'}->{'spaces'} .= $1;
@@ -4131,7 +4131,7 @@ sub _parse_texi($;$)
           $current = $current->{'args'}->[-1];
           $current = _merge_text($self, $current, $separator);
         # here we collect spaces following separators.
-        } elsif ($line =~ s/^([^\S\n]+)//) {
+        } elsif ($line =~ s/^([^\S\r\n]+)//) {
           # FIXME a trailing end of line could be considered to be part
           # of the separator. Right now it is part of the description,
           # since it is catched (in the next while) as one of the case below

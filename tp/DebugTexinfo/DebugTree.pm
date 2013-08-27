@@ -130,6 +130,7 @@ sub _print_tree($$;$$)
     my $text = $root->{'text'};
     $text =~ s/\n/\\n/g;
     $text =~ s/\f/\\f/g;
+    $text =~ s/\r/\\r/g;
     $result .= "|$text|";
   }
   $result .= "\n";

@@ -13,9 +13,21 @@ xmllint --nonet --noout --valid commands.xml
 Before next release
 ===================
 
+Warn node names incorrect.
+
+New conditionals.
+
 
 Bugs
 ====
+
+# a . not followed by a space.  Not a separator.
+verify macro expansion right after the . leads to a separator.
+like 
+@macro spaces{}
+   
+@end macro
+* node: label.@spaces{}descr
 
 
 Profiling
