@@ -1,6 +1,5 @@
 \input texinfo @c -*-texinfo-*-
 @setfilename formatting.info
-@node Top
 
 @dircategory Formatting @'e @code{@@ @TeX{}} test
 @direntry
@@ -8,6 +7,7 @@
 * @code{@@ @'e @equiv{}}: (formatting).  ``@asis{--- something}'' 
                            @command{cmd} @`a
 @end direntry
+@node Top
 @top Top section
 
 @menu
