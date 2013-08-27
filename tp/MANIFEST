@@ -739,6 +739,10 @@ t/results/info_tests/space_at_menu_end.pl
 t/results/info_tests/space_in_menu.pl
 t/results/info_tests/space_in_setfilename.pl
 t/results/info_tests/split_no_copying.pl
+t/results/info_tests/split_test_before_first_node.pl
+t/results/info_tests/split_test_before_first_node/res_info/split_test_before_first_node.info
+t/results/info_tests/split_test_before_first_node/res_info/split_test_before_first_node.info-1
+t/results/info_tests/split_test_before_first_node/res_info/split_test_before_first_node.info-2
 t/results/info_tests/test_index.pl
 t/results/info_tests/text_before_node.pl
 t/results/info_tests/top_node_normalization.pl
@@ -963,6 +967,7 @@ t/results/misc_commands/empty_center.pl
 t/results/misc_commands/empty_center_with_arg.pl
 t/results/misc_commands/empty_documentencoding.pl
 t/results/misc_commands/footnote_in_center.pl
+t/results/misc_commands/incorrect_allowcodebreaks_argument.pl
 t/results/misc_commands/indent_in_quotation.pl
 t/results/misc_commands/index_entries.pl
 t/results/misc_commands/invalid_clickstyle.pl
@@ -1242,6 +1247,7 @@ t/results/sectioning/section_before_part.pl
 t/results/sectioning/section_before_top.pl
 t/results/sectioning/section_before_top_no_node.pl
 t/results/sectioning/section_below_unnumbered.pl
+t/results/sectioning/section_below_unnumbered_no_top.pl
 t/results/sectioning/section_chapter_before_top.pl
 t/results/sectioning/section_chapter_before_top_nodes.pl
 t/results/sectioning/section_in_unnumbered_info.pl
