@@ -87,7 +87,7 @@ formatting/unknown_nodes_renamed-noderename.cnf: formatting/unknown_nodes_rename
 	${INSTALL_DATA} $(srcdir)/formatting/unknown_nodes_renamed-noderename.cnf-ref $@
 
 coverage_macro-cr.texi: coverage_macro.texi
-	sed 's/$/\r/' $(srcdir)/coverage_macro.texi > $@
+	sed 's/$$/\r/' $(srcdir)/coverage_macro.texi > $@
 
 EXTRA_DIST = run_parser_all.sh parser_tests.sh \
  $(old_test_scripts) $(one_test_files_generated_list) coverage_macro.texi \
