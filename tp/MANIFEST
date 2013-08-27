@@ -743,6 +743,10 @@ t/results/info_tests/split_test_before_first_node.pl
 t/results/info_tests/split_test_before_first_node/res_info/split_test_before_first_node.info
 t/results/info_tests/split_test_before_first_node/res_info/split_test_before_first_node.info-1
 t/results/info_tests/split_test_before_first_node/res_info/split_test_before_first_node.info-2
+t/results/info_tests/split_test_before_first_node_no_empty_line.pl
+t/results/info_tests/split_test_before_first_node_no_empty_line/res_info/split_test_before_first_node.info
+t/results/info_tests/split_test_before_first_node_no_empty_line/res_info/split_test_before_first_node.info-1
+t/results/info_tests/split_test_before_first_node_no_empty_line/res_info/split_test_before_first_node.info-2
 t/results/info_tests/test_index.pl
 t/results/info_tests/text_before_node.pl
 t/results/info_tests/top_node_normalization.pl
@@ -1289,6 +1293,7 @@ t/results/sectioning/unnumbered_top_without_node_sections.pl
 t/results/test_count/commands.pl
 t/results/test_count/expanded_tex.pl
 t/results/test_count/flushright.pl
+t/results/test_count/flushright_in_example.pl
 t/results/test_count/multitable.pl
 t/results/test_count/printindex.pl
 t/results/value/bad_syntax.pl
