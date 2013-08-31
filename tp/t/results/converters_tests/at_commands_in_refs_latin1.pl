@@ -22301,6 +22301,15 @@ $result_converted_errors{'file_info'}->{'at_commands_in_refs_latin1'} = [
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 92
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':152: warning: @ref node name should not contain `:\'
+',
+    'text' => '@ref node name should not contain `:\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 152
   }
 ];
 

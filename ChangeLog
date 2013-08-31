@@ -1,3 +1,8 @@
+2013-08-31  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/Plaintext.pm: warn when cross-reference
+	name contains a :, or node name contains a problematic character.
+
 2013-08-27  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Parser.pm: add \r to regexps to exclude it when 

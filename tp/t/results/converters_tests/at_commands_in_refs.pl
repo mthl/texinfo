@@ -22241,6 +22241,15 @@ $result_converted_errors{'plaintext'}->{'at_commands_in_refs'} = [
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 89
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':149: warning: @ref node name should not contain `:\'
+',
+    'text' => '@ref node name should not contain `:\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 149
   }
 ];
 
@@ -23292,6 +23301,15 @@ $result_converted_errors{'info'}->{'at_commands_in_refs'} = [
     'type' => 'warning',
     'macro' => '',
     'line_nr' => 89
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':149: warning: @ref node name should not contain `:\'
+',
+    'text' => '@ref node name should not contain `:\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 149
   }
 ];
 

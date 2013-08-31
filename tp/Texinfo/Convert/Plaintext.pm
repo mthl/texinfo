@@ -1982,11 +1982,10 @@ sub _convert($$)
           $args[3] = $args[2];
           $args[2] = undef;
         }
-        my @contents;
         if ($command eq 'xref') {
-          $contents[0] = {'text' => '*Note '};
+          $result = $self->_convert({'contents' => [{'text' => '*Note '}]});
         } else {
-          $contents[0] = {'text' => '*note '};
+          $result = $self->_convert({'contents' => [{'text' => '*note '}]});
         }
         my $name;
         if (defined($args[1])) {
@@ -2007,21 +2006,41 @@ sub _convert($$)
         }
          
         if ($name) {
-          push @contents, (@$name, {'text' => ': '});
+          my $name_text = $self->_convert({'contents' => $name});
+          if ($name_text =~ /:/) {
+            $self->line_warn(sprintf($self->__(
+               "\@%s cross-reference name should not contain `:'"), $command),
+                             $root->{'line_nr'});
+          }
+          $result .= $name_text;
+          $result .= $self->_convert({'contents' => [{'text' => ': '}]});
+
           if ($file) {
-            push @contents, @$file;
+            $result .= $self->_convert({'contents' => $file});
           }
           # node name
-          push @contents, ({'type' => '_code',
-                            'contents' => $node_content});
+          my $node_text = $self->_convert({'type' => '_code',
+                                           'contents' => $node_content});
+          if ($node_text =~ /([,\t.])/) {
+            $self->line_warn(sprintf($self->__(
+               "\@%s node name should not contain `%s'"), $command, $1),
+                             $root->{'line_nr'});
+          }
+          $result .= $node_text;
         } else {
           if ($file) {
-            push @contents, @$file;
+            $result .= $self->_convert({'contents' => $file});
           }
-          push @contents, ({'type' => '_code',
-                            'contents' => [@{$node_content}, {'text' => '::'}]});
+          my $node_text = $self->_convert({'type' => '_code',
+                                           'contents' => $node_content});
+          if ($node_text =~ /:/) {
+            $self->line_warn(sprintf($self->__(
+               "\@%s node name should not contain `:'"), $command),
+                             $root->{'line_nr'});
+          }
+          $result .= $node_text;
+          $result .= $self->_convert({'contents' => [{'text' => '::'}]});
         }
-        $result = $self->_convert({'contents' => \@contents});
         # we could use $formatter, but in case it was changed in _convert 
         # we play it safe.
         my $pending = $result 
