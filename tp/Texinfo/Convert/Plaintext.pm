@@ -2007,7 +2007,7 @@ sub _convert($$)
          
         if ($name) {
           my $name_text = $self->_convert({'contents' => $name});
-          if ($name_text =~ /:/) {
+          if ($name_text =~ /:/m) {
             $self->line_warn(sprintf($self->__(
                "\@%s cross-reference name should not contain `:'"), $command),
                              $root->{'line_nr'});
@@ -2021,7 +2021,7 @@ sub _convert($$)
           # node name
           my $node_text = $self->_convert({'type' => '_code',
                                            'contents' => $node_content});
-          if ($node_text =~ /([,\t.])/) {
+          if ($node_text =~ /([,\t]|\.\s)/m) {
             $self->line_warn(sprintf($self->__(
                "\@%s node name should not contain `%s'"), $command, $1),
                              $root->{'line_nr'});
@@ -2033,7 +2033,7 @@ sub _convert($$)
           }
           my $node_text = $self->_convert({'type' => '_code',
                                            'contents' => $node_content});
-          if ($node_text =~ /:/) {
+          if ($node_text =~ /:/m) {
             $self->line_warn(sprintf($self->__(
                "\@%s node name should not contain `:'"), $command),
                              $root->{'line_nr'});
@@ -2818,10 +2818,34 @@ sub _convert($$)
       #  $menu_entry_internal_node 
       #    = $self->{'labels'}->{$root->{'extra'}->{'menu_entry_node'}->{'normalized'}};
       #}
+      my $entry_name_seen = 0;
       foreach my $arg (@{$root->{'args'}}) {
         if ($arg->{'type'} eq 'menu_entry_node') {
-          $result .= $self->_convert({'type' => '_code',
+          my $node_text = $self->_convert({'type' => '_code',
                                       'contents' => $arg->{'contents'}});
+          if ($entry_name_seen) {
+            if ($node_text =~ /([,\t]|\.\s)/) {
+              $self->line_warn(sprintf($self->__(
+                 "menu entry node name should not contain `%s'"), $1),
+                             $root->{'line_nr'});
+            }
+          } else {
+            if ($node_text =~ /:/) {
+              $self->line_warn($self->__(
+               "menu entry node name should not contain `:'"),
+                             $root->{'line_nr'});
+            }
+          }
+          $result .= $node_text;
+        } elsif ($arg->{'type'} eq 'menu_entry_name') {
+          my $entry_name = $self->_convert($arg);
+          $entry_name_seen = 1;
+          if ($entry_name =~ /:/) {
+            $self->line_warn($self->__(
+               "menu entry name should not contain `:'"),
+                             $root->{'line_nr'});
+          }
+          $result .= $entry_name;
         } else {
           $result .= $self->_convert($arg);
         }

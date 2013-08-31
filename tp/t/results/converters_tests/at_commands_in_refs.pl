@@ -23277,6 +23277,15 @@ $result_converted_errors{'info'}->{'at_commands_in_refs'} = [
   },
   {
     'file_name' => '',
+    'error_line' => ':30: warning: menu entry node name should not contain `:\'
+',
+    'text' => 'menu entry node name should not contain `:\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 30
+  },
+  {
+    'file_name' => '',
     'error_line' => ':89: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
     'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
