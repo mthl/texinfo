@@ -401,6 +401,11 @@ sub _node($$)
   $result .= $node_begin;
   $self->_add_text_count($node_begin);
   my ($node_text, $byte_count) = $self->_node_line($node);
+  if ($node_text =~ /,/) {
+    $self->line_warn(sprintf($self->__(
+               "\@node name should not contain `,': %s"), $node_text),
+                             $node->{'line_nr'});
+  }
   $self->{'count_context'}->[-1]->{'bytes'} += $byte_count;
   $result .= $node_text;
   foreach my $direction(@directions) {

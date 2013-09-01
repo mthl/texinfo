@@ -23286,6 +23286,42 @@ $result_converted_errors{'info'}->{'at_commands_in_refs'} = [
   },
   {
     'file_name' => '',
+    'error_line' => ':42: warning: @node name should not contain `,\': LaTeX TeX * , (C) ... ...
+',
+    'text' => '@node name should not contain `,\': LaTeX TeX * , (C) ... ...',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 42
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':60: warning: @node name should not contain `,\': a" e~ i^ a^ a` e\' c, e= e* e\'\' e;
+',
+    'text' => '@node name should not contain `,\': a" e~ i^ a^ a` e\' c, e= e* e\'\' e;',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 60
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':66: warning: @node name should not contain `,\': i E=` C\',
+',
+    'text' => '@node name should not contain `,\': i E=` C\',',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 66
+  },
+  {
+    'file_name' => '',
+    'error_line' => ':69: warning: @node name should not contain `,\': `` \'\' ` \' ,, ,
+',
+    'text' => '@node name should not contain `,\': `` \'\' ` \' ,, ,',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 69
+  },
+  {
+    'file_name' => '',
     'error_line' => ':89: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
     'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',

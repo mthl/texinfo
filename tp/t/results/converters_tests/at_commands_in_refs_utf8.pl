@@ -22286,6 +22286,15 @@ $result_converted_errors{'file_info'}->{'at_commands_in_refs_utf8'} = [
   },
   {
     'file_name' => '',
+    'error_line' => ":45: warning: \@node name should not contain `,': LaTeX TeX \x{2022} , \x{a9} \x{2026} ...
+",
+    'text' => "\@node name should not contain `,': LaTeX TeX \x{2022} , \x{a9} \x{2026} ...",
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 45
+  },
+  {
+    'file_name' => '',
     'error_line' => ':92: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
     'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
