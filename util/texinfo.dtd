@@ -151,7 +151,8 @@
 <!ENTITY % Inline.reference "xref | ref | pxref | inforef | email | uref | url">
 <!ENTITY % Inline.misc "click | clicksequence | logo | punct | spacecmd | today
                         | linebreak | accent | dotless | ctrl | inlineraw 
-                        | inlinefmt | infoenclose | noeos | formfeed ">
+                        | inlinefmt | inlinefmtifelse | inlineifclear 
+                        | inlineifset | infoenclose | noeos | formfeed ">
 
 <!-- on lines -->
 <!ENTITY % Inline.linetext "%Inline.emphasize; | %Inline.misc; | %Inline.fonts;
@@ -1038,6 +1039,7 @@
 <!ATTLIST errormsg
           %spacesattr;>
 
+<!-- inline conditionals -->
 <!ELEMENT inlineraw (inlinerawformat, inlinerawcontent)>
 <!ATTLIST inlineraw
           %spacesattr;>
@@ -1053,6 +1055,34 @@
 <!ELEMENT inlinefmtcontent (#PCDATA | %Inline.phrase;)*>
 <!ATTLIST inlinefmtcontent
           %spacesattr;>
+
+<!ELEMENT inlineifclear (inlineifclearformat, inlineifclearcontent)>
+<!ATTLIST inlineifclear
+          %spacesattr;>
+<!ELEMENT inlineifclearformat (#PCDATA)>
+<!ELEMENT inlineifclearcontent (#PCDATA | %Inline.phrase;)*>
+<!ATTLIST inlineifclearcontent
+          %spacesattr;>
+
+<!ELEMENT inlineifset (inlineifsetformat, inlineifsetcontent)>
+<!ATTLIST inlineifset
+          %spacesattr;>
+<!ELEMENT inlineifsetformat (#PCDATA)>
+<!ELEMENT inlineifsetcontent (#PCDATA | %Inline.phrase;)*>
+<!ATTLIST inlineifsetcontent
+          %spacesattr;>
+
+<!ELEMENT inlinefmtifelse (inlinefmtifelseformat, inlinefmtifelsecontentif?, inlinefmtifelsecontentelse?)>
+<!ATTLIST inlinefmtifelse
+          %spacesattr;>
+<!ELEMENT inlinefmtifelseformat (#PCDATA)>
+<!ELEMENT inlinefmtifelsecontentif (#PCDATA | %Inline.phrase;)*>
+<!ATTLIST inlinefmtifelsecontentif
+          %spacesattr;>
+<!ELEMENT inlinefmtifelsecontentelse (#PCDATA | %Inline.phrase;)*>
+<!ATTLIST inlinefmtifelsecontentelse
+          %spacesattr;>
+
 
 <!-- command defined by definfoenclose -->
 <!ELEMENT infoenclose  (#PCDATA | %Inline.phrase;)*>

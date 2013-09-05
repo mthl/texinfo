@@ -350,10 +350,14 @@ foreach my $explained_command (keys(%Texinfo::Common::explained_commands)) {
                                                  "${explained_command}desc"];
 }
 
-foreach my $inline_command (keys(%Texinfo::Common::inline_format_commands)) {
+foreach my $inline_command (keys(%Texinfo::Common::inline_commands)) {
   $commands_args_elements{$inline_command} = ["${inline_command}format",
                                               "${inline_command}content"];
 }
+
+my $inline_command = 'inlinefmtifelse';
+$commands_args_elements{$inline_command} = ["${inline_command}format",
+             "${inline_command}contentif", "${inline_command}contentelse"];
 
 my %commands_elements;
 foreach my $command (keys(%Texinfo::Common::brace_commands)) {

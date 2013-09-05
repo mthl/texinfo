@@ -1,3 +1,12 @@
+2013-09-06  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Parser.pm, 
+	tp/Texinfo/Convert/HTML.pm(_convert_inline_command),
+	tp/Texinfo/Convert/Plaintext.pm, tp/Texinfo/Convert/DocBook.pm,
+	tp/Texinfo/Convert/Text.pm, tp/Texinfo/Common.pm, 
+	tp/Texinfo/Convert/TexinfoXML.pm:
+	implement @inlinefmtifelse, @inlineifclear, @inlineifset.
+
 2013-09-01  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Convert/Info.pm (_node): warn if node name contains

@@ -1025,17 +1025,30 @@ sub _convert($$;$)
         } else {
           return '';
         }
-      } elsif ($Texinfo::Common::inline_format_commands{$root->{'cmdname'}}
-               and $root->{'extra'} and $root->{'extra'}->{'format'}
-               and $self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}) {
+      } elsif ($Texinfo::Common::inline_commands{$root->{'cmdname'}}) {
+        my $expand = 0;
+        if ($Texinfo::Common::inline_format_commands{$root->{'cmdname'}}) {
+          if ($root->{'cmdname'} eq 'inlinefmtifelse'
+              or ($root->{'extra'} and $root->{'extra'}->{'format'}
+                  and $self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}})) {
+            $expand = 1;
+          }
+        } elsif (defined($root->{'extra'}->{'expand_index'})) {
+          $expand = 1;
+        }
+        return '' if (! $expand);
+        my $arg_index = 1;
         if ($root->{'cmdname'} eq 'inlineraw') {
           push @{$self->{'document_context'}}, {'monospace' => [0]};
           $self->{'document_context'}->[-1]->{'raw'} = 1;
+        } elsif ($root->{'cmdname'} eq 'inlinefmtifelse' 
+                 and ! $self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}) {
+          $arg_index = 2;
         }
-        if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
-            and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+        if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) > $arg_index
+            and defined($root->{'extra'}->{'brace_command_contents'}->[$arg_index])) {
           $result .= $self->_convert({'contents'
-                        => $root->{'extra'}->{'brace_command_contents'}->[-1]});
+                        => $root->{'extra'}->{'brace_command_contents'}->[$arg_index]});
         }
         if ($root->{'cmdname'} eq 'inlineraw') {
           pop @{$self->{'document_context'}};

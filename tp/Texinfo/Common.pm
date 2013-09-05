@@ -625,10 +625,25 @@ foreach my $explained_command ('abbr', 'acronym') {
 }
 
 our %inline_format_commands;
-foreach my $inline_format_command ('inlineraw', 'inlinefmt') {
+our %inline_commands;
+foreach my $inline_format_command ('inlineraw', 'inlinefmt', 
+        'inlinefmtifelse') {
   $inline_format_commands{$inline_format_command} = 1;
   $brace_commands{$inline_format_command} = 2;
+  $inline_commands{$inline_format_command} = 1;
 }
+
+$brace_commands{'inlinefmtifelse'} = 3;
+
+our %inline_conditional_commands;
+foreach my $inline_conditional_command ('inlineifclear', 'inlineifset') {
+  $inline_conditional_commands{$inline_conditional_command} = 1;
+  $brace_commands{$inline_conditional_command} = 2;
+  $inline_commands{$inline_conditional_command} = 1;
+}
+
+# 'inlineset', 'inlineclear'
+#$brace_commands{'inlineclear'} = 1;
 
 foreach my $two_arg_command('email') {
   $brace_commands{$two_arg_command} = 2;

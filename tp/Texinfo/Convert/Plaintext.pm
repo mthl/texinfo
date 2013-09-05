@@ -87,6 +87,7 @@ my %root_commands = %Texinfo::Common::root_commands;
 my %preformatted_commands = %Texinfo::Common::preformatted_commands;
 my %explained_commands = %Texinfo::Common::explained_commands;
 my %inline_format_commands = %Texinfo::Common::inline_format_commands;
+my %inline_commands = %Texinfo::Common::inline_commands;
 my %item_container_commands = %Texinfo::Common::item_container_commands;
 my %raw_commands = %Texinfo::Common::raw_commands;
 my %format_raw_commands = %Texinfo::Common::format_raw_commands;
@@ -1504,9 +1505,13 @@ sub _convert($$)
   if (($root->{'type'} and $self->{'ignored_types'}->{$root->{'type'}})
        or ($root->{'cmdname'} 
             and ($self->{'ignored_commands'}->{$root->{'cmdname'}}
-                 or ($inline_format_commands{$root->{'cmdname'}}
-                     and (!$root->{'extra'}->{'format'}
-                          or !$self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}))))) {
+                 or ($inline_commands{$root->{'cmdname'}}
+                     and $root->{'cmdname'} ne 'inlinefmtifelse'
+                     and (($inline_format_commands{$root->{'cmdname'}}
+                          and (!$root->{'extra'}->{'format'}
+                               or !$self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}))
+                         or (!$inline_format_commands{$root->{'cmdname'}}
+                             and !defined($root->{'extra'}->{'expand_index'}))))))) {
     print STDERR "IGNORED\n" if ($self->{'debug'});
     return '';
   }
@@ -2103,15 +2108,21 @@ sub _convert($$)
         }
       }
       return '';
-    } elsif ($inline_format_commands{$command}) {
-      if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
-         and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+    } elsif ($inline_commands{$command}) {
+      my $arg_index = 1;
+      if ($command eq 'inlinefmtifelse'
+          and (!$root->{'extra'}->{'format'} 
+               or !$self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}})) {
+        $arg_index = 2;
+      }
+      if (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) > $arg_index
+         and defined($root->{'extra'}->{'brace_command_contents'}->[$arg_index])) {
         my $argument;
         if ($command eq 'inlineraw') {
           $argument->{'type'} = '_code';
         }
         $argument->{'contents'} 
-            = $root->{'extra'}->{'brace_command_contents'}->[-1];
+            = $root->{'extra'}->{'brace_command_contents'}->[$arg_index];
         unshift @{$self->{'current_contents'}->[-1]}, ($argument);
       }
       return '';

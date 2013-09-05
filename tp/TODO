@@ -13,10 +13,6 @@ xmllint --nonet --noout --valid commands.xml
 Before next release
 ===================
 
-Warn node names incorrect.
-
-New conditionals.
-
 
 Bugs
 ====

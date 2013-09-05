@@ -605,6 +605,34 @@ $inline_text
 ['inline_expand_tex',
 $inline_text, {'expanded_formats' => ['tex']},
 ],
+['inlinefmtifelse',
+'@inlinefmtifelse{html,,else html no if}.
+@inlinefmtifelse{html,if html,else html}.
+
+@inlinefmtifelse{plaintext,if plaintext no second arg}.
+@inlinefmtifelse{plaintext,if plaintext,else plaintext}.
+
+@inlinefmtifelse{xml,if xml empty second arg,}.
+
+@inlinefmtifelse{ docbook , if docbook spaces , else docbook spaces }.
+
+@inlinefmtifelse{ tex , if tex spaces , else tex spaces }.
+
+@inlinefmtifelse{docbook,if docbook,else docbook}.
+
+@inlinefmtifelse{tex,if tex,else tex}.
+'],
+['inlineifsetifclear',
+'@inlineifclear{aaa, iclear first }.
+
+@inlineifset{aaa, ifset first }.
+
+@set aaa
+
+@inlineifclear{aaa, ifclear second }.
+
+@inlineifset{aaa, ifset second }.
+'],
 ['table_in_display_in_example',
 '@example
 @display
