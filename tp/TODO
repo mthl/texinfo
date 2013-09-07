@@ -17,14 +17,6 @@ Before next release
 Bugs
 ====
 
-# a . not followed by a space.  Not a separator.
-verify macro expansion right after the . leads to a separator.
-like 
-@macro spaces{}
-   
-@end macro
-* node: label.@spaces{}descr
-
 
 Profiling
 =========
@@ -39,6 +31,15 @@ nytprofhtml --open
 
 Delayed bugs
 ============
+
+In @inline* ignore arguments, @value and user macros should not be
+expanded.  For example
+
+ @set closebrace }
+
+ @inlinefmt{html,
+ truc @value{closebrace}
+ machin
 
 In Plaintext, @quotation text should have the right margin narrowed.
 

@@ -937,7 +937,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2013";
      if ($value =~ /^undef$/i) {
        $value = undef;
      }
-     # special case, this is a pseudo format for debug
+     # special format
      if ($var eq 'TEXINFO_OUTPUT_FORMAT') {
        $format = set_format($value, $format, 1);
      } elsif ($var eq 'TEXI2HTML') {
