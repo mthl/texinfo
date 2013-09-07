@@ -4988,10 +4988,12 @@ sub _parse_texi($;$)
           } elsif ($current->{'type'} 
                    and $current->{'type'} eq 'rawpreformatted') {
             push @{$current->{'contents'}}, {'text' => '{' };
-          # matching braces accepted in a rawpreformatted or math
+          # matching braces accepted in a rawpreformatted or math or ignored
+          # code
           } elsif ($self->{'context_stack'}->[-1] eq 'math'
                    or $self->{'context_stack'}->[-1] eq 'rawpreformatted'
-                   or $self->{'context_stack'}->[-1] eq 'inlineraw') {
+                   or $self->{'context_stack'}->[-1] eq 'inlineraw'
+                   or $self->_ignore_global_commands()) {
             push @{$current->{'contents'}},
                  { 'type' => 'bracketed', 'contents' => [],
                    'parent' => $current, 'line_nr' => $line_nr };

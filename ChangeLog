@@ -2,6 +2,8 @@
 
 	* tp/texi2any.pl: handle plaintext as other formats to set 
 	expanded formats.
+	* tp/Texinfo/Parser.pm: accept matching braces in ignored 
+	@inline* commands.
 
 2013-09-06  Patrice Dumas  <pertusus@free.fr>
 
