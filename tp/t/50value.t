@@ -339,7 +339,17 @@ line
 @set ll 
 
 @code{@value{gg}. @value{hh}. @value{ll}}.
-', {'test_formats' => ['xml']}]
+', {'test_formats' => ['xml']}
+],
+['ignored_value_definition',
+'@set aa outside
+
+@inlinefmt{tex,
+@set aa in inlinefmt tex
+}
+
+@value{aa}.
+']
 );
 
 our ($arg_test_case, $arg_generate, $arg_debug);

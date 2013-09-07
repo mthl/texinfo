@@ -969,6 +969,21 @@ g \c\ v
 
 '
 ],
+['ignored_macro_definition',
+'@macro mymacro{}
+outside
+@end macro
+
+
+@inlinefmt{tex,
+@unmacro mymacro
+@macro mymacro{}
+in inlinefmt tex
+@end macro
+}
+
+@mymacro{}.
+']
 );
 
 my @todo =(
