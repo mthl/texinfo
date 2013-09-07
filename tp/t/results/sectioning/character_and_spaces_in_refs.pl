@@ -2246,6 +2246,19 @@ Node: local node789
 End Tag Table
 ';
 
+$result_converted_errors{'info'}->{'character_and_spaces_in_refs'} = [
+  {
+    'file_name' => '',
+    'error_line' => ':11: warning: @ref node name should not contain `:\'
+',
+    'text' => '@ref node name should not contain `:\'',
+    'type' => 'warning',
+    'macro' => '',
+    'line_nr' => 11
+  }
+];
+
+
 
 $result_converted{'html'}->{'character_and_spaces_in_refs'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

@@ -401,7 +401,7 @@ sub _node($$)
   $result .= $node_begin;
   $self->_add_text_count($node_begin);
   my ($node_text, $byte_count) = $self->_node_line($node);
-  if ($node_text =~ /,/) {
+  if ($node_text =~ /,/ and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
     $self->line_warn(sprintf($self->__(
                "\@node name should not contain `,': %s"), $node_text),
                              $node->{'line_nr'});

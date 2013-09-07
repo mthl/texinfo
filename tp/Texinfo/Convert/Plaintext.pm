@@ -303,6 +303,7 @@ my %defaults = (
 # not used for plaintext, since default is '-', and always set, for plaintext.
   'EXTENSION'            => 'info',
   'USE_SETFILENAME_EXTENSION' => 1,
+  'INFO_SPECIAL_CHARS_WARNING' => 1,
 
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
@@ -2012,7 +2013,11 @@ sub _convert($$)
          
         if ($name) {
           my $name_text = $self->_convert({'contents' => $name});
-          if ($name_text =~ /:/m) {
+          # needed, as last word is added only when : is added below
+          my $name_text_checked = $name_text
+             .$self->{'formatters'}->[-1]->{'container'}->get_pending();
+          if ($name_text_checked =~ /:/m 
+              and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
             $self->line_warn(sprintf($self->__(
                "\@%s cross-reference name should not contain `:'"), $command),
                              $root->{'line_nr'});
@@ -2026,7 +2031,10 @@ sub _convert($$)
           # node name
           my $node_text = $self->_convert({'type' => '_code',
                                            'contents' => $node_content});
-          if ($node_text =~ /([,\t]|\.\s)/m) {
+          my $node_text_checked = $node_text 
+             .$self->{'formatters'}->[-1]->{'container'}->get_pending();
+          if ($node_text_checked =~ /([,\t]|\.\s)/m 
+              and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
             $self->line_warn(sprintf($self->__(
                "\@%s node name should not contain `%s'"), $command, $1),
                              $root->{'line_nr'});
@@ -2038,7 +2046,10 @@ sub _convert($$)
           }
           my $node_text = $self->_convert({'type' => '_code',
                                            'contents' => $node_content});
-          if ($node_text =~ /:/m) {
+          my $node_text_checked = $node_text 
+             .$self->{'formatters'}->[-1]->{'container'}->get_pending();
+          if ($node_text_checked =~ /:/m
+              and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
             $self->line_warn(sprintf($self->__(
                "\@%s node name should not contain `:'"), $command),
                              $root->{'line_nr'});
@@ -2835,13 +2846,15 @@ sub _convert($$)
           my $node_text = $self->_convert({'type' => '_code',
                                       'contents' => $arg->{'contents'}});
           if ($entry_name_seen) {
-            if ($node_text =~ /([,\t]|\.\s)/) {
+            if ($node_text =~ /([,\t]|\.\s)/
+                and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
               $self->line_warn(sprintf($self->__(
                  "menu entry node name should not contain `%s'"), $1),
                              $root->{'line_nr'});
             }
           } else {
-            if ($node_text =~ /:/) {
+            if ($node_text =~ /:/
+                and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
               $self->line_warn($self->__(
                "menu entry node name should not contain `:'"),
                              $root->{'line_nr'});
@@ -2851,7 +2864,8 @@ sub _convert($$)
         } elsif ($arg->{'type'} eq 'menu_entry_name') {
           my $entry_name = $self->_convert($arg);
           $entry_name_seen = 1;
-          if ($entry_name =~ /:/) {
+          if ($entry_name =~ /:/
+              and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
             $self->line_warn($self->__(
                "menu entry name should not contain `:'"),
                              $root->{'line_nr'});

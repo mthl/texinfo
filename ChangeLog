@@ -4,6 +4,13 @@
 	expanded formats.
 	* tp/Texinfo/Parser.pm: accept matching braces in ignored 
 	@inline* commands.
+	* tp/Texinfo/Common.pm(@variable_string_settables),
+	tp/Texinfo/Convert/Info.pm(_node), tp/Texinfo/Convert/Plaintext.pm:
+	add the INFO_SPECIAL_CHARS_WARNING customization variable, if
+	false do not output warning messages on info characters in menu,
+	cross-refs and node names.
+	Use pending word in ref formatting to construct checked cross ref
+	and node naems.
 
 2013-09-06  Patrice Dumas  <pertusus@free.fr>
 

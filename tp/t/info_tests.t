@@ -5,6 +5,25 @@ BEGIN { if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{
 
 require 't/test_utils.pl';
 
+my $invalid_node_name_text = '
+@node Top
+
+@menu
+* @asis{truc:}: @asis{nodename. a}
+* machin: node@comma{}comma, def
+* @asis{bidule:}::
+@end menu
+
+@node @asis{nodename. a}
+
+@node node@comma{}comma
+
+@node @asis{bidule:}
+
+@ref{@asis{nodename. a}, @asis{truc:}}. @ref{node@comma{}comma, machin}.
+@ref{@asis{bidule:}}.
+';
+
 my @test_cases = (
 ['no_nodes',
 'Text.'],
@@ -457,6 +476,13 @@ First chapter.
 @node @:
 @node @asis{ }
 '],
+['invalid_node_name_warning',
+$invalid_node_name_text
+],
+['invalid_node_name_no_warning',
+$invalid_node_name_text,
+{},{'INFO_SPECIAL_CHARS_WARNING' => 0}
+],
 ['only_documentencoding',
 '@documentencoding ISO-8859-1'],
 ['direntry_dircategory_and_commands',
