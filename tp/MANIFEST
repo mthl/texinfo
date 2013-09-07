@@ -400,6 +400,8 @@ t/results/converters_tests/image_with_spaces.pl
 t/results/converters_tests/index_entry_in_preformatted.pl
 t/results/converters_tests/inline.pl
 t/results/converters_tests/inline_expand_tex.pl
+t/results/converters_tests/inlinefmtifelse.pl
+t/results/converters_tests/inlineifsetifclear.pl
 t/results/converters_tests/japanese_shift_jis.pl
 t/results/converters_tests/japanese_shift_jis/res_html/Introduction.html
 t/results/converters_tests/japanese_shift_jis/res_html/Preface.html
@@ -718,6 +720,8 @@ t/results/info_tests/image_not_found.pl
 t/results/info_tests/image_quotes.pl
 t/results/info_tests/image_text_encoded.pl
 t/results/info_tests/index_entry_at_end_node.pl
+t/results/info_tests/invalid_node_name_no_warning.pl
+t/results/info_tests/invalid_node_name_warning.pl
 t/results/info_tests/known_encoding.pl
 t/results/info_tests/multiline_image_and_align.pl
 t/results/info_tests/multitable_anchor_and_index_entry.pl
@@ -869,6 +873,7 @@ t/results/macro/ifclear_in_macro.pl
 t/results/macro/ifset_and_end_isef_in_macro.pl
 t/results/macro/ifset_in_macro.pl
 t/results/macro/ifset_in_macro_set.pl
+t/results/macro/ignored_macro_definition.pl
 t/results/macro/implicit_quoting_one_arg.pl
 t/results/macro/implicit_quoting_recursion.pl
 t/results/macro/leading_spaces_ignore.pl
@@ -929,6 +934,7 @@ t/results/menu/example_in_menu_comment.pl
 t/results/menu/example_in_menu_description.pl
 t/results/menu/formats_in_menu.pl
 t/results/menu/inlineraw_in_menu_description.pl
+t/results/menu/invalid_info_menu_entry.pl
 t/results/menu/menu_entry_name.pl
 t/results/menu/menu_entry_name_comment.pl
 t/results/menu/menu_entry_no_entry.pl
@@ -1300,6 +1306,7 @@ t/results/value/bad_syntax.pl
 t/results/value/comment_on_set_line.pl
 t/results/value/empty_set.pl
 t/results/value/empty_value_in_line.pl
+t/results/value/ignored_value_definition.pl
 t/results/value/not_only_characters.pl
 t/results/value/set_flag_command_equivalent.pl
 t/results/value/set_form_feed.pl
