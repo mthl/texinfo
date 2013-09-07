@@ -1061,6 +1061,7 @@ t/results/plaintext_tests/itemize_in_headitem_in_example.pl
 t/results/plaintext_tests/japanese_utf8.pl
 t/results/plaintext_tests/japanese_utf8/res_plaintext/japanese_utf8.txt
 t/results/plaintext_tests/line_passed_and_formats.pl
+t/results/plaintext_tests/lone_braces_in_inlineraw.pl
 t/results/plaintext_tests/long_line.pl
 t/results/plaintext_tests/long_uref_after_item.pl
 t/results/plaintext_tests/multiline_image_and_align.pl
