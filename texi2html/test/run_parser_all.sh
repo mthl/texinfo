@@ -116,11 +116,16 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
         outdir="${out_dir}${dir_suffix}/"
         resdir="${res_dir}${dir_suffix}/"
         if [ -d "${outdir}$dir" ]; then
+          if [ -d "${resdir}" ]; then
+            :
+          else
+            mkdir "${resdir}"
+          fi
           if [ -d "${resdir}$dir" ]; then
           # ugly hack to avoid CVS and .svn
             rm -f "${resdir}$dir/"?*.*
           else
-             mkdir "${resdir}$dir/"
+            mkdir "${resdir}$dir/"
           fi
           cp -r "${outdir}$dir/"* "${resdir}$dir/"
           rm -f "${resdir}$dir/"*.png "${resdir}$dir/"*_l2h.css
