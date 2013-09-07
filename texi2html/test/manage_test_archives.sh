@@ -34,13 +34,15 @@ fi
 
 tp_tests_name=tp_tests_results-$VERSION
 texi2html_tests_name=t2h_tests_results
+files_tests_name=t2h_tests_files
 #manuals=t2h_tests_big_manuals
 
 if [ $command = 'packt2h' ]; then
-  rm -f $texi2html_tests_name.tar.gz #$manuals.tar.gz
+  rm -f $texi2html_tests_name.tar.gz $files_tests_name.tar.gz #$manuals.tar.gz
   (
   cd ..
-  tar c --exclude-vcs -z -f test/$texi2html_tests_name.tar.gz test/*/res/ test/*/res_all/ test/*/res_info/ test/*/res_html/ test/*/res_docbook/ test/*/res_xml/ test/many_input_files/*_res/ test/info_coverage/f--ile*
+  tar c --exclude-vcs -z -f test/$texi2html_tests_name.tar.gz test/*/res/ test/*/res_all/ test/*/res_info/ test/*/res_html/ test/*/res_docbook/ test/*/res_xml/ test/many_input_files/*_res/
+  tar c --exclude-vcs -z -f test/$files_tests_name.tar.gz test/info_coverage/f--ile*
   #tar c --exclude-vcs -z -f test/$manuals.tar.gz test/manuals/*.texi test/tar_manual/*.texi test/singular_manual/*.tex* test/singular_manual/d2t_singular/
   )
 elif [ $command = 'pack' ]; then
@@ -51,7 +53,7 @@ elif [ $command = 'pack' ]; then
   )
 elif [ $command = 'get' ]; then :
   wget -N -r -np -A '*.tar.gz*' http://$download_dir/ || exit 1
-  for file in $texi2html_tests_name $tp_tests_name; do
+  for file in $texi2html_tests_name $tp_tests_name $files_tests_name; do
     if [ -f  $download_dir/$file.tar.gz ]; then
       cp -a $download_dir/$file.tar.gz ..
     else
@@ -60,12 +62,12 @@ elif [ $command = 'get' ]; then :
   done
 elif [ $command = 'clean' ]; then
   rm -rf download-mirror.savannah.gnu.org
-  rm -f $texi2html_tests_name.tar.gz $tp_tests_name.tar.gz
-  rm -f ../$texi2html_tests_name.tar.gz ../$tp_tests_name.tar.gz
+  rm -f $texi2html_tests_name.tar.gz $tp_tests_name.tar.gz $files_tests_name.tar.gz
+  rm -f ../$texi2html_tests_name.tar.gz ../$tp_tests_name.tar.gz ../$files_tests_name.tar.gz
 elif [ $command = 'unpack' ]; then
   (
   cd ..
-  for file in $texi2html_tests_name $tp_tests_name; do
+  for file in $files_tests_name $texi2html_tests_name $tp_tests_name; do
     if [ -f $file.tar.gz ]; then
       tar x -z -f $file.tar.gz
     else
@@ -91,8 +93,9 @@ elif [ $command = 'sign' ]; then
   gpg -b --use-agent ../upload/$tp_tests_name.tar.gz
 elif [ $command = 'signt2h' ]; then
   mkdir -p ../upload
-  cp -a $texi2html_tests_name.tar.gz ../upload
+  cp -a $texi2html_tests_name.tar.gz $files_tests_name.tar.gz ../upload
   gpg -b --use-agent ../upload/$texi2html_tests_name.tar.gz
+  gpg -b --use-agent ../upload/$files_tests_name.tar.gz
 elif [ $command = 'upload' ]; then
   rsync -a -essh ../upload/ $user@dl.sv.gnu.org:/releases/texinfo/
 else

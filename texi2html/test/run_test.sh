@@ -43,6 +43,11 @@ if which httexi > /dev/null 2>&1; then
   no_tex4ht=no
 fi
 
+no_html2wiki=yes
+if which html2wiki > /dev/null 2>&1; then
+  no_html2wiki=no
+fi
+
 one_test=no
 if [ z"$1" != 'z' ]; then
   one_test=yes
@@ -175,6 +180,14 @@ do
         continue
       fi
       use_tex4ht=yes
+    fi
+    if [ $use_tex4ht = 'yes' -o $use_latex2html = 'yes' ]; then
+      if echo "$remaining" | grep -qs -- '-init mediawiki.pm'; then
+       if [ "$no_html2wiki" = 'yes' ]; then
+         echo "S: (no html2wiki) $current"
+         continue
+       fi
+      fi
     fi
     one_test_done=yes
     [ -d "$out_dir/$dir" ] && rm -rf "$out_dir/$dir"
