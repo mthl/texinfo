@@ -394,7 +394,6 @@ flushright
 A quot---ation
 @end quotation
 '],
-# FIXME the result is not right, space should be doubled after @abbr{AAA}. too.
 ['punctuation_abbr_acronym',
 '@abbr{AAA}. @acronym{BBB}. @abbr{aaa}. @acronym{bbb}. Next.
 @abbr{AAA, expL}. @acronym{BBB, explA}. @abbr{aaa, expl}. 
@@ -595,6 +594,9 @@ T
 @tab in tab
 @item in item
 @end example
+'],
+['lone_braces_in_inlineraw',
+'@inlineraw{plaintext, {truc}}.
 '],
 # if this test is modified, the corresponding test in t/info_tests.t should
 # be changed too
