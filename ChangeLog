@@ -1,3 +1,8 @@
+2013-09-07  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/texi2any.pl: handle plaintext as other formats to set 
+	expanded formats.
+
 2013-09-06  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Parser.pm, 
