@@ -112,6 +112,11 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
         dir_suffix=`echo $command_dir | cut -d':' -f2`
         outdir="${out_dir}${dir_suffix}/"
         resdir="${res_dir}${dir_suffix}/"
+        if [ -d "$resdir" ]; then
+          :
+        else
+          mkdir "$resdir"
+        fi
         if [ -d "${outdir}$dir" ]; then
           if [ -d "${resdir}$dir" ]; then
           # ugly hack to avoid CVS and .svn
