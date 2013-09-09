@@ -18134,7 +18134,9 @@ default @samp{:}.
 @item INFO_SPECIAL_CHARS_WARNING
 If set, warn about problematic constructs for Info output (such as the
 string @samp{::}) in node names, menu items, and cross references;
-default true.
+default true.  Do not warn about index entries, since parsing problems
+there don't prevent navigation; readers can still relatively easily
+find their way to the node in question.
 
 @item INLINE_INSERTCOPYING
 If set, @code{@@insertcopying} is replaced by the @code{@@copying}
