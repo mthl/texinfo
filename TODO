@@ -48,6 +48,8 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     `class::method'.  Likewise index entries.  A quoting mechanism such
     as surrounding node names with SPACE BACKSPACE is probably the best
     solution, although this is an incompatible change to Info format.
+    This would also allow references without any *note and :: in text,
+    (pace goptical, Alexandre Becoulet, 18 Jan 2011 00:31:42).
   - @else for the @if... conditionals.
   - consider doing some @inline version of @set, @ifset, like 
     @inlineset{flag, ...}, @inlineifset{flag, if set} or @inlineifset{flag,
