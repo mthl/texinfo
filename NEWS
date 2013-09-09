@@ -22,6 +22,11 @@ one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
+* texi2any:
+  . warns about node names, menu items, and cross-references (but not
+    index entries) containing problematic characters; can be disabled
+    with -c INFO_SPECIAL_CHARS_WARNING=0.
+
 * info:
   . new option -x (--debug) for debugging output; -x -1 to get everything.
   . new option -v (--variable) assigns a value to an Info variable,

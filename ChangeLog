@@ -1,3 +1,11 @@
+2013-09-09  Karl Berry  <karl@gnu.org>
+
+	* NEWS,
+	* doc/texinfo.texi (Node Line Requirements, Menu Parts,
+	Cross Reference Parts, Other Customization variables): 
+	mention Info warnings and INFO_SPECIAL_CHARS_WARNING.
+	Other small tweaks.
+
 2013-09-07  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/texi2any.pl: handle plaintext as other formats to set 
@@ -10,7 +18,7 @@
 	false do not output warning messages on info characters in menu,
 	cross-refs and node names.
 	Use pending word in ref formatting to construct checked cross ref
-	and node naems.
+	and node names.
 
 2013-09-06  Patrice Dumas  <pertusus@free.fr>
 

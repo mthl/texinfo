@@ -5030,9 +5030,11 @@ of their names.  This way, it is easy to use automatic name completion in
 Info.
 
 @item
-By convention, node names are capitalized just as they would be for
-section or chapter titles.  In this manual, initial and significant
-words are capitalized; others are not.
+Conventionally, node names are capitalized in the same way as section
+and chapter titles.  In this manual, initial and significant words are
+capitalized; others are not.  In other manuals, just initial words and
+proper nouns are capitalized.  Either way is fine; we recommend just
+being consistent.
 @end itemize
 
 The pointers from a given node enable you to reach other nodes and
@@ -5154,11 +5156,11 @@ normal text.  Cross references should use @code{@@TeX@{@}} just as the
 node name does.
 
 For Info and HTML output, especially, it is necessary to expand
-commands to some sequence of characters; for instance,
+commands to some sequence of plain characters; for instance,
 @code{@@TeX@{@}} expands to the three letters @samp{TeX} in the Info
-node name.  (However, cross references to the node should not take the
+node name.  However, cross references to the node should not take the
 ``shortcut'' of using @samp{TeX}; stick to the actual node name,
-commands and all.)
+commands and all.
 
 Some commands do not make sense in node names; for instance,
 environments (e.g., @code{@@quotation}), commands that read a whole
@@ -5182,15 +5184,22 @@ an ad hoc way (the @option{--commands-in-node-names} option to
 @cindex Invalid characters in node names
 @cindex Node names, invalid characters in
 Unfortunately, you cannot reliably use periods, commas, or colons
-within a node name; these confuse the Info reader.  Also, a node name
-may not start with a left parenthesis preceding a right parenthesis,
-as in @code{(not)allowed}, since this syntax is used to specify an
-external manual.  (Perhaps these limitations will be removed some day.)
+within a node name; these can confuse the Info reader.  Also, a node
+name may not start with a left parenthesis preceding a right
+parenthesis, as in @code{(not)allowed}, since this syntax is used to
+specify an external manual.  (Perhaps these limitations will be
+removed some day.)
 
-If you insist on using these characters in node names, accepting the
-resulting substandard Info output, in order not to confuse the Texinfo
-processors, you must still escape those characters, by using either
-special insertions (@pxref{Inserting a Comma}) or @code{@@asis}
+@command{makeinfo} warns about such problematic usage in node names,
+menu items, and cross references.  If you don't want to see the
+warnings, you can set the customization variable
+@code{INFO_SPECIAL_CHARS_WARNING} to @samp{0} (@pxref{Other
+Customization Variables}).
+
+Also, if you insist on using these characters in node names (accepting
+the resulting substandard Info output), in order not to confuse the
+Texinfo processors you must still escape those characters, by using
+either special insertions (@pxref{Inserting a Comma}) or @code{@@asis}
 (@pxref{@t{@@asis}}).  For example:
 
 @example
@@ -5201,15 +5210,14 @@ As an example of avoiding the special characters, the following is a
 section title in this manual:
 
 @smallexample
-@@code@{@@@@unnumberedsec@}, @@code@{@@@@appendixsec@}, @@code@{@@@@heading@}
+@@section @@code@{@@@@unnumbered@}, @@code@{@@@@appendix@}: ...
 @end smallexample
 
 @noindent
-But the corresponding node name lacks the commas (and the @code{@@}'s,
-but that is historical):
+But the corresponding node name lacks the commas and the subtitle:
 
 @smallexample
-unnumberedsec appendixsec heading
+@@node @t{@@unnumbered @@appendix}
 @end smallexample
 
 @cindex Case in node name
@@ -5231,7 +5239,7 @@ single space.  For example:
 
 @noindent all define the same node, namely @samp{foo bar}.  References
 to the node should all use that name, with no leading or trailing
-spaces a single internal space.
+spaces, and a single internal space.
 @end itemize
 
 
@@ -5607,14 +5615,14 @@ Emacs Texinfo mode updating commands work only to create menus of
 subordinate nodes in a hierarchically structured document.  It is much
 better to use cross references to refer to arbitrary nodes.
 
-In the past, we recommended using an @samp{@@heading} command within
-an @code{@@ifinfo} conditional instead of the normal sectioning
-commands after a very short node with a menu.  This had the advantage
-of making the printed output look better, because there was no very
-short text between two headings on the page.  But this also does not
-work with @command{makeinfo}'s implicit pointer creation, and it also
-makes the XML output incorrect, since it does not reflect the true
-document structure.  So, we no longer recommend this.
+Years ago, we recommended using an @samp{@@heading} command within an
+@code{@@ifinfo} conditional instead of the normal sectioning commands
+after a very short node with a menu.  This had the advantage of making
+the printed output look better, because there was no very short text
+between two headings on the page.  But it does not work with
+@command{makeinfo}'s implicit pointer creation, and it also makes the
+XML output incorrect, since it does not reflect the true document
+structure.  So, we no longer recommend this.
 
 
 @node Writing a Menu
@@ -5640,15 +5648,16 @@ Larger Units of Text
 @end group
 @end example
 
+@cindex Spaces, in menus
 In a menu, every line that begins with an @w{@samp{* }} is a @dfn{menu
 entry}.  (Note the space after the asterisk.)  A line that does not
 start with an @w{@samp{* }} may also appear in a menu.  Such a line is
-not a menu entry but is a menu comment line that appears in the Info
-file.  In the example above, the line @samp{Larger Units of Text} is a
-menu comment line; the two lines starting with @w{@samp{* }} are menu
-@cindex Spaces, in menus
-entries.  Space characters in a menu are preserved as-is; this allows
-you to format the menu as you wish.
+not a menu entry but rather a @dfn{menu comment} line that appears in
+the Info file.  In the example above, the line @samp{Larger Units of
+Text} is such a menu comment line; the two lines starting with
+@w{@samp{* }} are menu entries.  Space characters in a menu are
+preserved as-is in the Info output; this allows you to format the menu
+as you wish.
 
 @opindex accesskey@r{, in HTML output of menus}
 In the HTML output from @command{makeinfo}, the @code{accesskey}
@@ -5684,9 +5693,16 @@ next section for one more possibility):
 * @var{menu-entry-name}: @var{node-name}.   @var{description}
 @end example
 
-Follow the menu entry name with a single colon and follow the node name
-with tab, comma, newline, or the two characters period and space
+Follow the menu entry name with a single colon and follow the node
+name with tab, comma, newline, or the two characters period and space
 (@samp{. }).
+
+@command{makeinfo} warns when the text of a menu item (and node names
+and cross references) contains a problematic construct that will
+interfere with its parsing in Info.  If you don't want to see the
+warnings, you can set the customization variable
+@code{INFO_SPECIAL_CHARS_WARNING} to @samp{0} (@pxref{Other
+Customization Variables}).
 
 In Info, a user selects a node with the @kbd{m} (@code{Info-menu})
 command.  The menu entry name is what the user types after the @kbd{m}
@@ -5729,7 +5745,7 @@ instead of
 * Name: Name.                   @var{description}
 @end example
 
-You should indeed use the node name for the menu entry name whenever
+We recommend using the node name for the menu entry name whenever
 possible, since it reduces visual clutter in the menu.
 
 
@@ -5876,6 +5892,7 @@ places to which cross references can refer.
 * @t{@@url}::                        How to refer to a uniform resource locator.
 * @t{@@cite}::                       How to refer to books not in the Info system.
 @end menu
+
 
 @node References
 @section What References Are For
@@ -6062,6 +6079,13 @@ described separately following the description of @code{@@xref}.
 Write a node name in a cross reference in exactly the same way as in
 the @code{@@node} line, including the same capitalization; otherwise, the
 formatters may not find the reference.
+
+@command{makeinfo} warns when the text of a cross reference (and node
+names and menu items) contains a problematic construct that will
+interfere with its parsing in Info.  If you don't want to see the
+warnings, you can set the customization variable
+@code{INFO_SPECIAL_CHARS_WARNING} to @samp{0} (@pxref{Other
+Customization Variables}).
 
 
 @node @t{@@xref}
@@ -17508,7 +17532,7 @@ cannot absolutely promise, since needs change over time.
 
 Many aspects of the behavior and output of @command{texi2any} may be
 modified by modifying so-called @dfn{customization variables}.  These
-fall into four general categories:
+fall into a few general categories:
 
 @itemize @bullet
 @item
@@ -17520,6 +17544,9 @@ Those associated with command-line options; for example, the
 customization variable @code{SPLIT} is associated with the
 @option{--split} command-line option, and @code{TEXINFO_OUTPUT_FORMAT}
 allows specifying the output format.
+
+@item
+Those associated with customizing the HTML output.
 
 @item
 Other ad hoc variables.
@@ -17849,6 +17876,11 @@ For HTML@.  Use icons for the navigation panel; default false.
 For HTML@.  If set, the associated value is prepended to the image file
 links; default unset.
 
+@item INLINE_CONTENTS
+For HTML@.  If set, output the contents where the @code{@@contents} and
+similar @@-commands are located; default true.  This is ignored if
+@code{@@set*contentsaftertitlepage} is set (@pxref{Contents}).
+
 @item INLINE_CSS_STYLE
 For HTML@.  Put CSS directly in HTML elements rather than at the
 beginning of the output; default false.
@@ -18093,16 +18125,16 @@ If set, begin outputting at @code{@@setfilename}, if
 
 @item IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME
 If set, spaces are ignored after an @@-command that takes braces.
-Default on, matching the @TeX{} behavior.
+Default true, matching the @TeX{} behavior.
 
 @item INDEX_ENTRY_COLON
 Symbol used between the index entry and the associated node or section;
 default @samp{:}.
 
-@item INLINE_CONTENTS
-For HTML@.  If set, output the contents where the @code{@@contents} and
-similar @@-commands are located; default true.  This is Ignored if
-@code{@@set*contentsaftertitlepage} is set (@pxref{Contents}).
+@item INFO_SPECIAL_CHARS_WARNING
+If set, warn about problematic constructs for Info output (such as the
+string @samp{::}) in node names, menu items, and cross references;
+default true.
 
 @item INLINE_INSERTCOPYING
 If set, @code{@@insertcopying} is replaced by the @code{@@copying}
