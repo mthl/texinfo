@@ -1,3 +1,10 @@
+2013-09-10  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (Two Arguments, Three Arguments):
+	some node name requirements apply to arg#2 and arg#3 too.
+	(Inline Conditionals): TeX can't properly deal with
+	newline-delimited commands inside @inline*.
+
 2013-09-09  Karl Berry  <karl@gnu.org>
 
 	* NEWS,

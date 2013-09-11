@@ -6305,9 +6305,14 @@ See Section 5.2 [Electrical Effects], page 57, for more info.
 @end quotation
 
 @noindent
-in a printed manual.
-(Note that in the preceding example the closing brace is followed by a
-comma, and then by the clause, which is followed by a period.)
+in a printed manual.  (Note that in the preceding example the closing
+brace is followed by a comma, and then by the clause, which is
+followed by a period.)
+
+The second argument to cross references must observe some of the
+restrictions for node names (@pxref{Node Line Requirements}).  The
+most common issue is that colons cannot be used, since that interferes
+with the parsing of the Info file.
 
 
 @node Three Arguments
@@ -6321,12 +6326,7 @@ use initial uppercase letters so it will be easier to read when the
 reference is printed.  Use a third argument when the node name is
 unsuitable because of syntax or meaning.
 
-The third argument to the xref commands must observe the same
-restrictions as node names described in @ref{Node Line Requirements}.
-The issue you're most likely to run into is that commas, periods, and
-colons cannot be used.
-
-Also, remember to write a comma or period after the closing brace of an
+Remember to write a comma or period after the closing brace of an
 @code{@@xref} to terminate the cross reference.  In the following
 examples, a clause follows a terminating comma.
 
@@ -6396,22 +6396,27 @@ See Section 5.2 [Thunder and Lightning], page 57, for details.
 @noindent
 in a printed manual.
 
+The third argument to cross references must observe some of the
+restrictions for node names (@pxref{Node Line Requirements}).  The
+most common issue is that colons cannot be used, since that interferes
+with the parsing of the Info file.
+
 As a practical matter, it is often best to write cross references with
 just the first argument if the node name and the section title are the
 same (or nearly so), and with the first and third arguments only if the
 node name and title are different.
 
 @findex xrefautomaticsectiontitle
-If you want the section title to be used by default instead of
-node names in cross references (an explicitly specified third argument
-still takes precedence), Texinfo can do this automatically:
+Texinfo offers a setting to use the section title instead of node
+names by default in cross references (an explicitly specified third
+argument still takes precedence):
 
 @example
 @@xrefautomaticsectiontitle on
 @end example
 
 Typically this line would be given near the beginning of the document
-and used for the whole thing.  But you can turn it off if you want
+and used for the whole manual.  But you can turn it off if you want
 (@code{@@xrefautomaticsectiontitle off}), for example, if you're
 including some other sub-document that doesn't have suitable section
 names.
@@ -14177,8 +14182,8 @@ in the remainder of the document.  Thus, the Texinfo processors
 recognize and even execute, to some extent, the contents of the raw
 regions, regardless of the final output format.  Therefore, specifying
 changes that globally affect the document inside a raw region leads to
-unpredictable and generally undesirable behavior.  For example,
-giving the @code{@@kbdinputstyle} command inside a raw region.
+unpredictable and generally undesirable behavior.  For example, it
+using the @code{@@kbdinputstyle} command inside a raw region is undefined.
 
 The remedy is simple: don't do that.  Use the raw formatter commands
 for their intended purpose, of providing material directly in the
@@ -14210,6 +14215,12 @@ generated.
 Similar, but for raw @var{text} (@pxref{Raw Formatter Commands}).
 @end table
 
+The supported @var{format} names are:
+
+@example
+docbook  html  info  plaintext  tex  xml
+@end example
+
 For example,
 
 @example
@@ -14239,6 +14250,14 @@ Braces}), or the parsing will become confused.  (By the way, it is not
 necessary to use @code{@@comma@{@}}, since these commands always have
 exactly two arguments, so a @samp{,} cannot be mistaken for an
 argument separator.)
+
+For @TeX{} processing (@var{format} is @samp{tex}), the specific
+@var{text} cannot contain newline-delimited commands.  Such commands
+are properly ignored by @TeX{} when @var{format} is something else,
+though.  In addition, literal brace characters (@samp{@{} and
+@samp{@}}) must be balanced for @TeX{}, whether the text is ignored or
+not.  (You can use @code{@@lbracechar@{@}} and @code{@@rbracechar@{@}}
+to produce individual characters.)
 
 
 @node @t{@@set @@clear @@value}
