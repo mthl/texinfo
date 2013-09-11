@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2013-09-10.16}
+\def\texinfoversion{2013-09-11.09}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -4225,7 +4225,12 @@ end
 % variable's value contains other Texinfo commands, it's almost certain
 % it will fail (although perhaps we could fix that with sufficient work
 % to do a one-level expansion on the result, instead of complete).
-%
+% 
+% Unfortunately, this has the consequence that when _ is in the *value*
+% of an @set, it does not print properly in the roman fonts (get the cmr
+% dot accent at position 126 instead).  No fix comes to mind, and it's
+% been this way since 2003 or earlier, so just ignore it.
+% 
 \def\expandablevalue#1{%
   \expandafter\ifx\csname SET#1\endcsname\relax
     {[No value for ``#1'']}%
@@ -9975,6 +9980,8 @@ directory should work if nowhere else does.}
   \let~ = \activetilde 
   \let^ = \activehat
   \markupsetuplqdefault \markupsetuprqdefault 
+  \let\b = \strong
+  \let\i = \smartitalic
   % in principle, all other definitions in \tex have to be undone too.
 }
 

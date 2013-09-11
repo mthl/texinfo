@@ -1,3 +1,21 @@
+2013-09-11  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\onepageout): call new macro
+	\commonheadfootline to make the headline/footline vboxes,
+	which in turn calls \texinfochars.
+	(\texinfochars): new macro; should reset all definitions done by
+	@tex, but have skipped some for now out of laziness, since no
+	one has noticed.
+	(\expandablevalue): change formatting; note that _ in
+	an @value string fails in non-typewriter output,
+	and has been for a long time.
+	(\activetilde, \activehat, \activeless, \activegtr): factor
+	out the normal Texinfo definitions, now also used in \texinfochars.
+	
+	All this due to a bug report from Charlie Zender where ' in the
+	@settitle caused failures when a page break occurred inside @tex,
+	help-texinfo 08 Sep 2013 16:26:16.
+
 2013-09-10  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (Two Arguments, Three Arguments):
