@@ -22,6 +22,10 @@ one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
+* Language:
+  . new commands @inlinefmtifelse, @inlineifset, @inlineifclear, for
+    more brace-delimited alternatives to the conditional environments.
+
 * texi2any:
   . warns about node names, menu items, and cross-references (but not
     index entries) containing problematic characters; can be disabled

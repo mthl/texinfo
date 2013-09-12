@@ -14194,8 +14194,9 @@ specifications for different output formats, use the
 
 
 @node Inline Conditionals
-@section Inline Conditionals: @code{@@inline}, @code{@@inlineraw}
+@section Inline Conditionals: @code{@@inline}, @code{@@inlineifelse}, @code{@@inlineraw}
 @findex inlinefmt
+@findex inlinefmtifelse
 @findex inlineraw
 @cindex Inline conditionals
 @cindex Conditional commands, inline
@@ -14203,13 +14204,17 @@ specifications for different output formats, use the
 @cindex Newlines, avoiding in conditionals
 @cindex Whitespace, controlling in conditionals
 
-Texinfo provides two conditional commands with arguments given within
-braces:
+Texinfo provides a set of conditional commands with arguments given
+within braces:
 
 @table @code
 @item @@inlinefmt@{@var{format}, @var{text}@}
 Process the Texinfo @var{text} if @var{format} output is being
 generated.
+
+@item @@inlinefmtifelse@{@var{format}, @var{then-text}, @var{else-text}@}
+Process the Texinfo @var{then-text} if @var{format} output is being
+generated; otherwise, process @var{else-text}.
 
 @item @@inlineraw@{@var{format}, @var{text}@}
 Similar, but for raw @var{text} (@pxref{Raw Formatter Commands}).
@@ -14239,29 +14244,30 @@ For example,
 (environment) case.
 
 In these commands, whitespace is ignored after the comma separating
-the two arguments, as usual, but is @emph{not} ignored at the end of
+the arguments, as usual, but is @emph{not} ignored at the end of
 @var{text}.
 
-In the case of @code{@@inlineraw}, to insert a literal at sign, left
-brace, or right brace, you must use the alphabetic commands
-@code{@@atchar@{@}} (@pxref{Inserting an Atsign}), and
-@code{@@lbracechar@{@}} or @code{@@rbracechar@{@}} (@pxref{Inserting
-Braces}), or the parsing will become confused.  (By the way, it is not
-necessary to use @code{@@comma@{@}}, since these commands always have
-exactly two arguments, so a @samp{,} cannot be mistaken for an
-argument separator.)
+To insert a literal at sign, left brace, or right brace in one of the
+arguments, you must use the alphabetic commands @code{@@atchar@{@}}
+(@pxref{Inserting an Atsign}), and @code{@@lbracechar@{@}} or
+@code{@@rbracechar@{@}} (@pxref{Inserting Braces}), or the parsing
+will become confused.
 
-For @TeX{} processing (@var{format} is @samp{tex}), the specific
-@var{text} cannot contain newline-delimited commands.  Such commands
-are properly ignored by @TeX{} when @var{format} is something else,
-though.  In addition, literal brace characters (@samp{@{} and
-@samp{@}}) must be balanced for @TeX{}, whether the text is ignored or
-not.  (You can use @code{@@lbracechar@{@}} and @code{@@rbracechar@{@}}
-to produce individual characters.)
+With @code{@@inlinefmtifelse}, it is also necessary to use
+@code{@@comma@{@}} to avoid mistaking a @samp{,} in the text for the
+delimiter.  With @code{@@inlinefmt} and @code{@@inlineraw},
+@code{@@comma@{@}} is not required (though it's fine to use it), since
+these commands always have exactly two arguments.
+
+For @TeX{}, the processed @var{text} cannot contain newline-delimited
+commands.  Text to be ignored (i.e., for non-@TeX{}) can, though.
+
+Two other @code{@@inline...} conditionals complement the
+@code{@@ifset} and @code{@@ifclear} commands; see the next section.
 
 
 @node @t{@@set @@clear @@value}
-@section @code{@@set}, @code{@@clear}, and @code{@@value}
+@section Flags: @code{@@set}, @code{@@clear}, conditionals, and @code{@@value}
 
 @anchor{set clear value}@c old name
 You can direct the Texinfo formatting commands to format or ignore parts
@@ -14283,15 +14289,23 @@ If @var{flag} is set, text through the next @code{@@end ifset} command
 is formatted.  If @var{flag} is clear, text through the following
 @code{@@end ifset} command is ignored.
 
+@item @@inlineifset@{@var{flag}, @var{text}@}
+Brace-delimited version of @code{@@ifset}.
+
 @item @@ifclear @var{flag}
 If @var{flag} is set, text through the next @code{@@end ifclear} command
 is ignored.  If @var{flag} is clear, text through the following
 @code{@@end ifclear} command is formatted.
+
+@item @@inlineifclear@{@var{flag}, @var{text}@}
+Brace-delimited version of @code{@@ifclear}.
+
 @end table
 
 @menu
 * @t{@@set @@value}::                 Expand a flag variable to a string.
 * @t{@@ifset @@ifclear}::             Format a region if a flag is set.
+* @t{@@inlineifset @@inlineifclear}:: Brace-delimited flag conditionals.
 * @t{@@value} Example::              An easy way to update edition information.
 @end menu
 
@@ -14469,6 +14483,33 @@ command looks like this:
 @example
 @@ifclear @var{flag}
 @end example
+
+
+@node @t{@@inlineifset @@inlineifclear}
+@subsection @code{@@inlineifset} and @code{@@inlineifclear}
+
+@findex inlineifset
+@findex inlineifclear
+@cindex Flag conditionals, brace-delimited
+@cindex Brace-delimited flag conditionals
+
+@code{@@inlineifset} and @code{@@inlineifclear} provide
+brace-delimited alternatives to the @code{@@ifset} and
+@code{@@ifclear} forms, similar to the other @code{@@inline...}
+Commands (@pxref{Inline Conditionals}).  The same caveats about
+argument parsing given there apply here too.
+
+@table @code
+@item @@inlineifset@{@var{var}, @var{text}@}
+Process the Texinfo @var{text} if the flag @var{var} is defined.
+
+@item @@inlineifclear@{@var{var}, @var{text}@}
+Process the Texinfo @var{text} if the flag @var{var} is not defined.
+@end table
+
+Except for the syntax, their general behavior and purposes is the same
+as with @code{@@ifset} and @code{@@ifclear}, described in the previous
+section.
 
 
 @node @t{@@value} Example
@@ -21027,9 +21068,19 @@ Make a cross reference to an Info file for which there is no printed
 manual.  @xref{@t{@@inforef}}.
 
 @item @@inlinefmt@{@var{fmt}, @var{text}@}
-@itemx @@inlineraw@{@var{fmt}, @var{raw-text}@}
-Insert (raw) @var{text} only if the output format is @var{fmt}.
+Insert @var{text} only if the output format is @var{fmt}.
 @xref{Inline Conditionals}.
+
+@item @@inlinefmtifelse@{@var{fmt}, @var{text}, @var{else-text}@}
+Insert @var{text} if the output format is @var{fmt}, else @var{else-text}.
+
+@item @@inlineifclear@{@var{var}, @var{text}@}
+@itemx @@inlineifset@{@var{var}, @var{text}@}
+Insert @var{text} only if the Texinfo variable @var{var} is (not) set.
+
+@item @@inlineraw@{@var{fmt}, @var{raw-text}@}
+Insert @var{text} as in a raw conditional, only if the output format
+is @var{fmt}.
 
 @item \input @var{macro-definitions-file}
 Use the specified macro definitions file.  This command is used only
