@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-12 09:25-0700\n"
+"POT-Creation-Date: 2013-09-13 09:54-0700\n"
 "PO-Revision-Date: 2005-02-07 09:27+0300\n"
 "Last-Translator: Oleg S. Tihonov <ost@tatnipi.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -149,7 +149,7 @@ msgstr ""
 msgid "Unmatched ) or \\)"
 msgstr "Непарная }"
 
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "Нет строки предыдущего поиска"
@@ -277,6 +277,21 @@ msgstr "Составление завершений..."
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
 msgstr "Прокрутить окно завершений"
+
+#: info/filesys.c:88
+#, fuzzy, c-format
+msgid "looking for file \"%s\""
+msgstr "невозможно закрыть выходной файл `%s'"
+
+#: info/filesys.c:178
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "невозможно закрыть выходной файл `%s'"
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "невозможно закрыть выходной файл `%s'"
 
 #: info/footnotes.c:211
 msgid "Footnotes could not be displayed"

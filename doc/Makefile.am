@@ -101,7 +101,7 @@ wwwdoc-build:
 	rm -rf $(doctemp) && mkdir $(doctemp)
 	cd $(doctemp) \
 	&& pod2html $(abs_top_srcdir)/Pod-Simple-Texinfo/pod2texi.pl >pod2texi.html \
-	&& ln -s ../*.texi ../*.txi . \
+	&& ln -s ../*.texi . \
 	&& $(gendocs_invoke) -o $(manual1) $(manual1) $(manual1_title) \
 	&& $(gendocs_invoke) -o $(manual2) $(manual2) $(manual2_title) \
 	&& $(gendocs_invoke) -o $(manual3) $(manual3) $(manual3_title)

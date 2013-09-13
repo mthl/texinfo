@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.12.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-12 09:25-0700\n"
+"POT-Creation-Date: 2013-09-13 09:54-0700\n"
 "PO-Revision-Date: 2008-11-11 17:30+0700\n"
 "Last-Translator: Arif E. Nugroho <arif_endro@yahoo.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -155,7 +155,7 @@ msgstr "Menggunakan ekspresi regular untuk pencarian."
 msgid "Unmatched ) or \\)"
 msgstr "Tidak cocok }"
 
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "Tidak ada string pencarian sebelumnya"
@@ -283,6 +283,21 @@ msgstr "Buat komplesi..."
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
 msgstr "Scroll jendela komplesi"
+
+#: info/filesys.c:88
+#, fuzzy, c-format
+msgid "looking for file \"%s\""
+msgstr "error menutup berkas keluaran `%s'"
+
+#: info/filesys.c:178
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "error menutup berkas keluaran `%s'"
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "error menutup berkas keluaran `%s'"
 
 #: info/footnotes.c:211
 msgid "Footnotes could not be displayed"

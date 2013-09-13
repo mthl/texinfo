@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 3.12d\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-12 09:25-0700\n"
+"POT-Creation-Date: 2013-09-13 09:54-0700\n"
 "PO-Revision-Date: 1999-02-16 21:14+01:00\n"
 "Last-Translator: Karl Eichwalder <ke@suse.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -146,7 +146,7 @@ msgstr ""
 msgid "Unmatched ) or \\)"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 msgid "No previous regular expression"
 msgstr ""
 
@@ -272,6 +272,21 @@ msgstr ""
 
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
+msgstr ""
+
+#: info/filesys.c:88
+#, c-format
+msgid "looking for file \"%s\""
+msgstr ""
+
+#: info/filesys.c:178
+#, c-format
+msgid "looking for file %s in %s"
+msgstr ""
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, c-format
+msgid "found file %s"
 msgstr ""
 
 #: info/footnotes.c:211

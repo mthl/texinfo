@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: info\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-12 09:25-0700\n"
+"POT-Creation-Date: 2013-09-13 09:54-0700\n"
 "PO-Revision-Date: 2006-02-18 16:00+0100\n"
 "Last-Translator: Mate LABADI <labadimate@freemail.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -152,7 +152,7 @@ msgid "Unmatched ) or \\)"
 msgstr "Pár nélküli }"
 
 # keresési feltétel / keresési szöveg / keresett szöveg ? LM
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "Nincs korábbi keresési feltétel"
@@ -281,6 +281,21 @@ msgstr "Kiegészítések felépítése ..."
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
 msgstr "A kiegészítések ablak görgetése "
+
+#: info/filesys.c:88
+#, fuzzy, c-format
+msgid "looking for file \"%s\""
+msgstr "hiba a(z) „%s“ output fájl bezárásakor"
+
+#: info/filesys.c:178
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "hiba a(z) „%s“ output fájl bezárásakor"
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "hiba a(z) „%s“ output fájl bezárásakor"
 
 #: info/footnotes.c:211
 msgid "Footnotes could not be displayed"

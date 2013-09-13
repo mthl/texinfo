@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.0.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-12 09:25-0700\n"
+"POT-Creation-Date: 2013-09-13 09:54-0700\n"
 "PO-Revision-Date: 2013-03-09 15:42+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -146,7 +146,7 @@ msgstr "Wyrażenie regularne zbyt duże"
 msgid "Unmatched ) or \\)"
 msgstr "Niesparowane ) lub \\)"
 
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 msgid "No previous regular expression"
 msgstr "Brak poprzedniego wyrażenia regularnego"
 
@@ -274,6 +274,21 @@ msgstr "Tworzenie uzupełnień..."
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
 msgstr "Przewijanie okna uzupełnień"
+
+#: info/filesys.c:88
+#, fuzzy, c-format
+msgid "looking for file \"%s\""
+msgstr "błąd podczas zamykania pliku wyjściowego `%s'"
+
+#: info/filesys.c:178
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "błąd podczas zamykania pliku wyjściowego `%s'"
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "błąd podczas zamykania pliku wyjściowego `%s'"
 
 #: info/footnotes.c:211
 msgid "Footnotes could not be displayed"

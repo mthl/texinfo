@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-4.12.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-12 09:25-0700\n"
+"POT-Creation-Date: 2013-09-13 09:54-0700\n"
 "PO-Revision-Date: 2008-09-04 23:50+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -156,7 +156,7 @@ msgstr "Usando expresiones regulares durante búsquedas."
 msgid "Unmatched ) or \\)"
 msgstr "`}' desemparejada"
 
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "No existe constancia de búsqueda anterior"
@@ -285,6 +285,21 @@ msgstr "Contruyendo lista de entradas..."
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
 msgstr "Avanzar en la lista de entradas"
+
+#: info/filesys.c:88
+#, fuzzy, c-format
+msgid "looking for file \"%s\""
+msgstr "error cerrando fichero `%s'"
+
+#: info/filesys.c:178
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "error cerrando fichero `%s'"
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "error cerrando fichero `%s'"
 
 #: info/footnotes.c:211
 msgid "Footnotes could not be displayed"

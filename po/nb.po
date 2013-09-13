@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-12 09:25-0700\n"
+"POT-Creation-Date: 2013-09-13 09:54-0700\n"
 "PO-Revision-Date: 2004-12-05 15:37+0100\n"
 "Last-Translator: Trond Endrestøl <Trond.Endrestol@gtf.ol.no>\n"
 "Language-Team: Norwegian Bokmaal <i18n-nb@lister.ping.uio.no>\n"
@@ -164,7 +164,7 @@ msgstr ""
 msgid "Unmatched ) or \\)"
 msgstr "Umatchet }"
 
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "Ingen tidligere søkestreng"
@@ -292,6 +292,21 @@ msgstr "Bygger fullføringer..."
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
 msgstr "Rulle fullføringsvinduet"
+
+#: info/filesys.c:88
+#, fuzzy, c-format
+msgid "looking for file \"%s\""
+msgstr "Feil ved lukking av outputfila «%s»"
+
+#: info/filesys.c:178
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "Feil ved lukking av outputfila «%s»"
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "Feil ved lukking av outputfila «%s»"
 
 #: info/footnotes.c:211
 msgid "Footnotes could not be displayed"

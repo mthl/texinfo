@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-5.0.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-12 09:25-0700\n"
+"POT-Creation-Date: 2013-09-13 09:54-0700\n"
 "PO-Revision-Date: 2013-03-09 19:42+0100\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -152,7 +152,7 @@ msgstr "Reguliere expressie is te groot"
 msgid "Unmatched ) or \\)"
 msgstr "Ongepaarde ) of \\)"
 
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 msgid "No previous regular expression"
 msgstr "Geen eerdere reguliere expressie"
 
@@ -279,6 +279,21 @@ msgstr "Opbouwen van voltooiingen..."
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
 msgstr "Het voltooiingsvenster scrollen"
+
+#: info/filesys.c:88
+#, fuzzy, c-format
+msgid "looking for file \"%s\""
+msgstr "fout bij sluiten van uitvoerbestand '%s'"
+
+#: info/filesys.c:178
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "fout bij sluiten van uitvoerbestand '%s'"
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "fout bij sluiten van uitvoerbestand '%s'"
 
 #: info/footnotes.c:211
 msgid "Footnotes could not be displayed"

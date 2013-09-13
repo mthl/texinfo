@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.0.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-12 09:25-0700\n"
+"POT-Creation-Date: 2013-09-13 09:54-0700\n"
 "PO-Revision-Date: 2013-03-09 20:12+0100\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -150,7 +150,7 @@ msgstr "Regulesprimo tro grandas"
 msgid "Unmatched ) or \\)"
 msgstr "Senpara ) aŭ \\)"
 
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 msgid "No previous regular expression"
 msgstr "Mankas antaŭa regulesprimo"
 
@@ -277,6 +277,21 @@ msgstr "Serĉado de kompletigoj..."
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
 msgstr "Rulumi la fenestron de kompletigoj"
+
+#: info/filesys.c:88
+#, fuzzy, c-format
+msgid "looking for file \"%s\""
+msgstr "eraro dum fermo de eliga dosiero «%s»"
+
+#: info/filesys.c:178
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "eraro dum fermo de eliga dosiero «%s»"
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "eraro dum fermo de eliga dosiero «%s»"
 
 #: info/footnotes.c:211
 msgid "Footnotes could not be displayed"

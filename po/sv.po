@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.11.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-12 09:25-0700\n"
+"POT-Creation-Date: 2013-09-13 09:54-0700\n"
 "PO-Revision-Date: 2008-03-09 20:35+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -154,7 +154,7 @@ msgstr "Använder reguljära uttryck i sökningar."
 msgid "Unmatched ) or \\)"
 msgstr "Ensam }"
 
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "Ingen tidigare söksträng"
@@ -282,6 +282,21 @@ msgstr "Bygger kompletteringar..."
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
 msgstr "Rulla kompletteringsfönstret"
+
+#: info/filesys.c:88
+#, fuzzy, c-format
+msgid "looking for file \"%s\""
+msgstr "fel vid stängning av utdatafilen \"%s\""
+
+#: info/filesys.c:178
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "fel vid stängning av utdatafilen \"%s\""
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "fel vid stängning av utdatafilen \"%s\""
 
 #: info/footnotes.c:211
 msgid "Footnotes could not be displayed"

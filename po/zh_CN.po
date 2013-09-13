@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-12 09:25-0700\n"
+"POT-Creation-Date: 2013-09-13 09:54-0700\n"
 "PO-Revision-Date: 2009-05-21 15:08中国标准时间\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -156,7 +156,7 @@ msgstr "使用正则表达式来查寻"
 msgid "Unmatched ) or \\)"
 msgstr "不匹配的 }"
 
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "没有上次搜索字符串"
@@ -284,6 +284,21 @@ msgstr "正在创建补齐..."
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
 msgstr "滚动补齐窗口"
+
+#: info/filesys.c:88
+#, fuzzy, c-format
+msgid "looking for file \"%s\""
+msgstr "关闭输出文件“%s”时出错"
+
+#: info/filesys.c:178
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "关闭输出文件“%s”时出错"
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "关闭输出文件“%s”时出错"
 
 #: info/footnotes.c:211
 msgid "Footnotes could not be displayed"

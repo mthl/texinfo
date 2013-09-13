@@ -34,7 +34,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.0.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-12 09:25-0700\n"
+"POT-Creation-Date: 2013-09-13 09:54-0700\n"
 "PO-Revision-Date: 2013-03-10 11:05+0100\n"
 "Last-Translator: Michael Piefel <piefel@informatik.hu-berlin.de>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -172,7 +172,7 @@ msgstr "Regulärer Ausdruck zu groß"
 msgid "Unmatched ) or \\)"
 msgstr "Nicht übereinstimmende ) oder \\)"
 
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 msgid "No previous regular expression"
 msgstr "Keine vorheriger regulärer Ausdruck"
 
@@ -300,6 +300,21 @@ msgstr "Vervollständigungen werden erstellt..."
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
 msgstr "Im Vervollständigungs-Fenster blättern"
+
+#: info/filesys.c:88
+#, fuzzy, c-format
+msgid "looking for file \"%s\""
+msgstr "Fehler beim Schließen der Ausgabedatei „%s“."
+
+#: info/filesys.c:178
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "Fehler beim Schließen der Ausgabedatei „%s“."
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "Fehler beim Schließen der Ausgabedatei „%s“."
 
 #: info/footnotes.c:211
 msgid "Footnotes could not be displayed"

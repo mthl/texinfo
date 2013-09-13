@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-12 09:25-0700\n"
+"POT-Creation-Date: 2013-09-13 09:54-0700\n"
 "PO-Revision-Date: 2010-06-01 14:53+0300\n"
 "Last-Translator: Maxim V. Dziumanenko <dziumanenko@gmail.com>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -156,7 +156,7 @@ msgstr "Під час пошуку використовуватимуться р
 msgid "Unmatched ) or \\)"
 msgstr "Невідповідна }"
 
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "Нема попереднього рядку пошуку"
@@ -284,6 +284,21 @@ msgstr "Побудова списку доповнень..."
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
 msgstr "Прокрутити вікно списку доповнень"
+
+#: info/filesys.c:88
+#, fuzzy, c-format
+msgid "looking for file \"%s\""
+msgstr "помилка закриття файлу виводу `%s'"
+
+#: info/filesys.c:178
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "помилка закриття файлу виводу `%s'"
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "помилка закриття файлу виводу `%s'"
 
 #: info/footnotes.c:211
 msgid "Footnotes could not be displayed"

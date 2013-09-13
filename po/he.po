@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-12 09:25-0700\n"
+"POT-Creation-Date: 2013-09-13 09:54-0700\n"
 "PO-Revision-Date: 2002-04-03 12:31+0300\n"
 "Last-Translator: Eli Zaretskii <eliz@gnu.org>\n"
 "Language-Team: Hebrew <eliz@gnu.org>\n"
@@ -150,7 +150,7 @@ msgstr ""
 msgid "Unmatched ) or \\)"
 msgstr "גוז-ןב ול ןיאש }"
 
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "ןורחא שופיחמ תזורחמ ןיא"
@@ -279,6 +279,21 @@ msgstr "...תומלשה תמישר ביכרמ"
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
 msgstr "תומלשהה ןולח תא לולג"
+
+#: info/filesys.c:88
+#, fuzzy, c-format
+msgid "looking for file \"%s\""
+msgstr "`%s' טלפ ץבוק תריגסב הלקת"
+
+#: info/filesys.c:178
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "`%s' טלפ ץבוק תריגסב הלקת"
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "`%s' טלפ ץבוק תריגסב הלקת"
 
 #: info/footnotes.c:211
 msgid "Footnotes could not be displayed"

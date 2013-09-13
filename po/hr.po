@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.0.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-12 09:25-0700\n"
+"POT-Creation-Date: 2013-09-13 09:54-0700\n"
 "PO-Revision-Date: 2013-04-18 00:43+0200\n"
 "Last-Translator: Tomislav Krznar <tomislav.krznar@gmail.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -149,7 +149,7 @@ msgstr "Regularni izraz je prevelik"
 msgid "Unmatched ) or \\)"
 msgstr "Neuparena ) ili \\)"
 
-#: gnulib/lib/regcomp.c:704
+#: gnulib/lib/regcomp.c:707
 msgid "No previous regular expression"
 msgstr "Nedostaje prethodni regularni izraz"
 
@@ -277,6 +277,21 @@ msgstr "Izgrađujem varijante dovršavanja..."
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
 msgstr "Pomakni sadržaj prozora za varijante dovršavanja"
+
+#: info/filesys.c:88
+#, fuzzy, c-format
+msgid "looking for file \"%s\""
+msgstr "greška pri zatvaranju izlazne datoteke „%s”"
+
+#: info/filesys.c:178
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "greška pri zatvaranju izlazne datoteke „%s”"
+
+#: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "greška pri zatvaranju izlazne datoteke „%s”"
 
 #: info/footnotes.c:211
 msgid "Footnotes could not be displayed"
