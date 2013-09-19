@@ -880,6 +880,29 @@ text_buffer_printf (struct text_buffer *buf, const char *format, ...)
   return n;
 }
 
+#if defined(__MSDOS__) || defined(__MINGW32__)
+/* Cannot use FILENAME_CMP here, since that does not consider forward-
+   and back-slash characters equal.  */
+static int
+fncmp (const char *fn1, const char *fn2)
+{
+  const char *s1 = fn1, *s2 = fn2;
+
+  while (tolower (*s1) == tolower (*s2)
+	 || (IS_SLASH (*s1) && IS_SLASH (*s2)))
+    {
+      if (*s1 == 0)
+	return 0;
+      s1++;
+      s2++;
+    }
+
+  return tolower (*s1) - tolower (*s2);
+}
+#else
+# define fncmp(s,t) strcmp(s,t)
+#endif
+
 struct info_namelist_entry
 {
   struct info_namelist_entry *next;
@@ -892,7 +915,7 @@ info_namelist_add (struct info_namelist_entry **ptop, const char *name)
   struct info_namelist_entry *p;
 
   for (p = *ptop; p; p = p->next)
-    if (strcmp (p->name, name) == 0)
+    if (fncmp (p->name, name) == 0)
       return 1;
 
   p = xmalloc (sizeof (*p) + strlen (name));
