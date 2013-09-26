@@ -22,6 +22,8 @@ one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
+
+5.2 (26 September 2013)
 * Language:
   . new commands @inlinefmtifelse, @inlineifset, @inlineifclear, for
     more brace-delimited alternatives to the conditional environments.
