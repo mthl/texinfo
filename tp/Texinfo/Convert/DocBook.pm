@@ -53,7 +53,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.1';
+$VERSION = '5.1.90';
 
 my $mdash = '&#'.hex('2014').';';
 my $ndash = '&#'.hex('2013').';';

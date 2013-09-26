@@ -67,7 +67,7 @@ move_index_entries_after_items_in_tree
 @EXPORT = qw(
 );
 
-$VERSION = '5.1';
+$VERSION = '5.1.90';
 
 # i18n
 sub N__($)

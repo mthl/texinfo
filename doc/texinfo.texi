@@ -2434,7 +2434,7 @@ Insert @code{@@node} lines before the @code{@@chapter},
 missing throughout a region in a Texinfo file.
 
 With an argument (@kbd{C-u} as prefix argument, if interactive), the
-@code{texinfo-insert-node-lines} command not only inserts
+command @code{texinfo-insert-node-lines} not only inserts
 @code{@@node} lines but also inserts the chapter or section titles as
 the names of the corresponding nodes.  In addition, it inserts the
 titles as node names in pre-existing @code{@@node} lines that lack

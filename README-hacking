@@ -101,14 +101,14 @@ version number in texi2dvi, texi2pdf, txirefcard.tex.
 (cd tp && ./maintain/change_perl_modules_version.sh auto)
 sync texi2html/test/ results with tp/.
 ensure building standalone modules for CPAN still works.
-make dvi and fix underfull/overfull boxes.
+make V=1 pdf and fix underfull/overfull boxes.
 specially plead with bug-texinfo / beebe / compile farms to try.
 try groff.texinfo from groff source repo.
 
 - Changes to sources:
 update version in configure.ac, ChangeLog; NEWS with date if official.
-gnulib-tool --add-import
-util/srclist-txi
+gnulib-tool --add-import  # for pretest
+util/srclist-txi          # for pretest
 pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
 make
 make po-check             # update po/POTFILES.in as needed

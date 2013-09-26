@@ -1,3 +1,7 @@
+2013-09-26  Karl Berry  <karl@gnu.org>
+
+	* Version 5.2.
+
 2013-09-19  Eli Zaretskii  <eliz@gnu.org>
 
 	* info/info-utils.c (fncmp): For MS-DOS/MS-Windows, a new function
