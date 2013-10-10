@@ -1,3 +1,8 @@
+2013-10-10  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (Short Sample Texinfo File): do not use
+	@insertcopying in the top node, per rms's preference.
+
 2013-09-26  Karl Berry  <karl@gnu.org>
 
 	* Version 5.2.

@@ -3774,7 +3774,7 @@ Here is an example of a Top node.
 @@node Top
 @@top Sample Title
 
-@@insertcopying
+This is the text of the top node.
 @@end ifnottex
 @end group
 
@@ -14585,8 +14585,10 @@ Write text for the Top node, for people reading the Info file:
 @@node Top
 @@top Make
 
-@@insertcopying
-@dots{}
+This is Edition @@value@{EDITION@},
+last updated @@value@{UPDATED@},
+of @@cite@{The GNU Make Manual@},
+for @@code@{make@}, version @@value@{VERSION@}.
 @@end ifnottex
 @end group
 @end example
@@ -22244,7 +22246,8 @@ Copyright @@copyright@{@} 2013 Free Software Foundation, Inc.
 @@node Top
 @@top GNU Sample
 
-@@insertcopying
+This manual is for GNU Sample
+(version @@value@{VERSION@}, @@value@{UPDATED@}).
 @@end ifnottex
 
 @@menu
