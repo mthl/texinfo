@@ -1,3 +1,8 @@
+2013-10-19  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Structuring.pm: if SHOW_MENU is set, do not error out on
+	lacking entry in menu.
+
 2013-10-10  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (Short Sample Texinfo File): do not use

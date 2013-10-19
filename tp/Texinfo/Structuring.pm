@@ -828,7 +828,8 @@ sub nodes_tree($)
     # and therefore $node->{'node_up'}->{'extra'}->{'manual_content'}.
     # The node_up should always be different from the menu_up, therefore
     # if in a menu, the second condition/error message applies.
-    if ($node->{'node_up'} and ($node->{'node_up'}->{'extra'}->{'manual_content'}
+    if ($self->{'SHOW_MENU'} and $node->{'node_up'} 
+        and ($node->{'node_up'}->{'extra'}->{'manual_content'}
          or !$node->{'menu_up_hash'}
          or !$node->{'menu_up_hash'}->{$node->{'node_up'}->{'extra'}->{'normalized'}})) {
       if (!$node->{'node_up'}->{'extra'}->{'manual_content'}) {
