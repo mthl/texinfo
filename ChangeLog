@@ -1,3 +1,9 @@
+2013-11-07  Karl Berry  <karl@gnu.org>
+
+	* info/infomap.c (default_emacs_like_info_keys): somehow
+	CONTROL('n') = A_info_next_line was lost.
+	Report from Allan McRae, 06 Nov 2013 13:59:04.
+
 2013-10-19  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Structuring.pm: if SHOW_MENU is set, do not error out on

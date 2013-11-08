@@ -297,6 +297,7 @@ static unsigned char default_emacs_like_info_keys[] =
   CONTROL('f'), NUL,              A_info_forward_char,
   CONTROL('h'), NUL,              A_info_get_help_window,
   CONTROL('l'), NUL,              A_info_redraw_display,
+  CONTROL('n'), NUL,              A_info_next_line,
   CONTROL('p'), NUL,              A_info_prev_line,
   CONTROL('r'), NUL,              A_isearch_backward,
   CONTROL('s'), NUL,              A_isearch_forward,
