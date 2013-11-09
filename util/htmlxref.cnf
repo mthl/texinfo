@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2013-08-03.16; # UTC
+htmlxrefversion=2013-11-09.22; # UTC
 
 # Copyright 2010, 2011, 2012, 2013 Free Software Foundation, Inc.
 # 
@@ -18,7 +18,7 @@ htmlxrefversion=2013-08-03.16; # UTC
 #
 # - have a generic url, i.e., no version numbers;
 # - have a unique file name (identifier), i.e., be related to the
-#   package name, something like "refman" or "tutorial" doesn't work.
+#   package name.  Things like "refman" or "tutorial" don't work.
 # - follow the naming convention for nodes described at
 # http://www.gnu.org/software/texinfo/manual/texinfo/html_node/HTML-Xref.html
 #   This is what makeinfo and texi2html implement.
@@ -81,7 +81,10 @@ bison		node	${GS}/bison/manual/html_node/
 
 bpel2owfn	mono	${GS}/bpel2owfn/manual/2.0.x/bpel2owfn.html
 
-cflow		mono	${GS}/cflow/manual/cflow
+ccd2cue		mono	${GS}/ccd2cue/manual/ccd2cue.html
+ccd2cue		node	${GS}/ccd2cue/manual/html_node/
+
+cflow		mono	${GS}/cflow/manual/cflow.html
 cflow		node	${GS}/cflow/manual/html_node/
 
 chess		mono	${GS}/chess/manual/gnuchess.html
@@ -319,8 +322,12 @@ grep		node	${GS}/grep/manual/html_node/
 
 groff		node	${GS}/groff/manual/html_node/
 
-grub		mono	${GS}/grub/manual/grub.html
-grub		node	${GS}/grub/manual/html_node/
+GRUB = ${GS}/grub/manual
+  grub		mono	${GRUB}/grub.html
+  grub		node	${GRUB}/html_node/
+  #
+  multiboot	mono	${GRUB}/multiboot/multiboot.html
+  multiboot	node	${GRUB}/multiboot/html_node/
 
 gsasl		mono	${GS}/gsasl/manual/gsasl.html
 gsasl		node	${GS}/gsasl/manual/html_node/
