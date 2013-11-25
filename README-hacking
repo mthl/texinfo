@@ -120,7 +120,7 @@ svn commit                # when clean, then distcheck to be sure
 
 - To do the actual upload:
 pkg=texinfo
-ver=5.0.91
+ver=5.1
 
 then do one of:
 gnupload --to alpha.gnu.org:$pkg $pkg-$ver.tar.xz                #pretest
@@ -128,8 +128,8 @@ gnupload --to ftp.gnu.org:$pkg   $pkg-$ver.tar.{gz,xz} *.diff.xz #official
   (also gnupload texi2dvi at each official release.)
 
 and the corresponding, to save in local archives:
-mv -v $pkg-$ver.tar.xz* $misc/archive/$pkg/alpha/           #pretest
-mv -v $pkg-$ver.tar.{gz,xz}* *.diff.xz $misc/archive/$pkg/  #official
+mv -v $pkg-$ver.tar.xz* $misc/archive/$pkg/alpha/                #pretest
+mv -v $pkg-$ver.tar.{gz,xz}* *.diff.xz $misc/archive/$pkg/prod/  #official
 
 For pretest release, send announcement to bug-texinfo.
 
@@ -138,43 +138,47 @@ For pretest release, send announcement to bug-texinfo.
 cd $HOME/gnu/www/texinfo/dtd # or wherever webpages checkout is
 mkdir $ver; svn add $ver
 cp $tutil/texinfo.dtd $ver
-svn add $ver/texinfo.dtd
-svn commit -m$ver $ver
+cvs add $ver $ver/texinfo.dtd
+cvs commit -m$ver $ver
 
 update home page (texinfo.html) and commit as needed.
-update manual, including:
-  pod2html Pod-Simple-Texinfo/pod2texi.pl >pod2texi.html
+update manual (make wwwdoc-install, cvs commit), including:
+  pod2html $txi/Pod-Simple-Texinfo/pod2texi.pl >manual/pod2texi.html
 
 #  ... tag source tree:
-svn copy -r 5234 -m'texinfo_5_1 tag based on r5234' \
+svn copy -r 5382 -m'texinfo_5_2 tag based on r5382' \
   svn+ssh://svn.savannah.gnu.org/texinfo/trunk \
-  svn+ssh://svn.savannah.gnu.org/texinfo/tags/texinfo_5_1
+  svn+ssh://svn.savannah.gnu.org/texinfo/tags/texinfo_5_2
 [for karl: /srv/svn/texinfo]  
 
   ... update texinfo at tug.org (contact root@tug.org); from last time:
-prev=5.0
-ver=5.1
+prev=5.1
+ver=5.2
 cd ~ftp/tex
 rm -rf texinfo-$prev*
-cp ~/src/texinfo/texinfo-$ver.tar.{gz,xz} .
+cp ~/texinfo-$ver.tar.{gz,xz} .
 tar xzf texinfo-$ver.tar.gz
 ln -s texinfo-$ver.tar.gz texinfo.tar.gz
 !!:gs/gz/xz
 relink texinfo $ver
 
   ... announcements:
+send announcement to info-gnu,
+  cc bug-texinfo and coordinator@translationproject.org.
 news item at savannah.
-send announcement to info-gnu, cc bug-texinfo.
 
   ... make diffs at official release:
-  prev=5.0
-  ver=5.1
-  cd $xarchive/../prod
-  tar xf $txi/texinfo-$ver.tar.gz
-  tar xf texinfo-$prev.tar.gz
-  diff -Nrc2 texinfo-$prev texinfo-$ver | xz >texinfo-$prev-$ver.diff.xz
-  ls -l !$
-  gnupload --to ftp.gnu.org:texinfo !$
-  rm -rf texinfo-$ver texinfo-$prev
-  ro texinfo-*$ver*
+prev=5.1
+ver=5.2
+cd $misc/archive/$pkg/prod
+tar xf $txi/texinfo-$ver.tar.gz
+tar xf texinfo-$prev.tar.gz
+diff -Nrc2 texinfo-$prev texinfo-$ver | xz >texinfo-$prev-$ver.diff.xz
+ls -l !$
+gnupload --to ftp.gnu.org:texinfo !$
+rm -rf texinfo-$ver texinfo-$prev
+ro texinfo-*$ver*
   
+  ... [for karl] move mail:
+mv ~/mail/txi.done $ver.mail
+gzip $ver.mail
