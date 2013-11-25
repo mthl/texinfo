@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2013-09-11.11}
+\def\texinfoversion{2013-11-25.10}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -2578,33 +2578,17 @@ end
 % second argument specifying the text to display and an optional third
 % arg as text to display instead of (rather than in addition to) the url
 % itself.  First (mandatory) arg is the url.
-% (This \urefnobreak definition isn't used now, leaving it for a while
-% for comparison.)
-\def\urefnobreak#1{\dourefnobreak #1,,,\finish}
-\def\dourefnobreak#1,#2,#3,#4\finish{\begingroup
-  \unsepspaces
-  \pdfurl{#1}%
-  \setbox0 = \hbox{\ignorespaces #3}%
-  \ifdim\wd0 > 0pt
-    \unhbox0 % third arg given, show only that
-  \else
-    \setbox0 = \hbox{\ignorespaces #2}%
-    \ifdim\wd0 > 0pt
-      \ifpdf
-        \unhbox0             % PDF: 2nd arg given, show only it
-      \else
-        \unhbox0\ (\code{#1})% DVI: 2nd arg given, show both it and url
-      \fi
-    \else
-      \code{#1}% only url given, so show it
-    \fi
-  \fi
-  \endlink
-\endgroup}
 
-% This \urefbreak definition is the active one.
+% secret option to allow changing PDF output to show only the second
+% arg (if given), and not the url (which is then just the link target).
+\newif\ifurefurlonlylink
+
+% The main macro is \urefbreak, which allows breaking at expected
+% places within the url.  (There used to be another version, which
+% didn't support automatic breaking.)
 \def\urefbreak{\begingroup \urefcatcodes \dourefbreak}
 \let\uref=\urefbreak
+%
 \def\dourefbreak#1{\urefbreakfinish #1,,,\finish}
 \def\urefbreakfinish#1,#2,#3,#4\finish{% doesn't work in @example
   \unsepspaces
@@ -2613,12 +2597,19 @@ end
   \ifdim\wd0 > 0pt
     \unhbox0 % third arg given, show only that
   \else
-    \setbox0 = \hbox{\ignorespaces #2}%
+    \setbox0 = \hbox{\ignorespaces #2}% look for second arg
     \ifdim\wd0 > 0pt
       \ifpdf
-        \unhbox0             % PDF: 2nd arg given, show only it
+        \ifurefurlonlylink
+          % PDF plus option to not display url, show just arg
+          \unhbox0             
+        \else
+          % PDF, normally display both arg and url for consistency,
+          % visibility, if the pdf is eventually used to print, etc.
+          \unhbox0\ (\urefcode{#1})%
+        \fi
       \else
-        \unhbox0\ (\urefcode{#1})% DVI: 2nd arg given, show both it and url
+        \unhbox0\ (\urefcode{#1})% DVI, always show arg and url
       \fi
     \else
       \urefcode{#1}% only url given, so show it
@@ -3691,7 +3682,7 @@ end
   \parskip=\smallskipamount
   \ifdim\parskip=0pt \parskip=2pt \fi
   %
-  % Try typesetting the item mark that if the document erroneously says
+  % Try typesetting the item mark so that if the document erroneously says
   % something like @itemize @samp (intending @table), there's an error
   % right away at the @itemize.  It's not the best error message in the
   % world, but it's better than leaving it to the @item.  This means if
