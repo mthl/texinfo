@@ -1,5 +1,8 @@
 2013-11-25  Karl Berry  <karl@gnu.org>
 
+	* util/gendocs.sh: remove $PACKAGE.info* before remaking,
+	in case the number of Info files decreases.
+
 	* doc/texinfo.tex (\urefbreakfinish): change the default PDF
 	output to show the url even if the second arg is given, like DVI.  
 	Suggestion from Arnold Robbins.
