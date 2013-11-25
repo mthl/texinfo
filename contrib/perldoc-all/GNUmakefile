@@ -46,7 +46,7 @@ $(texi_pod_doc_incl): $(perl_pod_subdir)/*.pod
 # And we omit the numerous delta pods, which are uninteresting when
 # searching (and take tons of time and space to process).  
 	cd $(perl_pod_subdir) \
-	&& perl -p -i.bak -e 's,X<.*?>,,g' *.pod \
+	&& perl -p -i.bak -e 's,X<.*?>>?,,g' *.pod \
 	&& $(pod2texi) -o $@ $(pod2texi_args) \
 	  `ls *.pod | fgrep -v delta` \
 	&& mv $(texi_pod_subdir) $@ ../..

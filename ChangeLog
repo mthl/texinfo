@@ -1,5 +1,8 @@
 2013-11-25  Karl Berry  <karl@gnu.org>
 
+ 	* contrib/perldoc-all/GNUmakefile (texi_pod_doc_incl): possibly
+	remove a second > after X<...>.
+
 	* util/gendocs.sh: remove $PACKAGE.info* before remaking,
 	in case the number of Info files decreases.
 
