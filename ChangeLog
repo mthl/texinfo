@@ -1,3 +1,8 @@
+2013-11-26  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\urlcolor, \linkcolor): just use black by default.
+	Another suggestion from Arnold.
+
 2013-11-25  Karl Berry  <karl@gnu.org>
 
  	* contrib/perldoc-all/GNUmakefile (texi_pod_doc_incl): possibly

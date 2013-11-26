@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2013-11-25.10}
+\def\texinfoversion{2013-11-26.10}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -1141,7 +1141,9 @@ output) for that.)}
   % Color manipulation macros based on pdfcolor.tex,
   % except using rgb instead of cmyk; the latter is said to render as a
   % very dark gray on-screen and a very dark halftone in print, instead
-  % of actual black.
+  % of actual black. The dark red here  is dark enough to print on paper as
+  % nearly black, but still distinguishable for online viewing.  We use
+  % black by default, though.
   \def\rgbDarkRed{0.50 0.09 0.12}
   \def\rgbBlack{0 0 0}
   %
@@ -1251,10 +1253,9 @@ output) for that.)}
   % used to mark target names; must be expandable.
   \def\pdfmkpgn#1{#1}
   %
-  % by default, use a color that is dark enough to print on paper as
-  % nearly black, but still distinguishable for online viewing.
-  \def\urlcolor{\rgbDarkRed}
-  \def\linkcolor{\rgbDarkRed}
+  % by default, use black for everything.
+  \def\urlcolor{\rgbBlack}
+  \def\linkcolor{\rgbBlack}
   \def\endlink{\setcolor{\maincolor}\pdfendlink}
   %
   % Adding outlines to PDF; macros for calculating structure of outlines
