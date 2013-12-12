@@ -1,6 +1,11 @@
+2013-12-12  Ludovic Courtes  <ludo@gnu.org>  (tiny change)
+
+	* util/htmlxref.cnf (dmd, guix, lsh): add.
+
 2013-11-26  Karl Berry  <karl@gnu.org>
 
-	* doc/texinfo.tex (\urlcolor, \linkcolor): just use black by default.
+	* doc/texinfo.tex (\urlcolor, \linkcolor): just use black by default,
+	for consistency and printing, etc.
 	Another suggestion from Arnold.
 
 2013-11-25  Karl Berry  <karl@gnu.org>

@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2013-11-09.22; # UTC
+htmlxrefversion=2013-12-11.22; # UTC
 
 # Copyright 2010, 2011, 2012, 2013 Free Software Foundation, Inc.
 # 
@@ -120,6 +120,9 @@ dico		node	${DICO}/html_node/
 
 diffutils	mono	${GS}/diffutils/manual/diffutils
 diffutils	node	${GS}/diffutils/manual/html_node/
+
+dmd		mono	${GS}/dmd/manual/dmd
+dmd		node	${GS}/dmd/manual/html_node/
 
 ed		mono	${GS}/ed/manual/ed_manual.html
 
@@ -368,6 +371,9 @@ guile-gtk	node	${GS}/guile-gtk/docs/guile-gtk/
 guile-rpc	mono	${GS}/guile-rpc/manual/guile-rpc.html
 guile-rpc	node	${GS}/guile-rpc/manual/html_node/
 
+guix		mono	${GS}/guix/manual/guix.html
+guix		node	${GS}/guix/manual/html_node/
+
 gv		mono	${GS}/gv/manual/gv.html
 gv		node	${GS}/gv/manual/html_node/
 
@@ -436,6 +442,9 @@ liquidwar6	node	${GS}/liquidwar6/manual/html_node/
 
 lispintro	mono	${GS}/emacs/emacs-lisp-intro/html_mono/emacs-lisp-intro.html
 lispintro	node	${GS}/emacs/emacs-lisp-intro/html_node/index.html
+
+LSH = http://www.lysator.liu.se/~nisse/lsh
+  lsh		mono	${LSH}/lsh.html
 
 m4		mono	${GS}/m4/manual/m4.html
 m4		node	${GS}/m4/manual/html_node/
