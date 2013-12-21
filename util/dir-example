@@ -33,7 +33,7 @@ Basics
 * DC: (dc).                     Postfix desk calculator.
 * Date input formats: (coreutils)Date input formats.
 * Ed: (ed).                     The GNU line editor
-* File permissions: (coreutils)File permissions.   Access modes.
+* File permissions: (coreutils)File permissions.  Access modes.
 * Finding files: (find).        Operating on files matching certain criteria.
 * Gcal: (gcal).                 GNU calendar program.
 * Hello: (hello).               Hello, GNU world.
@@ -109,6 +109,7 @@ Software development
 * As: (as).                     Assembler.
 * Autoconf: (autoconf).         Create source code configuration scripts.
 * Automake: (automake).         Making GNU standards-compliant Makefiles.
+* Bfd: (bfd).                   The Binary File Descriptor library.
 * Binutils: (binutils).         The GNU binary utilities.
 * C: (gnu-c-manual).            GNU C reference manual.
 * Complexity: (complexity).     Measure complexity of C source.
@@ -470,6 +471,7 @@ Individual utilities
 * nm: (binutils)nm.             List symbols from object files.
 * nohup: (coreutils)nohup invocation.           Immunize to hangups.
 * nproc: (coreutils)nproc invocation.           Print the number of processors.
+* numfmt: (coreutils)numfmt invocation.         Reformat numbers.
 * objcopy: (binutils)objcopy.	Copy and translate object files.
 * objdump: (binutils)objdump.   Display information from object files.
 * od: (coreutils)od invocation.                 Dump files in octal, etc.
