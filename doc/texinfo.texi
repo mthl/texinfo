@@ -3193,10 +3193,11 @@ Permission is granted to @dots{}
 The @code{@@quotation} has no legal significance; it's there to improve
 readability in some contexts.
 
-The text of @code{@@copying} is output as a comment at the beginning of
-Info, HTML, and XML output files.  It is @emph{not} output implicitly in
-plain text or @TeX{}; it's up to you to use @code{@@insertcopying} to
-emit the copying information.  See the next section for details.
+The text of @code{@@copying} is output as a comment at the beginning
+of Info, HTML, XML, and Docbook output files.  It is @emph{not} output
+implicitly in plain text or @TeX{}; it's up to you to use
+@code{@@insertcopying} to emit the copying information.  See the next
+section for details.
 
 @findex copyright
 The @code{@@copyright@{@}} command generates a @samp{c} inside a
@@ -6919,7 +6920,7 @@ third argument is given, the second argument is ignored.
 @cindex Breakpoints within urls
 @TeX{} allows line breaking within urls at only a few characters
 (which are special in urls): @samp{&}, @samp{.}, @samp{#}, @samp{?},
-and @samp{/} (but not between @samp{/} characters).  A tiny amount of
+and @samp{/} (but not between two @samp{/} characters).  A tiny amount of
 stretchable space is also inserted around these characters to help
 with line breaking.  For HTML output, modern browsers will also do
 line breaking within displayed urls.  If you need to allow breaks at
