@@ -1,3 +1,7 @@
+2013-12-25  Karl Berry  <karl@gnu.org>
+
+	* util/htmlxref.cnf (easejs): add.
+
 2013-12-12  Ludovic Courtes  <ludo@gnu.org>  (tiny change)
 
 	* util/htmlxref.cnf (dmd, guix, lsh): add.
