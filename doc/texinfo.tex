@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2013-11-26.10}
+\def\texinfoversion{2013-12-26.17}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -1138,10 +1138,10 @@ output) for that.)}
 
 \ifpdf
   %
-  % Color manipulation macros based on pdfcolor.tex,
+  % Color manipulation macros using ideas from pdfcolor.tex,
   % except using rgb instead of cmyk; the latter is said to render as a
   % very dark gray on-screen and a very dark halftone in print, instead
-  % of actual black. The dark red here  is dark enough to print on paper as
+  % of actual black. The dark red here is dark enough to print on paper as
   % nearly black, but still distinguishable for online viewing.  We use
   % black by default, though.
   \def\rgbDarkRed{0.50 0.09 0.12}
@@ -2575,12 +2575,12 @@ end
 \let\file=\code
 \let\option=\code
 
-% @uref (abbreviation for `urlref') takes an optional (comma-separated)
-% second argument specifying the text to display and an optional third
-% arg as text to display instead of (rather than in addition to) the url
-% itself.  First (mandatory) arg is the url.
+% @uref (abbreviation for `urlref') aka @url takes an optional
+% (comma-separated) second argument specifying the text to display and
+% an optional third arg as text to display instead of (rather than in
+% addition to) the url itself.  First (mandatory) arg is the url.
 
-% secret option to allow changing PDF output to show only the second
+% TeX-only option to allow changing PDF output to show only the second
 % arg (if given), and not the url (which is then just the link target).
 \newif\ifurefurlonlylink
 

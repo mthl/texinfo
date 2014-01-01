@@ -1,3 +1,18 @@
+2014-01-01  Karl Berry  <karl@gnu.org>
+
+	* Pod-Simple-Texinfo/pod2texi.pl,
+	* doc/texinfo.txi,
+	* doc/refcard/txirefcard.tex,
+	* info/info.c,
+	* info/infokey.c,
+	* install-info/install-info.c,
+	* tp/texi2any.pl,
+	* util/texi-elements-by-size,
+	* util/texindex.c,
+	* util/texi2dvi,
+	* util/gendocs_template,
+	* util/gendocs_template_min: 2014.
+
 2013-12-25  Karl Berry  <karl@gnu.org>
 
 	* util/htmlxref.cnf (easejs): add.
