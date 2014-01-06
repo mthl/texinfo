@@ -1,3 +1,12 @@
+2014-01-06  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (@url): split into several nodes:
+	(@t{@@url} Examples,
+         URL Line Breaking,
+         @t{@@url} PDF Output Format,
+         PDF Colors).  Document the PDF-only \urefurlonlylinktrue
+         and \linkcolor, \urlcolor texinfo.tex features.
+
 2014-01-01  Karl Berry  <karl@gnu.org>
 
 	* Pod-Simple-Texinfo/pod2texi.pl,

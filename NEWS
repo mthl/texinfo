@@ -26,6 +26,7 @@ one of the relevant sections:
 * texinfo.tex:
   . @url/@uref output now the same in PDF as in DVI, showing the url
     even if the second argument is given, not just as link target.
+    Option \urefurlonlylinktrue gives previous behavior of invisible urls.
     
 5.2 (26 September 2013)
 * Language:

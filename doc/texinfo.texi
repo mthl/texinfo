@@ -6896,62 +6896,45 @@ refer to printed works for which no Info form exists.
 @cindex URL, referring to
 
 @cindex @code{href}, producing HTML
-@code{@@uref} produces a reference to a uniform resource locator (url).
-It takes one mandatory argument, the url, and two optional arguments
-which control the text that is displayed.  In HTML output, @code{@@uref}
-produces a link you can follow.
+@code{@@uref} produces a reference to a uniform resource locator
+(url).  It takes one mandatory argument, the url, and two optional
+arguments which control the text that is displayed.  In HTML and PDF
+output, @code{@@uref} produces a link you can follow.  (To merely
+indicate a url without creating a link people can follow, use
+@code{@@indicateurl}, @pxref{@t{@@indicateurl}}.)
 
 @anchor{url} @code{@@url} is a synonym for @code{@@uref}.
-(Originally, @code{@@url} had the meaning of @code{@@indicateurl}
-(@pxref{@t{@@indicateurl}}), but in practice it was almost always
-misused.  So we've changed the meaning.)
+(Originally, @code{@@url} had the meaning of @code{@@indicateurl}, but
+in practice it was almost always misused.  So we've changed the
+meaning.)
 
 The second argument, if specified, is the text to display (the default
-is the url itself); in Info and DVI output, but not in HTML output, the
-url is output in addition to this text.
+is the url itself); in Info, DVI, and PDF output, but not in HTML
+output, the url is output in addition to this text.
 
 @cindex Man page, reference to
 The third argument, if specified, is the text to display, but in this
 case the url is not output in any format.  This is useful when the
-text is already sufficiently referential, as in a man page.  If the
-third argument is given, the second argument is ignored.
+text is already sufficiently referential, as in a man page.  Also, if
+the third argument is given, the second argument is ignored.
 
-@cindex Line breaking, and urls
-@cindex Breakpoints within urls
-@TeX{} allows line breaking within urls at only a few characters
-(which are special in urls): @samp{&}, @samp{.}, @samp{#}, @samp{?},
-and @samp{/} (but not between two @samp{/} characters).  A tiny amount of
-stretchable space is also inserted around these characters to help
-with line breaking.  For HTML output, modern browsers will also do
-line breaking within displayed urls.  If you need to allow breaks at
-other characters you can insert @code{@@/} as needed (@pxref{Line
-Breaks}).
+@menu
+* @t{@@url} Examples::           Examples of using all the forms of @code{@@url}.
+* URL Line Breaking::       How lines are broken within @code{@@url} text.
+* @t{@@url} PDF Output Format::  A special option to hide links in PDF output.
+* PDF Colors::              Colorizing urls and other links in PDF output.
+@end menu
 
-@findex urefbreakstyle
-By default, any such breaks at special characters will occur after the
-character.  Some people prefer such breaks to happen after the special
-character.  This can be controlled with the @code{@@urefbreakstyle}
-command (this command has effect only in @TeX{}):
 
-Write this command at the
-beginning of a line with a single word as an argument, one of the
-following:
+@node @t{@@url} Examples
+@subsection @t{@@url} Examples
 
-@vindex after@r{, value for @code{@@urefbreakstyle}}
-@vindex before@r{, value for @code{@@urefbreakstyle}}
-@vindex none@r{, value for @code{@@urefbreakstyle}}
-@table @samp
-@item after
-(the default) Potentially break after the special characters.
-@item before
-Potentially break before the special characters.
-@item none
-Do not consider breaking at the special characters; any potential
-breaks must be manually inserted.
-@end table
+@cindex @t{@@url}, examples of using
+@cindex URL, examples of displaying
 
-Here is an example of the simple one argument form, where the url is
-both the target and the text of the link:
+First, here is an example of the simplest form of @code{@@url}, with
+just one argument.  The given url is both the target and the visible
+text of the link:
 
 @example
 The official GNU ftp site is @@uref@{http://ftp.gnu.org/gnu@}.
@@ -6962,38 +6945,40 @@ The official GNU ftp site is @@uref@{http://ftp.gnu.org/gnu@}.
 The official GNU ftp site is @uref{http://ftp.gnu.org/gnu}.
 @end display
 
+@subsubheading Two-argument form of @code{@@url}
 
-An example of the two-argument form:
+Here is an example of the two-argument form:
 @example
 The official @@uref@{http://ftp.gnu.org/gnu, GNU ftp site@}
 holds programs and texts.
 @end example
 
-@noindent produces:
+@noindent which produces:
 @display
 The official @uref{http://ftp.gnu.org/gnu, GNU ftp site}
 holds programs and texts.
 @end display
 
-@noindent that is, the Info output is this:
+@noindent that is, the Info (and @TeX{}, etc.)@: output is this:
 @example
 The official GNU ftp site (http://ftp.gnu.org/gnu)
 holds programs and texts.
 @end example
 
-@noindent and the HTML output is this:
+@noindent while the HTML output is this:
 @example
 The official <a href="http://ftp.gnu.org/gnu">GNU ftp site</a>
 holds programs and texts.
 @end example
 
+@subsubheading Three-argument form of @code{@@url}
 
-An example of the three-argument form:
+Finally, an example of the three-argument form:
 @example
 The @@uref@{/man.cgi/1/ls,,ls@} program @dots{}
 @end example
 
-@noindent produces:
+@noindent which, except for HTML, produces:
 @display
 The @uref{/man.cgi/1/ls,,ls} program @dots{}
 @end display
@@ -7003,7 +6988,9 @@ The @uref{/man.cgi/1/ls,,ls} program @dots{}
 The <a href="/man.cgi/1/ls">ls</a> program @dots{}
 @end example
 
-Some people prefer to display urls in the unambiguous format:
+
+By the way, some people prefer to display urls in the unambiguous
+format:
 
 @display
 <URL:http://@var{host}/@var{path}>
@@ -7013,11 +7000,121 @@ Some people prefer to display urls in the unambiguous format:
 @cindex @code{<URL...>} convention, not used
 You can use this form in the input file if you wish.  We feel it's not
 necessary to include the @samp{<URL:} and @samp{>} in the output,
-since any software that tries to detect urls in text already has to
-detect them without the @samp{<URL:} to be useful.
+since to be useful any software that tries to detect urls in text
+already has to detect them without the @samp{<URL:}.
 
-To merely indicate a url without creating a link people can follow,
-use @code{@@indicateurl} (@pxref{@t{@@indicateurl}}).
+
+@node URL Line Breaking
+@subsection URL Line Breaking
+
+@cindex Line breaking, and urls
+@cindex Breakpoints within urls
+@TeX{} allows line breaking within urls at only a few characters
+(which are special in urls): @samp{&}, @samp{.}, @samp{#}, @samp{?},
+and @samp{/} (but not between two @samp{/} characters).  A tiny amount
+of stretchable space is also inserted around these characters to help
+with line breaking.
+
+For HTML output, modern browsers will also do line breaking within
+displayed urls.  If you need to allow breaks at other characters you
+can insert @code{@@/} as needed (@pxref{Line Breaks}).
+
+@findex urefbreakstyle
+By default, in @TeX{} any such breaks at special characters will occur
+after the character.  Some people prefer such breaks to happen after
+the special character.  This can be controlled with the
+@code{@@urefbreakstyle} command (this command has effect only in
+@TeX{}):
+
+@example
+@@urefbreakstyle @var{how}
+@end example
+
+@noindent where the argument @var{how} is one of these words:
+
+@vindex after@r{, value for @code{@@urefbreakstyle}}
+@vindex before@r{, value for @code{@@urefbreakstyle}}
+@vindex none@r{, value for @code{@@urefbreakstyle}}
+@table @samp
+@item after
+(the default) Potentially break after the special characters.
+@item before
+Potentially break before the special characters.
+@item none
+Do not consider breaking at the special characters at all; any potential
+breaks must be manually inserted.
+@end table
+
+
+@node @t{@@url} PDF Output Format
+@subsection @t{@@url} PDF Output Format
+
+@cindex PDF output of urls
+@cindex URLs, PDF output of
+
+If the ultimate purpose of a PDF is only to be viewed online, perhaps
+similar to HTML in some inchoate way, you may not want the urls to be
+included in the visible text (just as urls are not visible to readers
+of web pages).  Texinfo provides a PDF-specific option for this, which
+must be used inside @code{@@tex}:
+
+@findex \urefurlonlylinktrue
+@example
+@@tex
+\global\urefurlonlylinktrue
+@@end tex
+@end example
+
+The result is that @code{@@url@{http://www.gnu.org, GNU@}} has the
+visible output of just `GNU', with a link target of
+@url{http://www.gnu.org}.  Ordinarily, the visible output would
+include both the label and the url: `GNU (@url{http://www.gnu.org})'.
+
+This option only has effect when the PDF output is produced with the
+pdf@TeX{} program, not with other ways of getting from Texinfo to PDF
+(e.g., @TeX{} to DVI to PDF).  Consequently, it is ok to specify this
+option unconditionally within @code{@@tex}, as shown above.  It is
+ignored when DVI is being produced.
+
+
+@node PDF Colors
+@subsection PDF Colors
+
+@cindex Colored links, in PDF output
+@cindex Links, coloring in PDF output
+@cindex URLs, coloring in PDF output
+
+By default, urls and cross-reference links are printed in black in PDF
+output.  Very occasionally, however, you may want to highlight such
+``live'' links with a different color, as is commonly done on web
+pages.  Texinfo provides a PDF-specific option for specifying these
+colors, which must be used inside @code{@@tex}:
+
+@findex \linkcolor
+@findex \urlcolor
+@example
+@@tex
+\global\def\linkcolor@{1 0 0@}  % red
+\global\def\urlcolor@{0 1 0@}   % green
+@@end tex
+@end example
+
+@code{\urlcolor} changes the color of @code{@@url} output (both the
+actual url and any textual label), while @code{\linkcolor} changes the
+color for cross-references to nodes, etc.  They are independent.
+
+@cindex RGB color specification.
+The three given values must be numbers between 0 and 1, specifying the
+amount of red, green, and blue respectively.
+
+These definitions only have an effect when the PDF output is produced
+with the pdf@TeX{} program, not with other ways of getting from
+Texinfo to PDF (e.g., @TeX{} to DVI to PDF).  Consequently, it is ok
+to specify this option unconditionally within @code{@@tex}, as shown
+above.  It is ignored when DVI is being produced.
+
+We do not recommend colorizing just for fun; unless you have a
+specific reason to use colors, best to skip it.
 
 
 @node @t{@@cite}
