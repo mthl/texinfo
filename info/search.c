@@ -1,8 +1,8 @@
 /* search.c -- searching large bodies of text.
    $Id$
 
-   Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2008, 2009, 2011, 2013
-   Free Software Foundation, Inc.
+   Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2008, 2009, 2011, 2013,
+   2014 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -98,12 +98,14 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
 {
   static char *previous_regexp = NULL;
   static char *previous_content = NULL;
+  static long previous_start, previous_end;
   static int was_insensitive = 0;
   static regex_t preg;
   static regmatch_t *matches;
-  static int match_alloc = 0;
-  static int match_count = 0;
+  static size_t match_alloc = 0;
+  static size_t match_count = 0;
   regoff_t pos;
+  regoff_t start = 0, end;
 
   if (previous_regexp == NULL
       || ((binding->flags & S_FoldCase) != was_insensitive)
@@ -153,9 +155,9 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
       *q = '\0';
 
       result = regcomp (&preg, unescaped_regexp,
-                       REG_EXTENDED|
-                       REG_NEWLINE|
-                       (was_insensitive ? REG_ICASE : 0));
+			REG_EXTENDED|
+			REG_NEWLINE|
+			(was_insensitive ? REG_ICASE : 0));
       free (unescaped_regexp);
 
       if (result != 0)
@@ -167,42 +169,43 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
           return search_failure;
         }
 
-      previous_regexp = xstrdup(regexp);
+      previous_regexp = xstrdup (regexp);
     }
 
-  if (previous_content != binding->buffer)
+  if (binding->start < binding->end)
+    {
+      start = binding->start;
+      end = binding->end;
+    }
+  else
+    {
+      start = binding->end;
+      end = binding->start;
+    }
+  
+  if (previous_content != binding->buffer ||
+      previous_start != start ||
+      previous_end != end)
     {
       /* new buffer to search in, let's scan it */
-      regoff_t start = 0, end;
-      size_t content_length;
       char saved_char;
 
-      if (binding->start < binding->end)
-	{
-	  start = binding->start;
-	  end = binding->end;
-	}
-      else
-	{
-	  start = binding->end;
-	  end = binding->start;
-	}
-      content_length = end - start + 1;
-      
       previous_content = binding->buffer;
-      saved_char = previous_content[content_length-1];
-      previous_content[content_length-1] = '\0';
+      previous_start = start;
+      previous_end = end;
+      saved_char = previous_content[end];
+      previous_content[end] = '\0';
 
-      for (match_count = 0; start < content_length; )
+      for (match_count = 0; start < end; )
         {
           int result = 0;
-          if (match_count >= match_alloc)
+          if (match_count == match_alloc)
             {
               /* match list full. Initially allocate 256 entries, then double
                  every time we fill it */
-              match_alloc = (match_alloc > 0 ? match_alloc * 2 : 256);
-              matches = xrealloc (matches,
-				  match_alloc * sizeof(regmatch_t));
+	      if (match_alloc == 0)
+		match_alloc = 256;
+	      matches = x2nrealloc (matches, &match_alloc, sizeof matches[0]);
             }
 
           result = regexec (&preg, &previous_content[start],
@@ -222,11 +225,9 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
                 }
             }
           else
-            {
-              break;
-            }
+	    break;
         }
-      previous_content[content_length-1] = saved_char;
+      previous_content[end] = saved_char;
     }
 
   pos = binding->start;

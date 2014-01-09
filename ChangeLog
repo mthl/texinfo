@@ -1,3 +1,15 @@
+2014-01-09  Sergey Poznyakoff  <gray@gnu.org>
+
+	Fix search boundary checking.
+	Based on report from Gavin Smith <gavinsmith0123@gmail.com>
+
+	* info/search.c (regexp_search): Save previous values of
+	start and end bounds (sorted) and rescan the buffer if these
+	differ from the actual values.
+	Fix boundary checking (using end bound instead of the buffer
+	length).
+	Use x2nrealloc to grow matches buffer.
+
 2014-01-06  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi: 2014.
