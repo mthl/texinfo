@@ -1,3 +1,8 @@
+2014-01-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\errfootnote): nested footnotes not supported.
+	(\dofootnote): check for this.  Report from Arnold.
+
 2014-01-16  Sergey Poznyakoff  <gray@gnu.org>
 
 	* info/info.c (show_error_node): Avoid coredumping when
