@@ -1,3 +1,8 @@
+2014-01-16  Sergey Poznyakoff  <gray@gnu.org>
+
+	* info/info.c (show_error_node): Avoid coredumping when
+	writing output to a file.
+
 2014-01-09  Sergey Poznyakoff  <gray@gnu.org>
 
 	Fix search boundary checking.

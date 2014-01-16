@@ -859,7 +859,13 @@ show_error_node (NODE *node)
 {
   if (info_error_rings_bell_p)
     terminal_ring_bell ();
-  if (!echo_area_is_active)
+  if (user_output_filename)
+    {
+      if (node->contents[node->nodelen - 1] == '\n')
+        node->contents[node->nodelen - 1] = 0;
+      info_error ("%s", node->contents);
+    }
+  else if (!echo_area_is_active)
     {
       free_echo_area ();
       window_set_node_of_window (the_echo_area, node);
