@@ -1,3 +1,9 @@
+2014-01-30  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\commondummiesnofonts): \let\xeatspaces=\eatspaces
+	so @macros that make index entries don't end up with spurious
+	spaces in the output.  Report from Arnold, 30 Jan 2014 22:11:42.
+
 2014-01-16  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\errfootnote): nested footnotes not supported.
