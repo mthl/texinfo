@@ -11783,7 +11783,7 @@ type the braces, because @code{@@itemize} supplies them.
 
 @anchor{euro}@c old name
 @findex euro
-@cindex Euro symbol
+@cindex Euro symbol, producing
 
 Use the @code{@@euro@{@}} command to generate `@euro{}'.  Where
 possible, this is the symbol for the Euro currency.  Otherwise, the
@@ -13894,9 +13894,10 @@ This has no particular effect, but it's included for completeness.
 @item UTF-8
 The vast global character encoding, expressed in 8-bit bytes.
 
-@item ISO-8859-2
-@itemx ISO-8859-1
+@item ISO-8859-1
 @itemx ISO-8859-15
+@itemx ISO-8859-2
+@cindex Euro symbol, and encodings
 These specify the standard encodings for Western European (the first
 two) and Eastern European languages (the third), respectively.  ISO
 8859-15 replaces some little-used characters from 8859-1 (e.g.,

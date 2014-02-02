@@ -1,3 +1,8 @@
+2014-02-02  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (@t{@@documentencoding}): ISO-8859 ordering
+	wrong.  Report from Reinhard Kotucha, 2 Feb 2014 19:32:24.
+
 2014-01-30  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\commondummiesnofonts): \let\xeatspaces=\eatspaces
