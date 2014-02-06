@@ -1,3 +1,10 @@
+2014-02-06  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\ure{pre,post}stretchamount): new macros.
+	(\uref{pre,post}stretch): use them.
+	(\raggedright): reset them to 0pt.  Also increase rag to 2.4em.
+	Bug report from Werner Lember, 06 Feb 2014 19:01:05.
+
 2014-02-02  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (@t{@@documentencoding}): ISO-8859 ordering
