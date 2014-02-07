@@ -1,7 +1,7 @@
 $Id$
 This file describes the development environment for Texinfo.
 
-  Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013
+  Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013, 2014
   Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
@@ -84,7 +84,7 @@ convenient to be able to make changes and then run it.
 
 To run it under a name that doesn't end in .pl, e.g., "makeinfo", you
 can set the environment variable TEXINFO_DEV_SOURCE to 1, or symlink to
-a trivial script:
+a trivial script along these lines:
 #!/bin/sh
 exec /YOUR/TEXINFO/DIR/tp/texi2any.pl "$@"
 
@@ -120,7 +120,7 @@ svn commit                # when clean, then distcheck to be sure
 
 - To do the actual upload:
 pkg=texinfo
-ver=5.1
+ver=5.2
 
 then do one of:
 gnupload --to alpha.gnu.org:$pkg $pkg-$ver.tar.xz                #pretest
@@ -179,6 +179,6 @@ gnupload --to ftp.gnu.org:texinfo !$
 rm -rf texinfo-$ver texinfo-$prev
 ro texinfo-*$ver*
   
-  ... [for karl] move mail:
+  ... [personal for karl] move mail:
 mv ~/mail/txi.done $ver.mail
 gzip $ver.mail
