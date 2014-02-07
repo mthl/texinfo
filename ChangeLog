@@ -1,3 +1,7 @@
+2014-02-07  Alexis Hildebrandt <alexis.hildebrandt@surryhill.net> (tiny change)
+
+	* doc/refcard/txirefcard.tex: typos.
+
 2014-02-06  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\ure{pre,post}stretchamount): new macros.
