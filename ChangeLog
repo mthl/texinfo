@@ -1,3 +1,9 @@
+2014-02-09  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\cartouche): do not do \nonarrowing at all;
+	we want @example, etc., to be indented normally inside @cartouche.
+	Don't we?  Report from Arnold, 09 Feb 2014 00:20:26.
+
 2014-02-07  Alexis Hildebrandt <alexis.hildebrandt@surryhill.net> (tiny change)
 
 	* doc/refcard/txirefcard.tex: typos.
