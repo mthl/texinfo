@@ -40,12 +40,16 @@ Basics
 * Inetutils: (inetutils).       GNU networking utilities.
 * Time: (time).                 Measuring program resource usage.
 
+Database
+* rec-mode: (rec-mode).         Emacs mode for editing recfiles.
+* recutils: (recutils).         The GNU Recutils manual.
+
 Text creation and manipulation
 * Diffutils: (diffutils).       Comparing and merging files.
 * Gawk: (gawk).                 A text scanning and processing language.
-* grep: (grep).                 Print lines matching a pattern.
 * M4: (m4).                     A powerful macro processor.
 * Perl: (perldoc-all).          Practical Extraction and Report Language.
+* grep: (grep).                 Print lines matching a pattern.
 * sed: (sed).                   Stream EDitor.  
 * Word differences: (wdiff).    GNU wdiff and diff related tools.
 
@@ -144,6 +148,7 @@ Software development
 * gcc: (gcc).                   The GNU Compiler Collection.
 * gccinstall: (gccinstall).     Installing the GNU Compiler Collection.
 * gccint: (gccint).             Internals of the GNU Compiler Collection.
+* gdbserver: (gdb) Server.      The GNU debugging server.
 * help2man: (help2man).         Automatic manual page generation.
 * vc-dwim: (vc-dwim).           VCS-agnostic commit, diff, and change logs.
 
@@ -374,6 +379,7 @@ Individual utilities
 * configure: (autoconf)configure Invocation.    Configuring a package.
 * cp: (coreutils)cp invocation.                 Copy files.
 * csplit: (coreutils)csplit invocation.         Split by context.
+* csv2rec: (recutils)csv2rec.                   CSV to recfiles.
 * cut: (coreutils)cut invocation.               Print selected parts of lines.
 * cvs: (cvs)CVS commands.       Concurrent Versions System
 * cvsclient: (cvsclient).      The CVS client/server protocol.
@@ -451,6 +457,7 @@ Individual utilities
 * maketextex: (kpathsea)MakeTeX scripts.        TeX source generation.
 * maketextfm: (kpathsea)MakeTeX scripts.        TeX font metric generation.
 * md5sum: (coreutils)md5sum invocation.         Print or check MD5 digests.
+* mdb2rec: (recutils)mdb2rec.                   MDB to recfiles.
 * mdiff: (wdiff)mdiff invocation.               Line cluster finder.
 * messages: (mailutils)messages.                Count messages in mailbox.
 * mf: (web2c)mf invocation.                     Creating typeface families.
@@ -500,6 +507,13 @@ Individual utilities
 * readlink: (coreutils)readlink invocation.     Print referent of a symlink.
 * readmsg: (mailutils)readmsg.                  Extract messages from a folder.
 * realpath: (coreutils)readpath invocation.     Print resolved file names.
+* rec2csv: (recutils)rec2csv.                   Recfiles to CSV.
+* recdel: (recutils)recdel.                     Delete records.
+* recfix: (recutils)recfix.                     Fix recfiles.
+* recinf: (recutils)recinf.                     Get info about recfiles.
+* recins: (recutils)recins.                     Insert records.
+* recsel: (recutils)recsel.                     Read records.
+* recset: (recutils)recset.                     Manage fields.
 * rexec: (inetutils)rexec invocation.           Remote execution client.
 * rexecd: (inetutils)rexecd invocation.         Remote execution server.
 * rlogin: (inetutils)rlogin invocation.         Remote login.
