@@ -452,13 +452,13 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'anchor_in_copying'} = [
   {
-    'file_name' => '',
     'error_line' => ':5: @anchor output more than once: Copying information
 ',
-    'text' => '@anchor output more than once: Copying information',
-    'type' => 'error',
+    'file_name' => '',
+    'line_nr' => 5,
     'macro' => '',
-    'line_nr' => 5
+    'text' => '@anchor output more than once: Copying information',
+    'type' => 'error'
   }
 ];
 

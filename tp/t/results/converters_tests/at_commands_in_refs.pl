@@ -22225,31 +22225,31 @@ in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
 
 $result_converted_errors{'plaintext'}->{'at_commands_in_refs'} = [
   {
-    'file_name' => '',
     'error_line' => ':91: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 91,
     'macro' => '',
-    'line_nr' => 91
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':89: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 89,
     'macro' => '',
-    'line_nr' => 89
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':149: warning: @ref node name should not contain `:\'
 ',
-    'text' => '@ref node name should not contain `:\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 149,
     'macro' => '',
-    'line_nr' => 149
+    'text' => '@ref node name should not contain `:\'',
+    'type' => 'warning'
   }
 ];
 
@@ -22637,40 +22637,40 @@ Previous: <a href="#indicateurl" accesskey="p" rel="prev">&lsquo;<code>indicateu
 
 $result_converted_errors{'html'}->{'at_commands_in_refs'} = [
   {
-    'file_name' => '',
     'error_line' => ':23: warning: @image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'
 ',
-    'text' => '@image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 23,
     'macro' => '',
-    'line_nr' => 23
+    'text' => '@image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':89: warning: @image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'
 ',
-    'text' => '@image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 89,
     'macro' => '',
-    'line_nr' => 89
+    'text' => '@image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':91: warning: @image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'
 ',
-    'text' => '@image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 91,
     'macro' => '',
-    'line_nr' => 91
+    'text' => '@image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':141: warning: @image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'
 ',
-    'text' => '@image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 141,
     'macro' => '',
-    'line_nr' => 141
+    'text' => '@image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'',
+    'type' => 'warning'
   }
 ];
 
@@ -22992,22 +22992,22 @@ $result_converted{'docbook'}->{'at_commands_in_refs'} = '<chapter label="" id="T
 
 $result_converted_errors{'docbook'}->{'at_commands_in_refs'} = [
   {
-    'file_name' => '',
     'error_line' => ':91: warning: @image file `f--ile1\' not found, using `f--ile1.jpg\'
 ',
-    'text' => '@image file `f--ile1\' not found, using `f--ile1.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 91,
     'macro' => '',
-    'line_nr' => 91
+    'text' => '@image file `f--ile1\' not found, using `f--ile1.jpg\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':141: warning: @image file `f--ile1\' not found, using `f--ile1.jpg\'
 ',
-    'text' => '@image file `f--ile1\' not found, using `f--ile1.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 141,
     'macro' => '',
-    'line_nr' => 141
+    'text' => '@image file `f--ile1\' not found, using `f--ile1.jpg\'',
+    'type' => 'warning'
   }
 ];
 
@@ -23267,94 +23267,94 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'at_commands_in_refs'} = [
   {
-    'file_name' => '',
     'error_line' => ':23: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 23,
     'macro' => '',
-    'line_nr' => 23
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':30: warning: menu entry node name should not contain `:\'
 ',
-    'text' => 'menu entry node name should not contain `:\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 30,
     'macro' => '',
-    'line_nr' => 30
+    'text' => 'menu entry node name should not contain `:\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':42: warning: @node name should not contain `,\': LaTeX TeX * , (C) ... ...
 ',
-    'text' => '@node name should not contain `,\': LaTeX TeX * , (C) ... ...',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 42,
     'macro' => '',
-    'line_nr' => 42
+    'text' => '@node name should not contain `,\': LaTeX TeX * , (C) ... ...',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':60: warning: @node name should not contain `,\': a" e~ i^ a^ a` e\' c, e= e* e\'\' e;
 ',
-    'text' => '@node name should not contain `,\': a" e~ i^ a^ a` e\' c, e= e* e\'\' e;',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 60,
     'macro' => '',
-    'line_nr' => 60
+    'text' => '@node name should not contain `,\': a" e~ i^ a^ a` e\' c, e= e* e\'\' e;',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':66: warning: @node name should not contain `,\': i E=` C\',
 ',
-    'text' => '@node name should not contain `,\': i E=` C\',',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 66,
     'macro' => '',
-    'line_nr' => 66
+    'text' => '@node name should not contain `,\': i E=` C\',',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':69: warning: @node name should not contain `,\': `` \'\' ` \' ,, ,
 ',
-    'text' => '@node name should not contain `,\': `` \'\' ` \' ,, ,',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 69,
     'macro' => '',
-    'line_nr' => 69
+    'text' => '@node name should not contain `,\': `` \'\' ` \' ,, ,',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':89: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 89,
     'macro' => '',
-    'line_nr' => 89
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':91: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 91,
     'macro' => '',
-    'line_nr' => 91
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':89: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
-    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 89,
     'macro' => '',
-    'line_nr' => 89
+    'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':149: warning: @ref node name should not contain `:\'
 ',
-    'text' => '@ref node name should not contain `:\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 149,
     'macro' => '',
-    'line_nr' => 149
+    'text' => '@ref node name should not contain `:\'',
+    'type' => 'warning'
   }
 ];
 

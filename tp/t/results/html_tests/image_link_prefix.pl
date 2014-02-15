@@ -116,13 +116,13 @@ $result_converted_errors{'html'}->{'image_link_prefix'} = [
     'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':1: warning: @image file `image\' (for HTML) not found, using `image.jpg\'
 ',
-    'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 1,
     'macro' => '',
-    'line_nr' => 1
+    'text' => '@image file `image\' (for HTML) not found, using `image.jpg\'',
+    'type' => 'warning'
   }
 ];
 

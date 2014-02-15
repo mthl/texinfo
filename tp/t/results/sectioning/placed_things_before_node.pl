@@ -1322,31 +1322,31 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'placed_things_before_node'} = [
   {
-    'file_name' => '',
     'error_line' => ':1: warning: @anchor outside of any node
 ',
-    'text' => '@anchor outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 1,
     'macro' => '',
-    'line_nr' => 1
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':9: warning: @footnote outside of any node
 ',
-    'text' => '@footnote outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 9,
     'macro' => '',
-    'line_nr' => 9
+    'text' => '@footnote outside of any node',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':17: warning: @float outside of any node
 ',
-    'text' => '@float outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 17,
     'macro' => '',
-    'line_nr' => 17
+    'text' => '@float outside of any node',
+    'type' => 'warning'
   }
 ];
 

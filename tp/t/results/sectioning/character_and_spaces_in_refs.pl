@@ -2248,13 +2248,13 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'character_and_spaces_in_refs'} = [
   {
-    'file_name' => '',
     'error_line' => ':11: warning: @ref node name should not contain `:\'
 ',
-    'text' => '@ref node name should not contain `:\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 11,
     'macro' => '',
-    'line_nr' => 11
+    'text' => '@ref node name should not contain `:\'',
+    'type' => 'warning'
   }
 ];
 

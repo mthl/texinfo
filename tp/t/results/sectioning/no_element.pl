@@ -1101,40 +1101,40 @@ $result_converted_errors{'info'}->{'no_element'} = [
     'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':5: warning: @anchor outside of any node
 ',
-    'text' => '@anchor outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 5,
     'macro' => '',
-    'line_nr' => 5
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':13: warning: @footnote outside of any node
 ',
-    'text' => '@footnote outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 13,
     'macro' => '',
-    'line_nr' => 13
+    'text' => '@footnote outside of any node',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':21: warning: @float outside of any node
 ',
-    'text' => '@float outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 21,
     'macro' => '',
-    'line_nr' => 21
+    'text' => '@float outside of any node',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':15: warning: @anchor outside of any node
 ',
-    'text' => '@anchor outside of any node',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 15,
     'macro' => '',
-    'line_nr' => 15
+    'text' => '@anchor outside of any node',
+    'type' => 'warning'
   }
 ];
 

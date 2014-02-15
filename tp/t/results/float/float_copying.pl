@@ -1815,58 +1815,58 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'float_copying'} = [
   {
-    'file_name' => '',
     'error_line' => ':3: @float output more than once: public domain
 ',
-    'text' => '@float output more than once: public domain',
-    'type' => 'error',
+    'file_name' => '',
+    'line_nr' => 3,
     'macro' => '',
-    'line_nr' => 3
+    'text' => '@float output more than once: public domain',
+    'type' => 'error'
   },
   {
-    'file_name' => '',
     'error_line' => ':19: @anchor output more than once: public domain anchor
 ',
-    'text' => '@anchor output more than once: public domain anchor',
-    'type' => 'error',
+    'file_name' => '',
+    'line_nr' => 19,
     'macro' => '',
-    'line_nr' => 19
+    'text' => '@anchor output more than once: public domain anchor',
+    'type' => 'error'
   },
   {
-    'file_name' => '',
     'error_line' => ':3: @float output more than once: public domain
 ',
-    'text' => '@float output more than once: public domain',
-    'type' => 'error',
+    'file_name' => '',
+    'line_nr' => 3,
     'macro' => '',
-    'line_nr' => 3
+    'text' => '@float output more than once: public domain',
+    'type' => 'error'
   },
   {
-    'file_name' => '',
     'error_line' => ':19: @anchor output more than once: public domain anchor
 ',
+    'file_name' => '',
+    'line_nr' => 19,
+    'macro' => '',
     'text' => '@anchor output more than once: public domain anchor',
-    'type' => 'error',
-    'macro' => '',
-    'line_nr' => 19
+    'type' => 'error'
   },
   {
-    'file_name' => '',
     'error_line' => ':10: @anchor output more than once: caption copying footnote anchor
 ',
-    'text' => '@anchor output more than once: caption copying footnote anchor',
-    'type' => 'error',
+    'file_name' => '',
+    'line_nr' => 10,
     'macro' => '',
-    'line_nr' => 10
+    'text' => '@anchor output more than once: caption copying footnote anchor',
+    'type' => 'error'
   },
   {
-    'file_name' => '',
     'error_line' => ':10: @anchor output more than once: caption copying footnote anchor
 ',
-    'text' => '@anchor output more than once: caption copying footnote anchor',
-    'type' => 'error',
+    'file_name' => '',
+    'line_nr' => 10,
     'macro' => '',
-    'line_nr' => 10
+    'text' => '@anchor output more than once: caption copying footnote anchor',
+    'type' => 'error'
   }
 ];
 

@@ -820,49 +820,49 @@ $result_converted{'plaintext'}->{'invalid_info_menu_entry'} = '* Menu:
 
 $result_converted_errors{'plaintext'}->{'invalid_info_menu_entry'} = [
   {
-    'file_name' => '',
     'error_line' => ':4: warning: menu entry node name should not contain `:\'
 ',
-    'text' => 'menu entry node name should not contain `:\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 4,
     'macro' => '',
-    'line_nr' => 4
+    'text' => 'menu entry node name should not contain `:\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':5: warning: menu entry name should not contain `:\'
 ',
-    'text' => 'menu entry name should not contain `:\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 5,
     'macro' => '',
-    'line_nr' => 5
+    'text' => 'menu entry name should not contain `:\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':6: warning: menu entry node name should not contain `. \'
 ',
-    'text' => 'menu entry node name should not contain `. \'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 6,
     'macro' => '',
-    'line_nr' => 6
+    'text' => 'menu entry node name should not contain `. \'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':7: warning: menu entry node name should not contain `,\'
 ',
-    'text' => 'menu entry node name should not contain `,\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 7,
     'macro' => '',
-    'line_nr' => 7
+    'text' => 'menu entry node name should not contain `,\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':8: warning: menu entry node name should not contain `	\'
 ',
-    'text' => 'menu entry node name should not contain `	\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 8,
     'macro' => '',
-    'line_nr' => 8
+    'text' => 'menu entry node name should not contain `	\'',
+    'type' => 'warning'
   }
 ];
 

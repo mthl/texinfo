@@ -1832,13 +1832,13 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'some_at_commands_in_ref_nodes'} = [
   {
-    'file_name' => '',
     'error_line' => ':9: warning: @node name should not contain `,\': A SC N~ AA TeX node i" i" E=` /l C\', !
 ',
-    'text' => '@node name should not contain `,\': A SC N~ AA TeX node i" i" E=` /l C\', !',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 9,
     'macro' => '',
-    'line_nr' => 9
+    'text' => '@node name should not contain `,\': A SC N~ AA TeX node i" i" E=` /l C\', !',
+    'type' => 'warning'
   }
 ];
 

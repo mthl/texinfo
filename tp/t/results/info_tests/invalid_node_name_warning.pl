@@ -1203,85 +1203,85 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'invalid_node_name_warning'} = [
   {
-    'file_name' => '',
     'error_line' => ':5: warning: menu entry name should not contain `:\'
 ',
-    'text' => 'menu entry name should not contain `:\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 5,
     'macro' => '',
-    'line_nr' => 5
+    'text' => 'menu entry name should not contain `:\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':5: warning: menu entry node name should not contain `. \'
 ',
-    'text' => 'menu entry node name should not contain `. \'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 5,
     'macro' => '',
-    'line_nr' => 5
+    'text' => 'menu entry node name should not contain `. \'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':6: warning: menu entry node name should not contain `,\'
 ',
-    'text' => 'menu entry node name should not contain `,\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 6,
     'macro' => '',
-    'line_nr' => 6
+    'text' => 'menu entry node name should not contain `,\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':7: warning: menu entry node name should not contain `:\'
 ',
-    'text' => 'menu entry node name should not contain `:\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 7,
     'macro' => '',
-    'line_nr' => 7
+    'text' => 'menu entry node name should not contain `:\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':12: warning: @node name should not contain `,\': node,comma
 ',
-    'text' => '@node name should not contain `,\': node,comma',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 12,
     'macro' => '',
-    'line_nr' => 12
+    'text' => '@node name should not contain `,\': node,comma',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':16: warning: @ref cross-reference name should not contain `:\'
 ',
-    'text' => '@ref cross-reference name should not contain `:\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 16,
     'macro' => '',
-    'line_nr' => 16
+    'text' => '@ref cross-reference name should not contain `:\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':16: warning: @ref node name should not contain `. \'
 ',
-    'text' => '@ref node name should not contain `. \'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 16,
     'macro' => '',
-    'line_nr' => 16
+    'text' => '@ref node name should not contain `. \'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':16: warning: @ref node name should not contain `,\'
 ',
-    'text' => '@ref node name should not contain `,\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 16,
     'macro' => '',
-    'line_nr' => 16
+    'text' => '@ref node name should not contain `,\'',
+    'type' => 'warning'
   },
   {
-    'file_name' => '',
     'error_line' => ':17: warning: @ref node name should not contain `:\'
 ',
-    'text' => '@ref node name should not contain `:\'',
-    'type' => 'warning',
+    'file_name' => '',
+    'line_nr' => 17,
     'macro' => '',
-    'line_nr' => 17
+    'text' => '@ref node name should not contain `:\'',
+    'type' => 'warning'
   }
 ];
 
