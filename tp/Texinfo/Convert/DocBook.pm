@@ -138,7 +138,7 @@ my %style_attribute_commands;
       'kbd'         => 'userinput',
       'key'         => 'keycap',
       'option'      => 'option',
-      'r'           => 'lineannotation',
+      'r'           => '',
       'samp'        => 'literal',
       'strong'      => 'emphasis role="bold"',
       't'           => 'literal',

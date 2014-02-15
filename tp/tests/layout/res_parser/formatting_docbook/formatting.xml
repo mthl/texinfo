@@ -158,7 +158,7 @@ but , ,
 <literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> <inlineequation><mathphrase>--a {\frac{1}{2}} &#8722;</mathphrase></inlineequation>
 <literal>@option{--a}</literal> <option>--a</option>
-<literal>@r{--a}</literal> <lineannotation>&#8211;a</lineannotation>
+<literal>@r{--a}</literal> &#8211;a
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
 <literal>@sc{--a}</literal> &#8211;a
 <literal>@strong{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
@@ -655,7 +655,7 @@ but , ,
 <literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> <inlineequation><mathphrase>--a {\frac{1}{2}} &#8722;</mathphrase></inlineequation>
 <literal>@option{--a}</literal> <option>--a</option>
-<literal>@r{--a}</literal> <lineannotation>&#8211;a</lineannotation>
+<literal>@r{--a}</literal> &#8211;a
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
 <literal>@sc{--a}</literal> &#8211;a
 <literal>@strong{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
@@ -1153,7 +1153,7 @@ but , ,
 <literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> <inlineequation><mathphrase>--a {\frac{1}{2}} &#8722;</mathphrase></inlineequation>
 <literal>@option{--a}</literal> <option>--a</option>
-<literal>@r{--a}</literal> <lineannotation>&#8211;a</lineannotation>
+<literal>@r{--a}</literal> &#8211;a
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
 <literal>@sc{--a}</literal> &#8211;a
 <literal>@strong{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
@@ -1652,7 +1652,7 @@ but , ,
 <literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> <inlineequation><mathphrase>--a {\frac{1}{2}} &#8722;</mathphrase></inlineequation>
 <literal>@option{--a}</literal> <option>--a</option>
-<literal>@r{--a}</literal> <lineannotation>&#8211;a</lineannotation>
+<literal>@r{--a}</literal> &#8211;a
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
 <literal>@sc{--a}</literal> &#8211;a
 <literal>@strong{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
@@ -2150,7 +2150,7 @@ but , ,
 <literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> <inlineequation><mathphrase>--a {\frac{1}{2}} &#8722;</mathphrase></inlineequation>
 <literal>@option{--a}</literal> <option>--a</option>
-<literal>@r{--a}</literal> <lineannotation>&#8211;a</lineannotation>
+<literal>@r{--a}</literal> &#8211;a
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
 <literal>@sc{--a}</literal> &#8211;a
 <literal>@strong{--a}</literal> <emphasis role="bold">&#8211;a</emphasis>
@@ -2643,7 +2643,7 @@ but , ,
 <literal>@key{--a}</literal> <keycap>--a</keycap>
 <literal>@math{--a {\frac{1}{2}} @minus{}}</literal> <inlineequation><mathphrase>--a {\frac{1}{2}} &#8722;</mathphrase></inlineequation>
 <literal>@option{--a}</literal> <option>--a</option>
-<literal>@r{--a}</literal> <lineannotation>&#8211;a</lineannotation>
+<literal>@r{--a}</literal> &#8211;a
 <literal>@samp{--a}</literal> &#8216;<literal>--a</literal>&#8217;
 <literal>@sc{--a}</literal> --a
 <literal>@strong{--a}</literal> <emphasis role="bold">--a</emphasis>

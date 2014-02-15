@@ -22934,7 +22934,7 @@ $result_converted{'docbook'}->{'at_commands_in_refs'} = '<chapter label="" id="T
 
 </chapter>
 <chapter label="21" id="cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i">
-<title><citetitle>cite asis</citetitle> in @w <emphasis role="bold">b</emphasis><!-- /@w --> <lineannotation>in r</lineannotation> sc <emphasis role="bold">str</emphasis> <literal>t</literal> <replaceable>var</replaceable> <firstterm>dfn</firstterm> <emphasis>i</emphasis></title>
+<title><citetitle>cite asis</citetitle> in @w <emphasis role="bold">b</emphasis><!-- /@w --> in r sc <emphasis role="bold">str</emphasis> <literal>t</literal> <replaceable>var</replaceable> <firstterm>dfn</firstterm> <emphasis>i</emphasis></title>
 
 </chapter>
 <chapter label="22" id="env-code-option-samp-command-file-C_002dx-ESC">
@@ -22980,7 +22980,7 @@ $result_converted{'docbook'}->{'at_commands_in_refs'} = '<chapter label="" id="T
 <link linkend="someone_0040somewher-no_005fexplain_0040there"><ulink url="mailto:someone@somewher">the someone</ulink> <email>no_explain@there</email></link>
 <link linkend="f_002d_002dile1-f_002d_002dile"><inlinemediaobject><imageobject><imagedata fileref="f--ile1.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>  <inlinemediaobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>Image description&quot;&quot;\\.</literallayout></textobject></inlinemediaobject></link>
 <link linkend="-_0040-_007b_007d-_002e-"><literal> @ {} . </literal></link>
-<link linkend="cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i"><citetitle>cite asis</citetitle> in @w <emphasis role="bold">b</emphasis><!-- /@w --> <lineannotation>in r</lineannotation> sc <emphasis role="bold">str</emphasis> <literal>t</literal> <replaceable>var</replaceable> <firstterm>dfn</firstterm> <emphasis>i</emphasis></link>
+<link linkend="cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i"><citetitle>cite asis</citetitle> in @w <emphasis role="bold">b</emphasis><!-- /@w --> in r sc <emphasis role="bold">str</emphasis> <literal>t</literal> <replaceable>var</replaceable> <firstterm>dfn</firstterm> <emphasis>i</emphasis></link>
 <link linkend="env-code-option-samp-command-file-C_002dx-ESC"><envar>env</envar> <literal>code</literal> <option>option</option> &#8216;<literal>samp</literal>&#8217; <command>command</command> <filename>file</filename> <userinput>C-x <keycap>ESC</keycap></userinput></link>
 <link linkend="8_002e27in">8.27in</link>
 <link linkend="sansserif-slanted">sansserif slanted</link>
