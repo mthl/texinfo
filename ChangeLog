@@ -1,6 +1,9 @@
 2014-02-15  Patrice Dumas  <pertusus@free.fr>
 	* Texinfo/Convert/DocBook.pm: do not use lineannotation for 
 	@r, the semantics are not the same.  Report from Aharon Robbins.
+	* Texinfo/Convert/Plaintext.pm(_printindex_formatted), Texinfo/Common.pm, 
+	doc/texinfo.texi: new customization variable INDEX_SPECIAL_CHARS_WARNING
+	to warn about invalid index entries in Info.  Report from Glenn Morris.
 
 2014-02-09  Karl Berry  <karl@gnu.org>
 

@@ -259,6 +259,7 @@ my @variable_string_settables = (
   'MACRO_BODY_IGNORES_LEADING_SPACE', 'CHECK_HTMLXREF',
   'TEXINFO_DTD_VERSION', 'TEXINFO_COLUMN_FOR_DESCRIPTION',
   'TEXINFO_OUTPUT_FORMAT', 'INFO_SPECIAL_CHARS_WARNING',
+  'INDEX_SPECIAL_CHARS_WARNING',
 );
 # Not strings. 
 # FIXME To be documented somewhere, but where?
