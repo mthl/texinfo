@@ -1,9 +1,19 @@
+2014-02-16  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\ifusebracesinindexes): new conditional for testing.
+	(\indexnofonts): if set, output @{ as \{ in the sort string,
+	instead of |a; likewise @}.  Request from Arnold.
+
 2014-02-15  Patrice Dumas  <pertusus@free.fr>
+
 	* Texinfo/Convert/DocBook.pm: do not use lineannotation for 
 	@r, the semantics are not the same.  Report from Aharon Robbins.
-	* Texinfo/Convert/Plaintext.pm(_printindex_formatted), Texinfo/Common.pm, 
-	doc/texinfo.texi: new customization variable INDEX_SPECIAL_CHARS_WARNING
-	to warn about invalid index entries in Info.  Report from Glenn Morris.
+
+	* Texinfo/Convert/Plaintext.pm (_printindex_formatted),
+	* Texinfo/Common.pm, 
+	* doc/texinfo.texi: new customization variable
+        INDEX_SPECIAL_CHARS_WARNING to warn about invalid index entries in
+        Info.  Report from Glenn Morris.
 
 2014-02-09  Karl Berry  <karl@gnu.org>
 
