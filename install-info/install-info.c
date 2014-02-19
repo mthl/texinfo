@@ -667,13 +667,16 @@ The first time you invoke Info you start off looking at this node.\n\
    If we do open it, return the actual name of the file opened in
    OPENED_FILENAME and the compress program to use to (de)compress it in
    COMPRESSION_PROGRAM.  The compression program is determined by the
+   magic number, not the filename.
    
-   MAGIC number, not the filename.  */
+   Return either stdin reading the file, or a non-stdin pipe reading
+   the output of the compression program.  */
+
 
 FILE *
 open_possibly_compressed_file (char *filename,
     void (*create_callback) (char *),
-    char **opened_filename, char **compression_program, int *is_pipe) 
+    char **opened_filename, char **compression_program) 
 {
   char *local_opened_filename, *local_compression_program;
   int nread;
@@ -686,48 +689,48 @@ open_possibly_compressed_file (char *filename,
     opened_filename = &local_opened_filename;
 
   *opened_filename = filename;
-  f = fopen (*opened_filename, FOPEN_RBIN);
+  f = freopen (*opened_filename, FOPEN_RBIN, stdin);
   if (!f)
     {
       *opened_filename = concat (filename, ".gz", "");
-      f = fopen (*opened_filename, FOPEN_RBIN);
+      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
     }
   if (!f)
     {
       free (*opened_filename);
       *opened_filename = concat (filename, ".xz", "");
-      f = fopen (*opened_filename, FOPEN_RBIN);
+      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
     }
   if (!f)
     {
       free (*opened_filename);
       *opened_filename = concat (filename, ".bz2", "");
-      f = fopen (*opened_filename, FOPEN_RBIN);
+      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
     }
   if (!f)
     {
       free (*opened_filename);
       *opened_filename = concat (filename, ".lz", "");
-      f = fopen (*opened_filename, FOPEN_RBIN);
+      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
     }
   if (!f)
     {
      free (*opened_filename);
      *opened_filename = concat (filename, ".lzma", "");
-     f = fopen (*opened_filename, FOPEN_RBIN);
+     f = freopen (*opened_filename, FOPEN_RBIN, stdin);
     }
 #ifdef __MSDOS__
   if (!f)
     {
       free (*opened_filename);
       *opened_filename = concat (filename, ".igz", "");
-      f = fopen (*opened_filename, FOPEN_RBIN);
+      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
     }
   if (!f)
     {
       free (*opened_filename);
       *opened_filename = concat (filename, ".inz", "");
-      f = fopen (*opened_filename, FOPEN_RBIN);
+      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
     }
 #endif /* __MSDOS__ */
    if (!f)
@@ -739,7 +742,7 @@ open_possibly_compressed_file (char *filename,
            /* And try opening it again.  */
            free (*opened_filename);
            *opened_filename = filename;
-           f = fopen (*opened_filename, FOPEN_RBIN);
+           f = freopen (*opened_filename, FOPEN_RBIN, stdin);
            if (!f)
              pfatal_with_name (filename);
          }
@@ -819,27 +822,26 @@ open_possibly_compressed_file (char *filename,
   else
     *compression_program = NULL;
 
+  /* Seek back over the magic bytes.  */
+  if (fseek (f, 0, 0) < 0)
+    pfatal_with_name (*opened_filename);
+
   if (*compression_program)
-    { /* It's compressed, so fclose the file and then open a pipe.  */
-      char *command = concat (*compression_program," -cd <", *opened_filename);
-      if (fclose (f) < 0)
-        pfatal_with_name (*opened_filename);
+    { /* It's compressed, so open a pipe.  */
+      char *command = concat (*compression_program, " -d", "");
       f = popen (command, "r");
-      if (f)
-        *is_pipe = 1;
-      else
+      if (! f)
         pfatal_with_name (command);
     }
   else
-    { /* It's a plain file, seek back over the magic bytes.  */
-      if (fseek (f, 0, 0) < 0)
-        pfatal_with_name (*opened_filename);
+    {
 #if O_BINARY
       /* Since this is a text file, and we opened it in binary mode,
          switch back to text mode.  */
       f = freopen (*opened_filename, "r", f);
+      if (! f)
+	pfatal_with_name (*opened_filename);
 #endif
-      *is_pipe = 0;
     }
 
   return f;
@@ -860,7 +862,6 @@ readfile (char *filename, int *sizep,
 {
   char *real_name;
   FILE *f;
-  int pipe_p;
   int filled = 0;
   int data_size = 8192;
   char *data = xmalloc (data_size);
@@ -869,7 +870,7 @@ readfile (char *filename, int *sizep,
   f = open_possibly_compressed_file (filename, create_callback,
                                      opened_filename ? opened_filename
                                                      : &real_name,
-                                     compression_program, &pipe_p);
+                                     compression_program);
 
   for (;;)
     {
@@ -892,10 +893,8 @@ readfile (char *filename, int *sizep,
   /* We need to close the stream, since on some systems the pipe created
      by popen is simulated by a temporary file which only gets removed
      inside pclose.  */
-  if (pipe_p)
+  if (f != stdin)
     pclose (f);
-  else
-    fclose (f);
 
   *sizep = filled;
   return data;
@@ -1905,6 +1904,12 @@ main (int argc, char *argv[])
   /* Set the text message domain.  */
   bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
+
+  /* Make sure standard input can be freopened at will.  Otherwise,
+     when stdin starts off closed, bad things could happen if a plain fopen
+     returns stdin before open_possibly_compressed_file freopens it.  */
+  if (! freopen (NULL_DEVICE, "r", stdin))
+    pfatal_with_name (NULL_DEVICE);
 
   munge_old_style_debian_options (argc, argv, &argc, &argv);
 

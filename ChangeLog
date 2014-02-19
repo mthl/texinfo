@@ -1,3 +1,21 @@
+2014-02-19  Karl Berry  <karl@gnu.org>
+
+	* install-info/tests/ii-0054-*,
+	* install-info/tests/Makefile.am (TESTS, EXTRA_DIST): new test 54
+	for space in input name.
+
+2014-02-19  Paul Eggert  <eggert@cs.ucla.edu>
+
+	* install-info/install-info.c (open_possibly_compressed_file):
+	Work even if the file name contains arbitrary shell
+	metacharacters, for example:
+	  install-info --info-dir="/d/a b/info" "/d/a b/info/emacs.info.gz"
+	Do this by running the decompressor on standard
+	input, rather than by having the shell open the file.
+	Return either stdin or a pipe.
+	Don't bother with IS_PIPE arg; no longer needed.
+	All callers changed.  Check for freopen failure.
+
 2014-02-16  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\ifusebracesinindexes): new conditional for testing.
