@@ -314,9 +314,9 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
             {
               if (argv[arg_index] != (char *)NULL)
                 {
-                  arg_index++;
                   if (op > outfiles)
                     *(op - 1) = argv[arg_index];
+                  arg_index++;
                 }
               else
                 usage (EXIT_FAILURE);

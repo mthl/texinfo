@@ -1,3 +1,10 @@
+2014-02-25  Arnold Robbins  <arnold@skeeve.com>
+            Karl Berry  <karl@gnu.org>
+
+	* util/texindex.c (decode_command): increment arg_index again
+	after looking at the argument, not before.  This made -o unusable;
+	therefore presumably no one has been using it, and it will be dropped.
+
 2014-02-19  Karl Berry  <karl@gnu.org>
 
 	* install-info/tests/ii-0054-*,
