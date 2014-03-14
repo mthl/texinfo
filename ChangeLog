@@ -1,3 +1,11 @@
+2014-03-14  Karl Berry  <karl@gnu.org>
+
+	* tp/texi2any.pl (D=s): handle -D 'var value', as C makeinfo did.
+	Based on bug-texinfo mail from Guo Yixuan, 4 Mar 2014 17:29:34 -0500
+        (tiny change).
+        (makeinfo_help): document it.
+        * doc/texinfo.texi (Invoking @t{texi2any}): document it.
+
 2014-02-25  Arnold Robbins  <arnold@skeeve.com>
             Karl Berry  <karl@gnu.org>
 

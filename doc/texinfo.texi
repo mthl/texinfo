@@ -17160,10 +17160,16 @@ references a cascading style sheet at @var{url}.  This allows using
 standalone style sheets.
 
 @item -D @var{var}
+@itemx -D '@var{var} @var{value}'
 @opindex -D @var{var}
 Cause the Texinfo variable @var{var} to be defined.  This is
 equivalent to @code{@@set @var{var}} in the Texinfo file
 (@pxref{@t{@@set @@clear @@value}}).
+
+The argument to the option is always one word to the shell; if it
+contains internal whitespace, the first word is taken as the variable
+name and the remainder as the value.  For example, @code{-D 'myvar
+someval'} is equivalent to @code{@@set myvar someval}.
 
 @item --disable-encoding
 @itemx --enable-encoding

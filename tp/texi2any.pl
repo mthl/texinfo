@@ -806,6 +806,7 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
   $makeinfo_help .= __("Input file options:
       --commands-in-node-names  does nothing, retained for compatibility.
   -D VAR                        define the variable VAR, as with \@set.
+  -D 'VAR VAL'                  define VAR to VAL (one shell argument).
   -I DIR                        append DIR to the \@include search path.
   -P DIR                        prepend DIR to the \@include search path.
   -U VAR                        undefine the variable VAR, as with \@clear.\n")
@@ -924,7 +925,15 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2014";
                         document_warn($message);
                       }
                     },
- 'D=s' => sub {$parser_default_options->{'values'}->{$_[1]} = 1;},
+ 'D=s' => sub {
+    my $var = $_[1];
+    my @field = split (/\s+/, $var, 2);
+    if (@field == 1) {
+      $parser_default_options->{'values'}->{$var} = 1;
+    } else {
+      $parser_default_options->{'values'}->{$field[0]} = $field[1];
+    }
+ },
  'U=s' => sub {delete $parser_default_options->{'values'}->{$_[1]};},
  'init-file=s' => sub {
     locate_and_load_init_file($_[1], [ @conf_dirs, @program_init_dirs ]);
