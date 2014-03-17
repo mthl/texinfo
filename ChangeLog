@@ -1,3 +1,10 @@
+2014-03-17  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\headitem): \gdef\headitemcrhook{\nobreak}
+	(\headitemcrhook): \relax by default.
+	(\multitable) <\everycr>: call it, to try to avoid page breaks
+	after heading rows.
+
 2014-03-14  Karl Berry  <karl@gnu.org>
 
 	* tp/texi2any.pl (D=s): handle -D 'var value', as C makeinfo did.
