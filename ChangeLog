@@ -1,3 +1,8 @@
+2014-03-19  Karl Berry  <karl@gnu.org>
+
+	* util/htmlxref.cnf (gdbint): gone (reported by Ineiev).
+	(thales): new.
+
 2014-03-17  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\headitem): \gdef\headitemcrhook{\nobreak}
