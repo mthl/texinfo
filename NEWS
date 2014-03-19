@@ -33,6 +33,7 @@ one of the relevant sections:
   . new customization variable INDEX_SPECIAL_CHARS_WARNING to complain
     when index entries contain a colon.
   . Docbook output no longer uses <lineannotation> for @r.
+  . -D'var val' works again.
 
 * install-info:
   . handle compressed input file names containing spaces.
