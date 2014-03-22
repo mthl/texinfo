@@ -23802,7 +23802,7 @@ The @samp{(Indirect)} line is the next line after @samp{Tag Table:}
 in the case of split output only.
 
 Each following line defines an identifier as either an anchor or a
-node, as specific.  It is an error to define the same identifier both
+node, as specified.  It is an error to define the same identifier both
 ways.  For example, @samp{Node: Top^?1647} says that the node named
 @samp{Top} starts at byte 1647 while @samp{Ref:
 Overview-Footnote-1^?30045} says that the anchor named
@@ -23818,8 +23818,8 @@ Here is an example:
 @example
 ^_
 Tag Table:
-Node: Top^_89
-Node: Ch1^_292
+Node: Top^?89
+Node: Ch1^?292
 ^_
 End Tag Table
 @end example

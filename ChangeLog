@@ -1,3 +1,8 @@
+2014-03-22  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (Info Format Tag Table): ^? not ^_, etc.
+	Reported by Gavin Smith, 21 Mar 2014 18:56:27.
+
 2014-03-19  Karl Berry  <karl@gnu.org>
 
 	* util/htmlxref.cnf (gdbint): gone (reported by Ineiev).
