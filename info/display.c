@@ -1,7 +1,7 @@
 /* display.c -- How to display Info windows.
    $Id$
 
-   Copyright 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012, 2013
+   Copyright 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012, 2013, 2014
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -97,12 +97,12 @@ static int
 find_diff (const char *a, size_t alen, const char *b, size_t blen, int *ppos)
 {
   mbi_iterator_t itra, itrb;
-  int i = 0;
+  int i;
   int pos = 0;
   
   for (i = 0, mbi_init (itra, a, alen), mbi_init (itrb, b, blen);
        mbi_avail (itra) && mbi_avail (itrb);
-       mbi_advance (itra), mbi_advance (itrb))
+       i++, mbi_advance (itra), mbi_advance (itrb))
     {
       if (mb_cmp (mbi_cur (itra), mbi_cur (itrb)))
 	break;
