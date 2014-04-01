@@ -183,9 +183,7 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
       end = binding->start;
     }
   
-  if (previous_content != binding->buffer ||
-      previous_start != start ||
-      previous_end != end)
+  if (previous_content != binding->buffer)
     {
       /* new buffer to search in, let's scan it */
       char saved_char;

@@ -1,3 +1,8 @@
+2014-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/search.c (regexp_search): Remove unnecessary test for
+	whether search results have to be recalculated.
+
 2014-03-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/display.c (find_diff): increment i in the loop so we
