@@ -5,6 +5,7 @@
 # Karl Eichwalder <ke@suse.de>, 1997, 1998, 1999.
 # Karl Eichwalder <ke@gnu.franken.de>, 1999, 2000.
 # Michael Piefel <piefel@informatik.hu-berlin.de>, 2001-2005, 2007, 2008, 2012, 2013.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2014.
 #
 # 2004-03-31
 # Along with this new update, I changed the quotes to
@@ -35,14 +36,15 @@ msgstr ""
 "Project-Id-Version: texinfo 5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2013-09-13 09:54-0700\n"
-"PO-Revision-Date: 2013-10-24 20:05+0200\n"
-"Last-Translator: Michael Piefel <piefel@informatik.hu-berlin.de>\n"
+"PO-Revision-Date: 2014-04-03 13:52+0100\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8-bit\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: gnulib/lib/error.c:188
 msgid "Unknown system error"
@@ -218,7 +220,7 @@ msgstr "Operation abbrechen oder beenden"
 
 #: info/echo-area.c:466
 msgid "Accept (or force completion of) this line"
-msgstr "Akzeptiere diese Zeile (oder erzwinge ihre Vervollständigung)"
+msgstr "Diese Zeile akzeptieren (oder ihre Vervollständigung erzwingen)"
 
 #: info/echo-area.c:471
 msgid "Insert next character verbatim"
@@ -238,7 +240,7 @@ msgstr "Zeichen an momentaner Position umstellen"
 
 #: info/echo-area.c:556
 msgid "Yank back the contents of the last kill"
-msgstr "Füge den Inhalt des letzten Löschvorgangs ein"
+msgstr "Den Inhalt des letzten Löschvorgangs einfügen"
 
 # IMO muss "kill" auch im Folgenden wörtlich üs werden -ke-
 #: info/echo-area.c:563
@@ -247,7 +249,7 @@ msgstr "Der Lösch-Ring ist leer"
 
 #: info/echo-area.c:576
 msgid "Yank back a previous kill"
-msgstr "Füge Inhalt eines vorangegangenen Löschvorgangs ein"
+msgstr "Inhalt eines vorangegangenen Löschvorgangs einfügen"
 
 #: info/echo-area.c:609
 msgid "Kill to the end of the line"
@@ -295,7 +297,7 @@ msgstr "Vervollständigung einfügen"
 #: info/echo-area.c:1228
 #, c-format
 msgid "Building completions..."
-msgstr "Vervollständigungen werden erstellt..."
+msgstr "Vervollständigungen werden erstellt …"
 
 #: info/echo-area.c:1347
 msgid "Scroll the completions window"
@@ -304,12 +306,12 @@ msgstr "Im Vervollständigungs-Fenster blättern"
 #: info/filesys.c:88
 #, c-format
 msgid "looking for file \"%s\""
-msgstr "suche nach Datei „%s“"
+msgstr "nach Datei „%s“ wird gesucht"
 
 #: info/filesys.c:178
 #, c-format
 msgid "looking for file %s in %s"
-msgstr "suche nach Datei %s in %s"
+msgstr "nach Datei %s wird in %s gesucht"
 
 #: info/filesys.c:209 info/filesys.c:224 info/filesys.c:245
 #, c-format
@@ -322,7 +324,7 @@ msgstr "Fußnoten können nicht angezeigt werden"
 
 #: info/footnotes.c:237
 msgid "Show the footnotes associated with this node in another window"
-msgstr "Zeige die zu diesem Knoten gehörenden Fußnoten in einem anderen Fenster"
+msgstr "Die zu diesem Knoten gehörenden Fußnoten in einem anderen Fenster anzeigen"
 
 #: info/footnotes.h:26
 msgid "---------- Footnotes ----------"
@@ -335,7 +337,7 @@ msgstr "Eine Zeichenkette im Index dieser Datei suchen"
 #: info/indices.c:202 info/indices.c:885
 #, c-format
 msgid "Finding index entries..."
-msgstr "Index-Einträge werden gesucht..."
+msgstr "Index-Einträge werden gesucht …"
 
 #: info/indices.c:209
 #, c-format
@@ -387,7 +389,7 @@ msgstr "„%s“ in %s gefunden. (Nächster Eintrag mit „\\[next-index-match]�
 #: info/indices.c:611
 #, c-format
 msgid "Scanning indices of `%s'..."
-msgstr "Indizes von „%s“ werden durchsucht..."
+msgstr "Indizes von „%s“ werden durchsucht …"
 
 #: info/indices.c:659
 #, c-format
@@ -468,7 +470,7 @@ msgstr "%s: unbekannte Variable"
 #: info/info.c:654 info/infomap.c:1222
 #, c-format
 msgid "value %s is not valid for variable %s"
-msgstr "Wert %s ist nicht gültig für Variablen %s"
+msgstr "Wert %s ist nicht gültig für Variable %s"
 
 #: info/info.c:671 info/infokey.c:892
 #, c-format
@@ -492,7 +494,7 @@ msgstr ""
 #: info/info.c:785
 #, c-format
 msgid "can't open %s: %s"
-msgstr "kann %s nicht öffnen: %s"
+msgstr "%s kann nicht geöffnet werden: %s"
 
 #: info/info.c:791
 #, c-format
@@ -523,8 +525,8 @@ msgstr ""
 "  -k, --apropos=ZKETTE      ZKETTE in allen Indizes sämtlicher Info-Dateien\n"
 "                              suchen\n"
 "  -d, --directory=VERZ      VERZ dem INFOPATH hinzufügen\n"
-"      --dribble=DATEI       Tasteneingaben des Nutzers in DATEI merken\n"
-"  -f, --file=DATEI          zu besuchende Info-DATEI angeben"
+"      --dribble=DATEI       Tasteneingaben des Benutzers in DATEI merken\n"
+"  -f, --file=DATEI          zu öffnende Info-DATEI angeben"
 
 #: info/info.c:891
 msgid ""
@@ -569,10 +571,11 @@ msgid ""
 msgstr ""
 "      --strict-node-location  (Debuggen) Info-Datei-Zeiger unverändert nutzen\n"
 "      --subnodes            Menüeinträge rekursiv ausgeben\n"
-"  -v, --variable VAR=VALUE  den Wert VALUE der Info-Variablen VAR zuweisen\n"
+"  -v, --variable VAR=WERT   den Wert WERT der Info-Variablen VAR zuweisen\n"
 "      --vi-keys             Tastenbindungen ähnlich zu vi und less benutzen\n"
 "      --version             Programmversion anzeigen\n"
-"  -w, --where, --location   physischen Ort des Info-Datei anzeigen  -x, --debug=ZAHL          Debugging-Level setzen (-1 für alles)\n"
+"  -w, --where, --location   physischen Ort des Info-Datei anzeigen\n"
+"  -x, --debug=ZAHL          Debugging-Level setzen (-1 für alles)\n"
 
 #: info/info.c:917
 msgid ""
@@ -585,7 +588,7 @@ msgid ""
 msgstr ""
 "\n"
 "Der erste Parameter, der keine Option ist, ist der Menüeintrag, von dem aus\n"
-"gestartet werden soll; nach diesem Menüeintrag wird in allen „dir“-Datei\n"
+"gestartet werden soll; nach diesem Menüeintrag wird in allen „dir“-Dateien\n"
 "gemäß dem INFOPATH gesucht.\n"
 "Wird kein Menüeintrag angegeben, packt info alle „dir“-Dateien zusammen\n"
 "und zeigt das Ergebnis an.\n"
@@ -598,7 +601,7 @@ msgid ""
 "For a summary of key bindings, type h within Info."
 msgstr ""
 "\n"
-"Für eine Zusammenfassung möglicher Tastenkombinationen in Info ‚h‘ tippen."
+"Für eine Zusammenfassung möglicher Tastenkombinationen in Info „h“ tippen."
 
 #: info/info.c:927
 msgid ""
@@ -620,7 +623,7 @@ msgstr ""
 "  info info-stnd             die Anleitung für dieses Info-Programm anzeigen\n"
 "  info emacs                 beim emacs-Knoten im obersten „dir“-Menü beginnen\n"
 "  info emacs buffers         beim buffers-Knoten im emacs-Manual beginnen\n"
-"  info --show-options emacs  beim Knoten mit den emacs-Kommandozeilen-Optionen\n"
+"  info --show-options emacs  beim Knoten mit den emacs-Befehlszeilen-Optionen\n"
 "                               beginnen\n"
 "  info --subnodes -o out.txt emacs  das ganze Handbuch nach out.txt schreiben\n"
 "  info -f ./foo.info         datei ./foo.info anzeigen"
@@ -635,7 +638,9 @@ msgstr ""
 "\n"
 "Fehlerberichte (auf Englisch, mit LC_ALL=C) per E-Mail an bug-texinfo@gnu.org\n"
 "schicken, allgemeine Fragen und Gedankenaustausch an help-texinfo@gnu.org.\n"
-"Texinfos Homepage: http://www.gnu.org/software/texinfo/"
+"Texinfos Homepage: http://www.gnu.org/software/texinfo/\n"
+"Fehler in der Übersetzung bitte melden an:\n"
+"<translation-team-de@lists.sourceforge.net>"
 
 #: info/info.c:972
 #, c-format
@@ -657,7 +662,7 @@ msgstr "Momentane Position erscheint nicht in dem Knoten dieses Fensters!"
 
 #: info/info.c:976
 msgid "Cannot delete the last window."
-msgstr "Kann das letzte Fenster nicht löschen!"
+msgstr "Das letzte Fenster kann nicht gelöscht werden."
 
 #: info/info.c:977
 msgid "No menu in this node."
@@ -674,12 +679,12 @@ msgstr "Keine Querverweise in diesem Knoten."
 #: info/info.c:980
 #, c-format
 msgid "No `%s' pointer for this node."
-msgstr "Kein „%s“-Verweis für diesem Knoten."
+msgstr "Kein „%s“-Verweis für diesen Knoten."
 
 #: info/info.c:981
 #, c-format
 msgid "Unknown Info command `%c'; try `?' for help."
-msgstr "Unbekannter Info-Befehl „%c“. „?“ eingeben, um Hilfe zu bekommen."
+msgstr "Unbekannter Info-Befehl „%c“. Geben Sie „?“ ein, um Hilfe zu bekommen."
 
 #: info/info.c:982
 #, c-format
@@ -780,7 +785,7 @@ msgstr "\\%-10[up-node]  Eine Ebene aufwärts gehen.\n"
 
 #: info/infodoc.c:67
 msgid "\\%-10[top-node]  Go to the top node of this document.\n"
-msgstr "\\%-10[top-node]  Zum Startknoten dieses Dokukments gehen.\n"
+msgstr "\\%-10[top-node]  Zum Startknoten dieses Dokuments gehen.\n"
 
 #: info/infodoc.c:68
 msgid "\\%-10[dir-node]  Go to the main `directory' node.\n"
@@ -823,7 +828,7 @@ msgid ""
 "\\%-10[index-search]  Search for a specified string in the index, and\n"
 "              select the node referenced by the first entry found.\n"
 msgstr ""
-"\\%-10[index-search]  Eine Zeichenkette in den Indexeintägen dieser Info-Datei\n"
+"\\%-10[index-search]  Eine Zeichenkette in den Indexeinträgen dieser Info-Datei\n"
 "              suchen und zu dem Knoten springen, auf den der erste\n"
 "              gefundene Eintrag verweist.\n"
 
@@ -880,7 +885,7 @@ msgid ""
 "              Picking a menu item causes another node to be selected.\n"
 msgstr ""
 "  %-10s  Einen Menüeintrag nach dem Namen auswählen.\n"
-"              Auswahl des Menüeintrags führt zu Auswahl eines anderen Knotens.\n"
+"              Auswahl des Menüeintrags führt zur Auswahl eines anderen Knotens.\n"
 
 #: info/infodoc.c:105
 #, c-format
@@ -1002,7 +1007,7 @@ msgid ""
 "  %-10s  Search backward for a specified string,\n"
 "              and select the node in which the next occurrence is found.\n"
 msgstr ""
-"  %-10s  Angegebene Zeichenkette in Vorwärtsrichtung suchen und den\n"
+"  %-10s  Angegebene Zeichenkette in Rückwärtsrichtung suchen und den\n"
 "              Knoten wählen, in dem der nächste Eintrag gefunden wurde.\n"
 
 #: info/infodoc.c:311
@@ -1061,7 +1066,7 @@ msgstr "Dokumentation für KEY ausgeben"
 #: info/infodoc.c:624
 #, c-format
 msgid "Describe key: %s"
-msgstr "Beschreibe Taste: %s"
+msgstr "Taste beschreiben: %s"
 
 #: info/infodoc.c:634
 #, c-format
@@ -1132,12 +1137,12 @@ msgstr "Ausgabedatei „%s“ kann nicht angelegt werden."
 #: info/infokey.c:224
 #, c-format
 msgid "error writing to `%s'"
-msgstr "Fehler beim Schreiben von „%s“."
+msgstr "Fehler beim Schreiben von „%s“"
 
 #: info/infokey.c:230
 #, c-format
 msgid "error closing output file `%s'"
-msgstr "Fehler beim Schließen der Ausgabedatei „%s“."
+msgstr "Fehler beim Schließen der Ausgabedatei „%s“"
 
 #: info/infokey.c:449
 #, c-format
@@ -1187,7 +1192,7 @@ msgstr "Extrazeichen folgen Befehl „%s“."
 #: info/infokey.c:715
 #, c-format
 msgid "missing variable name"
-msgstr "Dateiname fehlt."
+msgstr "Variablenname fehlt."
 
 #: info/infokey.c:724
 #, c-format
@@ -1236,12 +1241,12 @@ msgstr ""
 #: info/infomap.c:959
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too small"
-msgstr "Ungültige Info-Schlüssel-Datei „%s“ wird ignoriert - zu klein"
+msgstr "Ungültige Infokey-Datei „%s“ wird ignoriert - zu klein"
 
 #: info/infomap.c:962
 #, c-format
 msgid "Ignoring invalid infokey file `%s' - too big"
-msgstr "Ungültige Info-Schlüssel-Datei „%s“ wird ignoriert - zu groß"
+msgstr "Ungültige Infokey-Datei „%s“ wird ignoriert - zu groß"
 
 #: info/infomap.c:975
 #, c-format
@@ -1282,7 +1287,7 @@ msgstr "Namen eines Info-Befehls lesen und beschreiben"
 
 #: info/m-x.c:71
 msgid "Describe command: "
-msgstr "Beschreibe den Befehl: "
+msgstr "Befehl beschreiben: "
 
 #: info/m-x.c:94
 msgid "Read a command name in the echo area and execute it"
@@ -1305,7 +1310,7 @@ msgstr "Höhe des angezeigten Fensters setzen"
 #: info/m-x.c:170
 #, c-format
 msgid "Set screen height to (%d): "
-msgstr "Setze Bildschirm-Höhe auf (%d): "
+msgstr "Bildschirm-Höhe auf (%d) setzen: "
 
 #: info/makedoc.c:167 info/makedoc.c:175
 #, c-format
@@ -1354,7 +1359,7 @@ msgstr ""
 
 #: info/nodemenu.c:313
 msgid "Select visited node: "
-msgstr "Wähle besuchten Knoten aus: "
+msgstr "Besuchten Knoten auswählen: "
 
 #: info/nodemenu.c:333 info/session.c:2617
 #, c-format
@@ -1426,7 +1431,7 @@ msgstr "In diesem Fenster vorwärts blättern und die Standard-Fenstergröße se
 
 #: info/session.c:1535
 msgid "Scroll forward in this window staying within node"
-msgstr "In diesem Fenster vorwärts blättern ohne den Knoten zu verlassen"
+msgstr "In diesem Fenster vorwärts blättern, ohne den Knoten zu verlassen"
 
 #: info/session.c:1543
 msgid "Scroll forward in this window staying within node and set default window size"
@@ -1444,12 +1449,12 @@ msgstr "In diesem Fenster zurückblättern und die Standard-Fenstergröße setze
 
 #: info/session.c:1568
 msgid "Scroll backward in this window staying within node"
-msgstr "In diesem Fenster zurückblättern ohne den Knoten zu verlassen"
+msgstr "In diesem Fenster zurückblättern, ohne den Knoten zu verlassen"
 
 #: info/session.c:1576
 msgid "Scroll backward in this window staying within node and set default window size"
 msgstr ""
-"In diesem Fenster zurück blättern (ohne den Knoten zu verlassen)\n"
+"In diesem Fenster zurückblättern (ohne den Knoten zu verlassen)\n"
 "     und Standard-Fenstergröße setzen"
 
 #: info/session.c:1584
@@ -1506,7 +1511,7 @@ msgstr "Im anderen Fenster vorblättern"
 
 #: info/session.c:1969
 msgid "Scroll the other window backward"
-msgstr "Im anderen Fenster zurück blättern"
+msgstr "Im anderen Fenster zurückblättern"
 
 #: info/session.c:1975
 msgid "Grow (or shrink) this window"
@@ -1585,11 +1590,11 @@ msgstr "Menüeintrag: "
 #: info/session.c:2535 info/session.c:2536
 #, c-format
 msgid "Follow xref (%s): "
-msgstr "Folge xref (%s): "
+msgstr "xref folgen (%s): "
 
 #: info/session.c:2539
 msgid "Follow xref: "
-msgstr "Folge xref: "
+msgstr "xref folgen: "
 
 #: info/session.c:2660
 msgid "Read a menu item and select its node"
@@ -1628,7 +1633,7 @@ msgstr "Kein Menüeintrag „%s“ im Knoten „%s“."
 #: info/session.c:2940
 #, c-format
 msgid "Unable to find node referenced by `%s' in `%s'."
-msgstr "Kann keinen Knoten finden, der von „%s“ in „%s“ referenziert wird."
+msgstr "Es kann kein Knoten gefunden werden, der von „%s“ in „%s“ referenziert wird."
 
 #: info/session.c:2992
 msgid "Read a list of menus starting from dir and follow them"
@@ -1636,7 +1641,7 @@ msgstr "Menüliste lesen; bei „dir“ beginnen und ihnen folgen"
 
 #: info/session.c:2994
 msgid "Follow menus: "
-msgstr "Folge Menüs: "
+msgstr "Menüs folgen: "
 
 #: info/session.c:3187
 msgid "Find the node describing program invocation"
@@ -1645,7 +1650,7 @@ msgstr "Den Knoten finden, der den Programmaufruf beschreibt"
 #: info/session.c:3189
 #, c-format
 msgid "Find Invocation node of [%s]: "
-msgstr "Finde den Programmaufruf-Knoten von [%s]: "
+msgstr "Den Programmaufruf-Knoten von [%s] finden: "
 
 #: info/session.c:3227
 msgid "Read a manpage reference and select it"
@@ -1653,7 +1658,7 @@ msgstr "Einen Verweis auf eine Manpage lesen und diese auswählen"
 
 #: info/session.c:3231
 msgid "Get Manpage: "
-msgstr "Hole Manpage: "
+msgstr "Manpage holen: "
 
 #: info/session.c:3261
 msgid "Select the node `Top' in this file"
@@ -1666,12 +1671,12 @@ msgstr "Den Knoten „(dir)“ auswählen"
 #: info/session.c:3284 info/session.c:3286
 #, c-format
 msgid "Kill node (%s): "
-msgstr "Lösche Information über Knoten (%s): "
+msgstr "Information über Knoten (%s) löschen: "
 
 #: info/session.c:3337
 #, c-format
 msgid "Cannot kill node `%s'"
-msgstr "Kann Information über Knoten „%s“ nicht löschen"
+msgstr "Information über Knoten „%s“ kann nicht gelöscht werden"
 
 #: info/session.c:3347
 msgid "Cannot kill the last node"
@@ -1691,17 +1696,17 @@ msgstr "Den Namen einer Datei lesen und diese auswählen"
 
 #: info/session.c:3451
 msgid "Find file: "
-msgstr "Finde Datei: "
+msgstr "Datei finden: "
 
 #: info/session.c:3468
 #, c-format
 msgid "Cannot find `%s'."
-msgstr "Kann „%s“ nicht finden."
+msgstr "„%s“ kann nicht gefunden werden."
 
 #: info/session.c:3508 info/session.c:3633
-#, fuzzy, c-format
+#, c-format
 msgid "writing file %s"
-msgstr "Knoten „%s“ wird geschrieben..."
+msgstr "Datei „%s“ wird geschrieben"
 
 #: info/session.c:3519 info/session.c:3644
 #, c-format
@@ -1709,24 +1714,24 @@ msgid "Could not create output file `%s'."
 msgstr "Ausgabedatei „%s“ kann nicht angelegt werden."
 
 #: info/session.c:3533 info/session.c:3663
-#, fuzzy, c-format
+#, c-format
 msgid "error writing to %s: %s"
-msgstr "Fehler beim Schreiben von „%s“."
+msgstr "Fehler beim Schreiben nach %s: %s"
 
 #: info/session.c:3541
-#, fuzzy, c-format
+#, c-format
 msgid "closing %s"
-msgstr "Entferne %s\n"
+msgstr "%s wird geschlossen"
 
 #: info/session.c:3590
-#, fuzzy, c-format
+#, c-format
 msgid "writing node %s..."
-msgstr "Knoten „%s“ wird geschrieben..."
+msgstr "Knoten %s wird geschrieben …"
 
 #: info/session.c:3670
-#, fuzzy, c-format
+#, c-format
 msgid "closing file %s"
-msgstr "Fehler beim Schließen der Ausgabedatei „%s“."
+msgstr "Datei %s wird geschlossen"
 
 #: info/session.c:3678
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
@@ -1737,17 +1742,17 @@ msgstr ""
 #: info/session.c:3713
 #, c-format
 msgid "Cannot open pipe to `%s'."
-msgstr "Kann Daten nicht nach „%s“ weiterreichen (mittels einer Pipe)."
+msgstr "Daten können nicht an „%s“ weitergereicht werden (mittels einer Pipe)."
 
 #: info/session.c:3718
-#, fuzzy, c-format
+#, c-format
 msgid "printing node %s..."
-msgstr "Knoten „%s“ wird gedruckt..."
+msgstr "Knoten %s wird ausgegeben …"
 
 #: info/session.c:3726
-#, fuzzy, c-format
+#, c-format
 msgid "finished printing node %s"
-msgstr "Knoten „%s“ wird gedruckt..."
+msgstr "Ausgabe des Knotens %s ist abgeschlossen"
 
 #: info/session.c:4015
 msgid "Search continued from the end of the document."
@@ -1760,7 +1765,7 @@ msgstr "Suche vom Anfang des Dokuments fortgesetzt."
 #: info/session.c:4037
 #, c-format
 msgid "Searching subfile %s ..."
-msgstr "Unterdatei „%s“ wird durchsucht..."
+msgstr "Unterdatei „%s“ wird durchsucht …"
 
 #: info/session.c:4097
 msgid "Read a string and search for it case-sensitively"
@@ -1894,7 +1899,7 @@ msgstr "Diese Zahl dem aktuellen numerischen Argument hinzufügen"
 
 #: info/session.c:5297
 msgid "Start (or multiply by 4) the current numeric argument"
-msgstr "Beginne (oder multipliziere mit 4) das aktuelle numerische Argument"
+msgstr "Das aktuelle numerische Argument beginnen (oder mit 4 multiplizieren)"
 
 #: info/session.c:5312
 msgid "Internally used by \\[universal-argument]"
@@ -1971,7 +1976,7 @@ msgstr "Den Zweck einer Variablen erklären"
 
 #: info/variables.c:101
 msgid "Describe variable: "
-msgstr "Beschreibe Variable: "
+msgstr "Variable beschreiben: "
 
 #: info/variables.c:120
 msgid "Set the value of an Info variable"
@@ -1979,21 +1984,21 @@ msgstr "Den Wert einer Info-Variablen setzen"
 
 #: info/variables.c:126
 msgid "Set variable: "
-msgstr "Setze Variable: "
+msgstr "Variable setzen: "
 
 #: info/variables.c:144
 #, c-format
 msgid "Set %s to value (%d): "
-msgstr "Setze %s auf den Wert (%d): "
+msgstr "%s auf den Wert (%d) setzen: "
 
 #: info/variables.c:184
 #, c-format
 msgid "Set %s to value (%s): "
-msgstr "Setze %s auf den Wert (%s): "
+msgstr "%s auf den Wert (%s) setzen: "
 
 #: info/window.c:1077
 msgid "--*** Tags out of Date ***"
-msgstr "--*** Tags veraltet ***"
+msgstr "--*** Veraltete Tags ***"
 
 #: info/window.c:1088
 msgid "-----Info: (), lines ----, "
@@ -2049,8 +2054,8 @@ msgid ""
 " --calign=COL        format second and subsequent description lines to\n"
 "                       start at column COL."
 msgstr ""
-"Options:\n"
-" --add-once        nur die erste (und nicht alle) passende Sekttion hinzufügen\n"
+"Optionen:\n"
+" --add-once        nur die erste (und nicht alle) passende Sektion hinzufügen\n"
 " --align=SPALTE    Beschreibung neuer Einträge bei Spalte SPALTE beginnen\n"
 " --calign=SPALTE   zweite und weitere Beschreibungszeilen in Spalte SPALTE\n"
 "                     beginnen lassen"
@@ -2174,7 +2179,9 @@ msgid ""
 msgstr ""
 "Fehlerberichte (auf Englisch, mit LC_ALL=C) per E-Mail an bug-texinfo@gnu.org\n"
 "schicken, allgemeine Fragen und Gedankenaustausch an help-texinfo@gnu.org.\n"
-"Texinfos Homepage: http://www.gnu.org/software/texinfo/"
+"Texinfos Homepage: http://www.gnu.org/software/texinfo/\n"
+"Fehler in der Übersetzung melden Sie bitte an:\n"
+"<translation-team-de@lists.sourceforge.net>"
 
 #: install-info/install-info.c:630
 #, c-format
@@ -2244,7 +2251,7 @@ msgstr "%s: Info-Datei nur einmal angeben.\n"
 #: install-info/install-info.c:2131
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
-msgstr "Zusätzlicher regulärer Ausdruch angegeben, ignoriere „%s“"
+msgstr "Zusätzlicher regulärer Ausdruch angegeben, „%s“ wird ignoriert"
 
 #: install-info/install-info.c:2143
 #, c-format
@@ -2254,7 +2261,7 @@ msgstr "Fehler in regulärem Ausdruck „%s“: %s"
 #: install-info/install-info.c:2201
 #, c-format
 msgid "excess command line argument `%s'"
-msgstr "überflüssiges Kommandozeilen-Argument „%s“ wird übergangen"
+msgstr "überflüssiges Befehlszeilen-Argument „%s“ wird übergangen"
 
 #: install-info/install-info.c:2205
 #, c-format
@@ -2286,7 +2293,7 @@ msgstr "keine Einträge für „%s“ gefunden; nichts entfernt"
 #: tp/Texinfo/Convert/TexinfoXML.pm:457
 #, perl-format
 msgid "could not open %s for writing: %s"
-msgstr "konnte %s nicht zum Schreiben öffnen: %s"
+msgstr "%s konnte nicht zum Schreiben geöffnet werden: %s"
 
 #: tp/Texinfo/Common.pm:865
 msgid "recursion is always allowed"
@@ -2314,7 +2321,7 @@ msgstr "%s is keine gültige Aufspaltmöglichkeit"
 #: tp/Texinfo/Common.pm:1111
 #, perl-format
 msgid "could not read %s: %s"
-msgstr "konnte %s nicht lesen: %s"
+msgstr "%s konnte nicht gelesen werden: %s"
 
 #: tp/Texinfo/Common.pm:1129
 #, perl-format
@@ -2324,12 +2331,12 @@ msgstr "Fehler beim Schließen von @verbatiminclude-Datei %s: %s"
 #: tp/Texinfo/Common.pm:1134 tp/Texinfo/Parser.pm:3187
 #, perl-format
 msgid "@%s: could not find %s"
-msgstr "@%s: konnte %s nicht finden"
+msgstr "@%s: %s konnte nicht gefunden werden"
 
 #: tp/Texinfo/Common.pm:1432
 #, perl-format
 msgid "could not open html refs config file %s: %s"
-msgstr "konnte HTML-Refs-Konfigurationsdatei %s nicht finden: %s"
+msgstr "HTML-Refs-Konfigurationsdatei %s konnte nicht gefunden werden: %s"
 
 #: tp/Texinfo/Common.pm:1460
 msgid "missing type"
@@ -2347,7 +2354,7 @@ msgstr "Fehler beim Schließen derHTML-Refs-Konfigurationsdatei %s: %s"
 
 #: tp/Texinfo/Common.pm:1515
 msgid "no node to be renamed"
-msgstr "kein Knoten zu Umbenennen"
+msgstr "kein Knoten zum Umbenennen"
 
 #: tp/Texinfo/Common.pm:1526
 msgid "nodes without a new name at the end of file"
@@ -2356,12 +2363,12 @@ msgstr "Knoten ohne einen neuen Namen am Ende der Datei"
 #: tp/Texinfo/Common.pm:1536 tp/Texinfo/Parser.pm:842
 #, perl-format
 msgid "could not open %s: %s"
-msgstr "konnte %s nicht öffnen: %s"
+msgstr "%s konnte nicht geöffnet werden: %s"
 
 #: tp/Texinfo/Common.pm:2028
 #, perl-format
 msgid "could not protect hash character in @%s"
-msgstr "konnte Hash-Zeichen nicht schützen in @%s"
+msgstr "Hash-Zeichen in @%s konnte nicht geschützt werden"
 
 #: tp/Texinfo/Convert/Converter.pm:394 tp/Texinfo/Convert/Converter.pm:413
 #, perl-format
@@ -2371,12 +2378,12 @@ msgstr "Veraltete Variable %s\n"
 #: tp/Texinfo/Convert/Converter.pm:604
 #, perl-format
 msgid "could not create directories `%s' or `%s': %s"
-msgstr "konnte Verzeichnisse „%s“ oder „%s“ nicht anlegen: %s"
+msgstr "Verzeichnisse „%s“ oder „%s“ konnten nicht angelegt werden: %s"
 
 #: tp/Texinfo/Convert/Converter.pm:612
 #, perl-format
 msgid "could not create directory `%s': %s"
-msgstr "konnte Verzeichnisse „%s“ nicht anlegen: %s"
+msgstr "Verzeichnis „%s“ konnte nicht angelegt werden: %s"
 
 #: tp/Texinfo/Convert/DocBook.pm:347 tp/Texinfo/Convert/HTML.pm:6955
 #: tp/Texinfo/Convert/HTML.pm:7013 tp/Texinfo/Convert/IXIN.pm:915
@@ -2390,12 +2397,12 @@ msgstr "Fehler beim Schließen von %s: %s"
 #: tp/Texinfo/Convert/DocBook.pm:923
 #, perl-format
 msgid "@image file `%s' not found, using `%s'"
-msgstr "@image-Datei „%s“ nicht gefunden, benutze „%s“"
+msgstr "@image-Datei „%s“ nicht gefunden, „%s“ wird benutzt"
 
 #: tp/Texinfo/Convert/HTML.pm:1683
 #, perl-format
 msgid "@image file `%s' (for HTML) not found, using `%s'"
-msgstr "@image-Datei „%s“ (für HTML) nicht gefunden, benutze „%s“"
+msgstr "@image-Datei „%s“ (für HTML) nicht gefunden, „%s“ wird benutzt"
 
 #: tp/Texinfo/Convert/HTML.pm:2354
 #, perl-format
@@ -2422,7 +2429,7 @@ msgstr "CSS-Datei %s nicht gefunden"
 #: tp/Texinfo/Convert/HTML.pm:4869
 #, perl-format
 msgid "could not open --include-file %s: %s"
-msgstr "konnte --include-file %s nicht öffnen: %s"
+msgstr "--include-file %s konnte nicht geöffnet werden: %s"
 
 #: tp/Texinfo/Convert/HTML.pm:4879
 #, perl-format
@@ -2447,7 +2454,7 @@ msgstr "Fehler beim Schließen der Inhaltsverzeichnis-Rahmendatei %s: %s"
 #: tp/Texinfo/Convert/HTML.pm:6662
 #, perl-format
 msgid "handler %s of stage %s priority %s failed"
-msgstr ""
+msgstr "Verarbeitung %s der Stufe %s %s-Pritorität ist fehlgeschlagen"
 
 #: tp/Texinfo/Convert/HTML.pm:6863
 msgid "must specify a title with a title command or @top"
@@ -2474,9 +2481,9 @@ msgid "target node (new name for `%s') not in document: %s"
 msgstr "Zielknoten (neuer Name für „%s“) ist nicht im Dokument: %s"
 
 #: tp/Texinfo/Convert/HTML.pm:7149
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing renamed node redirection file %s: %s"
-msgstr "Fehler beim Schließen der Ausgabedatei „%s“."
+msgstr "Fehler beim Schließen der umbenannten Knoten-Weiterleitungsdatei %s: %s"
 
 #: tp/Texinfo/Convert/HTML.pm:7187
 msgid "empty node name"
@@ -2521,9 +2528,9 @@ msgid "entry for index `%s' outside of any node"
 msgstr "Eintrag für Index „%s“ außerhalb jeglichen Knotens"
 
 #: tp/Texinfo/Convert/Plaintext.pm:1400
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing image text file %s: %s"
-msgstr "Fehler beim Schließen der Ausgabedatei „%s“."
+msgstr "Fehler beim Schließen der Textdatei %s für das Bild: %s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:1405
 #, perl-format
@@ -2533,7 +2540,7 @@ msgstr "@image-Datei „%s“ nicht lesbar: %s"
 #: tp/Texinfo/Convert/Plaintext.pm:1428
 #, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
-msgstr ""
+msgstr "Weder @image-Datei „%s.txt“ noch alternativer Text konnten gefunden werden"
 
 #: tp/Texinfo/Convert/Plaintext.pm:1816
 msgid "@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"
@@ -2542,40 +2549,39 @@ msgstr "@strong{Bemerkung...} erzeugt einen Pseudo-Querverweis in Info; umformul
 #: tp/Texinfo/Convert/Plaintext.pm:2022
 #, perl-format
 msgid "@%s cross-reference name should not contain `:'"
-msgstr ""
+msgstr "@%s Querverweis-Name sollte keinen „:“ enthalten"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2039
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s node name should not contain `%s'"
-msgstr "%s: Konnte CSS-Datei nicht öffnen: %s"
+msgstr "@%s Knotenname sollte kein „%s“ enthalten"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2054
 #, perl-format
 msgid "@%s node name should not contain `:'"
-msgstr ""
+msgstr "@%s Knotenname sollte keinen „:“ enthalten"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2077
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
-msgstr "„.“ or „,“ muss @xref folgen, nicht %s"
+msgstr "„.“ oder „,“ muss @xref folgen, nicht %s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2080
 msgid "`.' or `,' must follow @xref"
-msgstr "„.“ or „,“ muss @xref folgen"
+msgstr "„.“ oder „,“ muss @xref folgen"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2852
-#, fuzzy, perl-format
+#, perl-format
 msgid "menu entry node name should not contain `%s'"
-msgstr "Kein Menü im Knoten „%s“."
+msgstr "Menüeintrag-Knotenname sollte kein „%s“ enthalten"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2859
 msgid "menu entry node name should not contain `:'"
-msgstr ""
+msgstr "Menüeintrag-Knotenname sollte keinen „:“ enthalten"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2870
-#, fuzzy
 msgid "menu entry name should not contain `:'"
-msgstr "Kein Menü im Knoten „%s“."
+msgstr "Menüeintrag-Name sollte keinen „:“ enthalten"
 
 #: tp/Texinfo/Parser.pm:826
 #, perl-format
@@ -2588,14 +2594,14 @@ msgid "multiple @%s"
 msgstr "mehrfache @%s"
 
 #: tp/Texinfo/Parser.pm:1110
-#, fuzzy, perl-format
+#, perl-format
 msgid "bad syntax for @%s argument: %s"
-msgstr "Fehlerhafte Argumente zu @%s"
+msgstr "Fehlerhafte Syntax für Argument @%s: %s"
 
 #: tp/Texinfo/Parser.pm:1126
-#, fuzzy, perl-format
+#, perl-format
 msgid "bad or empty @%s formal argument: %s"
-msgstr "Fehlerhafte Argumente zu @%s"
+msgstr "Fehlerhaftes oder leeres formales Argument @%s: %s"
 
 #: tp/Texinfo/Parser.pm:1135 tp/Texinfo/Parser.pm:4655
 #: tp/Texinfo/Parser.pm:4681 tp/Texinfo/Parser.pm:5403
@@ -2612,9 +2618,9 @@ msgid "bad name for @%s"
 msgstr "fehlerhafter Name für @%s"
 
 #: tp/Texinfo/Parser.pm:1257
-#, fuzzy, perl-format
+#, perl-format
 msgid "@end %s seen before @%s closing brace"
-msgstr "@%s gesehen vor @end %s"
+msgstr "@end %s gesehen vor @%s schließender Klammer"
 
 #: tp/Texinfo/Parser.pm:1261
 #, perl-format
@@ -2629,7 +2635,7 @@ msgstr "%c%s fehlende schließende Klammer"
 #: tp/Texinfo/Parser.pm:1270
 #, perl-format
 msgid "@%s missing closing delimiter sequence: %s}"
-msgstr ""
+msgstr "@%s fehlende schließende Trennsequenz: %s}"
 
 #: tp/Texinfo/Parser.pm:1392
 #, perl-format
@@ -2648,7 +2654,7 @@ msgstr "@%s hat Text aber kein @item"
 #: tp/Texinfo/Parser.pm:1659
 #, perl-format
 msgid "`@end' expected `%s', but saw `%s'"
-msgstr "„@end“ erwartete „%s“, bekam jedoch „%s“"
+msgstr "„@end“ erwartete „%s“, jedoch „%s“ erhalten"
 
 #: tp/Texinfo/Parser.pm:1662
 #, perl-format
@@ -2664,7 +2670,7 @@ msgstr "kein übereinstimmendes „%cend %s“"
 #: tp/Texinfo/Parser.pm:5225
 #, perl-format
 msgid "misplaced %c"
-msgstr "fehlplaziertes %c"
+msgstr "fehlplatziertes %c"
 
 #: tp/Texinfo/Parser.pm:1790 tp/Texinfo/Parser.pm:3146
 #, perl-format
@@ -2714,7 +2720,7 @@ msgstr "fehlende Kategorie für @%s"
 #: tp/Texinfo/Parser.pm:2917
 #, perl-format
 msgid "unexpected argument on @%s line: %s"
-msgstr "unerwartet Argumente auf  @%s-Zeile: %s"
+msgstr "unerwartetes Argument auf @%s-Zeile: %s"
 
 #: tp/Texinfo/Parser.pm:2933
 msgid "empty multitable"
@@ -2723,7 +2729,7 @@ msgstr "leere Mehrfachtabelle"
 #: tp/Texinfo/Parser.pm:2989 tp/Texinfo/Parser.pm:5516
 #, perl-format
 msgid "superfluous argument to @%s"
-msgstr "überflüssige Argumente für @%s"
+msgstr "überflüssiges Argument für @%s"
 
 #: tp/Texinfo/Parser.pm:2995 tp/Texinfo/Parser.pm:5538
 #: tp/Texinfo/Parser.pm:5550
@@ -2740,12 +2746,12 @@ msgstr "%s benötigt ein Argument: den Formatierer für %citem"
 #: tp/Texinfo/Parser.pm:3011
 #, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
-msgstr ""
+msgstr "Befehl @%s, der kein Argument in Klammern akzeptiert, sollte nicht in einer @%s-Zeile sein"
 
 #: tp/Texinfo/Parser.pm:3046
-#, fuzzy, perl-format
+#, perl-format
 msgid "accent command `@%s' not allowed as @%s argument"
-msgstr "%s: Option „--%s“ erlaubt kein Argument\n"
+msgstr "Akzent-Befehl „@%s“ ist als @%s-Argument nicht erlaubt"
 
 #: tp/Texinfo/Parser.pm:3124 tp/Texinfo/Parser.pm:3263
 #: tp/Texinfo/Parser.pm:5509
@@ -2771,14 +2777,14 @@ msgid "bad argument to @%s: %s"
 msgstr "fehlerhaftes Argument für @%s: %s"
 
 #: tp/Texinfo/Parser.pm:3182
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s: could not open %s: %s"
-msgstr "%s: Konnte CSS-Datei nicht öffnen: %s"
+msgstr "@%s: %s konnte nicht geöffnet werden: %s"
 
 #: tp/Texinfo/Parser.pm:3194
 #, perl-format
 msgid "encoding `%s' is not a canonical texinfo encoding"
-msgstr "Encoding „%s“ ist kein kanonisches texinfo-Encoding"
+msgstr "Kodierung „%s“ ist keine kanonische texinfo-Zeichenkodierung"
 
 #: tp/Texinfo/Parser.pm:3203
 #, perl-format
@@ -2793,7 +2799,7 @@ msgstr "@%s nach dem ersten Element"
 #: tp/Texinfo/Parser.pm:3360
 #, perl-format
 msgid "@%s only meaningful on a @multitable line"
-msgstr "@%s nicht sinnvoll auf einer „@multitable“-Zeile"
+msgstr "@%s nur sinnvoll auf einer „@multitable“-Zeile"
 
 #: tp/Texinfo/Parser.pm:3400
 #, perl-format
@@ -2803,7 +2809,7 @@ msgstr "@%s sollte nicht mit @top assoziiert sein"
 #: tp/Texinfo/Parser.pm:3412
 #, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
-msgstr ""
+msgstr "@node ist @%s vorangestellt, aber Teile dürfen nicht Knoten zugeordnet werden"
 
 #: tp/Texinfo/Parser.pm:3514
 #, perl-format
@@ -2811,23 +2817,23 @@ msgid "empty argument in @%s"
 msgstr "leeres Argument in @%s"
 
 #: tp/Texinfo/Parser.pm:3518
-#, fuzzy, perl-format
+#, perl-format
 msgid "empty node name after expansion `%s'"
-msgstr "Kein Menü im Knoten „%s“."
+msgstr "Leerer Knotenname nach der Erweiterung „%s“"
 
 #: tp/Texinfo/Parser.pm:3561
-#, fuzzy, perl-format
+#, perl-format
 msgid "empty menu entry name in `%s'"
-msgstr "Kein Menü im Knoten „%s“."
+msgstr "Leerer Menüeintrag-Name in „%s“"
 
 #: tp/Texinfo/Parser.pm:3569
 msgid "empty node name in menu entry"
 msgstr "leerer Knotenname im Menüeintrag"
 
 #: tp/Texinfo/Parser.pm:3642
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s should not appear in @%s"
-msgstr "%s: Konnte CSS-Datei nicht öffnen: %s"
+msgstr "@%s sollte nicht in @%s erscheinen"
 
 #: tp/Texinfo/Parser.pm:3774
 #, perl-format
@@ -2847,37 +2853,37 @@ msgstr "hier ist die frühere Definition von „%s“"
 #: tp/Texinfo/Parser.pm:3805
 #, perl-format
 msgid "redefining Texinfo language command: @%s"
-msgstr ""
+msgstr "Texinfo-Sprachbefehl erneut definiert: @%s"
 
 #: tp/Texinfo/Parser.pm:3854
 #, perl-format
 msgid "@%s without associated character"
-msgstr ""
+msgstr "@%s ohne zugehöriges Zeichen"
 
 #: tp/Texinfo/Parser.pm:3916
 #, perl-format
 msgid "@%s defined with zero or more than one argument should be invoked with {}"
-msgstr ""
+msgstr "@%s definiert mit keinem oder mehr als einem Argument, sollte mit {} aufgerufen werden"
 
 #: tp/Texinfo/Parser.pm:3940
 #, perl-format
 msgid "macro call nested too deeply (set MAX_NESTED_MACROS to override; current value %d)"
-msgstr ""
+msgstr "Makroaufruf ist zu tief verschachtelt (setzen Sie MAX_NESTED_MACROS, um dies außer Kraft zu setzen; aktueller Wert ist %d)"
 
 #: tp/Texinfo/Parser.pm:3949
 #, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
-msgstr ""
+msgstr "rekursiver Aufruf des Makros %s ist nicht erlaubt; verwenden Sie @rmacro, falls nötig"
 
 #: tp/Texinfo/Parser.pm:4005
-#, fuzzy, perl-format
+#, perl-format
 msgid "accent command `@%s' must not be followed by whitespace"
-msgstr "%s: Option „--%s“ erlaubt kein Argument\n"
+msgstr "Auf den Akzent-Befehl „@%s“ muss ein Leerzeichen folgen"
 
 #: tp/Texinfo/Parser.pm:4011
-#, fuzzy, perl-format
+#, perl-format
 msgid "use braces to give a command as an argument to @%s"
-msgstr "Geschweifte Klammern verwenden, um einen Befehl als Argument an „@%s“ zu geben"
+msgstr "Klammern verwenden, um einen Befehl als Argument an „@%s“ zu übergeben"
 
 #: tp/Texinfo/Parser.pm:4024 tp/Texinfo/Parser.pm:5124
 #, perl-format
@@ -2885,9 +2891,9 @@ msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s erwartet „i“ oder „j“ als Argument, nicht „%s“"
 
 #: tp/Texinfo/Parser.pm:4036
-#, fuzzy, perl-format
+#, perl-format
 msgid "accent command `@%s' must not be followed by new line"
-msgstr "%s: Option „--%s“ erlaubt kein Argument\n"
+msgstr "Auf den Akzent-Befehl „@%s“ darf kein Zeilenumbruch folgen"
 
 #: tp/Texinfo/Parser.pm:4047
 #, perl-format
@@ -2900,9 +2906,8 @@ msgid "undefined flag: %s"
 msgstr "undefiniertes Flag: %s"
 
 #: tp/Texinfo/Parser.pm:4210
-#, fuzzy
 msgid "bad syntax for @value"
-msgstr "Fehlerhafte Argumente zu @%s"
+msgstr "Fehlerhafte Syntax für @value"
 
 #: tp/Texinfo/Parser.pm:4217
 #, perl-format
@@ -2922,12 +2927,12 @@ msgstr "@%s sollte nur am Zeilenanfang erscheinen"
 #: tp/Texinfo/Parser.pm:4320
 #, perl-format
 msgid "@%s not allowed inside `@%s' block"
-msgstr "@%s nicht erlaubd innerhalb eines „@%s“-Blocks"
+msgstr "@%s nicht erlaubt innerhalb eines „@%s“-Blocks"
 
 #: tp/Texinfo/Parser.pm:4329
 #, perl-format
 msgid "@%s should only appear in heading or footing"
-msgstr ""
+msgstr "@%s sollte nur in Kopf- oder Fußzeilen erscheinen"
 
 #: tp/Texinfo/Parser.pm:4455 tp/Texinfo/Parser.pm:4472
 #: tp/Texinfo/Parser.pm:4522
@@ -2936,9 +2941,9 @@ msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s nicht sinnvoll innerhalb eines „@%s“-Blocks"
 
 #: tp/Texinfo/Parser.pm:4482
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s in empty multitable"
-msgstr "%s: leere Datei"
+msgstr "@%s in leerer Multitabelle"
 
 #: tp/Texinfo/Parser.pm:4488
 msgid "@tab before @item"
@@ -2956,12 +2961,12 @@ msgstr "@tab außerhalb einer „multitable“ wird ignoriert"
 #: tp/Texinfo/Parser.pm:4532
 #, perl-format
 msgid "@%s outside of table or list"
-msgstr ""
+msgstr "@%s außerhalb der Tabelle oder Liste"
 
 #: tp/Texinfo/Parser.pm:4567
-#, fuzzy, perl-format
+#, perl-format
 msgid "must be after `@%s' to use `@%s'"
-msgstr "Muss in einer „@%s“-Umgebung sein, um „@%s“ zu benutzen"
+msgstr "Muss hinter „@%s“ sein, um „@%s“ zu benutzen"
 
 #: tp/Texinfo/Parser.pm:4609
 #, perl-format
@@ -2970,21 +2975,21 @@ msgstr "@%s nicht sinnvoll außerhalb von „@titlepage“- und „@quotation“
 
 #: tp/Texinfo/Parser.pm:4613
 msgid "@dircategory after first node"
-msgstr ""
+msgstr "@dircategory nach dem ersten Knoten"
 
 #: tp/Texinfo/Parser.pm:4778
-#, fuzzy, perl-format
+#, perl-format
 msgid "region %s inside region %s is not allowed"
-msgstr "Fußnoten innerhalb von Fußnoten sind nicht erlaubt"
+msgstr "Region %s innerhalb Region %s ist nicht erlaubt"
 
 #: tp/Texinfo/Parser.pm:4796
 msgid "@direntry after first node"
-msgstr ""
+msgstr "@direntry nach dem ersten Knoten"
 
 #: tp/Texinfo/Parser.pm:4804
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s seen before first @node"
-msgstr "@menu vor ersten @node gefunden. „Top“-Knoten wird angelegt"
+msgstr "@%s vor erstem @node gefunden"
 
 #: tp/Texinfo/Parser.pm:4807
 msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
@@ -2993,7 +2998,7 @@ msgstr "vielleicht sollte der @top-Knoten eher von @ifnottex als von @ifinfo ums
 #: tp/Texinfo/Parser.pm:4869
 #, perl-format
 msgid "@%s should only appear in math context"
-msgstr ""
+msgstr "@%s sollte nur in mathematischem Kontext erscheinen"
 
 #: tp/Texinfo/Parser.pm:4877
 #, perl-format
@@ -3017,7 +3022,7 @@ msgstr "@%s sollte sich genau vor „@float“ befinden"
 #: tp/Texinfo/Parser.pm:4929
 #, perl-format
 msgid "ignoring multiple @%s"
-msgstr "ignoriere mehrfache @%s"
+msgstr "mehrfache @%s werden ignoriert"
 
 #: tp/Texinfo/Parser.pm:5048
 #, perl-format
@@ -3027,26 +3032,26 @@ msgstr "Befehl @%s akzeptiert keine Argumente"
 #: tp/Texinfo/Parser.pm:5072
 #, perl-format
 msgid "command @%s missing a node or external manual argument"
-msgstr ""
+msgstr "Befehl @%s ohne Knoten oder Argument für ein externes Handbuch"
 
 #: tp/Texinfo/Parser.pm:5091
 #, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
-msgstr ""
+msgstr "in @%s leerer Querverweis-Name nach der Erweiterung von „%s“"
 
 #: tp/Texinfo/Parser.pm:5102
 #, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
-msgstr ""
+msgstr "in @%s leerer Querverweis-Titel nach der Erweiterung von „%s“"
 
 #: tp/Texinfo/Parser.pm:5115
 msgid "@image missing filename argument"
 msgstr "@image fehlt als Argument ein Dateiname"
 
 #: tp/Texinfo/Parser.pm:5147
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s missing first argument"
-msgstr "%s: Datei-Angabe fehlt.\n"
+msgstr "@%s erstes Argument fehlt"
 
 #: tp/Texinfo/Parser.pm:5301
 msgid "superfluous arguments for node"
@@ -3055,22 +3060,22 @@ msgstr "überflüssige Argumente für Knoten"
 #: tp/Texinfo/Parser.pm:5351
 #, perl-format
 msgid "expected @end %s"
-msgstr "habe @end %s erwartet"
+msgstr "@end %s wurde erwartet"
 
 #: tp/Texinfo/Parser.pm:5450
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s should only accept a @-command as argument, not `%s'"
-msgstr "Geschweifte Klammern verwenden, um einen Befehl als Argument an „@%s“ zu geben"
+msgstr "@%s sollte nur einen @-Befehl als Argument akzeptieren, nicht „%s“"
 
 #: tp/Texinfo/Parser.pm:5460
-#, fuzzy, perl-format
+#, perl-format
 msgid "remaining argument on @%s line: %s"
-msgstr "Fehlerhafte Argumente zu @%s: %s"
+msgstr "Verbleibendes Argument in Zeile @%s: %s"
 
 #: tp/Texinfo/Parser.pm:5533
-#, fuzzy, perl-format
+#, perl-format
 msgid "environment command %s as argument to @%s"
-msgstr "Geschweifte Klammern verwenden, um einen Befehl als Argument an „@%s“ zu geben"
+msgstr "Umgebungsbefehl %s als Argument zu @%s"
 
 #: tp/Texinfo/Parser.pm:5555
 #, perl-format
@@ -3080,52 +3085,52 @@ msgstr "leeres @%s"
 #: tp/Texinfo/Parser.pm:5563
 #, perl-format
 msgid "column fraction not a number: %s"
-msgstr ""
+msgstr "Spaltenteilung keine Zahl: %s"
 
 #: tp/Texinfo/Parser.pm:5572
-#, fuzzy, perl-format
+#, perl-format
 msgid "@sp arg must be numeric, not `%s'"
-msgstr "%s: %s Argument muss numerisch sein, nicht „%s“.\n"
+msgstr "Argument für @sp muss numerisch sein, nicht „%s“"
 
 #: tp/Texinfo/Parser.pm:5581
 #, perl-format
 msgid "reserved index name %s"
-msgstr ""
+msgstr "reservierte Index-Name %s"
 
 #: tp/Texinfo/Parser.pm:5600
-#, fuzzy, perl-format
+#, perl-format
 msgid "unknown source index in @%s: %s"
-msgstr "Unbekannter Index „%s“"
+msgstr "Unbekannter Quell-Index @%s: %s"
 
 #: tp/Texinfo/Parser.pm:5603
-#, fuzzy, perl-format
+#, perl-format
 msgid "unknown destination index in @%s: %s"
-msgstr "Unbekannter Index „%s“"
+msgstr "Unbekannter Ziel-Index @%s: %s"
 
 #: tp/Texinfo/Parser.pm:5633
 #, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
-msgstr ""
+msgstr "@%s ergibt eine Zusammenführung von %s mit sich selbst, wird ignoriert"
 
 #: tp/Texinfo/Parser.pm:5646
-#, fuzzy, perl-format
+#, perl-format
 msgid "unknown index `%s' in @printindex"
 msgstr "Unbekannter Index „%s“ in @printindex"
 
 #: tp/Texinfo/Parser.pm:5652
 #, perl-format
 msgid "printing an index `%s' merged in another one `%s'"
-msgstr ""
+msgstr "Ausgabe eines Index „%s“ wurde in einen anderen „%s“ zusammengeführt"
 
 #: tp/Texinfo/Parser.pm:5660
 #, perl-format
 msgid "printindex before document beginning: @printindex %s"
-msgstr ""
+msgstr "printindex vor dem Anfang des Dokuments: @printindex %s"
 
 #: tp/Texinfo/Parser.pm:5676
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
-msgstr "%s: %s Argument muss numerisch sein, nicht „%s“.\n"
+msgstr "Argument für @%s muss „top“oder „bottom“ sein, nicht „%s“"
 
 #: tp/Texinfo/Parser.pm:5684
 #, perl-format
@@ -3133,79 +3138,79 @@ msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "Nur @%s 10 oder 11 unterstützt, nicht „%s“"
 
 #: tp/Texinfo/Parser.pm:5692
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
-msgstr "%s: Argument für --footnote-style muss „separate“ oder „end“ sein, nicht „%s“.\n"
+msgstr "Argument für @%s muss „separate“ oder „end“ sein, nicht „%s“"
 
 #: tp/Texinfo/Parser.pm:5700
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
-msgstr "%s: %s Argument muss numerisch sein, nicht „%s“.\n"
+msgstr "Argument für @%s muss „on“, „off“ oder „odd“ sein, nicht „%s“"
 
 #: tp/Texinfo/Parser.pm:5718 tp/Texinfo/Parser.pm:5723
-#, fuzzy, perl-format
+#, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
-msgstr "%s: Argument für --paragraph-indent muss numerisch, „none“ oder „asis“ sein, nicht „%s“.\n"
+msgstr "Argument für @paragraphindent muss „numeric“, „none“ oder „asis“ sein, nicht „%s“"
 
 #: tp/Texinfo/Parser.pm:5731
-#, fuzzy, perl-format
+#, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
-msgstr "%s: Argument für --paragraph-indent muss numerisch, „none“ oder „asis“ sein, nicht „%s“.\n"
+msgstr "Argument für @firstparagraphindent muss „none“ oder „insert“ sein, nicht „%s“"
 
 #: tp/Texinfo/Parser.pm:5741
-#, fuzzy, perl-format
+#, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
-msgstr "%s: Argument für --paragraph-indent muss numerisch, „none“ oder „asis“ sein, nicht „%s“.\n"
+msgstr "Argument für @exampleindent muss „numeric“ oder „asis“ sein, nicht „%s“"
 
 #: tp/Texinfo/Parser.pm:5752
 #, perl-format
 msgid "expected @%s on or off, not `%s'"
-msgstr "erwartete @%s „on“ oder „off“, nicht „%s“"
+msgstr "@%s „on“ oder „off“ wurde erwartet, nicht „%s“"
 
 #: tp/Texinfo/Parser.pm:5762
 #, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
-msgstr ""
+msgstr "Argument für @kbdinputstyle muss „code“, „example“ oder „distinct“ sein, nicht „%s“"
 
 #: tp/Texinfo/Parser.pm:5770
-#, fuzzy, perl-format
+#, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
-msgstr "%s: Argument für --footnote-style muss „separate“ oder „end“ sein, nicht „%s“.\n"
+msgstr "Argument für @allowcodebreaks muss „true“ oder „false“ sein, nicht „%s“"
 
 #: tp/Texinfo/Parser.pm:5778
-#, fuzzy, perl-format
+#, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
-msgstr "%s: Argument für --footnote-style muss „separate“ oder „end“ sein, nicht „%s“.\n"
+msgstr "Argument für @urefbreakstyle muss „after“, „before“ oder „none“ sein, nicht „%s“"
 
 #: tp/Texinfo/Structuring.pm:231
 #, perl-format
 msgid "raising the section level of @%s which is too low"
-msgstr ""
+msgstr "Einordnung der Abschnittsebene für @%s wird angehoben, weil sie zu niedrig ist"
 
 #: tp/Texinfo/Structuring.pm:263
 #, perl-format
 msgid "no chapter-level command before @%s"
-msgstr ""
+msgstr "kein chapter-level-Befehl vor @%s"
 
 #: tp/Texinfo/Structuring.pm:268
 #, perl-format
 msgid "lowering the section level of @%s appearing after a lower element"
-msgstr ""
+msgstr "Einordnung der Abschnittsebene für @%s wird nach einem Element niederer Ebene abgesenkt"
 
 #: tp/Texinfo/Structuring.pm:357
 #, perl-format
 msgid "no sectioning command associated with @%s"
-msgstr ""
+msgstr "kein Abschnittsbefehl mit @%s verknüpft"
 
 #: tp/Texinfo/Structuring.pm:548 tp/Texinfo/Structuring.pm:1329
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s reference to nonexistent node `%s'"
-msgstr "%sverweis auf nicht existierenden Knoten „%s“ (vielleicht @section statt @subsection o.ä.?)"
+msgstr "@%s-Referenz auf nicht existierenden Knoten „%s“"
 
 #: tp/Texinfo/Structuring.pm:561
 #, perl-format
 msgid "@%s entry node name `%s' different from %s name `%s'"
-msgstr ""
+msgstr "@%s Name des Eintragsknotens „%s“ unterscheidet sich vom %s-Namen „%s“"
 
 #: tp/Texinfo/Structuring.pm:666
 #, perl-format
@@ -3215,165 +3220,165 @@ msgstr "Nicht referenzierter Knoten „%s“"
 #: tp/Texinfo/Structuring.pm:712
 #, perl-format
 msgid "node `%s' is %s for `%s' in sectioning but not in menu"
-msgstr ""
+msgstr "Knoten „%s“ ist %s für „%s“ im Abschnitt, aber nicht im Menü"
 
 #: tp/Texinfo/Structuring.pm:719
 #, perl-format
 msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
-msgstr ""
+msgstr "%s-Knoten „%s“ im Menü „%s“ und im Abschnitt „%s“ sind unterschiedlich"
 
 #: tp/Texinfo/Structuring.pm:737
 #, perl-format
 msgid "node `%s' is %s for `%s' in menu but not in sectioning"
-msgstr ""
+msgstr "„%s“-Knoten ist %s für „%s“ im Menü, aber nicht im Abschnitt"
 
 #: tp/Texinfo/Structuring.pm:791
 #, perl-format
 msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
-msgstr ""
+msgstr "%s-Zeiger „%s„ (für Knoten „%s“) unterscheidet sich vom %s-Namen „%s“"
 
 #: tp/Texinfo/Structuring.pm:818
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s reference to nonexistent `%s'"
-msgstr "Nicht referenzierter Knoten „%s“"
+msgstr "%s-Referenz zu nicht existierendem „%s“"
 
 #: tp/Texinfo/Structuring.pm:837
-#, fuzzy, perl-format
+#, perl-format
 msgid "node `%s' lacks menu item for `%s' despite being its Up target"
 msgstr "Dem Knoten „%s“ fehlt ein Menüeintrag für „%s“, obwohl er dessen Ziel für „aufwärts“ (Up) ist"
 
 #: tp/Texinfo/Structuring.pm:845
 #, perl-format
 msgid "for `%s', up in menu `%s' and up `%s' don't match"
-msgstr ""
+msgstr "für „%s“, nach oben im Menü „%s“ und nach oben zu „%s“ sind unterschiedlich"
 
 #: tp/Texinfo/Structuring.pm:1341
 #, perl-format
 msgid "@%s to `%s', different from %s name `%s'"
-msgstr ""
+msgstr "@%s zu „%s“, unterscheidet sich vom %s-Namen „%s“"
 
 #: tp/Texinfo/Structuring.pm:2007
-#, fuzzy, perl-format
+#, perl-format
 msgid "empty index key in @%s"
-msgstr "Leeres Argument in @%s"
+msgstr "Leerer Index-Schlüssel in @%s"
 
 #: tp/init/chm.pm:220 tp/init/chm.pm:276 tp/init/chm.pm:347
-#, fuzzy, perl-format
+#, perl-format
 msgid "chm.pm: could not open %s for writing: %s\n"
-msgstr "%s: Konnte CSS-Datei nicht öffnen: %s"
+msgstr "chm.pm: %s konnte nicht zum Schreiben geöffnet werden: %s\n"
 
 #: tp/init/chm.pm:266 tp/init/chm.pm:337 tp/init/chm.pm:398
-#, fuzzy, perl-format
+#, perl-format
 msgid "chm.pm: error on closing %s: %s"
-msgstr "Fehler beim Schließen von %s: %s"
+msgstr "chm.pm: Fehler beim Schließen von %s: %s"
 
 #: tp/init/latex2html.pm:200
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: could not open latex file %s for writing: %s"
-msgstr "Konnte %s nicht zum Schreiben öffnen: %s"
+msgstr "l2h: Latex-Datei %s konnte nicht zum Schreiben geöffnet werden: %s"
 
 #: tp/init/latex2html.pm:341
 msgid "l2h: L2H_TMP directory contains a dot"
-msgstr ""
+msgstr "l2h: L2H_TMP-Verzeichnis enthält einen Punkt"
 
 #: tp/init/latex2html.pm:346
 msgid "l2h: current directory contains a dot"
-msgstr ""
+msgstr "l2h: aktuelles Verzeichnis enthält einen Punkt"
 
 #: tp/init/latex2html.pm:374
 #, perl-format
 msgid "l2h: command did not succeed: %s"
-msgstr ""
+msgstr "l2h: Befehl war nicht erfolgreich: %s"
 
 #: tp/init/latex2html.pm:422
 #, perl-format
 msgid "l2h: image has invalid extension: %s"
-msgstr ""
+msgstr "l2h: Bild hat eine ungültige Erweiterung: %s"
 
 #: tp/init/latex2html.pm:438
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: rename %s as %s failed: %s"
-msgstr "Umbenennen von %s fehlgeschlagen: %s"
+msgstr "l2h: Umbenennen von %s in %s fehlgeschlagen: %s"
 
 #: tp/init/latex2html.pm:460
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: could not open %s: %s"
-msgstr "%s: Konnte CSS-Datei nicht öffnen: %s"
+msgstr "l2h: %s konnte nicht geöffnet werden: %s"
 
 #: tp/init/latex2html.pm:493
 #, perl-format
 msgid "latex2html.pm: end of @%s item %d not found"
-msgstr ""
+msgstr "latex2html.pm: Ende des @%s-Eintrags %d nicht gefunden"
 
 #: tp/init/latex2html.pm:504
 #, perl-format
 msgid "latex2html.pm: processing produced %d items in HTML; expected %d, the number of items found in the document"
-msgstr ""
+msgstr "latex2html.pm: erzeugte %d Einträge in HTML werden verarbeitet; %d wurden erwartet, die Anzahl der im Dokument gefundenen Einträge"
 
 #: tp/init/latex2html.pm:534
 #, perl-format
 msgid "l2h: could not determine the fragment %d for @%s"
-msgstr ""
+msgstr "l2h: Fragment %d für @%s konnte nicht ermittelt werden"
 
 #: tp/init/latex2html.pm:560
 #, perl-format
 msgid "l2h: could not extract the fragment %d for @%s with output counter %d from HTML"
-msgstr ""
+msgstr "l2h: Fragment %d für @%s mit Ausgabezähler %d von HTML konnte nicht extrahiert werden"
 
 #: tp/init/latex2html.pm:621
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: could not load %s: %s"
-msgstr "konnte --include-file %s nicht öffnen: %s"
+msgstr "l2h: %s konnte nicht geladen werden: %s"
 
 #: tp/init/latex2html.pm:634
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: could not open %s for writing: %s"
-msgstr "Konnte %s nicht zum Schreiben öffnen: %s"
+msgstr "l2h: %s konnte nicht zum Schreiben geöffnet werden: %s"
 
 #: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
-#, fuzzy, perl-format
+#, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
-msgstr "%s: Konnte CSS-Datei nicht öffnen: %s"
+msgstr "tex4ht.pm: %s konnte nicht geöffnet werden: %s"
 
 #: tp/init/tex4ht.pm:219
-#, fuzzy, perl-format
+#, perl-format
 msgid "tex4ht.pm: chdir %s failed: %s"
-msgstr "Umbenennen von %s fehlgeschlagen: %s"
+msgstr "tex4ht.pm: chdir %s fehlgeschlagen: %s"
 
 #: tp/init/tex4ht.pm:232
 #, perl-format
 msgid "tex4ht.pm: unable to return to initial directory: %s"
-msgstr ""
+msgstr "tex4ht.pm: Rückkehr zum ursprünglichen Verzeichnis nicht möglich: %s"
 
 #: tp/init/tex4ht.pm:244
-#, fuzzy, perl-format
+#, perl-format
 msgid "tex4ht.pm: output file missing: %s"
-msgstr "Ausgabedatei „%s“ kann nicht angelegt werden."
+msgstr "tex4ht.pm: Ausgabedatei fehlt: %s"
 
 #: tp/init/tex4ht.pm:260
 #, perl-format
 msgid "tex4ht.pm: command failed: %s"
-msgstr ""
+msgstr "tex4ht.pm: Befehl fehlgeschlagen: %s"
 
 #: tp/init/tex4ht.pm:294
 #, perl-format
 msgid "tex4ht.pm: end of @%s item %d not found"
-msgstr ""
+msgstr "tex4ht.pm: Ende des @%s-Eintrags %d nicht gefunden"
 
 #: tp/init/tex4ht.pm:301
 #, perl-format
 msgid "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of items found in the document for @%s"
-msgstr ""
+msgstr "tex4ht.pm: erzeugte %d Einträge in HTML werden verarbeitet; %d wurden erwartet, die Anzahl der im Dokument für @%s gefundenen Einträge"
 
 #: tp/init/tex4ht.pm:321
 #, perl-format
 msgid "tex4ht.pm: output has no HTML item for @%s %s"
-msgstr ""
+msgstr "tex4ht.pm: Ausgabe hat keinen HTML-Eintrag für @%s %s"
 
 #: tp/init/tex4ht.pm:336
 #, perl-format
 msgid "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of items found in the document for @%s"
-msgstr ""
+msgstr "tex4ht.pm: erzeugte %d Einträge in HTML werden verarbeitet; %d wurden erwartet, die Anzahl der im Dokument für @%s gefundenen Einträge"
 
 #: tp/texi2any.pl:379
 #, perl-format
@@ -3408,7 +3413,7 @@ msgstr "Initialisierungsdatei %s konnte nicht gelesen werden."
 #: tp/texi2any.pl:640
 #, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
-msgstr "ignoriere nicht erkannten Wert „%s“ für TEXINFO_OUTPUT_FORMAT\n"
+msgstr "nicht erkannter Wert „%s“ für TEXINFO_OUTPUT_FORMAT wird ignoriert\n"
 
 #: tp/texi2any.pl:723
 msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
@@ -3454,7 +3459,7 @@ msgstr ""
 "      --no-validate           Überprüfen der Knoten-Querverweise unterdrücken\n"
 "      --no-warn               Warnungen (aber keine Fehler) unterdrücken\n"
 "      --conf-dir=VERZ         nach Initialisierungsdateien auch in VERZ suchen\n"
-"      --init-file=DATEI       DATEI laden, um Standardverhalden zu ändern\n"
+"      --init-file=DATEI       DATEI laden, um Standardverhalten zu ändern\n"
 "  -c, --set-customization-variable VAR=WERT  Personalisierungsvariable VAR \n"
 "                                auf WERT setzen\n"
 "  -v, --verbose               ausführlich die Bearbeitungschritte anzeigen\n"
@@ -3580,12 +3585,16 @@ msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
+"Optionen für XML und Docbook:\n"
+"      --output-indent=WERT    macht nichts, wird zwecks Kompatibilität erhalten.\n"
 
 #: tp/texi2any.pl:803
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
+"Optionen für DVI/PS/PDF:\n"
+"      --Xopt=OPTION           gibt OPTION an texi2dvi weiter; kann widerholt werden.\n"
 
 #: tp/texi2any.pl:806
 msgid ""
@@ -3597,7 +3606,7 @@ msgid ""
 "  -U VAR                        undefine the variable VAR, as with @clear.\n"
 msgstr ""
 "Eingabedatei-Optionen:\n"
-"      --commands-in-node-names  machts nichts (aus Rückwärtskompatibilität)\n"
+"      --commands-in-node-names  macht nichts (wegen Rückwärtskompatibilität)\n"
 "  -D VAR                        eine Variable definieren (wie mit @set)\n"
 "  -I VERZ                       VERZ an den Suchpfad für @include anhängen\n"
 "  -P VERZ                       VERZ dem Suchpfad für @include voranstellen\n"
@@ -3695,11 +3704,11 @@ msgstr "%s: Argument für --paragraph-indent muss numerisch, „none“ oder „
 #: tp/texi2any.pl:1043
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
-msgstr ""
+msgstr "%s: beim Erzeugen von %s kann nur eine Ausgabedatei mit -o angegeben werden\n"
 
 #: tp/texi2any.pl:1047
 msgid "--Xopt option without printed output"
-msgstr ""
+msgstr "Option --Xopt ohne gedruckte Ausgabe"
 
 #: tp/texi2any.pl:1057
 #, perl-format
@@ -3709,7 +3718,7 @@ msgstr "unbekannte Baumumformung %s"
 #: tp/texi2any.pl:1064
 #, perl-format
 msgid "ignoring splitting for format %s"
-msgstr ""
+msgstr "Splitten für Format %s wird ignoriert"
 
 #: tp/texi2any.pl:1114
 #, perl-format
@@ -3723,36 +3732,36 @@ msgstr "„%s --help“ gibt weitere Informationen.\n"
 
 #: tp/texi2any.pl:1193
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
-msgstr ""
+msgstr "fill_gaps_in_sectioning-Umwandlung liefert kein Ergebnis. Kein Abschnitt?"
 
 #: tp/texi2any.pl:1215
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing macro expand file %s: %s\n"
-msgstr "Fehler beim Schließen der Ausgabedatei „%s“."
+msgstr "Fehler beim Schließen der Makro-Erweiterungsdatei %s: %s\n"
 
 #: tp/texi2any.pl:1221
-#, fuzzy, perl-format
+#, perl-format
 msgid "could not open %s for writing: %s\n"
-msgstr "%s: Konnte CSS-Datei nicht öffnen: %s"
+msgstr "%s konnte nicht zum Schreiben geöffnet werden: %s\n"
 
 #: tp/texi2any.pl:1246
 msgid "insert_nodes_for_sectioning_commands transformation return no result. No section?"
-msgstr ""
+msgstr "insert_nodes_for_sectioning_commands-Umwandlung liefert kein Ergebnis. Kein Abschnitt?"
 
 #: tp/texi2any.pl:1311 tp/texi2any.pl:1387
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s: error on closing %s: %s\n"
-msgstr "Fehler in regulärem Ausdruck „%s“: %s"
+msgstr "%s: Fehler beim Schließen von %s: %s\n"
 
 #: tp/texi2any.pl:1334 tp/texi2any.pl:1368
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
-msgstr "Fehler beim Schließen der umbenannten Knotendatei %s: %s"
+msgstr "%s: Fehler beim Schließen der internen Verknüpfungsdatei %s: %s\n"
 
 #: tp/texi2any.pl:1340 tp/texi2any.pl:1374
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s: could not open %s for writing: %s\n"
-msgstr "%s: Konnte CSS-Datei nicht öffnen: %s"
+msgstr "%s: %s konnte nicht zum Schreiben geöffnet werden: %s\n"
 
 #: util/texindex.c:223
 msgid "display this help and exit"
@@ -3774,7 +3783,7 @@ msgstr "Aufruf: %s [OPTION]... DATEI...\n"
 #: util/texindex.c:238
 #, c-format
 msgid "Generate a sorted index for each TeX output FILE.\n"
-msgstr "Erzeuge einen sortierten Index für jede TeX-Ausgabedatei.\n"
+msgstr "Einen sortierten Index für jede TeX-Ausgabedatei erzeugen.\n"
 
 #: util/texindex.c:241
 #, c-format
@@ -3944,287 +3953,3 @@ msgstr "Eintrag „%s“ direkt nach einem Untereintrag"
 
 #~ msgid "Footnote defined without parent node"
 #~ msgstr "Fußnote außerhalb eines Elternknotens definiert"
-
-# HTML
-#~ msgid "Footnotes"
-#~ msgstr "Fu&szlig;noten"
-
-#~ msgid "[unexpected] no html tag to pop"
-#~ msgstr "[unerwartet] kein HTML-Tag für Pop-Operation"
-
-#~ msgid "[unexpected] invalid node name: `%s'"
-#~ msgstr "[unerwartet] ungültiger Knotenname: „%s“"
-
-#~ msgid "Info cannot handle `:' in index entry `%s'"
-#~ msgstr "Info kann nicht mit „:“ im Indexeintrag „%s“ umgehen"
-
-#~ msgid "Unknown index `%s' and/or `%s' in @synindex"
-#~ msgstr "Unbekannter Index „%s“ und/oder „%s“ in @synindex"
-
-#~ msgid "(line )"
-#~ msgstr "(Zeile )"
-
-#~ msgid "(line %*d)"
-#~ msgstr "(Zeile %*d)"
-
-#~ msgid "@item not allowed in argument to @itemize"
-#~ msgstr "@item nicht im Argument für @itemize erlaubt"
-
-# checkit
-# What does this mean? -ke-
-#~ msgid "Broken-Type in insertion_type_pname"
-#~ msgstr "„Broken-Type“ bei „insertion_type_pname“"
-
-#~ msgid "Enumeration stack overflow"
-#~ msgstr "Überlauf bei den Zahlen der Aufzählung"
-
-#~ msgid "lettering overflow, restarting at %c"
-#~ msgstr "Überlauf bei den Buchstaben der Aufzählung. Beginne wieder bei %c"
-
-# %cfloat ist ein Texinfo-Befehl
-#~ msgid "%cfloat environments cannot be nested"
-#~ msgstr "%cfloat-Umgebungen können nicht verschachtelt sein"
-
-#~ msgid "%s requires letter or digit"
-#~ msgstr "%s benötigt einen Buchstaben oder eine Zahl"
-
-#~ msgid "end of file inside verbatim block"
-#~ msgstr "Dateiende innerhalb eines „Verbatim“-Blocks"
-
-#~ msgid "@detailmenu seen before first node, creating `Top' node"
-#~ msgstr "@detailmenu vor ersten @node gefunden. „Top“-Knoten wird angelegt"
-
-#~ msgid "`%c%s' needs something after it"
-#~ msgstr "„%c%s“ benötigt etwas nachfolgendes"
-
-#~ msgid "Bad argument `%s' to `@%s', using `%s'"
-#~ msgstr "Fehlerhaftes Argument „%s“ zu „@%s“, benutze „%s“"
-
-#~ msgid "@itemx not meaningful inside `%s' block"
-#~ msgstr "@itemx nicht sinnvoll innerhalb eines „%s“-Blocks"
-
-# checkit
-#~ msgid "%c%s found outside of an insertion block"
-#~ msgstr "%c%s außerhalb eines Einfügungsblocks gefunden"
-
-#~ msgid "no default territory known for language `%s'"
-#~ msgstr "kein voreingestelltes Gebiet für die Sprache „%s“ bekannt"
-
-#~ msgid "sorry, encoding `%s' not supported"
-#~ msgstr "Kodierung „%s“ wird leider nicht unterstützt."
-
-#~ msgid "%c%s expects a single character `i' or `j' as argument"
-#~ msgstr "%c%s erwartet einen einzelnen Buchstaben „i“ oder „j“ als Argument"
-
-#~ msgid "@allow-recursion is deprecated; please use @rmacro instead"
-#~ msgstr "@allow-recursion ist veraltet; bitte stattdessen @rmacro benutzen"
-
-#~ msgid "mismatched @end %s with @%s"
-#~ msgstr "@end %s stimmt nicht mit @%s überein"
-
-#~ msgid "Too many errors!  Gave up.\n"
-#~ msgstr "Zu viele Fehler! Abbruch.\n"
-
-#~ msgid ""
-#~ "Options for XML and Docbook:\n"
-#~ "      --output-indent=VAL     indent XML elements by VAL spaces (default %d).\n"
-#~ "                                If VAL is 0, ignorable whitespace is dropped.\n"
-#~ msgstr ""
-#~ "Optionen für XML und Docbook:\n"
-#~ "      --output-indent=WERT    XML-Elemente mit WERT Leerzeichen einrücken\n"
-#~ "                                (Voreinstellung: %d). Wenn WERT 0 ist, wird\n"
-#~ "                                ignorierbarer Leerraum weggelassen.\n"
-
-#~ msgid "%s: could not open macro expansion output `%s'"
-#~ msgstr "%s: Makro-Expansions-Ausgabedatei „%s“ kann nicht geöffnet werden"
-
-#~ msgid "%s: ignoring second macro expansion output `%s'.\n"
-#~ msgstr "%s: ignoriere zweite Makro-Expansions-Ausgabedatei „%s“.\n"
-
-#~ msgid "%s: could not open internal links output `%s'"
-#~ msgstr "%s: konnte Ausagbedatei für interne Verweise „%s“ nicht öffnen"
-
-#~ msgid "%s: ignoring second internal links output `%s'.\n"
-#~ msgstr "%s: ignoriere zweite Ausgabedatei für interne Verweise „%s“.\n"
-
-#~ msgid "Multiline command %c%s used improperly"
-#~ msgstr "Mehrzeilen-Befehl %c%s inkorrekt verwendet"
-
-#~ msgid "No `%s' found in `%s'"
-#~ msgstr "Kein „%s“ in „%s“ gefunden"
-
-#~ msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
-#~ msgstr "%s: Keine Makro-Auflösung nach der Standard-Ausgabe, da auch die Info-Ausgabe dorthin geht.\n"
-
-#~ msgid "Making %s file `%s' from `%s'.\n"
-#~ msgstr "%s-Datei „%s“ von „%s“ wird erzeugt.\n"
-
-#~ msgid "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
-#~ msgstr "%s: Entferne Makro-Ausgabedatei „%s“ wegen Fehler; --force benutzen, um Datei beizubehalten.\n"
-
-#~ msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
-#~ msgstr "%s: Entferne Ausgabedatei „%s“ wegen Fehler; --force benutzen, um diese beizubehalten.\n"
-
-#~ msgid "%s: Removing internal links output file `%s' due to errors; use --force to preserve.\n"
-#~ msgstr "%s: Entferne Ausgabedatei für interne Verweise „%s“ wegen Fehler; --force benutzen, um diese beizubehalten.\n"
-
-#~ msgid "NO_NAME!"
-#~ msgstr "Kein_NAME!"
-
-#~ msgid "No such file `%s'"
-#~ msgstr "Kein Datei namens „%s“"
-
-#~ msgid "@image file `%s' (for text) unreadable: %s"
-#~ msgstr "@image-Datei „%s“ (für Text) nicht lesbar: %s"
-
-# checkit
-#~ msgid "{No value for `%s'}"
-#~ msgstr "{Kein Wert für „%s“}"
-
-#~ msgid "Reached eof before matching @end %s"
-#~ msgstr "Dateiende vor erforderlichem „@end %s“ erreicht"
-
-#~ msgid "`%.40s...' is too long for expansion; not expanded"
-#~ msgstr "„%.40s...“ ist zum Expandieren zu lang; nicht expandiert"
-
-#~ msgid "Missing } in @multitable template"
-#~ msgstr "Fehlende „}“ bei @multitable-Template"
-
-#~ msgid "ignoring stray text `%s' after @multitable"
-#~ msgstr "nicht interpretierbarer Text „%s“ nach @multitable wird ignoriert"
-
-#~ msgid "[unexpected] cannot select column #%d in multitable"
-#~ msgstr "[unerwartet] Spalte %d kann in „multitable“ nicht ausgewählt werden"
-
-# checkit
-#~ msgid "** Multicolumn output from last row:\n"
-#~ msgstr "** Mehrspalten-Ausgabe von der letzten Zeile:\n"
-
-#~ msgid "* column #%d: output = %s\n"
-#~ msgstr "* Spalte %d: Ausgabe = %s\n"
-
-#~ msgid "Node `%s' previously defined at line %d"
-#~ msgstr "Knoten „%s“ bereits in Zeile %d definiert"
-
-#~ msgid "Formatting node %s...\n"
-#~ msgstr "Knoten „%s“ wird formatiert...\n"
-
-#~ msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
-#~ msgstr "Knoten „%s“ benötigt einen Abschnittsbefehl (z.B. %c%s)"
-
-#~ msgid "No node name specified for `%c%s' command"
-#~ msgstr "Kein Knotenname für den Befehl „%c%s“ angegeben"
-
-#~ msgid "Anchor `%s' and node `%s' map to the same file name"
-#~ msgstr "Anker „%s“ und Knoten „%s“ zeigen auf gleichen Dateinamen."
-
-#~ msgid "This @anchor command ignored; references to it will not work"
-#~ msgstr "Dieser @anchor-Befehl wird ignoriert, da Verweise auf ihn nicht funktionieren"
-
-#~ msgid "Rename this anchor or use the `--no-split' option"
-#~ msgstr "Entweder diesen Anker umbenennen oder Option „--no-split“ verwenden"
-
-#~ msgid "Unexpected string at end of split-HTML file `%s'"
-#~ msgstr "Unerwartete Zeichenkette am Ende der gesplitteten HTML-Datei „%s“"
-
-#~ msgid "Anchors `%s' and `%s' map to the same file name"
-#~ msgstr "Anker „%s“ und „%s“ zeigen auf gleichen Dateinamen."
-
-#~ msgid "@anchor command ignored; references to it will not work"
-#~ msgstr "@anchor-Befehl wird ignoriert, da Referenzen auf ihn nicht funktionieren"
-
-#~ msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
-#~ msgstr "Auf das Feld „nächstes“ (Next) des Knotens „%s“ wird nicht verwiesen (vielleicht @section statt @subsection o.ä.?)"
-
-#~ msgid "This node (%s) has the bad Prev"
-#~ msgstr "Dieser Knoten (%s) hat den fehlerhaften Eintrag im Feld „voriges“ (Prev)"
-
-#~ msgid "Prev field of node `%s' not pointed to"
-#~ msgstr "Auf das Feld „voriges“ (Prev) des Knotens „%s“ wird nicht verwiesen"
-
-#~ msgid "This node (%s) has the bad Next"
-#~ msgstr "Dieser Knoten (%s) hat den fehlerhaften Eintrag im Feld „nächstes“ (Next)"
-
-#~ msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
-#~ msgstr "„%s“ hat kein Feld „aufwärts“ (Up) (vielleicht @section statt @subsection o.ä.?)"
-
-#~ msgid "Appendix %c"
-#~ msgstr "Anhang %c"
-
-#~ msgid "Internal error (search_sectioning) `%s'!"
-#~ msgstr "Interner Fehler (search_sectioning) „%s“!"
-
-#~ msgid "Internal error (search_sectioning) \"%s\"!"
-#~ msgstr "Interner Fehler (search_sectioning) „%s“!"
-
-#~ msgid "%c%s is obsolete; use %c%s instead"
-#~ msgstr "%c%s ist obsolet; %c%s stattdessen benutzen"
-
-#~ msgid "Node with %ctop as a section already exists"
-#~ msgstr "Knoten mit %ctop als Abschnitt existiert bereits"
-
-#~ msgid "Here is the %ctop node"
-#~ msgstr "Hier ist der %ctop-Knoten"
-
-#~ msgid "%ctop used before %cnode, defaulting to %s"
-#~ msgstr "%ctop vor %cnode benutzt, Voreinstellung %s wird genommen"
-
-#~ msgid "@headitem as the last item of @multitable produces invalid Docbook documents"
-#~ msgstr "@headitem als letztes Element von @multitable erzeugt ungültige Docbook-Dokumente"
-
-#~ msgid "of"
-#~ msgstr "aus"
-
-#~ msgid "on"
-#~ msgstr "ein"
-
-#~ msgid "First argument to cross-reference may not be empty"
-#~ msgstr "Erstes Argument für Querverweis darf nicht leer sein."
-
-#~ msgid "Empty file name for HTML cross reference in `%s'"
-#~ msgstr "Leerer Dateiname für HTML-Querverweis in „%s“"
-
-#~ msgid "End of file reached while looking for `.' or `,'"
-#~ msgstr "Dateiende erreicht, während „.“ oder „,“ gesucht wurden"
-
-#~ msgid "for cross-references in parentheses, use @pxref"
-#~ msgstr "für Querverweise in Klammern @pxref benutzen"
-
-#~ msgid "First argument to @inforef may not be empty"
-#~ msgstr "Erstes Argument für @inforef darf nicht leer sein."
-
-#~ msgid "@quote-arg only useful for single-argument macros"
-#~ msgstr "@quote-Argument nur sinnvoll, wenn das Makro nur ein Argument hat"
-
-#~ msgid "Table of Contents"
-#~ msgstr "Inhaltsverzeichnis"
-
-#~ msgid "Short Contents"
-#~ msgstr "Inhalt in Kurzform"
-
-#~ msgid "keep temporary files around after processing"
-#~ msgstr "temporäre Dateien nach Programmende nicht entfernen"
-
-#~ msgid "do not keep temporary files around after processing (default)"
-#~ msgstr "temporäre Dateien nach Programmende entfernen (Standard)"
-
-#~ msgid "\"\" is invalid"
-#~ msgstr "„“ ist ungültig"
-
-#~ msgid "File exists, but is not a directory"
-#~ msgstr "Datei existiert, ist aber kein Verzeichnis"
-
-#~ msgid "Node:"
-#~ msgstr "Knoten:"
-
-#~ msgid "%s: TOC should be here, but it was not found"
-#~ msgstr "%s: Inhaltsverzeichnis sollte hier sein, jedoch nicht gefunden"
-
-#~ msgid "%s: Specify the Info directory only once.\n"
-#~ msgstr "%s: Info-Verzeichnis nur einmal angeben.\n"
-
-#~ msgid "No `%s.png' or `.jpg', and no extension supplied"
-#~ msgstr "Kein .png oder .jpg für „%s“ und keine Erweiterung angegeben."
-
-#~ msgid "`%s' has no Up field"
-#~ msgstr "„%s“ hat kein „Up“-Feld"
