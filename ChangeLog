@@ -1,5 +1,9 @@
 2014-04-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-stnd.texi: Document info-no-defaults.
+
+2014-04-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* Makefile.am: Condense AM_CPPFLAGS definition slightly.
 	* info.c (main): Make --directory options build up infopath
 	in the order they were specified.  Call infopath_init after
