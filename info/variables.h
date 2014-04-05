@@ -63,5 +63,6 @@ extern int ISO_Latin_p;
 extern int scroll_last_node;
 extern int min_search_length;
 extern int search_skip_screen_p;
+extern int infopath_no_defaults_p;
 
 #endif /* not INFO_VARIABLES_H */

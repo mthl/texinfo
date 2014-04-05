@@ -89,6 +89,11 @@ VARIABLE_ALIST info_variables[] = {
   { "search-skip-screen",
       N_("Skip current window when searching"),
     &search_skip_screen_p, (char **)on_off_choices },
+
+  { "infopath-no-defaults",
+      N_("Exclude default directories from file search path"),
+    &infopath_no_defaults_p, (char **)on_off_choices },
+
   { NULL }
 };
 

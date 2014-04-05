@@ -520,7 +520,6 @@ main (int argc, char *argv[])
 #endif
 
   init_messages ();
-  infopath_init ();
   while (1)
     {
       int option_character;
@@ -548,7 +547,7 @@ main (int argc, char *argv[])
 	  
           /* User wants to add a directory. */
         case 'd':
-          infopath_add (optarg, INFOPATH_PREPEND);
+          infopath_add (optarg, INFOPATH_APPEND);
           break;
 
           /* User is specifying a particular node. */
@@ -723,6 +722,10 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   
   /* Load custom key mappings and variable settings */
   initialize_terminal_and_keymaps ();
+
+  /* Add extra search directories to any already specified with
+     --directory. */
+  infopath_init ();
 
   if (all_matches_p)
     return all_files (user_filename, argc, argv);

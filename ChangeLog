@@ -1,5 +1,18 @@
 2014-04-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* Makefile.am: Condense AM_CPPFLAGS definition slightly.
+	* info.c (main): Make --directory options build up infopath
+	in the order they were specified.  Call infopath_init after
+	options are read instead of before.
+	
+	* infopath.c, variables.c (info_variables, infopath_no_defaults_p):
+	New variable for user, info-no-defaults.
+	
+	* infopath.c (infopath_init): Do not include $infodir and
+	$datadir/info in search path if info-no-defaults=On.
+
+2014-04-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
         * session.c (initialize_terminal_and_keymaps, initialize_info_session):
         Function split out.
         * info.c (main): Call initialize_terminal_and_keymaps before

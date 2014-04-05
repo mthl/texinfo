@@ -21,6 +21,9 @@
 #include "info.h"
 #include "filesys.h"
 
+/* Exclude default file search directories. */
+int infopath_no_defaults_p;
+
 /* The path on which we look for info files. */
 static char *infopath_base = NULL;
 /* Allocated size of infopath_base. */
@@ -86,37 +89,39 @@ void
 infopath_init ()
 {
   /* Initialize INFOPATH.
-     The hardwired default settings (filesy.h) are the lowest priority.
+     Highest priority is the environment variable, if set
      Then comes the user's INFODIR from the Makefile.
-     Highest priority is the environment variable, if set.  */
+     The hardwired default settings (filesys.h) are the lowest priority. */
   char *path_from_env = getenv ("INFOPATH");
 
   if (path_from_env)
     {
+      infopath_add (path_from_env, INFOPATH_APPEND);
+    }
+
+  if (!infopath_no_defaults_p)
+    {
+#ifdef INFODIR /* $infodir, set by configure script in Makefile */
+      infopath_add (INFODIR, INFOPATH_APPEND);
+#ifdef INFODIR2 /* $datadir/info, which could be different. */
+      if (!STREQ (INFODIR, INFODIR2))
+        infopath_add (INFODIR2, INFOPATH_APPEND);
+#endif /* INFODIR2 */
+#endif /* INFODIR */
+    }
+
+  if (!path_from_env)
+    infopath_add (DEFAULT_INFOPATH, INFOPATH_APPEND);
+  else
+    { 
+      /* Only insert default path if there is a trailing : on INFOPATH. */
+
       unsigned len = strlen (path_from_env);
-      /* Trailing : on INFOPATH means insert the default path.  */
       if (len && path_from_env[len - 1] == PATH_SEP[0])
 	{
 	  path_from_env[len - 1] = 0;
-	  infopath_add (DEFAULT_INFOPATH, INFOPATH_PREPEND);
+	  infopath_add (DEFAULT_INFOPATH, INFOPATH_APPEND);
 	}
-#ifdef INFODIR /* from the Makefile */
-      infopath_add (INFODIR, INFOPATH_PREPEND);
-#endif
-      infopath_add (path_from_env, INFOPATH_PREPEND);
-    }
-  else
-    {
-      infopath_add (DEFAULT_INFOPATH, INFOPATH_PREPEND);
-#ifdef INFODIR /* from the Makefile */
-      infopath_add (INFODIR, INFOPATH_PREPEND);
-#endif
-#ifdef INFODIR2 /* from the Makefile, too */
-#  ifdef INFODIR
-      if (!STREQ (INFODIR, INFODIR2))
-#  endif
-	infopath_add (INFODIR2, INFOPATH_PREPEND);
-#endif
     }
 }
 
