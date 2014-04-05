@@ -128,7 +128,7 @@ static struct option long_options[] = {
   { "strict-node-location", 0, &strict_node_location_p, 1 },
   { "subnodes", 0, &dump_subnodes, 1 },
   { "usage", 0, 0, 'O' },
-  { "variable", 0, 0, 'v' },
+  { "variable", 1, 0, 'v' },
   { "version", 0, &print_version_p, 1 },
   { "vi-keys", 0, &vi_keys_p, 1 },
   { "where", 0, &print_where_p, 1 },

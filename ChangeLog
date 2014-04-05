@@ -1,3 +1,9 @@
+2014-04-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+
+	* info/info.c (long_options): Specify that --variable takes an
+	argument, like its short equivalent -v.
+
 2014-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/search.c (regexp_search): Remove unnecessary test for
