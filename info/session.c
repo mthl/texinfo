@@ -246,10 +246,9 @@ info_read_and_dispatch (void)
 /* Found in signals.c */
 extern void initialize_info_signal_handler (void );
 
-/* Initialize the first info session by starting the terminal, window,
-   and display systems.  If CLEAR_SCREEN is 0, don't clear the screen.  */
+/* Initialize terminal, read configuration file .info and set key bindings. */
 void
-initialize_info_session (NODE *node, int clear_screen)
+initialize_terminal_and_keymaps (void)
 {
   char *term_name = getenv ("TERM");
   terminal_initialize_terminal (term_name);
@@ -263,13 +262,20 @@ initialize_info_session (NODE *node, int clear_screen)
       exit (EXIT_FAILURE);
     }
 
+  initialize_info_keymaps ();
+}
+
+/* Initialize the first info session by starting the terminal, window,
+   and display systems.  If CLEAR_SCREEN is 0, don't clear the screen.  */
+void
+initialize_info_session (NODE *node, int clear_screen)
+{
   if (clear_screen)
     {
       terminal_prep_terminal ();
       terminal_clear_screen ();
     }
 
-  initialize_info_keymaps ();
   window_initialize_windows (screenwidth, screenheight);
   initialize_info_signal_handler ();
   display_initialize_display (screenwidth, screenheight);

@@ -1,5 +1,12 @@
 2014-04-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+        * session.c (initialize_terminal_and_keymaps, initialize_info_session):
+        Function split out.
+        * info.c (main): Call initialize_terminal_and_keymaps before
+        loading file.  This is needed in case a variable in .infokey affects
+        the loading of the file.
+
+2014-04-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.c (long_options): Specify that --variable takes an
 	argument, like its short equivalent -v.

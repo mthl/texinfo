@@ -721,6 +721,9 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   argc -= optind;
   argv += optind;
   
+  /* Load custom key mappings and variable settings */
+  initialize_terminal_and_keymaps ();
+
   if (all_matches_p)
     return all_files (user_filename, argc, argv);
 
