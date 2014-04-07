@@ -1,5 +1,9 @@
 2014-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-stnd.text: Document --init-file.
+
+2014-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info.c (long_options, main): New option --init-file.
 	* info/infomap.c (initialize_info_keymaps, read_init_file): Function
 	renamed and given new argument init_file.
