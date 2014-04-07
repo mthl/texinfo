@@ -1358,8 +1358,11 @@ message_buffer_length_this_line (void)
     return 0;
 
   p = strrchr (message_buffer.base, '\n');
-  if (!p)
+  if (p)
+    p++; /* Point at first character of line. */
+  else
     p = message_buffer.base;
+  
   return string_width (p, 0);
 }
 

@@ -207,6 +207,12 @@ dump_map_to_message_buffer (char *prefix, Keymap map)
           register int last;
           char *doc, *name;
 
+          /* Do not display "Run command bound to this key's
+             lowercase variant" in help window. */
+          if (InfoFunction (map[i].function)
+               == (VFunction *) info_do_lowercase_version)
+            continue;
+
           doc = function_documentation (map[i].function);
           name = function_name (map[i].function);
 

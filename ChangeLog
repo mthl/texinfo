@@ -1,5 +1,12 @@
 2014-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/infodoc.c (dump_map_to_message_buffer): Check if
+	command is info_do_lowercase_variant.
+	* info/window.c (message_buffer_length_this_line): Do not
+	include leading newline in line length calculation.
+
+2014-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.text: Document --init-file.
 
 2014-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
