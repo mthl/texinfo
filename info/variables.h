@@ -34,12 +34,21 @@ typedef struct {
   char *doc;                    /* Documentation string. */
   int *value;                   /* Address of value. */
   char **choices;               /* Array of strings or NULL if numeric only. */
+  int where_set;                /* Where this variable was set. */
 } VARIABLE_ALIST;
+
+/* Values for VARIABLE_ALIST.where_set, in order of increasing priority. */
+#define SET_BY_DEFAULT 0
+#define SET_IN_CONFIG_FILE 1
+#define SET_ON_COMMAND_LINE 2
+#define SET_IN_SESSION 4
 
 /* Read the name of an Info variable in the echo area and return the
    address of a VARIABLE_ALIST member.  A return value of NULL indicates
    that no variable could be read. */
 extern VARIABLE_ALIST *read_variable_name (const char *prompt, WINDOW *window);
+
+extern VARIABLE_ALIST *variable_by_name (char *name);
 
 /* Make an array of REFERENCE which actually contains the names of the
    variables available in Info. */
@@ -47,6 +56,8 @@ extern REFERENCE **make_variable_completions_array (void);
 
 /* Set the value of an info variable. */
 extern void set_variable (WINDOW *window, int count, unsigned char key);
+extern int set_variable_to_value (VARIABLE_ALIST *var, char *value, int where);
+
 extern void describe_variable (WINDOW *window, int count, unsigned char key);
 
 /* The list of user-visible variables. */

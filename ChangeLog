@@ -1,25 +1,41 @@
+2014-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (long_options, main): New option --init-file.
+	* info/infomap.c (initialize_info_keymaps, read_init_file): Function
+	renamed and given new argument init_file.
+	(fetch_user_maps): New argument.
+	* info/session.c (initialize_terminal_and_keymaps): New argument.
+	All callers changed.
+
+	* info/variables.h (VARIABLE_ALIST): New field where_set.
+	* info/variables.c (variable_by_name): Split out from
+	read_variable_name.
+	(set_variable_to_value): Check if variables were set already
+	with a higher priority.  Arguments changed.  All callers updated.
+	(set_variable): Call set_variable_to_value with SET_IN_SESSION.
+
 2014-04-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/info-stnd.texi: Document infopath-no-defaults.
 
 2014-04-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* Makefile.am: Condense AM_CPPFLAGS definition slightly.
-	* info.c (main): Make --directory options build up infopath
+	* info/Makefile.am: Condense AM_CPPFLAGS definition slightly.
+	* info/info.c (main): Make --directory options build up infopath
 	in the order they were specified.  Call infopath_init after
 	options are read instead of before.
 	
-	* infopath.c, variables.c (info_variables, infopath_no_defaults_p):
-	New variable for user, info-no-defaults.
+	* info/infopath.c, info/variables.c (info_variables)
+	(infopath_no_defaults_p): New variable for user, info-no-defaults.
 	
-	* infopath.c (infopath_init): Do not include $infodir and
+	* info/infopath.c (infopath_init): Do not include $infodir and
 	$datadir/info in search path if info-no-defaults=On.
 
 2014-04-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
-        * session.c (initialize_terminal_and_keymaps, initialize_info_session):
-        Function split out.
-        * info.c (main): Call initialize_terminal_and_keymaps before
+        * info/session.c (initialize_terminal_and_keymaps)
+	(initialize_info_session): Function split out.
+        * info/info.c (main): Call initialize_terminal_and_keymaps before
         loading file.  This is needed in case a variable in .infokey affects
         the loading of the file.
 

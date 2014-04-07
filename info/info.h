@@ -174,9 +174,6 @@ extern const char *msg_win_too_small;
 extern const char *msg_cant_make_help;
 
 
-/* Found in variables.c. */
-extern int set_variable_to_value (char *name, char *value);
-
 /* Found in m-x.c.  */
 extern char *read_function_name (const char *prompt, WINDOW *window);
 

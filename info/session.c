@@ -246,9 +246,9 @@ info_read_and_dispatch (void)
 /* Found in signals.c */
 extern void initialize_info_signal_handler (void );
 
-/* Initialize terminal, read configuration file .info and set key bindings. */
+/* Initialize terminal, read configuration file and set key bindings. */
 void
-initialize_terminal_and_keymaps (void)
+initialize_terminal_and_keymaps (char *init_file)
 {
   char *term_name = getenv ("TERM");
   terminal_initialize_terminal (term_name);
@@ -262,7 +262,7 @@ initialize_terminal_and_keymaps (void)
       exit (EXIT_FAILURE);
     }
 
-  initialize_info_keymaps ();
+  read_init_file (init_file);
 }
 
 /* Initialize the first info session by starting the terminal, window,

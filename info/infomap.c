@@ -910,10 +910,10 @@ getint (unsigned char **sp)
 }
 
 
-/* Fetch the contents of the standard infokey file "$HOME/.info".  Return
-   true if ok, false if not.  */
+/* Fetch the contents of the init file at INIT_FILE, or the standard
+   infokey file "$HOME/.info".  Return non-zero on success. */
 static int
-fetch_user_maps (void)
+fetch_user_maps (char *init_file)
 {
   char *filename = NULL;
   char *homedir;
@@ -925,8 +925,8 @@ fetch_user_maps (void)
   int n;
   
   /* Find and open file. */
-  if ((filename = getenv ("INFOKEY")) != NULL)
-    filename = xstrdup (filename);
+  if (init_file)
+    filename = xstrdup (init_file);
   else if ((homedir = getenv ("HOME")) != NULL)
     {
       filename = xmalloc (strlen (homedir) + 2 + strlen (INFOKEY_FILE));
@@ -1211,23 +1211,16 @@ section_to_vars (unsigned char *table, unsigned int len)
 	case gotval:
 	  if (!*p)
 	    {
-	      if (set_variable_to_value ((char *) var, (char *) val))
-		{
-		  switch (errno)
-		    {
-		    case ENOENT:
-		      info_error (_("%s: no such variable"), var);
-		      break;
-		      
-		    case EINVAL:
-		      info_error (_("value %s is not valid for variable %s"),
-				  val, var);
-		      break;
-		      
-		    default:
-		      abort ();
-		    }
-		}	
+              VARIABLE_ALIST *v;
+              if (!(v = variable_by_name (var)))
+                {
+                  info_error (_("%s: no such variable"), var);
+                }
+              else if (!set_variable_to_value (v, val, SET_IN_CONFIG_FILE))
+                {
+                  info_error (_("value %s is not valid for variable %s"),
+                              val, var);
+                }	
 	      state = getvar;
 	    }
 	  break;
@@ -1237,12 +1230,15 @@ section_to_vars (unsigned char *table, unsigned int len)
     info_error ("%s", _("Bad data in infokey file -- some var settings ignored"));
 }
 
+/* Read key bindings and variable settings from INIT_FILE.  If INIT_FILE
+   is null, look for the init file in the default location. */
 void
-initialize_info_keymaps (void)
+read_init_file (char *init_file)
 {
+  static unsigned char *info_keys, *ea_keys; /* Pointers to keymap tables. */
+  long info_keys_len, ea_keys_len; /* Sizes of keymap tables. */
+
   int i;
-  int suppress_info_default_bindings = 0;
-  int suppress_ea_default_bindings = 0;
 
   if (!info_keymap)
     {
@@ -1255,44 +1251,45 @@ initialize_info_keymaps (void)
     if (isprint (i))
       echo_area_keymap[i].function = InfoCmd (ea_insert);
 
+  if (!vi_keys_p)
+    {
+      info_keys = default_emacs_like_info_keys;
+      info_keys_len = sizeof (default_emacs_like_info_keys);
+      ea_keys = default_emacs_like_ea_keys;
+      ea_keys_len = sizeof (default_emacs_like_ea_keys);
+    }
+  else
+    {
+      info_keys = default_vi_like_info_keys;
+      info_keys_len = sizeof (default_vi_like_info_keys);
+      ea_keys = default_vi_like_ea_keys;
+      ea_keys_len = sizeof (default_vi_like_ea_keys);
+    }
+
   /* Get user-defined keys and variables.  */
-  if (fetch_user_maps ())
+  if (fetch_user_maps (init_file))
     {
       if (user_info_keys_len && user_info_keys[0])
-        suppress_info_default_bindings = 1;
+        info_keys = 0; /* Suppress default bindings. */
       if (user_ea_keys_len && user_ea_keys[0])
-        suppress_ea_default_bindings = 1;
+        ea_keys = 0;
     }
 
   /* Apply the default bindings, unless the user says to suppress
      them.  */
-  if (vi_keys_p)
-    {
-      if (!suppress_info_default_bindings)
-        section_to_keymaps (info_keymap, default_vi_like_info_keys,
-                           sizeof (default_vi_like_info_keys));
-      if (!suppress_ea_default_bindings)
-          section_to_keymaps (echo_area_keymap, default_vi_like_ea_keys,
-                             sizeof (default_vi_like_ea_keys));
-    }
-  else
-    {
-      if (!suppress_info_default_bindings)
-        section_to_keymaps (info_keymap, default_emacs_like_info_keys,
-                           sizeof (default_emacs_like_info_keys));
-      if (!suppress_ea_default_bindings)
-          section_to_keymaps (echo_area_keymap, default_emacs_like_ea_keys,
-                             sizeof (default_emacs_like_ea_keys));
-    }
+  if (info_keys)
+    section_to_keymaps (info_keymap, info_keys, info_keys_len);
+  if (ea_keys)
+    section_to_keymaps (echo_area_keymap, ea_keys, ea_keys_len);
 
   /* If the user specified custom bindings, apply them on top of the
      default ones.  */
   if (user_info_keys_len)
     section_to_keymaps (info_keymap, user_info_keys, user_info_keys_len);
-
   if (user_ea_keys_len)
     section_to_keymaps (echo_area_keymap, user_ea_keys, user_ea_keys_len);
 
+  /* Set Info variables from init file. */
   if (user_vars_len)
     section_to_vars (user_vars, user_vars_len);
 }

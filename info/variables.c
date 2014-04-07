@@ -32,6 +32,8 @@
    a variable. */
 static char *on_off_choices[] = { "Off", "On", NULL };
 
+/* Note that the 'where_set' field of each element in the array is
+   not given and defaults to 0. */
 VARIABLE_ALIST info_variables[] = {
   { "automatic-footnotes",
       N_("When \"On\", footnotes appear and disappear automatically"),
@@ -126,6 +128,7 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
 {
   VARIABLE_ALIST *var;
   char *line;
+  char prompt[100];
 
   /* Get the variable's name and value. */
   var = read_variable_name (_("Set variable: "), window);
@@ -134,92 +137,97 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
     return;
 
   /* Read a new value for this variable. */
-  {
-    char prompt[100];
 
-    if (!var->choices)
-      {
-        int potential_value;
+  if (!var->choices)
+    {
+      int potential_value;
 
-        if (info_explicit_arg || count != 1)
-          potential_value = count;
-        else
-          potential_value = *(var->value);
+      if (info_explicit_arg || count != 1)
+        potential_value = count;
+      else
+        potential_value = *(var->value);
 
-        sprintf (prompt, _("Set %s to value (%d): "),
-                 var->name, potential_value);
-        line = info_read_in_echo_area (active_window, prompt);
+      sprintf (prompt, _("Set %s to value (%d): "),
+               var->name, potential_value);
+      line = info_read_in_echo_area (active_window, prompt);
 
-        /* If no error was printed, clear the echo area. */
-        if (!info_error_was_printed)
-          window_clear_echo_area ();
+      /* If no error was printed, clear the echo area. */
+      if (!info_error_was_printed)
+        window_clear_echo_area ();
 
-        /* User aborted? */
-        if (!line)
+      /* User aborted? */
+      if (!line)
+        return;
+
+      /* If the user specified a value, get that, otherwise, we are done. */
+      canonicalize_whitespace (line);
+
+      set_variable_to_value (var, line, SET_IN_SESSION);
+
+      free (line);
+    }
+  else
+    {
+      register int i;
+      REFERENCE **array = NULL;
+      size_t array_index = 0;
+      size_t array_slots = 0;
+
+      for (i = 0; var->choices[i]; i++)
+        {
+          REFERENCE *entry;
+
+          entry = xmalloc (sizeof (REFERENCE));
+          entry->label = xstrdup (var->choices[i]);
+          entry->nodename = NULL;
+          entry->filename = NULL;
+
+          add_pointer_to_array (entry, array_index, array, array_slots, 10);
+        }
+
+      sprintf (prompt, _("Set %s to value (%s): "),
+               var->name, var->choices[*(var->value)]);
+
+      /* Ask the completer to read a variable value for us. */
+      line = info_read_completing_in_echo_area (window, prompt, array);
+
+      info_free_references (array);
+
+      if (!echo_area_is_active)
+        window_clear_echo_area ();
+
+      /* User aborted? */
+      if (!line)
+        {
+          info_abort_key (active_window, 0, 0);
           return;
+        }
 
-        /* If the user specified a value, get that, otherwise, we are done. */
-        canonicalize_whitespace (line);
-        if (*line)
-          *(var->value) = atoi (line);
-        else
-          *(var->value) = potential_value;
+      /* User accepted default choice?  If so, no change. */
+      if (!*line)
+        {
+          free (line);
+          return;
+        }
 
-        free (line);
-      }
-    else
-      {
-        register int i;
-        REFERENCE **array = NULL;
-        size_t array_index = 0;
-        size_t array_slots = 0;
+      set_variable_to_value (var, line, SET_IN_SESSION);
+    }
+}
 
-        for (i = 0; var->choices[i]; i++)
-          {
-            REFERENCE *entry;
+VARIABLE_ALIST *
+variable_by_name (char *name)
+{
+  int i;
 
-            entry = xmalloc (sizeof (REFERENCE));
-            entry->label = xstrdup (var->choices[i]);
-            entry->nodename = NULL;
-            entry->filename = NULL;
+  /* Find the variable in our list of variables. */
+  for (i = 0; info_variables[i].name; i++)
+    if (strcmp (info_variables[i].name, name) == 0)
+      break;
 
-            add_pointer_to_array (entry, array_index, array, array_slots, 10);
-          }
-
-        sprintf (prompt, _("Set %s to value (%s): "),
-                 var->name, var->choices[*(var->value)]);
-
-        /* Ask the completer to read a variable value for us. */
-        line = info_read_completing_in_echo_area (window, prompt, array);
-
-        info_free_references (array);
-
-        if (!echo_area_is_active)
-          window_clear_echo_area ();
-
-        /* User aborted? */
-        if (!line)
-          {
-            info_abort_key (active_window, 0, 0);
-            return;
-          }
-
-        /* User accepted default choice?  If so, no change. */
-        if (!*line)
-          {
-            free (line);
-            return;
-          }
-
-        /* Find the choice in our list of choices. */
-        for (i = 0; var->choices[i]; i++)
-          if (strcmp (var->choices[i], line) == 0)
-            break;
-
-        if (var->choices[i])
-          *(var->value) = i;
-      }
-  }
+  if (!info_variables[i].name)
+    return NULL;
+  else
+    return &info_variables[i];
 }
 
 /* Read the name of an Info variable in the echo area and return the
@@ -228,7 +236,6 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
 VARIABLE_ALIST *
 read_variable_name (const char *prompt, WINDOW *window)
 {
-  register int i;
   char *line;
   REFERENCE **variables;
 
@@ -258,15 +265,7 @@ read_variable_name (const char *prompt, WINDOW *window)
       return NULL;
     }
 
-  /* Find the variable in our list of variables. */
-  for (i = 0; info_variables[i].name; i++)
-    if (strcmp (info_variables[i].name, line) == 0)
-      break;
-
-  if (!info_variables[i].name)
-    return NULL;
-  else
-    return &info_variables[i];
+  return variable_by_name (line);
 }
 
 /* Make an array of REFERENCE which actually contains the names of the
@@ -294,31 +293,24 @@ make_variable_completions_array (void)
 }
 
 int
-set_variable_to_value(char *name, char *value)
+set_variable_to_value (VARIABLE_ALIST *var, char *value, int where)
 {
-  register int i;
+  /* If variable was set elsewhere with a higher priority, don't do
+     anything, but don't indicate an error. */
+  if (var->where_set > where)
+    return 1;
 
-  /* Find the variable in our list of variables. */
-  for (i = 0; info_variables[i].name; i++)
-    if (strcmp(info_variables[i].name, name) == 0)
-      break;
-
-  if (!info_variables[i].name)
-    {
-      errno = ENOENT;
-      return -1;
-    }
-  
-  if (info_variables[i].choices)
+  if (var->choices)
     {
       register int j;
       
       /* Find the choice in our list of choices. */
-      for (j = 0; info_variables[i].choices[j]; j++)
-	if (strcmp (info_variables[i].choices[j], value) == 0)
+      for (j = 0; var->choices[j]; j++)
+	if (strcmp (var->choices[j], value) == 0)
 	  {
-	    *info_variables[i].value = j;
-	    return 0;
+	    *var->value = j;
+            var->where_set = where;
+	    return 1;
 	  }
     }
   else
@@ -327,12 +319,11 @@ set_variable_to_value(char *name, char *value)
       long n = strtol (value, &p, 10);
       if (*p == 0 && INT_MIN <= n && n <= INT_MAX)
 	{
-	  *info_variables[i].value = n;
-	  return 0;
+	  *var->value = n;
+	  return 1;
 	}
     }
 
-  errno = EINVAL;
-  return -1;
+  return 0;
 }
 

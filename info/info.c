@@ -24,6 +24,7 @@
 #include "indices.h"
 #include "dribble.h"
 #include "getopt.h"
+#include "variables.h"
 #if defined (HANDLE_MAN_PAGES)
 #  include "man.h"
 #endif /* HANDLE_MAN_PAGES */
@@ -107,6 +108,8 @@ int speech_friendly = 0;
 #define DRIBBLE_OPTION 2
 #define RESTORE_OPTION 3
 #define IDXSRCH_OPTION 4
+#define INITFLE_OPTION 5
+
 static struct option long_options[] = {
   { "all", 0, 0, 'a' },
   { "apropos", 1, 0, 'k' },
@@ -116,6 +119,7 @@ static struct option long_options[] = {
   { "file", 1, 0, 'f' },
   { "help", 0, &print_help_p, 1 },
   { "index-search", 1, 0, IDXSRCH_OPTION },
+  { "init-file", 1, 0, INITFLE_OPTION },
   { "location", 0, &print_where_p, 1 },
   { "node", 1, 0, 'n' },
   { "output", 1, 0, 'o' },
@@ -507,6 +511,7 @@ int
 main (int argc, char *argv[])
 {
   int getopt_long_index;        /* Index returned by getopt_long (). */
+  char *init_file = 0;          /* Name of init file specified. */
 
 #ifdef HAVE_SETLOCALE
   /* Set locale via LC_ALL.  */
@@ -631,8 +636,14 @@ main (int argc, char *argv[])
           index_search_string = xstrdup (optarg);
           break;
 
+          /* User has specified a file to use as the init file. */
+        case INITFLE_OPTION:
+          init_file = optarg;
+          break;
+
 	case 'v':
 	  {
+            VARIABLE_ALIST *var;
 	    char *p;
 	    p = strchr (optarg, '=');
 	    if (!p)
@@ -641,22 +652,17 @@ main (int argc, char *argv[])
 		exit (EXIT_FAILURE);
 	      }
 	    *p++ = 0;
-	    if (set_variable_to_value (optarg, p))
+
+            if (!(var = variable_by_name (optarg)))
+              {
+                info_error (_("%s: no such variable"), optarg);
+                exit (EXIT_FAILURE);
+              }
+
+	    if (!set_variable_to_value (var, p, SET_ON_COMMAND_LINE))
 	      {
-		switch (errno)
-		  {
-		  case ENOENT:
-		    info_error (_("%s: no such variable"), optarg);
-		    break;
-			    
-		  case EINVAL:
-		    info_error (_("value %s is not valid for variable %s"),
-				p, optarg);
-		    break;
-		    
-		  default:
-		    abort ();
-		  }
+                info_error (_("value %s is not valid for variable %s"),
+                            p, optarg);
 		exit (EXIT_FAILURE);
 	      }	
 	  }
@@ -721,7 +727,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   argv += optind;
   
   /* Load custom key mappings and variable settings */
-  initialize_terminal_and_keymaps ();
+  initialize_terminal_and_keymaps (init_file);
 
   /* Add extra search directories to any already specified with
      --directory. */

@@ -75,7 +75,7 @@ extern Keymap keymap_copy_keymap (Keymap map, Keymap rootmap,
 /* Free MAP and it's descendents. */
 extern void keymap_discard_keymap (Keymap map, Keymap rootmap);
 
-/* Initialize the info keymaps. */
-extern void initialize_info_keymaps (void);
+/* Read init file and initialize the info keymaps. */
+extern void read_init_file (char *init_file);
 
 #endif /* not INFOMAP_H */
