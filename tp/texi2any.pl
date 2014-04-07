@@ -550,6 +550,7 @@ my %formats_table = (
   'plaintext' => {
              'nodes_tree' => 1,
              'floats' => 1,
+             'split' => 1,
              'converter' => sub{Texinfo::Convert::Plaintext->converter(@_)},
            },
   'html' => {

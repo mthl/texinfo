@@ -300,16 +300,18 @@ foreach my $command ('var', 'cite', 'dmn', keys(%code_style_commands)) {
 my %defaults = (
   'ENABLE_ENCODING'      => 1,
   'SHOW_MENU'            => 0,
-# not used for plaintext, since default is '-', and always set, for plaintext.
-  'EXTENSION'            => 'info',
-  'USE_SETFILENAME_EXTENSION' => 1,
+  #'EXTENSION'            => 'info',
+  'EXTENSION'            => 'txt',
+  #'USE_SETFILENAME_EXTENSION' => 1,
   'INFO_SPECIAL_CHARS_WARNING' => 1,
 
-  'OUTFILE'              => undef,
+  #'OUTFILE'              => undef,
+  'OUTFILE'              => '-',
   'SUBDIR'               => undef,
   'documentlanguage'     => undef,
 
   'output_format'        => '',
+  'USE_NODES'            => 1,
 );
 
 sub push_top_formatter($$)
@@ -432,7 +434,7 @@ sub _count_context_bug_message($$$)
   }
 }
 
-sub _convert_node($$)
+sub _convert_element($$)
 {
   my $self = shift;
   my $element = shift;
@@ -473,7 +475,7 @@ sub convert($$)
     $result .= $footnotes;
   } else {
     foreach my $node (@$elements) {
-      my $node_text = $self->_convert_node($node);
+      my $node_text = $self->_convert_element($node);
       $result .= $node_text;
     }
   }
@@ -481,7 +483,23 @@ sub convert($$)
   return $result;
 }
 
-sub output($$)
+sub convert_tree($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  $self->{'empty_lines_count'} = 1;
+  my $result;
+  if ($root->{'type'} and $root->{'type'} eq 'element') {
+    $result = $self->_convert_element($root);
+  } else {
+    $result = $self->_convert($root);
+  }
+  return $result;
+}
+
+# old implementation of output that does not allow for splitting.
+sub _output_old($$)
 {
   my $self = shift;
   my $root = shift;

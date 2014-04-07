@@ -4901,21 +4901,10 @@ sub _prepare_css($)
   $self->{'css_rule_lines'} = \@css_rule_lines;
 }
 
-sub _id_to_filename($$)
-{
-  my $self = shift;
-  my $id = shift;
-  return substr($id, 0, $self->get_conf('BASEFILENAME_LENGTH'));
-}
-
 sub _node_id_file($$)
 {
   my $self = shift;
   my $node_info = shift;
-
-  my $no_unidecode;
-  $no_unidecode = 1 if (defined($self->get_conf('USE_UNIDECODE'))
-                        and !$self->get_conf('USE_UNIDECODE'));
 
   my ($target, $id);
   my $normalized = $node_info->{'normalized'};
@@ -4932,39 +4921,21 @@ sub _node_id_file($$)
     ($target, $id) = &$Texinfo::Config::node_target_name($node_info,
                                                          $target, $id);
   }
-  my $filename;
-  if (defined($node_info->{'normalized'})) { 
-    if ($self->get_conf('TRANSLITERATE_FILE_NAMES')) {
-      $filename = Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
-       {'contents' => $node_info->{'node_content'}},
-            $no_unidecode);
-    } else {
-      $filename = $node_info->{'normalized'};
-    }
-  } else {
-    $filename = '';
-  }
-  return ($self->_id_to_filename($filename), $target, $id);
+
+  my $filename = $self->_node_filename($node_info);
+
+  return ($filename, $target, $id);
 }
 
 sub _new_sectioning_command_target($$)
 {
   my $self = shift;
   my $command = shift;
-  my $no_unidecode;
 
-  $no_unidecode = 1 if (defined($self->get_conf('USE_UNIDECODE')) 
-                        and !$self->get_conf('USE_UNIDECODE'));
+  my ($normalized_name, $filename) 
+    = $self->_sectioning_command_normalized_filename($command);
 
-  my $filename = Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
-       {'contents' => $command->{'extra'}->{'misc_content'}},
-                $no_unidecode);
-
-  my $target_base = _normalized_to_id($filename);
-  $filename = $self->_id_to_filename($filename);
-  $filename .= '.'.$self->get_conf('EXTENSION') 
-    if (defined($self->get_conf('EXTENSION')) 
-      and $self->get_conf('EXTENSION') ne '');
+  my $target_base = _normalized_to_id($normalized_name);
   if ($target_base !~ /\S/ and $command->{'cmdname'} eq 'top' 
       and defined($self->{'misc_elements_targets'}->{'Top'})) {
     $target_base = $self->{'misc_elements_targets'}->{'Top'};
@@ -5129,36 +5100,6 @@ sub _set_root_commands_targets_node_files($$)
   }
 }
 
-sub _set_element_file($$$)
-{
-  my $self = shift;
-  my $element = shift;
-  my $filename = shift;
-
-  if (!defined($filename)) {
-    cluck("_set_element_file: filename not defined\n");
-  }
-  if ($self->get_conf('CASE_INSENSITIVE_FILENAMES')) {
-    if (exists($self->{'filenames'}->{lc($filename)})) {
-      if ($self->get_conf('DEBUG')) {
-        print STDERR "Reusing ".$self->{'filenames'}->{lc($filename)}
-                     ." for $filename\n";
-      }
-      $filename = $self->{'filenames'}->{lc($filename)};
-    } else {
-      $self->{'filenames'}->{lc($filename)} = $filename;
-    }
-  }
-  $element->{'filename'} = $filename;
-  if (defined($self->{'destination_directory'}) 
-      and $self->{'destination_directory'} ne '') {
-    $element->{'out_filename'} = 
-      File::Spec->catfile($self->{'destination_directory'}, $filename);
-  } else {
-    $element->{'out_filename'} = $filename;
-  }
-}
-
 sub _get_element($$;$);
 
 # If $find_container is set, the element that holds the command is found,
@@ -5216,36 +5157,6 @@ sub _get_element($$;$)
       return ($element, $root_command);
     }
   }
-}
-
-sub _top_node_filename($)
-{
-  my $self = shift;
-
-  my $top_node_filename;
-  if (defined($self->get_conf('TOP_FILE')) 
-      and $self->get_conf('TOP_FILE') ne '') {
-    $top_node_filename = $self->get_conf('TOP_FILE');
-  } else {
-    if (defined($self->get_conf('TOP_NODE_FILE'))) {
-      $top_node_filename = $self->get_conf('TOP_NODE_FILE');
-    } else {
-      # TOP_NODE_FILE is set in the default case.
-      # If not the manual name is used.
-      $top_node_filename = $self->{'document_name'};
-    }
-    if (defined($top_node_filename)) {
-      my $top_node_extension;
-      if ($self->get_conf('NODE_FILENAMES')) {
-        $top_node_extension = $self->get_conf('NODE_FILE_EXTENSION');
-      } else {
-        $top_node_extension = $self->get_conf('EXTENSION');
-      }
-      $top_node_filename .= '.'.$top_node_extension 
-        if (defined($top_node_extension) and $top_node_extension ne '');
-    }
-  }
-  return $top_node_filename;
 }
 
 sub _set_pages_files($$)

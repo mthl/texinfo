@@ -1,3 +1,20 @@
+2014-04-08  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/Converter.pm (_id_to_filename, 
+	_sectioning_command_normalized_filename, _node_filename,
+	_set_element_file, _top_node_filename, _get_element, 
+	_set_pages_files, output),
+	* tp/Texinfo/Convert/HTML.pm: move generic functions to Converter.pm 
+	and modify default output() to follow the same rules as HTML.pm 
+	for splitting.
+	* tp/Texinfo/Convert/Plaintext.pm (_convert_node):
+	rename function as _convert_element.
+	(convert_tree): add to be able to work with Converter.pm output().
+	* tp/Texinfo/Convert/Plaintext.pm, 
+	tp/Texinfo/Convert/Info.pm, tp/texi2any.pl: use default
+	output() from Converter.pm for plaintext.  Share less defaults
+	with Info.pm.  Allow splitting plaintext.
+
 2014-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infodoc.c (dump_map_to_message_buffer): Check if

@@ -51,6 +51,9 @@ my $STDIN_DOCU_NAME = 'stdin';
 
 my %defaults = Texinfo::Convert::Plaintext::converter_defaults(undef, undef);
 $defaults{'SHOW_MENU'} = 1;
+$defaults{'EXTENSION'} = 'info';
+$defaults{'USE_SETFILENAME_EXTENSION'} = 1;
+$defaults{'OUTFILE'} = undef;
 
 sub converter_defaults($$)
 {
@@ -128,7 +131,7 @@ sub output($)
     my @nodes = @$elements;
     while (@nodes) {
       my $node = shift @nodes;
-      my $node_text = $self->_convert_node($node);
+      my $node_text = $self->_convert_element($node);
       if (!$first_node) {
         $first_node = 1;
         if (defined($self->{'text_before_first_node'})) {
