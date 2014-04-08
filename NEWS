@@ -33,7 +33,13 @@ one of the relevant sections:
   . new customization variable INDEX_SPECIAL_CHARS_WARNING to complain
     when index entries contain a colon.
   . Docbook output no longer uses <lineannotation> for @r.
-  . -D'var val' works again.
+  . -D'var val' on the command line works as intended again.
+  . --plaintext output can be split.
+
+* info:
+  . new option --init-file allows overriding ~/.info.
+  . new variable infopath-no-defaults allows omitting the compile-time
+    Info directory from the Info search path.
 
 * install-info:
   . handle compressed input file names containing spaces.

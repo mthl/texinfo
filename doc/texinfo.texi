@@ -17539,6 +17539,10 @@ The output is split at @code{@@section} and similar.
 The output is split at every node.  This is the default.
 @end table
 
+Plain text output can be split similarly to HTML.  This may be useful
+for extracting sections from a Texinfo document and making them
+available as separate files.
+
 @item --split-size=@var{num}
 @opindex --split-size=@var{num}
 Keep Info files to at most @var{num} characters if possible; default

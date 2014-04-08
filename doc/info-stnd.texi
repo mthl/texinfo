@@ -18,8 +18,8 @@ This manual is for Stand-alone GNU Info (version @value{VERSION},
 (usually created from Texinfo source files).
 
 Copyright @copyright{} 1992, 1993, 1996, 1997, 1998, 1999, 2001, 2002,
-2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013 Free Software
-Foundation, Inc.
+2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014
+Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -232,10 +232,11 @@ build-time default to the value of @code{INFOPATH}.
 If you do not define @code{INFOPATH}, Info uses a default path defined
 when Info was built as the initial list of directories.  
 
-Regardless of whether @code{INFOPATH} is defined, the default documentation
-directory defined when Info was built is added to the search path.  If you do
-not want this directory to be included, set the @code{infopath-no-defaults}
-variable to @code{On}.  (@xref{infopath-no-defaults}.)
+Regardless of whether @code{INFOPATH} is defined, the default
+documentation directory defined when Info was built is added to the
+search path.  If you do not want this directory to be included, set
+the @code{infopath-no-defaults} variable to @code{On}
+(@pxref{infopath-no-defaults}).
  
 If the list of directories contains the element @code{PATH}, that
 element is replaced by a list of directories derived from the value of
@@ -338,7 +339,7 @@ Commands}.
 @anchor{--init-file}
 @cindex @code{--init-file} command line option
 Read key bindings and variable settings from @var{INIT-FILE} instead
-of the @file{.info} file in your home directory. @xref{Custom Key Bindings}.
+of the @file{.info} file in your home directory.  @xref{Custom Key Bindings}.
 
 @item --node @var{nodename}
 @itemx -n @var{nodename}
@@ -2094,11 +2095,10 @@ file which was compressed on disk.
 @item infopath-no-defaults
 @vindex infopath-no-defaults
 @anchor{infopath-no-defaults}
-Used in conjunction with the @env{INFOPATH} environment variable.
-(@xref{INFOPATH}.)
-When set to @code{On}, the default documentation directory defined
-when Info was built (usually @file{/usr/share/info}) is not added to the 
-search path for Info files.
+Used in conjunction with the @env{INFOPATH} environment variable
+(@pxref{INFOPATH}).  When set to @code{On}, the default documentation
+directory defined when Info was built (e.g., @file{/usr/share/info})
+is not added to the search path for Info files.
 
 @item ISO-Latin
 @cindex ISO Latin characters
@@ -2122,7 +2122,7 @@ result in an error.
 @vindex scroll-behaviour
 Control what happens when forward scrolling is requested at the end of
 a node, or when backward scrolling is requested at the beginning of a
-node.  The two variable names are synonyms.  The default value for
+node.  The two variable names are synonymous.  The default value for
 this variable is @code{Continuous}.  Possible values:
 
 @table @code
@@ -2225,31 +2225,30 @@ command to mute the bell, e.g., @code{xset b 0 0 0}.)
 @cindex @command{infokey}, program for customizing key bindings
 @cindex @file{_info} file (MS-DOS)
 
-GNU Info allows you to override the default key-to-command bindings
-and variable settings described in this
-document.  (The @option{--vi-keys} option rebinds many keys at once;
-@pxref{--vi-keys}.)
+Info allows you to override the default key-to-command bindings and
+variable settings described in this document.  (The @option{--vi-keys}
+option rebinds many keys at once; @pxref{--vi-keys}.)
 
 On startup, GNU Info looks for a configuration file in the invoker's
-HOME directory called @file{.info}.
-@footnote{Due to the limitations of DOS
-filesystems, the MS-DOS version of Info looks for a file @file{_info}
-instead.  If the @env{HOME} variable is not defined, Info additionally
-looks in the current directory.}
-If it is present and appears to have been created with the current
-version of the @code{infokey} command, then Info adopts the key
-bindings and variable settings contained therein.  To use an alternative
-configuration file, use the @option{--init-file} option
-(@pxref{--init-file}).
+@env{HOME} directory called @file{.info}, i.e.,
+@file{~/.info}.@footnote{Due to the limitations of DOS filesystems,
+the MS-DOS version of Info looks for a file @file{_info} instead.  If
+the @env{HOME} variable is not defined, Info additionally looks in the
+current directory.}  If it is present and appears to have been created
+with a compatible version of the @code{infokey} command, then Info
+adopts the key bindings and variable settings contained therein.  To
+use an alternative configuration file, use the @option{--init-file}
+option (@pxref{--init-file}).
 
-The @file{.info} file contains compact, non-textual data for reasons of
-efficiency and because its design was lifted wholesale from the GNU Less
-program, which also does it that way.  It must be created by compiling a
-textual source file using the @code{infokey} command.
+The @file{.info} file contains compact, non-textual data for reasons
+of efficiency---and because its design was lifted wholesale from the
+GNU Less program, which does it that way.  It must be created by
+compiling a textual source file using the @code{infokey} command.
 
 Variables may also be set on the command line with the
-@option{--variable} option; @pxref{variable-assignment}.  Variable
-settings on the command line override settings from the @file{.info} file.
+@option{--variable} option (@pxref{variable-assignment}).  Variable
+settings on the command line override settings from the @file{.info}
+file.
 
 @menu
 * Invoking @t{infokey}::
