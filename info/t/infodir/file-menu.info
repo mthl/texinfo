@@ -1,0 +1,35 @@
+
+File: file-menu,   Node: Top	This is the top of the INFO tree
+
+This is file whose Top node contains a menu.
+
+* Menu:
+
+* First entry:Node 1.
+
+
+File: file-menu,   Node: Node 1
+
+Arrived at Node 1.
+
+* Menu:
+
+* Node 2::
+
+
+File: file-menu,   Node: Node 2
+
+Arrived at Node 2.
+
+* Menu:
+
+* Node 3::
+
+File: file-menu,   Node: Node 3
+
+Arrived at Node 3.
+
+
+File: file-menu,   Node: Unreachable
+
+This node is not linked to elsewhere.

@@ -78,3 +78,25 @@ funs.h: makedoc$(EXEEXT) $(cmd_sources)
 # The following hack is necessary to hint make before the automatic
 # dependencies are built.
 BUILT_SOURCES = funs.h
+
+# Test suite
+
+check_DATA = t/Info-config
+t/Info-config: t/Infokey-config
+	./infokey --output $@ $<
+
+check_PROGRAMS = pseudotty
+pseudotty_SOURCES = pseudotty.c
+
+TESTS = \
+	t/file.sh \
+	t/file-node.sh \
+	t/dir.sh \
+	t/dir-to-file.sh \
+	t/dir-to-no-file.sh \
+	t/dir-file-menu.sh \
+	t/dir-file-no-menu.sh \
+	t/dir-3-menus.sh \
+	t/tab.sh \
+	t/index.sh \
+	t/help.sh
