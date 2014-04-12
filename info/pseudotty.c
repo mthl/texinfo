@@ -40,7 +40,7 @@ main ()
   if (slave == -1)
     exit (1);
   printf ("%s\n", name);
-  fflush (stdout);
+  fclose (stdout);
 
   while (read (master, &dummy, 1) > 0)
     ;

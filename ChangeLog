@@ -1,5 +1,18 @@
 2014-04-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/Init-intera.inc: New file for interactive tests.  Wait
+	for file containing name of pseudoterminal to be created by
+	subprocess.
+	* info/t/Cleanup.inc: File created: shell code for test cleanup
+	and exit.
+	* info/t/index.sh, info/t/tab.sh: Source new files.
+	* info/t/Init-test.inc: Record that test isn't interactive to allow
+	Cleanup.inc to be used for both kinds of tests.
+	* info/pseudotty.c: Call fclose on stdout instead of fflush to
+	encourage output file to be created quickly.
+
+2014-04-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/Makefile.am: Rules and variables for test suite.
 	* info/pseudotty.c: New program, used by tests.
 	* info/t/Init-test.inc: File created for test scripts.

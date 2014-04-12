@@ -17,3 +17,6 @@ export INFO_PRINT_COMMAND='>t/ginfo-output'
 
 # Remove any accidentally left over files from previous tests
 rm -f t/ginfo-output
+
+# Not an interactive test
+PTY_PID=0
