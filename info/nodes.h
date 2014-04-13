@@ -144,6 +144,13 @@ extern FILE_BUFFER *info_load_file (char *filename);
    If the node cannot be found, return a NULL pointer. */
 extern NODE *info_get_node (char *filename, char *nodename, int flag);
 
+/* Forward declaration to avoid node.h and window.h having to
+   include each other. */
+typedef struct window_struct WINDOW;
+
+extern NODE *info_get_node_with_defaults (char *filename, char *nodename,
+                                          int flag, WINDOW *window);
+
 /* Return a pointer to a NODE structure for the Info node NODENAME in
    FILE_BUFFER.  NODENAME can be passed as NULL, in which case the
    nodename of "Top" is used.  If the node cannot be found, return a

@@ -1,5 +1,18 @@
 2014-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* nodes.c (get_filename_and_nodename): New static function setting
+	defaults for node specifications.
+	(info_get_node, info_get_node_with_defaults): New argument 'window'
+	for info_get_node.  Function renamed, with wrapper with old arguments.
+	Call get_filename_and_nodename.
+	(info_get_node_of_file_buffer): Remove unnecessary check for null
+	nodename - done by calling code.
+
+	* session.c (info_select_reference): Call info_get_node_with_defaults.
+	(info_parse_and_select): Do not call info_parse_node.
+
+2014-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c: Reorder file into sections.  No functional changes.
 
 2014-04-13  Gavin Smith  <gavinsmith0123@gmail.com>

@@ -2044,25 +2044,12 @@ void
 info_select_reference (WINDOW *window, REFERENCE *entry)
 {
   NODE *node;
-  char *filename, *nodename, *file_system_error;
+  char *file_system_error;
 
   file_system_error = NULL;
 
-  filename = entry->filename;
-  if (!filename)
-    filename = window->node->parent;
-  if (!filename)
-    filename = window->node->filename;
-
-  if (filename)
-    filename = xstrdup (filename);
-
-  if (entry->nodename)
-    nodename = xstrdup (entry->nodename);
-  else
-    nodename = xstrdup ("Top");
-
-  node = info_get_node (filename, nodename, PARSE_NODE_VERBATIM);
+  node = info_get_node_with_defaults (entry->filename, entry->nodename,
+             PARSE_NODE_VERBATIM, window);
 
   /* Try something a little weird.  If the node couldn't be found, and the
      reference was of the form "foo::", see if the entry->label can be found
@@ -2088,12 +2075,10 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
       if (file_system_error)
         info_error ("%s", file_system_error);
       else
-        info_error (msg_cant_find_node, nodename);
+        info_error (msg_cant_find_node, entry->nodename);
     }
 
   free (file_system_error);
-  free (filename);
-  free (nodename);
 
   if (node)
     info_set_node_of_window (1, window, node);
@@ -2107,10 +2092,9 @@ info_parse_and_select (char *line, WINDOW *window)
 {
   REFERENCE entry;
 
-  info_parse_node (line, PARSE_NODE_DFLT);
-
-  entry.nodename = info_parsed_nodename;
-  entry.filename = info_parsed_filename;
+  /* info_parse_node will be called on 'line' in subsequent functions. */
+  entry.nodename = line;
+  entry.filename = 0;
   entry.label = "*info-parse-and-select*";
 
   info_select_reference (window, &entry);

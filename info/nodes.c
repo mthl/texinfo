@@ -869,6 +869,9 @@ info_reload_file_buffer_contents (FILE_BUFFER *fb)
    be off by.  I feel that it should be much smaller, like 4.  */
 #define DEFAULT_INFO_FUDGE 1000
 
+static int get_filename_and_nodename (int flag, WINDOW *window,
+                                      char **filename, char **nodename,
+                                      char *filename_in, char *nodename_in);
 static char *adjust_nodestart (NODE *node, int min, int max);
 static void node_set_body_start (NODE *node);
 static NODE *find_node_of_anchor (FILE_BUFFER *file_buffer, TAG *tag);
@@ -876,35 +879,29 @@ static char *adjust_nodestart (NODE *node, int min, int max);
 static NODE *info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer,
     char *nodename);
 
-/* Return a pointer to a NODE structure for the Info node (FILENAME)NODENAME.
-   If FILENAME is NULL, `dir' is used.
-   If NODENAME is NULL, `Top' is used.
+/* Return a pointer to a NODE structure for the Info node (FILENAME)NODENAME,
+   using WINDOW for defaults.  If WINDOW is null, the defaults are:
+   - If FILENAME is NULL, `dir' is used.
+   - If NODENAME is NULL, `Top' is used.
    The FLAG argument (one of the PARSE_NODE_* constants) instructs how to
    parse NODENAME.
    
    If the node cannot be found, return NULL. */
 NODE *
-info_get_node (char *filename, char *nodename, int flag)
+info_get_node_with_defaults (char *filename_in, char *nodename_in,
+                             int flag, WINDOW *window)
 {
   NODE *node;
   FILE_BUFFER *file_buffer = NULL;
+  char *filename = 0, *nodename = 0;
 
   /* Used to build `dir' menu from `localdir' files found in INFOPATH. */
   extern void maybe_build_dir_node (char *dirname);
 
   info_recent_file_error = NULL;
-  info_parse_node (nodename, flag);
-  nodename = NULL;
 
-  if (info_parsed_filename)
-    filename = info_parsed_filename;
-
-  if (info_parsed_nodename)
-    nodename = info_parsed_nodename;
-
-  /* If FILENAME is not specified, it defaults to "dir". */
-  if (!filename)
-    filename = "dir";
+  get_filename_and_nodename (flag, window,
+       &filename, &nodename, filename_in, nodename_in);
 
   /* If the file to be looked up is "dir", build the contents from all of
      the "dir"s and "localdir"s found in INFOPATH. */
@@ -941,7 +938,49 @@ info_get_node (char *filename, char *nodename, int flag)
         node = info_get_node_of_file_buffer ("TOP", file_buffer);
     }
 
+  free (filename); free (nodename);
   return node;
+}
+
+NODE *
+info_get_node (char *filename_in, char *nodename_in, int flag)
+{
+  return info_get_node_with_defaults (filename_in, nodename_in, flag, 0);
+}
+
+/* Set default values.  Output values should be freed by caller. */
+static int
+get_filename_and_nodename (int flag, WINDOW *window,
+                           char **filename, char **nodename,
+                           char *filename_in, char *nodename_in)
+{
+  /* Get file name, nodename */
+  info_parse_node (nodename_in, flag);
+
+  if (info_parsed_filename)
+    *filename = info_parsed_filename;
+  else if (filename_in)
+    *filename = filename_in;
+
+  /* If FILENAME is not specified, it defaults to "dir". */
+  if (!*filename)
+    {
+      if (window)
+        {
+          *filename = window->node->parent;
+          if (!*filename)
+            *filename = window->node->filename;
+        }
+      else
+        *filename = "dir";
+    }
+  *filename = xstrdup (*filename);
+
+  if (info_parsed_nodename)
+    *nodename = xstrdup (info_parsed_nodename);
+  /* If NODENAME is not specified, it defaults to "Top". */
+  else
+    *nodename = xstrdup ("Top");
 }
 
 static void
@@ -973,13 +1012,6 @@ info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
   if (!file_buffer->contents)
     info_reload_file_buffer_contents (file_buffer);
 
-  /* If NODENAME is not specified, it defaults to "Top". */
-  if (!nodename)
-    {
-      nodename = "Top";
-      implicit_nodename = 1;  /* don't return man page for top */
-    }
-
   /* If the name of the node that we wish to find is exactly "*", then the
      node body is the contents of the entire file.  Create and return such
      a node. */
@@ -998,7 +1030,7 @@ info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
 #if defined (HANDLE_MAN_PAGES)
   /* If the file buffer is the magic one associated with manpages, call
      the manpage node finding function instead. */
-  else if (!implicit_nodename && file_buffer->flags & N_IsManPage)
+  else if (file_buffer->flags & N_IsManPage)
     {
       node = get_manpage_node (file_buffer, nodename);
     }
