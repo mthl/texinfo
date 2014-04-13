@@ -1,5 +1,11 @@
 2014-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* session.c (forward_move_node_structure)
+	(backward_move_node_structure): Remove accesses of
+	info_parsed_filename and info_parsed_nodename.
+
+2014-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info-utils.c (info_parse_label): Return label with no parsing.
 	All callers changed.
 	* session.c (info_handle_pointer): Do not assume anything

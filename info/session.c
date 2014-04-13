@@ -1254,23 +1254,17 @@ forward_move_node_structure (WINDOW *window, int behaviour)
 
                   /* If this node's first menu item is the same as this node's
                      Next pointer, keep backing up. */
-                  if (!info_parsed_filename)
+                  if (spec)
                     {
                       REFERENCE **menu;
-                      char *next_nodename;
-
-                      /* Remember the name of the Next node, since reading
-                         the menu can overwrite the contents of the
-                         info_parsed_xxx strings. */
-                      next_nodename = xstrdup (info_parsed_nodename);
 
                       menu = info_menu_of_node (window->node);
                       if (menu &&
                           (strcmp
-                           (menu[0]->nodename, next_nodename) == 0))
+                           (menu[0]->nodename, spec) == 0))
                         {
                           info_free_references (menu);
-                          free (next_nodename);
+                          free (spec);
                           continue;
                         }
                       else
@@ -1278,7 +1272,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                           /* Restore the world to where it was before
                              reading the menu contents. */
                           info_free_references (menu);
-                          free (next_nodename);
+                          free (spec);
                         }
                     }
 
@@ -1368,11 +1362,11 @@ backward_move_node_structure (WINDOW *window, int behaviour)
              move Up.  Otherwise, we could move Prev, and then to the last
              menu item in the Prev.  This would cause the user to loop
              through a subsection of the info file. */
-          if (!info_parsed_filename && info_parsed_nodename)
+          if (spec)
             {
               char *pnode;
 
-              pnode = xstrdup (info_parsed_nodename);
+              pnode = spec;
               spec = info_up_label_of_node (window->node);
 
               if (spec && strcmp (spec, pnode) == 0)
