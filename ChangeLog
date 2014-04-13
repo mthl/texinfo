@@ -1,5 +1,9 @@
 2014-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c: Reorder file into sections.  No functional changes.
+
+2014-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/file.sh, info/t/file-node.sh, info/t/dir.sh,
 	info/t/dir-to-file.sh, info/t/dir-to-no-file.sh,
 	info/t/dir-file-menu.sh, info/t/dir-file-no-menu.sh,

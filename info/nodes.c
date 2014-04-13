@@ -31,31 +31,6 @@
 #  include "man.h"
 #endif /* HANDLE_MAN_PAGES */
 
-static void remember_info_file (FILE_BUFFER *file_buffer);
-static void free_file_buffer_tags (FILE_BUFFER *file_buffer);
-static void free_info_tag (TAG *tag);
-static void get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
-    SEARCH_BINDING *buffer_binding);
-static void get_nodes_of_info_file (FILE_BUFFER *file_buffer);
-static void get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
-    SEARCH_BINDING *indirect_binding, SEARCH_BINDING *tags_binding);
-static void info_reload_file_buffer_contents (FILE_BUFFER *fb);
-static char *adjust_nodestart (NODE *node, int min, int max);
-static FILE_BUFFER *info_load_file_internal (char *filename, int get_tags);
-static FILE_BUFFER *info_find_file_internal (char *filename, int get_tags);
-static NODE *info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer,
-    char *nodename);
-
-static long get_node_length (SEARCH_BINDING *binding);
-
-/* Magic number that RMS used to decide how much a tags table pointer could
-   be off by.  I feel that it should be much smaller, like 4.  */
-#define DEFAULT_INFO_FUDGE 1000
-
-/* Passed to *_internal functions.  INFO_GET_TAGS says to do what is
-   neccessary to fill in the nodes or tags arrays in FILE_BUFFER. */
-#define INFO_NO_TAGS  0
-#define INFO_GET_TAGS 1
 
 /* Global variables.  */
 
@@ -68,342 +43,17 @@ FILE_BUFFER **info_loaded_files = NULL;
 /* The number of slots currently allocated to LOADED_FILES. */
 size_t info_loaded_files_slots = 0;
 
-/* Public functions for node manipulation.  */
+/* Functions for tag table creation and destruction. */
 
-/* Used to build `dir' menu from `localdir' files found in INFOPATH. */
-extern void maybe_build_dir_node (char *dirname);
+static long get_node_length (SEARCH_BINDING *binding);
+static void get_nodes_of_info_file (FILE_BUFFER *file_buffer);
+static void get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
+    SEARCH_BINDING *buffer_binding);
+static void get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
+    SEARCH_BINDING *indirect_binding, SEARCH_BINDING *tags_binding);
+static void free_file_buffer_tags (FILE_BUFFER *file_buffer);
+static void free_info_tag (TAG *tag);
 
-/* Return a pointer to a NODE structure for the Info node (FILENAME)NODENAME.
-   If FILENAME is NULL, `dir' is used.
-   If NODENAME is NULL, `Top' is used.
-   The FLAG argument (one of the PARSE_NODE_* constants) instructs how to
-   parse NODENAME.
-   
-   If the node cannot be found, return NULL. */
-NODE *
-info_get_node (char *filename, char *nodename, int flag)
-{
-  NODE *node;
-  FILE_BUFFER *file_buffer = NULL;
-
-  info_recent_file_error = NULL;
-  info_parse_node (nodename, flag);
-  nodename = NULL;
-
-  if (info_parsed_filename)
-    filename = info_parsed_filename;
-
-  if (info_parsed_nodename)
-    nodename = info_parsed_nodename;
-
-  /* If FILENAME is not specified, it defaults to "dir". */
-  if (!filename)
-    filename = "dir";
-
-  /* If the file to be looked up is "dir", build the contents from all of
-     the "dir"s and "localdir"s found in INFOPATH. */
-  if (is_dir_name (filename))
-    maybe_build_dir_node (filename);
-
-  /* Find the correct info file, or give up.  */
-  file_buffer = info_find_file (filename);
-  if (!file_buffer)
-    {
-      node = make_manpage_node (filename);
-      if (!node)
-	{
-	  if (filesys_error_number)
-	    info_recent_file_error =
-	      filesys_error_string (filename, filesys_error_number);
-	  return NULL;
-	}
-    }
-  else
-    /* Look for the node.  */
-    node = info_get_node_of_file_buffer (nodename, file_buffer);
-
-  /* If the node not found was "Top", try again with different case,
-     unless this was a man page.  */
-  if (!node
-      && mbscasecmp (filename, MANPAGE_FILE_BUFFER_NAME) != 0
-      && (nodename == NULL || mbscasecmp (nodename, "Top") == 0))
-    {
-      node = info_get_node_of_file_buffer ("Top", file_buffer);
-      if (!node)
-        node = info_get_node_of_file_buffer ("top", file_buffer);
-      if (!node)
-        node = info_get_node_of_file_buffer ("TOP", file_buffer);
-    }
-
-  return node;
-}
-
-static void
-node_set_body_start (NODE *node)
-{
-  int n = skip_node_separator (node->contents);
-  node->body_start = strcspn(node->contents + n, "\n");
-  node->body_start += n;
-  if (node->contents[++node->body_start] == '\n')
-    ++node->body_start;
-}
-
-/* Return a pointer to a NODE structure for the Info node NODENAME in
-   FILE_BUFFER.  NODENAME can be passed as NULL, in which case the
-   nodename of "Top" is used.  If the node cannot be found, return a
-   NULL pointer. */
-NODE *
-info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
-{
-  NODE *node = NULL;
-  int implicit_nodename = 0;
-
-  /* If we are unable to find the file, we have to give up.  There isn't
-     anything else we can do. */
-  if (!file_buffer)
-    return NULL;
-
-  /* If the file buffer was gc'ed, reload the contents now. */
-  if (!file_buffer->contents)
-    info_reload_file_buffer_contents (file_buffer);
-
-  /* If NODENAME is not specified, it defaults to "Top". */
-  if (!nodename)
-    {
-      nodename = "Top";
-      implicit_nodename = 1;  /* don't return man page for top */
-    }
-
-  /* If the name of the node that we wish to find is exactly "*", then the
-     node body is the contents of the entire file.  Create and return such
-     a node. */
-  if (strcmp (nodename, "*") == 0)
-    {
-      node = xmalloc (sizeof (NODE));
-      node->filename = file_buffer->fullpath;
-      node->parent   = NULL;
-      node->nodename = xstrdup ("*");
-      node->contents = file_buffer->contents;
-      node->nodelen = file_buffer->filesize;
-      node->flags = 0;
-      node->display_pos = 0;
-      node_set_body_start (node);
-    }
-#if defined (HANDLE_MAN_PAGES)
-  /* If the file buffer is the magic one associated with manpages, call
-     the manpage node finding function instead. */
-  else if (!implicit_nodename && file_buffer->flags & N_IsManPage)
-    {
-      node = get_manpage_node (file_buffer, nodename);
-    }
-#endif /* HANDLE_MAN_PAGES */
-  /* If this is the "main" info file, it might contain a tags table.  Search
-     the tags table for an entry which matches the node that we want.  If
-     there is a tags table, get the file which contains this node, but don't
-     bother building a node list for it. */
-  else if (file_buffer->tags)
-    {
-      node = info_node_of_file_buffer_tags (file_buffer, nodename);
-    }
-
-  /* Return the results of our node search. */
-  return node;
-}
-
-/* Locate the file named by FILENAME, and return the information structure
-   describing this file.  The file may appear in our list of loaded files
-   already, or it may not.  If it does not already appear, find the file,
-   and add it to the list of loaded files.  If the file cannot be found,
-   return a NULL FILE_BUFFER *. */
-FILE_BUFFER *
-info_find_file (char *filename)
-{
-  return info_find_file_internal (filename, INFO_GET_TAGS);
-}
-
-/* Load the info file FILENAME, remembering information about it in a
-   file buffer. */
-FILE_BUFFER *
-info_load_file (char *filename)
-{
-  return info_load_file_internal (filename, INFO_GET_TAGS);
-}
-
-
-/* Private functions implementation.  */
-
-/* The workhorse for info_find_file ().  Non-zero 2nd argument says to
-   try to build a tags table (or otherwise glean the nodes) for this
-   file once found.  By default, we build the tags table, but when this
-   function is called by info_get_node () when we already have a valid
-   tags table describing the nodes, it is unnecessary. */
-static FILE_BUFFER *
-info_find_file_internal (char *filename, int get_tags)
-{
-  int i;
-  FILE_BUFFER *file_buffer;
-
-  /* First try to find the file in our list of already loaded files. */
-  if (info_loaded_files)
-    {
-      for (i = 0; (file_buffer = info_loaded_files[i]); i++)
-        if ((FILENAME_CMP (filename, file_buffer->filename) == 0)
-            || (FILENAME_CMP (filename, file_buffer->fullpath) == 0)
-            || (!IS_ABSOLUTE (filename)
-                && FILENAME_CMP (filename,
-                                filename_non_directory (file_buffer->fullpath))
-                    == 0))
-          {
-            struct stat new_info, *old_info;
-
-            /* This file is loaded.  If the filename that we want is
-               specifically "dir", then simply return the file buffer. */
-            if (is_dir_name (filename_non_directory (filename)))
-              return file_buffer;
-
-#if defined (HANDLE_MAN_PAGES)
-            /* Do the same for the magic MANPAGE file. */
-            if (file_buffer->flags & N_IsManPage)
-              return file_buffer;
-#endif /* HANDLE_MAN_PAGES */
-
-            /* The file appears to be already loaded, and is not "dir".  Check
-               to see if it's changed since the last time it was loaded.  */
-            if (stat (file_buffer->fullpath, &new_info) == -1)
-              {
-                filesys_error_number = errno;
-                return NULL;
-              }
-
-            old_info = &file_buffer->finfo;
-
-            if (new_info.st_size != old_info->st_size
-                || new_info.st_mtime != old_info->st_mtime)
-              {
-                /* The file has changed.  Forget that we ever had loaded it
-                   in the first place. */
-                forget_info_file (filename);
-                break;
-              }
-            else
-              {
-                /* The info file exists, and has not changed since the last
-                   time it was loaded.  If the caller requested a nodes list
-                   for this file, and there isn't one here, build the nodes
-                   for this file_buffer.  In any case, return the file_buffer
-                   object. */
-                if (!file_buffer->contents)
-                  {
-                    /* The file's contents have been gc'ed.  Reload it.  */
-                    info_reload_file_buffer_contents (file_buffer);
-                    if (!file_buffer->contents)
-                      return NULL;
-                  }
-
-                if (get_tags && !file_buffer->tags)
-                  build_tags_and_nodes (file_buffer);
-
-                return file_buffer;
-              }
-          }
-    }
-
-  /* The file wasn't loaded.  Try to load it now. */
-#if defined (HANDLE_MAN_PAGES)
-  /* If the name of the file that we want is our special file buffer for
-     Unix manual pages, then create the file buffer, and return it now. */
-  if (mbscasecmp (filename, MANPAGE_FILE_BUFFER_NAME) == 0)
-    file_buffer = create_manpage_file_buffer ();
-  else
-#endif /* HANDLE_MAN_PAGES */
-    file_buffer = info_load_file_internal (filename, get_tags);
-
-  /* If the file was loaded, remember the name under which it was found. */
-  if (file_buffer)
-    remember_info_file (file_buffer);
-
-  return file_buffer;
-}
-
-/* The workhorse function for info_load_file ().  Non-zero second argument
-   says to build a list of tags (or nodes) for this file.  This is the
-   default behaviour when info_load_file () is called, but it is not
-   necessary when loading a subfile for which we already have tags. */
-static FILE_BUFFER *
-info_load_file_internal (char *filename, int get_tags)
-{
-  char *fullpath, *contents;
-  size_t filesize;
-  struct stat finfo;
-  int retcode, compressed;
-  FILE_BUFFER *file_buffer = NULL;
-  
-  /* Get the full pathname of this file, as known by the info system.
-     That is to say, search along INFOPATH and expand tildes, etc. */
-  fullpath = info_find_fullpath (filename);
-
-  /* Did we actually find the file? */
-  retcode = stat (fullpath, &finfo);
-
-  /* If the file referenced by the name returned from info_find_fullpath ()
-     doesn't exist, then try again with the last part of the filename
-     appearing in lowercase. */
-  /* This is probably not needed at all on those systems which define
-     FILENAME_CMP to be mbscasecmp.  But let's do it anyway, lest some
-     network redirector supports case sensitivity.  */
-  if (retcode < 0)
-    {
-      char *lowered_name;
-      char *tmp_basename;
-
-      lowered_name = xstrdup (filename);
-      tmp_basename = filename_non_directory (lowered_name);
-
-      while (*tmp_basename)
-        {
-          if (isupper (*tmp_basename))
-            *tmp_basename = tolower (*tmp_basename);
-
-          tmp_basename++;
-        }
-
-      fullpath = info_find_fullpath (lowered_name);
-
-      retcode = stat (fullpath, &finfo);
-      free (lowered_name);
-    }
-
-  /* If the file wasn't found, give up, returning a NULL pointer. */
-  if (retcode < 0)
-    {
-      filesys_error_number = errno;
-      return NULL;
-    }
-
-  /* Otherwise, try to load the file. */
-  contents = filesys_read_info_file (fullpath, &filesize, &finfo, &compressed);
-
-  if (!contents)
-    return NULL;
-
-  /* The file was found, and can be read.  Allocate FILE_BUFFER and fill
-     in the various members. */
-  file_buffer = make_file_buffer ();
-  file_buffer->filename = xstrdup (filename);
-  file_buffer->fullpath = xstrdup (fullpath);
-  file_buffer->finfo = finfo;
-  file_buffer->filesize = filesize;
-  file_buffer->contents = contents;
-  if (compressed)
-    file_buffer->flags |= N_IsCompressed;
-  
-  /* If requested, build the tags and nodes for this file buffer. */
-  if (get_tags)
-    build_tags_and_nodes (file_buffer);
-
-  return file_buffer;
-}
-
 /* Grovel FILE_BUFFER->contents finding tags and nodes, and filling in the
    various slots.  This can also be used to rebuild a tag or node table. */
 void
@@ -509,6 +159,22 @@ build_tags_and_nodes (FILE_BUFFER *file_buffer)
   get_nodes_of_info_file (file_buffer);
 }
 
+/* Return the length of the node which starts at BINDING. */
+static long
+get_node_length (SEARCH_BINDING *binding)
+{
+  int i;
+  char *body;
+
+  /* [A node] ends with either a ^_, a ^L, or end of file.  */
+  for (i = binding->start, body = binding->buffer; i < binding->end; i++)
+    {
+      if (body[i] == INFO_FF || body[i] == INFO_COOKIE)
+        break;
+    }
+  return i - binding->start;
+}
+
 /* Search through FILE_BUFFER->contents building an array of TAG *,
    one entry per each node present in the file.  Store the tags in
    FILE_BUFFER->tags, and the number of allocated slots in
@@ -587,22 +253,6 @@ get_nodes_of_info_file (FILE_BUFFER *file_buffer)
       add_pointer_to_array (entry, tags_index, file_buffer->tags,
                             file_buffer->tags_slots, 100);
     }
-}
-
-/* Return the length of the node which starts at BINDING. */
-static long
-get_node_length (SEARCH_BINDING *binding)
-{
-  int i;
-  char *body;
-
-  /* [A node] ends with either a ^_, a ^L, or end of file.  */
-  for (i = binding->start, body = binding->buffer; i < binding->end; i++)
-    {
-      if (body[i] == INFO_FF || body[i] == INFO_COOKIE)
-        break;
-    }
-  return i - binding->start;
 }
 
 /* Build and save the array of nodes in FILE_BUFFER by searching through the
@@ -876,6 +526,495 @@ get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
   free (subfiles);
 }
 
+/* Free the tags (if any) associated with FILE_BUFFER. */
+static void
+free_file_buffer_tags (FILE_BUFFER *file_buffer)
+{
+  int i;
+
+  if (file_buffer->tags)
+    {
+      TAG *tag;
+
+      for (i = 0; (tag = file_buffer->tags[i]); i++)
+        free_info_tag (tag);
+
+      free (file_buffer->tags);
+      file_buffer->tags = NULL;
+      file_buffer->tags_slots = 0;
+    }
+
+  if (file_buffer->subfiles)
+    {
+      for (i = 0; file_buffer->subfiles[i]; i++)
+        free (file_buffer->subfiles[i]);
+
+      free (file_buffer->subfiles);
+      file_buffer->subfiles = NULL;
+    }
+}
+
+/* Free the data associated with TAG, as well as TAG itself. */
+static void
+free_info_tag (TAG *tag)
+{
+  free (tag->nodename);
+  free (tag->content_cache);
+  
+  /* We don't free tag->filename, because that filename is part of the
+     subfiles list for the containing FILE_BUFFER.  free_info_tags ()
+     will free the subfiles when it is appropriate. */
+
+  free (tag);
+}
+
+/* Functions for retrieving files. */
+
+/* Passed to *_internal functions.  INFO_GET_TAGS says to do what is
+   neccessary to fill in the nodes or tags arrays in FILE_BUFFER. */
+#define INFO_NO_TAGS  0
+#define INFO_GET_TAGS 1
+
+static FILE_BUFFER *info_find_file_internal (char *filename, int get_tags);
+static FILE_BUFFER *info_load_file_internal (char *filename, int get_tags);
+static void remember_info_file (FILE_BUFFER *file_buffer);
+static void info_reload_file_buffer_contents (FILE_BUFFER *fb);
+
+/* Locate the file named by FILENAME, and return the information structure
+   describing this file.  The file may appear in our list of loaded files
+   already, or it may not.  If it does not already appear, find the file,
+   and add it to the list of loaded files.  If the file cannot be found,
+   return a NULL FILE_BUFFER *. */
+FILE_BUFFER *
+info_find_file (char *filename)
+{
+  return info_find_file_internal (filename, INFO_GET_TAGS);
+}
+
+/* Load the info file FILENAME, remembering information about it in a
+   file buffer. */
+FILE_BUFFER *
+info_load_file (char *filename)
+{
+  return info_load_file_internal (filename, INFO_GET_TAGS);
+}
+
+/* The workhorse for info_find_file ().  Non-zero 2nd argument says to
+   try to build a tags table (or otherwise glean the nodes) for this
+   file once found.  By default, we build the tags table, but when this
+   function is called by info_get_node () when we already have a valid
+   tags table describing the nodes, it is unnecessary. */
+static FILE_BUFFER *
+info_find_file_internal (char *filename, int get_tags)
+{
+  int i;
+  FILE_BUFFER *file_buffer;
+
+  /* First try to find the file in our list of already loaded files. */
+  if (info_loaded_files)
+    {
+      for (i = 0; (file_buffer = info_loaded_files[i]); i++)
+        if ((FILENAME_CMP (filename, file_buffer->filename) == 0)
+            || (FILENAME_CMP (filename, file_buffer->fullpath) == 0)
+            || (!IS_ABSOLUTE (filename)
+                && FILENAME_CMP (filename,
+                                filename_non_directory (file_buffer->fullpath))
+                    == 0))
+          {
+            struct stat new_info, *old_info;
+
+            /* This file is loaded.  If the filename that we want is
+               specifically "dir", then simply return the file buffer. */
+            if (is_dir_name (filename_non_directory (filename)))
+              return file_buffer;
+
+#if defined (HANDLE_MAN_PAGES)
+            /* Do the same for the magic MANPAGE file. */
+            if (file_buffer->flags & N_IsManPage)
+              return file_buffer;
+#endif /* HANDLE_MAN_PAGES */
+
+            /* The file appears to be already loaded, and is not "dir".  Check
+               to see if it's changed since the last time it was loaded.  */
+            if (stat (file_buffer->fullpath, &new_info) == -1)
+              {
+                filesys_error_number = errno;
+                return NULL;
+              }
+
+            old_info = &file_buffer->finfo;
+
+            if (new_info.st_size != old_info->st_size
+                || new_info.st_mtime != old_info->st_mtime)
+              {
+                /* The file has changed.  Forget that we ever had loaded it
+                   in the first place. */
+                forget_info_file (filename);
+                break;
+              }
+            else
+              {
+                /* The info file exists, and has not changed since the last
+                   time it was loaded.  If the caller requested a nodes list
+                   for this file, and there isn't one here, build the nodes
+                   for this file_buffer.  In any case, return the file_buffer
+                   object. */
+                if (!file_buffer->contents)
+                  {
+                    /* The file's contents have been gc'ed.  Reload it.  */
+                    info_reload_file_buffer_contents (file_buffer);
+                    if (!file_buffer->contents)
+                      return NULL;
+                  }
+
+                if (get_tags && !file_buffer->tags)
+                  build_tags_and_nodes (file_buffer);
+
+                return file_buffer;
+              }
+          }
+    }
+
+  /* The file wasn't loaded.  Try to load it now. */
+#if defined (HANDLE_MAN_PAGES)
+  /* If the name of the file that we want is our special file buffer for
+     Unix manual pages, then create the file buffer, and return it now. */
+  if (mbscasecmp (filename, MANPAGE_FILE_BUFFER_NAME) == 0)
+    file_buffer = create_manpage_file_buffer ();
+  else
+#endif /* HANDLE_MAN_PAGES */
+    file_buffer = info_load_file_internal (filename, get_tags);
+
+  /* If the file was loaded, remember the name under which it was found. */
+  if (file_buffer)
+    remember_info_file (file_buffer);
+
+  return file_buffer;
+}
+
+/* The workhorse function for info_load_file ().  Non-zero second argument
+   says to build a list of tags (or nodes) for this file.  This is the
+   default behaviour when info_load_file () is called, but it is not
+   necessary when loading a subfile for which we already have tags. */
+static FILE_BUFFER *
+info_load_file_internal (char *filename, int get_tags)
+{
+  char *fullpath, *contents;
+  size_t filesize;
+  struct stat finfo;
+  int retcode, compressed;
+  FILE_BUFFER *file_buffer = NULL;
+  
+  /* Get the full pathname of this file, as known by the info system.
+     That is to say, search along INFOPATH and expand tildes, etc. */
+  fullpath = info_find_fullpath (filename);
+
+  /* Did we actually find the file? */
+  retcode = stat (fullpath, &finfo);
+
+  /* If the file referenced by the name returned from info_find_fullpath ()
+     doesn't exist, then try again with the last part of the filename
+     appearing in lowercase. */
+  /* This is probably not needed at all on those systems which define
+     FILENAME_CMP to be mbscasecmp.  But let's do it anyway, lest some
+     network redirector supports case sensitivity.  */
+  if (retcode < 0)
+    {
+      char *lowered_name;
+      char *tmp_basename;
+
+      lowered_name = xstrdup (filename);
+      tmp_basename = filename_non_directory (lowered_name);
+
+      while (*tmp_basename)
+        {
+          if (isupper (*tmp_basename))
+            *tmp_basename = tolower (*tmp_basename);
+
+          tmp_basename++;
+        }
+
+      fullpath = info_find_fullpath (lowered_name);
+
+      retcode = stat (fullpath, &finfo);
+      free (lowered_name);
+    }
+
+  /* If the file wasn't found, give up, returning a NULL pointer. */
+  if (retcode < 0)
+    {
+      filesys_error_number = errno;
+      return NULL;
+    }
+
+  /* Otherwise, try to load the file. */
+  contents = filesys_read_info_file (fullpath, &filesize, &finfo, &compressed);
+
+  if (!contents)
+    return NULL;
+
+  /* The file was found, and can be read.  Allocate FILE_BUFFER and fill
+     in the various members. */
+  file_buffer = make_file_buffer ();
+  file_buffer->filename = xstrdup (filename);
+  file_buffer->fullpath = xstrdup (fullpath);
+  file_buffer->finfo = finfo;
+  file_buffer->filesize = filesize;
+  file_buffer->contents = contents;
+  if (compressed)
+    file_buffer->flags |= N_IsCompressed;
+  
+  /* If requested, build the tags and nodes for this file buffer. */
+  if (get_tags)
+    build_tags_and_nodes (file_buffer);
+
+  return file_buffer;
+}
+
+/* Create a new, empty file buffer. */
+FILE_BUFFER *
+make_file_buffer (void)
+{
+  FILE_BUFFER *file_buffer = xmalloc (sizeof (FILE_BUFFER));
+
+  file_buffer->filename = file_buffer->fullpath = NULL;
+  file_buffer->contents = NULL;
+  file_buffer->tags = NULL;
+  file_buffer->subfiles = NULL;
+  file_buffer->tags_slots = 0;
+  file_buffer->flags = 0;
+
+  return file_buffer;
+}
+
+/* Add FILE_BUFFER to our list of already loaded info files. */
+static void
+remember_info_file (FILE_BUFFER *file_buffer)
+{
+  int i;
+
+  for (i = 0; info_loaded_files && info_loaded_files[i]; i++)
+    ;
+
+  add_pointer_to_array (file_buffer, i, info_loaded_files,
+                        info_loaded_files_slots, 10);
+}
+
+/* Forget the contents, tags table, nodes list, and names of FILENAME. */
+void
+forget_info_file (char *filename)
+{
+  int i;
+  FILE_BUFFER *file_buffer;
+
+  if (!info_loaded_files)
+    return;
+
+  for (i = 0; (file_buffer = info_loaded_files[i]); i++)
+    if (FILENAME_CMP (filename, file_buffer->filename) == 0
+        || FILENAME_CMP (filename, file_buffer->fullpath) == 0)
+      {
+        free (file_buffer->filename);
+        free (file_buffer->fullpath);
+
+        if (file_buffer->contents)
+          free (file_buffer->contents);
+
+        /* free_file_buffer_tags () also kills the subfiles list, since
+           the subfiles list is only of use in conjunction with tags. */
+        free_file_buffer_tags (file_buffer);
+
+        /* Move rest of list down.  */
+        while (info_loaded_files[i + 1])
+          {
+            info_loaded_files[i] = info_loaded_files[i + 1];
+            i++;
+          }
+        info_loaded_files[i] = 0;
+
+        break;
+      }
+}
+
+/* Load the contents of FILE_BUFFER->contents.  This function is called
+   when a file buffer was loaded, and then in order to conserve memory, the
+   file buffer's contents were freed and the pointer was zero'ed.  Note that
+   the file was already loaded at least once successfully, so the tags and/or
+   nodes members are still correctly filled. */
+static void
+info_reload_file_buffer_contents (FILE_BUFFER *fb)
+{
+  int is_compressed;
+
+#if defined (HANDLE_MAN_PAGES)
+  /* If this is the magic manpage node, don't try to reload, just give up. */
+  if (fb->flags & N_IsManPage)
+    return;
+#endif
+
+  fb->flags &= ~N_IsCompressed;
+
+  /* Let the filesystem do all the work for us. */
+  fb->contents =
+    filesys_read_info_file (fb->fullpath, &(fb->filesize), &(fb->finfo),
+                            &is_compressed);
+  if (is_compressed)
+    fb->flags |= N_IsCompressed;
+}
+
+
+/* Functions for node retrieval. */
+
+/* Magic number that RMS used to decide how much a tags table pointer could
+   be off by.  I feel that it should be much smaller, like 4.  */
+#define DEFAULT_INFO_FUDGE 1000
+
+static char *adjust_nodestart (NODE *node, int min, int max);
+static void node_set_body_start (NODE *node);
+static NODE *find_node_of_anchor (FILE_BUFFER *file_buffer, TAG *tag);
+static char *adjust_nodestart (NODE *node, int min, int max);
+static NODE *info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer,
+    char *nodename);
+
+/* Return a pointer to a NODE structure for the Info node (FILENAME)NODENAME.
+   If FILENAME is NULL, `dir' is used.
+   If NODENAME is NULL, `Top' is used.
+   The FLAG argument (one of the PARSE_NODE_* constants) instructs how to
+   parse NODENAME.
+   
+   If the node cannot be found, return NULL. */
+NODE *
+info_get_node (char *filename, char *nodename, int flag)
+{
+  NODE *node;
+  FILE_BUFFER *file_buffer = NULL;
+
+  /* Used to build `dir' menu from `localdir' files found in INFOPATH. */
+  extern void maybe_build_dir_node (char *dirname);
+
+  info_recent_file_error = NULL;
+  info_parse_node (nodename, flag);
+  nodename = NULL;
+
+  if (info_parsed_filename)
+    filename = info_parsed_filename;
+
+  if (info_parsed_nodename)
+    nodename = info_parsed_nodename;
+
+  /* If FILENAME is not specified, it defaults to "dir". */
+  if (!filename)
+    filename = "dir";
+
+  /* If the file to be looked up is "dir", build the contents from all of
+     the "dir"s and "localdir"s found in INFOPATH. */
+  if (is_dir_name (filename))
+    maybe_build_dir_node (filename);
+
+  /* Find the correct info file, or give up.  */
+  file_buffer = info_find_file (filename);
+  if (!file_buffer)
+    {
+      node = make_manpage_node (filename);
+      if (!node)
+	{
+	  if (filesys_error_number)
+	    info_recent_file_error =
+	      filesys_error_string (filename, filesys_error_number);
+	  return NULL;
+	}
+    }
+  else
+    /* Look for the node.  */
+    node = info_get_node_of_file_buffer (nodename, file_buffer);
+
+  /* If the node not found was "Top", try again with different case,
+     unless this was a man page.  */
+  if (!node
+      && mbscasecmp (filename, MANPAGE_FILE_BUFFER_NAME) != 0
+      && (nodename == NULL || mbscasecmp (nodename, "Top") == 0))
+    {
+      node = info_get_node_of_file_buffer ("Top", file_buffer);
+      if (!node)
+        node = info_get_node_of_file_buffer ("top", file_buffer);
+      if (!node)
+        node = info_get_node_of_file_buffer ("TOP", file_buffer);
+    }
+
+  return node;
+}
+
+static void
+node_set_body_start (NODE *node)
+{
+  int n = skip_node_separator (node->contents);
+  node->body_start = strcspn(node->contents + n, "\n");
+  node->body_start += n;
+  if (node->contents[++node->body_start] == '\n')
+    ++node->body_start;
+}
+
+/* Return a pointer to a NODE structure for the Info node NODENAME in
+   FILE_BUFFER.  NODENAME can be passed as NULL, in which case the
+   nodename of "Top" is used.  If the node cannot be found, return a
+   NULL pointer. */
+NODE *
+info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
+{
+  NODE *node = NULL;
+  int implicit_nodename = 0;
+
+  /* If we are unable to find the file, we have to give up.  There isn't
+     anything else we can do. */
+  if (!file_buffer)
+    return NULL;
+
+  /* If the file buffer was gc'ed, reload the contents now. */
+  if (!file_buffer->contents)
+    info_reload_file_buffer_contents (file_buffer);
+
+  /* If NODENAME is not specified, it defaults to "Top". */
+  if (!nodename)
+    {
+      nodename = "Top";
+      implicit_nodename = 1;  /* don't return man page for top */
+    }
+
+  /* If the name of the node that we wish to find is exactly "*", then the
+     node body is the contents of the entire file.  Create and return such
+     a node. */
+  if (strcmp (nodename, "*") == 0)
+    {
+      node = xmalloc (sizeof (NODE));
+      node->filename = file_buffer->fullpath;
+      node->parent   = NULL;
+      node->nodename = xstrdup ("*");
+      node->contents = file_buffer->contents;
+      node->nodelen = file_buffer->filesize;
+      node->flags = 0;
+      node->display_pos = 0;
+      node_set_body_start (node);
+    }
+#if defined (HANDLE_MAN_PAGES)
+  /* If the file buffer is the magic one associated with manpages, call
+     the manpage node finding function instead. */
+  else if (!implicit_nodename && file_buffer->flags & N_IsManPage)
+    {
+      node = get_manpage_node (file_buffer, nodename);
+    }
+#endif /* HANDLE_MAN_PAGES */
+  /* If this is the "main" info file, it might contain a tags table.  Search
+     the tags table for an entry which matches the node that we want.  If
+     there is a tags table, get the file which contains this node, but don't
+     bother building a node list for it. */
+  else if (file_buffer->tags)
+    {
+      node = info_node_of_file_buffer_tags (file_buffer, nodename);
+    }
+
+  /* Return the results of our node search. */
+  return node;
+}
 
 /* Return the node that contains TAG in FILE_BUFFER, else
    (pathologically) NULL.  Called from info_node_of_file_buffer_tags.  */
@@ -943,6 +1082,90 @@ find_node_of_anchor (FILE_BUFFER *file_buffer, TAG *tag)
     }
 
   return node;
+}
+
+/* Return the actual starting memory location of NODE, side-effecting
+   NODE->contents.  MIN and MAX are bounds for a search if one is necessary.
+   Because of the way that tags are implemented, the physical nodestart may
+   not actually be where the tag says it is.  If that is the case, but the
+   node was found anyway, set N_UpdateTags in NODE->flags.  If the node is
+   found, return non-zero.  NODE->contents is returned positioned right after
+   the node separator that precedes this node, while the return value is
+   position directly on the separator that precedes this node.  If the node
+   could not be found, return a NULL pointer. */
+static char *
+adjust_nodestart (NODE *node, int min, int max)
+{
+  long position;
+  SEARCH_BINDING node_body;
+
+  /* Define the node body. */
+  node_body.buffer = node->contents;
+  node_body.start = 0;
+  node_body.end = max;
+  node_body.flags = 0;
+
+  /* Try the optimal case first.  Who knows?  This file may actually be
+     formatted (mostly) correctly. */
+  if (node_body.buffer[0] != INFO_COOKIE && min > 2)
+    node_body.buffer -= 3;
+
+  position = find_node_separator (&node_body);
+
+  /* If we found a node start, then check it out. */
+  if (position != -1)
+    {
+      int sep_len;
+
+      sep_len = skip_node_separator (node->contents);
+
+      /* If we managed to skip a node separator, then check for this node
+         being the right one. */
+      if (sep_len != 0)
+        {
+          char *nodedef, *nodestart;
+          int offset;
+
+          nodestart = node_body.buffer + position + sep_len;
+          nodedef = nodestart;
+          offset = string_in_line (INFO_NODE_LABEL, nodedef);
+
+          if (offset != -1)
+            {
+              nodedef += offset;
+              nodedef += skip_whitespace (nodedef);
+              offset = skip_node_characters (nodedef, PARSE_NODE_START);
+              if (((unsigned int) offset == strlen (node->nodename)) &&
+                  (strncmp (node->nodename, nodedef, offset) == 0))
+                {
+                  node->contents = nodestart;
+		  node_set_body_start (node);
+                  return node_body.buffer + position;
+                }
+            }
+        }
+    }
+
+  /* Oh well, I guess we have to try to find it in a larger area. */
+  node_body.buffer = node->contents - min;
+  node_body.start = 0;
+  node_body.end = min + max;
+  node_body.flags = 0;
+
+  position = find_node_in_binding (node->nodename, &node_body);
+
+  /* If the node couldn't be found, we lose big. */
+  if (position == -1)
+    return NULL;
+
+  /* Otherwise, the node was found, but the tags table could need updating
+     (if we used a tag to get here, that is).  Set the flag in NODE->flags. */
+  node->contents = node_body.buffer + position;
+  node->contents += skip_node_separator (node->contents);
+  node_set_body_start (node);
+  if (node->flags & N_HasTagsTable)
+    node->flags |= N_UpdateTags;
+  return node_body.buffer + position;
 }
 
 /* Return the node from FILE_BUFFER which matches NODENAME by searching
@@ -1083,223 +1306,4 @@ info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer, char *nodename)
   /* There was a tag table for this file, and the node wasn't found.
      Return NULL, since this file doesn't contain the desired node. */
   return NULL;
-}
-
-/* Managing file_buffers, nodes, and tags.  */
-
-/* Create a new, empty file buffer. */
-FILE_BUFFER *
-make_file_buffer (void)
-{
-  FILE_BUFFER *file_buffer = xmalloc (sizeof (FILE_BUFFER));
-
-  file_buffer->filename = file_buffer->fullpath = NULL;
-  file_buffer->contents = NULL;
-  file_buffer->tags = NULL;
-  file_buffer->subfiles = NULL;
-  file_buffer->tags_slots = 0;
-  file_buffer->flags = 0;
-
-  return file_buffer;
-}
-
-/* Add FILE_BUFFER to our list of already loaded info files. */
-static void
-remember_info_file (FILE_BUFFER *file_buffer)
-{
-  int i;
-
-  for (i = 0; info_loaded_files && info_loaded_files[i]; i++)
-    ;
-
-  add_pointer_to_array (file_buffer, i, info_loaded_files,
-                        info_loaded_files_slots, 10);
-}
-
-/* Forget the contents, tags table, nodes list, and names of FILENAME. */
-void
-forget_info_file (char *filename)
-{
-  int i;
-  FILE_BUFFER *file_buffer;
-
-  if (!info_loaded_files)
-    return;
-
-  for (i = 0; (file_buffer = info_loaded_files[i]); i++)
-    if (FILENAME_CMP (filename, file_buffer->filename) == 0
-        || FILENAME_CMP (filename, file_buffer->fullpath) == 0)
-      {
-        free (file_buffer->filename);
-        free (file_buffer->fullpath);
-
-        if (file_buffer->contents)
-          free (file_buffer->contents);
-
-        /* free_file_buffer_tags () also kills the subfiles list, since
-           the subfiles list is only of use in conjunction with tags. */
-        free_file_buffer_tags (file_buffer);
-
-        /* Move rest of list down.  */
-        while (info_loaded_files[i + 1])
-          {
-            info_loaded_files[i] = info_loaded_files[i + 1];
-            i++;
-          }
-        info_loaded_files[i] = 0;
-
-        break;
-      }
-}
-
-/* Free the tags (if any) associated with FILE_BUFFER. */
-static void
-free_file_buffer_tags (FILE_BUFFER *file_buffer)
-{
-  int i;
-
-  if (file_buffer->tags)
-    {
-      TAG *tag;
-
-      for (i = 0; (tag = file_buffer->tags[i]); i++)
-        free_info_tag (tag);
-
-      free (file_buffer->tags);
-      file_buffer->tags = NULL;
-      file_buffer->tags_slots = 0;
-    }
-
-  if (file_buffer->subfiles)
-    {
-      for (i = 0; file_buffer->subfiles[i]; i++)
-        free (file_buffer->subfiles[i]);
-
-      free (file_buffer->subfiles);
-      file_buffer->subfiles = NULL;
-    }
-}
-
-/* Free the data associated with TAG, as well as TAG itself. */
-static void
-free_info_tag (TAG *tag)
-{
-  free (tag->nodename);
-  free (tag->content_cache);
-  
-  /* We don't free tag->filename, because that filename is part of the
-     subfiles list for the containing FILE_BUFFER.  free_info_tags ()
-     will free the subfiles when it is appropriate. */
-
-  free (tag);
-}
-
-/* Load the contents of FILE_BUFFER->contents.  This function is called
-   when a file buffer was loaded, and then in order to conserve memory, the
-   file buffer's contents were freed and the pointer was zero'ed.  Note that
-   the file was already loaded at least once successfully, so the tags and/or
-   nodes members are still correctly filled. */
-static void
-info_reload_file_buffer_contents (FILE_BUFFER *fb)
-{
-  int is_compressed;
-
-#if defined (HANDLE_MAN_PAGES)
-  /* If this is the magic manpage node, don't try to reload, just give up. */
-  if (fb->flags & N_IsManPage)
-    return;
-#endif
-
-  fb->flags &= ~N_IsCompressed;
-
-  /* Let the filesystem do all the work for us. */
-  fb->contents =
-    filesys_read_info_file (fb->fullpath, &(fb->filesize), &(fb->finfo),
-                            &is_compressed);
-  if (is_compressed)
-    fb->flags |= N_IsCompressed;
-}
-
-/* Return the actual starting memory location of NODE, side-effecting
-   NODE->contents.  MIN and MAX are bounds for a search if one is necessary.
-   Because of the way that tags are implemented, the physical nodestart may
-   not actually be where the tag says it is.  If that is the case, but the
-   node was found anyway, set N_UpdateTags in NODE->flags.  If the node is
-   found, return non-zero.  NODE->contents is returned positioned right after
-   the node separator that precedes this node, while the return value is
-   position directly on the separator that precedes this node.  If the node
-   could not be found, return a NULL pointer. */
-static char *
-adjust_nodestart (NODE *node, int min, int max)
-{
-  long position;
-  SEARCH_BINDING node_body;
-
-  /* Define the node body. */
-  node_body.buffer = node->contents;
-  node_body.start = 0;
-  node_body.end = max;
-  node_body.flags = 0;
-
-  /* Try the optimal case first.  Who knows?  This file may actually be
-     formatted (mostly) correctly. */
-  if (node_body.buffer[0] != INFO_COOKIE && min > 2)
-    node_body.buffer -= 3;
-
-  position = find_node_separator (&node_body);
-
-  /* If we found a node start, then check it out. */
-  if (position != -1)
-    {
-      int sep_len;
-
-      sep_len = skip_node_separator (node->contents);
-
-      /* If we managed to skip a node separator, then check for this node
-         being the right one. */
-      if (sep_len != 0)
-        {
-          char *nodedef, *nodestart;
-          int offset;
-
-          nodestart = node_body.buffer + position + sep_len;
-          nodedef = nodestart;
-          offset = string_in_line (INFO_NODE_LABEL, nodedef);
-
-          if (offset != -1)
-            {
-              nodedef += offset;
-              nodedef += skip_whitespace (nodedef);
-              offset = skip_node_characters (nodedef, PARSE_NODE_START);
-              if (((unsigned int) offset == strlen (node->nodename)) &&
-                  (strncmp (node->nodename, nodedef, offset) == 0))
-                {
-                  node->contents = nodestart;
-		  node_set_body_start (node);
-                  return node_body.buffer + position;
-                }
-            }
-        }
-    }
-
-  /* Oh well, I guess we have to try to find it in a larger area. */
-  node_body.buffer = node->contents - min;
-  node_body.start = 0;
-  node_body.end = min + max;
-  node_body.flags = 0;
-
-  position = find_node_in_binding (node->nodename, &node_body);
-
-  /* If the node couldn't be found, we lose big. */
-  if (position == -1)
-    return NULL;
-
-  /* Otherwise, the node was found, but the tags table could need updating
-     (if we used a tag to get here, that is).  Set the flag in NODE->flags. */
-  node->contents = node_body.buffer + position;
-  node->contents += skip_node_separator (node->contents);
-  node_set_body_start (node);
-  if (node->flags & N_HasTagsTable)
-    node->flags |= N_UpdateTags;
-  return node_body.buffer + position;
 }
