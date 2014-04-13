@@ -167,29 +167,27 @@ info_parse_node (char *string, int flag)
 }
 
 /* Return the node addressed by LABEL in NODE (usually one of "Prev:",
-   "Next:", "Up:", "File:", or "Node:".  After a call to this function,
-   the global INFO_PARSED_NODENAME and INFO_PARSED_FILENAME contain
-   the information. */
-void
+   "Next:", "Up:", "File:", or "Node:".  To be freed by caller. */
+char *
 info_parse_label (char *label, NODE *node)
 {
   register int i;
   char *nodeline;
-
-  /* Default answer to failure. */
-  save_nodename (NULL);
-  save_filename (NULL);
+  char *store_in;
+  int length;
 
   /* Find the label in the first line of this node. */
   nodeline = node->contents;
   i = string_in_line (label, nodeline);
 
   if (i == -1)
-    return;
+    return 0;
 
-  nodeline += i;
-  nodeline += skip_whitespace (nodeline);
-  info_parse_node (nodeline, PARSE_NODE_DFLT);
+  length = skip_node_characters (nodeline + i, PARSE_NODE_DFLT);
+  store_in = xmalloc (length + 1);
+  memmove (store_in, nodeline + i, length);
+  store_in[length] = '\0';
+  return store_in;
 }
 
 /* **************************************************************** */

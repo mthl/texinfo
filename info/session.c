@@ -1129,19 +1129,25 @@ int scroll_last_node = SLN_Stop;
 int default_window_size = -1;   /* meaning 1 window-full */
 int default_scroll_size = -1;   /* meaning half screen size */
 
-#define INFO_LABEL_FOUND() \
-  (info_parsed_nodename || (info_parsed_filename \
-                            && !is_dir_name (info_parsed_filename)))
-
 static int
 last_node_p (NODE *node)
 {
-  info_next_label_of_node (node);
-  if (!INFO_LABEL_FOUND ())
+  char *spec;
+  if (spec = info_next_label_of_node (node))
     {
-      info_up_label_of_node (node);
-      return !INFO_LABEL_FOUND () || strcmp (info_parsed_nodename, "Top") == 0;
+      free (spec);
+      return 0;
+    } 
+
+  spec = info_up_label_of_node (node);
+  if (!spec)
+    return 1;
+  if (!strcmp (spec, "Top"))
+    {
+      free (spec);
+      return 1;
     }
+  free (spec);
   return 0;
 }
 
@@ -1149,6 +1155,7 @@ last_node_p (NODE *node)
 static int
 forward_move_node_structure (WINDOW *window, int behaviour)
 {
+  char *spec;
   switch (behaviour)
     {
     case IS_PageOnly:
@@ -1156,14 +1163,14 @@ forward_move_node_structure (WINDOW *window, int behaviour)
       return 1;
 
     case IS_NextOnly:
-      info_next_label_of_node (window->node);
-      if (!info_parsed_nodename && !info_parsed_filename)
+      if (!(spec = info_next_label_of_node (window->node)))
         {
           info_error (msg_no_pointer, _("Next"));
           return 1;
         }
       else
         {
+          free (spec);
           info_handle_pointer ("Next", window);
         }
       break;
@@ -1207,9 +1214,9 @@ forward_move_node_structure (WINDOW *window, int behaviour)
 
         /* Okay, this node does not contain a menu.  If it contains a
            "Next:" pointer, use that. */
-        info_next_label_of_node (window->node);
-        if (INFO_LABEL_FOUND ())
+        if (spec = info_next_label_of_node (window->node))
           {
+            free (spec);
             info_handle_pointer ("Next", window);
             return 0;
           }
@@ -1230,20 +1237,20 @@ forward_move_node_structure (WINDOW *window, int behaviour)
           up_counter = 0;
           while (!info_error_was_printed)
             {
-              info_up_label_of_node (window->node);
-              if (INFO_LABEL_FOUND ())
+              if (spec = info_up_label_of_node (window->node))
                 {
+                  free (spec);
                   info_handle_pointer ("Up", window);
                   if (info_error_was_printed)
                     continue;
 
                   up_counter++;
 
-                  info_next_label_of_node (window->node);
-
                   /* If no "Next" pointer, keep backing up. */
-                  if (!INFO_LABEL_FOUND ())
-                    continue;
+                  if (!(spec = info_next_label_of_node (window->node)))
+                    {
+                      continue;
+                    }
 
                   /* If this node's first menu item is the same as this node's
                      Next pointer, keep backing up. */
@@ -1272,7 +1279,6 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                              reading the menu contents. */
                           info_free_references (menu);
                           free (next_nodename);
-                          info_next_label_of_node (window->node);
                         }
                     }
 
@@ -1314,6 +1320,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
 static int
 backward_move_node_structure (WINDOW *window, int behaviour)
 {
+  char *spec;
   switch (behaviour)
     {
     case IS_PageOnly:
@@ -1321,28 +1328,28 @@ backward_move_node_structure (WINDOW *window, int behaviour)
       return 1;
 
     case IS_NextOnly:
-      info_prev_label_of_node (window->node);
-      if (!info_parsed_nodename && !info_parsed_filename)
+      if (!(spec = info_prev_label_of_node (window->node)))
         {
           info_error ("%s", _("No `Prev' for this node."));
           return 1;
         }
       else
         {
+          free (spec);
           info_handle_pointer ("Prev", window);
         }
       break;
 
     case IS_Continuous:
-      info_prev_label_of_node (window->node);
+      spec = info_prev_label_of_node (window->node);
 
-      if (!info_parsed_nodename && (!info_parsed_filename
-                                    || is_dir_name (info_parsed_filename)))
+      if (!spec || is_dir_name (spec))
         {
-          info_up_label_of_node (window->node);
-          if (!info_parsed_nodename && (!info_parsed_filename
-                                        || is_dir_name (info_parsed_filename)))
+          if (spec) free (spec);
+          spec = info_up_label_of_node (window->node);
+          if (!spec || is_dir_name (spec))
             {
+              if (spec) free (spec);
               info_error ("%s", 
                     _("No `Prev' or `Up' for this node within this document."));
               return 1;
@@ -1366,10 +1373,9 @@ backward_move_node_structure (WINDOW *window, int behaviour)
               char *pnode;
 
               pnode = xstrdup (info_parsed_nodename);
-              info_up_label_of_node (window->node);
+              spec = info_up_label_of_node (window->node);
 
-              if (!info_parsed_filename && info_parsed_nodename &&
-                  strcmp (info_parsed_nodename, pnode) == 0)
+              if (spec && strcmp (spec, pnode) == 0)
                 {
                   /* The nodes are the same.  Inhibit moving to the last
                      menu item. */
@@ -1379,8 +1385,8 @@ backward_move_node_structure (WINDOW *window, int behaviour)
               else
                 {
                   free (pnode);
-                  info_prev_label_of_node (window->node);
                 }
+              if (spec) free (spec);
             }
 
           /* Move to the previous node.  If this node now contains a menu,
@@ -2116,77 +2122,67 @@ info_win_find_node (INFO_WINDOW *win, NODE *node)
   return i;
 }	  
 
-/* Given that the values of INFO_PARSED_FILENAME and INFO_PARSED_NODENAME
-   are previously filled, try to get the node represented by them into
-   WINDOW.  The node should have been pointed to by the LABEL pointer of
-   WINDOW->node. */
+/* Get the node pointed to by the LABEL pointer of
+   WINDOW->node into WINDOW. */
 static void
 info_handle_pointer (char *label, WINDOW *window)
 {
-  if (info_parsed_filename || info_parsed_nodename)
+  char *description;
+  NODE *node;
+  INFO_WINDOW *info_win;
+
+  if (!strcmp (label, "Up"))
+    description = info_up_label_of_node (window->node);
+  else if (!strcmp (label, "Next"))
+    description = info_next_label_of_node (window->node);
+  else if (!strcmp (label, "Prev"))
     {
-      char *filename, *nodename;
-      NODE *node;
-
-      filename = nodename = NULL;
-
-      if (info_parsed_filename)
-        filename = xstrdup (info_parsed_filename);
-      else
-        {
-          if (window->node->parent)
-            filename = xstrdup (window->node->parent);
-          else if (window->node->filename)
-            filename = xstrdup (window->node->filename);
-        }
-
-      if (info_parsed_nodename)
-        nodename = xstrdup (info_parsed_nodename);
-      else
-        nodename = xstrdup ("Top");
-
-      node = info_get_node (filename, nodename, PARSE_NODE_DFLT);
-
-      if (node)
-        {
-          INFO_WINDOW *info_win;
-
-          info_win = get_info_window_of_window (window);
-          if (info_win)
-            {
-	      if (strcmp (label, "Up") == 0)
-		{
-		  int i = info_win_find_node (info_win, node);
-		  if (i >= 0)
-		    node->display_pos = info_win->points[i];
-		}
-	      info_win->pagetops[info_win->current] = window->pagetop;
-              info_win->points[info_win->current] = window->point;
-            }
-          info_set_node_of_window (1, window, node);
-        }
-      else
-        {
-          if (info_recent_file_error)
-            info_error ("%s", info_recent_file_error);
-          else
-            info_error (msg_cant_file_node, filename, nodename);
-        }
-
-      free (filename);
-      free (nodename);
+      description = info_prev_label_of_node (window->node);
+      if (!description)
+        description = info_altprev_label_of_node (window->node);
     }
-  else
+
+  if (!description)
     {
       info_error (msg_no_pointer, label);
+      return;
     }
+
+  node = info_get_node_with_defaults (0, description,
+               PARSE_NODE_START, window);
+
+  if (!node)
+    {
+      if (info_recent_file_error)
+        info_error ("%s", info_recent_file_error);
+      else
+        info_error (msg_cant_find_node, description);
+      goto cleanup;
+    }
+
+  /* Set the cursor position to the last place it was in the
+     node, if we are going up. */
+  info_win = get_info_window_of_window (window);
+  if (info_win)
+    {
+      if (strcmp (label, "Up") == 0)
+        {
+          int i = info_win_find_node (info_win, node);
+          if (i >= 0)
+            node->display_pos = info_win->points[i];
+        }
+      info_win->pagetops[info_win->current] = window->pagetop;
+      info_win->points[info_win->current] = window->point;
+    }
+  info_set_node_of_window (1, window, node);
+cleanup:
+  free (description);
 }
 
 /* Make WINDOW display the "Next:" node of the node currently being
    displayed. */
 DECLARE_INFO_COMMAND (info_next_node, _("Select the Next node"))
 {
-  info_next_label_of_node (window->node);
   info_handle_pointer ("Next", window);
 }
 
@@ -2194,7 +2190,6 @@ DECLARE_INFO_COMMAND (info_next_node, _("Select the Next node"))
    displayed. */
 DECLARE_INFO_COMMAND (info_prev_node, _("Select the Prev node"))
 {
-  info_prev_label_of_node (window->node);
   info_handle_pointer ("Prev", window);
 }
 
@@ -2202,7 +2197,6 @@ DECLARE_INFO_COMMAND (info_prev_node, _("Select the Prev node"))
    displayed. */
 DECLARE_INFO_COMMAND (info_up_node, _("Select the Up node"))
 {
-  info_up_label_of_node (window->node);
   info_handle_pointer ("Up", window);
 }
 

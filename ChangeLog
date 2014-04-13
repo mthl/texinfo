@@ -1,5 +1,15 @@
 2014-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info-utils.c (info_parse_label): Return label with no parsing.
+	All callers changed.
+	* session.c (info_handle_pointer): Do not assume anything
+	about the values of info_parsed_filename and info_parsed_nodename.
+	Call info_get_node_with_defaults to get target node.  All callers
+	changed.
+	* session.c (INFO_LABEL_FOUND): Macro deleted.
+
+2014-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* nodes.c (get_filename_and_nodename): New static function setting
 	defaults for node specifications.
 	(info_get_node, info_get_node_with_defaults): New argument 'window'

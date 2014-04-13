@@ -132,20 +132,14 @@ extern WINDOW *get_internal_info_window (char *name);
 extern WINDOW *get_window_of_node (NODE *node);
 
 /* Return the node addressed by LABEL in NODE (usually one of "Prev:",
-   "Next:", "Up:", "File:", or "Node:".  After a call to this function,
-   the globals `info_parsed_nodename' and `info_parsed_filename' contain
-   the information. */
-extern void info_parse_label (char *label, NODE *node);
+   "Next:", "Up:", "File:", or "Node:". */
+extern char *info_parse_label (char *label, NODE *node);
 
 #define info_file_label_of_node(n) info_parse_label (INFO_FILE_LABEL, n)
 #define info_next_label_of_node(n) info_parse_label (INFO_NEXT_LABEL, n)
 #define info_up_label_of_node(n)   info_parse_label (INFO_UP_LABEL, n)
-#define info_prev_label_of_node(n) \
-  do { \
-    info_parse_label (INFO_PREV_LABEL, n); \
-    if (!info_parsed_nodename && !info_parsed_filename) \
-      info_parse_label (INFO_ALTPREV_LABEL, n); \
-  } while (0)
+#define info_prev_label_of_node(n) info_parse_label (INFO_PREV_LABEL, n)
+#define info_altprev_label_of_node(n) info_parse_label (INFO_ALTPREV_LABEL, n)
 
 struct text_buffer
 {
