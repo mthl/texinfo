@@ -1103,7 +1103,7 @@ run_bibtex ()
   # bibtex would never be run.
   if test -r "$in_noext.aux" \
      && test -r "$in_noext.log" \
-     && ((grep 'Warning:.*Citation.*undefined' "$in_noext.log" \
+     && ( (grep 'Warning:.*Citation.*undefined' "$in_noext.log" \
           || grep '.*Undefined citation' "$in_noext.log" \
           || grep 'No file .*\.bbl\.' "$in_noext.log") \
           || (grep 'No \.aux file' "$in_noext.log" \

@@ -1,3 +1,9 @@
+2014-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (runbibtex): Avoid having two opening brackets
+	in a row to improve portability of code.  Reported by Richard
+	Palo.  (http://savannah.gnu.org/bugs/?42067)
+
 2014-04-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-intera.inc: New file for interactive tests.  Wait
