@@ -134,6 +134,9 @@ extern FILE_BUFFER *info_find_file (char *filename);
    a new buffer, rebuilds tags and nodes, and returns a new FILE_BUFFER *. */
 extern FILE_BUFFER *info_load_file (char *filename);
 
+/* Return a pointer to a new NODE structure. */
+extern NODE *info_create_node (void);
+
 /* Return a pointer to a NODE structure for the Info node (FILENAME)NODENAME.
    FILENAME can be passed as NULL, in which case the filename of "dir" is used.
    NODENAME can be passed as NULL, in which case the nodename of "Top" is used.

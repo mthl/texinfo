@@ -113,9 +113,7 @@ make_footnotes_node (NODE *node)
     return NULL;
 
   /* Make the new node. */
-  result = xmalloc (sizeof (NODE));
-  result->flags = 0;
-  result->display_pos = 0;
+  result = info_create_node ();
 
   /* Get the size of the footnotes appearing within this node. */
   {

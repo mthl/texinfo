@@ -401,15 +401,12 @@ manpage_node_of_file_buffer (FILE_BUFFER *file_buffer, char *pagename)
 
   if (tag)
     {
-      node = xmalloc (sizeof (NODE));
+      node = info_create_node ();
       node->filename = file_buffer->filename;
       node->nodename = xstrdup (tag->nodename);
       node->contents = file_buffer->contents + tag->nodestart;
       node->nodelen = tag->nodelen;
-      node->flags    = 0;
-      node->display_pos = 0;
-      node->parent   = NULL;
-      node->flags = (N_HasTagsTable | N_IsManPage);
+      node->flags |= (N_HasTagsTable | N_IsManPage);
       node->contents += skip_node_separator (node->contents);
       node->body_start = strcspn(node->contents, "\n");
     }

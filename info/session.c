@@ -3366,21 +3366,10 @@ kill_node (WINDOW *window, char *nodename)
 
       /* Copy this node. */
       {
-        NODE *copy = xmalloc (sizeof (NODE));
-
-        temp = stealer->nodes[which];
+        temp = xmalloc (sizeof (NODE));
+        *temp = *stealer->nodes[which];
         point = stealer->points[which];
         pagetop = stealer->pagetops[which];
-
-        copy->filename = temp->filename;
-        copy->parent = temp->parent;
-        copy->nodename = temp->nodename;
-        copy->contents = temp->contents;
-        copy->nodelen = temp->nodelen;
-        copy->flags = temp->flags;
-        copy->display_pos = temp->display_pos;
-
-        temp = copy;
       }
 
       window_set_node_of_window (info_win->window, temp);

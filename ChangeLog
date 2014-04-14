@@ -1,3 +1,18 @@
+2014-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* nodes.c (info_create_node): New function initializing
+	created NODE structures.
+	* footnotes.c (make_footnotes_node)
+	* indices.c (create_virtindex_node)
+	* man.c (manpage_node_of_file_buffer)
+	* nodes.c (info_get_node_of_file_buffer)
+	(info_node_of_file_buffer_tags)
+	* window.c (string_to_node, message_buffer_to_node): Call
+	info_create_node.
+
+	* session.c (kill_node): Copy whole NODE structure at once instead
+	of field-by-field.
+
 2014-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* session.c (forward_move_node_structure)

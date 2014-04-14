@@ -1293,12 +1293,7 @@ string_to_node (char *contents)
 {
   NODE *node;
 
-  node = xzalloc (sizeof (NODE));
-  node->filename = NULL;
-  node->parent = NULL;
-  node->nodename = NULL;
-  node->flags = 0;
-  node->display_pos =0;
+  node = info_create_node ();
 
   /* Make sure that this buffer ends with a newline. */
   node->nodelen = 1 + strlen (contents);
@@ -1312,12 +1307,7 @@ message_buffer_to_node (void)
 {
   NODE *node;
 
-  node = xzalloc (sizeof (NODE));
-  node->filename = NULL;
-  node->parent = NULL;
-  node->nodename = NULL;
-  node->flags = 0;
-  node->display_pos =0;
+  node = info_create_node ();
 
   /* Make sure that this buffer ends with a newline. */
   node->nodelen = 1 + strlen (message_buffer.base);

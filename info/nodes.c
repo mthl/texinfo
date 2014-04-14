@@ -863,7 +863,7 @@ info_reload_file_buffer_contents (FILE_BUFFER *fb)
 }
 
 
-/* Functions for node retrieval. */
+/* Functions for node creation and retrieval. */
 
 /* Magic number that RMS used to decide how much a tags table pointer could
    be off by.  I feel that it should be much smaller, like 4.  */
@@ -878,6 +878,25 @@ static NODE *find_node_of_anchor (FILE_BUFFER *file_buffer, TAG *tag);
 static char *adjust_nodestart (NODE *node, int min, int max);
 static NODE *info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer,
     char *nodename);
+
+/* Return a pointer to a newly allocated NODE structure, with
+   fields filled in. */
+NODE *
+info_create_node (void)
+{
+  NODE *n = xmalloc (sizeof (NODE));
+
+  n->filename = 0;
+  n->parent = 0;
+  n->nodename = 0;
+  n->contents = 0;
+  n->nodelen = -1;
+  n->display_pos = 0;
+  n->body_start = 0;
+  n->flags = 0;
+
+  return n;
+}
 
 /* Return a pointer to a NODE structure for the Info node (FILENAME)NODENAME,
    using WINDOW for defaults.  If WINDOW is null, the defaults are:
@@ -1017,14 +1036,11 @@ info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
      a node. */
   if (strcmp (nodename, "*") == 0)
     {
-      node = xmalloc (sizeof (NODE));
+      node = info_create_node ();
       node->filename = file_buffer->fullpath;
-      node->parent   = NULL;
       node->nodename = xstrdup ("*");
       node->contents = file_buffer->contents;
       node->nodelen = file_buffer->filesize;
-      node->flags = 0;
-      node->display_pos = 0;
       node_set_body_start (node);
     }
 #if defined (HANDLE_MAN_PAGES)
@@ -1233,9 +1249,8 @@ info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer, char *nodename)
 	if (!(tag->nodestart >= 0 && tag->nodestart < subfile->filesize))
 	  return NULL;
 
-	node = xmalloc (sizeof (NODE));
+	node = info_create_node ();
 	node->filename    = subfile->fullpath;
-	node->parent      = NULL;
 	node->nodename    = tag->nodename;
 	
 	if (tag->content_cache)
@@ -1243,8 +1258,6 @@ info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer, char *nodename)
 	else
 	  node->contents    = subfile->contents + tag->nodestart;
 
-	node->display_pos = 0;
-	node->flags       = 0;
 	node_set_body_start (node);
 	
 	if (file_buffer->flags & N_HasTagsTable)

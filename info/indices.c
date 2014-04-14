@@ -823,18 +823,13 @@ create_virtindex_node (FILE_BUFFER *file_buffer)
 
   text += skip_node_separator (text);
   
-  node = xmalloc (sizeof (NODE));
+  node = info_create_node ();
   node->filename = file_buffer->filename;
   node->nodename = xstrdup (tag->nodename);
   node->contents = text;
   node->nodelen = strlen (text);
   node->body_start = strcspn(node->contents, "\n");
 
-  node->flags    = 0;
-  node->display_pos = 0;
-  node->parent = NULL;
-  node->flags = 0;
-  
   return node;
 }
 
