@@ -131,7 +131,8 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
 
       for (i = 0; (tag = file_buffer->tags[i]); i++)
         {
-          if (string_in_line ("Index", tag->nodename) != -1)
+          if (string_in_line ("Index", tag->nodename) != -1
+              && tag->nodelen != 0) /* Not an anchor. */
             {
               NODE *node;
               REFERENCE **menu;

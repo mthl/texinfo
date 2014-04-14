@@ -1,5 +1,10 @@
 2014-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* indices.c (info_indices_of_file_buffer): Don't consider anchors
+	as index nodes even if they have "Index" in their name.
+
+2014-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* nodes.c (info_create_node): New function initializing
 	created NODE structures.
 	* footnotes.c (make_footnotes_node)
