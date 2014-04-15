@@ -20,9 +20,9 @@
 # Tab to first link and follow it
 $GINFO -f intera --restore t/tab.drib
 
-test -f t/ginfo-output || exit 1
+test -f $GINFO_OUTPUT || exit 1
 # Return non-zero (test failure) if files differ
-diff t/ginfo-output t/node-target
+diff $GINFO_OUTPUT t/node-target
 RETVAL=$?
 
 . t/Cleanup.inc

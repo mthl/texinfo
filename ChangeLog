@@ -1,3 +1,9 @@
+2014-04-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Cleanup.inc, info/t/Init-intera.inc, info/t/Init-test.inc,
+	info/t/index.sh, info/t/tab.sh: Use temporary files based on name
+	of test.
+
 2014-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* indices.c (info_indices_of_file_buffer): Don't consider anchors

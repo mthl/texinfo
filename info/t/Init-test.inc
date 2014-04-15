@@ -1,5 +1,5 @@
-# Set up test environment. This file is not to be run directly, but to
-# be sourced by the other tests.
+# Set up test environment 
+# This file is not to be run directly 
 
 # Allow running with "make check" and individual tests at the command-line
 srcdir=${srcdir:-.}
@@ -10,13 +10,12 @@ GINFO="./ginfo --init-file $srcdir/t/Info-config"
 export infodir=$srcdir/t/infodir
 export INFOPATH=$infodir
 
-# Dump nodes with M-x print-node
-# TODO: Use different output files in each test to allow running them
-# in parallel.
-export INFO_PRINT_COMMAND='>t/ginfo-output'
+GINFO_OUTPUT=$0.out
+# Remove left over file from previous tests
+rm -f $GINFO_OUTPUT
 
-# Remove any accidentally left over files from previous tests
-rm -f t/ginfo-output
+# File to dump nodes to with M-x print-node
+export INFO_PRINT_COMMAND=">$GINFO_OUTPUT"
 
 # Not an interactive test
 PTY_PID=0
