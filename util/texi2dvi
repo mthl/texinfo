@@ -1107,7 +1107,7 @@ run_bibtex ()
           || grep '.*Undefined citation' "$in_noext.log" \
           || grep 'No file .*\.bbl\.' "$in_noext.log") \
           || (grep 'No \.aux file' "$in_noext.log" \
-              && grep '^\\bibdata' "$in_noext.aux")) \
+              && grep '^\\bibdata' "$in_noext.aux") ) \
         >&6 2>&1; \
   then
     for f in `generated_files_get "$in_noext" bibaux_file_p`; do
