@@ -1,3 +1,8 @@
+2014-04-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (info_get_node_with_defaults): Free allocated
+	strings on abnormal exit.
+
 2014-04-16  Karl Berry  <karl@gnu.org>
 
 	* util/gendocs_template,

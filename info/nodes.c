@@ -933,12 +933,13 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
     {
       node = make_manpage_node (filename);
       if (!node)
-	{
-	  if (filesys_error_number)
-	    info_recent_file_error =
-	      filesys_error_string (filename, filesys_error_number);
-	  return NULL;
-	}
+        {
+          if (filesys_error_number)
+            info_recent_file_error =
+              filesys_error_string (filename, filesys_error_number);
+          free (filename); free (nodename);
+          return NULL;
+        }
     }
   else
     /* Look for the node.  */
