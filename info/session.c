@@ -38,6 +38,8 @@
 #  include "man.h"
 #endif
 
+static void info_gc_file_buffers (void);
+
 static void info_clear_pending_input (void);
 static void info_set_pending_input (unsigned char key);
 static void info_handle_pointer (char *label, WINDOW *window);
@@ -1884,6 +1886,8 @@ DECLARE_INFO_COMMAND (info_delete_window, _("Delete the current window"))
 
       if (auto_tiling_p)
         window_tile_windows (DONT_TILE_INTERNALS);
+
+      info_gc_file_buffers ();
     }
 }
 
@@ -4678,6 +4682,26 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
     window_clear_echo_area ();
 }
 
+/* Find tag table entries for nodes which have been rewritten, and free
+   their contents. */
+static void
+free_node_contents (FILE_BUFFER *fb)
+{
+  NODE **entry;
+
+  if (!fb->tags)
+    return;
+
+  for (entry = fb->tags; *entry; entry++)
+    if ((*entry)->flags & N_WasRewritten)
+      {
+        free ((*entry)->contents);
+        (*entry)->contents = 0;
+        (*entry)->flags &= ~N_WasRewritten;
+      }
+}
+
+
 /* GC some file buffers.  A file buffer can be gc-ed if there we have
    no nodes in INFO_WINDOWS that reference this file buffer's contents.
    Garbage collecting a file buffer means to free the file buffers
@@ -4694,7 +4718,7 @@ info_gc_file_buffers (void)
 
   for (fb_index = 0; (fb = info_loaded_files[fb_index]); fb_index++)
     {
-      int fb_referenced_p = 0;
+      int fb_referenced_p = 0, parent_referenced_p = 0;
 
       /* If already gc-ed, do nothing. */
       if (!fb->contents)
@@ -4723,12 +4747,24 @@ info_gc_file_buffers (void)
                   fb_referenced_p = 1;
                   break;
                 }
+
+              /* If any subfile of a split file is referenced, none of
+                 the rewritten nodes in the split file is freed. */
+              if (iw->nodes[i]->parent &&
+		  ((FILENAME_CMP (fb->fullpath, iw->nodes[i]->parent) == 0) ||
+		   (FILENAME_CMP (fb->filename, iw->nodes[i]->parent) == 0)))
+                {
+                  parent_referenced_p = 1;
+                  break;
+                }
             }
         }
 
       /* If this file buffer wasn't referenced, free its contents. */
       if (!fb_referenced_p)
         {
+          if (!parent_referenced_p)
+            free_node_contents (fb);
           free (fb->contents);
           fb->contents = NULL;
         }

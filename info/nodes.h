@@ -39,14 +39,14 @@ typedef struct {
   char *parent;                 /* Non-null is the logical file name. */
   char *nodename;               /* The name of this node. */
   char *contents;               /* Characters appearing in this node. */
-  long nodelen;                 /* The length of the CONTENTS member. */
+  long nodelen;                 /* The length of the CONTENTS member.
+                                   nodelen == -1 if length is unknown
+                                   because node hasn't been read yet.
+                                   nodelen == 0 if it is an anchor. */
   unsigned long display_pos;    /* Where to display at, if nonzero.  */
   long body_start;              /* Offset of the actual node body */
   int flags;                    /* See immediately below. */
   long nodestart;               /* The offset of the start of this node. */
-  char *content_cache;          /* Cache of the node contents; used if the
-				   node contents must be preprocessed before
-				   displaying it. */
 } NODE;
 
 /* Defines that can appear in NODE->flags.  All informative. */
@@ -58,6 +58,7 @@ typedef struct {
 #define N_CannotGC     0x20     /* File buffer cannot be gc'ed. */
 #define N_IsManPage    0x40     /* This node is a manpage. */
 #define N_FromAnchor   0x80     /* Synthesized for an anchor reference. */
+#define N_WasRewritten 0x100    /* NODE->contents can be passed to free(). */ 
 
 /* Internal data structures.  */
 

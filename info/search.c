@@ -577,9 +577,9 @@ skip_node_characters (char *string, int flag)
 /*                                                                  */
 /* **************************************************************** */
 
-/* Return the absolute position of the first occurence of a node separator in
-   BINDING-buffer.  The search starts at BINDING->start.  Return -1 if no node
-   separator was found. */
+/* Return the absolute position of the first occurence of a node separator
+   starting in BINDING->buffer.  The search starts at BINDING->start.
+   Return -1 if no node separator was found. */
 long
 find_node_separator (SEARCH_BINDING *binding)
 {
@@ -592,14 +592,17 @@ find_node_separator (SEARCH_BINDING *binding)
      optional, but the DELETE and NEWLINE are not.  This separator holds
      true for all separated elements in an Info file, including the tags
      table (if present) and the indirect tags table (if present). */
-  for (i = binding->start; i < binding->end - 1; i++)
-    if (((body[i] == INFO_FF && body[i + 1] == INFO_COOKIE) &&
-         (body[i + 2] == '\n' ||
-          (body[i + 2] == INFO_FF && body[i + 3] == '\n'))) ||
-        ((body[i] == INFO_COOKIE) &&
-         (body[i + 1] == '\n' ||
-          (body[i + 1] == INFO_FF && body[i + 2] == '\n'))))
-      return i;
+  for (i = binding->start; i < binding->end; i++)
+      /* Note that bytes are read in order from the buffer, so if at any
+         point a null byte is encountered signifying the end of the buffer,
+         no more bytes will be read past that point. */
+      if (   (body[i] == INFO_FF && body[i + 1] == INFO_COOKIE
+              && (body[i + 2] == '\n'
+                  || (body[i + 2] == INFO_FF && body[i + 3] == '\n')))
+          || (body[i] == INFO_COOKIE
+              && (body[i + 1] == '\n'
+                  || (body[i + 1] == INFO_FF && body[i + 2] == '\n'))))
+          return i;
   return -1;
 }
 
