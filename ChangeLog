@@ -1,22 +1,22 @@
 2014-04-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* nodes.c (info_node_of_file_buffer_tags): Use |= where intended.
-	* nodes.c: Comments edited.
+	* info/nodes.c (info_node_of_file_buffer_tags): Use |= where intended.
+	* info/nodes.c: Comments edited.
 
 2014-04-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* nodes.c (init_file_buffer_tag): New function.  Conditonally set
+	* info/nodes.c (init_file_buffer_tag): New function.  Conditonally set
 	N_HasTagsTable and N_TagsIndirect on tag table entries.
 	(get_nodes_of_info_file, get_nodes_of_tag_table): Create tag table
 	entries with info_create_node and init_file_buffer_tag.  Set
 	nodelen to -1 for all tags.
-	* (get_tags_of_indirect_tags_table): Set N_TagsIndirect in flags before
+	(get_tags_of_indirect_tags_table): Set N_TagsIndirect in flags before
 	calling get_nodes_of_tags_table so it will be set on tag table entries.
 	
-	* nodes.h: (N_WasRewritten): New preprocessor symbol.
+	* info/nodes.h: (N_WasRewritten): New preprocessor symbol.
 	(NODE.content_cache): Field deleted.
 	
-	* nodes.c (adjust_nodestart): Do not read or write contents field
+	* info/nodes.c (adjust_nodestart): Do not read or write contents field
 	of tag.  Alter nodestart field.  Call find_node_in_binding instead
 	of find_node_separator.  Arguments changed.
 	(set_tag_nodelen): New function, split out from
@@ -27,12 +27,12 @@
 	body_start on tag table entry instead of returned node.  Acquire node
 	by copying from tag table.
 	
-	* search.c (find_node_separator): Allow node separator to start
+	* info/search.c (find_node_separator): Allow node separator to start
 	anywhere from binding->start inclusive to binding->end exclusive.  Add
 	comment to clarify that we won't read past the end of allocated space.
 	Reformat logical expression.
 	
-	* session.c (free_node_contents): New function.  Free contents of
+	* info/session.c (free_node_contents): New function.  Free contents of
 	rewritten nodes in tag table.
 	(info_delete_window): Call info_gc_file_buffers.
 	(info_gc_file_buffers): Call free_node_contents.
@@ -40,10 +40,10 @@
 
 2014-04-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* nodes.h (NODE): Fields nodestart and content_cache added.
-	* nodes.h (TAG): Structure type deleted.  All variables or functions
-	declared with this type changed to use NODE instead.
-	* tag.c (tags_expand): size_t -> long in arguments.
+	* info/nodes.h (NODE): Fields nodestart and content_cache added.
+	* info/nodes.h (TAG): Structure type deleted.  All variables
+	and functions declared with this type changed to use NODE instead.
+	* info/tag.c (tags_expand): size_t -> long in arguments.
 
 2014-04-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
