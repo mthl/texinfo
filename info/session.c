@@ -3946,7 +3946,7 @@ info_search_internal (char *string, WINDOW *window,
     {
       register int current_tag = 0, number_of_tags;
       char *last_subfile;
-      TAG *tag;
+      NODE *tag;
       char *msg = NULL;
 
       /* Find number of tags and current tag. */

@@ -52,7 +52,7 @@ static void get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
 static void get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
     SEARCH_BINDING *indirect_binding, SEARCH_BINDING *tags_binding);
 static void free_file_buffer_tags (FILE_BUFFER *file_buffer);
-static void free_info_tag (TAG *tag);
+static void free_info_tag (NODE *tag);
 
 /* Grovel FILE_BUFFER->contents finding tags and nodes, and filling in the
    various slots.  This can also be used to rebuild a tag or node table. */
@@ -175,7 +175,7 @@ get_node_length (SEARCH_BINDING *binding)
   return i - binding->start;
 }
 
-/* Search through FILE_BUFFER->contents building an array of TAG *,
+/* Search through FILE_BUFFER->contents building an array of NODE *,
    one entry per each node present in the file.  Store the tags in
    FILE_BUFFER->tags, and the number of allocated slots in
    FILE_BUFFER->tags_slots. */
@@ -195,7 +195,7 @@ get_nodes_of_info_file (FILE_BUFFER *file_buffer)
     {
       int start, end;
       char *nodeline;
-      TAG *entry;
+      NODE *entry;
       int anchor = 0;
 
       /* Skip past the characters just found. */
@@ -228,7 +228,7 @@ get_nodes_of_info_file (FILE_BUFFER *file_buffer)
 
       /* Okay, we have isolated the node name, and we know where the
          node starts.  Remember this information. */
-      entry = xmalloc (sizeof (TAG));
+      entry = xmalloc (sizeof (NODE));
       entry->content_cache = NULL;
       entry->nodename = xmalloc (1 + (end - start));
       strncpy (entry->nodename, nodeline + start, end - start);
@@ -286,7 +286,7 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
      Do each line until we find one that doesn't contain a node name. */
   while (search_forward ("\n", tmp_search, &position) == search_success)
     {
-      TAG *entry;
+      NODE *entry;
       char *nodedef;
       unsigned p;
       int anchor = 0;
@@ -317,7 +317,7 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
       if (name_offset == -1)
         break;
 
-      entry = xmalloc (sizeof (TAG));
+      entry = xmalloc (sizeof (NODE));
       entry->content_cache = NULL;
 
       /* Find the beginning of the node definition. */
@@ -370,7 +370,7 @@ get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
   int i;
   SUBFILE **subfiles = NULL;
   size_t subfiles_index = 0, subfiles_slots = 0;
-  TAG *entry;
+  NODE *entry;
 
   /* First get the list of tags from the tags table.  Then lookup the
      associated file in the indirect list for each tag, and update it. */
@@ -534,7 +534,7 @@ free_file_buffer_tags (FILE_BUFFER *file_buffer)
 
   if (file_buffer->tags)
     {
-      TAG *tag;
+      NODE *tag;
 
       for (i = 0; (tag = file_buffer->tags[i]); i++)
         free_info_tag (tag);
@@ -556,7 +556,7 @@ free_file_buffer_tags (FILE_BUFFER *file_buffer)
 
 /* Free the data associated with TAG, as well as TAG itself. */
 static void
-free_info_tag (TAG *tag)
+free_info_tag (NODE *tag)
 {
   free (tag->nodename);
   free (tag->content_cache);
@@ -874,7 +874,7 @@ static int get_filename_and_nodename (int flag, WINDOW *window,
                                       char *filename_in, char *nodename_in);
 static char *adjust_nodestart (NODE *node, int min, int max);
 static void node_set_body_start (NODE *node);
-static NODE *find_node_of_anchor (FILE_BUFFER *file_buffer, TAG *tag);
+static NODE *find_node_of_anchor (FILE_BUFFER *file_buffer, NODE *tag);
 static char *adjust_nodestart (NODE *node, int min, int max);
 static NODE *info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer,
     char *nodename);
@@ -1068,16 +1068,16 @@ info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
 /* Return the node that contains TAG in FILE_BUFFER, else
    (pathologically) NULL.  Called from info_node_of_file_buffer_tags.  */
 static NODE *
-find_node_of_anchor (FILE_BUFFER *file_buffer, TAG *tag)
+find_node_of_anchor (FILE_BUFFER *file_buffer, NODE *tag)
 {
   int anchor_pos, node_pos;
-  TAG *node_tag;
+  NODE *node_tag;
   NODE *node;
 
   /* Look through the tag list for the anchor.  */
   for (anchor_pos = 0; file_buffer->tags[anchor_pos]; anchor_pos++)
     {
-      TAG *t = file_buffer->tags[anchor_pos];
+      NODE *t = file_buffer->tags[anchor_pos];
       if (t->nodestart == tag->nodestart)
         break;
     }
@@ -1222,7 +1222,7 @@ adjust_nodestart (NODE *node, int min, int max)
 static NODE *
 info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer, char *nodename)
 {
-  TAG *tag;
+  NODE *tag;
   int i;
 
   /* If no tags at all (possibly a misformatted info file), quit.  */

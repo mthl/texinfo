@@ -19,7 +19,7 @@
 #ifndef TAG_H
 #define TAG_H
 
-int tags_expand (char *input, size_t inputlen, char **pbuf, size_t *pbuflen);
+int tags_expand (char *input, long inputlen, char **pbuf, long *pbuflen);
 void handle_tag (char *tag);
 
 #endif

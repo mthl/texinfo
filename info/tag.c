@@ -206,7 +206,7 @@ find_tag_handler (char *tag, size_t taglen)
    put the expanded text into PBUF, store its length in PBUFLEN, and return
    1.  Otherwise, don't touch neither of the latter and return 0. */
 int
-tags_expand (char *input, size_t inputlen, char **pbuf, size_t *pbuflen)
+tags_expand (char *input, long inputlen, char **pbuf, long *pbuflen)
 {
   char *endp = input + inputlen;
   struct text_buffer outbuf;

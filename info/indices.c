@@ -127,7 +127,7 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
   /* Grovel the names of the nodes found in this file. */
   if (file_buffer->tags)
     {
-      TAG *tag;
+      NODE *tag;
 
       for (i = 0; (tag = file_buffer->tags[i]); i++)
         {
@@ -819,7 +819,7 @@ static NODE *
 create_virtindex_node (FILE_BUFFER *file_buffer)
 {
   NODE *node;
-  TAG *tag = file_buffer->tags[0];
+  NODE *tag = file_buffer->tags[0];
   char *text = file_buffer->contents + tag->nodestart;
 
   text += skip_node_separator (text);

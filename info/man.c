@@ -386,7 +386,7 @@ static NODE *
 manpage_node_of_file_buffer (FILE_BUFFER *file_buffer, char *pagename)
 {
   NODE *node = NULL;
-  TAG *tag = NULL;
+  NODE *tag = NULL;
 
   if (file_buffer->contents)
     {

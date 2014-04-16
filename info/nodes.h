@@ -43,6 +43,10 @@ typedef struct {
   unsigned long display_pos;    /* Where to display at, if nonzero.  */
   long body_start;              /* Offset of the actual node body */
   int flags;                    /* See immediately below. */
+  long nodestart;               /* The offset of the start of this node. */
+  char *content_cache;          /* Cache of the node contents; used if the
+				   node contents must be preprocessed before
+				   displaying it. */
 } NODE;
 
 /* Defines that can appear in NODE->flags.  All informative. */
@@ -78,23 +82,6 @@ typedef struct {
 #define INFO_FF     '\014'
 #define INFO_TAGSEP '\177'
 
-/* For each logical file that we have loaded, we keep a list of the names
-   of the nodes that are found in that file.  A pointer to a node in an
-   info file is called a "tag".  For split files, the tag pointer is
-   "indirect"; that is, the pointer also contains the name of the split
-   file where the node can be found.  For non-split files, the filename
-   member in the structure below simply contains the name of the current
-   file.  The following structure describes a single node within a file. */
-typedef struct {
-  char *filename;               /* The file where this node can be found. */
-  char *nodename;               /* The node pointed to by this tag. */
-  long nodestart;               /* The offset of the start of this node. */
-  size_t nodelen;               /* The length of this node. */
-  char *content_cache;          /* Cache of the node contents; used if the
-				   node contents must be preprocessed before
-				   displaying it. */
-} TAG;
-
 /* The following structure is used to remember information about the contents
    of Info files that we have loaded at least once before.  The FINFO member
    is present so that we can reload the file if it has been modified since
@@ -109,7 +96,14 @@ typedef struct {
   char *contents;               /* The contents of this particular file. */
   size_t filesize;              /* The number of bytes this file expands to. */
   char **subfiles;              /* If non-null, the list of subfiles. */
-  TAG **tags;                   /* If non-null, the indirect tags table. */
+  NODE **tags;                  /* If non-null, the tags table. 
+	    For each logical file that we have loaded, we keep a list of
+	    the names of the nodes that are found in that file.  A pointer to
+	    a node in an info file is called a "tag".  For split files, the
+	    tag pointer is "indirect"; that is, the pointer also contains the
+	    name of the split file where the node can be found.  For non-split
+	    files, the filename member simply contains the name of the
+	    current file. */
   size_t tags_slots;            /* Number of slots allocated for TAGS. */
   int flags;                    /* Various flags.  Mimics of N_* flags. */
 } FILE_BUFFER;

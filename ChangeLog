@@ -1,5 +1,12 @@
 2014-04-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* nodes.h (NODE): Fields nodestart and content_cache added.
+	* nodes.h (TAG): Structure type deleted.  All variables or functions
+	declared with this type changed to use NODE instead.
+	* tag.c (tags_expand): size_t -> long in arguments.
+
+2014-04-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c (info_get_node_with_defaults): Free allocated
 	strings on abnormal exit.
 
