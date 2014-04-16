@@ -1147,9 +1147,9 @@ find_node_of_anchor (FILE_BUFFER *file_buffer, NODE *tag)
 /* Find the actual starting memory location of NODE.  Because of the
    way that tags are implemented, the physical nodestart may
    not actually be where the tag says it is.  If that is the case,
-   set N_UpdateTags in NODE->flags.  If the node is
-   found, return non-zero.  Set NODE->nodestart directly on the separator
-   that precedes this node.  If the node could not be found, return 0. */
+   set N_UpdateTags in NODE->flags.  If the node is found, return non-zero.
+   Set NODE->nodestart directly on the separator that precedes this node.
+   If the node could not be found, return 0. */
 static int
 adjust_nodestart (FILE_BUFFER *fb, NODE *node)
 {
@@ -1263,8 +1263,7 @@ info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer, char *nodename)
             /* If TAG->nodelen hasn't been calculated yet, then we aren't
                in a position to trust the entry pointer.  Adjust things so
                that ENTRY->nodestart gets the exact address of the start of
-               the node separator which starts this node, and NODE->contents
-               gets the address of the line defining this node.  If we cannot
+               the node separator which starts this node.  If we cannot
                do that, the node isn't really here. */
             if (tag->nodelen == -1)
               {
@@ -1290,7 +1289,7 @@ info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer, char *nodename)
               {  
                 tag->contents = new_contents;
                 tag->nodelen = new_nodelen;
-                tag->flags &= N_WasRewritten;
+                tag->flags |= N_WasRewritten;
               }
  
             node_set_body_start (tag);
