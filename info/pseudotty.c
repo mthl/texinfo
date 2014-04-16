@@ -17,6 +17,7 @@
    standard output.  Read and ignore any data sent to terminal.  This
    is so we can run tests interactively without messing up the screen. */
 
+#define _GNU_SOURCE
 #include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>
@@ -28,12 +29,14 @@ char dummy;
 
 main ()
 {
-  if ((master = getpt ()) == -1)
+  master = getpt();
+  if (master == -1)
     exit (1);
 
   if (grantpt (master) < 0 || unlockpt (master) < 0)
     exit (1);
-  if (!(name = ptsname (master)))
+  name = ptsname (master);
+  if (!name)
     exit (1);
 
   slave = open (name, O_RDWR);
