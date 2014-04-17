@@ -283,6 +283,11 @@ copy_string (const char *string, int size)
 void
 pfatal_with_name (const char *name)
 {
+  /* Empty files don't set errno, so we get something like
+     "install-info: No error for foo", which is confusing.  */
+  if (errno == 0)
+    fatal (_("%s: empty file"), name);
+
   fatal (_("%s for %s"), strerror (errno), name);
 }
 
@@ -662,17 +667,15 @@ The first time you invoke Info you start off looking at this node.\n\
 /* Open FILENAME and return the resulting stream pointer.  If it doesn't
    exist, try FILENAME.gz.  If that doesn't exist either, call
    CREATE_CALLBACK (with FILENAME as arg) to create it, if that is
-   non-NULL.  If still no luck, fatal error.
+   non-NULL.  If still no luck, return a null pointer.
 
-   If we do open it, return the actual name of the file opened in
-   OPENED_FILENAME and the compress program to use to (de)compress it in
+   Return the actual name of the file we tried to open in
+   OPENED_FILENAME and the compress program to (de)compress it in
    COMPRESSION_PROGRAM.  The compression program is determined by the
    magic number, not the filename.
    
    Return either stdin reading the file, or a non-stdin pipe reading
    the output of the compression program.  */
-
-
 FILE *
 open_possibly_compressed_file (char *filename,
     void (*create_callback) (char *),
@@ -733,33 +736,37 @@ open_possibly_compressed_file (char *filename,
       f = freopen (*opened_filename, FOPEN_RBIN, stdin);
     }
 #endif /* __MSDOS__ */
-   if (!f)
-     {
-       if (create_callback)
-         { /* That didn't work either.  Create the file if we can.  */
-           (*create_callback) (filename);
+  if (!f)
+    {
+      /* The file was not found with any extention added.  Try the
+         original file again. */
+      free (*opened_filename);
+      *opened_filename = filename;
 
-           /* And try opening it again.  */
-           free (*opened_filename);
-           *opened_filename = filename;
-           f = freopen (*opened_filename, FOPEN_RBIN, stdin);
-           if (!f)
-             pfatal_with_name (filename);
-         }
-       else
-         pfatal_with_name (filename);
-     }
+      if (create_callback)
+        {
+          /* Create the file if we can.  */
+          (*create_callback) (filename);
+
+          /* And try opening it again.  */
+          f = freopen (*opened_filename, FOPEN_RBIN, stdin);
+          if (!f)
+            return 0;
+        }
+      else
+        return 0;
+    }
 
   /* Read first few bytes of file rather than relying on the filename.
      If the file is shorter than this it can't be usable anyway.  */
   nread = fread (data, sizeof (data), 1, f);
   if (nread != 1)
     {
-      /* Empty files don't set errno, so we get something like
-         "install-info: No error for foo", which is confusing.  */
+      /* Empty files don't set errno.  Calling code can check for
+         this, so make sure errno == 0 just in case it isn't already. */
       if (nread == 0)
-        fatal (_("%s: empty file"), *opened_filename);
-      pfatal_with_name (*opened_filename);
+        errno = 0;
+      return 0;
     }
 
   if (!compression_program)
@@ -824,14 +831,18 @@ open_possibly_compressed_file (char *filename,
 
   /* Seek back over the magic bytes.  */
   if (fseek (f, 0, 0) < 0)
-    pfatal_with_name (*opened_filename);
+    return 0;
 
   if (*compression_program)
     { /* It's compressed, so open a pipe.  */
       char *command = concat (*compression_program, " -d", "");
       f = popen (command, "r");
       if (! f)
-        pfatal_with_name (command);
+        {
+          /* Used for error message in calling code. */
+          *opened_filename = command;
+          return 0;
+        }
     }
   else
     {
@@ -840,7 +851,7 @@ open_possibly_compressed_file (char *filename,
          switch back to text mode.  */
       f = freopen (*opened_filename, "r", f);
       if (! f)
-	pfatal_with_name (*opened_filename);
+	return 0;
 #endif
     }
 
@@ -852,15 +863,14 @@ open_possibly_compressed_file (char *filename,
    (i.e., try FILENAME.gz et al. if FILENAME does not exist) and store
    the actual file name that was opened into OPENED_FILENAME (if it is
    non-NULL), and the companion compression program (if any, else NULL)
-   into COMPRESSION_PROGRAM (if that is non-NULL).  If trouble, do
-   a fatal error.  */
+   into COMPRESSION_PROGRAM (if that is non-NULL).  If trouble, return
+   a null pointer. */
 
 char *
 readfile (char *filename, int *sizep,
     void (*create_callback) (char *), char **opened_filename,
     char **compression_program)
 {
-  char *real_name;
   FILE *f;
   int filled = 0;
   int data_size = 8192;
@@ -868,15 +878,17 @@ readfile (char *filename, int *sizep,
 
   /* If they passed the space for the file name to return, use it.  */
   f = open_possibly_compressed_file (filename, create_callback,
-                                     opened_filename ? opened_filename
-                                                     : &real_name,
+                                     opened_filename,
                                      compression_program);
+
+  if (!f)
+    return 0;
 
   for (;;)
     {
       int nread = fread (data + filled, 1, data_size - filled, f);
       if (nread < 0)
-        pfatal_with_name (real_name);
+        return 0;
       if (nread == 0)
         break;
 
@@ -2214,8 +2226,27 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   /* Now read in the Info dir file.  */
   if (debug_flag)
     printf ("debug: reading dir file %s\n", dirfile);
-  dir_data = readfile (dirfile, &dir_size, ensure_dirfile_exists,
-                       &opened_dirfilename, &compression_program);
+
+  if (!delete_flag)
+    {
+      dir_data = readfile (dirfile, &dir_size, ensure_dirfile_exists,
+                           &opened_dirfilename, &compression_program);
+      if (!dir_data)
+        pfatal_with_name (opened_dirfilename);
+    }
+  else
+    {
+      /* For "--remove" operation, it is not an error for the dir file
+         not to exist. */
+      dir_data = readfile (dirfile, &dir_size, NULL,
+                           &opened_dirfilename, &compression_program);
+      if (!dir_data)
+        {
+          warning (_("Could not read %s."), opened_dirfilename);
+          exit (EXIT_SUCCESS);
+        }
+    }
+
   dir_lines = findlines (dir_data, dir_size, &dir_nlines);
 
   parse_dir_file (dir_lines, dir_nlines, &dir_nodes);
@@ -2264,9 +2295,14 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
      removing exactly.  */
   if (!remove_exactly)
     {
+      char *opened_infilename;
+
       if (debug_flag)
         printf ("debug: reading input file %s\n", infile);
-      input_data = readfile (infile, &input_size, NULL, NULL, NULL);
+      input_data = readfile (infile, &input_size, NULL,
+                             &opened_infilename, NULL);
+      if (!input_data)
+        pfatal_with_name (opened_infilename);
       input_lines = findlines (input_data, input_size, &input_nlines);
     }
 

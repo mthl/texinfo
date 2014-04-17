@@ -1,3 +1,13 @@
+2014-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* install-info/install-info.c:
+	(main) Only output a warning in --remove operation if dir file
+	not found, and exit successfully.
+	(readfile, open_possibly_compressed_file): Do not exit program
+	on error; pass back name of file with error and return null instead.
+	(pfatal_with_name): Error message for empty file moved from
+	open_possibly_compressed_file.
+
 2014-04-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.c (info_node_of_file_buffer_tags): Use |= where intended.
