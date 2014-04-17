@@ -1,5 +1,15 @@
 2014-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (adjust_nodestart): Initialize variable.
+
+	* info/info-utils.c (info_parse_label): Skip whitespace before label.
+	* info/session.c (backward_move_node_structure): Check if next or up
+	is a dir file properly.
+	(forward_move_node_structure, backward_move_node_structure)
+	(last_node_p): Avoid assignments in conditions.
+
+2014-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* install-info/install-info.c:
 	(main) Only output a warning in --remove operation if dir file
 	not found, and exit successfully.

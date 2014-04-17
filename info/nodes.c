@@ -1153,7 +1153,7 @@ find_node_of_anchor (FILE_BUFFER *file_buffer, NODE *tag)
 static int
 adjust_nodestart (FILE_BUFFER *fb, NODE *node)
 {
-  long position;
+  long position = -1;
   SEARCH_BINDING s;
 
   /* Try the optimal case first.  Who knows?  This file may actually be

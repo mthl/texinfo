@@ -1135,7 +1135,9 @@ static int
 last_node_p (NODE *node)
 {
   char *spec;
-  if (spec = info_next_label_of_node (node))
+
+  spec = info_next_label_of_node (node);
+  if (spec)
     {
       free (spec);
       return 0;
@@ -1165,7 +1167,8 @@ forward_move_node_structure (WINDOW *window, int behaviour)
       return 1;
 
     case IS_NextOnly:
-      if (!(spec = info_next_label_of_node (window->node)))
+      spec = info_next_label_of_node (window->node);
+      if (!spec)
         {
           info_error (msg_no_pointer, _("Next"));
           return 1;
@@ -1216,7 +1219,8 @@ forward_move_node_structure (WINDOW *window, int behaviour)
 
         /* Okay, this node does not contain a menu.  If it contains a
            "Next:" pointer, use that. */
-        if (spec = info_next_label_of_node (window->node))
+        spec = info_next_label_of_node (window->node);
+        if (spec)
           {
             free (spec);
             info_handle_pointer ("Next", window);
@@ -1239,7 +1243,8 @@ forward_move_node_structure (WINDOW *window, int behaviour)
           up_counter = 0;
           while (!info_error_was_printed)
             {
-              if (spec = info_up_label_of_node (window->node))
+              spec = info_up_label_of_node (window->node);
+              if (spec)
                 {
                   free (spec);
                   info_handle_pointer ("Up", window);
@@ -1249,7 +1254,8 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                   up_counter++;
 
                   /* If no "Next" pointer, keep backing up. */
-                  if (!(spec = info_next_label_of_node (window->node)))
+                  spec = info_next_label_of_node (window->node);
+                  if (!spec)
                     {
                       continue;
                     }
@@ -1324,7 +1330,8 @@ backward_move_node_structure (WINDOW *window, int behaviour)
       return 1;
 
     case IS_NextOnly:
-      if (!(spec = info_prev_label_of_node (window->node)))
+      spec = info_prev_label_of_node (window->node);
+      if (!spec)
         {
           info_error ("%s", _("No `Prev' for this node."));
           return 1;
@@ -1338,12 +1345,14 @@ backward_move_node_structure (WINDOW *window, int behaviour)
 
     case IS_Continuous:
       spec = info_prev_label_of_node (window->node);
+      info_parse_node (spec, PARSE_NODE_DFLT);
 
-      if (!spec || is_dir_name (spec))
+      if (!spec || is_dir_name (info_parsed_filename))
         {
           if (spec) free (spec);
           spec = info_up_label_of_node (window->node);
-          if (!spec || is_dir_name (spec))
+          info_parse_node (spec, PARSE_NODE_DFLT);
+          if (!spec || is_dir_name (info_parsed_filename))
             {
               if (spec) free (spec);
               info_error ("%s", 

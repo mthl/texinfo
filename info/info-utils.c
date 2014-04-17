@@ -183,6 +183,8 @@ info_parse_label (char *label, NODE *node)
   if (i == -1)
     return 0;
 
+  i++;
+  i += skip_whitespace (nodeline + i);
   length = skip_node_characters (nodeline + i, PARSE_NODE_DFLT);
   store_in = xmalloc (length + 1);
   memmove (store_in, nodeline + i, length);
