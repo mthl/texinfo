@@ -1,5 +1,9 @@
 2014-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (backward_move_node_structure): Null check.
+
+2014-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c (adjust_nodestart): Initialize variable.
 
 	* info/info-utils.c (info_parse_label): Skip whitespace before label.

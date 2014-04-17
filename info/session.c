@@ -1347,12 +1347,14 @@ backward_move_node_structure (WINDOW *window, int behaviour)
       spec = info_prev_label_of_node (window->node);
       info_parse_node (spec, PARSE_NODE_DFLT);
 
-      if (!spec || is_dir_name (info_parsed_filename))
+      if (!spec
+          || (info_parsed_filename && is_dir_name (info_parsed_filename)))
         {
           if (spec) free (spec);
           spec = info_up_label_of_node (window->node);
           info_parse_node (spec, PARSE_NODE_DFLT);
-          if (!spec || is_dir_name (info_parsed_filename))
+          if (!spec
+              || (info_parsed_filename && is_dir_name (info_parsed_filename)))
             {
               if (spec) free (spec);
               info_error ("%s", 
