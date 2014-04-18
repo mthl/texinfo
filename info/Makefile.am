@@ -99,4 +99,10 @@ TESTS = \
 	t/dir-3-menus.sh \
 	t/tab.sh \
 	t/index.sh \
+	t/split-index.sh \
+	t/index-long-nodeline.sh \
 	t/help.sh
+
+XFAIL_TESTS = \
+      t/index-long-nodeline.sh
+

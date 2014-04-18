@@ -1,5 +1,13 @@
 2014-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/Makefile.am: Two new tests.
+	* info/t/long-nodeline.sh, info/t/long-nodeline.drib,
+	info/t/split-index.sh, info/t/split-index.drib,
+	info/t/infodir/split.info, info/t/infodir/split.info-1,
+	info/t/infodir/split.info-2: New files.
+
+2014-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (backward_move_node_structure): Null check.
 
 2014-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
