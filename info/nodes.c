@@ -591,6 +591,7 @@ free_info_tag (NODE *tag)
 #define INFO_GET_TAGS 1
 
 static FILE_BUFFER *info_find_file_internal (char *filename, int get_tags);
+static void get_file_character_encoding (FILE_BUFFER *fb);
 static FILE_BUFFER *info_load_file_internal (char *filename, int get_tags);
 static void remember_info_file (FILE_BUFFER *file_buffer);
 static void info_reload_file_buffer_contents (FILE_BUFFER *fb);
@@ -707,6 +708,53 @@ info_find_file_internal (char *filename, int get_tags)
   return file_buffer;
 }
 
+/* Look for local variables section in FB and set encoding */
+static void
+get_file_character_encoding (FILE_BUFFER *fb)
+{
+  SEARCH_BINDING binding;
+  long position;
+
+  long int enc_start, enc_end;
+  char *enc_string;
+
+  char **encoding_name;
+
+  /* See if there is a local variables section in this info file. */
+  binding.buffer = fb->contents;
+  binding.start = fb->filesize;
+  binding.end = binding.start - 1000;
+  if (binding.end < 0)
+    binding.end = 0;
+  binding.flags = S_FoldCase;
+
+  /* Null means the encoding is unknown. */
+  fb->encoding = 0;
+
+  if (search_backward (LOCAL_VARIABLES_LABEL, &binding, &position)
+      != search_success)
+    return;
+
+  binding.start = position;
+  binding.end = fb->filesize;
+
+  if (search_forward (CHARACTER_ENCODING_LABEL, &binding, &enc_start)
+      != search_success)
+    return;
+
+  enc_start += strlen(CHARACTER_ENCODING_LABEL); /* Skip to after "coding:" */
+  enc_start += skip_whitespace(fb->contents + enc_start);
+  binding.start = enc_start;
+
+  search_forward ("\n", &binding, &enc_end);
+
+  enc_string = xmalloc (enc_end - enc_start + 1);
+  strncpy (enc_string, fb->contents + enc_start, enc_end - enc_start);
+  enc_string[enc_end - enc_start] = '\0';
+
+  fb->encoding = enc_string;
+}
+
 /* The workhorse function for info_load_file ().  Non-zero second argument
    says to build a list of tags (or nodes) for this file.  This is the
    default behaviour when info_load_file () is called, but it is not
@@ -779,6 +827,9 @@ info_load_file_internal (char *filename, int get_tags)
   if (compressed)
     file_buffer->flags |= N_IsCompressed;
   
+  /* Find encoding of file, if set */
+  get_file_character_encoding (file_buffer);
+
   /* If requested, build the tags and nodes for this file buffer. */
   if (get_tags)
     build_tags_and_nodes (file_buffer);
@@ -1212,17 +1263,6 @@ info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
       /* This may be already calculated, but be out of date
          due to previous calls to tags_expand. */
       set_tag_nodelen (subfile, tag);
-
-      /* Expand eventual \b[...\b] constructs in the contents.
-         If found, update tag->contents to point to the resulting
-         buffer. */
-      if (tags_expand (tag->contents, tag->nodelen,
-                       &new_contents, &new_nodelen))
-        {  
-          tag->contents = new_contents;
-          tag->nodelen = new_nodelen;
-          tag->flags |= N_WasRewritten;
-        }
 
       node_set_body_start (tag);
     }

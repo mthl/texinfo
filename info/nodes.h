@@ -97,6 +97,9 @@ typedef struct {
 #define TAGS_TABLE_BEG_LABEL            "Tag Table:\n"
 #define INDIRECT_TAGS_TABLE_LABEL       "Indirect:\n"
 #define TAGS_TABLE_IS_INDIRECT_LABEL    "(Indirect)"
+#define LOCAL_VARIABLES_LABEL           "Local Variables"
+#define CHARACTER_ENCODING_LABEL        "coding:"
+
 
 /* Character constants. */
 #define INFO_COOKIE '\037'
@@ -127,6 +130,7 @@ typedef struct {
 	    current file. */
   size_t tags_slots;            /* Number of slots allocated for TAGS. */
   int flags;                    /* Various flags.  Mimics of N_* flags. */
+  char *encoding;               /* Name of character encoding of file. */
 } FILE_BUFFER;
 
 /* Externally visible functions.  */

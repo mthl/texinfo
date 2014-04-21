@@ -1,11 +1,46 @@
 2014-04-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* nodes.h (NODE): New fields references, up, prev, next.
-	* info-utils.h, nodes.h (REFERENCE): New field 'type'.  typedef
-	declaration moved.
-	* nodes.h (REFERENCE_XREF, REFERENCE_MENU_ITEM): New preprocessor
+	* info/info-utils.c, info/variables.c (preprocess_nodes_p):
+	New variable.
+	* info/info-utils.c (rewrite_p, input_start, inptr, input_length)
+	(output_buf, anchor_to_adjust, nodestart, deleted_lines)
+	(output_bytes_difference): New file-level variables.
+	[HAVE_ICONV] (file_is_in_utf8, iconv_to_output, iconv_to_utf8):
+	New file-level variables.
+	(init_conversion, close_conversion, init_output_stream)	
+	(copy_direct, copy_converting, degrade_utf8)
+	(copy_input_to_output, skip_input, write_extra_bytes_to_output) 
+	(write_tag_contents, underlining_on, underlining_off)
+	(parse_top_node_line, scan_reference_label, scan_reference_target)
+	(colon_after_newline, scan_node_contents): New function
+	scan_node_contents and helper functions, based on
+	info/info-utils.c:info_references_internal.
+
+	* info/info-utils.c (info_parse_node): Return length of parsed
+	node label.
+	
+	* info/info-utils.c (text_buffer_space_left): New function.
+	[HAVE_ICONV] (text_buffer_iconv): New function.
+
+	* info/nodes.h (FILE_BUFFER): New field 'encoding'.
+	(LOCAL_VARIABLES_LABEL, CHARACTER_ENCODING_LABEL): New preprocessor
 	symbols.
-	* nodes.c (info_create_node): Initialize new fields of NODE.
+	* info/nodes.c (get_file_character_encoding): New function.
+	(info_load_file_internal): Call get_file_character_encoding.
+
+	* info/nodes.c (info_node_of_tag): Don't call tags_expand.
+
+	* info/tags.c (tags_expand, tag_expand): Function renamed and
+	behaviour changed.
+
+2014-04-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.h (NODE): New fields references, up, prev, next.
+	* info/info-utils.h, info/nodes.h (REFERENCE): New field
+	'type'.  typedef declaration moved.
+	* info/nodes.h (REFERENCE_XREF, REFERENCE_MENU_ITEM): New
+	preprocessor symbols.
+	* info/nodes.c (info_create_node): Initialize new fields of NODE.
 	(free_info_tag): Free references field if set.
 
 2014-04-21  Gavin Smith  <gavinsmith0123@gmail.com>

@@ -96,6 +96,10 @@ VARIABLE_ALIST info_variables[] = {
       N_("Exclude default directories from file search path"),
     &infopath_no_defaults_p, (char **)on_off_choices },
 
+  { "preprocess-nodes",
+      N_("Remove Info file syntax from the text of nodes"),
+    &preprocess_nodes_p, (char **)on_off_choices },
+
   { NULL }
 };
 

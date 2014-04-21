@@ -26,6 +26,10 @@
 #include "window.h"
 #include "search.h"
 
+#if HAVE_ICONV
+# include <iconv.h>
+#endif
+
 /* When non-zero, various display and input functions handle ISO Latin
    character sets correctly. */
 extern int ISO_Latin_p;
@@ -54,7 +58,7 @@ extern char *info_parsed_nodename;
    PARSE_NODE_START            The STRING argument is retrieved from a node
                                start line, and therefore ends in `,' only.
 */ 
-void info_parse_node (char *string, int flag);
+int info_parse_node (char *string, int flag);
 
 /* Return a NULL terminated array of REFERENCE * which represents the menu
    found in NODE.  If there is no menu in NODE, just return a NULL pointer. */
@@ -69,6 +73,8 @@ extern REFERENCE **info_xrefs_of_node (NODE *node);
    BINDING->end.  Return an array of REFERENCE * that represents each
    cross reference in this range. */
 extern REFERENCE **info_xrefs (SEARCH_BINDING *binding);
+
+void scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr);
 
 /* Get the entry associated with LABEL in REFERENCES.  Return a pointer to
    the reference if found, or NULL. */
@@ -144,6 +150,11 @@ void text_buffer_free (struct text_buffer *buf);
 void text_buffer_alloc (struct text_buffer *buf, size_t len);
 size_t text_buffer_vprintf (struct text_buffer *buf, const char *format,
 			    va_list ap);
+size_t text_buffer_space_left (struct text_buffer *buf);
+#if HAVE_ICONV
+size_t text_buffer_iconv (struct text_buffer *buf, iconv_t iconv_state,
+                          char **inbuf, size_t *inbytesleft);
+#endif
 size_t text_buffer_add_string (struct text_buffer *buf, const char *str,
 			       size_t len);
 size_t text_buffer_fill (struct text_buffer *buf, int c, size_t len);

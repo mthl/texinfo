@@ -202,66 +202,41 @@ find_tag_handler (char *tag, size_t taglen)
   return NULL;
 }
 
-/* Expand \b[...\b] constructs in INPUT (of INPUTLEN bytes).  If encountered,
-   put the expanded text into PBUF, store its length in PBUFLEN, and return
-   1.  Otherwise, don't touch neither of the latter and return 0. */
+/* Expand \b[...\b] construct at *INPUT.  If encountered, append the
+   expanded text to OUTBUF, advance *INPUT past the tag, and return 1.
+   Otherwise, return 0.  If it is an index tag, set IS_INDEX to 1. */
 int
-tags_expand (char *input, long inputlen, char **pbuf, long *pbuflen)
+tag_expand (char **input, struct text_buffer *outbuf, int *is_index)
 {
-  char *endp = input + inputlen;
-  struct text_buffer outbuf;
-  int text_buffer_used = 0;
-  char *p;
+  char *p = *input;
+  char *q;
+  size_t len;
+  struct tag_handler *tp;
 
-  while ((p = input + strlen (input)) < endp) /* go forward to null */
+  if (memcmp(p, "\0\b[", 3) != 0)       /* opening magic? */
+    return 0;
+
+  p += 3;
+  q = p + strlen (p);                 /* forward to next null */
+  if (memcmp (q + 1, "\b]", 2) != 0)  /* closing magic? */
+    return 0;
+
+  /* Output is different for index nodes */
+  if (!strcmp ("index", p))
+    *is_index = 1;
+
+  len = strcspn (p, " \t");       /* tag name */
+  tp = find_tag_handler (p, len);
+  if (tp)
     {
-      if (memcmp(p + 1, "\b[", 2) == 0)       /* opening magic? */
-	{
-	  char *q;
-
-	  if (!text_buffer_used)
-	    {
-	      text_buffer_init (&outbuf);
-	      text_buffer_used = 1;
-	    }
-	  
-	  p += 3;
-	  q = p + strlen (p);                 /* forward to next null */
-	  if (memcmp (q + 1, "\b]", 2) == 0)  /* closing magic? */
-	    {
-	      size_t len;
-	      struct tag_handler *tp;
-
-	      len = strcspn (p, " \t");       /* tag name */
-	      tp = find_tag_handler (p, len);
-	      if (tp)
-		{
-		  while (p[len] == ' ' || p[len] == '\t')
-		    ++len;                      /* move past whitespace */
-	      
-		  text_buffer_add_string (&outbuf, input, p - input - 3);
-		  if (!tp->handler || tp->handler (p + len, &outbuf) == 0)
-		    {
-		      input = q + 3;
-		      continue;
-		    }
-		}
-	    }
-	}
-
-      if (text_buffer_used)
-	text_buffer_add_string (&outbuf, input, p - input);
-
-      input = p + 1;
-    }
-
-  if (text_buffer_used && text_buffer_off (&outbuf))
-    {
-      if (input < endp)
-	text_buffer_add_string (&outbuf, input, endp - input);
-      *pbuflen = text_buffer_off (&outbuf);
-      *pbuf = text_buffer_base (&outbuf);
-      return 1;
+      while (p[len] == ' ' || p[len] == '\t')
+        ++len;                      /* move past whitespace */
+  
+      if (!tp->handler || tp->handler (p + len, outbuf) == 0)
+        {
+          *input = q + 3;
+          return 1;
+        }
     }
   return 0;
 }
