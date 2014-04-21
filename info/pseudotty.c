@@ -17,7 +17,7 @@
    standard output.  Read and ignore any data sent to terminal.  This
    is so we can run tests interactively without messing up the screen. */
 
-#define _GNU_SOURCE
+#define _XOPEN_SOURCE
 #include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>

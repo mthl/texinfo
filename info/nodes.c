@@ -176,7 +176,8 @@ get_node_length (SEARCH_BINDING *binding)
 }
 
 /* Set fields on new tag table entry. */
-static void init_file_buffer_tag (FILE_BUFFER *fb, NODE *entry)
+static void
+init_file_buffer_tag (FILE_BUFFER *fb, NODE *entry)
 {
   if (fb->flags & N_HasTagsTable)
     {
@@ -364,13 +365,6 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
   free (tmp_search);
 }
 
-/* A structure used only in `get_tags_of_indirect_tags_table' to hold onto
-   an intermediate value. */
-typedef struct {
-  char *filename;
-  long first_byte;
-} SUBFILE;
-
 /* Remember in FILE_BUFFER the nodenames, subfilenames, and offsets within the
    subfiles of every node which appears in TAGS_BINDING.  The 2nd argument is
    a binding surrounding the indirect files list. */
@@ -379,6 +373,14 @@ get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
     SEARCH_BINDING *indirect_binding, SEARCH_BINDING *tags_binding)
 {
   int i;
+
+  /* A structure used only in `get_tags_of_indirect_tags_table' to hold onto
+     an intermediate value. */
+  typedef struct {
+    char *filename;
+    long first_byte;
+  } SUBFILE;
+
   SUBFILE **subfiles = NULL;
   size_t subfiles_index = 0, subfiles_slots = 0;
   NODE *entry;
@@ -1028,7 +1030,6 @@ NODE *
 info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
 {
   NODE *node = NULL;
-  int implicit_nodename = 0;
 
   /* If we are unable to find the file, we have to give up.  There isn't
      anything else we can do. */

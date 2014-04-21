@@ -1,5 +1,14 @@
 2014-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c: Minor formatting.
+	(SUBFILE, get_tags_of_indirect_tags_table): Move typedef
+	into body of function.
+	(info_get_node_of_file_buffer): Unused variable deleted.
+	* info/pseudotty.c: #define _XOPEN_SOURCE instead of _GNU_SOURCE.
+	* info/t/infodir/split.info-2: Syntax fixed.
+
+2014-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/Makefile.am: Two new tests.
 	* info/t/long-nodeline.sh, info/t/long-nodeline.drib,
 	info/t/split-index.sh, info/t/split-index.drib,
