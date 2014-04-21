@@ -55,7 +55,8 @@ static size_t index_nodenames_index = 0;
 static size_t index_nodenames_slots = 0;
 
 /* Add the name of NODE, and the range of the associated index elements
-   (passed in ARRAY) to index_nodenames. */
+   (passed in ARRAY) to index_nodenames.  ARRAY must have at least one
+   element. */
 static void
 add_index_to_index_nodenames (REFERENCE **array, NODE *node)
 {
@@ -137,9 +138,8 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
               NODE *node;
               REFERENCE **menu;
 
-              /* Found one.  Get its menu. */
-              node = info_get_node (tag->filename, tag->nodename, 
-                                    PARSE_NODE_VERBATIM);
+              node = info_node_of_tag (file_buffer, &file_buffer->tags[i]);
+
               if (!node)
                 continue;
 
@@ -628,6 +628,9 @@ apropos_in_all_indices (char *search_string, int inform)
           /* Concatenate with the other indices.  */
           all_indices = info_concatenate_references (all_indices, this_index);
         }
+      /* Try to avoid running out of memory */
+      free (this_fb->contents);
+      this_fb->contents = NULL;
     }
 
   info_free_references (dir_menu);

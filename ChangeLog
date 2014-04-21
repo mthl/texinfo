@@ -1,4 +1,15 @@
-2014-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
+2014-04-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c: (info_node_of_file_buffer_tags, info_node_of_tag):
+	Function split out.
+	(find_node_of_anchor): Function merged into info_node_of_tag.  Don't
+	assume anything about length of node separator.
+
+	* info/indices.c (info_indices_of_file_buffer): Call info_node_of_tag
+	instead of info_get_node.  Free contents after each file searched
+	to conserve memory.
+
+2014-04-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.c: Minor formatting.
 	(SUBFILE, get_tags_of_indirect_tags_table): Move typedef

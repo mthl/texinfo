@@ -149,6 +149,8 @@ typedef struct window_struct WINDOW;
 extern NODE *info_get_node_with_defaults (char *filename, char *nodename,
                                           int flag, WINDOW *window);
 
+extern NODE *info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr);
+
 /* Return a pointer to a NODE structure for the Info node NODENAME in
    FILE_BUFFER.  NODENAME can be passed as NULL, in which case the
    nodename of "Top" is used.  If the node cannot be found, return a

@@ -883,7 +883,6 @@ static int get_filename_and_nodename (int flag, WINDOW *window,
                                       char **filename, char **nodename,
                                       char *filename_in, char *nodename_in);
 static void node_set_body_start (NODE *node);
-static NODE *find_node_of_anchor (FILE_BUFFER *file_buffer, NODE *tag);
 static int adjust_nodestart (FILE_BUFFER *file_buffer, NODE *tag);
 static NODE *info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer,
     char *nodename);
@@ -1073,74 +1072,6 @@ info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
   return node;
 }
 
-/* Return the node that contains TAG in FILE_BUFFER, else
-   (pathologically) NULL.  Called from info_node_of_file_buffer_tags.  */
-static NODE *
-find_node_of_anchor (FILE_BUFFER *file_buffer, NODE *tag)
-{
-  int anchor_pos, node_pos;
-  NODE *node_tag;
-  NODE *node;
-
-  /* Look through the tag list for the anchor.  */
-  for (anchor_pos = 0; file_buffer->tags[anchor_pos]; anchor_pos++)
-    {
-      NODE *t = file_buffer->tags[anchor_pos];
-      if (t->nodestart == tag->nodestart)
-        break;
-    }
-
-  /* Should not happen, because we should always find the anchor.  */
-  if (!file_buffer->tags[anchor_pos])
-    return NULL;
-
-  /* We've found the anchor.  Look backwards in the tag table for the
-     preceding node (we're assuming the tags are given in order),
-     skipping over any preceding anchors.  */
-  for (node_pos = anchor_pos - 1;
-       node_pos >= 0 && file_buffer->tags[node_pos]->nodelen == 0;
-       node_pos--)
-    ;
-
-  /* An info file with an anchor before any nodes is pathological, but
-     it's possible, so don't crash.  */
-  if (node_pos < 0)
-    return NULL;
-
-  /* We have the tag for the node that contained the anchor tag.  */
-  node_tag = file_buffer->tags[node_pos];
-
-  /* Look up the node name in the tag table to get the actual node.
-     This is a recursive call, but it can't recurse again, because we
-     call it with a real node.  */
-  node = info_node_of_file_buffer_tags (file_buffer, node_tag->nodename);
-
-  /* Start displaying the node at the anchor position.  */
-  if (node)
-    { /* The nodestart for real nodes is three characters before the `F'
-         in the `File:' line (a newline, the CTRL-_, and another
-         newline).  The nodestart for anchors is the actual position.
-         But we offset by only 2, rather than 3, because if an anchor is
-         at the beginning of a paragraph, it's nicer for it to end up on
-         the beginning of the first line of the paragraph rather than
-         the blank line before it.  (makeinfo has no way of knowing that
-         a paragraph is going to start, so we can't fix it there.)  */
-      node->display_pos = file_buffer->tags[anchor_pos]->nodestart
-                          - (node_tag->nodestart + 2);
-
-      /* Otherwise an anchor at the end of a node ends up displaying at
-         the end of the last line of the node (way over on the right of
-         the screen), which looks wrong.  */
-      if (node->display_pos >= (unsigned long) node->nodelen)
-        node->display_pos = node->nodelen - 1;
-
-      /* Don't search in the node for the xref text, it's not there.  */
-      node->flags |= N_FromAnchor;
-    }
-
-  return node;
-}
-
 /* Magic number that RMS used to decide how much a tags table pointer could
    be off by.  I feel that it should be much smaller, like 4.  */
 #define DEFAULT_INFO_FUDGE 1000
@@ -1219,6 +1150,134 @@ set_tag_nodelen (FILE_BUFFER *subfile, NODE *tag)
   tag->nodelen = get_node_length (&node_body);
 }
 
+/* Return the node described by *TAG_PTR, retrieving contents from subfile
+   if the file is split.  Return 0 on failure. */
+NODE *
+info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
+{
+  NODE *tag = *tag_ptr;
+  NODE *node;
+  /* If not a split file, subfile == fb */
+  FILE_BUFFER *subfile;
+ 
+  if (!strcmp (fb->filename, tag->filename))
+    subfile = fb;
+  else
+    subfile = info_find_file_internal (tag->filename, INFO_NO_TAGS);
+  if (!subfile)
+    return NULL;
+
+  if (!subfile->contents)
+    {
+      info_reload_file_buffer_contents (subfile);
+      if (!subfile->contents)
+        return NULL;
+    }
+
+  /* If we were able to find this file and load it, then return
+     the node within it. */
+  if (!(tag->nodestart >= 0 && tag->nodestart < subfile->filesize))
+    return NULL;
+
+  node = 0;
+
+  /* If not an anchor and contents of node are not available: */
+  if (tag->nodelen != 0 && !tag->contents)
+    {
+      char *new_contents;
+      long new_nodelen;
+
+      /* If TAG->nodelen hasn't been calculated yet, then we aren't
+         in a position to trust the entry pointer.  Adjust things so
+         that ENTRY->nodestart gets the exact address of the start of
+         the node separator which starts this node.  If we cannot
+         do that, the node isn't really here. */
+      if (tag->nodelen == -1)
+        {
+          char *node_sep;
+
+          if (!adjust_nodestart (subfile, tag))
+            return NULL; /* Node not found. */
+        }
+
+      /* Right after the separator. */
+      tag->contents = subfile->contents + tag->nodestart;
+      tag->contents += skip_node_separator (tag->contents);
+
+      /* This may be already calculated, but be out of date
+         due to previous calls to tags_expand. */
+      set_tag_nodelen (subfile, tag);
+
+      /* Expand eventual \b[...\b] constructs in the contents.
+         If found, update tag->contents to point to the resulting
+         buffer. */
+      if (tags_expand (tag->contents, tag->nodelen,
+                       &new_contents, &new_nodelen))
+        {  
+          tag->contents = new_contents;
+          tag->nodelen = new_nodelen;
+          tag->flags |= N_WasRewritten;
+        }
+
+      node_set_body_start (tag);
+    }
+  else if (tag->nodelen == 0) /* anchor, return containing node */
+    {
+      int anchor_pos, node_pos;
+
+      anchor_pos = tag_ptr - fb->tags;
+
+      /* Look backwards in the tag table for the node preceding
+         the anchor (we're assuming the tags are given in order),
+         skipping over any preceding anchors.  */
+      for (node_pos = anchor_pos - 1;
+           node_pos >= 0 && fb->tags[node_pos]->nodelen == 0;
+           node_pos--)
+        ;
+
+      /* An info file with an anchor before any nodes is pathological, but
+         it's possible, so don't crash.  */
+      if (node_pos < 0)
+        return NULL;
+
+      /* Get the actual node from the tag.  This is a recursive call, but
+         it can't recurse again, because we call it with a real node.  */
+      node = info_node_of_tag (fb, &fb->tags[node_pos]);
+
+      if (node)
+        {
+          /* Start displaying the node at the anchor position.  */
+          node->display_pos = tag->nodestart
+            - (node->nodestart
+               + skip_node_separator (subfile->contents
+                                      + fb->tags[node_pos]->nodestart));
+
+          /* Otherwise an anchor at the end of a node ends up displaying at
+             the end of the last line of the node (way over on the right of
+             the screen), which looks wrong.  */
+          if (node->display_pos >= (unsigned long) node->nodelen)
+            node->display_pos = node->nodelen - 1;
+
+          /* Don't search in the node for the xref text, it's not there.  */
+          node->flags |= N_FromAnchor;
+      }
+    }
+
+  if (!node)
+    {
+      node = xmalloc (sizeof (NODE));
+      *node = *tag;
+    }
+
+  /* We can't set this when tag table is built, because
+     if file is split, we don't know which of the sub-files
+     are compressed. */
+  if (subfile->flags & N_IsCompressed)
+    node->flags |= N_IsCompressed;
+  
+  return node;
+}
+
 /* Return the node from FILE_BUFFER which matches NODENAME by searching
    the tags table in FILE_BUFFER, or NULL.  */
 static NODE *
@@ -1234,85 +1293,7 @@ info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer, char *nodename)
   for (i = 0; (tag = file_buffer->tags[i]); i++)
     if (strcmp (nodename, tag->nodename) == 0)
       {
-        NODE *node;
-        /* If not a split file, subfile == file_buffer */
-        FILE_BUFFER *subfile = info_find_file_internal (tag->filename,
-                                                        INFO_NO_TAGS);
-        if (!subfile)
-          return NULL;
-
-        if (!subfile->contents)
-          {
-            info_reload_file_buffer_contents (subfile);
-            if (!subfile->contents)
-              return NULL;
-          }
-
-        /* If we were able to find this file and load it, then return
-           the node within it. */
-        if (!(tag->nodestart >= 0 && tag->nodestart < subfile->filesize))
-          return NULL;
-
-        node = 0;
-
-        /* If not an anchor and contents of node are not available: */
-        if (tag->nodelen != 0 && !tag->contents)
-          {
-            char *new_contents;
-            long new_nodelen;
-
-            /* If TAG->nodelen hasn't been calculated yet, then we aren't
-               in a position to trust the entry pointer.  Adjust things so
-               that ENTRY->nodestart gets the exact address of the start of
-               the node separator which starts this node.  If we cannot
-               do that, the node isn't really here. */
-            if (tag->nodelen == -1)
-              {
-                char *node_sep;
-
-                if (!adjust_nodestart (subfile, tag))
-                  return NULL; /* Node not found. */
-              }
-
-            /* Right after the separator. */
-            tag->contents = subfile->contents + tag->nodestart;
-            tag->contents += skip_node_separator (tag->contents);
-
-            /* This may be already calculated, but be out of date
-               due to previous calls to tags_expand. */
-            set_tag_nodelen (subfile, tag);
-
-            /* Expand eventual \b[...\b] constructs in the contents.
-               If found, update tag->contents to point to the resulting
-               buffer. */
-            if (tags_expand (tag->contents, tag->nodelen,
-                             &new_contents, &new_nodelen))
-              {  
-                tag->contents = new_contents;
-                tag->nodelen = new_nodelen;
-                tag->flags |= N_WasRewritten;
-              }
- 
-            node_set_body_start (tag);
-          }
-        else if (tag->nodelen == 0) /* anchor, return containing node */
-          {
-            node = find_node_of_anchor (file_buffer, tag);
-          }
-
-        if (!node)
-          {
-            node = xmalloc (sizeof (NODE));
-            *node = *tag;
-          }
-
-        /* We can't set this when tag table is built, because
-           if file is split, we don't know which of the sub-files
-           are compressed. */
-        if (subfile->flags & N_IsCompressed)
-          node->flags |= N_IsCompressed;
-        
-        return node;
+        return info_node_of_tag (file_buffer, &file_buffer->tags[i]);
       }
 
   /* There was a tag table for this file, and the node wasn't found.
