@@ -138,7 +138,33 @@ make_footnotes_node (NODE *node)
     memcpy (result->contents + strlen (header),
             fn_node->contents + text_start, fn_node->nodelen - text_start);
 
+    result->flags |= N_IsInternal;
+
+   /* Copy and adjust references that appear in footnotes section. */
+    {
+      REFERENCE **ref = fn_node->references;
+
+      for (; *ref; ref++)
+        {
+          if ((*ref)->start > text_start)
+            break;
+        }
+
+      result->references = info_copy_references (ref);
+
+      for (ref = result->references; *ref; ref++)
+        {
+          (*ref)->start -= text_start - strlen (header);
+          (*ref)->end -= text_start - strlen (header);
+        }
+    }
+
+    node->parent = NULL;
     name_internal_node (result, footnote_nodename);
+
+    /* Needed in case the user follows a reference in the footnotes window. */
+    result->filename = fn_node->filename;
+
     free (header);
   }
 

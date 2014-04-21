@@ -1265,6 +1265,10 @@ info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
       set_tag_nodelen (subfile, tag);
 
       node_set_body_start (tag);
+
+      /* Read locations of references in node and similar.  Strip
+         Info file syntax from node if preprocess_nodes=On. */
+      scan_node_contents (fb, tag_ptr);
     }
   else if (tag->nodelen == 0) /* anchor, return containing node */
     {

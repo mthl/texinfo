@@ -739,6 +739,8 @@ DECLARE_INFO_COMMAND (info_index_apropos,
         }
 
       apropos_node = message_buffer_to_node ();
+      scan_node_contents (0, &apropos_node);
+
       add_gcable_pointer (apropos_node->contents);
       name_internal_node (apropos_node, apropos_list_nodename);
 
@@ -833,6 +835,8 @@ create_virtindex_node (FILE_BUFFER *file_buffer)
   node->contents = text;
   node->nodelen = strlen (text);
   node->body_start = strcspn(node->contents, "\n");
+
+  scan_node_contents (0, &node);
 
   return node;
 }

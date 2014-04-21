@@ -213,6 +213,9 @@ Select one from this menu, or use `\\[history-node]' in another window.\n"), 0))
 
   node = message_buffer_to_node ();
   add_gcable_pointer (node->contents);
+
+  scan_node_contents (0, &node);
+
   return node;
 }
 

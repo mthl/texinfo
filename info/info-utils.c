@@ -432,8 +432,6 @@ info_concatenate_references (REFERENCE **ref1, REFERENCE **ref2)
   return result;
 }
 
-
-
 /* Copy a reference structure.  Since we tend to free everything at
    every opportunity, we don't share any points, but copy everything into
    new memory.  */
@@ -447,12 +445,33 @@ info_copy_reference (REFERENCE *src)
   dest->start = src->start;
   dest->end = src->end;
   dest->line_number = 0;
+  dest->type = src->type;
   
   return dest;
 }
 
+/* Copy a list of references. */
+REFERENCE **
+info_copy_references (REFERENCE **ref1)
+{
+  int i;
+  REFERENCE **result;
+  int size;
 
-
+  /* Get the total size of the slots that we will need. */
+  for (i = 0; ref1[i]; i++);
+  size = i;
+
+  result = xmalloc ((1 + size) * sizeof (REFERENCE *));
+
+  /* Copy the contents over. */
+  for (i = 0; ref1[i]; i++)
+    result[i] = info_copy_reference (ref1[i]);
+  result[i] = NULL;
+
+  return result;
+}
+
 void
 info_reference_free (REFERENCE *ref)
 {
@@ -481,6 +500,7 @@ info_free_references (REFERENCE **references)
     }
 }
 
+
 /* Search for sequences of whitespace or newlines in STRING, replacing
    all such sequences with just a single space.  Remove whitespace from
    start and end of string. */
@@ -670,7 +690,7 @@ init_conversion (FILE_BUFFER *fb)
 
   convert_encoding_p = 0;
 
-   /* Node being processed does not come from an Info file. */
+  /* Node being processed does not come from an Info file. */
   if (!fb)
     return;
 
@@ -1725,16 +1745,7 @@ filename_non_directory (char *pathname)
 int
 internal_info_node_p (NODE *node)
 {
-#if defined (NEVER)
-  if (node &&
-      (node->filename && !*node->filename) &&
-      !node->parent && node->nodename)
-    return 1;
-  else
-    return 0;
-#else
-  return (node != NULL) && ((node->flags & N_IsInternal) != 0);
-#endif /* !NEVER */
+  return (node != NULL) && (node->flags & N_IsInternal);
 }
 
 /* Make NODE appear to be one especially created by Info. */

@@ -1,5 +1,23 @@
 2014-04-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (info_node_of_tag): Call scan_node_contents.
+
+	* info/footnotes.c (make_footnotes_node): Copy references from main
+	node to footnotes node.  Set filename field from main node.
+	* info/info-utils.c (info_copy_references): New function.
+	(info_copy_reference): Copy type field.
+	
+	* info/indices.c (info_index_apropos, create_virtindex_node)
+	* info/nodemenu.c (get_visited_nodes): Call scan_node_contents on new
+	node.
+	
+	* info/info-utils.c (internal_info_node_p): Remove code disabled by
+	preprocessor.
+	
+	* info/session.c (forget_window_and_nodes): Call info_free_references.
+
+2014-04-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c, info/variables.c (preprocess_nodes_p):
 	New variable.
 	* info/info-utils.c (rewrite_p, input_start, inptr, input_length)

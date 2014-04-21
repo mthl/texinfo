@@ -463,7 +463,10 @@ forget_window_and_nodes (WINDOW *window)
              which does that. */
           for (i = 0; info_win->nodes[i]; i++)
             if (internal_info_node_p (info_win->nodes[i]))
-              free (info_win->nodes[i]);
+              {
+                info_free_references (info_win->nodes[i]->references);
+                free (info_win->nodes[i]);
+              }
           free (info_win->nodes);
 
           free (info_win->pagetops);
