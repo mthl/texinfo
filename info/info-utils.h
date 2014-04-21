@@ -26,17 +26,6 @@
 #include "window.h"
 #include "search.h"
 
-/* Structure which describes a node reference, such as a menu entry or
-   cross reference.  Arrays of such references can be built by calling
-   info_menus_of_node () or info_xrefs_of_node (). */
-typedef struct {
-  char *label;          /* User Label. */
-  char *filename;       /* File where this node can be found. */
-  char *nodename;       /* Name of the node. */
-  int start, end;       /* Offsets within the containing node of LABEL. */
-  int line_number;      /* Specific line number a menu item points to.  */
-} REFERENCE;
-
 /* When non-zero, various display and input functions handle ISO Latin
    character sets correctly. */
 extern int ISO_Latin_p;

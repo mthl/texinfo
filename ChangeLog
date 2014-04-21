@@ -1,5 +1,15 @@
 2014-04-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* nodes.h (NODE): New fields references, up, prev, next.
+	* info-utils.h, nodes.h (REFERENCE): New field 'type'.  typedef
+	declaration moved.
+	* nodes.h (REFERENCE_XREF, REFERENCE_MENU_ITEM): New preprocessor
+	symbols.
+	* nodes.c (info_create_node): Initialize new fields of NODE.
+	(free_info_tag): Free references field if set.
+
+2014-04-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c: (info_node_of_file_buffer_tags, info_node_of_tag):
 	Function split out.
 	(find_node_of_anchor): Function merged into info_node_of_tag.  Don't

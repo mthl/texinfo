@@ -573,6 +573,7 @@ free_info_tag (NODE *tag)
   if (tag->flags & N_WasRewritten)
     free (tag->contents);
 
+  if (tag->references) info_free_references (tag->references);
   free (tag->nodename);
   
   /* We don't free tag->filename, because that filename is part of the
@@ -902,6 +903,10 @@ info_create_node (void)
   n->display_pos = 0;
   n->body_start = 0;
   n->flags = 0;
+  n->references = 0;
+  n->up = 0;
+  n->prev = 0;
+  n->next = 0;
 
   return n;
 }
@@ -1260,7 +1265,7 @@ info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
 
           /* Don't search in the node for the xref text, it's not there.  */
           node->flags |= N_FromAnchor;
-      }
+        }
     }
 
   if (!node)

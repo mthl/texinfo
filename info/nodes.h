@@ -26,6 +26,22 @@
 
 /* User code interface.  */
 
+/* Structure which describes a node reference, such as a menu entry or
+   cross reference.  Arrays of such references can be built by calling
+   info_menus_of_node () or info_xrefs_of_node (). */
+typedef struct {
+  char *label;          /* User Label. */
+  char *filename;       /* File where this node can be found. */
+  char *nodename;       /* Name of the node. */
+  int start, end;       /* Offsets within the containing node of LABEL. */
+  int line_number;      /* Specific line number a menu item points to.  */
+  int type;             /* Whether reference is a xref or a menu item */
+} REFERENCE;
+
+/* Possible values of REFERENCE.type */
+#define REFERENCE_XREF 0
+#define REFERENCE_MENU_ITEM 1
+
 /* Callers generally only want the node itself.  This structure is used
    to pass node information around.  None of the information in this
    structure should ever be directly freed.  The structure itself can
@@ -46,7 +62,11 @@ typedef struct {
   unsigned long display_pos;    /* Where to display at, if nonzero.  */
   long body_start;              /* Offset of the actual node body */
   int flags;                    /* See immediately below. */
+  REFERENCE **references;       /* Cross-references or menu items in node.
+                                   references == 0 implies uninitialized,
+                                   not empty */
   long nodestart;               /* The offset of the start of this node. */
+  char *up, *prev, *next;       /* Names of nearby nodes. */
 } NODE;
 
 /* Defines that can appear in NODE->flags.  All informative. */
