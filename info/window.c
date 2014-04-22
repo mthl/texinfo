@@ -1044,7 +1044,7 @@ window_make_modeline (WINDOW *window)
           int percentage;
 
           pt = (float)window->pagetop;
-          lc = (float)window->line_count;
+          lc = (float)(window->line_count - window->height);
 
           percentage = 100 * (pt / lc);
 
