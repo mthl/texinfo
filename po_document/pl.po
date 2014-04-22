@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo_document 5.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-26 15:54-0700\n"
+"POT-Creation-Date: 2014-04-07 19:39+0100\n"
 "PO-Revision-Date: 2013-02-28 21:35+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -16,87 +16,87 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: tp/Texinfo/Common.pm:701 tp/Texinfo/Common.pm:706
+#: tp/Texinfo/Common.pm:702 tp/Texinfo/Common.pm:707
 msgid "Function"
 msgstr "Funkcja"
 
-#: tp/Texinfo/Common.pm:702
+#: tp/Texinfo/Common.pm:703
 msgid "Macro"
 msgstr "Makro"
 
-#: tp/Texinfo/Common.pm:703
+#: tp/Texinfo/Common.pm:704
 msgid "Special Form"
 msgstr "Postać specjalna"
 
-#: tp/Texinfo/Common.pm:704 tp/Texinfo/Common.pm:707
+#: tp/Texinfo/Common.pm:705 tp/Texinfo/Common.pm:708
 msgid "Variable"
 msgstr "Zmienna"
 
-#: tp/Texinfo/Common.pm:705
+#: tp/Texinfo/Common.pm:706
 msgid "User Option"
 msgstr "Opcja użytkownika"
 
-#: tp/Texinfo/Common.pm:708 tp/Texinfo/Common.pm:709
+#: tp/Texinfo/Common.pm:709 tp/Texinfo/Common.pm:710
 msgid "Instance Variable"
 msgstr "Przykład zmiennej"
 
-#: tp/Texinfo/Common.pm:710 tp/Texinfo/Common.pm:711
+#: tp/Texinfo/Common.pm:711 tp/Texinfo/Common.pm:712
 msgid "Method"
 msgstr "Metoda"
 
-#: tp/Texinfo/Common.pm:1157
+#: tp/Texinfo/Common.pm:1158
 #, perl-brace-format
 msgid "{category} on {class}"
 msgstr "{category} dla klasy {class}"
 
-#: tp/Texinfo/Common.pm:1164
+#: tp/Texinfo/Common.pm:1165
 #, perl-brace-format
 msgid "{category} of {class}"
 msgstr "{category} klasy {class}"
 
-#: tp/Texinfo/Common.pm:1181
+#: tp/Texinfo/Common.pm:1182
 #, perl-brace-format
 msgid "{month} {day}, {year}"
 msgstr "{day} {month} {year}"
 
-#: tp/Texinfo/Common.pm:1212 tp/Texinfo/Convert/Plaintext.pm:1045
+#: tp/Texinfo/Common.pm:1213 tp/Texinfo/Convert/Plaintext.pm:1045
 #: tp/Texinfo/Convert/HTML.pm:512
 #, perl-brace-format
 msgid "Appendix {number} {section_title}"
 msgstr "Załącznik {number} {section_title}"
 
-#: tp/Texinfo/Common.pm:1216 tp/Texinfo/Convert/Plaintext.pm:1050
+#: tp/Texinfo/Common.pm:1217 tp/Texinfo/Convert/Plaintext.pm:1050
 #: tp/Texinfo/Convert/HTML.pm:518
 #, perl-brace-format
 msgid "{number} {section_title}"
 msgstr "{number} {section_title}"
 
-#: tp/Texinfo/Common.pm:1351
+#: tp/Texinfo/Common.pm:1352
 #, perl-brace-format
 msgid "{float_type} {float_number}: "
 msgstr "{float_type} {float_number}: "
 
-#: tp/Texinfo/Common.pm:1355
+#: tp/Texinfo/Common.pm:1356
 #, perl-brace-format
 msgid "{float_type}: "
 msgstr "{float_type}: "
 
-#: tp/Texinfo/Common.pm:1360
+#: tp/Texinfo/Common.pm:1361
 #, perl-brace-format
 msgid "{float_type} {float_number}\n"
 msgstr "{float_type} {float_number}\n"
 
-#: tp/Texinfo/Common.pm:1364
+#: tp/Texinfo/Common.pm:1365
 #, perl-brace-format
 msgid "{float_type}\n"
 msgstr "{float_type}\n"
 
-#: tp/Texinfo/Common.pm:1370
+#: tp/Texinfo/Common.pm:1371
 #, perl-brace-format
 msgid "{float_number}: "
 msgstr "{float_number}: "
 
-#: tp/Texinfo/Common.pm:1373
+#: tp/Texinfo/Common.pm:1374
 #, perl-brace-format
 msgid "{float_number}\n"
 msgstr "{float_number}\n"
@@ -763,15 +763,15 @@ msgstr "{category} dla klasy {class}: @strong{{name}}"
 msgid ""
 "{category} on {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 msgstr ""
-"{category} dla klasy {class}:@* @emph{{type}}@* @strong{{name}} "
-"@emph{{arguments}}"
+"{category} dla klasy {class}:@* @emph{{type}}@* @strong{{name}} @emph"
+"{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4071
 #, perl-brace-format
 msgid "{category} on {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
 msgstr ""
-"{category} dla klasy {class}: @emph{{type}} @strong{{name}} "
-"@emph{{arguments}}"
+"{category} dla klasy {class}: @emph{{type}} @strong{{name}} @emph"
+"{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4082
 #, perl-brace-format
@@ -788,8 +788,8 @@ msgstr "{category} dla klasy {class}: @emph{{type}} @strong{{name}}"
 msgid ""
 "{category} of {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 msgstr ""
-"{category} klasy {class}:@* @emph{{type}}@* @strong{{name}} "
-"@emph{{arguments}}"
+"{category} klasy {class}:@* @emph{{type}}@* @strong{{name}} @emph"
+"{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4104
 #, perl-brace-format
@@ -810,11 +810,11 @@ msgstr "{category} klasy {class}: @emph{{type}} @strong{{name}}"
 #: tp/Texinfo/Convert/HTML.pm:6125
 #, perl-brace-format
 msgid ""
-"This document was generated on @emph{@today{}} using "
-"@uref{{program_homepage}, @emph{{program}}}."
+"This document was generated on @emph{@today{}} using @uref"
+"{{program_homepage}, @emph{{program}}}."
 msgstr ""
-"Ten dokument został wygenerowany @emph{@today{}} przy użyciu programu "
-"@uref{{program_homepage}, @emph{{program}}}."
+"Ten dokument został wygenerowany @emph{@today{}} przy użyciu programu @uref"
+"{{program_homepage}, @emph{{program}}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6130
 msgid "This document was generated on @emph{@today{}}."
@@ -856,9 +856,8 @@ msgid ""
 "@strong{ Subsubsection One-Two-Three } of a document of the following "
 "structure:"
 msgstr ""
-" gdzie @strong{ Przykład } zakłada, że bieżąca pozycja to "
-"@strong{ Podpodsekcja Jeden-Dwa-Trzy } w dokumencie o następującej "
-"strukturze:"
+" gdzie @strong{ Przykład } zakłada, że bieżąca pozycja to @strong"
+"{ Podpodsekcja Jeden-Dwa-Trzy } w dokumencie o następującej strukturze:"
 
 #: tp/Texinfo/Convert/HTML.pm:6427
 msgid "Section One"

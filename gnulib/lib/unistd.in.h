@@ -1,5 +1,5 @@
 /* Substitute for and wrapper around <unistd.h>.
-   Copyright (C) 2003-2013 Free Software Foundation, Inc.
+   Copyright (C) 2003-2014 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -654,10 +654,19 @@ _GL_WARN_ON_USE (getdomainname, "getdomainname is unportable - "
 #if @GNULIB_GETDTABLESIZE@
 /* Return the maximum number of file descriptors in the current process.
    In POSIX, this is same as sysconf (_SC_OPEN_MAX).  */
-# if !@HAVE_GETDTABLESIZE@
+# if @REPLACE_GETDTABLESIZE@
+#  if !(defined __cplusplus && defined GNULIB_NAMESPACE)
+#   undef getdtablesize
+#   define getdtablesize rpl_getdtablesize
+#  endif
+_GL_FUNCDECL_RPL (getdtablesize, int, (void));
+_GL_CXXALIAS_RPL (getdtablesize, int, (void));
+# else
+#  if !@HAVE_GETDTABLESIZE@
 _GL_FUNCDECL_SYS (getdtablesize, int, (void));
-# endif
+#  endif
 _GL_CXXALIAS_SYS (getdtablesize, int, (void));
+# endif
 _GL_CXXALIASWARN (getdtablesize);
 #elif defined GNULIB_POSIXCHECK
 # undef getdtablesize

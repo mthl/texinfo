@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo_document-5.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2013-09-26 15:54-0700\n"
+"POT-Creation-Date: 2014-04-07 19:39+0100\n"
 "PO-Revision-Date: 2013-02-27 20:31+0100\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -20,87 +20,87 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.0\n"
 
-#: tp/Texinfo/Common.pm:701 tp/Texinfo/Common.pm:706
+#: tp/Texinfo/Common.pm:702 tp/Texinfo/Common.pm:707
 msgid "Function"
 msgstr "Functie"
 
-#: tp/Texinfo/Common.pm:702
+#: tp/Texinfo/Common.pm:703
 msgid "Macro"
 msgstr "Macro"
 
-#: tp/Texinfo/Common.pm:703
+#: tp/Texinfo/Common.pm:704
 msgid "Special Form"
 msgstr "Speciale vorm"
 
-#: tp/Texinfo/Common.pm:704 tp/Texinfo/Common.pm:707
+#: tp/Texinfo/Common.pm:705 tp/Texinfo/Common.pm:708
 msgid "Variable"
 msgstr "Variabele"
 
-#: tp/Texinfo/Common.pm:705
+#: tp/Texinfo/Common.pm:706
 msgid "User Option"
 msgstr "Gebruikeroptie"
 
-#: tp/Texinfo/Common.pm:708 tp/Texinfo/Common.pm:709
+#: tp/Texinfo/Common.pm:709 tp/Texinfo/Common.pm:710
 msgid "Instance Variable"
 msgstr "Instantiatievariabele"
 
-#: tp/Texinfo/Common.pm:710 tp/Texinfo/Common.pm:711
+#: tp/Texinfo/Common.pm:711 tp/Texinfo/Common.pm:712
 msgid "Method"
 msgstr "Methode"
 
-#: tp/Texinfo/Common.pm:1157
+#: tp/Texinfo/Common.pm:1158
 #, perl-brace-format
 msgid "{category} on {class}"
 msgstr "{category} over {class}"
 
-#: tp/Texinfo/Common.pm:1164
+#: tp/Texinfo/Common.pm:1165
 #, perl-brace-format
 msgid "{category} of {class}"
 msgstr "{category} van {class}"
 
-#: tp/Texinfo/Common.pm:1181
+#: tp/Texinfo/Common.pm:1182
 #, perl-brace-format
 msgid "{month} {day}, {year}"
 msgstr "{day} {month} {year}"
 
-#: tp/Texinfo/Common.pm:1212 tp/Texinfo/Convert/Plaintext.pm:1045
+#: tp/Texinfo/Common.pm:1213 tp/Texinfo/Convert/Plaintext.pm:1045
 #: tp/Texinfo/Convert/HTML.pm:512
 #, perl-brace-format
 msgid "Appendix {number} {section_title}"
 msgstr "Appendix {number} {section_title}"
 
-#: tp/Texinfo/Common.pm:1216 tp/Texinfo/Convert/Plaintext.pm:1050
+#: tp/Texinfo/Common.pm:1217 tp/Texinfo/Convert/Plaintext.pm:1050
 #: tp/Texinfo/Convert/HTML.pm:518
 #, perl-brace-format
 msgid "{number} {section_title}"
 msgstr "{number} {section_title}"
 
-#: tp/Texinfo/Common.pm:1351
+#: tp/Texinfo/Common.pm:1352
 #, perl-brace-format
 msgid "{float_type} {float_number}: "
 msgstr "{float_type} {float_number}: "
 
-#: tp/Texinfo/Common.pm:1355
+#: tp/Texinfo/Common.pm:1356
 #, perl-brace-format
 msgid "{float_type}: "
 msgstr "{float_type}: "
 
-#: tp/Texinfo/Common.pm:1360
+#: tp/Texinfo/Common.pm:1361
 #, perl-brace-format
 msgid "{float_type} {float_number}\n"
 msgstr "{float_type} {float_number}\n"
 
-#: tp/Texinfo/Common.pm:1364
+#: tp/Texinfo/Common.pm:1365
 #, perl-brace-format
 msgid "{float_type}\n"
 msgstr "{float_type}\n"
 
-#: tp/Texinfo/Common.pm:1370
+#: tp/Texinfo/Common.pm:1371
 #, perl-brace-format
 msgid "{float_number}: "
 msgstr "{float_number}: "
 
-#: tp/Texinfo/Common.pm:1373
+#: tp/Texinfo/Common.pm:1374
 #, perl-brace-format
 msgid "{float_number}\n"
 msgstr "{float_number}\n"
@@ -812,11 +812,11 @@ msgstr "{category} van {class}: @emph{{type}} @strong{{name}}"
 #: tp/Texinfo/Convert/HTML.pm:6125
 #, perl-brace-format
 msgid ""
-"This document was generated on @emph{@today{}} using "
-"@uref{{program_homepage}, @emph{{program}}}."
+"This document was generated on @emph{@today{}} using @uref"
+"{{program_homepage}, @emph{{program}}}."
 msgstr ""
-"Dit document werd gegenereerd op @emph{@today{}} met behulp van "
-"@uref{{program_homepage}, @emph{{program}}}."
+"Dit document werd gegenereerd op @emph{@today{}} met behulp van @uref"
+"{{program_homepage}, @emph{{program}}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6130
 msgid "This document was generated on @emph{@today{}}."
@@ -858,9 +858,8 @@ msgid ""
 "@strong{ Subsubsection One-Two-Three } of a document of the following "
 "structure:"
 msgstr ""
-"  waar het @strong{ Voorbeeld } aanneemt dat de huidige positie "
-"@strong{ subsubsectie één-twee-drie } is in een document met de volgende "
-"structuur:"
+"  waar het @strong{ Voorbeeld } aanneemt dat de huidige positie @strong"
+"{ subsubsectie één-twee-drie } is in een document met de volgende structuur:"
 
 #: tp/Texinfo/Convert/HTML.pm:6427
 msgid "Section One"
