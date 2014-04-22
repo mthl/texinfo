@@ -605,7 +605,7 @@ degrade_utf8 (char **from, size_t *from_left)
     {"\xE2\x80\x91","-"},  /* Non-breaking hyphen */
     {"\xE2\x80\x92","-"},  /* Figure dash */
     {"\xE2\x80\x93","-"},  /* En dash */
-    {"\xE2\x80\x94","-"},  /* Em dash */
+    {"\xE2\x80\x94","--"},  /* Em dash */
     {"\xE2\x80\xA6","..."},  /* Ellipsis */
     {"\xE2\x80\xA2","*"},  /* Bullet */
 
