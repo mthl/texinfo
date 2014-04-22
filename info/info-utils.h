@@ -60,31 +60,12 @@ extern char *info_parsed_nodename;
 */ 
 int info_parse_node (char *string, int flag);
 
-/* Return a NULL terminated array of REFERENCE * which represents the menu
-   found in NODE.  If there is no menu in NODE, just return a NULL pointer. */
-extern REFERENCE **info_menu_of_node (NODE *node);
-
-/* Return a NULL terminated array of REFERENCE * which represents the cross
-   refrences found in NODE.  If there are no cross references in NODE, just
-   return a NULL pointer. */
-extern REFERENCE **info_xrefs_of_node (NODE *node);
-
-/* Glean cross references from BINDING->buffer + BINDING->start until
-   BINDING->end.  Return an array of REFERENCE * that represents each
-   cross reference in this range. */
-extern REFERENCE **info_xrefs (SEARCH_BINDING *binding);
-
 void scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr);
 
 /* Get the entry associated with LABEL in REFERENCES.  Return a pointer to
    the reference if found, or NULL. */
 extern REFERENCE *info_get_labeled_reference (char *label,
     REFERENCE **references);
-
-/* Glean menu entries from BINDING->buffer + BINDING->start until we
-   have looked at the entire contents of BINDING.  Return an array
-   of REFERENCE * that represents each menu item in this range. */
-extern REFERENCE **info_menu_items (SEARCH_BINDING *binding);
 
 /* A utility function for concatenating REFERENCE **.  Returns a new
    REFERENCE ** which is the concatenation of REF1 and REF2.  The REF1
@@ -128,16 +109,6 @@ extern WINDOW *get_internal_info_window (char *name);
 
 /* Return a window displaying the node NODE. */
 extern WINDOW *get_window_of_node (NODE *node);
-
-/* Return the node addressed by LABEL in NODE (usually one of "Prev:",
-   "Next:", "Up:", "File:", or "Node:". */
-extern char *info_parse_label (char *label, NODE *node);
-
-#define info_file_label_of_node(n) info_parse_label (INFO_FILE_LABEL, n)
-#define info_next_label_of_node(n) info_parse_label (INFO_NEXT_LABEL, n)
-#define info_up_label_of_node(n)   info_parse_label (INFO_UP_LABEL, n)
-#define info_prev_label_of_node(n) info_parse_label (INFO_PREV_LABEL, n)
-#define info_altprev_label_of_node(n) info_parse_label (INFO_ALTPREV_LABEL, n)
 
 struct text_buffer
 {
