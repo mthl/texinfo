@@ -147,11 +147,11 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
               initial_index_filename = xstrdup (file_buffer->filename);
               initial_index_nodename = xstrdup (tag->nodename);
 
-              menu = info_menu_of_node (node);
+              menu = node->references;
 
-              /* If we have a menu, add this index's nodename and range
-                 to our list of index_nodenames. */
-              if (menu)
+              /* If we have a non-empty menu, add this index's nodename
+                 and range to our list of index_nodenames. */
+              if (menu && menu[0])
                 {
                   add_index_to_index_nodenames (menu, node);
 
@@ -542,8 +542,12 @@ apropos_in_all_indices (char *search_string, int inform)
   NODE *dir_node;
 
   dir_node = info_get_node ("dir", "Top", PARSE_NODE_DFLT);
+
+  /* It should be safe to assume that dir nodes do not contain any
+     cross-references, i.e., its references list only contains
+     menu items. */
   if (dir_node)
-    dir_menu = info_menu_of_node (dir_node);
+    dir_menu = dir_node->references;
 
   if (!dir_menu)
     return NULL;
@@ -632,8 +636,6 @@ apropos_in_all_indices (char *search_string, int inform)
       free (this_fb->contents);
       this_fb->contents = NULL;
     }
-
-  info_free_references (dir_menu);
 
   /* Build a list of the references which contain SEARCH_STRING. */
   if (all_indices)

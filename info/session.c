@@ -46,6 +46,8 @@ static void info_handle_pointer (char *label, WINDOW *window);
 static void display_info_keyseq (int expecting_future_input);
 char *node_printed_rep (NODE *node);
 
+static REFERENCE *select_menu_digit (WINDOW *window, unsigned char key);
+
 /* **************************************************************** */
 /*                                                                  */
 /*                   Running an Info Session                        */
@@ -1134,35 +1136,10 @@ int scroll_last_node = SLN_Stop;
 int default_window_size = -1;   /* meaning 1 window-full */
 int default_scroll_size = -1;   /* meaning half screen size */
 
-static int
-last_node_p (NODE *node)
-{
-  char *spec;
-
-  spec = info_next_label_of_node (node);
-  if (spec)
-    {
-      free (spec);
-      return 0;
-    } 
-
-  spec = info_up_label_of_node (node);
-  if (!spec)
-    return 1;
-  if (!strcmp (spec, "Top"))
-    {
-      free (spec);
-      return 1;
-    }
-  free (spec);
-  return 0;
-}
-
 /* Move to 1st menu item, Next, Up/Next, or error in this window. */
 static int
 forward_move_node_structure (WINDOW *window, int behaviour)
 {
-  char *spec;
   switch (behaviour)
     {
     case IS_PageOnly:
@@ -1170,22 +1147,22 @@ forward_move_node_structure (WINDOW *window, int behaviour)
       return 1;
 
     case IS_NextOnly:
-      spec = info_next_label_of_node (window->node);
-      if (!spec)
+      if (!window->node->next)
         {
           info_error (msg_no_pointer, _("Next"));
           return 1;
         }
       else
         {
-          free (spec);
           info_handle_pointer ("Next", window);
         }
       break;
 
     case IS_Continuous:
       {
-        if (last_node_p (window->node))
+        /* If last node in file */
+        if (!window->node->next &&
+            !(window->node->up && strcmp ("Top", window->node->up)))
 	  {
 	    switch (scroll_last_node)
 	      {
@@ -1205,27 +1182,23 @@ forward_move_node_structure (WINDOW *window, int behaviour)
 	      }
 	  }
 	
-        /* First things first.  If this node contains a menu, move down
-           into the menu. */
+        /* If this node contains a menu, select its first entry. */
 	{
-	  REFERENCE **menu;
+	  REFERENCE *entry;
 
-	  menu = info_menu_of_node (window->node);
-	  
-	  if (menu)
-	    {
-	      info_free_references (menu);
-	      info_menu_digit (window, 1, '1');
-	      return 0;
-	    }
+          if (entry = select_menu_digit (window, '1'))
+            {
+              info_select_reference (window, entry);
+              if (entry->line_number > 0)
+                internal_next_line (window, entry->line_number - 1, '1');
+              return 0;
+            }
 	}
 
         /* Okay, this node does not contain a menu.  If it contains a
            "Next:" pointer, use that. */
-        spec = info_next_label_of_node (window->node);
-        if (spec)
+        if (window->node->next)
           {
-            free (spec);
             info_handle_pointer ("Next", window);
             return 0;
           }
@@ -1246,10 +1219,8 @@ forward_move_node_structure (WINDOW *window, int behaviour)
           up_counter = 0;
           while (!info_error_was_printed)
             {
-              spec = info_up_label_of_node (window->node);
-              if (spec)
+              if (window->node->up)
                 {
-                  free (spec);
                   info_handle_pointer ("Up", window);
                   if (info_error_was_printed)
                     continue;
@@ -1257,34 +1228,21 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                   up_counter++;
 
                   /* If no "Next" pointer, keep backing up. */
-                  spec = info_next_label_of_node (window->node);
-                  if (!spec)
-                    {
-                      continue;
-                    }
+                  if (!window->node->next)
+                    continue;
 
                   /* If this node's first menu item is the same as this node's
                      Next pointer, keep backing up. */
-                  if (spec)
                     {
                       REFERENCE **menu;
 
-                      menu = info_menu_of_node (window->node);
+                      /* FIXME: this is wrong: what if there is a link
+                         before the menu? */
+                      menu = window->node->references;
                       if (menu &&
                           (strcmp
-                           (menu[0]->nodename, spec) == 0))
-                        {
-                          info_free_references (menu);
-                          free (spec);
-                          continue;
-                        }
-                      else
-                        {
-                          /* Restore the world to where it was before
-                             reading the menu contents. */
-                          info_free_references (menu);
-                          free (spec);
-                        }
+                           (menu[0]->nodename, window->node->next) == 0))
+                        continue;
                     }
 
                   /* This node has a "Next" pointer, and it is not the
@@ -1325,7 +1283,6 @@ forward_move_node_structure (WINDOW *window, int behaviour)
 static int
 backward_move_node_structure (WINDOW *window, int behaviour)
 {
-  char *spec;
   switch (behaviour)
     {
     case IS_PageOnly:
@@ -1333,87 +1290,79 @@ backward_move_node_structure (WINDOW *window, int behaviour)
       return 1;
 
     case IS_NextOnly:
-      spec = info_prev_label_of_node (window->node);
-      if (!spec)
+      if (!window->node->prev)
         {
           info_error ("%s", _("No `Prev' for this node."));
           return 1;
         }
       else
         {
-          free (spec);
           info_handle_pointer ("Prev", window);
         }
       break;
 
     case IS_Continuous:
-      spec = info_prev_label_of_node (window->node);
-      info_parse_node (spec, PARSE_NODE_DFLT);
-
-      if (!spec
-          || (info_parsed_filename && is_dir_name (info_parsed_filename)))
+      if (window->node->up)
         {
-          if (spec) free (spec);
-          spec = info_up_label_of_node (window->node);
-          info_parse_node (spec, PARSE_NODE_DFLT);
-          if (!spec
-              || (info_parsed_filename && is_dir_name (info_parsed_filename)))
+          int traverse_menus = 0;
+
+          /* If up is the dir node, we are at the top node.
+             Don't do anything. */
+          if (   !strcmp ("(dir)", window->node->up)
+              || !strcmp ("(DIR)", window->node->up))
             {
-              if (spec) free (spec);
               info_error ("%s", 
                     _("No `Prev' or `Up' for this node within this document."));
               return 1;
             }
-          else
+          /* If 'Prev' and 'Up' are the same, we are at the first node
+             of the 'Up' node's menu. Go to up node. */
+          else if (window->node->prev
+              && !strcmp(window->node->prev, window->node->up))
             {
               info_handle_pointer ("Up", window);
             }
+          /* Otherwise, go to 'Prev' node and go down the last entry
+             in the menus as far as possible. */
+          else if (window->node->prev)
+            {
+              traverse_menus = 1;
+              info_handle_pointer ("Prev", window);
+            }
+          else /* 'Up' but no 'Prev' */
+            {
+              info_handle_pointer ("Up", window);
+            }
+
+          /* Repeatedly select last item of menus */
+          if (traverse_menus)
+            {
+              REFERENCE *entry;
+              while (!info_error_was_printed)
+                {
+                  if (entry = select_menu_digit (window, '0'))
+                    {
+                      info_select_reference (window, entry);
+                      if (entry->line_number > 0)
+                        internal_next_line (window, entry->line_number - 1, '0');
+                    }
+                  else
+                    break;
+                }
+            }
+        }
+      else if (window->node->prev) /* 'Prev' but no 'Up' */
+        {
+          info_handle_pointer ("Prev", window);
         }
       else
         {
-          REFERENCE **menu;
-          int inhibit_menu_traversing = 0;
-
-          /* Watch out!  If this node's Prev is the same as the Up, then
-             move Up.  Otherwise, we could move Prev, and then to the last
-             menu item in the Prev.  This would cause the user to loop
-             through a subsection of the info file. */
-          if (spec)
-            {
-              char *pnode;
-
-              pnode = spec;
-              spec = info_up_label_of_node (window->node);
-
-              if (spec && strcmp (spec, pnode) == 0)
-                {
-                  /* The nodes are the same.  Inhibit moving to the last
-                     menu item. */
-                  free (pnode);
-                  inhibit_menu_traversing = 1;
-                }
-              else
-                {
-                  free (pnode);
-                }
-              if (spec) free (spec);
-            }
-
-          /* Move to the previous node.  If this node now contains a menu,
-             and we have not inhibited movement to it, move to the node
-             corresponding to the last menu item. */
-          info_handle_pointer ("Prev", window);
-
-          if (!inhibit_menu_traversing)
-            {
-              while (!info_error_was_printed &&
-                     (menu = info_menu_of_node (window->node)))
-                {
-                  info_free_references (menu);
-                  info_menu_digit (window, 1, '0');
-                }
-            }
+          info_error ("%s", 
+                _("No `Prev' or `Up' for this node within this document."));
+          return 1;
         }
+
+
       break;
     }
   return 0;
@@ -2144,15 +2093,11 @@ info_handle_pointer (char *label, WINDOW *window)
   INFO_WINDOW *info_win;
 
   if (!strcmp (label, "Up"))
-    description = info_up_label_of_node (window->node);
+    description = window->node->up;
   else if (!strcmp (label, "Next"))
-    description = info_next_label_of_node (window->node);
+    description = window->node->next;
   else if (!strcmp (label, "Prev"))
-    {
-      description = info_prev_label_of_node (window->node);
-      if (!description)
-        description = info_altprev_label_of_node (window->node);
-    }
+    description = window->node->prev;
 
   if (!description)
     {
@@ -2169,7 +2114,7 @@ info_handle_pointer (char *label, WINDOW *window)
         info_error ("%s", info_recent_file_error);
       else
         info_error (msg_cant_find_node, description);
-      goto cleanup;
+      return;
     }
 
   /* Set the cursor position to the last place it was in the
@@ -2187,8 +2132,6 @@ info_handle_pointer (char *label, WINDOW *window)
       info_win->points[info_win->current] = window->point;
     }
   info_set_node_of_window (1, window, node);
-cleanup:
-  free (description);
 }
 
 /* Make WINDOW display the "Next:" node of the node currently being
@@ -2287,13 +2230,14 @@ DECLARE_INFO_COMMAND (info_last_menu_item,
   info_menu_digit (window, 1, '0');
 }
 
-/* Use KEY (a digit) to select the Nth menu item in WINDOW->node. */
-DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
+/* Return menu entry */
+static REFERENCE *
+select_menu_digit (WINDOW *window, unsigned char key)
 {
   register int i, item;
   register REFERENCE **menu;
 
-  menu = info_menu_of_node (window->node);
+  menu = window->node->references;
 
   if (!menu)
     {
@@ -2306,27 +2250,52 @@ DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
 
   /* Special case.  Item "0" is the last item in this menu. */
   if (item == 0)
-    for (i = 0; menu[i + 1]; i++);
+    {
+      int j;
+      i = -1; /* Not found */
+      for (j = 0; menu[j]; j++)
+        if (menu[j]->type == REFERENCE_MENU_ITEM)
+          i = j;
+      if (i == -1) return 0;
+    }
   else
     {
+      int k = 0;
       for (i = 0; menu[i]; i++)
-        if (i == item - 1)
-          break;
+        {
+          if (menu[i]->type == REFERENCE_MENU_ITEM)
+            k++;
+          if (k == item)
+            break;
+        }
     }
 
-  if (menu[i])
+  return menu[i];
+}
+
+/* Use KEY (a digit) to select the Nth menu item in WINDOW->node. */
+DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
+{
+  int item = key - '0';
+  REFERENCE *entry;
+  if (entry = select_menu_digit (window, key))
     {
-      info_select_reference (window, menu[i]);
-      if (menu[i]->line_number > 0)
-        internal_next_line (window, menu[i]->line_number - 1, key);
+      info_select_reference (window, entry);
+      if (entry->line_number > 0)
+        internal_next_line (window, entry->line_number - 1, key);
+    }
+  else if (key == '0')
+    {
+      /* Don't print "There aren't 0 items in this menu." */
+      info_error ("%s", msg_no_menu_node);
     }
   else
-    info_error (ngettext ("There isn't %d item in this menu.",
-			  "There aren't %d items in this menu.",
-			  item),
-		item);
-
-  info_free_references (menu);
+    {
+      info_error (ngettext ("There isn't %d item in this menu.",
+                            "There aren't %d items in this menu.",
+                            item),
+                  item);
+    }
   return;
 }
 
@@ -2394,117 +2363,95 @@ nearest_xref (REFERENCE **xref_list, long int pos)
   }
 }
 
+static int exclude_cross_references (REFERENCE *r)
+{
+  return r->type == REFERENCE_XREF;
+}
+
+static int exclude_menu_items (REFERENCE *r)
+{
+  return r->type == REFERENCE_MENU_ITEM;
+}
+
+static int exclude_nothing (REFERENCE *r)
+{
+  return 1;
+}
 
 /* Read a menu or followed reference from the user defaulting to the
    reference found on the current line, and select that node.  The
-   reading is done with completion.  BUILDER is the function used
-   to build the list of references.  ASK_P is non-zero if the user
-   should be prompted, or zero to select the default item. */
+   reading is done with completion. ASK_P is non-zero if the user should
+   be prompted, or zero to select the item on the current line.  MENU_ITEM
+   and XREF control whether menu items and cross-references are eligible
+   for selection. */
 static void
-info_menu_or_ref_item (WINDOW *window, int count,
-    unsigned char key, REFERENCE **(*builder) (NODE *node), int ask_p)
+info_menu_or_ref_item (WINDOW *window, unsigned char key,
+                       int menu_item, int xref, int ask_p)
 {
-  char *line;
+  REFERENCE *defentry = NULL; /* Default link */
+  REFERENCE **refs = window->node->references;
   REFERENCE *entry;
-  REFERENCE *defentry = NULL;
-  REFERENCE **menu = (*builder) (window->node);
 
-  if (!menu)
+  /* Name of destination */
+  char *line;
+
+  int line_no;
+  int this_line, next_line;
+
+  int which, closest = -1;
+
+  reference_bool_fn exclude; 
+  if (menu_item && !xref)
     {
-      if (builder == info_menu_of_node)
-        info_error ("%s", msg_no_menu_node);
-      else
-        info_error ("%s", msg_no_xref_node);
-      return;
+      exclude = &exclude_cross_references;
     }
+  else if (!menu_item && xref)
+    {
+      exclude = &exclude_menu_items;
+    }
+  else if (menu_item && xref)
+    {
+      exclude = &exclude_nothing;
+    }
+  else /* !menu_item && !xref */
+    return;
 
   /* Default the selected reference to the one which is on the line that
-     point is in.  */
-  {
-    REFERENCE **refs = NULL;
-    int point_line = window_line_of_point (window);
+     point is in. */
 
-    if (point_line != -1)
-      {
-        SEARCH_BINDING binding;
+  line_no = window_line_of_point (window);
+  this_line = window->line_starts[line_no] - window->node->contents;
+  if (window->line_starts[line_no + 1])
+    next_line = window->line_starts[line_no + 1] - window->node->contents;
+  else
+    next_line = window->node->nodelen;
 
-        binding.buffer = window->node->contents;
-        binding.start = window->line_starts[point_line] - binding.buffer;
-        if (window->line_starts[point_line + 1])
-          binding.end = window->line_starts[point_line + 1] - binding.buffer;
-        else
-          binding.end = window->node->nodelen;
-        binding.flags = 0;
+  for (which = 0; refs[which]; which++)
+    {
+      /* Check the type of reference is one we are looking for. */
+      if (!(  (menu_item && refs[which]->type == REFERENCE_MENU_ITEM)
+           || (xref      && refs[which]->type == REFERENCE_XREF)))
+        continue;
 
-        if (builder == info_menu_of_node)
-          {
-            if (point_line)
-              {
-                binding.start--;
-                refs = info_menu_items (&binding);
-              }
-          }
-        else
-          {
-#if defined (HANDLE_MAN_PAGES)
-            if (window->node->flags & N_IsManPage)
-              refs = manpage_xrefs_in_binding (window->node, &binding);
-            else
-#endif /* HANDLE_MAN_PAGES */
-              refs = nearest_xref (menu, window->point);
-          }
+      /* If reference starts in current line, it is eligible */
+      if (   refs[which]->start >= this_line
+          && refs[which]->start <  next_line)
+        closest = which;
 
-        if (refs && refs[0])
-          {
-            if (strcmp (refs[0]->label, "Menu") != 0
-                || builder == info_xrefs_of_node)
-              {
-                int which = 0;
+      /* If point is inside a reference, choose that one. */
+      if (   window->point >= refs[which]->start
+          && window->point <= refs[which]->end)
+        {
+          closest = which;
+          break;
+        }
 
-                /* For xrefs, find the closest reference to point,
-                   unless we only have one reference (as we will if
-                   we've called nearest_xref above).  It would be better
-                   to have only one piece of code, but the conditions
-                   when we call this are tangled.  */
-                if (builder == info_xrefs_of_node && refs[1])
-                  {
-                    int closest = -1;
-
-                    for (; refs[which]; which++)
-                      {
-                        if (window->point >= refs[which]->start
-                            && window->point <= refs[which]->end)
-                          {
-                            closest = which;
-                            break;
-                          }
-                        else if (window->point < refs[which]->start)
-                          break;
-                      }
-                    if (which > 0)
-                      {
-                        if (closest == -1)
-                          which--;
-                        else
-                          which = closest;
-                      }
-                  }
-
-                defentry = xmalloc (sizeof (REFERENCE));
-                defentry->label = xstrdup (refs[which]->label);
-                defentry->filename = refs[which]->filename;
-                defentry->nodename = refs[which]->nodename;
-                defentry->line_number = refs[which]->line_number;
-
-                if (defentry->filename)
-                  defentry->filename = xstrdup (defentry->filename);
-                if (defentry->nodename)
-                  defentry->nodename = xstrdup (defentry->nodename);
-              }
-            info_free_references (refs);
-          }
-      }
-  }
+      /* If we got to the next line without finding an eligible reference. */
+      if (refs[which]->start >= next_line)
+        break;
+    }
+  if (closest != -1)
+    defentry = refs[closest];
 
   /* If we are going to ask the user a question, do it now. */
   if (ask_p)
@@ -2512,7 +2459,7 @@ info_menu_or_ref_item (WINDOW *window, int count,
       char *prompt;
 
       /* Build the prompt string. */
-      if (builder == info_menu_of_node)
+      if (menu_item && !xref)
         {
           if (defentry)
             {
@@ -2535,7 +2482,8 @@ info_menu_or_ref_item (WINDOW *window, int count,
             prompt = xstrdup (_("Follow xref: "));
         }
 
-      line = info_read_completing_in_echo_area (window, prompt, menu);
+      line = info_read_completing_in_echo_area_with_exclusions
+               (window, prompt, refs, exclude);
       free (prompt);
 
       window = active_window;
@@ -2543,8 +2491,6 @@ info_menu_or_ref_item (WINDOW *window, int count,
       /* User aborts, just quit. */
       if (!line)
         {
-          free (defentry);
-          info_free_references (menu);
           info_abort_key (window, 0, 0);
           return;
         }
@@ -2586,7 +2532,7 @@ info_menu_or_ref_item (WINDOW *window, int count,
           int best = -1, min_dist = window->node->nodelen;
           REFERENCE *ref;
 
-          for (i = 0; menu && (ref = menu[i]); i++)
+          for (i = 0; refs && (ref = refs[i]); i++)
             {
               /* Need to use mbscasecmp because LINE is downcased
                  inside info_read_completing_in_echo_area.  */
@@ -2604,7 +2550,7 @@ info_menu_or_ref_item (WINDOW *window, int count,
                 }
             }
           if (best != -1)
-            entry = menu[best];
+            entry = refs[best];
           else
             entry = NULL;
         }
@@ -2616,36 +2562,15 @@ info_menu_or_ref_item (WINDOW *window, int count,
           NODE *orig = window->node;
           info_select_reference (window, entry);
 
-          if (builder == info_xrefs_of_node && window->node != orig
-              && !(window->node->flags & N_FromAnchor))
-            { /* Search for this reference in the node.  */
-              long offset;
-              long start;
+          if (entry->line_number > 0)
+            /* next_line starts at line 1?  Anyway, the -1 makes it
+               move to the right line.  */
+            internal_next_line (window, entry->line_number - 1, key);
 
-              if (window->line_count > 0)
-                start = window->line_starts[1] - window->node->contents;
-              else
-                start = 0;
-
-              offset = info_target_search_node (window->node, entry->label,
-						start, 0);
-
-	      window->point = (offset == -1) ?
-		               window->node->body_start : offset;
-	      window_adjust_pagetop (window);
-            }
-
-            if (entry->line_number > 0)
-              /* next_line starts at line 1?  Anyway, the -1 makes it
-                 move to the right line.  */
-              internal_next_line (window, entry->line_number - 1, key);
         }
 
       free (line);
-      info_reference_free (defentry);
     }
-
-  info_free_references (menu);
 
   if (!info_error_was_printed)
     window_clear_echo_area ();
@@ -2655,7 +2580,7 @@ info_menu_or_ref_item (WINDOW *window, int count,
    and select that item. */
 DECLARE_INFO_COMMAND (info_menu_item, _("Read a menu item and select its node"))
 {
-  info_menu_or_ref_item (window, count, key, info_menu_of_node, 1);
+  info_menu_or_ref_item (window, key, 1, 0, 1);
 }
 
 /* Read a line (with completion) which is the name of a reference to
@@ -2663,7 +2588,7 @@ DECLARE_INFO_COMMAND (info_menu_item, _("Read a menu item and select its node"))
 DECLARE_INFO_COMMAND
   (info_xref_item, _("Read a footnote or cross reference and select its node"))
 {
-  info_menu_or_ref_item (window, count, key, info_xrefs_of_node, 1);
+  info_menu_or_ref_item (window, key, 0, 1, 1);
 }
 
 /* Position the cursor at the start of this node's menu. */
@@ -2694,7 +2619,7 @@ DECLARE_INFO_COMMAND (info_visit_menu,
   register int i;
   REFERENCE *entry, **menu;
 
-  menu = info_menu_of_node (window->node);
+  menu = window->node->references;
 
   if (!menu)
     info_error ("%s", msg_no_menu_node);
@@ -2702,6 +2627,8 @@ DECLARE_INFO_COMMAND (info_visit_menu,
   for (i = 0; (!info_error_was_printed) && (entry = menu[i]); i++)
     {
       WINDOW *new;
+
+      if (entry->type != REFERENCE_MENU_ITEM) continue;
 
       new = window_make_window (window->node);
       window_tile_windows (TILE_INTERNALS);
@@ -2829,8 +2756,8 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
       if (!first_arg)
         first_arg = arg;
 
-      /* Build and return a list of the menu items in this node. */
-      menu = info_menu_of_node (initial_node);
+      /* FIXME: This contains cross-references as well. */
+      menu = initial_node->references;
 
       /* If no menu item in this node, stop here, but let the user
          continue to use Info.  Perhaps they wanted this node and didn't
@@ -2895,7 +2822,6 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
                 goto maybe_got_node;
             }
 
-          info_free_references (menu);
 	  if (err_node)
 	    *err_node = format_message_node (_("No menu item `%s' in node `%s'."),
 					     arg,
@@ -2936,14 +2862,11 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
 		     _("Unable to find node referenced by `%s' in `%s'."),
 		     entry->label,
 		     node_printed_rep (initial_node));
-          info_free_references (menu);
           return strict ? NULL : initial_node;
         }
 
       debug (3, ("node: %s, %s", node->filename, node->nodename));
       
-      info_free_references (menu);
-
       /* Success.  Go round the loop again.  */
       free (initial_node);
       initial_node = node;
@@ -3056,6 +2979,8 @@ entry_in_menu (char *arg, REFERENCE **menu, int exact)
 
       for (i = 0; (entry = menu[i]); i++)
         {
+          if (REFERENCE_MENU_ITEM != entry->type) continue;
+
           if (mbscasecmp (entry->label, arg) == 0)
             break;
           else
@@ -3111,8 +3036,7 @@ info_intuit_options_node (WINDOW *window, NODE *initial_node, char *program)
     {
       REFERENCE *entry = NULL;
 
-      /* Build and return a list of the menu items in this node. */
-      menu = info_menu_of_node (initial_node);
+      menu = initial_node->references;
 
       /* If no menu item in this node, stop here.  Perhaps this node
          is the one they need.  */
@@ -3144,7 +3068,6 @@ info_intuit_options_node (WINDOW *window, NODE *initial_node, char *program)
       /* Try to find this node.  */
       node = info_get_node (entry->filename, entry->nodename, 
                             PARSE_NODE_VERBATIM);
-      info_free_references (menu);
       if (!node)
         break;
     }
@@ -3585,12 +3508,14 @@ dump_node_to_stream (char *filename, char *nodename,
 
       /* If this node is an Index, do not dump the menu references. */
       if (string_in_line ("Index", node->nodename) == -1)
-        menu = info_menu_of_node (node);
+        menu = node->references;
 
       if (menu)
         {
           for (i = 0; menu[i]; i++)
             {
+              if (REFERENCE_MENU_ITEM != menu[i]->type) continue;
+
               /* We don't dump Info files which are different than the
                  current one. */
               if (!menu[i]->filename)
@@ -3598,7 +3523,6 @@ dump_node_to_stream (char *filename, char *nodename,
 					 stream, dump_subnodes) == DUMP_SYS_ERROR)
 		  return DUMP_SYS_ERROR;
             }
-          info_free_references (menu);
         }
     }
 
@@ -4800,85 +4724,32 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
   long placement = -1;
   long start = 0;
   NODE *node = window->node;
+  REFERENCE **ref;
+  int nextref;
 
-  if (dir < 0)
-    start = node->nodelen;
-
-  /* This search is only allowed to fail if there is no menu or cross
-     reference in the current node.  Otherwise, the first menu or xref
-     found is moved to. */
-
-  firstmenu = info_search_in_node (INFO_MENU_ENTRY_LABEL, node, start,
-				   NULL, dir, 0, 0);
-
-  /* FIRSTMENU may point directly to the line defining the menu.  Skip that
-     and go directly to the first item. */
-
-  if (firstmenu != -1)
-    {
-      char *text = node->contents + firstmenu;
-
-      if (strncmp (text, INFO_MENU_LABEL, strlen (INFO_MENU_LABEL)) == 0)
-        firstmenu = info_search_in_node (INFO_MENU_ENTRY_LABEL, node,
-					 firstmenu + dir, NULL, dir, 0, 0);
-    }
-
-  firstxref =
-    info_search_in_node (INFO_XREF_LABEL, node, start, NULL, dir, 0, 0);
-
-#if defined (HANDLE_MAN_PAGES)
-  if ((firstxref == -1) && (node->flags & N_IsManPage))
-    {
-      firstxref = locate_manpage_xref (node, start, dir);
-    }
-#endif /* HANDLE_MAN_PAGES */
-
-  if (firstmenu == -1 && firstxref == -1)
+  /* Fail if there are no references in node */
+  if (!node->references)
     {
       if (!cursor_movement_scrolls_p)
-        info_error ("%s", msg_no_xref_node);
+              info_error ("%s", msg_no_xref_node);
       return cursor_movement_scrolls_p;
     }
 
-  /* There is at least one cross reference or menu entry in this node.
-     Try hard to find the next available one. */
-
-  nextmenu = info_search_in_node (INFO_MENU_ENTRY_LABEL, node,
-				  window->point + dir, NULL, dir, 0, 0);
-
-  nextxref = info_search_in_node (INFO_XREF_LABEL, node,
-				  window->point + dir, NULL, dir, 0, 0);
-
-#if defined (HANDLE_MAN_PAGES)
-  if ((nextxref == -1) && (node->flags & N_IsManPage) && (firstxref != -1))
-    nextxref = locate_manpage_xref (node, window->point + dir, dir);
-#endif /* HANDLE_MAN_PAGES */
-
-  /* Ignore "Menu:" as a menu item. */
-  if (nextmenu != -1)
-    {
-      char *text = node->contents + nextmenu;
-
-      if (strncmp (text, INFO_MENU_LABEL, strlen (INFO_MENU_LABEL)) == 0)
-        nextmenu = info_search_in_node (INFO_MENU_ENTRY_LABEL, node,
-					nextmenu + dir, NULL, dir, 0, 0);
-    }
-
-  /* If there is both a next menu entry, and a next xref entry, choose the
-     one which occurs first.  Otherwise, select the one which actually
-     appears in this node following point. */
-  if (nextmenu != -1 && nextxref != -1)
-    {
-      if (((dir == 1) && (nextmenu < nextxref)) ||
-          ((dir == -1) && (nextmenu > nextxref)))
-        placement = nextmenu + 1;
-      else
-        placement = nextxref;
-    }
-  else if (nextmenu != -1)
-    placement = nextmenu + 1;
-  else if (nextxref != -1)
-    placement = nextxref;
+  if (dir == 1) /* Search forwards */
+    for (ref = node->references; *ref != 0; ref++)
+      {
+        if ((*ref)->start > window->point)
+          {
+            placement = (*ref)->start;
+            break;
+          }
+      }
+  else /* Search backwards */
+    for (ref = node->references; *ref != 0; ref++)
+      {
+        if ((*ref)->start >= window->point) break;
+        placement = (*ref)->start;
+      }
 
   /* If there was neither a menu or xref entry appearing in this node after
      point, choose the first menu or xref entry appearing in this node. */
@@ -4887,21 +4758,9 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
       if (cursor_movement_scrolls_p)
         return 1;
       else
-        {
-          if (firstmenu != -1 && firstxref != -1)
-            {
-              if (((dir == 1) && (firstmenu < firstxref)) ||
-                  ((dir == -1) && (firstmenu > firstxref)))
-                placement = firstmenu + 1;
-              else
-                placement = firstxref;
-            }
-          else if (firstmenu != -1)
-            placement = firstmenu + 1;
-          else
-            placement = firstxref;
-        }
+        placement = node->references[0]->start;
     }
+
   window->point = placement;
   window_adjust_pagetop (window);
   window->flags |= W_UpdateWindow;
@@ -4951,19 +4810,13 @@ DECLARE_INFO_COMMAND (info_move_to_next_xref,
 DECLARE_INFO_COMMAND (info_select_reference_this_line,
                       _("Select reference or menu item appearing on this line"))
 {
-  char *line;
+  REFERENCE **ref = window->node->references;
 
-  if (window->line_starts)
-    line = window->line_starts[window_line_of_point (window)];
-  else
-    line = "";
+  if (!ref || !*ref) return; /* No references in node */
 
-  /* If this line contains a menu item, select that one. */
-  if (strncmp ("* ", line, 2) == 0)
-    info_menu_or_ref_item (window, count, key, info_menu_of_node, 0);
-  else
-    info_menu_or_ref_item (window, count, key, info_xrefs_of_node, 0);
+  info_menu_or_ref_item (window, key, 1, 1, 0);
 }
+
 
 /* **************************************************************** */
 /*                                                                  */

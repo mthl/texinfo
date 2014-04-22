@@ -67,7 +67,7 @@ make_footnotes_node (NODE *node)
     {
       REFERENCE **refs;
 
-      refs = info_xrefs_of_node (node);
+      refs = node->references;
 
       if (refs)
         {
@@ -81,10 +81,11 @@ make_footnotes_node (NODE *node)
           strcat (refname, "-Footnotes");
 
           for (i = 0; refs[i]; i++)
-            if ((refs[i]->nodename != NULL) &&
+            if (refs[i]->type == REFERENCE_XREF
+                && (refs[i]->nodename != NULL)
                 /* Support both the older "foo-Footnotes" and the new
                    style "foo-Footnote-NN" references.  */
-                (strcmp (refs[i]->nodename, refname) == 0 ||
+                && (strcmp (refs[i]->nodename, refname) == 0 ||
                  (strncmp (refs[i]->nodename, refname, reflen - 1) == 0 &&
                   refs[i]->nodename[reflen - 1] == '-' &&
                   isdigit (refs[i]->nodename[reflen]))))
@@ -104,7 +105,6 @@ make_footnotes_node (NODE *node)
               }
 
           free (refname);
-          info_free_references (refs);
         }
     }
 

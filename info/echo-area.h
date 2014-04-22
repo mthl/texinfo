@@ -34,8 +34,11 @@ extern void inform_in_echo_area (const char *message);
 extern void echo_area_inform_of_deleted_window (WINDOW *window);
 extern void echo_area_prep_read (void);
 extern VFunction *ea_last_executed_command;
+
+typedef int (*reference_bool_fn) (REFERENCE *);
+
 extern char * info_read_completing_internal (WINDOW *window, const char *prompt,
-    REFERENCE **completions, int force);
+    REFERENCE **completions, int force, reference_bool_fn exclude);
 
 /* Read a line of text in the echo area.  Return a malloc ()'ed string,
    or NULL if the user aborted out of this read.  WINDOW is the currently
@@ -53,6 +56,12 @@ char *info_read_completing_in_echo_area (WINDOW *window,
    a REFERENCE **. */
 extern char *info_read_maybe_completing (WINDOW *window,
     const char *prompt, REFERENCE **completions);
+
+/* Read a line in the echo area with completion over COMPLETIONS, using
+   EXCLUDE to exclude items from the completion list. */
+char *
+info_read_completing_in_echo_area_with_exclusions (WINDOW *window,
+    const char *prompt, REFERENCE **completions, reference_bool_fn exclude);
 
 extern void ea_insert (WINDOW *window, int count, unsigned char key);
 extern void ea_quoted_insert (WINDOW *window, int count, unsigned char key);

@@ -1,3 +1,31 @@
+2014-04-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* echo-area.c (info_read_completing_internal) New argument
+	exclude_func.  All callers changed.
+	(completion_exclude_func): New variable.
+	(info_read_completing_in_echo_area_with_exclusions): New function.
+	(build_completions): Exclude completions using
+	completion_exclude_func.
+	* session.c (exclude_cross_references, exclude_menu_items)
+	(exclude_nothing): New static functions.
+	
+	* footnotes.c (make_footnotes_node)
+	* indices.c (info_indices_of_file_buffer, select_visited_node)
+	(apropos_in_all_indices)
+	* nodemenu.c (select_visited_node)
+	* session.c (forward_move_node_structure)
+	(backward_move_node_structure)
+	(info_handle_pointer, select_menu_digit)
+	(info_menu_digit, info_menu_or_ref_item, info_visit_menu) 
+	(info_follow_menus, entry_in_menu, info_intuit_options_mode)
+	(info_select_reference_this_line, info_move_to_xref)
+	(dump_node_to_stream): Use node reference list from
+	NODE.references instead of scanning text of node using functions
+	that were in info-utils.c.  Use NODE.up, NODE.next, NODE.prev
+	instead of scanning node.
+	(info_menu_or_ref_item): Arguments changed.  All callers updated.
+	(last_node_p): Function deleted.
+
 2014-04-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.c (info_node_of_tag): Call scan_node_contents.

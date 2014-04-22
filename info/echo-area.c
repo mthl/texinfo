@@ -777,8 +777,12 @@ static size_t completions_found_slots = 0;
 /* The lowest common denominator found while completing. */
 static REFERENCE *LCD_completion;
 
+/* Function to choose which references to offer as completion options. */
+static reference_bool_fn completion_exclude_func = 0;
+
 /* Internal functions used by the user calls. */
-static void build_completions (void), completions_must_be_rebuilt (void);
+static void build_completions (void);
+static void completions_must_be_rebuilt (void);
 
 /* Variable which holds the output of completions. */
 static NODE *possible_completions_output_node = NULL;
@@ -799,10 +803,11 @@ completions_window_p (WINDOW *window)
 }
 
 /* Workhorse for completion readers.  If FORCE is non-zero, the user cannot
-   exit unless the line read completes, or is empty. */
+   exit unless the line read completes, or is empty.  Use EXCLUDE_FUNC to
+   exclude items in COMPLETIONS. */
 char *
 info_read_completing_internal (WINDOW *window, const char *prompt,
-    REFERENCE **completions, int force)
+    REFERENCE **completions, int force, reference_bool_fn exclude_func)
 {
   char *line;
 
@@ -825,6 +830,7 @@ info_read_completing_internal (WINDOW *window, const char *prompt,
   /* Save away the list of items to complete over. */
   echo_area_completion_items = completions;
   completions_must_be_rebuilt ();
+  completion_exclude_func = exclude_func;
 
   active_window = the_echo_area;
   echo_area_is_active++;
@@ -899,7 +905,7 @@ char *
 info_read_completing_in_echo_area (WINDOW *window,
     const char *prompt, REFERENCE **completions)
 {
-  return info_read_completing_internal (window, prompt, completions, 1);
+  return info_read_completing_internal (window, prompt, completions, 1, 0);
 }
 
 /* Read a line in the echo area allowing completion over COMPLETIONS, but
@@ -908,7 +914,17 @@ char *
 info_read_maybe_completing (WINDOW *window,
     const char *prompt, REFERENCE **completions)
 {
-  return info_read_completing_internal (window, prompt, completions, 0);
+  return info_read_completing_internal (window, prompt, completions, 0, 0);
+}
+
+/* Read a line in the echo area with completion over COMPLETIONS, using
+   EXCLUDE to exclude items from the completion list. */
+char *
+info_read_completing_in_echo_area_with_exclusions (WINDOW *window,
+    const char *prompt, REFERENCE **completions, reference_bool_fn exclude)
+{
+  return info_read_completing_internal
+         (window, prompt, completions, 1, exclude);
 }
 
 DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
@@ -1217,6 +1233,11 @@ build_completions (void)
 
   for (i = 0; (entry = echo_area_completion_items[i]); i++)
     {
+      /* Skip certain items (for example, we might only want
+         a list of menu items). */
+      if (completion_exclude_func && completion_exclude_func (entry))
+        continue;
+
       if (mbsncasecmp (request, entry->label, len) == 0)
         add_pointer_to_array (entry, completions_found_index,
                               completions_found, completions_found_slots,

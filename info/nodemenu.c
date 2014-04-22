@@ -308,7 +308,7 @@ DECLARE_INFO_COMMAND (select_visited_node,
 
   node = get_visited_nodes (NULL);
 
-  menu = info_menu_of_node (node);
+  menu = node->references;
   free (node);
 
   line =
