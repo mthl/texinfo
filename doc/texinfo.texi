@@ -9931,10 +9931,17 @@ Here's an example:
 @@listoffloats Figure
 @end example
 
-@noindent And the output from @code{@@listoffloats}:
+@noindent And here's what the output from @code{@@listoffloats}
+looks like, given the example figure earlier in this chapter (the Info
+output is formatted as a menu):
 
 @display
+@ifinfo
+*      Figure 12.1:      fig:ex1.
+@end ifinfo
+@ifnotinfo
 @listoffloats Figure
+@end ifnotinfo
 @end display
 
 Without any argument, @code{@@listoffloats} generates a list of floats

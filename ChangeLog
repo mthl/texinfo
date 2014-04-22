@@ -1,3 +1,9 @@
+2014-04-22  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (@t{@@listoffloats}) [ifinfo]: do not output a
+	real menu for Info, so readers can go forward with SPC as usual.
+	Reported by Mohammad Akhlaghi, bug-texinfo 15 Apr 2014 18:03:41.
+
 2014-04-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (scan_reference_target): Better handling
