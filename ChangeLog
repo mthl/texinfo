@@ -1,5 +1,10 @@
 2014-04-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (degrade_utf8): Replacements added for more
+	characters spotted in documents.
+
+2014-04-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/window.c (window_make_modeline): Subtract height of
 	window from length of node when calculating percentage
 	position in node so that it smoothly scales from 0% to 100%.

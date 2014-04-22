@@ -598,6 +598,13 @@ degrade_utf8 (char **from, size_t *from_left)
     {"\xC2\xA9","(C)"},   /* Copyright symbol */
     {"\xC2\xBB",">>"},    /* Closing double angle brackets */
     {"\xE2\x86\x92","->"},/* Right arrow */
+    {"\xE2\x80\x90","-"},  /* Hyphen */
+    {"\xE2\x80\x91","-"},  /* Non-breaking hyphen */
+    {"\xE2\x80\x92","-"},  /* Figure dash */
+    {"\xE2\x80\x93","-"},  /* En dash */
+    {"\xE2\x80\x94","-"},  /* Em dash */
+    {"\xE2\x80\xA6","..."},  /* Ellipsis */
+    {"\xE2\x80\xA2","*"},  /* Bullet */
 
     {"\xC3\xA0","a`"},   /* Lower case letter a with grave accent */
     {"\xC3\xA2","a^"},   /* Lower case letter a with circumflex */
@@ -613,7 +620,7 @@ degrade_utf8 (char **from, size_t *from_left)
     {"\xC3\x87","C,"},  /* Upper case letter C with cedilla */
     {"\xC3\xA7","c,"},  /* Lower case letter c with cedilla */
     {"\xC3\x9f","ss"},  /* Lower case letter sharp s */
-    
+
     {0, 0}
   };
 
