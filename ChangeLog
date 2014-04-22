@@ -1,5 +1,11 @@
 2014-04-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (scan_reference_target): Better handling
+	of case when a newline appears within a reference specification.
+	(info_parse_node): Skip newlines at start of specification.
+
+2014-04-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (degrade_utf8): Replacements added for more
 	characters spotted in documents.
 

@@ -87,7 +87,10 @@ info_parse_node (char *string, int flag)
   if (!string || !*string)
     return;
 
-  length = skip_whitespace (string);
+  if (flag != PARSE_NODE_DFLT)
+    length = skip_whitespace_and_newlines (string);
+  else  
+    length = skip_whitespace (string);
   string += length;
 
   /* Check for (FILENAME)NODENAME. */
@@ -1126,8 +1129,15 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
       else
         {
           char saved_char;
+          char *nl_off;
 
           length = info_parse_node (inptr, PARSE_NODE_SKIP_NEWLINES);
+
+          /* Check if there is a newline in the target. */
+          saved_char = inptr[length];
+          inptr[length] = '\0';
+          nl_off = strchr (inptr, '\n');
+          inptr[length] = saved_char;
           
           if (info_parsed_filename)
             {
@@ -1140,11 +1150,25 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
 
           /* A full stop terminating a reference should be output,
              but a comma is usually? not. */
-          /* FIXME: do this more generally, I seem to remember? */
           if (inptr[length - 1] == '.')
             skip_input (length - 1);
           else
             skip_input (length);
+
+          /* We often have a closing bracket or a full stop after a
+             cross reference, so output these before the optional newline. */
+          if (inptr[0] == '.' && inptr[1] == ')')
+            copy_input_to_output (2);
+          else if (*inptr == ')' || *inptr == '.')
+            copy_input_to_output (1);
+
+          if (nl_off)
+            { 
+              int i, j = skip_whitespace (nl_off + 1);
+              write_extra_bytes_to_output ("\n", 1);
+              for (i = 0; i < j; i++)
+                write_extra_bytes_to_output (" ", 1);
+            }
         }
 
       if (info_parsed_filename)
