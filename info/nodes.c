@@ -45,7 +45,6 @@ size_t info_loaded_files_slots = 0;
 
 /* Functions for tag table creation and destruction. */
 
-static long get_node_length (SEARCH_BINDING *binding);
 static void get_nodes_of_info_file (FILE_BUFFER *file_buffer);
 static void get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
     SEARCH_BINDING *buffer_binding);
@@ -157,22 +156,6 @@ build_tags_and_nodes (FILE_BUFFER *file_buffer)
   /* This file doesn't contain any kind of tags table.  Grovel the
      file and build node entries for it. */
   get_nodes_of_info_file (file_buffer);
-}
-
-/* Return the length of the node which starts at BINDING. */
-static long
-get_node_length (SEARCH_BINDING *binding)
-{
-  int i;
-  char *body;
-
-  /* [A node] ends with either a ^_, a ^L, or end of file.  */
-  for (i = binding->start, body = binding->buffer; i < binding->end; i++)
-    {
-      if (body[i] == INFO_FF || body[i] == INFO_COOKIE)
-        break;
-    }
-  return i - binding->start;
 }
 
 /* Set fields on new tag table entry. */
@@ -960,6 +943,22 @@ info_create_node (void)
   n->next = 0;
 
   return n;
+}
+
+/* Return the length of the node which starts at BINDING. */
+long
+get_node_length (SEARCH_BINDING *binding)
+{
+  int i;
+  char *body;
+
+  /* [A node] ends with either a ^_, a ^L, or end of file.  */
+  for (i = binding->start, body = binding->buffer; i < binding->end; i++)
+    {
+      if (body[i] == INFO_FF || body[i] == INFO_COOKIE)
+        break;
+    }
+  return i - binding->start;
 }
 
 /* Return a pointer to a NODE structure for the Info node (FILENAME)NODENAME,

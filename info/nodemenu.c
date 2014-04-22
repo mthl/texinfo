@@ -20,6 +20,7 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
+#include "variables.h"
 
 NODE *get_visited_nodes (Function *filter_func);
 
@@ -330,7 +331,7 @@ DECLARE_INFO_COMMAND (select_visited_node,
       REFERENCE *entry;
 
       /* Find the selected label in the references. */
-      entry = info_get_labeled_reference (line, menu);
+      entry = info_get_menu_entry_by_label (line, menu);
 
       if (!entry)
         info_error (_("The reference disappeared! (%s)."), line);

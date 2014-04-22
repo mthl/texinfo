@@ -188,16 +188,17 @@ info_parse_node (char *string, int flag)
 /*                                                                  */
 /* **************************************************************** */
 
-/* Get the entry associated with LABEL in REFERENCES.  Return a pointer
+/* Get the menu entry associated with LABEL in REFERENCES.  Return a pointer
    to the ENTRY if found, or NULL. */
 REFERENCE *
-info_get_labeled_reference (char *label, REFERENCE **references)
+info_get_menu_entry_by_label (char *label, REFERENCE **references)
 {
   register int i;
   REFERENCE *entry;
 
   for (i = 0; references && (entry = references[i]); i++)
     {
+      if (REFERENCE_MENU_ITEM != entry->type) continue;
       if (strcmp (label, entry->label) == 0)
         return entry;
     }

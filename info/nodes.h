@@ -23,6 +23,7 @@
 #define NODES_H
 
 #include "info.h"
+#include "search.h"
 
 /* User code interface.  */
 
@@ -134,6 +135,9 @@ typedef struct {
 } FILE_BUFFER;
 
 /* Externally visible functions.  */
+
+/* Return the length of the node which starts at BINDING. */
+long get_node_length (SEARCH_BINDING *binding);
 
 /* Array of FILE_BUFFER * which represents the currently loaded info files. */
 extern FILE_BUFFER **info_loaded_files;

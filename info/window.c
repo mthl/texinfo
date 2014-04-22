@@ -26,6 +26,7 @@
 #include "info-utils.h"
 #include "infomap.h"
 #include "tag.h"
+#include "variables.h"
 
 /* The window which describes the screen. */
 WINDOW *the_screen = NULL;
@@ -1067,7 +1068,6 @@ window_make_modeline (WINDOW *window)
         if (node->parent)
           {
             parent = filename_non_directory (node->parent);
-            modeline_len += strlen ("Subfile: ") + strlen (node->filename);
           }
 
         if (node->filename)
@@ -1077,36 +1077,69 @@ window_make_modeline (WINDOW *window)
           update_message = _("--*** Tags out of Date ***");
       }
 
-    if (update_message)
-      modeline_len += strlen (update_message);
-    modeline_len += strlen (filename);
-    modeline_len += strlen (nodename);
-    modeline_len += 4;          /* strlen (location_indicator). */
+    if (preprocess_nodes_p)
+      {
+        char *name;
+        int dot;
 
-    /* 10 for the decimal representation of the number of lines in this
-       node, and the remainder of the text that can appear in the line. */
-    modeline_len += 10 + strlen (_("-----Info: (), lines ----, "));
-    modeline_len += window->width;
+        name = parent ? parent : filename ? filename : 0;
 
-    modeline = xmalloc (1 + modeline_len);
+        modeline_len += strlen ("--() --");
+        modeline_len += 3; /* strlen (location_indicator) */
+        modeline_len += strlen (name);
+        if (nodename) modeline_len += strlen (nodename);
+        if (modeline_len < window->width)
+          modeline_len = window->width;
 
-    /* Special internal windows have no filename. */
-    if (!parent && !*filename)
-      sprintf (modeline, _("-%s---Info: %s, %d lines --%s--"),
-               (window->flags & W_NoWrap) ? "$" : "-",
-               nodename, window->line_count, location_indicator);
+        modeline = xcalloc (1, 1 + modeline_len);
+
+        /* Omit any extension like ".info.gz" from file name. */
+        dot = strcspn (name, ".");
+
+        sprintf (modeline, "%s--", location_indicator);
+        if (name && strcmp ("", name))
+          {
+            sprintf (modeline + strlen (modeline), "(");
+            strncpy (modeline + strlen (modeline), name, dot);
+            sprintf (modeline + strlen (modeline), ") ");
+          }
+        sprintf (modeline + strlen (modeline), "%s--", nodename);
+      }
     else
-      sprintf (modeline, _("-%s%s-Info: (%s)%s, %d lines --%s--"),
-               (window->flags & W_NoWrap) ? "$" : "-",
-               (node && (node->flags & N_IsCompressed)) ? "zz" : "--",
-               parent ? parent : filename,
-               nodename, window->line_count, location_indicator);
+      {
+        if (node && node->parent)
+            modeline_len += strlen ("Subfile: ") + strlen (node->filename);
 
-    if (parent)
-      sprintf (modeline + strlen (modeline), _(" Subfile: %s"), filename);
+        if (update_message)
+          modeline_len += strlen (update_message);
+        modeline_len += strlen (filename);
+        modeline_len += strlen (nodename);
+        modeline_len += 4;          /* strlen (location_indicator). */
 
-    if (update_message)
-      sprintf (modeline + strlen (modeline), "%s", update_message);
+        /* 10 for the decimal representation of the number of lines in this
+           node, and the remainder of the text that can appear in the line. */
+        modeline_len += 10 + strlen (_("-----Info: (), lines ----, "));
+        modeline_len += window->width;
+
+        modeline = xmalloc (1 + modeline_len);
+
+        /* Special internal windows have no filename. */
+        if (!parent && !*filename)
+          sprintf (modeline, _("-%s---Info: %s, %d lines --%s--"),
+                   (window->flags & W_NoWrap) ? "$" : "-",
+                   nodename, window->line_count, location_indicator);
+        else
+          sprintf (modeline, _("-%s%s-Info: (%s)%s, %d lines --%s--"),
+                   (window->flags & W_NoWrap) ? "$" : "-",
+                   (node && (node->flags & N_IsCompressed)) ? "zz" : "--",
+                   parent ? parent : filename,
+                   nodename, window->line_count, location_indicator);
+        if (parent)
+          sprintf (modeline + strlen (modeline), _(" Subfile: %s"), filename);
+
+        if (update_message)
+          sprintf (modeline + strlen (modeline), "%s", update_message);
+      }
 
     i = strlen (modeline);
 

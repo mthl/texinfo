@@ -1,5 +1,19 @@
 2014-04-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (info_get_labeled_reference)
+	(info_menu_entry_by_label): Renamed.  Only look for menu items.
+	
+	* info/man.c (manpage_node_of_file_buffer): Set nodelen and nodestart
+	field in returned NODE.
+	(xrefs_of_manpage): If no references, return array with a single
+	null entry instead of null. Set type fields to REFERENCE_XREF.
+	* info/window.c: (window_make_modeline) If preprocess_nodes_p is
+	set, display less information in status bar.
+	* info/nodes.c (get_node_length): Function no longer static.
+	Definition moved in file.
+	
+2014-04-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c, info/info-utils.h (info_menu_of_node)
 	(info_xrefs_of_node, info_menu_items, info_xrefs)
 	(info_references_internal): Functions deleted.

@@ -21,6 +21,7 @@
 
 #include "info.h"
 #include "search.h"
+
 #ifndef __MINGW32__
 #include <sys/ioctl.h>
 #endif
@@ -2781,7 +2782,7 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
         }
 
       /* Find the specified menu item. */
-      entry = info_get_labeled_reference (arg, menu);
+      entry = info_get_menu_entry_by_label (arg, menu);
 
       /* If the item wasn't found, search the list sloppily.  Perhaps this
          user typed "buffer" when they really meant "Buffers". */
@@ -2968,7 +2969,7 @@ entry_in_menu (char *arg, REFERENCE **menu, int exact)
   REFERENCE *entry;
 
   /* First, try to find the specified menu item verbatim.  */
-  entry = info_get_labeled_reference (arg, menu);
+  entry = info_get_menu_entry_by_label (arg, menu);
 
   /* If the item wasn't found, search the list sloppily.  Perhaps we
      have "Option Summary", but ARG is "option".  */

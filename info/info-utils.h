@@ -62,9 +62,9 @@ int info_parse_node (char *string, int flag);
 
 void scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr);
 
-/* Get the entry associated with LABEL in REFERENCES.  Return a pointer to
-   the reference if found, or NULL. */
-extern REFERENCE *info_get_labeled_reference (char *label,
+/* Get the menu entry associated with LABEL in REFERENCES.  Return a
+   pointer to the reference if found, or NULL. */
+extern REFERENCE *info_get_menu_entry_by_label (char *label,
     REFERENCE **references);
 
 /* A utility function for concatenating REFERENCE **.  Returns a new

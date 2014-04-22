@@ -33,6 +33,7 @@
 
 #include "tilde.h"
 #include "man.h"
+#include "variables.h"
 
 #if !defined (_POSIX_VERSION)
 #define pid_t int
@@ -406,9 +407,28 @@ manpage_node_of_file_buffer (FILE_BUFFER *file_buffer, char *pagename)
       node->nodename = xstrdup (tag->nodename);
       node->contents = file_buffer->contents + tag->nodestart;
       node->nodelen = tag->nodelen;
+      node->nodestart = tag->nodestart;
       node->flags |= (N_HasTagsTable | N_IsManPage);
       node->contents += skip_node_separator (node->contents);
       node->body_start = strcspn(node->contents, "\n");
+
+      node->up = "(dir)";
+
+      /* Set nodelen, which is currently -1. */
+
+      {
+      SEARCH_BINDING node_body;
+
+      node_body.buffer = file_buffer->contents;
+      node_body.start = node->nodestart;
+      node_body.start +=
+        skip_node_separator (file_buffer->contents + node->nodestart);
+      node_body.end = file_buffer->filesize;
+      node_body.flags = S_FoldCase;
+      node->nodelen = get_node_length (&node_body);
+
+      node->references = xrefs_of_manpage (node);
+      }
     }
 
   return node;
@@ -542,10 +562,14 @@ xrefs_of_manpage (NODE *node)
   size_t refs_slots = 0;
   long position;
 
+  /* Initialize reference list to have a single null entry. */
+  refs = calloc(1, sizeof (REFERENCE *));
+  refs_slots = 1;
+
   reference_section = find_reference_section (node);
 
   if (reference_section == NULL)
-    return NULL;
+    return refs;
 
   /* Grovel the reference section building a list of references found there.
      A reference is alphabetic characters followed by non-whitespace text
@@ -590,6 +614,7 @@ xrefs_of_manpage (NODE *node)
           entry->nodename = xstrdup (entry->label);
           entry->start = start;
           entry->end = end;
+          entry->type = REFERENCE_XREF;
 
           add_pointer_to_array (entry, refs_index, refs, refs_slots, 10);
         }
