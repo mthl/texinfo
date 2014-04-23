@@ -1,3 +1,10 @@
+2014-04-22  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/texi2any.pl: unset OUTFILE when --output is given, even
+	if it is a directory.
+	* tp/Texinfo/Convert/Converter.pm: warn about output incompatible
+	with splitting.
+
 2014-04-22  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (@t{@@listoffloats}) [ifinfo]: do not output a

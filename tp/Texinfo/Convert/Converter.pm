@@ -783,15 +783,14 @@ sub output($$)
   my $self = shift;
   my $root = shift;
 
-  $self->_set_outfile();
-  return undef unless $self->_create_destination_directory();
-
   my $elements;
 
   if (defined($self->get_conf('OUTFILE'))
       and ($Texinfo::Common::null_device_file{$self->get_conf('OUTFILE')}
            or $self->get_conf('OUTFILE') eq '-'
            or $self->get_conf('OUTFILE') eq '')) {
+    $self->document_warn(sprintf($self->__("%s: output incompatible with split"),
+                                 $self->get_conf('OUTFILE')));
     $self->force_conf('SPLIT', 0);
   }
   if ($self->get_conf('SPLIT')) {
@@ -804,6 +803,9 @@ sub output($$)
   if ($self->get_conf('NODE_FILENAMES') and defined($self->get_conf('EXTENSION'))) {
      $self->set_conf('NODE_FILE_EXTENSION', $self->get_conf('EXTENSION'));
   }
+
+  $self->_set_outfile();
+  return undef unless $self->_create_destination_directory();
 
   # do that now to have it available for formatting
   # NOTE this calls Convert::Converter::_informative_command on all the 

@@ -904,6 +904,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2014";
  'output|out|o=s' => sub {
     my $var = 'OUTFILE';
     if ($_[1] =~ m:/$: or -d $_[1]) {
+      set_from_cmdline($var, undef);
       $var = 'SUBDIR';
     }
     set_from_cmdline($var, $_[1]);
