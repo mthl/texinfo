@@ -16,13 +16,13 @@
 	(info_get_node_with_defaults): Call get_manpage_node to get
 	man page nodes.
 
-	* session.c (info_follow_menus): Call get_manpage_node instead of
-	make_manpage_node.
+	* info/session.c (info_follow_menus): Call get_manpage_node instead
+	of make_manpage_node.
 	(info_man): Get man page via info_get_node instead of
 	info_parse_and_select.
 
 	Note: These changes stop the undocumented and probably 
-	unintended support of invoking the program as
+	unintended support of invoking the standalone Info program as
 	"info '(filename)nodename'", which only worked by accident.
 
 2014-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
