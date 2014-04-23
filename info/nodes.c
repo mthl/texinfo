@@ -627,12 +627,6 @@ info_find_file_internal (char *filename, int get_tags)
             if (is_dir_name (filename_non_directory (filename)))
               return file_buffer;
 
-#if defined (HANDLE_MAN_PAGES)
-            /* Do the same for the magic MANPAGE file. */
-            if (file_buffer->flags & N_IsManPage)
-              return file_buffer;
-#endif /* HANDLE_MAN_PAGES */
-
             /* The file appears to be already loaded, and is not "dir".  Check
                to see if it's changed since the last time it was loaded.  */
             if (stat (file_buffer->fullpath, &new_info) == -1)
@@ -675,14 +669,7 @@ info_find_file_internal (char *filename, int get_tags)
     }
 
   /* The file wasn't loaded.  Try to load it now. */
-#if defined (HANDLE_MAN_PAGES)
-  /* If the name of the file that we want is our special file buffer for
-     Unix manual pages, then create the file buffer, and return it now. */
-  if (mbscasecmp (filename, MANPAGE_FILE_BUFFER_NAME) == 0)
-    file_buffer = create_manpage_file_buffer ();
-  else
-#endif /* HANDLE_MAN_PAGES */
-    file_buffer = info_load_file_internal (filename, get_tags);
+  file_buffer = info_load_file_internal (filename, get_tags);
 
   /* If the file was loaded, remember the name under which it was found. */
   if (file_buffer)
@@ -895,12 +882,6 @@ info_reload_file_buffer_contents (FILE_BUFFER *fb)
 {
   int is_compressed;
 
-#if defined (HANDLE_MAN_PAGES)
-  /* If this is the magic manpage node, don't try to reload, just give up. */
-  if (fb->flags & N_IsManPage)
-    return;
-#endif
-
   fb->flags &= ~N_IsCompressed;
 
   /* Let the filesystem do all the work for us. */
@@ -973,7 +954,7 @@ NODE *
 info_get_node_with_defaults (char *filename_in, char *nodename_in,
                              int flag, WINDOW *window)
 {
-  NODE *node;
+  NODE *node = 0;
   FILE_BUFFER *file_buffer = NULL;
   char *filename = 0, *nodename = 0;
 
@@ -990,23 +971,34 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
   if (is_dir_name (filename))
     maybe_build_dir_node (filename);
 
+#ifdef HANDLE_MAN_PAGES
+  if (mbscasecmp (filename, MANPAGE_FILE_BUFFER_NAME) == 0)
+    {
+      return get_manpage_node (nodename);
+    }
+#endif
+
   /* Find the correct info file, or give up.  */
   file_buffer = info_find_file (filename);
+  if (file_buffer)
+    {
+      /* Look for the node.  */
+      node = info_get_node_of_file_buffer (nodename, file_buffer);
+    }
+
+#ifdef HANDLE_MAN_PAGES
   if (!file_buffer)
     {
-      node = make_manpage_node (filename);
+      /* Try to find a man page with this name as a fall back. */
+      node = get_manpage_node (filename);
       if (!node)
         {
           if (filesys_error_number)
             info_recent_file_error =
               filesys_error_string (filename, filesys_error_number);
-          free (filename); free (nodename);
-          return NULL;
         }
     }
-  else
-    /* Look for the node.  */
-    node = info_get_node_of_file_buffer (nodename, file_buffer);
+#endif
 
   /* If the node not found was "Top", try again with different case,
      unless this was a man page.  */
@@ -1106,14 +1098,6 @@ info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
       node->nodelen = file_buffer->filesize;
       node_set_body_start (node);
     }
-#if defined (HANDLE_MAN_PAGES)
-  /* If the file buffer is the magic one associated with manpages, call
-     the manpage node finding function instead. */
-  else if (file_buffer->flags & N_IsManPage)
-    {
-      node = get_manpage_node (file_buffer, nodename);
-    }
-#endif /* HANDLE_MAN_PAGES */
   /* If this is the "main" info file, it might contain a tags table.  Search
      the tags table for an entry which matches the node that we want.  If
      there is a tags table, get the file which contains this node, but don't

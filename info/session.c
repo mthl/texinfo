@@ -2875,7 +2875,6 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
       if (!first_arg)
         first_arg = arg;
 
-      /* FIXME: This contains cross-references as well. */
       menu = initial_node->references;
 
       /* If no menu item in this node, stop here, but let the user
@@ -2886,7 +2885,7 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
 	  debug (3, ("no menu found"));
           if (arg == first_arg && !strict)
             {
-              node = make_manpage_node (first_arg);
+              node = get_manpage_node (first_arg);
               if (node)
 		{
 		  debug (3, ("falling back to manpage node"));
@@ -2936,7 +2935,7 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
 	      else if (strict)
 		return NULL;
               else
-                node = make_manpage_node (first_arg);
+                node = get_manpage_node (first_arg);
               if (node)
                 goto maybe_got_node;
             }
@@ -2961,7 +2960,7 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
                             PARSE_NODE_VERBATIM);
       if (!strict && !node && arg == first_arg)
         {
-          node = make_manpage_node (first_arg);
+          node = get_manpage_node (first_arg);
           if (node)
             goto maybe_got_node;
         }
@@ -3278,15 +3277,9 @@ DECLARE_INFO_COMMAND (info_man, _("Read a manpage reference and select it"))
 
   if (*line)
     {
-      char *goto_command;
-
-      goto_command = xmalloc
-        (4 + strlen (MANPAGE_FILE_BUFFER_NAME) + strlen (line));
-
-      sprintf (goto_command, "(%s)%s", MANPAGE_FILE_BUFFER_NAME, line);
-
-      info_parse_and_select (goto_command, window);
-      free (goto_command);
+      NODE *manpage = info_get_node (MANPAGE_FILE_BUFFER_NAME, line, 0);
+      if (manpage)
+        info_set_node_of_window (1, window, manpage);
     }
 
   free (line);

@@ -23,13 +23,6 @@
 
 #define MANPAGE_FILE_BUFFER_NAME "*manpages*"
 
-extern NODE *make_manpage_node (char *pagename);
-extern NODE *get_manpage_node (FILE_BUFFER *file_buffer,
-    char *pagename);
-extern FILE_BUFFER *create_manpage_file_buffer (void);
-extern long locate_manpage_xref (NODE *node, long int start, int dir);
-extern REFERENCE **xrefs_of_manpage (NODE *node);
-extern REFERENCE **manpage_xrefs_in_binding (NODE *node,
-    SEARCH_BINDING *binding);
+extern NODE *get_manpage_node (char *pagename);
 
 #endif /* INFO_MAN_H */

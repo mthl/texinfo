@@ -1,17 +1,44 @@
 2014-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* window.h (WINDOW): Change size_t fields to long to avoid
+	* info/man.c: (get_manpage_node): Arguments changed.  Do not
+	keep all the man page contents in one long buffer.
+	(manpage_file_buffer): New variable.
+	(create_manpage_file_buffer): Initialize manpage_file_buffer.
+	(make_manpage_node): Function deleted.
+	(manpage_node_of_file_buffer): Merged into get_manpage_node.
+	(locate_manpage_xref, xrefs_of_manpage)
+	(manpage_xrefs_in_binding, create_manpage_file_buffer): Functions
+	declared static.
+
+	* info/nodes.c (info_find_file_internal)
+	(info_reload_file_buffer_contents, info_get_node_of_file_buffer):
+	Special handling of man pages removed.
+	(info_get_node_with_defaults): Call get_manpage_node to get
+	man page nodes.
+
+	* session.c (info_follow_menus): Call get_manpage_node instead of
+	make_manpage_node.
+	(info_man): Get man page via info_get_node instead of
+	info_parse_and_select.
+
+	Note: These changes stop the undocumented and probably 
+	unintended support of invoking the program as
+	"info '(filename)nodename'", which only worked by accident.
+
+2014-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.h (WINDOW): Change size_t fields to long to avoid
 	unwanted unsigned arithmetic.
 
-	* session.c: Some re-ordering of functions, and comment added
+	* info/session.c: Some re-ordering of functions, and comment added
 	warning about what happens if you do this.
-	* echo-area.c, infodoc.c, m-x.c, indices.c, footnotes.c,
-	variables.c: Warning about reordering DECLARE_INFO_COMMAND
-	declarations copied.
+	* info/echo-area.c, info/infodoc.c, info/m-x.c,
+	info/indices.c, info/footnotes.c, variables.c: Warning about
+	reordering DECLARE_INFO_COMMAND declarations copied.
 
-	* Makefile.am: Add infokey dependency for tests.
+	* info/Makefile.am: Add infokey dependency for tests.
 
-	* session.c (_scroll_forward, _scroll_backward): Remove
+	* info/session.c (_scroll_forward, _scroll_backward): Remove
 	logic applicable to only some of the scrolling functions.
 	Don't scroll if already at bottom of node.  Don't move point.
 	(info_scroll_forward, info_scroll_backward)
@@ -30,7 +57,7 @@
 	(info_universal_argument, info_initialize_numeric_arg)
 	(info_numeric_arg_digit_loop, info_dispatch_on_key): Use new
 	variables if in echo area.
-	* echo-area.c (ea_delete, ea_rubout): Use ea_explicit_arg
+	* info/echo-area.c (ea_delete, ea_rubout): Use ea_explicit_arg
 	instead of info_explicit_arg.
 
 2014-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
