@@ -5093,8 +5093,15 @@ info_dispatch_on_key (unsigned char key, Keymap map)
               WINDOW *where;
 
               where = active_window;
-              (*InfoFunction(map[key].function))
-                (active_window, info_numeric_arg * info_numeric_arg_sign, key);
+
+              if (!echo_area_is_active)
+                (*InfoFunction(map[key].function))
+                  (active_window, info_numeric_arg * info_numeric_arg_sign,
+                  key);
+              else
+                (*InfoFunction(map[key].function))
+                  (active_window, ea_numeric_arg * ea_numeric_arg_sign,
+                  key);
 
               /* If we have input pending, then the last command was a prefix
                  command.  Don't change the value of the last function vars.
@@ -5154,6 +5161,12 @@ int info_numeric_arg_sign = 1;
 /* The value of the argument itself. */
 int info_numeric_arg = 1;
 
+/* As above, but used when C-u is typed in the echo area to avoid
+   overwriting this information when "C-u ARG M-x" is typed. */
+int ea_explicit_arg = 0;
+int ea_numeric_arg_sign = 1;
+int ea_numeric_arg = 1;
+
 /* Add the current digit to the argument in progress. */
 DECLARE_INFO_COMMAND (info_add_digit_to_numeric_arg,
                       _("Add this digit to the current numeric argument"))
@@ -5167,7 +5180,11 @@ DECLARE_INFO_COMMAND (info_add_digit_to_numeric_arg,
 DECLARE_INFO_COMMAND (info_universal_argument,
                       _("Start (or multiply by 4) the current numeric argument"))
 {
-  info_numeric_arg *= 4;
+  if (!echo_area_is_active)
+    info_numeric_arg *= 4;
+  else
+    ea_numeric_arg *= 4;
+
   info_numeric_arg_digit_loop (window, 0, 0);
 }
 
@@ -5175,8 +5192,16 @@ DECLARE_INFO_COMMAND (info_universal_argument,
 void
 info_initialize_numeric_arg (void)
 {
-  info_numeric_arg = info_numeric_arg_sign = 1;
-  info_explicit_arg = 0;
+  if (!echo_area_is_active)
+    {
+      info_numeric_arg = info_numeric_arg_sign = 1;
+      info_explicit_arg = 0;
+    }
+  else
+    {
+      ea_numeric_arg = ea_numeric_arg_sign = 1;
+      ea_explicit_arg = 0;
+    }
 }
 
 DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
@@ -5184,6 +5209,23 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
 {
   unsigned char pure_key;
   Keymap keymap = window->keymap;
+
+  int *which_numeric_arg, *which_numeric_arg_sign, *which_explicit_arg;
+
+  /* Process the right numeric argument.  FIXME: Not necessarily the
+     nicest way of doing it. */
+  if (!echo_area_is_active)
+    {
+      which_explicit_arg =     &info_explicit_arg;
+      which_numeric_arg_sign = &info_numeric_arg_sign;
+      which_numeric_arg =      &info_numeric_arg;
+    }
+  else
+    {
+      which_explicit_arg =     &ea_explicit_arg;
+      which_numeric_arg_sign = &ea_numeric_arg_sign;
+      which_numeric_arg =      &ea_numeric_arg;
+    }
 
   while (1)
     {
@@ -5218,7 +5260,7 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
           && InfoFunction(keymap[key].function)
               == (VFunction *) info_universal_argument)
         {
-          info_numeric_arg *= 4;
+          *which_numeric_arg *= 4;
           key = 0;
           continue;
         }
@@ -5231,18 +5273,18 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
 
       if (isdigit (key))
         {
-          if (info_explicit_arg)
-            info_numeric_arg = (info_numeric_arg * 10) + (key - '0');
+          if (*which_explicit_arg)
+            *which_numeric_arg = (*which_numeric_arg * 10) + (key - '0');
           else
-            info_numeric_arg = (key - '0');
-          info_explicit_arg = 1;
+            *which_numeric_arg = (key - '0');
+          *which_explicit_arg = 1;
         }
       else
         {
-          if (key == '-' && !info_explicit_arg)
+          if (key == '-' && !*which_explicit_arg)
             {
-              info_numeric_arg_sign = -1;
-              info_numeric_arg = 1;
+              *which_numeric_arg_sign = -1;
+              *which_numeric_arg = 1;
             }
           else
             {

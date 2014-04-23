@@ -220,8 +220,9 @@ extern void info_select_reference_this_line (WINDOW *window, int count,
 extern void info_last_menu_item (WINDOW *window, int count, unsigned char key);
 extern void info_visit_menu (WINDOW *window, int count, unsigned char key);
 
-/* Hacking numeric arguments. */
+/* Adding numeric arguments. */
 extern int info_explicit_arg, info_numeric_arg, info_numeric_arg_sign;
+extern int ea_explicit_arg, ea_numeric_arg, ea_numeric_arg_sign;
 
 extern void info_add_digit_to_numeric_arg (WINDOW *window, int count,
     unsigned char key);

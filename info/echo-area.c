@@ -408,7 +408,7 @@ DECLARE_INFO_COMMAND (ea_delete, _("Delete the character under the cursor"))
       if (input_line_point == input_line_end)
         return;
 
-      if (info_explicit_arg || count > 1)
+      if (ea_explicit_arg || count > 1)
         {
           int orig_point;
 
@@ -441,7 +441,7 @@ DECLARE_INFO_COMMAND (ea_rubout, _("Delete the character behind the cursor"))
       start = input_line_point;
       ea_backward (window, count, key);
 
-      if (info_explicit_arg || count > 1)
+      if (ea_explicit_arg || count > 1)
         ea_kill_text (start, input_line_point);
       else
         ea_delete (window, count, key);
