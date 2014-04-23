@@ -19,3 +19,6 @@ export INFO_PRINT_COMMAND=">$GINFO_OUTPUT"
 
 # Not an interactive test
 PTY_PID=0
+
+# Get error messages in English
+LC_ALL=C; export LC_ALL

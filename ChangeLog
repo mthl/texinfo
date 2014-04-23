@@ -1,3 +1,8 @@
+2014-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-test.inc: Set LC_ALL=C to avoid spurious test
+	failures in non-English locale.
+
 2014-04-22  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/texi2any.pl: unset OUTFILE when --output is given, even
