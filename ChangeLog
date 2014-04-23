@@ -1,5 +1,20 @@
 2014-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (info_parse_node): Don't use saven_filename
+	or saven_nodename.
+	(parsed_filename_size, parsed_nodename_size)
+	(save_filename, saven_filename, save_nodename, saven_nodename)
+	(save_string, saven_string): Functions and variables deleted.
+
+	* info/info-utils.c (scan_reference_target): Better
+	output for target specifications.
+
+	* info/nodes.c (info_get_node_with_defaults): Always free data
+	on exit.  Eliminate extra check for if we were looking for a man
+	page.
+
+2014-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/man.c: (get_manpage_node): Arguments changed.  Do not
 	keep all the man page contents in one long buffer.
 	(manpage_file_buffer): New variable.

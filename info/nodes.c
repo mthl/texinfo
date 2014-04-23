@@ -974,7 +974,8 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
 #ifdef HANDLE_MAN_PAGES
   if (mbscasecmp (filename, MANPAGE_FILE_BUFFER_NAME) == 0)
     {
-      return get_manpage_node (nodename);
+      node = get_manpage_node (nodename);
+      goto cleanup_and_exit;
     }
 #endif
 
@@ -1000,11 +1001,8 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
     }
 #endif
 
-  /* If the node not found was "Top", try again with different case,
-     unless this was a man page.  */
-  if (!node
-      && mbscasecmp (filename, MANPAGE_FILE_BUFFER_NAME) != 0
-      && (nodename == NULL || mbscasecmp (nodename, "Top") == 0))
+  /* If the node not found was "Top", try again with different case. */
+  if (!node && (nodename && mbscasecmp (nodename, "Top") == 0))
     {
       node = info_get_node_of_file_buffer ("Top", file_buffer);
       if (!node)
@@ -1013,6 +1011,7 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
         node = info_get_node_of_file_buffer ("TOP", file_buffer);
     }
 
+cleanup_and_exit:
   free (filename); free (nodename);
   return node;
 }

@@ -53,15 +53,6 @@ char *info_parsed_nodename = NULL;
    calling info_parse_xxx (). */
 int info_parsed_line_number = 0;
 
-static void save_string (char *string, char **string_p, int *string_size_p);
-static void saven_string (char *string, int len, char **string_p,
-    int *string_size_p);
-/* Functions to remember a filename or nodename for later return. */
-static void save_filename (char *filename);
-static void saven_filename (char *filename, int len);
-static void save_nodename (char *nodename);
-static void saven_nodename (char *nodename, int len);
-
 /* Parse the filename and nodename out of STRING.  Return length of node
    specification.  If STRING doesn't contain a filename (i.e., it is NOT
    (FILENAME)NODENAME) then set INFO_PARSED_FILENAME to NULL.  The
@@ -80,8 +71,10 @@ info_parse_node (char *string, int flag)
   int length = 0; /* Return value */
 
   /* Default the answer. */
-  save_filename (NULL);
-  save_nodename (NULL);
+  free (info_parsed_filename);
+  free (info_parsed_nodename);
+  info_parsed_filename = 0;
+  info_parsed_nodename = 0;
 
   /* Special case of nothing passed.  Return nothing. */
   if (!string || !*string)
@@ -126,7 +119,8 @@ info_parse_node (char *string, int flag)
 	i = bfirst;
       
       /* Remember parsed filename. */
-      saven_filename (string, i);
+      info_parsed_filename = xcalloc (1, i+1);
+      memcpy (info_parsed_filename, string, i);
 
       /* Point directly at the nodename. */
       string += i;
@@ -143,7 +137,10 @@ info_parse_node (char *string, int flag)
   i = skip_node_characters (string, flag);
   length += i;
   length++; /* skip_node_characters() stops on terminating character */
-  saven_nodename (string, i);
+
+  info_parsed_nodename = xcalloc (1, i+1);
+  memcpy (info_parsed_nodename, string, i);
+
   canonicalize_whitespace (info_parsed_nodename);
   if (info_parsed_nodename && !*info_parsed_nodename)
     {
@@ -1155,17 +1152,17 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
           else
             skip_input (length);
 
-          /* We often have a closing bracket or a full stop after a
-             cross reference, so output these before the optional newline. */
-          if (inptr[0] == '.' && inptr[1] == ')')
-            copy_input_to_output (2);
-          else if (*inptr == ')' || *inptr == '.')
-            copy_input_to_output (1);
+          /* Copy any terminating punctuation before the optional newline. */
+          copy_input_to_output (strspn (inptr, ".),"));
 
           if (nl_off)
             { 
               int i, j = skip_whitespace (nl_off + 1);
               write_extra_bytes_to_output ("\n", 1);
+
+              /* Don't allow any spaces in the input to mess up
+                 the margin. */
+              skip_input (strspn (inptr, " "));
               for (i = 0; i < j; i++)
                 write_extra_bytes_to_output (" ", 1);
             }
@@ -1471,102 +1468,6 @@ search_again:
 /*                  Functions Static To This File                   */
 /*                                                                  */
 /* **************************************************************** */
-
-/* Amount of space allocated to INFO_PARSED_FILENAME via xmalloc (). */
-static int parsed_filename_size = 0;
-
-/* Amount of space allocated to INFO_PARSED_NODENAME via xmalloc (). */
-static int parsed_nodename_size = 0;
-
-/* Remember FILENAME in PARSED_FILENAME.  An empty FILENAME is translated
-   to a NULL pointer in PARSED_FILENAME. */
-static void
-save_filename (char *filename)
-{
-  save_string (filename, &info_parsed_filename, &parsed_filename_size);
-}
-
-/* Just like save_filename (), but you pass the length of the string. */
-static void
-saven_filename (char *filename, int len)
-{
-  saven_string (filename, len,
-                &info_parsed_filename, &parsed_filename_size);
-}
-
-/* Remember NODENAME in PARSED_NODENAME.  An empty NODENAME is translated
-   to a NULL pointer in PARSED_NODENAME. */
-static void
-save_nodename (char *nodename)
-{
-  save_string (nodename, &info_parsed_nodename, &parsed_nodename_size);
-}
-
-/* Just like save_nodename (), but you pass the length of the string. */
-static void
-saven_nodename (char *nodename, int len)
-{
-  saven_string (nodename, len,
-                &info_parsed_nodename, &parsed_nodename_size);
-}
-
-/* Remember STRING in STRING_P.  STRING_P should currently have STRING_SIZE_P
-   bytes allocated to it.  An empty STRING is translated to a NULL pointer
-   in STRING_P. */
-static void
-save_string (char *string, char **string_p, int *string_size_p)
-{
-  if (!string || !*string)
-    {
-      if (*string_p)
-        free (*string_p);
-
-      *string_p = NULL;
-      *string_size_p = 0;
-    }
-  else if (string_size_p)
-    {
-      if (strlen (string) >= (unsigned int) *string_size_p)
-        *string_p = xrealloc (*string_p,
-			      (*string_size_p = 1 + strlen (string)));
-
-      strcpy (*string_p, string);
-    }
-  else
-    {
-      free (*string_p);
-      *string_p = xstrdup (string);
-    }
-}
-
-/* Just like save_string (), but you also pass the length of STRING. */
-static void
-saven_string (char *string, int len, char **string_p, int *string_size_p)
-{
-  if (!string)
-    {
-      if (*string_p)
-        free (*string_p);
-
-      *string_p = NULL;
-      *string_size_p = 0;
-    }
-  else 
-    {
-      if (string_size_p)
-	{
-	  if (len >= *string_size_p)
-	    *string_p = xrealloc (*string_p, (*string_size_p = 1 + len));
-	}
-      else
-	{
-	  free (*string_p);
-	  *string_p = xmalloc (1 + len);
-	}
-      strncpy (*string_p, string, len);
-      (*string_p)[len] = '\0';
-    }
-}
 
 /* Return a pointer to the part of PATHNAME that simply defines the file. */
 char *
