@@ -68,17 +68,17 @@ typedef struct window_struct
 {
   struct window_struct *next;      /* Next window in this chain. */
   struct window_struct *prev;      /* Previous window in this chain. */
-  size_t width;         /* Width of this window. */
-  size_t height;        /* Height of this window. */
-  size_t first_row;     /* Offset of the first line in the_screen. */
-  size_t goal_column;   /* The column we would like the cursor to appear in. */
+  long width;           /* Width of this window. */
+  long height;          /* Height of this window. */
+  long first_row;       /* Offset of the first line in the_screen. */
+  long goal_column;     /* The column we would like the cursor to appear in. */
   Keymap keymap;        /* Keymap used to read commands in this window. */
   WINDOW_STATE_DECL;    /* Node, pagetop and point. */
   LINE_MAP line_map;    /* Current line map */
   char *modeline;       /* Calculated text of the modeline for this window. */
   char **line_starts;   /* Array of printed line starts for this node. */
-  size_t line_count;    /* Number of lines appearing in LINE_STARTS. */
-  size_t *log_line_no;  /* Number of logical line corresponding to each
+  long line_count;      /* Number of lines appearing in LINE_STARTS. */
+  long *log_line_no;    /* Number of logical line corresponding to each
 			   physical one. */
   int flags;            /* See below for details. */
 } WINDOW;

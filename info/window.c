@@ -587,7 +587,7 @@ window_toggle_wrap (WINDOW *window)
   if (window != the_echo_area)
     {
       char **old_starts;
-      size_t *old_xlat;
+      long *old_xlat;
       int old_lines, old_pagetop;
 
       old_starts = window->line_starts;

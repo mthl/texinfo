@@ -82,7 +82,7 @@ BUILT_SOURCES = funs.h
 # Test suite
 
 check_DATA = t/Info-config
-t/Info-config: t/Infokey-config
+t/Info-config: t/Infokey-config infokey
 	./infokey --output $@ $<
 
 check_PROGRAMS = pseudotty

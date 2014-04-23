@@ -1,5 +1,30 @@
 2014-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* window.h (WINDOW): Change size_t fields to long to avoid
+	unwanted unsigned arithmetic.
+
+	* session.c: Some re-ordering of functions, and comment added
+	warning about what happens if you do this.
+	* echo-area.c, infodoc.c, m-x.c, indices.c, footnotes.c,
+	variables.c: Warning about reordering DECLARE_INFO_COMMAND
+	declarations copied.
+
+	* Makefile.am: Add infokey dependency for tests.
+
+	* session.c (_scroll_forward, _scroll_backward): Remove
+	logic applicable to only some of the scrolling functions.
+	Don't scroll if already at bottom of node.  Don't move point.
+	(info_scroll_forward, info_scroll_backward)
+	(info_scroll_forward_set_window, info_scroll_backward_set_window)
+	(info_scroll_forward_page_only, info_scroll_backward_page_only)
+	(info_scroll_forward_page_only_set_window)
+	(info_scroll_backward_page_only_set_window)
+	(info_down_line, info_up_line)
+	(info_scroll_half_screen_down, info_scroll_half_screen_up):
+	Call _scroll_forward and _scroll_backward.
+
+2014-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (ea_explicit_arg, ea_numeric_arg_sign)
 	(ea_numeric_arg): New variables.
 	(info_universal_argument, info_initialize_numeric_arg)

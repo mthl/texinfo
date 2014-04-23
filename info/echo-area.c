@@ -21,6 +21,11 @@
 
 #include "info.h"
 
+/* Warning!  Any change to the order of the commands defined with
+   DECLARE_INFO_COMMAND in this file results in an incompatible .info
+   format, and key bindings will be incorrectly assigned until infokey
+   is rerun. */
+
 #if defined (FD_SET)
 #  if defined (hpux)
 #    define fd_set_cast(x) (int *)(x)

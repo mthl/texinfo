@@ -49,6 +49,11 @@ char *node_printed_rep (NODE *node);
 
 static REFERENCE *select_menu_digit (WINDOW *window, unsigned char key);
 
+/* Warning! Any change to the order of the commands defined with
+   DECLARE_INFO_COMMAND in this file results in an incompatible .info
+   format, and key bindings will be incorrectly assigned until infokey
+   is rerun. */
+
 /* **************************************************************** */
 /*                                                                  */
 /*                   Running an Info Session                        */
@@ -508,7 +513,7 @@ info_set_node_of_window (int remember, WINDOW *window, NODE *node)
 
 /* **************************************************************** */
 /*                                                                  */
-/*                     Info Movement Commands                       */
+/*                     Movement within a node                       */
 /*                                                                  */
 /* **************************************************************** */
 
@@ -1101,6 +1106,27 @@ DECLARE_INFO_COMMAND (info_backward_word, _("Move backward a word"))
   info_show_point (window);
 }
 
+/* Move to the beginning of the node. */
+DECLARE_INFO_COMMAND (info_beginning_of_node, _("Move to the start of this node"))
+{
+  window->pagetop = window->point = 0;
+  window->flags |= W_UpdateWindow;
+}
+
+/* Move to the end of the node. */
+DECLARE_INFO_COMMAND (info_end_of_node, _("Move to the end of this node"))
+{
+  window->point = window->node->nodelen - 1;
+  info_show_point (window);
+}
+
+
+/* **************************************************************** */
+/*                                                                  */
+/*                     Scrolling window                             */
+/*                                                                  */
+/* **************************************************************** */
+
 /* Variable controlling the behaviour of default scrolling when you are
    already at the bottom of a node.  Possible values are defined in session.h.
    The meanings are:
@@ -1133,281 +1159,32 @@ char *scroll_last_node_choices[] = {
    last node. */
 int scroll_last_node = SLN_Stop;
 
-/* Default window sizes for scrolling commands.  */
-int default_window_size = -1;   /* meaning 1 window-full */
-int default_scroll_size = -1;   /* meaning half screen size */
-
-/* Move to 1st menu item, Next, Up/Next, or error in this window. */
-static int
-forward_move_node_structure (WINDOW *window, int behaviour)
-{
-  switch (behaviour)
-    {
-    case IS_PageOnly:
-      info_error ("%s", msg_at_node_bottom);
-      return 1;
-
-    case IS_NextOnly:
-      if (!window->node->next)
-        {
-          info_error (msg_no_pointer, _("Next"));
-          return 1;
-        }
-      else
-        {
-          info_handle_pointer ("Next", window);
-        }
-      break;
-
-    case IS_Continuous:
-      {
-        /* If last node in file */
-        if (!window->node->next &&
-            !(window->node->up && strcmp ("Top", window->node->up)))
-	  {
-	    switch (scroll_last_node)
-	      {
-	      case SLN_Stop:
-		info_error ("%s", _("No more nodes within this document."));
-		return 1;
-		
-	      case SLN_Scroll:
-		break;
-		
-	      case SLN_Top:
-		info_top_node (window, 1, 0);
-		return 0;
-		
-	      default:
-		abort ();
-	      }
-	  }
-	
-        /* If this node contains a menu, select its first entry. */
-	{
-	  REFERENCE *entry;
-
-          if (entry = select_menu_digit (window, '1'))
-            {
-              info_select_reference (window, entry);
-              if (entry->line_number > 0)
-                internal_next_line (window, entry->line_number - 1, '1');
-              return 0;
-            }
-	}
-
-        /* Okay, this node does not contain a menu.  If it contains a
-           "Next:" pointer, use that. */
-        if (window->node->next)
-          {
-            info_handle_pointer ("Next", window);
-            return 0;
-          }
-
-        /* Okay, there wasn't a "Next:" for this node.  Move "Up:" until we
-           can move "Next:".  If that isn't possible, complain that there
-           are no more nodes. */
-        {
-          int up_counter, old_current;
-          INFO_WINDOW *info_win;
-
-          /* Remember the current node and location. */
-          info_win = get_info_window_of_window (window);
-          old_current = info_win->current;
-
-          /* Back up through the "Up:" pointers until we have found a "Next:"
-             that isn't the same as the first menu item found in that node. */
-          up_counter = 0;
-          while (!info_error_was_printed)
-            {
-              if (window->node->up)
-                {
-                  info_handle_pointer ("Up", window);
-                  if (info_error_was_printed)
-                    continue;
-
-                  up_counter++;
-
-                  /* If no "Next" pointer, keep backing up. */
-                  if (!window->node->next)
-                    continue;
-
-                  /* If this node's first menu item is the same as this node's
-                     Next pointer, keep backing up. */
-                    {
-                      REFERENCE **menu;
-
-                      /* FIXME: this is wrong: what if there is a link
-                         before the menu? */
-                      menu = window->node->references;
-                      if (menu &&
-                          (strcmp
-                           (menu[0]->nodename, window->node->next) == 0))
-                        continue;
-                    }
-
-                  /* This node has a "Next" pointer, and it is not the
-                     same as the first menu item found in this node. */
-                  info_handle_pointer ("Next", window);
-                  return 0;
-                }
-              else
-                {
-                  /* No more "Up" pointers.  Print an error, and call it
-                     quits. */
-                  register int i;
-
-                  for (i = 0; i < up_counter; i++)
-                    {
-                      info_win->nodes_index--;
-                      free (info_win->nodes[info_win->nodes_index]);
-                      info_win->nodes[info_win->nodes_index] = NULL;
-                    }
-                  info_win->current = old_current;
-                  window->node = info_win->nodes[old_current];
-                  window->pagetop = info_win->pagetops[old_current];
-                  window->point = info_win->points[old_current];
-                  recalculate_line_starts (window);
-                  window->flags |= W_UpdateWindow;
-                  info_error ("%s", _("No more nodes within this document."));
-                  return 1;
-                }
-            }
-        }
-        break;
-      }
-    }
-  return info_error_was_printed; /*FIXME*/
-}
-
-/* Move Prev, Up or error in WINDOW depending on BEHAVIOUR. */
-static int
-backward_move_node_structure (WINDOW *window, int behaviour)
-{
-  switch (behaviour)
-    {
-    case IS_PageOnly:
-      info_error ("%s", msg_at_node_top);
-      return 1;
-
-    case IS_NextOnly:
-      if (!window->node->prev)
-        {
-          info_error ("%s", _("No `Prev' for this node."));
-          return 1;
-        }
-      else
-        {
-          info_handle_pointer ("Prev", window);
-        }
-      break;
-
-    case IS_Continuous:
-      if (window->node->up)
-        {
-          int traverse_menus = 0;
-
-          /* If up is the dir node, we are at the top node.
-             Don't do anything. */
-          if (   !strcmp ("(dir)", window->node->up)
-              || !strcmp ("(DIR)", window->node->up))
-            {
-              info_error ("%s", 
-                    _("No `Prev' or `Up' for this node within this document."));
-              return 1;
-            }
-          /* If 'Prev' and 'Up' are the same, we are at the first node
-             of the 'Up' node's menu. Go to up node. */
-          else if (window->node->prev
-              && !strcmp(window->node->prev, window->node->up))
-            {
-              info_handle_pointer ("Up", window);
-            }
-          /* Otherwise, go to 'Prev' node and go down the last entry
-             in the menus as far as possible. */
-          else if (window->node->prev)
-            {
-              traverse_menus = 1;
-              info_handle_pointer ("Prev", window);
-            }
-          else /* 'Up' but no 'Prev' */
-            {
-              info_handle_pointer ("Up", window);
-            }
-
-          /* Repeatedly select last item of menus */
-          if (traverse_menus)
-            {
-              REFERENCE *entry;
-              while (!info_error_was_printed)
-                {
-                  if (entry = select_menu_digit (window, '0'))
-                    {
-                      info_select_reference (window, entry);
-                      if (entry->line_number > 0)
-                        internal_next_line (window, entry->line_number - 1, '0');
-                    }
-                  else
-                    break;
-                }
-            }
-        }
-      else if (window->node->prev) /* 'Prev' but no 'Up' */
-        {
-          info_handle_pointer ("Prev", window);
-        }
-      else
-        {
-          info_error ("%s", 
-                _("No `Prev' or `Up' for this node within this document."));
-          return 1;
-        }
-
-
-      break;
-    }
-  return 0;
-}
-
-/* Move continuously forward through the node structure of this info file. */
-DECLARE_INFO_COMMAND (info_global_next_node,
-                      _("Move forwards or down through node structure"))
-{
-  if (count < 0)
-    info_global_prev_node (window, -count, key);
-  else
-    {
-      while (count && !info_error_was_printed)
-        {
-          forward_move_node_structure (window, IS_Continuous);
-          count--;
-        }
-    }
-}
-
-/* Move continuously backward through the node structure of this info file. */
-DECLARE_INFO_COMMAND (info_global_prev_node,
-                      _("Move backwards or up through node structure"))
-{
-  if (count < 0)
-    info_global_next_node (window, -count, key);
-  else
-    {
-      while (count && !info_error_was_printed)
-        {
-          backward_move_node_structure (window, IS_Continuous);
-          count--;
-        }
-    }
-}
-
-static void _scroll_forward(WINDOW *window, int count,
+static void _scroll_forward (WINDOW *window, int count,
     unsigned char key, int behaviour);
-static void _scroll_backward(WINDOW *window, int count,
+static void _scroll_backward (WINDOW *window, int count,
     unsigned char key, int behaviour);
 
 static void
-_scroll_forward(WINDOW *window, int count, unsigned char key, int behaviour)
+_scroll_forward (WINDOW *window, int count, unsigned char key, int behaviour)
+{
+  if (count < 0)
+    _scroll_backward (window, -count, key, behaviour);
+  else
+    {
+      /* If there are no more lines to scroll here, error, or get
+         another node, depending on BEHAVIOUR. */
+      if (window->pagetop >= window->line_count - window->height)
+        {
+          forward_move_node_structure (window, behaviour);
+          return;
+        }
+
+      set_window_pagetop (window, window->pagetop + count);
+    }
+}
+
+static void
+_scroll_backward (WINDOW *window, int count, unsigned char key, int behaviour)
 {
   if (count < 0)
     _scroll_backward (window, -count, key, behaviour);
@@ -1415,82 +1192,51 @@ _scroll_forward(WINDOW *window, int count, unsigned char key, int behaviour)
     {
       int desired_top;
 
-      /* Without an explicit numeric argument, scroll the bottom two
-         lines to the top of this window,  Or, if at bottom of window,
-         and the chosen behaviour is to scroll through nodes get the
-         "Next" node for this window. */
-      if (default_window_size > 0)
-        desired_top = window->pagetop + default_window_size;
-      else if (!info_explicit_arg && count == 1)
+      /* If there are no more lines to scroll here, error, or get
+         another node, depending on BEHAVIOUR. */
+      if (window->pagetop <= 0)
         {
-          desired_top = window->pagetop + (window->height - 2);
-
-          /* If there are no more lines to scroll here, error, or get
-             another node, depending on BEHAVIOUR. */
-          if (desired_top > window->line_count)
-            {
-              if (forward_move_node_structure (window, behaviour))
-                info_end_of_node (window, 1, 0);
-              return;
-            }
+          if (backward_move_node_structure (window, behaviour) == 0)
+            info_end_of_node (window, 1, 0);
+          return;
         }
-      else
-        desired_top = window->pagetop + count;
 
-      if (desired_top >= window->line_count)
-        desired_top = window->line_count - 2;
-
-      if (window->pagetop > desired_top)
-        return;
-      else
-        set_window_pagetop (window, desired_top);
-    }
-}
-
-static void
-_scroll_backward(WINDOW *window, int count, unsigned char key, int behaviour)
-{
-  if (count < 0)
-    _scroll_forward (window, -count, key, behaviour);
-  else
-    {
-      int desired_top;
-
-      /* Without an explicit numeric argument, scroll the top two lines
-         to the bottom of this window, or, depending on the selected
-         behaviour, move to the previous, or Up'th node. */
-      if (default_window_size > 0)
-        desired_top = window->pagetop - default_window_size;
-      else if (!info_explicit_arg && count == 1)
-        {
-	  desired_top = window->pagetop - (window->height - 2);
-	  
-          if ((desired_top < 0) && (window->pagetop == 0))
-            {
-              if ((backward_move_node_structure (window, behaviour) == 0)
-                  && (cursor_movement_scrolls_p))
-		info_end_of_node (window, 1, 0);
-              window->point = (window->line_starts[window->pagetop]
-                               - window->node->contents);
-              return;
-            }
-        }
-      else
-        desired_top = window->pagetop - count;
-
+      desired_top = window->pagetop - count;
       if (desired_top < 0)
         desired_top = 0;
-
       set_window_pagetop (window, desired_top);
-      window->point = (window->line_starts[window->pagetop]
-                       - window->node->contents);
     }
 }
+
+/* Lines to scroll by.  -1 means scroll by screen size. */
+int default_window_size = -1;
 
 /* Show the next screen of WINDOW's node. */
 DECLARE_INFO_COMMAND (info_scroll_forward, _("Scroll forward in this window"))
 {
-  _scroll_forward (window, count, key, info_scroll_behaviour);
+  int lines;
+
+  if (info_explicit_arg)
+    lines = count;
+  else if (default_window_size > 0)
+    lines = default_window_size;
+  else
+    lines = window->height - 2;
+  _scroll_forward (window, lines, key, info_scroll_behaviour);
+}
+
+/* Show the previous screen of WINDOW's node. */
+DECLARE_INFO_COMMAND (info_scroll_backward, _("Scroll backward in this window"))
+{
+  int lines;
+
+  if (info_explicit_arg)
+    lines = count;
+  else if (default_window_size > 0)
+    lines = default_window_size;
+  else
+    lines = window->height - 2;
+  _scroll_backward (window, lines, key, info_scroll_behaviour);
 }
 
 /* Like info_scroll_forward, but sets default_window_size as a side
@@ -1498,31 +1244,12 @@ DECLARE_INFO_COMMAND (info_scroll_forward, _("Scroll forward in this window"))
 DECLARE_INFO_COMMAND (info_scroll_forward_set_window,
                       _("Scroll forward in this window and set default window size"))
 {
+  int lines;
+
   if (info_explicit_arg)
     default_window_size = count;
-  _scroll_forward (window, count, key, info_scroll_behaviour);
-}
 
-/* Show the next screen of WINDOW's node but never advance to next node. */
-DECLARE_INFO_COMMAND (info_scroll_forward_page_only, _("Scroll forward in this window staying within node"))
-{
-  _scroll_forward (window, count, key, IS_PageOnly);
-}
-
-/* Like info_scroll_forward_page_only, but sets default_window_size as a side
-   effect.  */
-DECLARE_INFO_COMMAND (info_scroll_forward_page_only_set_window,
-                      _("Scroll forward in this window staying within node and set default window size"))
-{
-  if (info_explicit_arg)
-    default_window_size = count;
-  _scroll_forward (window, count, key, IS_PageOnly);
-}
-
-/* Show the previous screen of WINDOW's node. */
-DECLARE_INFO_COMMAND (info_scroll_backward, _("Scroll backward in this window"))
-{
-  _scroll_backward (window, count, key, info_scroll_behaviour);
+  info_scroll_forward (window, count, key);
 }
 
 /* Like info_scroll_backward, but sets default_window_size as a side
@@ -1530,16 +1257,54 @@ DECLARE_INFO_COMMAND (info_scroll_backward, _("Scroll backward in this window"))
 DECLARE_INFO_COMMAND (info_scroll_backward_set_window,
                       _("Scroll backward in this window and set default window size"))
 {
+  int lines;
+
   if (info_explicit_arg)
     default_window_size = count;
-  _scroll_backward (window, count, key, info_scroll_behaviour);
+
+  info_scroll_backward (window, count, key);
+}
+
+/* Show the next screen of WINDOW's node but never advance to next node. */
+DECLARE_INFO_COMMAND (info_scroll_forward_page_only, _("Scroll forward in this window staying within node"))
+{
+  int lines;
+
+  if (info_explicit_arg)
+    lines = count;
+  else if (default_window_size > 0)
+    lines = default_window_size;
+  else
+    lines = window->height - 2;
+  _scroll_forward (window, lines, key, IS_PageOnly);
 }
 
 /* Show the previous screen of WINDOW's node but never move to previous
    node. */
 DECLARE_INFO_COMMAND (info_scroll_backward_page_only, _("Scroll backward in this window staying within node"))
 {
-  _scroll_backward (window, count, key, IS_PageOnly);
+  int lines;
+
+  if (info_explicit_arg)
+    lines = count;
+  else if (default_window_size > 0)
+    lines = default_window_size;
+  else
+    lines = window->height - 2;
+  _scroll_backward (window, lines, key, IS_PageOnly);
+}
+
+/* Like info_scroll_forward_page_only, but sets default_window_size as a side
+   effect.  */
+DECLARE_INFO_COMMAND (info_scroll_forward_page_only_set_window,
+                      _("Scroll forward in this window staying within node and set default window size"))
+{
+  int lines;
+
+  if (info_explicit_arg)
+    default_window_size = count;
+
+  info_scroll_forward_page_only (window, count, key);
 }
 
 /* Like info_scroll_backward_page_only, but sets default_window_size as a side
@@ -1547,23 +1312,12 @@ DECLARE_INFO_COMMAND (info_scroll_backward_page_only, _("Scroll backward in this
 DECLARE_INFO_COMMAND (info_scroll_backward_page_only_set_window,
                       _("Scroll backward in this window staying within node and set default window size"))
 {
+  int lines;
+
   if (info_explicit_arg)
     default_window_size = count;
-  _scroll_backward (window, count, key, IS_PageOnly);
-}
 
-/* Move to the beginning of the node. */
-DECLARE_INFO_COMMAND (info_beginning_of_node, _("Move to the start of this node"))
-{
-  window->pagetop = window->point = 0;
-  window->flags |= W_UpdateWindow;
-}
-
-/* Move to the end of the node. */
-DECLARE_INFO_COMMAND (info_end_of_node, _("Move to the end of this node"))
-{
-  window->point = window->node->nodelen - 1;
-  info_show_point (window);
+  info_scroll_backward_page_only (window, count, key);
 }
 
 /* Scroll the window forward by N lines.  */
@@ -1572,15 +1326,7 @@ DECLARE_INFO_COMMAND (info_down_line, _("Scroll down by lines"))
   if (count < 0)
     info_up_line (window, -count, key);
   else
-    {
-      int desired_top = window->pagetop + count;
-
-      if (desired_top >= window->line_count)
-        desired_top = window->line_count - 2;
-
-      if (window->pagetop <= desired_top)
-        set_window_pagetop (window, desired_top);
-    }
+    _scroll_forward (window, count, key, IS_PageOnly);
 }
 
 /* Scroll the window backward by N lines.  */
@@ -1589,15 +1335,12 @@ DECLARE_INFO_COMMAND (info_up_line, _("Scroll up by lines"))
   if (count < 0)
     info_down_line (window, -count, key);
   else
-    {
-      int desired_top = window->pagetop - count;
-
-      if (desired_top < 0)
-        desired_top = 0;
-
-      set_window_pagetop (window, desired_top);
-    }
+    _scroll_backward (window, count, key, IS_PageOnly);
 }
+
+/* Lines to scroll when using commands that scroll by half screen size
+   by default.  -1 means scroll by half screen size. */
+int default_scroll_size = -1;
 
 /* Scroll the window forward by N lines and remember N as default for
    subsequent commands.  */
@@ -1608,20 +1351,17 @@ DECLARE_INFO_COMMAND (info_scroll_half_screen_down,
     info_scroll_half_screen_up (window, -count, key);
   else
     {
-      int scroll_size = (the_screen->height + 1) / 2;
-      int desired_top;
+      int lines;
 
       if (info_explicit_arg)
         default_scroll_size = count;
+
       if (default_scroll_size > 0)
-        scroll_size = default_scroll_size;
+        lines = default_scroll_size;
+      else
+        lines = (the_screen->height + 1) / 2;
 
-      desired_top = window->pagetop + scroll_size;
-      if (desired_top >= window->line_count)
-        desired_top = window->line_count - 2;
-
-      if (window->pagetop <= desired_top)
-        set_window_pagetop (window, desired_top);
+      _scroll_forward (window, lines, key, IS_PageOnly);
     }
 }
 
@@ -1634,21 +1374,20 @@ DECLARE_INFO_COMMAND (info_scroll_half_screen_up,
     info_scroll_half_screen_down (window, -count, key);
   else
     {
-      int scroll_size = (the_screen->height + 1) / 2;
-      int desired_top;
+      int lines;
 
       if (info_explicit_arg)
         default_scroll_size = count;
+
       if (default_scroll_size > 0)
-        scroll_size = default_scroll_size;
+        lines = default_scroll_size;
+      else
+        lines = (the_screen->height + 1) / 2;
 
-      desired_top = window->pagetop - scroll_size;
-      if (desired_top < 0)
-        desired_top = 0;
-
-      set_window_pagetop (window, desired_top);
+      _scroll_backward (window, lines, key, IS_PageOnly);
     }
 }
+
 
 /* **************************************************************** */
 /*                                                                  */
@@ -2084,6 +1823,13 @@ info_win_find_node (INFO_WINDOW *win, NODE *node)
   return i;
 }	  
 
+
+/* **************************************************************** */
+/*                                                                  */
+/*                 Navigation of document structure                 */
+/*                                                                  */
+/* **************************************************************** */
+
 /* Get the node pointed to by the LABEL pointer of
    WINDOW->node into WINDOW. */
 static void
@@ -2224,6 +1970,277 @@ DECLARE_INFO_COMMAND (info_first_node, _("Select the first node in this file"))
     info_set_node_of_window (1, window, node);
 }
 
+/* Move to 1st menu item, Next, Up/Next, or error in this window. */
+static int
+forward_move_node_structure (WINDOW *window, int behaviour)
+{
+  switch (behaviour)
+    {
+    case IS_PageOnly:
+      info_error ("%s", msg_at_node_bottom);
+      return 1;
+
+    case IS_NextOnly:
+      if (!window->node->next)
+        {
+          info_error (msg_no_pointer, _("Next"));
+          return 1;
+        }
+      else
+        {
+          info_handle_pointer ("Next", window);
+        }
+      break;
+
+    case IS_Continuous:
+      {
+        /* If last node in file */
+        if (!window->node->next &&
+            !(window->node->up && strcmp ("Top", window->node->up)))
+          {
+            switch (scroll_last_node)
+              {
+              case SLN_Stop:
+                info_error ("%s", _("No more nodes within this document."));
+                return 1;
+                
+              case SLN_Scroll:
+                break;
+                
+              case SLN_Top:
+                info_top_node (window, 1, 0);
+                return 0;
+                
+              default:
+                abort ();
+              }
+          }
+        
+        /* If this node contains a menu, select its first entry. */
+        {
+          REFERENCE *entry;
+
+          if (entry = select_menu_digit (window, '1'))
+            {
+              info_select_reference (window, entry);
+              if (entry->line_number > 0)
+                internal_next_line (window, entry->line_number - 1, '1');
+              return 0;
+            }
+        }
+
+        /* Okay, this node does not contain a menu.  If it contains a
+           "Next:" pointer, use that. */
+        if (window->node->next)
+          {
+            info_handle_pointer ("Next", window);
+            return 0;
+          }
+
+        /* Okay, there wasn't a "Next:" for this node.  Move "Up:" until we
+           can move "Next:".  If that isn't possible, complain that there
+           are no more nodes. */
+        {
+          int up_counter, old_current;
+          INFO_WINDOW *info_win;
+
+          /* Remember the current node and location. */
+          info_win = get_info_window_of_window (window);
+          old_current = info_win->current;
+
+          /* Back up through the "Up:" pointers until we have found a "Next:"
+             that isn't the same as the first menu item found in that node. */
+          up_counter = 0;
+          while (!info_error_was_printed)
+            {
+              if (window->node->up)
+                {
+                  info_handle_pointer ("Up", window);
+                  if (info_error_was_printed)
+                    continue;
+
+                  up_counter++;
+
+                  /* If no "Next" pointer, keep backing up. */
+                  if (!window->node->next)
+                    continue;
+
+                  /* If this node's first menu item is the same as this node's
+                     Next pointer, keep backing up. */
+                    {
+                      REFERENCE **menu;
+
+                      /* FIXME: this is wrong: what if there is a link
+                         before the menu? */
+                      menu = window->node->references;
+                      if (menu &&
+                          (strcmp
+                           (menu[0]->nodename, window->node->next) == 0))
+                        continue;
+                    }
+
+                  /* This node has a "Next" pointer, and it is not the
+                     same as the first menu item found in this node. */
+                  info_handle_pointer ("Next", window);
+                  return 0;
+                }
+              else
+                {
+                  /* No more "Up" pointers.  Print an error, and call it
+                     quits. */
+                  register int i;
+
+                  for (i = 0; i < up_counter; i++)
+                    {
+                      info_win->nodes_index--;
+                      free (info_win->nodes[info_win->nodes_index]);
+                      info_win->nodes[info_win->nodes_index] = NULL;
+                    }
+                  info_win->current = old_current;
+                  window->node = info_win->nodes[old_current];
+                  window->pagetop = info_win->pagetops[old_current];
+                  window->point = info_win->points[old_current];
+                  recalculate_line_starts (window);
+                  window->flags |= W_UpdateWindow;
+                  info_error ("%s", _("No more nodes within this document."));
+                  return 1;
+                }
+            }
+        }
+        break;
+      }
+    }
+  return info_error_was_printed; /*FIXME*/
+}
+
+/* Move Prev, Up or error in WINDOW depending on BEHAVIOUR. */
+static int
+backward_move_node_structure (WINDOW *window, int behaviour)
+{
+  switch (behaviour)
+    {
+    case IS_PageOnly:
+      info_error ("%s", msg_at_node_top);
+      return 1;
+
+    case IS_NextOnly:
+      if (!window->node->prev)
+        {
+          info_error ("%s", _("No `Prev' for this node."));
+          return 1;
+        }
+      else
+        {
+          info_handle_pointer ("Prev", window);
+        }
+      break;
+
+    case IS_Continuous:
+      if (window->node->up)
+        {
+          int traverse_menus = 0;
+
+          /* If up is the dir node, we are at the top node.
+             Don't do anything. */
+          if (   !strcmp ("(dir)", window->node->up)
+              || !strcmp ("(DIR)", window->node->up))
+            {
+              info_error ("%s", 
+                    _("No `Prev' or `Up' for this node within this document."));
+              return 1;
+            }
+          /* If 'Prev' and 'Up' are the same, we are at the first node
+             of the 'Up' node's menu. Go to up node. */
+          else if (window->node->prev
+              && !strcmp(window->node->prev, window->node->up))
+            {
+              info_handle_pointer ("Up", window);
+            }
+          /* Otherwise, go to 'Prev' node and go down the last entry
+             in the menus as far as possible. */
+          else if (window->node->prev)
+            {
+              traverse_menus = 1;
+              info_handle_pointer ("Prev", window);
+            }
+          else /* 'Up' but no 'Prev' */
+            {
+              info_handle_pointer ("Up", window);
+            }
+
+          /* Repeatedly select last item of menus */
+          if (traverse_menus)
+            {
+              REFERENCE *entry;
+              while (!info_error_was_printed)
+                {
+                  if (entry = select_menu_digit (window, '0'))
+                    {
+                      info_select_reference (window, entry);
+                      if (entry->line_number > 0)
+                        internal_next_line (window, entry->line_number - 1, '0');
+                    }
+                  else
+                    break;
+                }
+            }
+        }
+      else if (window->node->prev) /* 'Prev' but no 'Up' */
+        {
+          info_handle_pointer ("Prev", window);
+        }
+      else
+        {
+          info_error ("%s", 
+                _("No `Prev' or `Up' for this node within this document."));
+          return 1;
+        }
+
+
+      break;
+    }
+  return 0;
+}
+
+/* Move continuously forward through the node structure of this info file. */
+DECLARE_INFO_COMMAND (info_global_next_node,
+                      _("Move forwards or down through node structure"))
+{
+  if (count < 0)
+    info_global_prev_node (window, -count, key);
+  else
+    {
+      while (count && !info_error_was_printed)
+        {
+          forward_move_node_structure (window, IS_Continuous);
+          count--;
+        }
+    }
+}
+
+/* Move continuously backward through the node structure of this info file. */
+DECLARE_INFO_COMMAND (info_global_prev_node,
+                      _("Move backwards or up through node structure"))
+{
+  if (count < 0)
+    info_global_next_node (window, -count, key);
+  else
+    {
+      while (count && !info_error_was_printed)
+        {
+          backward_move_node_structure (window, IS_Continuous);
+          count--;
+        }
+    }
+}
+
+
+/* **************************************************************** */
+/*                                                                  */
+/*              Selection of cross-references and menus             */
+/*                                                                  */
+/* **************************************************************** */
+
 /* Select the last menu item in WINDOW->node. */
 DECLARE_INFO_COMMAND (info_last_menu_item,
    _("Select the last item in this node's menu"))
@@ -2300,8 +2317,6 @@ DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
   return;
 }
 
-
-
 /* Return a pointer to the xref in XREF_LIST that is nearest to POS, or
    NULL if XREF_LIST is empty.  That is, if POS is within any of the
    given xrefs, return that one.  Otherwise, return the one with the
@@ -2644,6 +2659,109 @@ DECLARE_INFO_COMMAND (info_visit_menu,
     }
 }
 
+/* Move to the next or previous cross reference in this node. */
+static int
+info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
+{
+  long firstmenu, firstxref;
+  long nextmenu, nextxref;
+  long placement = -1;
+  long start = 0;
+  NODE *node = window->node;
+  REFERENCE **ref;
+  int nextref;
+
+  /* Fail if there are no references in node */
+  if (!node->references)
+    {
+      if (!cursor_movement_scrolls_p)
+              info_error ("%s", msg_no_xref_node);
+      return cursor_movement_scrolls_p;
+    }
+
+  if (dir == 1) /* Search forwards */
+    for (ref = node->references; *ref != 0; ref++)
+      {
+        if ((*ref)->start > window->point)
+          {
+            placement = (*ref)->start;
+            break;
+          }
+      }
+  else /* Search backwards */
+    for (ref = node->references; *ref != 0; ref++)
+      {
+        if ((*ref)->start >= window->point) break;
+        placement = (*ref)->start;
+      }
+
+  /* If there was neither a menu or xref entry appearing in this node after
+     point, choose the first menu or xref entry appearing in this node. */
+  if (placement == -1)
+    {
+      if (cursor_movement_scrolls_p)
+        return 1;
+      else
+        placement = node->references[0]->start;
+    }
+
+  window->point = placement;
+  window_adjust_pagetop (window);
+  window->flags |= W_UpdateWindow;
+  return 0;
+}
+
+DECLARE_INFO_COMMAND (info_move_to_prev_xref,
+                      _("Move to the previous cross reference"))
+{
+  if (count < 0)
+    info_move_to_prev_xref (window, -count, key);
+  else
+    {
+      while (info_move_to_xref (window, count, key, -1))
+        {
+          info_error_was_printed = 0;
+          if (backward_move_node_structure (window, info_scroll_behaviour))
+            break;
+          move_to_new_line (window->line_count, window->line_count - 1,
+                            window);
+        }
+    }
+}
+
+DECLARE_INFO_COMMAND (info_move_to_next_xref,
+                      _("Move to the next cross reference"))
+{
+  if (count < 0)
+    info_move_to_next_xref (window, -count, key);
+  else
+    {
+      /* Note: This can cause some blinking when the next cross reference is
+         located several nodes further. This effect can be easily suppressed
+         by setting display_inhibited to 1, however this will also make
+         error messages to be dumped on stderr, instead on the echo area. */ 
+      while (info_move_to_xref (window, count, key, 1))
+        {
+          info_error_was_printed = 0;
+          if (forward_move_node_structure (window, info_scroll_behaviour))
+            break;
+          move_to_new_line (0, 0, window);
+        }
+    }
+}
+
+/* Select the menu item or reference that appears on this line. */
+DECLARE_INFO_COMMAND (info_select_reference_this_line,
+                      _("Select reference or menu item appearing on this line"))
+{
+  REFERENCE **ref = window->node->references;
+
+  if (!ref || !*ref) return; /* No references in node */
+
+  info_menu_or_ref_item (window, key, 1, 1, 0);
+}
+
+
 /* Read a line of input which is a node name, and go to that node. */
 DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
 {
@@ -4709,115 +4827,6 @@ info_gc_file_buffers (void)
         }
     }
 }
-
-/* **************************************************************** */
-/*                                                                  */
-/*                Traversing and Selecting References               */
-/*                                                                  */
-/* **************************************************************** */
-
-/* Move to the next or previous cross reference in this node. */
-static int
-info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
-{
-  long firstmenu, firstxref;
-  long nextmenu, nextxref;
-  long placement = -1;
-  long start = 0;
-  NODE *node = window->node;
-  REFERENCE **ref;
-  int nextref;
-
-  /* Fail if there are no references in node */
-  if (!node->references)
-    {
-      if (!cursor_movement_scrolls_p)
-              info_error ("%s", msg_no_xref_node);
-      return cursor_movement_scrolls_p;
-    }
-
-  if (dir == 1) /* Search forwards */
-    for (ref = node->references; *ref != 0; ref++)
-      {
-        if ((*ref)->start > window->point)
-          {
-            placement = (*ref)->start;
-            break;
-          }
-      }
-  else /* Search backwards */
-    for (ref = node->references; *ref != 0; ref++)
-      {
-        if ((*ref)->start >= window->point) break;
-        placement = (*ref)->start;
-      }
-
-  /* If there was neither a menu or xref entry appearing in this node after
-     point, choose the first menu or xref entry appearing in this node. */
-  if (placement == -1)
-    {
-      if (cursor_movement_scrolls_p)
-        return 1;
-      else
-        placement = node->references[0]->start;
-    }
-
-  window->point = placement;
-  window_adjust_pagetop (window);
-  window->flags |= W_UpdateWindow;
-  return 0;
-}
-
-DECLARE_INFO_COMMAND (info_move_to_prev_xref,
-                      _("Move to the previous cross reference"))
-{
-  if (count < 0)
-    info_move_to_prev_xref (window, -count, key);
-  else
-    {
-      while (info_move_to_xref (window, count, key, -1))
-        {
-          info_error_was_printed = 0;
-          if (backward_move_node_structure (window, info_scroll_behaviour))
-            break;
-          move_to_new_line (window->line_count, window->line_count - 1,
-                            window);
-        }
-    }
-}
-
-DECLARE_INFO_COMMAND (info_move_to_next_xref,
-                      _("Move to the next cross reference"))
-{
-  if (count < 0)
-    info_move_to_next_xref (window, -count, key);
-  else
-    {
-      /* Note: This can cause some blinking when the next cross reference is
-         located several nodes further. This effect can be easily suppressed
-         by setting display_inhibited to 1, however this will also make
-         error messages to be dumped on stderr, instead on the echo area. */ 
-      while (info_move_to_xref (window, count, key, 1))
-        {
-          info_error_was_printed = 0;
-          if (forward_move_node_structure (window, info_scroll_behaviour))
-            break;
-          move_to_new_line (0, 0, window);
-        }
-    }
-}
-
-/* Select the menu item or reference that appears on this line. */
-DECLARE_INFO_COMMAND (info_select_reference_this_line,
-                      _("Select reference or menu item appearing on this line"))
-{
-  REFERENCE **ref = window->node->references;
-
-  if (!ref || !*ref) return; /* No references in node */
-
-  info_menu_or_ref_item (window, key, 1, 1, 0);
-}
-
 
 /* **************************************************************** */
 /*                                                                  */
