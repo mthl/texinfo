@@ -127,15 +127,17 @@ build_dir_node (void)
   node->nodename = xstrdup ("dir");
   node->filename = xstrdup ("dir");
   node->contents = xstrdup (
-  " File: dir,      Node: Top       This is the top of the INFO tree\n"
-  "\n"
-  "This (the Directory node) gives a menu of major topics.\n"
-  "Typing \"q\" exits, \"?\" lists all Info commands, \"d\" returns here,\n"
-  "\"h\" gives a primer for first-timers,\n"
-  "\"mEmacs<Return>\" visits the Emacs manual, etc.\n"
-  "\n"
-  "In Emacs, you can click mouse button 2 on a menu item or cross reference\n"
-  "to select it.\n"
+
+"File: dir,	Node: Top,	This is the top of the INFO tree.\n"
+"\n"
+"This is the Info main menu (aka directory node).\n"
+"A few useful Info commands:\n"
+"\n"
+"  `q' quits;\n"
+"  `?' lists all Info commands;\n"
+"  `h' starts the Info tutorial;\n"
+"  `mTexinfo RET' visits the Texinfo manual, etc.\n"
+
   );
 
   node->nodelen = strlen (node->contents);

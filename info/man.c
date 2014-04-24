@@ -441,6 +441,8 @@ read_from_fd (int fd)
   return buffer;
 }
 
+/* Search in the whole man page for references now. */
+#if 0
 static char *reference_section_starters[] =
 {
   "\nRELATED INFORMATION",
@@ -495,10 +497,13 @@ find_reference_section (NODE *node)
   return &frs_binding;
 }
 
+#endif
+
 static REFERENCE **
 xrefs_of_manpage (NODE *node)
 {
-  SEARCH_BINDING *reference_section;
+  SEARCH_BINDING s;
+
   REFERENCE **refs = NULL;
   size_t refs_index = 0;
   size_t refs_slots = 0;
@@ -508,60 +513,88 @@ xrefs_of_manpage (NODE *node)
   refs = calloc(1, sizeof (REFERENCE *));
   refs_slots = 1;
 
-  reference_section = find_reference_section (node);
+  s.buffer = node->contents;
+  s.start = 0;
+  s.flags = 0;
+  s.end = node->nodelen;
 
-  if (reference_section == NULL)
-    return refs;
-
-  /* Grovel the reference section building a list of references found there.
-     A reference is alphabetic characters followed by non-whitespace text
-     within parenthesis. */
-  reference_section->flags = 0;
-
-  while (search_forward ("(", reference_section, &position) == search_success)
+  /* Build a list of references.  A reference is alphabetic characters
+     followed by non-whitespace text within parenthesis leading with a digit. */
+  while (search_forward ("(", &s, &position) == search_success)
     {
-      register int start, end;
+      register int name, name_end;
+      int section, section_end;
+      int name_len, section_len;
 
-      for (start = position; start > reference_section->start; start--)
-        if (whitespace (reference_section->buffer[start]))
+      for (name = position; name > 0; name--)
+        if (whitespace (s.buffer[name]))
           break;
 
-      start++;
+      if (name != 0)
+        name++;
 
-      for (end = position; end < reference_section->end; end++)
+      if (name == position)
+        goto skip; /* Whitespace immediately before '('. */
+
+      /* If we are on an ECMA-48 SGR escape sequence, skip past it. */
+      if (s.buffer[name] == '\033' && s.buffer[name + 1] == '[')
         {
-          if (whitespace (reference_section->buffer[end]))
+          name += 2;
+          name += strspn (s.buffer + name, "0123456789;");
+          if (s.buffer[name] == 'm')
+            name++;
+          else
+            goto skip;
+        }
+
+      for (name_end = name; name_end < position; name_end++)
+        if (!isalnum (s.buffer[name_end])
+            && s.buffer[name_end] != '_'
+            && s.buffer[name_end] != '.'
+            && s.buffer[name_end] != '-')
+          break;
+
+      section = position;
+      if (!isdigit (s.buffer[section + 1]))
+        goto skip; /* Could be ordinary text in parentheses. */
+
+      for (section_end = section + 1; section_end < s.end; section_end++)
+        {
+          if (whitespace (s.buffer[section_end]))
             {
-              end = start;
+              continue;
               break;
             }
 
-          if (reference_section->buffer[end] == ')')
+          if (s.buffer[section_end] == ')')
             {
-              end++;
+              section_end++;
               break;
             }
         }
 
-      if (end != start)
-        {
-          REFERENCE *entry;
-          int len = end - start;
+      {
+        REFERENCE *entry;
+        int len = name_end - name + section_end - section;
 
-          entry = xmalloc (sizeof (REFERENCE));
-          entry->label = xmalloc (1 + len);
-          strncpy (entry->label, (reference_section->buffer) + start, len);
-          entry->label[len] = '\0';
-          entry->filename = xstrdup (node->filename);
-          entry->nodename = xstrdup (entry->label);
-          entry->start = start;
-          entry->end = end;
-          entry->type = REFERENCE_XREF;
+        entry = xmalloc (sizeof (REFERENCE));
+        entry->label = xcalloc (1, 1 + len);
+        strncpy (entry->label, s.buffer + name, name_end - name);
+        strncpy (entry->label + strlen (entry->label),
+                 s.buffer + section,
+                 section_end - section);
 
-          add_pointer_to_array (entry, refs_index, refs, refs_slots, 10);
-        }
+        entry->filename = MANPAGE_FILE_BUFFER_NAME;
+        entry->nodename = xstrdup (entry->label);
+        entry->start = name;
+        entry->end = section_end;
+        entry->type = REFERENCE_XREF;
 
-      reference_section->start = position + 1;
+        add_pointer_to_array (entry, refs_index, refs, refs_slots, 10);
+      }
+
+skip:
+      s.start = position + 1;
     }
 
   return refs;

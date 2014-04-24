@@ -1,5 +1,16 @@
 2014-04-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/dir.c (build_dir_node): Use header text from
+	util/dir-example.
+
+	* info/man.c (reference_section_starters, frs_binding)
+	(find_reference_section): Disable with preprocessor.
+	(xrefs_of_manpage): Look in whole man page for possible xrefs.
+	Work even if name of reference is surrounded by ECMA-48 SGR
+	sequences.
+
+2014-04-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info.h [HANDLE_MAN_PAGES]: #define removed.  All
 	usages updated.
 
