@@ -208,9 +208,8 @@ build_dir_node (void)
   return node;
 }
 
-/* Given CONTENTS and FB (a file buffer), add the menu found in CONTENTS
-   to the menu found in FB->contents.  Second argument SIZE is the total
-   size of CONTENTS. */
+/* Given CONTENTS and NODE, add the menu found in CONTENTS to the menu
+   found in NODE->contents.  SIZE is the total size of CONTENTS. */
 static void
 add_menu_to_node (char *contents, size_t size, NODE *node)
 {
@@ -227,7 +226,7 @@ add_menu_to_node (char *contents, size_t size, NODE *node)
   fb_binding.end = node->nodelen;
   fb_binding.flags = S_FoldCase | S_SkipDest;
 
-  /* Move to the start of the menus in CONTENTS and FB. */
+  /* Move to the start of the menus in CONTENTS and NODE. */
   if (search_forward (INFO_MENU_LABEL, &contents_binding, &contents_offset)
       != search_success)
     /* If there is no menu in CONTENTS, quit now. */
@@ -238,7 +237,7 @@ add_menu_to_node (char *contents, size_t size, NODE *node)
      and newline characters. */
   contents_offset += skip_whitespace_and_newlines (contents + contents_offset);
 
-  /* If there is no menu in FB, make one. */
+  /* If there is no menu in NODE, make one. */
   if (search_forward (INFO_MENU_LABEL, &fb_binding, &fb_offset)
       != search_success)
     {
@@ -257,7 +256,7 @@ add_menu_to_node (char *contents, size_t size, NODE *node)
 
   /* CONTENTS_OFFSET and FB_OFFSET point to the starts of the menus that
      appear in their respective buffers.  Add the remainder of CONTENTS
-     to the end of FB's menu. */
+     to the end of NODE's menu. */
   fb_binding.start = fb_offset;
   fb_offset = find_node_separator (&fb_binding);
   if (fb_offset != -1)
