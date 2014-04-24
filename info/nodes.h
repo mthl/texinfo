@@ -136,9 +136,6 @@ typedef struct {
 
 /* Externally visible functions.  */
 
-/* Return the length of the node which starts at BINDING. */
-long get_node_length (SEARCH_BINDING *binding);
-
 /* Array of FILE_BUFFER * which represents the currently loaded info files. */
 extern FILE_BUFFER **info_loaded_files;
 
@@ -151,11 +148,6 @@ extern size_t info_loaded_files_slots;
    and add it to the list of loaded files.  If the file cannot be found,
    return a NULL FILE_BUFFER *. */
 extern FILE_BUFFER *info_find_file (char *filename);
-
-/* Force load the file named FILENAME, and return the information structure
-   describing this file.  Even if the file was already loaded, this loads
-   a new buffer, rebuilds tags and nodes, and returns a new FILE_BUFFER *. */
-extern FILE_BUFFER *info_load_file (char *filename);
 
 /* Return a pointer to a new NODE structure. */
 extern NODE *info_create_node (void);

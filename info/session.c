@@ -21,6 +21,7 @@
 
 #include "info.h"
 #include "search.h"
+#include "man.h"
 
 #ifndef __MINGW32__
 #include <sys/ioctl.h>
@@ -34,10 +35,6 @@
 #  include <sys/time.h>
 #  define HAVE_STRUCT_TIMEVAL
 #endif /* HAVE_SYS_TIME_H */
-
-#if defined (HANDLE_MAN_PAGES)
-#  include "man.h"
-#endif
 
 static void info_gc_file_buffers (void);
 
@@ -2317,68 +2314,6 @@ DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
   return;
 }
 
-/* Return a pointer to the xref in XREF_LIST that is nearest to POS, or
-   NULL if XREF_LIST is empty.  That is, if POS is within any of the
-   given xrefs, return that one.  Otherwise, return the one with the
-   nearest beginning or end.  If there are two that are equidistant,
-   prefer the one forward.  The return is in newly-allocated memory,
-   since the caller frees it.
-   
-   This is called from info_menu_or_ref_item with XREF_LIST being all
-   the xrefs in the node, and POS being point.  The ui function that
-   starts it all off is select-reference-this-line.
-
-   This is not the same logic as in info.el.  Info-get-token prefers
-   searching backwards to searching forwards, and has a hardwired search
-   limit of 200 chars (in Emacs 21.2).  */
-
-static REFERENCE **
-nearest_xref (REFERENCE **xref_list, long int pos)
-{
-  int this_xref;
-  int nearest = -1;
-  long best_delta = -1;
-  
-  for (this_xref = 0; xref_list[this_xref]; this_xref++)
-    {
-      long delta;
-      REFERENCE *xref = xref_list[this_xref];
-      if (xref->start <= pos && pos <= xref->end)
-        { /* POS is within this xref, we're done */
-          nearest = this_xref;
-          break;
-        }
-      
-      /* See how far POS is from this xref.  Take into account the
-         `*Note' that begins the xref, since as far as the user is
-         concerned, that's where it starts.  */
-      delta = MIN (labs (pos - (xref->start - strlen (INFO_XREF_LABEL))),
-                   labs (pos - xref->end));
-      
-      /* It's the <= instead of < that makes us choose the forward xref
-         of POS if two are equidistant.  Of course, because of all the
-         punctuation surrounding xrefs, it's not necessarily obvious
-         where one ends.  */
-      if (delta <= best_delta || best_delta < 0)
-        {
-          nearest = this_xref;
-          best_delta = delta;
-        }
-    }
-  
-  /* Maybe there was no list to search through.  */
-  if (nearest < 0)
-    return NULL;
-  
-  /* Ok, we have a nearest xref, make a list of it.  */
-  {
-    REFERENCE **ret = xmalloc (sizeof (REFERENCE *) * 2);
-    ret[0] = info_copy_reference (xref_list[nearest]);
-    ret[1] = NULL;
-    return ret;
-  }
-}
-
 static int exclude_cross_references (REFERENCE *r)
 {
   return r->type == REFERENCE_XREF;
@@ -3260,7 +3195,6 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
   free (default_program_name);
 }
 
-#if defined (HANDLE_MAN_PAGES)
 DECLARE_INFO_COMMAND (info_man, _("Read a manpage reference and select it"))
 {
   char *line;
@@ -3286,7 +3220,6 @@ DECLARE_INFO_COMMAND (info_man, _("Read a manpage reference and select it"))
   if (!info_error_was_printed)
     window_clear_echo_area ();
 }
-#endif /* HANDLE_MAN_PAGES */
 
 /* Move to the "Top" node in this file. */
 DECLARE_INFO_COMMAND (info_top_node, _("Select the node `Top' in this file"))

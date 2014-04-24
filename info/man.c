@@ -87,7 +87,6 @@ get_manpage_node (char *pagename)
       tag->filename = MANPAGE_FILE_BUFFER_NAME;
       tag->nodename = xstrdup (pagename);
       tag->flags |= (N_HasTagsTable | N_IsManPage);
-      tag->contents = 0;
 
       tag->up = "(dir)";
 
@@ -117,8 +116,8 @@ get_manpage_node (char *pagename)
           hlen = strlen (header);
 
           tag->contents = xcalloc (1, hlen + plen + 1);
-          memcpy (node->contents, header, hlen);
-          memcpy (node->contents + hlen, page, plen);
+          memcpy (tag->contents, header, hlen);
+          memcpy (tag->contents + hlen, page, plen);
 
           /* Set nodelen. */
           tag->nodelen = hlen + plen;

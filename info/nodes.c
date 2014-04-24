@@ -26,10 +26,7 @@
 #include "filesys.h"
 #include "info-utils.h"
 #include "tag.h"
-
-#if defined (HANDLE_MAN_PAGES)
-#  include "man.h"
-#endif /* HANDLE_MAN_PAGES */
+#include "man.h"
 
 
 /* Global variables.  */
@@ -575,6 +572,7 @@ free_info_tag (NODE *tag)
 
 static FILE_BUFFER *info_find_file_internal (char *filename, int get_tags);
 static void get_file_character_encoding (FILE_BUFFER *fb);
+static FILE_BUFFER *info_load_file (char *filename);
 static FILE_BUFFER *info_load_file_internal (char *filename, int get_tags);
 static void remember_info_file (FILE_BUFFER *file_buffer);
 static void info_reload_file_buffer_contents (FILE_BUFFER *fb);
@@ -590,9 +588,10 @@ info_find_file (char *filename)
   return info_find_file_internal (filename, INFO_GET_TAGS);
 }
 
-/* Load the info file FILENAME, remembering information about it in a
-   file buffer. */
-FILE_BUFFER *
+/* Force load the file named FILENAME, and return the information structure
+   describing this file.  Even if the file was already loaded, this loads
+   a new buffer, rebuilds tags and nodes, and returns a new FILE_BUFFER *. */
+static FILE_BUFFER *
 info_load_file (char *filename)
 {
   return info_load_file_internal (filename, INFO_GET_TAGS);
@@ -622,13 +621,8 @@ info_find_file_internal (char *filename, int get_tags)
           {
             struct stat new_info, *old_info;
 
-            /* This file is loaded.  If the filename that we want is
-               specifically "dir", then simply return the file buffer. */
-            if (is_dir_name (filename_non_directory (filename)))
-              return file_buffer;
-
-            /* The file appears to be already loaded, and is not "dir".  Check
-               to see if it's changed since the last time it was loaded.  */
+            /* Check to see if the file has changed since the last
+               time it was loaded.  */
             if (stat (file_buffer->fullpath, &new_info) == -1)
               {
                 filesys_error_number = errno;
@@ -895,6 +889,7 @@ info_reload_file_buffer_contents (FILE_BUFFER *fb)
 
 /* Functions for node creation and retrieval. */
 
+static long get_node_length (SEARCH_BINDING *binding);
 static int get_filename_and_nodename (int flag, WINDOW *window,
                                       char **filename, char **nodename,
                                       char *filename_in, char *nodename_in);
@@ -927,7 +922,7 @@ info_create_node (void)
 }
 
 /* Return the length of the node which starts at BINDING. */
-long
+static long
 get_node_length (SEARCH_BINDING *binding)
 {
   int i;
@@ -959,7 +954,7 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
   char *filename = 0, *nodename = 0;
 
   /* Used to build `dir' menu from `localdir' files found in INFOPATH. */
-  extern void maybe_build_dir_node (char *dirname);
+  extern NODE *dir_node (void);
 
   info_recent_file_error = NULL;
 
@@ -969,15 +964,16 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
   /* If the file to be looked up is "dir", build the contents from all of
      the "dir"s and "localdir"s found in INFOPATH. */
   if (is_dir_name (filename))
-    maybe_build_dir_node (filename);
+    {
+      node = dir_node ();
+      goto cleanup_and_exit;
+    }
 
-#ifdef HANDLE_MAN_PAGES
   if (mbscasecmp (filename, MANPAGE_FILE_BUFFER_NAME) == 0)
     {
       node = get_manpage_node (nodename);
       goto cleanup_and_exit;
     }
-#endif
 
   /* Find the correct info file, or give up.  */
   file_buffer = info_find_file (filename);
@@ -987,7 +983,6 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
       node = info_get_node_of_file_buffer (nodename, file_buffer);
     }
 
-#ifdef HANDLE_MAN_PAGES
   if (!file_buffer)
     {
       /* Try to find a man page with this name as a fall back. */
@@ -999,7 +994,6 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
               filesys_error_string (filename, filesys_error_number);
         }
     }
-#endif
 
   /* If the node not found was "Top", try again with different case. */
   if (!node && (nodename && mbscasecmp (nodename, "Top") == 0))

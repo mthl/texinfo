@@ -25,9 +25,6 @@
 #include "dribble.h"
 #include "getopt.h"
 #include "variables.h"
-#if defined (HANDLE_MAN_PAGES)
-#  include "man.h"
-#endif /* HANDLE_MAN_PAGES */
 
 char *program_name = "info";
 

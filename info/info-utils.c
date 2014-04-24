@@ -29,10 +29,6 @@
 # include <iconv.h>
 #endif
 
-#if defined (HANDLE_MAN_PAGES)
-#  include "man.h"
-#endif /* HANDLE_MAN_PAGES */
-
 #ifdef __hpux
 #define va_copy(ap1,ap2) memcpy((&ap1),(&ap2),sizeof(va_list))
 #endif

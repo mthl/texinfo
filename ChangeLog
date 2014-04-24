@@ -1,3 +1,26 @@
+2014-04-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.h [HANDLE_MAN_PAGES]: #define removed.  All
+	usages updated.
+
+	* info/man.c (get_manpage_node): Use correct variable.
+
+	* info/nodes.c (info_load_file, get_node_length): Declared static.
+
+	* info/session.c (nearest_xref): Unused function deleted.
+
+	* info/dir.c (maybe_create_dir_node, dir_node, create_dir_buffer)
+	(build_dir_node): maybe_create_dir_node split up and behaviour
+	changed.
+	(dir_buffer): New file-level variable.
+	(insert_text_into_fb_at_binding, insert_text_into_node): Renamed
+	and arguments changed.
+	(add_menu_to_file_buffer, add_menu_to_node): Renamed and arguments
+	changed.
+	* info/nodes.c (info_find_file_internal): Special treatment of
+	dir file buffers removed.
+	(info_get_node_with_defaults): Call dir_node to get dir node.
+
 2014-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (info_parse_node): Don't use saven_filename

@@ -23,7 +23,6 @@
 #define INFO_H
 
 /* We always want these, so why clutter up the compile command?  */
-#define HANDLE_MAN_PAGES
 #define NAMED_FUNCTIONS
 #define INFOKEY
 
