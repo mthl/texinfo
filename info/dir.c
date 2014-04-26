@@ -124,7 +124,7 @@ build_dir_node (void)
   NODE *node;
 
   node = info_create_node ();
-  node->nodename = xstrdup ("dir");
+  node->nodename = xstrdup ("Top");
   node->filename = xstrdup ("dir");
   node->contents = xstrdup (
 

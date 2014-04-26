@@ -15,15 +15,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 . t/Init-test.inc
-. t/Init-intera.inc 
 
-# Follow an index entry in a split file
+# Load more than one node in loaded file using --node.
 
-$GINFO -f split --restore t/split-index.drib
+$GINFO --output $GINFO_OUTPUT --file file-menu --node 'Node 1' --node 'Node 2'
 
-test -f $GINFO_OUTPUT || exit 1
-# Return non-zero (test failure) if files differ
-diff $GINFO_OUTPUT t/node-target
-RETVAL=$?
+RETVAL=0
+grep 'Arrived at Node 1' $GINFO_OUTPUT || RETVAL=1
+grep 'Arrived at Node 2' $GINFO_OUTPUT || RETVAL=1
 
 . t/Cleanup.inc

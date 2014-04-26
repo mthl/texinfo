@@ -15,15 +15,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 . t/Init-test.inc
-. t/Init-intera.inc 
 
-# Follow an index entry in a split file
+# Load a node in loaded file using --node, without using --file to
+# specify the desired file.
 
-$GINFO -f split --restore t/split-index.drib
-
-test -f $GINFO_OUTPUT || exit 1
-# Return non-zero (test failure) if files differ
-diff $GINFO_OUTPUT t/node-target
-RETVAL=$?
-
-. t/Cleanup.inc
+$GINFO --output - file-menu --node Unreachable \
+	| grep 'not linked to elsewhere'

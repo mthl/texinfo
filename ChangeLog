@@ -1,3 +1,13 @@
+2014-04-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/file-nodes.sh, info/t/dir-file-node.sh: New tests.
+	* info/Makefile.am: Add new tests.
+
+	* info/t/index-long-nodeline.sh, t/index.sh, t/split-index.sh:
+	Make "#!/bin/sh" first line.
+
+	* info/dir.c: Call dir node "Top".
+
 2014-04-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/dir.c (build_dir_node): Use header text from

@@ -91,11 +91,13 @@ pseudotty_SOURCES = pseudotty.c
 TESTS = \
 	t/file.sh \
 	t/file-node.sh \
+	t/file-nodes.sh \
 	t/dir.sh \
 	t/dir-to-file.sh \
 	t/dir-to-no-file.sh \
 	t/dir-file-menu.sh \
 	t/dir-file-no-menu.sh \
+	t/dir-file-node.sh \
 	t/dir-3-menus.sh \
 	t/tab.sh \
 	t/index.sh \
@@ -104,5 +106,6 @@ TESTS = \
 	t/help.sh
 
 XFAIL_TESTS = \
-      t/index-long-nodeline.sh
+      t/index-long-nodeline.sh \
+      t/dir-file-node.sh
 
