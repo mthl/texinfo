@@ -1,3 +1,8 @@
+2014-04-27  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi (max_iters): change from -1 to 7.  Infinite
+	loops are bad.  Report from Marius Hofert, 25 Apr 2014 08:10:44.
+
 2014-04-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/file-nodes.sh, info/t/dir-file-node.sh: New tests.

@@ -52,7 +52,7 @@ escape="\\"
 expand=false    # true for expansion via makeinfo
 includes=
 line_error=true # pass --file-line-error to TeX
-max_iters=-1    # keep going forever
+max_iters=7     # when to quit
 oname=          # --output
 out_lang=dvi
 quiet=false     # let the tools' message be displayed
@@ -358,7 +358,7 @@ Build modes:
                          defaults to TEXI2DVI_BUILD_DIRECTORY [$build_dir]
   --mostly-clean       remove the auxiliary files and directories
                          but not the output
-  --max-iterations=N   don't process files more than N times
+  --max-iterations=N   don't process files more than N times [$max_iters]
 
 The MODE specifies where the TeX compilation takes place, and, as a
 consequence, how auxiliary files are treated.  The build mode
@@ -1110,7 +1110,8 @@ run_bibtex ()
               && grep '^\\bibdata' "$in_noext.aux") ) \
         >&6 2>&1; \
   then
-    for f in `generated_files_get "$in_noext" bibaux_file_p`; do
+    bibtex_aux=`generated_files_get "$in_noext" bibaux_file_p`
+    for f in $bibtex_aux; do
       run $bibtex "$f"
     done
   fi
@@ -1261,9 +1262,9 @@ run_tex_suite ()
 
     xref_files_save
 
-    # We run bibtex first, because I can see reasons for the indexes
-    # to change after bibtex is run, but I see no reason for the
-    # converse.
+    # We run bibtex first, because it's more likely for the indexes
+    # to change after bibtex is run than the reverse, though either
+    # would be rare.
     run_bibtex
     run_index
     run_core_conversion
@@ -1696,7 +1697,6 @@ while test x"$1" != x"$arg_sep"; do
       ;;
   esac
 
-  # This recognizes --quark as --quiet.  Oh well.
   case "$1" in
     -@ ) escape=@;;
     -~ ) catcode_special=false;;
