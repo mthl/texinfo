@@ -16,6 +16,6 @@
 
 . t/Init-test.inc
 
-# Look for a non-existent entry in dir
-$GINFO --output - not-a-file 2>&1 | grep 'No menu item'
+# Look for a non-existent entry in INFOPATH.
 
+$GINFO --output - --file not-a-file 2>&1 | grep 'No such file or directory'

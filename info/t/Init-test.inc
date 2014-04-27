@@ -22,3 +22,6 @@ PTY_PID=0
 
 # Get error messages in English
 LC_ALL=C; export LC_ALL
+
+# TODO: Exit test after so long, in case (for example) we get stuck in
+# interactive mode.
