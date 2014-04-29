@@ -1,3 +1,8 @@
+2014-04-29  Alexis Hildebrandt <alexis.hildebrandt@surryhill.net> (tiny change)
+
+	* doc/refcard/txirefcard.tex: use \raise instead of $^...
+	for superscripted text, since ^ appears literally.  Fix typos.
+
 2014-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/dir-to-file.sh, info/t/dir-file.sh: Renamed.

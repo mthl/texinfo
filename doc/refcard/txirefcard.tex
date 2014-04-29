@@ -349,9 +349,9 @@ http://www.gnupress.org} or write to the Free Software Foundation, Inc.,
 
 % @registeredsymbol - R in a circle.
 \def\registeredsymbol{%
- $^{{\ooalign{\hfil\raise.07ex\hbox{\fiverm R}%
+ \raise.8ex\hbox{{{\ooalign{\hfil\raise.07ex\hbox{\fiverm R}%
               \hfil\crcr\Orb}}%
-   }$%
+   }}%
 }
 
 \def\ordf{\leavevmode\raise1ex\hbox{\fiverm \underbar{a}}}
@@ -557,7 +557,7 @@ which they conventionally appear.
 \subsection{GUI sequences}
 
 \txicmd{@clicksequence}{\ttbraced{action \code{@click\ttbraced{}} \var{action} \dots}}{Represent a sequence of \acro{GUI} actions or clicks.}
-\txicmd{@click}{\ttbraced{}}{Represent a single `click' in a \code{@clicksequene}.}
+\txicmd{@click}{\ttbraced{}}{Represent a single `click' in a \code{@clicksequence}.}
 \txicmd{@clickstyle}{\code{@}cmd}{Execute \var{@cmd} for each \code{@click}; default is \code{@arrow}. Empty braces usually following \code{@\var{cmd}} are omitted here.}
 \txicmd{@arrow}{\ttbraced{}}{Insert a right arrow glyph, $\rightarrow$.}
 
@@ -733,7 +733,7 @@ exception of \code{@tieaccent}.
 \txicmd{@enddots}{\ttbraced{}}{Insert an end-of-sentence ellipsis, `\dots' (more following space in \TeX.)}
 \txicmd{@euro}{\ttbraced{}}{Insert the Euro currency sign, \euro.}
 \txicmd{@pounds}{\ttbraced{}}{Insert the pounds sterling currency sign, {\it\$}.}
-\txicmd{@textdegree}{\ttbraced{}}{Insert the degree symbol, $^\circ$.}
+\txicmd{@textdegree}{\ttbraced{}}{Insert the degree symbol, \raise.8ex\hbox{$\circ$}.}
 \txicmd{@copyright}{\ttbraced{}}{Insert the copyright symbol, \copyright.}
 \txicmd{@registeredsymbol}{\ttbraced{}}{Insert the registered symbol, \registeredsymbol.}
 \txicmd{@TeX}{\ttbraced{}}{Insert the \TeX\ logo.}
@@ -854,7 +854,7 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 \txicmd{@ifset}{name \dots\code{@end ifset}}{If \var{name} is set, format enclosed text.}
 \txicmd{@ifclear}{name \dots\code{@end ifclear}}{If \var{name} is not set, format enclosed text.}
 \txicmd{@inlineifset}{\ttbraced{name, text}}{If \var{name} is set, format \var{text}.}
-\txicmd{@inlineifclear}{\ttbraced{name, text}}{If \var{name} is notset, format \var{text}.}
+\txicmd{@inlineifclear}{\ttbraced{name, text}}{If \var{name} is not set, format \var{text}.}
 
 \subsection{Testing for commands}
 
