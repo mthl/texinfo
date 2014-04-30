@@ -1,3 +1,39 @@
+2014-04-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (info_indices_of_file_buffer, index_entry_exists):
+	Comments added.
+
+	* info/infopath.c (infopath_clear)
+	* info/filesys.c (convert_eols, filesys_read_compressed)
+	(compressed_filename_p, filesys_decompressor_for_file): Declared
+	static.
+
+	* info/nodes.c (info_load_file): Deleted.
+	(info_load_file_internal, info_load_file): Renamed.
+
+	* info/footnotes.c (make_footnotes_node): Copy parent field
+	to footnotes field.  This caused problems with automatic-footnotes=On
+	in split files.
+
+	* info/filesys.c (info_find_fullpath). Return 0 on failure
+	as documented, instead of the partial filename.  Set
+	filesys_error_number.  Set new struct stat argument for loaded
+	file.  Don't limit length of path.
+	(local_temp_filename, local_temp_filename_size): Removed.
+	(info_file_find_next_in_path, info_file_in_path)
+	(info_absolute_file): New argument struct stat *finfo. All
+	callers updated.
+
+	* info/nodes.c (info_find_file_internal, info_load_file):
+	Call info_find_fullpath.  This allows finding new files added
+	earlier in the INFOPATH.  Don't call stat directly or set
+	filesys_error_number.
+
+	* info/filesys.c (FILENAME_LIST, names_and_files)
+	(names_and_files_index, names_and_files_slots, lookup_info_filename)
+	(remember_info_filename, forget_file_names): Deleted.  All accesses
+	removed.
+
 2014-04-29  Alexis Hildebrandt <alexis.hildebrandt@surryhill.net> (tiny change)
 
 	* doc/refcard/txirefcard.tex: use \raise instead of $^...

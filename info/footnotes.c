@@ -164,11 +164,11 @@ make_footnotes_node (NODE *node)
         }
     }
 
-    node->parent = NULL;
     name_internal_node (result, footnote_nodename);
 
     /* Needed in case the user follows a reference in the footnotes window. */
     result->filename = fn_node->filename;
+    result->parent = fn_node->parent;
 
     free (header);
   }

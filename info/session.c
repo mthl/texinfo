@@ -3583,6 +3583,7 @@ dump_node_to_file (NODE *node, char *filename, int flags)
 {
   FILE *output_stream;
   char *nodes_filename;
+  char *fullpath;
 
   debug (1, (_("writing file %s"), filename));
   
@@ -3608,7 +3609,10 @@ dump_node_to_file (NODE *node, char *filename, int flags)
   
   if (flags & DUMP_APPEND)
     fputc ('\f', output_stream);
-  fprintf (output_stream, "%s\n", info_find_fullpath (node->filename));
+
+  fullpath = info_find_fullpath (node->filename, 0);
+  fprintf (output_stream, "%s\n", fullpath);
+  free (fullpath);
 
   if (dump_node_to_stream (nodes_filename, node->nodename,
 			   output_stream, flags & DUMP_SUBNODES)
@@ -5235,7 +5239,7 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
 DECLARE_INFO_COMMAND (info_display_file_info,
 		      _("Show full file name of node being displayed"))
 {
-  const char *fname = info_find_fullpath (window->node->filename);
+  char *fname = info_find_fullpath (window->node->filename, 0);
   if (fname)
     {
       int line = window_line_of_point (window);
@@ -5243,6 +5247,7 @@ DECLARE_INFO_COMMAND (info_display_file_info,
 				   fname, line,
 				   (unsigned long) window->line_count,
 				   line * 100 / window->line_count);
+      free (fname);
     }
   else
     window_message_in_echo_area ("Internal node");

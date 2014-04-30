@@ -31,9 +31,6 @@ extern char *infopath ();
 /* Initialize INFOPATH */
 void infopath_init (void);
 
-/* Make INFOPATH have absolutely nothing in it. */
-extern void infopath_clear (void);
-
 /* Add PATH to the list of paths found in INFOPATH.  2nd argument says
    whether to put PATH at the front or end of INFOPATH. */
 extern void infopath_add (char *path, int where);
@@ -50,15 +47,13 @@ char *infopath_next (int *idx);
 /* Expand the filename in PARTIAL to make a real name for this operating
    system.  This looks in INFO_PATHS in order to find the correct file.
    If it can't find the file, it returns NULL. */
-extern char *info_find_fullpath (char *partial);
+extern char *info_find_fullpath (char *partial, struct stat *finfo);
 
-/* Forget all cached file names */
-extern void forget_file_names (void);
-
-/* Given a chunk of text and its length, convert all CRLF pairs at the
-   EOLs into a single Newline character.  Return the length of produced
-   text.  */
-long convert_eols (char *text, long textlen);
+/* Scan the list of directories in PATH looking for FILENAME.  If we find
+   one that is a regular file, return it as a new string.  Otherwise, return
+   a NULL pointer. */
+extern char *info_file_find_next_in_path (char *filename, char *path,
+					  int *diridx, struct stat *finfo);
 
 /* Read the contents of PATHNAME, returning a buffer with the contents of
    that file in it, and returning the size of that buffer in FILESIZE.
@@ -66,12 +61,6 @@ long convert_eols (char *text, long textlen);
    If the file cannot be read, return a NULL pointer. */
 extern char *filesys_read_info_file (char *pathname, size_t *filesize,
     struct stat *finfo, int *is_compressed);
-
-extern char *filesys_read_compressed (char *pathname, size_t *filesize);
-
-/* Return the command string that would be used to decompress FILENAME. */
-extern char *filesys_decompressor_for_file (char *filename);
-extern int compressed_filename_p (char *filename);
 
 /* A function which returns a pointer to a static buffer containing
    an error message for FILENAME and ERROR_NUM. */
@@ -87,12 +76,6 @@ extern char *extract_colon_unit (char *string, int *idx);
 
 /* Return true if FILENAME is `dir', with a possible compression suffix.  */
 extern int is_dir_name (char *filename);
-
-/* Scan the list of directories in PATH looking for FILENAME.  If we find
-   one that is a regular file, return it as a new string.  Otherwise, return
-   a NULL pointer. */
-extern char *info_file_find_next_in_path (char *filename, char *path,
-					  int *diridx);
 
 /* The default value of INFOPATH. */
 #if !defined (DEFAULT_INFOPATH)

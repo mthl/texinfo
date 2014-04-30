@@ -356,7 +356,7 @@ info_find_matching_files (char *filename)
   
   while (1)
     {
-      p = info_file_find_next_in_path (filename, infopath (), &i);
+      p = info_file_find_next_in_path (filename, infopath (), &i, 0);
       if (argc == argn)
 	{
 	  if (argn == 0)
@@ -404,7 +404,6 @@ all_files (char *filename, int argc, char **argv)
     {
       NODE *node;
       
-      forget_file_names ();
       if (!user_filename)
 	{
 	  char *p = dirname (fref[i]->filename);

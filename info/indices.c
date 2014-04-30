@@ -102,6 +102,7 @@ info_indices_of_window (WINDOW *window)
   return info_indices_of_file_buffer (fb);
 }
 
+/* Search for index nodes in FILE_BUFFER and built up composite menu. */
 REFERENCE **
 info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
 {
@@ -296,6 +297,8 @@ do_info_index_search (WINDOW *window, int count, char *search_string)
   }
 }
 
+/* Return 1 if STRING appears in indicies of file_buffer_of_window (WINDOW),
+   0 otherwise. */
 int
 index_entry_exists (WINDOW *window, char *string)
 {

@@ -565,15 +565,15 @@ free_info_tag (NODE *tag)
 
 /* Functions for retrieving files. */
 
-/* Passed to *_internal functions.  INFO_GET_TAGS says to do what is
-   neccessary to fill in the nodes or tags arrays in FILE_BUFFER. */
+/* Passed to info_find_file_internal and info_load_file.  INFO_GET_TAGS
+   says to do what is neccessary to fill in the nodes or tags arrays in
+   FILE_BUFFER. */
 #define INFO_NO_TAGS  0
 #define INFO_GET_TAGS 1
 
 static FILE_BUFFER *info_find_file_internal (char *filename, int get_tags);
 static void get_file_character_encoding (FILE_BUFFER *fb);
-static FILE_BUFFER *info_load_file (char *filename);
-static FILE_BUFFER *info_load_file_internal (char *filename, int get_tags);
+static FILE_BUFFER *info_load_file (char *filename, int get_tags);
 static void remember_info_file (FILE_BUFFER *file_buffer);
 static void info_reload_file_buffer_contents (FILE_BUFFER *fb);
 
@@ -586,15 +586,6 @@ FILE_BUFFER *
 info_find_file (char *filename)
 {
   return info_find_file_internal (filename, INFO_GET_TAGS);
-}
-
-/* Force load the file named FILENAME, and return the information structure
-   describing this file.  Even if the file was already loaded, this loads
-   a new buffer, rebuilds tags and nodes, and returns a new FILE_BUFFER *. */
-static FILE_BUFFER *
-info_load_file (char *filename)
-{
-  return info_load_file_internal (filename, INFO_GET_TAGS);
 }
 
 /* The workhorse for info_find_file ().  Non-zero 2nd argument says to
@@ -620,17 +611,16 @@ info_find_file_internal (char *filename, int get_tags)
                     == 0))
           {
             struct stat new_info, *old_info;
+            char *fullpath;
+
+            fullpath = info_find_fullpath (file_buffer->filename, &new_info);
+            if (!fullpath)
+              return NULL;
+            free (fullpath);
 
             /* Check to see if the file has changed since the last
                time it was loaded.  */
-            if (stat (file_buffer->fullpath, &new_info) == -1)
-              {
-                filesys_error_number = errno;
-                return NULL;
-              }
-
             old_info = &file_buffer->finfo;
-
             if (new_info.st_size != old_info->st_size
                 || new_info.st_mtime != old_info->st_mtime)
               {
@@ -663,7 +653,7 @@ info_find_file_internal (char *filename, int get_tags)
     }
 
   /* The file wasn't loaded.  Try to load it now. */
-  file_buffer = info_load_file_internal (filename, get_tags);
+  file_buffer = info_load_file (filename, get_tags);
 
   /* If the file was loaded, remember the name under which it was found. */
   if (file_buffer)
@@ -719,25 +709,23 @@ get_file_character_encoding (FILE_BUFFER *fb)
   fb->encoding = enc_string;
 }
 
-/* The workhorse function for info_load_file ().  Non-zero second argument
-   says to build a list of tags (or nodes) for this file.  This is the
-   default behaviour when info_load_file () is called, but it is not
-   necessary when loading a subfile for which we already have tags. */
+/* Force load the file named FILENAME, and return the information structure
+   describing this file, even if the file was already loaded.  Non-zero
+   second argument says to build a list of tags (or nodes) for this file.
+   This is not necessary when loading a subfile for which we already have
+   tags. */
 static FILE_BUFFER *
-info_load_file_internal (char *filename, int get_tags)
+info_load_file (char *filename, int get_tags)
 {
   char *fullpath, *contents;
   size_t filesize;
   struct stat finfo;
-  int retcode, compressed;
+  int compressed;
   FILE_BUFFER *file_buffer = NULL;
   
   /* Get the full pathname of this file, as known by the info system.
      That is to say, search along INFOPATH and expand tildes, etc. */
-  fullpath = info_find_fullpath (filename);
-
-  /* Did we actually find the file? */
-  retcode = stat (fullpath, &finfo);
+  fullpath = info_find_fullpath (filename, &finfo);
 
   /* If the file referenced by the name returned from info_find_fullpath ()
      doesn't exist, then try again with the last part of the filename
@@ -745,7 +733,7 @@ info_load_file_internal (char *filename, int get_tags)
   /* This is probably not needed at all on those systems which define
      FILENAME_CMP to be mbscasecmp.  But let's do it anyway, lest some
      network redirector supports case sensitivity.  */
-  if (retcode < 0)
+  if (!fullpath)
     {
       char *lowered_name;
       char *tmp_basename;
@@ -761,18 +749,14 @@ info_load_file_internal (char *filename, int get_tags)
           tmp_basename++;
         }
 
-      fullpath = info_find_fullpath (lowered_name);
+      fullpath = info_find_fullpath (lowered_name, &finfo);
 
-      retcode = stat (fullpath, &finfo);
       free (lowered_name);
     }
 
   /* If the file wasn't found, give up, returning a NULL pointer. */
-  if (retcode < 0)
-    {
-      filesys_error_number = errno;
-      return NULL;
-    }
+  if (!fullpath)
+    return NULL;
 
   /* Otherwise, try to load the file. */
   contents = filesys_read_info_file (fullpath, &filesize, &finfo, &compressed);
@@ -784,7 +768,7 @@ info_load_file_internal (char *filename, int get_tags)
      in the various members. */
   file_buffer = make_file_buffer ();
   file_buffer->filename = xstrdup (filename);
-  file_buffer->fullpath = xstrdup (fullpath);
+  file_buffer->fullpath = fullpath;
   file_buffer->finfo = finfo;
   file_buffer->filesize = filesize;
   file_buffer->contents = contents;
@@ -977,6 +961,7 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
 
   /* Find the correct info file, or give up.  */
   file_buffer = info_find_file (filename);
+
   if (file_buffer)
     {
       /* Look for the node.  */

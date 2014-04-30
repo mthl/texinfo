@@ -31,6 +31,9 @@ static int infopath_size = 0;
 /* If 1, infopath_base has been modified and needs compaction */
 static int infopath_dirty = 0;
 
+/* Make INFOPATH have absolutely nothing in it. */
+static void infopath_clear (void);
+
 /* Return a pointer to the next directory in STR (having length LEN).
    *IDX points to the offset in STR where to start searching.  Return
    NULL if *IDX points at or after the trailing null character.  Otherwise,
@@ -136,7 +139,7 @@ infopath ()
 }
 
 /* Make INFOPATH have absolutely nothing in it. */
-void
+static void
 infopath_clear (void)
 {
   if (infopath_base)
