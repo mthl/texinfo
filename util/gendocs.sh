@@ -142,7 +142,7 @@ PACKAGE=
 EMAIL=webmasters@gnu.org  # please override with --email
 commonarg= # passed to all makeinfo/texi2html invcations.
 dirargs=   # passed to all tools (-I dir).
-dirs=      # -I's directories.
+dirs=      # -I directories.
 htmlarg=
 infoarg=--no-split
 generate_ascii=true
@@ -230,8 +230,9 @@ calcsize()
 
 # copy_images OUTDIR HTML-FILE...
 # -------------------------------
-# Copy all the images needed by the HTML-FILEs into OUTDIR.  Look
-# for them in the -I directories.
+# Copy all the images needed by the HTML-FILEs into OUTDIR.
+# Look for them in . and the -I directories; this is simpler than what
+# makeinfo supports with -I, but hopefully it will suffice.
 copy_images()
 {
   local odir
@@ -241,7 +242,7 @@ copy_images()
 BEGIN {
   \$me = '$prog';
   \$odir = '$odir';
-  @dirs = qw($dirs);
+  @dirs = qw(. $dirs);
 }
 " -e '
 /<img src="(.*?)"/g && ++$need{$1};

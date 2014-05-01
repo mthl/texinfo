@@ -1,5 +1,9 @@
 2014-05-01  Karl Berry  <karl@gnu.org>
 
+	* util/gendocs.sh (copy_images): look for images in . as well
+	as -I directories.
+	Report from Arnold, 29 Apr 2014 15:43:08.
+
 	* util/gendocs.sh (--no-html, --no-info, --no-tex): new options.
 
 2014-04-29  Gavin Smith  <gavinsmith0123@gmail.com>
