@@ -170,7 +170,7 @@ node_file_name (NODE *node, int dirok)
 /* Get the initial Info file, either by following menus from "(dir)Top",
    or what the user specifed with values in filename. */
 static char *
-get_initial_file (char *filename, int *argc, char ***argv, NODE **error_node)
+get_initial_file (char *filename, int *argc, char ***argv, char **error)
 {
   char *initial_file = 0;           /* First file loaded by Info. */
 
@@ -201,9 +201,8 @@ get_initial_file (char *filename, int *argc, char ***argv, NODE **error_node)
               (*argc)--;
             }
           else
-            *error_node = format_message_node (_("No menu item `%s' in node `%s'."),
-                (*argv)[0],
-                "(dir)Top");
+            asprintf (error, _("No menu item `%s' in node `%s'."),
+                (*argv)[0], "(dir)Top");
         }
       /* Otherwise, we want the dir node.  The only node to be displayed
          or output will be "Top". */
@@ -217,14 +216,7 @@ get_initial_file (char *filename, int *argc, char ***argv, NODE **error_node)
       initial_file = info_find_fullpath (filename, 0);
 
       if (!initial_file && filesys_error_number)
-        {
-          char *error_string;
-          
-          error_string = filesys_error_string
-             (filename, filesys_error_number);
-          *error_node = format_message_node ("%s", error_string);
-          free (error_string);
-        }
+        *error = filesys_error_string (filename, filesys_error_number);
     }
 
   /* Fall back to loading man page. */
@@ -254,7 +246,8 @@ get_initial_file (char *filename, int *argc, char ***argv, NODE **error_node)
 
 /* Expand list of nodes to be loaded. */
 static void
-add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv, NODE **error_node)
+add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
+                   char **error)
 {
   NODE *initial_node;
   char *node_via_menus;
@@ -306,7 +299,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv, NODE **erro
       NODE *initial_node;
 
       initial_node = info_get_node_of_file_buffer (initial_file, "Top");
-      node_via_menus = info_follow_menus (initial_node, argv, error_node, 1);
+      node_via_menus = info_follow_menus (initial_node, argv, error, 1);
       if (node_via_menus)
         add_pointer_to_array (node_via_menus, user_nodenames_index,
                               user_nodenames, user_nodenames_slots, 10);
@@ -328,7 +321,8 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv, NODE **erro
         {
           if (!strcmp (argv[0], (*index_ptr)->label))
             {
-              /* TODO: Clear error_node */
+              free (*error); *error = 0;
+
               add_pointer_to_array ((*index_ptr)->nodename,
                 user_nodenames_index, user_nodenames,
                 user_nodenames_slots, 10);
@@ -344,7 +338,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv, NODE **erro
       NODE *initial_node;
 
       initial_node = info_get_node_of_file_buffer (initial_file, "Top");
-      node_via_menus = info_follow_menus (initial_node, argv, error_node, 0);
+      node_via_menus = info_follow_menus (initial_node, argv, error, 0);
       if (node_via_menus)
         add_pointer_to_array (node_via_menus, user_nodenames_index,
                               user_nodenames, user_nodenames_slots, 10);
@@ -374,7 +368,7 @@ dirname (const char *file)
   return p;
 }
 
-REFERENCE **
+static REFERENCE **
 info_find_matching_files (char *filename)
 {
   size_t argc = 0;
@@ -405,7 +399,7 @@ info_find_matching_files (char *filename)
 
   return argv;
 }
-
+
 static int
 all_files (char *filename, int argc, char **argv)
 {
@@ -550,7 +544,7 @@ main (int argc, char *argv[])
   char *init_file = 0;         /* Name of init file specified. */
   char *initial_file = 0;      /* File to start session with. */
   FILE_BUFFER *initial_fb = 0; /* File to start session with. */
-  NODE *error_node = 0;        /* Error message to display in mini-buffer. */
+  char *error = 0;             /* Error message to display in mini-buffer. */
 
 #ifdef HAVE_SETLOCALE
   /* Set locale via LC_ALL.  */
@@ -775,7 +769,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   if (all_matches_p)
     return all_files (user_filename, argc, argv);
 
-  initial_file = get_initial_file (user_filename, &argc, &argv, &error_node);
+  initial_file = get_initial_file (user_filename, &argc, &argv, &error);
 
   /* --where */
   if (print_where_p)
@@ -820,14 +814,14 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   else if (initial_file && strcmp (MANPAGE_FILE_BUFFER_NAME, initial_file))
     {
       initial_fb = info_load_file (initial_file, 1);
-      add_initial_nodes (initial_fb, argc, argv, &error_node);
+      add_initial_nodes (initial_fb, argc, argv, &error);
     }
 
   /* --output */
   if (user_output_filename)
     {
-      if (error_node)
-        show_error_node (error_node);
+      if (error)
+        info_error (error);
       if (!initial_fb) return 0;
       /* FIXME: Was two separate functions, dump_node_to_file as well.
          Check behaviour is the same. */
@@ -836,15 +830,15 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       return 0;
     }
 
-  if (user_filename && error_node)
+  if (user_filename && error)
     {
-      show_error_node (error_node);
+      info_error (error);
       return 1;
     }
     
   /* Initialize the Info session. */
   begin_multiple_window_info_session (initial_file, user_nodenames,
-                                      error_node);
+                                      error);
   info_session ();
   return 0;
 }
@@ -977,24 +971,25 @@ info_error (const char *format, ...)
 }
 
 void
-show_error_node (NODE *node)
+show_error_node (char *error)
 {
   if (info_error_rings_bell_p)
     terminal_ring_bell ();
   if (!info_windows_initialized_p)
     {
-      if (node->contents[node->nodelen - 1] == '\n')
-        node->contents[node->nodelen - 1] = 0;
-      info_error ("%s", node->contents);
+      info_error ("%s", error);
     }
   else if (!echo_area_is_active)
     {
+      NODE *error_node;
+
+      error_node = format_message_node ("%s", error);
       free_echo_area ();
-      window_set_node_of_window (the_echo_area, node);
+      window_set_node_of_window (the_echo_area, error_node);
       display_update_one_window (the_echo_area);
     }
   else
-    inform_in_echo_area (node->contents);
+    inform_in_echo_area (error);
 }
 
 

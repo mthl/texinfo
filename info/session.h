@@ -124,7 +124,7 @@ extern void info_set_input_from_file (char *filename);
 
 /* Starting an info session. */
 extern void begin_multiple_window_info_session (char *filename,
-    char **nodenames, NODE *error_node);
+    char **nodenames, char *error_msg);
 extern void info_session (void);
 extern void initialize_terminal_and_keymaps (char *init_file);
 extern void initialize_info_session (void);
@@ -203,7 +203,7 @@ extern void info_kill_node (WINDOW *window, int count, unsigned char key);
 extern void info_view_file (WINDOW *window, int count, unsigned char key);
 extern void info_menu_sequence (WINDOW *window, int count, unsigned char key);
 extern char *info_follow_menus (NODE *initial_node, char **menus,
-				NODE **err_node, int strict);
+				char **error_msg, int strict);
 extern void info_man (WINDOW *window, int count, unsigned char key);
 extern void list_visited_nodes (WINDOW *window, int count, unsigned char key);
 extern void select_visited_node (WINDOW *window, int count, unsigned char key);

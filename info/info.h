@@ -176,6 +176,6 @@ extern const char *msg_cant_make_help;
 /* Found in m-x.c.  */
 extern char *read_function_name (const char *prompt, WINDOW *window);
 
-extern void show_error_node (NODE *node);
+extern void show_error_node (char *error_msg);
 
 #endif /* !INFO_H */

@@ -88,10 +88,10 @@ void display_startup_message (void);
 
 /* Begin an info session finding the nodes specified by FILENAME and NODENAMES.
    For each loaded node, create a new window.  Always split the largest of the
-   available windows.  Display error in ERROR_NODE if there is one. */
+   available windows.  Display ERROR in echo area if non-null. */
 void
 begin_multiple_window_info_session (char *filename, char **nodenames,
-                                    NODE *error_node)
+                                    char *error)
 {
   register int i;
   WINDOW *window = 0;
@@ -99,10 +99,10 @@ begin_multiple_window_info_session (char *filename, char **nodenames,
 
   initialize_info_session ();
 
-  if (!error_node)
+  if (!error)
     display_startup_message ();
   else
-    show_error_node (error_node);
+    show_error_node (error);
 
   /* Load dir node as a back-up. */
   if (!filename || !nodenames || !nodenames[0])
@@ -2797,18 +2797,18 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
 
 /* Follow the menu list in MENUS (list of strings terminated by a NULL
    entry) from INITIAL_NODE.  If there is an error, place a message
-   in ERR_NODE.  STRICT says whether to accept incomplete strings as
+   in ERROR.  STRICT says whether to accept incomplete strings as
    menu entries, and whether to return the node so far if we can't
    continue at any point (that might be INITIAL_NODE itself), or to
    return null. */
 char *
-info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
+info_follow_menus (NODE *initial_node, char **menus, char **error,
 		   int strict)
 {
   NODE *node = NULL;
 
-  if (err_node)
-    *err_node = NULL;
+  if (error)
+    *error = NULL;
 
   for (; *menus; menus++)
     {
@@ -2821,9 +2821,9 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
 
       if (!initial_node->references)
         {
-          if (err_node)
-          *err_node = format_message_node (_("No menu in node `%s'."),
-                                           node_printed_rep (initial_node));
+          if (error)
+            asprintf (error, _("No menu in node `%s'."),
+                      node_printed_rep (initial_node));
           debug (3, ("no menu found"));
           free (initial_node);
           return strict ? 0 : initial_node->nodename;
@@ -2856,10 +2856,10 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
       /* If we still failed to find the reference: */
       if (!entry)
         {
-          if (err_node)
-          *err_node = format_message_node (_("No menu item `%s' in node `%s'."),
-                                           arg,
-                                           node_printed_rep (initial_node));
+          if (error)
+            asprintf (error, _("No menu item `%s' in node `%s'."),
+                      arg,
+                      node_printed_rep (initial_node));
           debug (3, ("no entry found"));
           free (initial_node);
           return strict ? 0 : initial_node->nodename;
@@ -2873,11 +2873,11 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
       if (!node)
         {
 	  debug (3, ("no matching node found"));
-	  if (err_node)
-	    *err_node = format_message_node (
-		     _("Unable to find node referenced by `%s' in `%s'."),
-		     entry->label,
-		     node_printed_rep (initial_node));
+	  if (error)
+            asprintf (error,
+                      _("Unable to find node referenced by `%s' in `%s'."),
+		      entry->label,
+		      node_printed_rep (initial_node));
           free (initial_node);
           return strict ? 0 : initial_node->nodename;
         }
@@ -2941,7 +2941,7 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
 
   if (*line)
     {
-      NODE *err_node;
+      char *error = 0;
       NODE *dir_node = info_get_node (NULL, NULL, PARSE_NODE_DFLT);
       char **nodes = split_list_of_nodenames (line);
       char *node = NULL;
@@ -2962,11 +2962,11 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
       if (!dir_node)
         info_error (msg_cant_find_node, "Top");
       else
-        node = info_follow_menus (dir_node, nodes, &err_node, 0);
+        node = info_follow_menus (dir_node, nodes, &error, 0);
 
       free (nodes);
-      if (err_node)
-	show_error_node (err_node);
+      if (error)
+	show_error_node (error);
       else
         {
           NODE *n;
