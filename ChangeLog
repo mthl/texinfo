@@ -1,3 +1,7 @@
+2014-05-01  Karl Berry  <karl@gnu.org>
+
+	* util/gendocs.sh (--no-html, --no-info, --no-tex): new options.
+
 2014-04-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_indices_of_file_buffer, index_entry_exists):
