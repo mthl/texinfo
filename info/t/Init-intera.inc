@@ -12,5 +12,6 @@ PTY_PID=$!
 # Wait for pseudotty process to create file
 while test ! -f $GINFO_PTY_FILE; do sleep 1; done
 exec >"$(cat $GINFO_PTY_FILE | tr -d '\n')"
+exec 2>"$(cat $GINFO_PTY_FILE | tr -d '\n')"
 rm -f $GINFO_PTY_FILE
 

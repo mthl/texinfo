@@ -25,7 +25,6 @@
 /* User-visible variable controls the output of info-index-next. */
 extern int show_index_match;
 
-extern REFERENCE **info_indices_of_window (WINDOW *window);
 extern REFERENCE **info_indices_of_file_buffer (FILE_BUFFER *file_buffer);
 extern void info_apropos (char *string);
 
@@ -37,7 +36,7 @@ extern void info_index_search (WINDOW *window, int count, unsigned char key);
 extern void info_next_index_match (WINDOW *window, int count, unsigned char key);
 extern void info_index_apropos (WINDOW *window, int count, unsigned char key);
 extern void do_info_index_search (WINDOW *window, int count, char *search_string);
-extern int index_entry_exists (WINDOW *window, char *string);
+extern int index_entry_exists (FILE_BUFFER *fb, char *string);
 
 NODE *allfiles_create_node (char *term, REFERENCE **fref);
 

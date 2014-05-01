@@ -335,7 +335,7 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
 
       /* The filename of this node is currently known as the same as the
          name of this file. */
-      entry->filename = file_buffer->fullpath;
+      entry->filename = file_buffer->filename;
 
       /* Add this node structure to the array of node structures in this
          FILE_BUFFER. */
@@ -565,15 +565,14 @@ free_info_tag (NODE *tag)
 
 /* Functions for retrieving files. */
 
-/* Passed to info_find_file_internal and info_load_file.  INFO_GET_TAGS
+/* Passed to info_load_file.  INFO_GET_TAGS
    says to do what is neccessary to fill in the nodes or tags arrays in
    FILE_BUFFER. */
 #define INFO_NO_TAGS  0
 #define INFO_GET_TAGS 1
 
-static FILE_BUFFER *info_find_file_internal (char *filename, int get_tags);
+static FILE_BUFFER *info_find_subfile (char *filename);
 static void get_file_character_encoding (FILE_BUFFER *fb);
-static FILE_BUFFER *info_load_file (char *filename, int get_tags);
 static void remember_info_file (FILE_BUFFER *file_buffer);
 static void info_reload_file_buffer_contents (FILE_BUFFER *fb);
 
@@ -582,22 +581,18 @@ static void info_reload_file_buffer_contents (FILE_BUFFER *fb);
    already, or it may not.  If it does not already appear, find the file,
    and add it to the list of loaded files.  If the file cannot be found,
    return a NULL FILE_BUFFER *. */
-FILE_BUFFER *
-info_find_file (char *filename)
-{
-  return info_find_file_internal (filename, INFO_GET_TAGS);
-}
 
 /* The workhorse for info_find_file ().  Non-zero 2nd argument says to
    try to build a tags table (or otherwise glean the nodes) for this
    file once found.  By default, we build the tags table, but when this
    function is called by info_get_node () when we already have a valid
    tags table describing the nodes, it is unnecessary. */
-static FILE_BUFFER *
-info_find_file_internal (char *filename, int get_tags)
+FILE_BUFFER *
+info_find_file (char *filename)
 {
   int i;
   FILE_BUFFER *file_buffer;
+  char *fullpath;
 
   /* First try to find the file in our list of already loaded files. */
   if (info_loaded_files)
@@ -644,7 +639,7 @@ info_find_file_internal (char *filename, int get_tags)
                       return NULL;
                   }
 
-                if (get_tags && !file_buffer->tags)
+                if (!file_buffer->tags)
                   build_tags_and_nodes (file_buffer);
 
                 return file_buffer;
@@ -653,7 +648,113 @@ info_find_file_internal (char *filename, int get_tags)
     }
 
   /* The file wasn't loaded.  Try to load it now. */
-  file_buffer = info_load_file (filename, get_tags);
+
+  /* Get the full pathname of this file, as known by the info system.
+     That is to say, search along INFOPATH and expand tildes, etc. */
+  fullpath = info_find_fullpath (filename, 0);
+
+  /* FIXME: Put the following in info_find_fullpath, or remove
+     it altogether. */
+  /* If the file referenced by the name returned from info_find_fullpath ()
+     doesn't exist, then try again with the last part of the filename
+     appearing in lowercase. */
+  /* This is probably not needed at all on those systems which define
+     FILENAME_CMP to be mbscasecmp.  But let's do it anyway, lest some
+     network redirector supports case sensitivity.  */
+  if (!fullpath)
+    {
+      char *lowered_name;
+      char *tmp_basename;
+
+      lowered_name = xstrdup (filename);
+      tmp_basename = filename_non_directory (lowered_name);
+
+      while (*tmp_basename)
+        {
+          if (isupper (*tmp_basename))
+            *tmp_basename = tolower (*tmp_basename);
+
+          tmp_basename++;
+        }
+
+      fullpath = info_find_fullpath (lowered_name, 0);
+
+      free (lowered_name);
+    }
+
+  /* If the file wasn't found, give up, returning a NULL pointer. */
+  if (!fullpath)
+    return NULL;
+
+  file_buffer = info_load_file (fullpath, INFO_GET_TAGS);
+
+  return file_buffer;
+}
+
+/* Find a subfile of a split file.  This differs from info_load_file in
+   that it does not fill in a tag table for the file.
+   FIXME: Only look for subfile in same directory as master file. */
+static FILE_BUFFER *
+info_find_subfile (char *filename)
+{
+  int i;
+  FILE_BUFFER *file_buffer = 0;
+  char *fullpath;
+
+  /* First try to find the file in our list of already loaded files. */
+  if (info_loaded_files)
+    {
+      for (i = 0; (file_buffer = info_loaded_files[i]); i++)
+        if (FILENAME_CMP (filename, file_buffer->filename) == 0
+            || FILENAME_CMP (filename, file_buffer->fullpath) == 0)
+          {
+            /* TODO: Check if it's changed since last time. */
+            return file_buffer;
+          }
+    }
+
+  fullpath = info_find_fullpath (filename, 0);
+  if (fullpath)
+    file_buffer = info_load_file (fullpath, INFO_NO_TAGS);
+  return file_buffer;
+}
+
+/* Load the file with path FULLPATH, and return the information structure
+   describing this file, even if the file was already loaded.  Non-zero
+   second argument says to build a list of tags (or nodes) for this file.
+   This is not necessary when loading a subfile for which we already have
+   tags. */
+FILE_BUFFER *
+info_load_file (char *fullpath, int get_tags)
+{
+  char *contents;
+  size_t filesize;
+  struct stat finfo;
+  int compressed;
+  FILE_BUFFER *file_buffer = NULL;
+
+  contents = filesys_read_info_file (fullpath, &filesize, &finfo, &compressed);
+
+  if (!contents)
+    return NULL;
+
+  /* The file was found, and can be read.  Allocate FILE_BUFFER and fill
+     in the various members. */
+  file_buffer = make_file_buffer ();
+  file_buffer->fullpath = fullpath;
+  file_buffer->filename = filename_non_directory (fullpath);
+  file_buffer->finfo = finfo;
+  file_buffer->filesize = filesize;
+  file_buffer->contents = contents;
+  if (compressed)
+    file_buffer->flags |= N_IsCompressed;
+  
+  /* Find encoding of file, if set */
+  get_file_character_encoding (file_buffer);
+
+  /* If requested, build the tags and nodes for this file buffer. */
+  if (get_tags)
+    build_tags_and_nodes (file_buffer);
 
   /* If the file was loaded, remember the name under which it was found. */
   if (file_buffer)
@@ -709,82 +810,6 @@ get_file_character_encoding (FILE_BUFFER *fb)
   fb->encoding = enc_string;
 }
 
-/* Force load the file named FILENAME, and return the information structure
-   describing this file, even if the file was already loaded.  Non-zero
-   second argument says to build a list of tags (or nodes) for this file.
-   This is not necessary when loading a subfile for which we already have
-   tags. */
-static FILE_BUFFER *
-info_load_file (char *filename, int get_tags)
-{
-  char *fullpath, *contents;
-  size_t filesize;
-  struct stat finfo;
-  int compressed;
-  FILE_BUFFER *file_buffer = NULL;
-  
-  /* Get the full pathname of this file, as known by the info system.
-     That is to say, search along INFOPATH and expand tildes, etc. */
-  fullpath = info_find_fullpath (filename, &finfo);
-
-  /* If the file referenced by the name returned from info_find_fullpath ()
-     doesn't exist, then try again with the last part of the filename
-     appearing in lowercase. */
-  /* This is probably not needed at all on those systems which define
-     FILENAME_CMP to be mbscasecmp.  But let's do it anyway, lest some
-     network redirector supports case sensitivity.  */
-  if (!fullpath)
-    {
-      char *lowered_name;
-      char *tmp_basename;
-
-      lowered_name = xstrdup (filename);
-      tmp_basename = filename_non_directory (lowered_name);
-
-      while (*tmp_basename)
-        {
-          if (isupper (*tmp_basename))
-            *tmp_basename = tolower (*tmp_basename);
-
-          tmp_basename++;
-        }
-
-      fullpath = info_find_fullpath (lowered_name, &finfo);
-
-      free (lowered_name);
-    }
-
-  /* If the file wasn't found, give up, returning a NULL pointer. */
-  if (!fullpath)
-    return NULL;
-
-  /* Otherwise, try to load the file. */
-  contents = filesys_read_info_file (fullpath, &filesize, &finfo, &compressed);
-
-  if (!contents)
-    return NULL;
-
-  /* The file was found, and can be read.  Allocate FILE_BUFFER and fill
-     in the various members. */
-  file_buffer = make_file_buffer ();
-  file_buffer->filename = xstrdup (filename);
-  file_buffer->fullpath = fullpath;
-  file_buffer->finfo = finfo;
-  file_buffer->filesize = filesize;
-  file_buffer->contents = contents;
-  if (compressed)
-    file_buffer->flags |= N_IsCompressed;
-  
-  /* Find encoding of file, if set */
-  get_file_character_encoding (file_buffer);
-
-  /* If requested, build the tags and nodes for this file buffer. */
-  if (get_tags)
-    build_tags_and_nodes (file_buffer);
-
-  return file_buffer;
-}
-
 /* Create a new, empty file buffer. */
 FILE_BUFFER *
 make_file_buffer (void)
@@ -797,6 +822,7 @@ make_file_buffer (void)
   file_buffer->subfiles = NULL;
   file_buffer->tags_slots = 0;
   file_buffer->flags = 0;
+  file_buffer->encoding = 0;
 
   return file_buffer;
 }
@@ -828,7 +854,6 @@ forget_info_file (char *filename)
     if (FILENAME_CMP (filename, file_buffer->filename) == 0
         || FILENAME_CMP (filename, file_buffer->fullpath) == 0)
       {
-        free (file_buffer->filename);
         free (file_buffer->fullpath);
 
         if (file_buffer->contents)
@@ -1180,7 +1205,7 @@ info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
   if (!strcmp (fb->filename, tag->filename))
     subfile = fb;
   else
-    subfile = info_find_file_internal (tag->filename, INFO_NO_TAGS);
+    subfile = info_find_subfile (tag->filename);
   if (!subfile)
     return NULL;
 

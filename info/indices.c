@@ -87,22 +87,10 @@ add_index_to_index_nodenames (REFERENCE **array, NODE *node)
                         index_nodenames_slots, 10);
 }
 
-/* Find and return the indices of WINDOW's file.  The indices are defined
+/* Find and return the indices of FILE_BUFFER.  The indices are defined
    as the first node in the file containing the word "Index" and any
    immediately following nodes whose names also contain "Index".  All such
-   indices are concatenated and the result returned.  If WINDOW's info file
-   doesn't have any indices, a NULL pointer is returned. */
-REFERENCE **
-info_indices_of_window (WINDOW *window)
-{
-  FILE_BUFFER *fb;
-
-  fb = file_buffer_of_window (window);
-
-  return info_indices_of_file_buffer (fb);
-}
-
-/* Search for index nodes in FILE_BUFFER and built up composite menu. */
+   indices are concatenated and the result returned. */
 REFERENCE **
 info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
 {
@@ -297,20 +285,17 @@ do_info_index_search (WINDOW *window, int count, char *search_string)
   }
 }
 
-/* Return 1 if STRING appears in indicies of file_buffer_of_window (WINDOW),
-   0 otherwise. */
+/* Return 1 if STRING appears in indicies of FB, 0 otherwise. */
 int
-index_entry_exists (WINDOW *window, char *string)
+index_entry_exists (FILE_BUFFER *fb, char *string)
 {
   register int i;
-  FILE_BUFFER *fb;
 
   /* If there is no previous search string, the user hasn't built an index
      yet. */
   if (!string)
     return 0;
 
-  fb = file_buffer_of_window (window);
   if (!initial_index_filename ||
       !fb ||
       (FILENAME_CMP (initial_index_filename, fb->filename) != 0))

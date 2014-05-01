@@ -101,7 +101,7 @@ extern void print_node (NODE *node);
 
 extern void dump_node_to_file (NODE *node, char *filename,
 			       int flags);
-extern void dump_nodes_to_file (char *filename, char **nodenames,
+extern void dump_nodes_to_file (FILE_BUFFER *file_buffer, char **nodenames,
 				char *output_filename, int flags);
 
 extern char *program_name_from_file_name (char *file_name);
@@ -125,13 +125,11 @@ extern void info_set_input_from_file (char *filename);
 /* Starting an info session. */
 extern void begin_multiple_window_info_session (char *filename,
     char **nodenames);
-extern void begin_info_session (NODE *initial_node);
 extern void info_session (void);
 extern void initialize_terminal_and_keymaps (char *init_file);
-extern void initialize_info_session (NODE *node, int clear_screen);
+extern void initialize_info_session (int clear_screen);
 extern void info_read_and_dispatch (void);
-extern void info_intuit_options_node (WINDOW *window,
-				      NODE *initial_node, char *program);
+extern char *info_intuit_options_node (NODE *initial_node, char *program);
 
 /* Moving the point within a node. */
 extern void info_next_line (WINDOW *window, int count, unsigned char key);
@@ -204,7 +202,7 @@ extern void info_global_prev_node (WINDOW *window, int count, unsigned char key)
 extern void info_kill_node (WINDOW *window, int count, unsigned char key);
 extern void info_view_file (WINDOW *window, int count, unsigned char key);
 extern void info_menu_sequence (WINDOW *window, int count, unsigned char key);
-extern NODE *info_follow_menus (NODE *initial_node, char **menus,
+extern char *info_follow_menus (NODE *initial_node, char **menus,
 				NODE **err_node, int strict);
 extern void info_man (WINDOW *window, int count, unsigned char key);
 extern void list_visited_nodes (WINDOW *window, int count, unsigned char key);

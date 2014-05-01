@@ -149,6 +149,10 @@ extern size_t info_loaded_files_slots;
    return a NULL FILE_BUFFER *. */
 extern FILE_BUFFER *info_find_file (char *filename);
 
+/* Load the file with path FULLPATH, and return pointer to FILE_BUFFER
+   structure.  If GET_TAGS == 0, don't fill in the tag table. */
+extern FILE_BUFFER *info_load_file (char *fullpath, int get_tags);
+
 /* Return a pointer to a new NODE structure. */
 extern NODE *info_create_node (void);
 

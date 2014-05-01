@@ -28,7 +28,7 @@
 /* Local to this file. */
 static char *info_file_in_path (char *filename, char *path, struct stat *finfo);
 static char *lookup_info_filename (char *filename);
-static char *info_absolute_file (char *fname, struct stat *finfo);
+static char *info_add_extension (char *fname, struct stat *finfo);
 
 static void remember_info_filename (char *filename, char *expansion);
 
@@ -103,12 +103,17 @@ info_find_fullpath (char *partial, struct stat *finfo)
   
   /* IS_SLASH and IS_ABSOLUTE defined in ../system.h. */
 
+  /* If path is absolute already, see if it needs an extension. */
   if (IS_ABSOLUTE (partial))
-    fullpath = xstrdup (partial);
+    {
+      fullpath = info_add_extension (partial, finfo);
+    }
 
+  /* Tilde expansion.  FIXME: Not needed, because done by shell. */
   else if (partial[0] == '~')
     {
-      fullpath = tilde_expand_word (partial);
+      partial = tilde_expand_word (partial);
+      fullpath = info_add_extension (partial, finfo);
     }
 
   /* If filename begins with "./" or "../", view it relative to
@@ -117,7 +122,7 @@ info_find_fullpath (char *partial, struct stat *finfo)
            && (IS_SLASH (partial[1])
                || (partial[1] == '.' && IS_SLASH (partial[2]))))
     {
-      fullpath = xstrdup (partial);
+      fullpath = info_add_extension (partial, finfo);
 #if 0
       /* Don't limit paths to 1023 bytes, and don't ask for
          1024 bytes when it isn't needed. 
@@ -141,21 +146,14 @@ info_find_fullpath (char *partial, struct stat *finfo)
 #endif
     }
 
+  /* If just a simple name element, look for it in the path. */
   else
     fullpath = info_file_in_path (partial, infopath (), finfo);
 
-  /* If we have the full path to this file, we still may have to add
-     various extensions to it. */
-  if (fullpath)
-    {
-      char *tmp = fullpath;
-      fullpath = info_absolute_file (fullpath, finfo);
-      free (tmp);
-      return fullpath;
-    }
+  if (!fullpath)
+    filesys_error_number = ENOENT;
 
-  filesys_error_number = ENOENT;
-  return 0;
+  return fullpath;
 }
 
 /* Scan the list of directories in PATH looking for FILENAME.  If we find
@@ -269,12 +267,12 @@ info_file_in_path (char *filename, char *path, struct stat *finfo)
   return info_file_find_next_in_path (filename, path, &i, finfo);
 }
 
-/* Assume FNAME is an absolute file name, and look for it, adding
-   file extensions if necessary.  Return it as a new string; otherwise
+/* Look for a file with a path of FNAME, adding file extensions if necessary.
+   FNAME must contain directory elements.  Return it as a new string; otherwise
    return a NULL pointer.  We do it by taking the file name apart
    into its directory and basename parts, and calling info_file_in_path.*/
 static char *
-info_absolute_file (char *fname, struct stat *finfo)
+info_add_extension (char *fname, struct stat *finfo)
 {
   char *containing_dir = xstrdup (fname);
   char *base = filename_non_directory (containing_dir);
@@ -353,7 +351,6 @@ convert_eols (char *text, long int textlen)
 
 /* Read the contents of PATHNAME, returning a buffer with the contents of
    that file in it, and returning the size of that buffer in FILESIZE.
-   FINFO is a stat struct which has already been filled in by the caller.
    If the file turns out to be compressed, set IS_COMPRESSED to non-zero.
    If the file cannot be read, return a NULL pointer.  Set *FINFO with
    information about file. */
@@ -365,6 +362,9 @@ filesys_read_info_file (char *pathname, size_t *filesize,
   char *contents;
 
   fsize = filesys_error_number = 0;
+
+  stat (pathname, finfo);
+  fsize = (long) finfo->st_size;
 
   if (compressed_filename_p (pathname))
     {
@@ -386,7 +386,6 @@ filesys_read_info_file (char *pathname, size_t *filesize,
         }
 
       /* Try to read the contents of this file. */
-      fsize = (long) finfo->st_size;
       contents = xmalloc (1 + fsize);
       if ((read (descriptor, contents, fsize)) != fsize)
         {

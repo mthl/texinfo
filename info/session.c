@@ -84,7 +84,7 @@ int min_search_length = 1;
 
 void remember_window_and_node (WINDOW *window, NODE *node);
 void forget_window_and_nodes (WINDOW *window);
-void display_startup_message_and_start (void);
+void display_startup_message (void);
 
 /* Begin an info session finding the nodes specified by FILENAME and NODENAMES.
    For each loaded node, create a new window.  Always split the largest of the
@@ -93,22 +93,46 @@ void
 begin_multiple_window_info_session (char *filename, char **nodenames)
 {
   register int i;
-  WINDOW *window = NULL;
+  WINDOW *window = 0;
+  FILE_BUFFER *fb;
 
+  /* Load dir node as a back-up. */
+  if (!filename || !nodenames || !nodenames[0])
+    {
+      /* Used to build `dir' menu from `localdir' files found in INFOPATH. */
+      extern NODE *dir_node (void);
+
+      NODE *node;   
+
+      node = dir_node ();
+      info_set_node_of_window (0, active_window, node);
+      return;
+    }
+  
+  if (!strcmp (MANPAGE_FILE_BUFFER_NAME, filename))
+    {
+      NODE *node;   
+
+      node = get_manpage_node (nodenames[0]);
+      if (node)
+        info_set_node_of_window (0, active_window, node);
+      return;
+    }
+
+  fb = info_find_file (filename);
   for (i = 0; nodenames[i]; i++)
     {
       NODE *node;
 
-      node = info_get_node (filename, nodenames[i], PARSE_NODE_DFLT);
+      node = info_get_node_of_file_buffer (nodenames[i], fb);
 
       if (!node)
         break;
 
-      /* If this is the first node, initialize the info session. */
       if (!window)
         {
-          initialize_info_session (node, 1);
           window = active_window;
+          info_set_node_of_window (0, window, node);
         }
       else
         {
@@ -149,19 +173,10 @@ begin_multiple_window_info_session (char *filename, char **nodenames)
             }
         }
     }
-  display_startup_message_and_start ();
-}
-
-/* Start an info session with INITIAL_NODE. */
-void
-begin_info_session (NODE *initial_node)
-{
-  initialize_info_session (initial_node, 1);
-  display_startup_message_and_start ();
 }
 
 void
-display_startup_message_and_start (void)
+display_startup_message (void)
 {
   char *format;
 
@@ -170,7 +185,6 @@ display_startup_message_and_start (void)
      0);
 
   window_message_in_echo_area (format, VERSION, NULL);
-  info_session ();
 }
 
 /* Run an info session with an already initialized window and node. */
@@ -275,7 +289,7 @@ initialize_terminal_and_keymaps (char *init_file)
 /* Initialize the first info session by starting the terminal, window,
    and display systems.  If CLEAR_SCREEN is 0, don't clear the screen.  */
 void
-initialize_info_session (NODE *node, int clear_screen)
+initialize_info_session (int clear_screen)
 {
   if (clear_screen)
     {
@@ -286,7 +300,6 @@ initialize_info_session (NODE *node, int clear_screen)
   window_initialize_windows (screenwidth, screenheight);
   initialize_info_signal_handler ();
   display_initialize_display (screenwidth, screenheight);
-  info_set_node_of_window (0, active_window, node);
 
   /* Tell the window system how to notify us when a window needs to be
      asynchronously deleted (e.g., user resizes window very small). */
@@ -2778,13 +2791,12 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
 }
 
 /* Follow the menu list in MENUS (list of strings terminated by a NULL
-   entry) from INITIAL_NODE.  If can't continue at any point (no menu or
-   no menu entry for the next item), return the node so far -- that
-   might be INITIAL_NODE itself.  If error, *ERRSTR and *ERRARG[12] will
-   be set to the error message and argument for message, otherwise they
-   will be NULL.  */
-
-NODE *
+   entry) from INITIAL_NODE.  If there is an error, place a message
+   in ERR_NODE.  STRICT says whether to accept incomplete strings as
+   menu entries, and whether to return the node so far if we can't
+   continue at any point (that might be INITIAL_NODE itself), or to
+   return null. */
+char *
 info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
 		   int strict)
 {
@@ -2792,59 +2804,38 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
 
   if (err_node)
     *err_node = NULL;
+
   for (; *menus; menus++)
     {
       static char *first_arg = NULL;
-      REFERENCE **menu;
       REFERENCE *entry;
       char *arg = *menus; /* Remember the name of the menu entry we want. */
 
       debug (3, ("looking for %s in %s:%s", arg, initial_node->filename,
 		 initial_node->nodename));
-      /* A leading space is certainly NOT part of a node name.  Most
-         probably, they typed a space after the separating comma.  The
-         strings in menus[] have their whitespace canonicalized, so
-         there's at most one space to ignore.  */
-      if (*arg == ' ')
-        arg++;
-      if (!first_arg)
-        first_arg = arg;
 
-      menu = initial_node->references;
-
-      /* If no menu item in this node, stop here, but let the user
-         continue to use Info.  Perhaps they wanted this node and didn't
-         realize it. */
-      if (!menu)
+      if (!initial_node->references)
         {
-	  debug (3, ("no menu found"));
-          if (arg == first_arg && !strict)
-            {
-              node = get_manpage_node (first_arg);
-              if (node)
-		{
-		  debug (3, ("falling back to manpage node"));
-		  goto maybe_got_node;
-		}
-            }
-	  if (err_node)
-	    *err_node = format_message_node (_("No menu in node `%s'."),
-					     node_printed_rep (initial_node));
-          return strict ? NULL : initial_node;
+          if (err_node)
+          *err_node = format_message_node (_("No menu in node `%s'."),
+                                           node_printed_rep (initial_node));
+          debug (3, ("no menu found"));
+          free (initial_node);
+          return strict ? 0 : initial_node->nodename;
         }
 
       /* Find the specified menu item. */
-      entry = info_get_menu_entry_by_label (arg, menu);
+      entry = info_get_menu_entry_by_label (arg, initial_node->references);
 
       /* If the item wasn't found, search the list sloppily.  Perhaps this
          user typed "buffer" when they really meant "Buffers". */
-      if (!entry)
+      if (!strict && !entry)
         {
           int i;
           int best_guess = -1;
 
 	  debug (3, ("no entry found: guessing"));
-          for (i = 0; (entry = menu[i]); i++)
+          for (i = 0; (entry = initial_node->references[i]); i++)
             {
               if (mbscasecmp (entry->label, arg) == 0)
                 break;
@@ -2854,59 +2845,26 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
             }
 
           if (!entry && best_guess != -1)
-            entry = menu[best_guess];
+            entry = initial_node->references[best_guess];
         }
 
-      /* If we still failed to find the reference, start Info with the current
-         node anyway.  It is probably a misspelling. */
+      /* If we still failed to find the reference: */
       if (!entry)
         {
-          if (arg == first_arg)
-            {
-              /* Maybe they typed "info foo" instead of "info -f foo".  */
-              node = info_get_node (first_arg, NULL, PARSE_NODE_DFLT);
-              if (node)
-                add_file_directory_to_path (first_arg);
-	      else if (strict)
-		return NULL;
-              else
-                node = get_manpage_node (first_arg);
-              if (node)
-                goto maybe_got_node;
-            }
-
-	  if (err_node)
-	    *err_node = format_message_node (_("No menu item `%s' in node `%s'."),
-					     arg,
-					     node_printed_rep (initial_node));
-          return strict ? NULL : initial_node;
+          if (err_node)
+          *err_node = format_message_node (_("No menu item `%s' in node `%s'."),
+                                           arg,
+                                           node_printed_rep (initial_node));
+          debug (3, ("no entry found"));
+          free (initial_node);
+          return strict ? 0 : initial_node->nodename;
         }
-
-      /* We have found the reference that the user specified.  If no
-         filename in this reference, define it. */
-      if (!entry->filename)
-        entry->filename = xstrdup (initial_node->parent ? initial_node->parent
-                                                     : initial_node->filename);
 
       debug (3, ("entry: %s, %s", entry->filename, entry->nodename));
       
       /* Try to find this node.  */
-      node = info_get_node (entry->filename, entry->nodename, 
-                            PARSE_NODE_VERBATIM);
-      if (!strict && !node && arg == first_arg)
-        {
-          node = get_manpage_node (first_arg);
-          if (node)
-            goto maybe_got_node;
-        }
-
-      /* Since we cannot find it, try using the label of the entry as a
-         file, i.e., "(LABEL)Top".  */
-      if (!node && entry->nodename
-          && strcmp (entry->label, entry->nodename) == 0)
-        node = info_get_node (entry->label, "Top", PARSE_NODE_DFLT);
-
-    maybe_got_node:
+      node = info_get_node (initial_node->filename, entry->nodename,
+                            PARSE_NODE_DFLT);
       if (!node)
         {
 	  debug (3, ("no matching node found"));
@@ -2915,7 +2873,8 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
 		     _("Unable to find node referenced by `%s' in `%s'."),
 		     entry->label,
 		     node_printed_rep (initial_node));
-          return strict ? NULL : initial_node;
+          free (initial_node);
+          return strict ? 0 : initial_node->nodename;
         }
 
       debug (3, ("node: %s, %s", node->filename, node->nodename));
@@ -2925,7 +2884,8 @@ info_follow_menus (NODE *initial_node, char **menus, NODE **err_node,
       initial_node = node;
     }
 
-  return initial_node;
+  free (initial_node);
+  return initial_node->nodename;
 }
 
 /* Split STR into individual node names by writing null bytes in wherever
@@ -2979,7 +2939,7 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
       NODE *err_node;
       NODE *dir_node = info_get_node (NULL, NULL, PARSE_NODE_DFLT);
       char **nodes = split_list_of_nodenames (line);
-      NODE *node = NULL;
+      char *node = NULL;
 
       /* If DIR_NODE is NULL, they might be reading a file directly,
          like in "info -d . -f ./foo".  Try using "Top" instead.  */
@@ -3003,7 +2963,11 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
       if (err_node)
 	show_error_node (err_node);
       else
-        info_set_node_of_window (1, window, node);
+        {
+          NODE *n;
+          n = info_get_node_with_defaults (0, node, PARSE_NODE_DFLT, window);
+          info_set_node_of_window (1, window, n);
+        }
     }
 
   free (line);
@@ -3051,8 +3015,8 @@ entry_in_menu (char *arg, REFERENCE **menu, int exact)
 /* Find the node that is the best candidate to list the PROGRAM's
    invocation info and its command-line options, by looking for menu
    items and chains of menu items with characteristic names.  */
-void
-info_intuit_options_node (WINDOW *window, NODE *initial_node, char *program)
+char *
+info_intuit_options_node (NODE *initial_node, char *program)
 {
   /* The list of node names typical for GNU manuals where the program
      usage and specifically the command-line arguments are described.
@@ -3125,11 +3089,7 @@ info_intuit_options_node (WINDOW *window, NODE *initial_node, char *program)
         break;
     }
 
-  /* We've got our best shot at the invocation node.  Now select it.  */
-  if (initial_node)
-    info_set_node_of_window (1, window, initial_node);
-  if (!info_error_was_printed)
-    window_clear_echo_area ();
+  return initial_node->nodename;
 }
 
 /* Given a name of an Info file, find the name of the package it
@@ -3162,6 +3122,7 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
   char *program_name, *line;
   char *default_program_name, *prompt, *file_name;
   NODE *top_node;
+  char *invocation_node;
 
   /* Intuit the name of the program they are likely to want.
      We use the file name of the current Info file as a hint.  */
@@ -3190,7 +3151,20 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
   if (!top_node)
     info_error (msg_cant_find_node, "Top");
 
-  info_intuit_options_node (window, top_node, program_name);
+  invocation_node = info_intuit_options_node (top_node, program_name);
+
+  /* We've got our best shot at the invocation node.  Now select it.  */
+  if (invocation_node)
+    {
+      NODE *node;
+
+      node = info_get_node_with_defaults (0, invocation_node,
+                                                  PARSE_NODE_DFLT, window);
+      info_set_node_of_window (1, window, node);
+    }
+
+  if (!info_error_was_printed)
+    window_clear_echo_area ();
   free (line);
   free (default_program_name);
 }
@@ -3448,16 +3422,21 @@ static int dump_node_to_stream (char *filename, char *nodename,
 				FILE *stream, int dump_subnodes);
 static void initialize_dumping (void);
 
-/* Dump the nodes specified by FILENAME and NODENAMES to the file named
+/* Dump the nodes in FILE_BUFFER called NODENAMES to the file named
    in OUTPUT_FILENAME.  If DUMP_SUBNODES is set, recursively dump
    the nodes which appear in the menu of each node dumped. */
 void
-dump_nodes_to_file (char *filename, char **nodenames,
+dump_nodes_to_file (FILE_BUFFER *file_buffer, char **nodenames,
 		    char *output_filename, int flags)
 {
   int i;
   FILE *output_stream;
+  char *filename;
   
+  if (!file_buffer)
+    return;
+
+  filename = file_buffer->filename;
   debug (1, (_("writing file %s"), filename));
 
   /* Get the stream to print the nodes to.  Special case of an output

@@ -109,6 +109,5 @@ TESTS = \
 	t/help.sh
 
 XFAIL_TESTS = \
-      t/index-long-nodeline.sh \
-      t/dir-file-node.sh
+      t/index-long-nodeline.sh
 

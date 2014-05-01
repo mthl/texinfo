@@ -1,3 +1,46 @@
+2014-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/filesys.c (info_absolute_file, info_add_extension):
+	Function renamed.
+	(info_find_fullpath): Call info_add_extension.
+	(filesys_read_info_file): Use finfo as an output parameter instead
+	of an input parameter.
+
+	* info/indices.c (info_indices_of_window): Unused function deleted.
+	(index_entry_exists): Use FILE_BUFFER argument instead of WINDOW.
+
+	* info/info.c (single_file, main, get_initial_file)
+	(add_initial_nodes): single_file split between main and new functions.
+	--node flag works without using --file.  Search in indices if
+	following menus fails.
+
+	* info/nodes.c (get_nodes_of_tags_table): Set filename on entries
+	from filename field of FILE_BUFFER, not the fullpath field.
+	(info_find_file): Deleted.
+	(info_find_file_internal, info_find_file): Renamed and argument
+	get_tags removed.
+	(info_find_subfile): New function to be used instead of
+	info_find_file_internal for retrieving subfiles.
+	(info_load_file): No longer static.
+	(make_file_buffer): Set encoding field of FILE_BUFFER.
+
+	* info/session.c (begin_multiple_window_info_session): Work
+	just as well for only one window.  Don't call info_session.
+	(begin_info_session): Function deleted.
+	(display_startup_message_and_start, display_startup_message):
+	Renamed, and don't call info_session.
+	(initialize_info_session): Don't initialize the session with a
+	given NODE.
+
+	* info/session.c (info_follow_menus): Don't handle man pages or
+	look for reference labels as files.  Return name of destination
+	node.  All callers updated.
+	(info_intuit_options_node): Don't take window argument and return
+	name of node.  Callers updated.
+	(dump_nodes_to_file): Arguments changed.
+
+	* info/t/Init-intera.inc: Redirect stdout as well as stdin.
+
 2014-05-01  Karl Berry  <karl@gnu.org>
 
 	* util/gendocs.sh (copy_images): look for images in . as well
