@@ -1,12 +1,18 @@
 2014-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/indices.c (info_indices_of_file_buffer): Store return
+	value in index_index.
+
+2014-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info.c (get_initial_file, add_initial_nodes)
 	(show_error_node)
 	* info/session.c (begin_multiple_window_info_session)
 	(info_follow_menus): Use char * to store error message, and only
 	build NODE if necessary.
 
-	(info_find_matching_files): Declared static.
+	* info/info.c (info_find_matching_files): Declared static.
+
 2014-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (begin_multiple_window_info_session): Call

@@ -162,6 +162,9 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
     if (!result[i]->filename)
       result[i]->filename = xstrdup (file_buffer->filename);
 
+  /* Store result so that if we call do_info_index_search later, it
+     will be set. */
+  index_index = result;
   return result;
 }
 
