@@ -1,5 +1,11 @@
 2014-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (begin_multiple_window_info_session): Call
+	initialize_info_session and display startup message or error.  Caller
+	updated.
+
+2014-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c (info_get_node_of_file_buffer): Order of arguments
 	reversed.
 	(info_node_of_file_buffer_tags): Merged into

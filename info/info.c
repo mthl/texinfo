@@ -823,18 +823,11 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       add_initial_nodes (initial_fb, argc, argv, &error_node);
     }
 
-  if (!user_output_filename
-      && !(user_filename && error_node))
-    initialize_info_session ();
-
-  if (error_node)
-    show_error_node (error_node);
-  else if (!user_output_filename)
-    display_startup_message ();
-
   /* --output */
   if (user_output_filename)
     {
+      if (error_node)
+        show_error_node (error_node);
       if (!initial_fb) return 0;
       /* FIXME: Was two separate functions, dump_node_to_file as well.
          Check behaviour is the same. */
@@ -843,13 +836,15 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       return 0;
     }
 
+  if (user_filename && error_node)
+    {
+      show_error_node (error_node);
+      return 1;
+    }
+    
   /* Initialize the Info session. */
-
-  if (!(user_filename && error_node))
-    begin_multiple_window_info_session (initial_file, user_nodenames);
-  else
-    return 1;
-
+  begin_multiple_window_info_session (initial_file, user_nodenames,
+                                      error_node);
   info_session ();
   return 0;
 }

@@ -88,13 +88,21 @@ void display_startup_message (void);
 
 /* Begin an info session finding the nodes specified by FILENAME and NODENAMES.
    For each loaded node, create a new window.  Always split the largest of the
-   available windows. */
+   available windows.  Display error in ERROR_NODE if there is one. */
 void
-begin_multiple_window_info_session (char *filename, char **nodenames)
+begin_multiple_window_info_session (char *filename, char **nodenames,
+                                    NODE *error_node)
 {
   register int i;
   WINDOW *window = 0;
   FILE_BUFFER *fb;
+
+  initialize_info_session ();
+
+  if (!error_node)
+    display_startup_message ();
+  else
+    show_error_node (error_node);
 
   /* Load dir node as a back-up. */
   if (!filename || !nodenames || !nodenames[0])
