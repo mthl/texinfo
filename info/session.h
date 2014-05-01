@@ -127,7 +127,7 @@ extern void begin_multiple_window_info_session (char *filename,
     char **nodenames);
 extern void info_session (void);
 extern void initialize_terminal_and_keymaps (char *init_file);
-extern void initialize_info_session (int clear_screen);
+extern void initialize_info_session (void);
 extern void info_read_and_dispatch (void);
 extern char *info_intuit_options_node (NODE *initial_node, char *program);
 

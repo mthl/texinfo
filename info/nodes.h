@@ -179,8 +179,8 @@ extern NODE *info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr);
    FILE_BUFFER.  NODENAME can be passed as NULL, in which case the
    nodename of "Top" is used.  If the node cannot be found, return a
    NULL pointer. */
-extern NODE *info_get_node_of_file_buffer (char *nodename,
-    FILE_BUFFER *file_buffer);
+extern NODE *info_get_node_of_file_buffer (FILE_BUFFER *file_buffer,
+                                           char *nodename);
 
 /* Grovel FILE_BUFFER->contents finding tags and nodes, and filling in the
    various slots.  This can also be used to rebuild a tag or node table. */

@@ -904,8 +904,6 @@ static int get_filename_and_nodename (int flag, WINDOW *window,
                                       char *filename_in, char *nodename_in);
 static void node_set_body_start (NODE *node);
 static int adjust_nodestart (FILE_BUFFER *file_buffer, NODE *tag);
-static NODE *info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer,
-    char *nodename);
 
 /* Return a pointer to a newly allocated NODE structure, with
    fields filled in. */
@@ -990,7 +988,7 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
   if (file_buffer)
     {
       /* Look for the node.  */
-      node = info_get_node_of_file_buffer (nodename, file_buffer);
+      node = info_get_node_of_file_buffer (file_buffer, nodename);
     }
 
   if (!file_buffer)
@@ -1008,11 +1006,11 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
   /* If the node not found was "Top", try again with different case. */
   if (!node && (nodename && mbscasecmp (nodename, "Top") == 0))
     {
-      node = info_get_node_of_file_buffer ("Top", file_buffer);
+      node = info_get_node_of_file_buffer (file_buffer, "Top");
       if (!node)
-        node = info_get_node_of_file_buffer ("top", file_buffer);
+        node = info_get_node_of_file_buffer (file_buffer, "top");
       if (!node)
-        node = info_get_node_of_file_buffer ("TOP", file_buffer);
+        node = info_get_node_of_file_buffer (file_buffer, "TOP");
     }
 
 cleanup_and_exit:
@@ -1076,7 +1074,7 @@ node_set_body_start (NODE *node)
    nodename of "Top" is used.  If the node cannot be found, return a
    NULL pointer. */
 NODE *
-info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
+info_get_node_of_file_buffer (FILE_BUFFER *file_buffer, char *nodename)
 {
   NODE *node = NULL;
 
@@ -1107,7 +1105,19 @@ info_get_node_of_file_buffer (char *nodename, FILE_BUFFER *file_buffer)
      bother building a node list for it. */
   else if (file_buffer->tags)
     {
-      node = info_node_of_file_buffer_tags (file_buffer, nodename);
+      NODE *tag;
+      int i;
+
+      /* If no tags at all (possibly a misformatted info file), quit.  */
+      if (!file_buffer->tags)
+        return NULL;
+
+      for (i = 0; (tag = file_buffer->tags[i]); i++)
+        if (strcmp (nodename, tag->nodename) == 0)
+          {
+            node = info_node_of_tag (file_buffer, &file_buffer->tags[i]);
+            break;
+          }
     }
 
   /* Return the results of our node search. */
@@ -1318,20 +1328,4 @@ info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
 static NODE *
 info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer, char *nodename)
 {
-  NODE *tag;
-  int i;
-
-  /* If no tags at all (possibly a misformatted info file), quit.  */
-  if (!file_buffer->tags)
-    return NULL;
-
-  for (i = 0; (tag = file_buffer->tags[i]); i++)
-    if (strcmp (nodename, tag->nodename) == 0)
-      {
-        return info_node_of_tag (file_buffer, &file_buffer->tags[i]);
-      }
-
-  /* There was a tag table for this file, and the node wasn't found.
-     Return NULL, since this file doesn't contain the desired node. */
-  return NULL;
 }

@@ -291,7 +291,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv, NODE **erro
       else
         program = xstrdup ("");
       
-      top_node = info_get_node_of_file_buffer ("Top", initial_file);
+      top_node = info_get_node_of_file_buffer (initial_file, "Top");
       invoc_node = info_intuit_options_node (top_node, program);
       if (invoc_node)
         add_pointer_to_array (invoc_node, user_nodenames_index,
@@ -305,7 +305,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv, NODE **erro
     {
       NODE *initial_node;
 
-      initial_node = info_get_node_of_file_buffer ("Top", initial_file);
+      initial_node = info_get_node_of_file_buffer (initial_file, "Top");
       node_via_menus = info_follow_menus (initial_node, argv, error_node, 1);
       if (node_via_menus)
         add_pointer_to_array (node_via_menus, user_nodenames_index,
@@ -343,7 +343,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv, NODE **erro
     {
       NODE *initial_node;
 
-      initial_node = info_get_node_of_file_buffer ("Top", initial_file);
+      initial_node = info_get_node_of_file_buffer (initial_file, "Top");
       node_via_menus = info_follow_menus (initial_node, argv, error_node, 0);
       if (node_via_menus)
         add_pointer_to_array (node_via_menus, user_nodenames_index,
@@ -513,7 +513,7 @@ all_files (char *filename, int argc, char **argv)
     }
 #endif
   
-  initialize_info_session (1);
+  initialize_info_session ();
   info_set_node_of_window (0, active_window, allfiles_create_node (argc ? argv[0] : fname, fref));;
   display_startup_message ();
   info_session ();
@@ -799,7 +799,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       initial_fb = info_load_file (initial_file, 1);
       if (initial_fb && index_entry_exists (initial_fb, index_search_string))
         {
-          initialize_info_session (1);
+          initialize_info_session ();
           initial_node = info_get_node (initial_file, "Top", PARSE_NODE_DFLT);
           info_set_node_of_window (0, active_window, initial_node);
           do_info_index_search (windows, 0, index_search_string);
@@ -825,7 +825,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
 
   if (!user_output_filename
       && !(user_filename && error_node))
-    initialize_info_session (1);
+    initialize_info_session ();
 
   if (error_node)
     show_error_node (error_node);

@@ -124,7 +124,7 @@ begin_multiple_window_info_session (char *filename, char **nodenames)
     {
       NODE *node;
 
-      node = info_get_node_of_file_buffer (nodenames[i], fb);
+      node = info_get_node_of_file_buffer (fb, nodenames[i]);
 
       if (!node)
         break;
@@ -287,15 +287,12 @@ initialize_terminal_and_keymaps (char *init_file)
 }
 
 /* Initialize the first info session by starting the terminal, window,
-   and display systems.  If CLEAR_SCREEN is 0, don't clear the screen.  */
+   and display systems.  */
 void
-initialize_info_session (int clear_screen)
+initialize_info_session (void)
 {
-  if (clear_screen)
-    {
-      terminal_prep_terminal ();
-      terminal_clear_screen ();
-    }
+  terminal_prep_terminal ();
+  terminal_clear_screen ();
 
   window_initialize_windows (screenwidth, screenheight);
   initialize_info_signal_handler ();

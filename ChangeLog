@@ -1,5 +1,15 @@
 2014-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (info_get_node_of_file_buffer): Order of arguments
+	reversed.
+	(info_node_of_file_buffer_tags): Merged into
+	info_get_node_of_file_buffer.
+
+	* info/session.c (initialize_info_session): Argument 'clear_screen'
+	removed.
+
+2014-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/filesys.c (info_absolute_file, info_add_extension):
 	Function renamed.
 	(info_find_fullpath): Call info_add_extension.
@@ -39,7 +49,7 @@
 	name of node.  Callers updated.
 	(dump_nodes_to_file): Arguments changed.
 
-	* info/t/Init-intera.inc: Redirect stdout as well as stdin.
+	* info/t/Init-intera.inc: Redirect stderr as well as stdin.
 
 2014-05-01  Karl Berry  <karl@gnu.org>
 
