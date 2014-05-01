@@ -1322,10 +1322,3 @@ info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
   
   return node;
 }
-
-/* Return the node from FILE_BUFFER which matches NODENAME by searching
-   the tags table in FILE_BUFFER, or NULL.  */
-static NODE *
-info_node_of_file_buffer_tags (FILE_BUFFER *file_buffer, char *nodename)
-{
-}
