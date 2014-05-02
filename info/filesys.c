@@ -449,7 +449,6 @@ filesys_read_compressed (char *pathname, size_t *filesize)
   sprintf (command, "%s%s < %s",
 	   decompressor, STRIP_DOT_EXE ? ".exe" : "", pathname);
 
-#if !defined (BUILDING_LIBRARY)
   if (info_windows_initialized_p)
     {
       char *temp;
@@ -459,7 +458,6 @@ filesys_read_compressed (char *pathname, size_t *filesize)
       message_in_echo_area ("%s", temp);
       free (temp);
     }
-#endif /* !BUILDING_LIBRARY */
 
   stream = popen (command, FOPEN_RBIN);
   free (command);
@@ -509,10 +507,8 @@ filesys_read_compressed (char *pathname, size_t *filesize)
       filesys_error_number = errno;
     }
 
-#if !defined (BUILDING_LIBARARY)
   if (info_windows_initialized_p)
     unmessage_in_echo_area ();
-#endif /* !BUILDING_LIBRARY */
   return contents;
 }
 
