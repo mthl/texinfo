@@ -508,7 +508,7 @@ all_files (char *filename, int argc, char **argv)
 #endif
   
   initialize_info_session ();
-  info_set_node_of_window (0, active_window, allfiles_create_node (argc ? argv[0] : fname, fref));;
+  info_set_node_of_window (active_window, allfiles_create_node (argc ? argv[0] : fname, fref));;
   display_startup_message ();
   info_session ();
   return EXIT_SUCCESS;
@@ -794,9 +794,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       if (initial_fb && index_entry_exists (initial_fb, index_search_string))
         {
           initialize_info_session ();
-          initial_node = info_get_node (initial_file, "Top", PARSE_NODE_DFLT);
-          info_set_node_of_window (0, active_window, initial_node);
-          do_info_index_search (windows, 0, index_search_string);
+          do_info_index_search (windows, initial_fb, 0, index_search_string);
         }
       else
         {

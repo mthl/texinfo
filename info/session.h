@@ -81,8 +81,7 @@ extern unsigned char info_input_pending_p (void);
 extern void remember_window_and_node (WINDOW *window, NODE *node);
 extern void set_remembered_pagetop_and_point (WINDOW *window);
 extern void set_window_pagetop (WINDOW *window, int desired_top);
-extern void info_set_node_of_window (int remember, WINDOW *window,
-    NODE *node);
+extern void info_set_node_of_window (WINDOW *window, NODE *node);
 extern void initialize_keyseq (void);
 extern void add_char_to_keyseq (char character);
 extern void info_gather_typeahead (void);

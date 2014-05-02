@@ -171,29 +171,30 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
 DECLARE_INFO_COMMAND (info_index_search,
    _("Look up a string in the index for this file"))
 {
-  do_info_index_search (window, count, 0);
+  do_info_index_search (window, file_buffer_of_window (window), count, 0);
 }
 
 /* Look up SEARCH_STRING in the index for this file.  If SEARCH_STRING
    is NULL, prompt user for input.  */ 
 void
-do_info_index_search (WINDOW *window, int count, char *search_string)
+do_info_index_search (WINDOW *window, FILE_BUFFER *fb,
+                      int count, char *search_string)
 {
-  FILE_BUFFER *fb;
   char *line;
 
   /* Reset the index offset, since this is not the info-index-next command. */
   index_offset = 0;
 
+  if (!fb)
+    return;
+
   /* The user is selecting a new search string, so flush the old one. */
   free (index_search);
   index_search = NULL;
 
-  /* If this window's file is not the same as the one that we last built an
+  /* If the file is not the same as the one that we last built an
      index for, build and remember an index now. */
-  fb = file_buffer_of_window (window);
   if (!initial_index_filename ||
-      !fb ||
       (FILENAME_CMP (initial_index_filename, fb->filename) != 0))
     {
       info_free_references (index_index);
@@ -494,7 +495,7 @@ DECLARE_INFO_COMMAND (info_next_index_match,
       return;
     }
 
-  info_set_node_of_window (1, window, node);
+  info_set_node_of_window (window, node);
 
   {
     long loc;
@@ -947,7 +948,7 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   tfb = create_virtindex_file_buffer (fb->filename, text.base, text.off);
   node = create_virtindex_node (tfb);
   
-  info_set_node_of_window (1, window, node);
+  info_set_node_of_window (window, node);
   
   if (!info_error_was_printed)
     window_clear_echo_area ();
@@ -1002,7 +1003,7 @@ DECLARE_INFO_COMMAND (info_all_files, _("Show all matching files"))
       return;
     }
 
-  info_set_node_of_window (1, window, allfiles_node);
+  info_set_node_of_window (window, allfiles_node);
 
   if (!info_error_was_printed)
     window_clear_echo_area ();

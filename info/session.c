@@ -113,7 +113,7 @@ begin_multiple_window_info_session (char *filename, char **nodenames,
       NODE *node;   
 
       node = dir_node ();
-      info_set_node_of_window (0, active_window, node);
+      info_set_node_of_window (active_window, node);
       return;
     }
   
@@ -123,7 +123,7 @@ begin_multiple_window_info_session (char *filename, char **nodenames,
 
       node = get_manpage_node (nodenames[0]);
       if (node)
-        info_set_node_of_window (0, active_window, node);
+        info_set_node_of_window (active_window, node);
       return;
     }
 
@@ -140,7 +140,7 @@ begin_multiple_window_info_session (char *filename, char **nodenames,
       if (!window)
         {
           window = active_window;
-          info_set_node_of_window (0, window, node);
+          info_set_node_of_window (window, node);
         }
       else
         {
@@ -170,7 +170,6 @@ begin_multiple_window_info_session (char *filename, char **nodenames,
           if (window)
             {
               window_tile_windows (TILE_INTERNALS);
-              remember_window_and_node (window, node);
             }
           else
             {
@@ -508,10 +507,9 @@ forget_window_and_nodes (WINDOW *window)
    the footnotes for this window.  If REMEMBER is nonzero, first call
    set_remembered_pagetop_and_point.  */
 void
-info_set_node_of_window (int remember, WINDOW *window, NODE *node)
+info_set_node_of_window (WINDOW *window, NODE *node)
 {
-  if (remember)
-    set_remembered_pagetop_and_point (window);
+  set_remembered_pagetop_and_point (window);
 
   /* Put this node into the window. */
   window_set_node_of_window (window, node);
@@ -1803,7 +1801,7 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
   free (file_system_error);
 
   if (node)
-    info_set_node_of_window (1, window, node);
+    info_set_node_of_window (window, node);
 }
 
 /* Parse the node specification in LINE using WINDOW to default the filename.
@@ -1893,7 +1891,7 @@ info_handle_pointer (char *label, WINDOW *window)
       info_win->pagetops[info_win->current] = window->pagetop;
       info_win->points[info_win->current] = window->point;
     }
-  info_set_node_of_window (1, window, node);
+  info_set_node_of_window (window, node);
 }
 
 /* Make WINDOW display the "Next:" node of the node currently being
@@ -1948,7 +1946,7 @@ DECLARE_INFO_COMMAND (info_last_node, _("Select the last node in this file"))
   if (!node)
     info_error ("%s", _("This window has no additional nodes"));
   else
-    info_set_node_of_window (1, window, node);
+    info_set_node_of_window (window, node);
 }
 
 /* Make WINDOW display the first node of this info file. */
@@ -1982,7 +1980,7 @@ DECLARE_INFO_COMMAND (info_first_node, _("Select the first node in this file"))
   if (!node)
     info_error ("%s", _("This window has no additional nodes"));
   else
-    info_set_node_of_window (1, window, node);
+    info_set_node_of_window (window, node);
 }
 
 /* Move to 1st menu item, Next, Up/Next, or error in this window. */
@@ -2971,7 +2969,7 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
         {
           NODE *n;
           n = info_get_node_with_defaults (0, node, PARSE_NODE_DFLT, window);
-          info_set_node_of_window (1, window, n);
+          info_set_node_of_window (window, n);
         }
     }
 
@@ -3165,7 +3163,7 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
 
       node = info_get_node_with_defaults (0, invocation_node,
                                                   PARSE_NODE_DFLT, window);
-      info_set_node_of_window (1, window, node);
+      info_set_node_of_window (window, node);
     }
 
   if (!info_error_was_printed)
@@ -3192,7 +3190,7 @@ DECLARE_INFO_COMMAND (info_man, _("Read a manpage reference and select it"))
     {
       NODE *manpage = info_get_node (MANPAGE_FILE_BUFFER_NAME, line, 0);
       if (manpage)
-        info_set_node_of_window (1, window, manpage);
+        info_set_node_of_window (window, manpage);
     }
 
   free (line);
@@ -3400,7 +3398,7 @@ DECLARE_INFO_COMMAND (info_view_file, _("Read the name of a file and select it")
             info_error (_("Cannot find `%s'."), line);
         }
       else
-        info_set_node_of_window (1, window, node);
+        info_set_node_of_window (window, node);
 
       free (line);
     }
