@@ -93,6 +93,7 @@ TESTS = \
 	t/file-node.sh \
 	t/file-nodes.sh \
 	t/no-file.sh \
+	t/split.sh \
 	t/dir.sh \
 	t/dir-file.sh \
 	t/dir-nondir.sh \

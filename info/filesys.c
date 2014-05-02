@@ -27,10 +27,8 @@
 
 /* Local to this file. */
 static char *info_file_in_path (char *filename, char *path, struct stat *finfo);
-static char *lookup_info_filename (char *filename);
-static char *info_add_extension (char *fname, struct stat *finfo);
-
-static void remember_info_filename (char *filename, char *expansion);
+static char *info_add_extension (char *dirname, char *fname,
+                                 struct stat *finfo);
 
 static char *filesys_read_compressed (char *pathname, size_t *filesize);
 
@@ -50,6 +48,7 @@ typedef struct
 } COMPRESSION_ALIST;
 
 static char *info_suffixes[] = {
+  "",
   ".info",
   "-info",
   "/index",
@@ -59,7 +58,6 @@ static char *info_suffixes[] = {
   ".in",        /* for .inz, .igz etc. */
   ".i",
 #endif
-  "",
   NULL
 };
 
@@ -93,8 +91,12 @@ char *
 info_find_fullpath (char *partial, struct stat *finfo)
 {
   char *fullpath = 0;
+  struct stat dummy;
 
   debug(1, (_("looking for file \"%s\""), partial));
+
+  if (!finfo)
+    finfo = &dummy;
 
   filesys_error_number = 0;
 
@@ -106,23 +108,25 @@ info_find_fullpath (char *partial, struct stat *finfo)
   /* If path is absolute already, see if it needs an extension. */
   if (IS_ABSOLUTE (partial))
     {
-      fullpath = info_add_extension (partial, finfo);
+      fullpath = info_add_extension (0, partial, finfo);
     }
 
   /* Tilde expansion.  FIXME: Not needed, because done by shell. */
   else if (partial[0] == '~')
     {
       partial = tilde_expand_word (partial);
-      fullpath = info_add_extension (partial, finfo);
+      fullpath = info_add_extension (0, partial, finfo);
     }
 
-  /* If filename begins with "./" or "../", view it relative to
-     current directory. */
-  else if (partial[0] == '.'
+  /* If filename begins with "./" or "../", or if there are intermediate
+     directories, interpret it as relative to current directory.  This may
+     be from the command line, or in the subfiles table of a split file. */
+  else if ((partial[0] == '.'
            && (IS_SLASH (partial[1])
                || (partial[1] == '.' && IS_SLASH (partial[2]))))
+          || strchr (partial, '/'))
     {
-      fullpath = info_add_extension (partial, finfo);
+      fullpath = info_add_extension (0, partial, finfo);
 #if 0
       /* Don't limit paths to 1023 bytes, and don't ask for
          1024 bytes when it isn't needed. 
@@ -163,8 +167,7 @@ char *
 info_file_find_next_in_path (char *filename, char *path, int *diridx,
                              struct stat *finfo)
 {
-  char *temp_dirname;
-  int statable;
+  char *dirname;
   struct stat dummy;
 
   /* Used for output of fstat in case the caller doesn't care about
@@ -177,85 +180,25 @@ info_file_find_next_in_path (char *filename, char *path, int *diridx,
   if (!*filename || STREQ (filename, ".") || STREQ (filename, ".."))
     return NULL;
 
-  while ((temp_dirname = extract_colon_unit (path, diridx)))
+  while ((dirname = extract_colon_unit (path, diridx)))
     {
-      register int i, pre_suffix_length;
-      char *temp;
+      char *with_extension = 0;
 
-      debug(1, (_("looking for file %s in %s"), filename, temp_dirname));
+      debug(1, (_("looking for file %s in %s"), filename, dirname));
+
       /* Expand a leading tilde if one is present. */
-      if (*temp_dirname == '~')
+      if (*dirname == '~')
         {
-          char *expanded_dirname = tilde_expand_word (temp_dirname);
-          free (temp_dirname);
-          temp_dirname = expanded_dirname;
+          char *expanded_dirname = tilde_expand_word (dirname);
+          free (dirname);
+          dirname = expanded_dirname;
         }
 
-      temp = xmalloc (30 + strlen (temp_dirname) + strlen (filename));
-      strcpy (temp, temp_dirname);
-      if (!IS_SLASH (temp[(strlen (temp)) - 1]))
-        strcat (temp, "/");
-      strcat (temp, filename);
+      with_extension = info_add_extension (dirname, filename, finfo);
+      free (dirname);
 
-      pre_suffix_length = strlen (temp);
-
-      free (temp_dirname);
-
-      for (i = 0; info_suffixes[i]; i++)
-        {
-          strcpy (temp + pre_suffix_length, info_suffixes[i]);
-
-          statable = (stat (temp, finfo) == 0);
-
-          /* If we have found a regular file, then use that.  Else, if we
-             have found a directory, look in that directory for this file. */
-          if (statable)
-            {
-              if (S_ISREG (finfo->st_mode))
-                {
-		  debug(1, (_("found file %s"), temp));
-                  return temp;
-                }
-              else if (S_ISDIR (finfo->st_mode))
-                {
-                  char *newpath, *filename_only, *newtemp;
-
-                  newpath = xstrdup (temp);
-                  filename_only = filename_non_directory (filename);
-                  newtemp = info_file_in_path (filename_only, newpath, finfo);
-
-                  free (newpath);
-                  if (newtemp)
-                    {
-                      free (temp);
-		      debug(1, (_("found file %s"), newtemp));
-                      return newtemp;
-                    }
-                }
-            }
-          else
-            {
-              /* Add various compression suffixes to the name to see if
-                 the file is present in compressed format. */
-              register int j, pre_compress_suffix_length;
-
-              pre_compress_suffix_length = strlen (temp);
-
-              for (j = 0; compress_suffixes[j].suffix; j++)
-                {
-                  strcpy (temp + pre_compress_suffix_length,
-                          compress_suffixes[j].suffix);
-
-                  statable = (stat (temp, finfo) == 0);
-                  if (statable && (S_ISREG (finfo->st_mode)))
-		    {
-		      debug(1, (_("found file %s"), temp));
-		      return temp;
-		    }
-                }
-            }
-        }
-      free (temp);
+      if (with_extension)
+        return with_extension;
     }
   return NULL;
 }
@@ -267,21 +210,90 @@ info_file_in_path (char *filename, char *path, struct stat *finfo)
   return info_file_find_next_in_path (filename, path, &i, finfo);
 }
 
-/* Look for a file with a path of FNAME, adding file extensions if necessary.
-   FNAME must contain directory elements.  Return it as a new string; otherwise
-   return a NULL pointer.  We do it by taking the file name apart
-   into its directory and basename parts, and calling info_file_in_path.*/
+/* Look for a file called FILENAME in a directory called DIRNAME, adding file
+   extensions if necessary.  FILENAME can be an absolute path or a path
+   relative to the current directory, in which case DIRNAME should be
+   null.  Return it as a new string; otherwise return a NULL pointer. */
 static char *
-info_add_extension (char *fname, struct stat *finfo)
+info_add_extension (char *dirname, char *filename, struct stat *finfo)
 {
-  char *containing_dir = xstrdup (fname);
-  char *base = filename_non_directory (containing_dir);
+  char *try_filename;
+  register int i, pre_suffix_length = 0;
 
-  if (base > containing_dir)
-    base[-1] = '\0';
+  if (dirname)
+    pre_suffix_length += strlen (dirname);
 
-  return info_file_in_path (filename_non_directory (fname), containing_dir,
-                            finfo);
+  pre_suffix_length += strlen (filename);
+
+  try_filename = xmalloc (pre_suffix_length + 30);
+  try_filename[0] = '\0';
+
+  if (dirname)
+    {
+      strcpy (try_filename, dirname);
+      if (!IS_SLASH (try_filename[(strlen (try_filename)) - 1]))
+        {
+          strcat (try_filename, "/");
+          pre_suffix_length++;
+        }
+    }
+
+  strcat (try_filename, filename);
+
+  for (i = 0; info_suffixes[i]; i++)
+    {
+      int statable;
+
+      strcpy (try_filename + pre_suffix_length, info_suffixes[i]);
+      statable = (stat (try_filename, finfo) == 0);
+
+      /* If we have found a regular file, then use that.  Else, if we
+         have found a directory, look in that directory for this file. */
+      if (statable)
+        {
+          if (S_ISREG (finfo->st_mode))
+            {
+              debug(1, (_("found file %s"), try_filename));
+              return try_filename;
+            }
+          else if (S_ISDIR (finfo->st_mode))
+            {
+              char *newpath, *new_filename;
+
+              newpath = xstrdup (try_filename);
+              new_filename = info_file_in_path (filename, newpath, finfo);
+
+              free (newpath);
+              if (new_filename)
+                {
+                  free (try_filename);
+                  debug(1, (_("found file %s"), new_filename));
+                  return new_filename;
+                }
+            }
+        }
+      else
+        {
+          /* Add various compression suffixes to the name to see if
+             the file is present in compressed format. */
+          register int j, pre_compress_suffix_length;
+
+          pre_compress_suffix_length = strlen (try_filename);
+
+          for (j = 0; compress_suffixes[j].suffix; j++)
+            {
+              strcpy (try_filename + pre_compress_suffix_length,
+                      compress_suffixes[j].suffix);
+
+              statable = (stat (try_filename, finfo) == 0);
+              if (statable && (S_ISREG (finfo->st_mode)))
+                {
+                  debug(1, (_("found file %s"), try_filename));
+                  return try_filename;
+                }
+            }
+        }
+    }
 }
 
 /* Given a string containing units of information separated by the

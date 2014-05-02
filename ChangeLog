@@ -1,5 +1,14 @@
 2014-05-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/filesys.c (info_add_extension): Loop trying various file
+	extensions moved from info_file_find_next_in_path.
+	(info_find_fullpath): Account for null struct stat argument.  Check
+	case when path is not absolute, but contains intermediate
+	subdirectories.
+	* info/t/split.sh: New test.
+
+2014-05-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_set_node_of_window): Argument
 	'remember' removed.  All callers updated.
 	(begin_multiple_window_info_session): Don't call
