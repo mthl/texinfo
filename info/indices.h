@@ -38,6 +38,4 @@ extern void info_index_apropos (WINDOW *window, int count, unsigned char key);
 extern void do_info_index_search (WINDOW *window, FILE_BUFFER *fb, int count, char *search_string);
 extern int index_entry_exists (FILE_BUFFER *fb, char *string);
 
-NODE *allfiles_create_node (char *term, REFERENCE **fref);
-
 #endif /* not INFO_INDICES_H */

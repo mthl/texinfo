@@ -1,5 +1,23 @@
 2014-05-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info.c (all_files): Get working again, having been broken
+	by recent changes to startup.  Don't use info_follow_menus.
+
+	* info/indices.c (allfiles_node): Declared global.
+	(allfiles_create_node) Moved to info.c
+
+	* info/info.c (node_file_name): Argument dirok deleted.
+	(allfiles_create_node): Don't use numbers as labels of menu entries.
+	Don't create a containing FILE_BUFFER for allfiles_node.
+	(info_find_matching_files): Use add_pointer_to_array to build up
+	list.  Check for man pages directly (previously this was done in
+	info_follow_menus).
+
+	* info/info.h (add_pointer_to_array): Comment rewritten to match
+	macro definition.
+
+2014-05-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/footnotes.c (info_get_or_remove_footnotes): Don't
 	display footnotes for "*" node.
 

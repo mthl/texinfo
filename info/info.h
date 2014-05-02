@@ -59,9 +59,8 @@ typedef char *CFunction ();
 
 /* Add POINTER to the list of pointers found in ARRAY.  SLOTS is the number
    of slots that have already been allocated.  INDEX is the index into the
-   array where POINTER should be added.  GROW is the number of slots to grow
-   ARRAY by, in the case that it needs growing.  TYPE is a cast of the type
-   of object stored in ARRAY (e.g., NODE_ENTRY *. */
+   array where POINTER should be added.  MINSLOTS is the number of slots to
+   start the array with in case it is empty. */
 #define add_pointer_to_array(pointer, idx, array, slots, minslots)	\
   do									\
     {									\

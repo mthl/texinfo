@@ -156,13 +156,12 @@ static void init_messages (void);
 
 
 static char *
-node_file_name (NODE *node, int dirok)
+node_file_name (NODE *node)
 {
   if (node->parent)
     return node->parent;
   else if (node->filename
-	   && (dirok ||
-	       !is_dir_name (filename_non_directory (node->filename))))
+	   && (!is_dir_name (filename_non_directory (node->filename))))
     return node->filename;
   return 0;
 }
@@ -352,6 +351,44 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
 }
 
 
+/* Defined in indices.c */
+extern NODE *allfiles_node;
+
+static void
+allfiles_create_node (char *term, REFERENCE **fref)
+{
+  int i;
+  struct text_buffer text;
+  FILE_BUFFER *fb;
+  
+  text_buffer_init (&text);
+
+  text_buffer_printf (&text,
+		      "%s File names matching `%s'\n\n"
+		      "Info File Index\n"
+		      "***************\n\n"
+		      "File names that match `%s':\n\n"
+		      "* Menu:\n\n",
+                      INFO_NODE_LABEL,
+		      term, term);
+
+  for (i = 0; fref[i]; i++)
+    {
+      text_buffer_printf (&text, "* (%s)", fref[i]->filename);
+      if (fref[i]->nodename)
+	text_buffer_printf (&text, "%s", fref[i]->nodename);
+      text_buffer_printf (&text, "::\n");
+    }
+
+  allfiles_node = info_create_node ();
+  allfiles_node->nodename = xstrdup ("Info File Index");
+  allfiles_node->contents = text.base;
+  allfiles_node->nodelen = text.off;
+  allfiles_node->body_start = strcspn (allfiles_node->contents, "\n");
+
+  scan_node_contents (0, &allfiles_node);
+}
+
 static char *
 dirname (const char *file)
 {
@@ -371,144 +408,109 @@ dirname (const char *file)
 static REFERENCE **
 info_find_matching_files (char *filename)
 {
-  size_t argc = 0;
-  size_t argn = 0;
-  REFERENCE **argv = NULL;
+  REFERENCE **ref_list = NULL;
+  size_t ref_slots = 0;
+  size_t ref_index = 0;
+  REFERENCE *new_ref;
+  NODE *man_node;
+
   int i = 0;
-  char *p;
   
+  /* Initialize empty list. */
+  add_pointer_to_array (0, ref_index, ref_list, ref_slots, 2);
+  ref_index--;
+
   while (1)
     {
-      p = info_file_find_next_in_path (filename, infopath (), &i, 0);
-      if (argc == argn)
-	{
-	  if (argn == 0)
-	    argn = 2;
-	  argv = x2nrealloc (argv, &argn, sizeof (argv[0]));
-	}
-      if (!p)
-	{
-	  argv[argc] = NULL;
-	  break;
-	}
+      char *p;
 
-      argv[argc] = xzalloc (sizeof (*argv[0]));
-      argv[argc]->filename = p;
-      ++argc;
+      p = info_file_find_next_in_path (filename, infopath (), &i, 0);
+      if (!p)
+        break;
+
+      new_ref = xzalloc (sizeof (REFERENCE));
+      new_ref->filename = p;
+      add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
     }
 
-  return argv;
+  /* Check for man page. */
+  man_node = get_manpage_node (filename);
+  if (man_node)
+    {
+      free (man_node);
+
+      new_ref = xzalloc (sizeof (REFERENCE));
+      new_ref->filename = MANPAGE_FILE_BUFFER_NAME;
+      new_ref->nodename = filename;
+      add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+    }
+
+  return ref_list;
 }
 
 static int
 all_files (char *filename, int argc, char **argv)
 {
   REFERENCE **fref;
+  REFERENCE *ref;
   char *fname;
   int i, j;
   int dirok;
   struct info_namelist_entry *nlist = NULL;
   int dump_flags = dump_subnodes;
   
-  if (user_filename)
-    {
-      fname = user_filename;
-      dirok = 0;
-    }
-  else
-    {
-      fname = "dir";
-      dirok = 1;
-    }
+  fname = user_filename ? user_filename : argv[0] ? argv[0] : 0;
+  if (!fname)
+    return EXIT_FAILURE;
   
   fref = info_find_matching_files (fname);
   
-  for (i = 0; fref[i]; )
+  for (i = 0; ref = fref[i]; )
     {
-      NODE *node;
-      
-      if (!user_filename)
-	{
-	  char *p = dirname (fref[i]->filename);
-	  infopath_add (p, INFOPATH_INIT);
-	  free (p);
-	}
-      node = info_get_node (fref[i]->filename,
-			    user_nodenames ? user_nodenames[0] : 0,
-			    PARSE_NODE_DFLT);
-      
-      if (node)
-	{
-	  char *subnode_name = info_follow_menus (node, argv, NULL, 1);
-          NODE *subnode = info_get_node (node->filename, subnode_name,
-                                         PARSE_NODE_DFLT);
-	  if (!subnode)
-	    {
-	      forget_info_file (fref[i]->filename);
-	      node = NULL;
-	    }
-	  else
-	    node = subnode;
-	}
-      
-      if (node)
-	{
-	  const char *name = node_file_name (node, dirok);
-	  if (!name)
-	    node = NULL;
-	  else
-	    {
-	      free (fref[i]->filename);
-	      fref[i]->filename = xstrdup (name);
-	    }
-	}
-      
-      if (!node)
-	{
-	  info_reference_free (fref[i]);
-	  for (j = i; (fref[j] = fref[j + 1]); j++);
-	}
+      if (info_namelist_add (&nlist, ref->filename) == 0)
+        {
+          ++i;
+        }
       else
-	{
-	  if (info_namelist_add (&nlist, fref[i]->filename) == 0)
-	    {
-	      if (print_where_p)
-		printf ("%s\n", fref[i]->filename);
-	      else if (user_output_filename)
-		{
-		  dump_node_to_file (node, user_output_filename, dump_flags);
-		  dump_flags |= DUMP_APPEND;
-		}
-	      else
-		fref[i]->nodename = xstrdup (node->nodename);
-	      forget_info_file (fref[i]->filename);
-	      ++i;
-	    }
-	  else
-	    {
-	      forget_info_file (fref[i]->filename);
-	      info_reference_free (fref[i]);
-	      for (j = i; (fref[j] = fref[j + 1]); j++);
-	    }
+        {
+          /* It's a duplicate.  This shouldn't happen, though. */
+          forget_info_file (ref->filename);
+
+          /* Delete this reference from fref. */
+          info_reference_free (ref);
+          for (j = i; (fref[j] = fref[j + 1]); j++);
 	}
     }
   
   info_namelist_free (nlist);
 
-  if (print_where_p || user_output_filename)
-    return EXIT_SUCCESS;
-
-#if 0
-  if (i <= 1)
+  /* TODO: Unify with --output handling in main(). */
+  if (user_output_filename)
     {
-      if (!single_file (user_filename, argc, argv))
-        return EXIT_FAILURE;
-      info_session ();
+      NODE *node;
+      int dump_flags = dump_subnodes;
+
+      for (i = 0; fref[i]; i++)
+        {
+          node = info_get_node (fref[i]->filename, fref[i]->nodename,
+                                PARSE_NODE_DFLT);
+          dump_node_to_file (node, user_output_filename, dump_flags);
+          dump_flags |= DUMP_APPEND;
+        }
+      return EXIT_SUCCESS;
     }
-#endif
+
+  /* TODO: Unify with --where handling in main(). */
+  if (print_where_p)
+    {
+      for (i = 0; fref[i]; i++)
+        printf ("%s\n", fref[i]->filename);
+      return EXIT_SUCCESS;
+    }
   
   initialize_info_session ();
-  info_set_node_of_window (active_window, allfiles_create_node (argc ? argv[0] : fname, fref));;
+  allfiles_create_node (fname, fref);
+  info_set_node_of_window (active_window, allfiles_node);
   display_startup_message ();
   info_session ();
   return EXIT_SUCCESS;
