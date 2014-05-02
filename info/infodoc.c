@@ -365,9 +365,6 @@ create_internal_info_help_node (int help_is_only_window_p)
             }
         }
 
-      if (printed_one_mx)
-        printf_to_message_buffer ("\n");
-
       free (exec_keys);
 #endif /* NAMED_FUNCTIONS */
 
