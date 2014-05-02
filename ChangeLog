@@ -1,5 +1,10 @@
 2014-05-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/footnotes.c (info_get_or_remove_footnotes): Don't
+	display footnotes for "*" node.
+
+2014-05-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infodoc.c (create_internal_info_help_node): Don't print
 	blank line at end of help window.  This could result in scrolling
 	too far down when paging down to the bottom.

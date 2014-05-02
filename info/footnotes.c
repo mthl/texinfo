@@ -192,7 +192,7 @@ int
 info_get_or_remove_footnotes (WINDOW *window)
 {
   WINDOW *fn_win;
-  NODE *new_footnotes;
+  NODE *new_footnotes = 0;
 
   fn_win = find_footnotes_window ();
 
@@ -200,8 +200,10 @@ info_get_or_remove_footnotes (WINDOW *window)
   if (fn_win == window)
     return FN_FOUND;
 
-  /* Try to find footnotes for this window's node. */
-  new_footnotes = make_footnotes_node (window->node);
+  /* Don't display footnotes for the "*" node (entire contents of file). */
+  if (strcmp ("*", window->node->nodename))
+    /* Try to find footnotes for this window's node. */
+    new_footnotes = make_footnotes_node (window->node);
 
   /* If there was a window showing footnotes, and there are no footnotes
      for the current window, delete the old footnote window. */
