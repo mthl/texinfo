@@ -1,3 +1,15 @@
+2014-05-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_set_node_of_window): Argument
+	'remember' removed.  All callers updated.
+	(begin_multiple_window_info_session): Don't call
+	remember_window_and_node when tiling.
+
+	* info/indices.c (do_info_index_search): Take FILE_BUFFER
+	argument.  All callers updated.
+	* info/info.c (main) <index search>: Don't set node of window before
+	calling do_info_index_search.
+
 2014-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_indices_of_file_buffer): Store return
