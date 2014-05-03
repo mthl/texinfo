@@ -150,7 +150,11 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
                   add_index_to_index_nodenames (menu, node);
 
                   /* Concatenate the references found so far. */
+                  {
+                  REFERENCE **old_result = result;
                   result = info_concatenate_references (result, menu);
+                  free (old_result);
+                  }
                 }
               free (node);
             }
@@ -197,7 +201,7 @@ do_info_index_search (WINDOW *window, FILE_BUFFER *fb,
   if (!initial_index_filename ||
       (FILENAME_CMP (initial_index_filename, fb->filename) != 0))
     {
-      info_free_references (index_index);
+      free (index_index);
       window_message_in_echo_area (_("Finding index entries..."));
       index_index = info_indices_of_file_buffer (fb);
     }
@@ -304,7 +308,7 @@ index_entry_exists (FILE_BUFFER *fb, char *string)
       !fb ||
       (FILENAME_CMP (initial_index_filename, fb->filename) != 0))
     {
-      info_free_references (index_index);
+      free (index_index);
       index_index = info_indices_of_file_buffer (fb);
     }
 
@@ -549,75 +553,34 @@ apropos_in_all_indices (char *search_string, int inform)
   if (!dir_menu)
     return NULL;
 
-  /* For every menu item in DIR, get the associated node's file buffer and
+  /* For every menu item in DIR, get the associated file buffer and
      read the indices of that file buffer.  Gather all of the indices into
      one large one. */
   for (dir_index = 0; dir_menu[dir_index]; dir_index++)
     {
       REFERENCE **this_index, *this_item;
-      NODE *this_node;
       FILE_BUFFER *this_fb;
-      int dir_node_duplicated = 0;
+
+      /* If we already scanned this file, don't do that again.
+         In addition to being faster, this also avoids having
+         multiple identical entries in the *Apropos* menu.  */
+      for (i = 0; i < dir_index; i++)
+        if (FILENAME_CMP (this_item->filename, dir_menu[i]->filename) == 0)
+          continue;
 
       this_item = dir_menu[dir_index];
+      this_fb = info_find_file (this_item->filename);
 
-      if (!this_item->filename)
-        {
-	  dir_node_duplicated = 1;
-          if (dir_node->parent)
-            this_item->filename = xstrdup (dir_node->parent);
-          else
-            this_item->filename = xstrdup (dir_node->filename);
-        }
+      if (!this_fb)
+        continue;
 
-      /* Find this node.  If we cannot find it, try using the label of the
-         entry as a file (i.e., "(LABEL)Top"). */
-      this_node = info_get_node (this_item->filename, this_item->nodename,
-                                 PARSE_NODE_VERBATIM);
+      if (this_fb && inform)
+        message_in_echo_area (_("Scanning indices of `%s'..."), this_item->filename);
 
-      if (!this_node && this_item->nodename &&
-          (strcmp (this_item->label, this_item->nodename) == 0))
-        this_node = info_get_node (this_item->label, "Top", PARSE_NODE_DFLT);
+      this_index = info_indices_of_file_buffer (this_fb);
 
-      if (!this_node)
-	{
-	  if (dir_node_duplicated)
-	    free (this_item->filename);
-	  continue;
-	}
-
-      /* Get the file buffer associated with this node. */
-      {
-        char *files_name;
-
-        files_name = this_node->parent;
-        if (!files_name)
-          files_name = this_node->filename;
-
-        this_fb = info_find_file (files_name);
-
-	/* If we already scanned this file, don't do that again.
-	   In addition to being faster, this also avoids having
-	   multiple identical entries in the *Apropos* menu.  */
-	for (i = 0; i < dir_index; i++)
-	  if (FILENAME_CMP (this_fb->filename, dir_menu[i]->filename) == 0)
-	    break;
-	if (i < dir_index)
-	  {
-	    if (dir_node_duplicated)
-	      free (this_item->filename);
-	    continue;
-	  }
-
-        if (this_fb && inform)
-          message_in_echo_area (_("Scanning indices of `%s'..."), files_name);
-
-        this_index = info_indices_of_file_buffer (this_fb);
-        free (this_node);
-
-        if (this_fb && inform)
-          unmessage_in_echo_area ();
-      }
+      if (this_fb && inform)
+        unmessage_in_echo_area ();
 
       if (this_index)
         {
@@ -627,7 +590,11 @@ apropos_in_all_indices (char *search_string, int inform)
               this_index[i]->filename = xstrdup (this_fb->filename);
 
           /* Concatenate with the other indices.  */
+          {
+          REFERENCE **old_indices = all_indices;
           all_indices = info_concatenate_references (all_indices, this_index);
+          free (old_indices);
+          }
         }
       /* Try to avoid running out of memory */
       free (this_fb->contents);
@@ -648,38 +615,12 @@ apropos_in_all_indices (char *search_string, int inform)
               add_pointer_to_array (entry, apropos_list_index, apropos_list, 
                                     apropos_list_slots, 100);
             }
-          else
-            info_reference_free (entry);
         }
 
       free (all_indices);
       all_indices = apropos_list;
     }
   return all_indices;
-}
-
-#define APROPOS_NONE \
-   N_("No available info files have `%s' in their indices.")
-
-void
-info_apropos (char *string)
-{
-  REFERENCE **apropos_list;
-
-  apropos_list = apropos_in_all_indices (string, 0);
-
-  if (!apropos_list)
-    info_error (_(APROPOS_NONE), string);
-  else
-    {
-      register int i;
-      REFERENCE *entry;
-
-      for (i = 0; (entry = apropos_list[i]); i++)
-        fprintf (stdout, "\"(%s)%s\" -- %s\n",
-                 entry->filename, entry->nodename, entry->label);
-    }
-  info_free_references (apropos_list);
 }
 
 static char *apropos_list_nodename = "*Apropos*";
@@ -794,7 +735,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
         remember_window_and_node (new, apropos_node);
         active_window = new;
       }
-      info_free_references (apropos_list);
+      free (apropos_list);
     }
   free (line);
 
@@ -883,7 +824,7 @@ DECLARE_INFO_COMMAND (info_virtual_index,
       !fb ||
       (FILENAME_CMP (initial_index_filename, fb->filename) != 0))
     {
-      info_free_references (index_index);
+      free (index_index);
       window_message_in_echo_area (_("Finding index entries..."));
       index_index = info_indices_of_file_buffer (fb);
     }

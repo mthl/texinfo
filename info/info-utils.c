@@ -206,40 +206,45 @@ info_get_menu_entry_by_label (NODE *node, char *label)
 }
 
 /* A utility function for concatenating REFERENCE **.  Returns a new
-   REFERENCE ** which is the concatenation of REF1 and REF2.  The REF1
-   and REF2 arrays are freed, but their contents are not. */
+   REFERENCE ** which is the concatenation of REF1 and REF2.  */
 REFERENCE **
 info_concatenate_references (REFERENCE **ref1, REFERENCE **ref2)
 {
   register int i, j;
   REFERENCE **result;
-  int size;
-
-  /* With one argument passed as NULL, simply return the other arg. */
-  if (!ref1)
-    return ref2;
-  else if (!ref2)
-    return ref1;
+  int size = 0;
 
   /* Get the total size of the slots that we will need. */
-  for (i = 0; ref1[i]; i++);
-  size = i;
-  for (i = 0; ref2[i]; i++);
-  size += i;
+  if (ref1)
+    {
+      for (i = 0; ref1[i]; i++);
+      size += i;
+    }
+
+  if (ref2)
+    {
+      for (i = 0; ref2[i]; i++);
+      size += i;
+    }
 
   result = xmalloc ((1 + size) * sizeof (REFERENCE *));
 
   /* Copy the contents over. */
-  for (i = 0; ref1[i]; i++)
-    result[i] = ref1[i];
 
-  j = i;
-  for (i = 0; ref2[i]; i++)
-    result[j++] = ref2[i];
+  j = 0;
+  if (ref1)
+    {
+      for (i = 0; ref1[i]; i++)
+        result[j++] = ref1[i];
+    }
+
+  if (ref2)
+    {
+      for (i = 0; ref2[i]; i++)
+        result[j++] = ref2[i];
+    }
 
   result[j] = NULL;
-  free (ref1);
-  free (ref2);
   return result;
 }
 

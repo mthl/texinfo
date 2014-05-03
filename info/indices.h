@@ -26,7 +26,6 @@
 extern int show_index_match;
 
 extern REFERENCE **info_indices_of_file_buffer (FILE_BUFFER *file_buffer);
-extern void info_apropos (char *string);
 
 /* For every menu item in DIR, search the indices of that file for STRING. */
 REFERENCE **apropos_in_all_indices (char *search_string, int inform);
@@ -37,5 +36,8 @@ extern void info_next_index_match (WINDOW *window, int count, unsigned char key)
 extern void info_index_apropos (WINDOW *window, int count, unsigned char key);
 extern void do_info_index_search (WINDOW *window, FILE_BUFFER *fb, int count, char *search_string);
 extern int index_entry_exists (FILE_BUFFER *fb, char *string);
+
+#define APROPOS_NONE \
+   N_("No available info files have `%s' in their indices.")
 
 #endif /* not INFO_INDICES_H */

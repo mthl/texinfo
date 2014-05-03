@@ -749,14 +749,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   if (user_filename)
     add_file_directory_to_path (user_filename);
 
-  /* If the user wants to search every known index for a given string,
-     do that now, and report the results. */
-  if (apropos_p)
-    {
-      info_apropos (apropos_search_string);
-      exit (EXIT_SUCCESS);
-    }
-
   argc -= optind;
   argv += optind;
   
@@ -766,6 +758,28 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   /* Add extra search directories to any already specified with
      --directory. */
   infopath_init ();
+
+  /* If the user wants to search every known index for a given string,
+     do that now, and report the results. */
+  if (apropos_p)
+    {
+      REFERENCE **apropos_list;
+
+      apropos_list = apropos_in_all_indices (apropos_search_string, 0);
+
+      if (!apropos_list)
+        info_error (_(APROPOS_NONE), apropos_search_string);
+      else
+      {
+        register int i;
+        REFERENCE *entry;
+
+        for (i = 0; (entry = apropos_list[i]); i++)
+          fprintf (stdout, "\"(%s)%s\" -- %s\n",
+              entry->filename, entry->nodename, entry->label);
+      }
+      exit (EXIT_SUCCESS);
+    }
 
   if (all_matches_p)
     return all_files (user_filename, argc, argv);

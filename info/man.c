@@ -57,8 +57,6 @@ static char const * const exec_extensions[] = { "", NULL };
 
 static long locate_manpage_xref (NODE *node, long int start, int dir);
 static REFERENCE **xrefs_of_manpage (NODE *node);
-static REFERENCE **manpage_xrefs_in_binding (NODE *node,
-    SEARCH_BINDING *binding);
 static char *read_from_fd (int fd);
 static char *get_manpage_contents (char *pagename);
 static void create_manpage_file_buffer (void);
@@ -687,36 +685,4 @@ locate_manpage_xref (NODE *node, long int start, int dir)
       info_free_references (refs);
     }
   return position;
-}
-
-/* This one was a little tricky.  The binding buffer that is passed in has
-   a START and END value of 0 -- strlen (window-line-containing-point).
-   The BUFFER is a pointer to the start of that line. */
-REFERENCE **
-manpage_xrefs_in_binding (NODE *node, SEARCH_BINDING *binding)
-{
-  size_t i;
-  REFERENCE **all_refs = xrefs_of_manpage (node);
-  REFERENCE **brefs = NULL;
-  REFERENCE *entry;
-  size_t brefs_index = 0;
-  size_t brefs_slots = 0;
-  int start, end;
-
-  if (!all_refs)
-    return NULL;
-
-  start = binding->start + (binding->buffer - node->contents);
-  end = binding->end + (binding->buffer - node->contents);
-
-  for (i = 0; (entry = all_refs[i]); i++)
-    {
-      if ((entry->start > start) && (entry->end < end))
-        add_pointer_to_array (entry, brefs_index, brefs, brefs_slots, 10);
-      else
-        info_reference_free (entry);
-    }
-
-  free (all_refs);
-  return brefs;
 }

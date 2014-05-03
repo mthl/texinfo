@@ -1,5 +1,28 @@
 2014-05-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* indices.c (info_indices_of_file_buffer, do_info_index_search)
+	(index_entry_exists, apropos_in_all_indices, info_index_apropos)
+	(info_virtual_index)
+	Call free instead of info_free_references or info_reference_free,
+	because the REFERENCE * objects in the array are still referenced
+	elsewhere.
+
+	* info-utils.c (info_concatenate_references): Don't free arguments.
+	Always return a new array, even if either of the arguments are null.
+	Callers updated.
+
+	* info/indices.c (info_apropos): Merged into info.c:main.
+	(APROPOS_NONE) Moved to indices.h.
+	* info/info.c <apropos in indices>: Call apropos_in_all_indices
+	only after infopath_init has been called.
+
+	* info/indices.c (apropos_in_all_indices): Get file buffer directly,
+	rather than loading a node first.
+
+	* info/man.c (manpage_xrefs_in_binding): Delete unused.
+
+2014-05-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/window.c (string_to_node): Function deleted.  Caller in
 	create_internal_info_help_node updated.
 
