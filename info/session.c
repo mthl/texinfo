@@ -2828,7 +2828,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
         }
 
       /* Find the specified menu item. */
-      entry = info_get_menu_entry_by_label (arg, initial_node->references);
+      entry = info_get_menu_entry_by_label (initial_node, arg);
 
       /* If the item wasn't found, search the list sloppily.  Perhaps this
          user typed "buffer" when they really meant "Buffers". */
@@ -2978,17 +2978,21 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
     window_clear_echo_area ();
 }
 
-/* Search the menu MENU for a (possibly mis-spelled) entry ARG.
+/* Search the menu in NODE for a (possibly mis-spelled) entry ARG.
    Return the menu entry, or the best guess for what they meant by ARG,
    or NULL if there's nothing in this menu seems to fit the bill.
    If EXACT is non-zero, allow only exact matches.  */
 static REFERENCE *
-entry_in_menu (char *arg, REFERENCE **menu, int exact)
+entry_in_menu (char *arg, NODE *node, int exact)
 {
+  REFERENCE **menu = node->references;
   REFERENCE *entry;
 
+  if (!menu)
+    return 0;
+
   /* First, try to find the specified menu item verbatim.  */
-  entry = info_get_menu_entry_by_label (arg, menu);
+  entry = info_get_menu_entry_by_label (node, arg);
 
   /* If the item wasn't found, search the list sloppily.  Perhaps we
      have "Option Summary", but ARG is "option".  */
@@ -3045,7 +3049,6 @@ info_intuit_options_node (NODE *initial_node, char *program)
     (const char *)0
   };
   NODE *node = NULL;
-  REFERENCE **menu;
   const char **try_node;
 
   /* We keep looking deeper and deeper in the menu structure until
@@ -3056,11 +3059,9 @@ info_intuit_options_node (NODE *initial_node, char *program)
     {
       REFERENCE *entry = NULL;
 
-      menu = initial_node->references;
-
-      /* If no menu item in this node, stop here.  Perhaps this node
+      /* If no menu in this node, stop here.  Perhaps this node
          is the one they need.  */
-      if (!menu)
+      if (!initial_node->references)
         break;
 
       /* Look for node names typical for usage nodes in this menu.  */
@@ -3072,7 +3073,7 @@ info_intuit_options_node (NODE *initial_node, char *program)
           sprintf (nodename, *try_node, program);
           /* The last resort "%s" is dangerous, so we restrict it
              to exact matches here.  */
-          entry = entry_in_menu (nodename, menu,
+          entry = entry_in_menu (nodename, initial_node,
                                  strcmp (*try_node, "%s") == 0);
           free (nodename);
           if (entry)

@@ -374,7 +374,9 @@ create_internal_info_help_node (int help_is_only_window_p)
   else
     {
       /* We already had the right contents, so simply use them. */
-      node = string_to_node (contents);
+      node = info_create_node ();
+      node->contents = contents;
+      node->nodelen = strlen (contents);
     }
 
   internal_info_help_node = node;

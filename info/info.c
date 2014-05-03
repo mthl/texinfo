@@ -184,8 +184,7 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
         {
           dir_node = info_get_node (0, 0, PARSE_NODE_DFLT);
 
-          entry = info_get_menu_entry_by_label ((*argv)[0],
-                                                dir_node->references);
+          entry = info_get_menu_entry_by_label (dir_node, (*argv)[0]);
           if (entry)
             initial_file = info_find_fullpath (entry->filename, 0);
 

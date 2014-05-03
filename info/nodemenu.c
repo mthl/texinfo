@@ -313,13 +313,11 @@ DECLARE_INFO_COMMAND (select_visited_node,
   REFERENCE **menu;
 
   node = get_visited_nodes (NULL);
-
-  menu = node->references;
   free (node);
 
   line =
     info_read_completing_in_echo_area (window,
-        _("Select visited node: "), menu);
+        _("Select visited node: "), node->references);
 
   window = active_window;
 
@@ -327,7 +325,6 @@ DECLARE_INFO_COMMAND (select_visited_node,
   if (!line)
     {
       info_abort_key (window, 0, 0);
-      info_free_references (menu);
       return;
     }
 
@@ -336,7 +333,7 @@ DECLARE_INFO_COMMAND (select_visited_node,
       REFERENCE *entry;
 
       /* Find the selected label in the references. */
-      entry = info_get_menu_entry_by_label (line, menu);
+      entry = info_get_menu_entry_by_label (node, line);
 
       if (!entry)
         info_error (_("The reference disappeared! (%s)."), line);
@@ -345,7 +342,6 @@ DECLARE_INFO_COMMAND (select_visited_node,
     }
 
   free (line);
-  info_free_references (menu);
 
   if (!info_error_was_printed)
     window_clear_echo_area ();

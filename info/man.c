@@ -269,6 +269,51 @@ reap_children (int sig)
 }
 #endif
 
+void
+clean_manpage (char *manpage)
+{
+  mbi_iterator_t iter;
+  size_t len = strlen (manpage);
+  char *newpage = xmalloc (len + 1);
+  char *np = newpage;
+  int prev_len = 0;
+  
+  for (mbi_init (iter, manpage, len);
+       mbi_avail (iter);
+       mbi_advance (iter))
+    {
+      const char *cur_ptr = mbi_cur_ptr (iter);
+      size_t cur_len = mb_len (mbi_cur (iter));
+
+      if (cur_len == 1)
+	{
+	  if (*cur_ptr == '\b' || *cur_ptr == '\f')
+	    {
+	      if (np >= newpage + prev_len)
+		np -= prev_len;
+	    }
+	  else if (ansi_escape (iter, &cur_len))
+	    {
+	      memcpy (np, cur_ptr, cur_len);
+	      np += cur_len;
+	      ITER_SETBYTES (iter, cur_len);
+	    }
+	  else if (show_malformed_multibyte_p || mbi_cur (iter).wc_valid)
+	    *np++ = *cur_ptr;
+	}
+      else
+	{
+	  memcpy (np, cur_ptr, cur_len);
+	  np += cur_len;
+	}
+      prev_len = cur_len;
+    }
+  *np = 0;
+  
+  strcpy (manpage, newpage);
+  free (newpage);
+}
+
 static char *
 get_manpage_contents (char *pagename)
 {

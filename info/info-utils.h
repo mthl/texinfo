@@ -62,10 +62,9 @@ int info_parse_node (char *string, int flag);
 
 void scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr);
 
-/* Get the menu entry associated with LABEL in REFERENCES.  Return a
+/* Get the menu entry associated with LABEL in NODE.  Return a
    pointer to the reference if found, or NULL. */
-extern REFERENCE *info_get_menu_entry_by_label (char *label,
-    REFERENCE **references);
+extern REFERENCE *info_get_menu_entry_by_label (NODE *node, char *label);
 
 /* A utility function for concatenating REFERENCE **.  Returns a new
    REFERENCE ** which is the concatenation of REF1 and REF2.  The REF1
@@ -88,6 +87,12 @@ extern void info_free_references (REFERENCE **references);
    all such sequences with just a single space.  Remove whitespace from
    start and end of string. */
 void canonicalize_whitespace (char *string);
+
+/* Used with multibyte iterator mbi_iterator_t. */
+#define ITER_SETBYTES(iter,n) ((iter).cur.bytes = n)
+#define ITER_LIMIT(iter) ((iter).limit - (iter).cur.ptr)
+
+extern int ansi_escape (mbi_iterator_t iter, size_t *plen);
 
 /* Return a pointer to a string which is the printed representation
    of CHARACTER if it were printed at HPOS. */

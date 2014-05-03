@@ -184,21 +184,25 @@ info_parse_node (char *string, int flag)
 /*                                                                  */
 /* **************************************************************** */
 
-/* Get the menu entry associated with LABEL in REFERENCES.  Return a pointer
-   to the ENTRY if found, or NULL. */
+/* Get the entry associated with LABEL in the menu of NODE.  Return a
+   pointer to the ENTRY if found, or null. */
 REFERENCE *
-info_get_menu_entry_by_label (char *label, REFERENCE **references)
+info_get_menu_entry_by_label (NODE *node, char *label) 
 {
   register int i;
   REFERENCE *entry;
+  REFERENCE **references = node->references;
 
-  for (i = 0; references && (entry = references[i]); i++)
+  if (!references)
+    return 0;
+
+  for (i = 0; entry = references[i]; i++)
     {
       if (REFERENCE_MENU_ITEM != entry->type) continue;
       if (strcmp (label, entry->label) == 0)
         return entry;
     }
-  return NULL;
+  return 0;
 }
 
 /* A utility function for concatenating REFERENCE **.  Returns a new
@@ -358,6 +362,46 @@ canonicalize_whitespace (char *string)
   temp[j] = '\0';
   strcpy (string, temp);
   free (temp);
+}
+
+/* If ITER points to an ANSI escape sequence, process it, set PLEN to its
+   length in bytes, and return 1.
+   Otherwise, return 0.
+ */
+int
+ansi_escape (mbi_iterator_t iter, size_t *plen)
+{
+  if (raw_escapes_p && *mbi_cur_ptr (iter) == '\033' && mbi_avail (iter))
+    {
+      mbi_advance (iter);
+      if (*mbi_cur_ptr (iter) == '[' &&  mbi_avail (iter))
+        {
+          ITER_SETBYTES (iter, 1);
+          mbi_advance (iter);
+          if (isdigit (*mbi_cur_ptr (iter)) && mbi_avail (iter))
+            {	
+              ITER_SETBYTES (iter, 1);
+              mbi_advance (iter);
+              if (*mbi_cur_ptr (iter) == 'm')
+                {
+                  *plen = 4;
+                  return 1;
+                }
+              else if (isdigit (*mbi_cur_ptr (iter)) && mbi_avail (iter))
+                {
+                  ITER_SETBYTES (iter, 1);
+                  mbi_advance (iter);
+                  if (*mbi_cur_ptr (iter) == 'm')
+                    {
+                      *plen = 5;
+                      return 1;
+                    }
+                }
+            }
+        }
+    }
+                
+  return 0;
 }
 
 /* String representation of a char returned by printed_representation (). */

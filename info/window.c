@@ -1321,19 +1321,6 @@ format_message_node (const char *format, ...)
   return node;
 }
 
-NODE *
-string_to_node (char *contents)
-{
-  NODE *node;
-
-  node = info_create_node ();
-
-  /* Make sure that this buffer ends with a newline. */
-  node->nodelen = 1 + strlen (contents);
-  node->contents = contents;
-  return node;
-}
-
 /* Convert the contents of the message buffer to a node. */
 NODE *
 message_buffer_to_node (void)
@@ -1410,49 +1397,6 @@ pad_to (int count, char *string)
 }
 
 
-#define ITER_SETBYTES(iter,n) ((iter).cur.bytes = n)
-#define ITER_LIMIT(iter) ((iter).limit - (iter).cur.ptr)
-
-/* If ITER points to an ANSI escape sequence, process it, set PLEN to its
-   length in bytes, and return 1.
-   Otherwise, return 0.
- */
-static int
-ansi_escape (mbi_iterator_t iter, size_t *plen)
-{
-  if (raw_escapes_p && *mbi_cur_ptr (iter) == '\033' && mbi_avail (iter))
-    {
-      mbi_advance (iter);
-      if (*mbi_cur_ptr (iter) == '[' &&  mbi_avail (iter))
-	{
-	  ITER_SETBYTES (iter, 1);
-	  mbi_advance (iter);
-	  if (isdigit (*mbi_cur_ptr (iter)) && mbi_avail (iter))
-	    {	
-	      ITER_SETBYTES (iter, 1);
-	      mbi_advance (iter);
-	      if (*mbi_cur_ptr (iter) == 'm')
-		{
-		  *plen = 4;
-		  return 1;
-		}
-	      else if (isdigit (*mbi_cur_ptr (iter)) && mbi_avail (iter))
-		{
-		  ITER_SETBYTES (iter, 1);
-		  mbi_advance (iter);
-		  if (*mbi_cur_ptr (iter) == 'm')
-		    {
-		      *plen = 5;
-		      return 1;
-		    }
-		}
-	    }
-	}
-    }
-		
-  return 0;
-}
-
 /* If ITER points to an info tag, process it, set PLEN to its
    length in bytes, and return 1.
    Otherwise, return 0.
@@ -1714,51 +1658,6 @@ process_node_text (WINDOW *win, char *start,
 
   free (printed_line);
   return line_index;
-}
-
-void
-clean_manpage (char *manpage)
-{
-  mbi_iterator_t iter;
-  size_t len = strlen (manpage);
-  char *newpage = xmalloc (len + 1);
-  char *np = newpage;
-  int prev_len = 0;
-  
-  for (mbi_init (iter, manpage, len);
-       mbi_avail (iter);
-       mbi_advance (iter))
-    {
-      const char *cur_ptr = mbi_cur_ptr (iter);
-      size_t cur_len = mb_len (mbi_cur (iter));
-
-      if (cur_len == 1)
-	{
-	  if (*cur_ptr == '\b' || *cur_ptr == '\f')
-	    {
-	      if (np >= newpage + prev_len)
-		np -= prev_len;
-	    }
-	  else if (ansi_escape (iter, &cur_len))
-	    {
-	      memcpy (np, cur_ptr, cur_len);
-	      np += cur_len;
-	      ITER_SETBYTES (iter, cur_len);
-	    }
-	  else if (show_malformed_multibyte_p || mbi_cur (iter).wc_valid)
-	    *np++ = *cur_ptr;
-	}
-      else
-	{
-	  memcpy (np, cur_ptr, cur_len);
-	  np += cur_len;
-	}
-      prev_len = cur_len;
-    }
-  *np = 0;
-  
-  strcpy (manpage, newpage);
-  free (newpage);
 }
 
 static void

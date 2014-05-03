@@ -1,3 +1,15 @@
+2014-05-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.c (string_to_node): Function deleted.  Caller in
+	create_internal_info_help_node updated.
+
+	* info/window.c, info/man.c (clean_manpage): Function moved.
+	* info/window.c, info/info-utils.c (ansi_escape): Function moved.
+
+	* info.c/info-utils.c (info_get_menu_entry_by_label): Arguments
+	changed.
+	* info.c/session.c (entry_in_menu): Arguments changed.
+
 2014-05-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.c (all_files): Get working again, having been broken
