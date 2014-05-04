@@ -105,6 +105,7 @@ TESTS = \
 	t/where-dir-file.sh \
 	t/tab.sh \
 	t/index.sh \
+	t/index-apropos.sh \
 	t/split-index.sh \
 	t/index-long-nodeline.sh \
 	t/help.sh

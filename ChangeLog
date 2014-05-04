@@ -1,13 +1,17 @@
+2014-05-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/apropos-index.sh: New test.
+
 2014-05-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* indices.c (info_indices_of_file_buffer, do_info_index_search)
+	* info/indices.c (info_indices_of_file_buffer, do_info_index_search)
 	(index_entry_exists, apropos_in_all_indices, info_index_apropos)
 	(info_virtual_index)
 	Call free instead of info_free_references or info_reference_free,
 	because the REFERENCE * objects in the array are still referenced
 	elsewhere.
 
-	* info-utils.c (info_concatenate_references): Don't free arguments.
+	* info/info-utils.c (info_concatenate_references): Don't free arguments.
 	Always return a new array, even if either of the arguments are null.
 	Callers updated.
 
@@ -29,9 +33,9 @@
 	* info/window.c, info/man.c (clean_manpage): Function moved.
 	* info/window.c, info/info-utils.c (ansi_escape): Function moved.
 
-	* info.c/info-utils.c (info_get_menu_entry_by_label): Arguments
+	* info/info-utils.c (info_get_menu_entry_by_label): Arguments
 	changed.
-	* info.c/session.c (entry_in_menu): Arguments changed.
+	* info/session.c (entry_in_menu): Arguments changed.
 
 2014-05-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
