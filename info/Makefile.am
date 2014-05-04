@@ -108,8 +108,13 @@ TESTS = \
 	t/index-apropos.sh \
 	t/split-index.sh \
 	t/index-long-nodeline.sh \
+	t/goto-quoted.sh \
+	t/reference-quoted.sh \
+	t/next-quoted.sh \
 	t/help.sh
 
 XFAIL_TESTS = \
-      t/index-long-nodeline.sh
+	t/index-long-nodeline.sh \
+	t/reference-quoted.sh \
+	t/next-quoted.sh
 

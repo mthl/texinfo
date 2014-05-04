@@ -177,6 +177,49 @@ info_parse_node (char *string, int flag)
   return length;
 }
 
+/* Set *OUTPUT to a copy of the string starting at START and finishing at
+   a character in TERMINATOR, unless START[0] == INFO_QUOTE, in which case
+   copy string from START+1 until the next occurence of INFO_QUOTE.  Return
+   length of *OUTPUT.
+
+   TODO: Decide on best method of quoting. */
+long
+read_quoted_string (char *start, char *terminator, char **output)
+{
+  long len;
+ 
+  if (start[0] != '\177')
+    {
+      len = strcspn (start, terminator);
+      if (len == 0)
+        {
+          *output = 0;
+          return 0;
+        }
+
+      *output = xmalloc (len + 1);
+      strncpy (*output, start, len);
+      (*output)[len] = '\0';
+
+      return len;
+    }
+  else
+    {
+      len = strcspn (start + 1, "\177");
+      if (len == 0)
+        {
+          *output = 0;
+          return 0;
+        }
+
+      *output = xmalloc (len + 1);
+      strncpy (*output, start + 1, len);
+      (*output)[len] = '\0';
+
+      return len;
+    }
+}
+
 
 /* **************************************************************** */
 /*                                                                  */

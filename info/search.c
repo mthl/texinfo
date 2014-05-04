@@ -691,6 +691,10 @@ find_node_in_binding (char *nodename, SEARCH_BINDING *binding)
 
   while ((position = find_node_separator (&tmp_search)) != -1)
     {
+      char *nodename_start;
+      char *read_nodename;
+      long nodename_len;
+
       tmp_search.start = position;
       tmp_search.start += skip_node_separator
         (tmp_search.buffer + tmp_search.start);
@@ -703,15 +707,18 @@ find_node_in_binding (char *nodename, SEARCH_BINDING *binding)
 
       tmp_search.start += offset;
       tmp_search.start += skip_whitespace (tmp_search.buffer + tmp_search.start);
-      offset = skip_node_characters
-        (tmp_search.buffer + tmp_search.start, PARSE_NODE_DFLT);
 
-      /* Notice that this is an exact match.  You cannot grovel through
-         the buffer with this function looking for random nodes. */
-       if ((offset == namelen) &&
-           (tmp_search.buffer[tmp_search.start] == nodename[0]) &&
-           (strncmp (tmp_search.buffer + tmp_search.start, nodename, offset) == 0))
-         return position;
+      nodename_start = tmp_search.buffer + tmp_search.start;
+      nodename_len = read_quoted_string (nodename_start, "\n\t,.",
+                                         &read_nodename);
+      if (!read_nodename)
+        return -1;
+
+      if (!strcmp (read_nodename, nodename))
+        {
+          free (read_nodename);
+          return position;
+        }
     }
   return -1;
 }

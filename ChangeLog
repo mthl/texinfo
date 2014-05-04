@@ -1,5 +1,14 @@
 2014-05-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (read_quoted_string): New function.
+	* info/search.c (find_node_in_binding): Call read_quoted_string.
+
+	* info/t/goto-quoted.sh,
+	info/t/reference-quoted.sh,
+	info/t/next-quoted.sh: New tests.
+
+2014-05-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/apropos-index.sh: New test.
 
 2014-05-03  Gavin Smith  <gavinsmith0123@gmail.com>
