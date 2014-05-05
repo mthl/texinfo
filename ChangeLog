@@ -1,3 +1,7 @@
+2014-05-05  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\secfonts): increase \setleading to 17pt.
+
 2014-05-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (read_quoted_string): Include any quoting
