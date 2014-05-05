@@ -1866,7 +1866,7 @@ info_handle_pointer (char *label, WINDOW *window)
     }
 
   node = info_get_node_with_defaults (0, description,
-               PARSE_NODE_START, window);
+              PARSE_NODE_VERBATIM, window);
 
   if (!node)
     {

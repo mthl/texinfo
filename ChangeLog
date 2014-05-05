@@ -1,3 +1,20 @@
+2014-05-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (read_quoted_string): Include any quoting
+	characters in returned length.  Account for terminator character
+	appearing immediately (for example, if input is malformed).
+	(parse_top_node_line): Read fields with read_quoted_string.
+	(scan_reference_label): Arguments changed.  Call
+	canonicalize_whitespace on reference label.  Don't output "See".
+	Caller in scan_node_contents updated.
+	(colon_after_newline): Deleted.
+	(scan_node_contents): Remove S_SkipDest flag from search so that
+	results are at beginning of match instead of end.  Use
+	read_quoted_string to get reference labels.
+
+	* info/session.c (info_handle_pointer): Read "Next" etc. pointers
+	with PARSE_NODE_VERBATIM instead of PARSE_NODE_START.
+
 2014-05-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (read_quoted_string): New function.

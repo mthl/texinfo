@@ -180,22 +180,17 @@ info_parse_node (char *string, int flag)
 /* Set *OUTPUT to a copy of the string starting at START and finishing at
    a character in TERMINATOR, unless START[0] == INFO_QUOTE, in which case
    copy string from START+1 until the next occurence of INFO_QUOTE.  Return
-   length of *OUTPUT.
+   length of string including any quoting characters.
 
    TODO: Decide on best method of quoting. */
 long
 read_quoted_string (char *start, char *terminator, char **output)
 {
   long len;
- 
+
   if (start[0] != '\177')
     {
       len = strcspn (start, terminator);
-      if (len == 0)
-        {
-          *output = 0;
-          return 0;
-        }
 
       *output = xmalloc (len + 1);
       strncpy (*output, start, len);
@@ -206,17 +201,12 @@ read_quoted_string (char *start, char *terminator, char **output)
   else
     {
       len = strcspn (start + 1, "\177");
-      if (len == 0)
-        {
-          *output = 0;
-          return 0;
-        }
 
       *output = xmalloc (len + 1);
       strncpy (*output, start + 1, len);
       (*output)[len] = '\0';
 
-      return len;
+      return len + 2;
     }
 }
 
@@ -993,9 +983,15 @@ underlining_on (void)
 static void
 parse_top_node_line (NODE *node)
 {
-  char **store_in;
+  char **store_in, *dummy = 0;
   int value_length;
-  int empty = 1; /* Whether node line is empty. */
+
+  /* If the first line is empty, leave it in.  This is the case
+     in the index-apropos window. */
+  if (*inptr == '\n')
+    {
+      return;
+    }
 
   node->next = node->prev = node->up = 0;
 
@@ -1009,12 +1005,12 @@ parse_top_node_line (NODE *node)
       if (!strncmp (inptr, INFO_FILE_LABEL, strlen(INFO_FILE_LABEL)))
         {
           skip_input (strlen(INFO_FILE_LABEL));
-          empty = 0;
+          store_in = &dummy;
         }
       else if (!strncmp (inptr, INFO_NODE_LABEL, strlen(INFO_NODE_LABEL)))
         {
           skip_input (strlen(INFO_NODE_LABEL));
-          empty = 0;
+          store_in = &dummy;
         }
       else if (!strncmp (inptr, INFO_PREV_LABEL, strlen(INFO_PREV_LABEL)))
         {
@@ -1033,79 +1029,56 @@ parse_top_node_line (NODE *node)
         }
       else 
         {
+          store_in = &dummy;
           /* Not recognized - code below will skip to next comma */
         }
         
       skip_input (skip_whitespace (inptr));
 
-      /* PARSE_NODE_START separates at commas or newlines, so it
-         will work for filenames including full stops. */
-      value_length = skip_node_characters (inptr, PARSE_NODE_START);
+      /* Separate at commas or newlines, so it will work for
+         filenames including full stops. */
+      value_length = read_quoted_string (inptr, "\n\t,", store_in);
 
-      if (store_in)
-        {
-          empty = 0;
-          (*store_in) = xmalloc (value_length + 1);
-          memmove (*store_in, inptr, value_length);
-          (*store_in) [value_length] = '\0';
-        }
-        
+      /* Skip past value and any quoting or separating characters. */
       skip_input (value_length);
+
       if (*inptr == '\n')
         {
-          /* If the first line is empty, leave it in.  This is the case
-             in the index-apropos window. */
-          if (!empty)
-            {
-              skip_input (1);
-              deleted_lines++;
-            }
+          skip_input (1);
           break;
         }
+
       skip_input (1); /* Point after field terminator */
+      free (dummy); dummy = 0;
     }
 }
 
+/* Output reference label and create REFERENCE object. */
 REFERENCE *
-scan_reference_label (int colon_offset, int start_of_reference,
-                      int found_menu_entry, int capital_s)
+scan_reference_label (char *label, long label_len, long start_of_reference,
+                      int found_menu_entry)
 {
   REFERENCE *entry;
-  char *labelptr;
+  char *label_ptr;
+  char *nl_ptr;
   int leading_whitespace;
-  int newline_offset;
 
   /* We definitely have a reference by this point.  Create
      REFERENCE entity. */
   entry = xmalloc (sizeof (REFERENCE));
   entry->filename = NULL;
   entry->nodename = NULL;
-  entry->label = NULL;
+  entry->label = xstrdup (label);
+  canonicalize_whitespace (entry->label);
   entry->line_number = 0;
   if (found_menu_entry)
     entry->type = REFERENCE_MENU_ITEM;
   else
     entry->type = REFERENCE_XREF;
-  
-  /* Save label as it appears in input. */
-  entry->label = xmalloc(colon_offset + 1);
-  strncpy (entry->label, inptr, colon_offset);
-  entry->label[colon_offset] = '\0';  
-  skip_input (colon_offset + 1);
 
-  /* Output reference label and set location of reference. */
-
-  if (!found_menu_entry)
-    {
-      if (capital_s)
-        write_extra_bytes_to_output ("See ", 4);
-      else
-        write_extra_bytes_to_output ("see ", 4);
-    }
-
-  /* Output any whitespace or newlines before reference label */
-  leading_whitespace = skip_whitespace_and_newlines (entry->label);
-  write_extra_bytes_to_output (entry->label, leading_whitespace);
+  /* Output any whitespace or newlines at start of reference label. */
+  label_ptr = label + skip_whitespace_and_newlines (label);
+  write_extra_bytes_to_output (label, label_ptr - label);
 
   underlining_on ();
 
@@ -1127,50 +1100,49 @@ scan_reference_label (int colon_offset, int start_of_reference,
       entry->start = start_of_reference;
     }
 
-  entry->end = entry->start + strlen (entry->label)
-               - leading_whitespace;
-
   /* Write text of label.  If there is a newline in the middle of
      a reference label, turn off underling until text starts again. */
-  labelptr = entry->label + leading_whitespace;
-  while (*labelptr != '\n' && *labelptr) labelptr++;
-  newline_offset = labelptr - (entry->label + leading_whitespace);
-
-  write_extra_bytes_to_output (entry->label + leading_whitespace,
-          (*labelptr ? newline_offset : 
-           strlen(entry->label) - leading_whitespace));
-
-  if (*labelptr)
+  while (nl_ptr = strchr (label_ptr, '\n'))
     {
-      int space_at_start_of_line; 
-
-      space_at_start_of_line = skip_whitespace_and_newlines (labelptr);
+      write_extra_bytes_to_output (label_ptr, nl_ptr - label_ptr);
 
       /* Note we do this before the newline is output.  This way if
          the first half of the label is on the bottom line of the
          screen, underlining will not be left on. */
       underlining_off ();
 
-      /* Output newline and any whitespace at start of line */
-      write_extra_bytes_to_output (labelptr, space_at_start_of_line);
-      labelptr += space_at_start_of_line;
+      /* Output newline and any whitespace at start of next line. */
+      label_ptr = nl_ptr + 1 + skip_whitespace (nl_ptr + 1);
+      write_extra_bytes_to_output (nl_ptr, label_ptr - nl_ptr);
 
       underlining_on ();
-
-      /* Output rest of label */
-      write_extra_bytes_to_output (labelptr,
-         entry->label + strlen(entry->label) - labelptr);
-
-      /* Text of reference ends later in node because of terminal
-         control characters that were output. */
-      if (preprocess_nodes_p)
-        {
-          entry->end += strlen (ANSI_UNDERLINING_ON);
-          entry->end += strlen (ANSI_UNDERLINING_OFF);
-        }
     }
 
+  /* Output rest of label */
+  write_extra_bytes_to_output (label_ptr, label + strlen (label) - label_ptr);
   underlining_off ();
+
+  /* Set entry->end. */
+  if (rewrite_p)
+    {
+      /* TODO: Just use the second of these two always? */
+      if (preprocess_nodes_p)
+        entry->end = text_buffer_off (&output_buf);
+      else
+        entry->end = entry->start + label_len - output_bytes_difference;
+    }
+  else
+    {
+      entry->end = entry->start + label_len;
+    }
+
+  /* Text of reference ends later in node because of terminal
+     control characters that were output. */
+  if (preprocess_nodes_p)
+    {
+      entry->end += strlen (ANSI_UNDERLINING_ON);
+      entry->end += strlen (ANSI_UNDERLINING_OFF);
+    }
 
   return entry;
 }
@@ -1276,22 +1248,6 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
     }
 }
 
-/* Check if there is a colon on the next line and return its offset.
-   Return -1 if there is no such colon. */
-static int
-colon_after_newline (char *nodeptr)
-{
-  int nl, colon_offset;
-
-  /* Check if a newline intervenes */
-  nl = skip_line (nodeptr);
-  colon_offset = string_in_line (":", nodeptr + nl);
-  if (colon_offset != -1)
-    return nl + colon_offset;
-  else
-    return -1;
-}
-
 /* Scan (*NODE_PTR)->contents and record location and contents of
    cross-references and menu items.  Convert character encoding of
    node contents to that of the user if the two are known to be
@@ -1306,6 +1262,7 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
   char *search_string;
 
   int found_menu_entry, in_index = 0;
+  int in_menu = 0;
   NODE *node = *node_ptr;
 
   REFERENCE **refs = NULL;
@@ -1340,6 +1297,7 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
   /* Initialize refs to point to array of one null pointer in case
      there are no results.  This way we know if refs has been initialized
      even if it is empty. */
+  /* FIXME: Null might not be zero. */
   refs = calloc (1, sizeof *refs);
 
   refs_slots = 1;
@@ -1361,98 +1319,101 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
   s.buffer = node->contents;
   s.start = inptr - node->contents;
   s.end = node->nodelen;
+  s.flags = S_FoldCase;
+
 search_again:
-
-  s.flags = S_FoldCase | S_SkipDest;
-
   while (regexp_search (search_string,
 		  &s, &position, 0) == search_success)
     {
+      long label_len;
+      char *label = 0;
+
       /* Save offset of "*" starting link. When preprocess_nodes is Off,
          we position the cursor on the * when moving to a link. */
       int start_of_reference; 
 
-      /* Cross-references can be generated by four different Texinfo
-         commands.  @inforef and @xref output "*Note " in Info format,
-         and "See" in HTML and print.  @ref and @pxref output "*note "
-         in Info format, and either nothing at all or "see" in HTML
-         and print.  Unfortunately, there is no easy way to distinguish
-         between these latter two cases.  We must make do with
-         displayed manuals occasionally containing "See see" and the
-         like. */
-      int capital_s;
-
       int colon_offset;
       REFERENCE *entry;
-      char *copy_to;
+      char *match;
 
-      /* Pointer to search result (after match) */
-      copy_to = s.buffer + position;
+      /* Pointer to search result */
+      match = s.buffer + position;
 
-      /* Was "* Menu:" seen?  If so, search for menu entries hereafter */
-      if (*(copy_to - 1) == ':')
+      /* Write out up to match */
+      copy_input_to_output (match - inptr); 
+
+      /* Was "* Menu:" seen?  If so, search for menu entries hereafter. */
+      if (!in_menu && match[0] == '\n')
         {
+          in_menu = 1;
+          skip_input (strlen ("\n* Menu:"));
+
+          /* FIXME: This is all wrong - we should just set deleted_lines
+             to a fixed value. */
+          deleted_lines++;
+
           /* This is INFO_MENU_ENTRY_LABEL "|" INFO_XREF_LABEL, but
              with '*' characters escaped. */
           search_string = "\n\\* |\\*Note";
-
-          /* Write out up to Menu label, and skip it */
-          copy_to -= 8;
-          copy_input_to_output (copy_to - inptr);
-          skip_input (8);
-
-          deleted_lines++;
           s.start = inptr - s.buffer;
           continue;
         }
 
-      /* Check what we found based on last character of match */
-      if (*(copy_to - 1) == ' ')
+      /* Check what we found based on first character of match */
+      if (match[0] == '\n')
         {
           found_menu_entry = 1;
-          start_of_reference = copy_to - node->contents - 2;
+          start_of_reference = position + 1;
+
+          copy_input_to_output (strlen ("\n* "));
         }
       else
         {
           found_menu_entry = 0;
+          start_of_reference = position;
 
-          capital_s = copy_to[-4] == 'N';
-          start_of_reference = copy_to - node->contents - 5;
-          copy_to -= 5; /* Point to before link */
+          /* Cross-references can be generated by four different Texinfo
+             commands.  @inforef and @xref output "*Note " in Info format,
+             and "See" in HTML and print.  @ref and @pxref output "*note "
+             in Info format, and either nothing at all or "see" in HTML
+             and print.  Unfortunately, there is no easy way to distinguish
+             between these latter two cases.  We must make do with
+             displayed manuals occasionally containing "See see" and the
+             like. */
+          /* TODO: Internationalize these strings, but only if we know the
+             language of the document. */
+          if (match[1] == 'N')
+            write_extra_bytes_to_output ("See", 3);
+          else
+            write_extra_bytes_to_output ("see", 3);
+
+          skip_input (strlen ("*Note"));
         }
 
-      /* Write out up to current reference */
-      copy_input_to_output (copy_to - inptr); 
-
-      /* Skip "*Note" */
-      if (!found_menu_entry)
-        skip_input (5);
+      /* Copy any white space before label. */
+      copy_input_to_output (skip_whitespace_and_newlines (inptr));
 
       /* Search forward to ":" to get label name */
-      skip_input (skip_whitespace (inptr));
-      colon_offset = string_in_line (":", inptr);
-
       /* Cross-references may have a newline in the middle. */
-      if (colon_offset == -1
-          && !found_menu_entry
-          && (colon_offset = colon_after_newline (inptr)) != -1)
-        ;
-      else if (colon_offset == -1)
+      if (!found_menu_entry)
+        label_len = read_quoted_string (inptr, ":", &label);
+      else
+        label_len = read_quoted_string (inptr, "\n:", &label);
+          
+      if (inptr[label_len] != ':')
         {
           /* This is not a menu entry or reference. */
           skip_input (1);
-
           s.start = inptr - s.buffer;
           continue;
         }
-      colon_offset--; /* Offset of colon, not character after it. */
+
+      /* Skip label and colon. */
+      skip_input (label_len + 1);
 
       /* Read and output reference label (up until colon). */
       entry = scan_reference_label
-        (colon_offset, start_of_reference, found_menu_entry, capital_s);
-
-      /* We've output the label, so now we can canonicalize it. */
-      canonicalize_whitespace (entry->label);
+        (label, label_len, start_of_reference, found_menu_entry);
 
       /* Get target of reference and update entry. */
       scan_reference_target (entry, found_menu_entry, in_index);
