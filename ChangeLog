@@ -4,7 +4,7 @@
 	--program-suffix.  Report from Glenn Morris.
 	* Pod-Simple-Texinfo/lib/Pod/Simple/Texinfo.pm, 
 	Pod-Simple-Texinfo/pod2texi.pl: add texinfo_sectioning_style 
-	'appendix' and command-line option--appendix-sections.
+	'appendix' and command-line option --appendix-sections.
 
 2014-05-05  Karl Berry  <karl@gnu.org>
 
