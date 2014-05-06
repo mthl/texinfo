@@ -253,8 +253,8 @@ install-data-local:
 	fi
 
 install-exec-hook:
-	rm -f $(DESTDIR)$(bindir)/makeinfo
-	-$(LN_S) texi2any $(DESTDIR)$(bindir)/makeinfo
+	makeinfo_f=`echo makeinfo | sed -e '$(transform)'`; rm -f $(DESTDIR)$(bindir)/$$makeinfo_f
+	-makeinfo_f=`echo makeinfo | sed -e '$(transform)'`; texi2any_f=`echo texi2any| sed -e '$(transform)'`; $(LN_S) $$texi2any_f $(DESTDIR)$(bindir)/$$makeinfo_f
 
 dist-hook:
 	rm -rf `find $(distdir)/maintain/lib -name .svn`
