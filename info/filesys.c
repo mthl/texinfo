@@ -572,8 +572,8 @@ int filesys_error_number = 0;
 static char *errmsg_buf = NULL;
 static int errmsg_buf_size = 0;
 
-/* Return string for ERROR_NUM when opening file.  Return value to be freed
-   by caller. */
+/* Return string for ERROR_NUM when opening file.  Return value should not
+   be freed by caller. */
 char *
 filesys_error_string (char *filename, int error_num)
 {

@@ -1,3 +1,14 @@
+2014-05-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/filesys.c (filesys_error_string): Correct comment about
+	whether return value should be freed by caller or not.
+
+	* info/info-utils.c (scan_reference_label): Remove superseded
+	correction to 'end' field of REFERENCE.
+
+	* info/nodes.h: Avoid double WINDOW typedef.  Reported by
+	Benno Schulenberg 06 May 2014.
+
 2014-05-07  Karl Berry  <karl@gnu.org>
 
 	* configure.ac (AC_INIT): go to 5.2dev, to reduce confusion

@@ -1137,14 +1137,6 @@ scan_reference_label (char *label, long label_len, long start_of_reference,
       entry->end = entry->start + label_len;
     }
 
-  /* Text of reference ends later in node because of terminal
-     control characters that were output. */
-  if (preprocess_nodes_p)
-    {
-      entry->end += strlen (ANSI_UNDERLINING_ON);
-      entry->end += strlen (ANSI_UNDERLINING_OFF);
-    }
-
   return entry;
 }
 
