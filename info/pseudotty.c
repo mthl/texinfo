@@ -17,7 +17,8 @@
    standard output.  Read and ignore any data sent to terminal.  This
    is so we can run tests interactively without messing up the screen. */
 
-#define _XOPEN_SOURCE
+#define _GNU_SOURCE
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>
@@ -29,6 +30,8 @@ char dummy;
 
 main ()
 {
+  /* Note getpt is a GNU extension.  grantpt, ptsname, unlockpt are
+     specified in POSIX.1-2001. */
   master = getpt();
   if (master == -1)
     exit (1);

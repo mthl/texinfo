@@ -356,7 +356,6 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
               break;
             }
         }
-      free (index);
     }
 
   /* If still no nodes and there are arguments remaining, follow menus

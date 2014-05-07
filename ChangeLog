@@ -1,4 +1,15 @@
-2014-05-04  Gavin Smith  <gavinsmith0123@gmail.com>
+2014-05-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (add_initial_nodes): Don't free return value of
+	info_indices_of_file_buffer.
+
+	* info/pseudotty.c: #define _GNU_SOURCE instead.  Note
+	added on the portability of various functions.
+
+	* info/t/Init-intera.inc: Note added on problem with crashes
+	during tests.
+
+2014-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (begin_multiple_window_info_session): Take
 	array of REFERENCE * arguments.  Caller in info.c:main updated.
