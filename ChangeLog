@@ -1,3 +1,26 @@
+2014-05-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (begin_multiple_window_info_session): Take
+	array of REFERENCE * arguments.  Caller in info.c:main updated.
+	(info_select_reference): Go to line number given by reference.
+	All callers updated.
+	(info_intuit_options_node): Return REFERENCE * instead of char *.
+	Callers updated.
+
+	* info/session.c (dump_nodes_to_file): Take reference array as
+	a parameter.  Callers updated.
+
+	* info/info.c (ref_list, ref_slots, ref_index): New file-level
+	variables.
+	(get_initial_file): Add reference to man page to ref_list if
+	we fell back to it.
+	(add_initial_nodes): Add nodes to ref_list instead of user_nodenames.
+
+	* info/session.c (info_follow_menus): Work for split files.
+
+	* info/indices.c (info_indices_of_file_buffer): Comment
+	added about whether return value should be freed.
+
 2014-05-06  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Makefile.am (install-exec-hook): use $(transform) for

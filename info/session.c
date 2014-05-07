@@ -86,12 +86,11 @@ void remember_window_and_node (WINDOW *window, NODE *node);
 void forget_window_and_nodes (WINDOW *window);
 void display_startup_message (void);
 
-/* Begin an info session finding the nodes specified by FILENAME and NODENAMES.
-   For each loaded node, create a new window.  Always split the largest of the
+/* Begin an info session finding the nodes specified by REFERENCES.  For
+   each loaded node, create a new window.  Always split the largest of the
    available windows.  Display ERROR in echo area if non-null. */
 void
-begin_multiple_window_info_session (char *filename, char **nodenames,
-                                    char *error)
+begin_multiple_window_info_session (REFERENCE **references, char *error)
 {
   register int i;
   WINDOW *window = 0;
@@ -105,7 +104,7 @@ begin_multiple_window_info_session (char *filename, char **nodenames,
     show_error_node (error);
 
   /* Load dir node as a back-up. */
-  if (!filename || !nodenames || !nodenames[0])
+  if (!references || !references[0])
     {
       /* Used to build `dir' menu from `localdir' files found in INFOPATH. */
       extern NODE *dir_node (void);
@@ -117,30 +116,14 @@ begin_multiple_window_info_session (char *filename, char **nodenames,
       return;
     }
   
-  if (!strcmp (MANPAGE_FILE_BUFFER_NAME, filename))
-    {
-      NODE *node;   
-
-      node = get_manpage_node (nodenames[0]);
-      if (node)
-        info_set_node_of_window (active_window, node);
-      return;
-    }
-
-  fb = info_find_file (filename);
-  for (i = 0; nodenames[i]; i++)
+  for (i = 0; references[i]; i++)
     {
       NODE *node;
-
-      node = info_get_node_of_file_buffer (fb, nodenames[i]);
-
-      if (!node)
-        break;
 
       if (!window)
         {
           window = active_window;
-          info_set_node_of_window (window, node);
+          info_select_reference (window, references[i]);
         }
       else
         {
@@ -166,7 +149,8 @@ begin_multiple_window_info_session (char *filename, char **nodenames,
             }
 
           active_window = largest;
-          window = window_make_window (node);
+          window = window_make_window (0);
+          info_select_reference (window, references[i]);
           if (window)
             {
               window_tile_windows (TILE_INTERNALS);
@@ -1801,7 +1785,13 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
   free (file_system_error);
 
   if (node)
-    info_set_node_of_window (window, node);
+    {
+      info_set_node_of_window (window, node);
+
+      if (entry->line_number > 0)
+        /* Third argument doesn't matter. */
+        internal_next_line (window, entry->line_number - 1, '1');
+    }
 }
 
 /* Parse the node specification in LINE using WINDOW to default the filename.
@@ -2036,8 +2026,6 @@ forward_move_node_structure (WINDOW *window, int behaviour)
           if (entry = select_menu_digit (window, '1'))
             {
               info_select_reference (window, entry);
-              if (entry->line_number > 0)
-                internal_next_line (window, entry->line_number - 1, '1');
               return 0;
             }
         }
@@ -2190,8 +2178,6 @@ backward_move_node_structure (WINDOW *window, int behaviour)
                   if (entry = select_menu_digit (window, '0'))
                     {
                       info_select_reference (window, entry);
-                      if (entry->line_number > 0)
-                        internal_next_line (window, entry->line_number - 1, '0');
                     }
                   else
                     break;
@@ -2312,8 +2298,6 @@ DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
   if (entry = select_menu_digit (window, key))
     {
       info_select_reference (window, entry);
-      if (entry->line_number > 0)
-        internal_next_line (window, entry->line_number - 1, key);
     }
   else if (key == '0')
     {
@@ -2528,12 +2512,6 @@ info_menu_or_ref_item (WINDOW *window, unsigned char key,
         {
           NODE *orig = window->node;
           info_select_reference (window, entry);
-
-          if (entry->line_number > 0)
-            /* next_line starts at line 1?  Anyway, the -1 makes it
-               move to the right line.  */
-            internal_next_line (window, entry->line_number - 1, key);
-
         }
 
       free (line);
@@ -2866,8 +2844,12 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
       debug (3, ("entry: %s, %s", entry->filename, entry->nodename));
       
       /* Try to find this node.  */
-      node = info_get_node (initial_node->filename, entry->nodename,
-                            PARSE_NODE_DFLT);
+      if (initial_node->parent)
+        node = info_get_node (initial_node->parent, entry->nodename,
+                              PARSE_NODE_DFLT);
+      else
+        node = info_get_node (initial_node->filename, entry->nodename,
+                              PARSE_NODE_DFLT);
       if (!node)
         {
 	  debug (3, ("no matching node found"));
@@ -3021,8 +3003,9 @@ entry_in_menu (char *arg, NODE *node, int exact)
 
 /* Find the node that is the best candidate to list the PROGRAM's
    invocation info and its command-line options, by looking for menu
-   items and chains of menu items with characteristic names.  */
-char *
+   items and chains of menu items with characteristic names.  Return
+   value should not be freed by caller. */
+REFERENCE *
 info_intuit_options_node (NODE *initial_node, char *program)
 {
   /* The list of node names typical for GNU manuals where the program
@@ -3049,6 +3032,8 @@ info_intuit_options_node (NODE *initial_node, char *program)
     (const char *)0
   };
   NODE *node = NULL;
+  REFERENCE *entry = NULL;
+
   const char **try_node;
 
   /* We keep looking deeper and deeper in the menu structure until
@@ -3057,12 +3042,12 @@ info_intuit_options_node (NODE *initial_node, char *program)
      in the menu hierarchy...  */
   for (node = initial_node; node; initial_node = node)
     {
-      REFERENCE *entry = NULL;
+      REFERENCE *new_entry = NULL;
 
       /* If no menu in this node, stop here.  Perhaps this node
          is the one they need.  */
       if (!initial_node->references)
-        break;
+        return entry;
 
       /* Look for node names typical for usage nodes in this menu.  */
       for (try_node = invocation_nodes; *try_node; try_node++)
@@ -3073,15 +3058,19 @@ info_intuit_options_node (NODE *initial_node, char *program)
           sprintf (nodename, *try_node, program);
           /* The last resort "%s" is dangerous, so we restrict it
              to exact matches here.  */
-          entry = entry_in_menu (nodename, initial_node,
+          new_entry = entry_in_menu (nodename, initial_node,
                                  strcmp (*try_node, "%s") == 0);
           free (nodename);
-          if (entry)
+          if (new_entry)
             break;
         }
 
-      if (!entry)
+      if (!new_entry)
         break;
+      else
+        entry = new_entry;
+
+      /* Go down into menu, and repeat. */ 
 
       if (!entry->filename)
         entry->filename = xstrdup (initial_node->parent ? initial_node->parent
@@ -3093,7 +3082,7 @@ info_intuit_options_node (NODE *initial_node, char *program)
         break;
     }
 
-  return initial_node->nodename;
+  return entry;  
 }
 
 /* Given a name of an Info file, find the name of the package it
@@ -3126,7 +3115,7 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
   char *program_name, *line;
   char *default_program_name, *prompt, *file_name;
   NODE *top_node;
-  char *invocation_node;
+  REFERENCE *invocation_ref;
 
   /* Intuit the name of the program they are likely to want.
      We use the file name of the current Info file as a hint.  */
@@ -3155,17 +3144,11 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
   if (!top_node)
     info_error (msg_cant_find_node, "Top");
 
-  invocation_node = info_intuit_options_node (top_node, program_name);
+  invocation_ref = info_intuit_options_node (top_node, program_name);
 
   /* We've got our best shot at the invocation node.  Now select it.  */
-  if (invocation_node)
-    {
-      NODE *node;
-
-      node = info_get_node_with_defaults (0, invocation_node,
-                                                  PARSE_NODE_DFLT, window);
-      info_set_node_of_window (window, node);
-    }
+  if (invocation_ref)
+    info_select_reference (window, invocation_ref);
 
   if (!info_error_was_printed)
     window_clear_echo_area ();
@@ -3426,22 +3409,19 @@ static int dump_node_to_stream (char *filename, char *nodename,
 				FILE *stream, int dump_subnodes);
 static void initialize_dumping (void);
 
-/* Dump the nodes in FILE_BUFFER called NODENAMES to the file named
+/* Dump the nodes specified with REFERENCES to the file named
    in OUTPUT_FILENAME.  If DUMP_SUBNODES is set, recursively dump
    the nodes which appear in the menu of each node dumped. */
 void
-dump_nodes_to_file (FILE_BUFFER *file_buffer, char **nodenames,
+dump_nodes_to_file (REFERENCE **references,
 		    char *output_filename, int flags)
 {
   int i;
   FILE *output_stream;
   char *filename;
   
-  if (!file_buffer)
+  if (!references)
     return;
-
-  filename = file_buffer->filename;
-  debug (1, (_("writing file %s"), filename));
 
   /* Get the stream to print the nodes to.  Special case of an output
      filename of "-" means to dump the nodes to stdout. */
@@ -3461,9 +3441,11 @@ dump_nodes_to_file (FILE_BUFFER *file_buffer, char **nodenames,
   /* Print each node to stream. */
   if (flags & DUMP_APPEND)
     fputc ('\f', output_stream);
-  for (i = 0; nodenames[i]; i++)
+  for (i = 0; references[i]; i++)
     {
-      if (dump_node_to_stream (filename, nodenames[i], output_stream,
+      if (dump_node_to_stream (references[i]->filename,
+                               references[i]->nodename,
+                               output_stream,
 			       flags & DUMP_SUBNODES) == DUMP_SYS_ERROR)
 	{
 	  info_error (_("error writing to %s: %s"), filename, strerror (errno));
@@ -3569,7 +3551,7 @@ dump_node_to_file (NODE *node, char *filename, int flags)
   char *fullpath;
 
   debug (1, (_("writing file %s"), filename));
-  
+
   /* Get the stream to print this node to.  Special case of an output
      filename of "-" means to dump the nodes to stdout. */
   if (strcmp (filename, "-") == 0)

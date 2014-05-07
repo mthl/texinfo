@@ -60,6 +60,11 @@ static char **user_nodenames = NULL;
 static size_t user_nodenames_index = 0;
 static size_t user_nodenames_slots = 0;
 
+/* References to the nodes to start the session with. */
+static REFERENCE **ref_list = NULL;
+static size_t ref_slots = 0;
+static size_t ref_index = 0;
+
 /* String specifying the first file to load.  This string can only be set
    by the user specifying "--file" on the command line. */
 static char *user_filename = NULL;
@@ -231,10 +236,16 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
 
       if (man_node)
         {
+          REFERENCE *new_ref;
+
           free (man_node);
+
+          new_ref = xzalloc (sizeof (REFERENCE));
+          new_ref->filename = MANPAGE_FILE_BUFFER_NAME;
+          new_ref->nodename = filename;
+          add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+
           initial_file = MANPAGE_FILE_BUFFER_NAME;
-          add_pointer_to_array (filename, user_nodenames_index,
-                                user_nodenames, user_nodenames_slots, 10);
           return initial_file;
         }
     }
@@ -243,17 +254,31 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
 }
 
 /* Expand list of nodes to be loaded. */
-static void
+static REFERENCE **
 add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
                    char **error)
 {
   NODE *initial_node;
   char *node_via_menus;
+  int i;
+
+  REFERENCE *new_ref;
+
+  /* Add nodes specified with --node. */
+  if (user_nodenames)
+    for (i = 0; user_nodenames[i]; i++)
+      {
+        new_ref = xzalloc (sizeof (REFERENCE));
+        new_ref->filename = initial_file->filename;
+        new_ref->nodename = user_nodenames[i];
+
+        add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+      }
 
   if (goto_invocation_p)
     {
       NODE *top_node;
-      char *invoc_node;
+      REFERENCE *invoc_ref = 0;
 
       char **p = argv;
       char *program;
@@ -283,10 +308,12 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
         program = xstrdup ("");
       
       top_node = info_get_node_of_file_buffer (initial_file, "Top");
-      invoc_node = info_intuit_options_node (top_node, program);
-      if (invoc_node)
-        add_pointer_to_array (invoc_node, user_nodenames_index,
-                              user_nodenames, user_nodenames_slots, 10);
+      invoc_ref = info_intuit_options_node (top_node, program);
+      if (invoc_ref)
+        {
+          new_ref = info_copy_reference (invoc_ref);
+          add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+        }
     }
 
   /* If there are arguments remaining, they are the names of menu items
@@ -299,20 +326,23 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
       initial_node = info_get_node_of_file_buffer (initial_file, "Top");
       node_via_menus = info_follow_menus (initial_node, argv, error, 1);
       if (node_via_menus)
-        add_pointer_to_array (node_via_menus, user_nodenames_index,
-                              user_nodenames, user_nodenames_slots, 10);
+        {
+          new_ref = xzalloc (sizeof (REFERENCE));
+          new_ref->filename = initial_file->filename;
+          new_ref->nodename = node_via_menus;
+
+          add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+        }
     }
 
   /* If no nodes found, and there is exactly one argument, check for
      it as an index entry. */
-  /* FIXME: This works, but doesn't go to the right position in the
-     node.  Maybe we could do it along with --index-search somehow? */
-  if (user_nodenames_index == 0 && argc == 1 && argv[0])
+  if (ref_index == 0 && argc == 1 && argv[0])
     {
       REFERENCE **index;
       REFERENCE **index_ptr;
 
-      //debug (3. "looking in indices);
+      debug (3, ("looking in indices"));
       index = info_indices_of_file_buffer (initial_file);
 
       for (index_ptr = index; index && *index_ptr; index_ptr++)
@@ -321,32 +351,43 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
             {
               free (*error); *error = 0;
 
-              add_pointer_to_array ((*index_ptr)->nodename,
-                user_nodenames_index, user_nodenames,
-                user_nodenames_slots, 10);
+              add_pointer_to_array (info_copy_reference (*index_ptr),
+                                    ref_index, ref_list, ref_slots, 2);
               break;
             }
         }
+      free (index);
     }
 
   /* If still no nodes and there are arguments remaining, follow menus
      inexactly. */
-  if (user_nodenames_index == 0 && *argv)
+  if (ref_index == 0 && *argv)
     {
       NODE *initial_node;
 
       initial_node = info_get_node_of_file_buffer (initial_file, "Top");
       node_via_menus = info_follow_menus (initial_node, argv, error, 0);
       if (node_via_menus)
-        add_pointer_to_array (node_via_menus, user_nodenames_index,
-                              user_nodenames, user_nodenames_slots, 10);
+        {
+          new_ref = xzalloc (sizeof (REFERENCE));
+          new_ref->filename = initial_file->filename;
+          new_ref->nodename = node_via_menus;
+
+          add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+        }
     }
 
-  /* Default in case there were no other nodes. */
-  if (user_nodenames_index == 0)
-    add_pointer_to_array ("Top", user_nodenames_index,
-                          user_nodenames, user_nodenames_slots, 10);
+  /* Default is "Top" if there were no other nodes. */
+  if (ref_index == 0)
+    {
+      new_ref = xzalloc (sizeof (REFERENCE));
+      new_ref->filename = initial_file->filename;
+      new_ref->nodename = "Top";
 
+      add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+    }
+
+  return ref_list;
 }
 
 
@@ -407,17 +448,10 @@ dirname (const char *file)
 static REFERENCE **
 info_find_matching_files (char *filename)
 {
-  REFERENCE **ref_list = NULL;
-  size_t ref_slots = 0;
-  size_t ref_index = 0;
   REFERENCE *new_ref;
   NODE *man_node;
 
   int i = 0;
-  
-  /* Initialize empty list. */
-  add_pointer_to_array (0, ref_index, ref_list, ref_slots, 2);
-  ref_index--;
 
   while (1)
     {
@@ -784,6 +818,10 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   if (all_matches_p)
     return all_files (user_filename, argc, argv);
 
+  /* Initialize empty list of nodes to load. */
+  add_pointer_to_array (0, ref_index, ref_list, ref_slots, 2);
+  ref_index--;
+
   initial_file = get_initial_file (user_filename, &argc, &argv, &error);
 
   /* --where */
@@ -835,11 +873,10 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
     {
       if (error)
         info_error (error);
-      if (!initial_fb) return 0;
+
       /* FIXME: Was two separate functions, dump_node_to_file as well.
          Check behaviour is the same. */
-      dump_nodes_to_file (initial_fb, user_nodenames,
-                          user_output_filename, dump_subnodes);
+      dump_nodes_to_file (ref_list, user_output_filename, dump_subnodes);
       return 0;
     }
 
@@ -850,8 +887,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
     }
     
   /* Initialize the Info session. */
-  begin_multiple_window_info_session (initial_file, user_nodenames,
-                                      error);
+  begin_multiple_window_info_session (ref_list, error);
   info_session ();
   return 0;
 }

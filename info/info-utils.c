@@ -218,7 +218,8 @@ read_quoted_string (char *start, char *terminator, char **output)
 /* **************************************************************** */
 
 /* Get the entry associated with LABEL in the menu of NODE.  Return a
-   pointer to the ENTRY if found, or null. */
+   pointer to the ENTRY if found, or null.  Return value should not
+   be freed by caller. */
 REFERENCE *
 info_get_menu_entry_by_label (NODE *node, char *label) 
 {
@@ -293,7 +294,7 @@ info_copy_reference (REFERENCE *src)
   dest->nodename = src->nodename ? xstrdup (src->nodename) : NULL;
   dest->start = src->start;
   dest->end = src->end;
-  dest->line_number = 0;
+  dest->line_number = src->line_number;
   dest->type = src->type;
   
   return dest;
