@@ -315,7 +315,7 @@ TeX
 * Naming TeX fonts: (fontname). Filenames for TeX fonts.
 * TDS: (tds).                   Standard TeX directory structure.
 * TeXDraw: (texdraw).           Drawing PostScript diagrams within TeX.
-* TL-basics: (tlbasics).        install-tl and tlmgr.
+* TL-build: (tlbuild).          TeX Live configuration and development.
 * Web2C: (web2c).               TeX, Metafont, and companion programs.
 
 Typesetting

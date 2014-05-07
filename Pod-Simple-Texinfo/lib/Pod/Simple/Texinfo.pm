@@ -53,7 +53,7 @@ foreach my $level (1 .. 4) {
   $head_commands_level{'head'.$level} = $level;
 }
 
-my @numbered_sectioning_commands = ('part', 'chapter', 'section', 'subsection', 
+my @numbered_sectioning_commands = ('part', 'appendix', 'section', 'subsection', 
   'subsubsection');
 my @appendix_sectioning_commands = ('part', 'appendix', 'appendixsec',
   'appendixsubsec', 'appendixsubsubsec');

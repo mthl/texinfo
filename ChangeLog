@@ -1,5 +1,8 @@
 2014-05-07  Karl Berry  <karl@gnu.org>
 
+	* configure.ac (AC_INIT): go to 5.2dev, to reduce confusion
+	with released versions.
+
 	* doc/info-stnd.texi (@copying): Front-Cover Texts with a capital T.
 	Implicitly reported by Benno, 06 May 2014 22:04:00.
 
