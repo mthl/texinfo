@@ -1,6 +1,6 @@
 # Texinfo.pm: format Pod as Texinfo.
 #
-# Copyright 2011, 2012 Free Software Foundation, Inc.
+# Copyright 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -53,7 +53,7 @@ foreach my $level (1 .. 4) {
   $head_commands_level{'head'.$level} = $level;
 }
 
-my @numbered_sectioning_commands = ('part', 'appendix', 'section', 'subsection', 
+my @numbered_sectioning_commands = ('part', 'chapter', 'section', 'subsection',
   'subsubsection');
 my @appendix_sectioning_commands = ('part', 'appendix', 'appendixsec',
   'appendixsubsec', 'appendixsubsubsec');
@@ -779,10 +779,9 @@ is C<http://man.he.net/man>.
 =item texinfo_sectioning_style
 
 Default is C<numbered>, using the numbered sectioning Texinfo @-commands
-(@chapter, @section...).  C<unnumbered> any other value would lead to 
-using unnumbered sectioning command variants (@unnumbered...), any other 
-value would lead to using appendix-like sectioning command variants 
-(@appendix...).
+(@chapter, @section...).  Giving C<unnumbered> leads to using unnumbered
+sectioning command variants (@unnumbered...), and any other value would
+lead to using appendix sectioning command variants (@appendix...).
 
 =item texinfo_add_upper_sectioning_command
 
