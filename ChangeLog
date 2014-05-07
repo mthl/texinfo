@@ -1,5 +1,8 @@
 2014-05-07  Karl Berry  <karl@gnu.org>
 
+	* doc/info-stnd.texi (@copying): Front-Cover Texts with a capital T.
+	Implicitly reported by Benno, 06 May 2014 22:04:00.
+
 	* doc/info.texi (Miscellaneous Commands): H is for get-help-window
 	(the terse command list) and h is for get-info-help-node (the
 	tutorial), as with Emacs Info.  Except in vi mode, where h
