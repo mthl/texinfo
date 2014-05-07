@@ -1846,9 +1846,10 @@ Read the name of an Info command in the echo area, and then display
 a key sequence which can be typed in order to invoke that command.
 
 @item @kbd{C-h} (@code{get-help-window})
+@itemx @kbd{H}
 @itemx @kbd{?}
 @itemx @key{F1} (on DOS/Windows only)
-@itemx h, vi-like operation
+@itemx @kbd{h} and @kbd{H}, vi-like operation
 @kindex C-h
 @kindex ?, in Info windows
 @kindex F1
@@ -1864,9 +1865,9 @@ the most concise information about GNU Info available.
 @kindex M-h, vi-like operation
 @findex get-info-help-node
 Try hard to visit the node @code{(info)Help}.  The Info file
-@file{info.texi} distributed with GNU Info contains this node.  Of
-course, the file must first be processed with @code{makeinfo}, and then
-placed into the location of your Info directory.
+@file{info.texi} distributed with GNU Info (and GNU Emacs) contains
+this node.  Of course, the file must first be processed with
+@code{makeinfo}, and then placed into the location of your Info directory.
 
 @item @kbd{=} (@code{display-file-info})
 @cindex current file, information about
