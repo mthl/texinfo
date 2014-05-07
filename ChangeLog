@@ -1,3 +1,11 @@
+2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (main): If slash in first non-option argument,
+	interpret as if it had been passed with --file.
+	* info/session.c (info_select_reference): Null check for label
+	field of REFERENCE.
+	* info/t/relative-path.sh: New test.
+
 2014-05-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/filesys.c (filesys_error_string): Correct comment about

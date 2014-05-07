@@ -777,14 +777,24 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       exit (EXIT_SUCCESS);
     }
 
+  argc -= optind;
+  argv += optind;
+  
+  /* If --file was not used and there is a slash in the first non-option
+     argument (e.g. "info subdir/file.info"), do not search the dir files
+     for a matching entry. */
+  if (!user_filename && argv[0] && strchr (argv[0], '/'))
+    {
+      user_filename = argv[0];
+      argv++; /* Advance past first remaining argument. */
+      argc--;
+    }
+
   /* If the user specified a particular filename, add the path of that
      file to the contents of INFOPATH. */
   if (user_filename)
     add_file_directory_to_path (user_filename);
 
-  argc -= optind;
-  argv += optind;
-  
   /* Load custom key mappings and variable settings */
   initialize_terminal_and_keymaps (init_file);
 

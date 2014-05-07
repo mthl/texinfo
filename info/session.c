@@ -1764,7 +1764,8 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
       if (info_recent_file_error)
         file_system_error = xstrdup (info_recent_file_error);
 
-      if (entry->nodename && (strcmp (entry->nodename, entry->label) == 0))
+      if (entry->nodename
+          && entry->label && (strcmp (entry->nodename, entry->label) == 0))
         {
           node = info_get_node (entry->label, "Top", PARSE_NODE_DFLT);
           if (!node && info_recent_file_error)
