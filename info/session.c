@@ -2,7 +2,8 @@
    $Id$
 
    Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-   2004, 2007, 2008, 2009, 2011, 2012, 2013 Free Software Foundation, Inc.
+   2004, 2007, 2008, 2009, 2011, 2012, 2013, 2014
+   Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -172,7 +173,7 @@ display_startup_message (void)
   char *format;
 
   format = replace_in_documentation
-    (_("Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item."),
+(_("Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item, \\[get-info-help-node] for tutorial."),
      0);
 
   window_message_in_echo_area (format, VERSION, NULL);

@@ -1,3 +1,15 @@
+2014-05-07  Karl Berry  <karl@gnu.org>
+
+	* doc/info.texi (Miscellaneous Commands): H is for get-help-window
+	(the terse command list) and h is for get-info-help-node (the
+	tutorial), as with Emacs Info.  Except in vi mode, where h
+	is also for get-help-window; is that what vi-ers want?
+	* info/session.c (display_startup_message): mention
+	get-info-help-node as well as get-help-window.
+	* info/infomap.c (default_emacs_like_info_keys): switch h/H
+	accordingly, as discussed and reported again by Benno,
+	06 May 2014 22:04:00.
+
 2014-05-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.c (add_initial_nodes): Don't free return value of
@@ -7034,10 +7046,11 @@
 2007-07-09  Oleg Katsitadze  <olegkat@gmail.com>
 
 	* doc/texinfo.tex (\thissection): renamed to \lastsection.
-	(\thissectionname, \thissectionnum, \evenheadingmarks, \oddheadingmarks, \evenfootingmarks, \oddfootingmarks, \everyheadingmarks, \everyfootingmarks):
-	new macros.
-	(\thischapter, \thischaptername, \thischapternum, \thissection, \thissectionname, \thissectionnum):
-	defined these using marks.
+	(\thissectionname, \thissectionnum, \evenheadingmarks,
+	 \oddheadingmarks, \evenfootingmarks, \oddfootingmarks,
+	 \everyheadingmarks, \everyfootingmarks): new macros.
+	(\thischapter, \thischaptername, \thischapternum, \thissection,
+ 	 \thissectionname, \thissectionnum): defined these using marks.
 	(\chapoddpage): omit heading and footing on blank filler pages.
 	* doc/texinfo.txi (Page headings): documented
 	\thissection{,name,num} and \{even,odd,every}{head,foot}ingmarks.
@@ -8141,7 +8154,7 @@
 	* info/infodoc.c (info_internal_help_text): combine messages
 	which are single sentences into one string.
 	Report from Clytie Siddall, via
-	http://sourceforge.net/tracker/index.php?func=detail&aid=1406541&group_id=40033&atid=426818.
+	http://sourceforge.net/tracker/index.php?func=detail&aid=1406541&group_id=40033&atid=426818
 
 	* po/POTFILES.in: add missing makeinfo/xref.c, makeinfo/float.c.
 	Report from Torsten.
@@ -8456,7 +8469,8 @@
 2005-08-05  Stepan Kasal  <kasal@ucw.cz>
 
 	* configure.ac: (auto)update.
-	* info/Makefile.am, makeinfo/Makefile.am, utils/Makefile.am: s/INCLUDES/AM_CPPFLAGS/
+	* info/Makefile.am, makeinfo/Makefile.am, utils/Makefile.am:
+	s/INCLUDES/AM_CPPFLAGS/
 	* lib/Makefile.am (INCLUDES): Remove.
 
 2005-08-05  Stepan Kasal  <kasal@ucw.cz>
