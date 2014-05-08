@@ -96,6 +96,7 @@ TESTS = \
 	t/no-file.sh \
 	t/split.sh \
 	t/relative-path.sh \
+	t/file-relative-path.sh \
 	t/dir.sh \
 	t/dir-file.sh \
 	t/dir-nondir.sh \

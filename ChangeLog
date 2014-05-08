@@ -1,5 +1,15 @@
 2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (begin_multiple_window_info_session): Deal with
+	references to desired nodes being invalid and display dir node
+	as a back-up.
+
+	* info/filesys.h (DEFAULT_INFOPATH): "." moved to end of path.
+
+	* info/t/file-relative-path.sh: New test.
+
+2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/Init-intera.inc: Redirect stdin as well as stdout and stderr.
 	* info/t (all files): Look in $srcdir for test data to faciliate
 	VPATH builds.

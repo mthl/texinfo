@@ -104,20 +104,7 @@ begin_multiple_window_info_session (REFERENCE **references, char *error)
   else
     show_error_node (error);
 
-  /* Load dir node as a back-up. */
-  if (!references || !references[0])
-    {
-      /* Used to build `dir' menu from `localdir' files found in INFOPATH. */
-      extern NODE *dir_node (void);
-
-      NODE *node;   
-
-      node = dir_node ();
-      info_set_node_of_window (active_window, node);
-      return;
-    }
-  
-  for (i = 0; references[i]; i++)
+  for (i = 0; references && references[i]; i++)
     {
       NODE *node;
 
@@ -125,6 +112,8 @@ begin_multiple_window_info_session (REFERENCE **references, char *error)
         {
           window = active_window;
           info_select_reference (window, references[i]);
+          if (!window->node)
+            window = 0;
         }
       else
         {
@@ -152,6 +141,14 @@ begin_multiple_window_info_session (REFERENCE **references, char *error)
           active_window = largest;
           window = window_make_window (0);
           info_select_reference (window, references[i]);
+
+          if (!window->node)
+            {
+              /* We couldn't find the node referenced. */
+              window_delete_window (window);
+              window = 0;
+            }
+
           if (window)
             {
               window_tile_windows (TILE_INTERNALS);
@@ -164,6 +161,20 @@ begin_multiple_window_info_session (REFERENCE **references, char *error)
               exit (EXIT_SUCCESS);
             }
         }
+    }
+
+  /* Load dir node as a back-up if there were no references given, or if
+     none of them were valid. */
+  if (!window)
+    {
+      /* Used to build `dir' menu from `localdir' files found in INFOPATH. */
+      extern NODE *dir_node (void);
+
+      NODE *node;   
+
+      node = dir_node ();
+      info_set_node_of_window (active_window, node);
+      return;
     }
 }
 
