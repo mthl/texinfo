@@ -20,7 +20,7 @@
 # Type "M-x index-apropos", look for "link" in indices, select first
 # result. Then type "i" followed by <TAB> to check the indices in the
 # file are still there.
-$GINFO --restore t/index-apropos.drib
+$GINFO --restore $t/index-apropos.drib
 RETVAL=$?
 
 . t/Cleanup.inc

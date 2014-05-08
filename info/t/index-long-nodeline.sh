@@ -20,11 +20,11 @@
 # Follow an menu item from the index node to a node where physical lines
 # don't match logical lines.
 
-$GINFO -f split --restore t/index-long-nodeline.drib
+$GINFO -f split --restore $t/index-long-nodeline.drib
 
 test -f $GINFO_OUTPUT || exit 1
 # Return non-zero (test failure) if files differ
-diff $GINFO_OUTPUT t/node-target
+diff $GINFO_OUTPUT $t/node-target
 RETVAL=$?
 
 . t/Cleanup.inc

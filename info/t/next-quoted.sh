@@ -18,11 +18,11 @@
 . t/Init-intera.inc
 
 # Go to a node with colons and commas in its name with "n"
-$GINFO -f quoting --restore t/next-quoted.drib
+$GINFO -f quoting --restore $t/next-quoted.drib
 
 test -f $GINFO_OUTPUT || exit 1
 # Return non-zero (test failure) if files differ
-diff $GINFO_OUTPUT t/node-target
+diff $GINFO_OUTPUT $t/node-target
 RETVAL=$?
 
 . t/Cleanup.inc

@@ -1,5 +1,12 @@
 2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/Init-intera.inc: Redirect stdin as well as stdout and stderr.
+	* info/t (all files): Look in $srcdir for test data to faciliate
+	VPATH builds.
+	* info/t/file.sh: Use simple filename argument to --file.
+
+2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi: Give overview of invocation.
 
 2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>

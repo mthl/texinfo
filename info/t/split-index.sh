@@ -19,11 +19,11 @@
 
 # Follow an index entry in a split file
 
-$GINFO -f split --restore t/split-index.drib
+$GINFO -f split --restore $t/split-index.drib
 
 test -f $GINFO_OUTPUT || exit 1
 # Return non-zero (test failure) if files differ
-diff $GINFO_OUTPUT t/node-target
+diff $GINFO_OUTPUT $t/node-target
 RETVAL=$?
 
 . t/Cleanup.inc

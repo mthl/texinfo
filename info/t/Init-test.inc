@@ -10,6 +10,8 @@ GINFO="./ginfo --init-file $srcdir/t/Info-config"
 export infodir=$srcdir/t/infodir
 export INFOPATH=$infodir
 
+export t=$srcdir/t
+
 GINFO_OUTPUT=$0.out
 # Remove left over file from previous tests
 rm -f $GINFO_OUTPUT
