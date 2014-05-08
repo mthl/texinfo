@@ -1,5 +1,11 @@
 2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info-utils.c (scan_node_contents): Pass offset relative to start
+	of node contents of "*" starting reference to scan_reference_label.
+	Report by Benno Schulenberg 8th May, 2014. 
+
+2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (begin_multiple_window_info_session): Deal with
 	references to desired nodes being invalid and display dir node
 	as a back-up.

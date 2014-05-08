@@ -1406,7 +1406,9 @@ search_again:
 
       /* Read and output reference label (up until colon). */
       entry = scan_reference_label
-        (label, label_len, start_of_reference, found_menu_entry);
+        (label, label_len,
+        (s.buffer + start_of_reference) - node->contents,
+        found_menu_entry);
 
       /* Get target of reference and update entry. */
       scan_reference_target (entry, found_menu_entry, in_index);
