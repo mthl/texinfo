@@ -131,15 +131,61 @@ sent to @email{bug-gnu-emacs@@gnu.org}.
 @cindex options, command line
 @cindex arguments, command line
 
-GNU Info accepts several options to control the initial node being
-viewed, and to specify which directories to search for Info files.
+GNU Info accepts several options to control the initial node or nodes
+being viewed, and to specify which directories to search for Info files.
 Here is a template showing an invocation of GNU Info from the shell:
 
 @example
-info [@var{option}]@dots{} [@var{menu-item}@dots{}]
+info [@var{option}@dots{}] @var{manual} [@var{menu-item}@dots{}]
 @end example
 
-The program accepts the following options:
+Info will look for an entry called @var{manual} in the directory
+files it finds in its search path.  For example:
+
+@example
+info ls
+@end example
+
+This looks for an entry labelled as @code{ls}, and if found, displays the
+referenced file at the location given.
+
+If no entry is found, Info looks for files in its search path with names
+based on @var{manual}; for example, @file{ls.info}.  (To bypass the directory
+lookup and look for Info files by their file name only, use the
+@option{--file} option, described below.)
+
+If you want to load a file without looking in the search path, specify
+@var{manual} either as an absolute path, or as a path relative to the
+current directory which contains at least one slash character.  Examples:
+
+@example
+info /usr/local/share/info/bash.info
+info ./document.info
+@end example
+
+The @var{menu-item} arguments are used to specify a node in the file to 
+be displayed.  Info first tries to follow menus in the file to reach a node.
+For example:
+
+@example
+info texinfo Overview 'Using Texinfo'
+@end example
+
+This loads the @code{texinfo} file and looks in its top-level menu for a
+@code{Overview} item, looks in the menu of the node referenced, and
+finally displays the node referenced by the @code{Using Texinfo} item.
+
+If there was only one @var{menu-item} argument and it wasn't found as a
+menu item, Info looks for it as an index entry. For example:
+
+@example
+info libc printf
+@end example
+
+This loads the libc manual and looks for @code{printf} in its indices; and
+if found, displays the file at the relevant location.
+
+A complete list of options follows.
 
 @table @code
 @anchor{--all}

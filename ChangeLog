@@ -1,5 +1,9 @@
 2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-stnd.texi: Give overview of invocation.
+
+2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info.c (main): If slash in first non-option argument,
 	interpret as if it had been passed with --file.
 	* info/session.c (info_select_reference): Null check for label
