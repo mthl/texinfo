@@ -5,6 +5,9 @@
 # We could perhaps use AM_TESTS_FD_REDIRECT in Makefile.am instead,
 # although this would stop us from running test scripts from the command-line.
 
+# Avoid info complaining that terminal is too dumb
+export TERM=vt100
+
 GINFO_PTY_FILE=$0.pty
 rm -f $GINFO_PTY_FILE
 ./pseudotty >$GINFO_PTY_FILE &

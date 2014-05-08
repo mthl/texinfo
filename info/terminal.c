@@ -2,7 +2,7 @@
    $Id$
 
    Copyright 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1997, 1998,
-   1999, 2001, 2002, 2004, 2007, 2008, 2012, 2013
+   1999, 2001, 2002, 2004, 2007, 2008, 2012, 2013, 2014
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -504,7 +504,7 @@ terminal_get_screen_size (void)
    becomes nonzero.  The variables SCREENHEIGHT and SCREENWIDTH are set
    to the dimensions that this terminal actually has.  The variable
    TERMINAL_HAS_META_P becomes nonzero if this terminal supports a Meta
-   key.  Finally, the terminal screen is cleared. */
+   key.  Get and save various termcap strings. */
 void
 terminal_initialize_terminal (char *terminal_name)
 {
@@ -687,11 +687,15 @@ struct ltchars original_ltchars;
 #  endif /* !HAVE_TERMIO_H */
 #endif /* !HAVE_TERMIOS_H */
 
-/* Prepare to start using the terminal to read characters singly. */
-void
+/* Prepare to start using the terminal to read characters singly.  Return
+   0 if terminal is too dumb to run Info interactively. */
+int
 terminal_prep_terminal (void)
 {
   int tty;
+
+  if (terminal_is_dumb_p)
+    return 0;
 
   if (terminal_prep_terminal_hook)
     {
@@ -826,6 +830,7 @@ terminal_prep_terminal (void)
   ioctl (tty, TIOCSETN, &ttybuff);
 # endif
 #endif /* !HAVE_TERMIOS_H && !HAVE_TERMIO_H */
+  return 1;
 }
 
 /* Restore the tty settings back to what they were before we started using

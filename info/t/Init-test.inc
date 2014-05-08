@@ -25,5 +25,8 @@ PTY_PID=0
 # Get error messages in English
 LC_ALL=C; export LC_ALL
 
+# Make sure that non-interactive operation works even if terminal is dumb
+export TERM=dumb
+
 # TODO: Exit test after so long, in case (for example) we get stuck in
 # interactive mode.

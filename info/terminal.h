@@ -61,7 +61,7 @@ extern void terminal_get_screen_size (void);
 extern VFunction *terminal_get_screen_size_hook;
 
 /* Save and restore tty settings. */
-extern void terminal_prep_terminal (void);
+extern int terminal_prep_terminal (void);
 extern void terminal_unprep_terminal (void);
 
 extern VFunction *terminal_prep_terminal_hook;

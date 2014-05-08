@@ -1,8 +1,20 @@
 2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* info-utils.c (scan_node_contents): Pass offset relative to start
-	of node contents of "*" starting reference to scan_reference_label.
-	Report by Benno Schulenberg 8th May, 2014. 
+	* info/session.c (initialize_terminal_and_keymaps): Don't quit if
+	terminal is dumb, because we might not be running interactively.
+	(initialize_info_session): Quit if terminal is dumb.
+	* info/terminal.c (terminal_initialize_terminal): Comment corrected.
+	(terminal_prep_terminal): Return 0 for a dumb terminal.
+
+	* info/t/Init-test.inc: Run tests with TERM=dumb by default.
+	* info/t/Init-intera.inc: Run interactive tests with TERM=vt100.
+	Suggested by Karl Berry.
+
+2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (scan_node_contents): Pass offset relative to
+	start of node contents of "*" starting reference to
+	scan_reference_label.  Report by Benno Schulenberg 8th May, 2014. 
 
 2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
 

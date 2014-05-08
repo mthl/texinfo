@@ -276,16 +276,6 @@ initialize_terminal_and_keymaps (char *init_file)
 {
   char *term_name = getenv ("TERM");
   terminal_initialize_terminal (term_name);
-
-  if (terminal_is_dumb_p)
-    {
-      if (!term_name)
-        term_name = "dumb";
-
-      info_error (msg_term_too_dumb, term_name);
-      exit (EXIT_FAILURE);
-    }
-
   read_init_file (init_file);
 }
 
@@ -294,7 +284,14 @@ initialize_terminal_and_keymaps (char *init_file)
 void
 initialize_info_session (void)
 {
-  terminal_prep_terminal ();
+  if (!terminal_prep_terminal())
+    {
+      /* Terminal too dumb to run interactively. */
+      char *term_name = getenv ("TERM");
+      info_error (msg_term_too_dumb, term_name);
+      exit (EXIT_FAILURE);
+    }
+
   terminal_clear_screen ();
 
   window_initialize_windows (screenwidth, screenheight);
