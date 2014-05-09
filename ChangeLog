@@ -1,5 +1,16 @@
 2014-05-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (deleted_lines): Variable deleted.  All
+	accesses removed.
+	(scan_node_contents): [preprocess-nodes=On] Remove blank line
+	after "* Menu:" marker.
+	* info/nodemenu.c (nodemenu_format_info): Add blank line after
+	"* Menu:" marker.
+	(get_visited_nodes): Add blank line at start of node to avoid first
+	line being interpreted as a node information line.
+
+2014-05-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c (info_find_file): If full path to file has been given,
 	look for a loaded file with that path exactly.
 	(info_find_subfile): Check if subfile was loaded with file

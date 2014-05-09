@@ -33,8 +33,7 @@ NODE *get_visited_nodes (Function *filter_func);
 static const char *
 nodemenu_format_info (void)
 {
-  return _("\n\
-* Menu:\n\
+  return _("\n* Menu:\n\n\
   (File)Node                        Lines   Size   Containing File\n\
   ----------                        -----   ----   ---------------");
 }
@@ -201,6 +200,7 @@ get_visited_nodes (Function *filter_func)
 
   initialize_message_buffer ();
 
+  printf_to_message_buffer ("\n");
   printf_to_message_buffer
     ("%s", replace_in_documentation
      (_("Here is the menu of nodes you have recently visited.\n\

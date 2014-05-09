@@ -550,9 +550,6 @@ struct text_buffer output_buf;
 static NODE **anchor_to_adjust;
 static int nodestart;
 
-/* Used to correct line offsets in index entries. */
-int deleted_lines = 0;
-
 /* Difference between the number of bytes input in the file and
    bytes output. */
 static long int output_bytes_difference;
@@ -646,7 +643,6 @@ init_output_stream (FILE_BUFFER *fb)
   if (rewrite_p)
     {
       text_buffer_init (&output_buf);
-      deleted_lines = 0;
       output_bytes_difference = 0;
     }
 }
@@ -1230,8 +1226,12 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
       if (!preprocess_nodes_p)
         entry->line_number = info_parsed_line_number;
       else
-        /* Adjust line offset in file to one in displayed text */
-        entry->line_number = info_parsed_line_number - deleted_lines;
+        /* Adjust line offset in file to one in displayed text.  This
+           does not work perfectly because we can't know exactly what
+           text will be inserted/removed: for example, due to expansion
+           of an image tag.  This subtracts 1 for a removed node information
+           line. */
+        entry->line_number = info_parsed_line_number - 1;
 
       if (found_menu_entry && !in_index)
         /* Output spaces the length of the node specifier to avoid
@@ -1339,11 +1339,7 @@ search_again:
       if (!in_menu && match[0] == '\n')
         {
           in_menu = 1;
-          skip_input (strlen ("\n* Menu:"));
-
-          /* FIXME: This is all wrong - we should just set deleted_lines
-             to a fixed value. */
-          deleted_lines++;
+          skip_input (strlen ("\n* Menu:\n"));
 
           /* This is INFO_MENU_ENTRY_LABEL "|" INFO_XREF_LABEL, but
              with '*' characters escaped. */
