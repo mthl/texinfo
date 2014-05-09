@@ -565,12 +565,12 @@ free_info_tag (NODE *tag)
 
 /* Functions for retrieving files. */
 
-/* Passed to info_load_file.  INFO_GET_TAGS
-   says to do what is neccessary to fill in the nodes or tags arrays in
-   FILE_BUFFER. */
+/* Passed to info_load_file.  INFO_GET_TAGS says to do what is necessary
+   to fill in the nodes or tags arrays in FILE_BUFFER. */
 #define INFO_NO_TAGS  0
 #define INFO_GET_TAGS 1
 
+static FILE_BUFFER *info_load_file (char *fullpath, int get_tags);
 static FILE_BUFFER *info_find_subfile (char *filename);
 static void get_file_character_encoding (FILE_BUFFER *fb);
 static void remember_info_file (FILE_BUFFER *file_buffer);
@@ -581,12 +581,6 @@ static void info_reload_file_buffer_contents (FILE_BUFFER *fb);
    already, or it may not.  If it does not already appear, find the file,
    and add it to the list of loaded files.  If the file cannot be found,
    return a NULL FILE_BUFFER *. */
-
-/* The workhorse for info_find_file ().  Non-zero 2nd argument says to
-   try to build a tags table (or otherwise glean the nodes) for this
-   file once found.  By default, we build the tags table, but when this
-   function is called by info_get_node () when we already have a valid
-   tags table describing the nodes, it is unnecessary. */
 FILE_BUFFER *
 info_find_file (char *filename)
 {
@@ -724,7 +718,7 @@ info_find_subfile (char *filename)
    second argument says to build a list of tags (or nodes) for this file.
    This is not necessary when loading a subfile for which we already have
    tags. */
-FILE_BUFFER *
+static FILE_BUFFER *
 info_load_file (char *fullpath, int get_tags)
 {
   char *contents;

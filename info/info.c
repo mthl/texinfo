@@ -764,7 +764,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
         {
           NODE *initial_node;
           
-          initial_fb = info_load_file (initial_file, 1);
+          initial_fb = info_find_file (initial_file);
           if (initial_fb && index_entry_exists (initial_fb,
                                                 index_search_string))
             {
@@ -787,7 +787,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       /* Add nodes to start with (unless we fell back to the man page). */
       if (initial_file && strcmp (MANPAGE_FILE_BUFFER_NAME, initial_file))
         {
-          initial_fb = info_load_file (initial_file, 1);
+          initial_fb = info_find_file (initial_file);
           add_initial_nodes (initial_fb, argc, argv, &error);
         }
     }

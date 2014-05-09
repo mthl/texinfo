@@ -1,5 +1,10 @@
 2014-05-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (info_load_file): Function declared static.
+	* info/info.c (main): Call info_find_file instead.
+
+2014-05-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info.c (all_files, main): all_files merged into main.
 	(add_initial_nodes): Store full path of initial
 	nodes instead of plain file name.

@@ -28,8 +28,7 @@
 /* User code interface.  */
 
 /* Structure which describes a node reference, such as a menu entry or
-   cross reference.  Arrays of such references can be built by calling
-   info_menus_of_node () or info_xrefs_of_node (). */
+   cross reference. */
 typedef struct {
   char *label;          /* User Label. */
   char *filename;       /* File where this node can be found. */
@@ -148,10 +147,6 @@ extern size_t info_loaded_files_slots;
    and add it to the list of loaded files.  If the file cannot be found,
    return a NULL FILE_BUFFER *. */
 extern FILE_BUFFER *info_find_file (char *filename);
-
-/* Load the file with path FULLPATH, and return pointer to FILE_BUFFER
-   structure.  If GET_TAGS == 0, don't fill in the tag table. */
-extern FILE_BUFFER *info_load_file (char *fullpath, int get_tags);
 
 /* Return a pointer to a new NODE structure. */
 extern NODE *info_create_node (void);
