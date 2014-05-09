@@ -1,7 +1,7 @@
 /* signals.c -- install and maintain signal handlers.
    $Id$
 
-   Copyright 1993, 1994, 1995, 1998, 2002, 2003, 2004, 2007, 2012, 2013
+   Copyright 1993, 1994, 1995, 1998, 2002, 2003, 2004, 2007, 2012, 2013, 2014
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -156,6 +156,8 @@ redisplay_after_signal (void)
 {
   terminal_clear_screen ();
   display_clear_display (the_display);
+  if (auto_footnotes_p)
+    info_get_or_remove_footnotes (active_window);
   window_mark_chain (windows, W_UpdateWindow);
   display_update_display (windows);
   display_cursor_at_point (active_window);

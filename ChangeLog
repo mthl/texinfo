@@ -9,6 +9,9 @@
 	(get_visited_nodes): Add blank line at start of node to avoid first
 	line being interpreted as a node information line.
 
+	* info/signals.c (redisplay_after_signal): [automatic-footnotes=On]
+	Redisplay footnotes after a window resize to get the correct size.
+
 2014-05-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.c (info_find_file): If full path to file has been given,
