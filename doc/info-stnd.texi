@@ -136,24 +136,47 @@ being viewed, and to specify which directories to search for Info files.
 Here is a template showing an invocation of GNU Info from the shell:
 
 @example
-info [@var{option}@dots{}] @var{manual} [@var{menu-item}@dots{}]
+info [@var{option}@dots{}] [@var{manual}] [@var{menu-item}@dots{}]
 @end example
 
 Info will look for an entry called @var{manual} in the directory
-files it finds in its search path.  For example:
+files it finds in its search path.  (If @var{manual} is not given,
+Info by default displays a composite directory listing, constructed by
+combining the @file{dir} files it finds.)  For example:
 
 @example
 info ls
 @end example
 
 This looks for an entry labelled as @code{ls}, and if found, displays the
-referenced file at the location given.
+referenced file at the location given.  
 
-If no entry is found, Info looks for files in its search path with names
-based on @var{manual}; for example, @file{ls.info}.  (To bypass the directory
-lookup and look for Info files by their file name only, use the
-@option{--file} option, described below.)
+@cindex compressed Info files
+@cindex files, compressed
+@cindex Info files, compressed
+If no entry is found in the directories, Info looks for files in its
+search path with names based on @var{manual}.  If @var{manual} is
+not found, Info looks for it with a number of known extensions of Info
+files, namely @file{.info}, @file{-info}, @file{/index}, and @file{.inf}.
+For every known extension, Info looks for a compressed file, if a regular
+file isn't found.  Info supports files compressed with @code{gzip},
+@code{xz}, @code{bzip2}, @code{lzip}, @code{lzma}, @code{compress} and
+@code{yabba} programs, assumed to have extensions @file{.z}, @file{.gz},
+@file{.xz}, @file{.bz2}, @file{.lz}, @file{.lzma}, @file{.Z}, and
+@file{.Y} respectively, possibly after one of the known Info files
+extensions.@footnote{On MS-DOS, Info allows for the Info extension,
+such as @code{.inf}, and the short compressed file extensions, such as
+@file{.z} and @file{.gz}, to be merged into a single extension, since DOS
+doesn't allow more than a single dot in the basename of a file.  Thus, on
+MS-DOS, if Info looks for @file{bison}, file names like @file{bison.igz}
+and @file{bison.inz} will be found and decompressed by @code{gunzip}.}
 
+(To bypass the directory lookup and look for Info files by their file
+name only, use the @option{--file} option, described below.)
+
+@cindex relative Info file names
+@cindex file names, relative
+@cindex Info files, relative
 If you want to load a file without looking in the search path, specify
 @var{manual} either as an absolute path, or as a path relative to the
 current directory which contains at least one slash character.  Examples:
@@ -163,17 +186,29 @@ info /usr/local/share/info/bash.info
 info ./document.info
 @end example
 
-The @var{menu-item} arguments are used to specify a node in the file to 
-be displayed.  Info first tries to follow menus in the file to reach a node.
-For example:
+@noindent
+Info looks for @var{manual} only in the explicitly specified directory, and
+adds that directory to the value of @code{INFOPATH}.
+
+@anchor{command-line menu items}
+@cindex menu, following
+Info treats its remaining arguments as the names of menu items.  The
+first argument is a menu item in the @samp{Top} node of the file
+loaded, the second argument is a menu item in the first argument's
+node, etc.  You can easily move to the node of your choice by specifying
+the menu names which describe the path to that node.  For example,
 
 @example
+info emacs buffers
 info texinfo Overview 'Using Texinfo'
 @end example
 
-This loads the @code{texinfo} file and looks in its top-level menu for a
-@code{Overview} item, looks in the menu of the node referenced, and
-finally displays the node referenced by the @code{Using Texinfo} item.
+@noindent
+The first example selects the menu item @samp{Buffers} in the node
+@samp{(emacs)Top}.  The second example loads the @file{texinfo} file and
+looks in its top-level menu for a @samp{Overview} item, looks in the menu
+of the node referenced, and finally displays the node referenced by the
+@samp{Using Texinfo} item.
 
 If there was only one @var{menu-item} argument and it wasn't found as a
 menu item, Info looks for it as an index entry. For example:
@@ -182,6 +217,7 @@ menu item, Info looks for it as an index entry. For example:
 info libc printf
 @end example
 
+@noindent
 This loads the libc manual and looks for @code{printf} in its indices; and
 if found, displays the file at the relevant location.
 
@@ -192,8 +228,8 @@ A complete list of options follows.
 @item --all
 @itemx -a
 @cindex @code{--all} (@code{-a}) command line option
-Find all files matching the given @var{menu-item} (a file or node
-name).  Three usage patterns are supported, as follows.
+Find all files matching @var{manual}.  Three usage patterns are
+supported, as follows.
 
 First, if @code{--all} is used together with @option{--where},
 @command{info} prints the names of all matching files found on
@@ -304,60 +340,21 @@ can be used later to replay the same sequence of commands, see the
 @cindex Info manual, specifying initial
 @cindex initial node, specifying
 @cindex startup node, specifying
-Specify a particular manual to visit.  By default, Info starts at a
-top-level ``directory'' (constructed by combining the @file{dir} files
-that it finds).  With this option, it starts by trying to visit
+Specify a particular manual to visit without looking its name up in any
+@file{dir} files.
+
+With this option, it starts by trying to visit
 @code{(@var{manual})Top}, i.e., the @code{Top} node in (typically)
-@file{@var{manual}.info}.  If no such file (or node) can be found,
-Info just exits immediately.
+@file{@var{manual}.info}.  As above, it tries various file extensions
+to find the file. If no such file (or node) can be found, Info exits
+without doing anything.  As with the @file{dir} lookup described above,
+any extra @var{menu-item} arguments are used to locate a node within the
+loaded file.
 
-Thus, @code{info -f emacs} is rather different from @code{info emacs}.
-With the latter, @samp{emacs} is treated as a menu item, meaning a
-case-insensitive match to the text before the colon in a typical
-@code{dir} entry:
-
-@example
-* Emacs: (emacs).  The extensible ...
-@end example
-
-An exact match (@samp{* emacs:})@: is preferred to a case-folding
-match.  This can often happen when the name of a utility and its
-containing manual are the same.
-
-@cindex relative Info file names
-@cindex file names, relative
-@cindex Info files, relative
-If @var{manual} is an absolute file name, or begins with @file{./} or
-@file{../}, or contains an intermediate directory, Info looks for
-@var{manual} only in that explicitly specified directory, and adds
-that directory to the value of @code{INFOPATH}.  For example,
-@code{info -f /usr/local/share/info/emacs} and @code{info -f ./emacs}
-visit the Emacs manual in the given directory, or quits.  Otherwise,
-@var{manual} is a simple name (@code{info -f emacs)}, and Info will
-only look for it in the directories specified in @code{INFOPATH}---not
-relative to the current directory.
-
-@cindex compressed Info files
-@cindex files, compressed
-@cindex Info files, compressed
-In every directory Info tries, if @var{filename} is not found, Info
-looks for it with a number of known extensions of Info files, namely
-@file{.info}, @file{-info}, @file{/index}, and @file{.inf}.  For every
-known extension, Info looks for a compressed file, if a regular file
-isn't found.  Info supports files compressed with @code{gzip},
-@code{xz}, @code{bzip2}, @code{lzip}, @code{lzma}, @code{compress} and
-@code{yabba} programs, assumed to have extensions @file{.z},
-@file{.gz}, @file{.xz}, @file{.bz2}, @file{.lz}, @file{.lzma},
-@file{.Z}, and @file{.Y} respectively, possibly after one of the known
-Info files extensions.
-
-On MS-DOS, Info allows for the Info extension, such as @code{.inf},
-and the short compressed file extensions, such as @file{.z} and
-@file{.gz}, to be merged into a single extension, since DOS doesn't
-allow more than a single dot in the basename of a file.  Thus, on
-MS-DOS, if Info looks for @file{bison}, file names like
-@file{bison.igz} and @file{bison.inz} will be found and decompressed
-by @code{gunzip}.
+As with the case when this option is not used, if @var{manual} is an absolute
+file name, or begins with @file{./} or @file{../}, or contains an intermediate
+directory, Info will only look for the file in the directory specified, and add
+this directory to @code{INFOPATH}.
 
 @item --help
 @itemx -h
@@ -514,35 +511,7 @@ for a more general way of altering GNU Info's key bindings.)
 @cindex Where is an Info manual?
 Show the filename that would be read and exit, instead of actually
 reading it and starting Info.
-
-@anchor{command-line menu items}
-@item @var{menu-item}
-@cindex menu, following
-Info treats its remaining arguments as the names of menu items.  The
-first argument is a menu item in the initial node visited (generally
-@code{dir}), the second argument is a menu item in the first argument's
-node, etc.  You can easily move to the node of your choice by specifying
-the menu names which describe the path to that node.  For example,
-
-@example
-info emacs buffers
-@end example
-
-@noindent
-first selects the menu item @samp{Emacs} in the node @samp{(dir)Top},
-and then selects the menu item @samp{Buffers} in the node
-@samp{(emacs)Top}.
 @end table
-
-To avoid searching the @file{dir} files and just show some arbitrary
-file, use @samp{-f} and the filename, as in @samp{info -f ./foo.info}.
-
-The index search and the search for the node which describes program
-invocation and command-line options begins @emph{after} processing all
-the command-line menu items.  Therefore, the Info file searched for the
-index or the invocation node is the file where Info finds itself after
-following all the menu items given on the command line.  This is so
-@samp{info emacs --show-options} does what you'd expect.
 
 Finally, Info defines many default key bindings and variables.
 @xref{Custom Key Bindings}, for information on how to customize these

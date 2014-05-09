@@ -1,5 +1,10 @@
 2014-05-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-stnd.texi: Some text from documentation of --file
+	option merged further up in node.
+
+2014-05-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infodoc.c (info_find_or_create_help_window) Close help
 	window if in it already.  Display error message if window cannot
 	be created.  Caller in info_get_help_window updated.
