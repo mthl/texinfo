@@ -12,6 +12,13 @@
 	* info/signals.c (redisplay_after_signal): [automatic-footnotes=On]
 	Redisplay footnotes after a window resize to get the correct size.
 
+	* info/footnotes.c (info_get_or_remove_footnotes): Mark footnotes
+	windows with W_TempWindow.  (Note: This flag was not used anywhere.)
+	* info/window.c (window_delete_window): Prefer windows that are
+	not marked with W_TempWindow.  (For example, opening and closing
+	a help window would result in an enlarged footnotes window being
+	selected.)
+
 2014-05-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.c (info_find_file): If full path to file has been given,

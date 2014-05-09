@@ -657,13 +657,26 @@ window_delete_window (WINDOW *window)
 
   if (window == active_window)
     {
+      WINDOW *new_active = 0;
+
       /* If there isn't a next window, then there must be a previous one,
          since we cannot delete the last window.  If there is a next window,
-         prefer to use that as the active window. */
+         prefer to use that as the active window.  Try to find an important
+         window to select, e.g. not a footnotes window. */
       if (next)
-        active_window = next;
-      else
-        active_window = prev;
+        {
+          new_active = next;
+          while ((new_active->flags & W_TempWindow) && new_active->next)
+            new_active = new_active->next;
+        }
+
+      if ((!new_active || new_active->flags & W_TempWindow) && prev)
+        {
+          new_active = prev;
+          while ((new_active->flags & W_TempWindow) && new_active->prev)
+            new_active = new_active->prev;
+        }
+      active_window = new_active;
     }
 
   if (next && active_window == next)
