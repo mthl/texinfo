@@ -210,9 +210,7 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
       /* Otherwise, we want the dir node.  The only node to be displayed
          or output will be "Top". */
       else
-        {
-          return 0;
-        }
+        return 0;
     }
   else
     {
@@ -269,7 +267,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
     for (i = 0; user_nodenames[i]; i++)
       {
         new_ref = xzalloc (sizeof (REFERENCE));
-        new_ref->filename = initial_file->filename;
+        new_ref->filename = initial_file->fullpath;
         new_ref->nodename = user_nodenames[i];
 
         add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
@@ -328,7 +326,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
       if (node_via_menus)
         {
           new_ref = xzalloc (sizeof (REFERENCE));
-          new_ref->filename = initial_file->filename;
+          new_ref->filename = initial_file->fullpath;
           new_ref->nodename = node_via_menus;
 
           add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
@@ -369,7 +367,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
       if (node_via_menus)
         {
           new_ref = xzalloc (sizeof (REFERENCE));
-          new_ref->filename = initial_file->filename;
+          new_ref->filename = initial_file->fullpath;
           new_ref->nodename = node_via_menus;
 
           add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
@@ -380,7 +378,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
   if (ref_index == 0)
     {
       new_ref = xzalloc (sizeof (REFERENCE));
-      new_ref->filename = initial_file->filename;
+      new_ref->filename = initial_file->fullpath;
       new_ref->nodename = "Top";
 
       add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
@@ -428,23 +426,7 @@ allfiles_create_node (char *term, REFERENCE **fref)
   scan_node_contents (0, &allfiles_node);
 }
 
-static char *
-dirname (const char *file)
-{
-  char *p;
-  size_t len;
-
-  p = strrchr (file, '/');
-  if (!p)
-    return NULL;
-  len = p - file;
-  p = xmalloc (len + 1);
-  memcpy (p, file, len);
-  p[len] = 0;
-  return p;
-}
-
-static REFERENCE **
+static void
 info_find_matching_files (char *filename)
 {
   REFERENCE *new_ref;
@@ -476,77 +458,8 @@ info_find_matching_files (char *filename)
       new_ref->nodename = filename;
       add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
     }
-
-  return ref_list;
 }
 
-static int
-all_files (char *filename, int argc, char **argv)
-{
-  REFERENCE **fref;
-  REFERENCE *ref;
-  char *fname;
-  int i, j;
-  int dirok;
-  struct info_namelist_entry *nlist = NULL;
-  int dump_flags = dump_subnodes;
-  
-  fname = user_filename ? user_filename : argv[0] ? argv[0] : 0;
-  if (!fname)
-    return EXIT_FAILURE;
-  
-  fref = info_find_matching_files (fname);
-  
-  for (i = 0; ref = fref[i]; )
-    {
-      if (info_namelist_add (&nlist, ref->filename) == 0)
-        {
-          ++i;
-        }
-      else
-        {
-          /* It's a duplicate.  This shouldn't happen, though. */
-          forget_info_file (ref->filename);
-
-          /* Delete this reference from fref. */
-          info_reference_free (ref);
-          for (j = i; (fref[j] = fref[j + 1]); j++);
-	}
-    }
-  
-  info_namelist_free (nlist);
-
-  /* TODO: Unify with --output handling in main(). */
-  if (user_output_filename)
-    {
-      NODE *node;
-      int dump_flags = dump_subnodes;
-
-      for (i = 0; fref[i]; i++)
-        {
-          node = info_get_node (fref[i]->filename, fref[i]->nodename,
-                                PARSE_NODE_DFLT);
-          dump_node_to_file (node, user_output_filename, dump_flags);
-          dump_flags |= DUMP_APPEND;
-        }
-      return EXIT_SUCCESS;
-    }
-
-  /* TODO: Unify with --where handling in main(). */
-  if (print_where_p)
-    {
-      for (i = 0; fref[i]; i++)
-        printf ("%s\n", fref[i]->filename);
-      return EXIT_SUCCESS;
-    }
-  
-  initialize_info_session ();
-  allfiles_create_node (fname, fref);
-  info_set_node_of_window (active_window, allfiles_node);
-  display_startup_message ();
-  info_session ();
-  return EXIT_SUCCESS;
-}
 
 static void
 set_debug_level (const char *arg)
@@ -824,57 +737,71 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       exit (EXIT_SUCCESS);
     }
 
-  if (all_matches_p)
-    return all_files (user_filename, argc, argv);
-
   /* Initialize empty list of nodes to load. */
   add_pointer_to_array (0, ref_index, ref_list, ref_slots, 2);
   ref_index--;
 
-  initial_file = get_initial_file (user_filename, &argc, &argv, &error);
+  if (all_matches_p)
+    {
+      /* --all */
+      if (!user_filename && argv[0])
+        {
+          user_filename = argv[0];
+          argv++; argc--;
+        }
+      else if (!user_filename)
+        return 1;
+      info_find_matching_files (user_filename);
+    }
+  else
+    {
+      initial_file = get_initial_file (user_filename, &argc, &argv, &error);
+
+      /* If the user specified `--index-search=STRING', 
+         start the info session in the node corresponding
+         to what they want. */
+      if (index_search_p && initial_file && !user_output_filename)
+        {
+          NODE *initial_node;
+          
+          initial_fb = info_load_file (initial_file, 1);
+          if (initial_fb && index_entry_exists (initial_fb,
+                                                index_search_string))
+            {
+              initialize_info_session ();
+              do_info_index_search (windows, initial_fb, 0,
+                                    index_search_string);
+            }
+          else
+            {
+              fprintf (stderr, _("no index entries found for `%s'\n"),
+                       index_search_string);
+              close_dribble_file ();
+              return 1;
+            }
+          
+          info_session ();
+          return 0;
+        }
+
+      /* Add nodes to start with (unless we fell back to the man page). */
+      if (initial_file && strcmp (MANPAGE_FILE_BUFFER_NAME, initial_file))
+        {
+          initial_fb = info_load_file (initial_file, 1);
+          add_initial_nodes (initial_fb, argc, argv, &error);
+        }
+    }
 
   /* --where */
   if (print_where_p)
     {
-      if (initial_file)
-        { 
-          printf ("%s\n", initial_file);
-          return 0;
-        }
-      else
+      int i;
+      if (!ref_list)
         return 1;
-    }
 
-  /* If the user specified `--index-search=STRING', 
-     start the info session in the node corresponding
-     to what they want. */
-  if (index_search_p && initial_file && !user_output_filename)
-    {
-      NODE *initial_node;
-      
-      initial_fb = info_load_file (initial_file, 1);
-      if (initial_fb && index_entry_exists (initial_fb, index_search_string))
-        {
-          initialize_info_session ();
-          do_info_index_search (windows, initial_fb, 0, index_search_string);
-        }
-      else
-        {
-          fprintf (stderr, _("no index entries found for `%s'\n"),
-                   index_search_string);
-          close_dribble_file ();
-          return 1;
-        }
-      
-      info_session ();
+      for (i = 0; ref_list[i]; i++)
+        printf ("%s\n", ref_list[i]->filename);
       return 0;
-    }
-
-  /* Add nodes to start with (unless we fell back to the man page). */
-  else if (initial_file && strcmp (MANPAGE_FILE_BUFFER_NAME, initial_file))
-    {
-      initial_fb = info_load_file (initial_file, 1);
-      add_initial_nodes (initial_fb, argc, argv, &error);
     }
 
   /* --output */
@@ -883,8 +810,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       if (error)
         info_error (error);
 
-      /* FIXME: Was two separate functions, dump_node_to_file as well.
-         Check behaviour is the same. */
       dump_nodes_to_file (ref_list, user_output_filename, dump_subnodes);
       return 0;
     }
@@ -896,7 +821,21 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
     }
     
   /* Initialize the Info session. */
-  begin_multiple_window_info_session (ref_list, error);
+  initialize_info_session ();
+
+  if (!error)
+    display_startup_message ();
+  else
+    show_error_node (error);
+
+  if (!all_matches_p)
+    begin_multiple_window_info_session (ref_list, error);
+  else
+    {
+      allfiles_create_node (user_filename, ref_list);
+      info_set_node_of_window (active_window, allfiles_node);
+    }
+
   info_session ();
   return 0;
 }

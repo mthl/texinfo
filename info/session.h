@@ -98,8 +98,6 @@ extern void print_node (NODE *node);
 #define DUMP_APPEND   0x01
 #define DUMP_SUBNODES 0x02
 
-extern void dump_node_to_file (NODE *node, char *filename,
-			       int flags);
 extern void dump_nodes_to_file (REFERENCE **references,
 				char *output_filename, int flags);
 

@@ -1,5 +1,19 @@
 2014-05-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info.c (all_files, main): all_files merged into main.
+	(add_initial_nodes): Store full path of initial
+	nodes instead of plain file name.
+	(info_find_matching_files): Return type changed.
+
+	* info/session.c (begin_multiple_window_info_session): Don't call
+	initialize_info_session or display a welcome message.  Caller in
+	main updated.
+
+	* info/info.c (dirname): Delete unused.
+	* info/session.c (dump_node_to_file): Delete unused.
+
+2014-05-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infodoc.c (info_get_info_help_node): Don't split window
 	to display Info tutorial.
 	* info/session.c (begin_multiple_window_info_session): Unused

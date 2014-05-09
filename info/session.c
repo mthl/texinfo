@@ -97,13 +97,6 @@ begin_multiple_window_info_session (REFERENCE **references, char *error)
   WINDOW *window = 0;
   FILE_BUFFER *fb;
 
-  initialize_info_session ();
-
-  if (!error)
-    display_startup_message ();
-  else
-    show_error_node (error);
-
   for (i = 0; references && references[i]; i++)
     {
       if (!window)
@@ -3564,58 +3557,6 @@ dump_node_to_stream (char *filename, char *nodename,
   free (node);
 
   return DUMP_SUCCESS;
-}
-
-/* Dump NODE to FILENAME.  If DUMP_SUBNODES is set, recursively dump
-   the nodes which appear in the menu of each node dumped. */
-void
-dump_node_to_file (NODE *node, char *filename, int flags)
-{
-  FILE *output_stream;
-  char *nodes_filename;
-  char *fullpath;
-
-  debug (1, (_("writing file %s"), filename));
-
-  /* Get the stream to print this node to.  Special case of an output
-     filename of "-" means to dump the nodes to stdout. */
-  if (strcmp (filename, "-") == 0)
-    output_stream = stdout;
-  else
-    output_stream = fopen (filename, flags & DUMP_APPEND ? "a" : "w");
-
-  if (!output_stream)
-    {
-      info_error (_("Could not create output file `%s'."), filename);
-      return;
-    }
-
-  if (node->parent)
-    nodes_filename = node->parent;
-  else
-    nodes_filename = node->filename;
-
-  initialize_dumping ();
-  
-  if (flags & DUMP_APPEND)
-    fputc ('\f', output_stream);
-
-  fullpath = info_find_fullpath (node->filename, 0);
-  fprintf (output_stream, "%s\n", fullpath);
-  free (fullpath);
-
-  if (dump_node_to_stream (nodes_filename, node->nodename,
-			   output_stream, flags & DUMP_SUBNODES)
-      == DUMP_SYS_ERROR)
-    {
-      info_error (_("error writing to %s: %s"), filename, strerror (errno));
-      exit (EXIT_FAILURE);
-    }
-
-  if (output_stream != stdout)
-    fclose (output_stream);
-
-  debug (1, (_("closing file %s"), filename));
 }
 
 #if !defined (DEFAULT_INFO_PRINT_COMMAND)
