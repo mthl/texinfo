@@ -630,7 +630,9 @@ window_set_node_of_window (WINDOW *window, NODE *node)
 /* Delete WINDOW from the list of known windows.  If this window was the
    active window, make the next window in the chain be the active window.
    If the active window is the next or previous window, choose that window
-   as the recipient of the extra space.  Otherwise, prefer the next window. */
+   as the recipient of the extra space.  Otherwise, prefer the next window.
+   Be aware that info_delete_window_internal (in session.c) should be called
+   instead if you need to remove the window from the info_windows list. */
 void
 window_delete_window (WINDOW *window)
 {

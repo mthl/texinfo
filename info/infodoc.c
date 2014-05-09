@@ -411,6 +411,13 @@ info_find_or_create_help_window (void)
   WINDOW *eligible = NULL;
   WINDOW *help_window = get_window_of_node (internal_info_help_node);
 
+  /* Close help window if in it already. */
+  if (help_window && help_window == active_window)
+    {
+      info_delete_window_internal (help_window);
+      return NULL;
+    }
+
   /* If we couldn't find the help window, then make it. */
   if (!help_window)
     {
@@ -427,8 +434,12 @@ info_find_or_create_help_window (void)
         }
 
       if (!eligible)
-        return NULL;
+        {
+          info_error ("%s", msg_cant_make_help);
+          return NULL;
+        }
     }
+
 #ifndef HELP_NODE_GETS_REGENERATED
   else
     /* help window is static, just return it.  */
@@ -484,10 +495,6 @@ DECLARE_INFO_COMMAND (info_get_help_window, _("Display help message"))
     {
       active_window = help_window;
       active_window->flags |= W_UpdateWindow;
-    }
-  else
-    {
-      info_error ("%s", msg_cant_make_help);
     }
 }
 
