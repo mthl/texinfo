@@ -587,30 +587,24 @@ info_find_file (char *filename)
   int i;
   FILE_BUFFER *file_buffer;
   char *fullpath;
+  int is_fullpath;
+  
+  /* If full path to the file has been given, we must find it exactly. */
+  is_fullpath = IS_ABSOLUTE (filename) || strchr (filename, '/');
 
   /* First try to find the file in our list of already loaded files. */
   if (info_loaded_files)
     {
       for (i = 0; (file_buffer = info_loaded_files[i]); i++)
-        if ((FILENAME_CMP (filename, file_buffer->filename) == 0)
-            || (FILENAME_CMP (filename, file_buffer->fullpath) == 0)
-            || (!IS_ABSOLUTE (filename)
-                && FILENAME_CMP (filename,
-                                filename_non_directory (file_buffer->fullpath))
-                    == 0))
+        if (   (FILENAME_CMP (filename, file_buffer->fullpath) == 0)
+            || (!is_fullpath
+                 && (FILENAME_CMP (filename, file_buffer->filename) == 0)))
           {
             struct stat new_info, *old_info;
-            char *fullpath;
 
-            fullpath = info_find_fullpath (file_buffer->filename, &new_info);
-            if (!fullpath)
-              return NULL;
-            free (fullpath);
-
-            /* Check to see if the file has changed since the last
-               time it was loaded.  */
             old_info = &file_buffer->finfo;
-            if (new_info.st_size != old_info->st_size
+            if (   stat (file_buffer->fullpath, &new_info) == -1
+                || new_info.st_size != old_info->st_size
                 || new_info.st_mtime != old_info->st_mtime)
               {
                 /* The file has changed.  Forget that we ever had loaded it
@@ -618,26 +612,24 @@ info_find_file (char *filename)
                 forget_info_file (filename);
                 break;
               }
-            else
+
+            /* The info file exists, and has not changed since the last
+               time it was loaded.  If the caller requested a nodes list
+               for this file, and there isn't one here, build the nodes
+               for this file_buffer.  In any case, return the file_buffer
+               object. */
+            if (!file_buffer->contents)
               {
-                /* The info file exists, and has not changed since the last
-                   time it was loaded.  If the caller requested a nodes list
-                   for this file, and there isn't one here, build the nodes
-                   for this file_buffer.  In any case, return the file_buffer
-                   object. */
+                /* The file's contents have been gc'ed.  Reload it.  */
+                info_reload_file_buffer_contents (file_buffer);
                 if (!file_buffer->contents)
-                  {
-                    /* The file's contents have been gc'ed.  Reload it.  */
-                    info_reload_file_buffer_contents (file_buffer);
-                    if (!file_buffer->contents)
-                      return NULL;
-                  }
-
-                if (!file_buffer->tags)
-                  build_tags_and_nodes (file_buffer);
-
-                return file_buffer;
+                  return NULL;
               }
+
+            if (!file_buffer->tags)
+              build_tags_and_nodes (file_buffer);
+
+            return file_buffer;
           }
     }
 
@@ -645,7 +637,10 @@ info_find_file (char *filename)
 
   /* Get the full pathname of this file, as known by the info system.
      That is to say, search along INFOPATH and expand tildes, etc. */
-  fullpath = info_find_fullpath (filename, 0);
+  if (!is_fullpath)
+    fullpath = info_find_fullpath (filename, 0);
+  else
+    fullpath = filename;
 
   /* FIXME: Put the following in info_find_fullpath, or remove
      it altogether. */
@@ -686,30 +681,45 @@ info_find_file (char *filename)
 }
 
 /* Find a subfile of a split file.  This differs from info_load_file in
-   that it does not fill in a tag table for the file.
-   FIXME: Only look for subfile in same directory as master file. */
+   that it does not fill in a tag table for the file. */
 static FILE_BUFFER *
-info_find_subfile (char *filename)
+info_find_subfile (char *fullpath)
 {
+  char *with_extension = 0;
   int i;
   FILE_BUFFER *file_buffer = 0;
-  char *fullpath;
 
   /* First try to find the file in our list of already loaded files. */
   if (info_loaded_files)
     {
       for (i = 0; (file_buffer = info_loaded_files[i]); i++)
-        if (FILENAME_CMP (filename, file_buffer->filename) == 0
-            || FILENAME_CMP (filename, file_buffer->fullpath) == 0)
+        /* Check if fullpath starts the name of the recorded file (extra
+           extensions like ".info.gz" could be added.) */
+        if (!strncmp (file_buffer->fullpath, fullpath, strlen (fullpath)))
           {
-            /* TODO: Check if it's changed since last time. */
+            struct stat new_info, *old_info;
+
+            old_info = &file_buffer->finfo;
+            if (   stat (file_buffer->fullpath, &new_info) == -1
+                || new_info.st_size != old_info->st_size
+                || new_info.st_mtime != old_info->st_mtime)
+              {
+                /* The file has changed.  Forget that we ever had loaded it
+                   in the first place. */
+                forget_info_file (fullpath);
+                break;
+              }
             return file_buffer;
           }
     }
 
-  fullpath = info_find_fullpath (filename, 0);
-  if (fullpath)
-    file_buffer = info_load_file (fullpath, INFO_NO_TAGS);
+  /* The file wasn't loaded.  Try to load it now. */
+  with_extension = info_find_fullpath (fullpath, 0);
+  if (with_extension)
+    {
+      file_buffer = info_load_file (with_extension, INFO_NO_TAGS);
+      free (with_extension);
+    }
   return file_buffer;
 }
 
@@ -735,8 +745,8 @@ info_load_file (char *fullpath, int get_tags)
   /* The file was found, and can be read.  Allocate FILE_BUFFER and fill
      in the various members. */
   file_buffer = make_file_buffer ();
-  file_buffer->fullpath = fullpath;
-  file_buffer->filename = filename_non_directory (fullpath);
+  file_buffer->fullpath = xstrdup (fullpath);
+  file_buffer->filename = filename_non_directory (file_buffer->fullpath);
   file_buffer->finfo = finfo;
   file_buffer->filesize = filesize;
   file_buffer->contents = contents;
@@ -1037,9 +1047,14 @@ get_filename_and_nodename (int flag, WINDOW *window,
     {
       if (window)
         {
+          FILE_BUFFER *fb;
+
           *filename = window->node->parent;
           if (!*filename)
-            *filename = window->node->filename;
+            {
+              fb = file_buffer_of_window (window);
+              *filename = fb->fullpath;
+            }
         }
       else
         *filename = "dir";

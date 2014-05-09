@@ -1,5 +1,15 @@
 2014-05-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (info_find_file): If full path to file has been given,
+	look for a loaded file with that path exactly.
+	(info_find_subfile): Check if subfile was loaded with file
+	extensions added.
+	(info_load_file): Don't retain reference to string argument.
+	(get_filename_and_nodename): Use full path of file to follow
+	references within a file.
+
+2014-05-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c (info_load_file): Function declared static.
 	* info/info.c (main): Call info_find_file instead.
 
