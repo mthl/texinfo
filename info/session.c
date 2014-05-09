@@ -106,8 +106,6 @@ begin_multiple_window_info_session (REFERENCE **references, char *error)
 
   for (i = 0; references && references[i]; i++)
     {
-      NODE *node;
-
       if (!window)
         {
           window = active_window;

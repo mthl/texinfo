@@ -532,23 +532,11 @@ DECLARE_INFO_COMMAND (info_get_info_help_node, _("Visit Info node `(info)Help'")
         info_error ("%s", info_recent_file_error);
       else
         info_error (msg_cant_file_node, "Info", nodename);
+        
+      return;
     }
-  else
-    {
-      /* If the current window is very large (greater than 45 lines),
-         then split it and show the help node in another window.
-         Otherwise, use the current window. */
 
-      if (active_window->height > 45)
-        active_window = window_make_window (node);
-      else
-        {
-          set_remembered_pagetop_and_point (active_window);
-          window_set_node_of_window (active_window, node);
-        }
-
-      remember_window_and_node (active_window, node);
-    }
+  info_set_node_of_window (active_window, node);
 }
 
 /* **************************************************************** */

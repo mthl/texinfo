@@ -1,3 +1,10 @@
+2014-05-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infodoc.c (info_get_info_help_node): Don't split window
+	to display Info tutorial.
+	* info/session.c (begin_multiple_window_info_session): Unused
+	variable removed.
+
 2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (select_menu_digit): Return null if no menu.
