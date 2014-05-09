@@ -2269,7 +2269,7 @@ select_menu_digit (WINDOW *window, unsigned char key)
   if (!menu)
     {
       info_error ("%s", msg_no_menu_node);
-      return;
+      return 0;
     }
 
   /* We have the menu.  See if there are this many items in it. */
@@ -2305,6 +2305,13 @@ DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
 {
   int item = key - '0';
   REFERENCE *entry;
+
+  if (!window->node->references)
+    {
+      info_error ("%s", msg_no_menu_node);
+      return;
+    }
+
   if (entry = select_menu_digit (window, key))
     {
       info_select_reference (window, entry);
@@ -2362,6 +2369,10 @@ info_menu_or_ref_item (WINDOW *window, unsigned char key,
   int which, closest = -1;
 
   reference_bool_fn exclude; 
+
+  if (!refs)
+    return;
+
   if (menu_item && !xref)
     {
       exclude = &exclude_cross_references;
@@ -2535,6 +2546,12 @@ info_menu_or_ref_item (WINDOW *window, unsigned char key,
    and select that item. */
 DECLARE_INFO_COMMAND (info_menu_item, _("Read a menu item and select its node"))
 {
+  if (!window->node->references)
+    {
+      info_error ("%s", msg_no_menu_node);
+      return;
+    }
+
   info_menu_or_ref_item (window, key, 1, 0, 1);
 }
 

@@ -1,5 +1,12 @@
 2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (select_menu_digit): Return null if no menu.
+	(info_menu_digit): Check if references field of node is null.
+	(info_menu_or_ref_item): Abort if no references.
+	(info_menu_item): Print error message if no references.
+
+2014-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (initialize_terminal_and_keymaps): Don't quit if
 	terminal is dumb, because we might not be running interactively.
 	(initialize_info_session): Quit if terminal is dumb.
