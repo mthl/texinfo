@@ -187,11 +187,20 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
          dir entry given by the first one. */
       if ((*argv)[0])
         {
+          /* If they say info -O info, we want to show them the invocation node
+             for standalone info; there's nothing useful in info.texi.  */
+          if (goto_invocation_p && (*argv)[0]
+              && mbscasecmp ((*argv)[0], "info") == 0)
+            (*argv)[0] = "info-stnd";
+
           dir_node = info_get_node (0, 0, PARSE_NODE_DFLT);
 
           entry = info_get_menu_entry_by_label (dir_node, (*argv)[0]);
           if (entry)
-            initial_file = info_find_fullpath (entry->filename, 0);
+            {
+              initial_file = info_find_fullpath (entry->filename, 0);
+              add_pointer_to_array (entry, ref_index, ref_list, ref_slots, 2);
+            }
 
           if (!initial_file)
             /* Try finding a file with this name, in case
@@ -280,11 +289,6 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
 
       char **p = argv;
       char *program;
-
-      /* If they say info -O info, we want to show them the invocation node
-         for standalone info; there's nothing useful in info.texi.  */
-      if (argv[0] && mbscasecmp (*argv, "info") == 0)
-        *argv = "info-stnd";
 
       /* If they said "info --show-options foo bar baz",
          the last of the arguments is the program whose

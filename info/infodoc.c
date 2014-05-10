@@ -947,7 +947,7 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
                node in the history list, not deleting the window.  */
               if (strcmp (rep_name, "quit-help") == 0)
                 fun_name = help_is_only_window_p ? "history-node"
-                                                 : "delete-window";
+                                                 : "get-help-window";
               else
                 fun_name = rep_name;
 

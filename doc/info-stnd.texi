@@ -139,16 +139,16 @@ Here is a template showing an invocation of GNU Info from the shell:
 info [@var{option}@dots{}] [@var{manual}] [@var{menu-item}@dots{}]
 @end example
 
-Info will look for an entry called @var{manual} in the directory
-files it finds in its search path.  (If @var{manual} is not given,
-Info by default displays a composite directory listing, constructed by
-combining the @file{dir} files it finds.)  For example:
+Info will look for an entry called @var{manual} in the directory files
+(called @file{dir}) it finds in its search path.  (If @var{manual}
+is not given, Info by default displays a composite directory listing,
+constructed by combining the @file{dir} files.)  For example:
 
 @example
 info ls
 @end example
 
-This looks for an entry labelled as @code{ls}, and if found, displays the
+This looks for an entry labelled @code{ls}, and if found, displays the
 referenced file at the location given.  
 
 @cindex compressed Info files
@@ -158,18 +158,18 @@ If no entry is found in the directories, Info looks for files in its
 search path with names based on @var{manual}.  If @var{manual} is
 not found, Info looks for it with a number of known extensions of Info
 files, namely @file{.info}, @file{-info}, @file{/index}, and @file{.inf}.
-For every known extension, Info looks for a compressed file, if a regular
-file isn't found.  Info supports files compressed with @code{gzip},
+For every known extension, if a regular file is not found, Info looks
+for a compressed file.  Info supports files compressed with @code{gzip},
 @code{xz}, @code{bzip2}, @code{lzip}, @code{lzma}, @code{compress} and
 @code{yabba} programs, assumed to have extensions @file{.z}, @file{.gz},
 @file{.xz}, @file{.bz2}, @file{.lz}, @file{.lzma}, @file{.Z}, and
-@file{.Y} respectively, possibly after one of the known Info files
-extensions.@footnote{On MS-DOS, Info allows for the Info extension,
-such as @code{.inf}, and the short compressed file extensions, such as
-@file{.z} and @file{.gz}, to be merged into a single extension, since DOS
-doesn't allow more than a single dot in the basename of a file.  Thus, on
-MS-DOS, if Info looks for @file{bison}, file names like @file{bison.igz}
-and @file{bison.inz} will be found and decompressed by @code{gunzip}.}
+@file{.Y} respectively.@footnote{On MS-DOS, Info allows for the Info
+extension, such as @code{.inf}, and the short compressed file extensions,
+such as @file{.z} and @file{.gz}, to be merged into a single extension,
+since DOS doesn't allow more than a single dot in the basename of
+a file.  Thus, on MS-DOS, if Info looks for @file{bison}, file names
+like @file{bison.igz} and @file{bison.inz} will be found and decompressed
+by @code{gunzip}.}
 
 (To bypass the directory lookup and look for Info files by their file
 name only, use the @option{--file} option, described below.)
@@ -389,9 +389,8 @@ of the @file{.info} file in your home directory.  @xref{Custom Key Bindings}.
 @cindex @code{--node} (@code{-n}) command line option
 @cindex node, selecting from the command line
 Specify a particular node to visit in the initial file that Info
-loads.  This is especially useful in conjunction with @code{--file}.
-You may specify @code{--node} multiple times; for an interactive Info,
-each @var{nodename} is visited in its own window, for a
+loads.  You may specify @code{--node} multiple times; for an interactive
+Info, each @var{nodename} is visited in its own window, for a
 non-interactive Info (such as when @code{--output} is given) each
 @var{nodename} is processed sequentially.
 

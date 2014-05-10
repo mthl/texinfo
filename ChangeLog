@@ -1,3 +1,11 @@
+2014-05-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (get_initial_file): Special handling of "info -O info"
+	moved from add_initial_nodes.  Save node name found in dir.
+	* info/infodoc.c (replace_in_documentation): Show "H" to close
+	help window.
+	* doc/info-stnd.texi: Tweaks to Invocation.
+
 2014-05-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/info-stnd.texi: Some text from documentation of --file
