@@ -199,6 +199,9 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
           if (entry)
             {
               initial_file = info_find_fullpath (entry->filename, 0);
+              /* Store full path, so that we find the already loaded file in
+                 info_find_file, and show the full path if --where is used. */
+              entry->filename = initial_file;
               add_pointer_to_array (entry, ref_index, ref_list, ref_slots, 2);
             }
 

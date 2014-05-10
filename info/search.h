@@ -77,7 +77,6 @@ extern int skip_whitespace (char *string);
 extern int skip_non_whitespace (char *string);
 extern int skip_whitespace_and_newlines (char *string);
 extern int skip_line (char *string);
-extern int skip_node_characters (char *string, int newlines_okay);
 extern int skip_node_separator (char *body);
 
 extern long find_node_separator (SEARCH_BINDING *binding);

@@ -218,16 +218,9 @@ get_nodes_of_info_file (FILE_BUFFER *file_buffer)
       /* Find the start of the nodename. */
       start += skip_whitespace (nodeline + start);
 
-      /* Find the end of the nodename. */
-      end = start +
-        skip_node_characters (nodeline + start, PARSE_NODE_DFLT);
-
-      /* Okay, we have isolated the node name, and we know where the
-         node starts.  Remember this information. */
+      /* Record nodename and nodestart. */
       entry = info_create_node ();
-      entry->nodename = xmalloc (1 + (end - start));
-      strncpy (entry->nodename, nodeline + start, end - start);
-      entry->nodename[end - start] = 0;
+      read_quoted_string (nodeline + start, ",\n\t", &entry->nodename);
       entry->nodestart = nodestart;
 
       init_file_buffer_tag (file_buffer, entry);

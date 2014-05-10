@@ -1,5 +1,24 @@
 2014-05-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (info_parse_node): Call read_quoted_string
+	to get node name.
+	(read_quoted_string) [QUOTE_NODENAMES]: Interpretation of
+	quoting mechanism made conditional.
+	(scan_reference_target): Add comment to clarify that references
+	like "*note (filename)nodename::" are not supported.
+	(scan_node_contents): Free output of read_quoted_string.
+	* info/search.c (skip_node_characters): Function merged into
+	info_parse_node.
+	* info/nodes.c (get_nodes_of_info_file): Call get_quoted_string
+	to read node name from node information line.
+	* info/t/reference-quoted.sh: Deleted, replaced with new tests:
+	* info/t/quoted-label-as-target.sh, info/t/quoted-target.sh,
+	info/t/quoted-label-and-target.sh
+
+	* info/info.c (get_initial_file): Store full path of file found
+	from dir entry.
+2014-05-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info.c (get_initial_file): Special handling of "info -O info"
 	moved from add_initial_nodes.  Save node name found in dir.
 	* info/infodoc.c (replace_in_documentation): Show "H" to close

@@ -64,7 +64,19 @@ int
 info_parse_node (char *string, int flag)
 {
   register int i = 0;
+  int nodename_len;
+  char *terminator;
   int length = 0; /* Return value */
+
+  switch (flag)
+    {
+    case PARSE_NODE_DFLT:
+      terminator = "\r\n,.\t"; break;
+    case PARSE_NODE_SKIP_NEWLINES:
+      terminator = ",.\t"; break;
+    case PARSE_NODE_VERBATIM:
+      terminator = ""; break;
+    }
 
   /* Default the answer. */
   free (info_parsed_filename);
@@ -130,14 +142,26 @@ info_parse_node (char *string, int flag)
     }
 
   /* Parse out nodename. */
-  i = skip_node_characters (string, flag);
-  length += i;
-  length++; /* skip_node_characters() stops on terminating character */
+  nodename_len = read_quoted_string (string, terminator,
+                                     &info_parsed_nodename);
+  /* If the quoting mechanism was not used, go past the terminating
+     character. */
+  if (string[nodename_len - 1] != '\177')
+    {
+      string++;
+      length++;
+    }
+  string += nodename_len;
+  length += nodename_len;
 
-  info_parsed_nodename = xcalloc (1, i+1);
-  memcpy (info_parsed_nodename, string, i);
+  if (nodename_len == 0)
+    {
+      free (info_parsed_nodename);
+      info_parsed_nodename = 0;
+    }
+  else
+    canonicalize_whitespace (info_parsed_nodename);
 
-  canonicalize_whitespace (info_parsed_nodename);
   if (info_parsed_nodename && !*info_parsed_nodename)
     {
       free (info_parsed_nodename);
@@ -198,6 +222,7 @@ read_quoted_string (char *start, char *terminator, char **output)
 
       return len;
     }
+#ifdef QUOTE_NODENAMES
   else
     {
       len = strcspn (start + 1, "\177");
@@ -208,6 +233,10 @@ read_quoted_string (char *start, char *terminator, char **output)
 
       return len + 2;
     }
+#else /* ! QUOTE_NODENAMES */
+  *output = "";
+  return 0;
+#endif
 }
 
 
@@ -1034,6 +1063,7 @@ parse_top_node_line (NODE *node)
 
       /* Separate at commas or newlines, so it will work for
          filenames including full stops. */
+      /* TODO: Account for "(dir)" and "(DIR)". */
       value_length = read_quoted_string (inptr, "\n\t,", store_in);
 
       /* Skip past value and any quoting or separating characters. */
@@ -1139,18 +1169,20 @@ scan_reference_label (char *label, long label_len, long start_of_reference,
 void
 scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
 {
-  /* If this reference entry continues with another ':' then the
-     nodename is the same as the label. */
+  /* If this reference entry continues with another ':' then the reference is
+     within the same file, and the nodename is the same as the label. */
   if (*inptr == ':')
     {
-      entry->nodename = xstrdup (entry->label);
-
       skip_input (1);
+
       if (found_menu_entry)
         {
           /* Output two spaces to match the length of "::" */
           write_extra_bytes_to_output ("  ", 2);
         }
+
+      entry->filename = 0;
+      entry->nodename = xstrdup (entry->label);
     }
   else
     {
@@ -1217,6 +1249,11 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
             }
         }
 
+      if (found_menu_entry && !in_index)
+        /* Output spaces the length of the node specifier to avoid
+           messing up left edge of second column of menu. */
+        for (i = 0; i < length; i++)
+          write_extra_bytes_to_output (" ", 1);
       if (info_parsed_filename)
         entry->filename = xstrdup (info_parsed_filename);
 
@@ -1232,12 +1269,6 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
            of an image tag.  This subtracts 1 for a removed node information
            line. */
         entry->line_number = info_parsed_line_number - 1;
-
-      if (found_menu_entry && !in_index)
-        /* Output spaces the length of the node specifier to avoid
-           messing up left edge of second column of menu. */
-        for (i = 0; i < length; i++)
-          write_extra_bytes_to_output (" ", 1);
     }
 }
 
@@ -1382,7 +1413,7 @@ search_again:
       /* Copy any white space before label. */
       copy_input_to_output (skip_whitespace_and_newlines (inptr));
 
-      /* Search forward to ":" to get label name */
+      /* Search forward to ":" to get label name. */
       /* Cross-references may have a newline in the middle. */
       if (!found_menu_entry)
         label_len = read_quoted_string (inptr, ":", &label);
@@ -1405,6 +1436,7 @@ search_again:
         (label, label_len,
         (s.buffer + start_of_reference) - node->contents,
         found_menu_entry);
+      free (label);
 
       /* Get target of reference and update entry. */
       scan_reference_target (entry, found_menu_entry, in_index);
