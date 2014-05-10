@@ -234,7 +234,7 @@ read_quoted_string (char *start, char *terminator, char **output)
       return len + 2;
     }
 #else /* ! QUOTE_NODENAMES */
-  *output = "";
+  *output = xstrdup ("");
   return 0;
 #endif
 }
