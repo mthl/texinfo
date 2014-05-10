@@ -672,6 +672,14 @@ foreach my $in_heading_command ('thischapter', 'thischaptername',
   $in_heading_commands{$in_heading_command} = 1;
 }
 
+# brace command that is not replaced with text.
+my %unformatted_brace_commands;
+foreach my $unformatted_brace_command ('anchor', 'shortcaption', 
+    'caption', 'hyphenation', 'errormsg') {
+  $unformatted_brace_commands{$unformatted_brace_command} = 1;
+}
+
+
 # commands delimiting blocks, with an @end.
 # Value is either the number of arguments on the line separated by
 # commas or the type of command, 'raw', 'def' or 'multitable'.
@@ -867,6 +875,12 @@ our %deprecated_commands = (
   'quote-arg' => N__('arguments are quoted by default'),
 );
 
+my %unformatted_block_commands;
+foreach my $unformatted_block_command ('ignore', 'macro', 'rmacro') {
+  $unformatted_block_commands{$unformatted_block_command} = 1;
+}
+
+
 # commands that should only appear at the root level and contain up to
 # the next root command.  @node and sectioning commands.
 our %root_commands;
@@ -935,6 +949,18 @@ foreach my $sectioning_command (keys (%command_structuring_level)) {
     $root_commands{$sectioning_command} = 1;
   }
   $sectioning_commands{$sectioning_command} = 1;
+}
+
+# misc commands that may be formatted as text.
+# index commands may be too, but index command may be added with
+# @def*index so they are not added here.
+my %formatted_misc_commands;
+foreach my $formatted_misc_command ('insertcopying', 'contents', 
+   'shortcontents', 'summarycontents', 'center', 'printindex', 
+   'listoffloats', 'shorttitlepage', 'settitle', 
+   'author', 'subtitle', 'title', 'sp', 'exdent', 'headitem', 'item', 
+   'itemx', 'tab', 'node', keys(%sectioning_commands)) {
+  $formatted_misc_commands{$formatted_misc_command} = 1;
 }
 
 $root_commands{'node'} = 1;
@@ -1126,9 +1152,11 @@ sub expand_verbatiminclude($$)
                   {'type' => 'raw', 'text' => $_ };
       }
       if (!close (VERBINCLUDE)) {
-        $self->document_warn(sprintf($self->__(
+        if ($self) {
+          $self->document_warn(sprintf($self->__(
                       "error on closing \@verbatiminclude file %s: %s"),
                              $file, $!));
+        }
       }
     }
   } elsif ($self) {
@@ -1412,6 +1440,52 @@ sub enumerate_item_representation($$)
   return $result;
 }
 
+sub is_content_empty($;$);
+sub is_content_empty($;$)
+{
+  my $tree = shift;
+  my $do_not_ignore_index_entries = shift;
+  if (!defined($tree) or !exists($tree->{'contents'})) {
+    return 1;
+  }
+  foreach my $content (@{$tree->{'contents'}}) {
+    #print STDERR _print_current($content);
+    if ($content->{'cmdname'}) {
+      if ($content->{'type'} and $content->{'type'} eq 'index_entry_command') {
+        if ($do_not_ignore_index_entries) {
+          return 0;
+        } else {
+          next;
+        }
+      }
+      if (exists($misc_commands{$content->{'cmdname'}})) {
+        my @truc = keys(%formatted_misc_commands);
+        if ($formatted_misc_commands{$content->{'cmdname'}}) {
+          return 0;
+        } else {
+          next;
+        }
+      } elsif ($unformatted_brace_commands{$content->{'cmdname'}} 
+               or $unformatted_block_commands{$content->{'cmdname'}}) {
+        next;
+      } else {
+        return 0;
+      }
+    }
+    if ($content->{'type'}) {
+      if ($content->{'type'} eq 'paragraph') {
+        return 0;
+      }
+    }
+    if ($content->{'text'} and $content->{'text'} =~ /\S/) {
+      return 0;
+    }
+    if (not is_content_empty($content, $do_not_ignore_index_entries)) {
+      return 0;
+    }
+  }
+  return 1;
+}
 
 our %htmlxref_entries = (
  'node' => [ 'node', 'section', 'chapter', 'mono' ],

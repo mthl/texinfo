@@ -508,11 +508,11 @@ sub _convert($;$)
       } elsif ($root->{'cmdname'} ne 'node') {
         $result = _convert($root->{'args'}->[0], $options);
         if ($Texinfo::Common::sectioning_commands{$root->{'cmdname'}}) {
-          $result = heading ($root, $result, $options->{'converter'}, 
-                             $options->{'NUMBER_SECTIONS'});
+          $result = heading($root, $result, $options->{'converter'}, 
+                            $options->{'NUMBER_SECTIONS'});
         } else {
         # we always want an end of line even if is was eaten by a command
-          chomp ($result);
+          chomp($result);
           $result .= "\n";
         }
       }

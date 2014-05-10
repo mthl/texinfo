@@ -3,6 +3,9 @@
 	* tp/t/test_utils.pl(test): use SKIP and not TODO, as TODO is
 	assumed to fail, while there is an unknown output since different
 	perl verions treat NEL differently.
+	* tp/Texinfo/Common.pm(is_content_empty),
+	tp/t/test_is_content_empty.t: check if a tree item contains non empty 
+	content.
 
 2014-05-10  Gavin Smith  <gavinsmith0123@gmail.com>
 

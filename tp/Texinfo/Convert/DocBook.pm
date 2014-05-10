@@ -656,6 +656,7 @@ sub _convert($$;$)
             $result .= "\n";
             return $result;
           }
+          # misc commands not handled especially are ignored here.
           return '';
         }
       } elsif ($type eq 'skipline' or $type eq 'noarg') {
