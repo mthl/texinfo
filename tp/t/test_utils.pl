@@ -977,8 +977,10 @@ sub test($$)
     ok (Texinfo::Convert::Texinfo::convert($result) eq $result_texis{$test_name}, 
          $test_name.' texi');
     if ($todos{'text'}) {
-      TODO: {
-        local $TODO = $todos{'text'};
+      #TODO: {
+        #local $TODO = $todos{'text'};
+      SKIP: {
+        skip $todos{'text'}, 1;
         ok ($converted_text eq $result_texts{$test_name}, $test_name.' text');
       }
     } else {
@@ -1006,8 +1008,10 @@ sub test($$)
             $tests_count += 1;
             my $errors = compare_dirs_files($reference_dir, $results_dir);
             if ($todos{$format}) {
-              TODO: {
-                local $TODO = $todos{$format};
+              #TODO: {
+              #  local $TODO = $todos{$format};
+              SKIP: {
+                skip $todos{$format}, 1;
                 ok (!defined($errors), $test_name.' converted '.$format)
                   or diag (join("\n", @$errors));
               }
