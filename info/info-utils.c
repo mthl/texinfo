@@ -330,6 +330,7 @@ info_copy_reference (REFERENCE *src)
 }
 
 /* Copy a list of references. */
+/* FIXME: Use info_concatenate_references with one null argument instead. */
 REFERENCE **
 info_copy_references (REFERENCE **ref1)
 {
@@ -844,7 +845,8 @@ copy_converting (long n)
          first convert the character to UTF-8, then look up a replacement
          string.  Note that mixing iconv_to_output and iconv_to_utf8
          on the same input may not work well if the input encoding
-         is stateful. */
+         is stateful.  We could deal with this by always converting to
+         UTF-8 first, then we could mix conversions on the UTF-8 stream. */
 
       /* We want to read exactly one character.  Do this by
          restricting size of output buffer. */
@@ -1209,6 +1211,7 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
           char saved_char;
           char *nl_off;
 
+          copy_input_to_output (skip_whitespace_and_newlines (inptr));
           length = info_parse_node (inptr, PARSE_NODE_SKIP_NEWLINES);
 
           /* Check if there is a newline in the target. */
@@ -1219,7 +1222,7 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
           
           if (info_parsed_filename)
             {
-              write_extra_bytes_to_output (" (", 2);
+              write_extra_bytes_to_output ("(", 1);
               write_extra_bytes_to_output (info_parsed_filename,
                 strlen (info_parsed_filename));
               write_extra_bytes_to_output (" manual)",

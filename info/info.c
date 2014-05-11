@@ -201,7 +201,8 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
               /* Store full path, so that we find the already loaded file in
                  info_find_file, and show the full path if --where is used. */
               entry->filename = initial_file;
-              add_pointer_to_array (entry, ref_index, ref_list, ref_slots, 2);
+              add_pointer_to_array (info_copy_reference (entry),
+                  ref_index, ref_list, ref_slots, 2);
             }
 
           if (!initial_file)
@@ -409,7 +410,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
       add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
     }
 
-  return ref_list;
+  return;
 }
 
 

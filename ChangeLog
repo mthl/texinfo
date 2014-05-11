@@ -1,3 +1,11 @@
+2014-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (scan_reference_target) <preprocess-nodes=On>:
+	Deal with newline following colon in cross-reference better.
+	(info_copy_references, copy_converting): Comments added.
+	* info/info.c (get_initial_file): Call info_copy_reference on
+	REFERENCE retrieved from dir.
+
 2014-05-11  Patrice Dumas  <pertusus@free.fr>
 
 	* Texinfo/Parser.pm, Texinfo/Structuring.pm(warn_non_empty_parts),
