@@ -343,7 +343,8 @@ do
             sed -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$file" > "$outdir$dir/$filename"
            fi
           done
-          for file in "${raw_outdir}$dir/"*.htm* "${raw_outdir}$dir/"*-l2h_cache.pm "${raw_outdir}$dir/"*_l2h_images.pl; do
+          #for file in "${raw_outdir}$dir/"*.htm* "${raw_outdir}$dir/"*-l2h_cache.pm "${raw_outdir}$dir/"*_l2h_images.pl; do
+          for file in "${raw_outdir}$dir/"*.htm* "${raw_outdir}$dir/"*-l2h_cache.pm; do
            if test -f "$file" ; then
            # width and height changed because of different rounding on 
            # different computers.  Also remove version information.
@@ -355,8 +356,11 @@ do
                 -e 's/with LaTeX2HTML.*/with LaTeX2HTML/' "$file" > "$outdir$dir/$filename"
            fi
           done
+          # *_l2h_images.pl associate images original text with physical files
+          # but entries are not sorted, so that the result is not reproducible
+          # even with the normalizations above.
           rm -f ${outdir}$dir/*.aux ${outdir}$dir/*_images.out \
-                ${outdir}$dir/*_l2h.css
+                ${outdir}$dir/*_l2h.css ${outdir}$dir/*_l2h_images.pl
         fi
 
         diff $DIFF_A_OPTION $DIFF_U_OPTION -r "${staging_dir_res}$dir" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"

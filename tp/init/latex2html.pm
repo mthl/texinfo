@@ -635,7 +635,9 @@ sub l2h_store_cache($)
                                   $l2h_cache_file, $!));
     return;
   }
-  while (($key, $value) = each %l2h_cache) {
+  foreach my $key(sort(keys(%l2h_cache))) {
+  #while (($key, $value) = each %l2h_cache) {
+    my $value = $l2h_cache{$key};
     # escape stuff
     $key =~ s|/|\\/|g;
     $key =~ s|\\\\/|\\/|g;
