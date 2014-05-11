@@ -263,7 +263,7 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
 }
 
 /* Expand list of nodes to be loaded. */
-static REFERENCE **
+static void
 add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
                    char **error)
 {
@@ -325,58 +325,77 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
      this to the list of nodes specified with --node. */
   else if (*argv)
     {
-      NODE *initial_node;
+      NODE *initial_node; /* Node to start following menus from. */
 
-      initial_node = info_get_node_of_file_buffer (initial_file, "Top");
+      if (ref_index == 0)
+        {
+          new_ref = xzalloc (sizeof (REFERENCE));
+          new_ref->filename = initial_file->fullpath;
+          new_ref->nodename = "Top";
+
+          add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+        }
+
+      initial_node = info_get_node_with_defaults (ref_list[0]->filename,
+                                                  ref_list[0]->nodename,
+                                                  PARSE_NODE_DFLT, 0);
+      if (!initial_node)
+        return;
+
       node_via_menus = info_follow_menus (initial_node, argv, error, 1);
       if (node_via_menus)
         {
+          argv += argc; argc = 0;
+
+          free (ref_list[0]);
           new_ref = xzalloc (sizeof (REFERENCE));
           new_ref->filename = initial_file->fullpath;
           new_ref->nodename = node_via_menus;
-
-          add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+          ref_list[0] = new_ref;
         }
-    }
 
-  /* If no nodes found, and there is exactly one argument, check for
-     it as an index entry. */
-  if (ref_index == 0 && argc == 1 && argv[0])
-    {
-      REFERENCE **index;
-      REFERENCE **index_ptr;
-
-      debug (3, ("looking in indices"));
-      index = info_indices_of_file_buffer (initial_file);
-
-      for (index_ptr = index; index && *index_ptr; index_ptr++)
+      /* If no nodes found, and there is exactly one argument remaining,
+         check for it as an index entry. */
+      else if (argc == 1 && argv[0])
         {
-          if (!strcmp (argv[0], (*index_ptr)->label))
-            {
-              free (*error); *error = 0;
+          REFERENCE **index;
+          REFERENCE **index_ptr;
 
-              add_pointer_to_array (info_copy_reference (*index_ptr),
-                                    ref_index, ref_list, ref_slots, 2);
-              break;
+          debug (3, ("looking in indices"));
+          index = info_indices_of_file_buffer (initial_file);
+
+          for (index_ptr = index; index && *index_ptr; index_ptr++)
+            {
+              if (!strcmp (argv[0], (*index_ptr)->label))
+                {
+                  argv += argc; argc = 0;
+                  free (*error); *error = 0;
+
+                  free (ref_list[0]);
+                  ref_list[0] = info_copy_reference (*index_ptr);
+                  break;
+                }
             }
         }
-    }
 
-  /* If still no nodes and there are arguments remaining, follow menus
-     inexactly. */
-  if (ref_index == 0 && *argv)
-    {
-      NODE *initial_node;
-
-      initial_node = info_get_node_of_file_buffer (initial_file, "Top");
-      node_via_menus = info_follow_menus (initial_node, argv, error, 0);
-      if (node_via_menus)
+      /* If there are arguments remaining, follow menus
+         inexactly. */
+      if (argc != 0)
         {
-          new_ref = xzalloc (sizeof (REFERENCE));
-          new_ref->filename = initial_file->fullpath;
-          new_ref->nodename = node_via_menus;
+          initial_node = info_get_node_with_defaults (ref_list[0]->filename,
+                                                      ref_list[0]->nodename,
+                                                      PARSE_NODE_DFLT, 0);
+          node_via_menus = info_follow_menus (initial_node, argv, error, 0);
+          if (node_via_menus)
+            {
+              argv += argc; argc = 0;
 
-          add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+              free (ref_list[0]);
+              new_ref = xzalloc (sizeof (REFERENCE));
+              new_ref->filename = initial_file->fullpath;
+              new_ref->nodename = node_via_menus;
+              ref_list[0] = new_ref;
+            }
         }
     }
 

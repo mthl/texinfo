@@ -93,6 +93,7 @@ TESTS = \
 	t/file.sh \
 	t/file-node.sh \
 	t/file-nodes.sh \
+	t/file-index.sh \
 	t/no-file.sh \
 	t/split.sh \
 	t/relative-path.sh \
@@ -105,7 +106,9 @@ TESTS = \
 	t/dir-file-menu.sh \
 	t/dir-file-no-menu.sh \
 	t/dir-file-node.sh \
+	t/dir-file-index.sh \
 	t/dir-3-menus.sh \
+	t/dir-menus-sloppily.sh \
 	t/where-dir-file.sh \
 	t/tab.sh \
 	t/index.sh \

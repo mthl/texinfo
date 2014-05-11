@@ -1,5 +1,13 @@
 2014-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info.c (add_initial_nodes): When following menus, start at
+	node in ref_list if there is one already.
+	* info/session.c (info_folllow_menus): Comment about allocation added.
+
+	* info/t/dir-file-index.sh, info/t/file-index.sh: New tests.
+
+2014-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/dir.c (dir_node, get_dir_node): Function renamed.
 	(lookup_dir_entry): New function.  Case insensitive lookup
 	based on that in info_follow_menus.

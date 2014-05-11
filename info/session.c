@@ -2788,7 +2788,7 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
    in ERROR.  STRICT says whether to accept incomplete strings as
    menu entries, and whether to return the node so far if we can't
    continue at any point (that might be INITIAL_NODE itself), or to
-   return null. */
+   return null.  This function frees INITIAL_NODE. */
 char *
 info_follow_menus (NODE *initial_node, char **menus, char **error,
 		   int strict)
