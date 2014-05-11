@@ -46,20 +46,21 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
-expand_verbatiminclude
 definition_category
+expand_verbatiminclude
 expand_today
-numbered_heading
-trim_spaces_comment_from_content
 float_name_caption
+is_content_empty
+move_index_entries_after_items_in_tree
 normalize_top_node_name
+numbered_heading
 protect_comma_in_tree
 protect_first_parenthesis
 protect_hashchar_at_line_beginning
 protect_colon_in_tree
 protect_node_after_label_in_tree
+trim_spaces_comment_from_content
 valid_tree_transformation
-move_index_entries_after_items_in_tree
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -2513,7 +2514,8 @@ Expand today's date, as a texinfo tree with translations.
 The I<$converter> argument may be undef.  I<$verbatiminclude> is a
 C<@verbatiminclude> tree element.  This function returns a 
 C<@verbatim> tree elements after finding the included file and
-reading it.
+reading it.  If I<$converter> is not defined, the document encoding 
+is not taken into account when reading the file.
 
 =item $tree = definition_category($converter, $def_line)
 
@@ -2521,6 +2523,14 @@ The I<$converter> argument may be undef.  I<$def_line> is a
 C<def_line> texinfo tree container.  This function
 returns a texinfo tree corresponding to the category of the
 I<$def_line> taking the class into account, if there is one.
+If I<$converter> is not defined, the resulting string won't be
+translated.
+
+=item $result = is_content_empty($tree, $do_not_ignore_index_entries)
+
+Return true if the C<$tree> has content that could be formatted.
+C<$do_not_ignore_index_entries> is optional.  If set, index entries
+are considered to be formatted.
 
 =item $result = numbered_heading ($converter, $heading_element, $heading_text, $do_number)
 
@@ -2529,7 +2539,8 @@ a heading command tree element.  I<$heading_text> is the already
 formatted heading text.  if the I<$do_number> optional argument is 
 defined and false, no number is used and the text is returned as is.
 This function returns the heading with a number and the appendix 
-part if needed.
+part if needed.  If I<$converter> is not defined, the resulting 
+string won't be translated.
 
 =item ($caption, $prepended) = float_name_caption ($converter, $float)
 
