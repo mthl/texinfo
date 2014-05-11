@@ -190,5 +190,9 @@ extern char *info_recent_file_error;
 extern FILE_BUFFER *make_file_buffer (void);
 
 void forget_info_file (char *filename);
+
+/* Found in dir.c */
+extern NODE *get_dir_node (void);
+extern REFERENCE *lookup_dir_entry (char *label);
 
 #endif /* not NODES_H */

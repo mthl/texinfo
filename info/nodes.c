@@ -957,9 +957,6 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
   FILE_BUFFER *file_buffer = NULL;
   char *filename = 0, *nodename = 0;
 
-  /* Used to build `dir' menu from `localdir' files found in INFOPATH. */
-  extern NODE *dir_node (void);
-
   info_recent_file_error = NULL;
 
   get_filename_and_nodename (flag, window,
@@ -969,7 +966,7 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
      the "dir"s and "localdir"s found in INFOPATH. */
   if (is_dir_name (filename))
     {
-      node = dir_node ();
+      node = get_dir_node ();
       goto cleanup_and_exit;
     }
 

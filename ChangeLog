@@ -1,3 +1,12 @@
+2014-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/dir.c (dir_node, get_dir_node): Function renamed.
+	(lookup_dir_entry): New function.  Case insensitive lookup
+	based on that in info_follow_menus.
+	* info/info.c (get_initial_file): Call lookup_dir_entry.
+	* info/session.c (info_follow_menus): Unnecessary test removed.
+	* info/t/dir-file-sloppily.sh: New test.
+
 2014-05-11  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/t/test_utils.pl(test): use SKIP and not TODO, as TODO is
@@ -26,6 +35,7 @@
 
 	* info/info.c (get_initial_file): Store full path of file found
 	from dir entry.
+
 2014-05-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.c (get_initial_file): Special handling of "info -O info"

@@ -99,6 +99,7 @@ TESTS = \
 	t/file-relative-path.sh \
 	t/dir.sh \
 	t/dir-file.sh \
+	t/dir-file-sloppily.sh \
 	t/dir-nondir.sh \
 	t/dir-no-file.sh \
 	t/dir-file-menu.sh \

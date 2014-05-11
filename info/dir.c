@@ -77,7 +77,7 @@ static void create_dir_buffer (void);
 static NODE *build_dir_node (void);
 
 NODE *
-dir_node (char *dirname)
+get_dir_node (void)
 {
   NODE *node;
 
@@ -312,3 +312,36 @@ insert_text_into_node (NODE *node, long start, char *text, int textlen)
   node->contents = contents;
   node->nodelen += textlen;
 }
+
+REFERENCE *
+lookup_dir_entry (char *label)
+{
+  NODE *node = get_dir_node ();
+  REFERENCE *entry;
+
+  entry = info_get_menu_entry_by_label (node, label);
+
+  /* If the item wasn't found, search the list sloppily, e.g. the
+     user typed "buffer" when they really meant "Buffers". */
+  /* FIXME: Should this be placed in info_get_menu_entry_by_label? */
+  if (!entry)
+    {
+      int i;
+      int best_guess = -1;
+
+      for (i = 0; (entry = node->references[i]); i++)
+        {
+          if (mbscasecmp (entry->label, label) == 0)
+            break;
+          else if (best_guess == -1
+                && (mbsncasecmp (entry->label, label, strlen (label)) == 0))
+              best_guess = i;
+        }
+
+      if (!entry && best_guess != -1)
+        entry = node->references[best_guess];
+    }
+
+  return entry;
+}
+

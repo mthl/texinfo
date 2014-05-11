@@ -158,13 +158,7 @@ begin_multiple_window_info_session (REFERENCE **references, char *error)
      none of them were valid. */
   if (!window)
     {
-      /* Used to build `dir' menu from `localdir' files found in INFOPATH. */
-      extern NODE *dir_node (void);
-
-      NODE *node;   
-
-      node = dir_node ();
-      info_set_node_of_window (active_window, node);
+      info_set_node_of_window (active_window, get_dir_node ());
       return;
     }
 }
@@ -2838,7 +2832,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
             {
               if (mbscasecmp (entry->label, arg) == 0)
                 break;
-              else if (!strict && (best_guess == -1)
+              else if (best_guess == -1
                     && (mbsncasecmp (entry->label, arg, strlen (arg)) == 0))
                   best_guess = i;
             }

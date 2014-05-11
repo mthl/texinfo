@@ -193,9 +193,8 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
               && mbscasecmp ((*argv)[0], "info") == 0)
             (*argv)[0] = "info-stnd";
 
-          dir_node = info_get_node (0, 0, PARSE_NODE_DFLT);
+          entry = lookup_dir_entry ((*argv)[0]);
 
-          entry = info_get_menu_entry_by_label (dir_node, (*argv)[0]);
           if (entry)
             {
               initial_file = info_find_fullpath (entry->filename, 0);
