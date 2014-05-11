@@ -1213,7 +1213,7 @@ while(@input_files) {
   }
 
   if (defined(get_conf('MACRO_EXPAND')) and $file_number == 0) {
-    my $texinfo_text = Texinfo::Convert::Texinfo::convert ($tree, 1);
+    my $texinfo_text = Texinfo::Convert::Texinfo::convert($tree, 1);
     #print STDERR "$texinfo_text\n";
     my $macro_expand_file = get_conf('MACRO_EXPAND');
     my $macro_expand_fh = Texinfo::Common::open_out($parser, 
@@ -1265,6 +1265,12 @@ while(@input_files) {
   # FIXME this adjusts the level of sectioning commands.  Maybe should be
   # done before dumping the tree?
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $tree);
+
+  if ($structure) {
+    # FIXME allow suppressing this warning, for formats that in fact allow
+    # for non emptyt parts (HTML, DocBook)?
+    Texinfo::Structuring::warn_non_empty_parts($parser);
+  }
 
   if ($tree_transformations{'complete_tree_nodes_menus'}) {
     Texinfo::Structuring::complete_tree_nodes_menus($parser, $tree);

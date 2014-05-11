@@ -210,6 +210,15 @@ $result_errors{'section_before_part'} = [
     'macro' => '',
     'text' => 'no sectioning command associated with @part',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':3: warning: @part not empty
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@part not empty',
+    'type' => 'warning'
   }
 ];
 

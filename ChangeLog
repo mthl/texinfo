@@ -1,3 +1,10 @@
+2014-05-11  Patrice Dumas  <pertusus@free.fr>
+
+	* Texinfo/Parser.pm, Texinfo/Structuring.pm(warn_non_empty_parts),
+	t/test_utils.pl, texi2any.pl: warning for @part with text.
+	* tp/Texinfo/Convert/DocBook.pm: add <partintro> for non empty
+	@part text.  Report from Aharon Robbins.
+
 2014-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.c (add_initial_nodes): When following menus, start at

@@ -631,6 +631,9 @@ sub _convert($$;$)
             chomp ($result);
             $result .= "\n";
           }
+          if ($command eq 'part' and !Texinfo::Common::is_content_empty($root)) {
+            $result .= "<partintro>\n";
+          }
         } elsif ($Texinfo::Common::sectioning_commands{$root->{'cmdname'}}) {
           if ($root->{'args'} and $root->{'args'}->[0]) {
             my ($arg, $end_line)
@@ -1306,6 +1309,9 @@ sub _convert($$;$)
       $root = $root->{'extra'}->{'element_command'};
     }
     my $command = $self->_docbook_section_element($root);
+    if ($command eq 'part' and !Texinfo::Common::is_content_empty($root)) {
+      $result .= "</partintro>\n";
+    }
     my $command_texi = $self->_level_corrected_section($root);
     if (!($root->{'section_childs'} and scalar(@{$root->{'section_childs'}}))
         or $command_texi eq 'top') {

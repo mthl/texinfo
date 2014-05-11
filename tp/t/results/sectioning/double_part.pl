@@ -765,7 +765,26 @@ $result_menus{'double_part'} = {
 };
 $result_menus{'double_part'}{'menu_child'}{'menu_up'} = $result_menus{'double_part'};
 
-$result_errors{'double_part'} = [];
+$result_errors{'double_part'} = [
+  {
+    'error_line' => ':8: warning: @part not empty
+',
+    'file_name' => '',
+    'line_nr' => 8,
+    'macro' => '',
+    'text' => '@part not empty',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':11: warning: @part not empty
+',
+    'file_name' => '',
+    'line_nr' => 11,
+    'macro' => '',
+    'text' => '@part not empty',
+    'type' => 'warning'
+  }
+];
 
 
 $result_elements{'double_part'} = [

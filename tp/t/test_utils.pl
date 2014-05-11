@@ -716,6 +716,9 @@ sub test($$)
   my $floats = $parser->floats_information();
 
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $result);
+  if ($structure) {
+    Texinfo::Structuring::warn_non_empty_parts($parser);
+  }
 
   Texinfo::Structuring::number_floats($floats);
 
