@@ -6,6 +6,8 @@
 
 	* info/t/dir-file-index.sh, info/t/file-index.sh: New tests.
 
+	* info/t/body-start.sh: New test.
+
 2014-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/dir.c (dir_node, get_dir_node): Function renamed.

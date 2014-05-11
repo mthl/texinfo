@@ -111,6 +111,7 @@ TESTS = \
 	t/dir-menus-sloppily.sh \
 	t/where-dir-file.sh \
 	t/tab.sh \
+	t/body-start.sh \
 	t/index.sh \
 	t/index-apropos.sh \
 	t/split-index.sh \
