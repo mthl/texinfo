@@ -93,6 +93,7 @@ TESTS = \
 	t/file.sh \
 	t/file-node.sh \
 	t/file-nodes.sh \
+	t/file-node-with-dot.sh \
 	t/file-index.sh \
 	t/no-file.sh \
 	t/split.sh \

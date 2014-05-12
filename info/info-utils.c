@@ -144,13 +144,7 @@ info_parse_node (char *string, int flag)
   /* Parse out nodename. */
   nodename_len = read_quoted_string (string, terminator,
                                      &info_parsed_nodename);
-  /* If the quoting mechanism was not used, go past the terminating
-     character. */
-  if (string[nodename_len - 1] != '\177')
-    {
-      string++;
-      length++;
-    }
+
   string += nodename_len;
   length += nodename_len;
 
@@ -170,7 +164,7 @@ info_parse_node (char *string, int flag)
 
   /* Parse ``(line ...)'' part of menus, if any.  */
   {
-    char *rest = string + i;
+    char *rest = string;
 
     /* Advance only if it's not already at end of string.  */
     if (*rest)
@@ -1197,6 +1191,8 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
       if (found_menu_entry)
         {
           length = info_parse_node (inptr, PARSE_NODE_DFLT);
+          if (inptr[length] == '.') /* Include a '.' terminating the entry. */
+            length++;
 
           if (in_index)
             /* For index nodes, output the destination as well,
@@ -1356,7 +1352,7 @@ search_again:
       char *label = 0;
 
       /* Save offset of "*" starting link. When preprocess_nodes is Off,
-         we position the cursor on the * when moving to a link. */
+         we position the cursor on the * when moving between references. */
       int start_of_reference; 
 
       int colon_offset;

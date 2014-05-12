@@ -120,6 +120,7 @@ extern void info_set_input_from_file (char *filename);
 /* Starting an info session. */
 extern void begin_multiple_window_info_session (REFERENCE **references,
     char *error_msg);
+extern void display_startup_message (void);
 extern void info_session (void);
 extern void initialize_terminal_and_keymaps (char *init_file);
 extern void initialize_info_session (void);

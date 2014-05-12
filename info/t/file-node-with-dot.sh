@@ -16,7 +16,7 @@
 
 . t/Init-test.inc
 
-# Load a node in loaded file using --node. 
+# Load a node with a full stop in its name in loaded file using --node.
 
-$GINFO --output - --file file-menu --node Unreachable \
-	| grep 'not linked to elsewhere'
+$GINFO --output - --file file-menu --node Has.dot \
+	| grep 'Node: Has.dot'

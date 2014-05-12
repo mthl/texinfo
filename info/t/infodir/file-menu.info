@@ -1,11 +1,12 @@
 
-File: file-menu,   Node: Top	This is the top of the INFO tree
+File: file-menu,   Node: Top
 
 This is file whose Top node contains a menu.
 
 * Menu:
 
 * First entry:Node 1.
+* Has.dot::
 
 
 File: file-menu,   Node: Node 1
@@ -31,5 +32,9 @@ Arrived at Node 3.
 
 
 File: file-menu,   Node: Unreachable
+
+This node is not linked to elsewhere.
+
+File: file-menu,   Node: Has.dot
 
 This node is not linked to elsewhere.

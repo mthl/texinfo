@@ -1,5 +1,18 @@
 2014-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (info_parse_node): Don't include terminating
+	character in returned length.
+	(scan_reference_target): [preprocess-nodes=On] Hide terminating
+	'.' in a menu entry.
+	* info/search.c: (find_node_in_binding): Don't view '.' as terminating
+	character in nodeline.
+	* info/session.c (dump_node_to_stream): Use PARSE_NODE_VERBATIM
+	as argument to info_get_node.
+	* info/t/file-node-with-dot.sh: New test.
+	* info/t/file-node: Comment updated.
+
+2014-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info.c (add_initial_nodes): Discard dir entry from initial
 	node list if --node was used.
 

@@ -331,8 +331,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
     }
 
   /* If there are arguments remaining, they are the names of menu items
-     in sequential info files starting from the first one loaded.  Add
-     this to the list of nodes specified with --node. */
+     in sequential info files starting from the first one loaded. */
   else if (*argv)
     {
       NODE *initial_node; /* Node to start following menus from. */

@@ -628,7 +628,7 @@ find_node_in_binding (char *nodename, SEARCH_BINDING *binding)
       tmp_search.start += skip_whitespace (tmp_search.buffer + tmp_search.start);
 
       nodename_start = tmp_search.buffer + tmp_search.start;
-      nodename_len = read_quoted_string (nodename_start, "\n\t,.",
+      nodename_len = read_quoted_string (nodename_start, "\n\t,",
                                          &read_nodename);
       if (!read_nodename)
         return -1;
