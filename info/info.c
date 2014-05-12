@@ -276,14 +276,23 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
 
   /* Add nodes specified with --node. */
   if (user_nodenames)
-    for (i = 0; user_nodenames[i]; i++)
-      {
-        new_ref = xzalloc (sizeof (REFERENCE));
-        new_ref->filename = initial_file->fullpath;
-        new_ref->nodename = user_nodenames[i];
+    {
+      if (ref_index > 0)
+        {
+          /* Discard a dir entry that was found. */
+          free (ref_list[0]);
+          ref_index = 0;
+        }
 
-        add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
-      }
+      for (i = 0; user_nodenames[i]; i++)
+        {
+          new_ref = xzalloc (sizeof (REFERENCE));
+          new_ref->filename = initial_file->fullpath;
+          new_ref->nodename = user_nodenames[i];
+
+          add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+        }
+    }
 
   if (goto_invocation_p)
     {

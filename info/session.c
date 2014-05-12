@@ -65,7 +65,7 @@ static FILE *info_input_stream = NULL;
 VFunction *info_last_executed_command = NULL;
 
 /* Becomes non-zero when 'q' is typed to an Info window. */
-int quit_info_immediately = 0;
+static int quit_info_immediately = 0;
 
 /* Array of structures describing for each window which nodes have been
    visited in that window. */
@@ -2648,7 +2648,6 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
 
   window->point = placement;
   window_adjust_pagetop (window);
-  window->flags |= W_UpdateWindow;
   return 0;
 }
 

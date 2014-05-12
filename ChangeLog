@@ -1,5 +1,17 @@
 2014-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info.c (add_initial_nodes): Discard dir entry from initial
+	node list if --node was used.
+
+	* info/session.c (info_move_to_xref): Remove set of W_UpdateWindow.
+	This was causing some screen flicker.
+	* info/infodoc.c (info_get_help_window): Remove unnecessary set of
+	W_UpdateWindow.
+
+	* info/session.c (quit_info_immediately): Declared static.
+
+2014-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (scan_reference_target) <preprocess-nodes=On>:
 	Deal with newline following colon in cross-reference better.
 	(info_copy_references, copy_converting): Comments added.

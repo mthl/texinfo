@@ -494,7 +494,6 @@ DECLARE_INFO_COMMAND (info_get_help_window, _("Display help message"))
   if (help_window)
     {
       active_window = help_window;
-      active_window->flags |= W_UpdateWindow;
     }
 }
 

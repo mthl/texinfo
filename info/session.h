@@ -25,8 +25,6 @@
 #include "info.h"
 #include "dribble.h"
 
-extern int quit_info_immediately;
-
 /* All commands that can be invoked from within info_session () receive
    arguments in the same way.  This simple define declares the header
    of a function named NAME, with associated documentation DOC.  The
