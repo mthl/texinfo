@@ -1,5 +1,14 @@
 2014-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (scan_node_contents, scan_reference_label):
+	[preprocess-nodes=On] Perform character encoding on reference
+	label.
+	(scan_reference_target): Sometimes output newline before file
+	indicator.
+	(avoid_see): Use length from input for comparison.
+
+2014-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (scan_reference_label) Declared static.
 	(scan_reference_target): Argument added.  Declared static.
 	[preprocess-nodes=On]: Add space before output "(" if not at

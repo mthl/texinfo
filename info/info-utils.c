@@ -1127,7 +1127,7 @@ scan_reference_label (char *label, long label_len, long start_of_reference,
      a reference label, turn off underling until text starts again. */
   while (nl_ptr = strchr (label_ptr, '\n'))
     {
-      write_extra_bytes_to_output (label_ptr, nl_ptr - label_ptr);
+      copy_input_to_output (nl_ptr - label_ptr);
 
       /* Note we do this before the newline is output.  This way if
          the first half of the label is on the bottom line of the
@@ -1136,14 +1136,17 @@ scan_reference_label (char *label, long label_len, long start_of_reference,
 
       /* Output newline and any whitespace at start of next line. */
       label_ptr = nl_ptr + 1 + skip_whitespace (nl_ptr + 1);
-      write_extra_bytes_to_output (nl_ptr, label_ptr - nl_ptr);
+      copy_input_to_output (label_ptr - nl_ptr);
 
       underlining_on ();
     }
 
   /* Output rest of label */
-  write_extra_bytes_to_output (label_ptr, label + strlen (label) - label_ptr);
+  copy_input_to_output (label + strlen (label) - label_ptr);
   underlining_off ();
+
+  /* Colon after label. */
+  skip_input (1);
 
   /* Set entry->end. */
   if (rewrite_p)
@@ -1221,7 +1224,21 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry,
           
           if (info_parsed_filename)
             {
-              if (inptr[-1] != '\n')
+              /* Rough heuristic of whether it's worth outputing a newline
+                 now or later. */
+              if (nl_off && nl_off - inptr < strlen (info_parsed_filename) + 8)
+                {
+                  int i, j = skip_whitespace (nl_off + 1);
+                  write_extra_bytes_to_output ("\n", 1);
+
+                  /* Don't allow any spaces in the input to mess up
+                     the margin. */
+                  skip_input (strspn (inptr, " "));
+                  for (i = 0; i < j; i++)
+                    write_extra_bytes_to_output (" ", 1);
+                  nl_off = 0;
+                }
+              else if (inptr[-1] != '\n')
                 write_extra_bytes_to_output (" ", 1);
               write_extra_bytes_to_output ("(", 1);
               write_extra_bytes_to_output (info_parsed_filename,
@@ -1300,9 +1317,10 @@ avoid_see_see (char *ptr, char *base)
 {
   /* TODO: Only do this for English-language files. */
   static char *words_like_see[] = {
-    "see", "See", "In", "in", "of"
+    "see", "See", "In", "in", "of", "also"
   };
   int i;
+  int word_len = 0;
 
   if (ptr == base)
     return 0;
@@ -1313,14 +1331,17 @@ avoid_see_see (char *ptr, char *base)
     ptr--;
 
   while (ptr > base && !(*ptr == ' ' || *ptr == '\n' || *ptr == '\t'))
-    ptr--;
+    {
+      ptr--;
+      word_len++;
+    }
 
   ptr++;
 
   /* Check if it is in our list. */
   for (i = 0; i < sizeof (words_like_see) / sizeof (char *); i++)
     {
-      if (!strncmp (words_like_see[i], ptr, strlen (words_like_see[i])))
+      if (!strncmp (words_like_see[i], ptr, word_len))
         return 1;
     }
   return 0;
@@ -1493,9 +1514,6 @@ search_again:
           s.start = inptr - s.buffer;
           continue;
         }
-
-      /* Skip label and colon. */
-      skip_input (label_len + 1);
 
       /* Read and output reference label (up until colon). */
       entry = scan_reference_label
