@@ -1077,7 +1077,7 @@ parse_top_node_line (NODE *node)
 }
 
 /* Output reference label and create REFERENCE object. */
-REFERENCE *
+static REFERENCE *
 scan_reference_label (char *label, long label_len, long start_of_reference,
                       int found_menu_entry)
 {
@@ -1162,8 +1162,9 @@ scan_reference_label (char *label, long label_len, long start_of_reference,
   return entry;
 }
 
-void
-scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
+static void
+scan_reference_target (REFERENCE *entry, int found_menu_entry,
+                       int in_index, int in_parentheses)
 {
   /* If this reference entry continues with another ':' then the reference is
      within the same file, and the nodename is the same as the label. */
@@ -1207,7 +1208,9 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
           char saved_char;
           char *nl_off;
 
-          copy_input_to_output (skip_whitespace_and_newlines (inptr));
+          /* Skip any following spaces after the ":". */
+          skip_input (skip_whitespace (inptr));
+
           length = info_parse_node (inptr, PARSE_NODE_SKIP_NEWLINES);
 
           /* Check if there is a newline in the target. */
@@ -1218,6 +1221,8 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
           
           if (info_parsed_filename)
             {
+              if (inptr[-1] != '\n')
+                write_extra_bytes_to_output (" ", 1);
               write_extra_bytes_to_output ("(", 1);
               write_extra_bytes_to_output (info_parsed_filename,
                 strlen (info_parsed_filename));
@@ -1225,17 +1230,19 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
                                            strlen (" manual)"));
             }
 
-          /* A full stop terminating a reference should be output,
-             but a comma is usually? not. */
-          if (inptr[length - 1] == '.')
-            skip_input (length - 1);
-          else
+          /* Output terminating punctuation, unless we are in a reference
+             like (*note Label:(file)node.). */
+          if (!in_parentheses)
             skip_input (length);
+          else
+            skip_input (length + 1);
 
           /* Copy any terminating punctuation before the optional newline. */
           copy_input_to_output (strspn (inptr, ".),"));
 
-          if (nl_off)
+          /* Output a newline if one is needed.  Don't do it at the end
+             a paragraph. */
+          if (nl_off && *inptr != '\n')
             { 
               int i, j = skip_whitespace (nl_off + 1);
               write_extra_bytes_to_output ("\n", 1);
@@ -1269,6 +1276,54 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry, int in_index)
            line. */
         entry->line_number = info_parsed_line_number - 1;
     }
+}
+
+/* BASE is earlier in a block of allocated memory than PTR, and the block
+   extends until at least BASE + LEN - 1.  Return PTR[INDEX], unless this
+   could be outside the allocated block, in which case return 0. */
+static char
+safe_string_index (char *ptr, long index, char *base, long len)
+{
+  long offset = ptr - base;
+
+  if (   offset + index < 0
+      || offset + index >= len)
+    return 0;
+
+  return ptr[index];
+}
+
+/* Check if preceding word is a word like "see". BASE points before PTR in
+   a block of allocated memory. */
+static int
+avoid_see_see (char *ptr, char *base)
+{
+  /* TODO: Only do this for English-language files. */
+  static char *words_like_see[] = {
+    "see", "See", "In", "in", "of"
+  };
+  int i;
+
+  if (ptr == base)
+    return 0;
+
+  /* Skip past whitespace, and then go to beginning of preceding word. */
+  ptr--;
+  while (ptr > base && (*ptr == ' ' || *ptr == '\n' || *ptr == '\t'))
+    ptr--;
+
+  while (ptr > base && !(*ptr == ' ' || *ptr == '\n' || *ptr == '\t'))
+    ptr--;
+
+  ptr++;
+
+  /* Check if it is in our list. */
+  for (i = 0; i < sizeof (words_like_see) / sizeof (char *); i++)
+    {
+      if (!strncmp (words_like_see[i], ptr, strlen (words_like_see[i])))
+        return 1;
+    }
+  return 0;
 }
 
 /* Scan (*NODE_PTR)->contents and record location and contents of
@@ -1350,6 +1405,7 @@ search_again:
     {
       long label_len;
       char *label = 0;
+      int in_parentheses = 0;
 
       /* Save offset of "*" starting link. When preprocess_nodes is Off,
          we position the cursor on the * when moving between references. */
@@ -1388,6 +1444,8 @@ search_again:
         }
       else
         {
+          int previous_word_is_like_see = 0;
+
           found_menu_entry = 0;
           start_of_reference = position;
 
@@ -1404,9 +1462,18 @@ search_again:
           if (match[1] == 'N')
             write_extra_bytes_to_output ("See", 3);
           else
-            write_extra_bytes_to_output ("see", 3);
+            {
+              previous_word_is_like_see = avoid_see_see (inptr, s.buffer);
+
+              if (!previous_word_is_like_see)
+                write_extra_bytes_to_output ("see", 3);
+              if (safe_string_index (inptr, -1, s.buffer, s.end) == '(')
+                in_parentheses = 1;
+            }
 
           skip_input (strlen ("*Note"));
+          if (previous_word_is_like_see)
+            skip_input (skip_whitespace (inptr));
         }
 
       /* Copy any white space before label. */
@@ -1438,7 +1505,7 @@ search_again:
       free (label);
 
       /* Get target of reference and update entry. */
-      scan_reference_target (entry, found_menu_entry, in_index);
+      scan_reference_target (entry, found_menu_entry, in_index, in_parentheses);
 
       add_pointer_to_array (entry, refs_index, refs, refs_slots, 50);
 

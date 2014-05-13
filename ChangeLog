@@ -1,3 +1,14 @@
+2014-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (scan_reference_label) Declared static.
+	(scan_reference_target): Argument added.  Declared static.
+	[preprocess-nodes=On]: Add space before output "(" if not at
+	start of line.  Hide full stop terminating reference if it
+	looks like (*note Label:(file)node.)  Caller updated.
+	(safe_string_index): Utility function.
+	(avoid_see_see): New function.
+	(scan_node_contents): Call avoid_see_see.
+
 2014-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (info_parse_node): Don't include terminating
