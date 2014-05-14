@@ -489,42 +489,7 @@ DECLARE_INFO_COMMAND (info_next_index_match,
     free (match);
   }
 
-  /* Select the node corresponding to this index entry. */
-  node = info_get_node (index_index[i]->filename, index_index[i]->nodename,
-                        PARSE_NODE_DFLT);
-
-  if (!node)
-    {
-      info_error (msg_cant_file_node,
-                  index_index[i]->filename, index_index[i]->nodename);
-      return;
-    }
-
-  info_set_node_of_window (window, node);
-
-  {
-    long loc;
-    long line = window_log_to_phys_line (window,
-					 index_index[i]->line_number - 1);
-
-    if (line >= 0 && line < window->line_count)
-      {
-	/* Jump to the line number specified in the index entry.  */
-	loc = window->line_starts[line] - window->node->contents;
-      }
-    else
-      {
-	/* Try to find an occurence of LABEL in this node. */
-	long start = window->line_starts[1] - window->node->contents;
-	loc = info_target_search_node (node, index_index[i]->label, start, 1);
-      }
-
-    if (loc != -1)
-      {
-        window->point = loc;
-        window_adjust_pagetop (window);
-      }
-  }
+  info_select_reference (window, index_index[i]);
 }
 
 /* **************************************************************** */

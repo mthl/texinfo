@@ -1,3 +1,11 @@
+2014-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_select_reference): Code merged from
+	info_next_index_match: Call window_log_to_phys_line.
+	* info/indices.c (info_next_index_match): Call info_select_reference.
+
+	* info/Makefile.am: Remove index-long-nodeline.sh from XFAIL_TESTS.
+
 2014-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (scan_node_contents, scan_reference_label):

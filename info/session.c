@@ -1780,11 +1780,31 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
 
   if (node)
     {
+      long loc, line;
+
       info_set_node_of_window (window, node);
 
       if (entry->line_number > 0)
-        /* Third argument doesn't matter. */
-        internal_next_line (window, entry->line_number - 1, '1');
+        {
+          /* Go to the line given by entry->line_number. */
+          line = window_log_to_phys_line (window, entry->line_number - 1);
+
+          if (line >= 0 && line < window->line_count)
+            loc = window->line_starts[line] - window->node->contents;
+          else
+            {
+              /* Try to find an occurence of LABEL in this node.  This
+                 could be useful for following index entries. */
+              long start = window->line_starts[1] - window->node->contents;
+              loc = info_target_search_node (node, entry->label, start, 1);
+            }
+
+          if (loc != -1)
+            {
+              window->point = loc;
+              window_adjust_pagetop (window);
+            }
+        }
     }
 }
 

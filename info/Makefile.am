@@ -125,7 +125,6 @@ TESTS = \
 	t/help.sh
 
 XFAIL_TESTS = \
-	t/index-long-nodeline.sh \
 	t/quoted-label-as-target.sh \
 	t/quoted-target.sh \
 	t/quoted-label-and-target.sh \
