@@ -76,10 +76,11 @@ typedef struct window_struct
   WINDOW_STATE_DECL;    /* Node, pagetop and point. */
   LINE_MAP line_map;    /* Current line map */
   char *modeline;       /* Calculated text of the modeline for this window. */
-  char **line_starts;   /* Array of printed line starts for this node. */
-  long line_count;      /* Number of lines appearing in LINE_STARTS. */
+  long *line_starts;    /* Offsets of printed line starts in node->contents.*/
   long *log_line_no;    /* Number of logical line corresponding to each
-			   physical one. */
+                           physical one. */
+  long line_count;      /* Number of elements in LINE_STARTS and LOG_LINE_NO.*/
+
   int flags;            /* See below for details. */
 } WINDOW;
 
@@ -273,7 +274,7 @@ extern int window_chars_to_goal (WINDOW *win, int goal);
 
 extern size_t process_node_text
         (WINDOW *win, char *start, int do_tags,
-         int (*fun) (void *, size_t, size_t, const char *, char *,
+         int (*fun) (void *, size_t, size_t, size_t, char *,
 		     size_t, size_t),
 	 void *closure);
 

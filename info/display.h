@@ -70,6 +70,6 @@ extern void display_scroll_display (int start, int end, int amount);
    starts that used to appear in this window.  OLD_COUNT is the number of lines
    that appear in the OLD_STARTS array. */
 extern void display_scroll_line_starts (WINDOW *window, int old_pagetop,
-    char **old_starts, int old_count);
+    long *old_starts, int old_count);
 
 #endif /* not INFO_DISPLAY_H */

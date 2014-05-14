@@ -113,14 +113,14 @@ find_diff (const char *a, size_t alen, const char *b, size_t blen, int *ppos)
 }
 
 int
-display_node_text(void *closure, size_t pline_index, size_t lline_index,
-		  const char *src_line,
-		  char *printed_line, size_t pl_index, size_t pl_count)
+display_node_text (void *closure, size_t pl_num, size_t ll_num,
+                   size_t pl_start, char *printed_line,
+                   size_t pl_bytes, size_t pl_chars)
 {
   struct display_node_closure *dn = closure;
   WINDOW *win = dn->win;
   DISPLAY_LINE **display = dn->display;
-  DISPLAY_LINE *entry = display[win->first_row + pline_index];
+  DISPLAY_LINE *entry = display[win->first_row + pl_num];
 
   /* We have the exact line as it should appear on the screen.
      Check to see if this line matches the one already appearing
@@ -139,31 +139,31 @@ display_node_text(void *closure, size_t pline_index, size_t lline_index,
 	  /* Need to erase the line if it has escape sequences.  */
 	  || (raw_escapes_p && mbschr (entry->text, '\033') != 0))
 	{
-	  terminal_goto_xy (0, win->first_row + pline_index);
+	  terminal_goto_xy (0, win->first_row + pl_num);
 	  terminal_clear_to_eol ();
 	  entry->inverse = 0;
 	  entry->text[0] = '\0';
 	  entry->textlen = 0;
 	}
 
-      i = find_diff (printed_line, pl_index,
+      i = find_diff (printed_line, pl_bytes,
 		     entry->text, strlen (entry->text), &off);
 
       /* If the lines are not the same length, or if they differed
 	 at all, we must do some redrawing. */
-      if (i != pl_count || pl_count != entry->textlen)
+      if (i != pl_chars || pl_chars != entry->textlen)
 	{
 	  /* Move to the proper point on the terminal. */
-	  terminal_goto_xy (i, win->first_row + pline_index);
+	  terminal_goto_xy (i, win->first_row + pl_num);
 	  /* If there is any text to print, print it. */
-	  if (i != pl_count)
+	  if (i != pl_chars)
 	    terminal_put_text (printed_line + i);
 	  
 	  /* If the printed text didn't extend all the way to the edge
 	     of the window, and text was appearing between here and the
 	     edge of the window, clear from here to the end of the
 	     line. */
-	  if ((pl_count < win->width && pl_count < entry->textlen)
+	  if ((pl_chars < win->width && pl_chars < entry->textlen)
 	      || entry->inverse)
 	    terminal_clear_to_eol ();
 	  
@@ -179,7 +179,7 @@ display_node_text(void *closure, size_t pline_index, size_t lline_index,
 	       bytes only.  */
 	    entry->text = xrealloc (entry->text, strlen (printed_line) + 1);
 	  strcpy (entry->text + off, printed_line + off);
-	  entry->textlen = pl_count;
+	  entry->textlen = pl_chars;
 	  
 	  /* Lines showing node text are not in inverse.  Only modelines
 	     have that distinction. */
@@ -196,7 +196,7 @@ display_node_text(void *closure, size_t pline_index, size_t lline_index,
       return 1;
     }
 
-  if (pline_index + 1 == win->height)
+  if (pl_num + 1 == win->height)
     return 1;
 
   return 0;
@@ -236,7 +236,8 @@ display_update_one_window (WINDOW *win)
       dnc.display = the_display;
       
       line_index = process_node_text (win,
-				      win->line_starts[win->pagetop],
+				      win->node->contents
+                                        + win->line_starts[win->pagetop],
 				      1,
 				      display_node_text,
 				      &dnc);
@@ -367,7 +368,7 @@ display_scroll_display (int start, int end, int amount)
    that appear in the OLD_STARTS array. */
 void
 display_scroll_line_starts (WINDOW *window, int old_pagetop,
-    char **old_starts, int old_count)
+    long *old_starts, int old_count)
 {
   register int i, old, new;     /* Indices into the line starts arrays. */
   int last_new, last_old;       /* Index of the last visible line. */

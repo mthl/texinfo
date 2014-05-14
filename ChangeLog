@@ -1,5 +1,19 @@
 2014-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/window.h (WINDOW): line_starts changed to pointer to
+	(array of) offsets.  This stops the need to write expressions like
+	"win->line_starts[line] - win->node->contents" in many places.  All
+	uses updated.
+
+	* info/window.c (process_node_text): Set line_starts.
+
+	* info/window.c (process_node_text, _calc_line_starts)
+	* info/display.c (display_node_text): Consistent variable naming
+	among local variable names in process_node_text and the arguments
+	for the functions it calls.
+
+2014-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_select_reference): Code merged from
 	info_next_index_match: Call window_log_to_phys_line.
 	* info/indices.c (info_next_index_match): Call info_select_reference.

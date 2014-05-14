@@ -586,7 +586,7 @@ window_toggle_wrap (WINDOW *window)
 
   if (window != the_echo_area)
     {
-      char **old_starts;
+      long *old_starts;
       long *old_xlat;
       int old_lines, old_pagetop;
 
@@ -839,15 +839,15 @@ calc_closure_expand (struct calc_closure *cp)
 }
 
 static int
-_calc_line_starts (void *closure, size_t pline_index, size_t lline_index,
-		   const char *src_line,
-		   char *printed_line, size_t pl_index, size_t pl_count)
+_calc_line_starts (void *closure, size_t pl_num, size_t ll_num,
+                   size_t pl_start, char *printed_line,
+                   size_t pl_bytes, size_t pl_chars)
 {
   struct calc_closure *cp = closure;
 
   calc_closure_expand (cp);
-  cp->win->line_starts[cp->win->line_count] = (char*) src_line;
-  cp->win->log_line_no[cp->win->line_count] = lline_index;
+  cp->win->line_starts[cp->win->line_count] = pl_start;
+  cp->win->log_line_no[cp->win->line_count] = ll_num;
   cp->win->line_count++;
   return 0;
 }
@@ -869,7 +869,7 @@ calculate_line_starts (WINDOW *window)
   process_node_text (window, window->node->contents, 0,
 		     _calc_line_starts, &closure);
   calc_closure_expand (&closure);
-  window->line_starts[window->line_count] = NULL;
+  window->line_starts[window->line_count] = 0;
   window->log_line_no[window->line_count] = 0;
   window_line_map_init (window);
 }
@@ -913,21 +913,14 @@ void
 window_adjust_pagetop (WINDOW *window)
 {
   register int line = 0;
-  char *contents;
 
   if (!window->node)
     return;
 
-  contents = window->node->contents;
-
   /* Find the first printed line start which is after WINDOW->point. */
   for (line = 0; line < window->line_count; line++)
     {
-      char *line_start;
-
-      line_start = window->line_starts[line];
-
-      if ((line_start - contents) > window->point)
+      if (window->line_starts[line] > window->point)
         break;
     }
 
@@ -973,14 +966,13 @@ window_line_of_point (WINDOW *window)
 
   /* Try to optimize.  Check to see if point is past the pagetop for
      this window, and if so, start searching forward from there. */
-  if ((window->pagetop > -1 && window->pagetop < window->line_count) &&
-      (window->line_starts[window->pagetop] - window->node->contents)
-      <= window->point)
+  if (window->pagetop > -1 && window->pagetop < window->line_count
+      && window->line_starts[window->pagetop] <= window->point)
     start = window->pagetop;
 
   for (i = start; i < window->line_count; i++)
     {
-      if ((window->line_starts[i] - window->node->contents) > window->point)
+      if (window->line_starts[i] > window->point)
         break;
     }
 
@@ -1186,7 +1178,7 @@ window_goto_percentage (WINDOW *window, int percent)
 
   window->pagetop = desired_line;
   window->point =
-    window->line_starts[window->pagetop] - window->node->contents;
+    window->line_starts[window->pagetop];
   window->flags |= W_UpdateWindow;
   window_make_modeline (window);
 }
@@ -1460,17 +1452,17 @@ info_tag (mbi_iterator_t iter, int handle, size_t *plen)
 
    FUN is called for every line collected from the node. Its arguments:
 
-     int (*fun) (void *closure, size_t phys_line_no, size_t log_line_no,
-                  const char *src_line, char *prt_line,
-		  size_t prt_bytes, size_t prt_chars)
+     int (*fun) (void *closure, size_t pl_num, size_t ll_num,
+                  size_t pl_start, char *printed_line,
+		  size_t pl_bytes, size_t pl_chars)
 
      closure  -- An opaque pointer passed as 5th parameter to process_node_text;
-     line_no  -- Number of processed physical line (starts from 0);
-     log_line_no -- Number of processed logical line (starts from 0);
-     src_line -- Pointer to the source line (unmodified);
-     prt_line -- Collected line contents, ready for output;
-     prt_bytes -- Number of bytes in prt_line;
-     prt_chars -- Number of characters in prt_line.
+     pl_num  -- Number of processed physical lines (starts from 0);
+     ll_num -- Number of processed logical lines (starts from 0);
+     pl_start -- Offset of start of physical line from START;
+     printed_line -- Collected line contents, ready for output;
+     pl_bytes -- Number of bytes in prt_line;
+     pl_chars -- Number of characters in prt_line.
 
    If FUN returns non zero, process_node_text stops processing and returns
    immediately.
@@ -1484,15 +1476,15 @@ size_t
 process_node_text (WINDOW *win, char *start,
 		   int do_tags,
 		   int (*fun) (void *, size_t, size_t,
-			       const char *, char *, size_t, size_t),
+			       size_t, char *, size_t, size_t),
 		   void *closure)
 {
   char *printed_line;      /* Buffer for a printed line. */
-  size_t pl_count = 0;     /* Number of *characters* written to PRINTED_LINE */
-  size_t pl_index = 0;     /* Index into PRINTED_LINE. */
-  size_t in_index = 0;
-  size_t line_index = 0;   /* Number of physical lines done so far. */
-  size_t logline_index = 0;/* Number of logical lines */
+  size_t pl_chars = 0;     /* Number of *characters* written to PRINTED_LINE */
+  size_t pl_bytes = 0;     /* Index into PRINTED_LINE. */
+  size_t pl_start = 0;     /* Offset of start of current physical line. */
+  size_t pl_num = 0;       /* Number of physical lines done so far. */
+  size_t ll_num = 0;       /* Number of logical lines */
   size_t allocated_win_width;
   mbi_iterator_t iter;
   
@@ -1503,19 +1495,15 @@ process_node_text (WINDOW *win, char *start,
   printed_line = xmalloc (allocated_win_width);
 
   for (mbi_init (iter, start, 
-		 win->node->contents + win->node->nodelen - start),
-	 pl_count = 0;
+		 win->node->contents + win->node->nodelen - start);
        mbi_avail (iter);
        mbi_advance (iter))
     {
-      const char *carried_over_ptr;
-      size_t carried_over_len = 0;
-      size_t carried_over_count = 0;
       const char *cur_ptr = mbi_cur_ptr (iter);
       size_t cur_len = mb_len (mbi_cur (iter));
       size_t replen = 0;
       int delim = 0;
-      int rc;
+      int finish;
 
       if (mb_isprint (mbi_cur (iter)))
 	{
@@ -1525,7 +1513,7 @@ process_node_text (WINDOW *win, char *start,
 	{
           if (*cur_ptr == '\r' || *cur_ptr == '\n')
             {
-              replen = win->width - pl_count;
+              replen = win->width - pl_chars;
 	      delim = *cur_ptr;
             }
 	  else if (ansi_escape (iter, &cur_len))
@@ -1542,7 +1530,7 @@ process_node_text (WINDOW *win, char *start,
 	    {
 	      if (*cur_ptr == '\t')
 		delim = *cur_ptr;
-              cur_ptr = printed_representation (cur_ptr, cur_len, pl_count,
+              cur_ptr = printed_representation (cur_ptr, cur_len, pl_chars,
 						&cur_len);
 	      replen = cur_len;
             }
@@ -1551,34 +1539,37 @@ process_node_text (WINDOW *win, char *start,
 	{
 	  /* FIXME: I'm not sure it's the best way to deal with unprintable
 	     multibyte characters */
-	  cur_ptr = printed_representation (cur_ptr, cur_len, pl_count,
+	  cur_ptr = printed_representation (cur_ptr, cur_len, pl_chars,
 					    &cur_len);
 	  replen = cur_len;
 	}
 
       /* Ensure there is enough space in the buffer */
-      while (pl_index + cur_len + 2 > allocated_win_width - 1)
+      while (pl_bytes + cur_len + 2 > allocated_win_width - 1)
 	printed_line = x2realloc (printed_line, &allocated_win_width);
 
       /* If this character can be printed without passing the width of
          the line, then stuff it into the line. */
-      if (pl_count + replen < win->width)
+      if (pl_chars + replen < win->width)
         {
 	  int i;
 	  
 	  for (i = 0; i < cur_len; i++)
-	    printed_line[pl_index++] = cur_ptr[i];
-	  pl_count += replen;
-	  in_index += mb_len (mbi_cur (iter));
+	    printed_line[pl_bytes++] = cur_ptr[i];
+	  pl_chars += replen;
         }
       else
 	{
           /* If this character cannot be printed in this line, we have
              found the end of this line as it would appear on the screen.
              Carefully print the end of the line, and then compare. */
+          const char *carried_over_ptr;
+          size_t carried_over_len = 0;
+          size_t carried_over_count = 0;
+
           if (delim)
             {
-              printed_line[pl_index] = '\0';
+              printed_line[pl_bytes] = '\0';
               carried_over_ptr = NULL;
             }
 	  else
@@ -1601,9 +1592,9 @@ process_node_text (WINDOW *win, char *start,
 		  /* Remember the offset of the last character printed out of
 		     REP so that we can carry the character over to the next
 		     line. */
-		  for (i = 0; pl_count < (win->width - 1);
-		       pl_count++)
-		    printed_line[pl_index++] = cur_ptr[i++];
+		  for (i = 0; pl_chars < (win->width - 1);
+		       pl_chars++)
+		    printed_line[pl_bytes++] = cur_ptr[i++];
 
 		  carried_over_ptr = cur_ptr + i;
 		  carried_over_len = cur_len;
@@ -1612,67 +1603,70 @@ process_node_text (WINDOW *win, char *start,
               /* If printing the last character in this window couldn't
                  possibly cause the screen to scroll, place a backslash
                  in the rightmost column. */
-              if (1 + line_index + win->first_row < the_screen->height)
+              if (1 + pl_num + win->first_row < the_screen->height)
                 {
                   if (win->flags & W_NoWrap)
-                    printed_line[pl_index++] = '$';
+                    printed_line[pl_bytes++] = '$';
                   else
-                    printed_line[pl_index++] = '\\';
-		  pl_count++;
+                    printed_line[pl_bytes++] = '\\';
+		  pl_chars++;
                 }
-              printed_line[pl_index] = '\0';
+              printed_line[pl_bytes] = '\0';
             }
 
-	  rc = fun (closure, line_index, logline_index,
-		    mbi_cur_ptr (iter) - in_index,
-		    printed_line, pl_index, pl_count);
+	  finish = fun (closure, pl_num, ll_num,
+		        pl_start,
+		        printed_line, pl_bytes, pl_chars);
 
-          ++line_index;
+          ++pl_num;
 	  if (delim == '\r' || delim == '\n')
-	    ++logline_index;
+	    ++ll_num;
 
-	  /* Reset all data to the start of the line. */
-	  pl_index = 0;
-	  pl_count = 0;
-	  in_index = 0;
+	  /* Start a new physical line at next character. */
+	  pl_bytes = 0;
+	  pl_chars = 0;
+	  pl_start = mbi_cur_ptr (iter) + mb_len (mbi_cur (iter)) - start;
 
-	  if (rc)
+	  if (finish)
 	    break;
 	  
           /* If there are bytes carried over, stuff them
              into the buffer now. */
+          /* There is enough space for this because there was enough space
+             for the whole logical line of which this is only a part. */
+          /* Expected to be "short", i.e. a representation like "^A". *./
           if (carried_over_ptr)
 	    {
 	      for (; carried_over_len;
-		   carried_over_len--, carried_over_ptr++, pl_index++)
-		printed_line[pl_index] = *carried_over_ptr;
-	      pl_count += carried_over_count;
+		   carried_over_len--, carried_over_ptr++, pl_bytes++)
+		printed_line[pl_bytes] = *carried_over_ptr;
+	      pl_chars += carried_over_count;
 	    }
 	
           /* If this window has chosen not to wrap lines, skip to the end
-             of the physical line in the buffer, and start a new line here. */
-          if (pl_index && win->flags & W_NoWrap)
+             of the logical line in the buffer, and start a new line here. */
+          if (pl_bytes && win->flags & W_NoWrap)
             {
 	      for (; mbi_avail (iter); mbi_advance (iter))
 		if (mb_len (mbi_cur (iter)) == 1
 		    && *mbi_cur_ptr (iter) == '\n')
 		  break;
 
-	      pl_index = 0;
-	      pl_count = 0;
-	      in_index = 0;
+	      pl_bytes = 0;
+	      pl_chars = 0;
+              pl_start = mbi_cur_ptr (iter) + mb_len (mbi_cur (iter)) - start;
 	      printed_line[0] = 0;
 	    }
 	}
     }
 
-  if (pl_count)
-    fun (closure, line_index, logline_index,
-	 mbi_cur_ptr (iter) - in_index,
-	 printed_line, pl_index, pl_count);
+  if (pl_chars)
+    fun (closure, pl_num, ll_num,
+         pl_start,
+	 printed_line, pl_bytes, pl_chars);
 
   free (printed_line);
-  return line_index;
+  return ll_num; /* needed? */
 }
 
 static void
@@ -1725,19 +1719,18 @@ window_scan_line (WINDOW *win, int line, int phys,
 		  void *closure)
 {
   mbi_iterator_t iter;
-  long cpos = win->line_starts[line] - win->node->contents;
+  long cpos = win->line_starts[line];
   int delim = 0;
   char *endp;
   
   if (!phys && line + 1 < win->line_count)
-    endp = win->line_starts[line + 1];
+    endp = win->node->contents + win->line_starts[line + 1];
   else
     endp = win->node->contents + win->node->nodelen;
   
   for (mbi_init (iter,
-		 win->line_starts[line], 
-		 win->node->contents + win->node->nodelen -
-		   win->line_starts[line]);
+		 win->node->contents + win->line_starts[line], 
+		 win->node->nodelen - win->line_starts[line]);
        !delim && mbi_avail (iter);
        mbi_advance (iter))
     {

@@ -530,7 +530,7 @@ set_window_pagetop (WINDOW *window, int desired_top)
   if ((point_line < window->pagetop) ||
       ((point_line - window->pagetop) > window->height - 1))
     window->point =
-      window->line_starts[window->pagetop] - window->node->contents;
+      window->line_starts[window->pagetop];
 
   window->flags |= W_UpdateWindow;
 
@@ -617,7 +617,7 @@ move_to_new_line (int old, int new, WINDOW *window)
       goal = window_get_goal_column (window);
       window->goal_column = goal;
 
-      window->point = window->line_starts[new] - window->node->contents;
+      window->point = window->line_starts[new];
       window->point += window_chars_to_goal (window, goal);
       info_show_point (window);
     }
@@ -733,7 +733,7 @@ point_next_line (WINDOW *win)
   int line = window_line_of_point (win);
   if (line + 1 >= win->line_count)
     return 1;
-  win->point = win->line_starts[line + 1] - win->node->contents;
+  win->point = win->line_starts[line + 1];
   window_compute_line_map (win);
   return 0;
 }
@@ -747,7 +747,7 @@ point_prev_line (WINDOW *win)
   int line = window_line_of_point (win);
   if (line == 0)
     return 1;
-  win->point = win->line_starts[line - 1] - win->node->contents;
+  win->point = win->line_starts[line - 1];
   window_compute_line_map (win);
   return 0;
 }
@@ -1790,12 +1790,12 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
           line = window_log_to_phys_line (window, entry->line_number - 1);
 
           if (line >= 0 && line < window->line_count)
-            loc = window->line_starts[line] - window->node->contents;
+            loc = window->line_starts[line];
           else
             {
               /* Try to find an occurence of LABEL in this node.  This
                  could be useful for following index entries. */
-              long start = window->line_starts[1] - window->node->contents;
+              long start = window->line_starts[1];
               loc = info_target_search_node (node, entry->label, start, 1);
             }
 
@@ -2396,9 +2396,9 @@ info_menu_or_ref_item (WINDOW *window, unsigned char key,
      point is in. */
 
   line_no = window_line_of_point (window);
-  this_line = window->line_starts[line_no] - window->node->contents;
+  this_line = window->line_starts[line_no];
   if (window->line_starts[line_no + 1])
-    next_line = window->line_starts[line_no + 1] - window->node->contents;
+    next_line = window->line_starts[line_no + 1];
   else
     next_line = window->node->nodelen;
 
@@ -4150,7 +4150,7 @@ DECLARE_INFO_COMMAND (info_search_next,
       /* Find window bottom */
       long n = window->height + window->pagetop;
       if (n < window->line_count)
-	n = window->line_starts[n] - window->node->contents;
+	n = window->line_starts[n];
       else
 	n = window->node->nodelen;
       info_search_1 (window, last_search_direction * count,
@@ -4171,7 +4171,7 @@ DECLARE_INFO_COMMAND (info_search_previous,
       /* Find window bottom */
       long n;
 
-      n = window->line_starts[window->pagetop] - window->node->contents - 1;
+      n = window->line_starts[window->pagetop] - 1;
       if (n < 0)
 	n = 0;
       info_search_1 (window, -last_search_direction * count,
@@ -4751,7 +4751,7 @@ DECLARE_INFO_COMMAND (info_move_to_window_line,
   if (line >= window->line_count)
     line = window->line_count - 1;
 
-  window->point = (window->line_starts[line] - window->node->contents);
+  window->point = window->line_starts[line];
 }
 
 /* Clear the screen and redraw its contents.  Given a numeric argument,
