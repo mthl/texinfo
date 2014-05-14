@@ -1,5 +1,19 @@
 2014-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/window.c (process_node_text): First argument changed from
+	void * to WINDOW *.  Callers updated.
+	* info/display.c (display_node_text):
+	* info/window.c (_calc_line_starts): Receive WINDOW * argument.
+	* info/window.h (WINDOW): New field line_slots.
+
+	* info/info.h (add_pointer_to_array): Work for integer types.
+	* info/info.h (add_element_to_array): Synonym for add_pointer_to_array.
+
+	* info/display.c (struct display_node_closure): Removed.
+	* info/window.c (struct calc_closure, calc_closure_expand): Removed.
+
+2014-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/window.h (WINDOW): line_starts changed to pointer to
 	(array of) offsets.  This stops the need to write expressions like
 	"win->line_starts[line] - win->node->contents" in many places.  All

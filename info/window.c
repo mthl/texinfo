@@ -817,60 +817,36 @@ window_physical_lines (NODE *node)
 }
 
 
-struct calc_closure {
-  WINDOW *win;
-  size_t line_starts_slots;
-};
-
-static void
-calc_closure_expand (struct calc_closure *cp)
-{
-  if (cp->win->line_count == cp->line_starts_slots)
-    {
-      if (cp->line_starts_slots == 0)
-	cp->line_starts_slots = 100;
-      cp->win->line_starts = x2nrealloc (cp->win->line_starts,
-					 &cp->line_starts_slots,
-					 sizeof (cp->win->line_starts[0]));
-      cp->win->log_line_no = xrealloc (cp->win->log_line_no,
-				     cp->line_starts_slots *
-				     sizeof (cp->win->log_line_no[0]));
-    }
-}
-
+/* Called by process_node_text. */
 static int
-_calc_line_starts (void *closure, size_t pl_num, size_t ll_num,
+_calc_line_starts (WINDOW *win, size_t pl_num, size_t ll_num,
                    size_t pl_start, char *printed_line,
                    size_t pl_bytes, size_t pl_chars)
 {
-  struct calc_closure *cp = closure;
+  add_element_to_array (pl_start, win->line_count,
+                        win->line_starts, win->line_slots, 2);
 
-  calc_closure_expand (cp);
-  cp->win->line_starts[cp->win->line_count] = pl_start;
-  cp->win->log_line_no[cp->win->line_count] = ll_num;
-  cp->win->line_count++;
+  /* We cannot do add_element_to_array for this, as this would lead
+     to incrementing cp->win->line_count twice. */
+  win->log_line_no = xrealloc (win->log_line_no,
+                               win->line_slots * sizeof (long));
+  win->log_line_no[win->line_count - 1] = ll_num;
   return 0;
 }
 
 void
 calculate_line_starts (WINDOW *window)
 {
-  struct calc_closure closure;
-
   window->line_starts = NULL;
-  window->log_line_no  = NULL;
+  window->log_line_no = NULL;
   window->line_count = 0;
+  window->line_slots = 0;
 
   if (!window->node)
     return;
   
-  closure.win = window;
-  closure.line_starts_slots = 0;
-  process_node_text (window, window->node->contents, 0,
-		     _calc_line_starts, &closure);
-  calc_closure_expand (&closure);
-  window->line_starts[window->line_count] = 0;
-  window->log_line_no[window->line_count] = 0;
+  process_node_text (window, window->node->contents, 0, _calc_line_starts);
+
   window_line_map_init (window);
 }
 
@@ -1452,11 +1428,11 @@ info_tag (mbi_iterator_t iter, int handle, size_t *plen)
 
    FUN is called for every line collected from the node. Its arguments:
 
-     int (*fun) (void *closure, size_t pl_num, size_t ll_num,
+     int (*fun) (WINDOW *win, size_t pl_num, size_t ll_num,
                   size_t pl_start, char *printed_line,
 		  size_t pl_bytes, size_t pl_chars)
 
-     closure  -- An opaque pointer passed as 5th parameter to process_node_text;
+     win -- WINDOW argument passed to process_node_text;
      pl_num  -- Number of processed physical lines (starts from 0);
      ll_num -- Number of processed logical lines (starts from 0);
      pl_start -- Offset of start of physical line from START;
@@ -1475,9 +1451,8 @@ info_tag (mbi_iterator_t iter, int handle, size_t *plen)
 size_t
 process_node_text (WINDOW *win, char *start,
 		   int do_tags,
-		   int (*fun) (void *, size_t, size_t,
-			       size_t, char *, size_t, size_t),
-		   void *closure)
+		   int (*fun) (WINDOW *, size_t, size_t,
+			       size_t, char *, size_t, size_t))
 {
   char *printed_line;      /* Buffer for a printed line. */
   size_t pl_chars = 0;     /* Number of *characters* written to PRINTED_LINE */
@@ -1614,8 +1589,7 @@ process_node_text (WINDOW *win, char *start,
               printed_line[pl_bytes] = '\0';
             }
 
-	  finish = fun (closure, pl_num, ll_num,
-		        pl_start,
+	  finish = fun (win, pl_num, ll_num, pl_start,
 		        printed_line, pl_bytes, pl_chars);
 
           ++pl_num;
@@ -1661,9 +1635,7 @@ process_node_text (WINDOW *win, char *start,
     }
 
   if (pl_chars)
-    fun (closure, pl_num, ll_num,
-         pl_start,
-	 printed_line, pl_bytes, pl_chars);
+    fun (win, pl_num, ll_num, pl_start, printed_line, pl_bytes, pl_chars);
 
   free (printed_line);
   return ll_num; /* needed? */

@@ -88,11 +88,6 @@ display_update_display (WINDOW *window)
   display_update_one_window (the_echo_area);
 }
 
-struct display_node_closure {
-  WINDOW *win;
-  DISPLAY_LINE **display;
-};
-
 static int
 find_diff (const char *a, size_t alen, const char *b, size_t blen, int *ppos)
 {
@@ -112,14 +107,13 @@ find_diff (const char *a, size_t alen, const char *b, size_t blen, int *ppos)
   return i;
 }
 
+/* Called by process_node_text. */
 int
-display_node_text (void *closure, size_t pl_num, size_t ll_num,
+display_node_text (WINDOW *win, size_t pl_num, size_t ll_num,
                    size_t pl_start, char *printed_line,
                    size_t pl_bytes, size_t pl_chars)
 {
-  struct display_node_closure *dn = closure;
-  WINDOW *win = dn->win;
-  DISPLAY_LINE **display = dn->display;
+  DISPLAY_LINE **display = the_display;
   DISPLAY_LINE *entry = display[win->first_row + pl_num];
 
   /* We have the exact line as it should appear on the screen.
@@ -230,17 +224,11 @@ display_update_one_window (WINDOW *win)
 
   if (win->node && win->line_starts)
     {
-      struct display_node_closure dnc;
-
-      dnc.win = win;
-      dnc.display = the_display;
-      
       line_index = process_node_text (win,
 				      win->node->contents
                                         + win->line_starts[win->pagetop],
 				      1,
-				      display_node_text,
-				      &dnc);
+				      display_node_text);
       if (display_was_interrupted_p)
 	return;
     }

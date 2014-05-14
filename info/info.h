@@ -57,11 +57,11 @@ typedef char *CFunction ();
 #  define whitespace_or_newline(c) (whitespace (c) || (c == '\n'))
 #endif /* !whitespace_or_newline */
 
-/* Add POINTER to the list of pointers found in ARRAY.  SLOTS is the number
+/* Add ELT to the list of elements found in ARRAY.  SLOTS is the number
    of slots that have already been allocated.  INDEX is the index into the
-   array where POINTER should be added.  MINSLOTS is the number of slots to
+   array where ELT should be added.  MINSLOTS is the number of slots to
    start the array with in case it is empty. */
-#define add_pointer_to_array(pointer, idx, array, slots, minslots)	\
+#define add_pointer_to_array(elt, idx, array, slots, minslots)	\
   do									\
     {									\
        if (idx + 2 >= slots)						\
@@ -70,10 +70,12 @@ typedef char *CFunction ();
 	     slots = minslots;						\
 	   array = x2nrealloc (array, &slots, sizeof(array[0]));	\
 	 }								\
-       array[idx++] = pointer;						\
-       array[idx] = NULL;						\
+       array[idx++] = elt;						\
+       array[idx] = 0; /* null pointer for pointer types */       	\
     }									\
   while (0)
+
+#define add_element_to_array add_pointer_to_array
 
 #if !defined (zero_mem) && defined (HAVE_MEMSET)
 #  define zero_mem(mem, length) memset (mem, 0, length)

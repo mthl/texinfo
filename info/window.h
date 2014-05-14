@@ -80,6 +80,7 @@ typedef struct window_struct
   long *log_line_no;    /* Number of logical line corresponding to each
                            physical one. */
   long line_count;      /* Number of elements in LINE_STARTS and LOG_LINE_NO.*/
+  size_t line_slots;    /* Allocated space in LINE_STARTS and LOG_LINE_NO. */
 
   int flags;            /* See below for details. */
 } WINDOW;
@@ -274,11 +275,8 @@ extern int window_chars_to_goal (WINDOW *win, int goal);
 
 extern size_t process_node_text
         (WINDOW *win, char *start, int do_tags,
-         int (*fun) (void *, size_t, size_t, size_t, char *,
-		     size_t, size_t),
-	 void *closure);
-
-extern void clean_manpage (char *manpage);
+         int (*fun) (WINDOW *, size_t, size_t, size_t, char *,
+		     size_t, size_t));
 
 extern void window_compute_line_map (WINDOW *win);
 
