@@ -6937,7 +6937,7 @@ sub output($$)
   $self->{'current_filename'} = undef;
   if ($self->get_conf('NODE_FILES') 
       and $self->{'labels'} and $self->{'output_file'} ne '') {
-    foreach my $label (keys (%{$self->{'labels'}})) {
+    foreach my $label (sort(keys (%{$self->{'labels'}}))) {
       my $node = $self->{'labels'}->{$label};
       my $target = $self->_get_target($node);
       # filename may not be defined in case of an @anchor or similar in
