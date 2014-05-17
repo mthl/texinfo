@@ -471,16 +471,14 @@ static struct text_buffer printed_rep = {}; /* Initialize with all zeroes. */
 
 /* Return pointer to string that is the printed representation of character
    (or other logical unit) at ITER if it were printed at screen column
-   PL_CHARS.  Update mb_len (mbi_cur (*ITER)) if byte length is different.  If
-   ITER points at a tag, process tag if DO_TAGS is non-zero.  If ITER points at
-   an end-of-line character, set *DELIM to this character.  *PCHARS gets the
-   number of screen columns taken up by outputting the return value, and
-   *PBYTES the number of bytes in returned string.  Return value is not
-   null-terminated.  Return value must not be called by caller. */
-
+   PL_CHARS.  Update mb_len (mbi_cur (*ITER)) if byte length is different.
+   If ITER points at an end-of-line character, set *DELIM to this character.
+   *PCHARS gets the number of screen columns taken up by outputting the return
+   value, and *PBYTES the number of bytes in returned string.  Return value is
+   not null-terminated.  Return value must not be freed by caller. */
 char *
-printed_representation (mbi_iterator_t *iter, int do_tags, int *delim,
-                        size_t pl_chars, size_t *pchars, size_t *pbytes) 
+printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
+                        size_t *pchars, size_t *pbytes) 
 {
   int printable_limit = ISO_Latin_p ? 255 : 127;
   struct text_buffer *rep = &printed_rep;
@@ -514,7 +512,7 @@ printed_representation (mbi_iterator_t *iter, int do_tags, int *delim,
 
           return cur_ptr;
         }
-      else if (info_tag (*iter, do_tags, &cur_len))
+      else if (info_tag (*iter, &cur_len))
         {
           *pchars = 0; 
           *pbytes = cur_len;

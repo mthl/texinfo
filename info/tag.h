@@ -19,7 +19,6 @@
 #ifndef TAG_H
 #define TAG_H
 
-int tags_expand (char *input, long inputlen, char **pbuf, long *pbuflen);
-void handle_tag (char *tag);
+int tag_expand (char **input, struct text_buffer *outbuf, int *is_index);
 
 #endif

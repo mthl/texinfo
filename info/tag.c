@@ -240,9 +240,3 @@ tag_expand (char **input, struct text_buffer *outbuf, int *is_index)
     }
   return 0;
 }
-  
-void
-handle_tag (char *tag)
-{
-  /* Nothing so far */
-}

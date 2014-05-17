@@ -1380,14 +1380,11 @@ pad_to (int count, char *string)
 }
 
 
-/* If ITER points to an info tag, process it, set PLEN to its
-   length in bytes, and return 1.
-   Otherwise, return 0.
-
-   Collected tag is processed if HANDLE!=0.
+/* If ITER points to an info tag, set PLEN to its length in bytes and
+   return 1.  Otherwise, return 0.
 */
 int
-info_tag (mbi_iterator_t iter, int handle, size_t *plen)
+info_tag (mbi_iterator_t iter, size_t *plen)
 {
   if (*mbi_cur_ptr (iter) == '\0' && mbi_avail (iter))
     {
@@ -1403,17 +1400,7 @@ info_tag (mbi_iterator_t iter, int handle, size_t *plen)
 	      end = memmem (ptr, ITER_LIMIT (iter), "\0\b]", 3);
 	      if (end)
 		{
-		  size_t len = end - ptr;
-
-		  if (handle)
-		    {
-		      char *elt = xmalloc (len + 1);
-		      memcpy (elt, ptr, len);
-		      elt[len] = 0;
-		      handle_tag (elt);
-		      free (elt);
-		    }
-		  *plen = len + 6;
+		  *plen = end - ptr + 6;
 		  return 1;
 		}
 	    }
@@ -1443,14 +1430,11 @@ info_tag (mbi_iterator_t iter, int handle, size_t *plen)
    If FUN returns non zero, process_node_text stops processing and returns
    immediately.
 
-   If DO_TAGS is not zero, process info tags, otherwise ignore them.
-
    Return value: number of lines processed.
 */
    
 size_t
 process_node_text (WINDOW *win, char *start,
-		   int do_tags,
 		   int (*fun) (WINDOW *, size_t, size_t,
 			       size_t, char *, size_t, size_t))
 {
@@ -1481,7 +1465,7 @@ process_node_text (WINDOW *win, char *start,
       int delim = 0;
       int finish;
 
-      cur_ptr = printed_representation (&iter, do_tags, &delim,
+      cur_ptr = printed_representation (&iter, &delim,
                                         pl_chars, &pchars, &pbytes);
 
       /* Ensure there is enough space in the buffer */
@@ -1662,8 +1646,8 @@ window_scan_line (WINDOW *win, int line, int phys,
       if (cur_ptr >= endp)
 	break;
       
-      printed_representation (&iter, 0, &delim,
-                              win->line_map.used, &pchars, &pbytes);
+      printed_representation (&iter, &delim, win->line_map.used,
+                              &pchars, &pbytes);
 
       if (fun)
 	fun (closure, cur_ptr - win->node->contents, pchars);
