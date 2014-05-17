@@ -1,3 +1,8 @@
+2014-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.c (process_node_text): Don't split printed
+	representations like "^X" across lines.
+
 2014-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.c (process_node_text): First argument changed from

@@ -1551,29 +1551,14 @@ process_node_text (WINDOW *win, char *start,
 	    {
               /* The printed representation of this character extends into
                  the next line. */
+              int i;
+
+              for (i = 0; pl_chars < (win->width - 1); pl_chars++)
+                printed_line[pl_bytes++] = ' ';
 
 	      carried_over_count = replen;
-	      if (replen == 1)
-		{
-		  /* It is a single (possibly multibyte) character */
-		  /* FIXME? */
-		  carried_over_ptr = cur_ptr;
-		  carried_over_len = cur_len;
-		}
-	      else
-		{
-		  int i;
-		  
-		  /* Remember the offset of the last character printed out of
-		     REP so that we can carry the character over to the next
-		     line. */
-		  for (i = 0; pl_chars < (win->width - 1);
-		       pl_chars++)
-		    printed_line[pl_bytes++] = cur_ptr[i++];
-
-		  carried_over_ptr = cur_ptr + i;
-		  carried_over_len = cur_len;
-		}
+              carried_over_ptr = cur_ptr;
+              carried_over_len = cur_len;
 
               /* If printing the last character in this window couldn't
                  possibly cause the screen to scroll, place a backslash
