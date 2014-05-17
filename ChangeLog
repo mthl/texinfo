@@ -1,5 +1,12 @@
 2014-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/window.c (process_node_text): Formatting and tweaks to
+	carrying character over from one line to another. Return proper
+	value.
+	* info/t/Init-intera.inc: Use usleep instead of sleep to speed up tests.
+
+2014-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/window.c (process_node_text, info_tag)
 	* info/info-utils.c (printed_representation): do_tags argument
 	removed.  All callers updated.

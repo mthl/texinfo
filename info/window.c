@@ -1439,13 +1439,18 @@ process_node_text (WINDOW *win, char *start,
 			       size_t, char *, size_t, size_t))
 {
   char *printed_line;      /* Buffer for a printed line. */
-  size_t pl_chars = 0;     /* Number of *characters* written to PRINTED_LINE */
-  size_t pl_bytes = 0;     /* Index into PRINTED_LINE. */
+  size_t allocated_win_width; /* Allocated space in printed_line. */
+  size_t pl_chars = 0;     /* Number of characters written to printed_line */
+  size_t pl_bytes = 0;     /* Number of bytes written to printed_line */
   size_t pl_start = 0;     /* Offset of start of current physical line. */
   size_t pl_num = 0;       /* Number of physical lines done so far. */
   size_t ll_num = 0;       /* Number of logical lines */
-  size_t allocated_win_width;
   mbi_iterator_t iter;
+
+  /* Pointer to character carried over from one physical line to the next. */
+  const char *carried_over_ptr = 0; 
+  size_t carried_over_bytes = 0;
+  size_t carried_over_chars = 0;
   
   /* Print each line in the window into our local buffer, and then
      check the contents of that buffer against the display.  If they
@@ -1481,98 +1486,95 @@ process_node_text (WINDOW *win, char *start,
 	  for (i = 0; i < pbytes; i++)
 	    printed_line[pl_bytes++] = cur_ptr[i];
 	  pl_chars += pchars;
+          continue;
+        }
+
+      /* If this character cannot be printed in this line, we have
+         found the end of this line as it would appear on the screen. */
+
+      if (delim)
+        {
+          printed_line[pl_bytes] = '\0';
+          carried_over_ptr = NULL;
         }
       else
-	{
-          /* If this character cannot be printed in this line, we have
-             found the end of this line as it would appear on the screen.
-             Carefully print the end of the line, and then compare. */
-          const char *carried_over_ptr;
-          size_t carried_over_len = 0;
-          size_t carried_over_count = 0;
+        {
+          /* The printed representation of this character extends into
+             the next line. */
+          int i;
 
-          if (delim)
+          for (i = 0; pl_chars < (win->width - 1); pl_chars++)
+            printed_line[pl_bytes++] = ' ';
+
+          carried_over_chars = pchars;
+          carried_over_ptr = cur_ptr;
+          carried_over_bytes = pbytes;
+
+          /* If printing the last character in this window couldn't
+             possibly cause the screen to scroll, place a backslash
+             in the rightmost column. */
+          if (1 + pl_num + win->first_row < the_screen->height)
             {
-              printed_line[pl_bytes] = '\0';
-              carried_over_ptr = NULL;
+              if (win->flags & W_NoWrap)
+                printed_line[pl_bytes++] = '$';
+              else
+                printed_line[pl_bytes++] = '\\';
+              pl_chars++;
             }
-	  else
-	    {
-              /* The printed representation of this character extends into
-                 the next line. */
-              int i;
+          printed_line[pl_bytes] = '\0';
+        }
 
-              for (i = 0; pl_chars < (win->width - 1); pl_chars++)
-                printed_line[pl_bytes++] = ' ';
+      finish = fun (win, pl_num, ll_num, pl_start,
+                    printed_line, pl_bytes, pl_chars);
 
-	      carried_over_count = pchars;
-              carried_over_ptr = cur_ptr;
-              carried_over_len = pbytes;
+      ++pl_num;
+      if (delim == '\r' || delim == '\n')
+        ++ll_num;
 
-              /* If printing the last character in this window couldn't
-                 possibly cause the screen to scroll, place a backslash
-                 in the rightmost column. */
-              if (1 + pl_num + win->first_row < the_screen->height)
-                {
-                  if (win->flags & W_NoWrap)
-                    printed_line[pl_bytes++] = '$';
-                  else
-                    printed_line[pl_bytes++] = '\\';
-		  pl_chars++;
-                }
-              printed_line[pl_bytes] = '\0';
-            }
+      /* Start a new physical line at next character, unless a character
+         was carried over, in which case start there. */
+      pl_start = mbi_cur_ptr (iter) - start;
+      if (!carried_over_ptr)
+        pl_start += mb_len (mbi_cur (iter));
+      pl_bytes = 0;
+      pl_chars = 0;
 
-	  finish = fun (win, pl_num, ll_num, pl_start,
-		        printed_line, pl_bytes, pl_chars);
+      if (finish)
+        break;
+      
+      /* If there are bytes carried over, stuff them
+         into the buffer now. */
+      /* There is enough space for this because there was enough space
+         for the whole logical line of which this is only a part. */
+      /* Expected to be "short", i.e. a representation like "^A". */
+      if (carried_over_ptr)
+        {
+          for (; carried_over_bytes > 0; carried_over_bytes--)
+            printed_line[pl_bytes++] = *carried_over_ptr++;
+          pl_chars += carried_over_chars;
+        }
+    
+      /* If this window has chosen not to wrap lines, skip to the end
+         of the logical line in the buffer, and start a new line here. */
+      if (pl_bytes && win->flags & W_NoWrap)
+        {
+          for (; mbi_avail (iter); mbi_advance (iter))
+            if (mb_len (mbi_cur (iter)) == 1
+                && *mbi_cur_ptr (iter) == '\n')
+              break;
 
-          ++pl_num;
-	  if (delim == '\r' || delim == '\n')
-	    ++ll_num;
-
-	  /* Start a new physical line at next character. */
-	  pl_bytes = 0;
-	  pl_chars = 0;
-	  pl_start = mbi_cur_ptr (iter) + mb_len (mbi_cur (iter)) - start;
-
-	  if (finish)
-	    break;
-	  
-          /* If there are bytes carried over, stuff them
-             into the buffer now. */
-          /* There is enough space for this because there was enough space
-             for the whole logical line of which this is only a part. */
-          /* Expected to be "short", i.e. a representation like "^A". *./
-          if (carried_over_ptr)
-	    {
-	      for (; carried_over_len;
-		   carried_over_len--, carried_over_ptr++, pl_bytes++)
-		printed_line[pl_bytes] = *carried_over_ptr;
-	      pl_chars += carried_over_count;
-	    }
-	
-          /* If this window has chosen not to wrap lines, skip to the end
-             of the logical line in the buffer, and start a new line here. */
-          if (pl_bytes && win->flags & W_NoWrap)
-            {
-	      for (; mbi_avail (iter); mbi_advance (iter))
-		if (mb_len (mbi_cur (iter)) == 1
-		    && *mbi_cur_ptr (iter) == '\n')
-		  break;
-
-	      pl_bytes = 0;
-	      pl_chars = 0;
-              pl_start = mbi_cur_ptr (iter) + mb_len (mbi_cur (iter)) - start;
-	      printed_line[0] = 0;
-	    }
-	}
+          pl_bytes = 0;
+          pl_chars = 0;
+          pl_start = mbi_cur_ptr (iter) + mb_len (mbi_cur (iter)) - start;
+          printed_line[0] = 0;
+        }
     }
 
   if (pl_chars)
     fun (win, pl_num, ll_num, pl_start, printed_line, pl_bytes, pl_chars);
 
   free (printed_line);
-  return ll_num;
+  return pl_num;
 }
 
 static void
