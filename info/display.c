@@ -227,7 +227,6 @@ display_update_one_window (WINDOW *win)
       line_index = process_node_text (win,
 				      win->node->contents
                                         + win->line_starts[win->pagetop],
-				      1,
 				      display_node_text);
       if (display_was_interrupted_p)
 	return;

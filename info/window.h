@@ -274,11 +274,11 @@ extern void window_set_state (WINDOW *window, SEARCH_STATE *state);
 extern int window_chars_to_goal (WINDOW *win, int goal);
 
 extern size_t process_node_text
-        (WINDOW *win, char *start, int do_tags,
+        (WINDOW *win, char *start,
          int (*fun) (WINDOW *, size_t, size_t, size_t, char *,
 		     size_t, size_t));
 
-int info_tag (mbi_iterator_t iter, int handle, size_t *plen);
+int info_tag (mbi_iterator_t iter, size_t *plen);
 
 extern void window_compute_line_map (WINDOW *win);
 

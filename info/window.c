@@ -845,7 +845,7 @@ calculate_line_starts (WINDOW *window)
   if (!window->node)
     return;
   
-  process_node_text (window, window->node->contents, 0, _calc_line_starts);
+  process_node_text (window, window->node->contents, _calc_line_starts);
 
   window_line_map_init (window);
 }

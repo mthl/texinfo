@@ -1,8 +1,8 @@
 2014-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* info/window.c (info_tag)
+	* info/window.c (process_node_text, info_tag)
 	* info/info-utils.c (printed_representation): do_tags argument
-	removed.
+	removed.  All callers updated.
 	* info/tag.c (handle_tag): Removed.
 
 2014-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
