@@ -98,8 +98,10 @@ extern int ansi_escape (mbi_iterator_t iter, size_t *plen);
 
 /* Return a pointer to a string which is the printed representation
    of CHARACTER if it were printed at HPOS. */
-extern char *printed_representation (const char *str, size_t len,
-				     size_t hpos, size_t *plen);
+extern char *printed_representation (mbi_iterator_t *iter, int do_tags,
+                          int *delim,
+                          size_t pl_chars,
+                          size_t *pchars, size_t *pbytes);
 
 /* Return a pointer to the part of PATHNAME that simply defines the file. */
 extern char *filename_non_directory (char *pathname);

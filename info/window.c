@@ -1386,7 +1386,7 @@ pad_to (int count, char *string)
 
    Collected tag is processed if HANDLE!=0.
 */
-static int
+int
 info_tag (mbi_iterator_t iter, int handle, size_t *plen)
 {
   if (*mbi_cur_ptr (iter) == '\0' && mbi_avail (iter))
@@ -1475,63 +1475,28 @@ process_node_text (WINDOW *win, char *start,
        mbi_advance (iter))
     {
       const char *cur_ptr = mbi_cur_ptr (iter);
-      size_t cur_len = mb_len (mbi_cur (iter));
-      size_t replen = 0;
+
+      size_t pchars = 0; /* Printed chars */
+      size_t pbytes = 0; /* Bytes to output. */
       int delim = 0;
       int finish;
 
-      if (mb_isprint (mbi_cur (iter)))
-	{
-	  replen = 1;
-	}
-      else if (cur_len == 1)
-	{
-          if (*cur_ptr == '\r' || *cur_ptr == '\n')
-            {
-              replen = win->width - pl_chars;
-	      delim = *cur_ptr;
-            }
-	  else if (ansi_escape (iter, &cur_len))
-	    {
-	      replen = 0;
-	      ITER_SETBYTES (iter, cur_len);
-	    }
-	  else if (info_tag (iter, do_tags, &cur_len)) 
-	    {
-	      ITER_SETBYTES (iter, cur_len);
-	      continue;
-	    }
-	  else
-	    {
-	      if (*cur_ptr == '\t')
-		delim = *cur_ptr;
-              cur_ptr = printed_representation (cur_ptr, cur_len, pl_chars,
-						&cur_len);
-	      replen = cur_len;
-            }
-        }
-      else if (show_malformed_multibyte_p || mbi_cur (iter).wc_valid)
-	{
-	  /* FIXME: I'm not sure it's the best way to deal with unprintable
-	     multibyte characters */
-	  cur_ptr = printed_representation (cur_ptr, cur_len, pl_chars,
-					    &cur_len);
-	  replen = cur_len;
-	}
+      cur_ptr = printed_representation (&iter, do_tags, &delim,
+                                        pl_chars, &pchars, &pbytes);
 
       /* Ensure there is enough space in the buffer */
-      while (pl_bytes + cur_len + 2 > allocated_win_width - 1)
+      while (pl_bytes + pbytes + 2 > allocated_win_width - 1)
 	printed_line = x2realloc (printed_line, &allocated_win_width);
 
       /* If this character can be printed without passing the width of
          the line, then stuff it into the line. */
-      if (pl_chars + replen < win->width)
+      if (!delim && pl_chars + pchars < win->width)
         {
 	  int i;
 	  
-	  for (i = 0; i < cur_len; i++)
+	  for (i = 0; i < pbytes; i++)
 	    printed_line[pl_bytes++] = cur_ptr[i];
-	  pl_chars += replen;
+	  pl_chars += pchars;
         }
       else
 	{
@@ -1556,9 +1521,9 @@ process_node_text (WINDOW *win, char *start,
               for (i = 0; pl_chars < (win->width - 1); pl_chars++)
                 printed_line[pl_bytes++] = ' ';
 
-	      carried_over_count = replen;
+	      carried_over_count = pchars;
               carried_over_ptr = cur_ptr;
-              carried_over_len = cur_len;
+              carried_over_len = pbytes;
 
               /* If printing the last character in this window couldn't
                  possibly cause the screen to scroll, place a backslash
@@ -1623,7 +1588,7 @@ process_node_text (WINDOW *win, char *start,
     fun (win, pl_num, ll_num, pl_start, printed_line, pl_bytes, pl_chars);
 
   free (printed_line);
-  return ll_num; /* needed? */
+  return ll_num;
 }
 
 static void
@@ -1676,9 +1641,9 @@ window_scan_line (WINDOW *win, int line, int phys,
 		  void *closure)
 {
   mbi_iterator_t iter;
-  long cpos = win->line_starts[line];
   int delim = 0;
   char *endp;
+  const char *cur_ptr;
   
   if (!phys && line + 1 < win->line_count)
     endp = win->node->contents + win->line_starts[line + 1];
@@ -1691,55 +1656,19 @@ window_scan_line (WINDOW *win, int line, int phys,
        !delim && mbi_avail (iter);
        mbi_advance (iter))
     {
-      const char *cur_ptr = mbi_cur_ptr (iter);
-      size_t cur_len = mb_len (mbi_cur (iter));
-      size_t replen;
+      size_t pchars, pbytes;
+      cur_ptr = mbi_cur_ptr (iter);
 
       if (cur_ptr >= endp)
 	break;
       
-      if (mb_isprint (mbi_cur (iter)))
-	{
-	  replen = 1;
-	}
-      else if (cur_len == 1)
-	{
-          if (*cur_ptr == '\r' || *cur_ptr == '\n')
-            {
-              replen = 1;
-	      delim = 1;
-            }
-	  else if (ansi_escape (iter, &cur_len))
-	    {
-	      ITER_SETBYTES (iter, cur_len);
-	      replen = 0;
-	    }
-	  else if (info_tag (iter, 0, &cur_len)) 
-	    {
-	      ITER_SETBYTES (iter, cur_len);
-	      cpos += cur_len;
-	      replen = 0;
-	    }
-	  else
-	    {
-              printed_representation (cur_ptr, cur_len,
-				      win->line_map.used,
-				      &replen);
-            }
-        }
-      else
-	{
-	  /* FIXME: I'm not sure it's the best way to deal with unprintable
-	     multibyte characters */
-	  printed_representation (cur_ptr, cur_len, win->line_map.used,
-				  &replen);
-	}
+      printed_representation (&iter, 0, &delim,
+                              win->line_map.used, &pchars, &pbytes);
 
       if (fun)
-	fun (closure, cpos, replen);
-      cpos += cur_len;
+	fun (closure, cur_ptr - win->node->contents, pchars);
     }
-  return cpos;
+  return cur_ptr - win->node->contents;
 }
 
 static void

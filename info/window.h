@@ -278,6 +278,8 @@ extern size_t process_node_text
          int (*fun) (WINDOW *, size_t, size_t, size_t, char *,
 		     size_t, size_t));
 
+int info_tag (mbi_iterator_t iter, int handle, size_t *plen);
+
 extern void window_compute_line_map (WINDOW *win);
 
 extern int window_point_to_column (WINDOW *win, long point, long *np);

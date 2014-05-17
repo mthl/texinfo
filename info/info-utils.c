@@ -467,88 +467,110 @@ ansi_escape (mbi_iterator_t iter, size_t *plen)
   return 0;
 }
 
-/* String representation of a char returned by printed_representation (). */
-static char *the_rep;
-static size_t the_rep_size;
+static struct text_buffer printed_rep = {}; /* Initialize with all zeroes. */
 
-/* Return a pointer to a string which is the printed representation
-   of CHARACTER if it were printed at HPOS. */
+/* Return pointer to string that is the printed representation of character
+   (or other logical unit) at ITER if it were printed at screen column
+   PL_CHARS.  Update mb_len (mbi_cur (*ITER)) if byte length is different.  If
+   ITER points at a tag, process tag if DO_TAGS is non-zero.  If ITER points at
+   an end-of-line character, set *DELIM to this character.  *PCHARS gets the
+   number of screen columns taken up by outputting the return value, and
+   *PBYTES the number of bytes in returned string.  Return value is not
+   null-terminated.  Return value must not be called by caller. */
+
 char *
-printed_representation (const char *character, size_t len, size_t hpos,
-			/* Return: */
-			size_t *plen)
+printed_representation (mbi_iterator_t *iter, int do_tags, int *delim,
+                        size_t pl_chars, size_t *pchars, size_t *pbytes) 
 {
-  const unsigned char *cp = (const unsigned char *) character;
-  register int i = 0;
   int printable_limit = ISO_Latin_p ? 255 : 127;
-#define REPSPACE(s)                                            \
-  do                                                           \
-    {                                                          \
-      while (the_rep_size < s) 			               \
-	{						       \
-	  if (the_rep_size == 0)			       \
-	    the_rep_size = 8; /* Initial allocation */	       \
-	  the_rep = x2realloc (the_rep, &the_rep_size);	       \
-	}						       \
-    }                                                          \
-  while (0)
-    
-#define SC(c)                                                  \
-  do                                                           \
-    {                                                          \
-      REPSPACE(i + 1);                                         \
-      the_rep[i++] = c;                                        \
-    }                                                          \
-  while (0)
-  
-  for (; len > 0; cp++, len--)
+  struct text_buffer *rep = &printed_rep;
+
+  char *cur_ptr = (char *) mbi_cur_ptr (*iter);
+  size_t cur_len = mb_len (mbi_cur (*iter));
+
+  text_buffer_reset (&printed_rep);
+
+  if (mb_isprint (mbi_cur (*iter)))
     {
-      if (raw_escapes_p && *cp == '\033')
-	SC(*cp);
-      /* Show CTRL-x as ^X.  */
-      else if (iscntrl (*cp) && *cp < 127)
-	{
-	  switch (*cp)
-	    {
-	    case '\r':
-	    case '\n':
-	      SC(*cp);
-	      break;
-
-	    case '\t':
-	      {
-		int tw;
-
-		tw = ((hpos + 8) & 0xf8) - hpos;
-		while (i < tw)
-		  SC(' ');
-		break;
-	      }
-	      
-	    default:
-	      SC('^');
-	      SC(*cp | 0x40);
-	    }
-	}
-      /* Show META-x as 0370.  */
-      else if (*cp > printable_limit)
-	{
-	  REPSPACE (i + 5);
-	  sprintf (the_rep + i, "\\%0o", *cp);
-	  i = strlen (the_rep);
-	}
-      else if (*cp == DEL)
-	{
-	  SC('^');
-	  SC('?');
-	}
-      else
-	SC(*cp);
+      *pchars = 1;
+      *pbytes = cur_len;
+      return cur_ptr;
     }
-  
-  SC(0);
-  *plen = i - 1;
-  return the_rep;
+  else if (cur_len == 1)
+    {
+      if (*cur_ptr == '\r' || *cur_ptr == '\n')
+        {
+          *pchars = 1;
+          *pbytes = cur_len;
+          *delim = *cur_ptr;
+          text_buffer_add_char (rep, ' ');
+          return cur_ptr;
+        }
+      else if (ansi_escape (*iter, &cur_len))
+        {
+          *pchars = 0; 
+          *pbytes = cur_len;
+          ITER_SETBYTES (*iter, cur_len);
+
+          return cur_ptr;
+        }
+      else if (info_tag (*iter, do_tags, &cur_len))
+        {
+          *pchars = 0; 
+          *pbytes = cur_len;
+          ITER_SETBYTES (*iter, cur_len);
+          return cur_ptr;
+        }
+      else if (*cur_ptr == '\t')
+        {
+          int i = 0;
+
+          *pchars = ((pl_chars + 8) & 0xf8) - pl_chars;
+          *pbytes = *pchars;
+
+          /* We must output spaces instead of the tab because a tab may
+             not clear characters already on the screen. */
+          for (i = 0; i < *pbytes; i++)
+            text_buffer_add_char (rep, ' ');
+          return text_buffer_base (rep);
+        }
+    }
+
+  /* Show CTRL-x as "^X".  */
+  if (iscntrl (*cur_ptr) && *cur_ptr < 127)
+    {
+      *pchars = 2;
+      *pbytes = 2;
+      text_buffer_add_char (rep, '^');
+      text_buffer_add_char (rep, *cur_ptr | 0x40);
+      return text_buffer_base (rep);
+    }
+  /* Show META-x as "\0370".  */
+  else if (*cur_ptr > printable_limit)
+    {
+      *pchars = 5;
+      *pbytes = cur_len;
+      text_buffer_printf (rep, "\\%0o", *cur_ptr);
+      return text_buffer_base (rep);
+    }
+  else if (*cur_ptr == DEL)
+    {
+      *pchars = 2;
+      *pbytes = cur_len;
+      text_buffer_add_char (rep, '^');
+      text_buffer_add_char (rep, '?');
+      return text_buffer_base (rep);
+    }
+  else
+    {
+      /* Use original bytes, although not recognized as anything.  This
+         shouldn't happen because of the many cases above .*/
+
+      *pchars = cur_len;
+      *pbytes = cur_len;
+      text_buffer_add_string (rep, cur_ptr, cur_len);
+      return text_buffer_base (rep);
+    }
 }
 
 

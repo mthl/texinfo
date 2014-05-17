@@ -3,6 +3,12 @@
 	* info/window.c (process_node_text): Don't split printed
 	representations like "^X" across lines.
 
+	* info/info-utils.c (printed_representation): Take mbi_iterator_t
+	argument and handle Info tags and terminal escape sequences.
+	* info/window.c (process_node_text, window_scan_line): Use of
+	printed_representation updated.
+	* info/window.c (info_tag): No longer static.
+
 2014-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.c (process_node_text): First argument changed from
