@@ -567,6 +567,7 @@ my %formats_table = (
              'internal_links' => 1,
              'simple_menu' => 1,
              'move_index_entries_after_items' => 1,
+             'no_warn_non_empty_parts' => 1,
              'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
            },
   'texinfoxml' => {
@@ -585,6 +586,7 @@ my %formats_table = (
            },
   'docbook' => {
              'move_index_entries_after_items' => 1,
+             'no_warn_non_empty_parts' => 1,
              'converter' => sub{Texinfo::Convert::DocBook->converter(@_)},
            },
   'pdf' => {
@@ -1273,9 +1275,8 @@ while(@input_files) {
   # done before dumping the tree?
   my $structure = Texinfo::Structuring::sectioning_structure($parser, $tree);
 
-  if ($structure) {
-    # FIXME allow suppressing this warning, for formats that in fact allow
-    # for non emptyt parts (HTML, DocBook)?
+  if ($structure
+      and !$formats_table{$format}->{'no_warn_non_empty_parts'}) {
     Texinfo::Structuring::warn_non_empty_parts($parser);
   }
 

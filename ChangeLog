@@ -9,6 +9,9 @@
 	* tp/texi2any.pl: put installation directory last in @INC,
 	in order to have -I perl arguments take precedence.  Report
 	from Aharon Robbins.
+	* tp/texi2any.pl: no warning for non empty @part for docbook and
+	HTML since non empty parts are formatted correctly for those
+	formats.
 
 2014-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
