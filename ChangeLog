@@ -13,6 +13,9 @@
 	* info/pseudotty.c: Don't open slave side of pseudoterminal
 	line.  Report on progress to stderr.
 
+	* info/filesys.c (info_add_extension): Return null pointer properly
+	if nothing found.
+
 2014-05-18  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Convert/Converter.pm (output): warn about 

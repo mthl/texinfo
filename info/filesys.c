@@ -26,7 +26,8 @@
 #include "tag.h"
 
 /* Local to this file. */
-static char *info_file_in_path (char *filename, char *path, struct stat *finfo);
+static char *info_file_in_path (char *filename, char *path,
+                                struct stat *finfo);
 static char *info_add_extension (char *dirname, char *fname,
                                  struct stat *finfo);
 
@@ -48,7 +49,6 @@ typedef struct
 } COMPRESSION_ALIST;
 
 static char *info_suffixes[] = {
-  "",
   ".info",
   "-info",
   "/index",
@@ -58,6 +58,7 @@ static char *info_suffixes[] = {
   ".in",        /* for .inz, .igz etc. */
   ".i",
 #endif
+  "",
   NULL
 };
 
@@ -225,6 +226,7 @@ info_add_extension (char *dirname, char *filename, struct stat *finfo)
 
   pre_suffix_length += strlen (filename);
 
+  /* Add enough space for any file extensions at end. */
   try_filename = xmalloc (pre_suffix_length + 30);
   try_filename[0] = '\0';
 
@@ -294,6 +296,9 @@ info_add_extension (char *dirname, char *filename, struct stat *finfo)
             }
         }
     }
+  /* Nothing was found. */
+  free (try_filename);
+  return 0;
 }
 
 /* Given a string containing units of information separated by the
@@ -364,8 +369,8 @@ convert_eols (char *text, long int textlen)
 /* Read the contents of PATHNAME, returning a buffer with the contents of
    that file in it, and returning the size of that buffer in FILESIZE.
    If the file turns out to be compressed, set IS_COMPRESSED to non-zero.
-   If the file cannot be read, return a NULL pointer.  Set *FINFO with
-   information about file. */
+   If the file cannot be read, set filesys_error_number and return a NULL
+   pointer.  Set *FINFO with information about file. */
 char *
 filesys_read_info_file (char *pathname, size_t *filesize,
 			struct stat *finfo, int *is_compressed)
