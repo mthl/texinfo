@@ -50,6 +50,10 @@ main ()
   fclose (stdout);
 
   error (0, 0, "entering main loop");
-  while (read (master, &dummy, 1) > 0)
-    ;
+  while (1)
+    if (read (master, &dummy, 1) <= 0)
+      {
+        error (0, 0, "read error");
+        sleep (1); /* Don't flood stderr with error messages. */
+      }
 }

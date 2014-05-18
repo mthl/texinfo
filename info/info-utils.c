@@ -596,7 +596,7 @@ static NODE **anchor_to_adjust;
 static int nodestart;
 
 /* Difference between the number of bytes input in the file and
-   bytes output. */
+   bytes output.  If !rewrite_p, this should stay 0. */
 static long int output_bytes_difference;
 
 /* Whether we are converting the character encoding of the file. */
@@ -965,15 +965,19 @@ copy_input_to_output (long n)
 static void
 skip_input (long n)
 {
-  if (preprocess_nodes_p || !rewrite_p)
+  if (preprocess_nodes_p)
     {
       inptr += n;
       output_bytes_difference += n;
     }
   else if (rewrite_p)
     {
-      /* We are expanding tags only.  Do not skip output. */
+      /* We are expanding tags only.  Do not skip input. */
       copy_input_to_output (n);
+    }
+  else
+    {
+      inptr += n;
     }
 }
 
@@ -1125,21 +1129,10 @@ scan_reference_label (char *label, long label_len, long start_of_reference,
 
   /* Point reference to where we will put the displayed reference,
      which could be after whitespace. */
-  if (rewrite_p)
-    {
-      /* This condition is mainly for indices so that the cursor
-         is on the * when tabbing.
-         FIXME: A nicer way of handling the possibilities
-         (rewrite_p, preprocess_nodes_p) */
-      if (preprocess_nodes_p)
-        entry->start = text_buffer_off (&output_buf);
-      else
-        entry->start = start_of_reference - output_bytes_difference;
-    }
+  if (preprocess_nodes_p)
+    entry->start = text_buffer_off (&output_buf);
   else
-    {
-      entry->start = start_of_reference;
-    }
+    entry->start = start_of_reference - output_bytes_difference;
 
 #ifdef QUOTE_NODENAMES
   if (inptr[0] == '\177')
@@ -1176,19 +1169,10 @@ scan_reference_label (char *label, long label_len, long start_of_reference,
   /* Colon after label. */
   skip_input (1);
 
-  /* Set entry->end. */
-  if (rewrite_p)
-    {
-      /* TODO: Just use the second of these two always? */
-      if (preprocess_nodes_p)
-        entry->end = text_buffer_off (&output_buf);
-      else
-        entry->end = entry->start + label_len - output_bytes_difference;
-    }
+  if (preprocess_nodes_p)
+    entry->end = text_buffer_off (&output_buf);
   else
-    {
-      entry->end = entry->start + label_len;
-    }
+    entry->end = entry->start + label_len;
 
   return entry;
 }
@@ -1238,6 +1222,7 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry,
         {
           char saved_char;
           char *nl_off;
+          int space_at_start_of_line = 0;
 
           /* Skip any following spaces after the ":". */
           skip_input (skip_whitespace (inptr));
@@ -1249,21 +1234,23 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry,
           inptr[length] = '\0';
           nl_off = strchr (inptr, '\n');
           inptr[length] = saved_char;
+
+          if (nl_off)
+            space_at_start_of_line = skip_whitespace (nl_off + 1);
           
           if (info_parsed_filename)
             {
               /* Rough heuristic of whether it's worth outputing a newline
                  now or later. */
-              if (nl_off && nl_off - inptr < strlen (info_parsed_filename) + 8)
+              if (nl_off
+                  && nl_off < inptr + (length - space_at_start_of_line) / 2)
                 {
-                  int i, j = skip_whitespace (nl_off + 1);
+                  int i;
                   write_extra_bytes_to_output ("\n", 1);
 
-                  /* Don't allow any spaces in the input to mess up
-                     the margin. */
-                  skip_input (strspn (inptr, " "));
-                  for (i = 0; i < j; i++)
+                  for (i = 0; i < space_at_start_of_line; i++)
                     write_extra_bytes_to_output (" ", 1);
+                  skip_input (strspn (inptr, " "));
                   nl_off = 0;
                 }
               else if (inptr[-1] != '\n')
@@ -1276,7 +1263,7 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry,
             }
 
           /* Output terminating punctuation, unless we are in a reference
-             like (*note Label:(file)node.). */
+             like "(*note Label:(file)node.)". */
           if (!in_parentheses)
             skip_input (length);
           else
@@ -1289,14 +1276,12 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry,
              a paragraph. */
           if (nl_off && *inptr != '\n')
             { 
-              int i, j = skip_whitespace (nl_off + 1);
-              write_extra_bytes_to_output ("\n", 1);
+              int i;
 
-              /* Don't allow any spaces in the input to mess up
-                 the margin. */
-              skip_input (strspn (inptr, " "));
-              for (i = 0; i < j; i++)
+              write_extra_bytes_to_output ("\n", 1);
+              for (i = 0; i < space_at_start_of_line; i++)
                 write_extra_bytes_to_output (" ", 1);
+              skip_input (strspn (inptr, " "));
             }
         }
 
@@ -1305,6 +1290,7 @@ scan_reference_target (REFERENCE *entry, int found_menu_entry,
            messing up left edge of second column of menu. */
         for (i = 0; i < length; i++)
           write_extra_bytes_to_output (" ", 1);
+
       if (info_parsed_filename)
         entry->filename = xstrdup (info_parsed_filename);
 

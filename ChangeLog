@@ -1,5 +1,17 @@
 2014-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (scan_reference_label): Simpler logic for
+	setting start and end fields of reference.
+	(skip_input): Don't touch output_bytes_difference if not rewriting
+	node.
+
+	* info/info-utils.c (scan_reference_target): [preprocess_nodes=On]
+	Better condition for which line to output file specifier on.
+
+	* info/pseudotty.c: Don't exit on a read error.
+
+2014-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/dir.c (build_dir_node): Unused local variable deleted.
 	* info/indices.c (info_next_index_match): Unused local variable
 	deleted.
