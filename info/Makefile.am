@@ -84,7 +84,7 @@ BUILT_SOURCES = funs.h
 
 check_DATA = t/Info-config
 t/Info-config: t/Infokey-config infokey
-	./infokey --output $@ $<
+	mkdir -p t && ./infokey --output $@ $<
 
 check_PROGRAMS = pseudotty
 pseudotty_SOURCES = pseudotty.c

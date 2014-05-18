@@ -14,7 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-. t/Init-test.inc
+srcdir=${srcdir:-.}
+. $srcdir/t/Init-test.inc
 
 # Follow an index entry in a file specified with --file
 $GINFO --output - --file split 'entry text' \

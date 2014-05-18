@@ -14,7 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-. t/Init-test.inc
+srcdir=${srcdir:-.}
+. $srcdir/t/Init-test.inc
 
 # Try to select a non-existent menu item
 $GINFO --output - file-menu 'Not an entry' 2>&1 | grep 'No menu item'

@@ -14,9 +14,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-. t/Init-test.inc
+srcdir=${srcdir:-.}
+. $srcdir/t/Init-test.inc
 
 # Follow a reference to file1 in dir and print location
 $GINFO --where file1 \
-  | grep '^./t/infodir/file1.info$'
+  | grep 't/infodir/file1.info$'
 

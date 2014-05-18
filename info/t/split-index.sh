@@ -14,8 +14,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-. t/Init-test.inc
-. t/Init-intera.inc 
+srcdir=${srcdir:-.}
+. $srcdir/t/Init-test.inc
+. $t/Init-intera.inc 
 
 # Follow an index entry in a split file
 
@@ -26,4 +27,4 @@ test -f $GINFO_OUTPUT || exit 1
 diff $GINFO_OUTPUT $t/node-target
 RETVAL=$?
 
-. t/Cleanup.inc
+. $t/Cleanup.inc

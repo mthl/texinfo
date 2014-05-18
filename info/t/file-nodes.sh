@@ -14,7 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-. t/Init-test.inc
+srcdir=${srcdir:-.}
+. $srcdir/t/Init-test.inc
 
 # Load more than one node in loaded file using --node.
 
@@ -24,4 +25,4 @@ RETVAL=0
 grep 'Arrived at Node 1' $GINFO_OUTPUT || RETVAL=1
 grep 'Arrived at Node 2' $GINFO_OUTPUT || RETVAL=1
 
-. t/Cleanup.inc
+. $t/Cleanup.inc

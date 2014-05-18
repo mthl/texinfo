@@ -14,7 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-. t/Init-test.inc
+srcdir=${srcdir:-.}
+. $srcdir/t/Init-test.inc
 
 # Follow a menu in a file
 $GINFO --output - file-menu 'First entry' | grep 'Arrived at Node 1.'
