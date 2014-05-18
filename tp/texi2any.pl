@@ -222,7 +222,8 @@ if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
   foreach my $locales_dir (
     File::Spec->catdir($libsrcdir, $updir, 'LocaleData'),
     File::Spec->catdir($curdir, 'LocaleData'), 
-    File::Spec->catdir($updir, $updir, $updir, 'tp', 'LocaleData')) {
+    File::Spec->catdir($updir, $updir, $updir, 'tp', 'LocaleData'),
+    File::Spec->catdir($updir, $updir, 'tp', 'LocaleData')) {
     if (-d $locales_dir) {
       Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
       # the messages in this domain are not regenerated automatically, 
