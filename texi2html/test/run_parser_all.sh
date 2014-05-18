@@ -295,7 +295,8 @@ do
           sed -i -e 's/WIDTH="\([0-9]*\)\([0-9]\)"/WIDTH="100"/' -e 's/HEIGHT="\([0-9]*\)\([0-9]\)"/HEIGHT="\10"/' "$file"
          fi
         done
-        rm -f "${outdir}$dir/"*".aux"  "${outdir}$dir/"*"_images.out"
+        # entries order in *_images.pl is not reproducible
+        rm -f "${outdir}$dir/"*".aux"  "${outdir}$dir/"*"_images.out" "${outdir}$dir/"*"_images.pl"
       fi
       if [ "$use_latex2html" = 'yes' -o "$use_tex4ht" = 'yes' ]; then
         rm -f "${outdir}$dir/$basename.1"

@@ -1,3 +1,18 @@
+Regenerate tests:
+sh autogen.sh
+./configure
+make
+make check-local
+cd test
+./manage_test_archives.sh get
+cd ..
+tar xzvf t2h_tests_files.tar.gz
+cd test
+./base_tests
+./long_tests
+./tex_html_tests 
+make copy-tests copy-tex-html
+
 This file contains a list of things yet to be done:
 
 Note

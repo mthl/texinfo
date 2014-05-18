@@ -581,8 +581,9 @@ sub store_cache
         main::document_error ("l2h: could not open $docu_rdir$l2h_cache_file for writing: $!");
         return;
     }
-    while (($key, $value) = each %l2h_cache)
-    {
+    #while (($key, $value) = each %l2h_cache)
+    foreach my $key(sort(keys(%l2h_cache))) {
+        $value = $l2h_cache{$key};
         # escape stuff
         $key =~ s|/|\\/|g;
         $key =~ s|\\\\/|\\/|g;

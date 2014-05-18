@@ -28,8 +28,8 @@ fi
 
 [ -d $basename ] && rm -rf $basename
 mkdir $basename
-echo "perl -w -x $srcdir/../../texi2html.pl --set-init-var 'TEST 1' --set-init-var 'L2H_TMP $tmp_dir' --conf-dir $srcdir/../../examples --l2h --l2h-file $srcdir/../../examples/l2h.init --expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2" >> $logfile
-perl -w -x $srcdir/../../texi2html.pl --set-init-var 'TEST 1' --set-init-var "L2H_TMP $tmp_dir" --conf-dir $srcdir/../../examples --l2h --l2h-file $srcdir/../../examples/l2h.init --expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2
+echo "perl -w -x $srcdir/../../texi2html.pl --set-init-var 'TEST 1' --set-init-var 'L2H_CLEAN 0' --set-init-var 'L2H_TMP $tmp_dir' --conf-dir $srcdir/../../examples --l2h --l2h-file $srcdir/../../examples/l2h.init --expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2" >> $logfile
+perl -w -x $srcdir/../../texi2html.pl --set-init-var 'TEST 1' --set-init-var 'L2H_CLEAN 0' --set-init-var "L2H_TMP $tmp_dir" --conf-dir $srcdir/../../examples --l2h --l2h-file $srcdir/../../examples/l2h.init --expand tex --out $basename/ $srcdir/../manuals/mini_ker.texi $srcdir/../formatting/tex.texi >> $stdout_file 2>$basename/${basename}.2
 
 return_code=0
 ret=$?
@@ -44,7 +44,8 @@ else
    's/with LaTeX2HTML.*/with LaTeX2HTML/' "$basename/"*"_l2h.html"
   sed -i -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$basename/"*"_l2h_images.pl"  "$basename/"*"_l2h_labels.pl"
   sed -i -e 's/WIDTH="\([0-9]*\)\([0-9]\)"/WIDTH="100"/' -e 's/HEIGHT="\([0-9]*\)\([0-9]\)"/HEIGHT="12"/' "$basename/"*"_l2h_images.pl" "$basename/"*.html "$basename/"*-l2h_cache.pm
-  rm -f "$basename/"*".aux"  "$basename/"*"_l2h_images.out"
+  # order of entries in *_l2h_images is not reproducible
+  rm -f "$basename/"*".aux"  "$basename/"*"_l2h_images.out" "$basename/"*"_l2h_images.pl"
   for dir in ${basename}; do
     if [ -d $srcdir/${dir}_res ]; then
       diff -u --exclude=CVS --exclude=.svn --exclude='*.png' -r "$srcdir/${dir}_res" "${dir}" 2>>$logfile > "$diffs_dir/$dir.diff"

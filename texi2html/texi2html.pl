@@ -5205,6 +5205,7 @@ my @all_elements;           # sectioning elements (nodes and sections)
                             # in reading order. Each member is a reference
                             # on a hash which also appears in %nodes,
                             # @sections_list @nodes_list, @elements_list
+my @headings_list;          # headings in reading order.
 my @elements_list;          # all the resulting elements in document order
 my %sections;               # sections hash. The key is the section number
 my %headings;               # headings hash. The key is the heading number
@@ -6577,7 +6578,7 @@ sub cross_manual_links()
     my $style_kept = $Texi2HTML::Config::style;
     $Texi2HTML::Config::style = \&Texi2HTML::Config::T2H_GPL_style;
 
-    foreach my $key (keys(%nodes))
+    foreach my $key (sort(keys(%nodes)))
     {
         my $node = $nodes{$key};
         #print STDERR "CROSS_MANUAL:$key,$node\n";
@@ -7180,7 +7181,7 @@ sub rearrange_elements()
     print STDERR "# Resolve nodes directions\n" if ($T2H_DEBUG & $DEBUG_ELEMENTS);
     foreach my $node (@nodes_list)
     {
-        foreach my $direction (keys(%node_directions))
+        foreach my $direction (sort(keys(%node_directions)))
         {
             if (defined($node->{$direction}))
             {
@@ -7224,7 +7225,7 @@ sub rearrange_elements()
     # (have same node id) than an existing node
     foreach my $node (@nodes_with_unknown_directions)
     {
-        foreach my $direction (keys(%node_directions))
+        foreach my $direction (sort(keys(%node_directions)))
         { 
             if (defined($node->{$direction}) and !$node->{$node_directions{$direction}})
             {
@@ -7845,7 +7846,7 @@ sub rearrange_elements()
     }
 
     # use %sections and %headings to modify also the headings
-    foreach my $section (values(%sections), values(%headings))
+    foreach my $section (@sections_list, @headings_list)
     {
         if (get_conf('NEW_CROSSREF_STYLE') and ($section->{'cross'} =~ /\S/))
         {
@@ -8401,7 +8402,7 @@ sub do_names()
    # This seems right, however, as we don't want @refs or @footnotes
    # or @anchors within nodes, section commands or anchors.
    $global_pass = '2 node names';
-   foreach my $node (keys(%nodes))
+   foreach my $node (sort(keys(%nodes)))
    {
        my $texi = &$Texi2HTML::Config::heading_texi($nodes{$node}->{'tag'}, 
           $nodes{$node}->{'texi'}, undef);
@@ -9330,7 +9331,7 @@ sub finish_element($$$$)
 # write to files with name the node name for cross manual references.
 sub do_node_files()
 {
-    foreach my $key (keys(%nodes))
+    foreach my $key (sort(keys(%nodes)))
     {
         my $node = $nodes{$key};
         next unless ($node->{'node_file'});
@@ -9373,7 +9374,7 @@ sub do_node_files()
 # do redirection files for renamed nodes
 sub do_renamed_node_files()
 {
-    foreach my $old_node_name (keys(%Texi2HTML::Config::renamed_nodes))
+    foreach my $old_node_name (sort(keys(%Texi2HTML::Config::renamed_nodes)))
     {
         my $new_node_name = $Texi2HTML::Config::renamed_nodes{$old_node_name};
         $old_node_name = normalise_node($old_node_name);
@@ -12293,6 +12294,7 @@ sub do_index_summary_file($$)
 
     foreach my $letter_entries (@{$Texi2HTML::THISDOC{'index_letters_array'}->{$name}})
     {
+      #print STDERR "$name: $letter_entries->{'letter'}\n";
       foreach my $entry (@{$letter_entries->{'entries'}})
       {
         #my $entry = $entries->{$key};
@@ -13692,6 +13694,7 @@ sub scan_structure($$$$;$)
                     $state->{'heading_element'} = $heading_ref;
                     push @{$state->{'place'}}, $heading_ref;
                     $headings{$heading_ref->{'sec_num'}} = $heading_ref;
+                    push @headings_list, $heading_ref;
                 }
                 add_prev ($text, $stack, "\@$macro" .  $cline);
                 last;
@@ -17245,6 +17248,7 @@ while(@input_files)
                             # in reading order. Each member is a reference
                             # on a hash which also appears in %nodes,
                             # @sections_list @nodes_list, @elements_list
+   @headings_list = ();     # headings in reading order.
    @elements_list = ();     # all the resulting elements in document order
    %sections = ();          # sections hash. The key is the section number
    %headings = ();          # headings hash. The key is the heading number
@@ -17348,7 +17352,7 @@ while(@input_files)
    }
    if (get_conf('IDX_SUMMARY'))
    {
-      foreach my $entry (keys(%index_names))
+      foreach my $entry (sort(keys(%index_names)))
       {
          do_index_summary_file($entry, $docu_name);
       }

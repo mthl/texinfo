@@ -15,4 +15,5 @@ formats_titles formats_titles.texi
 # -debug 255
 comments_info comments.texi --info -U texi2html
 delcomment delcomment.texi
+# result is incorrect, in menu end of line is swallowed.
 #line_commands_comment line_commands_comment.texi
