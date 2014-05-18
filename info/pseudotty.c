@@ -24,7 +24,7 @@
 #include <fcntl.h>
 #include <sys/ioctl.h>
 
-int master, slave;
+int master;
 char *name;
 char dummy; 
 
@@ -32,22 +32,24 @@ main ()
 {
   /* Note getpt is a GNU extension.  grantpt, ptsname, unlockpt are
      specified in POSIX.1-2001. */
+  error (0, 0, "getting pty master fd");
   master = getpt();
   if (master == -1)
     exit (1);
 
+  error (0, 0, "unlocking slave device");
   if (grantpt (master) < 0 || unlockpt (master) < 0)
     exit (1);
+  error (0, 0, "getting file name of slave device...");
   name = ptsname (master);
   if (!name)
     exit (1);
 
-  slave = open (name, O_RDWR);
-  if (slave == -1)
-    exit (1);
+  error (0, 0, "%s", name);
   printf ("%s\n", name);
   fclose (stdout);
 
+  error (0, 0, "entering main loop");
   while (read (master, &dummy, 1) > 0)
     ;
 }
