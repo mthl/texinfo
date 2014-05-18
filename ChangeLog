@@ -6,6 +6,9 @@
 	for stdout.
 	* install-info/tests/Makefile.am (EXTRA_DIST): use 
 	the correct file ii-0054-input-info-file.gz.
+	* tp/texi2any.pl: put installation directory last in @INC,
+	in order to have -I perl arguments take precedence.  Report
+	from Aharon Robbins.
 
 2014-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
 

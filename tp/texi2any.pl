@@ -79,7 +79,13 @@ BEGIN
                                           'share', 'texinfo');
     }
     $lib_dir = $texinfolibdir;
-    unshift @INC, $texinfolibdir;
+    #unshift @INC, $texinfolibdir;
+    # the directory where modules are searched for is placed last
+    # in @INC, as we do not want to take precedence over perl -I 
+    # arguments.  It unfortunatly means that system directories are 
+    # searched for before the installation directories.  This could
+    # cause trouble if the modules are separately installed.
+    push @INC, $texinfolibdir;
   }
 
   # '@USE_EXTERNAL_LIBINTL @ and similar are substituted in the
