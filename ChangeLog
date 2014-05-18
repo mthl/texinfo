@@ -1,5 +1,40 @@
 2014-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/dir.c (build_dir_node): Unused local variable deleted.
+	* info/indices.c (info_next_index_match): Unused local variable
+	deleted.
+	* info/info-utils.c (info_parse_node): Return 0 if nothing passed.
+	(scan_reference_label): Unused local variable deleted.
+	(scan_node_contents): Unused local variable deleted.
+	* info/info.c (get_initial_file, add_initial_nodes)
+	(allfiles_create_node, main): Unused local variables deleted.
+	(node_file_name): Deleted.
+	* info/man.c (xrefs_of_manpage): Unused variables deleted.
+	(locate_manpage_xref): Deleted.
+	* info/nodemenu.c (select_visited_node): Unused local variable
+	removed.
+	* info/nodes.c (get_nodes_of_info_file, get_file_character_encoding)
+	(set_tag_nodelen, info_node_of_tag):
+	Ununsed local variables removed.
+	(get_filename_and_nodename): Specify return type as void.
+	* info/session.c (begin_multiple_window_session)
+	(info_scroll_forward_set_window, info_scroll_backward_set_window)
+	(info_scroll_backward_page_only_set_window)
+	(info_menu_or_ref_item, info_move_to_xref, info_follow_menus): Unused
+	local variables deleted.
+	(info_display_file_info): Use "%ld" instead of "%d".
+	(dump_nodes_to_file): Use an initialized variable to print an
+	error message.  Unused variable deleted.
+	* info/search.c (regexp_search, find_node_in_binding): Unused
+	variables deleted.
+	* info/terminal.c (terminal_prep_terminal): Always return an
+	explicit value.
+	* info/window.c (window_make_modeline): Use "%ld" instead of "%d" in
+	format argument to sprintf.
+	(process_node_text): Unused variable deleted.
+
+2014-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t (all files): Set srcdir variable before including any shell
 	snippets.  Suggested by Patrice Dumas.  Other fixes for tests in
 	out-of-source builds.

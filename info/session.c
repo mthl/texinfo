@@ -94,7 +94,6 @@ begin_multiple_window_info_session (REFERENCE **references, char *error)
 {
   register int i;
   WINDOW *window = 0;
-  FILE_BUFFER *fb;
 
   for (i = 0; references && references[i]; i++)
     {
@@ -1234,8 +1233,6 @@ DECLARE_INFO_COMMAND (info_scroll_backward, _("Scroll backward in this window"))
 DECLARE_INFO_COMMAND (info_scroll_forward_set_window,
                       _("Scroll forward in this window and set default window size"))
 {
-  int lines;
-
   if (info_explicit_arg)
     default_window_size = count;
 
@@ -1247,8 +1244,6 @@ DECLARE_INFO_COMMAND (info_scroll_forward_set_window,
 DECLARE_INFO_COMMAND (info_scroll_backward_set_window,
                       _("Scroll backward in this window and set default window size"))
 {
-  int lines;
-
   if (info_explicit_arg)
     default_window_size = count;
 
@@ -1289,8 +1284,6 @@ DECLARE_INFO_COMMAND (info_scroll_backward_page_only, _("Scroll backward in this
 DECLARE_INFO_COMMAND (info_scroll_forward_page_only_set_window,
                       _("Scroll forward in this window staying within node and set default window size"))
 {
-  int lines;
-
   if (info_explicit_arg)
     default_window_size = count;
 
@@ -1302,8 +1295,6 @@ DECLARE_INFO_COMMAND (info_scroll_forward_page_only_set_window,
 DECLARE_INFO_COMMAND (info_scroll_backward_page_only_set_window,
                       _("Scroll backward in this window staying within node and set default window size"))
 {
-  int lines;
-
   if (info_explicit_arg)
     default_window_size = count;
 
@@ -2535,7 +2526,6 @@ info_menu_or_ref_item (WINDOW *window, unsigned char key,
         info_error (_("The reference disappeared! (%s)."), line);
       else
         {
-          NODE *orig = window->node;
           info_select_reference (window, entry);
         }
 
@@ -2623,13 +2613,9 @@ DECLARE_INFO_COMMAND (info_visit_menu,
 static int
 info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
 {
-  long firstmenu, firstxref;
-  long nextmenu, nextxref;
   long placement = -1;
-  long start = 0;
   NODE *node = window->node;
   REFERENCE **ref;
-  int nextref;
 
   /* Fail if there are no references in node */
   if (!node->references)
@@ -2818,7 +2804,6 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
 
   for (; *menus; menus++)
     {
-      static char *first_arg = NULL;
       REFERENCE *entry;
       char *arg = *menus; /* Remember the name of the menu entry we want. */
 
@@ -3448,7 +3433,6 @@ dump_nodes_to_file (REFERENCE **references,
 {
   int i;
   FILE *output_stream;
-  char *filename;
   
   if (!references)
     return;
@@ -3478,7 +3462,8 @@ dump_nodes_to_file (REFERENCE **references,
                                output_stream,
 			       flags & DUMP_SUBNODES) == DUMP_SYS_ERROR)
 	{
-	  info_error (_("error writing to %s: %s"), filename, strerror (errno));
+	  info_error (_("error writing to %s: %s"), output_filename,
+                      strerror (errno));
 	  exit (EXIT_FAILURE);
 	}
     }
@@ -3486,7 +3471,7 @@ dump_nodes_to_file (REFERENCE **references,
   if (output_stream != stdout)
     fclose (output_stream);
 
-  debug (1, (_("closing %s"), filename));
+  debug (1, (_("closing %s"), output_filename));
 }
 
 /* A place to remember already dumped nodes. */
@@ -5186,9 +5171,9 @@ DECLARE_INFO_COMMAND (info_display_file_info,
   if (fname)
     {
       int line = window_line_of_point (window);
-      window_message_in_echo_area ("File name: %s, line %d of %lu (%d%%)",
+      window_message_in_echo_area ("File name: %s, line %d of %ld (%ld%%)",
 				   fname, line,
-				   (unsigned long) window->line_count,
+				   window->line_count,
 				   line * 100 / window->line_count);
       free (fname);
     }

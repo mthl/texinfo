@@ -1108,11 +1108,11 @@ window_make_modeline (WINDOW *window)
 
         /* Special internal windows have no filename. */
         if (!parent && !*filename)
-          sprintf (modeline, _("-%s---Info: %s, %d lines --%s--"),
+          sprintf (modeline, _("-%s---Info: %s, %ld lines --%s--"),
                    (window->flags & W_NoWrap) ? "$" : "-",
                    nodename, window->line_count, location_indicator);
         else
-          sprintf (modeline, _("-%s%s-Info: (%s)%s, %d lines --%s--"),
+          sprintf (modeline, _("-%s%s-Info: (%s)%s, %ld lines --%s--"),
                    (window->flags & W_NoWrap) ? "$" : "-",
                    (node && (node->flags & N_IsCompressed)) ? "zz" : "--",
                    parent ? parent : filename,
@@ -1501,9 +1501,7 @@ process_node_text (WINDOW *win, char *start,
         {
           /* The printed representation of this character extends into
              the next line. */
-          int i;
-
-          for (i = 0; pl_chars < (win->width - 1); pl_chars++)
+          for (; pl_chars < (win->width - 1); pl_chars++)
             printed_line[pl_bytes++] = ' ';
 
           carried_over_chars = pchars;

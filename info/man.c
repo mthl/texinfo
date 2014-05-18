@@ -55,7 +55,6 @@ static char const * const exec_extensions[] = {
 static char const * const exec_extensions[] = { "", NULL };
 #endif
 
-static long locate_manpage_xref (NODE *node, long int start, int dir);
 static REFERENCE **xrefs_of_manpage (NODE *node);
 static char *read_from_fd (int fd);
 static char *get_manpage_contents (char *pagename);
@@ -567,7 +566,6 @@ xrefs_of_manpage (NODE *node)
     {
       register int name, name_end;
       int section, section_end;
-      int name_len, section_len;
 
       for (name = position; name > 0; name--)
         if (whitespace (s.buffer[name]))
@@ -641,48 +639,4 @@ skip:
     }
 
   return refs;
-}
-
-static long
-locate_manpage_xref (NODE *node, long int start, int dir)
-{
-  REFERENCE **refs;
-  long position = -1;
-
-  refs = xrefs_of_manpage (node);
-
-  if (refs)
-    {
-      register int i, count;
-      REFERENCE *entry;
-
-      for (i = 0; refs[i]; i++);
-      count = i;
-
-      if (dir > 0)
-        {
-          for (i = 0; (entry = refs[i]); i++)
-            if (entry->start > start)
-              {
-                position = entry->start;
-                break;
-              }
-        }
-      else
-        {
-          for (i = count - 1; i > -1; i--)
-            {
-              entry = refs[i];
-
-              if (entry->start < start)
-                {
-                  position = entry->start;
-                  break;
-                }
-            }
-        }
-
-      info_free_references (refs);
-    }
-  return position;
 }

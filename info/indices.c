@@ -369,7 +369,6 @@ DECLARE_INFO_COMMAND (info_next_index_match,
 {
   register int i;
   int partial, dir;
-  NODE *node;
   size_t search_len;
   
   /* If there is no previous search string, the user hasn't built an index

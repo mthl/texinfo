@@ -119,7 +119,7 @@ create_dir_buffer (void)
 static NODE *
 build_dir_node (void)
 {
-  int path_index, update_tags;
+  int path_index;
   char *this_dir;
   NODE *node;
 

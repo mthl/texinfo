@@ -98,7 +98,6 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
 {
   static char *previous_regexp = NULL;
   static char *previous_content = NULL;
-  static long previous_start, previous_end;
   static int was_insensitive = 0;
   static regex_t preg;
   static regmatch_t *matches;
@@ -189,8 +188,6 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
       char saved_char;
 
       previous_content = binding->buffer;
-      previous_start = start;
-      previous_end = end;
       saved_char = previous_content[end];
       previous_content[end] = '\0';
 
@@ -598,38 +595,31 @@ long
 find_node_in_binding (char *nodename, SEARCH_BINDING *binding)
 {
   long position;
-  int offset, namelen;
-  SEARCH_BINDING tmp_search;
+  int offset;
+  SEARCH_BINDING s;
 
-  namelen = strlen (nodename);
+  s.buffer = binding->buffer;
+  s.start = binding->start;
+  s.end = binding->end;
+  s.flags = 0;
 
-  tmp_search.buffer = binding->buffer;
-  tmp_search.start = binding->start;
-  tmp_search.end = binding->end;
-  tmp_search.flags = 0;
-
-  while ((position = find_node_separator (&tmp_search)) != -1)
+  while ((position = find_node_separator (&s)) != -1)
     {
       char *nodename_start;
       char *read_nodename;
-      long nodename_len;
 
-      tmp_search.start = position;
-      tmp_search.start += skip_node_separator
-        (tmp_search.buffer + tmp_search.start);
+      s.start = position;
+      s.start += skip_node_separator (s.buffer + s.start);
 
-      offset = string_in_line
-        (INFO_NODE_LABEL, tmp_search.buffer + tmp_search.start);
+      offset = string_in_line (INFO_NODE_LABEL, s.buffer + s.start);
 
       if (offset == -1)
         continue;
 
-      tmp_search.start += offset;
-      tmp_search.start += skip_whitespace (tmp_search.buffer + tmp_search.start);
-
-      nodename_start = tmp_search.buffer + tmp_search.start;
-      nodename_len = read_quoted_string (nodename_start, "\n\t,",
-                                         &read_nodename);
+      s.start += offset;
+      s.start += skip_whitespace (s.buffer + s.start); 
+      nodename_start = s.buffer + s.start;
+      read_quoted_string (nodename_start, "\n\t,", &read_nodename);
       if (!read_nodename)
         return -1;
 

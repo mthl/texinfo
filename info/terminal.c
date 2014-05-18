@@ -700,7 +700,7 @@ terminal_prep_terminal (void)
   if (terminal_prep_terminal_hook)
     {
       (*terminal_prep_terminal_hook) ();
-      return;
+      return 1;
     }
 
   terminal_begin_using_terminal ();

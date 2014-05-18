@@ -310,7 +310,6 @@ DECLARE_INFO_COMMAND (select_visited_node,
 {
   char *line;
   NODE *node;
-  REFERENCE **menu;
 
   node = get_visited_nodes (NULL);
   free (node);

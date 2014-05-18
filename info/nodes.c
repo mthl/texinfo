@@ -189,7 +189,7 @@ get_nodes_of_info_file (FILE_BUFFER *file_buffer)
 
   while ((nodestart = find_node_separator (&binding)) != -1)
     {
-      int start, end;
+      int start;
       char *nodeline;
       NODE *entry;
       int anchor = 0;
@@ -770,8 +770,6 @@ get_file_character_encoding (FILE_BUFFER *fb)
   long int enc_start, enc_end;
   char *enc_string;
 
-  char **encoding_name;
-
   /* See if there is a local variables section in this info file. */
   binding.buffer = fb->contents;
   binding.start = fb->filesize;
@@ -896,7 +894,7 @@ info_reload_file_buffer_contents (FILE_BUFFER *fb)
 /* Functions for node creation and retrieval. */
 
 static long get_node_length (SEARCH_BINDING *binding);
-static int get_filename_and_nodename (int flag, WINDOW *window,
+static void get_filename_and_nodename (int flag, WINDOW *window,
                                       char **filename, char **nodename,
                                       char *filename_in, char *nodename_in);
 static void node_set_body_start (NODE *node);
@@ -1019,7 +1017,7 @@ info_get_node (char *filename_in, char *nodename_in, int flag)
 }
 
 /* Set default values.  Output values should be freed by caller. */
-static int
+static void
 get_filename_and_nodename (int flag, WINDOW *window,
                            char **filename, char **nodename,
                            char *filename_in, char *nodename_in)
@@ -1188,15 +1186,11 @@ adjust_nodestart (FILE_BUFFER *fb, NODE *node)
 static void
 set_tag_nodelen (FILE_BUFFER *subfile, NODE *tag)
 {
-  int min, max;
   SEARCH_BINDING node_body;
-  char *buff_end;
-
-  buff_end = subfile->contents + subfile->filesize;
 
   node_body.buffer = tag->contents;
   node_body.start = 0;
-  node_body.end = buff_end - node_body.buffer;
+  node_body.end = subfile->contents + subfile->filesize - node_body.buffer;
   node_body.flags = 0;
   tag->nodelen = get_node_length (&node_body);
 }
@@ -1235,21 +1229,14 @@ info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
   /* If not an anchor and contents of node are not available: */
   if (tag->nodelen != 0 && !tag->contents)
     {
-      char *new_contents;
-      long new_nodelen;
-
       /* If TAG->nodelen hasn't been calculated yet, then we aren't
          in a position to trust the entry pointer.  Adjust things so
          that ENTRY->nodestart gets the exact address of the start of
          the node separator which starts this node.  If we cannot
          do that, the node isn't really here. */
       if (tag->nodelen == -1)
-        {
-          char *node_sep;
-
-          if (!adjust_nodestart (subfile, tag))
-            return NULL; /* Node not found. */
-        }
+        if (!adjust_nodestart (subfile, tag))
+          return NULL; /* Node not found. */
 
       /* Right after the separator. */
       tag->contents = subfile->contents + tag->nodestart;

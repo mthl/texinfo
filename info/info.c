@@ -160,17 +160,6 @@ static void info_short_help (void);
 static void init_messages (void);
 
 
-static char *
-node_file_name (NODE *node)
-{
-  if (node->parent)
-    return node->parent;
-  else if (node->filename
-	   && (!is_dir_name (filename_non_directory (node->filename))))
-    return node->filename;
-  return 0;
-}
-
 /* Get the initial Info file, either by following menus from "(dir)Top",
    or what the user specifed with values in filename. */
 static char *
@@ -180,7 +169,6 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
 
   if (!filename)
     {
-      NODE *dir_node;
       REFERENCE *entry = 0;
 
       /* If there are any more arguments, the initial file is the
@@ -268,7 +256,6 @@ static void
 add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
                    char **error)
 {
-  NODE *initial_node;
   char *node_via_menus;
   int i;
 
@@ -430,7 +417,6 @@ allfiles_create_node (char *term, REFERENCE **fref)
 {
   int i;
   struct text_buffer text;
-  FILE_BUFFER *fb;
   
   text_buffer_init (&text);
 
@@ -796,8 +782,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
          to what they want. */
       if (index_search_p && initial_file && !user_output_filename)
         {
-          NODE *initial_node;
-          
           initial_fb = info_find_file (initial_file);
           if (initial_fb && index_entry_exists (initial_fb,
                                                 index_search_string))

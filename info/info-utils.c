@@ -86,7 +86,7 @@ info_parse_node (char *string, int flag)
 
   /* Special case of nothing passed.  Return nothing. */
   if (!string || !*string)
-    return;
+    return 0;
 
   if (flag != PARSE_NODE_DFLT)
     length = skip_whitespace_and_newlines (string);
@@ -1103,7 +1103,6 @@ scan_reference_label (char *label, long label_len, long start_of_reference,
   REFERENCE *entry;
   char *label_ptr;
   char *nl_ptr;
-  int leading_whitespace;
 
   /* We definitely have a reference by this point.  Create
      REFERENCE entity. */
@@ -1461,7 +1460,6 @@ search_again:
          we position the cursor on the * when moving between references. */
       int start_of_reference; 
 
-      int colon_offset;
       REFERENCE *entry;
       char *match;
 
