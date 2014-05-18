@@ -1,3 +1,10 @@
+2014-05-18  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/Converter.pm (output): warn about 
+	incompatibilities between output and split only if split.
+	* tp/tests/Makefile.am, tp/tests/reference/, tp/tests/t/: add tests
+	for stdout.
+
 2014-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.c (process_node_text): Formatting and tweaks to

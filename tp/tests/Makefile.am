@@ -43,9 +43,13 @@ copy-tex-html:
 clean-tests:
 	$(srcdir)/parser_tests.sh -clean $(base_tests) $(long_tests) $(tex_html_tests)
 
+other_tests = \
+	t/stdout.sh \
+	t/stdout_split.sh
+
 old_test_scripts = parser_base_tests long_tests.sh tex_html_tests.sh
 #TESTS = $(old_test_scripts)
-TESTS = $(one_test_files_generated_list)
+TESTS = $(one_test_files_generated_list) $(other_tests)
 
 long-checks long-check: all
 	$(MAKE) $(AM_MAKEFLAGS) check LONG_TESTS=yes
@@ -91,4 +95,7 @@ coverage_macro-cr.texi: coverage_macro.texi
 
 EXTRA_DIST = run_parser_all.sh parser_tests.sh \
  $(old_test_scripts) $(one_test_files_generated_list) coverage_macro.texi \
- coverage_macro-cr.texi
+ coverage_macro-cr.texi $(other_tests) reference
+
+dist-hook:
+	rm -rf `find $(distdir)/reference -name .svn`

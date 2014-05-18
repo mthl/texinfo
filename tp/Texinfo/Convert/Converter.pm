@@ -789,9 +789,11 @@ sub output($$)
       and ($Texinfo::Common::null_device_file{$self->get_conf('OUTFILE')}
            or $self->get_conf('OUTFILE') eq '-'
            or $self->get_conf('OUTFILE') eq '')) {
-    $self->document_warn(sprintf($self->__("%s: output incompatible with split"),
-                                 $self->get_conf('OUTFILE')));
-    $self->force_conf('SPLIT', 0);
+    if ($self->get_conf('SPLIT')) {
+      $self->document_warn(sprintf($self->__("%s: output incompatible with split"),
+                                   $self->get_conf('OUTFILE')));
+      $self->force_conf('SPLIT', 0);
+    }
   }
   if ($self->get_conf('SPLIT')) {
     $self->set_conf('NODE_FILES', 1);

@@ -84,6 +84,9 @@ if [ z"$1" != 'z' ]; then
   logfile="$one_test_logs_dir/$test_name.log"
 fi
 
+# The script is always run in a test directory.  If srcdir_test is
+# set, it should be set to the test directory name.  In this case
+# testdir is the test directory parent, in srcdir.
 if [ "z$srcdir_test" = 'z' ]; then
   testdir=.
   srcdir_test=.
@@ -94,6 +97,8 @@ else
      testdir=../$srcdir
   fi
 fi
+
+#echo "testdir $testdir srcdir_test $srcdir_test" 1>&2
 
 base_results_dir="$testdir/$srcdir_test"
 #test_file='tests.txt'
