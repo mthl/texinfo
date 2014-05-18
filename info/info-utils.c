@@ -471,11 +471,12 @@ static struct text_buffer printed_rep = {}; /* Initialize with all zeroes. */
 
 /* Return pointer to string that is the printed representation of character
    (or other logical unit) at ITER if it were printed at screen column
-   PL_CHARS.  Update mb_len (mbi_cur (*ITER)) if byte length is different.
-   If ITER points at an end-of-line character, set *DELIM to this character.
-   *PCHARS gets the number of screen columns taken up by outputting the return
-   value, and *PBYTES the number of bytes in returned string.  Return value is
-   not null-terminated.  Return value must not be freed by caller. */
+   PL_CHARS.  Use ITER_SETBYTES (info-utils.h) on ITER if byte length is
+   different.  If ITER points at an end-of-line character, set *DELIM to this
+   character.  *PCHARS gets the number of screen columns taken up by
+   outputting the return value, and *PBYTES the number of bytes in returned
+   string.  Return value is not null-terminated.  Return value must not be
+   freed by caller. */
 char *
 printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
                         size_t *pchars, size_t *pbytes) 
@@ -543,18 +544,18 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
       text_buffer_add_char (rep, *cur_ptr | 0x40);
       return text_buffer_base (rep);
     }
-  /* Show META-x as "\0370".  */
+  /* Show META-x as "\370".  */
   else if (*cur_ptr > printable_limit)
     {
-      *pchars = 5;
-      *pbytes = cur_len;
+      *pchars = 4;
+      *pbytes = 4;
       text_buffer_printf (rep, "\\%0o", *cur_ptr);
       return text_buffer_base (rep);
     }
   else if (*cur_ptr == DEL)
     {
       *pchars = 2;
-      *pbytes = cur_len;
+      *pbytes = 2;
       text_buffer_add_char (rep, '^');
       text_buffer_add_char (rep, '?');
       return text_buffer_base (rep);
@@ -683,12 +684,10 @@ static void
 init_output_stream (FILE_BUFFER *fb)
 {
   init_conversion (fb);
+  output_bytes_difference = 0;
 
   if (rewrite_p)
-    {
-      text_buffer_init (&output_buf);
-      output_bytes_difference = 0;
-    }
+    text_buffer_init (&output_buf);
 }
 
 /* Copy bytes from input to output with no encoding conversion. */
@@ -860,7 +859,7 @@ copy_converting (long n)
          string.  Note that mixing iconv_to_output and iconv_to_utf8
          on the same input may not work well if the input encoding
          is stateful.  We could deal with this by always converting to
-         UTF-8 first, then we could mix conversions on the UTF-8 stream. */
+         UTF-8 first; then we could mix conversions on the UTF-8 stream. */
 
       /* We want to read exactly one character.  Do this by
          restricting size of output buffer. */
@@ -890,8 +889,7 @@ copy_converting (long n)
   /* Must cast because the difference between unsigned size_t is always
      positive. */
   output_bytes_difference +=
-    (signed long) n
-    - (signed long) (text_buffer_off (&output_buf) - output_start);
+    n - ((signed long) text_buffer_off (&output_buf) - output_start);
 
   return extra_at_end;
 #endif /* HAVE_ICONV */
@@ -1096,7 +1094,8 @@ parse_top_node_line (NODE *node)
     }
 }
 
-/* Output reference label and create REFERENCE object. */
+/* Output reference label and create REFERENCE object.  inptr should be
+   on the first non-whitespace byte of label when this function is called. */
 static REFERENCE *
 scan_reference_label (char *label, long label_len, long start_of_reference,
                       int found_menu_entry)
@@ -1143,6 +1142,11 @@ scan_reference_label (char *label, long label_len, long start_of_reference,
       entry->start = start_of_reference;
     }
 
+#ifdef QUOTE_NODENAMES
+  if (inptr[0] == '\177')
+    skip_input (1);
+#endif
+
   /* Write text of label.  If there is a newline in the middle of
      a reference label, turn off underling until text starts again. */
   while (nl_ptr = strchr (label_ptr, '\n'))
@@ -1164,6 +1168,11 @@ scan_reference_label (char *label, long label_len, long start_of_reference,
   /* Output rest of label */
   copy_input_to_output (label + strlen (label) - label_ptr);
   underlining_off ();
+
+#ifdef QUOTE_NODENAMES
+  if (inptr[0] == '\177')
+    skip_input (1);
+#endif
 
   /* Colon after label. */
   skip_input (1);

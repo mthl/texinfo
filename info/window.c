@@ -1424,8 +1424,8 @@ info_tag (mbi_iterator_t iter, size_t *plen)
      ll_num -- Number of processed logical lines (starts from 0);
      pl_start -- Offset of start of physical line from START;
      printed_line -- Collected line contents, ready for output;
-     pl_bytes -- Number of bytes in prt_line;
-     pl_chars -- Number of characters in prt_line.
+     pl_bytes -- Number of bytes in printed_line;
+     pl_chars -- Number of characters in printed_line.
 
    If FUN returns non zero, process_node_text stops processing and returns
    immediately.

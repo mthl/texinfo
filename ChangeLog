@@ -1,3 +1,15 @@
+2014-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t (all files): Set srcdir variable before including any shell
+	snippets.  Suggested by Patrice Dumas.  Other fixes for tests in
+	out-of-source builds.
+
+	* info/info-utils.c (printed_representation): Corrected output lengths
+	for META-x and DEL.  Function comment corrected.
+	(init_output_stream): Always initialize output_bytes_difference.
+	(copy_converting): Remove unnecessary cast.
+	(scan_reference_label): [QUOTE_NODENAMES] Skip quoting bytes properly.
+
 2014-05-18  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Convert/Converter.pm (output): warn about 
