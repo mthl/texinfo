@@ -4,6 +4,8 @@
 	incompatibilities between output and split only if split.
 	* tp/tests/Makefile.am, tp/tests/reference/, tp/tests/t/: add tests
 	for stdout.
+	* install-info/tests/Makefile.am (EXTRA_DIST): use 
+	the correct file ii-0054-input-info-file.gz.
 
 2014-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
 

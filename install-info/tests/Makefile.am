@@ -236,7 +236,7 @@ ii-0053-input-info-file \
 ii-0053-expected-dir-file \
 ii-0053-test \
 ii-0054-input-dir-file \
-ii-0054-input-info-file \
+ii-0054-input-info-file.gz \
 ii-0054-expected-dir-file \
 ii-0054-test \
 README
