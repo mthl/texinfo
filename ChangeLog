@@ -4,6 +4,9 @@
 	stdin, stdout and stderr.
 	* info/t/README: File added.
 
+	* info/info-utils.c (printed_representation): Proper cursor
+	positioning for multi-column characters.
+
 2014-05-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodemenu.c (get_visited_nodes): Don't reuse a local

@@ -28,6 +28,7 @@
 #if HAVE_ICONV
 # include <iconv.h>
 #endif
+#include <wchar.h>
 
 #ifdef __hpux
 #define va_copy(ap1,ap2) memcpy((&ap1),(&ap2),sizeof(va_list))
@@ -491,7 +492,9 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
 
   if (mb_isprint (mbi_cur (*iter)))
     {
-      *pchars = 1;
+      /* cur.wc gives a wchar_t object.  See mbiter.h in the
+         gnulib/lib directory. */
+      *pchars = wcwidth ((*iter).cur.wc);
       *pbytes = cur_len;
       return cur_ptr;
     }
