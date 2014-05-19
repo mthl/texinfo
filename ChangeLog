@@ -1,5 +1,15 @@
 2014-05-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodemenu.c (get_visited_nodes): Don't reuse a local
+	variable for an unrelated purpose.  Declared static.  Argument
+	not set to anything other than null in calling code removed.  All
+	callers updated.
+	* (select_visited_node): Don't free objects too early and always
+	free them before function exit.
+	* info/window.c (message_buffer_to_node): Comment changed.
+
+2014-05-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi (Invoking Info): Mention differences in groff
 	terminal output.
 

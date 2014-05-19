@@ -1304,7 +1304,7 @@ format_message_node (const char *format, ...)
   return node;
 }
 
-/* Convert the contents of the message buffer to a node. */
+/* Convert the contents of the message buffer to a newly allocated node. */
 NODE *
 message_buffer_to_node (void)
 {

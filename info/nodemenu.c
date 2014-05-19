@@ -27,7 +27,7 @@
    format, and key bindings will be incorrectly assigned until infokey
    is rerun. */
 
-NODE *get_visited_nodes (Function *filter_func);
+static NODE *get_visited_nodes (void);
 
 /* Return a line describing the format of a node information line. */
 static const char *
@@ -127,11 +127,9 @@ compare_strings (const void *entry1, const void *entry2)
 static char *nodemenu_nodename = "*Node Menu*";
 
 /* Produce an informative listing of all the visited nodes, and return it
-   in a node.  If FILTER_FUNC is non-null, it is a function which filters
-   which nodes will appear in the listing.  FILTER_FUNC takes an argument
-   of NODE, and returns non-zero if the node should appear in the listing. */
-NODE *
-get_visited_nodes (Function *filter_func)
+   in a newly allocated node. */
+static NODE *
+get_visited_nodes (void)
 {
   register int i, iw_index;
   INFO_WINDOW *info_win;
@@ -146,18 +144,18 @@ get_visited_nodes (Function *filter_func)
     {
       for (i = 0; i < info_win->nodes_index; i++)
         {
-          node = info_win->nodes[i];
+          NODE *history_node = info_win->nodes[i];
 
           /* We skip mentioning "*Node Menu*" nodes. */
-          if (internal_info_node_p (node) &&
+          if (internal_info_node_p (history_node) &&
               (strcmp (node->nodename, nodemenu_nodename) == 0))
             continue;
 
-          if (node && (!filter_func || (*filter_func) (node)))
+          if (history_node)
             {
               char *line;
 
-              line = format_node_info (node);
+              line = format_node_info (history_node);
               add_pointer_to_array (line, lines_index, lines, lines_slots, 20);
             }
         }
@@ -271,7 +269,7 @@ DECLARE_INFO_COMMAND (list_visited_nodes,
 
   /* Lines do not wrap in this window. */
   new->flags |= W_NoWrap;
-  node = get_visited_nodes (NULL);
+  node = get_visited_nodes ();
   name_internal_node (node, nodemenu_nodename);
 
 #if 0
@@ -311,23 +309,17 @@ DECLARE_INFO_COMMAND (select_visited_node,
   char *line;
   NODE *node;
 
-  node = get_visited_nodes (NULL);
-  free (node);
+  node = get_visited_nodes ();
 
-  line =
-    info_read_completing_in_echo_area (window,
+  line = info_read_completing_in_echo_area (window,
         _("Select visited node: "), node->references);
 
   window = active_window;
 
-  /* User aborts, just quit. */
   if (!line)
-    {
-      info_abort_key (window, 0, 0);
-      return;
-    }
-
-  if (*line)
+    /* User aborts, just quit. */
+    info_abort_key (window, 0, 0);
+  else if (*line)
     {
       REFERENCE *entry;
 
@@ -341,6 +333,7 @@ DECLARE_INFO_COMMAND (select_visited_node,
     }
 
   free (line);
+  free (node);
 
   if (!info_error_was_printed)
     window_clear_echo_area ();
