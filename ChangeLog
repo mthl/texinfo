@@ -2,6 +2,7 @@
 
 	* info/t/Init-intera.inc: Confirm pts file exists before redirecting
 	stdin, stdout and stderr.
+	* info/t/README: File added.
 
 2014-05-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
