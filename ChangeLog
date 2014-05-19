@@ -1,5 +1,10 @@
 2014-05-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/Init-intera.inc: Confirm pts file exists before redirecting
+	stdin, stdout and stderr.
+
+2014-05-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodemenu.c (get_visited_nodes): Don't reuse a local
 	variable for an unrelated purpose.  Declared static.  Argument
 	not set to anything other than null in calling code removed.  All
