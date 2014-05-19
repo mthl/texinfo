@@ -414,12 +414,18 @@ output to @var{file} instead of interactively viewed.  A value of
 @cindex @code{--raw-escapes} (@code{-R}) command line option
 @cindex colors in documents
 @cindex ANSI escape sequences in documents
-Do not remove ANSI escape sequences from documents.  Some versions of
-Groff (@pxref{Top,,,groff,Groff}) produce man pages with ANSI escape
-sequences for bold, italics, and underlined characters, and for
-colorized text.  By default, Info lets those escape sequences pass
-through directly to the terminal.  If your terminal does not support
-these escapes, use @code{--no-raw-escapes} to make Info remove them.
+Let ANSI escape sequences pass through directly to the terminal.  This option
+is on by default.  If your terminal does not support these escapes, use
+@code{--no-raw-escapes} to make Info remove them.
+
+@cindex man pages, bold and underline
+Some versions of Groff (@pxref{Top,,,groff,Groff}) produce man pages with
+ANSI escape sequences for bold, italics, and underlined characters, and for
+colorized text.  If your system @command{man} command uses a version of Groff
+that does this, and your terminal supports these sequences, Info will display
+any bold or underlined text in man pages.  Some versions of Groff can be
+configured to turn off the use of these sequences or use an ``overstrike''
+output format instead.  @xref{grotty,,,*manpages*}.
 
 @item --restore=@var{dribble-file}
 @cindex @code{--restore} command line option

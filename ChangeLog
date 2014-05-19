@@ -1,3 +1,8 @@
+2014-05-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Invoking Info): Mention differences in groff
+	terminal output.
+
 2014-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (scan_reference_label): Simpler logic for
