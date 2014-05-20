@@ -31,5 +31,6 @@ do
 	usleep 1000 2>/dev/null || sleep 1
 done
 
+echo "Redirecting standard file descriptors to $PTS_DEVICE."
 exec 0>$PTS_DEVICE 1<&0 2<&0
 

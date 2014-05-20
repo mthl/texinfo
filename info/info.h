@@ -77,26 +77,6 @@ typedef char *CFunction ();
 
 #define add_element_to_array add_pointer_to_array
 
-#if !defined (zero_mem) && defined (HAVE_MEMSET)
-#  define zero_mem(mem, length) memset (mem, 0, length)
-#endif /* !zero_mem && HAVE_MEMSET */
-
-#if !defined (zero_mem) && defined (HAVE_BZERO)
-#  define zero_mem(mem, length) bzero (mem, length)
-#endif /* !zero_mem && HAVE_BZERO */
-
-#if !defined (zero_mem)
-#  define zero_mem(mem, length) \
-  do {                                  \
-        register int zi;                \
-        register unsigned char *place;  \
-                                        \
-        place = (unsigned char *)mem;   \
-        for (zi = 0; zi < length; zi++) \
-          place[zi] = 0;                \
-      } while (0)
-#endif /* !zero_mem */
-
 
 /* A structure associating the nodes visited in a particular window. */
 typedef struct {

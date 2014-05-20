@@ -57,14 +57,10 @@ int show_malformed_multibyte_p = 0;
 void
 window_initialize_windows (int width, int height)
 {
-  the_screen = xmalloc (sizeof (WINDOW));
-  the_echo_area = xmalloc (sizeof (WINDOW));
-  windows = xmalloc (sizeof (WINDOW));
+  the_screen = xzalloc (sizeof (WINDOW));
+  the_echo_area = xzalloc (sizeof (WINDOW));
+  windows = xzalloc (sizeof (WINDOW));
   active_window = windows;
-
-  zero_mem (the_screen, sizeof (WINDOW));
-  zero_mem (the_echo_area, sizeof (WINDOW));
-  zero_mem (active_window, sizeof (WINDOW));
 
   /* None of these windows has a goal column yet. */
   the_echo_area->goal_column = -1;

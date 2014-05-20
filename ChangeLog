@@ -1,3 +1,11 @@
+2014-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.c (window_initialize_windows): Use xzalloc to
+	allocate an object with all bytes 0.
+	* info/info.h (zero_mem): Removed.
+
+	* info/t/Init-intera: Extra line of output reporting on progress.
+
 2014-05-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-intera.inc: Confirm pts file exists before redirecting
