@@ -242,19 +242,11 @@ extern void window_clear_echo_area (void);
 extern int window_physical_lines (NODE *node);
 
 /* Calculate a list of line starts for the node belonging to WINDOW.  The line
-   starts are pointers to the actual text within WINDOW->NODE. */
+   starts are offsets within WINDOW->node. */
 extern void calculate_line_starts (WINDOW *window);
 
 /* Given WINDOW, recalculate the line starts for the node it displays. */
 extern void recalculate_line_starts (WINDOW *window);
-
-/* Return the number of characters it takes to display CHARACTER on the
-   screen at HPOS. */
-extern int character_width (int character, int hpos);
-
-/* Return the number of characters it takes to display STRING on the
-   screen at HPOS. */
-extern int string_width (char *string, int hpos);
 
 /* Return the index of the line containing point. */
 extern int window_line_of_point (WINDOW *window);

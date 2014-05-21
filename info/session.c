@@ -961,7 +961,7 @@ DECLARE_INFO_COMMAND (info_end_of_line, _("Move to the end of the line"))
     {
       if (point_next_line (window))
         break; /* No next line. */
-    }   
+    }
 
   if (window->line_map.used == 0)
     return; /* This shouldn't happen. */

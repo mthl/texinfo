@@ -591,7 +591,7 @@ window_toggle_wrap (WINDOW *window)
       old_lines = window->line_count;
       old_pagetop = window->pagetop;
 
-      calculate_line_starts (window);
+      recalculate_line_starts (window);
 
       /* Make sure that point appears within this window. */
       window_adjust_pagetop (window);
@@ -730,69 +730,6 @@ window_unmark_chain (WINDOW *chain, int flag)
     win->flags &= ~flag;
 }
 
-/* Return the number of characters it takes to display CHARACTER on the
-   screen at HPOS. */
-int
-character_width (int character, int hpos)
-{
-  int printable_limit = 127;
-  int width = 1;
-
-  if (ISO_Latin_p)
-    printable_limit = 255;
-
-  if (character > printable_limit)
-    width = 3;
-  else if (iscntrl (character))
-    {
-      switch (character)
-        {
-        case '\r':
-        case '\n':
-          width = the_screen->width - hpos;
-          break;
-        case '\t':
-          width = ((hpos + 8) & 0xf8) - hpos;
-          break;
-        default:
-          width = 2;
-        }
-    }
-  else if (character == DEL)
-    width = 2;
-
-  return width;
-}
-
-/* Return the number of characters it takes to display STRING on the screen
-   at HPOS. */
-int
-string_width (char *string, int hpos)
-{
-  register int i, width, this_char_width;
-
-  for (width = 0, i = 0; string[i]; i++)
-    {
-      /* Support ANSI escape sequences for -R.  */
-      if (raw_escapes_p
-	  && string[i] == '\033'
-	  && string[i+1] == '['
-	  && isdigit (string[i+2])
-	  && (string[i+3] == 'm'
-	      || (isdigit (string[i+3]) && string[i+4] == 'm')))
-	{
-	  while (string[i] != 'm')
-	    i++;
-	  this_char_width = 0;
-	}
-      else
-	this_char_width = character_width (string[i], hpos);
-      width += this_char_width;
-      hpos += this_char_width;
-    }
-  return width;
-}
-
 /* Quickly guess the approximate number of lines that NODE would
    take to display.  This really only counts carriage returns. */
 int
@@ -830,9 +767,12 @@ _calc_line_starts (WINDOW *win, size_t pl_num, size_t ll_num,
   return 0;
 }
 
+/* Given WINDOW, recalculate the line starts for the node it displays. */
 void
-calculate_line_starts (WINDOW *window)
+recalculate_line_starts (WINDOW *window)
 {
+  free (window->line_starts);
+  free (window->log_line_no);
   window->line_starts = NULL;
   window->log_line_no = NULL;
   window->line_count = 0;
@@ -844,15 +784,6 @@ calculate_line_starts (WINDOW *window)
   process_node_text (window, window->node->contents, _calc_line_starts);
 
   window_line_map_init (window);
-}
-
-/* Given WINDOW, recalculate the line starts for the node it displays. */
-void
-recalculate_line_starts (WINDOW *window)
-{
-  free (window->line_starts);
-  free (window->log_line_no);
-  calculate_line_starts (window);
 }
 
 /* Return the number of first physical line corresponding to the logical
@@ -1263,8 +1194,9 @@ unmessage_in_echo_area (void)
   display_update_one_window (the_echo_area);
 }
 
+
 /* A place to build a message. */
-static struct text_buffer message_buffer;
+struct text_buffer message_buffer;
 
 /* Format MESSAGE_BUFFER with the results of printing FORMAT with ARG1 and
    ARG2. */
@@ -1334,25 +1266,6 @@ printf_to_message_buffer (const char *format, ...)
   va_start (ap, format);
   build_message_buffer (format, ap);
   va_end (ap);
-}
-
-/* Return the current horizontal position of the "cursor" on the most
-   recently output message buffer line. */
-int
-message_buffer_length_this_line (void)
-{
-  char *p;
-  
-  if (!message_buffer.base || !*message_buffer.base)
-    return 0;
-
-  p = strrchr (message_buffer.base, '\n');
-  if (p)
-    p++; /* Point at first character of line. */
-  else
-    p = message_buffer.base;
-  
-  return string_width (p, 0);
 }
 
 /* Pad STRING to COUNT characters by inserting blanks. */

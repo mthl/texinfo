@@ -1,5 +1,16 @@
 2014-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/infodoc.c (dump_map_to_message_buffer): Don't call
+	character_width or message_buffer_length_this_line.
+	* info/window.c (message_buffer_length_this_line, character_width)
+	(string_width): Removed.
+	(message_buffer): No longer static.
+
+	* info/window.c (calculate_line_starts): Merged into
+	recalculate_line_starts.
+
+2014-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/footnotes.c (info_get_or_remove_footnotes): If window
 	too small to split to show footnotes window, don't crash.
 

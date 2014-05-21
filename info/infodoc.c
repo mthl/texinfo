@@ -190,6 +190,8 @@ static char *info_help_keys_text[][2] = {
 
 static char *where_is_internal (Keymap map, InfoCommand *cmd);
 
+struct text_buffer message_buffer;
+
 void
 dump_map_to_message_buffer (char *prefix, Keymap map)
 {
@@ -209,6 +211,7 @@ dump_map_to_message_buffer (char *prefix, Keymap map)
         }
       else if (map[i].function)
         {
+          long start_of_line = message_buffer.off;
           register int last;
           char *doc, *name;
 
@@ -235,21 +238,24 @@ dump_map_to_message_buffer (char *prefix, Keymap map)
             {
               printf_to_message_buffer ("%s .. ", pretty_keyseq (new_prefix));
               new_prefix[prefix_len] = last - 1;
-              printf_to_message_buffer ("%s\t", pretty_keyseq (new_prefix));
+              printf_to_message_buffer ("%s", pretty_keyseq (new_prefix));
               i = last - 1;
             }
           else
-            printf_to_message_buffer ("%s\t", pretty_keyseq (new_prefix));
+            printf_to_message_buffer ("%s", pretty_keyseq (new_prefix));
+
+          while (message_buffer.off - start_of_line < 8)
+            printf_to_message_buffer (" ");
 
 #if defined (NAMED_FUNCTIONS)
           /* Print the name of the function, and some padding before the
              documentation string is printed. */
           {
             int length_so_far;
-            int desired_doc_start = 40; /* Must be multiple of 8. */
+            int desired_doc_start = 40;
 
             printf_to_message_buffer ("(%s)", name);
-            length_so_far = message_buffer_length_this_line ();
+            length_so_far = message_buffer.off - start_of_line;
 
             if ((desired_doc_start + strlen (doc))
                 >= (unsigned int) the_screen->width)
@@ -258,8 +264,8 @@ dump_map_to_message_buffer (char *prefix, Keymap map)
               {
                 while (length_so_far < desired_doc_start)
                   {
-                    printf_to_message_buffer ("\t");
-                    length_so_far += character_width ('\t', length_so_far);
+                    printf_to_message_buffer (" ");
+                    length_so_far++;
                   }
               }
           }
