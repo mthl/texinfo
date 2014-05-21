@@ -4,7 +4,15 @@
 	allocate an object with all bytes 0.
 	* info/info.h (zero_mem): Removed.
 
-	* info/t/Init-intera: Extra line of output reporting on progress.
+	* info/t/Init-intera.inc: Extra line of output reporting on progress.
+
+	* info/session.c (info_end_of_line): Get end of line from line_map
+	object.
+	* info/window.c (window_scan_line, window_compute_line_map):
+	Functions merged.
+	(add_line_map): Merged into the new window_compute_line_map.
+	(window_end_of_line): Removed.
+	* info/t/end-of-line.sh: New test.
 
 2014-05-19  Gavin Smith  <gavinsmith0123@gmail.com>
 

@@ -950,7 +950,29 @@ point_backward_word (WINDOW *win)
 /* Move WINDOW's point to the end of the true line. */
 DECLARE_INFO_COMMAND (info_end_of_line, _("Move to the end of the line"))
 {
-  int point = window_end_of_line (window);
+  long point;
+  if (!window->node)
+    return;
+
+  /* Find physical line with end of logical line in it. */
+  window_compute_line_map (window);
+  while (!_looking_at_newline (window,
+              window->line_map.map[window->line_map.used - 1]))
+    {
+      if (point_next_line (window))
+        break; /* No next line. */
+    }   
+
+  if (window->line_map.used == 0)
+    return; /* This shouldn't happen. */
+
+  if (window->line_map.used == 1)
+    /* Empty line - return offset of terminating newline. */
+    point = window->line_map.map[0];
+  else
+    /* Otherwise of last character in line. */
+    point = window->line_map.map[window->line_map.used - 2];
+
   if (point != window->point)
     {
       window->point = point;

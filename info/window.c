@@ -1601,31 +1601,24 @@ window_line_map_init (WINDOW *win)
   win->line_map.used = 0;
 }
 
-/* Scan the line number LINE in WIN.  If PHYS is true, stop scanning at
-   the end of physical line, i.e. at the newline character.  Otherwise,
-   stop it at the end of logical line.
-
-   If FUN is supplied, call it for each processed multibyte character.
-   Arguments of FUN are
-
-     closure  -  Function-specific data passed as 5th argument to
-                 window_scan_line;
-     cpos     -  Current point value;
-     replen   -  Size of screen representation of this character, in
-                 columns.  This value may be 0 (for ANSI sequences and
-		 info tags), or > 1 (for tabs).
- */
-int
-window_scan_line (WINDOW *win, int line, int phys,
-		  void (*fun) (void *closure, long cpos, size_t replen),
-		  void *closure)
+/* Compute the line map for the current line in WIN. */
+void
+window_compute_line_map (WINDOW *win)
 {
+  int line = window_line_of_point (win);
   mbi_iterator_t iter;
   int delim = 0;
   char *endp;
   const char *cur_ptr;
-  
-  if (!phys && line + 1 < win->line_count)
+
+  if (win->line_map.node == win->node && win->line_map.nline == line
+      && win->line_map.used)
+    return;
+  line_map_init (&win->line_map, win->node, line);
+  if (!win->node)
+    return;
+
+  if (line + 1 < win->line_count)
     endp = win->node->contents + win->line_starts[line + 1];
   else
     endp = win->node->contents + win->node->nodelen;
@@ -1645,44 +1638,9 @@ window_scan_line (WINDOW *win, int line, int phys,
       printed_representation (&iter, &delim, win->line_map.used,
                               &pchars, &pbytes);
 
-      if (fun)
-	fun (closure, cur_ptr - win->node->contents, pchars);
+      while (pchars--)
+        line_map_add (&win->line_map, cur_ptr - win->node->contents);
     }
-  return cur_ptr - win->node->contents;
-}
-
-static void
-add_line_map (void *closure, long cpos, size_t replen)
-{
-  WINDOW *win = closure;
-
-  while (replen--)
-    line_map_add (&win->line_map, cpos);
-}
-
-/* Compute the line map for the current line in WIN. */
-void
-window_compute_line_map (WINDOW *win)
-{
-  int line = window_line_of_point (win);
-
-  if (win->line_map.node == win->node && win->line_map.nline == line
-      && win->line_map.used)
-    return;
-  line_map_init (&win->line_map, win->node, line);
-  if (win->node)
-    window_scan_line (win, line, 0, add_line_map, win);
-}
-
-/* Return offset of the end of current physical line.
- */
-long
-window_end_of_line (WINDOW *win)
-{
-  int line = window_line_of_point (win);
-  if (win->node)
-    return window_scan_line (win, line, 1, NULL, NULL) - 1;
-  return 0;
 }
 
 /* Translate the value of POINT into a column number.  If NP is given
