@@ -1,3 +1,11 @@
+2014-05-21  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\documentlanguage): \let_ inside \tex,
+	no need for extra group it seems; and call
+	\documentlanguagetrywithoutunderscore without braces,
+	so we get the expected parsing-off of the _ (or not).
+	Report from German Arias, help-texinfo 18 May 2014 20:26:02.
+
 2014-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/echo-area.c (ea_possible_completions): Use text_buffer_*
@@ -454,6 +462,9 @@
 	Benno Schulenberg 06 May 2014.
 
 2014-05-07  Karl Berry  <karl@gnu.org>
+
+	* Pod-Simple-Texinfo/lib/Pod/Simple/Texinfo.pm: unintended test
+		commit, tweak doc
 
 	* configure.ac (AC_INIT): go to 5.2dev, to reduce confusion
 	with released versions.
