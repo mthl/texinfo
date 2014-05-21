@@ -1,3 +1,8 @@
+2014-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/footnotes.c (info_get_or_remove_footnotes): If window
+	too small to split to show footnotes window, don't crash.
+
 2014-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.c (window_initialize_windows): Use xzalloc to

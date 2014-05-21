@@ -229,10 +229,13 @@ info_get_or_remove_footnotes (WINDOW *window)
       old_active = active_window;
       active_window = last;
       fn_win = window_make_window (new_footnotes);
-      fn_win->flags |= W_TempWindow;
-      active_window = old_active;
 
-      if (!fn_win)
+      if (fn_win)
+        {
+          fn_win->flags |= W_TempWindow;
+          active_window = old_active;
+        }
+      else
         {
           free (new_footnotes->contents);
           free (new_footnotes);
