@@ -1,5 +1,11 @@
 2014-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/echo-area.c (ea_possible_completions): Use text_buffer_*
+	functions instead of *_message_buffer functions.
+	* info/window.c (text_buffer_to_node): New function.
+
+2014-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infodoc.c (dump_map_to_message_buffer): Don't call
 	character_width or message_buffer_length_this_line.
 	* info/window.c (message_buffer_length_this_line, character_width)

@@ -204,6 +204,9 @@ extern void printf_to_message_buffer (const char *format, ...)
 /* Convert the contents of the message buffer to a node. */
 extern NODE *message_buffer_to_node (void);
 
+struct text_buffer;
+extern NODE *text_buffer_to_node (struct text_buffer *tb);
+
 /* Return the length of the most recently printed line in message buffer. */
 extern int message_buffer_length_this_line (void);
 

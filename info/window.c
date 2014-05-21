@@ -1249,6 +1249,22 @@ message_buffer_to_node (void)
   return node;
 }
 
+NODE *
+text_buffer_to_node (struct text_buffer *tb)
+{
+  NODE *node;
+
+  node = info_create_node ();
+
+  /* Make sure that this buffer ends with a newline. */
+  text_buffer_add_char (tb, '\n');
+  node->nodelen = text_buffer_off (tb);
+  text_buffer_add_char (tb, '\0');
+
+  node->contents = text_buffer_base (tb);
+  return node;
+}
+
 /* Useful functions can be called from outside of window.c. */
 void
 initialize_message_buffer (void)

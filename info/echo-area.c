@@ -957,9 +957,10 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
     {
       size_t i, l;
       size_t limit, iterations, max_label = 0;
+      struct text_buffer message;
 
-      initialize_message_buffer ();
-      printf_to_message_buffer (ngettext ("%d completion:\n",
+      text_buffer_init (&message);
+      text_buffer_printf (&message, ngettext ("%d completion:\n",
 					  "%d completions:\n",
 					  completions_found_index),
 				completions_found_index);
@@ -1008,17 +1009,17 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
 
                   label = completions_found[l]->label;
                   printed_length = strlen (label);
-                  printf_to_message_buffer ("%s", label);
+                  text_buffer_printf (&message, "%s", label);
 
                   if (j + 1 < limit)
                     {
                       for (k = 0; k < max_label - printed_length; k++)
-                        printf_to_message_buffer (" ");
+                        text_buffer_printf (&message, " ");
                     }
                 }
               l += iterations;
             }
-          printf_to_message_buffer ("\n");
+          text_buffer_printf (&message, "\n");
         }
 
       /* Make a new node to hold onto possible completions.  Don't destroy
@@ -1026,7 +1027,7 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
       {
         NODE *temp;
 
-        temp = message_buffer_to_node ();
+        temp = text_buffer_to_node (&message);
         add_gcable_pointer (temp->contents);
         name_internal_node (temp, compwin_name);
         possible_completions_output_node = temp;
