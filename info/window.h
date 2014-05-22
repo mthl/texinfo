@@ -193,22 +193,8 @@ extern NODE *format_message_node (const char *format, ...)
    new node. */
 extern NODE *string_to_node (char *contents);
 
-/* Useful functions can be called from outside of window.c. */
-extern void initialize_message_buffer (void);
-
-/* Print arguments according to FORMAT to the end of the current message
-   buffer. */
-extern void printf_to_message_buffer (const char *format, ...)
-  TEXINFO_PRINTFLIKE(1,2);
-
-/* Convert the contents of the message buffer to a node. */
-extern NODE *message_buffer_to_node (void);
-
 struct text_buffer;
 extern NODE *text_buffer_to_node (struct text_buffer *tb);
-
-/* Return the length of the most recently printed line in message buffer. */
-extern int message_buffer_length_this_line (void);
 
 /* Pad STRING to COUNT characters by inserting blanks. */
 extern int pad_to (int count, char *string);

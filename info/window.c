@@ -732,6 +732,7 @@ window_unmark_chain (WINDOW *chain, int flag)
 
 /* Quickly guess the approximate number of lines that NODE would
    take to display.  This really only counts carriage returns. */
+/* FIXME: Not used anywhere. */
 int
 window_physical_lines (NODE *node)
 {
@@ -1106,8 +1107,6 @@ window_set_state (WINDOW *window, SEARCH_STATE *state)
 }
 
 
-/* Manipulating home-made nodes.  */
-
 /* A place to buffer echo area messages. */
 static NODE *echo_area_node = NULL;
 
@@ -1195,29 +1194,17 @@ unmessage_in_echo_area (void)
 }
 
 
-/* A place to build a message. */
-struct text_buffer message_buffer;
-
-/* Format MESSAGE_BUFFER with the results of printing FORMAT with ARG1 and
-   ARG2. */
-static void
-build_message_buffer (const char *format, va_list ap)
-{
-  text_buffer_vprintf (&message_buffer, format, ap);
-}
-
 /* Build a new node which has FORMAT printed with ARG1 and ARG2 as the
    contents. */
 NODE *
 build_message_node (const char *format, va_list ap)
 {
-  NODE *node;
+  struct text_buffer msg;
 
-  initialize_message_buffer ();
-  build_message_buffer (format, ap);
+  text_buffer_init (&msg);
+  text_buffer_vprintf (&msg, format, ap);
 
-  node = message_buffer_to_node ();
-  return node;
+  return text_buffer_to_node (&msg);
 }
 
 NODE *
@@ -1229,23 +1216,6 @@ format_message_node (const char *format, ...)
   va_start (ap, format);
   node = build_message_node (format, ap);
   va_end (ap);
-  return node;
-}
-
-/* Convert the contents of the message buffer to a newly allocated node. */
-NODE *
-message_buffer_to_node (void)
-{
-  NODE *node;
-
-  node = info_create_node ();
-
-  /* Make sure that this buffer ends with a newline. */
-  node->nodelen = 1 + strlen (message_buffer.base);
-  node->contents = xmalloc (1 + node->nodelen);
-  strcpy (node->contents, message_buffer.base);
-  node->contents[node->nodelen - 1] = '\n';
-  node->contents[node->nodelen] = '\0';
   return node;
 }
 
@@ -1263,25 +1233,6 @@ text_buffer_to_node (struct text_buffer *tb)
 
   node->contents = text_buffer_base (tb);
   return node;
-}
-
-/* Useful functions can be called from outside of window.c. */
-void
-initialize_message_buffer (void)
-{
-  message_buffer.off = 0;
-}
-
-/* Print supplied arguments using FORMAT to the end of the current message
-   buffer. */
-void
-printf_to_message_buffer (const char *format, ...)
-{
-  va_list ap;
-
-  va_start (ap, format);
-  build_message_buffer (format, ap);
-  va_end (ap);
 }
 
 /* Pad STRING to COUNT characters by inserting blanks. */
@@ -1500,6 +1451,7 @@ process_node_text (WINDOW *win, char *start,
   return pl_num;
 }
 
+
 static void
 line_map_init (LINE_MAP *map, NODE *node, int line)
 {

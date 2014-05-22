@@ -136,6 +136,7 @@ get_visited_nodes (void)
   NODE *node;
   char **lines = NULL;
   size_t lines_index = 0, lines_slots = 0;
+  struct text_buffer message;
 
   if (!info_windows)
     return NULL;
@@ -196,26 +197,26 @@ get_visited_nodes (void)
       lines_index = newlen;
     }
 
-  initialize_message_buffer ();
+  text_buffer_init (&message);
 
-  printf_to_message_buffer ("\n");
-  printf_to_message_buffer
-    ("%s", replace_in_documentation
+  text_buffer_printf (&message, "\n");
+  text_buffer_printf (&message,
+    "%s", replace_in_documentation
      (_("Here is the menu of nodes you have recently visited.\n\
 Select one from this menu, or use `\\[history-node]' in another window.\n"), 0));
 
-  printf_to_message_buffer ("%s\n", nodemenu_format_info ());
+  text_buffer_printf (&message, "%s\n", nodemenu_format_info ());
 
   for (i = 0; (lines != NULL) && (i < lines_index); i++)
     {
-      printf_to_message_buffer ("%s\n", lines[i]);
+      text_buffer_printf (&message, "%s\n", lines[i]);
       free (lines[i]);
     }
 
   if (lines)
     free (lines);
 
-  node = message_buffer_to_node ();
+  node = text_buffer_to_node (&message);
   add_gcable_pointer (node->contents);
 
   scan_node_contents (0, &node);

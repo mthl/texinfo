@@ -190,10 +190,8 @@ static char *info_help_keys_text[][2] = {
 
 static char *where_is_internal (Keymap map, InfoCommand *cmd);
 
-struct text_buffer message_buffer;
-
 void
-dump_map_to_message_buffer (char *prefix, Keymap map)
+dump_map_to_text_buffer (struct text_buffer *tb, char *prefix, Keymap map)
 {
   register int i;
   unsigned prefix_len = strlen (prefix);
@@ -207,11 +205,11 @@ dump_map_to_message_buffer (char *prefix, Keymap map)
       new_prefix[prefix_len] = i;
       if (map[i].type == ISKMAP)
         {
-          dump_map_to_message_buffer (new_prefix, (Keymap)map[i].function);
+          dump_map_to_text_buffer (tb, new_prefix, (Keymap)map[i].function);
         }
       else if (map[i].function)
         {
-          long start_of_line = message_buffer.off;
+          long start_of_line = tb->off;
           register int last;
           char *doc, *name;
 
@@ -236,16 +234,16 @@ dump_map_to_message_buffer (char *prefix, Keymap map)
 
           if (last - 1 != i)
             {
-              printf_to_message_buffer ("%s .. ", pretty_keyseq (new_prefix));
+              text_buffer_printf (tb, "%s .. ", pretty_keyseq (new_prefix));
               new_prefix[prefix_len] = last - 1;
-              printf_to_message_buffer ("%s", pretty_keyseq (new_prefix));
+              text_buffer_printf (tb, "%s", pretty_keyseq (new_prefix));
               i = last - 1;
             }
           else
-            printf_to_message_buffer ("%s", pretty_keyseq (new_prefix));
+            text_buffer_printf (tb, "%s", pretty_keyseq (new_prefix));
 
-          while (message_buffer.off - start_of_line < 8)
-            printf_to_message_buffer (" ");
+          while (tb->off - start_of_line < 8)
+            text_buffer_printf (tb, " ");
 
 #if defined (NAMED_FUNCTIONS)
           /* Print the name of the function, and some padding before the
@@ -254,23 +252,23 @@ dump_map_to_message_buffer (char *prefix, Keymap map)
             int length_so_far;
             int desired_doc_start = 40;
 
-            printf_to_message_buffer ("(%s)", name);
-            length_so_far = message_buffer.off - start_of_line;
+            text_buffer_printf (tb, "(%s)", name);
+            length_so_far = tb->off - start_of_line;
 
             if ((desired_doc_start + strlen (doc))
                 >= (unsigned int) the_screen->width)
-              printf_to_message_buffer ("\n     ");
+              text_buffer_printf (tb, "\n     ");
             else
               {
                 while (length_so_far < desired_doc_start)
                   {
-                    printf_to_message_buffer (" ");
+                    text_buffer_printf (tb, " ");
                     length_so_far++;
                   }
               }
           }
 #endif /* NAMED_FUNCTIONS */
-          printf_to_message_buffer ("%s\n", doc);
+          text_buffer_printf (tb, "%s\n", doc);
         }
     }
   free (new_prefix);
@@ -298,19 +296,20 @@ create_internal_info_help_node (int help_is_only_window_p)
   if (!contents)
     {
       int printed_one_mx = 0;
+      struct text_buffer msg;
 
-      initialize_message_buffer ();
+      text_buffer_init (&msg);
 
       for (i = 0; info_internal_help_text[i]; i++)
         {
 #ifdef INFOKEY
-          printf_to_message_buffer (replace_in_documentation
+          text_buffer_printf (&msg, replace_in_documentation
               (_(info_internal_help_text[i]), help_is_only_window_p),
               NULL, NULL, NULL);
 #else
           /* Don't translate blank lines, gettext outputs the po file
              header in that case.  We want a blank line.  */
-          char *msg = *(info_internal_help_text[i])
+          char *mesg = *(info_internal_help_text[i])
                       ? _(info_internal_help_text[i])
                       : info_internal_help_text[i];
           char *key = info_help_keys_text[i][vi_keys_p];
@@ -320,19 +319,19 @@ create_internal_info_help_node (int help_is_only_window_p)
           if (STREQ (key, "CTRL-x 0") && help_is_only_window_p)
             key = "l";
 
-          printf_to_message_buffer (msg, key, NULL, NULL);
+          text_buffer_printf (&msg, mesg, key, NULL, NULL);
 #endif /* !INFOKEY */
         }
 
-      printf_to_message_buffer ("---------------------\n");
-      printf_to_message_buffer (_("The current search path is:\n"));
-      printf_to_message_buffer ("%s\n", infopath ());
-      printf_to_message_buffer ("---------------------\n\n");
-      printf_to_message_buffer (_("Commands available in Info windows:\n\n"));
-      dump_map_to_message_buffer ("", info_keymap);
-      printf_to_message_buffer ("---------------------\n\n");
-      printf_to_message_buffer (_("Commands available in the echo area:\n\n"));
-      dump_map_to_message_buffer ("", echo_area_keymap);
+      text_buffer_printf (&msg, "---------------------\n");
+      text_buffer_printf (&msg, _("The current search path is:\n"));
+      text_buffer_printf (&msg, "%s\n", infopath ());
+      text_buffer_printf (&msg, "---------------------\n\n");
+      text_buffer_printf (&msg, _("Commands available in Info windows:\n\n"));
+      dump_map_to_text_buffer (&msg, "", info_keymap);
+      text_buffer_printf (&msg, "---------------------\n\n");
+      text_buffer_printf (&msg, _("Commands available in the echo area:\n\n"));
+      dump_map_to_text_buffer (&msg, "", echo_area_keymap);
 
 #if defined (NAMED_FUNCTIONS)
       /* Get a list of commands which have no keystroke equivs. */
@@ -349,19 +348,19 @@ create_internal_info_help_node (int help_is_only_window_p)
             {
               if (!printed_one_mx)
                 {
-                  printf_to_message_buffer ("---------------------\n\n");
+                  text_buffer_printf (&msg, "---------------------\n\n");
                   if (exec_keys && exec_keys[0])
-                      printf_to_message_buffer
-                        (_("The following commands can only be invoked via %s:\n\n"),
+                      text_buffer_printf (&msg,
+                         _("The following commands can only be invoked via %s:\n\n"),
                          exec_keys);
                   else
-                      printf_to_message_buffer
-                        (_("The following commands cannot be invoked at all:\n\n"));
+                      text_buffer_printf (&msg,
+                         _("The following commands cannot be invoked at all:\n\n"));
                   printed_one_mx = 1;
                 }
 
-              printf_to_message_buffer
-                ("%s %s\n     %s\n",
+              text_buffer_printf (&msg,
+                 "%s %s\n     %s\n",
                  exec_keys,
                  function_doc_array[i].func_name,
                  replace_in_documentation (strlen (function_doc_array[i].doc)
@@ -374,7 +373,7 @@ create_internal_info_help_node (int help_is_only_window_p)
       free (exec_keys);
 #endif /* NAMED_FUNCTIONS */
 
-      node = message_buffer_to_node ();
+      node = text_buffer_to_node (&msg);
       internal_info_help_node_contents = node->contents;
     }
   else

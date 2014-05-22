@@ -1,3 +1,19 @@
+2014-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (info_index_apropos): Use text_buffer_* functions
+	directly.  Don't create apropos window if nothing found.
+	* info/infodoc.c (dump_map_to_message_buffer)
+	(dump_map_to_text_buffer): Renamed.  Take struct text_buffer *
+	argument.
+	(create_internal_info_help_node): Don't use *_message_buffer
+	functions.
+	* info/nodemenu.c (get_visited_nodes): Don't use *_message_buffer
+	functions.
+	* info/window.c (build_message_node): Don't use *_message_buffer
+	functions.
+	(message_buffer, build_message_buffer, message_buffer_to_node)
+	(initialize_message_buffer, printf_to_message_buffer): Removed.
+
 2014-05-21  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\documentlanguage): \let_ inside \tex,

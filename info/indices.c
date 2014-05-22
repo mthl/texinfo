@@ -611,39 +611,42 @@ DECLARE_INFO_COMMAND (info_index_apropos,
     {
       REFERENCE **apropos_list;
       NODE *apropos_node;
+      struct text_buffer message;
 
       apropos_list = apropos_in_all_indices (line, 1);
 
       if (!apropos_list)
-        info_error (_(APROPOS_NONE), line);
+        { 
+          info_error (_(APROPOS_NONE), line);
+          free (line);
+          return;
+        }
       else
         {
           register int i;
-          char *line_buffer;
 
-          initialize_message_buffer ();
-          printf_to_message_buffer
-            (_("\n* Menu: Nodes whose indices contain `%s':\n"),
+          text_buffer_init (&message);
+          text_buffer_printf (&message,
+            _("\n* Menu: Nodes whose indices contain `%s':\n"),
              line);
-          line_buffer = xmalloc (500);
 
           for (i = 0; apropos_list[i]; i++)
             {
-              int len;
+              int line_start = text_buffer_off (&message);
+
 	      /* The label might be identical to that of another index
 		 entry in another Info file.  Therefore, we make the file
 		 name part of the menu entry, to make them all distinct.  */
-              sprintf (line_buffer, "* %s [%s]: ",
+              text_buffer_printf (&message, "* %s [%s]: ",
 		       apropos_list[i]->label, apropos_list[i]->filename);
-              len = pad_to (40, line_buffer);
-              sprintf (line_buffer + len, "(%s)%s.",
+              while (text_buffer_off (&message) - line_start < 40)
+                text_buffer_add_char (&message, ' ');
+              text_buffer_printf (&message, "(%s)%s.\n",
                        apropos_list[i]->filename, apropos_list[i]->nodename);
-              printf_to_message_buffer ("%s\n", line_buffer);
             }
-          free (line_buffer);
         }
 
-      apropos_node = message_buffer_to_node ();
+      apropos_node = text_buffer_to_node (&message);
       scan_node_contents (0, &apropos_node);
 
       add_gcable_pointer (apropos_node->contents);
