@@ -232,9 +232,6 @@ extern int window_physical_lines (NODE *node);
 
 /* Calculate a list of line starts for the node belonging to WINDOW.  The line
    starts are offsets within WINDOW->node. */
-extern void calculate_line_starts (WINDOW *window);
-
-/* Given WINDOW, recalculate the line starts for the node it displays. */
 extern void recalculate_line_starts (WINDOW *window);
 
 /* Return the index of the line containing point. */

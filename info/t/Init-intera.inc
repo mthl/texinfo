@@ -20,16 +20,19 @@ do
 	# Sleep for 1 ms if usleep is available
 	usleep 1000 2>/dev/null || sleep 1
 done
-PTS_DEVICE="$(cat $GINFO_PTY_FILE | tr -d '\n')"
-rm -f $GINFO_PTY_FILE
 
-# Wait for pts device file to actually appear.  This shouldn't be
-# necessary, but occasionally we get a "no such file or directory"
-# error when we redirect the file descriptors below.
-while test ! -c $PTS_DEVICE
+# Wait for file to actually appear, and to contain a
+# valid name of a device file.
+while :
 do
+	PTS_DEVICE="$(cat $GINFO_PTY_FILE | tr -d '\n')"
+	if test -c "$PTS_DEVICE"
+	then
+		break
+	fi
 	usleep 1000 2>/dev/null || sleep 1
 done
+rm -f $GINFO_PTY_FILE
 
 echo "Redirecting standard file descriptors to $PTS_DEVICE."
 exec 0>$PTS_DEVICE 1<&0 2<&0

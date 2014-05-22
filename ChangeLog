@@ -1,5 +1,10 @@
 2014-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/Init-intera.inc: Account for incomplete output from
+	pseudotty.
+
+2014-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/indices.c (info_index_apropos): Use text_buffer_* functions
 	directly.  Don't create apropos window if nothing found.
 	* info/infodoc.c (dump_map_to_message_buffer)
