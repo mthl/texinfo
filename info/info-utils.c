@@ -1635,12 +1635,6 @@ search_again:
 }
 
 
-/* **************************************************************** */
-/*                                                                  */
-/*                  Functions Static To This File                   */
-/*                                                                  */
-/* **************************************************************** */
-
 /* Return a pointer to the part of PATHNAME that simply defines the file. */
 char *
 filename_non_directory (char *pathname)

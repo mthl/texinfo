@@ -314,15 +314,6 @@ window_make_window (NODE *node)
 #endif
   active_window->flags |= W_UpdateWindow;
 
-  /* Readjust the new and old windows so that their modelines and contents
-     will be displayed correctly. */
-#if defined (NOTDEF)
-  /* We don't have to do this for WINDOW since window_set_node_of_window ()
-     already did. */
-  window_adjust_pagetop (window);
-  window_make_modeline (window);
-#endif /* NOTDEF */
-
   /* We do have to readjust the existing active window. */
   window_adjust_pagetop (active_window);
   window_make_modeline (active_window);

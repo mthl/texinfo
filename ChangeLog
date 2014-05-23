@@ -1,3 +1,11 @@
+2014-05-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (info_indices_of_file_buffer): Slightly more
+	informative comment.
+	* info/filesys.c (info_find_fullpath): Disabled code removed.
+	* info/window.c: Inaccurate section label comment removed.
+	(window_make_window): Disabled code removed.
+
 2014-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-intera.inc: Account for incomplete output from

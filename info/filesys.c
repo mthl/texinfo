@@ -126,31 +126,7 @@ info_find_fullpath (char *partial, struct stat *finfo)
            && (IS_SLASH (partial[1])
                || (partial[1] == '.' && IS_SLASH (partial[2]))))
           || strchr (partial, '/'))
-    {
-      fullpath = info_add_extension (0, partial, finfo);
-#if 0
-      /* Don't limit paths to 1023 bytes, and don't ask for
-         1024 bytes when it isn't needed. 
-         This isn't really necessary, anyway: just do
-         fullpath = xstrdup (partial) and leave ".", ".." as
-         they are.  Always having the full absolute path isn't
-         necessary. */
-      fullpath = xcalloc (1, 1024);
-#if defined (HAVE_GETCWD)
-      if (!getcwd (fullpath, 1024))
-#else /*  !HAVE_GETCWD */
-      if (!getwd (fullpath))
-#endif /* !HAVE_GETCWD */
-        {
-          filesys_error_number = errno;
-          return partial;
-        }
-
-      strcat (fullpath, "/");
-      strcat (fullpath, partial);
-#endif
-    }
-
+    fullpath = info_add_extension (0, partial, finfo);
   /* If just a simple name element, look for it in the path. */
   else
     fullpath = info_file_in_path (partial, infopath (), finfo);

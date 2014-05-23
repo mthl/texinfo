@@ -87,7 +87,7 @@ add_index_to_index_nodenames (REFERENCE **array, NODE *node)
                         index_nodenames_slots, 10);
 }
 
-/* Find and return the indices of FILE_BUFFER.  The indices are defined
+/* Find and concatenate the indices of FILE_BUFFER.  The indices are defined
    as the first node in the file containing the word "Index" and any
    immediately following nodes whose names also contain "Index".  All such
    indices are concatenated and the result returned.  Neither the returned
