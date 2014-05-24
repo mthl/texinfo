@@ -1,3 +1,8 @@
+2014-05-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (apropos_in_all_indices): Fix code for avoiding
+	reading the same file twice.
+
 2014-05-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_indices_of_file_buffer): Slightly more
