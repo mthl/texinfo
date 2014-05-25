@@ -1157,8 +1157,7 @@ char *info_scroll_choices[] = {
 };
 
 /* Controls whether scroll-behavior affects line movement commands */
-int cursor_movement_scrolls_p = 1;
-
+int cursor_movement_scrolls_p = 1; 
 int search_skip_screen_p = 0;
 
 /* Choices for the scroll-last-node variable */
@@ -1170,16 +1169,14 @@ char *scroll_last_node_choices[] = {
    last node. */
 int scroll_last_node = SLN_Stop;
 
-static void _scroll_forward (WINDOW *window, int count,
-    unsigned char key, int behaviour);
-static void _scroll_backward (WINDOW *window, int count,
-    unsigned char key, int behaviour);
+static void _scroll_forward (WINDOW *window, int count, int behaviour);
+static void _scroll_backward (WINDOW *window, int count, int behaviour);
 
 static void
-_scroll_forward (WINDOW *window, int count, unsigned char key, int behaviour)
+_scroll_forward (WINDOW *window, int count, int behaviour)
 {
   if (count < 0)
-    _scroll_backward (window, -count, key, behaviour);
+    _scroll_backward (window, -count, behaviour);
   else
     {
       /* If there are no more lines to scroll here, error, or get
@@ -1195,10 +1192,10 @@ _scroll_forward (WINDOW *window, int count, unsigned char key, int behaviour)
 }
 
 static void
-_scroll_backward (WINDOW *window, int count, unsigned char key, int behaviour)
+_scroll_backward (WINDOW *window, int count, int behaviour)
 {
   if (count < 0)
-    _scroll_backward (window, -count, key, behaviour);
+    _scroll_backward (window, -count, behaviour);
   else
     {
       int desired_top;
@@ -1230,24 +1227,16 @@ DECLARE_INFO_COMMAND (info_scroll_forward, _("Scroll forward in this window"))
   if (info_explicit_arg)
     lines = count;
   else if (default_window_size > 0)
-    lines = default_window_size;
+    lines = default_window_size * count;
   else
-    lines = window->height - 2;
-  _scroll_forward (window, lines, key, info_scroll_behaviour);
+    lines = (window->height - 2) * count;
+  _scroll_forward (window, lines, info_scroll_behaviour);
 }
 
 /* Show the previous screen of WINDOW's node. */
 DECLARE_INFO_COMMAND (info_scroll_backward, _("Scroll backward in this window"))
 {
-  int lines;
-
-  if (info_explicit_arg)
-    lines = count;
-  else if (default_window_size > 0)
-    lines = default_window_size;
-  else
-    lines = window->height - 2;
-  _scroll_backward (window, lines, key, info_scroll_behaviour);
+  info_scroll_forward (window, -count, key);
 }
 
 /* Like info_scroll_forward, but sets default_window_size as a side
@@ -1256,7 +1245,11 @@ DECLARE_INFO_COMMAND (info_scroll_forward_set_window,
                       _("Scroll forward in this window and set default window size"))
 {
   if (info_explicit_arg)
-    default_window_size = count;
+    {
+      default_window_size = count;
+      if (default_window_size < 0)
+        default_window_size *= -1;
+    }
 
   info_scroll_forward (window, count, key);
 }
@@ -1266,10 +1259,7 @@ DECLARE_INFO_COMMAND (info_scroll_forward_set_window,
 DECLARE_INFO_COMMAND (info_scroll_backward_set_window,
                       _("Scroll backward in this window and set default window size"))
 {
-  if (info_explicit_arg)
-    default_window_size = count;
-
-  info_scroll_backward (window, count, key);
+  info_scroll_forward_set_window (window, -count, key);
 }
 
 /* Show the next screen of WINDOW's node but never advance to next node. */
@@ -1280,25 +1270,17 @@ DECLARE_INFO_COMMAND (info_scroll_forward_page_only, _("Scroll forward in this w
   if (info_explicit_arg)
     lines = count;
   else if (default_window_size > 0)
-    lines = default_window_size;
+    lines = default_window_size * count;
   else
-    lines = window->height - 2;
-  _scroll_forward (window, lines, key, IS_PageOnly);
+    lines = (window->height - 2) * count;
+  _scroll_forward (window, lines, IS_PageOnly);
 }
 
 /* Show the previous screen of WINDOW's node but never move to previous
    node. */
 DECLARE_INFO_COMMAND (info_scroll_backward_page_only, _("Scroll backward in this window staying within node"))
 {
-  int lines;
-
-  if (info_explicit_arg)
-    lines = count;
-  else if (default_window_size > 0)
-    lines = default_window_size;
-  else
-    lines = window->height - 2;
-  _scroll_backward (window, lines, key, IS_PageOnly);
+  info_scroll_forward_page_only (window, -count, key);
 }
 
 /* Like info_scroll_forward_page_only, but sets default_window_size as a side
@@ -1306,10 +1288,26 @@ DECLARE_INFO_COMMAND (info_scroll_backward_page_only, _("Scroll backward in this
 DECLARE_INFO_COMMAND (info_scroll_forward_page_only_set_window,
                       _("Scroll forward in this window staying within node and set default window size"))
 {
-  if (info_explicit_arg)
-    default_window_size = count;
+  int lines;
 
-  info_scroll_forward_page_only (window, count, key);
+  if (info_explicit_arg)
+    {
+      default_window_size = count;
+      count = 1;
+
+      if (default_window_size < 0)
+        {
+          default_window_size *= -1;
+          count = -1;
+        }
+    }
+
+  if (default_window_size > 0)
+    lines = default_window_size * count;
+  else
+    lines = (window->height - 2) * count;
+
+  _scroll_forward (window, lines, IS_PageOnly);
 }
 
 /* Like info_scroll_backward_page_only, but sets default_window_size as a side
@@ -1317,27 +1315,24 @@ DECLARE_INFO_COMMAND (info_scroll_forward_page_only_set_window,
 DECLARE_INFO_COMMAND (info_scroll_backward_page_only_set_window,
                       _("Scroll backward in this window staying within node and set default window size"))
 {
-  if (info_explicit_arg)
-    default_window_size = count;
-
-  info_scroll_backward_page_only (window, count, key);
+  info_scroll_backward_page_only_set_window (window, count, key);
 }
 
 /* Scroll the window forward by N lines.  */
 DECLARE_INFO_COMMAND (info_down_line, _("Scroll down by lines"))
 {
-  _scroll_forward (window, count, key, IS_PageOnly);
+  _scroll_forward (window, count, IS_PageOnly);
 }
 
 /* Scroll the window backward by N lines.  */
 DECLARE_INFO_COMMAND (info_up_line, _("Scroll up by lines"))
 {
-  _scroll_backward (window, count, key, IS_PageOnly);
+  _scroll_backward (window, count, IS_PageOnly);
 }
 
 /* Lines to scroll when using commands that scroll by half screen size
-   by default.  -1 means scroll by half screen size. */
-int default_scroll_size = -1;
+   by default.  0 means scroll by half screen size. */
+int default_scroll_size = 0;
 
 /* Scroll the window forward by N lines and remember N as default for
    subsequent commands.  */
@@ -1347,14 +1342,23 @@ DECLARE_INFO_COMMAND (info_scroll_half_screen_down,
   int lines;
 
   if (info_explicit_arg)
-    default_scroll_size = count;
+    {
+      default_scroll_size = count;
+      count = 1;
 
-  if (default_scroll_size > 0)
-    lines = default_scroll_size;
+      if (default_scroll_size < 0)
+        {
+          default_scroll_size *= -1;
+          count = -1;
+        }
+    }
+
+  if (default_scroll_size != 0)
+    lines = default_scroll_size * count;
   else
-    lines = (the_screen->height + 1) / 2;
+    lines = (window->height + 1) / 2 * count;
 
-  _scroll_forward (window, lines, key, IS_PageOnly);
+  _scroll_forward (window, lines, IS_PageOnly);
 }
 
 /* Scroll the window backward by N lines and remember N as default for
@@ -1362,7 +1366,7 @@ DECLARE_INFO_COMMAND (info_scroll_half_screen_down,
 DECLARE_INFO_COMMAND (info_scroll_half_screen_up,
                       _("Scroll up by half screen size"))
 {
-  info_scroll_half_screen_up (window, key, -count);
+  info_scroll_half_screen_down (window, -count, key);
 }
 
 

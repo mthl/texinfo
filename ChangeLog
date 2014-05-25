@@ -1,9 +1,17 @@
 2014-05-25  Gavin Smith  <gavinsmith0123@gmail.com>
 	
-	* info/session.c (info_scroll_half_screen_down)
-	(info_scroll_half_screen_up, info_down_line, info_up_line):
+	* info/session.c (info_scroll_forward, info_scroll_backward)
+	(info_scroll_forward_set_window, info_scroll_backward_set_window)
+	(info_scroll_forward_page_only, info_scroll_backward_page_only)
+	(info_scroll_forward_page_only_set_window)
+	(info_scroll_backward_page_only_set_window)
+	(info_scroll_half_screen_down, info_scroll_half_screen_up)
+	(info_down_line, info_up_line):
 	Rely on checks in _scroll_forward and _scroll_backward for
 	negative arguments.
+
+	(_scroll_forward, _scroll_backward): 'key' argument removed.  Callers
+	updated.
 
 2014-05-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
