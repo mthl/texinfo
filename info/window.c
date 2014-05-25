@@ -715,26 +715,6 @@ window_unmark_chain (WINDOW *chain, int flag)
     win->flags &= ~flag;
 }
 
-/* Quickly guess the approximate number of lines that NODE would
-   take to display.  This really only counts carriage returns. */
-/* FIXME: Not used anywhere. */
-int
-window_physical_lines (NODE *node)
-{
-  register int i, lines;
-  char *contents;
-
-  if (!node)
-    return 0;
-
-  contents = node->contents;
-  for (i = 0, lines = 1; i < node->nodelen; i++)
-    if (contents[i] == '\n')
-      lines++;
-
-  return lines;
-}
-
 
 /* Called by process_node_text. */
 static int

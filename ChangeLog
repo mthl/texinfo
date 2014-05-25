@@ -6,6 +6,8 @@
 	* info/session.c (initialize_window_session): Don't set
 	window_deletion_notifier to forget_window_and_nodes.
 
+	* info/window.c (window_physical_lines): Delete unused.
+
 2014-05-25  Gavin Smith  <gavinsmith0123@gmail.com>
 	
 	* info/session.c (info_scroll_forward, info_scroll_backward)

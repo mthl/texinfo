@@ -220,10 +220,6 @@ extern void unmessage_in_echo_area (void);
    The echo area is cleared immediately. */
 extern void window_clear_echo_area (void);
 
-/* Quickly guess the approximate number of lines to that NODE would
-   take to display.  This really only counts carriage returns. */
-extern int window_physical_lines (NODE *node);
-
 /* Calculate a list of line starts for the node belonging to WINDOW.  The line
    starts are offsets within WINDOW->node. */
 extern void recalculate_line_starts (WINDOW *window);
