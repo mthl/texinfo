@@ -458,7 +458,7 @@ info_find_matching_files (char *filename)
     {
       char *p;
 
-      p = info_file_find_next_in_path (filename, infopath (), &i, 0);
+      p = info_file_find_next_in_path (filename, &i, 0);
       if (!p)
         break;
 
@@ -552,7 +552,7 @@ main (int argc, char *argv[])
 	  
           /* User wants to add a directory. */
         case 'd':
-          infopath_add (optarg, INFOPATH_APPEND);
+          infopath_add (optarg);
           break;
 
           /* User is specifying a particular node. */
@@ -874,7 +874,7 @@ add_file_directory_to_path (char *filename)
 	  temp += 2;
 	}
       temp[-1] = 0;
-      infopath_add (directory_name, INFOPATH_PREPEND);
+      infopath_add (directory_name);
     }
 
   free (directory_name);

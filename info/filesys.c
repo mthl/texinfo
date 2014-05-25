@@ -26,8 +26,7 @@
 #include "tag.h"
 
 /* Local to this file. */
-static char *info_file_in_path (char *filename, char *path,
-                                struct stat *finfo);
+static char *info_file_in_path (char *filename, struct stat *finfo);
 static char *info_add_extension (char *dirname, char *fname,
                                  struct stat *finfo);
 
@@ -129,7 +128,7 @@ info_find_fullpath (char *partial, struct stat *finfo)
     fullpath = info_add_extension (0, partial, finfo);
   /* If just a simple name element, look for it in the path. */
   else
-    fullpath = info_file_in_path (partial, infopath (), finfo);
+    fullpath = info_file_in_path (partial, finfo);
 
   if (!fullpath)
     filesys_error_number = ENOENT;
@@ -137,17 +136,15 @@ info_find_fullpath (char *partial, struct stat *finfo)
   return fullpath;
 }
 
-/* Scan the list of directories in PATH looking for FILENAME.  If we find
+/* Scan the directories in search path looking for FILENAME.  If we find
    one that is a regular file, return it as a new string.  Otherwise, return
    a NULL pointer.  Set *FINFO with information about file. */
 char *
-info_file_find_next_in_path (char *filename, char *path, int *diridx,
-                             struct stat *finfo)
+info_file_find_next_in_path (char *filename, int *path_index, struct stat *finfo)
 {
-  char *dirname;
   struct stat dummy;
 
-  /* Used for output of fstat in case the caller doesn't care about
+  /* Used for output of stat in case the caller doesn't care about
      its value. */
   if (!finfo)
     finfo = &dummy;
@@ -157,9 +154,13 @@ info_file_find_next_in_path (char *filename, char *path, int *diridx,
   if (!*filename || STREQ (filename, ".") || STREQ (filename, ".."))
     return NULL;
 
-  while ((dirname = extract_colon_unit (path, diridx)))
+  while (1)
     {
-      char *with_extension = 0;
+      char *dirname, *with_extension = 0;
+
+      dirname = infopath_next (path_index);
+      if (!dirname)
+        break;
 
       debug(1, (_("looking for file %s in %s"), filename, dirname));
 
@@ -172,7 +173,6 @@ info_file_find_next_in_path (char *filename, char *path, int *diridx,
         }
 
       with_extension = info_add_extension (dirname, filename, finfo);
-      free (dirname);
 
       if (with_extension)
         return with_extension;
@@ -181,10 +181,10 @@ info_file_find_next_in_path (char *filename, char *path, int *diridx,
 }
 
 static char *
-info_file_in_path (char *filename, char *path, struct stat *finfo)
+info_file_in_path (char *filename, struct stat *finfo)
 {
   int i = 0;
-  return info_file_find_next_in_path (filename, path, &i, finfo);
+  return info_file_find_next_in_path (filename, &i, finfo);
 }
 
 /* Look for a file called FILENAME in a directory called DIRNAME, adding file
@@ -239,7 +239,7 @@ info_add_extension (char *dirname, char *filename, struct stat *finfo)
               char *newpath, *new_filename;
 
               newpath = xstrdup (try_filename);
-              new_filename = info_file_in_path (filename, newpath, finfo);
+              new_filename = info_add_extension (newpath, filename, finfo);
 
               free (newpath);
               if (new_filename)
@@ -275,37 +275,6 @@ info_add_extension (char *dirname, char *filename, struct stat *finfo)
   /* Nothing was found. */
   free (try_filename);
   return 0;
-}
-
-/* Given a string containing units of information separated by the
-   PATH_SEP character, return the next one after IDX, or NULL if there
-   are no more.  Advance IDX to the character after the colon. */
-
-char *
-extract_colon_unit (char *string, int *idx)
-{
-  unsigned int i = (unsigned int) *idx;
-  unsigned int start = i;
-
-  if (!string || i >= strlen (string))
-    return NULL;
-
-  if (!string[i]) /* end of string */
-    return NULL;
-
-  /* Advance to next PATH_SEP.  */
-  while (string[i] && string[i] != PATH_SEP[0])
-    i++;
-
-  {
-    char *value = xmalloc ((i - start) + 1);
-    strncpy (value, &string[start], (i - start));
-    value[i - start] = 0;
-
-    i++; /* move past PATH_SEP */
-    *idx = i;
-    return value;
-  }
 }
 
 /* Given a chunk of text and its length, convert all CRLF pairs at every

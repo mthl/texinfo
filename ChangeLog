@@ -1,3 +1,36 @@
+2014-05-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/filesys.c (info_file_find_next_in_path): Use infopath_next
+	to iterate over INFOPATH.  Don't take a path argument.  Callers
+	updated.
+	(info_file_in_path): Don't take a path argument.  All callers updated.
+	
+	* info/filesys.c, info/infopath.c (extract_colon_unit): Function
+	definition moved.
+
+	* info/infopath.c (INFO_DIR): New typedef.
+	(infodirs, infodirs_index, infodirs_slots): New variables.
+	(infopath_add): Always add directory to end of search path, checking
+	if it doesn't exist or if it is a duplicate.  Check for inode == 0
+	for MS-Windows copied from dir.c:new_dir_file_p.  Argument 'where'
+	removed.  All callers updated.
+	(infopath_add_dir) New function.
+	(infopath_first, infopath_next): Return values not freed by caller.
+	Callers updated.
+	(infopath, infopath_string): Function renamed.  Return value to
+	be freed by caller.  Caller updated.
+	(build_infopath_from_path): Rely on duplicate detection in
+	infopath_add.  Add directories to search path instead of returning
+	a string containing their names.
+	(compact_infopath, infopath_clear,infopath_base, infopath_size)
+	(infopath_dirty, nextdir): Removed.
+	* info/infopath.h (INFOPATH_PREPEND, INFOPATH_APPEND, INFOPATH_INIT):
+	Removed.
+
+	* info/dir.c (dir_file_list_entry_type, new_dir_file_p): Removed.
+	(build_dir_node): Rely on duplicates being removed in INFOPATH to
+	avoid a duplicate dir file.
+
 2014-05-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (apropos_in_all_indices): Fix code for avoiding

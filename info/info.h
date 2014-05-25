@@ -58,7 +58,7 @@ typedef char *CFunction ();
 #endif /* !whitespace_or_newline */
 
 /* Add ELT to the list of elements found in ARRAY.  SLOTS is the number
-   of slots that have already been allocated.  INDEX is the index into the
+   of slots that have already been allocated.  IDX is the index into the
    array where ELT should be added.  MINSLOTS is the number of slots to
    start the array with in case it is empty. */
 #define add_pointer_to_array(elt, idx, array, slots, minslots)	\
@@ -158,5 +158,12 @@ extern const char *msg_cant_make_help;
 extern char *read_function_name (const char *prompt, WINDOW *window);
 
 extern void show_error_node (char *error_msg);
+
+/* In infopath.c, but also used in man.c. */
+
+/* Given a string containing units of information separated by colons,
+   return the next one pointed to by IDX, or NULL if there are no more.
+   Advance IDX to the character after the colon. */
+char *extract_colon_unit (char *string, int *idx);
 
 #endif /* !INFO_H */

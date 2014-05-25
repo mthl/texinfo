@@ -297,6 +297,7 @@ create_internal_info_help_node (int help_is_only_window_p)
     {
       int printed_one_mx = 0;
       struct text_buffer msg;
+      char *infopath_str = infopath_string ();
 
       text_buffer_init (&msg);
 
@@ -325,8 +326,10 @@ create_internal_info_help_node (int help_is_only_window_p)
 
       text_buffer_printf (&msg, "---------------------\n");
       text_buffer_printf (&msg, _("The current search path is:\n"));
-      text_buffer_printf (&msg, "%s\n", infopath ());
+      text_buffer_printf (&msg, "%s\n", infopath_str);
       text_buffer_printf (&msg, "---------------------\n\n");
+      free (infopath_str);
+
       text_buffer_printf (&msg, _("Commands available in Info windows:\n\n"));
       dump_map_to_text_buffer (&msg, "", info_keymap);
       text_buffer_printf (&msg, "---------------------\n\n");

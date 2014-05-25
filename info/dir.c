@@ -38,41 +38,6 @@ static char *dirs_to_add[] = {
 
 FILE_BUFFER *dir_buffer = 0;
 
-/* Return zero if the file represented in the stat structure TEST has
-   already been seen, nonzero otherwise.  */
-
-typedef struct
-{
-  dev_t device;
-  ino_t inode;
-} dir_file_list_entry_type;
-
-static int
-new_dir_file_p (struct stat *test)
-{
-  static unsigned dir_file_list_len = 0;
-  static dir_file_list_entry_type *dir_file_list = NULL;
-  unsigned i;
-  
-  for (i = 0; i < dir_file_list_len; i++)
-    {
-      dir_file_list_entry_type entry;
-      entry = dir_file_list[i];
-      if (entry.device == test->st_dev && entry.inode == test->st_ino
-	  /* On MS-Windows, `stat' returns zero as the inode, so we
-	     effectively disable this optimization for that OS.  */
-	  && entry.inode != 0)
-        return 0;
-    }
-  
-  dir_file_list_len++;
-  dir_file_list = xrealloc (dir_file_list, 
-                        dir_file_list_len * sizeof (dir_file_list_entry_type));
-  dir_file_list[dir_file_list_len - 1].device = test->st_dev;
-  dir_file_list[dir_file_list_len - 1].inode = test->st_ino;
-  return 1;
-}
-
 static void create_dir_buffer (void);
 static NODE *build_dir_node (void);
 
@@ -161,7 +126,6 @@ build_dir_node (void)
           tilde_expanded_dirname = tilde_expand_word (this_dir);
           if (tilde_expanded_dirname != this_dir)
             {
-              free (this_dir);
               this_dir = tilde_expanded_dirname;
             }
         }
@@ -182,8 +146,7 @@ build_dir_node (void)
 
           statable = (stat (fullpath, &finfo) == 0);
 
-          /* Only add this file if we have not seen it before.  */
-          if (statable && S_ISREG (finfo.st_mode) && new_dir_file_p (&finfo))
+          if (statable && S_ISREG (finfo.st_mode))
             {
               size_t filesize;
 	      int compressed;
@@ -198,7 +161,6 @@ build_dir_node (void)
 
           free (fullpath);
         }
-      free (this_dir);
     }
 
   {

@@ -22,27 +22,18 @@
 #ifndef INFO_FILESYS_H
 #define INFO_FILESYS_H
 
-/* The path on which we look for info files.  You can initialize this
-   from the environment variable INFOPATH if there is one, or you can
-   call info_add_path () to add paths to the beginning or end of it. */
-
-extern char *infopath ();
+/* Return a string describing the search path. */
+extern char *infopath_string ();
 
 /* Initialize INFOPATH */
 void infopath_init (void);
 
-/* Add PATH to the list of paths found in INFOPATH.  2nd argument says
-   whether to put PATH at the front or end of INFOPATH. */
-extern void infopath_add (char *path, int where);
+/* Add PATH to the list of paths found in INFOPATH. */
+extern void infopath_add (char *path);
 
 /* Iterate over INFOPATH */
 char *infopath_first (int *idx);
 char *infopath_next (int *idx);
-
-/* Defines that are passed along with the pathname to infopath_add (). */
-#define INFOPATH_PREPEND 0
-#define INFOPATH_APPEND  1
-#define INFOPATH_INIT    2
 
 /* Expand the filename in PARTIAL to make a real name for this operating
    system.  This looks in INFO_PATHS in order to find the correct file.
@@ -52,7 +43,7 @@ extern char *info_find_fullpath (char *partial, struct stat *finfo);
 /* Scan the list of directories in PATH looking for FILENAME.  If we find
    one that is a regular file, return it as a new string.  Otherwise, return
    a NULL pointer. */
-extern char *info_file_find_next_in_path (char *filename, char *path,
+extern char *info_file_find_next_in_path (char *filename,
 					  int *diridx, struct stat *finfo);
 
 /* Read the contents of PATHNAME, returning a buffer with the contents of
@@ -68,11 +59,6 @@ extern char *filesys_error_string (char *filename, int error_num);
 
 /* The number of the most recent file system error. */
 extern int filesys_error_number;
-
-/* Given a string containing units of information separated by colons,
-   return the next one pointed to by IDX, or NULL if there are no more.
-   Advance IDX to the character after the colon. */
-extern char *extract_colon_unit (char *string, int *idx);
 
 /* Return true if FILENAME is `dir', with a possible compression suffix.  */
 extern int is_dir_name (char *filename);
