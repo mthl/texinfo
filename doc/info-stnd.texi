@@ -136,20 +136,24 @@ being viewed, and to specify which directories to search for Info files.
 Here is a template showing an invocation of GNU Info from the shell:
 
 @example
-info [@var{option}@dots{}] [@var{manual}] [@var{menu-item}@dots{}]
+info [@var{option}@dots{}] [@var{manual}] [@var{menu-or-index-item}@dots{}]
 @end example
 
-Info will look for an entry called @var{manual} in the directory files
-(called @file{dir}) it finds in its search path.  (If @var{manual}
-is not given, Info by default displays a composite directory listing,
-constructed by combining the @file{dir} files.)  For example:
+Info will look for an entry called @var{manual} in the directory
+files, which are named @file{dir}, that it finds in its search path.
+The search is case-insensitive and considers substrings.
+(If @var{manual} is not given, by default Info displays a composite
+directory listing, constructed by combining the @file{dir} files.)
+A basic example:
 
 @example
-info ls
+info coreutils
 @end example
 
-This looks for an entry labelled @code{ls}, and if found, displays the
-referenced file at the location given.  
+This looks for an entry labelled @code{coreutils}, or
+@code{Coreutils}, etc., and if found, displays the referenced file at
+the location given.  @code{info coreu} will find it too, if there is
+no better match.
 
 @cindex compressed Info files
 @cindex files, compressed
@@ -171,15 +175,16 @@ a file.  Thus, on MS-DOS, if Info looks for @file{bison}, file names
 like @file{bison.igz} and @file{bison.inz} will be found and decompressed
 by @code{gunzip}.}
 
-(To bypass the directory lookup and look for Info files by their file
-name only, use the @option{--file} option, described below.)
-
+@cindex absolute Info file names
 @cindex relative Info file names
 @cindex file names, relative
 @cindex Info files, relative
 If you want to load a file without looking in the search path, specify
 @var{manual} either as an absolute path, or as a path relative to the
-current directory which contains at least one slash character.  Examples:
+current directory which contains at least one slash character.  (You
+can also use the @code{--file} option for similar behavior, described
+below.)
+Examples:
 
 @example
 info /usr/local/share/info/bash.info
@@ -187,16 +192,17 @@ info ./document.info
 @end example
 
 @noindent
-Info looks for @var{manual} only in the explicitly specified directory, and
-adds that directory to the value of @code{INFOPATH}.
+Info looks for @var{manual} only in the explicitly specified
+directory, and adds that directory to the value of @code{INFOPATH}.
 
 @anchor{command-line menu items}
 @cindex menu, following
-Info treats its remaining arguments as the names of menu items.  The
-first argument is a menu item in the @samp{Top} node of the file
-loaded, the second argument is a menu item in the first argument's
-node, etc.  You can easily move to the node of your choice by specifying
-the menu names which describe the path to that node.  For example,
+Info treats any remaining arguments as the names of menu items, or
+(see below) index entries.  The first argument is a menu item in the
+@samp{Top} node of the file loaded, the second argument is a menu item
+in the first argument's node, etc.  You can move to the node of your
+choice by specifying the menu names which describe the path to that
+node.  For example,
 
 @example
 info emacs buffers
@@ -218,8 +224,10 @@ info libc printf
 @end example
 
 @noindent
-This loads the libc manual and looks for @code{printf} in its indices; and
-if found, displays the file at the relevant location.
+This loads the libc Info manual and first looks for @code{printf} in
+the top-level menu as usual; since it isn't there (at this writing),
+it then looks in the indices.  If it's found there (which it is),
+displays the relevant node at the given location.
 
 A complete list of options follows.
 
@@ -351,10 +359,11 @@ without doing anything.  As with the @file{dir} lookup described above,
 any extra @var{menu-item} arguments are used to locate a node within the
 loaded file.
 
-As with the case when this option is not used, if @var{manual} is an absolute
-file name, or begins with @file{./} or @file{../}, or contains an intermediate
-directory, Info will only look for the file in the directory specified, and add
-this directory to @code{INFOPATH}.
+If @var{manual} is an absolute file name, or begins with @file{./} or
+@file{../}, or contains an intermediate directory, Info will only look
+for the file in the directory specified, and add this directory to
+@code{INFOPATH}.  (This is the same as what happens when @code{--file}
+is not given.)
 
 @item --help
 @itemx -h
@@ -389,8 +398,8 @@ of the @file{.info} file in your home directory.  @xref{Custom Key Bindings}.
 @cindex @code{--node} (@code{-n}) command line option
 @cindex node, selecting from the command line
 Specify a particular node to visit in the initial file that Info
-loads.  You may specify @code{--node} multiple times; for an interactive
-Info, each @var{nodename} is visited in its own window, for a
+loads.  You may specify @code{--node} multiple times: for an interactive
+Info, each @var{nodename} is visited in its own window; for a
 non-interactive Info (such as when @code{--output} is given) each
 @var{nodename} is processed sequentially.
 
@@ -419,13 +428,15 @@ is on by default.  If your terminal does not support these escapes, use
 @code{--no-raw-escapes} to make Info remove them.
 
 @cindex man pages, bold and underline
-Some versions of Groff (@pxref{Top,,,groff,Groff}) produce man pages with
-ANSI escape sequences for bold, italics, and underlined characters, and for
-colorized text.  If your system @command{man} command uses a version of Groff
-that does this, and your terminal supports these sequences, Info will display
-any bold or underlined text in man pages.  Some versions of Groff can be
-configured to turn off the use of these sequences or use an ``overstrike''
-output format instead.  @xref{grotty,,,*manpages*}.
+@vindex GROFF_SGR
+Some versions of Groff (@pxref{Top,,,groff,Groff}) produce man pages
+with ANSI escape sequences for bold, italics, and underlined
+characters, and for colorized text.  If your @command{man} command
+uses a version of Groff that does this (original GNU Groff does), and
+your terminal supports these sequences, Info will display any bold or
+underlined text in man pages.  Some distributions have modified Groff
+to require setting the @code{GROFF_SGR} environment variable to get
+these sequences.  @xref{Invoking grotty,,, groff, Groff}.
 
 @item --restore=@var{dribble-file}
 @cindex @code{--restore} command line option

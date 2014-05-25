@@ -1,3 +1,8 @@
+2014-05-25  Karl Berry  <karl@gnu.org>
+
+	* doc/info-stnd.texi (Invoking info): tweaks to invocation examples;
+	mention GROFF_SGR, etc.
+
 2014-05-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.c (window_new_screen_size): Call forget_window_and_nodes
