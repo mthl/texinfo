@@ -1,4 +1,11 @@
 2014-05-25  Gavin Smith  <gavinsmith0123@gmail.com>
+	
+	* info/session.c (info_scroll_half_screen_down)
+	(info_scroll_half_screen_up, info_down_line, info_up_line):
+	Rely on checks in _scroll_forward and _scroll_backward for
+	negative arguments.
+
+2014-05-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/filesys.c (info_file_find_next_in_path): Use infopath_next
 	to iterate over INFOPATH.  Don't take a path argument.  Callers

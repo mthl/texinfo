@@ -1326,19 +1326,13 @@ DECLARE_INFO_COMMAND (info_scroll_backward_page_only_set_window,
 /* Scroll the window forward by N lines.  */
 DECLARE_INFO_COMMAND (info_down_line, _("Scroll down by lines"))
 {
-  if (count < 0)
-    info_up_line (window, -count, key);
-  else
-    _scroll_forward (window, count, key, IS_PageOnly);
+  _scroll_forward (window, count, key, IS_PageOnly);
 }
 
 /* Scroll the window backward by N lines.  */
 DECLARE_INFO_COMMAND (info_up_line, _("Scroll up by lines"))
 {
-  if (count < 0)
-    info_down_line (window, -count, key);
-  else
-    _scroll_backward (window, count, key, IS_PageOnly);
+  _scroll_backward (window, count, key, IS_PageOnly);
 }
 
 /* Lines to scroll when using commands that scroll by half screen size
@@ -1350,22 +1344,17 @@ int default_scroll_size = -1;
 DECLARE_INFO_COMMAND (info_scroll_half_screen_down,
                       _("Scroll down by half screen size"))
 {
-  if (count < 0)
-    info_scroll_half_screen_up (window, -count, key);
+  int lines;
+
+  if (info_explicit_arg)
+    default_scroll_size = count;
+
+  if (default_scroll_size > 0)
+    lines = default_scroll_size;
   else
-    {
-      int lines;
+    lines = (the_screen->height + 1) / 2;
 
-      if (info_explicit_arg)
-        default_scroll_size = count;
-
-      if (default_scroll_size > 0)
-        lines = default_scroll_size;
-      else
-        lines = (the_screen->height + 1) / 2;
-
-      _scroll_forward (window, lines, key, IS_PageOnly);
-    }
+  _scroll_forward (window, lines, key, IS_PageOnly);
 }
 
 /* Scroll the window backward by N lines and remember N as default for
@@ -1373,22 +1362,7 @@ DECLARE_INFO_COMMAND (info_scroll_half_screen_down,
 DECLARE_INFO_COMMAND (info_scroll_half_screen_up,
                       _("Scroll up by half screen size"))
 {
-  if (count < 0)
-    info_scroll_half_screen_down (window, -count, key);
-  else
-    {
-      int lines;
-
-      if (info_explicit_arg)
-        default_scroll_size = count;
-
-      if (default_scroll_size > 0)
-        lines = default_scroll_size;
-      else
-        lines = (the_screen->height + 1) / 2;
-
-      _scroll_backward (window, lines, key, IS_PageOnly);
-    }
+  info_scroll_half_screen_up (window, key, -count);
 }
 
 
