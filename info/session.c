@@ -267,7 +267,7 @@ initialize_terminal_and_keymaps (char *init_file)
 void
 initialize_info_session (void)
 {
-  if (!terminal_prep_terminal())
+  if (!terminal_prep_terminal ())
     {
       /* Terminal too dumb to run interactively. */
       char *term_name = getenv ("TERM");
@@ -657,22 +657,6 @@ DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
       }
 }
 
-/* "Safe" version of info_next_line, for use when moving to a
-   reference within the window.  It assumes that point is 0 and
-   is safe in the sense that it won't allow to change nodes if
-   COUNT is greater than the number of lines in the current node.
-
-   This is necessary to avoid incorrect placement on malformed
-   info documents (such as gawk.info v. 3.1.5) when
-   cursor_movement_scrolls_p is set to 1. */
-
-static void
-internal_next_line (WINDOW *window, int count, unsigned char key)
-{
-  if (count >= 0 && count < window->line_count)
-    info_next_line (window, count, key);
-}
-  
 /* Move WINDOW's point up to the previous line if possible. */
 DECLARE_INFO_COMMAND (info_prev_line, _("Move up to the previous line"))
 {
@@ -2304,21 +2288,15 @@ DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
     }
 
   if (entry = select_menu_digit (window, key))
-    {
-      info_select_reference (window, entry);
-    }
+    info_select_reference (window, entry);
   else if (key == '0')
-    {
-      /* Don't print "There aren't 0 items in this menu." */
-      info_error ("%s", msg_no_menu_node);
-    }
+    /* Don't print "There aren't 0 items in this menu." */
+    info_error ("%s", msg_no_menu_node);
   else
-    {
-      info_error (ngettext ("There isn't %d item in this menu.",
-                            "There aren't %d items in this menu.",
-                            item),
-                  item);
-    }
+    info_error (ngettext ("There isn't %d item in this menu.",
+                          "There aren't %d items in this menu.",
+                          item),
+                item);
   return;
 }
 

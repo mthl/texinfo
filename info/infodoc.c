@@ -325,6 +325,7 @@ create_internal_info_help_node (int help_is_only_window_p)
         }
 
       text_buffer_printf (&msg, "---------------------\n");
+      text_buffer_printf (&msg, _("This is GNU Info version %s.  "), VERSION);
       text_buffer_printf (&msg, _("The current search path is:\n"));
       text_buffer_printf (&msg, "%s\n", infopath_str);
       text_buffer_printf (&msg, "---------------------\n\n");

@@ -1,3 +1,8 @@
+2014-05-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infodoc.c (create_internal_info_help_node): Show program
+	version in help window.
+	
 2014-05-25  Karl Berry  <karl@gnu.org>
 
 	* doc/info-stnd.texi (Invoking info): tweaks to invocation examples;
@@ -12,6 +17,9 @@
 	window_deletion_notifier to forget_window_and_nodes.
 
 	* info/window.c (window_physical_lines): Delete unused.
+
+	* info/session.c (internal_next_line): Delete unused.
+	(info_menu_digit): Formatting.
 
 2014-05-25  Gavin Smith  <gavinsmith0123@gmail.com>
 	
