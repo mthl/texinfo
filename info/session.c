@@ -281,10 +281,6 @@ initialize_info_session (void)
   initialize_info_signal_handler ();
   display_initialize_display (screenwidth, screenheight);
 
-  /* Tell the window system how to notify us when a window needs to be
-     asynchronously deleted (e.g., user resizes window very small). */
-  window_deletion_notifier = (VFunction *) forget_window_and_nodes;
-
   /* If input has not been redirected yet, make it come from unbuffered
      standard input. */
   if (!info_input_stream)

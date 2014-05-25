@@ -1,4 +1,12 @@
 2014-05-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.c (window_new_screen_size): Call forget_window_and_nodes
+	instead of window_deletion_notifier.
+	(window_deletion_notifier): Removed.
+	* info/session.c (initialize_window_session): Don't set
+	window_deletion_notifier to forget_window_and_nodes.
+
+2014-05-25  Gavin Smith  <gavinsmith0123@gmail.com>
 	
 	* info/session.c (info_scroll_forward, info_scroll_backward)
 	(info_scroll_forward_set_window, info_scroll_backward_set_window)

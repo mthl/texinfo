@@ -96,11 +96,6 @@ window_initialize_windows (int width, int height)
    after deleting the window from our chain of windows.  If DELETER is NULL,
    nothing extra is done.  The last window can never be deleted, but it can
    become invisible. */
-
-/* If non-null, a function to call with WINDOW as argument when the function
-   window_new_screen_size () has deleted WINDOW. */
-VFunction *window_deletion_notifier = NULL;
-
 void
 window_new_screen_size (int width, int height)
 {
@@ -150,8 +145,7 @@ window_new_screen_size (int width, int height)
       if (!win)
         win = windows;
 
-      if (window_deletion_notifier)
-        (*window_deletion_notifier) (win);
+      forget_window_and_nodes (win);
 
       window_delete_window (win);
       numwins--;
