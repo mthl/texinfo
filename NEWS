@@ -42,6 +42,7 @@ one of the relevant sections:
   . invoking info with an absolute or explicitly relative file name
     (./foo.info, /tmp/foo.info, etc.) just visits that file.
   . new option --init-file allows overriding ~/.info.
+  . new command M-x info-version.
   . new variable infopath-no-defaults allows omitting the compile-time
     Info directory from the Info search path.
   . test suite at build time.

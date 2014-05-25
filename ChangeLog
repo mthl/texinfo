@@ -5,6 +5,7 @@
 	
 	* info/session.c (info_info_version): New command to show version
 	of program.
+	* NEWS,
 	* doc/info-stnd.texi (Miscellanous Commands): Document "M-x
 	info-version".
 

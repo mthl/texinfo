@@ -151,9 +151,22 @@ info coreutils
 @end example
 
 This looks for an entry labelled @code{coreutils}, or
-@code{Coreutils}, etc., and if found, displays the referenced file at
-the location given.  @code{info coreu} will find it too, if there is
-no better match.
+@code{Coreutils}, etc., and if found, displays the referenced file
+(e.g., @file{coreutils.info}) at the location given.
+@code{info coreu} will find it too, if there is no better match.
+
+Another example:
+
+@example
+info ls
+@end example
+
+Assuming the normal @code{dir} entry for @code{ls}, this will show the
+@code{ls} documentation, which happens to be within the
+@code{coreutils} manual rather than a separate manual.  The @code{dir}
+entries can point to an any node within a manual, so that users don't
+have to be concerned with the exact structure used by different
+authors.
 
 @cindex compressed Info files
 @cindex files, compressed
