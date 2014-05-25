@@ -4681,6 +4681,11 @@ DECLARE_INFO_COMMAND (info_abort_key, _("Cancel current operation"))
   info_last_executed_command = NULL;
 }
 
+DECLARE_INFO_COMMAND (info_info_version, _("Display version of Info being run"))
+{
+  window_message_in_echo_area (_("GNU Info version %s"), VERSION);
+}
+
 /* Move the cursor to the desired line of the window. */
 DECLARE_INFO_COMMAND (info_move_to_window_line,
    _("Move the cursor to a specific line of the window"))

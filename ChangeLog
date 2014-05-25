@@ -3,6 +3,11 @@
 	* info/infodoc.c (create_internal_info_help_node): Show program
 	version in help window.
 	
+	* info/session.c (info_info_version): New command to show version
+	of program.
+	* doc/info-stnd.texi (Miscellanous Commands): Document "M-x
+	info-version".
+
 2014-05-25  Karl Berry  <karl@gnu.org>
 
 	* doc/info-stnd.texi (Invoking info): tweaks to invocation examples;

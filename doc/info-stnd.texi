@@ -1909,6 +1909,10 @@ Show information about what's currently being viewed in the echo area:
 the Info file name, and current line number and percentage within the
 current node.
 
+@item @kbd{M-x info-version}
+@findex info-version
+Display the name and version of the currently running Info program.
+
 @end table
 
 Here are the commands for creating a numeric argument:
