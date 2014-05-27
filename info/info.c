@@ -321,6 +321,13 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
       char **p = argv;
       char *program;
 
+      if (ref_index > 0)
+        {
+          /* Discard a dir entry that was found. */
+          free (ref_list[0]);
+          ref_index = 0;
+        }
+
       /* If they said "info --show-options foo bar baz",
          the last of the arguments is the program whose
          options they want to see.  */

@@ -1,4 +1,9 @@
-2014-05-25  Gavin Smith  <gavinsmith0123@gmail.com>
+2014-05-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (add_initial_nodes) <--show-options>: Avoid loading
+	extra node if we came here from a dir entry.
+
+2014-05-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (info_get_menu_entry_by_label): New argument
 	for sloppy menu reading.
