@@ -1,5 +1,27 @@
 2014-05-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (info_get_menu_entry_by_label): New argument
+	for sloppy menu reading.
+
+	* info/info.c (get_initial_file): Calls to lookup_dir_entry updated.
+	Try reading dir files sloppily if no exact match was found.  Function
+	reorganized.
+	(add_initial_nodes, main): Handle case when we were invoked
+	like "--node (emacs)Buffers".
+	(info_find_matching_files): Check for dir entries as well.
+
+	* info/dir.c (lookup_dir_entry): New argument for whether to search
+	inexactly.  Callers updated.
+	(dir_entry_of_infodir): New function.
+
+	* info/session.c (entry_in_menu): Removed.  Caller in
+	info_intuit_options_node updated.
+	(info_win_find_node): Null check.
+
+	* info/filesys.c (info_add_extension): No longer static.
+
+2014-05-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infodoc.c (create_internal_info_help_node): Show program
 	version in help window.
 	

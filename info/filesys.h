@@ -46,6 +46,9 @@ extern char *info_find_fullpath (char *partial, struct stat *finfo);
 extern char *info_file_find_next_in_path (char *filename,
 					  int *diridx, struct stat *finfo);
 
+extern char *info_add_extension (char *dirname, char *filename,
+                                 struct stat *finfo);
+
 /* Read the contents of PATHNAME, returning a buffer with the contents of
    that file in it, and returning the size of that buffer in FILESIZE.
    FINFO is a stat struct which has already been filled in by the caller.

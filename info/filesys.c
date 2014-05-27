@@ -27,7 +27,7 @@
 
 /* Local to this file. */
 static char *info_file_in_path (char *filename, struct stat *finfo);
-static char *info_add_extension (char *dirname, char *fname,
+char *info_add_extension (char *dirname, char *fname,
                                  struct stat *finfo);
 
 static char *filesys_read_compressed (char *pathname, size_t *filesize);
@@ -191,7 +191,7 @@ info_file_in_path (char *filename, struct stat *finfo)
    extensions if necessary.  FILENAME can be an absolute path or a path
    relative to the current directory, in which case DIRNAME should be
    null.  Return it as a new string; otherwise return a NULL pointer. */
-static char *
+char *
 info_add_extension (char *dirname, char *filename, struct stat *finfo)
 {
   char *try_filename;

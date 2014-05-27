@@ -1804,8 +1804,8 @@ info_win_find_node (INFO_WINDOW *win, NODE *node)
     {
       NODE *p = win->nodes[i];
 
-      if (strcmp (p->filename, node->filename) == 0 &&
-	  strcmp (p->nodename, node->nodename) == 0)
+      if (p->filename && !strcmp (p->filename, node->filename)
+	  && p->nodename && !strcmp (p->nodename, node->nodename))
 	break;
     }
   return i;
@@ -2795,30 +2795,9 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
         }
 
       /* Find the specified menu item. */
-      entry = info_get_menu_entry_by_label (initial_node, arg);
+      entry = info_get_menu_entry_by_label (initial_node, arg, !strict);
 
-      /* If the item wasn't found, search the list sloppily.  Perhaps this
-         user typed "buffer" when they really meant "Buffers". */
-      if (!strict && !entry)
-        {
-          int i;
-          int best_guess = -1;
-
-	  debug (3, ("no entry found: guessing"));
-          for (i = 0; (entry = initial_node->references[i]); i++)
-            {
-              if (mbscasecmp (entry->label, arg) == 0)
-                break;
-              else if (best_guess == -1
-                    && (mbsncasecmp (entry->label, arg, strlen (arg)) == 0))
-                  best_guess = i;
-            }
-
-          if (!entry && best_guess != -1)
-            entry = initial_node->references[best_guess];
-        }
-
-      /* If we still failed to find the reference: */
+      /* If we failed to find the reference: */
       if (!entry)
         {
           if (error)
@@ -2949,47 +2928,6 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
     window_clear_echo_area ();
 }
 
-/* Search the menu in NODE for a (possibly mis-spelled) entry ARG.
-   Return the menu entry, or the best guess for what they meant by ARG,
-   or NULL if there's nothing in this menu seems to fit the bill.
-   If EXACT is non-zero, allow only exact matches.  */
-static REFERENCE *
-entry_in_menu (char *arg, NODE *node, int exact)
-{
-  REFERENCE **menu = node->references;
-  REFERENCE *entry;
-
-  if (!menu)
-    return 0;
-
-  /* First, try to find the specified menu item verbatim.  */
-  entry = info_get_menu_entry_by_label (node, arg);
-
-  /* If the item wasn't found, search the list sloppily.  Perhaps we
-     have "Option Summary", but ARG is "option".  */
-  if (!entry && !exact)
-    {
-      int i;
-      int best_guess = -1;
-
-      for (i = 0; (entry = menu[i]); i++)
-        {
-          if (REFERENCE_MENU_ITEM != entry->type) continue;
-
-          if (mbscasecmp (entry->label, arg) == 0)
-            break;
-          else
-            if (mbsncasecmp (entry->label, arg, strlen (arg)) == 0)
-              best_guess = i;
-        }
-
-      if (!entry && best_guess != -1)
-        entry = menu[best_guess];
-    }
-
-  return entry;
-}
-
 /* Find the node that is the best candidate to list the PROGRAM's
    invocation info and its command-line options, by looking for menu
    items and chains of menu items with characteristic names.  Return
@@ -3047,8 +2985,8 @@ info_intuit_options_node (NODE *initial_node, char *program)
           sprintf (nodename, *try_node, program);
           /* The last resort "%s" is dangerous, so we restrict it
              to exact matches here.  */
-          new_entry = entry_in_menu (nodename, initial_node,
-                                 strcmp (*try_node, "%s") == 0);
+          new_entry = info_get_menu_entry_by_label
+            (initial_node, nodename, strcmp (*try_node, "%s"));
           free (nodename);
           if (new_entry)
             break;

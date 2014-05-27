@@ -245,7 +245,7 @@ read_quoted_string (char *start, char *terminator, char **output)
    pointer to the ENTRY if found, or null.  Return value should not
    be freed by caller. */
 REFERENCE *
-info_get_menu_entry_by_label (NODE *node, char *label) 
+info_get_menu_entry_by_label (NODE *node, char *label, int sloppy) 
 {
   register int i;
   REFERENCE *entry;
@@ -254,12 +254,35 @@ info_get_menu_entry_by_label (NODE *node, char *label)
   if (!references)
     return 0;
 
+  /* First look for an exact match. */
   for (i = 0; entry = references[i]; i++)
     {
       if (REFERENCE_MENU_ITEM != entry->type) continue;
       if (strcmp (label, entry->label) == 0)
         return entry;
     }
+
+  /* If the item wasn't found, search the list sloppily.  Perhaps this
+     user typed "buffer" when they really meant "Buffers". */
+  if (sloppy)
+    {
+      int i;
+      int best_guess = -1;
+
+      for (i = 0; entry = references[i]; i++)
+        {
+          if (REFERENCE_MENU_ITEM != entry->type) continue;
+          if (mbscasecmp (label, entry->label) == 0)
+            return entry; /* Exact, case-insensitive match. */
+          else if (best_guess == -1
+                && (mbsncasecmp (entry->label, label, strlen (label)) == 0))
+              best_guess = i;
+        }
+
+      if (!entry && best_guess != -1)
+        return references[best_guess];
+    }
+
   return 0;
 }
 

@@ -193,6 +193,7 @@ void forget_info_file (char *filename);
 
 /* Found in dir.c */
 extern NODE *get_dir_node (void);
-extern REFERENCE *lookup_dir_entry (char *label);
+extern REFERENCE *lookup_dir_entry (char *label, int sloppy);
+extern REFERENCE *dir_entry_of_infodir (char *label, char *searchdir);
 
 #endif /* not NODES_H */

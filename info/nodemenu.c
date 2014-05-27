@@ -325,9 +325,11 @@ DECLARE_INFO_COMMAND (select_visited_node,
       REFERENCE *entry;
 
       /* Find the selected label in the references. */
-      entry = info_get_menu_entry_by_label (node, line);
+      entry = info_get_menu_entry_by_label (node, line, 0);
 
       if (!entry)
+        /* This shouldn't happen, because LINE was in the completion list
+           built from the list of references. */
         info_error (_("The reference disappeared! (%s)."), line);
       else
         info_select_reference (window, entry);

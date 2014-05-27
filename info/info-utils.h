@@ -65,8 +65,10 @@ long read_quoted_string (char *start, char *terminator, char **output);
 void scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr);
 
 /* Get the menu entry associated with LABEL in NODE.  Return a
-   pointer to the reference if found, or NULL. */
-extern REFERENCE *info_get_menu_entry_by_label (NODE *node, char *label);
+   pointer to the reference if found, or NULL.  If SLOPPY, accept
+   initial substrings and check insensitively to case. */
+extern REFERENCE *info_get_menu_entry_by_label (NODE *node, char *label,
+                                                int sloppy);
 
 /* A utility function for concatenating REFERENCE **.  Returns a new
    REFERENCE ** which is the concatenation of REF1 and REF2.  The REF1

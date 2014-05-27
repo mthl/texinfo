@@ -166,72 +166,76 @@ static char *
 get_initial_file (char *filename, int *argc, char ***argv, char **error)
 {
   char *initial_file = 0;           /* First file loaded by Info. */
+  REFERENCE *entry;
 
-  if (!filename)
+  /* If there are any more arguments, the initial file is the
+     dir entry given by the first one. */
+  if (!filename && (*argv)[0])
     {
-      REFERENCE *entry = 0;
+      /* If they say info -O info, we want to show them the invocation node
+         for standalone info; there's nothing useful in info.texi.  */
+      if (goto_invocation_p && (*argv)[0]
+          && mbscasecmp ((*argv)[0], "info") == 0)
+        (*argv)[0] = "info-stnd";
 
-      /* If there are any more arguments, the initial file is the
-         dir entry given by the first one. */
-      if ((*argv)[0])
+      entry = lookup_dir_entry ((*argv)[0], 0);
+      if (entry)
         {
-          /* If they say info -O info, we want to show them the invocation node
-             for standalone info; there's nothing useful in info.texi.  */
-          if (goto_invocation_p && (*argv)[0]
-              && mbscasecmp ((*argv)[0], "info") == 0)
-            (*argv)[0] = "info-stnd";
-
-          entry = lookup_dir_entry ((*argv)[0]);
-
-          if (entry)
+          initial_file = info_find_fullpath (entry->filename, 0);
+          if (initial_file)
             {
-              initial_file = info_find_fullpath (entry->filename, 0);
+              (*argv)++; /* Advance past first remaining argument. */
+              (*argc)--;
+
               /* Store full path, so that we find the already loaded file in
                  info_find_file, and show the full path if --where is used. */
               entry->filename = initial_file;
               add_pointer_to_array (info_copy_reference (entry),
                   ref_index, ref_list, ref_slots, 2);
+              return initial_file;
             }
-
-          if (!initial_file)
-            /* Try finding a file with this name, in case
-               it exists, but wasn't listed in dir. */
-            initial_file = info_find_fullpath ((*argv)[0], 0);
-
-          if (initial_file)
-            {
-              (*argv)++; /* Advance past first remaining argument. */
-              (*argc)--;
-            }
-          else
-            asprintf (error, _("No menu item `%s' in node `%s'."),
-                (*argv)[0], "(dir)Top");
         }
-      /* Otherwise, we want the dir node.  The only node to be displayed
-         or output will be "Top". */
-      else
-        return 0;
     }
-  else
+
+  /* User used "--file". */
+  if (filename)
     {
       initial_file = info_find_fullpath (filename, 0);
 
-      if (!initial_file && filesys_error_number)
-        *error = filesys_error_string (filename, filesys_error_number);
+      if (!initial_file)
+        {
+          if (filesys_error_number)
+            *error = filesys_error_string (filename, filesys_error_number);
+        }
+      else
+        return initial_file;
+    }
+
+  /* File name lookup. */
+  if (!filename && (*argv)[0])
+    {
+      /* Try finding a file with this name, in case
+         it exists, but wasn't listed in dir. */
+      initial_file = info_find_fullpath ((*argv)[0], 0);
+      if (initial_file)
+        {
+          (*argv)++; /* Advance past first remaining argument. */
+          (*argc)--;
+          return initial_file;
+        }
+      else
+        asprintf (error, _("No menu item `%s' in node `%s'."),
+            (*argv)[0], "(dir)Top");
     }
 
   /* Fall back to loading man page. */
-  if (!initial_file)
+  if (filename || (*argv)[0])
     {
       NODE *man_node;
 
       debug (3, ("falling back to manpage node"));
 
-      if (!filename)
-        filename = (*argv)[0];
-
-      man_node = get_manpage_node (filename);
-
+      man_node = get_manpage_node (filename ? filename : (*argv)[0]);
       if (man_node)
         {
           REFERENCE *new_ref;
@@ -240,7 +244,7 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
 
           new_ref = xzalloc (sizeof (REFERENCE));
           new_ref->filename = MANPAGE_FILE_BUFFER_NAME;
-          new_ref->nodename = filename;
+          new_ref->nodename = filename ? filename : (*argv)[0];
           add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
 
           initial_file = MANPAGE_FILE_BUFFER_NAME;
@@ -248,7 +252,25 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
         }
     }
 
-  return initial_file;
+  /* Inexact dir lookup. */
+  if (!filename && (*argv)[0])
+    {
+      entry = lookup_dir_entry ((*argv)[0], 1);
+      if (entry)
+        {
+          initial_file = info_find_fullpath (entry->filename, 0);
+          /* Store full path, so that we find the already loaded file in
+             info_find_file, and show the full path if --where is used. */
+          entry->filename = initial_file;
+          add_pointer_to_array (info_copy_reference (entry),
+              ref_index, ref_list, ref_slots, 2);
+          return initial_file;
+        }
+    }
+
+  /* Otherwise, we want the dir node.  The only node to be displayed
+     or output will be "Top". */
+  return 0;
 }
 
 /* Expand list of nodes to be loaded. */
@@ -274,12 +296,22 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
       for (i = 0; user_nodenames[i]; i++)
         {
           new_ref = xzalloc (sizeof (REFERENCE));
-          new_ref->filename = initial_file->fullpath;
-          new_ref->nodename = user_nodenames[i];
+
+          /* Parse node spec to support invoking
+             like info --node "(emacs)Buffers". */
+          info_parse_node (user_nodenames[i], PARSE_NODE_VERBATIM);
+          if (info_parsed_filename)
+            new_ref->filename = xstrdup (info_parsed_filename);
+          else
+            new_ref->filename = initial_file->fullpath;
+          new_ref->nodename = xstrdup (info_parsed_nodename);
 
           add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
         }
     }
+
+  if (!initial_file)
+    return;
 
   if (goto_invocation_p)
     {
@@ -449,22 +481,49 @@ allfiles_create_node (char *term, REFERENCE **fref)
 static void
 info_find_matching_files (char *filename)
 {
+  int i;
+  char *searchdir;
+
   REFERENCE *new_ref;
   NODE *man_node;
 
-  int i = 0;
+  /* Check for dir entries first. */
+  i = 0;
+  for (searchdir = infopath_first (&i); searchdir;
+       searchdir = infopath_next (&i))
+    {
+      new_ref = dir_entry_of_infodir (filename, searchdir);
 
+      if (new_ref)
+        add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+    }
+
+  /* Look for files with matching names. */
+  i = 0;
   while (1)
     {
       char *p;
+      int j;
 
       p = info_file_find_next_in_path (filename, &i, 0);
       if (!p)
         break;
 
-      new_ref = xzalloc (sizeof (REFERENCE));
-      new_ref->filename = p;
-      add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+      /* Add to list only if the file is not in the list already (which would
+         happen if there was a dir entry with the label and filename both
+         being this file). */
+      for (j = 0; j < ref_index; j++)
+        {
+          if (!strcmp (p, ref_list[j]->filename))
+            break;
+        }
+
+      if (j == ref_index)
+        {
+          new_ref = xzalloc (sizeof (REFERENCE));
+          new_ref->filename = p;
+          add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+        }
     }
 
   /* Check for man page. */
@@ -803,9 +862,13 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
         }
 
       /* Add nodes to start with (unless we fell back to the man page). */
-      if (initial_file && strcmp (MANPAGE_FILE_BUFFER_NAME, initial_file))
+      if (!initial_file || strcmp (MANPAGE_FILE_BUFFER_NAME, initial_file))
         {
-          initial_fb = info_find_file (initial_file);
+          if (initial_file)
+            initial_fb = info_find_file (initial_file);
+          else
+            initial_fb = 0;
+
           add_initial_nodes (initial_fb, argc, argv, &error);
         }
     }

@@ -41,6 +41,7 @@ FILE_BUFFER *dir_buffer = 0;
 static void create_dir_buffer (void);
 static NODE *build_dir_node (void);
 
+/* Return composite directory node.  Return value should not be freed. */
 NODE *
 get_dir_node (void)
 {
@@ -276,34 +277,52 @@ insert_text_into_node (NODE *node, long start, char *text, int textlen)
 }
 
 REFERENCE *
-lookup_dir_entry (char *label)
+lookup_dir_entry (char *label, int sloppy)
 {
   NODE *node = get_dir_node ();
   REFERENCE *entry;
 
-  entry = info_get_menu_entry_by_label (node, label);
-
-  /* If the item wasn't found, search the list sloppily, e.g. the
-     user typed "buffer" when they really meant "Buffers". */
-  /* FIXME: Should this be placed in info_get_menu_entry_by_label? */
-  if (!entry)
-    {
-      int i;
-      int best_guess = -1;
-
-      for (i = 0; (entry = node->references[i]); i++)
-        {
-          if (mbscasecmp (entry->label, label) == 0)
-            break;
-          else if (best_guess == -1
-                && (mbsncasecmp (entry->label, label, strlen (label)) == 0))
-              best_guess = i;
-        }
-
-      if (!entry && best_guess != -1)
-        entry = node->references[best_guess];
-    }
+  entry = info_get_menu_entry_by_label (node, label, sloppy);
 
   return entry;
 }
+
+/* Look up entry in "dir" and "localdir" in search directory.  Return
+   value is a pointer to a newly allocated REFERENCE. */
+REFERENCE *
+dir_entry_of_infodir (char *label, char *searchdir)
+{
+  int da_index;
+  char *dir_filename;
+  char *dir_fullpath;
+
+  struct stat dummy;
+  char *entry_fullpath;
+
+  NODE *dir_node;
+  REFERENCE *entry;
+
+  for (da_index = 0; dir_filename = dirs_to_add[da_index]; da_index++)
+    {
+      dir_fullpath = info_add_extension (searchdir, dir_filename, &dummy);
+      if (!dir_fullpath)
+        continue;
+
+      dir_node = info_get_node (dir_fullpath, "Top", PARSE_NODE_VERBATIM);
+      free (dir_fullpath);
+      entry = info_get_menu_entry_by_label (dir_node, label, 1);
+      if (!entry)
+        continue;
+
+      entry = info_copy_reference (entry);
+      entry_fullpath = info_add_extension (searchdir, entry->filename, &dummy);
+      if (entry_fullpath)
+        {
+          free (entry->filename);
+          entry->filename = entry_fullpath;
+        }
+      return entry;
+    }
+}
+
 
