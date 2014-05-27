@@ -463,17 +463,19 @@ allfiles_create_node (char *term, REFERENCE **fref)
 		      "%s File names matching `%s'\n\n"
 		      "Info File Index\n"
 		      "***************\n\n"
-		      "File names that match `%s':\n\n"
-		      "* Menu:\n\n",
+		      "File names that match `%s':\n",
                       INFO_NODE_LABEL,
 		      term, term);
 
+  text_buffer_add_string (&text, "\000\010[index\000\010]", 11);
+  text_buffer_printf (&text, "\n* Menu:\n\n");
+
   for (i = 0; fref[i]; i++)
     {
-      text_buffer_printf (&text, "* (%s)", fref[i]->filename);
+      text_buffer_printf (&text, "* %4i: (%s)", i+1, fref[i]->filename);
       if (fref[i]->nodename)
 	text_buffer_printf (&text, "%s", fref[i]->nodename);
-      text_buffer_printf (&text, "::\n");
+      text_buffer_printf (&text, ".\n");
     }
 
   allfiles_node = info_create_node ();

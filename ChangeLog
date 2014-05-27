@@ -3,6 +3,11 @@
 	* info/info.c (add_initial_nodes) <--show-options>: Avoid loading
 	extra node if we came here from a dir entry.
 
+	(allfiles_create_node): Use numbers as labels, as it was before.
+	Using the label as the node spec caused problems when the referenced
+	node didn't exist.  Output index tag to show destinations when
+	preprocess-nodes=On.
+
 2014-05-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (info_get_menu_entry_by_label): New argument
