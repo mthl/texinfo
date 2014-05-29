@@ -502,6 +502,468 @@ info_set_node_of_window (WINDOW *window, NODE *node)
 /*                                                                  */
 /* **************************************************************** */
 
+/* Controls whether scroll-behavior affects line movement commands */
+int cursor_movement_scrolls_p = 1; 
+
+/* Immediately make WINDOW->point visible on the screen, and move the
+   terminal cursor there. */
+static void
+info_show_point (WINDOW *window)
+{
+  int old_pagetop;
+
+  old_pagetop = window->pagetop;
+  window_adjust_pagetop (window);
+  if (old_pagetop != window->pagetop)
+    {
+      int new_pagetop;
+
+      new_pagetop = window->pagetop;
+      window->pagetop = old_pagetop;
+      set_window_pagetop (window, new_pagetop);
+    }
+
+  if (window->flags & W_UpdateWindow)
+    display_update_one_window (window);
+
+  display_cursor_at_point (window);
+}
+
+/* Move WINDOW->point to NEW line index, trying to place cursor in
+   goal column. */
+static void
+move_to_new_line (int new, WINDOW *window)
+{
+  int goal;
+
+  if (new >= window->line_count || new < 0)
+    return;
+  
+  goal = window_get_goal_column (window);
+  window->goal_column = goal;
+
+  window->point = window->line_starts[new];
+  window->point += window_chars_to_goal (window, goal);
+  info_show_point (window);
+}
+
+static int forward_move_node_structure (WINDOW *window, int behaviour);
+static int backward_move_node_structure (WINDOW *window, int behaviour);
+
+/* Move WINDOW's point down to the next line if possible. */
+DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
+{
+  int old_line, new_line;
+
+  if (count < 0)
+    info_prev_line (window, -count, key);
+  else
+    while (count)
+      {
+        int diff;
+
+        old_line = window_line_of_point (window);
+        diff = window->line_count - old_line;
+        if (diff > count)
+          diff = count;
+
+        count -= diff;
+        new_line = old_line + diff;
+        if (new_line >= window->line_count)
+          {
+            if (cursor_movement_scrolls_p)
+              {
+                if (forward_move_node_structure (window,
+                                                 info_scroll_behaviour))
+                  break;
+                move_to_new_line (0, window);
+              }
+            else
+              break;
+          }
+        else
+          move_to_new_line (new_line, window);
+      }
+}
+
+/* Move WINDOW's point up to the previous line if possible. */
+DECLARE_INFO_COMMAND (info_prev_line, _("Move up to the previous line"))
+{
+  int old_line, new_line;
+
+  if (count < 0)
+    info_next_line (window, -count, key);
+  else
+    while (count)
+      {
+        int diff;
+        
+        old_line = window_line_of_point (window);
+        diff = old_line + 1;
+        if (diff > count)
+          diff = count;
+        
+        count -= diff;
+        new_line = old_line - diff;
+        
+        if (new_line < 0
+            && cursor_movement_scrolls_p)
+          {
+            if (backward_move_node_structure (window, info_scroll_behaviour))
+              break;
+            if (window->line_count > window->height)
+              set_window_pagetop (window, window->line_count - window->height);
+            move_to_new_line (window->line_count - 1, window);
+          }
+        else
+          move_to_new_line (new_line, window);
+      }
+}
+
+/* Return true if POINT sits on a newline character. */
+static int
+looking_at_newline (WINDOW *win, long point)
+{
+  mbi_iterator_t iter;
+  mbi_init (iter, win->node->contents + point,
+	    win->node->nodelen - point);
+  mbi_avail (iter);
+  return mbi_cur (iter).wc_valid && mbi_cur (iter).wc == '\n';
+}
+
+/* Return true if WIN->point sits on an alphanumeric character. */
+static int
+looking_at_alnum (WINDOW *win)
+{
+  mbi_iterator_t iter;
+  mbi_init (iter, win->node->contents + win->point,
+	    win->node->nodelen - win->point);
+  mbi_avail (iter);
+
+  return mbi_cur (iter).wc_valid && iswalnum (mbi_cur (iter).wc);
+}
+
+/* Advance point of WIN to the beginning of the next logical line.  Return
+   0 if we can't go any further. */
+static int
+point_next_line (WINDOW *win)
+{
+  int line = window_line_of_point (win);
+  if (line + 1 < win->line_count)
+    {
+      win->point = win->line_starts[line + 1];
+      window_compute_line_map (win);
+      return 1;
+    }
+
+  if (cursor_movement_scrolls_p
+      && forward_move_node_structure (win, info_scroll_behaviour) == 0)
+    {
+      win->point = 0;
+      return 1;
+    }
+
+  win->point = win->node->nodelen - 1;
+  return 0;
+}
+
+/* Move point of WIN to the end of the previous logical line.  Return
+   0 if we can't go any further. */
+static int
+point_prev_line (WINDOW *win)
+{
+  int line = window_line_of_point (win);
+  if (line > 0)
+    {
+      win->point = win->line_starts[line - 1];
+      window_compute_line_map (win);
+      win->point = win->line_map.map[win->line_map.used - 1];
+      return 1;
+    }
+
+  if (cursor_movement_scrolls_p
+      && backward_move_node_structure (win, info_scroll_behaviour) == 0)
+    {
+      win->point = win->node->nodelen - 1;
+      if (win->line_count > win->height)
+        set_window_pagetop (win, win->line_count - win->height);
+      return 1;
+    }
+
+  win->point = 0;
+  return 0;
+}
+
+/* Advance point to the next multibyte character. */
+static void
+point_forward_char (WINDOW *win)
+{
+  long point = win->point;
+  int col;
+
+  col = window_point_to_column (win, point, &point) + 1;
+  if (col < win->line_map.used)
+    win->point = win->line_map.map[col];
+  else
+    point_next_line (win);
+}
+
+/* Set point to the previous multibyte character. */
+static void
+point_backward_char (WINDOW *win)
+{
+  long point = win->point;
+  int col;
+
+  col = window_point_to_column (win, point, &point);
+  for (; col >= 0 && win->line_map.map[col] == point; col--)
+    ;
+
+  if (col >= 0)
+    win->point = win->line_map.map[col];
+  else
+    point_prev_line (win);
+}
+
+/* Advance window point to the beginning of the next word. */
+static void
+point_forward_word (WINDOW *win)
+{
+  int col;
+
+  col = window_point_to_column (win, win->point, &win->point);
+
+  /* Skip white space forwards. */
+  while (1)
+    {
+      for (; col < win->line_map.used; col++)
+	{
+          win->point = win->line_map.map[col];
+          if (looking_at_alnum (win))
+            goto skipped_whitespace;
+	}
+      if (!point_next_line (win))
+        return;
+      col = 0;
+    }
+  skipped_whitespace:
+
+  while (1)
+    {
+      for (; col < win->line_map.used; col++)
+	{
+          win->point = win->line_map.map[col];
+	  if (!looking_at_alnum (win))
+            return;
+	}
+      if (!point_next_line (win))
+        return;
+      col = 0;
+    }
+}
+
+/* Set window point to the beginning of the previous word. */
+static void
+point_backward_word (WINDOW *win)
+{
+  int col;
+
+  point_backward_char (win);
+  col = window_point_to_column (win, win->point, &win->point);
+
+  /* Skip white space backwards. */
+  while (1)
+    {
+      for (; col >= 0; col--)
+        {
+          win->point = win->line_map.map[col];
+          if (looking_at_alnum (win))
+            goto skipped_whitespace;
+        }
+      if (!point_prev_line (win))
+        return;
+      col = win->line_map.used - 1;
+    }
+  skipped_whitespace:
+
+  while (1)
+    {
+      long point;
+
+      for (; col >= 0; col--)
+	{
+          win->point = win->line_map.map[col];
+          if (win->point == 0)
+            return;
+	  if (!looking_at_alnum (win))
+            {
+              point_forward_char (win);
+              return;
+            }
+	}
+      if (!point_prev_line (win))
+        return;
+      col = win->line_map.used - 1;
+
+      if (looking_at_newline (win, win->point))
+        {
+          point_forward_char (win);
+          return;
+        }
+    }
+}
+
+/* Move WINDOW's point to the end of the logical line. */
+DECLARE_INFO_COMMAND (info_end_of_line, _("Move to the end of the line"))
+{
+  long point;
+  if (!window->node)
+    return;
+
+  /* Find physical line with end of logical line in it. */
+  window_compute_line_map (window);
+  while (!looking_at_newline (window,
+              window->line_map.map[window->line_map.used - 1]))
+    point_next_line (window);
+
+  if (window->line_map.used == 0)
+    return; /* This shouldn't happen. */
+
+  if (window->line_map.used == 1)
+    /* Empty line - return offset of terminating newline. */
+    point = window->line_map.map[0];
+  else
+    /* Otherwise of last character in line. */
+    point = window->line_map.map[window->line_map.used - 2];
+
+  if (point != window->point)
+    {
+      window->point = point;
+      info_show_point (window);
+    }
+}
+
+/* Move WINDOW's point to the beginning of the logical line. */
+DECLARE_INFO_COMMAND (info_beginning_of_line, _("Move to the start of the line"))
+{
+  int old_point = window->point;
+  int point;
+  
+  while (1)
+    {
+      window_compute_line_map (window);
+      point = window->line_map.map[0];
+      if (point == 0 || looking_at_newline (window, point-1))
+	break;
+      point_prev_line (window);
+    }
+
+  if (point != old_point)
+    {
+      window->point = point;
+      info_show_point (window);
+    }
+  else
+    window->point = old_point;
+}
+
+/* Move point forward in the node. */
+DECLARE_INFO_COMMAND (info_forward_char, _("Move forward a character"))
+{
+  if (count < 0)
+    info_backward_char (window, -count, key);
+  else
+    {
+      while (count--)
+        point_forward_char (window);
+      info_show_point (window);
+    }
+}
+
+/* Move point backward in the node. */
+DECLARE_INFO_COMMAND (info_backward_char, _("Move backward a character"))
+{
+  if (count < 0)
+    info_forward_char (window, -count, key);
+  else
+    {
+      while (count--)
+        point_backward_char (window);
+      info_show_point (window);
+    }
+}
+
+/* Move forward a word in this node. */
+DECLARE_INFO_COMMAND (info_forward_word, _("Move forward a word"))
+{
+  if (count < 0)
+    {
+      info_backward_word (window, -count, key);
+      return;
+    }
+
+  while (count--)
+    point_forward_word (window);
+
+  info_show_point (window);
+}
+
+DECLARE_INFO_COMMAND (info_backward_word, _("Move backward a word"))
+{
+  if (count < 0)
+    {
+      info_forward_word (window, -count, key);
+      return;
+    }
+
+  while (count--)
+    point_backward_word (window);
+
+  info_show_point (window);
+}
+
+/* Move to the beginning of the node. */
+DECLARE_INFO_COMMAND (info_beginning_of_node, _("Move to the start of this node"))
+{
+  window->pagetop = window->point = 0;
+  window->flags |= W_UpdateWindow;
+}
+
+/* Move to the end of the node. */
+DECLARE_INFO_COMMAND (info_end_of_node, _("Move to the end of this node"))
+{
+  window->point = window->node->nodelen - 1;
+  info_show_point (window);
+}
+
+
+/* **************************************************************** */
+/*                                                                  */
+/*                     Scrolling window                             */
+/*                                                                  */
+/* **************************************************************** */
+
+/* Variable controlling the behaviour of default scrolling when you are
+   already at the bottom of a node.  Possible values are defined in session.h.
+   The meanings are:
+
+   IS_Continuous        Try to get first menu item, or failing that, the
+                        "Next:" pointer, or failing that, the "Up:" and
+                        "Next:" of the up.
+   IS_NextOnly          Try to get "Next:" menu item.
+   IS_PageOnly          Simply give up at the bottom of a node. */
+
+int info_scroll_behaviour = IS_Continuous;
+
+/* Choices used by the completer when reading a value for the user-visible
+   variable "scroll-behaviour". */
+char *info_scroll_choices[] = {
+  "Continuous", "Next Only", "Page Only", NULL
+};
+
+static void _scroll_forward (WINDOW *window, int count, int behaviour);
+static void _scroll_backward (WINDOW *window, int count, int behaviour);
+
 /* Change the pagetop of WINDOW to DESIRED_TOP, perhaps scrolling the screen
    to do so. */
 void
@@ -569,588 +1031,6 @@ set_window_pagetop (WINDOW *window, int desired_top)
       display_scroll_display (start, end, amount);
     }
 }
-
-/* Immediately make WINDOW->point visible on the screen, and move the
-   terminal cursor there. */
-static void
-info_show_point (WINDOW *window)
-{
-  int old_pagetop;
-
-  old_pagetop = window->pagetop;
-  window_adjust_pagetop (window);
-  if (old_pagetop != window->pagetop)
-    {
-      int new_pagetop;
-
-      new_pagetop = window->pagetop;
-      window->pagetop = old_pagetop;
-      set_window_pagetop (window, new_pagetop);
-    }
-
-  if (window->flags & W_UpdateWindow)
-    display_update_one_window (window);
-
-  display_cursor_at_point (window);
-}
-
-/* Move WINDOW->point from OLD line index to NEW line index. */
-static void
-move_to_new_line (int old, int new, WINDOW *window)
-{
-  if (old == -1)
-    {
-      info_error ("%s", msg_cant_find_point);
-    }
-  else
-    {
-      int goal;
-
-      if (new >= window->line_count || new < 0)
-        return;
-      
-      goal = window_get_goal_column (window);
-      window->goal_column = goal;
-
-      window->point = window->line_starts[new];
-      window->point += window_chars_to_goal (window, goal);
-      info_show_point (window);
-    }
-}
-
-static int forward_move_node_structure (WINDOW *window, int behaviour);
-static int backward_move_node_structure (WINDOW *window, int behaviour);
-
-/* Move WINDOW's point down to the next line if possible. */
-DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
-{
-  int old_line, new_line;
-
-  if (count < 0)
-    info_prev_line (window, -count, key);
-  else
-    while (count)
-      {
-        int diff;
-
-        old_line = window_line_of_point (window);
-        diff = window->line_count - old_line;
-        if (diff > count)
-          diff = count;
-
-        count -= diff;
-        new_line = old_line + diff;
-        if (new_line >= window->line_count)
-          {
-            if (cursor_movement_scrolls_p)
-              {
-                if (forward_move_node_structure (window,
-                                                 info_scroll_behaviour))
-                  break;
-                move_to_new_line (0, 0, window);
-              }
-            else
-              break;
-          }
-        else
-          move_to_new_line (old_line, new_line, window);
-      }
-}
-
-/* Move WINDOW's point up to the previous line if possible. */
-DECLARE_INFO_COMMAND (info_prev_line, _("Move up to the previous line"))
-{
-  int old_line, new_line;
-
-  if (count < 0)
-    info_next_line (window, -count, key);
-  else
-    while (count)
-      {
-        int diff;
-        
-        old_line = window_line_of_point (window);
-        diff = old_line + 1;
-        if (diff > count)
-          diff = count;
-        
-        count -= diff;
-        new_line = old_line - diff;
-        
-        if (new_line < 0
-            && cursor_movement_scrolls_p)
-          {
-            if (backward_move_node_structure (window, info_scroll_behaviour))
-              break;
-            if (window->line_count > window->height)
-              set_window_pagetop (window, window->line_count - window->height);
-            move_to_new_line (window->line_count,
-                              window->line_count - 1, window);
-          }
-        else
-          move_to_new_line (old_line, new_line, window);
-      }
-}
-
-/* Return true if POINT sits on a newline character. */
-static int
-_looking_at_newline (WINDOW *win, long point)
-{
-  mbi_iterator_t iter;
-
-  mbi_init (iter, win->node->contents + point,
-	    win->node->nodelen - point);
-  mbi_avail (iter);
-  return mbi_cur (iter).wc_valid && mbi_cur (iter).wc == '\n';
-}
-
-/* Advance point of WIN to the beginning of the next logical line.
-   Return 1 if there is no next line. */
-static int
-point_next_line (WINDOW *win)
-{
-  int line = window_line_of_point (win);
-  if (line + 1 >= win->line_count)
-    return 1;
-  win->point = win->line_starts[line + 1];
-  window_compute_line_map (win);
-  return 0;
-}
-
-/* Move point of WIN to the beginning of the previous logical
-   line.
-   Return 1 if there is no previous line. */
-static int
-point_prev_line (WINDOW *win)
-{
-  int line = window_line_of_point (win);
-  if (line == 0)
-    return 1;
-  win->point = win->line_starts[line - 1];
-  window_compute_line_map (win);
-  return 0;
-}
-
-/* Advance point to the next multibyte character.  Return 1 if this would
-   cause pointing past the end of node buffer. */
-static int
-point_forward_char (WINDOW *win)
-{
-  long point = win->point;
-  int col;
-
-  window_compute_line_map (win);
-  col = window_point_to_column (win, point, &point) + 1;
-  if (col >= win->line_map.used)
-    {
-      if (point_next_line (win))
-	return 1;
-      col = 0;
-    }
-  win->point = win->line_map.map[col];
-  return 0;
-}
-
-/* Set point to the previous multibyte character.
-   Return 1 if already on the beginning of node buffer. */
-static int
-point_backward_char (WINDOW *win)
-{
-  long point = win->point;
-  int col;
-
-  window_compute_line_map (win);
-  col = window_point_to_column (win, point, &point);
-  for (; col >= 0 && win->line_map.map[col] == point; col--)
-    ;
-  if (col < 0)
-    {
-      if (point_prev_line (win))
-	return 1;
-      col = win->line_map.used - 1;
-    }
-  win->point = win->line_map.map[col];
-  return 0;
-}
-
-/* Skip forward any white space characters starting from column *PCOL in
-   the current line, advancing line if necessary.  Return 1 if going past
-   the end of node buffer. */
-static int
-point_skip_ws_forward (WINDOW *win, int *pcol)
-{
-  mbi_iterator_t iter;
-  int col = *pcol;
-
-  while (1)
-    {
-      char *buffer = win->node->contents;
-      size_t buflen = win->node->nodelen;
-
-      for (; col < win->line_map.used; col++)
-	{
-	  mbi_init (iter, buffer + win->line_map.map[col],
-		    buflen - win->line_map.map[col]);
-	  mbi_avail (iter);
-	  if (!mbi_cur (iter).wc_valid || iswalnum (mbi_cur (iter).wc))
-	    {
-	      *pcol = col;
-	      return 0;
-	    }
-	}
-      if (point_next_line (win))
-	return 1;
-      col = 0;
-    }
-  return 1;
-}
-
-/* Skip backward any white space characters starting from column *PCOL in
-   the current line, retracting line if necessary.  Return 1 if going
-   before the beginning of node buffer. */
-static int
-point_skip_ws_backward (WINDOW *win, int *pcol)
-{
-  mbi_iterator_t iter;
-  int col = *pcol;
-
-  while (1)
-    {
-      char *buffer = win->node->contents;
-      size_t buflen = win->node->nodelen;
-
-      for (; col > 0; col--)
-	{
-	  mbi_init (iter, buffer + win->line_map.map[col],
-		    buflen - win->line_map.map[col]);
-	  mbi_avail (iter);
-	  if (!mbi_cur (iter).wc_valid || iswalnum (mbi_cur (iter).wc))
-	    {
-	      *pcol = col;
-	      return 0;
-	    }
-	}
-      if (point_prev_line (win))
-	return 1;
-      col = win->line_map.used - 1;
-    }
-  return 1;
-}
-
-/* Advance window point to the beginning of the next word.  Return 1
-   if there are no more words in the buffer. */
-static int
-point_forward_word (WINDOW *win)
-{
-  mbi_iterator_t iter;
-  int col;
-
-  window_compute_line_map (win);
-  col = window_point_to_column (win, win->point, &win->point);
-
-  if (point_skip_ws_forward (win, &col))
-    return 1;
-
-  while (1)
-    {
-      char *buffer = win->node->contents;
-      size_t buflen = win->node->nodelen;
-      
-      for (; col < win->line_map.used; col++)
-	{
-	  mbi_init (iter, buffer + win->line_map.map[col],
-		    buflen - win->line_map.map[col]);
-	  mbi_avail (iter);
-	  if (!(mbi_cur (iter).wc_valid && iswalnum (mbi_cur (iter).wc)))
-	    {
-	      if (point_skip_ws_forward (win, &col))
-		return 1;
-	      win->point = win->line_map.map[col];
-	      return 0;
-	    }
-	}
-      if (point_next_line (win))
-	return 1;
-      col = 0;
-    }
-  return 1;
-}
-
-/* Set window point to the beginning of the previous word.  Return 1
-   if looking at the very first word in the buffer. */
-static int
-point_backward_word (WINDOW *win)
-{
-  mbi_iterator_t iter;
-  int col;
-
-  window_compute_line_map (win);
-  col = window_point_to_column (win, win->point, &win->point);
-
-  while (1)
-    {
-      long point;
-      char *buffer;
-      size_t buflen;
-
-      if (col <= 0)
-	{
-	  if (point_prev_line (win))
-	    return 1;
-	  col = win->line_map.used;
-	}
-      col--;
-      if (point_skip_ws_backward (win, &col))
-	return 1;
-
-      buffer = win->node->contents;
-      buflen = win->node->nodelen;
-
-      for (; col >= 0; col--)
-	{
-	  mbi_init (iter, buffer + win->line_map.map[col],
-		    buflen - win->line_map.map[col]);
-	  mbi_avail (iter);
-	  if (!(mbi_cur (iter).wc_valid && iswalnum (mbi_cur (iter).wc)))
-	    {
-	      win->point = win->line_map.map[col+1];
-	      return 0;
-	    }
-	}
-      point = win->line_map.map[0] - 1;
-      if (point > 0 && _looking_at_newline (win, point))
-	{
-	  win->point = win->line_map.map[0];
-	  return 0;
-	}
-    }
-  return 1;
-}
-
-/* Move WINDOW's point to the end of the true line. */
-DECLARE_INFO_COMMAND (info_end_of_line, _("Move to the end of the line"))
-{
-  long point;
-  if (!window->node)
-    return;
-
-  /* Find physical line with end of logical line in it. */
-  window_compute_line_map (window);
-  while (!_looking_at_newline (window,
-              window->line_map.map[window->line_map.used - 1]))
-    {
-      if (point_next_line (window))
-        break; /* No next line. */
-    }
-
-  if (window->line_map.used == 0)
-    return; /* This shouldn't happen. */
-
-  if (window->line_map.used == 1)
-    /* Empty line - return offset of terminating newline. */
-    point = window->line_map.map[0];
-  else
-    /* Otherwise of last character in line. */
-    point = window->line_map.map[window->line_map.used - 2];
-
-  if (point != window->point)
-    {
-      window->point = point;
-      info_show_point (window);
-    }
-}
-
-/* Move WINDOW's point to the beginning of the true line. */
-DECLARE_INFO_COMMAND (info_beginning_of_line, _("Move to the start of the line"))
-{
-  int old_point = window->point;
-  int point;
-  
-  while (1)
-    {
-      window_compute_line_map (window);
-      point = window->line_map.map[0];
-      if (point == 0 || _looking_at_newline (window, point-1))
-	break;
-      point_prev_line (window);
-    }
-
-  if (point != old_point)
-    {
-      window->point = point;
-      info_show_point (window);
-    }
-  else
-    window->point = old_point;
-}
-
-/* Move point forward in the node. */
-DECLARE_INFO_COMMAND (info_forward_char, _("Move forward a character"))
-{
-  if (count < 0)
-    info_backward_char (window, -count, key);
-  else
-    {
-      while (count)
-        {
-          if (point_forward_char (window))
-            {
-              if (cursor_movement_scrolls_p
-                  && forward_move_node_structure (window,
-                                                  info_scroll_behaviour) == 0)
-                window->point = 0;
-              else
-                {
-                  window->point = window->node->nodelen - 1;
-                  break;
-                }
-            }
-	  count--;
-        }
-      info_show_point (window);
-    }
-}
-
-/* Move point backward in the node. */
-DECLARE_INFO_COMMAND (info_backward_char, _("Move backward a character"))
-{
-  if (count < 0)
-    info_forward_char (window, -count, key);
-  else
-    {
-      while (count)
-        {
-          if (point_backward_char (window))
-            {
-              if (cursor_movement_scrolls_p
-                  && backward_move_node_structure (window,
-                                                   info_scroll_behaviour) == 0)
-                {
-                  window->point = window->node->nodelen - 1;
-                  if (window->line_count > window->height)
-                    set_window_pagetop (window,
-                                        window->line_count - window->height);
-                }
-              else
-                {
-                  window->point = 0;
-                  break;
-                }
-            }
-	  count--;
-        }
-      info_show_point (window);
-    }
-}
-
-/* Move forward a word in this node. */
-DECLARE_INFO_COMMAND (info_forward_word, _("Move forward a word"))
-{
-  if (count < 0)
-    {
-      info_backward_word (window, -count, key);
-      return;
-    }
-
-  while (count)
-    {
-      if (point_forward_word (window))
-        {
-          if (cursor_movement_scrolls_p
-              && forward_move_node_structure (window,
-                                              info_scroll_behaviour) == 0)
-	    window->point = 0;
-          else
-            return;
-        }
-      --count;
-    }
-  info_show_point (window);
-}
-
-DECLARE_INFO_COMMAND (info_backward_word, _("Move backward a word"))
-{
-  if (count < 0)
-    {
-      info_forward_word (window, -count, key);
-      return;
-    }
-
-  while (count)
-    {
-      if (point_backward_word (window))
-        {
-          if (cursor_movement_scrolls_p
-              && backward_move_node_structure (window,
-                                               info_scroll_behaviour) == 0)
-            {
-              if (window->line_count > window->height)
-                set_window_pagetop (window,
-                                    window->line_count - window->height);
-              window->point = window->node->nodelen;
-            }
-          else
-            break;
-        }
-      --count;
-    }
-  info_show_point (window);
-}
-
-/* Move to the beginning of the node. */
-DECLARE_INFO_COMMAND (info_beginning_of_node, _("Move to the start of this node"))
-{
-  window->pagetop = window->point = 0;
-  window->flags |= W_UpdateWindow;
-}
-
-/* Move to the end of the node. */
-DECLARE_INFO_COMMAND (info_end_of_node, _("Move to the end of this node"))
-{
-  window->point = window->node->nodelen - 1;
-  info_show_point (window);
-}
-
-
-/* **************************************************************** */
-/*                                                                  */
-/*                     Scrolling window                             */
-/*                                                                  */
-/* **************************************************************** */
-
-/* Variable controlling the behaviour of default scrolling when you are
-   already at the bottom of a node.  Possible values are defined in session.h.
-   The meanings are:
-
-   IS_Continuous        Try to get first menu item, or failing that, the
-                        "Next:" pointer, or failing that, the "Up:" and
-                        "Next:" of the up.
-   IS_NextOnly          Try to get "Next:" menu item.
-   IS_PageOnly          Simply give up at the bottom of a node. */
-
-int info_scroll_behaviour = IS_Continuous;
-
-/* Choices used by the completer when reading a value for the user-visible
-   variable "scroll-behaviour". */
-char *info_scroll_choices[] = {
-  "Continuous", "Next Only", "Page Only", NULL
-};
-
-/* Controls whether scroll-behavior affects line movement commands */
-int cursor_movement_scrolls_p = 1; 
-int search_skip_screen_p = 0;
-
-/* Choices for the scroll-last-node variable */
-char *scroll_last_node_choices[] = {
-  "Stop", "Scroll", "Top", NULL
-};
-
-/* Controls what to do when a scrolling command is issued at the end of the
-   last node. */
-int scroll_last_node = SLN_Stop;
-
-static void _scroll_forward (WINDOW *window, int count, int behaviour);
-static void _scroll_backward (WINDOW *window, int count, int behaviour);
 
 static void
 _scroll_forward (WINDOW *window, int count, int behaviour)
@@ -1958,6 +1838,15 @@ DECLARE_INFO_COMMAND (info_first_node, _("Select the first node in this file"))
     info_set_node_of_window (window, node);
 }
 
+/* Choices for the scroll-last-node variable */
+char *scroll_last_node_choices[] = {
+  "Stop", "Scroll", "Top", NULL
+};
+
+/* Controls what to do when a scrolling command is issued at the end of the
+   last node. */
+int scroll_last_node = SLN_Stop;
+
 /* Move to 1st menu item, Next, Up/Next, or error in this window. */
 static int
 forward_move_node_structure (WINDOW *window, int behaviour)
@@ -2642,8 +2531,7 @@ DECLARE_INFO_COMMAND (info_move_to_prev_xref,
           info_error_was_printed = 0;
           if (backward_move_node_structure (window, info_scroll_behaviour))
             break;
-          move_to_new_line (window->line_count, window->line_count - 1,
-                            window);
+          move_to_new_line (window->line_count - 1, window);
         }
     }
 }
@@ -2664,7 +2552,7 @@ DECLARE_INFO_COMMAND (info_move_to_next_xref,
           info_error_was_printed = 0;
           if (forward_move_node_structure (window, info_scroll_behaviour))
             break;
-          move_to_new_line (0, 0, window);
+          move_to_new_line (0, window);
         }
     }
 }
@@ -4036,6 +3924,8 @@ info_search_1 (WINDOW *window, int count, unsigned char key,
      not retained. */
   info_gc_file_buffers ();
 }
+
+int search_skip_screen_p = 0;
 
 DECLARE_INFO_COMMAND (info_search_next,
                       _("Repeat last search in the same direction"))

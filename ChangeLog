@@ -1,3 +1,28 @@
+2014-05-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (point_next_line, point_prev_line): Check for
+	whether we should call forward_move_node_structure or
+	backward_move_node_structure added.
+	(point_prev_line): Go to end of previous line instead of start.
+	(info_forward_char, info_backward_char, info_forward_word)
+	(info_backward_word): Rely on checks in point_next_line,
+	point_prev_line.
+
+	(point_next_line, point_prev_line, point_forward_char)
+	(point_backward_char, point_forward_word, point_backward_word):
+	Rely on line map already being calculated for current line.
+	
+	(point_skip_ws_forward): Merged into point_forward_word.
+	(point_skip_ws_backward): Merged into point_backward_word.
+	
+	(looking_at_alnum): New function.
+	(_looking_at_newline, looking_at_newline): Renamed.
+	(point_forward_word, point_backward_word): Call looking_at_alnum.
+
+	(move_to_new_line): First argument deleted.  All callers updated.
+
+	Some definitions moved in file for better organization.
+
 2014-05-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.c (add_initial_nodes) <--show-options>: Avoid loading
