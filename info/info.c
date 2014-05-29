@@ -396,6 +396,8 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
           REFERENCE **index;
           REFERENCE **index_ptr;
 
+          REFERENCE *nearest = 0;
+
           debug (3, ("looking in indices"));
           index = info_indices_of_file_buffer (initial_file);
 
@@ -403,13 +405,22 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
             {
               if (!strcmp (argv[0], (*index_ptr)->label))
                 {
-                  argv += argc; argc = 0;
-                  free (*error); *error = 0;
-
-                  free (ref_list[0]);
-                  ref_list[0] = info_copy_reference (*index_ptr);
+                  nearest = *index_ptr;
                   break;
                 }
+              /* Case-insensitive initial substring. */
+              if (!nearest && !mbsncasecmp (argv[0], (*index_ptr)->label,
+                                            mbslen (argv[0])))
+                nearest = *index_ptr;
+            }
+
+          if (nearest)
+            {
+              argv += argc; argc = 0;
+              free (*error); *error = 0;
+
+              free (ref_list[0]);
+              ref_list[0] = info_copy_reference (nearest);
             }
         }
 

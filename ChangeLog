@@ -1,3 +1,8 @@
+2014-05-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (add_initial_nodes) <index lookup>: Look for
+	case-ignoring initial substring in indices if no exact match found.
+
 2014-05-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (point_next_line, point_prev_line): Check for
