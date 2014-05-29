@@ -398,6 +398,21 @@ info_free_references (REFERENCE **references)
     }
 }
 
+/* Return new REFERENCE with filename and nodename fields set.  References
+   to FILENAME and NODENAME are retained in the return value. */
+REFERENCE *
+info_new_reference (char *filename, char *nodename)
+{
+  REFERENCE *r = xmalloc (sizeof (REFERENCE));
+  r->label = 0;
+  r->filename = filename;
+  r->nodename = nodename;
+  r->start = 0;
+  r->end = 0;
+  r->line_number = 0;
+  r->type = 0;
+}
+
 
 /* Search for sequences of whitespace or newlines in STRING, replacing
    all such sequences with just a single space.  Remove whitespace from

@@ -8,6 +8,10 @@
 	* info/session.c (dump_nodes_to_file): Checks for DUMP_APPEND removed.
 	* info/session.h (DUMP_APPEND): Remove unused.
 
+	* info/info-utils.c (info_new_reference): New function.
+	* info/info.c (get_initial_file, add_initial_nodes)
+	(info_find_matching_files): Call info_new_reference.
+
 2014-05-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (point_next_line, point_prev_line): Check for

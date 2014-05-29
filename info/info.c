@@ -238,14 +238,10 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
       man_node = get_manpage_node (filename ? filename : (*argv)[0]);
       if (man_node)
         {
-          REFERENCE *new_ref;
-
-          free (man_node);
-
-          new_ref = xzalloc (sizeof (REFERENCE));
-          new_ref->filename = MANPAGE_FILE_BUFFER_NAME;
-          new_ref->nodename = filename ? filename : (*argv)[0];
-          add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+          add_pointer_to_array
+            (info_new_reference (MANPAGE_FILE_BUFFER_NAME,
+               filename ? filename : (*argv)[0]),
+             ref_index, ref_list, ref_slots, 2);
 
           initial_file = MANPAGE_FILE_BUFFER_NAME;
           return initial_file;
@@ -278,14 +274,11 @@ static void
 add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
                    char **error)
 {
-  char *node_via_menus;
-  int i;
-
-  REFERENCE *new_ref;
-
   /* Add nodes specified with --node. */
   if (user_nodenames)
     {
+      int i;
+
       if (ref_index > 0)
         {
           /* Discard a dir entry that was found. */
@@ -295,18 +288,20 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
 
       for (i = 0; user_nodenames[i]; i++)
         {
-          new_ref = xzalloc (sizeof (REFERENCE));
+          char *node_filename;
 
           /* Parse node spec to support invoking
              like info --node "(emacs)Buffers". */
           info_parse_node (user_nodenames[i], PARSE_NODE_VERBATIM);
           if (info_parsed_filename)
-            new_ref->filename = xstrdup (info_parsed_filename);
+            node_filename = xstrdup (info_parsed_filename);
           else
-            new_ref->filename = initial_file->fullpath;
-          new_ref->nodename = xstrdup (info_parsed_nodename);
+            node_filename = initial_file->fullpath;
 
-          add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+          add_pointer_to_array
+            (info_new_reference (node_filename,
+               xstrdup (info_parsed_nodename)),
+             ref_index, ref_list, ref_slots, 2);
         }
     }
 
@@ -351,8 +346,8 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
       invoc_ref = info_intuit_options_node (top_node, program);
       if (invoc_ref)
         {
-          new_ref = info_copy_reference (invoc_ref);
-          add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+          add_pointer_to_array (info_copy_reference (invoc_ref),
+            ref_index, ref_list, ref_slots, 2);
         }
     }
 
@@ -361,15 +356,12 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
   else if (*argv)
     {
       NODE *initial_node; /* Node to start following menus from. */
+      char *node_via_menus;
 
       if (ref_index == 0)
-        {
-          new_ref = xzalloc (sizeof (REFERENCE));
-          new_ref->filename = initial_file->fullpath;
-          new_ref->nodename = "Top";
-
-          add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
-        }
+        add_pointer_to_array
+          (info_new_reference (initial_file->fullpath, "Top"),
+           ref_index, ref_list, ref_slots, 2);
 
       initial_node = info_get_node_with_defaults (ref_list[0]->filename,
                                                   ref_list[0]->nodename,
@@ -383,10 +375,8 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
           argv += argc; argc = 0;
 
           free (ref_list[0]);
-          new_ref = xzalloc (sizeof (REFERENCE));
-          new_ref->filename = initial_file->fullpath;
-          new_ref->nodename = node_via_menus;
-          ref_list[0] = new_ref;
+          ref_list[0] = info_new_reference (initial_file->fullpath,
+            node_via_menus);
         }
 
       /* If no nodes found, and there is exactly one argument remaining,
@@ -437,10 +427,8 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
               argv += argc; argc = 0;
 
               free (ref_list[0]);
-              new_ref = xzalloc (sizeof (REFERENCE));
-              new_ref->filename = initial_file->fullpath;
-              new_ref->nodename = node_via_menus;
-              ref_list[0] = new_ref;
+              ref_list[0] = info_new_reference (initial_file->fullpath,
+                node_via_menus);
             }
         }
     }
@@ -448,11 +436,8 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
   /* Default is "Top" if there were no other nodes. */
   if (ref_index == 0)
     {
-      new_ref = xzalloc (sizeof (REFERENCE));
-      new_ref->filename = initial_file->fullpath;
-      new_ref->nodename = "Top";
-
-      add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+      add_pointer_to_array (info_new_reference (initial_file->fullpath, "Top"),
+        ref_index, ref_list, ref_slots, 2);
     }
 
   return;
@@ -504,7 +489,6 @@ info_find_matching_files (char *filename)
   int i;
   char *searchdir;
 
-  REFERENCE *new_ref;
   NODE *man_node;
 
   /* Check for dir entries first. */
@@ -512,7 +496,7 @@ info_find_matching_files (char *filename)
   for (searchdir = infopath_first (&i); searchdir;
        searchdir = infopath_next (&i))
     {
-      new_ref = dir_entry_of_infodir (filename, searchdir);
+      REFERENCE *new_ref = dir_entry_of_infodir (filename, searchdir);
 
       if (new_ref)
         add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
@@ -540,9 +524,8 @@ info_find_matching_files (char *filename)
 
       if (j == ref_index)
         {
-          new_ref = xzalloc (sizeof (REFERENCE));
-          new_ref->filename = p;
-          add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+          add_pointer_to_array (info_new_reference (p, 0),
+            ref_index, ref_list, ref_slots, 2);
         }
     }
 
@@ -551,11 +534,9 @@ info_find_matching_files (char *filename)
   if (man_node)
     {
       free (man_node);
-
-      new_ref = xzalloc (sizeof (REFERENCE));
-      new_ref->filename = MANPAGE_FILE_BUFFER_NAME;
-      new_ref->nodename = filename;
-      add_pointer_to_array (new_ref, ref_index, ref_list, ref_slots, 2);
+      add_pointer_to_array
+        (info_new_reference (MANPAGE_FILE_BUFFER_NAME, filename),
+         ref_index, ref_list, ref_slots, 2);
     }
 }
 

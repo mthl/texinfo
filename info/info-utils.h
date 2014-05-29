@@ -87,6 +87,9 @@ void info_reference_free (REFERENCE *ref);
 /* Free the data associated with REFERENCES. */
 extern void info_free_references (REFERENCE **references);
 
+/* Create new REFERENCE structure. */
+extern REFERENCE *info_new_reference (char *filename, char *nodename);
+
 /* Search for sequences of whitespace or newlines in STRING, replacing
    all such sequences with just a single space.  Remove whitespace from
    start and end of string. */
