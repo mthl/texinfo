@@ -911,6 +911,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       if (error)
         info_error (error);
 
+      preprocess_nodes_p = 0;
       dump_nodes_to_file (ref_list, user_output_filename, dump_subnodes);
       return 0;
     }

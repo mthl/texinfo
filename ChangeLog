@@ -3,6 +3,11 @@
 	* info/info.c (add_initial_nodes) <index lookup>: Look for
 	case-ignoring initial substring in indices if no exact match found.
 
+	* info/info.c (main): Set preprocess_nodes=0 when dumping output
+	to a file.
+	* info/session.c (dump_nodes_to_file): Checks for DUMP_APPEND removed.
+	* info/session.h (DUMP_APPEND): Remove unused.
+
 2014-05-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (point_next_line, point_prev_line): Check for

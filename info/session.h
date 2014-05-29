@@ -93,7 +93,6 @@ extern void info_select_reference (WINDOW *window, REFERENCE *entry);
 extern int info_any_buffered_input_p (void);
 extern void print_node (NODE *node);
 
-#define DUMP_APPEND   0x01
 #define DUMP_SUBNODES 0x02
 
 extern void dump_nodes_to_file (REFERENCE **references,

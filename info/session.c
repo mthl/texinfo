@@ -3242,7 +3242,7 @@ dump_nodes_to_file (REFERENCE **references,
   if (strcmp (output_filename, "-") == 0)
     output_stream = stdout;
   else
-    output_stream = fopen (output_filename, flags & DUMP_APPEND ? "a" : "w");
+    output_stream = fopen (output_filename, "w");
 
   if (!output_stream)
     {
@@ -3253,8 +3253,6 @@ dump_nodes_to_file (REFERENCE **references,
   initialize_dumping ();
 
   /* Print each node to stream. */
-  if (flags & DUMP_APPEND)
-    fputc ('\f', output_stream);
   for (i = 0; references[i]; i++)
     {
       if (dump_node_to_stream (references[i]->filename,
