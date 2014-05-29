@@ -411,6 +411,7 @@ info_new_reference (char *filename, char *nodename)
   r->end = 0;
   r->line_number = 0;
   r->type = 0;
+  return r;
 }
 
 
