@@ -363,17 +363,7 @@ forget_window_and_nodes (WINDOW *win)
     {
       int i;
 
-      /* Free the node structures which held onto internal node contents
-         here.  This doesn't free the contents; we have a garbage collector
-         which does that. */
-      for (i = 0; win->nodes[i]; i++)
-        if (internal_info_node_p (win->nodes[i]))
-          {
-            info_free_references (win->nodes[i]->references);
-            free (win->nodes[i]);
-          }
       free (win->nodes);
-
       free (win->pagetops);
       free (win->points);
     }
