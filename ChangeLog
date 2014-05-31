@@ -3,6 +3,9 @@
 	* info/infodoc.c (dump_map_to_text_buffer): Hide "echo-area-insert"
 	entries in help window.
 
+	* info/session.c (info_win_find_node): Merged into
+	info_handle_pointer.
+
 2014-05-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.h (WINDOW): 'current' field removed.

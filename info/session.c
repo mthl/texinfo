@@ -1538,22 +1538,6 @@ info_parse_and_select (char *line, WINDOW *window)
   info_select_reference (window, &entry);
 }
 
-static int
-info_win_find_node (WINDOW *win, NODE *node)
-{
-  int i;
-
-  for (i = win->nodes_index - 1; i >= 0; i--)
-    {
-      NODE *p = win->nodes[i];
-
-      if (p->filename && !strcmp (p->filename, node->filename)
-	  && p->nodename && !strcmp (p->nodename, node->nodename))
-	break;
-    }
-  return i;
-}	  
-
 
 /* **************************************************************** */
 /*                                                                  */
@@ -1594,11 +1578,21 @@ info_handle_pointer (char *label, WINDOW *window)
       return;
     }
 
-  /* Set the cursor position to the last place it was in the
-     node, if we are going up. */
+  /* If we are going up, set the cursor position to the last place it
+     was in the node. */
   if (strcmp (label, "Up") == 0)
     {
-      int i = info_win_find_node (window, node);
+      int i;
+
+      for (i = window->nodes_index - 1; i >= 0; i--)
+        {
+          NODE *p = window->nodes[i];
+
+          if (p->filename && !strcmp (p->filename, node->filename)
+              && p->nodename && !strcmp (p->nodename, node->nodename))
+            break;
+        }
+
       if (i >= 0)
         node->display_pos = window->points[i];
     }
