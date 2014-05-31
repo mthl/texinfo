@@ -3,6 +3,9 @@
 	* info/session.c (forget_windows_and_nodes): Don't free node
 	structures in a window's history when it is deleted.
 
+	(info_handle_pointer): Don't save pagetop and point - done
+	when info_set_node_of_window is called.
+
 2014-05-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.h (WINDOW): Fields added from INFO_WINDOW:

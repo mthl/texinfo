@@ -1597,14 +1597,12 @@ info_handle_pointer (char *label, WINDOW *window)
 
   /* Set the cursor position to the last place it was in the
      node, if we are going up. */
-    if (strcmp (label, "Up") == 0)
-      {
-        int i = info_win_find_node (window, node);
-        if (i >= 0)
-          node->display_pos = window->points[i];
-      }
-    window->pagetops[window->current] = window->pagetop;
-    window->points[window->current] = window->point;
+  if (strcmp (label, "Up") == 0)
+    {
+      int i = info_win_find_node (window, node);
+      if (i >= 0)
+        node->display_pos = window->points[i];
+    }
 
   info_set_node_of_window (window, node);
 }
