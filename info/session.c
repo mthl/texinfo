@@ -67,16 +67,6 @@ VFunction *info_last_executed_command = NULL;
 /* Becomes non-zero when 'q' is typed to an Info window. */
 static int quit_info_immediately = 0;
 
-/* Array of structures describing for each window which nodes have been
-   visited in that window. */
-INFO_WINDOW **info_windows = NULL;
-
-/* Where to add the next window, if we need to add one. */
-static size_t info_windows_index = 0;
-
-/* Number of slots allocated to `info_windows'. */
-static size_t info_windows_slots = 0;
-
 /* Whether to use regexps or not for search.  */
 static int use_regex = 1;
 
@@ -314,170 +304,84 @@ info_set_input_from_file (char *filename)
     display_inhibited = 1;
 }
 
-/* Return the INFO_WINDOW containing WINDOW, or NULL if there isn't one. */
-static INFO_WINDOW *
-get_info_window_of_window (WINDOW *window)
-{
-  register int i;
-  INFO_WINDOW *info_win = NULL;
-
-  for (i = 0; info_windows && (info_win = info_windows[i]); i++)
-    if (info_win->window == window)
-      break;
-
-  return info_win;
-}
-
 /* Reset the remembered pagetop and point of WINDOW to WINDOW's current
    values if the window and node are the same as the current one being
    displayed. */
 void
-set_remembered_pagetop_and_point (WINDOW *window)
+set_remembered_pagetop_and_point (WINDOW *win)
 {
-  INFO_WINDOW *info_win;
-
-  info_win = get_info_window_of_window (window);
-
-  if (!info_win)
-    return;
-
-  if (info_win->nodes_index &&
-      (info_win->nodes[info_win->current] == window->node))
+  if (win->nodes_index && win->nodes[win->current] == win->node)
     {
-      info_win->pagetops[info_win->current] = window->pagetop;
-      info_win->points[info_win->current] = window->point;
+      win->pagetops[win->current] = win->pagetop;
+      win->points[win->current] = win->point;
     }
 }
 
 void
-remember_window_and_node (WINDOW *window, NODE *node)
+remember_window_and_node (WINDOW *win, NODE *node)
 {
-  /* See if we already have this window in our list. */
-  INFO_WINDOW *info_win = get_info_window_of_window (window);
-
-  /* If the window wasn't already on our list, then make a new entry. */
-  if (!info_win)
-    {
-      info_win = xmalloc (sizeof (INFO_WINDOW));
-      info_win->window = window;
-      info_win->nodes = NULL;
-      info_win->pagetops = NULL;
-      info_win->points = NULL;
-      info_win->current = 0;
-      info_win->nodes_index = 0;
-      info_win->nodes_slots = 0;
-
-      add_pointer_to_array (info_win, info_windows_index, info_windows,
-                            info_windows_slots, 10);
-    }
-
   /* If this node, the current pagetop, and the current point are the
      same as the current saved node and pagetop, don't really add this to
      the list of history nodes.  This may happen only at the very
      beginning of the program, I'm not sure.  --karl  */
-  if (info_win->nodes
-      && info_win->current >= 0
-      && info_win->nodes[info_win->current]->contents == node->contents
-      && info_win->pagetops[info_win->current] == window->pagetop
-      && info_win->points[info_win->current] == window->point)
+  if (win->nodes
+      && win->current >= 0
+      && win->nodes[win->current]->contents == node->contents
+      && win->pagetops[win->current] == win->pagetop
+      && win->points[win->current] == win->point)
   return;
 
   /* Remember this node, the currently displayed pagetop, and the current
      location of point in this window.  Because we are updating pagetops
      and points as well as nodes, it is more efficient to avoid the
      add_pointer_to_array macro here. */
-  if (info_win->nodes_index + 2 >= info_win->nodes_slots)
+  if (win->nodes_index + 2 >= win->nodes_slots)
     {
-      info_win->nodes_slots += 20;
-      info_win->nodes = (NODE **) xrealloc (info_win->nodes,
-                                      info_win->nodes_slots * sizeof (NODE *));
-      info_win->pagetops = (int *) xrealloc (info_win->pagetops,
-                                      info_win->nodes_slots * sizeof (int));
-      info_win->points = (long *) xrealloc (info_win->points,
-                                      info_win->nodes_slots * sizeof (long));
+      win->nodes_slots += 20;
+      win->nodes = (NODE **) xrealloc (win->nodes,
+                                      win->nodes_slots * sizeof (NODE *));
+      win->pagetops = (int *) xrealloc (win->pagetops,
+                                      win->nodes_slots * sizeof (int));
+      win->points = (long *) xrealloc (win->points,
+                                      win->nodes_slots * sizeof (long));
     }
 
-  info_win->nodes[info_win->nodes_index] = node;
-  info_win->pagetops[info_win->nodes_index] = window->pagetop;
-  info_win->points[info_win->nodes_index] = window->point;
-  info_win->current = info_win->nodes_index++;
-  info_win->nodes[info_win->nodes_index] = NULL;
-  info_win->pagetops[info_win->nodes_index] = 0;
-  info_win->points[info_win->nodes_index] = 0;
+  win->nodes[win->nodes_index] = node;
+  win->pagetops[win->nodes_index] = win->pagetop;
+  win->points[win->nodes_index] = win->point;
+  win->current = win->nodes_index++;
+  win->nodes[win->nodes_index] = NULL;
+  win->pagetops[win->nodes_index] = 0;
+  win->points[win->nodes_index] = 0;
 }
 
-#define DEBUG_FORGET_WINDOW_AND_NODES
-#if defined (DEBUG_FORGET_WINDOW_AND_NODES)
-static void
-consistency_check_info_windows (void)
-{
-  size_t i;
-
-  for (i = 0; i < info_windows_index; i++)
-    {
-      WINDOW *win;
-
-      for (win = windows; win; win = win->next)
-        if (win == info_windows[i]->window)
-          break;
-
-      if (!win)
-        abort ();
-    }
-}
-#endif /* DEBUG_FORGET_WINDOW_AND_NODES */
-
-/* Remove WINDOW and its associated list of nodes from INFO_WINDOWS. */
+/* Remove WINDOW and its associated list of nodes. */
 void
-forget_window_and_nodes (WINDOW *window)
+forget_window_and_nodes (WINDOW *win)
 {
-  size_t i;
-  INFO_WINDOW *info_win = NULL;
-
-  for (i = 0; info_windows && (info_win = info_windows[i]); i++)
-    if (info_win->window == window)
-      break;
-
-  /* If we found the window to forget, then do so. */
-  if (info_win)
+  if (win->nodes)
     {
-      while (i < info_windows_index)
-        {
-          info_windows[i] = info_windows[i + 1];
-          i++;
-        }
+      int i;
 
-      info_windows_index--;
-      info_windows[info_windows_index] = NULL;
+      /* Free the node structures which held onto internal node contents
+         here.  This doesn't free the contents; we have a garbage collector
+         which does that. */
+      for (i = 0; win->nodes[i]; i++)
+        if (internal_info_node_p (win->nodes[i]))
+          {
+            info_free_references (win->nodes[i]->references);
+            free (win->nodes[i]);
+          }
+      free (win->nodes);
 
-      if (info_win->nodes)
-        {
-          /* Free the node structures which held onto internal node contents
-             here.  This doesn't free the contents; we have a garbage collector
-             which does that. */
-          for (i = 0; info_win->nodes[i]; i++)
-            if (internal_info_node_p (info_win->nodes[i]))
-              {
-                info_free_references (info_win->nodes[i]->references);
-                free (info_win->nodes[i]);
-              }
-          free (info_win->nodes);
-
-          free (info_win->pagetops);
-          free (info_win->points);
-        }
-
-      free (info_win);
+      free (win->pagetops);
+      free (win->points);
     }
-#if defined (DEBUG_FORGET_WINDOW_AND_NODES)
-  consistency_check_info_windows ();
-#endif /* DEBUG_FORGET_WINDOW_AND_NODES */
 }
 
 /* Set WINDOW to show NODE.  Remember the new window in our list of Info
    windows.  If we are doing automatic footnote display, also try to display
-   the footnotes for this window.  If REMEMBER is nonzero, first call
-   set_remembered_pagetop_and_point.  */
+   the footnotes for this window. */
 void
 info_set_node_of_window (WINDOW *window, NODE *node)
 {
@@ -1366,36 +1270,6 @@ DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
       info_show_point (window);
 #endif /* !SPLIT_BEFORE_ACTIVE */
 
-      /* If the window just split was one internal to Info, try to display
-         something else in it. */
-      if (internal_info_node_p (split->node))
-        {
-          register int i, j;
-          INFO_WINDOW *iw;
-          NODE *node = NULL;
-          char *filename;
-
-          for (i = 0; (iw = info_windows[i]); i++)
-            {
-              for (j = 0; j < iw->nodes_index; j++)
-                if (!internal_info_node_p (iw->nodes[j]))
-                  {
-                    if (iw->nodes[j]->parent)
-                      filename = iw->nodes[j]->parent;
-                    else
-                      filename = iw->nodes[j]->filename;
-
-                    node = info_get_node (filename, iw->nodes[j]->nodename,
-                                          PARSE_NODE_DFLT);
-                    if (node)
-                      {
-                        window_set_node_of_window (split, node);
-                        i = info_windows_index - 1;
-                        break;
-                      }
-                  }
-            }
-        }
       split->pagetop = window->pagetop;
 
       if (auto_tiling_p)
@@ -1676,7 +1550,7 @@ info_parse_and_select (char *line, WINDOW *window)
 }
 
 static int
-info_win_find_node (INFO_WINDOW *win, NODE *node)
+info_win_find_node (WINDOW *win, NODE *node)
 {
   int i;
 
@@ -1705,7 +1579,6 @@ info_handle_pointer (char *label, WINDOW *window)
 {
   char *description;
   NODE *node;
-  INFO_WINDOW *info_win;
 
   if (!strcmp (label, "Up"))
     description = window->node->up;
@@ -1734,18 +1607,15 @@ info_handle_pointer (char *label, WINDOW *window)
 
   /* Set the cursor position to the last place it was in the
      node, if we are going up. */
-  info_win = get_info_window_of_window (window);
-  if (info_win)
-    {
-      if (strcmp (label, "Up") == 0)
-        {
-          int i = info_win_find_node (info_win, node);
-          if (i >= 0)
-            node->display_pos = info_win->points[i];
-        }
-      info_win->pagetops[info_win->current] = window->pagetop;
-      info_win->points[info_win->current] = window->point;
-    }
+    if (strcmp (label, "Up") == 0)
+      {
+        int i = info_win_find_node (window, node);
+        if (i >= 0)
+          node->display_pos = window->points[i];
+      }
+    window->pagetops[window->current] = window->pagetop;
+    window->points[window->current] = window->point;
+
   info_set_node_of_window (window, node);
 }
 
@@ -1917,11 +1787,9 @@ forward_move_node_structure (WINDOW *window, int behaviour)
            are no more nodes. */
         {
           int up_counter, old_current;
-          INFO_WINDOW *info_win;
 
           /* Remember the current node and location. */
-          info_win = get_info_window_of_window (window);
-          old_current = info_win->current;
+          old_current = window->current;
 
           /* Back up through the "Up:" pointers until we have found a "Next:"
              that isn't the same as the first menu item found in that node. */
@@ -1967,14 +1835,14 @@ forward_move_node_structure (WINDOW *window, int behaviour)
 
                   for (i = 0; i < up_counter; i++)
                     {
-                      info_win->nodes_index--;
-                      free (info_win->nodes[info_win->nodes_index]);
-                      info_win->nodes[info_win->nodes_index] = NULL;
+                      window->nodes_index--;
+                      free (window->nodes[window->nodes_index]);
+                      window->nodes[window->nodes_index] = NULL;
                     }
-                  info_win->current = old_current;
-                  window->node = info_win->nodes[old_current];
-                  window->pagetop = info_win->pagetops[old_current];
-                  window->point = info_win->points[old_current];
+                  window->current = old_current;
+                  window->node = window->nodes[old_current];
+                  window->pagetop = window->pagetops[old_current];
+                  window->point = window->points[old_current];
                   recalculate_line_starts (window);
                   window->flags |= W_UpdateWindow;
                   info_error ("%s", _("No more nodes within this document."));
@@ -3015,9 +2883,8 @@ DECLARE_INFO_COMMAND (info_dir_node, _("Select the node `(dir)'"))
 static char *
 read_nodename_to_kill (WINDOW *window)
 {
-  int iw;
   char *nodename;
-  INFO_WINDOW *info_win;
+  WINDOW *iw;
   REFERENCE **menu = NULL;
   size_t menu_index = 0, menu_slots = 0;
   char *default_nodename = xstrdup (active_window->node->nodename);
@@ -3025,10 +2892,10 @@ read_nodename_to_kill (WINDOW *window)
 
   sprintf (prompt, _("Kill node (%s): "), default_nodename);
 
-  for (iw = 0; (info_win = info_windows[iw]); iw++)
+  for (iw = windows; iw; iw = iw->next)
     {
       REFERENCE *entry = xmalloc (sizeof (REFERENCE));
-      entry->label = xstrdup (info_win->window->node->nodename);
+      entry->label = xstrdup (iw->node->nodename);
       entry->filename = entry->nodename = NULL;
 
       add_pointer_to_array (entry, menu_index, menu, menu_slots, 10);
@@ -3048,15 +2915,14 @@ read_nodename_to_kill (WINDOW *window)
   return nodename;
 }
 
-
 /* Delete NODENAME from this window, showing the most
    recently selected node in this window. */
 static void
 kill_node (WINDOW *window, char *nodename)
 {
   int iw, i;
-  INFO_WINDOW *info_win;
   NODE *temp;
+  WINDOW *info_win = window;
 
   /* If there is no nodename to kill, quit now. */
   if (!nodename)
@@ -3065,11 +2931,8 @@ kill_node (WINDOW *window, char *nodename)
       return;
     }
 
-  /* If there is a nodename, find it in our window list. */
-  for (iw = 0; (info_win = info_windows[iw]); iw++)
-    if (strcmp (nodename, info_win->nodes[info_win->current]->nodename) == 0
-        && info_win->window == window)
-      break;
+  if (strcmp (nodename, info_win->nodes[info_win->current]->nodename))
+    return;
 
   if (!info_win)
     {
@@ -3081,8 +2944,8 @@ kill_node (WINDOW *window, char *nodename)
       return;
     }
 
-  /* If there are no more nodes left anywhere to view, complain and exit. */
-  if (info_windows_index == 1 && info_windows[0]->nodes_index == 1)
+  /* If this is the last node in the window, complain and exit. */
+  if (info_win->nodes_index == 1)
     {
       info_error ("%s", _("Cannot kill the last node"));
       return;
@@ -3099,52 +2962,9 @@ kill_node (WINDOW *window, char *nodename)
   /* Make this window show the most recent history node. */
   info_win->current = info_win->nodes_index - 1;
 
-  /* If there aren't any nodes left in this window, steal one from the
-     next window. */
-  if (info_win->current < 0)
-    {
-      INFO_WINDOW *stealer;
-      int which, pagetop;
-      long point;
-
-      if (info_windows[iw + 1])
-        stealer = info_windows[iw + 1];
-      else
-        stealer = info_windows[0];
-
-      /* If the node being displayed in the next window is not the most
-         recently loaded one, get the most recently loaded one. */
-      if ((stealer->nodes_index - 1) != stealer->current)
-        which = stealer->nodes_index - 1;
-
-      /* Else, if there is another node behind the stealers current node,
-         use that one. */
-      else if (stealer->current > 0)
-        which = stealer->current - 1;
-
-      /* Else, just use the node appearing in STEALER's window. */
-      else
-        which = stealer->current;
-
-      /* Copy this node. */
-      {
-        temp = xmalloc (sizeof (NODE));
-        *temp = *stealer->nodes[which];
-        point = stealer->points[which];
-        pagetop = stealer->pagetops[which];
-      }
-
-      window_set_node_of_window (info_win->window, temp);
-      window->point = point;
-      window->pagetop = pagetop;
-      remember_window_and_node (info_win->window, temp);
-    }
-  else
-    {
-      temp = info_win->nodes[info_win->current];
-      temp->display_pos = info_win->points[info_win->current];
-      window_set_node_of_window (info_win->window, temp);
-    }
+  temp = info_win->nodes[info_win->current];
+  temp->display_pos = info_win->points[info_win->current];
+  window_set_node_of_window (info_win, temp);
 
   if (!info_error_was_printed)
     window_clear_echo_area ();
@@ -4426,7 +4246,7 @@ info_gc_file_buffers (void)
 {
   register int fb_index, iw_index, i;
   register FILE_BUFFER *fb;
-  register INFO_WINDOW *iw;
+  register WINDOW *iw;
 
   if (!info_loaded_files)
     return;
@@ -4449,9 +4269,9 @@ info_gc_file_buffers (void)
       if (fb->flags & N_CannotGC)
         continue;
 
-      /* Check each INFO_WINDOW to see if it has any nodes which reference
+      /* Check each window to see if it has any nodes which reference
          this file. */
-      for (iw_index = 0; (iw = info_windows[iw_index]); iw_index++)
+      for (iw = windows; iw; iw = iw->next)
         {
           for (i = 0; iw->nodes && iw->nodes[i]; i++)
             {

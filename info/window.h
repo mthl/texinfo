@@ -83,6 +83,14 @@ typedef struct window_struct
   size_t line_slots;    /* Allocated space in LINE_STARTS and LOG_LINE_NO. */
 
   int flags;            /* See below for details. */
+
+  /* Information on which nodes have been visited in this window. */
+  NODE **nodes;                 /* Array of nodes visited in this window. */
+  int *pagetops;                /* For each node in NODES, the pagetop. */
+  long *points;                 /* For each node in NODES, the point. */
+  int current;                  /* Index in NODES of the current node. */
+  int nodes_index;              /* Index where to add the next node. */
+  int nodes_slots;              /* Number of slots allocated to NODES. */
 } WINDOW;
 
 typedef struct {

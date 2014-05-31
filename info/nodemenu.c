@@ -131,17 +131,14 @@ static char *nodemenu_nodename = "*Node Menu*";
 static NODE *
 get_visited_nodes (void)
 {
-  register int i, iw_index;
-  INFO_WINDOW *info_win;
+  register int i;
+  WINDOW *info_win;
   NODE *node;
   char **lines = NULL;
   size_t lines_index = 0, lines_slots = 0;
   struct text_buffer message;
 
-  if (!info_windows)
-    return NULL;
-
-  for (iw_index = 0; (info_win = info_windows[iw_index]); iw_index++)
+  for (info_win = windows; info_win; info_win = info_win->next)
     {
       for (i = 0; i < info_win->nodes_index; i++)
         {

@@ -78,21 +78,6 @@ typedef char *CFunction ();
 #define add_element_to_array add_pointer_to_array
 
 
-/* A structure associating the nodes visited in a particular window. */
-typedef struct {
-  WINDOW *window;               /* The window that this list is attached to. */
-  NODE **nodes;                 /* Array of nodes visited in this window. */
-  int *pagetops;                /* For each node in NODES, the pagetop. */
-  long *points;                 /* For each node in NODES, the point. */
-  int current;                  /* Index in NODES of the current node. */
-  int nodes_index;              /* Index where to add the next node. */
-  int nodes_slots;              /* Number of slots allocated to NODES. */
-} INFO_WINDOW;
-
-/* Array of structures describing for each window which nodes have been
-   visited in that window. */
-extern INFO_WINDOW **info_windows;
-
 /* For handling errors.  If you initialize the window system, you should
    also set info_windows_initialized_p to non-zero.  It is used by the
    info_error () function to determine how to format and output errors. */

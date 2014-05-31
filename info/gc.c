@@ -45,15 +45,15 @@ void
 gc_pointers (void)
 {
   size_t i, j, k;
-  INFO_WINDOW *iw;
+  WINDOW *iw;
   char **new = NULL;
   size_t new_index = 0;
   size_t new_slots = 0;
 
-  if (!info_windows || !gcable_pointers_index)
+  if (!gcable_pointers_index)
     return;
 
-  for (i = 0; (iw = info_windows[i]); i++)
+  for (iw = windows; iw; iw = iw->next)
     {
       for (j = 0; j < iw->nodes_index; j++)
 	{

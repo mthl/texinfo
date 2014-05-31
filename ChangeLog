@@ -1,3 +1,28 @@
+2014-05-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.h (WINDOW): Fields added from INFO_WINDOW:
+	nodes, pagetops, points, current, nodes_index, nodes_slots.  Field
+	'window' not added.
+	* info/info.h (INFO_WINDOW): Typedef deleted.
+
+	* info/session.c (info_windows, info_windows_index)
+	(info_windows_slots): Removed.
+	(get_info_window_of_window, consistency_check_info_windows): Removed.
+
+	(set_remembered_pagetop_and_point, remember_info_and_node)
+	(forget_window_and_nodes, info_handle_pointer,
+	(forward_move_node_structure, read_nodename_to_kill)
+	(info_gc_file_buffers, kill_node): Access data in WINDOW objects
+	instead of INFO_WINDOW objects.
+
+	(info_win_find_node): Argument type changed from INFO_WINDOW to
+	WINDOW.
+	(info_split_window, kill_node): Loops over info_windows removed.
+
+	* info/nodemenu.c (get_visited_nodes)
+	* info/gc.c (gc_pointers): Iterate over 'windows' instead of
+	'info_windows'.
+
 2014-05-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.c (add_initial_nodes) <index lookup>: Look for
