@@ -309,10 +309,10 @@ info_set_input_from_file (char *filename)
 void
 set_remembered_pagetop_and_point (WINDOW *win)
 {
-  if (win->nodes_index && win->nodes[win->current] == win->node)
+  if (win->nodes_index && win->nodes[win->nodes_index - 1] == win->node)
     {
-      win->pagetops[win->current] = win->pagetop;
-      win->points[win->current] = win->point;
+      win->pagetops[win->nodes_index - 1] = win->pagetop;
+      win->points[win->nodes_index - 1] = win->point;
     }
 }
 
@@ -324,10 +324,10 @@ remember_window_and_node (WINDOW *win)
      the list of history nodes.  This may happen only at the very
      beginning of the program, I'm not sure.  --karl  */
   if (win->nodes
-      && win->current >= 0
-      && win->nodes[win->current]->contents == win->node->contents
-      && win->pagetops[win->current] == win->pagetop
-      && win->points[win->current] == win->point)
+      && win->nodes_index >= 1
+      && win->nodes[win->nodes_index - 1]->contents == win->node->contents
+      && win->pagetops[win->nodes_index - 1] == win->pagetop
+      && win->points[win->nodes_index - 1] == win->point)
   return;
 
   /* Remember this node, the currently displayed pagetop, and the current
@@ -348,7 +348,7 @@ remember_window_and_node (WINDOW *win)
   win->nodes[win->nodes_index] = win->node;
   win->pagetops[win->nodes_index] = win->pagetop;
   win->points[win->nodes_index] = win->point;
-  win->current = win->nodes_index++;
+  win->nodes_index++;
   win->nodes[win->nodes_index] = NULL;
   win->pagetops[win->nodes_index] = 0;
   win->points[win->nodes_index] = 0;
@@ -1773,10 +1773,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
            can move "Next:".  If that isn't possible, complain that there
            are no more nodes. */
         {
-          int up_counter, old_current;
-
-          /* Remember the current node and location. */
-          old_current = window->current;
+          int up_counter;
 
           /* Back up through the "Up:" pointers until we have found a "Next:"
              that isn't the same as the first menu item found in that node. */
@@ -1826,10 +1823,9 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                       free (window->nodes[window->nodes_index]);
                       window->nodes[window->nodes_index] = NULL;
                     }
-                  window->current = old_current;
-                  window->node = window->nodes[old_current];
-                  window->pagetop = window->pagetops[old_current];
-                  window->point = window->points[old_current];
+                  window->node = window->nodes[window->nodes_index - 1];
+                  window->pagetop = window->pagetops[window->nodes_index - 1];
+                  window->point = window->points[window->nodes_index - 1];
                   recalculate_line_starts (window);
                   window->flags |= W_UpdateWindow;
                   info_error ("%s", _("No more nodes within this document."));
@@ -2918,7 +2914,7 @@ kill_node (WINDOW *window, char *nodename)
       return;
     }
 
-  if (strcmp (nodename, info_win->nodes[info_win->current]->nodename))
+  if (strcmp (nodename, info_win->nodes[info_win->nodes_index - 1]->nodename))
     return;
 
   if (!info_win)
@@ -2940,17 +2936,16 @@ kill_node (WINDOW *window, char *nodename)
 
   /* INFO_WIN contains the node that the user wants to stop viewing.  Delete
      this node from the list of nodes previously shown in this window. */
-  for (i = info_win->current; i < info_win->nodes_index; i++)
+  for (i = info_win->nodes_index - 1; i < info_win->nodes_index; i++)
     info_win->nodes[i] = info_win->nodes[i + 1];
 
   /* There is one less node in this window's history list. */
   info_win->nodes_index--;
 
   /* Make this window show the most recent history node. */
-  info_win->current = info_win->nodes_index - 1;
 
-  temp = info_win->nodes[info_win->current];
-  temp->display_pos = info_win->points[info_win->current];
+  temp = info_win->nodes[info_win->nodes_index - 1];
+  temp->display_pos = info_win->points[info_win->nodes_index - 1];
   window_set_node_of_window (info_win, temp);
 
   if (!info_error_was_printed)

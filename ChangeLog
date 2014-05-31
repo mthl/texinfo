@@ -1,5 +1,13 @@
 2014-05-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/window.h (WINDOW): 'current' field removed.
+	* info/window.c (set_remembered_pagetop_and_point)
+	(remember_window_and_node, forward_move_node_structure, kill_node):
+	Use nodes_index field instead.  (We cannot go forward in the node
+	history, so the current node is always the last one in the list.)
+
+2014-05-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (forget_windows_and_nodes): Don't free node
 	structures in a window's history when it is deleted.
 
@@ -8,6 +16,7 @@
 
 	(remember_window_and_node): NODE argument removed.  All callers
 	updated.
+
 
 2014-05-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
