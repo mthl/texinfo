@@ -213,10 +213,13 @@ dump_map_to_text_buffer (struct text_buffer *tb, char *prefix, Keymap map)
           register int last;
           char *doc, *name;
 
-          /* Do not display "Run command bound to this key's
-             lowercase variant" in help window. */
+          /* Hide some key mappings.  Do not display "Run command bound to
+             this key's lowercase variant" in help window, and omit lines
+             like "M-: .. M->(echo-area-insert)    Insert this character". */
           if (InfoFunction (map[i].function)
-               == (VFunction *) info_do_lowercase_version)
+               == (VFunction *) info_do_lowercase_version
+              || InfoFunction (map[i].function)
+               == (VFunction *) ea_insert)
             continue;
 
           doc = function_documentation (map[i].function);

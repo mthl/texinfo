@@ -1,5 +1,10 @@
 2014-05-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/infodoc.c (dump_map_to_text_buffer): Hide "echo-area-insert"
+	entries in help window.
+
+2014-05-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/window.h (WINDOW): 'current' field removed.
 	* info/window.c (set_remembered_pagetop_and_point)
 	(remember_window_and_node, forward_move_node_structure, kill_node):
@@ -16,7 +21,6 @@
 
 	(remember_window_and_node): NODE argument removed.  All callers
 	updated.
-
 
 2014-05-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
