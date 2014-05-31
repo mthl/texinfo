@@ -490,7 +490,7 @@ info_find_or_create_help_window (void)
         }
       window_set_node_of_window (active_window, internal_info_help_node);
     }
-  remember_window_and_node (help_window, help_window->node);
+  remember_window_and_node (help_window);
   return help_window;
 }
 

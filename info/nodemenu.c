@@ -295,7 +295,7 @@ DECLARE_INFO_COMMAND (list_visited_nodes,
     window_set_node_of_window (new, node);
 
     if (remember_me)
-      remember_window_and_node (new, node);
+      remember_window_and_node (new);
   }
 
   active_window = new;

@@ -245,7 +245,7 @@ do_info_index_search (WINDOW *window, FILE_BUFFER *fb,
                                     PARSE_NODE_DFLT);
               set_remembered_pagetop_and_point (window);
               window_set_node_of_window (window, node);
-              remember_window_and_node (window, node);
+              remember_window_and_node (window);
               window_clear_echo_area ();
               return;
             }
@@ -703,7 +703,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
         new->flags |= W_NoWrap;
 
         window_set_node_of_window (new, apropos_node);
-        remember_window_and_node (new, apropos_node);
+        remember_window_and_node (new);
         active_window = new;
       }
       free (apropos_list);

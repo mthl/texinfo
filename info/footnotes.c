@@ -257,7 +257,7 @@ info_get_or_remove_footnotes (WINDOW *window)
       window_change_window_height
         (fn_win, fn_win->line_count - fn_win->height);
 
-      remember_window_and_node (fn_win, new_footnotes);
+      remember_window_and_node (fn_win);
       add_gcable_pointer (new_footnotes->contents);
     }
 

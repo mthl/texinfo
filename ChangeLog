@@ -6,6 +6,9 @@
 	(info_handle_pointer): Don't save pagetop and point - done
 	when info_set_node_of_window is called.
 
+	(remember_window_and_node): NODE argument removed.  All callers
+	updated.
+
 2014-05-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.h (WINDOW): Fields added from INFO_WINDOW:

@@ -73,7 +73,6 @@ static int use_regex = 1;
 /* Minimal length of a search string */
 int min_search_length = 1;
 
-void remember_window_and_node (WINDOW *window, NODE *node);
 void forget_window_and_nodes (WINDOW *window);
 
 /* Begin an info session finding the nodes specified by REFERENCES.  For
@@ -318,7 +317,7 @@ set_remembered_pagetop_and_point (WINDOW *win)
 }
 
 void
-remember_window_and_node (WINDOW *win, NODE *node)
+remember_window_and_node (WINDOW *win)
 {
   /* If this node, the current pagetop, and the current point are the
      same as the current saved node and pagetop, don't really add this to
@@ -326,7 +325,7 @@ remember_window_and_node (WINDOW *win, NODE *node)
      beginning of the program, I'm not sure.  --karl  */
   if (win->nodes
       && win->current >= 0
-      && win->nodes[win->current]->contents == node->contents
+      && win->nodes[win->current]->contents == win->node->contents
       && win->pagetops[win->current] == win->pagetop
       && win->points[win->current] == win->point)
   return;
@@ -346,7 +345,7 @@ remember_window_and_node (WINDOW *win, NODE *node)
                                       win->nodes_slots * sizeof (long));
     }
 
-  win->nodes[win->nodes_index] = node;
+  win->nodes[win->nodes_index] = win->node;
   win->pagetops[win->nodes_index] = win->pagetop;
   win->points[win->nodes_index] = win->point;
   win->current = win->nodes_index++;
@@ -381,7 +380,7 @@ info_set_node_of_window (WINDOW *window, NODE *node)
   window_set_node_of_window (window, node);
 
   /* Remember this node and window in our list of info windows. */
-  remember_window_and_node (window, node);
+  remember_window_and_node (window);
 
   /* If doing auto-footnote display/undisplay, show the footnotes belonging
      to this window's node. */
@@ -1267,7 +1266,7 @@ DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
       else
         window_adjust_pagetop (split);
 
-      remember_window_and_node (split, split->node);
+      remember_window_and_node (split);
     }
 }
 
@@ -3562,7 +3561,7 @@ info_search_internal (char *string, WINDOW *window,
           if (result == search_success)
             {
               /* Yes!  We win. */
-              remember_window_and_node (window, node);
+              remember_window_and_node (window);
               if (!echo_area_is_active)
 		{
 		  if (msg)
