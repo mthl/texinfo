@@ -36,50 +36,23 @@ static char *dirs_to_add[] = {
   "dir", "localdir", NULL
 };
 
-FILE_BUFFER *dir_buffer = 0;
+static NODE *dir_node = 0;
 
-static void create_dir_buffer (void);
 static NODE *build_dir_node (void);
 
-/* Return composite directory node.  Return value should not be freed. */
+/* Return composite directory node.  Return value should be freed by caller,
+   but none of its fields should be. */
 NODE *
 get_dir_node (void)
 {
   NODE *node;
 
-  if (!dir_buffer)
-    create_dir_buffer ();
-
-  if (!dir_buffer->tags || !dir_buffer->tags[0])
-    {
-      NODE *tag;
-      int i = 0;
-      tag = build_dir_node ();
-      /* Create and save dir node. */
-      add_pointer_to_array (tag, i,
-                            dir_buffer->tags,
-                            dir_buffer->tags_slots, 2);
-    }
+  if (!dir_node)
+    dir_node = build_dir_node ();
 
   node = xmalloc (sizeof (NODE));
-  *node = *dir_buffer->tags[0]; /* Only one entry in tags table. */
+  *node = *dir_node;
   return node;
-}
-
-static void
-create_dir_buffer (void)
-{
-  dir_buffer = make_file_buffer ();
-  dir_buffer->filename = xstrdup ("dir");
-  dir_buffer->fullpath = xstrdup ("dir");
-  dir_buffer->finfo.st_size = 0;
-  dir_buffer->filesize = 0;
-  dir_buffer->contents = NULL;
-  dir_buffer->flags = (N_IsInternal | N_CannotGC);
-
-  /* Initialize empty tags table. */
-  dir_buffer->tags = xmalloc (sizeof (NODE *));
-  dir_buffer->tags[0] = 0;
 }
 
 static NODE *

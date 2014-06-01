@@ -1094,7 +1094,7 @@ DECLARE_INFO_COMMAND (info_scroll_forward_page_only_set_window,
 DECLARE_INFO_COMMAND (info_scroll_backward_page_only_set_window,
                       _("Scroll backward in this window staying within node and set default window size"))
 {
-  info_scroll_backward_page_only_set_window (window, count, key);
+  info_scroll_forward_page_only_set_window (window, -count, key);
 }
 
 /* Scroll the window forward by N lines.  */

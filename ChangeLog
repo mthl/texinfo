@@ -6,6 +6,13 @@
 	(remember_window_and_node): Remove check for remembering the same
 	node twice.
 
+	(info_scroll_backward_page_only_set_window): Call the right function.
+
+	* info/dir.c (dir_buffer, create_dir_buffer): Removed.
+	(dir_node): New static variable.
+	(get_dir_node): Store dir node as a simple NODE variable, not in the
+	tags table of a FILE_BUFFER.  Comment updated.
+
 2014-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.h (WINDOW): Fields nodes, pagetops, points
