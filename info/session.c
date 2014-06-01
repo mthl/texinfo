@@ -310,7 +310,7 @@ info_set_input_from_file (char *filename)
 /* Reset the remembered pagetop and point of WINDOW to WINDOW's current
    values if the window and node are the same as the current one being
    displayed. */
-void
+static void
 set_remembered_pagetop_and_point (WINDOW *win)
 {
   if (win->hist_index && win->hist[win->hist_index - 1]->node == win->node)

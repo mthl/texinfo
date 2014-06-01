@@ -243,9 +243,7 @@ do_info_index_search (WINDOW *window, FILE_BUFFER *fb,
               node = info_get_node (initial_index_filename,
                                     initial_index_nodename,
                                     PARSE_NODE_DFLT);
-              set_remembered_pagetop_and_point (window);
-              window_set_node_of_window (window, node);
-              remember_window_and_node (window);
+              info_set_node_of_window (window, node);
               window_clear_echo_area ();
               return;
             }
@@ -665,8 +663,6 @@ DECLARE_INFO_COMMAND (info_index_apropos,
         WINDOW *new;
         NODE *node;
 
-        set_remembered_pagetop_and_point (window);
-
         /* If a window is visible and showing an apropos list already,
            re-use it. */
         for (new = windows; new; new = new->next)
@@ -702,8 +698,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
         /* Lines do not wrap in this window. */
         new->flags |= W_NoWrap;
 
-        window_set_node_of_window (new, apropos_node);
-        remember_window_and_node (new);
+        info_set_node_of_window (new, apropos_node);
         active_window = new;
       }
       free (apropos_list);

@@ -478,8 +478,7 @@ info_find_or_create_help_window (void)
         }
       else
         {
-          set_remembered_pagetop_and_point (active_window);
-          window_set_node_of_window (active_window, internal_info_help_node);
+          info_set_node_of_window (active_window, internal_info_help_node);
           help_window = active_window;
         }
     }
@@ -488,12 +487,10 @@ info_find_or_create_help_window (void)
          existing window in which to place the node. */
       if (active_window != help_window)
         {
-          set_remembered_pagetop_and_point (active_window);
           active_window = help_window;
         }
-      window_set_node_of_window (active_window, internal_info_help_node);
+      info_set_node_of_window (active_window, internal_info_help_node);
     }
-  remember_window_and_node (help_window);
   return help_window;
 }
 

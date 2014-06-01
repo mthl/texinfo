@@ -1086,7 +1086,6 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
 #endif /* !SPLIT_BEFORE_ACTIVE */
 
                 echo_area_completions_window = compwin;
-                remember_window_and_node (compwin);
               }
             else
               compwin = calling_window;

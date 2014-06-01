@@ -17,6 +17,12 @@
 	window_set_node_of_window and remember_window_and_node individually.
 	(get_visited_nodes) Remove unnecessary check.
 
+	* info/indices.c (do_info_index_search, info_index_apropos)
+	* info/infodoc.c (info_find_or_create_help_window):
+	Call info_set_node_of_window instead of window_set_node_of_window.
+	* info/session.c (set_remembered_pagetop_and_point): Declared
+	static.
+
 2014-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_print_node, print_node): print_node merged
