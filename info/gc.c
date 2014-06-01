@@ -55,9 +55,9 @@ gc_pointers (void)
 
   for (iw = windows; iw; iw = iw->next)
     {
-      for (j = 0; j < iw->nodes_index; j++)
+      for (j = 0; j < iw->hist_index; j++)
 	{
-	  NODE *node = iw->nodes[j];
+	  NODE *node = iw->hist[j]->node;
 
 	  /* If this node->contents appears in our list of gcable_pointers,
 	     it is not gc-able, so save it. */

@@ -140,9 +140,9 @@ get_visited_nodes (void)
 
   for (info_win = windows; info_win; info_win = info_win->next)
     {
-      for (i = 0; i < info_win->nodes_index; i++)
+      for (i = 0; i < info_win->hist_index; i++)
         {
-          NODE *history_node = info_win->nodes[i];
+          NODE *history_node = info_win->hist[i]->node;
 
           /* We skip mentioning "*Node Menu*" nodes. */
           if (internal_info_node_p (history_node) &&

@@ -1,5 +1,25 @@
 2014-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/window.h (WINDOW): Fields nodes, pagetops, points
+	nodes_index, nodes_slots removed.  Replaced with hist, hist_index
+	and hist_slots.
+
+	* info/gc.c (gc_pointers)
+	* info/nodemenu.c (get_visited_nodes): Iterate over hist array
+	in WINDOW.
+
+	* info/session.c (set_remembered_pagetop_and_point)
+	(remember_window_and_node, forget_window_and_nodes)
+	(info_handle_pointer, kill_node, info_gc_file_buffers):
+	Access window node history in hist field of WINDOW.
+
+	(remember_window_and_node): Use add_pointer_to_array macro.
+
+	(forget_node): New function.
+	(forward_move_node_structure, kill_node): Call forget_node.
+
+2014-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c: Some reordering of definitions and section comments.
 	No functional changes intended.
 

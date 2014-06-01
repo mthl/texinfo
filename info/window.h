@@ -58,6 +58,10 @@ typedef struct line_map_struct
    int pagetop;         /* LINE_STARTS[PAGETOP] is first line in WINDOW. */ \
    long point           /* Offset within NODE of the cursor position. */
 
+typedef struct {
+  WINDOW_STATE_DECL;            /* What gets saved. */
+} WINDOW_STATE;
+
 /* Structure which defines a window.  Windows are doubly linked, next
    and prev. The list of windows is kept on WINDOWS.  The structure member
    window->height is the total height of the window.  The position location
@@ -84,17 +88,11 @@ typedef struct window_struct
 
   int flags;            /* See below for details. */
 
-  /* Information on which nodes have been visited in this window. */
-  NODE **nodes;                 /* Array of nodes visited in this window. */
-  int *pagetops;                /* For each node in NODES, the pagetop. */
-  long *points;                 /* For each node in NODES, the point. */
-  int nodes_index;              /* Index where to add the next node. */
-  int nodes_slots;              /* Number of slots allocated to NODES. */
+  /* History of nodes visited in this window. */
+  WINDOW_STATE **hist;       /* Nodes visited in this window. */
+  int hist_index;            /* Index where to add the next node. */
+  int hist_slots;            /* Number of slots allocated to HIST. */
 } WINDOW;
-
-typedef struct {
-  WINDOW_STATE_DECL;            /* What gets saved. */
-} WINDOW_STATE;
 
 /* Structure defining the current state of an incremental search. */
 typedef struct {

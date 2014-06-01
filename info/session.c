@@ -313,63 +313,64 @@ info_set_input_from_file (char *filename)
 void
 set_remembered_pagetop_and_point (WINDOW *win)
 {
-  if (win->nodes_index && win->nodes[win->nodes_index - 1] == win->node)
+  if (win->hist_index && win->hist[win->hist_index - 1]->node == win->node)
     {
-      win->pagetops[win->nodes_index - 1] = win->pagetop;
-      win->points[win->nodes_index - 1] = win->point;
+      win->hist[win->hist_index - 1]->pagetop = win->pagetop;
+      win->hist[win->hist_index - 1]->point = win->point;
     }
 }
 
+/* Remember this node, the currently displayed pagetop, and the current
+   location of point in this window. */
 void
 remember_window_and_node (WINDOW *win)
 {
+  WINDOW_STATE *new;
+
   /* If this node, the current pagetop, and the current point are the
      same as the current saved node and pagetop, don't really add this to
      the list of history nodes.  This may happen only at the very
      beginning of the program, I'm not sure.  --karl  */
-  if (win->nodes
-      && win->nodes_index >= 1
-      && win->nodes[win->nodes_index - 1]->contents == win->node->contents
-      && win->pagetops[win->nodes_index - 1] == win->pagetop
-      && win->points[win->nodes_index - 1] == win->point)
+  if (win->hist
+      && win->hist_index >= 1
+      && win->hist[win->hist_index - 1]->node->contents == win->node->contents
+      && win->hist[win->hist_index - 1]->pagetop == win->pagetop
+      && win->hist[win->hist_index - 1]->point == win->point)
   return;
 
-  /* Remember this node, the currently displayed pagetop, and the current
-     location of point in this window.  Because we are updating pagetops
-     and points as well as nodes, it is more efficient to avoid the
-     add_pointer_to_array macro here. */
-  if (win->nodes_index + 2 >= win->nodes_slots)
-    {
-      win->nodes_slots += 20;
-      win->nodes = (NODE **) xrealloc (win->nodes,
-                                      win->nodes_slots * sizeof (NODE *));
-      win->pagetops = (int *) xrealloc (win->pagetops,
-                                      win->nodes_slots * sizeof (int));
-      win->points = (long *) xrealloc (win->points,
-                                      win->nodes_slots * sizeof (long));
-    }
-
-  win->nodes[win->nodes_index] = win->node;
-  win->pagetops[win->nodes_index] = win->pagetop;
-  win->points[win->nodes_index] = win->point;
-  win->nodes_index++;
-  win->nodes[win->nodes_index] = NULL;
-  win->pagetops[win->nodes_index] = 0;
-  win->points[win->nodes_index] = 0;
+  new = xmalloc (sizeof (WINDOW_STATE));
+  new->node = win->node;
+  new->pagetop = win->pagetop;
+  new->point = win->point;
+  add_pointer_to_array (new, win->hist_index, win->hist, win->hist_slots, 16);
 }
 
-/* Remove WINDOW and its associated list of nodes. */
+/* Go back one in the node history. */
+void
+forget_node (WINDOW *win)
+{
+  int i = win->hist_index;
+  if (i == 0)
+    return;
+
+  free (win->hist[i - 1]);
+  win->hist[i - 1] = 0;
+  i = --win->hist_index;
+
+  window_set_node_of_window (win, win->hist[i - 1]->node);
+  win->pagetop = win->hist[i - 1]->pagetop;
+  win->point = win->hist[i - 1]->point;
+  win->node->display_pos = win->point;
+}
+
+/* Remove associated list of nodes of WINDOW. */
 void
 forget_window_and_nodes (WINDOW *win)
 {
-  if (win->nodes)
-    {
-      int i;
-
-      free (win->nodes);
-      free (win->pagetops);
-      free (win->points);
-    }
+  int i;
+  for (i = 0; i < win->hist_index; i++)
+    free (win->hist[i]);
+  free (win->hist);
 }
 
 /* Set WINDOW to show NODE.  Remember the new window in our list of Info
@@ -1494,9 +1495,9 @@ info_handle_pointer (char *label, WINDOW *window)
     {
       int i;
 
-      for (i = window->nodes_index - 1; i >= 0; i--)
+      for (i = window->hist_index - 1; i >= 0; i--)
         {
-          NODE *p = window->nodes[i];
+          NODE *p = window->hist[i]->node;
 
           if (p->filename && !strcmp (p->filename, node->filename)
               && p->nodename && !strcmp (p->nodename, node->nodename))
@@ -1504,7 +1505,7 @@ info_handle_pointer (char *label, WINDOW *window)
         }
 
       if (i >= 0)
-        node->display_pos = window->points[i];
+        node->display_pos = window->hist[i]->point;
     }
 
   info_set_node_of_window (window, node);
@@ -1722,14 +1723,8 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                   register int i;
 
                   for (i = 0; i < up_counter; i++)
-                    {
-                      window->nodes_index--;
-                      free (window->nodes[window->nodes_index]);
-                      window->nodes[window->nodes_index] = NULL;
-                    }
-                  window->node = window->nodes[window->nodes_index - 1];
-                  window->pagetop = window->pagetops[window->nodes_index - 1];
-                  window->point = window->points[window->nodes_index - 1];
+                    forget_node (window);
+
                   recalculate_line_starts (window);
                   window->flags |= W_UpdateWindow;
                   info_error ("%s", _("No more nodes within this document."));
@@ -2949,7 +2944,8 @@ kill_node (WINDOW *window, char *nodename)
       return;
     }
 
-  if (strcmp (nodename, info_win->nodes[info_win->nodes_index - 1]->nodename))
+  if (strcmp (nodename,
+              info_win->hist[info_win->hist_index - 1]->node->nodename))
     return;
 
   if (!info_win)
@@ -2963,25 +2959,13 @@ kill_node (WINDOW *window, char *nodename)
     }
 
   /* If this is the last node in the window, complain and exit. */
-  if (info_win->nodes_index == 1)
+  if (info_win->hist_index == 1)
     {
       info_error ("%s", _("Cannot kill the last node"));
       return;
     }
 
-  /* INFO_WIN contains the node that the user wants to stop viewing.  Delete
-     this node from the list of nodes previously shown in this window. */
-  for (i = info_win->nodes_index - 1; i < info_win->nodes_index; i++)
-    info_win->nodes[i] = info_win->nodes[i + 1];
-
-  /* There is one less node in this window's history list. */
-  info_win->nodes_index--;
-
-  /* Make this window show the most recent history node. */
-
-  temp = info_win->nodes[info_win->nodes_index - 1];
-  temp->display_pos = info_win->points[info_win->nodes_index - 1];
-  window_set_node_of_window (info_win, temp);
+  forget_node (window);
 
   if (!info_error_was_printed)
     window_clear_echo_area ();
@@ -4302,11 +4286,12 @@ info_gc_file_buffers (void)
          this file. */
       for (iw = windows; iw; iw = iw->next)
         {
-          for (i = 0; iw->nodes && iw->nodes[i]; i++)
+          for (i = 0; iw->hist && iw->hist[i]; i++)
             {
-              if (iw->nodes[i]->filename &&
-		  ((FILENAME_CMP (fb->fullpath, iw->nodes[i]->filename) == 0) ||
-		   (FILENAME_CMP (fb->filename, iw->nodes[i]->filename) == 0)))
+              NODE *n = iw->hist[i]->node;
+              if (n->filename
+                  && ((FILENAME_CMP (fb->fullpath, n->filename) == 0)
+                      || (FILENAME_CMP (fb->filename, n->filename) == 0)))
                 {
                   fb_referenced_p = 1;
                   break;
@@ -4314,9 +4299,9 @@ info_gc_file_buffers (void)
 
               /* If any subfile of a split file is referenced, none of
                  the rewritten nodes in the split file is freed. */
-              if (iw->nodes[i]->parent &&
-		  ((FILENAME_CMP (fb->fullpath, iw->nodes[i]->parent) == 0) ||
-		   (FILENAME_CMP (fb->filename, iw->nodes[i]->parent) == 0)))
+              if (n->parent
+		  && ((FILENAME_CMP (fb->fullpath, n->parent) == 0)
+                      || (FILENAME_CMP (fb->filename, n->parent) == 0)))
                 {
                   parent_referenced_p = 1;
                   break;
