@@ -342,6 +342,7 @@ forget_node (WINDOW *win)
   if (i == 0)
     return;
 
+  free (win->hist[i - 1]->node);
   free (win->hist[i - 1]);
   win->hist[i - 1] = 0;
   i = --win->hist_index;
@@ -358,7 +359,10 @@ forget_window_and_nodes (WINDOW *win)
 {
   int i;
   for (i = 0; i < win->hist_index; i++)
-    free (win->hist[i]);
+    {
+      free (win->hist[i]->node);
+      free (win->hist[i]);
+    }
   free (win->hist);
 }
 
@@ -1277,6 +1281,7 @@ DECLARE_INFO_COMMAND (info_prev_window, _("Select the previous window"))
 DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
 {
   WINDOW *split, *old_active;
+  NODE *copy;
 #if defined (SPLIT_BEFORE_ACTIVE)
   int pagetop;
 
@@ -1285,16 +1290,16 @@ DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
   pagetop = window->pagetop;
 #endif
   
+  copy = xmalloc (sizeof (NODE));
+  *copy = *window->node; /* Field-by-field copy of structure. */
   /* Make the new window. */
   old_active = active_window;
   active_window = window;
-  split = window_make_window (window->node);
+  split = window_make_window (copy);
   active_window = old_active;
 
   if (!split)
-    {
-      info_error ("%s", msg_win_too_small);
-    }
+    info_error ("%s", msg_win_too_small);
   else
     {
 #if defined (SPLIT_BEFORE_ACTIVE)

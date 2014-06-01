@@ -1,5 +1,12 @@
 2014-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (forget_node, forget_windows_and_nodes): Free
+	NODE objects in window history list.
+	(info_split_window): Copy the NODE object when creating a new
+	window.
+
+2014-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_print_node, print_node): print_node merged
 	into info_print_node.
 
