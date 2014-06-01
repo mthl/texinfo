@@ -5,6 +5,13 @@
 	(info_split_window): Copy the NODE object when creating a new
 	window.
 
+	* info/echo-area.c (restore_calling_window): Call forget_node to
+	properly erase completions window from window history and restore
+	previous node.
+	(ea_possible_completions): Call info_set_node_of_window instead
+	of window_set_node_of_window to save point and pagetop.
+	(calling_window_point, calling_window_pagetop): Delete unused.
+
 2014-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_print_node, print_node): print_node merged

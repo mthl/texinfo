@@ -77,8 +77,6 @@ static WINDOW *echo_area_completions_window = NULL;
    entering the echo area. */
 static WINDOW *calling_window = NULL;
 static NODE *calling_window_node = NULL;
-static long calling_window_point = 0;
-static long calling_window_pagetop = 0;
 
 /* Remember the node and pertinent variables of the calling window. */
 static void
@@ -91,8 +89,6 @@ remember_calling_window (WINDOW *window)
     {
       calling_window = window;
       calling_window_node = window->node;
-      calling_window_point = window->point;
-      calling_window_pagetop = window->pagetop;
     }
 }
 
@@ -112,9 +108,7 @@ restore_calling_window (void)
 
       if (win == calling_window && win == compwin)
         {
-          window_set_node_of_window (calling_window, calling_window_node);
-          calling_window->point = calling_window_point;
-          calling_window->pagetop = calling_window_pagetop;
+          forget_node (win);
           compwin = NULL;
           break;
         }
@@ -1099,11 +1093,8 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
           }
 
         if (compwin->node != possible_completions_output_node)
-          {
-            window_set_node_of_window
-              (compwin, possible_completions_output_node);
-            remember_window_and_node (compwin);
-          }
+          info_set_node_of_window
+            (compwin, possible_completions_output_node);
 
         display_update_display (windows);
       }
