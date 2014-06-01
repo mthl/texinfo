@@ -327,17 +327,6 @@ remember_window_and_node (WINDOW *win)
 {
   WINDOW_STATE *new;
 
-  /* If this node, the current pagetop, and the current point are the
-     same as the current saved node and pagetop, don't really add this to
-     the list of history nodes.  This may happen only at the very
-     beginning of the program, I'm not sure.  --karl  */
-  if (win->hist
-      && win->hist_index >= 1
-      && win->hist[win->hist_index - 1]->node->contents == win->node->contents
-      && win->hist[win->hist_index - 1]->pagetop == win->pagetop
-      && win->hist[win->hist_index - 1]->point == win->point)
-  return;
-
   new = xmalloc (sizeof (WINDOW_STATE));
   new->node = win->node;
   new->pagetop = win->pagetop;

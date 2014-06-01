@@ -3,6 +3,9 @@
 	* info/session.c (info_print_node, print_node): print_node merged
 	into info_print_node.
 
+	(remember_window_and_node): Remove check for remembering the same
+	node twice.
+
 2014-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.h (WINDOW): Fields nodes, pagetops, points
