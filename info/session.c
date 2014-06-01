@@ -3181,13 +3181,6 @@ dump_node_to_stream (char *filename, char *nodename,
 DECLARE_INFO_COMMAND (info_print_node,
  _("Pipe the contents of this node through INFO_PRINT_COMMAND"))
 {
-    print_node (window->node);
-}
-
-/* Print NODE on a printer piping it into INFO_PRINT_COMMAND. */
-void
-print_node (NODE *node)
-{
   FILE *printer_pipe;
   char *print_command = getenv ("INFO_PRINT_COMMAND");
   int piping = 0;
@@ -3219,15 +3212,15 @@ print_node (NODE *node)
     }
 
   /* Maybe we should print some information about the node being output. */
-  debug (1, (_("printing node %s..."), node_printed_rep (node)));
+  debug (1, (_("printing node %s..."), node_printed_rep (window->node)));
 
-  write_node_to_stream (node, printer_pipe);
+  write_node_to_stream (window->node, printer_pipe);
   if (piping)
     pclose (printer_pipe);
   else
     fclose (printer_pipe);
 
-  debug (1, (_("finished printing node %s"), node_printed_rep (node)));
+  debug (1, (_("finished printing node %s"), node_printed_rep (window->node)));
 }
 
 static int

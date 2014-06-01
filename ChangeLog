@@ -1,5 +1,10 @@
 2014-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (info_print_node, print_node): print_node merged
+	into info_print_node.
+
+2014-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/window.h (WINDOW): Fields nodes, pagetops, points
 	nodes_index, nodes_slots removed.  Replaced with hist, hist_index
 	and hist_slots.

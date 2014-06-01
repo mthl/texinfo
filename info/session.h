@@ -91,7 +91,6 @@ extern long info_target_search_node (NODE *node, char *string,
     long int start, int use_regexp_mask);
 extern void info_select_reference (WINDOW *window, REFERENCE *entry);
 extern int info_any_buffered_input_p (void);
-extern void print_node (NODE *node);
 
 #define DUMP_SUBNODES 0x02
 
