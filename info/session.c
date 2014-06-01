@@ -67,9 +67,6 @@ VFunction *info_last_executed_command = NULL;
 /* Becomes non-zero when 'q' is typed to an Info window. */
 static int quit_info_immediately = 0;
 
-/* Whether to use regexps or not for search.  */
-static int use_regex = 1;
-
 /* Minimal length of a search string */
 int min_search_length = 1;
 
@@ -303,6 +300,13 @@ info_set_input_from_file (char *filename)
     display_inhibited = 1;
 }
 
+
+/* **************************************************************** */
+/*                                                                  */
+/*                       Window node history                        */
+/*                                                                  */
+/* **************************************************************** */
+
 /* Reset the remembered pagetop and point of WINDOW to WINDOW's current
    values if the window and node are the same as the current one being
    displayed. */
@@ -391,7 +395,7 @@ info_set_node_of_window (WINDOW *window, NODE *node)
 
 /* **************************************************************** */
 /*                                                                  */
-/*                     Movement within a node                       */
+/*                   Cursor movement within a node                  */
 /*                                                                  */
 /* **************************************************************** */
 
@@ -511,6 +515,38 @@ DECLARE_INFO_COMMAND (info_prev_line, _("Move up to the previous line"))
         else
           move_to_new_line (new_line, window);
       }
+}
+
+/* Move the cursor to the desired line of the window. */
+DECLARE_INFO_COMMAND (info_move_to_window_line,
+   _("Move the cursor to a specific line of the window"))
+{
+  int line;
+
+  /* With no numeric argument of any kind, default to the center line. */
+  if (!info_explicit_arg && count == 1)
+    line = (window->height / 2) + window->pagetop;
+  else
+    {
+      if (count < 0)
+        line = (window->height + count) + window->pagetop;
+      else
+        line = window->pagetop + count;
+    }
+
+  /* If the line doesn't appear in this window, make it do so. */
+  if ((line - window->pagetop) >= window->height)
+    line = window->pagetop + (window->height - 1);
+
+  /* If the line is too small, make it fit. */
+  if (line < window->pagetop)
+    line = window->pagetop;
+
+  /* If the selected line is past the bottom of the node, force it back. */
+  if (line >= window->line_count)
+    line = window->line_count - 1;
+
+  window->point = window->line_starts[line];
 }
 
 /* Return true if POINT sits on a newline character. */
@@ -1122,6 +1158,34 @@ DECLARE_INFO_COMMAND (info_scroll_half_screen_up,
   info_scroll_half_screen_down (window, -count, key);
 }
 
+/* Scroll the "other" window of WINDOW. */
+DECLARE_INFO_COMMAND (info_scroll_other_window, _("Scroll the other window"))
+{
+  WINDOW *other;
+
+  /* If only one window, give up. */
+  if (!windows->next)
+    {
+      info_error ("%s", msg_one_window);
+      return;
+    }
+
+  other = window->next;
+
+  if (!other)
+    other = window->prev;
+
+  info_scroll_forward (other, count, key);
+}
+
+/* Scroll the "other" window of WINDOW. */
+DECLARE_INFO_COMMAND (info_scroll_other_window_backward,
+                      _("Scroll the other window backward"))
+{
+  info_scroll_other_window (window, -count, key);
+}
+
+
 
 /* **************************************************************** */
 /*                                                                  */
@@ -1361,33 +1425,6 @@ DECLARE_INFO_COMMAND (info_keep_one_window, _("Delete all other windows"))
   window->flags |= W_UpdateWindow;
 }
 
-/* Scroll the "other" window of WINDOW. */
-DECLARE_INFO_COMMAND (info_scroll_other_window, _("Scroll the other window"))
-{
-  WINDOW *other;
-
-  /* If only one window, give up. */
-  if (!windows->next)
-    {
-      info_error ("%s", msg_one_window);
-      return;
-    }
-
-  other = window->next;
-
-  if (!other)
-    other = window->prev;
-
-  info_scroll_forward (other, count, key);
-}
-
-/* Scroll the "other" window of WINDOW. */
-DECLARE_INFO_COMMAND (info_scroll_other_window_backward,
-                      _("Scroll the other window backward"))
-{
-  info_scroll_other_window (window, -count, key);
-}
-
 /* Change the size of WINDOW by AMOUNT. */
 DECLARE_INFO_COMMAND (info_grow_window, _("Grow (or shrink) this window"))
 {
@@ -1411,133 +1448,6 @@ DECLARE_INFO_COMMAND (info_toggle_wrap,
 {
   window_toggle_wrap (window);
 }
-
-/* Toggle the usage of regular expressions in searches. */
-DECLARE_INFO_COMMAND (info_toggle_regexp,
-              _("Toggle the usage of regular expressions in searches"))
-{
-  use_regex = !use_regex;
-  window_message_in_echo_area (use_regex
-                               ? _("Using regular expressions for searches.")
-                               : _("Using literal strings for searches."));
-}
-
-/* **************************************************************** */
-/*                                                                  */
-/*                      Info Node Commands                          */
-/*                                                                  */
-/* **************************************************************** */
-
-/* Return (FILENAME)NODENAME for NODE, or just NODENAME if NODE's
-   filename is not set. */
-char *
-node_printed_rep (NODE *node)
-{
-  char *rep;
-
-  if (node->filename)
-    {
-      char *filename
-       = filename_non_directory (node->parent ? node->parent : node->filename);
-      rep = xmalloc (1 + strlen (filename) + 1 + strlen (node->nodename) + 1);
-      sprintf (rep, "(%s)%s", filename, node->nodename);
-    }
-  else
-    rep = node->nodename;
-
-  return rep;
-}
-
-
-/* Using WINDOW for various defaults, select the node referenced by ENTRY
-   in it.  If the node is selected, the window and node are remembered. */
-void
-info_select_reference (WINDOW *window, REFERENCE *entry)
-{
-  NODE *node;
-  char *file_system_error;
-
-  file_system_error = NULL;
-
-  node = info_get_node_with_defaults (entry->filename, entry->nodename,
-             PARSE_NODE_VERBATIM, window);
-
-  /* Try something a little weird.  If the node couldn't be found, and the
-     reference was of the form "foo::", see if the entry->label can be found
-     as a file, with a node of "Top". */
-  if (!node)
-    {
-      if (info_recent_file_error)
-        file_system_error = xstrdup (info_recent_file_error);
-
-      if (entry->nodename
-          && entry->label && (strcmp (entry->nodename, entry->label) == 0))
-        {
-          node = info_get_node (entry->label, "Top", PARSE_NODE_DFLT);
-          if (!node && info_recent_file_error)
-            {
-              free (file_system_error);
-              file_system_error = xstrdup (info_recent_file_error);
-            }
-        }
-    }
-
-  if (!node)
-    {
-      if (file_system_error)
-        info_error ("%s", file_system_error);
-      else
-        info_error (msg_cant_find_node, entry->nodename);
-    }
-
-  free (file_system_error);
-
-  if (node)
-    {
-      long loc, line;
-
-      info_set_node_of_window (window, node);
-
-      if (entry->line_number > 0)
-        {
-          /* Go to the line given by entry->line_number. */
-          line = window_log_to_phys_line (window, entry->line_number - 1);
-
-          if (line >= 0 && line < window->line_count)
-            loc = window->line_starts[line];
-          else
-            {
-              /* Try to find an occurence of LABEL in this node.  This
-                 could be useful for following index entries. */
-              long start = window->line_starts[1];
-              loc = info_target_search_node (node, entry->label, start, 1);
-            }
-
-          if (loc != -1)
-            {
-              window->point = loc;
-              window_adjust_pagetop (window);
-            }
-        }
-    }
-}
-
-/* Parse the node specification in LINE using WINDOW to default the filename.
-   Select the parsed node in WINDOW and remember it, or error if the node
-   couldn't be found. */
-static void
-info_parse_and_select (char *line, WINDOW *window)
-{
-  REFERENCE entry;
-
-  /* info_parse_node will be called on 'line' in subsequent functions. */
-  entry.nodename = line;
-  entry.filename = 0;
-  entry.label = "*info-parse-and-select*";
-
-  info_select_reference (window, &entry);
-}
-
 
 /* **************************************************************** */
 /*                                                                  */
@@ -1955,9 +1865,98 @@ DECLARE_INFO_COMMAND (info_global_prev_node,
 
 /* **************************************************************** */
 /*                                                                  */
-/*              Selection of cross-references and menus             */
+/*                    Cross-references and menus                    */
 /*                                                                  */
 /* **************************************************************** */
+
+/* Using WINDOW for various defaults, select the node referenced by ENTRY
+   in it.  If the node is selected, the window and node are remembered. */
+void
+info_select_reference (WINDOW *window, REFERENCE *entry)
+{
+  NODE *node;
+  char *file_system_error;
+
+  file_system_error = NULL;
+
+  node = info_get_node_with_defaults (entry->filename, entry->nodename,
+             PARSE_NODE_VERBATIM, window);
+
+  /* Try something a little weird.  If the node couldn't be found, and the
+     reference was of the form "foo::", see if the entry->label can be found
+     as a file, with a node of "Top". */
+  if (!node)
+    {
+      if (info_recent_file_error)
+        file_system_error = xstrdup (info_recent_file_error);
+
+      if (entry->nodename
+          && entry->label && (strcmp (entry->nodename, entry->label) == 0))
+        {
+          node = info_get_node (entry->label, "Top", PARSE_NODE_DFLT);
+          if (!node && info_recent_file_error)
+            {
+              free (file_system_error);
+              file_system_error = xstrdup (info_recent_file_error);
+            }
+        }
+    }
+
+  if (!node)
+    {
+      if (file_system_error)
+        info_error ("%s", file_system_error);
+      else
+        info_error (msg_cant_find_node, entry->nodename);
+    }
+
+  free (file_system_error);
+
+  if (node)
+    {
+      long loc, line;
+
+      info_set_node_of_window (window, node);
+
+      if (entry->line_number > 0)
+        {
+          /* Go to the line given by entry->line_number. */
+          line = window_log_to_phys_line (window, entry->line_number - 1);
+
+          if (line >= 0 && line < window->line_count)
+            loc = window->line_starts[line];
+          else
+            {
+              /* Try to find an occurence of LABEL in this node.  This
+                 could be useful for following index entries. */
+              long start = window->line_starts[1];
+              loc = info_target_search_node (node, entry->label, start, 1);
+            }
+
+          if (loc != -1)
+            {
+              window->point = loc;
+              window_adjust_pagetop (window);
+            }
+        }
+    }
+}
+
+/* Parse the node specification in LINE using WINDOW to default the filename.
+   Select the parsed node in WINDOW and remember it, or error if the node
+   couldn't be found. */
+static void
+info_parse_and_select (char *line, WINDOW *window)
+{
+  REFERENCE entry;
+
+  /* info_parse_node will be called on 'line' in subsequent functions. */
+  entry.nodename = line;
+  entry.filename = 0;
+  entry.label = "*info-parse-and-select*";
+
+  info_select_reference (window, &entry);
+}
 
 /* Select the last menu item in WINDOW->node. */
 DECLARE_INFO_COMMAND (info_last_menu_item,
@@ -2413,87 +2412,6 @@ DECLARE_INFO_COMMAND (info_select_reference_this_line,
   info_menu_or_ref_item (window, key, 1, 1, 0);
 }
 
-
-/* Read a line of input which is a node name, and go to that node. */
-DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
-{
-  char *line;
-
-#define GOTO_COMPLETES
-#if defined (GOTO_COMPLETES)
-  /* Build a completion list of all of the known nodes. */
-  {
-    register int fbi, i;
-    FILE_BUFFER *current;
-    REFERENCE **items = NULL;
-    size_t items_index = 0;
-    size_t items_slots = 0;
-
-    current = file_buffer_of_window (window);
-
-    for (fbi = 0; info_loaded_files && info_loaded_files[fbi]; fbi++)
-      {
-        FILE_BUFFER *fb;
-        REFERENCE *entry;
-        int this_is_the_current_fb;
-
-        fb = info_loaded_files[fbi];
-        this_is_the_current_fb = (current == fb);
-
-        entry = xmalloc (sizeof (REFERENCE));
-        entry->filename = entry->nodename = NULL;
-        entry->label = xmalloc (4 + strlen (fb->filename));
-        sprintf (entry->label, "(%s)*", fb->filename);
-
-        add_pointer_to_array (entry, items_index, items, items_slots, 10);
-
-        if (fb->tags)
-          {
-            for (i = 0; fb->tags[i]; i++)
-              {
-                entry = xmalloc (sizeof (REFERENCE));
-                entry->filename = entry->nodename = NULL;
-                if (this_is_the_current_fb)
-                  entry->label = xstrdup (fb->tags[i]->nodename);
-                else
-                  {
-                    entry->label = xmalloc
-                      (4 + strlen (fb->filename) +
-                       strlen (fb->tags[i]->nodename));
-                    sprintf (entry->label, "(%s)%s",
-                             fb->filename, fb->tags[i]->nodename);
-                  }
-
-                add_pointer_to_array (entry, items_index, items, 
-                                      items_slots, 100);
-              }
-          }
-      }
-    line = info_read_maybe_completing (window, _("Goto node: "),
-        items);
-    info_free_references (items);
-  }
-#else /* !GOTO_COMPLETES */
-  line = info_read_in_echo_area (window, _("Goto node: "));
-#endif /* !GOTO_COMPLETES */
-
-  /* If the user aborted, quit now. */
-  if (!line)
-    {
-      info_abort_key (window, 0, 0);
-      return;
-    }
-
-  canonicalize_whitespace (line);
-
-  if (*line)
-    info_parse_and_select (line, window);
-
-  free (line);
-  if (!info_error_was_printed)
-    window_clear_echo_area ();
-}
-
 /* Follow the menu list in MENUS (list of strings terminated by a NULL
    entry) from INITIAL_NODE.  If there is an error, place a message
    in ERROR.  STRICT says whether to accept incomplete strings as
@@ -2661,6 +2579,113 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
     window_clear_echo_area ();
 }
 
+
+/* **************************************************************** */
+/*                                                                  */
+/*                      Info Node Commands                          */
+/*                                                                  */
+/* **************************************************************** */
+
+/* Return (FILENAME)NODENAME for NODE, or just NODENAME if NODE's
+   filename is not set. */
+char *
+node_printed_rep (NODE *node)
+{
+  char *rep;
+
+  if (node->filename)
+    {
+      char *filename
+       = filename_non_directory (node->parent ? node->parent : node->filename);
+      rep = xmalloc (1 + strlen (filename) + 1 + strlen (node->nodename) + 1);
+      sprintf (rep, "(%s)%s", filename, node->nodename);
+    }
+  else
+    rep = node->nodename;
+
+  return rep;
+}
+
+/* Read a line of input which is a node name, and go to that node. */
+DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
+{
+  char *line;
+
+#define GOTO_COMPLETES
+#if defined (GOTO_COMPLETES)
+  /* Build a completion list of all of the known nodes. */
+  {
+    register int fbi, i;
+    FILE_BUFFER *current;
+    REFERENCE **items = NULL;
+    size_t items_index = 0;
+    size_t items_slots = 0;
+
+    current = file_buffer_of_window (window);
+
+    for (fbi = 0; info_loaded_files && info_loaded_files[fbi]; fbi++)
+      {
+        FILE_BUFFER *fb;
+        REFERENCE *entry;
+        int this_is_the_current_fb;
+
+        fb = info_loaded_files[fbi];
+        this_is_the_current_fb = (current == fb);
+
+        entry = xmalloc (sizeof (REFERENCE));
+        entry->filename = entry->nodename = NULL;
+        entry->label = xmalloc (4 + strlen (fb->filename));
+        sprintf (entry->label, "(%s)*", fb->filename);
+
+        add_pointer_to_array (entry, items_index, items, items_slots, 10);
+
+        if (fb->tags)
+          {
+            for (i = 0; fb->tags[i]; i++)
+              {
+                entry = xmalloc (sizeof (REFERENCE));
+                entry->filename = entry->nodename = NULL;
+                if (this_is_the_current_fb)
+                  entry->label = xstrdup (fb->tags[i]->nodename);
+                else
+                  {
+                    entry->label = xmalloc
+                      (4 + strlen (fb->filename) +
+                       strlen (fb->tags[i]->nodename));
+                    sprintf (entry->label, "(%s)%s",
+                             fb->filename, fb->tags[i]->nodename);
+                  }
+
+                add_pointer_to_array (entry, items_index, items, 
+                                      items_slots, 100);
+              }
+          }
+      }
+    line = info_read_maybe_completing (window, _("Goto node: "),
+        items);
+    info_free_references (items);
+  }
+#else /* !GOTO_COMPLETES */
+  line = info_read_in_echo_area (window, _("Goto node: "));
+#endif /* !GOTO_COMPLETES */
+
+  /* If the user aborted, quit now. */
+  if (!line)
+    {
+      info_abort_key (window, 0, 0);
+      return;
+    }
+
+  canonicalize_whitespace (line);
+
+  if (*line)
+    info_parse_and_select (line, window);
+
+  free (line);
+  if (!info_error_was_printed)
+    window_clear_echo_area ();
+}
+
 /* Find the node that is the best candidate to list the PROGRAM's
    invocation info and its command-line options, by looking for menu
    items and chains of menu items with characteristic names.  Return
@@ -2815,7 +2840,7 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
   free (line);
   free (default_program_name);
 }
-
+
 DECLARE_INFO_COMMAND (info_man, _("Read a manpage reference and select it"))
 {
   char *line;
@@ -2854,7 +2879,23 @@ DECLARE_INFO_COMMAND (info_dir_node, _("Select the node `(dir)'"))
   info_parse_and_select ("(dir)Top", window);
 }
 
-
+DECLARE_INFO_COMMAND (info_display_file_info,
+		      _("Show full file name of node being displayed"))
+{
+  char *fname = info_find_fullpath (window->node->filename, 0);
+  if (fname)
+    {
+      int line = window_line_of_point (window);
+      window_message_in_echo_area ("File name: %s, line %d of %ld (%ld%%)",
+				   fname, line,
+				   window->line_count,
+				   line * 100 / window->line_count);
+      free (fname);
+    }
+  else
+    window_message_in_echo_area ("Internal node");
+}
+
 /* Read the name of a node to kill.  The list of available nodes comes
    from the nodes appearing in the current window configuration. */
 static char *
@@ -2967,7 +3008,6 @@ DECLARE_INFO_COMMAND (info_kill_node, _("Kill this node"))
   kill_node (window, nodename);
 }
 
-
 /* Read the name of a file and select the entire file. */
 DECLARE_INFO_COMMAND (info_view_file, _("Read the name of a file and select it"))
 {
@@ -3157,7 +3197,7 @@ dump_node_to_stream (char *filename, char *nodename,
 DECLARE_INFO_COMMAND (info_print_node,
  _("Pipe the contents of this node through INFO_PRINT_COMMAND"))
 {
-  print_node (window->node);
+    print_node (window->node);
 }
 
 /* Print NODE on a printer piping it into INFO_PRINT_COMMAND. */
@@ -3238,6 +3278,19 @@ static int isearch_is_active = 0;
 
 static int last_search_direction = 0;
 static int last_search_case_sensitive = 0;
+
+/* Whether to use regexps or not for search.  */
+static int use_regex = 1;
+
+/* Toggle the usage of regular expressions in searches. */
+DECLARE_INFO_COMMAND (info_toggle_regexp,
+              _("Toggle the usage of regular expressions in searches"))
+{
+  use_regex = !use_regex;
+  window_message_in_echo_area (use_regex
+                               ? _("Using regular expressions for searches.")
+                               : _("Using literal strings for searches."));
+}
 
 /* Return the file buffer which belongs to WINDOW's node. */
 FILE_BUFFER *
@@ -4281,6 +4334,7 @@ info_gc_file_buffers (void)
         }
     }
 }
+
 
 /* **************************************************************** */
 /*                                                                  */
@@ -4306,38 +4360,6 @@ DECLARE_INFO_COMMAND (info_abort_key, _("Cancel current operation"))
 DECLARE_INFO_COMMAND (info_info_version, _("Display version of Info being run"))
 {
   window_message_in_echo_area (_("GNU Info version %s"), VERSION);
-}
-
-/* Move the cursor to the desired line of the window. */
-DECLARE_INFO_COMMAND (info_move_to_window_line,
-   _("Move the cursor to a specific line of the window"))
-{
-  int line;
-
-  /* With no numeric argument of any kind, default to the center line. */
-  if (!info_explicit_arg && count == 1)
-    line = (window->height / 2) + window->pagetop;
-  else
-    {
-      if (count < 0)
-        line = (window->height + count) + window->pagetop;
-      else
-        line = window->pagetop + count;
-    }
-
-  /* If the line doesn't appear in this window, make it do so. */
-  if ((line - window->pagetop) >= window->height)
-    line = window->pagetop + (window->height - 1);
-
-  /* If the line is too small, make it fit. */
-  if (line < window->pagetop)
-    line = window->pagetop;
-
-  /* If the selected line is past the bottom of the node, force it back. */
-  if (line >= window->line_count)
-    line = window->line_count - 1;
-
-  window->point = window->line_starts[line];
 }
 
 /* Clear the screen and redraw its contents.  Given a numeric argument,
@@ -4763,23 +4785,6 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
         }
       key = 0;
     }
-}
-
-DECLARE_INFO_COMMAND (info_display_file_info,
-		      _("Show full file name of node being displayed"))
-{
-  char *fname = info_find_fullpath (window->node->filename, 0);
-  if (fname)
-    {
-      int line = window_line_of_point (window);
-      window_message_in_echo_area ("File name: %s, line %d of %ld (%ld%%)",
-				   fname, line,
-				   window->line_count,
-				   line * 100 / window->line_count);
-      free (fname);
-    }
-  else
-    window_message_in_echo_area ("Internal node");
 }
 
 /* **************************************************************** */

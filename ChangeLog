@@ -1,3 +1,8 @@
+2014-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c: Some reordering of definitions and section comments.
+	No functional changes intended.
+
 2014-05-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infodoc.c (dump_map_to_text_buffer): Hide "echo-area-insert"
