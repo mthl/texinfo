@@ -145,8 +145,7 @@ get_visited_nodes (void)
           NODE *history_node = info_win->hist[i]->node;
 
           /* We skip mentioning "*Node Menu*" nodes. */
-          if (internal_info_node_p (history_node) &&
-              (strcmp (node->nodename, nodemenu_nodename) == 0))
+          if (strcmp (history_node->nodename, nodemenu_nodename) == 0)
             continue;
 
           if (history_node)
@@ -227,8 +226,6 @@ DECLARE_INFO_COMMAND (list_visited_nodes,
   WINDOW *new;
   NODE *node;
 
-  set_remembered_pagetop_and_point (window);
-
   /* If a window is visible and showing the buffer list already, re-use it. */
   for (new = windows; new; new = new->next)
     {
@@ -270,34 +267,7 @@ DECLARE_INFO_COMMAND (list_visited_nodes,
   node = get_visited_nodes ();
   name_internal_node (node, nodemenu_nodename);
 
-#if 0
-  /* Even if this is an internal node, we don't want the window
-     system to treat it specially.  So we turn off the internalness
-     of it here. */
-  /* Why?  We depend on internal_info_node_p returning true, so we must
-     not remove the flag.  Otherwise, the *Node Menu* nodes themselves
-     appear in the node menu.  --Andreas Schwab
-     <schwab@issan.informatik.uni-dortmund.de>.  */
-  node->flags &= ~N_IsInternal;
-#endif
-
-  /* If this window is already showing a node menu, reuse the existing node
-     slot. */
-  {
-    int remember_me = 1;
-
-#if defined (NOTDEF)
-    if (internal_info_node_p (new->node) &&
-        (strcmp (new->node->nodename, nodemenu_nodename) == 0))
-      remember_me = 0;
-#endif /* NOTDEF */
-
-    window_set_node_of_window (new, node);
-
-    if (remember_me)
-      remember_window_and_node (new);
-  }
-
+  info_set_node_of_window (new, node);
   active_window = new;
 }
 

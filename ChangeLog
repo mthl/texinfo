@@ -12,6 +12,11 @@
 	of window_set_node_of_window to save point and pagetop.
 	(calling_window_point, calling_window_pagetop): Delete unused.
 
+	* info/nodemenu.c (list_visited_nodes): Call
+	info_set_node_of_window instead of set_remembered_pagetop_and_point,
+	window_set_node_of_window and remember_window_and_node individually.
+	(get_visited_nodes) Remove unnecessary check.
+
 2014-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_print_node, print_node): print_node merged
