@@ -21,10 +21,14 @@ srcdir=${srcdir:-.}
 # Check that typing C-e on an empty line doesn't go to previous line
 $GINFO -f intera --restore $t/end-of-line.drib
 
-test -f $GINFO_OUTPUT || exit 1
-# Return non-zero (test failure) if files differ
-diff $GINFO_OUTPUT $t/node-target
-RETVAL=$?
+if ! test -f $GINFO_OUTPUT
+then
+	RETVAL=1
+else
+	# Return non-zero (test failure) if files differ
+	diff $GINFO_OUTPUT $t/node-target
+	RETVAL=$?
+fi
 
 . $t/Cleanup.inc
 

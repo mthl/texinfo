@@ -17,7 +17,7 @@
    standard output.  Read and ignore any data sent to terminal.  This
    is so we can run tests interactively without messing up the screen. */
 
-#define _GNU_SOURCE
+#define _XOPEN_SOURCE
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -30,10 +30,8 @@ char dummy;
 
 main ()
 {
-  /* Note getpt is a GNU extension.  grantpt, ptsname, unlockpt are
-     specified in POSIX.1-2001. */
   error (0, 0, "getting pty master fd");
-  master = getpt();
+  master = posix_openpt (O_RDWR);
   if (master == -1)
     exit (1);
 

@@ -21,10 +21,14 @@ srcdir=${srcdir:-.}
 # Go to a node with colons and commas in its name with "g"
 $GINFO -f quoting --restore $t/goto-quoted.drib
 
-test -f $GINFO_OUTPUT || exit 1
-# Return non-zero (test failure) if files differ
-diff $GINFO_OUTPUT $t/node-target
-RETVAL=$?
+if ! test -f $GINFO_OUTPUT
+then
+	RETVAL=1
+else
+	# Return non-zero (test failure) if files differ
+	diff $GINFO_OUTPUT $t/node-target
+	RETVAL=$?
+fi
 
 . $t/Cleanup.inc
 

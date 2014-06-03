@@ -1,5 +1,19 @@
 2014-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/pseudotty.c: Call posix_openpt instead of getpt.
+
+	* info/t/Init-intera.inc: Don't redirect stderr.  Set
+	LIBC_FATAL_STDERR_.
+
+	* info/t/body-start.sh, info/t/end-of-line.sh, info/t/goto-quoted.sh,
+	info/t/index-long-nodeline.sh, info/t/index.sh, info/t/next-quoted.sh,
+	info/t/quoted-label-and-target.sh, info/t/quoted-label-as-target.sh,
+	info/t/quoted-target.sh, info/t/split-index.sh, info/t/tab.sh: Don't
+	exit immediately if no output file was created and always proceed to
+	cleanup.
+
+2014-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (forget_node, forget_windows_and_nodes): Free
 	NODE objects in window history list.
 	(info_split_window): Copy the NODE object when creating a new

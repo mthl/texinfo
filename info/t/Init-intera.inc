@@ -34,6 +34,12 @@ do
 done
 rm -f $GINFO_PTY_FILE
 
-echo "Redirecting standard file descriptors to $PTS_DEVICE."
-exec 0>$PTS_DEVICE 1<&0 2<&0
+echo "Redirecting stdin and stdout to $PTS_DEVICE."
+exec 0>$PTS_DEVICE 1<&0
+
+# glibc can kill a running process if it detects a condition like a
+# double free.  This specifies that the message it prints when it does
+# this should be sent to stderr so it can be recorded in the test *.log
+# files.
+export LIBC_FATAL_STDERR_=1
 
