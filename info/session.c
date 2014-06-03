@@ -307,19 +307,6 @@ info_set_input_from_file (char *filename)
 /*                                                                  */
 /* **************************************************************** */
 
-/* Reset the remembered pagetop and point of WINDOW to WINDOW's current
-   values if the window and node are the same as the current one being
-   displayed. */
-static void
-set_remembered_pagetop_and_point (WINDOW *win)
-{
-  if (win->hist_index && win->hist[win->hist_index - 1]->node == win->node)
-    {
-      win->hist[win->hist_index - 1]->pagetop = win->pagetop;
-      win->hist[win->hist_index - 1]->point = win->point;
-    }
-}
-
 /* Remember this node, the currently displayed pagetop, and the current
    location of point in this window. */
 static void
@@ -372,7 +359,13 @@ forget_window_and_nodes (WINDOW *win)
 void
 info_set_node_of_window (WINDOW *window, NODE *node)
 {
-  set_remembered_pagetop_and_point (window);
+  /* Remember the current values of pagetop and point if the remembered node
+     is the same as the current one being displayed. */
+  if (win->hist_index && win->hist[win->hist_index - 1]->node == win->node)
+    {
+      win->hist[win->hist_index - 1]->pagetop = win->pagetop;
+      win->hist[win->hist_index - 1]->point = win->point;
+    }
 
   /* Put this node into the window. */
   window_set_node_of_window (window, node);
@@ -3357,9 +3350,8 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
   
   if (result == search_success && window)
     {
-      set_remembered_pagetop_and_point (window);
       if (window->node != node)
-        window_set_node_of_window (window, node);
+        info_set_node_of_window (window, node);
       window->point = *poff;
       window_adjust_pagetop (window);
     }
@@ -3574,7 +3566,6 @@ info_search_internal (char *string, WINDOW *window,
           if (result == search_success)
             {
               /* Yes!  We win. */
-              remember_window_and_node (window);
               if (!echo_area_is_active)
 		{
 		  if (msg)
