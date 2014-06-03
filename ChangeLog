@@ -1,5 +1,14 @@
 2014-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (info_split_window): Always operate on active
+	window.
+	* info/window.c (window_make_window)
+	* info/session.c (info_split_window)
+	* info/echo-area.c (ea_possible_completions) [!SPLIT_BEFORE_ACTIVE]:
+	Made unconditional.
+
+2014-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_search_in_node_internal, info_search_internal):
 	Replace calls to set_remembered_pagetop_and_point,
 	window_set_node_of_window and remember_window_and_node with call to

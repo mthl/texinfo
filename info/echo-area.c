@@ -1045,16 +1045,10 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
 		&& calling_window->height / 2 >= WINDOW_MIN_SIZE)
               {
                 int pagetop;
-#ifdef SPLIT_BEFORE_ACTIVE
-                int start, end;
-#endif
 
                 active_window = calling_window;
 
                 /* Perhaps we can scroll this window on redisplay. */
-#ifdef SPLIT_BEFORE_ACTIVE
-                start = calling_window->first_row;
-#endif
                 pagetop = calling_window->pagetop;
 
                 compwin =
@@ -1066,16 +1060,6 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
                 window_adjust_pagetop (calling_window);
                 remember_calling_window (calling_window);
 
-#if defined (SPLIT_BEFORE_ACTIVE)
-                /* If the pagetop hasn't changed, scrolling the calling
-                   window is a reasonable thing to do. */
-                if (pagetop == calling_window->pagetop)
-                  {
-                    end = start + calling_window->height;
-                    display_scroll_display
-                      (start, end, calling_window->prev->height + 1);
-                  }
-#else /* !SPLIT_BEFORE_ACTIVE */
                 /* If the pagetop has changed, set the new pagetop here. */
                 if (pagetop != calling_window->pagetop)
                   {
@@ -1083,7 +1067,6 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
                     calling_window->pagetop = pagetop;
                     set_window_pagetop (calling_window, newtop);
                   }
-#endif /* !SPLIT_BEFORE_ACTIVE */
 
                 echo_area_completions_window = compwin;
               }

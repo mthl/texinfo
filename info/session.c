@@ -357,7 +357,7 @@ forget_window_and_nodes (WINDOW *win)
    windows.  If we are doing automatic footnote display, also try to display
    the footnotes for this window. */
 void
-info_set_node_of_window (WINDOW *window, NODE *node)
+info_set_node_of_window (WINDOW *win, NODE *node)
 {
   /* Remember the current values of pagetop and point if the remembered node
      is the same as the current one being displayed. */
@@ -368,15 +368,15 @@ info_set_node_of_window (WINDOW *window, NODE *node)
     }
 
   /* Put this node into the window. */
-  window_set_node_of_window (window, node);
+  window_set_node_of_window (win, node);
 
   /* Remember this node and window in our list of info windows. */
-  remember_window_and_node (window);
+  remember_window_and_node (win);
 
   /* If doing auto-footnote display/undisplay, show the footnotes belonging
      to this window's node. */
   if (auto_footnotes_p)
-    info_get_or_remove_footnotes (window);
+    info_get_or_remove_footnotes (win);
 }
 
 
@@ -1269,47 +1269,24 @@ DECLARE_INFO_COMMAND (info_prev_window, _("Select the previous window"))
     }
 }
 
-/* Split WINDOW into two windows, both showing the same node.  If we
+/* Split active window into two windows, both showing the same node.  If we
    are automatically tiling windows, re-tile after the split. */
 DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
 {
-  WINDOW *split, *old_active;
+  WINDOW *split;
   NODE *copy;
-#if defined (SPLIT_BEFORE_ACTIVE)
-  int pagetop;
-
-  /* Remember the current pagetop of the window being split.  If it doesn't
-     change, we can scroll its contents around after the split. */
-  pagetop = window->pagetop;
-#endif
   
   copy = xmalloc (sizeof (NODE));
   *copy = *window->node; /* Field-by-field copy of structure. */
   /* Make the new window. */
-  old_active = active_window;
-  active_window = window;
   split = window_make_window (copy);
-  active_window = old_active;
 
   if (!split)
     info_error ("%s", msg_win_too_small);
   else
     {
-#if defined (SPLIT_BEFORE_ACTIVE)
-      /* Try to scroll the old window into its new postion. */
-      if (pagetop == window->pagetop)
-        {
-          int start, end, amount;
-
-          start = split->first_row;
-          end = start + window->height;
-          amount = split->height + 1;
-          display_scroll_display (start, end, amount);
-        }
-#else /* !SPLIT_BEFORE_ACTIVE */
       /* Make sure point still appears in the active window. */
       info_show_point (window);
-#endif /* !SPLIT_BEFORE_ACTIVE */
 
       split->pagetop = window->pagetop;
 

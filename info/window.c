@@ -287,12 +287,8 @@ window_make_window (NODE *node)
   window = xzalloc (sizeof (WINDOW));
   window->width = the_screen->width;
   window->height = (active_window->height / 2) - 1;
-#if defined (SPLIT_BEFORE_ACTIVE)
-  window->first_row = active_window->first_row;
-#else
   window->first_row = active_window->first_row +
     (active_window->height - window->height);
-#endif
   window->keymap = info_keymap;
   window->goal_column = -1;
   memset (&window->line_map, 0, sizeof (window->line_map));
@@ -303,28 +299,12 @@ window_make_window (NODE *node)
 
   /* Adjust the height of the old active window. */
   active_window->height -= (window->height + 1);
-#if defined (SPLIT_BEFORE_ACTIVE)
-  active_window->first_row += (window->height + 1);
-#endif
   active_window->flags |= W_UpdateWindow;
 
   /* We do have to readjust the existing active window. */
   window_adjust_pagetop (active_window);
   window_make_modeline (active_window);
 
-#if defined (SPLIT_BEFORE_ACTIVE)
-  /* This window is just before the active one.  The active window gets
-     bumped down one.  The active window is not changed. */
-  window->next = active_window;
-
-  window->prev = active_window->prev;
-  active_window->prev = window;
-
-  if (window->prev)
-    window->prev->next = window;
-  else
-    windows = window;
-#else
   /* This window is just after the active one.  Which window is active is
      not changed. */
   window->prev = active_window;
@@ -332,7 +312,6 @@ window_make_window (NODE *node)
   active_window->next = window;
   if (window->next)
     window->next->prev = window;
-#endif /* !SPLIT_BEFORE_ACTIVE */
   return window;
 }
 
