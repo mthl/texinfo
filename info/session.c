@@ -322,7 +322,7 @@ set_remembered_pagetop_and_point (WINDOW *win)
 
 /* Remember this node, the currently displayed pagetop, and the current
    location of point in this window. */
-void
+static void
 remember_window_and_node (WINDOW *win)
 {
   WINDOW_STATE *new;

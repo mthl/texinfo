@@ -252,13 +252,12 @@ info_get_or_remove_footnotes (WINDOW *window)
      make that window be the number of lines appearing in the footnotes. */
   if (new_footnotes && fn_win)
     {
-      window_set_node_of_window (fn_win, new_footnotes);
+      info_set_node_of_window (fn_win, new_footnotes);
+      add_gcable_pointer (new_footnotes->contents);
+      /* TODO: Make sure new_footnotes->references are freed properly. */
 
       window_change_window_height
         (fn_win, fn_win->line_count - fn_win->height);
-
-      remember_window_and_node (fn_win);
-      add_gcable_pointer (new_footnotes->contents);
     }
 
   if (!new_footnotes)

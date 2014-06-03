@@ -1,4 +1,10 @@
-2014-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
+2014-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/footnotes.c (info_get_or_remove_footnotes): Call
+	info_set_node_of_window instead of window_set_node_of_window.
+	* info/session.c (remember_window_and_node): Declared static.
+
+2014-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/pseudotty.c: Call posix_openpt instead of getpt.
 
