@@ -114,7 +114,7 @@ begin_multiple_window_info_session (REFERENCE **references, char *error)
             }
 
           active_window = largest;
-          window = window_make_window (0);
+          window = window_make_window ();
           info_select_reference (window, references[i]);
 
           if (!window->node)
@@ -307,20 +307,6 @@ info_set_input_from_file (char *filename)
 /*                                                                  */
 /* **************************************************************** */
 
-/* Remember this node, the currently displayed pagetop, and the current
-   location of point in this window. */
-static void
-remember_window_and_node (WINDOW *win)
-{
-  WINDOW_STATE *new;
-
-  new = xmalloc (sizeof (WINDOW_STATE));
-  new->node = win->node;
-  new->pagetop = win->pagetop;
-  new->point = win->point;
-  add_pointer_to_array (new, win->hist_index, win->hist, win->hist_slots, 16);
-}
-
 /* Go back one in the node history. */
 void
 forget_node (WINDOW *win)
@@ -353,12 +339,14 @@ forget_window_and_nodes (WINDOW *win)
   free (win->hist);
 }
 
-/* Set WINDOW to show NODE.  Remember the new window in our list of Info
-   windows.  If we are doing automatic footnote display, also try to display
+/* Set WINDOW to show NODE.  Remember the new window in our list of
+   Info windows.  If we are doing automatic footnote display, try to display
    the footnotes for this window. */
 void
 info_set_node_of_window (WINDOW *win, NODE *node)
 {
+  WINDOW_STATE *new;
+
   /* Remember the current values of pagetop and point if the remembered node
      is the same as the current one being displayed. */
   if (win->hist_index && win->hist[win->hist_index - 1]->node == win->node)
@@ -370,8 +358,13 @@ info_set_node_of_window (WINDOW *win, NODE *node)
   /* Put this node into the window. */
   window_set_node_of_window (win, node);
 
-  /* Remember this node and window in our list of info windows. */
-  remember_window_and_node (win);
+  /* Remember this node, the currently displayed pagetop, and the current
+     location of point in this window. */
+  new = xmalloc (sizeof (WINDOW_STATE));
+  new->node = win->node;
+  new->pagetop = win->pagetop;
+  new->point = win->point;
+  add_pointer_to_array (new, win->hist_index, win->hist, win->hist_slots, 16);
 
   /* If doing auto-footnote display/undisplay, show the footnotes belonging
      to this window's node. */
@@ -1279,12 +1272,13 @@ DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
   copy = xmalloc (sizeof (NODE));
   *copy = *window->node; /* Field-by-field copy of structure. */
   /* Make the new window. */
-  split = window_make_window (copy);
+  split = window_make_window ();
 
   if (!split)
     info_error ("%s", msg_win_too_small);
   else
     {
+      info_set_node_of_window (split, copy);
       /* Make sure point still appears in the active window. */
       info_show_point (window);
 
@@ -1294,8 +1288,6 @@ DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
         window_tile_windows (DONT_TILE_INTERNALS);
       else
         window_adjust_pagetop (split);
-
-      remember_window_and_node (split);
     }
 }
 
@@ -2262,7 +2254,8 @@ DECLARE_INFO_COMMAND (info_visit_menu,
 
       if (entry->type != REFERENCE_MENU_ITEM) continue;
 
-      new = window_make_window (window->node);
+      new = window_make_window ();
+      info_set_node_of_window (new, window->node);
       window_tile_windows (TILE_INTERNALS);
 
       if (!new)

@@ -1051,8 +1051,9 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
                 /* Perhaps we can scroll this window on redisplay. */
                 pagetop = calling_window->pagetop;
 
-                compwin =
-                  window_make_window (possible_completions_output_node);
+                compwin = window_make_window ();
+                info_set_node_of_window (compwin,
+                                         possible_completions_output_node);
                 active_window = the_echo_area;
                 window_change_window_height
                   (compwin, -(compwin->height - (iterations + 2)));
@@ -1075,8 +1076,7 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
           }
 
         if (compwin->node != possible_completions_output_node)
-          info_set_node_of_window
-            (compwin, possible_completions_output_node);
+          info_set_node_of_window (compwin, possible_completions_output_node);
 
         display_update_display (windows);
       }

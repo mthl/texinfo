@@ -682,14 +682,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
         /* If we still don't have a window, make a new one to contain
            the list. */
         if (!new)
-          {
-            WINDOW *old_active;
-
-            old_active = active_window;
-            active_window = window;
-            new = window_make_window (NULL);
-            active_window = old_active;
-          }
+          new = window_make_window ();
 
         /* If we couldn't make a new window, use this one. */
         if (!new)
@@ -871,6 +864,7 @@ DECLARE_INFO_COMMAND (info_all_files, _("Show all matching files"))
       return;
     }
 
+  /* FIXME: Copy allfiles_node so it is unique in the window history? */
   info_set_node_of_window (window, allfiles_node);
 
   if (!info_error_was_printed)

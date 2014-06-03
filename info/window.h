@@ -131,12 +131,9 @@ extern void window_make_modeline (WINDOW *window);
    You pass WIDTH and HEIGHT; the dimensions of the total screen size. */
 extern void window_initialize_windows (int width, int height);
 
-/* Make a new window showing NODE, and return that window structure.
-   The new window is made to be the active window.  If NODE is passed
-   as NULL, then show the node showing in the active window.  If the
-   window could not be made return a NULL pointer.  The active window
-   is not changed.*/
-extern WINDOW *window_make_window (NODE *node);
+/* Make a new window by splitting an existing one. If the window could
+   not be made return a null pointer.  The active window is not changed .*/
+extern WINDOW *window_make_window (void);
 
 /* Delete WINDOW from the list of known windows.  If this window was the
    active window, make the next window in the chain be the active window,

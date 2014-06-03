@@ -263,17 +263,12 @@ window_new_screen_size (int width, int height)
     }
 }
 
-/* Make a new window showing NODE, and return that window structure.
-   If NODE is passed as NULL, then show the node showing in the active
-   window.  If the window could not be made return a NULL pointer.  The
-   active window is not changed.*/
+/* Make a new window by splitting an existing one. If the window could
+   not be made return a null pointer.  The active window is not changed .*/
 WINDOW *
-window_make_window (NODE *node)
+window_make_window (void)
 {
   WINDOW *window;
-
-  if (!node)
-    node = active_window->node;
 
   /* If there isn't enough room to make another window, return now. */
   if ((active_window->height / 2) < WINDOW_MIN_SIZE)
@@ -295,7 +290,6 @@ window_make_window (NODE *node)
   window->modeline = xmalloc (1 + window->width);
   window->line_starts = NULL;
   window->flags = W_UpdateWindow | W_WindowVisible;
-  window_set_node_of_window (window, node);
 
   /* Adjust the height of the old active window. */
   active_window->height -= (window->height + 1);

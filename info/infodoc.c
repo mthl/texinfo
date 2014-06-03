@@ -474,7 +474,8 @@ info_find_or_create_help_window (void)
       if (eligible->height >= HELP_SPLIT_SIZE)
         {
           active_window = eligible;
-          help_window = window_make_window (internal_info_help_node);
+          help_window = window_make_window ();
+          info_set_node_of_window (help_window, internal_info_help_node);
         }
       else
         {

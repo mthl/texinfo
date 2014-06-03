@@ -205,17 +205,18 @@ info_get_or_remove_footnotes (WINDOW *window)
     /* Try to find footnotes for this window's node. */
     new_footnotes = make_footnotes_node (window->node);
 
-  /* If there was a window showing footnotes, and there are no footnotes
-     for the current window, delete the old footnote window. */
-  if (fn_win && !new_footnotes)
+  if (!new_footnotes)
     {
-      if (windows->next)
+      /* If there was a window showing footnotes, and there are no footnotes
+         for the current window, delete the old footnote window. */
+      if (fn_win && windows->next)
         info_delete_window_internal (fn_win);
+      return FN_UNFOUND;
     }
 
-  /* If there are footnotes for this window's node, but no window around
-     showing footnotes, try to make a new window. */
-  if (new_footnotes && !fn_win)
+  /* If there is no window around showing footnotes, try
+     to make a new window. */
+  if (!fn_win)
     {
       WINDOW *old_active;
       WINDOW *last, *win;
@@ -228,42 +229,32 @@ info_get_or_remove_footnotes (WINDOW *window)
          contain the footnotes. */
       old_active = active_window;
       active_window = last;
-      fn_win = window_make_window (new_footnotes);
+      fn_win = window_make_window ();
+      active_window = old_active;
 
-      if (fn_win)
+      /* If we are hacking automatic footnotes, and there are footnotes
+         but we couldn't display them, print a message to that effect. */
+      if (!fn_win)
         {
-          fn_win->flags |= W_TempWindow;
-          active_window = old_active;
-        }
-      else
-        {
-          free (new_footnotes->contents);
-          free (new_footnotes);
-
-          /* If we are hacking automatic footnotes, and there are footnotes
-             but we couldn't display them, print a message to that effect. */
           if (auto_footnotes_p)
             inform_in_echo_area (_("Footnotes could not be displayed"));
           return FN_UNABLE;
         }
     }
 
-  /* If there are footnotes, and there is a window to display them,
-     make that window be the number of lines appearing in the footnotes. */
-  if (new_footnotes && fn_win)
-    {
-      info_set_node_of_window (fn_win, new_footnotes);
-      add_gcable_pointer (new_footnotes->contents);
-      /* TODO: Make sure new_footnotes->references are freed properly. */
+  /* Note that info_set_node_of_window calls this function
+     (info_get_or_remove_footnotes), but we do not recurse indefinitely
+     because we check if we are in the footnote window above. */
+  info_set_node_of_window (fn_win, new_footnotes);
+  add_gcable_pointer (new_footnotes->contents);
+  /* TODO: Make sure new_footnotes->references are freed properly. */
+  fn_win->flags |= W_TempWindow;
 
-      window_change_window_height
-        (fn_win, fn_win->line_count - fn_win->height);
-    }
+  /* Make the height be the number of lines appearing in the footnotes. */
+  if (new_footnotes)
+    window_change_window_height (fn_win, fn_win->line_count - fn_win->height);
 
-  if (!new_footnotes)
-    return FN_UNFOUND;
-  else
-    return FN_FOUND;
+  return FN_FOUND;
 }
 
 /* Show the footnotes associated with this node in another window. */

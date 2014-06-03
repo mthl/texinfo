@@ -1,5 +1,16 @@
 2014-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (remember_window_and_node, info_set_node_of_window):
+	remember_window_and_node merged.
+	* info/window.c (window_make_window): Arguments changed.  Don't set
+	node of window.  All callers updated.
+	* info/session.c (info_split_window): Call info_set_node_of_window
+	instead of remember_window_and_node.
+	* info/footnotes.c (info_get_or_remove_footnotes): Reorganized,
+	Comments changed.
+
+2014-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_split_window): Always operate on active
 	window.
 	* info/window.c (window_make_window)

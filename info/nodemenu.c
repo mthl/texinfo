@@ -249,14 +249,7 @@ DECLARE_INFO_COMMAND (list_visited_nodes,
 
   /* If we still don't have a window, make a new one to contain the list. */
   if (!new)
-    {
-      WINDOW *old_active;
-
-      old_active = active_window;
-      active_window = window;
-      new = window_make_window (NULL);
-      active_window = old_active;
-    }
+    new = window_make_window ();
 
   /* If we couldn't make a new window, use this one. */
   if (!new)
