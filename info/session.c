@@ -37,8 +37,6 @@
 #  define HAVE_STRUCT_TIMEVAL
 #endif /* HAVE_SYS_TIME_H */
 
-static void info_gc_file_buffers (void);
-
 static void info_clear_pending_input (void);
 static void info_set_pending_input (unsigned char key);
 static void info_handle_pointer (char *label, WINDOW *window);
@@ -46,6 +44,7 @@ static void display_info_keyseq (int expecting_future_input);
 char *node_printed_rep (NODE *node);
 
 static REFERENCE *select_menu_digit (WINDOW *window, unsigned char key);
+static void gc_file_buffers_and_nodes (void);
 
 /* Warning!  Any change to the order of the commands defined with
    DECLARE_INFO_COMMAND in this file results in an incompatible .info
@@ -307,6 +306,17 @@ info_set_input_from_file (char *filename)
 /*                                                                  */
 /* **************************************************************** */
 
+static void
+free_history_node (NODE *n)
+{
+  /* References of internal nodes are not stored anywhere else.  The
+     contents fields were recorded with add_gcable_pointer. */
+  if (n->flags & N_IsInternal)
+    info_free_references (n->references);
+
+  free (n);
+}
+
 /* Go back one in the node history. */
 void
 forget_node (WINDOW *win)
@@ -315,7 +325,7 @@ forget_node (WINDOW *win)
   if (i == 0)
     return;
 
-  free (win->hist[i - 1]->node);
+  free_history_node (win->hist[i - 1]->node);
   free (win->hist[i - 1]);
   win->hist[i - 1] = 0;
   i = --win->hist_index;
@@ -333,7 +343,7 @@ forget_window_and_nodes (WINDOW *win)
   int i;
   for (i = 0; i < win->hist_index; i++)
     {
-      free (win->hist[i]->node);
+      free_history_node (win->hist[i]->node);
       free (win->hist[i]);
     }
   free (win->hist);
@@ -1266,18 +1276,21 @@ DECLARE_INFO_COMMAND (info_prev_window, _("Select the previous window"))
    are automatically tiling windows, re-tile after the split. */
 DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
 {
-  WINDOW *split;
-  NODE *copy;
-  
-  copy = xmalloc (sizeof (NODE));
-  *copy = *window->node; /* Field-by-field copy of structure. */
-  /* Make the new window. */
-  split = window_make_window ();
+  WINDOW *split = window_make_window ();
 
   if (!split)
     info_error ("%s", msg_win_too_small);
   else
     {
+      NODE *copy = xmalloc (sizeof (NODE));
+      *copy = *window->node; /* Field-by-field copy of structure. */
+
+      /* References in internal nodes are not stored in a tag table.  This
+         allows us to free internal nodes without checking if their
+         references are shared by other NODE objects. */
+      if (copy->flags & N_IsInternal)
+        copy->references = info_copy_references (copy->references);
+
       info_set_node_of_window (split, copy);
       /* Make sure point still appears in the active window. */
       info_show_point (window);
@@ -1298,13 +1311,9 @@ DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
 DECLARE_INFO_COMMAND (info_delete_window, _("Delete the current window"))
 {
   if (!windows->next)
-    {
-      info_error ("%s", msg_cant_kill_last);
-    }
+    info_error ("%s", msg_cant_kill_last);
   else if (window->flags & W_WindowIsPerm)
-    {
-      info_error ("%s", _("Cannot delete a permanent window"));
-    }
+    info_error ("%s", _("Cannot delete a permanent window"));
   else
     {
       info_delete_window_internal (window);
@@ -1315,7 +1324,7 @@ DECLARE_INFO_COMMAND (info_delete_window, _("Delete the current window"))
       if (auto_tiling_p)
         window_tile_windows (DONT_TILE_INTERNALS);
 
-      info_gc_file_buffers ();
+      gc_file_buffers_and_nodes ();
     }
 }
 
@@ -1326,8 +1335,6 @@ info_delete_window_internal (WINDOW *window)
 {
   if (windows->next && ((window->flags & W_WindowIsPerm) == 0))
     {
-      /* We not only delete the window from the display, we forget it from
-         our list of remembered windows. */
       forget_window_and_nodes (window);
       window_delete_window (window);
 
@@ -3198,7 +3205,6 @@ write_node_to_stream (NODE *node, FILE *stream)
    to gc even those file buffer contents which had to be uncompressed. */
 int gc_compressed_files = 0;
 
-static void info_gc_file_buffers (void);
 static void info_search_1 (WINDOW *window, int count,
 			   unsigned char key, int case_sensitive,
 			   int ask_for_string, long start);
@@ -3701,7 +3707,7 @@ info_search_1 (WINDOW *window, int count, unsigned char key,
 
   /* Perhaps free the unreferenced file buffers that were searched, but
      not retained. */
-  info_gc_file_buffers ();
+  gc_file_buffers_and_nodes ();
 }
 
 int search_skip_screen_p = 0;
@@ -4171,15 +4177,38 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
   free_isearch_states ();
 
   /* Perhaps GC some file buffers. */
-  info_gc_file_buffers ();
+  gc_file_buffers_and_nodes ();
 
   /* After searching, leave the window in the correct state. */
   if (!echo_area_is_active)
     window_clear_echo_area ();
 }
 
-/* Find tag table entries for nodes which have been rewritten, and free
-   their contents. */
+
+/* **************************************************************** */
+/*                                                                  */
+/*                      Garbage collection                          */
+/*                                                                  */
+/* **************************************************************** */
+
+
+/* Contents of displayed nodes with no corresponding file buffer. */
+static char **gcable_pointers = NULL;
+static size_t gcable_pointers_index = 0;
+static size_t gcable_pointers_slots = 0;
+
+/* Add POINTER to the list of garbage collectible pointers.  A pointer
+   is not garbage collected until no window contains a node whose contents
+   member is equal to the pointer. */
+void
+add_gcable_pointer (char *pointer)
+{
+  add_pointer_to_array (pointer, gcable_pointers_index, gcable_pointers,
+			gcable_pointers_slots, 10);
+}
+
+/* Free contents of rewritten nodes in the file's tag table.  This will
+   do nothing for a subfile of a split file. */
 static void
 free_node_contents (FILE_BUFFER *fb)
 {
@@ -4197,75 +4226,119 @@ free_node_contents (FILE_BUFFER *fb)
       }
 }
 
-
-/* GC some file buffers.  A file buffer can be gc-ed if there we have
-   no nodes in INFO_WINDOWS that reference this file buffer's contents.
-   Garbage collecting a file buffer means to free the file buffers
-   contents. */
 static void
-info_gc_file_buffers (void)
+gc_file_buffers_and_nodes (void)
 {
-  register int fb_index, iw_index, i;
-  register FILE_BUFFER *fb;
-  register WINDOW *iw;
+  /* Array to record whether each file buffer was referenced or not. */
+  int *fb_referenced = xcalloc (info_loaded_files_index, sizeof (int));
+  WINDOW *win;
+  int i, j;
+  int fb_index, nc_index;
 
-  if (!info_loaded_files)
-    return;
+  /* New value of gcable_pointers. */
+  char **new = NULL;
+  size_t new_index = 0;
+  size_t new_slots = 0;
 
-  for (fb_index = 0; (fb = info_loaded_files[fb_index]); fb_index++)
+  /* Loop over nodes in the history of displayed windows recording which
+     nodes and file buffers were referenced. */
+  for (win = windows; win; win = win->next)
     {
-      int fb_referenced_p = 0, parent_referenced_p = 0;
-
-      /* If already gc-ed, do nothing. */
-      if (!fb->contents)
+      if (!win->hist)
         continue;
-
-      /* If this file had to be uncompressed, check to see if we should
-         gc it.  This means that the user-variable "gc-compressed-files"
-         is non-zero. */
-      if ((fb->flags & N_IsCompressed) && !gc_compressed_files)
-        continue;
-
-      /* If this file's contents are not gc-able, move on. */
-      if (fb->flags & N_CannotGC)
-        continue;
-
-      /* Check each window to see if it has any nodes which reference
-         this file. */
-      for (iw = windows; iw; iw = iw->next)
+      for (i = 0; win->hist[i]; i++)
         {
-          for (i = 0; iw->hist && iw->hist[i]; i++)
+          NODE *n = win->hist[i]->node;
+
+          /* Loop over file buffers. */
+          for (fb_index = 0; fb_index < info_loaded_files_index; fb_index++)
             {
-              NODE *n = iw->hist[i]->node;
-              if (n->filename
-                  && ((FILENAME_CMP (fb->fullpath, n->filename) == 0)
-                      || (FILENAME_CMP (fb->filename, n->filename) == 0)))
+              FILE_BUFFER *fb = info_loaded_files[fb_index];
+
+              if (fb->flags & N_TagsIndirect)
                 {
-                  fb_referenced_p = 1;
-                  break;
+                  if (n->parent
+                      && (FILENAME_CMP (fb->fullpath, n->parent) == 0))
+                    {
+                      fb_referenced[fb_index] = 1;
+                      break;
+                    }
+                }
+              else
+                {
+                  if (n->filename
+                      && (FILENAME_CMP (fb->fullpath, n->filename) == 0))
+                    {
+                      fb_referenced[fb_index] = 1;
+                      break;
+                    }
                 }
 
-              /* If any subfile of a split file is referenced, none of
-                 the rewritten nodes in the split file is freed. */
-              if (n->parent
-		  && ((FILENAME_CMP (fb->fullpath, n->parent) == 0)
-                      || (FILENAME_CMP (fb->filename, n->parent) == 0)))
-                {
-                  parent_referenced_p = 1;
-                  break;
-                }
             }
-        }
 
-      /* If this file buffer wasn't referenced, free its contents. */
-      if (!fb_referenced_p)
-        {
-          if (!parent_referenced_p)
-            free_node_contents (fb);
-          free (fb->contents);
-          fb->contents = NULL;
+          /* Loop over gcable_pointers. */
+          for (nc_index = 0; nc_index < gcable_pointers_index; nc_index++)
+            if (n->contents == gcable_pointers[nc_index])
+              {
+                add_pointer_to_array (n->contents, new_index, new, 
+                                      new_slots, 10);
+                break;
+              }
         }
     }
+
+  /* Free unreferenced file buffers. */
+  for (i = 0; i < info_loaded_files_index; i++)
+    {
+      if (!fb_referenced[i])
+        {
+          FILE_BUFFER *fb = info_loaded_files[i];
+
+          if (fb->flags & N_TagsIndirect)
+            {
+              free_node_contents (fb);
+              continue;
+            }
+
+          /* If already gc-ed, do nothing. */
+          if (!fb->contents)
+            continue;
+
+          /* If this file had to be uncompressed, check to see if we should
+             gc it.  This means that the user-variable "gc-compressed-files"
+             is non-zero. */
+          if ((fb->flags & N_IsCompressed) && !gc_compressed_files)
+            continue;
+
+          /* If this file's contents are not gc-able, move on. */
+          if (fb->flags & N_CannotGC)
+            continue;
+
+          free_node_contents (fb);
+          free (fb->contents);
+          fb->contents = 0;
+        }
+    }
+
+  /* Free unreferenced node contents and update gcable_pointers. */
+  for (i = 0; i < gcable_pointers_index; i++)
+    {
+      for (j = 0; j < new_index; j++)
+	if (gcable_pointers[i] == new[j])
+	  break;
+
+      /* If we got all the way through the new list, then the old pointer
+	 can be garbage collected. */
+      if (!new || j == new_index)
+	free (gcable_pointers[i]);
+    }
+
+  free (gcable_pointers);
+  gcable_pointers = new;
+  gcable_pointers_slots = new_slots;
+  gcable_pointers_index = new_index;
+
+  free (fb_referenced);
 }
 
 

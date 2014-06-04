@@ -40,7 +40,6 @@ typedef char *CFunction ();
 #include "session.h"
 #include "echo-area.h"
 #include "footnotes.h"
-#include "gc.h"
 
 #include "string.h"
 #include "mbiter.h"

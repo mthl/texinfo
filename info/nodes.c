@@ -34,8 +34,11 @@
 /* When non-zero, this is a string describing the recent file error. */
 char *info_recent_file_error = NULL;
 
-/* The list of already loaded nodes. */
+/* The list of already loaded files. */
 FILE_BUFFER **info_loaded_files = NULL;
+
+/* Number of loaded files. */
+size_t info_loaded_files_index = 0;
 
 /* The number of slots currently allocated to LOADED_FILES. */
 size_t info_loaded_files_slots = 0;
@@ -566,7 +569,7 @@ free_info_tag (NODE *tag)
 static FILE_BUFFER *info_load_file (char *fullpath, int get_tags);
 static FILE_BUFFER *info_find_subfile (char *filename);
 static void get_file_character_encoding (FILE_BUFFER *fb);
-static void remember_info_file (FILE_BUFFER *file_buffer);
+static void forget_info_file (char *filename);
 static void info_reload_file_buffer_contents (FILE_BUFFER *fb);
 
 /* Locate the file named by FILENAME, and return the information structure
@@ -755,7 +758,8 @@ info_load_file (char *fullpath, int get_tags)
 
   /* If the file was loaded, remember the name under which it was found. */
   if (file_buffer)
-    remember_info_file (file_buffer);
+    add_pointer_to_array (file_buffer, info_loaded_files_index,
+                          info_loaded_files, info_loaded_files_slots, 10);
 
   return file_buffer;
 }
@@ -822,21 +826,8 @@ make_file_buffer (void)
   return file_buffer;
 }
 
-/* Add FILE_BUFFER to our list of already loaded info files. */
-static void
-remember_info_file (FILE_BUFFER *file_buffer)
-{
-  int i;
-
-  for (i = 0; info_loaded_files && info_loaded_files[i]; i++)
-    ;
-
-  add_pointer_to_array (file_buffer, i, info_loaded_files,
-                        info_loaded_files_slots, 10);
-}
-
 /* Forget the contents, tags table, nodes list, and names of FILENAME. */
-void
+static void
 forget_info_file (char *filename)
 {
   int i;

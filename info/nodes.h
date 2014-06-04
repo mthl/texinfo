@@ -25,8 +25,6 @@
 #include "info.h"
 #include "search.h"
 
-/* User code interface.  */
-
 /* Structure which describes a node reference, such as a menu entry or
    cross reference. */
 typedef struct {
@@ -79,8 +77,6 @@ typedef struct {
 #define N_IsManPage    0x40     /* This node is a manpage. */
 #define N_FromAnchor   0x80     /* Synthesized for an anchor reference. */
 #define N_WasRewritten 0x100    /* NODE->contents can be passed to free(). */ 
-
-/* Internal data structures.  */
 
 /* String constants. */
 #define INFO_FILE_LABEL                 "File:"
@@ -99,7 +95,6 @@ typedef struct {
 #define TAGS_TABLE_IS_INDIRECT_LABEL    "(Indirect)"
 #define LOCAL_VARIABLES_LABEL           "Local Variables"
 #define CHARACTER_ENCODING_LABEL        "coding:"
-
 
 /* Character constants. */
 #define INFO_COOKIE '\037'
@@ -132,13 +127,10 @@ typedef struct {
   int flags;                    /* Various flags.  Mimics of N_* flags. */
   char *encoding;               /* Name of character encoding of file. */
 } FILE_BUFFER;
-
-/* Externally visible functions.  */
 
 /* Array of FILE_BUFFER * which represents the currently loaded info files. */
 extern FILE_BUFFER **info_loaded_files;
-
-/* The number of slots currently allocated to INFO_LOADED_FILES. */
+extern size_t info_loaded_files_index;
 extern size_t info_loaded_files_slots;
 
 /* Locate the file named by FILENAME, and return the information structure
@@ -188,8 +180,6 @@ extern char *info_recent_file_error;
 
 /* Create a new, empty file buffer. */
 extern FILE_BUFFER *make_file_buffer (void);
-
-void forget_info_file (char *filename);
 
 /* Found in dir.c */
 extern NODE *get_dir_node (void);

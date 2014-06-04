@@ -247,7 +247,6 @@ info_get_or_remove_footnotes (WINDOW *window)
      because we check if we are in the footnote window above. */
   info_set_node_of_window (fn_win, new_footnotes);
   add_gcable_pointer (new_footnotes->contents);
-  /* TODO: Make sure new_footnotes->references are freed properly. */
   fn_win->flags |= W_TempWindow;
 
   /* Make the height be the number of lines appearing in the footnotes. */

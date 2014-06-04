@@ -1,3 +1,26 @@
+2014-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (free_history_node): New function.  Free references
+	for internal nodes.
+	(forget_node, forget_window_and_nodes): Call free_history_node.
+	(info_split_window): Copy references if node in window is an internal
+	one.
+	(info_delete_window): Formatting.
+	(info_delete_window_internal): Remove out-of-date comment.
+
+	* info/session.c (gc_file_buffers_and_nodes): New function to
+	replace info_gc_file_buffers and gc_pointers.  All callers updated.
+	(add_gcable_pointer, gcable_pointers, gcable_pointers_index)
+	(gcable_pointers_slots): Moved from info/gc.c.
+	* info/gc.c, info/gc.h: Files removed.  (Copyright years were a
+	subset of those in session.c.)
+
+	* info/nodes.c (info_loaded_files_index): New variable.
+	(remember_info_file): Merged into info_load_file.
+	(forget_info_file): Declared as static.
+
+	* info/nodes.h: Changes to comments and formatting.
+
 2014-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (remember_window_and_node, info_set_node_of_window):
