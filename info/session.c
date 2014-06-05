@@ -4256,8 +4256,13 @@ gc_file_buffers_and_nodes (void)
                 }
               else
                 {
+                  /* Check both 'fullpath' and 'filename'.  TODO: Make sure
+                     that the 'filename' field of NODE contains the full path,
+                     or have some other way of telling different files with
+                     the same name apart. */
                   if (n->filename
-                      && (FILENAME_CMP (fb->fullpath, n->filename) == 0))
+                      && (FILENAME_CMP (fb->fullpath, n->filename) == 0
+                          || (FILENAME_CMP (fb->filename, n->filename) == 0)))
                     {
                       fb_referenced[fb_index] = 1;
                       break;
