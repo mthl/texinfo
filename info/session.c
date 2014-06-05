@@ -1618,16 +1618,18 @@ forward_move_node_structure (WINDOW *window, int behaviour)
               }
           }
         
-        /* If this node contains a menu, select its first entry. */
-        {
-          REFERENCE *entry;
+        /* If this node contains a menu, select its first entry.  Indices
+           are an exception, as their menus lead nowhere meaningful. */
+        if (!(window->node->flags & N_IsIndex))
+          {
+            REFERENCE *entry;
 
-          if (entry = select_menu_digit (window, '1'))
-            {
-              info_select_reference (window, entry);
-              return 0;
-            }
-        }
+            if (entry = select_menu_digit (window, '1'))
+              {
+                info_select_reference (window, entry);
+                return 0;
+              }
+          }
 
         /* Okay, this node does not contain a menu.  If it contains a
            "Next:" pointer, use that. */
@@ -1726,8 +1728,6 @@ backward_move_node_structure (WINDOW *window, int behaviour)
     case IS_Continuous:
       if (window->node->up)
         {
-          int traverse_menus = 0;
-
           /* If up is the dir node, we are at the top node.
              Don't do anything. */
           if (   !strcmp ("(dir)", window->node->up)
@@ -1748,40 +1748,30 @@ backward_move_node_structure (WINDOW *window, int behaviour)
              in the menus as far as possible. */
           else if (window->node->prev)
             {
-              traverse_menus = 1;
               info_handle_pointer ("Prev", window);
-            }
-          else /* 'Up' but no 'Prev' */
-            {
-              info_handle_pointer ("Up", window);
-            }
-
-          /* Repeatedly select last item of menus */
-          if (traverse_menus)
-            {
-              REFERENCE *entry;
-              while (!info_error_was_printed)
+              if (!(window->node->flags & N_IsIndex))
                 {
-                  if (entry = select_menu_digit (window, '0'))
+                  while (!info_error_was_printed)
                     {
-                      info_select_reference (window, entry);
+                      REFERENCE *entry = select_menu_digit (window, '0');
+                      if (entry)
+                        info_select_reference (window, entry);
+                      else
+                        break;
                     }
-                  else
-                    break;
                 }
             }
+          else /* 'Up' but no 'Prev' */
+            info_handle_pointer ("Up", window);
         }
       else if (window->node->prev) /* 'Prev' but no 'Up' */
-        {
-          info_handle_pointer ("Prev", window);
-        }
+        info_handle_pointer ("Prev", window);
       else
         {
           info_error ("%s", 
                 _("No `Prev' or `Up' for this node within this document."));
           return 1;
         }
-
 
       break;
     }

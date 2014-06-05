@@ -1,8 +1,16 @@
 2014-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.h (N_IsIndex): New macro.
+	* info/info-utils.c (scan_node_contents): Record if an index tag
+	was seen.
+	* info/session.c (forward_move_node_structure)
+	(backward_move_node_structure): Don't go down menus in index nodes.
+
+2014-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c: Check if return value of file_buffer_of_window
 	is null.
-	(INFO_NO_TAGS, INFO_GET_TAGS): Removed.  Uses updated
+	(INFO_NO_TAGS, INFO_GET_TAGS): Removed.  Uses updated.
 
 2014-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
 

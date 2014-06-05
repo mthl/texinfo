@@ -77,6 +77,7 @@ typedef struct {
 #define N_IsManPage    0x40     /* This node is a manpage. */
 #define N_FromAnchor   0x80     /* Synthesized for an anchor reference. */
 #define N_WasRewritten 0x100    /* NODE->contents can be passed to free(). */ 
+#define N_IsIndex      0x200    /* An index node. */
 
 /* String constants. */
 #define INFO_FILE_LABEL                 "File:"

@@ -1622,6 +1622,9 @@ search_again:
                                 text_buffer_off (expansion));
             /* Skip past body of tag. */
             skip_input (p1 - inptr);
+
+            if (in_index)
+              node->flags |= N_IsIndex;
           }
         else
           {
