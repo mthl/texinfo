@@ -3,6 +3,21 @@
 	* info/session.c (gc_file_buffers_and_nodes): Check equality with
 	'filename' field as well as 'fullpath' field of FILE_BUFFER.
 
+	* info/echo-area.c (restore_calling_window): Remove handling of window
+	pagetops.  Don't call display update functions.  Remove disabled code.
+	(ea_possible_completions): Remove handling of window pagetops.
+
+	* info/window.c (window_make_window): Don't call window_adjust_pagetop.
+	It's possible that the new window could be closed without the old
+	window having been selected in the meantime, and this would leave the
+	point where it was.
+	* info/session.c (info_next_window, info_prev_window): Call
+	window_adjust_pagetop on newly active window.
+	* info/window.c (window_change_window_height): Don't call
+	window_adjust_pagetop.
+	(window_set_node_of_window): Don't call window_adjust_pagetop if there
+	is no node.
+
 2014-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.h (N_IsIndex): New macro.

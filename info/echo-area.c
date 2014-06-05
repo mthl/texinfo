@@ -119,39 +119,10 @@ restore_calling_window (void)
      pending which created a completions window. */
   if (compwin)
     {
-      if ((compwin != windows || windows->next) &&
-          !echo_area_stack_contains_completions_p ())
+      if ((compwin != windows || windows->next)
+          && !echo_area_stack_contains_completions_p ())
         {
-          WINDOW *next;
-          int pagetop = 0;
-          int start = 0;
-          int end = 0;
-          int amount = 0;
-
-          next = compwin->next;
-          if (next)
-            {
-              start = next->first_row;
-              end = start + next->height;
-              amount = - (compwin->height + 1);
-              pagetop = next->pagetop;
-            }
-
           info_delete_window_internal (compwin);
-
-          /* This is not necessary because info_delete_window_internal ()
-             calls echo_area_inform_of_deleted_window (), which does the
-             right thing. */
-#if defined (UNNECESSARY)
-          echo_area_completions_window = NULL;
-#endif /* UNNECESSARY */
-
-          if (next)
-            {
-              display_scroll_display (start, end, amount);
-              next->pagetop = pagetop;
-              display_update_display (windows);
-            }
         }
     }
 }
@@ -1044,32 +1015,15 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
             if (calling_window->height > (iterations * 2)
 		&& calling_window->height / 2 >= WINDOW_MIN_SIZE)
               {
-                int pagetop;
+                remember_calling_window (calling_window);
 
                 active_window = calling_window;
-
-                /* Perhaps we can scroll this window on redisplay. */
-                pagetop = calling_window->pagetop;
-
                 compwin = window_make_window ();
-                info_set_node_of_window (compwin,
-                                         possible_completions_output_node);
-                active_window = the_echo_area;
                 window_change_window_height
                   (compwin, -(compwin->height - (iterations + 2)));
 
-                window_adjust_pagetop (calling_window);
-                remember_calling_window (calling_window);
-
-                /* If the pagetop has changed, set the new pagetop here. */
-                if (pagetop != calling_window->pagetop)
-                  {
-                    int newtop = calling_window->pagetop;
-                    calling_window->pagetop = pagetop;
-                    set_window_pagetop (calling_window, newtop);
-                  }
-
                 echo_area_completions_window = compwin;
+                active_window = the_echo_area;
               }
             else
               compwin = calling_window;

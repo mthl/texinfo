@@ -1217,6 +1217,9 @@ DECLARE_INFO_COMMAND (info_next_window, _("Select the next window"))
       if (auto_footnotes_p)
         info_get_or_remove_footnotes (window);
 
+      /* Point may not be within part of node displayed in window if there
+         has been resizing of this window since the last time it was active. */
+      window_adjust_pagetop (window);
       window->flags |= W_UpdateWindow;
       active_window = window;
     }
@@ -1243,8 +1246,8 @@ DECLARE_INFO_COMMAND (info_prev_window, _("Select the previous window"))
     {
       /* If we are in the echo area, or if the echo area isn't active and we
          are in the first window, find the last window in the chain. */
-      if (window == the_echo_area ||
-          (window == windows && !echo_area_is_active))
+      if (window == the_echo_area
+          || window == windows && !echo_area_is_active)
         {
           register WINDOW *win, *last = NULL;
 
@@ -1267,6 +1270,9 @@ DECLARE_INFO_COMMAND (info_prev_window, _("Select the previous window"))
       if (auto_footnotes_p)
         info_get_or_remove_footnotes (window);
 
+      /* Point may not be within part of node displayed in window if there
+         has been resizing of this window since the last time it was active. */
+      window_adjust_pagetop (window);
       window->flags |= W_UpdateWindow;
       active_window = window;
     }

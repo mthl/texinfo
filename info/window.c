@@ -295,8 +295,6 @@ window_make_window (void)
   active_window->height -= (window->height + 1);
   active_window->flags |= W_UpdateWindow;
 
-  /* We do have to readjust the existing active window. */
-  window_adjust_pagetop (active_window);
   window_make_modeline (active_window);
 
   /* This window is just after the active one.  Which window is active is
@@ -316,7 +314,6 @@ window_make_window (void)
     me->height += diff; \
     next->height -= diff; \
     next->first_row += diff; \
-    window_adjust_pagetop (next); \
   } while (0)
 
 #define grow_me_shrinking_prev(me, prev, diff) \
@@ -324,7 +321,6 @@ window_make_window (void)
     me->height += diff; \
     prev->height -= diff; \
     me->first_row -=diff; \
-    window_adjust_pagetop (prev); \
   } while (0)
 
 #define shrink_me_growing_next(me, next, diff) \
@@ -332,7 +328,6 @@ window_make_window (void)
     me->height -= diff; \
     next->height += diff; \
     next->first_row -= diff; \
-    window_adjust_pagetop (next); \
   } while (0)
 
 #define shrink_me_growing_prev(me, prev, diff) \
@@ -340,7 +335,6 @@ window_make_window (void)
     me->height -= diff; \
     prev->height += diff; \
     me->first_row += diff; \
-    window_adjust_pagetop (prev);		\
   } while (0)
 
 /* Change the height of WINDOW by AMOUNT.  This also automagically adjusts
@@ -459,8 +453,6 @@ window_change_window_height (WINDOW *window, int amount)
                   next->first_row++;
                 }
             }
-          window_adjust_pagetop (prev);
-          window_adjust_pagetop (next);
         }
     }
   if (prev)
@@ -470,7 +462,6 @@ window_change_window_height (WINDOW *window, int amount)
     next->flags |= W_UpdateWindow;
 
   window->flags |= W_UpdateWindow;
-  window_adjust_pagetop (window);
 }
 
 /* Tile all of the windows currently displayed in the global variable
@@ -575,9 +566,12 @@ window_set_node_of_window (WINDOW *window, NODE *node)
   window->point = 0;
   recalculate_line_starts (window);
   window->flags |= W_UpdateWindow;
-  /* The display_pos member is nonzero if we're displaying an anchor.  */
-  window->point = node ? node->display_pos : 0;
-  window_adjust_pagetop (window);
+  if (node)
+    {
+      /* The display_pos member is nonzero if we're displaying an anchor.  */
+      window->point = node ? node->display_pos : 0;
+      window_adjust_pagetop (window);
+    }
   window_make_modeline (window);
 }
 
