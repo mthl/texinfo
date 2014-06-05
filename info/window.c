@@ -249,6 +249,9 @@ window_new_screen_size (int width, int height)
         }
     }
 
+  /* Make sure point is in displayed part of active window. */
+  window_adjust_pagetop (active_window);
+
   /* One more loop.  If any heights or widths have become negative,
      set them to zero.  This can apparently happen with resizing down to
      very small sizes.  Sadly, it is not apparent to me where in the

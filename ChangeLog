@@ -18,6 +18,9 @@
 	(window_set_node_of_window): Don't call window_adjust_pagetop if there
 	is no node.
 
+	* info/window.c (window_new_screen_size): Call window_adjust_pagetop
+	on active window after resizing all the windows.
+
 2014-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.h (N_IsIndex): New macro.
