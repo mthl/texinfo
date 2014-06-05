@@ -561,11 +561,6 @@ free_info_tag (NODE *tag)
 
 /* Functions for retrieving files. */
 
-/* Passed to info_load_file.  INFO_GET_TAGS says to do what is necessary
-   to fill in the nodes or tags arrays in FILE_BUFFER. */
-#define INFO_NO_TAGS  0
-#define INFO_GET_TAGS 1
-
 static FILE_BUFFER *info_load_file (char *fullpath, int get_tags);
 static FILE_BUFFER *info_find_subfile (char *filename);
 static void get_file_character_encoding (FILE_BUFFER *fb);
@@ -671,7 +666,7 @@ info_find_file (char *filename)
   if (!fullpath)
     return NULL;
 
-  file_buffer = info_load_file (fullpath, INFO_GET_TAGS);
+  file_buffer = info_load_file (fullpath, 1);
 
   return file_buffer;
 }
@@ -713,7 +708,7 @@ info_find_subfile (char *fullpath)
   with_extension = info_find_fullpath (fullpath, 0);
   if (with_extension)
     {
-      file_buffer = info_load_file (with_extension, INFO_NO_TAGS);
+      file_buffer = info_load_file (with_extension, 0);
       free (with_extension);
     }
   return file_buffer;

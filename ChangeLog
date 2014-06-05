@@ -2,6 +2,7 @@
 
 	* info/nodes.c: Check if return value of file_buffer_of_window
 	is null.
+	(INFO_NO_TAGS, INFO_GET_TAGS): Removed.  Uses updated
 
 2014-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
