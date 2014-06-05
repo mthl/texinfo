@@ -1,5 +1,10 @@
 2014-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c: Check if return value of file_buffer_of_window
+	is null.
+
+2014-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (free_history_node): New function.  Free references
 	for internal nodes.
 	(forget_node, forget_window_and_nodes): Call free_history_node.

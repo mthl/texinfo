@@ -1032,7 +1032,10 @@ get_filename_and_nodename (int flag, WINDOW *window,
           if (!*filename)
             {
               fb = file_buffer_of_window (window);
-              *filename = fb->fullpath;
+              if (fb)
+                *filename = fb->fullpath;
+              else
+                *filename = window->node->filename;
             }
         }
       else
