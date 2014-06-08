@@ -1,5 +1,10 @@
 2014-06-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info.c (get_initial_file): For inexact dir match, discard
+	command-line argument after processing, and clear error message.
+
+2014-06-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.h (N_IsDir): New flag.
 	* info/dir.c (build_dir_node): Set N_IsDir on flags for return node.
 	* info/info-utils.c (scan_reference_marker): Split out from

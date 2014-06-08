@@ -254,6 +254,12 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
       entry = lookup_dir_entry ((*argv)[0], 1);
       if (entry)
         {
+          (*argv)++; /* Advance past first remaining argument. */
+          (*argc)--;
+          /* Clear error message. */
+          free (*error);
+          *error = 0;
+
           initial_file = info_find_fullpath (entry->filename, 0);
           /* Store full path, so that we find the already loaded file in
              info_find_file, and show the full path if --where is used. */
