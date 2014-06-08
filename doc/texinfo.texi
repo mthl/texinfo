@@ -14284,12 +14284,12 @@ to delimit Texinfo source to be included in Docbook output only, and
 The behavior of newlines in raw regions is unspecified.
 
 In all cases, in raw processing, @code{@@} retains the same meaning as
-in the remainder of the document.  Thus, the Texinfo processors
+in the remainder of the document.  Thus, the Texinfo processors must
 recognize and even execute, to some extent, the contents of the raw
 regions, regardless of the final output format.  Therefore, specifying
 changes that globally affect the document inside a raw region leads to
-unpredictable and generally undesirable behavior.  For example, it
-using the @code{@@kbdinputstyle} command inside a raw region is undefined.
+unpredictable and generally undesirable behavior.  For example, using
+the @code{@@kbdinputstyle} command inside a raw region is undefined.
 
 The remedy is simple: don't do that.  Use the raw formatter commands
 for their intended purpose, of providing material directly in the

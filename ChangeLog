@@ -1,3 +1,13 @@
+2014-06-08  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (Raw Formatter Commands): fix grammar.
+
+	* doc/info.texi (Help-^L): "mode line", "screenful",
+	stand-alone and Emacs Info both use the mode line.
+	Use x instead of weird C-x 0 to get rid of help msg.
+	
+	* doc/info-stnd.texi: "mode line", "screenful".
+
 2014-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (gc_file_buffers_and_nodes): Check equality with

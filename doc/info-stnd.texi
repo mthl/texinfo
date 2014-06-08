@@ -702,7 +702,7 @@ redisplaying almost a completely new screenful of lines.  If you are at
 the end of a node, @key{SPC} takes you to the ``next'' node, so that you can
 read an entire manual from start to finish by repeating @key{SPC}.
 
-The default scroll size is one screen-full, but it can be changed by
+The default scroll size is one screenful, but it can be changed by
 invoking the (@code{scroll-forward-page-only-set-window}) command,
 @samp{z} under @samp{--vi-keys}, with a numeric argument.
 
@@ -860,7 +860,7 @@ terminated at the rightmost column by changing the state of line
 wrapping in the window with @code{C-x w}.  When a line which needs more
 space than one screen width to display is displayed, a @samp{$} appears
 in the rightmost column of the screen, and the remainder of the line is
-invisible.  When long lines are truncated, the modeline displays the
+invisible.  When long lines are truncated, the mode line displays the
 @samp{$} character near its left edge.
 @end table
 
@@ -1455,7 +1455,7 @@ view area where the text of the node is displayed, and an associated
 @dfn{mode line}, which briefly describes the node being viewed.
 
 GNU Info supports multiple windows appearing in a single screen; each
-window is separated from the next by its modeline.  At any time, there
+window is separated from the next by its mode line.  At any time, there
 is only one @dfn{active} window, that is, the window in which the cursor
 appears.  There are commands available for creating windows, changing
 the size of windows, selecting which window is active, and for deleting
@@ -1493,7 +1493,7 @@ named @file{dir}, showing the node @samp{Top}.
 When a node comes from a file which is compressed on disk, this is
 indicated in the mode line with two small @samp{z}'s.  In addition, if
 the Info file containing the node has been split into subfiles, the name
-of the subfile containing the node appears in the modeline as well:
+of the subfile containing the node appears in the mode line as well:
 
 @example
 --zz-Info: (emacs)Top, 291 lines --Top-- Subfile: emacs-1.Z-------------
