@@ -1,3 +1,8 @@
+2014-06-08  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi: use THUMBPDF_CMD instead of THUMBPDF.
+	Report/suggestion from Kurt Hornik, 8 Jun 2014 09:49:47.
+
 2014-06-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.c (get_initial_file): For inexact dir match, discard
@@ -26,6 +31,7 @@
 	* doc/info.texi (Help-^L): "mode line", "screenful",
 	stand-alone and Emacs Info both use the mode line.
 	Use x instead of weird C-x 0 to get rid of help msg.
+	Suggestion from Benno Schulenberg, 07 May 2014 23:06:54.
 	
 	* doc/info-stnd.texi: "mode line", "screenful".
 

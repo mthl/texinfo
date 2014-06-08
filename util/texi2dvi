@@ -392,7 +392,7 @@ using \\graphicspath): in that case, use -I to specify the additional
 directories to consider.
 
 The values of the BIBER, BIBTEX, DVIPDF, DVIPS, HEVEA, LATEX, MAKEINDEX,
-MAKEINFO, PDFLATEX, PDFTEX, T4HT, TEX, TEX4HT, TEXINDEX, and THUMBPDF
+MAKEINFO, PDFLATEX, PDFTEX, T4HT, TEX, TEX4HT, TEXINDEX, and THUMBPDF_CMD
 environment variables are used to run those commands, if they are set.
 
 Regarding --dvipdf, if DVIPDF is not set in the environment, the
@@ -1200,7 +1200,7 @@ run_thumbpdf ()
      && test -r "$in_noext.log" \
      && grep 'thumbpdf\.sty'  "$in_noext.log" >&6 2>&1; \
   then
-    thumbpdf=${THUMBPDF:-thumbpdf}
+    thumbpdf=${THUMBPDF_CMD:-thumbpdf}
     thumbcmd="$thumbpdf $in_dir/$in_noext"
     verbose "Running $thumbcmd ..."
     if $thumbcmd >&5; then

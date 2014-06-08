@@ -51,6 +51,10 @@ one of the relevant sections:
   . handle compressed input file names containing spaces.
   . exit successfully if --remove is given and the dir file does not exist.
 
+* texi2dvi:
+  . look for the environment variable THUMBPDF_CMD instead of THUMBPDF,
+    since thumbpdf itself has used THUMBPDF for options since 2000.
+
 5.2 (26 September 2013)
 * Language:
   . new commands @inlinefmtifelse, @inlineifset, @inlineifclear, for
