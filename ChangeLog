@@ -1,3 +1,19 @@
+2014-06-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.h (N_IsDir): New flag.
+	* info/dir.c (build_dir_node): Set N_IsDir on flags for return node.
+	* info/info-utils.c (scan_reference_marker): Split out from
+	scan_node_contents.
+	(scan_reference_label): Arguments changed.  Don't create REFERENCE
+	object.  Don't skip whitespace at start of label.  Return value says
+	whether the syntax was valid.
+	(scan_reference_target) Look at flags field of NODE to tell
+	if it is an index node.  Look at type field of REFERENCE to
+	tell whether it is a menu entry.  [preprocess-nodes=On]: Display menu
+	item descriptions on same line if there is space.
+	(scan_node_contents): Call info_new_reference.  Check if reference
+	text was contained within parentheses.
+
 2014-06-08  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (Raw Formatter Commands): fix grammar.

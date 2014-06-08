@@ -78,6 +78,7 @@ typedef struct {
 #define N_FromAnchor   0x80     /* Synthesized for an anchor reference. */
 #define N_WasRewritten 0x100    /* NODE->contents can be passed to free(). */ 
 #define N_IsIndex      0x200    /* An index node. */
+#define N_IsDir        0x400    /* A dir node. */
 
 /* String constants. */
 #define INFO_FILE_LABEL                 "File:"
