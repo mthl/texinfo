@@ -1,3 +1,29 @@
+2014-06-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.c, info/session.c (window_scroll_step): Moved between
+	files.
+	* info/session.c, info/window.c (set_window_pagetop): Moved between
+	files.
+	* info/session.c (info_show_point): Handle scroll-step variable.
+	(window_adjust_pagetop): Call window_line_of_point.  Call
+	set_window_pagetop to scroll display.  Always centre current line
+	ignoring scroll-step variable.
+
+	* info/session.c (info_next_line, info_prev_line): Call point_next_line
+	and point_prev_line to handle traversing node hierarchy.
+
+	* info/window.c (window_initialize_windows, window_make_window): 
+	Initialize goal_column fields to 0.
+	(window_get_goal_column): Removed.
+	* info/session.c (info_read_and_dispatch): Don't reset goal_column.
+	(move_to_new_line, move_to_goal_column): Renamed.  Only move to goal
+	column.
+	(info_show_point): Save goal_column.  Callers updated.
+	(info_move_to_prev_xref, info_move_to_next_xref): Don't call
+	move_to_new_line.
+	(info_move_to_window_line): Call info_show_point.
+	(info_end_of_node): Call info_show_point.
+
 2014-06-08  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi: use THUMBPDF_CMD instead of THUMBPDF.

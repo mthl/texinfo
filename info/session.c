@@ -185,12 +185,6 @@ info_read_and_dispatch (void)
     {
       int lk = 0;
 
-      /* If we haven't just gone up or down a line, there is no
-         goal column for this window. */
-      if ((info_last_executed_command != (VFunction *) info_next_line) &&
-          (info_last_executed_command != (VFunction *) info_prev_line))
-        active_window->goal_column = -1;
-
       if (echo_area_is_active)
         {
           lk = echo_area_last_command_was_kill;
@@ -389,177 +383,48 @@ info_set_node_of_window (WINDOW *win, NODE *node)
 /*                                                                  */
 /* **************************************************************** */
 
+static int forward_move_node_structure (WINDOW *window, int behaviour);
+static int backward_move_node_structure (WINDOW *window, int behaviour);
+
 /* Controls whether scroll-behavior affects line movement commands */
 int cursor_movement_scrolls_p = 1; 
 
-/* Immediately make WINDOW->point visible on the screen, and move the
-   terminal cursor there. */
+/* Variable controlling redisplay of scrolled windows.  If non-zero,
+   it is the desired number of lines to scroll the window in order to
+   make point visible.  A value of 1 produces smooth scrolling.  If set
+   to zero, the line containing point is centered within the window. */
+int window_scroll_step = 1;
+
+/* Used after cursor movement commands.  Scroll window so that point is
+   visible, and move the terminal cursor there. */
 static void
 info_show_point (WINDOW *window)
 {
-  int old_pagetop;
+  window->goal_column = window_get_cursor_column (window);
 
-  old_pagetop = window->pagetop;
-  window_adjust_pagetop (window);
-  if (old_pagetop != window->pagetop)
+  if (window_scroll_step == 0)
+    window_adjust_pagetop (window);
+  else
     {
-      int new_pagetop;
+      int new_pagetop = window->pagetop;
+      int line = window_line_of_point (window);
+      if (line < window->pagetop)
+        new_pagetop -= window_scroll_step;
+      else if (line >= window->pagetop + window->height)
+        new_pagetop += window_scroll_step;
 
-      new_pagetop = window->pagetop;
-      window->pagetop = old_pagetop;
-      set_window_pagetop (window, new_pagetop);
+      /* It's possible that moving by 'scroll-step' still won't show the
+         point.  If so, call window_adjust_pagetop as a backup. */
+      if (line >= new_pagetop && line < new_pagetop + window->height)
+        set_window_pagetop (window, new_pagetop);
+      else
+        window_adjust_pagetop (window);
     }
 
   if (window->flags & W_UpdateWindow)
     display_update_one_window (window);
 
   display_cursor_at_point (window);
-}
-
-/* Move WINDOW->point to NEW line index, trying to place cursor in
-   goal column. */
-static void
-move_to_new_line (int new, WINDOW *window)
-{
-  int goal;
-
-  if (new >= window->line_count || new < 0)
-    return;
-  
-  goal = window_get_goal_column (window);
-  window->goal_column = goal;
-
-  window->point = window->line_starts[new];
-  window->point += window_chars_to_goal (window, goal);
-  info_show_point (window);
-}
-
-static int forward_move_node_structure (WINDOW *window, int behaviour);
-static int backward_move_node_structure (WINDOW *window, int behaviour);
-
-/* Move WINDOW's point down to the next line if possible. */
-DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
-{
-  int old_line, new_line;
-
-  if (count < 0)
-    info_prev_line (window, -count, key);
-  else
-    while (count)
-      {
-        int diff;
-
-        old_line = window_line_of_point (window);
-        diff = window->line_count - old_line;
-        if (diff > count)
-          diff = count;
-
-        count -= diff;
-        new_line = old_line + diff;
-        if (new_line >= window->line_count)
-          {
-            if (cursor_movement_scrolls_p)
-              {
-                if (forward_move_node_structure (window,
-                                                 info_scroll_behaviour))
-                  break;
-                move_to_new_line (0, window);
-              }
-            else
-              break;
-          }
-        else
-          move_to_new_line (new_line, window);
-      }
-}
-
-/* Move WINDOW's point up to the previous line if possible. */
-DECLARE_INFO_COMMAND (info_prev_line, _("Move up to the previous line"))
-{
-  int old_line, new_line;
-
-  if (count < 0)
-    info_next_line (window, -count, key);
-  else
-    while (count)
-      {
-        int diff;
-        
-        old_line = window_line_of_point (window);
-        diff = old_line + 1;
-        if (diff > count)
-          diff = count;
-        
-        count -= diff;
-        new_line = old_line - diff;
-        
-        if (new_line < 0
-            && cursor_movement_scrolls_p)
-          {
-            if (backward_move_node_structure (window, info_scroll_behaviour))
-              break;
-            if (window->line_count > window->height)
-              set_window_pagetop (window, window->line_count - window->height);
-            move_to_new_line (window->line_count - 1, window);
-          }
-        else
-          move_to_new_line (new_line, window);
-      }
-}
-
-/* Move the cursor to the desired line of the window. */
-DECLARE_INFO_COMMAND (info_move_to_window_line,
-   _("Move the cursor to a specific line of the window"))
-{
-  int line;
-
-  /* With no numeric argument of any kind, default to the center line. */
-  if (!info_explicit_arg && count == 1)
-    line = (window->height / 2) + window->pagetop;
-  else
-    {
-      if (count < 0)
-        line = (window->height + count) + window->pagetop;
-      else
-        line = window->pagetop + count;
-    }
-
-  /* If the line doesn't appear in this window, make it do so. */
-  if ((line - window->pagetop) >= window->height)
-    line = window->pagetop + (window->height - 1);
-
-  /* If the line is too small, make it fit. */
-  if (line < window->pagetop)
-    line = window->pagetop;
-
-  /* If the selected line is past the bottom of the node, force it back. */
-  if (line >= window->line_count)
-    line = window->line_count - 1;
-
-  window->point = window->line_starts[line];
-}
-
-/* Return true if POINT sits on a newline character. */
-static int
-looking_at_newline (WINDOW *win, long point)
-{
-  mbi_iterator_t iter;
-  mbi_init (iter, win->node->contents + point,
-	    win->node->nodelen - point);
-  mbi_avail (iter);
-  return mbi_cur (iter).wc_valid && mbi_cur (iter).wc == '\n';
-}
-
-/* Return true if WIN->point sits on an alphanumeric character. */
-static int
-looking_at_alnum (WINDOW *win)
-{
-  mbi_iterator_t iter;
-  mbi_init (iter, win->node->contents + win->point,
-	    win->node->nodelen - win->point);
-  mbi_avail (iter);
-
-  return mbi_cur (iter).wc_valid && iswalnum (mbi_cur (iter).wc);
 }
 
 /* Advance point of WIN to the beginning of the next logical line.  Return
@@ -611,6 +476,41 @@ point_prev_line (WINDOW *win)
 
   win->point = 0;
   return 0;
+}
+
+/* Try to place cursor in goal column. */
+static void
+move_to_goal_column (WINDOW *window)
+{
+  int line;
+
+  line = window_line_of_point (window);
+
+  window->point = window->line_starts[line];
+  window->point += window_chars_to_goal (window, window->goal_column);
+}
+
+/* Return true if POINT sits on a newline character. */
+static int
+looking_at_newline (WINDOW *win, long point)
+{
+  mbi_iterator_t iter;
+  mbi_init (iter, win->node->contents + point,
+	    win->node->nodelen - point);
+  mbi_avail (iter);
+  return mbi_cur (iter).wc_valid && mbi_cur (iter).wc == '\n';
+}
+
+/* Return true if WIN->point sits on an alphanumeric character. */
+static int
+looking_at_alnum (WINDOW *win)
+{
+  mbi_iterator_t iter;
+  mbi_init (iter, win->node->contents + win->point,
+	    win->node->nodelen - win->point);
+  mbi_avail (iter);
+
+  return mbi_cur (iter).wc_valid && iswalnum (mbi_cur (iter).wc);
 }
 
 /* Advance point to the next multibyte character. */
@@ -732,6 +632,75 @@ point_backward_word (WINDOW *win)
     }
 }
 
+/* Move WINDOW's point down to the next line if possible. */
+DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
+{
+  int old_line, new_line;
+
+  if (count < 0)
+    info_prev_line (window, -count, key);
+  else
+    {
+      long saved_goal = window->goal_column;
+      while (count--)
+        point_next_line (window);
+      info_show_point (window);
+      window->goal_column = saved_goal;
+      move_to_goal_column (window);
+    }
+}
+
+/* Move WINDOW's point up to the previous line if possible. */
+DECLARE_INFO_COMMAND (info_prev_line, _("Move up to the previous line"))
+{
+  int old_line, new_line;
+
+  if (count < 0)
+    info_next_line (window, -count, key);
+  else
+    {
+      long saved_goal = window->goal_column;
+      while (count--)
+        point_prev_line (window);
+      info_show_point (window);
+      window->goal_column = saved_goal;
+      move_to_goal_column (window);
+    }
+}
+
+/* Move the cursor to the desired line of the window. */
+DECLARE_INFO_COMMAND (info_move_to_window_line,
+   _("Move the cursor to a specific line of the window"))
+{
+  int line;
+
+  /* With no numeric argument of any kind, default to the center line. */
+  if (!info_explicit_arg && count == 1)
+    line = (window->height / 2) + window->pagetop;
+  else
+    {
+      if (count < 0)
+        line = (window->height + count) + window->pagetop;
+      else
+        line = window->pagetop + count;
+    }
+
+  /* If the line doesn't appear in this window, make it do so. */
+  if (line - window->pagetop >= window->height)
+    line = window->pagetop + (window->height - 1);
+
+  /* If the line is too small, make it fit. */
+  if (line < window->pagetop)
+    line = window->pagetop;
+
+  /* If the selected line is past the bottom of the node, force it back. */
+  if (line >= window->line_count)
+    line = window->line_count - 1;
+
+  window->point = window->line_starts[line];
+  info_show_point (window);
+}
+
 /* Move WINDOW's point to the end of the logical line. */
 DECLARE_INFO_COMMAND (info_end_of_line, _("Move to the end of the line"))
 {
@@ -844,8 +813,8 @@ DECLARE_INFO_COMMAND (info_backward_word, _("Move backward a word"))
 /* Move to the beginning of the node. */
 DECLARE_INFO_COMMAND (info_beginning_of_node, _("Move to the start of this node"))
 {
-  window->pagetop = window->point = 0;
-  window->flags |= W_UpdateWindow;
+  window->point = 0;
+  info_show_point (window);
 }
 
 /* Move to the end of the node. */
@@ -882,74 +851,6 @@ char *info_scroll_choices[] = {
 
 static void _scroll_forward (WINDOW *window, int count, int behaviour);
 static void _scroll_backward (WINDOW *window, int count, int behaviour);
-
-/* Change the pagetop of WINDOW to DESIRED_TOP, perhaps scrolling the screen
-   to do so. */
-void
-set_window_pagetop (WINDOW *window, int desired_top)
-{
-  int point_line, old_pagetop;
-
-  if (desired_top < 0)
-    desired_top = 0;
-  else if (desired_top > window->line_count)
-    desired_top = window->line_count - 1;
-
-  if (window->pagetop == desired_top)
-    return;
-
-  old_pagetop = window->pagetop;
-  window->pagetop = desired_top;
-
-  /* Make sure that point appears in this window. */
-  point_line = window_line_of_point (window);
-  if ((point_line < window->pagetop) ||
-      ((point_line - window->pagetop) > window->height - 1))
-    window->point =
-      window->line_starts[window->pagetop];
-
-  window->flags |= W_UpdateWindow;
-
-  /* Find out which direction to scroll, and scroll the window in that
-     direction.  Do this only if there would be a savings in redisplay
-     time.  This is true if the amount to scroll is less than the height
-     of the window, and if the number of lines scrolled would be greater
-     than 10 % of the window's height.
-
-     To prevent status line blinking when keeping up or down key,
-     scrolling is disabled if the amount to scroll is 1. */
-  if (old_pagetop < desired_top)
-    {
-      int start, end, amount;
-
-      amount = desired_top - old_pagetop;
-
-      if (amount == 1 ||
-	  (amount >= window->height) ||
-          (((window->height - amount) * 10) < window->height))
-        return;
-
-      start = amount + window->first_row;
-      end = window->height + window->first_row;
-
-      display_scroll_display (start, end, -amount);
-    }
-  else
-    {
-      int start, end, amount;
-
-      amount = old_pagetop - desired_top;
-
-      if (amount == 1 ||
-	  (amount >= window->height) ||
-          (((window->height - amount) * 10) < window->height))
-        return;
-
-      start = window->first_row;
-      end = (window->first_row + window->height) - amount;
-      display_scroll_display (start, end, amount);
-    }
-}
 
 static void
 _scroll_forward (WINDOW *window, int count, int behaviour)
@@ -2330,7 +2231,7 @@ DECLARE_INFO_COMMAND (info_move_to_prev_xref,
           info_error_was_printed = 0;
           if (backward_move_node_structure (window, info_scroll_behaviour))
             break;
-          move_to_new_line (window->line_count - 1, window);
+          window->point = window->node->nodelen - 1;
         }
     }
 }
@@ -2351,7 +2252,7 @@ DECLARE_INFO_COMMAND (info_move_to_next_xref,
           info_error_was_printed = 0;
           if (forward_move_node_structure (window, info_scroll_behaviour))
             break;
-          move_to_new_line (0, window);
+          window->point = 0;
         }
     }
 }

@@ -62,11 +62,6 @@ window_initialize_windows (int width, int height)
   windows = xzalloc (sizeof (WINDOW));
   active_window = windows;
 
-  /* None of these windows has a goal column yet. */
-  the_echo_area->goal_column = -1;
-  active_window->goal_column = -1;
-  the_screen->goal_column = -1;
-
   /* The active and echo_area windows are visible.
      The echo_area is permanent.
      The screen is permanent. */
@@ -288,7 +283,7 @@ window_make_window (void)
   window->first_row = active_window->first_row +
     (active_window->height - window->height);
   window->keymap = info_keymap;
-  window->goal_column = -1;
+  window->goal_column = 0;
   memset (&window->line_map, 0, sizeof (window->line_map));
   window->modeline = xmalloc (1 + window->width);
   window->line_starts = NULL;
@@ -567,6 +562,7 @@ window_set_node_of_window (WINDOW *window, NODE *node)
   window->node = node;
   window->pagetop = 0;
   window->point = 0;
+  window->goal_column = 0;
   recalculate_line_starts (window);
   window->flags |= W_UpdateWindow;
   if (node)
@@ -741,59 +737,95 @@ window_log_to_phys_line (WINDOW *window, size_t ln)
   return i;
 }
 
-/* Global variable control redisplay of scrolled windows.  If non-zero,
-   it is the desired number of lines to scroll the window in order to
-   make point visible.  A value of 1 produces smooth scrolling.  If set
-   to zero, the line containing point is centered within the window. */
-int window_scroll_step = 1;
+/* Change the pagetop of WINDOW to DESIRED_TOP, perhaps scrolling the screen
+   to do so. */
+void
+set_window_pagetop (WINDOW *window, int desired_top)
+{
+  int point_line, old_pagetop;
+
+  if (desired_top < 0)
+    desired_top = 0;
+  else if (desired_top > window->line_count)
+    desired_top = window->line_count - 1;
+
+  if (window->pagetop == desired_top)
+    return;
+
+  old_pagetop = window->pagetop;
+  window->pagetop = desired_top;
+
+  /* Make sure that point appears in this window. */
+  point_line = window_line_of_point (window);
+  if ((point_line < window->pagetop) ||
+      ((point_line - window->pagetop) > window->height - 1))
+    window->point =
+      window->line_starts[window->pagetop];
+
+  window->flags |= W_UpdateWindow;
+
+  /* Find out which direction to scroll, and scroll the window in that
+     direction.  Do this only if there would be a savings in redisplay
+     time.  This is true if the amount to scroll is less than the height
+     of the window, and if the number of lines scrolled would be greater
+     than 10 % of the window's height.
+
+     To prevent status line blinking when keeping up or down key,
+     scrolling is disabled if the amount to scroll is 1. */
+  if (old_pagetop < desired_top)
+    {
+      int start, end, amount;
+
+      amount = desired_top - old_pagetop;
+
+      if (amount == 1 ||
+          (amount >= window->height) ||
+          (((window->height - amount) * 10) < window->height))
+        return;
+
+      start = amount + window->first_row;
+      end = window->height + window->first_row;
+
+      display_scroll_display (start, end, -amount);
+    }
+  else
+    {
+      int start, end, amount;
+
+      amount = old_pagetop - desired_top;
+
+      if (amount == 1 ||
+          (amount >= window->height) ||
+          (((window->height - amount) * 10) < window->height))
+        return;
+
+      start = window->first_row;
+      end = (window->first_row + window->height) - amount;
+      display_scroll_display (start, end, amount);
+    }
+}
 
 /* Adjust the pagetop of WINDOW such that the cursor point will be visible. */
 void
 window_adjust_pagetop (WINDOW *window)
 {
-  register int line = 0;
+  register int line;
 
   if (!window->node)
     return;
 
-  /* Find the first printed line start which is after WINDOW->point. */
-  for (line = 0; line < window->line_count; line++)
-    {
-      if (window->line_starts[line] > window->point)
-        break;
-    }
-
-  /* The line index preceding the line start which is past point is the
-     one containing point. */
-  line--;
+  line = window_line_of_point (window);
 
   /* If this line appears in the current displayable page, do nothing.
      Otherwise, adjust the top of the page to make this line visible. */
-  if ((line < window->pagetop) ||
-      (line - window->pagetop > (window->height - 1)))
+  if (line < window->pagetop
+      || line - window->pagetop > window->height - 1)
     {
-      /* The user-settable variable "scroll-step" is used to attempt
-         to make point visible, iff it is non-zero.  If that variable
-         is zero, then the line containing point is centered within
-         the window. */
-      if (window_scroll_step < window->height)
-        {
-          if ((line < window->pagetop) &&
-              ((window->pagetop - window_scroll_step) <= line))
-            window->pagetop -= window_scroll_step;
-          else if ((line - window->pagetop > (window->height - 1)) &&
-                   ((line - (window->pagetop + window_scroll_step)
-                     < window->height)))
-            window->pagetop += window_scroll_step;
-          else
-            window->pagetop = line - ((window->height - 1) / 2);
-        }
-      else
-        window->pagetop = line - ((window->height - 1) / 2);
+      int new_pagetop = line - ((window->height - 1) / 2);
 
-      if (window->pagetop < 0)
-        window->pagetop = 0;
-      window->flags |= W_UpdateWindow;
+      if (new_pagetop < 0)
+        new_pagetop = 0;
+      set_window_pagetop (window, new_pagetop);
     }
 }
 
@@ -822,21 +854,6 @@ window_line_of_point (WINDOW *window)
     return i - 1;
   else
     return 0;
-}
-
-/* Get and return the goal column for this window. */
-int
-window_get_goal_column (WINDOW *window)
-{
-  if (!window->node)
-    return -1;
-
-  if (window->goal_column != -1)
-    return window->goal_column;
-
-  /* Okay, do the work.  Find the printed offset of the cursor
-     in this window. */
-  return window_get_cursor_column (window);
 }
 
 /* Get and return the printed column offset of the cursor in this window. */

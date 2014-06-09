@@ -81,7 +81,6 @@ extern void info_dispatch_on_key (unsigned char key, Keymap map);
 extern unsigned char info_get_input_char (void);
 extern unsigned char info_get_another_input_char (void);
 extern unsigned char info_input_pending_p (void);
-extern void set_window_pagetop (WINDOW *window, int desired_top);
 extern void info_set_node_of_window (WINDOW *window, NODE *node);
 extern void initialize_keyseq (void);
 extern void add_char_to_keyseq (char character);

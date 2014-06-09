@@ -154,6 +154,8 @@ extern void window_new_screen_size (int width, int height);
    window, then no change takes place. */
 extern void window_change_window_height (WINDOW *window, int amount);
 
+extern void set_window_pagetop (WINDOW *window, int desired_top);
+
 /* Adjust the pagetop of WINDOW such that the cursor point will be visible. */
 extern void window_adjust_pagetop (WINDOW *window);
 
@@ -228,9 +230,6 @@ extern void recalculate_line_starts (WINDOW *window);
 
 /* Return the index of the line containing point. */
 extern int window_line_of_point (WINDOW *window);
-
-/* Get and return the goal column for this window. */
-extern int window_get_goal_column (WINDOW *window);
 
 /* Get and return the printed column offset of the cursor in this window. */
 extern int window_get_cursor_column (WINDOW *window);
