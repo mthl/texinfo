@@ -90,8 +90,8 @@ typedef struct window_struct
 
   /* History of nodes visited in this window. */
   WINDOW_STATE **hist;       /* Nodes visited in this window. */
-  int hist_index;            /* Index where to add the next node. */
-  int hist_slots;            /* Number of slots allocated to HIST. */
+  size_t hist_index;            /* Index where to add the next node. */
+  size_t hist_slots;            /* Number of slots allocated to HIST. */
 } WINDOW;
 
 /* Structure defining the current state of an incremental search. */

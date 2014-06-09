@@ -108,7 +108,7 @@ infopath_string ()
 static void
 build_infopath_from_path (void)
 {
-  char *res, *path_from_env, *temp_dirname;
+  char *path_from_env, *temp_dirname;
   int dirname_index = 0;
   struct stat finfo;
 

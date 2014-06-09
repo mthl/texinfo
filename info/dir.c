@@ -297,6 +297,7 @@ dir_entry_of_infodir (char *label, char *searchdir)
         }
       return entry;
     }
+  return 0;
 }
 
 

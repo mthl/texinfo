@@ -102,6 +102,9 @@ extern char *program_name_from_file_name (char *file_name);
    associated nodes. */
 extern void info_delete_window_internal (WINDOW *window);
 
+extern void forget_window_and_nodes (WINDOW *window);
+extern void forget_node (WINDOW *win);
+
 /* Tell Info that input is coming from the file FILENAME. */
 extern void info_set_input_from_file (char *filename);
 

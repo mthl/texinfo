@@ -1,5 +1,16 @@
 2014-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/dir.c (dir_entry_of_infodir): Return null if nothing found.
+	* info/window.h (WINDOW): Declare hist_index, hist_slots with size_t
+	instead of int.
+	* info/session.h: Add declaration of forget_window_and_nodes
+	and forget_node.
+	* info/infopath.c (build_infopath_from_path): Remove unused variable.
+	* info/session.c (point_backward_word, info_next_line, info_prev_line)
+	(kill_node): Remove unused local variables.
+
+2014-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi (Variables) <scroll-step>: Updated to state
 	that the default value is 1 (changed in 4.12 release).
 

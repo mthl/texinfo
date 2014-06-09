@@ -66,8 +66,6 @@ static int quit_info_immediately = 0;
 /* Minimal length of a search string */
 int min_search_length = 1;
 
-void forget_window_and_nodes (WINDOW *window);
-
 /* Begin an info session finding the nodes specified by REFERENCES.  For
    each loaded node, create a new window.  Always split the largest of the
    available windows.  Display ERROR in echo area if non-null. */
@@ -603,8 +601,6 @@ point_backward_word (WINDOW *win)
 
   while (1)
     {
-      long point;
-
       for (; col >= 0; col--)
 	{
           win->point = win->line_map.map[col];
@@ -631,8 +627,6 @@ point_backward_word (WINDOW *win)
 /* Move WINDOW's point down to the next line if possible. */
 DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
 {
-  int old_line, new_line;
-
   if (count < 0)
     info_prev_line (window, -count, key);
   else
@@ -649,8 +643,6 @@ DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
 /* Move WINDOW's point up to the previous line if possible. */
 DECLARE_INFO_COMMAND (info_prev_line, _("Move up to the previous line"))
 {
-  int old_line, new_line;
-
   if (count < 0)
     info_next_line (window, -count, key);
   else
@@ -2790,8 +2782,6 @@ read_nodename_to_kill (WINDOW *window)
 static void
 kill_node (WINDOW *window, char *nodename)
 {
-  int iw, i;
-  NODE *temp;
   WINDOW *info_win = window;
 
   /* If there is no nodename to kill, quit now. */
