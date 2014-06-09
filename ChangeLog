@@ -1,3 +1,10 @@
+2014-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_last_executed_command): Removed.
+	(info_session, info_abort_key, info_dispatch_on_key): Don't set
+	info_last_executed_command.
+	(info_search_internal): Comment updated.
+
 2014-06-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.c, info/session.c (window_scroll_step): Moved between

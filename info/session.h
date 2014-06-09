@@ -34,9 +34,6 @@
 #define DECLARE_INFO_COMMAND(name, doc) \
 void name (WINDOW *window, int count, unsigned char key)
 
-/* Variables found in session.h. */
-extern VFunction *info_last_executed_command;
-
 /* Variable controlling the garbage collection of files briefly visited
    during searches.  Such files are normally gc'ed, unless they were
    compressed to begin with.  If this variable is non-zero, it says

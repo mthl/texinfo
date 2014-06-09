@@ -60,9 +60,6 @@ static void gc_file_buffers_and_nodes (void);
 /* The place that we are reading input from. */
 static FILE *info_input_stream = NULL;
 
-/* The last executed command. */
-VFunction *info_last_executed_command = NULL;
-
 /* Becomes non-zero when 'q' is typed to an Info window. */
 static int quit_info_immediately = 0;
 
@@ -163,7 +160,6 @@ void
 info_session (void)
 {
   display_update_display (windows);
-  info_last_executed_command = NULL;
   info_read_and_dispatch ();
   /* On program exit, leave the cursor at the bottom of the window, and
      restore the terminal I/O. */
@@ -3308,11 +3304,8 @@ info_search_internal (char *string, WINDOW *window,
   if (resbnd && resbnd->start != -1)
     start = resbnd->start;
   else
-    /* This used to begin from window->point, unless this was a repeated
-       search command.  But invoking search with an argument loses with
-       that logic, since info_last_executed_command is then set to
-       info_add_digit_to_numeric_arg.  I think there's no sense in
-       ``finding'' a string that is already under the cursor, anyway.  */
+    /* Start just after or before point to avoid ``finding'' a string that
+       is already under the cursor. */
     start = window->point + dir;
   
   result = info_search_in_node_internal
@@ -4262,7 +4255,6 @@ DECLARE_INFO_COMMAND (info_abort_key, _("Cancel current operation"))
 
   info_initialize_numeric_arg ();
   info_clear_pending_input ();
-  info_last_executed_command = NULL;
 }
 
 DECLARE_INFO_COMMAND (info_info_version, _("Display version of Info being run"))
@@ -4502,16 +4494,10 @@ info_dispatch_on_key (unsigned char key, Keymap map)
                   key);
 
               /* If we have input pending, then the last command was a prefix
-                 command.  Don't change the value of the last function vars.
-                 Otherwise, remember the last command executed in the var
-                 appropriate to the window in which it was executed. */
-              if (!info_input_pending_p ())
-                {
-                  if (where == the_echo_area)
-                    ea_last_executed_command = InfoFunction(map[key].function);
-                  else
-                    info_last_executed_command = InfoFunction(map[key].function);
-                }
+                 command.  Don't change the value of the last function var.
+                 Otherwise, remember the last command executed. */
+              if (where == the_echo_area && !info_input_pending_p ())
+                ea_last_executed_command = InfoFunction(map[key].function);
             }
           }
         else
