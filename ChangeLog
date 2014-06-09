@@ -1,5 +1,10 @@
 2014-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-stnd.texi (Variables) <scroll-step>: Updated to state
+	that the default value is 1 (changed in 4.12 release).
+
+2014-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_last_executed_command): Removed.
 	(info_session, info_abort_key, info_dispatch_on_key): Don't set
 	info_last_executed_command.

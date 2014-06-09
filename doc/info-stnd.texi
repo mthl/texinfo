@@ -2222,17 +2222,13 @@ default is to stop at the last node.
 
 @item scroll-step
 @vindex scroll-step
-The number of lines to scroll when the cursor moves out of the window.
-Scrolling happens automatically if the cursor has moved out of the
-visible portion of the node text when it is time to display.  Usually
-the scrolling is done so as to put the cursor on the center line of the
-current window.  However, if the variable @code{scroll-step} has a
-nonzero value, Info attempts to scroll the node text by that many lines;
-if that is enough to bring the cursor back into the window, that is what
-is done.  The default value of this variable is 0, thus placing the
-cursor (and the text it is attached to) in the center of the window.
-Setting this variable to 1 causes a kind of ``smooth scrolling'' which
-some people prefer.
+The number of lines to scroll to bring the cursor back into the window.
+The default value of this variable is 1, which causes a kind of ``smooth
+scrolling'' which some people prefer.  Scrolling happens automatically
+if the cursor has moved out of the visible portion of the node text.
+
+If the variable @code{scroll-step} is 0, the cursor (and the
+text it is attached to) is placed in the centre of the window.
 
 @item search-skip-screen
 @vindex search-skip-screen
