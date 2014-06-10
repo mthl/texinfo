@@ -564,6 +564,7 @@ window_set_node_of_window (WINDOW *window, NODE *node)
   window->point = 0;
   window->goal_column = 0;
   recalculate_line_starts (window);
+  window_compute_line_map (window);
   window->flags |= W_UpdateWindow;
   if (node)
     {

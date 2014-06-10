@@ -1,5 +1,9 @@
 2014-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/window.c (window_set_node_of_window): Call
+	window_compute_line_map.
+2014-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/dir.c (dir_entry_of_infodir): Return null if nothing found.
 	* info/window.h (WINDOW): Declare hist_index, hist_slots with size_t
 	instead of int.
