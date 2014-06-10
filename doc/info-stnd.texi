@@ -1080,15 +1080,6 @@ exactly, Info will find it faster.)
 If any of the menu items you type are not found, Info stops at the last
 entry it did find and reports an error.
 
-@item @kbd{C-x @kbd{k}} (@code{kill-node})
-@kindex C-x k
-@findex kill-node
-Kill a node.  The node name is prompted for in the echo area, with a
-default of the current node.  @dfn{Killing} a node means that Info tries
-hard to forget about it, removing it from the list of history nodes kept
-for the window where that node is found.  Another node is selected in
-the window which contained the killed node.
-
 @item @kbd{C-x C-f} (@code{view-file})
 @kindex C-x C-f
 @findex view-file

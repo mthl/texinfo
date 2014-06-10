@@ -43,6 +43,7 @@ one of the relevant sections:
     (./foo.info, /tmp/foo.info, etc.) just visits that file.
   . new option --init-file allows overriding ~/.info.
   . new command M-x info-version.
+  . the M-x kill-node command has been removed.
   . new variable infopath-no-defaults allows omitting the compile-time
     Info directory from the Info search path.
   . test suite at build time.

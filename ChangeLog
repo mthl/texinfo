@@ -1,7 +1,19 @@
-2014-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+2014-06-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (read_nodename_to_kill, kill_node, info_kill_node):
+	Removed.
+	(info_history_node): Call forget_node.
+	(forget_node): Call set_window_pagetop and window_compute_line_map.
+	* info/infomap.c (default_emacs_like_info_keys)
+	(default_vi_like_info_keys): kill-node binding removed.
+	* NEWS,
+	* doc/info-stnd.texi (Node Commands): M-x kill-node command removed.
+
+2014-06-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.c (window_set_node_of_window): Call
 	window_compute_line_map.
+
 2014-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/dir.c (dir_entry_of_infodir): Return null if nothing found.

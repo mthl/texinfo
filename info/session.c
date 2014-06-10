@@ -319,8 +319,9 @@ forget_node (WINDOW *win)
   i = --win->hist_index;
 
   window_set_node_of_window (win, win->hist[i - 1]->node);
-  win->pagetop = win->hist[i - 1]->pagetop;
+  set_window_pagetop (win, win->hist[i - 1]->pagetop);
   win->point = win->hist[i - 1]->point;
+  window_compute_line_map (win);
   win->node->display_pos = win->point;
 }
 
@@ -2740,103 +2741,10 @@ DECLARE_INFO_COMMAND (info_display_file_info,
     window_message_in_echo_area ("Internal node");
 }
 
-/* Read the name of a node to kill.  The list of available nodes comes
-   from the nodes appearing in the current window configuration. */
-static char *
-read_nodename_to_kill (WINDOW *window)
-{
-  char *nodename;
-  WINDOW *iw;
-  REFERENCE **menu = NULL;
-  size_t menu_index = 0, menu_slots = 0;
-  char *default_nodename = xstrdup (active_window->node->nodename);
-  char *prompt = xmalloc (strlen (_("Kill node (%s): ")) + strlen (default_nodename));
-
-  sprintf (prompt, _("Kill node (%s): "), default_nodename);
-
-  for (iw = windows; iw; iw = iw->next)
-    {
-      REFERENCE *entry = xmalloc (sizeof (REFERENCE));
-      entry->label = xstrdup (iw->node->nodename);
-      entry->filename = entry->nodename = NULL;
-
-      add_pointer_to_array (entry, menu_index, menu, menu_slots, 10);
-    }
-
-  nodename = info_read_completing_in_echo_area (window, prompt, menu);
-  free (prompt);
-  info_free_references (menu);
-  if (nodename && !*nodename)
-    {
-      free (nodename);
-      nodename = default_nodename;
-    }
-  else
-    free (default_nodename);
-
-  return nodename;
-}
-
-/* Delete NODENAME from this window, showing the most
-   recently selected node in this window. */
-static void
-kill_node (WINDOW *window, char *nodename)
-{
-  WINDOW *info_win = window;
-
-  /* If there is no nodename to kill, quit now. */
-  if (!nodename)
-    {
-      info_abort_key (window, 0, 0);
-      return;
-    }
-
-  if (strcmp (nodename,
-              info_win->hist[info_win->hist_index - 1]->node->nodename))
-    return;
-
-  if (!info_win)
-    {
-      if (*nodename)
-        info_error (_("Cannot kill node `%s'"), nodename);
-      else
-        window_clear_echo_area ();
-
-      return;
-    }
-
-  /* If this is the last node in the window, complain and exit. */
-  if (info_win->hist_index == 1)
-    {
-      info_error ("%s", _("Cannot kill the last node"));
-      return;
-    }
-
-  forget_node (window);
-
-  if (!info_error_was_printed)
-    window_clear_echo_area ();
-
-  if (auto_footnotes_p)
-    info_get_or_remove_footnotes (window);
-}
-
-/* Kill current node, thus going back one in the node history.  I (karl)
-   do not think this is completely correct yet, because of the
-   window-changing stuff in kill_node, but it's a lot better than the
-   previous implementation, which did not account for nodes being
-   visited twice at all.  */
 DECLARE_INFO_COMMAND (info_history_node,
                       _("Select the most recently selected node"))
 {
-  kill_node (window, active_window->node->nodename);
-}
-
-/* Kill named node.  */
-DECLARE_INFO_COMMAND (info_kill_node, _("Kill this node"))
-{
-  char *nodename = read_nodename_to_kill (window);
-  kill_node (window, nodename);
+  forget_node (window);
 }
 
 /* Read the name of a file and select the entire file. */
