@@ -148,20 +148,15 @@ extern NODE *info_create_node (void);
 /* Return a pointer to a NODE structure for the Info node (FILENAME)NODENAME.
    FILENAME can be passed as NULL, in which case the filename of "dir" is used.
    NODENAME can be passed as NULL, in which case the nodename of "Top" is used.
-
-   The FLAG argument (one of the PARSE_NODE_* constants) instructs how to
-   parse NODENAME.
    
    If the node cannot be found, return a NULL pointer. */
-extern NODE *info_get_node (char *filename, char *nodename, int flag);
+extern NODE *info_get_node (char *filename, char *nodename);
 
 /* struct window_struct is typedef as WINDOW in window.h, but we cannot
    include window.h in this file (nodes.h), because window.h includes
    nodes.h. */
 struct window_struct;
-
 extern NODE *info_get_node_with_defaults (char *filename, char *nodename,
-                                          int flag,
                                           struct window_struct *window);
 
 extern NODE *info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr);

@@ -298,7 +298,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
 
           /* Parse node spec to support invoking
              like info --node "(emacs)Buffers". */
-          info_parse_node (user_nodenames[i], PARSE_NODE_VERBATIM);
+          info_parse_node (user_nodenames[i]);
           if (info_parsed_filename)
             node_filename = xstrdup (info_parsed_filename);
           else
@@ -370,8 +370,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
            ref_index, ref_list, ref_slots, 2);
 
       initial_node = info_get_node_with_defaults (ref_list[0]->filename,
-                                                  ref_list[0]->nodename,
-                                                  PARSE_NODE_DFLT, 0);
+                                                  ref_list[0]->nodename, 0);
       if (!initial_node)
         return;
 
@@ -426,7 +425,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
         {
           initial_node = info_get_node_with_defaults (ref_list[0]->filename,
                                                       ref_list[0]->nodename,
-                                                      PARSE_NODE_DFLT, 0);
+                                                      0);
           node_via_menus = info_follow_menus (initial_node, argv, error, 0);
           if (node_via_menus)
             {

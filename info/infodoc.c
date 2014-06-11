@@ -540,7 +540,7 @@ DECLARE_INFO_COMMAND (info_get_info_help_node, _("Visit Info node `(info)Help'")
     nodename = "Help";
 
   /* Try to get the info file for Info. */
-  node = info_get_node ("Info", nodename, PARSE_NODE_DFLT);
+  node = info_get_node ("Info", nodename);
 
   if (!node)
     {

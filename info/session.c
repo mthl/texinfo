@@ -1338,9 +1338,7 @@ info_handle_pointer (char *label, WINDOW *window)
       return;
     }
 
-  node = info_get_node_with_defaults (0, description,
-              PARSE_NODE_VERBATIM, window);
-
+  node = info_get_node_with_defaults (0, description, window);
   if (!node)
     {
       if (info_recent_file_error)
@@ -1417,8 +1415,7 @@ DECLARE_INFO_COMMAND (info_last_node, _("Select the last node in this file"))
       if (count > 0)
         i = last_node_tag_idx + 1;
       if (i > 0)
-        node = info_get_node (fb->filename, fb->tags[i - 1]->nodename,
-                              PARSE_NODE_DFLT);
+        node = info_get_node (fb->filename, fb->tags[i - 1]->nodename);
     }
 
   if (!node)
@@ -1451,8 +1448,7 @@ DECLARE_INFO_COMMAND (info_first_node, _("Select the first node in this file"))
       if (count > 0)
         i = last_node_tag_idx + 1;
       if (i > 0)
-        node = info_get_node (fb->filename, fb->tags[i - 1]->nodename,
-                              PARSE_NODE_DFLT);
+        node = info_get_node (fb->filename, fb->tags[i - 1]->nodename);
     }
 
   if (!node)
@@ -1726,7 +1722,7 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
   file_system_error = NULL;
 
   node = info_get_node_with_defaults (entry->filename, entry->nodename,
-             PARSE_NODE_VERBATIM, window);
+                                      window);
 
   /* Try something a little weird.  If the node couldn't be found, and the
      reference was of the form "foo::", see if the entry->label can be found
@@ -1739,7 +1735,7 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
       if (entry->nodename
           && entry->label && (strcmp (entry->nodename, entry->label) == 0))
         {
-          node = info_get_node (entry->label, "Top", PARSE_NODE_DFLT);
+          node = info_get_node (entry->label, "Top");
           if (!node && info_recent_file_error)
             {
               free (file_system_error);
@@ -2315,11 +2311,9 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
       
       /* Try to find this node.  */
       if (initial_node->parent)
-        node = info_get_node (initial_node->parent, entry->nodename,
-                              PARSE_NODE_VERBATIM);
+        node = info_get_node (initial_node->parent, entry->nodename);
       else
-        node = info_get_node (initial_node->filename, entry->nodename,
-                              PARSE_NODE_VERBATIM);
+        node = info_get_node (initial_node->filename, entry->nodename);
       if (!node)
         {
 	  debug (3, ("no matching node found"));
@@ -2392,7 +2386,7 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
   if (*line)
     {
       char *error = 0;
-      NODE *dir_node = info_get_node (NULL, NULL, PARSE_NODE_DFLT);
+      NODE *dir_node = get_dir_node ();
       char **nodes = split_list_of_nodenames (line);
       char *node = NULL;
 
@@ -2404,7 +2398,7 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
 
           if (!file_name)
             file_name = window->node->filename;
-          dir_node = info_get_node (file_name, NULL, PARSE_NODE_DFLT);
+          dir_node = info_get_node (file_name, 0);
         }
 
       /* If we still cannot find the starting point, give up.
@@ -2420,7 +2414,7 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
       else
         {
           NODE *n;
-          n = info_get_node_with_defaults (0, node, PARSE_NODE_DFLT, window);
+          n = info_get_node_with_defaults (0, node, window);
           info_set_node_of_window (window, n);
         }
     }
@@ -2612,8 +2606,7 @@ info_intuit_options_node (NODE *initial_node, char *program)
         entry->filename = xstrdup (initial_node->parent ? initial_node->parent
                                    : initial_node->filename);
       /* Try to find this node.  */
-      node = info_get_node (entry->filename, entry->nodename, 
-                            PARSE_NODE_VERBATIM);
+      node = info_get_node (entry->filename, entry->nodename);
       if (!node)
         break;
     }
@@ -2676,7 +2669,7 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
 
   /* In interactive usage they'd probably expect us to begin looking
      from the Top node.  */
-  top_node = info_get_node (file_name, NULL, PARSE_NODE_DFLT);
+  top_node = info_get_node (file_name, 0);
   if (!top_node)
     info_error (msg_cant_find_node, "Top");
 
@@ -2708,7 +2701,7 @@ DECLARE_INFO_COMMAND (info_man, _("Read a manpage reference and select it"))
 
   if (*line)
     {
-      NODE *manpage = info_get_node (MANPAGE_FILE_BUFFER_NAME, line, 0);
+      NODE *manpage = info_get_node (MANPAGE_FILE_BUFFER_NAME, line);
       if (manpage)
         info_set_node_of_window (window, manpage);
     }
@@ -2769,7 +2762,7 @@ DECLARE_INFO_COMMAND (info_view_file, _("Read the name of a file and select it")
     {
       NODE *node;
 
-      node = info_get_node (line, "*", PARSE_NODE_DFLT);
+      node = info_get_node (line, "*");
       if (!node)
         {
           if (info_recent_file_error)
@@ -2873,7 +2866,7 @@ dump_node_to_stream (char *filename, char *nodename,
   register int i;
   NODE *node;
 
-  node = info_get_node (filename, nodename, PARSE_NODE_VERBATIM);
+  node = info_get_node (filename, nodename);
 
   if (!node)
     {
@@ -3306,9 +3299,7 @@ info_search_internal (char *string, WINDOW *window,
               last_subfile = tag->filename;
             }
 
-          node = info_get_node (file_buffer->filename, tag->nodename,
-                                PARSE_NODE_VERBATIM);
-
+          node = info_get_node (file_buffer->filename, tag->nodename);
           if (!node)
             {
               /* If not doing i-search... */

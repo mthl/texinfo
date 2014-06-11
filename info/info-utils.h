@@ -42,23 +42,8 @@ extern char *info_parsed_filename;
    calling info_parse_xxx (). */
 extern char *info_parsed_nodename;
 
-#define PARSE_NODE_DFLT          0
-#define PARSE_NODE_SKIP_NEWLINES 1
-#define PARSE_NODE_VERBATIM      2
-#define PARSE_NODE_START         3
-
-/* Parse the filename and nodename out of STRING.  If STRING doesn't
-   contain a filename (i.e., it is NOT (FILENAME)NODENAME) then set
-   INFO_PARSED_FILENAME to NULL.  The second argument is one of
-   the PARSE_NODE_* constants.  It specifies how to parse the node name:
-   
-   PARSE_NODE_DFLT             Node name stops at LF, `,', `.', or `TAB'
-   PARSE_NODE_SKIP_NEWLINES    Node name stops at `,', `.', or `TAB'
-   PARSE_NODE_VERBATIM         Don't parse nodename
-   PARSE_NODE_START            The STRING argument is retrieved from a node
-                               start line, and therefore ends in `,' only.
-*/ 
-int info_parse_node (char *string, int flag);
+/* Parse the filename and nodename out of STRING. */ 
+void info_parse_node (char *string);
 
 long read_quoted_string (char *start, char *terminator, int lines,
                          char **output);

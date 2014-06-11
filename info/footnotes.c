@@ -101,8 +101,7 @@ make_footnotes_node (NODE *node)
                 if (!filename)
                   filename = node->filename;
 
-                fn_node = info_get_node (filename, refname, PARSE_NODE_DFLT);
-
+                fn_node = info_get_node (filename, refname);
                 if (fn_node)
                   fn_start = 0;
 

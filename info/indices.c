@@ -241,8 +241,7 @@ do_info_index_search (WINDOW *window, FILE_BUFFER *fb,
               NODE *node;
 
               node = info_get_node (initial_index_filename,
-                                    initial_index_nodename,
-                                    PARSE_NODE_DFLT);
+                                    initial_index_nodename);
               info_set_node_of_window (window, node);
               window_clear_echo_area ();
               return;
@@ -505,7 +504,7 @@ apropos_in_all_indices (char *search_string, int inform)
   REFERENCE **dir_menu = NULL;
   NODE *dir_node;
 
-  dir_node = info_get_node ("dir", "Top", PARSE_NODE_DFLT);
+  dir_node = get_dir_node ();
 
   /* It should be safe to assume that dir nodes do not contain any
      cross-references, i.e., its references list only contains

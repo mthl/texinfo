@@ -46,40 +46,17 @@ char *info_parsed_filename = NULL;
    calling info_parse_xxx (). */
 char *info_parsed_nodename = NULL;
 
-/* Variable which holds the most recent line number parsed as a result of
-   calling info_parse_xxx (). */
-int info_parsed_line_number = 0;
-
-/* Parse the filename and nodename out of STRING.  Return length of node
-   specification.  If STRING doesn't contain a filename (i.e., it is NOT
-   (FILENAME)NODENAME) then set INFO_PARSED_FILENAME to NULL.  The
-   second argument is one of the PARSE_NODE_* constants.  It specifies
-   how to parse the node name:
-
-   PARSE_NODE_DFLT             Node name stops at LF, `,', `.', or `TAB'
-   PARSE_NODE_SKIP_NEWLINES    Node name stops at `,', `.', or `TAB'
-   PARSE_NODE_VERBATIM         Don't parse nodename
-*/ 
-   
-int
-info_parse_node (char *string, int flag)
+/* Parse the filename and nodename out of STRING, saving in
+   INFO_PARSED_FILENAME and INFO_PARSED_NODENAME.  These variables should not
+   be freed by calling code.  If either is missing, the relevant variable is
+   set to a null pointer. */ 
+void
+info_parse_node (char *string)
 {
   register int i = 0;
   int nodename_len;
   char *terminator;
-  int length = 0; /* Return value */
 
-  switch (flag)
-    {
-    case PARSE_NODE_DFLT:
-      terminator = "\r\n,.\t"; break;
-    case PARSE_NODE_SKIP_NEWLINES:
-      terminator = ",.\t"; break;
-    case PARSE_NODE_VERBATIM:
-      terminator = ""; break;
-    }
-
-  /* Default the answer. */
   free (info_parsed_filename);
   free (info_parsed_nodename);
   info_parsed_filename = 0;
@@ -87,13 +64,9 @@ info_parse_node (char *string, int flag)
 
   /* Special case of nothing passed.  Return nothing. */
   if (!string || !*string)
-    return 0;
+    return;
 
-  if (flag != PARSE_NODE_DFLT)
-    length = skip_whitespace_and_newlines (string);
-  else  
-    length = skip_whitespace (string);
-  string += length;
+  string += skip_whitespace_and_newlines (string);
 
   /* Check for (FILENAME)NODENAME. */
   if (*string == '(')
@@ -104,7 +77,6 @@ info_parse_node (char *string, int flag)
       i = 0;
       /* Advance past the opening paren. */
       string++;
-      length++;
 
       /* Find the closing paren. Handle nested parens correctly. */
       for (bcnt = 0, bfirst = -1; string[i]; i++)
@@ -133,67 +105,20 @@ info_parse_node (char *string, int flag)
 
       /* Point directly at the nodename. */
       string += i;
-      length += i;
 
       if (*string)
-        {
-          string++;
-          length++;
-        }
+        string++;
     }
 
   /* Parse out nodename. */
-  nodename_len = read_quoted_string (string, terminator, 0,
-                                     &info_parsed_nodename);
+  string += skip_whitespace_and_newlines (string);
+  nodename_len = strlen (string);
 
-  string += nodename_len;
-  length += nodename_len;
-
-  if (nodename_len == 0)
+  if (nodename_len != 0)
     {
-      free (info_parsed_nodename);
-      info_parsed_nodename = 0;
+      info_parsed_nodename = xstrdup (string);
+      canonicalize_whitespace (info_parsed_nodename);
     }
-  else
-    canonicalize_whitespace (info_parsed_nodename);
-
-  if (info_parsed_nodename && !*info_parsed_nodename)
-    {
-      free (info_parsed_nodename);
-      info_parsed_nodename = NULL;
-    }
-
-  /* Parse ``(line ...)'' part of menus, if any.  */
-  {
-    char *rest = string;
-
-    /* Advance only if it's not already at end of string.  */
-    if (*rest)
-      rest++;
-
-    /* Skip any whitespace first, and then a newline in case the item
-       was so long to contain the ``(line ...)'' string in the same
-       physical line.  */
-    while (whitespace(*rest))
-      rest++;
-    if (*rest == '\n')
-      {
-        rest++;
-        while (whitespace(*rest))
-          rest++;
-      }
-
-    /* Are we looking at an opening parenthesis?  That can only mean
-       we have a winner. :)  */
-    if (strncmp (rest, "(line ", strlen ("(line ")) == 0)
-      {
-        rest += strlen ("(line ");
-        info_parsed_line_number = strtol (rest, NULL, 0);
-      }
-    else
-      info_parsed_line_number = 0;
-  }
-  return length;
 }
 
 /* Set *OUTPUT to a copy of the string starting at START and finishing at
@@ -1385,6 +1310,8 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
 {
   char *target;
 
+  int info_parsed_line_number = 0;
+
   int length; /* Length of specification */
   int i;
 
@@ -1410,7 +1337,8 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
   else
     skip_input (skip_whitespace (inptr));
 
-  if (!read_quoted_string (inptr, ",.", 2, &target))
+  length = read_quoted_string (inptr, ",.", 2, &target);
+  if (!length)
     return 0;
 
   if (entry->type == REFERENCE_XREF)
@@ -1418,7 +1346,7 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
       char *nl_off;
       int space_at_start_of_line = 0;
 
-      length = info_parse_node (target, PARSE_NODE_VERBATIM);
+      info_parse_node (target);
 
       /* Check if there is a newline in the target. */
       nl_off = strchr (target, '\n');
@@ -1451,10 +1379,9 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
 
       /* Output terminating punctuation, unless we are in a reference
          like "(*note Label:(file)node.)". */
-      if (!in_parentheses)
-        skip_input (length);
-      else
-        skip_input (length + 1);
+      skip_input (length);
+      if (in_parentheses && (inptr[0] == '.' || inptr[0] == ','))
+        skip_input (1);
 
       /* Copy any terminating punctuation before the optional newline. */
       copy_input_to_output (strspn (inptr, ".),"));
@@ -1488,7 +1415,8 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
           line_len = inptr - linestart;
         }
 
-      length = info_parse_node (inptr, PARSE_NODE_DFLT);
+      info_parse_node (target);
+
       if (inptr[length] == '.') /* Include a '.' terminating the entry. */
         length++;
 
@@ -1508,6 +1436,24 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
                 write_extra_bytes_to_output (" ", 1);
             }
         }
+
+      /* Parse "(line ...)" part of menus, if any.  */
+      {
+        /* Skip any whitespace first, and then a newline in case the item
+           was so long to contain the ``(line ...)'' string in the same
+           physical line.  */
+        copy_input_to_output (skip_whitespace (inptr));
+        if (*inptr == '\n')
+          copy_input_to_output (skip_whitespace (inptr));
+
+        if (!strncmp (inptr, "(line ", strlen ("(line ")))
+          {
+            copy_input_to_output (strlen ("(line "));
+            info_parsed_line_number = strtol (inptr, 0, 0);
+          }
+        else
+          info_parsed_line_number = 0;
+      }
 
       if (node->flags & N_IsDir) 
         {

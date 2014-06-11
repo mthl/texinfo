@@ -282,7 +282,7 @@ dir_entry_of_infodir (char *label, char *searchdir)
       if (!dir_fullpath)
         continue;
 
-      dir_node = info_get_node (dir_fullpath, "Top", PARSE_NODE_VERBATIM);
+      dir_node = info_get_node (dir_fullpath, "Top");
       free (dir_fullpath);
       entry = info_get_menu_entry_by_label (dir_node, label, 1);
       if (!entry)

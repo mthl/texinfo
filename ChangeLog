@@ -1,3 +1,16 @@
+2014-06-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (info_parse_node): Don't parse line number part of
+	menus.  Return value and arguments changed.  All callers updated.
+	(info_parsed_line_number): Removed.
+	(scan_reference_target): Parse line number part of menus.
+
+	* info/info-utils.h (PARSE_NODE_DFLT, PARSE_NODE_SKIP_NEWLINES)
+	(PARSE_NODE_VERBATIM, PARSE_NODE_START): Removed.
+	* info/nodes.c (info_get_node, info_get_node_with_defaults)
+	(get_filename_and_nodename): Arguments changed.  All
+	callers updated.
+
 2014-06-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (save_conversion_state, reset_conversion): New

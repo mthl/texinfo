@@ -880,7 +880,7 @@ info_reload_file_buffer_contents (FILE_BUFFER *fb)
 /* Functions for node creation and retrieval. */
 
 static long get_node_length (SEARCH_BINDING *binding);
-static void get_filename_and_nodename (int flag, WINDOW *window,
+static void get_filename_and_nodename (WINDOW *window,
                                       char **filename, char **nodename,
                                       char *filename_in, char *nodename_in);
 static void node_set_body_start (NODE *node);
@@ -929,13 +929,11 @@ get_node_length (SEARCH_BINDING *binding)
    using WINDOW for defaults.  If WINDOW is null, the defaults are:
    - If FILENAME is NULL, `dir' is used.
    - If NODENAME is NULL, `Top' is used.
-   The FLAG argument (one of the PARSE_NODE_* constants) instructs how to
-   parse NODENAME.
    
    If the node cannot be found, return NULL. */
 NODE *
 info_get_node_with_defaults (char *filename_in, char *nodename_in,
-                             int flag, WINDOW *window)
+                             WINDOW *window)
 {
   NODE *node = 0;
   FILE_BUFFER *file_buffer = NULL;
@@ -943,8 +941,8 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
 
   info_recent_file_error = NULL;
 
-  get_filename_and_nodename (flag, window,
-       &filename, &nodename, filename_in, nodename_in);
+  get_filename_and_nodename (window, &filename, &nodename,
+                             filename_in, nodename_in);
 
   /* If the file to be looked up is "dir", build the contents from all of
      the "dir"s and "localdir"s found in INFOPATH. */
@@ -997,19 +995,19 @@ cleanup_and_exit:
 }
 
 NODE *
-info_get_node (char *filename_in, char *nodename_in, int flag)
+info_get_node (char *filename_in, char *nodename_in)
 {
-  return info_get_node_with_defaults (filename_in, nodename_in, flag, 0);
+  return info_get_node_with_defaults (filename_in, nodename_in, 0);
 }
 
 /* Set default values.  Output values should be freed by caller. */
 static void
-get_filename_and_nodename (int flag, WINDOW *window,
+get_filename_and_nodename (WINDOW *window,
                            char **filename, char **nodename,
                            char *filename_in, char *nodename_in)
 {
   /* Get file name, nodename */
-  info_parse_node (nodename_in, flag);
+  info_parse_node (nodename_in);
 
   if (info_parsed_filename)
     *filename = info_parsed_filename;
