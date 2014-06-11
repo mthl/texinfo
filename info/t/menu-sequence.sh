@@ -16,8 +16,18 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
+. $t/Init-intera.inc
 
-# Follow several menus in a file inexactly to get to desired node
-$GINFO --output - file-menu first nod nod \
-	| grep 'Arrived at Node 3.'
+# M-x menu-sequence
+$GINFO -f intera --restore $t/menu-sequence.drib
+
+if ! test -f $GINFO_OUTPUT
+then
+	RETVAL=1
+else
+	grep 'Arrived at Node 3.' $GINFO_OUTPUT 
+	RETVAL=$?
+fi
+
+. $t/Cleanup.inc
 

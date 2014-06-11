@@ -198,7 +198,7 @@ extern void info_global_prev_node (WINDOW *window, int count, unsigned char key)
 extern void info_kill_node (WINDOW *window, int count, unsigned char key);
 extern void info_view_file (WINDOW *window, int count, unsigned char key);
 extern void info_menu_sequence (WINDOW *window, int count, unsigned char key);
-extern char *info_follow_menus (NODE *initial_node, char **menus,
+extern NODE *info_follow_menus (NODE *initial_node, char **menus,
 				char **error_msg, int strict);
 extern void info_man (WINDOW *window, int count, unsigned char key);
 extern void list_visited_nodes (WINDOW *window, int count, unsigned char key);

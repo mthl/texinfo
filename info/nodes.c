@@ -880,7 +880,7 @@ info_reload_file_buffer_contents (FILE_BUFFER *fb)
 /* Functions for node creation and retrieval. */
 
 static long get_node_length (SEARCH_BINDING *binding);
-static void get_filename_and_nodename (WINDOW *window,
+static void get_filename_and_nodename (NODE *node,
                                       char **filename, char **nodename,
                                       char *filename_in, char *nodename_in);
 static void node_set_body_start (NODE *node);
@@ -926,14 +926,14 @@ get_node_length (SEARCH_BINDING *binding)
 }
 
 /* Return a pointer to a NODE structure for the Info node (FILENAME)NODENAME,
-   using WINDOW for defaults.  If WINDOW is null, the defaults are:
+   using DEFAULTS for defaults.  If DEFAULTS is null, the defaults are:
    - If FILENAME is NULL, `dir' is used.
    - If NODENAME is NULL, `Top' is used.
    
    If the node cannot be found, return NULL. */
 NODE *
 info_get_node_with_defaults (char *filename_in, char *nodename_in,
-                             WINDOW *window)
+                NODE *defaults)
 {
   NODE *node = 0;
   FILE_BUFFER *file_buffer = NULL;
@@ -941,7 +941,7 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
 
   info_recent_file_error = NULL;
 
-  get_filename_and_nodename (window, &filename, &nodename,
+  get_filename_and_nodename (defaults, &filename, &nodename,
                              filename_in, nodename_in);
 
   /* If the file to be looked up is "dir", build the contents from all of
@@ -1000,9 +1000,10 @@ info_get_node (char *filename_in, char *nodename_in)
   return info_get_node_with_defaults (filename_in, nodename_in, 0);
 }
 
-/* Set default values.  Output values should be freed by caller. */
+/* Get filename and nodename of node to load using defaults from NODE. Output
+   values should be freed by caller. */
 static void
-get_filename_and_nodename (WINDOW *window,
+get_filename_and_nodename (NODE *node,
                            char **filename, char **nodename,
                            char *filename_in, char *nodename_in)
 {
@@ -1017,19 +1018,11 @@ get_filename_and_nodename (WINDOW *window,
   /* If FILENAME is not specified, it defaults to "dir". */
   if (!*filename)
     {
-      if (window)
+      if (node)
         {
-          FILE_BUFFER *fb;
-
-          *filename = window->node->parent;
+          *filename = node->parent;
           if (!*filename)
-            {
-              fb = file_buffer_of_window (window);
-              if (fb)
-                *filename = fb->fullpath;
-              else
-                *filename = window->node->filename;
-            }
+            *filename = node->filename;
         }
       else
         *filename = "dir";

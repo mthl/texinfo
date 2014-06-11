@@ -1338,7 +1338,7 @@ info_handle_pointer (char *label, WINDOW *window)
       return;
     }
 
-  node = info_get_node_with_defaults (0, description, window);
+  node = info_get_node_with_defaults (0, description, window->node);
   if (!node)
     {
       if (info_recent_file_error)
@@ -1722,7 +1722,7 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
   file_system_error = NULL;
 
   node = info_get_node_with_defaults (entry->filename, entry->nodename,
-                                      window);
+                                      window->node);
 
   /* Try something a little weird.  If the node couldn't be found, and the
      reference was of the form "foo::", see if the entry->label can be found
@@ -2265,10 +2265,11 @@ DECLARE_INFO_COMMAND (info_select_reference_this_line,
    menu entries, and whether to return the node so far if we can't
    continue at any point (that might be INITIAL_NODE itself), or to
    return null.  This function frees INITIAL_NODE. */
-char *
+NODE *
 info_follow_menus (NODE *initial_node, char **menus, char **error,
 		   int strict)
 {
+  WINDOW *defaults;
   NODE *node = NULL;
 
   if (error)
@@ -2288,8 +2289,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
             asprintf (error, _("No menu in node `%s'."),
                       node_printed_rep (initial_node));
           debug (3, ("no menu found"));
-          free (initial_node);
-          return strict ? 0 : initial_node->nodename;
+          return strict ? 0 : initial_node;
         }
 
       /* Find the specified menu item. */
@@ -2300,20 +2300,16 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
         {
           if (error)
             asprintf (error, _("No menu item `%s' in node `%s'."),
-                      arg,
-                      node_printed_rep (initial_node));
+                      arg, node_printed_rep (initial_node));
           debug (3, ("no entry found"));
-          free (initial_node);
-          return strict ? 0 : initial_node->nodename;
+          return strict ? 0 : initial_node;
         }
 
       debug (3, ("entry: %s, %s", entry->filename, entry->nodename));
       
       /* Try to find this node.  */
-      if (initial_node->parent)
-        node = info_get_node (initial_node->parent, entry->nodename);
-      else
-        node = info_get_node (initial_node->filename, entry->nodename);
+      node = info_get_node_with_defaults (entry->filename, entry->nodename,
+                                          initial_node);
       if (!node)
         {
 	  debug (3, ("no matching node found"));
@@ -2322,8 +2318,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
                       _("Unable to find node referenced by `%s' in `%s'."),
 		      entry->label,
 		      node_printed_rep (initial_node));
-          free (initial_node);
-          return strict ? 0 : initial_node->nodename;
+          return strict ? 0 : initial_node;
         }
 
       debug (3, ("node: %s, %s", node->filename, node->nodename));
@@ -2333,8 +2328,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
       initial_node = node;
     }
 
-  free (initial_node);
-  return initial_node->nodename;
+  return initial_node;
 }
 
 /* Split STR into individual node names by writing null bytes in wherever
@@ -2388,7 +2382,7 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
       char *error = 0;
       NODE *dir_node = get_dir_node ();
       char **nodes = split_list_of_nodenames (line);
-      char *node = NULL;
+      NODE *node;
 
       /* If DIR_NODE is NULL, they might be reading a file directly,
          like in "info -d . -f ./foo".  Try using "Top" instead.  */
@@ -2401,8 +2395,7 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
           dir_node = info_get_node (file_name, 0);
         }
 
-      /* If we still cannot find the starting point, give up.
-         We cannot allow a NULL pointer inside info_follow_menus.  */
+      /* If we still cannot find the starting point, give up. */
       if (!dir_node)
         info_error (msg_cant_find_node, "Top");
       else
@@ -2412,11 +2405,7 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
       if (error)
 	show_error_node (error);
       else
-        {
-          NODE *n;
-          n = info_get_node_with_defaults (0, node, window);
-          info_set_node_of_window (window, n);
-        }
+        info_set_node_of_window (window, node);
     }
 
   free (line);

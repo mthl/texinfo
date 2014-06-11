@@ -152,12 +152,8 @@ extern NODE *info_create_node (void);
    If the node cannot be found, return a NULL pointer. */
 extern NODE *info_get_node (char *filename, char *nodename);
 
-/* struct window_struct is typedef as WINDOW in window.h, but we cannot
-   include window.h in this file (nodes.h), because window.h includes
-   nodes.h. */
-struct window_struct;
 extern NODE *info_get_node_with_defaults (char *filename, char *nodename,
-                                          struct window_struct *window);
+                                          NODE *defaults);
 
 extern NODE *info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr);
 

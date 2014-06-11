@@ -118,6 +118,7 @@ TESTS = \
 	t/index-apropos.sh \
 	t/split-index.sh \
 	t/index-long-nodeline.sh \
+	t/menu-sequence.sh \
 	t/quoted-label-as-target.sh \
 	t/quoted-target.sh \
 	t/quoted-label-and-target.sh \

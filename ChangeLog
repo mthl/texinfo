@@ -1,4 +1,14 @@
-2014-06-12  Gavin Smith  <gavinsmith0123@gmail.com>
+2014-06-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_follow_menus): Return value changed.  All
+	callers updated.
+	* info/nodes.c (info_get_node_with_defaults)
+	(get_filename_and_nodename): Use a NODE instead of a WINDOW to give
+	the defaults.
+	* info/menu-sequence.sh: New test.
+	* info/dir-menus-sloppily.sh: Sequence of menu labels corrected.
+
+2014-06-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (info_parse_node): Don't parse line number part of
 	menus.  Return value and arguments changed.  All callers updated.

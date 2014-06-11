@@ -362,7 +362,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
   else if (*argv)
     {
       NODE *initial_node; /* Node to start following menus from. */
-      char *node_via_menus;
+      NODE *node_via_menus;
 
       if (ref_index == 0)
         add_pointer_to_array
@@ -380,8 +380,9 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
           argv += argc; argc = 0;
 
           free (ref_list[0]);
-          ref_list[0] = info_new_reference (initial_file->fullpath,
-            node_via_menus);
+          ref_list[0] = info_new_reference (node_via_menus->filename,
+                                            node_via_menus->nodename);
+          free (node_via_menus);
         }
 
       /* If no nodes found, and there is exactly one argument remaining,
@@ -432,8 +433,9 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
               argv += argc; argc = 0;
 
               free (ref_list[0]);
-              ref_list[0] = info_new_reference (initial_file->fullpath,
-                node_via_menus);
+              ref_list[0] = info_new_reference (node_via_menus->filename,
+                                                node_via_menus->nodename);
+              free (node_via_menus);
             }
         }
     }
