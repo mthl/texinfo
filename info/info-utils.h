@@ -60,7 +60,8 @@ extern char *info_parsed_nodename;
 */ 
 int info_parse_node (char *string, int flag);
 
-long read_quoted_string (char *start, char *terminator, char **output);
+long read_quoted_string (char *start, char *terminator, int lines,
+                         char **output);
 
 void scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr);
 

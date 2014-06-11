@@ -1,3 +1,24 @@
+2014-06-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (save_conversion_state, reset_conversion): New
+	functions.
+	(scan_node_contents): Call them.
+	(read_quoted_string): New parameter added.  All callers updated.
+	(scan_reference_label): Comment changed.
+	(scan_reference_target): Return value says whether syntax was
+	understood.  Call read_quoted_string directly instead of via
+	info_parse_node.
+	* info/session.c (info_move_to_xref): Check if list of references
+	in node is empty.  Don't handle cursor-movement-scrolls variable.
+	Unused function parameters removed.
+	(info_follow_menus): Use PARSE_NODE_VERBATIM instead of
+	PARSE_NODE_DFLT.
+	(info_move_to_prev_xref, info_move_to_next_xref): Go to reference in
+	next node if cursor-movement-scrolls is On.  Call the other function if
+	the count was negative.
+
+	* info/session.c (forget_node): Call info_get_or_remove_footnotes.
+
 2014-06-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (read_nodename_to_kill, kill_node, info_kill_node):

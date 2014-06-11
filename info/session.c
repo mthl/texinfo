@@ -319,6 +319,8 @@ forget_node (WINDOW *win)
   i = --win->hist_index;
 
   window_set_node_of_window (win, win->hist[i - 1]->node);
+  if (auto_footnotes_p)
+    info_get_or_remove_footnotes (win);
   set_window_pagetop (win, win->hist[i - 1]->pagetop);
   win->point = win->hist[i - 1]->point;
   window_compute_line_map (win);
@@ -2161,21 +2163,18 @@ DECLARE_INFO_COMMAND (info_visit_menu,
     }
 }
 
-/* Move to the next or previous cross reference in this node. */
+/* Move to the next or previous cross reference in this node.  Return 0 if
+   there aren't any. */
 static int
-info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
+info_move_to_xref (WINDOW *window, int dir)
 {
   long placement = -1;
   NODE *node = window->node;
   REFERENCE **ref;
 
   /* Fail if there are no references in node */
-  if (!node->references)
-    {
-      if (!cursor_movement_scrolls_p)
-              info_error ("%s", msg_no_xref_node);
-      return cursor_movement_scrolls_p;
-    }
+  if (!node->references || !node->references[0])
+    return 0;
 
   if (dir == 1) /* Search forwards */
     for (ref = node->references; *ref != 0; ref++)
@@ -2193,34 +2192,42 @@ info_move_to_xref (WINDOW *window, int count, unsigned char key, int dir)
         placement = (*ref)->start;
       }
 
-  /* If there was neither a menu or xref entry appearing in this node after
-     point, choose the first menu or xref entry appearing in this node. */
   if (placement == -1)
     {
+      /* There was neither a menu or xref entry appearing in this node
+         after point. */
       if (cursor_movement_scrolls_p)
-        return 1;
+        return 0;
       else
+        /* Choose the first menu or xref entry appearing in this node. */
         placement = node->references[0]->start;
     }
 
   window->point = placement;
   window_adjust_pagetop (window);
-  return 0;
+  return 1;
 }
 
 DECLARE_INFO_COMMAND (info_move_to_prev_xref,
                       _("Move to the previous cross reference"))
 {
   if (count < 0)
-    info_move_to_prev_xref (window, -count, key);
+    info_move_to_next_xref (window, -count, key);
   else
     {
-      while (info_move_to_xref (window, count, key, -1))
+      if (!info_move_to_xref (window, -1))
         {
-          info_error_was_printed = 0;
-          if (backward_move_node_structure (window, info_scroll_behaviour))
-            break;
-          window->point = window->node->nodelen - 1;
+          if (!cursor_movement_scrolls_p)
+            info_error ("%s", msg_no_xref_node);
+          else
+            {
+              if (backward_move_node_structure (window, info_scroll_behaviour)
+                  == 0)
+                {
+                  window->point = window->node->nodelen - 1;
+                  info_move_to_xref (window, -1);
+                }
+            }
         }
     }
 }
@@ -2229,19 +2236,18 @@ DECLARE_INFO_COMMAND (info_move_to_next_xref,
                       _("Move to the next cross reference"))
 {
   if (count < 0)
-    info_move_to_next_xref (window, -count, key);
+    info_move_to_prev_xref (window, -count, key);
   else
     {
-      /* Note: This can cause some blinking when the next cross reference is
-         located several nodes further. This effect can be easily suppressed
-         by setting display_inhibited to 1, however this will also make
-         error messages to be dumped on stderr, instead on the echo area. */ 
-      while (info_move_to_xref (window, count, key, 1))
+      if (!info_move_to_xref (window, 1))
         {
-          info_error_was_printed = 0;
-          if (forward_move_node_structure (window, info_scroll_behaviour))
-            break;
-          window->point = 0;
+          if (!cursor_movement_scrolls_p)
+            info_error ("%s", msg_no_xref_node);
+          else
+            {
+              forward_move_node_structure (window, info_scroll_behaviour);
+              info_move_to_xref (window, 1);
+            }
         }
     }
 }
@@ -2310,10 +2316,10 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
       /* Try to find this node.  */
       if (initial_node->parent)
         node = info_get_node (initial_node->parent, entry->nodename,
-                              PARSE_NODE_DFLT);
+                              PARSE_NODE_VERBATIM);
       else
         node = info_get_node (initial_node->filename, entry->nodename,
-                              PARSE_NODE_DFLT);
+                              PARSE_NODE_VERBATIM);
       if (!node)
         {
 	  debug (3, ("no matching node found"));

@@ -143,7 +143,7 @@ info_parse_node (char *string, int flag)
     }
 
   /* Parse out nodename. */
-  nodename_len = read_quoted_string (string, terminator,
+  nodename_len = read_quoted_string (string, terminator, 0,
                                      &info_parsed_nodename);
 
   string += nodename_len;
@@ -198,40 +198,77 @@ info_parse_node (char *string, int flag)
 
 /* Set *OUTPUT to a copy of the string starting at START and finishing at
    a character in TERMINATOR, unless START[0] == INFO_QUOTE, in which case
-   copy string from START+1 until the next occurence of INFO_QUOTE.  Return
-   length of string including any quoting characters.
+   copy string from START+1 until the next occurence of INFO_QUOTE.  If
+   TERMINATOR is an empty string, finish at a null character.   LINES is
+   the number of lines that the string can span.  If LINES is zero, there is no
+   limit.  Return length of string including any quoting characters.  Return
+   0 if input was invalid.
 
    TODO: Decide on best method of quoting. */
 long
-read_quoted_string (char *start, char *terminator, char **output)
+read_quoted_string (char *start, char *terminator, int lines, char **output)
 {
   long len;
+  char *nl = 0, saved_char;
+
+  if (lines)
+    {
+      int i;
+      nl = start;
+      for (i = 0; i < lines; i++)
+        {
+          nl = strchr (nl, '\n');
+          if (!nl)
+            break; /* End of input string reached. */
+          nl++;
+        }
+      if (nl)
+        {
+          saved_char = *nl;
+          *nl = '\0';
+        }
+    }
 
   if (start[0] != '\177')
     {
       len = strcspn (start, terminator);
 
-      *output = xmalloc (len + 1);
-      strncpy (*output, start, len);
-      (*output)[len] = '\0';
-
-      return len;
+      if (*terminator && !start[len])
+        len = 0;
+      else
+        {
+          *output = xmalloc (len + 1);
+          strncpy (*output, start, len);
+          (*output)[len] = '\0';
+        }
     }
 #ifdef QUOTE_NODENAMES
   else
     {
       len = strcspn (start + 1, "\177");
 
-      *output = xmalloc (len + 1);
-      strncpy (*output, start + 1, len);
-      (*output)[len] = '\0';
+      if (*terminator && !(start + 1)[len])
+        len = 0;
+      else
+        {
+          *output = xmalloc (len + 1);
+          strncpy (*output, start + 1, len);
+          (*output)[len] = '\0';
+        }
 
-      return len + 2;
+      len += 2;
     }
 #else /* ! QUOTE_NODENAMES */
-  *output = xstrdup ("");
-  return 0;
+  else
+    {
+      *output = xstrdup ("");
+      len = 0;
+    }
 #endif
+
+  if (nl)
+    *nl = saved_char;
+  return len;
 }
 
 
@@ -732,6 +769,27 @@ init_output_stream (FILE_BUFFER *fb)
     text_buffer_init (&output_buf);
 }
 
+static size_t saved_offset;
+static char *saved_inptr;
+static long saved_difference;
+
+void
+save_conversion_state (void)
+{
+  saved_offset = text_buffer_off (&output_buf);
+  saved_inptr = inptr;
+  saved_difference = output_bytes_difference;
+}
+
+/* Go back to the saved state of the output stream. */
+void
+reset_conversion (void)
+{
+  text_buffer_off (&output_buf) = saved_offset;
+  inptr = saved_inptr;
+  output_bytes_difference = saved_difference;
+}
+
 /* Copy bytes from input to output with no encoding conversion. */
 static void
 copy_direct (long n)
@@ -1124,7 +1182,7 @@ parse_top_node_line (NODE *node)
       /* Separate at commas or newlines, so it will work for
          filenames including full stops. */
       /* TODO: Account for "(dir)" and "(DIR)". */
-      value_length = read_quoted_string (inptr, "\n\t,", store_in);
+      value_length = read_quoted_string (inptr, "\n\t,", 1, store_in);
 
       /* Skip past value and any quoting or separating characters. */
       skip_input (value_length);
@@ -1234,10 +1292,10 @@ scan_reference_marker (REFERENCE *entry)
   copy_input_to_output (skip_whitespace_and_newlines (inptr));
 }
 
-/* Output reference label and update ENTRY.  inptr should be on the first
+/* Output reference label and update ENTRY.  INPTR should be on the first
    non-whitespace byte of label when this function is called.  It is left
-   at the first non-whitespace character after the colon terminating the
-   label.  Return 0 if invalid syntax is encountered. */
+   at the first character after the colon terminating the label.  Return 0 if
+   invalid syntax is encountered. */
 static int
 scan_reference_label (REFERENCE *entry)
 {
@@ -1246,15 +1304,14 @@ scan_reference_label (REFERENCE *entry)
   char *label = 0;
   long label_len;
 
-  /* Search forward to ":" to get label name. */
-  /* Cross-references may have a newline in the middle. */
+  /* Search forward to ":" to get label name.  Cross-references may have
+     a newline in the middle. */
   if (entry->type == REFERENCE_MENU_ITEM)
-    label_len = read_quoted_string (inptr, ":", &label);
+    label_len = read_quoted_string (inptr, ":", 1, &label);
   else
-    /* TODO: Limit lines label can cross. */
-    label_len = read_quoted_string (inptr, "\n:", &label);
+    label_len = read_quoted_string (inptr, ":", 2, &label);
     
-  if (inptr[label_len] != ':')
+  if (label_len == 0)
     return 0;
 
   entry->label = label;
@@ -1321,169 +1378,175 @@ scan_reference_label (REFERENCE *entry)
   return 1;
 }
 
-static void
+/* INPTR should be at the first character after the colon
+   terminating the label.  Return 0 on syntax error. */
+static int
 scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
 {
+  char *target;
+
+  int length; /* Length of specification */
+  int i;
+
   /* If this reference entry continues with another ':' then the reference is
      within the same file, and the nodename is the same as the label. */
   if (*inptr == ':')
     {
       skip_input (1);
-
       if (entry->type == REFERENCE_MENU_ITEM)
         write_extra_bytes_to_output (" ", 1);
 
       entry->filename = 0;
       entry->nodename = xstrdup (entry->label);
+      return 1;
     }
+
+  /* This entry continues with a specific nodename.  Parse the
+     nodename from the specification. */
+
+  /* Skip any following spaces after the ":". */
+  if (entry->type == REFERENCE_MENU_ITEM)
+    copy_input_to_output (skip_whitespace (inptr));
   else
+    skip_input (skip_whitespace (inptr));
+
+  if (!read_quoted_string (inptr, ",.", 2, &target))
+    return 0;
+
+  if (entry->type == REFERENCE_XREF)
     {
-      /* This entry continues with a specific nodename.  Parse the
-         nodename from the specification. */
+      char *nl_off;
+      int space_at_start_of_line = 0;
 
-      int length; /* Length of specification */
-      int i;
+      length = info_parse_node (target, PARSE_NODE_VERBATIM);
 
-      if (entry->type != REFERENCE_MENU_ITEM)
+      /* Check if there is a newline in the target. */
+      nl_off = strchr (target, '\n');
+      if (nl_off)
+        space_at_start_of_line = skip_whitespace (nl_off + 1);
+      
+      if (info_parsed_filename)
         {
-          char saved_char;
-          char *nl_off;
-          int space_at_start_of_line = 0;
-
-          /* Skip any following spaces after the ":". */
-          skip_input (skip_whitespace (inptr));
-
-          length = info_parse_node (inptr, PARSE_NODE_SKIP_NEWLINES);
-
-          /* Check if there is a newline in the target. */
-          saved_char = inptr[length];
-          inptr[length] = '\0';
-          nl_off = strchr (inptr, '\n');
-          inptr[length] = saved_char;
-
-          if (nl_off)
-            space_at_start_of_line = skip_whitespace (nl_off + 1);
-          
-          if (info_parsed_filename)
+          /* Rough heuristic of whether it's worth outputing a newline
+             now or later. */
+          if (nl_off
+              && nl_off < inptr + (length - space_at_start_of_line) / 2)
             {
-              /* Rough heuristic of whether it's worth outputing a newline
-                 now or later. */
-              if (nl_off
-                  && nl_off < inptr + (length - space_at_start_of_line) / 2)
-                {
-                  int i;
-                  write_extra_bytes_to_output ("\n", 1);
-
-                  for (i = 0; i < space_at_start_of_line; i++)
-                    write_extra_bytes_to_output (" ", 1);
-                  skip_input (strspn (inptr, " "));
-                  nl_off = 0;
-                }
-              else if (inptr[-1] != '\n')
-                write_extra_bytes_to_output (" ", 1);
-              write_extra_bytes_to_output ("(", 1);
-              write_extra_bytes_to_output (info_parsed_filename,
-                strlen (info_parsed_filename));
-              write_extra_bytes_to_output (" manual)",
-                                           strlen (" manual)"));
-            }
-
-          /* Output terminating punctuation, unless we are in a reference
-             like "(*note Label:(file)node.)". */
-          if (!in_parentheses)
-            skip_input (length);
-          else
-            skip_input (length + 1);
-
-          /* Copy any terminating punctuation before the optional newline. */
-          copy_input_to_output (strspn (inptr, ".),"));
-
-          /* Output a newline if one is needed.  Don't do it at the end
-             a paragraph. */
-          if (nl_off && *inptr != '\n')
-            { 
               int i;
-
               write_extra_bytes_to_output ("\n", 1);
+
               for (i = 0; i < space_at_start_of_line; i++)
                 write_extra_bytes_to_output (" ", 1);
               skip_input (strspn (inptr, " "));
+              nl_off = 0;
             }
-        }
-      else /* entry->type == REFERENCE_MENU_ITEM */
-        {
-          int line_len;
-
-          if (node->flags & N_IsDir)
-            {
-              /* Set line_len to length of line so far. */
-
-              char *linestart;
-              linestart = memrchr (input_start, '\n', inptr - input_start);
-              if (!linestart)
-                linestart = input_start;
-              else
-                linestart++; /* Point to first character after newline. */
-              line_len = inptr - linestart;
-            }
-
-          length = info_parse_node (inptr, PARSE_NODE_DFLT);
-          if (inptr[length] == '.') /* Include a '.' terminating the entry. */
-            length++;
-
-          if (node->flags & N_IsIndex)
-            /* For index nodes, output the destination as well,
-               which will be the name of the node the index entry
-               refers to. */
-            copy_input_to_output (length);
-          else 
-            {
-              skip_input (length);
-              if (!(node->flags & N_IsDir)) 
-                {
-                  /* Output spaces the length of the node specifier to avoid
-                     messing up left edge of second column of menu. */
-                  for (i = 0; i < length; i++)
-                    write_extra_bytes_to_output (" ", 1);
-                }
-            }
-
-          if (node->flags & N_IsDir) 
-            {
-              if (inptr[strspn (inptr, " ")] != '\n')
-                {
-                  for (i = 0; i < length; i++)
-                    write_extra_bytes_to_output (" ", 1);
-                }
-              else
-                {
-                  /* For a dir node, if there is no more text in this line,
-                     check if there is a menu entry description in the next
-                     line to the right of the end of the label, and display it
-                     in this line. */
-                  skip_input (strspn (inptr, " "));
-                  if (line_len <= strspn (inptr + 1, " "))
-                    skip_input (1 + line_len);
-                }
-            }
+          else if (inptr[-1] != '\n')
+            write_extra_bytes_to_output (" ", 1);
+          write_extra_bytes_to_output ("(", 1);
+          write_extra_bytes_to_output (info_parsed_filename,
+            strlen (info_parsed_filename));
+          write_extra_bytes_to_output (" manual)",
+                                       strlen (" manual)"));
         }
 
-      if (info_parsed_filename)
-        entry->filename = xstrdup (info_parsed_filename);
-
-      if (info_parsed_nodename)
-        entry->nodename = xstrdup (info_parsed_nodename);
-
-      if (!preprocess_nodes_p)
-        entry->line_number = info_parsed_line_number;
+      /* Output terminating punctuation, unless we are in a reference
+         like "(*note Label:(file)node.)". */
+      if (!in_parentheses)
+        skip_input (length);
       else
-        /* Adjust line offset in file to one in displayed text.  This
-           does not work perfectly because we can't know exactly what
-           text will be inserted/removed: for example, due to expansion
-           of an image tag.  This subtracts 1 for a removed node information
-           line. */
-        entry->line_number = info_parsed_line_number - 1;
+        skip_input (length + 1);
+
+      /* Copy any terminating punctuation before the optional newline. */
+      copy_input_to_output (strspn (inptr, ".),"));
+
+      /* Output a newline if one is needed.  Don't do it at the end
+         a paragraph. */
+      if (nl_off && *inptr != '\n')
+        { 
+          int i;
+
+          write_extra_bytes_to_output ("\n", 1);
+          for (i = 0; i < space_at_start_of_line; i++)
+            write_extra_bytes_to_output (" ", 1);
+          skip_input (strspn (inptr, " "));
+        }
     }
+  else /* entry->type == REFERENCE_MENU_ITEM */
+    {
+      int line_len;
+
+      if (node->flags & N_IsDir)
+        {
+          /* Set line_len to length of line so far. */
+
+          char *linestart;
+          linestart = memrchr (input_start, '\n', inptr - input_start);
+          if (!linestart)
+            linestart = input_start;
+          else
+            linestart++; /* Point to first character after newline. */
+          line_len = inptr - linestart;
+        }
+
+      length = info_parse_node (inptr, PARSE_NODE_DFLT);
+      if (inptr[length] == '.') /* Include a '.' terminating the entry. */
+        length++;
+
+      if (node->flags & N_IsIndex)
+        /* For index nodes, output the destination as well,
+           which will be the name of the node the index entry
+           refers to. */
+        copy_input_to_output (length);
+      else 
+        {
+          skip_input (length);
+          if (!(node->flags & N_IsDir)) 
+            {
+              /* Output spaces the length of the node specifier to avoid
+                 messing up left edge of second column of menu. */
+              for (i = 0; i < length; i++)
+                write_extra_bytes_to_output (" ", 1);
+            }
+        }
+
+      if (node->flags & N_IsDir) 
+        {
+          if (inptr[strspn (inptr, " ")] != '\n')
+            {
+              for (i = 0; i < length; i++)
+                write_extra_bytes_to_output (" ", 1);
+            }
+          else
+            {
+              /* For a dir node, if there is no more text in this line,
+                 check if there is a menu entry description in the next
+                 line to the right of the end of the label, and display it
+                 in this line. */
+              skip_input (strspn (inptr, " "));
+              if (line_len <= strspn (inptr + 1, " "))
+                skip_input (1 + line_len);
+            }
+        }
+    }
+  free (target);
+
+  if (info_parsed_filename)
+    entry->filename = xstrdup (info_parsed_filename);
+
+  if (info_parsed_nodename)
+    entry->nodename = xstrdup (info_parsed_nodename);
+
+  if (!preprocess_nodes_p)
+    entry->line_number = info_parsed_line_number;
+  else
+    /* Adjust line offset in file to one in displayed text.  This
+       does not work perfectly because we can't know exactly what
+       text will be inserted/removed: for example, due to expansion
+       of an image tag.  This subtracts 1 for a removed node information
+       line. */
+    entry->line_number = info_parsed_line_number - 1;
+
+  return 1;
 }
 
 /* BASE is earlier in a block of allocated memory than PTR, and the block
@@ -1596,18 +1659,21 @@ search_again:
       if (safe_string_index (inptr, -1, s.buffer, s.end) == '(')
         in_parentheses = 1;
 
+      save_conversion_state ();
       scan_reference_marker (entry);
 
-      /* Read and output reference label (up until colon). */
-      if (!scan_reference_label (entry))
+      if (!scan_reference_label (entry)
+         || !scan_reference_target (entry, node, in_parentheses))
         {
-          /* This is not a menu entry or reference. */
+          /* This is not a menu entry or reference.  Do not add to our list. */
+          char *cur_inptr = inptr;
+          reset_conversion ();
+          copy_input_to_output (cur_inptr - inptr);
+
+          info_reference_free (entry);
           s.start = inptr - s.buffer;
           continue;
         }
-
-      /* Get target of reference and update entry. */
-      scan_reference_target (entry, node, in_parentheses);
 
       add_pointer_to_array (entry, refs_index, refs, refs_slots, 50);
 
