@@ -248,7 +248,6 @@ dump_map_to_text_buffer (struct text_buffer *tb, char *prefix, Keymap map)
           while (tb->off - start_of_line < 8)
             text_buffer_printf (tb, " ");
 
-#if defined (NAMED_FUNCTIONS)
           /* Print the name of the function, and some padding before the
              documentation string is printed. */
           {
@@ -270,7 +269,6 @@ dump_map_to_text_buffer (struct text_buffer *tb, char *prefix, Keymap map)
                   }
               }
           }
-#endif /* NAMED_FUNCTIONS */
           text_buffer_printf (tb, "%s\n", doc);
         }
     }
@@ -340,7 +338,6 @@ create_internal_info_help_node (int help_is_only_window_p)
       text_buffer_printf (&msg, _("Commands available in the echo area:\n\n"));
       dump_map_to_text_buffer (&msg, "", echo_area_keymap);
 
-#if defined (NAMED_FUNCTIONS)
       /* Get a list of commands which have no keystroke equivs. */
       exec_keys = where_is (info_keymap, InfoCmd(info_execute_command));
       if (exec_keys)
@@ -378,7 +375,6 @@ create_internal_info_help_node (int help_is_only_window_p)
         }
 
       free (exec_keys);
-#endif /* NAMED_FUNCTIONS */
 
       node = text_buffer_to_node (&msg);
       internal_info_help_node_contents = node->contents;
@@ -586,7 +582,6 @@ function_documentation (InfoCommand *cmd)
   return replace_in_documentation ((strlen (doc) == 0) ? doc : _(doc), 0);
 }
 
-#if defined (NAMED_FUNCTIONS)
 /* Return the user-visible name of the function associated with the
    Info command FUNCTION. */
 char *
@@ -621,7 +616,6 @@ named_function (char *name)
 
   return DocInfoCmd(&function_doc_array[i]);
 }
-#endif /* NAMED_FUNCTIONS */
 
 DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
 {
@@ -698,20 +692,14 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
 
           keyname = pretty_keyseq (keys);
 
-#if defined (NAMED_FUNCTIONS)
           funname = function_name (map[keystroke].function);
-#endif /* NAMED_FUNCTIONS */
 
           fundoc = function_documentation (map[keystroke].function);
 
           message = xmalloc
             (10 + strlen (keyname) + strlen (fundoc) + strlen (funname));
 
-#if defined (NAMED_FUNCTIONS)
           sprintf (message, "%s (%s): %s.", keyname, funname, fundoc);
-#else
-          sprintf (message, _("%s is defined to %s."), keyname, fundoc);
-#endif /* !NAMED_FUNCTIONS */
 
           window_message_in_echo_area ("%s", message);
           free (message);

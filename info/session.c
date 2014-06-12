@@ -1085,7 +1085,7 @@ DECLARE_INFO_COMMAND (info_next_window, _("Select the next window"))
     }
 
   /* If no other window, error now. */
-  if (!windows->next && !echo_area_is_active)
+  if (!windows->next || echo_area_is_active)
     {
       info_error ("%s", msg_one_window);
       return;
@@ -1096,12 +1096,7 @@ DECLARE_INFO_COMMAND (info_next_window, _("Select the next window"))
       if (window->next)
         window = window->next;
       else
-        {
-          if (window == the_echo_area || !echo_area_is_active)
-            window = windows;
-          else
-            window = the_echo_area;
-        }
+        window = windows;
     }
 
   if (active_window != window)
@@ -1127,8 +1122,7 @@ DECLARE_INFO_COMMAND (info_prev_window, _("Select the previous window"))
     }
 
   /* Only one window? */
-
-  if (!windows->next && !echo_area_is_active)
+  if (!windows->next || echo_area_is_active)
     {
       info_error ("%s", msg_one_window);
       return;
@@ -1136,24 +1130,15 @@ DECLARE_INFO_COMMAND (info_prev_window, _("Select the previous window"))
 
   while (count--)
     {
-      /* If we are in the echo area, or if the echo area isn't active and we
-         are in the first window, find the last window in the chain. */
-      if (window == the_echo_area
-          || window == windows && !echo_area_is_active)
-        {
-          register WINDOW *win, *last = NULL;
 
-          for (win = windows; win; win = win->next)
-            last = win;
-
-          window = last;
-        }
-      else
+      if (window != windows && window->prev)
+        window = window->prev;
+      else if (window == windows)
         {
-          if (window == windows)
-            window = the_echo_area;
-          else
-            window = window->prev;
+          /* If we are in the first window, find the last window in the
+             chain. */
+          while (window->next)
+            window = window->next;
         }
     }
 

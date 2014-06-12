@@ -2,7 +2,7 @@
    $Id$
 
    Copyright 1993, 1997, 1998, 1999, 2001, 2002, 2003, 2004, 2007,
-   2008, 2012, 2013 Free Software Foundation, Inc.
+   2008, 2012, 2013, 2014 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -50,9 +50,7 @@ static char *doc_header[] = {
 static char *doc_header_1[] = {
   "   An entry in the array FUNCTION_DOC_ARRAY is made for each command",
   "   found in the above files; each entry consists of a function pointer,",
-#if defined (NAMED_FUNCTIONS)
   "   a string which is the user-visible name of the function,",
-#endif /* NAMED_FUNCTIONS */
   "   and a string which documents its purpose. */",
   "",
   "#include \"info.h\"",
@@ -208,21 +206,13 @@ main (int argc, char **argv)
 
 #if defined (INFOKEY)
 
-#if defined (NAMED_FUNCTIONS)
   fprintf (doc_stream,
            "   { NULL, NULL, NULL, NULL }\n};\n");
-#else /* !NAMED_FUNCTIONS */
-  fprintf (doc_stream, "   { NULL, NULL, NULL }\n};\n");
-#endif /* !NAMED_FUNCTIONS */
 
 #else /* !INFOKEY */
 
-#if defined (NAMED_FUNCTIONS)
   fprintf (doc_stream,
            "   { NULL, NULL, NULL }\n};\n");
-#else /* !NAMED_FUNCTIONS */
-  fprintf (doc_stream, "   { NULL, NULL }\n};\n");
-#endif /* !NAMED_FUNCTIONS */
 
 #endif /* !INFOKEY */
 
@@ -360,9 +350,7 @@ process_one_file (char *filename, FILE *doc_stream,
       int line_number = 0;
 
       char *func, *doc;
-#if defined (INFOKEY) || defined (NAMED_FUNCTIONS)
       char *func_name;
-#endif /* INFOKEY || NAMED_FUNCTIONS */
 
       for (; offset < (file_size - decl_len); offset++)
         {
@@ -427,7 +415,6 @@ process_one_file (char *filename, FILE *doc_stream,
         add_tag_to_block (block, tag_name, line_number, point);
       }
 
-#if defined (INFOKEY) || defined (NAMED_FUNCTIONS)
       /* Generate the user-visible function name from the function's name. */
       {
         register int i;
@@ -456,7 +443,6 @@ process_one_file (char *filename, FILE *doc_stream,
           if (func_name[i] == '_')
             func_name[i] = '-';
       }
-#endif /* INFOKEY || NAMED_FUNCTIONS */
 
       /* Find doc string. */
       point = offset + 1;
@@ -503,30 +489,19 @@ process_one_file (char *filename, FILE *doc_stream,
 
 #if defined (INFOKEY)
 
-#if defined (NAMED_FUNCTIONS)
       fprintf (doc_stream,
           "   { (VFunction *)%s, \"%s\", (FUNCTION_KEYSEQ *)0, %s },\n",
           func, func_name, doc);
-#else /* !NAMED_FUNCTIONS */
-      fprintf (doc_stream,
-          "   { (VFunction *) %s, (FUNCTION_KEYSEQ *)0, %s },\n", func, doc);
-#endif /* !NAMED_FUNCTIONS */
 
       fprintf (key_stream, "   { \"%s\", A_%s },\n", func_name, func);
 
 #else /* !INFOKEY */
 
-#if defined (NAMED_FUNCTIONS)
       fprintf (doc_stream, "   { %s, \"%s\", %s },\n", func, func_name, doc);
-#else /* !NAMED_FUNCTIONS */
-      fprintf (doc_stream, "   { %s, %s },\n", func, doc);
-#endif /* !NAMED_FUNCTIONS */
 
 #endif /* !INFOKEY */
 
-#if defined (INFOKEY) || defined (NAMED_FUNCTIONS)
       free (func_name);
-#endif /* INFOKEY || NAMED_FUNCTIONS */
 
 #if defined (INFOKEY)
       fprintf (funs_stream, "#define A_%s %u\n", func, next_func_key());

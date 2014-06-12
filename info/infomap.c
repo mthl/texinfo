@@ -384,10 +384,8 @@ static unsigned char default_emacs_like_info_keys[] =
   Meta('f'), NUL,                 A_info_forward_word,
   Meta('r'), NUL,                 A_info_move_to_window_line,
   Meta('v'), NUL,                 A_info_scroll_backward_page_only,
-#if defined (NAMED_FUNCTIONS)
   ESC, 'x', NUL,                  A_info_execute_command,
   Meta('x'), NUL,                 A_info_execute_command,
-#endif /* NAMED_FUNCTIONS */
 
   CONTROL('x'), CONTROL('b'), NUL,        A_list_visited_nodes,
   CONTROL('x'), CONTROL('c'), NUL,        A_info_quit,
@@ -523,10 +521,6 @@ static unsigned char default_emacs_like_ea_keys[] =
 #else
   DEL, NUL,                       A_ea_rubout,
 #endif
-#if defined (NAMED_FUNCTIONS)
-  /*    ESC, 'x', NUL,                  A_info_execute_command, */
-  /*    Meta('x'), NUL,                 A_info_execute_command, */
-#endif /* NAMED_FUNCTIONS */
   CONTROL('x'), 'o', NUL,         A_info_next_window,
   CONTROL('x'), DEL, NUL,         A_ea_backward_kill_line,
 
@@ -677,10 +671,8 @@ static unsigned char default_vi_like_info_keys[] =
   ESC, 's', NUL,                  A_isearch_forward,
   ESC, 't', NUL,                  A_info_top_node,
   ESC, 'v', NUL,                  A_info_scroll_backward_page_only,
-#if defined (NAMED_FUNCTIONS)
   ESC, 'x', NUL,                  A_info_execute_command,
   Meta('x'), NUL,                 A_info_execute_command,
-#endif /* NAMED_FUNCTIONS */
   ESC, DEL, NUL,                  A_info_scroll_other_window_backward,
   CONTROL('x'), CONTROL('b'), NUL,        A_list_visited_nodes,
   CONTROL('x'), CONTROL('c'), NUL,        A_info_quit,

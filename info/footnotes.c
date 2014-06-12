@@ -172,13 +172,6 @@ make_footnotes_node (NODE *node)
     free (header);
   }
 
-#if defined (NOTDEF)
-  /* If the footnotes were gleaned from the node that we were called with,
-     shorten the calling node's display length. */
-  if (fn_node == node)
-    narrow_node (node, 0, fn_start);
-#endif /* NOTDEF */
-
   return result;
 }
 

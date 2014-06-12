@@ -22,8 +22,7 @@
 #ifndef INFO_H
 #define INFO_H
 
-/* We always want these, so why clutter up the compile command?  */
-#define NAMED_FUNCTIONS
+/* We always want this, so why clutter up the compile command?  */
 #define INFOKEY
 
 /* System dependencies.  */

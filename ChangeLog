@@ -1,3 +1,13 @@
+2014-06-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.h, info/makedoc.c, info/doc.h, info/infomap.c,
+	info/infodoc.c: [NAMED_FUNCTIONS]: Made unconditional.
+	* info/infodoc.c (default_emacs_like_ea_keys): Commented out entry for
+	"M-x" removed.
+	* info/footnotes.c (make_footnotes_node): Disabled code removed.
+	* info/session.c (info_next_window, info_prev_window): Don't include
+	echo area in window loop.
+
 2014-06-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_follow_menus): Return value changed.  All
