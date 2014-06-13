@@ -435,7 +435,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
               argv += argc; argc = 0;
 
               free (ref_list[0]);
-              ref_list[0] = info_new_reference (node_via_menus->filename,
+              ref_list[0] = info_new_reference (node_via_menus->parent,
                                                 node_via_menus->nodename);
               if (!ref_list[0]->filename) /* Not a split file. */
                 ref_list[0]->filename = node_via_menus->filename;
