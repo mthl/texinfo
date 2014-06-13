@@ -474,6 +474,7 @@ allfiles_create_node (char *term, REFERENCE **fref)
                       INFO_NODE_LABEL,
 		      term, term);
 
+  /* Mark as an index so that destinations are never hidden. */
   text_buffer_add_string (&text, "\000\010[index\000\010]", 11);
   text_buffer_printf (&text, "\n* Menu:\n\n");
 
@@ -486,9 +487,10 @@ allfiles_create_node (char *term, REFERENCE **fref)
     }
 
   allfiles_node = info_create_node ();
-  allfiles_node->nodename = xstrdup ("Info File Index");
-  allfiles_node->contents = text.base;
-  allfiles_node->nodelen = text.off;
+  allfiles_node->filename = xstrdup ("");
+  allfiles_node->nodename = xstrdup ("*Info File Index*");
+  allfiles_node->contents = text_buffer_base (&text);
+  allfiles_node->nodelen = text_buffer_off (&text);
   allfiles_node->body_start = strcspn (allfiles_node->contents, "\n");
 
   scan_node_contents (0, &allfiles_node);

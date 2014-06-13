@@ -8,6 +8,10 @@
 	the top-level file instead of the subfile.
 	* info/t/split-file-menu.sh: New test.
 
+	* info/info.c (allfiles_create_node): Set filename to an empty string
+	so that "*no file*" won't be shown in window mode line.  Surround node
+	name with asterisks.
+
 2014-06-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.h, info/makedoc.c, info/doc.h, info/infomap.c,
