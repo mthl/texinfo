@@ -4,6 +4,10 @@
 	history.
 	* info/t/last-no-history.sh: New test.
 
+	* info/info.c (add_initial_nodes): For split files, store the name of
+	the top-level file instead of the subfile.
+	* info/t/split-file-menu.sh: New test.
+
 2014-06-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.h, info/makedoc.c, info/doc.h, info/infomap.c,

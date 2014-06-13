@@ -115,6 +115,7 @@ TESTS = \
 	t/body-start.sh \
 	t/end-of-line.sh \
 	t/last-no-history.sh \
+	t/split-file-menu.sh \
 	t/index.sh \
 	t/index-apropos.sh \
 	t/split-index.sh \
