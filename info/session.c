@@ -310,7 +310,7 @@ void
 forget_node (WINDOW *win)
 {
   int i = win->hist_index;
-  if (i == 0)
+  if (i == 1)
     return;
 
   free_history_node (win->hist[i - 1]->node);

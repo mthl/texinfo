@@ -1,3 +1,9 @@
+2014-06-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (forget_node): Don't forget the last node in the
+	history.
+	* info/t/last-no-history.sh: New test.
+
 2014-06-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.h, info/makedoc.c, info/doc.h, info/infomap.c,
