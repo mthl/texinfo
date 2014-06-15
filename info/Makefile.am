@@ -95,6 +95,7 @@ TESTS = \
 	t/file-nodes.sh \
 	t/file-node-with-dot.sh \
 	t/file-index.sh \
+	t/file-file-with-dot.sh \
 	t/no-file.sh \
 	t/split.sh \
 	t/relative-path.sh \

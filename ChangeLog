@@ -8,6 +8,7 @@
 	info_parse_node to get filename. 
 	(scan_node_contents): Check if cross-reference within parentheses was a
 	"*note".
+	* info/t/file-file-with-dot.sh: New test.
 
 2014-06-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
