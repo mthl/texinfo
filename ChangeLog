@@ -1,5 +1,10 @@
 2014-06-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/search-after-tag.sh: New test.
+	* info/t/infodir/intera.info: Add node for new test.
+
+2014-06-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (read_bracketed_filename): Split out from
 	info_parse_node and rewritten for clarity.
 	(read_quoted_string): Set output parameter to null on error.

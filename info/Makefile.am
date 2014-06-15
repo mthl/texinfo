@@ -116,6 +116,7 @@ TESTS = \
 	t/body-start.sh \
 	t/end-of-line.sh \
 	t/last-no-history.sh \
+	t/search-after-tag.sh \
 	t/split-file-menu.sh \
 	t/index.sh \
 	t/index-apropos.sh \
@@ -130,6 +131,7 @@ TESTS = \
 	t/help.sh
 
 XFAIL_TESTS = \
+	t/search-after-tag.sh \
 	t/quoted-label-as-target.sh \
 	t/quoted-target.sh \
 	t/quoted-label-and-target.sh \
