@@ -1,3 +1,14 @@
+2014-06-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (read_bracketed_filename): Split out from
+	info_parse_node and rewritten for clarity.
+	(read_quoted_string): Set output parameter to null on error.
+	(avoid_see_see): Include '(' character when searching backward.
+	(scan_reference_target): Call read_bracketed_filename instead of
+	info_parse_node to get filename. 
+	(scan_node_contents): Check if cross-reference within parentheses was a
+	"*note".
+
 2014-06-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (forget_node): Don't forget the last node in the

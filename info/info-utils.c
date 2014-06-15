@@ -46,6 +46,53 @@ char *info_parsed_filename = NULL;
    calling info_parse_xxx (). */
 char *info_parsed_nodename = NULL;
 
+/* Read a filename surrounded by "(" and ")", accounting for matching
+   characters.  Return length of read filename.  On error, set *FILENAME
+   to null and return 0.  */
+int
+read_bracketed_filename (char *string, char **filename)
+{
+  register int i = 0;
+  int count = 0; /* Level of nesting. */
+  int first_close = -1; /* First ")" encountered. */
+
+  *filename = 0;
+  if (*string != '(')
+    return 0;
+
+  string++;
+  count = 1;
+  for (i = 0; string[i]; i++)
+    {
+      if (string[i] == '(')
+        count++;
+      else if (string[i] == ')')
+        {
+          if (first_close == -1)
+            first_close = i;
+
+          count--;
+          if (count == 0)
+            break;
+        } 
+    }
+  
+  /* If string ended before brackets were balanced, take the first ")" as
+     terminating the filename. */
+  if (count > 0)
+    {
+      if (first_close == -1)
+        return 0;
+      i = first_close;
+    }
+
+  /* Remember parsed filename. */
+  *filename = xcalloc (1, i + 1);
+  memcpy (*filename, string, i);
+
+  return i + 2; /* Length of filename plus "(" and ")". */
+}
+
 /* Parse the filename and nodename out of STRING, saving in
    INFO_PARSED_FILENAME and INFO_PARSED_NODENAME.  These variables should not
    be freed by calling code.  If either is missing, the relevant variable is
@@ -53,9 +100,7 @@ char *info_parsed_nodename = NULL;
 void
 info_parse_node (char *string)
 {
-  register int i = 0;
   int nodename_len;
-  char *terminator;
 
   free (info_parsed_filename);
   free (info_parsed_nodename);
@@ -68,47 +113,7 @@ info_parse_node (char *string)
 
   string += skip_whitespace_and_newlines (string);
 
-  /* Check for (FILENAME)NODENAME. */
-  if (*string == '(')
-    {
-      int bcnt;
-      int bfirst;
-      
-      i = 0;
-      /* Advance past the opening paren. */
-      string++;
-
-      /* Find the closing paren. Handle nested parens correctly. */
-      for (bcnt = 0, bfirst = -1; string[i]; i++)
-	{
-	  if (string[i] == ')')
-	    {
-	      if (bcnt == 0)
-		{
-		  bfirst = -1;
-		  break;
-		}
-	      else if (!bfirst)
-		bfirst = i;
-	      bcnt--;
-	    } 
-	  else if (string[i] == '(')
-	    bcnt++;
-	}
-
-      if (bfirst >= 0)
-	i = bfirst;
-      
-      /* Remember parsed filename. */
-      info_parsed_filename = xcalloc (1, i+1);
-      memcpy (info_parsed_filename, string, i);
-
-      /* Point directly at the nodename. */
-      string += i;
-
-      if (*string)
-        string++;
-    }
+  string += read_bracketed_filename (string, &info_parsed_filename);
 
   /* Parse out nodename. */
   string += skip_whitespace_and_newlines (string);
@@ -159,7 +164,10 @@ read_quoted_string (char *start, char *terminator, int lines, char **output)
       len = strcspn (start, terminator);
 
       if (*terminator && !start[len])
-        len = 0;
+        {
+          len = 0;
+          *output = 0;
+        }
       else
         {
           *output = xmalloc (len + 1);
@@ -173,7 +181,10 @@ read_quoted_string (char *start, char *terminator, int lines, char **output)
       len = strcspn (start + 1, "\177");
 
       if (*terminator && !(start + 1)[len])
-        len = 0;
+        {
+          len = 0;
+          *output = 0;
+        }
       else
         {
           *output = xmalloc (len + 1);
@@ -1123,7 +1134,7 @@ parse_top_node_line (NODE *node)
     }
 }
 
-/* Check if preceding word is a word like "see". BASE points before PTR in
+/* Check if preceding word is a word like "see".  BASE points before PTR in
    a block of allocated memory. */
 static int
 avoid_see_see (char *ptr, char *base)
@@ -1140,10 +1151,12 @@ avoid_see_see (char *ptr, char *base)
 
   /* Skip past whitespace, and then go to beginning of preceding word. */
   ptr--;
-  while (ptr > base && (*ptr == ' ' || *ptr == '\n' || *ptr == '\t'))
+  while (ptr > base && (*ptr == ' ' || *ptr == '\n' || *ptr == '\t'
+                        || *ptr == '('))
     ptr--;
 
-  while (ptr > base && !(*ptr == ' ' || *ptr == '\n' || *ptr == '\t'))
+  while (ptr > base && !(*ptr == ' ' || *ptr == '\n' || *ptr == '\t'
+                        || *ptr == '(' ))
     {
       ptr--;
       word_len++;
@@ -1308,11 +1321,6 @@ scan_reference_label (REFERENCE *entry)
 static int
 scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
 {
-  char *target;
-
-  int info_parsed_line_number = 0;
-
-  int length; /* Length of specification */
   int i;
 
   /* If this reference entry continues with another ':' then the reference is
@@ -1328,37 +1336,45 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
       return 1;
     }
 
-  /* This entry continues with a specific nodename.  Parse the
-     nodename from the specification. */
-
-  /* Skip any following spaces after the ":". */
-  if (entry->type == REFERENCE_MENU_ITEM)
-    copy_input_to_output (skip_whitespace (inptr));
-  else
-    skip_input (skip_whitespace (inptr));
-
-  length = read_quoted_string (inptr, ",.", 2, &target);
-  if (!length)
-    return 0;
+  /* This entry continues with a specific target.  Parse the
+     file name and node name from the specification. */
 
   if (entry->type == REFERENCE_XREF)
     {
-      char *nl_off;
+      int length = 0; /* Length of specification */
+      char *target_start = inptr;
+      char *nl_off = 0;
       int space_at_start_of_line = 0;
 
-      info_parse_node (target);
+      length += skip_whitespace_and_newlines (inptr);
+
+      length += read_bracketed_filename (inptr + length, &entry->filename);
+
+      length += skip_whitespace_and_newlines (inptr + length);
+
+      /* Get the node name. */
+      length += read_quoted_string (inptr + length, ",.", 2, &entry->nodename);
+
+      skip_input (length);
 
       /* Check if there is a newline in the target. */
-      nl_off = strchr (target, '\n');
+      nl_off = strchr (target_start, '\n');
       if (nl_off)
-        space_at_start_of_line = skip_whitespace (nl_off + 1);
-      
-      if (info_parsed_filename)
         {
-          /* Rough heuristic of whether it's worth outputing a newline
-             now or later. */
+          if (nl_off < inptr)
+            space_at_start_of_line = skip_whitespace (nl_off + 1);
+          else
+            nl_off = 0;
+        }
+
+      if (entry->filename)
+        {
+          /* Heuristic of whether it's worth outputing a newline before the
+             filename.  This checks whether the newline appears more
+             than half way through the text, and therefore which side is
+             longer. */
           if (nl_off
-              && nl_off < inptr + (length - space_at_start_of_line) / 2)
+              && nl_off < target_start + (length - space_at_start_of_line) / 2)
             {
               int i;
               write_extra_bytes_to_output ("\n", 1);
@@ -1368,19 +1384,22 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
               skip_input (strspn (inptr, " "));
               nl_off = 0;
             }
-          else if (inptr[-1] != '\n')
-            write_extra_bytes_to_output (" ", 1);
+          else
+
+          if (*inptr != '\n')
+            {
+              write_extra_bytes_to_output (" ", 1);
+            }
           write_extra_bytes_to_output ("(", 1);
-          write_extra_bytes_to_output (info_parsed_filename,
-            strlen (info_parsed_filename));
+          write_extra_bytes_to_output (entry->filename,
+                                       strlen (entry->filename));
           write_extra_bytes_to_output (" manual)",
                                        strlen (" manual)"));
         }
-
-      /* Output terminating punctuation, unless we are in a reference
+      
+      /* Hide terminating punctuation if we are in a reference
          like "(*note Label:(file)node.)". */
-      skip_input (length);
-      if (in_parentheses && (inptr[0] == '.' || inptr[0] == ','))
+      if (in_parentheses && inptr[0] == '.')
         skip_input (1);
 
       /* Copy any terminating punctuation before the optional newline. */
@@ -1401,6 +1420,16 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
   else /* entry->type == REFERENCE_MENU_ITEM */
     {
       int line_len;
+      int length = 0; /* Length of specification */
+
+      length = skip_whitespace (inptr);
+      length += read_bracketed_filename (inptr + length, &entry->filename);
+      length += skip_whitespace (inptr + length);
+
+      /* Get the node name. */
+      length += read_quoted_string (inptr + length, ",.", 2, &entry->nodename);
+      if (inptr[length] == '.') /* A '.' terminating the entry. */
+        length++;
 
       if (node->flags & N_IsDir)
         {
@@ -1415,48 +1444,12 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
           line_len = inptr - linestart;
         }
 
-      info_parse_node (target);
-
-      if (inptr[length] == '.') /* Include a '.' terminating the entry. */
-        length++;
-
       if (node->flags & N_IsIndex)
-        /* For index nodes, output the destination as well,
-           which will be the name of the node the index entry
-           refers to. */
+        /* Show the name of the node the index entry refers to. */
         copy_input_to_output (length);
-      else 
+      else if (node->flags & N_IsDir)
         {
           skip_input (length);
-          if (!(node->flags & N_IsDir)) 
-            {
-              /* Output spaces the length of the node specifier to avoid
-                 messing up left edge of second column of menu. */
-              for (i = 0; i < length; i++)
-                write_extra_bytes_to_output (" ", 1);
-            }
-        }
-
-      /* Parse "(line ...)" part of menus, if any.  */
-      {
-        /* Skip any whitespace first, and then a newline in case the item
-           was so long to contain the ``(line ...)'' string in the same
-           physical line.  */
-        copy_input_to_output (skip_whitespace (inptr));
-        if (*inptr == '\n')
-          copy_input_to_output (skip_whitespace (inptr));
-
-        if (!strncmp (inptr, "(line ", strlen ("(line ")))
-          {
-            copy_input_to_output (strlen ("(line "));
-            info_parsed_line_number = strtol (inptr, 0, 0);
-          }
-        else
-          info_parsed_line_number = 0;
-      }
-
-      if (node->flags & N_IsDir) 
-        {
           if (inptr[strspn (inptr, " ")] != '\n')
             {
               for (i = 0; i < length; i++)
@@ -1473,24 +1466,36 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
                 skip_input (1 + line_len);
             }
         }
+      else
+        skip_input (length);
+
+      /* Parse "(line ...)" part of menus, if any.  */
+      {
+        char *lineptr = inptr;
+        /* Skip any whitespace first, and then a newline in case the item
+           was so long to contain the ``(line ...)'' string in the same
+           physical line.  */
+        lineptr += skip_whitespace (inptr);
+        if (*lineptr == '\n')
+          lineptr += 1 + skip_whitespace (lineptr + 1);
+
+        if (!strncmp (lineptr, "(line ", strlen ("(line ")))
+          {
+            lineptr += strlen ("(line ");
+            entry->line_number = strtol (lineptr, 0, 0);
+          }
+        else
+          entry->line_number = 0;
+      }
+
+      if (preprocess_nodes_p && entry->line_number > 1)
+        /* Adjust line offset in file to one in displayed text.  This
+           does not work perfectly because we can't know exactly what
+           text will be inserted/removed: for example, due to expansion
+           of an image tag.  This subtracts 1 for a removed node information
+           line. */
+        entry->line_number--;
     }
-  free (target);
-
-  if (info_parsed_filename)
-    entry->filename = xstrdup (info_parsed_filename);
-
-  if (info_parsed_nodename)
-    entry->nodename = xstrdup (info_parsed_nodename);
-
-  if (!preprocess_nodes_p)
-    entry->line_number = info_parsed_line_number;
-  else
-    /* Adjust line offset in file to one in displayed text.  This
-       does not work perfectly because we can't know exactly what
-       text will be inserted/removed: for example, due to expansion
-       of an image tag.  This subtracts 1 for a removed node information
-       line. */
-    entry->line_number = info_parsed_line_number - 1;
 
   return 1;
 }
@@ -1602,7 +1607,8 @@ search_again:
       /* Create REFERENCE entity. */
       entry = info_new_reference (0, 0);
 
-      if (safe_string_index (inptr, -1, s.buffer, s.end) == '(')
+      if (safe_string_index (inptr, -1, s.buffer, s.end) == '('
+          && safe_string_index (inptr, 1, s.buffer, s.end) == 'n')
         in_parentheses = 1;
 
       save_conversion_state ();
