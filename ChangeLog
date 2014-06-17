@@ -13,6 +13,11 @@
 
 	* doc/info-stnd.texi (Node Commands): Document "M-x man".
 
+	* info/info-utils.c (scan_reference_target): [preprocess-nodes=On]:
+	Formatting tweak.
+	(scan_node_contents): Require whitespace after "*note" for it to be
+	recognized.  Make menus with no blank line after "* Menu:" work again.
+
 2014-06-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/search-after-tag.sh: New test.

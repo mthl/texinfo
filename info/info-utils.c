@@ -1447,15 +1447,11 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
       if (node->flags & N_IsIndex)
         /* Show the name of the node the index entry refers to. */
         copy_input_to_output (length);
-      else if (node->flags & N_IsDir)
+      else
         {
           skip_input (length);
-          if (inptr[strspn (inptr, " ")] != '\n')
-            {
-              for (i = 0; i < length; i++)
-                write_extra_bytes_to_output (" ", 1);
-            }
-          else
+
+          if ((node->flags & N_IsDir) && inptr[strspn (inptr, " ")] == '\n')
             {
               /* For a dir node, if there is no more text in this line,
                  check if there is a menu entry description in the next
@@ -1465,9 +1461,12 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
               if (line_len <= strspn (inptr + 1, " "))
                 skip_input (1 + line_len);
             }
+          else
+            {
+              for (i = 0; i < length; i++)
+                write_extra_bytes_to_output (" ", 1);
+            }
         }
-      else
-        skip_input (length);
 
       /* Parse "(line ...)" part of menus, if any.  */
       {
@@ -1571,10 +1570,11 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
 
   parse_top_node_line (node);
 
-  /* Search for menu items or cross references in buffer.
-     This is INFO_MENU_LABEL "|" INFO_XREF_LABEL, but
-     with '*' characters escaped. */
-  search_string = "\n\\* Menu:|\\*Note";
+  /* Search for menu items or cross references in buffer.  This is
+     INFO_MENU_LABEL "|" INFO_XREF_LABEL, but with '*' characters escaped.
+     Only match "*Note" if it is followed by a whitespace character so that it
+     will not be recognized if, e.g., it is surrounded in inverted commas. */
+  search_string = "\n\\* Menu:|(\\*Note[ \\t\\n])";
 
   s.buffer = node->contents;
   s.start = inptr - node->contents;
@@ -1595,7 +1595,9 @@ search_again:
       if (!in_menu && match[0] == '\n')
         {
           in_menu = 1;
-          skip_input (strlen ("\n* Menu:\n"));
+          skip_input (strlen ("\n* Menu:"));
+          if (*inptr == '\n')
+            skip_input (strspn (inptr, "\n") - 1); /* Keep one newline. */
 
           /* This is INFO_MENU_ENTRY_LABEL "|" INFO_XREF_LABEL, but
              with '*' characters escaped. */
