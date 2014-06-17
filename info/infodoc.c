@@ -828,6 +828,11 @@ pretty_keyseq_internal (char *keyseq, char *rep)
       strcpy(rep, "Right");
       keyseq += strlen(term_kr);
     }
+  else if (term_bt && strncmp(keyseq, term_bt, strlen(term_bt)) == 0)
+    {
+      strcpy(rep, "BackTab");
+      keyseq += strlen(term_kr);
+    }
   else
     {
       strcpy (rep, pretty_keyname (keyseq[0]));

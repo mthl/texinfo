@@ -1,7 +1,7 @@
 /* terminal.h -- The external interface to terminal I/O.
    $Id$
 
-   Copyright 1993, 1996, 1997, 2001, 2002, 2004, 2007, 2013
+   Copyright 1993, 1996, 1997, 2001, 2002, 2004, 2007, 2013, 2014
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -125,5 +125,6 @@ extern char *term_kP, *term_kN;
 extern char *term_ke, *term_kh;
 extern char *term_kx, *term_ki;
 extern char *term_kD;
+extern char *term_bt;
 
 #endif /* !TERMINAL_H */

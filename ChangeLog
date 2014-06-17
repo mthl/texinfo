@@ -1,3 +1,16 @@
+2014-06-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/terminal.c (term_bt): New variable.
+	(terminal_initialize_terminal): Initialize term_bt from termcap "bt"
+	capability.
+	* info/infokey.h (SK_BACK_TAB): New symbol.
+	* info/infomap.c (default_emacs_like_info_keys): Bind back tab to
+	move-to-prev-xref.
+	(decode_keys): Check for SK_BACK_TAB in binding.
+	* info/infodoc.c (pretty_keyseq_internal): Add "BackTab" to key names
+	for help window.
+	* doc/info-stnd.texi (Selecting Xrefs): Document back tab binding.
+
 2014-06-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/search-after-tag.sh: New test.

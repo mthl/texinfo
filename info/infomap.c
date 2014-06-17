@@ -438,6 +438,7 @@ static unsigned char default_emacs_like_info_keys[] =
   ESC, SK_ESCAPE, SK_LEFT_ARROW, NUL,     A_info_backward_word,
   ESC, '\033', 'O', 'D', NUL,             A_info_backward_word,
   ESC, '\033', '[', 'D', NUL,             A_info_backward_word,
+  SK_ESCAPE, SK_BACK_TAB, NUL,            A_info_move_to_prev_xref,
   
   /* We want help to report q, not C-x C-c, etc.  */
   'q', NUL,                       A_info_quit,
@@ -1075,6 +1076,7 @@ decode_keys (unsigned char *src, unsigned int slen,
 	    case SK_END:            t = term_ke; break;
 	    case SK_DELETE:         t = term_kx; break;
 	    case SK_INSERT:         t = term_ki; break;
+	    case SK_BACK_TAB:       t = term_bt; break;
 	    case SK_LITERAL:
 	    default:                t = lit; break;
 	    }

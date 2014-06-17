@@ -223,6 +223,7 @@ char *term_ke = NULL;	/* end */
 char *term_kD = NULL;	/* delete */
 char *term_ki = NULL;	/* ins */
 char *term_kx = NULL;	/* del */
+char *term_bt = NULL;	/* back tab */
 
 /* Move the cursor to the terminal location of X and Y. */
 void
@@ -644,6 +645,7 @@ terminal_initialize_terminal (char *terminal_name)
   term_ke = tgetstr ("@7", &buffer);
 
   term_kD = tgetstr ("kD", &buffer);
+  term_bt = tgetstr ("bt", &buffer);
 
   /* If this terminal is not cursor addressable, then it is really dumb. */
   if (!term_goto)

@@ -1417,6 +1417,7 @@ reference in this node.  You can then use @key{RET}
 (@code{select-reference-this-line}) to select the menu or note reference.
 
 @item @kbd{M-TAB} (@code{move-to-prev-xref})
+@itemx @kbd{BackTab}
 @itemx @kbd{Shift-@key{TAB}} (on DOS/Windows only)
 @kindex M-TAB, in Info windows
 @findex move-to-prev-xref
@@ -1425,8 +1426,8 @@ reference in this node.
 
 @kindex Shift-TAB, in Info windows
 @kindex BackTab, in Info windows
-On DOS/Windows only, the @kbd{Shift-@key{TAB}} key is an alias for
-@kbd{M-@key{TAB}}.  This key is sometimes called @samp{BackTab}.
+The @kbd{BackTab} key can be produced on some terminals with
+@kbd{Shift-@key{TAB}}. 
 
 @item @key{RET} (@code{select-reference-this-line})
 @itemx @kbd{M-g}, vi-like operation

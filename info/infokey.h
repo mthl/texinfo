@@ -1,7 +1,7 @@
 /* infokey.h -- Custom keystroke definition support.
    $Id$
 
-   Copyright 1999, 2002, 2007, 2013 Free Software Foundation, Inc.
+   Copyright 1999, 2002, 2007, 2013, 2014 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -124,4 +124,5 @@ Format of VAR section:
 #define SK_CTL_LEFT_ARROW	11
 #define SK_CTL_RIGHT_ARROW	12
 #define SK_CTL_DELETE		13
+#define SK_BACK_TAB		14
 #define SK_LITERAL		40
