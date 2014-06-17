@@ -433,6 +433,7 @@ output to @var{file} instead of interactively viewed.  A value of
 @item --raw-escapes
 @itemx --no-raw-escapes
 @itemx -R
+@anchor {--raw-escapes}
 @cindex @code{--raw-escapes} (@code{-R}) command line option
 @cindex colors in documents
 @cindex ANSI escape sequences in documents
@@ -1105,6 +1106,14 @@ Info commands within it.
 Select a node which has been previously visited in a visible window.
 This is similar to @samp{C-x C-b} followed by @samp{m}, but no window is
 created.
+
+@item @code{M-x man}
+@findex man
+@cindex man pages, displaying
+Read the name of a man page to load and display.  This uses the @command{man}
+command on your system to retrieve the contents of the requested man page.
+See also @pxref{--raw-escapes}.
+
 @end table
 
 

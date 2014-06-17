@@ -11,6 +11,8 @@
 	for help window.
 	* doc/info-stnd.texi (Selecting Xrefs): Document back tab binding.
 
+	* doc/info-stnd.texi (Node Commands): Document "M-x man".
+
 2014-06-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/search-after-tag.sh: New test.
