@@ -37,12 +37,12 @@
 #define INFOKEY_SRCFILE		".infokey"
 #endif
 
-/* Default "infokey file", where compiled user defs are kept and
-   read by Info.  MS-DOS doesn't allow leading dots in file names.  */
+/* Default "infokey file", where user defs are kept and read by
+   Info.  MS-DOS doesn't allow leading dots in file names.  */
 #ifdef __MSDOS__
-#define INFOKEY_FILE		"_info"
+#define INFOKEY_FILE		"_infokey"
 #else
-#define INFOKEY_FILE		".info"
+#define INFOKEY_FILE		".infokey"
 #endif
 
 /*
@@ -126,3 +126,11 @@ Format of VAR section:
 #define SK_CTL_DELETE		13
 #define SK_BACK_TAB		14
 #define SK_LITERAL		40
+
+/* Data for a section of a compiled .info file. */
+struct sect
+  {
+    unsigned int cur;
+    unsigned char data[INFOKEY_MAX_SECTIONLEN];
+  };
+

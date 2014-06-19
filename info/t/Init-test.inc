@@ -4,7 +4,7 @@
 # Allow running with "make check" and individual tests at the command-line
 srcdir=${srcdir:-.}
 
-GINFO="./ginfo --init-file $srcdir/t/Info-config"
+GINFO="./ginfo --init-file $srcdir/t/Infokey-config"
 
 # Only look for Info files in our test directory
 export infodir=$srcdir/t/infodir

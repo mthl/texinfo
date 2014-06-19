@@ -831,6 +831,9 @@ static unsigned char default_vi_like_ea_keys[] =
 };
 
 
+/* Used to hold output data from compile(). */
+struct sect sections[3];
+
 static unsigned char *user_info_keys;
 static unsigned int user_info_keys_len;
 static unsigned char *user_ea_keys;
@@ -869,7 +872,6 @@ getint (unsigned char **sp)
   return n;
 }
 
-
 /* Fetch the contents of the init file at INIT_FILE, or the standard
    infokey file "$HOME/.info".  Return non-zero on success. */
 static int
@@ -877,13 +879,16 @@ fetch_user_maps (char *init_file)
 {
   char *filename = NULL;
   char *homedir;
-  int f;
+  FILE *inf;
   unsigned char *buf;
   unsigned long len;
   long nread;
   unsigned char *p;
   int n;
-  
+
+  /* In infokey.c */
+  int compile (FILE *fp, const char *filename, struct sect *sections);
+
   /* Find and open file. */
   if (init_file)
     filename = xstrdup (init_file);
@@ -899,17 +904,33 @@ fetch_user_maps (char *init_file)
   else
     filename = xstrdup (INFOKEY_FILE); /* try current directory */
 #endif
-  if (filename == NULL || (f = open (filename, O_RDONLY)) == -1)
+  inf = fopen (filename, "r");
+  if (!inf)
     {
-      if (filename && errno != ENOENT)
-	{
-	  info_error ("%s", filesys_error_string (filename, errno));
-	  free (filename);
-	}
+      error_message (errno, _("cannot open input file `%s'"), filename);
       return 0;
     }
-  SET_BINARY (f);
 
+  compile (inf, filename, sections);
+  user_info_keys = sections[0].data;
+  user_info_keys_len = sections[0].cur;
+  user_ea_keys = sections[1].data;
+  user_ea_keys_len = sections[1].cur;
+  user_vars = sections[2].data;
+  user_vars_len = sections[2].cur;
+
+  /* This is done in read_init_file. */
+#if 0
+
+  /* Set Info variables from init file. */
+  if (user_vars_len)
+    section_to_vars (user_vars, user_vars_len);
+#endif
+
+
+  /* Disable - we do not read the .info binary file any more, but .infokey
+     directly. */
+#if 0
   /* Ensure that the file is a reasonable size. */
   len = filesize (f);
   if (len < INFOKEY_NMAGIC + 2 || len > 100 * 1024)
@@ -1005,6 +1026,7 @@ fetch_user_maps (char *init_file)
 	  return 0;
 	}
     }
+#endif
   
   free (filename);
   return 1;

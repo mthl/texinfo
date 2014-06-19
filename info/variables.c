@@ -22,11 +22,6 @@
 #include "info.h"
 #include "variables.h"
 
-/* Warning!  Any change to the order of the commands defined with
-   DECLARE_INFO_COMMAND in this file results in an incompatible .info
-   format, and key bindings will be incorrectly assigned until infokey
-   is rerun. */
-
 /* **************************************************************** */
 /*                                                                  */
 /*                  User Visible Variables in Info                  */

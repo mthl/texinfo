@@ -25,7 +25,7 @@
 #include "key.h"
 #include "getopt.h"
 
-char *program_name = "infokey";
+static char *program_name = "infokey";
 
 /* Non-zero means print version info only. */
 static int print_version_p = 0;
@@ -62,19 +62,14 @@ enum sect_e
     ea = 1,
     var = 2
   };
-struct sect
-  {
-    unsigned int cur;
-    unsigned char data[INFOKEY_MAX_SECTIONLEN];
-  };
 
 /* Some "forward" declarations. */
 static char *mkpath (const char *dir, const char *file);
-static int compile (FILE *fp, const char *filename, struct sect *sections);
+int compile (FILE *fp, const char *filename, struct sect *sections);
 static int write_infokey_file (FILE *fp, struct sect *sections);
 static void syntax_error (const char *filename, unsigned int linenum,
 			  const char *fmt, ...) TEXINFO_PRINTFLIKE(3,4);
-static void error_message (int error_code, const char *fmt, ...)
+void error_message (int error_code, const char *fmt, ...)
   TEXINFO_PRINTFLIKE(2,3);
 static void suggest_help (void);
 static void short_help (void);
@@ -85,6 +80,9 @@ static void short_help (void);
 /*             Main Entry Point to the Infokey Program              */
 /*                                                                  */
 /* **************************************************************** */
+
+/* Disabled - this file is being linked into the main "info" program. */
+#if 0
 
 int
 main (int argc, char **argv)
@@ -244,6 +242,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
 
   return 0;
 }
+#endif
 
 static char *
 mkpath (const char *dir, const char *file)
@@ -379,7 +378,7 @@ static int lookup_action (const char *actname);
 /* Compile the input file into its various sections.  Return true if no
    error was encountered.
  */
-static int
+int
 compile (FILE *fp, const char *filename, struct sect *sections)
 {
   int error = 0;
@@ -854,7 +853,7 @@ write_infokey_file (FILE *fp, struct sect *sections)
 /* Give the user a "syntax error" message in the form
 	progname: "filename", line N: message
  */
-static void
+void
 error_message (int error_code, const char *fmt, ...)
 {
   va_list ap;

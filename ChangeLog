@@ -1,5 +1,28 @@
 2014-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/Makefile.am (bin_PROGRAMS): infokey removed
+	(infokey_LDADD, infokey_SOURCES, nodist_infokey_SOURCES): Removed.
+	(check_DATA): Removed.
+	(ginfo_SOURCES): infokey.c, infokey.h, key.c, key.h added.
+
+	* info/infokey.c (program_name): Declared static to stop name conflict.
+	(main): Disabled.
+	(compile, error_message): No longer declared static.
+	* info/infokey.c, info/infokey.h (struct sect): Definition moved.
+	* info/infokey.h (INFOKEY_FILE): Change to .infokey (_infokey for
+	[__MSDOS__]).
+
+	* info/infomap.c (sections): New variable.
+	(fetch_user_maps): Call compile and set variables based on output.
+
+	* info/echo-area.c, info/footnotes.c, info/indices.c, info/infodoc.c,
+	info/m-x.c, info/nodemenu.c, info/session.c, info/variables.c: Warning
+	about reordering DECLARE_INFO_COMMAND's removed.
+
+	* info/t/Init-test.inc: Use uncompiled infokey file as init file.
+
+2014-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infodoc.c, info/infomap.c, info/makedoc.c, info/pcterm.c,
 	info/session.c, info/terminal.c, info/doc.h, info/info.h: [INFOKEY]:
 	Made unconditional.

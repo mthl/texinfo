@@ -16,7 +16,7 @@
 # Use `ginfo' for building to avoid confusion with the standard `info'
 # target.  Removes the `g' in the install rule before applying any
 # user-specified name transformations.
-bin_PROGRAMS = ginfo infokey
+bin_PROGRAMS = ginfo
 transform = s/ginfo/info/; $(program_transform_name)
 
 AM_CPPFLAGS =                                   \
@@ -28,21 +28,18 @@ AM_CPPFLAGS =                                   \
   -DINFODIR2=\"$(datadir)/info\"
 
 LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(TERMLIBS) $(LIBINTL)
-infokey_LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(LIBINTL)
 
 EXTRA_DIST = README pcterm.c
 
 ginfo_SOURCES = dir.c display.c display.h doc.h dribble.c dribble.h \
   echo-area.c echo-area.h \
-  filesys.c filesys.h footnotes.c footnotes.h \
-  indices.c indices.h info-utils.c info-utils.h info.c info.h infodoc.c \
-  infomap.c infomap.h infopath.c m-x.c man.c man.h nodemenu.c nodes.c nodes.h \
-  search.c search.h session.c session.h signals.c signals.h \
+  filesys.c filesys.h footnotes.c footnotes.h indices.c indices.h \
+  info-utils.c info-utils.h info.c info.h infodoc.c infokey.c infokey.h \
+  infomap.c infomap.h infopath.c key.c key.h m-x.c man.c man.h nodemenu.c \
+  nodes.c nodes.h search.c search.h session.c session.h signals.c signals.h \
   tag.c tag.h termdep.h terminal.c terminal.h tilde.c tilde.h \
   variables.c variables.h window.c window.h
 nodist_ginfo_SOURCES = doc.c funs.h
-infokey_SOURCES = infokey.c infokey.h key.h
-nodist_infokey_SOURCES = key.c funs.h
 
 # The files `doc.c', `key.c' and `funs.h' are created by ./makedoc run over the
 # source files which contain DECLARE_INFO_COMMAND.  `funs.h' is a header file
@@ -81,10 +78,6 @@ funs.h: makedoc$(EXEEXT) $(cmd_sources)
 BUILT_SOURCES = funs.h
 
 # Test suite
-
-check_DATA = t/Info-config
-t/Info-config: t/Infokey-config infokey
-	mkdir -p t && ./infokey --output $@ $<
 
 check_PROGRAMS = pseudotty
 pseudotty_SOURCES = pseudotty.c

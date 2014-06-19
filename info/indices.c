@@ -23,11 +23,6 @@
 #include "indices.h"
 #include "variables.h"
 
-/* Warning!  Any change to the order of the commands defined with
-   DECLARE_INFO_COMMAND in this file results in an incompatible .info
-   format, and key bindings will be incorrectly assigned until infokey
-   is rerun. */
-
 /* User-visible variable controls the output of info-index-next. */
 int show_index_match = 1;
 

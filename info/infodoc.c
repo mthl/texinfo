@@ -22,11 +22,6 @@
 #include "info.h"
 #include "funs.h"
 
-/* Warning!  Any change to the order of the commands defined with
-   DECLARE_INFO_COMMAND in this file results in an incompatible .info
-   format, and key bindings will be incorrectly assigned until infokey
-   is rerun. */
-
 /* HELP_NODE_GETS_REGENERATED is always defined now that keys may get
    rebound, or other changes in the help text may occur.  */
 #define HELP_NODE_GETS_REGENERATED 1

@@ -46,11 +46,6 @@ char *node_printed_rep (NODE *node);
 static REFERENCE *select_menu_digit (WINDOW *window, unsigned char key);
 static void gc_file_buffers_and_nodes (void);
 
-/* Warning!  Any change to the order of the commands defined with
-   DECLARE_INFO_COMMAND in this file results in an incompatible .info
-   format, and key bindings will be incorrectly assigned until infokey
-   is rerun. */
-
 /* **************************************************************** */
 /*                                                                  */
 /*                   Running an Info Session                        */
