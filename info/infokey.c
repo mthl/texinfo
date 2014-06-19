@@ -22,7 +22,7 @@
 #include "info.h"
 #include "infomap.h"
 #include "infokey.h"
-#include "key.h"
+#include "doc.h"
 #include "getopt.h"
 
 extern char *program_name;  /* in info.c */
@@ -563,19 +563,18 @@ add_to_section (struct sect *s, const char *str, unsigned int len)
   return 1;
 }
 
-/* Translate from an action name to its numeric code.  This uses the
-   auto-generated array in key.c.
- */
+/* Return the numeric code of an Info command given its name.  If not found,
+   return -1.  This uses the auto-generated array in doc.c. */
 static int
-lookup_action (const char *actname)
+lookup_action (const char *name)
 {
   int i;
 
-  if (strcmp ("invalid", actname) == 0)
+  if (!strcmp (name, "invalid"))
     return A_INVALID;
-  for (i = 0; function_key_array[i].name != NULL; i++)
-    if (strcmp (function_key_array[i].name, actname) == 0)
-      return function_key_array[i].code;
+  for (i = 0; function_doc_array[i].func_name; i++)
+    if (!strcmp (function_doc_array[i].func_name, name))
+      return i;
   return -1;
 }
 

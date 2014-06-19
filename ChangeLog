@@ -1,5 +1,14 @@
 2014-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/infokey.c (lookup_action): Use function_doc_array instead of
+	function_key_array.
+	* info/makeinfo.c (process_one_file): Argument removed.
+	(main, process_one_file): Don't create key.c.
+	(key_filename, key_header, key_header_1): Remove unused.
+	* info/key.h: File deleted.
+
+2014-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infokey.c (program_name, print_version_p, print_help_p)
 	(input_filename, output_filename, long_options, mkpath)
 	(write_infokey_file, suggest_help, short_help, main): Remove unused.
@@ -10,9 +19,9 @@
 	* info/infokey.h (INFOKEY_SRCFILE)
 	(INFOKEY_NMAGIC, INFOKEY_MAGIC_SO, INFOKEY_MAGIC_S1)
 	(INFOKEY_MAGIC_S2, INFOKEY_MAGIC_S3, INFOKEY_SECTION_INFO)
-	(INFOKEY_SECTION_EAe INFOKEY_SECTION_VAR, INFOKEY_MAGIC_EO)
+	(INFOKEY_SECTION_EA, INFOKEY_SECTION_VAR, INFOKEY_MAGIC_EO)
 	(INFOKEY_MAGIC_E1, INFOKEY_MAGIC_E2, INFOKEY_MAGIC_E3)
-	(INFOKEY_MAX_DEFLEN) : Remove unused.
+	(INFOKEY_MAX_DEFLEN): Remove unused.
 
 2014-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
 

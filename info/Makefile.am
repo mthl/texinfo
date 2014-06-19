@@ -35,25 +35,24 @@ ginfo_SOURCES = dir.c display.c display.h doc.h dribble.c dribble.h \
   echo-area.c echo-area.h \
   filesys.c filesys.h footnotes.c footnotes.h indices.c indices.h \
   info-utils.c info-utils.h info.c info.h infodoc.c infokey.c infokey.h \
-  infomap.c infomap.h infopath.c key.c key.h m-x.c man.c man.h nodemenu.c \
+  infomap.c infomap.h infopath.c m-x.c man.c man.h nodemenu.c \
   nodes.c nodes.h search.c search.h session.c session.h signals.c signals.h \
   tag.c tag.h termdep.h terminal.c terminal.h tilde.c tilde.h \
   variables.c variables.h window.c window.h
 nodist_ginfo_SOURCES = doc.c funs.h
 
-# The files `doc.c', `key.c' and `funs.h' are created by ./makedoc run over the
+# The files `doc.c' and `funs.h' are created by ./makedoc run over the
 # source files which contain DECLARE_INFO_COMMAND.  `funs.h' is a header file
 # listing the functions found.  `doc.c' is a structure containing pointers
 # to those functions along with completable names and documentation strings.
 #
-generated_sources = doc.c key.c funs.h
+generated_sources = doc.c funs.h
 
 # We need a linear ordering to prevent race condition in parallel make.
 # See the node ``(automake)Multiple Outputs'' for an explanation.
 # Make sure this matches with order in which makedoc.c creates these
 # files.
-doc.c: key.c
-key.c: funs.h
+doc.c: funs.h
 
 # These files are not distributed.
 DISTCLEANFILES = $(generated_sources)
