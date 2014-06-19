@@ -25,37 +25,8 @@
 #include "key.h"
 #include "getopt.h"
 
-static char *program_name = "infokey";
+extern char *program_name;  /* in info.c */
 
-/* Non-zero means print version info only. */
-static int print_version_p = 0;
-
-/* Non-zero means print a short description of the options. */
-static int print_help_p = 0;
-
-/* String specifying the source file.  This is set by the user on the
-   command line, or a default is used. */
-static char *input_filename = NULL;
-
-/* String specifying the name of the file to output to.  This is
-   set by the user on the command line, or a default is used. */
-static char *output_filename = NULL;
-
-/* Structure describing the options that Infokey accepts.  We pass this
-   structure to getopt_long ().  If you add or otherwise change this
-   structure, you must also change the string which follows it. */
-static struct option long_options[] =
-{
-  {"output", 1, 0, 'o'},
-  {"help", 0, &print_help_p, 1},
-  {"version", 0, &print_version_p, 1},
-  {NULL, 0, NULL, 0}
-};
-
-/* String describing the shorthand versions of the long options found above. */
-static char *short_options = "o:";
-
-/* Structure for holding the compiled sections. */
 enum sect_e
   {
     info = 0,
@@ -64,198 +35,11 @@ enum sect_e
   };
 
 /* Some "forward" declarations. */
-static char *mkpath (const char *dir, const char *file);
 int compile (FILE *fp, const char *filename, struct sect *sections);
-static int write_infokey_file (FILE *fp, struct sect *sections);
 static void syntax_error (const char *filename, unsigned int linenum,
 			  const char *fmt, ...) TEXINFO_PRINTFLIKE(3,4);
 void error_message (int error_code, const char *fmt, ...)
   TEXINFO_PRINTFLIKE(2,3);
-static void suggest_help (void);
-static void short_help (void);
-
-
-/* **************************************************************** */
-/*                                                                  */
-/*             Main Entry Point to the Infokey Program              */
-/*                                                                  */
-/* **************************************************************** */
-
-/* Disabled - this file is being linked into the main "info" program. */
-#if 0
-
-int
-main (int argc, char **argv)
-{
-  int getopt_long_index;	/* Index returned by getopt_long (). */
-
-#ifdef HAVE_SETLOCALE
-  /* Set locale via LC_ALL.  */
-  setlocale (LC_ALL, "");
-#endif
-
-#ifdef ENABLE_NLS
-  /* Set the text message domain.  */
-  bindtextdomain (PACKAGE, LOCALEDIR);
-  textdomain (PACKAGE);
-#endif
-
-  while (1)
-    {
-      int option_character;
-
-      option_character = getopt_long
-	(argc, argv, short_options, long_options, &getopt_long_index);
-
-      /* getopt_long () returns EOF when there are no more long options. */
-      if (option_character == EOF)
-	break;
-
-      /* If this is a long option, then get the short version of it. */
-      if (option_character == 0 && long_options[getopt_long_index].flag == 0)
-	option_character = long_options[getopt_long_index].val;
-
-      /* Case on the option that we have received. */
-      switch (option_character)
-	{
-	case 0:
-	  break;
-
-	  /* User is specifying the name of a file to output to. */
-	case 'o':
-	  if (output_filename)
-	    free (output_filename);
-	  output_filename = xstrdup (optarg);
-	  break;
-
-	default:
-	  suggest_help ();
-	  exit (EXIT_FAILURE);
-	}
-    }
-
-  /* If the user specified --version, then show the version and exit. */
-  if (print_version_p)
-    {
-      printf ("%s (GNU %s) %s\n", program_name, PACKAGE, VERSION);
-      puts ("");
-      printf (_("Copyright (C) %s Free Software Foundation, Inc.\n\
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
-This is free software: you are free to change and redistribute it.\n\
-There is NO WARRANTY, to the extent permitted by law.\n"),
-	      "2014");
-      exit (EXIT_SUCCESS);
-    }
-
-  /* If the `--help' option was present, show the help and exit. */
-  if (print_help_p)
-    {
-      short_help ();
-      exit (EXIT_SUCCESS);
-    }
-
-  /* If there is one argument remaining, it is the name of the input
-     file. */
-  if (optind == argc - 1)
-    {
-      if (input_filename)
-	free (input_filename);
-      input_filename = xstrdup (argv[optind]);
-    }
-  else if (optind != argc)
-    {
-      error_message (0, _("incorrect number of arguments"));
-      suggest_help ();
-      exit (EXIT_FAILURE);
-    }
-
-  /* Use default filenames where none given. */
-  {
-    char *homedir;
-
-    homedir = getenv ("HOME");
-#if defined(__MSDOS__) || defined(__MINGW32__)
-    if (!homedir)
-      homedir = ".";
-#endif
-    if (!input_filename)
-      input_filename = mkpath (homedir, INFOKEY_SRCFILE);
-    if (!output_filename)
-      output_filename = mkpath (homedir, INFOKEY_FILE);
-  }
-
-  {
-    FILE *inf;
-    FILE *outf;
-    int write_error;
-    static struct sect sections[3];
-
-    /* Open the input file. */
-    inf = fopen (input_filename, "r");
-    if (!inf)
-      {
-	error_message (errno, _("cannot open input file `%s'"),
-		       input_filename);
-	exit (EXIT_FAILURE);
-      }
-
-    /* Compile the input file to its verious sections, then write the
-       section data to the output file. */
-
-    if (compile (inf, input_filename, sections))
-      {
-	/* Open the output file. */
-	outf = fopen (output_filename, FOPEN_WBIN);
-	if (!outf)
-	  {
-	    error_message (errno, _("cannot create output file `%s'"),
-			   output_filename);
-	    exit (EXIT_FAILURE);
-	  }
-
-	/* Write the contents of the output file and close it.  If there is
-	   an error writing to the file, delete it and exit with a failure
-	   status.  */
-	write_error = 0;
-	if (!write_infokey_file (outf, sections))
-	  {
-	    error_message (errno, _("error writing to `%s'"),
-			   output_filename);
-	    write_error = 1;
-	  }
-	if (fclose (outf) == EOF)
-	  {
-	    error_message (errno, _("error closing output file `%s'"),
-			   output_filename);
-	    write_error = 1;
-	  }
-	if (write_error)
-	  {
-	    unlink (output_filename);
-	    exit (EXIT_FAILURE);
-	  }
-      }
-
-    /* Close the input file. */
-    fclose (inf);
-  }
-
-  return 0;
-}
-#endif
-
-static char *
-mkpath (const char *dir, const char *file)
-{
-  char *p;
-
-  p = xmalloc (strlen (dir) + 1 + strlen (file) + 2);
-  strcpy (p, dir);
-  strcat (p, "/");
-  strcat (p, file);
-  return p;
-}
-
 
 /* Compilation - the real work.
 
@@ -795,57 +579,6 @@ lookup_action (const char *actname)
   return -1;
 }
 
-/* Put an integer to an infokey file.
-   Integers are stored as two bytes, low order first,
-   in radix INFOKEY_RADIX.
- */
-static int
-putint (int i, FILE *fp)
-{
-  return fputc (i % INFOKEY_RADIX, fp) != EOF
-    && fputc ((i / INFOKEY_RADIX) % INFOKEY_RADIX, fp) != EOF;
-}
-
-/* Write an entire section to an infokey file.  If the section is
-   empty, simply omit it.
- */
-static int
-putsect (struct sect *s, int code, FILE *fp)
-{
-  if (s->cur == 0)
-    return 1;
-  return fputc (code, fp) != EOF
-    && putint (s->cur, fp)
-    && fwrite (s->data, s->cur, 1, fp) == 1;
-}
-
-/* Write an entire infokey file, given an array containing its sections.
- */
-static int
-write_infokey_file (FILE *fp, struct sect *sections)
-{
-  /* Get rid of sections with no effect. */
-  if (sections[info].cur == 1 && sections[info].data[0] == 0)
-    sections[info].cur = 0;
-  if (sections[ea].cur == 1 && sections[ea].data[0] == 0)
-    sections[ea].cur = 0;
-
-  /* Write all parts of the file out in order (no lseeks),
-     checking for errors all the way. */
-  return fputc (INFOKEY_MAGIC_S0, fp) != EOF
-    && fputc (INFOKEY_MAGIC_S1, fp) != EOF
-    && fputc (INFOKEY_MAGIC_S2, fp) != EOF
-    && fputc (INFOKEY_MAGIC_S3, fp) != EOF
-    && fputs (VERSION, fp) != EOF
-    && fputc ('\0', fp) != EOF
-    && putsect (&sections[info], INFOKEY_SECTION_INFO, fp)
-    && putsect (&sections[ea], INFOKEY_SECTION_EA, fp)
-    && putsect (&sections[var], INFOKEY_SECTION_VAR, fp)
-    && fputc (INFOKEY_MAGIC_E0, fp) != EOF
-    && fputc (INFOKEY_MAGIC_E1, fp) != EOF
-    && fputc (INFOKEY_MAGIC_E2, fp) != EOF
-    && fputc (INFOKEY_MAGIC_E3, fp) != EOF;
-}
 
 
 /* Error handling. */
@@ -884,33 +617,4 @@ syntax_error (const char *filename,
   fprintf (stderr, "\n");
 }
 
-/* Produce a gentle rtfm. */
-static void
-suggest_help (void)
-{
-  fprintf (stderr, _("Try --help for more information.\n"));
-}
 
-/* Produce a scaled down description of the available options to Info. */
-static void
-short_help (void)
-{
-  printf (_("\
-Usage: %s [OPTION]... [INPUT-FILE]\n\
-\n\
-Compile infokey source file to infokey file.  Reads INPUT-FILE (default\n\
-$HOME/.infokey) and writes compiled key file to (by default) $HOME/.info.\n\
-\n\
-Options:\n\
-  --output FILE        output to FILE instead of $HOME/.info\n\
-  --help               display this help and exit.\n\
-  --version            display version information and exit.\n\
-"), program_name);
-
-  puts (_("\n\
-Email bug reports to bug-texinfo@gnu.org,\n\
-general questions and discussion to help-texinfo@gnu.org.\n\
-Texinfo home page: http://www.gnu.org/software/texinfo/"));
-
-  exit (EXIT_SUCCESS);
-}

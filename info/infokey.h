@@ -27,16 +27,6 @@
    Oh, well.
  */
 
-
-/* Default source file, where user writes text definitions to be
-   compiled to the infokey file.  MS-DOS doesn't allow leading
-   dots in file names.  */
-#ifdef __MSDOS__
-#define INFOKEY_SRCFILE		"_infokey"
-#else
-#define INFOKEY_SRCFILE		".infokey"
-#endif
-
 /* Default "infokey file", where user defs are kept and read by
    Info.  MS-DOS doesn't allow leading dots in file names.  */
 #ifdef __MSDOS__
@@ -46,19 +36,6 @@
 #endif
 
 /*
-Format of entire infokey file:
-
-	4 bytes		magic number S
-	X bytes		version string
-	1 byte '\0'	terminator
-
-	any number of sections:
-		1 byte		section id
-		2 bytes		section length (N)
-		N bytes		section definitions: format depends on section
-
-	4 bytes		magic number E
-
 Format of INFO and EA sections:
 	
 	1 byte		flag: 1 == suppress default key bindings
@@ -77,25 +54,8 @@ Format of VAR section:
 
 */
 
-#define	INFOKEY_NMAGIC		8
-
-#define	INFOKEY_MAGIC_S0	'\001'
-#define	INFOKEY_MAGIC_S1	'I'
-#define	INFOKEY_MAGIC_S2	'n'
-#define	INFOKEY_MAGIC_S3	'f'
-
-#define	INFOKEY_SECTION_INFO	'i'
-#define	INFOKEY_SECTION_EA	'e'
-#define	INFOKEY_SECTION_VAR	'v'
-
-#define	INFOKEY_MAGIC_E0	'A'
-#define	INFOKEY_MAGIC_E1	'l'
-#define	INFOKEY_MAGIC_E2	'f'
-#define	INFOKEY_MAGIC_E3	'n'
-
 #define	INFOKEY_RADIX		64
-#define	INFOKEY_MAX_SECTIONLEN	500
-#define	INFOKEY_MAX_DEFLEN	16
+#define	INFOKEY_MAX_SECTIONLEN  500
 
 #define	A_MAX_COMMAND		120
 #define	A_INVALID		121
