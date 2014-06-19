@@ -22,9 +22,6 @@
 #ifndef INFO_H
 #define INFO_H
 
-/* We always want this, so why clutter up the compile command?  */
-#define INFOKEY
-
 /* System dependencies.  */
 #include "system.h"
 

@@ -204,18 +204,7 @@ main (int argc, char **argv)
       process_one_file (curfile, doc_stream, key_stream, funs_stream);
     }
 
-#if defined (INFOKEY)
-
-  fprintf (doc_stream,
-           "   { NULL, NULL, NULL, NULL }\n};\n");
-
-#else /* !INFOKEY */
-
-  fprintf (doc_stream,
-           "   { NULL, NULL, NULL }\n};\n");
-
-#endif /* !INFOKEY */
-
+  fprintf (doc_stream, "   { NULL, NULL, NULL, NULL }\n};\n");
   fprintf (key_stream, "   { NULL, 0 }\n};\n");
   fprintf (funs_stream, "\n#define A_NCOMMANDS %u\n", next_func_key());
 
@@ -487,25 +476,15 @@ process_one_file (char *filename, FILE *doc_stream,
       strncpy (doc, buffer + point, offset - point);
       doc[offset - point] = '\0';
 
-#if defined (INFOKEY)
-
       fprintf (doc_stream,
           "   { (VFunction *)%s, \"%s\", (FUNCTION_KEYSEQ *)0, %s },\n",
           func, func_name, doc);
 
       fprintf (key_stream, "   { \"%s\", A_%s },\n", func_name, func);
 
-#else /* !INFOKEY */
-
-      fprintf (doc_stream, "   { %s, \"%s\", %s },\n", func, func_name, doc);
-
-#endif /* !INFOKEY */
-
       free (func_name);
 
-#if defined (INFOKEY)
       fprintf (funs_stream, "#define A_%s %u\n", func, next_func_key());
-#endif /* INFOKEY */
       fprintf (funs_stream,
           "extern void %s (WINDOW *window, int count, unsigned char key);\n",
           func);

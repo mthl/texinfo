@@ -633,12 +633,10 @@ terminal_initialize_terminal (char *terminal_name)
   term_kP = tgetstr ("kP", &buffer);
   term_kN = tgetstr ("kN", &buffer);
 
-#if defined(INFOKEY)
   term_kh = tgetstr ("kh", &buffer);
   term_ke = tgetstr ("@7", &buffer);
   term_ki = tgetstr ("kI", &buffer);
   term_kx = tgetstr ("kD", &buffer);
-#endif /* defined(INFOKEY) */
 
   /* Home and end keys. */
   term_kh = tgetstr ("kh", &buffer);

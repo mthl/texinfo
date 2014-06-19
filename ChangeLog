@@ -1,3 +1,9 @@
+2014-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infodoc.c, info/infomap.c, info/makedoc.c, info/pcterm.c,
+	info/session.c, info/terminal.c, info/doc.h, info/info.h: [INFOKEY]:
+	Made unconditional.
+
 2014-06-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/terminal.c (term_bt): New variable.

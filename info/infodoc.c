@@ -44,8 +44,6 @@ static char *internal_info_help_node_contents = NULL;
    help node.  The actual key bindings are inserted.  Keep the
    underlines (****, etc.) in the same N_ call as  the text lines they
    refer to, so translations can make the number of *'s or -'s match.  */
-#if defined(INFOKEY)
-
 static char *info_internal_help_text[] = {
   N_("Basic Info command keys\n"),
   "\n",
@@ -89,104 +87,6 @@ static char *info_internal_help_text[] = {
   "\n",
   NULL
 };
-
-#else /* !INFOKEY */
-
-static char *info_internal_help_text[] = {
-  N_("Basic Commands in Info Windows\n\
-******************************\n"),
-  "\n",
-  N_("  %-10s  Quit this help.\n"),
-  N_("  %-10s  Quit Info altogether.\n"),
-  N_("  %-10s  Invoke the Info tutorial.\n"),
-  "\n",
-  N_("Selecting other nodes:\n\
-----------------------\n",
-  N_("  %-10s  Move to the `next' node of this node.\n"),
-  N_("  %-10s  Move to the `previous' node of this node.\n"),
-  N_("  %-10s  Move `up' from this node.\n"),
-  N_("  %-10s  Pick menu item specified by name.\n\
-              Picking a menu item causes another node to be selected.\n"),
-  N_("  %-10s  Follow a cross reference.  Reads name of reference.\n"),
-  N_("  %-10s  Move to the last node seen in this window.\n"),
-  N_("  %-10s  Skip to next hypertext link within this node.\n"),
-  N_("  %-10s  Follow the hypertext link under cursor.\n"),
-  N_("  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"),
-  N_("  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"),
-  "\n",
-  N_("Moving within a node:\n\
----------------------\n"),
-  N_("  %-10s  Scroll forward a page.\n"),
-  N_("  %-10s  Scroll backward a page.\n"),
-  N_("  %-10s  Go to the beginning of this node.\n"),
-  N_("  %-10s  Go to the end of this node.\n"),
-  N_("  %-10s  Scroll forward 1 line.\n"),
-  N_("  %-10s  Scroll backward 1 line.\n"),
-  "\n",
-  N_("Other commands:\n\
----------------\n"),
-  N_("  %-10s  Pick first...ninth item in node's menu.\n"),
-  N_("  %-10s  Pick last item in node's menu.\n"),
-  /* The next four strings are each a unity, so they each need to be
-     kept as one string for the translators.  */
-  N_("  %-10s  Search for a specified string in the index entries of this Info\n\
-              file, and select the node referenced by the first entry found.\n"),
-  N_("  %-10s  Move to node specified by name.\n\
-              You may include a filename as well, as in (FILENAME)NODENAME.\n"),
-  N_("  %-10s  Search forward for a specified string,\n\
-              and select the node in which the next occurrence is found.\n"),
-  N_("  %-10s  Search backward for a specified string,\n\
-              and select the node in which the next occurrence is found.\n"),
-  NULL
-};
-
-static char *info_help_keys_text[][2] = {
-  { "", "" },
-  { "", "" },
-  { "", "" },
-  { "CTRL-x 0", "CTRL-x 0" },
-  { "q", "q" },
-  { "h", "ESC h" },
-  { "", "" },
-  { "", "" },
-  { "", "" },
-  { "SPC", "SPC" },
-  { "DEL", "b" },
-  { "b", "ESC b" },
-  { "e", "ESC e" },
-  { "ESC 1 SPC", "RET" },
-  { "ESC 1 DEL", "y" },
-  { "", "" },
-  { "", "" },
-  { "", "" },
-  { "n", "CTRL-x n" },
-  { "p", "CTRL-x p" },
-  { "u", "CTRL-x u" },
-  { "m", "ESC m" },
-  { "", "" },
-  { "f", "ESC f" },
-  { "l", "l" },
-  { "TAB", "TAB" },
-  { "RET", "CTRL-x RET" },
-  { "d", "ESC d" },
-  { "t", "ESC t" },
-  { "", "" },
-  { "", "" },
-  { "", "" },
-  { "1-9", "ESC 1-9" },
-  { "0", "ESC 0" },
-  { "i", "CTRL-x i" },
-  { "", "" },
-  { "g", "CTRL-x g" },
-  { "", "" },
-  { "s", "/" },
-  { "", "" },
-  { "ESC - s", "?" },
-  { "", "" },
-  NULL
-};
-
-#endif /* !INFOKEY */
 
 static char *where_is_internal (Keymap map, InfoCommand *cmd);
 
@@ -303,27 +203,9 @@ create_internal_info_help_node (int help_is_only_window_p)
       text_buffer_init (&msg);
 
       for (i = 0; info_internal_help_text[i]; i++)
-        {
-#ifdef INFOKEY
-          text_buffer_printf (&msg, replace_in_documentation
-              (_(info_internal_help_text[i]), help_is_only_window_p),
-              NULL, NULL, NULL);
-#else
-          /* Don't translate blank lines, gettext outputs the po file
-             header in that case.  We want a blank line.  */
-          char *mesg = *(info_internal_help_text[i])
-                      ? _(info_internal_help_text[i])
-                      : info_internal_help_text[i];
-          char *key = info_help_keys_text[i][vi_keys_p];
-
-          /* If we have only one window (because the window size was too
-             small to split it), CTRL-x 0 doesn't work to `quit' help.  */
-          if (STREQ (key, "CTRL-x 0") && help_is_only_window_p)
-            key = "l";
-
-          text_buffer_printf (&msg, mesg, key, NULL, NULL);
-#endif /* !INFOKEY */
-        }
+        text_buffer_printf (&msg, replace_in_documentation
+                            (_(info_internal_help_text[i]),
+                             help_is_only_window_p), NULL, NULL, NULL);
 
       text_buffer_printf (&msg, "---------------------\n");
       text_buffer_printf (&msg, _("This is GNU Info version %s.  "), VERSION);
@@ -563,21 +445,7 @@ function_documentation (InfoCommand *cmd)
 {
   char *doc;
 
-#if defined (INFOKEY)
-
   doc = cmd->doc;
-
-#else /* !INFOKEY */
-
-  register int i;
-
-  for (i = 0; function_doc_array[i].func; i++)
-    if (InfoFunction(cmd) == function_doc_array[i].func)
-      break;
-
-  doc = function_doc_array[i].func ? function_doc_array[i].doc : "";
-
-#endif /* !INFOKEY */
 
   return replace_in_documentation ((strlen (doc) == 0) ? doc : _(doc), 0);
 }
@@ -587,21 +455,7 @@ function_documentation (InfoCommand *cmd)
 char *
 function_name (InfoCommand *cmd)
 {
-#if defined (INFOKEY)
-
   return cmd->func_name;
-
-#else /* !INFOKEY */
-
-  register int i;
-
-  for (i = 0; function_doc_array[i].func; i++)
-    if (InfoFunction(cmd) == function_doc_array[i].func)
-      break;
-
-  return function_doc_array[i].func_name;
-
-#endif /* !INFOKEY */
 }
 
 /* Return a pointer to the info command for function NAME. */
@@ -633,22 +487,6 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
       keystroke = info_get_input_char ();
       unmessage_in_echo_area ();
 
-#if !defined (INFOKEY)
-      if (Meta_p (keystroke))
-        {
-          if (map[ESC].type != ISKMAP)
-            {
-              window_message_in_echo_area
-              (_("ESC %s is undefined."), pretty_keyname (UnMeta (keystroke)));
-              return;
-            }
-
-          *k++ = '\e';
-          keystroke = UnMeta (keystroke);
-          map = (Keymap)map[ESC].function;
-        }
-#endif /* !INFOKEY */
-
       /* Add the KEYSTROKE to our list. */
       *k++ = keystroke;
       *k = '\0';
@@ -667,7 +505,6 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
         {
           char *keyname, *message, *fundoc, *funname = "";
 
-#if defined (INFOKEY)
           /* If the key is bound to do-lowercase-version, but its
              lower-case variant is undefined, say that this key is
              also undefined.  This is especially important for unbound
@@ -688,7 +525,6 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
                   return;
                 }
             }
-#endif
 
           keyname = pretty_keyseq (keys);
 
@@ -721,11 +557,7 @@ pretty_keyname (unsigned char key)
 
       rep = pretty_keyname (UnMeta (key));
 
-#if defined (INFOKEY)
       sprintf (temp, "M-%s", rep);
-#else /* !INFOKEY */
-      sprintf (temp, "ESC %s", rep);
-#endif /* !INFOKEY */
       strcpy (rep_buffer, temp);
       rep = rep_buffer;
     }
@@ -786,7 +618,6 @@ pretty_keyseq_internal (char *keyseq, char *rep)
       strcpy(rep, "PgDn");
       keyseq += strlen(term_kN);
     }
-#if defined(INFOKEY)
   else if (term_kh && strncmp(keyseq, term_kh, strlen(term_kh)) == 0)
     {
       strcpy(rep, "Home");
@@ -807,7 +638,6 @@ pretty_keyseq_internal (char *keyseq, char *rep)
       strcpy(rep, "DEL");
       keyseq += strlen(term_kx);
     }
-#endif /* INFOKEY */
   else if (term_ku && strncmp(keyseq, term_ku, strlen(term_ku)) == 0)
     {
       strcpy(rep, "Up");
@@ -1069,8 +899,6 @@ where_is (Keymap map, InfoCommand *cmd)
 static char *
 where_is_internal (Keymap map, InfoCommand *cmd)
 {
-#if defined(INFOKEY)
-
   register FUNCTION_KEYSEQ *k;
 
   for (k = cmd->keys; k; k = k->next)
@@ -1078,52 +906,6 @@ where_is_internal (Keymap map, InfoCommand *cmd)
       return pretty_keyseq (k->keyseq);
 
   return NULL;
-
-#else /* !INFOKEY */
-  /* There is a bug in that create_internal_info_help_node calls
-     where_is_internal without setting where_is_rep_index to zero.  This
-     was found by Mandrake and reported by Thierry Vignaud
-     <tvignaud@mandrakesoft.com> around April 24, 2002.
-
-     I think the best fix is to make where_is_rep_index another
-     parameter to this recursively-called function, instead of a static
-     variable.  But this [!INFOKEY] branch of the code is not enabled
-     any more, so let's just skip the whole thing.  --karl, 28sep02.  */
-  register int i;
-
-  /* If the function is directly invokable in MAP, return the representation
-     of that keystroke. */
-  for (i = 0; i < 256; i++)
-    if ((map[i].type == ISFUNC) && map[i].function == cmd)
-      {
-        sprintf (where_is_rep + where_is_rep_index, "%s", pretty_keyname (i));
-        return where_is_rep;
-      }
-
-  /* Okay, search subsequent maps for this function. */
-  for (i = 0; i < 256; i++)
-    {
-      if (map[i].type == ISKMAP)
-        {
-          int saved_index = where_is_rep_index;
-          char *rep;
-
-          sprintf (where_is_rep + where_is_rep_index, "%s ",
-                   pretty_keyname (i));
-
-          where_is_rep_index = strlen (where_is_rep);
-          rep = where_is_internal ((Keymap)map[i].function, cmd);
-
-          if (rep)
-            return where_is_rep;
-
-          where_is_rep_index = saved_index;
-        }
-    }
-
-  return NULL;
-
-#endif /* INFOKEY */
 }
 
 DECLARE_INFO_COMMAND (info_where_is,

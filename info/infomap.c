@@ -24,10 +24,8 @@
 #include "funs.h"
 #include "terminal.h"
 
-#if defined(INFOKEY)
 #include "infokey.h"
 #include "variables.h"
-#endif /* INFOKEY */
 
 static int keymap_bind_keyseq (Keymap map, const char *keyseq,
     KEYMAP_ENTRY *keyentry);
@@ -51,17 +49,14 @@ keymap_make_keymap (void)
   for (i = 'A'; i < ('Z' + 1); i++)
     {
       keymap[i].type = ISFUNC;
-#if defined(INFOKEY)
       keymap[Meta(i)].type = ISFUNC;
       keymap[Meta(i)].function =
-#endif /* INFOKEY */
       keymap[i].function = InfoCmd (info_do_lowercase_version);
     }
 
   return keymap;
 }
 
-#if defined(INFOKEY)
 static FUNCTION_KEYSEQ *
 find_function_keyseq (Keymap map, int c, Keymap rootmap)
 {
@@ -126,7 +121,6 @@ remove_function_keyseq (InfoCommand *function,
   else
     function->keys = k->next;
 }
-#endif /* INFOKEY */
 
 /* Return a new keymap which is a copy of MAP. */
 Keymap
@@ -134,9 +128,7 @@ keymap_copy_keymap (Keymap map, Keymap rootmap, Keymap newroot)
 {
   int i;
   Keymap keymap;
-#if defined(INFOKEY)
   FUNCTION_KEYSEQ *ks;
-#endif /* INFOKEY */
 
   keymap = keymap_make_keymap ();
   if (!newroot)
@@ -149,11 +141,9 @@ keymap_copy_keymap (Keymap map, Keymap rootmap, Keymap newroot)
         {
         case ISFUNC:
           keymap[i].function = map[i].function;
-#if defined(INFOKEY)
           ks = find_function_keyseq (map, i, rootmap);
           if (ks)
             add_function_keyseq (map[i].function, ks->keyseq, newroot);
-#endif /* INFOKEY */
           break;
         case ISKMAP:
           keymap[i].function =
@@ -178,17 +168,13 @@ keymap_discard_keymap (Keymap map, Keymap rootmap)
 
   for (i = 0; i < 256; i++)
     {
-#if defined(INFOKEY)
       FUNCTION_KEYSEQ *ks;
-#endif /* INFOKEY */
       switch (map[i].type)
         {
         case ISFUNC:
-#if defined(INFOKEY)
           ks = find_function_keyseq (map, i, rootmap);
           if (ks)
             remove_function_keyseq (map[i].function, ks->keyseq, rootmap);
-#endif /* INFOKEY */
           break;
 
         case ISKMAP:
@@ -213,22 +199,13 @@ keymap_bind_keyseq (Keymap map,
 
   while ((c = *s++) != '\0')
     {
-#if defined(INFOKEY)
       FUNCTION_KEYSEQ *ks;
-#endif /* INFOKEY */
       switch (m[c].type)
         {
         case ISFUNC:
-#if defined(INFOKEY)
           ks = find_function_keyseq (m, c, map);
           if (ks)
             remove_function_keyseq (m[c].function, ks->keyseq, map);
-#else /* !INFOKEY */
-          if (!(m[c].function == NULL ||
-		(m != map &&
-		 m[c].function == InfoCmd (info_do_lowercase_version))))
-            return 0;
-#endif /* !INFOKEY */
 
           if (*s != '\0')
             {
@@ -244,13 +221,8 @@ keymap_bind_keyseq (Keymap map,
           break;
 
         case ISKMAP:
-#if defined(INFOKEY)
           if (*s == '\0')
             keymap_discard_keymap ((Keymap)m[c].function, map);
-#else /* !INFOKEY */
-          if (*s == '\0')
-            return 0;
-#endif
           break;
         }
       if (*s != '\0')
@@ -259,9 +231,7 @@ keymap_bind_keyseq (Keymap map,
         }
       else
         {
-#if defined(INFOKEY)
           add_function_keyseq (keyentry->function, keyseq, map);
-#endif /* INFOKEY */
           m[c] = *keyentry;
         }
     }

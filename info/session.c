@@ -4296,24 +4296,6 @@ info_get_another_input_char (void)
 void
 info_dispatch_on_key (unsigned char key, Keymap map)
 {
-#if !defined(INFOKEY)
-  if (Meta_p (key) && (!ISO_Latin_p || map[key].function != ea_insert))
-    {
-      if (map[ESC].type == ISKMAP)
-        {
-          map = (Keymap)map[ESC].function;
-          add_char_to_keyseq (ESC);
-          key = UnMeta (key);
-          info_dispatch_on_key (key, map);
-        }
-      else
-        {
-          dispatch_error (info_keyseq);
-        }
-      return;
-    }
-#endif /* INFOKEY */
-
   switch (map[key].type)
     {
     case ISFUNC:
@@ -4326,10 +4308,10 @@ info_dispatch_on_key (unsigned char key, Keymap map)
             /* Special case info_do_lowercase_version (). */
             if (func == (VFunction *) info_do_lowercase_version)
               {
-#if defined(INFOKEY)
                 unsigned char lowerkey;
 
-                lowerkey = Meta_p(key) ? Meta (tolower (UnMeta (key))) : tolower (key);
+                lowerkey = Meta_p(key) ? Meta (tolower (UnMeta (key)))
+                  : tolower (key);
                 if (lowerkey == key)
                   {
                     add_char_to_keyseq (key);
@@ -4337,9 +4319,6 @@ info_dispatch_on_key (unsigned char key, Keymap map)
                     return;
                   }
                 info_dispatch_on_key (lowerkey, map);
-#else /* !INFOKEY */
-                info_dispatch_on_key (tolower (key), map);
-#endif /* INFOKEY */
                 return;
               }
 
@@ -4494,20 +4473,8 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
 
           pure_key = key = info_get_another_input_char ();
 
-#if !defined(INFOKEY)
-          if (Meta_p (key))
-            add_char_to_keyseq (ESC);
-
-          add_char_to_keyseq (UnMeta (key));
-#else /* defined(INFOKEY) */
           add_char_to_keyseq (key);
-#endif /* defined(INFOKEY) */
         }
-
-#if !defined(INFOKEY)
-      if (Meta_p (key))
-        key = UnMeta (key);
-#endif /* !defined(INFOKEY) */
 
       if (keymap[key].type == ISFUNC
           && InfoFunction(keymap[key].function)
@@ -4518,11 +4485,8 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
           continue;
         }
 
-#if defined(INFOKEY)
       if (Meta_p (key))
         key = UnMeta (key);
-#endif /* !defined(INFOKEY) */
-
 
       if (isdigit (key))
         {
