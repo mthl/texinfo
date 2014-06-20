@@ -44,7 +44,6 @@ license to the document, as described in section 6 of the license.
 @dircategory Texinfo documentation system
 @direntry
 * info stand-alone: (info-stnd).           Read Info documents without Emacs.
-* infokey: (info-stnd)Invoking infokey.    Compile Info customizations.
 @end direntry
 
 @titlepage
@@ -404,7 +403,8 @@ Commands}.
 @anchor{--init-file}
 @cindex @code{--init-file} command line option
 Read key bindings and variable settings from @var{INIT-FILE} instead
-of the @file{.info} file in your home directory.  @xref{Custom Key Bindings}.
+of the @file{.infokey} file in your home directory.  @xref{Custom Key
+Bindings}.
 
 @item --node @var{nodename}
 @itemx -n @var{nodename}
@@ -2276,66 +2276,34 @@ variable settings described in this document.  (The @option{--vi-keys}
 option rebinds many keys at once; @pxref{--vi-keys}.)
 
 On startup, GNU Info looks for a configuration file in the invoker's
-@env{HOME} directory called @file{.info}, i.e.,
-@file{~/.info}.@footnote{Due to the limitations of DOS filesystems,
-the MS-DOS version of Info looks for a file @file{_info} instead.  If
+@env{HOME} directory called @file{.infokey}, i.e.,
+@file{~/.infokey}.@footnote{Due to the limitations of DOS filesystems,
+the MS-DOS version of Info looks for a file @file{_infokey} instead.  If
 the @env{HOME} variable is not defined, Info additionally looks in the
-current directory.}  If it is present and appears to have been created
-with a compatible version of the @code{infokey} command, then Info
-adopts the key bindings and variable settings contained therein.  To
-use an alternative configuration file, use the @option{--init-file}
-option (@pxref{--init-file}).
-
-The @file{.info} file contains compact, non-textual data for reasons
-of efficiency---and because its design was lifted wholesale from the
-GNU Less program, which does it that way.  It must be created by
-compiling a textual source file using the @code{infokey} command.
+current directory.}  If it is present, then Info adopts the key bindings
+and variable settings contained therein.  To use an alternative
+configuration file, use the @option{--init-file} option
+(@pxref{--init-file}).
 
 Variables may also be set on the command line with the
 @option{--variable} option (@pxref{variable-assignment}).  Variable
-settings on the command line override settings from the @file{.info}
+settings on the command line override settings from the @file{.infokey}
 file.
 
 @menu
-* Invoking @t{infokey}::
-* @t{infokey} source format::
+* @t{infokey} format::
 @end menu
 
+@node @t{infokey} format
+@section @command{infokey} format
 
-@node Invoking @t{infokey}
-@section Invoking @command{infokey}
+@cindex @command{infokey} format
+@cindex @file{.infokey} format
+@cindex format of @file{.infokey}
 
-@cindex invoking @command{infokey}
-@cindex @command{infokey}, invoking
-@cindex @file{_infokey} file (MS-DOS)
-
-By default, @command{infokey} reads a source file
-(@file{$HOME/.infokey} containing Info customizations.  (This file is
-named @file{_infokey} in the MS-DOS version, and is looked for in the
-current directory if @env{HOME} is undefined.)  It compiles this into
-a binary format, @file{$HOME/.info} by default.  GNU Info reads the
-binary file at startup to override the default key bindings and
-variable definitions.  Synopsis:
-
-@example
-infokey [@var{option}@dots{}] [@var{input-file}]
-@end example
-
-Besides the standard @option{--help} and @option{--version}, the only
-option is @option{--output @var{file}}.  This tells @command{infokey} to
-write the binary data to @var{file} instead of @file{$HOME/.info}.
-
-
-@node @t{infokey} source format
-@section @command{infokey} source format
-
-@cindex @command{infokey} source format
-@cindex @file{.infokey} source format
-@cindex format of @file{.infokey} source
-
-The format of the source file read by @command{infokey} is most easily
-illustrated by example.  For instance, here is a sample @file{.infokey}
-source file suitable for aficionados of @command{vi} or @command{less}:
+The format of the @file{.infokey} file is most easily illustrated by
+example.  For instance, here is a sample init file suitable for aficionados
+of @command{vi} or @command{less}:
 
 @example
 #info
@@ -2366,9 +2334,8 @@ d       dir-node
 scroll-step=1
 @end example
 
-The source file consists of one or more @dfn{sections}.
-Each section starts with a line that identifies the type of section.
-Possible sections are:
+The file consists of one or more @dfn{sections}.  Each section starts with
+a line that identifies the type of section.  The possible sections are:
 
 @table @code
 @item #info
@@ -2447,9 +2414,9 @@ space, are included in the value.
 Blank lines and lines starting with @code{#} are ignored, except for
 the special section header lines.
 
-Key bindings defined in the @file{.info} file take precedence over GNU
+Key bindings defined in the @file{.infokey} file take precedence over GNU
 Info's default key bindings, whether or not @samp{--vi-keys} is used.  A
-default key binding may be disabled by overriding it in the @file{.info}
+default key binding may be disabled by overriding it in the @file{.infokey}
 file with the action @code{invalid}.  In addition, @emph{all} default
 key bindings can be disabled by adding this line @emph{anywhere} in the
 relevant section:
@@ -2466,7 +2433,7 @@ key bindings, you must supply enough new key bindings to enable all
 necessary actions.  Failure to bind any key to the @code{quit} command,
 for example, can lead to frustration.
 
-The order in which key bindings are defined in the @file{.info} file is
+The order in which key bindings are defined in the @file{.infokey} file is
 not important, except that the command summary produced by the
 @code{get-help-window} command only displays the @emph{first} key that
 is bound to each command.

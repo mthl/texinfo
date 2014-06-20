@@ -58,7 +58,6 @@ Texinfo documentation system
 * Texi2HTML: (texi2html).       Texinfo to HTML Converter.
 * Texinfo: (texinfo).           The GNU documentation format.
 * info standalone: (info-stnd).                 Standalone Info reader.
-* infokey: (info-stnd)Invoking infokey.         Compile Info customizations.
 * install-info: (texinfo)Invoking install-info. Updating info/dir entries.
 * makeinfo: (texinfo)Creating an Info File.     Translate Texinfo source.
 * texi2dvi: (texinfo)Format with texi2dvi.      Printing Texinfo documentation.

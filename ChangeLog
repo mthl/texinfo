@@ -10,6 +10,8 @@
 
 	* info/infokey.c (error_message): Merged into calling code.
 
+	* NEWS, doc/info-stnd.texi, util/dir-example: Document infokey change.
+
 2014-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infokey.c (lookup_action): Use function_doc_array instead of
