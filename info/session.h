@@ -117,7 +117,6 @@ extern void display_startup_message (void);
 extern void info_session (void);
 extern void initialize_terminal_and_keymaps (char *init_file);
 extern void initialize_info_session (void);
-extern void info_read_and_dispatch (void);
 extern REFERENCE *info_intuit_options_node (NODE *initial_node, char *program);
 
 /* Moving the point within a node. */

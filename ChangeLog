@@ -1,5 +1,13 @@
 2014-06-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/echo-area.c (read_and_dispatch_in_echo_area): Copy of
+	info_read_and_dispatch with special casing for echo area made
+	unconditional.  Callers updated.
+	* info/session.c (info_read_and_dispatch): Special casing for echo area
+	removed.
+
+2014-06-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_set_pending_input): Place argument in
 	info_input_buffer instead of pending_input_character.
 	(pending_input_charater, info_clear_pending_input)

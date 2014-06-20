@@ -51,6 +51,8 @@ static void gc_file_buffers_and_nodes (void);
 /*                                                                  */
 /* **************************************************************** */
 
+static void info_read_and_dispatch (void);
+
 /* The place that we are reading input from. */
 static FILE *info_input_stream = NULL;
 
@@ -162,23 +164,13 @@ info_session (void)
   close_dribble_file ();
 }
 
-/* Here is a window-location dependent event loop.  Called from the
-   functions info_session (), and from read_xxx_in_echo_area (). */
-void
+static void
 info_read_and_dispatch (void)
 {
   unsigned char key;
 
   for (quit_info_immediately = 0; !quit_info_immediately; )
     {
-      int lk = 0;
-
-      if (echo_area_is_active)
-        {
-          lk = echo_area_last_command_was_kill;
-          echo_area_prep_read ();
-        }
-
       if (!info_any_buffered_input_p ())
         display_update_display (windows);
 
@@ -188,32 +180,12 @@ info_read_and_dispatch (void)
       initialize_keyseq ();
       key = info_get_input_char ();
 
-      /* No errors yet.  We just read a character, that's all.  Only clear
-         the echo_area if it is not currently active. */
-      if (!echo_area_is_active)
-        window_clear_echo_area ();
+      window_clear_echo_area ();
 
       info_error_was_printed = 0;
 
       /* Do the selected command. */
       info_dispatch_on_key (key, active_window->keymap);
-
-      if (echo_area_is_active)
-        {
-          /* Echo area commands that do killing increment the value of
-             ECHO_AREA_LAST_COMMAND_WAS_KILL.  Thus, if there is no
-             change in the value of this variable, the last command
-             executed was not a kill command. */
-          if (lk == echo_area_last_command_was_kill)
-            echo_area_last_command_was_kill = 0;
-
-          if (ea_last_executed_command == (VFunction *) ea_newline ||
-              info_aborted_echo_area)
-            {
-              ea_last_executed_command = NULL;
-              break;
-            }
-        }
     }
 }
 

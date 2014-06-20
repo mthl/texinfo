@@ -160,6 +160,48 @@ echo_area_after_read (void)
   return return_value;
 }
 
+static void
+read_and_dispatch_in_echo_area (void)
+{
+  unsigned char key;
+
+  while (1)
+    {
+      int lk = 0;
+
+      lk = echo_area_last_command_was_kill;
+      echo_area_prep_read ();
+
+      if (!info_any_buffered_input_p ())
+        display_update_display (windows);
+
+      display_cursor_at_point (active_window);
+      info_initialize_numeric_arg ();
+
+      initialize_keyseq ();
+      key = info_get_input_char ();
+
+      info_error_was_printed = 0;
+
+      /* Do the selected command. */
+      info_dispatch_on_key (key, active_window->keymap);
+
+      /* Echo area commands that do killing increment the value of
+         ECHO_AREA_LAST_COMMAND_WAS_KILL.  Thus, if there is no
+         change in the value of this variable, the last command
+         executed was not a kill command. */
+      if (lk == echo_area_last_command_was_kill)
+        echo_area_last_command_was_kill = 0;
+
+      if (ea_last_executed_command == (VFunction *) ea_newline ||
+          info_aborted_echo_area)
+        {
+          ea_last_executed_command = NULL;
+          break;
+        }
+    }
+}
+
 /* Read a line of text in the echo area.  Return a malloc ()'ed string,
    or NULL if the user aborted out of this read.  WINDOW is the currently
    active window, so that we can restore it when we need to.  PROMPT, if
@@ -188,7 +230,7 @@ info_read_in_echo_area (WINDOW *window, const char *prompt)
   active_window = the_echo_area;
 
   /* Read characters in the echo area. */
-  info_read_and_dispatch ();
+  read_and_dispatch_in_echo_area ();
 
   echo_area_is_active--;
 
@@ -804,7 +846,7 @@ info_read_completing_internal (WINDOW *window, const char *prompt,
   /* Read characters in the echo area. */
   while (1)
     {
-      info_read_and_dispatch ();
+      read_and_dispatch_in_echo_area ();
 
       line = echo_area_after_read ();
 
