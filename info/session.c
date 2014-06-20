@@ -37,7 +37,6 @@
 #  define HAVE_STRUCT_TIMEVAL
 #endif /* HAVE_SYS_TIME_H */
 
-static void info_clear_pending_input (void);
 static void info_set_pending_input (unsigned char key);
 static void info_handle_pointer (char *label, WINDOW *window);
 static void display_info_keyseq (int expecting_future_input);
@@ -45,6 +44,14 @@ char *node_printed_rep (NODE *node);
 
 static REFERENCE *select_menu_digit (WINDOW *window, unsigned char key);
 static void gc_file_buffers_and_nodes (void);
+
+/* Largest number of characters that we can read in advance. */
+#define MAX_INFO_INPUT_BUFFERING 512
+
+static int pop_index = 0;
+static int push_index = 0;
+static unsigned char info_input_buffer[MAX_INFO_INPUT_BUFFERING];
+
 
 /* **************************************************************** */
 /*                                                                  */
@@ -3233,7 +3240,9 @@ info_search_internal (char *string, WINDOW *window,
           NODE *node;
 	  
           /* Allow C-g to quit the search, failing it if pressed. */
-          return_if_control_g (-1);
+          info_gather_typeahead (); \
+          if (info_input_buffer[pop_index] == Control ('g'))
+            return -1;
 
           /* Find the next tag that isn't an anchor.  */
           for (i = current_tag + dir; i != current_tag; i += dir)
@@ -4118,7 +4127,6 @@ DECLARE_INFO_COMMAND (info_abort_key, _("Cancel current operation"))
   info_error ("%s", _("Quit"));
 
   info_initialize_numeric_arg ();
-  info_clear_pending_input ();
 }
 
 DECLARE_INFO_COMMAND (info_info_version, _("Display version of Info being run"))
@@ -4261,8 +4269,7 @@ info_get_another_input_char (void)
   if (!info_keyseq_displayed_p)
     {
       ready = 1;
-      if (!info_any_buffered_input_p () &&
-          !info_input_pending_p ())
+      if (!info_any_buffered_input_p ())
         {
 #if defined (FD_SET)
           struct timeval timer;
@@ -4336,10 +4343,8 @@ info_dispatch_on_key (unsigned char key, Keymap map)
                   (active_window, ea_numeric_arg * ea_numeric_arg_sign,
                   key);
 
-              /* If we have input pending, then the last command was a prefix
-                 command.  Don't change the value of the last function var.
-                 Otherwise, remember the last command executed. */
-              if (where == the_echo_area && !info_input_pending_p ())
+              /* If in the echo area, remember the last command executed. */
+              if (where == the_echo_area)
                 ea_last_executed_command = InfoFunction(map[key].function);
             }
           }
@@ -4515,62 +4520,15 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
 /*                                                                  */
 /* **************************************************************** */
 
-/* Character waiting to be read next. */
-static int pending_input_character = 0;
-
-/* How to make there be no pending input. */
-static void
-info_clear_pending_input (void)
-{
-  pending_input_character = 0;
-}
-
-/* How to set the pending input character. */
+/* Put a byte back into the input buffer. */
 static void
 info_set_pending_input (unsigned char key)
 {
-  pending_input_character = key;
-}
-
-/* How to see if there is any pending input. */
-unsigned char
-info_input_pending_p (void)
-{
-  return pending_input_character;
-}
-
-/* Largest number of characters that we can read in advance. */
-#define MAX_INFO_INPUT_BUFFERING 512
-
-static int pop_index = 0, push_index = 0;
-static unsigned char info_input_buffer[MAX_INFO_INPUT_BUFFERING];
-
-/* Add KEY to the buffer of characters to be read. */
-static void
-info_push_typeahead (unsigned char key)
-{
-  /* Flush all pending input in the case of C-g pressed. */
-  if (key == Control ('g'))
-    {
-      push_index = pop_index;
-      info_set_pending_input (Control ('g'));
-    }
+  if (pop_index > 0)
+    pop_index--;
   else
-    {
-      info_input_buffer[push_index++] = key;
-      if ((unsigned int) push_index >= sizeof (info_input_buffer))
-        push_index = 0;
-    }
-}
-
-/* Return the amount of space available in INFO_INPUT_BUFFER for new chars. */
-static int
-info_input_buffer_space_available (void)
-{
-  if (pop_index > push_index)
-    return pop_index - push_index;
-  else
-    return sizeof (info_input_buffer) - (push_index - pop_index);
+    pop_index = MAX_INFO_INPUT_BUFFERING - 1;
+  info_input_buffer[pop_index] = key;
 }
 
 /* Get a key from the buffer of characters to be read.
@@ -4584,7 +4542,7 @@ info_get_key_from_typeahead (unsigned char *key)
 
   *key = info_input_buffer[pop_index++];
 
-  if ((unsigned int) pop_index >= sizeof (info_input_buffer))
+  if (pop_index >= MAX_INFO_INPUT_BUFFERING)
     pop_index = 0;
 
   return 1;
@@ -4610,7 +4568,11 @@ info_gather_typeahead (void)
   tty = fileno (info_input_stream);
   chars_avail = 0;
 
-  space_avail = info_input_buffer_space_available ();
+  /* Get the amount of space available in INFO_INPUT_BUFFER for new chars. */
+  if (pop_index > push_index)
+    space_avail = pop_index - push_index;
+  else
+    space_avail = sizeof (info_input_buffer) - (push_index - pop_index);
 
   /* If we can just find out how many characters there are to read, do so. */
 #if defined (FIONREAD)
@@ -4680,7 +4642,19 @@ info_gather_typeahead (void)
 
   while (i < chars_avail)
     {
-      info_push_typeahead (input[i]);
+      /* Add KEY to the buffer of characters to be read. */
+      if (input[i] != Control ('g'))
+        {
+          info_input_buffer[push_index++] = input[i];
+          if (push_index >= MAX_INFO_INPUT_BUFFERING)
+            push_index = 0;
+        }
+      else
+        {
+          /* Flush all pending input in the case of C-g pressed. */
+          push_index = pop_index;
+          info_set_pending_input (Control ('g'));
+        }
       i++;
     }
 }
@@ -4693,12 +4667,7 @@ info_get_input_char (void)
 
   info_gather_typeahead ();
 
-  if (pending_input_character)
-    {
-      keystroke = pending_input_character;
-      pending_input_character = 0;
-    }
-  else if (info_get_key_from_typeahead (&keystroke) == 0)
+  if (info_get_key_from_typeahead (&keystroke) == 0)
     {
       int rawkey;
       unsigned char c;

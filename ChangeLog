@@ -1,5 +1,16 @@
 2014-06-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (info_set_pending_input): Place argument in
+	info_input_buffer instead of pending_input_character.
+	(pending_input_charater, info_clear_pending_input)
+	(info_input_pending_p): Deleted.
+	(info_push_typeahead, info_input_buffer_space_available): Merged into
+	calling code.
+	* info/session.h (return_if_control_g): Macro removed.  Code placed in
+	calling code in info_search_internal.
+
+2014-06-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infokey.c (compile): Set Info variables as was done in
 	section_to_vars.
 	* info/infomap.c (section_to_vars): Removed.

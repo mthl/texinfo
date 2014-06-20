@@ -108,13 +108,6 @@ extern void forget_node (WINDOW *win);
 /* Tell Info that input is coming from the file FILENAME. */
 extern void info_set_input_from_file (char *filename);
 
-#define return_if_control_g(val) \
-  do { \
-    info_gather_typeahead (); \
-    if (info_input_pending_p () == Control ('g')) \
-      return (val); \
-  } while (0)
-
 /* The names of the functions that run an info session. */
 
 /* Starting an info session. */
