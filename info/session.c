@@ -45,14 +45,6 @@ char *node_printed_rep (NODE *node);
 static REFERENCE *select_menu_digit (WINDOW *window, unsigned char key);
 static void gc_file_buffers_and_nodes (void);
 
-/* Largest number of characters that we can read in advance. */
-#define MAX_INFO_INPUT_BUFFERING 512
-
-static int pop_index = 0;
-static int push_index = 0;
-static unsigned char info_input_buffer[MAX_INFO_INPUT_BUFFERING];
-
-
 /* **************************************************************** */
 /*                                                                  */
 /*                   Running an Info Session                        */
@@ -289,6 +281,223 @@ info_set_input_from_file (char *filename)
     display_inhibited = 1;
 }
 
+
+/* **************************************************************** */
+/*                                                                  */
+/*                      Input Character Buffering                   */
+/*                                                                  */
+/* **************************************************************** */
+
+/* Largest number of characters that we can read in advance. */
+#define MAX_INFO_INPUT_BUFFERING 512
+
+static int pop_index = 0;
+static int push_index = 0;
+static unsigned char info_input_buffer[MAX_INFO_INPUT_BUFFERING];
+
+/* Put a byte back into the input buffer. */
+static void
+info_set_pending_input (unsigned char key)
+{
+  if (pop_index > 0)
+    pop_index--;
+  else
+    pop_index = MAX_INFO_INPUT_BUFFERING - 1;
+  info_input_buffer[pop_index] = key;
+}
+
+/* Get a key from the buffer of characters to be read.
+   Return the key in KEY.
+   Result is non-zero if there was a key, or 0 if there wasn't. */
+static int
+info_get_key_from_typeahead (unsigned char *key)
+{
+  if (push_index == pop_index)
+    return 0;
+
+  *key = info_input_buffer[pop_index++];
+
+  if (pop_index >= MAX_INFO_INPUT_BUFFERING)
+    pop_index = 0;
+
+  return 1;
+}
+
+int
+info_any_buffered_input_p (void)
+{
+  info_gather_typeahead ();
+  return push_index != pop_index;
+}
+
+/* If characters are available to be read, then read them and stuff them into
+   info_input_buffer.  Otherwise, do nothing. */
+void
+info_gather_typeahead (void)
+{
+  register int i = 0;
+  int tty, space_avail;
+  long chars_avail;
+  unsigned char input[MAX_INFO_INPUT_BUFFERING];
+
+  tty = fileno (info_input_stream);
+  chars_avail = 0;
+
+  /* Get the amount of space available in INFO_INPUT_BUFFER for new chars. */
+  if (pop_index > push_index)
+    space_avail = pop_index - push_index;
+  else
+    space_avail = sizeof (info_input_buffer) - (push_index - pop_index);
+
+  /* If we can just find out how many characters there are to read, do so. */
+#if defined (FIONREAD)
+  {
+    ioctl (tty, FIONREAD, &chars_avail);
+
+    if (chars_avail > space_avail)
+      chars_avail = space_avail;
+
+    if (chars_avail)
+      chars_avail = read (tty, &input[0], chars_avail);
+  }
+#else /* !FIONREAD */
+#  if defined (O_NDELAY) && defined (F_GETFL) && defined (F_SETFL)
+  {
+    int flags;
+
+    flags = fcntl (tty, F_GETFL, 0);
+
+    fcntl (tty, F_SETFL, (flags | O_NDELAY));
+      chars_avail = read (tty, &input[0], space_avail);
+    fcntl (tty, F_SETFL, flags);
+
+    if (chars_avail == -1)
+      chars_avail = 0;
+  }
+#  else  /* !O_NDELAY */
+#   ifdef __DJGPP__
+  {
+    extern long pc_term_chars_avail (void);
+
+    if (isatty (tty))
+      chars_avail = pc_term_chars_avail ();
+    else
+      {
+        /* We could be more accurate by calling ltell, but we have no idea
+           whether tty is buffered by stdio functions, and if so, how many
+           characters are already waiting in the buffer.  So we punt.  */
+        struct stat st;
+
+        if (fstat (tty, &st) < 0)
+          chars_avail = 1;
+        else
+          chars_avail = st.st_size;
+      }
+    if (chars_avail > space_avail)
+      chars_avail = space_avail;
+    if (chars_avail)
+      chars_avail = read (tty, &input[0], chars_avail);
+  }
+#   else
+#    ifdef __MINGW32__
+  {
+    extern long w32_chars_avail (int);
+
+    chars_avail = w32_chars_avail (tty);
+
+    if (chars_avail > space_avail)
+      chars_avail = space_avail;
+    if (chars_avail)
+      chars_avail = read (tty, &input[0], chars_avail);
+  }
+#    endif  /* _WIN32 */
+#   endif/* __DJGPP__ */
+#  endif /* O_NDELAY */
+#endif /* !FIONREAD */
+
+  while (i < chars_avail)
+    {
+      /* Add KEY to the buffer of characters to be read. */
+      if (input[i] != Control ('g'))
+        {
+          info_input_buffer[push_index++] = input[i];
+          if (push_index >= MAX_INFO_INPUT_BUFFERING)
+            push_index = 0;
+        }
+      else
+        {
+          /* Flush all pending input in the case of C-g pressed. */
+          push_index = pop_index;
+          info_set_pending_input (Control ('g'));
+        }
+      i++;
+    }
+}
+
+/* How to read a single character. */
+unsigned char
+info_get_input_char (void)
+{
+  unsigned char keystroke;
+
+  info_gather_typeahead ();
+
+  if (info_get_key_from_typeahead (&keystroke) == 0)
+    {
+      int rawkey;
+      unsigned char c;
+      int tty = fileno (info_input_stream);
+
+      /* Using stream I/O causes FIONREAD etc to fail to work
+         so unless someone can find a portable way of finding
+         out how many characters are currently buffered, we
+         should stay with away from stream I/O.
+         --Egil Kvaleberg <egilk@sn.no>, January 1997.  */
+#ifdef EINTR
+      /* Keep reading if we got EINTR, so that we don't just exit.
+         --Andreas Schwab <schwab@issan.informatik.uni-dortmund.de>,
+         22 Dec 1997.  */
+      {
+        int n;
+        do
+          n = read (tty, &c, 1);
+        while (n == -1 && errno == EINTR);
+        rawkey = n == 1 ? c : EOF;
+      }
+#else
+      rawkey = (read (tty, &c, 1) == 1) ? c : EOF;
+#endif
+
+      keystroke = rawkey;
+
+      if (rawkey == EOF)
+        {
+          if (info_input_stream != stdin)
+            {
+              fclose (info_input_stream);
+              info_input_stream = stdin;
+              tty = fileno (info_input_stream);
+              display_inhibited = 0;
+              display_update_display (windows);
+              display_cursor_at_point (active_window);
+              rawkey = (read (tty, &c, 1) == 1) ? c : EOF;
+              keystroke = rawkey;
+            }
+
+          if (rawkey == EOF)
+            {
+              terminal_unprep_terminal ();
+              close_dribble_file ();
+              exit (EXIT_SUCCESS);
+            }
+        }
+    }
+
+  if (info_dribble_file)
+    dribble (keystroke);
+
+  return keystroke;
+}
 
 /* **************************************************************** */
 /*                                                                  */
@@ -4514,212 +4723,3 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
     }
 }
 
-/* **************************************************************** */
-/*                                                                  */
-/*                      Input Character Buffering                   */
-/*                                                                  */
-/* **************************************************************** */
-
-/* Put a byte back into the input buffer. */
-static void
-info_set_pending_input (unsigned char key)
-{
-  if (pop_index > 0)
-    pop_index--;
-  else
-    pop_index = MAX_INFO_INPUT_BUFFERING - 1;
-  info_input_buffer[pop_index] = key;
-}
-
-/* Get a key from the buffer of characters to be read.
-   Return the key in KEY.
-   Result is non-zero if there was a key, or 0 if there wasn't. */
-static int
-info_get_key_from_typeahead (unsigned char *key)
-{
-  if (push_index == pop_index)
-    return 0;
-
-  *key = info_input_buffer[pop_index++];
-
-  if (pop_index >= MAX_INFO_INPUT_BUFFERING)
-    pop_index = 0;
-
-  return 1;
-}
-
-int
-info_any_buffered_input_p (void)
-{
-  info_gather_typeahead ();
-  return push_index != pop_index;
-}
-
-/* If characters are available to be read, then read them and stuff them into
-   info_input_buffer.  Otherwise, do nothing. */
-void
-info_gather_typeahead (void)
-{
-  register int i = 0;
-  int tty, space_avail;
-  long chars_avail;
-  unsigned char input[MAX_INFO_INPUT_BUFFERING];
-
-  tty = fileno (info_input_stream);
-  chars_avail = 0;
-
-  /* Get the amount of space available in INFO_INPUT_BUFFER for new chars. */
-  if (pop_index > push_index)
-    space_avail = pop_index - push_index;
-  else
-    space_avail = sizeof (info_input_buffer) - (push_index - pop_index);
-
-  /* If we can just find out how many characters there are to read, do so. */
-#if defined (FIONREAD)
-  {
-    ioctl (tty, FIONREAD, &chars_avail);
-
-    if (chars_avail > space_avail)
-      chars_avail = space_avail;
-
-    if (chars_avail)
-      chars_avail = read (tty, &input[0], chars_avail);
-  }
-#else /* !FIONREAD */
-#  if defined (O_NDELAY) && defined (F_GETFL) && defined (F_SETFL)
-  {
-    int flags;
-
-    flags = fcntl (tty, F_GETFL, 0);
-
-    fcntl (tty, F_SETFL, (flags | O_NDELAY));
-      chars_avail = read (tty, &input[0], space_avail);
-    fcntl (tty, F_SETFL, flags);
-
-    if (chars_avail == -1)
-      chars_avail = 0;
-  }
-#  else  /* !O_NDELAY */
-#   ifdef __DJGPP__
-  {
-    extern long pc_term_chars_avail (void);
-
-    if (isatty (tty))
-      chars_avail = pc_term_chars_avail ();
-    else
-      {
-        /* We could be more accurate by calling ltell, but we have no idea
-           whether tty is buffered by stdio functions, and if so, how many
-           characters are already waiting in the buffer.  So we punt.  */
-        struct stat st;
-
-        if (fstat (tty, &st) < 0)
-          chars_avail = 1;
-        else
-          chars_avail = st.st_size;
-      }
-    if (chars_avail > space_avail)
-      chars_avail = space_avail;
-    if (chars_avail)
-      chars_avail = read (tty, &input[0], chars_avail);
-  }
-#   else
-#    ifdef __MINGW32__
-  {
-    extern long w32_chars_avail (int);
-
-    chars_avail = w32_chars_avail (tty);
-
-    if (chars_avail > space_avail)
-      chars_avail = space_avail;
-    if (chars_avail)
-      chars_avail = read (tty, &input[0], chars_avail);
-  }
-#    endif  /* _WIN32 */
-#   endif/* __DJGPP__ */
-#  endif /* O_NDELAY */
-#endif /* !FIONREAD */
-
-  while (i < chars_avail)
-    {
-      /* Add KEY to the buffer of characters to be read. */
-      if (input[i] != Control ('g'))
-        {
-          info_input_buffer[push_index++] = input[i];
-          if (push_index >= MAX_INFO_INPUT_BUFFERING)
-            push_index = 0;
-        }
-      else
-        {
-          /* Flush all pending input in the case of C-g pressed. */
-          push_index = pop_index;
-          info_set_pending_input (Control ('g'));
-        }
-      i++;
-    }
-}
-
-/* How to read a single character. */
-unsigned char
-info_get_input_char (void)
-{
-  unsigned char keystroke;
-
-  info_gather_typeahead ();
-
-  if (info_get_key_from_typeahead (&keystroke) == 0)
-    {
-      int rawkey;
-      unsigned char c;
-      int tty = fileno (info_input_stream);
-
-      /* Using stream I/O causes FIONREAD etc to fail to work
-         so unless someone can find a portable way of finding
-         out how many characters are currently buffered, we
-         should stay with away from stream I/O.
-         --Egil Kvaleberg <egilk@sn.no>, January 1997.  */
-#ifdef EINTR
-      /* Keep reading if we got EINTR, so that we don't just exit.
-         --Andreas Schwab <schwab@issan.informatik.uni-dortmund.de>,
-         22 Dec 1997.  */
-      {
-        int n;
-        do
-          n = read (tty, &c, 1);
-        while (n == -1 && errno == EINTR);
-        rawkey = n == 1 ? c : EOF;
-      }
-#else
-      rawkey = (read (tty, &c, 1) == 1) ? c : EOF;
-#endif
-
-      keystroke = rawkey;
-
-      if (rawkey == EOF)
-        {
-          if (info_input_stream != stdin)
-            {
-              fclose (info_input_stream);
-              info_input_stream = stdin;
-              tty = fileno (info_input_stream);
-              display_inhibited = 0;
-              display_update_display (windows);
-              display_cursor_at_point (active_window);
-              rawkey = (read (tty, &c, 1) == 1) ? c : EOF;
-              keystroke = rawkey;
-            }
-
-          if (rawkey == EOF)
-            {
-              terminal_unprep_terminal ();
-              close_dribble_file ();
-              exit (EXIT_SUCCESS);
-            }
-        }
-    }
-
-  if (info_dribble_file)
-    dribble (keystroke);
-
-  return keystroke;
-}
