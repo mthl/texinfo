@@ -6,6 +6,9 @@
 	* info/session.c (info_read_and_dispatch): Special casing for echo area
 	removed.
 
+	* info/window.c (WINDOW): Field 'keymap' removed.  All reads or writes
+	changed to use info_keymap or echo_area_keymap directly.
+
 2014-06-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_set_pending_input): Place argument in

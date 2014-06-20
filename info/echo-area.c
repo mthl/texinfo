@@ -184,7 +184,7 @@ read_and_dispatch_in_echo_area (void)
       info_error_was_printed = 0;
 
       /* Do the selected command. */
-      info_dispatch_on_key (key, active_window->keymap);
+      info_dispatch_on_key (key, echo_area_keymap);
 
       /* Echo area commands that do killing increment the value of
          ECHO_AREA_LAST_COMMAND_WAS_KILL.  Thus, if there is no

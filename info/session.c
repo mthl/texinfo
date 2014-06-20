@@ -185,7 +185,7 @@ info_read_and_dispatch (void)
       info_error_was_printed = 0;
 
       /* Do the selected command. */
-      info_dispatch_on_key (key, active_window->keymap);
+      info_dispatch_on_key (key, info_keymap);
     }
 }
 
@@ -3917,9 +3917,9 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
           /* If this key is not a keymap, get its associated function,
              if any.  If it is a keymap, then it's probably ESC from an
              arrow key, and we handle that case below.  */
-          char type = window->keymap[key].type;
+          char type = info_keymap[key].type;
           func = type == ISFUNC
-                 ? InfoFunction(window->keymap[key].function)
+                 ? InfoFunction(info_keymap[key].function)
                  : NULL;  /* function member is a Keymap if ISKMAP */
 
           if (isprint (key) || (type == ISFUNC && func == NULL))
@@ -4621,7 +4621,7 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
                       _("Internally used by \\[universal-argument]"))
 {
   unsigned char pure_key;
-  Keymap keymap = window->keymap;
+  Keymap keymap;
 
   int *which_numeric_arg, *which_numeric_arg_sign, *which_explicit_arg;
 
@@ -4632,12 +4632,14 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
       which_explicit_arg =     &info_explicit_arg;
       which_numeric_arg_sign = &info_numeric_arg_sign;
       which_numeric_arg =      &info_numeric_arg;
+      keymap = info_keymap;
     }
   else
     {
       which_explicit_arg =     &ea_explicit_arg;
       which_numeric_arg_sign = &ea_numeric_arg_sign;
       which_numeric_arg =      &ea_numeric_arg;
+      keymap = echo_area_keymap;
     }
 
   while (1)
@@ -4694,4 +4696,3 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
       key = 0;
     }
 }
-

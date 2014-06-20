@@ -78,10 +78,6 @@ window_initialize_windows (int width, int height)
   the_echo_area->height = ECHO_AREA_HEIGHT;
   active_window->height = the_screen->height - 1 - the_echo_area->height;
   window_new_screen_size (width, height);
-
-  /* The echo area uses a different keymap than normal info windows. */
-  the_echo_area->keymap = echo_area_keymap;
-  active_window->keymap = info_keymap;
 }
 
 /* Given that the size of the screen has changed to WIDTH and HEIGHT
@@ -282,7 +278,6 @@ window_make_window (void)
   window->height = (active_window->height / 2) - 1;
   window->first_row = active_window->first_row +
     (active_window->height - window->height);
-  window->keymap = info_keymap;
   window->goal_column = 0;
   memset (&window->line_map, 0, sizeof (window->line_map));
   window->modeline = xmalloc (1 + window->width);

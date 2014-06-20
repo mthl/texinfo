@@ -471,10 +471,9 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
   char keys[50];
   unsigned char keystroke;
   char *k = keys;
-  Keymap map;
+  Keymap map = info_keymap;
 
   *k = '\0';
-  map = window->keymap;
 
   for (;;)
     {
@@ -926,7 +925,7 @@ DECLARE_INFO_COMMAND (info_where_is,
         {
           char *location;
 
-          location = where_is (active_window->keymap, command);
+          location = where_is (info_keymap, command);
 
           if (!location || !location[0])
             {
