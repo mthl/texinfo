@@ -24,6 +24,7 @@
 #include "infokey.h"
 #include "doc.h"
 #include "getopt.h"
+#include "variables.h"
 
 extern char *program_name;  /* in info.c */
 
@@ -38,8 +39,6 @@ enum sect_e
 int compile (FILE *fp, const char *filename, struct sect *sections);
 static void syntax_error (const char *filename, unsigned int linenum,
 			  const char *fmt, ...) TEXINFO_PRINTFLIKE(3,4);
-void error_message (int error_code, const char *fmt, ...)
-  TEXINFO_PRINTFLIKE(2,3);
 
 /* Compilation - the real work.
 
@@ -507,7 +506,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 			    _("missing `=' immediately after variable name"));
 	      error = 1;
 	    }
-	  else if (varlen < sizeof varn)
+	  else if (varlen < sizeof varn - 1)
 	    varn[varlen++] = c;
 	  else
 	    {
@@ -519,17 +518,19 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	case get_value:
 	  if (c == '\n')
 	    {
-	      state = start_of_line;
-	      if (!(add_to_section (&sections[section], varn, varlen)
-		    && add_to_section (&sections[section], "", 1)
-		    && add_to_section (&sections[section], val, vallen)
-		    && add_to_section (&sections[section], "", 1)))
-		{
-		  syntax_error (filename, lnum, _("section too long"));
-		  error = 1;
-		}
+              VARIABLE_ALIST *v;
+
+              state = start_of_line;
+              varn[varlen] = '\0';
+              val[vallen] = '\0';
+              v = variable_by_name (varn);
+              if (!v)
+                info_error (_("%s: no such variable"), varn);
+              else if (!set_variable_to_value (v, val, SET_IN_CONFIG_FILE))
+                info_error (_("value %s is not valid for variable %s"),
+                              val, var);
 	    }
-	  else if (vallen < sizeof val)
+	  else if (vallen < sizeof val - 1)
 	    val[vallen++] = c;
 	  else
 	    {
@@ -581,23 +582,6 @@ lookup_action (const char *name)
 
 
 /* Error handling. */
-
-/* Give the user a "syntax error" message in the form
-	progname: "filename", line N: message
- */
-void
-error_message (int error_code, const char *fmt, ...)
-{
-  va_list ap;
-
-  fprintf (stderr, "%s: ", program_name);
-  va_start(ap, fmt);
-  vfprintf (stderr, fmt, ap);
-  va_end(ap);
-  if (error_code)
-    fprintf (stderr, " - %s", strerror (error_code));
-  fprintf (stderr, "\n");
-}
 
 /* Give the user a generic error message in the form
 	progname: message

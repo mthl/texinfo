@@ -1,3 +1,15 @@
+2014-06-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infokey.c (compile): Set Info variables as was done in
+	section_to_vars.
+	* info/infomap.c (section_to_vars): Removed.
+	(user_vars, user_vars_len): Removed.
+	(read_init_file): Don't call section_to_vars.
+	(fetch_user_maps): Don't set user_vars.
+	(filesize, getint): Remove unused.
+
+	* info/infokey.c (error_message): Merged into calling code.
+
 2014-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infokey.c (lookup_action): Use function_doc_array instead of

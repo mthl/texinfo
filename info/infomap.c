@@ -832,45 +832,12 @@ static unsigned char default_vi_like_ea_keys[] =
 
 
 /* Used to hold output data from compile(). */
-struct sect sections[3];
+struct sect sections[2];
 
 static unsigned char *user_info_keys;
 static unsigned int user_info_keys_len;
 static unsigned char *user_ea_keys;
 static unsigned int user_ea_keys_len;
-static unsigned char *user_vars;
-static unsigned int user_vars_len;
-
-/*
- * Return the size of a file, or 0 if the size can't be determined.
- */
-static unsigned long
-filesize (int f)
-{
-  long pos = lseek (f, 0L, SEEK_CUR);
-  long sz = -1L;
-  if (pos != -1L)
-    {
-      sz = lseek (f, 0L, SEEK_END);
-      lseek (f, pos, SEEK_SET);
-    }
-  return sz == -1L ? 0L : sz;
-}
-
-/* Get an integer from a infokey file.
-   Integers are stored as two bytes, low order first, in radix INFOKEY_RADIX.
- */
-static int
-getint (unsigned char **sp)
-{
-  int n;
-  
-  if ( !((*sp)[0] < INFOKEY_RADIX && (*sp)[1] < INFOKEY_RADIX) )
-    return -1;
-  n = (*sp)[0] + (*sp)[1] * INFOKEY_RADIX;
-  *sp += 2;
-  return n;
-}
 
 /* Fetch the contents of the init file at INIT_FILE, or the standard
    infokey file "$HOME/.info".  Return non-zero on success. */
@@ -907,7 +874,11 @@ fetch_user_maps (char *init_file)
   inf = fopen (filename, "r");
   if (!inf)
     {
-      error_message (errno, _("cannot open input file `%s'"), filename);
+      if (errno)
+        info_error (_("cannot open input file `%s' - %s"),
+            filename, strerror (errno));
+      else
+        info_error (_("cannot open input file `%s'"), filename);
       return 0;
     }
 
@@ -916,8 +887,6 @@ fetch_user_maps (char *init_file)
   user_info_keys_len = sections[0].cur;
   user_ea_keys = sections[1].data;
   user_ea_keys_len = sections[1].cur;
-  user_vars = sections[2].data;
-  user_vars_len = sections[2].cur;
 
   free (filename);
   return 1;
@@ -1047,63 +1016,6 @@ section_to_keymaps (Keymap map, unsigned char *table, unsigned int len)
   return !stop;
 }
 
-/* Convert an infokey file section to variable settings.
- */
-static void
-section_to_vars (unsigned char *table, unsigned int len)
-{
-  enum { getvar, gotvar, getval, gotval } state = getvar;
-  unsigned char *var = NULL;
-  unsigned char *val = NULL;
-  unsigned char *p;
-  
-  for (p = table; (unsigned int) (p - table) < len; p++)
-    {
-      switch (state)
-	{
-	case getvar:
-	  if (*p)
-	    {
-	      var = p;
-	      state = gotvar;
-	    }
-	  break;
-	  
-	case gotvar:
-	  if (!*p)
-	    state = getval;
-	  break;
-	  
-	case getval:
-	  if (*p)
-	    {
-	      val = p;
-	      state = gotval;
-	    }
-	  break;
-	  
-	case gotval:
-	  if (!*p)
-	    {
-              VARIABLE_ALIST *v;
-              if (!(v = variable_by_name (var)))
-                {
-                  info_error (_("%s: no such variable"), var);
-                }
-              else if (!set_variable_to_value (v, val, SET_IN_CONFIG_FILE))
-                {
-                  info_error (_("value %s is not valid for variable %s"),
-                              val, var);
-                }	
-	      state = getvar;
-	    }
-	  break;
-	}
-    }
-  if (state != getvar)
-    info_error ("%s", _("Bad data in infokey file -- some var settings ignored"));
-}
-
 /* Read key bindings and variable settings from INIT_FILE.  If INIT_FILE
    is null, look for the init file in the default location. */
 void
@@ -1162,10 +1074,6 @@ read_init_file (char *init_file)
     section_to_keymaps (info_keymap, user_info_keys, user_info_keys_len);
   if (user_ea_keys_len)
     section_to_keymaps (echo_area_keymap, user_ea_keys, user_ea_keys_len);
-
-  /* Set Info variables from init file. */
-  if (user_vars_len)
-    section_to_vars (user_vars, user_vars_len);
 }
 
 /* vim: set sw=2 cino={1s>2sn-s^-se-s: */
