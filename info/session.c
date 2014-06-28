@@ -271,17 +271,6 @@ static int pop_index = 0; /* Where to remove bytes from input buffer. */
 static int push_index = 0; /* Where to add bytes to input buffer. */
 static unsigned char info_input_buffer[MAX_INFO_INPUT_BUFFERING];
 
-/* Put a byte back into the input buffer. */
-static void
-info_set_pending_input (unsigned char key)
-{
-  if (pop_index > 0)
-    pop_index--;
-  else
-    pop_index = MAX_INFO_INPUT_BUFFERING - 1;
-  info_input_buffer[pop_index] = key;
-}
-
 /* Get a key from the buffer of characters to be read.
    Return the key in KEY.
    Result is non-zero if there was a key, or 0 if there wasn't. */
@@ -416,11 +405,8 @@ info_gather_typeahead (int wait)
             push_index = 0;
         }
       else
-        {
-          /* Flush all pending input in the case of C-g pressed. */
-          push_index = pop_index;
-          info_set_pending_input (Control ('g'));
-        }
+        /* Flush all pending input in the case of C-g pressed. */
+        push_index = pop_index;
       i++;
     }
 }
@@ -4794,13 +4780,12 @@ info_initialize_numeric_arg (void)
 DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
                       _("Internally used by \\[universal-argument]"))
 {
-  unsigned char pure_key;
+  int pure_key;
   Keymap keymap;
 
   int *which_numeric_arg, *which_numeric_arg_sign, *which_explicit_arg;
 
-  /* Process the right numeric argument.  FIXME: Not necessarily the
-     nicest way of doing it. */
+  /* Process the right numeric argument. */
   if (!echo_area_is_active)
     {
       which_explicit_arg =     &info_explicit_arg;
@@ -4828,22 +4813,21 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
           if (active_window != the_echo_area)
             display_cursor_at_point (active_window);
 
-          pure_key = key = info_get_another_input_byte ();
+          pure_key = key = get_another_input_key ();
 
           add_char_to_keyseq (key);
         }
 
       if (keymap[key].type == ISFUNC
-          && InfoFunction(keymap[key].function)
-              == (VFunction *) info_universal_argument)
+          && InfoFunction(keymap[key].function) == info_universal_argument)
         {
           *which_numeric_arg *= 4;
           key = 0;
           continue;
         }
 
-      if (Meta_p (key))
-        key = UnMeta (key);
+      if (key >= KEYMAP_META_BASE)
+        key -= KEYMAP_META_BASE;
 
       if (isdigit (key))
         {

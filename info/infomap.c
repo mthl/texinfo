@@ -27,8 +27,7 @@
 
 void keymap_bind_keyseq (Keymap map, int *keyseq, KEYMAP_ENTRY *keyentry);
 
-/* Return a new keymap which has all the uppercase letters mapped to run
-   the function info_do_lowercase_version (). */
+/* Return a new Keymap. */
 Keymap
 keymap_make_keymap (void)
 {
@@ -46,6 +45,9 @@ keymap_make_keymap (void)
   return keymap;
 }
 
+/* Record KEYSEQ, a sequence of keys terminated by 0, in the linked list of
+   FUNCTION_KEYSEQ hanging off FUNCTION.  Label it with ROOTMAP so we know
+   whether the key sequence is for main operation or for the echo area. */
 static void
 add_function_keyseq (InfoCommand *function, int *keyseq, Keymap rootmap)
 {

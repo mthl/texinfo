@@ -1,5 +1,17 @@
 2014-06-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (info_set_pending_input): Function removed.
+	(info_gather_typeahead): Don't call info_set_pending_input.
+
+	* info/session.c (info_numeric_arg_digit_loop): Call
+	get_another_input_key instead of info_get_another_input_byte.
+	* info/session.h (DECLARE_INFO_COMMAND): Pass key argument as int
+	rather than unsigned char.  All declarations updated.
+	* info/makedoc.c (process_one_file): Change function declarations
+	output in funs.h.
+
+2014-06-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infokey.h (ISMETA, META, UNMETA, ISCONTROL, INFOKEY_RADIX)
 	(INFOKEY_MAX_SECTIONLEN): Removed.
 	* info/infokey.h, info/infomap.h (INFOKEY_FILE, A_MAX_COMMAND)

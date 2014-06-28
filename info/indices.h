@@ -31,9 +31,9 @@ extern REFERENCE **info_indices_of_file_buffer (FILE_BUFFER *file_buffer);
 REFERENCE **apropos_in_all_indices (char *search_string, int inform);
 
 /* User visible functions declared in indices.c. */
-extern void info_index_search (WINDOW *window, int count, unsigned char key);
-extern void info_next_index_match (WINDOW *window, int count, unsigned char key);
-extern void info_index_apropos (WINDOW *window, int count, unsigned char key);
+extern void info_index_search (WINDOW *window, int count, int key);
+extern void info_next_index_match (WINDOW *window, int count, int key);
+extern void info_index_apropos (WINDOW *window, int count, int key);
 extern void do_info_index_search (WINDOW *window, FILE_BUFFER *fb, int count, char *search_string);
 extern int index_entry_exists (FILE_BUFFER *fb, char *string);
 

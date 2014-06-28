@@ -439,7 +439,7 @@ process_one_file (char *filename, FILE *doc_stream, FILE *funs_stream)
 
       fprintf (funs_stream, "#define A_%s %u\n", func, next_func_key());
       fprintf (funs_stream,
-          "extern void %s (WINDOW *window, int count, unsigned char key);\n",
+          "extern void %s (WINDOW *window, int count, int key);\n",
           func);
       free (func);
       free (doc);
