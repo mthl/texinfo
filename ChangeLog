@@ -33,6 +33,11 @@
 	* info/infodoc.c (pretty_keyseq_internal): Merged into pretty_keyseq.
 	(pretty_keyseq): Use struct text_buffer.
 
+	* info/infodoc.c (describe_key): Call get_input_key to get key press.
+	* info/session.c (info_dispatch_on_key): Use tolower where intended.
+
+	* info/doc.h (DocInfoCmd): Macro removed.  Uses updated.
+
 2014-06-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infokey.h:

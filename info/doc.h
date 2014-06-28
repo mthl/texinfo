@@ -66,7 +66,6 @@ typedef FUNCTION_DOC InfoCommand;
    dereferencing a void *.  */
 #define InfoFunction(ic) ((ic) ? (ic)->func : (VFunction *) NULL)
 #define InfoCmd(fn) (&function_doc_array[A_##fn])
-#define DocInfoCmd(fd) ((fd) && (fd)->func ? (fd) : NULL)
 
 #include "infomap.h" /* for Keymap.  */
 

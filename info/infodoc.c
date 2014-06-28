@@ -227,7 +227,7 @@ create_internal_info_help_node (int help_is_only_window_p)
         exec_keys = xstrdup (exec_keys);
       for (i = 0; function_doc_array[i].func; i++)
         {
-          InfoCommand *cmd = DocInfoCmd(&function_doc_array[i]);
+          InfoCommand *cmd = &function_doc_array[i];
 
           if (InfoFunction(cmd) != (VFunction *) info_do_lowercase_version
               && !where_is_internal (info_keymap, cmd)
@@ -469,13 +469,16 @@ named_function (char *name)
     if (strcmp (function_doc_array[i].func_name, name) == 0)
       break;
 
-  return DocInfoCmd(&function_doc_array[i]);
+  if (!function_doc_array[i].func)
+    return 0;
+  else
+    return &function_doc_array[i];
 }
 
 DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
 {
   int keys[50];
-  unsigned char keystroke;
+  int keystroke;
   int *k = keys;
   Keymap map = info_keymap;
 
@@ -484,7 +487,7 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
   for (;;)
     {
       message_in_echo_area (_("Describe key: %s"), pretty_keyseq (keys));
-      keystroke = info_get_input_byte ();
+      keystroke = get_input_key ();
       unmessage_in_echo_area ();
 
       /* Add the KEYSTROKE to our list. */
@@ -514,9 +517,17 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
           if (InfoFunction(map[keystroke].function)
               == (VFunction *) info_do_lowercase_version)
             {
-              unsigned char lowerkey = Meta_p(keystroke)
-                                       ? Meta (tolower (UnMeta (keystroke)))
-                                       : tolower (keystroke);
+              int lowerkey;
+
+              if (keystroke >= KEYMAP_META_BASE)
+                {
+                  lowerkey = keystroke;
+                  lowerkey -= KEYMAP_META_BASE;
+                  lowerkey = tolower (lowerkey);
+                  lowerkey += KEYMAP_META_BASE;
+                }
+              else
+                lowerkey = tolower (keystroke);
 
               if (map[lowerkey].function == NULL)
                 {
@@ -544,7 +555,7 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
     }
 }
 
-/* Return the pretty printable name of a single character. */
+/* Return the pretty-printable name of a single key. */
 char *
 pretty_keyname (int key)
 {

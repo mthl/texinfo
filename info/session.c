@@ -4663,11 +4663,11 @@ info_dispatch_on_key (int key, Keymap map)
                   {
                     lowerkey = key;
                     lowerkey -= KEYMAP_META_BASE;
-                    lowerkey = towlower (lowerkey);
+                    lowerkey = tolower (lowerkey);
                     lowerkey += KEYMAP_META_BASE;
                   }
                 else
-                  lowerkey = towlower (key);
+                  lowerkey = tolower (key);
 
                 if (lowerkey == key)
                   {
