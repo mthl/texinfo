@@ -1,7 +1,8 @@
 /* infomap.h -- description of a keymap in Info and related functions.
    $Id$
 
-   Copyright 1993, 2001, 2004, 2007, 2013, 2014 Free Software Foundation, Inc.
+   Copyright 1993, 1999, 2001, 2002, 2004, 2007, 2013, 2014 Free Software
+   Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -98,6 +99,19 @@ extern Keymap echo_area_keymap;
 #define KEYMAP_SIZE (270 * 2)
 
 #define KEYMAP_META(k) ((k) < KEYMAP_META_BASE ? (k) + KEYMAP_META_BASE : (k))
+
+/* Default "infokey file", where user defs are kept and read by
+   Info.  MS-DOS doesn't allow leading dots in file names.  */
+#ifdef __MSDOS__
+#define INFOKEY_FILE		"_infokey"
+#else
+#define INFOKEY_FILE		".infokey"
+#endif
+
+#define	A_MAX_COMMAND		120
+#define	A_INVALID		121
+
+#define	CONTROL(c)		((c) & 0x1f)
 
 /* Return a new keymap which has all the uppercase letters mapped to run
    the function info_do_lowercase_version (). */

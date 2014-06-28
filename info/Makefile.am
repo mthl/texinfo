@@ -34,7 +34,7 @@ EXTRA_DIST = README pcterm.c
 ginfo_SOURCES = dir.c display.c display.h doc.h dribble.c dribble.h \
   echo-area.c echo-area.h \
   filesys.c filesys.h footnotes.c footnotes.h indices.c indices.h \
-  info-utils.c info-utils.h info.c info.h infodoc.c infokey.c infokey.h \
+  info-utils.c info-utils.h info.c info.h infodoc.c infokey.c \
   infomap.c infomap.h infopath.c m-x.c man.c man.h nodemenu.c \
   nodes.c nodes.h search.c search.h session.c session.h signals.c signals.h \
   tag.c tag.h termdep.h terminal.c terminal.h tilde.c tilde.h \

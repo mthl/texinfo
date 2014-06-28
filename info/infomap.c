@@ -23,8 +23,6 @@
 #include "infomap.h"
 #include "funs.h"
 #include "terminal.h"
-
-#include "infokey.h"
 #include "variables.h"
 
 void keymap_bind_keyseq (Keymap map, int *keyseq, KEYMAP_ENTRY *keyentry);

@@ -1,5 +1,13 @@
 2014-06-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/infokey.h (ISMETA, META, UNMETA, ISCONTROL, INFOKEY_RADIX)
+	(INFOKEY_MAX_SECTIONLEN): Removed.
+	* info/infokey.h, info/infomap.h (INFOKEY_FILE, A_MAX_COMMAND)
+	(A_INVALID, CONTROL): Remaining definitions moved between files.
+	infokey.h merged into infomap.h.
+
+2014-06-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infokey.h:
 	(SK_RIGHT_ARROW, SK_LEFT_ARROW, SK_UP_ARROW, SK_DOWN_ARROW, SK_PAGE_UP)
 	(SK_PAGE_DOWN SK_HOME, SK_END, SK_DELETE, SK_INSERT, SK_CTL_LEFT_ARROW)

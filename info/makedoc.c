@@ -25,7 +25,7 @@
    declared with DECLARE_INFO_COMMAND. */
 
 #include "info.h"
-#include "infokey.h"
+#include "infomap.h"
 
 char *program_name = "makedoc";
 

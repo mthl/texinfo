@@ -21,7 +21,6 @@
 
 #include "info.h"
 #include "infomap.h"
-#include "infokey.h"
 #include "doc.h"
 #include "getopt.h"
 #include "variables.h"
