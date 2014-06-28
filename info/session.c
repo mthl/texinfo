@@ -3974,7 +3974,7 @@ show_isearch_prompt (int dir, unsigned char *string, int failing_p)
 static void
 incremental_search (WINDOW *window, int count, unsigned char ignore)
 {
-  unsigned char key;
+  int key;
   int last_search_result, search_result, dir;
   SEARCH_STATE mystate, orig_state;
   char *p;
@@ -4016,7 +4016,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
         }
 
       /* Read a character and dispatch on it. */
-      key = info_get_input_byte ();
+      key = get_input_key ();
       window_get_state (window, &mystate);
 
       if (key == DEL || key == Control ('h'))
@@ -4039,6 +4039,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
         }
       else if (key == Control ('q'))
         {
+          /* User wants to insert a character. */
           key = info_get_input_byte ();
           quoted = 1;
         }
@@ -4049,17 +4050,17 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
       if (quoted)
         goto insert_and_search;
 
-      if (!Meta_p (key) || key > 32)
+      if (key < KEYMAP_META_BASE || key > 32)
         {
           /* If this key is not a keymap, get its associated function,
-             if any.  If it is a keymap, then it's probably ESC from an
-             arrow key, and we handle that case below.  */
+             if any. */
           char type = info_keymap[key].type;
           func = type == ISFUNC
                  ? InfoFunction(info_keymap[key].function)
                  : NULL;  /* function member is a Keymap if ISKMAP */
 
-          if (isprint (key) || (type == ISFUNC && func == NULL))
+          if (key >= 32 && key < 256
+              && (isprint (key) || (type == ISFUNC && func == NULL)))
             {
             insert_and_search:
 
@@ -4144,27 +4145,12 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
         {
         exit_search:
           /* The character is not printable, or it has a function which is
-             non-null.  Exit the search, remembering the search string.  If
-             the key is not the same as the isearch_terminate_search_key,
-             then push it into pending input. */
+             non-null.  Exit the search, remembering the search string. */
           if (isearch_string_index && func != (VFunction *) info_abort_key)
             {
               free (last_isearch_accepted);
               last_isearch_accepted = xstrdup (isearch_string);
             }
-
-          /* If the key is the isearch_terminate_search_key, but some buffered
-             input is pending, it is almost invariably because the ESC key is
-             actually the beginning of an escape sequence, like in case they
-             pressed an arrow key.  So don't gobble the ESC key, push it back
-             into pending input.  */
-          /* FIXME: this seems like a kludge!  We need a more reliable
-             mechanism to know when ESC is a separate key and when it is
-             part of an escape sequence.  */
-          if (key != RET  /* Emacs addicts want RET to get lost */
-              && (key != isearch_terminate_search_key
-                  || info_any_buffered_input_p ()))
-            info_set_pending_input (key);
 
           if (func == (VFunction *) info_abort_key)
             {
@@ -4227,7 +4213,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
           else
             search_result = info_search_internal (isearch_string,
                                                   window, dir, case_sensitive,
-						  NULL);
+                                                  NULL);
         }
 
       /* If this search failed, and we didn't already have a failed search,

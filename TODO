@@ -126,7 +126,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Documentation of the HTML customization is missing.
 
 * Info:
-  - The help message does not report Down/Up for next/prev-line.
   - When scrolling through the help text, it should stop at the end, not
     report "No more nodes" and go back to the beginning.
   - It would be nice to be able to specify a preferred key to report in

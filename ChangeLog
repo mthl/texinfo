@@ -14,6 +14,10 @@
 	(section_to_keymaps): Remove flag saying whether to suppress
 	default keybindings.
 
+	* info/session.c (incremental_search): Use get_input_key to distinguish
+	between Escape being pressed and arrow keys.  Don't push unused key
+	presses back into input buffer.
+
 2014-06-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infokey.h:
