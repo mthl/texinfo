@@ -123,8 +123,7 @@ extern VFunction *terminal_ring_bell_hook;
 extern char *term_ku, *term_kd, *term_kr, *term_kl;
 extern char *term_kP, *term_kN;
 extern char *term_ke, *term_kh;
-extern char *term_kx, *term_ki;
-extern char *term_kD;
+extern char *term_kD, *term_ki;
 extern char *term_bt;
 
 #endif /* !TERMINAL_H */

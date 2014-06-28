@@ -18,6 +18,11 @@
 	between Escape being pressed and arrow keys.  Don't push unused key
 	presses back into input buffer.
 
+	* info/terminal.c (term_kx): Remove unused variable (same as
+	term_kD).
+	* info/pcterm.c (pc_initialize_terminal): Use term_kD instead of
+	term_kx.
+
 2014-06-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infokey.h:

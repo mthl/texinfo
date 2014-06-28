@@ -883,7 +883,7 @@ pc_initialize_terminal (term_name)
   term_kh = (char *)find_sequence (K_Home);
   term_ke = (char *)find_sequence (K_End);
   term_ki = (char *)find_sequence (K_Insert);
-  term_kx = (char *)find_sequence (K_Delete);
+  term_kD = (char *)find_sequence (K_Delete);
 #endif	/* __MSDOS__ */
 
   /* Set all the hooks to our PC-specific functions.  */

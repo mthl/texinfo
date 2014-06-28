@@ -223,7 +223,6 @@ char *term_kh = NULL;	/* home */
 char *term_ke = NULL;	/* end */
 char *term_kD = NULL;	/* delete */
 char *term_ki = NULL;	/* ins */
-char *term_kx = NULL;	/* del */
 char *term_bt = NULL;	/* back tab */
 
 /* Move the cursor to the terminal location of X and Y. */
@@ -714,13 +713,12 @@ terminal_initialize_terminal (char *terminal_name)
   term_kh = tgetstr ("kh", &buffer);
   term_ke = tgetstr ("@7", &buffer);
   term_ki = tgetstr ("kI", &buffer);
-  term_kx = tgetstr ("kD", &buffer);
+  term_kD = tgetstr ("kD", &buffer);
 
   /* Home and end keys. */
   term_kh = tgetstr ("kh", &buffer);
   term_ke = tgetstr ("@7", &buffer);
 
-  term_kD = tgetstr ("kD", &buffer);
   term_bt = tgetstr ("bt", &buffer);
 
   initialize_byte_map ();
