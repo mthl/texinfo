@@ -46,32 +46,6 @@ keymap_make_keymap (void)
   return keymap;
 }
 
-static FUNCTION_KEYSEQ *
-find_function_keyseq (Keymap map, int c, Keymap rootmap)
-{
-  FUNCTION_KEYSEQ *k;
-
-  if (map[c].type != ISFUNC)
-    abort ();
-  if (map[c].function == NULL)
-    return NULL;
-  for (k = map[c].function->keys; k; k = k->next)
-    {
-      int *p;
-      Keymap m = rootmap;
-      if (k->map != rootmap)
-        continue;
-      for (p = k->keyseq; *p && m[*p].type == ISKMAP; p++)
-        m = (Keymap)m[*p].function;
-      if (*p != c || p[1])
-        continue;
-      if (m[*p].type != ISFUNC)
-        abort ();
-      break;
-    }
-  return k;
-}
-
 static void
 add_function_keyseq (InfoCommand *function, int *keyseq, Keymap rootmap)
 {
@@ -89,68 +63,6 @@ add_function_keyseq (InfoCommand *function, int *keyseq, Keymap rootmap)
   ks->keyseq = xmalloc ((len + 1) * sizeof (int));
   memcpy (ks->keyseq, keyseq, (len + 1) * sizeof (int));
   function->keys = ks;
-}
-
-static void
-remove_function_keyseq (InfoCommand *function, int *keyseq, Keymap rootmap)
-{
-
-  FUNCTION_KEYSEQ *k, *kp;
-
-  if (function == NULL ||
-      function == InfoCmd (info_do_lowercase_version) ||
-      function == InfoCmd (ea_insert))
-    return;
-  for (kp = NULL, k = function->keys; k; kp = k, k = k->next)
-    if (k->map == rootmap)
-      {
-        int i = 0;
-        while (k->keyseq[i] && keyseq[i])
-          {
-            if (k->keyseq[i] != keyseq[i])
-              break;
-            i++;
-          }
-        if (!k->keyseq[i] && !keyseq[i])
-          break; /* Sequences are equal. */
-      }
-  if (!k)
-    abort ();
-  if (kp)
-    kp->next = k->next;
-  else
-    function->keys = k->next;
-}
-
-/* Free the keymap and its descendants. */
-static void
-keymap_discard_keymap (Keymap map, Keymap rootmap)
-{
-  int i;
-
-  if (!map)
-    return;
-  if (!rootmap)
-    rootmap = map;
-
-  for (i = 0; i < KEYMAP_SIZE; i++)
-    {
-      FUNCTION_KEYSEQ *ks;
-      switch (map[i].type)
-        {
-        case ISFUNC:
-          ks = find_function_keyseq (map, i, rootmap);
-          if (ks)
-            remove_function_keyseq (map[i].function, ks->keyseq, rootmap);
-          break;
-
-        case ISKMAP:
-          keymap_discard_keymap ((Keymap)map[i].function, rootmap);
-          break;
-
-        }
-    }
-  free (map);
 }
 
 /* Bind key sequence.  Don't override already bound key sequences. */
@@ -172,11 +84,6 @@ keymap_bind_keyseq (Keymap map, int *keyseq, KEYMAP_ENTRY *keyentry)
         case ISFUNC:
           if (m[c].function)
             return; /* There is a function here already. */
-          /*
-          ks = find_function_keyseq (m, c, map);
-          if (ks)
-            remove_function_keyseq (m[c].function, ks->keyseq, map);
-          */
 
           if (*s != '\0')
             {
@@ -189,8 +96,6 @@ keymap_bind_keyseq (Keymap map, int *keyseq, KEYMAP_ENTRY *keyentry)
           if (*s == '\0')
             return; /* The key sequence we were asked to bind is an initial
                        subsequence of an already-bound sequence. */
-            /* keymap_discard_keymap ((Keymap)m[c].function, map); */
-
           break;
         }
       if (*s != '\0')
@@ -225,7 +130,6 @@ Keymap echo_area_keymap = NULL;
 
 static int default_emacs_like_info_keys[] =
 {
-  0,      /* suppress-default-keybindings flag */
   TAB, NUL,                       A_info_move_to_next_xref,
   LFD, NUL,                       A_info_select_reference_this_line,
   RET, NUL,                       A_info_select_reference_this_line,
@@ -351,7 +255,6 @@ static int default_emacs_like_info_keys[] =
 
 static int default_emacs_like_ea_keys[] =
 {
-  0,      /* suppress-default-keybindings flag */
   KEYMAP_META('0'), NUL,                 A_info_add_digit_to_numeric_arg,
   KEYMAP_META('1'), NUL,                 A_info_add_digit_to_numeric_arg,
   KEYMAP_META('2'), NUL,                 A_info_add_digit_to_numeric_arg,
@@ -419,7 +322,6 @@ static int default_emacs_like_ea_keys[] =
 
 static int default_vi_like_info_keys[] =
 {
-  0,      /* suppress-default-keybindings flag */
   '0', NUL,                       A_info_add_digit_to_numeric_arg,
   '1', NUL,                       A_info_add_digit_to_numeric_arg,
   '2', NUL,                       A_info_add_digit_to_numeric_arg,
@@ -582,7 +484,6 @@ static int default_vi_like_info_keys[] =
 
 static int default_vi_like_ea_keys[] =
 {
-  0,      /* suppress-default-keybindings flag */
   ESC, '1', NUL,                  A_info_add_digit_to_numeric_arg,
   ESC, '2', NUL,                  A_info_add_digit_to_numeric_arg,
   ESC, '3', NUL,                  A_info_add_digit_to_numeric_arg,
@@ -718,20 +619,16 @@ fetch_user_maps (char *init_file)
 }
 
 
-/* Convert an infokey file section to keymap bindings.  Return false if
-   the default bindings are to be suppressed.  */
-static int
+/* Set key bindings in MAP from TABLE, which is of length LEN. */
+static void
 section_to_keymaps (Keymap map, int *table, unsigned int len)
 {
-  int stop;
   int *p;
   int *seq;
   unsigned int seqlen = 0;
   enum { getseq, gotseq, getaction } state = getseq;
   
-  stop = len > 0 ? table[0] : 0;
-  
-  for (p = table + 1; (unsigned int) (p - table) < len; p++)
+  for (p = table; (unsigned int) (p - table) < len; p++)
     {
       switch (state)
 	{
@@ -769,8 +666,8 @@ section_to_keymaps (Keymap map, int *table, unsigned int len)
 	}
     }
   if (state != getseq)
-    info_error ("%s", _("Bad data in infokey file -- some key bindings ignored"));
-  return !stop;
+    abort ();
+  return;
 }
 
 /* Read key bindings and variable settings from INIT_FILE.  If INIT_FILE
