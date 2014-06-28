@@ -35,8 +35,6 @@ enum sect_e
     var = 2
   };
 
-/* Some "forward" declarations. */
-int compile (FILE *fp, const char *filename, struct sect *sections);
 static void syntax_error (const char *filename, unsigned int linenum,
 			  const char *fmt, ...) TEXINFO_PRINTFLIKE(3,4);
 
@@ -155,14 +153,13 @@ static void syntax_error (const char *filename, unsigned int linenum,
 	following the '=' is not ignored.
  */
 
-static int add_to_section (struct sect *s, const char *str, unsigned int len);
 static int lookup_action (const char *actname);
 
-/* Compile the input file into its various sections.  Return true if no
-   error was encountered.
- */
+/* Read the init file.  Return true if no error was encountered.  Set
+   SUPPRESS_INFO or SUPPRESS_EA to true if the init file specified to ignore
+   default key bindings. */
 int
-compile (FILE *fp, const char *filename, struct sect *sections)
+compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
 {
   int error = 0;
   char rescan = 0;
@@ -212,7 +209,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
   char oval = 0;
   char comment[10];
   unsigned int clen = 0;
-  char seq[20];
+  int seq[20];
   unsigned int slen = 0;
   char act[80];
   unsigned int alen = 0;
@@ -223,7 +220,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 
 #define	To_seq(c) \
 		  do { \
-		    if (slen < sizeof seq) \
+		    if (slen < sizeof seq/sizeof(int)) \
 		      seq[slen++] = meta ? Meta(c) : (c); \
 		    else \
 		      { \
@@ -233,12 +230,6 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 		      } \
 		    meta = 0; \
 		  } while (0)
-
-  sections[info].cur = 1;
-  sections[info].data[0] = 0;
-  sections[ea].cur = 1;
-  sections[ea].data[0] = 0;
-  sections[var].cur = 0;
 
   while (!error && (rescan || (c = fgetc (fp)) != EOF))
     {
@@ -285,7 +276,12 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 		section = var;
 	      else if (strcmp (comment, "stop") == 0
 		       && (section == info || section == ea))
-		sections[section].data[0] = 1;
+                {
+                  if (section == info)
+                    *suppress_info == 1;
+                  else
+                    *suppress_ea == 1;
+                }
 	    }
 	  else if (clen < sizeof comment - 1)
 	    comment[clen++] = c;
@@ -393,19 +389,18 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 	      break;
 
 	    case special_key:
-	      To_seq (SK_ESCAPE);
 	      switch (c)
 		{
-		case 'u': To_seq (SK_UP_ARROW); break;
-		case 'd': To_seq (SK_DOWN_ARROW); break;
-		case 'r': To_seq (SK_RIGHT_ARROW); break;
-		case 'l': To_seq (SK_LEFT_ARROW); break;
-		case 'U': To_seq (SK_PAGE_UP); break;
-		case 'D': To_seq (SK_PAGE_DOWN); break;
-		case 'h': To_seq (SK_HOME); break;
-		case 'e': To_seq (SK_END); break;
-		case 'x': To_seq (SK_DELETE); break;
-		default:  To_seq (SK_LITERAL); rescan = 1; break;
+		case 'u': To_seq (KEY_UP_ARROW); break;
+		case 'd': To_seq (KEY_DOWN_ARROW); break;
+		case 'r': To_seq (KEY_RIGHT_ARROW); break;
+		case 'l': To_seq (KEY_LEFT_ARROW); break;
+		case 'U': To_seq (KEY_PAGE_UP); break;
+		case 'D': To_seq (KEY_PAGE_DOWN); break;
+		case 'h': To_seq (KEY_HOME); break;
+		case 'e': To_seq (KEY_END); break;
+		case 'x': To_seq (KEY_DELETE); break;
+		default:  To_seq (c); rescan = 1; break;
 		}
 	      seqstate = normal;
 	      break;
@@ -449,14 +444,18 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 		  if (a != -1)
 		    {
 		      char av = a;
+                      int keymap_bind_keyseq (Keymap, int *, KEYMAP_ENTRY *);
 
-		      if (!(add_to_section (&sections[section], seq, slen)
-			    && add_to_section (&sections[section], "", 1)
-			    && add_to_section (&sections[section], &av, 1)))
-			{
-			  syntax_error (filename, lnum, _("section too long"));
-			  error = 1;
-			}
+                      KEYMAP_ENTRY ke;
+                      
+                      ke.type = ISFUNC;
+                      ke.function = &function_doc_array[a];
+                      To_seq (0);
+
+                      if (section == info)
+                        keymap_bind_keyseq (info_keymap, seq, &ke);
+                      else /* section == ea */
+                        keymap_bind_keyseq (echo_area_keymap, seq, &ke);
 		    }
 		  else
 		    {
@@ -528,7 +527,7 @@ compile (FILE *fp, const char *filename, struct sect *sections)
                 info_error (_("%s: no such variable"), varn);
               else if (!set_variable_to_value (v, val, SET_IN_CONFIG_FILE))
                 info_error (_("value %s is not valid for variable %s"),
-                              val, var);
+                              val, varn);
 	    }
 	  else if (vallen < sizeof val - 1)
 	    val[vallen++] = c;
@@ -549,19 +548,6 @@ compile (FILE *fp, const char *filename, struct sect *sections)
 #undef To_seq
 
   return !error;
-}
-
-/* Add some characters to a section's data.  Return true if all the
-   characters fit, or false if the section's size limit was exceeded.
- */
-static int
-add_to_section (struct sect *s, const char *str, unsigned int len)
-{
-  if (s->cur + len > sizeof s->data)
-    return 0;
-  strncpy ((char *) s->data + s->cur, str, len);
-  s->cur += len;
-  return 1;
 }
 
 /* Return the numeric code of an Info command given its name.  If not found,

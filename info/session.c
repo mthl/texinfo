@@ -167,7 +167,7 @@ info_session (void)
 static void
 info_read_and_dispatch (void)
 {
-  unsigned char key;
+  int key;
 
   for (quit_info_immediately = 0; !quit_info_immediately; )
     {
@@ -178,7 +178,9 @@ info_read_and_dispatch (void)
       info_initialize_numeric_arg ();
 
       initialize_keyseq ();
-      key = info_get_input_char ();
+      key = get_input_key ();
+      if (key == -1)
+        continue;
 
       window_clear_echo_area ();
 
@@ -260,11 +262,13 @@ info_set_input_from_file (char *filename)
 /*                                                                  */
 /* **************************************************************** */
 
+static void info_gather_typeahead (int);
+
 /* Largest number of characters that we can read in advance. */
 #define MAX_INFO_INPUT_BUFFERING 512
 
-static int pop_index = 0;
-static int push_index = 0;
+static int pop_index = 0; /* Where to remove bytes from input buffer. */
+static int push_index = 0; /* Where to add bytes to input buffer. */
 static unsigned char info_input_buffer[MAX_INFO_INPUT_BUFFERING];
 
 /* Put a byte back into the input buffer. */
@@ -282,7 +286,7 @@ info_set_pending_input (unsigned char key)
    Return the key in KEY.
    Result is non-zero if there was a key, or 0 if there wasn't. */
 static int
-info_get_key_from_typeahead (unsigned char *key)
+get_byte_from_input_buffer (unsigned char *key)
 {
   if (push_index == pop_index)
     return 0;
@@ -298,14 +302,14 @@ info_get_key_from_typeahead (unsigned char *key)
 int
 info_any_buffered_input_p (void)
 {
-  info_gather_typeahead ();
+  info_gather_typeahead (0);
   return push_index != pop_index;
 }
 
-/* If characters are available to be read, then read them and stuff them into
-   info_input_buffer.  Otherwise, do nothing. */
-void
-info_gather_typeahead (void)
+/* Read bytes and stuff them into info_input_buffer.  If WAIT is true, wait
+   for input; otherwise don't do anything if there is no input waiting. */
+static void
+info_gather_typeahead (int wait)
 {
   register int i = 0;
   int tty, space_avail;
@@ -314,6 +318,21 @@ info_gather_typeahead (void)
 
   tty = fileno (info_input_stream);
   chars_avail = 0;
+
+  /* There may be characters left over from last time, in which case we don't
+     want to wait for another key to be pressed. */
+  if (wait && pop_index == push_index)
+    {
+      char c;
+      /* Wait until there is a byte waiting, and then stuff it into the input
+         buffer. */
+      if (read (tty, &c, 1) != 1)
+        return; /* Read error.  TODO: Return some kind of error code. */
+      info_input_buffer[push_index++] = c;
+      if (push_index >= MAX_INFO_INPUT_BUFFERING)
+        push_index = 0;
+      /* Continue to see if there are more bytes waiting. */
+    }
 
   /* Get the amount of space available in INFO_INPUT_BUFFER for new chars. */
   if (pop_index > push_index)
@@ -406,15 +425,16 @@ info_gather_typeahead (void)
     }
 }
 
-/* How to read a single character. */
+/* Get a single byte from the input stream.  This is limited because it does
+   not process multi-byte sequences corresponding to keys. */
 unsigned char
-info_get_input_char (void)
+info_get_input_byte (void)
 {
   unsigned char keystroke;
 
-  info_gather_typeahead ();
+  info_gather_typeahead (1);
 
-  if (info_get_key_from_typeahead (&keystroke) == 0)
+  if (get_byte_from_input_buffer (&keystroke) == 0)
     {
       int rawkey;
       unsigned char c;
@@ -469,6 +489,123 @@ info_get_input_char (void)
     dribble (keystroke);
 
   return keystroke;
+}
+
+/* Return number representing a key that has been pressed, which is an index
+   into info_keymap and echo_area_keymap.  Return -1 if no key has been
+   pressed. */
+int
+get_input_key (void)
+{
+  BYTEMAP_ENTRY *b;
+  unsigned char c;
+  int esc_seen;
+  int pop_start;
+  unsigned char first;
+  info_gather_typeahead (1);
+
+  if (pop_index == push_index)
+    return -1; /* No input waiting.  This shouldn't happen. */
+
+  /* Save the first byte waiting in the input buffer. */
+  first = info_input_buffer[pop_index];
+
+  b = byte_seq_to_key;
+
+  while (pop_index != push_index)
+    {
+      int in_map = 0;
+      if (!get_byte_from_input_buffer (&c))
+        break; /* Incomplete byte sequence. */
+
+      /* Would it be easier to dribble in info_gather_typeahead instead? */
+      if (info_dribble_file)
+        dribble (c);
+
+      switch (b[c].type)
+        {
+        case BYTEMAP_KEY:
+          return b[c].key;
+        case BYTEMAP_ESC:
+          esc_seen = 1;
+          pop_start = pop_index;
+          /* Fall through. */
+        case BYTEMAP_MAP:
+          in_map = 1;
+          b = b[c].next;
+          break;
+        case BYTEMAP_NONE:
+          break;
+        }
+
+      /* If we read an incomplete byte sequence, pause a short while to
+         see if more bytes follow.  We should probably allow the length
+         of this delay to be settable by the user. */
+      if (in_map && pop_index == push_index)
+        {
+          int ready = 0;
+#if defined (FD_SET)
+          struct timeval timer;
+          fd_set readfds;
+
+          FD_ZERO (&readfds);
+          FD_SET (fileno (info_input_stream), &readfds);
+          timer.tv_sec = 0;
+          timer.tv_usec = 10000;
+          ready = select (fileno(info_input_stream)+1, &readfds,
+                          NULL, NULL, &timer);
+#else
+              ready = 1;
+#endif /* FD_SET */
+          if (ready)
+            info_gather_typeahead (0);
+        }
+    }
+
+  if (esc_seen)
+    {
+      /* The sequence started with ESC, but wasn't recognized.  Treat it
+         as introducing a sequence produced by a key chord with the meta key
+         pressed. */
+
+      /* Start again with the first key after ESC. */
+      pop_index = pop_start;
+      b = byte_seq_to_key;
+
+      /* If there are no more characters, then decide that the escape key
+         itself has been pressed. */
+      if (pop_index == push_index)
+        return 033;
+
+      /* Save the first byte waiting in the input buffer. */
+      first = info_input_buffer[pop_index];
+
+      while (pop_index != push_index)
+        {
+          if (!get_byte_from_input_buffer (&c))
+            break; /* Incomplete byte sequence. */
+          switch (b[c].type)
+            {
+            case BYTEMAP_KEY:
+              return b[c].key + KEYMAP_META_BASE;
+            case BYTEMAP_MAP:
+              b = b[c].next;
+              break;
+            case BYTEMAP_ESC:
+              /* This could happen if there were two escapes in a row, or
+                 if the user types something like M-Left. */
+              b = b[c].next;
+              break;
+            case BYTEMAP_NONE:
+              break;
+            }
+        }
+      /* If the sequence was incomplete. */
+      return first + KEYMAP_META_BASE;
+    }
+
+  /* If the sequence was incomplete, return the first byte. */
+  return first;
 }
 
 /* **************************************************************** */
@@ -3421,7 +3558,7 @@ info_search_internal (char *string, WINDOW *window,
           NODE *node;
 	  
           /* Allow C-g to quit the search, failing it if pressed. */
-          info_gather_typeahead (); \
+          info_gather_typeahead (0); \
           if (info_input_buffer[pop_index] == Control ('g'))
             return -1;
 
@@ -3879,7 +4016,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
         }
 
       /* Read a character and dispatch on it. */
-      key = info_get_input_char ();
+      key = info_get_input_byte ();
       window_get_state (window, &mystate);
 
       if (key == DEL || key == Control ('h'))
@@ -3902,7 +4039,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
         }
       else if (key == Control ('q'))
         {
-          key = info_get_input_char ();
+          key = info_get_input_byte ();
           quoted = 1;
         }
 
@@ -4373,7 +4510,7 @@ DECLARE_INFO_COMMAND (info_do_lowercase_version,
 {}
 
 static void
-dispatch_error (char *keyseq)
+dispatch_error (int *keyseq)
 {
   char *rep;
 
@@ -4392,7 +4529,7 @@ dispatch_error (char *keyseq)
 }
 
 /* Keeping track of key sequences. */
-static char *info_keyseq = NULL;
+static int *info_keyseq = NULL;
 static int info_keyseq_index = 0;
 static int info_keyseq_size = 0;
 static int info_keyseq_displayed_p = 0;
@@ -4407,10 +4544,11 @@ initialize_keyseq (void)
 
 /* Add CHARACTER to the current key sequence. */
 void
-add_char_to_keyseq (char character)
+add_char_to_keyseq (int character)
 {
   if (info_keyseq_index + 2 >= info_keyseq_size)
-    info_keyseq = (char *)xrealloc (info_keyseq, info_keyseq_size += 10);
+    info_keyseq = xrealloc (info_keyseq,
+                            sizeof (int) * (info_keyseq_size += 10));
 
   info_keyseq[info_keyseq_index++] = character;
   info_keyseq[info_keyseq_index] = '\0';
@@ -4438,9 +4576,13 @@ display_info_keyseq (int expecting_future_input)
   info_keyseq_displayed_p = 1;
 }
 
-/* Called by interactive commands to read a keystroke. */
+/* Called by interactive commands to read another byte when bytes have already
+   been read as part of the current command (and possibly displayed in status
+   line with display_info_keyseq).
+   TODO: Replace calls to this function with calls to
+   get_another_input_key. */
 unsigned char
-info_get_another_input_char (void)
+info_get_another_input_byte (void)
 {
   int ready = !info_keyseq_displayed_p; /* ready if new and pending key */
 
@@ -4471,13 +4613,51 @@ info_get_another_input_char (void)
   if (!ready)
     display_info_keyseq (1);
 
-  return info_get_input_char ();
+  return info_get_input_byte ();
+}
+
+/* Called by interactive commands to read another key when keys have already
+   been read as part of the current command (and possibly displayed in status
+   line with display_info_keyseq). */
+int
+get_another_input_key (void)
+{
+  int ready = !info_keyseq_displayed_p; /* ready if new and pending key */
+
+  /* If there isn't any input currently available, then wait a
+     moment looking for input.  If we don't get it fast enough,
+     prompt a little bit with the current key sequence. */
+  if (!info_keyseq_displayed_p)
+    {
+      ready = 1;
+      if (!info_any_buffered_input_p ())
+        {
+#if defined (FD_SET)
+          struct timeval timer;
+          fd_set readfds;
+
+          FD_ZERO (&readfds);
+          FD_SET (fileno (info_input_stream), &readfds);
+          timer.tv_sec = 1;
+          timer.tv_usec = 750;
+          ready = select (fileno(info_input_stream)+1, &readfds,
+			  NULL, NULL, &timer);
+#else
+          ready = 0;
+#endif /* FD_SET */
+      }
+    }
+
+  if (!ready)
+    display_info_keyseq (1);
+
+  return get_input_key ();
 }
 
 /* Do the command associated with KEY in MAP.  If the associated command is
    really a keymap, then read another key, and dispatch into that map. */
 void
-info_dispatch_on_key (unsigned char key, Keymap map)
+info_dispatch_on_key (int key, Keymap map)
 {
   switch (map[key].type)
     {
@@ -4491,10 +4671,18 @@ info_dispatch_on_key (unsigned char key, Keymap map)
             /* Special case info_do_lowercase_version (). */
             if (func == (VFunction *) info_do_lowercase_version)
               {
-                unsigned char lowerkey;
+                int lowerkey;
 
-                lowerkey = Meta_p(key) ? Meta (tolower (UnMeta (key)))
-                  : tolower (key);
+                if (key >= KEYMAP_META_BASE)
+                  {
+                    lowerkey = key;
+                    lowerkey -= KEYMAP_META_BASE;
+                    lowerkey = towlower (lowerkey);
+                    lowerkey += KEYMAP_META_BASE;
+                  }
+                else
+                  lowerkey = towlower (key);
+
                 if (lowerkey == key)
                   {
                     add_char_to_keyseq (key);
@@ -4542,9 +4730,9 @@ info_dispatch_on_key (unsigned char key, Keymap map)
       add_char_to_keyseq (key);
       if (map[key].function != NULL)
         {
-          unsigned char newkey;
+          int newkey;
 
-          newkey = info_get_another_input_char ();
+          newkey = get_another_input_key ();
           info_dispatch_on_key (newkey, (Keymap)map[key].function);
         }
       else
@@ -4654,7 +4842,7 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
           if (active_window != the_echo_area)
             display_cursor_at_point (active_window);
 
-          pure_key = key = info_get_another_input_char ();
+          pure_key = key = info_get_another_input_byte ();
 
           add_char_to_keyseq (key);
         }

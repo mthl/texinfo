@@ -40,7 +40,7 @@ typedef struct function_keyseq
 {
   struct function_keyseq *next;
   struct keymap_entry *map;
-  char *keyseq;
+  int *keyseq;
 } FUNCTION_KEYSEQ;
 
 /* An array of FUNCTION_DOC structures is defined in doc.c, which is
@@ -74,8 +74,8 @@ extern char *function_name (InfoCommand *cmd);
 extern InfoCommand *named_function (char *name);
 
 extern char *function_documentation (InfoCommand *cmd);
-extern char *pretty_keyname (unsigned char key);
-extern char *pretty_keyseq (char *keyseq);
+extern char *pretty_keyname (int key);
+extern char *pretty_keyseq (int *keyseq);
 extern char *where_is (Keymap map, InfoCommand *cmd);
 extern char *replace_in_documentation (const char *string,
     int help_is_only_window_p);

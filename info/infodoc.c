@@ -85,22 +85,28 @@ static char *info_internal_help_text[] = {
 
 static char *where_is_internal (Keymap map, InfoCommand *cmd);
 
-void
-dump_map_to_text_buffer (struct text_buffer *tb, char *prefix, Keymap map)
+static void
+dump_map_to_text_buffer (struct text_buffer *tb, int *prefix,
+                         int prefix_len, Keymap map)
 {
   register int i;
-  unsigned prefix_len = strlen (prefix);
-  char *new_prefix = xmalloc (prefix_len + 2);
+  int *new_prefix = xmalloc ((prefix_len + 2) * sizeof (int));
 
-  strncpy (new_prefix, prefix, prefix_len);
-  new_prefix[prefix_len + 1] = '\0';
+  memcpy (new_prefix, prefix, prefix_len * sizeof (int));
+  new_prefix[prefix_len + 1] = 0;
 
-  for (i = 0; i < 256; i++)
+  for (i = 0; i < KEYMAP_SIZE; i++)
     {
+      if (i == 128)
+        i = 256;
+      if (i == 128 + KEYMAP_META_BASE)
+        i = 256 + KEYMAP_META_BASE;
+
       new_prefix[prefix_len] = i;
       if (map[i].type == ISKMAP)
         {
-          dump_map_to_text_buffer (tb, new_prefix, (Keymap)map[i].function);
+          dump_map_to_text_buffer (tb, new_prefix, prefix_len + 1,
+                                   (Keymap)map[i].function);
         }
       else if (map[i].function)
         {
@@ -124,8 +130,8 @@ dump_map_to_text_buffer (struct text_buffer *tb, char *prefix, Keymap map)
             continue;
 
           /* Find out if there is a series of identical functions, as in
-             ea_insert (). */
-          for (last = i + 1; last < 256; last++)
+             add-digit-to-numeric-arg. */
+          for (last = i + 1; last < KEYMAP_SIZE; last++)
             if ((map[last].type != ISFUNC) ||
                 (map[last].function != map[i].function))
               break;
@@ -210,10 +216,10 @@ create_internal_info_help_node (int help_is_only_window_p)
       free (infopath_str);
 
       text_buffer_printf (&msg, _("Commands available in Info windows:\n\n"));
-      dump_map_to_text_buffer (&msg, "", info_keymap);
+      dump_map_to_text_buffer (&msg, 0, 0, info_keymap);
       text_buffer_printf (&msg, "---------------------\n\n");
       text_buffer_printf (&msg, _("Commands available in the echo area:\n\n"));
-      dump_map_to_text_buffer (&msg, "", echo_area_keymap);
+      dump_map_to_text_buffer (&msg, 0, 0, echo_area_keymap);
 
       /* Get a list of commands which have no keystroke equivs. */
       exec_keys = where_is (info_keymap, InfoCmd(info_execute_command));
@@ -468,9 +474,9 @@ named_function (char *name)
 
 DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
 {
-  char keys[50];
+  int keys[50];
   unsigned char keystroke;
-  char *k = keys;
+  int *k = keys;
   Keymap map = info_keymap;
 
   *k = '\0';
@@ -478,7 +484,7 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
   for (;;)
     {
       message_in_echo_area (_("Describe key: %s"), pretty_keyseq (keys));
-      keystroke = info_get_input_char ();
+      keystroke = info_get_input_byte ();
       unmessage_in_echo_area ();
 
       /* Add the KEYSTROKE to our list. */
@@ -540,16 +546,16 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
 
 /* Return the pretty printable name of a single character. */
 char *
-pretty_keyname (unsigned char key)
+pretty_keyname (int key)
 {
   static char rep_buffer[30];
   char *rep;
 
-  if (Meta_p (key))
+  if (key >= KEYMAP_META_BASE)
     {
       char temp[20];
 
-      rep = pretty_keyname (UnMeta (key));
+      rep = pretty_keyname (key - KEYMAP_META_BASE);
 
       sprintf (temp, "M-%s", rep);
       strcpy (rep_buffer, temp);
@@ -569,6 +575,34 @@ pretty_keyname (unsigned char key)
           rep = rep_buffer;
         }
     }
+  else if (key >= 256)
+    switch (key)
+      {
+      case KEY_RIGHT_ARROW:
+        rep = "Right"; break;
+      case KEY_LEFT_ARROW:
+        rep = "Left"; break;
+      case KEY_UP_ARROW:
+        rep = "Up"; break;
+      case KEY_DOWN_ARROW:
+        rep = "Down"; break;
+      case KEY_PAGE_UP:
+        rep = "PgUp"; break;
+      case KEY_PAGE_DOWN:
+        rep = "PgDn"; break;
+      case KEY_HOME:
+        rep = "Home"; break;
+      case KEY_END:
+        rep = "End"; break;
+      case KEY_DELETE:
+        rep = "DEL"; break;
+      case KEY_INSERT:
+        rep = "INS"; break;
+      case KEY_BACK_TAB:
+        rep = "BackTab"; break;
+      default:
+        rep = "shouldn't see this"; break;
+      }
   else
     {
       switch (key)
@@ -586,10 +620,10 @@ pretty_keyname (unsigned char key)
 
 /* Return the pretty printable string which represents KEYSEQ. */
 
-static void pretty_keyseq_internal (char *keyseq, char *rep);
+static void pretty_keyseq_internal (int *keyseq, char *rep);
 
 char *
-pretty_keyseq (char *keyseq)
+pretty_keyseq (int *keyseq)
 {
   static char keyseq_rep[200];
 
@@ -600,72 +634,20 @@ pretty_keyseq (char *keyseq)
 }
 
 static void
-pretty_keyseq_internal (char *keyseq, char *rep)
+pretty_keyseq_internal (int *keyseq, char *rep)
 {
-  if (term_kP && strncmp(keyseq, term_kP, strlen(term_kP)) == 0)
+  if (!*keyseq)
+    return;
+
+  while (1)
     {
-      strcpy(rep, "PgUp");
-      keyseq += strlen(term_kP);
-    }
-  else if (term_kN && strncmp(keyseq, term_kN, strlen(term_kN)) == 0)
-    {
-      strcpy(rep, "PgDn");
-      keyseq += strlen(term_kN);
-    }
-  else if (term_kh && strncmp(keyseq, term_kh, strlen(term_kh)) == 0)
-    {
-      strcpy(rep, "Home");
-      keyseq += strlen(term_kh);
-    }
-  else if (term_ke && strncmp(keyseq, term_ke, strlen(term_ke)) == 0)
-    {
-      strcpy(rep, "End");
-      keyseq += strlen(term_ke);
-    }
-  else if (term_ki && strncmp(keyseq, term_ki, strlen(term_ki)) == 0)
-    {
-      strcpy(rep, "INS");
-      keyseq += strlen(term_ki);
-    }
-  else if (term_kx && strncmp(keyseq, term_kx, strlen(term_kx)) == 0)
-    {
-      strcpy(rep, "DEL");
-      keyseq += strlen(term_kx);
-    }
-  else if (term_ku && strncmp(keyseq, term_ku, strlen(term_ku)) == 0)
-    {
-      strcpy(rep, "Up");
-      keyseq += strlen(term_ku);
-    }
-  else if (term_kd && strncmp(keyseq, term_kd, strlen(term_kd)) == 0)
-    {
-      strcpy(rep, "Down");
-      keyseq += strlen(term_kd);
-    }
-  else if (term_kl && strncmp(keyseq, term_kl, strlen(term_kl)) == 0)
-    {
-      strcpy(rep, "Left");
-      keyseq += strlen(term_kl);
-    }
-  else if (term_kr && strncmp(keyseq, term_kr, strlen(term_kr)) == 0)
-    {
-      strcpy(rep, "Right");
-      keyseq += strlen(term_kr);
-    }
-  else if (term_bt && strncmp(keyseq, term_bt, strlen(term_bt)) == 0)
-    {
-      strcpy(rep, "BackTab");
-      keyseq += strlen(term_kr);
-    }
-  else
-    {
-      strcpy (rep, pretty_keyname (keyseq[0]));
+      strcat (rep, pretty_keyname (keyseq[0]));
       keyseq++;
-    }
-  if (*keyseq)
-    {
+
+      if (!*keyseq)
+        break;
+
       strcat (rep, " ");
-      pretty_keyseq_internal (keyseq, rep + strlen(rep));
     }
 }
 

@@ -1,3 +1,80 @@
+2014-06-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infokey.h:
+	(SK_RIGHT_ARROW, SK_LEFT_ARROW, SK_UP_ARROW, SK_DOWN_ARROW, SK_PAGE_UP)
+	(SK_PAGE_DOWN SK_HOME, SK_END, SK_DELETE, SK_INSERT, SK_CTL_LEFT_ARROW)
+	(SK_CTL_RIGHT_ARROW, SK_CTL_DELETE, SK_BACK_TAB): Removed.
+	(struct sect): Removed.
+
+	* info/infomap.h (BYTEMAP_ENTRY): New typedef.
+	(BYTEMAP_NONE, BYTEMAP_KEY, BYTEMAP_MAP, BYTEMAP_ESC): New symbols.
+	* info/terminal.c (byte_seq_to_key): New variable.
+	(initialize_byte_map): New function.
+	(terminal_initialize_terminal): Call it.
+
+	* info/infomap.h
+	(KEY_RIGHT_ARROW, KEY_LEFT_ARROW, KEY_UP_ARROW, KEY_DOWN_ARROW)
+	(KEY_PAGE_UP, KEY_PAGE_DOWN, KEY_HOME, KEY_END, KEY_DELETE, KEY_INSERT)
+	(KEY_CTL_LEFT_ARROW, KEY_CTL_RIGHT_ARROW, KEY_CTL_DELETE)
+	(KEY_BACK_TAB): New symbols.
+	(KEYMAP_SIZE, KEYMAP_META_BASE, KEYMAP_META): New symbols.
+
+	* info/infomap.c (keymap_make_keymap, keymap_discard_keymap): Make
+	keymap as big as KEYMAP_SIZE.
+	(default_emacs_like_info_keys, default_emacs_like_ea_keys)
+	(default_vi_like_info_keys, default_vi_like_ea_keys):
+	Arrays of int instead of arrays of char.  Use KEY_* symbols instead of
+	SK_* sequences.  Use KEYMAP_META macro instead of Meta.  Avoid some
+	duplication where both a sequence with ESC Key and Meta-Key were
+	bound.  Don't specify sequences produced by special keys.
+	(section_to_keymaps): Process new format specifying key bindings.
+	(decode_keys): Removed.
+	(find_function_keyseq, add_function_keyseq, remove_function_keyseq):
+	Keys are represented with type int instead of char.
+	(keymap_copy_keymap): Removed.
+	(keymap_bind_keyseq): Don't override already bound key sequences.  No
+	longer static.
+	(keymap_make_keymap): Don't bind upper-case characters to
+	info_do_lowercase_version.
+	(read_init_file): Do it here instead.
+
+	* info/session.c (info_get_input_char, info_get_input_byte): Renamed.
+	(info_get_another_input_char, info_get_another_input_byte): Renamed.
+
+	(info_get_key_from_typeahead, get_byte_from_input_buffer): Renamed.
+	(info_gather_typeahead): Declared static.  New argument added saying
+	whether to wait for input.
+
+	(info_dispatch_on_key, dispatch_error, add_char_to_keyseq): Arguments
+	changed from char to int.
+	(info_keyseq): Type changed.
+	(info_dispatch_on_key) <info_do_lowercase_version>: Updated to match
+	new meaning of key numbers.
+
+	(get_another_input_key): New function based on
+	info_get_another_input_byte.
+	(info_dispatch_on_key): Call it.
+
+	(get_input_key): New function.
+	(read_and_dispatch): Call it.
+	* info/echo-area.c (read_and_dispatch_in_echo_area): Call get_input_key
+	instead of info_get_input_char.
+
+	* info/doc.h (FUNCTION_KEYSEQ): Type of keyseq field changed.
+
+	* info/infokey.c (compile): Arguments changed.  Apply key bindings from
+	init file directly instead of compiling into an intermediate
+	representation.
+	(add_to_section): Removed.
+
+	* info/infodoc.c (dump_map_to_text_buffer): Arguments changed.  Handle
+	arrays of int representing key sequences instead of arrays of char.
+	Keymap array has size KEYMAP_SIZE instead of 256.
+	(pretty_keyname, pretty_keyseq, pretty_keyseq_internal): Arguments
+	changed.  Callers updated.
+	(pretty_keyname): Handle named keys.
+	(pretty_keyseq_internal): Don't handle named keys specially.
+
 2014-06-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/echo-area.c (read_and_dispatch_in_echo_area): Copy of

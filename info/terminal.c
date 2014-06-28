@@ -23,6 +23,7 @@
 #include "info.h"
 #include "terminal.h"
 #include "termdep.h"
+#include "infomap.h"
 
 #include <sys/types.h>
 #include <signal.h>
@@ -500,6 +501,83 @@ terminal_get_screen_size (void)
     }
 }
 
+/* Root of structure representing a mapping from sequences of bytes to named
+   keys. */
+BYTEMAP_ENTRY *byte_seq_to_key;
+
+/* Initialize byte map read in get_input_key. */
+static void
+initialize_byte_map (void)
+{
+  int i;
+
+  static struct special_keys {
+      int key_id;
+      char **byte_seq;
+  } keys[] = {
+      KEY_RIGHT_ARROW, &term_kr,
+      KEY_LEFT_ARROW, &term_kl,
+      KEY_UP_ARROW, &term_ku,
+      KEY_DOWN_ARROW, &term_kd,
+      KEY_PAGE_UP, &term_kP,
+      KEY_PAGE_DOWN, &term_kN,
+      KEY_HOME, &term_kh,
+      KEY_END, &term_ke,
+      KEY_DELETE, &term_kD,
+      KEY_INSERT, &term_ki,
+      KEY_BACK_TAB, &term_bt
+  };
+
+  byte_seq_to_key = xmalloc (256 * sizeof (BYTEMAP_ENTRY));
+
+  /* Make each byte represent itself by default. */
+  for (i = 0; i < 128; i++)
+    {
+      byte_seq_to_key[i].type = BYTEMAP_KEY;
+      byte_seq_to_key[i].key = i;
+      byte_seq_to_key[i].next = 0;
+    }
+
+  /* Map each byte to the meta key. */
+  for (i = 128; i < 256; i++)
+    {
+      byte_seq_to_key[i].type = BYTEMAP_KEY;
+      byte_seq_to_key[i].key = (i - 128) + KEYMAP_META_BASE;
+      byte_seq_to_key[i].next = 0;
+    }
+
+  /* For each special key, record its byte sequence. */
+  for (i = 0; i < sizeof (keys) / sizeof (*keys); i++)
+    {
+      unsigned char *c;
+      BYTEMAP_ENTRY *b = byte_seq_to_key;
+
+      if (!*keys[i].byte_seq)
+        continue; /* No byte sequence known for this key. */
+      c = *keys[i].byte_seq;
+      for (; *c; c++)
+        {
+          if (c[1] == '\0') /* Last character. */
+            {
+              b[*c].type = BYTEMAP_KEY;
+              b[*c].key = keys[i].key_id;
+            }
+          else
+            {
+              b[*c].type = BYTEMAP_MAP;
+              b[*c].key = 0;
+              if (!b[*c].next)
+                b[*c].next = xzalloc (256 * sizeof (BYTEMAP_ENTRY));
+              b = b[*c].next;
+            }
+        }
+    }
+
+  /* Special case for ESC: Can introduce special key sequences, represent the
+     Meta key being pressed, or be a key on its own. */
+  byte_seq_to_key['\033'].type = BYTEMAP_ESC;
+}
+
 /* Initialize the terminal which is known as TERMINAL_NAME.  If this
    terminal doesn't have cursor addressability, `terminal_is_dumb_p'
    becomes nonzero.  The variables SCREENHEIGHT and SCREENWIDTH are set
@@ -644,6 +722,8 @@ terminal_initialize_terminal (char *terminal_name)
 
   term_kD = tgetstr ("kD", &buffer);
   term_bt = tgetstr ("bt", &buffer);
+
+  initialize_byte_map ();
 
   /* If this terminal is not cursor addressable, then it is really dumb. */
   if (!term_goto)

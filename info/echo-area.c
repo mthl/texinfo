@@ -163,7 +163,7 @@ echo_area_after_read (void)
 static void
 read_and_dispatch_in_echo_area (void)
 {
-  unsigned char key;
+  int key;
 
   while (1)
     {
@@ -179,7 +179,7 @@ read_and_dispatch_in_echo_area (void)
       info_initialize_numeric_arg ();
 
       initialize_keyseq ();
-      key = info_get_input_char ();
+      key = get_input_key ();
 
       info_error_was_printed = 0;
 
@@ -479,7 +479,7 @@ DECLARE_INFO_COMMAND (ea_quoted_insert, _("Insert next character verbatim"))
 {
   unsigned char character;
 
-  character = info_get_another_input_char ();
+  character = info_get_another_input_byte ();
   ea_insert (window, count, character);
 }
 

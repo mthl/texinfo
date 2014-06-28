@@ -68,29 +68,4 @@ Format of VAR section:
 #define	UNMETA(c)		((c) & ~0x80)
 #define	ISMETA(c)		(((c) & 0x80) != 0)
 
-/* Special keys (keys which output different strings on different terminals) */
-
-#define SK_ESCAPE		CONTROL('k')
-#define SK_RIGHT_ARROW		1
-#define SK_LEFT_ARROW		2
-#define SK_UP_ARROW		3
-#define SK_DOWN_ARROW		4
-#define SK_PAGE_UP		5
-#define SK_PAGE_DOWN		6
-#define SK_HOME			7
-#define SK_END			8
-#define SK_DELETE		9
-#define SK_INSERT		10
-#define SK_CTL_LEFT_ARROW	11
-#define SK_CTL_RIGHT_ARROW	12
-#define SK_CTL_DELETE		13
-#define SK_BACK_TAB		14
-#define SK_LITERAL		40
-
-/* Data for a section of a compiled .info file. */
-struct sect
-  {
-    unsigned int cur;
-    unsigned char data[INFOKEY_MAX_SECTIONLEN];
-  };
 

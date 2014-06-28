@@ -27,8 +27,7 @@
 #include "infokey.h"
 #include "variables.h"
 
-static int keymap_bind_keyseq (Keymap map, const char *keyseq,
-    KEYMAP_ENTRY *keyentry);
+void keymap_bind_keyseq (Keymap map, int *keyseq, KEYMAP_ENTRY *keyentry);
 
 /* Return a new keymap which has all the uppercase letters mapped to run
    the function info_do_lowercase_version (). */
@@ -38,20 +37,12 @@ keymap_make_keymap (void)
   int i;
   Keymap keymap;
 
-  keymap = (Keymap)xmalloc (256 * sizeof (KEYMAP_ENTRY));
+  keymap = (Keymap)xmalloc (KEYMAP_SIZE * sizeof (KEYMAP_ENTRY));
 
-  for (i = 0; i < 256; i++)
+  for (i = 0; i < KEYMAP_SIZE; i++)
     {
       keymap[i].type = ISFUNC;
       keymap[i].function = NULL;
-    }
-
-  for (i = 'A'; i < ('Z' + 1); i++)
-    {
-      keymap[i].type = ISFUNC;
-      keymap[Meta(i)].type = ISFUNC;
-      keymap[Meta(i)].function =
-      keymap[i].function = InfoCmd (info_do_lowercase_version);
     }
 
   return keymap;
@@ -68,11 +59,11 @@ find_function_keyseq (Keymap map, int c, Keymap rootmap)
     return NULL;
   for (k = map[c].function->keys; k; k = k->next)
     {
-      const unsigned char *p;
+      int *p;
       Keymap m = rootmap;
       if (k->map != rootmap)
         continue;
-      for (p = (unsigned char *) k->keyseq; *p && m[*p].type == ISKMAP; p++)
+      for (p = k->keyseq; *p && m[*p].type == ISKMAP; p++)
         m = (Keymap)m[*p].function;
       if (*p != c || p[1])
         continue;
@@ -84,10 +75,10 @@ find_function_keyseq (Keymap map, int c, Keymap rootmap)
 }
 
 static void
-add_function_keyseq (InfoCommand *function,
-    const char *keyseq, Keymap rootmap)
+add_function_keyseq (InfoCommand *function, int *keyseq, Keymap rootmap)
 {
   FUNCTION_KEYSEQ *ks;
+  int len;
 
   if (function == NULL ||
       function == InfoCmd (info_do_lowercase_version) ||
@@ -96,13 +87,14 @@ add_function_keyseq (InfoCommand *function,
   ks = xmalloc  (sizeof (FUNCTION_KEYSEQ));
   ks->next = function->keys;
   ks->map = rootmap;
-  ks->keyseq = xstrdup (keyseq);
+  for (len = 0; keyseq[len]; len++);
+  ks->keyseq = xmalloc ((len + 1) * sizeof (int));
+  memcpy (ks->keyseq, keyseq, (len + 1) * sizeof (int));
   function->keys = ks;
 }
 
 static void
-remove_function_keyseq (InfoCommand *function,
-    const char *keyseq, Keymap rootmap)
+remove_function_keyseq (InfoCommand *function, int *keyseq, Keymap rootmap)
 {
 
   FUNCTION_KEYSEQ *k, *kp;
@@ -112,8 +104,18 @@ remove_function_keyseq (InfoCommand *function,
       function == InfoCmd (ea_insert))
     return;
   for (kp = NULL, k = function->keys; k; kp = k, k = k->next)
-    if (k->map == rootmap && strcmp (k->keyseq, keyseq) == 0)
-      break;
+    if (k->map == rootmap)
+      {
+        int i = 0;
+        while (k->keyseq[i] && keyseq[i])
+          {
+            if (k->keyseq[i] != keyseq[i])
+              break;
+            i++;
+          }
+        if (!k->keyseq[i] && !keyseq[i])
+          break; /* Sequences are equal. */
+      }
   if (!k)
     abort ();
   if (kp)
@@ -122,41 +124,8 @@ remove_function_keyseq (InfoCommand *function,
     function->keys = k->next;
 }
 
-/* Return a new keymap which is a copy of MAP. */
-Keymap
-keymap_copy_keymap (Keymap map, Keymap rootmap, Keymap newroot)
-{
-  int i;
-  Keymap keymap;
-  FUNCTION_KEYSEQ *ks;
-
-  keymap = keymap_make_keymap ();
-  if (!newroot)
-    newroot = keymap;
-
-  for (i = 0; i < 256; i++)
-    {
-      keymap[i].type = map[i].type;
-      switch (map[i].type)
-        {
-        case ISFUNC:
-          keymap[i].function = map[i].function;
-          ks = find_function_keyseq (map, i, rootmap);
-          if (ks)
-            add_function_keyseq (map[i].function, ks->keyseq, newroot);
-          break;
-        case ISKMAP:
-          keymap[i].function =
-	    (InfoCommand *)keymap_copy_keymap ((Keymap)map[i].function,
-					       rootmap, NULL);
-          break;
-        }
-    }
-  return keymap;
-}
-
 /* Free the keymap and its descendants. */
-void
+static void
 keymap_discard_keymap (Keymap map, Keymap rootmap)
 {
   int i;
@@ -166,7 +135,7 @@ keymap_discard_keymap (Keymap map, Keymap rootmap)
   if (!rootmap)
     rootmap = map;
 
-  for (i = 0; i < 256; i++)
+  for (i = 0; i < KEYMAP_SIZE; i++)
     {
       FUNCTION_KEYSEQ *ks;
       switch (map[i].type)
@@ -186,16 +155,16 @@ keymap_discard_keymap (Keymap map, Keymap rootmap)
   free (map);
 }
 
-/* Conditionally bind key sequence. */
-static int
-keymap_bind_keyseq (Keymap map,
-		    const char *keyseq, KEYMAP_ENTRY *keyentry)
+/* Bind key sequence.  Don't override already bound key sequences. */
+void
+keymap_bind_keyseq (Keymap map, int *keyseq, KEYMAP_ENTRY *keyentry)
 {
   Keymap m = map;
-  const unsigned char *s = (unsigned char *) keyseq;
+  int *s = keyseq;
   int c;
 
-  if (s == NULL || *s == '\0') return 0;
+  if (!s || *s == 0)
+    return;
 
   while ((c = *s++) != '\0')
     {
@@ -203,26 +172,27 @@ keymap_bind_keyseq (Keymap map,
       switch (m[c].type)
         {
         case ISFUNC:
+          if (m[c].function)
+            return; /* There is a function here already. */
+          /*
           ks = find_function_keyseq (m, c, map);
           if (ks)
             remove_function_keyseq (m[c].function, ks->keyseq, map);
+          */
 
           if (*s != '\0')
             {
               m[c].type = ISKMAP;
-              /* Here we are casting the Keymap pointer returned from
-                 keymap_make_keymap to an InfoCommand pointer.  Ugh.
-                 This makes the `function' structure garbage
-                 if it's actually interpreted as an InfoCommand.
-                 Should really be using a union, and taking steps to
-                 avoid the possible error.  */
               m[c].function = (InfoCommand *)keymap_make_keymap ();
             }
           break;
 
         case ISKMAP:
           if (*s == '\0')
-            keymap_discard_keymap ((Keymap)m[c].function, map);
+            return; /* The key sequence we were asked to bind is an initial
+                       subsequence of an already-bound sequence. */
+            /* keymap_discard_keymap ((Keymap)m[c].function, map); */
+
           break;
         }
       if (*s != '\0')
@@ -236,7 +206,7 @@ keymap_bind_keyseq (Keymap map,
         }
     }
 
-  return 1;
+  return;
 }
 
 
@@ -255,7 +225,7 @@ Keymap echo_area_keymap = NULL;
 
 #define NUL     '\0'
 
-static unsigned char default_emacs_like_info_keys[] =
+static int default_emacs_like_info_keys[] =
 {
   0,      /* suppress-default-keybindings flag */
   TAB, NUL,                       A_info_move_to_next_xref,
@@ -312,50 +282,28 @@ static unsigned char default_emacs_like_info_keys[] =
   'S', NUL,                       A_info_search_case_sensitively,
   't', NUL,                       A_info_top_node,
   'u', NUL,                       A_info_up_node,
-  ESC, '0', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '1', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '2', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '3', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '4', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '5', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '6', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '7', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '8', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '9', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '-', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, CONTROL('f'), NUL,         A_info_show_footnotes,
-  ESC, CONTROL('g'), NUL,         A_info_abort_key,
-  ESC, TAB, NUL,                  A_info_move_to_prev_xref,
-  ESC, CONTROL('v'), NUL,         A_info_scroll_other_window,
-  ESC, '<', NUL,                  A_info_beginning_of_node,
-  ESC, '>', NUL,                  A_info_end_of_node,
-  ESC, 'b', NUL,                  A_info_backward_word,
-  ESC, 'f', NUL,                  A_info_forward_word,
-  ESC, 'r', NUL,                  A_info_move_to_window_line,
-  ESC, 'v', NUL,                  A_info_scroll_backward_page_only,
-  Meta('0'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('1'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('2'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('3'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('4'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('5'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('6'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('7'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('8'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('9'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('-'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta(CONTROL('f')), NUL,        A_info_show_footnotes,
-  Meta(CONTROL('g')), NUL,        A_info_abort_key,
-  Meta(TAB), NUL,                 A_info_move_to_prev_xref,
-  Meta(CONTROL('v')), NUL,        A_info_scroll_other_window,
-  Meta('<'), NUL,                 A_info_beginning_of_node,
-  Meta('>'), NUL,                 A_info_end_of_node,
-  Meta('b'), NUL,                 A_info_backward_word,
-  Meta('f'), NUL,                 A_info_forward_word,
-  Meta('r'), NUL,                 A_info_move_to_window_line,
-  Meta('v'), NUL,                 A_info_scroll_backward_page_only,
-  ESC, 'x', NUL,                  A_info_execute_command,
-  Meta('x'), NUL,                 A_info_execute_command,
+  KEYMAP_META('0'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('1'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('2'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('3'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('4'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('5'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('6'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('7'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('8'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('9'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('-'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META(CONTROL('f')), NUL,        A_info_show_footnotes,
+  KEYMAP_META(CONTROL('g')), NUL,        A_info_abort_key,
+  KEYMAP_META(TAB), NUL,                 A_info_move_to_prev_xref,
+  KEYMAP_META(CONTROL('v')), NUL,        A_info_scroll_other_window,
+  KEYMAP_META('<'), NUL,                 A_info_beginning_of_node,
+  KEYMAP_META('>'), NUL,                 A_info_end_of_node,
+  KEYMAP_META('b'), NUL,                 A_info_backward_word,
+  KEYMAP_META('f'), NUL,                 A_info_forward_word,
+  KEYMAP_META('r'), NUL,                 A_info_move_to_window_line,
+  KEYMAP_META('v'), NUL,                 A_info_scroll_backward_page_only,
+  KEYMAP_META('x'), NUL,                 A_info_execute_command,
 
   CONTROL('x'), CONTROL('b'), NUL,        A_list_visited_nodes,
   CONTROL('x'), CONTROL('c'), NUL,        A_info_quit,
@@ -373,42 +321,22 @@ static unsigned char default_emacs_like_info_keys[] =
   CONTROL('x'), 'o', NUL,         A_info_next_window,
   CONTROL('x'), 't', NUL,         A_info_tile_windows,
   CONTROL('x'), 'w', NUL,         A_info_toggle_wrap,
-  
-/*      Arrow key bindings for info keymaps.  It seems that some
-        terminals do not match their termcap entries, so it's best to just
-        define everything with both of the usual prefixes.  */
 
-  SK_ESCAPE, SK_PAGE_UP, NUL,             A_info_scroll_backward,
-  SK_ESCAPE, SK_PAGE_DOWN, NUL,           A_info_scroll_forward,
-  '\033', 'O', 'A', NUL,                  A_info_prev_line,
-  '\033', '[', 'A', NUL,                  A_info_prev_line,
-  '\033', 'O', 'B', NUL,                  A_info_next_line,
-  '\033', '[', 'B', NUL,                  A_info_next_line,
-  SK_ESCAPE, SK_RIGHT_ARROW, NUL,         A_info_forward_char,
-  '\033', 'O', 'C', NUL,                  A_info_forward_char,
-  '\033', '[', 'C', NUL,                  A_info_forward_char,
-  SK_ESCAPE, SK_LEFT_ARROW, NUL,          A_info_backward_char,
-  '\033', 'O', 'D', NUL,                  A_info_backward_char,
-  '\033', '[', 'D', NUL,                  A_info_backward_char,
-  SK_ESCAPE, SK_HOME, NUL,                A_info_beginning_of_node,
-  SK_ESCAPE, SK_END, NUL,                 A_info_end_of_node,
-  SK_ESCAPE, SK_DELETE, NUL,              A_info_scroll_backward,
+  KEY_PAGE_UP, NUL,             A_info_scroll_backward,
+  KEY_PAGE_DOWN, NUL,           A_info_scroll_forward,
+  KEY_RIGHT_ARROW, NUL,         A_info_forward_char,
+  KEY_LEFT_ARROW, NUL,          A_info_backward_char,
+  KEY_HOME, NUL,                A_info_beginning_of_node,
+  KEY_END, NUL,                 A_info_end_of_node,
+  KEY_DELETE, NUL,              A_info_scroll_backward,
   
-  ESC, SK_ESCAPE, SK_PAGE_UP, NUL,        A_info_scroll_other_window_backward,
-  ESC, SK_ESCAPE, SK_PAGE_DOWN, NUL,      A_info_scroll_other_window,
-  ESC, SK_ESCAPE, SK_UP_ARROW, NUL,       A_info_prev_line,
-  ESC, '\033', 'O', 'A', NUL,             A_info_prev_line,
-  ESC, '\033', '[', 'A', NUL,             A_info_prev_line,
-  ESC, SK_ESCAPE, SK_DOWN_ARROW, NUL,     A_info_next_line,
-  ESC, '\033', 'O', 'B', NUL,             A_info_next_line,
-  ESC, '\033', '[', 'B', NUL,             A_info_next_line,
-  ESC, SK_ESCAPE, SK_RIGHT_ARROW, NUL,    A_info_forward_word,
-  ESC, '\033', 'O', 'C', NUL,             A_info_forward_word,
-  ESC, '\033', '[', 'C', NUL,             A_info_forward_word,
-  ESC, SK_ESCAPE, SK_LEFT_ARROW, NUL,     A_info_backward_word,
-  ESC, '\033', 'O', 'D', NUL,             A_info_backward_word,
-  ESC, '\033', '[', 'D', NUL,             A_info_backward_word,
-  SK_ESCAPE, SK_BACK_TAB, NUL,            A_info_move_to_prev_xref,
+  ESC, KEY_PAGE_UP, NUL,        A_info_scroll_other_window_backward,
+  ESC, KEY_PAGE_DOWN, NUL,      A_info_scroll_other_window,
+  ESC, KEY_UP_ARROW, NUL,       A_info_prev_line,
+  ESC, KEY_DOWN_ARROW, NUL,     A_info_next_line,
+  ESC, KEY_RIGHT_ARROW, NUL,    A_info_forward_word,
+  ESC, KEY_LEFT_ARROW, NUL,     A_info_backward_word,
+  KEY_BACK_TAB, NUL,            A_info_move_to_prev_xref,
   
   /* We want help to report q, not C-x C-c, etc.  */
   'q', NUL,                       A_info_quit,
@@ -418,63 +346,43 @@ static unsigned char default_emacs_like_info_keys[] =
   '{', NUL,                       A_info_search_previous,
   '}', NUL,                       A_info_search_next,
   CONTROL('g'), NUL,              A_info_abort_key,
-  SK_ESCAPE, SK_UP_ARROW, NUL,    A_info_prev_line,
-  SK_ESCAPE, SK_DOWN_ARROW, NUL,  A_info_next_line,
+  KEY_UP_ARROW, NUL,    A_info_prev_line,
+  KEY_DOWN_ARROW, NUL,  A_info_next_line,
 };
 
 
-static unsigned char default_emacs_like_ea_keys[] =
+static int default_emacs_like_ea_keys[] =
 {
   0,      /* suppress-default-keybindings flag */
-  ESC, '0', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '1', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '2', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '3', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '4', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '5', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '6', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '7', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '8', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '9', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '-', NUL,                  A_info_add_digit_to_numeric_arg,
-  Meta('0'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('1'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('2'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('3'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('4'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('5'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('6'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('7'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('8'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('9'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('-'), NUL,                 A_info_add_digit_to_numeric_arg,
-  ESC, CONTROL('g'), NUL,         A_ea_abort,
-  ESC, CONTROL('v'), NUL,         A_ea_scroll_completions_window,
-  ESC, 'b', NUL,                  A_ea_backward_word,
-  ESC, 'd', NUL,                  A_ea_kill_word,
-  ESC, 'f', NUL,                  A_ea_forward_word,
-  ESC, 'y', NUL,                  A_ea_yank_pop,
-  ESC, '?', NUL,                  A_ea_possible_completions,
-  ESC, TAB, NUL,                  A_ea_tab_insert,
-  ESC, DEL, NUL,                  A_ea_backward_kill_word,
-  Meta(CONTROL('g')), NUL,        A_ea_abort,
-  Meta(CONTROL('v')), NUL,        A_ea_scroll_completions_window,
-  Meta('b'), NUL,                 A_ea_backward_word,
-  Meta('d'), NUL,                 A_ea_kill_word,
-  Meta('f'), NUL,                 A_ea_forward_word,
-  Meta('y'), NUL,                 A_ea_yank_pop,
-  Meta('?'), NUL,                 A_ea_possible_completions,
-  Meta(TAB), NUL,                 A_ea_tab_insert,
-  Meta(DEL), NUL,                 A_ea_backward_kill_word,
+  KEYMAP_META('0'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('1'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('2'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('3'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('4'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('5'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('6'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('7'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('8'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('9'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('-'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META(CONTROL('g')), NUL,        A_ea_abort,
+  KEYMAP_META(CONTROL('v')), NUL,        A_ea_scroll_completions_window,
+  KEYMAP_META('b'), NUL,                 A_ea_backward_word,
+  KEYMAP_META('d'), NUL,                 A_ea_kill_word,
+  KEYMAP_META('f'), NUL,                 A_ea_forward_word,
+  KEYMAP_META('y'), NUL,                 A_ea_yank_pop,
+  KEYMAP_META('?'), NUL,                 A_ea_possible_completions,
+  KEYMAP_META(TAB), NUL,                 A_ea_tab_insert,
+  KEYMAP_META(DEL), NUL,                 A_ea_backward_kill_word,
   CONTROL('a'), NUL,              A_ea_beg_of_line,
   CONTROL('b'), NUL,              A_ea_backward,
   CONTROL('d'), NUL,              A_ea_delete,
   CONTROL('e'), NUL,              A_ea_end_of_line,
   CONTROL('f'), NUL,              A_ea_forward,
   CONTROL('g'), NUL,              A_ea_abort,
+  ESC, NUL,                       A_ea_abort,
   CONTROL('h'), NUL,              A_ea_rubout,
-/*      CONTROL('k') */
-  SK_ESCAPE, SK_LITERAL, NUL,     A_ea_kill_line,
+  CONTROL('k'), NUL,              A_ea_kill_line,
   CONTROL('l'), NUL,              A_info_redraw_display,
   CONTROL('q'), NUL,              A_ea_quoted_insert,
   CONTROL('t'), NUL,              A_ea_transpose_chars,
@@ -495,35 +403,23 @@ static unsigned char default_emacs_like_ea_keys[] =
   CONTROL('x'), 'o', NUL,         A_info_next_window,
   CONTROL('x'), DEL, NUL,         A_ea_backward_kill_line,
 
-/*      Arrow key bindings for echo area keymaps.  It seems that some
-        terminals do not match their termcap entries, so it's best to just
-        define everything with both of the usual prefixes.  */
-
-  SK_ESCAPE, SK_RIGHT_ARROW, NUL,         A_ea_forward,
-  '\033', 'O', 'C', NUL,                  A_ea_forward,
-  '\033', '[', 'C', NUL,                  A_ea_forward,
-  SK_ESCAPE, SK_LEFT_ARROW, NUL,          A_ea_backward,
-  '\033', 'O', 'D', NUL,                  A_ea_backward,
-  '\033', '[', 'D', NUL,                  A_ea_backward,
-  ESC, SK_ESCAPE, SK_RIGHT_ARROW, NUL,    A_ea_forward_word,
-  ESC, '\033', 'O', 'C', NUL,             A_ea_forward_word,
-  ESC, '\033', '[', 'C', NUL,             A_ea_forward_word,
-  ESC, SK_ESCAPE, SK_LEFT_ARROW, NUL,     A_ea_backward_word,
-  ESC, '\033', 'O', 'D', NUL,             A_ea_backward_word,
-  ESC, '\033', '[', 'D', NUL,             A_ea_backward_word,
+  KEY_RIGHT_ARROW, NUL,           A_ea_forward,
+  KEY_LEFT_ARROW, NUL,            A_ea_backward,
+  ESC, KEY_RIGHT_ARROW, NUL,   A_ea_forward_word,
+  ESC, KEY_LEFT_ARROW, NUL,    A_ea_backward_word,
 #ifdef __MSDOS__
-  SK_ESCAPE, SK_DELETE, NUL,              A_ea_delete,
+  KEY_DELETE, NUL,               A_ea_delete,
 #else
-  SK_ESCAPE, SK_DELETE, NUL,              A_ea_rubout,
+  KEY_DELETE, NUL,               A_ea_rubout,
 #endif
-  SK_ESCAPE, SK_HOME, NUL,                A_ea_beg_of_line,
-  SK_ESCAPE, SK_END, NUL,                 A_ea_end_of_line,
-  ESC, SK_ESCAPE, SK_DELETE, NUL,         A_ea_backward_kill_word,
-  CONTROL('x'), SK_ESCAPE, SK_DELETE, NUL,A_ea_backward_kill_line,
+  KEY_HOME, NUL,                 A_ea_beg_of_line,
+  KEY_END, NUL,                  A_ea_end_of_line,
+  ESC, KEY_DELETE, NUL,  A_ea_backward_kill_word,
+  CONTROL('x'), KEY_DELETE, NUL, A_ea_backward_kill_line,
 };
 
 
-static unsigned char default_vi_like_info_keys[] =
+static int default_vi_like_info_keys[] =
 {
   0,      /* suppress-default-keybindings flag */
   '0', NUL,                       A_info_add_digit_to_numeric_arg,
@@ -558,26 +454,16 @@ static unsigned char default_vi_like_info_keys[] =
   CONTROL('y'), NUL,              A_info_up_line,
   ',', NUL,                       A_info_next_index_match,
   '/', NUL,                       A_info_search,
-  ESC, '0', NUL,                  A_info_last_menu_item,
-  ESC, '1', NUL,                  A_info_menu_digit,
-  ESC, '2', NUL,                  A_info_menu_digit,
-  ESC, '3', NUL,                  A_info_menu_digit,
-  ESC, '4', NUL,                  A_info_menu_digit,
-  ESC, '5', NUL,                  A_info_menu_digit,
-  ESC, '6', NUL,                  A_info_menu_digit,
-  ESC, '7', NUL,                  A_info_menu_digit,
-  ESC, '8', NUL,                  A_info_menu_digit,
-  ESC, '9', NUL,                  A_info_menu_digit,
-  Meta('0'), NUL,                 A_info_last_menu_item,
-  Meta('1'), NUL,                 A_info_menu_digit,
-  Meta('2'), NUL,                 A_info_menu_digit,
-  Meta('3'), NUL,                 A_info_menu_digit,
-  Meta('4'), NUL,                 A_info_menu_digit,
-  Meta('5'), NUL,                 A_info_menu_digit,
-  Meta('6'), NUL,                 A_info_menu_digit,
-  Meta('7'), NUL,                 A_info_menu_digit,
-  Meta('8'), NUL,                 A_info_menu_digit,
-  Meta('9'), NUL,                 A_info_menu_digit,
+  KEYMAP_META('0'), NUL,                 A_info_last_menu_item,
+  KEYMAP_META('1'), NUL,                 A_info_menu_digit,
+  KEYMAP_META('2'), NUL,                 A_info_menu_digit,
+  KEYMAP_META('3'), NUL,                 A_info_menu_digit,
+  KEYMAP_META('4'), NUL,                 A_info_menu_digit,
+  KEYMAP_META('5'), NUL,                 A_info_menu_digit,
+  KEYMAP_META('6'), NUL,                 A_info_menu_digit,
+  KEYMAP_META('7'), NUL,                 A_info_menu_digit,
+  KEYMAP_META('8'), NUL,                 A_info_menu_digit,
+  KEYMAP_META('9'), NUL,                 A_info_menu_digit,
   '<', NUL,                       A_info_first_node,
   '>', NUL,                       A_info_last_node,
   '?', NUL,                       A_info_search_backward,
@@ -643,7 +529,7 @@ static unsigned char default_vi_like_info_keys[] =
   ESC, 't', NUL,                  A_info_top_node,
   ESC, 'v', NUL,                  A_info_scroll_backward_page_only,
   ESC, 'x', NUL,                  A_info_execute_command,
-  Meta('x'), NUL,                 A_info_execute_command,
+  KEYMAP_META('x'), NUL,                 A_info_execute_command,
   ESC, DEL, NUL,                  A_info_scroll_other_window_backward,
   CONTROL('x'), CONTROL('b'), NUL,        A_list_visited_nodes,
   CONTROL('x'), CONTROL('c'), NUL,        A_info_quit,
@@ -669,40 +555,20 @@ static unsigned char default_vi_like_info_keys[] =
   CONTROL('x'), 'w', NUL,         A_info_toggle_wrap,
   CONTROL('x'), ',', NUL,         A_info_next_index_match,
 
-/*      Arrow key bindings for info keymaps.  It seems that some
-        terminals do not match their termcap entries, so it's best to just
-        define everything with both of the usual prefixes.  */
-  
-  SK_ESCAPE, SK_PAGE_UP, NUL,             A_info_scroll_backward,
-  SK_ESCAPE, SK_PAGE_DOWN, NUL,           A_info_scroll_forward,
-  '\033', 'O', 'A', NUL,                  A_info_up_line,
-  '\033', '[', 'A', NUL,                  A_info_up_line,
-  '\033', 'O', 'B', NUL,                  A_info_down_line,
-  '\033', '[', 'B', NUL,                  A_info_down_line,
-  SK_ESCAPE, SK_RIGHT_ARROW, NUL,         A_info_scroll_forward_page_only,
-  '\033', 'O', 'C', NUL,                  A_info_scroll_forward_page_only,
-  '\033', '[', 'C', NUL,                  A_info_scroll_forward_page_only,
-  SK_ESCAPE, SK_LEFT_ARROW, NUL,          A_info_scroll_backward_page_only,
-  '\033', 'O', 'D', NUL,                  A_info_scroll_backward_page_only,
-  '\033', '[', 'D', NUL,                  A_info_scroll_backward_page_only,
-  SK_ESCAPE, SK_HOME, NUL,                A_info_beginning_of_node,
-  SK_ESCAPE, SK_END, NUL,                 A_info_end_of_node,
-  ESC, SK_ESCAPE, SK_PAGE_DOWN, NUL,      A_info_scroll_other_window,
-  ESC, SK_ESCAPE, SK_PAGE_UP, NUL,        A_info_scroll_other_window_backward,
-  ESC, SK_ESCAPE, SK_DELETE, NUL,         A_info_scroll_other_window_backward,
-  ESC, SK_ESCAPE, SK_UP_ARROW, NUL,       A_info_prev_node,
-  ESC, '\033', 'O', 'A', NUL,             A_info_prev_node,
-  ESC, '\033', '[', 'A', NUL,             A_info_prev_node,
-  ESC, SK_ESCAPE, SK_DOWN_ARROW, NUL,     A_info_next_node,
-  ESC, '\033', 'O', 'B', NUL,             A_info_next_node,
-  ESC, '\033', '[', 'B', NUL,             A_info_next_node,
-  ESC, SK_ESCAPE, SK_RIGHT_ARROW, NUL,    A_info_xref_item,
-  ESC, '\033', 'O', 'C', NUL,             A_info_xref_item,
-  ESC, '\033', '[', 'C', NUL,             A_info_xref_item,
-  ESC, SK_ESCAPE, SK_LEFT_ARROW, NUL,     A_info_beginning_of_node,
-  ESC, '\033', 'O', 'D', NUL,             A_info_beginning_of_node,
-  ESC, '\033', '[', 'D', NUL,             A_info_beginning_of_node,
-  CONTROL('x'), SK_ESCAPE, SK_DELETE, NUL,A_ea_backward_kill_line,
+  KEY_PAGE_UP, NUL,             A_info_scroll_backward,
+  KEY_PAGE_DOWN, NUL,           A_info_scroll_forward,
+  KEY_RIGHT_ARROW, NUL,         A_info_scroll_forward_page_only,
+  KEY_LEFT_ARROW, NUL,          A_info_scroll_backward_page_only,
+  KEY_HOME, NUL,                A_info_beginning_of_node,
+  KEY_END, NUL,                 A_info_end_of_node,
+  ESC, KEY_PAGE_DOWN, NUL,      A_info_scroll_other_window,
+  ESC, KEY_PAGE_UP, NUL,        A_info_scroll_other_window_backward,
+  ESC, KEY_DELETE, NUL,         A_info_scroll_other_window_backward,
+  ESC, KEY_UP_ARROW, NUL,       A_info_prev_node,
+  ESC, KEY_DOWN_ARROW, NUL,     A_info_next_node,
+  ESC, KEY_RIGHT_ARROW, NUL,    A_info_xref_item,
+  ESC, KEY_LEFT_ARROW, NUL,     A_info_beginning_of_node,
+  CONTROL('x'), KEY_DELETE, NUL,A_ea_backward_kill_line,
   
   /* We want help to report q, not C-x C-c, etc.  */
   'q', NUL,                       A_info_quit,
@@ -711,12 +577,12 @@ static unsigned char default_vi_like_info_keys[] =
   DEL, NUL,                       A_info_scroll_backward,
   '{', NUL,                       A_info_search_previous,
   '}', NUL,                       A_info_search_next,
-  SK_ESCAPE, SK_UP_ARROW, NUL,    A_info_up_line,
-  SK_ESCAPE, SK_DOWN_ARROW, NUL,  A_info_down_line,
+  KEY_UP_ARROW, NUL,    A_info_up_line,
+  KEY_DOWN_ARROW, NUL,  A_info_down_line,
 };
 
 
-static unsigned char default_vi_like_ea_keys[] =
+static int default_vi_like_ea_keys[] =
 {
   0,      /* suppress-default-keybindings flag */
   ESC, '1', NUL,                  A_info_add_digit_to_numeric_arg,
@@ -729,50 +595,33 @@ static unsigned char default_vi_like_ea_keys[] =
   ESC, '8', NUL,                  A_info_add_digit_to_numeric_arg,
   ESC, '9', NUL,                  A_info_add_digit_to_numeric_arg,
   ESC, '-', NUL,                  A_info_add_digit_to_numeric_arg,
-  Meta('1'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('2'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('3'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('4'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('5'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('6'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('7'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('8'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('9'), NUL,                 A_info_add_digit_to_numeric_arg,
-  Meta('-'), NUL,                 A_info_add_digit_to_numeric_arg,
-  ESC, CONTROL('g'), NUL,         A_ea_abort,
-  ESC, CONTROL('h'), NUL,         A_ea_backward_kill_word,
-  ESC, CONTROL('v'), NUL,         A_ea_scroll_completions_window,
-  ESC, '0', NUL,                  A_ea_beg_of_line,
-  ESC, '$', NUL,                  A_ea_end_of_line,
-  ESC, 'b', NUL,                  A_ea_backward_word,
-  ESC, 'd', NUL,                  A_ea_kill_word,
-  ESC, 'f', NUL,                  A_ea_forward_word,
-  ESC, 'h', NUL,                  A_ea_forward,
-  ESC, 'l', NUL,                  A_ea_backward,
-  ESC, 'w', NUL,                  A_ea_forward_word,
-  ESC, 'x', NUL,                  A_ea_delete,
-  ESC, 'X', NUL,                  A_ea_kill_word,
-  ESC, 'y', NUL,                  A_ea_yank_pop,
-  ESC, '?', NUL,                  A_ea_possible_completions,
-  ESC, TAB, NUL,                  A_ea_tab_insert,
-  ESC, DEL, NUL,                  A_ea_kill_word,
-  Meta(CONTROL('g')), NUL,        A_ea_abort,
-  Meta(CONTROL('h')), NUL,        A_ea_backward_kill_word,
-  Meta(CONTROL('v')), NUL,        A_ea_scroll_completions_window,
-  Meta('0'), NUL,                 A_ea_beg_of_line,
-  Meta('$'), NUL,                 A_ea_end_of_line,
-  Meta('b'), NUL,                 A_ea_backward_word,
-  Meta('d'), NUL,                 A_ea_kill_word,
-  Meta('f'), NUL,                 A_ea_forward_word,
-  Meta('h'), NUL,                 A_ea_forward,
-  Meta('l'), NUL,                 A_ea_backward,
-  Meta('w'), NUL,                 A_ea_forward_word,
-  Meta('x'), NUL,                 A_ea_delete,
-  Meta('X'), NUL,                 A_ea_kill_word,
-  Meta('y'), NUL,                 A_ea_yank_pop,
-  Meta('?'), NUL,                 A_ea_possible_completions,
-  Meta(TAB), NUL,                 A_ea_tab_insert,
-  Meta(DEL), NUL,                 A_ea_kill_word,
+  KEYMAP_META('1'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('2'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('3'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('4'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('5'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('6'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('7'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('8'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('9'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META('-'), NUL,                 A_info_add_digit_to_numeric_arg,
+  KEYMAP_META(CONTROL('g')), NUL,        A_ea_abort,
+  KEYMAP_META(CONTROL('h')), NUL,        A_ea_backward_kill_word,
+  KEYMAP_META(CONTROL('v')), NUL,        A_ea_scroll_completions_window,
+  KEYMAP_META('0'), NUL,                 A_ea_beg_of_line,
+  KEYMAP_META('$'), NUL,                 A_ea_end_of_line,
+  KEYMAP_META('b'), NUL,                 A_ea_backward_word,
+  KEYMAP_META('d'), NUL,                 A_ea_kill_word,
+  KEYMAP_META('f'), NUL,                 A_ea_forward_word,
+  KEYMAP_META('h'), NUL,                 A_ea_forward,
+  KEYMAP_META('l'), NUL,                 A_ea_backward,
+  KEYMAP_META('w'), NUL,                 A_ea_forward_word,
+  KEYMAP_META('x'), NUL,                 A_ea_delete,
+  KEYMAP_META('X'), NUL,                 A_ea_kill_word,
+  KEYMAP_META('y'), NUL,                 A_ea_yank_pop,
+  KEYMAP_META('?'), NUL,                 A_ea_possible_completions,
+  KEYMAP_META(TAB), NUL,                 A_ea_tab_insert,
+  KEYMAP_META(DEL), NUL,                 A_ea_kill_word,
   CONTROL('a'), NUL,              A_ea_beg_of_line,
   CONTROL('b'), NUL,              A_ea_backward,
   CONTROL('d'), NUL,              A_ea_delete,
@@ -780,8 +629,7 @@ static unsigned char default_vi_like_ea_keys[] =
   CONTROL('f'), NUL,              A_ea_forward,
   CONTROL('g'), NUL,              A_ea_abort,
   CONTROL('h'), NUL,              A_ea_rubout,
-  /*      CONTROL('k') */
-  SK_ESCAPE, SK_LITERAL, NUL,     A_ea_kill_line,
+  CONTROL('k'), NUL,              A_ea_kill_line,
   CONTROL('l'), NUL,              A_info_redraw_display,
   CONTROL('q'), NUL,              A_ea_quoted_insert,
   CONTROL('t'), NUL,              A_ea_transpose_chars,
@@ -803,41 +651,24 @@ static unsigned char default_vi_like_ea_keys[] =
   CONTROL('x'), 'o', NUL,         A_info_next_window,
   CONTROL('x'), DEL, NUL,         A_ea_backward_kill_line,
   
-  /* Arrow key bindings for echo area keymaps.  It seems that some
-     terminals do not match their termcap entries, so it's best to just
-     define everything with both of the usual prefixes.  */
-
-  SK_ESCAPE, SK_RIGHT_ARROW, NUL,         A_ea_forward,
-  '\033', 'O', 'C', NUL,                  A_ea_forward,
-  '\033', '[', 'C', NUL,                  A_ea_forward,
-  SK_ESCAPE, SK_LEFT_ARROW, NUL,          A_ea_backward,
-  '\033', 'O', 'D', NUL,                  A_ea_backward,
-  '\033', '[', 'D', NUL,                  A_ea_backward,
-  SK_ESCAPE, SK_HOME, NUL,                A_ea_beg_of_line,
-  SK_ESCAPE, SK_END, NUL,                 A_ea_end_of_line,
+  KEY_RIGHT_ARROW, NUL,         A_ea_forward,
+  KEY_LEFT_ARROW, NUL,          A_ea_backward,
+  KEY_HOME, NUL,                A_ea_beg_of_line,
+  KEY_END, NUL,                 A_ea_end_of_line,
 #ifdef __MSDOS__
-  SK_ESCAPE, SK_DELETE, NUL,              A_ea_delete,
+  KEY_DELETE, NUL,              A_ea_delete,
 #else
-  SK_DELETE, SK_DELETE, NUL,              A_ea_rubout,
+  KEY_DELETE, NUL,              A_ea_rubout,
 #endif
-  ESC, SK_ESCAPE, SK_RIGHT_ARROW, NUL,    A_ea_forward_word,
-  ESC, '\033', 'O', 'C', NUL,             A_ea_forward_word,
-  ESC, '\033', '[', 'C', NUL,             A_ea_forward_word,
-  ESC, SK_ESCAPE, SK_LEFT_ARROW, NUL,     A_ea_backward_word,
-  ESC, '\033', 'O', 'D', NUL,             A_ea_backward_word,
-  ESC, '\033', '[', 'D', NUL,             A_ea_backward_word,
-  ESC, SK_ESCAPE, SK_DELETE, NUL,         A_ea_kill_word,
-  CONTROL('x'), SK_ESCAPE, SK_DELETE, NUL,A_ea_backward_kill_line,
+  ESC, KEY_RIGHT_ARROW, NUL,    A_ea_forward_word,
+  ESC, KEY_LEFT_ARROW, NUL,     A_ea_backward_word,
+  ESC, KEY_DELETE, NUL,         A_ea_kill_word,
+  CONTROL('x'), KEY_DELETE, NUL,A_ea_backward_kill_line,
 };
 
 
-/* Used to hold output data from compile(). */
-struct sect sections[2];
-
-static unsigned char *user_info_keys;
-static unsigned int user_info_keys_len;
-static unsigned char *user_ea_keys;
-static unsigned int user_ea_keys_len;
+/* Whether to suppress the default key bindings. */
+static int sup_info, sup_ea;
 
 /* Fetch the contents of the init file at INIT_FILE, or the standard
    infokey file "$HOME/.info".  Return non-zero on success. */
@@ -854,7 +685,7 @@ fetch_user_maps (char *init_file)
   int n;
 
   /* In infokey.c */
-  int compile (FILE *fp, const char *filename, struct sect *sections);
+  int compile (FILE *fp, const char *filename, int *, int *);
 
   /* Find and open file. */
   if (init_file)
@@ -882,87 +713,21 @@ fetch_user_maps (char *init_file)
       return 0;
     }
 
-  compile (inf, filename, sections);
-  user_info_keys = sections[0].data;
-  user_info_keys_len = sections[0].cur;
-  user_ea_keys = sections[1].data;
-  user_ea_keys_len = sections[1].cur;
+  compile (inf, filename, &sup_info, &sup_ea);
 
   free (filename);
   return 1;
 }
 
-/* Decode special key sequences from the infokey file.  Return zero
-   if the key sequence includes special keys which the terminal
-   doesn't define.
- */
-static int
-decode_keys (unsigned char *src, unsigned int slen,
-	    unsigned char *dst, unsigned int dlen)
-{
-  unsigned char *s = src;
-  unsigned char *d = dst;
-
-#define To_dst(c) do { \
-    if ((unsigned int) (d - dst) < dlen) *d++ = (c);	\
-} while (0)
-
-  while ((unsigned int) (s - src) < slen)
-    {
-      unsigned char c = ISMETA (*s) ? UNMETA (*s) : *s;
-      
-      if (c == SK_ESCAPE)
-	{
-	  char *t;
-	  static char lit[] = { SK_ESCAPE, NUL };
-	  
-	  switch ((unsigned int) (s + 1 - src) < slen ? s[1] : '\0')
-	    {
-	    case SK_RIGHT_ARROW:    t = term_kr; break;
-	    case SK_LEFT_ARROW:     t = term_kl; break;
-	    case SK_UP_ARROW:       t = term_ku; break;
-	    case SK_DOWN_ARROW:     t = term_kd; break;
-	    case SK_PAGE_UP:        t = term_kP; break;
-	    case SK_PAGE_DOWN:      t = term_kN; break;
-	    case SK_HOME:           t = term_kh; break;
-	    case SK_END:            t = term_ke; break;
-	    case SK_DELETE:         t = term_kx; break;
-	    case SK_INSERT:         t = term_ki; break;
-	    case SK_BACK_TAB:       t = term_bt; break;
-	    case SK_LITERAL:
-	    default:                t = lit; break;
-	    }
-	  if (t == NULL)
-	    return 0;
-	  while (*t)
-	    To_dst (ISMETA (*s) ? Meta (*t++) : *t++);
-	  s += 2;
-	}
-      else
-	{
-	  if (ISMETA (*s))
-	    To_dst (Meta (*s++));
-	  else
-	    To_dst (*s++);
-	}
-    }
-  
-  To_dst ('\0');
-  
-  return 1;
-  
-#undef To_dst
-
-}
 
 /* Convert an infokey file section to keymap bindings.  Return false if
    the default bindings are to be suppressed.  */
 static int
-section_to_keymaps (Keymap map, unsigned char *table, unsigned int len)
+section_to_keymaps (Keymap map, int *table, unsigned int len)
 {
   int stop;
-  unsigned char *p;
-  unsigned char *seq = NULL;
+  int *p;
+  int *seq;
   unsigned int seqlen = 0;
   enum { getseq, gotseq, getaction } state = getseq;
   
@@ -991,22 +756,16 @@ section_to_keymaps (Keymap map, unsigned char *table, unsigned int len)
 	case getaction:
 	  {
 	    unsigned int action = *p;
-	    unsigned char keyseq[256];
+	    unsigned int keyseq[256];
 	    KEYMAP_ENTRY ke;
 	    
 	    state = getseq;
-	    /* If decode_keys returns zero, it means that seq includes keys
-	       which the terminal doesn't support, like PageDown.  In that
-	       case, don't bind the key sequence.  */
-	    if (decode_keys (seq, seqlen, keyseq, sizeof keyseq))
-	      {
-		keyseq[sizeof keyseq - 1] = '\0';
-		ke.type = ISFUNC;
-		ke.function = action < A_NCOMMANDS ?
-		                    &function_doc_array[action]
-		                    : NULL;
-		keymap_bind_keyseq (map, (const char *) keyseq, &ke);
-	      }
+
+            ke.type = ISFUNC;
+            ke.function = action < A_NCOMMANDS ?
+                                &function_doc_array[action]
+                                : NULL;
+            keymap_bind_keyseq (map, seq, &ke);
 	  }
 	  break;
 	}
@@ -1021,7 +780,7 @@ section_to_keymaps (Keymap map, unsigned char *table, unsigned int len)
 void
 read_init_file (char *init_file)
 {
-  static unsigned char *info_keys, *ea_keys; /* Pointers to keymap tables. */
+  int *info_keys, *ea_keys; /* Pointers to keymap tables. */
   long info_keys_len, ea_keys_len; /* Sizes of keymap tables. */
 
   int i;
@@ -1040,40 +799,49 @@ read_init_file (char *init_file)
   if (!vi_keys_p)
     {
       info_keys = default_emacs_like_info_keys;
-      info_keys_len = sizeof (default_emacs_like_info_keys);
+      info_keys_len = sizeof (default_emacs_like_info_keys)/sizeof (int);
       ea_keys = default_emacs_like_ea_keys;
-      ea_keys_len = sizeof (default_emacs_like_ea_keys);
+      ea_keys_len = sizeof (default_emacs_like_ea_keys)/sizeof (int);
     }
   else
     {
       info_keys = default_vi_like_info_keys;
-      info_keys_len = sizeof (default_vi_like_info_keys);
+      info_keys_len = sizeof (default_vi_like_info_keys)/sizeof(int);
       ea_keys = default_vi_like_ea_keys;
-      ea_keys_len = sizeof (default_vi_like_ea_keys);
+      ea_keys_len = sizeof (default_vi_like_ea_keys)/sizeof(int);
     }
 
   /* Get user-defined keys and variables.  */
   if (fetch_user_maps (init_file))
     {
-      if (user_info_keys_len && user_info_keys[0])
+      if (sup_info)
         info_keys = 0; /* Suppress default bindings. */
-      if (user_ea_keys_len && user_ea_keys[0])
+      if (sup_ea)
         ea_keys = 0;
     }
 
   /* Apply the default bindings, unless the user says to suppress
-     them.  */
+     them. */
   if (info_keys)
     section_to_keymaps (info_keymap, info_keys, info_keys_len);
   if (ea_keys)
     section_to_keymaps (echo_area_keymap, ea_keys, ea_keys_len);
 
-  /* If the user specified custom bindings, apply them on top of the
-     default ones.  */
-  if (user_info_keys_len)
-    section_to_keymaps (info_keymap, user_info_keys, user_info_keys_len);
-  if (user_ea_keys_len)
-    section_to_keymaps (echo_area_keymap, user_ea_keys, user_ea_keys_len);
+  for (i = 'A'; i < ('Z' + 1); i++)
+    {
+      if (!info_keymap[i].function)
+        {
+          info_keymap[i].type = ISFUNC;
+          info_keymap[i].function = InfoCmd (info_do_lowercase_version);
+        }
+
+      if (info_keymap[KEYMAP_META(i)].function)
+        {
+          info_keymap[KEYMAP_META(i)].type = ISFUNC;
+          info_keymap[KEYMAP_META(i)].function
+            = InfoCmd (info_do_lowercase_version);
+        }
+    }
 }
 
 /* vim: set sw=2 cino={1s>2sn-s^-se-s: */

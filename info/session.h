@@ -74,14 +74,13 @@ extern char *scroll_last_node_choices[];
 extern int scroll_last_node;
 
 /* Utility functions found in session.c */
-extern void info_dispatch_on_key (unsigned char key, Keymap map);
-extern unsigned char info_get_input_char (void);
-extern unsigned char info_get_another_input_char (void);
+extern void info_dispatch_on_key (int key, Keymap map);
+extern unsigned char info_get_input_byte (void);
+extern unsigned char info_get_another_input_byte (void);
 extern unsigned char info_input_pending_p (void);
 extern void info_set_node_of_window (WINDOW *window, NODE *node);
 extern void initialize_keyseq (void);
-extern void add_char_to_keyseq (char character);
-extern void info_gather_typeahead (void);
+extern void add_char_to_keyseq (int character);
 extern FILE_BUFFER *file_buffer_of_window (WINDOW *window);
 extern long info_search_in_node (char *string, NODE *node,
     long int start, WINDOW *window, int dir, int case_sensitive,
