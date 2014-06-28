@@ -23,6 +23,16 @@
 	* info/pcterm.c (pc_initialize_terminal): Use term_kD instead of
 	term_kx.
 
+	* info/infomap.c: (read_init_file): Correct condition.
+	(default_emacs_like_info_keys, default_emacs_like_ea_keys)
+	(default_vi_like_info_keys, default_vi_like_ea_keys): Use KEY_DELETE
+	instead of DEL to prevent duplicate key bindings in help buffer.
+	* info/terminal.c (initialize_bytemap): Interpret a DEL character as
+	the Delete key.
+	(terminal_initialize_terminal): Remove duplicated assignments.
+	* info/infodoc.c (pretty_keyseq_internal): Merged into pretty_keyseq.
+	(pretty_keyseq): Use struct text_buffer.
+
 2014-06-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infokey.h:

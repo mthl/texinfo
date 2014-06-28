@@ -244,7 +244,6 @@ static int default_emacs_like_info_keys[] =
   'q', NUL,                       A_info_quit,
   'x', NUL,                       A_info_delete_window,
   SPC, NUL,                       A_info_scroll_forward,
-  DEL, NUL,                       A_info_scroll_backward,
   '{', NUL,                       A_info_search_previous,
   '}', NUL,                       A_info_search_next,
   CONTROL('g'), NUL,              A_info_abort_key,
@@ -274,7 +273,7 @@ static int default_emacs_like_ea_keys[] =
   KEYMAP_META('y'), NUL,                 A_ea_yank_pop,
   KEYMAP_META('?'), NUL,                 A_ea_possible_completions,
   KEYMAP_META(TAB), NUL,                 A_ea_tab_insert,
-  KEYMAP_META(DEL), NUL,                 A_ea_backward_kill_word,
+  KEYMAP_META(KEY_DELETE), NUL,                 A_ea_backward_kill_word,
   CONTROL('a'), NUL,              A_ea_beg_of_line,
   CONTROL('b'), NUL,              A_ea_backward,
   CONTROL('d'), NUL,              A_ea_delete,
@@ -297,26 +296,20 @@ static int default_emacs_like_ea_keys[] =
 #ifdef __MSDOS__
   /* PC users will lynch me if I don't give them their usual DEL
      effect...  */
-  DEL, NUL,                       A_ea_delete,
+  KEY_DELETE, NUL,                       A_ea_delete,
 #else
-  DEL, NUL,                       A_ea_rubout,
+  KEY_DELETE, NUL,                       A_ea_rubout,
 #endif
   CONTROL('x'), 'o', NUL,         A_info_next_window,
-  CONTROL('x'), DEL, NUL,         A_ea_backward_kill_line,
+  CONTROL('x'), KEY_DELETE, NUL,         A_ea_backward_kill_line,
 
   KEY_RIGHT_ARROW, NUL,           A_ea_forward,
   KEY_LEFT_ARROW, NUL,            A_ea_backward,
   ESC, KEY_RIGHT_ARROW, NUL,   A_ea_forward_word,
   ESC, KEY_LEFT_ARROW, NUL,    A_ea_backward_word,
-#ifdef __MSDOS__
-  KEY_DELETE, NUL,               A_ea_delete,
-#else
-  KEY_DELETE, NUL,               A_ea_rubout,
-#endif
   KEY_HOME, NUL,                 A_ea_beg_of_line,
   KEY_END, NUL,                  A_ea_end_of_line,
   ESC, KEY_DELETE, NUL,  A_ea_backward_kill_word,
-  CONTROL('x'), KEY_DELETE, NUL, A_ea_backward_kill_line,
 };
 
 
@@ -430,7 +423,6 @@ static int default_vi_like_info_keys[] =
   ESC, 'v', NUL,                  A_info_scroll_backward_page_only,
   ESC, 'x', NUL,                  A_info_execute_command,
   KEYMAP_META('x'), NUL,                 A_info_execute_command,
-  ESC, DEL, NUL,                  A_info_scroll_other_window_backward,
   CONTROL('x'), CONTROL('b'), NUL,        A_list_visited_nodes,
   CONTROL('x'), CONTROL('c'), NUL,        A_info_quit,
   CONTROL('x'), CONTROL('f'), NUL,        A_info_view_file,
@@ -457,6 +449,7 @@ static int default_vi_like_info_keys[] =
 
   KEY_PAGE_UP, NUL,             A_info_scroll_backward,
   KEY_PAGE_DOWN, NUL,           A_info_scroll_forward,
+  KEY_DELETE, NUL,              A_info_scroll_backward,
   KEY_RIGHT_ARROW, NUL,         A_info_scroll_forward_page_only,
   KEY_LEFT_ARROW, NUL,          A_info_scroll_backward_page_only,
   KEY_HOME, NUL,                A_info_beginning_of_node,
@@ -474,7 +467,6 @@ static int default_vi_like_info_keys[] =
   'q', NUL,                       A_info_quit,
   'x', NUL,                       A_info_delete_window,
   SPC, NUL,                       A_info_scroll_forward,
-  DEL, NUL,                       A_info_scroll_backward,
   '{', NUL,                       A_info_search_previous,
   '}', NUL,                       A_info_search_next,
   KEY_UP_ARROW, NUL,    A_info_up_line,
@@ -540,15 +532,7 @@ static int default_vi_like_ea_keys[] =
   SPC, NUL,                       A_ea_complete,
   TAB, NUL,                       A_ea_complete,
   '?', NUL,                       A_ea_possible_completions,
-#ifdef __MSDOS__
-  /* PC users will lynch me if I don't give them their usual DEL
-     effect...  */
-  DEL, NUL,                       A_ea_delete,
-#else
-        DEL, NUL,                       A_ea_rubout,
-#endif
   CONTROL('x'), 'o', NUL,         A_info_next_window,
-  CONTROL('x'), DEL, NUL,         A_ea_backward_kill_line,
   
   KEY_RIGHT_ARROW, NUL,         A_ea_forward,
   KEY_LEFT_ARROW, NUL,          A_ea_backward,
@@ -730,7 +714,7 @@ read_init_file (char *init_file)
           info_keymap[i].function = InfoCmd (info_do_lowercase_version);
         }
 
-      if (info_keymap[KEYMAP_META(i)].function)
+      if (!info_keymap[KEYMAP_META(i)].function)
         {
           info_keymap[KEYMAP_META(i)].type = ISFUNC;
           info_keymap[KEYMAP_META(i)].function

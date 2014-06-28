@@ -545,6 +545,12 @@ initialize_byte_map (void)
       byte_seq_to_key[i].next = 0;
     }
 
+  /* Hard-code octal 177 = delete.  Either 177 or the term_kD sequence will
+     result in a delete key being registered. */
+  byte_seq_to_key['\177'].type = BYTEMAP_KEY;
+  byte_seq_to_key['\177'].key = KEY_DELETE;
+  byte_seq_to_key['\177'].next = 0;
+
   /* For each special key, record its byte sequence. */
   for (i = 0; i < sizeof (keys) / sizeof (*keys); i++)
     {
@@ -714,10 +720,6 @@ terminal_initialize_terminal (char *terminal_name)
   term_ke = tgetstr ("@7", &buffer);
   term_ki = tgetstr ("kI", &buffer);
   term_kD = tgetstr ("kD", &buffer);
-
-  /* Home and end keys. */
-  term_kh = tgetstr ("kh", &buffer);
-  term_ke = tgetstr ("@7", &buffer);
 
   term_bt = tgetstr ("bt", &buffer);
 

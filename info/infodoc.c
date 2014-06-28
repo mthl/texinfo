@@ -618,37 +618,32 @@ pretty_keyname (int key)
   return rep;
 }
 
-/* Return the pretty printable string which represents KEYSEQ. */
-
-static void pretty_keyseq_internal (int *keyseq, char *rep);
-
+/* Return the pretty printable string which represents KEYSEQ.  Return
+   value should not be freed by caller. */
 char *
 pretty_keyseq (int *keyseq)
 {
-  static char keyseq_rep[200];
+  static struct text_buffer rep = {};
 
-  keyseq_rep[0] = '\0';
-  if (*keyseq)
-    pretty_keyseq_internal (keyseq, keyseq_rep);
-  return keyseq_rep;
-}
+  if (!text_buffer_base (&rep))
+    text_buffer_init (&rep);
+  else
+    text_buffer_reset (&rep);
 
-static void
-pretty_keyseq_internal (int *keyseq, char *rep)
-{
   if (!*keyseq)
-    return;
+    return "";
 
   while (1)
     {
-      strcat (rep, pretty_keyname (keyseq[0]));
+      text_buffer_printf (&rep, "%s", pretty_keyname (keyseq[0]));
       keyseq++;
 
       if (!*keyseq)
         break;
 
-      strcat (rep, " ");
+      text_buffer_add_char (&rep, ' ');
     }
+  return text_buffer_base (&rep);
 }
 
 /* Return a pointer to the last character in s that is found in f. */
