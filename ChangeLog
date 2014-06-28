@@ -38,6 +38,11 @@
 
 	* info/doc.h (DocInfoCmd): Macro removed.  Uses updated.
 
+	* info/infomap.c (add_function_keyseq): Don't override already recorded
+	key sequences.
+	(default_emacs_like_info_keys, default_vi_like_info_keys): Put
+	preferred sequence to display first.
+
 2014-06-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infokey.h:

@@ -49,19 +49,27 @@ keymap_make_keymap (void)
 static void
 add_function_keyseq (InfoCommand *function, int *keyseq, Keymap rootmap)
 {
-  FUNCTION_KEYSEQ *ks;
+  FUNCTION_KEYSEQ *ks, *k;
   int len;
 
   if (function == NULL ||
       function == InfoCmd (info_do_lowercase_version) ||
       function == InfoCmd (ea_insert))
     return;
-  ks = xmalloc  (sizeof (FUNCTION_KEYSEQ));
+
+  /* If there is already a key sequence recorded for this key map,
+     don't do anything. */
+  for (k = function->keys; k; k = k->next)
+    if (k->map == rootmap)
+      return;
+
+  ks = xmalloc (sizeof (FUNCTION_KEYSEQ));
   ks->next = function->keys;
   ks->map = rootmap;
   for (len = 0; keyseq[len]; len++);
   ks->keyseq = xmalloc ((len + 1) * sizeof (int));
   memcpy (ks->keyseq, keyseq, (len + 1) * sizeof (int));
+
   function->keys = ks;
 }
 
@@ -130,6 +138,20 @@ Keymap echo_area_keymap = NULL;
 
 static int default_emacs_like_info_keys[] =
 {
+  /* Favoured command bindings come first.  We want help to
+     report q, not C-x C-c, etc.  */
+  'H', NUL,                       A_info_get_help_window,
+  'q', NUL,                       A_info_quit,
+  KEY_UP_ARROW, NUL,              A_info_prev_line,
+  KEY_DOWN_ARROW, NUL,            A_info_next_line,
+  SPC, NUL,                       A_info_scroll_forward,
+  KEY_DELETE, NUL,                A_info_scroll_backward,
+  KEY_HOME, NUL,                  A_info_beginning_of_node,
+  KEY_END, NUL,                   A_info_end_of_node,
+  '{', NUL,                       A_info_search_previous,
+  '}', NUL,                       A_info_search_next,
+  CONTROL('g'), NUL,              A_info_abort_key,
+
   TAB, NUL,                       A_info_move_to_next_xref,
   LFD, NUL,                       A_info_select_reference_this_line,
   RET, NUL,                       A_info_select_reference_this_line,
@@ -170,7 +192,6 @@ static int default_emacs_like_info_keys[] =
   'g', NUL,                       A_info_goto_node,
   'G', NUL,                       A_info_menu_sequence,
   'h', NUL,                       A_info_get_info_help_node,
-  'H', NUL,                       A_info_get_help_window,
   'i', NUL,                       A_info_index_search,
   'I', NUL,                       A_info_virtual_index,
   'l', NUL,                       A_info_history_node,
@@ -184,6 +205,7 @@ static int default_emacs_like_info_keys[] =
   'S', NUL,                       A_info_search_case_sensitively,
   't', NUL,                       A_info_top_node,
   'u', NUL,                       A_info_up_node,
+  'x', NUL,                       A_info_delete_window,
   KEYMAP_META('0'), NUL,                 A_info_add_digit_to_numeric_arg,
   KEYMAP_META('1'), NUL,                 A_info_add_digit_to_numeric_arg,
   KEYMAP_META('2'), NUL,                 A_info_add_digit_to_numeric_arg,
@@ -228,9 +250,6 @@ static int default_emacs_like_info_keys[] =
   KEY_PAGE_DOWN, NUL,           A_info_scroll_forward,
   KEY_RIGHT_ARROW, NUL,         A_info_forward_char,
   KEY_LEFT_ARROW, NUL,          A_info_backward_char,
-  KEY_HOME, NUL,                A_info_beginning_of_node,
-  KEY_END, NUL,                 A_info_end_of_node,
-  KEY_DELETE, NUL,              A_info_scroll_backward,
   
   ESC, KEY_PAGE_UP, NUL,        A_info_scroll_other_window_backward,
   ESC, KEY_PAGE_DOWN, NUL,      A_info_scroll_other_window,
@@ -240,15 +259,6 @@ static int default_emacs_like_info_keys[] =
   ESC, KEY_LEFT_ARROW, NUL,     A_info_backward_word,
   KEY_BACK_TAB, NUL,            A_info_move_to_prev_xref,
   
-  /* We want help to report q, not C-x C-c, etc.  */
-  'q', NUL,                       A_info_quit,
-  'x', NUL,                       A_info_delete_window,
-  SPC, NUL,                       A_info_scroll_forward,
-  '{', NUL,                       A_info_search_previous,
-  '}', NUL,                       A_info_search_next,
-  CONTROL('g'), NUL,              A_info_abort_key,
-  KEY_UP_ARROW, NUL,    A_info_prev_line,
-  KEY_DOWN_ARROW, NUL,  A_info_next_line,
 };
 
 
@@ -315,6 +325,15 @@ static int default_emacs_like_ea_keys[] =
 
 static int default_vi_like_info_keys[] =
 {
+  /* We want help to report q, not C-x C-c, etc.  */
+  'q', NUL,                       A_info_quit,
+  'x', NUL,                       A_info_delete_window,
+  SPC, NUL,                       A_info_scroll_forward,
+  '{', NUL,                       A_info_search_previous,
+  '}', NUL,                       A_info_search_next,
+  KEY_UP_ARROW, NUL,    A_info_up_line,
+  KEY_DOWN_ARROW, NUL,  A_info_down_line,
+
   '0', NUL,                       A_info_add_digit_to_numeric_arg,
   '1', NUL,                       A_info_add_digit_to_numeric_arg,
   '2', NUL,                       A_info_add_digit_to_numeric_arg,
@@ -463,14 +482,6 @@ static int default_vi_like_info_keys[] =
   ESC, KEY_LEFT_ARROW, NUL,     A_info_beginning_of_node,
   CONTROL('x'), KEY_DELETE, NUL,A_ea_backward_kill_line,
   
-  /* We want help to report q, not C-x C-c, etc.  */
-  'q', NUL,                       A_info_quit,
-  'x', NUL,                       A_info_delete_window,
-  SPC, NUL,                       A_info_scroll_forward,
-  '{', NUL,                       A_info_search_previous,
-  '}', NUL,                       A_info_search_next,
-  KEY_UP_ARROW, NUL,    A_info_up_line,
-  KEY_DOWN_ARROW, NUL,  A_info_down_line,
 };
 
 
