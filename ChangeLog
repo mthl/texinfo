@@ -1,3 +1,9 @@
+2014-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_get_another_input_byte): Removed.
+	* info/echo-area.c (ea_quoted_insert): Call get_another_input_key
+	instead.
+
 2014-06-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_set_pending_input): Function removed.

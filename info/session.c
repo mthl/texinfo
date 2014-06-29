@@ -4548,46 +4548,6 @@ display_info_keyseq (int expecting_future_input)
   info_keyseq_displayed_p = 1;
 }
 
-/* Called by interactive commands to read another byte when bytes have already
-   been read as part of the current command (and possibly displayed in status
-   line with display_info_keyseq).
-   TODO: Replace calls to this function with calls to
-   get_another_input_key. */
-unsigned char
-info_get_another_input_byte (void)
-{
-  int ready = !info_keyseq_displayed_p; /* ready if new and pending key */
-
-  /* If there isn't any input currently available, then wait a
-     moment looking for input.  If we don't get it fast enough,
-     prompt a little bit with the current key sequence. */
-  if (!info_keyseq_displayed_p)
-    {
-      ready = 1;
-      if (!info_any_buffered_input_p ())
-        {
-#if defined (FD_SET)
-          struct timeval timer;
-          fd_set readfds;
-
-          FD_ZERO (&readfds);
-          FD_SET (fileno (info_input_stream), &readfds);
-          timer.tv_sec = 1;
-          timer.tv_usec = 750;
-          ready = select (fileno(info_input_stream)+1, &readfds,
-			  NULL, NULL, &timer);
-#else
-          ready = 0;
-#endif /* FD_SET */
-      }
-    }
-
-  if (!ready)
-    display_info_keyseq (1);
-
-  return info_get_input_byte ();
-}
-
 /* Called by interactive commands to read another key when keys have already
    been read as part of the current command (and possibly displayed in status
    line with display_info_keyseq). */

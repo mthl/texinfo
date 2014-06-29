@@ -477,9 +477,13 @@ DECLARE_INFO_COMMAND (ea_newline, _("Accept (or force completion of) this line")
 
 DECLARE_INFO_COMMAND (ea_quoted_insert, _("Insert next character verbatim"))
 {
-  unsigned char character;
+  int character;
 
-  character = info_get_another_input_byte ();
+  character = get_another_input_key ();
+  
+  if (character >= 256 || character < 0)
+    return;
+
   ea_insert (window, count, character);
 }
 

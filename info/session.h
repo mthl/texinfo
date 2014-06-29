@@ -76,7 +76,6 @@ extern int scroll_last_node;
 /* Utility functions found in session.c */
 extern void info_dispatch_on_key (int key, Keymap map);
 extern unsigned char info_get_input_byte (void);
-extern unsigned char info_get_another_input_byte (void);
 extern unsigned char info_input_pending_p (void);
 extern void info_set_node_of_window (WINDOW *window, NODE *node);
 extern void initialize_keyseq (void);
