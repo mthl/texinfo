@@ -1,5 +1,21 @@
 2014-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (incremental_search): Call get_input_key instead of
+	info_get_input_byte.
+
+	* info/session.c (fill_input_buffer): New function to call
+	info_gather_typeahead.  Try to read input again if interrupted by
+	a signal, as was done in info_get_input_byte.
+	(info_gather_typeahead): Return code says if there was a read error.
+	(info_any_buffered_input_p, get_input_key, info_search_internal): Call
+	fill_input_buffer instead.
+	(info_get_input_byte): Removed.
+
+	(info_gather_typeahead): [--dribble] Call dribble to save input bytes.
+	(get_input_key): [--dribble] Don't call dribble.
+
+2014-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_get_another_input_byte): Removed.
 	* info/echo-area.c (ea_quoted_insert): Call get_another_input_key
 	instead.

@@ -37,7 +37,6 @@
 #  define HAVE_STRUCT_TIMEVAL
 #endif /* HAVE_SYS_TIME_H */
 
-static void info_set_pending_input (unsigned char key);
 static void info_handle_pointer (char *label, WINDOW *window);
 static void display_info_keyseq (int expecting_future_input);
 char *node_printed_rep (NODE *node);
@@ -262,7 +261,8 @@ info_set_input_from_file (char *filename)
 /*                                                                  */
 /* **************************************************************** */
 
-static void info_gather_typeahead (int);
+static void fill_input_buffer (int wait);
+static int info_gather_typeahead (int);
 
 /* Largest number of characters that we can read in advance. */
 #define MAX_INFO_INPUT_BUFFERING 512
@@ -291,13 +291,50 @@ get_byte_from_input_buffer (unsigned char *key)
 int
 info_any_buffered_input_p (void)
 {
-  info_gather_typeahead (0);
+  fill_input_buffer (0);
   return push_index != pop_index;
 }
 
-/* Read bytes and stuff them into info_input_buffer.  If WAIT is true, wait
-   for input; otherwise don't do anything if there is no input waiting. */
+/* Wrapper around info_gather_typeahead which handles read errors and reaching
+   end-of-file. */
 static void
+fill_input_buffer (int wait)
+{
+  while (1)
+    {
+      int success;
+      do
+        {
+          success = info_gather_typeahead (wait);
+        }
+      while (!success && errno == EINTR); /* Try again if the read was
+                                             interrupted due to a signal. */
+      if (success || !wait)
+        return;
+
+      if (info_input_stream != stdin)
+        {
+          int tty;
+          fclose (info_input_stream);
+          info_input_stream = stdin;
+          tty = fileno (info_input_stream);
+          display_inhibited = 0;
+          display_update_display (windows);
+          display_cursor_at_point (active_window);
+        }
+      else
+        {
+          terminal_unprep_terminal ();
+          close_dribble_file ();
+          exit (EXIT_SUCCESS);
+        }
+    }
+}
+
+/* Read bytes and stuff them into info_input_buffer.  If WAIT is true, wait
+   for input; otherwise don't do anything if there is no input waiting.
+   Return 1 on success, 0 on error.  ERRNO may be set by read(). */
+static int
 info_gather_typeahead (int wait)
 {
   register int i = 0;
@@ -308,6 +345,9 @@ info_gather_typeahead (int wait)
   tty = fileno (info_input_stream);
   chars_avail = 0;
 
+  /* Clear errno. */
+  errno = 0;
+
   /* There may be characters left over from last time, in which case we don't
      want to wait for another key to be pressed. */
   if (wait && pop_index == push_index)
@@ -315,8 +355,12 @@ info_gather_typeahead (int wait)
       char c;
       /* Wait until there is a byte waiting, and then stuff it into the input
          buffer. */
-      if (read (tty, &c, 1) != 1)
-        return; /* Read error.  TODO: Return some kind of error code. */
+      if (read (tty, &c, 1) <= 0) 
+        return 0;
+
+      if (info_dribble_file)
+        dribble (c);
+
       info_input_buffer[push_index++] = c;
       if (push_index >= MAX_INFO_INPUT_BUFFERING)
         push_index = 0;
@@ -397,6 +441,9 @@ info_gather_typeahead (int wait)
 
   while (i < chars_avail)
     {
+      if (info_dribble_file)
+        dribble (input[i]);
+
       /* Add KEY to the buffer of characters to be read. */
       if (input[i] != Control ('g'))
         {
@@ -409,72 +456,10 @@ info_gather_typeahead (int wait)
         push_index = pop_index;
       i++;
     }
-}
-
-/* Get a single byte from the input stream.  This is limited because it does
-   not process multi-byte sequences corresponding to keys. */
-unsigned char
-info_get_input_byte (void)
-{
-  unsigned char keystroke;
-
-  info_gather_typeahead (1);
-
-  if (get_byte_from_input_buffer (&keystroke) == 0)
-    {
-      int rawkey;
-      unsigned char c;
-      int tty = fileno (info_input_stream);
-
-      /* Using stream I/O causes FIONREAD etc to fail to work
-         so unless someone can find a portable way of finding
-         out how many characters are currently buffered, we
-         should stay with away from stream I/O.
-         --Egil Kvaleberg <egilk@sn.no>, January 1997.  */
-#ifdef EINTR
-      /* Keep reading if we got EINTR, so that we don't just exit.
-         --Andreas Schwab <schwab@issan.informatik.uni-dortmund.de>,
-         22 Dec 1997.  */
-      {
-        int n;
-        do
-          n = read (tty, &c, 1);
-        while (n == -1 && errno == EINTR);
-        rawkey = n == 1 ? c : EOF;
-      }
-#else
-      rawkey = (read (tty, &c, 1) == 1) ? c : EOF;
-#endif
-
-      keystroke = rawkey;
-
-      if (rawkey == EOF)
-        {
-          if (info_input_stream != stdin)
-            {
-              fclose (info_input_stream);
-              info_input_stream = stdin;
-              tty = fileno (info_input_stream);
-              display_inhibited = 0;
-              display_update_display (windows);
-              display_cursor_at_point (active_window);
-              rawkey = (read (tty, &c, 1) == 1) ? c : EOF;
-              keystroke = rawkey;
-            }
-
-          if (rawkey == EOF)
-            {
-              terminal_unprep_terminal ();
-              close_dribble_file ();
-              exit (EXIT_SUCCESS);
-            }
-        }
-    }
-
-  if (info_dribble_file)
-    dribble (keystroke);
-
-  return keystroke;
+  /* If wait is true, there is at least one byte left in the input buffer. */
+  if (chars_avail <= 0 && !wait)
+    return 0;
+  return 1;
 }
 
 /* Return number representing a key that has been pressed, which is an index
@@ -488,7 +473,7 @@ get_input_key (void)
   int esc_seen;
   int pop_start;
   unsigned char first;
-  info_gather_typeahead (1);
+  fill_input_buffer (1);
 
   if (pop_index == push_index)
     return -1; /* No input waiting.  This shouldn't happen. */
@@ -503,10 +488,6 @@ get_input_key (void)
       int in_map = 0;
       if (!get_byte_from_input_buffer (&c))
         break; /* Incomplete byte sequence. */
-
-      /* Would it be easier to dribble in info_gather_typeahead instead? */
-      if (info_dribble_file)
-        dribble (c);
 
       switch (b[c].type)
         {
@@ -544,7 +525,7 @@ get_input_key (void)
               ready = 1;
 #endif /* FD_SET */
           if (ready)
-            info_gather_typeahead (0);
+            fill_input_buffer (0);
         }
     }
 
@@ -3544,7 +3525,7 @@ info_search_internal (char *string, WINDOW *window,
           NODE *node;
 	  
           /* Allow C-g to quit the search, failing it if pressed. */
-          info_gather_typeahead (0); \
+          fill_input_buffer (0); \
           if (info_input_buffer[pop_index] == Control ('g'))
             return -1;
 
@@ -4026,7 +4007,9 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
       else if (key == Control ('q'))
         {
           /* User wants to insert a character. */
-          key = info_get_input_byte ();
+          key = get_input_key ();
+          if (key < 0 || key >= 256)
+            continue; /* The user pressed a key like an arrow key. */
           quoted = 1;
         }
 
