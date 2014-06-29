@@ -1,5 +1,10 @@
 2014-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/footnotes.c (info_get_or_remove_footnotes): Null check to avoid
+	crash when resizing window while displaying completions.
+
+2014-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (incremental_search): Call get_input_key instead of
 	info_get_input_byte.
 

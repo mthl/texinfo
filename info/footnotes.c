@@ -187,8 +187,9 @@ info_get_or_remove_footnotes (WINDOW *window)
   if (fn_win == window)
     return FN_FOUND;
 
-  /* Don't display footnotes for the "*" node (entire contents of file). */
-  if (strcmp ("*", window->node->nodename))
+  /* Don't display footnotes for the "*" node (entire contents of file) or
+     for nodes without a name like completion windows. */
+  if (window->node->nodename && strcmp ("*", window->node->nodename))
     /* Try to find footnotes for this window's node. */
     new_footnotes = make_footnotes_node (window->node);
 
