@@ -16,10 +16,11 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-intera.inc
+. $t/Init-inter.inc
 
 # Go to a node with colons and commas in its name with "g"
-$GINFO -f quoting --restore $t/goto-quoted.drib
+printf 'g\tColo\t\r\t\rDq' >$PTY_TYPE &
+$GINFO -f quoting
 
 if ! test -f $GINFO_OUTPUT
 then

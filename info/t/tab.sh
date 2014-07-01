@@ -16,10 +16,11 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-intera.inc
+. $t/Init-inter.inc
 
 # Tab to first link and follow it
-$GINFO -f intera --restore $t/tab.drib
+printf '\t\rDq' >$PTY_TYPE &
+$GINFO -f intera
 
 if ! test -f $GINFO_OUTPUT
 then
@@ -30,5 +31,6 @@ else
 	RETVAL=$?
 fi
 
+rm -f $0.pipein $0.pipeout
 . $t/Cleanup.inc
 

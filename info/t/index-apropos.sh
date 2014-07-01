@@ -16,11 +16,12 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-intera.inc
+. $t/Init-inter.inc
 
 # Type "M-x index-apropos", look for "link" in indices, select first
 # result. Then type "i" followed by <TAB> to check the indices in the
 # file are still there.
+printf '\033xindex-apropos\rlink\r\t\ri\t\x07q' >$PTY_TYPE &
 $GINFO --restore $t/index-apropos.drib
 RETVAL=$?
 

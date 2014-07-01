@@ -16,10 +16,11 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-intera.inc
+. $t/Init-inter.inc
 
 # Check that node headers aren't included in searches
-$GINFO -f body-start --restore $t/body-start.drib
+printf 'sPotential match\r\rDq' >$PTY_TYPE &
+$GINFO -f body-start
 
 if ! test -f $GINFO_OUTPUT
 then

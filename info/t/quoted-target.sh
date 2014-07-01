@@ -16,9 +16,10 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-intera.inc
+. $t/Init-inter.inc
 
 # Follow a cross-reference to a node with colons and commas in its name
+printf '\t\t\r\t\r\Dq' >$PTY_TYPE &
 $GINFO -f quoting --restore $t/quoted-target.drib
 
 if ! test -f $GINFO_OUTPUT

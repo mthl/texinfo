@@ -19,14 +19,22 @@
 
 #define _XOPEN_SOURCE
 
-#include <stdlib.h>
+#include <config.h>
+#include <errno.h>
 #include <stdio.h>
 #include <fcntl.h>
+#include <unistd.h>
 #include <sys/ioctl.h>
+#include <sys/types.h>
+#include <stdlib.h>
 
 int master;
 char *name;
 char dummy; 
+
+fd_set read_set;
+
+#define CONTROL 3
 
 main ()
 {
@@ -47,11 +55,47 @@ main ()
   printf ("%s\n", name);
   fclose (stdout);
 
+  FD_ZERO (&read_set);
+
   error (0, 0, "entering main loop");
   while (1)
-    if (read (master, &dummy, 1) <= 0)
-      {
-        error (0, 0, "read error");
-        sleep (1); /* Don't flood stderr with error messages. */
-      }
+    {
+      int ret;
+
+      FD_SET (master, &read_set);
+      FD_SET (CONTROL, &read_set);
+
+      ret = select (FD_SETSIZE, &read_set, 0, 0, 0);
+      if (FD_ISSET (CONTROL, &read_set))
+        {
+          int c, success;
+          errno = 0;
+          do
+            success = read (CONTROL, &c, 1);
+          while (success != 1 && errno == EINTR);
+          if (!success)
+            {
+              error (0, 0, "read error on control channel");
+              sleep (1);
+            }
+          else
+            {
+              /* Feed any read bytes to the program being controlled. */
+              write (master, &c, 1);
+            }
+        }
+      if (FD_ISSET (master, &read_set))
+        {
+          int c, success;
+          errno = 0;
+          do
+            success = read (master, &c, 1);
+          while (success != 1 && errno == EINTR);
+          if (!success)
+            {
+              error (0, 0, "read error on master fd");
+              sleep (1); /* Don't flood stderr with error messages. */
+            }
+        }
+    }
 }

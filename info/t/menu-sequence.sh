@@ -16,10 +16,11 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-intera.inc
+. $t/Init-inter.inc
 
 # M-x menu-sequence
-$GINFO -f intera --restore $t/menu-sequence.drib
+printf '\033xmenu-sequence\rfile-menu,first,no,nod\rDq' >$PTY_TYPE &
+$GINFO -f intera
 
 if ! test -f $GINFO_OUTPUT
 then

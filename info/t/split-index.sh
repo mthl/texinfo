@@ -16,11 +16,12 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-intera.inc 
+. $t/Init-inter.inc 
 
 # Follow an index entry in a split file
 
-$GINFO -f split --restore $t/split-index.drib
+printf 'ientry text\r\rDq' >$PTY_TYPE
+$GINFO -f split
 
 if ! test -f $GINFO_OUTPUT
 then

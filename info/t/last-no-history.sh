@@ -16,10 +16,11 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-intera.inc
+. $t/Init-inter.inc
 
 # Try to go back in history when there is no earlier node
-$GINFO -f intera --restore $t/last-no-history.drib
+printf lq >$PTY_TYPE &
+$GINFO -f intera
 RETVAL=$?
 
 . $t/Cleanup.inc

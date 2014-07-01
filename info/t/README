@@ -12,7 +12,7 @@ shows a test failure.
 The tests fall into two categories: tests of non-interactive and
 interactive operation.
 
-It is easy to create new tests by copying existing ones.  Each test should
+New tests can be created by copying existing ones.  Each test should
 start with the lines
 
 srcdir=${srcdir:-.}
@@ -22,7 +22,7 @@ to allow running at the command line, or with either an in-source or
 out-of-source build with "make check".  Tests of interactive operation
 should follow with the line.
 
-. $t/Init-intera.inc
+. $t/Init-inter.inc
 
 Any interactive test should also finish with
 
@@ -35,23 +35,17 @@ exit status of the script indicating success or failure.
 Tests of interactive operation
 ------------------------------
 
-These work with the "pseudotty" program in the info subdirectory, which
-creates a pseudo-terminal for the input and output of the program,
-so the program will happily enter interactive operation (its standard
-file descriptors pass the isatty library function), and avoid affecting
-the output of the terminal the test was invoked from.  At the moment all it
-does is read and discard all input.
+These use the "pseudotty" program in the info subdirectory, which
+creates a pseudo-terminal for the input and output of the program.
+This allows the program to happily enter interactive operation (its standard
+file descriptors pass the isatty library function) and avoids affecting
+the output of the terminal the test was invoked from.  pseudotty reads and
+discards all input on its stdin, and passes through any bytes read on file
+descriptor 3 into the pseudo-terminal.
 
-Input keystrokes are provided with the --restore option to the program.
-(It's possible that the pseudotty program will be changed to provide these
-keystrokes in future.)  Testing of correct interactive operation is quite
-crude.  At the moment all it does is test that the cursor is positioned in
-the right place by moving it to a reference to "Node 1" in "intera.info",
-following the reference and dumping the node reached to a file.  (It can
-be compared with a target file in info/t/node-target, to check that we
-ended up where we thought we would.)
-
-Existing dribble files can be inspected with a hex dump program like "xxd",
-and can be recorded using the --dribble option.
+Many of the tests of interactive operation try to position the cursor 
+on a cross-reference by various means, follow the reference, and dump the node
+reached to a file.  (It can be compared with a target file in
+info/t/node-target, to check that we ended up where we thought we would.)
 
 

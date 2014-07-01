@@ -1,3 +1,21 @@
+2014-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/pseudotty.c: Read bytes from file descriptor 3 and feed into
+	master side of pseudoterminal.
+	* info/t/Init-intera.inc, info/t/Init-inter.inc: File renamed.  Create
+	a pair of named pipes to communicate with pseudotty program. Get
+	name of pseudoterminal slave device using shell builtin 'read'.
+	* info/t/Cleanup.inc: Delete named pipes.
+	* info/t/body-start.sh, info/t/end-of-line.sh, info/t/goto-quoted.sh,
+	info/t/index-apropos.sh, info/t/index-long-nodeline.sh,
+	info/t/index.sh, info/t/last-no-history.sh, info/t/menu-sequence.sh,
+	info/t/next-quoted.sh, info/t/quoted-label-and-target.sh,
+	info/t/quoted-label-as-target.sh, info/t/quoted-target.sh,
+	info/t/search-after-tag.sh, info/t/split-file-menu.sh,
+	info/t/split-index.sh, info/t/tab.sh: Specify input keystrokes by
+	feeding into named pipe instead of using --dribble option.
+	* info/t/README: Updated.
+
 2014-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/footnotes.c (info_get_or_remove_footnotes): Null check to avoid

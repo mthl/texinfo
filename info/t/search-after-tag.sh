@@ -19,7 +19,8 @@ srcdir=${srcdir:-.}
 . $t/Init-intera.inc
 
 # Search for text in a node that appears after an Info tag
-$GINFO -f intera --restore $t/search-after-tag.drib
+printf '/match\r\x06\x06\x06\x06\x06\x06\x06\x06\x06\x06\x06\rDq' >$PTY_TYPE &
+$GINFO -f intera -n Searching
 
 if ! test -f $GINFO_OUTPUT
 then

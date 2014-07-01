@@ -16,12 +16,13 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-intera.inc
+. $t/Init-inter.inc
 
 # Follow a menu entry in a split file to a node in a different subfile from
 # the one containing "Top".  Check that we arrived properly and remembered
 # that we are in a split file by going back to "Top" with "t".
-$GINFO -f split 'Second' --restore $t/back-to-top.drib
+printf tDq >$PTY_TYPE &
+$GINFO -f split 'Second'
 
 if ! test -f $GINFO_OUTPUT
 then

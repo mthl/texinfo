@@ -16,10 +16,11 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-intera.inc
+. $t/Init-inter.inc
 
 # Check that typing C-e on an empty line doesn't go to previous line
-$GINFO -f intera --restore $t/end-of-line.drib
+printf '\x0e\x0e\x0e\x0e\x0e\x05\x0e\rDq' >$PTY_TYPE &
+$GINFO -f intera
 
 if ! test -f $GINFO_OUTPUT
 then

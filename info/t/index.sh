@@ -16,11 +16,11 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-intera.inc 
+. $t/Init-inter.inc 
 
 # Follow an index entry
-
-$GINFO -f intera --restore $t/index.drib
+printf 'iabc\rDq' >$PTY_TYPE &
+$GINFO -f intera
 
 if ! test -f $GINFO_OUTPUT
 then

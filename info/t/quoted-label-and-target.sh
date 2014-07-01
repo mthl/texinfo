@@ -16,10 +16,11 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-intera.inc
+. $t/Init-inter.inc
 
 # Follow a cross-reference with both the label and destination quoted.
-$GINFO -f quoting --restore $t/quoted-label-and-target.drib
+printf '\t\t\t\r\t\rDq' >$PTY_TYPE &
+$GINFO -f quoting
 
 if ! test -f $GINFO_OUTPUT
 then

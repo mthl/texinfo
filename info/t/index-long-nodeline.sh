@@ -16,12 +16,12 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-intera.inc 
+. $t/Init-inter.inc 
 
 # Follow an menu item from the index node to a node where physical lines
 # don't match logical lines.
-
-$GINFO -f split --restore $t/index-long-nodeline.drib
+printf 'gIndex\r\t\t\r\rDq' >$PTY_TYPE &
+$GINFO -f split
 
 if ! test -f $GINFO_OUTPUT
 then
