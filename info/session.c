@@ -473,6 +473,7 @@ get_input_key (void)
 
   while (ret == -1)
     ret = get_input_key_internal ();
+  return ret;
 }
 
 /* Read bytes from input and return what key has been pressed.  Return -1 on
