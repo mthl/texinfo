@@ -462,11 +462,23 @@ info_gather_typeahead (int wait)
   return 1;
 }
 
+static int get_input_key_internal (void);
+
 /* Return number representing a key that has been pressed, which is an index
-   into info_keymap and echo_area_keymap.  Return -1 if no key has been
-   pressed. */
+   into info_keymap and echo_area_keymap. */
 int
 get_input_key (void)
+{
+  int ret = -1;
+
+  while (ret == -1)
+    ret = get_input_key_internal ();
+}
+
+/* Read bytes from input and return what key has been pressed.  Return -1 on
+   reading an unrecognized key. */
+static int
+get_input_key_internal (void)
 {
   BYTEMAP_ENTRY *b;
   unsigned char c;
@@ -486,6 +498,7 @@ get_input_key (void)
   while (pop_index != push_index)
     {
       int in_map = 0;
+      int unknown = 0;
       if (!get_byte_from_input_buffer (&c))
         break; /* Incomplete byte sequence. */
 
@@ -502,8 +515,12 @@ get_input_key (void)
           b = b[c].next;
           break;
         case BYTEMAP_NONE:
+          unknown = 1;
           break;
         }
+
+      if (unknown)
+        break;
 
       /* If we read an incomplete byte sequence, pause a short while to
          see if more bytes follow.  We should probably allow the length
@@ -522,22 +539,20 @@ get_input_key (void)
           ready = select (fileno(info_input_stream)+1, &readfds,
                           NULL, NULL, &timer);
 #else
-              ready = 1;
+          ready = 1;
 #endif /* FD_SET */
           if (ready)
             fill_input_buffer (0);
         }
     }
 
-  if (esc_seen)
+  if (!esc_seen)
+    /* If the sequence was incomplete, return the first byte. */
+    return first;
+  else
     {
-      /* The sequence started with ESC, but wasn't recognized.  Treat it
-         as introducing a sequence produced by a key chord with the meta key
-         pressed. */
-
       /* Start again with the first key after ESC. */
       pop_index = pop_start;
-      b = byte_seq_to_key;
 
       /* If there are no more characters, then decide that the escape key
          itself has been pressed. */
@@ -547,32 +562,52 @@ get_input_key (void)
       /* Save the first byte waiting in the input buffer. */
       first = info_input_buffer[pop_index];
 
-      while (pop_index != push_index)
-        {
-          if (!get_byte_from_input_buffer (&c))
-            break; /* Incomplete byte sequence. */
-          switch (b[c].type)
-            {
-            case BYTEMAP_KEY:
-              return b[c].key + KEYMAP_META_BASE;
-            case BYTEMAP_MAP:
-              b = b[c].next;
-              break;
-            case BYTEMAP_ESC:
-              /* This could happen if there were two escapes in a row, or
-                 if the user types something like M-Left. */
-              b = b[c].next;
-              break;
-            case BYTEMAP_NONE:
-              break;
-            }
-        }
-      /* If the sequence was incomplete. */
-      return first + KEYMAP_META_BASE;
-    }
+      /* Skip byte sequences that look like they could have come from
+         unrecognized keys, e.g. F3 or C-S-Left, to avoid them as being
+         interpreted as random garbage.  These might produce sequences
+         that look like "ESC O R" or "ESC [ 1 ; 6 ~", depending on
+         the terminal. */
 
-  /* If the sequence was incomplete, return the first byte. */
-  return first;
+      /* Check if the sequence starts ESC O. */
+      get_byte_from_input_buffer (&c);
+      if (c == 'O')
+        {
+          /* If no more bytes, call it M-O. */
+          if (!get_byte_from_input_buffer (&c))
+            return 'O' + KEYMAP_META_BASE;
+
+          /* Otherwise it could be an unrecognized key producing a sequence
+             ESC O (byte).  Ignore it. */
+          return -1;
+        }
+
+      /* Unknown CSI-style sequences. */
+      else if (c == '[')
+        {
+          /* If no more bytes, call it M-[. */
+          if (!get_byte_from_input_buffer (&c))
+            return '[' + KEYMAP_META_BASE;
+
+          /* Skip a control sequence as defined by ECMA-48. */
+          while (c >= 0x30 && c <= 0x3f)
+            if (!get_byte_from_input_buffer (&c))
+              break;
+
+          while (c >= 0x20 && c <= 0x2f)
+            if (!get_byte_from_input_buffer (&c))
+              break;
+
+          return -1;
+        }
+
+      else
+        {
+          /* The sequence started with ESC, but wasn't recognized.  Treat it
+             as introducing a sequence produced by a key chord with the meta
+             key pressed. */
+          return c + KEYMAP_META_BASE;
+        }
+    }
 }
 
 /* **************************************************************** */

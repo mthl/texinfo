@@ -1,5 +1,11 @@
 2014-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (get_input_key): Try to ignore sequences in the input
+	stream produced by unrecognized keys.
+	(get_input_key, get_input_key_internal): Wrapper around get_input_key.
+
+2014-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/pseudotty.c: Read bytes from file descriptor 3 and feed into
 	master side of pseudoterminal.
 	* info/t/Init-intera.inc, info/t/Init-inter.inc: File renamed.  Create
