@@ -110,6 +110,9 @@ static char *term_invbeg;
 /* The string to turn off inverse mode, if this term has one. */
 static char *term_invend;
 
+/* String introducing a mouse event. */
+static char *term_Km;
+
 /* Although I can't find any documentation that says this is supposed to
    return its argument, all the code I've looked at (termutils, less)
    does so, so fine.  */
@@ -132,6 +135,13 @@ static void
 terminal_begin_using_terminal (void)
 {
   RETSIGTYPE (*sigsave) (int signum);
+
+  /* Turn on mouse reporting.  This is "normal tracking mode" supported by
+     xterm.  The presence of the Km capability may not be a reliable way to
+     tell whether this mode exists, but sending the following sequence is
+     probably harmless if it doesn't.  */
+  if (term_Km)
+    send_to_terminal ("\033[?1000h");
 
   if (term_keypad_on)
       send_to_terminal (term_keypad_on);
@@ -163,6 +173,10 @@ static void
 terminal_end_using_terminal (void)
 {
   RETSIGTYPE (*sigsave) (int signum);
+
+  /* Turn off mouse reporting ("normal tracking mode"). */
+  if (term_Km)
+    send_to_terminal ("\033[?1000l");
 
   if (term_keypad_off)
       send_to_terminal (term_keypad_off);
@@ -504,6 +518,30 @@ terminal_get_screen_size (void)
    keys. */
 BYTEMAP_ENTRY *byte_seq_to_key;
 
+static void
+add_seq_to_byte_map (int key_id, unsigned char *seq)
+{
+  BYTEMAP_ENTRY *b = byte_seq_to_key;
+
+  unsigned char *c = seq;
+  for (; *c; c++)
+    {
+      if (c[1] == '\0') /* Last character. */
+        {
+          b[*c].type = BYTEMAP_KEY;
+          b[*c].key = key_id;
+        }
+      else
+        {
+          b[*c].type = BYTEMAP_MAP;
+          b[*c].key = 0;
+          if (!b[*c].next)
+            b[*c].next = xzalloc (256 * sizeof (BYTEMAP_ENTRY));
+          b = b[*c].next;
+        }
+    }
+}
+
 /* Initialize byte map read in get_input_key. */
 static void
 initialize_byte_map (void)
@@ -554,29 +592,14 @@ initialize_byte_map (void)
   /* For each special key, record its byte sequence. */
   for (i = 0; i < sizeof (keys) / sizeof (*keys); i++)
     {
-      unsigned char *c;
-      BYTEMAP_ENTRY *b = byte_seq_to_key;
-
       if (!*keys[i].byte_seq)
         continue; /* No byte sequence known for this key. */
-      c = *keys[i].byte_seq;
-      for (; *c; c++)
-        {
-          if (c[1] == '\0') /* Last character. */
-            {
-              b[*c].type = BYTEMAP_KEY;
-              b[*c].key = keys[i].key_id;
-            }
-          else
-            {
-              b[*c].type = BYTEMAP_MAP;
-              b[*c].key = 0;
-              if (!b[*c].next)
-                b[*c].next = xzalloc (256 * sizeof (BYTEMAP_ENTRY));
-              b = b[*c].next;
-            }
-        }
+
+      add_seq_to_byte_map (keys[i].key_id, *keys[i].byte_seq);
     }
+
+  if (term_Km)
+    add_seq_to_byte_map (KEY_MOUSE, term_Km);
 
   /* Special case for ESC: Can introduce special key sequences, represent the
      Meta key being pressed, or be a key on its own. */
@@ -722,6 +745,9 @@ terminal_initialize_terminal (char *terminal_name)
   term_kD = tgetstr ("kD", &buffer);
 
   term_bt = tgetstr ("bt", &buffer);
+
+  /* String introducing a mosue event. */
+  term_Km = tgetstr ("Km", &buffer);
 
   initialize_byte_map ();
 

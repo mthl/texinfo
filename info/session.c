@@ -40,6 +40,7 @@
 static void info_handle_pointer (char *label, WINDOW *window);
 static void display_info_keyseq (int expecting_future_input);
 char *node_printed_rep (NODE *node);
+static int get_byte_from_input_buffer (unsigned char *key);
 
 static REFERENCE *select_menu_digit (WINDOW *window, unsigned char key);
 static void gc_file_buffers_and_nodes (void);
@@ -51,6 +52,7 @@ static void gc_file_buffers_and_nodes (void);
 /* **************************************************************** */
 
 static void info_read_and_dispatch (void);
+static void mouse_event_handler (void);
 
 /* The place that we are reading input from. */
 static FILE *info_input_stream = NULL;
@@ -163,6 +165,9 @@ info_session (void)
   close_dribble_file ();
 }
 
+void mouse_reporting_on (void);
+void mouse_reporting_off (void);
+
 static void
 info_read_and_dispatch (void)
 {
@@ -177,16 +182,20 @@ info_read_and_dispatch (void)
       info_initialize_numeric_arg ();
 
       initialize_keyseq ();
+      mouse_reporting_on ();
       key = get_input_key ();
+      mouse_reporting_off ();
       if (key == -1)
         continue;
 
       window_clear_echo_area ();
-
       info_error_was_printed = 0;
 
-      /* Do the selected command. */
-      info_dispatch_on_key (key, info_keymap);
+      if (key == KEY_MOUSE)
+        mouse_event_handler ();
+      else
+        /* Do the selected command. */
+        info_dispatch_on_key (key, info_keymap);
     }
 }
 
@@ -464,6 +473,42 @@ info_gather_typeahead (int wait)
 
 static int get_input_key_internal (void);
 
+/* Whether to process or skip mouse events in the input stream. */
+static int mouse_reporting = 0;
+unsigned char mouse_cb, mouse_cx, mouse_cy;
+
+/* Handle mouse event given that mouse_cb, mouse_cx and mouse_cy contain the
+   data from the event.  See the "XTerm Control Sequences" document for their
+   meanings. */
+static void
+mouse_event_handler (void)
+{
+  if (mouse_cb & 0x40)
+    {
+      switch (mouse_cb & 0x03)
+        {
+        case 0: /* Mouse button 4 (scroll up). */
+          info_up_line (active_window, 3, KEY_MOUSE);
+          break;
+        case 1: /* Mouse button 5 (scroll down). */
+          info_down_line (active_window, 3, KEY_MOUSE);
+          break;
+        }
+    }
+}
+
+void
+mouse_reporting_on (void)
+{
+  mouse_reporting = 1;
+}
+
+void
+mouse_reporting_off (void)
+{
+  mouse_reporting = 0;
+}
+
 /* Return number representing a key that has been pressed, which is an index
    into info_keymap and echo_area_keymap. */
 int
@@ -472,7 +517,19 @@ get_input_key (void)
   int ret = -1;
 
   while (ret == -1)
-    ret = get_input_key_internal ();
+    {
+      ret = get_input_key_internal ();
+
+      if (ret == KEY_MOUSE)
+        {
+          get_byte_from_input_buffer (&mouse_cb);
+          get_byte_from_input_buffer (&mouse_cx);
+          get_byte_from_input_buffer (&mouse_cy);
+
+          if (!mouse_reporting)
+            ret = -1;
+        }
+    }
   return ret;
 }
 
@@ -483,7 +540,7 @@ get_input_key_internal (void)
 {
   BYTEMAP_ENTRY *b;
   unsigned char c;
-  int esc_seen;
+  int esc_seen = 0;
   int pop_start;
   unsigned char first;
   fill_input_buffer (1);

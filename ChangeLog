@@ -1,3 +1,22 @@
+2014-07-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/terminal.c (term_Km): New variable.
+	(terminal_begin_using_terminal, terminal_end_using_terminal): Enter
+	and leave mouse tracking mode.
+	(add_seq_to_byte_map, initialize_byte_map): Function
+	split out.
+	(initialize_byte_map): Bind term_Km sequence to KEY_MOUSE.
+	* info/infomap (KEY_MOUSE): New symbol.
+	(KEYMAP_META_BASE, KEYMAP_SIZE): Updated.
+
+	* info/session.c (mouse_reporting_on, mouse_reporting_off)
+	(mouse_event_handler): New functions.
+	(mouse_cb, mouse_cx, mouse_cy): New variables.
+	(get_input_key): Set them if mouse event occurred.
+	(get_input_key_internal): Initialize variable properly.
+	(info_read_and_dispatch): Call mouse_event_handler if mouse event
+	received.
+
 2014-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (get_input_key): Try to ignore sequences in the input

@@ -89,14 +89,15 @@ extern Keymap echo_area_keymap;
 #define KEY_CTL_RIGHT_ARROW	267
 #define KEY_CTL_DELETE		268
 #define KEY_BACK_TAB		269
+#define KEY_MOUSE               270
 
 /* Add this to get the offset of the key binding with the meta key. */
-#define KEYMAP_META_BASE 270
+#define KEYMAP_META_BASE 271
 
 /* Number of entries in a Keymap: 256 entries for plain byte values plus
    mappings for special keys.  The bindings for the key chords with meta
    follow. */
-#define KEYMAP_SIZE (270 * 2)
+#define KEYMAP_SIZE (KEYMAP_META_BASE * 2)
 
 #define KEYMAP_META(k) ((k) < KEYMAP_META_BASE ? (k) + KEYMAP_META_BASE : (k))
 
