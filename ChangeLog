@@ -1,3 +1,10 @@
+2014-07-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.h (INFO_MENU_REGEXP, INFO_MENU_ENTRY_REGEXP)
+	(INFO_XREF_REGEXP): New symbols.
+	* info/info-utils.c (scan_node_contents): Use them instead of literal
+	strings.
+
 2014-07-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/terminal.c (term_Km): New variable.

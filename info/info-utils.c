@@ -1570,11 +1570,7 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
 
   parse_top_node_line (node);
 
-  /* Search for menu items or cross references in buffer.  This is
-     INFO_MENU_LABEL "|" INFO_XREF_LABEL, but with '*' characters escaped.
-     Only match "*Note" if it is followed by a whitespace character so that it
-     will not be recognized if, e.g., it is surrounded in inverted commas. */
-  search_string = "\n\\* Menu:|(\\*Note[ \\t\\n])";
+  search_string = INFO_MENU_REGEXP "|" INFO_XREF_REGEXP;
 
   s.buffer = node->contents;
   s.start = inptr - node->contents;
@@ -1599,9 +1595,7 @@ search_again:
           if (*inptr == '\n')
             skip_input (strspn (inptr, "\n") - 1); /* Keep one newline. */
 
-          /* This is INFO_MENU_ENTRY_LABEL "|" INFO_XREF_LABEL, but
-             with '*' characters escaped. */
-          search_string = "\n\\* |\\*Note";
+          search_string = INFO_MENU_ENTRY_REGEXP "|" INFO_XREF_REGEXP;
           s.start = inptr - s.buffer;
           continue;
         }
