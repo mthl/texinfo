@@ -355,6 +355,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
           add_pointer_to_array (info_copy_reference (invoc_ref),
             ref_index, ref_list, ref_slots, 2);
         }
+      free (program);
     }
 
   /* If there are arguments remaining, they are the names of menu items

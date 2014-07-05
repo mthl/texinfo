@@ -52,7 +52,7 @@ find_footnotes_window (void)
 NODE *
 make_footnotes_node (NODE *node)
 {
-  NODE *fn_node, *result = NULL;
+  NODE *fn_node, *footnotes_node = NULL, *result = NULL;
   long fn_start;
 
   /* Make the initial assumption that the footnotes appear as simple
@@ -90,10 +90,12 @@ make_footnotes_node (NODE *node)
                   refs[i]->nodename[reflen - 1] == '-' &&
                   isdigit (refs[i]->nodename[reflen]))))
               {
-                fn_node = info_get_node (node->fullpath, refname);
-                if (fn_node)
-                  fn_start = 0;
-
+                footnotes_node = info_get_node (node->fullpath, refname);
+                if (footnotes_node)
+                  {
+                    fn_node = footnotes_node;
+                    fn_start = 0;
+                  }
                 break;
               }
 
@@ -161,6 +163,7 @@ make_footnotes_node (NODE *node)
     free (header);
   }
 
+  free (footnotes_node);
   return result;
 }
 

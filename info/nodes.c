@@ -993,6 +993,8 @@ cleanup_and_exit:
   return node;
 }
 
+/* Return NODE specified with FILENAME_IN and NODENAME_IN.  Return value
+   should be freed by caller, but none of its fields should be. */
 NODE *
 info_get_node (char *filename_in, char *nodename_in)
 {
@@ -1044,7 +1046,8 @@ node_set_body_start (NODE *node)
 /* Return a pointer to a NODE structure for the Info node NODENAME in
    FILE_BUFFER.  NODENAME can be passed as NULL, in which case the
    nodename of "Top" is used.  If the node cannot be found, return a
-   NULL pointer. */
+   NULL pointer.  Return value should be freed by caller, but none of its
+   fields should be. */
 NODE *
 info_get_node_of_file_buffer (FILE_BUFFER *file_buffer, char *nodename)
 {

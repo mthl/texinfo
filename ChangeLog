@@ -1,5 +1,20 @@
 2014-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/dir.c (dir_entry_of_infodir)
+	* info/footnotes.c (make_footnotes_node) 
+	* info/session.c (info_intuit_options_node): Free return value of
+	info_get_node.
+
+	* info/info.c (add_initial_nodes): Free a string.
+
+	* info/session.c (info_goto_invocation_node): Don't use
+	info_error_was_printed to check for an error.
+	(dump_node_to_stream): Free NODE object at more exit points from
+	function.
+	(info_search_internal): Free variable before exiting function.
+
+2014-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (node_printed_rep): Keep pointer to storage to
 	returned string in static pointer to avoid memory leaks by callers.
 	(info_menu_sequence): Don't clear echo area if there was an error

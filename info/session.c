@@ -2877,12 +2877,12 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
     window_clear_echo_area ();
 }
 
-/* Find the node that is the best candidate to list the PROGRAM's
-   invocation info and its command-line options, by looking for menu
-   items and chains of menu items with characteristic names.  Return
-   value should not be freed by caller. */
+/* Find the node in the file with Top node NODE that is the best candidate to
+   list the PROGRAM's invocation info and its command-line options, by looking
+   for menu items and chains of menu items with characteristic names.  This
+   function frees NODE.  Return value should not be freed by caller. */
 REFERENCE *
-info_intuit_options_node (NODE *initial_node, char *program)
+info_intuit_options_node (NODE *node, char *program)
 {
   /* The list of node names typical for GNU manuals where the program
      usage and specifically the command-line arguments are described.
@@ -2907,7 +2907,6 @@ info_intuit_options_node (NODE *initial_node, char *program)
     "%s",               /* last resort */
     (const char *)0
   };
-  NODE *node = NULL;
   REFERENCE *entry = NULL;
 
   const char **try_node;
@@ -2916,14 +2915,14 @@ info_intuit_options_node (NODE *initial_node, char *program)
      there are no more menus or no menu items from the above list.
      Some manuals have the invocation node sitting 3 or 4 levels deep
      in the menu hierarchy...  */
-  for (node = initial_node; node; initial_node = node)
+  while (1)
     {
       REFERENCE *new_entry = NULL;
 
       /* If no menu in this node, stop here.  Perhaps this node
          is the one they need.  */
-      if (!initial_node->references)
-        return entry;
+      if (!node->references)
+        break;
 
       /* Look for node names typical for usage nodes in this menu.  */
       for (try_node = invocation_nodes; *try_node; try_node++)
@@ -2935,7 +2934,7 @@ info_intuit_options_node (NODE *initial_node, char *program)
           /* The last resort "%s" is dangerous, so we restrict it
              to exact matches here.  */
           new_entry = info_get_menu_entry_by_label
-            (initial_node, nodename, strcmp (*try_node, "%s"));
+            (node, nodename, strcmp (*try_node, "%s"));
           free (nodename);
           if (new_entry)
             break;
@@ -2949,7 +2948,9 @@ info_intuit_options_node (NODE *initial_node, char *program)
       /* Go down into menu, and repeat. */ 
 
       if (!entry->filename)
-        entry->filename = xstrdup (initial_node->fullpath);
+        entry->filename = xstrdup (node->fullpath);
+
+      free (node);
 
       /* Try to find this node.  */
       node = info_get_node (entry->filename, entry->nodename);
@@ -2957,6 +2958,7 @@ info_intuit_options_node (NODE *initial_node, char *program)
         break;
     }
 
+  free (node);
   return entry;  
 }
 
@@ -3017,6 +3019,8 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
   top_node = info_get_node (file_name, 0);
   if (!top_node)
     info_error (msg_cant_find_node, "Top");
+  else
+    window_clear_echo_area ();
 
   invocation_ref = info_intuit_options_node (top_node, program_name);
 
@@ -3024,8 +3028,6 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
   if (invocation_ref)
     info_select_reference (window, invocation_ref);
 
-  if (!info_error_was_printed)
-    window_clear_echo_area ();
   free (line);
   free (default_program_name);
 }
@@ -3238,7 +3240,10 @@ dump_node_to_stream (char *filename, char *nodename,
   debug (1, (_("writing node %s..."), node_printed_rep (node)));
 
   if (write_node_to_stream (node, stream))
-    return DUMP_SYS_ERROR;
+    {
+      free (node);
+      return DUMP_SYS_ERROR;
+    }
 
   /* If we are dumping subnodes, get the list of menu items in this node,
      and dump each one recursively. */
@@ -3260,14 +3265,16 @@ dump_node_to_stream (char *filename, char *nodename,
                  current one. */
               if (!menu[i]->filename)
                 if (dump_node_to_stream (filename, menu[i]->nodename,
-					 stream, dump_subnodes) == DUMP_SYS_ERROR)
-		  return DUMP_SYS_ERROR;
+                      stream, dump_subnodes) == DUMP_SYS_ERROR)
+                  {
+                    free (node);
+                    return DUMP_SYS_ERROR;
+                  }
             }
         }
     }
 
   free (node);
-
   return DUMP_SUCCESS;
 }
 
@@ -3658,10 +3665,9 @@ info_search_internal (char *string, WINDOW *window,
           if (dir < 0)
             start = tag->nodelen;
 
-          result =
-            info_search_in_node_internal (string, node, start, window, dir,
-					  case_sensitive, 1, use_regex,
-					  &ret, resbnd);
+          result = info_search_in_node_internal (string, node, start, window,
+                      dir, case_sensitive, 1, use_regex, &ret, resbnd);
+          free (node);
 
           /* Did we find the string in this node? */
           if (result == search_success)
@@ -3677,10 +3683,7 @@ info_search_internal (char *string, WINDOW *window,
               return 0;
             }
 
-          /* No.  Free this node, and make sure that we haven't passed
-             our starting point. */
-          free (node);
-
+          /* No.  Make sure that we haven't passed our starting point. */
           if (result == search_failure
 	      || strcmp (initial_nodename, tag->nodename) == 0)
             return -1;
