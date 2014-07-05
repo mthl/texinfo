@@ -2758,18 +2758,18 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
       if (!dir_node)
         info_error (msg_cant_find_node, "Top");
       else
-        node = info_follow_menus (dir_node, nodes, &error, 0);
+        {
+          node = info_follow_menus (dir_node, nodes, &error, 0);
+          info_set_node_of_window (window, node);
+          if (error)
+            show_error_node (error);
+          else
+            window_clear_echo_area ();
+        }
 
       free (nodes);
-      if (error)
-	show_error_node (error);
-      else
-        info_set_node_of_window (window, node);
     }
-
   free (line);
-  if (!info_error_was_printed)
-    window_clear_echo_area ();
 }
 
 
@@ -2784,18 +2784,17 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
 char *
 node_printed_rep (NODE *node)
 {
-  char *rep;
+  static char *rep;
 
   if (node->fullpath)
     {
       char *filename = filename_non_directory (node->fullpath);
-      rep = xmalloc (1 + strlen (filename) + 1 + strlen (node->nodename) + 1);
+      rep = xrealloc (rep, 1 + strlen (filename) + 1 + strlen (node->nodename) + 1);
       sprintf (rep, "(%s)%s", filename, node->nodename);
+      return rep;
     }
   else
-    rep = node->nodename;
-
-  return rep;
+    return node->nodename;
 }
 
 /* Read a line of input which is a node name, and go to that node. */

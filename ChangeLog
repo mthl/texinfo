@@ -1,5 +1,13 @@
 2014-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (node_printed_rep): Keep pointer to storage to
+	returned string in static pointer to avoid memory leaks by callers.
+	(info_menu_sequence): Don't clear echo area if there was an error
+	message.  If a component in the sequence is invalid, go to the last
+	node reached.
+
+2014-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.h (NODE): Fields 'parent', 'filename' removed.  Fields
 	'fullpath', 'subfile' added.
 	(N_Subfile): New symbol.
