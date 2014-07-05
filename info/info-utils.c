@@ -1120,6 +1120,8 @@ parse_top_node_line (NODE *node)
       /* TODO: Account for "(dir)" and "(DIR)". */
       value_length = read_quoted_string (inptr, "\n\t,", 1, store_in);
 
+      free (dummy); dummy = 0;
+
       /* Skip past value and any quoting or separating characters. */
       skip_input (value_length);
 
@@ -1130,7 +1132,6 @@ parse_top_node_line (NODE *node)
         }
 
       skip_input (1); /* Point after field terminator */
-      free (dummy); dummy = 0;
     }
 }
 

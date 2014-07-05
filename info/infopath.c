@@ -34,6 +34,7 @@ size_t infodirs_slots = 0;
 /* Exclude default file search directories. */
 int infopath_no_defaults_p;
 
+static void infopath_add_dir (char *path);
 char *extract_colon_unit (char *string, int *idx);
 
 void
@@ -143,12 +144,14 @@ build_infopath_from_path (void)
         }
 
       if (dir)
-        infopath_add (temp_dirname);
+        infopath_add_dir (temp_dirname);
       else
         free (temp_dirname);
     }
 }
 
+/* Add directory at PATH to Info search path.  A reference to PATH is retained,
+   or PATH is freed. */
 static void
 infopath_add_dir (char *path)
 {
@@ -159,6 +162,7 @@ infopath_add_dir (char *path)
   if (stat (path, &dirinfo) == -1)
     {
       debug (2, ("inaccessible directory %s not added to INFOPATH", path));
+      free (path);
       return; /* Doesn't exist, or not accessible. */
     }
 
@@ -171,6 +175,7 @@ infopath_add_dir (char *path)
           && infodirs[i]->inode != 0)
         {
           debug (2, ("duplicate directory %s not added to INFOPATH", path));
+          free (path);
           return; /* We have it already. */
         }
     }
