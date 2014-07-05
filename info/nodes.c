@@ -165,12 +165,10 @@ init_file_buffer_tag (FILE_BUFFER *fb, NODE *entry)
   if (fb->flags & N_HasTagsTable)
     {
       entry->flags |= N_HasTagsTable;
+      entry->fullpath = fb->fullpath;
 
       if (fb->flags & N_TagsIndirect)
-        {
-          entry->flags |= N_TagsIndirect;
-          entry->parent = fb->fullpath;
-        }
+        entry->flags |= N_TagsIndirect;
     }
 }
 
@@ -234,7 +232,7 @@ get_nodes_of_info_file (FILE_BUFFER *file_buffer)
         /* Record that the length is unknown. */
         entry->nodelen = -1;
 
-      entry->filename = file_buffer->fullpath;
+      entry->fullpath = file_buffer->fullpath;
 
       /* Add this tag to the array of tag structures in this FILE_BUFFER. */
       add_pointer_to_array (entry, tags_index, file_buffer->tags,
@@ -331,7 +329,7 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
 
       /* The filename of this node is currently known as the same as the
          name of this file. */
-      entry->filename = file_buffer->filename;
+      entry->fullpath = file_buffer->fullpath;
 
       /* Add this node structure to the array of node structures in this
          FILE_BUFFER. */
@@ -498,7 +496,7 @@ get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
              starting position.  This means that the subfile directly
              preceding this one is the one containing the node. */
 
-          entry->filename = file_buffer->subfiles[i - 1];
+          entry->subfile = file_buffer->subfiles[i - 1];
           entry->nodestart -= subfiles[i - 1]->first_byte;
           entry->nodestart += header_length;
         }
@@ -666,7 +664,7 @@ info_find_file (char *filename)
   if (!fullpath)
     return NULL;
 
-  file_buffer = info_load_file (fullpath, 1);
+  file_buffer = info_load_file (fullpath, 0);
 
   return file_buffer;
 }
@@ -708,19 +706,19 @@ info_find_subfile (char *fullpath)
   with_extension = info_find_fullpath (fullpath, 0);
   if (with_extension)
     {
-      file_buffer = info_load_file (with_extension, 0);
+      file_buffer = info_load_file (with_extension, 1);
       free (with_extension);
     }
   return file_buffer;
 }
 
 /* Load the file with path FULLPATH, and return the information structure
-   describing this file, even if the file was already loaded.  Non-zero
-   second argument says to build a list of tags (or nodes) for this file.
-   This is not necessary when loading a subfile for which we already have
-   tags. */
+   describing this file, even if the file was already loaded.  IS_SUBFILE
+   says whether this file is the subfile of a split file.  If it is, mark
+   the FILE_BUFFER object as such and do not build a list of nodes for
+   this file. */
 static FILE_BUFFER *
-info_load_file (char *fullpath, int get_tags)
+info_load_file (char *fullpath, int is_subfile)
 {
   char *contents;
   size_t filesize;
@@ -747,9 +745,10 @@ info_load_file (char *fullpath, int get_tags)
   /* Find encoding of file, if set */
   get_file_character_encoding (file_buffer);
 
-  /* If requested, build the tags and nodes for this file buffer. */
-  if (get_tags)
+  if (!is_subfile)
     build_tags_and_nodes (file_buffer);
+  else
+    file_buffer->flags |= N_Subfile;
 
   /* If the file was loaded, remember the name under which it was found. */
   if (file_buffer)
@@ -893,8 +892,8 @@ info_create_node (void)
 {
   NODE *n = xmalloc (sizeof (NODE));
 
-  n->filename = 0;
-  n->parent = 0;
+  n->fullpath = 0;
+  n->subfile = 0;
   n->nodename = 0;
   n->contents = 0;
   n->nodelen = -1;
@@ -1019,11 +1018,7 @@ get_filename_and_nodename (NODE *node,
   if (!*filename)
     {
       if (node)
-        {
-          *filename = node->parent;
-          if (!*filename)
-            *filename = node->filename;
-        }
+        *filename = node->fullpath;
       else
         *filename = "dir";
     }
@@ -1070,7 +1065,7 @@ info_get_node_of_file_buffer (FILE_BUFFER *file_buffer, char *nodename)
   if (strcmp (nodename, "*") == 0)
     {
       node = info_create_node ();
-      node->filename = file_buffer->fullpath;
+      node->fullpath = file_buffer->fullpath;
       node->nodename = xstrdup ("*");
       node->contents = file_buffer->contents;
       node->nodelen = file_buffer->filesize;
@@ -1185,10 +1180,11 @@ info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
   /* If not a split file, subfile == fb */
   FILE_BUFFER *subfile;
  
-  if (!strcmp (fb->filename, tag->filename))
+  if (!tag->subfile)
     subfile = fb;
   else
-    subfile = info_find_subfile (tag->filename);
+    subfile = info_find_subfile (tag->subfile);
+
   if (!subfile)
     return NULL;
 

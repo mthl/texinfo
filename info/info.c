@@ -380,10 +380,8 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
           argv += argc; argc = 0;
 
           free (ref_list[0]);
-          ref_list[0] = info_new_reference (node_via_menus->parent,
+          ref_list[0] = info_new_reference (node_via_menus->fullpath,
                                             node_via_menus->nodename);
-          if (!ref_list[0]->filename) /* Not a split file. */
-            ref_list[0]->filename = node_via_menus->filename;
           free (node_via_menus);
         }
 
@@ -435,10 +433,8 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
               argv += argc; argc = 0;
 
               free (ref_list[0]);
-              ref_list[0] = info_new_reference (node_via_menus->parent,
+              ref_list[0] = info_new_reference (node_via_menus->fullpath,
                                                 node_via_menus->nodename);
-              if (!ref_list[0]->filename) /* Not a split file. */
-                ref_list[0]->filename = node_via_menus->filename;
               free (node_via_menus);
             }
         }
@@ -487,7 +483,7 @@ allfiles_create_node (char *term, REFERENCE **fref)
     }
 
   allfiles_node = info_create_node ();
-  allfiles_node->filename = xstrdup ("");
+  allfiles_node->fullpath = xstrdup ("");
   allfiles_node->nodename = xstrdup ("*Info File Index*");
   allfiles_node->contents = text_buffer_base (&text);
   allfiles_node->nodelen = text_buffer_off (&text);

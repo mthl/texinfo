@@ -47,44 +47,28 @@ static char *
 format_node_info (NODE *node)
 {
   register int i, len;
-  char *parent, *containing_file;
-  static char *line_buffer = NULL;
+  char *containing_file;
+  static struct text_buffer line_buffer = {};
 
-  if (!line_buffer)
-    line_buffer = xmalloc (1000);
-
-  if (node->parent)
-    {
-      parent = filename_non_directory (node->parent);
-      if (!parent)
-        parent = node->parent;
-    }
+  if (!text_buffer_base (&line_buffer))
+    text_buffer_init (&line_buffer);
   else
-    parent = NULL;
+    text_buffer_reset (&line_buffer);
 
-  containing_file = node->filename;
-
-  if (!parent && !*containing_file)
-    sprintf (line_buffer, "* %s::", node->nodename);
+  if (node->subfile)
+    containing_file = node->subfile;
   else
-    {
-      char *file = NULL;
+    containing_file = node->fullpath;
 
-      if (parent)
-        file = parent;
-      else
-        file = filename_non_directory (containing_file);
+  if (!containing_file || !*containing_file)
+    text_buffer_printf (&line_buffer, "* %s::", node->nodename);
+  else
+    text_buffer_printf (&line_buffer, "* (%s)%s::",
+                        filename_non_directory (node->fullpath),
+                        node->nodename);
 
-      if (!file)
-        file = containing_file;
-
-      if (!*file)
-        file = "dir";
-
-      sprintf (line_buffer, "* (%s)%s::", file, node->nodename);
-    }
-
-  len = pad_to (36, line_buffer);
+  for (i = text_buffer_off (&line_buffer); i < 36; i++)
+    text_buffer_add_char (&line_buffer, ' ');
 
   {
     int lines = 1;
@@ -93,19 +77,22 @@ format_node_info (NODE *node)
       if (node->contents[i] == '\n')
         lines++;
 
-    sprintf (line_buffer + len, "%d", lines);
+    text_buffer_printf (&line_buffer, "%d", lines);
   }
 
-  len = pad_to (44, line_buffer);
-  sprintf (line_buffer + len, "%ld", node->nodelen);
+  text_buffer_add_char (&line_buffer, ' ');
+  for (i = text_buffer_off (&line_buffer); i < 44; i++)
+    text_buffer_add_char (&line_buffer, ' ');
+  text_buffer_printf (&line_buffer, "%ld", node->nodelen);
 
-  if (node->filename && *(node->filename))
+  if (containing_file)
     {
-      len = pad_to (51, line_buffer);
-      strcpy (line_buffer + len, node->filename);
+      for (i = text_buffer_off (&line_buffer); i < 51; i++)
+        text_buffer_add_char (&line_buffer, ' ');
+      text_buffer_printf (&line_buffer, containing_file);
     }
 
-  return xstrdup (line_buffer);
+  return xstrdup (text_buffer_base (&line_buffer));
 }
 
 /* Little string comparison routine for qsort (). */

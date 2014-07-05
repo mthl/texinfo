@@ -1,3 +1,37 @@
+2014-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.h (NODE): Fields 'parent', 'filename' removed.  Fields
+	'fullpath', 'subfile' added.
+	(N_Subfile): New symbol.
+	
+	* info/nodes.c (info_load_file): Arguments changed.  Callers updated.
+	Set N_Subfile flag for subfiles.
+
+	* info/nodes.c (init_file_buffer_tag, get_nodes_of_info_file)
+	(get_nodes_of_tag_table, info_create_node, get_filename_and_nodename)
+	(info_get_node_of_file_buffer, info_node_of_tag)
+	* info/dir.c (build_dir_node)
+	* info/footnotes.c (make_footnotes_node)
+	* info/indices.c (create_virtindex_node)
+	* info/info-utils.c (name_internal_node)
+	* info/info.c (add_initial_nodes, allfiles_create_node)
+	* info/infodoc.c (info_get_info_help_node)
+	* info/man.c (get_manpage_node)
+	* info/session.c (info_handle_pointer, info_follow_menus)
+	(info_menu_sequence, node_printed_rep, info_intuit_options_node)
+	(info_goto_invocation_node, info_display_file_info)
+	(file_buffer_of_window, info_search_internal)
+	* info/window.c (window_make_modeline):
+	Access changed fields of NODE objects.  Use fullpath field
+	instead of checking if parent is set and falling back to filename.
+
+	* info/nodemenu.c (format_node_info): Use struct text_buffer to hold
+	returned string.
+	* info/window.c (pad_to): Removed.
+
+	* info/session.c (gc_file_buffers_and_nodes): Free subfiles if no
+	window contains a node from the subfile.
+
 2014-07-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.h (INFO_MENU_REGEXP, INFO_MENU_ENTRY_REGEXP)

@@ -81,7 +81,7 @@ get_manpage_node (char *pagename)
   if (!tag)
     {
       tag = info_create_node ();
-      tag->filename = MANPAGE_FILE_BUFFER_NAME;
+      tag->fullpath = MANPAGE_FILE_BUFFER_NAME;
       tag->nodename = xstrdup (pagename);
       tag->flags |= (N_HasTagsTable | N_IsManPage);
 

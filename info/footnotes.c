@@ -90,13 +90,7 @@ make_footnotes_node (NODE *node)
                   refs[i]->nodename[reflen - 1] == '-' &&
                   isdigit (refs[i]->nodename[reflen]))))
               {
-                char *filename;
-
-                filename = node->parent;
-                if (!filename)
-                  filename = node->filename;
-
-                fn_node = info_get_node (filename, refname);
+                fn_node = info_get_node (node->fullpath, refname);
                 if (fn_node)
                   fn_start = 0;
 
@@ -161,8 +155,8 @@ make_footnotes_node (NODE *node)
     name_internal_node (result, footnote_nodename);
 
     /* Needed in case the user follows a reference in the footnotes window. */
-    result->filename = fn_node->filename;
-    result->parent = fn_node->parent;
+    result->fullpath = fn_node->fullpath;
+    result->subfile = fn_node->subfile;
 
     free (header);
   }

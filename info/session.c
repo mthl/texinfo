@@ -1723,7 +1723,7 @@ info_handle_pointer (char *label, WINDOW *window)
         {
           NODE *p = window->hist[i]->node;
 
-          if (p->filename && !strcmp (p->filename, node->filename)
+          if (p->fullpath && !strcmp (p->fullpath, node->fullpath)
               && p->nodename && !strcmp (p->nodename, node->nodename))
             break;
         }
@@ -2645,7 +2645,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
       REFERENCE *entry;
       char *arg = *menus; /* Remember the name of the menu entry we want. */
 
-      debug (3, ("looking for %s in %s:%s", arg, initial_node->filename,
+      debug (3, ("looking for %s in %s:%s", arg, initial_node->fullpath,
 		 initial_node->nodename));
 
       if (!initial_node->references)
@@ -2686,7 +2686,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
           return strict ? 0 : initial_node;
         }
 
-      debug (3, ("node: %s, %s", node->filename, node->nodename));
+      debug (3, ("node: %s, %s", node->fullpath, node->nodename));
       
       /* Success.  Go round the loop again.  */
       free (initial_node);
@@ -2752,13 +2752,7 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
       /* If DIR_NODE is NULL, they might be reading a file directly,
          like in "info -d . -f ./foo".  Try using "Top" instead.  */
       if (!dir_node)
-        {
-          char *file_name = window->node->parent;
-
-          if (!file_name)
-            file_name = window->node->filename;
-          dir_node = info_get_node (file_name, 0);
-        }
+        dir_node = info_get_node (window->node->fullpath, 0);
 
       /* If we still cannot find the starting point, give up. */
       if (!dir_node)
@@ -2792,10 +2786,9 @@ node_printed_rep (NODE *node)
 {
   char *rep;
 
-  if (node->filename)
+  if (node->fullpath)
     {
-      char *filename
-       = filename_non_directory (node->parent ? node->parent : node->filename);
+      char *filename = filename_non_directory (node->fullpath);
       rep = xmalloc (1 + strlen (filename) + 1 + strlen (node->nodename) + 1);
       sprintf (rep, "(%s)%s", filename, node->nodename);
     }
@@ -2957,8 +2950,8 @@ info_intuit_options_node (NODE *initial_node, char *program)
       /* Go down into menu, and repeat. */ 
 
       if (!entry->filename)
-        entry->filename = xstrdup (initial_node->parent ? initial_node->parent
-                                   : initial_node->filename);
+        entry->filename = xstrdup (initial_node->fullpath);
+
       /* Try to find this node.  */
       node = info_get_node (entry->filename, entry->nodename);
       if (!node)
@@ -3002,8 +2995,7 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
 
   /* Intuit the name of the program they are likely to want.
      We use the file name of the current Info file as a hint.  */
-  file_name = window->node->parent ? window->node->parent
-                                   : window->node->filename;
+  file_name = window->node->fullpath;
   default_program_name = program_name_from_file_name (file_name);
 
   prompt = xmalloc (strlen (default_program_name) +
@@ -3080,15 +3072,13 @@ DECLARE_INFO_COMMAND (info_dir_node, _("Select the node `(dir)'"))
 DECLARE_INFO_COMMAND (info_display_file_info,
 		      _("Show full file name of node being displayed"))
 {
-  char *fname = info_find_fullpath (window->node->filename, 0);
-  if (fname)
+  if (window->node->fullpath && *window->node->fullpath)
     {
       int line = window_line_of_point (window);
       window_message_in_echo_area ("File name: %s, line %d of %ld (%ld%%)",
-				   fname, line,
-				   window->line_count,
+				   window->node->fullpath,
+                                   line, window->line_count,
 				   line * 100 / window->line_count);
-      free (fname);
     }
   else
     window_message_in_echo_area ("Internal node");
@@ -3384,11 +3374,8 @@ file_buffer_of_window (WINDOW *window)
   if (!window->node)
     return NULL;
 
-  if (window->node->parent)
-    return info_find_file (window->node->parent);
-
-  if (window->node->filename)
-    return info_find_file (window->node->filename);
+  if (window->node->fullpath)
+    return info_find_file (window->node->fullpath);
 
   return NULL;
 }
@@ -3585,29 +3572,26 @@ info_search_internal (char *string, WINDOW *window,
   if (!file_buffer || (strcmp (initial_nodename, "*") == 0))
     return -1;
 
-  /* If this file has tags, search through every subfile, starting at
-     this node's subfile and node.  Otherwise, search through the
-     file's node list. */
+  /* Search through this file's node list. */
   if (file_buffer->tags)
     {
-      register int current_tag = 0, number_of_tags;
-      char *last_subfile;
+      register int current_tag = -1, number_of_tags;
+      char *subfile_name = 0;
       NODE *tag;
       char *msg = NULL;
 
       /* Find number of tags and current tag. */
-      last_subfile = NULL;
       for (i = 0; file_buffer->tags[i]; i++)
         if (strcmp (initial_nodename, file_buffer->tags[i]->nodename) == 0)
           {
             current_tag = i;
-            last_subfile = file_buffer->tags[i]->filename;
+            subfile_name = file_buffer->tags[i]->subfile;
           }
 
       number_of_tags = i;
 
-      /* If there is no last_subfile, our tag wasn't found. */
-      if (!last_subfile)
+      /* Our tag wasn't found. */
+      if (current_tag == -1)
         return -1;
 
       /* Search through subsequent nodes, wrapping around to the top
@@ -3646,13 +3630,14 @@ info_search_internal (char *string, WINDOW *window,
             return -1;
           current_tag = i;
 
-          if (!echo_area_is_active && (last_subfile != tag->filename))
+          /* Display message when searching a new subfile. */
+          if (!echo_area_is_active && tag->subfile != subfile_name)
             {
               window_message_in_echo_area
                 (_("Searching subfile %s ..."),
-                 filename_non_directory (tag->filename));
+                 filename_non_directory (tag->subfile));
 
-              last_subfile = tag->filename;
+              subfile_name = tag->subfile;
             }
 
           node = info_get_node (file_buffer->filename, tag->nodename);
@@ -4384,10 +4369,9 @@ gc_file_buffers_and_nodes (void)
             {
               FILE_BUFFER *fb = info_loaded_files[fb_index];
 
-              if (fb->flags & N_TagsIndirect)
+              if (fb->flags & N_Subfile)
                 {
-                  if (n->parent
-                      && (FILENAME_CMP (fb->fullpath, n->parent) == 0))
+                  if (n->subfile && !FILENAME_CMP (fb->fullpath, n->subfile))
                     {
                       fb_referenced[fb_index] = 1;
                       break;
@@ -4395,19 +4379,12 @@ gc_file_buffers_and_nodes (void)
                 }
               else
                 {
-                  /* Check both 'fullpath' and 'filename'.  TODO: Make sure
-                     that the 'filename' field of NODE contains the full path,
-                     or have some other way of telling different files with
-                     the same name apart. */
-                  if (n->filename
-                      && (FILENAME_CMP (fb->fullpath, n->filename) == 0
-                          || (FILENAME_CMP (fb->filename, n->filename) == 0)))
+                  if (n->fullpath && !FILENAME_CMP (fb->fullpath, n->fullpath))
                     {
                       fb_referenced[fb_index] = 1;
                       break;
                     }
                 }
-
             }
 
           /* Loop over gcable_pointers. */

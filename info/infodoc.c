@@ -400,11 +400,11 @@ DECLARE_INFO_COMMAND (info_get_info_help_node, _("Visit Info node `(info)Help'")
 
     for (win = windows; win; win = win->next)
       {
-        if (win->node && win->node->filename &&
-            (mbscasecmp
-             (filename_non_directory (win->node->filename), "info") == 0) &&
-            ((strcmp (win->node->nodename, "Help") == 0) ||
-             (strcmp (win->node->nodename, "Help-Small-Screen") == 0)))
+        if (win->node && win->node->fullpath
+            && !mbscasecmp ("info",
+                            filename_non_directory (win->node->fullpath))
+            && (!strcmp (win->node->nodename, "Help")
+                || !strcmp (win->node->nodename, "Help-Small-Screen")))
           {
             active_window = win;
             return;

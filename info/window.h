@@ -193,9 +193,6 @@ extern NODE *string_to_node (char *contents);
 struct text_buffer;
 extern NODE *text_buffer_to_node (struct text_buffer *tb);
 
-/* Pad STRING to COUNT characters by inserting blanks. */
-extern int pad_to (int count, char *string);
-
 /* Make a message appear in the echo area, built from arguments formatted
    according to FORMAT.
 

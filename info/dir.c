@@ -64,7 +64,7 @@ build_dir_node (void)
 
   node = info_create_node ();
   node->nodename = xstrdup ("Top");
-  node->filename = xstrdup ("dir");
+  node->fullpath = xstrdup ("dir");
   node->contents = xstrdup (
 
 "File: dir,	Node: Top,	This is the top of the INFO tree.\n"

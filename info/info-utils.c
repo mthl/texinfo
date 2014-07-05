@@ -1750,8 +1750,8 @@ name_internal_node (NODE *node, char *name)
   if (!node)
     return;
 
-  node->filename = "";
-  node->parent = NULL;
+  node->fullpath = "";
+  node->subfile = 0;
   node->nodename = name;
   node->flags |= N_IsInternal;
 }

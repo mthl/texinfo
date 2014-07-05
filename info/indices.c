@@ -723,7 +723,7 @@ create_virtindex_node (FILE_BUFFER *file_buffer)
   text += skip_node_separator (text);
   
   node = info_create_node ();
-  node->filename = file_buffer->filename;
+  node->fullpath = file_buffer->fullpath;
   node->nodename = xstrdup (tag->nodename);
   node->contents = text;
   node->nodelen = strlen (text);

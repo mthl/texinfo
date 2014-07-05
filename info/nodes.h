@@ -49,8 +49,8 @@ typedef struct {
    paths, so you might have: node->filename = "/usr/gnu/info/emacs-1",
    with node->parent = "/usr/gnu/info/emacs". */
 typedef struct {
-  char *filename;               /* The physical file containing this node. */
-  char *parent;                 /* Non-null is the logical file name. */
+  char *fullpath;               /* Non-null is the logical file name. */
+  char *subfile;                /* File containing node for split files. */
   char *nodename;               /* The name of this node. */
   char *contents;               /* Characters appearing in this node. */
   long nodelen;                 /* The length of the CONTENTS member.
@@ -67,7 +67,7 @@ typedef struct {
   char *up, *prev, *next;       /* Names of nearby nodes. */
 } NODE;
 
-/* Defines that can appear in NODE->flags.  All informative. */
+/* Values for NODE.flags or FILE_BUFFER.flags. */
 #define N_HasTagsTable 0x01     /* This node was found through a tags table. */
 #define N_TagsIndirect 0x02     /* The tags table was an indirect one. */
 #define N_UpdateTags   0x04     /* The tags table is out of date. */
@@ -79,6 +79,7 @@ typedef struct {
 #define N_WasRewritten 0x100    /* NODE->contents can be passed to free(). */ 
 #define N_IsIndex      0x200    /* An index node. */
 #define N_IsDir        0x400    /* A dir node. */
+#define N_Subfile      0x800    /* File buffer is a subfile of a split file. */
 
 /* String constants. */
 #define INFO_FILE_LABEL                 "File:"

@@ -924,13 +924,16 @@ window_make_modeline (WINDOW *window)
         if (node->nodename)
           nodename = node->nodename;
 
-        if (node->parent)
+        if (node->subfile)
           {
-            parent = filename_non_directory (node->parent);
+            parent = filename_non_directory (node->fullpath);
+            filename = filename_non_directory (node->subfile);
           }
-
-        if (node->filename)
-          filename = filename_non_directory (node->filename);
+        else
+          {
+            parent = 0;
+            filename = filename_non_directory (node->fullpath);
+          }
 
         if (node->flags & N_UpdateTags)
           update_message = _("--*** Tags out of Date ***");
@@ -941,7 +944,7 @@ window_make_modeline (WINDOW *window)
         char *name;
         int dot;
 
-        name = parent ? parent : filename ? filename : 0;
+        name = filename_non_directory (node->fullpath);
 
         modeline_len += strlen ("--() --");
         modeline_len += 3; /* strlen (location_indicator) */
@@ -966,8 +969,8 @@ window_make_modeline (WINDOW *window)
       }
     else
       {
-        if (node && node->parent)
-            modeline_len += strlen ("Subfile: ") + strlen (node->filename);
+        if (node && node->subfile)
+            modeline_len += strlen ("Subfile: ") + strlen (node->subfile);
 
         if (update_message)
           modeline_len += strlen (update_message);
@@ -983,7 +986,7 @@ window_make_modeline (WINDOW *window)
         modeline = xmalloc (1 + modeline_len);
 
         /* Special internal windows have no filename. */
-        if (!parent && !*filename)
+        if (!filename || !*filename)
           sprintf (modeline, _("-%s---Info: %s, %ld lines --%s--"),
                    (window->flags & W_NoWrap) ? "$" : "-",
                    nodename, window->line_count, location_indicator);
@@ -993,7 +996,7 @@ window_make_modeline (WINDOW *window)
                    (node && (node->flags & N_IsCompressed)) ? "zz" : "--",
                    parent ? parent : filename,
                    nodename, window->line_count, location_indicator);
-        if (parent)
+        if (node->subfile)
           sprintf (modeline + strlen (modeline), _(" Subfile: %s"), filename);
 
         if (update_message)
@@ -1181,26 +1184,6 @@ text_buffer_to_node (struct text_buffer *tb)
 
   node->contents = text_buffer_base (tb);
   return node;
-}
-
-/* Pad STRING to COUNT characters by inserting blanks. */
-int
-pad_to (int count, char *string)
-{
-  register int i;
-
-  i = strlen (string);
-
-  if (i >= count)
-    string[i++] = ' ';
-  else
-    {
-      while (i < count)
-        string[i++] = ' ';
-    }
-  string[i] = '\0';
-
-  return i;
 }
 
 
