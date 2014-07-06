@@ -1,3 +1,19 @@
+2014-07-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/dir.c (lookup_dir_entry): Free return value of get_dir_node.
+	* info/window.c (window_delete_window): Free line map on window close.
+	* info/nodes.c (info_find_file): Free a string before exit.
+	* info/info-utils.c (scan_reference_label): Free empty string before
+	exit.
+
+	* system.h [O_BINARY, !O_BINARY] (HAS_SLASH): New macro.
+	* info/filesys.c (info_find_fullpath) 
+	* info/info.c (main)
+	* info/nodes.c (info_find_file): Call it.
+
+	* info/t/split-index.sh, info/t/next-quoted.sh: Feed input keystrokes
+	with background process.
+
 2014-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (parse_top_node_line): Free string before loop

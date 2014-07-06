@@ -257,6 +257,7 @@ lookup_dir_entry (char *label, int sloppy)
   REFERENCE *entry;
 
   entry = info_get_menu_entry_by_label (node, label, sloppy);
+  free (node);
 
   return entry;
 }

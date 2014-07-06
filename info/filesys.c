@@ -118,13 +118,11 @@ info_find_fullpath (char *partial, struct stat *finfo)
       fullpath = info_add_extension (0, partial, finfo);
     }
 
-  /* If filename begins with "./" or "../", or if there are intermediate
-     directories, interpret it as relative to current directory.  This may
-     be from the command line, or in the subfiles table of a split file. */
-  else if ((partial[0] == '.'
-           && (IS_SLASH (partial[1])
-               || (partial[1] == '.' && IS_SLASH (partial[2]))))
-          || strchr (partial, '/'))
+  /* If filename has a slash in it (for example, begins with "./" or "../", or
+     if there are intermediate directories) interpret it as relative to current
+     directory.  This may be from the command line, or in the subfiles table of
+     a split file. */
+  else if (HAS_SLASH (partial))
     fullpath = info_add_extension (0, partial, finfo);
   /* If just a simple name element, look for it in the path. */
   else

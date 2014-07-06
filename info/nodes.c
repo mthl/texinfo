@@ -579,7 +579,7 @@ info_find_file (char *filename)
   int is_fullpath;
   
   /* If full path to the file has been given, we must find it exactly. */
-  is_fullpath = IS_ABSOLUTE (filename) || strchr (filename, '/');
+  is_fullpath = IS_ABSOLUTE (filename) || HAS_SLASH (filename);
 
   /* First try to find the file in our list of already loaded files. */
   if (info_loaded_files)
@@ -666,6 +666,7 @@ info_find_file (char *filename)
 
   file_buffer = info_load_file (fullpath, 0);
 
+  free (fullpath);
   return file_buffer;
 }
 

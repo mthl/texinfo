@@ -786,7 +786,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   /* If --file was not used and there is a slash in the first non-option
      argument (e.g. "info subdir/file.info"), do not search the dir files
      for a matching entry. */
-  if (!user_filename && argv[0] && strchr (argv[0], '/'))
+  if (!user_filename && argv[0] && HAS_SLASH (argv[0]))
     {
       user_filename = argv[0];
       argv++; /* Advance past first remaining argument. */

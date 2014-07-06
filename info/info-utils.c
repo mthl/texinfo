@@ -1251,7 +1251,10 @@ scan_reference_label (REFERENCE *entry)
     label_len = read_quoted_string (inptr, ":", 2, &label);
     
   if (label_len == 0)
-    return 0;
+    {
+      free (label);
+      return 0;
+    }
 
   entry->label = label;
   canonicalize_whitespace (entry->label);
@@ -1681,6 +1684,7 @@ search_again:
           }
 
         text_buffer_free (expansion);
+        free (expansion);
 
         /* Update search. */
         s.buffer = inptr;

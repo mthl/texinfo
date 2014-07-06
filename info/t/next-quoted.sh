@@ -19,7 +19,7 @@ srcdir=${srcdir:-.}
 . $t/Init-inter.inc
 
 # Go to a node with colons and commas in its name with "n"
-printf 'n\t\rDq' >$PTY_TYPE
+printf 'n\t\rDq' >$PTY_TYPE &
 $GINFO -f quoting
 
 if ! test -f $GINFO_OUTPUT

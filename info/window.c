@@ -598,6 +598,7 @@ window_delete_window (WINDOW *window)
 
   free (window->line_starts);
   free (window->log_line_no);
+  free (window->line_map.map);
   free (window->modeline);
 
   if (window == active_window)
