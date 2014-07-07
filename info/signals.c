@@ -177,6 +177,29 @@ reset_info_window_sizes (void)
   redisplay_after_signal ();
 }
 
+/* Number of times we were told to ignore SIGWINCH. */
+static sigwinch_block_count = 0;
+
+void
+signal_block_winch (void)
+{
+#if defined (SIGWINCH)
+  if (sigwinch_block_count == 0)
+    BLOCK_SIGNAL (SIGWINCH);
+  sigwinch_block_count++;
+#endif
+}
+
+void
+signal_unblock_winch (void)
+{
+#if defined (SIGWINCH)
+  sigwinch_block_count--;
+  if (sigwinch_block_count == 0)
+    UNBLOCK_SIGNAL (SIGWINCH);
+#endif
+}
+
 static RETSIGTYPE
 info_signal_proc (int sig)
 {
@@ -268,14 +291,31 @@ info_signal_proc (int sig)
 	terminal_goto_xy (0, 0);
 	fflush (stdout);
 	terminal_unprep_terminal (); /* needless? */
+
+        /* This seems risky: what if we receive a (real) signal before
+           the next line is reached? */
+#if 0
 	restore_termsig (sig, old_signal_handler);
-	UNBLOCK_SIGNAL (sig);
 	kill (getpid (), sig);
+#endif
 
 	/* After our old signal handler returns... */
 	set_termsig (sig, old_signal_handler); /* needless? */
+
+        if (sigwinch_block_count != 0)
+          abort ();
+
+        /* Avoid any of the code unblocking the signal too early.  This
+           should set the variable to 1 because we shouldn't be here if
+           sigwinch_block_count > 0. */
+        sigwinch_block_count++;
+
 	terminal_prep_terminal ();
 	reset_info_window_sizes ();
+
+        sigwinch_block_count--;
+        /* Don't unblock the signal until after we've finished. */
+	UNBLOCK_SIGNAL (sig);
       }
       break;
 #endif /* SIGWINCH || SIGUSR1 */
@@ -293,4 +333,6 @@ info_signal_proc (int sig)
 #endif /* HAVE_SIGPROCMASK || HAVE_SIGSETMASK */
 #endif /* !HAVE_SIGACTION */
 }
+
+
 /* vim: set sw=2 cino={1s>2sn-s^-se-s: */

@@ -1,3 +1,24 @@
+2014-07-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	info: Avoid crashes when resizing screen very small, based on report
+	from Samuel Marshall 2014-07-06.
+
+	* info/signals.c (signal_block_winch, signal_unblock_winch)
+	(sigwinch_block_count): New functions and variable.
+	(info_signal_proc) <SIGWINCH>: Don't call the saved signal handler.
+	Increment signwinch_block_count. Only unblock the SIGWINCH signal once
+	we have finished our business.
+	* info/display.c (display_clear_display, display_update_display)
+	(display_update_one_window):
+	Block SIGWINCH signals.
+	(display_node_text, display_update_one_window): Check that we are
+	accessing array representing display within its bounds.
+	* info/window.c (window_new_screen_size): Don't shrink a window below 1
+	line.  When screen height is very small, set the height of one window
+	left so that it will have the right height when the screen is bigger
+	again.
+	(echo_area_required): Removed.
+
 2014-07-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/dir.c (lookup_dir_entry): Free return value of get_dir_node.

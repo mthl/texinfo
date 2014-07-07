@@ -22,6 +22,7 @@
 #include "info.h"
 #include "display.h"
 #include "tag.h"
+#include "signal.h"
 
 extern int info_any_buffered_input_p (void); /* Found in session.c. */
 
@@ -50,12 +51,14 @@ display_clear_display (DISPLAY_LINE **display)
 {
   register int i;
 
+  signal_block_winch ();
   for (i = 0; display[i]; i++)
     {
       display[i]->text[0] = '\0';
       display[i]->textlen = 0;
       display[i]->inverse = 0;
     }
+  signal_unblock_winch ();
 }
 
 /* Non-zero if we didn't completely redisplay a window. */
@@ -68,6 +71,10 @@ display_update_display (WINDOW *window)
 {
   register WINDOW *win;
 
+  /* Block window resize signals (SIGWINCH) while accessing the the_display
+     object, because the signal handler may reallocate it out from under our
+     feet. */
+  signal_block_winch ();
   display_was_interrupted_p = 0;
 
   /* For every window in the list, check contents against the display. */
@@ -86,6 +93,7 @@ display_update_display (WINDOW *window)
 
   /* Always update the echo area. */
   display_update_one_window (the_echo_area);
+  signal_unblock_winch ();
 }
 
 static int
@@ -114,7 +122,13 @@ display_node_text (WINDOW *win, size_t pl_num, size_t ll_num,
                    size_t pl_bytes, size_t pl_chars)
 {
   DISPLAY_LINE **display = the_display;
-  DISPLAY_LINE *entry = display[win->first_row + pl_num];
+  DISPLAY_LINE *entry;
+
+  /* This might happen if the screen was resized very small. */
+  if (win->first_row + pl_num > screenheight)
+    return 0;
+
+ entry = display[win->first_row + pl_num];
 
   /* We have the exact line as it should appear on the screen.
      Check to see if this line matches the one already appearing
@@ -202,6 +216,8 @@ display_update_one_window (WINDOW *win)
   size_t line_index = 0;
   DISPLAY_LINE **display = the_display;
 
+  signal_block_winch ();
+
   /* If display is inhibited, that counts as an interrupted display. */
   if (display_inhibited)
     display_was_interrupted_p = 1;
@@ -213,14 +229,14 @@ display_update_one_window (WINDOW *win)
      since historically this has often been the culprit for crashes, do
      our best to be doubly safe.  */
   if (win->height <= 0 || win->width <= 0 || display_inhibited)
-    return;
+    goto funexit;
 
   /* If the window's first row doesn't appear in the_screen, then it
      cannot be displayed.  This can happen when the_echo_area is the
      window to be displayed, and the screen has shrunk to less than one
      line. */
   if ((win->first_row < 0) || (win->first_row > the_screen->height))
-    return;
+    goto funexit;
 
   if (win->node && win->line_starts)
     {
@@ -229,7 +245,7 @@ display_update_one_window (WINDOW *win)
                                         + win->line_starts[win->pagetop],
 				      display_node_text);
       if (display_was_interrupted_p)
-	return;
+	goto funexit;
     }
 
   /* We have reached the end of the node or the end of the window.  If it
@@ -260,8 +276,10 @@ display_update_one_window (WINDOW *win)
 
       /* This display line must both be in inverse, and have the same
          contents. */
-      if ((!display[line_index]->inverse) ||
-          (strcmp (display[line_index]->text, win->modeline) != 0))
+      if ((!display[line_index]->inverse
+           || (strcmp (display[line_index]->text, win->modeline) != 0))
+          /* Check screen isn't very small. */
+          && line_index < the_screen->height)
         {
           terminal_goto_xy (0, line_index);
           terminal_begin_inverse ();
@@ -277,6 +295,8 @@ display_update_one_window (WINDOW *win)
 
   /* Okay, this window doesn't need updating anymore. */
   win->flags &= ~W_UpdateWindow;
+funexit:
+  signal_unblock_winch ();
 }
 
 /* Scroll the region of the_display starting at START, ending at END, and

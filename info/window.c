@@ -44,10 +44,6 @@ WINDOW *active_window = NULL;
    size of the screen. */
 #define ECHO_AREA_HEIGHT 1
 
-/* Macro returns the amount of space that the echo area truly requires relative
-   to the entire screen. */
-#define echo_area_required (1 + the_echo_area->height)
-
 /* Show malformed multibyte sequences */
 int show_malformed_multibyte_p = 0;
 
@@ -98,14 +94,29 @@ window_new_screen_size (int width, int height)
   if (width == the_screen->width && height == the_screen->height)
     return;
 
-  /* If the new window height is too small, make it be zero. */
-  if (height < (WINDOW_MIN_SIZE + the_echo_area->height))
-    height = 0;
-  if (width < 0)
-    width = 0;
+  /* The screen has changed height and width. */
+  delta_height = height - the_screen->height;
+  the_screen->height = height;
+  the_screen->width = width;
 
-  /* Find out how many windows will change. */
-  for (numwins = 0, win = windows; win; win = win->next, numwins++);
+  /* Set the start of the echo area. */
+  the_echo_area->first_row = height - the_echo_area->height;
+  the_echo_area->width = width;
+
+  /* Count number of windows. */
+  numwins = 0;
+  for (win = windows; win; win = win->next)
+    numwins++;
+
+  if (numwins == 0)
+    return; /* There is nothing to do. */
+
+  /* Divide the change in height among the available windows.  This
+     doesn't work very well because if we are getting a resize signal
+     every time the screen resizes by 1 line, delta_height will always
+     be 1. */
+  delta_each = delta_height / numwins;
+  delta_leftover = delta_height - (delta_each * numwins);
 
   /* See if some windows will need to be deleted.  This is the case if
      the screen is getting smaller, and the available space divided by
@@ -113,18 +124,19 @@ window_new_screen_size (int width, int height)
      delete some windows and try again until there is either enough
      space to divy up among the windows, or until there is only one
      window left. */
-  while ((height - echo_area_required) / numwins <= WINDOW_MIN_SIZE)
+  while (height - 1 <= WINDOW_MIN_SIZE * numwins)
     {
-      /* If only one window, make the size of it be zero, and return
-         immediately. */
+      /* If only one window left, give up. */
       if (!windows->next)
         {
-          windows->height = 0;
-          free (windows->line_starts);
-	  free (windows->log_line_no);
-          windows->line_starts = NULL;
-          windows->line_count = 0;
-          break;
+          /* Keep track of the height so that when the screen gets bigger
+             again, it can be resized properly.  The -2 is for the window
+             information bar and the echo area. */
+          windows->height = height - 2;
+          windows->width = width;
+          free (windows->modeline);
+          windows->modeline = xmalloc (1 + width);
+          return;
         }
 
       /* If we have some temporary windows, delete one of them. */
@@ -137,27 +149,9 @@ window_new_screen_size (int width, int height)
         win = windows;
 
       forget_window_and_nodes (win);
-
       window_delete_window (win);
       numwins--;
     }
-
-  /* The screen has changed height and width. */
-  delta_height = height - the_screen->height;   /* This is how much. */
-  the_screen->height = height;                  /* This is the new height. */
-  the_screen->width = width;                    /* This is the new width. */
-
-  /* Set the start of the echo area. */
-  the_echo_area->first_row = height - the_echo_area->height;
-  the_echo_area->width = width;
-
-  /* Check to see if the screen can really be changed this way. */
-  if ((!windows->next) && ((windows->height == 0) && (delta_height < 0)))
-    return;
-
-  /* Divide the change in height among the available windows. */
-  delta_each = delta_height / numwins;
-  delta_leftover = delta_height - (delta_each * numwins);
 
   /* Change the height of each window in the chain by delta_each.  Change
      the height of the last window in the chain by delta_each and by the
@@ -172,25 +166,24 @@ window_new_screen_size (int width, int height)
           win->modeline = xmalloc (1 + width);
         }
 
-      win->height += delta_each;
+      /* Don't resize a window to be smaller than one line. */
+      if (win->height + delta_each >= 1)
+        win->height += delta_each;
+      else
+        delta_leftover += delta_each;
 
-      /* If the previous height of this window was zero, it was the only
-         window, and it was not visible.  Thus we need to compensate for
-         the echo_area. */
-      if (win->height == delta_each)
-        win->height -= (1 + the_echo_area->height);
+      /* Try to use up the extra space. */
+      if (delta_leftover != 0 && win->height + delta_leftover >= 1)
+        {
+          win->height += delta_leftover;
+          delta_leftover = 0;
+        }
 
-      /* If this is not the first window in the chain, then change the
-         first row of it.  We cannot just add delta_each to the first row,
-         since this window's first row is the sum of the collective increases
-         that have gone before it.  So we just add one to the location of the
+      /* If this is not the first window in the chain, set the
+         first row of it by adding one to the location of the
          previous window's modeline. */
       if (win->prev)
         win->first_row = (win->prev->first_row + win->prev->height) + 1;
-
-      /* The last window in the chain gets the extra space (or shrinkage). */
-      if (!win->next)
-        win->height += delta_leftover;
 
       if (win->node)
         recalculate_line_starts (win);
