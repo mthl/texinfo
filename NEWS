@@ -55,6 +55,8 @@ one of the relevant sections:
 * texi2dvi:
   . look for the environment variable THUMBPDF_CMD instead of THUMBPDF,
     since thumbpdf itself has used THUMBPDF for options since 2000.
+  . remove --recode and --recode-from options, since they haven't
+    worked as intended for years.
 
 5.2 (26 September 2013)
 * Language:
