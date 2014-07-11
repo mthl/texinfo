@@ -1,3 +1,10 @@
+2014-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (nodestart): Removed.
+	(node_offset): New variable.
+	(scan_node_contents): Initialize node_offset.
+	(copy_input_to_output): Calculate anchor pointer correctly.
+
 2014-07-07  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi (run_recode): remove fn (and call) and

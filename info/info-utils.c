@@ -590,7 +590,7 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
 
 /* **************************************************************** */
 /*                                                                  */
-/*                  Scanning node                                   */
+/*                          Scanning node                           */
 /*                                                                  */
 /* **************************************************************** */
 
@@ -607,8 +607,11 @@ static size_t input_length;
 
 struct text_buffer output_buf;
 
+/* Pointer into a tags table for the file to the anchor we need to adjust as
+   a result of byte counts changing due to character encoding conversion or
+   inserted/deleted text. */
 static NODE **anchor_to_adjust;
-static int nodestart;
+static int node_offset; /* Offset within file buffer of first byte of node. */
 
 /* Difference between the number of bytes input in the file and
    bytes output.  If !rewrite_p, this should stay 0. */
@@ -958,8 +961,8 @@ copy_input_to_output (long n)
 
               if (anchor_to_adjust)
                 {
-                  char *first_anchor =
-                     input_start + (*anchor_to_adjust)->nodestart;
+                  char *first_anchor = input_start - node_offset
+                                       + (*anchor_to_adjust)->nodestart;
 
                   /* If there is an anchor in the input: */
                   if (first_anchor <= inptr + bytes_left)
@@ -981,7 +984,7 @@ copy_input_to_output (long n)
           /* Check if we have gone past any anchors and
              adjust with output_bytes_difference. */
           if (anchor_to_adjust)
-            while ((*anchor_to_adjust)->nodestart - nodestart
+            while ((*anchor_to_adjust)->nodestart - node_offset
                    <= inptr - input_start)
               {
                 (*anchor_to_adjust)->nodestart -= output_bytes_difference;
@@ -1555,6 +1558,9 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
         anchor_to_adjust = 0;
       else if (*anchor_to_adjust && (*anchor_to_adjust)->nodelen != 0)
         anchor_to_adjust = 0;
+
+      node_offset = node->nodestart
+        + skip_node_separator (fb->contents + node->nodestart);
     }
   else
     anchor_to_adjust = 0;
@@ -1570,7 +1576,6 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
   inptr = node->contents;
   input_start = node->contents;
   input_length = node->nodelen;
-  nodestart = node->nodestart;
 
   parse_top_node_line (node);
 
