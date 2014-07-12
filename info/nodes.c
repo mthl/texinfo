@@ -560,7 +560,6 @@ free_info_tag (NODE *tag)
 /* Functions for retrieving files. */
 
 static FILE_BUFFER *info_load_file (char *fullpath, int get_tags);
-static FILE_BUFFER *info_find_subfile (char *filename);
 static void get_file_character_encoding (FILE_BUFFER *fb);
 static void forget_info_file (char *filename);
 static void info_reload_file_buffer_contents (FILE_BUFFER *fb);
@@ -672,7 +671,7 @@ info_find_file (char *filename)
 
 /* Find a subfile of a split file.  This differs from info_load_file in
    that it does not fill in a tag table for the file. */
-static FILE_BUFFER *
+FILE_BUFFER *
 info_find_subfile (char *fullpath)
 {
   char *with_extension = 0;

@@ -148,6 +148,8 @@ extern size_t info_loaded_files_slots;
    return a NULL FILE_BUFFER *. */
 extern FILE_BUFFER *info_find_file (char *filename);
 
+FILE_BUFFER *info_find_subfile (char *filename);
+
 /* Return a pointer to a new NODE structure. */
 extern NODE *info_create_node (void);
 

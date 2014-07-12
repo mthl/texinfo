@@ -3667,7 +3667,6 @@ info_search_internal (char *string, WINDOW *window,
 
           result = info_search_in_node_internal (string, node, start, window,
                       dir, case_sensitive, 1, use_regex, &ret, resbnd);
-          free (node);
 
           /* Did we find the string in this node? */
           if (result == search_success)
@@ -3683,7 +3682,10 @@ info_search_internal (char *string, WINDOW *window,
               return 0;
             }
 
-          /* No.  Make sure that we haven't passed our starting point. */
+          /* No.  Free this node, and make sure that we haven't passed
+             our starting point. */
+          free (node);
+
           if (result == search_failure
 	      || strcmp (initial_nodename, tag->nodename) == 0)
             return -1;

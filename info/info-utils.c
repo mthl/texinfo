@@ -1552,6 +1552,8 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
 
   if (fb)
     {
+      char *file_contents;
+
       /* Set anchor_to_adjust to first anchor in node, if any. */
       anchor_to_adjust = node_ptr + 1;
       if (!*anchor_to_adjust)
@@ -1559,8 +1561,17 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
       else if (*anchor_to_adjust && (*anchor_to_adjust)->nodelen != 0)
         anchor_to_adjust = 0;
 
+      if (!node->subfile)
+        file_contents = fb->contents;
+      else
+        {
+          FILE_BUFFER *f = info_find_subfile (node->subfile);
+          if (!f)
+            return; /* This shouldn't happen. */
+          file_contents = f->contents;
+        }
       node_offset = node->nodestart
-        + skip_node_separator (fb->contents + node->nodestart);
+        + skip_node_separator (file_contents + node->nodestart);
     }
   else
     anchor_to_adjust = 0;

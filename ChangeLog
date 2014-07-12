@@ -1,5 +1,14 @@
 2014-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (scan_node_contents): Call info_find_subfile to get
+	pointer to subfile contents when setting node_offset.
+
+	* info/session.c (info_search_internal): Don't free node if search was
+	successful because a reference to it was retained.  (This reverses
+	change on 2014-07-05.)
+
+2014-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (nodestart): Removed.
 	(node_offset): New variable.
 	(scan_node_contents): Initialize node_offset.
