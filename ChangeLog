@@ -1,3 +1,8 @@
+2014-07-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/adjust-anchors.sh: New test.
+	* info/t/infodir/anchors.info: New file.
+
 2014-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (scan_node_contents): Call info_find_subfile to get
