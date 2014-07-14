@@ -54,11 +54,7 @@ read_function_name (const char *prompt, WINDOW *window)
     }
 
   line = info_read_completing_in_echo_area (window, prompt, array);
-
   info_free_references (array);
-
-  if (!echo_area_is_active)
-    window_clear_echo_area ();
 
   return line;
 }
@@ -181,10 +177,6 @@ DECLARE_INFO_COMMAND (set_screen_height,
       /* Find out what the new height is supposed to be. */
       if (*line)
         new_height = atoi (line);
-
-      /* Clear the echo area if it isn't active. */
-      if (!echo_area_is_active)
-        window_clear_echo_area ();
 
       free (line);
     }

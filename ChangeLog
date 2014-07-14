@@ -1,3 +1,17 @@
+2014-07-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/echo-area.c (info_read_in_echo_area)
+	(info_read_completing_internal): Call window_clear_echo_area after
+	getting user input.
+	* info/indices.c (do_info_index_search, info_index_apropos)
+	(info_virtual_index)
+	* info/m-x.c (read_function_name, set_screen_height)
+	* info/nodemenu.c (select_visited_node)
+	* info/session.c (info_menu_or_ref_item, info_menu_sequence)
+	(info_goto_node, info_goto_invocation_node, info_man, info_view_file)
+	* info/variables.c (set_variable, read_variable_name): Don't call
+	window_clear_echo_area.
+
 2014-07-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/adjust-anchors.sh: New test.

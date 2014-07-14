@@ -279,7 +279,4 @@ DECLARE_INFO_COMMAND (select_visited_node,
 
   free (line);
   free (node);
-
-  if (!info_error_was_printed)
-    window_clear_echo_area ();
 }

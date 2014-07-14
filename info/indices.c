@@ -238,7 +238,6 @@ do_info_index_search (WINDOW *window, FILE_BUFFER *fb,
               node = info_get_node (initial_index_filename,
                                     initial_index_nodename);
               info_set_node_of_window (window, node);
-              window_clear_echo_area ();
               return;
             }
         }
@@ -691,9 +690,6 @@ DECLARE_INFO_COMMAND (info_index_apropos,
       free (apropos_list);
     }
   free (line);
-
-  if (!info_error_was_printed)
-    window_clear_echo_area ();
 }
 
 static FILE_BUFFER *
@@ -843,9 +839,6 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   node = create_virtindex_node (tfb);
   
   info_set_node_of_window (window, node);
-  
-  if (!info_error_was_printed)
-    window_clear_echo_area ();
 }
 
 NODE *allfiles_node = 0;
@@ -860,7 +853,4 @@ DECLARE_INFO_COMMAND (info_all_files, _("Show all matching files"))
 
   /* FIXME: Copy allfiles_node so it is unique in the window history? */
   info_set_node_of_window (window, allfiles_node);
-
-  if (!info_error_was_printed)
-    window_clear_echo_area ();
 }

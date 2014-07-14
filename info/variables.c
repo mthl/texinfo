@@ -155,10 +155,6 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
                var->name, potential_value);
       line = info_read_in_echo_area (active_window, prompt);
 
-      /* If no error was printed, clear the echo area. */
-      if (!info_error_was_printed)
-        window_clear_echo_area ();
-
       /* User aborted? */
       if (!line)
         return;
@@ -196,9 +192,6 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
       line = info_read_completing_in_echo_area (window, prompt, array);
 
       info_free_references (array);
-
-      if (!echo_area_is_active)
-        window_clear_echo_area ();
 
       /* User aborted? */
       if (!line)
@@ -247,13 +240,9 @@ read_variable_name (const char *prompt, WINDOW *window)
   variables = make_variable_completions_array ();
 
   /* Ask the completer to read a variable for us. */
-  line =
-    info_read_completing_in_echo_area (window, prompt, variables);
+  line = info_read_completing_in_echo_area (window, prompt, variables);
 
   info_free_references (variables);
-
-  if (!echo_area_is_active)
-    window_clear_echo_area ();
 
   /* User aborted? */
   if (!line)

@@ -232,6 +232,8 @@ info_read_in_echo_area (WINDOW *window, const char *prompt)
   /* Read characters in the echo area. */
   read_and_dispatch_in_echo_area ();
 
+  window_clear_echo_area ();
+
   echo_area_is_active--;
 
   /* Restore the original active window and show point in it. */
@@ -894,6 +896,7 @@ info_read_completing_internal (WINDOW *window, const char *prompt,
       break;
     }
   echo_area_is_active--;
+  window_clear_echo_area ();
 
   /* Restore the original active window and show point in it. */
   active_window = calling_window;

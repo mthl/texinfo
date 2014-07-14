@@ -2445,9 +2445,6 @@ info_menu_or_ref_item (WINDOW *window, unsigned char key,
 
       free (line);
     }
-
-  if (!info_error_was_printed)
-    window_clear_echo_area ();
 }
 
 /* Read a line (with completion) which is the name of a menu item,
@@ -2763,8 +2760,6 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
           info_set_node_of_window (window, node);
           if (error)
             show_error_node (error);
-          else
-            window_clear_echo_area ();
         }
 
       free (nodes);
@@ -2873,8 +2868,6 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
     info_parse_and_select (line, window);
 
   free (line);
-  if (!info_error_was_printed)
-    window_clear_echo_area ();
 }
 
 /* Find the node in the file with Top node NODE that is the best candidate to
@@ -3019,8 +3012,6 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
   top_node = info_get_node (file_name, 0);
   if (!top_node)
     info_error (msg_cant_find_node, "Top");
-  else
-    window_clear_echo_area ();
 
   invocation_ref = info_intuit_options_node (top_node, program_name);
 
@@ -3054,8 +3045,6 @@ DECLARE_INFO_COMMAND (info_man, _("Read a manpage reference and select it"))
     }
 
   free (line);
-  if (!info_error_was_printed)
-    window_clear_echo_area ();
 }
 
 /* Move to the "Top" node in this file. */
@@ -3120,9 +3109,6 @@ DECLARE_INFO_COMMAND (info_view_file, _("Read the name of a file and select it")
 
       free (line);
     }
-
-  if (!info_error_was_printed)
-    window_clear_echo_area ();
 }
 
 /* **************************************************************** */
