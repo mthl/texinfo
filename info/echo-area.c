@@ -181,8 +181,6 @@ read_and_dispatch_in_echo_area (void)
       initialize_keyseq ();
       key = get_input_key ();
 
-      info_error_was_printed = 0;
-
       /* Do the selected command. */
       info_dispatch_on_key (key, echo_area_keymap);
 
@@ -193,8 +191,7 @@ read_and_dispatch_in_echo_area (void)
       if (lk == echo_area_last_command_was_kill)
         echo_area_last_command_was_kill = 0;
 
-      if (ea_last_executed_command == (VFunction *) ea_newline ||
-          info_aborted_echo_area)
+      if (ea_last_executed_command == ea_newline || info_aborted_echo_area)
         {
           ea_last_executed_command = NULL;
           break;

@@ -1,5 +1,19 @@
 2014-07-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (info_handle_pointer, info_select_reference): Return
+	non-zero on success.
+	(forward_move_node_structure, backward_move_node_structure):
+	Don't use info_error_was_printed to detect errors.  Rely on
+	info_handle_pointer to print an error message.
+	(info_global_prev_node, info_global_next_node, info_visit_menu): Don't
+	access info_error_was_printed.
+
+	* info/echo-area.c (read_and_dispatch_in_echo_area): Don't clear
+	info_error_was_printed as it is not used by any of the echo area
+	functions.  Remove unnecessary cast.
+
+2014-07-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/echo-area.c (info_read_in_echo_area)
 	(info_read_completing_internal): Call window_clear_echo_area after
 	getting user input.

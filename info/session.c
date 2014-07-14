@@ -37,7 +37,6 @@
 #  define HAVE_STRUCT_TIMEVAL
 #endif /* HAVE_SYS_TIME_H */
 
-static void info_handle_pointer (char *label, WINDOW *window);
 static void display_info_keyseq (int expecting_future_input);
 char *node_printed_rep (NODE *node);
 static int get_byte_from_input_buffer (unsigned char *key);
@@ -1682,9 +1681,9 @@ DECLARE_INFO_COMMAND (info_toggle_wrap,
 /*                                                                  */
 /* **************************************************************** */
 
-/* Get the node pointed to by the LABEL pointer of
-   WINDOW->node into WINDOW. */
-static void
+/* Get the node pointed to by the LABEL pointer of WINDOW->node into WINDOW.
+   Display error message if there is no such pointer, and return zero. */
+static int
 info_handle_pointer (char *label, WINDOW *window)
 {
   char *description;
@@ -1700,7 +1699,7 @@ info_handle_pointer (char *label, WINDOW *window)
   if (!description)
     {
       info_error (msg_no_pointer, label);
-      return;
+      return 0;
     }
 
   node = info_get_node_with_defaults (0, description, window->node);
@@ -1710,7 +1709,7 @@ info_handle_pointer (char *label, WINDOW *window)
         info_error ("%s", info_recent_file_error);
       else
         info_error (msg_cant_find_node, description);
-      return;
+      return 0;
     }
 
   /* If we are going up, set the cursor position to the last place it
@@ -1733,6 +1732,7 @@ info_handle_pointer (char *label, WINDOW *window)
     }
 
   info_set_node_of_window (window, node);
+  return 1;
 }
 
 /* Make WINDOW display the "Next:" node of the node currently being
@@ -1831,7 +1831,8 @@ char *scroll_last_node_choices[] = {
    last node. */
 int scroll_last_node = SLN_Stop;
 
-/* Move to 1st menu item, Next, Up/Next, or error in this window. */
+/* Move to 1st menu item, Next, Up/Next, or error in this window. Return
+   non-zero on error, 0 on success. */
 static int
 forward_move_node_structure (WINDOW *window, int behaviour)
 {
@@ -1842,15 +1843,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
       return 1;
 
     case IS_NextOnly:
-      if (!window->node->next)
-        {
-          info_error (msg_no_pointer, _("Next"));
-          return 1;
-        }
-      else
-        {
-          info_handle_pointer ("Next", window);
-        }
+      return !info_handle_pointer ("Next", window);
       break;
 
     case IS_Continuous:
@@ -1907,13 +1900,12 @@ forward_move_node_structure (WINDOW *window, int behaviour)
           /* Back up through the "Up:" pointers until we have found a "Next:"
              that isn't the same as the first menu item found in that node. */
           up_counter = 0;
-          while (!info_error_was_printed)
+          while (1)
             {
               if (window->node->up)
                 {
-                  info_handle_pointer ("Up", window);
-                  if (info_error_was_printed)
-                    continue;
+                  if (!info_handle_pointer ("Up", window))
+                    return 1;
 
                   up_counter++;
 
@@ -1959,7 +1951,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
         break;
       }
     }
-  return info_error_was_printed; /*FIXME*/
+  return 0;
 }
 
 /* Move Prev, Up or error in WINDOW depending on BEHAVIOUR. */
@@ -1973,15 +1965,7 @@ backward_move_node_structure (WINDOW *window, int behaviour)
       return 1;
 
     case IS_NextOnly:
-      if (!window->node->prev)
-        {
-          info_error ("%s", _("No `Prev' for this node."));
-          return 1;
-        }
-      else
-        {
-          info_handle_pointer ("Prev", window);
-        }
+      return !info_handle_pointer ("Prev", window);
       break;
 
     case IS_Continuous:
@@ -2010,12 +1994,12 @@ backward_move_node_structure (WINDOW *window, int behaviour)
               info_handle_pointer ("Prev", window);
               if (!(window->node->flags & N_IsIndex))
                 {
-                  while (!info_error_was_printed)
+                  while (1)
                     {
                       REFERENCE *entry = select_menu_digit (window, '0');
-                      if (entry)
-                        info_select_reference (window, entry);
-                      else
+                      if (!entry)
+                        break;
+                      if (!info_select_reference (window, entry))
                         break;
                     }
                 }
@@ -2032,7 +2016,7 @@ backward_move_node_structure (WINDOW *window, int behaviour)
           return 1;
         }
 
-      break;
+      break; /* case IS_Continuous: */
     }
   return 0;
 }
@@ -2045,9 +2029,10 @@ DECLARE_INFO_COMMAND (info_global_next_node,
     info_global_prev_node (window, -count, key);
   else
     {
-      while (count && !info_error_was_printed)
+      while (count)
         {
-          forward_move_node_structure (window, IS_Continuous);
+          if (forward_move_node_structure (window, IS_Continuous))
+            break;
           count--;
         }
     }
@@ -2061,9 +2046,10 @@ DECLARE_INFO_COMMAND (info_global_prev_node,
     info_global_next_node (window, -count, key);
   else
     {
-      while (count && !info_error_was_printed)
+      while (count)
         {
-          backward_move_node_structure (window, IS_Continuous);
+          if (backward_move_node_structure (window, IS_Continuous))
+            break;
           count--;
         }
     }
@@ -2077,12 +2063,14 @@ DECLARE_INFO_COMMAND (info_global_prev_node,
 /* **************************************************************** */
 
 /* Using WINDOW for various defaults, select the node referenced by ENTRY
-   in it.  If the node is selected, the window and node are remembered. */
-void
+   in it.  If the node is selected, the window and node are remembered.
+   Display an error message if reference couldn't be selected and return 0. */
+int
 info_select_reference (WINDOW *window, REFERENCE *entry)
 {
   NODE *node;
   char *file_system_error;
+  long loc, line;
 
   file_system_error = NULL;
 
@@ -2100,53 +2088,51 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
       if (entry->nodename
           && entry->label && (strcmp (entry->nodename, entry->label) == 0))
         {
+          free (file_system_error);
+          file_system_error = NULL;
+
           node = info_get_node (entry->label, "Top");
           if (!node && info_recent_file_error)
-            {
-              free (file_system_error);
-              file_system_error = xstrdup (info_recent_file_error);
-            }
+            file_system_error = xstrdup (info_recent_file_error);
         }
     }
 
   if (!node)
     {
       if (file_system_error)
-        info_error ("%s", file_system_error);
+        {
+          info_error ("%s", file_system_error);
+          free (file_system_error);
+        }
       else
         info_error (msg_cant_find_node, entry->nodename);
+      return 0;
     }
 
-  free (file_system_error);
+  info_set_node_of_window (window, node);
 
-  if (node)
+  if (entry->line_number > 0)
     {
-      long loc, line;
+      /* Go to the line given by entry->line_number. */
+      line = window_log_to_phys_line (window, entry->line_number - 1);
 
-      info_set_node_of_window (window, node);
-
-      if (entry->line_number > 0)
+      if (line >= 0 && line < window->line_count)
+        loc = window->line_starts[line];
+      else
         {
-          /* Go to the line given by entry->line_number. */
-          line = window_log_to_phys_line (window, entry->line_number - 1);
+          /* Try to find an occurence of LABEL in this node.  This
+             could be useful for following index entries. */
+          long start = window->line_starts[1];
+          loc = info_target_search_node (node, entry->label, start, 1);
+        }
 
-          if (line >= 0 && line < window->line_count)
-            loc = window->line_starts[line];
-          else
-            {
-              /* Try to find an occurence of LABEL in this node.  This
-                 could be useful for following index entries. */
-              long start = window->line_starts[1];
-              loc = info_target_search_node (node, entry->label, start, 1);
-            }
-
-          if (loc != -1)
-            {
-              window->point = loc;
-              window_adjust_pagetop (window);
-            }
+      if (loc != -1)
+        {
+          window->point = loc;
+          window_adjust_pagetop (window);
         }
     }
+  return 1;
 }
 
 /* Parse the node specification in LINE using WINDOW to default the filename.
@@ -2499,9 +2485,12 @@ DECLARE_INFO_COMMAND (info_visit_menu,
   menu = window->node->references;
 
   if (!menu)
-    info_error ("%s", msg_no_menu_node);
+    {
+      info_error ("%s", msg_no_menu_node);
+      return; 
+    }
 
-  for (i = 0; (!info_error_was_printed) && (entry = menu[i]); i++)
+  for (i = 0; (entry = menu[i]); i++)
     {
       WINDOW *new;
 
@@ -2512,11 +2501,15 @@ DECLARE_INFO_COMMAND (info_visit_menu,
       window_tile_windows (TILE_INTERNALS);
 
       if (!new)
-        info_error ("%s", msg_win_too_small);
+        {
+          info_error ("%s", msg_win_too_small);
+          break;
+        }
       else
         {
           active_window = new;
-          info_select_reference (new, entry);
+          if (!info_select_reference (new, entry))
+            break;
         }
     }
 }
