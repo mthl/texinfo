@@ -628,7 +628,7 @@ info_find_file (char *filename)
   if (!is_fullpath)
     fullpath = info_find_fullpath (filename, 0);
   else
-    fullpath = filename;
+    fullpath = xstrdup (filename);
 
   /* FIXME: Put the following in info_find_fullpath, or remove
      it altogether. */

@@ -1,3 +1,4 @@
+#!/bin/sh
 # Copyright (C) 2014 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -13,20 +14,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Shell script snippet.  Wait for program to finish.
+srcdir=${srcdir:-.}
+. $srcdir/t/Init-test.inc
+. $t/Init-inter.inc
 
-read -t 3 FINISHED <>$0.finished
-rm -f $0.finished
+# Split window with C-x 2, follow menu entry with a slash in the filename.
+# Close window (so destination file will be forgotten), and do it again with
+# the other window.
+run_ginfo -f file-menu
+printf '\0302\t\t\t\r' >$PTY_TYPE
+printf '\030o\0301\t\t\t\rq' >$PTY_TYPE
 
-if test "$FINISHED" = failure
-then
-  echo 'Program exited unsuccessfully' >&2
-  RETVAL=1
-elif ! test "$FINISHED" = finished
-then
-  echo 'Program timed out after 3 seconds' >&2
-  TIMED_OUT=1
+. $t/Timeout-test.inc
+. $t/Cleanup.inc
 
-  # We could kill ginfo here if we had its PID.  However, it will probably exit
-  # with an I/O error when pseudotty is killed in Cleanup.inc.
-fi

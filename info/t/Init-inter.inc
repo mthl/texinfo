@@ -49,7 +49,8 @@ run_ginfo ()
 {
   rm -f $0.finished
   mkfifo $0.finished
-  { $GINFO "$@" ; echo finished >$0.finished ; } 0<>$PTS_DEVICE 1<&0 &
+  { $GINFO "$@" ; test $? -eq 0 || echo failure >$0.finished ;
+    echo finished >$0.finished ; } 0<>$PTS_DEVICE 1<&0 &
 }
 
 
