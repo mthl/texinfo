@@ -18,11 +18,13 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
+run_ginfo -f split 'Second'
+
 # Follow a menu entry in a split file to a node in a different subfile from
 # the one containing "Top".  Check that we arrived properly and remembered
 # that we are in a split file by going back to "Top" with "t".
-printf tDq >$PTY_TYPE &
-$GINFO -f split 'Second'
+printf tDq >$PTY_TYPE
+. $t/Timeout-test.inc
 
 if ! test -f $GINFO_OUTPUT
 then

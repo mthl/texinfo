@@ -18,9 +18,10 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
+run_ginfo -f intera
 # M-x menu-sequence
-printf '\033xmenu-sequence\rfile-menu,first,no,nod\rDq' >$PTY_TYPE &
-$GINFO -f intera
+printf '\033xmenu-sequence\rfile-menu,first,no,nod\rDq' >$PTY_TYPE
+. $t/Timeout-test.inc
 
 if ! test -f $GINFO_OUTPUT
 then

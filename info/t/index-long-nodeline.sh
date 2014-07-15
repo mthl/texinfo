@@ -18,10 +18,11 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc 
 
+run_ginfo -f split
 # Follow an menu item from the index node to a node where physical lines
 # don't match logical lines.
-printf 'gIndex\r\t\t\r\rDq' >$PTY_TYPE &
-$GINFO -f split
+printf 'gIndex\r\t\t\r\rDq' >$PTY_TYPE
+. $t/Timeout-test.inc
 
 if ! test -f $GINFO_OUTPUT
 then

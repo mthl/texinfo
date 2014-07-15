@@ -18,11 +18,15 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
-# Go to anchor in a UTF-8 encoded file. 
-1>$PTY_TYPE \
-  printf 'ganchor-2\r\002\002\002\002\002\002\002\002\002\002\002\002\002\002\rDq' &
+export LANG=en_US.iso8859-1
+run_ginfo -f anchors
 
-LANG=en_US.iso8859-1 $GINFO -f anchors
+# Go to anchor in a UTF-8 encoded file when the current character encoding is
+# supposed to be ISO-8859-1
+printf 'ganchor-2\r\002\002\002\002\002\002' >$PTY_TYPE
+printf '\002\002\002\002\002\002\002\002\rDq' >$PTY_TYPE
+
+. $t/Timeout-test.inc
 
 if ! test -f $GINFO_OUTPUT
 then

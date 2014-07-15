@@ -22,7 +22,7 @@ srcdir=${srcdir:-.}
 # result. Then type "i" followed by <TAB> to check the indices in the
 # file are still there.
 printf '\033xindex-apropos\rlink\r\t\ri\t\x07q' >$PTY_TYPE &
-$GINFO --restore $t/index-apropos.drib
+$GINFO
 RETVAL=$?
 
 . $t/Cleanup.inc

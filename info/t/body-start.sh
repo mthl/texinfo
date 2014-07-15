@@ -18,9 +18,11 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
+run_ginfo -f body-start
 # Check that node headers aren't included in searches
 printf 'sPotential match\r\rDq' >$PTY_TYPE &
-$GINFO -f body-start
+
+. $t/Timeout-test.inc
 
 if ! test -f $GINFO_OUTPUT
 then

@@ -1,4 +1,3 @@
-#!/bin/sh
 # Copyright (C) 2014 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -14,24 +13,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-srcdir=${srcdir:-.}
-. $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
+# Shell script snippet.  Wait for program to finish.
 
-run_ginfo -f quoting
-# Go to a node with colons and commas in its name with "g"
-printf 'g\tColo\t\r\t\rDq' >$PTY_TYPE
-
-. $t/Timeout-test.inc
-
-if ! test -f $GINFO_OUTPUT
+read -t 3 FINISHED <>$0.finished
+rm -f $0.finished
+if ! test "$FINISHED" = finished
 then
-	RETVAL=1
-else
-	# Return non-zero (test failure) if files differ
-	diff $GINFO_OUTPUT $t/node-target
-	RETVAL=$?
+  echo 'Program timed out after 3 seconds' >&2
+  TIMED_OUT=1
+
+  # We could kill ginfo here if we had its PID.  However, it will probably exit
+  # with an I/O error when pseudotty is killed in Cleanup.inc.
 fi
-
-. $t/Cleanup.inc
-

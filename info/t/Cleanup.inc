@@ -5,4 +5,8 @@ rm -f $GINFO_OUTPUT
 rm -f $0.pipein $0.pipeout
 test $PTY_PID -ne 0 && kill $PTY_PID
 
+if test -v TIMED_OUT
+then
+  return 1
+fi
 exit $RETVAL

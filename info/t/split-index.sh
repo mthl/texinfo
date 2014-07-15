@@ -20,8 +20,9 @@ srcdir=${srcdir:-.}
 
 # Follow an index entry in a split file
 
-printf 'ientry text\r\rDq' >$PTY_TYPE &
-$GINFO -f split
+run_ginfo -f split
+printf 'ientry text\r\rDq' >$PTY_TYPE
+. $t/Timeout-test.inc
 
 if ! test -f $GINFO_OUTPUT
 then

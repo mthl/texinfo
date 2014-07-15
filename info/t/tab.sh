@@ -18,9 +18,10 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
+run_ginfo -f intera
 # Tab to first link and follow it
-printf '\t\rDq' >$PTY_TYPE &
-$GINFO -f intera
+printf '\t\rDq' >$PTY_TYPE
+. $t/Timeout-test.inc
 
 if ! test -f $GINFO_OUTPUT
 then

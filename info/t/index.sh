@@ -18,9 +18,11 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc 
 
+run_ginfo -f intera
 # Follow an index entry
-printf 'iabc\rDq' >$PTY_TYPE &
-$GINFO -f intera
+printf 'iabc\rDq' >$PTY_TYPE
+
+. $t/Timeout-test.inc
 
 if ! test -f $GINFO_OUTPUT
 then

@@ -45,3 +45,11 @@ exec 0<>$PTS_DEVICE 1<&0
 # files.
 export LIBC_FATAL_STDERR_=1
 
+run_ginfo ()
+{
+  rm -f $0.finished
+  mkfifo $0.finished
+  { $GINFO "$@" ; echo finished >$0.finished ; } 0<>$PTS_DEVICE 1<&0 &
+}
+
+
