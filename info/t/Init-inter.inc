@@ -35,10 +35,6 @@ PTY_PID=$!
 # Get name of pseudo-terminal slave device
 read PTS_DEVICE <$0.pipein
 
-# Must redirect fd 0 read-write if we want to duplicate it for reading on fd 1
-echo "Redirecting stdin and stdout to $PTS_DEVICE."
-exec 0<>$PTS_DEVICE 1<&0
-
 # glibc can kill a running process if it detects a condition like a
 # double free.  This specifies that the message it prints when it does
 # this should be sent to stderr so it can be recorded in the test *.log
@@ -51,6 +47,38 @@ run_ginfo ()
   mkfifo $0.finished
   { $GINFO "$@" ; test $? -eq 0 || echo failure >$0.finished ;
     echo finished >$0.finished ; } 0<>$PTS_DEVICE 1<&0 &
+  SUBSHELL=$!
+
+  # Get the PID of the running ginfo process.  Look for a process called
+  # "ginfo" whose parent process is the subshell executed by the previous
+  # command.
+  echo 'Fetching PID of ginfo process under test...' >&2
+  GINFO_PID=
+  while :
+  do
+    GINFO_PID=$( pgrep -P $SUBSHELL ginfo ; \
+       test $? -eq 0 -o $? -eq 1 || exit 99 )
+
+    # This use of pgrep is likely not portable (works on procps).  Check if it
+    # is likely to have worked.
+
+    # Exit status was anything other than 0 or 1
+    test $? -eq 99 && { GINFO_PID=unknown; break; }
+
+    # More than one line in output
+    echo $GINFO_PID | wc -l | grep '^0$\|^1$' >/dev/null \
+      || { GINFO_PID=unknown; break; }
+
+    # Non-numeral characters present
+    echo $GINFO_PID | grep -v '^[0-9]*$' >/dev/null
+    test $? -eq 0 && { GINFO_PID=unknown; break; }
+
+    GINFO_PID=$(echo $GINFO_PID | tr -d '\n')
+
+    test "$GINFO_PID" = "" || break
+    sleep 1 # Give subshell time to spawn ginfo process
+  done
+  echo ...$GINFO_PID >&2
 }
 
 

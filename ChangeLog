@@ -1,3 +1,12 @@
+2014-07-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc (run_ginfo): Try to get process ID of ginfo
+	process.
+	* info/t/Timout-test.inc: Kill ginfo if we have its PID.
+
+	* info/t/resize-in-completions.sh: New test.
+	* info/t/Infokey-config: Set automatic-footnotes=On.
+
 2014-07-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.c (info_find_file): Call xstrdup on a string so we can

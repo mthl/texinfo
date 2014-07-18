@@ -117,6 +117,7 @@ TESTS = \
 	t/index-long-nodeline.sh \
 	t/menu-sequence.sh \
 	t/relative-reference.sh \
+	t/resize-in-completions.sh \
 	t/quoted-label-as-target.sh \
 	t/quoted-target.sh \
 	t/quoted-label-and-target.sh \

@@ -1,3 +1,4 @@
+#!/bin/sh
 # Copyright (C) 2014 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -13,22 +14,26 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# Shell script snippet.  Wait for program to finish.
+srcdir=${srcdir:-.}
+. $srcdir/t/Init-test.inc
+. $t/Init-inter.inc
 
-read -t 3 FINISHED <>$0.finished
-rm -f $0.finished
+# Indicate a window resize while showing a completions window
 
-if test "$FINISHED" = failure
+run_ginfo -f file-menu
+if test $GINFO_PID = unknown
 then
-  echo 'Program exited unsuccessfully' >&2
-  RETVAL=1
-elif ! test "$FINISHED" = finished
-then
-  # Kill ginfo if we have its PID.  Failing this, it will probably exit
-  # with an I/O error when pseudotty is killed in Cleanup.inc.
-  test "$GINFO_PID" != unknown && kill $GINFO_PID
-
-  echo 'Program timed out after 3 seconds' >&2
-  TIMED_OUT=1
-
+	printf 'q' >$PTY_TYPE
+	RETVAL=77 # automake code for skipped test
+else
+	printf 'g\t' >$PTY_TYPE
+	sleep 1 # Give ginfo time to process above keystrokes
+	kill -s WINCH $GINFO_PID
+	sleep 1 # Give ginfo time to process signal
+	# C-g to exit completions, q to quit
+	printf '\007q' >$PTY_TYPE
 fi
+
+. $t/Timeout-test.inc
+. $t/Cleanup.inc
+
