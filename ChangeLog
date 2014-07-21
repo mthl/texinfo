@@ -1,3 +1,13 @@
+2014-07-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/man.c (get_manpage_contents): Try getting manpage with -a
+	if not found in the section given.
+	(get_manpage_from_formatter): Split out from get_manpage_contents.
+	Don't set a signal handler for SIGCHLD.  Wait for child process to
+	exit before returning.
+	(reap_children): Merged into caller.
+	(read_from_fd): Comment added.
+
 2014-07-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-inter.inc (run_ginfo): Try to get process ID of ginfo

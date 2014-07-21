@@ -258,14 +258,6 @@ get_page_and_section (char *pagename)
     }
 }
 
-#if PIPE_USE_FORK
-static void
-reap_children (int sig)
-{
-  wait (NULL);
-}
-#endif
-
 void
 clean_manpage (char *manpage)
 {
@@ -311,15 +303,13 @@ clean_manpage (char *manpage)
   free (newpage);
 }
 
+static char *get_manpage_from_formatter (char *formatter_args[]);
+
 static char *
 get_manpage_contents (char *pagename)
 {
   static char *formatter_args[4] = { NULL };
-  int pipes[2];
-  pid_t child;
-  RETSIGTYPE (*sigsave) (int signum);
-  char *formatted_page = NULL;
-  int arg_index = 1;
+  char *formatted_page;
 
   if (formatter_args[0] == NULL)
     formatter_args[0] = find_man_formatter ();
@@ -330,20 +320,38 @@ get_manpage_contents (char *pagename)
   get_page_and_section (pagename);
 
   if (manpage_section)
-    formatter_args[arg_index++] = manpage_section;
+    formatter_args[1] = manpage_section;
   else
-    formatter_args[arg_index++] = "-a";
+    formatter_args[1] = "-a";
 
-  formatter_args[arg_index++] = manpage_pagename;
-  formatter_args[arg_index] = NULL;
+  formatter_args[2] = manpage_pagename;
+  formatter_args[3] = NULL;
+
+  formatted_page = get_manpage_from_formatter (formatter_args);
+
+  /* If there was a section and the page wasn't found, try again
+     without the section (e.g. "man 3X curses" versus "man -a curses"). */
+  if (!formatted_page && manpage_section)
+    {
+      formatter_args[1] = "-a";
+      formatted_page = get_manpage_from_formatter (formatter_args);
+    }
+
+  return formatted_page;
+}
+
+static char *
+get_manpage_from_formatter (char *formatter_args[])
+{
+  char *formatted_page = NULL;
+  int pipes[2];
+  pid_t child;
 
   /* Open a pipe to this program, read the output, and save it away
      in FORMATTED_PAGE.  The reader end of the pipe is pipes[0]; the
      writer end is pipes[1]. */
 #if PIPE_USE_FORK
   pipe (pipes);
-
-  sigsave = signal (SIGCHLD, reap_children);
 
   child = fork ();
   if (child == -1)
@@ -356,7 +364,7 @@ get_manpage_contents (char *pagename)
       close (pipes[1]);
       formatted_page = read_from_fd (pipes[0]);
       close (pipes[0]);
-      signal (SIGCHLD, sigsave);
+      wait (NULL); /* Wait for child process to exit. */
     }
   else
     { /* In the child, close the read end of the pipe, make the write end
@@ -418,6 +426,8 @@ get_manpage_contents (char *pagename)
   return formatted_page;
 }
 
+/* Return pointer to bytes read from file descriptor FD.  Return value to be
+   freed by caller. */
 static char *
 read_from_fd (int fd)
 {
