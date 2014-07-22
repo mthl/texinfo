@@ -1935,8 +1935,6 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                   for (i = 0; i < up_counter; i++)
                     forget_node (window);
 
-                  recalculate_line_starts (window);
-                  window->flags |= W_UpdateWindow;
                   info_error ("%s", _("No more nodes within this document."));
                   return 1;
                 }

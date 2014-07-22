@@ -1,7 +1,7 @@
 2014-07-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (forward_move_node_structure): Get first menu
-	entry properly.
+	entry properly.  Remove code repeating what was done in forget_node.
 
 2014-07-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
