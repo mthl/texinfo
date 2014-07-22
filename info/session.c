@@ -1904,6 +1904,8 @@ forward_move_node_structure (WINDOW *window, int behaviour)
             {
               if (window->node->up)
                 {
+                  REFERENCE *entry;
+
                   if (!info_handle_pointer ("Up", window))
                     return 1;
 
@@ -1915,17 +1917,9 @@ forward_move_node_structure (WINDOW *window, int behaviour)
 
                   /* If this node's first menu item is the same as this node's
                      Next pointer, keep backing up. */
-                    {
-                      REFERENCE **menu;
-
-                      /* FIXME: this is wrong: what if there is a link
-                         before the menu? */
-                      menu = window->node->references;
-                      if (menu &&
-                          (strcmp
-                           (menu[0]->nodename, window->node->next) == 0))
-                        continue;
-                    }
+                  entry = select_menu_digit (window, '1');
+                  if (entry && !strcmp (window->node->next, entry->nodename))
+                    continue;
 
                   /* This node has a "Next" pointer, and it is not the
                      same as the first menu item found in this node. */
@@ -2158,7 +2152,8 @@ DECLARE_INFO_COMMAND (info_last_menu_item,
   info_menu_digit (window, 1, '0');
 }
 
-/* Return menu entry */
+/* Return menu entry indexed by KEY, where '1' is the first menu item, '2' is
+   the second, etc., and '0' is the last.  Return value should not be freed. */
 static REFERENCE *
 select_menu_digit (WINDOW *window, unsigned char key)
 {

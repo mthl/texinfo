@@ -1,3 +1,8 @@
+2014-07-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (forward_move_node_structure): Get first menu
+	entry properly.
+
 2014-07-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/man.c (get_manpage_contents): Try getting manpage with -a
