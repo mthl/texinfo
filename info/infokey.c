@@ -277,9 +277,9 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
 		       && (section == info || section == ea))
                 {
                   if (section == info)
-                    *suppress_info == 1;
+                    *suppress_info = 1;
                   else
-                    *suppress_ea == 1;
+                    *suppress_ea = 1;
                 }
 	    }
 	  else if (clen < sizeof comment - 1)
@@ -442,7 +442,6 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
 		  a = lookup_action (act);
 		  if (a != -1)
 		    {
-		      char av = a;
                       int keymap_bind_keyseq (Keymap, int *, KEYMAP_ENTRY *);
 
                       KEYMAP_ENTRY ke;

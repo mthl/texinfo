@@ -88,7 +88,6 @@ keymap_bind_keyseq (Keymap map, int *keyseq, KEYMAP_ENTRY *keyentry)
 
   while ((c = *s++) != '\0')
     {
-      FUNCTION_KEYSEQ *ks;
       switch (m[c].type)
         {
         case ISFUNC:
@@ -574,11 +573,6 @@ fetch_user_maps (char *init_file)
   char *filename = NULL;
   char *homedir;
   FILE *inf;
-  unsigned char *buf;
-  unsigned long len;
-  long nread;
-  unsigned char *p;
-  int n;
 
   /* In infokey.c */
   int compile (FILE *fp, const char *filename, int *, int *);
@@ -622,7 +616,6 @@ section_to_keymaps (Keymap map, int *table, unsigned int len)
 {
   int *p;
   int *seq;
-  unsigned int seqlen = 0;
   enum { getseq, gotseq, getaction } state = getseq;
   
   for (p = table; (unsigned int) (p - table) < len; p++)
@@ -639,16 +632,12 @@ section_to_keymaps (Keymap map, int *table, unsigned int len)
 	  
 	case gotseq:
 	  if (!*p)
-	    {
-	      seqlen = p - seq;
-	      state = getaction;
-	    }
+            state = getaction;
 	  break;
 	  
 	case getaction:
 	  {
 	    unsigned int action = *p;
-	    unsigned int keyseq[256];
 	    KEYMAP_ENTRY ke;
 	    
 	    state = getseq;

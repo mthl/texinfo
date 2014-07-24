@@ -1,5 +1,13 @@
 2014-07-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/infokey.c (compile) <in_line_comment>: Use = where intended.
+	(compile) <get_action>: Remove unused variable.
+	* info/infomap.c (keymap_bind_keyseq): Remove unused variable.
+	(fetch_user_maps): Remove unused variables.
+	(section_to_keymaps): Remove unused variable.
+
+2014-07-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/window.c (collect_line_starts, _calc_line_starts): Renamed.
 	* info/window.h (WINDOW): Change type of pagetop field to long.
 	Remove declaration of removed function.
