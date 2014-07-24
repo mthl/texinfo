@@ -140,7 +140,7 @@ terminal_begin_using_terminal (void)
      xterm.  The presence of the Km capability may not be a reliable way to
      tell whether this mode exists, but sending the following sequence is
      probably harmless if it doesn't.  */
-  if (term_Km)
+  if (term_Km && !strcmp (term_Km, "\033[M"))
     send_to_terminal ("\033[?1000h");
 
   if (term_keypad_on)

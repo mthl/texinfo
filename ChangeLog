@@ -1,5 +1,13 @@
 2014-07-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/infokey.c (compile): Don't allow binding to menu-digit.
+	* info/session.c (info_next_line, info_prev_line): Don't actually
+	move cursor until we have set the right column.
+	* info/terminal.c (terminal_begin_using_terminal): Check 'Km'
+	capability is what we expect it to be.
+
+2014-07-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infokey.c (compile) <in_line_comment>: Use = where intended.
 	(compile) <get_action>: Remove unused variable.
 	* info/infomap.c (keymap_bind_keyseq): Remove unused variable.

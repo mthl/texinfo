@@ -1080,9 +1080,9 @@ DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
       long saved_goal = window->goal_column;
       while (count--)
         point_next_line (window);
-      info_show_point (window);
       window->goal_column = saved_goal;
       move_to_goal_column (window);
+      info_show_point (window);
     }
 }
 
@@ -1096,9 +1096,9 @@ DECLARE_INFO_COMMAND (info_prev_line, _("Move up to the previous line"))
       long saved_goal = window->goal_column;
       while (count--)
         point_prev_line (window);
-      info_show_point (window);
       window->goal_column = saved_goal;
       move_to_goal_column (window);
+      info_show_point (window);
     }
 }
 

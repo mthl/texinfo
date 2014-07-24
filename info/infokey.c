@@ -22,6 +22,7 @@
 #include "info.h"
 #include "infomap.h"
 #include "doc.h"
+#include "funs.h"
 #include "getopt.h"
 #include "variables.h"
 
@@ -440,7 +441,15 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
 		{
 		  act[alen] = '\0';
 		  a = lookup_action (act);
-		  if (a != -1)
+                  if (a == A_info_menu_digit)
+		    {
+                      /* It does not make sense for menu-digit to be anything
+                         other than '0' .. '9'. */
+		      syntax_error (filename, lnum,
+                        _("cannot bind key sequence to menu-digit"));
+		      error = 1;
+		    }
+                  else if (a != -1)
 		    {
                       int keymap_bind_keyseq (Keymap, int *, KEYMAP_ENTRY *);
 
