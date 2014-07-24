@@ -64,10 +64,9 @@ display_clear_display (DISPLAY_LINE **display)
 /* Non-zero if we didn't completely redisplay a window. */
 int display_was_interrupted_p = 0;
 
-/* Update the windows pointed to by WINDOW in the_display.  This actually
-   writes the text on the screen. */
+/* Update the windows on the display. */
 void
-display_update_display (WINDOW *window)
+display_update_display (void)
 {
   register WINDOW *win;
 
@@ -78,7 +77,7 @@ display_update_display (WINDOW *window)
   display_was_interrupted_p = 0;
 
   /* For every window in the list, check contents against the display. */
-  for (win = window; win; win = win->next)
+  for (win = windows; win; win = win->next)
     {
       /* Only re-display visible windows which need updating. */
       if (((win->flags & W_WindowVisible) == 0) ||
@@ -220,15 +219,17 @@ display_update_one_window (WINDOW *win)
 
   /* If display is inhibited, that counts as an interrupted display. */
   if (display_inhibited)
-    display_was_interrupted_p = 1;
+    {
+      display_was_interrupted_p = 1;
+      goto funexit;
+    }
 
-  /* If the window has no height, or display is inhibited, quit now.
-     Strictly speaking, it should only be necessary to test if the
-     values are equal to zero, since window_new_screen_size should
-     ensure that the window height/width never becomes negative, but
-     since historically this has often been the culprit for crashes, do
-     our best to be doubly safe.  */
-  if (win->height <= 0 || win->width <= 0 || display_inhibited)
+  /* If the window has no height, quit now.  Strictly speaking, it
+     should only be necessary to test if the values are equal to zero, since
+     window_new_screen_size should ensure that the window height/width never
+     becomes negative, but since historically this has often been the culprit
+     for crashes, do our best to be doubly safe.  */
+  if (win->height <= 0 || win->width <= 0)
     goto funexit;
 
   /* If the window's first row doesn't appear in the_screen, then it
@@ -263,6 +264,13 @@ display_update_one_window (WINDOW *win)
 
           terminal_goto_xy (0, win->first_row + line_index);
           terminal_clear_to_eol ();
+          fflush (stdout);
+
+          if (info_any_buffered_input_p ())
+            {
+              display_was_interrupted_p = 1;
+              goto funexit;
+            }
         }
     }
 

@@ -50,7 +50,6 @@ static void gc_file_buffers_and_nodes (void);
 /*                                                                  */
 /* **************************************************************** */
 
-static void info_read_and_dispatch (void);
 static void mouse_event_handler (void);
 
 /* The place that we are reading input from. */
@@ -62,10 +61,54 @@ static int quit_info_immediately = 0;
 /* Minimal length of a search string */
 int min_search_length = 1;
 
+
+/* Defined in indices.c */
+extern NODE *allfiles_node;
+
+static void
+allfiles_create_node (char *term, REFERENCE **fref)
+{
+  int i;
+  struct text_buffer text;
+  
+  text_buffer_init (&text);
+
+  text_buffer_printf (&text,
+                      "%s File names matching `%s'\n\n"
+                      "Info File Index\n"
+                      "***************\n\n"
+                      "File names that match `%s':\n",
+                      INFO_NODE_LABEL,
+                      term, term);
+
+  /* Mark as an index so that destinations are never hidden. */
+  text_buffer_add_string (&text, "\000\010[index\000\010]", 11);
+  text_buffer_printf (&text, "\n* Menu:\n\n");
+
+  for (i = 0; fref[i]; i++)
+    {
+      text_buffer_printf (&text, "* %4i: (%s)", i+1, fref[i]->filename);
+      if (fref[i]->nodename)
+        text_buffer_printf (&text, "%s", fref[i]->nodename);
+      text_buffer_printf (&text, ".\n");
+    }
+
+  allfiles_node = info_create_node ();
+  allfiles_node->fullpath = xstrdup ("");
+  allfiles_node->nodename = xstrdup ("*Info File Index*");
+  allfiles_node->contents = text_buffer_base (&text);
+  allfiles_node->nodelen = text_buffer_off (&text);
+  allfiles_node->body_start = strcspn (allfiles_node->contents, "\n");
+
+  scan_node_contents (0, &allfiles_node);
+}
+
+
+
 /* Begin an info session finding the nodes specified by REFERENCES.  For
    each loaded node, create a new window.  Always split the largest of the
    available windows.  Display ERROR in echo area if non-null. */
-void
+static void
 begin_multiple_window_info_session (REFERENCE **references, char *error)
 {
   register int i;
@@ -97,10 +140,9 @@ begin_multiple_window_info_session (REFERENCE **references, char *error)
 
           if (!largest)
             {
-              display_update_display (windows);
+              display_update_display ();
               info_error ("%s", msg_cant_find_window);
-              info_session ();
-              exit (EXIT_SUCCESS);
+              return;
             }
 
           active_window = largest;
@@ -115,15 +157,12 @@ begin_multiple_window_info_session (REFERENCE **references, char *error)
             }
 
           if (window)
-            {
-              window_tile_windows (TILE_INTERNALS);
-            }
+            window_tile_windows (TILE_INTERNALS);
           else
             {
-              display_update_display (windows);
+              display_update_display ();
               info_error ("%s", msg_win_too_small);
-              info_session ();
-              exit (EXIT_SUCCESS);
+              return;
             }
         }
     }
@@ -137,7 +176,7 @@ begin_multiple_window_info_session (REFERENCE **references, char *error)
     }
 }
 
-void
+static void
 display_startup_message (void)
 {
   char *format;
@@ -149,25 +188,37 @@ display_startup_message (void)
   window_message_in_echo_area (format, VERSION, NULL);
 }
 
-/* Run an info session with an already initialized window and node. */
+/* Run an Info session.  If USER_FILENAME is null, create a window for each
+   node referenced in REF_LIST.  If USER_FILENAME is not null, "--all" was
+   used on the command line, and display a file index with entries in
+   REF_LIST.  ERROR is an optional error message to display at start-up. */
 void
-info_session (void)
+info_session (REFERENCE **ref_list, char *user_filename, char *error)
 {
-  display_update_display (windows);
+  /* Initialize the Info session. */
+  initialize_info_session ();
+
+  if (!error)
+    display_startup_message ();
+  else
+    show_error_node (error);
+
+  if (!user_filename)
+    begin_multiple_window_info_session (ref_list, error);
+  else
+    {
+      allfiles_create_node (user_filename, ref_list);
+      info_set_node_of_window (active_window, allfiles_node);
+    }
+
   info_read_and_dispatch ();
-  /* On program exit, leave the cursor at the bottom of the window, and
-     restore the terminal I/O. */
-  terminal_goto_xy (0, screenheight - 1);
-  terminal_clear_to_eol ();
-  fflush (stdout);
-  terminal_unprep_terminal ();
-  close_dribble_file ();
+  close_info_session ();
 }
 
 void mouse_reporting_on (void);
 void mouse_reporting_off (void);
 
-static void
+void
 info_read_and_dispatch (void)
 {
   int key;
@@ -175,7 +226,7 @@ info_read_and_dispatch (void)
   for (quit_info_immediately = 0; !quit_info_immediately; )
     {
       if (!info_any_buffered_input_p ())
-        display_update_display (windows);
+        display_update_display ();
 
       display_cursor_at_point (active_window);
       info_initialize_numeric_arg ();
@@ -238,6 +289,18 @@ initialize_info_session (void)
     }
 
   info_windows_initialized_p = 1;
+}
+
+/* On program exit, leave the cursor at the bottom of the window, and
+   restore the terminal I/O. */
+void
+close_info_session (void)
+{
+  terminal_goto_xy (0, screenheight - 1);
+  terminal_clear_to_eol ();
+  fflush (stdout);
+  terminal_unprep_terminal ();
+  close_dribble_file ();
 }
 
 /* Tell Info that input is coming from the file FILENAME. */
@@ -320,6 +383,8 @@ fill_input_buffer (int wait)
       if (success || !wait)
         return;
 
+      /* Reading failed.  If we were reading from a dribble file with
+         --restore, switch to standard input.  Otherwise quit. */
       if (info_input_stream != stdin)
         {
           int tty;
@@ -327,13 +392,12 @@ fill_input_buffer (int wait)
           info_input_stream = stdin;
           tty = fileno (info_input_stream);
           display_inhibited = 0;
-          display_update_display (windows);
+          display_update_display ();
           display_cursor_at_point (active_window);
         }
       else
         {
-          terminal_unprep_terminal ();
-          close_dribble_file ();
+          close_info_session ();
           exit (EXIT_SUCCESS);
         }
     }
@@ -4462,7 +4526,7 @@ DECLARE_INFO_COMMAND (info_redraw_display, _("Redraw the display"))
       terminal_clear_screen ();
       display_clear_display (the_display);
       window_mark_chain (windows, W_UpdateWindow);
-      display_update_display (windows);
+      display_update_display ();
     }
   else
     {
@@ -4797,7 +4861,7 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
       else
         {
           if (display_was_interrupted_p && !info_any_buffered_input_p ())
-            display_update_display (windows);
+            display_update_display ();
 
           if (active_window != the_echo_area)
             display_cursor_at_point (active_window);

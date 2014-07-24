@@ -159,7 +159,7 @@ redisplay_after_signal (void)
   if (auto_footnotes_p)
     info_get_or_remove_footnotes (active_window);
   window_mark_chain (windows, W_UpdateWindow);
-  display_update_display (windows);
+  display_update_display ();
   display_cursor_at_point (active_window);
   fflush (stdout);
 }

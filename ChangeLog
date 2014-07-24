@@ -1,3 +1,32 @@
+2014-07-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.c (collect_line_starts, _calc_line_starts): Renamed.
+	* info/window.h (WINDOW): Change type of pagetop field to long.
+	Remove declaration of removed function.
+	* info/nodes.h (NODE): Change type of line_number field to long.
+	* info/window.c (window_log_to_phys_line): Type of arguments and
+	return value changed.
+
+	* info/display.c (display_update_display): Arguments changed.  All
+	callers updated.
+	(display_update_one_window): Allow interrupting redisplay when
+	clearing empty screen lines after the end of a node.
+
+	* info/info.c, info/session.c (allfiles_create_node): Moved betweeen
+	files.
+	* info/session.c (begin_multiple_window_info_session): Never call
+	info_session; rely on caller to do it.
+	(display_startup_message): Declared static.
+
+	* info/session.c (info_session): Arguments changed.
+	(info_session, close_info_session): Function split out.
+	* info/info.c (main): Call to info_session updated.
+	(main) <--index-search>: Call info_read_and_dispatch
+	and close_info_session instead of info_session.
+	* info/session.c (fill_input_buffer): Call close_info_session if
+	reading input failed.
+	
+
 2014-07-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (forward_move_node_structure): Get first menu

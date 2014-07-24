@@ -450,49 +450,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
 
   return;
 }
-
 
-/* Defined in indices.c */
-extern NODE *allfiles_node;
-
-static void
-allfiles_create_node (char *term, REFERENCE **fref)
-{
-  int i;
-  struct text_buffer text;
-  
-  text_buffer_init (&text);
-
-  text_buffer_printf (&text,
-		      "%s File names matching `%s'\n\n"
-		      "Info File Index\n"
-		      "***************\n\n"
-		      "File names that match `%s':\n",
-                      INFO_NODE_LABEL,
-		      term, term);
-
-  /* Mark as an index so that destinations are never hidden. */
-  text_buffer_add_string (&text, "\000\010[index\000\010]", 11);
-  text_buffer_printf (&text, "\n* Menu:\n\n");
-
-  for (i = 0; fref[i]; i++)
-    {
-      text_buffer_printf (&text, "* %4i: (%s)", i+1, fref[i]->filename);
-      if (fref[i]->nodename)
-	text_buffer_printf (&text, "%s", fref[i]->nodename);
-      text_buffer_printf (&text, ".\n");
-    }
-
-  allfiles_node = info_create_node ();
-  allfiles_node->fullpath = xstrdup ("");
-  allfiles_node->nodename = xstrdup ("*Info File Index*");
-  allfiles_node->contents = text_buffer_base (&text);
-  allfiles_node->nodelen = text_buffer_off (&text);
-  allfiles_node->body_start = strcspn (allfiles_node->contents, "\n");
-
-  scan_node_contents (0, &allfiles_node);
-}
-
 static void
 info_find_matching_files (char *filename)
 {
@@ -859,6 +817,9 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
               initialize_info_session ();
               do_info_index_search (windows, initial_fb, 0,
                                     index_search_string);
+              info_read_and_dispatch ();
+              close_info_session ();
+              return 0;
             }
           else
             {
@@ -867,9 +828,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
               close_dribble_file ();
               return 1;
             }
-          
-          info_session ();
-          return 0;
         }
 
       /* Add nodes to start with (unless we fell back to the man page). */
@@ -913,23 +871,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       return 1;
     }
     
-  /* Initialize the Info session. */
-  initialize_info_session ();
-
-  if (!error)
-    display_startup_message ();
-  else
-    show_error_node (error);
-
-  if (!all_matches_p)
-    begin_multiple_window_info_session (ref_list, error);
-  else
-    {
-      allfiles_create_node (user_filename, ref_list);
-      info_set_node_of_window (active_window, allfiles_node);
-    }
-
-  info_session ();
+  info_session (ref_list, all_matches_p ? user_filename : 0, error);
+  close_info_session ();
   return 0;
 }
 

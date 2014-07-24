@@ -55,7 +55,7 @@ typedef struct line_map_struct
    do it.  NB> The last element does NOT end with a semi-colon. */
 #define WINDOW_STATE_DECL \
    NODE *node;          /* The node displayed in this window. */ \
-   int pagetop;         /* LINE_STARTS[PAGETOP] is first line in WINDOW. */ \
+   long pagetop;        /* LINE_STARTS[PAGETOP] is first line in WINDOW. */ \
    long point           /* Offset within NODE of the cursor position. */
 
 typedef struct {
@@ -185,11 +185,6 @@ extern NODE *build_message_node (const char *format, va_list ap);
 extern NODE *format_message_node (const char *format, ...)
   TEXINFO_PRINTFLIKE(1,2);
 
-/* Build a new node with the given CONTENTS.
-   Note: CONTENTS is "stolen", i.e. the pointer to it is saved in the
-   new node. */
-extern NODE *string_to_node (char *contents);
-
 struct text_buffer;
 extern NODE *text_buffer_to_node (struct text_buffer *tb);
 
@@ -220,10 +215,6 @@ extern void unmessage_in_echo_area (void);
    The echo area is cleared immediately. */
 extern void window_clear_echo_area (void);
 
-/* Calculate a list of line starts for the node belonging to WINDOW.  The line
-   starts are offsets within WINDOW->node. */
-extern void recalculate_line_starts (WINDOW *window);
-
 /* Return the index of the line containing point. */
 extern int window_line_of_point (WINDOW *window);
 
@@ -253,6 +244,6 @@ extern void window_line_map_init (WINDOW *win);
 
 extern long window_end_of_line (WINDOW *win);
 
-extern size_t window_log_to_phys_line (WINDOW *window, size_t ln);
+extern long window_log_to_phys_line (WINDOW *window, long ln);
 
 #endif /* not INFO_WINDOW_H */

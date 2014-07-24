@@ -28,6 +28,8 @@
 #include "tag.h"
 #include "variables.h"
 
+static void recalculate_line_starts (WINDOW *window);
+
 /* The window which describes the screen. */
 WINDOW *the_screen = NULL;
 
@@ -672,11 +674,11 @@ window_unmark_chain (WINDOW *chain, int flag)
 }
 
 
-/* Called by process_node_text. */
+/* Used by recalculate_line_starts via process_node_text. */
 static int
-_calc_line_starts (WINDOW *win, size_t pl_num, size_t ll_num,
-                   size_t pl_start, char *printed_line,
-                   size_t pl_bytes, size_t pl_chars)
+collect_line_starts (WINDOW *win, size_t pl_num, size_t ll_num,
+                     size_t pl_start, char *printed_line,
+                     size_t pl_bytes, size_t pl_chars)
 {
   add_element_to_array (pl_start, win->line_count,
                         win->line_starts, win->line_slots, 2);
@@ -689,8 +691,9 @@ _calc_line_starts (WINDOW *win, size_t pl_num, size_t ll_num,
   return 0;
 }
 
-/* Given WINDOW, recalculate the line starts for the node it displays. */
-void
+/* Calculate a list of line starts for the node belonging to WINDOW.  The line
+   starts are offsets within WINDOW->node->contents. */
+static void
 recalculate_line_starts (WINDOW *window)
 {
   free (window->line_starts);
@@ -703,7 +706,7 @@ recalculate_line_starts (WINDOW *window)
   if (!window->node)
     return;
   
-  process_node_text (window, window->node->contents, _calc_line_starts);
+  process_node_text (window, window->node->contents, collect_line_starts);
 
   window_line_map_init (window);
 }
@@ -715,8 +718,8 @@ recalculate_line_starts (WINDOW *window)
    occupies more than one physical line if its width is greater than the
    window width and the flag W_NoWrap is not set for that window.
  */
-size_t
-window_log_to_phys_line (WINDOW *window, size_t ln)
+long
+window_log_to_phys_line (WINDOW *window, long ln)
 {
   size_t i;
   

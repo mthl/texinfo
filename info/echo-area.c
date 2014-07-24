@@ -173,7 +173,7 @@ read_and_dispatch_in_echo_area (void)
       echo_area_prep_read ();
 
       if (!info_any_buffered_input_p ())
-        display_update_display (windows);
+        display_update_display ();
 
       display_cursor_at_point (active_window);
       info_initialize_numeric_arg ();
@@ -1073,7 +1073,7 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
         if (compwin->node != possible_completions_output_node)
           info_set_node_of_window (compwin, possible_completions_output_node);
 
-        display_update_display (windows);
+        display_update_display ();
       }
     }
 }

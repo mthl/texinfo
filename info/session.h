@@ -108,12 +108,11 @@ extern void info_set_input_from_file (char *filename);
 /* The names of the functions that run an info session. */
 
 /* Starting an info session. */
-extern void begin_multiple_window_info_session (REFERENCE **references,
-    char *error_msg);
-extern void display_startup_message (void);
-extern void info_session (void);
+void initialize_info_session (void);
+void info_read_and_dispatch (void);
+void close_info_session (void);
+void info_session (REFERENCE **ref_list, char *user_filename, char *error);
 extern void initialize_terminal_and_keymaps (char *init_file);
-extern void initialize_info_session (void);
 extern REFERENCE *info_intuit_options_node (NODE *initial_node, char *program);
 
 /* Moving the point within a node. */

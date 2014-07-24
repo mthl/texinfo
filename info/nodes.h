@@ -32,7 +32,7 @@ typedef struct {
   char *filename;       /* File where this node can be found. */
   char *nodename;       /* Name of the node. */
   int start, end;       /* Offsets within the containing node of LABEL. */
-  int line_number;      /* Specific line number a menu item points to.  */
+  long line_number;     /* Specific line number a menu item points to.  */
   int type;             /* Whether reference is a xref or a menu item */
 } REFERENCE;
 

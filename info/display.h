@@ -47,9 +47,8 @@ extern void display_initialize_display (int width, int height);
 /* Clear all of the lines in DISPLAY making the screen blank. */
 extern void display_clear_display (DISPLAY_LINE **display);
 
-/* Update the windows pointed to by WINDOWS in THE_DISPLAY.  This actually
-   writes the text on the screen. */
-extern void display_update_display (WINDOW *window);
+/* Update the windows on the display. */
+extern void display_update_display (void);
 
 /* Display WIN on THE_DISPLAY.  Unlike display_update_display (), this
    function only does one window. */
