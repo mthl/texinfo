@@ -161,8 +161,9 @@ static int lookup_action (const char *actname);
 int
 compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
 {
-  int error = 0;
-  char rescan = 0;
+  int error = 0; /* Set if there was a fatal error in reading init file. */
+  char rescan = 0; /* Whether to reuse the same character when moving onto the
+                      next state. */
   unsigned int lnum = 0;
   int c = 0;
 
@@ -447,9 +448,17 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
                          other than '0' .. '9'. */
 		      syntax_error (filename, lnum,
                         _("cannot bind key sequence to menu-digit"));
-		      error = 1;
 		    }
-                  else if (a != -1)
+		  else if (a == -1)
+		    {
+                      /* Print an error message, but keep going (don't set
+                         error = 1) for compatibility with infokey files aimed
+                         at future versions which may have different
+                         actions. */
+		      syntax_error (filename, lnum, _("unknown action `%s'"),
+				    act);
+		    }
+                  else
 		    {
                       int keymap_bind_keyseq (Keymap, int *, KEYMAP_ENTRY *);
 
@@ -463,12 +472,6 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
                         keymap_bind_keyseq (info_keymap, seq, &ke);
                       else /* section == ea */
                         keymap_bind_keyseq (echo_area_keymap, seq, &ke);
-		    }
-		  else
-		    {
-		      syntax_error (filename, lnum, _("unknown action `%s'"),
-				    act);
-		      error = 1;
 		    }
 		}
 	    }

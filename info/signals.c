@@ -80,6 +80,9 @@ mask_termsig (sigset_t *set)
 #if defined (SIGINT)
   sigaddset (set, SIGINT);
 #endif
+#if defined (SIGTERM)
+  sigaddset (set, SIGTERM);
+#endif
 # if defined (SIGUSR1)
   sigaddset (set, SIGUSR1);
 # endif
@@ -111,7 +114,7 @@ static int term_conf_busy = 0;
 #endif /* !HAVE_SIGACTION */
 
 static signal_info old_TSTP, old_TTOU, old_TTIN;
-static signal_info old_WINCH, old_INT, old_USR1;
+static signal_info old_WINCH, old_INT, old_TERM, old_USR1;
 static signal_info old_QUIT;
 
 void
@@ -143,6 +146,10 @@ initialize_info_signal_handler (void)
 
 #if defined (SIGINT)
   set_termsig (SIGINT, &old_INT);
+#endif
+
+#if defined (SIGTERM)
+  set_termsig (SIGTERM, &old_TERM);
 #endif
 
 #if defined (SIGUSR1)
@@ -232,6 +239,9 @@ info_signal_proc (int sig)
 #if defined (SIGINT)
     case SIGINT:
 #endif
+#if defined (SIGTERM)
+    case SIGTERM:
+#endif
       {
 #if defined (SIGTSTP)
         if (sig == SIGTSTP)
@@ -249,6 +259,10 @@ info_signal_proc (int sig)
         if (sig == SIGINT)
           old_signal_handler = &old_INT;
 #endif /* SIGINT */
+#if defined (SIGTERM)
+        if (sig == SIGTERM)
+          old_signal_handler = &old_TERM;
+#endif /* SIGTERM */
 
         /* For stop signals, restore the terminal IO, leave the cursor
            at the bottom of the window, and stop us. */

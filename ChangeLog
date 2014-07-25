@@ -1,3 +1,13 @@
+2014-07-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infokey.c (compile): Keep going for unrecognized or invalid
+	actions.
+	* info/t/Infokey-config: Add lines with invalid actions.
+
+	* info/signals.c (old_TERM): New variable.
+	(mask_termsig, initialize_info_signal_handler, info_signal_proc): Trap
+	SIGTERM as was done for SIGINT to allow cleanup of terminal state.
+
 2014-07-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infokey.c (compile): Don't allow binding to menu-digit.
