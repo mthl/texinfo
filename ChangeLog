@@ -8,6 +8,9 @@
 	* info/info.c (info_error_was_printed): Variable removed.  All
 	accesses removed.
 
+	* info/t/file.sh: Check subnode dumping is on when not outputting to
+	a terminal.
+
 2014-07-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infokey.c (compile): Keep going for unrecognized or invalid

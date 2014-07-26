@@ -17,4 +17,20 @@
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 
-$GINFO --output - --file sample.info
+# Check that we can reach a file with --file
+$GINFO --file file-menu >$GINFO_OUTPUT
+
+# Check that the entire file was dumped, and not just the Top node
+grep 'Node: Top' $GINFO_OUTPUT \
+  && grep 'Node: Node 1' $GINFO_OUTPUT \
+  && grep 'Node: Node 2' $GINFO_OUTPUT \
+  && grep 'Node: Node 3' $GINFO_OUTPUT \
+  && grep 'Node: Has\.dot' $GINFO_OUTPUT
+# Don't look for node "Unreachable" which is not in any menus and not dumped
+
+RETVAL=$?
+
+rm -f $GINFO_OUTPUT
+exit $RETVAL
+
+
