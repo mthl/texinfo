@@ -239,7 +239,6 @@ info_read_and_dispatch (void)
         continue;
 
       window_clear_echo_area ();
-      info_error_was_printed = 0;
 
       if (key == KEY_MOUSE)
         mouse_event_handler ();
@@ -3381,8 +3380,7 @@ write_node_to_stream (NODE *node, FILE *stream)
    to gc even those file buffer contents which had to be uncompressed. */
 int gc_compressed_files = 0;
 
-static void info_search_1 (WINDOW *window, int count,
-			   unsigned char key, int case_sensitive,
+static void info_search_1 (WINDOW *window, int count, int case_sensitive,
 			   int ask_for_string, long start);
 #define DFL_START (-1) /* a special value for the START argument of
 			  info_search_1, meaning to use the default
@@ -3632,7 +3630,7 @@ info_search_internal (char *string, WINDOW *window,
 
       number_of_tags = i;
 
-      /* Our tag wasn't found. */
+      /* Our tag wasn't found.  This shouldn't happen. */
       if (current_tag == -1)
         return -1;
 
@@ -3667,9 +3665,9 @@ info_search_internal (char *string, WINDOW *window,
                 break;
             }
 
-          /* If we got past out starting point, bail out.  */
+          /* If we got past our starting point, bail out.  */
           if (i == current_tag)
-            return -1;
+            break;
           current_tag = i;
 
           /* Display message when searching a new subfile. */
@@ -3724,9 +3722,14 @@ info_search_internal (char *string, WINDOW *window,
 
           if (result == search_failure
 	      || strcmp (initial_nodename, tag->nodename) == 0)
-            return -1;
+            break;
         }
     }
+
+  /* Not in interactive search. */
+  if (!echo_area_is_active)
+    info_error ("%s", _("Search failed."));
+
   return -1;
 }
 
@@ -3735,14 +3738,14 @@ DECLARE_INFO_COMMAND (info_search_case_sensitively,
 {
   last_search_direction = count > 0 ? 1 : -1;
   last_search_case_sensitive = 1;
-  info_search_1 (window, count, key, 1, 1, DFL_START);
+  info_search_1 (window, count, 1, 1, DFL_START);
 }
 
 DECLARE_INFO_COMMAND (info_search, _("Read a string and search for it"))
 {
   last_search_direction = count > 0 ? 1 : -1;
   last_search_case_sensitive = 0;
-  info_search_1 (window, count, key, 0, 1, DFL_START);
+  info_search_1 (window, count, 0, 1, DFL_START);
 }
 
 DECLARE_INFO_COMMAND (info_search_backward,
@@ -3750,7 +3753,7 @@ DECLARE_INFO_COMMAND (info_search_backward,
 {
   last_search_direction = count > 0 ? -1 : 1;
   last_search_case_sensitive = 0;
-  info_search_1 (window, -count, key, 0, 1, DFL_START);
+  info_search_1 (window, -count, 0, 1, DFL_START);
 }
 
 /* Common entry point for the search functions.  Arguments:
@@ -3766,8 +3769,8 @@ DECLARE_INFO_COMMAND (info_search_backward,
 		    for details.
 */
 static void
-info_search_1 (WINDOW *window, int count, unsigned char key,
-	       int case_sensitive, int ask_for_string, long start)
+info_search_1 (WINDOW *window, int count, int case_sensitive,
+               int ask_for_string, long start)
 {
   char *line, *prompt;
   int result, old_pagetop;
@@ -3858,9 +3861,7 @@ info_search_1 (WINDOW *window, int count, unsigned char key,
                                    active_window, direction, case_sensitive,
 				   bindp);
 
-  if (result != 0 && !info_error_was_printed)
-    info_error ("%s", _("Search failed."));
-  else if (old_pagetop != active_window->pagetop)
+  if (result == 0 && old_pagetop != active_window->pagetop)
     {
       int new_pagetop;
 
@@ -3892,11 +3893,11 @@ DECLARE_INFO_COMMAND (info_search_next,
       else
 	n = window->node->nodelen;
       info_search_1 (window, last_search_direction * count,
-		     key, last_search_case_sensitive, 0, n);
+		     last_search_case_sensitive, 0, n);
     }
   else
     info_search_1 (window, last_search_direction * count,
-                   key, last_search_case_sensitive, 0, DFL_START);
+                   last_search_case_sensitive, 0, DFL_START);
 }
 
 DECLARE_INFO_COMMAND (info_search_previous,
@@ -3913,11 +3914,11 @@ DECLARE_INFO_COMMAND (info_search_previous,
       if (n < 0)
 	n = 0;
       info_search_1 (window, -last_search_direction * count,
-		     key, last_search_case_sensitive, 0, n);
+		     last_search_case_sensitive, 0, n);
     }
   else
     info_search_1 (window, -last_search_direction * count,
-                   key, last_search_case_sensitive, 0, DFL_START);
+                   last_search_case_sensitive, 0, DFL_START);
 }
 
 /* **************************************************************** */

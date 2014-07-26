@@ -901,9 +901,6 @@ add_file_directory_to_path (char *filename)
 
 /* Error handling.  */
 
-/* Non-zero if an error has been signalled. */
-int info_error_was_printed = 0;
-
 /* Non-zero means ring terminal bell on errors. */
 int info_error_rings_bell_p = 1;
 
@@ -965,8 +962,6 @@ info_debug (const char *format, ...)
 void
 vinfo_error (const char *format, va_list ap)
 {
-  info_error_was_printed = 1;
-
   if (!info_windows_initialized_p || display_inhibited)
     {
       fprintf (stderr, "%s: ", program_name);

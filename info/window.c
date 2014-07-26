@@ -731,7 +731,7 @@ window_log_to_phys_line (WINDOW *window, long ln)
 }
 
 /* Change the pagetop of WINDOW to DESIRED_TOP, perhaps scrolling the screen
-   to do so. */
+   to do so.  WINDOW->pagetop should be the currently displayed pagetop. */
 void
 set_window_pagetop (WINDOW *window, int desired_top)
 {

@@ -1,3 +1,13 @@
+2014-07-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_search_1): Unused 'key' argument removed.
+	Rely on info_search_internal to print an error message.
+	(info_search_internal): Print an error message if search failed if not
+	in interactive search.
+	* info/window.c (set_window_pagetop): Comment changed.
+	* info/info.c (info_error_was_printed): Variable removed.  All
+	accesses removed.
+
 2014-07-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infokey.c (compile): Keep going for unrecognized or invalid
@@ -51,7 +61,6 @@
 	and close_info_session instead of info_session.
 	* info/session.c (fill_input_buffer): Call close_info_session if
 	reading input failed.
-	
 
 2014-07-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
