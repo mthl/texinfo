@@ -1,7 +1,7 @@
 2014-07-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* info/session.c (info_search_in_node): Merged into caller in
-	info_target_search_node.
+	* info/session.c (info_search_in_node): Merged into callers in
+	info_target_search_node and make_footnotes_node.
 
 2014-07-26  Gavin Smith  <gavinsmith0123@gmail.com>
 

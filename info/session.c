@@ -3431,7 +3431,7 @@ file_buffer_of_window (WINDOW *window)
    of the search binding.  In particular, its START and END fields contain
    bounds of the found string instance.
 */
-static enum search_result
+enum search_result
 info_search_in_node_internal (char *string, NODE *node, long int start,
 			      WINDOW *window, int dir, int case_sensitive,
 			      int match_nodename, int match_regexp,
