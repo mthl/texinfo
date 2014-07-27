@@ -944,7 +944,7 @@ copy_input_to_output (long n)
 {
   if (rewrite_p)
     {
-      size_t bytes_left;
+      long bytes_left;
 
       bytes_left = n;
       while (bytes_left > 0)
@@ -956,8 +956,10 @@ copy_input_to_output (long n)
             }
           else
             {
-              size_t bytes_to_convert;
-              size_t extra_written;
+              long bytes_to_convert;
+              long extra_written;
+
+              bytes_to_convert = bytes_left;
 
               if (anchor_to_adjust)
                 {
@@ -965,17 +967,23 @@ copy_input_to_output (long n)
                                        + (*anchor_to_adjust)->nodestart;
 
                   /* If there is an anchor in the input: */
-                  if (first_anchor <= inptr + bytes_left)
-                    /* Convert enough to pass the first anchor in input. */
-                    bytes_to_convert = first_anchor - inptr + 1;
-                  else
-                    bytes_to_convert = bytes_left;
+                  if (first_anchor < inptr + bytes_left)
+                    {
+                      /* Convert enough to pass the first anchor in input. */
+                      bytes_to_convert = first_anchor - inptr + 1;
+
+                      /* Shouldn't happen because we should have already
+                         have adjusted this anchor. */
+                      if (bytes_to_convert < 0)
+                        {
+                          anchor_to_adjust = 0; /* Abandon anchor adjustment.*/
+                          bytes_to_convert = bytes_left;
+                        }
+                    }
                 }
-              else
-                bytes_to_convert = bytes_left;
 
               /* copy_converting may read more than bytes_to_convert
-                 bytes its input ends in an incomplete byte sequence. */
+                 bytes if its input ends in an incomplete byte sequence. */
               extra_written = copy_converting (bytes_to_convert);
 
               bytes_left -= bytes_to_convert + extra_written;

@@ -119,6 +119,7 @@ TESTS = \
 	t/relative-reference.sh \
 	t/resize-in-completions.sh \
 	t/search-skip-screen.sh \
+	t/anchor-positions.sh \
 	t/quoted-label-as-target.sh \
 	t/quoted-target.sh \
 	t/quoted-label-and-target.sh \

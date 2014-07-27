@@ -9,6 +9,12 @@
 	* info/t/search-skip-screen.sh: New test.
 	* info/t/infodir/search.info: New file.
 
+	* info/info-utils.c (copy_input_to_output): Use < instead of <= to
+	avoid adjusting anchor just outside of range.  Check if a count of
+	bytes went negative by mistake.
+	* info/t/anchor-positions.sh: New test.
+	* info/t/infodir/anchor-positions.info: New file.
+
 2014-07-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_search_1): Unused 'key' argument removed.
