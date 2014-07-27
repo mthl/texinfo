@@ -96,21 +96,28 @@ enum search_result
 regexp_search (char *regexp, SEARCH_BINDING *binding, 
 	       long *poff, SEARCH_BINDING *pend)
 {
+  static regex_t preg; /* Compiled pattern buffer for regexp. */
+
+  /* Store the last regular expression to avoid recompiling. */
   static char *previous_regexp = NULL;
-  static char *previous_content = NULL;
   static int was_insensitive = 0;
-  static regex_t preg;
-  static regmatch_t *matches;
-  static size_t match_alloc = 0;
-  static size_t match_count = 0;
-  regoff_t pos;
+
   regoff_t start = 0, end;
 
+  /* Remember the last buffer the search was over.  We can optimize by reusing
+     the results from last time. */
+  static char *previous_content = NULL;
+  static long previous_start = 0, previous_end = 0;
+
+  static regmatch_t *matches; /* List of matches. */
+  static size_t match_alloc = 0;
+  static size_t match_count = 0;
+
+  /* Check if we need to compile a new regexp. */
   if (previous_regexp == NULL
-      || ((binding->flags & S_FoldCase) != was_insensitive)
-      || (strcmp (previous_regexp, regexp) != 0))
+      || (binding->flags & S_FoldCase) != was_insensitive
+      || strcmp (previous_regexp, regexp) != 0)
     {
-      /* need to compile a new regexp */
       int result;
       char *unescaped_regexp;
       char *p, *q;
@@ -182,41 +189,48 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
       end = binding->start;
     }
   
-  if (previous_content != binding->buffer)
+  /* Check if we need to calculate new results. */
+  if (binding->buffer != previous_content
+      || start < previous_start
+      || end > previous_end)
     {
-      /* new buffer to search in, let's scan it */
       char saved_char;
+      regoff_t offset = start;
 
+      /* Save for next time. */
       previous_content = binding->buffer;
+      previous_start = start;
+      previous_end = end;
+
       saved_char = previous_content[end];
       previous_content[end] = '\0';
 
-      for (match_count = 0; start < end; )
+      for (match_count = 0; offset < end; )
         {
           int result = 0;
           if (match_count == match_alloc)
             {
-              /* match list full. Initially allocate 256 entries, then double
-                 every time we fill it */
+              /* The match list is full.  Initially allocate 256 entries,
+                 then double every time we fill it. */
 	      if (match_alloc == 0)
 		match_alloc = 256;
 	      matches = x2nrealloc (matches, &match_alloc, sizeof matches[0]);
             }
 
-          result = regexec (&preg, &previous_content[start],
+          result = regexec (&preg, &previous_content[offset],
                             1, &matches[match_count], 0);
           if (result == 0)
             {
               if (matches[match_count].rm_eo == 0)
                 {
                   /* ignore empty matches */
-                  start++;
+                  offset++;
                 }
               else
                 {
-                  matches[match_count].rm_so += start;
-                  matches[match_count].rm_eo += start;
-                  start = matches[match_count++].rm_eo;
+                  matches[match_count].rm_so += offset;
+                  matches[match_count].rm_eo += offset;
+                  offset = matches[match_count++].rm_eo;
                 }
             }
           else
@@ -225,14 +239,16 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
       previous_content[end] = saved_char;
     }
 
-  pos = binding->start;
-  if (pos > binding->end)
+  if (binding->start > binding->end)
     {
       /* searching backward */
       int i;
       for (i = match_count - 1; i >= 0; i--)
         {
-          if (matches[i].rm_so <= pos)
+          if (matches[i].rm_so < start)
+            break; /* No matches found in search area. */
+
+          if (matches[i].rm_so < end)
 	    {
 	      if (pend)
 		{
@@ -252,7 +268,10 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
       int i;
       for (i = 0; i < match_count; i++)
         {
-          if (matches[i].rm_so >= pos)
+          if (matches[i].rm_so >= end)
+            break; /* No matches found in search area. */
+
+          if (matches[i].rm_so >= start)
             {
 	      if (pend)
 		{

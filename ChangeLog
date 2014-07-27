@@ -3,6 +3,12 @@
 	* info/session.c (info_search_in_node): Merged into callers in
 	info_target_search_node and make_footnotes_node.
 
+	* info/search.c (regexp_search): Store previous start and end of
+	search.  Recalculate matches if new search range is outside these.
+	When looking for matches, check that they are within the search range.
+	* info/t/search-skip-screen.sh: New test.
+	* info/t/infodir/search.info: New file.
+
 2014-07-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_search_1): Unused 'key' argument removed.
