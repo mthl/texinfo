@@ -595,6 +595,11 @@ get_input_key (void)
   return ret;
 }
 
+/* Time in milliseconds to wait for the next byte of a byte sequence
+   corresponding to a key or key chord.  Settable with the 'key-time' user
+   variable. */
+int key_time = 100;
+
 /* Read bytes from input and return what key has been pressed.  Return -1 on
    reading an unrecognized key. */
 static int
@@ -643,8 +648,7 @@ get_input_key_internal (void)
         break;
 
       /* If we read an incomplete byte sequence, pause a short while to
-         see if more bytes follow.  We should probably allow the length
-         of this delay to be settable by the user. */
+         see if more bytes follow. */
       if (in_map && pop_index == push_index)
         {
           int ready = 0;
@@ -655,7 +659,7 @@ get_input_key_internal (void)
           FD_ZERO (&readfds);
           FD_SET (fileno (info_input_stream), &readfds);
           timer.tv_sec = 0;
-          timer.tv_usec = 10000;
+          timer.tv_usec = key_time * 1000;
           ready = select (fileno(info_input_stream)+1, &readfds,
                           NULL, NULL, &timer);
 #else

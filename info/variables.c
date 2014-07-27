@@ -100,6 +100,10 @@ VARIABLE_ALIST info_variables[] = {
       N_("Remove Info file syntax from the text of nodes"),
     &preprocess_nodes_p, (char **)on_off_choices },
 
+  { "key-time",
+      N_("Length of time in milliseconds to wait for the next byte in a sequence indicating that a key has been pressed"),
+    &key_time, NULL },
+
   { NULL }
 };
 

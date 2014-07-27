@@ -15,6 +15,10 @@
 	* info/t/anchor-positions.sh: New test.
 	* info/t/infodir/anchor-positions.info: New file.
 
+	* info/session.c (key_time): New variable.
+	(get_input_key_internal): Use it instead of hardcoded value.
+	(info_variables): Add 'key-time' user variable.
+
 2014-07-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_search_1): Unused 'key' argument removed.
