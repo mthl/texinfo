@@ -3505,20 +3505,6 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
   return result;
 }
 
-long
-info_search_in_node (char *string, NODE *node, long int start,
-		     WINDOW *window, int dir, int case_sensitive,
-		     int match_regexp)
-{
-  long offset;
-  if (info_search_in_node_internal (string, node, start,
-				    window, dir, case_sensitive, 0,
-				    match_regexp,
-				    &offset, NULL) == search_success)
-    return offset;
-  return -1;
-}
-
 /* Search NODE, looking for the largest possible match of STRING.  Start the
    search at START.  Return the absolute position of the match, or -1, if
    no part of the string could be found. */
@@ -3527,7 +3513,7 @@ info_target_search_node (NODE *node, char *string, long int start,
 			 int use_regex_mask)
 {
   register int i;
-  long offset = 0;
+  long offset = -1;
   char *target;
 
   target = xstrdup (string);
@@ -3537,12 +3523,16 @@ info_target_search_node (NODE *node, char *string, long int start,
      the end of it. */
   while (i)
     {
+      enum search_result ret;
       target[i] = '\0';
-      offset = info_search_in_node (target, node, start, NULL, 1, 0,
-				    use_regex & use_regex_mask);
 
-      if (offset != -1)
+      ret = info_search_in_node_internal (target, node, start,
+				    NULL, 1, 0, 0,
+				    use_regex & use_regex_mask,
+				    &offset, NULL);
+      if (ret == search_success)
         break;
+      offset = -1;
 
       /* Delete the last word from TARGET. */
       for (; i && (!whitespace (target[i]) && (target[i] != ',')); i--);
