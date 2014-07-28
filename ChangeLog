@@ -1,3 +1,13 @@
+2014-07-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (info_get_node_of_file_buffer): Set body_start to 0
+	for "*" node.
+	* info/session.c (info_next_line, info_prev_line): Don't change goal
+	column.
+	* info/window.c (window_chars_to_goal): Merged into caller.
+	* info/t/goal-column.sh: New test.
+	* info/t/infodir/intera.info: Node "Goal column" added.
+
 2014-07-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_search_in_node): Merged into callers in

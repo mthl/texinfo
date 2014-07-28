@@ -107,6 +107,7 @@ TESTS = \
 	t/tab.sh \
 	t/body-start.sh \
 	t/end-of-line.sh \
+	t/goal-column.sh \
 	t/last-no-history.sh \
 	t/adjust-anchors.sh \
 	t/search-after-tag.sh \

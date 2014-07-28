@@ -1072,7 +1072,7 @@ info_get_node_of_file_buffer (FILE_BUFFER *file_buffer, char *nodename)
       node->nodename = xstrdup ("*");
       node->contents = file_buffer->contents;
       node->nodelen = file_buffer->filesize;
-      node_set_body_start (node);
+      node->body_start = 0;
     }
   /* If this is the "main" info file, it might contain a tags table.  Search
      the tags table for an entry which matches the node that we want.  If

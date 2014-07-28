@@ -225,10 +225,6 @@ extern int window_get_cursor_column (WINDOW *window);
 extern void window_get_state (WINDOW *window, SEARCH_STATE *state);
 extern void window_set_state (WINDOW *window, SEARCH_STATE *state);
 
-/* Count the number of characters in current line of WIN that precede
-   the printed column offset of GOAL. */
-extern int window_chars_to_goal (WINDOW *win, int goal);
-
 extern size_t process_node_text
         (WINDOW *win, char *start,
          int (*fun) (WINDOW *, size_t, size_t, size_t, char *,

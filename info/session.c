@@ -839,7 +839,8 @@ int cursor_movement_scrolls_p = 1;
 int window_scroll_step = 1;
 
 /* Used after cursor movement commands.  Scroll window so that point is
-   visible, and move the terminal cursor there. */
+   visible, and move the terminal cursor there.  Record current column in
+   WINDOW->goal_column. */
 static void
 info_show_point (WINDOW *window)
 {
@@ -925,12 +926,21 @@ point_prev_line (WINDOW *win)
 static void
 move_to_goal_column (WINDOW *window)
 {
-  int line;
+  int line, goal, chars_to_goal;
 
   line = window_line_of_point (window);
 
   window->point = window->line_starts[line];
-  window->point += window_chars_to_goal (window, window->goal_column);
+
+  /* Count the number of characters in LINE that precede the printed column
+     offset of GOAL. */
+  goal = window->goal_column;
+  window_compute_line_map (window);
+  if (goal >= window->line_map.used)
+    goal = window->line_map.used - 1;
+  chars_to_goal = window->line_map.map[goal] - window->line_map.map[0];
+
+  window->point += chars_to_goal;
 }
 
 /* Return true if POINT sits on a newline character. */
@@ -1083,9 +1093,12 @@ DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
       long saved_goal = window->goal_column;
       while (count--)
         point_next_line (window);
-      window->goal_column = saved_goal;
       move_to_goal_column (window);
       info_show_point (window);
+      /* Don't change the goal column when going up and down.  This means we
+         can go from a long line to a short line and back to a long line and
+         end back in the same column. */
+      window->goal_column = saved_goal;
     }
 }
 
@@ -1099,9 +1112,9 @@ DECLARE_INFO_COMMAND (info_prev_line, _("Move up to the previous line"))
       long saved_goal = window->goal_column;
       while (count--)
         point_prev_line (window);
-      window->goal_column = saved_goal;
       move_to_goal_column (window);
       info_show_point (window);
+      window->goal_column = saved_goal;
     }
 }
 

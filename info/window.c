@@ -856,17 +856,6 @@ window_get_cursor_column (WINDOW *window)
   return window_point_to_column (window, window->point, &window->point);
 }
 
-/* Count the number of characters in LINE that precede the printed column
-   offset of GOAL. */
-int
-window_chars_to_goal (WINDOW *win, int goal)
-{
-  window_compute_line_map (win);
-  if (goal >= win->line_map.used)
-    goal = win->line_map.used - 1;
-  return win->line_map.map[goal] - win->line_map.map[0];
-}
-
 /* Create a modeline for WINDOW, and store it in window->modeline. */
 void
 window_make_modeline (WINDOW *window)
