@@ -113,6 +113,9 @@ static char *term_invend;
 /* String introducing a mouse event. */
 static char *term_Km;
 
+/* Strings entering and leaving standout mode. */
+char *term_so, *term_se;
+
 /* Although I can't find any documentation that says this is supposed to
    return its argument, all the code I've looked at (termutils, less)
    does so, so fine.  */
@@ -700,6 +703,12 @@ terminal_initialize_terminal (char *terminal_name)
     term_invend = tgetstr ("me", &buffer);
   else
     term_invend = NULL;
+
+  term_so = tgetstr ("so", &buffer);
+  if (term_so)
+    term_se = tgetstr ("se", &buffer);
+  else
+    term_se = NULL;
 
   if (!term_cr)
     term_cr =  "\r";

@@ -1,3 +1,26 @@
+2014-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/search.c (regexp_search): Take WINDOW argument to save results
+	of a search.  All callers updated.
+	* info/window.h (WINDOW): New fields 'matches', 'match_count'.
+	* info/session.c (info_search_in_node_internal): Use of regexp_search
+	updated.
+
+	* info/variables.c (info_variables): New user variable
+	'highlight-searches'.
+	* info/display.c (highlight_searches_p): New variable.
+	(display_update_window_1): New function, based on
+	process_node_text in window.c.  Highlight search results if this is
+	turned on.  Use struct text_buffer functions to build printed screen
+	line.
+	(display_update_one_window): Call display_update_window_1 instead of
+	process_node_text.
+	* info/terminal.c (term_so, term_se): New variables.
+	(terminal_initialize_terminal): Initialize them.
+
+	* info/session.c (info_set_node_of_window): Clear displayed
+	search matches.
+
 2014-07-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.c (info_get_node_of_file_buffer): Set body_start to 0

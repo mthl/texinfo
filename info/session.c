@@ -802,6 +802,10 @@ info_set_node_of_window (WINDOW *win, NODE *node)
       win->hist[win->hist_index - 1]->point = win->point;
     }
 
+  /* Clear displayed search matches if any.  TODO: do search again in new
+     node? */
+  win->matches = 0;
+
   /* Put this node into the window. */
   window_set_node_of_window (win, node);
 
@@ -3483,10 +3487,10 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
 	  binding.end = strlen (node->nodename);
 	  
 	  result = (match_regexp ? 
-		    regexp_search (string, &binding, poff, resbnd):
+		    regexp_search (string, &binding, poff, resbnd, window):
 		    search (string, &binding, poff));
 	  if (result == search_success)
-	    *poff += start_off;
+            *poff += start_off;
 	}
     }
 
@@ -3508,14 +3512,20 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
 	binding.start = node->body_start;
       
       result = (match_regexp ? 
-		regexp_search (string, &binding, poff, resbnd):
+		regexp_search (string, &binding, poff, resbnd, window):
 		search (string, &binding, poff));
     }
   
   if (result == search_success && window)
     {
+      window->flags |= W_UpdateWindow;
       if (window->node != node)
-        info_set_node_of_window (window, node);
+        {
+          regmatch_t *saved_matches = window->matches;
+          info_set_node_of_window (window, node);
+          window->matches = saved_matches;
+        }
+
       window->point = *poff;
       window_adjust_pagetop (window);
     }

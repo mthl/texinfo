@@ -77,5 +77,6 @@ extern int search_skip_screen_p;
 extern int infopath_no_defaults_p;
 extern int preprocess_nodes_p;
 extern int key_time;
+extern int highlight_searches_p;
 
 #endif /* not INFO_VARIABLES_H */

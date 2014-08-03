@@ -90,11 +90,13 @@ search (char *string, SEARCH_BINDING *binding, long *poff)
 
    If PEND is specified, it receives a copy of BINDING at the end of a
    succeded search.  Its START and END fields contain bounds of the found
-   string instance. 
+   string instance.
+
+   If WINDOW is specified, pass back the list of matches in WINDOW->matches.
 */
 enum search_result
 regexp_search (char *regexp, SEARCH_BINDING *binding, 
-	       long *poff, SEARCH_BINDING *pend)
+	       long *poff, SEARCH_BINDING *pend, WINDOW *window)
 {
   static regex_t preg; /* Compiled pattern buffer for regexp. */
 
@@ -237,6 +239,13 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
 	    break;
         }
       previous_content[end] = saved_char;
+    }
+
+  /* Pass back the full list of results. */
+  if (window)
+    {
+      window->matches = matches;
+      window->match_count = match_count;
     }
 
   if (binding->start > binding->end)

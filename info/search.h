@@ -32,6 +32,8 @@
 #ifndef INFO_SEARCH_H
 #define INFO_SEARCH_H
 
+#include "window.h"
+
 typedef struct {
   char *buffer;                 /* The buffer of text to search. */
   long start;                   /* Offset of the start of the search. */
@@ -61,7 +63,7 @@ extern enum search_result search (char *string, SEARCH_BINDING *binding,
 extern enum search_result regexp_search (char *regexp,
 					 SEARCH_BINDING *binding,
 					 long *poff,
-					 SEARCH_BINDING *pret);
+					 SEARCH_BINDING *pret, WINDOW *window);
 extern int looking_at (char *string, SEARCH_BINDING *binding);
 
 /* Note that STRING_IN_LINE () always returns the offset of the 1st character

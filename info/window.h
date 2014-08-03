@@ -24,6 +24,7 @@
 
 #include "infomap.h"
 #include "nodes.h"
+#include <regex.h>
 
 /* Smallest number of visible lines in a window.  The actual height is
    always one more than this number because each window has a modeline. */
@@ -86,6 +87,10 @@ typedef struct window_struct
   size_t line_slots;    /* Allocated space in LINE_STARTS and LOG_LINE_NO. */
 
   int flags;            /* See below for details. */
+
+  /* Used for highlighting search matches. */
+  regmatch_t *matches;
+  size_t match_count;
 
   /* History of nodes visited in this window. */
   WINDOW_STATE **hist;       /* Nodes visited in this window. */

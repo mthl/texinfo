@@ -23,7 +23,6 @@
 #define NODES_H
 
 #include "info.h"
-#include "search.h"
 
 /* Structure which describes a node reference, such as a menu entry or
    cross reference. */

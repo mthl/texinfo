@@ -1606,7 +1606,7 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
   s.flags = S_FoldCase;
 
 search_again:
-  while (regexp_search (search_string, &s, &position, 0) == search_success)
+  while (regexp_search (search_string, &s, &position, 0, 0) == search_success)
     {
       int in_parentheses = 0;
       REFERENCE *entry;

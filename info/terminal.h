@@ -126,4 +126,6 @@ extern char *term_ke, *term_kh;
 extern char *term_kD, *term_ki;
 extern char *term_bt;
 
+extern char *term_so, *term_se;
+
 #endif /* !TERMINAL_H */

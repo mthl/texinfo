@@ -114,11 +114,10 @@ find_diff (const char *a, size_t alen, const char *b, size_t blen, int *ppos)
   return i;
 }
 
-/* Called by process_node_text. */
+/* Update a single line of the screen. */
 int
-display_node_text (WINDOW *win, size_t pl_num, size_t ll_num,
-                   size_t pl_start, char *printed_line,
-                   size_t pl_bytes, size_t pl_chars)
+display_node_text (WINDOW *win, long pl_num, char *printed_line,
+                   long pl_bytes, long pl_chars)
 {
   DISPLAY_LINE **display = the_display;
   DISPLAY_LINE *entry;
@@ -209,6 +208,152 @@ display_node_text (WINDOW *win, size_t pl_num, size_t ll_num,
   return 0;
 }
 
+
+int highlight_searches_p = 0;
+
+/* Print each line in the window into our local buffer, and then
+   check the contents of that buffer against the display.  If they
+   differ, update the display.
+   Return value: number of lines processed.  */
+long
+display_update_window_1 (WINDOW *win, long pagetop)
+{
+  char *start = win->node->contents + win->line_starts[win->pagetop];
+
+  struct text_buffer tb_printed_line;     /* Buffer for a printed line. */
+  long pl_chars = 0;     /* Number of characters written to printed_line */
+  long pl_bytes = 0;     /* Number of bytes written to printed_line */
+  long pl_num = 0;       /* Number of physical lines done so far. */
+  mbi_iterator_t iter;
+
+  regmatch_t *matches = 0;
+  size_t match_index = 0;
+  int in_match = 0; /* If we have highlighting on for a match. */
+
+  if (highlight_searches_p)
+    matches = win->matches;
+
+  /* Find first search match after the start of the page, and check whether
+     we start inside a match. */
+  if (matches)
+    {
+      for (match_index = 0; match_index < win->match_count; match_index++)
+        {
+          if (matches[match_index].rm_so > win->line_starts[win->pagetop])
+            {
+              in_match = 0;
+              break;
+            }
+
+          if (matches[match_index].rm_eo > win->line_starts[win->pagetop])
+            {
+              in_match = 1;
+              break;
+            }
+        }
+    }
+
+  text_buffer_init (&tb_printed_line);
+
+  if (in_match)
+    text_buffer_add_string (&tb_printed_line, term_so, strlen(term_so));
+
+  for (mbi_init (iter, start, 
+                 win->node->contents + win->node->nodelen - start);
+       mbi_avail (iter);
+       mbi_advance (iter))
+    {
+      const char *cur_ptr;
+      char *rep;
+
+      size_t pchars = 0; /* Printed chars */
+      size_t pbytes = 0; /* Bytes to output. */
+      int delim = 0;
+      int finish;
+
+      rep = printed_representation (&iter, &delim, pl_chars, &pchars, &pbytes);
+
+      cur_ptr = mbi_cur_ptr (iter);
+
+      if (delim || pl_chars + pchars >= win->width)
+        {
+          /* If this character cannot be printed in this line, we have
+             found the end of this line as it would appear on the screen. */
+
+          if (!delim)
+            {
+              if (!(win->flags & W_NoWrap))
+                text_buffer_add_char (&tb_printed_line, '\\');
+              else
+                {
+                  text_buffer_add_char (&tb_printed_line, '$');
+                  /* If this window has chosen not to wrap lines, skip to the
+                     end of the logical line in the buffer, and start a new
+                     line here. */
+                  for (; mbi_avail (iter); mbi_advance (iter))
+                    if (mb_len (mbi_cur (iter)) == 1
+                        && *mbi_cur_ptr (iter) == '\n')
+                      break;
+                }
+            }
+
+          text_buffer_add_char (&tb_printed_line, '\0');
+
+          finish = display_node_text (win, pl_num,
+                      text_buffer_base (&tb_printed_line), pl_bytes, pl_chars);
+
+          ++pl_num;
+
+          pl_bytes = 0;
+          pl_chars = 0;
+          text_buffer_reset (&tb_printed_line);
+
+          if (finish)
+            break;
+        }
+
+      if (matches && match_index != win->match_count)
+        {
+          if (!in_match && cur_ptr >= win->node->contents
+                             + matches[match_index].rm_so)
+            {
+              text_buffer_add_string (&tb_printed_line, term_so, strlen(term_so));
+              in_match = 1;
+            } 
+          else if (in_match && cur_ptr >= win->node->contents
+                             + matches[match_index].rm_eo)
+            {
+              text_buffer_add_string (&tb_printed_line, term_se, strlen(term_se));
+              in_match = 0;
+              match_index++;
+            } 
+        }
+
+      if (*cur_ptr != '\n') 
+        {
+          int i;
+          
+          text_buffer_add_string (&tb_printed_line, rep, pbytes);
+          pl_chars += pchars;
+          continue;
+        }
+    }
+
+  /* This would be the very last line of the node. */
+  if (pl_chars)
+    {
+      text_buffer_add_char (&tb_printed_line, '\0');
+      display_node_text (win, pl_num,
+                         text_buffer_base (&tb_printed_line),
+                         pl_bytes, pl_chars);
+      pl_num++;
+    }
+
+  text_buffer_free (&tb_printed_line);
+  return pl_num;
+}
+
+/* Update one window on the screen. */
 void
 display_update_one_window (WINDOW *win)
 {
@@ -241,10 +386,8 @@ display_update_one_window (WINDOW *win)
 
   if (win->node && win->line_starts)
     {
-      line_index = process_node_text (win,
-				      win->node->contents
-                                        + win->line_starts[win->pagetop],
-				      display_node_text);
+      line_index = display_update_window_1 (win, win->pagetop);
+
       if (display_was_interrupted_p)
 	goto funexit;
     }
