@@ -533,14 +533,16 @@ window_toggle_wrap (WINDOW *window)
       /* Make sure that point appears within this window. */
       window_adjust_pagetop (window);
 
+      /* Disable for now - recalculate_line_starts above freed old_starts. */
+#if 0
       /* If the pagetop hasn't changed maybe we can do some scrolling now
          to speed up the display.  Many of the line starts will be the same,
          so scrolling here is a very good optimization.*/
       if (old_pagetop == window->pagetop)
         display_scroll_line_starts
           (window, old_pagetop, old_starts, old_lines);
-      free (old_starts);
-      free (old_xlat);
+#endif
+
     }
   window->flags |= W_UpdateWindow;
 }

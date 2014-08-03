@@ -280,13 +280,21 @@ display_update_window_1 (WINDOW *win, long pagetop)
           /* If this character cannot be printed in this line, we have
              found the end of this line as it would appear on the screen. */
 
+          text_buffer_add_char (&tb_printed_line, '\0');
+
+          finish = display_node_text (win, pl_num,
+                      text_buffer_base (&tb_printed_line), pl_bytes, pl_chars);
+
           if (!delim)
             {
+              terminal_goto_xy (win->width - 1, win->first_row + pl_num);
               if (!(win->flags & W_NoWrap))
-                text_buffer_add_char (&tb_printed_line, '\\');
+                terminal_put_text ("\\");
               else
                 {
-                  text_buffer_add_char (&tb_printed_line, '$');
+                  terminal_put_text ("$");
+                  rep = 0; /* Don't display this character. */
+
                   /* If this window has chosen not to wrap lines, skip to the
                      end of the logical line in the buffer, and start a new
                      line here. */
@@ -295,12 +303,8 @@ display_update_window_1 (WINDOW *win, long pagetop)
                         && *mbi_cur_ptr (iter) == '\n')
                       break;
                 }
+              fflush (stdout);
             }
-
-          text_buffer_add_char (&tb_printed_line, '\0');
-
-          finish = display_node_text (win, pl_num,
-                      text_buffer_base (&tb_printed_line), pl_bytes, pl_chars);
 
           ++pl_num;
 
@@ -329,7 +333,7 @@ display_update_window_1 (WINDOW *win, long pagetop)
             } 
         }
 
-      if (*cur_ptr != '\n') 
+      if (*cur_ptr != '\n' && rep) 
         {
           int i;
           

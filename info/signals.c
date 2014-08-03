@@ -317,7 +317,6 @@ info_signal_proc (int sig)
            sigwinch_block_count > 0. */
         sigwinch_block_count++;
 
-	terminal_prep_terminal ();
 	reset_info_window_sizes ();
 
         sigwinch_block_count--;

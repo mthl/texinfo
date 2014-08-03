@@ -5,6 +5,12 @@
 	terminal_prep_terminal.  This prevents flickering between the "normal"
 	and "alternate" screens in an xterm when resizing.
 
+	* info/display.c (display_update_one_window): Always display line
+	continuation character in rightmost column.  Don't display an extra character
+	if line wrapping is off.
+	* info/window.c (window_toggle_wrap): Don't free two arrays that were
+	already freed.  Disable call to display_scroll_line_starts.
+
 2014-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/search.c (regexp_search): Take WINDOW argument to save results
