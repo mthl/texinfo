@@ -174,11 +174,7 @@ redisplay_after_signal (void)
 void
 reset_info_window_sizes (void)
 {
-  terminal_goto_xy (0, 0);
-  fflush (stdout);
-  terminal_unprep_terminal ();
   terminal_get_screen_size ();
-  terminal_prep_terminal ();
   display_initialize_display (screenwidth, screenheight);
   window_new_screen_size (screenwidth, screenheight);
   redisplay_after_signal ();
@@ -302,9 +298,6 @@ info_signal_proc (int sig)
 	if (sig == SIGUSR1)
 	  old_signal_handler = &old_USR1;
 #endif
-	terminal_goto_xy (0, 0);
-	fflush (stdout);
-	terminal_unprep_terminal (); /* needless? */
 
         /* This seems risky: what if we receive a (real) signal before
            the next line is reached? */

@@ -1,5 +1,12 @@
 2014-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/signals.c (redisplay_after_signal)
+	(info_signal_proc) <SIGWINCH>: Don't call terminal_unprep_terminal and
+	terminal_prep_terminal.  This prevents flickering between the "normal"
+	and "alternate" screens in an xterm when resizing.
+
+2014-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/search.c (regexp_search): Take WINDOW argument to save results
 	of a search.  All callers updated.
 	* info/window.h (WINDOW): New fields 'matches', 'match_count'.
