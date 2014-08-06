@@ -114,19 +114,16 @@ find_diff (const char *a, size_t alen, const char *b, size_t blen, int *ppos)
   return i;
 }
 
-/* Update a single line of the screen. */
+/* Update line PL_NUM of the screen to be PRINTED_LINE, which is PL_BYTES long
+   and takes up PL_CHARS columns. */
 int
-display_node_text (WINDOW *win, long pl_num, char *printed_line,
+display_node_text (long pl_num, char *printed_line,
                    long pl_bytes, long pl_chars)
 {
   DISPLAY_LINE **display = the_display;
   DISPLAY_LINE *entry;
 
-  /* This might happen if the screen was resized very small. */
-  if (win->first_row + pl_num > screenheight)
-    return 0;
-
- entry = display[win->first_row + pl_num];
+ entry = display[pl_num];
 
   /* We have the exact line as it should appear on the screen.
      Check to see if this line matches the one already appearing
@@ -145,7 +142,7 @@ display_node_text (WINDOW *win, long pl_num, char *printed_line,
 	  /* Need to erase the line if it has escape sequences.  */
 	  || (raw_escapes_p && mbschr (entry->text, '\033') != 0))
 	{
-	  terminal_goto_xy (0, win->first_row + pl_num);
+	  terminal_goto_xy (0, pl_num);
 	  terminal_clear_to_eol ();
 	  entry->inverse = 0;
 	  entry->text[0] = '\0';
@@ -160,16 +157,16 @@ display_node_text (WINDOW *win, long pl_num, char *printed_line,
       if (i != pl_chars || pl_chars != entry->textlen)
 	{
 	  /* Move to the proper point on the terminal. */
-	  terminal_goto_xy (i, win->first_row + pl_num);
+	  terminal_goto_xy (i, pl_num);
 	  /* If there is any text to print, print it. */
 	  if (i != pl_chars)
 	    terminal_put_text (printed_line + i);
 	  
 	  /* If the printed text didn't extend all the way to the edge
-	     of the window, and text was appearing between here and the
-	     edge of the window, clear from here to the end of the
+	     of the screen, and text was appearing between here and the
+	     edge of the screen, clear from here to the end of the
 	     line. */
-	  if ((pl_chars < win->width && pl_chars < entry->textlen)
+	  if ((pl_chars < screenwidth && pl_chars < entry->textlen)
 	      || entry->inverse)
 	    terminal_clear_to_eol ();
 	  
@@ -201,10 +198,6 @@ display_node_text (WINDOW *win, long pl_num, char *printed_line,
       display_was_interrupted_p = 1;
       return 1;
     }
-
-  if (pl_num + 1 == win->height)
-    return 1;
-
   return 0;
 }
 
@@ -222,7 +215,6 @@ display_update_window_1 (WINDOW *win, long pagetop)
 
   struct text_buffer tb_printed_line;     /* Buffer for a printed line. */
   long pl_chars = 0;     /* Number of characters written to printed_line */
-  long pl_bytes = 0;     /* Number of bytes written to printed_line */
   long pl_num = 0;       /* Number of physical lines done so far. */
   mbi_iterator_t iter;
 
@@ -271,9 +263,35 @@ display_update_window_1 (WINDOW *win, long pagetop)
       int delim = 0;
       int finish;
 
+      /* Check if we have processed all the lines in the window. */
+      if (pl_num == win->height)
+        break;
+
+      /* Check if this line of the window is off the screen.  This might happen
+         if the screen was resized very small. */
+      if (win->first_row + pl_num >= screenheight)
+        break;
+
       rep = printed_representation (&iter, &delim, pl_chars, &pchars, &pbytes);
 
       cur_ptr = mbi_cur_ptr (iter);
+
+      if (matches && match_index != win->match_count)
+        {
+          if (!in_match && cur_ptr >= win->node->contents
+                             + matches[match_index].rm_so)
+            {
+              text_buffer_add_string (&tb_printed_line, term_so, strlen(term_so));
+              in_match = 1;
+            } 
+          else if (in_match && cur_ptr >= win->node->contents
+                             + matches[match_index].rm_eo)
+            {
+              text_buffer_add_string (&tb_printed_line, term_se, strlen(term_se));
+              in_match = 0;
+              match_index++;
+            } 
+        }
 
       if (delim || pl_chars + pchars >= win->width)
         {
@@ -282,8 +300,10 @@ display_update_window_1 (WINDOW *win, long pagetop)
 
           text_buffer_add_char (&tb_printed_line, '\0');
 
-          finish = display_node_text (win, pl_num,
-                      text_buffer_base (&tb_printed_line), pl_bytes, pl_chars);
+          finish = display_node_text (win->first_row + pl_num,
+                      text_buffer_base (&tb_printed_line),
+                      text_buffer_off (&tb_printed_line),
+                      pl_chars);
 
           if (!delim)
             {
@@ -308,29 +328,11 @@ display_update_window_1 (WINDOW *win, long pagetop)
 
           ++pl_num;
 
-          pl_bytes = 0;
           pl_chars = 0;
           text_buffer_reset (&tb_printed_line);
 
           if (finish)
             break;
-        }
-
-      if (matches && match_index != win->match_count)
-        {
-          if (!in_match && cur_ptr >= win->node->contents
-                             + matches[match_index].rm_so)
-            {
-              text_buffer_add_string (&tb_printed_line, term_so, strlen(term_so));
-              in_match = 1;
-            } 
-          else if (in_match && cur_ptr >= win->node->contents
-                             + matches[match_index].rm_eo)
-            {
-              text_buffer_add_string (&tb_printed_line, term_se, strlen(term_se));
-              in_match = 0;
-              match_index++;
-            } 
         }
 
       if (*cur_ptr != '\n' && rep) 
@@ -347,9 +349,10 @@ display_update_window_1 (WINDOW *win, long pagetop)
   if (pl_chars)
     {
       text_buffer_add_char (&tb_printed_line, '\0');
-      display_node_text (win, pl_num,
+      display_node_text (win->first_row + pl_num,
                          text_buffer_base (&tb_printed_line),
-                         pl_bytes, pl_chars);
+                         text_buffer_off (&tb_printed_line),
+                         pl_chars);
       pl_num++;
     }
 

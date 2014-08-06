@@ -1,3 +1,10 @@
+2014-08-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/display.c (display_update_window_1): Output sequence turning on
+	or off standout mode before end of line.  Remove unused local variable.
+	(display_node_text): WINDOW argument removed.  Checks for displaying
+	off screen or out of window moved to caller.
+
 2014-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/signals.c (redisplay_after_signal)
