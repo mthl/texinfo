@@ -213,16 +213,16 @@ tag_expand (char **input, struct text_buffer *outbuf, int *is_index)
   size_t len;
   struct tag_handler *tp;
 
-  if (memcmp(p, "\0\b[", 3) != 0)       /* opening magic? */
+  if (memcmp(p, " \b[", 3) != 0)       /* opening magic? */
     return 0;
 
   p += 3;
-  q = p + strlen (p);                 /* forward to next null */
-  if (memcmp (q + 1, "\b]", 2) != 0)  /* closing magic? */
+  q = strstr (p, " \b]"); /* closing magic? */
+  if (!q)
     return 0;
 
   /* Output is different for index nodes */
-  if (!strcmp ("index", p))
+  if (!strncmp ("index", p, strlen ("index")))
     *is_index = 1;
 
   len = strcspn (p, " \t");       /* tag name */
@@ -232,11 +232,16 @@ tag_expand (char **input, struct text_buffer *outbuf, int *is_index)
       while (p[len] == ' ' || p[len] == '\t')
         ++len;                      /* move past whitespace */
   
+      q[0] = '\0';
+
       if (!tp->handler || tp->handler (p + len, outbuf) == 0)
         {
           *input = q + 3;
+          q[0] = ' ';
+
           return 1;
         }
+      q[0] = ' ';
     }
   return 0;
 }

@@ -504,11 +504,21 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
 
   if (mb_isprint (mbi_cur (*iter)))
     {
-      /* cur.wc gives a wchar_t object.  See mbiter.h in the
-         gnulib/lib directory. */
-      *pchars = wcwidth ((*iter).cur.wc);
-      *pbytes = cur_len;
-      return cur_ptr;
+      if (info_tag (*iter, &cur_len))
+        {
+          *pchars = 0; 
+          *pbytes = cur_len;
+          ITER_SETBYTES (*iter, cur_len);
+          return cur_ptr;
+        }
+      else
+        {
+          /* cur.wc gives a wchar_t object.  See mbiter.h in the
+             gnulib/lib directory. */
+          *pchars = wcwidth ((*iter).cur.wc);
+          *pbytes = cur_len;
+          return cur_ptr;
+        }
     }
   else if (cur_len == 1)
     {
@@ -526,13 +536,6 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
           *pbytes = cur_len;
           ITER_SETBYTES (*iter, cur_len);
 
-          return cur_ptr;
-        }
-      else if (info_tag (*iter, &cur_len))
-        {
-          *pchars = 0; 
-          *pbytes = cur_len;
-          ITER_SETBYTES (*iter, cur_len);
           return cur_ptr;
         }
       else if (*cur_ptr == '\t')
@@ -1529,6 +1532,54 @@ safe_string_index (char *ptr, long index, char *base, long len)
   return ptr[index];
 }
 
+/* Process an in index marker ("^@^H[index^@^H]") or an image marker
+   ("^@^H[image ...^@^H]").  The null bytes here were converted into spaces in
+   the convert_eols function in filesys.c. */
+static void
+scan_info_tag (NODE *node, int *in_index, FILE_BUFFER *fb)
+{
+  char *p, *p1;
+  struct text_buffer *expansion = xmalloc (sizeof (struct text_buffer));
+
+  p = inptr;
+  p1 = p;
+
+  text_buffer_init (expansion);
+
+  if (tag_expand (&p1, expansion, in_index))
+    {
+      if (*in_index)
+        node->flags |= N_IsIndex;
+
+      if (!rewrite_p)
+        {
+          rewrite_p = 1;
+          init_output_stream (fb);
+
+          /* Put inptr back to start so that
+             copy_input_to_output below gets all
+             preceding contents. */
+          inptr = node->contents;
+        }
+
+      /* Write out up to tag. */
+      copy_input_to_output (p - inptr);
+
+      write_tag_contents (text_buffer_base (expansion),
+                          text_buffer_off (expansion));
+      /* Skip past body of tag. */
+      skip_input (p1 - inptr);
+    }
+  else
+    {
+      /* It was not a valid tag. */ 
+      copy_input_to_output (p - inptr + 1);
+    }
+
+  text_buffer_free (expansion);
+  free (expansion);
+}
+
 /* Scan (*NODE_PTR)->contents and record location and contents of
    cross-references and menu items.  Convert character encoding of
    node contents to that of the user if the two are known to be
@@ -1542,12 +1593,16 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
   SEARCH_BINDING s;
   char *search_string;
   long position;
+  WINDOW save_search = {};
   int in_menu = 0;
 
   NODE *node = *node_ptr;
 
   REFERENCE **refs = NULL;
   size_t refs_index = 0, refs_slots = 0;
+
+  /* Whether an index tag was seen. */
+  int in_index = 0;
 
   /* Check that contents haven't already been processed. This shouldn't
      happen. */
@@ -1598,15 +1653,18 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
 
   parse_top_node_line (node);
 
-  search_string = INFO_MENU_REGEXP "|" INFO_XREF_REGEXP;
+  search_string = INFO_MENU_REGEXP "|" INFO_XREF_REGEXP
+    "|" INFO_TAG_REGEXP;
 
   s.buffer = node->contents;
   s.start = inptr - node->contents;
   s.end = node->nodelen;
   s.flags = S_FoldCase;
 
-search_again:
-  while (regexp_search (search_string, &s, &position, 0, 0) == search_success)
+  save_search.node = node;
+
+  while (regexp_search (search_string, &s, &position, 0, &save_search)
+         == search_success)
     {
       int in_parentheses = 0;
       REFERENCE *entry;
@@ -1623,101 +1681,44 @@ search_again:
           if (*inptr == '\n')
             skip_input (strspn (inptr, "\n") - 1); /* Keep one newline. */
 
-          search_string = INFO_MENU_ENTRY_REGEXP "|" INFO_XREF_REGEXP;
-          s.start = inptr - s.buffer;
-          continue;
+          search_string = INFO_MENU_ENTRY_REGEXP "|" INFO_XREF_REGEXP
+            "|" INFO_TAG_REGEXP;
         }
-
-      /* Create REFERENCE entity. */
-      entry = info_new_reference (0, 0);
-
-      if (safe_string_index (inptr, -1, s.buffer, s.end) == '('
-          && safe_string_index (inptr, 1, s.buffer, s.end) == 'n')
-        in_parentheses = 1;
-
-      save_conversion_state ();
-      scan_reference_marker (entry);
-
-      if (!scan_reference_label (entry)
-         || !scan_reference_target (entry, node, in_parentheses))
+      else if (match[0] == ' ') /* Info tag */
         {
-          /* This is not a menu entry or reference.  Do not add to our list. */
-          char *cur_inptr = inptr;
-          reset_conversion ();
-          copy_input_to_output (cur_inptr - inptr);
-
-          info_reference_free (entry);
-          s.start = inptr - s.buffer;
-          continue;
+          scan_info_tag (node, &in_index, fb);
         }
+      else
+        {
+          /* Create REFERENCE entity. */
+          entry = info_new_reference (0, 0);
 
-      add_pointer_to_array (entry, refs_index, refs, refs_slots, 50);
+          if (safe_string_index (inptr, -1, s.buffer, s.end) == '('
+              && safe_string_index (inptr, 1, s.buffer, s.end) == 'n')
+            in_parentheses = 1;
+
+          save_conversion_state ();
+          scan_reference_marker (entry);
+
+          if (!scan_reference_label (entry)
+              || !scan_reference_target (entry, node, in_parentheses))
+            {
+              /* This is not a menu entry or reference.  Do not add to our list. */
+              char *cur_inptr = inptr;
+              reset_conversion ();
+              copy_input_to_output (cur_inptr - inptr);
+
+              info_reference_free (entry);
+              s.start = inptr - s.buffer;
+              continue;
+            }
+
+          add_pointer_to_array (entry, refs_index, refs, refs_slots, 50);
+        }
 
       s.start = inptr - s.buffer;
       if (s.start >= s.end) break;
     }
-
-  /* Search may have stopped too early because of null byte
-     in index marker ("^@^H[index^@^H]") or in image marker
-     ("^@^H[image ...^@^H]").  Process these and try again. */
-  {
-    char *p, *p1;
-    int in_index = 0;
-
-    p = strchr (inptr, '\0');
-    p1 = p;
-
-    /* If null byte is in text of node: */
-    if (p < node->contents + node->nodelen)
-      {
-        struct text_buffer *expansion = xmalloc (sizeof (struct text_buffer));
-        text_buffer_init (expansion);
-
-        /* FIXME: bounds checking in tag_expand? */
-        if (tag_expand (&p1, expansion, &in_index))
-          {
-            if (in_index)
-              node->flags |= N_IsIndex;
-
-            if (!rewrite_p)
-              {
-                rewrite_p = 1;
-                init_output_stream (fb);
-
-                /* Put inptr back to start so that
-                   copy_input_to_output below gets all
-                   preceding contents. */
-                inptr = node->contents;
-              }
-
-            /* Write out up to null byte. */
-            copy_input_to_output (p - inptr);
-
-            write_tag_contents (text_buffer_base (expansion),
-                                text_buffer_off (expansion));
-            /* Skip past body of tag. */
-            skip_input (p1 - inptr);
-          }
-        else
-          {
-            /* We encountered a null byte before the end of the node
-               contents, but it did not introduce a valid tag (image,
-               index, or otherwise).  Write up to and including null
-               and continue searching. */
-            copy_input_to_output (p - inptr + 1);
-          }
-
-        text_buffer_free (expansion);
-        free (expansion);
-
-        /* Update search. */
-        s.buffer = inptr;
-        s.start = 0;
-        s.end = node->nodelen - (inptr - node->contents);
-
-        goto search_again;
-      }
-  }
 
   /* If we haven't accidentally gone past the end of the node, write
      out the rest of it. */

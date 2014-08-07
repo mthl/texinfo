@@ -1181,7 +1181,7 @@ text_buffer_to_node (struct text_buffer *tb)
 int
 info_tag (mbi_iterator_t iter, size_t *plen)
 {
-  if (*mbi_cur_ptr (iter) == '\0' && mbi_avail (iter))
+  if (*mbi_cur_ptr (iter) == ' ' && mbi_avail (iter))
     {
       mbi_advance (iter);
       if (*mbi_cur_ptr (iter) == '\b' && mbi_avail (iter))
@@ -1192,7 +1192,7 @@ info_tag (mbi_iterator_t iter, size_t *plen)
 	      const char *ptr, *end;
 	      mbi_advance (iter);
 	      ptr = mbi_cur_ptr (iter);
-	      end = memmem (ptr, ITER_LIMIT (iter), "\0\b]", 3);
+	      end = memmem (ptr, ITER_LIMIT (iter), " \b]", 3);
 	      if (end)
 		{
 		  *plen = end - ptr + 6;

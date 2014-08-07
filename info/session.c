@@ -82,7 +82,7 @@ allfiles_create_node (char *term, REFERENCE **fref)
                       term, term);
 
   /* Mark as an index so that destinations are never hidden. */
-  text_buffer_add_string (&text, "\000\010[index\000\010]", 11);
+  text_buffer_add_string (&text, "\040\010[index\040\010]", 11);
   text_buffer_printf (&text, "\n* Menu:\n\n");
 
   for (i = 0; fref[i]; i++)
@@ -804,6 +804,7 @@ info_set_node_of_window (WINDOW *win, NODE *node)
 
   /* Clear displayed search matches if any.  TODO: do search again in new
      node? */
+  free (win->matches);
   win->matches = 0;
 
   /* Put this node into the window. */
@@ -3496,6 +3497,16 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
 
   if (result != search_success)
     {
+      /* regexp_search uses window->node now, not binding.buffer. */
+      NODE *saved_node = 0;
+      if (window)
+        {
+          saved_node = window->node;
+          window->node = node;
+          free (window->matches);
+          window->matches = 0;
+        }
+
       binding.buffer = node->contents;
       binding.start = start;
       binding.end = node->nodelen;
@@ -3514,6 +3525,8 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
       result = (match_regexp ? 
 		regexp_search (string, &binding, poff, resbnd, window):
 		search (string, &binding, poff));
+      if (saved_node)
+        window->node = saved_node;
     }
   
   if (result == search_success && window)
@@ -3521,7 +3534,11 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
       window->flags |= W_UpdateWindow;
       if (window->node != node)
         {
+          /* window->matches is already the match list for the new node,
+             so prevent info_set_node_of_window freeing it. */
           regmatch_t *saved_matches = window->matches;
+          window->matches = 0;
+
           info_set_node_of_window (window, node);
           window->matches = saved_matches;
         }

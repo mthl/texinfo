@@ -89,6 +89,8 @@ typedef struct window_struct
   int flags;            /* See below for details. */
 
   /* Used for highlighting search matches. */
+  char *search_string;
+  int search_is_case_sensitive;
   regmatch_t *matches;
   size_t match_count;
 

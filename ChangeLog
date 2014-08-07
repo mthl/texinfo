@@ -1,3 +1,35 @@
+2014-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.h (WINDOW): New fields 'search_string',
+	'search_is_case_sensitive'.
+	* info/search.c (regexp_search): Always search entire body of node.
+	Don't save information about searches in static variables; save and
+	retrieve it in passed WINDOW instead.  Always free regex_t object.
+	* info/session.c (info_search_in_node_internal): Set node of window
+	before calling regexp_search.
+	(info_set_node_of_window): Free matches for old node.
+
+	* info/filesys.c (convert_eols): Convert null bytes in Info tags to
+	spaces.
+	* info/session.c (allfiles_create_node): Add index tag with spaces
+	instead of nulls.
+	* info/nodes.h (INFO_TAG_REGEXP): New preprocessor definition.
+	* info/info-utils.c (scan_info_tag): Function separated out from
+	scan_node_contents.
+	(scan_node_contents): Include INFO_TAG_REGEXP in regexp search.  Don't
+	change start of search.
+	* info/tag.c (tag_expand): Process tags with spaces instead of null
+	bytes.
+
+	* info/window.c (info_tag): Expect Info tag with space instead of null
+	byte.
+	* info/info-utils.c (printed_representation): Call info_tag in right
+	place.
+
+	* info/Makefile.am: search-after-tag.sh removed from XFAIL_TESTS.
+	* info/t/search-after-tag.sh: Source info/t/Init-inter.inc as
+	intended.
+
 2014-08-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/display.c (display_update_window_1): Output sequence turning on

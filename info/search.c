@@ -98,42 +98,32 @@ enum search_result
 regexp_search (char *regexp, SEARCH_BINDING *binding, 
 	       long *poff, SEARCH_BINDING *pend, WINDOW *window)
 {
-  static regex_t preg; /* Compiled pattern buffer for regexp. */
-
-  /* Store the last regular expression to avoid recompiling. */
-  static char *previous_regexp = NULL;
-  static int was_insensitive = 0;
+  int is_insensitive = 0;
 
   regoff_t start = 0, end;
 
-  /* Remember the last buffer the search was over.  We can optimize by reusing
-     the results from last time. */
-  static char *previous_content = NULL;
-  static long previous_start = 0, previous_end = 0;
+  char *buffer; /* Buffer to search in. */
 
-  static regmatch_t *matches; /* List of matches. */
-  static size_t match_alloc = 0;
-  static size_t match_count = 0;
+  regmatch_t *matches; /* List of matches. */
+  size_t match_count;
 
-  /* Check if we need to compile a new regexp. */
-  if (previous_regexp == NULL
-      || (binding->flags & S_FoldCase) != was_insensitive
-      || strcmp (previous_regexp, regexp) != 0)
+  regmatch_t *new_matches = 0; /* List of matches if they have to be
+                                  recalculated. */
+  size_t match_alloc = 0;
+  size_t new_match_count = 0;
+
+  /* Check if we need to calculate new results. */
+  if (!window->matches || strcmp (window->search_string, regexp)
+      || window->search_is_case_sensitive != binding->flags & S_FoldCase)
     {
+      regex_t preg; /* Compiled pattern buffer for regexp. */
       int result;
       char *unescaped_regexp;
       char *p, *q;
+      char saved_char;
+      regoff_t offset = 0;
 
-      previous_content = NULL;
-
-      if (previous_regexp != NULL)
-        {
-          free (previous_regexp);
-          previous_regexp = NULL;
-          regfree (&preg);
-        }
-
-      was_insensitive = binding->flags & S_FoldCase;
+      is_insensitive = binding->flags & S_FoldCase;
 
       /* expand the \n and \t in regexp */
       unescaped_regexp = xmalloc (1 + strlen (regexp));
@@ -165,7 +155,7 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
       result = regcomp (&preg, unescaped_regexp,
 			REG_EXTENDED|
 			REG_NEWLINE|
-			(was_insensitive ? REG_ICASE : 0));
+			(is_insensitive ? REG_ICASE : 0));
       free (unescaped_regexp);
 
       if (result != 0)
@@ -177,8 +167,58 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
           return search_failure;
         }
 
-      previous_regexp = xstrdup (regexp);
+      buffer = window->node->contents;
+      saved_char = buffer[window->node->nodelen];
+      buffer[window->node->nodelen] = '\0';
+
+      for (new_match_count = 0; offset < window->node->nodelen; )
+        {
+          int result = 0;
+          if (new_match_count == match_alloc)
+            {
+              /* The match list is full.  Initially allocate 256 entries,
+                 then double every time we fill it. */
+	      if (match_alloc == 0)
+		match_alloc = 256;
+	      new_matches = x2nrealloc (new_matches, &match_alloc, sizeof new_matches[0]);
+            }
+
+          result = regexec (&preg, &buffer[offset],
+                            1, &new_matches[new_match_count], 0);
+          if (result == 0)
+            {
+              if (new_matches[new_match_count].rm_eo == 0)
+                {
+                  /* ignore empty matches */
+                  offset++;
+                }
+              else
+                {
+                  new_matches[new_match_count].rm_so += offset;
+                  new_matches[new_match_count].rm_eo += offset;
+                  offset = new_matches[new_match_count++].rm_eo;
+                }
+            }
+          else
+	    break;
+        }
+      buffer[window->node->nodelen] = saved_char;
+      regfree (&preg);
     }
+
+  /* Pass back the full list of results. */
+  if (window && new_matches)
+    {
+      window->search_string = xstrdup (regexp);
+      window->search_is_case_sensitive =  binding->flags & S_FoldCase;
+      window->matches = new_matches;
+      window->match_count = new_match_count;
+    }
+
+  /* Extract the matches we are looking for. */
+
+  matches = window->matches;
+  match_count = window->match_count;
 
   if (binding->start < binding->end)
     {
@@ -191,63 +231,6 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
       end = binding->start;
     }
   
-  /* Check if we need to calculate new results. */
-  if (binding->buffer != previous_content
-      || start < previous_start
-      || end > previous_end)
-    {
-      char saved_char;
-      regoff_t offset = start;
-
-      /* Save for next time. */
-      previous_content = binding->buffer;
-      previous_start = start;
-      previous_end = end;
-
-      saved_char = previous_content[end];
-      previous_content[end] = '\0';
-
-      for (match_count = 0; offset < end; )
-        {
-          int result = 0;
-          if (match_count == match_alloc)
-            {
-              /* The match list is full.  Initially allocate 256 entries,
-                 then double every time we fill it. */
-	      if (match_alloc == 0)
-		match_alloc = 256;
-	      matches = x2nrealloc (matches, &match_alloc, sizeof matches[0]);
-            }
-
-          result = regexec (&preg, &previous_content[offset],
-                            1, &matches[match_count], 0);
-          if (result == 0)
-            {
-              if (matches[match_count].rm_eo == 0)
-                {
-                  /* ignore empty matches */
-                  offset++;
-                }
-              else
-                {
-                  matches[match_count].rm_so += offset;
-                  matches[match_count].rm_eo += offset;
-                  offset = matches[match_count++].rm_eo;
-                }
-            }
-          else
-	    break;
-        }
-      previous_content[end] = saved_char;
-    }
-
-  /* Pass back the full list of results. */
-  if (window)
-    {
-      window->matches = matches;
-      window->match_count = match_count;
-    }
-
   if (binding->start > binding->end)
     {
       /* searching backward */
@@ -261,7 +244,7 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
 	    {
 	      if (pend)
 		{
-		  pend->buffer = binding->buffer;
+		  pend->buffer = buffer;
 		  pend->flags = binding->flags;
 		  pend->start = matches[i].rm_so;
 		  pend->end = matches[i].rm_eo;
@@ -284,7 +267,7 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
             {
 	      if (pend)
 		{
-		  pend->buffer = binding->buffer;
+		  pend->buffer = buffer;
 		  pend->flags = binding->flags;
 		  pend->start = matches[i].rm_so;
 		  pend->end = matches[i].rm_eo;

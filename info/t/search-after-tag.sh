@@ -16,7 +16,7 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-intera.inc
+. $t/Init-inter.inc
 
 run_ginfo -f intera -n Searching
 # Search for text in a node that appears after an Info tag
