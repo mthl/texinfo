@@ -5,6 +5,12 @@
 	* info/info.c (info_short_help): Say to show key bindings with "H"
 	instead of "h".
 
+	* info/session.c (forget_node): Permit removing last node from window.
+	(info_history_node): Check we are not removing the last node, and
+	display an error message if that is the case.
+	* info/echo-area.c (ea_possible_completions): Remove completion nodes
+	from window history.
+
 2014-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/search.c (regexp_expand_newlines_and_tabs): Split out from

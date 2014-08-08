@@ -756,13 +756,19 @@ void
 forget_node (WINDOW *win)
 {
   int i = win->hist_index;
-  if (i == 1)
+  if (i == 0)
     return;
 
   free_history_node (win->hist[i - 1]->node);
   free (win->hist[i - 1]);
   win->hist[i - 1] = 0;
   i = --win->hist_index;
+
+  if (i == 0)
+    {
+      win->node = 0;
+      return; /* Window history is empty. */
+    }
 
   window_set_node_of_window (win, win->hist[i - 1]->node);
   if (auto_footnotes_p)
@@ -3148,7 +3154,10 @@ DECLARE_INFO_COMMAND (info_display_file_info,
 DECLARE_INFO_COMMAND (info_history_node,
                       _("Select the most recently selected node"))
 {
-  forget_node (window);
+  if (window->hist_index > 1)
+    forget_node (window);
+  else
+    info_error (_("No earlier node in history"));
 }
 
 /* Read the name of a file and select the entire file. */

@@ -1070,8 +1070,13 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
               compwin = calling_window;
           }
 
-        if (compwin->node != possible_completions_output_node)
-          info_set_node_of_window (compwin, possible_completions_output_node);
+        /* Clear any completion nodes already showing from the window history.
+           This could happen if the user presses TAB more than once. */
+        while (compwin->node && (compwin->node->flags & N_IsInternal)
+               && !strcmp (compwin->node->nodename, compwin_name))
+          forget_node (compwin);
+
+        info_set_node_of_window (compwin, possible_completions_output_node);
 
         display_update_display ();
       }
