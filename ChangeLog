@@ -1,3 +1,16 @@
+2014-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/search.c (regexp_expand_newlines_and_tabs): Split out from
+	regexp_search.
+	(regexp_search): Arguments changed.  Check if search was the same as
+	last time moved to calling code.
+	* info/session.c (match_in_match_list): Split out from regexp_search
+	in search.c.
+	(info_search_in_node_internal): Check if regexp_search needs to be
+	called and call match_in_match_list.  Search in node name disabled.
+	* info/info-utils.c (scan_node_contents): Loop through matches
+	returned from regexp_search.
+
 2014-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.h (WINDOW): New fields 'search_string',
@@ -45,8 +58,8 @@
 	and "alternate" screens in an xterm when resizing.
 
 	* info/display.c (display_update_one_window): Always display line
-	continuation character in rightmost column.  Don't display an extra character
-	if line wrapping is off.
+	continuation character in rightmost column.  Don't display an extra
+	character if line wrapping is off.
 	* info/window.c (window_toggle_wrap): Don't free two arrays that were
 	already freed.  Disable call to display_scroll_line_starts.
 

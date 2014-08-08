@@ -3442,6 +3442,91 @@ file_buffer_of_window (WINDOW *window)
   return NULL;
 }
 
+/* Search forwards or backwards for anything matching the regexp in the text
+   delimited by BINDING. The search is forwards if BINDING->start is greater
+   than BINDING->end.
+
+   If PEND is specified, it receives a copy of BINDING at the end of a
+   succeded search.  Its START and END fields contain bounds of the found
+   string instance. */
+static enum search_result
+match_in_match_list (WINDOW *window, SEARCH_BINDING *binding,
+                     long *poff, SEARCH_BINDING *pend)
+{
+  regoff_t start = 0, end;
+  regmatch_t *matches; /* List of matches. */
+  size_t match_count;
+
+  /* Extract the matches we are looking for. */
+
+  matches = window->matches;
+  match_count = window->match_count;
+
+  if (binding->start < binding->end)
+    {
+      start = binding->start;
+      end = binding->end;
+    }
+  else
+    {
+      start = binding->end;
+      end = binding->start;
+    }
+  
+  if (binding->start > binding->end)
+    {
+      /* searching backward */
+      int i;
+      for (i = match_count - 1; i >= 0; i--)
+        {
+          if (matches[i].rm_so < start)
+            break; /* No matches found in search area. */
+
+          if (matches[i].rm_so < end)
+	    {
+	      if (pend)
+		{
+		  pend->buffer = binding->buffer;
+		  pend->flags = binding->flags;
+		  pend->start = matches[i].rm_so;
+		  pend->end = matches[i].rm_eo;
+		}
+	      *poff = matches[i].rm_so;
+	      return search_success;
+	    }
+        }
+    }
+  else
+    {
+      /* searching forward */
+      int i;
+      for (i = 0; i < match_count; i++)
+        {
+          if (matches[i].rm_so >= end)
+            break; /* No matches found in search area. */
+
+          if (matches[i].rm_so >= start)
+            {
+	      if (pend)
+		{
+		  pend->buffer = binding->buffer;
+		  pend->flags = binding->flags;
+		  pend->start = matches[i].rm_so;
+		  pend->end = matches[i].rm_eo;
+		}
+              if (binding->flags & S_SkipDest)
+                *poff = matches[i].rm_eo;
+              else
+                *poff = matches[i].rm_so;
+	      return search_success;
+            }
+        }
+    }
+
+  /* not found */
+  return search_not_found;
+}
+
 /* Search for STRING in NODE starting at START.  If the string was found,
    return its location in POFF.  If WINDOW is passed as non-null, set the
    window's node to be NODE, its point to be the found string, and readjust
@@ -3469,6 +3554,7 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
   if (isearch_is_active)
     binding.flags |= S_SkipDest;
   
+#if 0
   if (match_nodename)
     {
       /* Match_nodename is set when we have changed the node and are
@@ -3494,6 +3580,7 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
             *poff += start_off;
 	}
     }
+#endif
 
   if (result != search_success)
     {
@@ -3522,9 +3609,24 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
       else if (binding.start < node->body_start)
 	binding.start = node->body_start;
       
-      result = (match_regexp ? 
-		regexp_search (string, &binding, poff, resbnd, window):
-		search (string, &binding, poff));
+      if (!match_regexp)
+        result = search (string, &binding, poff);
+      else
+        {
+          /* Check if we need to calculate new results. */
+          if (!window->matches
+              || strcmp (window->search_string, string)
+              || !!window->search_is_case_sensitive
+                 != !!(binding.flags & S_FoldCase))
+            result = regexp_search (string, binding.flags & S_FoldCase,
+                                    window);
+          else
+            result = search_success;
+
+          if (result != search_failure)
+            result = match_in_match_list (window, &binding, poff, resbnd);
+        }
+
       if (saved_node)
         window->node = saved_node;
     }

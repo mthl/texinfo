@@ -84,73 +84,60 @@ search (char *string, SEARCH_BINDING *binding, long *poff)
   return result;
 }
 
-/* Search forwards or backwards for anything matching the regexp in the text
-   delimited by BINDING. The search is forwards if BINDING->start is greater
-   than BINDING->end.
-
-   If PEND is specified, it receives a copy of BINDING at the end of a
-   succeded search.  Its START and END fields contain bounds of the found
-   string instance.
-
-   If WINDOW is specified, pass back the list of matches in WINDOW->matches.
-*/
-enum search_result
-regexp_search (char *regexp, SEARCH_BINDING *binding, 
-	       long *poff, SEARCH_BINDING *pend, WINDOW *window)
+/* Expand \n and \t in regexp to newlines and tabs */
+static char *
+regexp_expand_newlines_and_tabs (char *regexp)
 {
-  int is_insensitive = 0;
+  char *unescaped_regexp = xmalloc (1 + strlen (regexp));
+  char *p, *q;
 
-  regoff_t start = 0, end;
+  for (p = regexp, q = unescaped_regexp; *p != '\0'; p++, q++)
+    {
+      if (*p == '\\')
+        switch(*++p)
+          {
+          case 'n':
+            *q = '\n';
+            break;
+          case 't':
+            *q = '\t';
+            break;
+          case '\0':
+            *q = '\\';
+            p--;
+            break;
+          default:
+            *q++ = '\\';
+            *q = *p;
+            break;
+          }
+      else
+        *q = *p;
+    }
+  *q = '\0';
 
+  return unescaped_regexp;
+}
+
+/* Pass back the list of matches in WINDOW->matches. */
+enum search_result
+regexp_search (char *regexp, int is_insensitive, WINDOW *window)
+{
   char *buffer; /* Buffer to search in. */
 
-  regmatch_t *matches; /* List of matches. */
-  size_t match_count;
-
-  regmatch_t *new_matches = 0; /* List of matches if they have to be
-                                  recalculated. */
+  regmatch_t *new_matches = 0; /* List of found matches. */
   size_t match_alloc = 0;
   size_t new_match_count = 0;
 
-  /* Check if we need to calculate new results. */
-  if (!window->matches || strcmp (window->search_string, regexp)
-      || window->search_is_case_sensitive != binding->flags & S_FoldCase)
+  /* Calculate new results. */
     {
       regex_t preg; /* Compiled pattern buffer for regexp. */
       int result;
       char *unescaped_regexp;
-      char *p, *q;
       char saved_char;
       regoff_t offset = 0;
 
-      is_insensitive = binding->flags & S_FoldCase;
-
-      /* expand the \n and \t in regexp */
-      unescaped_regexp = xmalloc (1 + strlen (regexp));
-      for (p = regexp, q = unescaped_regexp; *p != '\0'; p++, q++)
-        {
-          if (*p == '\\')
-            switch(*++p)
-              {
-              case 'n':
-                *q = '\n';
-                break;
-              case 't':
-                *q = '\t';
-                break;
-              case '\0':
-                *q = '\\';
-                p--;
-                break;
-              default:
-                *q++ = '\\';
-                *q = *p;
-                break;
-              }
-          else
-            *q = *p;
-        }
-      *q = '\0';
+      unescaped_regexp = regexp_expand_newlines_and_tabs (regexp);
 
       result = regcomp (&preg, unescaped_regexp,
 			REG_EXTENDED|
@@ -207,82 +194,12 @@ regexp_search (char *regexp, SEARCH_BINDING *binding,
     }
 
   /* Pass back the full list of results. */
-  if (window && new_matches)
-    {
-      window->search_string = xstrdup (regexp);
-      window->search_is_case_sensitive =  binding->flags & S_FoldCase;
-      window->matches = new_matches;
-      window->match_count = new_match_count;
-    }
+  window->search_string = xstrdup (regexp);
+  window->search_is_case_sensitive = !is_insensitive;
+  window->matches = new_matches;
+  window->match_count = new_match_count;
 
-  /* Extract the matches we are looking for. */
-
-  matches = window->matches;
-  match_count = window->match_count;
-
-  if (binding->start < binding->end)
-    {
-      start = binding->start;
-      end = binding->end;
-    }
-  else
-    {
-      start = binding->end;
-      end = binding->start;
-    }
-  
-  if (binding->start > binding->end)
-    {
-      /* searching backward */
-      int i;
-      for (i = match_count - 1; i >= 0; i--)
-        {
-          if (matches[i].rm_so < start)
-            break; /* No matches found in search area. */
-
-          if (matches[i].rm_so < end)
-	    {
-	      if (pend)
-		{
-		  pend->buffer = buffer;
-		  pend->flags = binding->flags;
-		  pend->start = matches[i].rm_so;
-		  pend->end = matches[i].rm_eo;
-		}
-	      *poff = matches[i].rm_so;
-	      return search_success;
-	    }
-        }
-    }
-  else
-    {
-      /* searching forward */
-      int i;
-      for (i = 0; i < match_count; i++)
-        {
-          if (matches[i].rm_so >= end)
-            break; /* No matches found in search area. */
-
-          if (matches[i].rm_so >= start)
-            {
-	      if (pend)
-		{
-		  pend->buffer = buffer;
-		  pend->flags = binding->flags;
-		  pend->start = matches[i].rm_so;
-		  pend->end = matches[i].rm_eo;
-		}
-              if (binding->flags & S_SkipDest)
-                *poff = matches[i].rm_eo;
-              else
-                *poff = matches[i].rm_so;
-	      return search_success;
-            }
-        }
-    }
-
-  /* not found */
-  return search_not_found;
+  return search_success;
 }
 
 /* Search forwards for STRING through the text delimited in BINDING. */

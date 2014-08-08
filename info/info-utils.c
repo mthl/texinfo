@@ -1594,6 +1594,7 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
   char *search_string;
   long position;
   WINDOW save_search = {};
+  size_t i;
   int in_menu = 0;
 
   NODE *node = *node_ptr;
@@ -1653,8 +1654,8 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
 
   parse_top_node_line (node);
 
-  search_string = INFO_MENU_REGEXP "|" INFO_XREF_REGEXP
-    "|" INFO_TAG_REGEXP;
+  search_string = INFO_MENU_REGEXP "|" INFO_MENU_ENTRY_REGEXP
+    "|" INFO_XREF_REGEXP "|" INFO_TAG_REGEXP;
 
   s.buffer = node->contents;
   s.start = inptr - node->contents;
@@ -1663,32 +1664,37 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
 
   save_search.node = node;
 
-  while (regexp_search (search_string, &s, &position, 0, &save_search)
-         == search_success)
+  if (regexp_search (search_string, 0, &save_search) == search_success)
+  for (i = 0; i < save_search.match_count; i++)
     {
       int in_parentheses = 0;
       REFERENCE *entry;
-      char *match = s.buffer + position;
+      char *match;
+      position = save_search.matches[i].rm_so;
+
+      match = node->contents + position;
+
+      if (match < inptr)
+        continue;
 
       /* Write out up to match */
       copy_input_to_output (match - inptr); 
 
       /* Was "* Menu:" seen?  If so, search for menu entries hereafter. */
-      if (!in_menu && match[0] == '\n')
+      if (!in_menu && !strncmp (match, INFO_MENU_LABEL,
+                                strlen (INFO_MENU_LABEL)))
         {
           in_menu = 1;
           skip_input (strlen ("\n* Menu:"));
           if (*inptr == '\n')
             skip_input (strspn (inptr, "\n") - 1); /* Keep one newline. */
 
-          search_string = INFO_MENU_ENTRY_REGEXP "|" INFO_XREF_REGEXP
-            "|" INFO_TAG_REGEXP;
         }
       else if (match[0] == ' ') /* Info tag */
         {
           scan_info_tag (node, &in_index, fb);
         }
-      else
+      else if (match[0] != '\n' || in_menu)
         {
           /* Create REFERENCE entity. */
           entry = info_new_reference (0, 0);
