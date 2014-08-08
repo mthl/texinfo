@@ -1,5 +1,12 @@
 2014-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/infomap.c (default_emacs_like_info_keys): Display RET, PgUp,
+	PgDown in help message.
+	* info/info.c (info_short_help): Say to show key bindings with "H"
+	instead of "h".
+
+2014-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/search.c (regexp_expand_newlines_and_tabs): Split out from
 	regexp_search.
 	(regexp_search): Arguments changed.  Check if search was the same as

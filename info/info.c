@@ -1073,7 +1073,7 @@ Any remaining arguments are treated as the names of menu\n\
 items relative to the initial node visited."));
 
   puts (_("\n\
-For a summary of key bindings, type h within Info."));
+For a summary of key bindings, type H within Info."));
 
   puts (_("\n\
 Examples:\n\
