@@ -4,6 +4,8 @@
 	moved to start of loop.
 	'insert_and_search' label removed.  Use conditionals instead of goto.
 	Combine two conditionals handling C-g press.
+	Move conditional construct checking what a pressed key meant up a
+	level.  Remove 'search_now' and 'exit_search' labels.
 
 2014-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
