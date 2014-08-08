@@ -47,6 +47,9 @@ one of the relevant sections:
   . new variable infopath-no-defaults allows omitting the compile-time
     Info directory from the Info search path.
   . test suite at build time.
+  . separate `infokey' program has been removed - the .infokey file is now
+    read directly by info.
+  . new variable `highlight-searches' allows highlighting results from a search
 
 * install-info:
   . handle compressed input file names containing spaces.
