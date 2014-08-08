@@ -4219,7 +4219,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
   else
     dir = 1;
 
-  last_search_result = search_result = 0;
+  last_search_result = search_result = 1;
 
   window_get_state (window, &orig_state);
 
@@ -4227,9 +4227,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
   if (!isearch_string_size)
     isearch_string = xmalloc (isearch_string_size = 50);
 
-  /* Show the search string in the echo area. */
   isearch_string[isearch_string_index] = '\0';
-  show_isearch_prompt (dir, (unsigned char *) isearch_string, search_result);
 
   isearch_is_active = 1;
 
@@ -4237,6 +4235,25 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
     {
       VFunction *func = NULL;
       int quoted = 0;
+
+      /* Show the search string in the echo area. */
+      show_isearch_prompt (dir, (unsigned char *) isearch_string,
+                           search_result);
+
+      if (search_result == 0)
+        {
+          if ((mystate.node == window->node) &&
+              (mystate.pagetop != window->pagetop))
+            {
+              int newtop = window->pagetop;
+              window->pagetop = mystate.pagetop;
+              set_window_pagetop (window, newtop);
+            }
+          display_update_one_window (window);
+          display_cursor_at_point (window);
+        }
+
+      last_search_result = search_result;
 
       /* If a recent display was interrupted, then do the redisplay now if
          it is convenient. */
@@ -4260,12 +4277,10 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
             }
           else
             {
-              pop_isearch
-                (window, &isearch_string_index, &dir, &search_result);
+              pop_isearch (window, &isearch_string_index,
+                           &dir, &search_result);
               isearch_string[isearch_string_index] = '\0';
-              show_isearch_prompt (dir, (unsigned char *) isearch_string,
-                  search_result);
-              goto after_search;
+              continue;
             }
         }
       else if (key == Control ('q'))
@@ -4453,24 +4468,6 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
          then ring the terminal bell. */
       if (search_result != 0 && last_search_result == 0)
         terminal_ring_bell ();
-
-    after_search:
-      show_isearch_prompt (dir, (unsigned char *) isearch_string, search_result);
-
-      if (search_result == 0)
-        {
-          if ((mystate.node == window->node) &&
-              (mystate.pagetop != window->pagetop))
-            {
-              int newtop = window->pagetop;
-              window->pagetop = mystate.pagetop;
-              set_window_pagetop (window, newtop);
-            }
-          display_update_one_window (window);
-          display_cursor_at_point (window);
-        }
-
-      last_search_result = search_result;
     }
 
   /* Free the memory used to remember each search state. */

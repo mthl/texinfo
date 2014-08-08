@@ -1,5 +1,10 @@
 2014-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (incremental_search): Code after 'after_search' label
+	moved to start of loop.
+
+2014-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (match_in_match_list, info_search_1)
 	(incremental_search)
 	Consistently name 'resbnd' arguments and local variables which are
