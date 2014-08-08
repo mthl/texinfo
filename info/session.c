@@ -4235,6 +4235,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
     {
       VFunction *func = NULL;
       int quoted = 0;
+      char type;
 
       /* Show the search string in the echo area. */
       show_isearch_prompt (dir, (unsigned char *) isearch_string,
@@ -4292,102 +4293,92 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
           quoted = 1;
         }
 
+      /* If this key is not a keymap, get its associated function,
+         if any. */
+      if (!quoted)
+        {
+          type = info_keymap[key].type;
+          func = type == ISFUNC
+            ? InfoFunction(info_keymap[key].function)
+            : NULL;  /* function member is a Keymap if ISKMAP */
+        }
+
       /* We are about to search again, or quit.  Save the current search. */
       push_isearch (window, isearch_string_index, dir, search_result);
 
-      if (quoted || key < KEYMAP_META_BASE || key > 32)
+      if (quoted || (key >= 32 && key < 256
+                     && (isprint (key) || (type == ISFUNC && func == NULL))))
         {
-          /* If this key is not a keymap, get its associated function,
-             if any. */
-          char type;
-          if (!quoted)
-            {
-              type = info_keymap[key].type;
-              func = type == ISFUNC
-                ? InfoFunction(info_keymap[key].function)
-                : NULL;  /* function member is a Keymap if ISKMAP */
-            }
+          if (isearch_string_index + 2 >= isearch_string_size)
+            isearch_string = xrealloc
+              (isearch_string, isearch_string_size += 100);
 
-          if (quoted || (key >= 32 && key < 256
-                         && (isprint (key)
-                             || (type == ISFUNC && func == NULL))))
+          isearch_string[isearch_string_index++] = key;
+          isearch_string[isearch_string_index] = '\0';
+        }
+      else if (func == (VFunction *) isearch_forward
+               || func == (VFunction *) isearch_backward)
+        {
+          /* If this key invokes an incremental search, then this
+             means that we will either search again in the same
+             direction, search again in the reverse direction, or
+             insert the last search string that was accepted through
+             incremental searching. */
+          if ((func == (VFunction *) isearch_forward && dir > 0) ||
+              (func == (VFunction *) isearch_backward && dir < 0))
             {
-              if (isearch_string_index + 2 >= isearch_string_size)
-                isearch_string = xrealloc
-                  (isearch_string, isearch_string_size += 100);
-
-              isearch_string[isearch_string_index++] = key;
-              isearch_string[isearch_string_index] = '\0';
-              goto search_now;
-            }
-          else if (func == (VFunction *) isearch_forward
-              || func == (VFunction *) isearch_backward)
-            {
-              /* If this key invokes an incremental search, then this
-                 means that we will either search again in the same
-                 direction, search again in the reverse direction, or
-                 insert the last search string that was accepted through
-                 incremental searching. */
-              if ((func == (VFunction *) isearch_forward && dir > 0) ||
-                  (func == (VFunction *) isearch_backward && dir < 0))
+              /* If the user has typed no characters, then insert the
+                 last successful search into the current search string. */
+              if (isearch_string_index == 0)
                 {
-                  /* If the user has typed no characters, then insert the
-                     last successful search into the current search string. */
-                  if (isearch_string_index == 0)
+                  /* Of course, there must be something to insert. */
+                  if (last_isearch_accepted)
                     {
-                      /* Of course, there must be something to insert. */
-                      if (last_isearch_accepted)
-                        {
-                          if (strlen ((char *) last_isearch_accepted) + 1
-                              >= (unsigned int) isearch_string_size)
-                            isearch_string = (char *)
-                              xrealloc (isearch_string,
-                                        isearch_string_size += 10 +
-                                        strlen (last_isearch_accepted));
-                          strcpy (isearch_string, last_isearch_accepted);
-                          isearch_string_index = strlen (isearch_string);
-                          goto search_now;
-                        }
-                      else
-                        continue;
+                      if (strlen ((char *) last_isearch_accepted) + 1
+                          >= (unsigned int) isearch_string_size)
+                        isearch_string = (char *)
+                          xrealloc (isearch_string,
+                                    isearch_string_size += 10 +
+                                    strlen (last_isearch_accepted));
+                      strcpy (isearch_string, last_isearch_accepted);
+                      isearch_string_index = strlen (isearch_string);
                     }
                   else
-                    {
-                      /* Search again in the same direction.  This means start
-                         from a new place if the last search was successful. */
-                      if (search_result == 0)
-			{
-			  window->point += dir;
-			  resbnd.start = -1;
-			}
-                    }
+                    continue;
                 }
               else
                 {
-                  /* Reverse the direction of the search. */
-                  dir = -dir;
+                  /* Search again in the same direction.  This means start
+                     from a new place if the last search was successful. */
+                  if (search_result == 0)
+                    {
+                      window->point += dir;
+                      resbnd.start = -1;
+                    }
                 }
             }
-          else if (func == (VFunction *) info_abort_key
-                   && isearch_states_index && (search_result != 0))
-            {
-              /* If C-g pressed, and the search is failing, pop the search
-                 stack back to the last unfailed search. */
-              terminal_ring_bell ();
-              while (isearch_states_index && (search_result != 0))
-                pop_isearch
-                  (window, &isearch_string_index, &dir, &search_result);
-              isearch_string[isearch_string_index] = '\0';
-              show_isearch_prompt (dir, (unsigned char *) isearch_string,
-                                   search_result);
-              continue;
-            }
           else
-            goto exit_search;
+            {
+              /* Reverse the direction of the search. */
+              dir = -dir;
+            }
+        }
+      else if (func == (VFunction *) info_abort_key
+               && isearch_states_index && (search_result != 0))
+        {
+          /* If C-g pressed, and the search is failing, pop the search
+             stack back to the last unfailed search. */
+          terminal_ring_bell ();
+          while (isearch_states_index && (search_result != 0))
+            pop_isearch
+              (window, &isearch_string_index, &dir, &search_result);
+          isearch_string[isearch_string_index] = '\0';
+          show_isearch_prompt (dir, (unsigned char *) isearch_string,
+                               search_result);
+          continue;
         }
       else
         {
-        exit_search:
           /* The character is not printable, or it has a function which is
              non-null.  Exit the search, remembering the search string. */
           if (isearch_string_index && func != (VFunction *) info_abort_key)
@@ -4413,7 +4404,6 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
         }
 
       /* Search for the contents of isearch_string. */
-    search_now:
       show_isearch_prompt (dir, (unsigned char *) isearch_string, search_result);
 
       /* If the search string includes upper-case letters, make the
