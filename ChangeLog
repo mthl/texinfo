@@ -1,5 +1,12 @@
 2014-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (match_in_match_list, info_search_1)
+	(incremental_search)
+	Consistently name 'resbnd' arguments and local variables which are
+	SEARCH_BINDING's giving the result of a search.
+
+2014-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infomap.c (default_emacs_like_info_keys): Display RET, PgUp,
 	PgDown in help message.
 	* info/info.c (info_short_help): Say to show key bindings with "H"

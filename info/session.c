@@ -3455,12 +3455,12 @@ file_buffer_of_window (WINDOW *window)
    delimited by BINDING. The search is forwards if BINDING->start is greater
    than BINDING->end.
 
-   If PEND is specified, it receives a copy of BINDING at the end of a
+   If RESBND is specified, it receives a copy of BINDING at the end of a
    succeded search.  Its START and END fields contain bounds of the found
    string instance. */
 static enum search_result
 match_in_match_list (WINDOW *window, SEARCH_BINDING *binding,
-                     long *poff, SEARCH_BINDING *pend)
+                     long *poff, SEARCH_BINDING *resbnd)
 {
   regoff_t start = 0, end;
   regmatch_t *matches; /* List of matches. */
@@ -3493,12 +3493,12 @@ match_in_match_list (WINDOW *window, SEARCH_BINDING *binding,
 
           if (matches[i].rm_so < end)
 	    {
-	      if (pend)
+	      if (resbnd)
 		{
-		  pend->buffer = binding->buffer;
-		  pend->flags = binding->flags;
-		  pend->start = matches[i].rm_so;
-		  pend->end = matches[i].rm_eo;
+		  resbnd->buffer = binding->buffer;
+		  resbnd->flags = binding->flags;
+		  resbnd->start = matches[i].rm_so;
+		  resbnd->end = matches[i].rm_eo;
 		}
 	      *poff = matches[i].rm_so;
 	      return search_success;
@@ -3516,12 +3516,12 @@ match_in_match_list (WINDOW *window, SEARCH_BINDING *binding,
 
           if (matches[i].rm_so >= start)
             {
-	      if (pend)
+	      if (resbnd)
 		{
-		  pend->buffer = binding->buffer;
-		  pend->flags = binding->flags;
-		  pend->start = matches[i].rm_so;
-		  pend->end = matches[i].rm_eo;
+		  resbnd->buffer = binding->buffer;
+		  resbnd->flags = binding->flags;
+		  resbnd->start = matches[i].rm_so;
+		  resbnd->end = matches[i].rm_eo;
 		}
               if (binding->flags & S_SkipDest)
                 *poff = matches[i].rm_eo;
@@ -3920,14 +3920,14 @@ info_search_1 (WINDOW *window, int count, int case_sensitive,
   char *line, *prompt;
   int result, old_pagetop;
   int direction;
-  SEARCH_BINDING bind, *bindp;
+  SEARCH_BINDING bind, *resbnd;
 
   if (start == DFL_START)
-    bindp = NULL;
+    resbnd = NULL;
   else
     {
       bind.start = start;
-      bindp = &bind;
+      resbnd = &bind;
     }
   
   if (count < 0)
@@ -4004,7 +4004,7 @@ info_search_1 (WINDOW *window, int count, int case_sensitive,
   for (result = 0; result == 0 && count--; )
     result = info_search_internal (search_string,
                                    active_window, direction, case_sensitive,
-				   bindp);
+				   resbnd);
 
   if (result == 0 && old_pagetop != active_window->pagetop)
     {
@@ -4210,9 +4210,9 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
   SEARCH_STATE mystate, orig_state;
   char *p;
   int case_sensitive = 0;
-  SEARCH_BINDING bnd;
+  SEARCH_BINDING resbnd;
 
-  bnd.start = -1;
+  resbnd.start = -1;
 
   if (count < 0)
     dir = -1;
@@ -4343,7 +4343,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
                       if (search_result == 0)
 			{
 			  window->point += dir;
-			  bnd.start = -1;
+			  resbnd.start = -1;
 			}
                     }
                 }
@@ -4421,7 +4421,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
         {
           search_result = info_search_internal (isearch_string,
                                                 window, dir, case_sensitive,
-						&bnd);
+						&resbnd);
         }
       else if (search_result == 0)
         { /* We test for search_result being zero because a non-zero
