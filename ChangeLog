@@ -1,5 +1,12 @@
 2014-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (ask_for_search_string): Split out from
+	info_search_1.
+	(incremental_search): Remove check on local variable for non-regexp
+	searches.
+	
+2014-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (incremental_search): Code after 'after_search' label
 	moved to start of loop.
 	'insert_and_search' label removed.  Use conditionals instead of goto.

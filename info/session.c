@@ -3901,6 +3901,49 @@ DECLARE_INFO_COMMAND (info_search_backward,
   info_search_1 (window, -count, 0, 1, DFL_START);
 }
 
+/* Read a string from the user. */
+static int
+ask_for_search_string (char **search_string_out, int case_sensitive,
+                       int use_regex, int direction, WINDOW *window)
+{
+  char *line, *prompt;
+  char *search_string = *search_string_out;
+
+  prompt = xmalloc (strlen (_("%s%s%s [%s]: "))
+                    + strlen (_("Regexp search"))
+                    + strlen (_(" case-sensitively"))
+                    + strlen (_(" backward"))
+                    + strlen (search_string));
+
+  sprintf (prompt, _("%s%s%s [%s]: "),
+           use_regex ? _("Regexp search") : _("Search"),
+           case_sensitive ? _(" case-sensitively") : "",
+           direction < 0 ? _(" backward") : "",
+           search_string);
+
+  line = info_read_in_echo_area (window, prompt);
+  free (prompt);
+
+  if (!line)
+    {
+      info_abort_key (window, 0, 0);
+      return 0;
+    }
+
+  if (*line)
+    {
+      if (strlen (line) + 1 > (unsigned int) search_string_size)
+        search_string =
+          xrealloc (search_string,
+                    (search_string_size += 50 + strlen (line)));
+
+      strcpy (search_string, line);
+      free (line);
+    }
+  *search_string_out = search_string;
+  return 1;
+}
+
 /* Common entry point for the search functions.  Arguments:
    WINDOW           The window to search in
    COUNT            The sign of this argument defines the search
@@ -3917,10 +3960,10 @@ static void
 info_search_1 (WINDOW *window, int count, int case_sensitive,
                int ask_for_string, long start)
 {
-  char *line, *prompt;
   int result, old_pagetop;
   int direction;
   SEARCH_BINDING bind, *resbnd;
+  char *p;
 
   if (start == DFL_START)
     resbnd = NULL;
@@ -3942,7 +3985,6 @@ info_search_1 (WINDOW *window, int count, int case_sensitive,
         count = 1;      /* for backward compatibility */
     }
 
-  /* Read a string from the user, defaulting the search to SEARCH_STRING. */
   if (!search_string)
     {
       search_string = xmalloc (search_string_size = 100);
@@ -3951,37 +3993,10 @@ info_search_1 (WINDOW *window, int count, int case_sensitive,
 
   if (ask_for_string)
     {
-      prompt = xmalloc (strlen (_("%s%s%s [%s]: "))
-			+ strlen (_("Regexp search"))
-			+ strlen (_(" case-sensitively"))
-			+ strlen (_(" backward"))
-			+ strlen (search_string));
-
-      sprintf (prompt, _("%s%s%s [%s]: "),
-               use_regex ? _("Regexp search") : _("Search"),
-               case_sensitive ? _(" case-sensitively") : "",
-               direction < 0 ? _(" backward") : "",
-               search_string);
-
-      line = info_read_in_echo_area (window, prompt);
-      free (prompt);
-
-      if (!line)
-        {
-          info_abort_key (window, 0, 0);
-          return;
-        }
-
-      if (*line)
-        {
-          if (strlen (line) + 1 > (unsigned int) search_string_size)
-            search_string =
-	      xrealloc (search_string,
-			(search_string_size += 50 + strlen (line)));
-
-          strcpy (search_string, line);
-          free (line);
-        }
+      int success = ask_for_search_string (&search_string, case_sensitive,
+                                           use_regex, direction, window);
+      if (!success)
+        return;
     }
 
   if (mbslen (search_string) < min_search_length)
@@ -3993,8 +4008,8 @@ info_search_1 (WINDOW *window, int count, int case_sensitive,
   /* If the search string includes upper-case letters, make the search
      case-sensitive.  */
   if (case_sensitive == 0)
-    for (line = search_string; *line; line++)
-      if (isupper (*line))
+    for (p = search_string; *p; p++)
+      if (isupper (*p))
         {
           case_sensitive = 1;
           break;
@@ -4424,9 +4439,8 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
                                                 window, dir, case_sensitive,
 						&resbnd);
         }
-      else if (search_result == 0)
-        { /* We test for search_result being zero because a non-zero
-	     value means the string was not found in entire document. */
+      else
+        {
           /* Check to see if the current search string is right here.  If
              we are looking at it, then don't bother calling the search
              function. */
