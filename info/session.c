@@ -4295,23 +4295,23 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
       /* We are about to search again, or quit.  Save the current search. */
       push_isearch (window, isearch_string_index, dir, search_result);
 
-      if (quoted)
-        goto insert_and_search;
-
-      if (key < KEYMAP_META_BASE || key > 32)
+      if (quoted || key < KEYMAP_META_BASE || key > 32)
         {
           /* If this key is not a keymap, get its associated function,
              if any. */
-          char type = info_keymap[key].type;
-          func = type == ISFUNC
-                 ? InfoFunction(info_keymap[key].function)
-                 : NULL;  /* function member is a Keymap if ISKMAP */
-
-          if (key >= 32 && key < 256
-              && (isprint (key) || (type == ISFUNC && func == NULL)))
+          char type;
+          if (!quoted)
             {
-            insert_and_search:
+              type = info_keymap[key].type;
+              func = type == ISFUNC
+                ? InfoFunction(info_keymap[key].function)
+                : NULL;  /* function member is a Keymap if ISKMAP */
+            }
 
+          if (quoted || (key >= 32 && key < 256
+                         && (isprint (key)
+                             || (type == ISFUNC && func == NULL))))
+            {
               if (isearch_string_index + 2 >= isearch_string_size)
                 isearch_string = xrealloc
                   (isearch_string, isearch_string_size += 100);
@@ -4368,23 +4368,19 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
                   dir = -dir;
                 }
             }
-          else if (func == (VFunction *) info_abort_key)
+          else if (func == (VFunction *) info_abort_key
+                   && isearch_states_index && (search_result != 0))
             {
               /* If C-g pressed, and the search is failing, pop the search
                  stack back to the last unfailed search. */
-              if (isearch_states_index && (search_result != 0))
-                {
-                  terminal_ring_bell ();
-                  while (isearch_states_index && (search_result != 0))
-                    pop_isearch
-                      (window, &isearch_string_index, &dir, &search_result);
-                  isearch_string[isearch_string_index] = '\0';
-                  show_isearch_prompt (dir, (unsigned char *) isearch_string,
-                      search_result);
-                  continue;
-                }
-              else
-                goto exit_search;
+              terminal_ring_bell ();
+              while (isearch_states_index && (search_result != 0))
+                pop_isearch
+                  (window, &isearch_string_index, &dir, &search_result);
+              isearch_string[isearch_string_index] = '\0';
+              show_isearch_prompt (dir, (unsigned char *) isearch_string,
+                                   search_result);
+              continue;
             }
           else
             goto exit_search;
