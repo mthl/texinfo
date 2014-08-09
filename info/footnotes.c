@@ -62,8 +62,7 @@ make_footnotes_node (NODE *node)
 
   /* See if this node contains the magic footnote label. */
   ret = info_search_in_node_internal (FOOTNOTE_LABEL, node, 0,
-				    NULL, 1, 0, 0, 0,
-				    &fn_start, NULL);
+                                      NULL, 1, 0, 0, 0, &fn_start);
   /* If it doesn't, check to see if it has an associated footnotes node. */
   if (ret != search_success)
     {

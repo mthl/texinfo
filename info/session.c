@@ -3451,22 +3451,15 @@ file_buffer_of_window (WINDOW *window)
   return NULL;
 }
 
-/* Search forwards or backwards for anything matching the regexp in the text
-   delimited by BINDING. The search is forwards if BINDING->start is greater
-   than BINDING->end.
-
-   If RESBND is specified, it receives a copy of BINDING at the end of a
-   succeded search.  Its START and END fields contain bounds of the found
-   string instance. */
+/* Search forwards or backwards for entries in WINDOW->matches that are within
+   the search area delimited by BINDING.  The search is forwards if
+   BINDING->start is greater than BINDING->end. */
 static enum search_result
-match_in_match_list (WINDOW *window, SEARCH_BINDING *binding,
-                     long *poff, SEARCH_BINDING *resbnd)
+match_in_match_list (WINDOW *window, SEARCH_BINDING *binding, int *match_index)
 {
-  regoff_t start = 0, end;
+  regoff_t start, end;
   regmatch_t *matches; /* List of matches. */
   size_t match_count;
-
-  /* Extract the matches we are looking for. */
 
   matches = window->matches;
   match_count = window->match_count;
@@ -3493,14 +3486,7 @@ match_in_match_list (WINDOW *window, SEARCH_BINDING *binding,
 
           if (matches[i].rm_so < end)
 	    {
-	      if (resbnd)
-		{
-		  resbnd->buffer = binding->buffer;
-		  resbnd->flags = binding->flags;
-		  resbnd->start = matches[i].rm_so;
-		  resbnd->end = matches[i].rm_eo;
-		}
-	      *poff = matches[i].rm_so;
+              *match_index = i;
 	      return search_success;
 	    }
         }
@@ -3516,17 +3502,7 @@ match_in_match_list (WINDOW *window, SEARCH_BINDING *binding,
 
           if (matches[i].rm_so >= start)
             {
-	      if (resbnd)
-		{
-		  resbnd->buffer = binding->buffer;
-		  resbnd->flags = binding->flags;
-		  resbnd->start = matches[i].rm_so;
-		  resbnd->end = matches[i].rm_eo;
-		}
-              if (binding->flags & S_SkipDest)
-                *poff = matches[i].rm_eo;
-              else
-                *poff = matches[i].rm_so;
+              *match_index = i;
 	      return search_success;
             }
         }
@@ -3541,20 +3517,17 @@ match_in_match_list (WINDOW *window, SEARCH_BINDING *binding,
    window's node to be NODE, its point to be the found string, and readjust
    the window's pagetop.  The DIR argument says which direction to search
    in.  If it is positive, search forward, else backwards.
-
-   The last argument, RESBND, makes sense only when USE_REGEX is set.
-   If the regexp search succeeds, RESBND is filled with the final state
-   of the search binding.  In particular, its START and END fields contain
-   bounds of the found string instance.
 */
 enum search_result
-info_search_in_node_internal (char *string, NODE *node, long int start,
+info_search_in_node_internal (char *string, NODE *node, long start,
 			      WINDOW *window, int dir, int case_sensitive,
 			      int match_nodename, int match_regexp,
-			      long *poff, SEARCH_BINDING *resbnd)
+			      long *poff)
 {
   SEARCH_BINDING binding;
   enum search_result result = search_not_found;
+
+  int match_index;
     
   binding.flags = 0;
   if (!case_sensitive)
@@ -3633,7 +3606,11 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
             result = search_success;
 
           if (result != search_failure)
-            result = match_in_match_list (window, &binding, poff, resbnd);
+            {
+              result = match_in_match_list (window, &binding, &match_index);
+              if (result == search_success)
+                *poff = window->matches[match_index].rm_so;
+            }
         }
 
       if (saved_node)
@@ -3642,6 +3619,8 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
   
   if (result == search_success && window)
     {
+      long new_point;
+
       window->flags |= W_UpdateWindow;
       if (window->node != node)
         {
@@ -3654,7 +3633,12 @@ info_search_in_node_internal (char *string, NODE *node, long int start,
           window->matches = saved_matches;
         }
 
-      window->point = *poff;
+      if (dir > 0 && (binding.flags & S_SkipDest))
+        new_point = window->matches[match_index].rm_eo;
+      else
+        new_point = window->matches[match_index].rm_so;
+
+      window->point = new_point;
       window_adjust_pagetop (window);
     }
   return result;
@@ -3684,7 +3668,7 @@ info_target_search_node (NODE *node, char *string, long int start,
       ret = info_search_in_node_internal (target, node, start,
 				    NULL, 1, 0, 0,
 				    use_regex & use_regex_mask,
-				    &offset, NULL);
+				    &offset);
       if (ret == search_success)
         break;
       offset = -1;
@@ -3697,35 +3681,35 @@ info_target_search_node (NODE *node, char *string, long int start,
 }
 
 /* Search for STRING starting in WINDOW.  The starting position is determined
-   by DIR and RESBND argument.  If the latter is given, and its START field
-   is not -1, it gives starting position.  Otherwise, the search begins at
-   window point + DIR.
+   by the START_OFF argument. If given, *START_OFF is the starting position,
+   as long as it is not -1.  Otherwise, the search begins at window point +
+   DIR.
 
    If the string is found in this node, set point to that position.
    Otherwise, get the file buffer associated with WINDOW's node, and search
    through each node in that file.
 
-   If the search succeeds and RESBND is given, its START and END fields
-   contain bounds of the found string instance (only for regexp searches).
+   If the search succeeds and START_OFF is given, *START_OFF is given the
+   start of the found string instance (only for regexp searches).
    
    If the search fails, return non-zero, else zero.  Side-effect window
    leaving the node and point where the string was found current. */
 static int
 info_search_internal (char *string, WINDOW *window,
 		      int dir, int case_sensitive,
-		      SEARCH_BINDING *resbnd)
+                      long *start_off)
 {
   register int i;
   FILE_BUFFER *file_buffer;
   char *initial_nodename;
-  long ret, start;
+  long start;
   enum search_result result;
   
   file_buffer = file_buffer_of_window (window);
   initial_nodename = window->node->nodename;
 
-  if (resbnd && resbnd->start != -1)
-    start = resbnd->start;
+  if (start_off && *start_off != -1)
+    start = *start_off;
   else
     /* Start just after or before point to avoid ``finding'' a string that
        is already under the cursor. */
@@ -3733,7 +3717,7 @@ info_search_internal (char *string, WINDOW *window,
   
   result = info_search_in_node_internal
              (string, window->node, start, window, dir,
-	      case_sensitive, 0, use_regex, &ret, resbnd);
+	      case_sensitive, 0, use_regex, start_off);
 
   switch (result)
     {
@@ -3845,7 +3829,7 @@ info_search_internal (char *string, WINDOW *window,
             start = tag->nodelen;
 
           result = info_search_in_node_internal (string, node, start, window,
-                      dir, case_sensitive, 1, use_regex, &ret, resbnd);
+                      dir, case_sensitive, 1, use_regex, start_off);
 
           /* Did we find the string in this node? */
           if (result == search_success)
@@ -3952,9 +3936,9 @@ ask_for_search_string (char **search_string_out, int case_sensitive,
    CASE_SENSITIVE   Whether the search is case-sensitive or not.
    ASK_FOR_STRING   When true, ask for the search string.  Otherwise
                     use the previously supplied one (repeated search).
-   START            Start position for the search.  If DFL_START, use
-                    the default start position (see info_search_internal
-		    for details.
+   START            Start position for the search.  If DFL_START, start
+                    at window point + direction (see info_search_internal
+		    for details).
 */
 static void
 info_search_1 (WINDOW *window, int count, int case_sensitive,
@@ -3962,17 +3946,9 @@ info_search_1 (WINDOW *window, int count, int case_sensitive,
 {
   int result, old_pagetop;
   int direction;
-  SEARCH_BINDING bind, *resbnd;
+  long start_off;
   char *p;
 
-  if (start == DFL_START)
-    resbnd = NULL;
-  else
-    {
-      bind.start = start;
-      resbnd = &bind;
-    }
-  
   if (count < 0)
     {
       direction = -1;
@@ -3985,6 +3961,11 @@ info_search_1 (WINDOW *window, int count, int case_sensitive,
         count = 1;      /* for backward compatibility */
     }
 
+  if (start == DFL_START)
+    start_off = window->point + direction;
+  else
+    start_off = start;
+  
   if (!search_string)
     {
       search_string = xmalloc (search_string_size = 100);
@@ -4019,7 +4000,7 @@ info_search_1 (WINDOW *window, int count, int case_sensitive,
   for (result = 0; result == 0 && count--; )
     result = info_search_internal (search_string,
                                    active_window, direction, case_sensitive,
-				   resbnd);
+				   &start_off);
 
   if (result == 0 && old_pagetop != active_window->pagetop)
     {
@@ -4217,6 +4198,7 @@ show_isearch_prompt (int dir, unsigned char *string, int failing_p)
   display_cursor_at_point (active_window);
 }
 
+/* Read and dispatch loop for incremental search mode. */
 static void
 incremental_search (WINDOW *window, int count, unsigned char ignore)
 {
@@ -4225,9 +4207,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
   SEARCH_STATE mystate, orig_state;
   char *p;
   int case_sensitive = 0;
-  SEARCH_BINDING resbnd;
-
-  resbnd.start = -1;
+  long start_off = -1;
 
   if (count < 0)
     dir = -1;
@@ -4258,8 +4238,8 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
 
       if (search_result == 0)
         {
-          if ((mystate.node == window->node) &&
-              (mystate.pagetop != window->pagetop))
+          if (mystate.node == window->node
+              && mystate.pagetop != window->pagetop)
             {
               int newtop = window->pagetop;
               window->pagetop = mystate.pagetop;
@@ -4368,7 +4348,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
                   if (search_result == 0)
                     {
                       window->point += dir;
-                      resbnd.start = -1;
+                      start_off = -1;
                     }
                 }
             }
@@ -4437,7 +4417,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
         {
           search_result = info_search_internal (isearch_string,
                                                 window, dir, case_sensitive,
-						&resbnd);
+						&start_off);
         }
       else
         {
