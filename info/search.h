@@ -60,8 +60,10 @@ extern enum search_result search_backward (char *input_string,
 					   long *poff);
 extern enum search_result search (char *string, SEARCH_BINDING *binding,
 				  long *poff);
-extern enum search_result regexp_search (char *regexp, int is_sensitive,
-					 WINDOW *window);
+enum search_result regexp_search (char *regexp, int is_insensitive,
+                                  char *buffer, size_t buflen,
+                                  regmatch_t **matches_out,
+                                  size_t *match_count_out);
 extern int looking_at (char *string, SEARCH_BINDING *binding);
 
 /* Note that STRING_IN_LINE () always returns the offset of the 1st character

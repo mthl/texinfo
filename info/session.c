@@ -3451,19 +3451,15 @@ file_buffer_of_window (WINDOW *window)
   return NULL;
 }
 
-/* Search forwards or backwards for entries in WINDOW->matches that are within
+/* Search forwards or backwards for entries in MATCHES that are within
    the search area delimited by BINDING.  The search is forwards if
-   BINDING->start is greater than BINDING->end. */
+   BINDING->start is greater than BINDING->end.  Return index of match in
+   *MATCH_INDEX. */
 static enum search_result
-match_in_match_list (WINDOW *window, SEARCH_BINDING *binding, int *match_index)
+match_in_match_list (regmatch_t *matches, size_t match_count,
+                     SEARCH_BINDING *binding, int *match_index)
 {
   regoff_t start, end;
-  regmatch_t *matches; /* List of matches. */
-  size_t match_count;
-
-  matches = window->matches;
-  match_count = window->match_count;
-
   if (binding->start < binding->end)
     {
       start = binding->start;
@@ -3527,6 +3523,8 @@ info_search_in_node_internal (char *string, NODE *node, long start,
   SEARCH_BINDING binding;
   enum search_result result = search_not_found;
 
+  regmatch_t *matches;
+  size_t match_count;
   int match_index;
     
   binding.flags = 0;
@@ -3566,16 +3564,6 @@ info_search_in_node_internal (char *string, NODE *node, long start,
 
   if (result != search_success)
     {
-      /* regexp_search uses window->node now, not binding.buffer. */
-      NODE *saved_node = 0;
-      if (window)
-        {
-          saved_node = window->node;
-          window->node = node;
-          free (window->matches);
-          window->matches = 0;
-        }
-
       binding.buffer = node->contents;
       binding.start = start;
       binding.end = node->nodelen;
@@ -3600,21 +3588,24 @@ info_search_in_node_internal (char *string, NODE *node, long start,
               || strcmp (window->search_string, string)
               || !!window->search_is_case_sensitive
                  != !!(binding.flags & S_FoldCase))
-            result = regexp_search (string, binding.flags & S_FoldCase,
-                                    window);
+            {
+              window->search_string = xstrdup (string);
+              window->search_is_case_sensitive = !(binding.flags & S_FoldCase);
+              result = regexp_search (string, binding.flags & S_FoldCase,
+                                      node->contents, node->nodelen,
+                                      &matches, &match_count);
+            }
           else
             result = search_success;
 
           if (result != search_failure)
             {
-              result = match_in_match_list (window, &binding, &match_index);
+              result = match_in_match_list (matches, match_count,
+                                            &binding, &match_index);
               if (result == search_success)
-                *poff = window->matches[match_index].rm_so;
+                *poff = matches[match_index].rm_so;
             }
         }
-
-      if (saved_node)
-        window->node = saved_node;
     }
   
   if (result == search_success && window)
@@ -3623,20 +3614,19 @@ info_search_in_node_internal (char *string, NODE *node, long start,
 
       window->flags |= W_UpdateWindow;
       if (window->node != node)
-        {
-          /* window->matches is already the match list for the new node,
-             so prevent info_set_node_of_window freeing it. */
-          regmatch_t *saved_matches = window->matches;
-          window->matches = 0;
+        info_set_node_of_window (window, node);
 
-          info_set_node_of_window (window, node);
-          window->matches = saved_matches;
+      if (window->matches != matches)
+        {
+          free (window->matches);
+          window->matches = matches;
+          window->match_count = match_count;
         }
 
       if (dir > 0 && (binding.flags & S_SkipDest))
-        new_point = window->matches[match_index].rm_eo;
+        new_point = matches[match_index].rm_eo;
       else
-        new_point = window->matches[match_index].rm_so;
+        new_point = matches[match_index].rm_so;
 
       window->point = new_point;
       window_adjust_pagetop (window);

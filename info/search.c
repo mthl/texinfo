@@ -119,85 +119,72 @@ regexp_expand_newlines_and_tabs (char *regexp)
   return unescaped_regexp;
 }
 
-/* Pass back the list of matches in WINDOW->matches. */
+/* Search BUFFER for REGEXP.  Pass back the list of matches in MATCHES. */
 enum search_result
-regexp_search (char *regexp, int is_insensitive, WINDOW *window)
+regexp_search (char *regexp, int is_insensitive, char *buffer, size_t buflen,
+               regmatch_t **matches_out, size_t *match_count_out)
 {
-  char *buffer; /* Buffer to search in. */
-
-  regmatch_t *new_matches = 0; /* List of found matches. */
+  regmatch_t *matches = 0; /* List of found matches. */
   size_t match_alloc = 0;
-  size_t new_match_count = 0;
+  size_t match_count;
 
-  /* Calculate new results. */
+  regex_t preg; /* Compiled pattern buffer for regexp. */
+  int result;
+  char *unescaped_regexp;
+  char saved_char;
+  regoff_t offset = 0;
+
+  unescaped_regexp = regexp_expand_newlines_and_tabs (regexp);
+
+  result = regcomp (&preg, unescaped_regexp,
+                    REG_EXTENDED | REG_NEWLINE
+                    | (is_insensitive ? REG_ICASE : 0));
+  free (unescaped_regexp);
+
+  if (result != 0)
     {
-      regex_t preg; /* Compiled pattern buffer for regexp. */
-      int result;
-      char *unescaped_regexp;
-      char saved_char;
-      regoff_t offset = 0;
-
-      unescaped_regexp = regexp_expand_newlines_and_tabs (regexp);
-
-      result = regcomp (&preg, unescaped_regexp,
-			REG_EXTENDED|
-			REG_NEWLINE|
-			(is_insensitive ? REG_ICASE : 0));
-      free (unescaped_regexp);
-
-      if (result != 0)
-        {
-          int size = regerror (result, &preg, NULL, 0);
-          char *buf = xmalloc (size);
-          regerror (result, &preg, buf, size);
-          info_error (_("regexp error: %s"), buf);
-          return search_failure;
-        }
-
-      buffer = window->node->contents;
-      saved_char = buffer[window->node->nodelen];
-      buffer[window->node->nodelen] = '\0';
-
-      for (new_match_count = 0; offset < window->node->nodelen; )
-        {
-          int result = 0;
-          if (new_match_count == match_alloc)
-            {
-              /* The match list is full.  Initially allocate 256 entries,
-                 then double every time we fill it. */
-	      if (match_alloc == 0)
-		match_alloc = 256;
-	      new_matches = x2nrealloc (new_matches, &match_alloc, sizeof new_matches[0]);
-            }
-
-          result = regexec (&preg, &buffer[offset],
-                            1, &new_matches[new_match_count], 0);
-          if (result == 0)
-            {
-              if (new_matches[new_match_count].rm_eo == 0)
-                {
-                  /* ignore empty matches */
-                  offset++;
-                }
-              else
-                {
-                  new_matches[new_match_count].rm_so += offset;
-                  new_matches[new_match_count].rm_eo += offset;
-                  offset = new_matches[new_match_count++].rm_eo;
-                }
-            }
-          else
-	    break;
-        }
-      buffer[window->node->nodelen] = saved_char;
-      regfree (&preg);
+      int size = regerror (result, &preg, NULL, 0);
+      char *buf = xmalloc (size);
+      regerror (result, &preg, buf, size);
+      info_error (_("regexp error: %s"), buf);
+      return search_failure;
     }
 
-  /* Pass back the full list of results. */
-  window->search_string = xstrdup (regexp);
-  window->search_is_case_sensitive = !is_insensitive;
-  window->matches = new_matches;
-  window->match_count = new_match_count;
+  saved_char = buffer[buflen];
+  buffer[buflen] = '\0';
+
+  for (match_count = 0; offset < buflen; )
+    {
+      int result = 0;
+      if (match_count == match_alloc)
+        {
+          /* The match list is full.  Initially allocate 256 entries,
+             then double every time we fill it. */
+          if (match_alloc == 0)
+            match_alloc = 256;
+          matches = x2nrealloc (matches, &match_alloc, sizeof matches[0]);
+        }
+
+      result = regexec (&preg, &buffer[offset], 1, &matches[match_count], 0);
+      if (result == 0)
+        {
+          if (matches[match_count].rm_eo == 0)
+            offset++; /* Ignore empty matches. */
+          else
+            {
+              matches[match_count].rm_so += offset;
+              matches[match_count].rm_eo += offset;
+              offset = matches[match_count++].rm_eo;
+            }
+        }
+      else
+        break;
+    }
+  buffer[buflen] = saved_char;
+  regfree (&preg);
+
+  *matches_out = matches;
+  *match_count_out = match_count;
 
   return search_success;
 }

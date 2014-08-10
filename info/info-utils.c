@@ -1590,10 +1590,10 @@ scan_info_tag (NODE *node, int *in_index, FILE_BUFFER *fb)
 void
 scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
 {
-  SEARCH_BINDING s;
   char *search_string;
   long position;
-  WINDOW save_search = {};
+  regmatch_t *matches;
+  size_t match_count;
   size_t i;
   int in_menu = 0;
 
@@ -1657,20 +1657,15 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
   search_string = INFO_MENU_REGEXP "|" INFO_MENU_ENTRY_REGEXP
     "|" INFO_XREF_REGEXP "|" INFO_TAG_REGEXP;
 
-  s.buffer = node->contents;
-  s.start = inptr - node->contents;
-  s.end = node->nodelen;
-  s.flags = S_FoldCase;
-
-  save_search.node = node;
-
-  if (regexp_search (search_string, 0, &save_search) == search_success)
-  for (i = 0; i < save_search.match_count; i++)
+  if (regexp_search (search_string, 1, node->contents, node->nodelen,
+                     &matches, &match_count)
+      == search_success)
+  for (i = 0; i < match_count; i++)
     {
       int in_parentheses = 0;
       REFERENCE *entry;
       char *match;
-      position = save_search.matches[i].rm_so;
+      position = matches[i].rm_so;
 
       match = node->contents + position;
 
@@ -1699,8 +1694,8 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
           /* Create REFERENCE entity. */
           entry = info_new_reference (0, 0);
 
-          if (safe_string_index (inptr, -1, s.buffer, s.end) == '('
-              && safe_string_index (inptr, 1, s.buffer, s.end) == 'n')
+          if (safe_string_index (inptr, -1, input_start, input_length) == '('
+             && safe_string_index (inptr, 1, input_start, input_length) == 'n')
             in_parentheses = 1;
 
           save_conversion_state ();
@@ -1715,15 +1710,11 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
               copy_input_to_output (cur_inptr - inptr);
 
               info_reference_free (entry);
-              s.start = inptr - s.buffer;
               continue;
             }
 
           add_pointer_to_array (entry, refs_index, refs, refs_slots, 50);
         }
-
-      s.start = inptr - s.buffer;
-      if (s.start >= s.end) break;
     }
 
   /* If we haven't accidentally gone past the end of the node, write
