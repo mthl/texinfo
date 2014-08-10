@@ -4216,6 +4216,9 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
 
   isearch_is_active = 1;
 
+  /* Save starting position of search. */
+  push_isearch (window, isearch_string_index, dir, search_result);
+
   while (isearch_is_active)
     {
       VFunction *func = NULL;
@@ -4253,6 +4256,24 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
       key = get_input_key ();
       window_get_state (window, &mystate);
 
+      if (key == Control ('q'))
+        {
+          /* User wants to insert a character. */
+          key = get_input_key ();
+          if (key < 0 || key >= 256)
+            continue; /* The user pressed a key like an arrow key. */
+          quoted = 1;
+        }
+      else
+        {
+          /* If this key is not a keymap, get its associated function,
+             if any. */
+          type = info_keymap[key].type;
+          func = type == ISFUNC
+            ? InfoFunction(info_keymap[key].function)
+            : NULL;  /* function member is a Keymap if ISKMAP */
+        }
+
       if (key == DEL || key == Control ('h'))
         {
           /* User wants to delete one level of search? */
@@ -4266,34 +4287,15 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
               pop_isearch (window, &isearch_string_index,
                            &dir, &search_result);
               isearch_string[isearch_string_index] = '\0';
-              continue;
+              if (isearch_string_index == 0)
+                continue; /* Don't search for an empty string. */
             }
         }
-      else if (key == Control ('q'))
-        {
-          /* User wants to insert a character. */
-          key = get_input_key ();
-          if (key < 0 || key >= 256)
-            continue; /* The user pressed a key like an arrow key. */
-          quoted = 1;
-        }
-
-      /* If this key is not a keymap, get its associated function,
-         if any. */
-      if (!quoted)
-        {
-          type = info_keymap[key].type;
-          func = type == ISFUNC
-            ? InfoFunction(info_keymap[key].function)
-            : NULL;  /* function member is a Keymap if ISKMAP */
-        }
-
-      /* We are about to search again, or quit.  Save the current search. */
-      push_isearch (window, isearch_string_index, dir, search_result);
-
-      if (quoted || (key >= 32 && key < 256
+      else if (quoted || (key >= 32 && key < 256
                      && (isprint (key) || (type == ISFUNC && func == NULL))))
         {
+          push_isearch (window, isearch_string_index, dir, search_result);
+
           if (isearch_string_index + 2 >= isearch_string_size)
             isearch_string = xrealloc
               (isearch_string, isearch_string_size += 100);
