@@ -808,11 +808,6 @@ info_set_node_of_window (WINDOW *win, NODE *node)
       win->hist[win->hist_index - 1]->point = win->point;
     }
 
-  /* Clear displayed search matches if any.  TODO: do search again in new
-     node? */
-  free (win->matches);
-  win->matches = 0;
-
   /* Put this node into the window. */
   window_set_node_of_window (win, node);
 
@@ -3451,7 +3446,7 @@ file_buffer_of_window (WINDOW *window)
   return NULL;
 }
 
-/* Search forwards or backwards for entries in MATCHES that are within
+/* Search forwards or backwards for entries in MATCHES that start within
    the search area delimited by BINDING.  The search is forwards if
    BINDING->start is greater than BINDING->end.  Return index of match in
    *MATCH_INDEX. */
@@ -3467,8 +3462,10 @@ match_in_match_list (regmatch_t *matches, size_t match_count,
     }
   else
     {
-      start = binding->end;
-      end = binding->start;
+      /* Include the byte with offset 'start' in our range, but not
+         the byte with offset 'end'. */
+      start = binding->end - 1;
+      end = binding->start + 1;
     }
   
   if (binding->start > binding->end)
@@ -3576,7 +3573,7 @@ info_search_in_node_internal (char *string, NODE *node, long start,
       
       if (binding.start < 0)
 	return -1;
-      else if (binding.start < node->body_start)
+      else if (dir > 0 && binding.start < node->body_start)
 	binding.start = node->body_start;
       
       if (!match_regexp)
@@ -4052,6 +4049,7 @@ DECLARE_INFO_COMMAND (info_search_previous,
                    last_search_case_sensitive, 0, DFL_START);
 }
 
+
 /* **************************************************************** */
 /*                                                                  */
 /*                      Incremental Searching                       */
@@ -4073,6 +4071,16 @@ DECLARE_INFO_COMMAND (isearch_backward,
   incremental_search (window, -count, key);
 }
 
+/* Structure defining the current state of an incremental search. */
+typedef struct {
+  NODE *node;           /* The node displayed in this window. */
+  long pagetop;         /* LINE_STARTS[PAGETOP] is first line in WINDOW. */
+  long start;           /* Offset in node contents where search started. */
+  int search_index;     /* Offset of the last char in the search string. */
+  int direction;        /* The direction that this search is heading in. */
+  int failing;          /* Whether or not this search failed. */
+} SEARCH_STATE;
+
 /* Incrementally search for a string as it is typed. */
 /* The last accepted incremental search string. */
 static char *last_isearch_accepted = NULL;
@@ -4088,9 +4096,27 @@ static SEARCH_STATE **isearch_states = NULL;
 static size_t isearch_states_index = 0;
 static size_t isearch_states_slots = 0;
 
+/* Get the state of WINDOW, and save it in STATE. */
+static void
+window_get_state (WINDOW *window, SEARCH_STATE *state)
+{
+  state->node = window->node;
+  state->pagetop = window->pagetop;
+}
+
+/* Set the node, pagetop, and point of WINDOW. */
+static void
+window_set_state (WINDOW *window, SEARCH_STATE *state)
+{
+  if (window->node != state->node)
+    window_set_node_of_window (window, state->node);
+  window->pagetop = state->pagetop;
+}
+
 /* Push the state of this search. */
 static void
-push_isearch (WINDOW *window, int search_index, int direction, int failing)
+push_isearch (WINDOW *window, int search_index, int direction, int failing,
+              long start_off)
 {
   SEARCH_STATE *state;
 
@@ -4099,6 +4125,7 @@ push_isearch (WINDOW *window, int search_index, int direction, int failing)
   state->search_index = search_index;
   state->direction = direction;
   state->failing = failing;
+  state->start = start_off;
 
   add_pointer_to_array (state, isearch_states_index, isearch_states,
                         isearch_states_slots, 20);
@@ -4106,7 +4133,8 @@ push_isearch (WINDOW *window, int search_index, int direction, int failing)
 
 /* Pop the state of this search to WINDOW, SEARCH_INDEX, and DIRECTION. */
 static void
-pop_isearch (WINDOW *window, int *search_index, int *direction, int *failing)
+pop_isearch (WINDOW *window, int *search_index, int *direction, int *failing,
+             long *start_off)
 {
   SEARCH_STATE *state;
 
@@ -4118,6 +4146,7 @@ pop_isearch (WINDOW *window, int *search_index, int *direction, int *failing)
       *search_index = state->search_index;
       *direction = state->direction;
       *failing = state->failing;
+      *start_off = state->start;
 
       free (state);
       isearch_states[isearch_states_index] = NULL;
@@ -4199,6 +4228,8 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
   int case_sensitive = 0;
   long start_off = -1;
 
+  long saved_point = window->point;
+
   if (count < 0)
     dir = -1;
   else
@@ -4217,7 +4248,7 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
   isearch_is_active = 1;
 
   /* Save starting position of search. */
-  push_isearch (window, isearch_string_index, dir, search_result);
+  push_isearch (window, isearch_string_index, dir, search_result, start_off);
 
   while (isearch_is_active)
     {
@@ -4285,16 +4316,23 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
           else
             {
               pop_isearch (window, &isearch_string_index,
-                           &dir, &search_result);
+                           &dir, &search_result, &start_off);
               isearch_string[isearch_string_index] = '\0';
               if (isearch_string_index == 0)
-                continue; /* Don't search for an empty string. */
+                {
+                  /* Don't search for an empty string.  Clear the search. */
+                  free (window->matches);
+                  window->matches = 0;
+		  window->point = saved_point;
+                  display_update_one_window (window);
+                  continue;
+                }
             }
         }
       else if (quoted || (key >= 32 && key < 256
                      && (isprint (key) || (type == ISFUNC && func == NULL))))
         {
-          push_isearch (window, isearch_string_index, dir, search_result);
+          push_isearch (window, isearch_string_index, dir, search_result, start_off);
 
           if (isearch_string_index + 2 >= isearch_string_size)
             isearch_string = xrealloc
@@ -4357,8 +4395,8 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
              stack back to the last unfailed search. */
           terminal_ring_bell ();
           while (isearch_states_index && (search_result != 0))
-            pop_isearch
-              (window, &isearch_string_index, &dir, &search_result);
+            pop_isearch (window, &isearch_string_index, &dir,
+                         &search_result, &start_off);
           isearch_string[isearch_string_index] = '\0';
           show_isearch_prompt (dir, (unsigned char *) isearch_string,
                                search_result);

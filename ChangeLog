@@ -1,3 +1,22 @@
+2014-08-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_set_node_of_window): Clear search matches here
+	instead of in window_set_node_of_window in window.c.
+	(match_in_match_list): When searching backward, include the starting
+	byte in the area.
+
+	* info/window.h (SEARCH_STATE): Moved to session.c.  Store starting
+	position of search instead of position of point.
+	* info/window.c (window_get_state, window_set_state): Moved to
+	session.c.
+	* info/session.c (pop_isearch, push_isearch): Take extra argument to
+	save and restore starting search position.
+	(incremental_search): Save initial point position.  Clear search if
+	search string is erased.
+
+	* info/session.c (info_search_in_node_internal): Check search if
+	forwards when setting search start to 'body_start'.
+
 2014-08-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (incremental_search): Backspace always deletes last

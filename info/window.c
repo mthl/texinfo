@@ -557,6 +557,12 @@ window_set_node_of_window (WINDOW *window, NODE *node)
   window->goal_column = 0;
   recalculate_line_starts (window);
   window_compute_line_map (window);
+
+  /* Clear displayed search matches if any.  TODO: do search again in new
+     node? */
+  free (window->matches);
+  window->matches = 0;
+
   window->flags |= W_UpdateWindow;
   if (node)
     {
@@ -1024,25 +1030,6 @@ window_goto_percentage (WINDOW *window, int percent)
     window->line_starts[window->pagetop];
   window->flags |= W_UpdateWindow;
   window_make_modeline (window);
-}
-
-/* Get the state of WINDOW, and save it in STATE. */
-void
-window_get_state (WINDOW *window, SEARCH_STATE *state)
-{
-  state->node = window->node;
-  state->pagetop = window->pagetop;
-  state->point = window->point;
-}
-
-/* Set the node, pagetop, and point of WINDOW. */
-void
-window_set_state (WINDOW *window, SEARCH_STATE *state)
-{
-  if (window->node != state->node)
-    window_set_node_of_window (window, state->node);
-  window->pagetop = state->pagetop;
-  window->point = state->point;
 }
 
 

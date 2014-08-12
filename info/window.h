@@ -100,14 +100,6 @@ typedef struct window_struct
   size_t hist_slots;            /* Number of slots allocated to HIST. */
 } WINDOW;
 
-/* Structure defining the current state of an incremental search. */
-typedef struct {
-  WINDOW_STATE_DECL;    /* The node, pagetop and point. */
-  int search_index;     /* Offset of the last char in the search string. */
-  int direction;        /* The direction that this search is heading in. */
-  int failing;          /* Whether or not this search failed. */
-} SEARCH_STATE;
-
 #define W_UpdateWindow  0x01    /* WINDOW needs updating. */
 #define W_WindowIsPerm  0x02    /* This WINDOW is a permanent object. */
 #define W_WindowVisible 0x04    /* This WINDOW is currently visible. */
@@ -228,10 +220,6 @@ extern int window_line_of_point (WINDOW *window);
 /* Get and return the printed column offset of the cursor in this window. */
 extern int window_get_cursor_column (WINDOW *window);
 
-/* Get and Set the node, pagetop, and point of WINDOW. */
-extern void window_get_state (WINDOW *window, SEARCH_STATE *state);
-extern void window_set_state (WINDOW *window, SEARCH_STATE *state);
-
 extern size_t process_node_text
         (WINDOW *win, char *start,
          int (*fun) (WINDOW *, size_t, size_t, size_t, char *,
@@ -244,8 +232,6 @@ extern void window_compute_line_map (WINDOW *win);
 extern int window_point_to_column (WINDOW *win, long point, long *np);
 
 extern void window_line_map_init (WINDOW *win);
-
-extern long window_end_of_line (WINDOW *win);
 
 extern long window_log_to_phys_line (WINDOW *window, long ln);
 
