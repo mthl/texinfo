@@ -3576,32 +3576,28 @@ info_search_in_node_internal (char *string, NODE *node, long start,
       else if (dir > 0 && binding.start < node->body_start)
 	binding.start = node->body_start;
       
-      if (!match_regexp)
-        result = search (string, &binding, poff);
-      else
+      /* Check if we need to calculate new results. */
+      if (!window->matches
+          || strcmp (window->search_string, string)
+          || !!window->search_is_case_sensitive
+             != !!(binding.flags & S_FoldCase))
         {
-          /* Check if we need to calculate new results. */
-          if (!window->matches
-              || strcmp (window->search_string, string)
-              || !!window->search_is_case_sensitive
-                 != !!(binding.flags & S_FoldCase))
-            {
-              window->search_string = xstrdup (string);
-              window->search_is_case_sensitive = !(binding.flags & S_FoldCase);
-              result = regexp_search (string, binding.flags & S_FoldCase,
-                                      node->contents, node->nodelen,
-                                      &matches, &match_count);
-            }
-          else
-            result = search_success;
+          window->search_string = xstrdup (string);
+          window->search_is_case_sensitive = !(binding.flags & S_FoldCase);
+          result = regexp_search (string, !match_regexp,
+                                  binding.flags & S_FoldCase,
+                                  node->contents, node->nodelen,
+                                  &matches, &match_count);
+        }
+      else
+        result = search_success;
 
-          if (result != search_failure)
-            {
-              result = match_in_match_list (matches, match_count,
-                                            &binding, &match_index);
-              if (result == search_success)
-                *poff = matches[match_index].rm_so;
-            }
+      if (result != search_failure)
+        {
+          result = match_in_match_list (matches, match_count,
+                                        &binding, &match_index);
+          if (result == search_success)
+            *poff = matches[match_index].rm_so;
         }
     }
   

@@ -1657,7 +1657,7 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
   search_string = INFO_MENU_REGEXP "|" INFO_MENU_ENTRY_REGEXP
     "|" INFO_XREF_REGEXP "|" INFO_TAG_REGEXP;
 
-  if (regexp_search (search_string, 1, node->contents, node->nodelen,
+  if (regexp_search (search_string, 0, 1, node->contents, node->nodelen,
                      &matches, &match_count)
       == search_success)
   for (i = 0; i < match_count; i++)

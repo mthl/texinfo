@@ -54,17 +54,19 @@ make_footnotes_node (NODE *node)
 {
   NODE *fn_node, *footnotes_node = NULL, *result = NULL;
   long fn_start = -1;
-  enum search_result ret;
+  char *fnptr;
 
   /* Make the initial assumption that the footnotes appear as simple
      text within this windows node. */
   fn_node = node;
 
   /* See if this node contains the magic footnote label. */
-  ret = info_search_in_node_internal (FOOTNOTE_LABEL, node, 0,
-                                      NULL, 1, 0, 0, 0, &fn_start);
+  fnptr = strstr (node->contents, FOOTNOTE_LABEL);
+  if (fnptr)
+    fn_start = fnptr - node->contents;
+
   /* If it doesn't, check to see if it has an associated footnotes node. */
-  if (ret != search_success)
+  if (!fnptr)
     {
       REFERENCE **refs;
 

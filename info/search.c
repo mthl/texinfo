@@ -119,9 +119,34 @@ regexp_expand_newlines_and_tabs (char *regexp)
   return unescaped_regexp;
 }
 
+/* Escape any special characters in SEARCH_STRING. */
+static char *
+regexp_escape_string (char *search_string)
+{
+  char *special_chars = "\\[]^$.*(){}|+?";
+  char *p, *q;
+
+  char *escaped_string = xmalloc (strlen (search_string) * 2 + 1);
+
+  for (p = search_string, q = escaped_string; *p != '\0'; )
+    {
+      if (strchr (special_chars, *p))
+        {
+          *q++ = '\\';
+        }
+      *q++ = *p++;
+    }
+
+  *q = '\0';
+
+  return escaped_string;
+}
+
+
 /* Search BUFFER for REGEXP.  Pass back the list of matches in MATCHES. */
 enum search_result
-regexp_search (char *regexp, int is_insensitive, char *buffer, size_t buflen,
+regexp_search (char *regexp, int is_literal, int is_insensitive,
+               char *buffer, size_t buflen,
                regmatch_t **matches_out, size_t *match_count_out)
 {
   regmatch_t *matches = 0; /* List of found matches. */
@@ -130,16 +155,19 @@ regexp_search (char *regexp, int is_insensitive, char *buffer, size_t buflen,
 
   regex_t preg; /* Compiled pattern buffer for regexp. */
   int result;
-  char *unescaped_regexp;
+  char *regexp_str;
   char saved_char;
   regoff_t offset = 0;
 
-  unescaped_regexp = regexp_expand_newlines_and_tabs (regexp);
+  if (!is_literal)
+    regexp_str = regexp_expand_newlines_and_tabs (regexp);
+  else
+    regexp_str = regexp_escape_string (regexp);
 
-  result = regcomp (&preg, unescaped_regexp,
+  result = regcomp (&preg, regexp_str,
                     REG_EXTENDED | REG_NEWLINE
                     | (is_insensitive ? REG_ICASE : 0));
-  free (unescaped_regexp);
+  free (regexp_str);
 
   if (result != 0)
     {
