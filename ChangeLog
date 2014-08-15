@@ -1,3 +1,16 @@
+2014-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+	
+	* info/session.c (match_in_match_list): Arguments changed.
+	(info_search_in_node_internal): Function declared static.
+	Arguments changed.  Remove node name search.
+	(info_search_internal): Rewritten to have single call to
+	info_search_in_node_internal.
+	(info_target_search_node): Removed.
+	(info_select_reference): Call updated.
+
+	* info/footnotes.c (make_footnotes_node): Only search until end of
+	node.
+
 2014-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/search.c (regexp_escape_string): New function.
