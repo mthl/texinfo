@@ -89,6 +89,7 @@ TESTS = \
 	t/file-index.sh \
 	t/file-file-with-dot.sh \
 	t/no-file.sh \
+	t/node-no-file.sh \
 	t/split.sh \
 	t/relative-path.sh \
 	t/file-relative-path.sh \

@@ -302,7 +302,15 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
           if (info_parsed_filename)
             node_filename = xstrdup (info_parsed_filename);
           else
-            node_filename = initial_file->fullpath;
+            {
+              if (!initial_file)
+                {
+                  asprintf (error, _("No file given for node `%s'."),
+                            user_nodenames[i]);
+                  continue;
+                }
+              node_filename = initial_file->fullpath;
+            }
 
           add_pointer_to_array
             (info_new_reference (node_filename,
