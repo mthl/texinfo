@@ -2195,18 +2195,8 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
       line = window_log_to_phys_line (window, entry->line_number - 1);
 
       if (line >= 0 && line < window->line_count)
-        loc = window->line_starts[line];
-      else
         {
-          /* Try to find an occurence of LABEL in this node.  This
-             could be useful for following index entries. */
-          long start = window->line_starts[1];
-          loc = info_target_search_node (node, entry->label, start, 1);
-        }
-
-      if (loc != -1)
-        {
-          window->point = loc;
+          window->point = window->line_starts[line];
           window_adjust_pagetop (window);
         }
     }
@@ -3447,28 +3437,27 @@ file_buffer_of_window (WINDOW *window)
 }
 
 /* Search forwards or backwards for entries in MATCHES that start within
-   the search area delimited by BINDING.  The search is forwards if
-   BINDING->start is greater than BINDING->end.  Return index of match in
-   *MATCH_INDEX. */
+   the search area.  The search is forwards if START_IN is greater than
+   END_IN.  Return offset of match in *MATCH_INDEX. */
 static enum search_result
 match_in_match_list (regmatch_t *matches, size_t match_count,
-                     SEARCH_BINDING *binding, int *match_index)
+                     long start_in, long end_in, int *match_index)
 {
   regoff_t start, end;
-  if (binding->start < binding->end)
+  if (start_in < end_in)
     {
-      start = binding->start;
-      end = binding->end;
+      start = start_in;
+      end = end_in;
     }
   else
     {
-      /* Include the byte with offset 'start' in our range, but not
-         the byte with offset 'end'. */
-      start = binding->end - 1;
-      end = binding->start + 1;
+      /* Include the byte with offset 'start_in' in our range, but not
+         the byte with offset 'end_in'. */
+      start = end_in - 1;
+      end = start_in + 1;
     }
   
-  if (binding->start > binding->end)
+  if (start_in > end_in)
     {
       /* searching backward */
       int i;
@@ -3505,102 +3494,75 @@ match_in_match_list (regmatch_t *matches, size_t match_count,
   return search_not_found;
 }
 
-/* Search for STRING in NODE starting at START.  If the string was found,
-   return its location in POFF.  If WINDOW is passed as non-null, set the
+/* Search for STRING in NODE starting at START.  The DIR argument says which
+   direction to search in.  If it is positive, search forward, else backwards.
+
+   If the string was found, return its location in POFF,  set the
    window's node to be NODE, its point to be the found string, and readjust
-   the window's pagetop.  The DIR argument says which direction to search
-   in.  If it is positive, search forward, else backwards.
+   the window's pagetop.  
+
+   WINDOW->matches should be a list of matches for NODE->contents, or null.
+   If new matches are calculated, they are saved in WINDOW->matches.
 */
-enum search_result
-info_search_in_node_internal (char *string, NODE *node, long start,
-			      WINDOW *window, int dir, int case_sensitive,
-			      int match_nodename, int match_regexp,
-			      long *poff)
+static enum search_result
+info_search_in_node_internal (WINDOW *window, NODE *node,
+                              char *string, long start,
+                              int dir, int case_sensitive,
+                              int match_regexp, long *poff)
 {
-  SEARCH_BINDING binding;
   enum search_result result = search_not_found;
 
+  long start1, end1;
   regmatch_t *matches;
   size_t match_count;
   int match_index;
     
-  binding.flags = 0;
-  if (!case_sensitive)
-    binding.flags |= S_FoldCase;
-  /* For incremental searches, we always wish to skip past the string. */
-  if (isearch_is_active)
-    binding.flags |= S_SkipDest;
-  
-#if 0
-  if (match_nodename)
+  /* Check if we need to calculate new results. */
+  if (!window->matches
+      || strcmp (window->search_string, string)
+      || window->search_is_case_sensitive != case_sensitive)
     {
-      /* Match_nodename is set when we have changed the node and are
-	 about to start searching in the just loaded one.  First of all
-	 we need to see if the node name matches the search string.  It
-	 cannot be matched otherwise, because normally, the entire node
-	 header line is excluded from searches.
+      free (window->matches);
+      window->matches = 0;
 
-	 If this initial match fails, we continue as usual. */
-
-      int start_off = string_in_line (INFO_NODE_LABEL, node->contents);
-      if (start_off != -1)
-	{
-	  start_off += skip_whitespace (node->contents + start_off);
-	  binding.buffer = node->nodename;
-	  binding.start = 0;
-	  binding.end = strlen (node->nodename);
-	  
-	  result = (match_regexp ? 
-		    regexp_search (string, &binding, poff, resbnd, window):
-		    search (string, &binding, poff));
-	  if (result == search_success)
-            *poff += start_off;
-	}
+      window->search_string = xstrdup (string);
+      window->search_is_case_sensitive = case_sensitive;
+      result = regexp_search (string, !match_regexp, !case_sensitive,
+                              node->contents, node->nodelen,
+                              &matches, &match_count);
     }
-#endif
-
+  else
+    {
+      matches = window->matches;
+      match_count = window->match_count;
+      result = search_success;
+    }
+  
   if (result != search_success)
-    {
-      binding.buffer = node->contents;
-      binding.start = start;
-      binding.end = node->nodelen;
-      
-      if (dir < 0)
-	{
-	  binding.end = node->body_start;
-	  binding.flags |= S_SkipDest;
-	}
-      
-      if (binding.start < 0)
-	return -1;
-      else if (dir > 0 && binding.start < node->body_start)
-	binding.start = node->body_start;
-      
-      /* Check if we need to calculate new results. */
-      if (!window->matches
-          || strcmp (window->search_string, string)
-          || !!window->search_is_case_sensitive
-             != !!(binding.flags & S_FoldCase))
-        {
-          window->search_string = xstrdup (string);
-          window->search_is_case_sensitive = !(binding.flags & S_FoldCase);
-          result = regexp_search (string, !match_regexp,
-                                  binding.flags & S_FoldCase,
-                                  node->contents, node->nodelen,
-                                  &matches, &match_count);
-        }
-      else
-        result = search_success;
+    return;
 
-      if (result != search_failure)
-        {
-          result = match_in_match_list (matches, match_count,
-                                        &binding, &match_index);
-          if (result == search_success)
-            *poff = matches[match_index].rm_so;
-        }
+  if (dir > 0)
+    {
+      if (start >= node->body_start)
+        start1 = start;
+      else
+        start1 = node->body_start;
+      end1 = node->nodelen;
+    }
+  else
+    {
+      start1 = start;
+      end1 = node->body_start;
     }
   
+  if (result != search_failure)
+    {
+      result = match_in_match_list (matches, match_count,
+                                    start1, end1, &match_index);
+      if (result == search_success)
+        *poff = matches[match_index].rm_so;
+    }
+
   if (result == search_success && window)
     {
       long new_point;
@@ -3616,7 +3578,7 @@ info_search_in_node_internal (char *string, NODE *node, long start,
           window->match_count = match_count;
         }
 
-      if (dir > 0 && (binding.flags & S_SkipDest))
+      if (isearch_is_active && dir > 0)
         new_point = matches[match_index].rm_eo;
       else
         new_point = matches[match_index].rm_so;
@@ -3625,42 +3587,6 @@ info_search_in_node_internal (char *string, NODE *node, long start,
       window_adjust_pagetop (window);
     }
   return result;
-}
-
-/* Search NODE, looking for the largest possible match of STRING.  Start the
-   search at START.  Return the absolute position of the match, or -1, if
-   no part of the string could be found. */
-long
-info_target_search_node (NODE *node, char *string, long int start,
-			 int use_regex_mask)
-{
-  register int i;
-  long offset = -1;
-  char *target;
-
-  target = xstrdup (string);
-  i = strlen (target);
-
-  /* Try repeatedly searching for this string while removing words from
-     the end of it. */
-  while (i)
-    {
-      enum search_result ret;
-      target[i] = '\0';
-
-      ret = info_search_in_node_internal (target, node, start,
-				    NULL, 1, 0, 0,
-				    use_regex & use_regex_mask,
-				    &offset);
-      if (ret == search_success)
-        break;
-      offset = -1;
-
-      /* Delete the last word from TARGET. */
-      for (; i && (!whitespace (target[i]) && (target[i] != ',')); i--);
-    }
-  free (target);
-  return offset;
 }
 
 /* Search for STRING starting in WINDOW.  The starting position is determined
@@ -3684,13 +3610,42 @@ info_search_internal (char *string, WINDOW *window,
 {
   register int i;
   FILE_BUFFER *file_buffer;
-  char *initial_nodename;
   long start;
   enum search_result result;
+  int search_other_nodes = 1;
+  int number_of_tags, starting_tag, current_tag = -1;
+  NODE *node = window->node; /* Node to search in. */
+  char *subfile_name = 0;
+  NODE *tag;
+  char *msg = 0;
   
+  /* If this node isn't part of a larger file, search this node only. */
   file_buffer = file_buffer_of_window (window);
-  initial_nodename = window->node->nodename;
+  if (!file_buffer || !file_buffer->tags
+      || !strcmp (window->node->nodename, "*"))
+    search_other_nodes = 0;
 
+  /* Find number of tags and current tag. */
+  if (search_other_nodes)
+    {
+      char *initial_nodename = window->node->nodename;
+
+      for (i = 0; file_buffer->tags[i]; i++)
+        if (strcmp (initial_nodename, file_buffer->tags[i]->nodename) == 0)
+          {
+            starting_tag = i;
+            subfile_name = file_buffer->tags[i]->subfile;
+          }
+
+      number_of_tags = i;
+
+      /* Our tag wasn't found.  This shouldn't happen. */
+      if (starting_tag == -1)
+        return -1;
+      current_tag = starting_tag;
+    }
+
+  /* Set starting position of search. */
   if (start_off && *start_off != -1)
     start = *start_off;
   else
@@ -3698,144 +3653,93 @@ info_search_internal (char *string, WINDOW *window,
        is already under the cursor. */
     start = window->point + dir;
   
-  result = info_search_in_node_internal
-             (string, window->node, start, window, dir,
-	      case_sensitive, 0, use_regex, start_off);
-
-  switch (result)
+  /* Search through subsequent nodes, wrapping around to the top
+     of the Info file until we find the string or return to this
+     window's node and point. */
+  while (1)
     {
-    case search_success:
-      /* We won! */
-      if (!echo_area_is_active && !isearch_is_active)
-        window_clear_echo_area ();
-      return 0;
+      result = info_search_in_node_internal (window, node, string, start, dir,
+                 case_sensitive, use_regex, start_off);
 
-    case search_not_found:
-      break;
-      
-    case search_failure:
-      return -1;
-    }
-  
-  start = 0;
-  
-  /* The string wasn't found in the current node.  Search through the
-     window's file buffer, iff the current node is not "*". */
-  if (!file_buffer || (strcmp (initial_nodename, "*") == 0))
-    return -1;
-
-  /* Search through this file's node list. */
-  if (file_buffer->tags)
-    {
-      register int current_tag = -1, number_of_tags;
-      char *subfile_name = 0;
-      NODE *tag;
-      char *msg = NULL;
-
-      /* Find number of tags and current tag. */
-      for (i = 0; file_buffer->tags[i]; i++)
-        if (strcmp (initial_nodename, file_buffer->tags[i]->nodename) == 0)
-          {
-            current_tag = i;
-            subfile_name = file_buffer->tags[i]->subfile;
-          }
-
-      number_of_tags = i;
-
-      /* Our tag wasn't found.  This shouldn't happen. */
-      if (current_tag == -1)
-        return -1;
-
-      /* Search through subsequent nodes, wrapping around to the top
-         of the info file until we find the string or return to this
-         window's node and point. */
-      while (1)
+      if (result == search_success)
         {
-          NODE *node;
-	  
-          /* Allow C-g to quit the search, failing it if pressed. */
-          fill_input_buffer (0); \
-          if (info_input_buffer[pop_index] == Control ('g'))
-            return -1;
-
-          /* Find the next tag that isn't an anchor.  */
-          for (i = current_tag + dir; i != current_tag; i += dir)
+          if (!echo_area_is_active)
             {
-              if (i < 0)
-		{
-		  msg = N_("Search continued from the end of the document.");
-		  i = number_of_tags - 1;
-		}
-              else if (i == number_of_tags)
-		{
-		  msg = N_("Search continued from the beginning of the document.");
-		  i = 0;
-		}
-	      
-              tag = file_buffer->tags[i];
-              if (tag->nodelen != 0)
-                break;
+              if (msg)
+                window_message_in_echo_area ("%s", _(msg));
+              else
+                window_clear_echo_area ();
             }
+          return 0;
+        }
 
-          /* If we got past our starting point, bail out.  */
-          if (i == current_tag)
-            break;
-          current_tag = i;
-
-          /* Display message when searching a new subfile. */
-          if (!echo_area_is_active && tag->subfile != subfile_name)
+      if (!search_other_nodes)
+        break;
+  
+      /* Find the next tag that isn't an anchor.  */
+      for (i = current_tag + dir; i != starting_tag; i += dir)
+        {
+          if (i < 0)
             {
-              window_message_in_echo_area
-                (_("Searching subfile %s ..."),
-                 filename_non_directory (tag->subfile));
-
-              subfile_name = tag->subfile;
+              msg = N_("Search continued from the end of the document.");
+              i = number_of_tags - 1;
             }
-
-          node = info_get_node (file_buffer->filename, tag->nodename);
-          if (!node)
+          else if (i == number_of_tags)
             {
-              /* If not doing i-search... */
-              if (!echo_area_is_active)
-                {
-                  if (info_recent_file_error)
-                    info_error ("%s", info_recent_file_error);
-                  else
-                    info_error (msg_cant_file_node,
-                                filename_non_directory (file_buffer->filename),
-                                tag->nodename);
-                }
-              return -1;
+              msg = N_("Search continued from the beginning of the document.");
+              i = 0;
             }
-
-          if (dir < 0)
-            start = tag->nodelen;
-
-          result = info_search_in_node_internal (string, node, start, window,
-                      dir, case_sensitive, 1, use_regex, start_off);
-
-          /* Did we find the string in this node? */
-          if (result == search_success)
-            {
-              /* Yes!  We win. */
-              if (!echo_area_is_active)
-		{
-		  if (msg)
-		    window_message_in_echo_area ("%s", _(msg));
-		  else
-		    window_clear_echo_area ();
-		}
-              return 0;
-            }
-
-          /* No.  Free this node, and make sure that we haven't passed
-             our starting point. */
-          free (node);
-
-          if (result == search_failure
-	      || strcmp (initial_nodename, tag->nodename) == 0)
+          
+          tag = file_buffer->tags[i];
+          if (tag->nodelen != 0)
             break;
         }
+
+      /* If we got past our starting point, bail out.  */
+      if (i == starting_tag)
+        break;
+      current_tag = i;
+
+      /* Display message when searching a new subfile. */
+      if (!echo_area_is_active && tag->subfile != subfile_name)
+        {
+          window_message_in_echo_area
+            (_("Searching subfile %s ..."),
+             filename_non_directory (tag->subfile));
+
+          subfile_name = tag->subfile;
+        }
+
+      if (node != window->node)
+        free (node);
+      free (window->matches);
+      window->matches = 0;
+
+      node = info_get_node (file_buffer->filename, tag->nodename);
+      if (!node)
+        {
+          /* If not doing i-search... */
+          if (!echo_area_is_active)
+            {
+              if (info_recent_file_error)
+                info_error ("%s", info_recent_file_error);
+              else
+                info_error (msg_cant_file_node,
+                            filename_non_directory (file_buffer->filename),
+                            tag->nodename);
+            }
+          return -1;
+        }
+
+      if (dir < 0)
+        start = tag->nodelen;
+      else
+        start = 0;
+
+      /* Allow C-g to quit the search, failing it if pressed. */
+      fill_input_buffer (0); \
+      if (info_input_buffer[pop_index] == Control ('g'))
+        return -1;
     }
 
   /* Not in interactive search. */

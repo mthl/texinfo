@@ -61,7 +61,12 @@ make_footnotes_node (NODE *node)
   fn_node = node;
 
   /* See if this node contains the magic footnote label. */
-  fnptr = strstr (node->contents, FOOTNOTE_LABEL);
+    {
+      char saved = node->contents[node->nodelen];
+      node->contents[node->nodelen] = '\0';
+      fnptr = strstr (node->contents, FOOTNOTE_LABEL);
+      node->contents[node->nodelen] = saved;
+    }
   if (fnptr)
     fn_start = fnptr - node->contents;
 

@@ -80,11 +80,6 @@ extern void info_set_node_of_window (WINDOW *window, NODE *node);
 extern void initialize_keyseq (void);
 extern void add_char_to_keyseq (int character);
 extern FILE_BUFFER *file_buffer_of_window (WINDOW *window);
-enum search_result info_search_in_node_internal (char *string, NODE *node,
-    long int start, WINDOW *window, int dir, int case_sensitive,
-    int match_nodename, int match_regexp, long *poff);
-extern long info_target_search_node (NODE *node, char *string,
-    long int start, int use_regexp_mask);
 extern int info_select_reference (WINDOW *window, REFERENCE *entry);
 extern int info_any_buffered_input_p (void);
 
