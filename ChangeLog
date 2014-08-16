@@ -1,5 +1,10 @@
 2014-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/display.c (display_update_window_1): Check if the next search
+	match starts immediately after the last one.
+
+2014-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info.c (add_initial_nodes): Error message if --node used
 	without a filename being specified.
 	* info/t/node-no-file.sh: New test.

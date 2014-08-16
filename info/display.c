@@ -278,19 +278,33 @@ display_update_window_1 (WINDOW *win, long pagetop)
 
       if (matches && match_index != win->match_count)
         {
-          if (!in_match && cur_ptr >= win->node->contents
-                             + matches[match_index].rm_so)
-            {
-              text_buffer_add_string (&tb_printed_line, term_so, strlen(term_so));
-              in_match = 1;
-            } 
-          else if (in_match && cur_ptr >= win->node->contents
+          int new_in_match = in_match;
+          if (in_match && cur_ptr >= win->node->contents
                              + matches[match_index].rm_eo)
             {
-              text_buffer_add_string (&tb_printed_line, term_se, strlen(term_se));
-              in_match = 0;
+              new_in_match = 0;
               match_index++;
+
+              /* Carry on to check if the next match starts immediately. */
             } 
+
+          if (match_index != win->match_count
+              && !new_in_match && cur_ptr >= win->node->contents
+                             + matches[match_index].rm_so)
+            {
+              new_in_match = 1;
+            } 
+
+          if (new_in_match != in_match)
+            {
+              in_match = new_in_match;
+              if (in_match)
+                text_buffer_add_string (&tb_printed_line, term_so,
+                                        strlen (term_so));
+              else
+                text_buffer_add_string (&tb_printed_line, term_se,
+                                        strlen (term_se));
+            }
         }
 
       if (delim || pl_chars + pchars >= win->width)
