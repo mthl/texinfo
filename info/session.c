@@ -4334,39 +4334,9 @@ incremental_search (WINDOW *window, int count)
             break;
           }
       
-      /* Regex isearch means we better search again every time.  We
-         might have had a failed search for "\", for example, but now we
-         have "\.".  */
-      if (use_regex)
-        {
-          search_result = info_search_internal (isearch_string,
-                                                window, dir, case_sensitive,
-						&start_off);
-        }
-      else
-        {
-          /* Check to see if the current search string is right here.  If
-             we are looking at it, then don't bother calling the search
-             function. */
-          if (((dir < 0) &&
-               ((case_sensitive ? strncmp : mbsncasecmp)
-                            (window->node->contents + window->point,
-                             isearch_string, isearch_string_index) == 0)) ||
-              ((dir > 0) &&
-               ((window->point - isearch_string_index) >= 0) &&
-               ((case_sensitive ? strncmp : mbsncasecmp)
-                            (window->node->contents +
-                             (window->point - (isearch_string_index - 1)),
-                             isearch_string, isearch_string_index) == 0)))
-            {
-              if (dir > 0)
-                window->point++;
-            }
-          else
-            search_result = info_search_internal (isearch_string,
-                                                  window, dir, case_sensitive,
-                                                  NULL);
-        }
+      search_result = info_search_internal (isearch_string,
+                                            window, dir, case_sensitive,
+                                            &start_off);
 
       /* If this search failed, and we didn't already have a failed search,
          then ring the terminal bell. */

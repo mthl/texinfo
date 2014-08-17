@@ -1,5 +1,12 @@
 2014-08-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (incremental_search): Use same call to
+	info_search_internal for both regex and non-regex searches.
+
+	* info/t/inc-sea-forward-nonregex.sh: New test.
+
+2014-08-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (incremental_search): Remove unused argument.  When
 	searching backward again, position one byte before current match.
 	(info_search_internal, info_search_in_node_internal): Always start

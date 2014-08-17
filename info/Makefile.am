@@ -122,6 +122,7 @@ TESTS = \
 	t/resize-in-completions.sh \
 	t/search-skip-screen.sh \
 	t/inc-sea-forward.sh \
+	t/inc-sea-forward-nonregex.sh \
 	t/anchor-positions.sh \
 	t/quoted-label-as-target.sh \
 	t/quoted-target.sh \
