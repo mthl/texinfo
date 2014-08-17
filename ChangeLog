@@ -1,3 +1,15 @@
+2014-08-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (incremental_search): Remove unused argument.  When
+	searching backward again, position one byte before current match.
+	(info_search_internal, info_search_in_node_internal): Always start
+	search at argument given, not at point.  Callers updated.
+
+	* info/t/inc-sea-forward.sh: New test.
+	* info/t/search.info: Remove spaces between two matches and more
+	matches after target to increase chance of ending up in the wrong
+	place.
+
 2014-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/display.c (display_update_window_1): Check if the next search

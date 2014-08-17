@@ -3589,17 +3589,14 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
   return result;
 }
 
-/* Search for STRING starting in WINDOW.  The starting position is determined
-   by the START_OFF argument. If given, *START_OFF is the starting position,
-   as long as it is not -1.  Otherwise, the search begins at window point +
-   DIR.
+/* Search for STRING starting in WINDOW, starting at *START_OFF.
 
    If the string is found in this node, set point to that position.
    Otherwise, get the file buffer associated with WINDOW's node, and search
    through each node in that file.
 
    If the search succeeds and START_OFF is given, *START_OFF is given the
-   start of the found string instance (only for regexp searches).
+   start of the found string instance.
    
    If the search fails, return non-zero, else zero.  Side-effect window
    leaving the node and point where the string was found current. */
@@ -3646,12 +3643,7 @@ info_search_internal (char *string, WINDOW *window,
     }
 
   /* Set starting position of search. */
-  if (start_off && *start_off != -1)
-    start = *start_off;
-  else
-    /* Start just after or before point to avoid ``finding'' a string that
-       is already under the cursor. */
-    start = window->point + dir;
+  start = *start_off;
   
   /* Search through subsequent nodes, wrapping around to the top
      of the Info file until we find the string or return to this
@@ -3956,19 +3948,18 @@ DECLARE_INFO_COMMAND (info_search_previous,
 /*                                                                  */
 /* **************************************************************** */
 
-static void incremental_search (WINDOW *window, int count,
-    unsigned char ignore);
+static void incremental_search (WINDOW *window, int count);
 
 DECLARE_INFO_COMMAND (isearch_forward,
                       _("Search interactively for a string as you type it"))
 {
-  incremental_search (window, count, key);
+  incremental_search (window, count);
 }
 
 DECLARE_INFO_COMMAND (isearch_backward,
                       _("Search interactively for a string as you type it"))
 {
-  incremental_search (window, -count, key);
+  incremental_search (window, -count);
 }
 
 /* Structure defining the current state of an incremental search. */
@@ -4119,14 +4110,14 @@ show_isearch_prompt (int dir, unsigned char *string, int failing_p)
 
 /* Read and dispatch loop for incremental search mode. */
 static void
-incremental_search (WINDOW *window, int count, unsigned char ignore)
+incremental_search (WINDOW *window, int count)
 {
   int key;
   int last_search_result, search_result, dir;
   SEARCH_STATE mystate, orig_state;
   char *p;
   int case_sensitive = 0;
-  long start_off = -1;
+  long start_off = window->point;
 
   long saved_point = window->point;
 
@@ -4277,8 +4268,11 @@ incremental_search (WINDOW *window, int count, unsigned char ignore)
                      from a new place if the last search was successful. */
                   if (search_result == 0)
                     {
-                      window->point += dir;
-                      start_off = -1;
+                      start_off = window->point;
+                      if (dir < 0)
+                        /* Position before match to avoid finding same match
+                           agin. */
+                        start_off--;
                     }
                 }
             }
