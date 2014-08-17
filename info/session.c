@@ -3397,7 +3397,7 @@ write_node_to_stream (NODE *node, FILE *stream)
 int gc_compressed_files = 0;
 
 static void info_search_1 (WINDOW *window, int count, int case_sensitive,
-			   int ask_for_string, long start);
+			   long start);
 #define DFL_START (-1) /* a special value for the START argument of
 			  info_search_1, meaning to use the default
 			  starting position */
@@ -3741,48 +3741,24 @@ info_search_internal (char *string, WINDOW *window,
   return -1;
 }
 
-DECLARE_INFO_COMMAND (info_search_case_sensitively,
-                      _("Read a string and search for it case-sensitively"))
-{
-  last_search_direction = count > 0 ? 1 : -1;
-  last_search_case_sensitive = 1;
-  info_search_1 (window, count, 1, 1, DFL_START);
-}
-
-DECLARE_INFO_COMMAND (info_search, _("Read a string and search for it"))
-{
-  last_search_direction = count > 0 ? 1 : -1;
-  last_search_case_sensitive = 0;
-  info_search_1 (window, count, 0, 1, DFL_START);
-}
-
-DECLARE_INFO_COMMAND (info_search_backward,
-                      _("Read a string and search backward for it"))
-{
-  last_search_direction = count > 0 ? -1 : 1;
-  last_search_case_sensitive = 0;
-  info_search_1 (window, -count, 0, 1, DFL_START);
-}
-
 /* Read a string from the user. */
 static int
-ask_for_search_string (char **search_string_out, int case_sensitive,
-                       int use_regex, int direction, WINDOW *window)
+ask_for_search_string (int case_sensitive, int use_regex,
+                       int direction, WINDOW *window)
 {
   char *line, *prompt;
-  char *search_string = *search_string_out;
 
-  prompt = xmalloc (strlen (_("%s%s%s [%s]: "))
-                    + strlen (_("Regexp search"))
-                    + strlen (_(" case-sensitively"))
-                    + strlen (_(" backward"))
-                    + strlen (search_string));
-
-  sprintf (prompt, _("%s%s%s [%s]: "),
-           use_regex ? _("Regexp search") : _("Search"),
-           case_sensitive ? _(" case-sensitively") : "",
-           direction < 0 ? _(" backward") : "",
-           search_string);
+  if (search_string)
+    asprintf (&prompt, _("%s%s%s [%s]: "),
+             use_regex ? _("Regexp search") : _("Search"),
+             case_sensitive ? _(" case-sensitively") : "",
+             direction < 0 ? _(" backward") : "",
+             search_string);
+  else
+    asprintf (&prompt, _("%s%s%s: "),
+             use_regex ? _("Regexp search") : _("Search"),
+             case_sensitive ? _(" case-sensitively") : "",
+             direction < 0 ? _(" backward") : "");
 
   line = info_read_in_echo_area (window, prompt);
   free (prompt);
@@ -3803,7 +3779,13 @@ ask_for_search_string (char **search_string_out, int case_sensitive,
       strcpy (search_string, line);
       free (line);
     }
-  *search_string_out = search_string;
+
+  if (mbslen (search_string) < min_search_length)
+    {
+      info_error ("%s", _("Search string too short"));
+      return;
+    }
+
   return 1;
 }
 
@@ -3813,15 +3795,12 @@ ask_for_search_string (char **search_string_out, int case_sensitive,
                     direction (negative for searching backwards);
 		    its absolute value gives number of repetitions.
    CASE_SENSITIVE   Whether the search is case-sensitive or not.
-   ASK_FOR_STRING   When true, ask for the search string.  Otherwise
-                    use the previously supplied one (repeated search).
    START            Start position for the search.  If DFL_START, start
                     at window point + direction (see info_search_internal
 		    for details).
 */
 static void
-info_search_1 (WINDOW *window, int count, int case_sensitive,
-               int ask_for_string, long start)
+info_search_1 (WINDOW *window, int count, int case_sensitive, long start)
 {
   int result, old_pagetop;
   int direction;
@@ -3849,20 +3828,6 @@ info_search_1 (WINDOW *window, int count, int case_sensitive,
     {
       search_string = xmalloc (search_string_size = 100);
       search_string[0] = '\0';
-    }
-
-  if (ask_for_string)
-    {
-      int success = ask_for_search_string (&search_string, case_sensitive,
-                                           use_regex, direction, window);
-      if (!success)
-        return;
-    }
-
-  if (mbslen (search_string) < min_search_length)
-    {
-      info_error ("%s", _("Search string too short"));
-      return;
     }
 
   /* If the search string includes upper-case letters, make the search
@@ -3897,6 +3862,41 @@ info_search_1 (WINDOW *window, int count, int case_sensitive,
   gc_file_buffers_and_nodes ();
 }
 
+DECLARE_INFO_COMMAND (info_search_case_sensitively,
+                      _("Read a string and search for it case-sensitively"))
+{
+  last_search_direction = count > 0 ? 1 : -1;
+  last_search_case_sensitive = 1;
+
+  if (!ask_for_search_string (1, use_regex, count, window))
+    return;
+
+  info_search_1 (window, count, 1, DFL_START);
+}
+
+DECLARE_INFO_COMMAND (info_search, _("Read a string and search for it"))
+{
+  last_search_direction = count > 0 ? 1 : -1;
+  last_search_case_sensitive = 0;
+
+  if (!ask_for_search_string (0, use_regex, count, window))
+    return;
+
+  info_search_1 (window, count, 0, DFL_START);
+}
+
+DECLARE_INFO_COMMAND (info_search_backward,
+                      _("Read a string and search backward for it"))
+{
+  last_search_direction = count > 0 ? -1 : 1;
+  last_search_case_sensitive = 0;
+
+  if (!ask_for_search_string (0, use_regex, -count, window))
+    return;
+
+  info_search_1 (window, -count, 0, DFL_START);
+}
+
 int search_skip_screen_p = 0;
 
 DECLARE_INFO_COMMAND (info_search_next,
@@ -3913,11 +3913,11 @@ DECLARE_INFO_COMMAND (info_search_next,
       else
 	n = window->node->nodelen;
       info_search_1 (window, last_search_direction * count,
-		     last_search_case_sensitive, 0, n);
+		     last_search_case_sensitive, n);
     }
   else
     info_search_1 (window, last_search_direction * count,
-                   last_search_case_sensitive, 0, DFL_START);
+                   last_search_case_sensitive, DFL_START);
 }
 
 DECLARE_INFO_COMMAND (info_search_previous,
@@ -3934,11 +3934,11 @@ DECLARE_INFO_COMMAND (info_search_previous,
       if (n < 0)
 	n = 0;
       info_search_1 (window, -last_search_direction * count,
-		     last_search_case_sensitive, 0, n);
+		     last_search_case_sensitive, n);
     }
   else
     info_search_1 (window, -last_search_direction * count,
-                   last_search_case_sensitive, 0, DFL_START);
+                   last_search_case_sensitive, DFL_START);
 }
 
 

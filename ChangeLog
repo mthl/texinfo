@@ -1,5 +1,15 @@
 2014-08-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (info_search_1): Argument removed.  Don't call
+	ask_for_search_string.
+	(info_search_case_sensitively, info_search, info_search_backward): Do
+	it here instead.
+	(ask_for_search_string): Don't display "[]" in prompt if no previous
+	search string.  Check if search string is too long here instead of in
+	info_search_1.
+
+2014-08-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (incremental_search): Use same call to
 	info_search_internal for both regex and non-regex searches.
 
