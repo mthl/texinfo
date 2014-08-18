@@ -807,8 +807,9 @@ DECLARE_INFO_COMMAND (info_virtual_index,
 		      "\n\n%c\n%s %s,  %s %s,  %s Top\n\n"
 		      "Info Virtual Index\n"
 		      "******************\n\n"
-		      "Index entries that match `%s':\n\n"
-		      "* Menu:\n\n",
+		      "Index entries that match `%s':\n"
+                      " \b[index \b]"
+		      "\n* Menu:\n\n",
 		      INFO_COOKIE,
 		      INFO_FILE_LABEL, fb->filename,
 		      INFO_NODE_LABEL, text.base,

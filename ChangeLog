@@ -1,5 +1,10 @@
 2014-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/indices.c (info_virtual_index): Place index marker tag in
+	generated node.
+
+2014-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/echo-area.c (info_read_in_echo_area)
 	(info_read_completing_internal, info_read_completing_in_echo_area)
 	(info_read_maybe_completing)
