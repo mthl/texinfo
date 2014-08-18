@@ -32,7 +32,7 @@
    name.  A return value of NULL indicates that no function name could
    be read. */
 char *
-read_function_name (const char *prompt, WINDOW *window)
+read_function_name (char *prompt, WINDOW *window)
 {
   register int i;
   char *line;
@@ -53,7 +53,7 @@ read_function_name (const char *prompt, WINDOW *window)
       add_pointer_to_array (entry, array_index, array, array_slots, 200);
     }
 
-  line = info_read_completing_in_echo_area (window, prompt, array);
+  line = info_read_completing_in_echo_area (prompt, array);
   info_free_references (array);
 
   return line;
@@ -165,7 +165,7 @@ DECLARE_INFO_COMMAND (set_screen_height,
 
       sprintf (prompt, _("Set screen height to (%d): "), new_height);
 
-      line = info_read_in_echo_area (window, prompt);
+      line = info_read_in_echo_area (prompt);
 
       /* If the user aborted, do that now. */
       if (!line)

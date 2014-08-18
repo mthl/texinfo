@@ -215,8 +215,7 @@ do_info_index_search (WINDOW *window, FILE_BUFFER *fb,
     line = xstrdup (search_string);
   else
     {
-      line = info_read_maybe_completing (window, _("Index entry: "),
-                                         index_index);
+      line = info_read_maybe_completing (_("Index entry: "), index_index);
       window = active_window;
 
       /* User aborted? */
@@ -589,7 +588,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
 {
   char *line;
 
-  line = info_read_in_echo_area (window, _("Index apropos: "));
+  line = info_read_in_echo_area (_("Index apropos: "));
 
   window = active_window;
 
@@ -784,8 +783,7 @@ DECLARE_INFO_COMMAND (info_virtual_index,
       return;
     }
     
-  line = info_read_maybe_completing (window, _("Index topic: "),
-				     index_index);
+  line = info_read_maybe_completing (_("Index topic: "), index_index);
 
   /* User aborted? */
   if (!line)

@@ -1,3 +1,13 @@
+2014-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/echo-area.c (info_read_in_echo_area)
+	(info_read_completing_internal, info_read_completing_in_echo_area)
+	(info_read_maybe_completing)
+	(info_read_completing_in_echo_area_with_exclusions): WINDOW argument
+	removed.  All uses updated.
+
+	* info/session.c (ask_for_search_string): WINDOW argument removed.
+
 2014-08-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_search_1): Argument removed.  Don't call

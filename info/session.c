@@ -2418,8 +2418,8 @@ info_menu_or_ref_item (WINDOW *window, unsigned char key,
             prompt = xstrdup (_("Follow xref: "));
         }
 
-      line = info_read_completing_in_echo_area_with_exclusions
-               (window, prompt, refs, exclude);
+      line = info_read_completing_in_echo_area_with_exclusions (prompt, refs,
+                                                                exclude);
       free (prompt);
 
       window = active_window;
@@ -2790,7 +2790,7 @@ split_list_of_nodenames (char *str)
 DECLARE_INFO_COMMAND (info_menu_sequence,
    _("Read a list of menus starting from dir and follow them"))
 {
-  char *line = info_read_in_echo_area (window, _("Follow menus: "));
+  char *line = info_read_in_echo_area (_("Follow menus: "));
 
   /* If the user aborted, quit now. */
   if (!line)
@@ -2909,12 +2909,11 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
               }
           }
       }
-    line = info_read_maybe_completing (window, _("Goto node: "),
-        items);
+    line = info_read_maybe_completing (_("Goto node: "), items);
     info_free_references (items);
   }
 #else /* !GOTO_COMPLETES */
-  line = info_read_in_echo_area (window, _("Goto node: "));
+  line = info_read_in_echo_area (_("Goto node: "));
 #endif /* !GOTO_COMPLETES */
 
   /* If the user aborted, quit now. */
@@ -3057,7 +3056,7 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
   prompt = xmalloc (strlen (default_program_name) +
 		    strlen (invocation_prompt));
   sprintf (prompt, invocation_prompt, default_program_name);
-  line = info_read_in_echo_area (window, prompt);
+  line = info_read_in_echo_area (prompt);
   free (prompt);
   if (!line)
     {
@@ -3089,7 +3088,7 @@ DECLARE_INFO_COMMAND (info_man, _("Read a manpage reference and select it"))
 {
   char *line;
 
-  line = info_read_in_echo_area (window, _("Get Manpage: "));
+  line = info_read_in_echo_area (_("Get Manpage: "));
 
   if (!line)
     {
@@ -3150,7 +3149,7 @@ DECLARE_INFO_COMMAND (info_view_file, _("Read the name of a file and select it")
 {
   char *line;
 
-  line = info_read_in_echo_area (window, _("Find file: "));
+  line = info_read_in_echo_area (_("Find file: "));
   if (!line)
     {
       info_abort_key (active_window, 1, 0);
@@ -3743,8 +3742,7 @@ info_search_internal (char *string, WINDOW *window,
 
 /* Read a string from the user. */
 static int
-ask_for_search_string (int case_sensitive, int use_regex,
-                       int direction, WINDOW *window)
+ask_for_search_string (int case_sensitive, int use_regex, int direction)
 {
   char *line, *prompt;
 
@@ -3760,14 +3758,11 @@ ask_for_search_string (int case_sensitive, int use_regex,
              case_sensitive ? _(" case-sensitively") : "",
              direction < 0 ? _(" backward") : "");
 
-  line = info_read_in_echo_area (window, prompt);
+  line = info_read_in_echo_area (prompt);
   free (prompt);
 
   if (!line)
-    {
-      info_abort_key (window, 0, 0);
-      return 0;
-    }
+    return 0;
 
   if (*line)
     {
@@ -3868,7 +3863,7 @@ DECLARE_INFO_COMMAND (info_search_case_sensitively,
   last_search_direction = count > 0 ? 1 : -1;
   last_search_case_sensitive = 1;
 
-  if (!ask_for_search_string (1, use_regex, count, window))
+  if (!ask_for_search_string (1, use_regex, count))
     return;
 
   info_search_1 (window, count, 1, DFL_START);
@@ -3879,7 +3874,7 @@ DECLARE_INFO_COMMAND (info_search, _("Read a string and search for it"))
   last_search_direction = count > 0 ? 1 : -1;
   last_search_case_sensitive = 0;
 
-  if (!ask_for_search_string (0, use_regex, count, window))
+  if (!ask_for_search_string (0, use_regex, count))
     return;
 
   info_search_1 (window, count, 0, DFL_START);
@@ -3891,7 +3886,7 @@ DECLARE_INFO_COMMAND (info_search_backward,
   last_search_direction = count > 0 ? -1 : 1;
   last_search_case_sensitive = 0;
 
-  if (!ask_for_search_string (0, use_regex, -count, window))
+  if (!ask_for_search_string (0, use_regex, -count))
     return;
 
   info_search_1 (window, -count, 0, DFL_START);

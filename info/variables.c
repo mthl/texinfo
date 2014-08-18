@@ -161,7 +161,7 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
 
       sprintf (prompt, _("Set %s to value (%d): "),
                var->name, potential_value);
-      line = info_read_in_echo_area (active_window, prompt);
+      line = info_read_in_echo_area (prompt);
 
       /* User aborted? */
       if (!line)
@@ -197,7 +197,7 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
                var->name, var->choices[*(var->value)]);
 
       /* Ask the completer to read a variable value for us. */
-      line = info_read_completing_in_echo_area (window, prompt, array);
+      line = info_read_completing_in_echo_area (prompt, array);
 
       info_free_references (array);
 
@@ -239,7 +239,7 @@ variable_by_name (char *name)
    address of a VARIABLE_ALIST member.  A return value of NULL indicates
    that no variable could be read. */
 VARIABLE_ALIST *
-read_variable_name (const char *prompt, WINDOW *window)
+read_variable_name (char *prompt, WINDOW *window)
 {
   char *line;
   REFERENCE **variables;
@@ -248,7 +248,7 @@ read_variable_name (const char *prompt, WINDOW *window)
   variables = make_variable_completions_array ();
 
   /* Ask the completer to read a variable for us. */
-  line = info_read_completing_in_echo_area (window, prompt, variables);
+  line = info_read_completing_in_echo_area (prompt, variables);
 
   info_free_references (variables);
 

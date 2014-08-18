@@ -200,11 +200,10 @@ read_and_dispatch_in_echo_area (void)
 }
 
 /* Read a line of text in the echo area.  Return a malloc ()'ed string,
-   or NULL if the user aborted out of this read.  WINDOW is the currently
-   active window, so that we can restore it when we need to.  PROMPT, if
+   or NULL if the user aborted out of this read.  PROMPT, if
    non-null, is a prompt to print before reading the line. */
 char *
-info_read_in_echo_area (WINDOW *window, const char *prompt)
+info_read_in_echo_area (char *prompt)
 {
   char *line;
 
@@ -220,7 +219,7 @@ info_read_in_echo_area (WINDOW *window, const char *prompt)
 
   /* Save away the original node of this window, and the window itself,
      so echo area commands can temporarily use this window. */
-  remember_calling_window (window);
+  remember_calling_window (active_window);
 
   /* Let the rest of Info know that the echo area is active. */
   echo_area_is_active++;
@@ -816,8 +815,8 @@ completions_window_p (WINDOW *window)
    exit unless the line read completes, or is empty.  Use EXCLUDE_FUNC to
    exclude items in COMPLETIONS. */
 char *
-info_read_completing_internal (WINDOW *window, const char *prompt,
-    REFERENCE **completions, int force, reference_bool_fn exclude_func)
+info_read_completing_internal (char *prompt, REFERENCE **completions,
+                               int force, reference_bool_fn exclude_func)
 {
   char *line;
 
@@ -835,7 +834,7 @@ info_read_completing_internal (WINDOW *window, const char *prompt,
 
   /* Save away the original node of this window, and the window itself,
      so echo area commands can temporarily use this window. */
-  remember_calling_window (window);
+  remember_calling_window (active_window);
 
   /* Save away the list of items to complete over. */
   echo_area_completion_items = completions;
@@ -913,29 +912,26 @@ info_read_completing_internal (WINDOW *window, const char *prompt,
   
 /* Read a line in the echo area with completion over COMPLETIONS. */
 char *
-info_read_completing_in_echo_area (WINDOW *window,
-    const char *prompt, REFERENCE **completions)
+info_read_completing_in_echo_area (char *prompt, REFERENCE **completions)
 {
-  return info_read_completing_internal (window, prompt, completions, 1, 0);
+  return info_read_completing_internal (prompt, completions, 1, 0);
 }
 
 /* Read a line in the echo area allowing completion over COMPLETIONS, but
    not requiring it. */
 char *
-info_read_maybe_completing (WINDOW *window,
-    const char *prompt, REFERENCE **completions)
+info_read_maybe_completing (char *prompt, REFERENCE **completions)
 {
-  return info_read_completing_internal (window, prompt, completions, 0, 0);
+  return info_read_completing_internal (prompt, completions, 0, 0);
 }
 
 /* Read a line in the echo area with completion over COMPLETIONS, using
    EXCLUDE to exclude items from the completion list. */
 char *
-info_read_completing_in_echo_area_with_exclusions (WINDOW *window,
-    const char *prompt, REFERENCE **completions, reference_bool_fn exclude)
+info_read_completing_in_echo_area_with_exclusions (char *prompt,
+     REFERENCE **completions, reference_bool_fn exclude)
 {
-  return info_read_completing_internal
-         (window, prompt, completions, 1, exclude);
+  return info_read_completing_internal (prompt, completions, 1, exclude);
 }
 
 DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))

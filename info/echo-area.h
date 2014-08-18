@@ -37,31 +37,28 @@ extern VFunction *ea_last_executed_command;
 
 typedef int (*reference_bool_fn) (REFERENCE *);
 
-extern char * info_read_completing_internal (WINDOW *window, const char *prompt,
+extern char *info_read_completing_internal (char *prompt,
     REFERENCE **completions, int force, reference_bool_fn exclude);
 
 /* Read a line of text in the echo area.  Return a malloc ()'ed string,
-   or NULL if the user aborted out of this read.  WINDOW is the currently
-   active window, so that we can restore it when we need to.  PROMPT, if
+   or NULL if the user aborted out of this read.  PROMPT, if
    non-null, is a prompt to print before reading the line. */
-extern char *info_read_in_echo_area (WINDOW *window, const char *prompt);
+extern char *info_read_in_echo_area (char *prompt);
 
-/* Read a line in the echo area with completion over COMPLETIONS.
-   Takes arguments of WINDOW, PROMPT, and COMPLETIONS, a REFERENCE **. */
-char *info_read_completing_in_echo_area (WINDOW *window,
-    const char *prompt, REFERENCE **completions);
+/* Read a line in the echo area with completion over COMPLETIONS. */
+char *info_read_completing_in_echo_area (char *prompt,
+                                         REFERENCE **completions);
 
 /* Read a line in the echo area allowing completion over COMPLETIONS, but
-   not requiring it.  Takes arguments of WINDOW, PROMPT, and COMPLETIONS,
-   a REFERENCE **. */
-extern char *info_read_maybe_completing (WINDOW *window,
-    const char *prompt, REFERENCE **completions);
+   not requiring it. */
+extern char *info_read_maybe_completing (char *prompt,
+                                         REFERENCE **completions);
 
 /* Read a line in the echo area with completion over COMPLETIONS, using
    EXCLUDE to exclude items from the completion list. */
 char *
-info_read_completing_in_echo_area_with_exclusions (WINDOW *window,
-    const char *prompt, REFERENCE **completions, reference_bool_fn exclude);
+info_read_completing_in_echo_area_with_exclusions (char *prompt,
+    REFERENCE **completions, reference_bool_fn exclude);
 
 extern void ea_insert (WINDOW *window, int count, int key);
 extern void ea_quoted_insert (WINDOW *window, int count, int key);

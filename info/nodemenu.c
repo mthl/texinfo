@@ -254,8 +254,8 @@ DECLARE_INFO_COMMAND (select_visited_node,
 
   node = get_visited_nodes ();
 
-  line = info_read_completing_in_echo_area (window,
-        _("Select visited node: "), node->references);
+  line = info_read_completing_in_echo_area (_("Select visited node: "),
+                                            node->references);
 
   window = active_window;
 
