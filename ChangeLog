@@ -6,6 +6,9 @@
 	screen-fulls to make match visible.  This makes traversing matches
 	with "}" and "{" less disorienting.
 
+	* info/session.c (info_search_1): Argument 'start' removed.
+	(DFL_START): Deleted.
+
 2014-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_search_in_node_internal): Don't call

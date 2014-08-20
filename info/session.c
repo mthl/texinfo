@@ -3395,11 +3395,7 @@ write_node_to_stream (NODE *node, FILE *stream)
    to gc even those file buffer contents which had to be uncompressed. */
 int gc_compressed_files = 0;
 
-static void info_search_1 (WINDOW *window, int count, int case_sensitive,
-			   long start);
-#define DFL_START (-1) /* a special value for the START argument of
-			  info_search_1, meaning to use the default
-			  starting position */
+static void info_search_1 (WINDOW *window, int count, int case_sensitive);
 
 static char *search_string = NULL;
 static int search_string_size = 0;
@@ -3593,12 +3589,12 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
    Otherwise, get the file buffer associated with WINDOW's node, and search
    through each node in that file.
 
-   If the search succeeds and START_OFF is given, *START_OFF is given the
-   start of the found string instance.
-   
-   If the search succeeds, return non-zero, and set node and point of
-   window to where the string was found.  Return non-zero if the search
-   fails. */
+   If the search succeeds, return non-zero.  *START_OFF is given the start of
+   the found string instance.  Set node and point of window to where the string
+   was found.  (If the variable ISEARCH_IS_ACTIVE is non-zero and the search is
+   forwards, the point is set to the end of the search.)
+
+   Return non-zero if the search fails. */
 static int
 info_search_internal (char *string, WINDOW *window,
 		      int dir, int case_sensitive,
@@ -3790,12 +3786,9 @@ ask_for_search_string (int case_sensitive, int use_regex, int direction)
                     direction (negative for searching backwards);
 		    its absolute value gives number of repetitions.
    CASE_SENSITIVE   Whether the search is case-sensitive or not.
-   START            Start position for the search.  If DFL_START, start
-                    at window point + direction (see info_search_internal
-		    for details).
 */
 static void
-info_search_1 (WINDOW *window, int count, int case_sensitive, long start)
+info_search_1 (WINDOW *window, int count, int case_sensitive)
 {
   int result, old_pagetop;
   int direction;
@@ -3814,10 +3807,7 @@ info_search_1 (WINDOW *window, int count, int case_sensitive, long start)
         count = 1;      /* for backward compatibility */
     }
 
-  if (start == DFL_START)
-    start_off = window->point + direction;
-  else
-    start_off = start;
+  start_off = window->point + direction;
   
   /* If the search string includes upper-case letters, make the search
      case-sensitive.  */
@@ -3850,7 +3840,7 @@ DECLARE_INFO_COMMAND (info_search_case_sensitively,
   if (!ask_for_search_string (1, use_regex, count))
     return;
 
-  info_search_1 (window, count, 1, DFL_START);
+  info_search_1 (window, count, 1);
 }
 
 DECLARE_INFO_COMMAND (info_search, _("Read a string and search for it"))
@@ -3861,7 +3851,7 @@ DECLARE_INFO_COMMAND (info_search, _("Read a string and search for it"))
   if (!ask_for_search_string (0, use_regex, count))
     return;
 
-  info_search_1 (window, count, 0, DFL_START);
+  info_search_1 (window, count, 0);
 }
 
 DECLARE_INFO_COMMAND (info_search_backward,
@@ -3873,7 +3863,7 @@ DECLARE_INFO_COMMAND (info_search_backward,
   if (!ask_for_search_string (0, use_regex, -count))
     return;
 
-  info_search_1 (window, -count, 0, DFL_START);
+  info_search_1 (window, -count, 0);
 }
 
 int search_skip_screen_p = 0;
