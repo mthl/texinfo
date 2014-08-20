@@ -1,5 +1,13 @@
 2014-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (info_search_next, info_search_previous): Call
+	info_search_internal directly instead of via info_search_1.
+	<search-skip-screen=On>: Scroll up or down by a whole number of
+	screen-fulls to make match visible.  This makes traversing matches
+	with "}" and "{" less disorienting.
+
+2014-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_search_in_node_internal): Don't call
 	window_adjust_pagetop.
 	(info_search_1, incremental_search): Call it here instead.

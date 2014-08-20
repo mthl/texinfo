@@ -3596,8 +3596,9 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
    If the search succeeds and START_OFF is given, *START_OFF is given the
    start of the found string instance.
    
-   If the search fails, return non-zero, else zero.  Side-effect window
-   leaving the node and point where the string was found current. */
+   If the search succeeds, return non-zero, and set node and point of
+   window to where the string was found.  Return non-zero if the search
+   fails. */
 static int
 info_search_internal (char *string, WINDOW *window,
 		      int dir, int case_sensitive,
@@ -3880,43 +3881,91 @@ int search_skip_screen_p = 0;
 DECLARE_INFO_COMMAND (info_search_next,
                       _("Repeat last search in the same direction"))
 {
+  long start_off = window->point + 1;
+  NODE *starting_node = window->node;
+  int result;
+
   if (!last_search_direction || !search_string)
-    info_error ("%s", _("No previous search string"));
-  else if (search_skip_screen_p)
+    {
+      info_error ("%s", _("No previous search string"));
+      return;
+    }
+
+  if (search_skip_screen_p)
     {
       /* Find window bottom */
       long n = window->height + window->pagetop;
       if (n < window->line_count)
-	n = window->line_starts[n];
+	start_off = window->line_starts[n];
       else
-	n = window->node->nodelen;
-      info_search_1 (window, last_search_direction * count,
-		     last_search_case_sensitive, n);
+	start_off = window->node->nodelen;
+    }
+
+  for (result = 0; result == 0 && count--; )
+    result = info_search_internal (search_string,
+                                   active_window, 1,
+                                   last_search_case_sensitive,
+				   &start_off);
+
+  if (result == 0 && window->node == starting_node && search_skip_screen_p)
+    {
+      long match_line = window_line_of_point (window);
+      long new_pagetop;
+
+      /* Scroll down a whole number of screenfulls to make match visible. */
+      new_pagetop = window->pagetop;
+      new_pagetop += (match_line - window->pagetop) / window->height
+                      * window->height;
+
+      set_window_pagetop (window, new_pagetop);
     }
   else
-    info_search_1 (window, last_search_direction * count,
-                   last_search_case_sensitive, DFL_START);
+    window_adjust_pagetop (window);
 }
 
 DECLARE_INFO_COMMAND (info_search_previous,
                       _("Repeat last search in the reverse direction"))
 {
-  if (!last_search_direction || !search_string)
-    info_error ("%s", _("No previous search string"));
-  else if (search_skip_screen_p)
-    {
-      /* Find window bottom */
-      long n;
+  long start_off = window->point - 1;
+  NODE *starting_node = window->node;
+  int result;
 
-      n = window->line_starts[window->pagetop] - 1;
-      if (n < 0)
-	n = 0;
-      info_search_1 (window, -last_search_direction * count,
-		     last_search_case_sensitive, n);
+  if (!last_search_direction || !search_string)
+    {
+      info_error ("%s", _("No previous search string"));
+      return;
+    }
+
+  if (search_skip_screen_p)
+    start_off = window->line_starts[window->pagetop] - 1;
+
+  /* start_off can be negative here, in which case info_search_internal
+     will go to the previous node straight away. */
+
+  for (result = 0; result == 0 && count--; )
+    result = info_search_internal (search_string,
+                                   active_window, -1,
+                                   last_search_case_sensitive,
+				   &start_off);
+
+  if (result == 0 && window->node == starting_node && search_skip_screen_p)
+    {
+      long match_line = window_line_of_point (window);
+      long new_pagetop;
+
+      /* Scroll up a whole number of screenfulls to make match visible.
+         This means if 'info_search_next' was the last command, we'll
+         go back to the same place. */
+      new_pagetop = window->pagetop - window->height;
+      new_pagetop -= (window->pagetop - match_line) / window->height
+                      * window->height;
+
+      if (new_pagetop < 0)
+        new_pagetop = 0;
+      set_window_pagetop (window, new_pagetop);
     }
   else
-    info_search_1 (window, -last_search_direction * count,
-                   last_search_case_sensitive, DFL_START);
+    window_adjust_pagetop (window);
 }
 
 
