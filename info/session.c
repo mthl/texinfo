@@ -3583,7 +3583,6 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
         new_point = matches[match_index].rm_so;
 
       window->point = new_point;
-      window_adjust_pagetop (window);
     }
   return result;
 }
@@ -3829,22 +3828,12 @@ info_search_1 (WINDOW *window, int count, int case_sensitive, long start)
           break;
         }
 
-  old_pagetop = active_window->pagetop;
   for (result = 0; result == 0 && count--; )
     result = info_search_internal (search_string,
                                    active_window, direction, case_sensitive,
 				   &start_off);
 
-  if (result == 0 && old_pagetop != active_window->pagetop)
-    {
-      int new_pagetop;
-
-      new_pagetop = active_window->pagetop;
-      active_window->pagetop = old_pagetop;
-      set_window_pagetop (active_window, new_pagetop);
-      if (auto_footnotes_p)
-        info_get_or_remove_footnotes (active_window);
-    }
+  window_adjust_pagetop (window);
 
   /* Perhaps free the unreferenced file buffers that were searched, but
      not retained. */
@@ -4149,6 +4138,7 @@ incremental_search (WINDOW *window, int count)
               window->pagetop = mystate.pagetop;
               set_window_pagetop (window, newtop);
             }
+          window_adjust_pagetop (window);
           display_update_one_window (window);
           display_cursor_at_point (window);
         }

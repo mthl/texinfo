@@ -1,5 +1,11 @@
 2014-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (info_search_in_node_internal): Don't call
+	window_adjust_pagetop.
+	(info_search_1, incremental_search): Call it here instead.
+
+2014-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/indices.c (do_info_index_search, info_virtual_index): Remove
 	check against min_search_length.
 	* info/session.c (info_search_1): Don't allocate for search_string
