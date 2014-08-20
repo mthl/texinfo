@@ -1143,7 +1143,8 @@ Normally, the search pattern should not be shorter than some
 predefined limit.  By default, this limit is set to 1 character.
 @xref{min-search-length}, for more information on this.
 
-@item @kbd{?} (@code{search-backward}, vi-like operation)
+@item @kbd{M-x search-backward}
+@itemx @kbd{?}, vi-like operation
 @kindex ?, vi-like operation
 @findex search-backward
 Read a string in the echo area and search backward through the Info file
@@ -1152,13 +1153,19 @@ file is searched case-sensitively; otherwise Info ignores the letter
 case.  With a numeric argument of @var{N}, search for @var{N}th
 occurrence of the string.  Negative arguments search forward.
 
+If you do not have a convenient key sequence bound to this command, an
+alternative is to first perform a forward search, and then use the
+@code{search-previous} command, described below.
+
 @item @kbd{R} (@code{toggle-regexp})
 @kindex R
 @findex toggle-regexp
 Toggle between using regular expressions and literal strings for
-searching.  Info uses so-called `extended' regular expression syntax,
-similar to Emacs (@pxref{Regexps, , Using Regular Expressions, emacs,
-The GNU Emacs Manual}).
+searching.  Info uses so-called `extended' regular expression syntax.
+@c We should reference a Texinfo manual where extended regular expressions
+@c are described.  Extended regular expressions are different to those
+@c of Emacs (e.g., "(" and ")" are equivalent to "\(" and "\)" in Emacs).
+@c The best reference may be "man 7 regex" from the Linux manpages.
 
 @item @kbd{S} (@code{search-case-sensitively}
 @kindex S
@@ -1227,10 +1234,8 @@ is case-sensitive; otherwise Info ignores the letter case.
 @cindex index, searching
 @cindex searching, in the indices
 Look up a string in the indices for this Info file, and select a node
-to which the found index entry points.
-
-The search string should not be shorter than a predefined limit, set
-to 1 character by default (@pxref{min-search-length}).
+to which the found index entry points.  If you press @key{RET} without
+giving a string, Info takes you to an index node in the file.
 
 @item @kbd{I} (@code{virtual-index})
 @kindex I
@@ -1258,9 +1263,14 @@ occurrence of that string.  If the string is found, the node containing
 it is selected, and the cursor is left positioned at the start of the
 found string.  Subsequent @samp{s} commands show you the default search
 string within @samp{[} and @samp{]}; pressing @key{RET} instead of
-typing a new string will use the default search string.  Under
-@samp{--vi-keys} (@pxref{--vi-keys}), using the @samp{n} or @samp{N}
-commands is a faster way of searching for the same string.
+typing a new string will use the default search string.
+
+Using the @samp{@}} or @samp{@{} commands (or the @samp{n} or @samp{N}
+commands under @samp{--vi-keys}; @pxref{--vi-keys}), is a faster way of
+searching for the same string.
+
+If the @code{highlight-searches} variable is set, matches from search
+commands will be highlighted.  @xref{Variables,, @code{highlight-searches}}.
 
 @dfn{Incremental searching} is similar to basic searching, but the
 string is looked up while you are typing it, instead of waiting until
@@ -2141,6 +2151,11 @@ longer in use.  But de-compressing a file can be a time-consuming
 operation, and so Info tries hard not to do it twice.  This variable
 tells Info it is okay to garbage collect the text of the nodes of a
 file which was compressed on disk.
+
+@item highlight-searches
+@vindex highlight-searches
+When set to @code{On}, highlight matches from searching commands
+(@pxref{Searching Commands}).
 
 @item infopath-no-defaults
 @vindex infopath-no-defaults

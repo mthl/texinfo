@@ -1,5 +1,14 @@
 2014-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-stnd.texi (Searching Commands): Consistent formatting
+	for commands without key bindings.  Mention alternative for searching
+	backwards.  Remove reference to Emacs regular expressions, as those
+	are slightly different.  Mention what happens if you don't give a
+	string for 'i'.  Mention 'highlight-searches' variable.
+	(Variables): Add 'highlight-searches'.
+
+2014-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_search_next, info_search_previous): Call
 	info_search_internal directly instead of via info_search_1.
 	<search-skip-screen=On>: Scroll up or down by a whole number of
