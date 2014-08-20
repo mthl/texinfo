@@ -1,3 +1,12 @@
+2014-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (do_info_index_search, info_virtual_index): Remove
+	check against min_search_length.
+	* info/session.c (info_search_1): Don't allocate for search_string
+	here.
+	(info_search_next, info_search_previous): Check if search_string is
+	null.
+
 2014-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_virtual_index): Place index marker tag in

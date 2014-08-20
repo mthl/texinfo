@@ -241,14 +241,6 @@ do_info_index_search (WINDOW *window, FILE_BUFFER *fb,
             }
         }
     }
-
-  if (mbslen (line) < min_search_length)
-    {
-      info_error (_("Search string too short"));
-      free (line);
-      return;
-    }
-
   
   /* The user typed either a completed index label, or a partial string.
      Find an exact match, or, failing that, the first index entry containing
@@ -786,16 +778,10 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   line = info_read_maybe_completing (_("Index topic: "), index_index);
 
   /* User aborted? */
-  if (!line)
+  if (!line || !*line)
     {
-      info_abort_key (window, 1, 1);
-      return;
-    }
-
-  if (mbslen (line) < min_search_length)
-    {
-      info_error (_("Search string too short"));
       free (line);
+      info_abort_key (window, 1, 1);
       return;
     }
   

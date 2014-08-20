@@ -3819,12 +3819,6 @@ info_search_1 (WINDOW *window, int count, int case_sensitive, long start)
   else
     start_off = start;
   
-  if (!search_string)
-    {
-      search_string = xmalloc (search_string_size = 100);
-      search_string[0] = '\0';
-    }
-
   /* If the search string includes upper-case letters, make the search
      case-sensitive.  */
   if (case_sensitive == 0)
@@ -3897,7 +3891,7 @@ int search_skip_screen_p = 0;
 DECLARE_INFO_COMMAND (info_search_next,
                       _("Repeat last search in the same direction"))
 {
-  if (!last_search_direction)
+  if (!last_search_direction || !search_string)
     info_error ("%s", _("No previous search string"));
   else if (search_skip_screen_p)
     {
@@ -3918,7 +3912,7 @@ DECLARE_INFO_COMMAND (info_search_next,
 DECLARE_INFO_COMMAND (info_search_previous,
                       _("Repeat last search in the reverse direction"))
 {
-  if (!last_search_direction)
+  if (!last_search_direction || !search_string)
     info_error ("%s", _("No previous search string"));
   else if (search_skip_screen_p)
     {
