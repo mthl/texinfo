@@ -2506,13 +2506,24 @@ info_menu_or_ref_item (WINDOW *window, unsigned char key,
    and select that item. */
 DECLARE_INFO_COMMAND (info_menu_item, _("Read a menu item and select its node"))
 {
-  if (!window->node->references)
+  if (window->node->references)
     {
-      info_error ("%s", msg_no_menu_node);
-      return;
+      REFERENCE **r;
+      
+      /* Check if there is a menu in this node. */
+      for (r = window->node->references; *r; r++)
+        if ((*r)->type == REFERENCE_MENU_ITEM)
+          break;
+
+      if (*r)
+        {
+          info_menu_or_ref_item (window, key, 1, 0, 1);
+          return;
+        }
     }
 
-  info_menu_or_ref_item (window, key, 1, 0, 1);
+  info_error ("%s", msg_no_menu_node);
+  return;
 }
 
 /* Read a line (with completion) which is the name of a reference to

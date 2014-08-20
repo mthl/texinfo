@@ -1,5 +1,10 @@
 2014-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (info_menu_item): Check for case when there are no
+	menu entries in the node.
+
+2014-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi (Searching Commands): Consistent formatting
 	for commands without key bindings.  Mention alternative for searching
 	backwards.  Remove reference to Emacs regular expressions, as those
