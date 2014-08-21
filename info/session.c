@@ -2214,6 +2214,7 @@ info_parse_and_select (char *line, WINDOW *window)
   /* info_parse_node will be called on 'line' in subsequent functions. */
   entry.nodename = line;
   entry.filename = 0;
+  entry.line_number = 0;
   entry.label = "*info-parse-and-select*";
 
   info_select_reference (window, &entry);
