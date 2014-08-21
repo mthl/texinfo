@@ -95,23 +95,50 @@ display_update_display (void)
   signal_unblock_winch ();
 }
 
+/* Return the screen column of where to write to screen to update line to
+   match A, given that B contains the current state of the line.  *PPOS gets
+   the offset into the string A to write from. */
 static int
 find_diff (const char *a, size_t alen, const char *b, size_t blen, int *ppos)
 {
   mbi_iterator_t itra, itrb;
   int i;
   int pos = 0;
+  int first_escape = -1;
+  int escape_pos = -1;
   
   for (i = 0, mbi_init (itra, a, alen), mbi_init (itrb, b, blen);
        mbi_avail (itra) && mbi_avail (itrb);
-       i++, mbi_advance (itra), mbi_advance (itrb))
+       i += wcwidth (itra.cur.wc), mbi_advance (itra), mbi_advance (itrb))
     {
       if (mb_cmp (mbi_cur (itra), mbi_cur (itrb)))
-	break;
+        break;
+
+      if (first_escape == -1 && *mbi_cur_ptr (itra) == '\033')
+        {
+          first_escape = i;
+          escape_pos = pos;
+        }
       pos += mb_len (mbi_cur (itra));
     }
-  *ppos = pos;
-  return i;
+
+  if (mbi_avail (itra) || mbi_avail (itrb))
+    if (first_escape != -1)
+      {
+        *ppos = escape_pos;
+        return first_escape;
+      }
+    else
+      {
+        /* If there was a difference in the line, and there was an escape
+           character, return the position of the escape character, as it could
+           start a terminal escape sequence. */
+        *ppos = pos;
+        return i;
+      }
+
+  /* Otherwise, no redrawing is required. */
+  return -1;
 }
 
 /* Update line PL_NUM of the screen to be PRINTED_LINE, which is PL_BYTES long
@@ -138,9 +165,7 @@ display_node_text (long pl_num, char *printed_line,
 	 the line from the screen first.  Why, I don't know.
 	 (But don't do this if we have no visible entries, as can
 	 happen if the window is shrunk very small.)  */
-      if (entry->inverse
-	  /* Need to erase the line if it has escape sequences.  */
-	  || (raw_escapes_p && mbschr (entry->text, '\033') != 0))
+      if (entry->inverse)
 	{
 	  terminal_goto_xy (0, pl_num);
 	  terminal_clear_to_eol ();
@@ -152,15 +177,14 @@ display_node_text (long pl_num, char *printed_line,
       i = find_diff (printed_line, pl_bytes,
 		     entry->text, strlen (entry->text), &off);
 
-      /* If the lines are not the same length, or if they differed
-	 at all, we must do some redrawing. */
-      if (i != pl_chars || pl_chars != entry->textlen)
+      /* If the lines differed at all, we must do some redrawing. */
+      if (i != -1)
 	{
 	  /* Move to the proper point on the terminal. */
 	  terminal_goto_xy (i, pl_num);
+
 	  /* If there is any text to print, print it. */
-	  if (i != pl_chars)
-	    terminal_put_text (printed_line + i);
+          terminal_put_text (printed_line + off);
 	  
 	  /* If the printed text didn't extend all the way to the edge
 	     of the screen, and text was appearing between here and the
