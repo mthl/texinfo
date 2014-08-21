@@ -1,5 +1,12 @@
 2014-08-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Appendix F Info Format Specification): Update
+	including quoting mechanism, use of non-ASCII characters in node names,
+	tag table being optional in non-split files, use of "(dir)" in
+	node lines.
+
+2014-08-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/display.c (decide_if_in_match): New function.
 	(display_update_window_1): Call it.
 

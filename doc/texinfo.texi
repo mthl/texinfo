@@ -692,7 +692,7 @@ Info Format General Layout
 
 * Whole:           Info Format Whole Manual. Split vs.@: nonsplit manuals.
 * Preamble:        Info Format Preamble.
-* Indirect:        Info Format Indirect Tag Table.
+* Indirect:        Info Format Indirect Table.
 * Tag table:       Info Format Tag Table.
 * Local variables: Info Format Local Variables.
 * Regular nodes:   Info Format Regular Nodes.
@@ -23641,7 +23641,8 @@ of a line is literal.
 
 We specify literal parentheses (those that are part of the Info
 format) with @t{<lparen>} and @t{<rparen>}, meaning the single
-characters @samp{(} and @samp{)} respectively.
+characters @samp{(} and @samp{)} respectively.  We specify the
+@samp{CTRL-?} character (character number 127) with @t{<del>}.
 
 Finally, the two-character sequence @samp{^@var{x}} means the single
 character @samp{CTRL-@var{x}}, for any @var{x}.
@@ -23660,7 +23661,7 @@ This section describes the overall layout of Info manuals.
 @menu
 * Whole:           Info Format Whole Manual. Split vs.@: nonsplit manuals.
 * Preamble:        Info Format Preamble.
-* Indirect:        Info Format Indirect Tag Table.
+* Indirect:        Info Format Indirect Table.
 * Tag table:       Info Format Tag Table.
 * Local variables: Info Format Local Variables.
 * Regular nodes:   Info Format Regular Nodes.
@@ -23683,8 +23684,8 @@ The syntax for a nonsplit manual is:
     <nonsplit info file> =
 <preamble>
 <node>*
-<tag table>
-(<local variables>)?
+<tag table>?
+<local variables>?
 @end example
 
 When split, there is a @dfn{main file}, which contains only pointers
@@ -23696,7 +23697,7 @@ like this:
 <preamble>
 <indirect table>
 <tag table>
-(<local variables>)?
+<local variables>?
 @end example
 
 The subfiles in a split manual have the following syntax:
@@ -23706,6 +23707,9 @@ The subfiles in a split manual have the following syntax:
 <preamble>
 <node>*
 @end example
+
+Note that the tag table is not optional for split files, as it is used
+with the indirect table to deduce which subfile a particular node is in.
 
 
 @node Info Format Preamble
@@ -23724,6 +23728,7 @@ may be displayed upon user request.
 <dir entries>          # Derived from @@dircategory and @@direntry.
 @end example
 
+@noindent
 These pieces are:
 
 @table @t
@@ -23742,14 +23747,10 @@ commands present in the manual (@pxref{Installing Dir Entries}).
 @end table
 
 
-@node Info Format Indirect Tag Table
-@subheading Info Format: Indirect Tag Table
+@node Info Format Indirect Table
+@subheading Info Format: Indirect Table
 
-@cindex Indirect tag table, in Info format
-
-The indirect table is written to the main file in the case of split
-output only.  It specifies the starting byte position of each split
-output file (as a decimal integer):
+@cindex Indirect table, in Info format
 
 @example
     <indirect table> =
@@ -23758,18 +23759,11 @@ Indirect:
 (<filename>: <bytepos>)*
 @end example
 
-The number of preamble bytes written to each output file is included
-in the positions.  Neither the preamble nor the size of the top-level
-output file is included.
-
-The first actual node of content will be pointed to by the first
-entry.
-
-Unfortunately, Info-creating programs such as @code{makeinfo} have not
-always implemented these rules perfectly, due to various bugs and
-oversights.  Therefore, robust Info viewers should fall back to
-searching ``nearby'' the given position for a node, instead of just
-giving up if the position is not perfectly at a node beginning.
+The indirect table is written to the main file in the case of split
+output only.  It specifies as a decimal integer the starting byte position
+(zero-based) that each subfile would have if the subfiles were concatenated
+together in order, not including the top-level file.  The first actual node
+of content will be pointed to by the first entry.
 
 As an example, suppose split output is generated for the GDB manual.
 The top-level file @file{gdb.info} will contain something like this:
@@ -23783,11 +23777,16 @@ gdb.info-2: 295733
 @end example
 
 This tells Info viewers that the first node of the manual occurs at
-byte 1878 (i.e., after the preamble) of the file @file{gdb.info-1}.
-The first node written to @file{gdb.info-2} would start at byte 295733
-if the subsequent @file{gdb.info-*} files (not including
-@file{gdb.info} files were appended to @file{gdb.info-1}, including
-their preambles.
+byte 1878 of the file @file{gdb.info-1} (which would be after that file's
+preamble.)  The first node in the @file{gdb.info-2} subfile would start at
+byte 295733 if @file{gdb.info-2} were appended to @file{gdb.info-1},
+including any preamble sections in both files.
+
+Unfortunately, Info-creating programs such as @code{makeinfo} have not
+always implemented these rules perfectly, due to various bugs and
+oversights.  Therefore, robust Info viewers should fall back to
+searching ``nearby'' the given position for a node, instead of just
+giving up if the position is not perfectly at a node beginning.
 
 
 @node Info Format Tag Table
@@ -23795,29 +23794,27 @@ their preambles.
 
 @cindex Tag table, in Info format
 
-The tag table specifies the starting byte position of each node and anchor
-in the file.  It is written in the main output file only, not (in the
-case of split output) any subfiles.
-
 @example
     <tag table> =
 ^_
 Tag Table:
-<lparen>Indirect<rparen> # this line appears in split output only
+(<lparen>Indirect<rparen>)?
 (Node|Ref): <nodeid>^?<bytepos>
 ^_
 End Tag Table
 @end example
 
-The @samp{(Indirect)} line is the next line after @samp{Tag Table:}
-in the case of split output only.
+The @samp{(Indirect)} line appears in the case of split output only.
 
-Each following line defines an identifier as either an anchor or a
-node, as specified.  It is an error to define the same identifier both
-ways.  For example, @samp{Node: Top^?1647} says that the node named
-@samp{Top} starts at byte 1647 while @samp{Ref:
-Overview-Footnote-1^?30045} says that the anchor named
-@samp{Overview-Footnote-1} starts at byte 30045.
+The tag table specifies the starting byte position of each node and anchor
+in the file.  In the case of split output, it is only written in the main
+output file.
+
+Each line defines an identifier as either an anchor or a node, as
+specified.  For example, @samp{Node: Top^?1647} says that the node named
+@samp{Top} starts at byte 1647 while @samp{Ref: Overview-Footnote-1^?30045}
+says that the anchor named @samp{Overview-Footnote-1} starts at byte 30045.
+It is an error to define the same identifier both ways.  
 
 In the case of nonsplit output, the byte positions simply refer to the
 location in the output file.  In the case of split output, the byte
@@ -23835,9 +23832,13 @@ Node: Ch1^?292
 End Tag Table
 @end example
 
+@noindent
 This specifies a manual with two nodes, `Top' and `Ch1', at byte
 positions 89 and 292 respectively.  Because the @samp{(Indirect)} line
 is not present, the manual is not split.
+
+Preamble sections or other non-node sections of files do not have a tag
+table entry.
 
 
 @node Info Format Local Variables
@@ -23874,24 +23875,41 @@ File: <fn>, Node: <id1>, (Next: <id2>, )? (Prev: <id3>, )? Up: <id4>
 <general text, until the next ^_ or end-of-file>
 @end example
 
-The @code{Next} and @code{Prev} pointers are optional.  The @code{Up}
-pointer may technically also be absent, although this is most likely the
-case of a wrongly-structured Info manual.  At least one space must be
-present after each colon and comma, but any number of spaces are
-ignored.
+@noindent
+At least one space or tab must be present after each colon and comma,
+but any number of spaces are ignored.  The @t{<id>} node identifiers have
+following format:
+
+@example
+    <id> = <del>?<node name><del>? | "(dir)"
+@end example
 
 This @t{<node>} defines @t{<id1>} in file @t{<fn>}, which is typically
-just @samp{manualname} or perhaps @samp{manualname.info}.  Each of the
-other references @t{<id2>}, @t{<id3>}, and @t{<id4>} must be defined
-with either @samp{Node} or @samp{Ref} in the @t{<tag table>}.
+just @samp{manualname} or perhaps @samp{manualname.info}.
 
-Conventionally the nodes are arranged to form a tree, but this is not
-a requirement of the format.  Each pointer can refer to any defined
-identifier.
+Each of the identifiers after @code{Next}, @code{Prev} and @code{Up} refer
+to nodes or anchors within the file, defined with either @samp{Node}
+or @samp{Ref} in the @t{<tag table>} if it has one.  These pointers
+normally refer within the same file, but the string @code{(dir)} may be used
+to point to the top-level dir node.  The @code{Next} and @code{Prev}
+pointers are optional.  The @code{Up} pointer is technically also
+optional, although this is most likely the case of a wrongly-structured
+Info manual.  Conventionally the nodes are arranged to form a tree,
+but this is not a requirement of the format.
 
-Identifiers cannot include periods, commas, colons or parentheses
-(including @@-commands which produce any of these); these can confuse
-Info readers.  @xref{Node Line Requirements}.
+Identifiers containing periods, commas, colons or parentheses
+(including @@-commands which produce any of these) can confuse
+Info readers.  If it is necessary to use any of these in the name of a
+node, the name should be surrounded by a pair of @t{<del>} characters.
+@xref{Node Line Requirements}.
+
+The use of non-ASCII characters in the names of nodes is permitted, but can
+cause problems in cross-references between nodes in Info files with different
+character encodings, and also when node names from many different files are
+listed (for example, with the @option{--apropos} option to the standalone Info
+browser), so consider avoiding them when it is convenient to do so.  For
+example, prefer the use of the ASCII apostrophe character (@t{'}) to Unicode
+directional quotes.
 
 The @t{<general text>} of the node can include the special constructs
 described next.
@@ -23927,7 +23945,10 @@ places no restrictions on their location.
 (<menu entry> | <menu comment>)*
 @end example
 
-The parts of a @t{<menu entry>} are described in @ref{Menu Parts}.
+The parts of a @t{<menu entry>} are also described in @ref{Menu Parts}.  They
+have the same syntax as cross-references (@pxref{Info Format Cross
+Reference}).  Indices extend the format to specify the destination line;
+@pxref{Info Format Printindex}.
 
 A @t{<menu comment>} is any line not beginning with @samp{*} that
 appears either at the beginning of the menu or is separated from a
@@ -24020,25 +24041,39 @@ node `Weather Phenomena'.
 
 @cindex Cross references, in Info format
 
-A general cross reference in Info format is written as follows:
+A general cross reference in Info format has one of the following two forms:
 
 @example
     <cross-reference> =
-* (N|n)ote (<id>:: | <label>:(<lparen><infofile><rparen>)?<id>(.|,))
+  * (N|n)ote <label>::
+| * (N|n)ote <label>:(<lparen><infofile><rparen>)?<xrefid>
+
+    <label> = <del>?<label text><del>?
+    <xrefid> = <node name>(.|,)) | <del><node name><del>
 @end example
 
-Whether @samp{note} or @samp{Note} is used is not significant.
+No space should occur between the @t{*} character and the following @t{N}
+or @t{n}.  @samp{*Note} should be used at the start of a sentence, otherwise
+@samp{*note} should be used.  (Some Info readers, such as the one in Emacs,
+can display @samp{*Note} and @samp{*note} as @samp{See} and @samp{see}
+respectively.) In both cases, @t{<label text>} is descriptive text.
 
-The @samp{<id>::} form indicates a node or anchor reference within the
-current manual.
-
-The longer form indicates a general reference, typically used to refer
+The @samp{<label>::} form indicates a node or anchor reference within the
+current manual, where the @t{<label text>} gives the name of the referenced
+node.  The longer form indicates a general reference, typically used to refer
 to a node or anchor in a different manual, but possibly to the current
-manual.  The @t{<label>} is descriptive text; the optional
-@samp{(<infofile>)} is the filename of the manual being referenced,
-and the @t{<id>} is the node or anchor within that manual, terminated
-by a comma or period.  That final punctuation is part of the
-surrounding sentence, and should be displayed.
+manual.   If the label contains a colon character (@t{:}), it should be
+surrounded with a pair of @t{<del>} characters.  The optional
+@samp{(<infofile>)} is the filename of the manual being referenced, and the
+@t{<id>} is the node or anchor within that manual, terminated by a comma or
+period.
+
+If the name of the referenced node contains problematic characters, it
+should be surrounded by a pair of @t{<del>} characters in the same way
+that node names may be quoted in the first line of a node.  This quoting
+mechanism can be used in either form of cross reference.  If the node name is
+surrounded by a pair of @t{<del>} characters, terminating punctuation is not
+strictly required.
 
 Here are some examples:
 
@@ -24046,6 +24081,8 @@ Here are some examples:
 *note GNU Free Documentation License::
 *note Tag table: Info Format Tag Table, for details.
 *Note Overview: (make)Top.
+*Note ^?:^?: (bash)Bourne Shell Builtins.
+*Note alloca.h: (gnulib)^?alloca.h^?.
 @end example
 
 The first shows the short form, a reference to a node in the current
@@ -24057,6 +24094,9 @@ on this particular reference.
 
 The third example refers to the node `Top' in another manual, namely
 @samp{make}, with `Overview' being the label for this cross reference.
+
+The fourth example shows a colon character being quoted in a label, and
+the fifth example shows a full stop being quoted in the node name.
 
 @xref{Cross References}.
 
