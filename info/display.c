@@ -204,6 +204,33 @@ display_node_text (long pl_num, char *printed_line,
 
 int highlight_searches_p = 0;
 
+/* Given an array MATCHES with regions, and an offset *MATCH_INDEX, decide
+   if we are inside a region at offset OFF.  The matches are assumed not
+   to overlap and to be in order. */
+static void
+decide_if_in_match (long off, int *in_match, regmatch_t *matches,
+                    size_t match_count, size_t *match_index)
+{
+  size_t i = *match_index;
+  int m = *in_match;
+
+  for (; i < match_count; i++)
+    {
+      if (matches[i].rm_so > off)
+        break;
+
+      m = 1;
+
+      if (matches[i].rm_eo > off)
+        break;
+
+      m = 0;
+    }
+
+  *match_index = i;
+  *in_match = m;
+}
+
 /* Print each line in the window into our local buffer, and then
    check the contents of that buffer against the display.  If they
    differ, update the display.
@@ -229,26 +256,17 @@ display_update_window_1 (WINDOW *win, long pagetop)
      we start inside a match. */
   if (matches)
     {
-      for (match_index = 0; match_index < win->match_count; match_index++)
-        {
-          if (matches[match_index].rm_so > win->line_starts[win->pagetop])
-            {
-              in_match = 0;
-              break;
-            }
-
-          if (matches[match_index].rm_eo > win->line_starts[win->pagetop])
-            {
-              in_match = 1;
-              break;
-            }
-        }
+      match_index = 0;
+      decide_if_in_match (win->line_starts[win->pagetop], &in_match,
+                          matches, win->match_count, &match_index);
     }
 
   text_buffer_init (&tb_printed_line);
 
   if (in_match)
-    text_buffer_add_string (&tb_printed_line, term_so, strlen(term_so));
+    text_buffer_add_string (&tb_printed_line, term_so, strlen (term_so));
+  else
+    text_buffer_add_string (&tb_printed_line, term_se, strlen (term_se));
 
   for (mbi_init (iter, start, 
                  win->node->contents + win->node->nodelen - start);
@@ -278,32 +296,20 @@ display_update_window_1 (WINDOW *win, long pagetop)
 
       if (matches && match_index != win->match_count)
         {
-          int new_in_match = in_match;
-          if (in_match && cur_ptr >= win->node->contents
-                             + matches[match_index].rm_eo)
-            {
-              new_in_match = 0;
-              match_index++;
+          int was_in_match = in_match;
+          decide_if_in_match (cur_ptr - win->node->contents,
+                              &in_match, matches, win->match_count,
+                              &match_index);
 
-              /* Carry on to check if the next match starts immediately. */
-            } 
-
-          if (match_index != win->match_count
-              && !new_in_match && cur_ptr >= win->node->contents
-                             + matches[match_index].rm_so)
+          if (was_in_match && !in_match)
             {
-              new_in_match = 1;
-            } 
-
-          if (new_in_match != in_match)
+              text_buffer_add_string (&tb_printed_line, term_se,
+                                      strlen (term_se));
+            }
+          else if (!was_in_match && in_match)
             {
-              in_match = new_in_match;
-              if (in_match)
-                text_buffer_add_string (&tb_printed_line, term_so,
-                                        strlen (term_so));
-              else
-                text_buffer_add_string (&tb_printed_line, term_se,
-                                        strlen (term_se));
+              text_buffer_add_string (&tb_printed_line, term_so,
+                                      strlen (term_so));
             }
         }
 

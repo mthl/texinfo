@@ -1,5 +1,10 @@
 2014-08-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/display.c (decide_if_in_match): New function.
+	(display_update_window_1): Call it.
+
+2014-08-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infomap.c (default_emacs_like_info_keys): Add ESC x key
 	sequence for execute-command.
 
