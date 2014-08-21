@@ -23639,6 +23639,17 @@ repetition, @samp{?} optional, @samp{()} grouping, @samp{|}
 alternation, @samp{#} comment.  Exception: @samp{*} at the beginning
 of a line is literal.
 
+The sections in an Info file (such as nodes or tag tables) are separated
+with a sequence:
+
+@example
+(^L)?^_(^L)?^J
+@end example
+
+@noindent
+That is, a @samp{CTRL-_} character followed by a newline, with optional
+formfeed characters.  We refer to such sequences as @t{<separator>}.
+
 We specify literal parentheses (those that are part of the Info
 format) with @t{<lparen>} and @t{<rparen>}, meaning the single
 characters @samp{(} and @samp{)} respectively.  We specify the
@@ -23754,7 +23765,7 @@ commands present in the manual (@pxref{Installing Dir Entries}).
 
 @example
     <indirect table> =
-^_
+<separator>
 Indirect:
 (<filename>: <bytepos>)*
 @end example
@@ -23769,7 +23780,7 @@ As an example, suppose split output is generated for the GDB manual.
 The top-level file @file{gdb.info} will contain something like this:
 
 @example
-^_
+<separator>
 Indirect:
 gdb.info-1: 1878
 gdb.info-2: 295733
@@ -23796,11 +23807,11 @@ giving up if the position is not perfectly at a node beginning.
 
 @example
     <tag table> =
-^_
+<separator>
 Tag Table:
 (<lparen>Indirect<rparen>)?
 (Node|Ref): <nodeid>^?<bytepos>
-^_
+<separator>
 End Tag Table
 @end example
 
@@ -23851,7 +23862,7 @@ encoding information.  It may be augmented in the future.
 
 @example
     <local variables> =
-^_
+<separator>
 Local Variables:
 coding: <encoding>
 End:
@@ -23869,7 +23880,7 @@ Regular nodes look like this:
 
 @example
     <node> =
-^_
+<separator>
 File: <fn>, Node: <id1>, (Next: <id2>, )? (Prev: <id3>, )? Up: <id4>
 
 <general text, until the next ^_ or end-of-file>
