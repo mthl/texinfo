@@ -1,3 +1,8 @@
+2014-08-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infomap.c (default_emacs_like_info_keys): Add ESC x key
+	sequence for execute-command.
+
 2014-08-21  Karl Berry  <karl@gnu.org>
 
 	* Texinfo/Convert/Plaintext.pm (converter_initialize): propagate

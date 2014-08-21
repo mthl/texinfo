@@ -230,6 +230,7 @@ static int default_emacs_like_info_keys[] =
   KEYMAP_META('r'), NUL,                 A_info_move_to_window_line,
   KEYMAP_META('v'), NUL,                 A_info_scroll_backward_page_only,
   KEYMAP_META('x'), NUL,                 A_info_execute_command,
+  ESC, 'x', NUL,                         A_info_execute_command,
 
   CONTROL('x'), CONTROL('b'), NUL,        A_list_visited_nodes,
   CONTROL('x'), CONTROL('c'), NUL,        A_info_quit,
