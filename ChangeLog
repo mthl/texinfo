@@ -1,3 +1,8 @@
+2014-08-21  Karl Berry  <karl@gnu.org>
+
+	* Texinfo/Convert/Plaintext.pm (converter_initialize): propagate
+	FILLCOLUMN.  Report from Mahlon Smith.
+
 2014-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_menu_item): Check for case when there are no

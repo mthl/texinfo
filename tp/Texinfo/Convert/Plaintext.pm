@@ -387,15 +387,6 @@ sub converter_initialize($)
       $self->{'style_map'}->{$quoted_command} = ["\x{2018}", "\x{2019}"];
     }
   }
-  # some caching to avoid calling get_conf
-  if ($self->get_conf('OUTPUT_PERL_ENCODING')) {
-    $self->{'output_perl_encoding'} = $self->get_conf('OUTPUT_PERL_ENCODING');
-  } else {
-    $self->{'output_perl_encoding'} = '';
-  }
-  $self->{'enable_encoding'} = $self->get_conf('ENABLE_ENCODING');
-  $self->{'output_encoding_name'} = $self->get_conf('OUTPUT_ENCODING_NAME');
-  $self->{'debug'} = $self->get_conf('DEBUG');
   $self->{'convert_text_options'} 
       = {Texinfo::Common::_convert_text_options($self)};
   if (defined($self->get_conf('OPEN_QUOTE_SYMBOL'))) {
@@ -410,6 +401,19 @@ sub converter_initialize($)
        = $self->get_conf('CLOSE_QUOTE_SYMBOL');
     }
   }
+  if ($self->get_conf('FILLCOLUMN')) {
+    $self->{'fillcolumn'} = $self->get_conf('FILLCOLUMN');
+    # else it's already set via the defaults
+  }
+  # some caching to avoid calling get_conf
+  if ($self->get_conf('OUTPUT_PERL_ENCODING')) {
+    $self->{'output_perl_encoding'} = $self->get_conf('OUTPUT_PERL_ENCODING');
+  } else {
+    $self->{'output_perl_encoding'} = '';
+  }
+  $self->{'enable_encoding'} = $self->get_conf('ENABLE_ENCODING');
+  $self->{'output_encoding_name'} = $self->get_conf('OUTPUT_ENCODING_NAME');
+  $self->{'debug'} = $self->get_conf('DEBUG');
 
   return $self;
 }
