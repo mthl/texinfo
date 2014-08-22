@@ -3,6 +3,9 @@
 	* info/texinfo.texi: Remove extra space in menu references to
 	"@- @hyphenation" node.  Report from Vincent Belaïche.
 
+	* info/info-stnd.texi (Searching Commands): Add reference to explain
+	regular expressions.
+
 2014-08-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_parse_and_select): Initialize line_number field

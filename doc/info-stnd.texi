@@ -1161,11 +1161,8 @@ alternative is to first perform a forward search, and then use the
 @kindex R
 @findex toggle-regexp
 Toggle between using regular expressions and literal strings for
-searching.  Info uses so-called `extended' regular expression syntax.
-@c We should reference a Texinfo manual where extended regular expressions
-@c are described.  Extended regular expressions are different to those
-@c of Emacs (e.g., "(" and ")" are equivalent to "\(" and "\)" in Emacs).
-@c The best reference may be "man 7 regex" from the Linux manpages.
+searching.  Info uses so-called `extended' regular expression syntax
+(@pxref{Regular Expressions,,, grep, GNU Grep}).
 
 @item @kbd{S} (@code{search-case-sensitively}
 @kindex S
