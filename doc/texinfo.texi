@@ -488,7 +488,7 @@ Forcing and Preventing Breaks
 
 * Break Commands::              Summary of break-related commands.
 * Line Breaks::                 Forcing line breaks.
-* @t{@@-  @@hyphenation}::            Helping @TeX{} with hyphenation points.
+* @t{@@- @@hyphenation}::             Helping @TeX{} with hyphenation points.
 * @t{@@allowcodebreaks}::            Controlling line breaks within @@code text.
 * @t{@@w}::                          Preventing unwanted line breaks in text.
 * @t{@@tie}::                        Inserting an unbreakable but varying space.
@@ -12298,7 +12298,7 @@ problematic line and page breaks.
 @menu
 * Break Commands::              Summary of break-related commands.
 * Line Breaks::                 Forcing line breaks.
-* @t{@@-  @@hyphenation}::            Helping @TeX{} with hyphenation points.
+* @t{@@- @@hyphenation}::             Helping @TeX{} with hyphenation points.
 * @t{@@allowcodebreaks}::            Controlling line breaks within @@code text.
 * @t{@@w}::                          Preventing unwanted line breaks in text.
 * @t{@@tie}::                        Inserting an unbreakable but varying space.
