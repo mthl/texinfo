@@ -238,6 +238,16 @@ info_read_and_dispatch (void)
       if (key == -1)
         continue;
 
+      /* Make key chord sequences ESC <key> equivalent to Meta-<key>. */
+      if (key == ESC)
+        {
+          int another_key;
+          another_key = get_input_key ();
+          if (another_key < KEYMAP_META_BASE)
+            another_key += KEYMAP_META_BASE;
+          key = another_key;
+        }
+
       window_clear_echo_area ();
 
       if (key == KEY_MOUSE)
