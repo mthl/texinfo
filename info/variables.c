@@ -32,6 +32,8 @@
    a variable. */
 static char *on_off_choices[] = { "Off", "On", NULL };
 
+static char *mouse_choices[] = { "Off", "normal-tracking", NULL };
+
 /* Note that the 'where_set' field of each element in the array is
    not given and defaults to 0. */
 VARIABLE_ALIST info_variables[] = {
@@ -108,6 +110,10 @@ VARIABLE_ALIST info_variables[] = {
       N_("Highlight search matches"),
     &highlight_searches_p, (char **)on_off_choices },
 
+  { "mouse",
+      N_("Method to use to track mouse events"),
+    &mouse_protocol, (char **)mouse_choices },
+
   { NULL }
 };
 
@@ -118,19 +124,15 @@ DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
 
   /* Get the variable's name. */
   var = read_variable_name (_("Describe variable: "), window);
-
   if (!var)
     return;
 
-  description = xmalloc (20 + strlen (var->name)
-			 + strlen (_(var->doc)));
-
   if (var->choices)
-    sprintf (description, "%s (%s): %s.",
-             var->name, var->choices[*(var->value)], _(var->doc));
+    asprintf (&description, "%s (%s): %s.",
+             var->name, var->choices[*var->value], _(var->doc));
   else
-    sprintf (description, "%s (%d): %s.",
-	     var->name, *(var->value), _(var->doc));
+    asprintf (&description, "%s (%d): %s.",
+	     var->name, *var->value, _(var->doc));
 
   window_message_in_echo_area ("%s", description);
   free (description);

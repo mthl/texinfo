@@ -2177,6 +2177,13 @@ Minimum length of a search string (default 1).  Attempts to initiate a
 search for a string (or regular expression) shorter than this value,
 result in an error.
 
+@item mouse
+@vindex mouse
+What method to use to get input from a mouse device.  The default value is
+@code{normal-tracking}, which makes Info use ``normal tracking mode'' if
+it detects that the terminal supports it.  If the value is @code{Off},
+mouse tracking is disabled.
+
 @anchor{scroll-behavior}
 @item scroll-behavior
 @itemx scroll-behaviour

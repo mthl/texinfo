@@ -128,4 +128,8 @@ extern char *term_bt;
 
 extern char *term_so, *term_se;
 
+#define MP_NONE 0
+#define MP_NORMAL_TRACKING 1
+extern int mouse_protocol;
+
 #endif /* !TERMINAL_H */

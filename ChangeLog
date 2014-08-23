@@ -1,3 +1,15 @@
+2014-08-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/variables.c (info_variables): New user variable 'mouse'.
+	* info/terminal.c (mouse_protocol): New variable.
+	* info/terminal.h (MP_NONE, MP_NORMAL_TRACKING): New preprocessor
+	definitions.
+	* info/terminal.c (terminal_initialize_terminal): Check if
+	mouse tracking was turned off.
+	* info/variables.c (describe_variable): Allow arbitarily long values
+	for variables.
+	* doc/info-stnd.texi (Variables): Document 'mouse' variable.
+
 2014-08-23  Karl Berry  <karl@gnu.org>
 
 	* Texinfo/Convert/Plaintext.pm (converter_initialize): put 

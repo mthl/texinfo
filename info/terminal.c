@@ -70,6 +70,9 @@ VFunction *terminal_ring_bell_hook = NULL;
 VFunction *terminal_write_chars_hook = NULL;
 VFunction *terminal_scroll_terminal_hook = NULL;
 
+/* User variable 'mouse'.  Values can be MP_* constants in terminal.h. */
+int mouse_protocol = MP_NORMAL_TRACKING;
+
 /* **************************************************************** */
 /*                                                                  */
 /*                      Terminal and Termcap                        */
@@ -143,8 +146,11 @@ terminal_begin_using_terminal (void)
      xterm.  The presence of the Km capability may not be a reliable way to
      tell whether this mode exists, but sending the following sequence is
      probably harmless if it doesn't.  */
-  if (term_Km && !strcmp (term_Km, "\033[M"))
+  if (mouse_protocol == MP_NORMAL_TRACKING
+      && term_Km && !strcmp (term_Km, "\033[M"))
     send_to_terminal ("\033[?1000h");
+  else
+    term_Km = 0;
 
   if (term_keypad_on)
       send_to_terminal (term_keypad_on);
@@ -755,7 +761,7 @@ terminal_initialize_terminal (char *terminal_name)
 
   term_bt = tgetstr ("bt", &buffer);
 
-  /* String introducing a mosue event. */
+  /* String introducing a mouse event. */
   term_Km = tgetstr ("Km", &buffer);
 
   initialize_byte_map ();

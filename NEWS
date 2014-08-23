@@ -41,7 +41,7 @@ one of the relevant sections:
     not found as a top-level menu item.
   . invoking info with an absolute or explicitly relative file name
     (./foo.info, /tmp/foo.info, etc.) just visits that file.
-  . new option --init-file allows overriding ~/.info.
+  . new option --init-file allows overriding ~/.infokey.
   . new command M-x info-version.
   . the M-x kill-node command has been removed.
   . new variable infopath-no-defaults allows omitting the compile-time
@@ -50,6 +50,7 @@ one of the relevant sections:
   . separate `infokey' program has been removed - the .infokey file is now
     read directly by info.
   . new variable `highlight-searches' allows highlighting results from a search
+  . support for mouse scrollwheel, controlled by 'mouse' variable
 
 * install-info:
   . handle compressed input file names containing spaces.
