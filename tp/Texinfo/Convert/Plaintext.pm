@@ -358,7 +358,6 @@ sub converter_initialize($)
   $self->{'context'} = [];
   $self->{'format_context'} = [];
   $self->{'empty_lines_count'} = undef;
-  $self->push_top_formatter('_Root_context');
   push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0,
                                      'locations' => []};
 
@@ -405,6 +404,8 @@ sub converter_initialize($)
     $self->{'fillcolumn'} = $self->get_conf('FILLCOLUMN');
     # else it's already set via the defaults
   }
+  # This needs to be here to take into account $self->{'fillcolumn'}.
+  $self->push_top_formatter('_Root_context');
   # some caching to avoid calling get_conf
   if ($self->get_conf('OUTPUT_PERL_ENCODING')) {
     $self->{'output_perl_encoding'} = $self->get_conf('OUTPUT_PERL_ENCODING');

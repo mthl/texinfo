@@ -1,3 +1,9 @@
+2014-08-23  Karl Berry  <karl@gnu.org>
+
+	* Texinfo/Convert/Plaintext.pm (converter_initialize): put 
+	push_top_formatter after setting 'fillcolumn' such that it is
+	taken into account.
+
 2014-08-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_read_and_dispatch): Consider ESC <key> to be
