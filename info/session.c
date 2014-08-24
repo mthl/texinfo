@@ -1315,43 +1315,49 @@ char *info_scroll_choices[] = {
   "Continuous", "Next Only", "Page Only", NULL
 };
 
-static void _scroll_forward (WINDOW *window, int count, int behaviour);
-static void _scroll_backward (WINDOW *window, int count, int behaviour);
+static void _scroll_forward (WINDOW *window, int count, int nodeonly);
+static void _scroll_backward (WINDOW *window, int count, int nodeonly);
 
 static void
-_scroll_forward (WINDOW *window, int count, int behaviour)
+_scroll_forward (WINDOW *window, int count, int nodeonly)
 {
   if (count < 0)
-    _scroll_backward (window, -count, behaviour);
+    _scroll_backward (window, -count, nodeonly);
   else
     {
-      /* If there are no more lines to scroll here, error, or get
-         another node, depending on BEHAVIOUR. */
       if (window->pagetop >= window->line_count - window->height)
         {
-          forward_move_node_structure (window, behaviour);
+          if (!nodeonly)
+            {
+              /* If there are no more lines to scroll here, error, or get
+                 another node. */
+              forward_move_node_structure (window, info_scroll_behaviour);
+            }
           return;
         }
-
       set_window_pagetop (window, window->pagetop + count);
     }
 }
 
 static void
-_scroll_backward (WINDOW *window, int count, int behaviour)
+_scroll_backward (WINDOW *window, int count, int nodeonly)
 {
   if (count < 0)
-    _scroll_backward (window, -count, behaviour);
+    _scroll_backward (window, -count, nodeonly);
   else
     {
       int desired_top;
 
-      /* If there are no more lines to scroll here, error, or get
-         another node, depending on BEHAVIOUR. */
       if (window->pagetop <= 0)
         {
-          if (backward_move_node_structure (window, behaviour) == 0)
-            info_end_of_node (window, 1, 0);
+          if (!nodeonly)
+            {
+              /* If there are no more lines to scroll here, error, or get
+                 another node. */
+              if (backward_move_node_structure (window, info_scroll_behaviour)
+                  == 0)
+                info_end_of_node (window, 1, 0);
+            }
           return;
         }
 
@@ -1376,7 +1382,7 @@ DECLARE_INFO_COMMAND (info_scroll_forward, _("Scroll forward in this window"))
     lines = default_window_size * count;
   else
     lines = (window->height - 2) * count;
-  _scroll_forward (window, lines, info_scroll_behaviour);
+  _scroll_forward (window, lines, 0);
 }
 
 /* Show the previous screen of WINDOW's node. */
@@ -1419,7 +1425,7 @@ DECLARE_INFO_COMMAND (info_scroll_forward_page_only, _("Scroll forward in this w
     lines = default_window_size * count;
   else
     lines = (window->height - 2) * count;
-  _scroll_forward (window, lines, IS_PageOnly);
+  _scroll_forward (window, lines, 1);
 }
 
 /* Show the previous screen of WINDOW's node but never move to previous
@@ -1453,7 +1459,7 @@ DECLARE_INFO_COMMAND (info_scroll_forward_page_only_set_window,
   else
     lines = (window->height - 2) * count;
 
-  _scroll_forward (window, lines, IS_PageOnly);
+  _scroll_forward (window, lines, 1);
 }
 
 /* Like info_scroll_backward_page_only, but sets default_window_size as a side
@@ -1467,13 +1473,13 @@ DECLARE_INFO_COMMAND (info_scroll_backward_page_only_set_window,
 /* Scroll the window forward by N lines.  */
 DECLARE_INFO_COMMAND (info_down_line, _("Scroll down by lines"))
 {
-  _scroll_forward (window, count, IS_PageOnly);
+  _scroll_forward (window, count, 1);
 }
 
 /* Scroll the window backward by N lines.  */
 DECLARE_INFO_COMMAND (info_up_line, _("Scroll up by lines"))
 {
-  _scroll_backward (window, count, IS_PageOnly);
+  _scroll_backward (window, count, 1);
 }
 
 /* Lines to scroll when using commands that scroll by half screen size
@@ -1504,7 +1510,7 @@ DECLARE_INFO_COMMAND (info_scroll_half_screen_down,
   else
     lines = (window->height + 1) / 2 * count;
 
-  _scroll_forward (window, lines, IS_PageOnly);
+  _scroll_forward (window, lines, 1);
 }
 
 /* Scroll the window backward by N lines and remember N as default for
@@ -1928,7 +1934,8 @@ char *scroll_last_node_choices[] = {
 int scroll_last_node = SLN_Stop;
 
 /* Move to 1st menu item, Next, Up/Next, or error in this window. Return
-   non-zero on error, 0 on success. */
+   non-zero on error, 0 on success.  Display an error message if there is an
+   error. */
 static int
 forward_move_node_structure (WINDOW *window, int behaviour)
 {

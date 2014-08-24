@@ -1,3 +1,13 @@
+2014-08-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (_scroll_forward, _scroll_backward): Arguments
+	changed.  All callers updated.  Don't display an error message when
+	staying in the same node.
+	* doc/info-stnd.texi (Variables): Mention what mouse is used for.
+	(Node Commands) <goto-invocation>: Add missing closing parenthesis
+	and 'vi-like operation' text.
+	* doc/texinfo.texi (Overview): Remove two extra words.
+
 2014-08-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/variables.c (info_variables): New user variable 'mouse'.

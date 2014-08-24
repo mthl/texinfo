@@ -796,7 +796,7 @@ Spell ``Texinfo'' with a capital ``T'' and the other letters in
 lowercase.
 
 Manuals for most GNU packages are written in Texinfo, and available
-online at @url{http://www.gnu.org/doc}.  The Texinfo
+online at @url{http://www.gnu.org/doc}.
 
 @menu
 * Reporting Bugs::              Submitting effective bug reports.

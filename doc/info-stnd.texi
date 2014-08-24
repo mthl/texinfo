@@ -1028,10 +1028,10 @@ must include the Info file of the other file.  For example,
 finds the node @samp{Buffers} in the Info file @file{emacs}.
 
 @anchor{goto-invocation}
-@item @kbd{O} (@code{goto-invocation}
+@item @kbd{O} (@code{goto-invocation})
 @itemx @kbd{I}
 @kindex O
-@kindex I
+@kindex I, vi-like operation
 @findex goto-invocation
 @cindex finding the Invocation node
 Read the name of a program and look for a node in the current Info file
@@ -2181,8 +2181,9 @@ result in an error.
 @vindex mouse
 What method to use to get input from a mouse device.  The default value is
 @code{normal-tracking}, which makes Info use ``normal tracking mode'' if
-it detects that the terminal supports it.  If the value is @code{Off},
-mouse tracking is disabled.
+it detects that the terminal supports it.  This enables you to scroll the
+contents of the active window with a mouse scrollwheel.  Set this variable
+to @code{Off} to disable the use of a mouse.
 
 @anchor{scroll-behavior}
 @item scroll-behavior
