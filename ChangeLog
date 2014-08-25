@@ -1,3 +1,8 @@
+2014-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.c (set_window_pagetop): If point would end up past
+	bottom of displayed part of node, put it on the last displayed line.
+
 2014-08-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (_scroll_forward, _scroll_backward): Arguments
