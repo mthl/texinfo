@@ -2740,7 +2740,13 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
             asprintf (error, _("No menu in node `%s'."),
                       node_printed_rep (initial_node));
           debug (3, ("no menu found"));
-          return strict ? 0 : initial_node;
+          if (!strict)
+            return initial_node;
+          else
+            {
+              free (initial_node);
+              return 0;
+            }
         }
 
       /* Find the specified menu item. */
@@ -2753,7 +2759,13 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
             asprintf (error, _("No menu item `%s' in node `%s'."),
                       arg, node_printed_rep (initial_node));
           debug (3, ("no entry found"));
-          return strict ? 0 : initial_node;
+          if (!strict)
+            return initial_node;
+          else
+            {
+              free (initial_node);
+              return 0;
+            }
         }
 
       debug (3, ("entry: %s, %s", entry->filename, entry->nodename));

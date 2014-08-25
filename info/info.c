@@ -54,6 +54,9 @@ static int print_version_p = 0;
 /* Non-zero means print a short description of the options. */
 static int print_help_p = 0;
 
+/* Name of file to start session with. */
+static char *initial_file = 0;
+
 /* Array of the names of nodes that the user specified with "--node" on the
    command line. */
 static char **user_nodenames = NULL;
@@ -160,12 +163,12 @@ static void info_short_help (void);
 static void init_messages (void);
 
 
-/* Get the initial Info file, either by following menus from "(dir)Top",
-   or what the user specifed with values in filename. */
-static char *
+/* Set INITIAL_FILE to the name of the initial Info file, either by
+   following menus from "(dir)Top", or what the user specifed with
+   values in FILENAME. */
+static void
 get_initial_file (char *filename, int *argc, char ***argv, char **error)
 {
-  char *initial_file = 0;           /* First file loaded by Info. */
   REFERENCE *entry;
 
   /* If there are any more arguments, the initial file is the
@@ -192,7 +195,7 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
               entry->filename = initial_file;
               add_pointer_to_array (info_copy_reference (entry),
                   ref_index, ref_list, ref_slots, 2);
-              return initial_file;
+              return;
             }
         }
     }
@@ -208,7 +211,7 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
             *error = filesys_error_string (filename, filesys_error_number);
         }
       else
-        return initial_file;
+        return;
     }
 
   /* File name lookup. */
@@ -221,7 +224,7 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
         {
           (*argv)++; /* Advance past first remaining argument. */
           (*argc)--;
-          return initial_file;
+          return;
         }
       else
         asprintf (error, _("No menu item `%s' in node `%s'."),
@@ -244,7 +247,7 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
              ref_index, ref_list, ref_slots, 2);
 
           initial_file = MANPAGE_FILE_BUFFER_NAME;
-          return initial_file;
+          return;
         }
     }
 
@@ -266,13 +269,13 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
           entry->filename = initial_file;
           add_pointer_to_array (info_copy_reference (entry),
               ref_index, ref_list, ref_slots, 2);
-          return initial_file;
+          return;
         }
     }
 
   /* Otherwise, we want the dir node.  The only node to be displayed
      or output will be "Top". */
-  return 0;
+  return;
 }
 
 /* Expand list of nodes to be loaded. */
@@ -288,7 +291,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
       if (ref_index > 0)
         {
           /* Discard a dir entry that was found. */
-          free (ref_list[0]);
+          info_reference_free (ref_list[0]);
           ref_index = 0;
         }
 
@@ -333,7 +336,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
       if (ref_index > 0)
         {
           /* Discard a dir entry that was found. */
-          free (ref_list[0]);
+          info_reference_free (ref_list[0]);
           ref_index = 0;
         }
 
@@ -375,7 +378,8 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
 
       if (ref_index == 0)
         add_pointer_to_array
-          (info_new_reference (initial_file->fullpath, "Top"),
+          (info_new_reference (xstrdup (initial_file->fullpath),
+                               xstrdup ("Top")),
            ref_index, ref_list, ref_slots, 2);
 
       initial_node = info_get_node_with_defaults (ref_list[0]->filename,
@@ -388,7 +392,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
         {
           argv += argc; argc = 0;
 
-          free (ref_list[0]);
+          info_reference_free (ref_list[0]);
           ref_list[0] = info_new_reference (node_via_menus->fullpath,
                                             node_via_menus->nodename);
           free (node_via_menus);
@@ -424,7 +428,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
               argv += argc; argc = 0;
               free (*error); *error = 0;
 
-              free (ref_list[0]);
+              info_reference_free (ref_list[0]);
               ref_list[0] = info_copy_reference (nearest);
             }
         }
@@ -441,7 +445,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
             {
               argv += argc; argc = 0;
 
-              free (ref_list[0]);
+              info_reference_free (ref_list[0]);
               ref_list[0] = info_new_reference (node_via_menus->fullpath,
                                                 node_via_menus->nodename);
               free (node_via_menus);
@@ -545,7 +549,6 @@ main (int argc, char *argv[])
 {
   int getopt_long_index;       /* Index returned by getopt_long (). */
   char *init_file = 0;         /* Name of init file specified. */
-  char *initial_file = 0;      /* File to start session with. */
   FILE_BUFFER *initial_fb = 0; /* File to start session with. */
   char *error = 0;             /* Error message to display in mini-buffer. */
 
@@ -811,7 +814,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
     }
   else
     {
-      initial_file = get_initial_file (user_filename, &argc, &argv, &error);
+      get_initial_file (user_filename, &argc, &argv, &error);
 
       /* If the user specified `--index-search=STRING', 
          start the info session in the node corresponding

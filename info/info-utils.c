@@ -1728,6 +1728,8 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
 
   /* Free resources used in character encoding conversion. */
   close_conversion ();
+  
+  free (matches);
 
   node->references = refs;
 

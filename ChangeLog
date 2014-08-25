@@ -3,6 +3,18 @@
 	* info/dir.c (insert_text_into_node): Include terminating null byte
 	from node contents.
 
+	* info/info-utils.c (scan_node_contents): Free match list before
+	returning.
+	* info/info.c (main, initial_file): Make initial_file file-level
+	variable.
+	(get_initial_file): Set initial_file variable instead of returning a
+	value.
+	(add_initial_nodes): Use info_reference_free instead of free on
+	REFERENCE variables.  Duplicate arguments to info_new_reference so we
+	can free them.
+	* info/session.c (info_follow_menus): Always free initial_node
+	argument before returning.
+
 2014-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/display.c (find_diff): Add braces round "if" command.
