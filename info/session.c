@@ -3561,7 +3561,7 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
     }
   
   if (result != search_success)
-    return;
+    return result;
 
   if (dir > 0)
     {
@@ -3577,7 +3577,7 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
       end1 = node->body_start;
     }
   
-  if (result != search_failure)
+  if (result != search_invalid)
     {
       result = match_in_match_list (matches, match_count,
                                     start1, end1, &match_index);
@@ -3674,6 +3674,9 @@ info_search_internal (char *string, WINDOW *window,
     {
       result = info_search_in_node_internal (window, node, string, start, dir,
                  case_sensitive, use_regex, start_off);
+
+      if (result == search_invalid)
+        return 1;
 
       if (result == search_success)
         {
@@ -3801,7 +3804,7 @@ ask_for_search_string (int case_sensitive, int use_regex, int direction)
   if (mbslen (search_string) < min_search_length)
     {
       info_error ("%s", _("Search string too short"));
-      return;
+      return 0;
     }
 
   return 1;

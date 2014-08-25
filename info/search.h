@@ -48,10 +48,9 @@ enum search_result
   {
     search_success,             
     search_not_found,
-    search_failure
+    search_invalid
   };
 
-SEARCH_BINDING *make_binding (char *buffer, long int start, long int end);
 SEARCH_BINDING *copy_binding (SEARCH_BINDING *binding);
 extern enum search_result search_forward (char *string,
 					  SEARCH_BINDING *binding, long *poff);

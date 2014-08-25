@@ -10,6 +10,14 @@
 	* info/terminal.c (add_seq_to_byte_map): Take char * argument and cast
 	to unsigned char *.
 
+	* info/search.h (enum search_result): Change 'search_failure' value to
+	'search_invalid'.
+	* info/session.c (info_search_in_node_internal): Return value
+	properly.  Don't clobber error message printed for invalid regular
+	expression.
+	(ask_for_search_string): Return value properly.
+	* info/search.c (make_binding): Merged into caller.
+
 2014-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.c (set_window_pagetop): If point would end up past

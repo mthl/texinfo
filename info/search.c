@@ -35,28 +35,16 @@
    They return a long, which is the offset from the start of the buffer
    at which the match was found.  An offset of -1 indicates failure. */
 
-/* A function which makes a binding with buffer and bounds. */
-SEARCH_BINDING *
-make_binding (char *buffer, long int start, long int end)
-{
-  SEARCH_BINDING *binding;
-
-  binding = xmalloc (sizeof (SEARCH_BINDING));
-  binding->buffer = buffer;
-  binding->start = start;
-  binding->end = end;
-  binding->flags = 0;
-
-  return binding;
-}
-
 /* Make a copy of BINDING without duplicating the data. */
 SEARCH_BINDING *
 copy_binding (SEARCH_BINDING *binding)
 {
   SEARCH_BINDING *copy;
 
-  copy = make_binding (binding->buffer, binding->start, binding->end);
+  copy = xmalloc (sizeof (SEARCH_BINDING));
+  copy->buffer = binding->buffer;
+  copy->start = binding->start;
+  copy->end = binding->end;
   copy->flags = binding->flags;
   return copy;
 }
@@ -175,7 +163,7 @@ regexp_search (char *regexp, int is_literal, int is_insensitive,
       char *buf = xmalloc (size);
       regerror (result, &preg, buf, size);
       info_error (_("regexp error: %s"), buf);
-      return search_failure;
+      return search_invalid;
     }
 
   saved_char = buffer[buflen];
