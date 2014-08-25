@@ -123,19 +123,21 @@ find_diff (const char *a, size_t alen, const char *b, size_t blen, int *ppos)
     }
 
   if (mbi_avail (itra) || mbi_avail (itrb))
-    if (first_escape != -1)
-      {
-        *ppos = escape_pos;
-        return first_escape;
-      }
-    else
-      {
-        /* If there was a difference in the line, and there was an escape
-           character, return the position of the escape character, as it could
-           start a terminal escape sequence. */
-        *ppos = pos;
-        return i;
-      }
+    {
+      if (first_escape != -1)
+        {
+          *ppos = escape_pos;
+          return first_escape;
+        }
+      else
+        {
+          /* If there was a difference in the line, and there was an escape
+             character, return the position of the escape character, as it could
+             start a terminal escape sequence. */
+          *ppos = pos;
+          return i;
+        }
+    }
 
   /* Otherwise, no redrawing is required. */
   return -1;
@@ -381,8 +383,6 @@ display_update_window_1 (WINDOW *win, long pagetop)
 
       if (*cur_ptr != '\n' && rep) 
         {
-          int i;
-          
           text_buffer_add_string (&tb_printed_line, rep, pbytes);
           pl_chars += pchars;
           continue;

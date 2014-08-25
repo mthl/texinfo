@@ -1,5 +1,14 @@
 2014-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/display.c (find_diff): Add braces round "if" command.
+	(display_update_window_1): Remove unused variable.
+	* info/session.c (isearch_terminate_search_key): Removed.
+	* info/session.h: Add missing declarations for get_input_key,
+	get_another_input_key.
+	* info/session.c (fill_input_buffer): Remove unused variable.
+
+2014-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/window.c (set_window_pagetop): If point would end up past
 	bottom of displayed part of node, put it on the last displayed line.
 

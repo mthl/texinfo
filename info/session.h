@@ -68,6 +68,9 @@ extern int cursor_movement_scrolls_p;
 #define SLN_Scroll 1 /* Do usual scrolling */
 #define SLN_Top    2 /* Go to the top node */
 
+int get_input_key (void);
+int get_another_input_key (void);
+
 extern char *scroll_last_node_choices[];
 /* Controls what to do when a scrolling command is issued at the end of the
    last node. */

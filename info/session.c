@@ -396,10 +396,8 @@ fill_input_buffer (int wait)
          --restore, switch to standard input.  Otherwise quit. */
       if (info_input_stream != stdin)
         {
-          int tty;
           fclose (info_input_stream);
           info_input_stream = stdin;
-          tty = fileno (info_input_stream);
           display_inhibited = 0;
           display_update_display ();
           display_cursor_at_point (active_window);
@@ -4026,7 +4024,6 @@ static char *last_isearch_accepted = NULL;
 static char *isearch_string = NULL;
 static int isearch_string_index = 0;
 static int isearch_string_size = 0;
-static unsigned char isearch_terminate_search_key = ESC;
 
 /* Array of search states. */
 static SEARCH_STATE **isearch_states = NULL;
