@@ -30,7 +30,5 @@ grep 'Node: Top' $GINFO_OUTPUT \
 
 RETVAL=$?
 
-rm -f $GINFO_OUTPUT
-exit $RETVAL
-
+. $t/Cleanup.inc
 

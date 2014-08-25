@@ -15,6 +15,10 @@
 	* info/session.c (info_follow_menus): Always free initial_node
 	argument before returning.
 
+	* info/t/Init-test.inc: Remove out-of-date comment.
+	* info/t/file.sh: Source Cleanup.inc.
+	* info/t/tab.sh: Remove unnecessary line to delete temporary files.
+
 2014-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/display.c (find_diff): Add braces round "if" command.

@@ -32,6 +32,5 @@ else
 	RETVAL=$?
 fi
 
-rm -f $0.pipein $0.pipeout
 . $t/Cleanup.inc
 
