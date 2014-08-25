@@ -1,5 +1,10 @@
 2014-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/dir.c (insert_text_into_node): Include terminating null byte
+	from node contents.
+
+2014-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/display.c (find_diff): Add braces round "if" command.
 	(display_update_window_1): Remove unused variable.
 	* info/session.c (isearch_terminate_search_key): Removed.

@@ -244,7 +244,7 @@ insert_text_into_node (NODE *node, long start, char *text, int textlen)
   contents = xmalloc (node->nodelen + textlen + 1);
   memcpy (contents, node->contents, start);
   memcpy (contents + start, text, textlen);
-  memcpy (contents + start + textlen, node->contents + start, end - start);
+  memcpy (contents + start + textlen, node->contents + start, end - start + 1);
   free (node->contents);
   node->contents = contents;
   node->nodelen += textlen;
