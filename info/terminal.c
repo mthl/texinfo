@@ -528,11 +528,12 @@ terminal_get_screen_size (void)
 BYTEMAP_ENTRY *byte_seq_to_key;
 
 static void
-add_seq_to_byte_map (int key_id, unsigned char *seq)
+add_seq_to_byte_map (int key_id, char *seq)
 {
   BYTEMAP_ENTRY *b = byte_seq_to_key;
 
-  unsigned char *c = seq;
+  /* Must consider bytes as unsigned because we use them as array indices. */
+  unsigned char *c = (unsigned char *) seq;
   for (; *c; c++)
     {
       if (c[1] == '\0') /* Last character. */

@@ -7,6 +7,9 @@
 	get_another_input_key.
 	* info/session.c (fill_input_buffer): Remove unused variable.
 
+	* info/terminal.c (add_seq_to_byte_map): Take char * argument and cast
+	to unsigned char *.
+
 2014-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.c (set_window_pagetop): If point would end up past
