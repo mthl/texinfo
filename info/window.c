@@ -88,7 +88,7 @@ window_initialize_windows (int width, int height)
 void
 window_new_screen_size (int width, int height)
 {
-  register WINDOW *win;
+  register WINDOW *win, *first_win;
   int delta_height, delta_each, delta_leftover;
   int numwins;
 
@@ -113,10 +113,7 @@ window_new_screen_size (int width, int height)
   if (numwins == 0)
     return; /* There is nothing to do. */
 
-  /* Divide the change in height among the available windows.  This
-     doesn't work very well because if we are getting a resize signal
-     every time the screen resizes by 1 line, delta_height will always
-     be 1. */
+  /* Divide the change in height among the available windows. */
   delta_each = delta_height / numwins;
   delta_leftover = delta_height - (delta_each * numwins);
 
@@ -155,11 +152,22 @@ window_new_screen_size (int width, int height)
       numwins--;
     }
 
+  /* Alternate which window we start resizing at, to resize all
+     windows evenly. */
+    {
+      int first_win_num = the_screen->height % numwins;
+      int i;
+      first_win = windows;
+      for (i = 0; i < first_win_num; i++)
+        first_win = first_win->next;
+    }
+
   /* Change the height of each window in the chain by delta_each.  Change
      the height of the last window in the chain by delta_each and by the
      leftover amount of change.  Change the width of each window to be
      WIDTH. */
-  for (win = windows; win; win = win->next)
+  win = first_win;
+  do
     {
       if ((win->width != width) && ((win->flags & W_InhibitMode) == 0))
         {
@@ -180,7 +188,15 @@ window_new_screen_size (int width, int height)
           win->height += delta_leftover;
           delta_leftover = 0;
         }
+      /* Go to next window, wrapping round to the start. */
+      win = win->next;
+      if (!win)
+        win = windows;
+    }
+  while (win != first_win);
 
+  for (win = windows; win; win = win->next)
+    {
       /* If this is not the first window in the chain, set the
          first row of it by adding one to the location of the
          previous window's modeline. */
