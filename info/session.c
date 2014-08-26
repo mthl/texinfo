@@ -2723,9 +2723,6 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
   WINDOW *defaults;
   NODE *node = NULL;
 
-  if (error)
-    *error = NULL;
-
   for (; *menus; menus++)
     {
       REFERENCE *entry;
@@ -2737,8 +2734,11 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
       if (!initial_node->references)
         {
           if (error)
-            asprintf (error, _("No menu in node `%s'."),
-                      node_printed_rep (initial_node));
+            {
+              free (*error);
+              asprintf (error, _("No menu in node `%s'."),
+                        node_printed_rep (initial_node));
+            }
           debug (3, ("no menu found"));
           if (!strict)
             return initial_node;
@@ -2756,8 +2756,11 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
       if (!entry)
         {
           if (error)
-            asprintf (error, _("No menu item `%s' in node `%s'."),
-                      arg, node_printed_rep (initial_node));
+            {
+              free (*error);
+              asprintf (error, _("No menu item `%s' in node `%s'."),
+                        arg, node_printed_rep (initial_node));
+            }
           debug (3, ("no entry found"));
           if (!strict)
             return initial_node;
@@ -2777,10 +2780,13 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
         {
 	  debug (3, ("no matching node found"));
 	  if (error)
-            asprintf (error,
-                      _("Unable to find node referenced by `%s' in `%s'."),
-		      entry->label,
-		      node_printed_rep (initial_node));
+            {
+              free (*error);
+              asprintf (error,
+                        _("Unable to find node referenced by `%s' in `%s'."),
+                        entry->label,
+                        node_printed_rep (initial_node));
+            }
           return strict ? 0 : initial_node;
         }
 
@@ -3619,6 +3625,7 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
         new_point = matches[match_index].rm_so;
 
       window->point = new_point;
+      window->goal_column = window_get_cursor_column (window);
     }
   return result;
 }
@@ -3990,7 +3997,7 @@ DECLARE_INFO_COMMAND (info_search_previous,
          This means if 'info_search_next' was the last command, we'll
          go back to the same place. */
       new_pagetop = window->pagetop - window->height;
-      new_pagetop -= (window->pagetop - match_line) / window->height
+      new_pagetop -= (window->pagetop - match_line - 1) / window->height
                       * window->height;
 
       if (new_pagetop < 0)

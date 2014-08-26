@@ -1,5 +1,13 @@
 2014-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (info_follow_menus): Free error argument before
+	overwriting it.
+	(info_search_in_node_internal): Set goal column after search.
+	(info_search_previous): Work correctly when the match is an exact
+	number of screen-fulls away.
+
+2014-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/m-x.c (info_execute_command): Free a string.  Allow arbitarily
 	long prompts.
 	* info/info.c (main): Exit with exit() instead of 'return' to avoid
