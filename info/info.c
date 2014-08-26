@@ -57,6 +57,9 @@ static int print_help_p = 0;
 /* Name of file to start session with. */
 static char *initial_file = 0;
 
+/* File to start session with. */
+static FILE_BUFFER *initial_fb = 0;
+
 /* Array of the names of nodes that the user specified with "--node" on the
    command line. */
 static char **user_nodenames = NULL;
@@ -187,14 +190,16 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
           initial_file = info_find_fullpath (entry->filename, 0);
           if (initial_file)
             {
+              REFERENCE *copy;
               (*argv)++; /* Advance past first remaining argument. */
               (*argc)--;
 
+              copy = info_copy_reference (entry);
               /* Store full path, so that we find the already loaded file in
                  info_find_file, and show the full path if --where is used. */
-              entry->filename = initial_file;
-              add_pointer_to_array (info_copy_reference (entry),
-                  ref_index, ref_list, ref_slots, 2);
+              free (copy->filename);
+              copy->filename = xstrdup (initial_file);
+              add_pointer_to_array (copy, ref_index, ref_list, ref_slots, 2);
               return;
             }
         }
@@ -257,18 +262,20 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
       entry = lookup_dir_entry ((*argv)[0], 1);
       if (entry)
         {
+          REFERENCE *copy;
           (*argv)++; /* Advance past first remaining argument. */
           (*argc)--;
           /* Clear error message. */
           free (*error);
           *error = 0;
 
+          copy = info_copy_reference (entry);
           initial_file = info_find_fullpath (entry->filename, 0);
           /* Store full path, so that we find the already loaded file in
              info_find_file, and show the full path if --where is used. */
-          entry->filename = initial_file;
-          add_pointer_to_array (info_copy_reference (entry),
-              ref_index, ref_list, ref_slots, 2);
+          free (copy->filename);
+          copy->filename = initial_file;
+          add_pointer_to_array (copy, ref_index, ref_list, ref_slots, 2);
           return;
         }
     }
@@ -549,7 +556,6 @@ main (int argc, char *argv[])
 {
   int getopt_long_index;       /* Index returned by getopt_long (). */
   char *init_file = 0;         /* Name of init file specified. */
-  FILE_BUFFER *initial_fb = 0; /* File to start session with. */
   char *error = 0;             /* Error message to display in mini-buffer. */
 
 #ifdef HAVE_SETLOCALE
@@ -785,15 +791,15 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       if (!apropos_list)
         info_error (_(APROPOS_NONE), apropos_search_string);
       else
-      {
-        register int i;
-        REFERENCE *entry;
+        {
+          register int i;
+          REFERENCE *entry;
 
-        for (i = 0; (entry = apropos_list[i]); i++)
-          fprintf (stdout, "\"(%s)%s\" -- %s\n",
-              entry->filename, entry->nodename, entry->label);
-      }
-      exit (EXIT_SUCCESS);
+          for (i = 0; (entry = apropos_list[i]); i++)
+            fprintf (stdout, "\"(%s)%s\" -- %s\n",
+                entry->filename, entry->nodename, entry->label);
+        }
+      exit (0);
     }
 
   /* Initialize empty list of nodes to load. */
@@ -809,7 +815,9 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
           argv++; argc--;
         }
       else if (!user_filename)
-        return 1;
+        {
+          exit (1);
+        }
       info_find_matching_files (user_filename);
     }
   else
@@ -830,14 +838,14 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
                                     index_search_string);
               info_read_and_dispatch ();
               close_info_session ();
-              return 0;
+              exit (0);
             }
           else
             {
               fprintf (stderr, _("no index entries found for `%s'\n"),
                        index_search_string);
               close_dribble_file ();
-              return 1;
+              exit (1);
             }
         }
 
@@ -858,11 +866,11 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
     {
       int i;
       if (!ref_list)
-        return 1;
+        exit (1);
 
       for (i = 0; ref_list[i]; i++)
         printf ("%s\n", ref_list[i]->filename);
-      return 0;
+      exit (0);
     }
 
   /* --output */
@@ -873,18 +881,18 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
 
       preprocess_nodes_p = 0;
       dump_nodes_to_file (ref_list, user_output_filename, dump_subnodes);
-      return 0;
+      exit (0);
     }
 
   if (user_filename && error)
     {
       info_error (error);
-      return 1;
+      exit (0);
     }
     
   info_session (ref_list, all_matches_p ? user_filename : 0, error);
   close_info_session ();
-  return 0;
+  exit (0);
 }
 
 void

@@ -93,8 +93,6 @@ DECLARE_INFO_COMMAND (info_execute_command,
   char *keys;
   char *prompt;
 
-  prompt = xmalloc (20);
-
   keys = where_is (info_keymap, InfoCmd(info_execute_command));
   /* If the where_is () function thinks that this command doesn't exist,
      there's something very wrong!  */
@@ -102,12 +100,13 @@ DECLARE_INFO_COMMAND (info_execute_command,
     abort();
 
   if (info_explicit_arg || count != 1)
-    sprintf (prompt, "%d %s ", count, keys);
+    asprintf (&prompt, "%d %s ", count, keys);
   else
-    sprintf (prompt, "%s ", keys);
+    asprintf (&prompt, "%s ", keys);
 
   /* Ask the completer to read a reference for us. */
   line = read_function_name (prompt, window);
+  free (prompt);
 
   /* User aborted? */
   if (!line)

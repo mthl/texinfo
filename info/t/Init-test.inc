@@ -4,7 +4,13 @@
 # Allow running with "make check" and individual tests at the command-line
 srcdir=${srcdir:-.}
 
+# Use the second line to run the program under valgrind.
 GINFO="./ginfo --init-file $srcdir/t/Infokey-config"
+#GINFO="valgrind --log-file=$0.val.log --leak-check=full ./ginfo --init-file $srcdir/t/Infokey-config"
+
+# Set this to the name of the process
+GINFO_NAME=ginfo
+#GINFO_NAME=memcheck-x86-li
 
 # Only look for Info files in our test directory
 export infodir=$srcdir/t/infodir

@@ -3559,6 +3559,7 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
       free (window->matches);
       window->matches = 0;
 
+      free (window->search_string);
       window->search_string = xstrdup (string);
       window->search_is_case_sensitive = case_sensitive;
       result = regexp_search (string, !match_regexp, !case_sensitive,

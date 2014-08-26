@@ -302,9 +302,7 @@ info_concatenate_references (REFERENCE **ref1, REFERENCE **ref2)
   return result;
 }
 
-/* Copy a reference structure.  Since we tend to free everything at
-   every opportunity, we don't share any points, but copy everything into
-   new memory.  */
+/* Copy a reference structure.  Copy each field into new memory.  */
 REFERENCE *
 info_copy_reference (REFERENCE *src)
 {
@@ -320,8 +318,8 @@ info_copy_reference (REFERENCE *src)
   return dest;
 }
 
-/* Copy a list of references. */
-/* FIXME: Use info_concatenate_references with one null argument instead. */
+/* Copy a list of references, copying in reference in turn with
+   info_copy_reference. */
 REFERENCE **
 info_copy_references (REFERENCE **ref1)
 {

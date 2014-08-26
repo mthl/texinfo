@@ -538,6 +538,7 @@ find_node_in_binding (char *nodename, SEARCH_BINDING *binding)
     {
       char *nodename_start;
       char *read_nodename;
+      int found;
 
       s.start = position;
       s.start += skip_node_separator (s.buffer + s.start);
@@ -554,11 +555,11 @@ find_node_in_binding (char *nodename, SEARCH_BINDING *binding)
       if (!read_nodename)
         return -1;
 
-      if (!strcmp (read_nodename, nodename))
-        {
-          free (read_nodename);
-          return position;
-        }
+      found = !strcmp (read_nodename, nodename);
+      free (read_nodename);
+
+      if (found)
+        return position;
     }
   return -1;
 }

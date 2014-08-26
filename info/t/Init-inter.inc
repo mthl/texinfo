@@ -56,7 +56,7 @@ run_ginfo ()
   GINFO_PID=
   while :
   do
-    GINFO_PID=$( pgrep -P $SUBSHELL ginfo ; \
+    GINFO_PID=$( pgrep -P $SUBSHELL $GINFO_NAME ; \
        test $? -eq 0 -o $? -eq 1 || exit 99 )
 
     # This use of pgrep is likely not portable (works on procps).  Check if it

@@ -1,3 +1,24 @@
+2014-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/m-x.c (info_execute_command): Free a string.  Allow arbitarily
+	long prompts.
+	* info/info.c (main): Exit with exit() instead of 'return' to avoid
+	memory leak report from valgrind for main's local variables.
+	(initial_fb): New static variable, taken out of 'main' function.
+	(get_initial_file): Don't clobber 'filename' field of dir entry.
+	* info/search.c (find_node_in_binding): Free last string allocated in
+	a loop.
+	* info/session.c (info_search_in_node_internal): Free 'search_string'
+	field of WINDOW before overwriting it.
+	* info/dir.c (lookup_dir_entry),
+	* info/info-utils.c (info_copy_reference, info_copy_references):
+	Comments changed.
+
+	* info/t/Init-test.inc: Commented-out line added showing how to run
+	tests under valgrind.
+	* info/t/Init-inter.inc: Get name of running "ginfo" process from a
+	variable.
+
 2014-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/dir.c (insert_text_into_node): Include terminating null byte

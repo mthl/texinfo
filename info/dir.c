@@ -250,6 +250,7 @@ insert_text_into_node (NODE *node, long start, char *text, int textlen)
   node->nodelen += textlen;
 }
 
+/* Return directory entry.  Return value should not be freed or modified. */
 REFERENCE *
 lookup_dir_entry (char *label, int sloppy)
 {
