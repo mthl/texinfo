@@ -28,7 +28,7 @@
 #include "tag.h"
 #include "variables.h"
 
-static void recalculate_line_starts (WINDOW *window);
+static void calculate_line_starts (WINDOW *window);
 
 /* The window which describes the screen. */
 WINDOW *the_screen = NULL;
@@ -204,7 +204,11 @@ window_new_screen_size (int width, int height)
         win->first_row = (win->prev->first_row + win->prev->height) + 1;
 
       if (win->node)
-        recalculate_line_starts (win);
+        {
+          free (win->line_starts);
+          free (win->log_line_no);
+          calculate_line_starts (win);
+        }
 
       win->flags |= W_UpdateWindow;
     }
@@ -544,21 +548,19 @@ window_toggle_wrap (WINDOW *window)
       old_lines = window->line_count;
       old_pagetop = window->pagetop;
 
-      recalculate_line_starts (window);
+      calculate_line_starts (window);
 
       /* Make sure that point appears within this window. */
       window_adjust_pagetop (window);
 
-      /* Disable for now - recalculate_line_starts above freed old_starts. */
-#if 0
       /* If the pagetop hasn't changed maybe we can do some scrolling now
          to speed up the display.  Many of the line starts will be the same,
          so scrolling here is a very good optimization.*/
       if (old_pagetop == window->pagetop)
-        display_scroll_line_starts
-          (window, old_pagetop, old_starts, old_lines);
-#endif
-
+        display_scroll_line_starts (window, old_pagetop,
+                                    old_starts, old_lines);
+      free (old_starts);
+      free (old_xlat);
     }
   window->flags |= W_UpdateWindow;
 }
@@ -571,7 +573,10 @@ window_set_node_of_window (WINDOW *window, NODE *node)
   window->pagetop = 0;
   window->point = 0;
   window->goal_column = 0;
-  recalculate_line_starts (window);
+
+  free (window->line_starts);
+  free (window->log_line_no);
+  calculate_line_starts (window);
   window_compute_line_map (window);
 
   /* Clear displayed search matches if any.  TODO: do search again in new
@@ -698,7 +703,7 @@ window_unmark_chain (WINDOW *chain, int flag)
 }
 
 
-/* Used by recalculate_line_starts via process_node_text. */
+/* Used by calculate_line_starts via process_node_text. */
 static int
 collect_line_starts (WINDOW *win, size_t pl_num, size_t ll_num,
                      size_t pl_start, char *printed_line,
@@ -718,10 +723,8 @@ collect_line_starts (WINDOW *win, size_t pl_num, size_t ll_num,
 /* Calculate a list of line starts for the node belonging to WINDOW.  The line
    starts are offsets within WINDOW->node->contents. */
 static void
-recalculate_line_starts (WINDOW *window)
+calculate_line_starts (WINDOW *window)
 {
-  free (window->line_starts);
-  free (window->log_line_no);
   window->line_starts = NULL;
   window->log_line_no = NULL;
   window->line_count = 0;

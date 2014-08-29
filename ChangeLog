@@ -1,3 +1,11 @@
+2014-08-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.c (recalculate_line_starts, calculate_line_starts):
+	Renamed.  Don't free 'line_starts' and 'log_line_no'.  Callers
+	updated.
+	(window_toggle_wrap): Call display_scroll_line_starts as was done
+	before.
+
 2014-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_follow_menus): Free error argument before
