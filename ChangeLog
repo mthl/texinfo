@@ -1,3 +1,9 @@
+2014-08-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (incremental_search): Go back to being
+	case-insensitive if all upper-case letters are deleted.
+	* info/t/inc-sea-insensitive.sh: New test.
+
 2014-08-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.c (recalculate_line_starts, calculate_line_starts):

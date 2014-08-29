@@ -123,6 +123,7 @@ TESTS = \
 	t/search-skip-screen.sh \
 	t/inc-sea-forward.sh \
 	t/inc-sea-forward-nonregex.sh \
+	t/inc-sea-insensitive.sh \
 	t/anchor-positions.sh \
 	t/quoted-label-as-target.sh \
 	t/quoted-target.sh \

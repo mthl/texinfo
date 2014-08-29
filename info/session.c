@@ -4182,7 +4182,7 @@ incremental_search (WINDOW *window, int count)
   int last_search_result, search_result, dir;
   SEARCH_STATE mystate, orig_state;
   char *p;
-  int case_sensitive = 0;
+  int case_sensitive;
   long start_off = window->point;
 
   long saved_point = window->point;
@@ -4392,8 +4392,9 @@ incremental_search (WINDOW *window, int count)
       /* Search for the contents of isearch_string. */
       show_isearch_prompt (dir, (unsigned char *) isearch_string, search_result);
 
-      /* If the search string includes upper-case letters, make the
-         search case-sensitive.  */
+      /* Make the search case-sensitive only if the search string includes
+         upper-case letters. */
+      case_sensitive = 0;
       for (p = isearch_string; *p; p++)
         if (isupper (*p))
           {
