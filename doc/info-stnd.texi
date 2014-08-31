@@ -2149,6 +2149,15 @@ operation, and so Info tries hard not to do it twice.  This variable
 tells Info it is okay to garbage collect the text of the nodes of a
 file which was compressed on disk.
 
+@item hide-note-references
+@vindex hide-note-references
+By default, Info displays the contents of Info files mostly verbatim,
+including text that is used by Info readers for navigation (for example,
+marking the location of menus or cross-references).  If you set this
+variable to @code{On}, some of this text is hidden, in a similar way to
+the @code{Info-hide-note-references} variable in Emacs
+(@pxref{Emacs Info Variables, , , info, Info}).
+
 @item highlight-searches
 @vindex highlight-searches
 When set to @code{On}, highlight matches from searching commands

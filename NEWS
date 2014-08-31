@@ -53,6 +53,7 @@ one of the relevant sections:
   . support for mouse scrollwheel, controlled by 'mouse' variable
   . new variable 'key_time' to control how long to wait for byte
     sequences sent by special keys
+  . new variable 'hide-note-references' alters appearance of displayed nodes
 
 * install-info:
   . handle compressed input file names containing spaces.
