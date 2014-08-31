@@ -4227,7 +4227,10 @@ incremental_search (WINDOW *window, int count)
               set_window_pagetop (window, newtop);
             }
           window_adjust_pagetop (window);
-          display_update_one_window (window);
+
+          /* Call display_update_display to update the window and an automatic
+             footnotes window if present. */
+          display_update_display ();
           display_cursor_at_point (window);
         }
 
@@ -4237,7 +4240,7 @@ incremental_search (WINDOW *window, int count)
          it is convenient. */
       if (!info_any_buffered_input_p () && display_was_interrupted_p)
         {
-          display_update_one_window (window);
+          display_update_display ();
           display_cursor_at_point (active_window);
         }
 
