@@ -605,7 +605,7 @@ get_input_key (void)
 
 /* Time in milliseconds to wait for the next byte of a byte sequence
    corresponding to a key or key chord.  Settable with the 'key-time' user
-   variable. */
+   variable.  If zero, wait indefinitely. */
 int key_time = 100;
 
 /* Read bytes from input and return what key has been pressed.  Return -1 on
@@ -661,15 +661,20 @@ get_input_key_internal (void)
         {
           int ready = 0;
 #if defined (FD_SET)
-          struct timeval timer;
+          struct timeval timer, *timerp = 0;
           fd_set readfds;
 
           FD_ZERO (&readfds);
           FD_SET (fileno (info_input_stream), &readfds);
-          timer.tv_sec = 0;
-          timer.tv_usec = key_time * 1000;
+
+          if (key_time)
+            {
+              timer.tv_sec = 0;
+              timer.tv_usec = key_time * 1000;
+              timerp = &timer;
+            }
           ready = select (fileno(info_input_stream)+1, &readfds,
-                          NULL, NULL, &timer);
+                          NULL, NULL, timerp);
 #else
           ready = 1;
 #endif /* FD_SET */

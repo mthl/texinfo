@@ -51,6 +51,8 @@ one of the relevant sections:
     read directly by info.
   . new variable `highlight-searches' allows highlighting results from a search
   . support for mouse scrollwheel, controlled by 'mouse' variable
+  . new variable 'key_time' to control how long to wait for byte
+    sequences sent by special keys
 
 * install-info:
   . handle compressed input file names containing spaces.

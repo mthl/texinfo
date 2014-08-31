@@ -3,6 +3,10 @@
 	* info/session.c (incremental_search): Update an automatic footnotes
 	window if we change node.
 
+	* info/session.c (get_input_key_internal): Don't time-out key press if
+	'key-time' is 0.
+	* doc/info-stnd.texi (Variables): Document 'key-time' variable.
+
 2014-08-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (incremental_search): Go back to being
