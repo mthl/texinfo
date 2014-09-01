@@ -6,6 +6,10 @@
 	cursor-movement-scrolls=Off.
 	(info_move_to_xref): Handling of cursor-movement-scrolls removed.
 
+	* info/session.c (ask_for_search_string): Don't crash if the user
+	pressed return without typing anything.
+	* info/t/search-empty.sh: New test.
+
 2014-08-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (incremental_search): Update an automatic footnotes
