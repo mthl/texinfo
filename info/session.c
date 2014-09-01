@@ -3483,7 +3483,6 @@ int gc_compressed_files = 0;
 static void info_search_1 (WINDOW *window, int count, int case_sensitive);
 
 static char *search_string = NULL;
-static int search_string_size = 0;
 static int isearch_is_active = 0;
 
 static int last_search_direction = 0;
@@ -3847,25 +3846,18 @@ ask_for_search_string (int case_sensitive, int use_regex, int direction)
   line = info_read_in_echo_area (prompt);
   free (prompt);
 
-  if (!line)
+  if (!line || !*line)
     return 0;
 
-  if (*line)
-    {
-      if (strlen (line) + 1 > (unsigned int) search_string_size)
-        search_string =
-          xrealloc (search_string,
-                    (search_string_size += 50 + strlen (line)));
-
-      strcpy (search_string, line);
-      free (line);
-    }
-
-  if (mbslen (search_string) < min_search_length)
+  if (mbslen (line) < min_search_length)
     {
       info_error ("%s", _("Search string too short"));
+      free (line);
       return 0;
     }
+
+  free (search_string);
+  search_string = line;
 
   return 1;
 }

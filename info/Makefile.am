@@ -121,6 +121,7 @@ TESTS = \
 	t/relative-reference.sh \
 	t/resize-in-completions.sh \
 	t/search-skip-screen.sh \
+	t/search-empty.sh \
 	t/inc-sea-forward.sh \
 	t/inc-sea-forward-nonregex.sh \
 	t/inc-sea-insensitive.sh \
