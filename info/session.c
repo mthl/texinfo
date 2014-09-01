@@ -2052,7 +2052,8 @@ forward_move_node_structure (WINDOW *window, int behaviour)
   return 0;
 }
 
-/* Move Prev, Up or error in WINDOW depending on BEHAVIOUR. */
+/* Move to earlier node in node hierarchy in WINDOW depending on BEHAVIOUR.
+   Display an error message if node wasn't changed. */
 static int
 backward_move_node_structure (WINDOW *window, int behaviour)
 {
@@ -2648,11 +2649,7 @@ info_move_to_xref (WINDOW *window, int dir)
     {
       /* There was neither a menu or xref entry appearing in this node
          after point. */
-      if (cursor_movement_scrolls_p)
-        return 0;
-      else
-        /* Choose the first menu or xref entry appearing in this node. */
-        placement = node->references[0]->start;
+      return 0;
     }
 
   window->point = placement;
@@ -2667,19 +2664,38 @@ DECLARE_INFO_COMMAND (info_move_to_prev_xref,
     info_move_to_next_xref (window, -count, key);
   else
     {
-      if (!info_move_to_xref (window, -1))
+      while (1)
         {
+          if (info_move_to_xref (window, -1))
+            return;
+
+          /* When cursor-movement-scrolls=Off, cycle round the node's
+             references. */
           if (!cursor_movement_scrolls_p)
-            info_error ("%s", msg_no_xref_node);
-          else
             {
-              if (backward_move_node_structure (window, info_scroll_behaviour)
-                  == 0)
+              REFERENCE **r = window->node->references;
+              if (r && r[0])
                 {
-                  window->point = window->node->nodelen - 1;
-                  info_move_to_xref (window, -1);
+                  int i = 0;
+                  /* Choose the last menu or xref entry appearing in this
+                     node. */
+                  while (r[i + 1])
+                    i++;
+                  window->point = r[i]->start;
+                  window_adjust_pagetop (window);
                 }
+              else
+                info_error ("%s", msg_no_xref_node);
+
+              return;
             }
+
+          if (backward_move_node_structure (window, info_scroll_behaviour)
+                  != 0)
+            {
+              return; /* No earlier nodes in file. */
+            }
+          window->point = window->node->nodelen - 1;
         }
     }
 }
@@ -2691,14 +2707,33 @@ DECLARE_INFO_COMMAND (info_move_to_next_xref,
     info_move_to_prev_xref (window, -count, key);
   else
     {
-      if (!info_move_to_xref (window, 1))
+      while (1)
         {
+          if (info_move_to_xref (window, 1))
+            return;
+
+          /* When cursor-movement-scrolls=Off, cycle round the node's
+             references. */
           if (!cursor_movement_scrolls_p)
-            info_error ("%s", msg_no_xref_node);
-          else
             {
-              forward_move_node_structure (window, info_scroll_behaviour);
-              info_move_to_xref (window, 1);
+              REFERENCE **r = window->node->references;
+              if (r && r[0])
+                {
+                  /* Choose the first menu or xref entry appearing in this
+                     node. */
+                  window->point = r[0]->start;
+                  window_adjust_pagetop (window);
+                }
+              else
+                info_error ("%s", msg_no_xref_node);
+
+              return;
+            }
+
+          if (forward_move_node_structure (window, info_scroll_behaviour)
+                   != 0)
+            {
+              return; /* No later nodes in file. */
             }
         }
     }

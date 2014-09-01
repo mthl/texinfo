@@ -1,3 +1,11 @@
+2014-09-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_move_to_prev_xref, info_move_to_next_xref):
+	Skip nodes if no references in previous or next node, as was done
+	before.  Cycle round the node's references when
+	cursor-movement-scrolls=Off.
+	(info_move_to_xref): Handling of cursor-movement-scrolls removed.
+
 2014-08-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (incremental_search): Update an automatic footnotes
