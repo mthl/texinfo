@@ -107,6 +107,14 @@ extern VFunction *terminal_begin_inverse_hook;
 extern void terminal_end_inverse (void);
 extern VFunction *terminal_end_inverse_hook;
 
+/* Turn on standout mode if possible. */
+extern void terminal_begin_standout (void);
+extern VFunction *terminal_begin_standout_hook;
+
+/* Turn off standout mode if possible. */
+extern void terminal_end_standout (void);
+extern VFunction *terminal_end_standout_hook;
+
 /* Scroll an area of the terminal, starting with the region from START
    to END, AMOUNT lines.  If AMOUNT is negative, the lines are scrolled
    towards the top of the screen, else they are scrolled towards the

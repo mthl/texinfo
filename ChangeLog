@@ -10,6 +10,14 @@
 	pressed return without typing anything.
 	* info/t/search-empty.sh: New test.
 
+	* info/terminal.c: (terminal_begin_standout, terminal_end_standout)
+	(terminal_begin_standout_hook, terminal_end_standout_hook): New
+	functions and function pointers.
+	* info/display.c (display_update_window_1): For each line which
+	contains part of a search match, display it using
+	terminal_begin_standout and terminal_end_standout in this function and
+	mark it as invalid in 'the_display'.  Remove unused argument.
+
 2014-08-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (incremental_search): Update an automatic footnotes

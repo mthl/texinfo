@@ -55,6 +55,8 @@ extern int tputs ();
    to the namesake function. */
 VFunction *terminal_begin_inverse_hook = NULL;
 VFunction *terminal_end_inverse_hook = NULL;
+VFunction *terminal_begin_standout_hook = NULL;
+VFunction *terminal_end_standout_hook = NULL;
 VFunction *terminal_prep_terminal_hook = NULL;
 VFunction *terminal_unprep_terminal_hook = NULL;
 VFunction *terminal_up_line_hook = NULL;
@@ -355,6 +357,31 @@ terminal_end_inverse (void)
   else
     {
       send_to_terminal (term_invend);
+    }
+}
+
+/* Turn on "standout mode" if possible.  Likely the same
+   as reverse video. */
+void
+terminal_begin_standout (void)
+{
+  if (terminal_begin_standout_hook)
+    (*terminal_begin_standout_hook) ();
+  else
+    {
+      send_to_terminal (term_so);
+    }
+}
+
+/* Turn off "standout mode" if possible. */
+void
+terminal_end_standout (void)
+{
+  if (terminal_end_standout_hook)
+    (*terminal_end_standout_hook) ();
+  else
+    {
+      send_to_terminal (term_se);
     }
 }
 

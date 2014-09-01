@@ -163,10 +163,8 @@ display_node_text (long pl_num, char *printed_line,
     {
       int i, off;
 	      
-      /* If the screen line is inversed, then we have to clear
-	 the line from the screen first.  Why, I don't know.
-	 (But don't do this if we have no visible entries, as can
-	 happen if the window is shrunk very small.)  */
+      /* If the screen line is inversed, or if the entry is marked as
+         invalid, then clear the line from the screen first. */
       if (entry->inverse)
 	{
 	  terminal_goto_xy (0, pl_num);
@@ -262,7 +260,7 @@ decide_if_in_match (long off, int *in_match, regmatch_t *matches,
    differ, update the display.
    Return value: number of lines processed.  */
 long
-display_update_window_1 (WINDOW *win, long pagetop)
+display_update_window_1 (WINDOW *win)
 {
   char *start = win->node->contents + win->line_starts[win->pagetop];
 
@@ -270,6 +268,11 @@ display_update_window_1 (WINDOW *win, long pagetop)
   long pl_chars = 0;     /* Number of characters written to printed_line */
   long pl_num = 0;       /* Number of physical lines done so far. */
   mbi_iterator_t iter;
+
+  /* If there are no highlighted regions in a line, we output the line with
+     display_node_text, which does some optimization of the redisplay.
+     Otherwise, the entire line is output in this function. */
+  int match_seen_in_line = 0;
 
   regmatch_t *matches = 0;
   size_t match_index = 0;
@@ -290,9 +293,11 @@ display_update_window_1 (WINDOW *win, long pagetop)
   text_buffer_init (&tb_printed_line);
 
   if (in_match)
-    text_buffer_add_string (&tb_printed_line, term_so, strlen (term_so));
-  else
-    text_buffer_add_string (&tb_printed_line, term_se, strlen (term_se));
+    {
+      terminal_begin_standout ();
+      match_seen_in_line = 1;
+      terminal_goto_xy (0, win->first_row);
+    }
 
   for (mbi_init (iter, start, 
                  win->node->contents + win->node->nodelen - start);
@@ -305,7 +310,7 @@ display_update_window_1 (WINDOW *win, long pagetop)
       size_t pchars = 0; /* Printed chars */
       size_t pbytes = 0; /* Bytes to output. */
       int delim = 0;
-      int finish;
+      int finish = 0;
 
       /* Check if we have processed all the lines in the window. */
       if (pl_num == win->height)
@@ -329,13 +334,20 @@ display_update_window_1 (WINDOW *win, long pagetop)
 
           if (was_in_match && !in_match)
             {
-              text_buffer_add_string (&tb_printed_line, term_se,
-                                      strlen (term_se));
+              terminal_end_standout ();
             }
           else if (!was_in_match && in_match)
             {
-              text_buffer_add_string (&tb_printed_line, term_so,
-                                      strlen (term_so));
+              if (!match_seen_in_line)
+                {
+                  match_seen_in_line = 1;
+
+                  /* Output the line so far. */
+                  terminal_goto_xy (0, win->first_row + pl_num);
+                  terminal_write_chars (text_buffer_base (&tb_printed_line),
+                                      text_buffer_off (&tb_printed_line));
+                }
+              terminal_begin_standout ();
             }
         }
 
@@ -346,11 +358,21 @@ display_update_window_1 (WINDOW *win, long pagetop)
 
           text_buffer_add_char (&tb_printed_line, '\0');
 
-          finish = display_node_text (win->first_row + pl_num,
-                      text_buffer_base (&tb_printed_line),
-                      text_buffer_off (&tb_printed_line),
-                      pl_chars);
+          if (!match_seen_in_line)
+            {
+              finish = display_node_text (win->first_row + pl_num,
+                          text_buffer_base (&tb_printed_line),
+                          text_buffer_off (&tb_printed_line),
+                          pl_chars);
+            }
+          else
+            {
+              terminal_clear_to_eol ();
+              /* Let display_node_text know to clear this entire line. */
+              the_display[win->first_row + pl_num]->inverse = 1;
+            }
 
+          /* Check if a line continuation character should be displayed. */
           if (!delim)
             {
               terminal_goto_xy (win->width - 1, win->first_row + pl_num);
@@ -368,10 +390,22 @@ display_update_window_1 (WINDOW *win, long pagetop)
                     if (mb_len (mbi_cur (iter)) == 1
                         && *mbi_cur_ptr (iter) == '\n')
                       break;
+
+                  if (matches)
+                    {
+                      /* Check if the next line starts in a match. */
+                      decide_if_in_match (mbi_cur_ptr (iter) - win->node->contents,
+                                          &in_match, matches, win->match_count,
+                                          &match_index);
+                      if (!in_match)
+                        terminal_end_standout ();
+                    }
                 }
               fflush (stdout);
             }
 
+          /* Set for next line. */
+          match_seen_in_line = in_match ? 1 : 0;
           ++pl_num;
 
           pl_chars = 0;
@@ -383,14 +417,18 @@ display_update_window_1 (WINDOW *win, long pagetop)
 
       if (*cur_ptr != '\n' && rep) 
         {
-          text_buffer_add_string (&tb_printed_line, rep, pbytes);
+          if (!match_seen_in_line)
+            text_buffer_add_string (&tb_printed_line, rep, pbytes);
+          else
+            terminal_write_chars (rep, pbytes);
+
           pl_chars += pchars;
           continue;
         }
     }
 
   /* This would be the very last line of the node. */
-  if (pl_chars)
+  if (pl_chars && !match_seen_in_line)
     {
       text_buffer_add_char (&tb_printed_line, '\0');
       display_node_text (win->first_row + pl_num,
@@ -437,7 +475,7 @@ display_update_one_window (WINDOW *win)
 
   if (win->node && win->line_starts)
     {
-      line_index = display_update_window_1 (win, win->pagetop);
+      line_index = display_update_window_1 (win);
 
       if (display_was_interrupted_p)
 	goto funexit;

@@ -1,7 +1,7 @@
 /* display.h -- How the display in Info is done.
    $Id$
 
-   Copyright 1993, 1997, 2004, 2007, 2008, 2011, 2012, 2013
+   Copyright 1993, 1997, 2004, 2007, 2008, 2011, 2012, 2013, 2014
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -26,9 +26,10 @@
 #include "terminal.h"
 
 typedef struct {
-  char *text;			/* Text of the line as it appears. */
-  int textlen;			/* Printable Length of TEXT. */
-  int inverse;			/* Non-zero means this line is inverse. */
+  char *text;		/* Text of the line as it appears. */
+  int textlen;		/* Printable Length of TEXT. */
+  int inverse;		/* Screen line is either in inverse video, or
+                           'text' does not represent what is on the screen. */
 } DISPLAY_LINE;
 
 /* An array of display lines which tell us what is currently visible on
