@@ -200,7 +200,7 @@
 2014-08-21  Karl Berry  <karl@gnu.org>
 
 	* Texinfo/Convert/Plaintext.pm (converter_initialize): propagate
-	FILLCOLUMN.  Report from Mahlon Smith.
+	FILLCOLUMN.  Report from Mahlon Smith, 19 Aug 2014 14:28:01.
 
 2014-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
 

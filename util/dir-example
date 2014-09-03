@@ -371,11 +371,9 @@ Individual utilities
 * cmp: (diffutils)Invoking cmp.                 Compare 2 files byte by byte.
 * comm: (coreutils)comm invocation.             Compare sorted files by line.
 * comsatd: (mailutils)comsatd.                  Comsat daemon.
-* config.                                       status: 
-                                                  (autoconf)config.status Invocation. Recreating configurations.
-* config.status: (autoconf)config.status Invocation.
-                                                Recreating configurations.
+* config.status: (autoconf)config.status Invocation. Recreating configurations.
 * configure: (autoconf)configure Invocation.    Configuring a package.
+* coreutils: (coreutils)coreutils invocation.   Multi-call program.
 * cp: (coreutils)cp invocation.                 Copy files.
 * csplit: (coreutils)csplit invocation.         Split by context.
 * csv2rec: (recutils)Invoking csv2rec.          CSV to recfiles.
@@ -433,7 +431,7 @@ Individual utilities
 * inimf: (web2c)inimf invocation.               Initial Metafont.
 * inimp: (web2c)inimp invocation.               Initial MetaPost.
 * initex: (web2c)initex invocation.             Initial TeX.
-* install: (coreutils)install invocation.       Copy and change attributes.
+* install: (coreutils)install invocation.       Copy files and set attributes.
 * join: (coreutils)join invocation.             Join lines on a common field.
 * kill: (coreutils)kill invocation.             Send a signal to processes.
 * kpsewhich: (kpathsea)Invoking kpsewhich.      TeX file searching.
@@ -505,7 +503,7 @@ Individual utilities
 * readelf: (binutils)readelf.	                Display contents of ELF file.
 * readlink: (coreutils)readlink invocation.     Print referent of a symlink.
 * readmsg: (mailutils)readmsg.                  Extract messages from a folder.
-* realpath: (coreutils)readpath invocation.     Print resolved file names.
+* realpath: (coreutils)realpath invocation.     Print resolved file names.
 * rec2csv: (recutils)Invoking rec2csv.          Recfiles to CSV.
 * recdel: (recutils)Invoking recdel.            Delete records.
 * recfix: (recutils)Invoking recfix.            Fix recfiles.
