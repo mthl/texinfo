@@ -413,6 +413,11 @@ display_update_window_1 (WINDOW *win)
 
           if (finish)
             break;
+
+          /* Go to the start of the next line if we are outputting in this
+             function. */
+          if (match_seen_in_line)
+            terminal_goto_xy (0, win->first_row + pl_num);
         }
 
       if (*cur_ptr != '\n' && rep) 
