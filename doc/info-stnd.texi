@@ -430,16 +430,18 @@ Direct output to @var{file}.  Each node that Info visits will be
 output to @var{file} instead of interactively viewed.  A value of
 @code{-} for @var{file} means standard output.
 
-@item --raw-escapes
-@itemx --no-raw-escapes
-@itemx -R
+@item --no-raw-escapes
+@itemx --raw-escapes, -R
 @anchor {--raw-escapes}
 @cindex @code{--raw-escapes} (@code{-R}) command line option
 @cindex colors in documents
 @cindex ANSI escape sequences in documents
-Let ANSI escape sequences pass through directly to the terminal.  This option
-is on by default.  If your terminal does not support these escapes, use
-@code{--no-raw-escapes} to make Info remove them.
+By default, Info passes SGR terminal control sequences (also known as
+ANSI escape sequences) found in documents directly through to the
+terminal.  If you use the @code{--no-raw-escapes} options, these
+sequences are displayed as other control characters are; for example, an
+@kbd{ESC} byte is displayed as @samp{^[}.  The @code{--raw-escapes} and
+@code{-R} options do not do anything, but are included for completeness.
 
 @cindex man pages, bold and underline
 @vindex GROFF_SGR

@@ -8,6 +8,9 @@
 	* info: (all files) Change use of quotation marks.  Quote 'thusly'
 	instead of `thusly' in user messages.
 
+	* doc/info-stnd.texi (Invoking Info) <--no-raw-escapes>: Change
+	explanation of what this option does.
+
 2014-09-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_move_to_prev_xref, info_move_to_next_xref):
