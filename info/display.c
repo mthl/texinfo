@@ -488,8 +488,9 @@ display_update_one_window (WINDOW *win)
     {
       DISPLAY_LINE *entry = display[win->first_row + line_index];
 
-      /* If this line has text on it then make it go away. */
-      if (entry && entry->textlen)
+      /* If this line has text on it, or if we don't know what is on the line,
+         clear this line. */
+      if (entry && entry->textlen || entry->inverse)
         {
           entry->textlen = 0;
           entry->text[0] = '\0';

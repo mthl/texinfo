@@ -1,3 +1,8 @@
+2014-09-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/display.c (display_update_one_window): Clear lines with
+	highlights in them properly.
+
 2014-09-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_move_to_prev_xref, info_move_to_next_xref):
