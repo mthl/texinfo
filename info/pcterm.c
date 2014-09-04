@@ -1209,7 +1209,7 @@ int
 kill (pid_t pid, int sig)
 {
   static char interrupted_msg[] = "Interrupted\r\n";
-  static char stopped_msg[] = "Stopped.  Type `exit RET' to return.\r\n";
+  static char stopped_msg[] = "Stopped.  Type 'exit RET' to return.\r\n";
   char cwd[PATH_MAX + 1];
 
   if (pid == getpid ()

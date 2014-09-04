@@ -63,7 +63,7 @@ static char *info_internal_help_text[] = {
   N_("\\%-10[next-node]  Go to the next node on this level.\n"),
   N_("\\%-10[up-node]  Go up one level.\n"),
   N_("\\%-10[top-node]  Go to the top node of this document.\n"),
-  N_("\\%-10[dir-node]  Go to the main `directory' node.\n"),
+  N_("\\%-10[dir-node]  Go to the main 'directory' node.\n"),
   "\n",
   N_("1...9       Pick the first...ninth item in this node's menu.\n"),
   N_("\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"),
@@ -388,7 +388,7 @@ DECLARE_INFO_COMMAND (info_get_help_window, _("Display help message"))
 
 /* Show the Info help node.  This means that the "info" file is installed
    where it can easily be found on your system. */
-DECLARE_INFO_COMMAND (info_get_info_help_node, _("Visit Info node `(info)Help'"))
+DECLARE_INFO_COMMAND (info_get_info_help_node, _("Visit Info node '(info)Help'"))
 {
   NODE *node;
   char *nodename;
@@ -917,7 +917,7 @@ DECLARE_INFO_COMMAND (info_where_is,
 
           if (!location || !location[0])
             {
-              info_error (_("`%s' is not on any keys"), command_name);
+              info_error (_("'%s' is not on any keys"), command_name);
             }
           else
             {
@@ -932,7 +932,7 @@ DECLARE_INFO_COMMAND (info_where_is,
             }
         }
       else
-        info_error (_("There is no function named `%s'"), command_name);
+        info_error (_("There is no function named '%s'"), command_name);
     }
 
   free (command_name);

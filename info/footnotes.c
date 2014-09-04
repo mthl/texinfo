@@ -29,7 +29,7 @@ static char *footnote_nodename = "*Footnotes*";
 NODE * make_footnotes_node (NODE *node);
 
 #define FOOTNOTE_HEADER_FORMAT \
-   "*** Footnotes appearing in the node `%s' ***\n"
+   "*** Footnotes appearing in the node '%s' ***\n"
 
 /* Find the window currently showing footnotes. */
 static WINDOW *

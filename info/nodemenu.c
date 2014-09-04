@@ -181,7 +181,7 @@ get_visited_nodes (void)
   text_buffer_printf (&message,
     "%s", replace_in_documentation
      (_("Here is the menu of nodes you have recently visited.\n\
-Select one from this menu, or use `\\[history-node]' in another window.\n"), 0));
+Select one from this menu, or use '\\[history-node]' in another window.\n"), 0));
 
   text_buffer_printf (&message, "%s\n", nodemenu_format_info ());
 

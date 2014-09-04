@@ -130,7 +130,7 @@ DECLARE_INFO_COMMAND (info_execute_command,
         (strncmp (line, "echo-area-", 10) == 0))
       {
         free (line);
-        info_error (_("Cannot execute an `echo-area' command here."));
+        info_error (_("Cannot execute an 'echo-area' command here."));
         return;
       }
 

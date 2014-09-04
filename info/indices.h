@@ -38,6 +38,6 @@ extern void do_info_index_search (WINDOW *window, FILE_BUFFER *fb, int count, ch
 extern int index_entry_exists (FILE_BUFFER *fb, char *string);
 
 #define APROPOS_NONE \
-   N_("No available info files have `%s' in their indices.")
+   N_("No available info files have '%s' in their indices.")
 
 #endif /* not INFO_INDICES_H */

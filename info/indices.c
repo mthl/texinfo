@@ -347,7 +347,7 @@ index_entry_matches (REFERENCE *ent, const char *str, size_t len)
 }
 
 DECLARE_INFO_COMMAND (info_next_index_match,
- _("Go to the next matching index item from the last `\\[index-search]' command"))
+ _("Go to the next matching index item from the last '\\[index-search]' command"))
 {
   register int i;
   int partial, dir;
@@ -412,8 +412,8 @@ DECLARE_INFO_COMMAND (info_next_index_match,
   if ((i < 0) || (!index_index[i]))
     {
       info_error (index_offset > 0 ?
-		  _("No more index entries containing `%s'.") :
-		  _("No index entries containing `%s'."),
+		  _("No more index entries containing '%s'.") :
+		  _("No index entries containing '%s'."),
 		  index_search);
       index_offset = 0;
       return;
@@ -461,7 +461,7 @@ DECLARE_INFO_COMMAND (info_next_index_match,
       char *format;
 
       format = replace_in_documentation
-        (_("Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"),
+        (_("Found '%s' in %s. ('\\[next-index-match]' tries to find next.)"),
          0);
 
       window_message_in_echo_area (format, match, (char *) name);
@@ -525,7 +525,7 @@ apropos_in_all_indices (char *search_string, int inform)
         continue;
 
       if (this_fb && inform)
-        message_in_echo_area (_("Scanning indices of `%s'..."), this_item->filename);
+        message_in_echo_area (_("Scanning indices of '%s'..."), this_item->filename);
 
       this_index = info_indices_of_file_buffer (this_fb);
 
@@ -612,7 +612,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
 
           text_buffer_init (&message);
           text_buffer_printf (&message,
-            _("\n* Menu: Nodes whose indices contain `%s':\n"),
+            _("\n* Menu: Nodes whose indices contain '%s':\n"),
              line);
 
           for (i = 0; apropos_list[i]; i++)
@@ -786,14 +786,14 @@ DECLARE_INFO_COMMAND (info_virtual_index,
     }
   
   text_buffer_init (&text);
-  text_buffer_printf (&text, _("Index for `%s'"), line);
+  text_buffer_printf (&text, _("Index for '%s'"), line);
   text_buffer_add_char (&text, 0);
   off = text.off;
   text_buffer_printf (&text,
 		      "\n\n%c\n%s %s,  %s %s,  %s Top\n\n"
 		      "Info Virtual Index\n"
 		      "******************\n\n"
-		      "Index entries that match `%s':\n"
+		      "Index entries that match '%s':\n"
                       " \b[index \b]"
 		      "\n* Menu:\n\n",
 		      INFO_COOKIE,
@@ -816,7 +816,7 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   if (cnt == 0)
     {
       text_buffer_free (&text);
-      info_error (_("No index entries containing `%s'."), line);
+      info_error (_("No index entries containing '%s'."), line);
       return;
     }
 

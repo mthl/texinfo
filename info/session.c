@@ -74,10 +74,10 @@ allfiles_create_node (char *term, REFERENCE **fref)
   text_buffer_init (&text);
 
   text_buffer_printf (&text,
-                      "%s File names matching `%s'\n\n"
+                      "%s File names matching '%s'\n\n"
                       "Info File Index\n"
                       "***************\n\n"
-                      "File names that match `%s':\n",
+                      "File names that match '%s':\n",
                       INFO_NODE_LABEL,
                       term, term);
 
@@ -2076,7 +2076,7 @@ backward_move_node_structure (WINDOW *window, int behaviour)
               || !strcmp ("(DIR)", window->node->up))
             {
               info_error ("%s", 
-                    _("No `Prev' or `Up' for this node within this document."));
+                    _("No 'Prev' or 'Up' for this node within this document."));
               return 1;
             }
           /* If 'Prev' and 'Up' are the same, we are at the first node
@@ -2111,7 +2111,7 @@ backward_move_node_structure (WINDOW *window, int behaviour)
       else
         {
           info_error ("%s", 
-                _("No `Prev' or `Up' for this node within this document."));
+                _("No 'Prev' or 'Up' for this node within this document."));
           return 1;
         }
 
@@ -2776,7 +2776,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
           if (error)
             {
               free (*error);
-              asprintf (error, _("No menu in node `%s'."),
+              asprintf (error, _("No menu in node '%s'."),
                         node_printed_rep (initial_node));
             }
           debug (3, ("no menu found"));
@@ -2798,7 +2798,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
           if (error)
             {
               free (*error);
-              asprintf (error, _("No menu item `%s' in node `%s'."),
+              asprintf (error, _("No menu item '%s' in node '%s'."),
                         arg, node_printed_rep (initial_node));
             }
           debug (3, ("no entry found"));
@@ -2823,7 +2823,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
             {
               free (*error);
               asprintf (error,
-                        _("Unable to find node referenced by `%s' in `%s'."),
+                        _("Unable to find node referenced by '%s' in '%s'."),
                         entry->label,
                         node_printed_rep (initial_node));
             }
@@ -3194,13 +3194,13 @@ DECLARE_INFO_COMMAND (info_man, _("Read a manpage reference and select it"))
 }
 
 /* Move to the "Top" node in this file. */
-DECLARE_INFO_COMMAND (info_top_node, _("Select the node `Top' in this file"))
+DECLARE_INFO_COMMAND (info_top_node, _("Select the node 'Top' in this file"))
 {
   info_parse_and_select ("Top", window);
 }
 
 /* Move to the node "(dir)Top". */
-DECLARE_INFO_COMMAND (info_dir_node, _("Select the node `(dir)'"))
+DECLARE_INFO_COMMAND (info_dir_node, _("Select the node '(dir)'"))
 {
   info_parse_and_select ("(dir)Top", window);
 }
@@ -3251,7 +3251,7 @@ DECLARE_INFO_COMMAND (info_view_file, _("Read the name of a file and select it")
           if (info_recent_file_error)
             info_error ("%s", info_recent_file_error);
           else
-            info_error (_("Cannot find `%s'."), line);
+            info_error (_("Cannot find '%s'."), line);
         }
       else
         info_set_node_of_window (window, node);
@@ -3300,7 +3300,7 @@ dump_nodes_to_file (REFERENCE **references,
 
   if (!output_stream)
     {
-      info_error (_("Could not create output file `%s'."), output_filename);
+      info_error (_("Could not create output file '%s'."), output_filename);
       return;
     }
 
@@ -3446,7 +3446,7 @@ DECLARE_INFO_COMMAND (info_print_node,
 
   if (!printer_pipe)
     {
-      info_error (_("Cannot open pipe to `%s'."), print_command);
+      info_error (_("Cannot open pipe to '%s'."), print_command);
       return;
     }
 
@@ -4706,7 +4706,7 @@ dispatch_error (int *keyseq)
   else
     {
       char *temp = xmalloc (1 + strlen (rep) + strlen (_("\"%s\" is invalid")));
-      sprintf (temp, _("`%s' is invalid"), rep);
+      sprintf (temp, _("'%s' is invalid"), rep);
       terminal_ring_bell ();
       inform_in_echo_area (temp);
       free (temp);

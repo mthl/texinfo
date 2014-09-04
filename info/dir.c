@@ -72,10 +72,10 @@ build_dir_node (void)
 "This is the Info main menu (aka directory node).\n"
 "A few useful Info commands:\n"
 "\n"
-"  `q' quits;\n"
-"  `?' lists all Info commands;\n"
-"  `h' starts the Info tutorial;\n"
-"  `mTexinfo RET' visits the Texinfo manual, etc.\n"
+"  'q' quits;\n"
+"  '?' lists all Info commands;\n"
+"  'h' starts the Info tutorial;\n"
+"  'mTexinfo RET' visits the Texinfo manual, etc.\n"
 
   );
 

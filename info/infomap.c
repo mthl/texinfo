@@ -596,10 +596,10 @@ fetch_user_maps (char *init_file)
   if (!inf)
     {
       if (errno)
-        info_error (_("cannot open input file `%s' - %s"),
+        info_error (_("cannot open input file '%s' - %s"),
             filename, strerror (errno));
       else
-        info_error (_("cannot open input file `%s'"), filename);
+        info_error (_("cannot open input file '%s'"), filename);
       return 0;
     }
 

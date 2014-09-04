@@ -232,7 +232,7 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
           return;
         }
       else
-        asprintf (error, _("No menu item `%s' in node `%s'."),
+        asprintf (error, _("No menu item '%s' in node '%s'."),
             (*argv)[0], "(dir)Top");
     }
 
@@ -315,7 +315,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
             {
               if (!initial_file)
                 {
-                  asprintf (error, _("No file given for node `%s'."),
+                  asprintf (error, _("No file given for node '%s'."),
                             user_nodenames[i]);
                   continue;
                 }
@@ -842,7 +842,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
             }
           else
             {
-              fprintf (stderr, _("no index entries found for `%s'\n"),
+              fprintf (stderr, _("no index entries found for '%s'\n"),
                        index_search_string);
               close_dribble_file ();
               exit (1);
@@ -1086,8 +1086,8 @@ Options:\n\
 
   puts (_("\n\
 The first non-option argument, if present, is the menu entry to start from;\n\
-it is searched for in all `dir' files along INFOPATH.\n\
-If it is not present, info merges all `dir' files and shows the result.\n\
+it is searched for in all 'dir' files along INFOPATH.\n\
+If it is not present, info merges all 'dir' files and shows the result.\n\
 Any remaining arguments are treated as the names of menu\n\
 items relative to the initial node visited."));
 
@@ -1139,17 +1139,17 @@ const char *msg_cant_make_help;
 static void
 init_messages (void)
 {
-  msg_cant_find_node   = _("Cannot find node `%s'.");
-  msg_cant_file_node   = _("Cannot find node `(%s)%s'.");
+  msg_cant_find_node   = _("Cannot find node '%s'.");
+  msg_cant_file_node   = _("Cannot find node '(%s)%s'.");
   msg_cant_find_window = _("Cannot find a window!");
   msg_cant_find_point  = _("Point doesn't appear within this window's node!");
   msg_cant_kill_last   = _("Cannot delete the last window.");
   msg_no_menu_node     = _("No menu in this node.");
   msg_no_foot_node     = _("No footnotes in this node.");
   msg_no_xref_node     = _("No cross references in this node.");
-  msg_no_pointer       = _("No `%s' pointer for this node.");
-  msg_unknown_command  = _("Unknown Info command `%c'; try `?' for help.");
-  msg_term_too_dumb    = _("Terminal type `%s' is not smart enough to run Info.");
+  msg_no_pointer       = _("No '%s' pointer for this node.");
+  msg_unknown_command  = _("Unknown Info command '%c'; try '?' for help.");
+  msg_term_too_dumb    = _("Terminal type '%s' is not smart enough to run Info.");
   msg_at_node_bottom   = _("You are already at the last page of this node.");
   msg_at_node_top      = _("You are already at the first page of this node.");
   msg_one_window       = _("Only one window.");
