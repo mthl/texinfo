@@ -132,7 +132,7 @@ extern char *term_ku, *term_kd, *term_kr, *term_kl;
 extern char *term_kP, *term_kN;
 extern char *term_ke, *term_kh;
 extern char *term_kD, *term_ki;
-extern char *term_bt;
+extern char *term_kB;
 
 extern char *term_so, *term_se;
 

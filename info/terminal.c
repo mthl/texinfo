@@ -248,7 +248,7 @@ char *term_kh = NULL;	/* home */
 char *term_ke = NULL;	/* end */
 char *term_kD = NULL;	/* delete */
 char *term_ki = NULL;	/* ins */
-char *term_bt = NULL;	/* back tab */
+char *term_kB = NULL;	/* back tab */
 
 /* Move the cursor to the terminal location of X and Y. */
 void
@@ -599,7 +599,7 @@ initialize_byte_map (void)
       KEY_END, &term_ke,
       KEY_DELETE, &term_kD,
       KEY_INSERT, &term_ki,
-      KEY_BACK_TAB, &term_bt
+      KEY_BACK_TAB, &term_kB
   };
 
   byte_seq_to_key = xmalloc (256 * sizeof (BYTEMAP_ENTRY));
@@ -787,7 +787,7 @@ terminal_initialize_terminal (char *terminal_name)
   term_ki = tgetstr ("kI", &buffer);
   term_kD = tgetstr ("kD", &buffer);
 
-  term_bt = tgetstr ("bt", &buffer);
+  term_kB = tgetstr ("kB", &buffer);
 
   /* String introducing a mouse event. */
   term_Km = tgetstr ("Km", &buffer);

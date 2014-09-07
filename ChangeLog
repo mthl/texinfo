@@ -6,6 +6,10 @@
 	* info/infokey.c (compile): Use KEYMAP_META instead of Meta to allow
 	binding key chords including Meta.
 
+	* info/terminal.c (term_bt, term_kB, terminal_initialize_terminal)
+	(initialize_byte_map): Get 'BackTab' key byte sequence from 'kB'
+	capability instead of 'bt'.
+
 2014-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_clear_search): New user command.
