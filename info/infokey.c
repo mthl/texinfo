@@ -222,7 +222,7 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
 #define	To_seq(c) \
 		  do { \
 		    if (slen < sizeof seq/sizeof(int)) \
-		      seq[slen++] = meta ? Meta(c) : (c); \
+		      seq[slen++] = meta ? KEYMAP_META(c) : (c); \
 		    else \
 		      { \
 			syntax_error(filename, lnum, \

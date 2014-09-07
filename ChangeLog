@@ -3,6 +3,9 @@
 	* info/window.c (set_window_pagetop): Set goal column as well as point
 	when moving point into displayed part of node.
 
+	* info/infokey.c (compile): Use KEYMAP_META instead of Meta to allow
+	binding key chords including Meta.
+
 2014-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_clear_search): New user command.
