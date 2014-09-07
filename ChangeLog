@@ -1,5 +1,10 @@
 2014-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/window.c (set_window_pagetop): Set goal column as well as point
+	when moving point into displayed part of node.
+
+2014-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_clear_search): New user command.
 	* doc/info-stnd.texi (Searching Commands): Document it.
 

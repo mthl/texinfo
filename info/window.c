@@ -778,9 +778,16 @@ set_window_pagetop (WINDOW *window, int desired_top)
   /* Make sure that point appears in this window. */
   point_line = window_line_of_point (window);
   if (point_line < window->pagetop)
-    window->point = window->line_starts[window->pagetop];
+    {
+      window->point = window->line_starts[window->pagetop];
+      window->goal_column = 0;
+    }
   else if (point_line >= window->pagetop + window->height)
-    window->point = window->line_starts[window->pagetop + window->height - 1];
+    {
+      long bottom = window->pagetop + window->height - 1;
+      window->point = window->line_starts[bottom];
+      window->goal_column = 0;
+    }
 
   window->flags |= W_UpdateWindow;
 
