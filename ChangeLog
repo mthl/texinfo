@@ -1,3 +1,15 @@
+2014-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (move_to_goal_column): Merged into callers.
+	(point_next_line, point_prev_line): Call window_compute_line_map for
+	new line.
+	(info_next_line, info_prev_line): Keep goal column when a numeric
+	argument is used resulting in a new node being put in the window.
+	(info_beginning_of_line, info_end_of_line): Don't call
+	window_compute_line_map.
+	(info_end_of_line): Go one past the last character in line, instead
+	of right on it, for consistency with Emacs and readline.
+
 2014-09-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/display.c (display_update_one_window): Clear lines with

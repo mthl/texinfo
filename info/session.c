@@ -890,8 +890,8 @@ info_show_point (WINDOW *window)
   display_cursor_at_point (window);
 }
 
-/* Advance point of WIN to the beginning of the next logical line.  Return
-   0 if we can't go any further. */
+/* Advance point of WIN to the beginning of the next logical line.  Compute
+   line map of new line.  Return 0 if we can't go any further. */
 static int
 point_next_line (WINDOW *win)
 {
@@ -907,6 +907,7 @@ point_next_line (WINDOW *win)
       && forward_move_node_structure (win, info_scroll_behaviour) == 0)
     {
       win->point = 0;
+      window_compute_line_map (win);
       return 1;
     }
 
@@ -914,8 +915,8 @@ point_next_line (WINDOW *win)
   return 0;
 }
 
-/* Move point of WIN to the end of the previous logical line.  Return
-   0 if we can't go any further. */
+/* Move point of WIN to the end of the previous logical line.  Compute
+   line map of new line.  Return 0 if we can't go any further. */
 static int
 point_prev_line (WINDOW *win)
 {
@@ -934,32 +935,12 @@ point_prev_line (WINDOW *win)
       win->point = win->node->nodelen - 1;
       if (win->line_count > win->height)
         set_window_pagetop (win, win->line_count - win->height);
+      window_compute_line_map (win);
       return 1;
     }
 
   win->point = 0;
   return 0;
-}
-
-/* Try to place cursor in goal column. */
-static void
-move_to_goal_column (WINDOW *window)
-{
-  int line, goal, chars_to_goal;
-
-  line = window_line_of_point (window);
-
-  window->point = window->line_starts[line];
-
-  /* Count the number of characters in LINE that precede the printed column
-     offset of GOAL. */
-  goal = window->goal_column;
-  window_compute_line_map (window);
-  if (goal >= window->line_map.used)
-    goal = window->line_map.used - 1;
-  chars_to_goal = window->line_map.map[goal] - window->line_map.map[0];
-
-  window->point += chars_to_goal;
 }
 
 /* Return true if POINT sits on a newline character. */
@@ -1110,9 +1091,16 @@ DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
   else
     {
       long saved_goal = window->goal_column;
+      long goal;
       while (count--)
         point_next_line (window);
-      move_to_goal_column (window);
+
+      /* Move to goal column, or end of line. */
+      goal = saved_goal;
+      if (goal >= window->line_map.used)
+        goal = window->line_map.used - 1;
+      window->point = window->line_map.map[goal];
+
       info_show_point (window);
       /* Don't change the goal column when going up and down.  This means we
          can go from a long line to a short line and back to a long line and
@@ -1129,9 +1117,16 @@ DECLARE_INFO_COMMAND (info_prev_line, _("Move up to the previous line"))
   else
     {
       long saved_goal = window->goal_column;
+      long goal;
       while (count--)
         point_prev_line (window);
-      move_to_goal_column (window);
+
+      /* Move to goal column, or end of line. */
+      goal = saved_goal;
+      if (goal >= window->line_map.used)
+        goal = window->line_map.used - 1;
+      window->point = window->line_map.map[goal];
+
       info_show_point (window);
       window->goal_column = saved_goal;
     }
@@ -1178,7 +1173,6 @@ DECLARE_INFO_COMMAND (info_end_of_line, _("Move to the end of the line"))
     return;
 
   /* Find physical line with end of logical line in it. */
-  window_compute_line_map (window);
   while (!looking_at_newline (window,
               window->line_map.map[window->line_map.used - 1]))
     point_next_line (window);
@@ -1186,12 +1180,8 @@ DECLARE_INFO_COMMAND (info_end_of_line, _("Move to the end of the line"))
   if (window->line_map.used == 0)
     return; /* This shouldn't happen. */
 
-  if (window->line_map.used == 1)
-    /* Empty line - return offset of terminating newline. */
-    point = window->line_map.map[0];
-  else
-    /* Otherwise of last character in line. */
-    point = window->line_map.map[window->line_map.used - 2];
+  /* Return offset of terminating newline. */
+  point = window->line_map.map[window->line_map.used - 1];
 
   if (point != window->point)
     {
@@ -1208,7 +1198,6 @@ DECLARE_INFO_COMMAND (info_beginning_of_line, _("Move to the start of the line")
   
   while (1)
     {
-      window_compute_line_map (window);
       point = window->line_map.map[0];
       if (point == 0 || looking_at_newline (window, point-1))
 	break;
