@@ -1,5 +1,10 @@
 2014-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (info_clear_search): New user command.
+	* doc/info-stnd.texi (Searching Commands): Document it.
+
+2014-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (move_to_goal_column): Merged into callers.
 	(point_next_line, point_prev_line): Call window_compute_line_map for
 	new line.

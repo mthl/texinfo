@@ -4029,6 +4029,16 @@ DECLARE_INFO_COMMAND (info_search_previous,
     window_adjust_pagetop (window);
 }
 
+/* If highlight-searches=On, this will clear any highlighted regions on the
+   screen. */
+DECLARE_INFO_COMMAND (info_clear_search,
+                      _("Clear displayed search matches"))
+{
+  free (window->matches);
+  window->matches = 0;
+  window->flags |= W_UpdateWindow;
+}
+
 
 /* **************************************************************** */
 /*                                                                  */

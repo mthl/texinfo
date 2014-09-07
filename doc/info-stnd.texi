@@ -1268,8 +1268,11 @@ Using the @samp{@}} or @samp{@{} commands (or the @samp{n} or @samp{N}
 commands under @samp{--vi-keys}; @pxref{--vi-keys}), is a faster way of
 searching for the same string.
 
+@vindex highlight-searches
+@findex clear-search
 If the @code{highlight-searches} variable is set, matches from search
 commands will be highlighted.  @xref{Variables,, @code{highlight-searches}}.
+Use the @kbd{M-x clear-search} command to clear any search highlights.
 
 @dfn{Incremental searching} is similar to basic searching, but the
 string is looked up while you are typing it, instead of waiting until
