@@ -9,6 +9,8 @@
 	* info/info-utils.c (printed_representation): Return byte length 0 for
 	"Info tags" so that they are hidden on the screen.
 
+	* info/t/index-search.sh: New test.
+
 2014-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.c (set_window_pagetop): Set goal column as well as point

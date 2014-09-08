@@ -115,6 +115,7 @@ TESTS = \
 	t/split-file-menu.sh \
 	t/index.sh \
 	t/index-apropos.sh \
+	t/index-search.sh \
 	t/split-index.sh \
 	t/index-long-nodeline.sh \
 	t/menu-sequence.sh \
