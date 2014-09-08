@@ -1,3 +1,11 @@
+2014-09-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (create_virtindex_file_buffer): Deleted.
+	(create_virtindex_node): Merged into caller in info_virtual_index.
+	(info_virtual_index): Don't create a FILE_BUFFER to hold generated
+	node.  Remove word "Info" from heading in node.
+	(index_index): Comment changed.
+
 2014-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.c (set_window_pagetop): Set goal column as well as point

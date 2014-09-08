@@ -26,8 +26,8 @@
 /* User-visible variable controls the output of info-index-next. */
 int show_index_match = 1;
 
-/* In the Info sense, an index is a menu.  This variable holds the last
-   parsed index. */
+/* The combined indices of the last file processed by
+   info_indices_of_file_buffer. */
 static REFERENCE **index_index = NULL;
 
 /* The offset of the most recently selected index element. */
@@ -683,44 +683,6 @@ DECLARE_INFO_COMMAND (info_index_apropos,
   free (line);
 }
 
-static FILE_BUFFER *
-create_virtindex_file_buffer (const char *filename, char *contents, size_t size)
-{
-  FILE_BUFFER *file_buffer;
-
-  file_buffer = make_file_buffer ();
-  file_buffer->filename = filename ? xstrdup (filename) : NULL;
-  file_buffer->fullpath = filename ? xstrdup (filename) : NULL;
-  file_buffer->finfo.st_size = 0;
-  file_buffer->flags = (N_IsInternal | N_CannotGC);
-
-  file_buffer->contents = contents;
-  file_buffer->filesize = size;
-  build_tags_and_nodes (file_buffer);
-  return file_buffer;
-}
-
-static NODE *
-create_virtindex_node (FILE_BUFFER *file_buffer)
-{
-  NODE *node;
-  NODE *tag = file_buffer->tags[0];
-  char *text = file_buffer->contents + tag->nodestart;
-
-  text += skip_node_separator (text);
-  
-  node = info_create_node ();
-  node->fullpath = file_buffer->fullpath;
-  node->nodename = xstrdup (tag->nodename);
-  node->contents = text;
-  node->nodelen = strlen (text);
-  node->body_start = strcspn(node->contents, "\n");
-
-  scan_node_contents (0, &node);
-
-  return node;
-}
-
 #define NODECOL 41
 #define LINECOL 62
 
@@ -786,22 +748,14 @@ DECLARE_INFO_COMMAND (info_virtual_index,
     }
   
   text_buffer_init (&text);
-  text_buffer_printf (&text, _("Index for '%s'"), line);
-  text_buffer_add_char (&text, 0);
-  off = text.off;
   text_buffer_printf (&text,
-		      "\n\n%c\n%s %s,  %s %s,  %s Top\n\n"
-		      "Info Virtual Index\n"
-		      "******************\n\n"
+		      "File: %s,  Node: Index for '%s',  Up: Top\n\n"
+		      "Virtual Index\n"
+		      "*************\n\n"
 		      "Index entries that match '%s':\n"
                       " \b[index \b]"
 		      "\n* Menu:\n\n",
-		      INFO_COOKIE,
-		      INFO_FILE_LABEL, fb->filename,
-		      INFO_NODE_LABEL, text.base,
-		      INFO_UP_LABEL, line);
-  memmove (text.base, text.base + off, text.off - off);
-  text.off -= off;
+                      fb->filename, line, line);
 
   cnt = 0;
   for (i = 0; index_index[i]; i++)
@@ -812,18 +766,27 @@ DECLARE_INFO_COMMAND (info_virtual_index,
 	  cnt++;
 	}
     }
+  text_buffer_add_char (&text, '\0');
 
   if (cnt == 0)
     {
       text_buffer_free (&text);
       info_error (_("No index entries containing '%s'."), line);
+      free (line);
       return;
     }
 
-  tfb = create_virtindex_file_buffer (fb->filename, text.base, text.off);
-  node = create_virtindex_node (tfb);
-  
+  node = info_create_node ();
+  asprintf (&node->nodename, "Index for '%s'", line);
+  node->fullpath = fb->filename;
+  node->contents = text_buffer_base (&text);
+  node->nodelen = text_buffer_off (&text) - 1;
+  node->body_start = strcspn (node->contents, "\n");
+
+  scan_node_contents (0, &node);
   info_set_node_of_window (window, node);
+
+  free (line);
 }
 
 NODE *allfiles_node = 0;
