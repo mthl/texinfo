@@ -1,5 +1,26 @@
 2014-09-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (free_history_node): Free 'nodename' field for
+	internal nodes.
+	(info_split_window): Copy 'nodename' field for new internal nodes.
+
+	* info/echo-area.c (ea_possible_completions),
+	* info/footnotes.c (make_footnotes_node),
+	* info/indices.c (info_index_apropos),
+	* info/nodemenu.c (list_visited_nodes): Duplicate 'nodename' field
+	of new node.
+
+	* info/footnotes.c (FOOTNOTE_HEADER_FORMAT): Removed.
+	(make_footnotes_node): Don't call name_internal_node.
+
+	* info/indices.c (info_index_apropos),
+	* info/infodoc.c (create_internal_info_help_node): Don't clear
+	N_IsInternal flag on new node.
+
+	* info/info-utils.c (info_copy_references): Check if argument is null.
+
+2014-09-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/indices.c (create_virtindex_file_buffer): Deleted.
 	(create_virtindex_node): Merged into caller in info_virtual_index.
 	(info_virtual_index): Don't create a FILE_BUFFER to hold generated

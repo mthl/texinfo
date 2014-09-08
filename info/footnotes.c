@@ -26,11 +26,6 @@ int auto_footnotes_p = 0;
 
 static char *footnote_nodename = "*Footnotes*";
 
-NODE * make_footnotes_node (NODE *node);
-
-#define FOOTNOTE_HEADER_FORMAT \
-   "*** Footnotes appearing in the node '%s' ***\n"
-
 /* Find the window currently showing footnotes. */
 static WINDOW *
 find_footnotes_window (void)
@@ -123,9 +118,9 @@ make_footnotes_node (NODE *node)
     char *header;
     long text_start = fn_start;
 
-    header = xmalloc
-      (1 + strlen (node->nodename) + strlen (FOOTNOTE_HEADER_FORMAT));
-    sprintf (header, FOOTNOTE_HEADER_FORMAT, node->nodename);
+    asprintf (&header,
+              "*** Footnotes appearing in the node '%s' ***\n",
+              node->nodename);
 
     /* Move the start of the displayed text to right after the first line.
        This effectively skips either "---- footno...", or "File: foo...". */
@@ -162,7 +157,8 @@ make_footnotes_node (NODE *node)
         }
     }
 
-    name_internal_node (result, footnote_nodename);
+    result->nodename = xstrdup (footnote_nodename);
+    result->flags |= N_IsInternal;
 
     /* Needed in case the user follows a reference in the footnotes window. */
     result->fullpath = fn_node->fullpath;

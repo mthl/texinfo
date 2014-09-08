@@ -327,6 +327,9 @@ info_copy_references (REFERENCE **ref1)
   REFERENCE **result;
   int size;
 
+  if (!ref1)
+    return 0;
+
   /* Get the total size of the slots that we will need. */
   for (i = 0; ref1[i]; i++);
   size = i;

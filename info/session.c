@@ -756,10 +756,13 @@ get_input_key_internal (void)
 static void
 free_history_node (NODE *n)
 {
-  /* References of internal nodes are not stored anywhere else.  The
-     contents fields were recorded with add_gcable_pointer. */
   if (n->flags & N_IsInternal)
-    info_free_references (n->references);
+    {
+      /* These fields are not stored anywhere else.  The
+         contents field was recorded with add_gcable_pointer. */
+      info_free_references (n->references);
+      free (n->nodename);
+    }
 
   free (n);
 }
@@ -1641,11 +1644,13 @@ DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
       NODE *copy = xmalloc (sizeof (NODE));
       *copy = *window->node; /* Field-by-field copy of structure. */
 
-      /* References in internal nodes are not stored in a tag table.  This
-         allows us to free internal nodes without checking if their
-         references are shared by other NODE objects. */
+      /* This allows us to free internal nodes without checking if
+         these fields are shared by NODE objects in other windows. */
       if (copy->flags & N_IsInternal)
-        copy->references = info_copy_references (copy->references);
+        {
+          copy->references = info_copy_references (copy->references);
+          copy->nodename = xstrdup (copy->nodename);
+        }
 
       info_set_node_of_window (split, copy);
       /* Make sure point still appears in the active window. */

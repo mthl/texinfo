@@ -635,12 +635,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
       scan_node_contents (0, &apropos_node);
 
       add_gcable_pointer (apropos_node->contents);
-      name_internal_node (apropos_node, apropos_list_nodename);
-
-      /* Even though this is an internal node, we don't want the window
-         system to treat it specially.  So we turn off the internalness
-         of it here. */
-      apropos_node->flags &= ~N_IsInternal;
+      name_internal_node (apropos_node, xstrdup (apropos_list_nodename));
 
       /* Find/Create a window to contain this node. */
       {

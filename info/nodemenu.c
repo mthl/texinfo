@@ -240,7 +240,7 @@ DECLARE_INFO_COMMAND (list_visited_nodes,
   /* Lines do not wrap in this window. */
   new->flags |= W_NoWrap;
   node = get_visited_nodes ();
-  name_internal_node (node, nodemenu_nodename);
+  name_internal_node (node, xstrdup (nodemenu_nodename));
 
   info_set_node_of_window (new, node);
   active_window = new;

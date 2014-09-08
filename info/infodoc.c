@@ -281,12 +281,7 @@ create_internal_info_help_node (int help_is_only_window_p)
   add_gcable_pointer (internal_info_help_node->contents);
 #endif
 
-  name_internal_node (internal_info_help_node, info_help_nodename);
-
-  /* Even though this is an internal node, we don't want the window
-     system to treat it specially.  So we turn off the internalness
-     of it here. */
-  internal_info_help_node->flags &= ~N_IsInternal;
+  name_internal_node (internal_info_help_node, xstrdup (info_help_nodename));
 }
 
 /* Return a window which is the window showing help in this Info. */

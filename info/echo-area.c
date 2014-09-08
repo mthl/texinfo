@@ -1031,7 +1031,7 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
 
         temp = text_buffer_to_node (&message);
         add_gcable_pointer (temp->contents);
-        name_internal_node (temp, compwin_name);
+        name_internal_node (temp, xstrdup (compwin_name));
         possible_completions_output_node = temp;
       }
 
