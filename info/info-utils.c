@@ -505,7 +505,7 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
       if (info_tag (*iter, &cur_len))
         {
           *pchars = 0; 
-          *pbytes = cur_len;
+          *pbytes = 0;
           ITER_SETBYTES (*iter, cur_len);
           return cur_ptr;
         }
