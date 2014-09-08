@@ -4,6 +4,11 @@
 	footnotes nodes for footnotes nodes.
 	* info/t/split-footnotes.sh: New test.
 
+	* info/indices.c (info_indices_of_file_buffer): Only record first
+	index found in initial_index_nodename.  This stops a memory leak
+	when there are multiple indices, and means that "i<RET>" goes to
+	the first index node in the file.
+
 2014-09-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (free_history_node): Free 'nodename' field for

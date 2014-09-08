@@ -133,9 +133,12 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
               if (!node)
                 continue;
 
-              /* Remember the filename and nodename of this index. */
-              initial_index_filename = xstrdup (file_buffer->filename);
-              initial_index_nodename = xstrdup (tag->nodename);
+              if (!initial_index_filename)
+                {
+                  /* Remember the filename and nodename of this index. */
+                  initial_index_filename = xstrdup (file_buffer->filename);
+                  initial_index_nodename = xstrdup (tag->nodename);
+                }
 
               menu = node->references;
 
