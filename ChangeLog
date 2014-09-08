@@ -1,5 +1,11 @@
 2014-09-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (info_set_node_of_window): Don't get or remove
+	footnotes nodes for footnotes nodes.
+	* info/t/split-footnotes.sh: New test.
+
+2014-09-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (free_history_node): Free 'nodename' field for
 	internal nodes.
 	(info_split_window): Copy 'nodename' field for new internal nodes.

@@ -836,8 +836,10 @@ info_set_node_of_window (WINDOW *win, NODE *node)
   add_pointer_to_array (new, win->hist_index, win->hist, win->hist_slots, 16);
 
   /* If doing auto-footnote display/undisplay, show the footnotes belonging
-     to this window's node. */
-  if (auto_footnotes_p)
+     to this window's node.  Don't do that if it is a footnote node itself. */
+  if (auto_footnotes_p
+      && !((win->node->flags & N_IsInternal)
+           && !strcmp (win->node->nodename, "*Footnotes*")))
     info_get_or_remove_footnotes (win);
 }
 

@@ -110,6 +110,7 @@ TESTS = \
 	t/end-of-line.sh \
 	t/goal-column.sh \
 	t/last-no-history.sh \
+	t/split-footnotes.sh \
 	t/adjust-anchors.sh \
 	t/search-after-tag.sh \
 	t/split-file-menu.sh \
