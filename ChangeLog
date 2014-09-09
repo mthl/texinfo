@@ -23,6 +23,10 @@
 	window with get_internal_info_window instead of get_window_of_node.
 	* info/info-utils.c (get_window_of_node): Removed.
 
+	* info/indices.c (info_virtual_index): Mark index node as internal.
+	Don't include a Top pointer to prevent possible memory leak when
+	node is deleted.
+
 2014-09-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_set_node_of_window): Don't get or remove
