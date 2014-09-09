@@ -5,7 +5,7 @@
 	(forward_move_node_structure) <scroll-behaviour=Continous>: Detect if
 	we are at the last node even if it does not have its Up pointer going
 	to "Top".
-	* info/session.h (SLN_Scroll, SLN_Top),:
+	* info/session.h (SLN_Scroll, SLN_Top),
 	* doc/info-stnd.texi (Variables) <scroll-last-node>,
 	* info/session.c (scroll_last_node_choices): 'Scroll' option removed,
 	as a non-index node with a menu will never be the last node.
@@ -15,6 +15,9 @@
 	* info/session.c (select_menu_digit): Don't print any error messages.
 	(info_menu_digit): Display error message if there is no menu in
 	the node.
+
+	* doc/info-stnd.texi (Variables) <cursor-movement-scrolls>
+	<scroll-behaviour>: cursor-movement-scrolls=On by default.
 
 2014-09-08  Gavin Smith  <gavinsmith0123@gmail.com>
 

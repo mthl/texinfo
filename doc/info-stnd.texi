@@ -2129,11 +2129,11 @@ size.
 
 @anchor{cursor-movement-scrolls}
 @item cursor-movement-scrolls
-By default, cursor movement commands stop when top or bottom of a node
-is reached (@pxref{Cursor Commands}).  When this variable is set to
-@code{On}, cursor movement commands become scrolling and their
-behavior is controlled by the @code{scroll-behavior} variable (see
-below).
+When set to @code{On}, when cursor movement commands reach the
+top or bottom of a node, another node is loaded depending on the
+value of @code{scroll-behaviour} (see below).  This is the default.
+When this variable is set to @code{Off}, cursor movements stop at the
+top or bottom of a node.
 
 @item errors-ring-bell
 @vindex errors-ring-bell
@@ -2221,10 +2221,10 @@ to @code{Off} to disable the use of a mouse.
 @itemx scroll-behaviour
 @vindex scroll-behavior
 @vindex scroll-behaviour
-Control what happens when forward scrolling is requested at the end of
-a node, or when backward scrolling is requested at the beginning of a
-node.  The two variable names are synonymous.  The default value for
-this variable is @code{Continuous}.  Possible values:
+The two variable names are synonymous.  Control what happens when
+scrolling commands are used at the end or beginning of a node
+(@pxref{Scrolling Commands}).  The default value for this variable is
+@code{Continuous}.  Possible values:
 
 @table @code
 @item Continuous
@@ -2242,9 +2242,9 @@ Just stop, changing nothing.  With this value, no scrolling command
 can change the node that is being viewed.
 @end table
 
-This variable normally affects only scrolling commands.
-@xref{cursor-movement-scrolls}, for information on how to widen its
-scope to cursor movement commands.
+This variable also affects cursor movement commands (@pxref{Cursor
+Commands}) unless the @code{cursor-movement-scrolls} variable is set to
+@code{Off}.  @xref{cursor-movement-scrolls}.
 
 @item scroll-last-node
 @vindex scroll-last-node
