@@ -295,7 +295,7 @@ info_find_or_create_help_window (void)
 {
   int help_is_only_window_p;
   WINDOW *eligible = NULL;
-  WINDOW *help_window = get_window_of_node (internal_info_help_node);
+  WINDOW *help_window = get_internal_info_window (info_help_nodename);
 
   /* Close help window if in it already. */
   if (help_window && help_window == active_window)

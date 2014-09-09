@@ -106,9 +106,6 @@ extern void name_internal_node (NODE *node, char *name);
    Info window. */
 extern WINDOW *get_internal_info_window (char *name);
 
-/* Return a window displaying the node NODE. */
-extern WINDOW *get_window_of_node (NODE *node);
-
 struct text_buffer
 {
   char *base;

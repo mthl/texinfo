@@ -19,6 +19,10 @@
 	* doc/info-stnd.texi (Variables) <cursor-movement-scrolls>
 	<scroll-behaviour>: cursor-movement-scrolls=On by default.
 
+	* info/infodoc.c (info_find_or_create_help_window): Look for help
+	window with get_internal_info_window instead of get_window_of_node.
+	* info/info-utils.c (get_window_of_node): Removed.
+
 2014-09-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_set_node_of_window): Don't get or remove

@@ -1800,19 +1800,6 @@ get_internal_info_window (char *name)
 
   return win;
 }
-
-/* Return a window displaying the node NODE. */
-WINDOW *
-get_window_of_node (NODE *node)
-{
-  WINDOW *win = NULL;
-
-  for (win = windows; win; win = win->next)
-    if (win->node == node)
-      break;
-
-  return win;
-}
 
 /* Flexible Text Buffer */
 
