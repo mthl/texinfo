@@ -2256,21 +2256,12 @@ the last node. Possible values are:
 Do not scroll. Display the @samp{No more nodes within this document.}
 message. This is the default.
 
-@item Scroll
-Scroll as usual. Since the last node is usually an index, this means
-that the very first node from the menu will be selected.
-
 @item Top
-Go to the top node of this document.
+Go to the top node of the document.
 @end table
 
 This variable is in effect only if @code{scroll-behaviour} is set to
 @code{Continuous}.
-
-Notice that the default behavior has changed in version 4.12. Previous
-versions behaved as if @code{scroll-last-node=Scroll} was set. This
-behavior was counter-intuitive, therefore since version 4.12 the
-default is to stop at the last node.
 
 @item scroll-step
 @vindex scroll-step

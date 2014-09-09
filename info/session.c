@@ -1925,7 +1925,7 @@ DECLARE_INFO_COMMAND (info_first_node, _("Select the first node in this file"))
 
 /* Choices for the scroll-last-node variable */
 char *scroll_last_node_choices[] = {
-  "Stop", "Scroll", "Top", NULL
+  "Stop", "Top", NULL
 };
 
 /* Controls what to do when a scrolling command is issued at the end of the
@@ -1938,6 +1938,9 @@ int scroll_last_node = SLN_Stop;
 static int
 forward_move_node_structure (WINDOW *window, int behaviour)
 {
+  if (window->node->flags & N_IsInternal)
+    return 1;
+
   switch (behaviour)
     {
     case IS_PageOnly:
@@ -1950,28 +1953,6 @@ forward_move_node_structure (WINDOW *window, int behaviour)
 
     case IS_Continuous:
       {
-        /* If last node in file */
-        if (!window->node->next &&
-            !(window->node->up && strcmp ("Top", window->node->up)))
-          {
-            switch (scroll_last_node)
-              {
-              case SLN_Stop:
-                info_error ("%s", _("No more nodes within this document."));
-                return 1;
-                
-              case SLN_Scroll:
-                break;
-                
-              case SLN_Top:
-                info_top_node (window, 1, 0);
-                return 0;
-                
-              default:
-                abort ();
-              }
-          }
-        
         /* If this node contains a menu, select its first entry.  Indices
            are an exception, as their menus lead nowhere meaningful. */
         if (!(window->node->flags & N_IsIndex))
@@ -2030,15 +2011,27 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                 }
               else
                 {
-                  /* No more "Up" pointers.  Print an error, and call it
-                     quits. */
+                  /* No more "Up" pointers.  We are at the last node in the
+                     file. */
                   register int i;
 
                   for (i = 0; i < up_counter; i++)
                     forget_node (window);
 
-                  info_error ("%s", _("No more nodes within this document."));
-                  return 1;
+                  switch (scroll_last_node)
+                    {
+                    case SLN_Stop:
+                      info_error ("%s",
+                                  _("No more nodes within this document."));
+                      return 1;
+                      
+                    case SLN_Top:
+                      info_top_node (window, 1, 0);
+                      return 0;
+                      
+                    default:
+                      abort ();
+                    }
                 }
             }
         }
@@ -2053,6 +2046,9 @@ forward_move_node_structure (WINDOW *window, int behaviour)
 static int
 backward_move_node_structure (WINDOW *window, int behaviour)
 {
+  if (window->node->flags & N_IsInternal)
+    return 1;
+
   switch (behaviour)
     {
     case IS_PageOnly:
@@ -2253,14 +2249,9 @@ select_menu_digit (WINDOW *window, unsigned char key)
   register REFERENCE **menu;
 
   menu = window->node->references;
-
   if (!menu)
-    {
-      info_error ("%s", msg_no_menu_node);
-      return 0;
-    }
+    return 0;
 
-  /* We have the menu.  See if there are this many items in it. */
   item = key - '0';
 
   /* Special case.  Item "0" is the last item in this menu. */
@@ -2271,7 +2262,6 @@ select_menu_digit (WINDOW *window, unsigned char key)
       for (j = 0; menu[j]; j++)
         if (menu[j]->type == REFERENCE_MENU_ITEM)
           i = j;
-      if (i == -1) return 0;
     }
   else
     {
@@ -2285,6 +2275,9 @@ select_menu_digit (WINDOW *window, unsigned char key)
         }
     }
 
+  if (i == -1)
+    return 0;
+
   return menu[i];
 }
 
@@ -2293,12 +2286,20 @@ DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
 {
   int item = key - '0';
   REFERENCE *entry;
+  REFERENCE **references = window->node->references;
 
-  if (!window->node->references)
+  /* Check if there is a menu in this node. */
+  if (references)
     {
-      info_error ("%s", msg_no_menu_node);
-      return;
+      int i; 
+      for (i = 0; references[i]; i++)
+        if (references[i]->type == REFERENCE_MENU_ITEM)
+          goto has_menu;
     }
+
+  info_error ("%s", msg_no_menu_node);
+  return;
+has_menu:
 
   if (entry = select_menu_digit (window, key))
     info_select_reference (window, entry);
