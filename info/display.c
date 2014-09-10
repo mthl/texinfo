@@ -362,7 +362,7 @@ display_update_window_1 (WINDOW *win)
             {
               finish = display_node_text (win->first_row + pl_num,
                           text_buffer_base (&tb_printed_line),
-                          text_buffer_off (&tb_printed_line),
+                          text_buffer_off (&tb_printed_line) - 1,
                           pl_chars);
             }
           else
@@ -545,6 +545,57 @@ funexit:
   signal_unblock_winch ();
 }
 
+/* Scroll screen lines from START inclusive to END exclusive down
+   by AMOUNT lines.  Negative AMOUNT means move them up. */
+static void
+display_scroll_region (int start, int end, int amount)
+{
+  int i;
+  DISPLAY_LINE *temp;
+
+  /* Do it on the screen. */
+  terminal_scroll_region (start, end, amount);
+
+  /* Now do it in the display buffer so our contents match the screen. */
+  if (amount > 0)
+    {
+      for (i = end - 1; i >= start + amount; i--)
+        {
+          /* Swap rows i and (i - amount). */
+          temp = the_display[i];
+          the_display[i] = the_display[i - amount];
+          the_display[i - amount] = temp;
+        }
+
+      /* Clear vacated lines */
+      for (i = start; i < start + amount && i < end; i++)
+        {
+          the_display[i]->text[0] = '\0';
+          the_display[i]->textlen = 0;
+          the_display[i]->inverse = 0;
+        }
+    }
+  else
+    {
+      amount *= -1;
+      for (i = start; i <= end - 1 - amount; i++)
+        {
+          /* Swap rows i and (i + amount). */
+          temp = the_display[i];
+          the_display[i] = the_display[i + amount];
+          the_display[i + amount] = temp;
+        }
+
+      /* Clear vacated lines */
+      for (i = end - 1; i >= end - amount && i >= start; i--)
+        {
+          the_display[i]->text[0] = '\0';
+          the_display[i]->textlen = 0;
+          the_display[i]->inverse = 0;
+        }
+    }
+}
+
 /* Scroll the region of the_display starting at START, ending at END, and
    moving the lines AMOUNT lines.  If AMOUNT is less than zero, the lines
    are moved up in the screen, otherwise down.  Actually, it is possible
@@ -557,7 +608,7 @@ display_scroll_display (int start, int end, int amount)
   DISPLAY_LINE *temp;
 
   /* If this terminal cannot do scrolling, give up now. */
-  if (!terminal_can_scroll)
+  if (!terminal_can_scroll && !terminal_can_scroll_region)
     return;
 
   /* If there isn't anything displayed on the screen because it is too
@@ -568,6 +619,21 @@ display_scroll_display (int start, int end, int amount)
   /* If there is typeahead pending, then don't actually do any scrolling. */
   if (info_any_buffered_input_p ())
     return;
+
+  /* Use scrolling region if we can because it doesn't affect the area
+     below the area we want to scroll. */
+  if (terminal_can_scroll_region)
+    {
+      display_scroll_region (start, end, amount);
+      return;
+    }
+
+  /* Otherwise scroll by deleting and inserting lines. */
+
+  if (amount < 0)
+    start -= amount;
+  else
+    end -= amount;
 
   /* Do it on the screen. */
   terminal_scroll_terminal (start, end, amount);

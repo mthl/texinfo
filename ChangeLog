@@ -1,3 +1,20 @@
+2014-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/display.c (display_scroll_region): New function.
+	(display_scroll_display): Call it if the terminal supports setting a
+	scrolling region.
+
+	* info/terminal.c (terminal_scroll_region): New function.
+	(terminal_can_scroll_region): New variable.
+	(term_cs, term_SF, term_SR): New variables.
+	(terminal_initialize_terminal): Set them.
+	
+	* info/window.c (set_window_pagetop): Pass top and bottom of
+	window being scrolled to display_scroll_display.
+
+	* info/display.c (display_update_window_1): Correct length argument
+	passed to display_node_text.
+
 2014-09-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (forward_move_node_structure)

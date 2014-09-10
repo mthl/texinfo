@@ -47,6 +47,9 @@ extern int terminal_use_visible_bell_p;
 /* Non-zero means that this terminal can scroll lines up and down. */
 extern int terminal_can_scroll;
 
+/* Non-zero means that this terminal can scroll within a restricted region. */
+extern int terminal_can_scroll_region;
+
 /* Initialize the terminal which is known as TERMINAL_NAME.  If this terminal
    doesn't have cursor addressability, TERMINAL_IS_DUMB_P becomes non-zero.
    The variables SCREENHEIGHT and SCREENWIDTH are set to the dimensions that
@@ -121,6 +124,8 @@ extern VFunction *terminal_end_standout_hook;
    bottom of the screen. */
 extern void terminal_scroll_terminal (int start, int end, int amount);
 extern VFunction *terminal_scroll_terminal_hook;
+
+extern void terminal_scroll_region (int start, int end, int amount);
 
 /* Ring the terminal bell.  The bell is run visibly if it both has one and
    terminal_use_visible_bell_p is non-zero. */

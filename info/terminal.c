@@ -92,6 +92,9 @@ static char *term_goto, *term_clreol, *term_cr, *term_clrpag;
 static char *term_begin_use, *term_end_use;
 static char *term_AL, *term_DL, *term_al, *term_dl;
 
+static char *term_cs; /* Set scrolling region. */
+static char *term_SF, *term_SR; /* Scroll forward and in reverse. */
+
 static char *term_keypad_on, *term_keypad_off;
 
 /* How to go up a line. */
@@ -236,6 +239,10 @@ int terminal_use_visible_bell_p = 0;
 
 /* Non-zero means that the terminal can do scrolling. */
 int terminal_can_scroll = 0;
+
+/* Non-zero means that the terminal scroll within a restricted region
+   of lines. */
+int terminal_can_scroll_region = 0;
 
 /* The key sequences output by the arrow keys, if this terminal has any. */
 char *term_ku = NULL;
@@ -446,6 +453,36 @@ terminal_insert_lines (int start, int count)
     }
 
   fflush (stdout);
+}
+
+void
+terminal_scroll_region (int start, int end, int amount)
+{
+  /* Any scrolling at all? */
+  if (amount == 0)
+    return;
+
+  if (terminal_scroll_terminal_hook)
+    {
+      (*terminal_scroll_terminal_hook) (start, end, amount);
+      return;
+    }
+
+  if (terminal_can_scroll_region)
+    {
+      /* Set scrolling region. */
+      tputs (tgoto (term_cs, end - 1, start), 0, output_character_function);
+
+      /* Scroll. */
+      if (amount > 0)
+        tputs (tgoto (term_SR, 0, amount), 0, output_character_function);
+      else
+        tputs (tgoto (term_SF, 0, -amount), 0, output_character_function);
+
+      /* Reset scrolling region. */
+      tputs (tgoto (term_cs, screenheight - 1, 0), 0, output_character_function);
+      return;
+    }
 }
 
 /* Scroll an area of the terminal, starting with the region from START
@@ -730,7 +767,12 @@ terminal_initialize_terminal (char *terminal_name)
   term_al = tgetstr ("al", &buffer);
   term_dl = tgetstr ("dl", &buffer);
 
+  term_cs = tgetstr ("cs", &buffer);
+  term_SF = tgetstr ("SF", &buffer);
+  term_SR = tgetstr ("SR", &buffer);
+
   terminal_can_scroll = ((term_AL || term_al) && (term_DL || term_dl));
+  terminal_can_scroll_region = term_cs && term_SF && term_SR;
 
   term_invbeg = tgetstr ("mr", &buffer);
   if (term_invbeg)

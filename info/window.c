@@ -810,7 +810,7 @@ set_window_pagetop (WINDOW *window, int desired_top)
           (((window->height - amount) * 10) < window->height))
         return;
 
-      start = amount + window->first_row;
+      start = window->first_row;
       end = window->height + window->first_row;
 
       display_scroll_display (start, end, -amount);
@@ -827,7 +827,7 @@ set_window_pagetop (WINDOW *window, int desired_top)
         return;
 
       start = window->first_row;
-      end = (window->first_row + window->height) - amount;
+      end = window->first_row + window->height;
       display_scroll_display (start, end, amount);
     }
 }
