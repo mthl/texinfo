@@ -37,13 +37,6 @@
 #  define HAVE_STRUCT_TIMEVAL
 #endif /* HAVE_SYS_TIME_H */
 
-static void display_info_keyseq (int expecting_future_input);
-char *node_printed_rep (NODE *node);
-static int get_byte_from_input_buffer (unsigned char *key);
-
-static REFERENCE *select_menu_digit (WINDOW *window, unsigned char key);
-static void gc_file_buffers_and_nodes (void);
-
 /* **************************************************************** */
 /*                                                                  */
 /*                   Running an Info Session                        */
@@ -58,10 +51,6 @@ static FILE *info_input_stream = NULL;
 /* Becomes non-zero when 'q' is typed to an Info window. */
 static int quit_info_immediately = 0;
 
-/* Minimal length of a search string */
-int min_search_length = 1;
-
-
 /* Defined in indices.c */
 extern NODE *allfiles_node;
 
@@ -102,8 +91,6 @@ allfiles_create_node (char *term, REFERENCE **fref)
 
   scan_node_contents (0, &allfiles_node);
 }
-
-
 
 /* Begin an info session finding the nodes specified by REFERENCES.  For
    each loaded node, create a new window.  Always split the largest of the
@@ -1545,6 +1532,159 @@ DECLARE_INFO_COMMAND (info_scroll_other_window_backward,
   info_scroll_other_window (window, -count, key);
 }
 
+
+/* **************************************************************** */
+/*                                                                  */
+/*                      Garbage collection                          */
+/*                                                                  */
+/* **************************************************************** */
+
+
+/* Contents of displayed nodes with no corresponding file buffer. */
+static char **gcable_pointers = NULL;
+static size_t gcable_pointers_index = 0;
+static size_t gcable_pointers_slots = 0;
+
+/* Add POINTER to the list of garbage collectible pointers.  A pointer
+   is not garbage collected until no window contains a node whose contents
+   member is equal to the pointer. */
+void
+add_gcable_pointer (char *pointer)
+{
+  add_pointer_to_array (pointer, gcable_pointers_index, gcable_pointers,
+			gcable_pointers_slots, 10);
+}
+
+/* Free contents of rewritten nodes in the file's tag table.  This will
+   do nothing for a subfile of a split file. */
+static void
+free_node_contents (FILE_BUFFER *fb)
+{
+  NODE **entry;
+
+  if (!fb->tags)
+    return;
+
+  for (entry = fb->tags; *entry; entry++)
+    if ((*entry)->flags & N_WasRewritten)
+      {
+        free ((*entry)->contents);
+        (*entry)->contents = 0;
+        (*entry)->flags &= ~N_WasRewritten;
+      }
+}
+
+static void
+gc_file_buffers_and_nodes (void)
+{
+  /* Array to record whether each file buffer was referenced or not. */
+  int *fb_referenced = xcalloc (info_loaded_files_index, sizeof (int));
+  WINDOW *win;
+  int i, j;
+  int fb_index, nc_index;
+
+  /* New value of gcable_pointers. */
+  char **new = NULL;
+  size_t new_index = 0;
+  size_t new_slots = 0;
+
+  /* Loop over nodes in the history of displayed windows recording which
+     nodes and file buffers were referenced. */
+  for (win = windows; win; win = win->next)
+    {
+      if (!win->hist)
+        continue;
+      for (i = 0; win->hist[i]; i++)
+        {
+          NODE *n = win->hist[i]->node;
+
+          /* Loop over file buffers. */
+          for (fb_index = 0; fb_index < info_loaded_files_index; fb_index++)
+            {
+              FILE_BUFFER *fb = info_loaded_files[fb_index];
+
+              if (fb->flags & N_Subfile)
+                {
+                  if (n->subfile && !FILENAME_CMP (fb->fullpath, n->subfile))
+                    {
+                      fb_referenced[fb_index] = 1;
+                      break;
+                    }
+                }
+              else
+                {
+                  if (n->fullpath && !FILENAME_CMP (fb->fullpath, n->fullpath))
+                    {
+                      fb_referenced[fb_index] = 1;
+                      break;
+                    }
+                }
+            }
+
+          /* Loop over gcable_pointers. */
+          for (nc_index = 0; nc_index < gcable_pointers_index; nc_index++)
+            if (n->contents == gcable_pointers[nc_index])
+              {
+                add_pointer_to_array (n->contents, new_index, new, 
+                                      new_slots, 10);
+                break;
+              }
+        }
+    }
+
+  /* Free unreferenced file buffers. */
+  for (i = 0; i < info_loaded_files_index; i++)
+    {
+      if (!fb_referenced[i])
+        {
+          FILE_BUFFER *fb = info_loaded_files[i];
+
+          if (fb->flags & N_TagsIndirect)
+            {
+              free_node_contents (fb);
+              continue;
+            }
+
+          /* If already gc-ed, do nothing. */
+          if (!fb->contents)
+            continue;
+
+          /* If this file had to be uncompressed, check to see if we should
+             gc it.  This means that the user-variable "gc-compressed-files"
+             is non-zero. */
+          if ((fb->flags & N_IsCompressed) && !gc_compressed_files)
+            continue;
+
+          /* If this file's contents are not gc-able, move on. */
+          if (fb->flags & N_CannotGC)
+            continue;
+
+          free_node_contents (fb);
+          free (fb->contents);
+          fb->contents = 0;
+        }
+    }
+
+  /* Free unreferenced node contents and update gcable_pointers. */
+  for (i = 0; i < gcable_pointers_index; i++)
+    {
+      for (j = 0; j < new_index; j++)
+	if (gcable_pointers[i] == new[j])
+	  break;
+
+      /* If we got all the way through the new list, then the old pointer
+	 can be garbage collected. */
+      if (!new || j == new_index)
+	free (gcable_pointers[i]);
+    }
+
+  free (gcable_pointers);
+  gcable_pointers = new;
+  gcable_pointers_slots = new_slots;
+  gcable_pointers_index = new_index;
+
+  free (fb_referenced);
+}
 
 
 /* **************************************************************** */
@@ -1774,376 +1914,6 @@ DECLARE_INFO_COMMAND (info_toggle_wrap,
               _("Toggle the state of line wrapping in the current window"))
 {
   window_toggle_wrap (window);
-}
-
-/* **************************************************************** */
-/*                                                                  */
-/*                 Navigation of document structure                 */
-/*                                                                  */
-/* **************************************************************** */
-
-/* Get the node pointed to by the LABEL pointer of WINDOW->node into WINDOW.
-   Display error message if there is no such pointer, and return zero. */
-static int
-info_handle_pointer (char *label, WINDOW *window)
-{
-  char *description;
-  NODE *node;
-
-  if (!strcmp (label, "Up"))
-    description = window->node->up;
-  else if (!strcmp (label, "Next"))
-    description = window->node->next;
-  else if (!strcmp (label, "Prev"))
-    description = window->node->prev;
-
-  if (!description)
-    {
-      info_error (msg_no_pointer, label);
-      return 0;
-    }
-
-  node = info_get_node_with_defaults (0, description, window->node);
-  if (!node)
-    {
-      if (info_recent_file_error)
-        info_error ("%s", info_recent_file_error);
-      else
-        info_error (msg_cant_find_node, description);
-      return 0;
-    }
-
-  /* If we are going up, set the cursor position to the last place it
-     was in the node. */
-  if (strcmp (label, "Up") == 0)
-    {
-      int i;
-
-      for (i = window->hist_index - 1; i >= 0; i--)
-        {
-          NODE *p = window->hist[i]->node;
-
-          if (p->fullpath && !strcmp (p->fullpath, node->fullpath)
-              && p->nodename && !strcmp (p->nodename, node->nodename))
-            break;
-        }
-
-      if (i >= 0)
-        node->display_pos = window->hist[i]->point;
-    }
-
-  info_set_node_of_window (window, node);
-  return 1;
-}
-
-/* Make WINDOW display the "Next:" node of the node currently being
-   displayed. */
-DECLARE_INFO_COMMAND (info_next_node, _("Select the Next node"))
-{
-  info_handle_pointer ("Next", window);
-}
-
-/* Make WINDOW display the "Prev:" node of the node currently being
-   displayed. */
-DECLARE_INFO_COMMAND (info_prev_node, _("Select the Prev node"))
-{
-  info_handle_pointer ("Prev", window);
-}
-
-/* Make WINDOW display the "Up:" node of the node currently being
-   displayed. */
-DECLARE_INFO_COMMAND (info_up_node, _("Select the Up node"))
-{
-  info_handle_pointer ("Up", window);
-}
-
-/* Make WINDOW display the last node of this info file. */
-DECLARE_INFO_COMMAND (info_last_node, _("Select the last node in this file"))
-{
-  register int i;
-  FILE_BUFFER *fb = file_buffer_of_window (window);
-  NODE *node = NULL;
-
-  if (fb && fb->tags)
-    {
-      int last_node_tag_idx = -1;
-
-      /* If no explicit argument, or argument of zero, default to the
-         last node.  */
-      if (count == 0 || (count == 1 && !info_explicit_arg))
-        count = -1;
-      for (i = 0; count && fb->tags[i]; i++)
-        if (fb->tags[i]->nodelen != 0) /* don't count anchor tags */
-          {
-            count--;
-            last_node_tag_idx = i;
-          }
-      if (count > 0)
-        i = last_node_tag_idx + 1;
-      if (i > 0)
-        node = info_get_node (fb->filename, fb->tags[i - 1]->nodename);
-    }
-
-  if (!node)
-    info_error ("%s", _("This window has no additional nodes"));
-  else
-    info_set_node_of_window (window, node);
-}
-
-/* Make WINDOW display the first node of this info file. */
-DECLARE_INFO_COMMAND (info_first_node, _("Select the first node in this file"))
-{
-  FILE_BUFFER *fb = file_buffer_of_window (window);
-  NODE *node = NULL;
-
-  /* If no explicit argument, or argument of zero, default to the
-     first node.  */
-  if (count == 0)
-    count = 1;
-  if (fb && fb->tags)
-    {
-      register int i;
-      int last_node_tag_idx = -1;
-
-      for (i = 0; count && fb->tags[i]; i++)
-        if (fb->tags[i]->nodelen != 0) /* don't count anchor tags */
-          {
-            count--;
-            last_node_tag_idx = i;
-          }
-      if (count > 0)
-        i = last_node_tag_idx + 1;
-      if (i > 0)
-        node = info_get_node (fb->filename, fb->tags[i - 1]->nodename);
-    }
-
-  if (!node)
-    info_error ("%s", _("This window has no additional nodes"));
-  else
-    info_set_node_of_window (window, node);
-}
-
-/* Choices for the scroll-last-node variable */
-char *scroll_last_node_choices[] = {
-  "Stop", "Top", NULL
-};
-
-/* Controls what to do when a scrolling command is issued at the end of the
-   last node. */
-int scroll_last_node = SLN_Stop;
-
-/* Move to 1st menu item, Next, Up/Next, or error in this window. Return
-   non-zero on error, 0 on success.  Display an error message if there is an
-   error. */
-static int
-forward_move_node_structure (WINDOW *window, int behaviour)
-{
-  if (window->node->flags & N_IsInternal)
-    return 1;
-
-  switch (behaviour)
-    {
-    case IS_PageOnly:
-      info_error ("%s", msg_at_node_bottom);
-      return 1;
-
-    case IS_NextOnly:
-      return !info_handle_pointer ("Next", window);
-      break;
-
-    case IS_Continuous:
-      {
-        /* If this node contains a menu, select its first entry.  Indices
-           are an exception, as their menus lead nowhere meaningful. */
-        if (!(window->node->flags & N_IsIndex))
-          {
-            REFERENCE *entry;
-
-            if (entry = select_menu_digit (window, '1'))
-              {
-                info_select_reference (window, entry);
-                return 0;
-              }
-          }
-
-        /* Okay, this node does not contain a menu.  If it contains a
-           "Next:" pointer, use that. */
-        if (window->node->next)
-          {
-            info_handle_pointer ("Next", window);
-            return 0;
-          }
-
-        /* Okay, there wasn't a "Next:" for this node.  Move "Up:" until we
-           can move "Next:".  If that isn't possible, complain that there
-           are no more nodes. */
-        {
-          int up_counter;
-
-          /* Back up through the "Up:" pointers until we have found a "Next:"
-             that isn't the same as the first menu item found in that node. */
-          up_counter = 0;
-          while (1)
-            {
-              if (window->node->up)
-                {
-                  REFERENCE *entry;
-
-                  if (!info_handle_pointer ("Up", window))
-                    return 1;
-
-                  up_counter++;
-
-                  /* If no "Next" pointer, keep backing up. */
-                  if (!window->node->next)
-                    continue;
-
-                  /* If this node's first menu item is the same as this node's
-                     Next pointer, keep backing up. */
-                  entry = select_menu_digit (window, '1');
-                  if (entry && !strcmp (window->node->next, entry->nodename))
-                    continue;
-
-                  /* This node has a "Next" pointer, and it is not the
-                     same as the first menu item found in this node. */
-                  info_handle_pointer ("Next", window);
-                  return 0;
-                }
-              else
-                {
-                  /* No more "Up" pointers.  We are at the last node in the
-                     file. */
-                  register int i;
-
-                  for (i = 0; i < up_counter; i++)
-                    forget_node (window);
-
-                  switch (scroll_last_node)
-                    {
-                    case SLN_Stop:
-                      info_error ("%s",
-                                  _("No more nodes within this document."));
-                      return 1;
-                      
-                    case SLN_Top:
-                      info_top_node (window, 1, 0);
-                      return 0;
-                      
-                    default:
-                      abort ();
-                    }
-                }
-            }
-        }
-        break;
-      }
-    }
-  return 0;
-}
-
-/* Move to earlier node in node hierarchy in WINDOW depending on BEHAVIOUR.
-   Display an error message if node wasn't changed. */
-static int
-backward_move_node_structure (WINDOW *window, int behaviour)
-{
-  if (window->node->flags & N_IsInternal)
-    return 1;
-
-  switch (behaviour)
-    {
-    case IS_PageOnly:
-      info_error ("%s", msg_at_node_top);
-      return 1;
-
-    case IS_NextOnly:
-      return !info_handle_pointer ("Prev", window);
-      break;
-
-    case IS_Continuous:
-      if (window->node->up)
-        {
-          /* If up is the dir node, we are at the top node.
-             Don't do anything. */
-          if (   !strcmp ("(dir)", window->node->up)
-              || !strcmp ("(DIR)", window->node->up))
-            {
-              info_error ("%s", 
-                    _("No 'Prev' or 'Up' for this node within this document."));
-              return 1;
-            }
-          /* If 'Prev' and 'Up' are the same, we are at the first node
-             of the 'Up' node's menu. Go to up node. */
-          else if (window->node->prev
-              && !strcmp(window->node->prev, window->node->up))
-            {
-              info_handle_pointer ("Up", window);
-            }
-          /* Otherwise, go to 'Prev' node and go down the last entry
-             in the menus as far as possible. */
-          else if (window->node->prev)
-            {
-              info_handle_pointer ("Prev", window);
-              if (!(window->node->flags & N_IsIndex))
-                {
-                  while (1)
-                    {
-                      REFERENCE *entry = select_menu_digit (window, '0');
-                      if (!entry)
-                        break;
-                      if (!info_select_reference (window, entry))
-                        break;
-                    }
-                }
-            }
-          else /* 'Up' but no 'Prev' */
-            info_handle_pointer ("Up", window);
-        }
-      else if (window->node->prev) /* 'Prev' but no 'Up' */
-        info_handle_pointer ("Prev", window);
-      else
-        {
-          info_error ("%s", 
-                _("No 'Prev' or 'Up' for this node within this document."));
-          return 1;
-        }
-
-      break; /* case IS_Continuous: */
-    }
-  return 0;
-}
-
-/* Move continuously forward through the node structure of this info file. */
-DECLARE_INFO_COMMAND (info_global_next_node,
-                      _("Move forwards or down through node structure"))
-{
-  if (count < 0)
-    info_global_prev_node (window, -count, key);
-  else
-    {
-      while (count)
-        {
-          if (forward_move_node_structure (window, IS_Continuous))
-            break;
-          count--;
-        }
-    }
-}
-
-/* Move continuously backward through the node structure of this info file. */
-DECLARE_INFO_COMMAND (info_global_prev_node,
-                      _("Move backwards or up through node structure"))
-{
-  if (count < 0)
-    info_global_next_node (window, -count, key);
-  else
-    {
-      while (count)
-        {
-          if (backward_move_node_structure (window, IS_Continuous))
-            break;
-          count--;
-        }
-    }
 }
 
 
@@ -2914,27 +2684,380 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
 
 /* **************************************************************** */
 /*                                                                  */
-/*                      Info Node Commands                          */
+/*                 Navigation of document structure                 */
 /*                                                                  */
 /* **************************************************************** */
 
-/* Return (FILENAME)NODENAME for NODE, or just NODENAME if NODE's
-   filename is not set. */
-char *
-node_printed_rep (NODE *node)
+/* Get the node pointed to by the LABEL pointer of WINDOW->node into WINDOW.
+   Display error message if there is no such pointer, and return zero. */
+static int
+info_handle_pointer (char *label, WINDOW *window)
 {
-  static char *rep;
+  char *description;
+  NODE *node;
 
-  if (node->fullpath)
+  if (!strcmp (label, "Up"))
+    description = window->node->up;
+  else if (!strcmp (label, "Next"))
+    description = window->node->next;
+  else if (!strcmp (label, "Prev"))
+    description = window->node->prev;
+
+  if (!description)
     {
-      char *filename = filename_non_directory (node->fullpath);
-      rep = xrealloc (rep, 1 + strlen (filename) + 1 + strlen (node->nodename) + 1);
-      sprintf (rep, "(%s)%s", filename, node->nodename);
-      return rep;
+      info_error (msg_no_pointer, label);
+      return 0;
     }
-  else
-    return node->nodename;
+
+  node = info_get_node_with_defaults (0, description, window->node);
+  if (!node)
+    {
+      if (info_recent_file_error)
+        info_error ("%s", info_recent_file_error);
+      else
+        info_error (msg_cant_find_node, description);
+      return 0;
+    }
+
+  /* If we are going up, set the cursor position to the last place it
+     was in the node. */
+  if (strcmp (label, "Up") == 0)
+    {
+      int i;
+
+      for (i = window->hist_index - 1; i >= 0; i--)
+        {
+          NODE *p = window->hist[i]->node;
+
+          if (p->fullpath && !strcmp (p->fullpath, node->fullpath)
+              && p->nodename && !strcmp (p->nodename, node->nodename))
+            break;
+        }
+
+      if (i >= 0)
+        node->display_pos = window->hist[i]->point;
+    }
+
+  info_set_node_of_window (window, node);
+  return 1;
 }
+
+/* Make WINDOW display the "Next:" node of the node currently being
+   displayed. */
+DECLARE_INFO_COMMAND (info_next_node, _("Select the Next node"))
+{
+  info_handle_pointer ("Next", window);
+}
+
+/* Make WINDOW display the "Prev:" node of the node currently being
+   displayed. */
+DECLARE_INFO_COMMAND (info_prev_node, _("Select the Prev node"))
+{
+  info_handle_pointer ("Prev", window);
+}
+
+/* Make WINDOW display the "Up:" node of the node currently being
+   displayed. */
+DECLARE_INFO_COMMAND (info_up_node, _("Select the Up node"))
+{
+  info_handle_pointer ("Up", window);
+}
+
+/* Make WINDOW display the last node of this info file. */
+DECLARE_INFO_COMMAND (info_last_node, _("Select the last node in this file"))
+{
+  register int i;
+  FILE_BUFFER *fb = file_buffer_of_window (window);
+  NODE *node = NULL;
+
+  if (fb && fb->tags)
+    {
+      int last_node_tag_idx = -1;
+
+      /* If no explicit argument, or argument of zero, default to the
+         last node.  */
+      if (count == 0 || (count == 1 && !info_explicit_arg))
+        count = -1;
+      for (i = 0; count && fb->tags[i]; i++)
+        if (fb->tags[i]->nodelen != 0) /* don't count anchor tags */
+          {
+            count--;
+            last_node_tag_idx = i;
+          }
+      if (count > 0)
+        i = last_node_tag_idx + 1;
+      if (i > 0)
+        node = info_get_node (fb->filename, fb->tags[i - 1]->nodename);
+    }
+
+  if (!node)
+    info_error ("%s", _("This window has no additional nodes"));
+  else
+    info_set_node_of_window (window, node);
+}
+
+/* Make WINDOW display the first node of this info file. */
+DECLARE_INFO_COMMAND (info_first_node, _("Select the first node in this file"))
+{
+  FILE_BUFFER *fb = file_buffer_of_window (window);
+  NODE *node = NULL;
+
+  /* If no explicit argument, or argument of zero, default to the
+     first node.  */
+  if (count == 0)
+    count = 1;
+  if (fb && fb->tags)
+    {
+      register int i;
+      int last_node_tag_idx = -1;
+
+      for (i = 0; count && fb->tags[i]; i++)
+        if (fb->tags[i]->nodelen != 0) /* don't count anchor tags */
+          {
+            count--;
+            last_node_tag_idx = i;
+          }
+      if (count > 0)
+        i = last_node_tag_idx + 1;
+      if (i > 0)
+        node = info_get_node (fb->filename, fb->tags[i - 1]->nodename);
+    }
+
+  if (!node)
+    info_error ("%s", _("This window has no additional nodes"));
+  else
+    info_set_node_of_window (window, node);
+}
+
+/* Choices for the scroll-last-node variable */
+char *scroll_last_node_choices[] = {
+  "Stop", "Top", NULL
+};
+
+/* Controls what to do when a scrolling command is issued at the end of the
+   last node. */
+int scroll_last_node = SLN_Stop;
+
+/* Move to 1st menu item, Next, Up/Next, or error in this window. Return
+   non-zero on error, 0 on success.  Display an error message if there is an
+   error. */
+static int
+forward_move_node_structure (WINDOW *window, int behaviour)
+{
+  if (window->node->flags & N_IsInternal)
+    return 1;
+
+  switch (behaviour)
+    {
+    case IS_PageOnly:
+      info_error ("%s", msg_at_node_bottom);
+      return 1;
+
+    case IS_NextOnly:
+      return !info_handle_pointer ("Next", window);
+      break;
+
+    case IS_Continuous:
+      {
+        /* If this node contains a menu, select its first entry.  Indices
+           are an exception, as their menus lead nowhere meaningful. */
+        if (!(window->node->flags & N_IsIndex))
+          {
+            REFERENCE *entry;
+
+            if (entry = select_menu_digit (window, '1'))
+              {
+                info_select_reference (window, entry);
+                return 0;
+              }
+          }
+
+        /* Okay, this node does not contain a menu.  If it contains a
+           "Next:" pointer, use that. */
+        if (window->node->next)
+          {
+            info_handle_pointer ("Next", window);
+            return 0;
+          }
+
+        /* Okay, there wasn't a "Next:" for this node.  Move "Up:" until we
+           can move "Next:".  If that isn't possible, complain that there
+           are no more nodes. */
+        {
+          int up_counter;
+
+          /* Back up through the "Up:" pointers until we have found a "Next:"
+             that isn't the same as the first menu item found in that node. */
+          up_counter = 0;
+          while (1)
+            {
+              if (window->node->up)
+                {
+                  REFERENCE *entry;
+
+                  if (!info_handle_pointer ("Up", window))
+                    return 1;
+
+                  up_counter++;
+
+                  /* If no "Next" pointer, keep backing up. */
+                  if (!window->node->next)
+                    continue;
+
+                  /* If this node's first menu item is the same as this node's
+                     Next pointer, keep backing up. */
+                  entry = select_menu_digit (window, '1');
+                  if (entry && !strcmp (window->node->next, entry->nodename))
+                    continue;
+
+                  /* This node has a "Next" pointer, and it is not the
+                     same as the first menu item found in this node. */
+                  info_handle_pointer ("Next", window);
+                  return 0;
+                }
+              else
+                {
+                  /* No more "Up" pointers.  We are at the last node in the
+                     file. */
+                  register int i;
+
+                  for (i = 0; i < up_counter; i++)
+                    forget_node (window);
+
+                  switch (scroll_last_node)
+                    {
+                    case SLN_Stop:
+                      info_error ("%s",
+                                  _("No more nodes within this document."));
+                      return 1;
+                      
+                    case SLN_Top:
+                      info_top_node (window, 1, 0);
+                      return 0;
+                      
+                    default:
+                      abort ();
+                    }
+                }
+            }
+        }
+        break;
+      }
+    }
+  return 0;
+}
+
+/* Move to earlier node in node hierarchy in WINDOW depending on BEHAVIOUR.
+   Display an error message if node wasn't changed. */
+static int
+backward_move_node_structure (WINDOW *window, int behaviour)
+{
+  if (window->node->flags & N_IsInternal)
+    return 1;
+
+  switch (behaviour)
+    {
+    case IS_PageOnly:
+      info_error ("%s", msg_at_node_top);
+      return 1;
+
+    case IS_NextOnly:
+      return !info_handle_pointer ("Prev", window);
+      break;
+
+    case IS_Continuous:
+      if (window->node->up)
+        {
+          /* If up is the dir node, we are at the top node.
+             Don't do anything. */
+          if (   !strcmp ("(dir)", window->node->up)
+              || !strcmp ("(DIR)", window->node->up))
+            {
+              info_error ("%s", 
+                    _("No 'Prev' or 'Up' for this node within this document."));
+              return 1;
+            }
+          /* If 'Prev' and 'Up' are the same, we are at the first node
+             of the 'Up' node's menu. Go to up node. */
+          else if (window->node->prev
+              && !strcmp(window->node->prev, window->node->up))
+            {
+              info_handle_pointer ("Up", window);
+            }
+          /* Otherwise, go to 'Prev' node and go down the last entry
+             in the menus as far as possible. */
+          else if (window->node->prev)
+            {
+              info_handle_pointer ("Prev", window);
+              if (!(window->node->flags & N_IsIndex))
+                {
+                  while (1)
+                    {
+                      REFERENCE *entry = select_menu_digit (window, '0');
+                      if (!entry)
+                        break;
+                      if (!info_select_reference (window, entry))
+                        break;
+                    }
+                }
+            }
+          else /* 'Up' but no 'Prev' */
+            info_handle_pointer ("Up", window);
+        }
+      else if (window->node->prev) /* 'Prev' but no 'Up' */
+        info_handle_pointer ("Prev", window);
+      else
+        {
+          info_error ("%s", 
+                _("No 'Prev' or 'Up' for this node within this document."));
+          return 1;
+        }
+
+      break; /* case IS_Continuous: */
+    }
+  return 0;
+}
+
+/* Move continuously forward through the node structure of this info file. */
+DECLARE_INFO_COMMAND (info_global_next_node,
+                      _("Move forwards or down through node structure"))
+{
+  if (count < 0)
+    info_global_prev_node (window, -count, key);
+  else
+    {
+      while (count)
+        {
+          if (forward_move_node_structure (window, IS_Continuous))
+            break;
+          count--;
+        }
+    }
+}
+
+/* Move continuously backward through the node structure of this info file. */
+DECLARE_INFO_COMMAND (info_global_prev_node,
+                      _("Move backwards or up through node structure"))
+{
+  if (count < 0)
+    info_global_next_node (window, -count, key);
+  else
+    {
+      while (count)
+        {
+          if (backward_move_node_structure (window, IS_Continuous))
+            break;
+          count--;
+        }
+    }
+}
+
+
+/* **************************************************************** */
+/*                                                                  */
+/*                      Info Node Commands                          */
+/*                                                                  */
+/* **************************************************************** */
 
 /* Read a line of input which is a node name, and go to that node. */
 DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
@@ -3498,20 +3621,6 @@ DECLARE_INFO_COMMAND (info_toggle_regexp,
                                : _("Using literal strings for searches."));
 }
 
-/* Return the file buffer which belongs to WINDOW's node. */
-FILE_BUFFER *
-file_buffer_of_window (WINDOW *window)
-{
-  /* If this window has no node, then it has no file buffer. */
-  if (!window->node)
-    return NULL;
-
-  if (window->node->fullpath)
-    return info_find_file (window->node->fullpath);
-
-  return NULL;
-}
-
 /* Search forwards or backwards for entries in MATCHES that start within
    the search area.  The search is forwards if START_IN is greater than
    END_IN.  Return offset of match in *MATCH_INDEX. */
@@ -3821,6 +3930,9 @@ info_search_internal (char *string, WINDOW *window,
 
   return -1;
 }
+
+/* Minimal length of a search string */
+int min_search_length = 1;
 
 /* Read a string from the user. */
 static int
@@ -4463,160 +4575,6 @@ incremental_search (WINDOW *window, int count)
   /* After searching, leave the window in the correct state. */
   if (!echo_area_is_active)
     window_clear_echo_area ();
-}
-
-
-/* **************************************************************** */
-/*                                                                  */
-/*                      Garbage collection                          */
-/*                                                                  */
-/* **************************************************************** */
-
-
-/* Contents of displayed nodes with no corresponding file buffer. */
-static char **gcable_pointers = NULL;
-static size_t gcable_pointers_index = 0;
-static size_t gcable_pointers_slots = 0;
-
-/* Add POINTER to the list of garbage collectible pointers.  A pointer
-   is not garbage collected until no window contains a node whose contents
-   member is equal to the pointer. */
-void
-add_gcable_pointer (char *pointer)
-{
-  add_pointer_to_array (pointer, gcable_pointers_index, gcable_pointers,
-			gcable_pointers_slots, 10);
-}
-
-/* Free contents of rewritten nodes in the file's tag table.  This will
-   do nothing for a subfile of a split file. */
-static void
-free_node_contents (FILE_BUFFER *fb)
-{
-  NODE **entry;
-
-  if (!fb->tags)
-    return;
-
-  for (entry = fb->tags; *entry; entry++)
-    if ((*entry)->flags & N_WasRewritten)
-      {
-        free ((*entry)->contents);
-        (*entry)->contents = 0;
-        (*entry)->flags &= ~N_WasRewritten;
-      }
-}
-
-static void
-gc_file_buffers_and_nodes (void)
-{
-  /* Array to record whether each file buffer was referenced or not. */
-  int *fb_referenced = xcalloc (info_loaded_files_index, sizeof (int));
-  WINDOW *win;
-  int i, j;
-  int fb_index, nc_index;
-
-  /* New value of gcable_pointers. */
-  char **new = NULL;
-  size_t new_index = 0;
-  size_t new_slots = 0;
-
-  /* Loop over nodes in the history of displayed windows recording which
-     nodes and file buffers were referenced. */
-  for (win = windows; win; win = win->next)
-    {
-      if (!win->hist)
-        continue;
-      for (i = 0; win->hist[i]; i++)
-        {
-          NODE *n = win->hist[i]->node;
-
-          /* Loop over file buffers. */
-          for (fb_index = 0; fb_index < info_loaded_files_index; fb_index++)
-            {
-              FILE_BUFFER *fb = info_loaded_files[fb_index];
-
-              if (fb->flags & N_Subfile)
-                {
-                  if (n->subfile && !FILENAME_CMP (fb->fullpath, n->subfile))
-                    {
-                      fb_referenced[fb_index] = 1;
-                      break;
-                    }
-                }
-              else
-                {
-                  if (n->fullpath && !FILENAME_CMP (fb->fullpath, n->fullpath))
-                    {
-                      fb_referenced[fb_index] = 1;
-                      break;
-                    }
-                }
-            }
-
-          /* Loop over gcable_pointers. */
-          for (nc_index = 0; nc_index < gcable_pointers_index; nc_index++)
-            if (n->contents == gcable_pointers[nc_index])
-              {
-                add_pointer_to_array (n->contents, new_index, new, 
-                                      new_slots, 10);
-                break;
-              }
-        }
-    }
-
-  /* Free unreferenced file buffers. */
-  for (i = 0; i < info_loaded_files_index; i++)
-    {
-      if (!fb_referenced[i])
-        {
-          FILE_BUFFER *fb = info_loaded_files[i];
-
-          if (fb->flags & N_TagsIndirect)
-            {
-              free_node_contents (fb);
-              continue;
-            }
-
-          /* If already gc-ed, do nothing. */
-          if (!fb->contents)
-            continue;
-
-          /* If this file had to be uncompressed, check to see if we should
-             gc it.  This means that the user-variable "gc-compressed-files"
-             is non-zero. */
-          if ((fb->flags & N_IsCompressed) && !gc_compressed_files)
-            continue;
-
-          /* If this file's contents are not gc-able, move on. */
-          if (fb->flags & N_CannotGC)
-            continue;
-
-          free_node_contents (fb);
-          free (fb->contents);
-          fb->contents = 0;
-        }
-    }
-
-  /* Free unreferenced node contents and update gcable_pointers. */
-  for (i = 0; i < gcable_pointers_index; i++)
-    {
-      for (j = 0; j < new_index; j++)
-	if (gcable_pointers[i] == new[j])
-	  break;
-
-      /* If we got all the way through the new list, then the old pointer
-	 can be garbage collected. */
-      if (!new || j == new_index)
-	free (gcable_pointers[i]);
-    }
-
-  free (gcable_pointers);
-  gcable_pointers = new;
-  gcable_pointers_slots = new_slots;
-  gcable_pointers_index = new_index;
-
-  free (fb_referenced);
 }
 
 

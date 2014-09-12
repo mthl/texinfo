@@ -93,6 +93,10 @@ extern char *printed_representation (mbi_iterator_t *iter,
                                      int *delim, size_t pl_chars,
                                      size_t *pchars, size_t *pbytes);
 
+FILE_BUFFER *file_buffer_of_window (WINDOW *window);
+
+char *node_printed_rep (NODE *node);
+
 /* Return a pointer to the part of PATHNAME that simply defines the file. */
 extern char *filename_non_directory (char *pathname);
 

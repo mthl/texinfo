@@ -1751,6 +1751,41 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
 }
 
 
+/* Various utility functions */
+
+/* Return the file buffer which belongs to WINDOW's node. */
+FILE_BUFFER *
+file_buffer_of_window (WINDOW *window)
+{
+  /* If this window has no node, then it has no file buffer. */
+  if (!window->node)
+    return NULL;
+
+  if (window->node->fullpath)
+    return info_find_file (window->node->fullpath);
+
+  return NULL;
+}
+
+/* Return "(FILENAME)NODENAME" for NODE, or just "NODENAME" if NODE's
+   filename is not set.  Return value should not be freed. */
+char *
+node_printed_rep (NODE *node)
+{
+  static char *rep;
+
+  if (node->fullpath)
+    {
+      char *filename = filename_non_directory (node->fullpath);
+      rep = xrealloc (rep, 1 + strlen (filename) + 1 + strlen (node->nodename) + 1);
+      sprintf (rep, "(%s)%s", filename, node->nodename);
+      return rep;
+    }
+  else
+    return node->nodename;
+}
+
+
 /* Return a pointer to the part of PATHNAME that simply defines the file. */
 char *
 filename_non_directory (char *pathname)
