@@ -542,6 +542,9 @@ mouse_event_handler (void)
 {
   if (mouse_cb & 0x40)
     {
+      void info_up_line (WINDOW *, int count, int key);
+      void info_down_line (WINDOW *, int count, int key);
+
       switch (mouse_cb & 0x03)
         {
         case 0: /* Mouse button 4 (scroll up). */
@@ -1204,6 +1207,8 @@ point_backward_word (WINDOW *win)
     }
 }
 
+void info_prev_line (WINDOW *, int count, int key);
+
 /* Move WINDOW's point down to the next line if possible. */
 DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
 {
@@ -1334,6 +1339,8 @@ DECLARE_INFO_COMMAND (info_beginning_of_line, _("Move to the start of the line")
     window->point = old_point;
 }
 
+void info_backward_char (WINDOW *, int count, int key);
+
 /* Move point forward in the node. */
 DECLARE_INFO_COMMAND (info_forward_char, _("Move forward a character"))
 {
@@ -1359,6 +1366,8 @@ DECLARE_INFO_COMMAND (info_backward_char, _("Move backward a character"))
       info_show_point (window);
     }
 }
+
+void info_backward_word (WINDOW *, int count, int key);
 
 /* Move forward a word in this node. */
 DECLARE_INFO_COMMAND (info_forward_word, _("Move forward a word"))
@@ -1822,6 +1831,8 @@ gc_file_buffers_and_nodes (void)
 /*                                                                  */
 /* **************************************************************** */
 
+void info_prev_window (WINDOW *, int count, int key);
+
 /* Make the next window in the chain be the active window. */
 DECLARE_INFO_COMMAND (info_next_window, _("Select the next window"))
 {
@@ -2129,13 +2140,6 @@ info_parse_and_select (char *line, WINDOW *window)
   info_select_reference (window, &entry);
 }
 
-/* Select the last menu item in WINDOW->node. */
-DECLARE_INFO_COMMAND (info_last_menu_item,
-   _("Select the last item in this node's menu"))
-{
-  info_menu_digit (window, 1, '0');
-}
-
 /* Return menu entry indexed by KEY, where '1' is the first menu item, '2' is
    the second, etc., and '0' is the last.  Return value should not be freed. */
 static REFERENCE *
@@ -2208,6 +2212,13 @@ has_menu:
                           item),
                 item);
   return;
+}
+
+/* Select the last menu item in WINDOW->node. */
+DECLARE_INFO_COMMAND (info_last_menu_item,
+   _("Select the last item in this node's menu"))
+{
+  info_menu_digit (window, 1, '0');
 }
 
 static int exclude_cross_references (REFERENCE *r)
@@ -2549,6 +2560,8 @@ info_move_to_xref (WINDOW *window, int dir)
   window_adjust_pagetop (window);
   return 1;
 }
+
+void info_move_to_next_xref (WINDOW *, int count, int key);
 
 DECLARE_INFO_COMMAND (info_move_to_prev_xref,
                       _("Move to the previous cross reference"))
@@ -3057,7 +3070,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                       return 1;
                       
                     case SLN_Top:
-                      info_top_node (window, 1, 0);
+                      info_parse_and_select ("Top", window);
                       return 0;
                       
                     default:
@@ -3142,6 +3155,8 @@ backward_move_node_structure (WINDOW *window, int behaviour)
     }
   return 0;
 }
+
+void info_global_prev_node (WINDOW *, int count, int key);
 
 /* Move continuously forward through the node structure of this info file. */
 DECLARE_INFO_COMMAND (info_global_next_node,
@@ -5003,42 +5018,7 @@ int ea_explicit_arg = 0;
 int ea_numeric_arg_sign = 1;
 int ea_numeric_arg = 1;
 
-/* Add the current digit to the argument in progress. */
-DECLARE_INFO_COMMAND (info_add_digit_to_numeric_arg,
-                      _("Add this digit to the current numeric argument"))
-{
-  info_numeric_arg_digit_loop (window, 0, key);
-}
-
-/* C-u, universal argument.  Multiply the current argument by 4.
-   Read a key.  If the key has nothing to do with arguments, then
-   dispatch on it.  If the key is the abort character then abort. */
-DECLARE_INFO_COMMAND (info_universal_argument,
-                      _("Start (or multiply by 4) the current numeric argument"))
-{
-  if (!echo_area_is_active)
-    info_numeric_arg *= 4;
-  else
-    ea_numeric_arg *= 4;
-
-  info_numeric_arg_digit_loop (window, 0, 0);
-}
-
-/* Create a default argument. */
-void
-info_initialize_numeric_arg (void)
-{
-  if (!echo_area_is_active)
-    {
-      info_numeric_arg = info_numeric_arg_sign = 1;
-      info_explicit_arg = 0;
-    }
-  else
-    {
-      ea_numeric_arg = ea_numeric_arg_sign = 1;
-      ea_explicit_arg = 0;
-    }
-}
+void info_universal_argument (WINDOW *, int count, int key);
 
 DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
                       _("Internally used by \\[universal-argument]"))
@@ -5117,3 +5097,41 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
       key = 0;
     }
 }
+
+/* Add the current digit to the argument in progress. */
+DECLARE_INFO_COMMAND (info_add_digit_to_numeric_arg,
+                      _("Add this digit to the current numeric argument"))
+{
+  info_numeric_arg_digit_loop (window, 0, key);
+}
+
+/* C-u, universal argument.  Multiply the current argument by 4.
+   Read a key.  If the key has nothing to do with arguments, then
+   dispatch on it.  If the key is the abort character then abort. */
+DECLARE_INFO_COMMAND (info_universal_argument,
+                      _("Start (or multiply by 4) the current numeric argument"))
+{
+  if (!echo_area_is_active)
+    info_numeric_arg *= 4;
+  else
+    ea_numeric_arg *= 4;
+
+  info_numeric_arg_digit_loop (window, 0, 0);
+}
+
+/* Create a default argument. */
+void
+info_initialize_numeric_arg (void)
+{
+  if (!echo_area_is_active)
+    {
+      info_numeric_arg = info_numeric_arg_sign = 1;
+      info_explicit_arg = 0;
+    }
+  else
+    {
+      ea_numeric_arg = ea_numeric_arg_sign = 1;
+      ea_explicit_arg = 0;
+    }
+}
+

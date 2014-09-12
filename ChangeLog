@@ -26,6 +26,15 @@
 	(info_error_rings_bell_p): Declaration removed.
 	* info/info.h, info/session.h (debug): Macro definition moved.
 
+	* info/session.h: Remove unnecessary declarations of functions that
+	are defined with DECLARE_INFO_COMMAND and not used outside of their
+	containing source files.
+	* info/session.c: Add declarations of DECLARE_INFO_COMMAND functions
+	as necessary.  Reorder some functions to be used after they are
+	defined.
+	(forward_move_node_structure): Call info_parse_and_select instead of
+	info_top_node.
+
 2014-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/display.c (display_scroll_region): New function.
