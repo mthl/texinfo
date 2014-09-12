@@ -19,6 +19,8 @@
 #ifndef TAG_H
 #define TAG_H
 
+#include "info-utils.h"
+
 int tag_expand (char **input, struct text_buffer *outbuf, int *is_index);
 
 #endif

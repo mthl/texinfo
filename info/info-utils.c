@@ -20,6 +20,7 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
+#include "session.h"
 #include "info-utils.h"
 #include "tag.h"
 

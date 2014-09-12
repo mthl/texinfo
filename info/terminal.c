@@ -23,7 +23,7 @@
 #include "info.h"
 #include "terminal.h"
 #include "termdep.h"
-#include "infomap.h"
+#include "doc.h"
 
 #include <sys/types.h>
 #include <signal.h>

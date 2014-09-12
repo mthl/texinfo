@@ -20,6 +20,8 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
+#include "session.h"
+#include "echo-area.h"
 #include "variables.h"
 
 /* **************************************************************** */
@@ -33,6 +35,14 @@
 static char *on_off_choices[] = { "Off", "On", NULL };
 
 static char *mouse_choices[] = { "Off", "normal-tracking", NULL };
+
+/* Choices used by the completer when reading a value for the user-visible
+   variable "scroll-behaviour". */
+static char *info_scroll_choices[] = { "Continuous", "Next Only",
+    "Page Only", NULL };
+
+/* Choices for the scroll-last-node variable */
+static char *scroll_last_node_choices[] = { "Stop", "Top", NULL };
 
 /* Note that the 'where_set' field of each element in the array is
    not given and defaults to 0. */

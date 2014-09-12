@@ -20,6 +20,9 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
+#include "display.h"
+#include "session.h"
+#include "echo-area.h"
 #include "funs.h"
 
 /* **************************************************************** */

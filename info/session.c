@@ -21,7 +21,11 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
+#include "display.h"
+#include "session.h"
+#include "echo-area.h"
 #include "search.h"
+#include "footnotes.h"
 #include "man.h"
 
 #ifndef __MINGW32__
@@ -1430,12 +1434,6 @@ DECLARE_INFO_COMMAND (info_end_of_node, _("Move to the end of this node"))
    IS_PageOnly          Simply give up at the bottom of a node. */
 
 int info_scroll_behaviour = IS_Continuous;
-
-/* Choices used by the completer when reading a value for the user-visible
-   variable "scroll-behaviour". */
-char *info_scroll_choices[] = {
-  "Continuous", "Next Only", "Page Only", NULL
-};
 
 static void _scroll_forward (WINDOW *window, int count, int nodeonly);
 static void _scroll_backward (WINDOW *window, int count, int nodeonly);
@@ -2966,11 +2964,6 @@ DECLARE_INFO_COMMAND (info_first_node, _("Select the first node in this file"))
   else
     info_set_node_of_window (window, node);
 }
-
-/* Choices for the scroll-last-node variable */
-char *scroll_last_node_choices[] = {
-  "Stop", "Top", NULL
-};
 
 /* Controls what to do when a scrolling command is issued at the end of the
    last node. */

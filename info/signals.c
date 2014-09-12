@@ -20,6 +20,9 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
+#include "display.h"
+#include "footnotes.h"
+#include "window.h"
 #include "signals.h"
 
 void initialize_info_signal_handler (void);
@@ -181,7 +184,7 @@ reset_info_window_sizes (void)
 }
 
 /* Number of times we were told to ignore SIGWINCH. */
-static sigwinch_block_count = 0;
+static int sigwinch_block_count = 0;
 
 void
 signal_block_winch (void)

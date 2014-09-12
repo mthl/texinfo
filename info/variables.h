@@ -22,6 +22,9 @@
 #ifndef INFO_VARIABLES_H
 #define INFO_VARIABLES_H
 
+#include "window.h"
+#include "info-utils.h"
+
 /* A variable (in the Info sense) is an integer value with a user-visible
    name.  You may supply an array of strings to complete over when the
    variable is set; in that case, the variable is set to the index of the
@@ -78,5 +81,7 @@ extern int infopath_no_defaults_p;
 extern int preprocess_nodes_p;
 extern int key_time;
 extern int highlight_searches_p;
+extern int mouse_protocol;
+
 
 #endif /* not INFO_VARIABLES_H */

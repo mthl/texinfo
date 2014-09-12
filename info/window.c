@@ -20,11 +20,10 @@
    Originally written by Brian Fox.  */
 
 #include "info.h"
-#include "nodes.h"
-#include "window.h"
+#include "session.h"
 #include "display.h"
 #include "info-utils.h"
-#include "infomap.h"
+#include "doc.h"
 #include "tag.h"
 #include "variables.h"
 

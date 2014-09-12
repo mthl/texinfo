@@ -20,6 +20,10 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
+#include "info-utils.h"
+#include "filesys.h"
+#include "session.h"
+#include "doc.h"
 #include "funs.h"
 
 /* HELP_NODE_GETS_REGENERATED is always defined now that keys may get

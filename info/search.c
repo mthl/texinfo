@@ -22,8 +22,9 @@
 #include "info.h"
 #include <regex.h>
 
+#include "session.h"
+#include "info-utils.h"
 #include "search.h"
-#include "nodes.h"
 
 /* The search functions take two arguments:
 

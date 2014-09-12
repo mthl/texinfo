@@ -22,7 +22,7 @@
 #ifndef INFO_WINDOW_H
 #define INFO_WINDOW_H
 
-#include "infomap.h"
+#include "doc.h"
 #include "nodes.h"
 #include <regex.h>
 

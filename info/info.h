@@ -30,13 +30,6 @@ typedef int Function ();
 typedef void VFunction ();
 typedef char *CFunction ();
 
-#include "filesys.h"
-#include "doc.h"
-#include "display.h"
-#include "session.h"
-#include "echo-area.h"
-#include "footnotes.h"
-
 #include "string.h"
 #include "mbiter.h"
 #include "mbchar.h"
@@ -71,6 +64,16 @@ extern char *program_name;
 
 #define add_element_to_array add_pointer_to_array
 
+/* All commands that can be invoked from within info_session () receive
+   arguments in the same way.  This simple define declares the header
+   of a function named NAME, with associated documentation DOC.  The
+   documentation string is groveled out of the source files by the
+   utility program `makedoc', which is also responsible for making
+   the documentation/function-pointer maps. */
+#define DECLARE_INFO_COMMAND(name, doc) \
+void name (WINDOW *window, int count, int key)
+
+
 
 /* For handling errors.  If you initialize the window system, you should
    also set info_windows_initialized_p to non-zero.  It is used by the
@@ -103,11 +106,6 @@ extern const char *msg_one_window;
 extern const char *msg_win_too_small;
 extern const char *msg_cant_make_help;
 
-
-/* Found in m-x.c.  */
-extern char *read_function_name (char *prompt, WINDOW *window);
-
-extern void show_error_node (char *error_msg);
 
 /* In infopath.c, but also used in man.c. */
 

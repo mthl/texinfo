@@ -23,16 +23,8 @@
 #define SESSION_H
 
 #include "info.h"
+#include "window.h"
 #include "dribble.h"
-
-/* All commands that can be invoked from within info_session () receive
-   arguments in the same way.  This simple define declares the header
-   of a function named NAME, with associated documentation DOC.  The
-   documentation string is groveled out of the source files by the
-   utility program `makedoc', which is also responsible for making
-   the documentation/function-pointer maps. */
-#define DECLARE_INFO_COMMAND(name, doc) \
-void name (WINDOW *window, int count, int key)
 
 /* Variable controlling the garbage collection of files briefly visited
    during searches.  Such files are normally gc'ed, unless they were
@@ -52,7 +44,6 @@ extern int auto_tiling_p;
 /* Variable controlling the behaviour of default scrolling when you are
    already at the bottom of a node. */
 extern int info_scroll_behaviour;
-extern char *info_scroll_choices[];
 
 /* Values for info_scroll_behaviour. */
 #define IS_Continuous 0 /* Try to get first menu item, or failing that, the
@@ -67,13 +58,12 @@ extern int cursor_movement_scrolls_p;
 #define SLN_Stop   0 /* Stop at the last node */
 #define SLN_Top    1 /* Go to the top node */
 
-int get_input_key (void);
-int get_another_input_key (void);
-
-extern char *scroll_last_node_choices[];
 /* Controls what to do when a scrolling command is issued at the end of the
    last node. */
 extern int scroll_last_node;
+
+int get_input_key (void);
+int get_another_input_key (void);
 
 /* Utility functions found in session.c */
 extern void info_dispatch_on_key (int key, Keymap map);
@@ -120,9 +110,6 @@ extern void info_debug (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
    output to stderr. */
 extern void info_error (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
 
-/* The names of the functions that run an info session. */
-
-/* Starting an info session. */
 void initialize_info_session (void);
 void info_read_and_dispatch (void);
 void close_info_session (void);
@@ -140,5 +127,10 @@ NODE *info_follow_menus (NODE *initial_node, char **menus,
 extern int info_explicit_arg, info_numeric_arg, info_numeric_arg_sign;
 extern int ea_explicit_arg, ea_numeric_arg, ea_numeric_arg_sign;
 extern void info_initialize_numeric_arg (void);
+
+/* Found in m-x.c.  */
+extern char *read_function_name (char *prompt, WINDOW *window);
+
+extern void show_error_node (char *error_msg);
 
 #endif /* not SESSION_H */

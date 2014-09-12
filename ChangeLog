@@ -1,5 +1,23 @@
 2014-09-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info.h: Don't include other header files.
+	* info: All *.c and *.h files: Include necessary header files.
+	Include "doc.h" instead of "infomap.h" to avoid problem with
+	header file include cycle.
+	* info/footnotes.c (info_get_or_remove_footnotes): Call info_error
+	instead of inform_in_echo_area.
+	* info/info.h, info/session.h (DECLARE_INFO_COMMAND): Macro moved
+	between files.
+	* info/info.h, info/session.h: Declarations of read_function_name,
+	show_error_node moved.
+	* info/makedoc.c (doc_header_1, main): Add include of "window.h" to
+	generated files.
+	* info/session.c, info/variables.c (info_scroll_choices)
+	(scroll_last_node_choices): Moved between files and declared static.
+	* info/variables.h: Declare 'mouse_protocol'.
+
+2014-09-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c: Move "Garbage Collection" and "Navigation of
 	document structure" sections to reduce need for forward function
 	declarations.

@@ -32,6 +32,7 @@
 #endif
 
 #include "tilde.h"
+#include "nodes.h"
 #include "man.h"
 #include "variables.h"
 

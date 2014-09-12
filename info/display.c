@@ -21,10 +21,9 @@
 
 #include "info.h"
 #include "display.h"
+#include "session.h"
 #include "tag.h"
-#include "signal.h"
-
-extern int info_any_buffered_input_p (void); /* Found in session.c. */
+#include "signals.h"
 
 static void free_display (DISPLAY_LINE **display);
 static DISPLAY_LINE **make_display (int width, int height);

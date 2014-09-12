@@ -21,6 +21,9 @@
    Originally written by Brian Fox.  */
 
 #include "info.h"
+#include "filesys.h"
+#include "info-utils.h"
+#include "session.h"
 #include "indices.h"
 #include "dribble.h"
 #include "getopt.h"

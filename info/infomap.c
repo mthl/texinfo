@@ -20,8 +20,9 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
-#include "infomap.h"
+#include "doc.h"
 #include "funs.h"
+#include "session.h"
 #include "terminal.h"
 #include "variables.h"
 

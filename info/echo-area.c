@@ -20,6 +20,10 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
+#include "session.h"
+#include "display.h"
+#include "info-utils.h"
+#include "echo-area.h"
 
 #if defined (FD_SET)
 #  if defined (hpux)

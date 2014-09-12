@@ -19,6 +19,8 @@
 */
 
 #include "info.h"
+#include "info-utils.h"
+#include "session.h"
 #include "filesys.h"
 
 typedef struct {

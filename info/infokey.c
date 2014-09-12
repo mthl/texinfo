@@ -20,8 +20,8 @@
    Originally written by Andrew Bettison. */
 
 #include "info.h"
-#include "infomap.h"
 #include "doc.h"
+#include "session.h"
 #include "funs.h"
 #include "getopt.h"
 #include "variables.h"

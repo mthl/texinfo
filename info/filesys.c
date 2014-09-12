@@ -20,10 +20,10 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
-
 #include "tilde.h"
 #include "filesys.h"
 #include "tag.h"
+#include "session.h"
 
 /* Local to this file. */
 static char *info_file_in_path (char *filename, struct stat *finfo);

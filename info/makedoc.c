@@ -25,7 +25,7 @@
    declared with DECLARE_INFO_COMMAND. */
 
 #include "info.h"
-#include "infomap.h"
+#include "doc.h"
 
 char *program_name = "makedoc";
 
@@ -53,6 +53,7 @@ static char *doc_header_1[] = {
   "   and a string which documents its purpose. */",
   "",
   "#include \"info.h\"",
+  "#include \"window.h\"",
   "#include \"funs.h\"",
   "",
   "FUNCTION_DOC function_doc_array[] = {",
@@ -125,8 +126,9 @@ main (int argc, char **argv)
   doc_stream = must_fopen (doc_filename, "w");
 
   fprintf (funs_stream,
-      "/* %s -- Generated declarations for Info commands. */\n\n\
-#include \"info.h\"\n",
+      "/* %s -- Generated declarations for Info commands. */\n\n"
+      "#include \"info.h\"\n"
+      "#include \"window.h\"\n",
       funs_filename);
 
   for (i = 0; doc_header[i]; i++)

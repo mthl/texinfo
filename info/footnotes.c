@@ -20,6 +20,9 @@
    Originally written by Brian Fox. */
 
 #include "info.h"
+#include "session.h"
+#include "info-utils.h"
+#include "footnotes.h"
 
 /* Nonzero means attempt to show footnotes when displaying a new window. */
 int auto_footnotes_p = 0;
@@ -226,7 +229,7 @@ info_get_or_remove_footnotes (WINDOW *window)
       if (!fn_win)
         {
           if (auto_footnotes_p)
-            inform_in_echo_area (_("Footnotes could not be displayed"));
+            info_error (_("Footnotes could not be displayed"));
           return FN_UNABLE;
         }
     }
