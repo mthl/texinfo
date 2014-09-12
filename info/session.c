@@ -736,6 +736,135 @@ get_input_key_internal (void)
 
 /* **************************************************************** */
 /*                                                                  */
+/*                           Error handling                         */
+/*                                                                  */
+/* **************************************************************** */
+
+/* Debugging level */
+unsigned debug_level;
+
+static FILE *debug_file;
+
+static void
+close_debugfile (void)
+{
+  fclose (debug_file);
+}
+
+#define INFODEBUG_FILE "infodebug"
+
+static void
+vinfo_debug (const char *format, va_list ap)
+{
+  FILE *fp;
+
+  if (!debug_file)
+    {
+      if (!info_windows_initialized_p || display_inhibited)
+	fp = stderr;
+      else
+	{
+	  debug_file = fopen (INFODEBUG_FILE, "w");
+	  if (!debug_file)
+	    {
+	      info_error (_("can't open %s: %s"), INFODEBUG_FILE,
+			  strerror (errno));
+	      exit (EXIT_FAILURE);
+	    }
+	  atexit (close_debugfile);
+	  fp = debug_file;
+	  info_error (_("debugging output diverted to \"%s\""),
+		      INFODEBUG_FILE);
+	}
+    }
+  else
+    fp = debug_file;
+  
+  fprintf (fp, "%s: ", program_name);
+  vfprintf (fp, format, ap);
+  fprintf (fp, "\n");
+  fflush (stderr);
+}
+
+void
+info_debug (const char *format, ...)
+{
+  va_list ap;
+  va_start (ap, format);
+  vinfo_debug (format, ap);
+  va_end (ap);
+}
+
+/* Non-zero means ring terminal bell on errors. */
+int info_error_rings_bell_p = 1;
+
+/* Print AP according to FORMAT.  If the window system was initialized,
+   then the message is printed in the echo area.  Otherwise, a message is
+   output to stderr. */
+static void
+vinfo_error (const char *format, va_list ap)
+{
+  if (!info_windows_initialized_p || display_inhibited)
+    {
+      fprintf (stderr, "%s: ", program_name);
+      vfprintf (stderr, format, ap);
+      fprintf (stderr, "\n");
+      fflush (stderr);
+    }
+  else
+    {
+      if (!echo_area_is_active)
+        {
+          if (info_error_rings_bell_p)
+            terminal_ring_bell ();
+          vwindow_message_in_echo_area (format, ap);
+        }
+      else
+        {
+          NODE *temp = build_message_node (format, ap);
+          if (info_error_rings_bell_p)
+            terminal_ring_bell ();
+          inform_in_echo_area (temp->contents);
+          free (temp->contents);
+          free (temp);
+        }
+    }
+}
+
+void
+info_error (const char *format, ...)
+{
+  va_list ap;
+  va_start (ap, format);
+  vinfo_error (format, ap);
+  va_end (ap);
+}
+
+void
+show_error_node (char *error)
+{
+  if (info_error_rings_bell_p)
+    terminal_ring_bell ();
+  if (!info_windows_initialized_p)
+    {
+      info_error ("%s", error);
+    }
+  else if (!echo_area_is_active)
+    {
+      NODE *error_node;
+
+      error_node = format_message_node ("%s", error);
+      free_echo_area ();
+      window_set_node_of_window (the_echo_area, error_node);
+      display_update_one_window (the_echo_area);
+    }
+  else
+    inform_in_echo_area (error);
+}
+
+
+/* **************************************************************** */
+/*                                                                  */
 /*                       Window node history                        */
 /*                                                                  */
 /* **************************************************************** */

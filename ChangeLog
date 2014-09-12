@@ -17,6 +17,15 @@
 	* info/info.h, info/nodes.h (strict_node_location_p): Declaration
 	moved.
 
+	* info/info.c, info/session.c (debug_file, close_debugfile)
+	(debug_level, vinfo_debug)
+	(info_debug, info_error_rings_bell_p, info_error, show_error_node)
+	Moved between files.
+	(vinfo_debug, vinfo_error): Declared static.
+	* info/info.h (program_name): Declaration added.
+	(info_error_rings_bell_p): Declaration removed.
+	* info/info.h, info/session.h (debug): Macro definition moved.
+
 2014-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/display.c (display_scroll_region): New function.

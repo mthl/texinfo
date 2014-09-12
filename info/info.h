@@ -41,6 +41,8 @@ typedef char *CFunction ();
 #include "mbiter.h"
 #include "mbchar.h"
 
+extern char *program_name;
+
 #if !defined (whitespace)
 #  define whitespace(c) ((c == ' ') || (c == '\t'))
 #endif /* !whitespace */
@@ -75,34 +77,11 @@ typedef char *CFunction ();
    info_error () function to determine how to format and output errors. */
 extern int info_windows_initialized_p;
 
-/* Non-zero means ring terminal bell on errors. */
-extern int info_error_rings_bell_p;
-
 /* Non-zero means default keybindings are loosely modeled on vi(1).  */
 extern int vi_keys_p;
 
 /* Non-zero means don't remove ANSI escape sequences from man pages.  */
 extern int raw_escapes_p;
-
-extern unsigned debug_level;
-
-#define debug(n,c)							\
-  do									\
-    {									\
-      if (debug_level >= (n))						\
-	info_debug c;							\
-    }									\
-  while (0)
-
-extern void vinfo_debug (const char *format, va_list ap);
-extern void info_debug (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
-
-/* Print args as per FORMAT.  If the window system was initialized,
-   then the message is printed in the echo area.  Otherwise, a message is
-   output to stderr. */
-extern void info_error (const char *format, ...) TEXINFO_PRINTFLIKE(1,2);
-
-extern void vinfo_error (const char *format, va_list ap);
 
 extern void add_file_directory_to_path (char *filename);
 
