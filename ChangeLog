@@ -11,6 +11,12 @@
 	* info/session.c (info_select_reference, info_follow_menus): Remove
 	unused local variables.
 
+	* info/info.h: Remove declaration for removed variable.
+	(info_toupper, info_tolower): Removed.  Use toupper and tolower
+	instead.
+	* info/info.h, info/nodes.h (strict_node_location_p): Declaration
+	moved.
+
 2014-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/display.c (display_scroll_region): New function.

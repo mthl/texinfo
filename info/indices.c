@@ -455,9 +455,9 @@ DECLARE_INFO_COMMAND (info_next_index_match,
 
         for (k = 0; k < ls; k++)
           if (upper)
-            match[k + start] = info_tolower (match[k + start]);
+            match[k + start] = tolower (match[k + start]);
           else
-            match[k + start] = info_toupper (match[k + start]);
+            match[k + start] = toupper (match[k + start]);
       }
 
     {

@@ -41,9 +41,6 @@ typedef char *CFunction ();
 #include "mbiter.h"
 #include "mbchar.h"
 
-#define info_toupper(x) (islower (x) ? toupper (x) : x)
-#define info_tolower(x) (isupper (x) ? tolower (x) : x)
-
 #if !defined (whitespace)
 #  define whitespace(c) ((c == ' ') || (c == '\t'))
 #endif /* !whitespace */
@@ -78,9 +75,6 @@ typedef char *CFunction ();
    info_error () function to determine how to format and output errors. */
 extern int info_windows_initialized_p;
 
-/* Non-zero if an error message has been printed. */
-extern int info_error_was_printed;
-
 /* Non-zero means ring terminal bell on errors. */
 extern int info_error_rings_bell_p;
 
@@ -89,9 +83,6 @@ extern int vi_keys_p;
 
 /* Non-zero means don't remove ANSI escape sequences from man pages.  */
 extern int raw_escapes_p;
-
-/* Non-zero means don't try to be smart when searching for nodes.  */
-extern int strict_node_location_p;
 
 extern unsigned debug_level;
 

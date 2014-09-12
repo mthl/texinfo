@@ -181,6 +181,10 @@ extern char *info_recent_file_error;
 
 /* Create a new, empty file buffer. */
 extern FILE_BUFFER *make_file_buffer (void);
+
+/* Non-zero means don't try to be smart when searching for nodes.  */
+extern int strict_node_location_p;
+
 
 /* Found in dir.c */
 extern NODE *get_dir_node (void);

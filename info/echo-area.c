@@ -1248,8 +1248,8 @@ build_completions (void)
         int c1, c2;
 
         for (j = 0;
-             (c1 = info_tolower (completions_found[i - 1]->label[j])) &&
-             (c2 = info_tolower (completions_found[i]->label[j]));
+             (c1 = tolower (completions_found[i - 1]->label[j]))
+             && (c2 = tolower (completions_found[i]->label[j]));
              j++)
           if (c1 != c2)
             break;
