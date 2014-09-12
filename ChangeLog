@@ -16,6 +16,8 @@
 	(scroll_last_node_choices): Moved between files and declared static.
 	* info/variables.h: Declare 'mouse_protocol'.
 
+	* info/info.c (add_file_directory_to_path): Declared static.
+
 2014-09-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c: Move "Garbage Collection" and "Navigation of

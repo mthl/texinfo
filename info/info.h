@@ -73,7 +73,6 @@ extern char *program_name;
 #define DECLARE_INFO_COMMAND(name, doc) \
 void name (WINDOW *window, int count, int key)
 
-
 
 /* For handling errors.  If you initialize the window system, you should
    also set info_windows_initialized_p to non-zero.  It is used by the
@@ -85,8 +84,6 @@ extern int vi_keys_p;
 
 /* Non-zero means don't remove ANSI escape sequences from man pages.  */
 extern int raw_escapes_p;
-
-extern void add_file_directory_to_path (char *filename);
 
 /* Error message defines. */
 extern const char *msg_cant_find_node;

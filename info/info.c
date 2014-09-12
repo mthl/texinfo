@@ -544,6 +544,28 @@ set_debug_level (const char *arg)
     debug_level = n;
 }
       
+static void
+add_file_directory_to_path (char *filename)
+{
+  char *directory_name = xstrdup (filename);
+  char *temp = filename_non_directory (directory_name);
+
+  if (temp != directory_name)
+    {
+      if (HAVE_DRIVE (directory_name) && temp == directory_name + 2)
+	{
+	  /* The directory of "d:foo" is stored as "d:.", to avoid
+	     mixing it with "d:/" when a slash is appended.  */
+	  *temp = '.';
+	  temp += 2;
+	}
+      temp[-1] = 0;
+      infopath_add (directory_name);
+    }
+
+  free (directory_name);
+}
+
 
 /* **************************************************************** */
 /*                                                                  */
@@ -893,28 +915,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   info_session (ref_list, all_matches_p ? user_filename : 0, error);
   close_info_session ();
   exit (0);
-}
-
-void
-add_file_directory_to_path (char *filename)
-{
-  char *directory_name = xstrdup (filename);
-  char *temp = filename_non_directory (directory_name);
-
-  if (temp != directory_name)
-    {
-      if (HAVE_DRIVE (directory_name) && temp == directory_name + 2)
-	{
-	  /* The directory of "d:foo" is stored as "d:.", to avoid
-	     mixing it with "d:/" when a slash is appended.  */
-	  *temp = '.';
-	  temp += 2;
-	}
-      temp[-1] = 0;
-      infopath_add (directory_name);
-    }
-
-  free (directory_name);
 }
 
 
