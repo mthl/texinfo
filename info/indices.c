@@ -712,11 +712,11 @@ DECLARE_INFO_COMMAND (info_virtual_index,
    _("List all matches of a string in the index"))
 {
   char *line;
-  FILE_BUFFER *fb, *tfb;
+  FILE_BUFFER *fb;
   NODE *node;
   struct text_buffer text;
   size_t i;
-  size_t cnt, off;
+  size_t cnt;
   
   fb = file_buffer_of_window (window);
 

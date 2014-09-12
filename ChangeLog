@@ -6,6 +6,11 @@
 	* info/session.c (file_buffer_of_window, node_printed_rep): Moved
 	between files.
 
+	* info/indices.c (info_virtual_index),
+	* info/nodemenu.c (nodemenu_format_info),
+	* info/session.c (info_select_reference, info_follow_menus): Remove
+	unused local variables.
+
 2014-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/display.c (display_scroll_region): New function.

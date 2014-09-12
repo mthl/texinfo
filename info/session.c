@@ -1930,10 +1930,7 @@ int
 info_select_reference (WINDOW *window, REFERENCE *entry)
 {
   NODE *node;
-  char *file_system_error;
-  long loc, line;
-
-  file_system_error = NULL;
+  char *file_system_error = NULL;
 
   node = info_get_node_with_defaults (entry->filename, entry->nodename,
                                       window->node);
@@ -1975,7 +1972,7 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
   if (entry->line_number > 0)
     {
       /* Go to the line given by entry->line_number. */
-      line = window_log_to_phys_line (window, entry->line_number - 1);
+      long line = window_log_to_phys_line (window, entry->line_number - 1);
 
       if (line >= 0 && line < window->line_count)
         {
@@ -2527,7 +2524,6 @@ NODE *
 info_follow_menus (NODE *initial_node, char **menus, char **error,
 		   int strict)
 {
-  WINDOW *defaults;
   NODE *node = NULL;
 
   for (; *menus; menus++)
@@ -3981,7 +3977,7 @@ ask_for_search_string (int case_sensitive, int use_regex, int direction)
 static void
 info_search_1 (WINDOW *window, int count, int case_sensitive)
 {
-  int result, old_pagetop;
+  int result;
   int direction;
   long start_off;
   char *p;

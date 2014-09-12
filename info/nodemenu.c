@@ -46,7 +46,7 @@ nodemenu_format_info (void)
 static char *
 format_node_info (NODE *node)
 {
-  register int i, len;
+  register int i;
   char *containing_file;
   static struct text_buffer line_buffer = {};
 
