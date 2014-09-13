@@ -880,7 +880,7 @@ copy_converting (long n)
               copy_direct (bytes_left);
               bytes_left = 0;
             }
-          break;
+          continue;
         default: /* Unknown error - abort */
           info_error (_("Error converting file character encoding."));
 
