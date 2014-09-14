@@ -139,8 +139,6 @@ make_footnotes_node (NODE *node)
     memcpy (result->contents + strlen (header),
             fn_node->contents + text_start, fn_node->nodelen - text_start);
 
-    result->flags |= N_IsInternal;
-
    /* Copy and adjust references that appear in footnotes section. */
     {
       REFERENCE **ref = fn_node->references;
@@ -161,7 +159,7 @@ make_footnotes_node (NODE *node)
     }
 
     result->nodename = xstrdup (footnote_nodename);
-    result->flags |= N_IsInternal;
+    result->flags |= (N_IsInternal | N_Unstored);
 
     /* Needed in case the user follows a reference in the footnotes window. */
     result->fullpath = fn_node->fullpath;

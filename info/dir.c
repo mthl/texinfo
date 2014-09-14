@@ -139,7 +139,7 @@ build_dir_node (void)
 
   {
     char *old_contents = node->contents;
-    node->flags |= N_IsDir;
+    node->flags |= (N_IsDir | N_IsInternal);
     scan_node_contents (0, &node);
     if (node->flags & N_WasRewritten)
       free (old_contents);

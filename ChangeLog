@@ -1,3 +1,17 @@
+2014-09-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.h (N_Unstored): New flag.
+	* info/session.c (info_split_window): Copy 'nodename' and 'references'
+	fields if node is marked with N_Unstored, instead of N_IsInternal.
+	* info/nodemenu.c (list_visted_nodes),
+	* info/indices.c (info_virtual_index),
+	* info/footnotes.c (make_footnotes_node): Mark generated nodes with
+	N_Unstored.
+	* info/dir.c (build_dir_node),
+	* info/man.c (get_manpage_node): Mark generated nodes with
+	N_IsInternal, to disable attempting to get another node in a
+	containing file.
+
 2014-09-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (copy_converting) <EINVAL>: Try converting again

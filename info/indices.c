@@ -783,7 +783,7 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   node->contents = text_buffer_base (&text);
   node->nodelen = text_buffer_off (&text) - 1;
   node->body_start = strcspn (node->contents, "\n");
-  node->flags |= N_IsInternal;
+  node->flags |= (N_IsInternal | N_Unstored);
 
   scan_node_contents (0, &node);
   info_set_node_of_window (window, node);

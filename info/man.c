@@ -84,7 +84,7 @@ get_manpage_node (char *pagename)
       tag = info_create_node ();
       tag->fullpath = MANPAGE_FILE_BUFFER_NAME;
       tag->nodename = xstrdup (pagename);
-      tag->flags |= (N_HasTagsTable | N_IsManPage);
+      tag->flags |= (N_HasTagsTable | N_IsManPage | N_IsInternal);
 
       tag->up = "(dir)";
 

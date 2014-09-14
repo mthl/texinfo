@@ -243,6 +243,7 @@ DECLARE_INFO_COMMAND (list_visited_nodes,
   new->flags |= W_NoWrap;
   node = get_visited_nodes ();
   name_internal_node (node, xstrdup (nodemenu_nodename));
+  node->flags |= N_Unstored;
 
   info_set_node_of_window (new, node);
   active_window = new;

@@ -79,6 +79,7 @@ typedef struct {
 #define N_IsIndex      0x200    /* An index node. */
 #define N_IsDir        0x400    /* A dir node. */
 #define N_Subfile      0x800    /* File buffer is a subfile of a split file. */
+#define N_Unstored     0x1000   /* References are not stored anywhere else. */
 
 /* String constants. */
 #define INFO_FILE_LABEL                 "File:"

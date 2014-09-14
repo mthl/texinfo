@@ -879,7 +879,7 @@ show_error_node (char *error)
 static void
 free_history_node (NODE *n)
 {
-  if (n->flags & N_IsInternal)
+  if (n->flags & N_Unstored)
     {
       /* These fields are not stored anywhere else.  The
          contents field was recorded with add_gcable_pointer. */
@@ -1926,7 +1926,7 @@ DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
 
       /* This allows us to free internal nodes without checking if
          these fields are shared by NODE objects in other windows. */
-      if (copy->flags & N_IsInternal)
+      if (copy->flags & N_Unstored)
         {
           copy->references = info_copy_references (copy->references);
           copy->nodename = xstrdup (copy->nodename);
