@@ -1,3 +1,8 @@
+2014-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.text (Scrolling Commands): PageUp and PageDown can
+	change the node (changed in 4.12 release).
+
 2014-09-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.h (N_Unstored): New flag.

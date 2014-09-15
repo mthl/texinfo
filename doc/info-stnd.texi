@@ -693,6 +693,8 @@ settings.
 @table @asis
 @item @key{SPC} (@code{scroll-forward})
 @kindex SPC, in Info windows
+@itemx @key{NEXT}
+@kindex NEXT
 @findex scroll-forward
 Shift the text in this window up.  That is, show more of the node which
 is currently below the bottom of the window.  With a numeric argument,
@@ -709,12 +711,14 @@ The default scroll size is one screenful, but it can be changed by
 invoking the (@code{scroll-forward-page-only-set-window}) command,
 @samp{z} under @samp{--vi-keys}, with a numeric argument.
 
-@item @key{NEXT} (an arrow key) (@code{scroll-forward-page-only})
-@itemx @kbd{C-v}
+@kindex PageDown
+The @key{NEXT} key is known as the @key{PageDown} key on some
+keyboards.
+
+@item @kbd{C-v} (@code{scroll-forward-page-only})
 @itemx @kbd{C-f}, vi-like operation
 @itemx @kbd{f}, vi-like operation
 @itemx @kbd{M-SPC}, vi-like operation
-@kindex NEXT
 @kindex C-v
 @kindex C-f, vi-like operation
 @kindex f, vi-like operation
@@ -724,20 +728,18 @@ Shift the text in this window up.  This is identical to the @key{SPC}
 operation above, except that it never scrolls beyond the end of the
 current node.
 
-@kindex PageDown
-The @key{NEXT} key is known as the @key{PageDown} key on some
-keyboards.
-
 @item @kbd{z} (@code{scroll-forward-page-only-set-window}, vi-like operation)
 @kindex z, vi-like operation
 @findex scroll-forward-page-only-set-window
-Scroll forward, like with @key{NEXT}, but if a numeric argument is
+Scroll forward, like with @kbd{C-v}, but if a numeric argument is
 specified, it becomes the default scroll size for subsequent
 @code{scroll-forward} and @code{scroll-backward} commands and their
 ilk.
 
 @item @key{DEL} (@code{scroll-backward})
 @kindex DEL, in Info windows
+@item @key{PREVIOUS}
+@kindex PREVIOUS
 @findex scroll-backward
 Shift the text in this window down.  The inverse of
 @code{scroll-forward}.
@@ -747,12 +749,18 @@ start by repeating @key{DEL}.  The default scroll size can be changed by
 invoking the (@code{scroll-backward-page-only-set-window}) command,
 @samp{w} under @samp{--vi-keys}, with a numeric argument.
 
-@item @key{PREVIOUS} (arrow key) (@code{scroll-backward-page-only})
-@itemx @key{PRIOR} (arrow key)
-@itemx @kbd{M-v}
+@kindex BS (backspace)
+If your keyboard lacks the @key{DEL} key, look for a key called
+@key{BS}, or @samp{Backspace}, sometimes designated with an arrow which
+points to the left, which should perform the same function.
+
+@kindex PageUp
+The @key{PREVIOUS} key is the @key{PageUp} key on many keyboards.  Emacs
+refers to it by the name @key{PRIOR}.
+
+@item @kbd{M-v} (@code{scroll-backward-page-only})
 @itemx @kbd{b}, vi-like operation
 @itemx @kbd{C-b}, vi-like operation
-@kindex PREVIOUS
 @kindex M-v
 @kindex b, vi-like operation
 @kindex C-b, vi-like operation
@@ -760,13 +768,13 @@ invoking the (@code{scroll-backward-page-only-set-window}) command,
 Shift the text in this window down.  The inverse of
 @code{scroll-forward-page-only}.  Does not scroll beyond the start of
 the current node.  The default scroll size can be changed by invoking
-the(@code{scroll-backward-page-only-set-window}) command, @samp{w} under
+the @code{scroll-backward-page-only-set-window} command, @samp{w} under
 @samp{--vi-keys}, with a numeric argument.
 
 @item @kbd{w} (@code{scroll-backward-page-only-set-window}, vi-like operation)
 @kindex w, vi-like operation
 @findex scroll-backward-page-only-set-window
-Scroll backward, like with @key{PREVIOUS}, but if a numeric argument is
+Scroll backward, like with @kbd{M-v}, but if a numeric argument is
 specified, it becomes the default scroll size for subsequent
 @code{scroll-forward} and @code{scroll-backward} commands.
 
@@ -830,17 +838,6 @@ variable @code{scroll-behavior} (@pxref{scroll-behavior}).
 
 The @code{scroll-forward-page-only} and @code{scroll-backward-page-only}
 commands never scroll beyond the current node.
-
-@kindex PageUp
-The @key{PREVIOUS} key is the @key{PageUp} key on many keyboards.  Emacs
-refers to it by the name @key{PRIOR}.  When you use @key{PRIOR} or
-@key{PageUp} to scroll, Info never scrolls beyond the beginning of the
-current node.
-
-@kindex BS (backspace)
-If your keyboard lacks the @key{DEL} key, look for a key called
-@key{BS}, or @samp{Backspace}, sometimes designated with an arrow which
-points to the left, which should perform the same function.
 
 @table @asis
 @item @kbd{C-l} (@code{redraw-display})
