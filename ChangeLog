@@ -1,3 +1,12 @@
+2014-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (info_index_apropos): Mark apropos node with
+	N_Unstored.
+	(info_indices_of_file_buffer): Free index_index variable before
+	overwriting it.
+	(apropos_in_all_indices): Free return value of get_dir_node before
+	returning.
+
 2014-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/info-stnd.text (Scrolling Commands): PageUp and PageDown can

@@ -170,6 +170,7 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
 
   /* Store result so that if we call do_info_index_search later, it
      will be set. */
+  free (index_index);
   index_index = result;
   return result;
 }
@@ -203,9 +204,8 @@ do_info_index_search (WINDOW *window, FILE_BUFFER *fb,
   if (!initial_index_filename ||
       (FILENAME_CMP (initial_index_filename, fb->filename) != 0))
     {
-      free (index_index);
       window_message_in_echo_area (_("Finding index entries..."));
-      index_index = info_indices_of_file_buffer (fb);
+      info_indices_of_file_buffer (fb); /* Sets index_index. */
     }
 
   /* If there is no index, quit now. */
@@ -504,7 +504,10 @@ apropos_in_all_indices (char *search_string, int inform)
     dir_menu = dir_node->references;
 
   if (!dir_menu)
-    return NULL;
+    {
+      free (dir_node);
+      return NULL;
+    }
 
   /* For every menu item in DIR, get the associated file buffer and
      read the indices of that file buffer.  Gather all of the indices into
@@ -576,6 +579,7 @@ apropos_in_all_indices (char *search_string, int inform)
       free (all_indices);
       all_indices = apropos_list;
     }
+  free (dir_node);
   return all_indices;
 }
 
@@ -642,6 +646,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
 
       add_gcable_pointer (apropos_node->contents);
       name_internal_node (apropos_node, xstrdup (apropos_list_nodename));
+      apropos_node->flags |= N_Unstored;
 
       /* Find/Create a window to contain this node. */
       {
