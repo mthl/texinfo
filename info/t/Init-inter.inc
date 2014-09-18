@@ -54,7 +54,9 @@ run_ginfo ()
   # command.
   echo 'Fetching PID of ginfo process under test...' >&2
   GINFO_PID=
-  while :
+  # Try 3 times and then give up.  The process may never have started, have
+  # started under a different name, or have already exited.
+  for i in 1 2 3
   do
     GINFO_PID=$( pgrep -P $SUBSHELL $GINFO_NAME ; \
        test $? -eq 0 -o $? -eq 1 || exit 99 )
@@ -78,6 +80,7 @@ run_ginfo ()
     test "$GINFO_PID" = "" || break
     sleep 1 # Give subshell time to spawn ginfo process
   done
+  test "$GINFO_PID" = "" && GINFO_PID=unknown
   echo ...$GINFO_PID >&2
 }
 

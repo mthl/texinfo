@@ -6,6 +6,8 @@
 	* info/display.c (display_update_window_1): Turn off standout mode
 	if we are still in it by the time we get to the bottom of the window.
 
+	* info/t/Init-inter.inc: Don't hang if the process doesn't appear.
+
 2014-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_index_apropos): Mark apropos node with
