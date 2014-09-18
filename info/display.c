@@ -442,6 +442,9 @@ display_update_window_1 (WINDOW *win)
       pl_num++;
     }
 
+  if (in_match)
+    terminal_end_standout ();
+
   text_buffer_free (&tb_printed_line);
   return pl_num;
 }

@@ -2107,7 +2107,7 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
 
   /* If in a footnotes window, try to switch to a window containing a
      node from the file. */
-  if ((window->node->flags & N_IsInternal)
+  if (window->node && (window->node->flags & N_IsInternal)
       && !strcmp (window->node->nodename, "*Footnotes*"))
         {
           WINDOW *w;
