@@ -1,3 +1,9 @@
+2014-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_select_reference): When following a reference
+	in a footnotes window, try to switch to a window containing a node
+	from the file.
+
 2014-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_index_apropos): Mark apropos node with

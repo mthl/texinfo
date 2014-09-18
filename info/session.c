@@ -2105,6 +2105,24 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
       return 0;
     }
 
+  /* If in a footnotes window, try to switch to a window containing a
+     node from the file. */
+  if ((window->node->flags & N_IsInternal)
+      && !strcmp (window->node->nodename, "*Footnotes*"))
+        {
+          WINDOW *w;
+
+          for (w = windows; w; w = windows->next)
+            {
+              if (!strcmp (w->node->fullpath, window->node->fullpath)
+                  && !(w->flags & W_TempWindow))
+                {
+                  /* Switch to this window. */
+                  active_window = window = w;
+                  break;
+                }
+            }
+        }
   info_set_node_of_window (window, node);
 
   if (entry->line_number > 0)
