@@ -171,6 +171,7 @@ read_and_dispatch_in_echo_area (void)
 
   while (1)
     {
+      VFunction *cmd;
       int lk = 0;
 
       lk = echo_area_last_command_was_kill;
@@ -186,7 +187,11 @@ read_and_dispatch_in_echo_area (void)
       key = get_input_key ();
 
       /* Do the selected command. */
-      info_dispatch_on_key (key, echo_area_keymap);
+      cmd = info_dispatch_on_key (key, echo_area_keymap);
+      if (cmd)
+        {
+          (*cmd) (the_echo_area, 1, key);
+        }
 
       /* Echo area commands that do killing increment the value of
          ECHO_AREA_LAST_COMMAND_WAS_KILL.  Thus, if there is no

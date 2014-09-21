@@ -1,3 +1,8 @@
+2014-09-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_read_dispatch): Return pointer to function 
+	implementing Info command instead of calling it.  All callers updated.
+
 2014-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_select_reference): When following a reference

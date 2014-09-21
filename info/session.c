@@ -244,8 +244,14 @@ info_read_and_dispatch (void)
       if (key == KEY_MOUSE)
         mouse_event_handler ();
       else
-        /* Do the selected command. */
-        info_dispatch_on_key (key, info_keymap);
+        {
+          /* Do the selected command. */
+          VFunction *cmd = info_dispatch_on_key (key, info_keymap);
+          if (cmd)
+            {
+              (*cmd) (active_window, 1, key);
+            }
+        }
     }
 }
 
@@ -4915,9 +4921,9 @@ get_another_input_key (void)
   return get_input_key ();
 }
 
-/* Do the command associated with KEY in MAP.  If the associated command is
-   really a keymap, then read another key, and dispatch into that map. */
-void
+/* Look up the command associated with KEY in MAP.  If the associated command 
+   is really a keymap, then read another key, and dispatch into that map. */
+VFunction *
 info_dispatch_on_key (int key, Keymap map)
 {
   switch (map[key].type)
@@ -4950,8 +4956,7 @@ info_dispatch_on_key (int key, Keymap map)
                     dispatch_error (info_keyseq);
                     return;
                   }
-                info_dispatch_on_key (lowerkey, map);
-                return;
+                return info_dispatch_on_key (lowerkey, map);
               }
 
             add_char_to_keyseq (key);
@@ -4964,25 +4969,18 @@ info_dispatch_on_key (int key, Keymap map)
 
               where = active_window;
 
-              if (!echo_area_is_active)
-                (*InfoFunction(map[key].function))
-                  (active_window, info_numeric_arg * info_numeric_arg_sign,
-                  key);
-              else
-                (*InfoFunction(map[key].function))
-                  (active_window, ea_numeric_arg * ea_numeric_arg_sign,
-                  key);
-
               /* If in the echo area, remember the last command executed. */
               if (where == the_echo_area)
                 ea_last_executed_command = InfoFunction(map[key].function);
+
+              return InfoFunction(map[key].function);
             }
           }
         else
           {
             add_char_to_keyseq (key);
             dispatch_error (info_keyseq);
-            return;
+            return 0;
           }
       }
       break;
@@ -4994,12 +4992,12 @@ info_dispatch_on_key (int key, Keymap map)
           int newkey;
 
           newkey = get_another_input_key ();
-          info_dispatch_on_key (newkey, (Keymap)map[key].function);
+          return info_dispatch_on_key (newkey, (Keymap)map[key].function);
         }
       else
         {
           dispatch_error (info_keyseq);
-          return;
+          return 0;
         }
       break;
     }
@@ -5100,8 +5098,15 @@ DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
             }
           else
             {
+              VFunction *cmd;
               info_keyseq_index--;
-              info_dispatch_on_key (pure_key, keymap);
+              cmd = info_dispatch_on_key (pure_key, keymap);
+              if (cmd)
+                {
+                  (*cmd) (active_window,
+                          *which_numeric_arg * *which_numeric_arg_sign,
+                          key);
+                }
               return;
             }
         }
