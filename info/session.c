@@ -4964,17 +4964,7 @@ info_dispatch_on_key (int key, Keymap map)
             if (info_keyseq_displayed_p)
               display_info_keyseq (0);
 
-            {
-              WINDOW *where;
-
-              where = active_window;
-
-              /* If in the echo area, remember the last command executed. */
-              if (where == the_echo_area)
-                ea_last_executed_command = InfoFunction(map[key].function);
-
-              return InfoFunction(map[key].function);
-            }
+            return InfoFunction(map[key].function);
           }
         else
           {
@@ -5029,8 +5019,8 @@ int ea_numeric_arg = 1;
 
 void info_universal_argument (WINDOW *, int count, int key);
 
-DECLARE_INFO_COMMAND (info_numeric_arg_digit_loop,
-                      _("Internally used by \\[universal-argument]"))
+void
+info_numeric_arg_digit_loop (WINDOW *window, int count, int key)
 {
   int pure_key;
   Keymap keymap;

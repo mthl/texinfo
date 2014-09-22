@@ -1,3 +1,12 @@
+2014-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_dispatch_on_key): Don't set 
+	ea_last_executed_command.
+	(info_numeric_arg_digit_loop): Don't declare with 
+	DECLARE_INFO_COMMAND.
+	* info/echo-area.c (ea_last_executed_command): Declared static.
+	(read_and_dispatch_in_echo_area): Set ea_last_executed_command.
+
 2014-09-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_read_dispatch): Return pointer to function 

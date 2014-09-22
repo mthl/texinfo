@@ -40,7 +40,7 @@ int info_aborted_echo_area = 0;
 int echo_area_is_active = 0;
 
 /* The address of the last command executed in the echo area. */
-VFunction *ea_last_executed_command = NULL;
+static VFunction *ea_last_executed_command = NULL;
 
 /* Non-zero means that the last command executed while reading input
    killed some text. */
@@ -191,6 +191,7 @@ read_and_dispatch_in_echo_area (void)
       if (cmd)
         {
           (*cmd) (the_echo_area, 1, key);
+          ea_last_executed_command = cmd;
         }
 
       /* Echo area commands that do killing increment the value of
@@ -200,7 +201,7 @@ read_and_dispatch_in_echo_area (void)
       if (lk == echo_area_last_command_was_kill)
         echo_area_last_command_was_kill = 0;
 
-      if (ea_last_executed_command == ea_newline || info_aborted_echo_area)
+      if (cmd == ea_newline || info_aborted_echo_area)
         {
           ea_last_executed_command = NULL;
           break;
