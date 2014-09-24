@@ -3,6 +3,9 @@
 	* info/doc.h (InfoCommand): Removed.  All uses updated.
 	(FUNCTION_DOC): Comments added.
 
+	* doc/info-stnd.texi (Miscellaneous Commands, Cursor Commands): Fix
+	minor typos.
+
 2014-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_dispatch_on_key): Don't set 

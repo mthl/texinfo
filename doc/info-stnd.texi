@@ -567,7 +567,7 @@ the Emacs manual, and the GNU Readline manual.  @xref{User Input,,,
 emacs, The GNU Emacs Manual}, if you are unfamiliar with the
 notation.@footnote{Here's a short summary.  @kbd{C-@var{x}} means
 press the @kbd{CTRL} key and the key @var{x}.  @kbd{M-@var{x}} means
-press the @kbd{META} key and the key @var{x}.  On many terminals th
+press the @kbd{META} key and the key @var{x}.  On many terminals the
 @kbd{META} key is known as the @kbd{ALT} key.  @kbd{SPC} is the space
 bar.  The other keys are usually called by the names imprinted on
 them.}
@@ -1977,7 +1977,7 @@ or
 @kbd{M-3 2 C-l}
 @end example
 
-@item @kbd{M--} (@code{add-digit-to-numeric-arg}
+@item @kbd{M--} (@code{add-digit-to-numeric-arg})
 @itemx @kbd{-}
 @kindex M--
 @kindex -
