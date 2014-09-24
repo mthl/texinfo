@@ -143,8 +143,8 @@ DECLARE_INFO_COMMAND (info_execute_command,
     if (!command)
       return;
 
-    if (InfoFunction(command))
-      (*InfoFunction(command)) (active_window, count, 0);
+    if (command->func)
+      (*command->func) (active_window, count, 0);
     else
       info_error (_("Undefined command: %s"), line);
   }

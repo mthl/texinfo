@@ -121,10 +121,9 @@ dump_map_to_text_buffer (struct text_buffer *tb, int *prefix,
           /* Hide some key mappings.  Do not display "Run command bound to
              this key's lowercase variant" in help window, and omit lines
              like "M-: .. M->(echo-area-insert)    Insert this character". */
-          if (InfoFunction (map[i].function)
-               == (VFunction *) info_do_lowercase_version
-              || InfoFunction (map[i].function)
-               == (VFunction *) ea_insert)
+          if (map[i].function
+              && (map[i].function->func == info_do_lowercase_version
+                  || map[i].function->func == ea_insert))
             continue;
 
           doc = function_documentation (map[i].function);
@@ -233,7 +232,7 @@ create_internal_info_help_node (int help_is_only_window_p)
         {
           InfoCommand *cmd = &function_doc_array[i];
 
-          if (InfoFunction(cmd) != (VFunction *) info_do_lowercase_version
+          if (cmd->func != info_do_lowercase_version
               && !where_is_internal (info_keymap, cmd)
               && !where_is_internal (echo_area_keymap, cmd))
             {
@@ -513,8 +512,8 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
              edit keys that emit an escape sequence: it's terribly
              confusing to see a message "Home (do-lowercase-version)"
              or some such when Home is unbound.  */
-          if (InfoFunction(map[keystroke].function)
-              == (VFunction *) info_do_lowercase_version)
+          if (map[keystroke].function
+              && map[keystroke].function->func == info_do_lowercase_version)
             {
               int lowerkey;
 

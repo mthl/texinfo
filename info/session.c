@@ -4568,10 +4568,11 @@ incremental_search (WINDOW *window, int count)
         {
           /* If this key is not a keymap, get its associated function,
              if any. */
-          type = info_keymap[key].type;
-          func = type == ISFUNC
-            ? InfoFunction(info_keymap[key].function)
-            : NULL;  /* function member is a Keymap if ISKMAP */
+          KEYMAP_ENTRY k = info_keymap[key];
+          type = k.type;
+          func = type == ISFUNC && k.function
+            ? k.function->func
+            : NULL;
         }
 
       if (key == DEL || key == Control ('h'))
@@ -4932,11 +4933,10 @@ info_dispatch_on_key (int key, Keymap map)
       {
         VFunction *func;
 
-        func = InfoFunction(map[key].function);
+        func = map[key].function ? map[key].function->func : 0;
         if (func != NULL)
           {
-            /* Special case info_do_lowercase_version (). */
-            if (func == (VFunction *) info_do_lowercase_version)
+            if (func == info_do_lowercase_version)
               {
                 int lowerkey;
 
@@ -4964,7 +4964,7 @@ info_dispatch_on_key (int key, Keymap map)
             if (info_keyseq_displayed_p)
               display_info_keyseq (0);
 
-            return InfoFunction(map[key].function);
+            return func;
           }
         else
           {
@@ -5060,8 +5060,8 @@ info_numeric_arg_digit_loop (WINDOW *window, int count, int key)
           add_char_to_keyseq (key);
         }
 
-      if (keymap[key].type == ISFUNC
-          && InfoFunction(keymap[key].function) == info_universal_argument)
+      if (keymap[key].type == ISFUNC && keymap[key].function
+          && keymap[key].function->func == info_universal_argument)
         {
           *which_numeric_arg *= 4;
           key = 0;

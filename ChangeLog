@@ -1,3 +1,8 @@
+2014-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/doc.h (InfoCommand): Removed.  All uses updated.
+	(FUNCTION_DOC): Comments added.
+
 2014-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_dispatch_on_key): Don't set 
