@@ -1001,8 +1001,7 @@ int cursor_movement_scrolls_p = 1;
 int window_scroll_step = 1;
 
 /* Used after cursor movement commands.  Scroll window so that point is
-   visible, and move the terminal cursor there.  Record current column in
-   WINDOW->goal_column. */
+   visible, and move the terminal cursor there. */
 static void
 info_show_point (WINDOW *window)
 {
@@ -3928,7 +3927,6 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
         new_point = matches[match_index].rm_so;
 
       window->point = new_point;
-      window->goal_column = window_get_cursor_column (window);
     }
   return result;
 }

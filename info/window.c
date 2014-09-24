@@ -292,7 +292,7 @@ window_make_window (void)
   window->height = (active_window->height / 2) - 1;
   window->first_row = active_window->first_row +
     (active_window->height - window->height);
-  window->goal_column = 0;
+  window->goal_column = -1;
   memset (&window->line_map, 0, sizeof (window->line_map));
   window->modeline = xmalloc (1 + window->width);
   window->line_starts = NULL;
@@ -571,7 +571,6 @@ window_set_node_of_window (WINDOW *window, NODE *node)
   window->node = node;
   window->pagetop = 0;
   window->point = 0;
-  window->goal_column = 0;
 
   free (window->line_starts);
   free (window->log_line_no);

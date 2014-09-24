@@ -12,6 +12,9 @@
 	(info_show_point): Don't set goal_column.
 	(info_read_and_dispatch): Set goal_column to -1 unless previous 
 	commmand was next-line or prev-line.
+	(info_search_in_node_internal): Don't set goal_column.
+	* info/window.c (window_set_node_of_window): Don't set goal_column.
+	(window_make_window): Initialize goal_column to -1.
 
 2014-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
