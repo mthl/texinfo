@@ -76,7 +76,8 @@ typedef struct window_struct
   long width;           /* Width of this window. */
   long height;          /* Height of this window. */
   long first_row;       /* Offset of the first line in the_screen. */
-  long goal_column;     /* The column we would like the cursor to appear in. */
+  long goal_column;     /* Column to place the cursor in when moving it up and 
+                           down.  -1 means the column it is currently in. */
   WINDOW_STATE_DECL;    /* Node, pagetop and point. */
   LINE_MAP line_map;    /* Current line map */
   char *modeline;       /* Calculated text of the modeline for this window. */

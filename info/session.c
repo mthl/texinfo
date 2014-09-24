@@ -249,7 +249,16 @@ info_read_and_dispatch (void)
           VFunction *cmd = info_dispatch_on_key (key, info_keymap);
           if (cmd)
             {
+              void info_next_line (WINDOW *, int count, int key);
+              void info_prev_line (WINDOW *, int count, int key);
+
               (*cmd) (active_window, 1, key);
+
+              /* Don't change the goal column when going up and down.  This 
+                 means we can go from a long line to a short line and back to
+                 a long line and end back in the same column. */
+              if (!(cmd == &info_next_line || cmd == &info_prev_line))
+                active_window->goal_column = -1; /* Goal is current column. */
             }
         }
     }
@@ -997,8 +1006,6 @@ int window_scroll_step = 1;
 static void
 info_show_point (WINDOW *window)
 {
-  window->goal_column = window_get_cursor_column (window);
-
   if (window_scroll_step == 0)
     window_adjust_pagetop (window);
   else
@@ -1219,6 +1226,19 @@ point_backward_word (WINDOW *win)
 
 void info_prev_line (WINDOW *, int count, int key);
 
+/* Move to goal column, or end of line. */
+static long
+move_to_goal_column (WINDOW *window)
+{
+  long goal;
+
+  goal = window->goal_column;
+  if (goal >= window->line_map.used)
+    goal = window->line_map.used - 1;
+  window->point = window->line_map.map[goal];
+  info_show_point (window);
+}
+
 /* Move WINDOW's point down to the next line if possible. */
 DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
 {
@@ -1226,22 +1246,11 @@ DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
     info_prev_line (window, -count, key);
   else
     {
-      long saved_goal = window->goal_column;
-      long goal;
+      if (window->goal_column == -1)
+        window->goal_column = window_get_cursor_column (window);
       while (count--)
         point_next_line (window);
-
-      /* Move to goal column, or end of line. */
-      goal = saved_goal;
-      if (goal >= window->line_map.used)
-        goal = window->line_map.used - 1;
-      window->point = window->line_map.map[goal];
-
-      info_show_point (window);
-      /* Don't change the goal column when going up and down.  This means we
-         can go from a long line to a short line and back to a long line and
-         end back in the same column. */
-      window->goal_column = saved_goal;
+      move_to_goal_column (window);
     }
 }
 
@@ -1252,19 +1261,11 @@ DECLARE_INFO_COMMAND (info_prev_line, _("Move up to the previous line"))
     info_next_line (window, -count, key);
   else
     {
-      long saved_goal = window->goal_column;
-      long goal;
+      if (window->goal_column == -1)
+        window->goal_column = window_get_cursor_column (window);
       while (count--)
         point_prev_line (window);
-
-      /* Move to goal column, or end of line. */
-      goal = saved_goal;
-      if (goal >= window->line_map.used)
-        goal = window->line_map.used - 1;
-      window->point = window->line_map.map[goal];
-
-      info_show_point (window);
-      window->goal_column = saved_goal;
+      move_to_goal_column (window);
     }
 }
 

@@ -6,6 +6,13 @@
 	* doc/info-stnd.texi (Miscellaneous Commands, Cursor Commands): Fix
 	minor typos.
 
+	* info/session.c (move_to_goal_column): New function, split from
+	info_next_line and info_prev_line.  Interpret -1 as goal column to 
+	mean the current column.
+	(info_show_point): Don't set goal_column.
+	(info_read_and_dispatch): Set goal_column to -1 unless previous 
+	commmand was next-line or prev-line.
+
 2014-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_dispatch_on_key): Don't set 
