@@ -3489,7 +3489,9 @@ DECLARE_INFO_COMMAND (info_display_file_info,
     {
       int line = window_line_of_point (window);
       window_message_in_echo_area ("File name: %s, line %d of %ld (%ld%%)",
-				   window->node->fullpath,
+                                   window->node->subfile
+                                   ? window->node->subfile
+                                   : window->node->fullpath,
                                    line, window->line_count,
 				   line * 100 / window->line_count);
     }

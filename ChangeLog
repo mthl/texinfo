@@ -16,6 +16,9 @@
 	* info/window.c (window_set_node_of_window): Don't set goal_column.
 	(window_make_window): Initialize goal_column to -1.
 
+	* info/session.c (info_display_file_info): Display name of subfile if 
+	in split file.
+
 2014-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_dispatch_on_key): Don't set 
