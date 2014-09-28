@@ -6,6 +6,13 @@
 	with character encodings.  Introductory text changed to be more 
 	descriptive.
 
+	* info/indices.c (look_in_indices): New function, split from:
+	* info/info.c (add_initial_nodes) <index search>
+	* info/indices.c (info_indices_of_file_buffer): Declared static.
+	Return type is void.  Clear 'index_index' variable if no file 
+	buffer.
+	(index_nodenames): Comment changed.
+
 2014-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/doc.h (InfoCommand): Removed.  All uses updated.

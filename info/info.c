@@ -409,27 +409,10 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
          check for it as an index entry. */
       else if (argc == 1 && argv[0])
         {
-          REFERENCE **index;
-          REFERENCE **index_ptr;
-
-          REFERENCE *nearest = 0;
+          REFERENCE *nearest;
 
           debug (3, ("looking in indices"));
-          index = info_indices_of_file_buffer (initial_file);
-
-          for (index_ptr = index; index && *index_ptr; index_ptr++)
-            {
-              if (!strcmp (argv[0], (*index_ptr)->label))
-                {
-                  nearest = *index_ptr;
-                  break;
-                }
-              /* Case-insensitive initial substring. */
-              if (!nearest && !mbsncasecmp (argv[0], (*index_ptr)->label,
-                                            mbslen (argv[0])))
-                nearest = *index_ptr;
-            }
-
+          nearest = look_in_indices (initial_file, argv[0]);
           if (nearest)
             {
               argv += argc; argc = 0;

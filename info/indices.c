@@ -52,7 +52,9 @@ typedef struct {
   int last;                     /* The index in our list of the last entry. */
 } INDEX_NAME_ASSOC;
 
-/* An array associating index nodenames with index offset ranges. */
+/* An array associating index nodenames with index offset ranges.  Used
+   for reporting to the user which index node an index entry was found
+   in. */
 static INDEX_NAME_ASSOC **index_nodenames = NULL;
 static size_t index_nodenames_index = 0;
 static size_t index_nodenames_slots = 0;
@@ -85,20 +87,25 @@ add_index_to_index_nodenames (REFERENCE **array, NODE *node)
                         index_nodenames_slots, 10);
 }
 
-/* Find and concatenate the indices of FILE_BUFFER.  The indices are defined
-   as the first node in the file containing the word "Index" and any
-   immediately following nodes whose names also contain "Index".  All such
-   indices are concatenated and the result returned.  Neither the returned
-   array nor its elements should be freed by the caller. */
-REFERENCE **
+/* Find and concatenate the indices of FILE_BUFFER, saving the result in 
+   INDEX_INDEX.  The indices are defined as the first node in the file 
+   containing the word "Index" and any immediately following nodes whose names 
+   also contain "Index".  All such indices are concatenated and the result 
+   returned. */
+static void
 info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
 {
   register int i;
   REFERENCE **result = NULL;
 
+  free (index_index);
+
   /* No file buffer, no indices. */
   if (!file_buffer)
-    return NULL;
+    {
+      index_index = 0;
+      return;
+    }
 
   /* Reset globals describing where the index was found. */
   free (initial_index_filename);
@@ -168,11 +175,7 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
     if (!result[i]->filename)
       result[i]->filename = xstrdup (file_buffer->filename);
 
-  /* Store result so that if we call do_info_index_search later, it
-     will be set. */
-  free (index_index);
   index_index = result;
-  return result;
 }
 
 DECLARE_INFO_COMMAND (info_index_search,
@@ -297,8 +300,7 @@ index_entry_exists (FILE_BUFFER *fb, char *string)
       !fb ||
       (FILENAME_CMP (initial_index_filename, fb->filename) != 0))
     {
-      free (index_index);
-      index_index = info_indices_of_file_buffer (fb);
+      info_indices_of_file_buffer (fb);
     }
 
   /* If there is no index, that is an error. */
@@ -478,6 +480,34 @@ DECLARE_INFO_COMMAND (info_next_index_match,
 
   info_select_reference (window, index_index[i]);
 }
+
+/* Look for the best match of STRING in the indices of FB.  Return null if no 
+   match is found.  Return value should not be freed or modified. */
+REFERENCE *
+look_in_indices (FILE_BUFFER *fb, char *string)
+{
+  REFERENCE **index_ptr;
+  REFERENCE *nearest = 0;
+
+  info_indices_of_file_buffer (fb); /* Sets index_index. */
+  if (!index_index)
+    return 0;
+
+  for (index_ptr = index_index; *index_ptr; index_ptr++)
+    {
+      if (!strcmp (string, (*index_ptr)->label))
+        {
+          nearest = *index_ptr;
+          break;
+        }
+      /* Case-insensitive initial substring. */
+      if (!nearest && !mbsncasecmp (string, (*index_ptr)->label,
+                                    mbslen (string)))
+        {
+          nearest = *index_ptr;
+        }
+    }
+}
 
 /* **************************************************************** */
 /*                                                                  */
@@ -536,7 +566,8 @@ apropos_in_all_indices (char *search_string, int inform)
       if (this_fb && inform)
         message_in_echo_area (_("Scanning indices of '%s'..."), this_item->filename);
 
-      this_index = info_indices_of_file_buffer (this_fb);
+      info_indices_of_file_buffer (this_fb);
+      this_index = index_index;
 
       if (this_fb && inform)
         unmessage_in_echo_area ();
@@ -745,9 +776,8 @@ DECLARE_INFO_COMMAND (info_virtual_index,
       !fb ||
       (FILENAME_CMP (initial_index_filename, fb->filename) != 0))
     {
-      free (index_index);
       window_message_in_echo_area (_("Finding index entries..."));
-      index_index = info_indices_of_file_buffer (fb);
+      info_indices_of_file_buffer (fb);
     }
 
   if (!index_index)
