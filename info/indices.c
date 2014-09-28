@@ -618,26 +618,39 @@ DECLARE_INFO_COMMAND (info_index_apropos,
         }
       else
         {
+          /* Create the node.  FIXME: Labels and node names taken from the
+             indices of Info files may be in a different character encoding to 
+             the one currently being used. */
           register int i;
 
           text_buffer_init (&message);
-          text_buffer_printf (&message,
-            _("\n* Menu: Nodes whose indices contain '%s':\n"),
-             line);
+          text_buffer_add_char (&message, '\n');
+          text_buffer_printf (&message, _("Index entries containing "
+                              "'%s':\n"), line);
+          text_buffer_printf (&message, "\n* Menu:");
+          text_buffer_printf (&message, " \b[index \b]");
+          text_buffer_add_char (&message, '\n');
 
           for (i = 0; apropos_list[i]; i++)
             {
               int line_start = text_buffer_off (&message);
+              char *filename;
 
-	      /* The label might be identical to that of another index
-		 entry in another Info file.  Therefore, we make the file
-		 name part of the menu entry, to make them all distinct.  */
+              /* Remove file extension. */
+              filename = program_name_from_file_name
+                (apropos_list[i]->filename);
+
+              /* The label might be identical to that of another index
+                 entry in another Info file.  Therefore, we make the file
+                 name part of the menu entry, to make them all distinct.  */
               text_buffer_printf (&message, "* %s [%s]: ",
-		       apropos_list[i]->label, apropos_list[i]->filename);
+                      apropos_list[i]->label, filename);
+
               while (text_buffer_off (&message) - line_start < 40)
                 text_buffer_add_char (&message, ' ');
               text_buffer_printf (&message, "(%s)%s.\n",
-                       apropos_list[i]->filename, apropos_list[i]->nodename);
+                                  filename, apropos_list[i]->nodename);
+              free (filename);
             }
         }
 

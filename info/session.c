@@ -3378,8 +3378,9 @@ info_intuit_options_node (NODE *node, char *program)
   return entry;  
 }
 
-/* Given a name of an Info file, find the name of the package it
-   describes by removing the leading directories and extensions.  */
+/* Given a name of an Info file, find the name of the package it describes by 
+   removing the leading directories and extensions.  Return value should be 
+   freed by caller. */
 char *
 program_name_from_file_name (char *file_name)
 {

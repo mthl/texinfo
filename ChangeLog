@@ -1,3 +1,11 @@
+2014-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (info_index_apropos): Strip any suffix like 
+	".info" from uses of filename in generated node contents.  Mark 
+	node contents as an index.  Comment added mentioning problem 
+	with character encodings.  Introductory text changed to be more 
+	descriptive.
+
 2014-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/doc.h (InfoCommand): Removed.  All uses updated.
