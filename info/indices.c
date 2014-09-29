@@ -397,11 +397,62 @@ next_index_match (REFERENCE **index, char *string, int offset, int dir,
   *match_offset = partial_match;
 }
 
+/* Display a message saying where the index match was found. */
+static void
+report_index_match (int i, int match_offset)
+{
+  register int j;
+  const char *name = _("CAN'T SEE THIS");
+  char *match;
+
+  for (j = 0; index_nodenames[j]; j++)
+    {
+      if ((i >= index_nodenames[j]->first) &&
+          (i <= index_nodenames[j]->last))
+        {
+          name = index_nodenames[j]->name;
+          break;
+        }
+    }
+
+  /* If we had a partial match, indicate to the user which part of the
+     string matched. */
+  match = xstrdup (index_index[i]->label);
+
+  if (match_offset > 0 && show_index_match)
+    {
+      int k, ls, start, upper;
+
+      ls = strlen (index_search);
+      start = match_offset - ls;
+      upper = isupper (match[start]) ? 1 : 0;
+
+      for (k = 0; k < ls; k++)
+        if (upper)
+          match[k + start] = tolower (match[k + start]);
+        else
+          match[k + start] = toupper (match[k + start]);
+    }
+
+    {
+      char *format;
+
+      format = replace_in_documentation
+        (_("Found '%s' in %s. ('\\[next-index-match]' tries to find next.)"),
+         0);
+
+      window_message_in_echo_area (format, match, (char *) name);
+    }
+
+  free (match);
+}
+
 DECLARE_INFO_COMMAND (info_next_index_match,
  _("Go to the next matching index item from the last '\\[index-search]' command"))
 {
   int i;
-  int partial_match, dir;
+  int match_offset;
+  int dir;
   
   /* If there is no previous search string, the user hasn't built an index
      yet. */
@@ -426,7 +477,7 @@ DECLARE_INFO_COMMAND (info_next_index_match,
     dir = 1;
 
   next_index_match (index_index, index_search, index_offset,
-                    dir, &index_partial, &i, &partial_match);
+                    dir, &index_partial, &i, &match_offset);
 
   /* If that failed, print an error. */
   if ((i < 0) || (!index_index[i]))
@@ -443,52 +494,7 @@ DECLARE_INFO_COMMAND (info_next_index_match,
   index_offset = i;
 
   /* Report to the user on what we have found. */
-  {
-    register int j;
-    const char *name = _("CAN'T SEE THIS");
-    char *match;
-
-    for (j = 0; index_nodenames[j]; j++)
-      {
-        if ((i >= index_nodenames[j]->first) &&
-            (i <= index_nodenames[j]->last))
-          {
-            name = index_nodenames[j]->name;
-            break;
-          }
-      }
-
-    /* If we had a partial match, indicate to the user which part of the
-       string matched. */
-    match = xstrdup (index_index[i]->label);
-
-    if (partial_match > 0 && show_index_match)
-      {
-        int k, ls, start, upper;
-
-        ls = strlen (index_search);
-        start = partial_match - ls;
-        upper = isupper (match[start]) ? 1 : 0;
-
-        for (k = 0; k < ls; k++)
-          if (upper)
-            match[k + start] = tolower (match[k + start]);
-          else
-            match[k + start] = toupper (match[k + start]);
-      }
-
-    {
-      char *format;
-
-      format = replace_in_documentation
-        (_("Found '%s' in %s. ('\\[next-index-match]' tries to find next.)"),
-         0);
-
-      window_message_in_echo_area (format, match, (char *) name);
-    }
-
-    free (match);
-  }
+  report_index_match (i, match_offset);
 
   info_select_reference (window, index_index[i]);
 }
