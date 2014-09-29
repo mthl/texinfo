@@ -519,6 +519,7 @@ look_in_indices (FILE_BUFFER *fb, char *string)
           nearest = *index_ptr;
         }
     }
+  return nearest;
 }
 
 /* **************************************************************** */

@@ -5,6 +5,7 @@
 
 	* info/indices.c (next_index_match, info_next_index_match): 
 	Function split out.
+	(look_in_indices): Return value as intended.
 
 2014-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
