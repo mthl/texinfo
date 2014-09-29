@@ -835,23 +835,29 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       if (index_search_p && initial_file && !user_output_filename)
         {
           initial_fb = info_find_file (initial_file);
-          if (initial_fb && index_entry_exists (initial_fb,
-                                                index_search_string))
+          if (initial_fb)
             {
-              initialize_info_session ();
-              do_info_index_search (windows, initial_fb, 0,
-                                    index_search_string);
-              info_read_and_dispatch ();
-              close_info_session ();
-              exit (0);
+              REFERENCE *result;
+              int i, match_offset;
+
+              next_index_match (initial_fb, index_search_string, 0, 1,
+                                  &result, &i, &match_offset);
+
+              if (result)
+                {
+                  initialize_info_session ();
+                  report_index_match (i, match_offset);
+                  info_select_reference (active_window, result);
+                  info_read_and_dispatch ();
+                  close_info_session ();
+                  exit (0);
+                }
             }
-          else
-            {
-              fprintf (stderr, _("no index entries found for '%s'\n"),
-                       index_search_string);
-              close_dribble_file ();
-              exit (1);
-            }
+
+          fprintf (stderr, _("no index entries found for '%s'\n"),
+                   index_search_string);
+          close_dribble_file ();
+          exit (1);
         }
 
       /* Add nodes to start with (unless we fell back to the man page). */

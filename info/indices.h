@@ -33,6 +33,9 @@ extern void info_index_search (WINDOW *window, int count, int key);
 extern void info_next_index_match (WINDOW *window, int count, int key);
 extern void info_index_apropos (WINDOW *window, int count, int key);
 extern void do_info_index_search (WINDOW *window, FILE_BUFFER *fb, int count, char *search_string);
+void next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
+                  REFERENCE **result, int *found_offset, int *match_offset);
+void report_index_match (int i, int match_offset);
 extern int index_entry_exists (FILE_BUFFER *fb, char *string);
 REFERENCE *look_in_indices (FILE_BUFFER *fb, char *string);
 

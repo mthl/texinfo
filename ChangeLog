@@ -16,6 +16,14 @@
 	* info/indices.c (report_index_match): Split out from 
 	info_next_index_match.
 
+	* info/indices.c (next_index_match): Don't take index argument; 
+	always operate on index_index.  Take FILE_BUFFER argument.  
+	Update index_offset.  Call to info_indices_of_file_buffer to 
+	update index_index moved from do_info_index_search.  All callers 
+	updated.
+	* info/info.c (main) <--index-search>: Call next_index_match and 
+	report_index_match.
+
 2014-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_index_apropos): Strip any suffix like 
