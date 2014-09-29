@@ -178,10 +178,14 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
   index_index = result;
 }
 
+void info_next_index_match (WINDOW *window, int count, int key);
+
 DECLARE_INFO_COMMAND (info_index_search,
    _("Look up a string in the index for this file"))
 {
+  FILE_BUFFER *fb;
   char *line;
+  int old_offset;
 
   line = info_read_maybe_completing (_("Index entry: "), index_index);
 
@@ -207,101 +211,45 @@ DECLARE_INFO_COMMAND (info_index_search,
           return;
         }
     }
-  do_info_index_search (window, file_buffer_of_window (window), count, line);
-  free (line);
-}
 
-/* Look up SEARCH_STRING in the index for this file. */
-void
-do_info_index_search (WINDOW *window, FILE_BUFFER *fb,
-                      int count, char *search_string)
-{
-  /* Reset the index offset, since this is not the info-index-next command. */
-  index_offset = 0;
-
+  fb = file_buffer_of_window (window);
   if (!fb)
     return;
+
+  /* Reset the index offset. */
+  index_offset = 0;
 
   /* The user is selecting a new search string, so flush the old one. */
   free (index_search);
   index_search = NULL;
 
-  /* The user typed either a completed index label, or a partial string.
-     Find an exact match, or, failing that, the first index entry containing
-     the partial string.  So, we just call info_next_index_match () with minor
-     manipulation of INDEX_OFFSET. */
-  {
-    int old_offset;
-
-    /* Start the search right after/before this index. */
-    if (count < 0)
-      {
-        register int i;
-        for (i = 0; index_index[i]; i++);
-        index_offset = i;
-      }
-    else
-      {
-	index_offset = -1;
-	index_partial = 0;
-      }
-    
-    old_offset = index_offset;
-
-    /* The "last" string searched for is this one. */
-    index_search = xstrdup (search_string);
-
-    /* Find it, or error. */
-    info_next_index_match (window, count, 0);
-
-    /* If the search failed, return the index offset to where it belongs. */
-    if (index_offset == old_offset)
-      index_offset = 0;
-  }
-}
-
-/* Return 1 if STRING appears in indicies of FB, 0 otherwise. */
-int
-index_entry_exists (FILE_BUFFER *fb, char *string)
-{
-  register int i;
-
-  /* If there is no previous search string, the user hasn't built an index
-     yet. */
-  if (!string)
-    return 0;
-
-  if (!initial_index_filename ||
-      !fb ||
-      (FILENAME_CMP (initial_index_filename, fb->filename) != 0))
+  /* Start the search right after/before this index. */
+  if (count < 0)
     {
-      info_indices_of_file_buffer (fb);
+      register int i;
+      for (i = 0; index_index[i]; i++);
+      index_offset = i;
     }
-
-  /* If there is no index, that is an error. */
-  if (!index_index)
-    return 0;
-
-  for (i = 0; (i > -1) && (index_index[i]); i++)
-    if (strcmp (string, index_index[i]->label) == 0)
-      break;
-
-  /* If that failed, look for the next substring match. */
-  if ((i < 0) || (!index_index[i]))
+  else
     {
-      for (i = 0; (i > -1) && (index_index[i]); i++)
-        if (string_in_line (string, index_index[i]->label) != -1)
-          break;
-
-      if ((i > -1) && (index_index[i]))
-        string_in_line (string, index_index[i]->label);
+      index_offset = -1;
+      index_partial = 0;
     }
+  
+  old_offset = index_offset;
 
-  /* If that failed, return 0. */
-  if ((i < 0) || (!index_index[i]))
-    return 0;
+  /* The "last" string searched for is this one. */
+  index_search = xstrdup (line);
 
-  return 1;
+  /* Find an exact match, or, failing that, the first index entry containing
+     the partial string. */
+  info_next_index_match (window, count, 0);
+
+  /* If the search failed, return the index offset to where it belongs. */
+  if (index_offset == old_offset)
+    index_offset = 0;
+
+  free (line);
 }
 
 /* Return true if ENT->label matches "S( <[0-9]+>)?", where S stands
@@ -414,7 +362,7 @@ void
 report_index_match (int i, int match_offset)
 {
   register int j;
-  const char *name = _("CAN'T SEE THIS");
+  const char *name = "CAN'T SEE THIS";
   char *match;
 
   for (j = 0; index_nodenames[j]; j++)

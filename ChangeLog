@@ -24,6 +24,12 @@
 	* info/info.c (main) <--index-search>: Call next_index_match and 
 	report_index_match.
 
+	* info/indices.c (do_info_index_search): Merged into 
+	info_index_search.
+	(info_entry_exists): Function removed.
+	(report_index_match): Don't internationalize a string that 
+	should never be displayed.
+
 2014-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_index_apropos): Strip any suffix like 
