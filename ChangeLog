@@ -30,6 +30,11 @@
 	(report_index_match): Don't internationalize a string that 
 	should never be displayed.
 
+	* info/indices.c (info_indices_of_file_buffer): Check if we have 
+	already built an index moved from next_index_match.
+	(info_index_search) <empty search string>: Call 
+	info_indices_of_file_buffer.  Always exit function. 
+
 2014-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_index_apropos): Strip any suffix like 

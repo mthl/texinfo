@@ -98,14 +98,25 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
   register int i;
   REFERENCE **result = NULL;
 
-  free (index_index);
-
   /* No file buffer, no indices. */
   if (!file_buffer)
     {
+      free (index_index);
       index_index = 0;
       return;
     }
+
+  /* If the file is the same as the one that we last built an
+     index for, don't do anything. */
+  if (initial_index_filename
+      && FILENAME_CMP (initial_index_filename, file_buffer->filename) == 0)
+    {
+      return;
+    }
+
+  /* Display a message because finding the index entries might take a while. */
+  if (info_windows_initialized_p)
+    window_message_in_echo_area (_("Finding index entries..."));
 
   /* Reset globals describing where the index was found. */
   free (initial_index_filename);
@@ -175,7 +186,11 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
     if (!result[i]->filename)
       result[i]->filename = xstrdup (file_buffer->filename);
 
+  free (index_index);
   index_index = result;
+
+  if (info_windows_initialized_p)
+    window_clear_echo_area ();
 }
 
 void info_next_index_match (WINDOW *window, int count, int key);
@@ -201,6 +216,7 @@ DECLARE_INFO_COMMAND (info_index_search,
     {
       free (line);
 
+      info_indices_of_file_buffer (file_buffer_of_window (window));
       if (initial_index_filename && initial_index_nodename)
         {
           NODE *node;
@@ -208,8 +224,8 @@ DECLARE_INFO_COMMAND (info_index_search,
           node = info_get_node (initial_index_filename,
                                 initial_index_nodename);
           info_set_node_of_window (window, node);
-          return;
         }
+      return;
     }
 
   fb = file_buffer_of_window (window);
@@ -294,17 +310,7 @@ next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
   partial_match = 0;
   search_len = strlen (string);
 
-  /* If the file is not the same as the one that we last built an
-     index for, build and remember an index now. */
-  if (!initial_index_filename
-      || FILENAME_CMP (initial_index_filename, fb->filename) != 0)
-    {
-      if (info_windows_initialized_p)
-        window_message_in_echo_area (_("Finding index entries..."));
-      info_indices_of_file_buffer (fb); /* Sets index_index. */
-    }
-
-  /* If there is no index, quit now. */
+  info_indices_of_file_buffer (fb); /* Sets index_index. */
   if (!index_index)
     {
       info_error (_("No indices found."));
