@@ -3,6 +3,9 @@
 	* info/indices.c (info_index_search, do_info_index_search): 
 	Getting user input moved from do_info_index_search.
 
+	* info/indices.c (next_index_match, info_next_index_match): 
+	Function split out.
+
 2014-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_index_apropos): Strip any suffix like 

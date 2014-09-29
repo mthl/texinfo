@@ -211,8 +211,7 @@ DECLARE_INFO_COMMAND (info_index_search,
   free (line);
 }
 
-/* Look up SEARCH_STRING in the index for this file.  If SEARCH_STRING
-   is NULL, prompt user for input.  */ 
+/* Look up SEARCH_STRING in the index for this file. */
 void
 do_info_index_search (WINDOW *window, FILE_BUFFER *fb,
                       int count, char *search_string)
@@ -346,12 +345,63 @@ index_entry_matches (REFERENCE *ent, const char *str, size_t len)
   return 0;
 }
 
+/* Search for the next occurence of STRING in INDEX starting at OFFSET in 
+   direction DIR.  If *PARTIAL is 0, try to get an exact match first, otherwise 
+   only look for partial matches.  If a match is found, set *FOUND_OFFSET to 
+   its offset.  If we found a partial match, update *PARTIAL to 1. */
+static void
+next_index_match (REFERENCE **index, char *string, int offset, int dir,
+                  int *partial_inout, int *found_offset, int *match_offset)
+{
+  int i;
+  int partial_match;
+  int partial;
+  size_t search_len;
+
+  partial = *partial_inout;
+
+  partial_match = 0;
+  search_len = strlen (string);
+
+  if (!partial)
+    {
+      /* First try to find an exact match. */
+      for (i = offset + dir; i > -1 && index[i]; i += dir)
+        if (index_entry_matches (index[i], string, search_len))
+	  break;
+
+      /* If that failed, look for the next substring match. */
+      if (i < 0 || !index[i])
+	{
+          offset = 0;
+          partial = 1;
+	}
+    }
+
+  if (partial)
+    {
+      /* When looking for substrings, take care not to return previous exact
+	 matches. */
+      for (i = offset + dir; i > -1 && index[i]; i += dir)
+        if (!index_entry_matches (index[i], string, search_len))
+	  {
+            partial_match = string_in_line (string, index[i]->label);
+            if (partial_match != -1)
+	      break;
+	  }
+      partial = partial_match > 0;
+    }
+
+  *partial_inout = partial;
+  *found_offset = i;
+  *match_offset = partial_match;
+}
+
 DECLARE_INFO_COMMAND (info_next_index_match,
  _("Go to the next matching index item from the last '\\[index-search]' command"))
 {
-  register int i;
-  int partial, dir;
-  size_t search_len;
+  int i;
+  int partial_match, dir;
   
   /* If there is no previous search string, the user hasn't built an index
      yet. */
@@ -375,39 +425,9 @@ DECLARE_INFO_COMMAND (info_next_index_match,
   else
     dir = 1;
 
-  /* Search for the next occurence of index_search. */
-  partial = 0;
-  search_len = strlen (index_search);
+  next_index_match (index_index, index_search, index_offset,
+                    dir, &index_partial, &i, &partial_match);
 
-  if (!index_partial)
-    {
-      /* First try to find an exact match. */
-      for (i = index_offset + dir; (i > -1) && (index_index[i]); i += dir)
-	if (index_entry_matches (index_index[i], index_search, search_len))
-	  break;
-
-      /* If that failed, look for the next substring match. */
-      if ((i < 0) || (!index_index[i]))
-	{
-	  index_offset = 0;
-	  index_partial = 1;
-	}
-    }
-
-  if (index_partial)
-    {
-      /* When looking for substrings, take care not to return previous exact
-	 matches. */
-      for (i = index_offset + dir; (i > -1) && (index_index[i]); i += dir)
-        if (!index_entry_matches (index_index[i], index_search, search_len))
-	  {
-	    partial = string_in_line (index_search, index_index[i]->label);
-	    if (partial != -1)
-	      break;
-	  }
-      index_partial = partial > 0;
-    }
-  
   /* If that failed, print an error. */
   if ((i < 0) || (!index_index[i]))
     {
@@ -442,12 +462,12 @@ DECLARE_INFO_COMMAND (info_next_index_match,
        string matched. */
     match = xstrdup (index_index[i]->label);
 
-    if (partial > 0 && show_index_match)
+    if (partial_match > 0 && show_index_match)
       {
         int k, ls, start, upper;
 
         ls = strlen (index_search);
-        start = partial - ls;
+        start = partial_match - ls;
         upper = isupper (match[start]) ? 1 : 0;
 
         for (k = 0; k < ls; k++)
