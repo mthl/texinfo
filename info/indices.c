@@ -181,7 +181,34 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
 DECLARE_INFO_COMMAND (info_index_search,
    _("Look up a string in the index for this file"))
 {
-  do_info_index_search (window, file_buffer_of_window (window), count, 0);
+  char *line;
+
+  line = info_read_maybe_completing (_("Index entry: "), index_index);
+
+  /* User aborted? */
+  if (!line)
+    {
+      info_abort_key (window, 1, 0);
+      return;
+    }
+
+  /* Empty line means move to the Index node. */
+  if (!*line)
+    {
+      free (line);
+
+      if (initial_index_filename && initial_index_nodename)
+        {
+          NODE *node;
+
+          node = info_get_node (initial_index_filename,
+                                initial_index_nodename);
+          info_set_node_of_window (window, node);
+          return;
+        }
+    }
+  do_info_index_search (window, file_buffer_of_window (window), count, line);
+  free (line);
 }
 
 /* Look up SEARCH_STRING in the index for this file.  If SEARCH_STRING
@@ -190,8 +217,6 @@ void
 do_info_index_search (WINDOW *window, FILE_BUFFER *fb,
                       int count, char *search_string)
 {
-  char *line;
-
   /* Reset the index offset, since this is not the info-index-next command. */
   index_offset = 0;
 
@@ -218,39 +243,6 @@ do_info_index_search (WINDOW *window, FILE_BUFFER *fb,
       return;
     }
 
-  /* Okay, there is an index.  Look for SEARCH_STRING, or, if it is
-     empty, prompt for one.  */
-  if (search_string && *search_string)
-    line = xstrdup (search_string);
-  else
-    {
-      line = info_read_maybe_completing (_("Index entry: "), index_index);
-      window = active_window;
-
-      /* User aborted? */
-      if (!line)
-        {
-          info_abort_key (active_window, 1, 0);
-          return;
-        }
-
-      /* Empty line means move to the Index node. */
-      if (!*line)
-        {
-          free (line);
-
-          if (initial_index_filename && initial_index_nodename)
-            {
-              NODE *node;
-
-              node = info_get_node (initial_index_filename,
-                                    initial_index_nodename);
-              info_set_node_of_window (window, node);
-              return;
-            }
-        }
-    }
-  
   /* The user typed either a completed index label, or a partial string.
      Find an exact match, or, failing that, the first index entry containing
      the partial string.  So, we just call info_next_index_match () with minor
@@ -274,7 +266,7 @@ do_info_index_search (WINDOW *window, FILE_BUFFER *fb,
     old_offset = index_offset;
 
     /* The "last" string searched for is this one. */
-    index_search = line;
+    index_search = xstrdup (search_string);
 
     /* Find it, or error. */
     info_next_index_match (window, count, 0);
