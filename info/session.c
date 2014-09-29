@@ -55,8 +55,19 @@ static FILE *info_input_stream = NULL;
 /* Becomes non-zero when 'q' is typed to an Info window. */
 static int quit_info_immediately = 0;
 
-/* Defined in indices.c */
-extern NODE *allfiles_node;
+static NODE *allfiles_node = 0;
+
+DECLARE_INFO_COMMAND (info_all_files, _("Show all matching files"))
+{
+  if (!allfiles_node)
+    {
+      info_error (_("No file index"));
+      return;
+    }
+
+  /* FIXME: Copy allfiles_node so it is unique in the window history? */
+  info_set_node_of_window (window, allfiles_node);
+}
 
 static void
 allfiles_create_node (char *term, REFERENCE **fref)
@@ -1226,7 +1237,7 @@ point_backward_word (WINDOW *win)
 void info_prev_line (WINDOW *, int count, int key);
 
 /* Move to goal column, or end of line. */
-static long
+static void
 move_to_goal_column (WINDOW *window)
 {
   long goal;
@@ -4956,7 +4967,7 @@ info_dispatch_on_key (int key, Keymap map)
                   {
                     add_char_to_keyseq (key);
                     dispatch_error (info_keyseq);
-                    return;
+                    return 0;
                   }
                 return info_dispatch_on_key (lowerkey, map);
               }
@@ -4993,6 +5004,7 @@ info_dispatch_on_key (int key, Keymap map)
         }
       break;
     }
+  return 0;
 }
 
 /* **************************************************************** */

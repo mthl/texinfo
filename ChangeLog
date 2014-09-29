@@ -7,6 +7,12 @@
 	Function split out.
 	(look_in_indices): Return value as intended.
 
+	* info/indices.c, info/session.c (allfiles_node) 
+	(info_all_files): Moved between files.
+	* info/session.c (move_to_goal_column): Return type declared as 
+	void.
+	(info_dispatch_on_key): Return values as intended.
+
 2014-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_index_apropos): Strip any suffix like 

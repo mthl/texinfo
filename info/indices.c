@@ -851,17 +851,3 @@ DECLARE_INFO_COMMAND (info_virtual_index,
 
   free (line);
 }
-
-NODE *allfiles_node = 0;
-
-DECLARE_INFO_COMMAND (info_all_files, _("Show all matching files"))
-{
-  if (!allfiles_node)
-    {
-      info_error (_("No file index"));
-      return;
-    }
-
-  /* FIXME: Copy allfiles_node so it is unique in the window history? */
-  info_set_node_of_window (window, allfiles_node);
-}
