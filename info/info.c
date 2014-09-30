@@ -967,7 +967,9 @@ Examples:\n\
   info info                  show the general manual for Info readers\n\
   info info-stnd             show the manual specific to this Info program\n\
   info emacs                 start at emacs node from top-level dir\n\
-  info emacs buffers         start at buffers node within emacs manual\n\
+  info emacs buffers         select buffers menu entry in emacs manual\n\
+  info emacs -n Files        start at Files node within emacs manual\n\
+  info -n '(emacs)Files'     alternative way of loading Files node\n\
   info --show-options emacs  start at node with emacs' command line options\n\
   info --subnodes -o out.txt emacs  dump entire manual to out.txt\n\
   info -f ./foo.info         show file ./foo.info, not searching dir"));

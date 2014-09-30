@@ -5,6 +5,8 @@
 	forward or backward that number of references.
 	* info/t/tab-argument.sh: New test.
 
+	* info/info.c (info_short_help): Examples in help text changed.
+
 2014-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_index_search, do_info_index_search): 
