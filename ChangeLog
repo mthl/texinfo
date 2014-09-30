@@ -1,3 +1,10 @@
+2014-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_move_to_next_xref) 
+	(info_move_to_prev_xref): If an argument is given with C-u, go 
+	forward or backward that number of references.
+	* info/t/tab-argument.sh: New test.
+
 2014-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_index_search, do_info_index_search): 

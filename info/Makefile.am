@@ -106,6 +106,7 @@ TESTS = \
 	t/dir-menus-sloppily.sh \
 	t/where-dir-file.sh \
 	t/tab.sh \
+	t/tab-argument.sh \
 	t/body-start.sh \
 	t/end-of-line.sh \
 	t/goal-column.sh \

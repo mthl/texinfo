@@ -2603,10 +2603,13 @@ DECLARE_INFO_COMMAND (info_move_to_prev_xref,
     info_move_to_next_xref (window, -count, key);
   else
     {
-      while (1)
+      while (count > 0)
         {
           if (info_move_to_xref (window, -1))
-            return;
+            {
+              count--;
+              continue;
+            }
 
           /* When cursor-movement-scrolls=Off, cycle round the node's
              references. */
@@ -2622,10 +2625,11 @@ DECLARE_INFO_COMMAND (info_move_to_prev_xref,
                     i++;
                   window->point = r[i]->start;
                   window_adjust_pagetop (window);
+                  count--;
+                  continue;
                 }
-              else
-                info_error ("%s", msg_no_xref_node);
-
+                
+              info_error ("%s", msg_no_xref_node);
               return;
             }
 
@@ -2646,10 +2650,13 @@ DECLARE_INFO_COMMAND (info_move_to_next_xref,
     info_move_to_prev_xref (window, -count, key);
   else
     {
-      while (1)
+      while (count > 0)
         {
           if (info_move_to_xref (window, 1))
-            return;
+            {
+              count--;
+              continue;
+            }
 
           /* When cursor-movement-scrolls=Off, cycle round the node's
              references. */
@@ -2662,10 +2669,11 @@ DECLARE_INFO_COMMAND (info_move_to_next_xref,
                      node. */
                   window->point = r[0]->start;
                   window_adjust_pagetop (window);
+                  count--;
+                  continue;
                 }
-              else
-                info_error ("%s", msg_no_xref_node);
-
+                
+              info_error ("%s", msg_no_xref_node);
               return;
             }
 
