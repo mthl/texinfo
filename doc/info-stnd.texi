@@ -187,6 +187,15 @@ a file.  Thus, on MS-DOS, if Info looks for @file{bison}, file names
 like @file{bison.igz} and @file{bison.inz} will be found and decompressed
 by @code{gunzip}.}
 
+You can specify the name of a node to visit with the @code{--node} or 
+@code{-n} option.  For example, here are two equivalent ways to load the
+@samp{Files} node within the @samp{emacs} manual:
+
+@example
+info emacs -n Files
+info -n '(emacs)Files'
+@end example
+
 @cindex absolute Info file names
 @cindex relative Info file names
 @cindex file names, relative

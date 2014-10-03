@@ -1,3 +1,8 @@
+2014-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Invoking Info): Add examples with --node.
+	* info/info.c (info_short_help): Help text changed.
+
 2014-10-03  Ken Brown  <kbrown@cornell.edu>
 
 	Changes to compile for Cygwin:
