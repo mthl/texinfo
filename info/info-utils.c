@@ -24,7 +24,6 @@
 #include "info-utils.h"
 #include "tag.h"
 
-#include <nl_types.h>
 #include <langinfo.h>
 #if HAVE_ICONV
 # include <iconv.h>
