@@ -3,6 +3,11 @@
 	* doc/info-stnd.texi (Invoking Info): Add examples with --node.
 	* info/info.c (info_short_help): Help text changed.
 
+	* doc/texinfo.texi (Node Line Requirements): Tweak wording to 
+	avoid implying that a node name with normalized whitespace has 
+	to be used in all circumstances.  Report by Vincent Belaïche 
+	2014-08-21 (bug #43042).
+
 2014-10-03  Ken Brown  <kbrown@cornell.edu>
 
 	Changes to compile for Cygwin:

@@ -5227,6 +5227,7 @@ Case is significant in node names.
 
 @cindex White space in node name
 @cindex Spaces in node name
+@item
 Spaces before and after names on the @samp{@@node} line are ignored.
 Multiple whitespace characters ``inside'' a name are collapsed to a
 single space.  For example:
@@ -5238,9 +5239,10 @@ single space.  For example:
 @@node  foo  bar ,
 @end example
 
-@noindent all define the same node, namely @samp{foo bar}.  References
-to the node should all use that name, with no leading or trailing
-spaces, and a single internal space.
+@noindent all define the same node, namely @samp{foo bar}.  In contexts
+where the exact node name is required (for example, in a menu entry),
+this is the name that that should be used, i.e.@: with no leading or
+trailing spaces, and a single internal space.
 @end itemize
 
 
