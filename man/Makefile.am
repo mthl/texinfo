@@ -18,7 +18,7 @@ man_MANS = install-info.1 makeinfo.1 texindex.1 texi2dvi.1
 # These require the build in info/, thus can't do if we failed to find a
 # terminal library.
 if HAVE_TERMLIBS
-man_MANS += info.1 infokey.1
+man_MANS += info.1
 endif
 
 # These are hand-written.
@@ -75,9 +75,6 @@ common_mandeps = $(top_srcdir)/configure.ac
 info.1: $(top_srcdir)/info/info.c $(srcdir)/ginfo.h2m \
                   $(common_mandeps)
 	@name="read Info documents" && $(man_rule_bin)
-
-infokey.1: $(top_srcdir)/info/infokey.c $(common_mandeps)
-	@name="compile customizations for Info" && $(man_rule_bin)
 
 install-info.1: $(top_srcdir)/install-info/install-info.c \
                           $(common_mandeps)
