@@ -1,3 +1,8 @@
+2014-10-06  Ken Brown  <kbrown@cornell.edu>
+
+	* system.h [O_BINARY && !__MSDOS__]: Don't redefine setmode if 
+	it is already defined.
+
 2014-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/info-stnd.texi (Invoking Info): Add examples with --node.

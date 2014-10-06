@@ -148,7 +148,9 @@ extern int strcoll ();
 #  define SET_SCREEN_SIZE_HELPER terminal_prep_terminal()
 #  define DEFAULT_INFO_PRINT_COMMAND ">PRN"
 # else   /* O_BINARY && !__MSDOS__ */
-#  define setmode(f,m)  _setmode(f,m)
+#  ifndef setmode
+#   define setmode(f,m)  _setmode(f,m)
+#  endif
 #  define HAVE_LONG_FILENAMES(dir)   (1)
 #  define NULL_DEVICE	"NUL"
 # endif  /* O_BINARY && !__MSDOS__ */
