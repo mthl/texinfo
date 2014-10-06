@@ -20,9 +20,6 @@
    Originally written by Brian Fox Thu May  4 09:17:52 1995. */
 
 #include "info.h"
-#ifndef __MINGW32__
-#include <sys/ioctl.h>
-#endif
 #include "signals.h"
 #if defined (HAVE_SYS_TIME_H)
 #include <sys/time.h>
