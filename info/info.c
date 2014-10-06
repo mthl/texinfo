@@ -824,6 +824,9 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
           exit (1);
         }
       info_find_matching_files (user_filename);
+      /* If only one match, don't start in a menu of matches. */
+      if (ref_index == 1)
+        all_matches_p = 0;
     }
   else
     {

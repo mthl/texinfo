@@ -5,6 +5,10 @@
 	* info/infomap.c (fetch_user_maps): Don't print an error message 
 	if ".infokey" wasn't found.  Report from Karl Berry.
 
+	* info/info.c (main) <--all>: If only one match, don't display a 
+	menu of matches (this is what happened before).
+	* info/t/all-only.sh: New test.
+
 2014-10-06  Ken Brown  <kbrown@cornell.edu> (tiny change)
 
 	* system.h [O_BINARY && !__MSDOS__]: Don't redefine setmode if 

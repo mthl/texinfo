@@ -105,6 +105,7 @@ TESTS = \
 	t/dir-3-menus.sh \
 	t/dir-menus-sloppily.sh \
 	t/where-dir-file.sh \
+	t/all-only.sh \
 	t/tab.sh \
 	t/tab-argument.sh \
 	t/body-start.sh \
