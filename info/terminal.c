@@ -639,6 +639,22 @@ initialize_byte_map (void)
       KEY_BACK_TAB, &term_kB
   };
 
+  /* Recognize arrow key sequences with both of the usual prefixes in case they 
+     are missing in the termcap entry. */
+  static struct special_keys2 {
+      int key_id;
+      char *byte_seq;
+  } keys2[] = {
+      KEY_RIGHT_ARROW, "\033[C",
+      KEY_RIGHT_ARROW, "\033OC",
+      KEY_LEFT_ARROW, "\033[D",
+      KEY_LEFT_ARROW, "\033OD",
+      KEY_UP_ARROW, "\033[A",
+      KEY_UP_ARROW, "\033OA",
+      KEY_DOWN_ARROW, "\033[B",
+      KEY_DOWN_ARROW, "\033OB"
+  };
+
   byte_seq_to_key = xmalloc (256 * sizeof (BYTEMAP_ENTRY));
 
   /* Make each byte represent itself by default. */
@@ -670,6 +686,12 @@ initialize_byte_map (void)
         continue; /* No byte sequence known for this key. */
 
       add_seq_to_byte_map (keys[i].key_id, *keys[i].byte_seq);
+    }
+
+  /* Hard-coded byte sequences. */
+  for (i = 0; i < sizeof (keys2) / sizeof (*keys2); i++)
+    {
+      add_seq_to_byte_map (keys2[i].key_id, keys2[i].byte_seq);
     }
 
   if (term_Km)

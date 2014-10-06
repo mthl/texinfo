@@ -9,6 +9,11 @@
 	menu of matches (this is what happened before).
 	* info/t/all-only.sh: New test.
 
+	* info/terminal.c (initialize_byte_map): Add byte sequences 
+	beginning ESC [ and ESC O representing cursor keys.  Previously 
+	these byte sequences were present in 
+	default_emacs_like_info_keys before changes on 2014-06-28.
+
 2014-10-06  Ken Brown  <kbrown@cornell.edu> (tiny change)
 
 	* system.h [O_BINARY && !__MSDOS__]: Don't redefine setmode if 
