@@ -567,7 +567,7 @@ static int default_vi_like_ea_keys[] =
 static int sup_info, sup_ea;
 
 /* Fetch the contents of the init file at INIT_FILE, or the standard
-   infokey file "$HOME/.info".  Return non-zero on success. */
+   infokey file "$HOME/.infokey".  Return non-zero on success. */
 static int
 fetch_user_maps (char *init_file)
 {
@@ -596,11 +596,7 @@ fetch_user_maps (char *init_file)
   inf = fopen (filename, "r");
   if (!inf)
     {
-      if (errno)
-        info_error (_("cannot open input file '%s' - %s"),
-            filename, strerror (errno));
-      else
-        info_error (_("cannot open input file '%s'"), filename);
+      free (filename);
       return 0;
     }
 

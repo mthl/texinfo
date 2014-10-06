@@ -2,6 +2,9 @@
 
 	* info/man.c: Don't include sys/ioctl.h.
 
+	* info/infomap.c (fetch_user_maps): Don't print an error message 
+	if ".infokey" wasn't found.  Report from Karl Berry.
+
 2014-10-06  Ken Brown  <kbrown@cornell.edu> (tiny change)
 
 	* system.h [O_BINARY && !__MSDOS__]: Don't redefine setmode if 
