@@ -28,7 +28,7 @@
 #include "footnotes.h"
 #include "man.h"
 
-#ifndef __MINGW32__
+#ifdef HAVE_SYS_IOCTL_H
 #include <sys/ioctl.h>
 #endif
 #ifdef __MINGW32__

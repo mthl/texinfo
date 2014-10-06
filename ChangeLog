@@ -14,6 +14,14 @@
 	these byte sequences were present in 
 	default_emacs_like_info_keys before changes on 2014-06-28.
 
+	* configure.ac: Remove use of AC_HEADER_TIOCGWINSZ.  Add 
+	"sys/ioctl.h" to argument of AC_CHECK_HEADERS.
+	* info/termdep.h: Make include of sys/ioctl.h conditional on 
+	[HAVE_SYS_IOCTL_H] instead of [GWINSZ_IN_SYS_IOCTL].  This gives 
+	the declaration of ioctl for Cygwin.  Report by Ken Brown.
+	* info/session.c: Include of sys/ioctl.h conditional on 
+	[HAVE_SYS_IOCTL_H] instead of [!__MINGW32__].
+
 2014-10-06  Ken Brown  <kbrown@cornell.edu> (tiny change)
 
 	* system.h [O_BINARY && !__MSDOS__]: Don't redefine setmode if 

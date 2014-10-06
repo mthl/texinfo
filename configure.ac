@@ -142,7 +142,8 @@ AC_HEADER_STAT
 AC_HEADER_STDC
 AC_CHECK_HEADERS(fcntl.h io.h limits.h pwd.h string.h strings.h \
   termcap.h termio.h termios.h unistd.h \
-  sys/fcntl.h sys/file.h sys/stream.h sys/time.h sys/ttold.h sys/wait.h)
+  sys/fcntl.h sys/file.h sys/ioctl.h sys/stream.h \
+  sys/time.h sys/ttold.h sys/wait.h)
 
 # sys/ptem.h requires sys/stream.h for mblk_t on Solaris.
 AC_CHECK_HEADERS([sys/ptem.h],,,
@@ -152,7 +153,6 @@ AC_CHECK_HEADERS([sys/ptem.h],,,
 ])
 
 AC_SYS_POSIX_TERMIOS
-AC_HEADER_TIOCGWINSZ
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_OFF_T

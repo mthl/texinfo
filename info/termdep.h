@@ -49,7 +49,7 @@
 #  endif /* !HAVE_TERMIO_H */
 #endif /* !HAVE_TERMIOS_H */
 
-#ifdef GWINSZ_IN_SYS_IOCTL
+#ifdef HAVE_SYS_IOCTL_H
 #  include <sys/ioctl.h>
 #endif
 
