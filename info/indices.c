@@ -235,10 +235,6 @@ DECLARE_INFO_COMMAND (info_index_search,
   /* Reset the index offset. */
   index_offset = 0;
 
-  /* The user is selecting a new search string, so flush the old one. */
-  free (index_search);
-  index_search = NULL;
-
   /* Start the search right after/before this index. */
   if (count < 0)
     {
@@ -255,7 +251,8 @@ DECLARE_INFO_COMMAND (info_index_search,
   old_offset = index_offset;
 
   /* The "last" string searched for is this one. */
-  index_search = xstrdup (line);
+  free (index_search);
+  index_search = line;
 
   /* Find an exact match, or, failing that, the first index entry containing
      the partial string. */
@@ -264,8 +261,6 @@ DECLARE_INFO_COMMAND (info_index_search,
   /* If the search failed, return the index offset to where it belongs. */
   if (index_offset == old_offset)
     index_offset = 0;
-
-  free (line);
 }
 
 /* Return true if ENT->label matches "S( <[0-9]+>)?", where S stands
@@ -457,12 +452,19 @@ DECLARE_INFO_COMMAND (info_next_index_match,
 }
 
 /* Look for the best match of STRING in the indices of FB.  Return null if no 
-   match is found.  Return value should not be freed or modified. */
+   match is found.  Return value should not be freed or modified.  This differs 
+   from the behaviour of next_index_match in that only _initial_ substrings are 
+   considered. */
 REFERENCE *
 look_in_indices (FILE_BUFFER *fb, char *string)
 {
   REFERENCE **index_ptr;
   REFERENCE *nearest = 0;
+
+  /* Remember the search string so we can use it as the default for 
+     'virtual-index' or 'next-index-match'. */
+  free (index_search);
+  index_search = xstrdup (string);
 
   info_indices_of_file_buffer (fb); /* Sets index_index. */
   if (!index_index)
@@ -595,9 +597,17 @@ static char *apropos_list_nodename = "*Apropos*";
 DECLARE_INFO_COMMAND (info_index_apropos,
    _("Grovel all known info file's indices for a string and build a menu"))
 {
-  char *line;
+  char *line, *prompt;
+  REFERENCE **apropos_list;
+  NODE *apropos_node;
+  struct text_buffer message;
 
-  line = info_read_in_echo_area (_("Index apropos: "));
+  if (index_search)
+    asprintf (&prompt, "%s [%s]: ", _("Index apropos"), index_search);
+  else
+    asprintf (&prompt, "%s: ", _("Index apropos"));
+  line = info_read_in_echo_area (prompt);
+  free (prompt);
 
   window = active_window;
 
@@ -611,16 +621,19 @@ DECLARE_INFO_COMMAND (info_index_apropos,
   /* User typed something? */
   if (*line)
     {
-      REFERENCE **apropos_list;
-      NODE *apropos_node;
-      struct text_buffer message;
+      free (index_search);
+      index_search = line;
+    }
+  else
+    free (line); /* Try to use the last search string. */
 
-      apropos_list = apropos_in_all_indices (line, 1);
+  if (index_search && *index_search)
+    {
+      apropos_list = apropos_in_all_indices (index_search, 1);
 
       if (!apropos_list)
         { 
-          info_error (_(APROPOS_NONE), line);
-          free (line);
+          info_error (_(APROPOS_NONE), index_search);
           return;
         }
       else
@@ -633,7 +646,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
           text_buffer_init (&message);
           text_buffer_add_char (&message, '\n');
           text_buffer_printf (&message, _("Index entries containing "
-                              "'%s':\n"), line);
+                              "'%s':\n"), index_search);
           text_buffer_printf (&message, "\n* Menu:");
           text_buffer_printf (&message, " \b[index \b]");
           text_buffer_add_char (&message, '\n');
@@ -706,7 +719,6 @@ DECLARE_INFO_COMMAND (info_index_apropos,
       }
       free (apropos_list);
     }
-  free (line);
 }
 
 #define NODECOL 41
@@ -739,7 +751,7 @@ format_reference (REFERENCE *ref, const char *filename, struct text_buffer *buf)
 DECLARE_INFO_COMMAND (info_virtual_index,
    _("List all matches of a string in the index"))
 {
-  char *line;
+  char *prompt, *line;
   FILE_BUFFER *fb;
   NODE *node;
   struct text_buffer text;
@@ -762,14 +774,30 @@ DECLARE_INFO_COMMAND (info_virtual_index,
       return;
     }
     
-  line = info_read_maybe_completing (_("Index topic: "), index_index);
+  /* Default to last search if there is one. */
+  if (index_search)
+    asprintf (&prompt, "%s [%s]: ", _("Index topic"), index_search);
+  else
+    asprintf (&prompt, "%s: ", _("Index topic"));
+  line = info_read_maybe_completing (prompt, index_index);
+  free (prompt);
 
   /* User aborted? */
-  if (!line || !*line)
+  if (!line)
     {
-      free (line);
       info_abort_key (window, 1, 1);
       return;
+    }
+
+  if (*line)
+    {
+      free (index_search);
+      index_search = line;
+    }
+  else if (!index_search)
+    {
+      free (line);
+      return; /* No previous search string, and no string given. */
     }
   
   text_buffer_init (&text);
@@ -780,12 +808,12 @@ DECLARE_INFO_COMMAND (info_virtual_index,
 		      "Index entries that match '%s':\n"
                       " \b[index \b]"
 		      "\n* Menu:\n\n",
-                      fb->filename, line, line);
+                      fb->filename, index_search, index_search);
 
   cnt = 0;
   for (i = 0; index_index[i]; i++)
     {
-      if (string_in_line (line, index_index[i]->label) != -1)
+      if (string_in_line (index_search, index_index[i]->label) != -1)
 	{
 	  format_reference (index_index[i], fb->filename, &text);
 	  cnt++;
@@ -796,13 +824,12 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   if (cnt == 0)
     {
       text_buffer_free (&text);
-      info_error (_("No index entries containing '%s'."), line);
-      free (line);
+      info_error (_("No index entries containing '%s'."), index_search);
       return;
     }
 
   node = info_create_node ();
-  asprintf (&node->nodename, "Index for '%s'", line);
+  asprintf (&node->nodename, "Index for '%s'", index_search);
   node->fullpath = fb->filename;
   node->contents = text_buffer_base (&text);
   node->nodelen = text_buffer_off (&text) - 1;
@@ -811,6 +838,4 @@ DECLARE_INFO_COMMAND (info_virtual_index,
 
   scan_node_contents (0, &node);
   info_set_node_of_window (window, node);
-
-  free (line);
 }

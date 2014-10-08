@@ -1,5 +1,13 @@
 2014-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/indices.c (info_index_search): Don't duplicate a string 
+	just to free the original.
+	(look_in_indices): Save search string in 'index_search'.
+	(info_index_apropos, info_virtual_index): Prompt with and 
+	default to the last search string.
+
+2014-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/cr-tag-table.sh: New test.
 
 2014-10-06  Gavin Smith  <gavinsmith0123@gmail.com>
