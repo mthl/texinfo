@@ -106,6 +106,7 @@ TESTS = \
 	t/dir-menus-sloppily.sh \
 	t/where-dir-file.sh \
 	t/all-only.sh \
+	t/cr-tag-table.sh \
 	t/tab.sh \
 	t/tab-argument.sh \
 	t/body-start.sh \
@@ -139,6 +140,7 @@ TESTS = \
 	t/help.sh
 
 XFAIL_TESTS = \
+	t/cr-tag-table.sh \
 	t/quoted-label-as-target.sh \
 	t/quoted-target.sh \
 	t/quoted-label-and-target.sh \

@@ -1,3 +1,7 @@
+2014-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/cr-tag-table.sh: New test.
+
 2014-10-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/man.c: Don't include sys/ioctl.h.
