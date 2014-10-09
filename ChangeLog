@@ -1,3 +1,12 @@
+2014-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (info_index_search): Call 
+	info_indices_of_file_buffer before prompting user.  Display an 
+	error message if no index is found.
+	(info_virtual_index): Match error message to that used 
+	elsewhere.
+	* info/t/no-index.sh, info/t/index-completing.sh: New tests.
+
 2014-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_index_search): Don't duplicate a string 

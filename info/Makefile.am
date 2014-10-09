@@ -119,8 +119,10 @@ TESTS = \
 	t/search-after-tag.sh \
 	t/split-file-menu.sh \
 	t/index.sh \
+	t/no-index.sh \
 	t/index-apropos.sh \
 	t/index-search.sh \
+	t/index-completing.sh \
 	t/split-index.sh \
 	t/index-long-nodeline.sh \
 	t/menu-sequence.sh \

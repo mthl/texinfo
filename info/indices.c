@@ -202,6 +202,16 @@ DECLARE_INFO_COMMAND (info_index_search,
   char *line;
   int old_offset;
 
+  fb = file_buffer_of_window (window);
+  if (fb)
+    info_indices_of_file_buffer (fb); /* Sets index_index. */
+
+  if (!fb || !index_index)
+    {
+      info_error (_("No indices found."));
+      return;
+    }
+
   line = info_read_maybe_completing (_("Index entry: "), index_index);
 
   /* User aborted? */
@@ -216,7 +226,6 @@ DECLARE_INFO_COMMAND (info_index_search,
     {
       free (line);
 
-      info_indices_of_file_buffer (file_buffer_of_window (window));
       if (initial_index_filename && initial_index_nodename)
         {
           NODE *node;
@@ -227,10 +236,6 @@ DECLARE_INFO_COMMAND (info_index_search,
         }
       return;
     }
-
-  fb = file_buffer_of_window (window);
-  if (!fb)
-    return;
 
   /* Reset the index offset. */
   index_offset = 0;
@@ -770,7 +775,7 @@ DECLARE_INFO_COMMAND (info_virtual_index,
 
   if (!index_index)
     {
-      info_error (_("No index"));
+      info_error (_("No indices found."));
       return;
     }
     
