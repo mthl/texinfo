@@ -1,3 +1,8 @@
+2014-10-09  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (Node Line Requirements, Writing a Menu):
+	menu entries need exact spacing for the sake of Emacs Info.
+
 2014-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_index_search): Call 

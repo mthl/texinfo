@@ -5233,16 +5233,18 @@ Multiple whitespace characters ``inside'' a name are collapsed to a
 single space.  For example:
 
 @example
+@@node foo bar
 @@node  foo bar,
 @@node foo bar ,
 @@node foo  bar,
 @@node  foo  bar ,
 @end example
 
-@noindent all define the same node, namely @samp{foo bar}.  In contexts
-where the exact node name is required (for example, in a menu entry),
-this is the name that that should be used, i.e.@: with no leading or
-trailing spaces, and a single internal space.
+@noindent all define the same node, namely @samp{foo bar}. 
+In menu entries, this is the name that should be used: no leading or
+trailing spaces, and a single internal space.  (For cross-references,
+the node name used in the Texinfo sources is automatically normalized
+in this way.)
 @end itemize
 
 
@@ -5660,7 +5662,9 @@ the Info file.  In the example above, the line @samp{Larger Units of
 Text} is such a menu comment line; the two lines starting with
 @w{@samp{* }} are menu entries.  Space characters in a menu are
 preserved as-is in the Info output; this allows you to format the menu
-as you wish.
+as you wish.  Unfortunately you must type node names without any extra
+spaces or some versions of some Info readers will not find the
+node (@pxref{Node Line Requirements}).
 
 @opindex accesskey@r{, in HTML output of menus}
 In the HTML output from @command{makeinfo}, the @code{accesskey}
