@@ -7,6 +7,14 @@
 	elsewhere.
 	* info/t/no-index.sh, info/t/index-completing.sh: New tests.
 
+	* info/echo-area.c (info_read_and_dispatch_in_echo_area): 
+	Recalculate line map after each user command.
+	(input_line, input_line_prompt): Comments added.
+	[FD_SET && hpux, FD_SET && !hpux] (fd_set_cast): Remove unused 
+	macro.
+	* info/window.c (window_point_to_column): Return left-most 
+	column for multi-column characters.
+
 2014-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_index_search): Don't duplicate a string 

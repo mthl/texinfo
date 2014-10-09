@@ -1456,8 +1456,8 @@ window_compute_line_map (WINDOW *win)
 
 /* Translate the value of POINT into a column number.  If NP is given
    store there the value of point corresponding to the beginning of a
-   multibyte character in this column.
- */
+   multibyte character in this column.  If the character at POINT spans 
+   multiple columns (e.g. a tab), return the leftmost column it occupies. */
 int
 window_point_to_column (WINDOW *win, long point, long *np)
 {
@@ -1467,10 +1467,10 @@ window_point_to_column (WINDOW *win, long point, long *np)
   if (!win->line_map.map || point < win->line_map.map[0])
     return 0;
   for (i = 0; i < win->line_map.used; i++)
-    if (win->line_map.map[i] > point)
+    if (win->line_map.map[i] >= point)
       break;
   if (np)
-    *np = win->line_map.map[i-1];
-  return i - 1;
+    *np = win->line_map.map[i];
+  return i;
 }
       

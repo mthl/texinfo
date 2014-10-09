@@ -25,14 +25,6 @@
 #include "info-utils.h"
 #include "echo-area.h"
 
-#if defined (FD_SET)
-#  if defined (hpux)
-#    define fd_set_cast(x) (int *)(x)
-#  else
-#    define fd_set_cast(x) (fd_set *)(x)
-#  endif /* !hpux */
-#endif /* FD_SET */
-
 /* Non-zero means that C-g was used to quit reading input. */
 int info_aborted_echo_area = 0;
 
@@ -47,11 +39,15 @@ static VFunction *ea_last_executed_command = NULL;
 int echo_area_last_command_was_kill = 0;
 
 /* Variables which hold on to the current state of the input line. */
-static char input_line[1 + EA_MAX_INPUT];
+static char input_line[1 + EA_MAX_INPUT]; /* Contents of echo area, including 
+                                             any prompt. */
+static int input_line_point;     /* Offset into input_line of point */
+static int input_line_beg;       /* End of prompt, and start of user input. */
+static int input_line_end;       /* End of user input. */
+
+/* Current prompt.  FIXME: This variable is not actually used for anything. */
 static const char *input_line_prompt;
-static int input_line_point;
-static int input_line_beg;
-static int input_line_end;
+
 static NODE input_line_node = {
   NULL, NULL, NULL, input_line,
   EA_MAX_INPUT, 0, N_IsInternal
@@ -179,6 +175,12 @@ read_and_dispatch_in_echo_area (void)
 
       if (!info_any_buffered_input_p ())
         display_update_display ();
+
+      /* Mark the line map as invalid.  This causes window_compute_line_map to
+         recalculate it when it is called via display_cursor_at_point below.  
+         Otherwise adding or removing multi-column characters (like tabs) lead 
+         to incorrect cursor positioning. */
+      the_echo_area->line_map.used = 0;
 
       display_cursor_at_point (active_window);
       info_initialize_numeric_arg ();
