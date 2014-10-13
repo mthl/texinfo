@@ -8,6 +8,9 @@
 	<following menus>: Use a node from our list of initial nodes to 
 	start at if initial_file is null.
 
+	* info/t/spec-file-node.sh, info/t/spec-no-node.sh, 
+	info/t/spec-menu.sh: New tests.
+
 2014-10-09  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (Node Line Requirements, Writing a Menu):

@@ -105,6 +105,9 @@ TESTS = \
 	t/dir-3-menus.sh \
 	t/dir-menus-sloppily.sh \
 	t/where-dir-file.sh \
+	t/spec-file-node.sh \
+	t/spec-no-node.sh \
+	t/spec-menu.sh \
 	t/all-only.sh \
 	t/cr-tag-table.sh \
 	t/tab.sh \
