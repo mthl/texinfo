@@ -1,3 +1,13 @@
+2014-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (main) <--all not used>: Check if the first 
+	non-option argument is of the form "(file)node", and if so add 
+	it to the list of nodes to start with.
+	(add_initial_nodes) <user_nodenames>: Duplicate filename string.  
+	Allow nodename to be empty.
+	<following menus>: Use a node from our list of initial nodes to 
+	start at if initial_file is null.
+
 2014-10-09  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (Node Line Requirements, Writing a Menu):

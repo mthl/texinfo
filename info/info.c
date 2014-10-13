@@ -57,7 +57,7 @@ static int print_version_p = 0;
 /* Non-zero means print a short description of the options. */
 static int print_help_p = 0;
 
-/* Name of file to start session with. */
+/* Name of file to start session with.  Default file for --node arguments. */
 static char *initial_file = 0;
 
 /* File to start session with. */
@@ -319,18 +319,15 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
                             user_nodenames[i]);
                   continue;
                 }
-              node_filename = initial_file->fullpath;
+              node_filename = xstrdup (initial_file->fullpath);
             }
 
           add_pointer_to_array
             (info_new_reference (node_filename,
-               xstrdup (info_parsed_nodename)),
+               info_parsed_nodename ? xstrdup (info_parsed_nodename) : 0),
              ref_index, ref_list, ref_slots, 2);
         }
     }
-
-  if (!initial_file)
-    return;
 
   if (goto_invocation_p)
     {
@@ -357,7 +354,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
             p++;
           program = xstrdup (*p);
         }
-      else if (initial_file->filename)
+      else if (initial_file && initial_file->filename)
         /* If there's no command-line arguments to
            supply the program name, use the Info file
            name (sans extension and leading directories)
@@ -366,8 +363,13 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
       else
         program = xstrdup ("");
       
-      top_node = info_get_node_of_file_buffer (initial_file, "Top");
-      invoc_ref = info_intuit_options_node (top_node, program);
+      if (initial_file)
+        top_node = info_get_node_of_file_buffer (initial_file, "Top");
+      else if (ref_index > 0)
+        top_node = info_get_node (ref_list[0]->filename, 
+                                  ref_list[0]->nodename);
+      if (top_node)
+        invoc_ref = info_intuit_options_node (top_node, program);
       if (invoc_ref)
         {
           add_pointer_to_array (info_copy_reference (invoc_ref),
@@ -383,11 +385,15 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
       NODE *initial_node; /* Node to start following menus from. */
       NODE *node_via_menus;
 
-      if (ref_index == 0)
+      if (ref_index == 0 && initial_file)
         add_pointer_to_array
           (info_new_reference (xstrdup (initial_file->fullpath),
                                xstrdup ("Top")),
            ref_index, ref_list, ref_slots, 2);
+
+      /* This shouldn't happen. */
+      if (ref_index == 0)
+        return;
 
       initial_node = info_get_node_with_defaults (ref_list[0]->filename,
                                                   ref_list[0]->nodename, 0);
@@ -407,7 +413,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
 
       /* If no nodes found, and there is exactly one argument remaining,
          check for it as an index entry. */
-      else if (argc == 1 && argv[0])
+      else if (argc == 1 && argv[0] && initial_file)
         {
           REFERENCE *nearest;
 
@@ -444,7 +450,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
     }
 
   /* Default is "Top" if there were no other nodes. */
-  if (ref_index == 0)
+  if (ref_index == 0 && initial_file)
     {
       add_pointer_to_array (info_new_reference (initial_file->fullpath, "Top"),
         ref_index, ref_list, ref_slots, 2);
@@ -830,7 +836,25 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
     }
   else
     {
+      /* If first argument begins with '(', add it as if it were given with 
+         '--node'.  This is to support invoking like
+         "info '(emacs)Buffers'".  If it is a well-formed node spec then
+         the rest of the arguments are menu entries to follow, or an
+         index entry.  */
+      if (argv[0] && argv[0][0] == '(')
+        {
+          info_parse_node (argv[0]);
+          if (info_parsed_filename)
+            {
+              add_pointer_to_array (argv[0],
+                                    user_nodenames_index, user_nodenames,
+                                    user_nodenames_slots, 10);
+              memmove (argv, argv + 1, argc-- * sizeof (char *));
+              goto skip_get_initial_file;
+            }
+        }
       get_initial_file (user_filename, &argc, &argv, &error);
+skip_get_initial_file:
 
       /* If the user specified `--index-search=STRING', 
          start the info session in the node corresponding
