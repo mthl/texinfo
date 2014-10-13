@@ -166,17 +166,19 @@ static void info_short_help (void);
 static void init_messages (void);
 
 
-/* Set INITIAL_FILE to the name of the initial Info file, either by
-   following menus from "(dir)Top", or what the user specifed with
-   values in FILENAME. */
+/* Interpret the first non-option argument, either by looking it up as a dir 
+   entry, looking for a file by that name, or finding a man page by that name.  
+   Set INITIAL_FILE to the name of the initial Info file. */
 static void
-get_initial_file (char *filename, int *argc, char ***argv, char **error)
+get_initial_file (int *argc, char ***argv, char **error)
 {
   REFERENCE *entry;
 
+  if (!(*argv)[0])
+    return;
+
   /* If there are any more arguments, the initial file is the
      dir entry given by the first one. */
-  if (!filename && (*argv)[0])
     {
       /* If they say info -O info, we want to show them the invocation node
          for standalone info; there's nothing useful in info.texi.  */
@@ -205,22 +207,7 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
         }
     }
 
-  /* User used "--file". */
-  if (filename)
-    {
-      initial_file = info_find_fullpath (filename, 0);
-
-      if (!initial_file)
-        {
-          if (filesys_error_number)
-            *error = filesys_error_string (filename, filesys_error_number);
-        }
-      else
-        return;
-    }
-
   /* File name lookup. */
-  if (!filename && (*argv)[0])
     {
       /* Try finding a file with this name, in case
          it exists, but wasn't listed in dir. */
@@ -237,18 +224,16 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
     }
 
   /* Fall back to loading man page. */
-  if (filename || (*argv)[0])
     {
       NODE *man_node;
 
       debug (3, ("falling back to manpage node"));
 
-      man_node = get_manpage_node (filename ? filename : (*argv)[0]);
+      man_node = get_manpage_node ((*argv)[0]);
       if (man_node)
         {
           add_pointer_to_array
-            (info_new_reference (MANPAGE_FILE_BUFFER_NAME,
-               filename ? filename : (*argv)[0]),
+            (info_new_reference (MANPAGE_FILE_BUFFER_NAME, (*argv)[0]),
              ref_index, ref_list, ref_slots, 2);
 
           initial_file = MANPAGE_FILE_BUFFER_NAME;
@@ -257,7 +242,6 @@ get_initial_file (char *filename, int *argc, char ***argv, char **error)
     }
 
   /* Inexact dir lookup. */
-  if (!filename && (*argv)[0])
     {
       entry = lookup_dir_entry ((*argv)[0], 1);
       if (entry)
@@ -836,6 +820,15 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
     }
   else
     {
+      /* User used "--file". */
+      if (user_filename)
+        {
+          initial_file = info_find_fullpath (user_filename, 0);
+          if (!initial_file && filesys_error_number)
+            error = filesys_error_string (user_filename, filesys_error_number);
+          goto skip_get_initial_file;
+        }
+
       /* If first argument begins with '(', add it as if it were given with 
          '--node'.  This is to support invoking like
          "info '(emacs)Buffers'".  If it is a well-formed node spec then
@@ -853,7 +846,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
               goto skip_get_initial_file;
             }
         }
-      get_initial_file (user_filename, &argc, &argv, &error);
+
+      get_initial_file (&argc, &argv, &error);
 skip_get_initial_file:
 
       /* If the user specified `--index-search=STRING', 
