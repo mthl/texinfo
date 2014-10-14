@@ -214,10 +214,8 @@ get_initial_file (int *argc, char ***argv, char **error)
       initial_file = info_find_fullpath ((*argv)[0], 0);
       if (initial_file)
         {
-          add_pointer_to_array
-            (info_new_reference (xstrdup ((*argv)[0]),
-                                 xstrdup ("Top")),
-             ref_index, ref_list, ref_slots, 2);
+          add_pointer_to_array (info_new_reference ((*argv)[0], "Top"),
+                                ref_index, ref_list, ref_slots, 2);
           (*argv)++; /* Advance past first remaining argument. */
           (*argc)--;
           return;
@@ -312,8 +310,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
             }
 
           add_pointer_to_array
-            (info_new_reference (node_filename,
-               info_parsed_nodename ? xstrdup (info_parsed_nodename) : 0),
+            (info_new_reference (node_filename, info_parsed_nodename),
              ref_index, ref_list, ref_slots, 2);
         }
     }
@@ -376,8 +373,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
 
       if (ref_index == 0 && initial_file)
         add_pointer_to_array
-          (info_new_reference (xstrdup (initial_file->fullpath),
-                               xstrdup ("Top")),
+          (info_new_reference (initial_file->fullpath, "Top"),
            ref_index, ref_list, ref_slots, 2);
 
       /* This shouldn't happen. */
@@ -825,10 +821,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
           if (!initial_file && filesys_error_number)
             error = filesys_error_string (user_filename, filesys_error_number);
           else
-            add_pointer_to_array
-              (info_new_reference (xstrdup (initial_file),
-                                   xstrdup ("Top")),
-               ref_index, ref_list, ref_slots, 2);
+            add_pointer_to_array (info_new_reference (initial_file, "Top"),
+                                  ref_index, ref_list, ref_slots, 2);
           goto skip_get_initial_file;
         }
 
@@ -842,12 +836,9 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
           info_parse_node (argv[0]);
           if (info_parsed_filename)
             {
-              add_pointer_to_array
-                (info_new_reference (xstrdup (info_parsed_filename),
-                                     info_parsed_nodename
-                                       ? xstrdup (info_parsed_nodename)
-                                       : 0),
-                 ref_index, ref_list, ref_slots, 2);
+              add_pointer_to_array (info_new_reference (info_parsed_filename,
+                                                        info_parsed_nodename),
+                                    ref_index, ref_list, ref_slots, 2);
               memmove (argv, argv + 1, argc-- * sizeof (char *));
               goto skip_get_initial_file;
             }

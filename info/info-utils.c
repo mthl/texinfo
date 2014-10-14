@@ -372,15 +372,14 @@ info_free_references (REFERENCE **references)
     }
 }
 
-/* Return new REFERENCE with filename and nodename fields set.  References
-   to FILENAME and NODENAME are retained in the return value. */
+/* Return new REFERENCE with filename and nodename fields set. */
 REFERENCE *
 info_new_reference (char *filename, char *nodename)
 {
   REFERENCE *r = xmalloc (sizeof (REFERENCE));
   r->label = 0;
-  r->filename = filename;
-  r->nodename = nodename;
+  r->filename = filename ? xstrdup (filename) : 0;
+  r->nodename = nodename ? xstrdup (nodename) : 0;
   r->start = 0;
   r->end = 0;
   r->line_number = 0;

@@ -7,6 +7,9 @@
 	should already be in ref_list.  If any "--node" argument given, 
 	discard the first element of ref_list.
 
+	* info/info-utils.c (info_new_reference): Duplicate arguments 
+	into new storage.  All callers updated.
+
 2014-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.c (main) <--all not used>: Check if the first 
