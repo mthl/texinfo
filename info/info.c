@@ -214,6 +214,10 @@ get_initial_file (int *argc, char ***argv, char **error)
       initial_file = info_find_fullpath ((*argv)[0], 0);
       if (initial_file)
         {
+          add_pointer_to_array
+            (info_new_reference (xstrdup ((*argv)[0]),
+                                 xstrdup ("Top")),
+             ref_index, ref_list, ref_slots, 2);
           (*argv)++; /* Advance past first remaining argument. */
           (*argc)--;
           return;
@@ -279,9 +283,10 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
     {
       int i;
 
-      if (ref_index > 0)
+      /* If any --node arguments were given, the node in ref_list[0] is only 
+         used to set initial_file. */
+      if (user_nodenames_index > 0 && ref_index > 0)
         {
-          /* Discard a dir entry that was found. */
           info_reference_free (ref_list[0]);
           ref_index = 0;
         }
@@ -431,13 +436,6 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
               free (node_via_menus);
             }
         }
-    }
-
-  /* Default is "Top" if there were no other nodes. */
-  if (ref_index == 0 && initial_file)
-    {
-      add_pointer_to_array (info_new_reference (initial_file->fullpath, "Top"),
-        ref_index, ref_list, ref_slots, 2);
     }
 
   return;
@@ -826,6 +824,11 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
           initial_file = info_find_fullpath (user_filename, 0);
           if (!initial_file && filesys_error_number)
             error = filesys_error_string (user_filename, filesys_error_number);
+          else
+            add_pointer_to_array
+              (info_new_reference (xstrdup (initial_file),
+                                   xstrdup ("Top")),
+               ref_index, ref_list, ref_slots, 2);
           goto skip_get_initial_file;
         }
 
@@ -839,9 +842,12 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
           info_parse_node (argv[0]);
           if (info_parsed_filename)
             {
-              add_pointer_to_array (argv[0],
-                                    user_nodenames_index, user_nodenames,
-                                    user_nodenames_slots, 10);
+              add_pointer_to_array
+                (info_new_reference (xstrdup (info_parsed_filename),
+                                     info_parsed_nodename
+                                       ? xstrdup (info_parsed_nodename)
+                                       : 0),
+                 ref_index, ref_list, ref_slots, 2);
               memmove (argv, argv + 1, argc-- * sizeof (char *));
               goto skip_get_initial_file;
             }

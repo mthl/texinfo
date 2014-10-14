@@ -1,3 +1,12 @@
+2014-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info.c (get_initial_file) <file name lookup>,
+	(main) <--file>, <'(file)node' as first argument>: Add a node to 
+	ref_list from the file we found.
+	(add_initial_nodes): Don't fall back to a "Top" node as it 
+	should already be in ref_list.  If any "--node" argument given, 
+	discard the first element of ref_list.
+
 2014-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.c (main) <--all not used>: Check if the first 
