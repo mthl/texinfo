@@ -1,5 +1,9 @@
 2014-10-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/empty.sh: New test.
+
+2014-10-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info.c (add_initial_nodes): FILE_BUFFER argument removed.
 	<--usage>: Display an error meesage if there is no node to give 
 	a file to look for an invocation node.

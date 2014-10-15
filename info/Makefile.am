@@ -109,6 +109,7 @@ TESTS = \
 	t/spec-no-node.sh \
 	t/spec-menu.sh \
 	t/all-only.sh \
+	t/empty.sh \
 	t/cr-tag-table.sh \
 	t/tab.sh \
 	t/tab-argument.sh \
