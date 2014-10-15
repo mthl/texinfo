@@ -60,9 +60,6 @@ static int print_help_p = 0;
 /* Name of file to start session with.  Default file for --node arguments. */
 static char *initial_file = 0;
 
-/* File to start session with. */
-static FILE_BUFFER *initial_fb = 0;
-
 /* Array of the names of nodes that the user specified with "--node" on the
    command line. */
 static char **user_nodenames = NULL;
@@ -273,8 +270,7 @@ get_initial_file (int *argc, char ***argv, char **error)
 
 /* Expand list of nodes to be loaded. */
 static void
-add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
-                   char **error)
+add_initial_nodes (int argc, char **argv, char **error)
 {
   /* Add nodes specified with --node. */
   if (user_nodenames)
@@ -306,7 +302,7 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
                             user_nodenames[i]);
                   continue;
                 }
-              node_filename = xstrdup (initial_file->fullpath);
+              node_filename = xstrdup (initial_file);
             }
 
           add_pointer_to_array
@@ -323,11 +319,10 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
       char **p = argv;
       char *program;
 
-      if (ref_index > 0)
+      if (ref_index == 0)
         {
-          /* Discard a dir entry that was found. */
-          info_reference_free (ref_list[0]);
-          ref_index = 0;
+          info_error (_("No program name given."));
+          exit (1);
         }
 
       /* If they said "info --show-options foo bar baz",
@@ -340,24 +335,25 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
             p++;
           program = xstrdup (*p);
         }
-      else if (initial_file && initial_file->filename)
+      else if (ref_list[0] && ref_list[0]->filename)
         /* If there's no command-line arguments to
            supply the program name, use the Info file
            name (sans extension and leading directories)
            instead.  */
-        program = program_name_from_file_name (initial_file->filename);
+        program = program_name_from_file_name (ref_list[0]->filename);
       else
         program = xstrdup ("");
       
-      if (initial_file)
-        top_node = info_get_node_of_file_buffer (initial_file, "Top");
-      else if (ref_index > 0)
+      if (ref_index > 0)
         top_node = info_get_node (ref_list[0]->filename, 
                                   ref_list[0]->nodename);
       if (top_node)
         invoc_ref = info_intuit_options_node (top_node, program);
       if (invoc_ref)
         {
+          info_reference_free (ref_list[0]);
+          ref_index = 0;
+
           add_pointer_to_array (info_copy_reference (invoc_ref),
             ref_index, ref_list, ref_slots, 2);
         }
@@ -366,19 +362,10 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
 
   /* If there are arguments remaining, they are the names of menu items
      in sequential info files starting from the first one loaded. */
-  else if (*argv)
+  else if (*argv && ref_index > 0)
     {
       NODE *initial_node; /* Node to start following menus from. */
       NODE *node_via_menus;
-
-      if (ref_index == 0 && initial_file)
-        add_pointer_to_array
-          (info_new_reference (initial_file->fullpath, "Top"),
-           ref_index, ref_list, ref_slots, 2);
-
-      /* This shouldn't happen. */
-      if (ref_index == 0)
-        return;
 
       initial_node = info_get_node_with_defaults (ref_list[0]->filename,
                                                   ref_list[0]->nodename, 0);
@@ -398,19 +385,24 @@ add_initial_nodes (FILE_BUFFER *initial_file, int argc, char **argv,
 
       /* If no nodes found, and there is exactly one argument remaining,
          check for it as an index entry. */
-      else if (argc == 1 && argv[0] && initial_file)
+      else if (argc == 1 && argv[0])
         {
+          FILE_BUFFER *fb;
           REFERENCE *nearest;
 
           debug (3, ("looking in indices"));
-          nearest = look_in_indices (initial_file, argv[0]);
-          if (nearest)
+          fb = info_find_file (ref_list[0]->filename);
+          if (fb)
             {
-              argv += argc; argc = 0;
-              free (*error); *error = 0;
+              nearest = look_in_indices (fb, argv[0]);
+              if (nearest)
+                {
+                  argv += argc; argc = 0;
+                  free (*error); *error = 0;
 
-              info_reference_free (ref_list[0]);
-              ref_list[0] = info_copy_reference (nearest);
+                  info_reference_free (ref_list[0]);
+                  ref_list[0] = info_copy_reference (nearest);
+                }
             }
         }
 
@@ -852,6 +844,7 @@ skip_get_initial_file:
          to what they want. */
       if (index_search_p && initial_file && !user_output_filename)
         {
+          FILE_BUFFER *initial_fb;
           initial_fb = info_find_file (initial_file);
           if (initial_fb)
             {
@@ -879,14 +872,10 @@ skip_get_initial_file:
         }
 
       /* Add nodes to start with (unless we fell back to the man page). */
-      if (!initial_file || strcmp (MANPAGE_FILE_BUFFER_NAME, initial_file))
+      if (!ref_list[0] || strcmp (ref_list[0]->filename, 
+                                  MANPAGE_FILE_BUFFER_NAME))
         {
-          if (initial_file)
-            initial_fb = info_find_file (initial_file);
-          else
-            initial_fb = 0;
-
-          add_initial_nodes (initial_fb, argc, argv, &error);
+          add_initial_nodes (argc, argv, &error);
         }
     }
 
