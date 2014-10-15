@@ -22216,8 +22216,8 @@ ae oe AE OE /o /O ss /l /L D d TH th:: *note a" e~ i^ a^ a` e\' c, e= e*
 e\'\' e;:: *note e. e( e_ .e e< j ee[:: *note i E=` C\',:: *note `` \'\' ` \'
 ,, ,:: *note << >> << >> < >:: *note `` \'\' --- -- ` \':: *note AAA (fff)
 AAA BBB:: *note CCC (rrr) CCC DDD:: *note the someone <someone@somewher>
-<no_explain@there>:: *note [f--ile1] Image description""\\.:: *note  @ {} . :: *note \'cite asis\' in @w b
-in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
+<no_explain@there>:: *note [f--ile1] Image description""\\.:: *note  @ {} . :: *note \'cite asis\'
+in @w b in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
 \'command\' \'file\' \'C-x <ESC>\':: *note 8.27in:: *note sansserif slanted::
 *note \'indicateurl\':: *note <http://somewhere_aaa> text (url) ls::
 
@@ -23225,8 +23225,8 @@ ae oe AE OE /o /O ss /l /L D d TH th:: *note a" e~ i^ a^ a` e\' c, e= e*
 e\'\' e;:: *note e. e( e_ .e e< j ee[:: *note i E=` C\',:: *note `` \'\' ` \'
 ,, ,:: *note << >> << >> < >:: *note `` \'\' --- -- ` \':: *note AAA (fff)
 AAA BBB:: *note CCC (rrr) CCC DDD:: *note the someone <someone@somewher>
-<no_explain@there>:: *note [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ]:: *note  @ {} . :: *note \'cite asis\' in @w b
-in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
+<no_explain@there>:: *note [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ]:: *note  @ {} . :: *note \'cite asis\'
+in @w b in r SC *str* t VAR "dfn" i:: *note \'env\' \'code\' \'option\' \'samp\'
 \'command\' \'file\' \'C-x <ESC>\':: *note 8.27in:: *note sansserif slanted::
 *note \'indicateurl\':: *note <http://somewhere_aaa> text (url) ls::
 

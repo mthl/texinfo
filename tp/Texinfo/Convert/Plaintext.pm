@@ -1719,14 +1719,14 @@ sub _convert($$)
       } elsif ($command eq 'tie') {
         $formatter->{'w'}++;
         $result .= $self->_count_added($formatter->{'container'},
-            $formatter->{'container'}->set_space_protection(1,1))
+            $formatter->{'container'}->set_space_protection(1,undef))
           if ($formatter->{'w'} == 1);
         $result .= $self->_count_added($formatter->{'container'}, 
                        $formatter->{'container'}->add_text($text,
                                                            $lower_case_text)); 
         $formatter->{'w'}--;
         $result .= $self->_count_added($formatter->{'container'},
-            $formatter->{'container'}->set_space_protection(0,0))
+            $formatter->{'container'}->set_space_protection(0,undef))
           if ($formatter->{'w'} == 0);
       } else {
         # This is to have @TeX{}, for example, be considered as tex
@@ -1801,7 +1801,7 @@ sub _convert($$)
       if ($command eq 'w') {
         $formatter->{'w'}++;
         $result .= $self->_count_added($formatter->{'container'},
-            $formatter->{'container'}->set_space_protection(1,1))
+            $formatter->{'container'}->set_space_protection(1,undef))
           if ($formatter->{'w'} == 1);
       }
       my ($text_before, $text_after);
@@ -1847,7 +1847,7 @@ sub _convert($$)
       if ($command eq 'w') {
         $formatter->{'w'}--;
         $result .= $self->_count_added($formatter->{'container'},
-            $formatter->{'container'}->set_space_protection(0,0))
+            $formatter->{'container'}->set_space_protection(0,undef))
           if ($formatter->{'w'} == 0);
       }
       if ($code_style_commands{$command}) {
@@ -3228,6 +3228,7 @@ sub indent_one_menu_descriptions($$)
   }
 }
 
+# FIXME document
 sub indent_menu_descriptions($;$)
 {
   my $self = shift;
