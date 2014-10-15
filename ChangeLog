@@ -1,6 +1,20 @@
+2014-10-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (add_initial_nodes): FILE_BUFFER argument removed.
+	<--usage>: Display an error meesage if there is no node to give 
+	a file to look for an invocation node.
+	(initial_fb): Variable removed.
+
+	* info/info.c (info_short_help),
+	* doc/info-stnd.texi (Invoking Info): Document "info 
+	'(file)node'" invocation.
+	* doc/info-stnd.texi (Invoking Info): Refer to "search path" 
+	instead of "INFOPATH".
+	(Node Commands): Add "vi-like operation" for a binding.
+
 2014-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* info.c (get_initial_file) <file name lookup>,
+	* info/info.c (get_initial_file) <file name lookup>,
 	(main) <--file>, <'(file)node' as first argument>: Add a node to 
 	ref_list from the file we found.
 	(add_initial_nodes): Don't fall back to a "Top" node as it 

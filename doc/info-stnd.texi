@@ -188,12 +188,14 @@ like @file{bison.igz} and @file{bison.inz} will be found and decompressed
 by @code{gunzip}.}
 
 You can specify the name of a node to visit with the @code{--node} or 
-@code{-n} option.  For example, here are two equivalent ways to load the
-@samp{Files} node within the @samp{emacs} manual:
+@code{-n} option.  Alternatively, you can specify the file and node 
+together using the same format that occurs in Info cross-references.  
+These two examples both load the @samp{Files} node within the 
+@samp{emacs} manual:
 
 @example
 info emacs -n Files
-info -n '(emacs)Files'
+info '(emacs)Files'
 @end example
 
 @cindex absolute Info file names
@@ -214,7 +216,7 @@ info ./document.info
 
 @noindent
 Info looks for @var{manual} only in the explicitly specified
-directory, and adds that directory to the value of @code{INFOPATH}.
+directory, and adds that directory to its search path.
 
 @anchor{command-line menu items}
 @cindex menu, following
@@ -1037,7 +1039,7 @@ finds the node @samp{Buffers} in the Info file @file{emacs}.
 
 @anchor{goto-invocation}
 @item @kbd{O} (@code{goto-invocation})
-@itemx @kbd{I}
+@itemx @kbd{I}, vi-like operation
 @kindex O
 @kindex I, vi-like operation
 @findex goto-invocation
