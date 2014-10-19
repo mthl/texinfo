@@ -795,8 +795,7 @@ in macro, a format_command containing some other commands.
 
      s--mallexample
 
- -- c--ategory: d--effn_name
-          a--rguments...
+ -- c--ategory: d--effn_name a--rguments...
                                   d-effn
 
 a
@@ -944,8 +943,7 @@ in verbatim
 
      s--mallexample
 
- -- c--ategory: d--effn_name
-          a--rguments...
+ -- c--ategory: d--effn_name a--rguments...
                                   d-effn
 
 a
@@ -976,8 +974,7 @@ in macro, a format_command containing some other commands.
 
      s--mallexample
 
- -- c--ategory: d--effn_name
-          a--rguments...
+ -- c--ategory: d--effn_name a--rguments...
                                   d-effn
 
 a

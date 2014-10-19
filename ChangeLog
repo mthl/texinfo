@@ -1,3 +1,9 @@
+2014-10-19  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Parser.pm (_parse_def): on @def* lines, consider 
+	@-commands and text not separated by space to be a single 
+	word.  From Werner LEMBERG (http://savannah.gnu.org/bugs/?43406).
+
 2014-10-16  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Convert/Plaintext.pm (_convert): with @w and @tie,

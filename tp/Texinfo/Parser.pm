@@ -2341,6 +2341,7 @@ sub _next_bracketed_or_word($$)
   $spaces = shift @{$contents} if (defined($contents->[0]->{'text'}) and 
                                      $contents->[0]->{'text'} !~ /\S/);
   if (defined($spaces)) {
+    #print STDERR "Gather spaces only text\n";
     $spaces->{'type'} = 'spaces';
     chomp $spaces->{'text'};
     $spaces = undef if ($spaces->{'text'} eq '');
@@ -2426,20 +2427,90 @@ sub _parse_def($$$)
   # Even when $arg_type is not set, that is for def* that is not documented
   # to take args, everything is as is arg_type was set to arg.
   $arg_type = pop @args if ($args[-1] eq 'arg' or $args[-1] eq 'argtype');
-  foreach my $arg (@args) {
-    #print STDERR "$command $arg"._print_current($contents[0]);
-    #foreach my $content (@contents) {print STDERR " "._print_current($content)};
-    #print STDERR " contents ->".Texinfo::Convert::Texinfo::convert ({'contents' => \@contents});
-    my ($spaces, $next) = $self->_next_bracketed_or_word(\@contents);
-    last if (!defined($next));
-    #print STDERR "NEXT[$arg] ".Texinfo::Convert::Texinfo::convert($next)."\n";
-    push @result, ['spaces', $spaces] if (defined($spaces));
-    push @result, [$arg, $next];
-  }
-
-  my @args_results;
+  my @def_line = ();
+  # tokenize the line.  We need to do that in order to be able to 
+  # look ahead for spaces.
   while (@contents) {
     my ($spaces, $next) = $self->_next_bracketed_or_word(\@contents);
+    # if there is no argument at all, the leading space is not associated
+    # to the @-command, so end up being gathered here.  We do not want to
+    # have this leading space appear in the arguments ever, so we ignore
+    # it here.
+    push @def_line, ['spaces', $spaces] if ((defined($spaces)) and scalar(@def_line) != 0);
+    #print STDERR "spaces `".Texinfo::Convert::Texinfo::convert($spaces)."'\n" if (defined($spaces));
+    last if (!defined($next));
+    #print "$next, $next->{'type'}\n";
+    #print STDERR "NEXT ".Texinfo::Convert::Texinfo::convert($next)."\n";
+    if ($next->{'type'} and $next->{'type'} eq 'bracketed_def_content') {
+      push @def_line, ['bracketed', $next];
+    } else {
+      push @def_line, ['text_or_cmd', $next];
+    }
+  }
+  my $argument_content = [];
+  my $arg = shift (@args);
+  while (@def_line) {
+    my $token = $def_line[0];
+    #print STDERR "next token: $token->[0]. arg $arg\n";
+    #print STDERR "NEXT ".Texinfo::Convert::Texinfo::convert($token->[1])."\n";
+    # finish previous item
+    if ($token->[0] eq 'spaces' or $token->[0] eq 'bracketed') {
+      # we create a {'contents' =>} only if there is more than one
+      # content gathered.
+      if (scalar(@$argument_content)) {
+        if (scalar(@$argument_content) > 1) {
+          push @result, [$arg, {'contents' => $argument_content}];
+        } elsif (scalar(@$argument_content) == 1) {
+          push @result, [$arg, $argument_content->[0]];
+        }
+        $argument_content = [];
+        if ($token->[0] eq 'spaces') {
+          $arg = shift (@args);
+        }
+      }
+    }
+    if ($token->[0] eq 'bracketed') {
+      my $bracketed = shift @def_line;
+      push @result, [$arg, $bracketed->[1]];
+      $arg = shift (@args);
+    } elsif ($token->[0] eq 'spaces') {
+      push @result, shift @def_line;
+    } else {
+      my $text_or_cmd = shift @def_line;
+      push @$argument_content, $text_or_cmd->[1];
+    }
+    last if (! defined($arg));
+  }
+  if (scalar(@$argument_content) > 1) {
+    push @result, [$arg, {'contents' => $argument_content}];
+  } elsif (scalar(@$argument_content) == 1) {
+    push @result, [$arg, $argument_content->[0]];
+  }
+  #foreach my $arg (@args) {
+  #  #print STDERR "$command $arg"._print_current($contents[0]);
+  #  #foreach my $content (@contents) {print STDERR " "._print_current($content)};
+  #  #print STDERR " contents ->".Texinfo::Convert::Texinfo::convert ({'contents' => \@contents});
+  #  my ($spaces, $next) = $self->_next_bracketed_or_word(\@contents);
+  #  last if (!defined($next));
+  #  #my $spaces_string = 'NOSPACE';
+  #  #if (defined($spaces)) {
+  #  #  $spaces_string = "`".Texinfo::Convert::Texinfo::convert($spaces)."'";
+ #   #}
+  #  #print STDERR "NEXT $spaces_string [$arg] ".Texinfo::Convert::Texinfo::convert($next)."\n";
+  #  push @result, ['spaces', $spaces] if (defined($spaces));
+  #  push @result, [$arg, $next];
+  #}
+  my @args_results;
+  #while (@contents) {
+  while (@def_line) {
+    my $spaces;
+    my $next_token = shift @def_line;
+    if ($next_token->[0] eq 'spaces') {
+      $spaces = $next_token->[1];
+      $next_token = shift @def_line;
+    }
+    my $next = $next_token->[1];
+    #my ($spaces, $next) = $self->_next_bracketed_or_word(\@contents);
     push @args_results, ['spaces', $spaces] if (defined($spaces));
     last if (!defined($next));
     if (defined($next->{'text'})) {
@@ -2803,6 +2874,7 @@ sub _end_line($$$)
         #} else {
         #  $def_parsed_hash->{$arg->[0]} = $arg->[1];
         #}
+        #print STDERR "DEF PARSED HASH $arg->[0] $arg->[1]|".Texinfo::Convert::Texinfo::convert($arg->[1])."|\n";
         $def_parsed_hash->{$arg->[0]} = $arg->[1];
       }
       $current->{'parent'}->{'extra'}->{'def_parsed_hash'} = $def_parsed_hash;
