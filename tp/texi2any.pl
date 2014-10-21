@@ -747,7 +747,7 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
       --conf-dir=DIR          search also for initialization files in DIR.
       --init-file=FILE        load FILE to modify the default behavior.
   -c, --set-customization-variable VAR=VAL  set customization variable VAR 
-                                to VAL.
+                                to value VAL.
   -v, --verbose               explain what is being done.
       --version               display version information and exit.\n"), get_conf('ERROR_LIMIT'))
 ."\n";
@@ -756,7 +756,8 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
       --html                  output HTML rather than Info.
       --plaintext             output plain text rather than Info.
       --xml                   output Texinfo XML rather than Info.
-      --dvi, --dvipdf, --ps, --pdf  call texi2dvi to generate given output.\n")
+      --dvi, --dvipdf, --ps, --pdf  call texi2dvi to generate given output,
+                                after checking validity of TEXINFO-FILE.\n")
 
 ."\n";
   $makeinfo_help .= __("General output options:
@@ -766,7 +767,7 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
                                 from Info output (thus producing plain text)
                                 or from HTML (thus producing shorter output).
                                 Also, if producing Info, write to
-                                standard output by default 
+                                standard output by default.
       --no-split              suppress any splitting of the output;
                                 generate only one output file.
       --[no-]number-sections  output chapter and sectioning numbers;
@@ -1065,6 +1066,14 @@ if ($call_texi2dvi) {
   }
 } elsif($Xopt_arg_nr) {
   document_warn(__('--Xopt option without printed output')); 
+}
+
+if ($call_texi2dvi) {
+  if (get_conf('DEBUG') or get_conf('VERBOSE')) {
+    print STDERR "EXEC ".join('|', (get_conf('TEXI2DVI'), @texi2dvi_args, @ARGV)) 
+       ."\n";
+  }
+  exec { get_conf('TEXI2DVI') } (get_conf('TEXI2DVI'), @texi2dvi_args, @ARGV);
 }
 
 my %tree_transformations;
@@ -1414,14 +1423,6 @@ foreach my $unclosed_file (keys(%unclosed_files)) {
     $error_count++;
     _exit($error_count, \@opened_files);
   }
-}
-
-if ($call_texi2dvi) {
-  if (get_conf('DEBUG') or get_conf('VERBOSE')) {
-    print STDERR "EXEC ".join('|', (get_conf('TEXI2DVI'), @texi2dvi_args, @ARGV)) 
-       ."\n";
-  }
-  exec { get_conf('TEXI2DVI') } (get_conf('TEXI2DVI'), @texi2dvi_args, @ARGV);
 }
 
 1;

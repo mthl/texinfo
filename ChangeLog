@@ -1,3 +1,11 @@
+2014-10-21  Karl Berry  <karl@gnu.org>
+
+	* tp/texi2any.pl (makeinfo_help),
+	* doc/texinfo.texi (@t{texi2any} Printed Output): mention
+	that texi2any parse the input purely for error-checking purposes
+	before handing off to texi2dvi.
+	Suggestion from Ken Brown18 Oct 2014 13:58:38.
+
 2014-10-19  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Parser.pm (_parse_def): on @def* lines, consider 

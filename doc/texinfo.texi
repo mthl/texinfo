@@ -17620,8 +17620,12 @@ option.  @xref{Customization Variables for @@-Commands}.
 To justify the name Texinfo-to-@emph{any}, @command{texi2any} has
 basic support for creating printed output in the various formats:
 @TeX{} DVI, PDF, and PostScript.  This is done via the simple method
-of executing the @command{texi2dvi} program when those outputs are
-requested.
+of executing the @command{texi2dvi} program when those output formats
+are requested, after checking the validity of the input to give users
+the benefit of @command{texi2any}'s error checking.  If you don't want
+such error checking, perhaps because your manual plays advanced @TeX{}
+tricks together with @file{texinfo.tex}, just invoke
+@command{texi2dvi} directly.
 
 The output format options for this are @option{--dvi},
 @option{--dvipdf}, @option{--pdf}, and @option{--ps}.  @xref{Format
@@ -17647,6 +17651,8 @@ texi2any --Xopt -t --Xopt @@a4paper --pdf foo.texi
 texi2dvi -t @@a4paper --pdf foo.texi
 @end example
 
+@noindent except for the validity check.
+
 Although one might wish that other options to @command{texi2any} would
 take effect, they don't.  For example, running @samp{texi2any
 --no-number-sections --dvi foo.texi} still results in a DVI file with
@@ -17657,8 +17663,8 @@ The actual name of the command that is invoked is specified by the
 @code{TEXI2DVI} customization variable (@pxref{Other Customization
 Variables}).  As you might guess, the default is @samp{texi2dvi}.
 
-@command{texi2any} itself does not generate any output when it invokes
-@command{texi2dvi}.
+@command{texi2any} itself does not generate any normal output when it
+invokes @command{texi2dvi}, only diagnostic messages.
 
 
 @node Pointer Validation
