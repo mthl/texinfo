@@ -30,6 +30,11 @@
 	* info/indices.c (info_indices_of_file_buffer): Look for nodes 
 	with "index" in the name as well as "Index".
 
+	* info/info-utils.c (forward_to_info_syntax): Don't search for 
+	"\n* Menu:" label separately, as this is comprised under 
+	searching for "\n* ".
+	(scan_node_contents): Conditional reordered.
+
 2014-10-21  Karl Berry  <karl@gnu.org>
 
 	* tp/texi2any.pl (makeinfo_help),

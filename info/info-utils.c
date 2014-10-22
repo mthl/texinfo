@@ -1591,7 +1591,6 @@ forward_to_info_syntax (char *contents)
       /* Menu entry comes first to optimize for the case of looking through a 
          long index node. */
       if (looking_at_string (contents, INFO_MENU_ENTRY_LABEL)
-          || looking_at_string (contents, INFO_MENU_LABEL)
           || looking_at_string (contents, INFO_XREF_LABEL)
           || !memcmp (contents, "\0\b[", 3))
         return contents;
@@ -1679,22 +1678,9 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
       /* Write out up to match */
       copy_input_to_output (match - inptr); 
 
-      /* Was "* Menu:" seen?  If so, search for menu entries hereafter. */
-      if (!in_menu && !strncmp (match, INFO_MENU_LABEL,
-                                strlen (INFO_MENU_LABEL)))
+      if ((in_menu && match[0] == '\n') || match[0] == '*')
         {
-          in_menu = 1;
-          skip_input (strlen ("\n* Menu:"));
-          if (*inptr == '\n')
-            skip_input (strspn (inptr, "\n") - 1); /* Keep one newline. */
-
-        }
-      else if (match[0] == '\0') /* Info tag */
-        {
-          scan_info_tag (node, &in_index, fb);
-        }
-      else if (match[0] != '\n' || in_menu)
-        {
+          /* Menu entry or cross reference. */
           /* Create REFERENCE entity. */
           entry = info_new_reference (0, 0);
 
@@ -1718,6 +1704,20 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
             }
 
           add_pointer_to_array (entry, refs_index, refs, refs_slots, 50);
+        }
+      /* Was "* Menu:" seen?  If so, search for menu entries hereafter. */
+      else if (!in_menu && !memcmp (match, INFO_MENU_LABEL,
+                               strlen (INFO_MENU_LABEL)))
+        {
+          in_menu = 1;
+          skip_input (strlen ("\n* Menu:"));
+          if (*inptr == '\n')
+            skip_input (strspn (inptr, "\n") - 1); /* Keep one newline. */
+
+        }
+      else if (match[0] == '\0') /* Info tag */
+        {
+          scan_info_tag (node, &in_index, fb);
         }
       else
         copy_input_to_output (1);
