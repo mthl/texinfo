@@ -653,7 +653,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
           text_buffer_printf (&message, _("Index entries containing "
                               "'%s':\n"), index_search);
           text_buffer_printf (&message, "\n* Menu:");
-          text_buffer_printf (&message, " \b[index \b]");
+          text_buffer_add_string (&message, "\0\b[index\0\b]", 11);
           text_buffer_add_char (&message, '\n');
 
           for (i = 0; apropos_list[i]; i++)
@@ -810,8 +810,9 @@ DECLARE_INFO_COMMAND (info_virtual_index,
 		      "File: %s,  Node: Index for '%s'\n\n"
 		      "Virtual Index\n"
 		      "*************\n\n"
-		      "Index entries that match '%s':\n"
-                      " \b[index \b]"
+                      "Index entries that match '%s':\n");
+  text_buffer_add_string (&text, "\0\b[index\0\b]", 11);
+  text_buffer_printf (&text,
 		      "\n* Menu:\n\n",
                       fb->filename, index_search, index_search);
 

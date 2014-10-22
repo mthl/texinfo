@@ -86,7 +86,7 @@ allfiles_create_node (char *term, REFERENCE **fref)
                       term, term);
 
   /* Mark as an index so that destinations are never hidden. */
-  text_buffer_add_string (&text, "\040\010[index\040\010]", 11);
+  text_buffer_add_string (&text, "\0\b[index\0\b]", 11);
   text_buffer_printf (&text, "\n* Menu:\n\n");
 
   for (i = 0; fref[i]; i++)

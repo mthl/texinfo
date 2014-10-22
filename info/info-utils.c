@@ -504,21 +504,11 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
 
   if (mb_isprint (mbi_cur (*iter)))
     {
-      if (info_tag (*iter, &cur_len))
-        {
-          *pchars = 0; 
-          *pbytes = 0;
-          ITER_SETBYTES (*iter, cur_len);
-          return cur_ptr;
-        }
-      else
-        {
-          /* cur.wc gives a wchar_t object.  See mbiter.h in the
-             gnulib/lib directory. */
-          *pchars = wcwidth ((*iter).cur.wc);
-          *pbytes = cur_len;
-          return cur_ptr;
-        }
+      /* cur.wc gives a wchar_t object.  See mbiter.h in the
+         gnulib/lib directory. */
+      *pchars = wcwidth ((*iter).cur.wc);
+      *pbytes = cur_len;
+      return cur_ptr;
     }
   else if (cur_len == 1)
     {
@@ -1053,6 +1043,17 @@ write_tag_contents (char *input, long n)
     }
 }
 
+/* Like skip_input, but skip even when !preprocess_nodes_p. */
+static void
+skip_tag_contents (long n)
+{
+  if (rewrite_p)
+    {
+      inptr += n;
+      output_bytes_difference += n;
+    }
+}
+
 /* ANSI escape codes */
 #define ANSI_UNDERLINING_OFF "\033[24m"
 #define ANSI_UNDERLINING_ON  "\033[4m"
@@ -1533,8 +1534,7 @@ safe_string_index (char *ptr, long index, char *base, long len)
 }
 
 /* Process an in index marker ("^@^H[index^@^H]") or an image marker
-   ("^@^H[image ...^@^H]").  The null bytes here were converted into spaces in
-   the convert_eols function in filesys.c. */
+   ("^@^H[image ...^@^H]"). */
 static void
 scan_info_tag (NODE *node, int *in_index, FILE_BUFFER *fb)
 {
@@ -1568,7 +1568,7 @@ scan_info_tag (NODE *node, int *in_index, FILE_BUFFER *fb)
       write_tag_contents (text_buffer_base (expansion),
                           text_buffer_off (expansion));
       /* Skip past body of tag. */
-      skip_input (p1 - inptr);
+      skip_tag_contents (p1 - inptr);
     }
   else
     {
@@ -1593,7 +1593,7 @@ forward_to_info_syntax (char *contents)
       if (looking_at_string (contents, INFO_MENU_ENTRY_LABEL)
           || looking_at_string (contents, INFO_MENU_LABEL)
           || looking_at_string (contents, INFO_XREF_LABEL)
-          || !memcmp (contents, " \b[", 3))
+          || !memcmp (contents, "\0\b[", 3))
         return contents;
       contents++;
     }
@@ -1689,7 +1689,7 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
             skip_input (strspn (inptr, "\n") - 1); /* Keep one newline. */
 
         }
-      else if (match[0] == ' ') /* Info tag */
+      else if (match[0] == '\0') /* Info tag */
         {
           scan_info_tag (node, &in_index, fb);
         }

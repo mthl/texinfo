@@ -1186,36 +1186,6 @@ text_buffer_to_node (struct text_buffer *tb)
 }
 
 
-/* If ITER points to an info tag, set PLEN to its length in bytes and
-   return 1.  Otherwise, return 0.
-*/
-int
-info_tag (mbi_iterator_t iter, size_t *plen)
-{
-  if (*mbi_cur_ptr (iter) == ' ' && mbi_avail (iter))
-    {
-      mbi_advance (iter);
-      if (*mbi_cur_ptr (iter) == '\b' && mbi_avail (iter))
-	{
-	  mbi_advance (iter);
-	  if (*mbi_cur_ptr (iter) == '[' && mbi_avail (iter))
-	    {
-	      const char *ptr, *end;
-	      mbi_advance (iter);
-	      ptr = mbi_cur_ptr (iter);
-	      end = memmem (ptr, ITER_LIMIT (iter), " \b]", 3);
-	      if (end)
-		{
-		  *plen = end - ptr + 6;
-		  return 1;
-		}
-	    }
-	}
-    }
-
-  return 0;
-}
-
 /* Process contents of the current node from WIN, beginning from START, using
    callback function FUN.
 

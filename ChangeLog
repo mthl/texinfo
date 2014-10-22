@@ -7,6 +7,26 @@
 	* info/indices.c (info_indices_of_file_buffer): Call strstr 
 	instead of string_in_line.
 
+	* info/filesys.c (convert_eols): Don't convert nulls in Info 
+	tags into spaces any more.
+	* info/indices.c (info_index_apropos, info_virtual_index),
+	* info/session.c (allfiles_create_node): Add index tag with 
+	nulls instead of spaces.
+
+	* info/info-utils.c (forward_to_info_syntax, scan_info_tag): 
+	Look for tags starting with nulls instead of spaces.  This is 
+	slightly faster because nodes generally contain many space 
+	characters.
+	(skip_tag_contents): New function.
+	(scan_info_tag): Call it.
+	* info/tag.c (tag_expand): Look for tag starting with a null 
+	instead of a space.  Skip past the tag even if no handler for it 
+	was found (for example, an index tag).
+
+	* info/info-utils.c (printed_representation): Don't check for an 
+	Info tag, as they should have been removed already.
+	* info/window.c (info_tag): Function removed.
+
 2014-10-21  Karl Berry  <karl@gnu.org>
 
 	* tp/texi2any.pl (makeinfo_help),

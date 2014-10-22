@@ -289,10 +289,7 @@ info_add_extension (char *dirname, char *filename, struct stat *finfo)
    we afford converting them into newlines as well?  Maybe implement some
    heuristics here, like in Emacs 20.
 
-   FIXME: is it a good idea to show the EOL type on the modeline?
-
-   Additionally, convert null bytes in "Info tags" to spaces.  This simplifies
-   processing of node contents. */
+   FIXME: is it a good idea to show the EOL type on the modeline? */
 static long
 convert_eols (char *text, long int textlen)
 {
@@ -306,13 +303,7 @@ convert_eols (char *text, long int textlen)
 	  s++;
 	  textlen--;
 	}
-      *d = *s++;
-
-      if (d[0] == '\0' && d[1] == '\010'
-          && (d[2] == '[' || d[2] == ']'))
-        d[0] = ' ';
-
-      d++;
+      *d++ = *s++;
     }
 
   return d - text;
