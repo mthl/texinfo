@@ -27,6 +27,9 @@
 	Info tag, as they should have been removed already.
 	* info/window.c (info_tag): Function removed.
 
+	* info/indices.c (info_indices_of_file_buffer): Look for nodes 
+	with "index" in the name as well as "Index".
+
 2014-10-21  Karl Berry  <karl@gnu.org>
 
 	* tp/texi2any.pl (makeinfo_help),

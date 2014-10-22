@@ -143,7 +143,8 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
 
       for (i = 0; (tag = file_buffer->tags[i]); i++)
         {
-          if (strstr (tag->nodename, "Index")
+          if ((strstr (tag->nodename, "Index")
+               || strstr (tag->nodename, "index"))
               && tag->nodelen != 0) /* Not an anchor. */
             {
               NODE *node;
