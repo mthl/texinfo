@@ -1580,6 +1580,26 @@ scan_info_tag (NODE *node, int *in_index, FILE_BUFFER *fb)
   free (expansion);
 }
 
+#define looking_at_string(contents, string) \
+  (!memcmp (contents, string, strlen (string)))
+
+static char *
+forward_to_info_syntax (char *contents)
+{
+  while (contents < input_start + input_length)
+    {
+      /* Menu entry comes first to optimize for the case of looking through a 
+         long index node. */
+      if (looking_at_string (contents, INFO_MENU_ENTRY_LABEL)
+          || looking_at_string (contents, INFO_MENU_LABEL)
+          || looking_at_string (contents, INFO_XREF_LABEL)
+          || !memcmp (contents, " \b[", 3))
+        return contents;
+      contents++;
+    }
+  return 0;
+}
+
 /* Scan (*NODE_PTR)->contents and record location and contents of
    cross-references and menu items.  Convert character encoding of
    node contents to that of the user if the two are known to be
@@ -1590,12 +1610,8 @@ scan_info_tag (NODE *node, int *in_index, FILE_BUFFER *fb)
 void
 scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
 {
-  char *search_string;
-  long position;
-  regmatch_t *matches;
-  size_t match_count;
-  size_t i;
   int in_menu = 0;
+  char *match;
 
   NODE *node = *node_ptr;
 
@@ -1654,23 +1670,11 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
 
   parse_top_node_line (node);
 
-  search_string = INFO_MENU_REGEXP "|" INFO_MENU_ENTRY_REGEXP
-    "|" INFO_XREF_REGEXP "|" INFO_TAG_REGEXP;
-
-  if (regexp_search (search_string, 0, 1, node->contents, node->nodelen,
-                     &matches, &match_count)
-      == search_success)
-  for (i = 0; i < match_count; i++)
+  while ((match = forward_to_info_syntax (inptr))
+          && match < node->contents + node->nodelen)
     {
       int in_parentheses = 0;
       REFERENCE *entry;
-      char *match;
-      position = matches[i].rm_so;
-
-      match = node->contents + position;
-
-      if (match < inptr)
-        continue;
 
       /* Write out up to match */
       copy_input_to_output (match - inptr); 
@@ -1715,6 +1719,8 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
 
           add_pointer_to_array (entry, refs_index, refs, refs_slots, 50);
         }
+      else
+        copy_input_to_output (1);
     }
 
   /* If we haven't accidentally gone past the end of the node, write
@@ -1729,8 +1735,6 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
   /* Free resources used in character encoding conversion. */
   close_conversion ();
   
-  free (matches);
-
   node->references = refs;
 
   if (rewrite_p)

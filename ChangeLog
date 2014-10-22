@@ -1,3 +1,10 @@
+2014-10-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (forward_to_info_syntax): New function.
+	(scan_node_contents): Call it instead of using regexp_search.  
+	This produces a speed improvement, noticable when using M-x 
+	index-apropos or opening a long index node.
+
 2014-10-21  Karl Berry  <karl@gnu.org>
 
 	* tp/texi2any.pl (makeinfo_help),
