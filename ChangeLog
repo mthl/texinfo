@@ -4,6 +4,8 @@
 	(scan_node_contents): Call it instead of using regexp_search.  
 	This produces a speed improvement, noticable when using M-x 
 	index-apropos or opening a long index node.
+	* info/indices.c (info_indices_of_file_buffer): Call strstr 
+	instead of string_in_line.
 
 2014-10-21  Karl Berry  <karl@gnu.org>
 
