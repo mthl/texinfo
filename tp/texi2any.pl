@@ -1068,14 +1068,6 @@ if ($call_texi2dvi) {
   document_warn(__('--Xopt option without printed output')); 
 }
 
-if ($call_texi2dvi) {
-  if (get_conf('DEBUG') or get_conf('VERBOSE')) {
-    print STDERR "EXEC ".join('|', (get_conf('TEXI2DVI'), @texi2dvi_args, @ARGV)) 
-       ."\n";
-  }
-  exec { get_conf('TEXI2DVI') } (get_conf('TEXI2DVI'), @texi2dvi_args, @ARGV);
-}
-
 my %tree_transformations;
 if (get_conf('TREE_TRANSFORMATIONS')) {
   my @transformations = split /,/, get_conf('TREE_TRANSFORMATIONS');
@@ -1423,6 +1415,14 @@ foreach my $unclosed_file (keys(%unclosed_files)) {
     $error_count++;
     _exit($error_count, \@opened_files);
   }
+}
+
+if ($call_texi2dvi) {
+  if (get_conf('DEBUG') or get_conf('VERBOSE')) {
+    print STDERR "EXEC ".join('|', (get_conf('TEXI2DVI'), @texi2dvi_args, @ARGV)) 
+       ."\n";
+  }
+  exec { get_conf('TEXI2DVI') } (get_conf('TEXI2DVI'), @texi2dvi_args, @ARGV);
 }
 
 1;
