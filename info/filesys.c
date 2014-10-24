@@ -358,6 +358,9 @@ filesys_read_info_file (char *pathname, size_t *filesize,
       close (descriptor);
     }
 
+  /* EOL conversion is disabled because it makes the tag table for a file 
+     incorrect.  See the test in info/t/cr-tag-table.sh. */
+#if 0
   /* Convert any DOS-style CRLF EOLs into Unix-style NL.
      Seems like a good idea to have even on Unix, in case the Info
      files are coming from some Windows system across a network.  */
@@ -367,7 +370,9 @@ filesys_read_info_file (char *pathname, size_t *filesize,
      want to waste storage.  */
   contents = xrealloc (contents, 1 + fsize);
   contents[fsize] = '\0';
+#endif
   *filesize = fsize;
+
   return contents;
 }
 

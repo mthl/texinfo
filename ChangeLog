@@ -1,3 +1,11 @@
+2014-10-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/filesys.c (filesys_read_info_file): Disable call to 
+	convert_eols.
+	* info/info-utils.c (printed_representation): Make '\r' bytes 
+	followed by a '\n' invisible.
+	* info/Makefile.am: t/cr-tag-table.sh removed from XFAIL_TESTS.
+
 2014-10-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (forward_to_info_syntax): New function.

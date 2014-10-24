@@ -512,8 +512,16 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
     }
   else if (cur_len == 1)
     {
-      if (*cur_ptr == '\r' || *cur_ptr == '\n')
+      if (*cur_ptr == '\n' || *cur_ptr == '\r')
         {
+          /* If this is a CRLF line ending, ignore this character. */
+          if (*cur_ptr == '\r' && cur_ptr[1] == '\n')
+            {
+              *pchars = 0;
+              *pbytes = 0;
+              return cur_ptr;
+            }
+
           *pchars = 1;
           *pbytes = cur_len;
           *delim = *cur_ptr;
