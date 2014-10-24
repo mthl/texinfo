@@ -811,11 +811,10 @@ DECLARE_INFO_COMMAND (info_virtual_index,
 		      "File: %s,  Node: Index for '%s'\n\n"
 		      "Virtual Index\n"
 		      "*************\n\n"
-                      "Index entries that match '%s':\n");
-  text_buffer_add_string (&text, "\0\b[index\0\b]", 11);
-  text_buffer_printf (&text,
-		      "\n* Menu:\n\n",
+                      "Index entries that match '%s':\n",
                       fb->filename, index_search, index_search);
+  text_buffer_add_string (&text, "\0\b[index\0\b]", 11);
+  text_buffer_printf (&text, "\n* Menu:\n\n");
 
   cnt = 0;
   for (i = 0; index_index[i]; i++)

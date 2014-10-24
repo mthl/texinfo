@@ -9,6 +9,9 @@
 	* info/info-utils.c (forward_to_info_syntax): Check for syntax 
 	case-insensitively.
 
+	* info/indices.c (info_virtual_index): Pass arguments to 
+	text_buffer_printf as intended.
+
 2014-10-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (forward_to_info_syntax): New function.
