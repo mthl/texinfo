@@ -5,6 +5,9 @@
 	* info/info-utils.c (printed_representation): Make '\r' bytes 
 	followed by a '\n' invisible.
 	* info/Makefile.am: t/cr-tag-table.sh removed from XFAIL_TESTS.
+	
+	* info/info-utils.c (forward_to_info_syntax): Check for syntax 
+	case-insensitively.
 
 2014-10-22  Gavin Smith  <gavinsmith0123@gmail.com>
 

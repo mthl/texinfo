@@ -1589,7 +1589,7 @@ scan_info_tag (NODE *node, int *in_index, FILE_BUFFER *fb)
 }
 
 #define looking_at_string(contents, string) \
-  (!memcmp (contents, string, strlen (string)))
+  (!strncasecmp (contents, string, strlen (string)))
 
 static char *
 forward_to_info_syntax (char *contents)
