@@ -1,3 +1,12 @@
+2014-10-26  Karl Berry  <karl@gnu.org>
+
+	* tp/maintain/template.pod,
+	* tp/maintain/regenerate_cmd_tests.sh,
+	* tp/maintain/regenerate_docstr.sh,
+	* tp/maintain/regenerate_file_lists.sh,
+	* tp/tests/Makefile.am:
+	belated copyright year update.
+
 2014-10-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/filesys.c (filesys_read_info_file): Disable call to 
