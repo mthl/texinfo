@@ -1,6 +1,6 @@
 # DocBook.pm: output tree as DocBook.
 #
-# Copyright 2011, 2012 Free Software Foundation, Inc.
+# Copyright 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -113,6 +113,11 @@ my %quoted_style_commands = (
   'samp' => 1,
 );
 
+# FIXME allow customization? (as in HTML)
+my %upper_case_style_commands = (
+  'sc' => 1,
+);
+
 my @inline_elements = ('emphasis', 'abbrev', 'acronym', 'link', 
   'inlinemediaobject', 'firstterm', 'footnote', 'replaceable', 'wordasword');
 my %inline_elements;
@@ -166,6 +171,8 @@ foreach my $command(@all_style_commands) {
   }
   if ($quoted_style_commands{$command}) {
     $style_commands_formatting{$command}->{'quote'} = 1;
+  } elsif ($upper_case_style_commands{$command}) {
+    $style_commands_formatting{$command}->{'upper_case'} = 1;
   }
 }
 
@@ -746,6 +753,8 @@ sub _convert($$;$)
         if (defined($formatting->{'quote'})) {
           $result = $self->get_conf('OPEN_QUOTE_SYMBOL') . $result
                    . $self->get_conf('CLOSE_QUOTE_SYMBOL');
+        } elsif (defined($formatting->{'upper_case'})) {
+          $result = uc($result);
         }
         pop @{$self->{'document_context'}->[-1]->{'monospace'}}
           if (defined($in_monospace_not_normal));

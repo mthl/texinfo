@@ -101,7 +101,7 @@ $composition_context_commands{'float'} = 1;
 
 my %pre_class_types;
 
-# FIXME allow customization?
+# FIXME allow customization? (also in DocBook)
 my %upper_case_commands = ( 'sc' => 1 );
 
 sub in_math($)

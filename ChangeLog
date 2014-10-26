@@ -1,5 +1,13 @@
 2014-10-26  Karl Berry  <karl@gnu.org>
 
+	* Texinfo/Convert/DocBook.pm (upper_case_style_commands),
+	(_convert): uppercase @sc argument.  Suggestion from Arnold Robbins,
+	11 Sep 2014 19:48:14.
+	* TODO,
+	* tests/layout/res_parser/formatting_docbook/formatting.xml:
+	update accordingly.
+	* Texinfo/Convert/HTML.pm: doc tweak.
+
 	* tp/maintain/template.pod,
 	* tp/maintain/regenerate_cmd_tests.sh,
 	* tp/maintain/regenerate_docstr.sh,

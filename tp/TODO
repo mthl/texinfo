@@ -226,8 +226,6 @@ DocBook
 
   put <title> in <articleinfo>?
 
-  how to handle @sc in docbook?
-
 * in docbook, when there is only one section <article> should be better
   than book. Maybe the best way to do that would be passing the
   information that there is only one section to the functions formatting
