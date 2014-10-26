@@ -2,7 +2,7 @@
 # Sample Makefile to build Texinfo from the Perl POD documentation,
 # using pod2texi.
 #
-# Copyright 2013 Free Software Foundation, Inc.
+# Copyright 2013, 2014 Free Software Foundation, Inc.
 # 
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -51,11 +51,13 @@ $(texi_pod_doc_incl): $(perl_pod_subdir)/*.pod
 	  `ls *.pod | fgrep -v delta` \
 	&& mv $(texi_pod_subdir) $@ ../..
 
+# updating on www.gnu.org.
 www_target = $(HOME)/gnu/www/www/software/perl/manual
 install:
 	cp -arf manual/. $(www_target)/.
 	ls -lt $(www_target)/html_chapter | tail  # cvs rm -f obsolete files
                                                   # and cvs add new (status ?).
+	cd $(www_target) && cvs update | grep -v '^M '
 
 # when running make dist, ensure we have none of the build files.
 # (Since the whole contrib/ directory is included in its entirety.)
