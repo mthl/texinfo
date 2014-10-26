@@ -90,14 +90,8 @@ typedef struct {
 #define INFO_NEXT_LABEL                 "Next:"
 #define INFO_UP_LABEL                   "Up:"
 #define INFO_MENU_LABEL                 "\n* Menu:"
-#define INFO_MENU_REGEXP                "\n\\* Menu:"
 #define INFO_MENU_ENTRY_LABEL           "\n* "
-#define INFO_MENU_ENTRY_REGEXP          "\n\\* "
 #define INFO_XREF_LABEL                 "*Note"
-/* Only match "*Note" if it is followed by a whitespace character so that it
-   will not be recognized if, e.g., it is surrounded in inverted commas. */
-#define INFO_XREF_REGEXP                "\\*Note[ \\t\\n]"
-#define INFO_TAG_REGEXP                 " \010\\["
 #define TAGS_TABLE_END_LABEL            "\nEnd Tag Table"
 #define TAGS_TABLE_BEG_LABEL            "Tag Table:\n"
 #define INDIRECT_TAGS_TABLE_LABEL       "Indirect:\n"

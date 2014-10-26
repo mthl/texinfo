@@ -1,3 +1,13 @@
+2014-10-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (scan_reference_marker) Return value says 
+	whether syntax was valid.
+	<cross-references>: Demand that cross-reference marker is 
+	followed by whitespace.
+	(scan_node_contents): Call to scan_reference_marker updated.
+	* info/nodes.h (INFO_MENU_REGEXP, INFO_MENU_ENTRY_REGEXP)
+	(INFO_XREF_REGEXP, INFO_TAG_REGEXP): Removed.
+
 2014-10-26  Karl Berry  <karl@gnu.org>
 
 	* Texinfo/Convert/DocBook.pm (upper_case_style_commands),
