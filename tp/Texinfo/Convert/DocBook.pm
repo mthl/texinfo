@@ -171,7 +171,8 @@ foreach my $command(@all_style_commands) {
   }
   if ($quoted_style_commands{$command}) {
     $style_commands_formatting{$command}->{'quote'} = 1;
-  } elsif ($upper_case_style_commands{$command}) {
+  }
+  if ($upper_case_style_commands{$command}) {
     $style_commands_formatting{$command}->{'upper_case'} = 1;
   }
 }
@@ -277,7 +278,7 @@ sub converter_initialize($)
 {
   my $self = shift;
 
-  $self->{'document_context'} = [{'monospace' => [0]}];
+  $self->{'document_context'} = [{'monospace' => [0], 'upper_case' => [0]}];
   $self->{'context_block_commands'} = {%default_context_block_commands};
   foreach my $raw (keys (%Texinfo::Common::format_raw_commands)) {
     $self->{'context_block_commands'}->{$raw} = 1
@@ -408,7 +409,7 @@ sub _index_entry($$)
     my $index_entry = $root->{'extra'}->{'index_entry'};
     # FIXME DocBook 5 role->type
     my $result = "<indexterm role=\"$index_entry->{'index_name'}\"><primary>";
-    push @{$self->{'document_context'}}, {'monospace' => [0]};
+    push @{$self->{'document_context'}}, {'monospace' => [0], 'upper_case' => [0]};
     $self->{'document_context'}->[-1]->{'monospace'}->[-1] = 1
       if ($index_entry->{'in_code'});
     $result .= $self->_convert({'contents' => $index_entry->{'content'}});
@@ -489,7 +490,11 @@ sub _convert($$;$)
     } elsif ($self->{'document_context'}->[-1]->{'raw'}) {
       return $root->{'text'};
     }
-    $result = $self->_protect_text($root->{'text'});
+    $result = $root->{'text'};
+    if ($self->{'document_context'}->[-1]->{'upper_case'}->[-1]) {
+      $result = uc($result);
+    }
+    $result = $self->_protect_text($result);
     if (! defined($root->{'type'}) or $root->{'type'} ne 'raw') {
       if (!$self->{'document_context'}->[-1]->{'monospace'}->[-1]) {
         $result =~ s/``/$ldquo/g;
@@ -726,7 +731,7 @@ sub _convert($$;$)
              and exists($Texinfo::Common::brace_commands{$root->{'cmdname'}})) {
       if ($style_commands_formatting{$root->{'cmdname'}}) {
         if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
-          push @{$self->{'document_context'}}, {'monospace' => [0]};
+          push @{$self->{'document_context'}}, {'monospace' => [0], 'upper_case' => [0]};
         }
         my $formatting = $style_commands_formatting{$root->{'cmdname'}};
 
@@ -736,6 +741,9 @@ sub _convert($$;$)
            $in_monospace_not_normal = 1;
         } elsif ($regular_font_style_commands{$root->{'cmdname'}}) {
           $in_monospace_not_normal = 0;
+        }
+        if ($formatting->{'upper_case'}) {
+          push @{$self->{'document_context'}->[-1]->{'upper_case'}}, 1;
         }
         push @{$self->{'document_context'}->[-1]->{'monospace'}}, 
           $in_monospace_not_normal
@@ -753,8 +761,9 @@ sub _convert($$;$)
         if (defined($formatting->{'quote'})) {
           $result = $self->get_conf('OPEN_QUOTE_SYMBOL') . $result
                    . $self->get_conf('CLOSE_QUOTE_SYMBOL');
-        } elsif (defined($formatting->{'upper_case'})) {
-          $result = uc($result);
+        }
+        if (defined($formatting->{'upper_case'})) {
+          pop @{$self->{'document_context'}->[-1]->{'upper_case'}};
         }
         pop @{$self->{'document_context'}->[-1]->{'monospace'}}
           if (defined($in_monospace_not_normal));
@@ -1052,7 +1061,7 @@ sub _convert($$;$)
         return '' if (! $expand);
         my $arg_index = 1;
         if ($root->{'cmdname'} eq 'inlineraw') {
-          push @{$self->{'document_context'}}, {'monospace' => [0]};
+          push @{$self->{'document_context'}}, {'monospace' => [0], 'upper_case' => [0]};
           $self->{'document_context'}->[-1]->{'raw'} = 1;
         } elsif ($root->{'cmdname'} eq 'inlinefmtifelse' 
                  and ! $self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}) {
@@ -1076,7 +1085,7 @@ sub _convert($$;$)
       return $w_command_mark;
     } elsif (exists($Texinfo::Common::block_commands{$root->{'cmdname'}})) {
       if ($self->{'context_block_commands'}->{$root->{'cmdname'}}) {
-        push @{$self->{'document_context'}}, {'monospace' => [0]};
+        push @{$self->{'document_context'}}, {'monospace' => [0], 'upper_case' => [0]};
       }
       my @attributes;
       my $appended = '';
@@ -1207,7 +1216,7 @@ sub _convert($$;$)
     } elsif ($root->{'type'} eq 'def_line') {
       $result .= "<synopsis>";
       $result .= $self->_index_entry($root);
-      push @{$self->{'document_context'}}, {'monospace' => [1]};
+      push @{$self->{'document_context'}}, {'monospace' => [1], 'upper_case' => [0]};
       $self->{'document_context'}->[-1]->{'inline'}++;
       if ($root->{'extra'} and $root->{'extra'}->{'def_args'}) {
         my $main_command;
