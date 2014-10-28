@@ -515,6 +515,10 @@ sub _convert($$;$)
           and $root->{'extra'} 
           and defined($root->{'extra'}->{'clickstyle'})) {
         $command = $root->{'extra'}->{'clickstyle'};
+      } elsif ($self->{'document_context'}->[-1]->{'upper_case'}->[-1]
+               and $Texinfo::Common::letter_no_arg_commands{$root->{'cmdname'}}
+               and $Texinfo::Common::letter_no_arg_commands{uc($root->{'cmdname'})}) {
+        $command = uc($root->{'cmdname'})
       } else {
         $command = $root->{'cmdname'};
       }
@@ -527,7 +531,8 @@ sub _convert($$;$)
     } elsif ($root->{'cmdname'} eq 'today') {
       return $self->_convert(Texinfo::Common::expand_today($self));
     } elsif ($Texinfo::Common::accent_commands{$root->{'cmdname'}}) {
-      return $self->convert_accents($root, \&docbook_accent);
+      return $self->convert_accents($root, \&docbook_accent,
+               $self->{'document_context'}->[-1]->{'upper_case'}->[-1]);
     } elsif ($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx'
              or $root->{'cmdname'} eq 'headitem' or $root->{'cmdname'} eq 'tab') {
       if ($root->{'cmdname'} eq 'item'

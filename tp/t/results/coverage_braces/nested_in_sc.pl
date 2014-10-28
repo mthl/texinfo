@@ -307,7 +307,7 @@ $result_errors{'nested_in_sc'} = [];
 
 
 
-$result_converted{'docbook'}->{'nested_in_sc'} = '<para>AAA &#209; &#229; &tex; &#229;~ <footnote><para>In footnote</para></footnote>, <abbrev>ABR</abbrev> (EXPL), 
+$result_converted{'docbook'}->{'nested_in_sc'} = '<para>AAA &#209; &#197; &tex; &#197;~ <footnote><para>In footnote</para></footnote>, <abbrev>ABR</abbrev> (EXPL), 
 <literal>IN VERB</literal>
 </para>';
 
