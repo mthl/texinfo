@@ -3,6 +3,7 @@
 	* info/session.c (gc_file_buffers_and_nodes): Keep on checking 
 	for referenced file buffers after one is found for a node.  
 	Report from Werner Lemberg.
+	* info/t/gc-split.sh: New test.
 
 2014-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
