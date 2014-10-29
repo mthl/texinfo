@@ -4982,7 +4982,11 @@ info_dispatch_on_key (int key, Keymap map)
 
             add_char_to_keyseq (key);
 
-            if (info_keyseq_displayed_p)
+            /* Don't update the key sequence if reading a key sequence in the 
+               echo area.  This means that a key sequence like "C-u 2 Left"
+               appears to take effect immediately, instead of there being a 
+               delay while the message is displayed. */
+            if (!echo_area_is_active && info_keyseq_displayed_p)
               display_info_keyseq (0);
 
             return func;
