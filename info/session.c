@@ -4070,6 +4070,7 @@ info_search_internal (char *string, WINDOW *window,
           subfile_name = tag->subfile;
         }
 
+      /* Get a new node to search in. */
       if (node != window->node)
         free (node);
       free (window->matches);
@@ -4099,13 +4100,16 @@ info_search_internal (char *string, WINDOW *window,
       /* Allow C-g to quit the search, failing it if pressed. */
       fill_input_buffer (0); \
       if (info_input_buffer[pop_index] == Control ('g'))
-        return -1;
+        goto funexit;
     }
 
   /* Not in interactive search. */
   if (!echo_area_is_active)
     info_error ("%s", _("Search failed."));
 
+funexit:
+  if (node != window->node)
+    free (node);
   return -1;
 }
 

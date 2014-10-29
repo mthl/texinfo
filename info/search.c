@@ -173,22 +173,25 @@ regexp_search (char *regexp, int is_literal, int is_insensitive,
   for (match_count = 0; offset < buflen; )
     {
       int result = 0;
-      if (match_count == match_alloc)
-        {
-          /* The match list is full.  Initially allocate 256 entries,
-             then double every time we fill it. */
-          if (match_alloc == 0)
-            match_alloc = 256;
-          matches = x2nrealloc (matches, &match_alloc, sizeof matches[0]);
-        }
+      regmatch_t m;
 
-      result = regexec (&preg, &buffer[offset], 1, &matches[match_count], 0);
+      result = regexec (&preg, &buffer[offset], 1, &m, 0);
       if (result == 0)
         {
-          if (matches[match_count].rm_eo == 0)
+          if (m.rm_eo == 0)
             offset++; /* Ignore empty matches. */
           else
             {
+              if (match_count == match_alloc)
+                {
+                  /* The match list is full. */
+                  if (match_alloc == 0)
+                    match_alloc = 50;
+                  matches = x2nrealloc
+                    (matches, &match_alloc, sizeof matches[0]);
+                }
+
+              matches[match_count] = m;
               matches[match_count].rm_so += offset;
               matches[match_count].rm_eo += offset;
               offset = matches[match_count++].rm_eo;

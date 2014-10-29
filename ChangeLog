@@ -6,6 +6,11 @@
 	(incremental_search): Don't say an empty search string is 
 	failing.
 
+	* info/search.c (regexp_search): Don't allocate a match list if 
+	there aren't any matches.
+	* info/session.c (info_search_internal): Always free return 
+	value of info_get_node if it is not saved in the window.
+
 2014-10-29  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\chapmacro): \checkenv, since chapters
