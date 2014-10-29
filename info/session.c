@@ -1760,10 +1760,17 @@ gc_file_buffers_and_nodes (void)
                  non-subfile. */
               if (fb->flags & N_Subfile)
                 {
+                  /* FIXME: For now, never free a subfile contents.  It can be 
+                     referenced by contents pointers in the tag table for the 
+                     main file.  Either check for this case, or do not store 
+                     contents pointers. */
+                  fb_referenced[fb_index] = 1;
+                  /*
                   if (n->subfile && !FILENAME_CMP (fb->fullpath, n->subfile))
                     {
                       fb_referenced[fb_index] = 1;
                     }
+                  */
                 }
               else
                 {

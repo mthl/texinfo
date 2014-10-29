@@ -11,6 +11,9 @@
 	* info/session.c (info_search_internal): Always free return 
 	value of info_get_node if it is not saved in the window.
 
+	* info/session.c (gc_file_buffers_and_nodes): Temporarily 
+	disable freeing subfiles.
+
 2014-10-29  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\chapmacro): \checkenv, since chapters
