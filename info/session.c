@@ -1756,12 +1756,13 @@ gc_file_buffers_and_nodes (void)
             {
               FILE_BUFFER *fb = info_loaded_files[fb_index];
 
+              /* Each node should match at most one subfile and one 
+                 non-subfile. */
               if (fb->flags & N_Subfile)
                 {
                   if (n->subfile && !FILENAME_CMP (fb->fullpath, n->subfile))
                     {
                       fb_referenced[fb_index] = 1;
-                      break;
                     }
                 }
               else
@@ -1769,7 +1770,6 @@ gc_file_buffers_and_nodes (void)
                   if (n->fullpath && !FILENAME_CMP (fb->fullpath, n->fullpath))
                     {
                       fb_referenced[fb_index] = 1;
-                      break;
                     }
                 }
             }
