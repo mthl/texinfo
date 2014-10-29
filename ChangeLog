@@ -1,3 +1,16 @@
+2014-10-29  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\chapmacro): \checkenv, since chapters
+	should presumably not appear inside environments.
+	(\sectionheading): allow @heading-series commands, but not others,
+	to appear inside environments.  Report from Mahlon Smith,
+	25 Aug 2014 09:42:16; original change made following
+	https://savannah.gnu.org/bugs/?15514.
+	* doc/texinfo.texi (@t{@@unnumberedsec @@appendixsec @@heading})
+	<@@heading>: @heading-series cannot appear literally "anywhere",
+	though they can appear inside most environments, unlike the
+	normal sectioning commands.
+
 2014-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (gc_file_buffers_and_nodes): Keep on checking 

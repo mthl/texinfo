@@ -4670,8 +4670,13 @@ Conventionally, the @code{@@appendixsec} or @code{@@appendixsection}
 command is used only within appendices.
 
 @item @@heading
-You may use the @code{@@heading} command anywhere you wish for a
+You may use the @code{@@heading} command (almost) anywhere for a
 section-style heading that will not appear in the table of contents.
+The @code{@@heading}-series commands can appear inside most
+environments, for example, though pathological and useless locations
+such as inside @code{@@titlepage}, as an argument to another command,
+etc., are not allowed.
+
 @end table
 
 
