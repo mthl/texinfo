@@ -4365,7 +4365,7 @@ typedef struct {
   long start;           /* Offset in node contents where search started. */
   int search_index;     /* Offset of the last char in the search string. */
   int direction;        /* The direction that this search is heading in. */
-  int failing;          /* Whether or not this search failed. */
+  enum search_result failing;      /* Whether or not this search failed. */
 } SEARCH_STATE;
 
 /* Incrementally search for a string as it is typed. */
@@ -4401,8 +4401,8 @@ window_set_state (WINDOW *window, SEARCH_STATE *state)
 
 /* Push the state of this search. */
 static void
-push_isearch (WINDOW *window, int search_index, int direction, int failing,
-              long start_off)
+push_isearch (WINDOW *window, int search_index, int direction,
+              enum search_result failing, long start_off)
 {
   SEARCH_STATE *state;
 
@@ -4419,8 +4419,8 @@ push_isearch (WINDOW *window, int search_index, int direction, int failing,
 
 /* Pop the state of this search to WINDOW, SEARCH_INDEX, and DIRECTION. */
 static void
-pop_isearch (WINDOW *window, int *search_index, int *direction, int *failing,
-             long *start_off)
+pop_isearch (WINDOW *window, int *search_index, int *direction,
+             enum search_result *failing, long *start_off)
 {
   SEARCH_STATE *state;
 
@@ -4455,7 +4455,8 @@ free_isearch_states (void)
 
 /* Display the current search in the echo area. */
 static void
-show_isearch_prompt (int dir, unsigned char *string, int failing_p)
+show_isearch_prompt (int dir, unsigned char *string,
+                     enum search_result failing)
 {
   register int i;
   const char *prefix;
@@ -4491,11 +4492,12 @@ show_isearch_prompt (int dir, unsigned char *string, int failing_p)
     }
 
   prompt_len = strlen (prefix) + p_rep_index + 1;
-  if (failing_p)
+  if (failing != search_success)
     prompt_len += strlen (_("Failing "));
   prompt = xmalloc (prompt_len);
-  sprintf (prompt, "%s%s%s", failing_p ? _("Failing ") : "", prefix,
-           p_rep ? p_rep : "");
+  sprintf (prompt, "%s%s%s",
+           failing != search_success ? _("Failing ") : "",
+           prefix, p_rep ? p_rep : "");
 
   window_message_in_echo_area ("%s", prompt);
   free (p_rep);
@@ -4508,8 +4510,10 @@ static void
 incremental_search (WINDOW *window, int count)
 {
   int key;
-  int last_search_result, search_result, dir;
-  SEARCH_STATE mystate, orig_state;
+  enum search_result last_search_result, search_result;
+  int dir;
+  SEARCH_STATE orig_state; /* Window state at start of incremental search. */
+  SEARCH_STATE mystate;    /* State before each search. */
   char *p;
   int case_sensitive;
   long start_off = window->point;
@@ -4521,7 +4525,7 @@ incremental_search (WINDOW *window, int count)
   else
     dir = 1;
 
-  last_search_result = search_result = 1;
+  last_search_result = search_result = search_success;
 
   window_get_state (window, &orig_state);
 
@@ -4545,25 +4549,6 @@ incremental_search (WINDOW *window, int count)
       /* Show the search string in the echo area. */
       show_isearch_prompt (dir, (unsigned char *) isearch_string,
                            search_result);
-
-      if (search_result == 0)
-        {
-          if (mystate.node == window->node
-              && mystate.pagetop != window->pagetop)
-            {
-              int newtop = window->pagetop;
-              window->pagetop = mystate.pagetop;
-              set_window_pagetop (window, newtop);
-            }
-          window_adjust_pagetop (window);
-
-          /* Call display_update_display to update the window and an automatic
-             footnotes window if present. */
-          display_update_display ();
-          display_cursor_at_point (window);
-        }
-
-      last_search_result = search_result;
 
       /* If a recent display was interrupted, then do the redisplay now if
          it is convenient. */
@@ -4666,7 +4651,7 @@ incremental_search (WINDOW *window, int count)
                 {
                   /* Search again in the same direction.  This means start
                      from a new place if the last search was successful. */
-                  if (search_result == 0)
+                  if (search_result == search_success)
                     {
                       start_off = window->point;
                       if (dir < 0)
@@ -4683,12 +4668,12 @@ incremental_search (WINDOW *window, int count)
             }
         }
       else if (func == (VFunction *) info_abort_key
-               && isearch_states_index && (search_result != 0))
+               && isearch_states_index && (search_result != search_success))
         {
           /* If C-g pressed, and the search is failing, pop the search
              stack back to the last unfailed search. */
           terminal_ring_bell ();
-          while (isearch_states_index && (search_result != 0))
+          while (isearch_states_index && search_result != search_success)
             pop_isearch (window, &isearch_string_index, &dir,
                          &search_result, &start_off);
           isearch_string[isearch_string_index] = '\0';
@@ -4723,7 +4708,8 @@ incremental_search (WINDOW *window, int count)
         }
 
       /* Search for the contents of isearch_string. */
-      show_isearch_prompt (dir, (unsigned char *) isearch_string, search_result);
+      show_isearch_prompt (dir, (unsigned char *) isearch_string, 
+                           search_result);
 
       /* Make the search case-sensitive only if the search string includes
          upper-case letters. */
@@ -4734,15 +4720,37 @@ incremental_search (WINDOW *window, int count)
             case_sensitive = 1;
             break;
           }
-      
+
+      last_search_result = search_result;
       search_result = info_search_internal (isearch_string,
                                             window, dir, case_sensitive,
                                             &start_off);
 
       /* If this search failed, and we didn't already have a failed search,
          then ring the terminal bell. */
-      if (search_result != 0 && last_search_result == 0)
-        terminal_ring_bell ();
+      if (search_result != search_success
+          && last_search_result == search_success)
+        {
+          terminal_ring_bell ();
+        }
+      else if (search_result == search_success)
+        {
+          /* Make sure the match is visible, and update the display. */
+
+          if (mystate.node == window->node
+              && mystate.pagetop != window->pagetop)
+            {
+              int newtop = window->pagetop;
+              window->pagetop = mystate.pagetop;
+              set_window_pagetop (window, newtop);
+            }
+          window_adjust_pagetop (window);
+
+          /* Call display_update_display to update the window and an automatic
+             footnotes window if present. */
+          display_update_display ();
+          display_cursor_at_point (window);
+        }
     }
 
   /* Free the memory used to remember each search state. */

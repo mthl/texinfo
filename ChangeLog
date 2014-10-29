@@ -1,3 +1,11 @@
+2014-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (SEARCH_STATE, push_isearch, pop_isearch)
+	(pop_isearch_prompt, incremental_search): Represent result of 
+	search with an enum search_result instead of an int.
+	(incremental_search): Don't say an empty search string is 
+	failing.
+
 2014-10-29  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\chapmacro): \checkenv, since chapters
