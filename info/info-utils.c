@@ -1621,16 +1621,19 @@ forward_to_info_syntax (char *contents)
    cross-references and menu items.  Convert character encoding of
    node contents to that of the user if the two are known to be
    different.  If preprocess_nodes_p == 1, remove Info syntax in contents.
-   If the node is from the file described by FB, then NODE_PTR is an offset
-   into FB->tags.  If the node has not come from a file, FB is a null
-   pointer. */
-void
+
+   If FB is non-null, it is the file containing the node, and NODE_PTR is an 
+   offset into FB->tags.  Return a new node.
+  
+   If the node has not come from a file, FB is a null pointer.  Update
+   **NODE_PTR and return null. */
+NODE *
 scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
 {
   int in_menu = 0;
   char *match;
 
-  NODE *node = *node_ptr;
+  NODE *node; /* Return value */
 
   REFERENCE **refs = NULL;
   size_t refs_index = 0, refs_slots = 0;
@@ -1638,10 +1641,8 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
   /* Whether an index tag was seen. */
   int in_index = 0;
 
-  /* Check that contents haven't already been processed. This shouldn't
-     happen. */
-  if (node->flags & N_WasRewritten)
-    return;
+  node = xmalloc (sizeof (NODE));
+  *node = **node_ptr;
 
   rewrite_p = preprocess_nodes_p;
 
@@ -1664,7 +1665,7 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
         {
           FILE_BUFFER *f = info_find_subfile (node->subfile);
           if (!f)
-            return; /* This shouldn't happen. */
+            return 0; /* This shouldn't happen. */
           file_contents = f->contents;
         }
       node_offset = node->nodestart
@@ -1769,6 +1770,20 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
       /* Node header was deleted. */
       if (preprocess_nodes_p)
         node->body_start = 0;
+    }
+
+  if (!fb)
+    {
+      if (node->flags & N_WasRewritten)
+        free ((*node_ptr)->contents);
+      **node_ptr = *node;
+      free (node);
+      return 0;
+    }
+  else
+    {
+      (*node_ptr)->contents = 0;
+      return node;
     }
 }
 

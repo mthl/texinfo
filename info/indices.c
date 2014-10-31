@@ -177,7 +177,10 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
                   free (old_result);
                   }
                 }
-              free (node);
+              free (menu);
+              node->references = 0; /* Don't free the elements in the
+                                       reference list. */
+              free_history_node (node);
             }
         }
     }
@@ -683,9 +686,8 @@ DECLARE_INFO_COMMAND (info_index_apropos,
       apropos_node = text_buffer_to_node (&message);
       scan_node_contents (0, &apropos_node);
 
-      add_gcable_pointer (apropos_node->contents);
       name_internal_node (apropos_node, xstrdup (apropos_list_nodename));
-      apropos_node->flags |= N_Unstored;
+      apropos_node->flags |= N_WasRewritten;
 
       /* Find/Create a window to contain this node. */
       {
@@ -840,7 +842,7 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   node->contents = text_buffer_base (&text);
   node->nodelen = text_buffer_off (&text) - 1;
   node->body_start = strcspn (node->contents, "\n");
-  node->flags |= (N_IsInternal | N_Unstored);
+  node->flags |= N_IsInternal | N_WasRewritten;
 
   scan_node_contents (0, &node);
   info_set_node_of_window (window, node);

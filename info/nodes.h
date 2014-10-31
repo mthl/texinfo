@@ -39,14 +39,6 @@ typedef struct {
 #define REFERENCE_XREF 0
 #define REFERENCE_MENU_ITEM 1
 
-/* Callers generally only want the node itself.  This structure is used
-   to pass node information around.  None of the information in this
-   structure should ever be directly freed.  The structure itself can
-   be passed to free ().  Note that NODE->parent is non-null if this
-   node's file is a subfile.  In that case, NODE->parent is the logical
-   name of the file containing this node.  Both names are given as full
-   paths, so you might have: node->filename = "/usr/gnu/info/emacs-1",
-   with node->parent = "/usr/gnu/info/emacs". */
 typedef struct {
   char *fullpath;               /* Non-null is the logical file name. */
   char *subfile;                /* File containing node for split files. */
@@ -74,12 +66,10 @@ typedef struct {
 #define N_IsInternal   0x10     /* This node was made by Info. */
 #define N_CannotGC     0x20     /* File buffer cannot be gc'ed. */
 #define N_IsManPage    0x40     /* This node is a manpage. */
-#define N_FromAnchor   0x80     /* Synthesized for an anchor reference. */
 #define N_WasRewritten 0x100    /* NODE->contents can be passed to free(). */ 
 #define N_IsIndex      0x200    /* An index node. */
 #define N_IsDir        0x400    /* A dir node. */
 #define N_Subfile      0x800    /* File buffer is a subfile of a split file. */
-#define N_Unstored     0x1000   /* References are not stored anywhere else. */
 
 /* String constants. */
 #define INFO_FILE_LABEL                 "File:"
@@ -170,6 +160,8 @@ extern NODE *info_get_node_of_file_buffer (FILE_BUFFER *file_buffer,
 /* Grovel FILE_BUFFER->contents finding tags and nodes, and filling in the
    various slots.  This can also be used to rebuild a tag or node table. */
 extern void build_tags_and_nodes (FILE_BUFFER *file_buffer);
+
+void free_history_node (NODE *n);
 
 /* When non-zero, this is a string describing the most recent file error. */
 extern char *info_recent_file_error;

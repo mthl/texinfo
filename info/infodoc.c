@@ -275,15 +275,6 @@ create_internal_info_help_node (int help_is_only_window_p)
 
   internal_info_help_node = node;
 
-  /* Do not GC this node's contents.  It never changes, and we never need
-     to delete it once it is made.  If you change some things (such as
-     placing information about dynamic variables in the help text) then
-     you will need to allow the contents to be gc'd, and you will have to
-     arrange to always regenerate the help node. */
-#if defined (HELP_NODE_GETS_REGENERATED)
-  add_gcable_pointer (internal_info_help_node->contents);
-#endif
-
   name_internal_node (internal_info_help_node, xstrdup (info_help_nodename));
 }
 

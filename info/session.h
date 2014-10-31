@@ -32,11 +32,6 @@
    to gc even those file buffer contents which had to be uncompressed. */
 extern int gc_compressed_files;
 
-/* Add POINTER to the list of garbage collectible pointers.  A pointer
-   is not actually garbage collected until no info window contains a node
-   whose contents member is equal to the pointer. */
-extern void add_gcable_pointer (char *pointer);
-
 /* When non-zero, tiling takes place automatically when info_split_window
    is called. */
 extern int auto_tiling_p;

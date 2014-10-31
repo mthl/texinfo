@@ -293,7 +293,7 @@ add_initial_nodes (int argc, char **argv, char **error)
              like info --node "(emacs)Buffers". */
           info_parse_node (user_nodenames[i]);
           if (info_parsed_filename)
-            node_filename = xstrdup (info_parsed_filename);
+            node_filename = info_parsed_filename;
           else
             {
               if (!initial_file)
@@ -302,7 +302,7 @@ add_initial_nodes (int argc, char **argv, char **error)
                             user_nodenames[i]);
                   continue;
                 }
-              node_filename = xstrdup (initial_file);
+              node_filename = initial_file;
             }
 
           add_pointer_to_array
@@ -380,7 +380,7 @@ add_initial_nodes (int argc, char **argv, char **error)
           info_reference_free (ref_list[0]);
           ref_list[0] = info_new_reference (node_via_menus->fullpath,
                                             node_via_menus->nodename);
-          free (node_via_menus);
+          free_history_node (node_via_menus);
         }
 
       /* If no nodes found, and there is exactly one argument remaining,
@@ -421,7 +421,7 @@ add_initial_nodes (int argc, char **argv, char **error)
               info_reference_free (ref_list[0]);
               ref_list[0] = info_new_reference (node_via_menus->fullpath,
                                                 node_via_menus->nodename);
-              free (node_via_menus);
+              free_history_node (node_via_menus);
             }
         }
     }
@@ -473,6 +473,7 @@ info_find_matching_files (char *filename)
           add_pointer_to_array (info_new_reference (p, 0),
             ref_index, ref_list, ref_slots, 2);
         }
+      free (p);
     }
 
   /* Check for man page. */

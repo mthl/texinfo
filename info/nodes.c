@@ -1166,10 +1166,11 @@ set_tag_nodelen (FILE_BUFFER *subfile, NODE *tag)
 {
   SEARCH_BINDING node_body;
 
-  node_body.buffer = tag->contents;
-  node_body.start = 0;
-  node_body.end = subfile->contents + subfile->filesize - node_body.buffer;
+  node_body.buffer = subfile->contents;
+  node_body.start = tag->nodestart;
+  node_body.end = subfile->filesize;
   node_body.flags = 0;
+  node_body.start += skip_node_separator (node_body.buffer + node_body.start);
   tag->nodelen = get_node_length (&node_body);
 }
 
@@ -1205,33 +1206,38 @@ info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
 
   node = 0;
 
-  /* If not an anchor and contents of node are not available: */
-  if (tag->nodelen != 0 && !tag->contents)
+  if (tag->nodelen != 0) /* If not an anchor. */
     {
       /* If TAG->nodelen hasn't been calculated yet, then we aren't
          in a position to trust the entry pointer.  Adjust things so
-         that ENTRY->nodestart gets the exact address of the start of
+         that TAG->nodestart gets the exact address of the start of
          the node separator which starts this node.  If we cannot
          do that, the node isn't really here. */
       if (tag->nodelen == -1)
-        if (!adjust_nodestart (subfile, tag))
-          return NULL; /* Node not found. */
+        {
+          if (!adjust_nodestart (subfile, tag))
+            return NULL; /* Node not found. */
 
-      /* Right after the separator. */
+          set_tag_nodelen (subfile, tag);
+        }
+
       tag->contents = subfile->contents + tag->nodestart;
       tag->contents += skip_node_separator (tag->contents);
-
-      /* This may be already calculated, but be out of date
-         due to previous calls to tags_expand. */
-      set_tag_nodelen (subfile, tag);
-
       node_set_body_start (tag);
 
-      /* Read locations of references in node and similar.  Strip
-         Info file syntax from node if preprocess_nodes=On. */
-      scan_node_contents (fb, tag_ptr);
+      /* Read locations of references in node and similar.  Strip Info file
+         syntax from node if preprocess_nodes=On.  Adjust the offsets of
+         anchors that occur within the node.*/
+      node = scan_node_contents (fb, tag_ptr);
+      node->nodename = xstrdup (node->nodename);
+
+      /* We can't set this when tag table is built, because
+         if file is split, we don't know which of the sub-files
+         are compressed. */
+      if (subfile->flags & N_IsCompressed)
+        node->flags |= N_IsCompressed;
     }
-  else if (tag->nodelen == 0) /* anchor, return containing node */
+  else /* anchor, return containing node */
     {
       int anchor_pos, node_pos;
 
@@ -1267,23 +1273,8 @@ info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
              the screen), which looks wrong.  */
           if (node->display_pos >= (unsigned long) node->nodelen)
             node->display_pos = node->nodelen - 1;
-
-          /* Don't search in the node for the xref text, it's not there.  */
-          node->flags |= N_FromAnchor;
         }
     }
 
-  if (!node)
-    {
-      node = xmalloc (sizeof (NODE));
-      *node = *tag;
-    }
-
-  /* We can't set this when tag table is built, because
-     if file is split, we don't know which of the sub-files
-     are compressed. */
-  if (subfile->flags & N_IsCompressed)
-    node->flags |= N_IsCompressed;
-  
   return node;
 }

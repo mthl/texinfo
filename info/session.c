@@ -902,17 +902,17 @@ show_error_node (char *error)
 /*                                                                  */
 /* **************************************************************** */
 
-static void
+/* Free a NODE object that is suitable for being placed in a window. */
+void
 free_history_node (NODE *n)
 {
-  if (n->flags & N_Unstored)
-    {
-      /* These fields are not stored anywhere else.  The
-         contents field was recorded with add_gcable_pointer. */
-      info_free_references (n->references);
-      free (n->nodename);
-    }
-
+  if (!n)
+    return;
+  if (n->flags & N_WasRewritten)
+    free (n->contents);
+  info_free_references (n->references);
+  free (n->next); free (n->prev); free (n->up);
+  free (n->nodename);
   free (n);
 }
 
@@ -1692,57 +1692,17 @@ DECLARE_INFO_COMMAND (info_scroll_other_window_backward,
 /*                                                                  */
 /* **************************************************************** */
 
-
-/* Contents of displayed nodes with no corresponding file buffer. */
-static char **gcable_pointers = NULL;
-static size_t gcable_pointers_index = 0;
-static size_t gcable_pointers_slots = 0;
-
-/* Add POINTER to the list of garbage collectible pointers.  A pointer
-   is not garbage collected until no window contains a node whose contents
-   member is equal to the pointer. */
-void
-add_gcable_pointer (char *pointer)
-{
-  add_pointer_to_array (pointer, gcable_pointers_index, gcable_pointers,
-			gcable_pointers_slots, 10);
-}
-
-/* Free contents of rewritten nodes in the file's tag table.  This will
-   do nothing for a subfile of a split file. */
-static void
-free_node_contents (FILE_BUFFER *fb)
-{
-  NODE **entry;
-
-  if (!fb->tags)
-    return;
-
-  for (entry = fb->tags; *entry; entry++)
-    if ((*entry)->flags & N_WasRewritten)
-      {
-        free ((*entry)->contents);
-        (*entry)->contents = 0;
-        (*entry)->flags &= ~N_WasRewritten;
-      }
-}
-
 static void
 gc_file_buffers_and_nodes (void)
 {
   /* Array to record whether each file buffer was referenced or not. */
   int *fb_referenced = xcalloc (info_loaded_files_index, sizeof (int));
   WINDOW *win;
-  int i, j;
-  int fb_index, nc_index;
+  int i;
+  int fb_index;
 
-  /* New value of gcable_pointers. */
-  char **new = NULL;
-  size_t new_index = 0;
-  size_t new_slots = 0;
-
-  /* Loop over nodes in the history of displayed windows recording which
-     nodes and file buffers were referenced. */
+  /* Loop over nodes in the history of displayed windows recording
+     which file buffers were referenced. */
   for (win = windows; win; win = win->next)
     {
       if (!win->hist)
@@ -1756,39 +1716,25 @@ gc_file_buffers_and_nodes (void)
             {
               FILE_BUFFER *fb = info_loaded_files[fb_index];
 
-              /* Each node should match at most one subfile and one 
-                 non-subfile. */
+              /* Each node should match at most one file, either a subfile or a 
+                 non-split file. */
               if (fb->flags & N_Subfile)
                 {
-                  /* FIXME: For now, never free a subfile contents.  It can be 
-                     referenced by contents pointers in the tag table for the 
-                     main file.  Either check for this case, or do not store 
-                     contents pointers. */
-                  fb_referenced[fb_index] = 1;
-                  /*
                   if (n->subfile && !FILENAME_CMP (fb->fullpath, n->subfile))
                     {
                       fb_referenced[fb_index] = 1;
+                      break;
                     }
-                  */
                 }
-              else
+              else if (!(fb->flags & N_TagsIndirect))
                 {
                   if (n->fullpath && !FILENAME_CMP (fb->fullpath, n->fullpath))
                     {
                       fb_referenced[fb_index] = 1;
+                      break;
                     }
                 }
             }
-
-          /* Loop over gcable_pointers. */
-          for (nc_index = 0; nc_index < gcable_pointers_index; nc_index++)
-            if (n->contents == gcable_pointers[nc_index])
-              {
-                add_pointer_to_array (n->contents, new_index, new, 
-                                      new_slots, 10);
-                break;
-              }
         }
     }
 
@@ -1800,10 +1746,7 @@ gc_file_buffers_and_nodes (void)
           FILE_BUFFER *fb = info_loaded_files[i];
 
           if (fb->flags & N_TagsIndirect)
-            {
-              free_node_contents (fb);
-              continue;
-            }
+            continue;
 
           /* If already gc-ed, do nothing. */
           if (!fb->contents)
@@ -1819,29 +1762,10 @@ gc_file_buffers_and_nodes (void)
           if (fb->flags & N_CannotGC)
             continue;
 
-          free_node_contents (fb);
           free (fb->contents);
           fb->contents = 0;
         }
     }
-
-  /* Free unreferenced node contents and update gcable_pointers. */
-  for (i = 0; i < gcable_pointers_index; i++)
-    {
-      for (j = 0; j < new_index; j++)
-	if (gcable_pointers[i] == new[j])
-	  break;
-
-      /* If we got all the way through the new list, then the old pointer
-	 can be garbage collected. */
-      if (!new || j == new_index)
-	free (gcable_pointers[i]);
-    }
-
-  free (gcable_pointers);
-  gcable_pointers = new;
-  gcable_pointers_slots = new_slots;
-  gcable_pointers_index = new_index;
 
   free (fb_referenced);
 }
@@ -1948,13 +1872,19 @@ DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
       NODE *copy = xmalloc (sizeof (NODE));
       *copy = *window->node; /* Field-by-field copy of structure. */
 
-      /* This allows us to free internal nodes without checking if
-         these fields are shared by NODE objects in other windows. */
-      if (copy->flags & N_Unstored)
-        {
-          copy->references = info_copy_references (copy->references);
-          copy->nodename = xstrdup (copy->nodename);
-        }
+      /* This allows us to free nodes without checking if these fields
+         are shared by NODE objects in other windows. */
+      copy->references = info_copy_references (copy->references);
+      copy->nodename = xstrdup (copy->nodename);
+
+      if (copy->up)
+        copy->up = xstrdup (copy->up);
+      if (copy->next)
+        copy->next = xstrdup (copy->next);
+      if (copy->prev)
+        copy->prev = xstrdup (copy->prev);
+      if (copy->flags & N_WasRewritten)
+        copy->contents = xstrdup (copy->contents);
 
       info_set_node_of_window (split, copy);
       /* Make sure point still appears in the active window. */
@@ -2737,7 +2667,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
             return initial_node;
           else
             {
-              free (initial_node);
+              free_history_node (initial_node);
               return 0;
             }
         }
@@ -2759,7 +2689,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
             return initial_node;
           else
             {
-              free (initial_node);
+              free_history_node (initial_node);
               return 0;
             }
         }
@@ -2786,7 +2716,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
       debug (3, ("node: %s, %s", node->fullpath, node->nodename));
       
       /* Success.  Go round the loop again.  */
-      free (initial_node);
+      free_history_node (initial_node);
       initial_node = node;
     }
 
@@ -3392,7 +3322,7 @@ info_intuit_options_node (NODE *node, char *program)
       if (!entry->filename)
         entry->filename = xstrdup (node->fullpath);
 
-      free (node);
+      free_history_node (node);
 
       /* Try to find this node.  */
       node = info_get_node (entry->filename, entry->nodename);
@@ -3400,7 +3330,7 @@ info_intuit_options_node (NODE *node, char *program)
         break;
     }
 
-  free (node);
+  free_history_node (node);
   return entry;  
 }
 
@@ -3673,7 +3603,7 @@ dump_node_to_stream (char *filename, char *nodename,
   /* If we have already dumped this node, don't dump it again. */
   if (info_namelist_add (&dumped_already, node->nodename))
     {
-      free (node);
+      free_history_node (node);
       return DUMP_SUCCESS;
     }
 
@@ -3682,7 +3612,7 @@ dump_node_to_stream (char *filename, char *nodename,
 
   if (write_node_to_stream (node, stream))
     {
-      free (node);
+      free_history_node (node);
       return DUMP_SYS_ERROR;
     }
 
@@ -3708,14 +3638,14 @@ dump_node_to_stream (char *filename, char *nodename,
                 if (dump_node_to_stream (filename, menu[i]->nodename,
                       stream, dump_subnodes) == DUMP_SYS_ERROR)
                   {
-                    free (node);
+                    free_history_node (node);
                     return DUMP_SYS_ERROR;
                   }
             }
         }
     }
 
-  free (node);
+  free_history_node (node);
   return DUMP_SUCCESS;
 }
 
@@ -4116,7 +4046,7 @@ info_search_internal (char *string, WINDOW *window,
 
 funexit:
   if (node != window->node)
-    free (node);
+    free_history_node (node);
   return -1;
 }
 
@@ -4145,7 +4075,10 @@ ask_for_search_string (int case_sensitive, int use_regex, int direction)
   free (prompt);
 
   if (!line || !*line)
-    return 0;
+    {
+      free (line);
+      return 0;
+    }
 
   if (mbslen (line) < min_search_length)
     {

@@ -1,3 +1,61 @@
+2014-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (scan_node_contents): Return a new NODE 
+	object if node was from a file, and don't set reference list of 
+	passed-in node.
+
+	* info/nodes.c (info_node_of_tag): Always call 
+	scan_node_contents.  Node data like the contents pointer or 
+	reference list is not saved in the tag table any more.
+	(set_tag_nodelen): Passed in tag points to start of node 
+	separator instead of just after it.
+
+	* info/nodes.h (N_Unstored): Symbol deleted.
+	* info/footnotes.c (make_footnotes_node),
+	* info/indices.c (info_index_apropos, info_virtual_index)
+	* info/nodemenu.c (list_visited_nodes),
+	* info/echo-area.c (ea_possible_completions): Mark generated 
+	nodes with N_WasRewritten instead of N_Unstored.
+
+	* info/nodes.h (NODE): Remove out-of-date comment.
+	* info/info-utils.c (free_history_node): No longer static.  
+	Check if argument is null.  Free node contents if N_WasRewritten 
+	flag is set.  Free 'next', 'prev' and 'up' fields.
+	* info/dir.c (dir_entry_of_infodir),
+	* info/session.c (dump_node_to_stream, info_intuit_options_node)
+	(info_search_internal),
+	* info/info.c (add_initial_nodes, info_follow_menus),
+	* info/indices.c (info_indices_of_file_buffer),
+	* info/footnotes.c (make_footnotes_node): Call free_history_node 
+	on nodes instead of calling 'free'.
+
+	* info/dir.c (build_dir_node): Call to scan_node_contents 
+	updated.
+	(get_dir_node): Copy some fields from saved dir node.
+	(lookup_dir_entry): Don't call get_dir_node.
+
+	* info/session.c (free_node_contents): Function deleted.
+	* info/session.c (add_gcable_pointer, gcable_pointers)
+	(gcable_pointers_index, gcable_pointers_slots): Removed.  All 
+	calls to add_gcable_pointer removed.
+	(gc_file_buffers_and_nodes): Don't process gcable_pointers.
+
+	* info/session.c (info_split_window): Copy some fields of node 
+	object so they can be passed to free_history_node.
+
+	* info/nodes.h (N_FromAnchor): Removed.
+	* info/info-utils.c (info_node_of_tag) <anchor>: Don't set 
+	N_FromAnchor flag.
+
+	* info/info.c (info_find_matching_files): Free return value of 
+	info_file_find_next_in_path.
+	(add_initial_nodes) <--node>: Don't duplicate a string which is 
+	lost.
+	* info/footnotes.c (make_footnotes_node): Copy terminating null 
+	byte into contents of footnote node.
+	* info/session.c (ask_for_search_string): Free returned string 
+	even if it is of length 0.
+
 2014-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (SEARCH_STATE, push_isearch, pop_isearch)

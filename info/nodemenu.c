@@ -197,8 +197,6 @@ Select one from this menu, or use '\\[history-node]' in another window.\n"), 0))
     free (lines);
 
   node = text_buffer_to_node (&message);
-  add_gcable_pointer (node->contents);
-
   scan_node_contents (0, &node);
 
   return node;
@@ -243,7 +241,7 @@ DECLARE_INFO_COMMAND (list_visited_nodes,
   new->flags |= W_NoWrap;
   node = get_visited_nodes ();
   name_internal_node (node, xstrdup (nodemenu_nodename));
-  node->flags |= N_Unstored;
+  node->flags |= N_WasRewritten;
 
   info_set_node_of_window (new, node);
   active_window = new;

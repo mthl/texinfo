@@ -52,6 +52,12 @@ get_dir_node (void)
 
   node = xmalloc (sizeof (NODE));
   *node = *dir_node;
+
+  /* Allow the node to be passed to free_history_node. */
+  if (node->flags & N_WasRewritten)
+    node->flags &= ~N_WasRewritten;
+  node->references = info_copy_references (node->references);
+  node->nodename = xstrdup (node->nodename);
   return node;
 }
 
@@ -138,11 +144,8 @@ build_dir_node (void)
     }
 
   {
-    char *old_contents = node->contents;
     node->flags |= (N_IsDir | N_IsInternal);
     scan_node_contents (0, &node);
-    if (node->flags & N_WasRewritten)
-      free (old_contents);
   }
   return node;
 }
@@ -254,11 +257,12 @@ insert_text_into_node (NODE *node, long start, char *text, int textlen)
 REFERENCE *
 lookup_dir_entry (char *label, int sloppy)
 {
-  NODE *node = get_dir_node ();
   REFERENCE *entry;
 
-  entry = info_get_menu_entry_by_label (node, label, sloppy);
-  free (node);
+  if (!dir_node)
+    dir_node = build_dir_node ();
+
+  entry = info_get_menu_entry_by_label (dir_node, label, sloppy);
 
   return entry;
 }
@@ -287,7 +291,7 @@ dir_entry_of_infodir (char *label, char *searchdir)
       dir_node = info_get_node (dir_fullpath, "Top");
       free (dir_fullpath);
       entry = info_get_menu_entry_by_label (dir_node, label, 1);
-      free (dir_node);
+      free_history_node (dir_node);
       if (!entry)
         continue;
 

@@ -1042,9 +1042,9 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
         NODE *temp;
 
         temp = text_buffer_to_node (&message);
-        add_gcable_pointer (temp->contents);
         name_internal_node (temp, xstrdup (compwin_name));
         possible_completions_output_node = temp;
+        possible_completions_output_node->flags |= N_WasRewritten;
       }
 
       /* Find a suitable window for displaying the completions output.

@@ -137,7 +137,7 @@ make_footnotes_node (NODE *node)
     result->contents = xmalloc (1 + result->nodelen);
     sprintf (result->contents, "%s", header);
     memcpy (result->contents + strlen (header),
-            fn_node->contents + text_start, fn_node->nodelen - text_start);
+            fn_node->contents + text_start, fn_node->nodelen - text_start + 1);
 
    /* Copy and adjust references that appear in footnotes section. */
     {
@@ -159,7 +159,7 @@ make_footnotes_node (NODE *node)
     }
 
     result->nodename = xstrdup (footnote_nodename);
-    result->flags |= (N_IsInternal | N_Unstored);
+    result->flags |= N_IsInternal | N_WasRewritten;
 
     /* Needed in case the user follows a reference in the footnotes window. */
     result->fullpath = fn_node->fullpath;
@@ -168,7 +168,7 @@ make_footnotes_node (NODE *node)
     free (header);
   }
 
-  free (footnotes_node);
+  free_history_node (footnotes_node);
   return result;
 }
 
@@ -236,7 +236,6 @@ info_get_or_remove_footnotes (WINDOW *window)
      (info_get_or_remove_footnotes), but we do not recurse indefinitely
      because we check if we are in the footnote window above. */
   info_set_node_of_window (fn_win, new_footnotes);
-  add_gcable_pointer (new_footnotes->contents);
   fn_win->flags |= W_TempWindow;
 
   /* Make the height be the number of lines appearing in the footnotes. */

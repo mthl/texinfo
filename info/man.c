@@ -126,7 +126,6 @@ get_manpage_node (char *pagename)
           tag->nodelen = plen;
         }
 
-      /* FIXME: add_gcable_pointer (tag->contents)? */
       tag->body_start = strcspn (tag->contents, "\n");
     }
 
