@@ -286,19 +286,31 @@ my %underline_symbol = (
   4 => '.'
 );
 
-sub heading($$$;$)
+sub heading($$$;$$)
 {
   my $current = shift;
   my $text = shift;
   my $converter = shift;
   my $numbered = shift;
+  my $indent_length = shift;
 
+  # REMARK to get the numberig right in case of an indented text, the
+  # indentation should be given here.  But this should never happen as
+  # the only @-commands allowed in indented context are not number.
   $text = Texinfo::Common::numbered_heading($converter, $current, $text, 
                                             $numbered);
   return '' if ($text !~ /\S/);
   my $result = $text ."\n";
+  if (defined($indent_length)) {
+    if ($indent_length < 0) {
+      $indent_length = 0;
+    }
+    $result .= (' ' x $indent_length);
+  } else {
+    $indent_length = 0;
+  }
   $result .=($underline_symbol{$current->{'level'}} 
-     x Texinfo::Convert::Unicode::string_width($text))."\n";
+     x (Texinfo::Convert::Unicode::string_width($text) - $indent_length))."\n";
   return $result;
 }
 

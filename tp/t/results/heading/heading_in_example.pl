@@ -192,7 +192,7 @@ $result_errors{'heading_in_example'} = [];
 
 
 $result_converted{'plaintext'}->{'heading_in_example'} = '     in example @ _heading_
-===========================
+     ======================
 
 ';
 

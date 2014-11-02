@@ -1,4 +1,11 @@
-2014-10-02  Gavin Smith  <gavinsmith0123@gmail.com>
+2014-11-02  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert), 
+	tp/Texinfo/Convert/Text.pm (heading): add an indent length
+	argument to heading() and use it to indent the underlying 
+	symbols.  Report from Mahlon Smith.
+
+2014-11-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (info_index_apropos): Include line numbers in 
 	apropos node.

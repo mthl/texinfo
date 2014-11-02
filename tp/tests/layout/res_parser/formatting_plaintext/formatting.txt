@@ -847,7 +847,7 @@ In example.
      @slanted{--a} -a
      @titlefont{--a} 
      -a
-*******
+     **
 
      @indicateurl{--a} '--a'
      @uref{--a,--b} --b (--a)
@@ -1169,23 +1169,23 @@ aaa
 
 
      majorheading
-*****************
+     ************
 
 
      chapheading
-****************
+     ***********
 
 
      heading
-============
+     =======
 
 
      subheading
----------------
+     ----------
 
 
      subsubheading
-..................
+     .............
 
 
 
