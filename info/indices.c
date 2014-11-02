@@ -677,8 +677,10 @@ DECLARE_INFO_COMMAND (info_index_apropos,
 
               while (text_buffer_off (&message) - line_start < 40)
                 text_buffer_add_char (&message, ' ');
-              text_buffer_printf (&message, "(%s)%s.\n",
+              text_buffer_printf (&message, "(%s)%s.",
                                   filename, apropos_list[i]->nodename);
+              text_buffer_printf (&message, " (line %ld)\n",
+                                  apropos_list[i]->line_number);
               free (filename);
             }
         }

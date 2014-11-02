@@ -1,3 +1,8 @@
+2014-10-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (info_index_apropos): Include line numbers in 
+	apropos node.
+
 2014-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (scan_node_contents): Return a new NODE 
