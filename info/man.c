@@ -83,8 +83,6 @@ get_manpage_node (char *pagename)
       tag->nodename = xstrdup (pagename);
       tag->flags |= (N_HasTagsTable | N_IsManPage | N_IsInternal);
 
-      tag->up = "(dir)";
-
       /* Save this node. */
       add_pointer_to_array (tag, i,
                             manpage_file_buffer->tags,
@@ -129,11 +127,11 @@ get_manpage_node (char *pagename)
       tag->body_start = strcspn (tag->contents, "\n");
     }
 
-  if (!tag->references)
-    tag->references = xrefs_of_manpage (tag);
-
   node = xmalloc (sizeof (NODE));
   *node = *tag;
+  node->references = xrefs_of_manpage (node);
+  node->nodename = xstrdup (pagename);
+  node->up = xstrdup ("(dir)");
   return node;
 }
 
@@ -632,8 +630,9 @@ xrefs_of_manpage (NODE *node)
                  s.buffer + section,
                  section_end - section);
 
-        entry->filename = MANPAGE_FILE_BUFFER_NAME;
+        entry->filename = xstrdup (MANPAGE_FILE_BUFFER_NAME);
         entry->nodename = xstrdup (entry->label);
+        entry->line_number = 0;
         entry->start = name;
         entry->end = section_end;
         entry->type = REFERENCE_XREF;
