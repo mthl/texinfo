@@ -3536,7 +3536,7 @@ should be within @code{@@titlepage} and @code{@@end titlepage}
 commands.
 
 @findex vskip @r{@TeX{} vertical skip}
-@findex filll @r{@TeX{} dimension}
+@cindex filll @r{@TeX{} dimension}
 Use the @code{@@page} command to cause a page break.  To push the
 copyright notice and the other text on the copyright page towards the
 bottom of the page, use the following incantation after @code{@@page}:
@@ -10827,7 +10827,7 @@ restricted contexts, as explained in the respective sections.
 @cindex At sign, inserting
 @cindex Inserting @@ @r{(literal @samp{@@})}
 @findex @@ @r{(literal @samp{@@})}
-@findex @@atchar@{@} @r{(literal @samp{@@})}
+@findex atchar@{@} @r{(literal @samp{@@})}
 
 @code{@@@@} produces a single @samp{@@} character in the output.  Do
 not put braces after an @code{@@@@} command.
@@ -10844,8 +10844,8 @@ source (and may be clearer in other contexts).
 
 @findex @{ @r{(literal @samp{@{})}
 @findex @} @r{(literal @samp{@}})}
-@findex @@lbracechar@{@} @r{(literal @samp{@{})}
-@findex @@rbracechar@{@} @r{(literal @samp{@}})}
+@findex lbracechar@{@} @r{(literal @samp{@{})}
+@findex rbracechar@{@} @r{(literal @samp{@}})}
 @cindex Braces, inserting
 
 @code{@@@{} produces a single @samp{@{} in the output, and @code{@@@}}
@@ -10929,7 +10929,7 @@ is no need for it except in these unusual cases.
 @node Inserting a Hashsign
 @subsection Inserting `#' with @code{@@hashchar@{@}}
 
-@findex @@hashchar@{@} @r{(literal @samp{#})}
+@findex hashchar@{@} @r{(literal @samp{#})}
 @cindex Inserting #
 @cindex Hash sign, inserting
 
@@ -10984,8 +10984,9 @@ PDF readers, both free and nonfree, have problems.)
 
 If this is a concern for you, Texinfo provides these two commands:
 
-@ftable @code
+@table @code
 @item @@codequoteundirected @var{on-off}
+@findex codequoteundirected
 @cindex undirected single quote
 causes the output for the @code{'} character in code environments to
 be the undirected single quote, like this:
@@ -10994,6 +10995,7 @@ be the undirected single quote, like this:
 @set txicodequoteundirected off
 
 @item @@codequotebacktick @var{on-off}
+@findex codequoteundirected
 @cindex backtick
 @cindex grave accent, standalone
 causes the output for the @code{`} character in code environments to
@@ -11001,7 +11003,7 @@ be the backtick character (standalone grave accent), like this:
 @set txicodequotebacktick on
 @code{`}.
 @set txicodequotebacktick off
-@end ftable
+@end table
 
 If you want these settings for only part of the document,
 @code{@@codequote... off} will restore the normal behavior, as in
@@ -11339,11 +11341,11 @@ non-ASCII (e.g., pre-accented) characters in the source file.
 @cindex Underbar accent
 @findex udotaccent
 @cindex Underdot accent
-@findex v @r{(check accent)}
+@findex v @r{(caron)}
 @cindex Hacek accent
 @cindex Check accent
-@cindex Caron accent
-@multitable {@t{@@questiondown@{@}}} {Output} {hacek/check/caron accent}
+@cindex Caron
+@multitable {@t{@@questiondown@{@}}} {Output} {caron/hacek/check accent}
 @headitem Command           @tab Output         @tab What
 @item @t{@@"o}              @tab @"o            @tab umlaut accent
 @item @t{@@'o}              @tab @'o            @tab acute accent
@@ -11360,7 +11362,7 @@ non-ASCII (e.g., pre-accented) characters in the source file.
 @item @t{@@u@{o@}}          @tab @u{o}          @tab breve accent
 @item @t{@@ubaraccent@{o@}} @tab @ubaraccent{o} @tab underbar accent
 @item @t{@@udotaccent@{o@}} @tab @udotaccent{o} @tab underdot accent
-@item @t{@@v@{o@}}          @tab @v{o}          @tab hacek/check/caron accent
+@item @t{@@v@{o@}}          @tab @v{o}          @tab caron/hacek/check accent
 @end multitable
 
 This table lists the Texinfo commands for inserting other characters
