@@ -26,6 +26,7 @@
 #define TAB_WIDTH 8
 
 static char *progname = "install-info";
+static char *default_section = NULL;
 
 struct spec_entry;
 struct spec_section;
@@ -146,6 +147,8 @@ struct option longopts[] =
   { "calign",    required_argument, NULL, 'C'},
   { "debug",     no_argument, NULL, 'g' },
   { "delete",    no_argument, NULL, 'r' },
+  { "defentry",  required_argument, NULL, 'E' },
+  { "defsection",  required_argument, NULL, 'S' },
   { "dir-file",  required_argument, NULL, 'd' },
   { "entry",     required_argument, NULL, 'e' },
   { "name",      required_argument, NULL, 't' },
@@ -553,6 +556,8 @@ Options:\n\
  --debug             report what is being done.\n\
  --delete            delete existing entries for INFO-FILE from DIR-FILE;\n\
                       don't insert any new entries.\n\
+ --defsection=TEXT   like --section, but only use TEXT if no sections\n\
+                      are present in INFO-FILE (replacing \"Miscellaneous\").\n\
  --description=TEXT  the description of the entry is TEXT; used with\n\
                       the --name option to become synonymous with the\n\
                       --entry option.\n\
@@ -595,7 +600,10 @@ Options:\n\
                       If you specify more than one section, all the entries\n\
                        are added in each of the sections.\n\
                       If you don't specify any sections, they are determined\n\
-                       from information in the Info file itself.\n\
+                       from information in the Info file itself;\n\
+                       if nothing is available there, the --defsection\n\
+                       value is used; if that is not specified, the\n\
+                       final default is \"Miscellaneous\".\n\
  --section R SEC     equivalent to --regex=R --section=SEC --add-once."));
 
   puts (_("\
@@ -1887,6 +1895,8 @@ main (int argc, char *argv[])
   struct spec_entry *entries_to_add = NULL;
   struct spec_entry *entries_to_add_from_file = NULL;
   int n_entries_to_add = 0;
+  struct spec_entry *default_entries_to_add = NULL;
+  int n_default_entries_to_add = 0;
 
   /* Record the old text of the dir file, as plain characters,
      as lines, and as nodes.  */
@@ -2077,6 +2087,7 @@ main (int argc, char *argv[])
           }
           break;
 
+	case 'E':
         case 'e':
           {
             struct spec_entry *next
@@ -2091,12 +2102,27 @@ main (int argc, char *argv[])
             next->text_len = olen;
             next->entry_sections = NULL;
             next->entry_sections_tail = NULL;
-            next->next = entries_to_add;
             next->missing_name = 0;
             next->missing_basename = 0;
             next->missing_description = 0;
-            entries_to_add = next;
-            n_entries_to_add++;
+	    if (opt == 'e')
+  	      {
+		next->next = entries_to_add;
+		entries_to_add = next;
+		n_entries_to_add++;
+	      } 
+	    else
+	      {
+	        /* Although this list is maintained, nothing is ever
+	           done with it.  So it seems no one cares about the
+	           feature.  The intended --help string was:
+ --defentry=TEXT     like --entry, but only use TEXT if an entry\n\
+                      is not present in INFO-FILE.\n\
+                   in case anyone ever wants to finish it.  */
+		next->next = default_entries_to_add;
+		default_entries_to_add = next;
+		n_default_entries_to_add++;
+	      }
           }
           break;
 
@@ -2162,6 +2188,10 @@ main (int argc, char *argv[])
               };
           }
           break;
+
+	case 'S':
+	  default_section = optarg;
+	  break;
 
         case 's':
           {
@@ -2370,12 +2400,14 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
             reformat_new_entries (entries_to_add, calign, align, maxwidth);
         }
 
-      /* If we got no sections, default to "Miscellaneous".  */
+      /* If we got no sections, use the --defsection value if it was
+         given, else "Miscellaneous".  */ 
       if (input_sections == NULL)
         {
           input_sections = (struct spec_section *)
             xmalloc (sizeof (struct spec_section));
-          input_sections->name = "Miscellaneous";
+          input_sections->name = default_section ? default_section
+                                                 : "Miscellaneous";
           input_sections->next = NULL;
           input_sections->missing = 1;
         }

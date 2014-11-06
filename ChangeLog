@@ -1,5 +1,19 @@
 2014-11-04  Karl Berry  <karl@gnu.org>
 
+	* install-info/tests/Makefile.am (TESTS, EXTRA_DIST):
+	new tests 55, 56 for --defsection; plus the new files.
+	Turns out --defentry was a no-op, so omit it from help string
+	but leave code in case someone wants it.
+	* NEWS: mention new option.
+
+2014-11-04  Pietro Cerutti  <gahr@FreeBSD.org>
+
+	* install-info/install-info.c: new options --defentry and
+	--defsection (written for BSD).  Retrieved from
+	http://svnweb.freebsd.org/ports/head/print/texinfo/files/patch-install-info_install-info.c
+	
+2014-11-04  Karl Berry  <karl@gnu.org>
+
 	* doc/texinfo.texi: no leading @ characters in command index.
 
 2014-10-03  Gavin Smith  <gavinsmith0123@gmail.com>

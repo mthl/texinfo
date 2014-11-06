@@ -58,6 +58,8 @@ one of the relevant sections:
 * install-info:
   . handle compressed input file names containing spaces.
   . exit successfully if --remove is given and the dir file does not exist.
+  . new option --defsection, to be used instead of "Miscellaneous" when
+    a section is not present in the Info file.
 
 * texi2dvi:
   . look for the environment variable THUMBPDF_CMD instead of THUMBPDF,

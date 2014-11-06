@@ -21,7 +21,8 @@ ii-0031-test ii-0032-test ii-0033-test ii-0034-test ii-0035-test \
 ii-0036-test ii-0037-test ii-0038-test ii-0039-test ii-0040-test \
 ii-0041-test ii-0042-test ii-0043-test ii-0044-test ii-0045-test \
 ii-0046-test ii-0047-test ii-0048-test ii-0049-test ii-0050-test \
-ii-0051-test ii-0052-test ii-0053-test ii-0054-test
+ii-0051-test ii-0052-test ii-0053-test ii-0054-test ii-0055-test \
+ii-0056-test
 
 noinst_SCRIPTS=$(TESTS)
 
@@ -238,5 +239,13 @@ ii-0053-test \
 ii-0054-input-dir-file \
 ii-0054-input-info-file.gz \
 ii-0054-expected-dir-file \
-ii-0054-test \
+ii-0055-test \
+ii-0055-input-dir-file \
+ii-0055-input-info-file \
+ii-0055-expected-dir-file \
+ii-0055-test \
+ii-0056-input-dir-file \
+ii-0056-input-info-file \
+ii-0056-expected-dir-file \
+ii-0056-test \
 README
