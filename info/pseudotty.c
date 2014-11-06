@@ -1,4 +1,8 @@
-/* Copyright 2014 Free Software Foundation, Inc.
+/* pseudotty - open pseudo-terminal and print name of slave device to
+   standard output.  Read and ignore any data sent to terminal.  This
+   is so we can run tests interactively without messing up the screen.
+
+   Copyright 2014 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,11 +15,9 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <http://www.gnu.org/licenses/>. */
-
-/* pseudotty - open pseudo-terminal and print name of slave device to
-   standard output.  Read and ignore any data sent to terminal.  This
-   is so we can run tests interactively without messing up the screen. */
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+   
+   Originally written by Gavin Smith.  */
 
 #define _XOPEN_SOURCE
 
@@ -28,16 +30,15 @@
 #include <sys/types.h>
 #include <stdlib.h>
 
-int master;
-char *name;
-char dummy; 
-
-fd_set read_set;
-
 #define CONTROL 3
 
-main ()
+int
+main (void)
 {
+  int master;
+  char *name;
+  fd_set read_set;
+
   error (0, 0, "getting pty master fd");
   master = posix_openpt (O_RDWR);
   if (master == -1)
@@ -58,7 +59,7 @@ main ()
   FD_ZERO (&read_set);
 
   error (0, 0, "entering main loop");
-  while (1)
+  for (;;)
     {
       int ret;
 
@@ -71,7 +72,9 @@ main ()
           int c, success;
           errno = 0;
           do
-            success = read (CONTROL, &c, 1);
+            {
+              success = read (CONTROL, &c, 1);
+            }
           while (success != 1 && errno == EINTR);
           if (!success)
             {
@@ -89,7 +92,9 @@ main ()
           int c, success;
           errno = 0;
           do
-            success = read (master, &c, 1);
+            {
+              success = read (master, &c, 1);
+            }
           while (success != 1 && errno == EINTR);
           if (!success)
             {
@@ -98,4 +103,6 @@ main ()
             }
         }
     }
+
+  return 0; /* NOTREACHED */
 }

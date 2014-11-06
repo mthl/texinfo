@@ -1,4 +1,8 @@
-2014-11-04  Karl Berry  <karl@gnu.org>
+2014-11-06  Karl Berry  <karl@gnu.org>
+
+	* info/pseudotty.c: localize variables, main signature, formatting.
+
+2014-11-06  Karl Berry  <karl@gnu.org>
 
 	* install-info/tests/Makefile.am (TESTS, EXTRA_DIST):
 	new tests 55, 56 for --defsection; plus the new files.
@@ -6,7 +10,7 @@
 	but leave code in case someone wants it.
 	* NEWS: mention new option.
 
-2014-11-04  Pietro Cerutti  <gahr@FreeBSD.org>
+2014-11-06  Pietro Cerutti  <gahr@FreeBSD.org>
 
 	* install-info/install-info.c: new options --defentry and
 	--defsection (written for BSD).  Retrieved from
