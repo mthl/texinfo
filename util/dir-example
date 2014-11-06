@@ -37,12 +37,7 @@ Basics
 * Finding files: (find).        Operating on files matching certain criteria.
 * Gcal: (gcal).                 GNU calendar program.
 * Hello: (hello).               Hello, GNU world.
-* Inetutils: (inetutils).       GNU networking utilities.
 * Time: (time).                 Measuring program resource usage.
-
-Database
-* rec-mode: (rec-mode).         Emacs mode for editing recfiles.
-* recutils: (recutils).         The GNU Recutils manual.
 
 Text creation and manipulation
 * Diffutils: (diffutils).       Comparing and merging files.
@@ -51,7 +46,7 @@ Text creation and manipulation
 * Perl: (perldoc-all).          Practical Extraction and Report Language.
 * Word differences: (wdiff).    GNU wdiff and diff related tools.
 * grep: (grep).                 Print lines matching a pattern.
-* sed: (sed).                   Stream EDitor.  
+* sed: (sed).                   Stream EDitor.
 
 Texinfo documentation system
 * Info: (info).                 How to use the documentation browsing system.
@@ -155,16 +150,16 @@ Emacs
 * Emacs: (emacs).               The extensible self-documenting text editor.
 * Emacs FAQ: (efaq).            Frequently Asked Questions about Emacs.
 
-GNU Emacs Lisp
+Emacs Lisp
 * Elisp: (elisp).               The Emacs Lisp Reference Manual.
-* Emacs Lisp Intro: (eintr).    A simple introduction to Emacs Lisp 
-                                  programming.
+* Emacs Lisp Intro: (eintr).    Introduction to Emacs Lisp programming.
 
 Emacs editing modes
 * Ada mode: (ada-mode).         Emacs mode for editing and compiling Ada code.
-* CC Mode: (ccmode).            Emacs mode for editing C, C++, Objective-C, 
+* CC Mode: (ccmode).            Emacs mode for editing C, C++, Objective-C,
                                   Java, Pike, AWK, and CORBA IDL code.
 * IDLWAVE: (idlwave).           Major mode and shell for IDL files.
+* Octave mode: (octave-mode).   Emacs mode for editing GNU Octave files.
 * Org Mode: (org).              Outline-based notes management and organizer
 * nXML Mode: (nxml-mode).       XML editing mode with RELAX NG support.
 
@@ -175,11 +170,11 @@ Emacs Lisp libraries
 * Emacs MIME: (emacs-mime).     Emacs MIME de/composition library.
 * SMTP: (smtpmail).             Emacs library for sending mail via SMTP.
 * URL: (url).                   URL loading package.
-* Widget: (widget).             The "widget" package used by the Emacs 
+* Widget: (widget).             The "widget" package used by the Emacs
                                   Customization facility.
 
 Emacs misc features
-* Autotype: (autotype).         Convenient features for text that you enter 
+* Autotype: (autotype).         Convenient features for text that you enter
                                   frequently in Emacs.
 * Bovine: (bovine).             Semantic bovine parser development.
 * Calc: (calc).                 Advanced desk calculator and mathematical tool.
@@ -188,23 +183,26 @@ Emacs misc features
 * EDT: (edt).                   An Emacs emulation of the EDT editor.
 * EIEIO: (eieio).               An objects system for Emacs Lisp.
 * ERT: (ert).                   Emacs Lisp regression testing tool.
+* EWW: (eww).                   Emacs Web Wowser
 * EasyPG Assistant: (epa).      An Emacs user interface to GNU Privacy Guard.
 * Ebrowse: (ebrowse).           A C++ class browser for Emacs.
-* Ediff: (ediff).               A visual interface for comparing and merging 
+* Ediff: (ediff).               A visual interface for comparing and merging
                                   programs.
 * Eshell: (eshell).             A command shell implemented in Emacs Lisp.
 * Flymake: (flymake).           A universal on-the-fly syntax checker.
-* Forms: (forms).               Emacs package for editing data bases by 
+* Forms: (forms).               Emacs package for editing data bases by
                                   filling in forms.
 * Htmlfontify: (htmlfontify).   Convert source code to html.
+* Ido: (ido).                   Interactively do things with buffers and files.
 * PCL-CVS: (pcl-cvs).           Emacs front-end to CVS.
-* RefTeX: (reftex).             Emacs support for LaTeX cross-references and 
+* RefTeX: (reftex).             Emacs support for LaTeX cross-references and
                                   citations.
 * Remember: (remember).         Simple information manager for Emacs.
 * SES: (ses).                   Simple Emacs Spreadsheet.
-* SRecode: (srecode).           Template code generator.
+* SRecode: (srecode).           Semantic template code generator.
 * Semantic: (semantic).         Source code parser library and utilities.
 * Speedbar: (speedbar).         File/Tag summarizing utility.
+* Todo Mode: (todo-mode).       Make and maintain todo lists.
 * VIP: (vip).                   An older VI-emulation for Emacs.
 * VIPER: (viper).               A VI-emulation mode for Emacs.
 * Wisent: (wisent).             Semantic Wisent parser development.
@@ -213,21 +211,21 @@ Emacs misc features
 Emacs network features
 * ERC: (erc).                   Powerful and extensible IRC client for Emacs.
 * EUDC: (eudc).                 Emacs client for directory servers (LDAP, PH).
-* GnuTLS: (emacs-gnutls).       The Emacs GnuTLS integration.
+* Emacs GnuTLS: (emacs-gnutls). The Emacs GnuTLS integration.
 * Gnus: (gnus).                 The newsreader Gnus.
 * MH-E: (mh-e).                 Emacs interface to the MH mail system.
 * Mairix: (mairix-el).          Emacs interface to the Mairix mail indexer.
-* Message: (message).           Mail and news composition mode that goes with 
+* Message: (message).           Mail and news composition mode that goes with
                                   Gnus.
 * Newsticker: (newsticker).     A Newsticker for Emacs.
 * PGG: (pgg).                   Emacs interface to various PGP implementations.
 * Rcirc: (rcirc).               Internet Relay Chat (IRC) client.
 * SASL: (sasl).                 The Emacs SASL library.
-* SC: (sc).                     Supercite lets you cite parts of messages 
+* SC: (sc).                     Supercite lets you cite parts of messages
                                   you're replying to, in flexible ways.
 * Sieve: (sieve).               Managing Sieve scripts in Emacs.
-* TRAMP: (tramp).               Transparent Remote Access, Multiple Protocol 
-                                  Emacs remote file access via rsh and rcp.
+* TRAMP: (tramp).               Transparent Remote Access, Multiple Protocol
+                                  Emacs remote file access via ssh and scp.
 
 GNU Gettext Utilities
 * ISO3166: (gettext)Country Codes.             ISO 3166 country codes.
@@ -322,6 +320,10 @@ Typesetting
 * GV: (gv).                     The GNU PostScript and PDF viewer.
 * Groff: (groff).               The GNU troff document formatting system.
 
+Database
+* rec-mode: (rec-mode).         Emacs mode for editing recfiles.
+* recutils: (recutils).         The GNU Recutils manual.
+
 DOS
 * GNUish: (gnuish).             GNU utilities for DOS.
 * Mtools: (mtools).             Access DOS disks from Unix.
@@ -333,29 +335,20 @@ GNU organization
 * Standards: (standards).       GNU coding standards.
 
 Individual utilities
-* aclocal-invocation: (automake)aclocal Invocation.
-                                                Generating aclocal.m4.
+* aclocal-invocation: (automake)aclocal Invocation. Generating aclocal.m4.
 * afm2tfm: (dvips)Invoking afm2tfm.             Adobe to TeX font metrics.
 * addr2line: (binutils)addr2line.    Convert addresses to file and line.
 * ar: (binutils)ar.                  Create, modify, and extract from archives.
 * arch: (coreutils)arch invocation.             Print machine hardware name.
 * at-pr: (gnats)at-pr.                          Bug report timely reminders.
 * autoconf: (autoconf)autoconf Invocation. How to create configuration scripts.
-* autoconf-invocation: (autoconf)autoconf Invocation.
-                                                How to create configuration 
-                                                  scripts
-* autoheader: (autoconf)autoheader Invocation.  How to create configuration 
-                                                  templates
-* autom4te: (autoconf)autom4te Invocation.      The Autoconf executables 
-                                                  backbone
-* automake-invocation: (automake)automake Invocation.
-                                                Generating Makefile.in.
-* autoreconf: (autoconf)autoreconf Invocation.  Remaking multiple `configure' 
-                                                  scripts
-* autoscan: (autoconf)autoscan Invocation.      Semi-automatic `configure.ac' 
-                                                  writing
-* autoupdate: (autoconf)autoupdate Invocation.  Automatic update of 
-                                                  `configure.ac'
+* autoconf-invocation: (autoconf)autoconf Invocation. Creating configure.
+* autoheader: (autoconf)autoheader Invocation. Creating configure templates.
+* autom4te: (autoconf)autom4te Invocation.     Autoconf executables backbone.
+* automake-invocation: (automake)automake Invocation. Generating Makefile.in.
+* autoreconf: (autoconf)autoreconf Invocation. Remake multiple `configure's.
+* autoscan: (autoconf)autoscan Invocation.     Semi-automated `configure.ac'.
+* autoupdate: (autoconf)autoupdate Invocation.  Automatic configure.ac update.
 * awk: (gawk)Invoking gawk.                     Text scanning and processing.
 * base64: (coreutils)base64 invocation.         Base64 encode/decode data.
 * basename: (coreutils)basename invocation.     Strip directory and suffix.
@@ -582,8 +575,7 @@ Individual utilities
 * uudecode: (sharutils)uudecode Invocation.     Restore file from 7-bits.
 * uuencode: (sharutils)uuencode Invocation.     Force binary file to 7-bits.
 * vc-chlog: (vc-dwim)vc-chlog Invocation.       Changelog writing helper tool.
-* vc-dwim: (vc-dwim)vc-dwim Invocation.         Version-control-agnostic diff 
-                                                  and commit tool
+* vc-dwim: (vc-dwim)vc-dwim Invocation.         Version-control-agnostic tool.
 * vdir: (coreutils)vdir invocation.             List directories verbosely.
 * vftovp: (web2c)VFtoVP invocation.             Virtual font -> virtual pl.
 * view-pr: (gnats)Invoking view-pr.             Showing bug reports.
