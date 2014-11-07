@@ -4893,14 +4893,15 @@ read_key_sequence (Keymap map, int menu, int mouse,
   int reading_universal_argument = 0;
 
   int numeric_arg = 1, numeric_arg_sign = 1, *which_explicit_arg;
-
-  info_initialize_numeric_arg ();
+  VFunction *func;
 
   /* Process the right numeric argument. */
   if (!echo_area_is_active)
     which_explicit_arg = &info_explicit_arg;
   else
     which_explicit_arg = &ea_explicit_arg;
+
+  *which_explicit_arg = 0;
 
   initialize_keyseq ();
 
@@ -4920,172 +4921,166 @@ read_key_sequence (Keymap map, int menu, int mouse,
       return 0;
     }
 
-  goto begin2;
-begin:
-  if (display_was_interrupted_p && !info_any_buffered_input_p ())
-    display_update_display ();
+  add_char_to_keyseq (key);
 
-  if (active_window != the_echo_area)
-    display_cursor_at_point (active_window);
-
-  key = get_another_input_key ();
-
-begin2:
-  /* If reading a universal argument, both <digit> and M-<digit> help form the 
-     argument. */
-  if (reading_universal_argument)
+  while (1)
     {
-      int k = key;
-      if (k >= KEYMAP_META_BASE)
-        k -= KEYMAP_META_BASE;
-      if (k == '-')
+      int dash_typed = 0, digit_typed = 0;
+      func = 0;
+
+      if (display_was_interrupted_p && !info_any_buffered_input_p ())
+        display_update_display ();
+
+      if (active_window != the_echo_area)
+        display_cursor_at_point (active_window);
+
+      /* If reading a universal argument, both <digit> and M-<digit> help form 
+         the argument.  Don't look up the pressed key in the key map. */
+      if (reading_universal_argument)
         {
-          goto dash;
+          int k = key;
+          if (k >= KEYMAP_META_BASE)
+            k -= KEYMAP_META_BASE;
+          if (k == '-')
+            {
+              dash_typed = 1;
+            }
+          else if (isdigit (k))
+            {
+              digit_typed = 1;
+            }
+          else
+            /* Note: we may still read another C-u after this. */
+            reading_universal_argument = 0;
         }
-      else if (isdigit (k))
+
+      if (!dash_typed && !digit_typed && map[key].type == ISFUNC)
         {
-          goto digit;
+          func = map[key].function ? map[key].function->func : 0;
+          if (!func)
+            {
+              dispatch_error (info_keyseq);
+              return 0;
+            }
         }
-      else
-        /* Note: we may still read another C-u after this. */
-        reading_universal_argument = 0;
-    }
 
-  switch (map[key].type)
-    {
-    case ISFUNC:
-      {
-        VFunction *func;
-
-        func = map[key].function ? map[key].function->func : 0;
-        if (!func)
-          {
-            add_char_to_keyseq (key);
-            dispatch_error (info_keyseq);
-            return 0;
-          }
-        if (func == info_do_lowercase_version)
-          {
-            int lowerkey;
-
-            if (key >= KEYMAP_META_BASE)
-              {
-                lowerkey = key;
-                lowerkey -= KEYMAP_META_BASE;
-                lowerkey = tolower (lowerkey);
-                lowerkey += KEYMAP_META_BASE;
-              }
-            else
-              lowerkey = tolower (key);
-
-            /* TODO: Point of this? */
-            if (lowerkey == key)
-              {
-                add_char_to_keyseq (key);
-                dispatch_error (info_keyseq);
-                return 0;
-              }
-            key = lowerkey;
-            goto begin;
-          }
-
-        add_char_to_keyseq (key);
-
-        if (func == &info_universal_argument)
-          {
-            /* This means multiply by 4. */
-            /* info_explicit_arg seems to be doing double duty so that
-               C-u 2 doesn't mean 42. */
-            numeric_arg *= 4;
-            reading_universal_argument = 1;
-            goto begin;
-          }
-
-        if (func == &info_add_digit_to_numeric_arg)
-          {
-            reading_universal_argument = 1;
-            if (key == '-')
-              {
-dash:
-                add_char_to_keyseq (key);
-                if (!*which_explicit_arg)
-                  {
-                    numeric_arg_sign = -1;
-                    numeric_arg = 1;
-                  }
-
-              }
-            else if (isdigit (key))
-              {
-digit:
-                add_char_to_keyseq (key);
-                if (*which_explicit_arg)
-                  numeric_arg = numeric_arg * 10 + (key - '0');
-                else
-                  numeric_arg = (key - '0');
-                *which_explicit_arg = 1;
-              }
-            goto begin;
-          }
-
-        /* Don't update the key sequence if reading a key sequence in the echo 
-           area.  This means that a key sequence like "C-u 2 Left"
-           appears to take effect immediately, instead of there being a 
-           delay while the message is displayed. */
-        if (!echo_area_is_active && info_keyseq_displayed_p)
-          display_info_keyseq (0);
-
-        if (menu && func == &info_menu_digit)
-          {
-            /* key can either be digit, or M-digit for --vi-keys. */
-            menu_digit (active_window, 1, key);
-            return 0;
-          }
-
-        if (insert
-            && (func == &ea_possible_completions || func == &ea_complete)
-            && !echo_area_completion_items)
-          {
-            ea_insert (the_echo_area, 1, key);
-          }
-        if (count)
-          *count = numeric_arg * numeric_arg_sign;
-        return func;
-      }
-      break;
-
-    case ISKMAP:
-      add_char_to_keyseq (key);
-      if (map[key].function != NULL)
+      if (dash_typed || digit_typed || func == &info_add_digit_to_numeric_arg)
         {
-          map = (Keymap)map[key].function;
-          do
-            key = get_another_input_key ();
-          while (key == KEY_MOUSE);
+          int k = key;
+          if (k > KEYMAP_META_BASE)
+            k -= KEYMAP_META_BASE;
+          reading_universal_argument = 1;
+          if (dash_typed || k == '-')
+            {
+              if (!*which_explicit_arg)
+                {
+                  numeric_arg_sign = -1;
+                  numeric_arg = 1;
+                }
 
-          goto begin;
+            }
+          else if (digit_typed || isdigit (k))
+            {
+              if (*which_explicit_arg)
+                numeric_arg = numeric_arg * 10 + (k - '0');
+              else
+                numeric_arg = (k - '0');
+              *which_explicit_arg = 1;
+            }
         }
-      else
+      else if (func == info_do_lowercase_version)
         {
-          dispatch_error (info_keyseq);
+          int lowerkey;
+
+          if (key >= KEYMAP_META_BASE)
+            {
+              lowerkey = key;
+              lowerkey -= KEYMAP_META_BASE;
+              lowerkey = tolower (lowerkey);
+              lowerkey += KEYMAP_META_BASE;
+            }
+          else
+            lowerkey = tolower (key);
+
+          if (lowerkey == key)
+            {
+              dispatch_error (info_keyseq);
+              return 0;
+            }
+          key = lowerkey;
+          continue;
+        }
+      else if (func == &info_universal_argument)
+        {
+          /* This means multiply by 4. */
+          /* info_explicit_arg seems to be doing double duty so that
+             C-u 2 doesn't mean 42. */
+          numeric_arg *= 4;
+          reading_universal_argument = 1;
+        }
+      else if (menu && func == &info_menu_digit)
+        {
+          /* key can either be digit, or M-digit for --vi-keys. */
+
+          int k = key;
+          if (k > KEYMAP_META_BASE)
+            k -= KEYMAP_META_BASE;
+          menu_digit (active_window, 1, k);
           return 0;
         }
-      break;
+      else if (insert
+               && (func == &ea_possible_completions || func == &ea_complete)
+               && !echo_area_completion_items)
+        {
+          ea_insert (the_echo_area, 1, key);
+        }
+      else if (func)
+        {
+          /* Don't update the key sequence if we have finished reading a key 
+             sequence in the echo area.  This means that a key sequence like 
+             "C-u 2 Left" appears to take effect immediately, instead of there 
+             being a delay while the message is displayed. */
+          if (!echo_area_is_active && info_keyseq_displayed_p)
+            display_info_keyseq (0);
+
+          if (count)
+            *count = numeric_arg * numeric_arg_sign;
+          return func;
+        }
+      else if (map[key].type == ISKMAP)
+        {
+          if (map[key].function != NULL)
+            map = (Keymap)map[key].function;
+          else
+            {
+              dispatch_error (info_keyseq);
+              return 0;
+            }
+
+          if (info_keyseq_displayed_p)
+            display_info_keyseq (1);
+        }
+
+      do
+        key = get_another_input_key ();
+      while (key == KEY_MOUSE);
+      add_char_to_keyseq (key);
     }
+
   return 0;
 }
 
 /* Add the current digit to the argument in progress. */
 DECLARE_INFO_COMMAND (info_add_digit_to_numeric_arg,
                       _("Add this digit to the current numeric argument"))
-{}
+{} /* Declaration only. */
 
 /* C-u, universal argument.  Multiply the current argument by 4.
    Read a key.  If the key has nothing to do with arguments, then
    dispatch on it.  If the key is the abort character then abort. */
 DECLARE_INFO_COMMAND (info_universal_argument,
                       _("Start (or multiply by 4) the current numeric argument"))
-{}
+{} /* Declaration only. */
 
 /* Create a default argument. */
 void
