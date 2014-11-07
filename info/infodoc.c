@@ -26,18 +26,11 @@
 #include "doc.h"
 #include "funs.h"
 
-/* HELP_NODE_GETS_REGENERATED is always defined now that keys may get
-   rebound, or other changes in the help text may occur.  */
-#define HELP_NODE_GETS_REGENERATED 1
-
 /* The name of the node used in the help window. */
 static char *info_help_nodename = "*Info Help*";
 
 /* A node containing printed key bindings and their documentation. */
 static NODE *internal_info_help_node = NULL;
-
-/* A pointer to the contents of the help node. */
-static char *internal_info_help_node_contents = NULL;
 
 /* The (more or less) static text which appears in the internal info
    help node.  The actual key bindings are inserted.  Keep the
@@ -187,88 +180,72 @@ create_internal_info_help_node (int help_is_only_window_p)
 {
   register int i;
   NODE *node;
-  char *contents = NULL;
   char *exec_keys;
 
-#ifndef HELP_NODE_GETS_REGENERATED
-  if (internal_info_help_node_contents)
-    contents = internal_info_help_node_contents;
-#endif /* !HELP_NODE_GETS_REGENERATED */
+  int printed_one_mx = 0;
+  struct text_buffer msg;
+  char *infopath_str = infopath_string ();
 
-  if (!contents)
+  text_buffer_init (&msg);
+
+  for (i = 0; info_internal_help_text[i]; i++)
+    text_buffer_printf (&msg, replace_in_documentation
+                        (_(info_internal_help_text[i]),
+                         help_is_only_window_p), NULL, NULL, NULL);
+
+  text_buffer_printf (&msg, "---------------------\n");
+  text_buffer_printf (&msg, _("This is GNU Info version %s.  "), VERSION);
+  text_buffer_printf (&msg, _("The current search path is:\n"));
+  text_buffer_printf (&msg, "%s\n", infopath_str);
+  text_buffer_printf (&msg, "---------------------\n\n");
+  free (infopath_str);
+
+  text_buffer_printf (&msg, _("Commands available in Info windows:\n\n"));
+  dump_map_to_text_buffer (&msg, 0, 0, info_keymap);
+  text_buffer_printf (&msg, "---------------------\n\n");
+  text_buffer_printf (&msg, _("Commands available in the echo area:\n\n"));
+  dump_map_to_text_buffer (&msg, 0, 0, echo_area_keymap);
+
+  /* Get a list of commands which have no keystroke equivs. */
+  exec_keys = where_is (info_keymap, InfoCmd(info_execute_command));
+  if (exec_keys)
+    exec_keys = xstrdup (exec_keys);
+  for (i = 0; function_doc_array[i].func; i++)
     {
-      int printed_one_mx = 0;
-      struct text_buffer msg;
-      char *infopath_str = infopath_string ();
+      InfoCommand *cmd = &function_doc_array[i];
 
-      text_buffer_init (&msg);
-
-      for (i = 0; info_internal_help_text[i]; i++)
-        text_buffer_printf (&msg, replace_in_documentation
-                            (_(info_internal_help_text[i]),
-                             help_is_only_window_p), NULL, NULL, NULL);
-
-      text_buffer_printf (&msg, "---------------------\n");
-      text_buffer_printf (&msg, _("This is GNU Info version %s.  "), VERSION);
-      text_buffer_printf (&msg, _("The current search path is:\n"));
-      text_buffer_printf (&msg, "%s\n", infopath_str);
-      text_buffer_printf (&msg, "---------------------\n\n");
-      free (infopath_str);
-
-      text_buffer_printf (&msg, _("Commands available in Info windows:\n\n"));
-      dump_map_to_text_buffer (&msg, 0, 0, info_keymap);
-      text_buffer_printf (&msg, "---------------------\n\n");
-      text_buffer_printf (&msg, _("Commands available in the echo area:\n\n"));
-      dump_map_to_text_buffer (&msg, 0, 0, echo_area_keymap);
-
-      /* Get a list of commands which have no keystroke equivs. */
-      exec_keys = where_is (info_keymap, InfoCmd(info_execute_command));
-      if (exec_keys)
-        exec_keys = xstrdup (exec_keys);
-      for (i = 0; function_doc_array[i].func; i++)
+      if (cmd->func != info_do_lowercase_version
+          && !where_is_internal (info_keymap, cmd)
+          && !where_is_internal (echo_area_keymap, cmd))
         {
-          InfoCommand *cmd = &function_doc_array[i];
-
-          if (cmd->func != info_do_lowercase_version
-              && !where_is_internal (info_keymap, cmd)
-              && !where_is_internal (echo_area_keymap, cmd))
+          if (!printed_one_mx)
             {
-              if (!printed_one_mx)
-                {
-                  text_buffer_printf (&msg, "---------------------\n\n");
-                  if (exec_keys && exec_keys[0])
-                      text_buffer_printf (&msg,
-                         _("The following commands can only be invoked via %s:\n\n"),
-                         exec_keys);
-                  else
-                      text_buffer_printf (&msg,
-                         _("The following commands cannot be invoked at all:\n\n"));
-                  printed_one_mx = 1;
-                }
-
-              text_buffer_printf (&msg,
-                 "%s %s\n     %s\n",
-                 exec_keys,
-                 function_doc_array[i].func_name,
-                 replace_in_documentation (strlen (function_doc_array[i].doc)
-                   ? _(function_doc_array[i].doc) : "", 0)
-                );
-
+              text_buffer_printf (&msg, "---------------------\n\n");
+              if (exec_keys && exec_keys[0])
+                text_buffer_printf (&msg,
+                    _("The following commands can only be invoked via "
+                      "%s:\n\n"),
+                    exec_keys);
+              else
+                text_buffer_printf (&msg,
+                   _("The following commands cannot be invoked at all:\n\n"));
+              printed_one_mx = 1;
             }
+
+          text_buffer_printf (&msg,
+             "%s %s\n     %s\n",
+             exec_keys,
+             function_doc_array[i].func_name,
+             replace_in_documentation (strlen (function_doc_array[i].doc)
+               ? _(function_doc_array[i].doc) : "", 0)
+            );
+
         }
-
-      free (exec_keys);
-
-      node = text_buffer_to_node (&msg);
-      internal_info_help_node_contents = node->contents;
     }
-  else
-    {
-      /* We already had the right contents, so simply use them. */
-      node = info_create_node ();
-      node->contents = contents;
-      node->nodelen = strlen (contents);
-    }
+
+  free (exec_keys);
+
+  node = text_buffer_to_node (&msg);
 
   internal_info_help_node = node;
 
@@ -316,12 +293,6 @@ info_find_or_create_help_window (void)
           return NULL;
         }
     }
-
-#ifndef HELP_NODE_GETS_REGENERATED
-  else
-    /* help window is static, just return it.  */
-    return help_window;
-#endif /* not HELP_NODE_GETS_REGENERATED */
 
   /* Make sure that we have a node containing the help text.  The
      argument is false if help will be the only window (so l must be used

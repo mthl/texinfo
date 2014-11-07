@@ -7,6 +7,9 @@
 	avoid warning about unused function.
 	* info/pseudotty.c: Avoid compiler warnings about set but unused 
 	variable and include <error.h> to get prototype of 'error'.
+	
+	* info/infodoc.c (HELP_NODE_GETS_REGENERATED)
+	(internal_info_help_node_contents): Removed.
 
 2014-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
