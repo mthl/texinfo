@@ -56,8 +56,7 @@ add_function_keyseq (InfoCommand *function, int *keyseq, Keymap rootmap)
   int len;
 
   if (function == NULL ||
-      function == InfoCmd (info_do_lowercase_version) ||
-      function == InfoCmd (ea_insert))
+      function == InfoCmd (info_do_lowercase_version))
     return;
 
   /* If there is already a key sequence recorded for this key map,
@@ -253,13 +252,12 @@ static int default_emacs_like_info_keys[] =
   KEY_LEFT_ARROW, NUL,          A_info_backward_char,
   KEY_DELETE, NUL,                A_info_scroll_backward,
   
-  /* These must be accessed as ESC PgUp, etc. */
-  KEYMAP_META(KEY_PAGE_UP), NUL,        A_info_scroll_other_window_backward,
-  KEYMAP_META(KEY_PAGE_DOWN), NUL,      A_info_scroll_other_window,
-  KEYMAP_META(KEY_UP_ARROW), NUL,       A_info_prev_line,
-  KEYMAP_META(KEY_DOWN_ARROW), NUL,     A_info_next_line,
-  KEYMAP_META(KEY_RIGHT_ARROW), NUL,    A_info_forward_word,
-  KEYMAP_META(KEY_LEFT_ARROW), NUL,     A_info_backward_word,
+  ESC, KEY_PAGE_UP, NUL,        A_info_scroll_other_window_backward,
+  ESC, KEY_PAGE_DOWN, NUL,      A_info_scroll_other_window,
+  ESC, KEY_UP_ARROW, NUL,       A_info_prev_line,
+  ESC, KEY_DOWN_ARROW, NUL,     A_info_next_line,
+  ESC, KEY_RIGHT_ARROW, NUL,    A_info_forward_word,
+  ESC, KEY_LEFT_ARROW, NUL,     A_info_backward_word,
   KEY_BACK_TAB, NUL,            A_info_move_to_prev_xref,
   
 };
@@ -475,13 +473,13 @@ static int default_vi_like_info_keys[] =
   KEY_LEFT_ARROW, NUL,          A_info_scroll_backward_page_only,
   KEY_HOME, NUL,                A_info_beginning_of_node,
   KEY_END, NUL,                 A_info_end_of_node,
-  KEYMAP_META(KEY_PAGE_DOWN), NUL,      A_info_scroll_other_window,
-  KEYMAP_META(KEY_PAGE_UP), NUL,        A_info_scroll_other_window_backward,
-  KEYMAP_META(KEY_DELETE), NUL,         A_info_scroll_other_window_backward,
-  KEYMAP_META(KEY_UP_ARROW), NUL,       A_info_prev_node,
-  KEYMAP_META(KEY_DOWN_ARROW), NUL,     A_info_next_node,
-  KEYMAP_META(KEY_RIGHT_ARROW), NUL,    A_info_xref_item,
-  KEYMAP_META(KEY_LEFT_ARROW), NUL,     A_info_beginning_of_node,
+  ESC, KEY_PAGE_DOWN, NUL,      A_info_scroll_other_window,
+  ESC, KEY_PAGE_UP, NUL,        A_info_scroll_other_window_backward,
+  ESC, KEY_DELETE, NUL,         A_info_scroll_other_window_backward,
+  ESC, KEY_UP_ARROW, NUL,       A_info_prev_node,
+  ESC, KEY_DOWN_ARROW, NUL,     A_info_next_node,
+  ESC, KEY_RIGHT_ARROW, NUL,    A_info_xref_item,
+  ESC, KEY_LEFT_ARROW, NUL,     A_info_beginning_of_node,
   CONTROL('x'), KEY_DELETE, NUL, A_ea_backward_kill_line,
   
 };
@@ -611,6 +609,9 @@ fetch_user_maps (char *init_file)
 static void
 section_to_keymaps (Keymap map, int *table, unsigned int len)
 {
+  int k;
+  Keymap esc_map;
+
   int *p;
   int *seq;
   enum { getseq, gotseq, getaction } state = getseq;
@@ -650,6 +651,28 @@ section_to_keymaps (Keymap map, int *table, unsigned int len)
     }
   if (state != getseq)
     abort ();
+
+  /* Go through map and bind ESC x to the same function as M-x if it is not 
+     bound already. */
+  if (!map[ESC].function)
+    {
+      map[ESC].type = ISKMAP;
+      map[ESC].function = (InfoCommand *)keymap_make_keymap ();
+    }
+
+  if (map[ESC].type != ISKMAP)
+    return; /* ESC is bound to a command. */
+
+  esc_map = (Keymap) map[ESC].function;
+  for (k = 1; k < KEYMAP_META_BASE; k++)
+    {
+      if (map[k + KEYMAP_META_BASE].type == ISFUNC
+          && esc_map[k].function == 0)
+        {
+          esc_map[k].type = ISFUNC;
+          esc_map[k].function = map[k + KEYMAP_META_BASE].function;
+        }
+    }
   return;
 }
 
@@ -668,11 +691,6 @@ read_init_file (char *init_file)
       info_keymap = keymap_make_keymap ();
       echo_area_keymap = keymap_make_keymap ();
     }
-
-  /* Bind the echo area insert routines. */
-  for (i = 0; i < 256; i++)
-    if (isprint (i))
-      echo_area_keymap[i].function = InfoCmd (ea_insert);
 
   if (!vi_keys_p)
     {

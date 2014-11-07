@@ -118,12 +118,9 @@ dump_map_to_text_buffer (struct text_buffer *tb, int *prefix,
           register int last;
           char *doc, *name;
 
-          /* Hide some key mappings.  Do not display "Run command bound to
-             this key's lowercase variant" in help window, and omit lines
-             like "M-: .. M->(echo-area-insert)    Insert this character". */
+          /* Hide some key mappings. */
           if (map[i].function
-              && (map[i].function->func == info_do_lowercase_version
-                  || map[i].function->func == ea_insert))
+              && (map[i].function->func == info_do_lowercase_version))
             continue;
 
           doc = function_documentation (map[i].function);
@@ -600,8 +597,10 @@ pretty_keyname (int key)
         rep = "INS"; break;
       case KEY_BACK_TAB:
         rep = "BackTab"; break;
+      case KEY_MOUSE:
+        rep = "(mouse event)"; break;
       default:
-        rep = "shouldn't see this"; break;
+        rep = "(unknown key)"; break; /* This shouldn't be displayed. */
       }
   else
     {
@@ -888,7 +887,7 @@ DECLARE_INFO_COMMAND (info_where_is,
 
   if (!command_name)
     {
-      info_abort_key (active_window, count, key);
+      info_abort_key (active_window, count);
       return;
     }
 

@@ -1,3 +1,69 @@
+2014-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_dispatch_on_key, read_key_sequence):
+	Renamed.  Call initialize_keyseq.  Read initial key of key 
+	sequence.  Merge in functionality of info_numeric_arg_digit_loop 
+	- read in keys giving a numeric argument at start of key 
+	sequence.  Call function implementing some commands depending on 
+	arguments.  Allow 8-bit input in echo area if 'ISO-Latin' is 
+	'On'.
+	(display_info_keyseq): Check for empty keyseq.
+
+	* info/terminal.c (initialize_byte_map): 8th bit in an inputted 
+	byte only represents Meta if 'ISO-Latin' is off.
+
+	* info/echo-area.c (ea_insert): Don't declare with 
+	DECLARE_INFO_COMMAND.
+	* info/infomap.c (add_function_keyseq),
+	* info/infodoc.c (dump_map_to_text_buffer): Don't check for 
+	ea_insert key bindings.
+	* info/infomap.c (read_init_file): Don't bind printable 
+	characters to ea_insert.
+
+	* info/session.c (info_menu_digit): Function body is empty.
+	(menu_digit): New function.
+
+	* info/echo-area.c (ea_possible_completions, ea_complete): Don't 
+	check what key launched this command.  Don't insert the key if 
+	not completing.
+	(echo_area_completion_items): No longer static.
+
+	* info/session.c (info_numeric_arg, info_numeric_arg_sign)
+	(ea_numeric_arg, ea_numeric_arg_sign): Deleted.
+	(info_initialize_numeric_arg): Don't set info_numeric_arg or 
+	other deleted variables.
+	(info_add_digit_to_numeric_arg, info_universal_argument): Bodies 
+	of functions removed - declare with DECLARE_INFO_COMMAND only.
+
+	* info/session.c (mouse_reporting_on, mouse_reporting_off)
+	(mouse_reporting): Deleted.
+	(get_input_key): If mouse event detected always return 
+	KEY_MOUSE.
+	* info/infodoc.c (pretty_keyname): More descriptive text for 
+	KEY_MOUSE or unknown key in case they are output by mistake.
+
+	* info/session.c (info_read_and_dispatch),
+	* info/echo-area.c (read_and_dispatch_in_echo_area): Calls to 
+	info_dispatch_on_key updated.  Don't call initialize_keyseq or 
+	read first key of key sequence.  Pass count to 
+	command-implementing function.  Clear ea_last_executed_command 
+	if info_dispatch_on_key could have executed a command itself.
+
+	* info/info.h (DECLARE_INFO_COMMAND),
+	* info/makedoc.c (process_one_file): Remove 'key' argument from 
+	declarations of command-implementing functions.  All function 
+	declarations and calls updated.
+	* info/session.c (info_menu_or_ref_item): Unused argument 
+	removed.
+
+	* info/session.c (info_read_and_dispatch): Don't check for ESC 
+	<key> input.
+	* info/infomap.c (section_to_keymaps): Copy key bindings M-<key> 
+	to ESC <key>.
+	(default_emacs_like_info_keys) (default_vi_like_info_keys): 
+	Refer to key sequences ESC <special key> with a sequence 
+	beginning with ESC instead of using KEYMAP_META.
+
 2014-11-06  Karl Berry  <karl@gnu.org>
 
 	* info/pseudotty.c: localize variables, main signature, formatting.
@@ -20,7 +86,7 @@
 
 	* doc/texinfo.texi: no leading @ characters in command index.
 
-2014-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
+2014-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/man.c (get_manpage_node): Make returned node safely 
 	free-able with free_history_node.

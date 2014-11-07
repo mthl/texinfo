@@ -163,10 +163,9 @@ echo_area_after_read (void)
 static void
 read_and_dispatch_in_echo_area (void)
 {
-  int key;
-
   while (1)
     {
+      int count;
       VFunction *cmd;
       int lk = 0;
 
@@ -183,18 +182,16 @@ read_and_dispatch_in_echo_area (void)
       the_echo_area->line_map.used = 0;
 
       display_cursor_at_point (active_window);
-      info_initialize_numeric_arg ();
-
-      initialize_keyseq ();
-      key = get_input_key ();
 
       /* Do the selected command. */
-      cmd = info_dispatch_on_key (key, echo_area_keymap);
+      cmd = read_key_sequence (echo_area_keymap, 0, 0, 1, &count);
       if (cmd)
         {
-          (*cmd) (the_echo_area, 1, key);
+          (*cmd) (the_echo_area, count);
           ea_last_executed_command = cmd;
         }
+      else
+        ea_last_executed_command = 0;
 
       /* Echo area commands that do killing increment the value of
          ECHO_AREA_LAST_COMMAND_WAS_KILL.  Thus, if there is no
@@ -300,7 +297,7 @@ echo_area_prep_read (void)
 DECLARE_INFO_COMMAND (ea_forward, _("Move forward a character"))
 {
   if (count < 0)
-    ea_backward (window, -count, key);
+    ea_backward (window, -count);
   else
     {
       input_line_point += count;
@@ -312,7 +309,7 @@ DECLARE_INFO_COMMAND (ea_forward, _("Move forward a character"))
 DECLARE_INFO_COMMAND (ea_backward, _("Move backward a character"))
 {
   if (count < 0)
-    ea_forward (window, -count, key);
+    ea_forward (window, -count);
   else
     {
       input_line_point -= count;
@@ -339,7 +336,7 @@ DECLARE_INFO_COMMAND (ea_forward_word, _("Move forward a word"))
   int c;
 
   if (count < 0)
-    ea_backward_word (window, -count, key);
+    ea_backward_word (window, -count);
   else
     {
       while (count--)
@@ -379,7 +376,7 @@ DECLARE_INFO_COMMAND (ea_backward_word, _("Move backward a word"))
   int c;
 
   if (count < 0)
-    ea_forward_word (window, -count, key);
+    ea_forward_word (window, -count);
   else
     {
       while (count--)
@@ -419,7 +416,7 @@ DECLARE_INFO_COMMAND (ea_delete, _("Delete the character under the cursor"))
   register int i;
 
   if (count < 0)
-    ea_rubout (window, -count, key);
+    ea_rubout (window, -count);
   else
     {
       if (input_line_point == input_line_end)
@@ -430,7 +427,7 @@ DECLARE_INFO_COMMAND (ea_delete, _("Delete the character under the cursor"))
           int orig_point;
 
           orig_point = input_line_point;
-          ea_forward (window, count, key);
+          ea_forward (window, count);
           ea_kill_text (orig_point, input_line_point);
           input_line_point = orig_point;
         }
@@ -447,7 +444,7 @@ DECLARE_INFO_COMMAND (ea_delete, _("Delete the character under the cursor"))
 DECLARE_INFO_COMMAND (ea_rubout, _("Delete the character behind the cursor"))
 {
   if (count < 0)
-    ea_delete (window, -count, key);
+    ea_delete (window, -count);
   else
     {
       int start;
@@ -456,12 +453,12 @@ DECLARE_INFO_COMMAND (ea_rubout, _("Delete the character behind the cursor"))
         return;
 
       start = input_line_point;
-      ea_backward (window, count, key);
+      ea_backward (window, count);
 
       if (ea_explicit_arg || count > 1)
         ea_kill_text (start, input_line_point);
       else
-        ea_delete (window, count, key);
+        ea_delete (window, count);
     }
 }
 
@@ -497,7 +494,8 @@ DECLARE_INFO_COMMAND (ea_quoted_insert, _("Insert next character verbatim"))
   ea_insert (window, count, character);
 }
 
-DECLARE_INFO_COMMAND (ea_insert, _("Insert this character"))
+void
+ea_insert (WINDOW *window, int count, int key)
 {
   register int i;
 
@@ -623,7 +621,7 @@ DECLARE_INFO_COMMAND (ea_yank_pop, _("Yank back a previous kill"))
   if (kill_ring_loc < 0)
     kill_ring_loc = kill_ring_index - 1;
 
-  ea_yank (window, count, key);
+  ea_yank (window, count);
 }
 
 /* Delete the text from point to end of line. */
@@ -657,10 +655,10 @@ DECLARE_INFO_COMMAND (ea_kill_word, _("Kill the word following the cursor"))
   int orig_point = input_line_point;
 
   if (count < 0)
-    ea_backward_kill_word (window, -count, key);
+    ea_backward_kill_word (window, -count);
   else
     {
-      ea_forward_word (window, count, key);
+      ea_forward_word (window, count);
 
       if (input_line_point != orig_point)
         ea_kill_text (orig_point, input_line_point);
@@ -677,10 +675,10 @@ DECLARE_INFO_COMMAND (ea_backward_kill_word,
   int orig_point = input_line_point;
 
   if (count < 0)
-    ea_kill_word (window, -count, key);
+    ea_kill_word (window, -count);
   else
     {
-      ea_backward_word (window, count, key);
+      ea_backward_word (window, count);
 
       if (input_line_point != orig_point)
         ea_kill_text (orig_point, input_line_point);
@@ -786,7 +784,7 @@ ea_kill_text (int from, int to)
 /* **************************************************************** */
 
 /* Pointer to an array of REFERENCE to complete over. */
-static REFERENCE **echo_area_completion_items = NULL;
+REFERENCE **echo_area_completion_items = NULL;
 
 /* Sorted array of REFERENCE * which is the possible completions found in
    the variable echo_area_completion_items.  If there is only one element,
@@ -948,14 +946,6 @@ info_read_completing_in_echo_area_with_exclusions (char *prompt,
 
 DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
 {
-  if (!echo_area_completion_items
-      || (isprint (key)
-	  && ea_last_executed_command == (VFunction *) ea_possible_completions))
-    {
-      ea_insert (window, count, key);
-      return;
-    }
-
   build_completions ();
 
   if (!completions_found_index)
@@ -963,7 +953,7 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
       terminal_ring_bell ();
       inform_in_echo_area (_("No completions"));
     }
-  else if ((completions_found_index == 1) && (key != '?'))
+  else if (completions_found_index == 1)
     {
       inform_in_echo_area (_("Sole completion"));
     }
@@ -1093,50 +1083,10 @@ DECLARE_INFO_COMMAND (ea_possible_completions, _("List possible completions"))
 
 DECLARE_INFO_COMMAND (ea_complete, _("Insert completion"))
 {
-  if (!echo_area_completion_items)
-    {
-      ea_insert (window, count, key);
-      return;
-    }
-
-  /* If KEY is SPC, and we are not forcing completion to take place, simply
-     insert the key. */
-  if (!echo_area_must_complete_p && key == SPC)
-    {
-      ea_insert (window, count, key);
-      return;
-    }
-
   if (ea_last_executed_command == (VFunction *) ea_complete)
     {
-      /* If the keypress is a SPC character, and we have already tried
-         completing once, and there are several completions, then check
-         the batch of completions to see if any continue with a space.
-         If there are some, insert the space character and continue. */
-      if (key == SPC && completions_found_index > 1)
-        {
-          size_t i;
-	  int offset;
-
-          offset = input_line_end - input_line_beg;
-
-          for (i = 0; i < completions_found_index; i++)
-            if (completions_found[i]->label[offset] == ' ')
-              break;
-
-          if (completions_found[i])
-            ea_insert (window, 1, ' ');
-          else
-            {
-              ea_possible_completions (window, count, key);
-              return;
-            }
-        }
-      else
-        {
-          ea_possible_completions (window, count, key);
-          return;
-        }
+      ea_possible_completions (window, count);
+      return;
     }
 
   input_line_point = input_line_end;
@@ -1145,7 +1095,7 @@ DECLARE_INFO_COMMAND (ea_complete, _("Insert completion"))
   if (!completions_found_index)
     terminal_ring_bell ();
   else if (LCD_completion->label[0] == '\0')
-    ea_possible_completions (window, count, key);
+    ea_possible_completions (window, count);
   else
     {
       register int i;
@@ -1363,7 +1313,7 @@ DECLARE_INFO_COMMAND (ea_scroll_completions_window, _("Scroll the completions wi
 
   /* Let info_scroll_forward () do the work, and print any messages that
      need to be displayed. */
-  info_scroll_forward (compwin, count, key);
+  info_scroll_forward (compwin, count);
 }
 
 /* Function which gets called when an Info window is deleted while the

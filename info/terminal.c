@@ -24,6 +24,7 @@
 #include "terminal.h"
 #include "termdep.h"
 #include "doc.h"
+#include "variables.h"
 
 #include <sys/types.h>
 #include <signal.h>
@@ -665,13 +666,17 @@ initialize_byte_map (void)
       byte_seq_to_key[i].next = 0;
     }
 
-  /* Map each byte to the meta key. */
-  for (i = 128; i < 256; i++)
-    {
-      byte_seq_to_key[i].type = BYTEMAP_KEY;
-      byte_seq_to_key[i].key = (i - 128) + KEYMAP_META_BASE;
-      byte_seq_to_key[i].next = 0;
-    }
+  /* Use 'ISO-Latin' variable to decide whether bytes with the 8th bit set 
+     represent the Meta key being pressed.  Maybe we should have another 
+     variable to enable 8-bit input.  If 'ISO-Latin' is set this allows input 
+     of non-ASCII characters in the echo area. */
+  if (!ISO_Latin_p)
+    for (i = 128; i < 256; i++)
+      {
+        byte_seq_to_key[i].type = BYTEMAP_KEY;
+        byte_seq_to_key[i].key = (i - 128) + KEYMAP_META_BASE;
+        byte_seq_to_key[i].next = 0;
+      }
 
   /* Hard-code octal 177 = delete.  Either 177 or the term_kD sequence will
      result in a delete key being registered. */

@@ -58,10 +58,10 @@ extern VARIABLE_ALIST *variable_by_name (char *name);
 extern REFERENCE **make_variable_completions_array (void);
 
 /* Set the value of an info variable. */
-extern void set_variable (WINDOW *window, int count, int key);
+extern void set_variable (WINDOW *window, int count);
 extern int set_variable_to_value (VARIABLE_ALIST *var, char *value, int where);
 
-extern void describe_variable (WINDOW *window, int count, int key);
+extern void describe_variable (WINDOW *window, int count);
 
 /* The list of user-visible variables. */
 extern int auto_footnotes_p;

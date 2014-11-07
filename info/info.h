@@ -71,7 +71,7 @@ extern char *program_name;
    utility program `makedoc', which is also responsible for making
    the documentation/function-pointer maps. */
 #define DECLARE_INFO_COMMAND(name, doc) \
-void name (WINDOW *window, int count, int key)
+void name (WINDOW *window, int count)
 
 
 /* For handling errors.  If you initialize the window system, you should

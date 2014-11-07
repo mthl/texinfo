@@ -262,7 +262,7 @@ DECLARE_INFO_COMMAND (select_visited_node,
 
   if (!line)
     /* User aborts, just quit. */
-    info_abort_key (window, 0, 0);
+    info_abort_key (window, 0);
   else if (*line)
     {
       REFERENCE *entry;

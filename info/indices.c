@@ -197,7 +197,7 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
     window_clear_echo_area ();
 }
 
-void info_next_index_match (WINDOW *window, int count, int key);
+void info_next_index_match (WINDOW *window, int count);
 
 DECLARE_INFO_COMMAND (info_index_search,
    _("Look up a string in the index for this file"))
@@ -221,7 +221,7 @@ DECLARE_INFO_COMMAND (info_index_search,
   /* User aborted? */
   if (!line)
     {
-      info_abort_key (window, 1, 0);
+      info_abort_key (window, 1);
       return;
     }
 
@@ -265,7 +265,7 @@ DECLARE_INFO_COMMAND (info_index_search,
 
   /* Find an exact match, or, failing that, the first index entry containing
      the partial string. */
-  info_next_index_match (window, count, 0);
+  info_next_index_match (window, count);
 
   /* If the search failed, return the index offset to where it belongs. */
   if (index_offset == old_offset)
@@ -623,7 +623,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
   /* User aborted? */
   if (!line)
     {
-      info_abort_key (window, 1, 1);
+      info_abort_key (window, 1);
       return;
     }
 
@@ -795,7 +795,7 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   /* User aborted? */
   if (!line)
     {
-      info_abort_key (window, 1, 1);
+      info_abort_key (window, 1);
       return;
     }
 

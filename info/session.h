@@ -60,8 +60,8 @@ extern int scroll_last_node;
 int get_input_key (void);
 int get_another_input_key (void);
 
-/* Utility functions found in session.c */
-extern VFunction *info_dispatch_on_key (int key, Keymap map);
+VFunction *read_key_sequence (Keymap map, int menu, int mouse,
+                              int insert, int *count);
 extern unsigned char info_input_pending_p (void);
 extern void info_set_node_of_window (WINDOW *window, NODE *node);
 extern void initialize_keyseq (void);
@@ -112,15 +112,15 @@ void info_session (REFERENCE **ref_list, char *user_filename, char *error);
 extern void initialize_terminal_and_keymaps (char *init_file);
 extern REFERENCE *info_intuit_options_node (NODE *initial_node, char *program);
 
-void info_scroll_forward (WINDOW *window, int count, int key);
-void info_abort_key (WINDOW *window, int count, int key);
+void info_scroll_forward (WINDOW *window, int count);
+void info_abort_key (WINDOW *window, int count);
 
 NODE *info_follow_menus (NODE *initial_node, char **menus,
                          char **error_msg, int strict);
 
 /* Adding numeric arguments. */
-extern int info_explicit_arg, info_numeric_arg, info_numeric_arg_sign;
-extern int ea_explicit_arg, ea_numeric_arg, ea_numeric_arg_sign;
+extern int info_explicit_arg;
+extern int ea_explicit_arg;
 extern void info_initialize_numeric_arg (void);
 
 /* Found in m-x.c.  */

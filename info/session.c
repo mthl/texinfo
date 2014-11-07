@@ -217,13 +217,15 @@ info_session (REFERENCE **ref_list, char *user_filename, char *error)
   close_info_session ();
 }
 
-void mouse_reporting_on (void);
-void mouse_reporting_off (void);
+void info_next_line (WINDOW *, int count);
+void info_prev_line (WINDOW *, int count);
+static int info_keyseq_displayed_p;
 
 void
 info_read_and_dispatch (void)
 {
-  int key;
+  VFunction *cmd;
+  int count;
 
   for (quit_info_immediately = 0; !quit_info_immediately; )
     {
@@ -231,46 +233,21 @@ info_read_and_dispatch (void)
         display_update_display ();
 
       display_cursor_at_point (active_window);
-      info_initialize_numeric_arg ();
 
-      initialize_keyseq ();
-      mouse_reporting_on ();
-      key = get_input_key ();
-      mouse_reporting_off ();
-      if (key == -1)
-        continue;
+      cmd = read_key_sequence (info_keymap, 1, 1, 0, &count);
+      if (!info_keyseq_displayed_p)
+        window_clear_echo_area ();
 
-      /* Make key chord sequences ESC <key> equivalent to Meta-<key>. */
-      if (key == ESC)
+      if (cmd)
         {
-          int another_key;
-          another_key = get_input_key ();
-          if (another_key < KEYMAP_META_BASE)
-            another_key += KEYMAP_META_BASE;
-          key = another_key;
-        }
 
-      window_clear_echo_area ();
+          (*cmd) (active_window, count);
 
-      if (key == KEY_MOUSE)
-        mouse_event_handler ();
-      else
-        {
-          /* Do the selected command. */
-          VFunction *cmd = info_dispatch_on_key (key, info_keymap);
-          if (cmd)
-            {
-              void info_next_line (WINDOW *, int count, int key);
-              void info_prev_line (WINDOW *, int count, int key);
-
-              (*cmd) (active_window, 1, key);
-
-              /* Don't change the goal column when going up and down.  This 
-                 means we can go from a long line to a short line and back to
-                 a long line and end back in the same column. */
-              if (!(cmd == &info_next_line || cmd == &info_prev_line))
-                active_window->goal_column = -1; /* Goal is current column. */
-            }
+          /* Don't change the goal column when going up and down.  This 
+             means we can go from a long line to a short line and back to
+             a long line and end back in the same column. */
+          if (!(cmd == &info_next_line || cmd == &info_prev_line))
+            active_window->goal_column = -1; /* Goal is current column. */
         }
     }
 }
@@ -561,42 +538,29 @@ info_gather_typeahead (int wait)
 static int get_input_key_internal (void);
 
 /* Whether to process or skip mouse events in the input stream. */
-static int mouse_reporting = 0;
 unsigned char mouse_cb, mouse_cx, mouse_cy;
 
 /* Handle mouse event given that mouse_cb, mouse_cx and mouse_cy contain the
    data from the event.  See the "XTerm Control Sequences" document for their
    meanings. */
-static void
+void
 mouse_event_handler (void)
 {
   if (mouse_cb & 0x40)
     {
-      void info_up_line (WINDOW *, int count, int key);
-      void info_down_line (WINDOW *, int count, int key);
+      void info_up_line (WINDOW *, int count);
+      void info_down_line (WINDOW *, int count);
 
       switch (mouse_cb & 0x03)
         {
         case 0: /* Mouse button 4 (scroll up). */
-          info_up_line (active_window, 3, KEY_MOUSE);
+          info_up_line (active_window, 3);
           break;
         case 1: /* Mouse button 5 (scroll down). */
-          info_down_line (active_window, 3, KEY_MOUSE);
+          info_down_line (active_window, 3);
           break;
         }
     }
-}
-
-void
-mouse_reporting_on (void)
-{
-  mouse_reporting = 1;
-}
-
-void
-mouse_reporting_off (void)
-{
-  mouse_reporting = 0;
 }
 
 /* Return number representing a key that has been pressed, which is an index
@@ -605,7 +569,7 @@ int
 get_input_key (void)
 {
   int ret = -1;
-
+  
   while (ret == -1)
     {
       ret = get_input_key_internal ();
@@ -615,9 +579,6 @@ get_input_key (void)
           get_byte_from_input_buffer (&mouse_cb);
           get_byte_from_input_buffer (&mouse_cx);
           get_byte_from_input_buffer (&mouse_cy);
-
-          if (!mouse_reporting)
-            ret = -1;
         }
     }
   return ret;
@@ -1234,7 +1195,7 @@ point_backward_word (WINDOW *win)
     }
 }
 
-void info_prev_line (WINDOW *, int count, int key);
+void info_prev_line (WINDOW *, int count);
 
 /* Move to goal column, or end of line. */
 static void
@@ -1253,7 +1214,7 @@ move_to_goal_column (WINDOW *window)
 DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
 {
   if (count < 0)
-    info_prev_line (window, -count, key);
+    info_prev_line (window, -count);
   else
     {
       if (window->goal_column == -1)
@@ -1268,7 +1229,7 @@ DECLARE_INFO_COMMAND (info_next_line, _("Move down to the next line"))
 DECLARE_INFO_COMMAND (info_prev_line, _("Move up to the previous line"))
 {
   if (count < 0)
-    info_next_line (window, -count, key);
+    info_next_line (window, -count);
   else
     {
       if (window->goal_column == -1)
@@ -1360,13 +1321,13 @@ DECLARE_INFO_COMMAND (info_beginning_of_line, _("Move to the start of the line")
     window->point = old_point;
 }
 
-void info_backward_char (WINDOW *, int count, int key);
+void info_backward_char (WINDOW *, int count);
 
 /* Move point forward in the node. */
 DECLARE_INFO_COMMAND (info_forward_char, _("Move forward a character"))
 {
   if (count < 0)
-    info_backward_char (window, -count, key);
+    info_backward_char (window, -count);
   else
     {
       while (count--)
@@ -1379,7 +1340,7 @@ DECLARE_INFO_COMMAND (info_forward_char, _("Move forward a character"))
 DECLARE_INFO_COMMAND (info_backward_char, _("Move backward a character"))
 {
   if (count < 0)
-    info_forward_char (window, -count, key);
+    info_forward_char (window, -count);
   else
     {
       while (count--)
@@ -1388,14 +1349,14 @@ DECLARE_INFO_COMMAND (info_backward_char, _("Move backward a character"))
     }
 }
 
-void info_backward_word (WINDOW *, int count, int key);
+void info_backward_word (WINDOW *, int count);
 
 /* Move forward a word in this node. */
 DECLARE_INFO_COMMAND (info_forward_word, _("Move forward a word"))
 {
   if (count < 0)
     {
-      info_backward_word (window, -count, key);
+      info_backward_word (window, -count);
       return;
     }
 
@@ -1409,7 +1370,7 @@ DECLARE_INFO_COMMAND (info_backward_word, _("Move backward a word"))
 {
   if (count < 0)
     {
-      info_forward_word (window, -count, key);
+      info_forward_word (window, -count);
       return;
     }
 
@@ -1493,7 +1454,7 @@ _scroll_backward (WINDOW *window, int count, int nodeonly)
                  another node. */
               if (backward_move_node_structure (window, info_scroll_behaviour)
                   == 0)
-                info_end_of_node (window, 1, 0);
+                info_end_of_node (window, 1);
             }
           return;
         }
@@ -1525,7 +1486,7 @@ DECLARE_INFO_COMMAND (info_scroll_forward, _("Scroll forward in this window"))
 /* Show the previous screen of WINDOW's node. */
 DECLARE_INFO_COMMAND (info_scroll_backward, _("Scroll backward in this window"))
 {
-  info_scroll_forward (window, -count, key);
+  info_scroll_forward (window, -count);
 }
 
 /* Like info_scroll_forward, but sets default_window_size as a side
@@ -1540,7 +1501,7 @@ DECLARE_INFO_COMMAND (info_scroll_forward_set_window,
         default_window_size *= -1;
     }
 
-  info_scroll_forward (window, count, key);
+  info_scroll_forward (window, count);
 }
 
 /* Like info_scroll_backward, but sets default_window_size as a side
@@ -1548,7 +1509,7 @@ DECLARE_INFO_COMMAND (info_scroll_forward_set_window,
 DECLARE_INFO_COMMAND (info_scroll_backward_set_window,
                       _("Scroll backward in this window and set default window size"))
 {
-  info_scroll_forward_set_window (window, -count, key);
+  info_scroll_forward_set_window (window, -count);
 }
 
 /* Show the next screen of WINDOW's node but never advance to next node. */
@@ -1569,7 +1530,7 @@ DECLARE_INFO_COMMAND (info_scroll_forward_page_only, _("Scroll forward in this w
    node. */
 DECLARE_INFO_COMMAND (info_scroll_backward_page_only, _("Scroll backward in this window staying within node"))
 {
-  info_scroll_forward_page_only (window, -count, key);
+  info_scroll_forward_page_only (window, -count);
 }
 
 /* Like info_scroll_forward_page_only, but sets default_window_size as a side
@@ -1604,7 +1565,7 @@ DECLARE_INFO_COMMAND (info_scroll_forward_page_only_set_window,
 DECLARE_INFO_COMMAND (info_scroll_backward_page_only_set_window,
                       _("Scroll backward in this window staying within node and set default window size"))
 {
-  info_scroll_forward_page_only_set_window (window, -count, key);
+  info_scroll_forward_page_only_set_window (window, -count);
 }
 
 /* Scroll the window forward by N lines.  */
@@ -1655,7 +1616,7 @@ DECLARE_INFO_COMMAND (info_scroll_half_screen_down,
 DECLARE_INFO_COMMAND (info_scroll_half_screen_up,
                       _("Scroll up by half screen size"))
 {
-  info_scroll_half_screen_down (window, -count, key);
+  info_scroll_half_screen_down (window, -count);
 }
 
 /* Scroll the "other" window of WINDOW. */
@@ -1675,14 +1636,14 @@ DECLARE_INFO_COMMAND (info_scroll_other_window, _("Scroll the other window"))
   if (!other)
     other = window->prev;
 
-  info_scroll_forward (other, count, key);
+  info_scroll_forward (other, count);
 }
 
 /* Scroll the "other" window of WINDOW. */
 DECLARE_INFO_COMMAND (info_scroll_other_window_backward,
                       _("Scroll the other window backward"))
 {
-  info_scroll_other_window (window, -count, key);
+  info_scroll_other_window (window, -count);
 }
 
 
@@ -1777,14 +1738,14 @@ gc_file_buffers_and_nodes (void)
 /*                                                                  */
 /* **************************************************************** */
 
-void info_prev_window (WINDOW *, int count, int key);
+void info_prev_window (WINDOW *, int count);
 
 /* Make the next window in the chain be the active window. */
 DECLARE_INFO_COMMAND (info_next_window, _("Select the next window"))
 {
   if (count < 0)
     {
-      info_prev_window (window, -count, key);
+      info_prev_window (window, -count);
       return;
     }
 
@@ -1821,7 +1782,7 @@ DECLARE_INFO_COMMAND (info_prev_window, _("Select the previous window"))
 {
   if (count < 0)
     {
-      info_next_window (window, -count, key);
+      info_next_window (window, -count);
       return;
     }
 
@@ -2151,8 +2112,12 @@ select_menu_digit (WINDOW *window, unsigned char key)
   return menu[i];
 }
 
-/* Use KEY (a digit) to select the Nth menu item in WINDOW->node. */
 DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
+{} /* Declaration only. */
+
+/* Use KEY (a digit) to select the Nth menu item in WINDOW->node. */
+void
+menu_digit (WINDOW *window, int count, int key)
 {
   int item = key - '0';
   REFERENCE *entry;
@@ -2188,7 +2153,7 @@ has_menu:
 DECLARE_INFO_COMMAND (info_last_menu_item,
    _("Select the last item in this node's menu"))
 {
-  info_menu_digit (window, 1, '0');
+  menu_digit (window, 1, '0');
 }
 
 static int exclude_cross_references (REFERENCE *r)
@@ -2213,8 +2178,7 @@ static int exclude_nothing (REFERENCE *r)
    and XREF control whether menu items and cross-references are eligible
    for selection. */
 static void
-info_menu_or_ref_item (WINDOW *window, unsigned char key,
-                       int menu_item, int xref, int ask_p)
+info_menu_or_ref_item (WINDOW *window, int menu_item, int xref, int ask_p)
 {
   REFERENCE *defentry = NULL; /* Default link */
   REFERENCE **refs = window->node->references;
@@ -2323,7 +2287,7 @@ info_menu_or_ref_item (WINDOW *window, unsigned char key,
       /* User aborts, just quit. */
       if (!line)
         {
-          info_abort_key (window, 0, 0);
+          info_abort_key (window, 0);
           return;
         }
 
@@ -2413,7 +2377,7 @@ DECLARE_INFO_COMMAND (info_menu_item, _("Read a menu item and select its node"))
 
       if (*r)
         {
-          info_menu_or_ref_item (window, key, 1, 0, 1);
+          info_menu_or_ref_item (window, 1, 0, 1);
           return;
         }
     }
@@ -2427,7 +2391,7 @@ DECLARE_INFO_COMMAND (info_menu_item, _("Read a menu item and select its node"))
 DECLARE_INFO_COMMAND
   (info_xref_item, _("Read a footnote or cross reference and select its node"))
 {
-  info_menu_or_ref_item (window, key, 0, 1, 1);
+  info_menu_or_ref_item (window, 0, 1, 1);
 }
 
 /* Position the cursor at the start of this node's menu. */
@@ -2531,13 +2495,13 @@ info_move_to_xref (WINDOW *window, int dir)
   return 1;
 }
 
-void info_move_to_next_xref (WINDOW *, int count, int key);
+void info_move_to_next_xref (WINDOW *, int count);
 
 DECLARE_INFO_COMMAND (info_move_to_prev_xref,
                       _("Move to the previous cross reference"))
 {
   if (count < 0)
-    info_move_to_next_xref (window, -count, key);
+    info_move_to_next_xref (window, -count);
   else
     {
       while (count > 0)
@@ -2584,7 +2548,7 @@ DECLARE_INFO_COMMAND (info_move_to_next_xref,
                       _("Move to the next cross reference"))
 {
   if (count < 0)
-    info_move_to_prev_xref (window, -count, key);
+    info_move_to_prev_xref (window, -count);
   else
     {
       while (count > 0)
@@ -2631,7 +2595,7 @@ DECLARE_INFO_COMMAND (info_select_reference_this_line,
 
   if (!ref || !*ref) return; /* No references in node */
 
-  info_menu_or_ref_item (window, key, 1, 1, 0);
+  info_menu_or_ref_item (window, 1, 1, 0);
 }
 
 /* Follow the menu list in MENUS (list of strings terminated by a NULL
@@ -2763,7 +2727,7 @@ DECLARE_INFO_COMMAND (info_menu_sequence,
   /* If the user aborted, quit now. */
   if (!line)
     {
-      info_abort_key (window, 0, 0);
+      info_abort_key (window, 0);
       return;
     }
 
@@ -3129,14 +3093,14 @@ backward_move_node_structure (WINDOW *window, int behaviour)
   return 0;
 }
 
-void info_global_prev_node (WINDOW *, int count, int key);
+void info_global_prev_node (WINDOW *, int count);
 
 /* Move continuously forward through the node structure of this info file. */
 DECLARE_INFO_COMMAND (info_global_next_node,
                       _("Move forwards or down through node structure"))
 {
   if (count < 0)
-    info_global_prev_node (window, -count, key);
+    info_global_prev_node (window, -count);
   else
     {
       while (count)
@@ -3153,7 +3117,7 @@ DECLARE_INFO_COMMAND (info_global_prev_node,
                       _("Move backwards or up through node structure"))
 {
   if (count < 0)
-    info_global_next_node (window, -count, key);
+    info_global_next_node (window, -count);
   else
     {
       while (count)
@@ -3237,7 +3201,7 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
   /* If the user aborted, quit now. */
   if (!line)
     {
-      info_abort_key (window, 0, 0);
+      info_abort_key (window, 0);
       return;
     }
 
@@ -3379,7 +3343,7 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
   free (prompt);
   if (!line)
     {
-      info_abort_key (window, 0, 0);
+      info_abort_key (window, 0);
       return;
     }
   if (*line)
@@ -3411,7 +3375,7 @@ DECLARE_INFO_COMMAND (info_man, _("Read a manpage reference and select it"))
 
   if (!line)
     {
-      info_abort_key (window, 0, 0);
+      info_abort_key (window, 0);
       return;
     }
 
@@ -3473,7 +3437,7 @@ DECLARE_INFO_COMMAND (info_view_file, _("Read the name of a file and select it")
   line = info_read_in_echo_area (_("Find file: "));
   if (!line)
     {
-      info_abort_key (active_window, 1, 0);
+      info_abort_key (active_window, 1);
       return;
     }
 
@@ -4784,11 +4748,9 @@ DECLARE_INFO_COMMAND (info_quit, _("Quit using Info"))
 /*                                                                  */
 /* **************************************************************** */
 
-/* Declaration only.  Special cased in info_dispatch_on_key ().
-   Doc string is to avoid ugly results with describe_key etc.  */
 DECLARE_INFO_COMMAND (info_do_lowercase_version,
                       _("Run command bound to this key's lowercase variant"))
-{}
+{} /* Declaration only. */
 
 static void
 dispatch_error (int *keyseq)
@@ -4843,6 +4805,9 @@ display_info_keyseq (int expecting_future_input)
 {
   char *rep;
 
+  if (!info_keyseq || info_keyseq_index == 0)
+    return;
+
   rep = pretty_keyseq (info_keyseq);
   if (expecting_future_input)
     strcat (rep, "-");
@@ -4895,11 +4860,97 @@ get_another_input_key (void)
   return get_input_key ();
 }
 
-/* Look up the command associated with KEY in MAP.  If the associated command 
-   is really a keymap, then read another key, and dispatch into that map. */
+/* Non-zero means that an explicit argument has been passed to this
+   command, as in C-u C-v. */
+int info_explicit_arg = 0;
+
+/* As above, but used when C-u is typed in the echo area to avoid
+   overwriting this information when "C-u ARG M-x" is typed. */
+int ea_explicit_arg = 0;
+
+void info_universal_argument (WINDOW *, int count);
+void info_add_digit_to_numeric_arg (WINDOW *, int count);
+
+/* Read a key sequence and look up its command in MAP.  Handle C-u style 
+   numeric args, as well as M--, and M-digits.  Return argument in COUNT if it 
+   is non-null.
+
+   Some commands can be executed directly, in which case null is returned
+   instead:
+
+   If MENU, call info_menu_digit on ACTIVE_WINDOW if a number key was 
+   pressed.
+
+   If MOUSE, call mouse_event_handler if a mouse event occurred.
+
+   If INSERT, call ea_insert if a printable character was input.
+ */
 VFunction *
-info_dispatch_on_key (int key, Keymap map)
+read_key_sequence (Keymap map, int menu, int mouse,
+                   int insert, int *count)
 {
+  int key;
+  int reading_universal_argument = 0;
+
+  int numeric_arg = 1, numeric_arg_sign = 1, *which_explicit_arg;
+
+  info_initialize_numeric_arg ();
+
+  /* Process the right numeric argument. */
+  if (!echo_area_is_active)
+    which_explicit_arg = &info_explicit_arg;
+  else
+    which_explicit_arg = &ea_explicit_arg;
+
+  initialize_keyseq ();
+
+  key = get_input_key ();
+  if (key == KEY_MOUSE)
+    {
+      if (mouse)
+        mouse_event_handler ();
+      return 0;
+    }
+
+  if (insert
+      && (key >= 040 && key < 0200
+          || ISO_Latin_p && key >= 0200 && key < 0400))
+    {
+      ea_insert (the_echo_area, 1, key);
+      return 0;
+    }
+
+  goto begin2;
+begin:
+  if (display_was_interrupted_p && !info_any_buffered_input_p ())
+    display_update_display ();
+
+  if (active_window != the_echo_area)
+    display_cursor_at_point (active_window);
+
+  key = get_another_input_key ();
+
+begin2:
+  /* If reading a universal argument, both <digit> and M-<digit> help form the 
+     argument. */
+  if (reading_universal_argument)
+    {
+      int k = key;
+      if (k >= KEYMAP_META_BASE)
+        k -= KEYMAP_META_BASE;
+      if (k == '-')
+        {
+          goto dash;
+        }
+      else if (isdigit (k))
+        {
+          goto digit;
+        }
+      else
+        /* Note: we may still read another C-u after this. */
+        reading_universal_argument = 0;
+    }
+
   switch (map[key].type)
     {
     case ISFUNC:
@@ -4907,48 +4958,99 @@ info_dispatch_on_key (int key, Keymap map)
         VFunction *func;
 
         func = map[key].function ? map[key].function->func : 0;
-        if (func != NULL)
-          {
-            if (func == info_do_lowercase_version)
-              {
-                int lowerkey;
-
-                if (key >= KEYMAP_META_BASE)
-                  {
-                    lowerkey = key;
-                    lowerkey -= KEYMAP_META_BASE;
-                    lowerkey = tolower (lowerkey);
-                    lowerkey += KEYMAP_META_BASE;
-                  }
-                else
-                  lowerkey = tolower (key);
-
-                if (lowerkey == key)
-                  {
-                    add_char_to_keyseq (key);
-                    dispatch_error (info_keyseq);
-                    return 0;
-                  }
-                return info_dispatch_on_key (lowerkey, map);
-              }
-
-            add_char_to_keyseq (key);
-
-            /* Don't update the key sequence if reading a key sequence in the 
-               echo area.  This means that a key sequence like "C-u 2 Left"
-               appears to take effect immediately, instead of there being a 
-               delay while the message is displayed. */
-            if (!echo_area_is_active && info_keyseq_displayed_p)
-              display_info_keyseq (0);
-
-            return func;
-          }
-        else
+        if (!func)
           {
             add_char_to_keyseq (key);
             dispatch_error (info_keyseq);
             return 0;
           }
+        if (func == info_do_lowercase_version)
+          {
+            int lowerkey;
+
+            if (key >= KEYMAP_META_BASE)
+              {
+                lowerkey = key;
+                lowerkey -= KEYMAP_META_BASE;
+                lowerkey = tolower (lowerkey);
+                lowerkey += KEYMAP_META_BASE;
+              }
+            else
+              lowerkey = tolower (key);
+
+            /* TODO: Point of this? */
+            if (lowerkey == key)
+              {
+                add_char_to_keyseq (key);
+                dispatch_error (info_keyseq);
+                return 0;
+              }
+            key = lowerkey;
+            goto begin;
+          }
+
+        add_char_to_keyseq (key);
+
+        if (func == &info_universal_argument)
+          {
+            /* This means multiply by 4. */
+            /* info_explicit_arg seems to be doing double duty so that
+               C-u 2 doesn't mean 42. */
+            numeric_arg *= 4;
+            reading_universal_argument = 1;
+            goto begin;
+          }
+
+        if (func == &info_add_digit_to_numeric_arg)
+          {
+            reading_universal_argument = 1;
+            if (key == '-')
+              {
+dash:
+                add_char_to_keyseq (key);
+                if (!*which_explicit_arg)
+                  {
+                    numeric_arg_sign = -1;
+                    numeric_arg = 1;
+                  }
+
+              }
+            else if (isdigit (key))
+              {
+digit:
+                add_char_to_keyseq (key);
+                if (*which_explicit_arg)
+                  numeric_arg = numeric_arg * 10 + (key - '0');
+                else
+                  numeric_arg = (key - '0');
+                *which_explicit_arg = 1;
+              }
+            goto begin;
+          }
+
+        /* Don't update the key sequence if reading a key sequence in the echo 
+           area.  This means that a key sequence like "C-u 2 Left"
+           appears to take effect immediately, instead of there being a 
+           delay while the message is displayed. */
+        if (!echo_area_is_active && info_keyseq_displayed_p)
+          display_info_keyseq (0);
+
+        if (menu && func == &info_menu_digit)
+          {
+            /* key can either be digit, or M-digit for --vi-keys. */
+            menu_digit (active_window, 1, key);
+            return 0;
+          }
+
+        if (insert
+            && (func == &ea_possible_completions || func == &ea_complete)
+            && !echo_area_completion_items)
+          {
+            ea_insert (the_echo_area, 1, key);
+          }
+        if (count)
+          *count = numeric_arg * numeric_arg_sign;
+        return func;
       }
       break;
 
@@ -4956,10 +5058,12 @@ info_dispatch_on_key (int key, Keymap map)
       add_char_to_keyseq (key);
       if (map[key].function != NULL)
         {
-          int newkey;
+          map = (Keymap)map[key].function;
+          do
+            key = get_another_input_key ();
+          while (key == KEY_MOUSE);
 
-          newkey = get_another_input_key ();
-          return info_dispatch_on_key (newkey, (Keymap)map[key].function);
+          goto begin;
         }
       else
         {
@@ -4970,138 +5074,18 @@ info_dispatch_on_key (int key, Keymap map)
     }
   return 0;
 }
-
-/* **************************************************************** */
-/*                                                                  */
-/*                      Numeric Arguments                           */
-/*                                                                  */
-/* **************************************************************** */
-
-/* Handle C-u style numeric args, as well as M--, and M-digits. */
-
-/* Non-zero means that an explicit argument has been passed to this
-   command, as in C-u C-v. */
-int info_explicit_arg = 0;
-
-/* The sign of the numeric argument. */
-int info_numeric_arg_sign = 1;
-
-/* The value of the argument itself. */
-int info_numeric_arg = 1;
-
-/* As above, but used when C-u is typed in the echo area to avoid
-   overwriting this information when "C-u ARG M-x" is typed. */
-int ea_explicit_arg = 0;
-int ea_numeric_arg_sign = 1;
-int ea_numeric_arg = 1;
-
-void info_universal_argument (WINDOW *, int count, int key);
-
-void
-info_numeric_arg_digit_loop (WINDOW *window, int count, int key)
-{
-  int pure_key;
-  Keymap keymap;
-
-  int *which_numeric_arg, *which_numeric_arg_sign, *which_explicit_arg;
-
-  /* Process the right numeric argument. */
-  if (!echo_area_is_active)
-    {
-      which_explicit_arg =     &info_explicit_arg;
-      which_numeric_arg_sign = &info_numeric_arg_sign;
-      which_numeric_arg =      &info_numeric_arg;
-      keymap = info_keymap;
-    }
-  else
-    {
-      which_explicit_arg =     &ea_explicit_arg;
-      which_numeric_arg_sign = &ea_numeric_arg_sign;
-      which_numeric_arg =      &ea_numeric_arg;
-      keymap = echo_area_keymap;
-    }
-
-  while (1)
-    {
-      if (key)
-        pure_key = key;
-      else
-        {
-          if (display_was_interrupted_p && !info_any_buffered_input_p ())
-            display_update_display ();
-
-          if (active_window != the_echo_area)
-            display_cursor_at_point (active_window);
-
-          pure_key = key = get_another_input_key ();
-
-          add_char_to_keyseq (key);
-        }
-
-      if (keymap[key].type == ISFUNC && keymap[key].function
-          && keymap[key].function->func == info_universal_argument)
-        {
-          *which_numeric_arg *= 4;
-          key = 0;
-          continue;
-        }
-
-      if (key >= KEYMAP_META_BASE)
-        key -= KEYMAP_META_BASE;
-
-      if (isdigit (key))
-        {
-          if (*which_explicit_arg)
-            *which_numeric_arg = (*which_numeric_arg * 10) + (key - '0');
-          else
-            *which_numeric_arg = (key - '0');
-          *which_explicit_arg = 1;
-        }
-      else
-        {
-          if (key == '-' && !*which_explicit_arg)
-            {
-              *which_numeric_arg_sign = -1;
-              *which_numeric_arg = 1;
-            }
-          else
-            {
-              VFunction *cmd;
-              info_keyseq_index--;
-              cmd = info_dispatch_on_key (pure_key, keymap);
-              if (cmd)
-                {
-                  (*cmd) (active_window,
-                          *which_numeric_arg * *which_numeric_arg_sign,
-                          key);
-                }
-              return;
-            }
-        }
-      key = 0;
-    }
-}
 
 /* Add the current digit to the argument in progress. */
 DECLARE_INFO_COMMAND (info_add_digit_to_numeric_arg,
                       _("Add this digit to the current numeric argument"))
-{
-  info_numeric_arg_digit_loop (window, 0, key);
-}
+{}
 
 /* C-u, universal argument.  Multiply the current argument by 4.
    Read a key.  If the key has nothing to do with arguments, then
    dispatch on it.  If the key is the abort character then abort. */
 DECLARE_INFO_COMMAND (info_universal_argument,
                       _("Start (or multiply by 4) the current numeric argument"))
-{
-  if (!echo_area_is_active)
-    info_numeric_arg *= 4;
-  else
-    ea_numeric_arg *= 4;
-
-  info_numeric_arg_digit_loop (window, 0, 0);
-}
+{}
 
 /* Create a default argument. */
 void
@@ -5109,12 +5093,10 @@ info_initialize_numeric_arg (void)
 {
   if (!echo_area_is_active)
     {
-      info_numeric_arg = info_numeric_arg_sign = 1;
       info_explicit_arg = 0;
     }
   else
     {
-      ea_numeric_arg = ea_numeric_arg_sign = 1;
       ea_explicit_arg = 0;
     }
 }

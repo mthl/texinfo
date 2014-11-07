@@ -71,7 +71,7 @@ DECLARE_INFO_COMMAND (describe_command,
 
   if (!line)
     {
-      info_abort_key (active_window, count, key);
+      info_abort_key (active_window, count);
       return;
     }
 
@@ -114,7 +114,7 @@ DECLARE_INFO_COMMAND (info_execute_command,
   /* User aborted? */
   if (!line)
     {
-      info_abort_key (active_window, count, key);
+      info_abort_key (active_window, count);
       return;
     }
 
@@ -172,7 +172,7 @@ DECLARE_INFO_COMMAND (set_screen_height,
       /* If the user aborted, do that now. */
       if (!line)
         {
-          info_abort_key (active_window, count, 0);
+          info_abort_key (active_window, count);
           return;
         }
 

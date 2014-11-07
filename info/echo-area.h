@@ -30,6 +30,8 @@ extern int echo_area_is_active, info_aborted_echo_area;
    killed some text. */
 extern int echo_area_last_command_was_kill;
 
+extern REFERENCE **echo_area_completion_items;
+
 extern void inform_in_echo_area (const char *message);
 extern void echo_area_inform_of_deleted_window (WINDOW *window);
 extern void echo_area_prep_read (void);
@@ -60,27 +62,27 @@ info_read_completing_in_echo_area_with_exclusions (char *prompt,
     REFERENCE **completions, reference_bool_fn exclude);
 
 extern void ea_insert (WINDOW *window, int count, int key);
-extern void ea_quoted_insert (WINDOW *window, int count, int key);
-extern void ea_beg_of_line (WINDOW *window, int count, int key);
-extern void ea_backward (WINDOW *window, int count, int key);
-extern void ea_delete (WINDOW *window, int count, int key);
-extern void ea_end_of_line (WINDOW *window, int count, int key);
-extern void ea_forward (WINDOW *window, int count, int key);
-extern void ea_abort (WINDOW *window, int count, int key);
-extern void ea_rubout (WINDOW *window, int count, int key);
-extern void ea_complete (WINDOW *window, int count, int key);
-extern void ea_newline (WINDOW *window, int count, int key);
-extern void ea_kill_line (WINDOW *window, int count, int key);
-extern void ea_backward_kill_line (WINDOW *window, int count, int key);
-extern void ea_transpose_chars (WINDOW *window, int count, int key);
-extern void ea_yank (WINDOW *window, int count, int key);
-extern void ea_tab_insert (WINDOW *window, int count, int key);
-extern void ea_possible_completions (WINDOW *window, int count, int key);
-extern void ea_backward_word (WINDOW *window, int count, int key);
-extern void ea_kill_word (WINDOW *window, int count, int key);
-extern void ea_forward_word (WINDOW *window, int count, int key);
-extern void ea_yank_pop (WINDOW *window, int count, int key);
-extern void ea_backward_kill_word (WINDOW *window, int count, int key);
-extern void ea_scroll_completions_window (WINDOW *window, int count, int key);
+extern void ea_quoted_insert (WINDOW *window, int count);
+extern void ea_beg_of_line (WINDOW *window, int count);
+extern void ea_backward (WINDOW *window, int count);
+extern void ea_delete (WINDOW *window, int count);
+extern void ea_end_of_line (WINDOW *window, int count);
+extern void ea_forward (WINDOW *window, int count);
+extern void ea_abort (WINDOW *window, int count);
+extern void ea_rubout (WINDOW *window, int count);
+extern void ea_complete (WINDOW *window, int count);
+extern void ea_newline (WINDOW *window, int count);
+extern void ea_kill_line (WINDOW *window, int count);
+extern void ea_backward_kill_line (WINDOW *window, int count);
+extern void ea_transpose_chars (WINDOW *window, int count);
+extern void ea_yank (WINDOW *window, int count);
+extern void ea_tab_insert (WINDOW *window, int count);
+extern void ea_possible_completions (WINDOW *window, int count);
+extern void ea_backward_word (WINDOW *window, int count);
+extern void ea_kill_word (WINDOW *window, int count);
+extern void ea_forward_word (WINDOW *window, int count);
+extern void ea_yank_pop (WINDOW *window, int count);
+extern void ea_backward_kill_word (WINDOW *window, int count);
+extern void ea_scroll_completions_window (WINDOW *window, int count);
 
 #endif /* not INFO_ECHO_AREA_H */
