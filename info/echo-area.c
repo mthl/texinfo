@@ -300,9 +300,16 @@ DECLARE_INFO_COMMAND (ea_forward, _("Move forward a character"))
     ea_backward (window, -count);
   else
     {
-      input_line_point += count;
-      if (input_line_point > input_line_end)
-        input_line_point = input_line_end;
+      mbi_iterator_t iter;
+      mbi_init (iter, input_line + input_line_point,
+                input_line_end - input_line_point);
+      while (mbi_avail (iter) && count--)
+        {
+          mbi_advance (iter);
+          input_line_point = mbi_cur_ptr (iter) - input_line;
+          if (input_line_point > input_line_end)
+            input_line_point = input_line_end;
+        }
     }
 }
 
@@ -312,9 +319,23 @@ DECLARE_INFO_COMMAND (ea_backward, _("Move backward a character"))
     ea_forward (window, -count);
   else
     {
-      input_line_point -= count;
-      if (input_line_point < input_line_beg)
-        input_line_point = input_line_beg;
+      char *ptr = input_line + input_line_point;
+      while (count--)
+        {
+          /* Go back one character.  Go back by bytes until we look at a valid
+             multi-byte sequence. */
+          ptr = input_line + input_line_point;
+          while (ptr > input_line)
+            {
+              ptr--;
+              if ((long) mbrlen (ptr,
+                                 input_line + input_line_point - ptr, 0) > 0)
+                break;
+            }
+          input_line_point = ptr - input_line;
+          if (input_line_point < input_line_beg)
+            input_line_point = input_line_beg;
+        }
     }
 }
 

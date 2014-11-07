@@ -1,5 +1,10 @@
 2014-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/echo-area.c (ea_forward, ea_backward): Go forward and 
+	backward over multi-byte characters correctly.
+
+2014-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_dispatch_on_key, read_key_sequence):
 	Renamed.  Call initialize_keyseq.  Read initial key of key 
 	sequence.  Merge in functionality of info_numeric_arg_digit_loop 
