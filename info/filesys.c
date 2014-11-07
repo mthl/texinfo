@@ -32,11 +32,6 @@ char *info_add_extension (char *dirname, char *fname,
 
 static char *filesys_read_compressed (char *pathname, size_t *filesize);
 
-/* Given a chunk of text and its length, convert all CRLF pairs at the
-   EOLs into a single Newline character.  Return the length of produced
-   text.  */
-static long convert_eols (char *text, long textlen);
-
 /* Return the command string that would be used to decompress FILENAME. */
 static char *filesys_decompressor_for_file (char *filename);
 static int compressed_filename_p (char *filename);
@@ -275,6 +270,7 @@ info_add_extension (char *dirname, char *filename, struct stat *finfo)
   return 0;
 }
 
+#if 0
 /* Given a chunk of text and its length, convert all CRLF pairs at every
    end-of-line into a single Newline character.  Return the length of
    produced text.
@@ -308,6 +304,7 @@ convert_eols (char *text, long int textlen)
 
   return d - text;
 }
+#endif
 
 /* Read the contents of PATHNAME, returning a buffer with the contents of
    that file in it, and returning the size of that buffer in FILESIZE.

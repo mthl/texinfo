@@ -3,6 +3,11 @@
 	* info/echo-area.c (ea_forward, ea_backward): Go forward and 
 	backward over multi-byte characters correctly.
 
+	* info/filesys.c (convert_eols): Disable with preprocessor to 
+	avoid warning about unused function.
+	* info/pseudotty.c: Avoid compiler warnings about set but unused 
+	variable and include <error.h> to get prototype of 'error'.
+
 2014-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_dispatch_on_key, read_key_sequence):

@@ -23,6 +23,7 @@
 
 #include <config.h>
 #include <errno.h>
+#include <error.h>
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -61,12 +62,10 @@ main (void)
   error (0, 0, "entering main loop");
   for (;;)
     {
-      int ret;
-
       FD_SET (master, &read_set);
       FD_SET (CONTROL, &read_set);
 
-      ret = select (FD_SETSIZE, &read_set, 0, 0, 0);
+      select (FD_SETSIZE, &read_set, 0, 0, 0);
       if (FD_ISSET (CONTROL, &read_set))
         {
           int c, success;
