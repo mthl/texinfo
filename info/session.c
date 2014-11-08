@@ -2117,7 +2117,7 @@ DECLARE_INFO_COMMAND (info_menu_digit, _("Select this menu item"))
 
 /* Use KEY (a digit) to select the Nth menu item in WINDOW->node. */
 void
-menu_digit (WINDOW *window, int count, int key)
+menu_digit (WINDOW *window, int key)
 {
   int item = key - '0';
   REFERENCE *entry;
@@ -2153,7 +2153,7 @@ has_menu:
 DECLARE_INFO_COMMAND (info_last_menu_item,
    _("Select the last item in this node's menu"))
 {
-  menu_digit (window, 1, '0');
+  menu_digit (window, '0');
 }
 
 static int exclude_cross_references (REFERENCE *r)
@@ -5025,7 +5025,7 @@ read_key_sequence (Keymap map, int menu, int mouse,
           int k = key;
           if (k > KEYMAP_META_BASE)
             k -= KEYMAP_META_BASE;
-          menu_digit (active_window, 1, k);
+          menu_digit (active_window, k);
           return 0;
         }
       else if (insert
@@ -5033,6 +5033,7 @@ read_key_sequence (Keymap map, int menu, int mouse,
                && !echo_area_completion_items)
         {
           ea_insert (the_echo_area, 1, key);
+          return 0;
         }
       else if (func)
         {

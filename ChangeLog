@@ -1,3 +1,9 @@
+2014-11-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (menu_digit): Unused argument removed.
+	(read_key_sequence) <ea_possible_completions>: Exit function as 
+	intended.
+
 2014-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/echo-area.c (ea_forward, ea_backward): Go forward and 
