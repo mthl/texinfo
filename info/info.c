@@ -47,6 +47,8 @@ static int index_search_p = 0;
    session at that node.  */
 static int goto_invocation_p = 0;
 
+static char *invocation_program_name = 0;
+
 /* Variable containing the string to search for when index_search_p is
    non-zero. */
 static char *index_search_string = NULL;
@@ -316,7 +318,6 @@ add_initial_nodes (int argc, char **argv, char **error)
       NODE *top_node;
       REFERENCE *invoc_ref = 0;
 
-      char **p = argv;
       char *program;
 
       if (ref_index == 0)
@@ -325,16 +326,8 @@ add_initial_nodes (int argc, char **argv, char **error)
           exit (1);
         }
 
-      /* If they said "info --show-options foo bar baz",
-         the last of the arguments is the program whose
-         options they want to see.  */
-      p = argv;
-      if (*p)
-        {
-          while (p[1])
-            p++;
-          program = xstrdup (*p);
-        }
+      if (invocation_program_name)
+        program = xstrdup (invocation_program_name);
       else if (ref_list[0] && ref_list[0]->filename)
         /* If there's no command-line arguments to
            supply the program name, use the Info file
@@ -806,6 +799,20 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
     }
   else
     {
+      if (goto_invocation_p)
+        {
+          /* If they said "info --show-options foo bar baz",
+             the last of the arguments is the program whose
+             options they want to see.  */
+          char **p = argv;
+          if (*p)
+            {
+              while (p[1])
+                p++;
+              invocation_program_name = *p;
+            }
+        }
+
       /* User used "--file". */
       if (user_filename)
         {

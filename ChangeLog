@@ -5,6 +5,9 @@
 	(info_intuit_options_node): If passed Top node, call it to get a 
 	new node to start at.  Return value to be freed by caller.  All 
 	callers updated.
+	* info/info.c (main, add_initial_nodes) 
+	(invocation_program_name): For --show-options, save last 
+	non-option argument to use as the name of the program.
 
 2014-11-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
