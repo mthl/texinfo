@@ -3213,10 +3213,38 @@ DECLARE_INFO_COMMAND (info_goto_node, _("Read a node name and select it"))
   free (line);
 }
 
-/* Find the node in the file with Top node NODE that is the best candidate to
+static NODE *
+find_invocation_node_by_nodename (FILE_BUFFER *fb, char *program)
+{
+  NODE *node = 0;
+  NODE **n;
+  char *try1, *try2;
+  n = fb->tags;
+  if (!n)
+    return 0;
+
+  asprintf (&try1, "Invoking %s", program);
+  asprintf (&try2, "%s invocation", program);
+  for (; *n; n++)
+    {
+      if ((*n)->nodename
+          && (!strcasecmp ((*n)->nodename, try1)
+              || !strcasecmp ((*n)->nodename, try2)))
+        {
+          node = info_get_node_of_file_buffer (fb, (*n)->nodename);
+          break;
+        }
+    }
+  free (try1); free (try2);
+
+  return node;
+}
+
+/* Find the node in the file with name FILE that is the best candidate to
    list the PROGRAM's invocation info and its command-line options, by looking
    for menu items and chains of menu items with characteristic names.  This
-   function frees NODE.  Return value should not be freed by caller. */
+   function frees NODE.  Return value should be freed by caller with 
+   info_reference_free.  */
 REFERENCE *
 info_intuit_options_node (NODE *node, char *program)
 {
@@ -3243,9 +3271,27 @@ info_intuit_options_node (NODE *node, char *program)
     "%s",               /* last resort */
     (const char *)0
   };
-  REFERENCE *entry = NULL;
 
-  const char **try_node;
+  char *filename = node->fullpath;
+  if (!strcmp ("Top", node->nodename))
+    {
+      /* Look through the list of nodes (and anchors) in the file for a node to 
+         start at.  There may be an invocation node that is not listed in the 
+         top-level menu (this is the case for the Bash 4.2 manual), or it may 
+         be referred to with an anchor ("Invoking makeinfo" in Texinfo 
+         manual).  */
+      FILE_BUFFER *fb;
+      NODE *n;
+      fb = info_find_file (filename);
+      if (!fb)
+        return 0;
+      n = find_invocation_node_by_nodename (fb, program);
+      if (n)
+        {
+          free_history_node (node);
+          node = n;
+        }
+    }
 
   /* We keep looking deeper and deeper in the menu structure until
      there are no more menus or no menu items from the above list.
@@ -3253,7 +3299,8 @@ info_intuit_options_node (NODE *node, char *program)
      in the menu hierarchy...  */
   while (1)
     {
-      REFERENCE *new_entry = NULL;
+      const char **try_node;
+      REFERENCE *entry = NULL;
 
       /* If no menu in this node, stop here.  Perhaps this node
          is the one they need.  */
@@ -3269,33 +3316,37 @@ info_intuit_options_node (NODE *node, char *program)
           sprintf (nodename, *try_node, program);
           /* The last resort "%s" is dangerous, so we restrict it
              to exact matches here.  */
-          new_entry = info_get_menu_entry_by_label
+          entry = info_get_menu_entry_by_label
             (node, nodename, strcmp (*try_node, "%s"));
           free (nodename);
-          if (new_entry)
+          if (entry)
             break;
         }
 
-      if (!new_entry)
+      if (!entry)
         break;
-      else
-        entry = new_entry;
 
       /* Go down into menu, and repeat. */ 
 
       if (!entry->filename)
-        entry->filename = xstrdup (node->fullpath);
+        entry->filename = xstrdup (filename);
 
-      free_history_node (node);
-
-      /* Try to find this node.  */
-      node = info_get_node (entry->filename, entry->nodename);
-      if (!node)
-        break;
+      {
+        NODE *node2;
+        node2 = info_get_node (entry->filename, entry->nodename);
+        free_history_node (node);
+        if (!node2)
+          break;
+        node = node2;
+      }
     }
 
-  free_history_node (node);
-  return entry;  
+  {
+    char *n = node->nodename;
+    node->nodename = 0;
+    free_history_node (node);
+    return info_new_reference (filename, n);
+  }
 }
 
 /* Given a name of an Info file, find the name of the package it describes by 
@@ -3361,7 +3412,10 @@ DECLARE_INFO_COMMAND (info_goto_invocation_node,
 
   /* We've got our best shot at the invocation node.  Now select it.  */
   if (invocation_ref)
-    info_select_reference (window, invocation_ref);
+    {
+      info_select_reference (window, invocation_ref);
+      info_reference_free (invocation_ref);
+    }
 
   free (line);
   free (default_program_name);

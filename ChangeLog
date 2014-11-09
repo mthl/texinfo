@@ -1,3 +1,11 @@
+2014-11-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (find_invocation_node_by_nodename): New 
+	function.
+	(info_intuit_options_node): If passed Top node, call it to get a 
+	new node to start at.  Return value to be freed by caller.  All 
+	callers updated.
+
 2014-11-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (menu_digit): Unused argument removed.

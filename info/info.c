@@ -354,8 +354,7 @@ add_initial_nodes (int argc, char **argv, char **error)
           info_reference_free (ref_list[0]);
           ref_index = 0;
 
-          add_pointer_to_array (info_copy_reference (invoc_ref),
-            ref_index, ref_list, ref_slots, 2);
+          add_pointer_to_array (invoc_ref, ref_index, ref_list, ref_slots, 2);
         }
       free (program);
     }
