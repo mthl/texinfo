@@ -1663,8 +1663,7 @@ reformat_new_entries (struct spec_entry *entries, int calign_cli, int align_cli,
           align = align_cli;
         }
 
-      if (maxwidth_cli == -1)
-        maxwidth = 79;
+      maxwidth = maxwidth_cli == -1 ? 79 : maxwidth_cli; 
 
       format_entry (name, name_len, desc, desc_len, calign, align, 
                     maxwidth, &entry->text, &entry->text_len);

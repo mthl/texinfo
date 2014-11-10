@@ -1,3 +1,8 @@
+2014-11-10  Jason Hood  <jadoxa@yahoo.com.au>  (tiny change)
+
+	* install-info/install-info.c (reformat_new_entries): respect
+	--maxwidth if given.
+
 2014-11-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (find_invocation_node_by_nodename): New 
