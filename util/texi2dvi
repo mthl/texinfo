@@ -44,6 +44,8 @@ program=`echo $0 | $SED -e 's!.*/!!'`
 build_mode=${TEXI2DVI_BUILD_MODE:-local}
 build_dir=${TEXI2DVI_BUILD_DIRECTORY:-.}
 
+orig_pwd=`pwd`
+
 # Initialize variables for option overriding and otherwise.
 # Don't use `unset' since old bourne shells don't have this command.
 # Instead, assign them an empty value.
@@ -68,13 +70,11 @@ txiprereq=19990129 # minimum texinfo.tex version with macro expansion
 verb=false      # true for verbose mode
 translate_file= # name of charset translation file
 
-orig_pwd=`pwd`
-
 # We have to initialize IFS to space tab newline since we save and
 # restore IFS and apparently POSIX allows stupid/broken behavior with
 # empty-but-set IFS.
 # http://lists.gnu.org/archive/html/automake-patches/2006-05/msg00008.html
-# We need space, tab and new line, in precisely that order.  And don't leave
+# We need space, tab and newline, in precisely that order.  And don't leave
 # trailing blanks.
 space=' '
 tab='	'
@@ -98,192 +98,14 @@ fi
 # Pacify verbose cds.
 CDPATH=${ZSH_VERSION+.}$path_sep
 
-# 
-## --------------------- ##
-## Auxiliary functions.  ##
-## --------------------- ##
 
-# In case `local' is not supported by the shell, provide a function
-# that simulates it by simply performing the assignments.  This means
-# that we must not expect `local' to work, i.e., we must not (i) rely
-# on it during recursion, and (ii) have two local declarations of the
-# same variable.  (ii) is easy to check statically, and our test suite
-# does make sure there is never twice a static local declaration of a
-# variable.  (i) cannot be checked easily, so just be careful.
+# Now we define numerous functions, with no other executable code.
+# The main program is at the end of the file.
+
+	
+#  Standard help and version functions.
 #
-# Note that since we might use a function simulating `local', we can
-# no longer rely on the fact that no IFS-splitting is performed.  So,
-# while
-#
-# foo=$bar
-#
-# is fine (no IFS-splitting), never write
-#
-# local foo=$bar
-#
-# but rather
-#
-# local foo="$bar"
-(
-  foo=bar
-  test_local () {
-    local foo=foo
-  }
-  test_local >/dev/null 2>&1
-  test $foo = bar
-) || eval '
-local () {
-  case $1 in
-    *=*) eval "$1";;
-  esac
-}
-'
-
-
-# cd_orig
-# -------
-# Return to the original directory.
-cd_orig ()
-{
-  # In case $orig_pwd is on a different drive (for DOS).
-  cd /
-
-  # Return to the original directory so that
-  # - the next file is processed in correct conditions
-  # - the temporary file can be removed
-  cd "$orig_pwd" || exit 1
-}
-
-# func_dirname FILE
-# -----------------
-# Return the directory part of FILE.
-func_dirname ()
-{
-  dirname "$1" 2>/dev/null \
-  || { echo "$1" | $SED 's!/[^/]*$!!;s!^$!.!'; }
-}
-
-
-# noexit FILE
-# -----------
-# Return FILE with one extension remove.  foo.bar.baz -> foo.bar.
-noext ()
-{
-  echo "$1" | $SED -e 's/\.[^/.][^/.]*$//'
-}
-
-
-# absolute NAME -> ABS-NAME
-# -------------------------
-# Return an absolute path to NAME.
-absolute ()
-{
-  case $1 in
-   [\\/]* | ?:[\\/]*)
-      # Absolute paths don't need to be expanded.
-      echo "$1"
-      ;;
-   *) local slashes
-      slashes=`echo "$1" | $SED -n 's,.*[^/]\(/*\)$,\1,p'`
-      local rel
-      rel=$orig_pwd/`func_dirname "$1"`
-      if test -d "$rel"; then
-        (cd "$rel" 2>/dev/null \
-         && local n
-         n=`pwd`/`basename "$1"`"$slashes"
-         echo "$n")
-      else
-        error 1 "not a directory: $rel"
-      fi
-      ;;
-  esac
-}
-
-
-# ensure_dir DIR1 DIR2...
-# -----------------------
-# Make sure the directories exist.
-ensure_dir ()
-{
-  for dir
-  do
-    # Beware that in parallel builds we may have several concurrent
-    # attempts to create the directory.  So fail only if "mkdir"
-    # failed *and* the directory still does not exist.
-    test -d "$dir" \
-      || mkdir "$dir" \
-      || test -d "$dir" \
-      || error 1 "cannot create directory: $dir"
-  done
-}
-
-
-# error EXIT_STATUS LINE1 LINE2...
-# --------------------------------
-# Report an error and exit with failure if EXIT_STATUS is non-null.
-error ()
-{
-  local s="$1"
-  shift
-  report "$@"
-  if test "$s" != 0; then
-    exit $s
-  fi
-}
-
-
-# findprog PROG
-# -------------
-# Return true if PROG is somewhere in PATH, else false.
-findprog ()
-{
-  local saveIFS="$IFS"
-  IFS=$path_sep  # break path components at the path separator
-  for dir in $PATH; do
-    IFS=$saveIFS
-    # The basic test for an executable is `test -f $f && test -x $f'.
-    # (`test -x' is not enough, because it can also be true for directories.)
-    # We have to try this both for $1 and $1.exe.
-    #
-    # Note: On Cygwin and DJGPP, `test -x' also looks for .exe.  On Cygwin,
-    # also `test -f' has this enhancement, but not on DJGPP.  (Both are
-    # design decisions, so there is little chance to make them consistent.)
-    # Thusly, it seems to be difficult to make use of these enhancements.
-    #
-    if   { test -f "$dir/$1"     && test -x "$dir/$1"; } \
-      || { test -f "$dir/$1.exe" && test -x "$dir/$1.exe"; }; then
-      return 0
-    fi
-  done
-  return 1
-}
-
-# report LINE1 LINE2...
-# ---------------------
-# Report some information on stderr.
-report ()
-{
-  for i in "$@"
-  do
-    echo >&2 "$0: $i"
-  done
-}
-
-
-# run COMMAND-LINE
-# ----------------
-# Run the COMMAND-LINE verbosely, and catching errors as failures.
-run ()
-{
-  verbose "Running $@"
-  "$@" 2>&5 1>&2 \
-  || error 1 "$1 failed"
-}
-
-
-# usage
-# -----
-# Display usage and exit successfully.
+# usage - display usage and exit successfully.
 usage ()
 {
   # We used to simply have `echo "$usage"', but coping with the
@@ -387,9 +209,11 @@ directory, occasionally TeX won't be able to find some files (e.g., when
 using \\graphicspath): in that case, use -I to specify the additional
 directories to consider.
 
-The values of the BIBER, BIBTEX, DVIPDF, DVIPS, HEVEA, LATEX, MAKEINDEX,
-MAKEINFO, PDFLATEX, PDFTEX, SED, T4HT, TEX, TEX4HT, TEXINDEX, and THUMBPDF_CMD
-environment variables are used to run those commands, if they are set.
+The values of these environment variables are used to run the
+corresponding commands, if they are set:
+
+  BIBER BIBTEX DVIPDF DVIPS EGREP HEVEA LATEX MAKEINDEX MAKEINFO
+  PDFLATEX PDFTEX SED T4HT TEX TEX4HT TEXINDEX TEXINDY THUMBPDF_CMD
 
 Regarding --dvipdf, if DVIPDF is not set in the environment, the
 following programs are looked for (in this order): dvipdfmx dvipdfm
@@ -407,20 +231,7 @@ EOF
 }
 
 
-# verbose WORD1 WORD2
-# -------------------
-# Report some verbose information.
-verbose ()
-{
-  if $verb; then
-    echo >&2 "$0: $@"
-  fi
-}
-
-
-# version
-# -------
-# Display version info and exit successfully.
+# version - Display version info and exit successfully.
 version ()
 {
   cat <<EOF
@@ -435,14 +246,183 @@ EOF
 }
 
 
-## ---------------- ##
-## Handling lists.  ##
-## ---------------- ##
+#  Generic auxiliary functions.
+#
+# In case `local' is not supported by the shell, provide a function
+# that simulates it by simply performing the assignments.  This means
+# that we must not expect `local' to work, i.e., we must not (i) rely
+# on it during recursion, and (ii) have two local declarations of the
+# same variable.  (ii) is easy to check statically, and our test suite
+# does make sure there is never twice a static local declaration of a
+# variable.  (i) cannot be checked easily, so just be careful.
+#
+# Note that since we might use a function simulating `local', we can
+# no longer rely on the fact that no IFS-splitting is performed.  So,
+# while
+#
+# foo=$bar
+#
+# is fine (no IFS-splitting), never write
+#
+# local foo=$bar
+#
+# but rather
+#
+# local foo="$bar"
+(
+  foo=bar
+  test_local () {
+    local foo=foo
+  }
+  test_local >/dev/null 2>&1
+  test $foo = bar
+) || eval '
+local () {
+  case $1 in
+    *=*) eval "$1";;
+  esac
+}
+'
 
 
-# list_append LIST-NAME ELEM
-# --------------------------
-# Set LIST-NAME to its former contents, with ELEM appended.
+# cd_orig - Return to the original directory.
+cd_orig ()
+{
+  # In case $orig_pwd is on a different drive (for DOS).
+  cd /
+
+  # Return to the original directory so that
+  # - the next file is processed in correct conditions
+  # - the temporary file can be removed
+  cd "$orig_pwd" || exit 1
+}
+
+
+# func_dirname FILE - Return the directory part of FILE.
+func_dirname ()
+{
+  dirname "$1" 2>/dev/null \
+  || { echo "$1" | $SED 's!/[^/]*$!!;s!^$!.!'; }
+}
+
+
+# noext FILE - Return FILE with one extension removed:
+#   foo.bar.baz -> foo.bar
+noext ()
+{
+  echo "$1" | $SED -e 's/\.[^/.][^/.]*$//'
+}
+
+
+# absolute NAME - Return an absolute path to NAME.
+absolute ()
+{
+  case $1 in
+   [\\/]* | ?:[\\/]*)
+      # Absolute paths don't need to be expanded.
+      echo "$1"
+      ;;
+   *) local slashes
+      slashes=`echo "$1" | $SED -n 's,.*[^/]\(/*\)$,\1,p'`
+      local rel
+      rel=$orig_pwd/`func_dirname "$1"`
+      if test -d "$rel"; then
+        (cd "$rel" 2>/dev/null \
+         && local n
+         n=`pwd`/`basename "$1"`"$slashes"
+         echo "$n")
+      else
+        error 1 "not a directory: $rel"
+      fi
+      ;;
+  esac
+}
+
+
+# ensure_dir DIR1 DIR2... - Make sure given directories exist.
+ensure_dir ()
+{
+  for dir
+  do
+    # Beware that in parallel builds we may have several concurrent
+    # attempts to create the directory.  So fail only if "mkdir"
+    # failed *and* the directory still does not exist.
+    test -d "$dir" \
+      || mkdir "$dir" \
+      || test -d "$dir" \
+      || error 1 "cannot create directory: $dir"
+  done
+}
+
+
+# error EXIT_STATUS LINE1 LINE2... - Report an error and exit with
+#   failure if EXIT_STATUS is non-null.
+error ()
+{
+  local s="$1"
+  shift
+  report "$@"
+  if test "$s" != 0; then
+    exit $s
+  fi
+}
+
+
+# findprog PROG - Return true if PROG is somewhere in PATH, else false.
+findprog ()
+{
+  local saveIFS="$IFS"
+  IFS=$path_sep  # break path components at the path separator
+  for dir in $PATH; do
+    IFS=$saveIFS
+    # The basic test for an executable is `test -f $f && test -x $f'.
+    # (`test -x' is not enough, because it can also be true for directories.)
+    # We have to try this both for $1 and $1.exe.
+    #
+    # Note: On Cygwin and DJGPP, `test -x' also looks for .exe.  On Cygwin,
+    # also `test -f' has this enhancement, but not on DJGPP.  (Both are
+    # design decisions, so there is little chance to make them consistent.)
+    # Thusly, it seems to be difficult to make use of these enhancements.
+    #
+    if   { test -f "$dir/$1"     && test -x "$dir/$1"; } \
+      || { test -f "$dir/$1.exe" && test -x "$dir/$1.exe"; }; then
+      return 0
+    fi
+  done
+  return 1
+}
+
+# report LINE1 LINE2... - Echo each argument to stderr.
+report ()
+{
+  for i in "$@"
+  do
+    echo >&2 "$0: $i"
+  done
+}
+
+
+# run COMMAND-LINE - Run COMMAND-LINE verbosely, catching errors as failures.
+run ()
+{
+  verbose "Running $@"
+  "$@" 2>&5 1>&2 \
+  || error 1 "$1 failed"
+}
+
+
+# verbose WORD1 WORD2... - Echo concatenated WORDs to stderr, if $verb.
+verbose ()
+{
+  if $verb; then
+    echo >&2 "$0: $@"
+  fi
+}
+
+
+#  Handling lists.
+#
+# list_append LIST-NAME ELEM - Append ELEM to (the contents of) LIST-NAME.
 list_append ()
 {
   local la_l="$1"
@@ -453,10 +433,9 @@ list_append ()
 }
 
 
-# list_concat_dirs LIST-NAME DIR-LIST
-# -----------------------------------
-# Append to LIST-NAME all the components (included empty) from
-# the $path_sep separated list DIR-LIST.  Make the paths absolute.
+# list_concat_dirs LIST-NAME DIR-LIST - Append to LIST-NAME all the
+# components (including empty ones) from the $path_sep-separated list
+# DIR-LIST.  Make the paths absolute.
 list_concat_dirs ()
 {
   local lcd_list="$1"
@@ -488,10 +467,8 @@ list_concat_dirs ()
 }
 
 
-# list_prefix LIST-NAME SEP -> STRING
-# -----------------------------------
-# Return a string that is composed of the LIST-NAME with each item
-# preceded by SEP.
+# list_prefix LIST-NAME SEP -> STRING - Return string with each element
+# of LIST-NAME preceded by SEP.
 list_prefix ()
 {
   local lp_p="$2"
@@ -505,9 +482,7 @@ list_prefix ()
   echo "$lp_res"
 }
 
-# list_infix LIST-NAME SEP -> STRING
-# ----------------------------------
-# Same as list_prefix, but a separator.
+# list_infix LIST-NAME SEP -> STRING - Same as list_prefix, but a separator.
 list_infix ()
 {
   eval set X \$$1
@@ -518,9 +493,7 @@ list_infix ()
   IFS=$la_IFS
 }
 
-# list_dir_to_abs LIST-NAME
-# -------------------------
-# Convert the list to using only absolute dir names.
+# list_dir_to_abs LIST-NAME - Convert list to using only absolute dir names.
 # Currently unused, but should replace absolute_filenames some day.
 list_dir_to_abs ()
 {
@@ -539,13 +512,9 @@ list_dir_to_abs ()
 }
 
 
-## ------------------------------ ##
-## Language auxiliary functions.  ##
-## ------------------------------ ##
-
-
-# out_lang_set LANG
-# -----------------
+#  Language auxiliary functions. 
+#
+# out_lang_set LANG - set $out_lang to LANG (dvi, pdf, etc.), or error.
 out_lang_set ()
 {
   case $1 in
@@ -554,10 +523,7 @@ out_lang_set ()
   esac
 }
 
-
-# out_lang_tex
-# ------------
-# Return the tex output language (DVI or PDF) for $OUT_LANG.
+# out_lang_tex - Return the tex output language (DVI or PDF) for $out_lang.
 out_lang_tex ()
 {
   case $out_lang in
@@ -568,10 +534,7 @@ out_lang_tex ()
   esac
 }
 
-
-# out_lang_ext
-# ------------
-# Return the extension for $OUT_LANG.
+# out_lang_ext - Return the extension for $out_lang (pdf, dvi, etc.).
 out_lang_ext ()
 {
   case $out_lang in
@@ -582,25 +545,11 @@ out_lang_ext ()
 }
 
 
-## ------------------------- ##
-## TeX auxiliary functions.  ##
-## ------------------------- ##
-
-# Save TEXINPUTS so we can construct a new TEXINPUTS path for each file.
-# Likewise for bibtex and makeindex.
-tex_envvars="BIBINPUTS BSTINPUTS DVIPSHEADERS INDEXSTYLE MFINPUTS MPINPUTS \
-TEXINPUTS TFMFONTS"
-for var in $tex_envvars; do
-  eval ${var}_orig=\$$var
-  export $var
-done
-
-
-# absolute_filenames TEX-PATH -> TEX-PATH
-# ---------------------------------------
-# Convert relative paths to absolute paths, so we can run in another
-# directory (e.g., in tidy build mode, or during the macro-support
-# detection).  Prepend ".".
+#  TeX file auxiliary functions.
+#
+# absolute_filenames TEX-PATH -> TEX-PATH - Convert relative paths to
+# absolute, so we can run in another directory (e.g., in tidy build
+# mode, or during the macro-support detection).  Prepend ".$path_sep".
 absolute_filenames ()
 {
   # Empty path components are meaningful to tex.  We rewrite them as
@@ -638,10 +587,8 @@ absolute_filenames ()
 }
 
 
-# output_base_name FILE
-# ---------------------
-# The name of FILE, possibly renamed to satisfy --output.
-# FILE is local, there is no directory part.
+# output_base_name FILE - Return the name of FILE, possibly renamed to
+# satisfy --output.  FILE is local, i.e., without any directory part.
 output_base_name ()
 {
   case $oname in
@@ -656,9 +603,7 @@ output_base_name ()
 }
 
 
-# destdir
-# -------
-# Return the name of the directory where the output is expected.
+# destdir - Return the directory where the output is expected.
 destdir ()
 {
   case $oname in
@@ -668,15 +613,13 @@ destdir ()
 }
 
 
-# move_to_dest FILE...
-# --------------------
-# Move FILE to the place where the user expects it.  Truly move it, that
-# is, it must not remain in its build location unless that is also the
-# output location.  (Otherwise it might appear as an extra file in make
-# distcheck.)
+# move_to_dest FILE... - Move FILE(s) to the place where the user expects.
+# Truly move it, that is, it must not remain in its build location
+# unless that is also the output location.  (Otherwise it might appear
+# as an extra file in make distcheck.)
 #
-# FILE can be the principal output (in which case -o directly applies), or
-# an auxiliary file with the same base name.
+# FILE can be the principal output (in which case -o directly applies),
+# or an auxiliary file with the same base name.
 move_to_dest ()
 {
 #  echo "move_to_dest $*, tidy=$tidy, oname=$oname"
@@ -729,13 +672,9 @@ move_to_dest ()
 }
 
 
-## --------------------- ##
-## Managing xref files.  ##
-## --------------------- ##
-
-# aux_file_p FILE
-# ---------------
-# Return with success if FILE is an aux file.
+#  Managing xref files.
+#
+# aux_file_p FILE - Return success if FILE is an aux file.
 aux_file_p ()
 {
   test -f "$1" || return 1
@@ -745,10 +684,7 @@ aux_file_p ()
   esac
 }
 
-# bibaux_file_p FILE
-# ------------------
-# Return with success if FILE is an aux file containing citation
-# requests.
+# bibaux_file_p FILE - Return success if FILE contains citation requests.
 bibaux_file_p ()
 {
   test -s "$1" || return 1
@@ -765,9 +701,7 @@ bibaux_file_p ()
   return 1
 }
 
-# index_file_p FILE
-# -----------------
-# Return with success if FILE is an index file.
+# index_file_p FILE - Return success if FILE is an index file.
 index_file_p ()
 {
   test -f "$1" || return 1
@@ -789,9 +723,8 @@ index_file_p ()
   esac
 }
 
-# xref_file_p FILE
-# ----------------
-# Return with success if FILE is an xref file (indexes, tables and lists).
+# xref_file_p FILE - Return success if FILE is an xref file (indexes,
+# tables and lists).
 xref_file_p ()
 {
   test -f "$1" || return 1
@@ -807,9 +740,9 @@ xref_file_p ()
 }
 
 
-# generated_files_get FILENAME-NOEXT [PREDICATE-FILTER]
-# -----------------------------------------------------
-# Return the list of files generated by the TeX compilation of FILENAME-NOEXT.
+# generated_files_get FILENAME-NOEXT [PREDICATE-FILTER] - Return the
+# list of files generated by the TeX compilation of FILENAME-NOEXT,
+# filtered by (piped through) PREDICATE-FILTER if specified.
 generated_files_get ()
 {
   local filter=true
@@ -861,9 +794,7 @@ generated_files_get ()
 }
 
 
-# xref_files_save
-# ---------------
-# Save the xref files.
+# xref_files_save - Save xref files in $work_bak with tar.
 xref_files_save ()
 {
   # Save copies of auxiliary files for later comparison.
@@ -882,9 +813,8 @@ xref_files_save ()
 }
 
 
-# xref_files_changed
-# ------------------
-# Whether the xref files were changed since the previous run.
+# xref_files_changed - Return success if  the xref files have changed
+# since the previous run.
 xref_files_changed ()
 {
   # LaTeX (and the package changebar) report in the LOG file if it
@@ -895,7 +825,7 @@ xref_files_changed ()
   if grep "Rerun to get" "$in_noext.log" >&6 2>&1; then
     return 0
   fi
-  # biblatex report of whether rerunning is needed.
+  # Similarly, check for biblatex report of whether rerunning is needed.
   if grep "biblatex.*(re)run" "$in_noext.log" >&6 2>&1; then
     return 0
   fi
@@ -927,16 +857,9 @@ xref_files_changed ()
 }
 
 
-
-## ----------------------- ##
-## Running the TeX suite.  ##
-## ----------------------- ##
-
-
-
-# run_tex ()
-# ----------
-# Run TeX as "$tex $in_input", taking care of errors and logs.
+#  Running the TeX suite.
+#
+# run_tex - Run TeX as "$tex $in_input", taking care of errors and logs.
 run_tex ()
 {
   case $in_lang:$latex2html:`out_lang_tex` in
@@ -952,7 +875,6 @@ run_tex ()
                *) tex=$TEX
         esac;;
     texinfo:*:pdf) tex=$PDFTEX;;
-
     *) error 1 "$out_lang not supported for $in_lang";;
   esac
 
@@ -1071,19 +993,18 @@ run_tex ()
   fi
 }
 
-# run_bibtex ()
-# -------------
-# Run bibtex on (or biber) current file.
-# - If its input (AUX) exists.
-# - If some citations are missing (LOG contains `Citation').
-#   or the LOG complains of a missing .bbl
+
+# run_bibtex - Run bibtex (or biber) on current file
+# - if its input (AUX) exists,
+# - or if some citations are missing (LOG contains `Citation'),
+# - or if the LOG complains of a missing .bbl.
 #
 # Don't try to be too smart:
 # 1. Running bibtex only if the bbl file exists and is older than
 # the LaTeX file is wrong, since the document might include files
 # that have changed.
 #
-# 3. Because there can be several AUX (if there are \include's),
+# 2. Because there can be several AUX (if there are \include's),
 # but a single LOG, looking for missing citations in LOG is
 # easier, though we take the risk of matching false messages.
 run_bibtex ()
@@ -1119,12 +1040,11 @@ run_bibtex ()
   fi
 }
 
-# run_index ()
-# ------------
-# Run texindex (or makeindex or texindy) on current index files.  If
-# they already exist, and after running TeX a first time the index
-# files don't change, then there's no reason to run TeX again.  But we
-# won't know that if the index files are out of date or nonexistent.
+
+# run_index - Run texindex (or makeindex or texindy) on current index
+# files.  If they already exist, and after running TeX a first time the
+# index files don't change, then there's no reason to run TeX again.
+# But we won't know that if the index files are out of date or nonexistent.
 run_index ()
 {
   local index_files
@@ -1165,16 +1085,14 @@ run_index ()
 }
 
 
-# run_tex4ht ()
-# -------------
-# Run the last two phases of TeX4HT: tex4ht extracts the HTML from the
-# instrumented DVI file, and t4ht converts the figures and installs
-# the files when given -d.
+# run_tex4ht - Run the last two phases of TeX4HT: tex4ht extracts the
+# HTML from the instrumented DVI file, and t4ht converts the figures and
+# installs the files when given -d.
 #
 # Because knowing exactly which files are created is complex (in
 # addition the names are not simple to compute), which makes it
-# difficult to install the output files in a second step, it is much
-# simpler to install directly the output files.
+# difficult to install the output files in a second step, we
+# tell t4ht to install the output files.
 run_tex4ht ()
 {
   case $in_lang:$latex2html:`out_lang_tex` in
@@ -1188,8 +1106,7 @@ run_tex4ht ()
 }
 
 
-# run_thumbpdf ()
-# ---------------
+# run_thumbpdf - Run thumbpdf.
 run_thumbpdf ()
 {
   if test `out_lang_tex` = pdf \
@@ -1209,14 +1126,15 @@ run_thumbpdf ()
 }
 
 
-# run_dvipdf FILE.dvi
-# -------------------
-# Convert FILE.dvi to FILE.pdf.
+# run_dvipdf FILE.dvi - Convert FILE.dvi to FILE.pdf.
 run_dvipdf ()
 {
   # Find which dvi->pdf program is available.
-  if test -z "$dvipdf"; then
-    for i in "$DVIPDF" dvipdfmx dvipdfm dvipdf dvi2pdf dvitopdf; do
+  if test -n "$DVIPDF"; then
+    dvipdf=$DVIPDF  # user envvar, use it without checking
+
+  elif test -z "$dvipdf"; then
+    for i in dvipdfmx dvipdfm dvipdf dvi2pdf dvitopdf; do
       if findprog $i; then
         dvipdf=$i
       fi
@@ -1231,9 +1149,7 @@ run_dvipdf ()
   fi
 }
 
-# run_tex_suite ()
-# ----------------
-# Run the TeX tools until a fix point is reached.
+# run_tex_suite - Run the TeX tools until a stable point is reached.
 run_tex_suite ()
 {
   # Move to the working directory.
@@ -1246,7 +1162,7 @@ run_tex_suite ()
   local cycle=0
 
   while :; do
-    # check for probably LaTeX loop (e.g. varioref)
+    # check for (probably) LaTeX loop (e.g. varioref)
     if test $cycle -eq "$max_iters"; then
       error 0 "Maximum of $max_iters cycles exceeded"
       break
@@ -1292,53 +1208,11 @@ run_tex_suite ()
   cd_orig
 }
 
-## -------------------------------- ##
-## TeX processing auxiliary tools.  ##
-## -------------------------------- ##
 
-
-# A sed script that preprocesses Texinfo sources in order to keep the
-# iftex sections only.  We want to remove non-TeX sections, and comment
-# (with `@c _texi2dvi') TeX sections so that makeinfo does not try to
-# parse them.  Nevertheless, while commenting TeX sections, don't
-# comment @macro/@end macro so that makeinfo does propagate them.
-# Unfortunately makeinfo --iftex --no-ifinfo doesn't work well enough
-# (yet), makeinfo can't parse the TeX commands, so work around with sed.
+#  TeX processing auxiliary tools.
 #
-# We assume that `@c _texi2dvi' starting a line is not present in the
-# document.
-#
-comment_iftex=\
-'/^@tex/,/^@end tex/{
-  s/^/@c _texi2dvi/
-}
-/^@iftex/,/^@end iftex/{
-  s/^/@c _texi2dvi/
-  /^@c _texi2dvi@macro/,/^@c _texi2dvi@end macro/{
-    s/^@c _texi2dvi//
-  }
-}
-/^@ifnottex/,/^@end ifnottex/{
-  s/^/@c (_texi2dvi)/
-}
-/^@ifinfo/,/^@end ifinfo/{
-  /^@node/p
-  /^@menu/,/^@end menu/p
-  t
-  s/^/@c (_texi2dvi)/
-}
-s/^@ifnotinfo/@c _texi2dvi@ifnotinfo/
-s/^@end ifnotinfo/@c _texi2dvi@end ifnotinfo/'
-
-# Uncommenting is simpler: remove any leading `@c texi2dvi'; repeated
-# copies can sneak in via macro invocations.
-uncomment_iftex='s/^@c _texi2dvi\(@c _texi2dvi\)*//'
-
-
-# run_makeinfo ()
-# ---------------
-# Expand macro commands in the original source file using Makeinfo.
-# Always use `end' footnote style, since the `separate' style
+# run_makeinfo - Expand macro commands in the original source file using
+# Makeinfo.  Always use `end' footnote style, since the `separate' style
 # generates different output (arguably this is a bug in -E).  Discard
 # main info output, the user asked to run TeX, not makeinfo.
 run_makeinfo ()
@@ -1413,9 +1287,9 @@ to tex itself simply not working."
   fi
 }
 
-# insert_commands ()
-# ------------------
-# Used most commonly for @finalout, @smallbook, etc.
+# insert_commands - Insert $textra commands after @setfilename (Texinfo)
+# or at the beginning of the file (LaTeX).  Recommended to be used for
+# @finalout, @smallbook, etc.
 insert_commands ()
 {
   if test -n "$textra"; then
@@ -1450,10 +1324,9 @@ $textra" "$in_input" >"$in_xtr"
   esac
 }
 
-# compute_language FILENAME
-# -------------------------
-# Return the short string describing the language in which FILENAME
-# is written: `texinfo' or `latex'.
+
+# compute_language FILENAME - Return the short string for the language
+# in which FILENAME is written: `texinfo' or `latex'.
 compute_language ()
 {
   # If the user explicitly specified the language, use that.
@@ -1474,9 +1347,7 @@ compute_language ()
 }
 
 
-# run_hevea (MODE)
-# ----------------
-# Convert to HTML/INFO/TEXT.
+# run_hevea (MODE) - Convert to HTML/INFO/TEXT.
 #
 # Don't pass `-noiso' to hevea: it's useless in HTML since anyway the
 # charset is set to latin1, and troublesome in other modes since
@@ -1523,9 +1394,7 @@ run_hevea ()
 }
 
 
-# run_core_conversion ()
-# ----------------------
-# Run the TeX (or HeVeA).
+# run_core_conversion - Run TeX (or HeVeA).
 run_core_conversion ()
 {
   case $in_lang:$latex2html:`out_lang_tex` in
@@ -1539,10 +1408,8 @@ run_core_conversion ()
 }
 
 
-# compile ()
-# ----------
-# Run the full compilation chain, from pre-processing to installation
-# of the output at its expected location.
+# compile - Run the full compilation chain, from pre-processing to
+# installation of the output at its expected location.
 compile ()
 {
   # Source file might include additional sources.
@@ -1581,8 +1448,7 @@ compile ()
 }
 
 
-# remove FILES
-# ------------
+# remove FILE...
 remove ()
 {
   verbose "Removing" "$@"
@@ -1590,9 +1456,8 @@ remove ()
 }
 
 
-# mostly_clean
-# ------------
-# Remove auxiliary files and directories.  Changes the current directory.
+# mostly_clean - Remove auxiliary files and directories.  Changes back
+# the original directory.
 mostly_clean ()
 {
   cd_orig
@@ -1607,9 +1472,7 @@ mostly_clean ()
 }
 
 
-# cleanup ()
-# ----------
-# Remove what should be removed according to options.
+# cleanup - Remove what should be removed according to options.
 # Called at the end of each compilation cycle, and at the end of
 # the script.  Changes the current directory.
 cleanup ()
@@ -1622,11 +1485,130 @@ cleanup ()
 }
 
 
+#  input_file_name_decode - Decode COMMAND_LINE_FILENAME, and compute:
+# - COMMAND_LINE_FILENAME clean of TeX commands
+# - IN_DIR
+#   The directory to the input file, possibly absolute if needed.
+# - IN_DIR_ABS
+#   The absolute directory of the input file.
+# - IN_BASE
+#   The input file base name (no directory part).
+# - IN_NOEXT
+#   The input file name without extensions (nor directory part).
+# - IN_INPUT
+#   Defaults to COMMAND_LINE_FILENAME, but might change if the
+#   input is preprocessed.  With directory, possibly absolute.
+input_file_name_decode ()
+{
+  # See if we are run from within AUC-Tex, in which case we are
+  # passed `\input{FOO.tex}' or even `\nonstopmode\input{FOO.tex}'.
+  case $command_line_filename in
+    *\\nonstopmode*)
+      batch=true;;
+  esac
+  case $command_line_filename in
+    *\\input{*}*)
+      # Let AUC-TeX error parser deal with line numbers.
+      line_error=false
+      command_line_filename=`\
+        expr X"$command_line_filename" : X'.*input{\([^}]*\)}'`
+      ;;
+  esac
 
-## ---------------------- ##
-## Command line parsing.  ##
-## ---------------------- ##
+  # If the COMMAND_LINE_FILENAME is not absolute (e.g., --debug.tex),
+  # prepend `./' in order to avoid that the tools take it as an option.
+  echo "$command_line_filename" | LC_ALL=C $EGREP '^(/|[A-Za-z]:/)' >&6 \
+  || command_line_filename="./$command_line_filename"
 
+  # See if the file exists.  If it doesn't we're in trouble since, even
+  # though the user may be able to reenter a valid filename at the tex
+  # prompt (assuming they're attending the terminal), this script won't
+  # be able to find the right xref files and so forth.
+  test -r "$command_line_filename" \
+  || error 1 "cannot read $command_line_filename, skipping."
+
+  # Get the name of the current directory.
+  in_dir=`func_dirname "$command_line_filename"`
+  in_dir_abs=`absolute "$in_dir"`
+  # In a clean build, we `cd', so get an absolute file name.
+  if $tidy; then
+    in_dir=$in_dir_abs
+  fi
+
+  # Strip directory part but leave extension.
+  in_base=`basename "$command_line_filename"`
+  # Strip extension.
+  in_noext=`noext "$in_base"`
+
+  # The normalized file name to compile.  Must always point to the
+  # file to actually compile (in case of recoding, macro-expansion etc.).
+  in_input=$in_dir/$in_base
+
+
+  # Compute the output file name.
+  if test x"$oname" != x; then
+    out_name=$oname
+  else
+    out_name=$in_noext.`out_lang_ext`
+  fi
+  out_dir=`func_dirname "$out_name"`
+  out_dir_abs=`absolute "$out_dir"`
+  out_base=`basename "$out_name"`
+  out_noext=`noext "$out_base"`
+}
+
+
+#  Main program starts - initialize more variables.
+#
+# Save TEXINPUTS so we can construct a new TEXINPUTS path for each file.
+# Likewise for bibtex and makeindex.
+tex_envvars="BIBINPUTS BSTINPUTS DVIPSHEADERS INDEXSTYLE MFINPUTS MPINPUTS \
+TEXINPUTS TFMFONTS"
+for var in $tex_envvars; do
+  eval ${var}_orig=\$$var
+  export $var
+done
+
+# A sed script that preprocesses Texinfo sources in order to keep the
+# iftex sections only.  We want to remove non-TeX sections, and comment
+# (with `@c _texi2dvi') TeX sections so that makeinfo does not try to
+# parse them.  Nevertheless, while commenting TeX sections, don't
+# comment @macro/@end macro so that makeinfo does propagate them.
+# Unfortunately makeinfo --iftex --no-ifinfo doesn't work well enough
+# (yet), makeinfo can't parse the TeX commands, so work around with sed.
+#
+# We assume that `@c _texi2dvi' starting a line is not present in the
+# document.
+#
+comment_iftex=\
+'/^@tex/,/^@end tex/{
+  s/^/@c _texi2dvi/
+}
+/^@iftex/,/^@end iftex/{
+  s/^/@c _texi2dvi/
+  /^@c _texi2dvi@macro/,/^@c _texi2dvi@end macro/{
+    s/^@c _texi2dvi//
+  }
+}
+/^@ifnottex/,/^@end ifnottex/{
+  s/^/@c (_texi2dvi)/
+}
+/^@ifinfo/,/^@end ifinfo/{
+  /^@node/p
+  /^@menu/,/^@end menu/p
+  t
+  s/^/@c (_texi2dvi)/
+}
+s/^@ifnotinfo/@c _texi2dvi@ifnotinfo/
+s/^@end ifnotinfo/@c _texi2dvi@end ifnotinfo/'
+
+# Uncommenting is simpler: remove any leading `@c texi2dvi'; repeated
+# copies can sneak in via macro invocations.
+uncomment_iftex='s/^@c _texi2dvi\(@c _texi2dvi\)*//'
+
+
+#  Main program continues - command line parsing.
+#
 # Push a token among the arguments that will be used to notice when we
 # ended options/arguments parsing.
 # Use "set dummy ...; shift" rather than 'set - ..." because on
@@ -1637,10 +1619,7 @@ cleanup ()
 arg_sep="$$--$$"
 set dummy ${1+"$@"} "$arg_sep"; shift
 
-# 
-# Parse command line arguments.
 while test x"$1" != x"$arg_sep"; do
-
   # Handle --option=value by splitting apart and putting back on argv.
   case "$1" in
     --*=*)
@@ -1731,7 +1710,7 @@ esac
 
 # We can't do much without tex.
 # End up with the TEX and PDFTEX variables set to what we are going to use.
-
+#
 # If $TEX is set to a directory, don't use it.
 test -n "$TEX" && test -d "$TEX" && unset TEX
 
@@ -1759,7 +1738,7 @@ EOM
 fi
 
 # For many years, the pdftex binary has included the e-tex extensions,
-# but just for those people with ancient TeX distributions ...
+# but for those people with ancient TeX distributions ...
 if test -z "$PDFTEX"; then
   if findprog pdfetex; then PDFTEX=pdfetex; else PDFTEX=pdftex; fi
 fi
@@ -1773,7 +1752,6 @@ fi
 # 4 used on the Kubota Titan
 # 5 tools output (turned off by --quiet)
 # 6 tracing/debugging (set -x output, etc.)
-
 
 # Main tools' output (TeX, etc.) that TeX users are used to seeing.
 #
@@ -1799,87 +1777,8 @@ else
   exec 6>/dev/null
 fi
 
-# 
 
-# input_file_name_decode
-# ----------------------
-# Decode COMMAND_LINE_FILENAME, and compute:
-# - COMMAND_LINE_FILENAME clean of TeX commands
-# - IN_DIR
-#   The directory to the input file, possibly absolute if needed.
-# - IN_DIR_ABS
-#   The absolute directory of the input file.
-# - IN_BASE
-#   The input file base name (no directory part).
-# - IN_NOEXT
-#   The input file name without extensions (nor directory part).
-# - IN_INPUT
-#   Defaults to COMMAND_LINE_FILENAME, but might change if the
-#   input is preprocessed.  With directory, possibly absolute.
-input_file_name_decode ()
-{
-  # See if we are run from within AUC-Tex, in which case we are
-  # passed `\input{FOO.tex}' or even `\nonstopmode\input{FOO.tex}'.
-  case $command_line_filename in
-    *\\nonstopmode*)
-      batch=true;;
-  esac
-  case $command_line_filename in
-    *\\input{*}*)
-      # Let AUC-TeX error parser deal with line numbers.
-      line_error=false
-      command_line_filename=`\
-        expr X"$command_line_filename" : X'.*input{\([^}]*\)}'`
-      ;;
-  esac
-
-  # If the COMMAND_LINE_FILENAME is not absolute (e.g., --debug.tex),
-  # prepend `./' in order to avoid that the tools take it as an option.
-  echo "$command_line_filename" | LC_ALL=C $EGREP '^(/|[A-Za-z]:/)' >&6 \
-  || command_line_filename="./$command_line_filename"
-
-  # See if the file exists.  If it doesn't we're in trouble since, even
-  # though the user may be able to reenter a valid filename at the tex
-  # prompt (assuming they're attending the terminal), this script won't
-  # be able to find the right xref files and so forth.
-  test -r "$command_line_filename" \
-  || error 1 "cannot read $command_line_filename, skipping."
-
-  # Get the name of the current directory.
-  in_dir=`func_dirname "$command_line_filename"`
-  in_dir_abs=`absolute "$in_dir"`
-  # In a clean build, we `cd', so get an absolute file name.
-  if $tidy; then
-    in_dir=$in_dir_abs
-  fi
-
-  # Strip directory part but leave extension.
-  in_base=`basename "$command_line_filename"`
-  # Strip extension.
-  in_noext=`noext "$in_base"`
-
-  # The normalized file name to compile.  Must always point to the
-  # file to actually compile (in case of recoding, macro-expansion etc.).
-  in_input=$in_dir/$in_base
-
-
-  # Compute the output file name.
-  if test x"$oname" != x; then
-    out_name=$oname
-  else
-    out_name=$in_noext.`out_lang_ext`
-  fi
-  out_dir=`func_dirname "$out_name"`
-  out_dir_abs=`absolute "$out_dir"`
-  out_base=`basename "$out_name"`
-  out_noext=`noext "$out_base"`
-}
-
-
-## -------------- ##
-## TeXify files.  ##
-## -------------- ##
-
+#  Main program main loop - TeXify each file in turn.
 for command_line_filename
 do
   verbose "Processing $command_line_filename ..."

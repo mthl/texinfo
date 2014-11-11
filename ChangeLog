@@ -1,3 +1,8 @@
+2014-11-11  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi: minimize function header comments, reorder,
+	other comment cleanups.  No functional changes intended.
+
 2014-11-10  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi: do not call findprog on a user-defined $TEX.
