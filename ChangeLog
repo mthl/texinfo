@@ -1,3 +1,8 @@
+2014-11-10  Karl Berry  <karl@gnu.org>
+
+	* util/texi2dvi: do not call findprog on a user-defined $TEX.
+	Report from Per Mildner, 10 Nov 2014 12:26:08.
+
 2014-11-10  Jason Hood  <jadoxa@yahoo.com.au>  (tiny change)
 
 	* install-info/install-info.c (reformat_new_entries): respect

@@ -98,9 +98,6 @@ fi
 # Pacify verbose cds.
 CDPATH=${ZSH_VERSION+.}$path_sep
 
-# If $TEX is set to a directory, don't use it.
-test -n "$TEX" && test -d "$TEX" && unset TEX
-
 # 
 ## --------------------- ##
 ## Auxiliary functions.  ##
@@ -1733,9 +1730,15 @@ esac
 
 
 # We can't do much without tex.
-#
-if findprog ${TEX:-tex}; then :; else cat <<EOM
-You don't have a working TeX binary (${TEX:-tex}) installed anywhere in
+# End up with the TEX and PDFTEX variables set to what we are going to use.
+
+# If $TEX is set to a directory, don't use it.
+test -n "$TEX" && test -d "$TEX" && unset TEX
+
+# But otherwise, use $TEX if it is set.
+if test -z "$TEX"; then
+  if findprog tex; then :; else cat <<EOM >&2
+You don't have a working TeX binary (tex) installed anywhere in
 your PATH, and texi2dvi cannot proceed without one.  If you want to use
 this script, you'll need to install TeX (if you don't have it) or change
 your PATH or TEX environment variable (if you do).  See the --help
@@ -1744,20 +1747,19 @@ output for more details.
 For information about obtaining TeX, please see http://tug.org/texlive,
 or do a web search for TeX and your operating system or distro.
 EOM
-  exit 1
-fi
+    exit 1
+  fi
 
-
-# We want to use etex (or pdftex) if they are available, and the user
-# didn't explicitly specify.  We don't check for elatex and pdfelatex
-# because (as of 2003), the LaTeX team has asked that new distributions
-# use etex by default anyway.
-#
-# End up with the TEX and PDFTEX variables set to what we are going to use.
-if test -z "$TEX"; then
+  # We want to use etex (or pdftex) if they are available, and the user
+  # didn't explicitly specify.  We don't check for elatex and pdfelatex
+  # because (as of 2003), the LaTeX team has asked that new distributions
+  # use etex by default anyway.
+  #
   if findprog etex; then TEX=etex; else TEX=tex; fi
 fi
-#
+
+# For many years, the pdftex binary has included the e-tex extensions,
+# but just for those people with ancient TeX distributions ...
 if test -z "$PDFTEX"; then
   if findprog pdfetex; then PDFTEX=pdfetex; else PDFTEX=pdftex; fi
 fi
