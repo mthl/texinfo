@@ -1,3 +1,7 @@
+2014-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/window-split-dir.sh: New test.
+
 2014-11-11  Karl Berry  <karl@gnu.org>
 
 	* util/texi2dvi: minimize function header comments, reorder,

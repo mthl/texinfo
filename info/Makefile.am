@@ -118,6 +118,7 @@ TESTS = \
 	t/goal-column.sh \
 	t/last-no-history.sh \
 	t/split-footnotes.sh \
+	t/window-split-dir.sh \
 	t/last-node-not-top-level.sh \
 	t/adjust-anchors.sh \
 	t/search-after-tag.sh \
