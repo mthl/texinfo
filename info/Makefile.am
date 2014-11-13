@@ -116,6 +116,7 @@ TESTS = \
 	t/body-start.sh \
 	t/end-of-line.sh \
 	t/goal-column.sh \
+	t/star-note-non-whitespace.sh \
 	t/last-no-history.sh \
 	t/split-footnotes.sh \
 	t/window-split-dir.sh \
