@@ -58,6 +58,7 @@ static void push_echo_area (void), pop_echo_area (void);
 static int echo_area_stack_contains_completions_p (void);
 
 static void ea_kill_text (int from, int to);
+static void ea_remove_text (int from, int to);
 
 /* Non-zero means we force the user to complete. */
 static int echo_area_must_complete_p = 0;
@@ -175,12 +176,6 @@ read_and_dispatch_in_echo_area (void)
       if (!info_any_buffered_input_p ())
         display_update_display ();
 
-      /* Mark the line map as invalid.  This causes window_compute_line_map to
-         recalculate it when it is called via display_cursor_at_point below.  
-         Otherwise adding or removing multi-column characters (like tabs) lead 
-         to incorrect cursor positioning. */
-      the_echo_area->line_map.used = 0;
-
       display_cursor_at_point (active_window);
 
       /* Do the selected command. */
@@ -283,6 +278,13 @@ echo_area_prep_read (void)
 
   the_echo_area->point = input_line_point;
   input_line[input_line_end] = '\n';
+
+  /* Mark the line map as invalid.  This causes window_compute_line_map to
+     recalculate it when it is called via display_cursor_at_point below.  
+     Otherwise adding or removing multi-column characters (like tabs) lead 
+     to incorrect cursor positioning. */
+  the_echo_area->line_map.used = 0;
+
   display_update_one_window (the_echo_area);
   display_cursor_at_point (active_window);
 }
@@ -434,31 +436,21 @@ DECLARE_INFO_COMMAND (ea_backward_word, _("Move backward a word"))
 
 DECLARE_INFO_COMMAND (ea_delete, _("Delete the character under the cursor"))
 {
-  register int i;
-
   if (count < 0)
     ea_rubout (window, -count);
   else
     {
+      int orig_point;
       if (input_line_point == input_line_end)
         return;
 
+      orig_point = input_line_point;
+      ea_forward (window, count);
       if (ea_explicit_arg || count > 1)
-        {
-          int orig_point;
-
-          orig_point = input_line_point;
-          ea_forward (window, count);
-          ea_kill_text (orig_point, input_line_point);
-          input_line_point = orig_point;
-        }
+        ea_kill_text (orig_point, input_line_point);
       else
-        {
-          for (i = input_line_point; i < input_line_end; i++)
-            input_line[i] = input_line[i + 1];
-
-          input_line_end--;
-        }
+        ea_remove_text (orig_point, input_line_point);
+      input_line_point = orig_point;
     }
 }
 
@@ -540,36 +532,99 @@ DECLARE_INFO_COMMAND (ea_tab_insert, _("Insert a TAB character"))
   ea_insert (window, count, '\t');
 }
 
+/* Swap characters in INPUT_LINE.  The first starts at C1 and ends at C1E, the 
+   second starts at C2 and ends at C2E, with C1 < C1E <= C2 < C2E. */
+static void
+ea_swap_chars (int c1, int c1e, int c2, int c2e)
+{
+  int len1, len2;
+  char *tmp;
+
+  len1 = c1e - c1;
+  len2 = c2e - c2;
+
+  if (len1 >= len2)
+    {
+      /* Save first character. */
+      tmp = xmalloc (len1);
+      memcpy (tmp, input_line + c1, len1);
+
+      /* Move the second character to where the first was. */
+      memcpy (input_line + c1, input_line + c2, len2);
+
+      /* Shift the part in between the characters backwards. */
+      memmove (input_line + c1 + len2, input_line + c1e, c2 - c1e);
+
+      /* Restore the first character at the end. */
+      memcpy (input_line + c2 - (len1 - len2), tmp, len1);
+      free (tmp);
+    }
+  else /* len2 > len1 */
+    {
+      /* Save second character. */
+      tmp = xmalloc (len2);
+      memcpy (tmp, input_line + c2, len2);
+
+      /* Move first character to end of second character. */
+      memcpy (input_line + c2e - len1, input_line + c1, len1);
+
+      /* Shift the part in between the characters forwards. */
+      memmove (input_line + c1e + (len2 - len1), input_line + c1e, c2 - c1e);
+
+      /* Place the second character at the beginning. */
+      memcpy (input_line + c1, tmp, len2);
+      free (tmp);
+    }
+}
+
 /* Transpose the characters at point.  If point is at the end of the line,
    then transpose the characters before point. */
 DECLARE_INFO_COMMAND (ea_transpose_chars, _("Transpose characters at point"))
 {
-  /* Handle conditions that would make it impossible to transpose
-     characters. */
-  if (!count || !input_line_point || (input_line_end - input_line_beg) < 2)
-    return;
-
   while (count)
     {
-      int t;
-      if (input_line_point == input_line_end)
+      if (input_line_point == input_line_end || count < 0)
         {
-          t = input_line[input_line_point - 1];
+          /* Swap two characters before point. */
+          int c1, c2, c2e;
+          c2e = input_line_point;
 
-          input_line[input_line_point - 1] = input_line[input_line_point - 2];
-          input_line[input_line_point - 2] = t;
+          ea_backward (window, 1);
+          c2 = input_line_point;
+
+          ea_backward (window, 1);
+          c1 = input_line_point;
+
+          if (c1 != c2) /* There are two characters in this line. */
+            ea_swap_chars (c1, c2, c2, c2e);
+
+          if (count > 0)
+            /* Restore point. */
+            input_line_point = c2e;
+          else
+            input_line_point = c1 + c2e - c2;
         }
       else
         {
-          t = input_line[input_line_point];
+          int c1, c2, c2e;
 
-          input_line[input_line_point] = input_line[input_line_point - 1];
-          input_line[input_line_point - 1] = t;
+          c2 = input_line_point;
 
-          if (count < 0 && input_line_point != input_line_beg)
-            input_line_point--;
-          else
-            input_line_point++;
+          ea_forward (window, 1);
+          c2e = input_line_point;
+          if (c2e == c2)
+            return; /* Shouldn't happen. */
+
+          input_line_point = c2;
+          ea_backward (window, 1);
+          c1 = input_line_point;
+          if (c1 == c2e)
+            return; /* Can't go earlier in line. */
+
+          ea_swap_chars (c1, c2, c2, c2e);
+
+          /* Set point is after swapped pair. */
+          input_line_point = c2e;
         }
 
       if (count < 0)
@@ -707,6 +762,20 @@ DECLARE_INFO_COMMAND (ea_backward_kill_word,
   window_line_map_init (window);
 }
 
+/* Remove text from offsets FROM to TO.  Unlike 'ea_kill_text' nothing is
+   saved in the kill ring. */
+static void
+ea_remove_text (int from, int to)
+{
+  int distance, i, counter;
+  counter = input_line_end - to;
+  distance = to - from;
+
+  for (i = from; counter; i++, counter--)
+    input_line[i] = input_line[i + distance];
+  input_line_end -= distance;
+}
+
 /* The way to kill something.  This appends or prepends to the last
    kill, if the last command was a kill command.  If FROM is less
    than TO, then the killed text is appended to the most recent kill,
@@ -715,7 +784,7 @@ DECLARE_INFO_COMMAND (ea_backward_kill_word,
 static void
 ea_kill_text (int from, int to)
 {
-  register int i, counter, distance;
+  register int distance;
   int killing_backwards, slot;
   char *killed_text;
 
@@ -736,12 +805,7 @@ ea_kill_text (int from, int to)
   killed_text[distance] = '\0';
 
   /* Actually delete the text from the line. */
-  counter = input_line_end - to;
-
-  for (i = from; counter; i++, counter--)
-    input_line[i] = input_line[i + distance];
-
-  input_line_end -= distance;
+  ea_remove_text (from, to);
 
   /* If the last command was a kill, append or prepend the killed text to
      the last command's killed text. */

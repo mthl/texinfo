@@ -1,3 +1,13 @@
+2014-11-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/echo-area.c (ea_delete, ea_transpose_chars): Handle 
+	multi-byte characters.
+	(ea_swap_chars, ea_remove_text): New static functions.
+
+	(read_and_dispatch_in_echo_area)
+	(echo_area_prep_read): Line invalidating echo area line map 
+	moved between functions.
+
 2014-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/window-split-dir.sh: New test.
