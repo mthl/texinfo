@@ -10198,10 +10198,12 @@ primary text.@footnote{A footnote should complement or expand upon the
 primary text, but a reader should not need to read a footnote to
 understand the primary text.  For a thorough discussion of footnotes,
 see @cite{The Chicago Manual of Style}, which is published by the
-University of Chicago Press.}  Footnotes are distracting; use them
-sparingly at most, and it is best to avoid them completely.  Standard
-bibliographical references are better placed in a bibliography at the
-end of a document instead of in footnotes throughout.
+University of Chicago Press.}
+
+Footnotes are distracting; use them sparingly at most, and it is best
+to avoid them completely.  Standard bibliographical references are
+usually better placed in a bibliography at the end of a document
+instead of in footnotes throughout.
 
 @menu
 * Footnote Commands::           How to write a footnote in Texinfo.
@@ -10235,10 +10237,12 @@ this:
 footnote.@}; in the Texinfo source@dots{}
 @end example
 
-As you can see, the source includes two punctuation marks next to each
-other; in this case, @samp{.@};} is the sequence.  This is normal (the
-first ends the footnote and the second belongs to the sentence being
-footnoted), so don't worry that it looks odd.
+As you can see, this source includes two punctuation marks next to
+each other; in this case, @samp{.@};} is the sequence.  This is normal
+(the first ends the footnote and the second belongs to the sentence
+being footnoted), so don't worry that it looks odd.  (Another style,
+perfectly acceptable, is to put the footnote after punctuation
+belonging to the sentence, as in @samp{;@@footnote@{...}.)
 
 In a printed manual or book, the reference mark for a footnote is a
 small, superscripted number; the text of the footnote appears at the
@@ -10253,9 +10257,14 @@ In the HTML output, footnote references are generally marked with a
 small, superscripted number which is rendered as a hypertext link to
 the footnote text.
 
-By the way, footnotes in the argument of an @code{@@item} command for
-an @code{@@table} must be on the same line as the @code{@@item} (as
-usual).  @xref{Two-column Tables}.
+@cindex Critical editions
+@cindex Nested footnotes
+Footnotes cannot be nested, and cannot appear in section headings of
+any kind or other ``unusual'' places.
+
+A final tip: footnotes in the argument of an @code{@@item} command for
+an @code{@@table} must be entirely on the same line as the
+@code{@@item} (as usual).  @xref{Two-column Tables}.
 
 
 @node Footnote Styles

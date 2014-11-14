@@ -1,3 +1,16 @@
+2014-11-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\footnote): do not set \indent and \noindent
+	to their \ptex... versions; these become global settings, and seem
+	unnecessary since the only time we redefine \indent and \noindent
+	is with @firstparagraphindent for section headings, and footnotes
+	cannot work in headings anyway.  What am I missing?  Could not
+	construct an example where it mattered.
+	(\errfootnoteheading): new macro, for \chapmacro and \sectionheading.
+	(\errfootnotenest): rename from \errfootnote.
+	* doc/texinfo.texi (Footnotes): mention that they cannot be nested
+	and cannot appear in section headings.
+
 2014-11-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infomap.h (KEYMAP_ENTRY) <function>: Replace with a union 
