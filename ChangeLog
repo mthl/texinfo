@@ -1,3 +1,8 @@
+2014-11-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infomap.h (KEYMAP_ENTRY) <function>: Replace with a union 
+	to avoid casts on accessing it as a Keymap.  All uses updated.
+
 2014-11-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/echo-area.c (ea_delete, ea_transpose_chars): Handle 

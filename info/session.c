@@ -4538,8 +4538,8 @@ incremental_search (WINDOW *window, int count)
              if any. */
           KEYMAP_ENTRY k = info_keymap[key];
           type = k.type;
-          func = type == ISFUNC && k.function
-            ? k.function->func
+          func = type == ISFUNC && k.value.function
+            ? k.value.function->func
             : NULL;
         }
 
@@ -5010,7 +5010,7 @@ read_key_sequence (Keymap map, int menu, int mouse,
 
       if (!dash_typed && !digit_typed && map[key].type == ISFUNC)
         {
-          func = map[key].function ? map[key].function->func : 0;
+          func = map[key].value.function ? map[key].value.function->func : 0;
           if (!func)
             {
               dispatch_error (info_keyseq);
@@ -5104,8 +5104,8 @@ read_key_sequence (Keymap map, int menu, int mouse,
         }
       else if (map[key].type == ISKMAP)
         {
-          if (map[key].function != NULL)
-            map = (Keymap)map[key].function;
+          if (map[key].value.keymap != NULL)
+            map = map[key].value.keymap;
           else
             {
               dispatch_error (info_keyseq);

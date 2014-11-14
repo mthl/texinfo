@@ -63,13 +63,18 @@ extern BYTEMAP_ENTRY *byte_seq_to_key;
 typedef struct keymap_entry
 {
   char type;
-  InfoCommand *function;  /* The address of a function or another keymap. */
+  union
+  {
+    InfoCommand *function;         /* The address of a function. */
+    struct keymap_entry *keymap;   /* The address of another Keymap */
+  } value;
 } KEYMAP_ENTRY;
 
 /* The values that TYPE can have in a keymap entry. */
 #define ISFUNC 0
 #define ISKMAP 1
 
+/* We use Keymap for a pointer to a block of KEYMAP_SIZE KEYMAP_ENTRY's. */
 typedef KEYMAP_ENTRY *Keymap;
 
 extern Keymap info_keymap;

@@ -103,21 +103,21 @@ dump_map_to_text_buffer (struct text_buffer *tb, int *prefix,
       if (map[i].type == ISKMAP)
         {
           dump_map_to_text_buffer (tb, new_prefix, prefix_len + 1,
-                                   (Keymap)map[i].function);
+                                   map[i].value.keymap);
         }
-      else if (map[i].function)
+      else if (map[i].value.function)
         {
           long start_of_line = tb->off;
           register int last;
           char *doc, *name;
 
           /* Hide some key mappings. */
-          if (map[i].function
-              && (map[i].function->func == info_do_lowercase_version))
+          if (map[i].value.function
+              && (map[i].value.function->func == info_do_lowercase_version))
             continue;
 
-          doc = function_documentation (map[i].function);
-          name = function_name (map[i].function);
+          doc = function_documentation (map[i].value.function);
+          name = function_name (map[i].value.function);
 
           if (!*doc)
             continue;
@@ -126,7 +126,7 @@ dump_map_to_text_buffer (struct text_buffer *tb, int *prefix,
              add-digit-to-numeric-arg. */
           for (last = i + 1; last < KEYMAP_SIZE; last++)
             if ((map[last].type != ISFUNC) ||
-                (map[last].function != map[i].function))
+                (map[last].value.function != map[i].value.function))
               break;
 
           if (last - 1 != i)
@@ -451,14 +451,14 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
       *k++ = keystroke;
       *k = '\0';
 
-      if (map[keystroke].function == NULL)
+      if (map[keystroke].value.function == NULL)
         {
           message_in_echo_area (_("%s is undefined."), pretty_keyseq (keys));
           return;
         }
       else if (map[keystroke].type == ISKMAP)
         {
-          map = (Keymap)map[keystroke].function;
+          map = map[keystroke].value.keymap;
           continue;
         }
       else
@@ -471,8 +471,9 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
              edit keys that emit an escape sequence: it's terribly
              confusing to see a message "Home (do-lowercase-version)"
              or some such when Home is unbound.  */
-          if (map[keystroke].function
-              && map[keystroke].function->func == info_do_lowercase_version)
+          if (map[keystroke].value.function
+              && map[keystroke].value.function->func
+                 == info_do_lowercase_version)
             {
               int lowerkey;
 
@@ -486,7 +487,7 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
               else
                 lowerkey = tolower (keystroke);
 
-              if (map[lowerkey].function == NULL)
+              if (map[lowerkey].value.function == NULL)
                 {
                   message_in_echo_area (_("%s is undefined."),
 					pretty_keyseq (keys));
@@ -496,9 +497,9 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
 
           keyname = pretty_keyseq (keys);
 
-          funname = function_name (map[keystroke].function);
+          funname = function_name (map[keystroke].value.function);
 
-          fundoc = function_documentation (map[keystroke].function);
+          fundoc = function_documentation (map[keystroke].value.function);
 
           message = xmalloc
             (10 + strlen (keyname) + strlen (fundoc) + strlen (funname));

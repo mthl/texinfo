@@ -465,7 +465,7 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
                       KEYMAP_ENTRY ke;
                       
                       ke.type = ISFUNC;
-                      ke.function = &function_doc_array[a];
+                      ke.value.function = &function_doc_array[a];
                       To_seq (0);
 
                       if (section == info)

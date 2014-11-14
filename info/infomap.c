@@ -40,7 +40,7 @@ keymap_make_keymap (void)
   for (i = 0; i < KEYMAP_SIZE; i++)
     {
       keymap[i].type = ISFUNC;
-      keymap[i].function = NULL;
+      keymap[i].value.function = NULL;
     }
 
   return keymap;
@@ -91,13 +91,13 @@ keymap_bind_keyseq (Keymap map, int *keyseq, KEYMAP_ENTRY *keyentry)
       switch (m[c].type)
         {
         case ISFUNC:
-          if (m[c].function)
+          if (m[c].value.function)
             return; /* There is a function here already. */
 
           if (*s != '\0')
             {
               m[c].type = ISKMAP;
-              m[c].function = (InfoCommand *)keymap_make_keymap ();
+              m[c].value.keymap = keymap_make_keymap ();
             }
           break;
 
@@ -109,11 +109,11 @@ keymap_bind_keyseq (Keymap map, int *keyseq, KEYMAP_ENTRY *keyentry)
         }
       if (*s != '\0')
         {
-          m = (Keymap)m[c].function;
+          m = m[c].value.keymap;
         }
       else
         {
-          add_function_keyseq (keyentry->function, keyseq, map);
+          add_function_keyseq (keyentry->value.function, keyseq, map);
           m[c] = *keyentry;
         }
     }
@@ -641,7 +641,7 @@ section_to_keymaps (Keymap map, int *table, unsigned int len)
 	    state = getseq;
 
             ke.type = ISFUNC;
-            ke.function = action < A_NCOMMANDS ?
+            ke.value.function = action < A_NCOMMANDS ?
                                 &function_doc_array[action]
                                 : NULL;
             keymap_bind_keyseq (map, seq, &ke);
@@ -654,23 +654,23 @@ section_to_keymaps (Keymap map, int *table, unsigned int len)
 
   /* Go through map and bind ESC x to the same function as M-x if it is not 
      bound already. */
-  if (!map[ESC].function)
+  if (!map[ESC].value.function)
     {
       map[ESC].type = ISKMAP;
-      map[ESC].function = (InfoCommand *)keymap_make_keymap ();
+      map[ESC].value.keymap = keymap_make_keymap ();
     }
 
   if (map[ESC].type != ISKMAP)
     return; /* ESC is bound to a command. */
 
-  esc_map = (Keymap) map[ESC].function;
+  esc_map = map[ESC].value.keymap;
   for (k = 1; k < KEYMAP_META_BASE; k++)
     {
       if (map[k + KEYMAP_META_BASE].type == ISFUNC
-          && esc_map[k].function == 0)
+          && esc_map[k].value.function == 0)
         {
           esc_map[k].type = ISFUNC;
-          esc_map[k].function = map[k + KEYMAP_META_BASE].function;
+          esc_map[k].value.function = map[k + KEYMAP_META_BASE].value.function;
         }
     }
   return;
@@ -725,16 +725,16 @@ read_init_file (char *init_file)
 
   for (i = 'A'; i < ('Z' + 1); i++)
     {
-      if (!info_keymap[i].function)
+      if (!info_keymap[i].value.function)
         {
           info_keymap[i].type = ISFUNC;
-          info_keymap[i].function = InfoCmd (info_do_lowercase_version);
+          info_keymap[i].value.function = InfoCmd (info_do_lowercase_version);
         }
 
-      if (!info_keymap[KEYMAP_META(i)].function)
+      if (!info_keymap[KEYMAP_META(i)].value.function)
         {
           info_keymap[KEYMAP_META(i)].type = ISFUNC;
-          info_keymap[KEYMAP_META(i)].function
+          info_keymap[KEYMAP_META(i)].value.function
             = InfoCmd (info_do_lowercase_version);
         }
     }
