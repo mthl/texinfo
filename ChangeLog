@@ -1,3 +1,9 @@
+2014-11-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert) <@quotation with
+	@author>: Check if @smallquotation was used as well.  Report
+	from Mahlon Smith.
+
 2014-11-14  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\footnote): do not set \indent and \noindent

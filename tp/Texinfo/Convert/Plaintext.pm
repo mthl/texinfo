@@ -3142,8 +3142,9 @@ sub _convert($$)
           $result .= $self->_convert($tree);
         }
       }
-    } elsif ($root->{'cmdname'} eq 'quotation' and $root->{'extra'} 
-             and $root->{'extra'}->{'authors'}) {
+    } elsif (($root->{'cmdname'} eq 'quotation' 
+               or $root->{'cmdname'} eq 'smallquotation')
+             and $root->{'extra'} and $root->{'extra'}->{'authors'}) {
       foreach my $author (@{$root->{'extra'}->{'authors'}}) {
         $result .= $self->_convert(
                  $self->gdt("\@center --- \@emph{{author}}\n",
