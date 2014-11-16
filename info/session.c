@@ -3734,8 +3734,6 @@ write_node_to_stream (NODE *node, FILE *stream)
    to gc even those file buffer contents which had to be uncompressed. */
 int gc_compressed_files = 0;
 
-static void info_search_1 (WINDOW *window, int count, int case_sensitive);
-
 static char *search_string = NULL;
 static int isearch_is_active = 0;
 
@@ -4071,7 +4069,8 @@ funexit:
 /* Minimal length of a search string */
 int min_search_length = 1;
 
-/* Read a string from the user. */
+/* Read a string from the user, storing the result in SEARCH_STRING.  Return 0 
+   if the user aborted. */
 static int
 ask_for_search_string (int case_sensitive, int use_regex, int direction)
 {
@@ -4092,17 +4091,21 @@ ask_for_search_string (int case_sensitive, int use_regex, int direction)
   line = info_read_in_echo_area (prompt);
   free (prompt);
 
-  if (!line || !*line)
+  if (!line) /* User aborted. */
+    {
+      return 0;
+    }
+  if (!*line)
     {
       free (line);
-      return 0;
+      return 1;
     }
 
   if (mbslen (line) < min_search_length)
     {
       info_error ("%s", _("Search string too short"));
       free (line);
-      return 0;
+      return 1;
     }
 
   free (search_string);
@@ -4138,6 +4141,10 @@ info_search_1 (WINDOW *window, int count, int case_sensitive)
         count = 1;      /* for backward compatibility */
     }
 
+  if (!ask_for_search_string (case_sensitive, use_regex, direction)
+      || !search_string)
+    return;
+
   start_off = window->point + direction;
   
   /* If the search string includes upper-case letters, make the search
@@ -4149,6 +4156,9 @@ info_search_1 (WINDOW *window, int count, int case_sensitive)
           case_sensitive = 1;
           break;
         }
+
+  last_search_direction = direction;
+  last_search_case_sensitive = case_sensitive;
 
   for (result = 0; result == 0 && count--; )
     result = info_search_internal (search_string,
@@ -4165,35 +4175,17 @@ info_search_1 (WINDOW *window, int count, int case_sensitive)
 DECLARE_INFO_COMMAND (info_search_case_sensitively,
                       _("Read a string and search for it case-sensitively"))
 {
-  last_search_direction = count > 0 ? 1 : -1;
-  last_search_case_sensitive = 1;
-
-  if (!ask_for_search_string (1, use_regex, count))
-    return;
-
   info_search_1 (window, count, 1);
 }
 
 DECLARE_INFO_COMMAND (info_search, _("Read a string and search for it"))
 {
-  last_search_direction = count > 0 ? 1 : -1;
-  last_search_case_sensitive = 0;
-
-  if (!ask_for_search_string (0, use_regex, count))
-    return;
-
   info_search_1 (window, count, 0);
 }
 
 DECLARE_INFO_COMMAND (info_search_backward,
                       _("Read a string and search backward for it"))
 {
-  last_search_direction = count > 0 ? -1 : 1;
-  last_search_case_sensitive = 0;
-
-  if (!ask_for_search_string (0, use_regex, -count))
-    return;
-
   info_search_1 (window, -count, 0);
 }
 

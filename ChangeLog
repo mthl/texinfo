@@ -1,3 +1,13 @@
+2014-11-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (ask_for_search_string): Return 1 for empty 
+	input, and 0 only when it was aborted.
+	(info_search_case_sensitively, info_search)
+	(info_search_backward): Set last_search_direction and 
+	last_search_case sensitive in info_search_1.  Call 
+	ask_for_search_string in info_search_1.  Perform search if 
+	default search string was accepted.
+
 2014-11-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm (_convert) <@quotation with
