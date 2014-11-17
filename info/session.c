@@ -4498,7 +4498,6 @@ incremental_search (WINDOW *window, int count)
     {
       VFunction *func = NULL;
       int quoted = 0;
-      char type;
 
       /* Show the search string in the echo area. */
       show_isearch_prompt (dir, (unsigned char *) isearch_string,
@@ -4512,11 +4511,68 @@ incremental_search (WINDOW *window, int count)
           display_cursor_at_point (active_window);
         }
 
-      /* Read a character and dispatch on it. */
-      key = get_input_key ();
-      window_get_state (window, &mystate);
+      /* Read keys, looking in both keymaps for a recognized key sequence. */
+      {
+        Keymap info_kp, ea_kp;
 
-      if (key == Control ('q'))
+        info_kp = info_keymap;
+        ea_kp = echo_area_keymap;
+
+        key = get_input_key ();
+
+        while (1)
+          {
+            if (key >= 32 && key < 256)
+              break;
+
+            if (info_kp && info_kp[key].type == ISFUNC)
+              {
+                if (info_kp[key].value.function)
+                  func = info_kp[key].value.function->func;
+                if (func == &isearch_forward
+                    || func == &isearch_backward
+                    || func == &info_abort_key)
+                  {
+                    goto gotfunc;
+                  }
+                else
+                  {
+                    func = 0;
+                    info_kp = 0;
+                  }
+              }
+            else if (info_kp) /* ISKMAP */
+              info_kp = info_kp[key].value.keymap;
+
+            if (ea_kp && ea_kp[key].type == ISFUNC)
+              {
+                if (ea_kp[key].value.function)
+                  func = ea_kp[key].value.function->func;
+                if (func == &ea_abort
+                    || func == &ea_quoted_insert
+                    || func == &ea_rubout)
+                  {
+                    func = ea_kp[key].value.function->func;
+                    goto gotfunc;
+                  }
+                else
+                  {
+                    func = 0;
+                    ea_kp = 0;
+                  }
+              }
+            else if (ea_kp) /* ISKMAP */
+              ea_kp = ea_kp[key].value.keymap;
+
+          if (!info_kp && !ea_kp)
+            break;
+
+          key = get_input_key ();
+        }
+      }
+gotfunc:
+
+      if (func == &ea_quoted_insert)
         {
           /* User wants to insert a character. */
           key = get_input_key ();
@@ -4524,18 +4580,23 @@ incremental_search (WINDOW *window, int count)
             continue; /* The user pressed a key like an arrow key. */
           quoted = 1;
         }
-      else
-        {
-          /* If this key is not a keymap, get its associated function,
-             if any. */
-          KEYMAP_ENTRY k = info_keymap[key];
-          type = k.type;
-          func = type == ISFUNC && k.value.function
-            ? k.value.function->func
-            : NULL;
-        }
 
-      if (key == DEL || key == Control ('h'))
+      if (quoted || (!func && key >= 32 && key < 256))
+        {
+          push_isearch (window, isearch_string_index, dir,
+                        search_result, start_off);
+
+          if (isearch_string_index + 2 >= isearch_string_size)
+            isearch_string = xrealloc
+              (isearch_string, isearch_string_size += 100);
+
+          isearch_string[isearch_string_index++] = key;
+          isearch_string[isearch_string_index] = '\0';
+
+          if (search_result != search_success)
+            continue;
+        }
+      else if (func == &ea_rubout)
         {
           /* User wants to delete one level of search? */
           if (!isearch_states_index)
@@ -4545,6 +4606,7 @@ incremental_search (WINDOW *window, int count)
             }
           else
             {
+              /* TODO: Erase mulit-byte characters correctly. */
               pop_isearch (window, &isearch_string_index,
                            &dir, &search_result, &start_off);
               isearch_string[isearch_string_index] = '\0';
@@ -4559,28 +4621,15 @@ incremental_search (WINDOW *window, int count)
                 }
             }
         }
-      else if (quoted || (key >= 32 && key < 256
-                     && (isprint (key) || (type == ISFUNC && func == NULL))))
-        {
-          push_isearch (window, isearch_string_index, dir, search_result, start_off);
-
-          if (isearch_string_index + 2 >= isearch_string_size)
-            isearch_string = xrealloc
-              (isearch_string, isearch_string_size += 100);
-
-          isearch_string[isearch_string_index++] = key;
-          isearch_string[isearch_string_index] = '\0';
-        }
-      else if (func == (VFunction *) isearch_forward
-               || func == (VFunction *) isearch_backward)
+      else if (func == &isearch_forward || func == &isearch_backward)
         {
           /* If this key invokes an incremental search, then this
              means that we will either search again in the same
              direction, search again in the reverse direction, or
              insert the last search string that was accepted through
              incremental searching. */
-          if ((func == (VFunction *) isearch_forward && dir > 0) ||
-              (func == (VFunction *) isearch_backward && dir < 0))
+          if (func == &isearch_forward && dir > 0
+              || func == &isearch_backward && dir < 0)
             {
               /* If the user has typed no characters, then insert the
                  last successful search into the current search string. */
@@ -4621,8 +4670,8 @@ incremental_search (WINDOW *window, int count)
               dir = -dir;
             }
         }
-      else if (func == (VFunction *) info_abort_key
-               && isearch_states_index && (search_result != search_success))
+      else if (func == &info_abort_key
+               && isearch_states_index && search_result != search_success)
         {
           /* If C-g pressed, and the search is failing, pop the search
              stack back to the last unfailed search. */
@@ -4635,17 +4684,17 @@ incremental_search (WINDOW *window, int count)
                                search_result);
           continue;
         }
-      else
+      else if (func == &info_abort_key || func == &ea_abort || !func)
         {
           /* The character is not printable, or it has a function which is
              non-null.  Exit the search, remembering the search string. */
-          if (isearch_string_index && func != (VFunction *) info_abort_key)
+          if (isearch_string_index && func != &info_abort_key)
             {
               free (last_isearch_accepted);
               last_isearch_accepted = xstrdup (isearch_string);
             }
 
-          if (func == (VFunction *) info_abort_key)
+          if (func == &info_abort_key)
             {
               if (isearch_states_index)
                 window_set_state (window, &orig_state);
@@ -4661,7 +4710,7 @@ incremental_search (WINDOW *window, int count)
           continue;
         }
 
-      /* Search for the contents of isearch_string. */
+      /* Show the new search string in the prompt. */
       show_isearch_prompt (dir, (unsigned char *) isearch_string, 
                            search_result);
 
@@ -4676,6 +4725,8 @@ incremental_search (WINDOW *window, int count)
           }
 
       last_search_result = search_result;
+
+      window_get_state (window, &mystate);
       search_result = info_search_internal (isearch_string,
                                             window, dir, case_sensitive,
                                             &start_off);
