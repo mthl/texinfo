@@ -1,5 +1,10 @@
 2014-11-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/dir.c (dir_entry_of_infodir): Don't free a node too 
+	early.
+
+2014-11-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (incremental_search): Look up pressed keys in 
 	info_keymap and echo_area_keymap.  Do not hard-code any keys for 
 	particular commands.

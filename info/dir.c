@@ -291,7 +291,6 @@ dir_entry_of_infodir (char *label, char *searchdir)
       dir_node = info_get_node (dir_fullpath, "Top");
       free (dir_fullpath);
       entry = info_get_menu_entry_by_label (dir_node, label, 1);
-      free_history_node (dir_node);
       if (!entry)
         continue;
 
@@ -302,6 +301,8 @@ dir_entry_of_infodir (char *label, char *searchdir)
           free (entry->filename);
           entry->filename = entry_fullpath;
         }
+
+      free_history_node (dir_node);
       return entry;
     }
   return 0;
