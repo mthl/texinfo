@@ -7,6 +7,8 @@
 	(info_search_in_node_internal): Remove unnecessary conditional 
 	checks.
 
+	* info/t/inc-sea-history.sh: New test.
+
 2014-11-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/dir.c (dir_entry_of_infodir): Don't free a node too 
