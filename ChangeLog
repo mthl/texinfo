@@ -1,3 +1,12 @@
+2014-11-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (incremental_search): Add at most one node to 
+	the window history.
+	(info_search_internal): Call free_history_node on nodes where no 
+	match was found.
+	(info_search_in_node_internal): Remove unnecessary conditional 
+	checks.
+
 2014-11-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/dir.c (dir_entry_of_infodir): Don't free a node too 

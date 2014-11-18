@@ -3833,6 +3833,7 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
   regmatch_t *matches;
   size_t match_count;
   int match_index;
+  long new_point;
     
   /* Check if we need to calculate new results. */
   if (!window->matches
@@ -3873,36 +3874,31 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
       end1 = node->body_start;
     }
   
-  if (result != search_invalid)
+  result = match_in_match_list (matches, match_count,
+                                start1, end1, &match_index);
+  if (result != search_success)
+    return result;
+
+  *poff = matches[match_index].rm_so;
+
+  window->flags |= W_UpdateWindow;
+  if (window->node != node)
+    info_set_node_of_window (window, node);
+
+  if (window->matches != matches)
     {
-      result = match_in_match_list (matches, match_count,
-                                    start1, end1, &match_index);
-      if (result == search_success)
-        *poff = matches[match_index].rm_so;
+      free (window->matches);
+      window->matches = matches;
+      window->match_count = match_count;
     }
 
-  if (result == search_success && window)
-    {
-      long new_point;
+  if (isearch_is_active && dir > 0)
+    new_point = matches[match_index].rm_eo;
+  else
+    new_point = matches[match_index].rm_so;
 
-      window->flags |= W_UpdateWindow;
-      if (window->node != node)
-        info_set_node_of_window (window, node);
+  window->point = new_point;
 
-      if (window->matches != matches)
-        {
-          free (window->matches);
-          window->matches = matches;
-          window->match_count = match_count;
-        }
-
-      if (isearch_is_active && dir > 0)
-        new_point = matches[match_index].rm_eo;
-      else
-        new_point = matches[match_index].rm_so;
-
-      window->point = new_point;
-    }
   return result;
 }
 
@@ -3972,7 +3968,11 @@ info_search_internal (char *string, WINDOW *window,
                  case_sensitive, use_regex, start_off);
 
       if (result == search_invalid)
-        return 1;
+        {
+          if (node != window->node)
+            free_history_node (node);
+          return 1;
+        }
 
       if (result == search_success)
         {
@@ -4025,7 +4025,7 @@ info_search_internal (char *string, WINDOW *window,
 
       /* Get a new node to search in. */
       if (node != window->node)
-        free (node);
+        free_history_node (node);
       free (window->matches);
       window->matches = 0;
 
@@ -4471,6 +4471,7 @@ incremental_search (WINDOW *window, int count)
   char *p;
   int case_sensitive;
   long start_off = window->point;
+  int starting_history_entry = window->hist_index - 1;
 
   long saved_point = window->point;
 
@@ -4619,6 +4620,8 @@ gotfunc:
                   display_update_one_window (window);
                   continue;
                 }
+              if (search_result != search_success)
+                continue;
             }
         }
       else if (func == &isearch_forward || func == &isearch_backward)
@@ -4760,6 +4763,39 @@ gotfunc:
 
   /* Free the memory used to remember each search state. */
   free_isearch_states ();
+
+  /* Alter the window history so that we have added at most one node in the 
+     incremental search, so that going back once with "l" goes to where we 
+     started the incremental search if the match was in a different node. */
+  {
+    int i = window->hist_index - 1;
+    while (i >= starting_history_entry
+           && window->node != window->hist[i]->node)
+      {
+        free_history_node (window->hist[i]->node);
+        free (window->hist[i]);
+        i--;
+      }
+
+    if (i > starting_history_entry)
+      {
+        /* History entry i is the only one we want to keep. */
+        int i2 = i - 1;
+        while (i2 > starting_history_entry)
+          {
+            free_history_node (window->hist[i2]->node);
+            free (window->hist[i2]);
+            i2--;
+          }
+        window->hist[starting_history_entry + 1] = window->hist[i];
+        window->hist_index = starting_history_entry + 2;
+      }
+    else
+      /* The match was in the first node checked.  No extra history entries 
+         are needed. */
+      window->hist_index = starting_history_entry + 1;
+    window->hist[window->hist_index] = 0;
+  }
 
   /* Perhaps GC some file buffers. */
   gc_file_buffers_and_nodes ();
