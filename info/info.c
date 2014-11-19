@@ -247,21 +247,24 @@ get_initial_file (int *argc, char ***argv, char **error)
       entry = lookup_dir_entry ((*argv)[0], 1);
       if (entry)
         {
-          REFERENCE *copy;
-          (*argv)++; /* Advance past first remaining argument. */
-          (*argc)--;
-          /* Clear error message. */
-          free (*error);
-          *error = 0;
-
-          copy = info_copy_reference (entry);
           initial_file = info_find_fullpath (entry->filename, 0);
-          /* Store full path, so that we find the already loaded file in
-             info_find_file, and show the full path if --where is used. */
-          free (copy->filename);
-          copy->filename = initial_file;
-          add_pointer_to_array (copy, ref_index, ref_list, ref_slots, 2);
-          return;
+          if (initial_file)
+            {
+              REFERENCE *copy;
+              (*argv)++; /* Advance past first remaining argument. */
+              (*argc)--;
+              /* Clear error message. */
+              free (*error);
+              *error = 0;
+
+              copy = info_copy_reference (entry);
+              /* Store full path, so that we find the already loaded file in
+                 info_find_file, and show the full path if --where is used. */
+              free (copy->filename);
+              copy->filename = initial_file;
+              add_pointer_to_array (copy, ref_index, ref_list, ref_slots, 2);
+              return;
+            }
         }
     }
 

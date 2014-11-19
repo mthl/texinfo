@@ -17,3 +17,5 @@ Test Info files
 * file-menu: (file-menu). 
 
 * split: (split). 
+
+* non-existent: (non-existent).  Dir reference to non-existent file.

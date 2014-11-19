@@ -105,6 +105,7 @@ TESTS = \
 	t/dir-3-menus.sh \
 	t/dir-menus-sloppily.sh \
 	t/where-dir-file.sh \
+	t/dir-dangling-entry.sh \
 	t/spec-file-node.sh \
 	t/spec-no-node.sh \
 	t/spec-menu.sh \

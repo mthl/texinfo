@@ -1,3 +1,9 @@
+2014-11-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (get_initial_file) <inexact dir lookup>: Check if 
+	file referred to exists.
+	* info/t/dir-dangling-entry.sh: New test.
+
 2014-11-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (incremental_search): Add at most one node to 
