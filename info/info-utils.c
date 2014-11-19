@@ -755,12 +755,16 @@ degrade_utf8 (char **from, size_t *from_left)
     {"\xE2\x80\x9D","\""},/* Closing double quote */
     {"\xC2\xA9","(C)"},   /* Copyright symbol */
     {"\xC2\xBB",">>"},    /* Closing double angle brackets */
+
     {"\xE2\x86\x92","->"},/* Right arrow */
+    {"\xE2\x87\x92","=>"},/* Right double arrow */
+
     {"\xE2\x80\x90","-"},  /* Hyphen */
     {"\xE2\x80\x91","-"},  /* Non-breaking hyphen */
     {"\xE2\x80\x92","-"},  /* Figure dash */
     {"\xE2\x80\x93","-"},  /* En dash */
     {"\xE2\x80\x94","--"},  /* Em dash */
+    {"\xE2\x88\x92","-"},  /* Minus sign */
     {"\xE2\x80\xA6","..."},  /* Ellipsis */
     {"\xE2\x80\xA2","*"},  /* Bullet */
 

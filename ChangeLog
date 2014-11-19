@@ -1,5 +1,10 @@
 2014-11-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (degrade_utf8): Add some more ASCII 
+	replacements.
+
+2014-11-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (incremental_search) <backspace>: Remove a 
 	complete multi-byte character.
 
