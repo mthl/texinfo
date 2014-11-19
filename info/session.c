@@ -4607,10 +4607,20 @@ gotfunc:
             }
           else
             {
-              /* TODO: Erase mulit-byte characters correctly. */
-              pop_isearch (window, &isearch_string_index,
-                           &dir, &search_result, &start_off);
+              int end = isearch_string_index;
+              /* Remove a complete multi-byte character from the end of the
+                 search string. */
+              do
+                {
+                  pop_isearch (window, &isearch_string_index,
+                               &dir, &search_result, &start_off);
+                }
+              while (isearch_string_index > 0
+                && (long) mbrlen (isearch_string + isearch_string_index,
+                                  end - isearch_string_index, NULL) <= 0);
+               
               isearch_string[isearch_string_index] = '\0';
+
               if (isearch_string_index == 0)
                 {
                   /* Don't search for an empty string.  Clear the search. */

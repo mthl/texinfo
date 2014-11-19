@@ -1,5 +1,10 @@
 2014-11-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (incremental_search) <backspace>: Remove a 
+	complete multi-byte character.
+
+2014-11-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info.c (get_initial_file) <inexact dir lookup>: Check if 
 	file referred to exists.
 	* info/t/dir-dangling-entry.sh: New test.
