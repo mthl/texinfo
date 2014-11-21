@@ -6586,7 +6586,7 @@ includes @samp{Top} if it was given.)  For example,
 
 @example
 @group
-*Note (make)::Top.
+*Note (make)Top::.
 @end group
 @end example
 

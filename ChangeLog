@@ -1,5 +1,9 @@
 2014-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Top Node Naming): Fix typo.
+
+2014-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/HTML.pm: Set 
 	$default_commands_conversion{'raggedright'} to reference to 
 	_convert_command_noop so that contents of @raggedright block 
