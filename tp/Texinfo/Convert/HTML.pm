@@ -2482,6 +2482,7 @@ sub _convert_command_noop($$$$)
   return $content;
 }
 
+$default_commands_conversion{'raggedright'} = \&_convert_command_noop;
 $default_commands_conversion{'flushleft'} = \&_convert_command_noop;
 $default_commands_conversion{'flushright'} = \&_convert_command_noop;
 $default_commands_conversion{'group'} = \&_convert_command_noop;

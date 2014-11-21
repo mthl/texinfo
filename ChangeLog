@@ -1,3 +1,10 @@
+2014-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm: Set 
+	$default_commands_conversion{'raggedright'} to reference to 
+	_convert_command_noop so that contents of @raggedright block 
+	appear.  Report from Mahlon Smith.
+
 2014-11-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (degrade_utf8): Add some more ASCII 
