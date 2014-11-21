@@ -1,5 +1,11 @@
 2014-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (read_key_sequence): Set info_explicit_arg or 
+	ea_explicit_arg if argument was given with sequence of C-u's.
+	* info/t/c-u-m-x-scroll-forward.sh: New test.
+
+2014-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Top Node Naming): Fix typo.
 
 2014-11-21  Gavin Smith  <gavinsmith0123@gmail.com>

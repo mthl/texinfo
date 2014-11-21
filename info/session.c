@@ -5155,10 +5155,11 @@ read_key_sequence (Keymap map, int menu, int mouse,
         }
       else if (func == &info_universal_argument)
         {
-          /* This means multiply by 4. */
-          /* info_explicit_arg seems to be doing double duty so that
-             C-u 2 doesn't mean 42. */
-          numeric_arg *= 4;
+          /* Multiply by 4. */
+          /* TODO: Maybe C-u should also terminate the universal argument 
+             sequence, as in Emacs. (C-u 6 4 C-u 1 inserts 64 1's.) */
+          if (!*which_explicit_arg)
+            numeric_arg *= 4;
           reading_universal_argument = 1;
         }
       else if (menu && func == &info_menu_digit)
@@ -5189,6 +5190,13 @@ read_key_sequence (Keymap map, int menu, int mouse,
 
           if (count)
             *count = numeric_arg * numeric_arg_sign;
+
+          /* *which_explicit_arg has not been set yet if only a sequence of 
+             C-u's was typed (each of which has multiplied the argument by 
+             four).  */
+          if (*count != 1 && !*which_explicit_arg)
+            *which_explicit_arg = 1;
+
           return func;
         }
       else if (map[key].type == ISKMAP)
