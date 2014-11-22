@@ -61,6 +61,11 @@ In float
 in caption}
 @end float
 '],
+['raggedright','
+@raggedright
+in raggedright
+@end raggedright
+'],
 ['item_container','
 @itemize +
 @item i--tem +
