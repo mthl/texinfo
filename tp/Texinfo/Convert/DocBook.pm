@@ -146,6 +146,8 @@ my %style_attribute_commands;
       'r'           => '',
       'samp'        => 'literal',
       'strong'      => 'emphasis role="bold"',
+      'sub'         => 'subscript',
+      'sup'         => 'superscript',
       't'           => 'literal',
       'var'         => 'replaceable',
       'verb'        => 'literal',

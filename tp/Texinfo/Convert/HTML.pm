@@ -213,6 +213,8 @@ sub _get_target($$)
   if ($self->{'targets'}->{$command}) {
     $target = $self->{'targets'}->{$command};
   } elsif ($command->{'cmdname'}
+    # This should only happen for @*heading*, root_commands targets should 
+    # already be set.
             and $sectioning_commands{$command->{'cmdname'}} 
             and !$root_commands{$command->{'cmdname'}}) {
     $target = $self->_new_sectioning_command_target($command);
@@ -1310,6 +1312,8 @@ $style_attribute_commands{'normal'} = {
       'samp'        => 'samp',
       'sc'          => 'small',
       'strong'      => 'strong',
+      'sub'         => 'sub',
+      'sup'         => 'sup',
       't'           => 'tt',
       'var'         => 'var',
       'verb'        => 'tt',
@@ -3942,7 +3946,7 @@ sub _convert_def_line_type($$$$)
   }
 
   my $index_label = '';
-  my $index_id = $self->command_id ($command);
+  my $index_id = $self->command_id($command);
   if (defined($index_id) and $index_id ne '' and !@{$self->{'multiple_pass'}}) {
     $index_label = "<a name=\"$index_id\"></a>";
   }

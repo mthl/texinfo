@@ -587,7 +587,7 @@ foreach my $style_command ('asis','cite','clicksequence',
   'dfn', 'emph',
   'sc', 't', 'var',
   'headitemfont', 'code', 'command', 'env', 'file', 'kbd',
-  'option', 'samp', 'strong') {
+  'option', 'samp', 'strong', 'sub', 'sup') {
   $brace_commands{$style_command} = 1;
   $style_commands{$style_command} = 1;
 }

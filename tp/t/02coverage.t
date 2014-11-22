@@ -26,13 +26,15 @@ my @test_cases = (
 @math{--{x^i}\over{\tan y}}
 
 Math with @@-command
-@math{@code{math code} a < b}
+@math{@code{math code} a < b \sum@sub{i} q@sup{2}}
 
 Complex
 @math{ \underline{@code{math \hbox{ code }}} @\i \sum_{i}{\underline{f}}}
 
 @@\ outside of math
 @\
+
+The 3@sup{rd}is the I@sub{r}.
 
 '],
 ['empty_w',

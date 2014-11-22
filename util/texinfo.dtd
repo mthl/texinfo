@@ -146,7 +146,7 @@
 <!ENTITY % Inline.footnote "footnote">
 <!ENTITY % Inline.markup "code | command | env | file | option | samp | verb
                           | dfn | cite | key | kbd | var | acronym | abbr
-                          | indicateurl | w | asis"> 
+                          | indicateurl | w | asis | sub | sup "> 
 <!ENTITY % Inline.math "math | dmn">
 <!ENTITY % Inline.reference "xref | ref | pxref | inforef | email | uref | url">
 <!ENTITY % Inline.misc "click | clicksequence | logo | punct | spacecmd | today
@@ -1003,6 +1003,8 @@
 <!ELEMENT clicksequence (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT w       (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT asis    (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT sub     (#PCDATA | %Inline.phrase;)*>
+<!ELEMENT sup     (#PCDATA | %Inline.phrase;)*>
 <!ELEMENT verb    (#PCDATA)>
 <!ATTLIST verb
           delimiter CDATA #REQUIRED>

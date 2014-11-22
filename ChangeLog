@@ -1,3 +1,12 @@
+2014-11-22  Patrice Dumas  <pertusus@free.fr>
+
+	* Texinfo/Common.pm (%style_commands), 
+	Texinfo/Convert/DocBook.pm (%style_attribute_commands),
+	Texinfo/Convert/HTML.pm (%style_attribute_commands),
+	Texinfo/Convert/Plaintext.pm (%style_map),
+	util/texinfo.dtd: add @sub and @sup.  Report and formatting
+	proposal from Per Bothner.
+
 2014-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (read_key_sequence): Set info_explicit_arg or 

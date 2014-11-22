@@ -289,6 +289,8 @@ delete $non_quoted_commands_when_nested{'samp'};
 delete $non_quoted_commands_when_nested{'indicateurl'};
 
 $style_map{'key'} = ['<', '>'];
+$style_map{'sub'} = ['_{', '}'];
+$style_map{'sup'} = ['^{', '}'];
 
 # in those commands, there is no addition of double space after a dot.
 # math is special
