@@ -1,3 +1,8 @@
+2014-11-27  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (@noindent, @indent): more explicitly describe
+	recommendations and current behavior.
+
 2014-11-22  Patrice Dumas  <pertusus@free.fr>
 
 	* Texinfo/Common.pm (%style_commands), 

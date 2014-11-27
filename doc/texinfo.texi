@@ -8349,8 +8349,8 @@ The @code{@@exdent} command is used within the above constructs to
 undo the indentation of a line.
 
 The @code{@@noindent} command may be used after one of the above
-constructs (or anywhere) to prevent the following text from being
-indented as a new paragraph.
+constructs (or at the beginning of any paragraph) to prevent the
+following text from being indented as a new paragraph.
 
 
 @node @t{@@quotation}
@@ -8933,7 +8933,7 @@ containing lists of commands with long names, when it is known in
 advance that justifying the text on both margins will make the
 paragraph look bad.
 
-For example,
+An example (from elswhere in this manual):
 
 @example
 @group
@@ -8973,13 +8973,8 @@ paragraph.  You can prevent this on a case-by-case basis by writing
 text.  You can also disable indentation for all paragraphs globally with
 @code{@@paragraphindent} (@pxref{@t{@@paragraphindent}}).
 
-It is best to write @code{@@noindent} on a line by itself, since in most
-environments, spaces following the command will not be ignored.  It's ok
-to use it at the beginning of a line, with text following, outside of
-any environment.
-
-@need 1500
-For example:
+Here is an example showing how to eliminate the normal indentation of
+the text after an @code{@@example}, a common situation:
 
 @example
 @group
@@ -8989,38 +8984,39 @@ This is an example
 
 @@noindent
 This line is not indented.  As you can see, the
-beginning of the line is fully flush left with the line
-that follows after it.  (This whole example is between
-@@code@{@@@@display@} and @@code@{@@@@end display@}.)
+beginning of the line is fully flush left with the
+line that follows after it.
 @end group
 @end example
 
 @noindent produces:
 
 @display
-
 @example
 This is an example
 @end example
 
 @noindent
 This line is not indented.  As you can see, the
-beginning of the line is fully flush left with the line
-that follows after it.  (This whole example is between
-@code{@@display} and @code{@@end display}.)
-
+beginning of the line is fully flush left with the
+line that follows after it.
 @end display
 
-To adjust the number of blank lines properly in the Info file output,
-remember that the line containing @code{@@noindent} does not generate a
-blank line, and neither does the @code{@@end example} line.
+The standard usage of @code{@@indent} is just as above: at the
+beginning of what would otherwise be a paragraph, to eliminate the
+indentation that normally happens there.  It can either be followed by
+text or be on a line by itself.  There is no reason to use it
+in other contexts, such as in the middle of a paragraph or inside an
+environment (@pxref{Quotations and Examples}).
 
-In the Texinfo source file for this manual, each line that says
-`produces' is preceded by @code{@@noindent}.
+You can control the number of blank lines in the Info file output by
+adjusting the input as desired: a line containing just
+@code{@@noindent} does not generate a blank line, and neither does an
+@code{@@end} line for an environment.
 
 Do not put braces after an @code{@@noindent} command; they are not
-necessary, since @code{@@noindent} is a command used outside of
-paragraphs (@pxref{Command Syntax}).
+used, since @code{@@noindent} is a command used outside of paragraphs
+(@pxref{Command Syntax}).
 
 
 @node @t{@@indent}
@@ -9034,23 +9030,25 @@ paragraphs (@pxref{Command Syntax}).
 
 @indent
 To complement the @code{@@noindent} command (see the previous
-section), Texinfo provides the @code{@@indent} command that forces a
-paragraph to be indented.  This paragraph, for instance, is indented
-using an @code{@@indent} command.  The first paragraph of a section is
-the most likely place to use @code{@@indent}, to override the normal
-behavior of no indentation there (@pxref{@t{@@paragraphindent}}).
+section), Texinfo provides the @code{@@indent} command to force a
+paragraph to be indented.  For instance, this paragraph (the first in
+this section) is indented using an @code{@@indent} command.
 
-It is best to write @code{@@indent} on a line by itself, since in most
-environments, spaces following the command will not be ignored.  The
-@code{@@indent} line will not generate a blank line in the Info output
-within an environment.
+And indeed, the first paragraph of a section is the most likely place
+to use @code{@@indent}, to override the normal behavior of no
+indentation there (@pxref{@t{@@paragraphindent}}).  It can either be
+followed by text or be on a line by itself.
 
-However, it is ok to use it at the beginning of a line, with text
-following, outside of any environment.
+As a special case, when @code{@@indent} is used in an environment
+where text is not filled, it produces a paragraph indentation space in
+the @TeX{} output.  (These environments are where a line of input
+produces a line of output, such as @code{@@example} and
+@code{@@display}; for a summary of all environments, @pxref{Block
+Enclosing Commands}.)
 
-Do not put braces after an @code{@@indent} command; they are not
-necessary, since @code{@@indent} is a command used outside of
-paragraphs (@pxref{Command Syntax}).
+Do not put braces after an @code{@@indent} command; they are not used,
+since @code{@@indent} is a command used outside of paragraphs
+(@pxref{Command Syntax}).
 
 
 @node @t{@@cartouche}
