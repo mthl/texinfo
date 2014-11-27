@@ -1380,7 +1380,10 @@ You can write comments in a Texinfo file by using the @code{@@comment}
 command, which may be abbreviated to @code{@@c}.  Such comments are
 for a person looking at the Texinfo source file.  All the text on a
 line that follows either @code{@@comment} or @code{@@c} is a comment;
-the rest of the line does not appear in the visible output.
+the rest of the line does not appear in the visible output.  (To be
+precise, the character after the @code{@@c} or @code{@@comment} must
+be something other than a dash or alphanumeric, or it will be taken as
+part of the command.)
 
 Often, you can write the @code{@@comment} or @code{@@c} in the middle
 of a line, and only the text that follows after the @code{@@comment}
@@ -1401,14 +1404,13 @@ the line after the @kbd{DEL} will be ignored.
 @cindex Ignored text
 @cindex Unprocessed text
 @findex ignore
-You can also have long stretches of text to be ignored by the Texinfo
+You can also have long stretches of text ignored by the Texinfo
 processors with the @code{@@ignore} and @code{@@end ignore} commands.
 Write each of these commands on a line of its own, starting each
 command at the beginning of the line.  Text between these two commands
 does not appear in the processed output.  You can use @code{@@ignore}
-and @code{@@end ignore} for writing comments.  (For some technical
-caveats regarding nesting of such commands, @pxref{Conditional
-Nesting}.)
+and @code{@@end ignore} for writing comments.  (For some caveats
+regarding nesting of such commands, @pxref{Conditional Nesting}.)
 
 
 @node Minimum

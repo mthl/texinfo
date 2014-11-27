@@ -1,5 +1,8 @@
 2014-11-27  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.texi (Comments): must not be followed by -.
+	Patrice, texinfo-devel 22 Nov 2014 15:18:07.
+
 	* doc/texinfo.texi (@noindent, @indent): more explicitly describe
 	recommendations and current behavior.
 
