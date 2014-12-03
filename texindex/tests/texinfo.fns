@@ -1,0 +1,454 @@
+\initial {!}
+\entry {\code {! \r {(end of sentence)}}}{121}
+\initial {"}
+\entry {\code {" \r {(umlaut accent)}}}{122}
+\initial {'}
+\entry {\code {' \r {(umlaut accent)}}}{122}
+\initial {*}
+\entry {\code {* \r {(force line break)}}}{132}
+\initial {,}
+\entry {\code {, \r {(cedilla accent)}}}{122}
+\initial {-}
+\entry {\code {- \r {(discretionary hyphen)}}}{133}
+\entry {\code {- (in image alt string)}}{108}
+\initial {.}
+\entry {\code {. \r {(end of sentence)}}}{121}
+\initial {/}
+\entry {\code {/ \r {(allow line break)}}}{132}
+\initial {<}
+\entry {\code {<colon> \r {(suppress end-of-sentence space)}}}{120}
+\entry {\code {<newline>}}{119}
+\entry {\code {<space>}}{119}
+\entry {\code {<tab>}}{119}
+\initial {=}
+\entry {\code {= \r {(macron accent)}}}{122}
+\initial {?}
+\entry {\code {? \r {(end of sentence)}}}{121}
+\initial {@}
+\entry {\code {@ \r {(literal \samp {@})}}}{117}
+\entry {\code {@atchar{\tt \char 123}{\tt \char 125} \r {(literal \samp {@})}}}{117}
+\entry {\code {@codequotebacktick \var {on-off}}}{119}
+\entry {\code {@codequoteundirected \var {on-off}}}{119}
+\entry {\code {@hashchar{\tt \char 123}{\tt \char 125} \r {(literal \samp {#})}}}{118}
+\entry {\code {@lbracechar{\tt \char 123}{\tt \char 125} \r {(literal \samp {{\tt \char 123}})}}}{117}
+\entry {\code {@rbracechar{\tt \char 123}{\tt \char 125} \r {(literal \samp {{\tt \char 125}})}}}{117}
+\initial {^}
+\entry {\code {^ \r {(circumflex accent)}}}{122}
+\initial {`}
+\entry {\code {` \r {(grave accent)}}}{122}
+\initial {\\}
+\entry {\code {{\tt \backslashcurfont } \r {(literal {\tt \backslashcurfont } in \code {@math})}}}{125}
+\entry {\code {{\tt \backslashcurfont }emergencystretch}}{183}
+\entry {\code {{\tt \backslashcurfont }gdef \r {within \code {@tex}}}}{154}
+\entry {\code {{\tt \backslashcurfont }globaldefs \r {within \code {@tex}}}}{154}
+\entry {\code {{\tt \backslashcurfont }input \r {(raw \TeX {} startup)}}}{10}
+\entry {\code {{\tt \backslashcurfont }mag \r {(raw \TeX {} magnification)}}}{185}
+\initial {|}
+\entry {\code {{\tt \char 123} \r {(literal \samp {{\tt \char 123}})}}}{117}
+\entry {\code {{\tt \char 125} \r {(literal \samp {{\tt \char 125}})}}}{117}
+\initial {~}
+\entry {\code {~ \r {(tilde accent)}}}{122}
+\initial {A}
+\entry {\code {aa}}{123}
+\entry {\code {AA}}{123}
+\entry {\code {abbr}}{83}
+\entry {\code {acronym}}{83}
+\entry {\code {ae}}{123}
+\entry {\code {AE}}{123}
+\entry {\code {afourlatex}}{184}
+\entry {\code {afourpaper}}{184}
+\entry {\code {afourwide}}{184}
+\entry {\code {alias}}{168}
+\entry {\code {allowcodebreaks}}{133}
+\entry {\code {anchor}}{58}
+\entry {\code {appendix}}{48}
+\entry {\code {appendixsec}}{49}
+\entry {\code {appendixsection}}{49}
+\entry {\code {appendixsubsec}}{49}
+\entry {\code {appendixsubsubsec}}{50}
+\entry {\code {apply}}{147}
+\entry {\code {arrow}}{130}
+\entry {\code {asis}}{101}
+\entry {\code {author}}{35}
+\initial {B}
+\entry {\code {b \r {(bold font)}}}{86}
+\entry {\code {backslash}}{118}
+\entry {\code {bullet}}{126}
+\entry {\code {bye}}{44, 45}
+\initial {C}
+\entry {\code {c \r {(comment)}}}{10}
+\entry {\code {caption}}{106}
+\entry {\code {cartouche}}{96}
+\entry {\code {center}}{34}
+\entry {\code {centerchap}}{48}
+\entry {\code {chapheading}}{48}
+\entry {\code {chapter}}{47}
+\entry {\code {cindex}}{112}
+\entry {\code {cite}}{75}
+\entry {\code {clear}}{156}
+\entry {\code {click}}{130}
+\entry {\code {clicksequence}}{130}
+\entry {\code {clickstyle}}{130}
+\entry {\code {code}}{77}
+\entry {\code {columnfractions}}{103}
+\entry {\code {comma}}{118}
+\entry {\code {command}}{82}
+\entry {\code {comment}}{10}
+\entry {\code {complete_tree_nodes_menus}}{206}
+\entry {\code {contents}}{37}
+\entry {\code {copying}}{32}
+\entry {\code {copyright}}{32, 125}
+\entry {\code {cropmarks}}{185}
+\initial {D}
+\entry {\code {debugcount}}{197}
+\entry {\code {debugtree}}{197}
+\entry {\code {defcodeindex}}{115}
+\entry {\code {defcv}}{144}
+\entry {\code {deffn}}{139}
+\entry {\code {deffnx}}{138}
+\entry {\code {defindex}}{115}
+\entry {\code {definfoenclose}}{168}
+\entry {\code {defivar}}{144}
+\entry {\code {defmac}}{139}
+\entry {\code {defmethod}}{146}
+\entry {\code {defop}}{145}
+\entry {\code {defopt}}{140}
+\entry {\code {defspec}}{139}
+\entry {\code {deftp}}{143}
+\entry {\code {deftypecv}}{144}
+\entry {\code {deftypefn}}{141}
+\entry {\code {deftypefnnewline}}{142}
+\entry {\code {deftypefun}}{142}
+\entry {\code {deftypeivar}}{145}
+\entry {\code {deftypeop}}{146}
+\entry {\code {deftypevar}}{143}
+\entry {\code {deftypevr}}{142}
+\entry {\code {defun}}{139}
+\entry {\code {defvar}}{140}
+\entry {\code {defvr}}{140}
+\entry {\code {DEL \r {(comment character)}}}{10}
+\entry {\code {detailmenu}}{39, 58}
+\entry {\code {dfn}}{82}
+\entry {\code {dh}}{123}
+\entry {\code {DH}}{123}
+\entry {\code {dircategory}}{216}
+\entry {\code {direntry}}{216}
+\entry {\code {display}}{92}
+\entry {\code {dmn}}{122}
+\entry {\code {docbook}}{155, 197}
+\entry {\code {documentdescription}}{40}
+\entry {\code {documentencoding}}{122, 123, 150}
+\entry {\code {documentlanguage}}{149}
+\entry {\code {dotaccent}}{122}
+\entry {\code {dotless}}{123}
+\entry {\code {dots}}{126}
+\entry {\code {dvi}}{197}
+\entry {\code {dvipdf}}{197}
+\initial {E}
+\entry {\code {email}}{84}
+\entry {\code {emph}}{85}
+\entry {\code {end}}{87, 97}
+\entry {\code {enddots}}{126}
+\entry {\code {enumerate}}{99}
+\entry {\code {env}}{81}
+\entry {\code {equiv}}{129}
+\entry {\code {error}}{129}
+\entry {\code {errormsg}}{153}
+\entry {\code {errormsg\r {, and line numbers in \TeX {}}}}{170}
+\entry {\code {euro}}{126}
+\entry {\code {evenfooting}}{268}
+\entry {\code {evenfootingmarks}}{270}
+\entry {\code {evenheading}}{268}
+\entry {\code {evenheadingmarks}}{270}
+\entry {\code {everyfooting}}{268}
+\entry {\code {everyfootingmarks}}{269}
+\entry {\code {everyheading}}{268}
+\entry {\code {everyheadingmarks}}{269}
+\entry {\code {example}}{89}
+\entry {\code {exampleindent}}{43}
+\entry {\code {exclamdown}}{123}
+\entry {\code {exdent}}{93}
+\entry {\code {expansion}}{128}
+\initial {F}
+\entry {\code {file}}{82}
+\entry {\code {fill_gaps_in_sectioning}}{206}
+\entry {\code {filll \r {\TeX {} dimension}}}{36}
+\entry {\code {finalout}}{183}
+\entry {\code {findex}}{112}
+\entry {\code {firstparagraphindent}}{43}
+\entry {\code {float}}{105}
+\entry {\code {flushleft}}{93}
+\entry {\code {flushright}}{93}
+\entry {\code {fn-name}}{137}
+\entry {\code {fonttextsize}}{85}
+\entry {\code {foobar}}{138, 141}
+\entry {\code {footnote}}{109}
+\entry {\code {footnotestyle}}{110}
+\entry {\code {format}}{93}
+\entry {\code {forward-word}}{136}
+\entry {\code {frenchspacing}}{121}
+\entry {\code {ftable}}{102}
+\initial {G}
+\entry {\code {geq}}{127}
+\entry {\code {group}}{135}
+\entry {\code {guillemetleft}}{124}
+\entry {\code {guillemetright}}{124}
+\entry {\code {guillemotleft}}{124}
+\entry {\code {guillemotright}}{124}
+\entry {\code {guilsinglleft}}{124}
+\entry {\code {guilsinglright}}{124}
+\initial {H}
+\entry {\code {H \r {(Hungarian umlaut accent)}}}{122}
+\entry {\code {hbox}}{183}
+\entry {\code {heading}}{49}
+\entry {\code {headings}}{41}
+\entry {\code {headitem}}{103}
+\entry {\code {headitemfont}}{103}
+\entry {\code {headword}}{169}
+\entry {\code {html}}{154, 197}
+\entry {\code {hyphenation}}{133}
+\initial {I}
+\entry {\code {i \r {(italic font)}}}{86}
+\entry {\code {ifclear}}{158}
+\entry {\code {ifdocbook}}{152, 155}
+\entry {\code {ifhtml}}{152, 154}
+\entry {\code {ifinfo}}{152}
+\entry {\code {ifnotdocbook}}{153}
+\entry {\code {ifnothtml}}{153}
+\entry {\code {ifnotinfo}}{153}
+\entry {\code {ifnotplaintext}}{153}
+\entry {\code {ifnottex}}{153}
+\entry {\code {ifnotxml}}{153}
+\entry {\code {ifplaintext}}{152}
+\entry {\code {ifset}}{157}
+\entry {\code {iftex}}{152}
+\entry {\code {ifxml}}{152, 154}
+\entry {\code {ignore}}{10}
+\entry {\code {image}}{107}
+\entry {\code {include}}{172}
+\entry {\code {indent}}{95}
+\entry {\code {indent_menu_descriptions}}{206}
+\entry {\code {indentedblock}}{89}
+\entry {\code {indicateurl}}{84}
+\entry {\code {info}}{197}
+\entry {\code {Info-validate}}{275}
+\entry {\code {inforef}}{73}
+\entry {\code {inlinefmt}}{155}
+\entry {\code {inlinefmtifelse}}{155}
+\entry {\code {inlineifclear}}{158}
+\entry {\code {inlineifset}}{158}
+\entry {\code {inlineraw}}{155}
+\entry {\code {insert_nodes_for_sectioning_commands}}{207}
+\entry {\code {insertcopying}}{33}
+\entry {\code {isearch-backward}}{138}
+\entry {\code {isearch-forward}}{138}
+\entry {\code {item}}{98, 101, 103}
+\entry {\code {itemize}}{98}
+\entry {\code {itemx}}{102}
+\initial {K}
+\entry {\code {kbd}}{78}
+\entry {\code {kbdinputstyle}}{78}
+\entry {\code {key}}{79}
+\entry {\code {kindex}}{112}
+\initial {L}
+\entry {\code {l}}{123}
+\entry {\code {LaTeX}}{125}
+\entry {\code {leq}}{127}
+\entry {\code {lisp}}{91}
+\entry {\code {listoffloats}}{106}
+\entry {\code {lowersections}}{51}
+\entry {\code {L}}{123}
+\initial {M}
+\entry {\code {macro}}{162}
+\entry {\code {majorheading}}{48}
+\entry {\code {makeinfo-buffer}}{211}
+\entry {\code {makeinfo-kill-job}}{212}
+\entry {\code {makeinfo-recenter-output-buffer}}{212}
+\entry {\code {makeinfo-region}}{211}
+\entry {\code {math}}{124}
+\entry {\code {menu}}{61}
+\entry {\code {minus}}{127}
+\entry {\code {move_index_entries_after_items}}{207}
+\entry {\code {multitable}}{102}
+\initial {N}
+\entry {\code {need}}{135}
+\entry {\code {next-error}}{211}
+\entry {\code {node}}{53}
+\entry {\code {noindent}}{94}
+\entry {\code {novalidate}}{176}
+\initial {O}
+\entry {\code {o}}{123}
+\entry {\code {occur}}{275}
+\entry {\code {occur-mode-goto-occurrence}}{19}
+\entry {\code {oddfooting}}{268}
+\entry {\code {oddfootingmarks}}{270}
+\entry {\code {oddheading}}{268}
+\entry {\code {oddheadingmarks}}{270}
+\entry {\code {oe}}{123}
+\entry {\code {OE}}{123}
+\entry {\code {ogonek}}{122}
+\entry {\code {option}}{82}
+\entry {\code {ordf}}{123}
+\entry {\code {ordm}}{123}
+\entry {\code {O}}{123}
+\initial {P}
+\entry {\code {page}}{134}
+\entry {\code {page\r {, within \code {@titlepage}}}}{34}
+\entry {\code {pagesizes}}{184}
+\entry {\code {paragraphindent}}{42}
+\entry {\code {parse}}{197}
+\entry {\code {part}}{50}
+\entry {\code {pdf}}{197}
+\entry {\code {phoo}}{169}
+\entry {\code {pindex}}{112}
+\entry {\code {plaintexinfo}}{197}
+\entry {\code {plaintext}}{197}
+\entry {\code {point}}{129}
+\entry {\code {pounds}}{126}
+\entry {\code {print}}{128}
+\entry {\code {printindex}}{44}
+\entry {\code {ps}}{197}
+\entry {\code {pxref}}{72}
+\initial {Q}
+\entry {\code {questiondown}}{123}
+\entry {\code {quotation}}{88}
+\entry {\code {quotedblbase}}{124}
+\entry {\code {quotedblleft}}{124}
+\entry {\code {quotedblright}}{124}
+\entry {\code {quoteleft}}{124}
+\entry {\code {quoteright}}{124}
+\entry {\code {quotesinglbase}}{124}
+\initial {R}
+\entry {\code {r \r {(roman font)}}}{86}
+\entry {\code {raggedright}}{94}
+\entry {\code {raisesections}}{51}
+\entry {\code {rawtext}}{197}
+\entry {\code {ref}}{72}
+\entry {\code {refill}}{247}
+\entry {\code {regenerate_master_menu}}{207}
+\entry {\code {registeredsymbol}}{126}
+\entry {\code {result}}{128}
+\entry {\code {ringaccent}}{122}
+\entry {\code {rmacro}}{163}
+\initial {S}
+\entry {\code {samp}}{80}
+\entry {\code {sansserif \r {(sans serif font)}}}{86}
+\entry {\code {sc \r {(small caps font)}}}{85}
+\entry {\code {section}}{48}
+\entry {\code {set}}{156}
+\entry {\code {setchapternewpage}}{40}
+\entry {\code {setcontentsaftertitlepage}}{38}
+\entry {\code {setfilename}}{30}
+\entry {\code {setshortcontentsaftertitlepage}}{38}
+\entry {\code {settitle}}{31}
+\entry {\code {shortcaption}}{106}
+\entry {\code {shortcontents}}{37}
+\entry {\code {shorttitlepage}}{34}
+\entry {\code {simple_menu}}{207}
+\entry {\code {slanted \r {(slanted font)}}}{86}
+\entry {\code {smallbook}}{183}
+\entry {\code {smalldisplay}}{92}
+\entry {\code {smallexample}}{92}
+\entry {\code {smallformat}}{92, 93}
+\entry {\code {smallindentedblock}}{89}
+\entry {\code {smalllisp}}{92}
+\entry {\code {smallquotation}}{89, 92}
+\entry {\code {sp \r {(line spacing)}}}{134}
+\entry {\code {sp \r {(titlepage line spacing)}}}{34}
+\entry {\code {ss}}{123}
+\entry {\code {strong}}{85}
+\entry {\code {structure}}{197}
+\entry {\code {subheading}}{49}
+\entry {\code {subsection}}{49}
+\entry {\code {subsubheading}}{50}
+\entry {\code {subsubsection}}{50}
+\entry {\code {subtitle}}{35}
+\entry {\code {summarycontents}}{37}
+\entry {\code {syncodeindex}}{114}
+\entry {\code {synindex}}{115}
+\initial {T}
+\entry {\code {t \r {(typewriter font)}}}{86}
+\entry {\code {tab}}{103}
+\entry {\code {table}}{100}
+\entry {\code {tex}}{154}
+\entry {\code {texinfo-all-menus-update}}{21}
+\entry {\code {texinfo-every-node-update}}{21}
+\entry {\code {texinfo-format-buffer}}{24, 212}
+\entry {\code {texinfo-format-region}}{24, 212}
+\entry {\code {texinfo-indent-menu-description}}{23}
+\entry {\code {texinfo-insert-@code}}{17}
+\entry {\code {texinfo-insert-@dfn}}{17}
+\entry {\code {texinfo-insert-@end}}{17}
+\entry {\code {texinfo-insert-@example}}{18}
+\entry {\code {texinfo-insert-@item}}{17}
+\entry {\code {texinfo-insert-@kbd}}{17}
+\entry {\code {texinfo-insert-@node}}{17}
+\entry {\code {texinfo-insert-@noindent}}{17}
+\entry {\code {texinfo-insert-@samp}}{17}
+\entry {\code {texinfo-insert-@table}}{17}
+\entry {\code {texinfo-insert-@var}}{18}
+\entry {\code {texinfo-insert-braces}}{18}
+\entry {\code {texinfo-insert-node-lines}}{23}
+\entry {\code {texinfo-make-menu}}{21}
+\entry {\code {texinfo-master-menu}}{20}
+\entry {\code {texinfo-multiple-files-update}}{172}
+\entry {\code {texinfo-multiple-files-update \r {(in brief)}}}{23}
+\entry {\code {texinfo-sequential-node-update}}{23}
+\entry {\code {texinfo-show-structure}}{19, 274}
+\entry {\code {texinfo-start-menu-description}}{18}
+\entry {\code {texinfo-tex-buffer}}{25}
+\entry {\code {texinfo-tex-print}}{25}
+\entry {\code {texinfo-tex-region}}{25}
+\entry {\code {texinfo-update-node}}{21}
+\entry {\code {Texinfo::Parser module}}{187}
+\entry {\code {texinfosxml}}{197}
+\entry {\code {textcontent}}{197}
+\entry {\code {textdegree}}{126}
+\entry {\code {TeX}}{125}
+\entry {\code {th}}{123}
+\entry {\code {thischapter}}{269}
+\entry {\code {thischaptername}}{269}
+\entry {\code {thischapternum}}{269}
+\entry {\code {thisfile}}{269}
+\entry {\code {thispage}}{269}
+\entry {\code {thissection}}{269}
+\entry {\code {thissectionname}}{269}
+\entry {\code {thissectionnum}}{269}
+\entry {\code {thistitle}}{269}
+\entry {\code {TH}}{123}
+\entry {\code {tie \r {(unbreakable interword space)}}}{134}
+\entry {\code {tieaccent}}{122}
+\entry {\code {tindex}}{112}
+\entry {\code {title}}{35}
+\entry {\code {titlefont}}{34}
+\entry {\code {titlepage}}{33}
+\entry {\code {today}}{269}
+\entry {\code {top}}{38, 57}
+\initial {U}
+\entry {\code {u \r {(breve accent)}}}{122}
+\entry {\code {ubaraccent}}{122}
+\entry {\code {udotaccent}}{122}
+\entry {\code {unmacro}}{163}
+\entry {\code {unnumbered}}{48}
+\entry {\code {unnumberedsec}}{49}
+\entry {\code {unnumberedsubsec}}{49}
+\entry {\code {unnumberedsubsubsec}}{50}
+\entry {\code {up-list}}{18}
+\entry {\code {uref}}{74}
+\entry {\code {urefbreakstyle}}{74}
+\initial {V}
+\entry {\code {v \r {(check accent)}}}{122}
+\entry {\code {value}}{156}
+\entry {\code {var}}{81}
+\entry {\code {verb}}{80}
+\entry {\code {verbatim}}{90}
+\entry {\code {verbatiminclude}}{91}
+\entry {\code {vindex}}{112}
+\entry {\code {vskip \r {\TeX {} vertical skip}}}{36}
+\entry {\code {vtable}}{102}
+\initial {W}
+\entry {\code {w \r {(prevent line break)}}}{134}
+\initial {X}
+\entry {\code {xml}}{154, 197}
+\entry {\code {xref}}{67}
+\entry {\code {xrefautomaticsectiontitle}}{69}
