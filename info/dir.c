@@ -292,7 +292,10 @@ dir_entry_of_infodir (char *label, char *searchdir)
       free (dir_fullpath);
       entry = info_get_menu_entry_by_label (dir_node, label, 1);
       if (!entry)
-        continue;
+        {
+          free_history_node (dir_node);
+          continue;
+        }
 
       entry = info_copy_reference (entry);
       entry_fullpath = info_add_extension (searchdir, entry->filename, &dummy);

@@ -137,7 +137,8 @@ make_footnotes_node (NODE *node)
     result->contents = xmalloc (1 + result->nodelen);
     sprintf (result->contents, "%s", header);
     memcpy (result->contents + strlen (header),
-            fn_node->contents + text_start, fn_node->nodelen - text_start + 1);
+            fn_node->contents + text_start, fn_node->nodelen - text_start);
+    result->contents[strlen (header) + fn_node->nodelen - text_start] = '\0';
 
    /* Copy and adjust references that appear in footnotes section. */
     {

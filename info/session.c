@@ -845,12 +845,7 @@ show_error_node (char *error)
     }
   else if (!echo_area_is_active)
     {
-      NODE *error_node;
-
-      error_node = format_message_node ("%s", error);
-      free_echo_area ();
-      window_set_node_of_window (the_echo_area, error_node);
-      display_update_one_window (the_echo_area);
+      window_message_in_echo_area ("%s", error);
     }
   else
     inform_in_echo_area (error);

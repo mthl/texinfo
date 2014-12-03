@@ -1,3 +1,13 @@
+2014-12-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (show_error_node): Call 
+	window_message_in_echo_area to display message so that 
+	echo_area_node will be set for free_echo_area.
+	* info/dir.c (dir_entry_of_infodir): Free dir node if no entry 
+	found.
+	* info/footnotes.c (make_footnotes_node): Supply a terminating 
+	null instead of relying on their being one in the source node.
+
 2014-11-28  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\sub, \sup, \mathopsup): new commands @sub and @sup.
