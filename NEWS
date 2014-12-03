@@ -57,6 +57,7 @@ one of the relevant sections:
   . new variable 'key_time' to control how long to wait for byte
     sequences sent by special keys
   . new variable 'hide-note-references' alters appearance of displayed nodes
+  . support input of multibyte characters for searches in a UTF-8 locale
 
 * install-info:
   . handle compressed input file names containing spaces.
