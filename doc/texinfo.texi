@@ -439,6 +439,7 @@ Special Insertions
 * Inserting Space::             Inserting the right amount of whitespace.
 * Inserting Accents::           Inserting accents and special characters.
 * Inserting Quotation Marks::   Inserting quotation marks.
+* Inserting Subscripts and Superscripts:: Inserting sub/superscripts.
 * Inserting Math::              Formatting mathematical expressions.
 * Glyphs for Text::             Inserting Dots, bullets, currencies, etc.
 * Glyphs for Programming::      Indicating results of evaluation,
@@ -10800,8 +10801,9 @@ These are:
 * Inserting Space::             Inserting the right amount of whitespace.
 * Inserting Accents::           Inserting accents and special characters.
 * Inserting Quotation Marks::   Inserting quotation marks.
+* Inserting Subscripts and Superscripts:: Inserting sub/superscripts.
 * Inserting Math::              Formatting mathematical expressions.
-* Glyphs for Text::             Inserting Dots, bullets, currencies, etc.
+* Glyphs for Text::             Inserting dots, bullets, currencies, etc.
 * Glyphs for Programming::      Indicating results of evaluation,
                                  expansion of macros, errors, etc.
 @end menu
@@ -11593,6 +11595,55 @@ convenient:
 @end example
 
 
+@node Inserting Subscripts and Superscripts
+@section @code{@@sub} and @code{@@sup}: Inserting Subscripts and Superscripts
+
+@findex sub
+@findex sup
+@cindex Subscripts and superscripts, text
+
+You can insert subscripts and superscripts, in either text or math,
+with the @code{@@sub} and @code{@@sup} commands.  (For other
+mathematical expressions, see the next section.)  For example, here is
+a purely textual subscript and superscript:
+
+@example
+here@@sub@{below@}@@sup@{above@}
+@end example
+
+@noindent produces:
+
+@display
+here@sub{below}@sup{above}
+@end display
+
+@cindex Math italic font
+Inside @code{@@math}, @code{@@sub} and @code{@@sup} produce
+mathematical subscripts and superscripts.  This uses a different font
+in the @TeX{} output (math italic instead of text italic); it makes no
+difference in the other output formats.  Here's an example:
+
+@example
+@@math@{e@@sup@{x@}@}
+@end example
+
+@noindent produces:
+
+@display
+@math{e@sup{x}}
+@end display
+
+In Info and plain text, regardless of being used inside @code{@@math},
+@code{@@sub@{@var{text}@}} is output as @samp{_@{@var{text}@}} and
+@code{@@sup@{@var{text}@}} as @samp{^@{@var{text}@}}, including the
+literal braces (to mark the beginning and end of the ``script'' text
+to the reader).
+
+When the output format (and display program) permit (@TeX{} math,
+HTML), the superscript is set above the subscript when both commands
+are given consecutively.
+
+
 @node Inserting Math
 @section @code{@@math}: Inserting Mathematical Expressions
 
@@ -11605,14 +11656,14 @@ You can write a short mathematical expression with the @code{@@math}
 command.  Write the mathematical expression between braces, like this:
 
 @example
-@@math@{(a + b)(a + b) = a^2 + 2ab + b^2@}
+@@math@{(a + b) = (b + a)@}
 @end example
 
 @iftex
 @noindent This produces the following in @TeX{}:
 
 @display
-@math{(a + b)(a + b) = a^2 + 2ab + b^2}
+@math{(a + b) = (b + a)}
 @end display
 
 @noindent and the following in other formats:
@@ -11622,30 +11673,40 @@ command.  Write the mathematical expression between braces, like this:
 @end ifnottex
 
 @example
-(a + b)(a + b) = a^2 + 2ab + b^2
+(a + b) = (b + a)
 @end example
 
+@cindex MathML, not used
 The @code{@@math} command has no special effect on the Info and HTML
-output.  @command{makeinfo} expands any @@-commands as usual,
-but it does not try to produce good mathematical formatting in any
-way.
+output.  @command{makeinfo} expands any @@-commands as usual, but it
+does not try to use produce good mathematical formatting in any way
+(no use of MathML, etc.).  The HTML output is enclosed by
+@code{<em>...</em>}, but nothing more.
 
+@findex \mathopsup
 However, as far as the @TeX{} output is concerned, plain @TeX{}
 mathematical commands are allowed in @code{@@math}, starting with
-@samp{\}, and the plain @TeX{} math characters like @samp{^} and
-@samp{_} are also recognized.  In essence, @code{@@math} drops you
-into plain @TeX{} math mode.
+@samp{\}.  In essence, @code{@@math} switches into plain @TeX{} math
+mode.  (Exception: the plain @TeX{} command @code{\sup}, which
+typesets the mathematical operator name `sup', must be accessed as
+@code{\mathopsup}, due to the conflict with Texinfo's @code{@@sup}
+command.)
 
-This allows you to conveniently write superscripts and subscripts (as
-in the above example), and also to use all the plain @TeX{} math
-control sequences for symbols, functions, and so on, and thus get
-proper formatting in the @TeX{} output, at least.
+This allows you to use all the plain @TeX{} math control sequences for
+symbols, functions, and so on, and thus get proper formatting in the
+@TeX{} output, at least.
+
+The @code{@@sub} and @code{@@sup} commands described in the previous
+section produce subscripts and superscripts in HTML output as well as
+@TeX{}; the plain @TeX{} characters @code{_} and @code{^} for
+subscripts and superscripts are recognized by @TeX{} inside
+@code{@@math}, but do nothing special in HTML or other output formats.
 
 It's best to use @samp{\} instead of @samp{@@} for any such
 mathematical commands; otherwise, @command{makeinfo} will complain.
-On the other hand, @command{makeinfo} allows input with matching (but
-unescaped) braces, such as @samp{k_@{75@}}, although it complains
-about such bare braces in regular input.
+On the other hand, @command{makeinfo} does allow input with matching
+(but unescaped) braces, such as @samp{k_@{75@}}; it complains about
+such bare braces in regular input.
 
 Here's an example:
 
@@ -11659,7 +11720,7 @@ Here's an example:
 @math{\sin 2\pi \equiv \cos 3\pi}
 @end display
 
-@noindent and
+@noindent but
 @end iftex
 @noindent which looks like the input in Info and HTML:
 @example
@@ -20122,7 +20183,7 @@ For example:
 @result{} A-node-_002d_002d_002d-with-_005f_0027_0025
 @end example
 
-Notice in particular:
+Example translations of common characters:
 
 @itemize @bullet
 @item @samp{_} @result{} @samp{_005f}
@@ -20157,7 +20218,8 @@ and the text of the argument is recursively transformed:
 @example
 @@asis @@b @@cite @@code @@command @@dfn @@dmn @@dotless
 @@emph @@env @@file @@i @@indicateurl @@kbd @@key
-@@samp @@sansserif @@sc @@slanted @@strong @@t @@var @@verb @@w
+@@samp @@sansserif @@sc @@slanted @@strong @@sub @@sup
+@@t @@var @@verb @@w
 @end example
 
 @noindent For @code{@@sc}, any letters are capitalized.
@@ -21574,6 +21636,9 @@ Emphasize @var{text} more strongly than @code{@@emph}, by using
 @strong{boldface} where possible; enclosed in asterisks in Info.
 @xref{emph & strong, , Emphasizing Text}.
 
+@item @@sub @{@var{text}@}
+Set @var{text} as a subscript.  @xref{Inserting Subscripts and Superscripts}.
+
 @item @@subheading @var{title}
 Print an unnumbered subsection-like heading, but omit from the table
 of contents of a printed manual.  In Info, the title is underlined
@@ -21604,6 +21669,9 @@ have title pages.  @xref{@t{@@title @@subtitle @@author}}.
 @item @@summarycontents
 Print a short table of contents.  Synonym for @code{@@shortcontents}.
 @xref{Contents, , Generating a Table of Contents}.
+
+@item @@sup @{@var{text}@}
+Set @var{text} as a superscript.  @xref{Inserting Subscripts and Superscripts}.
 
 @item @@syncodeindex @var{from-index} @var{to-index}
 Merge the index named in the first argument into the index named in

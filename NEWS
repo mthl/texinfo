@@ -12,7 +12,7 @@ See the manual for detailed information.
 
 *** NEWS FOR ALL AUTHORS OF TEXINFO MANUALS ***
 
-As of version 4.2, Texinfo has a new command @copying to define the
+As of version 4.2, Texinfo has a command @copying to define the
 copyright and copying permissions for a manual.  If you haven't already,
 please switch to using it in your next release, because the historical
 method of doing copyright permissions using @ifinfo failed to output
@@ -23,6 +23,9 @@ one of the relevant sections:
 
 -------------------------------------------------------------------------------
 
+* Language:
+  . new commands @sub and @sup, for textual subscripts and superscripts.
+
 * texinfo.tex:
   . @url/@uref output now the same in PDF as in DVI, showing the url
     even if the second argument is given, not just as link target.

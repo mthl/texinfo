@@ -1,3 +1,18 @@
+2014-11-28  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\sub, \sup, \mathopsup): new commands @sub and @sup.
+	(\ptexsp, \ptexsup): save and restore in \tex.
+	(\finishsub, \finishsup): helper macros.
+	* NEWS,
+	* doc/refcard/txirefcard.tex,
+	* doc/texinfo.texi (Inserting Subscripts and Superscripts),
+	(HTML Xref Command Expansion),
+	(Command Summary): document them.
+	(Inserting Math): \mathopsup exception for plain TeX's \sup.
+	
+	* doc/txirefcard.tex: alphabetize some of the command lists,
+	when other orderings aren't preferable.
+
 2014-11-27  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (Comments): must not be followed by -.
