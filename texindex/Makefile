@@ -4,13 +4,13 @@ TEXISOURCE = ti.texi
 all: texindex.awk ti.pdf
 
 $(TEXISOURCE): $(SOURCE)
-	./jrweave $(SOURCE) > $(TEXISOURCE)
+	$(GAWK) ./jrweave $(SOURCE) >$(TEXISOURCE) || rm -f $@
 
 texindex.awk: $(SOURCE)
-	./jrtangle $(SOURCE)
+	./jrtangle $(SOURCE) || rm -f $@
 
 ti.pdf: $(TEXISOURCE)
-	texi2dvi --pdf --batch --build-dir=ti.t2p -o ti.pdf ti.texi
+	texi2dvi --pdf --build-dir=ti.t2p -o ti.pdf ti.texi
 
 html: ti.html
 

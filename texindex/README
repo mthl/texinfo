@@ -1,24 +1,23 @@
-Fri May 30 10:31:20 IDT 2014
-============================
+$Id$
 
 This is texindex.awk, a replacement version of the texindex.c program
 from Texinfo. It's written in a literate style using TexiWebJr.
 
-ChangeLog		--- What it looks like
-Makefile		--- What it looks like
-README			--- What it looks like
-donald_knuth.png	--- A cute cartoon
-jrtangle		--- TexiWeb Jr tangle program
-jrweave			--- TexiWeb Jr weave program
-texindex.awk		--- The program (created from ti.twjr)
-tests/gawk.cp		--- Gawk manual unsorted index, test input
-tests/gawk.cps-cvers	--- Output of same from C version
-tests/gawk.cps-good	--- Output of same from awk version
-tests/texinfo.cp	--- Texinfo manual unsorted index, test input
-tests/texinfo.cps-cvers	--- Output of same from C version
-tests/texinfo.cps-good	--- Output of same from awk version
-tests/texinfo.fn	--- Texinfo manual unsorted index, test input
-tests/texinfo.fns-cvers	--- Output of same from C version
-tests/texinfo.fns-good	--- Output of same from awk version
-tests/texinfo.tex	--- What it looks like
-ti.twjr			--- TexiWeb Jr source file
+ChangeLog		-- What it looks like
+Makefile		-- What it looks like
+README			-- What it looks like
+donald_knuth.png	-- A cute cartoon
+jrtangle		-- TexiWeb Jr tangle program
+jrweave			-- TexiWeb Jr weave program
+texindex.awk		-- The program (created from ti.twjr)
+tests/gawk.cp		-- Gawk manual unsorted index, test input
+tests/gawk.cps-cvers	-- Output of same from C version
+tests/gawk.cps-good	-- Output of same from awk version
+tests/texinfo.cp	-- Texinfo manual unsorted index, test input
+tests/texinfo.cps-cvers	-- Output of same from C version
+tests/texinfo.cps-good	-- Output of same from awk version
+tests/texinfo.fn	-- Texinfo manual unsorted index, test input
+tests/texinfo.fns-cvers	-- Output of same from C version
+tests/texinfo.fns-good	-- Output of same from awk version
+tests/texinfo.tex	-- What it looks like
+ti.twjr			-- TexiWeb Jr source file

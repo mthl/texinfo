@@ -1,4 +1,6 @@
 \input texinfo   @c -*-texinfo-*-
+@c $Id$
+
 @c vim: filetype=texinfo tabstop=4
 @c %**start of header (This is for running Texinfo on a region.)
 @setfilename texindex.info
