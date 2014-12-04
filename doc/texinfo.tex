@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2014-12-02.16}
+\def\texinfoversion{2014-12-03.15}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -7432,7 +7432,6 @@ end
 %
 % \anythingelse will almost certainly be an error of some kind.
 
-
 % \mbodybackslash is the definition of \ in @macro bodies.
 % It maps \foo\ => \csname macarg.foo\endcsname => #N
 % where N is the macro parameter number.
@@ -7541,8 +7540,7 @@ end
 % the catcode regime underwhich the body was input).
 %
 % If you compile with TeX (not eTeX), and you have macros with 10 or more
-% arguments, you need that no macro has more than 256 arguments, otherwise an
-% error is produced.
+% arguments, no macro can have more than 256 arguments (else error).
 \def\parsemargdef#1;{%
   \paramno=0\def\paramlist{}%
   \let\hash\relax
@@ -9299,6 +9297,18 @@ directory should work if nowhere else does.}
   \UTFviiiLoop
 \endgroup
 
+\def\globallet{\global\let} % save some \expandafter's below
+
+% @U{xxxx} to produce U+xxxx, if we support it.
+\def\U#1{%
+  \expandafter\ifx\csname uni:#1\endcsname \thisisundefined
+    \errhelp = \EMsimple	
+    \errmessage{Unicode character U+#1 not supported, sorry}%
+  \else
+    \csname uni:#1\endcsname
+  \fi
+}
+
 \begingroup
   \catcode`\"=12
   \catcode`\<=12
@@ -9307,7 +9317,6 @@ directory should work if nowhere else does.}
   \catcode`\;=12
   \catcode`\!=12
   \catcode`\~=13
-
   \gdef\DeclareUnicodeCharacter#1#2{%
     \countUTFz = "#1\relax
     %\wlog{\space\space defining Unicode char U+#1 (decimal \the\countUTFz)}%
@@ -9322,6 +9331,8 @@ directory should work if nowhere else does.}
       \expandafter\expandafter\expandafter\expandafter
        \expandafter\expandafter\expandafter
        \gdef\UTFviiiTmp{#2}%
+      % define an additional control sequence for this code point.
+      \expandafter\globallet\csname uni:#1\endcsname \UTFviiiTmp
     \endgroup}
 
   \gdef\parseXMLCharref{%

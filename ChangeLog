@@ -1,3 +1,9 @@
+2014-12-03  Karl Berry  <karl@gnu.org>
+
+	* texindex.tex (\U): new command @U.
+	(\DeclareUnicodeCharacter): define a cs for @U to use.
+	(\globalllet): helper macros.
+
 2014-12-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (show_error_node): Call 
@@ -8,7 +14,7 @@
 	* info/footnotes.c (make_footnotes_node): Supply a terminating 
 	null instead of relying on their being one in the source node.
 
-2014-11-28  Karl Berry  <karl@gnu.org>
+2014-12-02  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\sub, \sup, \mathopsup): new commands @sub and @sup.
 	(\ptexsp, \ptexsup): save and restore in \tex.
