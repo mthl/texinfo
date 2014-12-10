@@ -1,0 +1,36 @@
+to get tree output, do
+
+$makeinfo -c DUMP_TREE=1 multitparseable.texi 2>&1 |less
+
+makeinfo -c TEXINFO_OUTPUT_FORMAT=debugtree mltitble.texi
+
+makeinfo -c DEBUG=1 -c TEXINFO_OUTPUT_FORMAT=parse mltitble.texi
+
+----------- speed comparison-----------------------
+
+time makeinfo -c TEXINFO_OUTPUT_FORMAT=debugtree texinfo.texi >/dev/null
+
+real    0m5.261s
+user    0m4.903s
+sys     0m0.054s
+
+(Earlier)
+time ./parsetexi texinfo.texi >/dev/null 2>&1
+
+real    0m0.311s
+user    0m0.277s
+sys     0m0.018s
+
+(5th Dec)
+time ./parsetexi texinfo.texi  >/dev/null 2>&1
+
+real    0m0.685s
+user    0m0.549s
+sys     0m0.124s
+
+time ./complete_tree.pl texinfo.texi >/dev/null
+
+real    0m3.603s
+user    0m1.805s
+sys     0m1.396s
+

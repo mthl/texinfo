@@ -1,0 +1,6 @@
+perl -d `which makeinfo` sample.texi
+
+b  /usr/local/share/texinfo/Texinfo/Parser.pm:5344
+
+p _print_tree ($current)
+

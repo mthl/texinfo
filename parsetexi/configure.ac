@@ -1,0 +1,6 @@
+AC_INIT([parsetexi], [0])
+AC_CONFIG_FILES([Makefile])
+AM_INIT_AUTOMAKE
+
+AC_PROG_CC
+AC_OUTPUT
