@@ -8,7 +8,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 2;
+use Test::More tests => 3;
 BEGIN { use_ok('Parsetexi') };
 
 #########################
@@ -17,13 +17,19 @@ BEGIN { use_ok('Parsetexi') };
 # its man page ( perldoc Test::More ) for help writing this test script.
 
 my $root;
-Parsetexi::parse_file ("sample.texi");
+Parsetexi::parse_file ("t/sample.texi");
 $root = Parsetexi::get_root ();
 
-my $root_type;
-$root_type = Parsetexi::element_type_namex ($root);
+my $type;
+$type = Parsetexi::element_type_name ($root);
 
-is ($root_type, 'document_root');
+is ($type, 'document_root');
 
-print "Root type is $root_type.\n"
+my $first_child;
+$first_child = Parsetexi::contents_child_by_index ($root, 0);
+$type = Parsetexi::element_type_name ($first_child);
+
+is ($type, 'text_root');
+
+print STDERR "Num children is " . Parsetexi::num_contents_children ($root);
 
