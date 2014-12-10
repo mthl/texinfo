@@ -1,12 +1,16 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+/* Whether to dump debugging output on stderr. */
+int debug_output = 1;
 
 void
 debug (char *s, ...)
 {
-  //return;
   va_list v;
+
+  if (!debug_output)
+    return;
   va_start (v, s);
   vfprintf (stderr, s, v);
   fputc ('\n', stderr);
@@ -15,8 +19,10 @@ debug (char *s, ...)
 void
 debug_nonl (char *s, ...)
 {
-  //return;
   va_list v;
+
+  if (!debug_output)
+    return;
   va_start (v, s);
   vfprintf (stderr, s, v);
 }

@@ -21,6 +21,7 @@ ELEMENT *end_line (ELEMENT *current);
 /* In debug.c */
 void debug (char *s, ...);
 void debug_nonl (char *s, ...);
+extern int debug_output;
 
 /* In separator.c */
 ELEMENT *handle_separator (ELEMENT *current, char separator,
@@ -50,6 +51,9 @@ ELEMENT *parse_macro_command_line (enum command_id, char **line_inout,
 ELEMENT *handle_macro (ELEMENT *current, char **line_inout,
                        enum command_id cmd_id);
 
-/* Unsorted. */
+/* In multitable.c */
 ELEMENT *item_line_parent (ELEMENT *current);
 ELEMENT *item_multitable_parent (ELEMENT *current);
+
+/* In dump_perl.c */
+void dump_tree_to_perl (ELEMENT *root);
