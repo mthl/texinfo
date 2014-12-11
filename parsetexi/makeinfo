@@ -1,3 +1,5 @@
 #! /usr/bin/env bash
 
-PERL5LIB=../tp:../tp/maintain/lib/libintl-perl/lib:../tp/maintain/lib/Text-Unidecode/lib/:../tp/maintain/lib/Unicode-EastAsianWidth/lib:./Parsetexi/lib:./Parsetexi/blib/lib:./Parsetexi/blib/arch/auto/Parsetexi ./texi2any-C.pl "$@"
+#DEBUG=perl -d
+
+PERL5LIB=../tp:../tp/maintain/lib/libintl-perl/lib:../tp/maintain/lib/Text-Unidecode/lib/:../tp/maintain/lib/Unicode-EastAsianWidth/lib:./Parsetexi/lib:./Parsetexi/blib/lib:./Parsetexi/blib/arch/auto/Parsetexi ${DEBUG} ./texi2any-C.pl "$@"

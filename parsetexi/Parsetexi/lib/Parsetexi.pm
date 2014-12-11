@@ -65,11 +65,41 @@ sub AUTOLOAD {
 require XSLoader;
 XSLoader::load('Parsetexi', $VERSION);
 
+# Copied from Parser.pm
+# Customization variables obeyed by the Parser, and the default values.
+our %default_customization_values = (
+  'TEST' => 0,
+  'DEBUG' => 0,     # if >= 10, tree is printed in texi2any.pl after parsing.
+		    # If >= 100 tree is printed every line.
+  'SHOW_MENU' => 1,             # if false no menu error related.
+  'INLINE_INSERTCOPYING' => 0,
+  'IGNORE_BEFORE_SETFILENAME' => 1,
+  'MACRO_BODY_IGNORES_LEADING_SPACE' => 0,
+  'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME' => 1,
+  'INPUT_PERL_ENCODING' => undef, # input perl encoding name, set from 
+			      # @documentencoding in the default case
+  'INPUT_ENCODING_NAME' => undef, # encoding name normalized as preferred
+			      # IANA, set from @documentencoding in the default
+			      # case
+  'CPP_LINE_DIRECTIVES' => 1, # handle cpp like synchronization lines
+  'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
+  'GLOBAL_COMMANDS' => [],    # list of commands registered 
+  # This is not used directly, but passed to Convert::Text through 
+  # Texinfo::Common::_convert_text_options
+  'ENABLE_ENCODING' => 1,     # output accented and special characters
+			      # based on @documentencoding
+  # following are used in Texinfo::Structuring
+  'TOP_NODE_UP' => '(dir)',   # up node of Top node
+  'SIMPLE_MENU' => 0,         # not used in the parser but in structuring
+  'USE_UP_NODE_FOR_ELEMENT_UP' => 0, # Use node up for Up if there is no 
+				     # section up.
+);
+
 # Stub for Texinfo::Parser::parser (line 574)
 sub parser (;$$)
 {
   # None of these are implemented yet.
-  my $parser = {
+  my %parser_blanks = (
     'labels' => {},
     'floats' => {},
     'internal_references' => [],
@@ -77,11 +107,39 @@ sub parser (;$$)
     'info' => {},
     'index_names' => {},
     'merged_indices' => {},
-  };
+    'nodes' => [],
+
+    # Not used but present in case we pass the object into 
+    # Texinfo::Parser.
+    'conditionals_stack' => [],
+    'expanded_formats_stack' => [],
+    'context_stack' => ['_root'],
+
+  );
+
+  my %parser_hash = %parser_blanks;
+  @parser_hash {keys %default_customization_values} =
+    values %default_customization_values;
+
+  my $parser = \%parser_hash;
 
   bless $parser;
 
   return $parser;
+}
+
+use Texinfo::Parser;
+
+# Wrapper for Parser.pm:_parse_texi.  We don't want to use this for the 
+# main tree, but it is called via some other functions like 
+# parse_texi_line, which is used in a few places.  This stub should go 
+# away at some point.
+sub _parse_texi ($;$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  return Texinfo::Parser::_parse_texi ($self, $root);
 }
 
 use Data::Dumper;
@@ -102,6 +160,39 @@ sub _add_parents ($) {
     foreach my $child (@{$elt->{'args'}}) {
       $child->{'parent'} = $elt;
       _add_parents ($child);
+    }
+  }
+}
+
+# Loop through the top-level elements in the tree, collecting node 
+# elements into $ROOT->{'nodes').  This is used in 
+# Structuring.pm:nodes_tree.
+sub _complete_node_list ($$) {
+  my $self = shift;
+  my $root = shift;
+
+  foreach my $child (@{$root->{'contents'}}) {
+    if ($child->{'cmdname'} and $child->{'cmdname'} eq 'node') {
+      #printf "FOUND NODE\n";
+      push $self->{'nodes'}, $child;
+      #print "CONTENTS are " . $child->{'contents'};
+
+      # TODO - actually normalize the name
+      $child->{'extra'}->{'normalized'} = 
+	$child->{'args'}->[0]->{'contents'}->[1]->{'text'};
+
+      #print "Normalized node name saved as " .
+      #$child->{'extra'}->{'normalized'} . "\n";
+
+      $child->{'extra'}->{'nodes_manuals'} = [];
+      foreach my $node_arg (@{$child->{'args'}}) {
+	if (!defined($child->{'type'})
+	      or ($child->{'type'} ne 'empty_spaces_after_command'
+		    and $child->{'type'} ne 'spaces_at_end')) {
+	  push $child->{'extra'}->{'nodes_manuals'},
+	    {'node_content' => $node_arg->{'contents'}};
+	}
+      }
     }
   }
 }
@@ -127,6 +218,7 @@ sub parse_texi_file ($$)
 
   #print "Adjusting tree...\n";
   _add_parents ($VAR1);
+  _complete_node_list ($self, $VAR1);
   #print "Adjusted tree.\n";
 
   #$Data::Dumper::Purity = 1;
