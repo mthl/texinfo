@@ -18,7 +18,17 @@ our @ISA = qw(Exporter);
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 our %EXPORT_TAGS = ( 'all' => [ qw(
-	
+  parser
+  parse_texi_text
+  parse_texi_line
+  parse_texi_file
+  indices_information
+  floats_information
+  internal_references_information
+  labels_information
+  global_commands_information
+  global_informations
+  errors
 ) ] );
 
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -54,6 +64,124 @@ sub AUTOLOAD {
 
 require XSLoader;
 XSLoader::load('Parsetexi', $VERSION);
+
+# Stub for Texinfo::Parser::parser (line 574)
+sub parser (;$$)
+{
+  # None of these are implemented yet.
+  my $parser = {
+    'labels' => {},
+    'floats' => {},
+    'internal_references' => [],
+    'extra' => {},
+    'info' => {},
+    'index_names' => {},
+    'merged_indices' => {},
+  };
+
+  bless $parser;
+
+  return $parser;
+}
+
+use Data::Dumper;
+
+sub _add_parents ($);
+
+sub _add_parents ($) {
+  my $elt = shift;
+
+  if (exists $elt->{'contents'}) {
+    foreach my $child (@{$elt->{'contents'}}) {
+      $child->{'parent'} = $elt;
+      _add_parents ($child);
+    }
+  }
+
+  if (exists $elt->{'args'}) {
+    foreach my $child (@{$elt->{'args'}}) {
+      $child->{'parent'} = $elt;
+      _add_parents ($child);
+    }
+  }
+}
+
+# Stub for Texinfo::Parser::parse_texi_file (line 835)
+sub parse_texi_file ($$)
+{
+  my $self = shift;
+  my $file_name = shift;
+  my $tree_stream;
+
+  #print "Getting tree...\n";
+
+  # Note we are calling a separate executable instead of using the code
+  # compliled into Parsetexi.pm as a library.  We should add functions 
+  # to Parsetexi.pm to get the tree without doing this.
+  $tree_stream = qx(./parsetexi $file_name 2>/dev/null);
+
+  my $VAR1;
+  #print "Reading tree...\n";
+  eval $tree_stream;
+  #print "Read tree.\n";
+
+  #print "Adjusting tree...\n";
+  _add_parents ($VAR1);
+  #print "Adjusted tree.\n";
+
+  #$Data::Dumper::Purity = 1;
+  #$Data::Dumper::Indent = 1;
+  #my $bar = Data::Dumper->Dump([$VAR1], ['$VAR1']);
+  #print $bar;
+  
+  return $VAR1;
+}
+
+# Public interfaces of Texinfo::Parser (starting line 942)
+sub indices_information($)
+{
+  my $self = shift;
+  return ($self->{'index_names'}, $self->{'merged_indices'});
+}
+
+sub floats_information($)
+{
+  my $self = shift;
+  return $self->{'floats'};
+}
+
+sub internal_references_information($)
+{
+  my $self = shift;
+  return $self->{'internal_references'};
+}
+
+sub global_commands_information($)
+{
+  my $self = shift;
+  return $self->{'extra'};
+}
+
+sub global_informations($)
+{
+  my $self = shift;
+  return $self->{'info'};
+}
+
+sub labels_information($)
+{
+  my $self = shift;
+  return $self->{'labels'};
+}
+
+################ Stubs for Texinfo::Report ########################
+#
+
+# Report.pm:54
+sub errors ($)
+{
+  return ([], 0);
+}
 
 # Preloaded methods go here.
 

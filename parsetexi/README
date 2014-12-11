@@ -1,3 +1,8 @@
 This is an experimental program intended to replicate the functionality 
 in tp/Parser.pm.  How it will be integrated into makeinfo is still 
 unknown.
+
+makeinfo in this directory wraps texi2any-C.pl, which is tp/texi2any.pl 
+changed to use the module in the Parsetexi subdirectory instead of 
+Texinfo::Parser.  At the current state of development it has not 
+successfully processed any Texinfo input file.
