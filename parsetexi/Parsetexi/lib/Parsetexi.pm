@@ -204,6 +204,8 @@ sub parse_texi_file ($$)
   my $file_name = shift;
   my $tree_stream;
 
+  $self->{'info'}->{'input_file_name'} = $file_name;
+
   #print "Getting tree...\n";
 
   # Note we are calling a separate executable instead of using the code

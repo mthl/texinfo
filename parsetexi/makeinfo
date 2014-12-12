@@ -1,5 +1,6 @@
 #! /usr/bin/env bash
 
 #DEBUG=perl -d
+#OPTIONS='-c DEBUG=1'
 
-PERL5LIB=../tp:../tp/maintain/lib/libintl-perl/lib:../tp/maintain/lib/Text-Unidecode/lib/:../tp/maintain/lib/Unicode-EastAsianWidth/lib:./Parsetexi/lib:./Parsetexi/blib/lib:./Parsetexi/blib/arch/auto/Parsetexi ${DEBUG} ./texi2any-C.pl "$@"
+PERL5LIB=../tp:../tp/maintain/lib/libintl-perl/lib:../tp/maintain/lib/Text-Unidecode/lib/:../tp/maintain/lib/Unicode-EastAsianWidth/lib:./Parsetexi/lib:./Parsetexi/blib/lib:./Parsetexi/blib/arch/auto/Parsetexi ${DEBUG} ./texi2any-C.pl ${OPTIONS} "$@"
