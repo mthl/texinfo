@@ -1,6 +1,13 @@
 2014-12-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* Parsetexi/lib/Parsetexi.pm (parse_texi_file): Set 
+	'node_content' extra key on each node element as well as in the 
+	elements in the 'node_manuals' array.  This means that node 
+	names appear in the node information line in the Info output.
+
+2014-12-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* Parsetexi/lib/Parsetexi.pm (parse_texi_file): Set 
 	'input_file_name' in document information.  This allows running 
 	"./makeinfo test-files/hello.texi", and getting an output file 
 	"hello.info".

@@ -191,6 +191,11 @@ sub _complete_node_list ($$) {
 		    and $child->{'type'} ne 'spaces_at_end')) {
 	  push $child->{'extra'}->{'nodes_manuals'},
 	    {'node_content' => $node_arg->{'contents'}};
+
+	  # Set 'node_content' on the node element itself.
+	  if (!defined($child->{'extra'}->{'node_content'})) {
+	    $child->{'extra'}->{'node_content'} = $node_arg->{'contents'};
+	  }
 	}
       }
     }
