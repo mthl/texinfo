@@ -1,3 +1,9 @@
+2014-12-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Info Format Regular Nodes)
+	(Info Format Cross Reference): Update format specification 
+	following feedback from Patrice Dumas 2014-11-22.
+
 2014-12-03  Karl Berry  <karl@gnu.org>
 
 	* texindex.tex (\U): new command @U.
@@ -12,7 +18,7 @@
 	* info/dir.c (dir_entry_of_infodir): Free dir node if no entry 
 	found.
 	* info/footnotes.c (make_footnotes_node): Supply a terminating 
-	null instead of relying on their being one in the source node.
+	null instead of relying on there being one in the source node.
 
 2014-12-02  Karl Berry  <karl@gnu.org>
 

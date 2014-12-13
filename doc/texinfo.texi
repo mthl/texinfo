@@ -23988,27 +23988,30 @@ but any number of spaces are ignored.  The @t{<id>} node identifiers have
 following format:
 
 @example
-    <id> = <del>?<node name><del>? | "(dir)"
+    <id> = (<lparen><infofile><rparen>)?(<del>?<nodename><del>?)?
 @end example
 
 This @t{<node>} defines @t{<id1>} in file @t{<fn>}, which is typically
-just @samp{manualname} or perhaps @samp{manualname.info}.
+just @samp{manualname} or perhaps @samp{manualname.info}.  No 
+@t{<infofile>} component should appear within @t{<id1>}.
 
 Each of the identifiers after @code{Next}, @code{Prev} and @code{Up} refer
-to nodes or anchors within the file, defined with either @samp{Node}
-or @samp{Ref} in the @t{<tag table>} if it has one.  These pointers
-normally refer within the same file, but the string @code{(dir)} may be used
-to point to the top-level dir node.  The @code{Next} and @code{Prev}
-pointers are optional.  The @code{Up} pointer is technically also
-optional, although this is most likely the case of a wrongly-structured
-Info manual.  Conventionally the nodes are arranged to form a tree,
-but this is not a requirement of the format.
+to nodes or anchors within a file.  These pointers normally refer within 
+the same file, but @samp{dir} is often used as @t{<infofile>} to point 
+to the top-level dir node.  If an @t{<infofile>} component is used then 
+the node name may be omitted, in which case the node identifier refers 
+to the @samp{Top} node within the referenced file.
 
-Identifiers containing periods, commas, colons or parentheses
+The @code{Next} and @code{Prev} pointers are optional.  The @code{Up} 
+pointer is technically also optional, although this is most likely the 
+case of a wrongly-structured Info manual.  Conventionally the nodes are 
+arranged to form a tree, but this is not a requirement of the format.
+
+Node names containing periods, commas, colons or parentheses
 (including @@-commands which produce any of these) can confuse
-Info readers.  If it is necessary to use any of these in the name of a
-node, the name should be surrounded by a pair of @t{<del>} characters.
-@xref{Node Line Requirements}.
+Info readers.  If it is necessary to refer to a node whose name contains 
+any of these, the @t{<nodename>} should be surrounded by a pair of 
+@t{<del>} characters.  @xref{Node Line Requirements}.
 
 The use of non-ASCII characters in the names of nodes is permitted, but can
 cause problems in cross-references between nodes in Info files with different
@@ -24152,11 +24155,11 @@ A general cross reference in Info format has one of the following two forms:
 
 @example
     <cross-reference> =
-  * (N|n)ote <label>::
-| * (N|n)ote <label>:(<lparen><infofile><rparen>)?<xrefid>
+  * (N|n)ote <id>::
+| * (N|n)ote <label>:<id>(.|,)?
 
+    <id> = (<lparen><infofile><rparen>)?(<del>?<nodename><del>?)?
     <label> = <del>?<label text><del>?
-    <xrefid> = <node name>(.|,)) | <del><node name><del>
 @end example
 
 No space should occur between the @t{*} character and the following @t{N}
@@ -24165,22 +24168,19 @@ or @t{n}.  @samp{*Note} should be used at the start of a sentence, otherwise
 can display @samp{*Note} and @samp{*note} as @samp{See} and @samp{see}
 respectively.) In both cases, @t{<label text>} is descriptive text.
 
-The @samp{<label>::} form indicates a node or anchor reference within the
-current manual, where the @t{<label text>} gives the name of the referenced
-node.  The longer form indicates a general reference, typically used to refer
-to a node or anchor in a different manual, but possibly to the current
-manual.   If the label contains a colon character (@t{:}), it should be
-surrounded with a pair of @t{<del>} characters.  The optional
-@samp{(<infofile>)} is the filename of the manual being referenced, and the
-@t{<id>} is the node or anchor within that manual, terminated by a comma or
-period.
+In both forms the @t{<id>} refers to a node or anchor, in the same way 
+as a reference in the node information line does (@pxref{Info Format 
+Regular Nodes}).  The optional @samp{<infofile>} is the filename of the 
+manual being referenced, and the @t{<nodename>} is the node or anchor 
+within that manual,
 
-If the name of the referenced node contains problematic characters, it
-should be surrounded by a pair of @t{<del>} characters in the same way
-that node names may be quoted in the first line of a node.  This quoting
-mechanism can be used in either form of cross reference.  If the node name is
-surrounded by a pair of @t{<del>} characters, terminating punctuation is not
-strictly required.
+The second form has a descriptive label.  A cross-reference in this form 
+should usually be terminated with a comma or period.
+
+If the label contains a colon character (@t{:}), it should be surrounded 
+with a pair of @t{<del>} characters.  If @t{<nodename>} contains 
+problematic characters, it should be surrounded by a pair of @t{<del>} 
+characters, and a terminating comma or period is not required.
 
 Here are some examples:
 
@@ -24192,8 +24192,8 @@ Here are some examples:
 *Note alloca.h: (gnulib)^?alloca.h^?.
 @end example
 
-The first shows the short form, a reference to a node in the current
-manual.
+The first shows a reference to a node in the current manual using the 
+short form.
 
 The second also refers to a node in the current manual, namely `Info
 Format Tag Table'; the `Tag table' before the @samp{:} is only a label
