@@ -17,6 +17,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
+#
+# Up-to-date source code for TexiWeb Jr. can be obtained via
+# Git from github:
+#
+#	git clone http://github.com/arnoldrobbins/texiwebjr
+#
 BEGIN {
 	TRUE = 1
 	FALSE = 0
