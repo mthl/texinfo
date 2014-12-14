@@ -23849,10 +23849,10 @@ Indirect:
 @end example
 
 The indirect table is written to the main file in the case of split
-output only.  It specifies as a decimal integer the starting byte position
+output only.  It specifies, as a decimal integer, the starting byte position
 (zero-based) that each subfile would have if the subfiles were concatenated
-together in order, not including the top-level file.  The first actual node
-of content will be pointed to by the first entry.
+together in order, not including the top-level file.  The first node
+of actual content is pointed to by the first entry.
 
 As an example, suppose split output is generated for the GDB manual.
 The top-level file @file{gdb.info} will contain something like this:
@@ -23874,8 +23874,8 @@ including any preamble sections in both files.
 Unfortunately, Info-creating programs such as @code{makeinfo} have not
 always implemented these rules perfectly, due to various bugs and
 oversights.  Therefore, robust Info viewers should fall back to
-searching ``nearby'' the given position for a node, instead of just
-giving up if the position is not perfectly at a node beginning.
+searching ``nearby'' the given position for a node, instead of
+giving up immediately if the position is not exactly at a node beginning.
 
 
 @node Info Format Tag Table
@@ -23974,20 +23974,21 @@ following format:
 @end example
 
 This @t{<node>} defines @t{<id1>} in file @t{<fn>}, which is typically
-just @samp{manualname} or perhaps @samp{manualname.info}.  No 
-@t{<infofile>} component should appear within @t{<id1>}.
+either @samp{manualname} or @samp{manualname.info}.  No parenthesized
+@t{<infofile>} component may appear within @t{<id1>}.
 
-Each of the identifiers after @code{Next}, @code{Prev} and @code{Up} refer
-to nodes or anchors within a file.  These pointers normally refer within 
-the same file, but @samp{dir} is often used as @t{<infofile>} to point 
-to the top-level dir node.  If an @t{<infofile>} component is used then 
-the node name may be omitted, in which case the node identifier refers 
+Each of the identifiers after @code{Next}, @code{Prev} and @code{Up}
+refer to nodes or anchors within a file.  These pointers normally
+refer within the same file, but @samp{(dir)} is often used to point to
+the top-level dir file.  If an @t{<infofile>} component is used then
+the node name may be omitted, in which case the node identifier refers
 to the @samp{Top} node within the referenced file.
 
-The @code{Next} and @code{Prev} pointers are optional.  The @code{Up} 
-pointer is technically also optional, although this is most likely the 
-case of a wrongly-structured Info manual.  Conventionally the nodes are 
-arranged to form a tree, but this is not a requirement of the format.
+The @code{Next} and @code{Prev} pointers are optional.  The @code{Up}
+pointer is technically also optional, although most likely this
+indicates a mistake in the node structuring.  Conventionally, the
+nodes are arranged to form a tree, but this is not a requirement of
+the format.
 
 Node names containing periods, commas, colons or parentheses
 (including @@-commands which produce any of these) can confuse
@@ -23995,13 +23996,13 @@ Info readers.  If it is necessary to refer to a node whose name contains
 any of these, the @t{<nodename>} should be surrounded by a pair of 
 @t{<del>} characters.  @xref{Node Line Requirements}.
 
-The use of non-ASCII characters in the names of nodes is permitted, but can
-cause problems in cross-references between nodes in Info files with different
-character encodings, and also when node names from many different files are
-listed (for example, with the @option{--apropos} option to the standalone Info
-browser), so consider avoiding them when it is convenient to do so.  For
-example, prefer the use of the ASCII apostrophe character (@t{'}) to Unicode
-directional quotes.
+The use of non-ASCII characters in the names of nodes is permitted,
+but can cause problems in cross-references between nodes in Info files
+with different character encodings, and also when node names from many
+different files are listed (for example, with the @option{--apropos}
+option to the standalone Info browser), so we recommend avoiding them
+whenever feasible.  For example, prefer the use of the ASCII
+apostrophe character (@t{'}) to Unicode directional quotes.
 
 The @t{<general text>} of the node can include the special constructs
 described next.
@@ -24037,10 +24038,10 @@ places no restrictions on their location.
 (<menu entry> | <menu comment>)*
 @end example
 
-The parts of a @t{<menu entry>} are also described in @ref{Menu Parts}.  They
-have the same syntax as cross-references (@pxref{Info Format Cross
-Reference}).  Indices extend the format to specify the destination line;
-@pxref{Info Format Printindex}.
+The parts of a @t{<menu entry>} are also described in @ref{Menu
+Parts}.  They have the same syntax as cross-references (@pxref{Info
+Format Cross Reference}).  Indices extend menu format to specify the
+destination line; @pxref{Info Format Printindex}.
 
 A @t{<menu comment>} is any line not beginning with @samp{*} that
 appears either at the beginning of the menu or is separated from a
@@ -24068,9 +24069,9 @@ The line breaks and indentation in this description are editorial; the
 whitespace between the different parts of the directive in Info files
 is arbitrary.
 
-In the string @t{<image file>}, @t{<txt file contents>} and @t{<alt
+In the strings @t{<image file>}, @t{<txt file contents>} and @t{<alt
 text>}, @samp{"} is quoted as @samp{\"} and @samp{\} is quoted as
-@samp{\\}.  The text and alt specifications are optional.
+@samp{\\}.  The txt and alt specifications are optional.
 
 The @t{alt} value serves the same purpose as in HTML: A prose
 description of the image.  In text-only displays or speech systems,
@@ -24078,11 +24079,10 @@ for example, the @t{alt} value may be used instead of displaying the
 (typically graphical) @t{<image file>}.
 
 The @t{<txt file contents>}, if present, should be taken as an ASCII
-representation of the image, and also may be used on a text-only
-display.
+representation of the image, for possible use on a text-only display.
 
 The format does not prescribe the choice between displaying the
-@t{<image file>}, the @t{<alt text>} or @t{<txt file contents>}.
+@t{<image file>}, the @t{<alt text>} or the @t{<txt file contents>}.
 
 
 @node Info Format Printindex
@@ -24115,7 +24115,7 @@ the entries occurs in the text:
 The @t{<entry text>} is the index term.  The @t{<lineno>} is an
 unsigned integer, given relative to the start of the @t{<entry node>}.
 There may be arbitrary whitespace after the colon and period, as usual
-in menus.  Here is an example:
+in menus, and may be broken across lines.  Here is an example:
 
 @example
 ^@@^H[index^@@^H]
@@ -24144,25 +24144,31 @@ A general cross reference in Info format has one of the following two forms:
     <label> = <del>?<label text><del>?
 @end example
 
-No space should occur between the @t{*} character and the following @t{N}
-or @t{n}.  @samp{*Note} should be used at the start of a sentence, otherwise
-@samp{*note} should be used.  (Some Info readers, such as the one in Emacs,
-can display @samp{*Note} and @samp{*note} as @samp{See} and @samp{see}
-respectively.) In both cases, @t{<label text>} is descriptive text.
+No space should occur between the @samp{*} character and the following
+@samp{N} or @samp{n}.  @samp{*Note} should be used at the start of a
+sentence, otherwise @samp{*note} should be used.  (Some Info readers,
+such as the one in Emacs, can display @samp{*Note} and @samp{*note} as
+@samp{See} and @samp{see} respectively.) In both cases, @t{<label
+text>} is descriptive text.
 
-In both forms the @t{<id>} refers to a node or anchor, in the same way 
-as a reference in the node information line does (@pxref{Info Format 
-Regular Nodes}).  The optional @samp{<infofile>} is the filename of the 
-manual being referenced, and the @t{<nodename>} is the node or anchor 
-within that manual,
+In both forms the @t{<id>} refers to a node or anchor, in the same way
+as a reference in the node information line does (@pxref{Info Format
+Regular Nodes}).  The optional parenthesized @samp{<infofile>} is the
+filename of the manual being referenced, and the @t{<nodename>} is the
+node or anchor within that manual,
 
 The second form has a descriptive label.  A cross-reference in this form 
-should usually be terminated with a comma or period.
+should usually be terminated with a comma or period, to make it
+feasible to find the end of the @t{<id>}.
 
-If the label contains a colon character (@t{:}), it should be surrounded 
-with a pair of @t{<del>} characters.  If @t{<nodename>} contains 
-problematic characters, it should be surrounded by a pair of @t{<del>} 
-characters, and a terminating comma or period is not required.
+If @t{<label>} contains a colon character (@t{:}), it should be
+surrounded with a pair of @t{<del>} characters.  Likewise, if
+@t{<nodename>} contains problematic characters (such as commas or
+periods), it should be surrounded by a pair of @t{<del>} characters;
+then a terminating comma or period is not needed.
+
+The format does not prescribe how to find other manuals to resolve
+such references.
 
 Here are some examples:
 
@@ -24179,13 +24185,14 @@ short form.
 
 The second also refers to a node in the current manual, namely `Info
 Format Tag Table'; the `Tag table' before the @samp{:} is only a label
-on this particular reference.
+on this particular reference, and the @samp{for details.} is text
+belonging to the sentence, not part of the reference.
 
 The third example refers to the node `Top' in another manual, namely
 @samp{make}, with `Overview' being the label for this cross reference.
 
 The fourth example shows a colon character being quoted in a label, and
-the fifth example shows a full stop being quoted in the node name.
+the fifth example shows a period being quoted in a node name.
 
 @xref{Cross References}.
 
