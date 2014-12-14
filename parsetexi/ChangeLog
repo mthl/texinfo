@@ -1,3 +1,19 @@
+2014-12-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tree_types.h (ELEMENT): Add fields to save information about 
+	'extra' keys on an element.
+	* extra.c: New file.
+	* dump_perl.c (dump_tree_to_perl): Dump lines filling in 'extra' 
+	keys at the end.
+	* tree_types.h (ELEMENT): Extra fields added to aid dumping.
+
+	* end_line.c <@node>: Call 'add_extra_key_contents' to set 
+	"node_content" key.
+	* Parsetexi/lib/Parsetexi.pm (_complete_node_list): Comment out 
+	code setting "node_content" keys on node elements.
+
+	* text.c (text_printf): New function.
+
 2014-12-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* Parsetexi/lib/Parsetexi.pm (parse_texi_file): Set 

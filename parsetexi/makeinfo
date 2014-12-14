@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-#DEBUG=perl -d
+#DEBUG='perl -d'
 #OPTIONS='-c DEBUG=1'
 COMMAND=${COMMAND:-./texi2any-C.pl}
 

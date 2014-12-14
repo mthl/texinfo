@@ -247,7 +247,7 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout)
           else
           // then what? e.g. is "@m {     }" one empty argument or none?
             if (arg_number != 0)
-              abort;
+              abort ();
 
           debug ("MACRO NEW ARG");
           pline = sep + 1;

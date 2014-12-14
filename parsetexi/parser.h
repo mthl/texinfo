@@ -57,3 +57,8 @@ ELEMENT *item_multitable_parent (ELEMENT *current);
 
 /* In dump_perl.c */
 void dump_tree_to_perl (ELEMENT *root);
+
+/* In extra.c */
+void add_extra_key_element (ELEMENT *e, char *key, ELEMENT *value);
+void add_extra_key_contents (ELEMENT *e, char *key, ELEMENT *value);
+void add_extra_key_text (ELEMENT *e, char *key, ELEMENT *value);

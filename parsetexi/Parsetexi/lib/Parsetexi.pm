@@ -186,17 +186,13 @@ sub _complete_node_list ($$) {
 
       $child->{'extra'}->{'nodes_manuals'} = [];
       foreach my $node_arg (@{$child->{'args'}}) {
-	if (!defined($child->{'type'})
-	      or ($child->{'type'} ne 'empty_spaces_after_command'
-		    and $child->{'type'} ne 'spaces_at_end')) {
-	  push $child->{'extra'}->{'nodes_manuals'},
-	    {'node_content' => $node_arg->{'contents'}};
+	push $child->{'extra'}->{'nodes_manuals'},
+	  {'node_content' => $node_arg->{'contents'}};
 
-	  # Set 'node_content' on the node element itself.
-	  if (!defined($child->{'extra'}->{'node_content'})) {
-	    $child->{'extra'}->{'node_content'} = $node_arg->{'contents'};
-	  }
-	}
+	# Set 'node_content' on the node element itself.
+	#if (!defined($child->{'extra'}->{'node_content'})) {
+	#  $child->{'extra'}->{'node_content'} =  $node_arg->{'contents'};
+	#}
       }
     }
   }
@@ -222,7 +218,7 @@ sub parse_texi_file ($$)
   #print "Reading tree...\n";
   eval $tree_stream;
   #print "Read tree.\n";
-
+	  
   #print "Adjusting tree...\n";
   _add_parents ($VAR1);
   _complete_node_list ($self, $VAR1);

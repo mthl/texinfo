@@ -260,6 +260,33 @@ end_line (ELEMENT *current)
         }
       else if (current->cmd == CM_node) /* 3235 */
         {
+          int i;
+          ELEMENT *arg;
+          /* Construct 'nodes_manuals' array.  This would be an 'extra' 
+             reference to an array that doesn't exist anywhere else. */
+
+          /* This sets the 'node_content' and 'normalized' keys on each element 
+             in 'nodes_manuals'. */
+          //parse_node_manual ();
+
+          
+          /* Look for first non-empty argument. */
+          /* In Perl a copy of the argument list is taken and the empty space 
+             arguments are removed with trim_spaces_comment_from_content. */
+          add_extra_key_contents (current, "node_content",
+                                  current->args.list[0]);
+
+          /* Also set 'normalized' here.  The normalized labels are actually 
+             the keys of "labels_information($parser)". */
+
+          /*Check that the node name doesn't have a filename element for 
+            referring to an external manual (_check_internal_node), and that it 
+            is not empty (_check_empty_node).  */
+          //check_node_label ();
+
+          /* This sets 'node_content' and 'normalized' on the node, among
+             other things (which were already set in parse_node_manual). */
+          //register_label (current, current->args.list[0]);
         }
       else if (current->cmd == CM_listoffloats) /* 3248 */
         {
