@@ -287,6 +287,8 @@ end_line (ELEMENT *current)
           /* This sets 'node_content' and 'normalized' on the node, among
              other things (which were already set in parse_node_manual). */
           //register_label (current, current->args.list[0]);
+
+          current_node = current;
         }
       else if (current->cmd == CM_listoffloats) /* 3248 */
         {
@@ -334,9 +336,15 @@ end_line (ELEMENT *current)
         }
 
       /* 3346 included file */
-      // setfilename
+
+      /* 3350 */
+      if (cmd_id == CM_setfilename && (current_node || current_section))
+        {
+          /* warning */
+          abort ();
+        }
       /* 3355 columnfractions */
-      if (cmd_id == CM_columnfractions)
+      else if (cmd_id == CM_columnfractions)
         {
           ELEMENT *before_item;
           // check if in multitable
@@ -356,7 +364,24 @@ end_line (ELEMENT *current)
           while (last_contents_child (current))
             destroy_element (pop_element_from_contents (current));
 
-          /* do stuff with associated_section extra key. */
+          /* Set 'associated_section' extra key for a node. */
+          if (cmd_id != CM_node && cmd_id != CM_part)
+            {
+              if (current_node)
+                {
+                  if (!lookup_extra_key (current_node, "associated_section"))
+                    {
+                      add_extra_key_element
+                        (current_node, "associated_section", current);
+                      add_extra_key_element
+                        (current, "associated_node", current_node);
+                    }
+                }
+
+              // "current parts" - 3394
+
+              current_section = current;
+            }
         } /* 3416 */
     }
 

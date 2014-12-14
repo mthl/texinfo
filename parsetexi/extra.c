@@ -1,3 +1,5 @@
+#include <string.h>
+
 #include "parser.h"
 
 static void
@@ -34,10 +36,22 @@ add_extra_key_contents (ELEMENT *e, char *key, ELEMENT *value)
 }
 
 /* Add an extra key that is a reference to the text field of another
-   element/ */
+   element. */
 void
 add_extra_key_text (ELEMENT *e, char *key, ELEMENT *value)
 {
   add_extra_key (e, key, value);
   e->extra[e->extra_number - 1].type = extra_element_text;
+}
+
+KEY_PAIR *
+lookup_extra_key (ELEMENT *e, char *key)
+{
+  int i;
+  for (i = 0; i < e->extra_number; i++)
+    {
+      if (!strcmp (e->extra[i].key, key))
+        return &e->extra[i];
+    }
+  return 0;
 }

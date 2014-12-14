@@ -44,6 +44,9 @@ void start_empty_line_after_command (ELEMENT *current, char **line_inout);
 
 extern const char *whitespace_chars, *whitespace_chars_except_newline;
 
+extern ELEMENT *current_node;
+extern ELEMENT *current_section;
+
 /* In macro.c */
 void new_macro (char *name, ELEMENT *macro);
 ELEMENT *parse_macro_command_line (enum command_id, char **line_inout,
@@ -62,3 +65,4 @@ void dump_tree_to_perl (ELEMENT *root);
 void add_extra_key_element (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_key_contents (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_key_text (ELEMENT *e, char *key, ELEMENT *value);
+KEY_PAIR *lookup_extra_key (ELEMENT *e, char *key);

@@ -256,6 +256,11 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           /* 4584 - node */
           /* 4586 - author */
           /* 4612 - dircategory */
+          if (cmd_id == CM_dircategory && current_node)
+            {
+              /* warning - @dircategory after first node. */
+              abort ();
+            }
 
           /* 4617 - current to the first argument (ELEMENT *arg).  */
           current = last_args_child (current); /* arg */

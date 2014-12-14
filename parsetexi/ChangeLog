@@ -1,5 +1,14 @@
 2014-12-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* parser.c (current_node, current_section): New variables.
+	* end_line.c (end_line) <@node>: Set current_node.
+	<root commands>: Set 'associated_node' and 'associated_section' 
+	keys, and set current_section.
+
+	* extra.c (lookup_extra_key): New function.
+
+2014-12-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tree_types.h (ELEMENT): Add fields to save information about 
 	'extra' keys on an element.
 	* extra.c: New file.
