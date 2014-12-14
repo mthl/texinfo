@@ -1,3 +1,9 @@
+2014-12-14  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (Macro Details): the linemac example became
+	wrong at some point; just have to be vague, it seems.
+	Report from Gavin.
+
 2014-12-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Info Format Regular Nodes)
@@ -5,6 +11,9 @@
 	following feedback from Patrice Dumas 2014-11-22.
 
 2014-12-03  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex: oops, \relax not \thisisundefined for
+	\ifx\csname
 
 	* texindex.tex (\U): new command @U.
 	(\DeclareUnicodeCharacter): define a cs for @U to use.

@@ -15343,27 +15343,9 @@ see the next item.
 In general, the interaction of newlines in the macro definitions and
 invocations depends on the precise commands and context,
 notwithstanding the previous statements.  You may be able to work
-around some problems with judicious use of @code{@@c}.  Suppose you
-define a macro that is always used on a line by itself:
-
-@example
-@@macro linemac
-@@cindex whatever @@c
-@@end macro
-...
-foo
-@@linemac
-bar
-@end example
-
-Without the @code{@@c}, there will be a unwanted blank line between
-the @samp{@@cindex whatever} and the @samp{bar} (one newline comes
-from the macro definition, one from after the invocation), causing an
-unwanted paragraph break.
-
-On the other hand, you wouldn't want the @code{@@c} if the macro was
-sometimes invoked in the middle of a line (the text after the
-invocation would be treated as a comment).
+around some problems with judicious use of @code{@@c} to ``comment
+out'' a newline, but @code{@@c} will cause problems in other cases.
+We are unable to make any general statements.
 
 @item
 In general, you can't arbitrarily substitute a macro (or
