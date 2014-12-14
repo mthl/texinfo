@@ -30,7 +30,8 @@ typedef struct LINE_NR {
 } LINE_NR;
 
 /* Type of a link in the route from the root of the tree to an element. */
-enum route_element_type { route_uninitialized, route_contents, route_args };
+enum route_element_type { route_uninitialized, route_contents, route_args,
+    route_not_in_tree };
 
 typedef struct {
     /* Element that contains a reference to this one. */

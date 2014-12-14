@@ -8,7 +8,7 @@ use Carp;
 require Exporter;
 use AutoLoader;
 
-our @ISA = qw(Exporter);
+our @ISA = qw(Exporter Texinfo::Report);
 
 # Items to export into callers namespace by default. Note: do not export
 # names by default without a very good reason. Use EXPORT_OK instead.
@@ -28,7 +28,6 @@ our %EXPORT_TAGS = ( 'all' => [ qw(
   labels_information
   global_commands_information
   global_informations
-  errors
 ) ] );
 
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -94,6 +93,11 @@ our %default_customization_values = (
   'USE_UP_NODE_FOR_ELEMENT_UP' => 0, # Use node up for Up if there is no 
 				     # section up.
 );
+  
+my %parser_default_configuration =
+  (%Texinfo::Common::default_parser_state_configuration,
+   %default_customization_values);
+
 
 # Stub for Texinfo::Parser::parser (line 574)
 sub parser (;$$)
@@ -123,7 +127,12 @@ sub parser (;$$)
 
   my $parser = \%parser_hash;
 
+  $parser->{'gettext'} = $parser_default_configuration{'gettext'};
+  $parser->{'pgettext'} = $parser_default_configuration{'pgettext'};
+
   bless $parser;
+
+  $parser->Texinfo::Report::new;
 
   return $parser;
 }
@@ -228,7 +237,7 @@ sub parse_texi_file ($$)
   #$Data::Dumper::Indent = 1;
   #my $bar = Data::Dumper->Dump([$VAR1], ['$VAR1']);
   #print $bar;
-  
+
   return $VAR1;
 }
 
@@ -269,14 +278,6 @@ sub labels_information($)
   return $self->{'labels'};
 }
 
-################ Stubs for Texinfo::Report ########################
-#
-
-# Report.pm:54
-sub errors ($)
-{
-  return ([], 0);
-}
 
 # Preloaded methods go here.
 

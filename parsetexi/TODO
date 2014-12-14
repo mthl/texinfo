@@ -1,9 +1,12 @@
-* Add a way to serialize extra keys, indices_information, etc.  This will 
-allow integration with makeinfo, "hello world", which will then greatly 
-ease testing that the produced parse tree is what the backends require.
+* Add a way to serialize labels_information, indices_information, etc., 
+to ease testing that the produced parse tree is what the backends 
+require.
 
 * Convert makeinfo backends to use a Perl stub for the C API. The C parser 
 will not be used at this point.
 
 * Substitute the XS API implementation for the Perl API when the C parser is 
 good enough.
+
+Other tasks -
+* implement node name normalization output converter

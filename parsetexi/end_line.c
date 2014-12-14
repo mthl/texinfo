@@ -241,7 +241,6 @@ end_line (ELEMENT *current)
                             }
                         }
                     }
-
                 }
               else if (current->cmd == CM_include) /* 3166 */
                 {
@@ -262,19 +261,34 @@ end_line (ELEMENT *current)
         {
           int i;
           ELEMENT *arg;
+          ELEMENT *first_arg;
           /* Construct 'nodes_manuals' array.  This would be an 'extra' 
              reference to an array that doesn't exist anywhere else. */
 
           /* This sets the 'node_content' and 'normalized' keys on each element 
              in 'nodes_manuals'. */
           //parse_node_manual ();
-
           
-          /* Look for first non-empty argument. */
           /* In Perl a copy of the argument list is taken and the empty space 
              arguments are removed with trim_spaces_comment_from_content. */
-          add_extra_key_contents (current, "node_content",
-                                  current->args.list[0]);
+          first_arg = current->args.list[0];
+          arg = new_element (ET_NONE);
+          arg->parent_type = route_not_in_tree;
+          for (i = 0; i < first_arg->contents.number; i++)
+            {
+              if (first_arg->contents.list[i]->type
+                    != ET_empty_spaces_after_command
+                  && first_arg->contents.list[i]->type != ET_spaces_at_end)
+                {
+                  /* FIXME: Is this safe to serialize? */
+                  /* For example, if there are extra keys in the elements under 
+                     each argument?  They may not be set in a copy.
+                     Hopefully there aren't many extra keys set on commands in 
+                     node names. */
+                  add_to_element_contents (arg, first_arg->contents.list[i]);
+                }
+            }
+          add_extra_key_contents (current, "node_content", arg);
 
           /* Also set 'normalized' here.  The normalized labels are actually 
              the keys of "labels_information($parser)". */

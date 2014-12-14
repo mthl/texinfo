@@ -16,6 +16,7 @@ static TEXT fixup_dump;
 
 void dump_contents (ELEMENT *);
 void dump_element (ELEMENT *);
+void dump_args (ELEMENT *);
 
 /* Output INDENT spaces. */
 void
@@ -142,28 +143,47 @@ dump_extra (ELEMENT *e)
       for (i = 0; i < e->extra_number; i++)
         {
           dump_indent ();
-          printf ("'%s' => {},\n", e->extra[i].key);
 
-          if (e->extra[i].value->parent_type != route_uninitialized)
+          if (e->extra[i].value->parent_type == route_not_in_tree)
             {
-              dump_fixup_line (e, i);
-            }
-          else /* Add a pending reference to this element. */
-            {
-              ELEMENT *e2;
-
-              e2 = e->extra[i].value;
-
-              if (e2->pending_number == e2->pending_space)
+              switch (e->extra[i].type)
                 {
-                  e2->pending_references = realloc (e2->pending_references,
-                      (e2->pending_space += 2) * sizeof (PENDING_REFERENCE));
-                  if (!e2->pending_references)
-                    abort ();
+                case extra_element:
+                  dump_element (e->extra[i].value);
+                  break;
+                case extra_element_contents:
+                  printf ("'%s' => ", e->extra[i].key);
+                  dump_contents (e->extra[i].value);
+                  break;
+                default:
+                  abort ();
                 }
+            }
+          else
+            {
+              printf ("'%s' => {},\n", e->extra[i].key);
 
-              e2->pending_references[e2->pending_number].element = e;
-              e2->pending_references[e2->pending_number++].extra_index = i;
+              if (e->extra[i].value->parent_type != route_uninitialized)
+                {
+                  dump_fixup_line (e, i);
+                }
+              else /* Add a pending reference to this element. */
+                {
+                  ELEMENT *e2;
+
+                  e2 = e->extra[i].value;
+
+                  if (e2->pending_number == e2->pending_space)
+                    {
+                      e2->pending_references = realloc (e2->pending_references,
+                        (e2->pending_space += 2) * sizeof (PENDING_REFERENCE));
+                      if (!e2->pending_references)
+                        abort ();
+                    }
+
+                  e2->pending_references[e2->pending_number].element = e;
+                  e2->pending_references[e2->pending_number++].extra_index = i;
+                }
             }
         }
     }
@@ -233,18 +253,18 @@ dump_element (ELEMENT *e)
       dump_args (e);
     }
 
-  if (e->contents.number > 0)
-    {
-      dump_indent ();
-      printf ("'contents' => ");
-      dump_contents (e);
-    }
-
   if (e->extra_number > 0)
     {
       dump_indent ();
       printf ("'extra' => ");
       dump_extra (e);
+    }
+
+  if (e->contents.number > 0)
+    {
+      dump_indent ();
+      printf ("'contents' => ");
+      dump_contents (e);
     }
 
   indent -= 2;

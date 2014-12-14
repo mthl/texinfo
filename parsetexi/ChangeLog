@@ -1,5 +1,18 @@
 2014-12-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* Parsetexi/lib/Parsetexi.pm: Put Texinfo::Report in @ISA.
+	(parser): Set 'gettext' on parser object.
+
+	* tree_types.h (enum route_element_type): New value 
+	route_not_in_tree.
+	* dump_perl.c (dump_extra): If extra key marked as not in tree, 
+	dump it in the main tree output.
+	* end_line.c (@node): Create a new element with some whitespace 
+	elements removed from its contents, and save this as 
+	"node_content".
+
+2014-12-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* parser.c (current_node, current_section): New variables.
 	* end_line.c (end_line) <@node>: Set current_node.
 	<root commands>: Set 'associated_node' and 'associated_section' 
