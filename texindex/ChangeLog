@@ -1,3 +1,8 @@
+2014-12-15  Karl Berry  <karl@gnu.org>
+
+	* ti.twjr: convert to minimal Texinfo conventions
+	instead of Arnold's published-book conventions.
+
 2014-12-13         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* jrtangle, jrweave: Updated with version that include
