@@ -2219,27 +2219,26 @@ info_menu_or_ref_item (WINDOW *window, int menu_item, int xref, int ask_p)
 
   for (which = 0; refs[which]; which++)
     {
+      /* If we got to the next line without finding an eligible reference. */
+      if (refs[which]->start >= next_line)
+        break;
+
       /* Check the type of reference is one we are looking for. */
       if (!(  (menu_item && refs[which]->type == REFERENCE_MENU_ITEM)
            || (xref      && refs[which]->type == REFERENCE_XREF)))
         continue;
 
-      /* If reference starts in current line, it is eligible */
-      if (   refs[which]->start >= this_line
-          && refs[which]->start <  next_line)
-        closest = which;
-
-      /* If point is inside a reference, choose that one. */
-      if (   window->point >= refs[which]->start
-          && window->point <= refs[which]->end)
+      /* Reference is eligible if any part of it is in the line. */
+      if (refs[which]->start >= this_line && refs[which]->start < next_line
+          || refs[which]->start < this_line && refs[which]->end > this_line)
         {
           closest = which;
-          break;
-        }
 
-      /* If we got to the next line without finding an eligible reference. */
-      if (refs[which]->start >= next_line)
-        break;
+          /* If a reference contains the point, prefer it.  Otherwise prefer a
+             reference after the cursor to one before it. */
+          if (refs[which]->start >= window->point)
+            break;
+        }
     }
   if (closest != -1)
     defentry = refs[closest];

@@ -2,6 +2,9 @@
 
 	* info/indices.c (info_indices_of_file_buffer): Case insensitive 
 	search for nodes with "index" in their names.
+	
+	* info/session.c (info_menu_ref_item): If multiple references in 
+	a line pick the right one.
 
 2014-12-14  Karl Berry  <karl@gnu.org>
 
