@@ -1,3 +1,8 @@
+2014-12-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (info_indices_of_file_buffer): Case insensitive 
+	search for nodes with "index" in their names.
+
 2014-12-14  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (Info Format *): small rewordings.
