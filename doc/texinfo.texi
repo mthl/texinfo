@@ -8936,7 +8936,7 @@ containing lists of commands with long names, when it is known in
 advance that justifying the text on both margins will make the
 paragraph look bad.
 
-An example (from elswhere in this manual):
+An example (from elsewhere in this manual):
 
 @example
 @group
