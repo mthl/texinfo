@@ -2,7 +2,7 @@
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
-# Copyright 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013
+# Copyright 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014
 # Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -58,7 +58,6 @@ dist_pkgdata_DATA = htmlxref.cnf texinfo.dtd #texinfo.cat
 # *texi2* scripts.
 #
 EXTRA_DIST = README detexinfo dir-example \
-  gendocs.sh gendocs_template \
   pdftexi2dvi \
   texi2dvi texi2pdf \
   $(dist_pkgdata_DATA) texinfo-cat.in texi-elements-by-size \
