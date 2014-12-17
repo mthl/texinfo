@@ -5,4 +5,5 @@ char *next_text (void);
 
 void input_push_file (char *line);
 void input_push_text (char *filename);
-void input_push_stream (FILE *stream);
+
+extern LINE_NR line_nr;

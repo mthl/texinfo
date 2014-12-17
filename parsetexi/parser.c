@@ -109,11 +109,13 @@ pop_conditional_stack (void)
 /* parse_texi_file */
 /* 835 */
 ELEMENT *
-parse_texi_file (void)
+parse_texi_file (char *filename)
 {
   char *linep, *line = 0;
   ELEMENT *root = new_element (ET_text_root);
   ELEMENT *preamble = 0;
+
+  input_push_file (filename);
 
   /* Check for preamble. */
   do

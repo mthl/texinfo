@@ -207,6 +207,32 @@ dump_extra (ELEMENT *e)
 }
 
 void
+dump_line_nr (ELEMENT *e)
+{
+  printf ("{\n");
+  indent += 2;
+
+  if (e->line_nr.file_name)
+    {
+      dump_indent ();
+      printf ("'file_name' => '%s',\n", e->line_nr.file_name);
+    }
+
+  if (e->line_nr.line_nr)
+    {
+      dump_indent ();
+      printf ("'line_nr' => %d,\n", e->line_nr.line_nr);
+    }
+
+  /* TODO: macro. */
+  printf ("'macro' => ''\n");
+
+  indent -= 2;
+  dump_indent ();
+  printf ("},\n");
+}
+
+void
 dump_string (char *s)
 {
      while (*s)
@@ -238,6 +264,13 @@ dump_element (ELEMENT *e)
       printf ("',\n");
     }
   
+  if (e->line_nr.line_nr)
+    {
+      dump_indent ();
+      printf ("'line_nr' => ");
+      dump_line_nr (e);
+    }
+
   if (e->text.text)
     {
       dump_indent ();

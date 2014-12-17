@@ -64,6 +64,13 @@ sub AUTOLOAD {
 require XSLoader;
 XSLoader::load('Parsetexi', $VERSION);
 
+sub get_conf($$)
+{
+  my $self = shift;
+  my $var = shift;
+  return $self->{$var};
+}
+
 # Copied from Parser.pm
 # Customization variables obeyed by the Parser, and the default values.
 our %default_customization_values = (

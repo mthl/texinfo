@@ -11,9 +11,8 @@ void
 parse_file (char *filename)
 {
   debug_output = 0;
-  input_push_file (filename);
   init_index_commands ();
-  root = parse_texi_file ();
+  root = parse_texi_file (filename);
 }
 
 ELEMENT *

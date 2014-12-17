@@ -2,8 +2,7 @@
 #include <string.h>
 
 #include "parser.h"
-#include "handle_commands.h"
-#include "tree.h"
+#include "input.h"
 
 /* Return a containing @itemize or @enumerate if inside it. */
 // 1847
@@ -201,6 +200,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           /* Add to contents */
           misc = new_element (ET_NONE);
           misc->cmd = cmd_id;
+          misc->line_nr = line_nr;
           add_to_element_contents (current, misc);
 
           /* If root command, and not node or part: */

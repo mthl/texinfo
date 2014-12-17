@@ -4,8 +4,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "input.h"
 #include "tree_types.h"
+#include "input.h"
 #include "text.h"
 
 enum input_type { IN_file, IN_text };
@@ -14,14 +14,19 @@ typedef struct {
     enum input_type type;
 
     FILE *file;
+    char *filename;
 
     char *text;
     char *ptext; /* How far we are through 'text'. */
+    int line_number;
 } INPUT;
 
 static INPUT *input_stack = 0;
 static size_t input_number = 0;
 static size_t input_space = 0;
+
+/* Current filename and line number. */
+LINE_NR line_nr;
 
 /* Collect text until a newline is found. */
 // I don't really understand the difference between this and next_text.
@@ -106,6 +111,7 @@ next_text (void)
 
               // 1920 CPP_LINE_DIRECTIVES
 
+              line_nr.line_nr++;
               return line;
             }
           break;
@@ -126,13 +132,33 @@ next_text (void)
             }
         }
       input_number--;
+      if (input_number > 0 && input_stack[input_number - 1].type == IN_file)
+        {
+          /* Restore LINE_NR. */
+          line_nr.line_nr = input_stack[input_number - 1].line_number;
+          line_nr.file_name = input_stack[input_number - 1].filename;
+        }
     }
   return 0;
+}
+
+static void
+save_line_nr (void)
+{
+  if (input_number == 0)
+    return;
+
+  if (input_stack[input_number - 1].type == IN_file)
+    {
+      input_stack[input_number - 1].line_number = line_nr.line_nr;
+    }
 }
 
 void
 input_push_text (char *text)
 {
+  save_line_nr ();
+
   if (input_number == input_space)
     {
       input_stack = realloc (input_stack,
@@ -145,11 +171,25 @@ input_push_text (char *text)
   input_stack[input_number].text = text;
   input_stack[input_number].ptext = text;
   input_number++;
+
+  /* TODO: What goes in LINE_NR?  It depends whether this text is the result of 
+     a macro expansion, or was pushed back when reading the file preamble. */
 }
 
 void
-input_push_stream (FILE *stream)
+input_push_file (char *filename)
 {
+  FILE *stream;
+  save_line_nr ();
+
+  stream = fopen (filename, "r");
+
+  if (!stream)
+    {
+      fprintf (stderr, "Could not open %s\n", filename);
+      exit (1);
+    }
+
   if (input_number == input_space)
     {
       input_stack = realloc (input_stack, (input_space += 5) * sizeof (INPUT));
@@ -159,21 +199,13 @@ input_push_stream (FILE *stream)
 
   input_stack[input_number].type = IN_file;
   input_stack[input_number].file = stream;
+  input_stack[input_number].filename = filename;
+  input_stack[input_number].line_number = 0;
   input_number++;
-}
 
-void
-input_push_file (char *filename)
-{
-  FILE *stream;
-  stream = fopen (filename, "r");
-  if (!stream)
-    {
-      fprintf (stderr, "Could not open %s\n", filename);
-      exit (1);
-    }
+  line_nr.line_nr = 0;
+  line_nr.file_name = filename;
 
-  input_push_stream (stream);
   return;
 }
 

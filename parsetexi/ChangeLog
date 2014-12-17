@@ -1,3 +1,14 @@
+2014-12-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tree_types.h (LINE_NR): Fields added to struct.
+	* input.c (line_nr): New variable.
+	(next_text, input_push_text, input_push_file): Update line_nr.
+	* handle_commands.c (handle_misc_command): Record current line 
+	number.
+	* dump_perl.c (dump_element): Dump line number if one was 
+	recorded.  This allows error messages to be printed when 
+	makeinfo is run.
+
 2014-12-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* Parsetexi/lib/Parsetexi.pm: Put Texinfo::Report in @ISA.

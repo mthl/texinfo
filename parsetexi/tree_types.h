@@ -27,6 +27,9 @@ typedef struct ELEMENT_LIST {
 } ELEMENT_LIST;
 
 typedef struct LINE_NR {
+    int line_nr;
+    char *file_name;
+    char *macro;
 } LINE_NR;
 
 /* Type of a link in the route from the root of the tree to an element. */
