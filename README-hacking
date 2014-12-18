@@ -65,9 +65,9 @@ The currently-used gnulib modules and other gnulib information are
 recorded in gnulib/m4/gnulib-cache.m4.  Given a source checkout of
 gnulib, you can update the files with gnulib-tool --add-import.
 
-If you add a gnulib module with gnulib-tool --add-import, remember to
-check what files were added (e.g., run "svn status gnulib") and add
-them to the main repository with "svn add".
+And, when running gnulib-tool --add-import, remember to check what files
+were added (e.g., run "svn status build-aux gnulib") and add them to the
+repository with "svn add"; likewise for removals.
 
 
 
@@ -147,7 +147,8 @@ cvs commit -m$ver $ver
 
 update home page (texinfo.html) and commit as needed.
 update manual (make wwwdoc-install, cvs commit), including:
-  pod2html $txi/Pod-Simple-Texinfo/pod2texi.pl >manual/pod2texi.html
+  pod2html $txi/Pod-Simple-Texinfo/pod2texi.pl \
+  | fgrep -v 'rev="made"' >manual/pod2texi.html
 
 #  ... tag source tree:
 svn copy -r 5382 -m'texinfo_5_2 tag based on r5382' \

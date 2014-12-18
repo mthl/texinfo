@@ -1,3 +1,12 @@
+2014-12-18  Karl Berry  <karl@gnu.org>
+
+	* doc/refcard/Makefile (spell): new target.
+	* doc/refcard/refcard.spell: aspell exception list.
+
+2014-12-18  Karl Berry  <karl@gnu.org>
+
+	* run gnulib-tool --add-import, as strcasecmp.c became needed.
+
 2014-12-17  Karl Berry  <karl@gnu.org>
 
 	* util/Makefile.am (EXTRA_DIST): remove gendocs.sh,
