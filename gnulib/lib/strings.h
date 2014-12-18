@@ -1,6 +1,7 @@
 /* DO NOT EDIT! GENERATED AUTOMATICALLY! */
-/* Substitute for and wrapper around <langinfo.h>.
-   Copyright (C) 2009-2014 Free Software Foundation, Inc.
+/* A substitute <strings.h>.
+
+   Copyright (C) 2007-2014 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,146 +16,32 @@
    You should have received a copy of the GNU General Public License
    along with this program; if not, see <http://www.gnu.org/licenses/>.  */
 
-/*
- * POSIX <langinfo.h> for platforms that lack it or have an incomplete one.
- * <http://www.opengroup.org/onlinepubs/9699919799/basedefs/langinfo.h.html>
- */
-
-#ifndef _GL_LANGINFO_H
+#ifndef _GL_STRINGS_H
 
 #if __GNUC__ >= 3
 #pragma GCC system_header
 #endif
 
 
+/* Minix 3.1.8 has a bug: <sys/types.h> must be included before <strings.h>.
+   But avoid namespace pollution on glibc systems.  */
+#if defined __minix && !defined __GLIBC__
+# include <sys/types.h>
+#endif
+
 /* The include_next requires a split double-inclusion guard.  */
 #if 1
-# include_next <langinfo.h>
+# include_next <strings.h>
 #endif
 
-#ifndef _GL_LANGINFO_H
-#define _GL_LANGINFO_H
+#ifndef _GL_STRINGS_H
+#define _GL_STRINGS_H
 
-
-#if !1
-
-/* A platform that lacks <langinfo.h>.  */
-
-/* Assume that it also lacks <nl_types.h> and the nl_item type.  */
-# if !GNULIB_defined_nl_item
-typedef int nl_item;
-#  define GNULIB_defined_nl_item 1
-# endif
-
-/* nl_langinfo items of the LC_CTYPE category */
-# define CODESET     10000
-/* nl_langinfo items of the LC_NUMERIC category */
-# define RADIXCHAR   10001
-# define DECIMAL_POINT RADIXCHAR
-# define THOUSEP     10002
-# define THOUSANDS_SEP THOUSEP
-# define GROUPING    10114
-/* nl_langinfo items of the LC_TIME category */
-# define D_T_FMT     10003
-# define D_FMT       10004
-# define T_FMT       10005
-# define T_FMT_AMPM  10006
-# define AM_STR      10007
-# define PM_STR      10008
-# define DAY_1       10009
-# define DAY_2       (DAY_1 + 1)
-# define DAY_3       (DAY_1 + 2)
-# define DAY_4       (DAY_1 + 3)
-# define DAY_5       (DAY_1 + 4)
-# define DAY_6       (DAY_1 + 5)
-# define DAY_7       (DAY_1 + 6)
-# define ABDAY_1     10016
-# define ABDAY_2     (ABDAY_1 + 1)
-# define ABDAY_3     (ABDAY_1 + 2)
-# define ABDAY_4     (ABDAY_1 + 3)
-# define ABDAY_5     (ABDAY_1 + 4)
-# define ABDAY_6     (ABDAY_1 + 5)
-# define ABDAY_7     (ABDAY_1 + 6)
-# define MON_1       10023
-# define MON_2       (MON_1 + 1)
-# define MON_3       (MON_1 + 2)
-# define MON_4       (MON_1 + 3)
-# define MON_5       (MON_1 + 4)
-# define MON_6       (MON_1 + 5)
-# define MON_7       (MON_1 + 6)
-# define MON_8       (MON_1 + 7)
-# define MON_9       (MON_1 + 8)
-# define MON_10      (MON_1 + 9)
-# define MON_11      (MON_1 + 10)
-# define MON_12      (MON_1 + 11)
-# define ABMON_1     10035
-# define ABMON_2     (ABMON_1 + 1)
-# define ABMON_3     (ABMON_1 + 2)
-# define ABMON_4     (ABMON_1 + 3)
-# define ABMON_5     (ABMON_1 + 4)
-# define ABMON_6     (ABMON_1 + 5)
-# define ABMON_7     (ABMON_1 + 6)
-# define ABMON_8     (ABMON_1 + 7)
-# define ABMON_9     (ABMON_1 + 8)
-# define ABMON_10    (ABMON_1 + 9)
-# define ABMON_11    (ABMON_1 + 10)
-# define ABMON_12    (ABMON_1 + 11)
-# define ERA         10047
-# define ERA_D_FMT   10048
-# define ERA_D_T_FMT 10049
-# define ERA_T_FMT   10050
-# define ALT_DIGITS  10051
-/* nl_langinfo items of the LC_MONETARY category */
-# define CRNCYSTR    10052
-# define CURRENCY_SYMBOL   CRNCYSTR
-# define INT_CURR_SYMBOL   10100
-# define MON_DECIMAL_POINT 10101
-# define MON_THOUSANDS_SEP 10102
-# define MON_GROUPING      10103
-# define POSITIVE_SIGN     10104
-# define NEGATIVE_SIGN     10105
-# define FRAC_DIGITS       10106
-# define INT_FRAC_DIGITS   10107
-# define P_CS_PRECEDES     10108
-# define N_CS_PRECEDES     10109
-# define P_SEP_BY_SPACE    10110
-# define N_SEP_BY_SPACE    10111
-# define P_SIGN_POSN       10112
-# define N_SIGN_POSN       10113
-/* nl_langinfo items of the LC_MESSAGES category */
-# define YESEXPR     10053
-# define NOEXPR      10054
-
-#else
-
-/* A platform that has <langinfo.h>.  */
-
-# if !1
-#  define CODESET     10000
-#  define GNULIB_defined_CODESET 1
-# endif
-
-# if !1
-#  define T_FMT_AMPM  10006
-#  define GNULIB_defined_T_FMT_AMPM 1
-# endif
-
-# if !1
-#  define ERA         10047
-#  define ERA_D_FMT   10048
-#  define ERA_D_T_FMT 10049
-#  define ERA_T_FMT   10050
-#  define ALT_DIGITS  10051
-#  define GNULIB_defined_ERA 1
-# endif
-
-# if !1
-#  define YESEXPR     10053
-#  define NOEXPR      10054
-#  define GNULIB_defined_YESEXPR 1
-# endif
-
+#if ! 1
+/* Get size_t.  */
+# include <stddef.h>
 #endif
+
 
 /* The definitions of _GL_FUNCDECL_RPL etc. are copied here.  */
 #ifndef _GL_CXXDEFS_H
@@ -413,6 +300,18 @@ typedef int nl_item;
 
 #endif /* _GL_CXXDEFS_H */
 
+/* The definition of _GL_ARG_NONNULL is copied here.  */
+/* _GL_ARG_NONNULL((n,...,m)) tells the compiler and static analyzer tools
+   that the values passed as arguments n, ..., m must be non-NULL pointers.
+   n = 1 stands for the first argument, n = 2 for the second argument etc.  */
+#ifndef _GL_ARG_NONNULL
+# if (__GNUC__ == 3 && __GNUC_MINOR__ >= 3) || __GNUC__ > 3
+#  define _GL_ARG_NONNULL(params) __attribute__ ((__nonnull__ params))
+# else
+#  define _GL_ARG_NONNULL(params)
+# endif
+#endif
+
 /* The definition of _GL_WARN_ON_USE is copied here.  */
 #ifndef _GL_WARN_ON_USE
 
@@ -461,36 +360,75 @@ _GL_WARN_EXTERN_C int _gl_warn_on_use
 # endif
 #endif
 
-/* Declare overridden functions.  */
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
-/* Return a piece of locale dependent information.
-   Note: The difference between nl_langinfo (CODESET) and locale_charset ()
-   is that the latter normalizes the encoding names to GNU conventions.  */
-
-#if 1
-# if 0
-#  if !(defined __cplusplus && defined GNULIB_NAMESPACE)
-#   undef nl_langinfo
-#   define nl_langinfo rpl_nl_langinfo
-#  endif
-_GL_FUNCDECL_RPL (nl_langinfo, char *, (nl_item item));
-_GL_CXXALIAS_RPL (nl_langinfo, char *, (nl_item item));
-# else
-#  if !1
-_GL_FUNCDECL_SYS (nl_langinfo, char *, (nl_item item));
-#  endif
-_GL_CXXALIAS_SYS (nl_langinfo, char *, (nl_item item));
+  /* Find the index of the least-significant set bit.  */
+#if 0
+# if !1
+_GL_FUNCDECL_SYS (ffs, int, (int i));
 # endif
-_GL_CXXALIASWARN (nl_langinfo);
+_GL_CXXALIAS_SYS (ffs, int, (int i));
+_GL_CXXALIASWARN (ffs);
 #elif defined GNULIB_POSIXCHECK
-# undef nl_langinfo
-# if HAVE_RAW_DECL_NL_LANGINFO
-_GL_WARN_ON_USE (nl_langinfo, "nl_langinfo is not portable - "
-                 "use gnulib module nl_langinfo for portability");
+# undef ffs
+# if HAVE_RAW_DECL_FFS
+_GL_WARN_ON_USE (ffs, "ffs is not portable - use the ffs module");
+# endif
+#endif
+
+/* Compare strings S1 and S2, ignoring case, returning less than, equal to or
+   greater than zero if S1 is lexicographically less than, equal to or greater
+   than S2.
+   Note: This function does not work in multibyte locales.  */
+#if ! 1
+extern int strcasecmp (char const *s1, char const *s2)
+     _GL_ARG_NONNULL ((1, 2));
+#endif
+#if defined GNULIB_POSIXCHECK
+/* strcasecmp() does not work with multibyte strings:
+   POSIX says that it operates on "strings", and "string" in POSIX is defined
+   as a sequence of bytes, not of characters.   */
+# undef strcasecmp
+# if HAVE_RAW_DECL_STRCASECMP
+_GL_WARN_ON_USE (strcasecmp, "strcasecmp cannot work correctly on character "
+                 "strings in multibyte locales - "
+                 "use mbscasecmp if you care about "
+                 "internationalization, or use c_strcasecmp , "
+                 "gnulib module c-strcase) if you want a locale "
+                 "independent function");
+# endif
+#endif
+
+/* Compare no more than N bytes of strings S1 and S2, ignoring case,
+   returning less than, equal to or greater than zero if S1 is
+   lexicographically less than, equal to or greater than S2.
+   Note: This function cannot work correctly in multibyte locales.  */
+#if ! 1
+extern int strncasecmp (char const *s1, char const *s2, size_t n)
+     _GL_ARG_NONNULL ((1, 2));
+#endif
+#if defined GNULIB_POSIXCHECK
+/* strncasecmp() does not work with multibyte strings:
+   POSIX says that it operates on "strings", and "string" in POSIX is defined
+   as a sequence of bytes, not of characters.  */
+# undef strncasecmp
+# if HAVE_RAW_DECL_STRNCASECMP
+_GL_WARN_ON_USE (strncasecmp, "strncasecmp cannot work correctly on character "
+                 "strings in multibyte locales - "
+                 "use mbsncasecmp or mbspcasecmp if you care about "
+                 "internationalization, or use c_strncasecmp , "
+                 "gnulib module c-strcase) if you want a locale "
+                 "independent function");
 # endif
 #endif
 
 
-#endif /* _GL_LANGINFO_H */
-#endif /* _GL_LANGINFO_H */
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* _GL_STRING_H */
+#endif /* _GL_STRING_H */

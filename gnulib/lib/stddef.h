@@ -1,3 +1,4 @@
+/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
 /* A substitute for POSIX 2008 <stddef.h>, for platforms that have issues.
 
    Copyright (C) 2009-2014 Free Software Foundation, Inc.
@@ -23,9 +24,9 @@
  */
 
 #if __GNUC__ >= 3
-@PRAGMA_SYSTEM_HEADER@
+#pragma GCC system_header
 #endif
-@PRAGMA_COLUMNS@
+
 
 #if defined __need_wchar_t || defined __need_size_t  \
   || defined __need_ptrdiff_t || defined __need_NULL \
@@ -37,25 +38,25 @@
    remember if special invocation has ever been used to obtain wint_t,
    in which case we need to clean up NULL yet again.  */
 
-# if !(defined _@GUARD_PREFIX@_STDDEF_H && defined _GL_STDDEF_WINT_T)
+# if !(defined _GL_STDDEF_H && defined _GL_STDDEF_WINT_T)
 #  ifdef __need_wint_t
 #   define _GL_STDDEF_WINT_T
 #  endif
-#  @INCLUDE_NEXT@ @NEXT_STDDEF_H@
+#  include_next <stddef.h>
 # endif
 
 #else
 /* Normal invocation convention.  */
 
-# ifndef _@GUARD_PREFIX@_STDDEF_H
+# ifndef _GL_STDDEF_H
 
 /* The include_next requires a split double-inclusion guard.  */
 
-#  @INCLUDE_NEXT@ @NEXT_STDDEF_H@
+#  include_next <stddef.h>
 
 /* On NetBSD 5.0, the definition of NULL lacks proper parentheses.  */
-#  if (@REPLACE_NULL@ \
-       && (!defined _@GUARD_PREFIX@_STDDEF_H || defined _GL_STDDEF_WINT_T))
+#  if (0 \
+       && (!defined _GL_STDDEF_H || defined _GL_STDDEF_WINT_T))
 #   undef NULL
 #   ifdef __cplusplus
    /* ISO C++ says that the macro NULL must expand to an integer constant
@@ -73,16 +74,16 @@
 #   endif
 #  endif
 
-#  ifndef _@GUARD_PREFIX@_STDDEF_H
-#   define _@GUARD_PREFIX@_STDDEF_H
+#  ifndef _GL_STDDEF_H
+#   define _GL_STDDEF_H
 
 /* Some platforms lack wchar_t.  */
-#if !@HAVE_WCHAR_T@
+#if !1
 # define wchar_t int
 #endif
 
 /* Some platforms lack max_align_t.  */
-#if !@HAVE_MAX_ALIGN_T@
+#if !0
 typedef union
 {
   char *__p;
@@ -92,6 +93,6 @@ typedef union
 } max_align_t;
 #endif
 
-#  endif /* _@GUARD_PREFIX@_STDDEF_H */
-# endif /* _@GUARD_PREFIX@_STDDEF_H */
+#  endif /* _GL_STDDEF_H */
+# endif /* _GL_STDDEF_H */
 #endif /* __need_XXX */
