@@ -180,6 +180,45 @@ sub _add_parents ($) {
   }
 }
 
+# Set the 'menu_entry' extra key on each menu entry.  This was the
+# return value of _parse_node_manual (line 2257, Parser.pm).
+sub _add_menu_entry_node_keys ($) {
+  my $menu = shift;
+  foreach my $entry (@{$menu->{'contents'}}) {
+    next if !$entry->{'type'} or $entry->{'type'} ne 'menu_entry';
+    foreach my $part (@{$entry->{'args'}}) {
+      if ($part->{'type'} eq 'menu_entry_node') {
+	#$entry->{'extra'}->{'menu_entry_node'}->{'manual_content'} = ...;
+
+	# In Texinfo::Parser::_parse_node_manual, a copy was taken of
+	# the contents, and leading and trailing whitespace elements
+	# removed with _trim_spaces_comment_from_content.
+	$entry->{'extra'}->{'menu_entry_node'}->{'node_content'}
+	  = $part->{'contents'};
+
+	# TODO: Actually get normalized node name of target.
+	$entry->{'extra'}->{'menu_entry_node'}->{'normalized'}
+	  = $part->{'contents'}[0]{'text'};
+      }
+    }
+  }
+}
+
+# Look for a menu in the node, saving in the 'menus' array reference
+# of the node element
+# This array was built on line 4800 of Parser.pm.
+sub _find_menus_of_node ($) {
+  my $node = shift;
+
+  foreach my $child
+          (@{$node->{'extra'}{'associated_section'}->{'contents'}}) {
+    if ($child->{'cmdname'} and $child->{'cmdname'} eq 'menu') {
+      push @{$node->{'menus'}}, $child;
+      _add_menu_entry_node_keys ($child);
+    }
+  }
+}
+
 # Loop through the top-level elements in the tree, collecting node 
 # elements into $ROOT->{'nodes').  This is used in 
 # Structuring.pm:nodes_tree.
@@ -210,6 +249,8 @@ sub _complete_node_list ($$) {
 	#  $child->{'extra'}->{'node_content'} =  $node_arg->{'contents'};
 	#}
       }
+
+      _find_menus_of_node ($child);
     }
   }
 }

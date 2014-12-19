@@ -261,53 +261,59 @@ handle_comma (ELEMENT *current, char **line_inout)
   return current;
 }
 
+/* Actions to be taken when a special character appears in the input. */
 ELEMENT *
 handle_separator (ELEMENT *current, char separator, char **line_inout)
 {
   char *line = *line_inout;
 
-  switch (separator)
+  if (separator == '{') // 4888
     {
-    case '{': /* 4888 */
       current = handle_open_brace (current, &line);
-      goto funexit;
-    case '}': /* 5007 */
+    }
+  else if (separator == '}') // 5007
+    {
       current = handle_close_brace (current, &line);
-      goto funexit;
-    case ',': /* 5228 */
-      if (current->parent->remaining_args > 0)
-        current = handle_comma (current, &line);
-      else
-        {
-          /* 5297 */
-        /* error - superfluous argument for @node. */
-        break;
-        /* if (...) */
-          goto funexit;
-        }
+    }
+  else if (separator == ',' && current->remaining_args > 0) // 5228
+    {
+      current = handle_comma (current, &line);
+    }
+  else if (separator == ',' && current->type == ET_misc_line_arg
+           && current->parent->cmd == CM_node) // 5297
+    {
+      // Warning - superfluous arguments for node
+    }
+  /* 5303 After a separator in a menu. */
+  else if ((separator == ','
+            || separator == '\t'
+            || separator == '.')
+           && current->type == ET_menu_entry_node
+           || separator == ':' && current->type == ET_menu_entry_name)
+    {
+      ELEMENT *e;
+      
+      current = current->parent;
+      e = new_element (ET_menu_entry_separator);
+      text_append_n (&e->text, &separator, 1);
+      add_to_element_args (current, e);
 
-      /* Fall through */
-    case '\t':
-    case '.':
-      break;
-        /* Menu entry separator. */
-      goto funexit;
-
-    case '\f':
-      break;
-      /* Form feed stops and restarts a paragraph. */
-      goto funexit;
+      /* Note in 'handle_menu' in menus.c, if a '.' is not followed by
+         whitespace, we revert was was done here. */
+    }
+  else if (separator == '\f' && current->type == ET_paragraph)
+    {
+      /* A form feed stops and restarts a paragraph. */
+    }
+  else // 5322
+    {
+      /* Default - merge the character as usual. */
+      char t[2];
+      t[0] = separator;
+      t[1] = '\0';
+      merge_text (current, t);
     }
 
-  /* Default: merge character. */
-  {
-    char t[2];
-    t[0] = separator;
-    t[1] = '\0';
-    merge_text (current, t);
-  }
-
-funexit:
   *line_inout = line;
   return current;
 }

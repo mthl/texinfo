@@ -1,3 +1,25 @@
+2014-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* element_types.txt: Add menu_entry and menu_star types.
+	* menus.c: New file.
+	(handle_menu, enter_menu_entry_node): Add functions.
+	* parser.c (big_loop): Call handle_menu in menus.c.
+
+	* handle_commands.c (handle_block_command) <menu commands>: 
+	Outline of menu handling.
+	* separator.c (handle_separator): Handle separators inside a 
+	menu entry.
+	* end_line.c (end_line): Start processing a menu at end of 
+	"@menu" line.  Handle end of a line inside a menu.
+
+	* Parsetexi/lib/Parsetexi.pm: Complete 'menus' arrays for each 
+	node element, and 'menu_entry' 'extra' keys on menu entries.
+
+	* parser.c (isolate_last_space): Take an extra argument giving 
+	type of whitespace element.
+	* tree.c (destroy_element): Free the contents and args arrays.
+	(pop_element_from_args): New function.
+
 2014-12-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tree_types.h (LINE_NR): Fields added to struct.

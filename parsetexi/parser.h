@@ -34,7 +34,7 @@ size_t conditional_number;
 ELEMENT *parse_texi_file (char *filename);
 int abort_empty_line (ELEMENT **current_inout, char *additional);
 ELEMENT *end_paragraph (ELEMENT *current);
-void isolate_last_space (ELEMENT *current);
+void isolate_last_space (ELEMENT *current, enum element_type type);
 int command_with_command_as_argument (ELEMENT *current);
 ELEMENT *begin_preformatted (ELEMENT *current);
 ELEMENT *end_preformatted (ELEMENT *current);
@@ -66,3 +66,7 @@ void add_extra_key_element (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_key_contents (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_key_text (ELEMENT *e, char *key, ELEMENT *value);
 KEY_PAIR *lookup_extra_key (ELEMENT *e, char *key);
+
+/* In menus.c */
+int handle_menu (ELEMENT **current_inout, char **line_inout);
+ELEMENT *enter_menu_entry_node (ELEMENT *current);

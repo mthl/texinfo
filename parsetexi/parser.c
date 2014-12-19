@@ -362,12 +362,13 @@ abort_empty_line (ELEMENT **current_inout, char *additional_text)
 
 /* 2149 */
 void
-isolate_last_space (ELEMENT *current)
+isolate_last_space (ELEMENT *current, enum element_type element_type)
 {
-  int element_type;
   ELEMENT *last = last_contents_child (current);
 
-  element_type = ET_spaces_at_end;
+  if (!element_type)
+    element_type = ET_spaces_at_end;
+
   if (last)
     {
       int index = -1;
@@ -676,6 +677,10 @@ big_loop (ELEMENT **current_inout, char **line_inout)
           //abort ();
           current = current->parent;
         }
+    }
+  else if (handle_menu (&current, &line))
+    {
+      ; /* Nothing. */
     }
 
 #if 0

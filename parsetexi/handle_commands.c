@@ -366,7 +366,34 @@ handle_block_command (ELEMENT *current, char **line_inout,
           // regionsstack
 
           // 4784 menu commands
+          if (command_data(cmd_id).flags & CF_menu)
+            {
+              if (current_context () == ct_preformatted)
+                push_context (ct_preformatted);
+              else
+                push_context (ct_menu);
 
+              /* Check if we are ignoring "global commands". */
+
+              // Record dir entry here
+
+              if (current_node)
+                {
+                  if (cmd_id == CM_direntry)
+                    {
+                      // warning
+                    }
+                  else if (cmd_id == CM_menu)
+                    {
+                      // add to array of menus for current node
+                    }
+                }
+              else
+                {
+                }
+            }
+
+          // 4816
           {
             ELEMENT *bla = new_element (ET_block_line_arg);
             add_to_element_args (current, bla);

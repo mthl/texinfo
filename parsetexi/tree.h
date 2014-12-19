@@ -4,6 +4,7 @@ void add_to_element_args (ELEMENT *parent, ELEMENT *e);
 void insert_into_contents (ELEMENT *parent, ELEMENT *e, int where);
 ELEMENT *last_args_child (ELEMENT *current);
 ELEMENT *last_contents_child (ELEMENT *current);
+ELEMENT *pop_element_from_args (ELEMENT *parent);
 ELEMENT *pop_element_from_contents (ELEMENT *parent);
 ELEMENT *contents_child_by_index (ELEMENT *e, int index);
 ELEMENT *args_child_by_index (ELEMENT *e, int index);

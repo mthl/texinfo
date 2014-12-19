@@ -376,9 +376,9 @@ deftypemethodx		misc,def
 multitable		block,blockitem		BLOCK_multitable
 
 # menu commands
-menu			block
-detailmenu		block
-direntry		block
+menu			block,menu
+detailmenu		block,menu
+direntry		block,menu
 
 # align commands
 raggedright		block

@@ -17,6 +17,7 @@ end_line (ELEMENT *current)
   char *end_command = 0;
   enum command_id end_id;
 
+  // 2621
   /* If empty line, start a new paragraph. */
   if (last_contents_child (current)
       && last_contents_child (current)->type == ET_empty_line)
@@ -40,7 +41,51 @@ end_line (ELEMENT *current)
         }
     }
 
-  /* Is it a line of a menu? */ /* line 2667 */
+  // 2667
+  /* The end of the line of a menu. */
+  else if (current->type == ET_menu_entry_name
+           || current->type == ET_menu_entry_node)
+    {
+      ELEMENT *end_comment;
+      int empty_menu_entry_node = 0;
+
+      if (current->type == ET_menu_entry_node)
+        {
+          ELEMENT *last = last_contents_child (current);
+
+          if (current->contents.number > 0
+              && (last->cmd == CM_c || last->cmd == CM_comment))
+            {
+              end_comment = pop_element_from_contents (current);
+            }
+
+          /* If contents empty or is all whitespace. */
+          if (current->contents.number == 0
+              || (current->contents.number == 1
+                  && last->text.end > 0
+                  && !last->text.text[strspn (last->text.text, 
+                                              whitespace_chars)]))
+            {
+              empty_menu_entry_node = 1;
+              if (end_comment)
+                add_to_element_contents (current, end_comment);
+            }
+        }
+
+      // 2689
+      /* Abort the menu entry if there is no destination node given. */
+      if (empty_menu_entry_node || current->type == ET_menu_entry_name)
+        {
+        }
+      else // 2768
+        {
+          debug ("MENU ENTRY END LINE");
+          current = current->parent;
+          current = enter_menu_entry_node (current);
+          if (end_comment)
+            add_to_element_contents (current, end_comment);
+        }
+    }
 
   /* Is it a def line 2778 */
   else if (current->parent && current->parent->type == ET_def_line)
@@ -65,7 +110,8 @@ end_line (ELEMENT *current)
 
     }
 
-  /* block line arg command 2872 */
+  // 2872
+  /* End of a line starting a block. */
   else if (current->type == ET_block_line_arg)
     {
       enum context c;
@@ -129,6 +175,20 @@ end_line (ELEMENT *current)
             current = bi;
           }
         } /* CF_blockitem */
+
+      // 3077
+      if (command_flags(current) & CF_menu)
+        {
+          /* Start reading a menu.  Processing will continue in
+             handle_menu in menus.c. */
+
+          ELEMENT *menu_comment = new_element (ET_menu_comment);
+          add_to_element_contents (current, menu_comment);
+          current = menu_comment;
+          debug ("MENU COMMENT OPEN");
+          push_context (ct_preformatted);
+        }
+      current = begin_preformatted (current);
     }
 
   /* after an "@end verbatim" 3090 */
@@ -155,7 +215,7 @@ end_line (ELEMENT *current)
       int cmd_id, arg_type;
       enum context c;
 
-      isolate_last_space (current);
+      isolate_last_space (current, 0);
 
       current = current->parent;
       cmd_id = current->cmd;

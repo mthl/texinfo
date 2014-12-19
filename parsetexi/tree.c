@@ -29,6 +29,12 @@ new_element (enum element_type type)
 void
 destroy_element (ELEMENT *e)
 {
+  free (e->text.text);
+
+  /* Note the pointers in these lists are not themselves freed. */
+  free (e->contents.list);
+  free (e->args.list);
+
   free (e);
 }
 
@@ -83,6 +89,14 @@ insert_into_contents (ELEMENT *parent, ELEMENT *e, int where)
   list->number++;
 }
 
+
+ELEMENT *
+pop_element_from_args (ELEMENT *parent)
+{
+  ELEMENT_LIST *list = &parent->args;
+
+  return list->list[--list->number];
+}
 
 ELEMENT *
 pop_element_from_contents (ELEMENT *parent)

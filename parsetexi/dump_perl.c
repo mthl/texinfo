@@ -225,6 +225,7 @@ dump_line_nr (ELEMENT *e)
     }
 
   /* TODO: macro. */
+  dump_indent ();
   printf ("'macro' => ''\n");
 
   indent -= 2;

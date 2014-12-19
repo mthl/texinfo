@@ -36,12 +36,17 @@ brace_command_context
 block_line_arg
 misc_line_arg
 misc_arg
+
+menu_entry
 menu_entry_leading_text
 menu_entry_name
 menu_entry_separator
 menu_entry_node
 menu_entry_description
 menu_comment
+# Used internally
+menu_star
+
 macro_name
 macro_arg
 before_item
