@@ -1,3 +1,18 @@
+2014-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm: Set CSS styles for @indentedblock, 
+	@smallindentedblock with "blockquote" instead of "div".
+
+	(%indented_block_commmands, %indented_preformatted_commands): 
+	Renamed.
+
+	(_convert_preformatted_or_indented_commands)
+	(_convert_preformatted_command): Renamed.  Don't use this 
+	function for @indentedblock and @smallindentedblock.
+
+	(_convert_indented_command): New function.  Use "blockquote" tag 
+	to indent @indentedblock and @smallindentedblock.
+
 2014-12-18  Karl Berry  <karl@gnu.org>
 
 	* doc/refcard/Makefile (spell): new target.

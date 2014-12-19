@@ -1,6 +1,6 @@
 # HTML.pm: output tree as HTML.
 #
-# Copyright 2011, 2012 Free Software Foundation, Inc.
+# Copyright 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -1074,22 +1074,18 @@ foreach my $preformatted_command (keys(%preformatted_commands_context)) {
 $pre_class_commands{'menu'} = 'menu-preformatted';
 $pre_class_types{'menu_comment'} = 'menu-comment';
 
-my %indented_block_commands;
+my %indented_preformatted_commands;
 foreach my $indented_format ('example', 'display', 'lisp') {
-  $indented_block_commands{$indented_format} = 1;
-  $indented_block_commands{"small$indented_format"} = 1;
+  $indented_preformatted_commands{$indented_format} = 1;
+  $indented_preformatted_commands{"small$indented_format"} = 1;
 
   $css_map{"div.$indented_format"} = 'margin-left: 3.2em';
   $css_map{"div.small$indented_format"} = 'margin-left: 3.2em';
 }
 
-foreach my $indented_format ('indentedblock') {
-  $indented_block_commands{$indented_format} = 1;
-  $indented_block_commands{"small$indented_format"} = 1;
-
-  $css_map{"div.$indented_format"} = 'margin-left: 3.2em';
-  $css_map{"div.small$indented_format"} = 'margin-left: 3.2em; font-size: smaller';
-}
+$css_map{"blockquote.indentedblock"} = 'margin-right: 0em';
+$css_map{"blockquote.smallindentedblock"}
+  = 'margin-right: 0em; font-size: smaller';
 
 # types that are in code style in the default case
 my %default_code_types = (
@@ -2407,8 +2403,15 @@ foreach my $command (keys(%inline_commands)) {
   $default_commands_conversion{$command} = \&_convert_inline_command;
 }
 
+sub _indent_with_table ($)
+{
+  my $content = shift;
+
+  return '<table><tr><td>&nbsp;</td><td>'.$content."</td></tr></table>\n";
+}
+
 my $html_menu_entry_index = 0;
-sub _convert_preformatted_or_indented_commands($$$$)
+sub _convert_preformatted_command($$$$)
 {
   my $self = shift;
   my $cmdname = shift;
@@ -2421,8 +2424,8 @@ sub _convert_preformatted_or_indented_commands($$$$)
 
   if ($content ne '' and !$self->in_string()) {
     if ($self->get_conf('COMPLEX_FORMAT_IN_TABLE')) {
-      if ($indented_block_commands{$cmdname}) {
-        return '<table><tr><td>&nbsp;</td><td>'.$content."</td></tr></table>\n";
+      if ($indented_preformatted_commands{$cmdname}) {
+        return _indent_with_table ($content);
       } else {
         return $content."\n";
       }
@@ -2434,11 +2437,34 @@ sub _convert_preformatted_or_indented_commands($$$$)
   }
 }
 
-foreach my $preformatted_or_indented_command (keys(%preformatted_commands), 
-                                      'indentedblock', 'smallindentedblock') {
-  $default_commands_conversion{$preformatted_or_indented_command} 
-  = \&_convert_preformatted_or_indented_commands;
+foreach my $preformatted_command (keys(%preformatted_commands)) {
+  $default_commands_conversion{$preformatted_command} 
+    = \&_convert_preformatted_command;
 }
+
+sub _convert_indented_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $content = shift;
+
+  if ($content ne '' and !$self->in_string()) {
+    if ($self->get_conf('COMPLEX_FORMAT_IN_TABLE')) {
+      return _indent_with_table ($content);
+    } else {
+      return $self->_attribute_class('blockquote', $cmdname).">\n"
+             .$content.'</blockquote>'."\n";
+    }
+  } else {
+    return $content;
+  }
+}
+
+$default_commands_conversion{'indentedblock'} = \&_convert_indented_command;
+$default_commands_conversion{'smallindentedblock'}
+  = \&_convert_indented_command;
+
 
 sub _convert_verbatim_command($$$$)
 {
