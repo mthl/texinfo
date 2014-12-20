@@ -5,9 +5,8 @@
 #include "tree.h"
 #include "text.h"
 #include "input.h"
-
-/* In convert.c */
-char *text_convert (ELEMENT *e);
+#include "convert.h"
+#include "labels.h"
 
 /* 2610 */
 /* Actions to be taken when a whole line of input has been processed */
@@ -360,7 +359,7 @@ end_line (ELEMENT *current)
 
           /* This sets 'node_content' and 'normalized' on the node, among
              other things (which were already set in parse_node_manual). */
-          //register_label (current, current->args.list[0]);
+          register_label (current, arg);
 
           current_node = current;
         }

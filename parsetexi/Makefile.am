@@ -14,7 +14,7 @@ libparsetexi_a_SOURCES=api.c api.h \
 		  text.c text.h \
 		  context_stack.c context_stack.h \
 		  debug.c \
-		  convert.c \
+		  convert.c convert.h \
 		  end_line.c \
 		  separator.c \
 		  multitable.c \
@@ -24,7 +24,8 @@ libparsetexi_a_SOURCES=api.c api.h \
 		  def.c def.h \
 		  dump_perl.c \
 		  extra.c \
-		  menus.c
+		  menus.c \
+		  labels.c
 
 parsetexi_SOURCES=$(libparsetexi_a_SOURCES) main.c
 

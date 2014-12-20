@@ -4,10 +4,12 @@
 #include "parser.h"
 #include "input.h"
 #include "text.h"
+#include "labels.h"
 
 #define element_type_name(e) element_type_names[(e)->type]
 
-#define TREE_ROOT_VAR "$VAR1"
+#define TREE_ROOT_VAR "$TREE"
+#define LABELS_VAR "$LABELS"
 
 int indent = 0;
 
@@ -307,12 +309,34 @@ dump_element (ELEMENT *e)
 }
 
 void
+dump_labels_information (void)
+{
+  int i;
+
+  text_append (&fixup_dump, "\n" LABELS_VAR " = {\n");
+
+  for (i = 0; i < labels_number; i++)
+    {
+      text_printf (&fixup_dump, "'%s' => ", labels_list[i].label);
+      dump_route_to_element (labels_list[i].target);
+      text_append (&fixup_dump, ",\n");
+    }
+
+  text_append (&fixup_dump, "};\n");
+}
+
+void
 dump_tree_to_perl (ELEMENT *root)
 {
   text_init (&fixup_dump);
   printf (TREE_ROOT_VAR " = ");
   dump_element (root);
   printf (";\n");
+
+  /* All the elements in the tree have routing information now. */
+
+  dump_labels_information ();
+
   if (fixup_dump.end > 0)
     printf ("%s", fixup_dump.text);
 }

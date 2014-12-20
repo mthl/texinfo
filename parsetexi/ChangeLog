@@ -1,3 +1,15 @@
+2014-12-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* labels.c: New file.
+
+	* end_line.c (end_line) <@node>: Call register_label.
+	* dump_perl.c (dump_tree_to_perl): Dump information about 
+	labels.
+	* Parsetexi/lib/Parsetexi.pm: Set 'labels_information' from 
+	dump.
+
+	* convert.c (convert_to_normalized): Stub added.
+
 2014-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* element_types.txt: Add menu_entry and menu_star types.

@@ -271,22 +271,26 @@ sub parse_texi_file ($$)
   # to Parsetexi.pm to get the tree without doing this.
   $tree_stream = qx(./parsetexi $file_name 2>/dev/null);
 
-  my $VAR1;
+  my ($TREE, $LABELS);
   #print "Reading tree...\n";
   eval $tree_stream;
   #print "Read tree.\n";
 	  
   #print "Adjusting tree...\n";
-  _add_parents ($VAR1);
-  _complete_node_list ($self, $VAR1);
+  _add_parents ($TREE);
+  _complete_node_list ($self, $TREE);
   #print "Adjusted tree.\n";
+
+  $self->{'info'}->{'input_file_name'} = $file_name;
+
+  $self->{'labels'} = $LABELS;
 
   #$Data::Dumper::Purity = 1;
   #$Data::Dumper::Indent = 1;
-  #my $bar = Data::Dumper->Dump([$VAR1], ['$VAR1']);
+  #my $bar = Data::Dumper->Dump([$TREE], ['$TREE']);
   #print $bar;
 
-  return $VAR1;
+  return $TREE;
 }
 
 # Public interfaces of Texinfo::Parser (starting line 942)
