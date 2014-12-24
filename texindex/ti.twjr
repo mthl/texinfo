@@ -1,4 +1,5 @@
 \input texinfo   @c -*-texinfo-*-
+@c $Id$
 @c %**start of header (This is for running Texinfo on a region.)
 @setfilename texindex.info
 @include version.texi 
@@ -45,8 +46,8 @@ along with this program.  If not, see @url{http://www.gnu.org/licenses/}.
 
 @titlepage
 @title Texindex
-@subtitle for version @value{VERSION}, @value{UPDATED}
-@author Arnold D.  Robbins
+@subtitle version @value{VERSION}, @value{UPDATED}
+@author Arnold D. Robbins
 @author and Texinfo maintainers
 @page
 @vskip 0pt plus 1filll
@@ -72,21 +73,6 @@ files produced by the @file{texinfo.tex} file.
 * Processing records::          Processing each record.
 * Necessary stuff::             Copyright, helper functions, i18n.
 * Index::                       Combined index.
-
-@detailmenu
-* Intended audience::           Who should read this.
-* Typographical conventions::   This is a literate program.
-
-* Setup for each input file::   What happens at the start of each file.
-* Processing each record::      Processing the record.
-* End-of-file sorting and printing::
-* Comparing index entries::     The heart of the sorting algorithm.
-
-* Copyright statement:: Copyright info.
-* Library functions::   From the @code{gawk} library: @code{ftrans}, @code{join}.
-* Helper functions::    @code{del_array}, @code{check_split_null}, @code{fatal}, @dots{}
-* I18N::                Internationalization.
-@end detailmenu
 @end menu
 
 @node Preface
@@ -99,14 +85,22 @@ maintainable, and in particular, to support correctly listing the
 @cindex @{ (left brace), example index entry for
 @cindex @} (right brace), example index entry for
 
+@cindex TexiWeb Jr.@: literate programming system
+@cindex Texinfo document formatting language
+This is a @dfn{literate program}, written using the
+@uref{https://github.com/arnoldrobbins/texiwebjr, @sc{TexiWeb Jr.@:}
+literate programming system}.  The underlying documentation system is
+@uref{http://www.gnu.org/software/texinfo, Texinfo}, the GNU
+documentation formatting language.  A single source file
+produces the runnable program, a printable document, and an online
+document.
+
 @menu
-* Audience::                    Who should read this.
-* Conventions::                 Typographical conventions.
-* Acknowledgements::            Acknowledgements.
+* Intended audience::           
 @end menu
 
 @node Intended audience
-@unnumberedsec Intended audience
+@section Intended audience
 
 You should read this if you want to understand how @file{texindex.awk}
 works.  You should be familiar with the @command{awk} programming
@@ -122,56 +116,12 @@ the wrong place.  @xref{knuth}.
 @center @image{donald_knuth, 5in, , Indexing}
 @end float
 
-@node Typographical conventions
-@unnumberedsec Typographical conventions
-
-@c Copied mostly verbatim from the gawk manual.
-
-@cindex TexiWeb Jr.@: literate programming system
-@cindex Texinfo document formatting language
-This is a @dfn{literate program},
-written using the
-@uref{https://github.com/arnoldrobbins/texiwebjr,
-@sc{TexiWeb Jr.@:} literate programming system}.
-The underlying documentation system is
-@uref{http://www.gnu.org/software/texinfo/, Texinfo},
-the GNU documentation formatting language.
-A single Texinfo source file is used to produce both the printed and online
-versions of a program's documentation.
-Because of this, the typographical conventions
-are slightly different than in other books you may have read.
-
-Examples you would type at the command-line are preceded by the common
-shell primary and secondary prompts, @samp{$} and @samp{>}.  Input that
-you type is shown @kbd{like this}.  Output from the command is preceded
-by the glyph ``@print{}''.  This typically represents the command's
-standard output.  Error messages, and other output on the command's
-standard error, are preceded by the glyph ``@error{}''.  For example:
-
-@example
-$ @kbd{echo hi on stdout}
-@print{} hi on stdout
-$ @kbd{echo hello on stderr 1>&2}
-@error{} hello on stderr
-@end example
-
-@ifnotinfo
-In the text, command names appear in @code{this font}, while code segments
-appear in the same font and quoted, @samp{like this}.  Options look
-like this: @option{-f}.  Some things are emphasized @emph{like this},
-and if a point needs to be made strongly, it is done @strong{like this}.
-The first occurrence of a new term is usually its @dfn{definition} and
-appears in the same font as the previous occurrence of ``definition''
-in this sentence.  Finally, file names are indicated like this:
-@file{/path/to/our/file}.
-@end ifnotinfo
-
 @node Requirements
 @chapter Requirements
 
 The input to this program is the list of unsorted index entries
 produced by @file{texinfo.tex} when a Texinfo document is processed.
-For example, two lines from the @command{gawk} documentation might
+For example, two lines resulting from the @command{gawk} manual might
 look like this:
 
 @example
@@ -180,7 +130,7 @@ look like this:
 \entry@{POSIX awk@}@{106@}@{POSIX \command @{awk@}@}
 @end example
 
-There are three ``fields'' enclosed in braces:
+As shown, there are three ``fields'' enclosed in braces:
 
 @itemize @bullet
 @item
@@ -197,11 +147,12 @@ The actual text to go into the printed index, which can include markup.
 The braces are balanced in all cases, although for use by this program,
 braces can be included in the sort key by escaping them with the
 @dfn{command character}.  This is the first character on the line.  It is
-either a backslash, or a Texinfo at-sign, @samp{@@}.
+either the backslash used by @TeX{} (@samp{\}) or the at sign used by
+Texinfo (@samp{@@}).
 
-The job is to sort the entries, and merge those which are identical,
-except for the page numbers.  For the above two entries, the output
-should be:
+The job is to sort the entries, and merge those which are identical
+except for the page numbers.  Thus, for the above two entries, the
+output should be:
 
 @example
 \entry @{POSIX \command @{awk@}@}@{5, 106@}
@@ -211,7 +162,7 @@ The sorting should be in the order of: all symbols first, then all digits, then
 all letters, with uppercase letters following lowercase ones, so we will need
 some smarts.
 
-Input lines can be duplicated (same entry, same page, more than once), so
+Input lines might be duplicated (same entry, same page, more than once), so
 we will have to deal with that.
 
 In addition, @command{texindex} must output special lines indicating the
@@ -249,24 +200,28 @@ which in turn is the input to @command{texindex}:
 @end example
 
 @noindent
-This is actually OK; the results will be visible in the final
-index as two identical appearing entries (most likely with different
-page numbers).  This should cause the author of the document to search
-for entries that are identical with respect to text but that differ
-in their use of Texinfo markup.
+This is ok, and the entries will be processed separately; the results
+will be visible in the final index as two identical appearing entries
+(most likely with different page numbers).  This should cause the
+document author to search for entries that are identical with
+respect to text but that differ in their use of Texinfo markup.
 
 @item
-For the same sort key and text, page numbers will be monotonically increasing.
-This means we can just use a new page number when it comes in, and not have to
-sort entries based on both sort key and page number.
+@cindex roman numerals
+For the same sort key and text, page numbers will be monotonically
+increasing.  This means we can just use a new page number when it
+comes in, and not have to sort entries based on both sort key and page
+number.  (Which, in turn, means that we don't need to worry about page
+numbers that are roman numerals.)
 @end enumerate
 
-An additional requirement is that the program be written in portable
-@command{awk}, and not use features that are found only in GNU @command{awk}
-(@command{gawk}).  For our purposes, ``portable'' means ``new'' @command{awk}
-as defined in the 1988 book by Aho, Weinberger and Kernighan.  This gives
-us functions, multidimensional arrays and a number of other important features
-over the original @command{awk} shipped with V7 Unix.
+An additional requirement, for ease of deployment, is that the program
+be written in portable @command{awk}, and not use features that are
+found only in GNU @command{awk} (@command{gawk}).  For our purposes,
+``portable'' means ``new'' @command{awk} as defined in the 1988 book
+by Aho, Weinberger and Kernighan.  This gives us functions,
+multidimensional arrays and a number of other important features over
+the original @command{awk} shipped with V7 Unix.
 
 @node High-level organization
 @chapter High-level organization
@@ -277,13 +232,13 @@ The general outline is as follows:
 @post_create texindex.awk chmod +x texindex.awk
 
 @(texindex.awk@) =
-@<Shebang header@>
-@<GPL 3 Copyright statement@>
+@<First line@>
+@<GPL v3 copyright statement@>
 @<Library functions@>
 @<Helper functions@>
 
 BEGIN {
-  @<Initial stuff@>
+  @<Initial setup@>
   @<Argument processing@>
 }
 
@@ -293,32 +248,47 @@ BEGIN {
 @<Work functions@>
 @
 
-In the program itself, we follow a convenient convention:
-global variable and array names all start with a capital
-letter.
+@menu
+* First line::
+* Initial setup::
+* Argument processing::
+@end menu
 
+@node First line
+@section First line
+
+@cindex first line
 @cindex @code{#!} header
-@cindex shebang header
-@cindex header, @code{#!}
 @cindex header, shebang
-@cindex executable scripts
-@cindex scripts, executable
-The @samp{#!} header lets us create executable scripts.
-This lets the script be self-contained.
-For development, I've used the location of @command{gawk}
-on my system.  For production, the value will be substituted
-in using Autoconf.
 
-@<Shebang header@> =
-#! /usr/local/bin/gawk -f
+For the first line of the generated output, we hardwire our intended
+output file name and how it got made.  We do not use a @samp{#!} header
+because, being a GNU program, this needs to accept the @option{--help}
+and @option{--version} options.  This cannot be done with a standalone
+@code{awk} script; we need a shell wrapper, and hence, the @code{awk}
+script itself need not be executable, and it's simpler not to worry
+about the location of the @code{awk} program.
+
+@<First line@> =
+# texindex.awk, generated by jrtangle from ti.twjr.
 @
 
-The initial setup sets up some constants, including
-the version of the program.
-The last line sets up @code{Can_split_null} which tells
-us if the built-in @code{split()} function will split
-apart a string into its individual characters or if we
-have to do to it manually.
+@node Initial setup
+@section Initial setup
+
+@cindex initial setup
+
+The initial setup sets up some constants, including the version of the
+program.  In the program itself, we follow a convenient convention:
+global variable and array names start with a capital letter.
+
+Per GNU standards, we sometimes hardwire the string @samp{texindex} as
+the name of the program, and sometimes use the name by which the program
+was invoked.  We'll call the latter @code{Prgname}.  
+
+The last line below sets up @code{Can_split_null}, which tells us if the
+built-in @code{split()} function will split apart a string into its
+individual characters or if we have to do it manually.
 
 @cindex @code{TRUE} constant
 @cindex @code{FALSE} constant
@@ -327,40 +297,57 @@ have to do to it manually.
 @cindex @code{Texindex_Version} variable
 @cindex @code{Can_split_null} variable
 @cindex @code{check_split_null()} function
-@<Initial stuff@>=
+@<Initial setup@>=
 TRUE = 1
 FALSE = 0
 EXIT_SUCCESS = 0
 EXIT_FAILURE = 1
+
+Prgname = ARGV[0]
 Texindex_Version = "5.2+dev"
 
 Can_split_null = check_split_null()
 @
 
+@node Argument processing
+@section Argument processing
+
+@cindex argument processing
+
 @cindex @code{usage()} function
 @cindex @code{version()} function
-Argument processing is very straightforward, as well as somewhat manual.
-The important thing is to remove options and their arguments from
-@code{ARGV} so that they're not treated as filenames.  The options that
-print version or help information automatically exit, so there's no need
-to mess with @code{ARGV} in those cases.
+Argument processing is straightforward, though manual.  The important
+thing is to remove options and their arguments from @code{ARGV} so that
+they're not treated as filenames.  The options that print version or
+help information automatically exit, so there's no need to mess with
+@code{ARGV} in those cases.
+
+@cindex @code{-o} (@code{--output}) option, unimplemented
+The C implementation of @command{texindex} provided an option @code{-o}
+(@code{--output}) @var{file} to write the output to @var{file}.  We've
+chosen to omit it from this incarnation of the program unless and until
+we receive information that it was ever useful.
 
 @<Argument processing@>=
 for (i = 1; i < ARGC; i++) {
-  if (ARGV[i] == "-h" || ARGV[i] == "--help")
+  if (ARGV[i] == "-h" || ARGV[i] == "--help") {
     usage(EXIT_SUCCESS)
-  else if (ARGV[i] == "--version")
+  } else if (ARGV[i] == "--version") {
     version()
-  else if (ARGV[i] == "-k" || ARGV[i] == "--keep") {
+  } else if (ARGV[i] == "-k" || ARGV[i] == "--keep") {
     # do nothing, backwards compatibility
     delete ARGV[i]
   } else if (ARGV[i] == "--") {
     delete ARGV[i]
     break
-  } else if (ARGV[i] ~ /^--?.+/)
-    usage(EXIT_FAILURE)
-  else
+  } else if (ARGV[i] ~ /^--?.+/) {
+    fatal(_"%s: unrecognized option `%s'\n" \
+          "Try `%s --help' for more information.\n",
+          Prgname, ARGV[i], Prgname)
+    exit EXIT_FAILURE
+  } else {
     break
+  }
 }
 @
 
@@ -373,21 +360,18 @@ at the end, and writing out the data properly.
 
 @menu
 * Setup for each input file::   What happens at the start of each file.
-* Processing each record::      Processing the record.
+* Processing each record::
 * End-of-file sorting and printing::
-* Comparing index entries::     The heart of the sorting algorithm.
 @end menu
 
 @node Setup for each input file
 @section Setup for each input file
 
-At the beginning of each input file, the @code{beginfile()}
-function sets up the output file name.
-The convention is to simply append an @samp{s} to the name
-of the input file.  The @option{-o} option in the C
-version of @command{texindex} to specify an output file
-was never used and is purposely not carried forward into this
-version of the program.
+At the beginning of each input file, the @code{beginfile()} function
+sets up the output file name.  We always append an @samp{s} to the name
+of the input file, which has become the standard convention.  (As
+mentioned above, the @option{-o} option in the C implementation of
+@command{texindex} has been omitted here.)
 
 When @code{beginfile()} is called, the first record
 has already been read, so it's possible to perform the
@@ -420,7 +404,7 @@ function beginfile(filename)
   Command_char = substr($0, 1, 1)
   if (   (Command_char != "\\" && Command_char != "@") \
       || substr($0, 2, 5) != "entry")
-    fatal("%s is not a Texinfo index file\n", filename)
+    fatal(_"%s is not a Texinfo index file\n", filename)
 
   Special_chars = "{}" Command_char
 }
@@ -440,10 +424,26 @@ processed.
   @<Get the initial@>
   @<Set up @code{fields} array with the data@>
   @<Name the fields@>
-  @<Store the data for the line in the @code{Data} array@>
+  @<Store the data for this line in the @code{Data} array@>
   @<Check for more than one initial@>
 }
 @
+
+@menu
+* Remove duplicates::
+* Remove leading @code{\entry}::
+* Get the initial::
+* Set up and name fields::
+* Store the data for this line::
+* Check for more than one initial::
+* Splitting the record::
+@end menu
+
+@node Remove duplicates
+@subsection Remove duplicates
+
+@cindex removing duplicates
+@cindex duplicates, removing
 
 @cindex @code{Seen} array
 Duplicates are going to be exact.  Removing them is thus easy;
@@ -458,10 +458,18 @@ if ($0 in Seen)
 Seen[$0] = TRUE
 @
 
+@node Remove leading @code{\entry}
+@subsection Remove leading @code{\entry}
+
+We use @code{substr()} here to avoid possible hassles with leading
+backslashes in @code{sub()}.
+
 @<Remove leading @code{\entry}@>=
-# Use substr() to avoid hassles with leading backslash in sub()
 $0 = substr($0, 7)    # remove leading \entry
 @
+
+@node Get the initial
+@subsection Get the initial
 
 @cindex @code{extract_initial()} function
 @<Get the initial@>=
@@ -475,8 +483,8 @@ open braces until we encounter the first real character.  This in turn
 could be @samp{@{} or @samp{@}} preceded by the command character, or
 another character.
 
-A direct example can be seen in what older versions of @file{texinfo.tex}
-generated if you needed to index a real backslash.  You get an input
+An example can be seen in what older versions of @file{texinfo.tex}
+generated if you needed to index a real backslash, namely an input
 line something like the following:
 
 @example
@@ -484,7 +492,7 @@ line something like the following:
 @end example
 
 Fortunately, the first non-brace character is a backslash, and that
-becomes the initial.
+is also the correct initial.
 
 @cindex @code{extract_initial()} function
 @cindex @code{char_split()} function
@@ -497,7 +505,7 @@ function extract_initial(key,  initial, nextchar, i, l, kchars)
       break
 
   if (i > l)
-    fatal("%s:%d: Bad key %s in record\n", FILENAME, FNR, key)
+    fatal(_"%s:%d: Bad key %s in record\n", FILENAME, FNR, key)
 
   initial = toupper(kchars[i])
   nextchar = kchars[i+1]
@@ -508,25 +516,34 @@ function extract_initial(key,  initial, nextchar, i, l, kchars)
 }
 @
 
+@node Set up and name fields
+@subsection Set up and name fields
+
 The next part is to pull out the data of interest from the three sets of
 braces.  This is delegated to a function named @code{field_split()}.
 There must be exactly three fields.
 
 @cindex @code{field_split()} function
+@cindex @code{fields} array, setting up
 @<Set up @code{fields} array with the data@>=
 numfields = field_split($0, fields, "{", "}", Command_char)
 if (numfields != 3)
-  fatal("%s:%d: Bad entry\n", FILENAME, FNR)
+  fatal(_"%s:%d: Bad entry; expected three fields, not %d\n",
+        FILENAME, FNR, numfields)
 @
 
 We give the fields names for later use.
 
-@cindex @code{extract_initial()} function
 @<Name the fields@>=
 key = fields[1]
 linenum = fields[2]
 text = fields[3]
 @
+
+@node Store the data for this line
+@subsection Store the data for this line
+
+@cindex storing data
 
 @cindex @code{Keys} array
 @cindex @code{Entries} variable
@@ -541,7 +558,7 @@ The key and the text are invariant across entries; only the line
 number changes, so we use the key and text as the unique index
 into @code{Data}.
 
-@<Store the data for the line in the @code{Data} array@>=
+@<Store the data for this line in the @code{Data} array@>=
 if (! ((key, "text") in Data)) {
   # first time we've seen this full line
   Keys[++Entries] = key
@@ -552,10 +569,14 @@ if (! ((key, "text") in Data)) {
   Data[key, "linenum"] = Data[key, "linenum"] ", " linenum
 @
 
-Finally, we need to see if more than one initial occurs
-in the file.  If so, we set @code{Do_initials} to true.
-As soon as it's true, we don't need to do further checking
-on subsequent lines.
+@node Check for more than one initial
+@subsection Check for more than one initial
+
+@cindex initial, checking for more than one
+
+Finally, we need to determine if more than one initial occurs in the
+input.  If so, we set @code{Do_initials} to true.  As soon as it's true,
+we don't need to do further checking on subsequent lines.
 
 @cindex @code{Do_initials} variable
 @cindex @code{Prev_initial} variable
@@ -567,6 +588,9 @@ if (! Do_initials) {
     Do_initials = TRUE
 }
 @
+
+@node Splitting the record
+@subsection Splitting the record: @code{field_split}
 
 Let's take a look at the function that breaks apart the record.
 Upon entry to the function, the value of @code{record}
@@ -580,7 +604,7 @@ The first field may have instances of @samp{@@@{} and/or @samp{@@@}}
 (or @samp{\@{} and/or @samp{\@}}), so
 the braces aren't necessarily exactly balanced.
 
-The @code{field_split()} function uses pretty straightforward ``count
+The @code{field_split()} function uses fairly straightforward ``count
 the delimiters'' code.  The loop starts at 2, since we know the first
 character is an open brace.  The main things to handle are the
 command character and the final closing brace.  The third field is
@@ -615,7 +639,7 @@ function field_split( \
     } else
       out[k++] = chars[i]
 
-    @<Special case the third field@>
+    @<Take the third field as a whole@>
   }
 
   return j  # num fields
@@ -650,16 +674,17 @@ k = 1
 
 i++
 if (i <= numchars && chars[i] != start)
-  fatal("%s:%d: Bad entry\n", FILENAME, FNR)
+  fatal(_"%s:%d: Bad entry; expected %s at column %d\n",
+        FILENAME, FNR, start, i)
 delim_count = 1
 @
 
-The third field is special.  We just take the whole thing
-as is.  This is done by stripping off the outermost braces,
-using @code{substr()}.
-We then break out of the loop, since we're done.
+The third field is the printable version, and may have unbalanced braces
+or other oddities.  We just take the whole thing as is.  This is done by
+stripping off the outermost braces, using @code{substr()}.  We then
+break out of the loop, since we're done.
 
-@<Special case the third field@>=
+@<Take the third field as a whole@>=
 if (j == 3) {  # Per Karl, just grab the whole rest of the line
   # extract everything between the outer delimiters
   fields[3] = substr(record, i + 1, numchars - i - 1)
@@ -671,9 +696,9 @@ if (j == 3) {  # Per Karl, just grab the whole rest of the line
 @node End-of-file sorting and printing
 @section End-of-file sorting and printing
 
-Upon end of input, the processing is straightforward.  Sort the entries,
-and then write them out.  If we are printing the initial, handle that.
-(That task is delegated to a small function.)
+Upon end of input, the processing is straightforward: sort the entries
+and write them out.  Additionally, if we are printing the initial,
+handle that.  (That printing task is delegated to a small function.)
 
 @cindex @code{quicksort()} function
 @cindex @code{endfile()} function
@@ -723,6 +748,17 @@ function print_initial(initial)
 }
 @
 
+@menu
+* Quicksort::                   Sorting our input.
+* Comparing index entries::     The heart of the sorting algorithm.
+@end menu
+
+@node Quicksort
+@subsection Quicksort
+
+@cindex quicksort
+@cindex Hoare, C.A.R.
+
 Sorting uses a standard Quick Sort, with the @code{less_than()}
 function supplying the comparison.
 
@@ -730,11 +766,10 @@ function supplying the comparison.
 @cindex @code{quicksort()} function
 @cindex @code{quicksort_swap()} function
 @<Helper functions@>=
-# quicksort --- C.A.R.  Hoare's quick sort algorithm.  See Wikipedia
+# quicksort --- C.A.R. Hoare's quick sort algorithm.  See Wikipedia
 #               or almost any algorithms or computer science text
-#
 # Adapted from K&R-II, page 110
-
+#
 function quicksort(data, left, right,    i, last)
 {
     if (left >= right)  # do nothing if array contains fewer
@@ -751,7 +786,7 @@ function quicksort(data, left, right,    i, last)
 }
 
 # quicksort_swap --- quicksort helper function, could be inline
-
+#
 function quicksort_swap(data, i, j, temp)
 {
     temp = data[i]
@@ -761,7 +796,7 @@ function quicksort_swap(data, i, j, temp)
 @
 
 @node Comparing index entries
-@section Comparing index entries
+@subsection Comparing index entries
 
 The comparison function is the heart of the sorting algorithm.
 The comparison is based on the indexing rules, which are:
@@ -784,14 +819,13 @@ that maps characters to comparison values.
 The following code is based on the original C @command{texindex},
 although the actual comparison algorithm is more sophisticated.
 
-The @code{Ordval} array maps characters to numeric
-values.  Most characters map to their ASCII code.
-We add 512 to the value of each of the digits.
-Both uppercase and lowercase letters map to the same
-numeric value, which is the ASCII code for the uppercase
-letter plus 512.@footnote{This code should also work for
-EBCDIC systems, although @TeX{} does everything in ASCII,
-so I'm not sure how much of a difference it makes.}
+We set up an @code{Ordval} array to map characters to numeric values.
+Most characters map to their ASCII code.  We add 512 to the value of
+each of the digits.  Both uppercase and lowercase letters map to the
+same numeric value, which is the ASCII code for the uppercase letter
+plus 512.@footnote{This code should also work for EBCDIC systems,
+although @TeX{} does everything in ASCII, so it's not likely to make a
+difference.}
 
 The table must be built completely before changing the
 mapping of the letters, because all of the uppercase and
@@ -820,7 +854,6 @@ BEGIN {
     # the right order to check
     #
     # Checking isupper() lets this work for EBCDIC, too.
-
     if (isupper(c)) {
       Ordval[c] += 512
       Ordval[tolower(c)] = Ordval[c]
@@ -832,11 +865,11 @@ BEGIN {
 Here is the @code{less_than()} function.  It returns true if the @code{left}
 string is ``less than'' the @code{right} string.
 
-The comparison algorithm is relatively straightforward, once we define
-how things should work.  We loop over each pair of characters in the
+The comparison algorithm is not too complicated, once we define how
+things should work.  We loop over each pair of characters in the
 @code{left} and @code{right} strings, comparing them one at a time.
-When comparing two characters, there are three cases, one of which
-has three subcases, as follows:
+When comparing two characters, there are three cases, one of which has
+three subcases, as follows:
 
 @table @i
 @item Two letters
@@ -874,11 +907,10 @@ And, as usual, if one string is an initial substring
 of the other, that one is considered to be ``less than''
 the other one.
 
-The rules just described actually produce @emph{better}
-results than did the C version of @command{texindex}.
-For example, @samp{beginfile()} sorts out to be before
-@samp{BEGINFILE}, whereas with the C version they came out
-in the opposite order.
+The rules just described produce @emph{better} results than did the C
+@command{texindex}.  For example, @samp{beginfile()} sorts
+before @samp{BEGINFILE}, whereas with the C version they came out in the
+opposite order.
 
 @cindex @code{Ordval} array
 @cindex @code{char_split()} function
@@ -943,18 +975,17 @@ function less_than(left, right,    len_l, len_r, len, chars_l, chars_r)
 @node Necessary stuff
 @chapter Necessary stuff that isn't thrilling
 
-This chapter provides a number of elements
-that are necessary but not exciting.
+This chapter provides some elements that are necessary but not exciting.
 
 @menu
 * Copyright statement:: Copyright info.
-* Library functions::   From the @code{gawk} library: @code{ftrans}, @code{join}.
+* Library functions::   From the @code{gawk} library: @file{ftrans.awk}, @code{join}.
 * Helper functions::    @code{del_array}, @code{check_split}, @code{fatal}, @dots{}
 * I18N::                Internationalization.
 @end menu
 
 @node Copyright statement
-@section Copyright Statement
+@section Copyright statement
 
 @cindex copyright statement
 @cindex GNU General Public License
@@ -962,9 +993,9 @@ that are necessary but not exciting.
 @cindex GPL (GNU General Public License)
 Every program needs a copyright statement.
 
-@<GPL 3 Copyright statement@>=
+@<GPL v3 copyright statement@>=
 #
-# Copyright 2014 Free Software Foundation
+# Copyright 2014 Free Software Foundation, Inc.
 # 
 # This file is part of GNU Texinfo.
 # 
@@ -983,7 +1014,7 @@ Every program needs a copyright statement.
 @
 
 @node Library functions
-@section Library functions
+@section Library functions: @file{ftrans.awk}, @code{join}
 
 The program uses several library routines discussed in detail
 in the @command{gawk} documentation.  The first sets up the
@@ -1039,8 +1070,19 @@ function join(array, start, end, sep,    result, i)
 @node Helper functions
 @section Helper functions
 
-A number of helper functions make the main code easier
-to follow.
+These helper functions make the main code easier to follow.
+
+@menu
+* @code{del_array}::
+* @code{check_split_null}::
+* @code{char_split}::
+* @code{fatal}::
+* @code{is@dots{}} functions::
+@end menu
+
+@node @code{del_array}
+@subsection @code{del_array}
+
 @code{del_array()} clears out an array.
 
 @cindex @code{del_array()} function
@@ -1054,11 +1096,14 @@ function del_array(a)
 }
 @
 
-This function checks if the @command{awk} running this program
-supports using the null string for the separator, splitting each
-character off into a separate element.  If so, the return value will
-be the number of elements in the array, and it will be more than one.
-It is called at program startup.
+@node @code{check_split_null}
+@subsection @code{check_split_null}
+
+@code{check_split_null()} determines whether the @command{awk} running
+this program supports using the null string for the separator, splitting
+each character off into a separate element.  If so, the return value
+will be the number of elements in the array, and it will be more than
+one.  It is called at program startup.
 
 @cindex @code{check_split_null()} function
 @<Helper functions@>=
@@ -1069,9 +1114,12 @@ function check_split_null(    n, a)
 }
 @
 
-This function splits a string into separate characters, letting
-@command{awk} do the work if possible.  If not, each character
-is extracted manually using a loop and @code{substr()}.
+@node @code{char_split}
+@subsection @code{char_split}
+
+@code{char_split()} splits a string into separate characters, letting
+@command{awk} do the work if possible.  If not, each character is
+extracted manually using a loop and @code{substr()}.
 
 @cindex @code{char_split()} function
 @cindex @code{Can_split_null} variable
@@ -1092,8 +1140,12 @@ function char_split(string, array,    n, i)
 }
 @
 
-The @code{fatal()} function prints a fatal error message
-and then exits.
+@node @code{fatal}
+@subsection @code{fatal}
+
+@cindex stderr
+The @code{fatal()} function prints a @code{printf}-formatted message to
+standard error and then exits badly.
 
 @cindex @code{fatal()} function
 @<Helper functions@>=
@@ -1106,16 +1158,18 @@ function fatal(format, arg1, arg2, arg3, arg4, arg5,
 }
 @
 
+@node @code{is@dots{}} functions
+@subsection @code{is@dots{}} functions
+
 @cindex @code{isupper()} function
 @cindex @code{islower()} function
 @cindex @code{isalpha()} function
 @cindex @code{isdigit()} function
 The following functions help identify what a character is; they are
-similar in nature to the various macros in the C @code{<ctype.h>}
-header file.  Since each one returns a count, the return value
-could be used to compute which character from the set was seen;
-this turned out not to be necessary in this program but it might
-useful in some other context.
+similar in nature to the various macros in the C @code{<ctype.h>} header
+file.  Since each one returns a count, the return value could be used to
+compute which character from the set was seen; this turned out not to be
+necessary in this program but might be useful in some other context.
 
 @<Helper functions@>=
 function isupper(c)
@@ -1142,20 +1196,20 @@ function isdigit(c)
 @node I18N
 @section Internationalization
 
-For @command{gawk}, we can arrange for the messages in the
-@code{usage()} and @code{version()} functions to be translated.
-We do this by setting the text domain at startup.
-For more information on internationalization in @command{gawk}, see
+For @command{gawk}, we can arrange for the various messages, e.g., in
+the @code{usage()} and @code{version()} functions, to be translated.  We
+do this by setting the text domain at startup.  For more information on
+internationalization in @command{gawk}, see
 @uref{http://www.gnu.org/software/gawk/manual/html_node/Internationalization.html}.
 
-@<Initial stuff@>=
+@<Initial setup@>=
 TEXTDOMAIN = "texinfo"
 @
 
 @noindent
 On non-GNU versions of @command{awk}, this is a harmless assignment, and
-the @code{_"..."} construct below is a harmless concatenation of the
-empty string.
+the @code{_"..."} construct below is a harmless concatenation of an
+unassigned variable @code{_}, i.e., the empty string.
 
 The @code{usage()} and @code{version()} functions print the
 necessary information and then exit.  The strings that
@@ -1165,10 +1219,15 @@ underscore.
 @cindex @code{Texindex_Version} variable
 @cindex @code{usage()} function
 @cindex @code{version()} function
+@tex
+% avoid useless warnings/overfull boxes in these long strings
+\global\hfuzz=\maxdimen
+@end tex
+
 @<Helper functions@>=
 function usage(exit_val)
 {
-  print _"Usage: texindex [OPTION]... FILE..."
+  printf(_"Usage: %s [OPTION]... FILE...", Prgname)
   print _"Generate a sorted index for each TeX output FILE."
   print _"Usually FILE... is specified as `foo.??' for a document `foo.texi'."
   print ""
