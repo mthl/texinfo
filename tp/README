@@ -1,7 +1,7 @@
 $Id$
 texinfo/tp/README
 
-  Copyright 2011, 2012, 2013 Free Software Foundation, Inc.
+  Copyright 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -28,6 +28,9 @@ installed with perl, the packages corresponding to the other modules
 are named:
   libdata-compare-perl libtest-deep-perl
 
+The tests are in the subdirectories t/ and test/.  The tests in t/ test 
+the Perl modules used by the makeinfo command, and the tests in test/ 
+test the command itself.
 
 This module is part of GNU Texinfo.  A standalone Perl module may also be
 produced from within the the Texinfo tree, using 
