@@ -9,7 +9,7 @@
 @c Better brace handling, this texindex is needed to process!
 @allowindexbraces
 
-@c merge the function and variable indexes into the concept index,
+@c Merge the function and variable indexes into the concept index,
 @c but without the code font; in the index entries we'll do the
 @c font management ourselves.  Also merge in the chunk definition
 @c and reference entries, which jrweave creates for us.
@@ -140,14 +140,14 @@ It should contain only ASCII characters.
 The page number for this entry.
 
 @item
-The actual text to go into the printed index, which can include markup.
+The display text to be shown in the printed index, which can include markup.
 @end itemize
 
 The braces are balanced in all cases, although for use by this program,
-braces can be included in the sort key by escaping them with the
-@dfn{command character}.  This is the first character on the line.  It
-is either the backslash used by @TeX{} (@samp{\}) or the at sign used by
-Texinfo (@samp{@@}).
+literal braces (not necessarily balanced) can be included in the sort
+key by escaping them with the @dfn{command character}.  This is the
+first character on the line.  It is either the backslash used by @TeX{}
+(@samp{\}) or the at sign used by Texinfo (@samp{@@}).
 
 The job is to sort the entries, and merge those which are identical
 except for the page numbers.  Thus, for the above two entries, the
@@ -177,10 +177,11 @@ In the rest of the program we make two fundamental assumptions:
 
 @enumerate 1
 @item
-The mapping of sort key to display text should be unique, with only the
-line number changing each time.  If the same sort key has two different
-display texts, it means that different markup was used, probably
-inadvertently.  For example, suppose you have the following input:
+If a given sort key has more than one display text, we only take the
+first (this matches the behavior of C @command{texindex}).  Put another
+way, if the same sort key has two different display texts, it means that
+different markup was used, probably inadvertently, and we just take the
+first.  As an example, consider these two Texinfo commands:
 
 @example
 @@cindex @@file@{field_split()@} function
@@ -189,7 +190,7 @@ inadvertently.  For example, suppose you have the following input:
 @end example
 
 @noindent
-This produces the following output from @file{texinfo.tex},
+They produce the following output via @file{texinfo.tex},
 which in turn is the input to @command{texindex}:
 
 @example
@@ -197,11 +198,12 @@ which in turn is the input to @command{texindex}:
 \entry@{field_split() function@}@{7@}@{\code @{field_split()@} function@}
 @end example
 
-@noindent This is ok, and the entries will be processed separately; the
-results will be visible in the final index as two identical appearing
-entries (most likely with different page numbers).  This should cause
-the document author to search for entries that are identical with
-respect to text but that differ in their use of Texinfo markup.
+@noindent The result will be a single entry, using @code{\file},
+accumulating the page numbers.
+
+@example
+\entry @{\file @{field_split()@} function@}@{2, 7@}
+@end example
 
 @item
 @cindex roman numerals
@@ -214,12 +216,12 @@ that are roman numerals.)
 @end enumerate
 
 An additional requirement, for ease of deployment, is that the program
-be written in portable @command{awk}, and not use features that are
-found only in GNU @command{awk} (@command{gawk}).  For our purposes,
-``portable'' means ``new'' @command{awk} as defined in the 1988 book by
-Aho, Weinberger and Kernighan.  This gives us functions,
-multidimensional arrays and a number of other important features over
-the original @command{awk} shipped with V7 Unix.
+be written in portable @command{awk}, and not use features found only in
+GNU @command{awk} (@command{gawk}).  For our purposes, ``portable''
+means ``new'' @command{awk} as defined in the 1988 book by Aho,
+Weinberger and Kernighan.  This gives us functions, multidimensional
+arrays and a number of other important features over the original
+@command{awk} shipped with V7 Unix.
 
 @node High-level organization
 @chapter High-level organization
@@ -261,8 +263,8 @@ BEGIN {
 
 For the first line of the generated output, we hardwire our intended
 output file name and how it got made.  We do not use a @samp{#!} header
-because, being a GNU program, this needs to accept the @option{--help}
-and @option{--version} options.  This cannot be done with a standalone
+because, being a GNU program, we need to accept the @option{--help} and
+@option{--version} options.  This cannot be done with a standalone
 @code{awk} script; we need a shell wrapper, and hence, the @code{awk}
 script itself need not be executable, and it's simpler not to worry
 about the location of the @code{awk} program.
@@ -460,7 +462,7 @@ We use @code{substr()} here to avoid possible hassles with leading
 backslashes in @code{sub()}.
 
 @<Remove leading @code{\entry}@>=
-$0 = substr($0, 7)    # remove leading \entry
+$0 = substr($0, 7)  # remove leading \entry
 @
 
 @node Get the initial
@@ -530,7 +532,7 @@ We give the fields names for later use.
 
 @<Name the fields@>=
 key = fields[1]
-linenum = fields[2]
+pagenum = fields[2]
 text = fields[3]
 @
 
@@ -542,25 +544,41 @@ text = fields[3]
 @cindex @code{Keys} array
 @cindex @code{Entries} variable
 @cindex @code{Data} array
-We use a traditional @command{awk} multidimensional array to store the
-various bits and pieces.  The subscripts are based on the sort key, and
-the parts are the @code{"linenum"}, the output @code{"text"}, and the
-@code{"initial"}.  In addition, the key is stored as data in the
-@code{Entries} array.  This array is sorted later on.
+We use a traditional @command{awk} multidimensional array, @code{Data}.
+The sort key from the input is invariant across entries, so we use that
+as the basis for the keys in the @code{Data} array.
+The @code{Data} values are the the output @code{"text"}, the
+@code{"pagenum"} list, and the @code{"initial"}.
 
-The key and the text are invariant across entries; only the line number
-changes, so we use the key and text as the unique index into
-@code{Data}.
+In the event that a particular key has more than one associated output
+text, we'll keep the first and ignore the remainder (this is the same
+behavior as the C implementation).  @xref{Requirements}.
+
+For page numbers, we merely append the page number field from the input,
+preceded by a comma and space, unless that page number was already the
+last that's been stored.  (We're assuming the page numbers don't jump
+around, which, in fact, they don't, so we don't need a more complex
+approach.)
+
+@cindex @code{Entries}
+In addition to all this updating of the @code{Data} array, the key is
+stored in the @code{Entries} array the first time it is seen; this array
+is sorted later on.
 
 @<Store the data for this line in the @code{Data} array@>=
 if (! ((key, "text") in Data)) {
   # first time we've seen this full line
   Keys[++Entries] = key
-  Data[key, "linenum"] = linenum
   Data[key, "text"] = text
+  Data[key, "pagenum"] = pagenum
   Data[key, "initial"] = initial
 } else
-  Data[key, "linenum"] = Data[key, "linenum"] ", " linenum
+  # seen this key before; add the current pagenum
+  # unless we've already seen that too.
+  if (   Data[key, "pagenum"] != pagenum \
+      && Data[key, "pagenum"] !~ (", " pagenum "$")) {
+    Data[key, "pagenum"] = Data[key, "pagenum"] ", " pagenum
+  }
 @
 
 @node Check for more than one initial
@@ -714,7 +732,7 @@ function endfile(filename,    i, prev_initial, initial)
     printf("%centry {%s}{%s}\n",
       Command_char,
       Data[Keys[i], "text"],
-      Data[Keys[i], "linenum"]) > Output_file
+      Data[Keys[i], "pagenum"]) > Output_file
   }
   close(Output_file)
 }
@@ -750,8 +768,8 @@ function print_initial(initial)
 @cindex quicksort
 @cindex Hoare, C.A.R.
 
-Sorting uses a standard Quick Sort, with the @code{less_than()} function
-supplying the comparison.
+Sorting uses a standard quicksort algorithm, with a @code{less_than()}
+function (defined in the next function) supplying the comparison.
 
 @cindex @code{less_than()} function
 @cindex @code{quicksort()} function

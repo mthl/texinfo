@@ -2,7 +2,7 @@ SOURCE = ti.twjr
 TEXI = ti.texi
 AWK = texindex.awk
 
-all: $(AWK) html ti.pdf check
+all: check $(AWK) html ti.pdf
 
 $(TEXI): $(SOURCE)
 	rm -f $@; $(GAWK) ./jrweave $(SOURCE) >$(TEXI) || rm -f $@; chmod a-w $@
