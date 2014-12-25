@@ -221,7 +221,7 @@ get_nodes_of_info_file (FILE_BUFFER *file_buffer)
 
       /* Record nodename and nodestart. */
       entry = info_create_node ();
-      read_quoted_string (nodeline + start, ",\n\t", 0, &entry->nodename);
+      read_quoted_string (nodeline + start, ",\n\r\t", 0, &entry->nodename);
       entry->nodestart = nodestart;
 
       init_file_buffer_tag (file_buffer, entry);

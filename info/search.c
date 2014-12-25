@@ -439,21 +439,28 @@ find_node_separator (SEARCH_BINDING *binding)
 
   body = binding->buffer;
 
-  /* A node is started by [^L]^_[^L]\n.  That is to say, the C-l's are
-     optional, but the DELETE and NEWLINE are not.  This separator holds
+  /* A node is started by [^L]^_[^L][\r]\n.  That is to say, the C-l's are
+     optional, but the US and NEWLINE are not.  This separator holds
      true for all separated elements in an Info file, including the tags
      table (if present) and the indirect tags table (if present). */
   for (i = binding->start; i < binding->end; i++)
       /* Note that bytes are read in order from the buffer, so if at any
          point a null byte is encountered signifying the end of the buffer,
          no more bytes will be read past that point. */
-      if (   (body[i] == INFO_FF && body[i + 1] == INFO_COOKIE
-              && (body[i + 2] == '\n'
-                  || (body[i + 2] == INFO_FF && body[i + 3] == '\n')))
-          || (body[i] == INFO_COOKIE
-              && (body[i + 1] == '\n'
-                  || (body[i + 1] == INFO_FF && body[i + 2] == '\n'))))
-          return i;
+
+      if (body[i] == INFO_COOKIE)
+        {
+          int j = i + 1;
+
+          if (body[j] == INFO_FF)
+            j++;
+          if (body[j] == '\r')
+            j++;
+
+          if (body[j] == '\n')
+            return i;
+        }
+
   return -1;
 }
 
@@ -473,6 +480,9 @@ skip_node_separator (char *body)
     return 0;
 
   if (body[i] == INFO_FF)
+    i++;
+
+  if (body[i] == '\r')
     i++;
 
   if (body[i++] != '\n')
@@ -555,7 +565,7 @@ find_node_in_binding (char *nodename, SEARCH_BINDING *binding)
       s.start += offset;
       s.start += skip_whitespace (s.buffer + s.start); 
       nodename_start = s.buffer + s.start;
-      read_quoted_string (nodename_start, "\n\t,", 0, &read_nodename);
+      read_quoted_string (nodename_start, "\n\r\t,", 0, &read_nodename);
       if (!read_nodename)
         return -1;
 

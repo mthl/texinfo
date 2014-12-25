@@ -1145,7 +1145,7 @@ parse_top_node_line (NODE *node)
       /* Separate at commas or newlines, so it will work for
          filenames including full stops. */
       /* TODO: Account for "(dir)" and "(DIR)". */
-      value_length = read_quoted_string (inptr, "\n\t,", 1, store_in);
+      value_length = read_quoted_string (inptr, "\n\r\t,", 1, store_in);
 
       free (dummy); dummy = 0;
 

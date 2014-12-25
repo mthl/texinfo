@@ -1,3 +1,13 @@
+2014-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/search.c (find_node_separator, skip_node_separator): 
+	Allow optional '\r' before '\n' after Ctrl-_ node separator.
+
+	* info/info-utils.c (parse_top_node_line),
+	* info/nodes.c (get_nodes_of_info_file),
+	* info/search.c (find_node_in_binding): Include '\r' in list of 
+	terminating characters.
+
 2013-12-25  Eli Zaretskii  <eliz@gnu.org>
 
 	* info/man.c (get_manpage_from_formatter) <!PIPE_USE_FORK>: 
