@@ -1,3 +1,10 @@
+2014-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/display.c (display_update_window_1): Don't display a line 
+	continuation character on the last line of the display.  Check 
+	was formerly done in process_node_text.  Report from Eli 
+	Zaretskii.
+
 2014-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/HTML.pm: Set CSS styles for @indentedblock, 

@@ -371,10 +371,13 @@ display_update_window_1 (WINDOW *win)
               the_display[win->first_row + pl_num]->inverse = 1;
             }
 
-          /* Check if a line continuation character should be displayed. */
-          if (!delim)
+          /* Check if a line continuation character should be displayed.
+             Don't print one if printing the last character in this window 
+             could possibly cause the screen to scroll. */
+          if (!delim && 1 + pl_num + win->first_row < the_screen->height)
             {
               terminal_goto_xy (win->width - 1, win->first_row + pl_num);
+
               if (!(win->flags & W_NoWrap))
                 terminal_put_text ("\\");
               else
