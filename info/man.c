@@ -386,7 +386,7 @@ get_manpage_from_formatter (char *formatter_args[])
     int fd_err = open (NULL_DEVICE, O_WRONLY, 0666);
     int i;
 
-    for (i = 0; i < arg_index; i++)
+    for (i = 0; formatter_args[i]; i++)
       cmdlen += strlen (formatter_args[i]);
     /* Add-ons: 2 blanks, 2 quotes for the formatter program, 1
        terminating null character.  */

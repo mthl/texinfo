@@ -1,5 +1,10 @@
 2013-12-25  Eli Zaretskii  <eliz@gnu.org>
 
+	* info/man.c (get_manpage_from_formatter) <!PIPE_USE_FORK>: 
+	Check for end of array without using removed variable.
+
+2013-12-25  Eli Zaretskii  <eliz@gnu.org>
+
 	* info/pcterm.c (gettextinfo): Pass expected arguments to 
 	info_error.
 
