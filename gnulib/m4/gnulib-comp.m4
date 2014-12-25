@@ -52,6 +52,12 @@ AC_DEFUN([gl_EARLY],
   AC_REQUIRE([gl_USE_SYSTEM_EXTENSIONS])
   # Code from module extern-inline:
   # Code from module fcntl-h:
+  # Code from module float:
+  # Code from module fpieee:
+  AC_REQUIRE([gl_FP_IEEE])
+  # Code from module fpucw:
+  # Code from module frexp-nolibm:
+  # Code from module frexpl-nolibm:
   # Code from module getopt-gnu:
   # Code from module getopt-posix:
   # Code from module gettext:
@@ -61,6 +67,9 @@ AC_DEFUN([gl_EARLY],
   # Code from module iconv:
   # Code from module include_next:
   # Code from module intprops:
+  # Code from module isnand-nolibm:
+  # Code from module isnanf-nolibm:
+  # Code from module isnanl-nolibm:
   # Code from module iswblank:
   # Code from module langinfo:
   # Code from module largefile:
@@ -72,6 +81,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module lstat:
   # Code from module malloc-posix:
   # Code from module malloca:
+  # Code from module math:
   # Code from module mbchar:
   # Code from module mbiter:
   # Code from module mbrtowc:
@@ -88,6 +98,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module memmem:
   # Code from module memmem-simple:
   # Code from module mempcpy:
+  # Code from module memrchr:
   # Code from module mkstemp:
   # Code from module msvc-inval:
   # Code from module msvc-nothrow:
@@ -95,8 +106,13 @@ AC_DEFUN([gl_EARLY],
   # Code from module nl_langinfo:
   # Code from module nocrash:
   # Code from module pathmax:
+  # Code from module printf-frexp:
+  # Code from module printf-frexpl:
+  # Code from module printf-safe:
   # Code from module regex:
   # Code from module secure_getenv:
+  # Code from module signbit:
+  # Code from module size_max:
   # Code from module snippet/_Noreturn:
   # Code from module snippet/arg-nonnull:
   # Code from module snippet/c++defs:
@@ -134,6 +150,9 @@ AC_DEFUN([gl_EARLY],
   # Code from module unitypes:
   # Code from module uniwidth/base:
   # Code from module uniwidth/width:
+  # Code from module vasnprintf:
+  # Code from module vasprintf:
+  # Code from module vasprintf-posix:
   # Code from module verify:
   # Code from module wchar:
   # Code from module wcrtomb:
@@ -142,6 +161,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module xalloc:
   # Code from module xalloc-die:
   # Code from module xalloc-oversized:
+  # Code from module xsize:
 ])
 
 # This macro should be invoked from ./configure.ac, in the section
@@ -183,6 +203,23 @@ AC_DEFUN([gl_INIT],
      AM_][XGETTEXT_OPTION([--flag=error_at_line:5:c-format])])
   AC_REQUIRE([gl_EXTERN_INLINE])
   gl_FCNTL_H
+  gl_FLOAT_H
+  if test $REPLACE_FLOAT_LDBL = 1; then
+    AC_LIBOBJ([float])
+  fi
+  if test $REPLACE_ITOLD = 1; then
+    AC_LIBOBJ([itold])
+  fi
+  gl_FUNC_FREXP_NO_LIBM
+  if test $gl_func_frexp_no_libm != yes; then
+    AC_LIBOBJ([frexp])
+  fi
+  gl_MATH_MODULE_INDICATOR([frexp])
+  gl_FUNC_FREXPL_NO_LIBM
+  if test $HAVE_DECL_FREXPL = 0 || test $gl_func_frexpl_no_libm = no; then
+    AC_LIBOBJ([frexpl])
+  fi
+  gl_MATH_MODULE_INDICATOR([frexpl])
   gl_FUNC_GETOPT_GNU
   if test $REPLACE_GETOPT = 1; then
     AC_LIBOBJ([getopt])
@@ -215,6 +252,21 @@ AC_DEFUN([gl_INIT],
   AM_ICONV
   m4_ifdef([gl_ICONV_MODULE_INDICATOR],
     [gl_ICONV_MODULE_INDICATOR([iconv])])
+  gl_FUNC_ISNAND_NO_LIBM
+  if test $gl_func_isnand_no_libm != yes; then
+    AC_LIBOBJ([isnand])
+    gl_PREREQ_ISNAND
+  fi
+  gl_FUNC_ISNANF_NO_LIBM
+  if test $gl_func_isnanf_no_libm != yes; then
+    AC_LIBOBJ([isnanf])
+    gl_PREREQ_ISNANF
+  fi
+  gl_FUNC_ISNANL_NO_LIBM
+  if test $gl_func_isnanl_no_libm != yes; then
+    AC_LIBOBJ([isnanl])
+    gl_PREREQ_ISNANL
+  fi
   gl_FUNC_ISWBLANK
   if test $HAVE_ISWCNTRL = 0 || test $REPLACE_ISWCNTRL = 1; then
     :
@@ -250,6 +302,7 @@ AC_DEFUN([gl_INIT],
   fi
   gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   gl_MALLOCA
+  gl_MATH_H
   gl_MBCHAR
   gl_MBITER
   gl_FUNC_MBRTOWC
@@ -299,6 +352,12 @@ AC_DEFUN([gl_INIT],
     gl_PREREQ_MEMPCPY
   fi
   gl_STRING_MODULE_INDICATOR([mempcpy])
+  gl_FUNC_MEMRCHR
+  if test $ac_cv_func_memrchr = no; then
+    AC_LIBOBJ([memrchr])
+    gl_PREREQ_MEMRCHR
+  fi
+  gl_STRING_MODULE_INDICATOR([memrchr])
   gl_FUNC_MKSTEMP
   if test $HAVE_MKSTEMP = 0 || test $REPLACE_MKSTEMP = 1; then
     AC_LIBOBJ([mkstemp])
@@ -320,6 +379,9 @@ AC_DEFUN([gl_INIT],
   fi
   gl_LANGINFO_MODULE_INDICATOR([nl_langinfo])
   gl_PATHMAX
+  gl_FUNC_PRINTF_FREXP
+  gl_FUNC_PRINTF_FREXPL
+  m4_divert_text([INIT_PREPARE], [gl_printf_safe=yes])
   gl_REGEX
   if test $ac_use_included_regex = yes; then
     AC_LIBOBJ([regex])
@@ -331,6 +393,14 @@ AC_DEFUN([gl_INIT],
     gl_PREREQ_SECURE_GETENV
   fi
   gl_STDLIB_MODULE_INDICATOR([secure_getenv])
+  gl_SIGNBIT
+  if test $REPLACE_SIGNBIT = 1; then
+    AC_LIBOBJ([signbitf])
+    AC_LIBOBJ([signbitd])
+    AC_LIBOBJ([signbitl])
+  fi
+  gl_MATH_MODULE_INDICATOR([signbit])
+  gl_SIZE_MAX
   gt_TYPE_SSIZE_T
   gl_FUNC_STAT
   if test $REPLACE_STAT = 1; then
@@ -422,6 +492,13 @@ AC_DEFUN([gl_INIT],
   gl_LIBUNISTRING_LIBHEADER([0.9], [unitypes.h])
   gl_LIBUNISTRING_LIBHEADER([0.9], [uniwidth.h])
   gl_LIBUNISTRING_MODULE([0.9.4], [uniwidth/width])
+  gl_FUNC_VASNPRINTF
+  gl_FUNC_VASPRINTF
+  gl_STDIO_MODULE_INDICATOR([vasprintf])
+  m4_ifdef([AM_XGETTEXT_OPTION],
+    [AM_][XGETTEXT_OPTION([--flag=asprintf:2:c-format])
+     AM_][XGETTEXT_OPTION([--flag=vasprintf:2:c-format])])
+  gl_FUNC_VASPRINTF_POSIX
   gl_WCHAR_H
   gl_FUNC_WCRTOMB
   if test $HAVE_WCRTOMB = 0 || test $REPLACE_WCRTOMB = 1; then
@@ -436,6 +513,7 @@ AC_DEFUN([gl_INIT],
   fi
   gl_WCHAR_MODULE_INDICATOR([wcwidth])
   gl_XALLOC
+  gl_XSIZE
   # End of code from modules
   m4_ifval(gl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gl_LIBSOURCES_DIR])[ ||
@@ -584,6 +662,8 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/alloca.in.h
   lib/argz.c
   lib/argz.in.h
+  lib/asnprintf.c
+  lib/asprintf.c
   lib/btowc.c
   lib/config.charset
   lib/dosname.h
@@ -593,6 +673,12 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/exitfail.c
   lib/exitfail.h
   lib/fcntl.in.h
+  lib/float+.h
+  lib/float.c
+  lib/float.in.h
+  lib/fpucw.h
+  lib/frexp.c
+  lib/frexpl.c
   lib/getopt.c
   lib/getopt.in.h
   lib/getopt1.c
@@ -603,7 +689,15 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/glthread/lock.h
   lib/glthread/threadlib.c
   lib/intprops.h
+  lib/isnan.c
+  lib/isnand-nolibm.h
+  lib/isnand.c
+  lib/isnanf-nolibm.h
+  lib/isnanf.c
+  lib/isnanl-nolibm.h
+  lib/isnanl.c
   lib/iswblank.c
+  lib/itold.c
   lib/langinfo.in.h
   lib/localcharset.c
   lib/localcharset.h
@@ -614,6 +708,8 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/malloca.c
   lib/malloca.h
   lib/malloca.valgrind
+  lib/math.c
+  lib/math.in.h
   lib/mbchar.c
   lib/mbchar.h
   lib/mbiter.c
@@ -635,6 +731,7 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/memchr.valgrind
   lib/memmem.c
   lib/mempcpy.c
+  lib/memrchr.c
   lib/mkstemp.c
   lib/msvc-inval.c
   lib/msvc-inval.h
@@ -642,6 +739,14 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/msvc-nothrow.h
   lib/nl_langinfo.c
   lib/pathmax.h
+  lib/printf-args.c
+  lib/printf-args.h
+  lib/printf-frexp.c
+  lib/printf-frexp.h
+  lib/printf-frexpl.c
+  lib/printf-frexpl.h
+  lib/printf-parse.c
+  lib/printf-parse.h
   lib/ref-add.sin
   lib/ref-del.sin
   lib/regcomp.c
@@ -651,6 +756,10 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/regex_internal.h
   lib/regexec.c
   lib/secure_getenv.c
+  lib/signbitd.c
+  lib/signbitf.c
+  lib/signbitl.c
+  lib/size_max.h
   lib/stat.c
   lib/stdbool.in.h
   lib/stddef.in.h
@@ -687,6 +796,9 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/uniwidth.in.h
   lib/uniwidth/cjk.h
   lib/uniwidth/width.c
+  lib/vasnprintf.c
+  lib/vasnprintf.h
+  lib/vasprintf.c
   lib/verify.h
   lib/wchar.in.h
   lib/wcrtomb.c
@@ -697,6 +809,8 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/xalloc-oversized.h
   lib/xalloc.h
   lib/xmalloc.c
+  lib/xsize.c
+  lib/xsize.h
   m4/00gnulib.m4
   m4/absolute-header.m4
   m4/alloca.m4
@@ -707,10 +821,17 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/eealloc.m4
   m4/errno_h.m4
   m4/error.m4
+  m4/exponentd.m4
+  m4/exponentf.m4
+  m4/exponentl.m4
   m4/extensions.m4
   m4/extern-inline.m4
   m4/fcntl-o.m4
   m4/fcntl_h.m4
+  m4/float_h.m4
+  m4/fpieee.m4
+  m4/frexp.m4
+  m4/frexpl.m4
   m4/getopt.m4
   m4/gettext.m4
   m4/gettimeofday.m4
@@ -724,12 +845,17 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/intldir.m4
   m4/intlmacosx.m4
   m4/intmax.m4
+  m4/intmax_t.m4
   m4/inttypes-pri.m4
   m4/inttypes_h.m4
+  m4/isnand.m4
+  m4/isnanf.m4
+  m4/isnanl.m4
   m4/iswblank.m4
   m4/langinfo_h.m4
   m4/largefile.m4
   m4/lcmessage.m4
+  m4/ldexpl.m4
   m4/lib-ld.m4
   m4/lib-link.m4
   m4/lib-prefix.m4
@@ -745,6 +871,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/lstat.m4
   m4/malloc.m4
   m4/malloca.m4
+  m4/math_h.m4
   m4/mbchar.m4
   m4/mbiter.m4
   m4/mbrtowc.m4
@@ -756,6 +883,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/memchr.m4
   m4/memmem.m4
   m4/mempcpy.m4
+  m4/memrchr.m4
   m4/mkstemp.m4
   m4/mmap-anon.m4
   m4/msvc-inval.m4
@@ -768,10 +896,14 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/onceonly.m4
   m4/pathmax.m4
   m4/po.m4
+  m4/printf-frexp.m4
+  m4/printf-frexpl.m4
   m4/printf-posix.m4
+  m4/printf.m4
   m4/progtest.m4
   m4/regex.m4
   m4/secure_getenv.m4
+  m4/signbit.m4
   m4/size_max.m4
   m4/ssize_t.m4
   m4/stat.m4
@@ -800,6 +932,9 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/time_h.m4
   m4/uintmax_t.m4
   m4/unistd_h.m4
+  m4/vasnprintf.m4
+  m4/vasprintf-posix.m4
+  m4/vasprintf.m4
   m4/visibility.m4
   m4/warn-on-use.m4
   m4/wchar_h.m4
