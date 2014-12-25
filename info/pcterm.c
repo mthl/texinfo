@@ -71,6 +71,7 @@ enum text_modes { LASTMODE=-1 };
 #endif
 
 #include "variables.h"
+#include "session.h"
 
 extern int speech_friendly;	/* defined in info.c */
 
@@ -176,7 +177,7 @@ gettextinfo (struct text_info *ti)
 			  errbuf, sizeof (errbuf), NULL))
 	sprintf (errbuf, "w32 error %u", error_no);
       CloseHandle (hinfo);
-      info_error (_("Terminal cannot be initialized: %s\n"), errbuf, NULL);
+      info_error (_("Terminal cannot be initialized: %s\n"), errbuf);
       exit (1);
     }
 }
@@ -1189,7 +1190,6 @@ install_keyboard_handler (void)
 
 #include <limits.h>
 #include "signals.h"
-#include "session.h"
 
 #ifndef PATH_MAX
 # define PATH_MAX 512

@@ -1,5 +1,10 @@
 2013-12-25  Eli Zaretskii  <eliz@gnu.org>
 
+	* info/pcterm.c (gettextinfo): Pass expected arguments to 
+	info_error.
+
+2013-12-25  Eli Zaretskii  <eliz@gnu.org>
+
 	* info/terminal.c (terminal_initialize_terminal) 
 	<terminal_initialize_terminal_hook>: Call initialize_byte_map.
 
