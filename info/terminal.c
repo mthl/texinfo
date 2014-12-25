@@ -723,6 +723,7 @@ terminal_initialize_terminal (char *terminal_name)
   if (terminal_initialize_terminal_hook)
     {
       (*terminal_initialize_terminal_hook) (terminal_name);
+      initialize_byte_map ();
       return;
     }
 

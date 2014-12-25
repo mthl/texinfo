@@ -1,3 +1,8 @@
+2013-12-25  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/terminal.c (terminal_initialize_terminal) 
+	<terminal_initialize_terminal_hook>: Call initialize_byte_map.
+
 2014-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/display.c (display_update_window_1): Don't display a line 
