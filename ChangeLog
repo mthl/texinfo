@@ -1,3 +1,8 @@
+2014-12-26  Jason Hood  <jadoxa@yahoo.com.au>  (tiny change)
+
+	* info/pcterm.c (ScreenVisualBell): Fix setting visual attribute
+	on the mode line.
+
 2014-12-26  Eli Zaretskii  <eliz@gnu.org>
 
 	* info/info-utils.c (fncmp) [__MSDOS__ || __MINGW32__]: Now

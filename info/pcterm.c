@@ -250,11 +250,20 @@ ScreenVisualBell (void)
   DWORD nchars = screenwidth * screenheight;
   COORD start_pos;
   DWORD written;
+  PWORD attr;
+  DWORD i;
 
   start_pos.X = start_pos.Y = 0;
-  FillConsoleOutputAttribute (hscreen, inv_attr, nchars, start_pos, &written);
-  Sleep (20);
-  FillConsoleOutputAttribute (hscreen, norm_attr, nchars, start_pos, &written);
+  attr = xmalloc (nchars * sizeof (WORD));
+  ReadConsoleOutputAttribute (hscreen, attr, nchars, start_pos, &written);
+  for (i = 0; i < nchars; ++i)
+    attr[i] ^= norm_attr ^ inv_attr;
+  WriteConsoleOutputAttribute (hscreen, attr, nchars, start_pos, &written);
+  Sleep (50);
+  for (i = 0; i < nchars; ++i)
+    attr[i] ^= norm_attr ^ inv_attr;
+  WriteConsoleOutputAttribute (hscreen, attr, nchars, start_pos, &written);
+  free (attr);
 }
 
 int
