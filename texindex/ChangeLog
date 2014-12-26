@@ -1,3 +1,8 @@
+2014-12-26         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Restore use of `@xrefautomaticsectiontitle on'.
+	And restore support for vim editing.
+
 2014-12-15  Karl Berry  <karl@gnu.org>
 
 	* ti.twjr: convert to minimal Texinfo conventions
@@ -5,7 +10,7 @@
 
 2014-12-13         Arnold D. Robbins     <arnold@skeeve.com>
 
-	* jrtangle, jrweave: Updated with version that include
+	* jrtangle, jrweave: Updated with versions that include
 	github location.
 
 2014-08-07         Arnold D. Robbins     <arnold@skeeve.com>

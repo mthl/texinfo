@@ -1,4 +1,5 @@
 \input texinfo   @c -*-texinfo-*-
+@c vim: filetype=texinfo tabstop=2 expandtab
 @c $Id$
 @c %**start of header (This is for running Texinfo on a region.)
 @setfilename texindex.info
@@ -19,6 +20,8 @@
 @synindex vr cp
 @synindex cd cp
 @synindex cr cp
+
+@xrefautomaticsectiontitle on
 
 @copying
 This @command{texindex} program (version @value{VERSION},
