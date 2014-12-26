@@ -142,4 +142,10 @@ struct info_namelist_entry;
 int info_namelist_add (struct info_namelist_entry **ptop, const char *name);
 void info_namelist_free (struct info_namelist_entry *top);
 
+#if defined(__MSDOS__) || defined(__MINGW32__)
+int fncmp (const char *fn1, const char *fn2);
+#else
+# define fncmp(s,t) strcmp(s,t)
+#endif
+
 #endif /* not INFO_UTILS_H */

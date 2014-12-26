@@ -1,3 +1,14 @@
+2014-12-26  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/info-utils.c (fncmp) [__MSDOS__ || __MINGW32__]: Now
+	external.  Move the #define for Posix hosts ...
+
+	* info/info-utils.h (fncmp): ...to here.  Declare a prototype for
+	__MSDOS__ and __MINGW32__.
+
+	* info/infopath.c (infopath_add_dir): If the inode values are
+	zero, use file-name comparison as fallback.
+
 2014-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/search.c (find_node_separator, skip_node_separator): 

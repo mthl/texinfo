@@ -173,8 +173,8 @@ infopath_add_dir (char *path)
       if (   dirinfo.st_ino == infodirs[i]->inode
           && dirinfo.st_dev == infodirs[i]->device
           /* On MS-Windows, `stat' returns zero as the inode, so we
-             effectively disable this optimization for that OS.  */
-          && infodirs[i]->inode != 0)
+             use file-name comparison instead for that OS.  */
+          && (infodirs[i]->inode != 0 || fncmp (path, infodirs[i]->name) == 0))
         {
           debug (2, ("duplicate directory %s not added to INFOPATH", path));
           free (path);

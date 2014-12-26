@@ -2021,7 +2021,7 @@ text_buffer_printf (struct text_buffer *buf, const char *format, ...)
 #if defined(__MSDOS__) || defined(__MINGW32__)
 /* Cannot use FILENAME_CMP here, since that does not consider forward-
    and back-slash characters equal.  */
-static int
+int
 fncmp (const char *fn1, const char *fn2)
 {
   const char *s1 = fn1, *s2 = fn2;
@@ -2037,8 +2037,6 @@ fncmp (const char *fn1, const char *fn2)
 
   return tolower (*s1) - tolower (*s2);
 }
-#else
-# define fncmp(s,t) strcmp(s,t)
 #endif
 
 struct info_namelist_entry
