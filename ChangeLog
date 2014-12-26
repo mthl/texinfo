@@ -1,3 +1,20 @@
+2014-12-26  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/info-utils.c (nl_langinfo) [__MINGW32__]: Redirect to
+	rpl_nl_langinfo, defined on pcterm.c.
+	(degrade_utf8): Add replacements for 'point', 'print', and
+	'expansion' symbols used by Texinfo.
+
+	* info/pcterm.c (WIN32_LEAN_AND_MEAN): Define.
+	<old_outpmode, output_cp>: New static variables.
+	(w32_info_prep): Disable the wrap-at-eol on console output.
+	(w32_cleanup): Restore the original position of the cursor.
+	(write_utf): New function, writes UTF-8 and UTF-7 text to console.
+	(pc_put_text, pc_write_chars) [__MINGW32__]: Call it when the
+	output console codepage is UTF-8 or UTF-7.
+	(rpl_nl_langinfo): New function, returns the Windows console's
+	output codepage and requests transliteration from libiconv.
+
 2014-12-26  Jason Hood  <jadoxa@yahoo.com.au>  (tiny change)
 
 	* info/pcterm.c (ScreenVisualBell): Fix setting visual attribute

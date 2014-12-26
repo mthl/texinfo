@@ -39,6 +39,8 @@
 #include <io.h>
 #include <conio.h>
 #include <process.h>
+#include <malloc.h>	/* for alloca */
+#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
 struct text_info {
@@ -90,6 +92,8 @@ static HANDLE hstdout = INVALID_HANDLE_VALUE;
 static HANDLE hinfo = INVALID_HANDLE_VALUE;
 static HANDLE hscreen = INVALID_HANDLE_VALUE;
 static DWORD old_inpmode;
+static DWORD old_outpmode;
+static UINT output_cp;
 #else
 static unsigned char    norm_attr, inv_attr;
 #endif
@@ -106,6 +110,8 @@ w32_info_prep (void)
   current_attr = norm_attr;
   hscreen = hinfo;
   SetConsoleMode (hstdin, ENABLE_WINDOW_INPUT);
+  GetConsoleMode (hscreen, &old_outpmode);
+  SetConsoleMode (hscreen, old_outpmode & ~ENABLE_WRAP_AT_EOL_OUTPUT);
 }
 
 void
@@ -120,6 +126,14 @@ w32_info_unprep (void)
 void
 w32_cleanup (void)
 {
+  COORD cursor_pos;
+
+  /* Restore the original position of the cursor.  */
+  cursor_pos.X = outside_info.curx;
+  cursor_pos.Y = outside_info.cury;
+  SetConsoleCursorPosition (hstdout, cursor_pos);
+
+  /* Close the input handle we created.  */
   CloseHandle (hinfo);
 }
 
@@ -597,6 +611,58 @@ w32_read (int fd, void *buf, size_t n)
     return _read (fd, buf, n);
 }
 
+/* Write to the console a string of text encoded in UTF-8 or UTF-7.  */
+static void
+write_utf (DWORD cp, const char *text, int nbytes)
+{
+  /* MSDN says UTF-7 requires zero in flags.  */
+  DWORD flags = (cp == CP_UTF7) ? 0 : MB_ERR_INVALID_CHARS;
+  /* How much space do we need for wide characters?  */
+  int wlen = MultiByteToWideChar (cp, flags, text, nbytes, NULL, 0);
+
+  if (wlen)
+    {
+      WCHAR *text_w = alloca (wlen * sizeof (WCHAR));
+      DWORD written;
+
+      if (MultiByteToWideChar (cp, flags, text, nbytes, text_w, wlen) > 0)
+	{
+	  WriteConsoleW (hscreen, text_w, (nbytes < 0) ? wlen - 1 : wlen,
+			 &written, NULL);
+	  return;
+	}
+    }
+  /* Fall back on conio.  */
+  if (nbytes < 0)
+    cputs (text);
+  else
+    cprintf ("%.*s", nbytes, text);
+}
+
+/* A replacement for nl_langinfo which does a more accurate job for
+   the console output codeset.  Windows can use 3 different encodings
+   at the same time, and the Posix-compliant nl_langinfo simply
+   doesn't know enough to decide which one is needed when CODESET is
+   requested.  */
+#undef nl_langinfo
+#include <langinfo.h>
+
+char *
+rpl_nl_langinfo (nl_item item)
+{
+  if (item == CODESET)
+    {
+      static char buf[100];
+
+      /* We need all the help we can get from GNU libiconv, so we
+	 request transliteration as well.  */
+      sprintf (buf, "CP%u//TRANSLIT", GetConsoleOutputCP ());
+      return buf;
+    }
+  else
+    return nl_langinfo (item);
+}
+
 #endif	/* _WIN32 */
 
 /* Turn on reverse video. */
@@ -679,6 +745,10 @@ pc_put_text (string)
 {
   if (speech_friendly)
     fputs (string, stdout);
+#ifdef __MINGW32__
+  else if (output_cp == CP_UTF8 || output_cp == CP_UTF7)
+    write_utf (output_cp, string, -1);
+#endif
   else
     cputs (string);
 }
@@ -707,9 +777,13 @@ pc_write_chars (string, nchars)
     return;
 
   if (speech_friendly)
-    printf ("%.*s",nchars, string);
+    printf ("%.*s", nchars, string);
+#ifdef __MINGW32__
+  else if (output_cp == CP_UTF8 || output_cp == CP_UTF7)
+    write_utf (output_cp, string, nchars);
+#endif
   else
-    cprintf ("%..*s",nchars, string);
+    cprintf ("%.*s", nchars, string);
 }
 
 /* Scroll an area of the terminal from START to (and excluding) END,
@@ -879,6 +953,11 @@ pc_initialize_terminal (term_name)
   terminal_is_dumb_p = 0;
 
   pc_get_screen_size ();
+
+#ifdef __MINGW32__
+  /* Record the screen output codepage.  */
+  output_cp = GetConsoleOutputCP ();
+#endif
 
 #ifdef __MSDOS__
   /* Store the arrow keys.  */

@@ -27,6 +27,10 @@
 #include <langinfo.h>
 #if HAVE_ICONV
 # include <iconv.h>
+#ifdef __MINGW32__
+# define nl_langinfo rpl_nl_langinfo
+extern char * rpl_nl_langinfo (nl_item);
+#endif
 #endif
 #include <wchar.h>
 
@@ -758,6 +762,9 @@ degrade_utf8 (char **from, size_t *from_left)
 
     {"\xE2\x86\x92","->"},/* Right arrow */
     {"\xE2\x87\x92","=>"},/* Right double arrow */
+    {"\xE2\x8A\xA3","-|"},/* Print symbol */
+    {"\xE2\x98\x85","-!-"}, /* Point symbol */
+    {"\xE2\x86\xA6","==>"}, /* Expansion symbol */
 
     {"\xE2\x80\x90","-"},  /* Hyphen */
     {"\xE2\x80\x91","-"},  /* Non-breaking hyphen */
