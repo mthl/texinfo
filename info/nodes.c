@@ -749,7 +749,7 @@ get_file_character_encoding (FILE_BUFFER *fb)
   SEARCH_BINDING binding;
   long position;
 
-  long int enc_start, enc_end;
+  long int enc_start, enc_len;
   char *enc_string;
 
   /* See if there is a local variables section in this info file. */
@@ -776,13 +776,12 @@ get_file_character_encoding (FILE_BUFFER *fb)
 
   enc_start += strlen(CHARACTER_ENCODING_LABEL); /* Skip to after "coding:" */
   enc_start += skip_whitespace(fb->contents + enc_start);
-  binding.start = enc_start;
 
-  search_forward ("\n", &binding, &enc_end);
+  enc_len = strcspn (fb->contents + enc_start, "\r\n");
 
-  enc_string = xmalloc (enc_end - enc_start + 1);
-  strncpy (enc_string, fb->contents + enc_start, enc_end - enc_start);
-  enc_string[enc_end - enc_start] = '\0';
+  enc_string = xmalloc (enc_len + 1);
+  strncpy (enc_string, fb->contents + enc_start, enc_len);
+  enc_string[enc_len] = '\0';
 
   fb->encoding = enc_string;
 }

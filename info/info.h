@@ -41,7 +41,8 @@ extern char *program_name;
 #endif /* !whitespace */
 
 #if !defined (whitespace_or_newline)
-#  define whitespace_or_newline(c) (whitespace (c) || (c == '\n'))
+#  define whitespace_or_newline(c) (whitespace (c) \
+                                    || (c == '\n') || (c == '\r'))
 #endif /* !whitespace_or_newline */
 
 /* Add ELT to the list of elements found in ARRAY.  SLOTS is the number

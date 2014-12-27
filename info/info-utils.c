@@ -1186,12 +1186,12 @@ avoid_see_see (char *ptr, char *base)
 
   /* Skip past whitespace, and then go to beginning of preceding word. */
   ptr--;
-  while (ptr > base && (*ptr == ' ' || *ptr == '\n' || *ptr == '\t'
-                        || *ptr == '('))
+  while (ptr > base && (*ptr == ' ' || *ptr == '\n' || *ptr == '\r'
+                        || *ptr == '\t' || *ptr == '('))
     ptr--;
 
-  while (ptr > base && !(*ptr == ' ' || *ptr == '\n' || *ptr == '\t'
-                        || *ptr == '(' ))
+  while (ptr > base && !(*ptr == ' ' || *ptr == '\n' || *ptr == '\r'
+                         || *ptr == '\t' || *ptr == '(' ))
     {
       ptr--;
       word_len++;

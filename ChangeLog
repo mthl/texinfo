@@ -18,6 +18,15 @@
 	(get_nodes_of_tags_table): Assume we are passed the exact offset 
 	of the separator preceding the tag table.
 
+	* info/info.h (whitespace_or_newline): Include '\r'.
+	* info/nodes.c (get_file_character_encoding): Stop reading name 
+	of character encoding at an '\r' if one is seen.
+	* info/info-utils.c (avoid_see_see): Include '\r' as a 
+	whitespace character.
+
+	All problems with reading files with CR-LF line endings reported 
+	by Eli Zaretskii.
+
 2014-12-26  Eli Zaretskii  <eliz@gnu.org>
 
 	* info/info-utils.c (nl_langinfo) [__MINGW32__]: Redirect to
