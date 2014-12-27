@@ -1321,7 +1321,7 @@ scan_reference_label (REFERENCE *entry)
     entry->start = text_buffer_off (&output_buf);
 
   /* Write text of label.  If there is a newline in the middle of
-     a reference label, turn off underling until text starts again. */
+     a reference label, turn off underlining until text starts again. */
   while (inptr < end)
     {
       nl_ptr = strchr (inptr, '\n');
@@ -1453,7 +1453,7 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
       /* Copy any terminating punctuation before the optional newline. */
       copy_input_to_output (strspn (inptr, ".),"));
 
-      /* Output a newline if one is needed.  Don't do it at the end
+      /* Output a newline if one is needed.  Don't do it at the end of
          a paragraph. */
       if (nl_off && *inptr != '\n')
         { 
