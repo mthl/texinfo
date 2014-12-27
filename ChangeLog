@@ -1,3 +1,23 @@
+2014-12-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.h (TAGS_TABLE_BEG_LABEL): Define without trailing 
+	'\n'.
+	(INDIRECT_TAGS_TABLE_LABEL, INDIRECT_TABLE_LABEL): Rename and 
+	remove trailing '\n'.
+	(TAGS_TABLE_END_LABEL): Define without leading '\n'.
+
+	* info/search.c (find_node_separator): Search backwards if 
+	beginning of search is after end of search.
+	(find_tags_table, find_file_section): Function renamed.  Take 
+	extra argument giving first line of section to look for.  Search 
+	backwards if beginning of search is after the end of search.
+	* info/search.c (looking_at_line): New function.
+
+	* info/nodes.c (build_tags_and_nodes): Call find_file_section to 
+	find end and start of tags table.
+	(get_nodes_of_tags_table): Assume we are passed the exact offset 
+	of the separator preceding the tag table.
+
 2014-12-26  Eli Zaretskii  <eliz@gnu.org>
 
 	* info/info-utils.c (nl_langinfo) [__MINGW32__]: Redirect to

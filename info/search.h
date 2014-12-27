@@ -64,6 +64,7 @@ enum search_result regexp_search (char *regexp,
                char *buffer, size_t buflen,
                regmatch_t **matches_out, size_t *match_count_out);
 extern int looking_at (char *string, SEARCH_BINDING *binding);
+int looking_at_line (char *string, char *pointer);
 
 /* Note that STRING_IN_LINE () always returns the offset of the 1st character
    after the string. */
@@ -81,7 +82,7 @@ extern int skip_line (char *string);
 extern int skip_node_separator (char *body);
 
 extern long find_node_separator (SEARCH_BINDING *binding);
-extern long find_tags_table (SEARCH_BINDING *binding);
+long find_file_section (SEARCH_BINDING *binding, char *label);
 extern long find_node_in_binding (char *nodename, SEARCH_BINDING *binding);
 
 #endif /* not INFO_SEARCH_H */

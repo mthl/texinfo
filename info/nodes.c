@@ -72,40 +72,21 @@ build_tags_and_nodes (FILE_BUFFER *file_buffer)
     binding.end = 0;
   binding.flags = S_FoldCase;
 
-  if (search_backward (TAGS_TABLE_END_LABEL, &binding, &position)
-      == search_success)
+  position = find_file_section (&binding, TAGS_TABLE_END_LABEL);
+  if (position != -1)
     /* If there is a tag table, find the start of it, and grovel over it
        extracting tag information. */
     while (1)
       {
         long tags_table_begin, tags_table_end;
 
-        binding.end = position;
-        binding.start = binding.end - 5 - strlen (TAGS_TABLE_END_LABEL);
-        if (binding.start < 0)
-          binding.start = 0;
-
-        position = find_node_separator (&binding);
-
-        /* For this test, (and all others here) failure indicates a bogus
-           tags table.  Grovel the file. */
-        if (position == -1)
-          break;
-
         /* Remember the end of the tags table. */
-        binding.start = position;
-        tags_table_end = binding.start;
-        binding.end = 0;
+        tags_table_end = position - 1;
 
         /* Locate the start of the tags table. */
-        if (search_backward (TAGS_TABLE_BEG_LABEL, &binding, &position)
-	    != search_success)
-          break;
-
-        binding.end = position;
-        binding.start = binding.end - 5 - strlen (TAGS_TABLE_BEG_LABEL);
-        position = find_node_separator (&binding);
-
+        binding.start = tags_table_end;
+        binding.end = 0;
+        position = find_file_section (&binding, TAGS_TABLE_BEG_LABEL);
         if (position == -1)
           break;
 
@@ -114,14 +95,14 @@ build_tags_and_nodes (FILE_BUFFER *file_buffer)
         file_buffer->flags |= N_HasTagsTable;
         tags_table_begin = position;
 
-        /* If this isn't an indirect tags table, just remember the nodes
-           described locally in this tags table.  Note that binding.end
-           is pointing to just after the beginning label. */
-        binding.start = binding.end;
-        binding.end = file_buffer->filesize;
-
-        if (!looking_at (TAGS_TABLE_IS_INDIRECT_LABEL, &binding))
+        position += skip_node_separator (file_buffer->contents + position);
+        position += strlen (TAGS_TABLE_BEG_LABEL);
+        position += strspn (file_buffer->contents + position, "\r\n");
+        if (!looking_at_line (TAGS_TABLE_IS_INDIRECT_LABEL,
+                              file_buffer->contents + position))
           {
+            /* If this isn't an indirect tags table, just remember the nodes
+               described locally in this tags table. */
             binding.start = tags_table_begin;
             binding.end = tags_table_end;
             get_nodes_of_tags_table (file_buffer, &binding);
@@ -129,23 +110,27 @@ build_tags_and_nodes (FILE_BUFFER *file_buffer)
           }
         else
           {
-            /* This is an indirect tags table.  Build TAGS member. */
+            /* This is an indirect tags table.  Find the indirect table
+               preceding the tags table. */
             SEARCH_BINDING indirect;
 
             indirect.start = tags_table_begin;
             indirect.end = 0;
-            indirect.buffer = binding.buffer;
+            indirect.buffer = file_buffer->contents;
             indirect.flags = S_FoldCase;
 
-            if (search_backward (INDIRECT_TAGS_TABLE_LABEL, &indirect,
-				 &position) != search_success)
-              {
-                /* This file is malformed.  Give up. */
-                return;
-              }
+            position = find_file_section (&indirect, INDIRECT_TABLE_LABEL);
+            if (position == -1)
+              /* This file is malformed.  Give up. */
+              return;
+
+            /* Skip "Indirect:" line. */
+            position += strlen (INDIRECT_TABLE_LABEL);
+            position += strspn (file_buffer->contents + position, "\r\n");
 
             indirect.start = position;
             indirect.end = tags_table_begin;
+
             binding.start = tags_table_begin;
             binding.end = tags_table_end;
             get_tags_of_indirect_tags_table (file_buffer, &indirect, &binding);
@@ -254,7 +239,7 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
   tmp_search = copy_binding (buffer_binding);
 
   /* Find the start of the tags table. */
-  position = find_tags_table (tmp_search);
+  position = buffer_binding->start;
 
   /* If none, we're all done. */
   if (position == -1)
@@ -265,7 +250,6 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
   tmp_search->start += skip_node_separator
     (tmp_search->buffer + tmp_search->start);
   tmp_search->start += strlen (TAGS_TABLE_BEG_LABEL);
-  tmp_search->start--;
 
   /* The tag table consists of lines containing node names and positions.
      Do each line until we find one that doesn't contain a node name. */
@@ -340,8 +324,8 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
 }
 
 /* Remember in FILE_BUFFER the nodenames, subfilenames, and offsets within the
-   subfiles of every node which appears in TAGS_BINDING.  The 2nd argument is
-   a binding surrounding the indirect files list. */
+   subfiles of every node which appears in the tags table at TAGS_BINDING.  The 
+   indirect files list is at INDIRECT_BINDING. */
 static void
 get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
     SEARCH_BINDING *indirect_binding, SEARCH_BINDING *tags_binding)

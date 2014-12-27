@@ -378,6 +378,24 @@ looking_at (char *string, SEARCH_BINDING *binding)
      string was found at binding->start. */
   return search_end == binding->start;
 }
+
+/* Return non-zero if POINTER is looking at the text at STRING before an 
+   end-of-line. */
+int
+looking_at_line (char *string, char *pointer)
+{
+  int len;
+
+  len = strlen (string);
+  if (strncmp (pointer, string, len) != 0)
+    return 0;
+
+  pointer += len;
+  if (*pointer == '\n' || !strncmp (pointer, "\r\n", 2)
+      || *pointer == '\0')
+    return 1;
+  return 0;
+}
 
 /* **************************************************************** */
 /*                                                                  */
@@ -429,25 +447,28 @@ skip_non_whitespace (char *string)
 /* **************************************************************** */
 
 /* Return the absolute position of the first occurence of a node separator
-   starting in BINDING->buffer.  The search starts at BINDING->start.
-   Return -1 if no node separator was found. */
+   starting in BINDING->buffer between BINDING->start and BINDING->end 
+   inclusive.  Return -1 if no node separator was found. */
 long
 find_node_separator (SEARCH_BINDING *binding)
 {
   register long i;
   char *body;
+  int dir;
 
   body = binding->buffer;
+  dir = binding->start < binding->end ? 1 : -1;
 
   /* A node is started by [^L]^_[^L][\r]\n.  That is to say, the C-l's are
      optional, but the US and NEWLINE are not.  This separator holds
      true for all separated elements in an Info file, including the tags
      table (if present) and the indirect tags table (if present). */
-  for (i = binding->start; i < binding->end; i++)
+  i = binding->start;
+  while (1)
+    {
       /* Note that bytes are read in order from the buffer, so if at any
          point a null byte is encountered signifying the end of the buffer,
          no more bytes will be read past that point. */
-
       if (body[i] == INFO_COOKIE)
         {
           int j = i + 1;
@@ -460,6 +481,11 @@ find_node_separator (SEARCH_BINDING *binding)
           if (body[j] == '\n')
             return i;
         }
+
+      if (i == binding->end)
+        break;
+      i += dir;
+    }
 
   return -1;
 }
@@ -506,27 +532,40 @@ skip_line (char *string)
   return i;
 }
 
-/* Return the absolute position of the beginning of a tags table in this
-   binding starting the search at binding->start. */
+/* Return the absolute position of the beginning of a section in this file
+   whose first line is LABEL, starting the search at binding->start. */
 long
-find_tags_table (SEARCH_BINDING *binding)
+find_file_section (SEARCH_BINDING *binding, char *label)
 {
-  SEARCH_BINDING tmp_search;
+  SEARCH_BINDING s;
   long position;
+  int dir;
 
-  tmp_search.buffer = binding->buffer;
-  tmp_search.start = binding->start;
-  tmp_search.end = binding->end;
-  tmp_search.flags = S_FoldCase;
+  s.buffer = binding->buffer;
+  s.start = binding->start;
+  s.end = binding->end;
+  s.flags = S_FoldCase;
+  dir = binding->start < binding->end ? 1 : -1;
 
-  while ((position = find_node_separator (&tmp_search)) != -1 )
+  while ((position = find_node_separator (&s)) != -1 )
     {
-      tmp_search.start = position;
-      tmp_search.start += skip_node_separator (tmp_search.buffer
-          + tmp_search.start);
-
-      if (looking_at (TAGS_TABLE_BEG_LABEL, &tmp_search))
+      long offset = position;
+      offset += skip_node_separator (s.buffer + offset);
+      if (looking_at_line (label, s.buffer + offset))
         return position;
+
+      if (dir > 0)
+        {
+          s.start = offset;
+          if (s.start >= s.end)
+            break;
+        }
+      else
+        {
+          s.start = position - 1;
+          if (s.start <= s.end)
+            break;
+        }
     }
   return -1;
 }
