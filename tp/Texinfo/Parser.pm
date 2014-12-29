@@ -136,6 +136,16 @@ our %default_customization_values = (
 my %parser_default_configuration = (%Texinfo::Common::default_parser_state_configuration,
                                     %default_customization_values);
 
+# split subs/no subs to help dclone that cannot clone subs
+my %parser_default_configuration_subs = ();
+my %parser_default_configuration_no_subs = %parser_default_configuration;
+foreach my $key(keys(%parser_default_configuration)) {
+  if (ref($parser_default_configuration{$key}) eq 'CODE') {
+    $parser_default_configuration_subs{$key} 
+       = delete $parser_default_configuration_no_subs{$key};
+  }
+}
+
 # the other possible keys for the parser state are:
 #
 # expanded_formats_hash   each key comes from expanded_formats value is 1
@@ -572,6 +582,40 @@ sub _register_index_commands($$)
   }
 }
 
+sub _setup_conf($$$)
+{
+  my $parser = shift;
+  my $conf = shift;
+  my $module_name = shift;
+
+  if (defined($conf)) {
+    foreach my $key (keys(%$conf)) {
+      if (exists($parser_default_configuration{$key})) {
+        if (ref($conf->{$key}) ne 'CODE' and $key ne 'values' and ref($conf->{$key})) {
+          $parser->{$key} = dclone($conf->{$key});
+        } else {
+          $parser->{$key} = $conf->{$key};
+        }
+        if ($initialization_overrides{$key}) {
+          $parser->{'set'}->{$key} = $parser->{$key};
+        }
+      } else {
+        warn "$key not a possible customization in $module_name\n";
+      }
+    }
+  }
+}
+
+sub _setup_parser_default_configuration()
+{
+  # _deep_copy/dclone doesn't handle subs
+  my $parser = dclone(\%parser_default_configuration_no_subs);
+  foreach my $key(keys(%parser_default_configuration_subs)) {
+    $parser->{$key} = $parser_default_configuration_subs{$key};
+  }
+  return $parser;
+}
+
 # initialization entry point.  Set up a parser.
 # The last argument, optional, is a hash provided by the user to change
 # the default values for what is present in %parser_default_configuration.
@@ -582,16 +626,7 @@ sub parser(;$$)
   my $class = shift;
   my $conf;
 
-  # _deep_copy/dclone doesn't handle subs
-  my $gettext_temp = delete $parser_default_configuration{'gettext'};
-  my $pgettext_temp = delete $parser_default_configuration{'pgettext'};
-  my $parser = dclone(\%parser_default_configuration);
-  $parser->{'gettext'} = $gettext_temp;
-  $parser->{'pgettext'} = $pgettext_temp;
-  # put them back, as %parser_default_configuration is used to check 
-  # for possible customizations.
-  $parser_default_configuration{'gettext'} = $gettext_temp;
-  $parser_default_configuration{'pgettext'} = $pgettext_temp;
+  my $parser = _setup_parser_default_configuration();
 
   # called not object-oriented
   if (ref($class) eq 'HASH') {
@@ -628,22 +663,8 @@ sub parser(;$$)
     $conf = shift;
   }
 
-  if (defined($conf)) {
-    foreach my $key (keys(%$conf)) {
-      if (exists($parser_default_configuration{$key})) {
-        if (ref($conf->{$key}) ne 'CODE' and $key ne 'values' and ref($conf->{$key})) {
-          $parser->{$key} = dclone($conf->{$key});
-        } else {
-          $parser->{$key} = $conf->{$key};
-        }
-        if ($initialization_overrides{$key}) {
-          $parser->{'set'}->{$key} = $parser->{$key};
-        }
-      } else {
-        warn "$key not a possible customization in Texinfo::Parser::parser\n";
-      }
-    }
-  }
+  _setup_conf($parser, $conf, "Texinfo::Parser::parser");
+
   #foreach my $value (keys %{$parser->{'values'}}) {
   #  print STDERR "   ->  $value $parser->{'values'}->{$value}\n";
   #}
@@ -704,6 +725,57 @@ sub parser(;$$)
   foreach my $global_command (@{$parser->{'GLOBAL_COMMANDS'}}) {
     $parser->{'global_commands'}->{$global_command} = 1;
   }
+
+  $parser->Texinfo::Report::new;
+
+  return $parser;
+}
+
+# simple parser initialization, fit for strings of Texinfo, not whole 
+# documents, targetting speed.
+# all the simple_parsers share the dynamic informations
+my $simple_parser_misc_commands = dclone(\%misc_commands);
+my $simple_parser_valid_nestings = dclone(\%default_valid_nestings);
+my $simple_parser_no_paragraph_commands = { %default_no_paragraph_commands };
+my $simple_parser_index_names = dclone(\%index_names);
+my $simple_parser_command_index_prefix = {%command_index_prefix};
+my $simple_parser_close_paragraph_commands = {%close_paragraph_commands};
+my $simple_parser_close_preformatted_commands = {%close_preformatted_commands};
+sub simple_parser(;$)
+{
+  my $conf = shift;
+
+  my $parser = _setup_parser_default_configuration();
+  bless $parser;
+
+  _setup_conf($parser, $conf, "Texinfo::Parser::simple_parser");
+
+  $parser->{'misc_commands'} = $simple_parser_misc_commands;
+  $parser->{'valid_nestings'} = $simple_parser_valid_nestings;
+  $parser->{'no_paragraph_commands'} = $simple_parser_no_paragraph_commands;
+  $parser->{'index_names'} = $simple_parser_index_names;
+  $parser->{'command_index_prefix'} = $simple_parser_command_index_prefix;
+  $parser->{'close_paragraph_commands'} = $simple_parser_close_paragraph_commands;
+  $parser->{'close_preformatted_commands'} = $simple_parser_close_preformatted_commands;
+
+  foreach my $explained_command(keys(%explained_commands)) {
+    if  (!defined($parser->{'explained_commands'}->{$explained_command})) {
+      $parser->{'explained_commands'}->{$explained_command} = {};
+    }
+  }
+  $parser->{'context_stack'} = [ $parser->{'context'} ];
+  $parser->{'regions_stack'} = [];
+  $parser->{'macro_stack'} = [];
+  $parser->{'conditionals_stack'} = [];
+  $parser->{'expanded_formats_stack'} = [1];
+
+  # turn the array to a hash for speed.  Not sure it really matters for such
+  # a small array.
+  foreach my $expanded_format(@{$parser->{'expanded_formats'}}) {
+    $parser->{'expanded_formats_hash'}->{$expanded_format} = 1;
+  }
+
+  %{$parser->{'global_commands'}} = ();
 
   $parser->Texinfo::Report::new;
 

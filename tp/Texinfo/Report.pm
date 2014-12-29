@@ -398,7 +398,8 @@ sub gdt($$;$$)
         if (defined($current_parser->{$duplicated_conf}));
     }
   }
-  my $parser = Texinfo::Parser::parser($parser_conf);
+  #my $parser = Texinfo::Parser::parser($parser_conf);
+  my $parser = Texinfo::Parser::simple_parser($parser_conf);
   if ($parser->{'DEBUG'}) {
     print STDERR "GDT $translation_result\n";
   }
