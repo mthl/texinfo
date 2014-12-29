@@ -89,7 +89,7 @@ print INCLUDE "\n\n";
 print INCLUDE "t/include_dir:\n".
    "\t".'$(MKDIR_P) $@'."\n\n";
 my $test_copied_include_files = 'test_copied_include_files =';
-foreach my $include_file (keys(%include_files)) {
+foreach my $include_file (sort(keys(%include_files))) {
   my $bfile = basename($include_file);
   $test_copied_include_files .= " t/include_dir/$bfile";
 
