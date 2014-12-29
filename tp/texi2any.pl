@@ -1002,15 +1002,15 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2014";
  'silent|quiet' => sub {set_from_cmdline('SILENT', $_[1]);
                          push @texi2dvi_args, '--'.$_[0];},
    
- 'plaintext' => sub {$format = set_format($_[0]);},
- 'html' => sub {$format = set_format($_[0]);},
- 'info' => sub {$format = set_format($_[0]);},
- 'docbook' => sub {$format = set_format($_[0]);},
- 'xml' => sub {$format = set_format($_[0]);},
- 'dvi' => sub {$format = set_format($_[0]);},
- 'dvipdf' => sub {$format = set_format($_[0]);},
- 'ps' => sub {$format = set_format($_[0]);},
- 'pdf' => sub {$format = set_format($_[0]);},
+ 'plaintext' => sub {$format = set_format($_[0].'');},
+ 'html' => sub {$format = set_format($_[0].'');},
+ 'info' => sub {$format = set_format($_[0].'');},
+ 'docbook' => sub {$format = set_format($_[0].'');},
+ 'xml' => sub {$format = set_format($_[0].'');},
+ 'dvi' => sub {$format = set_format($_[0].'');},
+ 'dvipdf' => sub {$format = set_format($_[0].'');},
+ 'ps' => sub {$format = set_format($_[0].'');},
+ 'pdf' => sub {$format = set_format($_[0].'');},
  'debug=i' => sub {set_from_cmdline('DEBUG', $_[1]); 
                    $parser_default_options->{'DEBUG'} = $_[1];
                    push @texi2dvi_args, '--'.$_[0]; },
@@ -1191,6 +1191,9 @@ while(@input_files) {
 
   my $parser = Texinfo::Parser::parser($parser_options);
   my $tree = $parser->parse_texi_file($input_file_name);
+
+  #my $global_commands = $parser->global_commands_information();
+  #print STDERR join('|', keys(%$global_commands))."\n";
 
   if (!defined($tree) or $format eq 'parse') {
     handle_errors($parser, $error_count, \@opened_files);
