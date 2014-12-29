@@ -1,3 +1,16 @@
+2014-12-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/filesys.c, info/nodes.c (convert_eols): Function moved 
+	between files.  Arguments changed.
+	* info/nodes.c (adjust_nodestart): Take extra argument giving 
+	the slack to search for a node.
+	(find_node_from_tag): New function, wrapping adjust_nodestart.  
+	Call convert_eols on file if we don't find a node.
+	(info_node_of_tag): Call find_node_from_tag instead of 
+	adjust_nodestart.  Rearrange logic in function so not to call 
+	itself when handling an anchor.
+	* info/nodes.h (N_EOLs_Converted): New flag.
+
 2014-12-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.h (TAGS_TABLE_BEG_LABEL): Define without trailing 

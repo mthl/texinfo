@@ -269,42 +269,6 @@ info_add_extension (char *dirname, char *filename, struct stat *finfo)
   free (try_filename);
   return 0;
 }
-
-#if 0
-/* Given a chunk of text and its length, convert all CRLF pairs at every
-   end-of-line into a single Newline character.  Return the length of
-   produced text.
-
-   This is required because the rest of code is too entrenched in having
-   a single newline at each EOL; in particular, searching for various
-   Info headers and cookies can become extremely tricky if that assumption
-   breaks.
-
-   FIXME: this could also support Mac-style text files with a single CR
-   at the EOL, but what about random CR characters in non-Mac files?  Can
-   we afford converting them into newlines as well?  Maybe implement some
-   heuristics here, like in Emacs 20.
-
-   FIXME: is it a good idea to show the EOL type on the modeline? */
-static long
-convert_eols (char *text, long int textlen)
-{
-  register char *s = text;
-  register char *d = text;
-
-  while (textlen--)
-    {
-      if (*s == '\r' && textlen && s[1] == '\n')
-	{
-	  s++;
-	  textlen--;
-	}
-      *d++ = *s++;
-    }
-
-  return d - text;
-}
-#endif
 
 /* Read the contents of PATHNAME, returning a buffer with the contents of
    that file in it, and returning the size of that buffer in FILESIZE.
@@ -355,19 +319,6 @@ filesys_read_info_file (char *pathname, size_t *filesize,
       close (descriptor);
     }
 
-  /* EOL conversion is disabled because it makes the tag table for a file 
-     incorrect.  See the test in info/t/cr-tag-table.sh. */
-#if 0
-  /* Convert any DOS-style CRLF EOLs into Unix-style NL.
-     Seems like a good idea to have even on Unix, in case the Info
-     files are coming from some Windows system across a network.  */
-  fsize = convert_eols (contents, fsize);
-
-  /* EOL conversion can shrink the text quite a bit.  We don't
-     want to waste storage.  */
-  contents = xrealloc (contents, 1 + fsize);
-  contents[fsize] = '\0';
-#endif
   *filesize = fsize;
 
   return contents;

@@ -866,7 +866,6 @@ static void get_filename_and_nodename (NODE *node,
                                       char **filename, char **nodename,
                                       char *filename_in, char *nodename_in);
 static void node_set_body_start (NODE *node);
-static int adjust_nodestart (FILE_BUFFER *file_buffer, NODE *tag);
 
 /* Return a pointer to a newly allocated NODE structure, with
    fields filled in. */
@@ -1082,6 +1081,35 @@ info_get_node_of_file_buffer (FILE_BUFFER *file_buffer, char *nodename)
   return node;
 }
 
+
+/* Convert any CRLF pairs in the SOURCE file and place the converted buffer in 
+   DESTINATION.  DESTINATION->contents must be allocated on the heap and at 
+   least as big as SOURCE->contents, including a terminating null.  DESTINATION 
+   is allowed to be the same as SOURCE to convert in place. */
+void
+convert_eols (FILE_BUFFER *destination, FILE_BUFFER *source)
+{
+  register char *d = destination->contents;
+  register char *s = source->contents;
+
+  long textlen = source->filesize;
+  while (textlen--)
+    {
+      if (*s == '\r' && textlen && s[1] == '\n')
+        {
+          s++;
+          textlen--;
+        }
+      *d++ = *s++;
+    }
+  *d = '\0';
+
+  /* EOL conversion can shrink the text quite a bit.  We don't
+     want to waste storage.  */
+  destination->contents = xrealloc (destination->contents,
+                                    d - destination->contents + 1);
+}
+
 /* Magic number that RMS used to decide how much a tags table pointer could
    be off by.  I feel that it should be much smaller, like 4.  */
 #define DEFAULT_INFO_FUDGE 1000
@@ -1093,7 +1121,7 @@ info_get_node_of_file_buffer (FILE_BUFFER *file_buffer, char *nodename)
    Set NODE->nodestart directly on the separator that precedes this node.
    If the node could not be found, return 0. */
 static int
-adjust_nodestart (FILE_BUFFER *fb, NODE *node)
+adjust_nodestart (FILE_BUFFER *fb, NODE *node, int slack)
 {
   long position = -1;
   SEARCH_BINDING s;
@@ -1112,15 +1140,15 @@ adjust_nodestart (FILE_BUFFER *fb, NODE *node)
       position = find_node_in_binding (node->nodename, &s);
     }
 
-  if (position == -1) 
+  if (position == -1)
     {
       if (strict_node_location_p)
         return 0;
 
       /* Oh well, I guess we have to try to find it in a larger area. */
 
-      s.start -= DEFAULT_INFO_FUDGE;
-      s.end += DEFAULT_INFO_FUDGE;
+      s.start -= slack;
+      s.end += slack;
 
       if (s.start < 0)
         s.start = 0;
@@ -1132,15 +1160,99 @@ adjust_nodestart (FILE_BUFFER *fb, NODE *node)
       /* If the node still couldn't be found, we lose big. */
       if (position == -1)
         return 0;
- 
+
       /* Set the flag in NODE->flags to say that the the tags table could
          need updating (if we used a tag to get here, that is). */
       if (node->flags & N_HasTagsTable)
         node->flags |= N_UpdateTags;
     }
 
+  /* Do we want this? */
+  /* TODO: Use TAG again to store the tags, and add an extra field to store
+     the original values. */
   node->nodestart = s.buffer + position - fb->contents;
   return 1;
+}
+
+/* Look in the contents of *FB_PTR for a node referred to with TAG.
+  
+   If we have to update the contents of the file, *PARENT and *FB_PTR can be 
+   changed to a different FILE_BUFFER. */
+static int
+find_node_from_tag (FILE_BUFFER **parent, FILE_BUFFER **fb_ptr, NODE *tag)
+{
+  int success;
+
+  FILE_BUFFER *fb = *fb_ptr;
+  int file_already_used = 1;
+  FILE_BUFFER *dest_fb;
+  int slack;
+
+  /* Start off with a small fudge to reduce chance of finding a node and then
+     later having to convert the EOL's, leaving us with the question of what to
+     do with the existing buffer and the nodes that refer to it. */
+  if (!(fb->flags & N_EOLs_Converted))
+    slack = DEFAULT_INFO_FUDGE;
+  else
+    slack = DEFAULT_INFO_FUDGE;
+
+  success = adjust_nodestart (fb, tag, slack);
+  if (success)
+    return success;
+
+  if (fb->flags & N_EOLs_Converted || strict_node_location_p)
+    return 0;
+
+  /* Convert EOL's.  If the Info file was produced under MS-Windows with
+     some versions of makeinfo, it's possible that it has CR-LF line endings 
+     with the CR bytes not counted in the tag table. */
+
+  /* TODO: Check if there are already nodes in windows from this file.  If
+     not, we can convert the buffer in place. */  
+
+  if (file_already_used)
+    {
+      FILE_BUFFER *new_fb = xmalloc (sizeof (FILE_BUFFER));
+
+      memcpy (new_fb, fb, sizeof (FILE_BUFFER));
+      new_fb->contents = xmalloc (fb->filesize + 1);
+
+      /* TODO: Copy and restore tags table. */
+
+      add_pointer_to_array (new_fb, info_loaded_files_index,
+              info_loaded_files, info_loaded_files_slots, 10);
+
+      dest_fb = new_fb;
+    }
+
+  convert_eols (dest_fb, fb);
+  dest_fb->flags |= N_EOLs_Converted;
+
+  success = adjust_nodestart (dest_fb, tag, DEFAULT_INFO_FUDGE);
+  if (success)
+    {
+      /* Stop the old record being used again. */
+      if (dest_fb != fb)
+        {
+          fb->fullpath = "";
+          fb->filename = "";
+
+          /* TODO: Could we also try to convert nodes referring to the old 
+             buffer, to save space? */
+        }
+
+      /* If file is split, leave PARENT as it is, otherwise update both FB_PTR 
+         and PARENT to the new file. */
+      if (*parent == *fb_ptr)
+        *parent = dest_fb;
+      *fb_ptr = dest_fb;
+      return success;
+    }
+  else
+    /* Throw the converted buffer away?  Or keep it to stop us ever having
+       to do the conversion step again? */
+
+  return 0;
 }
 
 /* Calculate the length of the node. */
@@ -1164,13 +1276,20 @@ info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
 {
   NODE *tag = *tag_ptr;
   NODE *node;
-  /* If not a split file, subfile == fb */
-  FILE_BUFFER *subfile;
+  int is_anchor;
+  NODE *anchor_tag;
+  int node_pos, anchor_pos;
+
+  FILE_BUFFER *parent; /* File containing tag table. */
+  FILE_BUFFER *subfile; /* File containing node. */
  
   if (!tag->subfile)
-    subfile = fb;
+    parent = subfile = fb;
   else
-    subfile = info_find_subfile (tag->subfile);
+    {
+      parent = fb;
+      subfile = info_find_subfile (tag->subfile);
+    }
 
   if (!subfile)
     return NULL;
@@ -1189,41 +1308,10 @@ info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
 
   node = 0;
 
-  if (tag->nodelen != 0) /* If not an anchor. */
+  is_anchor = tag->nodelen == 0;
+ 
+  if (is_anchor)
     {
-      /* If TAG->nodelen hasn't been calculated yet, then we aren't
-         in a position to trust the entry pointer.  Adjust things so
-         that TAG->nodestart gets the exact address of the start of
-         the node separator which starts this node.  If we cannot
-         do that, the node isn't really here. */
-      if (tag->nodelen == -1)
-        {
-          if (!adjust_nodestart (subfile, tag))
-            return NULL; /* Node not found. */
-
-          set_tag_nodelen (subfile, tag);
-        }
-
-      tag->contents = subfile->contents + tag->nodestart;
-      tag->contents += skip_node_separator (tag->contents);
-      node_set_body_start (tag);
-
-      /* Read locations of references in node and similar.  Strip Info file
-         syntax from node if preprocess_nodes=On.  Adjust the offsets of
-         anchors that occur within the node.*/
-      node = scan_node_contents (fb, tag_ptr);
-      node->nodename = xstrdup (node->nodename);
-
-      /* We can't set this when tag table is built, because
-         if file is split, we don't know which of the sub-files
-         are compressed. */
-      if (subfile->flags & N_IsCompressed)
-        node->flags |= N_IsCompressed;
-    }
-  else /* anchor, return containing node */
-    {
-      int anchor_pos, node_pos;
-
       anchor_pos = tag_ptr - fb->tags;
 
       /* Look backwards in the tag table for the node preceding
@@ -1239,24 +1327,55 @@ info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
       if (node_pos < 0)
         return NULL;
 
-      /* Get the actual node from the tag.  This is a recursive call, but
-         it can't recurse again, because we call it with a real node.  */
-      node = info_node_of_tag (fb, &fb->tags[node_pos]);
+      anchor_tag = tag;
+      tag = fb->tags[node_pos];
+      tag_ptr = &fb->tags[node_pos];
+    }
 
-      if (node)
-        {
-          /* Start displaying the node at the anchor position.  */
-          node->display_pos = tag->nodestart
-            - (node->nodestart
-               + skip_node_separator (subfile->contents
-                                      + fb->tags[node_pos]->nodestart));
+  /* Get the node. */
 
-          /* Otherwise an anchor at the end of a node ends up displaying at
-             the end of the last line of the node (way over on the right of
-             the screen), which looks wrong.  */
-          if (node->display_pos >= (unsigned long) node->nodelen)
-            node->display_pos = node->nodelen - 1;
-        }
+  /* If TAG->nodelen hasn't been calculated yet, then we aren't
+     in a position to trust the entry pointer.  Adjust things so
+     that TAG->nodestart gets the exact address of the start of
+     the node separator which starts this node.  If we cannot
+     do that, the node isn't really here. */
+  if (tag->nodelen == -1)
+    {
+      if (!find_node_from_tag (&parent, &subfile, tag))
+        return NULL; /* Node not found. */
+
+      set_tag_nodelen (subfile, tag);
+    }
+
+  tag->contents = subfile->contents + tag->nodestart;
+  tag->contents += skip_node_separator (tag->contents);
+  node_set_body_start (tag);
+
+  /* Read locations of references in node and similar.  Strip Info file
+     syntax from node if preprocess_nodes=On.  Adjust the offsets of
+     anchors that occur within the node.*/
+  node = scan_node_contents (parent, tag_ptr);
+  node->nodename = xstrdup (node->nodename);
+
+  /* We can't set this when tag table is built, because
+     if file is split, we don't know which of the sub-files
+     are compressed. */
+  if (subfile->flags & N_IsCompressed)
+    node->flags |= N_IsCompressed;
+
+  if (is_anchor)
+    {
+      /* Start displaying the node at the anchor position.  */
+
+      node->display_pos = anchor_tag->nodestart
+        - (node->nodestart
+           + skip_node_separator (subfile->contents + tag->nodestart));
+
+      /* Otherwise an anchor at the end of a node ends up displaying at
+         the end of the last line of the node (way over on the right of
+         the screen), which looks wrong.  */
+      if (node->display_pos >= (unsigned long) node->nodelen)
+        node->display_pos = node->nodelen - 1;
     }
 
   return node;
