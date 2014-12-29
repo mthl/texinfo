@@ -42,6 +42,10 @@ use Encode;
 # for fileparse
 use File::Basename;
 
+# Clone could be faster for small structures, which should be the case
+# here, but Clone is not in perl core modules, so we use Storable::dclone.
+use Storable qw(dclone); # standard in 5.007003
+
 #use POSIX qw(setlocale LC_ALL LC_CTYPE LC_MESSAGES);
 
 # commands definitions
@@ -527,6 +531,8 @@ sub _bug_message($$;$$)
 }
 
 # simple deep copy of a structure
+# NOTE: currently not used, dclone is used instead.  But in case dclone 
+# happens not to be enough in the future, _deep_copy could be reused.
 sub _deep_copy($)
 {
   my $struct = shift;
@@ -576,10 +582,16 @@ sub parser(;$$)
   my $class = shift;
   my $conf;
 
-  my $parser = _deep_copy(\%parser_default_configuration);
-  # _deep_copy doesn't handle subs
-  $parser->{'gettext'} = $parser_default_configuration{'gettext'};
-  $parser->{'pgettext'} = $parser_default_configuration{'pgettext'};
+  # _deep_copy/dclone doesn't handle subs
+  my $gettext_temp = delete $parser_default_configuration{'gettext'};
+  my $pgettext_temp = delete $parser_default_configuration{'pgettext'};
+  my $parser = dclone(\%parser_default_configuration);
+  $parser->{'gettext'} = $gettext_temp;
+  $parser->{'pgettext'} = $pgettext_temp;
+  # put them back, as %parser_default_configuration is used to check 
+  # for possible customizations.
+  $parser_default_configuration{'gettext'} = $gettext_temp;
+  $parser_default_configuration{'pgettext'} = $pgettext_temp;
 
   # called not object-oriented
   if (ref($class) eq 'HASH') {
@@ -599,13 +611,12 @@ sub parser(;$$)
               = $old_parser->{$key}->{$info_key};
           }
         }
+      } elsif(ref($old_parser->{$key}) and ref($old_parser->{$key}) ne 'CODE') {
+        $parser->{$key} = dclone($old_parser->{$key});
       } else {
-        $parser->{$key} = _deep_copy($old_parser->{$key});
+        $parser->{$key} = $old_parser->{$key};
       }
     }
-    #$parser = _deep_copy($old_parser);
-    $parser->{'gettext'} = $old_parser->{'gettext'};
-    $parser->{'pgettext'} = $old_parser->{'pgettext'};
     bless $parser, $class;
     $conf = shift;
 
@@ -620,8 +631,8 @@ sub parser(;$$)
   if (defined($conf)) {
     foreach my $key (keys(%$conf)) {
       if (exists($parser_default_configuration{$key})) {
-        if (ref($conf->{$key}) ne 'CODE' and $key ne 'values') {
-          $parser->{$key} = _deep_copy($conf->{$key});
+        if (ref($conf->{$key}) ne 'CODE' and $key ne 'values' and ref($conf->{$key})) {
+          $parser->{$key} = dclone($conf->{$key});
         } else {
           $parser->{$key} = $conf->{$key};
         }
@@ -638,10 +649,10 @@ sub parser(;$$)
   #}
   # Now initialize command hash that are dynamically modified, notably
   # those for index commands, and lists, based on defaults and user provided.
-  $parser->{'misc_commands'} = _deep_copy (\%misc_commands);
-  $parser->{'valid_nestings'} = _deep_copy (\%default_valid_nestings);
+  $parser->{'misc_commands'} = dclone(\%misc_commands);
+  $parser->{'valid_nestings'} = dclone(\%default_valid_nestings);
   $parser->{'no_paragraph_commands'} = { %default_no_paragraph_commands };
-  $parser->{'index_names'} = _deep_copy (\%index_names);
+  $parser->{'index_names'} = dclone(\%index_names);
   $parser->{'command_index_prefix'} = {%command_index_prefix};
   $parser->{'close_paragraph_commands'} = {%close_paragraph_commands};
   $parser->{'close_preformatted_commands'} = {%close_preformatted_commands};
