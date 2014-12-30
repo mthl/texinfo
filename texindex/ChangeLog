@@ -1,3 +1,9 @@
+2014-12-30         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Remove `@xrefautomaticsectiontitle on'. It's now
+	supplied by jrweave.
+	* jrweave: Updated.
+
 2014-12-26         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* ti.twjr: Restore use of `@xrefautomaticsectiontitle on'.

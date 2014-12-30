@@ -21,8 +21,6 @@
 @synindex cd cp
 @synindex cr cp
 
-@xrefautomaticsectiontitle on
-
 @copying
 This @command{texindex} program (version @value{VERSION},
 @value{UPDATED}) sorts the raw index files created by

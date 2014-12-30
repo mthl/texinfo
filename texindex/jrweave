@@ -236,6 +236,8 @@ Pass == 2 && /^@use_example[[:space:]]*$/ {
 	next
 }
 Pass == 2 && /^@titlepage/ {
+	print "@c Let texinfo.tex give us full section titles"
+	print "@xrefautomaticsectiontitle on"
 	print ""
 	print "@c Start extra commands added by jrweave\n"
 	print "@c For HTML, spell out email addresses, to avoid problems with"
