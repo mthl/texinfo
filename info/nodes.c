@@ -27,6 +27,7 @@
 #include "info-utils.h"
 #include "tag.h"
 #include "man.h"
+#include "variables.h"
 
 
 /* Global variables.  */
@@ -51,7 +52,7 @@ static void get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
 static void get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
     SEARCH_BINDING *indirect_binding, SEARCH_BINDING *tags_binding);
 static void free_file_buffer_tags (FILE_BUFFER *file_buffer);
-static void free_info_tag (NODE *tag);
+static void free_info_tag (TAG *tag);
 
 /* Grovel FILE_BUFFER->contents finding tags and nodes, and filling in the
    various slots.  This can also be used to rebuild a tag or node table. */
@@ -145,12 +146,12 @@ build_tags_and_nodes (FILE_BUFFER *file_buffer)
 
 /* Set fields on new tag table entry. */
 static void
-init_file_buffer_tag (FILE_BUFFER *fb, NODE *entry)
+init_file_buffer_tag (FILE_BUFFER *fb, TAG *entry)
 {
   if (fb->flags & N_HasTagsTable)
     {
       entry->flags |= N_HasTagsTable;
-      entry->fullpath = fb->fullpath;
+      entry->filename = fb->fullpath;
 
       if (fb->flags & N_TagsIndirect)
         entry->flags |= N_TagsIndirect;
@@ -177,7 +178,7 @@ get_nodes_of_info_file (FILE_BUFFER *file_buffer)
     {
       int start;
       char *nodeline;
-      NODE *entry;
+      TAG *entry;
       int anchor = 0;
 
       /* Skip past the characters just found. */
@@ -205,7 +206,7 @@ get_nodes_of_info_file (FILE_BUFFER *file_buffer)
       start += skip_whitespace (nodeline + start);
 
       /* Record nodename and nodestart. */
-      entry = info_create_node ();
+      entry = info_create_tag ();
       read_quoted_string (nodeline + start, ",\n\r\t", 0, &entry->nodename);
       entry->nodestart = nodestart;
 
@@ -217,7 +218,7 @@ get_nodes_of_info_file (FILE_BUFFER *file_buffer)
         /* Record that the length is unknown. */
         entry->nodelen = -1;
 
-      entry->fullpath = file_buffer->fullpath;
+      entry->filename = file_buffer->fullpath;
 
       /* Add this tag to the array of tag structures in this FILE_BUFFER. */
       add_pointer_to_array (entry, tags_index, file_buffer->tags,
@@ -255,7 +256,7 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
      Do each line until we find one that doesn't contain a node name. */
   while (search_forward ("\n", tmp_search, &position) == search_success)
     {
-      NODE *entry;
+      TAG *entry;
       char *nodedef;
       unsigned p;
       int anchor = 0;
@@ -286,7 +287,7 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
       if (name_offset == -1)
         break;
 
-      entry = info_create_node ();
+      entry = info_create_tag ();
 
       init_file_buffer_tag (file_buffer, entry);
 
@@ -313,7 +314,7 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
 
       /* The filename of this node is currently known as the same as the
          name of this file. */
-      entry->fullpath = file_buffer->fullpath;
+      entry->filename = file_buffer->fullpath;
 
       /* Add this node structure to the array of node structures in this
          FILE_BUFFER. */
@@ -341,7 +342,7 @@ get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
 
   SUBFILE **subfiles = NULL;
   size_t subfiles_index = 0, subfiles_slots = 0;
-  NODE *entry;
+  TAG *entry;
 
   /* Remember that tags table was indirect. */
   file_buffer->flags |= N_TagsIndirect;
@@ -480,7 +481,7 @@ get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
              starting position.  This means that the subfile directly
              preceding this one is the one containing the node. */
 
-          entry->subfile = file_buffer->subfiles[i - 1];
+          entry->filename = file_buffer->subfiles[i - 1];
           entry->nodestart -= subfiles[i - 1]->first_byte;
           entry->nodestart += header_length;
         }
@@ -504,7 +505,7 @@ free_file_buffer_tags (FILE_BUFFER *file_buffer)
 
   if (file_buffer->tags)
     {
-      NODE *tag;
+      TAG *tag;
 
       for (i = 0; (tag = file_buffer->tags[i]); i++)
         free_info_tag (tag);
@@ -526,12 +527,8 @@ free_file_buffer_tags (FILE_BUFFER *file_buffer)
 
 /* Free the data associated with TAG, as well as TAG itself. */
 static void
-free_info_tag (NODE *tag)
+free_info_tag (TAG *tag)
 {
-  if (tag->flags & N_WasRewritten)
-    free (tag->contents);
-
-  if (tag->references) info_free_references (tag->references);
   free (tag->nodename);
   
   /* We don't free tag->filename, because that filename is part of the
@@ -867,6 +864,22 @@ static void get_filename_and_nodename (NODE *node,
                                       char *filename_in, char *nodename_in);
 static void node_set_body_start (NODE *node);
 
+/* Return a pointer to a newly allocated TAG structure, with
+   fields filled in. */
+TAG *
+info_create_tag (void)
+{
+  TAG *t = xmalloc (sizeof (TAG));
+
+  t->filename = 0;
+  t->nodename = 0;
+  t->nodestart = -1;
+  t->orig_nodestart = -1;
+  t->nodelen = -1;
+  t->flags = 0;
+
+  return t;
+}
 /* Return a pointer to a newly allocated NODE structure, with
    fields filled in. */
 NODE *
@@ -1062,7 +1075,7 @@ info_get_node_of_file_buffer (FILE_BUFFER *file_buffer, char *nodename)
      bother building a node list for it. */
   else if (file_buffer->tags)
     {
-      NODE *tag;
+      TAG *tag;
       int i;
 
       /* If no tags at all (possibly a misformatted info file), quit.  */
@@ -1121,7 +1134,7 @@ convert_eols (FILE_BUFFER *destination, FILE_BUFFER *source)
    Set NODE->nodestart directly on the separator that precedes this node.
    If the node could not be found, return 0. */
 static int
-adjust_nodestart (FILE_BUFFER *fb, NODE *node, int slack)
+adjust_nodestart (FILE_BUFFER *fb, TAG *node, int slack)
 {
   long position = -1;
   SEARCH_BINDING s;
@@ -1179,7 +1192,7 @@ adjust_nodestart (FILE_BUFFER *fb, NODE *node, int slack)
    If we have to update the contents of the file, *PARENT and *FB_PTR can be 
    changed to a different FILE_BUFFER. */
 static int
-find_node_from_tag (FILE_BUFFER **parent, FILE_BUFFER **fb_ptr, NODE *tag)
+find_node_from_tag (FILE_BUFFER **parent, FILE_BUFFER **fb_ptr, TAG *tag)
 {
   int success;
 
@@ -1257,7 +1270,7 @@ find_node_from_tag (FILE_BUFFER **parent, FILE_BUFFER **fb_ptr, NODE *tag)
 
 /* Calculate the length of the node. */
 static void
-set_tag_nodelen (FILE_BUFFER *subfile, NODE *tag)
+set_tag_nodelen (FILE_BUFFER *subfile, TAG *tag)
 {
   SEARCH_BINDING node_body;
 
@@ -1272,23 +1285,24 @@ set_tag_nodelen (FILE_BUFFER *subfile, NODE *tag)
 /* Return the node described by *TAG_PTR, retrieving contents from subfile
    if the file is split.  Return 0 on failure. */
 NODE *
-info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
+info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr)
 {
-  NODE *tag = *tag_ptr;
+  TAG *tag = *tag_ptr;
   NODE *node;
   int is_anchor;
-  NODE *anchor_tag;
+  TAG *anchor_tag;
   int node_pos, anchor_pos;
 
   FILE_BUFFER *parent; /* File containing tag table. */
   FILE_BUFFER *subfile; /* File containing node. */
  
-  if (!tag->subfile)
+  if (!strcmp (fb->fullpath, tag->filename))
     parent = subfile = fb;
   else
     {
+      /* This is a split file. */
       parent = fb;
-      subfile = info_find_subfile (tag->subfile);
+      subfile = info_find_subfile (tag->filename);
     }
 
   if (!subfile)
@@ -1347,15 +1361,28 @@ info_node_of_tag (FILE_BUFFER *fb, NODE **tag_ptr)
       set_tag_nodelen (subfile, tag);
     }
 
-  tag->contents = subfile->contents + tag->nodestart;
-  tag->contents += skip_node_separator (tag->contents);
-  node_set_body_start (tag);
+
+  /* Initialize the node from the tag. */
+  node = info_create_node ();
+
+  node->nodename = xstrdup (tag->nodename);
+  node->nodestart = tag->nodestart;
+  node->nodelen = tag->nodelen;
+  node->flags = tag->flags;
+  node->fullpath = fb->fullpath;
+  if (parent != subfile)
+    node->subfile = tag->filename;
+
+  node->contents = subfile->contents + tag->nodestart;
+  node->contents += skip_node_separator (node->contents);
 
   /* Read locations of references in node and similar.  Strip Info file
      syntax from node if preprocess_nodes=On.  Adjust the offsets of
      anchors that occur within the node.*/
-  node = scan_node_contents (parent, tag_ptr);
-  node->nodename = xstrdup (node->nodename);
+  scan_node_contents (node, parent, tag_ptr);
+
+  if (!preprocess_nodes_p)
+    node_set_body_start (node);
 
   /* We can't set this when tag table is built, because
      if file is split, we don't know which of the sub-files

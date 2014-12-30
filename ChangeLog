@@ -1,3 +1,18 @@
+2014-12-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.h (TAG): Struct type reintroduced (removed on
+	2014-04-16).  Use to represent an entry in a file's tag table.
+	All uses updated.
+	* info/info-utils.c (scan_node_contents): Prototype changed.  
+	All callers updated.
+
+	* info/nodes.c (info_create_tag): New function.
+	(info_node_of_tag): Set body_start on returned NODE.
+
+	* info/man.c (manpage_file_buffer, manpage_nodes): Keep list of 
+	manpage nodes in a list of pointers.
+	(create_manpage_file_buffer): Removed.
+
 2014-12-29  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/texi2any.pl: force conversion of stringyfied object

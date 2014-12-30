@@ -615,7 +615,7 @@ struct text_buffer output_buf;
 /* Pointer into a tags table for the file to the anchor we need to adjust as
    a result of byte counts changing due to character encoding conversion or
    inserted/deleted text. */
-static NODE **anchor_to_adjust;
+static TAG **anchor_to_adjust;
 static int node_offset; /* Offset within file buffer of first byte of node. */
 
 /* Difference between the number of bytes input in the file and
@@ -1628,32 +1628,27 @@ forward_to_info_syntax (char *contents)
   return 0;
 }
 
-/* Scan (*NODE_PTR)->contents and record location and contents of
-   cross-references and menu items.  Convert character encoding of
-   node contents to that of the user if the two are known to be
-   different.  If preprocess_nodes_p == 1, remove Info syntax in contents.
+/* Scan contents of NODE, recording cross-references and similar.
 
-   If FB is non-null, it is the file containing the node, and NODE_PTR is an 
-   offset into FB->tags.  Return a new node.
-  
-   If the node has not come from a file, FB is a null pointer.  Update
-   **NODE_PTR and return null. */
-NODE *
-scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
+   Convert character encoding of node contents to that of the user if the two 
+   are known to be different.  If PREPROCESS_NODES_P == 1, remove Info syntax 
+   in contents.
+
+   If FB is non-null, it is the file containing the node, and TAG_PTR is an 
+   offset into FB->tags.  If the node contents are rewritten, adjust anchors
+   that occur in the node. */
+
+void
+scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
 {
   int in_menu = 0;
   char *match;
-
-  NODE *node; /* Return value */
 
   REFERENCE **refs = NULL;
   size_t refs_index = 0, refs_slots = 0;
 
   /* Whether an index tag was seen. */
   int in_index = 0;
-
-  node = xmalloc (sizeof (NODE));
-  *node = **node_ptr;
 
   rewrite_p = preprocess_nodes_p;
 
@@ -1664,7 +1659,7 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
       char *file_contents;
 
       /* Set anchor_to_adjust to first anchor in node, if any. */
-      anchor_to_adjust = node_ptr + 1;
+      anchor_to_adjust = tag_ptr + 1;
       if (!*anchor_to_adjust)
         anchor_to_adjust = 0;
       else if (*anchor_to_adjust && (*anchor_to_adjust)->nodelen != 0)
@@ -1676,10 +1671,10 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
         {
           FILE_BUFFER *f = info_find_subfile (node->subfile);
           if (!f)
-            return 0; /* This shouldn't happen. */
+            return; /* This shouldn't happen. */
           file_contents = f->contents;
         }
-      node_offset = node->nodestart
+      node_offset = (*tag_ptr)->nodestart
         + skip_node_separator (file_contents + node->nodestart);
     }
   else
@@ -1777,24 +1772,6 @@ scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr)
          written.  Subtracting 1 gives the offset of our terminating
          null, that is, the length. */
       node->nodelen = text_buffer_off (&output_buf) - 1;
-
-      /* Node header was deleted. */
-      if (preprocess_nodes_p)
-        node->body_start = 0;
-    }
-
-  if (!fb)
-    {
-      if (node->flags & N_WasRewritten)
-        free ((*node_ptr)->contents);
-      **node_ptr = *node;
-      free (node);
-      return 0;
-    }
-  else
-    {
-      (*node_ptr)->contents = 0;
-      return node;
     }
 }
 

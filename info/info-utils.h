@@ -48,7 +48,7 @@ void info_parse_node (char *string);
 long read_quoted_string (char *start, char *terminator, int lines,
                          char **output);
 
-NODE *scan_node_contents (FILE_BUFFER *fb, NODE **node_ptr);
+void scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr);
 
 /* Get the menu entry associated with LABEL in NODE.  Return a
    pointer to the reference if found, or NULL.  If SLOPPY, accept

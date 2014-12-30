@@ -145,7 +145,7 @@ build_dir_node (void)
 
   {
     node->flags |= (N_IsDir | N_IsInternal);
-    scan_node_contents (0, &node);
+    scan_node_contents (node, 0, 0);
   }
   return node;
 }

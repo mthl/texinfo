@@ -197,7 +197,7 @@ Select one from this menu, or use '\\[history-node]' in another window.\n"), 0))
     free (lines);
 
   node = text_buffer_to_node (&message);
-  scan_node_contents (0, &node);
+  scan_node_contents (node, 0, 0);
 
   return node;
 }

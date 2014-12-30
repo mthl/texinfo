@@ -139,7 +139,7 @@ info_indices_of_file_buffer (FILE_BUFFER *file_buffer)
   /* Grovel the names of the nodes found in this file. */
   if (file_buffer->tags)
     {
-      NODE *tag;
+      TAG *tag;
 
       for (i = 0; (tag = file_buffer->tags[i]); i++)
         {
@@ -685,7 +685,7 @@ DECLARE_INFO_COMMAND (info_index_apropos,
         }
 
       apropos_node = text_buffer_to_node (&message);
-      scan_node_contents (0, &apropos_node);
+      scan_node_contents (apropos_node, 0, 0);
 
       name_internal_node (apropos_node, xstrdup (apropos_list_nodename));
       apropos_node->flags |= N_WasRewritten;
@@ -845,6 +845,6 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   node->body_start = strcspn (node->contents, "\n");
   node->flags |= N_IsInternal | N_WasRewritten;
 
-  scan_node_contents (0, &node);
+  scan_node_contents (node, 0, 0);
   info_set_node_of_window (window, node);
 }

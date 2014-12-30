@@ -56,41 +56,39 @@ static char const * const exec_extensions[] = { "", NULL };
 static REFERENCE **xrefs_of_manpage (NODE *node);
 static char *read_from_fd (int fd);
 static char *get_manpage_contents (char *pagename);
-static void create_manpage_file_buffer (void);
 
 /* We store the contents of retrieved man pages in here. */
-static FILE_BUFFER *manpage_file_buffer = 0;
+static NODE **manpage_nodes = 0;
+size_t manpage_node_index = 0;
+size_t manpage_node_slots = 0;
 
 NODE *
 get_manpage_node (char *pagename)
 {
-  int i;
-  NODE *tag, *node = 0;
+  NODE *node = 0, **n, *node2 = 0;
   char *page;
 
-  if (!manpage_file_buffer)
-    create_manpage_file_buffer ();
-
-  for (i = 0; (tag = manpage_file_buffer->tags[i]); i++)
-    if (!strcmp (tag->nodename, pagename))
-      break;
+  if (manpage_node_index > 0)
+    for (n = manpage_nodes; (node = *n); n++)
+      if (!strcmp (node->nodename, pagename))
+        break;
 
   /* Node was not found, so we have to create it. */
-  if (!tag)
+  if (!node)
     {
-      tag = info_create_node ();
-      tag->fullpath = MANPAGE_FILE_BUFFER_NAME;
-      tag->nodename = xstrdup (pagename);
-      tag->flags |= (N_HasTagsTable | N_IsManPage | N_IsInternal);
+      node = info_create_node ();
+      node->fullpath = MANPAGE_FILE_BUFFER_NAME;
+      node->nodename = xstrdup (pagename);
+      node->flags |= (N_HasTagsTable | N_IsManPage | N_IsInternal);
 
       /* Save this node. */
-      add_pointer_to_array (tag, i,
-                            manpage_file_buffer->tags,
-                            manpage_file_buffer->tags_slots, 100);
+      add_pointer_to_array (node, manpage_node_index,
+                            manpage_nodes,
+                            manpage_node_slots, 100);
     } 
 
   /* Node wasn't found, or its contents were freed since last time. */
-  if (!tag->contents)
+  if (!node->contents)
     {
       char header[1024];
       int hlen, plen;
@@ -108,47 +106,31 @@ get_manpage_node (char *pagename)
                    INFO_UP_LABEL);
           hlen = strlen (header);
 
-          tag->contents = xcalloc (1, hlen + plen + 1);
-          memcpy (tag->contents, header, hlen);
-          memcpy (tag->contents + hlen, page, plen);
+          node->contents = xcalloc (1, hlen + plen + 1);
+          memcpy (node->contents, header, hlen);
+          memcpy (node->contents + hlen, page, plen);
 
           /* Set nodelen. */
-          tag->nodelen = hlen + plen;
+          node->nodelen = hlen + plen;
 
           /* FIXME: Don't allocate page just to immediately free it. */
           free (page);
         }
       else
         {
-          tag->contents = page;
-          tag->nodelen = plen;
+          node->contents = page;
+          node->nodelen = plen;
         }
 
-      tag->body_start = strcspn (tag->contents, "\n");
+      node->body_start = strcspn (node->contents, "\n");
     }
 
-  node = xmalloc (sizeof (NODE));
-  *node = *tag;
-  node->references = xrefs_of_manpage (node);
-  node->nodename = xstrdup (pagename);
-  node->up = xstrdup ("(dir)");
-  return node;
-}
-
-static void
-create_manpage_file_buffer (void)
-{
-  manpage_file_buffer = make_file_buffer ();
-  manpage_file_buffer->filename = xstrdup (MANPAGE_FILE_BUFFER_NAME);
-  manpage_file_buffer->fullpath = xstrdup (MANPAGE_FILE_BUFFER_NAME);
-  manpage_file_buffer->finfo.st_size = 0;
-  manpage_file_buffer->filesize = 0;
-  manpage_file_buffer->contents = NULL;
-  manpage_file_buffer->flags = (N_IsInternal | N_CannotGC | N_IsManPage);
-
-  /* Initialize empty tags table. */
-  manpage_file_buffer->tags = xmalloc (sizeof (NODE *));
-  manpage_file_buffer->tags[0] = 0;
+  node2 = xmalloc (sizeof (NODE));
+  *node2 = *node;
+  node2->references = xrefs_of_manpage (node2);
+  node2->nodename = xstrdup (pagename);
+  node2->up = xstrdup ("(dir)");
+  return node2;
 }
 
 /* Scan the list of directories in PATH looking for FILENAME.  If we find

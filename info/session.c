@@ -104,7 +104,7 @@ allfiles_create_node (char *term, REFERENCE **fref)
   allfiles_node->nodelen = text_buffer_off (&text);
   allfiles_node->body_start = strcspn (allfiles_node->contents, "\n");
 
-  scan_node_contents (0, &allfiles_node);
+  scan_node_contents (allfiles_node, 0, 0);
 }
 
 /* Begin an info session finding the nodes specified by REFERENCES.  For
@@ -3211,7 +3211,7 @@ static NODE *
 find_invocation_node_by_nodename (FILE_BUFFER *fb, char *program)
 {
   NODE *node = 0;
-  NODE **n;
+  TAG **n;
   char *try1, *try2;
   n = fb->tags;
   if (!n)
@@ -3921,7 +3921,7 @@ info_search_internal (char *string, WINDOW *window,
   int number_of_tags, starting_tag, current_tag = -1;
   NODE *node = window->node; /* Node to search in. */
   char *subfile_name = 0;
-  NODE *tag;
+  TAG *tag;
   char *msg = 0;
   
   /* If this node isn't part of a larger file, search this node only. */
@@ -3939,7 +3939,7 @@ info_search_internal (char *string, WINDOW *window,
         if (strcmp (initial_nodename, file_buffer->tags[i]->nodename) == 0)
           {
             starting_tag = i;
-            subfile_name = file_buffer->tags[i]->subfile;
+            subfile_name = file_buffer->tags[i]->filename;
           }
 
       number_of_tags = i;
@@ -4008,13 +4008,13 @@ info_search_internal (char *string, WINDOW *window,
       current_tag = i;
 
       /* Display message when searching a new subfile. */
-      if (!echo_area_is_active && tag->subfile != subfile_name)
+      if (!echo_area_is_active && tag->filename != subfile_name)
         {
+          subfile_name = tag->filename;
+
           window_message_in_echo_area
             (_("Searching subfile %s ..."),
-             filename_non_directory (tag->subfile));
-
-          subfile_name = tag->subfile;
+             filename_non_directory (subfile_name));
         }
 
       /* Get a new node to search in. */
