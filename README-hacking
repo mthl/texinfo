@@ -1,8 +1,8 @@
 $Id$
 This file describes the development environment for Texinfo.
 
-  Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013, 2014
-  Free Software Foundation, Inc.
+  Copyright 2002, 2003, 2005, 2006, 2007, 2008, 2010, 2011, 2012, 2013,
+  2014, 2015 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -65,9 +65,11 @@ The currently-used gnulib modules and other gnulib information are
 recorded in gnulib/m4/gnulib-cache.m4.  Given a source checkout of
 gnulib, you can update the files with gnulib-tool --add-import.
 
-And, when running gnulib-tool --add-import, remember to check what files
-were added (e.g., run "svn status build-aux gnulib") and add them to the
-repository with "svn add"; likewise for removals.
+And, when running gnulib-tool --add-import or otherwise adding modules,
+remember to check what files were added (e.g., run "svn status build-aux
+gnulib") and add them to the repository with "svn add"; likewise for
+removals.  Likewise for adding new generated files (typically
+gnulib/lib/foo.h from foo.h.in) to the ignore list.
 
 
 
