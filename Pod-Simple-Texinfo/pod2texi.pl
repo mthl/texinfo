@@ -1,7 +1,7 @@
 #! /usr/bin/env perl
 # $Id$
 # pod2texi -- convert Pod to Texinfo.
-# Copyright 2012, 2013, 2014 Free Software Foundation, Inc.
+# Copyright 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -156,7 +156,7 @@ my $result_options = Getopt::Long::GetOptions (
     printf __("Copyright (C) %s Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.\n"), "2014";
+There is NO WARRANTY, to the extent permitted by law.\n"), "2015";
       exit 0;},
   'base-level=s' => sub {
      if ($_[1] =~ /^[0-4]$/) {
@@ -597,7 +597,7 @@ Texinfo home page: L<http://www.gnu.org/software/texinfo/>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2014 Free Software Foundation, Inc.
+Copyright 2015 Free Software Foundation, Inc.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

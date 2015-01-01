@@ -1,3 +1,24 @@
+2015-01-01  Karl Berry  <karl@gnu.org>
+
+	* info/info-utils.c,
+	* info/nodes.c,
+	* info/nodes.h: 2015.
+	
+	* Pod-Simple-Texinfo/pod2texi.pl,
+	* doc/refcard/txirefcard.tex,
+	* doc/texinfo.texi,
+	* info/info.c,
+	* install-info/install-info.c,
+	* texindex/ti.twjr,
+	* tp/maintain/regenerate_cmd_tests.sh,
+	* tp/maintain/regenerate_docstr.sh,
+	* tp/maintain/regenerate_file_lists.pl,
+	* tp/maintain/template.pod,
+	* tp/texi2any.pl,
+	* util/texi-elements-by-size,
+	* util/texi2dvi,
+	* util/texindex.c: 2015.	
+
 2015-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.h (TAG): Add 'nodestart_adjusted' field and remove 
@@ -17378,7 +17399,7 @@
 
 
 Copyright 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
-2013, 2014
+2013, 2014, 2015
 Free Software Foundation, Inc.
 
 Copying and distribution of this file, with or without modification,
