@@ -1007,7 +1007,9 @@ copy_input_to_output (long n)
             while ((*anchor_to_adjust)->nodestart - node_offset
                    <= inptr - input_start)
               {
-                (*anchor_to_adjust)->nodestart -= output_bytes_difference;
+                (*anchor_to_adjust)->nodestart_adjusted
+                   = (*anchor_to_adjust)->nodestart - output_bytes_difference;
+
                 anchor_to_adjust++;
                 if (!*anchor_to_adjust || (*anchor_to_adjust)->nodelen != 0)
                   {
@@ -1675,7 +1677,7 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
           file_contents = f->contents;
         }
       node_offset = (*tag_ptr)->nodestart
-        + skip_node_separator (file_contents + node->nodestart);
+        + skip_node_separator (file_contents + (*tag_ptr)->nodestart);
     }
   else
     anchor_to_adjust = 0;

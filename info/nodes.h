@@ -51,7 +51,6 @@ typedef struct {
   REFERENCE **references;       /* Cross-references or menu items in node.
                                    references == 0 implies uninitialized,
                                    not empty */
-  long nodestart;               /* The offset of the start of this node. */
   char *up, *prev, *next;       /* Names of nearby nodes. */
 } NODE;
 
@@ -102,8 +101,8 @@ typedef struct {
 typedef struct {
   char *filename;               /* The file where this node can be found. */
   char *nodename;               /* The node pointed to by this tag. */
-  long nodestart;               /* The offset of the start of this node. */
-  long orig_nodestart;          /* The value read from the tag table. */
+  long nodestart;               /* The value read from the tag table. */
+  long nodestart_adjusted;
   size_t nodelen;               /* The length of this node.
                                    nodelen == -1 if length is unknown
                                    because node hasn't been read yet.

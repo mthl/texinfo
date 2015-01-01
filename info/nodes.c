@@ -874,7 +874,7 @@ info_create_tag (void)
   t->filename = 0;
   t->nodename = 0;
   t->nodestart = -1;
-  t->orig_nodestart = -1;
+  t->nodestart_adjusted = -1;
   t->nodelen = -1;
   t->flags = 0;
 
@@ -1121,6 +1121,7 @@ convert_eols (FILE_BUFFER *destination, FILE_BUFFER *source)
      want to waste storage.  */
   destination->contents = xrealloc (destination->contents,
                                     d - destination->contents + 1);
+  destination->filesize = d - destination->contents;
 }
 
 /* Magic number that RMS used to decide how much a tags table pointer could
@@ -1131,8 +1132,8 @@ convert_eols (FILE_BUFFER *destination, FILE_BUFFER *source)
    way that tags are implemented, the physical nodestart may
    not actually be where the tag says it is.  If that is the case,
    set N_UpdateTags in NODE->flags.  If the node is found, return non-zero.
-   Set NODE->nodestart directly on the separator that precedes this node.
-   If the node could not be found, return 0. */
+   Set NODE->nodestart_adjusted directly on the separator that precedes this 
+   node.  If the node could not be found, return 0. */
 static int
 adjust_nodestart (FILE_BUFFER *fb, TAG *node, int slack)
 {
@@ -1180,36 +1181,36 @@ adjust_nodestart (FILE_BUFFER *fb, TAG *node, int slack)
         node->flags |= N_UpdateTags;
     }
 
-  /* Do we want this? */
-  /* TODO: Use TAG again to store the tags, and add an extra field to store
-     the original values. */
-  node->nodestart = s.buffer + position - fb->contents;
+  node->nodestart_adjusted = s.buffer + position - fb->contents;
   return 1;
 }
 
-/* Look in the contents of *FB_PTR for a node referred to with TAG.
-  
-   If we have to update the contents of the file, *PARENT and *FB_PTR can be 
-   changed to a different FILE_BUFFER. */
+/* Look in the contents of *FB_PTR for a node referred to with TAG.  Set
+   the location if found in TAG->nodestart_adjusted.
+
+   PARENT->tags contains the tags table for the whole file.  If file is
+   non-split, PARENT should be the same as FB. */
 static int
-find_node_from_tag (FILE_BUFFER **parent, FILE_BUFFER **fb_ptr, TAG *tag)
+find_node_from_tag (FILE_BUFFER *parent, FILE_BUFFER *fb, TAG *tag)
 {
   int success;
-
-  FILE_BUFFER *fb = *fb_ptr;
-  int file_already_used = 1;
-  FILE_BUFFER *dest_fb;
   int slack;
+  TAG **t;
+  WINDOW *w;
 
   /* Start off with a small fudge to reduce chance of finding a node and then
      later having to convert the EOL's, leaving us with the question of what to
      do with the existing buffer and the nodes that refer to it. */
   if (!(fb->flags & N_EOLs_Converted))
-    slack = DEFAULT_INFO_FUDGE;
+    slack = 4;
   else
     slack = DEFAULT_INFO_FUDGE;
 
-  success = adjust_nodestart (fb, tag, slack);
+  if (tag->nodestart_adjusted != -1)
+    success = 1;
+  else
+    success = adjust_nodestart (fb, tag, slack);
+
   if (success)
     return success;
 
@@ -1220,50 +1221,65 @@ find_node_from_tag (FILE_BUFFER **parent, FILE_BUFFER **fb_ptr, TAG *tag)
      some versions of makeinfo, it's possible that it has CR-LF line endings 
      with the CR bytes not counted in the tag table. */
 
-  /* TODO: Check if there are already nodes in windows from this file.  If
-     not, we can convert the buffer in place. */  
+  convert_eols (fb, fb);
+  fb->flags |= N_EOLs_Converted;
 
-  if (file_already_used)
+  /* Restore tags table to what was read from the file. */
+  for (t = parent->tags; *t; t++)
     {
-      FILE_BUFFER *new_fb = xmalloc (sizeof (FILE_BUFFER));
-
-      memcpy (new_fb, fb, sizeof (FILE_BUFFER));
-      new_fb->contents = xmalloc (fb->filesize + 1);
-
-      /* TODO: Copy and restore tags table. */
-
-      add_pointer_to_array (new_fb, info_loaded_files_index,
-              info_loaded_files, info_loaded_files_slots, 10);
-
-      dest_fb = new_fb;
-    }
-
-  convert_eols (dest_fb, fb);
-  dest_fb->flags |= N_EOLs_Converted;
-
-  success = adjust_nodestart (dest_fb, tag, DEFAULT_INFO_FUDGE);
-  if (success)
-    {
-      /* Stop the old record being used again. */
-      if (dest_fb != fb)
+      /* For split files, only restore the part of the tag table for
+         the subfile. */
+      if (!strcmp ((*t)->filename, fb->fullpath))
         {
-          fb->fullpath = "";
-          fb->filename = "";
-
-          /* TODO: Could we also try to convert nodes referring to the old 
-             buffer, to save space? */
+          (*t)->nodestart_adjusted = -1;
+          (*t)->nodelen = -1;
         }
-
-      /* If file is split, leave PARENT as it is, otherwise update both FB_PTR 
-         and PARENT to the new file. */
-      if (*parent == *fb_ptr)
-        *parent = dest_fb;
-      *fb_ptr = dest_fb;
-      return success;
     }
-  else
-    /* Throw the converted buffer away?  Or keep it to stop us ever having
-       to do the conversion step again? */
+
+  /* Look for the node again. */
+  success = adjust_nodestart (fb, tag, DEFAULT_INFO_FUDGE);
+
+  /* For each window, check for file buffer being used in window history, 
+     including currently displayed node, and amend it to refer properly to the 
+     converted file buffer.  (Window history was set in info_set_node_of_window 
+     in session.c. )
+
+     There is a chance that there is a NODE in some local variable 
+     somewhere, which we can't update. */
+
+  for (w = windows; w; w = w->next)
+    {
+      WINDOW_STATE **h;
+
+      if (!w->hist)
+        continue;
+
+      for (h = w->hist; *h; h++)
+        {
+          NODE *n = (*h)->node;;
+          if (!(n->flags & N_WasRewritten)
+              && (n->subfile ? (n->subfile == fb->fullpath)
+                             : (n->fullpath == fb->fullpath)))
+            {
+              /* The call to info_get_node is indirectly recursive, but it 
+                 should not recurse twice because of the N_EOLs_Converted 
+                 conditional above. */
+              (*h)->node = info_get_node (n->fullpath, n->nodename);
+              if ((*h)->node)
+                free_history_node (n);
+              else
+                {
+                  /* We found the node before, but now we can't.  Just leave
+                     the node as it was (possibly with its contents pointer
+                     pointing to the wrong place). */
+                  (*h)->node = n;
+                }
+            }
+        }
+    }
+
+  if (success)
+    return success;
 
   return 0;
 }
@@ -1275,7 +1291,7 @@ set_tag_nodelen (FILE_BUFFER *subfile, TAG *tag)
   SEARCH_BINDING node_body;
 
   node_body.buffer = subfile->contents;
-  node_body.start = tag->nodestart;
+  node_body.start = tag->nodestart_adjusted;
   node_body.end = subfile->filesize;
   node_body.flags = 0;
   node_body.start += skip_node_separator (node_body.buffer + node_body.start);
@@ -1355,25 +1371,23 @@ info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr)
      do that, the node isn't really here. */
   if (tag->nodelen == -1)
     {
-      if (!find_node_from_tag (&parent, &subfile, tag))
+      if (!find_node_from_tag (parent, subfile, tag))
         return NULL; /* Node not found. */
 
       set_tag_nodelen (subfile, tag);
     }
 
-
   /* Initialize the node from the tag. */
   node = info_create_node ();
 
   node->nodename = xstrdup (tag->nodename);
-  node->nodestart = tag->nodestart;
   node->nodelen = tag->nodelen;
   node->flags = tag->flags;
-  node->fullpath = fb->fullpath;
+  node->fullpath = parent->fullpath;
   if (parent != subfile)
     node->subfile = tag->filename;
 
-  node->contents = subfile->contents + tag->nodestart;
+  node->contents = subfile->contents + tag->nodestart_adjusted;
   node->contents += skip_node_separator (node->contents);
 
   /* Read locations of references in node and similar.  Strip Info file
@@ -1394,9 +1408,10 @@ info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr)
     {
       /* Start displaying the node at the anchor position.  */
 
-      node->display_pos = anchor_tag->nodestart
-        - (node->nodestart
-           + skip_node_separator (subfile->contents + tag->nodestart));
+      node->display_pos = anchor_tag->nodestart_adjusted
+        - (tag->nodestart_adjusted
+           + skip_node_separator (subfile->contents
+                                  + tag->nodestart_adjusted));
 
       /* Otherwise an anchor at the end of a node ends up displaying at
          the end of the last line of the node (way over on the right of

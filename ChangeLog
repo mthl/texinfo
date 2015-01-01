@@ -1,3 +1,28 @@
+2015-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.h (TAG): Add 'nodestart_adjusted' field and remove 
+	'orig_nodestart'.
+	(NODE): Remove 'nodestart' field.
+	* info/nodes.c (info_create_tag): Update.
+
+	* info/nodes.c (adjust_nodestart): Set offset of found node in 
+	'nodestart_adjusted' field of NODE.
+	(set_tag_nodelen, info_node_of_tag): Use 'nodestart_adjusted'
+	for actual start of a node.
+
+	* info/info-utils.c (copy_input_to_output): Set adjusted anchors 
+	in 'nodestart_adjusted'.
+	(scan_node_contents): Get 'nodestart' for node from TAG object 
+	instead of from NODE.
+
+	* info/nodes.c (find_node_of_tag): Arguments changed.  If node 
+	not found, call convert_eols to convert file buffer in place, 
+	reset the tag table, look for the node again, and reload any 
+	nodes in the history of a window.
+
+	* info/nodes.c (convert_eols): Set 'filesize' on destination 
+	FILE_BUFFER.
+
 2014-12-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.h (TAG): Struct type reintroduced (removed on
