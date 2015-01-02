@@ -23902,10 +23902,11 @@ Indirect:
 @end example
 
 The indirect table is written to the main file in the case of split
-output only.  It specifies, as a decimal integer, the starting byte position
-(zero-based) that each subfile would have if the subfiles were concatenated
-together in order, not including the top-level file.  The first node
-of actual content is pointed to by the first entry.
+output only.  It specifies, as a decimal integer, the starting byte 
+position (zero-based) that the first node of each subfile would have if 
+the subfiles were concatenated together in order, not including the 
+top-level file.  The first node of actual content is pointed to by the 
+first entry.
 
 As an example, suppose split output is generated for the GDB manual.
 The top-level file @file{gdb.info} will contain something like this:

@@ -1,3 +1,9 @@
+2015-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Info Format Indirect Table): Value in 
+	indirect table is for first node in file, not start of file 
+	itself.
+
 2015-01-01  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (Output Formats, Generating HTML): be rather
