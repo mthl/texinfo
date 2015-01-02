@@ -1,5 +1,9 @@
 2015-01-01  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.texi (Output Formats, Generating HTML): be rather
+	forceful in our overall goal for the HTML output (namely, be
+	widely usable rather than fancy).
+
 	* info/info-utils.c,
 	* info/nodes.c,
 	* info/nodes.h: 2015.
