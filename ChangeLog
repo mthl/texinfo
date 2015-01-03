@@ -1,5 +1,11 @@
 2015-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (point_forward_char, point_backward_char): 
+	Correctly traverse multi-column characters.  (Bug was likely 
+	introduced on 2014-10-09 with change to window_point_to_column.)
+
+2015-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/window.c (process_node_text, calculate_line_starts): 
 	process_node_text inlined in calculate_line_starts.
 

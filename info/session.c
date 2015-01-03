@@ -1080,7 +1080,10 @@ point_forward_char (WINDOW *win)
   long point = win->point;
   int col;
 
-  col = window_point_to_column (win, point, &point) + 1;
+  col = window_point_to_column (win, point, 0);
+  for (; col < win->line_map.used && win->line_map.map[col] == point; col++)
+    ;
+
   if (col < win->line_map.used)
     win->point = win->line_map.map[col];
   else
@@ -1094,7 +1097,7 @@ point_backward_char (WINDOW *win)
   long point = win->point;
   int col;
 
-  col = window_point_to_column (win, point, &point);
+  col = window_point_to_column (win, point, 0);
   for (; col >= 0 && win->line_map.map[col] == point; col--)
     ;
 
