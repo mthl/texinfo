@@ -700,25 +700,6 @@ window_unmark_chain (WINDOW *chain, int flag)
     win->flags &= ~flag;
 }
 
-
-/* Used by calculate_line_starts to record line starts in the
-   win->LINE_COUNT and win->LOG_LINE_NO arrays. */
-static int
-collect_line_starts (WINDOW *win, size_t pl_num, size_t ll_num,
-                     size_t pl_start, char *printed_line,
-                     size_t pl_bytes, size_t pl_chars)
-{
-  add_element_to_array (pl_start, win->line_count,
-                        win->line_starts, win->line_slots, 2);
-
-  /* We cannot do add_element_to_array for this, as this would lead
-     to incrementing cp->win->line_count twice. */
-  win->log_line_no = xrealloc (win->log_line_no,
-                               win->line_slots * sizeof (long));
-  win->log_line_no[win->line_count - 1] = ll_num;
-  return 0;
-}
-
 /* Return the number of first physical line corresponding to the logical
    line LN.
 
@@ -1168,48 +1149,35 @@ text_buffer_to_node (struct text_buffer *tb)
   return node;
 }
 
-
-/* Process contents of the current node from WIN, beginning from START, using
-   callback function FUN.
+/* Used by calculate_line_starts to record line starts in the
+   win->LINE_COUNT and win->LOG_LINE_NO arrays. */
+static void
+collect_line_starts (WINDOW *win, long ll_num, long pl_start)
+{
+  add_element_to_array (pl_start, win->line_count,
+                        win->line_starts, win->line_slots, 2);
 
-   FUN is called for every line collected from the node. Its arguments:
+  /* We cannot do add_element_to_array for this, as this would lead
+     to incrementing cp->win->line_count twice. */
+  win->log_line_no = xrealloc (win->log_line_no,
+                               win->line_slots * sizeof (long));
+  win->log_line_no[win->line_count - 1] = ll_num;
+}
 
-     int (*fun) (WINDOW *win, size_t pl_num, size_t ll_num,
-                  size_t pl_start, char *printed_line,
-		  size_t pl_bytes, size_t pl_chars)
+/* Calculate a list of line starts for the node belonging to WINDOW.  The
+   line starts are offsets within WINDOW->node->contents.
 
-     win -- WINDOW argument passed to process_node_text;
-     pl_num  -- Number of processed physical lines (starts from 0);
-     ll_num -- Number of processed logical lines (starts from 0);
-     pl_start -- Offset of start of physical line from START;
-     printed_line -- Collected line contents, ready for output;
-     pl_bytes -- Number of bytes in printed_line;
-     pl_chars -- Number of characters in printed_line.
-
-   If FUN returns non zero, process_node_text stops processing and returns
-   immediately.
-
-   Return value: number of lines processed.
-*/
-   
-/* Calculate a list of line starts for the node belonging to WINDOW.  The line
-   starts are offsets within WINDOW->node->contents. */
+   Note that this function must agree with what display_update_one_window
+   in display.c does. */
 static void
 calculate_line_starts (WINDOW *win)
 {
-  char *start;
-  char *printed_line;      /* Buffer for a printed line. */
-  size_t allocated_win_width; /* Allocated space in printed_line. */
-  size_t pl_chars = 0;     /* Number of characters written to printed_line */
-  size_t pl_bytes = 0;     /* Number of bytes written to printed_line */
-  size_t pl_start = 0;     /* Offset of start of current physical line. */
-  size_t pl_num = 0;       /* Number of physical lines done so far. */
-  size_t ll_num = 0;       /* Number of logical lines */
+  long pl_chars = 0;     /* Number of characters in line so far. */
+  long pl_start = 0;     /* Offset of start of current physical line. */
+  long ll_num = 0;       /* Number of logical lines */
   mbi_iterator_t iter;
 
-  /* Pointer to character carried over from one physical line to the next. */
-  const char *carried_over_ptr = 0; 
-  size_t carried_over_bytes = 0;
+  /* Width of character carried over from one physical line to the next.  */
   size_t carried_over_chars = 0;
 
   win->line_starts = NULL;
@@ -1220,129 +1188,65 @@ calculate_line_starts (WINDOW *win)
   if (!win->node)
     return;
 
-  start = win->node->contents;
-  
-  /* Print each line in the window into our local buffer, and then
-     check the contents of that buffer against the display.  If they
-     differ, update the display. */
-  allocated_win_width = win->width + 1;
-  printed_line = xmalloc (allocated_win_width);
-
-  for (mbi_init (iter, start, 
-		 win->node->contents + win->node->nodelen - start);
+  for (mbi_init (iter, win->node->contents, win->node->nodelen);
        mbi_avail (iter);
        mbi_advance (iter))
     {
-      const char *cur_ptr = mbi_cur_ptr (iter);
-
-      size_t pchars = 0; /* Printed chars */
-      size_t pbytes = 0; /* Bytes to output. */
+      size_t pchars = 0; /* Screen columns for this character. */
+      size_t pbytes = 0; /* Not used. */
       int delim = 0;
-      int finish;
 
-      cur_ptr = printed_representation (&iter, &delim,
-                                        pl_chars, &pchars, &pbytes);
-
-      /* Ensure there is enough space in the buffer */
-      while (pl_bytes + pbytes + 2 > allocated_win_width - 1)
-	printed_line = x2realloc (printed_line, &allocated_win_width);
+      printed_representation (&iter, &delim, pl_chars, &pchars, &pbytes);
 
       /* If this character can be printed without passing the width of
-         the line, then stuff it into the line. */
+         the line, then include it in the line. */
       if (!delim && pl_chars + pchars < win->width)
         {
-	  int i;
-	  
-	  for (i = 0; i < pbytes; i++)
-	    printed_line[pl_bytes++] = cur_ptr[i];
-	  pl_chars += pchars;
+          pl_chars += pchars;
           continue;
         }
 
       /* If this character cannot be printed in this line, we have
          found the end of this line as it would appear on the screen. */
 
-      if (delim)
-        {
-          printed_line[pl_bytes] = '\0';
-          carried_over_ptr = NULL;
-        }
-      else
-        {
-          /* The printed representation of this character extends into
-             the next line. */
-          for (; pl_chars < (win->width - 1); pl_chars++)
-            printed_line[pl_bytes++] = ' ';
+      carried_over_chars = delim ? 0 : pchars;
 
-          carried_over_chars = pchars;
-          carried_over_ptr = cur_ptr;
-          carried_over_bytes = pbytes;
+      collect_line_starts (win, ll_num, pl_start);
 
-          /* If printing the last character in this window couldn't
-             possibly cause the screen to scroll, place a backslash
-             in the rightmost column. */
-          if (1 + pl_num + win->first_row < the_screen->height)
-            {
-              if (win->flags & W_NoWrap)
-                printed_line[pl_bytes++] = '$';
-              else
-                printed_line[pl_bytes++] = '\\';
-              pl_chars++;
-            }
-          printed_line[pl_bytes] = '\0';
-        }
-
-      finish = collect_line_starts (win, pl_num, ll_num, pl_start,
-                    printed_line, pl_bytes, pl_chars);
-
-      ++pl_num;
       if (delim == '\r' || delim == '\n')
         ++ll_num;
 
       /* Start a new physical line at next character, unless a character
          was carried over, in which case start there. */
-      pl_start = mbi_cur_ptr (iter) - start;
-      if (!carried_over_ptr)
+      pl_start = mbi_cur_ptr (iter) - win->node->contents;
+      if (carried_over_chars == 0)
         pl_start += mb_len (mbi_cur (iter));
-      pl_bytes = 0;
       pl_chars = 0;
 
-      if (finish)
-        break;
-      
-      /* If there are bytes carried over, stuff them
-         into the buffer now. */
-      /* There is enough space for this because there was enough space
-         for the whole logical line of which this is only a part. */
-      /* Expected to be "short", i.e. a representation like "^A". */
-      if (carried_over_ptr)
+      /* If there is a character carried over, count it now.  Expected to be 
+         "short", i.e. a representation like "^A". */
+      if (carried_over_chars != 0)
         {
-          for (; carried_over_bytes > 0; carried_over_bytes--)
-            printed_line[pl_bytes++] = *carried_over_ptr++;
-          pl_chars += carried_over_chars;
-        }
+          pl_chars = carried_over_chars;
     
-      /* If this window has chosen not to wrap lines, skip to the end
-         of the logical line in the buffer, and start a new line here. */
-      if (pl_bytes && win->flags & W_NoWrap)
-        {
-          for (; mbi_avail (iter); mbi_advance (iter))
-            if (mb_len (mbi_cur (iter)) == 1
-                && *mbi_cur_ptr (iter) == '\n')
-              break;
+          /* If this window has chosen not to wrap lines, skip to the end
+             of the logical line in the buffer, and start a new line here. */
+          if (win->flags & W_NoWrap)
+            {
+              for (; mbi_avail (iter); mbi_advance (iter))
+                if (mb_len (mbi_cur (iter)) == 1
+                    && *mbi_cur_ptr (iter) == '\n')
+                  break;
 
-          pl_bytes = 0;
-          pl_chars = 0;
-          pl_start = mbi_cur_ptr (iter) + mb_len (mbi_cur (iter)) - start;
-          printed_line[0] = 0;
+              pl_chars = 0;
+              pl_start = mbi_cur_ptr (iter) + mb_len (mbi_cur (iter))
+                         - win->node->contents;
+            }
         }
     }
 
   if (pl_chars)
-    collect_line_starts (win, pl_num, ll_num, pl_start, printed_line,
-                         pl_bytes, pl_chars);
-
-  free (printed_line);
+    collect_line_starts (win, ll_num, pl_start);
 
   /* Finally, initialize the line map for the current line. */
   window_line_map_init (win);

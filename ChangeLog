@@ -3,6 +3,10 @@
 	* info/window.c (process_node_text, calculate_line_starts): 
 	process_node_text inlined in calculate_line_starts.
 
+	(calculate_line_starts): Simplify.
+	(collect_line_starts): Unused arguments removed.  Return value 
+	is void.
+
 2015-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Info Format Indirect Table): Value in 
