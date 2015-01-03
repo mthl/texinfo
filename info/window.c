@@ -2,7 +2,7 @@
    $Id$
 
    Copyright 1993, 1997, 1998, 2001, 2002, 2003, 2004, 2007, 2008,
-   2011, 2012, 2013, 2014 Free Software Foundation, Inc.
+   2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -701,7 +701,8 @@ window_unmark_chain (WINDOW *chain, int flag)
 }
 
 
-/* Used by calculate_line_starts via process_node_text. */
+/* Used by calculate_line_starts to record line starts in the
+   win->LINE_COUNT and win->LOG_LINE_NO arrays. */
 static int
 collect_line_starts (WINDOW *win, size_t pl_num, size_t ll_num,
                      size_t pl_start, char *printed_line,
@@ -716,24 +717,6 @@ collect_line_starts (WINDOW *win, size_t pl_num, size_t ll_num,
                                win->line_slots * sizeof (long));
   win->log_line_no[win->line_count - 1] = ll_num;
   return 0;
-}
-
-/* Calculate a list of line starts for the node belonging to WINDOW.  The line
-   starts are offsets within WINDOW->node->contents. */
-static void
-calculate_line_starts (WINDOW *window)
-{
-  window->line_starts = NULL;
-  window->log_line_no = NULL;
-  window->line_count = 0;
-  window->line_slots = 0;
-
-  if (!window->node)
-    return;
-  
-  process_node_text (window, window->node->contents, collect_line_starts);
-
-  window_line_map_init (window);
 }
 
 /* Return the number of first physical line corresponding to the logical
@@ -1209,11 +1192,12 @@ text_buffer_to_node (struct text_buffer *tb)
    Return value: number of lines processed.
 */
    
-size_t
-process_node_text (WINDOW *win, char *start,
-		   int (*fun) (WINDOW *, size_t, size_t,
-			       size_t, char *, size_t, size_t))
+/* Calculate a list of line starts for the node belonging to WINDOW.  The line
+   starts are offsets within WINDOW->node->contents. */
+static void
+calculate_line_starts (WINDOW *win)
 {
+  char *start;
   char *printed_line;      /* Buffer for a printed line. */
   size_t allocated_win_width; /* Allocated space in printed_line. */
   size_t pl_chars = 0;     /* Number of characters written to printed_line */
@@ -1227,6 +1211,16 @@ process_node_text (WINDOW *win, char *start,
   const char *carried_over_ptr = 0; 
   size_t carried_over_bytes = 0;
   size_t carried_over_chars = 0;
+
+  win->line_starts = NULL;
+  win->log_line_no = NULL;
+  win->line_count = 0;
+  win->line_slots = 0;
+
+  if (!win->node)
+    return;
+
+  start = win->node->contents;
   
   /* Print each line in the window into our local buffer, and then
      check the contents of that buffer against the display.  If they
@@ -1298,7 +1292,7 @@ process_node_text (WINDOW *win, char *start,
           printed_line[pl_bytes] = '\0';
         }
 
-      finish = fun (win, pl_num, ll_num, pl_start,
+      finish = collect_line_starts (win, pl_num, ll_num, pl_start,
                     printed_line, pl_bytes, pl_chars);
 
       ++pl_num;
@@ -1345,10 +1339,13 @@ process_node_text (WINDOW *win, char *start,
     }
 
   if (pl_chars)
-    fun (win, pl_num, ll_num, pl_start, printed_line, pl_bytes, pl_chars);
+    collect_line_starts (win, pl_num, ll_num, pl_start, printed_line,
+                         pl_bytes, pl_chars);
 
   free (printed_line);
-  return pl_num;
+
+  /* Finally, initialize the line map for the current line. */
+  window_line_map_init (win);
 }
 
 
