@@ -27,7 +27,7 @@ This @command{texindex} program (version @value{VERSION},
 @file{texinfo.tex}.  (This Texinfo source is a literate program written
 using TexiWeb@tie{}Jr., not a user manual.)
 
-Copyright @copyright{} 2015 Free Software Foundation, Inc.
+Copyright @copyright{} 2014, 2015 Free Software Foundation, Inc.
 
 @quotation
 This program is free software: you can redistribute it and/or modify
@@ -113,7 +113,7 @@ the wrong place.  @xref{knuth}.
 @c and regular.  TeX will scale height also automatically.
 @float Figure,knuth
 @caption{Indexing (@url{http://xkcd.com/163/})}
-@center @image{donald_knuth, 5in, , Indexing}
+@center @image{dek_idx, 5in, , Indexing}
 @end float
 
 @node Requirements
@@ -1000,7 +1000,7 @@ Every program needs a copyright statement.
 
 @<GPL v3 copyright statement@>=
 #
-# Copyright 2015 Free Software Foundation, Inc.
+# Copyright 2014, 2015 Free Software Foundation, Inc.
 # 
 # This file is part of GNU Texinfo.
 # 
