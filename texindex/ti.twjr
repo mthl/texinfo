@@ -304,7 +304,7 @@ FALSE = 0
 EXIT_SUCCESS = 0
 EXIT_FAILURE = 1
 
-Prgname = ARGV[0]
+Prgname = "texindex"  # ARGV[0] is "awk"
 Texindex_Version = "5.2+dev"
 
 Can_split_null = check_split_null()
@@ -1230,14 +1230,14 @@ translated are prefixed with an underscore.
 @<Helper functions@>=
 function usage(exit_val)
 {
-  printf(_"Usage: %s [OPTION]... FILE...", Prgname)
+  printf(_"Usage: %s [OPTION]... FILE...\n", Prgname)
   print _"Generate a sorted index for each TeX output FILE."
   print _"Usually FILE... is specified as `foo.??' for a document `foo.texi'."
   print ""
   print _"Options:"
   print _" -h, --help   display this help and exit"
-  print _" --version   display version information and exit"
-  print _" --    end option processing"
+  print _" --version    display version information and exit"
+  print _" --           end option processing"
   print ""
   print _"Email bug reports to bug-texinfo@gnu.org,"
   print _"general questions and discussion to help-texinfo@gnu.org."

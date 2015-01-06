@@ -1,3 +1,13 @@
+2015-01-05  Karl Berry  <karl@gnu.org>
+
+	* configure.ac (AC_CONFIG_FILES): add texindex/Makefile.
+	* Makefile.am (SUBDIRS): add texindex.
+	(po-check): also look at *.twjr.
+	* util/Makefile.am (bin_PROGRAMS): remove, we'll no longer build
+	the C texindex.
+
+	* texindex/ti.twjr: --help formatting.
+	
 2015-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (point_forward_char, point_backward_char): 

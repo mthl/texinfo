@@ -1,3 +1,11 @@
+2015-01-06  Karl Berry  <karl@gnu.org>
+
+	first merge into automake:
+	* texindex/Makefile.am: new file.
+	* texindex/texindex.in: new file.
+	* texindex/README: update.
+	(see also ../ChangeLog.)
+
 2014-12-30         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* ti.twjr: Remove `@xrefautomaticsectiontitle on'. It's now
@@ -78,7 +86,7 @@
 2014-02-26         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* ti.twjr: Sorting in and seems to work well. Still need to add
-	more descriptive prose.  Did some cleanup and added menues.
+	more descriptive prose.  Did some cleanup and added menus.
 
 2014-02-25         Arnold D. Robbins     <arnold@skeeve.com>
 
@@ -87,3 +95,9 @@
 2014-02-24         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* ti.twjr, texinfo.tex, Makefile: Initial check-in.
+
+Copyright 2014, 2015 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.

@@ -2,7 +2,7 @@
 # $Id$
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
-# 2012, 2013, 2014 Free Software Foundation, Inc.
+# 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -47,8 +47,6 @@ AC_SUBST([PACKAGE_DATE])
 
 # We need Perl
 AC_ARG_VAR([PERL], [The path to the 'perl' executable.])
-dnl AC_PATH_PROG([PERL], [perl], [/usr/bin/env perl], [/opt/perl5/bin:"$PATH"])
-
 AC_PATH_PROG([PERL], [perl])
 if test -z "$PERL"; then
    AC_MSG_ERROR(
@@ -58,7 +56,6 @@ specify where it is using
   ./configure PERL=/path/to/perl
 ])
 fi
-
 
 AC_MSG_CHECKING([Perl version and Encode module])
 if $PERL -e "use 5.007_003; use Encode;" > /dev/null 2>&1; then
@@ -445,6 +442,7 @@ AC_CONFIG_FILES([\
   po/Makefile.in
   po_document/Makefile.in
   util/Makefile
+  texindex/Makefile
   tp/Makefile
   tp/tests/Makefile
   tp/tests/many_input_files/Makefile

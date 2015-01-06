@@ -3,7 +3,7 @@
 # Process this file with automake to produce Makefile.in in all directories.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
-# 2012, 2013 Free Software Foundation, Inc.
+# 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -55,7 +55,7 @@ if HOST_IS_WINDOWS
   SUBDIRS += info
 endif
 endif
-  SUBDIRS += install-info po po_document tp Pod-Simple-Texinfo util \
+  SUBDIRS += install-info po po_document tp Pod-Simple-Texinfo texindex util \
              doc man
 endif
 
@@ -93,7 +93,7 @@ po-check:
             tp/maintain/* ) continue;;					\
 	    esac;							\
 	    case $$file in						\
-	    *.[ch] | *.p[lm])						\
+	    *.[ch] | *.p[lm] | *.twjr)					\
 	      base=`expr " $$file" : ' \(.*\)\..'`;			\
 	      { test -f $$base.l || test -f $$base.y; } && continue;;	\
 	    esac;							\

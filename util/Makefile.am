@@ -2,7 +2,7 @@
 # Makefile.am for texinfo/util.
 # Run automake in .. to produce Makefile.in from this.
 #
-# Copyright 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014
+# Copyright 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
 # Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -13,7 +13,6 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-bin_PROGRAMS = texindex
 bin_SCRIPTS = texi2dvi texi2pdf pdftexi2dvi
 nodist_noinst_SCRIPTS = txixml2texi
 
