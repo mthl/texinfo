@@ -80,6 +80,8 @@ one of the relevant sections:
   . remove --recode and --recode-from options, since they haven't
     worked as intended for years, so evidently no one needs them.
 
+* Distribution: automake-1.15, gettext-0.19.4.
+
 5.2 (26 September 2013)
 * Language:
   . new commands @inlinefmtifelse, @inlineifset, @inlineifclear, for
