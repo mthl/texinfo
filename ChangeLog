@@ -1,3 +1,9 @@
+2015-01-07  Karl Berry  <karl@gnu.org>
+
+	* tp/texi2any.pl: hardwire program name in --version,
+	derive name from $0 in --help, to match behavior of coding
+	standards and coreutils, etc.
+
 2015-01-05  Karl Berry  <karl@gnu.org>
 
 	* configure.ac (AC_CONFIG_FILES): add texindex/Makefile.

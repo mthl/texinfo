@@ -730,11 +730,14 @@ sub _get_converter_default($)
 sub makeinfo_help()
 {
   my $makeinfo_help =
-    __("Usage: makeinfo [OPTION]... TEXINFO-FILE...\n")
-  . __("  or:  texi2any [OPTION]... TEXINFO-FILE...\n")
+    sprintf(__("Usage: %s [OPTION]... TEXINFO-FILE...\n"),
+    $real_command_name . $command_suffix)
 ."\n".
 __("Translate Texinfo source documentation to various other formats, by default
-Info files suitable for reading online with Emacs or standalone GNU Info.\n")
+Info files suitable for reading online with Emacs or standalone GNU Info.
+
+This program is commonly installed as both `makeinfo' and `texi2any';
+the behavior is identical, and does not depend on the installed name.\n")
 ."\n";
   $makeinfo_help .= sprintf(__("General options:
       --document-language=STR locale to use in translating Texinfo keywords
@@ -749,7 +752,8 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
   -c, --set-customization-variable VAR=VAL  set customization variable VAR 
                                 to value VAL.
   -v, --verbose               explain what is being done.
-      --version               display version information and exit.\n"), get_conf('ERROR_LIMIT'))
+      --version               display version information and exit.\n"),
+    get_conf('ERROR_LIMIT'))
 ."\n";
   $makeinfo_help .= __("Output format selection (default is to produce Info):
       --docbook               output Docbook XML rather than Info.
@@ -758,7 +762,6 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
       --xml                   output Texinfo XML rather than Info.
       --dvi, --dvipdf, --ps, --pdf  call texi2dvi to generate given output,
                                 after checking validity of TEXINFO-FILE.\n")
-
 ."\n";
   $makeinfo_help .= __("General output options:
   -E, --macro-expand=FILE     output macro-expanded source to FILE,
@@ -869,7 +872,7 @@ my $latex2html_file = 'latex2html.pm';
 
 my $result_options = Getopt::Long::GetOptions (
  'help|h' => sub { print makeinfo_help(); exit 0; },
- 'version|V' => sub {print "$real_command_name (GNU texinfo) $configured_version\n\n";
+ 'version|V' => sub {print "$program_name (GNU texinfo) $configured_version\n\n";
     printf __("Copyright (C) %s Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
