@@ -47,13 +47,23 @@ do_subst = sed -e 's,[@]pkgdatadir[@],$(pkgdatadir),g' \
 
 # build the texindex shell wrapper from texindex.in, following automake.
 texindex: texindex.in Makefile
-	$(do_subst) < $(srcdir)/texindex.in > texindex
+	$(do_subst) <$(srcdir)/texindex.in >texindex
 	chmod +x texindex
 
 # build texindex.awk from ti.twjr using jrtangle.
 texindex.awk: ti.twjr
-	$(AWK) -f $(srcdir)/jrtangle $(srcdir)/ti.twjr > texindex.awk \
+	$(AWK) -f $(srcdir)/jrtangle $(srcdir)/ti.twjr >texindex.awk \
 	|| rm -f texindex.awk
+
+# how to build the pdf of the program-as-document.
+ti.pdf: ti.texi
+	texi2pdf --tidy ti.texi
+
+ti.html: ti.texi
+	makeinfo --no-split --html ti.texi
+
+ti.texi: ti.twjr
+	$(AWK) -f $(srcdir)/jrweave $(srcdir)/ti.twjr >ti.texi || rm -f $@
 
 # just a fun cartoon used in the literate document.
 EXTRA_DIST += donald_knuth.png
