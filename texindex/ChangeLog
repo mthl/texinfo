@@ -1,3 +1,11 @@
+2015-01-08  Karl Berry  <karl@gnu.org>
+
+	* ti.twjr (Invocation_name): new global, renamed from Prgname.
+	(usage): use it, a la coreutils.
+	* texindex.in: pass it (value $0), with -v.
+	
+	* Makefile.am (EXTRA_DIST): dek_idx.png rename.
+
 2015-01-06  Karl Berry  <karl@gnu.org>
 
 	first merge into automake:

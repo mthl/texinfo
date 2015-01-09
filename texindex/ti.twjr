@@ -285,7 +285,8 @@ global variable and array names start with a capital letter.
 
 Per GNU standards, we sometimes hardwire the string @samp{texindex} as
 the name of the program, and sometimes use the name by which the program
-was invoked.  We'll call the latter @code{Prgname}.
+was invoked.  We'll call the latter @code{Invocation_name}; it's
+supposed to be passed in from the shell wrapper.
 
 The last line below sets up @code{Can_split_null}, which tells us if the
 built-in @code{split()} function will split apart a string into its
@@ -295,7 +296,8 @@ individual characters or if we have to do it manually.
 @cindex @code{FALSE} constant
 @cindex @code{EXIT_SUCCESS} constant
 @cindex @code{EXIT_FAILURE} constant
-@cindex @code{Texindex_Version} variable
+@cindex @code{Texindex_version} variable
+@cindex @code{Invocation_name} variable
 @cindex @code{Can_split_null} variable
 @cindex @code{check_split_null()} function
 @<Initial setup@>=
@@ -304,8 +306,11 @@ FALSE = 0
 EXIT_SUCCESS = 0
 EXIT_FAILURE = 1
 
-Prgname = "texindex"  # ARGV[0] is "awk"
-Texindex_Version = "5.2+dev"
+Texindex_version = "5.2+dev"
+if (! Invocation_name) {
+  # provide fallback in case it's not passed in.
+  Invocation_name = "texindex"
+}
 
 Can_split_null = check_split_null()
 @
@@ -344,7 +349,7 @@ for (i = 1; i < ARGC; i++) {
   } else if (ARGV[i] ~ /^--?.+/) {
     fatal(_"%s: unrecognized option `%s'\n" \
           "Try `%s --help' for more information.\n",
-          Prgname, ARGV[i], Prgname)
+          Invocation_name, ARGV[i], Invocation_name)
     exit EXIT_FAILURE
   } else {
     break
@@ -1219,7 +1224,7 @@ The @code{usage()} and @code{version()} functions print the necessary
 information and then exit.  The strings that can and should be
 translated are prefixed with an underscore.
 
-@cindex @code{Texindex_Version} variable
+@cindex @code{Texindex_version} variable
 @cindex @code{usage()} function
 @cindex @code{version()} function
 @tex
@@ -1230,7 +1235,7 @@ translated are prefixed with an underscore.
 @<Helper functions@>=
 function usage(exit_val)
 {
-  printf(_"Usage: %s [OPTION]... FILE...\n", Prgname)
+  printf(_"Usage: %s [OPTION]... FILE...\n", Invocation_name)
   print _"Generate a sorted index for each TeX output FILE."
   print _"Usually FILE... is specified as `foo.??' for a document `foo.texi'."
   print ""
@@ -1248,7 +1253,7 @@ function usage(exit_val)
 
 function version()
 {
-  print "texindex (GNU texinfo)", Texindex_Version
+  print "texindex (GNU texinfo)", Texindex_version
   print ""
   print _"Copyright (C) 2015 Free Software Foundation, Inc."
   print _"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"

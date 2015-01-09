@@ -66,4 +66,4 @@ ti.texi: ti.twjr
 	$(AWK) -f $(srcdir)/jrweave $(srcdir)/ti.twjr >ti.texi || rm -f $@
 
 # just a fun cartoon used in the literate document.
-EXTRA_DIST += donald_knuth.png
+EXTRA_DIST += dek_idx.png

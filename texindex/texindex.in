@@ -70,4 +70,4 @@ if test -z "$ti_script"; then
   exit 1
 fi
 
-exec $awk_binary -f $ti_script -- "$@"
+exec $awk_binary -v Invocation_name="$0" -f "$ti_script" -- "$@"
