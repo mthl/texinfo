@@ -1,5 +1,24 @@
 #!/bin/sh
 # $Id$
+#
+# Copyright 2015 Free Software Foundation, Inc.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License,
+# or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Originally written by Karl Berry.
+# Please send bug reports, etc. to bug-texinfo@gnu.org.
+#
 # Shell wrapper for the texindex.awk program.  This is the most
 # convenient way to support --options; with a #! line, it is (g)awk
 # itself that interprets the options.  We want texindex --version
@@ -60,13 +79,21 @@ if test -z "$ti_script"; then
   && ti_script=$pkgdatadir_configured/texindex.awk
 fi
 #
-# could also look relative to $mydir, but again, let's wait for user reports.
+# look relative to $mydir, to allow the installed tree to be moved.
+if test -z "$ti_script"; then
+  relative_dir=$mydir/../share/texinfo
+  test -d "$relative_dir" \
+  && test -s "$relative_dir/texindex.awk" \
+  && ti_script=$relative_dir/texindex.awk
+fi
 #
 # didn't find it, abort.
 if test -z "$ti_script"; then
   echo "$0: could not locate texindex.awk script file, quitting." >&2
-  echo "$0: (checked envvar TEXINDEX_SCRIPT, executable dir $mydir," >&2
-  echo "$0:  and configured pkgdatadir $pkgdatadir_configured.)"  >&2
+  echo "$0: (checked envvar TEXINDEX_SCRIPT ($TEXINDEX_SCRIPT)," >&2
+  echo "$0:  executable dir ($mydir)," >&2
+  echo "$0:  share dir relative to binary ($relative_dir)," >&2
+  echo "$0:  and configured pkgdatadir ($pkgdatadir_configured).)"  >&2
   exit 1
 fi
 
