@@ -3,8 +3,7 @@
 @c $Id$
 @c %**start of header (This is for running Texinfo on a region.)
 @setfilename texindex.info
-@include version.texi 
-@settitle Texindex @value{VERSION}: A program for sorting indices
+@settitle Texindex @VERSION@: A program for sorting indices
 @c %**end of header (This is for running Texinfo on a region.)
 
 @c Better brace handling, this texindex is needed to process!
@@ -22,10 +21,9 @@
 @synindex cr cp
 
 @copying
-This @command{texindex} program (version @value{VERSION},
-@value{UPDATED}) sorts the raw index files created by
-@file{texinfo.tex}.  (This Texinfo source is a literate program written
-using TexiWeb@tie{}Jr., not a user manual.)
+This @command{texindex} program (version @VERSION@, @UPDATED@) sorts the
+raw index files created by @file{texinfo.tex}.  (This Texinfo source is
+a literate program written using TexiWeb@tie{}Jr., not a user manual.)
 
 Copyright @copyright{} 2014, 2015 Free Software Foundation, Inc.
 
@@ -47,7 +45,7 @@ along with this program.  If not, see @url{http://www.gnu.org/licenses/}.
 
 @titlepage
 @title Texindex
-@subtitle version @value{VERSION}, @value{UPDATED}
+@subtitle version @VERSION@, @UPDATED@
 @author Arnold D. Robbins
 @author and Texinfo maintainers
 @page
@@ -61,8 +59,8 @@ along with this program.  If not, see @url{http://www.gnu.org/licenses/}.
 @node Top
 @top Texindex
 
-This file defines @command{texindex} (version @value{VERSION},
-@value{UPDATED}), an @code{awk} program that processes the raw index
+This file defines @command{texindex} (version @VERSION@,
+@UPDATED@), an @code{awk} program that processes the raw index
 files produced by the @file{texinfo.tex} file.
 
 @end ifnottex
@@ -306,7 +304,7 @@ FALSE = 0
 EXIT_SUCCESS = 0
 EXIT_FAILURE = 1
 
-Texindex_version = "5.2+dev"
+Texindex_version = "@VERSION@"
 if (! Invocation_name) {
   # provide fallback in case it's not passed in.
   Invocation_name = "texindex"
@@ -837,9 +835,9 @@ We set up an @code{Ordval} array to map characters to numeric values.
 Most characters map to their ASCII code.  We add 512 to the value of
 each of the digits.  Both uppercase and lowercase letters map to the
 same numeric value, which is the ASCII code for the uppercase letter
-plus 512.@footnote{This code should also work for EBCDIC systems,
+plus 512. (This code should also work for EBCDIC systems,
 although @TeX{} does everything in ASCII, so it's not likely to make a
-difference.}
+difference.)
 
 The table must be built completely before changing the mapping of the
 letters, because all of the uppercase and lowercase letters must be in

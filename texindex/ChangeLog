@@ -1,5 +1,10 @@
 2015-01-08  Karl Berry  <karl@gnu.org>
 
+	* version.texi: remove, no easy way to automatically update it.
+	* ti.twjr,
+	* Makefile.am (do_subst, texindex.awk, ti.texi): use substitutions
+	for @VERSION@ and @UPDATED@ instead.
+
 	* texindex.in: also look for ../share/texinfo/texindex.awk,
 	relative to dirname $0.
 

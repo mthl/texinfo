@@ -39,31 +39,43 @@ MAINTAINERCLEANFILES = texindex.awk
 # ../util/srclist.txt).
 noinst_SCRIPTS = jrtangle jrweave
 
-# configure-time variables we use in texindex.in.
+# configure-time variables we use in texindex.in or ti.twjr.
+# Unlike regular Automake, we have to allow for @@VERSION@@,
+# which jrweave generates in the code segment.
 do_subst = sed -e 's,[@]pkgdatadir[@],$(pkgdatadir),g' \
                -e 's,[@]AWK[@],$(AWK),g' \
                -e 's,[@]PACKAGE[@],$(PACKAGE),g' \
-               -e 's,[@]VERSION[@],$(VERSION),g'
+               -e 's,[@][@]*VERSION[@][@]*,$(VERSION),g'
 
 # build the texindex shell wrapper from texindex.in, following automake.
 texindex: texindex.in Makefile
 	$(do_subst) <$(srcdir)/texindex.in >texindex
 	chmod +x texindex
 
-# build texindex.awk from ti.twjr using jrtangle.
+# build texindex.awk from ti.twjr using jrtangle; that creates
+# texindex.awk (hardwired).  Then we substitute configure-time variables
+# to avoid manually updates of the version number.
+# 
 texindex.awk: ti.twjr
-	$(AWK) -f $(srcdir)/jrtangle $(srcdir)/ti.twjr >texindex.awk \
-	|| rm -f texindex.awk
+	$(AWK) -f $(srcdir)/jrtangle $(srcdir)/ti.twjr || rm -f texindex.awk
+	$(do_subst) <texindex.awk >texindex.awk-tmp
+	mv texindex.awk-tmp texindex.awk
 
 # how to build the pdf of the program-as-document.
 ti.pdf: ti.texi
 	texi2pdf --tidy ti.texi
-
+ti.info: ti.texi
+	makeinfo --no-split ti.texi
 ti.html: ti.texi
 	makeinfo --no-split --html ti.texi
 
+# unlink jrtangle, jrweave outputs to stdout; and we want the
+# usual UPDATED string.
 ti.texi: ti.twjr
-	$(AWK) -f $(srcdir)/jrweave $(srcdir)/ti.twjr >ti.texi || rm -f $@
+	UPDATED=`$(top_srcdir)/build-aux/mdate-sh $(srcdir)/ti.twjr`; \
+	  $(AWK) -f $(srcdir)/jrweave $(srcdir)/ti.twjr \
+	  | $(do_subst) -e "s,[@]UPDATED[@],$$UPDATED,g" \
+	  >ti.texi || rm -f ti.texi
 
 # just a fun cartoon used in the literate document.
 EXTRA_DIST += dek_idx.png
