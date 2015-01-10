@@ -17615,7 +17615,7 @@ The output is split at @code{@@section} and similar.
 The output is split at every node.  This is the default.
 @end table
 
-Plain text output can be split similarly to HTML.  This may be useful
+Plain text output can be split similarly to HTML@.  This may be useful
 for extracting sections from a Texinfo document and making them
 available as separate files.
 

@@ -1,3 +1,8 @@
+2015-01-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Invoking texi2any) <--split>: Change a "." 
+	to a "@.".
+
 2015-01-07  Karl Berry  <karl@gnu.org>
 
 	* texindex/Makefile.am (ti.pdf, ti.html): new targets,
