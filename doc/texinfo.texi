@@ -7090,7 +7090,7 @@ include both the label and the url: `GNU (@url{http://www.gnu.org})'.
 
 This option only has effect when the PDF output is produced with the
 pdf@TeX{} program, not with other ways of getting from Texinfo to PDF
-(e.g., @TeX{} to DVI to PDF).  Consequently, it is ok to specify this
+(e.g., @TeX{} to DVI to PDF)@.  Consequently, it is ok to specify this
 option unconditionally within @code{@@tex}, as shown above.  It is
 ignored when DVI is being produced.
 
@@ -7127,7 +7127,7 @@ amount of red, green, and blue respectively.
 
 These definitions only have an effect when the PDF output is produced
 with the pdf@TeX{} program, not with other ways of getting from
-Texinfo to PDF (e.g., @TeX{} to DVI to PDF).  Consequently, it is ok
+Texinfo to PDF (e.g., @TeX{} to DVI to PDF)@.  Consequently, it is ok
 to specify this option unconditionally within @code{@@tex}, as shown
 above.  It is ignored when DVI is being produced.
 
@@ -19866,7 +19866,7 @@ output (but not any of the other conditionals, by default).  Source
 between @code{@@html} and @code{@@end html} is passed without change
 to the output (i.e., suppressing the normal escaping of input
 @samp{<}, @samp{>} and @samp{&} characters which have special
-significance in HTML).  @xref{Conditional Commands}.
+significance in HTML)@.  @xref{Conditional Commands}.
 
 
 @node HTML Splitting

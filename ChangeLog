@@ -1,3 +1,8 @@
+2015-01-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (@url PDF Output Format, PDF Colors)
+	(Escaping to HTML): Change some "."'s to "@."'s.
+
 2015-01-10  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (Ending a Sentence): attempt to clarify
