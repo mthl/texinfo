@@ -2,7 +2,7 @@
 # Makefile.am for texinfo/man.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
-# 2012, 2013 Free Software Foundation, Inc.
+# 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -87,7 +87,7 @@ makeinfo.1: $(tpdir)/texi2any.pl $(common_mandeps)
 	sed '/^\.IP$$/N;/\nAlso/s/I//;/\nThe/s/I//' $@.tmp >$@
 	rm $@.tmp
 
-texindex.1: $(top_srcdir)/util/texindex.c $(common_mandeps)
+texindex.1: $(top_srcdir)/texindex/ti.twjr $(common_mandeps)
 	@name="sort Texinfo index files" && $(man_rule_bin)
 
 # 

@@ -16,7 +16,8 @@ This distribution uses whatever versions of Automake, Autoconf, and
 Gettext are listed in NEWS; usually the latest official releases.  If
 you are getting the sources from the development repository (or change
 configure.ac), you'll need to have these tools installed to (re)build.
-You'll also need help2man.  All of these programs are available from
+You'll also need help2man.  If you modify texindex/ti.twjr, you'll need
+gawk >= 4.0.  All of these programs are available from
 http://ftp.gnu.org/gnu.
 
 After getting the development sources, and installing the tools above,

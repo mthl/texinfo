@@ -1,3 +1,8 @@
+2015-01-11  Karl Berry  <karl@gnu.org>
+
+	* man/Makefile.am (texindex.1): source file is now texindex/ti.twjr.
+	* README: mention gawk >= 4.0 if modifying ti.twjr.	
+
 2015-01-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (@url PDF Output Format, PDF Colors)
