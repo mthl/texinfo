@@ -1,3 +1,8 @@
+2015-01-10  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (Ending a Sentence): attempt to clarify
+	the interaction of closing punctuation and sentence endings.
+
 2015-01-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Invoking texi2any) <--split>: Change a "." 
