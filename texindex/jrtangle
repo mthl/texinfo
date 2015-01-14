@@ -395,7 +395,7 @@ BEGIN {
 			fatal(_"cannot nest one @file_update_recipe inside another\n")
 		Line_numbers["file_update_recipe"] = (FILENAME ":" FNR)
 		Update_recipe = ""
-	} if (/^@end file_update_recipe[[:space:]]*$/) {
+	} else if (/^@end file_update_recipe[[:space:]]*$/) {
 		# end of construct, delete line number, skip this line
 		delete Line_numbers["file_update_recipe"]
 	} else
@@ -413,6 +413,8 @@ BEGIN {
 	if (NF != 4)
 		fatal(_"usage: @file_update name dir suffix\n")
 
+	if ($4 == "\"\"")
+		$4 = ""
 	Update_value[$2]["DIR"] = $3
 	Update_value[$2]["SUFFIX"] = $4
 

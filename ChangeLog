@@ -1,3 +1,10 @@
+2015-01-14  Arnold D. Robbins <arnold@skeeve.com>
+
+	* texindex/jrtangle: Fixes to allow non-use of default update recipe.
+	* texindex/ti.twjr: Clear the update recipe, don't use a suffix.
+	Should let things build in MinGW environment. Thanks to Eli Z
+	for pointing out the issue.
+	
 2015-01-11  Karl Berry  <karl@gnu.org>
 
 	* man/Makefile.am (texindex.1): source file is now texindex/ti.twjr.

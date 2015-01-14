@@ -227,8 +227,9 @@ arrays and a number of other important features over the original
 
 The general outline is as follows:
 
-@c Make it executable
-@post_create texindex.awk chmod +x texindex.awk
+@file_update_recipe
+@end file_update_recipe
+@file_update texindex.awk . ""
 
 @(texindex.awk@) =
 @<First line@>
