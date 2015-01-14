@@ -11896,7 +11896,7 @@ word @samp{Euro} is used.
 Texinfo cannot magically synthesize support for the Euro symbol where
 the underlying system (fonts, software, whatever) does not support it.
 Therefore, you may find it preferable to use the word ``Euro''.  (In
-banking contexts, the abbreviation for the Euro is EUR.)
+banking contexts, the abbreviation for the Euro is EUR@.)
 
 @cindex ISO 8859-15, and Euro
 @cindex Latin 9, and Euro

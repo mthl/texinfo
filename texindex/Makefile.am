@@ -25,8 +25,8 @@ dist_bin_SCRIPTS = texindex
 # since it's generated, have to clean it explicitly.
 CLEANFILES = texindex
 
-# and mention the original source explicitly.
-EXTRA_DIST = texindex.in
+# and mention the original sources explicitly.
+EXTRA_DIST = texindex.in ti.twjr
 
 # we'll put the awk script in $(sharedir)/texinfo.
 dist_pkgdata_SCRIPTS = texindex.awk
@@ -38,6 +38,7 @@ MAINTAINERCLEANFILES = texindex.awk
 # repository (see their sources), and updated here manually (see
 # ../util/srclist.txt).
 noinst_SCRIPTS = jrtangle jrweave
+EXTRA_DIST += $(noinst_SCRIPTS)
 
 # configure-time variables we use in texindex.in or ti.twjr.
 # Unlike regular Automake, we have to allow for @@VERSION@@,

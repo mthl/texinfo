@@ -2,7 +2,7 @@
 # Makefile.am for texinfo/info.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012,
-# 2013, 2014
+# 2013, 2014, 2015
 # Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -158,3 +158,7 @@ XFAIL_TESTS = \
 	t/goto-quoted.sh \
 	t/next-quoted.sh
 
+EXTRA_DIST += $(TESTS) $(XFAIL_TESTS) \
+  t/README t/infodir \
+  t/Cleanup.inc t/Init-inter.inc t/Init-test.inc t/Timeout-test.inc \
+  t/Infokey-config
