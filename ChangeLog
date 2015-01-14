@@ -1,5 +1,12 @@
 2015-01-14  Karl Berry  <karl@gnu.org>
 
+	* info/t/Cleanup.inc,
+	* info/t/Init-inter.inc,
+	* info/t/Init-test.inc,
+	* info/t/Timeout-test.inc: portability (export, test -v, ...),
+	usability with separate builddir != srcdir,
+	usual style.
+
 	* texindex/Makefile.am,
 	* info/Makefile.am,
 	* install-info/tests/Makefile.am (EXTRA_DIST): new files needed,

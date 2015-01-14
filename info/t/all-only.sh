@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ srcdir=${srcdir:-.}
 . $t/Init-inter.inc
 
 # Try to stop a "man" command finding a man page called "intera"
-export MANPATH=.
+MANPATH=.; export MANPATH
 
 # Check that if there is only one file found with --all, we go straight
 # to that file without loading a menu of matching files.  This relies

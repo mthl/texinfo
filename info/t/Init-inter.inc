@@ -1,4 +1,4 @@
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,10 +14,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Initialize test of interactive operation
-# This file is not to be run directly
+# This file is to be sourced, not run directly
 
 # Avoid ginfo complaining that terminal is too dumb
-export TERM=vt100
+TERM=vt100; export TERM
 
 # Create named pipes to communicate with pseudotty program
 rm -f $0.pipein $0.pipeout
@@ -39,7 +39,7 @@ read PTS_DEVICE <$0.pipein
 # double free.  This specifies that the message it prints when it does
 # this should be sent to stderr so it can be recorded in the test *.log
 # files.
-export LIBC_FATAL_STDERR_=1
+LIBC_FATAL_STDERR_=1; export LIBC_FATAL_STDERR
 
 run_ginfo ()
 {
@@ -56,10 +56,10 @@ run_ginfo ()
   GINFO_PID=
   # Try 3 times and then give up.  The process may never have started, have
   # started under a different name, or have already exited.
-  for i in 1 2 3
-  do
-    GINFO_PID=$( pgrep -P $SUBSHELL $GINFO_NAME ; \
-       test $? -eq 0 -o $? -eq 1 || exit 99 )
+  for i in 1 2 3; do
+    GINFO_PID=`pgrep -P $SUBSHELL $GINFO_NAME`
+    test $? -eq 0 || test $? -eq 1 || exit 99
+    test -n "$GINFO_PID" || exit 99
 
     # This use of pgrep is likely not portable (works on procps).  Check if it
     # is likely to have worked.
@@ -75,7 +75,7 @@ run_ginfo ()
     echo $GINFO_PID | grep -v '^[0-9]*$' >/dev/null
     test $? -eq 0 && { GINFO_PID=unknown; break; }
 
-    GINFO_PID=$(echo $GINFO_PID | tr -d '\n')
+    GINFO_PID=`echo $GINFO_PID | tr -d '\n'`
 
     test "$GINFO_PID" = "" || break
     sleep 1 # Give subshell time to spawn ginfo process

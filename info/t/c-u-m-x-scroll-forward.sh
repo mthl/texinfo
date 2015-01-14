@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +23,8 @@ srcdir=${srcdir:-.}
 # status line and 1 line for the echo area.
 # This relies on the TIOCGWINSZ ioctl failing for the pseudotty (see 
 # terminal_get_screen_size in terminal.c).
-export LINES=7 COLUMNS=80
+LINES=7; export LINES
+COLUMNS=80; export COLUMNS
 
 run_ginfo -f intera -n 'Scroll four lines'
 

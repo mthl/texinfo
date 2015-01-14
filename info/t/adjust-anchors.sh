@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
-export LANG=en_US.iso8859-1
+LANG=en_US.iso8859-1; export LANG
 run_ginfo -f anchors
 
 # Go to anchor in a UTF-8 encoded file when the current character encoding is
