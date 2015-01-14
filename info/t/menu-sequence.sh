@@ -24,10 +24,10 @@ printf '\033xmenu-sequence\rfile-menu,first,no,nod\rDq' >$PTY_TYPE
 . $t/Timeout-test.inc
 
 if test ! -f $GINFO_OUTPUT; then
-	RETVAL=1
+  RETVAL=1
 else
-	grep 'Arrived at Node 3.' $GINFO_OUTPUT 
-	RETVAL=$?
+  grep 'Arrived at Node 3.' $GINFO_OUTPUT 
+  RETVAL=$?
 fi
 
 . $t/Cleanup.inc

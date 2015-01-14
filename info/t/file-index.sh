@@ -19,4 +19,4 @@ srcdir=${srcdir:-.}
 
 # Follow an index entry in a file specified with --file
 $GINFO --output - --file split 'entry text' \
-	| grep 'Node: Target node'
+  | grep 'Node: Target node'

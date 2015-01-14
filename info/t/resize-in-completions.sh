@@ -22,15 +22,15 @@ srcdir=${srcdir:-.}
 
 run_ginfo -f file-menu
 if test $GINFO_PID = unknown; then
-	printf 'q' >$PTY_TYPE
-	RETVAL=77 # automake code for skipped test
+  printf 'q' >$PTY_TYPE
+  RETVAL=77 # automake code for skipped test
 else
-	printf 'g\t' >$PTY_TYPE
-	sleep 1 # Give ginfo time to process above keystrokes
-	kill -s WINCH $GINFO_PID
-	sleep 1 # Give ginfo time to process signal
-	# C-g to exit completions, q to quit
-	printf '\007q' >$PTY_TYPE
+  printf 'g\t' >$PTY_TYPE
+  sleep 1 # Give ginfo time to process above keystrokes
+  kill -s WINCH $GINFO_PID
+  sleep 1 # Give ginfo time to process signal
+  # C-g to exit completions, q to quit
+  printf '\007q' >$PTY_TYPE
 fi
 
 . $t/Timeout-test.inc

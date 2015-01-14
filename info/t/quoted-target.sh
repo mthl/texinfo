@@ -23,11 +23,11 @@ printf '\t\t\r\t\r\Dq' >$PTY_TYPE &
 $GINFO -f quoting --restore $t/quoted-target.drib
 
 if test ! -f $GINFO_OUTPUT; then
-	RETVAL=1
+  RETVAL=1
 else
-	# Return non-zero (test failure) if files differ
-	diff $GINFO_OUTPUT $t/node-target
-	RETVAL=$?
+  # Return non-zero (test failure) if files differ
+  diff $GINFO_OUTPUT $t/node-target
+  RETVAL=$?
 fi
 
 . $t/Cleanup.inc

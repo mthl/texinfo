@@ -21,4 +21,4 @@ srcdir=${srcdir:-.}
 # specify the desired file.
 
 $GINFO --output - file-menu --node Unreachable \
-	| grep 'not linked to elsewhere'
+  | grep 'not linked to elsewhere'

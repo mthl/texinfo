@@ -32,8 +32,8 @@ printf 'lDq' >$PTY_TYPE
 . $t/Timeout-test.inc
 
 if test $RETVAL = 0; then
-	grep 'Node: Top' $GINFO_OUTPUT
-	RETVAL=$?
+  grep 'Node: Top' $GINFO_OUTPUT
+  RETVAL=$?
 fi
 
 . $t/Cleanup.inc

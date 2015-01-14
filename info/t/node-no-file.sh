@@ -19,4 +19,4 @@ srcdir=${srcdir:-.}
 
 # Ask for a node without saying which file it's in
 $GINFO --output - --node nodename \
-	2>&1 | grep 'No file given'
+  2>&1 | grep 'No file given'

@@ -27,10 +27,10 @@ printf tDq >$PTY_TYPE
 . $t/Timeout-test.inc
 
 if test ! -f $GINFO_OUTPUT; then
-	RETVAL=1
+  RETVAL=1
 else
-	grep 'Node: Top' $GINFO_OUTPUT
-	RETVAL=$?
+  grep 'Node: Top' $GINFO_OUTPUT
+  RETVAL=$?
 fi
 
 . $t/Cleanup.inc

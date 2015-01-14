@@ -20,4 +20,4 @@ srcdir=${srcdir:-.}
 # Load a node with a full stop in its name in loaded file using --node.
 
 $GINFO --output - --file file-menu --node Has.dot \
-	| grep 'Node: Has.dot'
+  | grep 'Node: Has.dot'
