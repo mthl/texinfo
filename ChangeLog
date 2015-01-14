@@ -8,6 +8,9 @@
 	info/t/Timeout-test.inc, info/t/Cleanup.inc: Create temporary 
 	files in $builddir.
 	* info/Makefile.am: Distribute info/t/node-target.
+	* info/t/infodir/file-menu.info: Specify a target file as a 
+	simple filename, instead of a compound path, to allow 
+	t/file-file-with-dot.sh test to pass out-of-source.
 
 2015-01-14  Karl Berry  <karl@gnu.org>
 

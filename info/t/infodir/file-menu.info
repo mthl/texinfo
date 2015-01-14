@@ -7,10 +7,7 @@ This is file whose Top node contains a menu.
 
 * First entry:Node 1.
 * Has.dot::
-* Target:(t/infodir/file1.info) Top.	I'm not sure what relative paths like
-					these should mean: at the moment they
-					are interpreted relative to the user's
-					current directory.
+* Target:(file1.info) Top.
 
 
 File: file-menu,   Node: Node 1
