@@ -28,8 +28,7 @@ printf '\002\002\002\002\002\002\002\002\rDq' >$PTY_TYPE
 
 . $t/Timeout-test.inc
 
-if ! test -f $GINFO_OUTPUT
-then
+if test ! -f $GINFO_OUTPUT; then
 	RETVAL=1
 else
 	# Return non-zero (test failure) if files differ

@@ -3,7 +3,8 @@
 	* info/t/Cleanup.inc,
 	* info/t/Init-inter.inc,
 	* info/t/Init-test.inc,
-	* info/t/Timeout-test.inc: portability (export, test -v, ...),
+	* info/t/Timeout-test.inc: portability (export =, test -v, ! test,
+	...),
 	usability with separate builddir != srcdir,
 	usual style.
 

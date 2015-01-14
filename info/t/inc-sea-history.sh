@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -31,8 +31,7 @@ RETVAL=$?
 printf 'lDq' >$PTY_TYPE
 . $t/Timeout-test.inc
 
-if test $RETVAL = 0
-then
+if test $RETVAL = 0; then
 	grep 'Node: Top' $GINFO_OUTPUT
 	RETVAL=$?
 fi

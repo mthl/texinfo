@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,8 +21,7 @@ srcdir=${srcdir:-.}
 # Indicate a window resize while showing a completions window
 
 run_ginfo -f file-menu
-if test $GINFO_PID = unknown
-then
+if test $GINFO_PID = unknown; then
 	printf 'q' >$PTY_TYPE
 	RETVAL=77 # automake code for skipped test
 else

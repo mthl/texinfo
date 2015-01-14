@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,8 +22,7 @@ srcdir=${srcdir:-.}
 printf '\t\r\t\rDq' >$PTY_TYPE &
 $GINFO -f quoting
 
-if ! test -f $GINFO_OUTPUT
-then
+if test ! -f $GINFO_OUTPUT; then
 	RETVAL=1
 else
 	# Return non-zero (test failure) if files differ
