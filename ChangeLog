@@ -1,3 +1,9 @@
+2015-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc (run_ginfo): When setting GINFO_PID, 
+	include more commands in subshell.  This means the tests at 
+	least pass when run in-source.
+
 2015-01-14  Karl Berry  <karl@gnu.org>
 
 	* info/t/Cleanup.inc,

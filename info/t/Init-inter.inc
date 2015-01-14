@@ -57,9 +57,8 @@ run_ginfo ()
   # Try 3 times and then give up.  The process may never have started, have
   # started under a different name, or have already exited.
   for i in 1 2 3; do
-    GINFO_PID=`pgrep -P $SUBSHELL $GINFO_NAME`
-    test $? -eq 0 || test $? -eq 1 || exit 99
-    test -n "$GINFO_PID" || exit 99
+    GINFO_PID=`pgrep -P $SUBSHELL $GINFO_NAME ; \
+      test $? -eq 0 || test $? -eq 1 || exit 99`
 
     # This use of pgrep is likely not portable (works on procps).  Check if it
     # is likely to have worked.
