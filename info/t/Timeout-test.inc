@@ -18,8 +18,8 @@
 # Not timed out yet
 TIMED_OUT=
 
-read -t 3 FINISHED <>$0.finished
-rm -f $0.finished
+read -t 3 FINISHED <>$FINISHEDFIFO
+rm -f $FINISHEDFIFO
 
 if test "$FINISHED" = failure; then
   echo 'Program exited unsuccessfully' >&2

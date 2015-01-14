@@ -33,7 +33,12 @@ INFOPATH=$infodir; export INFOPATH
 
 t=$srcdir/t; export t
 
-GINFO_OUTPUT=`basename $0.out`
+GINFO_OUTPUT=t/`basename $0.out`
+
+# These are only used for interactive tests
+PIPEIN=t/`basename $0.pipein`
+PIPEOUT=t/`basename $0.pipeout`
+
 # Remove left over file from previous tests
 rm -f $GINFO_OUTPUT
 

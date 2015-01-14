@@ -4,6 +4,11 @@
 	include more commands in subshell.  This means the tests at 
 	least pass when run in-source.
 
+	* info/t/Init-inter.inc, info/t/Init-test.inc, 
+	info/t/Timeout-test.inc, info/t/Cleanup.inc: Create temporary 
+	files in $builddir.
+	* info/Makefile.am: Distribute info/t/node-target.
+
 2015-01-14  Karl Berry  <karl@gnu.org>
 
 	* info/t/Cleanup.inc,

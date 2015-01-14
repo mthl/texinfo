@@ -19,21 +19,23 @@
 # Avoid ginfo complaining that terminal is too dumb
 TERM=vt100; export TERM
 
+FINISHEDFIFO=t/`basename $0.finished`
+
 # Create named pipes to communicate with pseudotty program
-rm -f $0.pipein $0.pipeout
-mknod $0.pipein p
-mknod $0.pipeout p
-PTY_TYPE=$0.pipeout
+rm -f $PIPEIN $PIPEOUT
+mknod $PIPEIN p
+mknod $PIPEOUT p
+PTY_TYPE=$PIPEOUT
 
 # We can feed input bytes into $PTY_TYPE to be passed onto ginfo.  pseudotty
 # only reads from fd 3, but opening the pipe read-write means: (i) there will
 # always be a process with it open for writing, so pseudotty will not hang when
 # opening it; and (ii) select() will never return for an end-of-file on fd 3.
-./pseudotty >$0.pipein 3<>$PTY_TYPE &
+./pseudotty >$PIPEIN 3<>$PTY_TYPE &
 PTY_PID=$!
 
 # Get name of pseudo-terminal slave device
-read PTS_DEVICE <$0.pipein
+read PTS_DEVICE <$PIPEIN
 
 # glibc can kill a running process if it detects a condition like a
 # double free.  This specifies that the message it prints when it does
@@ -43,10 +45,10 @@ LIBC_FATAL_STDERR_=1; export LIBC_FATAL_STDERR
 
 run_ginfo ()
 {
-  rm -f $0.finished
-  mkfifo $0.finished
-  { $GINFO "$@" ; test $? -eq 0 || echo failure >$0.finished ;
-    echo finished >$0.finished ; } 0<>$PTS_DEVICE 1<&0 &
+  rm -f $FINISHEDFIFO
+  mkfifo $FINISHEDFIFO
+  { $GINFO "$@" ; test $? -eq 0 || echo failure >$FINISHEDFIFO ;
+    echo finished >$FINISHEDFIFO ; } 0<>$PTS_DEVICE 1<&0 &
   SUBSHELL=$!
 
   # Get the PID of the running ginfo process.  Look for a process called

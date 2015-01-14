@@ -17,7 +17,7 @@
 
 # Delete created files and kill spawned processes if any.
 rm -f $GINFO_OUTPUT
-rm -f $0.pipein $0.pipeout
+rm -f $PIPEIN $PIPEOUT
 test $PTY_PID -ne 0 && kill $PTY_PID
 
 if test -n "$TIMED_OUT"; then
