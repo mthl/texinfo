@@ -1,3 +1,9 @@
+2015-01-15  Karl Berry  <karl@gnu.org>
+
+	* Makefile.am (po-check): include ti.twjr, exclude parsetexi, etc.
+	* po/POTFILES.in: update.
+	* util/texindex.c: remove.
+
 2015-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-inter.inc (run_ginfo): When setting GINFO_PID, 

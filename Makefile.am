@@ -86,21 +86,31 @@ po-check:
 	    | grep -v '^src/false\.c$$' | sort > $@-1;			\
 	  files=;							\
 	  for file in $$($(CVS_LIST_EXCEPT))				\
-	      `find [a-z]* -name '*.[ch]' -o -name '*.p[lm]'`; do	\
+	              `find [a-z]* -name '*.[ch]' 			\
+		                -o -name '*.p[lm]'			\
+				-o -name '*.twjr'`; do			\
+	    # don't look at sources from some subdirs.			\
 	    case $$file in						\
-            contrib/* ) continue;;					\
-	    djgpp/* | makeinfo/* | man/* | texi2html/* ) continue;;	\
-            tp/maintain/* ) continue;;					\
+	      contrib/* ) continue;;					\
+	      djgpp/* | makeinfo/* | man/* | texi2html/* ) continue;;	\
+	      parsetexi/*) continue;;					\
+	      texinfo-*/*) continue;;					\
+              tp/maintain/* ) continue;;				\
 	    esac;							\
+	    # if have lex/yacc sources, skip corresponding c/h files.	\
 	    case $$file in						\
-	    *.[ch] | *.p[lm] | *.twjr)					\
+	    *.[ch])							\
 	      base=`expr " $$file" : ' \(.*\)\..'`;			\
 	      { test -f $$base.l || test -f $$base.y; } && continue;;	\
 	    esac;							\
 	    files="$$files $$file";					\
 	  done;								\
-	  grep -E -l '\b(N?__?|gdt|gettext *)\([^)"]*("|$$)' $$files	\
-	    | sort -u > $@-2;						\
+	  # the first alternative is for twjr/gawk, which just uses _"	\
+	  # with no space or lparen; the other alternative matches the	\
+	  # usual function calls, e.g., _("..."), with or without space.\
+	  grep -E -l							\
+	    '\b[^$$]N?__?"|\b(N?__?|gdt|gettext *)\([^)"]*("|$$)'	\
+	    $$files | sort -u > $@-2;					\
 	  diff -u $@-1 $@-2 || exit 1;					\
 	  rm -f $@-1 $@-2;						\
 	fi
