@@ -23,6 +23,7 @@ srcdir=${srcdir:-.}
 run_ginfo -f file-menu
 if test $GINFO_PID = unknown; then
   printf 'q' >$PTY_TYPE
+  echo 'test skipped - don'\''t have PID of ginfo process' >&2
   RETVAL=77 # automake code for skipped test
 else
   printf 'g\t' >$PTY_TYPE

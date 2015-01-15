@@ -1,3 +1,11 @@
+2015-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc: (findprog) Add function from util/texi2dvi.
+	(run_ginfo) Call findprog to check for pgrep.  If not found, 
+	wait a short while for controlled process to start.
+	* info/t/resize-in-completions.sh: Print an informative message 
+	to standard error if test is skipped.
+
 2015-01-15  Karl Berry  <karl@gnu.org>
 
 	* Makefile.am (po-check): include ti.twjr, exclude parsetexi, etc.
