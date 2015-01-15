@@ -30,7 +30,7 @@ ELEMENT *handle_separator (ELEMENT *current, char separator,
 /* In parser.c */
 void push_conditional_stack (enum command_id cond);
 enum command_id pop_conditional_stack (void);
-size_t conditional_number;
+extern size_t conditional_number;
 ELEMENT *parse_texi_file (char *filename);
 int abort_empty_line (ELEMENT **current_inout, char *additional);
 ELEMENT *end_paragraph (ELEMENT *current);
@@ -65,6 +65,8 @@ void dump_tree_to_perl (ELEMENT *root);
 void add_extra_key_element (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_key_contents (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_key_text (ELEMENT *e, char *key, ELEMENT *value);
+void add_extra_key_index_entry (ELEMENT *e, char *key, INDEX_ENTRY *value);
+void add_extra_key_misc_args (ELEMENT *e, char *key, ELEMENT *value);
 KEY_PAIR *lookup_extra_key (ELEMENT *e, char *key);
 
 /* In menus.c */

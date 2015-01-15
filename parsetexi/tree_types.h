@@ -28,6 +28,8 @@ enum extra_type {
     extra_element,
     extra_element_contents,
     extra_element_text,
+    extra_index_entry,
+    extra_misc_args
 };
 
 typedef struct KEY_PAIR {
@@ -90,3 +92,30 @@ typedef struct GLOBAL_INFO {
     char *input_file_name;
     char *input_encoding_name;
 } GLOBAL_INFO;
+
+typedef struct {
+    char *index_name;
+    char *index_prefix;
+    enum command_id index_at_command;
+    enum command_id index_type_command;
+
+    /* content->contents is the index entry text */
+    ELEMENT *content;
+    /* content_normalized */
+    ELEMENT *command;
+    ELEMENT *node;
+    int number; /* Index of entry in containing index, 1-based. */
+    enum command_id region;
+} INDEX_ENTRY;
+
+typedef struct {
+    char *name;
+    char *prefix;
+    // int in_code;
+
+    INDEX_ENTRY *index_entries;
+    size_t index_number;
+    size_t index_space;
+} INDEX;
+
+

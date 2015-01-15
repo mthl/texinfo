@@ -271,7 +271,7 @@ sub parse_texi_file ($$)
   # to Parsetexi.pm to get the tree without doing this.
   $tree_stream = qx(./parsetexi $file_name 2>/dev/null);
 
-  my ($TREE, $LABELS);
+  my ($TREE, $LABELS, $INDEX_NAMES);
   #print "Reading tree...\n";
   eval $tree_stream;
   #print "Read tree.\n";
@@ -284,6 +284,8 @@ sub parse_texi_file ($$)
   $self->{'info'}->{'input_file_name'} = $file_name;
 
   $self->{'labels'} = $LABELS;
+
+  $self->{'index_names'} = $INDEX_NAMES;
 
   #$Data::Dumper::Purity = 1;
   #$Data::Dumper::Indent = 1;

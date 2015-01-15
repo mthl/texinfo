@@ -8,6 +8,24 @@ makeinfo -c DEBUG=1 -c TEXINFO_OUTPUT_FORMAT=parse mltitble.texi
 
 ----------- speed comparison-----------------------
 
+Parsing only
+
+time makeinfo -c TEXINFO_OUTPUT_FORMAT=parse texinfo.texi >/dev/null
+real    0m4.687s
+user    0m4.486s
+sys     0m0.054s
+
+Info output:
+time makeinfo texinfo.texi >/dev/null
+
+real    0m13.310s
+user    0m12.393s
+sys     0m0.061s
+
+Parsing is about 1/3 of the total run time.
+texinfo.texi is 835K.
+-
+
 time makeinfo -c TEXINFO_OUTPUT_FORMAT=debugtree texinfo.texi >/dev/null
 
 real    0m5.261s

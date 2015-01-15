@@ -23,6 +23,36 @@
 #include "input.h"
 #include "convert.h"
 #include "labels.h"
+#include "indices.h"
+
+/* Return a new element whose contents are the same as those of ORIGINAL,
+   but with some elements representing empty spaces removed.  Elements like 
+   these are used to represent some of the "content" extra keys. */
+ELEMENT *
+trim_spaces_comment_from_content (ELEMENT *original)
+{
+  ELEMENT *trimmed;
+  int i;
+
+  trimmed = new_element (ET_NONE);
+  trimmed->parent_type = route_not_in_tree;
+  for (i = 0; i < original->contents.number; i++)
+    {
+      if (original->contents.list[i]->type
+          != ET_empty_spaces_after_command
+          && original->contents.list[i]->type != ET_spaces_at_end)
+        {
+          /* FIXME: Is this safe to serialize? */
+          /* For example, if there are extra keys in the elements under each 
+             argument?  They may not be set in a copy.
+             Hopefully there aren't many extra keys set on commands in 
+             node names. */
+          add_to_element_contents (trimmed, original->contents.list[i]);
+        }
+    }
+
+  return trimmed;
+}
 
 /* 2610 */
 /* Actions to be taken when a whole line of input has been processed */
@@ -252,9 +282,7 @@ end_line (ELEMENT *current)
 
       if (arg_type > 0)
         {
-          /* arg_type is number of args */
-          // parse_line_command_args
-          // save in 'misc_args' extra key
+          //parse_line_command_args (current);
         }
       else if (arg_type == MISC_text) /* 3118 */
         {
@@ -344,25 +372,8 @@ end_line (ELEMENT *current)
              in 'nodes_manuals'. */
           //parse_node_manual ();
           
-          /* In Perl a copy of the argument list is taken and the empty space 
-             arguments are removed with trim_spaces_comment_from_content. */
           first_arg = current->args.list[0];
-          arg = new_element (ET_NONE);
-          arg->parent_type = route_not_in_tree;
-          for (i = 0; i < first_arg->contents.number; i++)
-            {
-              if (first_arg->contents.list[i]->type
-                    != ET_empty_spaces_after_command
-                  && first_arg->contents.list[i]->type != ET_spaces_at_end)
-                {
-                  /* FIXME: Is this safe to serialize? */
-                  /* For example, if there are extra keys in the elements under 
-                     each argument?  They may not be set in a copy.
-                     Hopefully there aren't many extra keys set on commands in 
-                     node names. */
-                  add_to_element_contents (arg, first_arg->contents.list[i]);
-                }
-            }
+          arg = trim_spaces_comment_from_content (first_arg);
           add_extra_key_contents (current, "node_content", arg);
 
           /* Also set 'normalized' here.  The normalized labels are actually 
@@ -384,7 +395,31 @@ end_line (ELEMENT *current)
         }
       else
         {
+          ELEMENT *misc_args;
+
+          misc_args = trim_spaces_comment_from_content 
+            (last_args_child(current));
+
+          add_extra_key_misc_args (current, "misc_args", misc_args);
+
           /* All the other "line" commands" */
+          // 3273 - warning about missing argument
+
+          /* Index commands */
+          if (command_flags(current) & CF_index_entry_command)
+            {
+              /* TODO: Trim space elements from contents.  Note we aren't
+                 using the misc_args variable yet, because we have not
+                 got a way to serialize a pointer from the index information
+                 to a detached extra key that is not part of the main tree. */
+              ELEMENT *contents;
+              contents = last_args_child(current);
+
+              // 3274
+              enter_index_entry (current->cmd, current->cmd, current,
+                                 contents);
+              current->type = ET_index_entry_command;
+            }
         }
 
       current = current->parent; /* 3285 */

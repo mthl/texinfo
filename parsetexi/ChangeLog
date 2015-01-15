@@ -1,4 +1,38 @@
-2014-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	First support of outputting an index.
+
+	* extra.c (add_extra_key_misc_args, add_extra_key_index_entry): 
+	New functions.
+	* tree_types.h (INDEX, INDEX_ENTRY): New types.
+	* commands.h (CF_index_entry_command): New flag.
+
+	* indices.c (associate_command_to_index, index_of_command): New
+	functions.
+	(init_index_commands): Call associate_command_to_index for each 
+	index command.
+	(enter_index_entry): New function.
+
+	* end_line.c (trim_spaces_comment_from_content): New function.
+	(end_line): Call it in two places.
+	(end_line) <misc args>: Add "misc_args" extra key, and call 
+	enter_index_entry for index commands.
+
+	* dump_perl.c (dump_indices_information): New function.
+	(dump_route_to_element): Take extra argument saying which text
+	buffer to write to.
+	(dump_extra): Handle two extra types of extra key, 
+	extra_index_entry and extra_misc_args.  For extra_index_entry, 
+	dump to tree_to_indices_dump variable.
+	(dump_tree_to_perl): Call dump_indices_information, and output
+	tree_to_indices_dump afterwards.
+
+	* Parsetexi/lib/Parsetexi.pm (parse_texi_file): Set 
+	'index_names' from output of parsetexi.
+
+	* test-files/index.texi: New test file.
+
+2015-01-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	All files: Add copyright and licensing notices.
 

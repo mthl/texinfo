@@ -1,0 +1,35 @@
+@node Top
+@top Sample
+
+This manual is for Sample
+
+@menu
+* First Chapter::    The first chapter is the
+                      only chapter in this sample.
+* Index::            Complete index.
+@end menu
+
+
+@node First Chapter
+@chapter First Chapter
+
+Some index entries:
+
+@cindex One
+One
+
+@cindex Two
+Two
+
+@cindex Three
+Three
+
+@node Index
+@unnumbered Index
+
+
+@printindex cp
+
+@bye
+
+

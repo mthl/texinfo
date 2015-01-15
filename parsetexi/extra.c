@@ -60,6 +60,20 @@ add_extra_key_text (ELEMENT *e, char *key, ELEMENT *value)
   e->extra[e->extra_number - 1].type = extra_element_text;
 }
 
+void
+add_extra_key_index_entry (ELEMENT *e, char *key, INDEX_ENTRY *value)
+{
+  add_extra_key (e, key, (ELEMENT *) value);
+  e->extra[e->extra_number - 1].type = extra_index_entry;
+}
+
+void
+add_extra_key_misc_args (ELEMENT *e, char *key, ELEMENT *value)
+{
+  add_extra_key (e, key, value);
+  e->extra[e->extra_number - 1].type = extra_misc_args;
+}
+
 KEY_PAIR *
 lookup_extra_key (ELEMENT *e, char *key)
 {

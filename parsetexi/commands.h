@@ -72,7 +72,7 @@ void init_index_commands (void);
 #define CF_blockitem			0x08000000
 #define CF_inline			0x10000000
 #define CF_MACRO 			0x20000000
-// #define free   			0x40000000
+#define CF_index_entry_command  	0x40000000
 // #define free 			0x80000000
 
 /* Types of misc command (has CF_misc flag).  Values for COMMAND.data. */
