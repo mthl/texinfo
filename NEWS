@@ -62,6 +62,7 @@ one of the relevant sections:
 * texindex:
   . completely new implementation as a literate program using Texinfo
     and (portable) awk (called TexiWeb Jr.), thanks to Arnold Robbins.
+    (Requires gawk 4.0+ if .twjr source is modified.)
   . the -o (--output) is not supported, unless we hear of someone using it.
   . duplicated sort keys with different display texts result in one
     merged index entry, using the first display text.

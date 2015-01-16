@@ -105,6 +105,7 @@ ensure TXI_XLATE in doc/Makefile.am matches actual file list.
 
 - Official releases only:
 version number in texi2dvi, texi2pdf, txirefcard.tex.
+version and date in NEWS.
 (cd tp && ./maintain/change_perl_modules_version.sh auto)
 sync texi2html/test/ results with tp/.
 ensure building standalone modules for CPAN still works.
@@ -113,7 +114,7 @@ specially plead with bug-texinfo / beebe / compile farms to try.
 try groff.texinfo from groff source repo.
 
 - Changes to sources:
-update version in configure.ac, ChangeLog; NEWS with date if official.
+update version in configure.ac, ChangeLog.
 gnulib-tool --add-import  # for pretest
 util/srclist-txi          # for pretest
 pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
