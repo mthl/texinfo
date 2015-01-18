@@ -1,3 +1,8 @@
+2015-01-18  Karl Berry  <karl@gnu.org>
+
+	* info/t/Init-inter.inc: if mknod doesn't exist,
+	or mknod ... p fails, exit 77.
+
 2015-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-inter.inc: (findprog) Add function from util/texi2dvi.

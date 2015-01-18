@@ -16,32 +16,7 @@
 # Initialize test of interactive operation
 # This file is to be sourced, not run directly
 
-# Avoid ginfo complaining that terminal is too dumb
-TERM=vt100; export TERM
-
-FINISHEDFIFO=t/`basename $0.finished`
-
-# Create named pipes to communicate with pseudotty program
-rm -f $PIPEIN $PIPEOUT
-mknod $PIPEIN p
-mknod $PIPEOUT p
-PTY_TYPE=$PIPEOUT
-
-# We can feed input bytes into $PTY_TYPE to be passed onto ginfo.  pseudotty
-# only reads from fd 3, but opening the pipe read-write means: (i) there will
-# always be a process with it open for writing, so pseudotty will not hang when
-# opening it; and (ii) select() will never return for an end-of-file on fd 3.
-./pseudotty >$PIPEIN 3<>$PTY_TYPE &
-PTY_PID=$!
-
-# Get name of pseudo-terminal slave device
-read PTS_DEVICE <$PIPEIN
-
-# glibc can kill a running process if it detects a condition like a
-# double free.  This specifies that the message it prints when it does
-# this should be sent to stderr so it can be recorded in the test *.log
-# files.
-LIBC_FATAL_STDERR_=1; export LIBC_FATAL_STDERR
+#  we may look up whether a couple of utilities exist.
 
 # Systems which define $COMSPEC or $ComSpec use semicolons to separate
 # directories in TEXINPUTS -- except for Cygwin et al., where COMSPEC
@@ -76,6 +51,48 @@ findprog ()
   done
   return 1
 }
+
+# 
+# Avoid ginfo complaining that terminal is too dumb
+TERM=vt100; export TERM
+
+FINISHEDFIFO=t/`basename $0.finished`
+
+# Create named pipes to communicate with pseudotty program, or quit.
+rm -f $PIPEIN $PIPEOUT  # must already be defined
+if findprog mknod; then # check for mknod to give a better error msg
+  mknod $PIPEIN p
+  mknod $PIPEIN p
+  mknod $PIPEOUT p
+  PTY_TYPE=$PIPEOUT
+  #
+  if test ! -r $PIPEIN || test ! -r $PIPEOUT; then
+    echo "$0: could not mknod pipes" >&2
+    exit 77
+  fi
+  # ok, we'll proceed with the test.
+else
+  echo "$0: mknod program not found - cannot make named pipes" >&2
+  exit 77
+fi
+
+# fixme: must check for <> support.
+
+# We can feed input bytes into $PTY_TYPE to be passed onto ginfo.  pseudotty
+# only reads from fd 3, but opening the pipe read-write means: (i) there will
+# always be a process with it open for writing, so pseudotty will not hang when
+# opening it; and (ii) select() will never return for an end-of-file on fd 3.
+./pseudotty >$PIPEIN 3<>$PTY_TYPE &
+PTY_PID=$!
+
+# Get name of pseudo-terminal slave device
+read PTS_DEVICE <$PIPEIN
+
+# glibc can kill a running process if it detects a condition like a
+# double free.  This specifies that the message it prints when it does
+# this should be sent to stderr so it can be recorded in the test *.log
+# files.
+LIBC_FATAL_STDERR_=1; export LIBC_FATAL_STDERR
 
 run_ginfo ()
 {
@@ -124,6 +141,7 @@ run_ginfo ()
     echo 'pgrep program not found - cannot get PID of ginfo process' >&2
     GINFO_PID=unknown
   fi
+  #
   # If the PID is unknown, wait for a short time to wait for the program 
   # to start.  Normally this isn't needed, but on a few tests, it breaks
   # otherwise, possibly because some bytes have special meaning to the 
@@ -131,5 +149,3 @@ run_ginfo ()
   # turned off yet.
   test $GINFO_PID = unknown && sleep 1
 }
-
-
