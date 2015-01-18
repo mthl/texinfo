@@ -1,3 +1,19 @@
+2015-01-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tree_types.h (INDEX_ENTRY_REF): New type.
+	* indices.c (enter_index_entry): Create an INDEX_ENTRY_REF 
+	object and store it instead of a pointer to an INDEX_ENTRY, 
+	because the latter could be become invalid when the containing 
+	array was reallocated.
+	* extra.c (add_extra_key_index_entry): Take an INDEX_ENTRY_REF 
+	argument.
+	* indices.c (enter_index_entry): Call to 
+	add_extra_key_index_entry updated.
+	* dump_perl.c (dump_extra) <index entry>: Get stored value as an
+	INDEX_ENTRY_REF.
+
+	* parser.c (parse_texi): Always return the root of the tree.
+
 2015-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	First support of outputting an index.

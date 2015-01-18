@@ -937,6 +937,12 @@ parse_texi (ELEMENT *root_elt)
     {
       ELEMENT *dummy;
       current = close_commands (current, CM_NONE, &dummy, CM_NONE);
+
+      /* Make sure we are at the very top - we could have stopped at the "top" 
+         element, with "document_root" still to go.  (This happens if the file 
+         didn't end with "@bye".) */
+      while (current->parent)
+        current = current->parent;
     }
 
   /* Check for "unclosed stacks". */

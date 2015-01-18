@@ -65,7 +65,7 @@ void dump_tree_to_perl (ELEMENT *root);
 void add_extra_key_element (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_key_contents (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_key_text (ELEMENT *e, char *key, ELEMENT *value);
-void add_extra_key_index_entry (ELEMENT *e, char *key, INDEX_ENTRY *value);
+void add_extra_key_index_entry (ELEMENT *e, char *key, INDEX_ENTRY_REF *value);
 void add_extra_key_misc_args (ELEMENT *e, char *key, ELEMENT *value);
 KEY_PAIR *lookup_extra_key (ELEMENT *e, char *key);
 

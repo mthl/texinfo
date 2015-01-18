@@ -173,7 +173,8 @@ dump_extra (ELEMENT *e)
                  main parse tree, but in the indices_information.  It would
                  be much nicer if we could get rid of the need for this key. */
 
-              INDEX_ENTRY *value = (INDEX_ENTRY *) e->extra[i].value;
+              INDEX_ENTRY_REF *ire = (INDEX_ENTRY_REF *) e->extra[i].value;
+              INDEX_ENTRY *value = &ire->index->index_entries[ire->entry];
 
               dump_route_to_element (e, &tree_to_indices_dump);
               text_printf (&tree_to_indices_dump, "{'extra'}{'%s'} = ",

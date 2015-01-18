@@ -61,7 +61,7 @@ add_extra_key_text (ELEMENT *e, char *key, ELEMENT *value)
 }
 
 void
-add_extra_key_index_entry (ELEMENT *e, char *key, INDEX_ENTRY *value)
+add_extra_key_index_entry (ELEMENT *e, char *key, INDEX_ENTRY_REF *value)
 {
   add_extra_key (e, key, (ELEMENT *) value);
   e->extra[e->extra_number - 1].type = extra_index_entry;

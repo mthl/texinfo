@@ -52,3 +52,21 @@ real    0m3.603s
 user    0m1.805s
 sys     0m1.396s
 
+18th Jan 2015
+
+(with debugging output turned off)
+bash $time ./parsetexi texinfo.texi >/dev/null
+
+real    0m0.447s
+user    0m0.375s
+sys     0m0.051s
+
+
+(with "dump_tree_to_perl" commented out in main())
+bash $time ./parsetexi texinfo.texi           
+
+real    0m0.175s
+user    0m0.108s
+sys     0m0.053s
+
+

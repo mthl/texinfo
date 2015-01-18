@@ -98,6 +98,7 @@ enter_index_entry (enum command_id index_type_command,
 {
   INDEX *idx;
   INDEX_ENTRY *entry;
+  INDEX_ENTRY_REF *ier;
 
   idx = index_of_command (index_type_command);
   if (idx->index_number == idx->index_space)
@@ -123,6 +124,10 @@ enter_index_entry (enum command_id index_type_command,
 
   entry->number = idx->index_number;
 
-  add_extra_key_index_entry (current, "index_entry", entry);
+  ier = malloc (sizeof (INDEX_ENTRY_REF));
+  ier->index = idx;
+  ier->entry = idx->index_number - 1;
+
+  add_extra_key_index_entry (current, "index_entry", ier);
 
 }

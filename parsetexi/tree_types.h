@@ -118,4 +118,12 @@ typedef struct {
     size_t index_space;
 } INDEX;
 
+/* Used when dumping to a text stream only.  A reference to an
+   index entry, in the "index_entry" extra key of an element.
+   index->index_entries[entry] is the referred-to index entry. */
+typedef struct {
+    INDEX *index;
+    int entry;
+} INDEX_ENTRY_REF;
+
 
