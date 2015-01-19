@@ -1,6 +1,6 @@
 # Parser.pm: parse texinfo code into a tree.
 #
-# Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -7000,9 +7000,9 @@ line after C<@macro>.
 =item C<@node>
 
 The arguments are in the I<nodes_manuals> array. Each
-of the entry has a I<node_content> key for
-an array holding the corresponding content, a I<manual_content>
-if there is an associated external manual name, and I<normalized>
+of the entries is a hash with a I<node_content> key for
+an array holding the corresponding content, a I<manual_content> key
+if there is an associated external manual name, and a I<normalized>
 key for the normalized label, built as specified in the Texinfo manual
 in the B<HTML Xref> node.
 
@@ -7077,8 +7077,8 @@ appearing after the definition command without x.
 =item def_line
 
 The I<def_arg> extra key holds an array reference corresponding to
-the parsed definition line argument.  Each of the the element of the
-array is a two element array reference.  The first element is the type
+the parsed definition line argument.  Each of the elements of the
+array is a two-element array reference.  The first element is the type,
 which could be I<spaces> for a space, types specific of the 
 definition, like I<category>, I<name>, I<class>, I<type>, and, at the
 end, a mix of I<arg>, I<typearg>, I<delimiter> depending on the definition.
@@ -7175,8 +7175,9 @@ I<end> holds the string ending the definfoenclose.
 
 The I<menu_entry_description> and I<menu_entry_name> keys
 are associated with the corresponding tree elements. The
-I<menu_entry_node> holds the parsed node entry, like
-the one appearing in the I<nodes_manuals> array for C<@node>.
+I<menu_entry_node> value is a hash with information about the parsed
+node entry; its keys are the same as those appearing in the
+elements of the I<nodes_manuals> array for C<@node>.
 
 =item empty_line_after_command
 
@@ -7199,6 +7200,19 @@ always the format or flag name, so, if set, it should be 1 or 2 for
 C<@inlinefmtifelse>, and 1 for other commands.
 
 =back
+
+=head2 Other information set by the parser
+
+The parser creates an array of nodes and stores this in the
+I<nodes> key of the parser object.
+
+Each element in the tree corresponding to a node contaning a menu
+has a I<menus> key which refers to an array of references to menu
+elements occuring in the node.
+
+These are both used by the C<Texinfo::Structuring> module.
+
+
 
 =head1 SEE ALSO
 
@@ -7223,7 +7237,7 @@ Patrice Dumas, E<lt>pertusus@free.frE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
