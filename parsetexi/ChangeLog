@@ -1,3 +1,11 @@
+2015-01-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* command_data.awk: Output #define's into generated 
+	commands_id.h file to give more readable alternatives for the 
+	CM_hex_?? enum command_id values.
+	* convert.c (convert_to_normalized): More complete 
+	implementation.
+
 2015-01-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tree_types.h (INDEX_ENTRY_REF): New type.
