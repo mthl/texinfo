@@ -49,6 +49,20 @@ dump_indent (void)
     printf (" ");
 }
 
+/* Ouput S escaping single quotes and backslashes, so that
+   Perl can read it in when it is surrounded by single quotes.  */
+void
+dump_string (char *s)
+{
+ while (*s)
+   {
+     if (*s == '\''
+       || *s == '\\')
+       putchar ('\\');
+     putchar (*s++);
+   }
+}
+
 void
 dump_args (ELEMENT *e)
 {
@@ -164,8 +178,6 @@ dump_extra (ELEMENT *e)
     {
       for (i = 0; i < e->extra_number; i++)
         {
-          dump_indent ();
-
           if (e->extra[i].type == extra_index_entry)
             {
               /* A "index_entry" extra key on a command defining an index
@@ -183,8 +195,13 @@ dump_extra (ELEMENT *e)
                            "$INDEX_NAMES->{'%s'}{'index_entries'}[%d];\n",
                            value->index_name, value->number - 1);
               /* value->number is 1-based so we needed to subtract 1. */
+
+              continue;
             }
-          else if (e->extra[i].type == extra_misc_args)
+
+          dump_indent ();
+
+          if (e->extra[i].type == extra_misc_args)
             {
               int j;
               /* A "misc_args" value is just an array of strings. */
@@ -193,9 +210,10 @@ dump_extra (ELEMENT *e)
                 {
                   if (e->extra[i].value->contents.list[j]->text.end > 0)
                     {
-                      /* TODO: Escape special characters. */
-                      printf ("'%s',",
-                              e->extra[i].value->contents.list[j]->text.text);
+                      printf("'");
+                      dump_string(e->extra[i].value->contents.list[j]
+                                    ->text.text);
+                      printf("',");
                     }
                   /* else an error? */
                 }
@@ -288,18 +306,6 @@ dump_line_nr (ELEMENT *e)
   indent -= 2;
   dump_indent ();
   printf ("},\n");
-}
-
-void
-dump_string (char *s)
-{
-     while (*s)
-       {
-         if (*s == '\''
-           || *s == '\\')
-           putchar ('\\');
-         putchar (*s++);
-       }
 }
 
 void
