@@ -6799,13 +6799,11 @@ A I<menu_entry> holds a full menu entry, like
 The different elements of the menu entry are directly in the 
 I<menu_entry> C<args> array reference.
 
-I<menu_entry_leading_text> holds the star and following spaces.  
-I<menu_entry_name> is the menu entry name (if present). 
-I<menu_entry_node> is a hash with the same keys as an element of a 
-I<nodes_manuals> array and has information about the node given in the 
-menu entry.  I<menu_entry_separator> holds the text after the node and 
-before the description, in most case C<::   >.  Lastly, 
-I<menu_entry_description> is for the description.
+I<menu_entry_leading_text> holds the star and following spaces. 
+I<menu_entry_name> is the menu entry name (if present), I<menu_entry_node>
+corresponds to the node in the menu entry, I<menu_entry_separator> holds
+the text after the node and before the description, in most case
+C<::   >.  Last I<menu_entry_description> is for the description.
 
 =item menu_comment
 
