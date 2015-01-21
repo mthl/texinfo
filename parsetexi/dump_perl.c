@@ -161,6 +161,35 @@ dump_fixup_line (ELEMENT *e, int i)
   text_append (&fixup_dump, ";\n");
 }
 
+static void
+dump_node_spec (NODE_SPEC_EXTRA *value)
+{
+  printf ("{\n");
+  indent += 2;
+  if (value->manual_content)
+    {
+      dump_indent ();
+      printf ("'manual_content' => ");
+      dump_contents (value->manual_content);
+    }
+  if (value->node_content)
+    {
+      dump_indent ();
+      printf ("'node_content' => ");
+      dump_contents (value->node_content);
+    }
+  if (value->normalized)
+    {
+      dump_indent ();
+      printf ("'normalized' => '");
+      dump_string (value->normalized);
+      printf ("'\n");
+    }
+  indent -= 2;
+  dump_indent ();
+  printf ("},\n");
+}
+
 /* Dump a skeleton for the 'extra' key.  For each key, if the referenced 
    element has been dumped yet and we know its, append a line filling in the 
    value of the key to FIXUP_DUMP.  Otherwise, record the reference in the 
@@ -217,6 +246,27 @@ dump_extra (ELEMENT *e)
                     }
                   /* else an error? */
                 }
+              printf ("],\n");
+            }
+          else if (e->extra[i].type == extra_node_spec)
+            {
+              NODE_SPEC_EXTRA *value = (NODE_SPEC_EXTRA *) e->extra[i].value;
+
+              printf ("'%s' => ", e->extra[i].key);
+              dump_node_spec (value);
+            }
+          else if (e->extra[i].type == extra_node_spec_array)
+            {
+              NODE_SPEC_EXTRA **array = (NODE_SPEC_EXTRA **) e->extra[i].value;
+
+              printf ("'%s' => [\n", e->extra[i].key);
+              while (*array)
+                {
+                  dump_indent ();
+                  dump_node_spec (*array);
+                  array++;
+                }
+              dump_indent ();
               printf ("],\n");
             }
           else if (e->extra[i].value->parent_type == route_not_in_tree)

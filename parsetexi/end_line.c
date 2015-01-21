@@ -25,6 +25,8 @@
 #include "labels.h"
 #include "indices.h"
 
+// 5467, also in Common.pm 1334
+// TODO: Check the behaviour here is the same
 /* Return a new element whose contents are the same as those of ORIGINAL,
    but with some elements representing empty spaces removed.  Elements like 
    these are used to represent some of the "content" extra keys. */
@@ -52,6 +54,119 @@ trim_spaces_comment_from_content (ELEMENT *original)
     }
 
   return trimmed;
+}
+
+// 2257
+/* NODE->contents is the Texinfo for the specification of a node.  This
+   function sets three fields on the returned object:
+
+     manual_content - Texinfo tree for a manual name extracted from the
+                      node specification.
+     node_content - Texinfo tree for the node name on its own
+     normalized - a string with the node name after HTML node name
+                  normalization is applied
+
+   Objects returned from this function are used as an 'extra' key in a
+   few places: the elements of a 'nodes_manuals' array (itself an extra key),
+   the 'menu_entry_node' key on a 'menu_entry' element (not to be confused
+   with an ET_menu_entry_node element, which occurs in the args of a 
+   'menu_entry' element), and in the 'node_argument' key of a cross-reference 
+   command (like @xref). */
+NODE_SPEC_EXTRA *
+parse_node_manual (ELEMENT *node)
+{
+  NODE_SPEC_EXTRA *result;
+  ELEMENT *trimmed;
+  ELEMENT *manual;
+
+  result = malloc (sizeof (NODE_SPEC_EXTRA));
+  result->manual_content = 0;
+  trimmed = trim_spaces_comment_from_content (node);
+
+  /* If the content starts with a '(', try to get a manual name. */
+  if (trimmed->contents.number > 0 && trimmed->contents.list[0]->text.end > 0
+      && trimmed->contents.list[0]->text.text[0] == '(')
+    {
+      /* The Perl code here accounts for matching parentheses in the manual 
+         name.  The Info reader also handles this, for whatever reason. */
+
+      ELEMENT *e;
+      char *closing_bracket;
+
+      manual = new_element (ET_NONE);
+
+      /* If the first contents element is "(" alone, discard it, otherwise
+         remove the leading "(". */
+      if (trimmed->contents.list[0]->text.end > 1)
+        {
+          /* Replace the first element with another element with the leading
+             "(" removed. */
+          ELEMENT *first;
+          first = malloc (sizeof (ELEMENT));
+          memcpy (first, trimmed->contents.list[0], sizeof (ELEMENT));
+          first->text.text = malloc (first->text.space);
+          memcpy (first->text.text,
+                  trimmed->contents.list[0]->text.text + 1,
+                  trimmed->contents.list[0]->text.end - 1);
+          first->text.end--;
+          trimmed->contents.list[0] = first;
+        }
+      else
+        {
+          (void) remove_from_contents (trimmed, 0);
+          /* Note the removed element still is present in the original
+             'node' argument. */
+        }
+
+      while (trimmed->contents.number > 0)
+        {
+          ELEMENT *e = remove_from_contents (trimmed, 0);
+
+          if (e->text.end == 0
+              || !(closing_bracket = strchr (e->text.text, ')')))
+            {
+              /* Put this element in the manual contents. */
+              add_to_element_contents (manual, e);
+            }
+          else /* ')' in text - possible end of filename component */
+            {
+              /* Split the element in two, putting the part before the "("
+                 in the manual name, leaving the part afterwards for the
+                 node name. */
+              ELEMENT *before, *after;
+
+              before = new_element (ET_NONE);
+              text_append_n (&before->text, e->text.text,
+                             closing_bracket - e->text.text);
+              add_to_element_contents (manual, before);
+
+              /* Skip ')' and any following whitespace.
+                 Note that we don't manage to skip any multibyte
+                 UTF-8 space characters here. */
+              closing_bracket++;
+              closing_bracket += strspn (closing_bracket, whitespace_chars);
+              if (*closing_bracket)
+                {
+                  after = new_element (ET_NONE);
+                  text_append_n (&after->text, closing_bracket,
+                                 e->text.text + e->text.end - closing_bracket);
+
+                  insert_into_contents (trimmed, after, 0);
+                }
+              break;
+            }
+        }
+
+      result->manual_content = manual;
+    }
+
+  /* If anything left, it is the node name. */
+  if (trimmed->contents.number > 0)
+    {
+      result->node_content = trimmed;
+      result->normalized = convert_to_normalized (trimmed);
+    }
+  return result;
 }
 
 /* 2610 */
@@ -365,16 +480,18 @@ end_line (ELEMENT *current)
           int i;
           ELEMENT *arg;
           ELEMENT *first_arg;
-          /* Construct 'nodes_manuals' array.  This would be an 'extra' 
-             reference to an array that doesn't exist anywhere else. */
 
-          /* This sets the 'node_content' and 'normalized' keys on each element 
-             in 'nodes_manuals'. */
-          //parse_node_manual ();
-          
+          NODE_SPEC_EXTRA **nodes_manuals;
+
+          /* Construct 'nodes_manuals' array.  This is an 'extra' reference to 
+             an array that doesn't exist anywhere else. */
+          nodes_manuals = malloc (sizeof (NODE_SPEC_EXTRA *) * 2);
+          nodes_manuals[1] = 0;
+
           first_arg = current->args.list[0];
-          arg = trim_spaces_comment_from_content (first_arg);
-          add_extra_key_contents (current, "node_content", arg);
+          nodes_manuals[0] = parse_node_manual (first_arg);
+          add_extra_node_spec_array (current, "nodes_manuals", nodes_manuals);
+
 
           /* Also set 'normalized' here.  The normalized labels are actually 
              the keys of "labels_information($parser)". */
@@ -384,9 +501,13 @@ end_line (ELEMENT *current)
             is not empty (_check_empty_node).  */
           //check_node_label ();
 
+          add_extra_key_contents (current, "node_content",
+                                  nodes_manuals[0]->node_content);
+
           /* This sets 'node_content' and 'normalized' on the node, among
-             other things (which were already set in parse_node_manual). */
-          register_label (current, arg);
+             other things (which were already set in parse_node_manual).
+             Are we normalizing the name twice? */
+          register_label (current, nodes_manuals[0]->node_content);
 
           current_node = current;
         }

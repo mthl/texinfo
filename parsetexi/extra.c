@@ -74,6 +74,22 @@ add_extra_key_misc_args (ELEMENT *e, char *key, ELEMENT *value)
   e->extra[e->extra_number - 1].type = extra_misc_args;
 }
 
+void
+add_extra_node_spec (ELEMENT *e, char *key, NODE_SPEC_EXTRA *value)
+{
+  add_extra_key (e, key, (ELEMENT *) value);
+  e->extra[e->extra_number - 1].type = extra_node_spec;
+}
+
+/* Used for 'node_manuals' array for the arguments given on a
+   @node line.  Argument is a null-terminated array of pointers. */
+void
+add_extra_node_spec_array (ELEMENT *e, char *key, NODE_SPEC_EXTRA **value)
+{
+  add_extra_key (e, key, (ELEMENT *) value);
+  e->extra[e->extra_number - 1].type = extra_node_spec_array;
+}
+
 KEY_PAIR *
 lookup_extra_key (ELEMENT *e, char *key)
 {

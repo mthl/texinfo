@@ -20,7 +20,7 @@
 
 typedef struct TEXT {
     char *text;
-    size_t space;
+    size_t space; /* Allocated bytes in 'text', including terminating null. */
     size_t end;
 } TEXT;
 
@@ -29,7 +29,9 @@ enum extra_type {
     extra_element_contents,
     extra_element_text,
     extra_index_entry,
-    extra_misc_args
+    extra_misc_args,
+    extra_node_spec,
+    extra_node_spec_array
 };
 
 typedef struct KEY_PAIR {
@@ -126,4 +128,10 @@ typedef struct {
     int entry;
 } INDEX_ENTRY_REF;
 
+/* See parse_node_manual function. */
+typedef struct {
+    ELEMENT *manual_content;
+    ELEMENT *node_content;
+    char *normalized;
+} NODE_SPEC_EXTRA;
 

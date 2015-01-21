@@ -18,6 +18,7 @@ ELEMENT *new_element (enum element_type type);
 void add_to_element_contents (ELEMENT *parent, ELEMENT *e);
 void add_to_element_args (ELEMENT *parent, ELEMENT *e);
 void insert_into_contents (ELEMENT *parent, ELEMENT *e, int where);
+ELEMENT *remove_from_contents (ELEMENT *parent, int where);
 ELEMENT *last_args_child (ELEMENT *current);
 ELEMENT *last_contents_child (ELEMENT *current);
 ELEMENT *pop_element_from_args (ELEMENT *parent);

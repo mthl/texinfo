@@ -1,3 +1,28 @@
+2015-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tree_types.h (enum extra_type): New values 'extra_node_spec',
+	'extra_node_spec_array'.
+	(NODE_SPEC_EXTRA): New type.
+	* extra.c (add_extra_node_spec, add_extra_node_spec_array): New
+	functions.
+	* dump_perl.c (dump_extra): Output these two new types of extra 
+	key.
+
+	* end_line.c (parse_node_manual): New function.
+
+	* menus.c (register_extra_menu_entry_information): Call 
+	parse_node_manual and call add_extra_node_spec with the result.
+	* end_line.c (end_line) <@node>: Create 'nodes_manuals' array 
+	and call add_extra_node_spec_array. 
+
+	* Parsetexi/lib/Parsetexi.pm (_find_menus_of_node): Don't set
+	any of the 'menu_entry_node' values.
+	(_complete_node_list): Don't set 'node_content' on any of the 
+	'nodes_manuals' entries.  Set 'normalized' on each node from
+	the first 'nodes_manuals' entry.
+
+	* tree.c (remove_from_contents): New function.
+
 2015-01-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* dump_perl.c (dump_extra) <extra_index_entry>: Don't output

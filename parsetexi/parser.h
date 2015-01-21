@@ -16,6 +16,7 @@ ELEMENT *close_commands (ELEMENT *current, enum command_id closed_command,
                          ELEMENT **closed_element, enum command_id);
 
 /* In end_line.c */
+NODE_SPEC_EXTRA *parse_node_manual (ELEMENT *node);
 ELEMENT *end_line (ELEMENT *current);
 
 /* In debug.c */
@@ -67,6 +68,8 @@ void add_extra_key_contents (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_key_text (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_key_index_entry (ELEMENT *e, char *key, INDEX_ENTRY_REF *value);
 void add_extra_key_misc_args (ELEMENT *e, char *key, ELEMENT *value);
+void add_extra_node_spec (ELEMENT *e, char *key, NODE_SPEC_EXTRA *value);
+void add_extra_node_spec_array (ELEMENT *, char *, NODE_SPEC_EXTRA **value);
 KEY_PAIR *lookup_extra_key (ELEMENT *e, char *key);
 
 /* In menus.c */

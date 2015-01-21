@@ -105,6 +105,25 @@ insert_into_contents (ELEMENT *parent, ELEMENT *e, int where)
   list->number++;
 }
 
+ELEMENT *
+remove_from_contents (ELEMENT *parent, int where)
+{
+  ELEMENT_LIST *list = &parent->contents;
+  ELEMENT *removed;
+
+  if (where < 0)
+    where = list->number + where;
+
+  if (where < 0 || where > list->number)
+    abort ();
+
+  removed = list->list[where];
+  memmove (&list->list[where], &list->list[where + 1],
+           (list->number - (where+1)) * sizeof (ELEMENT));
+  list->number--;
+  return removed;
+}
+
 
 ELEMENT *
 pop_element_from_args (ELEMENT *parent)
