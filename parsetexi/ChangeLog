@@ -1,3 +1,10 @@
+2015-01-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* parser.c (big_loop) <reading @ command>: Don't advance the 
+	line pointer until we are sure we want to process the command
+	name that was just read (and not, for example, do stuff with
+	menus).
+
 2015-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tree_types.h (enum extra_type): New values 'extra_node_spec',

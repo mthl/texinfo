@@ -516,6 +516,7 @@ big_loop (ELEMENT **current_inout, char **line_inout)
 {
   ELEMENT *current = *current_inout;
   char *line = *line_inout;
+  char *line_after_command;
   int retval = 1; /* Return value of function */
   enum command_id end_cmd;
 
@@ -632,7 +633,7 @@ big_loop (ELEMENT **current_inout, char **line_inout)
           retval = 0; /* 3844 */
           goto funexit;
         }
-    } /* BLOCK_raw or (ignored) BLOCK_conditional 3897 */
+    } /********* BLOCK_raw or (ignored) BLOCK_conditional 3897 *************/
 
 #if 0
   /* Check if parent element is 'verb' */
@@ -645,12 +646,12 @@ big_loop (ELEMENT **current_inout, char **line_inout)
      is an @include. */
 #endif
 
-  /* !!! In the Perl version the command name is read separately for macros.
-     Thus the !cmd_id conditions. */
   if (*line == '@')
     {
-      line++; /* FIXME: DO this in read_command_name instead? */
-      command = read_command_name (&line);
+      line_after_command = line;
+
+      line_after_command++;
+      command = read_command_name (&line_after_command);
       cmd_id = lookup_command (command);
       if (cmd_id == 0)
         {
@@ -663,6 +664,7 @@ big_loop (ELEMENT **current_inout, char **line_inout)
      may lead to changes in the line. */
   if (cmd_id && (command_data(cmd_id).flags & CF_MACRO)) // 3894
     {
+      line = line_after_command;
       current = handle_macro (current, &line, cmd_id);
     }
 
@@ -696,24 +698,14 @@ big_loop (ELEMENT **current_inout, char **line_inout)
     }
   else if (handle_menu (&current, &line))
     {
-      ; /* Nothing. */
+      ; /* Nothing - everything was done in handle_menu. */
     }
-
-#if 0
-
-  /* Menu entry "* ...". */
-  else if (!cmd_id && ...)
-    {
-    }
-
-  /* various parsing of menus. */
-
-#endif
 
   /* line 4161 */
   /* Any other @-command. */
   else if (cmd_id)
     {
+      line = line_after_command;
       debug ("COMMAND %s", command);
 
 #if 0

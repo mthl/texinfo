@@ -171,7 +171,8 @@ handle_menu (ELEMENT **current_inout, char **line_inout)
       destroy_element (pop_element_from_contents (current));
     }
   // 4122
-  /* After a separator in a menu. */
+  /* After a separator in a menu (which would have been added in
+     handle_separator in separator.c). */
   else if (current->args.number > 0
            && last_args_child (current)->type == ET_menu_entry_separator)
     {
