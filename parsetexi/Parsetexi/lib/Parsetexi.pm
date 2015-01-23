@@ -109,16 +109,17 @@ my %parser_default_configuration =
 # Stub for Texinfo::Parser::parser (line 574)
 sub parser (;$$)
 {
-  # None of these are implemented yet.
   my %parser_blanks = (
     'labels' => {},
-    'floats' => {},
-    'internal_references' => [],
     'extra' => {},
     'info' => {},
     'index_names' => {},
     'merged_indices' => {},
     'nodes' => [],
+
+    # These aren't implemented yet.
+    'floats' => {},
+    'internal_references' => [],
 
     # Not used but present in case we pass the object into 
     # Texinfo::Parser.

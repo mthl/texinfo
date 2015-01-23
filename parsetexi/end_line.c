@@ -591,7 +591,7 @@ end_line (ELEMENT *current)
 
                   /* Check if argument is a block Texinfo command. */
                   end_id = lookup_command (end_command);
-                  if (end_id == -1 || !(command_data(end_id).flags & CF_block))
+                  if (end_id == 0 || !(command_data(end_id).flags & CF_block))
                     {
                       /* error - unknown @end */
                     }
