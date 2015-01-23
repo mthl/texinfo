@@ -7125,7 +7125,7 @@ The I<item_number> extra key holds the number of this item.
 
 =item C<@item> and C<@tab> in C<@multitable>
 
-The I<cell_count> index key holds the index of the column of
+The I<cell_number> index key holds the index of the column of
 the cell.
 
 =item row

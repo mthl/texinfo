@@ -1,3 +1,8 @@
+2015-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (documentation for multitable): Change 
+	'cell_count' to 'cell_number'.
+
 2015-01-22  Karl Berry  <karl@gnu.org>
 
 	* info/t/resize-in-completions.sh: reword msg to avoid
