@@ -1,3 +1,8 @@
+2015-01-22  Karl Berry  <karl@gnu.org>
+
+	* info/t/resize-in-completions.sh: reword msg to avoid
+	backslashed ', just in case.
+
 2015-01-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (Module documentation section): Tweak
