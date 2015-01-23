@@ -9,11 +9,7 @@
 #include "../tree.h"
 #include "../api.h"
 
-#include "const-c.inc"
-
 MODULE = Parsetexi		PACKAGE = Parsetexi		
-
-INCLUDE: const-xs.inc
 
 TYPEMAP: <<END
 ELEMENT *   T_UV
