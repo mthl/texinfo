@@ -76,7 +76,7 @@ BEGIN {
     print "#define CM_hex_20 CM_SPACE"
     print "#define CM_hex_21 CM_EXCLAMATION_MARK"
     print "#define CM_hex_22 CM_POUND_SIGN"
-    print "#define CM_hex_27 CM_BACKQUOTE"
+    print "#define CM_hex_27 CM_APOSTROPHE"
     print "#define CM_hex_2a CM_ASTERISK"
     print "#define CM_hex_2c CM_COMMA"
     print "#define CM_hex_2d CM_HYPHEN"

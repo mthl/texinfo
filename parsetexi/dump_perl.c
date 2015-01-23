@@ -269,6 +269,14 @@ dump_extra (ELEMENT *e)
               dump_indent ();
               printf ("],\n");
             }
+          else if (e->extra[i].type == extra_string)
+            {
+              char *value = (char *) e->extra[i].value;
+
+              printf ("'%s' => '", e->extra[i].key);
+              dump_string (value);
+              printf ("',\n");
+            }
           else if (e->extra[i].value->parent_type == route_not_in_tree)
             {
               switch (e->extra[i].type)

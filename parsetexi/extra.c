@@ -90,6 +90,13 @@ add_extra_node_spec_array (ELEMENT *e, char *key, NODE_SPEC_EXTRA **value)
   e->extra[e->extra_number - 1].type = extra_node_spec_array;
 }
 
+void
+add_extra_string (ELEMENT *e, char *key, char *value)
+{
+  add_extra_key (e, key, (ELEMENT *) value);
+  e->extra[e->extra_number - 1].type = extra_string;
+}
+
 KEY_PAIR *
 lookup_extra_key (ELEMENT *e, char *key)
 {

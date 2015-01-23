@@ -56,6 +56,117 @@ trim_spaces_comment_from_content (ELEMENT *original)
   return trimmed;
 }
 
+// 5475
+ELEMENT *
+parse_line_command_args (ELEMENT *line_command)
+{
+  ELEMENT *line_args;
+  ELEMENT *arg = line_command->args.list[0];
+  ELEMENT *argarg = 0;
+  enum command_id command = line_command->cmd;
+  char *line;
+  int i;
+
+  line_args = new_element (ET_NONE);
+
+  i = 0;
+  while (i < arg->contents.number)
+    {
+      /* TODO: Ignore all the elements checked in 
+         trim_spaces_comment_from_content. */
+
+      if (contents_child_by_index(arg, i)->type
+            == ET_empty_spaces_after_command
+          || contents_child_by_index(arg, i)->type == ET_spaces_at_end)
+        {
+          i++;
+          continue;
+        }
+      if (!argarg)
+        {
+          argarg = contents_child_by_index(arg, i);
+          i++;
+          continue;
+        }
+      else
+        {
+          /* Error - too many arguments. */
+          abort ();
+        }
+    }
+  if (!argarg)
+    {
+      abort();
+    }
+
+  if (argarg->text.end == 0)
+    abort ();
+
+  command = line_command->cmd;
+  line = argarg->text.text;
+
+  switch (command)
+    {
+    case CM_alias:
+    case CM_definfoenclose:
+    case CM_columnfractions:
+      {
+        ELEMENT *new;
+        char *p = line, *q;
+        while (1)
+          {
+            p += strspn (p, whitespace_chars);
+            if (!*p)
+              break;
+            q = strpbrk (p, whitespace_chars);
+            if (!q)
+              q = p + strlen (p);
+            new = new_element (ET_NONE);
+            text_append_n (&new->text, p, q - p);
+            p = q;
+            add_to_element_contents (line_args, new);
+          }
+
+      }
+    case CM_sp:
+    case CM_defindex:
+    case CM_defcodeindex:
+    case CM_synindex:
+    case CM_syncodeindex:
+    case CM_printindex:
+    case CM_everyheadingmarks:
+    case CM_everyfootingmarks:
+    case CM_evenheadingmarks:
+    case CM_oddheadingmarks:
+    case CM_evenfootingmarks:
+    case CM_oddfootingmarks:
+    case CM_fonttextsize:
+    case CM_footnotestyle:
+    case CM_setchapternewpage:
+    case CM_need:
+    case CM_paragraphindent:
+    case CM_firstparagraphindent:
+    case CM_exampleindent:
+      {
+      }
+    case CM_frenchspacing:
+    case CM_xrefautomaticsectiontitle:
+    case CM_codequoteundirected:
+    case CM_codequotebacktick:
+    case CM_deftypefnnewline:
+      {
+        /* Argument is either "on" or "off". */
+      }
+    case CM_kbdinputstyle:
+    case CM_allowcodebreaks:
+    case CM_urefbreakstyle:
+    case CM_headings:
+    default:
+      ;
+    }
+  return line_args;
+}
+
 // 2257
 /* NODE->contents is the Texinfo for the specification of a node.  This
    function sets three fields on the returned object:
@@ -286,8 +397,50 @@ end_line (ELEMENT *current)
       // 2881
       if (current->parent->cmd == CM_multitable)
         {
-          /* Parse prototype row */
-          // But not @columnfractions, I assume?
+          /* Parse prototype row for a @multitable.  Handling
+             of @columnfractions is done elsewhere. */
+
+          /* TODO: Need to set both 'prototypes' and 'prototypes_line' 
+             values.  */
+
+          int i;
+          ELEMENT *prototypes = new_element (ET_NONE);
+          prototypes->parent_type = route_not_in_tree;
+
+          for (i = 0; i < current->contents.number; i++)
+            {
+              ELEMENT *e = contents_child_by_index(current, i);
+
+              if (e->type == ET_bracketed)
+                {
+                  /* Copy and change the type of the element. */
+
+                  ELEMENT *new;
+                  new = malloc (sizeof (ELEMENT));
+                  memcpy (new, e, sizeof (ELEMENT));
+                  new->type = ET_bracketed_multitable_prototype;
+                  add_to_element_contents (prototypes, new);
+                }
+              else if (e->text.end > 0)
+                {
+                  /* TODO: Split the text up by whitespace. */
+
+                  if (e->text.text[strspn (e->text.text, whitespace_chars)])
+                    {
+                      ELEMENT *new;
+                      new = malloc (sizeof (ELEMENT));
+                      memcpy (new, e, sizeof (ELEMENT));
+                      new->type = ET_row_prototype;
+                      add_to_element_contents (prototypes, new);
+                    }
+                }
+              else
+                {
+                  abort (); /*TODO*/
+                }
+            }
+
+          add_extra_key_contents (current->parent, "prototypes", prototypes);
         }
 
       if (current->parent->cmd == CM_float) // 2943
@@ -312,6 +465,8 @@ end_line (ELEMENT *current)
         {
           if (current->cmd == CM_enumerate)
             {
+              /* TODO: Can have e.g. 7, "A", or "a". */
+              add_extra_string (current, "enumerate_specification", "1");
             }
           else if (item_line_command (current->cmd)) // 3002
             {
@@ -374,10 +529,12 @@ end_line (ELEMENT *current)
     {
       int cmd_id, arg_type;
       enum context c;
+      ELEMENT *misc_cmd;
 
       isolate_last_space (current, 0);
 
       current = current->parent;
+      misc_cmd = current;
       cmd_id = current->cmd;
       if (!cmd_id)
         abort ();
@@ -397,7 +554,8 @@ end_line (ELEMENT *current)
 
       if (arg_type > 0)
         {
-          //parse_line_command_args (current);
+          ELEMENT *args = parse_line_command_args (current);
+          add_extra_key_misc_args (current, "misc_args", args);
         }
       else if (arg_type == MISC_text) /* 3118 */
         {
@@ -592,11 +750,24 @@ end_line (ELEMENT *current)
       else if (cmd_id == CM_columnfractions)
         {
           ELEMENT *before_item;
-          // check if in multitable
+          KEY_PAIR *misc_args;
+
+          /* Check if in multitable. */
+          if (!current->parent || current->parent->cmd != CM_multitable)
+            {
+              abort ();
+            }
 
           // pop and check context stack
 
           current = current->parent;
+
+          if (misc_args = lookup_extra_key (misc_cmd, "misc_args"))
+            {
+              add_extra_key_misc_args (current, "columnfractions", 
+                                       misc_args->value);
+            }
+
           before_item = new_element (ET_before_item);
           add_to_element_contents (current, before_item);
           current = before_item;

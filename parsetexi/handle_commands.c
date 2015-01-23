@@ -182,6 +182,9 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                           add_to_element_contents (row, misc);
                           current = misc;
                           debug ("TAB");
+
+                          /* TODO: Keep count. */
+                          add_extra_string (current, "cell_number", "2");
                         }
                     }
                   else /* 4505 @item or @headitem */
@@ -195,6 +198,8 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                       misc->cmd = cmd_id;
                       add_to_element_contents (row, misc);
                       current = misc;
+
+                      add_extra_string (current, "cell_number", "1");
                     }
                 }
             } /* item_multitable_parent */

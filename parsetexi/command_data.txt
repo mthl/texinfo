@@ -474,18 +474,19 @@ node			root,misc		MISC_line
 top			root,misc		MISC_line
 chapter			root,misc		MISC_line
 unnumbered		root,misc		MISC_line
-chapheading		root,misc		MISC_line
+chapheading		misc			MISC_line
 appendix		root,misc		MISC_line
 section			root,misc		MISC_line
 unnumberedsec		root,misc		MISC_line
+heading			misc			MISC_line
 appendixsec		root,misc		MISC_line
 subsection		root,misc		MISC_line
 unnumberedsubsec	root,misc		MISC_line
-subheading		root,misc		MISC_line
+subheading		misc			MISC_line
 appendixsubsec		root,misc		MISC_line
 subsubsection		root,misc		MISC_line
 unnumberedsubsubsec	root,misc		MISC_line
-subsubheading		root,misc		MISC_line
+subsubheading		misc			MISC_line
 appendixsubsubsec	root,misc		MISC_line
 
 part			root,misc		MISC_line

@@ -1,3 +1,28 @@
+2015-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tree_types.h (enum extra_type): Add extra_string value.
+	* extra.c (add_extra_string): New function.
+	* dump_perl.c (dump_extra) <extra_string>: Support.
+
+	* end_line.c (parse_line_command_args): New function.
+	<CM_columnfractions>: Split argument line up by whitespace.
+
+	* end_line.c (end_line) <ET_misc_line_arg>: Call 
+	parse_line_command_args, and store result in "misc_args" key.
+	<@multitable @columnfractions>: Copy "misc_args" key into
+	"columnfractions" key.
+	<@multitable prototype line>: Set 'prototypes' extra key, 
+	copying from contents of argument container.
+
+	* handle_commands.c (handle_misc_command): Set "cell_number" 
+	extra keys for a multitable (not correctly yet).
+	* end_line.c (end_line) <CM_enumerate>: Output 
+	"enumerate_specification" key.
+
+	* command_data.txt: Add @heading.  Remove root flag from heading 
+	commands.
+	* command_data.awk: Correct output of CM_APOSTROPHE symbol.
+
 2015-01-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* parser.c (big_loop) <reading @ command>: Don't advance the 
