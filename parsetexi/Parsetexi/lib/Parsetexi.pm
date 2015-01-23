@@ -188,8 +188,21 @@ sub _add_parents ($) {
 sub _find_menus_of_node ($) {
   my $node = shift;
 
-  foreach my $child
-          (@{$node->{'extra'}{'associated_section'}->{'contents'}}) {
+  # If a sectioning command wasn't used in the node, the
+  # associated_section won't be set.  This is the case for
+  # "(texinfo)Info Format Preamble" and some other nodes in
+  # doc/texinfo.texi.  Avoid referencing it which would create
+  # it by mistake, which would cause problems in Structuring.pm.
+
+  my $contents;
+  if (defined $node->{'extra'}{'associated_section'}) {
+    $contents = $node->{'extra'}{'associated_section'}->{'contents'};
+  } else {
+    $contents = $node->{'contents'};
+  }
+    
+
+  foreach my $child (@{$contents}) {
     if ($child->{'cmdname'} and $child->{'cmdname'} eq 'menu') {
       push @{$node->{'menus'}}, $child;
       # Disable - do this in the C code now.
@@ -234,14 +247,14 @@ sub parse_texi_file ($$)
   $tree_stream = qx(./parsetexi $file_name 2>/dev/null);
 
   my ($TREE, $LABELS, $INDEX_NAMES);
-  #print "Reading tree...\n";
+  print "Reading tree...\n";
   eval $tree_stream;
-  #print "Read tree.\n";
+  print "Read tree.\n";
 	  
-  #print "Adjusting tree...\n";
+  print "Adjusting tree...\n";
   _add_parents ($TREE);
   _complete_node_list ($self, $TREE);
-  #print "Adjusted tree.\n";
+  print "Adjusted tree.\n";
 
   $self->{'info'}->{'input_file_name'} = $file_name;
 
