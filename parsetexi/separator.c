@@ -86,8 +86,9 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       else /* not context brace */
         {
           current->type = ET_brace_command_arg;
-          /* If this command takes any arguments. */
-          if (command_data(command).data > 0)
+          /* If this command takes more than one argument (why??) */
+          /* TODO: Also "simple text commands" 425 */
+          if (command_data(command).data > 1)
             {
               ELEMENT *e;
               e = new_element (ET_empty_spaces_before_argument);

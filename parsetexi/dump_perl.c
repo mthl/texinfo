@@ -468,6 +468,8 @@ dump_entries_of_index (INDEX *idx)
       dump_route_to_element (e->command, &fixup_dump);
       text_printf (&fixup_dump, ",\n");
 
+      text_printf (&fixup_dump, "'number' => %d,", e->number);
+
       if (e->content)
         {
           text_printf (&fixup_dump, "'content' => ");

@@ -124,6 +124,10 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                   debug ("ITEM CONTAINER");
                   misc = new_element (ET_NONE);
                   misc->cmd = CM_item;
+
+                  add_extra_string (misc, "item_number", "1");
+                  /* TODO: Keep count. */
+
                   add_to_element_contents (parent, misc);
                   current = misc;
                   current = begin_preformatted (current);

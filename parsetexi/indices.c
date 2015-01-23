@@ -119,6 +119,7 @@ enter_index_entry (enum command_id index_type_command,
   entry->content = content;
   //entry->content_normalized = ... ;
   entry->command = current;
+  entry->number = idx->index_number;
 
   entry->node = current_node;
 

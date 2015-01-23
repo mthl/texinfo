@@ -1,5 +1,19 @@
 2015-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* indices.c (enter_index_entry): Set 'number' field on index 
+	entry.
+	* dump_perl.c (dump_entries_of_index): Output 'number' key for 
+	index entry.
+
+	* handle_commands.c (handle_misc_command) <item of enumerate>: 
+	Set 'item_number" key (incorrectly).
+
+	* separator.c (handle_open_brace) <brace_command_arg>: Require
+	more than one parameter before adding 
+	ET_empty_spaces_before_argument.
+
+2015-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* Parsetexi/lib/Parsetexi.pm: Update a comment.
 	* end_line.c (end_line): Check return value of lookup_command 
 	correctly.
