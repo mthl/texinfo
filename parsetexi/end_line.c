@@ -280,14 +280,423 @@ parse_node_manual (ELEMENT *node)
   return result;
 }
 
+/* Actions to be taken at the end of a line that started a block that
+   has to be ended with "@end". */
+ELEMENT *
+end_line_starting_block (ELEMENT *current)
+{
+  enum context c;
+  // pop and check context_stack
+  c = pop_context ();
+  if (c != ct_line)
+    {
+      // bug
+      abort ();
+    }
+
+  // 2881
+  if (current->parent->cmd == CM_multitable)
+    {
+      /* Parse prototype row for a @multitable.  Handling
+         of @columnfractions is done elsewhere. */
+
+      /* TODO: Need to set both 'prototypes' and 'prototypes_line' 
+         values.  */
+
+      int i;
+      ELEMENT *prototypes = new_element (ET_NONE);
+      prototypes->parent_type = route_not_in_tree;
+
+      for (i = 0; i < current->contents.number; i++)
+        {
+          ELEMENT *e = contents_child_by_index(current, i);
+
+          if (e->type == ET_bracketed)
+            {
+              /* Copy and change the type of the element. */
+
+              ELEMENT *new;
+              new = malloc (sizeof (ELEMENT));
+              memcpy (new, e, sizeof (ELEMENT));
+              new->type = ET_bracketed_multitable_prototype;
+              add_to_element_contents (prototypes, new);
+            }
+          else if (e->text.end > 0)
+            {
+              /* TODO: Split the text up by whitespace. */
+
+              if (e->text.text[strspn (e->text.text, whitespace_chars)])
+                {
+                  ELEMENT *new;
+                  new = malloc (sizeof (ELEMENT));
+                  memcpy (new, e, sizeof (ELEMENT));
+                  new->type = ET_row_prototype;
+                  add_to_element_contents (prototypes, new);
+                }
+            }
+          else
+            {
+              abort (); /*TODO*/
+            }
+        }
+
+      add_extra_key_contents (current->parent, "prototypes", prototypes);
+    }
+
+  if (current->parent->cmd == CM_float) // 2943
+    {
+    }
+  current = current->parent; //2965
+
+  /* Don't consider empty argument of block @-command as argument,
+     reparent them as contents. */
+  if (current->args.list[0]->contents.number > 0
+      && current->args.list[0]->contents.list[0]->type
+         == ET_empty_line_after_command)
+    {
+      ELEMENT *e;
+      e = current->args.list[0]->contents.list[0];
+      insert_into_contents (current, e, 0);
+      // TODO: Free lists?
+      current->args.number = 0;
+    }
+
+  if (command_flags(current) & CF_blockitem) // 2981
+    {
+      if (current->cmd == CM_enumerate)
+        {
+          /* TODO: Can have e.g. 7, "A", or "a". */
+          add_extra_string (current, "enumerate_specification", "1");
+        }
+      else if (item_line_command (current->cmd)) // 3002
+        {
+          // check command_as_argument registered in 'extra', and
+          // that it accepts arguments in braces
+        }
+
+      if (current->cmd == CM_itemize) // 3019
+        {
+          // check that command_as_argument is alone on the line
+        }
+
+      // check if command_as_argument isn't an accent command
+
+      /* 3052 - if no command_as_argument given, default to @bullet for
+         @itemize, and @asis for @table. */
+
+      {
+        ELEMENT *bi = new_element (ET_before_item);
+        add_to_element_contents (current, bi);
+        current = bi;
+      }
+    } /* CF_blockitem */
+
+  // 3077
+  if (command_flags(current) & CF_menu)
+    {
+      /* Start reading a menu.  Processing will continue in
+         handle_menu in menus.c. */
+
+      ELEMENT *menu_comment = new_element (ET_menu_comment);
+      add_to_element_contents (current, menu_comment);
+      current = menu_comment;
+      debug ("MENU COMMENT OPEN");
+      push_context (ct_preformatted);
+    }
+  current = begin_preformatted (current);
+
+  return current;
+}
+
+/* Actions to be taken at the end of an argument to a line command
+   not starting a block. */
+static ELEMENT *
+end_line_misc_line (ELEMENT *current)
+{
+  enum command_id cmd_id;
+  int arg_type;
+  enum context c;
+  ELEMENT *misc_cmd;
+  char *end_command = 0;
+  enum command_id end_id;
+
+  isolate_last_space (current, 0);
+
+  current = current->parent;
+  misc_cmd = current;
+  cmd_id = current->cmd;
+  if (!cmd_id)
+    abort ();
+
+  arg_type = command_data(cmd_id).data;
+   
+  /* Check 'line' is top of the context stack */
+  c = pop_context ();
+  if (c != ct_line)
+    {
+      /* error */
+      abort ();
+    }
+
+  // 3114
+  debug ("MISC END %s", command_data(cmd_id).cmdname);
+
+  if (arg_type > 0)
+    {
+      ELEMENT *args = parse_line_command_args (current);
+      add_extra_key_misc_args (current, "misc_args", args);
+    }
+  else if (arg_type == MISC_text) /* 3118 */
+    {
+      char *text;
+     
+      /* argument string has to be parsed as Texinfo. This calls convert in 
+         Common/Text.pm on the first element of current->args. */
+      /* however, this makes it impossible to decouple the parser and 
+         output stages...  Any use of Texinfo::Convert is problematic. */
+
+      if (current->args.number > 0)
+        text = text_convert (current->args.list[0]);
+      else
+        text = "foo";
+
+      if (!strcmp (text, ""))
+        {
+          /* 3123 warning - missing argument */
+          abort ();
+        }
+      else
+        {
+          if (current->cmd == CM_end) /* 3128 */
+            {
+              char *line = text;
+
+              /* Set end_command - used below. */
+              end_command = read_command_name (&line);
+
+              /* Check argument meets format of a Texinfo command
+                 (alphanumberic character followed by alphanumeric 
+                 characters or hyphens. */
+
+              /* Check if argument is a block Texinfo command. */
+              end_id = lookup_command (end_command);
+              if (end_id == 0 || !(command_data(end_id).flags & CF_block))
+                {
+                  /* error - unknown @end */
+                }
+              else
+                {
+                  debug ("END BLOCK %s", end_command);
+                  /* 3140 Handle conditional block commands (e.g.  
+                     @ifinfo) */
+
+                  /* If we are in a non-ignored conditional, there is not
+                     an element for the block in the tree; it is recorded 
+                     in the conditional stack.  Pop it and check it is the 
+                     same as the one given in the @end line. */
+
+                  if (command_data(end_id).data == BLOCK_conditional)
+                    {
+                      if (conditional_number > 0)
+                        {
+                          enum command_id popped;
+                          popped = pop_conditional_stack ();
+                          if (popped != end_id)
+                            abort ();
+                        }
+                    }
+                }
+            }
+          else if (current->cmd == CM_include) /* 3166 */
+            {
+              debug ("Include %s", text);
+              input_push_file (text);
+            }
+          else if (current->cmd == CM_documentencoding)
+            /* 3190 */
+            {
+            }
+          else if (current->cmd == CM_documentlanguage)
+            /* 3223 */
+            {
+            }
+        }
+    }
+  else if (current->cmd == CM_node) /* 3235 */
+    {
+      int i;
+      ELEMENT *arg;
+      ELEMENT *first_arg;
+
+      NODE_SPEC_EXTRA **nodes_manuals;
+
+      /* Construct 'nodes_manuals' array.  This is an 'extra' reference to 
+         an array that doesn't exist anywhere else. */
+      nodes_manuals = malloc (sizeof (NODE_SPEC_EXTRA *) * 2);
+      nodes_manuals[1] = 0;
+
+      first_arg = current->args.list[0];
+      nodes_manuals[0] = parse_node_manual (first_arg);
+      add_extra_node_spec_array (current, "nodes_manuals", nodes_manuals);
+
+
+      /* Also set 'normalized' here.  The normalized labels are actually 
+         the keys of "labels_information($parser)". */
+
+      /*Check that the node name doesn't have a filename element for 
+        referring to an external manual (_check_internal_node), and that it 
+        is not empty (_check_empty_node).  */
+      //check_node_label ();
+
+      add_extra_key_contents (current, "node_content",
+                              nodes_manuals[0]->node_content);
+
+      /* This sets 'node_content' and 'normalized' on the node, among
+         other things (which were already set in parse_node_manual).
+         Are we normalizing the name twice? */
+      register_label (current, nodes_manuals[0]->node_content);
+
+      current_node = current;
+    }
+  else if (current->cmd == CM_listoffloats) /* 3248 */
+    {
+    }
+  else
+    {
+      ELEMENT *misc_args;
+
+      misc_args = trim_spaces_comment_from_content 
+        (last_args_child(current));
+
+      add_extra_key_misc_args (current, "misc_args", misc_args);
+
+      /* All the other "line" commands" */
+      // 3273 - warning about missing argument
+
+      /* Index commands */
+      if (command_flags(current) & CF_index_entry_command)
+        {
+          /* TODO: Trim space elements from contents.  Note we aren't
+             using the misc_args variable yet, because we have not
+             got a way to serialize a pointer from the index information
+             to a detached extra key that is not part of the main tree. */
+          ELEMENT *contents;
+          contents = last_args_child(current);
+
+          // 3274
+          enter_index_entry (current->cmd, current->cmd, current,
+                             contents);
+          current->type = ET_index_entry_command;
+        }
+    }
+
+  current = current->parent; /* 3285 */
+  if (end_command) /* Set above */
+    {
+      /* more processing of @end */
+      ELEMENT *end_elt;
+
+      debug ("END COMMAND %s", end_command);
+
+      /* Reparent the "@end" element to be a child of the block element. */
+      end_elt = pop_element_from_contents (current);
+
+      /* 3289 If not a conditional */
+      if (command_data(end_id).data != BLOCK_conditional)
+        {
+          ELEMENT *closed_command;
+          /* This closes tree elements (e.g. paragraphs) until we reach
+             end_command.  It can print an error if another block command
+             is found first. */
+          current = close_commands (current, end_id,
+                          &closed_command, 0); /* 3292 */
+          if (!closed_command)
+            abort (); // 3335
+
+          close_command_cleanup (closed_command);
+          // 3301 INLINE_INSERTCOPYING
+          add_to_element_contents (closed_command, end_elt); // 3321
+          // 3324 ET_menu_comment
+          if (close_preformatted_command (end_id))
+            current = begin_preformatted (current);
+        }
+    } /* 3340 */
+  else
+    {
+      if (close_preformatted_command (cmd_id))
+        current = begin_preformatted (current);
+    }
+
+  /* 3346 included file */
+
+  /* 3350 */
+  if (cmd_id == CM_setfilename && (current_node || current_section))
+    {
+      /* warning */
+      abort ();
+    }
+  /* 3355 columnfractions */
+  else if (cmd_id == CM_columnfractions)
+    {
+      ELEMENT *before_item;
+      KEY_PAIR *misc_args;
+
+      /* Check if in multitable. */
+      if (!current->parent || current->parent->cmd != CM_multitable)
+        {
+          abort ();
+        }
+
+      // pop and check context stack
+
+      current = current->parent;
+
+      if (misc_args = lookup_extra_key (misc_cmd, "misc_args"))
+        {
+          add_extra_key_misc_args (current, "columnfractions", 
+                                   misc_args->value);
+        }
+
+      before_item = new_element (ET_before_item);
+      add_to_element_contents (current, before_item);
+      current = before_item;
+    }
+  else if (command_data(cmd_id).flags & CF_root) /* 3380 */
+    {
+      current = last_contents_child (current);
+      
+      /* 3383 Destroy all contents (why do we do this?) */
+      while (last_contents_child (current))
+        destroy_element (pop_element_from_contents (current));
+
+      /* Set 'associated_section' extra key for a node. */
+      if (cmd_id != CM_node && cmd_id != CM_part)
+        {
+          if (current_node)
+            {
+              if (!lookup_extra_key (current_node, "associated_section"))
+                {
+                  add_extra_key_element
+                    (current_node, "associated_section", current);
+                  add_extra_key_element
+                    (current, "associated_node", current_node);
+                }
+            }
+
+          // "current parts" - 3394
+
+          current_section = current;
+        }
+    } /* 3416 */
+
+  return current;
+}
+
 /* 2610 */
 /* Actions to be taken when a whole line of input has been processed */
 ELEMENT *
 end_line (ELEMENT *current)
 {
-  char *end_command = 0;
-  enum command_id end_id;
-
   // 2621
   /* If empty line, start a new paragraph. */
   if (last_contents_child (current)
@@ -385,125 +794,7 @@ end_line (ELEMENT *current)
   /* End of a line starting a block. */
   else if (current->type == ET_block_line_arg)
     {
-      enum context c;
-      // pop and check context_stack
-      c = pop_context ();
-      if (c != ct_line)
-        {
-          // bug
-          abort ();
-        }
-
-      // 2881
-      if (current->parent->cmd == CM_multitable)
-        {
-          /* Parse prototype row for a @multitable.  Handling
-             of @columnfractions is done elsewhere. */
-
-          /* TODO: Need to set both 'prototypes' and 'prototypes_line' 
-             values.  */
-
-          int i;
-          ELEMENT *prototypes = new_element (ET_NONE);
-          prototypes->parent_type = route_not_in_tree;
-
-          for (i = 0; i < current->contents.number; i++)
-            {
-              ELEMENT *e = contents_child_by_index(current, i);
-
-              if (e->type == ET_bracketed)
-                {
-                  /* Copy and change the type of the element. */
-
-                  ELEMENT *new;
-                  new = malloc (sizeof (ELEMENT));
-                  memcpy (new, e, sizeof (ELEMENT));
-                  new->type = ET_bracketed_multitable_prototype;
-                  add_to_element_contents (prototypes, new);
-                }
-              else if (e->text.end > 0)
-                {
-                  /* TODO: Split the text up by whitespace. */
-
-                  if (e->text.text[strspn (e->text.text, whitespace_chars)])
-                    {
-                      ELEMENT *new;
-                      new = malloc (sizeof (ELEMENT));
-                      memcpy (new, e, sizeof (ELEMENT));
-                      new->type = ET_row_prototype;
-                      add_to_element_contents (prototypes, new);
-                    }
-                }
-              else
-                {
-                  abort (); /*TODO*/
-                }
-            }
-
-          add_extra_key_contents (current->parent, "prototypes", prototypes);
-        }
-
-      if (current->parent->cmd == CM_float) // 2943
-        {
-        }
-      current = current->parent; //2965
-
-      /* Don't consider empty argument of block @-command as argument,
-         reparent them as contents. */
-      if (current->args.list[0]->contents.number > 0
-          && current->args.list[0]->contents.list[0]->type
-             == ET_empty_line_after_command)
-        {
-          ELEMENT *e;
-          e = current->args.list[0]->contents.list[0];
-          insert_into_contents (current, e, 0);
-          // TODO: Free lists?
-          current->args.number = 0;
-        }
-
-      if (command_flags(current) & CF_blockitem) // 2981
-        {
-          if (current->cmd == CM_enumerate)
-            {
-              /* TODO: Can have e.g. 7, "A", or "a". */
-              add_extra_string (current, "enumerate_specification", "1");
-            }
-          else if (item_line_command (current->cmd)) // 3002
-            {
-              // check command_as_argument registered in 'extra', and
-              // that it accepts arguments in braces
-            }
-
-          if (current->cmd == CM_itemize) // 3019
-            {
-              // check that command_as_argument is alone on the line
-            }
-
-          // check if command_as_argument isn't an accent command
-
-          /* 3052 - if no command_as_argument given, default to @bullet for
-             @itemize, and @asis for @table. */
-
-          {
-            ELEMENT *bi = new_element (ET_before_item);
-            add_to_element_contents (current, bi);
-            current = bi;
-          }
-        } /* CF_blockitem */
-
-      // 3077
-      if (command_flags(current) & CF_menu)
-        {
-          /* Start reading a menu.  Processing will continue in
-             handle_menu in menus.c. */
-
-          ELEMENT *menu_comment = new_element (ET_menu_comment);
-          add_to_element_contents (current, menu_comment);
-          current = menu_comment;
-          debug ("MENU COMMENT OPEN");
-          push_context (ct_preformatted);
-        }
-      current = begin_preformatted (current);
+      current = end_line_starting_block (current);
     }
 
   /* after an "@end verbatim" 3090 */
@@ -522,283 +813,10 @@ end_line (ELEMENT *current)
 
       current = begin_preformatted (current);
     }
-
-
   /* if it's a misc line arg 3100 */
   else if (current->type == ET_misc_line_arg)
     {
-      int cmd_id, arg_type;
-      enum context c;
-      ELEMENT *misc_cmd;
-
-      isolate_last_space (current, 0);
-
-      current = current->parent;
-      misc_cmd = current;
-      cmd_id = current->cmd;
-      if (!cmd_id)
-        abort ();
-
-      arg_type = command_data(cmd_id).data;
-       
-      /* Check 'line' is top of the context stack */
-      c = pop_context ();
-      if (c != ct_line)
-        {
-          /* error */
-          abort ();
-        }
-
-      // 3114
-      debug ("MISC END %s", command_data(cmd_id).cmdname);
-
-      if (arg_type > 0)
-        {
-          ELEMENT *args = parse_line_command_args (current);
-          add_extra_key_misc_args (current, "misc_args", args);
-        }
-      else if (arg_type == MISC_text) /* 3118 */
-        {
-          char *text;
-         
-          /* argument string has to be parsed as Texinfo. This calls convert in 
-             Common/Text.pm on the first element of current->args. */
-          /* however, this makes it impossible to decouple the parser and 
-             output stages...  Any use of Texinfo::Convert is problematic. */
-
-          if (current->args.number > 0)
-            text = text_convert (current->args.list[0]);
-          else
-            text = "foo";
-
-          if (!strcmp (text, ""))
-            {
-              /* 3123 warning - missing argument */
-              abort ();
-            }
-          else
-            {
-              if (current->cmd == CM_end) /* 3128 */
-                {
-                  char *line = text;
-
-                  /* Set end_command - used below. */
-                  end_command = read_command_name (&line);
-
-                  /* Check argument meets format of a Texinfo command
-                     (alphanumberic character followed by alphanumeric 
-                     characters or hyphens. */
-
-                  /* Check if argument is a block Texinfo command. */
-                  end_id = lookup_command (end_command);
-                  if (end_id == 0 || !(command_data(end_id).flags & CF_block))
-                    {
-                      /* error - unknown @end */
-                    }
-                  else
-                    {
-                      debug ("END BLOCK %s", end_command);
-                      /* 3140 Handle conditional block commands (e.g.  
-                         @ifinfo) */
-
-                      /* If we are in a non-ignored conditional, there is not
-                         an element for the block in the tree; it is recorded 
-                         in the conditional stack.  Pop it and check it is the 
-                         same as the one given in the @end line. */
-
-                      if (command_data(end_id).data == BLOCK_conditional)
-                        {
-                          if (conditional_number > 0)
-                            {
-                              enum command_id popped;
-                              popped = pop_conditional_stack ();
-                              if (popped != end_id)
-                                abort ();
-                            }
-                        }
-                    }
-                }
-              else if (current->cmd == CM_include) /* 3166 */
-                {
-                  debug ("Include %s", text);
-                  input_push_file (text);
-                }
-              else if (current->cmd == CM_documentencoding)
-                /* 3190 */
-                {
-                }
-              else if (current->cmd == CM_documentlanguage)
-                /* 3223 */
-                {
-                }
-            }
-        }
-      else if (current->cmd == CM_node) /* 3235 */
-        {
-          int i;
-          ELEMENT *arg;
-          ELEMENT *first_arg;
-
-          NODE_SPEC_EXTRA **nodes_manuals;
-
-          /* Construct 'nodes_manuals' array.  This is an 'extra' reference to 
-             an array that doesn't exist anywhere else. */
-          nodes_manuals = malloc (sizeof (NODE_SPEC_EXTRA *) * 2);
-          nodes_manuals[1] = 0;
-
-          first_arg = current->args.list[0];
-          nodes_manuals[0] = parse_node_manual (first_arg);
-          add_extra_node_spec_array (current, "nodes_manuals", nodes_manuals);
-
-
-          /* Also set 'normalized' here.  The normalized labels are actually 
-             the keys of "labels_information($parser)". */
-
-          /*Check that the node name doesn't have a filename element for 
-            referring to an external manual (_check_internal_node), and that it 
-            is not empty (_check_empty_node).  */
-          //check_node_label ();
-
-          add_extra_key_contents (current, "node_content",
-                                  nodes_manuals[0]->node_content);
-
-          /* This sets 'node_content' and 'normalized' on the node, among
-             other things (which were already set in parse_node_manual).
-             Are we normalizing the name twice? */
-          register_label (current, nodes_manuals[0]->node_content);
-
-          current_node = current;
-        }
-      else if (current->cmd == CM_listoffloats) /* 3248 */
-        {
-        }
-      else
-        {
-          ELEMENT *misc_args;
-
-          misc_args = trim_spaces_comment_from_content 
-            (last_args_child(current));
-
-          add_extra_key_misc_args (current, "misc_args", misc_args);
-
-          /* All the other "line" commands" */
-          // 3273 - warning about missing argument
-
-          /* Index commands */
-          if (command_flags(current) & CF_index_entry_command)
-            {
-              /* TODO: Trim space elements from contents.  Note we aren't
-                 using the misc_args variable yet, because we have not
-                 got a way to serialize a pointer from the index information
-                 to a detached extra key that is not part of the main tree. */
-              ELEMENT *contents;
-              contents = last_args_child(current);
-
-              // 3274
-              enter_index_entry (current->cmd, current->cmd, current,
-                                 contents);
-              current->type = ET_index_entry_command;
-            }
-        }
-
-      current = current->parent; /* 3285 */
-      if (end_command) /* Set above */
-        {
-          /* more processing of @end */
-          ELEMENT *end_elt;
-
-          debug ("END COMMAND %s", end_command);
-
-          /* Reparent the "@end" element to be a child of the block element. */
-          end_elt = pop_element_from_contents (current);
-
-          /* 3289 If not a conditional */
-          if (command_data(end_id).data != BLOCK_conditional)
-            {
-              ELEMENT *closed_command;
-              /* This closes tree elements (e.g. paragraphs) until we reach
-                 end_command.  It can print an error if another block command
-                 is found first. */
-              current = close_commands (current, end_id,
-                              &closed_command, 0); /* 3292 */
-              if (!closed_command)
-                abort (); // 3335
-
-              close_command_cleanup (closed_command);
-              // 3301 INLINE_INSERTCOPYING
-              add_to_element_contents (closed_command, end_elt); // 3321
-              // 3324 ET_menu_comment
-              if (close_preformatted_command (end_id))
-                current = begin_preformatted (current);
-            }
-        } /* 3340 */
-      else
-        {
-          if (close_preformatted_command (cmd_id))
-            current = begin_preformatted (current);
-        }
-
-      /* 3346 included file */
-
-      /* 3350 */
-      if (cmd_id == CM_setfilename && (current_node || current_section))
-        {
-          /* warning */
-          abort ();
-        }
-      /* 3355 columnfractions */
-      else if (cmd_id == CM_columnfractions)
-        {
-          ELEMENT *before_item;
-          KEY_PAIR *misc_args;
-
-          /* Check if in multitable. */
-          if (!current->parent || current->parent->cmd != CM_multitable)
-            {
-              abort ();
-            }
-
-          // pop and check context stack
-
-          current = current->parent;
-
-          if (misc_args = lookup_extra_key (misc_cmd, "misc_args"))
-            {
-              add_extra_key_misc_args (current, "columnfractions", 
-                                       misc_args->value);
-            }
-
-          before_item = new_element (ET_before_item);
-          add_to_element_contents (current, before_item);
-          current = before_item;
-        }
-      else if (command_data(cmd_id).flags & CF_root) /* 3380 */
-        {
-          current = last_contents_child (current);
-          
-          /* 3383 Destroy all contents (why do we do this?) */
-          while (last_contents_child (current))
-            destroy_element (pop_element_from_contents (current));
-
-          /* Set 'associated_section' extra key for a node. */
-          if (cmd_id != CM_node && cmd_id != CM_part)
-            {
-              if (current_node)
-                {
-                  if (!lookup_extra_key (current_node, "associated_section"))
-                    {
-                      add_extra_key_element
-                        (current_node, "associated_section", current);
-                      add_extra_key_element
-                        (current, "associated_node", current_node);
-                    }
-                }
-
-              // "current parts" - 3394
-
-              current_section = current;
-            }
-        } /* 3416 */
+      current = end_line_misc_line (current);
     }
 
 

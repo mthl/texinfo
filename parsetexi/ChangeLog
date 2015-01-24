@@ -1,5 +1,10 @@
 2015-01-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* end_line.c (end_line_starting_block, end_line_misc_line): 
+	Split functions out of end_line.
+
+2015-01-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* dump_perl.c: In all functions, output to a TEXT object instead 
 	of printing to standard output.
 	(dump_indent): Check if 'dumping_indent' is on.

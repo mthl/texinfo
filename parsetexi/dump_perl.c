@@ -543,10 +543,6 @@ dump_tree_to_perl (ELEMENT *root)
   text_init (&fixup_dump);
   text_init (&tree_to_indices_dump);
 
-  printf ("%s\n*******************************",
-          dump_root_element_1 ());
-  printf ("%s\n*******************************",
-          dump_root_element_2 ());
   text_append (&output, TREE_ROOT_VAR " = ");
   dump_element (root, &output);
   text_append_n (&output, ";\n", 2);
