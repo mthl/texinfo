@@ -20,7 +20,7 @@
 #include "parser.h"
 #include "input.h"
 
-static ELEMENT *root;
+ELEMENT *Root;
 
 /* Set ROOT to root of tree obtained by parsing FILENAME. */
 void
@@ -28,13 +28,13 @@ parse_file (char *filename)
 {
   debug_output = 0;
   init_index_commands ();
-  root = parse_texi_file (filename);
+  parse_texi_file (filename);
 }
 
 ELEMENT *
 get_root (void)
 {
-  return root;
+  return Root;
 }
 
 char *

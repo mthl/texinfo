@@ -15,6 +15,19 @@ TYPEMAP: <<END
 ELEMENT *   T_UV
 END
 
+char *
+dump_tree_to_string_1 ()
+
+char *
+dump_tree_to_string_2 ()
+
+char *
+dump_tree_to_string_3 ()
+
+char *dump_root_element_1 ()
+
+char *dump_root_element_2 ()
+
 void
 parse_file(filename)
         char * filename

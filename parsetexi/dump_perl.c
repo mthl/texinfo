@@ -22,6 +22,7 @@
 #include "text.h"
 #include "labels.h"
 #include "indices.h"
+#include "api.h"
 
 #define element_type_name(e) element_type_names[(e)->type]
 
@@ -36,38 +37,39 @@ static TEXT fixup_dump;
    information.  */
 static TEXT tree_to_indices_dump;
 
-void dump_contents (ELEMENT *);
-void dump_element (ELEMENT *);
-void dump_args (ELEMENT *);
+void dump_contents (ELEMENT *, TEXT *);
+void dump_element (ELEMENT *, TEXT *);
+void dump_args (ELEMENT *, TEXT *);
 
 /* Output INDENT spaces. */
 void
-dump_indent (void)
+dump_indent (TEXT *text)
 {
   int i;
+
   for (i = 0; i < indent; i++)
-    printf (" ");
+    text_append_n (text, " ", 1);
 }
 
 /* Ouput S escaping single quotes and backslashes, so that
    Perl can read it in when it is surrounded by single quotes.  */
 void
-dump_string (char *s)
+dump_string (char *s, TEXT *text)
 {
  while (*s)
    {
      if (*s == '\''
        || *s == '\\')
-       putchar ('\\');
-     putchar (*s++);
+       text_append_n (text, "\\", 1);
+     text_append_n (text, s++, 1);
    }
 }
 
 void
-dump_args (ELEMENT *e)
+dump_args (ELEMENT *e, TEXT *text)
 {
   int i;
-  printf ("[\n");
+  text_append_n (text, "[\n", 2);
   indent += 2;
 
   for (i = 0; i < e->args.number; i++)
@@ -75,21 +77,21 @@ dump_args (ELEMENT *e)
       e->args.list[i]->parent_type = route_args;
       e->args.list[i]->index_in_parent = i;
 
-      dump_indent ();
-      dump_element (e->args.list[i]);
-      printf (",\n");
+      dump_indent (text);
+      dump_element (e->args.list[i], text);
+      text_append_n (text, ",\n", 2);
     }
 
   indent -= 2;
-  dump_indent ();
-  printf ("],\n");
+  dump_indent (text);
+  text_append_n (text, "],\n", 3);
 }
 
 void
-dump_contents (ELEMENT *e)
+dump_contents (ELEMENT *e, TEXT *text)
 {
   int i;
-  printf ("[\n");
+  text_append_n (text, "[\n", 2);
   indent += 2;
 
   for (i = 0; i < e->contents.number; i++)
@@ -97,14 +99,14 @@ dump_contents (ELEMENT *e)
       e->contents.list[i]->parent_type = route_contents;
       e->contents.list[i]->index_in_parent = i;
 
-      dump_indent ();
-      dump_element (e->contents.list[i]);
-      printf (",\n");
+      dump_indent (text);
+      dump_element (e->contents.list[i], text);
+      text_append_n (text, ",\n", 2);
     }
 
   indent -= 2;
-  dump_indent ();
-  printf ("],\n");
+  dump_indent (text);
+  text_append_n (text, "],\n", 3);
 }
 
 /* Recursively go up to the root of the tree.  On the way back print the path 
@@ -162,32 +164,32 @@ dump_fixup_line (ELEMENT *e, int i)
 }
 
 static void
-dump_node_spec (NODE_SPEC_EXTRA *value)
+dump_node_spec (NODE_SPEC_EXTRA *value, TEXT *text)
 {
-  printf ("{\n");
+  text_append_n (text, "{\n", 2);
   indent += 2;
   if (value->manual_content)
     {
-      dump_indent ();
-      printf ("'manual_content' => ");
-      dump_contents (value->manual_content);
+      dump_indent (text);
+      text_append (text, "'manual_content' => ");
+      dump_contents (value->manual_content, text);
     }
   if (value->node_content)
     {
-      dump_indent ();
-      printf ("'node_content' => ");
-      dump_contents (value->node_content);
+      dump_indent (text);
+      text_append (text, "'node_content' => ");
+      dump_contents (value->node_content, text);
     }
   if (value->normalized)
     {
-      dump_indent ();
-      printf ("'normalized' => '");
-      dump_string (value->normalized);
-      printf ("'\n");
+      dump_indent (text);
+      text_append (text, "'normalized' => '");
+      dump_string (value->normalized, text);
+      text_append_n (text, "'\n", 2);
     }
   indent -= 2;
-  dump_indent ();
-  printf ("},\n");
+  dump_indent (text);
+  text_append_n (text, "},\n", 3);
 }
 
 /* Dump a skeleton for the 'extra' key.  For each key, if the referenced 
@@ -196,11 +198,11 @@ dump_node_spec (NODE_SPEC_EXTRA *value)
    'pending_references' field.  Look through the pending references in E itself 
    for references to this element from elsewhere. */
 void
-dump_extra (ELEMENT *e)
+dump_extra (ELEMENT *e, TEXT *text)
 {
   int i;
 
-  printf ("{\n");
+  text_append_n (text, "{\n", 2);
   indent += 2;
 
   if (e->extra_number > 0)
@@ -228,65 +230,73 @@ dump_extra (ELEMENT *e)
               continue;
             }
 
-          dump_indent ();
+          dump_indent (text);
 
           if (e->extra[i].type == extra_misc_args)
             {
               int j;
               /* A "misc_args" value is just an array of strings. */
-              printf ("'%s' => [", e->extra[i].key);
+              text_append_n (text, "'", 1);
+              text_append (text, e->extra[i].key);
+              text_append (text, "' => [");
               for (j = 0; j < e->extra[i].value->contents.number; j++)
                 {
                   if (e->extra[i].value->contents.list[j]->text.end > 0)
                     {
-                      printf("'");
+                      text_append_n (text, "'", 1);
                       dump_string(e->extra[i].value->contents.list[j]
-                                    ->text.text);
-                      printf("',");
+                                    ->text.text, text);
+                      text_append_n (text, "',", 2);
                     }
                   /* else an error? */
                 }
-              printf ("],\n");
+              text_append_n (text, "],\n", 3);
             }
           else if (e->extra[i].type == extra_node_spec)
             {
               NODE_SPEC_EXTRA *value = (NODE_SPEC_EXTRA *) e->extra[i].value;
 
-              printf ("'%s' => ", e->extra[i].key);
-              dump_node_spec (value);
+              text_printf (text, "'%s' => ", e->extra[i].key);
+              dump_node_spec (value, text);
             }
           else if (e->extra[i].type == extra_node_spec_array)
             {
               NODE_SPEC_EXTRA **array = (NODE_SPEC_EXTRA **) e->extra[i].value;
 
-              printf ("'%s' => [\n", e->extra[i].key);
+              text_append_n (text, "'", 1);
+              text_append (text, e->extra[i].key);
+              text_append (text, "' => [\n");
               while (*array)
                 {
-                  dump_indent ();
-                  dump_node_spec (*array);
+                  dump_indent (text);
+                  dump_node_spec (*array, text);
                   array++;
                 }
-              dump_indent ();
-              printf ("],\n");
+              dump_indent (text);
+              text_append_n (text, "],\n", 3);
             }
           else if (e->extra[i].type == extra_string)
             {
               char *value = (char *) e->extra[i].value;
 
-              printf ("'%s' => '", e->extra[i].key);
-              dump_string (value);
-              printf ("',\n");
+              text_append_n (text, "'", 1);
+              text_append (text, e->extra[i].key);
+              text_append (text, "' => '");
+              dump_string (value, text);
+              text_append_n (text, "',\n", 3);
             }
           else if (e->extra[i].value->parent_type == route_not_in_tree)
             {
               switch (e->extra[i].type)
                 {
                 case extra_element:
-                  dump_element (e->extra[i].value);
+                  dump_element (e->extra[i].value, text);
                   break;
                 case extra_element_contents:
-                  printf ("'%s' => ", e->extra[i].key);
-                  dump_contents (e->extra[i].value);
+                  text_append_n (text, "'", 1);
+                  text_append (text, e->extra[i].key);
+                  text_append (text, "' => ");
+                  dump_contents (e->extra[i].value, text);
                   break;
                 default:
                   abort ();
@@ -294,7 +304,9 @@ dump_extra (ELEMENT *e)
             }
           else
             {
-              printf ("'%s' => {},\n", e->extra[i].key);
+              text_append_n (text, "'", 1);
+              text_append (text, e->extra[i].key);
+              text_append (text, "' => {},\n");
 
               if (e->extra[i].value->parent_type != route_uninitialized)
                 {
@@ -335,98 +347,101 @@ dump_extra (ELEMENT *e)
     }
 
   indent -= 2;
-  dump_indent ();
-  printf ("},\n");
+  dump_indent (text);
+  text_append_n (text, "},\n", 3);
 }
 
 void
-dump_line_nr (ELEMENT *e)
+dump_line_nr (ELEMENT *e, TEXT *text)
 {
-  printf ("{\n");
+  text_append_n (text, "{\n", 2);
   indent += 2;
 
   if (e->line_nr.file_name)
     {
-      dump_indent ();
-      printf ("'file_name' => '%s',\n", e->line_nr.file_name);
+      dump_indent (text);
+      text_printf (text, "'file_name' => '%s',\n", e->line_nr.file_name);
     }
 
   if (e->line_nr.line_nr)
     {
-      dump_indent ();
-      printf ("'line_nr' => %d,\n", e->line_nr.line_nr);
+      dump_indent (text);
+      text_append (text, "'line_nr' => ");
+      text_printf (text, "%d", e->line_nr.line_nr);
+      text_append (text, ",\n");
     }
 
   /* TODO: macro. */
-  dump_indent ();
-  printf ("'macro' => ''\n");
+  dump_indent (text);
+  text_append (text, "'macro' => ''\n");
 
   indent -= 2;
-  dump_indent ();
-  printf ("},\n");
+  dump_indent (text);
+  text_append_n (text, "},\n", 3);
 }
 
 void
-dump_element (ELEMENT *e)
+dump_element (ELEMENT *e, TEXT *text)
 {
-  printf ("{\n");
+  text_append_n (text, "{\n", 2);
   indent += 2;
   
   if (e->type)
     {
-      dump_indent ();
-      printf ("'type' => '%s',\n", element_type_name(e));
+      dump_indent (text);
+      text_printf (text, "'type' => '%s',\n", element_type_name(e));
     }
 
   if (e->cmd)
     {
-      dump_indent ();
-      printf ("'cmdname' => '");
-      dump_string (command_data(e->cmd).cmdname);
-      printf ("',\n");
+      dump_indent (text);
+      text_append (text, "'cmdname' => '");
+      dump_string (command_data(e->cmd).cmdname, text);
+      text_append_n (text, "',\n", 3);
     }
   
   if (e->line_nr.line_nr)
     {
-      dump_indent ();
-      printf ("'line_nr' => ");
-      dump_line_nr (e);
+      dump_indent (text);
+      text_append (text, "'line_nr' => ");
+      dump_line_nr (e, text);
     }
 
   if (e->text.text)
     {
-      dump_indent ();
-      printf ("'text' => '");
-      dump_string (e->text.text);
-      printf ("',\n");
+      dump_indent (text);
+      text_append (text, "'text' => '");
+      dump_string (e->text.text, text);
+      text_append_n (text, "',\n", 3);
     }
 
   if (e->args.number > 0)
     {
-      dump_indent ();
-      printf ("'args' => ");
-      dump_args (e);
+      dump_indent (text);
+      text_append (text, "'args' => ");
+      dump_args (e, text);
     }
 
   if (e->extra_number > 0)
     {
-      dump_indent ();
-      printf ("'extra' => ");
-      dump_extra (e);
+      dump_indent (text);
+      text_append (text, "'extra' => ");
+      dump_extra (e, text);
     }
 
   if (e->contents.number > 0)
     {
-      dump_indent ();
-      printf ("'contents' => ");
-      dump_contents (e);
+      dump_indent (text);
+      text_append (text, "'contents' => ");
+      dump_contents (e, text);
     }
 
   indent -= 2;
-  dump_indent ();
-  printf ("}");
+  dump_indent (text);
+  text_append_n (text, "}", 1);
 }
 
+/* Append to FIXUP_DUMP information about the labels. */
 static void
 dump_labels_information (void)
 {
@@ -490,6 +505,7 @@ dump_entries_of_index (INDEX *idx)
   text_printf (&fixup_dump, "],\n");
 }
 
+/* Append to FIXUP_DUMP information about the indices. */
 static void
 dump_indices_information (void)
 {
@@ -521,14 +537,24 @@ dump_indices_information (void)
 void
 dump_tree_to_perl (ELEMENT *root)
 {
+  TEXT output;
+
+  text_init (&output);
   text_init (&fixup_dump);
   text_init (&tree_to_indices_dump);
 
-  printf (TREE_ROOT_VAR " = ");
-  dump_element (root);
-  printf (";\n");
+  printf ("%s\n*******************************",
+          dump_root_element_1 ());
+  printf ("%s\n*******************************",
+          dump_root_element_2 ());
+  text_append (&output, TREE_ROOT_VAR " = ");
+  dump_element (root, &output);
+  text_append_n (&output, ";\n", 2);
 
   /* All the elements in the tree have routing information now. */
+
+  if (output.end > 0)
+    printf ("%s", output.text);
 
   dump_labels_information ();
 
@@ -541,4 +567,125 @@ dump_tree_to_perl (ELEMENT *root)
      will exist by the time this is read. */
   if (tree_to_indices_dump.end > 0)
     printf ("%s", tree_to_indices_dump.text);
+}
+
+/************************************************************/
+/* Following are functions each returning Perl code to be
+   eval'd.  When done in the right order the data will be
+   transferred into the Perl program. */
+
+char *
+dump_root_element_1 (void)
+{
+  ELEMENT *e = Root;
+  TEXT textb;
+  TEXT *text;
+
+  text = &textb;
+  text_init (text);
+
+  text_append (text, TREE_ROOT_VAR " = ");
+  text_append_n (text, "{\n", 2);
+  indent += 2;
+  
+  if (e->type)
+    {
+      dump_indent (text);
+      text_printf (text, "'type' => '%s',\n", element_type_name(e));
+    }
+
+  if (e->cmd)
+    {
+      dump_indent (text);
+      text_append (text, "'cmdname' => '");
+      dump_string (command_data(e->cmd).cmdname, text);
+      text_append_n (text, "',\n", 3);
+    }
+  
+  if (e->line_nr.line_nr)
+    {
+      dump_indent (text);
+      text_append (text, "'line_nr' => ");
+      dump_line_nr (e, text);
+    }
+
+  if (e->text.text)
+    {
+      dump_indent (text);
+      text_append (text, "'text' => '");
+      dump_string (e->text.text, text);
+      text_append_n (text, "',\n", 3);
+    }
+
+  if (e->args.number > 0)
+    {
+      dump_indent (text);
+      text_append (text, "'args' => ");
+      dump_args (e, text);
+    }
+
+  if (e->extra_number > 0)
+    {
+      dump_indent (text);
+      text_append (text, "'extra' => ");
+      dump_extra (e, text);
+    }
+  text_append_n (text, "};\n", 3);
+  return textb.text;
+}
+
+char *
+dump_root_element_2 (void)
+{
+  static int i = 0;
+  TEXT text;
+  ELEMENT *e = Root;
+
+  if (i == e->contents.number)
+    {
+      i++;
+      return 0;
+    }
+
+  text_init (&text);
+  text_printf (&text, TREE_ROOT_VAR "->{'contents'}[%d] = ", i);
+
+  e->contents.list[i]->parent_type = route_contents;
+  e->contents.list[i]->index_in_parent = i;
+  dump_element (e->contents.list[i], &text);
+  text_append (&text, ";");
+  
+  i++;
+  return text.text;
+}
+
+char *
+dump_tree_to_string_1 (void)
+{
+  text_init (&fixup_dump);
+  text_init (&tree_to_indices_dump);
+
+  return "";
+}
+
+char *
+dump_tree_to_string_2 (void)
+{
+  dump_labels_information ();
+
+  dump_indices_information ();
+
+  if (fixup_dump.end > 0)
+     return fixup_dump.text;
+  return "";
+}
+
+char *
+dump_tree_to_string_3 (void)
+{
+  /* This must be output at the end so that both the tree and the indices
+     will exist by the time this is read. */
+  if (tree_to_indices_dump.end > 0)
+     return tree_to_indices_dump.text;
+  return "";
 }

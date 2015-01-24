@@ -23,6 +23,7 @@
 #include "text.h"
 #include "input.h"
 #include "tree.h"
+#include "api.h"
 
 /* Parser state - see Parser.pm:135. */
 
@@ -124,7 +125,7 @@ pop_conditional_stack (void)
 /* lines 751 - 983 - user-visible functions, entry points */
 /* parse_texi_file */
 /* 835 */
-ELEMENT *
+void
 parse_texi_file (char *filename)
 {
   char *linep, *line = 0;
@@ -165,8 +166,7 @@ parse_texi_file (char *filename)
   if (preamble)
     add_to_element_contents (root, preamble);
 
-  root = parse_texi (root);
-  return root;
+  Root = parse_texi (root);
 } /* 916 */
 
 

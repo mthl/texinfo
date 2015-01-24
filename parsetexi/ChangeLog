@@ -1,3 +1,19 @@
+2015-01-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* dump_perl.c: In all functions, output to a TEXT object instead 
+	of printing to standard output.
+	(dump_indent): Check if 'dumping_indent' is on.
+	* parser.c (parse_texi_file): Return type changed.
+
+	* dump_perl.c, Parsetexi/Parsetexi.xs (dump_tree_to_string_1)
+	(dump_tree_to_string_2, dump_tree_to_string_3)
+	(dump_root_element_1, dump_root_element_2): New functions.
+	* Parsetexi/lib/Parsetexi.pm: Call XSUB parse_file and then 
+	these new functions, instead of capturing output of separate 
+	"parsetexi" executable.  Get and eval data from each 
+	node/top-level element separately, which is faster than eval-ing 
+	a dump of the the entire dump at once.
+
 2015-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* indices.c (enter_index_entry): Set 'number' field on index 

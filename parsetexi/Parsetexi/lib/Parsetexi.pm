@@ -241,15 +241,39 @@ sub parse_texi_file ($$)
 
   #print "Getting tree...\n";
 
-  # Note we are calling a separate executable instead of using the code
-  # compliled into Parsetexi.pm as a library.  We should add functions 
-  # to Parsetexi.pm to get the tree without doing this.
-  $tree_stream = qx(./parsetexi $file_name 2>/dev/null);
-
   my ($TREE, $LABELS, $INDEX_NAMES);
-  print "Reading tree...\n";
-  eval $tree_stream;
-  print "Read tree.\n";
+  if (1) {
+    # $| = 1; # Flush after each print
+    print "Parsing file...\n";
+    parse_file ($file_name);
+    print "Fetching data\n";
+    $tree_stream = dump_tree_to_string_1 ();
+    #print "tree stream is $tree_stream\n";
+    eval $tree_stream;
+    $tree_stream = dump_root_element_1 ();
+    eval $tree_stream;
+    while (1) {
+      $tree_stream = dump_root_element_2 ();
+      last if (!defined $tree_stream);
+      eval $tree_stream;
+    }
+    $tree_stream = dump_tree_to_string_2 ();
+    #print "tree stream is $tree_stream\n";
+    eval $tree_stream;
+    $tree_stream = dump_tree_to_string_3 ();
+    #print "tree stream is $tree_stream\n";
+    eval $tree_stream;
+  } else {
+
+    # Note we are calling a separate executable instead of using the code
+    # compliled into Parsetexi.pm as a library.  We should add functions 
+    # to Parsetexi.pm to get the tree without doing this.
+    $tree_stream = qx(./parsetexi $file_name 2>/dev/null);
+
+    print "Reading tree...\n";
+    eval $tree_stream;
+    print "Read tree.\n";
+  }
 	  
   print "Adjusting tree...\n";
   _add_parents ($TREE);
