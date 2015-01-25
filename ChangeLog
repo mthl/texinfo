@@ -1,3 +1,8 @@
+2015-01-25  Karl Berry  <karl@gnu.org>
+
+	* tp/Texinfo/Convert/HTML.pm (css_map): consistently use
+	spaces before values.
+
 2015-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (documentation for multitable): Change 

@@ -1053,11 +1053,11 @@ my %css_map = (
      'pre.display'            => 'font-family: inherit',
      'pre.smalldisplay'       => 'font-family: inherit; font-size: smaller',
      'pre.smallexample'       => 'font-size: smaller',
-     'span.sansserif'         => 'font-family:sans-serif; font-weight:normal',
-     'span.roman'         => 'font-family:serif; font-weight:normal',
-     'span.nocodebreak'   => 'white-space:nowrap',
-     'span.nolinebreak'   => 'white-space:nowrap',
-     'kbd'                => 'font-style:oblique',
+     'span.sansserif'     => 'font-family: sans-serif; font-weight: normal',
+     'span.roman'         => 'font-family: serif; font-weight: normal',
+     'span.nocodebreak'   => 'white-space: nowrap',
+     'span.nolinebreak'   => 'white-space: nowrap',
+     'kbd'                => 'font-style: oblique',
 );
 
 $css_map{'pre.format'} = $css_map{'pre.display'};
