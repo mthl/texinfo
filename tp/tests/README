@@ -1,7 +1,8 @@
 $Id$
 texinfo/tp/tests/README
 
-  Copyright (C) 2010, 2012, 2014 Free Software Foundation, Inc.
+  Copyright 2010, 2011, 2012, 2013, 2014, 2015
+  Free Software Foundation, Inc.
 
   Copying and distribution of this README file, with or without
   modification, are permitted in any medium without royalty provided the
@@ -67,8 +68,16 @@ out_parser/a_test/a_test.1.  All the commands called are output in
 tests.log.
 
 Giving -copy as the first argument to parser_tests.sh or 
-../run_parser_all.sh will cause the references to be regenerated. This 
-can also be achieved with the copy-tests make target.
+../run_parser_all.sh will cause the references to be regenerated.  For
+example, to update the references for one particular test:
+$ cd formatting
+$ ../run_parser_all.sh -copy a_test
+The copy-* make targets update all the references for various large sets
+of tests via this method.
+
+Exception: in the many_input_files subdirectory, the *parser*.sh scripts
+can't be used for updating.  Instead, the Makefile's copy-tests and
+copy-tex-html targets do it directly.
 
 
 TeX4ht and LaTeX2HTML tests

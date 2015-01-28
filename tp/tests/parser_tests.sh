@@ -1,5 +1,9 @@
 #! /bin/sh
-# Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+# $Id$
+# Run individual tests.
+#
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015
+# Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright

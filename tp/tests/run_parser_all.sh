@@ -2,7 +2,8 @@
 # $Id$
 # Run all Texinfo tests.
 # 
-# Copyright 2010, 2011, 2012, 2013 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015
+# Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright

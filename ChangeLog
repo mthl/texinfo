@@ -1,3 +1,11 @@
+2015-01-28  Karl Berry  <karl@gnu.org>
+
+	* tp/tests/README: tweak documentation for updating test results.
+	* tp/tests/{formatting,htmlxref*,many_input_files}: update
+	most test results for trivial reformatting of initial css.
+	* tp/tests/parser_tests.sh,
+	* tp/tests/run_parser_all.sh: copyright/doc updates.
+
 2015-01-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* man/Makefile.am (man_rule_0): Add case for texindex.
