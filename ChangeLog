@@ -1,3 +1,7 @@
+2015-01-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* man/Makefile.am (man_rule_0): Add case for texindex.
+
 2015-01-26  Walter Garcia-Fontes  <walter.garcia@upf.edu>
 
 	* doc/txi-ca.tex: Add Catalan translation.

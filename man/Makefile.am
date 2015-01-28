@@ -53,6 +53,7 @@ man_rule_0 = \
          makeinfo) dir=tp; $(mi_perl5lib); exe_ext="";; \
             info*) dir=info; test $$program != info || program=g$$program;; \
     *install-info) dir=install-info; program=g$$program;; \
+        *texindex) dir=texindex;; \
                 *) dir=util;; esac \
   && dir="$(top_builddir)/$(native_tools)/$$dir" \
   && h2m="$(srcdir)/$$program.h2m"
