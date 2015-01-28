@@ -40,8 +40,8 @@ one of the relevant sections:
   . --plaintext output can be split.
 
 * info:
-  . invoking `info foo bar' looks for bar as an index entry if
-    not found as a top-level menu item.
+  . invoking `info foo bar' looks for bar as an index entry in manual foo,
+    if not found as a top-level menu item.
   . invoking info with an absolute or explicitly relative file name
     (./foo.info, /tmp/foo.info, etc.) just visits that file.
   . new option --init-file allows overriding ~/.infokey.
@@ -49,7 +49,6 @@ one of the relevant sections:
   . the M-x kill-node command has been removed.
   . new variable infopath-no-defaults allows omitting the compile-time
     Info directory from the Info search path.
-  . test suite at build time.
   . separate `infokey' program has been removed - the .infokey file is now
     read directly by info.
   . new variable `highlight-searches' allows highlighting results from a search
@@ -58,6 +57,7 @@ one of the relevant sections:
     sequences sent by special keys.
   . new variable 'hide-note-references' alters appearance of displayed nodes
   . support input of multibyte characters for searches in a UTF-8 locale.
+  . test suite at build time.
 
 * texindex:
   . completely new implementation as a literate program using Texinfo
@@ -81,7 +81,9 @@ one of the relevant sections:
   . remove --recode and --recode-from options, since they haven't
     worked as intended for years, so evidently no one needs them.
 
-* Distribution: automake-1.15, gettext-0.19.4.
+* Distribution:
+  . new translation ca (catalan).
+  . automake-1.15, gettext-0.19.4.
 
 5.2 (26 September 2013)
 * Language:
