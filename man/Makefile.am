@@ -45,7 +45,7 @@ tplibdir = $(tpdir)/maintain/lib
 mi_perl5lib_path = "$(tpdir):$(tplibdir)/libintl-perl/lib:$(tplibdir)/Unicode-EastAsianWidth/lib:$(tplibdir)/Text-Unidecode/lib"
 mi_perl5lib = PERL5LIB=$(mi_perl5lib_path); export PERL5LIB
 
-# Set up the variables.  makeinfo is no longer a .exe(cutable).
+# Set up the variables.  makeinfo, texindex are no longer a .exe(cutable).
 man_rule_0 = \
   exe_ext="$(EXEEXT)" \
   && program=`expr '/$@' : '.*/\(.*\)\.1'` \
@@ -53,7 +53,7 @@ man_rule_0 = \
          makeinfo) dir=tp; $(mi_perl5lib); exe_ext="";; \
             info*) dir=info; test $$program != info || program=g$$program;; \
     *install-info) dir=install-info; program=g$$program;; \
-        *texindex) dir=texindex;; \
+        *texindex) dir=texindex; exe_ext="";; \
                 *) dir=util;; esac \
   && dir="$(top_builddir)/$(native_tools)/$$dir" \
   && h2m="$(srcdir)/$$program.h2m"
