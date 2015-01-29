@@ -1,3 +1,9 @@
+2015-01-29  Vitezslav Crhonek <vcrhonek@redhat.com> (tiny change)
+
+	* info/info.c (main): Call info_error with "%s" just in case the 
+	error string contained a formatting sequence.  (Report via 
+	Savannah.)
+
 2015-01-28  Karl Berry  <karl@gnu.org>
 
 	* tp/Convert/HTML.pm (output): make bodytext default set only the lang

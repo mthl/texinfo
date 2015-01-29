@@ -905,7 +905,7 @@ skip_get_initial_file:
   if (user_output_filename)
     {
       if (error)
-        info_error (error);
+        info_error ("%s", error);
 
       preprocess_nodes_p = 0;
       dump_nodes_to_file (ref_list, user_output_filename, dump_subnodes);
@@ -914,7 +914,7 @@ skip_get_initial_file:
 
   if (user_filename && error)
     {
-      info_error (error);
+      info_error ("%s", error);
       exit (0);
     }
     
