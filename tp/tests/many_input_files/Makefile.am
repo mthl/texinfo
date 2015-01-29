@@ -1,4 +1,4 @@
-# $Id: Makefile.am 5891 2014-10-26 18:16:44Z karl $
+# $Id$
 # Makefile.am for texinfo/tp/tests/many_input_files
 # Copyright 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 #

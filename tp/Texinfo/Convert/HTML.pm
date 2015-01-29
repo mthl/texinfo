@@ -1,3 +1,4 @@
+# $Id$
 # HTML.pm: output tree as HTML.
 #
 # Copyright 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
@@ -6749,8 +6750,7 @@ sub output($$)
 
   &{$self->{'format_css_lines'}}($self);
 
-  $self->set_conf('BODYTEXT', 'lang="' . $self->get_conf('documentlanguage') 
-   . '" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000"');
+  $self->set_conf('BODYTEXT', 'lang="' . $self->get_conf('documentlanguage'));
 
   # prepare title.  fulltitle uses more possibility than simpletitle for
   # title, including @-commands found in @titlepage only.  Therefore

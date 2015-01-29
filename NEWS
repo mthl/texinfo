@@ -38,6 +38,7 @@ one of the relevant sections:
   . Docbook output no longer uses <lineannotation> for @r.
   . -D'var val' on the command line works as intended again.
   . --plaintext output can be split.
+  . somewhat faster.
 
 * info:
   . invoking `info foo bar' looks for bar as an index entry in manual foo,

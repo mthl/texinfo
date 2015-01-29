@@ -1,5 +1,12 @@
 2015-01-28  Karl Berry  <karl@gnu.org>
 
+	* tp/Convert/HTML.pm (output): make bodytext default set only the lang
+	attribute, no colors (left over from texi2html, perhaps).
+	* tp/tests: update almost all test results.
+	texinfo-devel, 25 Jan 2015 22:31:24.
+
+2015-01-28  Karl Berry  <karl@gnu.org>
+
 	* tp/tests/README: tweak documentation for updating test results.
 	* tp/tests/{formatting,htmlxref*,many_input_files}: update
 	most test results for trivial reformatting of initial css.

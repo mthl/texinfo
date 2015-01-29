@@ -67,9 +67,11 @@ out_parser/a_test/a_test.2, stdout output is in
 out_parser/a_test/a_test.1.  All the commands called are output in 
 tests.log.
 
-Giving -copy as the first argument to parser_tests.sh or 
-../run_parser_all.sh will cause the references to be regenerated.  For
-example, to update the references for one particular test:
+Giving -copy as the first argument to ../run_parser_all.sh or
+parser_tests.sh (or long_tests.sh or tex_html_tests.sh) will cause the
+references to be regenerated.  For example, to update the references for
+one particular test:
+
 $ cd formatting
 $ ../run_parser_all.sh -copy a_test
 The copy-* make targets update all the references for various large sets

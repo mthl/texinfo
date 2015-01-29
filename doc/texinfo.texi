@@ -18060,8 +18060,9 @@ special elements, but not for footers and headers; default
 
 @item BODYTEXT
 @cindex @code{<body>} text, customizing
-For HTML, the text appearing in @code{<body>}.  By default, set
-automatically, taking into account the document language
+@opindex lang@r{, HTML attribute}
+For HTML, the text appearing in @code{<body>}.  By default, sets the
+HTML @code{lang} attribute to the document language
 (@pxref{@t{@@documentlanguage}}).
 
 @item CASE_INSENSITIVE_FILENAMES
