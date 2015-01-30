@@ -126,7 +126,7 @@ parse_line_command_args (ELEMENT *line_command)
             p = q;
             add_to_element_contents (line_args, new);
           }
-
+        break;
       }
     case CM_sp:
     case CM_defindex:
@@ -134,6 +134,14 @@ parse_line_command_args (ELEMENT *line_command)
     case CM_synindex:
     case CM_syncodeindex:
     case CM_printindex:
+      {
+        /* TODO: Check and interpret argument. */
+        ELEMENT *new;
+        new = new_element (ET_NONE);
+        text_append (&new->text, line);
+        add_to_element_contents (line_args, new);
+        break;
+      }
     case CM_everyheadingmarks:
     case CM_everyfootingmarks:
     case CM_evenheadingmarks:
@@ -563,12 +571,12 @@ end_line_misc_line (ELEMENT *current)
     }
   else
     {
-      ELEMENT *misc_args;
+      ELEMENT *misc_content;
 
-      misc_args = trim_spaces_comment_from_content 
+      misc_content = trim_spaces_comment_from_content 
         (last_args_child(current));
 
-      add_extra_key_misc_args (current, "misc_args", misc_args);
+      add_extra_key_contents (current, "misc_content", misc_content);
 
       /* All the other "line" commands" */
       // 3273 - warning about missing argument
@@ -577,7 +585,7 @@ end_line_misc_line (ELEMENT *current)
       if (command_flags(current) & CF_index_entry_command)
         {
           /* TODO: Trim space elements from contents.  Note we aren't
-             using the misc_args variable yet, because we have not
+             using the misc_content variable yet, because we have not
              got a way to serialize a pointer from the index information
              to a detached extra key that is not part of the main tree. */
           ELEMENT *contents;
@@ -587,6 +595,14 @@ end_line_misc_line (ELEMENT *current)
           enter_index_entry (current->cmd, current->cmd, current,
                              contents);
           current->type = ET_index_entry_command;
+        }
+
+      if (command_flags(current) & CF_sectioning)
+        {
+          /* TODO: Set the right level. */
+          /* Alternatively, maybe the receiving code could lookup the
+             sectioning level. */
+          add_extra_string (current, "level", "1");
         }
     }
 

@@ -127,7 +127,7 @@ cropmarks			misc		MISC_skipline
 
 # formatting
 center				misc		MISC_line
-printindex			misc
+printindex			misc		1
 listoffloats			misc		MISC_line
 # especially in titlepage
 #  shorttitle
@@ -470,26 +470,27 @@ ifcommandnotdefined	block		BLOCK_conditional
 
 ##########################################################
 # Root commands - line 887
-node			root,misc		MISC_line
-top			root,misc		MISC_line
-chapter			root,misc		MISC_line
-unnumbered		root,misc		MISC_line
-chapheading		misc			MISC_line
-appendix		root,misc		MISC_line
-section			root,misc		MISC_line
-unnumberedsec		root,misc		MISC_line
-heading			misc			MISC_line
-appendixsec		root,misc		MISC_line
-subsection		root,misc		MISC_line
-unnumberedsubsec	root,misc		MISC_line
-subheading		misc			MISC_line
-appendixsubsec		root,misc		MISC_line
-subsubsection		root,misc		MISC_line
-unnumberedsubsubsec	root,misc		MISC_line
-subsubheading		misc			MISC_line
-appendixsubsubsec	root,misc		MISC_line
+node			root,misc			MISC_line
+top			root,misc,sectioning		MISC_line
+chapter			root,misc,sectioning		MISC_line
+unnumbered		root,misc,sectioning		MISC_line
+chapheading		misc,sectioning			MISC_line
+appendix		root,misc,sectioning		MISC_line
+section			root,misc,sectioning		MISC_line
+unnumberedsec		root,misc,sectioning		MISC_line
+heading			misc,sectioning			MISC_line
+appendixsec		root,misc,sectioning		MISC_line
+subsection		root,misc,sectioning		MISC_line
+unnumberedsubsec	root,misc,sectioning		MISC_line
+subheading		misc,sectioning			MISC_line
+appendixsubsec		root,misc,sectioning		MISC_line
+subsubsection		root,misc,sectioning		MISC_line
+unnumberedsubsubsec	root,misc,sectioning		MISC_line
+subsubheading		misc,sectioning			MISC_line
+appendixsubsubsec	root,misc,sectioning		MISC_line
 
-part			root,misc		MISC_line
-appendixsection		root,misc		MISC_line
-centerchap		root,misc		MISC_line
+part			root,misc,sectioning	MISC_line
+appendixsection		root,misc,sectioning	MISC_line
+majorheading		misc,sectioning		MISC_line
+centerchap		root,misc,sectioning	MISC_line
 

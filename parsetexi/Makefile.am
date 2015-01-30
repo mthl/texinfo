@@ -1,5 +1,7 @@
 AUTOMAKE_OPTIONS=foreign
 
+SUBDIRS=. Parsetexi
+
 bin_PROGRAMS=parsetexi
 
 lib_LIBRARIES=libparsetexi.a

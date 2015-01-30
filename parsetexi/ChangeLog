@@ -1,5 +1,20 @@
 2015-01-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* end_line.c (end_line_misc_line): Set "misc_content" key as 
+	intended, instead of "misc_args".
+	<sectioning commands>: Set "level" extra value.
+	* handle_commands.c (handle_misc_command): Add comment.
+
+	* command_data.txt: Add "sectioning" flag for sectioning 
+	commands.  Add "majorheading".  Say that "@printindex" takes 1 
+	argument.
+	* end_line.c (parse_line_command_args) <printindex>: Handle.
+
+	* Parsetexi/lib/Parsetexi.pm (_add_parents): Set 'level' value 
+	on elements.
+
+2015-01-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* end_line.c (end_line_starting_block, end_line_misc_line): 
 	Split functions out of end_line.
 
@@ -7,7 +22,6 @@
 
 	* dump_perl.c: In all functions, output to a TEXT object instead 
 	of printing to standard output.
-	(dump_indent): Check if 'dumping_indent' is on.
 	* parser.c (parse_texi_file): Return type changed.
 
 	* dump_perl.c, Parsetexi/Parsetexi.xs (dump_tree_to_string_1)

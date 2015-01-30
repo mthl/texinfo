@@ -156,6 +156,11 @@ sub _add_parents ($) {
       _add_parents ($child);
     }
   }
+
+  # 'level' is set in Parser.pm, but not under 'extra'.
+  if (defined ($elt->{'extra'}) and defined $elt->{'extra'}{'level'}) {
+    $elt->{'level'} = $elt->{'extra'}{'level'};
+  }
 }
 
 # Set the 'menu_entry' extra key on each menu entry.  This was the
@@ -274,7 +279,7 @@ sub parse_texi_file ($$)
     eval $tree_stream;
     print "Read tree.\n";
   }
-	  
+
   print "Adjusting tree...\n";
   _add_parents ($TREE);
   _complete_node_list ($self, $TREE);

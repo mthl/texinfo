@@ -110,6 +110,9 @@ handle_misc_command (ELEMENT *current, char **line_inout,
       /* @END IS SOMEWHERE IN HERE ('text') */
 
       /* 4439 */
+      /* Special handling of @item because it can appear
+         in several contents: in an @itemize, a @table, or
+         a @multitable. */
       if (cmd_id == CM_item || cmd_id == CM_itemx
           || cmd_id == CM_headitem || cmd_id == CM_tab)
         {
