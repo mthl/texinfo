@@ -1,3 +1,13 @@
+2015-01-30  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\utfeightchardefs): define all the easy
+	characters from 0080..024F (Latin-1_Supplement, Latin_Extended_A,
+	Latin_Extended-B).  Revise/correct some definitions.  Plenty
+	more could be done.
+	
+	Also, call \utfeightchardefs at the top level so @U can do
+	something useful when @documentencoding is not UTF-8.
+
 2015-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (Module documentation section): Grammar 
