@@ -1,0 +1,97 @@
+This is an experimental XS module to implement the functionality of
+Texinfo::Convert::Paragraph.
+
+Instructions for using this module
+----------------------------------
+
+Copy tp/Texinfo/Convert/Plaintext.pm and make the following changes
+
+diff Texinfo/Convert/Plaintext.pm{,-USE-XSPARA}   32a33,36
+> use XSParagraph;
+>
+> XSParagraph::hello;
+> 633c637,638
+<     $container = Texinfo::Convert::Paragraph->new($container_conf);
+---
+>     #$container = Texinfo::Convert::Paragraph->new($container_conf);
+>     $container = XSParagraph->new($container_conf);
+
+So that Perl can find the module, you can create a wrapper script, like 
+the following as tp/wrap-texi2any.sh:
+
+----------------------------------------------------
+#! /usr/bin/env bash
+
+#DEBUG='perl -d'
+#OPTIONS='-c DEBUG=1 --no-validate'
+OPTIONS=''
+COMMAND=${COMMAND:-./texi2any}
+
+PERL5LIB=Texinfo/Convert/XSParagraph/lib:Texinfo/Convert/XSParagraph/blib/arch/auto/XSParagraph 
+${DEBUG} ${COMMAND} ${OPTIONS} "$@"
+----------------------------------------------------
+
+This should be run from the tp/ directory.
+
+Caution: if you run an installed "makeinfo" from within the "tp/" 
+directory, it is likely to use the modules underneath "tp/", and not the 
+installed modules.
+
+Building the XSParagraph module
+------------------------------
+
+From within tp/Texinfo/Convert/XSParagraph, do "make -C mylib && make".  
+You may have to do "perl Makefile.PL" first.
+
+Debugging with gdb
+------------------
+
+To debug with gdb, create a .gdbinit file like the following:
+
+dir Texinfo/Convert/XSParagraph/mylib
+r texi2any
+
+Run
+
+export PERL5LIB=Texinfo/Convert/XSParagraph/lib:Texinfo/Convert/XSParagraph/blib/arch/auto/XSParagraph"  
+
+at the command line.
+
+Run gdb as "gdb `which perl`".  The .gdbinit file will load the symbols 
+from the source files.  Then you can do e.g.
+
+b xspara_end_line
+
+in gdb.  Run with "r texi2any (options)", for example,
+"r texi2any ../doc/info-stnd.texi".
+
+
+Issues
+------
+
+* Do we need to support more than one paragraph formatter at once?  It 
+depends on what the calling code in Plaintext.pm does.
+If this was necessary, the functions in XSParagraph.xs can call
+xspara_set_state to make sure that the right paragraph state is used.
+
+* Effect of changing locale.  At initialization, xspara_hello tries to
+switch to a UTF-8 locale, so that the C standard library multibyte 
+functions operate on the UTF-8 data correctly.  Could this break 
+anything for the running Perl instance?
+
+* Effect of newlines at sentence ends within @w{ ... }.  Normally within 
+@w, spaces are not doubled after a full stop, e.g
+"@w{Sentence one. Sentence two.}"  However the current code in 
+Paragraph.pm creates a double space in cases like
+
+@w{Sentence one.
+Sentence two.}.
+
+Is this correct?
+
+* Check that we correctly imitate variables being "undefined" in Perl.
+
+* Check where space doubling at an end of a sentence is done - it is 
+done in a couple of places depending on some conditions, but the logic 
+of this isn't clear to me.
+

@@ -1,5 +1,18 @@
 2015-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph: Add directory (experimental 
+	replacement for tp/Texinfo/Convert/Paragraph.pm).
+	* tp/Texinfo/Convert/XSParagraph/README,
+	tp/Texinfo/Convert/XSParagraph/XSParagraph.xs,
+	tp/Texinfo/Convert/XSParagraph/mylib/xspara.c,
+	tp/Texinfo/Convert/XSParagraph/mylib/xspara.h,
+	tp/Texinfo/Convert/XSParagraph/mylib/text.c,
+	tp/Texinfo/Convert/XSParagraph/mylib/text.h,
+	tp/Texinfo/Convert/XSParagraph/lib/XSParagraph.pm,
+	tp/Texinfo/Convert/XSParagraph/t/XSParagraph.t: Files added.
+
+2015-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/Cleanup.inc: File removed.
 	* info/t/Init-test.inc (cleanup) Add contents of Cleanup.inc as 
 	a function.
