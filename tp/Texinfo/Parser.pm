@@ -5949,7 +5949,7 @@ sub _parse_line_command_args($$$)
 __END__
 =head1 NAME
 
-Texinfo::Parser - Parse Texinfo code in a Perl tree
+Texinfo::Parser - Parse Texinfo code into a Perl tree
 
 =head1 SYNOPSIS
 
@@ -5978,18 +5978,18 @@ Texinfo::Parser - Parse Texinfo code in a Perl tree
 =head1 DESCRIPTION
 
 Texinfo::Parser will parse Texinfo text into a perl tree.  In one pass
-it expands user defined @-commands, conditionals (@ifset, @ifinfo...)
+it expands user-defined @-commands, conditionals (@ifset, @ifinfo...)
 and @value and constructs the tree.  Some extra information is gathered
-while doing the tree, for example the block command associated with @end,
-the number of row in a multitable, the node associated with a section.
+while doing the tree: for example, the block command associated with @end,
+the number of rows in a multitable, or the node associated with a section.
 
 
 
 =head1 METHODS
 
 No method is exported in the default case.  The module allows both
-an object oriented syntax, or traditional function, with the parser
-as an opaque data structure given in argument to every function.
+an object-oriented syntax, or traditional function, with the parser
+as an opaque data structure given as an argument to every function.
 
 =head2 Initialization
 
@@ -6000,11 +6000,11 @@ The following method is used to construct a new C<Texinfo::Parser> object:
 =item $parser = Texinfo::Parser::parser($options);
 
 This method creates a new parser.  The options may be provided as a hash
-reference.  There are two types of options.  The first type of options
-change the way the parser behave, they are described right here.  The 
-other type of options allow to give to the parser some information as if 
-it came from texinfo code, for example allow to set aliases (as with 
-C<@alias>), values (as with C<@set>), merged indices (as with 
+reference.  There are two types of option.  The first type of option
+change the way the parser behaves; they are described right here.  The 
+other type of option allows giving the parser some information as if 
+it came from texinfo code; for example, allow setting aliases (as with 
+C<@alias>), values (as with C<@set>), or merged indices (as with 
 C<@synindex>).  These options are described below in L</Texinfo Parser options>.
 
 =over
@@ -6021,7 +6021,7 @@ always kept.
 
 If set, the function reference is used to translate error and warning
 messages.  It takes a string as argument and returns a string.  The default 
-function returns the error message as is.
+function returns the error message as-is.
 
 =item GLOBAL_COMMANDS
 
@@ -6038,7 +6038,7 @@ searched for.  Default contains the working directory, F<.>.
 
 If set, C<@insertcopying> is replaced by the C<@copying> content as if
 C<@insertcopying> was a user-defined macro.  In the default case, it is 
-considered to be a simple @-command and kept as is in the tree.
+considered to be a simple @-command and kept as-is in the tree.
 
 =item IGNORE_BEFORE_SETFILENAME
 
@@ -6048,12 +6048,12 @@ This option is set in the default case.
 
 =item IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME
 
-If set, spaces after an @-commande name that take braces are ignored.
+If set, spaces after an @-command name that take braces are ignored.
 Default on.
 
 =item MACRO_BODY_IGNORES_LEADING_SPACE
 
-If set, leading spaces are stripped from user defined macro bodies.
+If set, leading spaces are stripped from user-defined macro bodies.
 
 =item MAX_MACRO_CALL_NESTING
 
@@ -6061,7 +6061,7 @@ Maximal number of nested user-defined macro calls.  Default is 100000.
 
 =item SHOW_MENU
 
-If false, no menu related error are reported.  Default is true.
+If false, no menu-related errors are reported.  Default is true.
 
 =begin :comment
 
@@ -6079,17 +6079,17 @@ string may contain @-commands.
 
 =head2 Parsing Texinfo text
 
-There are three methods that may be called to parse some Texinfo code,
+There are three methods that may be called to parse some Texinfo code:
 C<parse_texi_line> for a line, C<parse_texi_text> for a text fragment, 
 and C<parse_texi_file> for a file.
 
 For all those functions, if the I<$parser> argument is undef, a new 
-parser object is generated to parse the line, otherwise the parser given 
-in argument is used to parse into a tree.
+parser object is generated to parse the line.  Otherwise the parser given 
+as an argument is used to parse into a tree.
 
 When C<parse_texi_text> is used, the resulting tree is rooted at 
 a C<root_line> type container.  Otherwise, the resulting tree should be 
-rooted at a C<text_root> type container if it do not contain nodes or 
+rooted at a C<text_root> type container if it does not contain nodes or 
 sections, at a C<document_root> type container otherwise.
 
 =over
@@ -6100,7 +6100,7 @@ This function is used to parse a short fragment of Texinfo code.
 
 I<$text> may be either an array reference of lines, or a text.
 
-The other arguments are optional and allow to specify the position
+The other arguments are optional and allow specifying the position
 information of the Texinfo code.  I<$first_line_number> is the line number
 of the first text line.  I<$file_name> is the name of the file the
 text comes from.  I<$macro> is for the user-defined macro name the text
@@ -6114,7 +6114,7 @@ This function is used to parse some Texinfo text.
 
 I<$text> may be either an array reference of lines, or a text.
 
-The other arguments are optional and allow to specify the position
+The other arguments are optional and allow specifying the position
 information of the Texinfo code.  There are two distinct cases for 
 I<$line_numbers_specification>.  
 
@@ -6123,14 +6123,14 @@ I<$line_numbers_specification>.
 =item 1.
 
 If it is an array reference, it is considered to hold objects describing 
-the position information of each text lines.
+the position information of each text line.
 
 =item 2.
 
 If I<$line_numbers_specification> is a scalar, it is the line number of 
 the first text line.  In that case (like for C<parse_texi_text>), 
 I<$file_name> is the name of the file the text comes from.  
-I<$macro> is for the user-defined macro name the text
+and I<$macro> is for the user-defined macro name the text
 is expanded from.  If I<$fixed_line_number> is set, the line number is
 not increased for the different lines, as if the text was the expansion
 of a macro.
@@ -6150,12 +6150,12 @@ The errors collected during the tree parsing are available through the
 C<errors> method.  This method comes from C<Texinfo::Report>, and is 
 described in L<errors|Texinfo::Report/($error_warnings_list, $error_count) = errors ($converter)>.
 
-=head2 Getting informations on the document
+=head2 Getting information on the document
 
-After parsing some informations about the Texinfo code that was processed
-are available from the parser.
+After parsing some information about the Texinfo code that was processed
+is available from the parser.
 
-Some global informations is available through C<global_informations>
+Some global information is available through C<global_informations>
 
 =over
 
@@ -6204,9 +6204,9 @@ tree elements.
 
 =back
 
-All the @-commands that have an associated label, that can be the
-target of cross references, C<@node>, C<@anchor> and C<@float> with
-label have a normalized name associated, constructed as described in the
+All the @-commands that have an associated label (so can be the
+target of cross references) - C<@node>, C<@anchor> and C<@float> with
+label - have a normalized name associated, constructed as described in the
 B<HTML Xref> node in the Texinfo manual.  Those normalized labels and
 the association with @-commands is available through C<labels_information>:
 
@@ -6234,14 +6234,14 @@ of float tree elements appearing in the texinfo document.
 
 =back
 
-Internal references, that is, @-commands that refers to node, anchors
+Internal references, that is, @-commands that refer to node, anchors
 or floats within the document are also available:
 
 =over
 
 =item $internal_references_array = internal_references_information($parser);
 
-The function returns a list of cross reference commands referring to
+The function returns a list of cross-reference commands referring to
 the same document.
 
 =back
@@ -6358,7 +6358,7 @@ the indices corresponding to the following texinfo
                   'code' => {'in_code' => 1}};
 
 If C<name> is not set, it is set to the index name.  If C<prefix> is 
-not set, it is  set to an array containing the index name.
+not set, it is set to an array containing the index name.
 
 I<$merged_indices_hash> is a hash reference, the key is an index
 name merged in the value.
@@ -6367,7 +6367,7 @@ name merged in the value.
 
 =head2 Texinfo Parser options
 
-Setting those options is the same as seeing some Texinfo constructs in the 
+Setting these options is the same as seeing some Texinfo constructs in the 
 document.
 
 =over
@@ -6435,7 +6435,7 @@ be a float label or an anchor name.  The value is the corresponding
 
 =item macros
 
-The associated hash reference has as key user-defined macro names.  The
+The associated hash reference has as keys user-defined macro names.  The
 value is the reference on a macro definition element as obtained by 
 the Parser when parsing a C<@macro>.  For example
 
@@ -6476,17 +6476,17 @@ Same as values set by C<@set>.
 =head1 TEXINFO TREE
 
 A Texinfo tree element (called element because node is overloaded in 
-the Texinfo world) is an hash reference.  There are three main category
+the Texinfo world) is an hash reference.  There are three main categories
 of tree element.  Tree elements associated with an @-command have a 
-C<cmdname> key holding the @-command name.  Tree element corresponding
+C<cmdname> key holding the @-command name.  Tree elements corresponding
 to text fragments have a C<text> key holding the corresponding text.
 The last category corresponds to other containers (hereafter called 
 containers).  In most case these containers have a C<type> key holding 
 their name.  Text fragments and @-command elements may also have an 
 associated type when such information is needed.
 
-The children of @-command or container elements are in the array
-correponding with the C<args> key or with the C<contents> key.  The
+The children of an @-command or container elements are in the array
+corresponding with the C<args> key or with the C<contents> key.  The
 C<args> key is for arguments of @-commands, in braces or on the @-command
 line.  C<args> is also used for the elements of a menu entry, as a menu
 entry is well structured with a limited number of arguments.  
@@ -6495,8 +6495,8 @@ code appearing within a block @-command, within a container,
 within a C<@node> or sectioning @-command.
 
 Another important key for the elements is the C<extra> key which is 
-associated to a hash reference and holds all kinds of informations gathered
-during the parsing and that may help with the conversion.
+associated to a hash reference and holds all kinds of information that
+is gathered during the parsing and may help with the conversion.
 
 =head2 Element keys
 
@@ -6610,7 +6610,7 @@ element:
 =item index_entry_command
 
 This is the type of index entry command like C<@cindex>, and, more
-importantly user defined index entry commands.  So for example if there
+importantly user-defined index entry commands.  So for example if there
 is 
 
  @defindex foo
@@ -6623,7 +6623,7 @@ type.
 
 =item following_arg
 
-This type is set for non alphabetic accent @-commands that don't use brace 
+This type is set for non-alphabetic accent @-commands that don't use braces
 but instead have their argument right after them, as
 
   @~n
@@ -6724,7 +6724,7 @@ Other special types are described in the following.
 These types correspond to document roots.  C<text_root> is the document
 root when there is no C<@node> or sectioning command.  When
 such a command appears, a new root container is used, C<document_root>,
-and C<text_root> becomes the first content of C<document_root>.
+and C<text_root> becomes the first element in the contents of C<document_root>.
 C<root_line> is the type of the root tree when parsing Texinfo line
 fragments using C<parse_texi_line>.
 
@@ -6745,7 +6745,7 @@ A paragraph.
 =item preformatted
 
 Texinfo code within a format that is not filled.  Happens within some
-block commands as C<@example>, but also in menu (in menu descriptions,
+block commands like C<@example>, but also in menu (in menu descriptions,
 menu comments...).
 
 =item brace_command_arg
@@ -6802,8 +6802,8 @@ I<menu_entry> C<args> array reference.
 I<menu_entry_leading_text> holds the star and following spaces. 
 I<menu_entry_name> is the menu entry name (if present), I<menu_entry_node>
 corresponds to the node in the menu entry, I<menu_entry_separator> holds
-the text after the node and before the description, in most case
-C<::   >.  Last I<menu_entry_description> is for the description.
+the text after the node and before the description, in most cases
+C<::   >.  Lastly, I<menu_entry_description> is for the description.
 
 =item menu_comment
 
@@ -6857,7 +6857,7 @@ the text following the C<@item> and C<@itemx> entries.  A I<table_term>
 container holds all the C<@item> and C<@itemx> of the I<table_entry>.
 The I<table_item> container holds the content following the I<table_term>.
 If there is some content before an C<@itemx> (normally only comments, 
-empty lines or maybe index entriees are allowed), it will be in 
+empty lines or maybe index entries are allowed), it will be in 
 a container with type I<inter_item>. 
 
 =item def_line
@@ -6879,7 +6879,7 @@ an I<inter_def_item> container.
 
 =item row
 
-In C<@multitable>, a I<multitable_head> container contains all the row
+In C<@multitable>, a I<multitable_head> container contains all the rows
 with C<@headitem>, while I<multitable_body> contains the rows associated 
 with C<@item>.  A I<row> container contains the C<@item> and @<tab> 
 forming a row.
@@ -6914,15 +6914,15 @@ Some extra keys are available for more than one @-command:
 =item brace_command_contents
 
 An array associated with block @-commands or @-commands with braces
-taking more than one argument or with a simple text content
-(C<@anchor>, C<@titlefont>, C<@dmn>).  Each of the element of the
+taking more than one argument or with simple text content
+(C<@anchor>, C<@titlefont>, C<@dmn>).  Each of the elements of the
 array is either undef, if there is no argument at that place,
 or an array reference holding the argument contents.
 
 =item misc_content
 
 The contents of an @-command taking regular Texinfo code as
-argument, like C<@sttitle> or C<@exdent>.
+argument, like C<@settitle> or C<@exdent>.
 
 =item end_command
 
@@ -6975,7 +6975,7 @@ C<empty_spaces_before_argument> element, a reference to that element.
 
 =item spaces
 
-For accent commands consisting in letter only, like C<@ringaccent>
+For accent commands acting on one letter only, like C<@ringaccent>
 appearing like
 
  @ringaccent A
@@ -6985,7 +6985,7 @@ the command and the argument.
 
 =back
 
-Then there are extra keys specific of @-commands or containers.
+Then there are extra keys specific of certain @-commands or containers.
 
 =over
 
@@ -7037,7 +7037,7 @@ have the float tree element stored in I<float>.
 
 =item C<@anchor>
 
-@-Commands that are targets for cross references have a I<normalized>
+@-commands that are targets for cross-references have a I<normalized>
 key for the normalized label, built as specified in the Texinfo manual
 in the B<HTML Xref> node.  There is also a I<node_content> key for
 an array holding the corresponding content.
@@ -7111,7 +7111,7 @@ argument.
 
 =item C<@ftable>
 
-The I<command_as_argument> extra key points on the @-command on
+The I<command_as_argument> extra key points to the @-command on
 as argument on the @-command line.
 
 =item paragraph

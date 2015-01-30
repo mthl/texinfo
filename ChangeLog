@@ -1,5 +1,10 @@
 2015-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (Module documentation section): Grammar 
+	tweaks.
+
+2015-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph: Add directory (experimental 
 	replacement for tp/Texinfo/Convert/Paragraph.pm).
 	* tp/Texinfo/Convert/XSParagraph/README,
