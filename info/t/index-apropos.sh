@@ -25,5 +25,5 @@ printf '\033xindex-apropos\rlink\r\t\ri\t\x07q' >$PTY_TYPE &
 $GINFO
 RETVAL=$?
 
-. $t/Cleanup.inc
+cleanup
 

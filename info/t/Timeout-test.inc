@@ -19,9 +19,14 @@
 TIMED_OUT=
 
 read -t 3 FINISHED <>$FINISHEDFIFO
-rm -f $FINISHEDFIFO
-
-if test "$FINISHED" = failure; then
+if test $? != 0 -a $? -le 128 ; then
+  # Exit status of 'read' should be 0 on a successful read, or
+  # greater than 128 if it timed out.
+  rm -f $FINISHEDFIFO
+  echo 'read -t not supported - test skipped' >&2
+  RETVAL=77
+  cleanup
+elif test "$FINISHED" = failure; then
   echo 'Program exited unsuccessfully' >&2
   RETVAL=1
 
@@ -33,3 +38,6 @@ elif test "$FINISHED" != finished; then
   echo 'Program timed out after 3 seconds' >&2
   TIMED_OUT=1
 fi
+
+rm -f $FINISHEDFIFO
+

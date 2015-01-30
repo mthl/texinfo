@@ -30,5 +30,5 @@ grep 'Node: Top' $GINFO_OUTPUT \
 
 RETVAL=$?
 
-. $t/Cleanup.inc
+cleanup
 

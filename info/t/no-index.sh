@@ -23,5 +23,5 @@ run_ginfo -f sample
 printf 'ia\rq' >$PTY_TYPE
 . $t/Timeout-test.inc
 
-. $t/Cleanup.inc
+cleanup
 

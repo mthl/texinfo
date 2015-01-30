@@ -25,5 +25,5 @@ run_ginfo -f split
 printf '\023aa\033[B\014q' >$PTY_TYPE
 . $t/Timeout-test.inc
 
-. $t/Cleanup.inc
+cleanup
 

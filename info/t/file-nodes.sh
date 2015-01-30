@@ -25,4 +25,4 @@ RETVAL=0
 grep 'Arrived at Node 1' $GINFO_OUTPUT || RETVAL=1
 grep 'Arrived at Node 2' $GINFO_OUTPUT || RETVAL=1
 
-. $t/Cleanup.inc
+cleanup

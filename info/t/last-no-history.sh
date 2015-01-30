@@ -23,5 +23,5 @@ printf lq >$PTY_TYPE &
 $GINFO -f intera
 RETVAL=$?
 
-. $t/Cleanup.inc
+cleanup
 

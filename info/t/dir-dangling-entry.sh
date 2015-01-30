@@ -29,4 +29,4 @@ printf 'Dq' >$PTY_TYPE
 grep 'File: dir' $GINFO_OUTPUT
 RETVAL=$?
 
-. $t/Cleanup.inc
+cleanup

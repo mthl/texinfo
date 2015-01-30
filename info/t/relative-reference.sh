@@ -26,5 +26,5 @@ printf '\0302\t\t\t\r' >$PTY_TYPE
 printf '\030o\0301\t\t\t\rq' >$PTY_TYPE
 
 . $t/Timeout-test.inc
-. $t/Cleanup.inc
+cleanup
 

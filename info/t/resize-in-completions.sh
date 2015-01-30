@@ -35,5 +35,5 @@ else
 fi
 
 . $t/Timeout-test.inc
-. $t/Cleanup.inc
+cleanup
 

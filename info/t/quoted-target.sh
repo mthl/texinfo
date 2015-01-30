@@ -30,5 +30,5 @@ else
   RETVAL=$?
 fi
 
-. $t/Cleanup.inc
+cleanup
 

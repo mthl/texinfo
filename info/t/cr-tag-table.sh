@@ -29,5 +29,5 @@ $GINFO --strict-node-location --file cr-tag-table.info \
 grep 'Node: Second' $GINFO_OUTPUT
 RETVAL=$?
 
-. $t/Cleanup.inc
+cleanup
 

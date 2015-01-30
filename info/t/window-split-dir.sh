@@ -26,5 +26,4 @@ printf '\0302\030o\0301Dq' >$PTY_TYPE
 
 grep '^File: dir' $GINFO_OUTPUT
 
-. $t/Cleanup.inc
-
+cleanup

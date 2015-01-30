@@ -1,3 +1,14 @@
+2015-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Cleanup.inc: File removed.
+	* info/t/Init-test.inc (cleanup) Add contents of Cleanup.inc as 
+	a function.
+	* info/t: All *.sh files: use cleanup function instead of 
+	sourcing Cleanup.inc.
+	* info/t/Timeout-test.inc: If exit status of 'read' builtin 
+	could indicate that '-t' option is not supported, skip the test.  
+	Test failures reported by Nathan Royce.
+
 2015-01-29  Vitezslav Crhonek <vcrhonek@redhat.com> (tiny change)
 
 	* info/info.c (main): Call info_error with "%s" just in case the 

@@ -36,5 +36,5 @@ if test $RETVAL = 0; then
   RETVAL=$?
 fi
 
-. $t/Cleanup.inc
+cleanup
 

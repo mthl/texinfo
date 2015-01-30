@@ -23,5 +23,5 @@ run_ginfo -f intera
 printf 's\rq' >$PTY_TYPE
 
 . $t/Timeout-test.inc
-. $t/Cleanup.inc
+cleanup
 

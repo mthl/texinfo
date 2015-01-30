@@ -25,5 +25,5 @@ run_ginfo -f anchor-positions
 printf q >$PTY_TYPE
 
 . $t/Timeout-test.inc
-. $t/Cleanup.inc
+cleanup
 

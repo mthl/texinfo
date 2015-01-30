@@ -28,4 +28,4 @@ printf 'Ibc\r\016\016\016\016\016\016\016\016\016\rDq' >$PTY_TYPE
 # Return non-zero (test failure) if files differ
 diff $GINFO_OUTPUT $t/node-target
 
-. $t/Cleanup.inc
+cleanup

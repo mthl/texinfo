@@ -53,3 +53,17 @@ LC_ALL=C; export LC_ALL
 
 # Make sure that non-interactive operation works even if terminal is dumb
 TERM=dumb; export TERM
+
+# Cleanup and exit
+cleanup ()
+{
+  # Delete created files and kill spawned processes if any.
+  rm -f $GINFO_OUTPUT
+  rm -f $PIPEIN $PIPEOUT
+  test $PTY_PID -ne 0 && kill $PTY_PID
+  
+  if test -n "$TIMED_OUT"; then
+    return 1
+  fi
+  exit $RETVAL
+}

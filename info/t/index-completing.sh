@@ -26,5 +26,5 @@ printf 'i\t\rDq' >$PTY_TYPE
 grep '^Node: Node 2' $GINFO_OUTPUT
 RETVAL=$?
 
-. $t/Cleanup.inc
+cleanup
 

@@ -33,5 +33,5 @@ printf '\023\023\023\r\006\rDq' >$PTY_TYPE
 diff $GINFO_OUTPUT $t/node-target
 RETVAL=$?
 
-. $t/Cleanup.inc
+cleanup
 

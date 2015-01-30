@@ -30,5 +30,4 @@ printf '\t\rDq' >$PTY_TYPE
 diff $GINFO_OUTPUT $t/node-target
 RETVAL=$?
 
-. $t/Cleanup.inc
-
+cleanup

@@ -29,5 +29,5 @@ printf 'smatch\r}{Dq' >$PTY_TYPE
 grep '^File: search\.info, Node: Top' $GINFO_OUTPUT
 RETVAL=$?
 
-. $t/Cleanup.inc
+cleanup
 

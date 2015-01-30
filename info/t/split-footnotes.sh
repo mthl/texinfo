@@ -24,5 +24,5 @@ run_ginfo -f intera -n 'Node with footnotes' -v automatic-footnotes=On
 printf '\030o\0302q' >$PTY_TYPE
 . $t/Timeout-test.inc
 
-. $t/Cleanup.inc
+cleanup
 

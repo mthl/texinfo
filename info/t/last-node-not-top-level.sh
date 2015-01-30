@@ -27,5 +27,5 @@ printf ']]]Dq' >$PTY_TYPE
 grep 'Node: Top' $GINFO_OUTPUT
 RETVAL=$?
 
-. $t/Cleanup.inc
+cleanup
 
