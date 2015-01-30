@@ -1,8 +1,8 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2014-08-08.22; # UTC
+htmlxrefversion=2015-01-30.00; # UTC
 
-# Copyright 2010, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -48,6 +48,9 @@ alive		node	${GS}/alive/manual/html_node/
 anubis		chapter	${GS}/anubis/manual/html_chapter/
 anubis		section	${GS}/anubis/manual/html_section/
 anubis		node	${GS}/anubis/manual/html_node/
+
+artanis		mono	${GS}/artanis/manual/artanis.html
+artanis		node	${GS}/artanis/manual/html_node/
 
 aspell		section	http://aspell.net/man-html/index.html
 
