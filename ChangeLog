@@ -1,3 +1,8 @@
+2015-01-31  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\documentencoding): do not re-invoke
+	\utfeightchardefs.
+
 2015-01-30  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\utfeightchardefs): define all the easy
