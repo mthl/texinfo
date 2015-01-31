@@ -2,7 +2,7 @@
 
 	* command_data.txt: Specify argument types of the other "misc" 
 	commands.
-	* end_linec (parse_line_command_args): More complete 
+	* end_line.c (parse_line_command_args): More complete 
 	implementation.
 	* parser.c (digit_chars): New variable.
 

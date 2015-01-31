@@ -1,12 +1,18 @@
-* Add a way to serialize labels_information, indices_information, etc., 
-to ease testing that the produced parse tree is what the backends 
-require.
+* Implement code passing error messages and warnings to the Perl code.
+* Counters for e.g. numbers of arguments read so far for a brace 
+command, or the row in a table.
+* Implement parser options
+* Character encoding issues - read and pass to Perl correctly.
 
-* Convert makeinfo backends to use a Perl stub for the C API. The C parser 
-will not be used at this point.
+Integration with rest of Perl code:
 
-* Substitute the XS API implementation for the Perl API when the C parser is 
-good enough.
+Passing data as Perl code to be evaluated in very slow, which limits the 
+speed-up that is obtained. One way round this would be to access the 
+parse tree in the Perl code through an API. This would be done in two 
+stages:
 
-Other tasks -
-* implement node name normalization output converter
+* Convert makeinfo backends to use a Perl stub for the C API. The C 
+parser will not be used at this point.
+* Substitute the XS API implementation for the Perl API when the C 
+parser is good enough.
+
