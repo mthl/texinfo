@@ -1,4 +1,12 @@
-2015-01-24  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* command_data.txt: Specify argument types of the other "misc" 
+	commands.
+	* end_linec (parse_line_command_args): More complete 
+	implementation.
+	* parser.c (digit_chars): New variable.
+
+2015-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* end_line.c (end_line_misc_line): Set "misc_content" key as 
 	intended, instead of "misc_args".

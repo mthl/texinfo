@@ -44,6 +44,7 @@ ELEMENT *merge_text (ELEMENT *current, char *text);
 void start_empty_line_after_command (ELEMENT *current, char **line_inout);
 
 extern const char *whitespace_chars, *whitespace_chars_except_newline;
+extern const char *digit_chars;
 
 extern ELEMENT *current_node;
 extern ELEMENT *current_section;

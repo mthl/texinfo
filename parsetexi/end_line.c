@@ -60,6 +60,12 @@ trim_spaces_comment_from_content (ELEMENT *original)
 ELEMENT *
 parse_line_command_args (ELEMENT *line_command)
 {
+#define ADD_ARG(string) { \
+    ELEMENT *new = new_element (ET_NONE); \
+    text_append (&new->text, string); \
+    add_to_element_contents (line_args, new); \
+}
+
   ELEMENT *line_args;
   ELEMENT *arg = line_command->args.list[0];
   ELEMENT *argarg = 0;
@@ -108,9 +114,18 @@ parse_line_command_args (ELEMENT *line_command)
   switch (command)
     {
     case CM_alias:
+      {
+        /* @alias NEW = EXISTING */
+        break;
+      }
     case CM_definfoenclose:
+      {
+        /* @definfoenclose phoo,//,\\ */
+        break;
+      }
     case CM_columnfractions:
       {
+        /*  @multitable @columnfractions .33 .33 .33 */
         ELEMENT *new;
         char *p = line, *q;
         while (1)
@@ -129,17 +144,32 @@ parse_line_command_args (ELEMENT *line_command)
         break;
       }
     case CM_sp:
+      {
+        /* Argument is at least one digit. */
+        if (strchr (digit_chars, *line)
+            && !*(line + 1 + strspn (line + 1, digit_chars)))
+          {
+            ADD_ARG (line)
+          }
+        else
+          abort ();
+        break;
+      }
     case CM_defindex:
     case CM_defcodeindex:
+      {
+        /* TODO: Alphanumeric + hyphens */
+        break;
+      }
     case CM_synindex:
     case CM_syncodeindex:
+      {
+        /* synindex FROM TO */
+        break;
+      }
     case CM_printindex:
       {
-        /* TODO: Check and interpret argument. */
-        ELEMENT *new;
-        new = new_element (ET_NONE);
-        text_append (&new->text, line);
-        add_to_element_contents (line_args, new);
+        ADD_ARG (line);
         break;
       }
     case CM_everyheadingmarks:
@@ -148,14 +178,105 @@ parse_line_command_args (ELEMENT *line_command)
     case CM_oddheadingmarks:
     case CM_evenfootingmarks:
     case CM_oddfootingmarks:
+      {
+        if (!strcmp (line, "top") || !strcmp (line, "bottom"))
+          {
+            ADD_ARG (line);
+          }
+        else
+          abort ();
+
+        break;
+      }
     case CM_fonttextsize:
+      {
+        if (!strcmp (line, "10") || !strcmp (line, "11"))
+          {
+            ADD_ARG (line);
+          }
+        else
+          abort ();
+        break;
+      }
     case CM_footnotestyle:
+      {
+        if (!strcmp (line, "separate") || !strcmp (line, "end"))
+          {
+            ADD_ARG(line)
+          }
+        else
+          abort ();
+        break;
+      }
     case CM_setchapternewpage:
+      {
+        if (!strcmp (line, "on") || !strcmp (line, "off")
+            || !strcmp (line, "odd"))
+          {
+            ADD_ARG(line)
+          }
+        else
+          abort ();
+        break;
+      }
     case CM_need:
+      {
+        /* valid: 2, 2., .2, 2.2 */
+
+        int valid = 1;
+        char *pline = line;
+        char *first_digits = 0;
+        char *second_digits = 0;
+        
+        if (line[0] == '\0')
+          valid = 0;
+        else
+          {
+            if (strchr (digit_chars, *pline))
+              pline = first_digits = line + strspn (line, digit_chars);
+
+            if (*pline == '.')
+              {
+                pline++;
+                if (strchr (digit_chars, *pline))
+                  {
+                    pline = second_digits = pline + strspn (pline, 
+                                                            digit_chars);
+                  }
+              }
+
+            if (*pline /* Bytes remaining at end of argument. */
+                || (!first_digits && !second_digits)) /* Need digits either 
+                                                         before or after the 
+                                                         decimal point. */
+              valid = 0;
+          }
+
+        if (valid)
+          ADD_ARG(line)
+        else
+          abort ();
+
+        break;
+      }
     case CM_paragraphindent:
+      {
+        break;
+      }
     case CM_firstparagraphindent:
+      {
+        if (!strcmp (line, "none") || !strcmp (line, "insert"))
+          {
+            ADD_ARG(line)
+          }
+        else
+          abort ();
+
+        break;
+      }
     case CM_exampleindent:
       {
+        break;
       }
     case CM_frenchspacing:
     case CM_xrefautomaticsectiontitle:
@@ -163,16 +284,65 @@ parse_line_command_args (ELEMENT *line_command)
     case CM_codequotebacktick:
     case CM_deftypefnnewline:
       {
-        /* Argument is either "on" or "off". */
+        if (!strcmp (line, "on") || !strcmp (line, "off"))
+          {
+            ADD_ARG(line)
+          }
+        else
+          abort ();
+
+        break;
       }
     case CM_kbdinputstyle:
+      {
+        if (!strcmp (line, "code") || !strcmp (line, "example")
+            || !strcmp (line, "distinct"))
+          {
+            ADD_ARG(line)
+          }
+        else
+          abort ();
+        break;
+      }
     case CM_allowcodebreaks:
+      {
+        if (!strcmp (line, "true") || !strcmp (line, "false"))
+          {
+            ADD_ARG(line)
+          }
+        else
+          abort ();
+        break;
+      }
     case CM_urefbreakstyle:
+      {
+        if (!strcmp (line, "after") || !strcmp (line, "before")
+            || !strcmp (line, "none"))
+          {
+            ADD_ARG(line)
+          }
+        else
+          abort ();
+        break;
+      }
     case CM_headings:
+      {
+        if (!strcmp (line, "off") || !strcmp (line, "on")
+            || !strcmp (line, "double") || !strcmp (line, "singleafter")
+            || !strcmp (line, "doubleafter"))
+          {
+            ADD_ARG(line)
+          }
+        else
+          abort ();
+        break;
+      }
     default:
       ;
     }
   return line_args;
+
+#undef ADD_ARG
 }
 
 // 2257

@@ -47,15 +47,15 @@ node    		misc		MISC_line
 bye     		misc		MISC_skipline
 end     		misc		MISC_text
 # set, clear
-set     		misc
-clear   		misc
-unmacro 		misc
+set     		misc		MISC_special
+clear   		misc		MISC_special
+unmacro 		misc		MISC_special
 # comments
 c	 		misc		MISC_lineraw
 comment 		misc		MISC_lineraw
 # special
-definfoenclose		misc
-alias   		misc
+definfoenclose		misc		3
+alias   		misc		2
 # number of arguments is not known in advance.
 columnfractions		misc		1
 # file names
@@ -68,8 +68,8 @@ lowersections			misc		MISC_skipline
 contents			misc		MISC_skipline
 shortcontents			misc		MISC_skipline
 summarycontents			misc		MISC_skipline
-insertcopying			misc
-clickstyle			misc
+insertcopying			misc		MISC_noarg
+clickstyle			misc		MISC_special
 # more relevant in preamble
 setcontentsaftertitlepage	misc		MISC_skipline
 setshortcontentsaftertitlepage	misc		MISC_skipline
@@ -80,26 +80,26 @@ dircategory			misc		MISC_line
 pagesizes			misc		MISC_line
 # or one? 200mm,150mm 11.5in
 finalout			misc		MISC_skipline
-paragraphindent			misc
+paragraphindent			misc		1
 # or a number and forbids anything else on the line
-firstparagraphindent		misc
-frenchspacing			misc
-codequoteundirected		misc
-codequotebacktick		misc
-xrefautomaticsectiontitle	misc
-deftypefnnewline		misc
-fonttextsize			misc
-allowcodebreaks			misc
-exampleindent			misc
-footnotestyle			misc
-urefbreakstyle			misc
+firstparagraphindent		misc		1
+frenchspacing			misc		1
+codequoteundirected		misc		1
+codequotebacktick		misc		1
+xrefautomaticsectiontitle	misc		1
+deftypefnnewline		misc		1
+fonttextsize			misc		1
+allowcodebreaks			misc		1
+exampleindent			misc		1
+footnotestyle			misc		1
+urefbreakstyle			misc		1
 afourpaper			misc		MISC_skipline
 afivepaper			misc		MISC_skipline
 afourlatex			misc		MISC_skipline
 afourwide			misc		MISC_skipline
-headings			misc
+headings			misc		1
 # interacts with setchapternewpage
-setchapternewpage		misc
+setchapternewpage		misc		1
 
 # only relevant in TeX, and special
 everyheading			misc		MISC_lineraw
@@ -110,18 +110,18 @@ oddheading			misc		MISC_lineraw
 oddfooting			misc		MISC_lineraw
 
 smallbook			misc		MISC_skipline
-syncodeindex			misc
-synindex			misc
-defindex			misc
-defcodeindex			misc
-documentlanguage		misc	MISC_text
-kbdinputstyle			misc
-everyheadingmarks		misc
-everyfootingmarks		misc
-evenheadingmarks		misc
-oddheadingmarks			misc
-evenfootingmarks		misc
-oddfootingmarks			misc
+syncodeindex			misc		2
+synindex			misc		2
+defindex			misc		1
+defcodeindex			misc		1
+documentlanguage		misc		MISC_text
+kbdinputstyle			misc		1
+everyheadingmarks		misc		1
+everyfootingmarks		misc		1
+evenheadingmarks		misc		1
+oddheadingmarks			misc		1
+evenfootingmarks		misc		1
+oddfootingmarks			misc		1
 # not valid for info (should be in @iftex)
 cropmarks			misc		MISC_skipline
 
@@ -136,28 +136,28 @@ settitle			misc		MISC_line
 author				misc		MISC_line
 subtitle			misc		MISC_line
 title				misc		MISC_line
-sp				misc
+sp				misc		1
 page				misc		MISC_skipline
-need				misc
+need				misc		1
 # formatting
-noindent			misc
-indent				misc
+noindent			misc		MISC_skipspace
+indent				misc		MISC_skipspace
 exdent				misc		MISC_line
 headitem			misc		MISC_skipspace
 item				misc		MISC_skipspace
 itemx				misc		MISC_skipspace
 tab				misc		MISC_skipspace
 # only valid in heading or footing
-thischapter			misc
-thischaptername			misc
-thischapternum			misc
-thisfile			misc
-thispage			misc
-thistitle			misc
+thischapter			misc		MISC_noarg
+thischaptername			misc		MISC_noarg
+thischapternum			misc		MISC_noarg
+thisfile			misc		MISC_noarg
+thispage			misc		MISC_noarg
+thistitle			misc		MISC_noarg
 # not valid for info (should be in @iftex)
 vskip				misc		MISC_lineraw
 # obsolete @-commands.
-refill				misc
+refill				misc		MISC_noarg
 # Remove spaces and end of lines after the 
 # commands? If no, they can lead to empty lines
 # TODO: Check what these two are.
