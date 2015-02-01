@@ -246,7 +246,7 @@ sub parse_texi_file ($$)
 
   #print "Getting tree...\n";
 
-  my ($TREE, $LABELS, $INDEX_NAMES);
+  my ($TREE, $LABELS, $INDEX_NAMES, $ERRORS);
   if (1) {
     # $| = 1; # Flush after each print
     print "Parsing file...\n";
@@ -290,6 +290,16 @@ sub parse_texi_file ($$)
   $self->{'labels'} = $LABELS;
 
   $self->{'index_names'} = $INDEX_NAMES;
+
+  # Copy the errors into the error list in Texinfo::Report.
+  # TODO: Could we just access the error list directly instead of going
+  # through Texinfo::Report line_error?
+  $tree_stream = dump_errors();
+  eval $tree_stream;
+  for my $error (@{$ERRORS}) {
+    $self->line_error ($error->{'message'}, $error->{'line_nr'});
+  }
+
 
   #$Data::Dumper::Purity = 1;
   #$Data::Dumper::Indent = 1;

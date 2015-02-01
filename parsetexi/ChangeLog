@@ -1,3 +1,16 @@
+2015-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* errors.c: New file.
+	(line_error, line_errorf, dump_errors): New functions.
+	* end_line.c (parse_line_command_args) <@sp>: Call line_errorf 
+	if argument is malformed.
+
+	* Parsetexi/lib/Parsetexi.pm (parse_texi_file): Fetch error 
+	messages.
+
+	* dump_perl.c (dump_line_nr): Arguments changed.
+	* test-files/error.texi: New test file.
+
 2015-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* command_data.txt: Specify argument types of the other "misc" 

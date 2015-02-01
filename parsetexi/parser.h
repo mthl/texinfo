@@ -60,8 +60,7 @@ ELEMENT *handle_macro (ELEMENT *current, char **line_inout,
 ELEMENT *item_line_parent (ELEMENT *current);
 ELEMENT *item_multitable_parent (ELEMENT *current);
 
-/* In dump_perl.c */
-void dump_tree_to_perl (ELEMENT *root);
+#include "dump_perl.h"
 
 /* In extra.c */
 void add_extra_key_element (ELEMENT *e, char *key, ELEMENT *value);

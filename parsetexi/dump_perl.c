@@ -28,7 +28,7 @@
 
 #define TREE_ROOT_VAR "$TREE"
 
-int indent = 0;
+static int indent = 0;
 
 /* A dump to fill in references from one part of the tree to another. */
 static TEXT fixup_dump;
@@ -42,7 +42,7 @@ void dump_element (ELEMENT *, TEXT *);
 void dump_args (ELEMENT *, TEXT *);
 
 /* Output INDENT spaces. */
-void
+static void
 dump_indent (TEXT *text)
 {
   int i;
@@ -352,22 +352,22 @@ dump_extra (ELEMENT *e, TEXT *text)
 }
 
 void
-dump_line_nr (ELEMENT *e, TEXT *text)
+dump_line_nr (LINE_NR *line_nr, TEXT *text)
 {
   text_append_n (text, "{\n", 2);
   indent += 2;
 
-  if (e->line_nr.file_name)
+  if (line_nr->file_name)
     {
       dump_indent (text);
-      text_printf (text, "'file_name' => '%s',\n", e->line_nr.file_name);
+      text_printf (text, "'file_name' => '%s',\n", line_nr->file_name);
     }
 
-  if (e->line_nr.line_nr)
+  if (line_nr->line_nr)
     {
       dump_indent (text);
       text_append (text, "'line_nr' => ");
-      text_printf (text, "%d", e->line_nr.line_nr);
+      text_printf (text, "%d", line_nr->line_nr);
       text_append (text, ",\n");
     }
 
@@ -404,7 +404,7 @@ dump_element (ELEMENT *e, TEXT *text)
     {
       dump_indent (text);
       text_append (text, "'line_nr' => ");
-      dump_line_nr (e, text);
+      dump_line_nr (&e->line_nr, text);
     }
 
   if (e->text.text)
@@ -602,7 +602,7 @@ dump_root_element_1 (void)
     {
       dump_indent (text);
       text_append (text, "'line_nr' => ");
-      dump_line_nr (e, text);
+      dump_line_nr (&e->line_nr, text);
     }
 
   if (e->text.text)

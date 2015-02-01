@@ -24,6 +24,7 @@
 #include "convert.h"
 #include "labels.h"
 #include "indices.h"
+#include "errors.h"
 
 // 5467, also in Common.pm 1334
 // TODO: Check the behaviour here is the same
@@ -152,7 +153,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG (line)
           }
         else
-          abort ();
+          line_errorf ("@sp arg must be numeric, not `%s'", line);
         break;
       }
     case CM_defindex:

@@ -8,12 +8,15 @@
 #include "../tree_types.h"
 #include "../tree.h"
 #include "../api.h"
+#include "../errors.h"
 
 MODULE = Parsetexi		PACKAGE = Parsetexi		
 
 TYPEMAP: <<END
 ELEMENT *   T_UV
 END
+
+PROTOTYPES: ENABLE
 
 char *
 dump_tree_to_string_1 ()
@@ -27,6 +30,9 @@ dump_tree_to_string_3 ()
 char *dump_root_element_1 ()
 
 char *dump_root_element_2 ()
+
+char *
+dump_errors ()
 
 void
 parse_file(filename)

@@ -24,10 +24,11 @@ libparsetexi_a_SOURCES=api.c api.h \
 		  macro.c \
 		  handle_commands.c handle_commands.h \
 		  def.c def.h \
-		  dump_perl.c \
+		  dump_perl.c dump_perl.h \
 		  extra.c \
 		  menus.c \
-		  labels.c
+		  labels.c \
+		  errors.c errors.h
 
 parsetexi_SOURCES=$(libparsetexi_a_SOURCES) main.c
 
