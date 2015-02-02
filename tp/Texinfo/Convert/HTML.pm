@@ -1,7 +1,7 @@
 # $Id$
 # HTML.pm: output tree as HTML.
 #
-# Copyright 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
+# Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -5716,11 +5716,21 @@ sub _external_node_href($$$$)
   my $filename = shift;
   my $link_command = shift;
   
+  # This only overrides an implicit pointer to (dir) as the Top node's Up.
+  # It has no effect if a pointer is explicitly specified,
+  # or if implicit pointers aren't being created (e.g., just a Top node).
   if ($external_node->{'top_node_up'} 
       and defined($self->get_conf('TOP_NODE_UP_URL'))) {
     return $self->get_conf('TOP_NODE_UP_URL');
   }
 
+  # In addition to that implicit (dir) as the Top node's Up, replace all
+  # other references to external file "dir" with the same TOP_NODE_UP_URL.
+  if (defined($self->get_conf('TOP_NODE_UP_URL'))
+      and $external_node->{'manual_content'}[0]->{'text'} eq "dir") {
+    return $self->get_conf('TOP_NODE_UP_URL');
+  }
+  
   #print STDERR "external_node: ".join('|', keys(%$external_node))."\n";
   my ($target_filebase, $target, $id) = $self->_node_id_file($external_node);
 

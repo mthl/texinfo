@@ -1,3 +1,20 @@
+2015-02-02  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.texi (First Node): mention TOP_NODE_UP_URL usage.
+	(HTML Customization Variables) <TOP_NODE_UP_URL>: say more.
+	(Other Customization Variables) <TOP_NODE_UP>: ref TOP_NODE_UP_URL.
+	* tp/Texinfo/Convert/HTML.pm (_external_node_href): replace all
+	(dir) links with TOP_NODE_UP_URL, not just the (dir) link
+	implicitly created as Top's Up.
+
+	* tp/tests/README: tersely describe creating a new test, best I can.
+	* tp/tests/run_parser_all.sh: more logging, use test -n/-z more.
+	* tp/tests/sectioning/tests-parser.txt: new tests,
+	top_node_up_implicit and top_node_up_explicit.
+	* tp/tests/sectioning/top_node_up_{im,ex}plicit.texi: new files.
+	* tp/tests/sectioning/res_parser{,_html}/top_node_up_{im,ex}plicit:
+	new result directories.
+
 2015-01-31  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\documentencoding): do not re-invoke

@@ -5280,11 +5280,30 @@ The Top node (which must be named @samp{top} or @samp{Top}) should have
 as its `Up' node the name of a node in another file, where there is a
 menu that leads to this file.  Specify the file name in parentheses.
 
-Usually, all Info files are installed in one system-wide Info tree
-(often constructed from multiple directories).  In this case, use
+Usually, all Info files are available through a single virtual Info
+tree, constructed from multiple directories.  In this case, use
 @samp{(dir)} as the parent of the Top node; this specifies the
 top-level node in the @file{dir} file, which contains the main menu
-for the Info system as a whole.
+for the Info system as a whole.  (Each directory with Info files is
+intended to contain a file named @file{dir}.)
+
+That's fine for Info, but for HTML output, one might well want the Up
+link from the Top node to go somewhere other than @samp{dir.html}.
+For example, for GNU the natural place would be
+@url{http://www.gnu.org/manual/} (a web page collecting links to most
+GNU manuals).  This can be specified with the @code{TOP_NODE_UP_URL}
+customization variable (@pxref{HTML Customization Variables}), as in
+
+@example
+$ @kbd{makeinfo --html -c TOP_NODE_UP_URL=http://www.gnu.org/manual/} ...
+@end example
+
+All links to @code{(dir)} will be replaced by the given url.
+
+@item
+@cindex Prev node of Top node
+The `Prev' node of the Top node is usually either omitted or also set
+to @file{(dir)}.  Either is fine.
 
 @item
 @cindex Next node of Top node
@@ -18256,8 +18275,13 @@ For HTML@.  File name used for the Top node in cross references;
 default is @code{index}.
 
 @item TOP_NODE_UP_URL
-For HTML@.  The url used for the Up pointer of the Top node; default
-@code{undef}, meaning no link is generated.
+For HTML@.  A url used for @code{(dir)} references; the default is
+@code{undef}, meaning that the normal rules apply, typically leading
+to a link to @samp{dir.html} from an implicit or explicit reference to
+@samp{(dir)} (@pxref{HTML Xref}).  For more about the Top node
+pointers, @pxref{First Node}.  For overriding the Up pointer in other
+formats, see @code{TOP_NODE_UP} in @ref{Other Customization
+Variables}.
 
 @item USE_ACCESSKEY
 @cindex @code{accesskey}, customization variable for
@@ -18565,7 +18589,9 @@ For stripped text content output (i.e., when
 also output comments.  Default false.
 
 @item TOP_NODE_UP
-Up node for the Top node; default @samp{(dir)}.
+Up node for the Top node; default @samp{(dir)}.  For overriding the
+url in HTML output, see @code{TOP_NODE_UP_URL} in @ref{HTML
+Customization Variables}.
 
 @item TREE_TRANSFORMATIONS
 The associated value is a comma separated list of transformations that
