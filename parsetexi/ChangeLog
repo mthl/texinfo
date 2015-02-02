@@ -1,3 +1,13 @@
+2015-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* end_line.c (parse_line_command_args): More complete 
+	implementation.
+	(is_decimal_numer): New function split from 
+	parse_line_command_args.
+
+	* parser.c (read_command_name): Return null if not looking at a 
+	valid command name.
+
 2015-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* errors.c: New file.

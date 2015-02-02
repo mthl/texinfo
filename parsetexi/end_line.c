@@ -16,6 +16,7 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "parser.h"
 #include "tree.h"
@@ -57,14 +58,49 @@ trim_spaces_comment_from_content (ELEMENT *original)
   return trimmed;
 }
 
+static int
+is_decimal_number (char *string)
+{
+  char *p = string;
+  char *first_digits = 0;
+  char *second_digits = 0;
+  
+  if (string[0] == '\0')
+    return 0;
+
+  if (strchr (digit_chars, *p))
+    p = first_digits = string + strspn (string, digit_chars);
+
+  if (*p == '.')
+    {
+      p++;
+      if (strchr (digit_chars, *p))
+        p = second_digits = p + strspn (p, digit_chars);
+    }
+
+  if (*p /* Bytes remaining at end of argument. */
+      || (!first_digits && !second_digits)) /* Need digits either 
+                                               before or after the 
+                                               decimal point. */
+    {
+      return 0;
+    }
+
+  return 1;
+}
+
+/* Parse the arguments to a line command.  Return an element whose contents
+   is an array of the arguments.  For some commands, there is further 
+   processing of the arguments (for example, for an @alias, remember the
+   alias.) */
 // 5475
 ELEMENT *
 parse_line_command_args (ELEMENT *line_command)
 {
 #define ADD_ARG(string) { \
-    ELEMENT *new = new_element (ET_NONE); \
-    text_append (&new->text, string); \
-    add_to_element_contents (line_args, new); \
+    ELEMENT *E = new_element (ET_NONE); \
+    text_append (&E->text, string); \
+    add_to_element_contents (line_args, E); \
 }
 
   ELEMENT *line_args;
@@ -117,30 +153,117 @@ parse_line_command_args (ELEMENT *line_command)
     case CM_alias:
       {
         /* @alias NEW = EXISTING */
+        char *new = 0, *existing = 0;
+
+        if (!isalnum (*line)) /* This stops e.g. "@alias * = :" */
+          goto alias_invalid;
+        new = read_command_name (&line);
+        if (!new)
+          goto alias_invalid;
+
+        line += strspn (line, whitespace_chars);
+        if (*line != '=')
+          goto alias_invalid;
+        line++;
+        line += strspn (line, whitespace_chars);
+
+        if (!isalnum (*line))
+          goto alias_invalid;
+        existing = read_command_name (&line);
+        if (!existing)
+          goto alias_invalid;
+
+        ADD_ARG(new)
+        ADD_ARG(existing)
+
+        /* TODO: Rememer the alias. */
+        break;
+      alias_invalid:
+        line_error ("bad argument to @alias");
+        free (new); free (existing);
         break;
       }
     case CM_definfoenclose:
       {
         /* @definfoenclose phoo,//,\\ */
+        char *new_command = 0, *start = 0, *end = 0;
+        int len;
+
+        new_command = read_command_name (&line);
+        if (!new_command)
+          goto definfoenclose_invalid;
+
+        line += strspn (line, whitespace_chars);
+        if (*line != ',')
+          goto alias_invalid;
+        line++;
+        line += strspn (line, whitespace_chars);
+
+        /* TODO: Can we have spaces in the delimiters? */
+        len = strcspn (line, ",");
+        start = strndup (line, len);
+        line += len;
+
+        if (!*line)
+          goto alias_invalid; /* Not enough args. */
+        line++; /* Past ','. */
+        line += strspn (line, whitespace_chars);
+        len = strcspn (line, ",");
+        end = strndup (line, len);
+
+        if (*line == ',')
+          goto definfoenclose_invalid; /* Too many args. */
+
+        ADD_ARG(new_command)
+        ADD_ARG(start)
+        ADD_ARG(end)
+        break;
+      definfoenclose_invalid:
+        line_error ("bad argument to @definfoenclose");
+        free (new_command); free (start); free (end);
         break;
       }
     case CM_columnfractions:
       {
         /*  @multitable @columnfractions .33 .33 .33 */
         ELEMENT *new;
-        char *p = line, *q;
+        char *p, *q;
+
+        if (!*line)
+          {
+            line_error ("empty @columnfractions");
+            break;
+          }
+        p = line;
         while (1)
           {
+            char *arg;
+
             p += strspn (p, whitespace_chars);
             if (!*p)
               break;
             q = strpbrk (p, whitespace_chars);
             if (!q)
               q = p + strlen (p);
-            new = new_element (ET_NONE);
-            text_append_n (&new->text, p, q - p);
+            
+            arg = strndup (p, q - p);
+
+            /* Check argument is valid. */
+            if (!is_decimal_number (arg))
+              {
+                line_errorf ("column fraction not a number: %s", arg);
+
+                /* FIXME: Possible bug in the Perl version - it accepts
+                   2x.2, 2.23x */
+              }
+            else
+              {
+                new = new_element (ET_NONE);
+                text_append_n (&new->text, p, q - p);
+                add_to_element_contents (line_args, new);
+              }
+            free (arg);
             p = q;
-            add_to_element_contents (line_args, new);
           }
         break;
       }
@@ -150,7 +273,7 @@ parse_line_command_args (ELEMENT *line_command)
         if (strchr (digit_chars, *line)
             && !*(line + 1 + strspn (line + 1, digit_chars)))
           {
-            ADD_ARG (line)
+            ADD_ARG(line)
           }
         else
           line_errorf ("@sp arg must be numeric, not `%s'", line);
@@ -159,17 +282,58 @@ parse_line_command_args (ELEMENT *line_command)
     case CM_defindex:
     case CM_defcodeindex:
       {
-        /* TODO: Alphanumeric + hyphens */
+        char *name = 0;
+        char *p = line;
+        if (!isalnum (*p))
+          goto defindex_invalid;
+
+        name = read_command_name (&p);
+        if (*p)
+          goto defindex_invalid; /* Trailing characters. */
+
+        ADD_ARG (name)
+        /* TODO: Store the index. */
+        break;
+      defindex_invalid:
+        line_errorf ("bad argument to @%s: %s",
+                     command_data(command).cmdname, line);
         break;
       }
     case CM_synindex:
     case CM_syncodeindex:
       {
         /* synindex FROM TO */
+        char *from = 0, *to = 0;
+        char *p = line;
+
+        if (!isalnum (*p))
+          goto synindex_invalid;
+        from = read_command_name (&p);
+        if (!from)
+          goto synindex_invalid;
+
+        p += strspn (p, whitespace_chars);
+
+        if (!isalnum (*p))
+          goto synindex_invalid;
+        to = read_command_name (&p);
+        if (!to)
+          goto synindex_invalid;
+
+        ADD_ARG(from)
+        ADD_ARG(to)
+
+        /* TODO: Rememer the synonym. */
+        break;
+      synindex_invalid:
+        line_errorf ("bad argument to @%s: %s",
+                     command_data(command).cmdname, line);
+        free (from); free (to);
         break;
       }
     case CM_printindex:
       {
+        /* TODO */
         ADD_ARG (line);
         break;
       }
@@ -185,7 +349,8 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG (line);
           }
         else
-          abort ();
+          line_errorf ("@%s argument must be `top' or `bottom', not `%s'",
+                       command_data(command).cmdname, line);
 
         break;
       }
@@ -196,7 +361,8 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG (line);
           }
         else
-          abort ();
+          line_errorf ("Only @fonttextsize 10 or 11 is supported, not "
+                       "`%s'", line);
         break;
       }
     case CM_footnotestyle:
@@ -206,7 +372,8 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line)
           }
         else
-          abort ();
+          line_errorf ("@footnotestyle arg must be "
+                       "`separate' or `end', not `%s'", line);
         break;
       }
     case CM_setchapternewpage:
@@ -217,51 +384,25 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line)
           }
         else
-          abort ();
+          line_errorf ("@setchapternewpage argument must be "
+                       "`on', `off' or `odd', not `%s'", line);
         break;
       }
     case CM_need:
       {
         /* valid: 2, 2., .2, 2.2 */
 
-        int valid = 1;
-        char *pline = line;
-        char *first_digits = 0;
-        char *second_digits = 0;
-        
-        if (line[0] == '\0')
-          valid = 0;
-        else
-          {
-            if (strchr (digit_chars, *pline))
-              pline = first_digits = line + strspn (line, digit_chars);
-
-            if (*pline == '.')
-              {
-                pline++;
-                if (strchr (digit_chars, *pline))
-                  {
-                    pline = second_digits = pline + strspn (pline, 
-                                                            digit_chars);
-                  }
-              }
-
-            if (*pline /* Bytes remaining at end of argument. */
-                || (!first_digits && !second_digits)) /* Need digits either 
-                                                         before or after the 
-                                                         decimal point. */
-              valid = 0;
-          }
-
-        if (valid)
+        if (is_decimal_number (line))
           ADD_ARG(line)
         else
-          abort ();
+          line_errorf ("bad argument to @need: %s", line);
 
         break;
       }
     case CM_paragraphindent:
       {
+        /*TODO*/
+
         break;
       }
     case CM_firstparagraphindent:
@@ -271,12 +412,15 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line)
           }
         else
-          abort ();
+          line_errorf ("@firstparagraph argument must be "
+                       "`none' or `insert', not `%s'", line);
 
         break;
       }
     case CM_exampleindent:
       {
+        /*TODO */
+
         break;
       }
     case CM_frenchspacing:
@@ -290,7 +434,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line)
           }
         else
-          abort ();
+          line_errorf ("expected @%s on or off, not `%s'", line);
 
         break;
       }
@@ -302,7 +446,8 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line)
           }
         else
-          abort ();
+          line_errorf ("@kbdinputstyle arg must be "
+                       "`code'/`example'/`distinct', not `%s'", line);
         break;
       }
     case CM_allowcodebreaks:
@@ -312,7 +457,8 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line)
           }
         else
-          abort ();
+          line_errorf ("@allowcodebreaks arg must be "
+                       "`true' or `false', not `%s'", line);
         break;
       }
     case CM_urefbreakstyle:
@@ -323,7 +469,8 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line)
           }
         else
-          abort ();
+          line_errorf ("@urefbreakstyle arg must be "
+                       "`after'/`before'/`none', not `%s'", line);
         break;
       }
     case CM_headings:
@@ -335,7 +482,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line)
           }
         else
-          abort ();
+          line_errorf ("bad argument to @headings: %s", line);
         break;
       }
     default:

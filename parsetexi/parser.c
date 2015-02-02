@@ -48,7 +48,8 @@ looking_at (char *s1, char *s2)
   return !strncmp (s1, s2, strlen (s2));
 }
 
-/* Return value to be freed by caller.  *PTR is advanced past the read name. */
+/* Return value to be freed by caller.  *PTR is advanced past the read name.
+   Return 0 if name is invalid. */
 // 4161
 char *
 read_command_name (char **ptr)
@@ -72,7 +73,7 @@ read_command_name (char **ptr)
          first isn't a hyphen. */
       char *q = p;
       if (!isalnum (*q))
-        abort (); /* Invalid. */
+        return 0; /* Invalid. */
 
       while (isalnum (*++q) || *q == '-')
         ;

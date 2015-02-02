@@ -1,4 +1,6 @@
 * Implement code passing error messages and warnings to the Perl code.
+* @set/@value
+* @verb
 * Counters for e.g. numbers of arguments read so far for a brace 
 command, or the row in a table.
 * Implement parser options
