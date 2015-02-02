@@ -24,6 +24,7 @@
 #include "input.h"
 #include "tree.h"
 #include "api.h"
+#include "errors.h"
 
 /* Parser state - see Parser.pm:135. */
 
@@ -379,6 +380,12 @@ abort_empty_line (ELEMENT **current_inout, char *additional_text)
 }
 
 /* 2149 */
+/* Split any trailing whitespace on the last element in a line into its
+   own element, ET_spaces_at_end by default.  This helps with line
+   argument parsing as there will be no leading or trailing spaces.
+
+   Also, "to help expansion disregard unuseful spaces".  Could that mean
+   macro expansion? */
 void
 isolate_last_space (ELEMENT *current, enum element_type element_type)
 {
@@ -392,8 +399,9 @@ isolate_last_space (ELEMENT *current, enum element_type element_type)
       int index = -1;
       ELEMENT *indexed_elt;
 
-      /* Ignore space before a misc command that is last on line.  (I don't 
-         understand this. ) */
+      /* If a "misc" (i.e. line) command is last on line, isolate the space in 
+         the element before it.  This covers the case of a "@c" at the end
+         of a line. */
       if (element_contents_number (current) > 1)
         {
           if (last->cmd)
@@ -450,7 +458,12 @@ isolate_last_space (ELEMENT *current, enum element_type element_type)
     }
 }
 
-
+/* 3491 */
+/* Add an "ET_empty_line_after_command" element containing the whitespace at 
+   the beginning of the rest of the line.  This element can be later changed to 
+   a "ET_empty_spaces_after_command" element in 'abort_empty_line' if more
+   text follows on the line.  Used after line commmands or commands starting
+   a block. */
 void
 start_empty_line_after_command (ELEMENT *current, char **line_inout)
 {
@@ -466,6 +479,7 @@ start_empty_line_after_command (ELEMENT *current, char **line_inout)
 
   *line_inout = line;
 }
+
 
 /* Parts of parse_texi lines 3676 - 5372 */
 
@@ -514,7 +528,7 @@ is_end_current_command (ELEMENT *current, char **line,
 /* *LINEP is a pointer into the line being processed.  It is advanced past any
    bytes processed.  Return 0 when we need to read a new line. */
 int
-big_loop (ELEMENT **current_inout, char **line_inout)
+process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
 {
   ELEMENT *current = *current_inout;
   char *line = *line_inout;
@@ -692,9 +706,11 @@ big_loop (ELEMENT **current_inout, char **line_inout)
         }
       else // 4041
         {
-          // error - braces expected
+          /* TODO: Check 'IGNORE_SPACES_AFTER_BRACED_COMMAND_NAME' config
+             variable. */
           // broken by lack of @verb processing ATM
-          //abort ();
+          //line_errorf ("@%s expected braces",
+          //  command_data(current->cmd).cmdname);
           current = current->parent;
         }
     }
@@ -916,7 +932,7 @@ parse_texi (ELEMENT *root_elt)
          of line. */
       while (1)
         {
-          if (!big_loop (&current, &line))
+          if (!process_remaining_on_line (&current, &line))
             break;
         }
     }

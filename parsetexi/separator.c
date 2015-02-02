@@ -93,7 +93,10 @@ handle_open_brace (ELEMENT *current, char **line_inout)
               ELEMENT *e;
               e = new_element (ET_empty_spaces_before_argument);
               add_to_element_contents (current, e);
+              add_extra_key_element (current->parent,
+                                     "spaces_before_argument", e);
             }
+          /* 4956 - TODO inline commands */
         }
 
     }

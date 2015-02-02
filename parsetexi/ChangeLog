@@ -1,5 +1,15 @@
 2015-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* parser.c (isolate_last_space, start_empty_line_after_command): 
+	Add comments.
+	(big_loop, process_remaining_on_line): Function renamed.
+	<no brace after brace command>: Add commented-out code and 
+	comment.
+	* separator.c (handle_open_brace): Set "spaces_before_argument" 
+	extra value.
+
+2015-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* end_line.c (parse_line_command_args): More complete 
 	implementation.
 	(is_decimal_numer): New function split from 
