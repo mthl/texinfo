@@ -1,5 +1,8 @@
 2015-02-03  Karl Berry  <karl@gnu.org>
 
+	* tp/Texinfo/Convert/HTML.pm (output): foolishly omitted closing "
+	on $bodytext.  Regenerate test results.
+
 	* doc/Makefile.am (gendocs_invoke): pass TOP_NODE_UP_URL=/manual/.
 	(gnulib, etc.): new variable and settings to invoke gendocs.sh
 	from gnulib, as it is no longer maintained here.

@@ -6760,7 +6760,8 @@ sub output($$)
 
   &{$self->{'format_css_lines'}}($self);
 
-  $self->set_conf('BODYTEXT', 'lang="' . $self->get_conf('documentlanguage'));
+  $self->set_conf('BODYTEXT',
+                  'lang="' . $self->get_conf('documentlanguage') . '"');
 
   # prepare title.  fulltitle uses more possibility than simpletitle for
   # title, including @-commands found in @titlepage only.  Therefore
