@@ -1,3 +1,14 @@
+2015-02-03  Karl Berry  <karl@gnu.org>
+
+	* doc/Makefile.am (gendocs_invoke): pass TOP_NODE_UP_URL=/manual/.
+	(gnulib, etc.): new variable and settings to invoke gendocs.sh
+	from gnulib, as it is no longer maintained here.
+	* doc/texinfo.texi: fix broken cross-manual links, etc.
+	* util/htmlxref.cnf: add free TeX manuals on tug.org.
+
+	* Makefile.am (long-checks),
+	* tp/Makefile.am (long-checks): convenience target for tp/tests.
+	
 2015-02-02  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (First Node): mention TOP_NODE_UP_URL usage.

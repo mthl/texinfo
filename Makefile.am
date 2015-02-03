@@ -21,14 +21,25 @@ EXTRA_DIST = ChangeLog.46 INSTALL.generic README-hacking \
   system.h gnulib/m4/gnulib-cache.m4 \
   contrib djgpp
 
+# include contrib perl manual, exclude .svn.
 dist-hook:
 	cd $(top_distdir)/contrib/perldoc-all && $(MAKE) distclean
 	rm -rf `find $(distdir) -type d -name .svn`
+
+# update texi2html translations.
+dist-local:
+	cp -fpR $(srcdir)/po_document/*.po $(srcdir)/po_document/LINGUAS texi2html/po_document/
+	cp -fpR $(srcdir)/po/*.po $(srcdir)/po/LINGUAS texi2html/po_messages/
 
 # This is to prevent texinfo.tex from being included in the top-level
 # distribution directory.
 TEXINFO_TEX = doc/texinfo.tex
 
+# One special target for installers to use by hand if desired.
+install-tex:
+	cd doc && $(MAKE) TEXMF=$(TEXMF) install-tex
+
+# painful separate build for cross-compiling.
 SUBDIRS =
 if TOOLS_ONLY
   # Build native tools only.
@@ -59,22 +70,18 @@ endif
              doc man
 endif
 
-# One special target for installers to use by hand if desired.
-install-tex:
-	cd doc && $(MAKE) TEXMF=$(TEXMF) install-tex
-
 distclean-local:
 	-test -d "$(native_tools)" && rm -rf "$(native_tools)"
-
-dist-local:
-	cp -fpR $(srcdir)/po_document/*.po $(srcdir)/po_document/LINGUAS texi2html/po_document/
-	cp -fpR $(srcdir)/po/*.po $(srcdir)/po/LINGUAS texi2html/po_messages/
 
 # Don't install native tools for cross compile.
 if TOOLS_ONLY
 install:
 
 endif
+
+# just a convenience for running these additional tests.
+long-checks:
+	cd tp/tests && $(MAKE) long-checks
 
 # From coreutils.
 # Verify that all source files using _() are listed in po/POTFILES.in.

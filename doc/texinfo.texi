@@ -618,7 +618,7 @@ Creating an Info File
 * @t{texinfo-format} commands::     Two Info formatting commands written
                                  in Emacs Lisp are an alternative
                                  to @code{makeinfo}.
-* Batch Formatting::            How to format for Info in Emacs Batch mode.
+* Batch Formatting::            How to format for Info in Emacs batch mode.
 * Tag and Split Files::         How tagged and split files help Info
                                  to run better.
 
@@ -852,9 +852,9 @@ smaller the input file, the better.)
 
 @cindex Patches, contributing
 Patches are most welcome; if possible, please make them with
-@samp{@w{diff -c}} (@pxref{Top,,, diff, Comparing and Merging Files})
-and include @file{ChangeLog} entries (@pxref{Change Log,,, emacs, The
-GNU Emacs Manual}), and follow the existing coding style.
+@samp{@w{diff -c}} (@pxref{Top,,, diffutils, Comparing and Merging
+Files}) and include @file{ChangeLog} entries (@pxref{Change Log,,,
+emacs, The GNU Emacs Manual}), and follow the existing coding style.
 
 
 @node Using Texinfo
@@ -2344,7 +2344,7 @@ This updates all the nodes and menus.
 The @code{texinfo-column-for-description} variable specifies the
 column to which menu descriptions are indented.  By default, the value
 is 32 although it can be useful to reduce it to as low as 24.  You
-can set the variable via customization (@pxref{Changing an Option,,,
+can set the variable via customization (@pxref{Customization,,,
 emacs, The GNU Emacs Manual}) or with the @kbd{M-x set-variable}
 command (@pxref{Examining, , Examining and Setting Variables, emacs,
 The GNU Emacs Manual}).
@@ -5291,11 +5291,13 @@ That's fine for Info, but for HTML output, one might well want the Up
 link from the Top node to go somewhere other than @samp{dir.html}.
 For example, for GNU the natural place would be
 @url{http://www.gnu.org/manual/} (a web page collecting links to most
-GNU manuals).  This can be specified with the @code{TOP_NODE_UP_URL}
-customization variable (@pxref{HTML Customization Variables}), as in
+GNU manuals), better specified as just @code{/manual/} if the manual
+will be installed on @code{www.gnu.org}.  This can be specified with
+the @code{TOP_NODE_UP_URL} customization variable (@pxref{HTML
+Customization Variables}), as in
 
 @example
-$ @kbd{makeinfo --html -c TOP_NODE_UP_URL=http://www.gnu.org/manual/} ...
+$ @kbd{makeinfo --html -c TOP_NODE_UP_URL=/manual/} ...
 @end example
 
 All links to @code{(dir)} will be replaced by the given url.
@@ -11532,14 +11534,13 @@ English (the ones produced with single and doubled ASCII
 single-quotes).  For the other quotation marks, @TeX{} uses European
 Computer Modern (EC) fonts (@file{ecrm1000} and other variants).
 These fonts are freely available, of course; you can download them
-from @url{http://@/www.ctan.org/@/tex-archive/@/fonts/ec}, among other
-places.
+from @url{http://ctan.org/pkg/ec}, among other places.
 
 @cindex CM-Super fonts
 The free EC fonts are bitmap fonts created with Metafont.  Especially
 for on-line viewing, Type@tie{}1 (vector) versions of the fonts are
 preferable; these are available in the CM-Super font package
-(@url{http://@/www.ctan.org/@/tex-archive/@/fonts/@/ps-type1/@/cm-super}).
+(@url{http://ctan.org/pkg/cm-super}).
 
 Both distributions include installation instructions.
 
@@ -11610,13 +11611,12 @@ are also supported:  @code{@@guillemotleft} and
 ``guillemot'' is a bird species (a type of auk).
 
 Traditions for quotation mark usage vary to a great extent between
-languages
-(@url{http://@/en.wikipedia.org/@/wiki/@/Quotation_mark%2C_non-English_usage@/#Overview}).
-Texinfo does not provide commands for typesetting quotation marks
-according to the numerous traditions.  Therefore, you have to choose
-the commands appropriate for the language of your manual.  Sometimes
-aliases (@pxref{@t{@@alias}}) can simplify the usage and make the
-source code more readable.  For example, in German,
+languages (@url{http://en.wikipedia.org/wiki/Quotation_mark}).
+Texinfo does not provide commands or configurations for typesetting
+quotation marks according to the numerous traditions.  Therefore, you
+have to choose the commands appropriate for the language of your
+manual.  Sometimes aliases (@pxref{@t{@@alias}}) can simplify the
+usage and make the source code more readable.  For example, in German,
 @code{@@quotedblbase} is used for the left double quote, and the right
 double quote is the glyph produced by @code{@@quotedblleft}, which is
 counter-intuitive.  Thus, in this case the following aliases would be
@@ -11931,9 +11931,8 @@ The Euro symbol does not exist in the standard @TeX{} fonts (which
 were designed before the Euro was legislated into existence).
 Therefore, @TeX{} uses an additional font, named @code{feymr10} (along
 with other variables).  It is freely available, of course; you can
-download it from @url{http://www.ctan.org/tex-archive/fonts/eurosym},
-among other places.  The distribution includes installation
-instructions.
+download it from @url{http://ctan.org/pkg/eurosym}, among other
+places.  The distribution includes installation instructions.
 
 
 @node @t{@@pounds}
@@ -12498,24 +12497,11 @@ into two lines.
 @end group
 @end example
 
-The @code{@@/} command can often be useful within urls
-(@pxref{@t{@@url}}), which tend to be long and are otherwise
-unbreakable.  For example:
-
-@example
-The official Texinfo home page is on the GNU web site:
-@@uref@{http://www.gnu.org/@@/software/@@/gnu/@@/texinfo@}.
-@end example
-
-@noindent produces
-
-@quotation
-The official Texinfo home page is on the GNU web site:
-@uref{http://www.gnu.org/@/software/@/gnu/@/texinfo}.
-@end quotation
-
-@noindent Without the @code{@@/} commands, @TeX{} would have nowhere to
-break the url.  @code{@@/} has no effect in other output formats.
+The @code{@@/} command can be useful within long urls or other
+identifiers where @TeX{} can't find a good place to break.  @TeX{}
+will automatically break urls at the natural places (@pxref{URL Line
+Breaking}), so only use @code{@@/} if you need it.  @code{@@/} has no
+effect in the other output format.
 
 
 @node @t{@@- @@hyphenation}
@@ -14898,7 +14884,7 @@ With properly distributed packages, users need not process the Texinfo
 manual simply to build and install the package; they can use
 preformatted Info (or other) output files.  This is desirable in
 general, to avoid unnecessary dependencies between packages
-(@pxref{Releases,,, standard, GNU Coding Standards}).
+(@pxref{Releases,,, standards, GNU Coding Standards}).
 
 
 @node Conditional Nesting
@@ -16653,7 +16639,7 @@ For more information, see:
 included in all standard GNU distributions.  The latest version is
 always available from the Texinfo source repository:
 @smalldisplay
-@uref{http://savannah.gnu.org/cgi-bin/viewcvs/texinfo/texinfo/doc/texinfo.tex?rev=HEAD}
+@uref{http://svn.savannah.gnu.org/viewvc/trunk/doc/texinfo.tex?root=texinfo&view=log}
 @end smalldisplay
 
 @pindex texinfo.tex@r{, installing}
@@ -17047,7 +17033,8 @@ reader}.  (It can also preview PostScript documents.)
 system.
 
 @item
-@uref{http://partners.adobe.com/asn/acrobat/sdk/public/docs/, PDF definition}.
+@uref{https://en.wikipedia.org/wiki/Portable_Document_Format, PDF at
+Wikipedia}.
 
 @end itemize
 
@@ -18948,7 +18935,7 @@ For information on installing the Info file in the Info system,
 * @t{texinfo-format} commands::     Two Info formatting commands written
                                  in Emacs Lisp are an alternative
                                  to @code{makeinfo}.
-* Batch Formatting::            How to format for Info in Emacs Batch mode.
+* Batch Formatting::            How to format for Info in Emacs batch mode.
 * Tag and Split Files::         How tagged and split files help Info
                                  to run better.
 @end menu
@@ -19113,8 +19100,8 @@ However, the @code{makeinfo} program provides better error checking
 @cindex Info batch formatting
 
 You can format Texinfo files for Info using @code{batch-texinfo-format}
-and Emacs Batch mode.  You can run Emacs in Batch mode from any shell,
-including a shell inside of Emacs.  (@xref{Command Arguments,,,
+and Emacs batch mode.  You can run Emacs in batch mode from any shell,
+including a shell inside of Emacs.  (@xref{Initial Options,,,
 emacs, The GNU Emacs Manual}.)
 
 Here is a shell command to format all the files that end in
@@ -19128,8 +19115,8 @@ emacs -batch -funcall batch-texinfo-format *.texinfo
 Emacs processes all the files listed on the command line, even if an
 error occurs while attempting to format some of them.
 
-Run @code{batch-texinfo-format} only with Emacs in Batch mode as shown;
-it is not interactive.  It kills the Batch mode Emacs on completion.
+Run @code{batch-texinfo-format} only with Emacs in batch mode as shown;
+it is not interactive.  It kills the batch mode Emacs on completion.
 
 @code{batch-texinfo-format} is convenient if you lack @code{makeinfo}
 and want to format several Texinfo files at once.  When you use Batch
@@ -19529,7 +19516,7 @@ When choosing a category name for the @code{@@dircategory} command, we
 recommend consulting the @uref{http://www.gnu.org/directory,
 Free Software Directory}.  If your program is not listed there,
 or listed incorrectly or incompletely, please report the situation to
-the directory maintainers (@email{bug-directory@@gnu.org}) so that the
+the directory maintainers (@url{http://directory.fsf.org}) so that the
 category names can be kept in sync.
 
 Here are a few examples (see the @file{util/dir-example} file in the
@@ -22602,10 +22589,10 @@ Here are some notes on the example:
 @cindex RCS $Id
 @cindex Documentation identification
 @cindex Identification of documentation
-The @samp{$Id:} comment is for the CVS (@pxref{Top,,, cvs, Concurrent
-Versions System}), RCS (@pxref{Top,,, rcs, Revision Control System})
-and other version control systems, which expand it into a string such
-as:
+The @samp{$Id:} comment is for the CVS
+(@url{http://www.nongnu.org/cvs/}), RCS (@pxref{Top,,, rcs, Revision
+Control System}) and other version control systems, which expand it
+into a string such as:
 
 @example
 $Id$
