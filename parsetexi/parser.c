@@ -651,16 +651,64 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
         }
     } /********* BLOCK_raw or (ignored) BLOCK_conditional 3897 *************/
 
-#if 0
   /* Check if parent element is 'verb' */
-  else if (current->parent->cmdname == CM_verb)
+  else if (current->parent && current->parent->cmd == CM_verb) /* 3847 */
     {
-      /* Save the deliminating character in 'type'. */
-    }
+      char c;
+      char *q;
+      /* Save the deliminating character in 'type', if not already done.
+         This is a reuse of 'type' for a different purpose. */
+      if (!current->parent->type)
+        {
+          if (!*line)
+            {
+              line_error ("@verb without associated character");
+            }
+          else
+            current->parent->type = (enum element_type) *line++;
+        }
+
+      c = (char) current->parent->type;
+      /* Look forward for the delimiter character followed by a close
+         brace. */
+      q = line;
+      do
+        {
+          q = strchr (q, c);
+          if (q[1] == '}' || !q)
+            break;
+          q++;
+        }
+      while (1);
+
+      if (q)
+        {
+          /* Save up to the delimiter character. */
+          if (q != line)
+            {
+              ELEMENT *e = new_element (ET_raw);
+              text_append_n (&e->text, line, q - line);
+              add_to_element_contents (current, e);
+              line = q + 1;
+            }
+          debug ("END VERB");
+          /* The '}' will close the @verb command in handle_separator below. */
+        }
+      else
+        {
+          /* Save the rest of line. */
+          ELEMENT *e = new_element (ET_raw);
+          text_append (&e->text, line);
+          add_to_element_contents (current, e);
+
+          debug ("LINE VERB: %s", line);
+
+          retval = 0; goto funexit;  /* Get next line. */
+        }
+    } /* CM_verb */
 
   /* Skip empty lines.  If we reach the end of input, continue in case there
      is an @include. */
-#endif
 
   if (*line == '@')
     {
@@ -708,9 +756,8 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
         {
           /* TODO: Check 'IGNORE_SPACES_AFTER_BRACED_COMMAND_NAME' config
              variable. */
-          // broken by lack of @verb processing ATM
-          //line_errorf ("@%s expected braces",
-          //  command_data(current->cmd).cmdname);
+          line_errorf ("@%s expected braces",
+                       command_data(current->cmd).cmdname);
           current = current->parent;
         }
     }
@@ -910,11 +957,14 @@ parse_texi (ELEMENT *root_elt)
       debug_nonl ("NEW LINE %s", line);
 
       // 3706
-      /* Check if not in 'raw' or 'conditional' or parent is a 'verb', and
-         strip leading whitespace.  Add a blank line to contents. */
-      if (!(command_flags(current) & CF_block)
-          || command_data(current->cmd).data != BLOCK_raw
-             && command_data(current->cmd).data != BLOCK_conditional)
+      /* If not in 'raw' or 'conditional' and parent isn't a 'verb', collect
+         leading whitespace and save as an "ET_empty_line" element.  This
+         element type can be changed in 'abort_empty_line' when more text is
+         read. */
+      if (!((command_flags(current) & CF_block)
+             && (command_data(current->cmd).data != BLOCK_raw
+                 || command_data(current->cmd).data != BLOCK_conditional)
+            || current->parent && current->parent->cmd == CM_verb))
         {
           ELEMENT *e;
           int n;

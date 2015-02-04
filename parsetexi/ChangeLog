@@ -1,3 +1,7 @@
+2015-02-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* parser.c (process_remaining_on_line): Handle @verb.
+
 2015-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* parser.c (isolate_last_space, start_empty_line_after_command): 

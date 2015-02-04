@@ -389,7 +389,17 @@ dump_element (ELEMENT *e, TEXT *text)
   if (e->type)
     {
       dump_indent (text);
-      text_printf (text, "'type' => '%s',\n", element_type_name(e));
+      if (e->cmd != CM_verb)
+        text_printf (text, "'type' => '%s',\n", element_type_name(e));
+      else
+        {
+          char c = (char) e->type;
+          text_printf (text, "'type' => '");
+          if (c == '\'' || c == '\\') /* Escaping for Perl. */
+            text_append_n (text, "\\", 1);
+          text_append_n (text, &c, 1);
+          text_printf (text, "',\n");
+        }
     }
 
   if (e->cmd)
