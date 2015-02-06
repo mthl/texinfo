@@ -1,3 +1,15 @@
+2015-02-05  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex (\commondummies): add forgotten \mathopsup,
+	\sub, \sup.
+	
+	* doc/texinfo.tex (\nonasciistringdefs): new macros,
+	to define every char from ^^a0 to ^^ff as (the typesettable
+	version of) itself.
+	(@normalturnoffactive): call that; else eight-bit chars
+	(that don't correspond to known Texinfo commands) in node names
+	get an error.  Report from Walter Garcia-Fontes, 5 Feb 2015 10:36:39.
+
 2015-02-03  Karl Berry  <karl@gnu.org>
 
 	* tp/Texinfo/Convert/HTML.pm (output): foolishly omitted closing "
@@ -483,7 +495,7 @@
 	* doc/texinfo.tex: oops, \relax not \thisisundefined for
 	\ifx\csname.
 
-	* texindex.tex (\U): new command @U.
+	* texinfo.tex (\U): new command @U.
 	(\DeclareUnicodeCharacter): define a cs for @U to use.
 	(\globalllet): helper macros.
 
