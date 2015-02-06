@@ -1,5 +1,11 @@
 2015-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* texindex/Makeinfo.am: Change rule to build "ti.info" to build
+	"texindex.info", which is the name set with @setfilename in 
+	ti.texi.
+
+2015-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Info Format Specification): Remove mention 
 	of quoting for certain characters in node names.
 

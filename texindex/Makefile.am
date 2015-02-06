@@ -65,7 +65,7 @@ texindex.awk: ti.twjr
 # how to build the pdf of the program-as-document.
 ti.pdf: ti.texi
 	texi2pdf --tidy ti.texi
-ti.info: ti.texi
+texindex.info: ti.texi
 	makeinfo --no-split ti.texi
 ti.html: ti.texi
 	makeinfo --no-split --html ti.texi
