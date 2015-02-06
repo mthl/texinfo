@@ -1,3 +1,7 @@
+2015-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/README: Remove mention of texindex.
+
 2015-02-05  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.tex (\commondummies): add forgotten \mathopsup,
