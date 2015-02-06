@@ -23806,10 +23806,10 @@ formfeed characters.  We refer to such sequences as @t{<separator>}.
 
 We specify literal parentheses (those that are part of the Info
 format) with @t{<lparen>} and @t{<rparen>}, meaning the single
-characters @samp{(} and @samp{)} respectively.  We specify the
-@samp{CTRL-?} character (character number 127) with @t{<del>}.
-
-Finally, the two-character sequence @samp{^@var{x}} means the single
+characters @samp{(} and @samp{)} respectively.
+@c We specify the @samp{CTRL-?} character (character number 127)
+@c with @t{<del>}.  Finally,
+The two-character sequence @samp{^@var{x}} means the single
 character @samp{CTRL-@var{x}}, for any @var{x}.
 
 @menu
@@ -24047,7 +24047,8 @@ but any number of spaces are ignored.  The @t{<id>} node identifiers have
 following format:
 
 @example
-    <id> = (<lparen><infofile><rparen>)?(<del>?<nodename><del>?)?
+@c  <id> = (<lparen><infofile><rparen>)?(<del>?<nodename><del>?)?
+    <id> = (<lparen><infofile><rparen>)?(<nodename>)?
 @end example
 
 This @t{<node>} defines @t{<id1>} in file @t{<fn>}, which is typically
@@ -24069,9 +24070,13 @@ the format.
 
 Node names containing periods, commas, colons or parentheses
 (including @@-commands which produce any of these) can confuse
-Info readers.  If it is necessary to refer to a node whose name contains 
-any of these, the @t{<nodename>} should be surrounded by a pair of 
-@t{<del>} characters.  @xref{Node Line Requirements}.
+Info readers.
+@c --- comment out the discussion of node name quoting here and
+@c     elsewhere while it has limited implementation. - gavin, 2014-02-06.
+@c If it is necessary to refer to a node whose name contains any of
+@c these, the @t{<nodename>} should be surrounded by a pair of @t{<del>}
+@c characters.
+@xref{Node Line Requirements}.
 
 The use of non-ASCII characters in the names of nodes is permitted,
 but can cause problems in cross-references between nodes in Info files
@@ -24117,7 +24122,7 @@ places no restrictions on their location.
 
 The parts of a @t{<menu entry>} are also described in @ref{Menu
 Parts}.  They have the same syntax as cross-references (@pxref{Info
-Format Cross Reference}).  Indices extend menu format to specify the
+Format Cross Reference}).  Indices extend the menu format to specify the
 destination line; @pxref{Info Format Printindex}.
 
 A @t{<menu comment>} is any line not beginning with @samp{*} that
@@ -24215,9 +24220,11 @@ A general cross reference in Info format has one of the following two forms:
 @example
     <cross-reference> =
   * (N|n)ote <id>::
-| * (N|n)ote <label>:<id>(.|,)?
+@c| * (N|n)ote <label>:<id>(.|,)?
+| * (N|n)ote <label>:<id>(.|,)
 
-    <id> = (<lparen><infofile><rparen>)?(<del>?<nodename><del>?)?
+@c  <id> = (<lparen><infofile><rparen>)?(<del>?<nodename><del>?)?
+    <id> = (<lparen><infofile><rparen>)?(<nodename>)?
     <label> = <del>?<label text><del>?
 @end example
 
@@ -24235,14 +24242,15 @@ filename of the manual being referenced, and the @t{<nodename>} is the
 node or anchor within that manual,
 
 The second form has a descriptive label.  A cross-reference in this form 
-should usually be terminated with a comma or period, to make it
+@c should usually be terminated with a comma or period, to make it
+should be terminated with a comma or period, to make it
 feasible to find the end of the @t{<id>}.
 
-If @t{<label>} contains a colon character (@t{:}), it should be
-surrounded with a pair of @t{<del>} characters.  Likewise, if
-@t{<nodename>} contains problematic characters (such as commas or
-periods), it should be surrounded by a pair of @t{<del>} characters;
-then a terminating comma or period is not needed.
+@c If @t{<label>} contains a colon character (@t{:}), it should be
+@c surrounded with a pair of @t{<del>} characters.  Likewise, if
+@c @t{<nodename>} contains problematic characters (such as commas or
+@c periods), it should be surrounded by a pair of @t{<del>} characters;
+@c then a terminating comma or period is not needed.
 
 The format does not prescribe how to find other manuals to resolve
 such references.
@@ -24253,8 +24261,8 @@ Here are some examples:
 *note GNU Free Documentation License::
 *note Tag table: Info Format Tag Table, for details.
 *Note Overview: (make)Top.
-*Note ^?:^?: (bash)Bourne Shell Builtins.
-*Note alloca.h: (gnulib)^?alloca.h^?.
+@c *Note ^?:^?: (bash)Bourne Shell Builtins.
+@c *Note alloca.h: (gnulib)^?alloca.h^?.
 @end example
 
 The first shows a reference to a node in the current manual using the 
@@ -24268,8 +24276,8 @@ belonging to the sentence, not part of the reference.
 The third example refers to the node `Top' in another manual, namely
 @samp{make}, with `Overview' being the label for this cross reference.
 
-The fourth example shows a colon character being quoted in a label, and
-the fifth example shows a period being quoted in a node name.
+@c The fourth example shows a colon character being quoted in a label, and
+@c the fifth example shows a period being quoted in a node name.
 
 @xref{Cross References}.
 

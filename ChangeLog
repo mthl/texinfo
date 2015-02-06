@@ -1,5 +1,10 @@
 2015-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Info Format Specification): Remove mention 
+	of quoting for certain characters in node names.
+
+2015-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/README: Remove mention of texindex.
 
 2015-02-05  Karl Berry  <karl@gnu.org>
