@@ -5,6 +5,11 @@
 	a shorter search string was not found.  Report from Werner 
 	Lemberg.
 
+	* info/session.c (window_set_state, window_get_state): Save 
+	point of window so we know where to position cursor when we go 
+	back to a failing search.  Call display_update_one_window when 
+	going back to a failing search.
+
 2015-02-06  Karl Berry  <karl@gnu.org>
 
 	* texindex/Makefile.am (ti.info, ti.html): let's generate files by

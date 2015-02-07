@@ -4313,6 +4313,7 @@ DECLARE_INFO_COMMAND (isearch_backward,
 typedef struct {
   NODE *node;           /* The node displayed in this window. */
   long pagetop;         /* LINE_STARTS[PAGETOP] is first line in WINDOW. */
+  long point;           /* Point in window. */
   long start;           /* Offset in node contents where search started. */
   int search_index;     /* Offset of the last char in the search string. */
   int direction;        /* The direction that this search is heading in. */
@@ -4339,6 +4340,7 @@ window_get_state (WINDOW *window, SEARCH_STATE *state)
 {
   state->node = window->node;
   state->pagetop = window->pagetop;
+  state->point = window->point;
 }
 
 /* Set the node, pagetop, and point of WINDOW. */
@@ -4348,6 +4350,7 @@ window_set_state (WINDOW *window, SEARCH_STATE *state)
   if (window->node != state->node)
     window_set_node_of_window (window, state->node);
   window->pagetop = state->pagetop;
+  window->point = state->point;
 }
 
 /* Push the state of this search. */
@@ -4469,8 +4472,6 @@ incremental_search (WINDOW *window, int count)
   int case_sensitive;
   long start_off = window->point;
   int starting_history_entry = window->hist_index - 1;
-
-  long saved_point = window->point;
 
   if (count < 0)
     dir = -1;
@@ -4623,12 +4624,14 @@ gotfunc:
                   /* Don't search for an empty string.  Clear the search. */
                   free (window->matches);
                   window->matches = 0;
-		  window->point = saved_point;
                   display_update_one_window (window);
                   continue;
                 }
               if (search_result != search_success)
-                continue;
+                {
+                  display_update_one_window (window);
+                  continue;
+                }
             }
         }
       else if (func == &isearch_forward || func == &isearch_backward)
