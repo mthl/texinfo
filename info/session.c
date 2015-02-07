@@ -4591,7 +4591,7 @@ gotfunc:
           isearch_string[isearch_string_index++] = key;
           isearch_string[isearch_string_index] = '\0';
 
-          if (search_result != search_success)
+          if (search_result != search_success && !use_regex)
             continue;
         }
       else if (func == &ea_rubout)
