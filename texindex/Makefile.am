@@ -55,7 +55,7 @@ texindex: texindex.in Makefile
 
 # build texindex.awk from ti.twjr using jrtangle; that creates
 # texindex.awk (hardwired).  Then we substitute configure-time variables
-# to avoid manually updates of the version number.
+# to avoid manual updates of the version number.
 # 
 texindex.awk: ti.twjr
 	$(AWK) -f $(srcdir)/jrtangle $(srcdir)/ti.twjr || rm -f texindex.awk
@@ -65,10 +65,10 @@ texindex.awk: ti.twjr
 # how to build the pdf of the program-as-document.
 ti.pdf: ti.texi
 	texi2pdf --tidy ti.texi
-texindex.info: ti.texi
-	makeinfo --no-split ti.texi
+ti.info: ti.texi
+	makeinfo --no-split ti.texi -o ti.info
 ti.html: ti.texi
-	makeinfo --no-split --html ti.texi
+	makeinfo --no-split --html ti.texi -o ti.html
 
 # unlink jrtangle, jrweave outputs to stdout; and we want the
 # usual UPDATED string.
