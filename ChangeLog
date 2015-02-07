@@ -1,3 +1,7 @@
+2015-02-06  Karl Berry  <karl@gnu.org>
+
+	* doc/texinfo.tex: make exact @findex entries for @w and @c.
+
 2015-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* texindex/Makeinfo.am: Change rule to build "ti.info" to build

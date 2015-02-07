@@ -1379,7 +1379,7 @@ spaces, or use the @code{unexpand} command from the shell.
 
 @cindex Comments
 @findex comment
-@findex c @r{(comment)}
+@findex c
 
 You can write comments in a Texinfo file by using the @code{@@comment}
 command, which may be abbreviated to @code{@@c}.  Such comments are
@@ -12586,7 +12586,7 @@ This command has no effect except in HTML and @TeX{} output.
 @section @code{@@w}@{@var{text}@}: Prevent Line Breaks
 
 @anchor{w}@c old name
-@findex w @r{(prevent line break)}
+@findex w
 @cindex Line breaks, preventing
 
 @code{@@w@{@var{text}@}} outputs @var{text}, while prohibiting line
