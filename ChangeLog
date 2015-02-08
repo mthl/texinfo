@@ -1,3 +1,8 @@
+2015-02-08  Karl Berry  <karl@gnu.org>
+
+	* tp/Texinfo/Convert/DocBook.pm: alphabetize, format, debugging;
+	no functional changes.
+
 2015-02-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (incremental_search): For searches uses regex, 
@@ -12,6 +17,7 @@
 
 2015-02-06  Karl Berry  <karl@gnu.org>
 
+	* doc/texinfo.texi: let's mark the info quote proposal explicitly
 	* texindex/Makefile.am (ti.info, ti.html): let's generate files by
 	these names, since it is not a user manual, hence not intended to be
 	installed in the Info directory.  @setfilename remains texindex
