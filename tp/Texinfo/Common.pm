@@ -1,6 +1,7 @@
+# $Id$
 # Common.pm: definition of commands. Common code of other Texinfo modules.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -46,6 +47,8 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
+debug_hash
+debug_list
 definition_category
 expand_verbatiminclude
 expand_today
@@ -599,9 +602,8 @@ foreach my $command ('r', 'i', 'b', 'sansserif', 'slanted') {
   $style_commands{$command} = 1;
 }
 
-foreach my $one_arg_command (
-  'ctrl','dmn', 'w', 'key',
-  'titlefont','hyphenation','anchor','errormsg') {
+foreach my $one_arg_command ('U', 'ctrl', 'dmn', 'w', 'key',
+    'titlefont', 'hyphenation', 'anchor', 'errormsg') {
   $brace_commands{$one_arg_command} = 1;
 }
 
@@ -615,7 +617,8 @@ foreach my $command ('code', 'command', 'env', 'file', 'kbd', 'key', 'option',
 
 # Commands that enclose full texts
 our %context_brace_commands;
-foreach my $context_brace_command ('footnote', 'caption', 'shortcaption', 'math') {
+foreach my $context_brace_command ('footnote', 'caption',
+    'shortcaption', 'math') {
   $context_brace_commands{$context_brace_command} = $context_brace_command;
   $brace_commands{$context_brace_command} = 1;
 }
@@ -2317,6 +2320,42 @@ sub move_index_entries_after_items_in_tree($)
   return modify_tree(undef, $tree, \&_move_index_entries_after_items);
 }
 
+sub debug_list
+{
+  my ($label) = shift;
+  my (@list) = (ref $_[0] && $_[0] =~ /.*ARRAY.*/) ? @{$_[0]} : @_;
+
+  my $str = "$label: [";
+  my @items = ();
+  for my $item (@list) {
+    $item = "" if ! defined ($item);
+    $item =~ s/\n/\\n/g;
+    push (@items, $item);
+  }
+  $str .= join (" ", @items);
+  $str .= "]";
+
+  warn "$str\n";
+}
+#
+sub debug_hash
+{
+  my ($label) = shift;
+  my (%hash) = (ref $_[0] && $_[0] =~ /.*HASH.*/) ? %{$_[0]} : @_;
+
+  my $str = "$label: {";
+  my @items = ();
+  for my $key (sort keys %hash) {
+    my $val = $hash{$key} || ""; # no undef
+    $key =~ s/\n/\\n/g;
+    $val =~ s/\n/\\n/g;
+    push (@items, "$key:$val");
+  }
+  $str .= join (",", @items);
+  $str .= "}";
+
+  warn "$str\n";
+}
 1;
 
 __END__
@@ -2625,7 +2664,7 @@ Patrice Dumas, E<lt>pertusus@free.frE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -2633,4 +2672,3 @@ the Free Software Foundation; either version 3 of the License,
 or (at your option) any later version.
 
 =cut
-

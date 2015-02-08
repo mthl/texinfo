@@ -1,7 +1,22 @@
 2015-02-08  Karl Berry  <karl@gnu.org>
 
+	* tp/Texinfo/Convert/HTML.pm (_convert_U_command): new fn for @U.
+	$default_commands_conversion{'U'}: call it.
+	* tp/Texinfo/Convert/Plaintext.pm (_convert): handle @U, writing
+	binary if output is UTF-8, else just the ASCII string U+xxxx.
+	* tp/Texinfo/Convert/Docbook.pm (_convert): handle @U.
+	* tp/Texinfo/Common.pm (brace_commands) <one_arg_command>: add U.
+	* tp/Texinfo/Parser.pm (simple_text_commands): add U.
+	(debug_hash, debug_list): new fns.
+	* util/texinfo.dtd (U): new ELEMENT.
+
+	* tp/Texinfo/Convert/Converter.pm: move doc about
+	output_internal_links being only for HTML to here.
+
+2015-02-08  Karl Berry  <karl@gnu.org>
+
 	* tp/Texinfo/Convert/DocBook.pm: alphabetize, format, debugging;
-	no functional changes.
+	no functional changes intended.
 
 2015-02-07  Gavin Smith  <gavinsmith0123@gmail.com>
 

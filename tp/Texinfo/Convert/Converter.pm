@@ -1,6 +1,7 @@
+# $Id$
 # Converter.pm: Common code for Converters.
 #
-# Copyright 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
+# Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -1713,7 +1714,7 @@ To help with these initializations, the modules can define three methods:
 
 =item %defaults = $converter->converter_defaults($options)
 
-The converter can provide a defaults hash for configurations options.
+The converter can provide a defaults hash for configuration options.
 The I<$options> hash reference holds options for the converter.
 
 =item @global_commands = $converter->converter_global_commands()
@@ -1763,7 +1764,7 @@ the resulting string is returned.
 I<$accent_command> is an accent command, which may have other accent
 commands nested.  The function returns the accents formatted either
 as encoded letters, or formatted using I<\&format_accents>.
-If I<$in_upper_case> is set, the result should be upper cased.  
+If I<$in_upper_case> is set, the result should be uppercased.
 
 =back
 
@@ -1786,14 +1787,24 @@ should be a Texinfo tree element corresponding to an accent command taking
 an argument.  I<$in_upper_case> is optional, and, if set, the text is put
 in upper case.  The function returns the accented letter as XML entity 
 if possible.  I<$use_numeric_entities> is also optional, and, if set, and
-there is no XML entity, the numerical entity corresponding to unicode 
-points is preferred to an ascii transliteration.
+there is no XML entity, the numerical entity corresponding to Unicode 
+points is preferred to an ASCII transliteration.
 
 =item $result = $converter->xml_accents($accent_command, $in_upper_case)
 
 I<$accent_command> is an accent command, which may have other accent
 commands nested.  If I<$in_upper_case> is set, the result should be 
 upper cased.  The function returns the accents formatted as XML.
+
+=back
+
+Finally, there is:
+
+=item $result = $converter->output_internal_links()
+
+At this level, the method just returns undef.  It is used in the HTML
+output, following the C<--internal-links> option of texi2any/makeinfo
+specification.
 
 =back
 
@@ -1808,7 +1819,7 @@ Patrice Dumas, E<lt>pertusus@free.frE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2011, 2012, 2013 Free Software Foundation, Inc.
+Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

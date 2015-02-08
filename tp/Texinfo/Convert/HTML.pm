@@ -1831,8 +1831,35 @@ sub _convert_titlefont_command($$$$)
   }
   return &{$self->{'format_heading_text'}}($self, 'titlefont', $text, 0, $command);
 }
-
 $default_commands_conversion{'titlefont'} = \&_convert_titlefont_command;
+
+sub _convert_U_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
+  my $res;
+
+  my $text = $args->[0]->{'normal'};
+  # these tests should be in the parser; duplicated in Plaintext.pm
+  if (!defined($text) || !$text) {
+    $self->line_warn($self->__("no argument specified for \@U"),
+                     $command->{'line_nr'});
+    $res = '';
+
+  } elsif ($text !~ /^[0-9A-Fa-f]+$/) {
+    $self->line_error(
+      sprintf($self->__("non-hex digits in argument for \@U: %s"), $text),
+      $command->{'line_nr'});
+    $res = '';
+
+  } else {
+    $res = "&#x$text;"; # ok
+  }
+  return $res;
+}
+$default_commands_conversion{'U'} = \&_convert_U_command;
 
 sub _default_comment($$) {
   my $self = shift;
@@ -7690,7 +7717,7 @@ Patrice Dumas, E<lt>pertusus@free.frE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2012 Free Software Foundation, Inc.
+Copyright 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

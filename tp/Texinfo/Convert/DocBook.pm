@@ -54,7 +54,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.1.91';
+$VERSION = '5.1.90';
 
 my $nbsp = '&#'.hex('00A0').';';
 my $mdash = '&#'.hex('2014').';';
@@ -584,7 +584,7 @@ sub _convert($$;$)
                      or $root->{'cmdname'} eq 'tab')
                     and $root->{'parent'}->{'type'}
                     and $root->{'parent'}->{'type'} eq 'row') {
-          print STDERR "BUG: multitable cell command not in a row "
+          warn "BUG: multitable cell command not in a row "
             .Texinfo::Parser::_print_current($root);
         }
         
@@ -753,7 +753,8 @@ sub _convert($$;$)
       #debug_list (" brace command with args", $root->{'args'});
       if ($style_commands_formatting{$root->{'cmdname'}}) {
         if ($Texinfo::Common::context_brace_commands{$root->{'cmdname'}}) {
-          push @{$self->{'document_context'}}, {'monospace' => [0], 'upper_case' => [0]};
+          push (@{$self->{'document_context'}},
+                {'monospace' => [0], 'upper_case' => [0]});
         }
         my $formatting = $style_commands_formatting{$root->{'cmdname'}};
 
@@ -1002,6 +1003,7 @@ sub _convert($$;$)
         } else {
           return '';
         }
+
       } elsif ($root->{'cmdname'} eq 'uref' or $root->{'cmdname'} eq 'url') {
         if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
           my ($url_text, $url_content);
@@ -1034,6 +1036,7 @@ sub _convert($$;$)
           # DocBook 5
           # return "<link xl:href=\"$url_text\">$replacement</link>";
         }
+
       } elsif ($root->{'cmdname'} eq 'abbr' or $root->{'cmdname'} eq 'acronym') {
         my $argument;
         if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) >= 1
@@ -1050,7 +1053,7 @@ sub _convert($$;$)
             $argument = "<$element>$arg</$element>";
           }
         }
-        
+        #
         if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
            and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
           if (defined($argument)) {
@@ -1069,6 +1072,19 @@ sub _convert($$;$)
         } else {
           return '';
         }
+
+      } elsif ($root->{'cmdname'} eq 'U') {
+        my $argument = $root->{'extra'}->{'brace_command_contents'}->[0]
+                       ->[0]->{'text'};
+        if (defined($argument) && $argument) {
+          $result = "&#x$argument;";
+        } else {
+          $self->line_warn($self->__("no argument specified for \@U"),
+                           $root->{'line_nr'});
+          $result = '';
+        }
+        return $result;
+
       } elsif ($Texinfo::Common::inline_commands{$root->{'cmdname'}}) {
         my $expand = 0;
         if ($Texinfo::Common::inline_format_commands{$root->{'cmdname'}}) {
@@ -1451,7 +1467,7 @@ Patrice Dumas, E<lt>pertusus@free.frE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2015 Free Software Foundation, Inc.
+Copyright 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

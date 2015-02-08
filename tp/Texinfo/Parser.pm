@@ -1,3 +1,4 @@
+# $Id$
 # Parser.pm: parse texinfo code into a tree.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
@@ -436,10 +437,10 @@ my %full_line_commands_no_refs = (%sectioning_commands,
 
 delete $simple_text_commands{'center'};
 delete $simple_text_commands{'exdent'};
-foreach my $command ('titlefont', 'anchor', 'xref','ref','pxref', 
+foreach my $command ('titlefont', 'anchor', 'xref','ref', 'pxref', 
                      'inforef', 'shortcaption', 'math', 'indicateurl',
                      'email', 'uref', 'url', 'image', 'abbr', 'acronym', 
-                     'dmn', 'ctrl', 'errormsg') {
+                     'dmn', 'ctrl', 'errormsg', 'U') {
   $simple_text_commands{$command} = 1;
 }
 

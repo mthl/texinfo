@@ -1,6 +1,7 @@
+# $Id$
 # Plaintext.pm: output tree as text with filling.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -261,7 +262,7 @@ foreach my $command (keys(%style_map)) {
   $style_map{$command} = [$style_map{$command}, $style_map{$command}];
 }
 
-# math  is special
+# math is special
 my @asis_commands = ('asis', 'w', 'b', 'ctrl', 'i', 'sc', 't', 'r',
   'slanted', 'sansserif', 'var', 'verb', 'clicksequence',
   'headitemfont', 'dmn');
@@ -2185,6 +2186,32 @@ sub _convert($$)
       $self->_add_text_count($result);
       $self->_add_lines_count(2);
       return $result;
+
+    } elsif ($command eq 'U') {
+      my $arg = $root->{'extra'}->{'brace_command_contents'}
+                ->[0]->[0]->{'text'};
+      my $res;
+      # these tests should be in the parser; duplicated in HTML.pm
+      if (!defined($arg) || !$arg) {
+        $self->line_warn($self->__("no argument specified for \@U"),
+                         $root->{'line_nr'});
+        $res = '';
+
+      } elsif ($arg !~ /^[0-9A-Fa-f]+$/) {
+        $self->line_error(
+          sprintf($self->__("non-hex digits in argument for \@U: %s"), $arg),
+          $root->{'line_nr'});
+        $res = '';
+
+      } else {
+        # binary if utf-8 being output, else ascii.
+        $res = $self->{'to_utf8'} ? chr(hex($arg)) : "U+$arg";
+      }
+
+      $result .= $self->_count_added($formatter->{'container'}, 
+                 $formatter->{'container'}->add_text($res, $res)); 
+      return $result;
+
     } elsif ($command eq 'value') {
       my $expansion = $self->gdt('@{No value for `{value}\'@}', 
                                     {'value' => $root->{'type'}});
@@ -3313,7 +3340,7 @@ Texinfo::Convert::Plaintext converts a Texinfo tree to Plaintext.
 
 =item $converter = Texinfo::Convert::Plaintext->converter($options)
 
-Initialize an Plaintext converter.  
+Initialize a Plaintext converter.  
 
 The I<$options> hash reference holds options for the converter.  In
 this option hash reference a parser object may be associated with the 
@@ -3336,14 +3363,8 @@ the resulting output.
 =item $result = $converter->convert_tree($tree)
 
 Convert a Texinfo tree portion I<$tree> and return the resulting 
-output.  This function do not try to output a full document but only
-portions of document.  For a full document use C<convert>.
-
-=item $result = $converter->output_internal_links()
-
-Returns text representing the links in the document.  At present the format 
-should follow the C<--internal-links> option of texi2any/makeinfo specification
-and this is only relevant for HTML.
+output.  This function does not try to output a full document but only
+portions.  For a full document use C<convert>.
 
 =back
 
@@ -3353,7 +3374,7 @@ Patrice Dumas, E<lt>pertusus@free.frE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2012 Free Software Foundation, Inc.
+Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
