@@ -572,10 +572,10 @@ Include Files
 Formatting and Printing Hardcopy
 
 * Use @TeX{}::                     Use @TeX{} to format for hardcopy.
-* Format with @t{tex}/@t{texindex}::    How to format with explicit shell commands.
-* Format with @t{texi2dvi}::        A simpler way to format.
+* Format with @t{texi2dvi}::        The simplest way to format.
+* Format with @t{tex}/@t{texindex}::    Formatting with explicit shell commands.
 * Print with @t{lpr}::              How to print.
-* Within Emacs::                How to format and print from an Emacs shell.
+* Within Emacs::                Printing from an Emacs shell.
 * Texinfo Mode Printing::       How to format and print in Texinfo mode.
 * Compile-Command::             How to print using Emacs's compile command.
 * Requirements Summary::        @TeX{} formatting requirements summary.
@@ -588,6 +588,11 @@ Formatting and Printing Hardcopy
                                  of pages and how to print scaled up output.
 * PDF Output::                  Portable Document Format output.
 * Obtaining @TeX{}::               How to obtain @TeX{}.
+
+Format with @t{tex}/@t{texindex}
+
+* Formatting Partial Documents::
+* Details of @t{texindex}::
 
 @code{texi2any}: The Generic Translator for Texinfo
 
@@ -16034,13 +16039,12 @@ Running the @command{texi2dvi} or @command{texi2pdf} command is the
 simplest way to create printable output.  These commands are installed
 as part of the Texinfo package.
 
-More specifically, three major shell commands are used to print
-formatted output from a Texinfo manual: one converts the Texinfo
-source into something printable, a second sorts indices, and a third
-actually prints the formatted document.  When you use the shell
-commands, you can either work directly in the operating system shell
-or work within a shell inside GNU Emacs (or some other computing
-environment).
+In more detail, three major shell commands are used to print formatted
+output from a Texinfo manual: one converts the Texinfo source into
+something printable, a second sorts indices, and a third actually
+prints the formatted document.  When you use the shell commands, you
+can either work directly in the operating system shell or work within
+a shell inside GNU Emacs (or some other computing environment).
 
 If you are using GNU Emacs, you can use commands provided by Texinfo
 mode instead of shell commands.  In addition to the three commands to
@@ -16052,8 +16056,8 @@ Details are in the following sections.
 
 @menu
 * Use @TeX{}::                     Use @TeX{} to format for hardcopy.
-* Format with @t{tex}/@t{texindex}::    How to format with explicit shell commands.
-* Format with @t{texi2dvi}::        A simpler way to format.
+* Format with @t{texi2dvi}::        The simplest way to format.
+* Format with @t{tex}/@t{texindex}::    Formatting with explicit shell commands.
 * Print with @t{lpr}::              How to print.
 * Within Emacs::                How to format and print from an Emacs shell.
 * Texinfo Mode Printing::       How to format and print in Texinfo mode.
@@ -16074,13 +16078,105 @@ Details are in the following sections.
 @node Use @TeX{}
 @section Use @TeX{}
 
-The typesetting program called @TeX{} is used for formatting a Texinfo
-file.  @TeX{} is a very powerful typesetting program and, when used
-correctly, does an exceptionally good job.
+The typesetting program called @TeX{} is used to format a Texinfo
+document for printable output.  @TeX{} is a very powerful typesetting
+program and, when used correctly, does an exceptionally good job.
 
 @xref{Obtaining @TeX{}}, for information on how to obtain @TeX{}.  It
 is not included in the Texinfo package, being a vast suite of software
-itself.
+in itself.
+
+
+@node Format with @t{texi2dvi}
+@section Format with @code{texi2dvi}
+
+@pindex texi2dvi @r{(shell script)}
+@cindex DVI, output in
+
+The @code{texi2dvi} program takes care of all the steps for producing
+a @TeX{} DVI file from a Texinfo document.  Similarly, @code{texi2pdf}
+produces a PDF file.
+
+To run @code{texi2dvi} or @code{texi2pdf} on an input file
+@file{foo.texi}, do this (where @samp{prompt$ } is your shell prompt):
+
+@example
+prompt$ @kbd{texi2dvi foo.texi}
+prompt$ @kbd{texi2pdf foo.texi}
+@end example
+
+As shown in this example, the input filenames to @code{texi2dvi} and
+@code{texi2pdf} must include any extension, such as @samp{.texi}.
+(Under MS-DOS and perhaps in other circumstances, you may need to run
+@samp{sh texi2dvi foo.texi} instead of relying on the operating system
+to invoke the shell on the @samp{texi2dvi} script.)
+
+@opindex --command@r{, for @command{texi2dvi}}
+One useful option to @code{texi2dvi} is @samp{--command=@var{cmd}}.
+This inserts @var{cmd} on a line by itself after the
+@code{@@setfilename} in a temporary copy of the input file before
+running @TeX{}.  With this, you can specify different printing
+formats, such as @code{@@smallbook} (@pxref{@t{@@smallbook}}),
+@code{@@afourpaper} (@pxref{A4 Paper}), or @code{@@pagesizes}
+(@pxref{@t{@@pagesizes}}), without actually changing the document
+source.  (You can also do this on a site-wide basis with
+@file{texinfo.cnf}; @pxref{Preparing for @TeX{}}).
+
+@opindex --pdf@r{, for @command{texi2dvi}}
+@pindex pdftexi2dvi
+With the @option{--pdf} option, @command{texi2dvi} produces PDF output
+instead of DVI (@pxref{PDF Output}), by running @command{pdftex}
+instead of @command{tex}.  Alternatively, the command
+@command{texi2pdf} is an abbreviation for running @samp{texi2dvi
+--pdf}.  The command @command{pdftexi2dvi} is also provided as a
+convenience for AUC-@TeX{} (@pxref{Top,,, auctex, AUC-@TeX{}}, as it
+prefers to merely prepend @samp{pdf} to DVI producing tools to have
+PDF producing tools.
+
+@opindex --dvipdf@r{, for @command{texi2dvi}}
+@pindex dvipdfmx
+With the @option{--dvipdf} option, @command{texi2dvi} produces PDF
+output by running @TeX{} and then a DVI-to-PDF program: if the
+@env{DVIPDF} environment variable is set, that value is used, else the
+first program extant among @code{dvipdfmx}, @code{dvipdfm},
+@code{dvipdf}, @code{dvi2pdf}, @code{dvitopdf}.  This method generally
+supports CJK typesetting better than @command{pdftex}.
+
+@opindex --ps@r{, for @command{texi2dvi}}
+@pindex dvips
+With the @option{--ps} option, @command{texi2dvi} produces PostScript
+instead of DVI, by running @command{tex} and then @command{dvips}
+(@pxref{Top,,, dvips, Dvips}).  (Or the value of the @env{DVIPS}
+environment variable, if set.)
+
+@opindex --language@r{, for @command{texi2dvi}}
+@cindex @LaTeX{}, processing with @command{texi2dvi}
+@command{texi2dvi} can also be used to process @LaTeX{} files.
+Normally @command{texi2dvi} is able to guess the input file language
+by its contents and file name extension; however, if it guesses wrong
+you can explicitly specify the input language using
+@option{--language=@var{lang}} command line option, where @var{lang}
+is either @samp{latex} or @samp{texinfo}.
+
+@pindex etex
+@pindex pdfetex
+@command{texi2dvi} will use @command{etex} (or @command{pdfetex}) if
+they are available; this extended version of @TeX{} is not required,
+and the DVI output is identical, but it runs faster in some cases, and
+provide additional tracing information when debugging
+@file{texinfo.tex}.  (These days, @command{pdftex} and
+@command{pdfetex} are exactly the same, but we still run
+@command{pdfetex} to cater to ancient @TeX{} installations.)
+
+The option @option{-E} (equivalently, @option{-e} and
+@option{--expand}) does Texinfo macro expansion using
+@command{makeinfo} instead of the @TeX{} implementation (@pxref{Macro
+Details}).  Each implementation has its own limitations and
+advantages.  If this option is used, the string
+@code{@@c@tie{}_texi2dvi} must not appear at the beginning of a line
+in the source file.
+
+For a list of all the options, run @samp{texi2dvi --help}.
 
 
 @node Format with @t{tex}/@t{texindex}
@@ -16090,8 +16186,9 @@ itself.
 @cindex Formatting with @code{tex} and @code{texindex}
 @cindex DVI file
 
-You can format the Texinfo file with the shell command @code{tex}
-followed by the name of the Texinfo file.  For example:
+You can do the basic formatting of a Texinfo file with the shell
+command @code{tex} followed by the name of the Texinfo file.  For
+example:
 
 @example
 tex foo.texi
@@ -16099,36 +16196,35 @@ tex foo.texi
 
 @noindent @TeX{} will produce a @dfn{DVI file} as well as several auxiliary
 files containing information for indices, cross references, etc.  The
-DVI file (for @dfn{DeVice Independent} file) can be printed on virtually
-any device (see the following sections).
+DVI file (for @dfn{DeVice Independent} file) can be printed on
+virtually any device, perhaps after a further conversion (see the
+previous section).
 
 @pindex texindex
 The @code{tex} formatting command itself does not sort the indices; it
 writes an output file of unsorted index data.  To generate a printed
 index after running the @command{tex} command, you first need a sorted
 index to work from.  The @command{texindex} command sorts indices.
-(The source file @file{texindex.c} comes as part of the standard
-Texinfo distribution, among other places.)  (@command{texi2dvi} runs
+(@command{texi2dvi}, described in the previous section, runs
 @command{tex} and @command{texindex} as necessary.)
 
 @anchor{Names of index files}
 @cindex Names of index files
 @cindex Index file names
-@code{tex} formatting command outputs unsorted index files under names
-that obey a standard convention: the name of your main input file with
-any @samp{.texinfo} (or similar, @pxref{Minimum,, What a Texinfo File
-Must Have}), followed by the two letter names of indices.  For
-example, the raw index output files for the input file
-@file{foo.texinfo} would be @file{foo.cp}, @file{foo.vr},
+@code{tex} outputs unsorted index files under names following a
+standard convention: the name of your main input file with any
+@samp{.texi} or similar extension replaced by the two letter index
+name.  For example, the raw index output files for the input file
+@file{foo.texi} would be, by default, @file{foo.cp}, @file{foo.vr},
 @file{foo.fn}, @file{foo.tp}, @file{foo.pg} and @file{foo.ky}.  Those
 are exactly the arguments to give to @code{texindex}.
 
 @need 1000
 @cindex Wildcards
 @cindex Globbing
-Instead of specifying all the unsorted index file names explicitly, you
-can use @samp{??} as shell wildcards and give the command in this
-form:
+Instead of specifying all the unsorted index file names explicitly,
+it's typical to use @samp{??} as shell wildcards and give the command
+in this form:
 
 @example
 texindex foo.??
@@ -16143,10 +16239,11 @@ extensions that are not index files, such as @samp{foo.el}.  The
 @code{texindex} command reports but otherwise ignores such files.
 
 For each file specified, @code{texindex} generates a sorted index file
-whose name is made by appending @samp{s} to the input file name.  The
+whose name is made by appending @samp{s} to the input file name; for
+example, @file{foo.cps} is made from @file{foo.cp}.  The
 @code{@@printindex} command looks for a file with that name
-(@pxref{Printing Indices & Menus}).  @code{texindex} does not alter the
-raw index output file.
+(@pxref{Printing Indices & Menus}).  @TeX{} does not read the raw
+index output file, and @code{texindex} does not alter it.  the raw
 
 After you have sorted the indices, you need to rerun @code{tex} on the
 Texinfo file.  This regenerates the DVI file, this time with
@@ -16155,7 +16252,8 @@ up-to-date index entries.
 Finally, you may need to run @code{tex} one more time, to get the page
 numbers in the cross references correct.
 
-To summarize, this is a five step process:
+To summarize, this is a five step process.  (Alternatively, it's a
+one-step process: run @code{texi2dvi}; see the previous section.)
 
 @enumerate
 @item
@@ -16181,27 +16279,30 @@ Run @code{tex} one last time.  This time the correct page numbers are
 written for the cross references.
 @end enumerate
 
-@pindex texi2dvi
-Alternatively, it's a one-step process: run @code{texi2dvi}
-(@pxref{Format with @t{texi2dvi}}).
+@menu
+* Formatting Partial Documents::
+* Details of @t{texindex}::
+@end menu
 
-You need not run @code{texindex} each time after you run @code{tex}.  If
-you do not, on the next run, the @code{tex} formatting command will use
-whatever sorted index files happen to exist from the previous use of
-@code{texindex}.  This is usually ok while you are debugging.
+@node Formatting Partial Documents
+@subsection Formatting Partial Documents
 
-@cindex Auxiliary files, avoiding
-@findex novalidate
-@cindex Pointer validation, suppressing
+@cindex Formatting partial documents
+@cindex Partial documents, formatting
 @cindex Chapters, formatting one at a time
+@cindex Auxiliary files, omitting
+@cindex Pointer validation, suppressing
+@findex novalidate
+
 Sometimes you may wish to print a document while you know it is
-incomplete, or to print just one chapter of a document.  In that case,
-the usual auxiliary files that @TeX{} creates and warnings @TeX{}
-gives when cross references are not satisfied are just nuisances.  You
+incomplete, or to print just one chapter of a document.  In such a
+case, the usual auxiliary files that @TeX{} creates and warnings
+@TeX{} gives about undefined cross references are just nuisances.  You
 can avoid them with the @code{@@novalidate} command, which you must
 give @emph{before} the @code{@@setfilename} command
-(@pxref{@t{@@setfilename}}).  Thus, the beginning of your file
-would look approximately like this:
+(@pxref{@t{@@setfilename}}).
+
+Thus, the beginning of your file would look approximately like this:
 
 @example
 \input texinfo
@@ -16214,198 +16315,115 @@ would look approximately like this:
 @code{makeinfo}, just like its @code{--no-validate} option
 (@pxref{Pointer Validation}).
 
+Furthermore, you need not run @code{texindex} each time after you run
+@code{tex}.  The @code{tex} formatting command simply uses whatever
+sorted index files happen to exist from a previous use of
+@code{texindex}.  If those are out of date, that is usually ok while
+you are creating or debugging a document.
 
-@node Format with @t{texi2dvi}
-@section Format with @code{texi2dvi}
 
-@pindex texi2dvi @r{(shell script)}
+@node Details of @t{texindex}
+@subsection Details of @t{texindex}
 
-The @code{texi2dvi} command automatically runs both @TeX{} and
-@command{texindex} as many times as necessary to produce a DVI file
-with sorted indices and all cross references resolved.  It is
-therefore simpler than manually executing the
-@code{tex}---@code{texindex}---@code{tex}---@code{tex} sequence
-described in the previous section.
-
-To run @code{texi2dvi} on an input file @file{foo.texi}, do this (where
-@samp{prompt$ } is your shell prompt):
+@cindex Braces, in index entries
+In Texinfo version 6, released in 2015, the @command{texindex} program
+was completely reimplemented.  The principal functional difference is
+that index entries beginning with a left brace or right brace
+(@samp{@{} resp.@: @samp{@}}) can work properly.  For example, these
+simple index entries are processed correctly, including the ``index
+initial'' shown in the index:
 
 @example
-prompt$ @kbd{texi2dvi foo.texi}
+@@cindex @@@{
+@@cindex @@@}
+...
+@@printindex cp
 @end example
 
-As shown in this example, the input filenames to @code{texi2dvi} must
-include any extension (@samp{.texi}, @samp{.texinfo}, etc.).  Under
-MS-DOS and perhaps in other circumstances, you may need to run @samp{sh
-texi2dvi foo.texi} instead of relying on the operating system to invoke
-the shell on the @samp{texi2dvi} script.
+@findex \usebracesinindexestrue
+However, to enable this behavior, it's necessary (for now) to give a
+special option to @TeX{} early in a source document:
 
-@opindex --command@r{, for @command{texi2dvi}}
-One useful option to @code{texi2dvi} is @samp{--command=@var{cmd}}.
-This inserts @var{cmd} on a line by itself after the
-@code{@@setfilename} in a temporary copy of the input file before
-running @TeX{}.  With this, you can specify different printing
-formats, such as @code{@@smallbook} (@pxref{@t{@@smallbook}}),
-@code{@@afourpaper} (@pxref{A4 Paper}), or @code{@@pagesizes}
-(@pxref{@t{@@pagesizes}}), without actually changing the document
-source.  (You can also do this on a site-wide basis with
-@file{texinfo.cnf}; @pxref{Preparing for @TeX{}}).
+@example
+@@tex
+\global\usebracesinindexestrue
+@@end tex
+@end example
 
-@opindex --pdf@r{, for @command{texi2dvi}}
-@pindex pdftexi2dvi
-With the @option{--pdf} option, @command{texi2dvi} produces PDF output
-instead of DVI (@pxref{PDF Output}), by running @command{pdftex}
-instead of @command{tex}.  Alternatively, the command
-@command{texi2pdf} is an abbreviation for running @samp{texi2dvi
---pdf}.  The command @command{pdftexi2dvi} is also supported as a
-convenience to AUC-@TeX{} users (@pxref{Top,,, auctex, AUC-@TeX{}}, since
-that program merely prepends @samp{pdf} to DVI producing tools to have
-PDF producing tools.
+@cindex Sort string, incorrect @samp{|}
+This is because the previous @command{texindex} implementation aborted
+with an incorrect error message (@samp{No page number in \entry...})
+on such index entries when handled in the normal way.  Therefore
+@TeX{} wrote out an incorrect ``sort string'' using the @samp{|}
+character; this did not affect the text of the entry, but the index
+initial was the incorrect @samp{|} (and sorting was not perfect).
 
-@opindex --dvipdf@r{, for @command{texi2dvi}}
-@pindex dvipdfmx
-With the @option{--dvipdf} option, @command{texi2dvi} produces PDF
-output by running @TeX{} and then a DVI-to-PDF program: if the
-@env{DVIPDF} environment variable is set, that value is used, else
-the first extant among @code{dvipdfmx}, @code{dvipdfm}, @code{dvipdf},
-@code{dvi2pdf}, @code{dvitopdf}.  This method can support CJK
-typesetting better than @command{pdftex}.
+Because of that fatal error, and because relatively few documents have
+index entries beginning with braces, we want to provide some
+transition time for installations to have the new @command{texindex}.
+At some point in the future, we'll make @code{\usebracesinindexes}
+true by default (the above @TeX{} code will continue to work fine).
 
-@opindex --ps@r{, for @command{texi2dvi}}
-@pindex dvips
-With the @option{--ps} option, @command{texi2dvi} produces PostScript
-instead of DVI, by running @command{tex} and then @command{dvips}
-(@pxref{Top,,, dvips, Dvips}).  (Or the value of the @env{DVIPS}
-environment variable, if set.)
-
-@cindex @LaTeX{}, processing with @command{texi2dvi}
-@command{texi2dvi} can also be used to process @LaTeX{} files; simply
-run @samp{texi2dvi filename.ext}.
-
-@opindex --language@r{, for @command{texi2dvi}}
-Normally @command{texi2dvi} is able to guess the input file language
-by its contents and file name suffix. If, however, it fails to do so
-you can specify the input language using
-@option{--language=@var{lang}} command line option, where @var{lang}
-is either @samp{latex} or @samp{texinfo}.
-
-@command{texi2dvi} will use @command{etex} (or @command{pdfetex}) if
-they are available; these extended versions of @TeX{} are not
-required, and the DVI (or PDF) output is identical, but they simplify
-the @TeX{} programming in some cases, and provide additional tracing
-information when debugging @file{texinfo.tex}.
-
-@opindex --translate-file@r{, for @command{texi2dvi}}
-Several options are provided for handling documents, written in
-character sets other than ASCII@.  The
-@option{--translate-file=@var{file}} option instructs
-@command{texi2dvi} to translate input into internal @TeX{} character
-set using @dfn{translation file} @var{file} (@pxref{TCX files, TCX
-files, TCX files: Character translations, web2c, Web2c: A @TeX{}
-implementation}).
-
-@opindex --recode@r{, for @command{texi2dvi}}
-The options @option{--recode} and @option{--recode-from=@var{enc}}
-allow conversion of an input document before running @TeX{}. The
-@option{--recode} option recodes the document from encoding specified
-by @samp{@@documentencoding} command
-(@pxref{@t{@@documentencoding}}) to plain 7-bit @samp{texinfo}
-encoding.
-
-@opindex --recode-from@r{, for @command{texi2dvi}}
-The option @option{--recode-from=@var{enc}} recodes the document from
-@var{enc} encoding to the encoding specified by
-@samp{@@documentencoding}. This is useful, for example, if the
-document is written in @samp{UTF-8} encoding and an equivalent 8-bit
-encoding is supported by @command{makeinfo}.
-
-Both @option{--recode} and @option{--recode-from=@var{enc}} use
-@command{recode} utility to perform the conversion. If
-@command{recode} fails to process the file, @command{texi2dvi} prints
-a warning and continues, using the unmodified input file.
-
-The option @option{-E} (equivalently, @option{-e} and
-@option{--expand}) does Texinfo macro expansion using
-@command{makeinfo} instead of the @TeX{} implementation (@pxref{Macro
-Details}).  Each implementation has its own limitations and
-advantages.  If this option is used, the string
-@code{@@c@tie{}_texi2dvi} must not appear at the beginning of a line
-in the source file.
-
-For the list of all options, run @samp{texi2dvi --help}.
+@cindex Literate programming, with Texinfo and @code{awk}
+@cindex Texinfo, and literate programming
+@cindex Robbins, Arnold
+@pindex texiwebjr
+Although not a matter of functionality, readers may be interested to
+know that the new @command{texindex} is a literate program
+(@url{http://en.wikipedia.org/wiki/Literate_programming}) using
+Texinfo itself for documentation and (portable) @code{awk} for the
+code.  A single source file, @file{ti.twjr} in this case, produces the
+runnable program, a printable document, and an online document.  The
+system is called @file{texiwebjr} and was created by Arnold Robbins,
+who also wrote the new @command{texindex} (and not coincidentally is
+the long-time maintainer of Gawk, @pxref{Top,,, gawk, The GNU Awk
+User's Guide}).  The file @file{texindex/Makefile.am} shows example
+usage.
 
 
 @node Print with @t{lpr}
-@section Print With @code{lpr -d} From Shell
+@section Print with @code{lpr -d} from Shell
 
 @pindex lpr @r{(DVI print command)}
 
-The precise command to print a DVI file depends on your system
-installation.  Two common ones are @samp{dvips foo.dvi -o} and @samp{lpr
--d foo.dvi}.
+The way to print a DVI file depends on your system installation.  Two
+common ones are @samp{dvips foo.dvi -o} to make a PostScript file
+first and then print that, and @samp{lpr -d foo.dvi} to print a DVI
+file directly.
 
-For example, the following commands will (perhaps) suffice to sort the
-indices, format, and print the @cite{Bison Manual}:
-
-@example
-@group
-tex bison.texinfo
-texindex bison.??
-tex bison.texinfo
-lpr -d bison.dvi
-@end group
-@end example
-
-@noindent
-(Remember that the shell commands may be different at your site; but
-these are commonly used versions.)
-
-Using the @code{texi2dvi} shell script (see the previous section):
+For example, the following commands will (probably) suffice to sort
+the indices, format, and print this manual using the @code{texi2dvi}
+shell script (@pxref{Format with @t{texi2dvi}}).
 
 @example
 @group
-texi2dvi bison.texinfo
-lpr -d bison.dvi
-# or perhaps dvips bison.dvi -o
+texi2dvi texinfo.texi
+dvips texinfo.dvi -o
+lpr texinfo.ps
 @end group
 @end example
+
+Depending on the @code{lpr} setup on your machine, you might able to
+combine the last two steps into @code{lpr -d texinfo.dvi}.
+
+@cindex PCL file, for printing
+You can also generate a PDF file by running @code{texi2pdf} instead of
+@code{texi2dvi}; a PDF is often directly printable.  Or you can
+generate a PCL file by using @code{dvilj} instead of @code{dvips}, if
+you have a printer that prefers that format.
 
 @cindex Shell printing, on MS-DOS/MS-Windows
 @cindex Printing DVI files, on MS-DOS/MS-Windows
 @pindex lpr@r{-d, replacements on MS-DOS/MS-Windows}
 @code{lpr} is a standard program on Unix systems, but it is usually
-absent on MS-DOS/MS-Windows.  Some network packages come with a
-program named @code{lpr}, but these are usually limited to sending files
-to a print server over the network, and generally don't support the
-@samp{-d} option.  If you are unfortunate enough to work on one of these
-systems, you have several alternative ways of printing DVI files:
-
-@itemize @bullet{}
-@item Find and install a Unix-like @code{lpr} program, or its clone.
-If you can do that, you will be able to print DVI files just like
-described above.
-
-@item Send the DVI files to a network printer queue for DVI files.
-Some network printers have special queues for printing DVI files.  You
-should be able to set up your network software to send files to that
-queue.  In some cases, the version of @code{lpr} which comes with your
-network software will have a special option to send a file to specific
-queues, like this:
-
-@example
-lpr -Qdvi -hprint.server.domain bison.dvi
-@end example
-
-@item Convert the DVI file to a Postscript or PCL file and send it to your
-local printer.  @xref{Invoking Dvips,,, dvips, Dvips}, and the man
-pages for @code{dvilj}, for detailed description of these tools.  Once
-the DVI file is converted to the format your local printer understands
-directly, just send it to the appropriate port, usually @samp{PRN}.
-@end itemize
+absent on MS-DOS/MS-Windows.  If so, just create a PostScript or PDF
+or PCL file, whatever is most convenient, and print that in the usual
+way for your machine (e.g., by sending to the appropriate port,
+usually @samp{PRN}).
 
 
 @node Within Emacs
-@section From an Emacs Shell
+@section Printing From an Emacs Shell
 @cindex Print, format from Emacs shell
 @cindex Format, print from Emacs shell
 @cindex Shell, format, print from
@@ -16413,22 +16431,23 @@ directly, just send it to the appropriate port, usually @samp{PRN}.
 @cindex GNU Emacs shell, format, print from
 
 You can give formatting and printing commands from a shell within GNU
-Emacs.  To create a shell within Emacs, type @kbd{M-x shell}.  In this
-shell, you can format and print the document.  @xref{Hardcopy, , Format
-and Print Hardcopy}, for details.
+Emacs, just like any other shell command.  To create a shell within
+Emacs, type @kbd{M-x shell} (@pxref{Shell,,, emacs, The GNU Emacs
+Manual}).  In this shell, you can format and print the document.
+@xref{Hardcopy, , Format and Print Hardcopy}, for details.
 
 You can switch to and from the shell buffer while @code{tex} is
 running and do other editing.  If you are formatting a long document
 on a slow machine, this can be very convenient.
 
-You can also use @code{texi2dvi} from an Emacs shell.  For example,
-here is how to use @code{texi2dvi} to format and print @cite{Using and
+For example, you can use @code{texi2dvi} from an Emacs shell.  Here is
+one way to use @code{texi2pdf} to format and print @cite{Using and
 Porting GNU CC} from a shell within Emacs:
 
 @example
 @group
-texi2dvi gcc.texinfo
-lpr -d gcc.dvi
+texi2pdf gcc.texi
+lpr gcc.pdf
 @end group
 @end example
 
@@ -16563,13 +16582,13 @@ Texinfo file.  You can then specify the @code{tex} or @code{texi2dvi}
 commands as a @code{compile-command} and have Emacs run it by typing
 @kbd{M-x compile}.  This creates a special shell called the
 @file{*compilation*} buffer in which Emacs runs the compile command.
-For example, at the end of the @file{gdb.texinfo} file, after the
+For example, at the end of the @file{gdb.texi} file, after the
 @code{@@bye}, you could put the following:
 
 @example
 @group
 Local Variables:
-compile-command: "texi2dvi gdb.texinfo"
+compile-command: "texi2dvi gdb.texi"
 End:
 @end group
 @end example
@@ -16586,7 +16605,7 @@ this way; see @ref{Compilation, , , emacs, The GNU Emacs Manual}.
 @cindex Formatting requirements
 
 Every Texinfo file that is to be input to @TeX{} must begin with a
-@code{\input} command and must contain an @code{@@setfilename} command:
+@code{\input} command, and must contain an @code{@@setfilename} command:
 
 @example
 \input texinfo
@@ -16607,11 +16626,11 @@ processing and forces out unfinished pages:
 Strictly speaking, these lines are all a Texinfo file needs to be
 processed successfully by @TeX{}.
 
-Usually, however, the beginning includes an @code{@@settitle} command to
-define the title of the printed manual, an @code{@@setchapternewpage}
-command, a title page, a copyright page, and permissions.  Besides an
-@code{@@bye}, the end of a file usually includes indices and a table of
-contents.  (And of course most manuals contain a body of text as well.)
+Usually, however, the beginning includes an @code{@@settitle} command
+to define the title of the printed manual, a title page, a copyright
+page, permissions, and a table of contents.  Besides @code{@@bye}, the
+end of a file usually includes indices.  (Not to mention that most
+manuals contain a body of text as well.)
 
 For more information, see:
 
@@ -16636,20 +16655,28 @@ For more information, see:
 @TeX{} needs to know where to find the @file{texinfo.tex} file that the
 @samp{\input texinfo} command on the first line reads.  The
 @file{texinfo.tex} file tells @TeX{} how to handle @@-commands; it is
-included in all standard GNU distributions.  The latest version is
-always available from the Texinfo source repository:
+included in all standard GNU distributions.  The latest version
+released for general use is available
+from the usual GNU servers and mirrors:
+
+@smalldisplay
+@uref{http://ftp.gnu.org/gnu/texinfo/texinfo.tex}
+@uref{http://ftpmirror.gnu.org/texinfo/texinfo.tex}
+@end smalldisplay
+
+The latest development version is available from the Texinfo source
+repository:
 @smalldisplay
 @uref{http://svn.savannah.gnu.org/viewvc/trunk/doc/texinfo.tex?root=texinfo&view=log}
 @end smalldisplay
 
 @pindex texinfo.tex@r{, installing}
-
-Usually, the installer has put the @file{texinfo.tex} file in the
-default directory that contains @TeX{} macros when GNU Texinfo, Emacs or
-other GNU software is installed.  In this case, @TeX{} will find the
-file and you do not need to do anything special.  If this has not been
-done, you can put @file{texinfo.tex} in the current directory when you
-run @TeX{}, and @TeX{} will find it there.
+@file{texinfo.tex} is essentially a standalone file, and compatibility
+is of utmost concern; so, if you need or want to try a newer version
+than came with your system, it nearly always suffices to download it
+and put it anywhere that @TeX{} will find it (first).  You can replace
+any existing @file{texinfo.tex} with a newer version (of course saving
+the original in case of disaster).
 
 @pindex epsf.tex@r{, installing}
 Also, you should install @file{epsf.tex}, if it is not already installed
@@ -16659,15 +16686,17 @@ of the @code{@@image} command (@pxref{Images}).
 @cindex European Computer Modern fonts, installing
 @cindex EC fonts, installing
 @cindex CM-Super fonts, installing
-To be able to use quotation marks other than those used in English
-you'll need to install European Computer Modern fonts and optionally
-CM-Super fonts, unless they are already installed (@pxref{Inserting
-Quotation Marks}).
+To use quotation marks other than those used in English, you'll need
+to have the European Computer Modern fonts (e.g., @file{ecrm1000}) and
+(for PDF output) CM-Super fonts (@pxref{Inserting Quotation Marks}).
 
 @pindex feymr10@r{, installing}
 @cindex Euro font, installing
-If you intend to use the @code{@@euro} command, you should install the
-Euro font, if it is not already installed.  @xref{@t{@@euro}}.
+To use the @code{@@euro} command, you'll need the @samp{feym*} fonts
+(e.g., @file{feymr10}).  @xref{@t{@@euro}}.
+
+All of the above files (and a whole lot more) should be installed by
+default in a reasonable @TeX{} installation.
 
 @pindex texinfo.cnf @r{installation}
 @cindex Customizing of @TeX{} for Texinfo
@@ -16684,13 +16713,13 @@ to put in @file{texinfo.cnf}, you do not need to create it.
 
 @cindex Environment variable @code{TEXINPUTS}
 @vindex TEXINPUTS
-If neither of the above locations for these system files suffice for
-you, you can specify the directories explicitly.  For
-@file{texinfo.tex}, you can do this by writing the complete path for the
-file after the @code{\input} command.  Another way, that works for both
+If neither of the above locations for these system files suffice, you
+can specify the directories explicitly.  For @file{texinfo.tex}, you
+can do this by writing the complete path for the file after the
+@code{\input} command.  Another way, that works for both
 @file{texinfo.tex} and @file{texinfo.cnf} (and any other file @TeX{}
-might read), is to set the @code{TEXINPUTS} environment variable in your
-@file{.profile} or @file{.cshrc} file.
+might read), is to set the @code{TEXINPUTS} environment variable in
+your @file{.profile} or @file{.cshrc} file.
 
 Whether you use @file{.profile} or @file{.cshrc} depends on
 whether you use a Bourne shell-compatible (@code{sh}, @code{bash},
@@ -16715,9 +16744,8 @@ command sequence:
 setenv TEXINPUTS .:/home/me/mylib:
 @end example
 
-
-On MS-DOS/MS-Windows, you would say it like this@footnote{Note the use
-of the @samp{;} character as directory separator, instead of @samp{:}.}:
+On MS-DOS/MS-Windows, you'd do this (note the use of the @samp{;}
+character as directory separator, instead of @samp{:}):
 
 @example
 @group
@@ -16736,23 +16764,6 @@ hypothetical user @samp{me}'s @file{mylib} directory, and finally in
 the system directories.  (A leading, trailing, or doubled @samp{:}
 indicates searching the system directories at that point.)
 
-@cindex Dumping a .fmt file
-@cindex Format file, dumping
-Finally, you may wish to dump a @file{.fmt} file (@pxref{Memory dumps,,,
-web2c, Web2C}) so that @TeX{} can load Texinfo faster.  (The
-disadvantage is that then updating @file{texinfo.tex} requires
-redumping.)  You can do this by running this command, assuming
-@file{epsf.tex} is findable by @TeX{}:
-
-@example
-initex texinfo @@dump
-@end example
-
-@noindent
-(@code{dump} is a @TeX{} primitive.)  Then, move @file{texinfo.fmt} to
-wherever your @code{.fmt} files are found; typically, this will be in the
-subdirectory @file{web2c} of your @TeX{} installation.
-
 
 @node Overfull hboxes
 @section Overfull ``hboxes''
@@ -16760,10 +16771,10 @@ subdirectory @file{web2c} of your @TeX{} installation.
 @cindex @samp{hbox}, overfull
 @cindex Final output
 
-@TeX{} is sometimes unable to typeset a line without extending it into
-the right margin.  This can occur when @TeX{} comes upon what it
+@TeX{} is sometimes unable to typeset a line within the normal
+margins.  This most often occurs when @TeX{} comes upon what it
 interprets as a long word that it cannot hyphenate, such as an
-electronic mail network address or a very long title.  When this
+electronic mail network address or a very long identifier.  When this
 happens, @TeX{} prints an error message like this:
 
 @example
@@ -16777,9 +16788,8 @@ Overfull @@hbox (20.76302pt too wide)
 
 @TeX{} also provides the line number in the Texinfo source file and
 the text of the offending line, which is marked at all the places that
-@TeX{} considered hyphenation.
-@xref{Debugging with @TeX{}},
-for more information about typesetting errors.
+@TeX{} considered hyphenation.  @xref{Debugging with @TeX{}}, for more
+information about typesetting errors.
 
 If the Texinfo file has an overfull hbox, you can rewrite the sentence
 so the overfull hbox does not occur, or you can decide to leave it.  A
@@ -16801,17 +16811,17 @@ like this:
 @noindent
 (You should adjust the fraction as needed.)  This huge value for
 @code{\emergencystretch} cannot be the default, since then the typeset
-output would generally be of noticeably lower quality; the default
-is @samp{.15\hsize}.  @code{\hsize} is the @TeX{} dimension
+output would generally be of noticeably lower quality; its default
+value is @samp{.15\hsize}.  @code{\hsize} is the @TeX{} dimension
 containing the current line width.
 
 @cindex Black rectangle in hardcopy
 @cindex Rectangle, black in hardcopy
 @cindex Box, ugly black in hardcopy
 @cindex Ugly black rectangles in hardcopy
-For what overfull boxes you have, however, @TeX{} will print a large,
-ugly, black rectangle beside the line that contains the overfull hbox
-unless told otherwise.  This is so you will notice the location of the
+For any overfull boxes you do have, @TeX{} will print a large, ugly,
+black rectangle beside the line that contains the overfull hbox unless
+told otherwise.  This is so you will notice the location of the
 problem if you are correcting a draft.
 
 @findex finalout
@@ -16922,7 +16932,7 @@ separated by a comma.  Examples:
 @end example
 @noindent and
 @example
-@@pagesizes 11.5in      @c for legal paper
+@@pagesizes 11.5in       @c for legal paper
 @end example
 
 @cindex B5 paper, printing on
@@ -16940,8 +16950,6 @@ margins, you must define a new command in @file{texinfo.tex} or
 @xref{Format with @t{texi2dvi}}, and @ref{Preparing for @TeX{}},
 for other ways to specify @code{@@pagesizes} that do not require
 changing the source file.
-
-@code{@@pagesizes} is ignored by @code{makeinfo}.
 
 
 @node Cropmarks and Magnification
@@ -16990,7 +16998,7 @@ Texinfo file, before the title page:
 @example
 @group
 @@tex
-\mag=1200
+\global\mag=1200
 @@end tex
 @end group
 @end example
@@ -17008,6 +17016,7 @@ magnifications.  Be prepared to experiment.
 @node PDF Output
 @section PDF Output
 @cindex PDF output
+@cindex Output, in PDF
 
 @pindex pdftex
 The simplest way to generate PDF output from Texinfo source is to run
@@ -17040,14 +17049,15 @@ Wikipedia}.
 
 At present, Texinfo does not provide @samp{@@ifpdf} or @samp{@@pdf}
 commands as for the other output formats, since PDF documents contain
-many internal low-level offsets and references that would be hard or
-impossible to get right at the Texinfo source level.
+many internal low-level offsets and cross-references that would be
+hard or impossible to specify at the Texinfo source level.
 
 PDF files require dedicated software to be displayed, unlike the plain
 ASCII formats (Info, HTML) that Texinfo supports.  They also tend to
 be much larger than the DVI files output by @TeX{} by default.
 Nevertheless, a PDF file does define an actual typeset document in a
-self-contained file, so it has its place.
+self-contained file, notably including all the fonts that are used, so
+it has its place.
 
 
 @node Obtaining @TeX{}
