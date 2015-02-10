@@ -1,3 +1,8 @@
+2015-02-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Report.pm (Module documentation section): Minor 
+	tweaks to grammar.
+
 2015-02-09  Karl Berry  <karl@gnu.org>
 
 	* doc/refcard/txicmdcheck: check @findex entries in texinfo.texi too.
