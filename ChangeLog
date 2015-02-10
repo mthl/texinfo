@@ -1,5 +1,8 @@
 2015-02-09  Karl Berry  <karl@gnu.org>
 
+	* doc/refcard/txicmdcheck: check @findex entries in texinfo.texi too.
+	* doc/texinfo.texi: add some missing entries.
+
 	* doc/texinfo.texi (Hardcopy): update whole chapter.
 	(Formatting Partial Documents, Details of @t{texindex}):
 	new nodes, mostly to mention the temporary need for

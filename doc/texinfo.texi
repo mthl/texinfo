@@ -6947,7 +6947,8 @@ output, @code{@@uref} produces a link you can follow.  (To merely
 indicate a url without creating a link people can follow, use
 @code{@@indicateurl}, @pxref{@t{@@indicateurl}}.)
 
-@anchor{url} @code{@@url} is a synonym for @code{@@uref}.
+@findex url
+@anchor{url}@code{@@url} is a synonym for @code{@@uref}.
 (Originally, @code{@@url} had the meaning of @code{@@indicateurl}, but
 in practice it was almost always misused.  So we've changed the
 meaning.)
@@ -10937,7 +10938,7 @@ important enough to define a synonym.)
 @node Inserting a Backslash
 @subsection Inserting `\' with @code{@@backslashchar@{@}}
 
-@findex backslash
+@findex backslashchar
 @cindex Backslash, inserting
 
 Ordinarily, a backslash `\' is a normal character in Texinfo that can
@@ -10957,6 +10958,7 @@ macro call:
 @@mymac@{One argument@@backslashchar@{@} with a backslash@}
 @end example
 
+@findex \backslash
 Texinfo documents may also use \ as a command character inside
 @code{@@math} (@pxref{Inserting Math}).  In this case, @code{@@\} or
 @code{\backslash} produces a ``math'' backslash (from the math symbol
@@ -11036,7 +11038,7 @@ be the undirected single quote, like this:
 @set txicodequoteundirected off
 
 @item @@codequotebacktick @var{on-off}
-@findex codequoteundirected
+@findex codequotebacktick
 @cindex backtick
 @cindex grave accent, standalone
 causes the output for the @code{`} character in code environments to
@@ -11189,7 +11191,7 @@ sentence, and no extra space is inserted.
 @cindex Ending a Sentence
 @cindex Sentence ending punctuation
 
-@findex .  @r{(end of sentence)}
+@findex . @r{(end of sentence)}
 @findex ! @r{(end of sentence)}
 @findex ? @r{(end of sentence)}
 @cindex Spacing, at ends of sentences
@@ -13069,6 +13071,25 @@ produces
 These two search commands are similar except @dots{}
 @end deffn
 
+@findex defcvx
+@findex defivarx
+@findex defmacx
+@findex defmethodx
+@findex defoptx
+@findex defopx
+@findex defspecx
+@findex deftpx
+@findex deftypecvx
+@findex deftypefnx
+@findex deftypefunx
+@findex deftypeivarx
+@findex deftypemethodx
+@findex deftypeopx
+@findex deftypevarx
+@findex deftypevrx
+@findex defunx
+@findex defvarx
+@findex defvrx
 Each definition command has an `x' form: @code{@@defunx},
 @code{@@defvrx}, @code{@@deftypefunx}, etc.
 
@@ -13759,7 +13780,7 @@ the class @code{bar-class}.  The method takes an argument.
 @code{@@defmethod} creates an entry in the index of functions.
 
 @item @@deftypemethod @var{class} @var{data-type} @var{name} @var{arguments}@dots{}
-@findex defmethod
+@findex deftypemethod
 The @code{@@deftypemethod} command is the definition command for methods
 in object-oriented typed languages, such as C++ and Java.  It is similar
 to the @code{@@defmethod} command with the addition of the
@@ -14830,6 +14851,8 @@ do not need to edit the three sections.
 @cindex Commands, testing for Texinfo
 @cindex Versions of Texinfo, adapting to
 @cindex Features of Texinfo, adapting to
+@findex ifcommanddefined
+@findex ifcommandnotdefined
 
 Occasionally, you may want to arrange for your manual to test if a
 given Texinfo command is available and (presumably) do some sort of
@@ -16880,6 +16903,7 @@ changing the source file.
 @cindex Paper size, A4
 @cindex European A4 paper
 @findex afourpaper
+@findex afivepaper
 
 You can tell @TeX{} to format a document for printing on European size
 A4 paper (or A5) with the @code{@@afourpaper} (or @code{@@afivepaper})
