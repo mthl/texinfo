@@ -1,3 +1,7 @@
+2015-02-10  Karl Berry  <karl@gnu.org>
+
+	* tp/t/test_utils.pl (%outfile_preamble) <html_text>: update css.
+
 2015-02-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Report.pm (Module documentation section): Minor 
