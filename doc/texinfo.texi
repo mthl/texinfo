@@ -16266,7 +16266,7 @@ whose name is made by appending @samp{s} to the input file name; for
 example, @file{foo.cps} is made from @file{foo.cp}.  The
 @code{@@printindex} command looks for a file with that name
 (@pxref{Printing Indices & Menus}).  @TeX{} does not read the raw
-index output file, and @code{texindex} does not alter it.  the raw
+index output file, and @code{texindex} does not alter it.
 
 After you have sorted the indices, you need to rerun @code{tex} on the
 Texinfo file.  This regenerates the DVI file, this time with
@@ -16405,7 +16405,7 @@ usage.
 
 
 @node Print with @t{lpr}
-@section Print with @code{lpr -d} from Shell
+@section Print with @code{lpr} from Shell
 
 @pindex lpr @r{(DVI print command)}
 
