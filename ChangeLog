@@ -1,3 +1,19 @@
+2015-02-11  Gavin Smith  <gavinsmith0123@gmail.com>, and
+            Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/Plaintext.pm (push_top_formatter): Add
+	to 'document_context' stack.
+	(_convert) <multitable>: Increment 'in_multitable' on hash on
+	top of document_context stack.
+	<end of multitable>: Decrement 'in_multitable'.
+	<$ref_commands>: Check if in multitable context by checking top 
+	of 'document_context' stack, and if so suppress line breaks for 
+	output of cross-reference.
+	(_footnotes): Pop 'document_context' along with the other 
+	context stacks.
+
+	* tp/t/21multitable.t (ref_in_multitable): New test.
+
 2015-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm (_convert) <empty line>: Pass 

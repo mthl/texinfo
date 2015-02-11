@@ -109,7 +109,7 @@ foreach my $def_command (keys(%def_commands)) {
   $formatting_misc_commands{$def_command} = 1 if ($misc_commands{$def_command});
 }
 
-# There are 5 stacks that define the context.
+# There are 6 stacks that define the context.
 # context:   relevant for alignement of text.  Set in math, footnote, 
 #            listoffloats, flush_commands, preformatted_context_commands 
 #            (preformatted + menu + verbatim), and raw commands if 
@@ -134,6 +134,7 @@ foreach my $def_command (keys(%def_commands)) {
 #            counting some converted text, but it is also set when it has
 #            to be modified afterwards, for aligned commands or multitable
 #            cells for example.
+# document_context: Used to keep track if we are in a multitable.
 
 # formatters have their own stack
 # in container
@@ -330,6 +331,10 @@ sub push_top_formatter($$)
   push @{$self->{'text_element_context'}}, {
                                      'max' => $self->{'fillcolumn'}
                                    };
+  push @{$self->{'document_context'}}, {
+                                     'in_multitable' => 0
+                                   };
+
   # This is not really meant to be used, as contents should open 
   # their own formatters, however it happens that there is some text
   # outside any content that needs to be formatted, as @sp for example.
@@ -840,7 +845,8 @@ sub _footnotes($;$)
                                     'normalized' => $normalized}
                        });
       }
-      # this pushes on 'context', 'format_context' and 'formatters'
+      # this pushes on 'context', 'formatters', 'format_context',
+      # 'text_element_context' and 'document_context'
       $self->push_top_formatter('footnote');
       my $formatted_footnote_number;
       if ($self->get_conf('NUMBER_FOOTNOTES')) {
@@ -861,9 +867,10 @@ sub _footnotes($;$)
       
       my $old_context = pop @{$self->{'context'}};
       die if ($old_context ne 'footnote');
-      pop @{$self->{'format_context'}};
       pop @{$self->{'formatters'}};
+      pop @{$self->{'format_context'}};
       pop @{$self->{'text_element_context'}};
+      pop @{$self->{'document_context'}};
     }
   }
   $self->{'footnote_index'} = 0;
@@ -2015,6 +2022,20 @@ sub _convert($$)
           $args[3] = $args[2];
           $args[2] = undef;
         }
+
+        # Treat cross-reference commands in a multitable cell as if they
+        # were surrounded by @w{ ... }, so the output will not be split across
+        # lines, leading text from other columns appearing to be part of the
+        # cross-reference.
+        my $in_multitable = 0;
+        if ($self->{'document_context'}->[-1]->{'in_multitable'}) {
+          $in_multitable = 1;
+          $formatter->{'w'}++;
+          $result .= $self->_count_added($formatter->{'container'},
+            $formatter->{'container'}->set_space_protection(1,undef))
+          if ($formatter->{'w'} == 1);
+        }
+
         if ($command eq 'xref') {
           $result = $self->_convert({'contents' => [{'text' => '*Note '}]});
         } else {
@@ -2113,6 +2134,13 @@ sub _convert($$)
             push @added, {'cmdname' => ':'} if ($command ne 'xref');
             unshift @{$self->{'current_contents'}->[-1]}, @added;
           }
+        }
+
+        if ($in_multitable) {
+          $formatter->{'w'}--;
+          $result .= $self->_count_added($formatter->{'container'},
+              $formatter->{'container'}->set_space_protection(0,undef))
+            if ($formatter->{'w'} == 0);
         }
         return $result;
       }
@@ -2323,6 +2351,7 @@ sub _convert($$)
         $self->{'format_context'}->[-1]->{'columns_size'} = $columnsize;
         $self->{'format_context'}->[-1]->{'row_empty_lines_count'} 
           = $self->{'empty_lines_count'};
+        $self->{'document_context'}->[-1]->{'in_multitable'}++;
       } elsif ($root->{'cmdname'} eq 'float') {
         $result .= $self->_add_newline_if_needed();
         if ($root->{'extra'} and $root->{'extra'}->{'normalized'}) {
@@ -3180,9 +3209,10 @@ sub _convert($$)
                  $self->gdt("\@center --- \@emph{{author}}\n",
                     {'author' => $author->{'extra'}->{'misc_content'}}));
       }
+    } elsif (($root->{'cmdname'} eq 'multitable')) {
+      $self->{'document_context'}->[-1]->{'in_multitable'}--;
     }
-
-  
+ 
     # close the contexts and register the cells
     if ($self->{'preformatted_context_commands'}->{$root->{'cmdname'}}
         or $root->{'cmdname'} eq 'float') {
