@@ -1,6 +1,11 @@
-Most test files use a testing infrastructure from t/test_utils.pl.
+These tests are run by "make check" under tp/.  (The test files are 
+listed in tp/Makefile.tres, which is a generated file.)  A single .t 
+test file can be run on its own with
 
-In that case the reference output files for the test of a test category 
+  perl -w t/03coverage_braces.t
+
+Most test files use a testing infrastructure from t/test_utils.pl.  In
+that case the reference output files for the test of a test category 
 $test_category.t file are in t/results/$test_category/.  For example, if 
 after running "make check" test-suite.log contains a line like:
 
@@ -47,7 +52,7 @@ tests by running something along
 
   perl -w t/60macro.t -c
 
-to create a file for each of the test in t/60macro.t, or for a specific
+to create a file for each of the tests in t/60macro.t, or for a specific
 test, here arg_body_expansion_order: 
 
   perl -w t/60macro.t -c arg_body_expansion_order

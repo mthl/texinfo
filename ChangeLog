@@ -1,3 +1,13 @@
+2015-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert) <empty line>: Pass 
+	a "\n" into the active formatter so it can register an 
+	end-of-line if it needs to.
+	* tp/t/20preformatted.t (comments_in_example): Add a use of @c
+	in an @example followed by an empty line.
+	* tp/t/README: Elaborate on how tests are found, and how to run 
+	a single test by itself.
+
 2015-02-10  Karl Berry  <karl@gnu.org>
 
 	* tp/t/test_utils.pl (%outfile_preamble) <html_text>: update css.

@@ -1570,12 +1570,13 @@ sub _convert($$)
     $self->{'empty_lines_count'}++;
     if ($self->{'empty_lines_count'} <= 1
         or $self->{'preformatted_context_commands'}->{$self->{'context'}->[-1]}) {
-      $result = "\n";
+      $result = "";
       if ($root->{'text'} =~ /\f/) {
-        $result = _get_form_feeds($root->{'text'}) .$result;
+        $result .= _get_form_feeds($root->{'text'});
+        $self->_add_text_count($result);
       }
-      $self->_add_text_count($result);
-      $self->_add_lines_count(1);
+      $result .= $self->_count_added($formatter->{'container'},
+                $formatter->{'container'}->add_text("\n"));
       return $result;
     } else {
       return '';
