@@ -241,91 +241,96 @@ guilsinglright	brace		0
 # accent commands - can be called with or without braces
 # do we need both "brace" and "accent"?
 # there is special casing on line 3998
-\"		brace,accent
-~ 		brace,accent
-^ 		brace,accent
-` 		brace,accent
-' 		brace,accent
-, 		brace,accent
-= 		brace,accent
-ringaccent	brace,accent
-H		brace,accent
-dotaccent	brace,accent
-u		brace,accent
-ubaraccent	brace,accent
-udotaccent	brace,accent
-v		brace,accent
-ogonek		brace,accent
-tieaccent	brace,accent
-dotless		brace,accent
+\"		brace,accent	BRACE_accent
+~ 		brace,accent	BRACE_accent
+^ 		brace,accent	BRACE_accent
+` 		brace,accent	BRACE_accent
+' 		brace,accent	BRACE_accent
+, 		brace,accent	BRACE_accent
+= 		brace,accent	BRACE_accent
+ringaccent	brace,accent	BRACE_accent
+H		brace,accent	BRACE_accent
+dotaccent	brace,accent	BRACE_accent
+u		brace,accent	BRACE_accent
+ubaraccent	brace,accent	BRACE_accent
+udotaccent	brace,accent	BRACE_accent
+v		brace,accent	BRACE_accent
+ogonek		brace,accent	BRACE_accent
+tieaccent	brace,accent	BRACE_accent
+dotless		brace,accent	BRACE_accent
 
 # Style commands
-asis		brace
-cite		brace
-clicksequence	brace
-dfn		brace
-emph		brace
-sc		brace
-t		brace
-var		brace
-headitemfont	brace
-code		brace
-command		brace
-env		brace
-file		brace
-kbd		brace
-option		brace
-samp		brace
-strong		brace
+asis		brace	BRACE_style
+cite		brace	BRACE_style
+clicksequence	brace	BRACE_style
+dfn		brace	BRACE_style
+emph		brace	BRACE_style
+sc		brace	BRACE_style
+t		brace	BRACE_style
+var		brace	BRACE_style
+headitemfont	brace	BRACE_style
+code		brace	BRACE_style
+command		brace	BRACE_style
+env		brace	BRACE_style
+file		brace	BRACE_style
+kbd		brace	BRACE_style
+option		brace	BRACE_style
+samp		brace	BRACE_style
+strong		brace	BRACE_style
 
 # Regular font style commands 595
-r		brace
-i		brace
-b		brace
-sansserif	brace
-slanted		brace
+r		brace	BRACE_style
+i		brace	BRACE_style
+b		brace	BRACE_style
+sansserif	brace	BRACE_style
+slanted		brace	BRACE_style
 
-# One arg commands
+# One arg, "simple text" argument commands
+# I intend to use "1" for these commands only, and
+# use a different value for the other commands which
+# are said to take 1 argument in Common.pm.
 ctrl		brace	1
 dmn		brace	1
-w		brace	1
-key		brace	1
 titlefont	brace	1
-hyphenation	brace	1
+
+w		brace	BRACE_other
+key		brace	BRACE_other
+
+hyphenation	brace	BRACE_other
 anchor		brace	1
 errormsg	brace	1
 
 # code style commands
-code		brace
-command		brace
-env		brace
-file		brace
-kbd		brace
-key		brace
-option		brace
-samp		brace
-indicateurl	brace
-verb		brace
-t		brace
+code		brace	BRACE_other
+command		brace	BRACE_other
+env		brace	BRACE_other
+file		brace	BRACE_other
+kbd		brace	BRACE_other
+key		brace	BRACE_other
+option		brace	BRACE_other
+samp		brace	BRACE_other
+indicateurl	brace	1
+verb		brace	BRACE_other
+t		brace	BRACE_other
 
 # context brace commands - commands that enclose full texts
-footnote	brace,context_brace
-caption		brace,context_brace
-shortcaption	brace,context_brace
-math		brace,context_brace
+footnote	brace	BRACE_context
+caption		brace	BRACE_context
+shortcaption	brace	BRACE_context
+math		brace	BRACE_context
 
 # explained commands 624
-abbr		brace
-acronym		brace
+abbr		brace	1
+acronym		brace	1
 
 # inline format command
-inlineraw		brace,inline
-inlinefmt		brace,inline
-inlinefmtifelse		brace,inline
+inlineraw		brace,inline	BRACE_inline
+inlinefmt		brace,inline	BRACE_inline
+inlinefmtifelse		brace,inline	BRACE_inline
 
 # inline conditional commands
-inlineifclear		brace,inline
-inlineifset		brace,inline
+inlineifclear		brace,inline	BRACE_inline
+inlineifset		brace,inline	BRACE_inline
 
 email			brace	2
 

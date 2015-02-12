@@ -1,3 +1,8 @@
+2015-02-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* command_data.txt <brace commands>: Add arg types for all 
+	commands (some of these could change).
+
 2015-02-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* parser.c (process_remaining_on_line): Handle @verb.

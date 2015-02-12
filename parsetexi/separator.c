@@ -45,7 +45,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       current = arg;
 
       /* 4903 */
-      if (command_data(command).flags & CF_context_brace)
+      if (command_data(command).data == BRACE_context)
         {
           if (command == CM_caption || command == CM_shortcaption)
             {
@@ -159,14 +159,15 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       goto funexit;
     }
   else if (command_flags(current->parent) & CF_brace)
-    // || definfoenclose
     {
       enum command_id closed_command;
       // 5019
-      if (command_flags(current->parent) & CF_context_brace)
+      if (command_data(current->parent->cmd).data == BRACE_context)
         {
           enum context c;
           c = pop_context ();
+          /* The Perl code here checks that the popped context and the
+             parent command match as strings. */
         }
       closed_command = current->parent->cmd;
       debug ("CLOSING(brace) %s", command_data(closed_command).cmdname);
@@ -295,7 +296,9 @@ handle_separator (ELEMENT *current, char separator, char **line_inout)
     {
       current = handle_close_brace (current, &line);
     }
-  else if (separator == ',' && current->remaining_args > 0) // 5228
+  /* If a comma is seen after all the arguments for the command have been
+     read, it is included in the last argument. */
+  else if (separator == ',' && current->parent->remaining_args > 0) // 5228
     {
       current = handle_comma (current, &line);
     }

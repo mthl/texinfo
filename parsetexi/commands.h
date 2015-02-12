@@ -50,9 +50,10 @@ void init_index_commands (void);
 #define CF_letter_no_arg	        0x0020
 #define CF_accent		        0x0040
 #define CF_style		        0x0080
+/* CF_code_style is set for brace commands only. */
 #define CF_code_style		        0x0100
 #define CF_regular_font_style	        0x0200
-#define CF_context_brace	        0x0400
+// #define free          	        0x0400
 #define CF_ref			        0x0800
 #define CF_explained		        0x1000
 #define CF_block		        0x2000
@@ -90,12 +91,9 @@ void init_index_commands (void);
 #define BLOCK_raw -2
 #define BLOCK_multitable -3
 
-#if 0
-/* Types of brace command could go in 'flags', although then we risk running 
-   out of space for flags.  If it does then we have the 'data' field free to 
-   store a number of args in. */
-
 /* Types of brace command (CF_brace). */
-#define BRACE_context_brace -1
-
-#endif
+#define BRACE_context -1 /* Can enclose paragraph breaks. */
+#define BRACE_accent -2
+#define BRACE_style -3
+#define BRACE_inline -4
+#define BRACE_other -5
