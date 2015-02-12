@@ -27,37 +27,6 @@
 #include "indices.h"
 #include "errors.h"
 
-// 5467, also in Common.pm 1334
-// TODO: Check the behaviour here is the same
-/* Return a new element whose contents are the same as those of ORIGINAL,
-   but with some elements representing empty spaces removed.  Elements like 
-   these are used to represent some of the "content" extra keys. */
-ELEMENT *
-trim_spaces_comment_from_content (ELEMENT *original)
-{
-  ELEMENT *trimmed;
-  int i;
-
-  trimmed = new_element (ET_NONE);
-  trimmed->parent_type = route_not_in_tree;
-  for (i = 0; i < original->contents.number; i++)
-    {
-      if (original->contents.list[i]->type
-          != ET_empty_spaces_after_command
-          && original->contents.list[i]->type != ET_spaces_at_end)
-        {
-          /* FIXME: Is this safe to serialize? */
-          /* For example, if there are extra keys in the elements under each 
-             argument?  They may not be set in a copy.
-             Hopefully there aren't many extra keys set on commands in 
-             node names. */
-          add_to_element_contents (trimmed, original->contents.list[i]);
-        }
-    }
-
-  return trimmed;
-}
-
 static int
 is_decimal_number (char *string)
 {

@@ -51,6 +51,13 @@ add_extra_key_contents (ELEMENT *e, char *key, ELEMENT *value)
   e->extra[e->extra_number - 1].type = extra_element_contents;
 }
 
+void
+add_extra_key_contents_array (ELEMENT *e, char *key, ELEMENT *value)
+{
+  add_extra_key (e, key, value);
+  e->extra[e->extra_number - 1].type = extra_element_contents_array;
+}
+
 /* Add an extra key that is a reference to the text field of another
    element. */
 void

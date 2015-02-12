@@ -69,13 +69,23 @@ void
 dump_args (ELEMENT *e, TEXT *text)
 {
   int i;
+  int not_in_tree = 0;
+
+  /* Don't set routing information if not dumping from a route
+     directly from the root, that is via an extra value. */
+  if (e->parent_type == route_not_in_tree
+      || (e->parent_type == route_uninitialized && e->parent))
+    not_in_tree = 1;
   text_append_n (text, "[\n", 2);
   indent += 2;
 
   for (i = 0; i < e->args.number; i++)
     {
-      e->args.list[i]->parent_type = route_args;
-      e->args.list[i]->index_in_parent = i;
+      if (!not_in_tree)
+        {
+          e->args.list[i]->parent_type = route_args;
+          e->args.list[i]->index_in_parent = i;
+        }
 
       dump_indent (text);
       dump_element (e->args.list[i], text);
@@ -91,13 +101,24 @@ void
 dump_contents (ELEMENT *e, TEXT *text)
 {
   int i;
+  int not_in_tree = 0;
+
+  /* Don't set routing information if not dumping from a route
+     directly from the root, that is via an extra value. */
+  if (e->parent_type == route_not_in_tree
+      || (e->parent_type == route_uninitialized && e->parent))
+    not_in_tree = 1;
+
   text_append_n (text, "[\n", 2);
   indent += 2;
 
   for (i = 0; i < e->contents.number; i++)
     {
-      e->contents.list[i]->parent_type = route_contents;
-      e->contents.list[i]->index_in_parent = i;
+      if (!not_in_tree)
+        {
+          e->contents.list[i]->parent_type = route_contents;
+          e->contents.list[i]->index_in_parent = i;
+        }
 
       dump_indent (text);
       dump_element (e->contents.list[i], text);
@@ -289,6 +310,7 @@ dump_extra (ELEMENT *e, TEXT *text)
             {
               switch (e->extra[i].type)
                 {
+                  int j;
                 case extra_element:
                   dump_element (e->extra[i].value, text);
                   break;
@@ -297,6 +319,22 @@ dump_extra (ELEMENT *e, TEXT *text)
                   text_append (text, e->extra[i].key);
                   text_append (text, "' => ");
                   dump_contents (e->extra[i].value, text);
+                  break;
+                case extra_element_contents_array:
+                  /* Like extra_element_contents, but this time output an array
+                     of arrays (instead of an array). */
+                  text_append_n (text, "'", 1);
+                  text_append (text, e->extra[i].key);
+                  text_append (text, "' => [\n");
+                  indent += 2;
+                  for (j = 0; j < e->extra[i].value->contents.number; j++)
+                    {
+                      dump_indent (text);
+                      dump_contents (e->extra[i].value->contents.list[j], 
+                                     text);
+                    }
+                  indent -= 2;
+                  text_append (text, "],");
                   break;
                 default:
                   abort ();

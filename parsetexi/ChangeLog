@@ -1,5 +1,12 @@
 2015-02-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* separator.c (register_command_arg): New function.
+	(handle_close_brace, handle_comma) <brace commands with positive 
+	number of args>: Call it.
+	* extra.c (add_extra_key_contents_array): New function.
+
+2015-02-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* command_data.txt <brace commands>: Add arg types for all 
 	commands (some of these could change).
 

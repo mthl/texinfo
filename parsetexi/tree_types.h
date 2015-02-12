@@ -27,6 +27,7 @@ typedef struct TEXT {
 enum extra_type {
     extra_element,
     extra_element_contents,
+    extra_element_contents_array,
     extra_element_text,
     extra_index_entry,
     extra_misc_args,

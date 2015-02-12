@@ -380,9 +380,14 @@ abort_empty_line (ELEMENT **current_inout, char *additional_text)
 }
 
 /* 2149 */
-/* Split any trailing whitespace on the last element in a line into its
-   own element, ET_spaces_at_end by default.  This helps with line
-   argument parsing as there will be no leading or trailing spaces.
+/* Split any trailing whitespace on the last contents child of CURRENT into
+   own element, ET_spaces_at_end by default.
+  
+   This is used for the argument to a line command, and for the arguments to a 
+   brace command taking a given number of arguments.
+
+   This helps with argument parsing as there will be no leading or trailing 
+   spaces.
 
    Also, "to help expansion disregard unuseful spaces".  Could that mean
    macro expansion? */
@@ -457,6 +462,39 @@ isolate_last_space (ELEMENT *current, enum element_type element_type)
         }
     }
 }
+
+// 5467, also in Common.pm 1334
+// TODO: Check the behaviour here is the same
+/* Return a new element whose contents are the same as those of ORIGINAL,
+   but with some elements representing empty spaces removed.  Elements like 
+   these are used to represent some of the "content" extra keys. */
+ELEMENT *
+trim_spaces_comment_from_content (ELEMENT *original)
+{
+  ELEMENT *trimmed;
+  int i;
+
+  trimmed = new_element (ET_NONE);
+  trimmed->parent_type = route_not_in_tree;
+  for (i = 0; i < original->contents.number; i++)
+    {
+      if (original->contents.list[i]->type != ET_empty_spaces_after_command
+        && original->contents.list[i]->type != ET_spaces_at_end
+        && original->contents.list[i]->type != ET_empty_spaces_before_argument)
+        {
+          /* FIXME: Is this safe to serialize? */
+          /* For example, if there are extra keys in the elements under each 
+             argument?  They may not be set in a copy.
+             Hopefully there aren't many extra keys set on commands in 
+             node names. */
+          //add_to_element_contents (trimmed, original->contents.list[i]);
+          add_to_contents_as_array (trimmed, original->contents.list[i]);
+        }
+    }
+
+  return trimmed;
+}
+
 
 /* 3491 */
 /* Add an "ET_empty_line_after_command" element containing the whitespace at 

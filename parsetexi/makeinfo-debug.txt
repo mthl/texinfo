@@ -3,6 +3,7 @@ to get tree output, do
 $makeinfo -c DUMP_TREE=1 multitparseable.texi 2>&1 |less
 
 makeinfo -c TEXINFO_OUTPUT_FORMAT=debugtree mltitble.texi
+----- often more readable than DUMP_TREE, but no "extra"
 
 makeinfo -c DEBUG=1 -c TEXINFO_OUTPUT_FORMAT=parse mltitble.texi
 

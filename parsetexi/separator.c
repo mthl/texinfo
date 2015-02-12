@@ -21,6 +21,39 @@
 #include "tree.h"
 #include "text.h"
 
+// 3600
+/* Add the contents of CURRENT as an element to the extra value with
+   key KEY, except that some "empty space" elements are removed.  Used for
+   'brace_command_contents' for the arguments to a brace command, and
+   'block_command_line_contents' for the arguments to a block line command.
+
+   For a brace command $element, $element->{'args'} has pretty much the same 
+   information as $element->{'extra'}->{'brace_command_contents'}. */
+
+static void
+register_command_arg (ELEMENT *current, char *key)
+{
+  ELEMENT *value;
+  ELEMENT *new;
+  KEY_PAIR *k;
+
+  /* FIXME: Could we add all the command args together, instead of one-by-one,
+     to avoid having to look for the extra value every time? */
+  k = lookup_extra_key (current->parent, key);
+  if (k)
+    value = k->value;
+  else
+    {
+      value = new_element (ET_NONE);
+      value->parent_type = route_not_in_tree;
+      add_extra_key_contents_array (current->parent, key, value);
+    }
+
+  new = trim_spaces_comment_from_content (current);
+
+  add_to_contents_as_array (value, new);
+}
+
 /* 4888 */
 ELEMENT *
 handle_open_brace (ELEMENT *current, char **line_inout)
@@ -29,8 +62,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
 
   abort_empty_line (&current, NULL);
   /* 4890 */
-  if (command_flags(current) & CF_brace
-      /* || definfoenclose */ )
+  if (command_flags(current) & CF_brace)
     {
       enum command_id command;
       ELEMENT *arg;
@@ -86,9 +118,12 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       else /* not context brace */
         {
           current->type = ET_brace_command_arg;
-          /* If this command takes more than one argument (why??) */
-          /* TODO: Also "simple text commands" 425 */
-          if (command_data(command).data > 1)
+
+          /* Commands which are said to take a positive number of arguments
+             disregard leading and trailing whitespace.  In 
+             'handle_close_brace', the 'brace_command_contents' array
+             is set.  */
+          if (command_data(command).data > 0)
             {
               ELEMENT *e;
               e = new_element (ET_empty_spaces_before_argument);
@@ -96,9 +131,12 @@ handle_open_brace (ELEMENT *current, char **line_inout)
               add_extra_key_element (current->parent,
                                      "spaces_before_argument", e);
             }
-          /* 4956 - TODO inline commands */
+          else if (command_data(command).data == BRACE_inline)
+            {
+              // 4956
+            }
         }
-
+      debug ("OPENED");
     }
 
   /* 4967 */
@@ -169,6 +207,14 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           /* The Perl code here checks that the popped context and the
              parent command match as strings. */
         }
+      else if (command_data(current->parent->cmd).data > 0)
+        {
+          // 5033
+          isolate_last_space (current, 0);
+          register_command_arg (current, "brace_command_contents");
+          //remove_empty_content_arguments ();
+        }
+
       closed_command = current->parent->cmd;
       debug ("CLOSING(brace) %s", command_data(closed_command).cmdname);
 
@@ -261,7 +307,15 @@ handle_comma (ELEMENT *current, char **line_inout)
   abort_empty_line (&current, NULL);
 
   /* Register brace_command_contents or block_command_line_contents in extra 
-     key.  Hopefully we won't have to do this. */
+     key. */
+  if (command_flags(current->parent) & CF_brace
+      && command_data(current->parent->cmd).data > 0)
+    {
+      // 5033
+      isolate_last_space (current, 0);
+      register_command_arg (current, "brace_command_contents");
+      //remove_empty_content_arguments ();
+    }
 
   type = current->type;
   current = current->parent;

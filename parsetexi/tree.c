@@ -77,6 +77,17 @@ add_to_element_contents (ELEMENT *parent, ELEMENT *e)
   e->parent = parent;
 }
 
+/* Special purpose function for when we are only using PARENT as an
+   array, and we don't want to overwrite E->parent. */
+void
+add_to_contents_as_array (ELEMENT *parent, ELEMENT *e)
+{
+  ELEMENT_LIST *list = &parent->contents;
+  reallocate_list (list);
+
+  list->list[list->number++] = e;
+}
+
 void
 add_to_element_args (ELEMENT *parent, ELEMENT *e)
 {
