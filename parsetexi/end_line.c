@@ -97,11 +97,11 @@ is_decimal_number (char *string)
 ELEMENT *
 parse_line_command_args (ELEMENT *line_command)
 {
-#define ADD_ARG(string) { \
+#define ADD_ARG(string) do { \
     ELEMENT *E = new_element (ET_NONE); \
     text_append (&E->text, string); \
     add_to_element_contents (line_args, E); \
-}
+} while (0)
 
   ELEMENT *line_args;
   ELEMENT *arg = line_command->args.list[0];
@@ -173,8 +173,8 @@ parse_line_command_args (ELEMENT *line_command)
         if (!existing)
           goto alias_invalid;
 
-        ADD_ARG(new)
-        ADD_ARG(existing)
+        ADD_ARG(new);
+        ADD_ARG(existing);
 
         /* TODO: Rememer the alias. */
         break;
@@ -214,9 +214,9 @@ parse_line_command_args (ELEMENT *line_command)
         if (*line == ',')
           goto definfoenclose_invalid; /* Too many args. */
 
-        ADD_ARG(new_command)
-        ADD_ARG(start)
-        ADD_ARG(end)
+        ADD_ARG(new_command);
+        ADD_ARG(start);
+        ADD_ARG(end);
         break;
       definfoenclose_invalid:
         line_error ("bad argument to @definfoenclose");
@@ -273,7 +273,7 @@ parse_line_command_args (ELEMENT *line_command)
         if (strchr (digit_chars, *line)
             && !*(line + 1 + strspn (line + 1, digit_chars)))
           {
-            ADD_ARG(line)
+            ADD_ARG(line);
           }
         else
           line_errorf ("@sp arg must be numeric, not `%s'", line);
@@ -291,7 +291,7 @@ parse_line_command_args (ELEMENT *line_command)
         if (*p)
           goto defindex_invalid; /* Trailing characters. */
 
-        ADD_ARG (name)
+        ADD_ARG (name);
         /* TODO: Store the index. */
         break;
       defindex_invalid:
@@ -320,8 +320,8 @@ parse_line_command_args (ELEMENT *line_command)
         if (!to)
           goto synindex_invalid;
 
-        ADD_ARG(from)
-        ADD_ARG(to)
+        ADD_ARG(from);
+        ADD_ARG(to);
 
         /* TODO: Rememer the synonym. */
         break;
@@ -369,7 +369,7 @@ parse_line_command_args (ELEMENT *line_command)
       {
         if (!strcmp (line, "separate") || !strcmp (line, "end"))
           {
-            ADD_ARG(line)
+            ADD_ARG(line);
           }
         else
           line_errorf ("@footnotestyle arg must be "
@@ -381,7 +381,7 @@ parse_line_command_args (ELEMENT *line_command)
         if (!strcmp (line, "on") || !strcmp (line, "off")
             || !strcmp (line, "odd"))
           {
-            ADD_ARG(line)
+            ADD_ARG(line);
           }
         else
           line_errorf ("@setchapternewpage argument must be "
@@ -393,7 +393,7 @@ parse_line_command_args (ELEMENT *line_command)
         /* valid: 2, 2., .2, 2.2 */
 
         if (is_decimal_number (line))
-          ADD_ARG(line)
+          ADD_ARG(line);
         else
           line_errorf ("bad argument to @need: %s", line);
 
@@ -409,7 +409,7 @@ parse_line_command_args (ELEMENT *line_command)
       {
         if (!strcmp (line, "none") || !strcmp (line, "insert"))
           {
-            ADD_ARG(line)
+            ADD_ARG(line);
           }
         else
           line_errorf ("@firstparagraph argument must be "
@@ -431,7 +431,7 @@ parse_line_command_args (ELEMENT *line_command)
       {
         if (!strcmp (line, "on") || !strcmp (line, "off"))
           {
-            ADD_ARG(line)
+            ADD_ARG(line);
           }
         else
           line_errorf ("expected @%s on or off, not `%s'", line);
@@ -443,7 +443,7 @@ parse_line_command_args (ELEMENT *line_command)
         if (!strcmp (line, "code") || !strcmp (line, "example")
             || !strcmp (line, "distinct"))
           {
-            ADD_ARG(line)
+            ADD_ARG(line);
           }
         else
           line_errorf ("@kbdinputstyle arg must be "
@@ -454,7 +454,7 @@ parse_line_command_args (ELEMENT *line_command)
       {
         if (!strcmp (line, "true") || !strcmp (line, "false"))
           {
-            ADD_ARG(line)
+            ADD_ARG(line);
           }
         else
           line_errorf ("@allowcodebreaks arg must be "
@@ -466,7 +466,7 @@ parse_line_command_args (ELEMENT *line_command)
         if (!strcmp (line, "after") || !strcmp (line, "before")
             || !strcmp (line, "none"))
           {
-            ADD_ARG(line)
+            ADD_ARG(line);
           }
         else
           line_errorf ("@urefbreakstyle arg must be "
@@ -479,7 +479,7 @@ parse_line_command_args (ELEMENT *line_command)
             || !strcmp (line, "double") || !strcmp (line, "singleafter")
             || !strcmp (line, "doubleafter"))
           {
-            ADD_ARG(line)
+            ADD_ARG(line);
           }
         else
           line_errorf ("bad argument to @headings: %s", line);
