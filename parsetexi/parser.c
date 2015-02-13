@@ -361,10 +361,8 @@ abort_empty_line (ELEMENT **current_inout, char *additional_text)
         }
       else if (last_child->type == ET_empty_line) //2132
         {
-          if (begin_paragraph_p (current))
-            last_child->type = ET_empty_spaces_before_paragraph;
-          else
-            destroy_element (pop_element_from_contents (current));
+          last_child->type = begin_paragraph_p (current)
+                             ? ET_empty_spaces_before_paragraph : ET_NONE;
         }
       else if (last_child->type == ET_empty_line_after_command)
         {

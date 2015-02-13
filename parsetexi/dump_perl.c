@@ -334,7 +334,8 @@ dump_extra (ELEMENT *e, TEXT *text)
                                      text);
                     }
                   indent -= 2;
-                  text_append (text, "],");
+                  dump_indent (text);
+                  text_append (text, "],\n");
                   break;
                 default:
                   abort ();

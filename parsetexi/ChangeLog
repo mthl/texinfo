@@ -1,3 +1,8 @@
+2015-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* parser.c (abort_empty_line) <ET_empty_line>: Clear type of
+	ET_empty_line element as intended, instead of deleting it.
+
 2015-02-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* separator.c (register_command_arg): New function.

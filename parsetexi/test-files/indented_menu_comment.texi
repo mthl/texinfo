@@ -1,0 +1,16 @@
+@node Top
+
+@menu
+* Marking Text::                AAAAAAA AAAAAAAA AA AAAAA AAAAA AAA
+                                YYY YYYYYY YYYYYYY YYYYYY YYYYY YYY
+                                XXXXX XXXXXXXXXX XXXXXXXX XXXXX.
+* Another::
+@end menu
+
+@node Marking Text
+
+ferjosgjseo
+
+@node Another
+
+gsergser
