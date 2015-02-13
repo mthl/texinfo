@@ -77,8 +77,8 @@ gnulib/lib/foo.h from foo.h.in) to the ignore list.
 About running the Texinfo programs from a development source tree:
 
 - Once the distribution is built, you can run the compiled programs
-(info, texindex, install-info) out of the build tree without special
-settings; they don't try to read any installed data files.
+(info, install-info) out of the build tree without special settings; 
+they don't try to read any installed data files.
 
 - The texi2dvi script and texinfo.tex can be run as-is, since they 
 are standalone and don't require compilation.  For the same reasons,

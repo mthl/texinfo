@@ -1,8 +1,8 @@
 2015-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* INSTALL, README, README-alpha, TODO: 2015.
-	* README: Remove mention of texindex.c, mention texindex 
-	subdirectory.
+	* README, README-hacking: Remove mention of texindex.c, mention 
+	texindex subdirectory.
 
 2015-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
