@@ -1,3 +1,11 @@
+2015-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (Module documentation section):
+	Show how to dump a parse tree with makeinfo.  Add some section 
+	headings.  Elaborate a bit on spaces_at_end and 
+	empty_spaces_before_argument.  Elaborate on the contents of a 
+	paragraph element, and the use of 'misc_arg'.
+
 2015-02-11  Gavin Smith  <gavinsmith0123@gmail.com>, and
             Patrice Dumas  <pertusus@free.fr>
 

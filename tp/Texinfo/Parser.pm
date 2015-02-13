@@ -6481,23 +6481,34 @@ the Texinfo world) is an hash reference.  There are three main categories
 of tree element.  Tree elements associated with an @-command have a 
 C<cmdname> key holding the @-command name.  Tree elements corresponding
 to text fragments have a C<text> key holding the corresponding text.
-The last category corresponds to other containers (hereafter called 
-containers).  In most case these containers have a C<type> key holding 
-their name.  Text fragments and @-command elements may also have an 
-associated type when such information is needed.
+Finally, the last category is other containers (hereafter called 
+containers) which in most cases have a C<type> key holding their name.  
+Text fragments and @-command elements may also have an associated type 
+when such information is needed.
 
-The children of an @-command or container elements are in the array
-corresponding with the C<args> key or with the C<contents> key.  The
-C<args> key is for arguments of @-commands, in braces or on the @-command
-line.  C<args> is also used for the elements of a menu entry, as a menu
-entry is well structured with a limited number of arguments.  
+The children of an @-command or container element are in the array
+referred to with the C<args> key or with the C<contents> key.  The
+C<args> key is for arguments of @-commands, either in braces or on
+the rest of the line after the command, depending on the type of command.
+C<args> is also used for the elements of a menu entry, as a menu
+entry is well-structured with a limited number of arguments.  
 The C<contents> key array holds the contents of the texinfo 
 code appearing within a block @-command, within a container, 
-within a C<@node> or sectioning @-command.
+or within a C<@node> or sectioning @-command.
 
 Another important key for the elements is the C<extra> key which is 
 associated to a hash reference and holds all kinds of information that
 is gathered during the parsing and may help with the conversion.
+
+You can see examples of the tree structure by running makeinfo like 
+this:
+
+  makeinfo -c DUMP_TREE=1 -c TEXINFO_OUTPUT_FORMAT=parse document.texi
+
+For a simpler, more regular representation of the tree structure, you 
+can do:
+
+  makeinfo -c TEXINFO_OUTPUT_FORMAT=debugtree document.texi
 
 =head2 Element keys
 
@@ -6570,14 +6581,18 @@ See L</Information available in the extra key>.
 
 =back
 
-=head2 The containers and types
+=head2 Element types
 
-Some types are associated with @-commands.  As said above, for C<@verb> 
-the type is the delimiter.  For a C<@value> command that is not 
-expanded because there is no corresponding value set, the type is the 
-value argument string.  
+=head3 Types for command elements
 
-The following types also happen for @-commands:
+Some types can be associated with @-commands (in addition to the element 
+being described by C<cmdname>), although usually there will be no type 
+at all.  As said above, for C<@verb> the type is the delimiter.  For a 
+C<@value> command that is not expanded because there is no corresponding 
+value set, the type is the value argument string.  
+
+The following are the other possible values of C<type> for tree elements 
+for @-commands.
 
 =over
 
@@ -6644,22 +6659,16 @@ C<< {'extra'}->{'end'} >>.
 
 =back
 
-The text elements may be associated to the following types:
+=head3 Types for text elements
+
+The text elements may have the following types (or may have no type
+at all):
 
 =over
 
 =item empty_line
 
-An empty line.
-
-=item raw
-
-Text in an environment where it should be kept as is (in C<@verbatim>,
-C<@verb>, C<@html>, C<@macro> body).
-
-=item last_raw_newline
-
-The last end of line in a raw block (except for C<@verbatim>).
+An empty line (possibly containing whitespace characters only).
 
 =item empty_line_after_command
 
@@ -6667,15 +6676,19 @@ The last end of line in a raw block (except for C<@verbatim>).
 
 The text is spaces for I<empty_spaces_after_command> 
 or spaces followed by a newline for 
-I<empty_line_after_command>, appearing after a @-command that 
-takes an argument on the line or a block 
-@-commands.
+I<empty_line_after_command>, appearing after an @-command that 
+takes an argument on the line or a block @-command.
+
+=item empty_spaces_before_argument
+
+The text is spaces appearing after an opening brace or after a 
+comma separating a command's arguments.
 
 =item spaces_at_end
 
-Space at the end of a @-command line, at the end of some @-commands
-with braces or at the end of a bracketed content on a 
-C<@multitable> line.
+Space at the end of an argument to a line command, at the end of an
+comma-separated argument for some brace commands, or at the end of
+bracketed content on a C<@multitable> line.
 
 =item empty_space_at_end_def_bracketed
 
@@ -6685,11 +6698,6 @@ Space at the end of a bracketed content on definition line.
 
 Space at the end of a block @-command line.
 
-=item empty_spaces_before_argument
-
-The text is spaces appearing after an opening brace of after a 
-comma separated @-command arguments.
-
 =item empty_spaces_after_close_brace
 
 Spaces appearing after a closing brace, for some rare commands for which
@@ -6698,6 +6706,15 @@ this space should be ignorable (like C<@caption>).
 =item empty_spaces_before_paragraph
 
 Space appearing before a paragraph beginning.
+
+=item raw
+
+Text in an environment where it should be kept as is (in C<@verbatim>,
+C<@verb>, C<@html>, C<@macro> body).
+
+=item last_raw_newline
+
+The last end of line in a raw block (except for C<@verbatim>).
 
 =item preamble_text
 
@@ -6712,7 +6729,10 @@ and space appearing after the description line.
 
 =back
 
-Other special types are described in the following.
+=head3 Types of container elements
+
+The other types of element are the following.  These are containers with 
+other elements appearing in their C<contents>.
 
 =over
 
@@ -6741,7 +6761,11 @@ if I<IGNORE_BEFORE_SETFILENAME> parser option is set.
 
 =item paragraph
 
-A paragraph.
+A paragraph.  The C<contents> of a paragraph (like other container 
+elements for Texinfo content) are elements representing the contents of 
+the paragraph in the order they occur, such as simple text elements 
+without a C<cmdname> or C<type>, or @-command elements for commands 
+appearing in the paragraph.
 
 =item preformatted
 
@@ -6753,17 +6777,20 @@ menu comments...).
 
 =item brace_command_context
 
-=item block_line_arg
-
 =item misc_line_arg
 
-Those containers are within C<args> of @-commands with braces for 
-I<brace_command_arg>, @-commands with braces that start a new context 
-(C<@footnote>, C<@caption>, C<@math>) for I<brace_command_context>, 
-block command argument on their line for I<block_line_arg> and 
-other commands that take texinfo code as argument on their line 
-(C<@settitle>, C<@node>, C<@section> and similar) for I<misc_line_arg>.
-They hold the content of the command argument.
+=item block_line_arg
+
+Those containers occur within the C<args> array of @-commands taking an 
+argument.  I<brace_command_arg> is used for the arguments to commands
+taking arguments surrounded by braces (and in some cases separated by 
+commas).  I<brace_command_context> is used for @-commands with braces 
+that start a new context (C<@footnote>, C<@caption>, C<@math>).
+
+I<misc_line_arg> is used for commands that take the texinfo code on the
+rest of the line as their argument (for example (C<@settitle>, C<@node>, 
+C<@section> and similar).  I<block_line_arg> is similar but is used for 
+commands that start a new block (which is to be ended with C<@end>).
 
 For example
 
@@ -6777,9 +6804,10 @@ leads to
 
 =item misc_arg
 
-Argument of @-command taking specific textual arguments on the line.
-For example C<@set>, C<@clickstyle>, C<@unmacro>, C<@comment>.
-The argument is associated to the I<text> key.
+Used for the arguments to some special line commands whose arguments
+aren't subject to the usual macro expansion.  For example C<@set>, 
+C<@clickstyle>, C<@unmacro>, C<@comment>.  The argument is associated to 
+the I<text> key.
 
 =item menu_entry
 
@@ -6906,7 +6934,7 @@ is in I<row_prototype>.
 
 =head2 Information available in the extra key
 
-Some extra keys are available for more than one @-command:
+=head3 Extra keys available for more than one @-command
 
 =over
 
@@ -6986,7 +7014,7 @@ the command and the argument.
 
 =back
 
-Then there are extra keys specific of certain @-commands or containers.
+=head3 Extra keys specific of certain @-commands or containers
 
 =over
 
