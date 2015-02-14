@@ -86,6 +86,8 @@ my %parser_default_configuration =
 # Stub for Texinfo::Parser::parser (line 574)
 sub parser (;$$)
 {
+  my $conf = shift;
+
   my %parser_blanks = (
     'labels' => {},
     'extra' => {},
@@ -114,6 +116,21 @@ sub parser (;$$)
 
   $parser->{'gettext'} = $parser_default_configuration{'gettext'};
   $parser->{'pgettext'} = $parser_default_configuration{'pgettext'};
+
+  if (defined($conf)) {
+    foreach my $key (keys (%$conf)) {
+      if ($key eq 'include_directories') {
+        warn "Passed include_directories\n";
+        foreach my $d (@{$conf->{'include_directories'}}) {
+          warn "got dir $d\n";
+          add_include_directory ($d);
+        }
+
+      } else {
+        warn "ignoring parser configuration value \"$key\"\n";
+      }
+    }
+  }
 
   bless $parser;
 
@@ -163,30 +180,6 @@ sub _add_parents ($) {
   }
 }
 
-# Set the 'menu_entry' extra key on each menu entry.  This was the
-## return value of _parse_node_manual (line 2257, Parser.pm).
-#sub _add_menu_entry_node_keys ($) {
-#  my $menu = shift;
-#  foreach my $entry (@{$menu->{'contents'}}) {
-#    next if !$entry->{'type'} or $entry->{'type'} ne 'menu_entry';
-#    foreach my $part (@{$entry->{'args'}}) {
-#      if ($part->{'type'} eq 'menu_entry_node') {
-#	#$entry->{'extra'}->{'menu_entry_node'}->{'manual_content'} = ...;
-#
-#	# In Texinfo::Parser::_parse_node_manual, a copy was taken of
-#	# the contents, and leading and trailing whitespace elements
-#	# removed with _trim_spaces_comment_from_content.
-#	$entry->{'extra'}->{'menu_entry_node'}->{'node_content'}
-#	  = $part->{'contents'};
-#
-#	# TODO: Actually get normalized node name of target.
-#	$entry->{'extra'}->{'menu_entry_node'}->{'normalized'}
-#	  = $part->{'contents'}[0]{'text'};
-#      }
-#    }
-#  }
-#}
-
 # Look for a menu in the node, saving in the 'menus' array reference
 # of the node element
 # This array was built on line 4800 of Parser.pm.
@@ -210,8 +203,6 @@ sub _find_menus_of_node ($) {
   foreach my $child (@{$contents}) {
     if ($child->{'cmdname'} and $child->{'cmdname'} eq 'menu') {
       push @{$node->{'menus'}}, $child;
-      # Disable - do this in the C code now.
-      #_add_menu_entry_node_keys ($child);
     }
   }
 }
@@ -268,11 +259,11 @@ sub parse_texi_file ($$)
     $tree_stream = dump_tree_to_string_3 ();
     #print "tree stream is $tree_stream\n";
     eval $tree_stream;
+    print "Got data.\n";
   } else {
 
-    # Note we are calling a separate executable instead of using the code
-    # compliled into Parsetexi.pm as a library.  We should add functions 
-    # to Parsetexi.pm to get the tree without doing this.
+    # This calls a separate executable instead of using the code
+    # compliled into Parsetexi.pm as a library.
     $tree_stream = qx(./parsetexi $file_name 2>/dev/null);
 
     print "Reading tree...\n";

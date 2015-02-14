@@ -1,1 +1,1 @@
-@email{bug-texinfo, same place}
+@email{ bug-texinfo , same place }

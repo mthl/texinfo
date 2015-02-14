@@ -23,6 +23,7 @@
 #include "tree_types.h"
 #include "input.h"
 #include "text.h"
+#include "api.h"
 
 enum input_type { IN_file, IN_text };
 
@@ -192,13 +193,46 @@ input_push_text (char *text)
      a macro expansion, or was pushed back when reading the file preamble. */
 }
 
+
+static char **include_dirs;
+static size_t include_dirs_number;
+static size_t include_dirs_space;
+
+void
+add_include_directory (char *filename)
+{
+  if (include_dirs_number == include_dirs_space)
+    {
+      include_dirs = realloc (include_dirs,
+                              sizeof (char *) * (include_dirs_space += 5));
+    }
+  include_dirs[include_dirs_number++] = filename;
+}
+
+/* Try to open a file called FILENAME, looking for it in the list of include
+   directories. */
 void
 input_push_file (char *filename)
 {
   FILE *stream;
+  int i;
+
   save_line_nr ();
 
-  stream = fopen (filename, "r");
+  for (i = 0; i < include_dirs_number; i++)
+    {
+      /* TODO: The Perl code (in Common.pm, 'locate_include_file') handles a 
+         volume in a path (like "A:"), possibly more general treatment with 
+         File::Spec module. */
+      /* Also checks if filename is absolute. */
+
+      char *fullpath;
+      asprintf (&fullpath, "%s/%s", include_dirs[i], filename);
+      stream = fopen (fullpath, "r");
+      free (fullpath);
+      if (stream)
+        break;
+    }
 
   if (!stream)
     {

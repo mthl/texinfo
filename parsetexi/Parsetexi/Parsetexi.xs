@@ -57,3 +57,7 @@ ELEMENT *
 contents_child_by_index (e, index)
         ELEMENT *e
         int index
+
+void
+add_include_directory (filename)
+        char *filename

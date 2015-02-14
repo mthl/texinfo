@@ -32,7 +32,7 @@ ELEMENT *handle_separator (ELEMENT *current, char separator,
 void push_conditional_stack (enum command_id cond);
 enum command_id pop_conditional_stack (void);
 extern size_t conditional_number;
-void parse_texi_file (char *filename);
+void parse_texi_file (const char *filename);
 int abort_empty_line (ELEMENT **current_inout, char *additional);
 ELEMENT *end_paragraph (ELEMENT *current);
 void isolate_last_space (ELEMENT *current, enum element_type type);

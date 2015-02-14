@@ -30,6 +30,7 @@ main (int argc, char **argv)
       exit (1);
     }
   init_index_commands ();
+  add_include_directory (".");
   parse_texi_file (argv[1]);
   dump_tree_to_perl (Root);
 

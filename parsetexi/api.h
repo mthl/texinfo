@@ -12,3 +12,6 @@ char *dump_tree_to_string_2 (void);
 char *dump_tree_to_string_3 (void);
 char *dump_root_element_1 (void);
 char *dump_root_element_2 (void);
+
+/* In input.c */
+void add_include_directory (char *filename);

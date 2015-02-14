@@ -129,11 +129,30 @@ pop_conditional_stack (void)
 /* parse_texi_file */
 /* 835 */
 void
-parse_texi_file (char *filename)
+parse_texi_file (const char *filename_in)
 {
+  char *p, *q;
   char *linep, *line = 0;
   ELEMENT *root = new_element (ET_text_root);
   ELEMENT *preamble = 0;
+  char *filename = strdup (filename_in);
+
+  /* Strip off a leading directory path, by looking for the last
+     '/' in filename. */
+  p = 0;
+  q = strchr (filename, '/');
+  while (q)
+    {
+      p = q;
+      q = strchr (q + 1, '/');
+    }
+
+  if (p)
+    {
+      *p = '\0';
+      add_include_directory (filename);
+      filename = p + 1;
+    }
 
   input_push_file (filename);
 

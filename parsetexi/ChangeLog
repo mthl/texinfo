@@ -1,3 +1,11 @@
+2015-02-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* input.c, Parsetexi/Parsetexi.xs (add_include_directory): New 
+	function.
+	* Parsetexi/lib/Parsetexi.pm (parser): Call it.
+	* input.c (input_push_file): Look through list of include 
+	directories.
+
 2015-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* parser.c (abort_empty_line) <ET_empty_line>: Clear type of
