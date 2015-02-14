@@ -1,5 +1,10 @@
 2015-02-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tree.c (insert_into_contents): Update parent field of inserted 
+	element.
+
+2015-02-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* input.c, Parsetexi/Parsetexi.xs (add_include_directory): New 
 	function.
 	* Parsetexi/lib/Parsetexi.pm (parser): Call it.

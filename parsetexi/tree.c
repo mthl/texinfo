@@ -98,6 +98,7 @@ add_to_element_args (ELEMENT *parent, ELEMENT *e)
   e->parent = parent;
 }
 
+/* Add the element E into the contents of PARENT at index WHERE. */
 void
 insert_into_contents (ELEMENT *parent, ELEMENT *e, int where)
 {
@@ -113,6 +114,7 @@ insert_into_contents (ELEMENT *parent, ELEMENT *e, int where)
   memmove (&list->list[where + 1], &list->list[where],
            (list->number - where) * sizeof (ELEMENT));
   list->list[where] = e;
+  e->parent = parent;
   list->number++;
 }
 
