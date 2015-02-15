@@ -61,7 +61,7 @@ reallocate_list (ELEMENT_LIST *list)
   if (list->number + 1 >= list->space)
     {
       list->space += 10;
-      list->list = realloc (list->list, list->space * sizeof (ELEMENT));
+      list->list = realloc (list->list, list->space * sizeof (ELEMENT *));
       if (!list->list)
         abort (); /* Out of memory. */
     }
@@ -112,7 +112,7 @@ insert_into_contents (ELEMENT *parent, ELEMENT *e, int where)
     abort ();
 
   memmove (&list->list[where + 1], &list->list[where],
-           (list->number - where) * sizeof (ELEMENT));
+           (list->number - where) * sizeof (ELEMENT *));
   list->list[where] = e;
   e->parent = parent;
   list->number++;
@@ -132,7 +132,7 @@ remove_from_contents (ELEMENT *parent, int where)
 
   removed = list->list[where];
   memmove (&list->list[where], &list->list[where + 1],
-           (list->number - (where+1)) * sizeof (ELEMENT));
+           (list->number - (where+1)) * sizeof (ELEMENT *));
   list->number--;
   return removed;
 }

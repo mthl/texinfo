@@ -343,6 +343,9 @@ dump_extra (ELEMENT *e, TEXT *text)
             }
           else
             {
+              if (e->extra[i].type != extra_element)
+                abort ();
+
               text_append_n (text, "'", 1);
               text_append (text, e->extra[i].key);
               text_append (text, "' => {},\n");

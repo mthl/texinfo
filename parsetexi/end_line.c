@@ -513,7 +513,7 @@ parse_node_manual (ELEMENT *node)
           first->text.text = malloc (first->text.space);
           memcpy (first->text.text,
                   trimmed->contents.list[0]->text.text + 1,
-                  trimmed->contents.list[0]->text.end - 1);
+                  trimmed->contents.list[0]->text.end);
           first->text.end--;
           trimmed->contents.list[0] = first;
         }
@@ -536,7 +536,7 @@ parse_node_manual (ELEMENT *node)
             }
           else /* ')' in text - possible end of filename component */
             {
-              /* Split the element in two, putting the part before the "("
+              /* Split the element in two, putting the part before the ")"
                  in the manual name, leaving the part afterwards for the
                  node name. */
               ELEMENT *before, *after;
@@ -571,6 +571,11 @@ parse_node_manual (ELEMENT *node)
     {
       result->node_content = trimmed;
       result->normalized = convert_to_normalized (trimmed);
+    }
+  else
+    {
+      result->node_content = 0;
+      result->normalized = "";
     }
   return result;
 }

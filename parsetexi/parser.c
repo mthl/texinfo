@@ -468,6 +468,7 @@ isolate_last_space (ELEMENT *current, enum element_type element_type)
                                      text + text_len - trailing_spaces,
                                      trailing_spaces);
                       text[text_len - trailing_spaces] = '\0';
+                      indexed_elt->text.end -= trailing_spaces;
 
                       if (index == -1)
                         add_to_element_contents (current, new_spaces);

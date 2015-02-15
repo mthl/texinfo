@@ -1,11 +1,16 @@
-* Implement code passing error messages and warnings to the Perl code.
 * @set/@value
-* @verb
 * Counters for e.g. numbers of arguments read so far for a brace 
 command, or the row in a table.
 * check valid nestings
 * Implement parser options
 * Character encoding issues - read and pass to Perl correctly.
+* gnulib integration for strrchr, strchrnul, asprintf, etc.  Eliminate
+  #define _GNU_SOURCE.
+* gettext integration
+* figure out what to do with parse_texi_line, etc.  Integration with the 
+test suites.
+* find where "strlen" and "text_append" are used and try to remove them, for 
+efficiency.  Also newSVpv (..., 0);
 
 Integration with rest of Perl code:
 

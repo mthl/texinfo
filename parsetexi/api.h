@@ -1,3 +1,4 @@
+/* In api.c */
 extern ELEMENT *Root;
 
 void parse_file (char *filename);
