@@ -6,6 +6,14 @@ bin_PROGRAMS=parsetexi
 
 lib_LIBRARIES=libparsetexi.a
 
+# See "perlembed" man page.
+# (I expected the ldopts flags to have to occur at the end of the cc 
+# command line, but this seems to work fine.
+# Otherwise LDADD would have to be set, but automake complains if you do
+# LDADD=`perl -MExtUtils::Embed -e ldopts`)
+
+AM_CFLAGS=`perl -MExtUtils::Embed -e ccopts -e ldopts`
+
 libparsetexi_a_SOURCES=api.c api.h \
 		  parser.c parser.h tree_types.h \
 		  element_types.c element_types.h \

@@ -24,6 +24,8 @@
 int
 main (int argc, char **argv)
 {
+  //extern int element_counter;
+
   if (argc <= 1)
     {
       fprintf (stderr, "Please give the name of a file to process.\n");
@@ -33,6 +35,9 @@ main (int argc, char **argv)
   add_include_directory (".");
   parse_texi_file (argv[1]);
   dump_tree_to_perl (Root);
+  //build_texinfo_tree ();
+  /* ^ doesn't work because there's no active perl instance */
+  //printf ("About %d elements in tree\n", element_counter);
 
   exit (0);
 }

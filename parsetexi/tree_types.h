@@ -15,6 +15,7 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include <stdlib.h>
+
 #include "command_ids.h"
 #include "element_types.h"
 
@@ -82,14 +83,22 @@ typedef struct ELEMENT {
     /* Not used in final output. */
     int remaining_args; /* Could be a stack instead. */
 
+    /* Set to route_not_in_tree if element not in main tree.  Also
+       used for routing information along with 'index_in_parent' when
+       dumping to a text stream. */
+    enum route_element_type parent_type;
+
     /********* Used when dumping to a text stream only. ************/
 
     int index_in_parent;
-    enum route_element_type parent_type;
 
     PENDING_REFERENCE *pending_references;
     size_t pending_number;
     size_t pending_space;
+
+    /********* Used when building Perl tree only ********************/
+    /* should be HV *hv; */
+    void *hv;
 } ELEMENT;
 
 typedef struct GLOBAL_INFO {

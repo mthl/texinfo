@@ -1,3 +1,15 @@
+2015-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* api.c (build_texinfo_tree, build_label_list): New functions,
+	to construct Perl objects directly in memory, as a possible 
+	replacement for using "eval" in Perl.
+	* Makefile.am (AM_CFLAGS): Add flags for linking with Perl 
+	libraries.
+
+	* Parsetexi/lib/Parsetexi.pm (parse_texi_file): Add another
+	way to get data from C program (disabled).  (Indices not done 
+	yet.)
+
 2015-02-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tree.c (insert_into_contents): Update parent field of inserted 

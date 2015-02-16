@@ -10,6 +10,9 @@
 #include "../api.h"
 #include "../errors.h"
 
+HV *build_texinfo_tree (void);
+HV *build_label_list (void);
+
 MODULE = Parsetexi		PACKAGE = Parsetexi		
 
 TYPEMAP: <<END
@@ -23,6 +26,9 @@ dump_tree_to_string_1 ()
 
 char *
 dump_tree_to_string_2 ()
+
+char *
+dump_tree_to_string_25 ()
 
 char *
 dump_tree_to_string_3 ()
@@ -61,3 +67,9 @@ contents_child_by_index (e, index)
 void
 add_include_directory (filename)
         char *filename
+
+HV *
+build_texinfo_tree ()
+
+HV *
+build_label_list ()

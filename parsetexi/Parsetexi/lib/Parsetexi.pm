@@ -238,7 +238,22 @@ sub parse_texi_file ($$)
   #print "Getting tree...\n";
 
   my ($TREE, $LABELS, $INDEX_NAMES, $ERRORS);
-  if (1) {
+  if (0) {
+    # This is our third way of passing the data: construct it using
+    # Perl api directly.
+    print "Parsing file...\n";
+    parse_file ($file_name);
+    print "Fetching data..\n";
+    $TREE = build_texinfo_tree ();
+    print "Got tree...\n";
+    #print Texinfo::Parser::_print_tree ($TREE);
+    print ref($TREE->{'contents'}[1]{'extra'}{'node_content'}), "\n";
+
+    $LABELS = build_label_list ();
+
+    # TODO: Get $INDEX_NAMES as well
+
+  } elsif (1) {
     # $| = 1; # Flush after each print
     print "Parsing file...\n";
     parse_file ($file_name);
@@ -256,11 +271,14 @@ sub parse_texi_file ($$)
     $tree_stream = dump_tree_to_string_2 ();
     #print "tree stream is $tree_stream\n";
     eval $tree_stream;
+    $tree_stream = dump_tree_to_string_25 ();
+    #print "tree stream is $tree_stream\n";
+    eval $tree_stream;
     $tree_stream = dump_tree_to_string_3 ();
     #print "tree stream is $tree_stream\n";
     eval $tree_stream;
     print "Got data.\n";
-  } else {
+  } elsif (0) {
 
     # This calls a separate executable instead of using the code
     # compliled into Parsetexi.pm as a library.

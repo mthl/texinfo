@@ -507,8 +507,12 @@ parse_node_manual (ELEMENT *node)
         {
           /* Replace the first element with another element with the leading
              "(" removed. */
+          /* TODO: Would it be simpler to split the text element
+             in node->contents as well, to avoid having out-of-tree
+             elements? */
           ELEMENT *first;
           first = malloc (sizeof (ELEMENT));
+          first->parent_type = route_not_in_tree;
           memcpy (first, trimmed->contents.list[0], sizeof (ELEMENT));
           first->text.text = malloc (first->text.space);
           memcpy (first->text.text,
@@ -521,7 +525,7 @@ parse_node_manual (ELEMENT *node)
         {
           (void) remove_from_contents (trimmed, 0);
           /* Note the removed element still is present in the original
-             'node' argument. */
+             node->contents in the main tree. */
         }
 
       while (trimmed->contents.number > 0)
@@ -539,9 +543,11 @@ parse_node_manual (ELEMENT *node)
               /* Split the element in two, putting the part before the ")"
                  in the manual name, leaving the part afterwards for the
                  node name. */
+              /* TODO: Same as above re route_not_in_tree. */
               ELEMENT *before, *after;
 
               before = new_element (ET_NONE);
+              before->parent_type = route_not_in_tree;
               text_append_n (&before->text, e->text.text,
                              closing_bracket - e->text.text);
               add_to_element_contents (manual, before);

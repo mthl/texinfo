@@ -33,6 +33,9 @@ static int indent = 0;
 /* A dump to fill in references from one part of the tree to another. */
 static TEXT fixup_dump;
 
+/* A dump for information about the indices. */
+static TEXT indices_dump;
+
 /* A dump to fill in references from the parse tree to the indices 
    information.  */
 static TEXT tree_to_indices_dump;
@@ -517,73 +520,73 @@ dump_entries_of_index (INDEX *idx)
   int i;
   INDEX_ENTRY *e;
 
-  text_printf (&fixup_dump, "\n'index_entries' => [");
+  text_printf (&indices_dump, "\n'index_entries' => [");
   for (i = 0; i < idx->index_number; i++)
     {
       e = &idx->index_entries[i];
-      text_printf (&fixup_dump, "\n{");
-      text_printf (&fixup_dump, "'index_name' => '%s',", e->index_name);
-      text_printf (&fixup_dump, "'index_prefix' => '%s',", e->index_prefix);
+      text_printf (&indices_dump, "\n{");
+      text_printf (&indices_dump, "'index_name' => '%s',", e->index_name);
+      text_printf (&indices_dump, "'index_prefix' => '%s',", e->index_prefix);
 
-      text_printf (&fixup_dump, "\n");
-      text_printf (&fixup_dump, "'index_at_command' => '%s',",
+      text_printf (&indices_dump, "\n");
+      text_printf (&indices_dump, "'index_at_command' => '%s',",
                   command_data(e->index_at_command).cmdname);
-      text_printf (&fixup_dump, "'index_type_command' => '%s',\n", 
+      text_printf (&indices_dump, "'index_type_command' => '%s',\n", 
                    command_data(e->index_type_command).cmdname);
 
-      text_printf (&fixup_dump, "'command' => ");
-      dump_route_to_element (e->command, &fixup_dump);
-      text_printf (&fixup_dump, ",\n");
+      text_printf (&indices_dump, "'command' => ");
+      dump_route_to_element (e->command, &indices_dump);
+      text_printf (&indices_dump, ",\n");
 
-      text_printf (&fixup_dump, "'number' => %d,", e->number);
+      text_printf (&indices_dump, "'number' => %d,", e->number);
 
       if (e->content)
         {
-          text_printf (&fixup_dump, "'content' => ");
-          dump_route_to_element (e->content, &fixup_dump);
-          text_printf (&fixup_dump, "{'contents'}");
-          text_printf (&fixup_dump, ",\n");
+          text_printf (&indices_dump, "'content' => ");
+          dump_route_to_element (e->content, &indices_dump);
+          text_printf (&indices_dump, "{'contents'}");
+          text_printf (&indices_dump, ",\n");
         }
 
       if (e->node)
         {
-          text_printf (&fixup_dump, "'node' => ");
-          dump_route_to_element (e->node, &fixup_dump);
-          text_printf (&fixup_dump, ",\n");
+          text_printf (&indices_dump, "'node' => ");
+          dump_route_to_element (e->node, &indices_dump);
+          text_printf (&indices_dump, ",\n");
         }
 
-      text_printf (&fixup_dump, "},");
+      text_printf (&indices_dump, "},");
     }
-  text_printf (&fixup_dump, "],\n");
+  text_printf (&indices_dump, "],\n");
 }
 
-/* Append to FIXUP_DUMP information about the indices. */
+/* Append to INDICES_DUMP information about the indices. */
 static void
 dump_indices_information (void)
 {
   INDEX *i;
 
-  text_append (&fixup_dump, "\n$INDEX_NAMES = {\n");
+  text_append (&indices_dump, "\n$INDEX_NAMES = {\n");
   for (i = index_names; i->name; i++)
     {
-      text_printf (&fixup_dump, "'%s' => {", i->name);
-      text_printf (&fixup_dump, "'name' => '%s',", i->name);
-      text_printf (&fixup_dump, "'in_code' => 0,");
+      text_printf (&indices_dump, "'%s' => {", i->name);
+      text_printf (&indices_dump, "'name' => '%s',", i->name);
+      text_printf (&indices_dump, "'in_code' => 0,");
 
       /* TODO: This is a list of recognized prefixes for the index. */
-      text_printf (&fixup_dump, "'prefix' => ['%c', '%s'],",
+      text_printf (&indices_dump, "'prefix' => ['%c', '%s'],",
                    *i->name, i->name);
 
       /* TODO: Handle index merging. */
-      text_printf (&fixup_dump, "'contained_indices' => {'%s'=>1},",
+      text_printf (&indices_dump, "'contained_indices' => {'%s'=>1},",
                    i->name);
 
       dump_entries_of_index (i);
 
-      text_printf (&fixup_dump, "},\n");
+      text_printf (&indices_dump, "},\n");
     }
 
-  text_append (&fixup_dump, "};\n");
+  text_append (&indices_dump, "};\n");
 }
 
 void
@@ -610,6 +613,9 @@ dump_tree_to_perl (ELEMENT *root)
 
   if (fixup_dump.end > 0)
     printf ("%s", fixup_dump.text);
+
+  if (indices_dump.end > 0)
+    printf ("%s", indices_dump.text);
 
   /* This must be output at the end so that both the tree and the indices
      will exist by the time this is read. */
@@ -711,6 +717,7 @@ char *
 dump_tree_to_string_1 (void)
 {
   text_init (&fixup_dump);
+  text_init (&indices_dump);
   text_init (&tree_to_indices_dump);
 
   return "";
@@ -721,10 +728,18 @@ dump_tree_to_string_2 (void)
 {
   dump_labels_information ();
 
-  dump_indices_information ();
-
   if (fixup_dump.end > 0)
      return fixup_dump.text;
+  return "";
+}
+
+char *
+dump_tree_to_string_25 (void)
+{
+  dump_indices_information ();
+
+  if (indices_dump.end > 0)
+     return indices_dump.text;
   return "";
 }
 
