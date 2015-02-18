@@ -1,3 +1,7 @@
+2015-02-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* api.c (build_index_data): New function.
+
 2015-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* api.c (build_texinfo_tree, build_label_list): New functions,

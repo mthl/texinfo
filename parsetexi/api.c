@@ -30,6 +30,7 @@
 #include "parser.h"
 #include "input.h"
 #include "labels.h"
+#include "indices.h"
 
 ELEMENT *Root;
 
@@ -242,23 +243,7 @@ element_to_perl_hash (ELEMENT *e)
             case extra_element_contents:
               {
               int j;
-              fprintf (stderr, "extra element key is %s\n", key);
               STORE(build_perl_array (&f->contents));
-#if 0
-              AV *av;
-              av = newAV ();
-              STORE(newRV_inc ((SV *)av));
-              for (j = 0; j < f->contents.number; j++)
-                {
-                  /* TODO: Check if any of the elements in the array
-                     are not in the main tree - if so, we will have to
-                     create them. */
-                  ELEMENT *g = f->contents.list[j];
-                  if (!g->hv)
-                    g->hv = newHV ();
-                  av_push (av, f->hv);
-                }
-#endif
               break;
               }
             case extra_element_contents_array:
@@ -287,7 +272,7 @@ element_to_perl_hash (ELEMENT *e)
                          create them. */
                       if (!h->hv)
                         h->hv = newHV ();
-                      av_push (av2, g->hv);
+                      av_push (av2, newRV_inc ((SV*)h->hv));
                     }
                 }
               break;
@@ -342,6 +327,7 @@ element_to_perl_hash (ELEMENT *e)
                entry.  Unlike the other keys, the value is not in the
                main parse tree, but in the indices_information.  It would
                be much nicer if we could get rid of the need for this key. */
+            /* Could we set this afterwards in build_index_data? */
               break;
             default:
               abort ();
@@ -384,4 +370,115 @@ build_label_list (void)
 
   return label_hash;
 }
+
+/* Return hash value for a single entry in $self->{'index_names'}, containing
+   information about a single index. */
+static HV *
+build_single_index_data (INDEX *i)
+{
+#define STORE(key, value) hv_store (hv, key, strlen (key), value, 0)
+
+  HV *hv;
+  AV *prefix_array;
+  HV *contained;
+  AV *entries;
+  int j;
+
+  dTHX;
+
+  hv = newHV ();
+  STORE("name", newSVpv (i->name, 0));
+  STORE("in_code", newSVpv ("0", 1));
+
+  /* e.g. 'prefix' => ['k', 'ky'] */
+  prefix_array = newAV ();
+  av_push (prefix_array, newSVpv (i->name, 1));
+  av_push (prefix_array, newSVpv (i->name, 0));
+  STORE("prefix", newRV_inc ((SV *) prefix_array));
+
+  contained = newHV ();
+  hv_store (contained, i->name, strlen (i->name), newSViv(1), 0);
+  STORE("contained_indices", newRV_inc ((SV *) contained));
+
+  entries = newAV ();
+  STORE("index_entries", newRV_inc ((SV *) entries));
+#undef STORE
+
+  for (j = 0; j < i->index_number; j++)
+    {
+#define STORE2(key, value) hv_store (entry, key, strlen (key), value, 0)
+      HV *entry;
+      INDEX_ENTRY *e;
+
+      e = &i->index_entries[j];
+      entry = newHV ();
+      av_push (entries, newRV_inc ((SV *)entry));
+
+      STORE2("index_name", newSVpv (i->name, 0));
+      STORE2("index_prefix", newSVpv (i->name, 1));
+      STORE2("index_at_command",
+             newSVpv (command_data(e->index_at_command).cmdname, 0));
+      STORE2("index_type_command",
+             newSVpv (command_data(e->index_type_command).cmdname, 0));
+      STORE2("command",
+             newRV_inc ((SV *)e->command->hv));
+      STORE2("number", newSViv (j));
+      if (e->content)
+        {
+          SV **contents_array;
+          contents_array = hv_fetch (e->content->hv,
+                                    "contents", strlen ("contents"), 0);
+
+          /* Copy the reference to the array. */
+          STORE2("content", newRV_inc ((SV *)(AV *)SvRV(*contents_array)));
+        }
+      if (e->node)
+        STORE2("node", newRV_inc ((SV *)e->node->hv));
+
+      /* We set this now because the index data structures don't
+         exist at the time that the main tree is built. */
+      {
+      SV **extra_hash;
+      extra_hash = hv_fetch (e->command->hv, "extra", strlen ("extra"), 0);
+      if (!extra_hash)
+        {
+          /* There's no guarantee that the "extra" value was set on
+             the element. */
+          extra_hash = hv_store (e->command->hv, "extra", strlen ("extra"),
+                                 newRV_inc ((SV *)newHV ()), 0);
+        }
+
+      hv_store ((HV *)SvRV(*extra_hash), "index_entry", strlen ("index_entry"),
+                newRV_inc ((SV *)entry), 0);
+      }
+#undef STORE2
+    }
+
+  return hv;
+}
+
+/* Return object to be used as $self->{'index_names'} in the perl code.
+   build_texinfo_tree must be called before this so all the 'hv' fields
+   are set on the elements in the tree. */
+HV *
+build_index_data (void)
+{
+  HV *hv;
+  INDEX *i;
+
+  dTHX;
+
+  hv = newHV ();
+
+  for (i = index_names; i->name; i++)
+    {
+      HV *hv2;
+      hv2 = build_single_index_data (i);
+      hv_store (hv, i->name, strlen (i->name), newRV_inc ((SV *)hv2), 0);
+    }
+
+  return hv;
+}
+
+
 
