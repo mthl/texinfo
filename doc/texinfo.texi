@@ -441,9 +441,10 @@ Special Insertions
 * Inserting Quotation Marks::   Inserting quotation marks.
 * Inserting Subscripts and Superscripts:: Inserting sub/superscripts.
 * Inserting Math::              Formatting mathematical expressions.
-* Glyphs for Text::             Inserting Dots, bullets, currencies, etc.
+* Glyphs for Text::             Inserting dots, bullets, currencies, etc.
 * Glyphs for Programming::      Indicating results of evaluation,
                                  expansion of macros, errors, etc.
+* Inserting Unicode::           Inserting a Unicode character by code point.
 
 Special Characters: Inserting @@ @{@} , \ #
 
@@ -10837,6 +10838,7 @@ These are:
 * Glyphs for Text::             Inserting dots, bullets, currencies, etc.
 * Glyphs for Programming::      Indicating results of evaluation,
                                  expansion of macros, errors, etc.
+* Inserting Unicode::           Inserting a Unicode character by code point.
 @end menu
 
 
@@ -12393,6 +12395,56 @@ now produces:
 @clickstyle @result
 @dots{} @clicksequence{File @click{} Open} @dots{}
 @end display
+
+
+@node Inserting Unicode
+@section Inserting Unicode: @code{@@U}
+
+@cindex Unicode character, inserting
+@cindex Code point of Unicode character, inserting by
+@findex U
+
+The command @code{@@U@{@var{hex}@}} inserts a representation of the
+Unicode character U+@var{hex}.  For example, @code{@@U@{0132@}}
+inserts the Dutch `IJ' ligature (poorly shown here as simply the two
+letters `I' and `J').
+
+The @var{hex} value should be at least four hex digits; leading zeros
+are @emph{not} added.  In general, @var{hex} must specify a valid
+normal Unicode character; e.g., U+10FFFF (the very last code point) is
+invalid by definition, and thus cannot be inserted this way.
+
+@cindex ASCII, source document portability using
+@code{@@U} is useful for inserting occasional glyphs for which Texinfo
+has no dedicated command, while allowing the Texinfo source to remain
+purely 7-bit ASCII for maximum portability.
+
+@cindex Unicode and @TeX{}
+This command has many limitations---the same limitations as inserting
+Unicode characters in UTF-8 or another binary form.  First and most
+importantly, @TeX{} knows nothing about most of Unicode.  Supporting
+specific additional glyphs upon request is possible, but it's not
+viable for @file{texinfo.tex} to support whole additional scripts
+(Japanese, Urdu, @dots{}).  The @code{@@U} command does nothing to
+change this.  If the specified character is not supported in @TeX{},
+an error is given.  (@xref{@t{@@documentencoding}}.)
+
+@cindex Entity reference in HTML et al.
+@cindex @samp{&#x@var{hex};}, output from @code{@@U}
+In HTML, XML, and Docbook, the output from @code{@@U} is always an
+entity reference of the form @samp{&#x@var{hex};}, as in
+@samp{&#x0132;} for the example above.  This should work even when an
+HTML document uses some other encoding (say, Latin@tie{}1) and the
+given character is not supported in that encoding.
+
+@cindex UTF-8, output from @code{@@U}
+In Info and plain text, if the document encoding is specified
+explicitly to be UTF-8, the output will be the UTF-8 representation of
+the character U+@var{hex} (presuming it's a valid character).  In all
+other cases, the output is the ASCII sequence @samp{U+@var{hex}}, as
+in the six ASCII characters @samp{U+0132} for the example above.
+
+That's all.  No magic!
 
 
 @node Breaks
@@ -14012,15 +14064,16 @@ the official web site for ISO@tie{}3166 can be found via
 @cindex Document input encoding
 
 The @code{@@documentencoding} command declares the input document
-encoding.  Write it on a line by itself, with a valid encoding
-specification following, near the beginning of the file but after
-@code{@@setfilename} (@pxref{@t{@@setfilename}}):
+encoding, and can also affect the encoding of the output.  Write it on
+a line by itself, with a valid encoding specification following, near
+the beginning of the file but after @code{@@setfilename}
+(@pxref{@t{@@setfilename}}):
 
 @example
 @@documentencoding @var{enc}
 @end example
 
-At present, Texinfo supports only these encodings:
+Texinfo supports these encodings:
 
 @table @code
 @item US-ASCII
@@ -14055,7 +14108,7 @@ Specifying an encoding @var{enc} has the following effects:
 @cindex Local Variables section, for encoding
 @cindex Info output, and encoding
 In Info output, a so-called `Local Variables' section (@pxref{File
-Variables,,,emacs, The GNU Emacs Manual}) is output including
+Variables,,, emacs, The GNU Emacs Manual}) is output including
 @var{enc}.  This allows Info readers to set the encoding
 appropriately.  It looks like this:
 
@@ -14085,23 +14138,29 @@ this:
      charset=@var{enc}">
 @end example
 
-In XML and Docbook output, UTF-8 is always used for the output file,
-since all XML processors are supposed to be able to process that
-encoding.
+In XML and Docbook output, UTF-8 is always used for the output,
+according to the conventions of those formats.
 
 @cindex Computer Modern fonts
 In @TeX{} output, the characters which are supported in the standard
-Computer Modern fonts are output accordingly.  (For example, this
-means using constructed accents rather than precomposed glyphs.)
+Computer Modern fonts are output accordingly.  For example, this
+means using constructed accents rather than precomposed glyphs.
 Using a missing character generates a warning message, as does
 specifying an unimplemented encoding.
 
 Although modern @TeX{} systems support nearly every script in use in
 the world, this wide-ranging support is not available in
 @file{texinfo.tex}, and it's not feasible to duplicate or incorporate
-all that effort.  Our plan to support other scripts is to create a
+all that effort.  (Our plan to support other scripts is to create a
 @LaTeX{} back-end to @command{texi2any}, where the support is already
-present.
+present.)
+
+For maximum portability of Texinfo documents across the many different
+user environments in the world, we recommend sticking to 7-bit ASCII
+in the input unless your particular manual needs a substantial amount
+of non-ASCII, e.g., it's written in German.  You can use the
+@code{@@U} command to insert an occasional needed character
+(@pxref{Inserting Unicode}).
 
 
 @node Conditionals
@@ -20311,7 +20370,7 @@ and the text of the argument is recursively transformed:
 @@asis @@b @@cite @@code @@command @@dfn @@dmn @@dotless
 @@emph @@env @@file @@i @@indicateurl @@kbd @@key
 @@samp @@sansserif @@sc @@slanted @@strong @@sub @@sup
-@@t @@var @@verb @@w
+@@t @@U @@var @@verb @@w
 @end example
 
 @noindent For @code{@@sc}, any letters are capitalized.
@@ -20321,10 +20380,11 @@ shown below.  If any of these commands have non-empty arguments, as in
 @code{@@TeX@{bad@}}, it is an error, and the result is unspecified.
 In this table, `(space)' means a space character and `(nothing)' means
 the empty string.  The notation `U+@var{hhhh}' means Unicode code
-point @var{hhhh} (in hex, as usual).  There are further
-transformations of many of these expansions for the final file or
-target name, such as space characters to @samp{-}, etc., according to
-the other rules.
+point @var{hhhh} (in hex, as usual).
+
+There are further transformations of many of these expansions to yield
+the final file or other target name, such as space characters to
+@samp{-}, etc., according to the other rules.
 
 @multitable @columnfractions .3 .5
 @item @code{@@(newline)}        @tab (space)
@@ -20377,6 +20437,8 @@ Any @code{@@acronym}, @code{@@abbr}, @code{@@email}, and
 these commands, all subsequent arguments are optional, and ignored
 here.)  @xref{@t{@@acronym}}, and @ref{@t{@@email}}, and @ref{Images}.
 
+Accents are handled according to the next section.
+
 Any other command is an error, and the result is unspecified.
 
 
@@ -20418,17 +20480,15 @@ to define this extra escape than to always use six hex digits, since
 the first two would nearly always be zeros.)
 
 This method works fine if the node name consists mostly of ASCII
-characters and contains only few 8-bit ones. If the document is
+characters and contains only few 8-bit ones.  But if the document is
 written in a language whose script is not based on the Latin alphabet
-(for example, Ukrainian), it will create file names consisting
+(for example, Ukrainian), it will create file names consisting almost
 entirely of @samp{_@var{xxxx}} notations, which is inconvenient and
-all but unreadable.
-
-To handle such cases, @command{makeinfo} offers the
-@option{--transliterate-file-names} command line option.  This option
-enables @dfn{transliteration} of node names into ASCII characters for
-the purposes of file name creation and referencing.  The
-transliteration is based on phonetic principles, which makes the
+all but unreadable.  To handle such cases, @command{makeinfo} offers
+the @option{--transliterate-file-names} command line option.  This
+option enables @dfn{transliteration} of node names into ASCII
+characters for the purposes of file name creation and referencing.
+The transliteration is based on phonetic principles, which makes the
 generated file names more easily understanable.
 
 @cindex Normalization Form C, Unicode
@@ -21858,6 +21918,10 @@ the @code{@@node} and @code{@@top} lines, are normally enclosed with
 @code{texinfo-format-buffer}, the @code{@@top} command is merely a
 synonym for @code{@@unnumbered}.  @xref{@t{makeinfo} Pointer
 Creation}.
+
+@item @@U@{@var{hex}@}
+Output a representation of Unicode character U+@var{hex}.
+@xref{Inserting Unicode}.
 
 @item @@u@{@var{c}@}
 @itemx @@ubaraccent@{@var{c}@}

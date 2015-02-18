@@ -2219,26 +2219,53 @@ sub _convert($$)
     } elsif ($command eq 'U') {
       my $arg = $root->{'extra'}->{'brace_command_contents'}
                 ->[0]->[0]->{'text'};
-      my $res;
-      # these tests should be in the parser; duplicated in HTML.pm
-      if (!defined($arg) || !$arg) {
-        $self->line_warn($self->__("no argument specified for \@U"),
-                         $root->{'line_nr'});
-        $res = '';
-
-      } elsif ($arg !~ /^[0-9A-Fa-f]+$/) {
-        $self->line_error(
-          sprintf($self->__("non-hex digits in argument for \@U: %s"), $arg),
-          $root->{'line_nr'});
-        $res = '';
-
+      if (defined($arg) && $arg) {
+        # The general idea is to output UTF-8 if that has been
+        # explicitly given as the encoding, else simple ASCII.
+        # 
+        # Syntactic checks on the value were already done in Parser.pm,
+        # but we have one more thing to test: since this is the one
+        # place where we might output actual UTF-8 binary bytes, we have
+        # to check that chr(hex($arg)) is valid.  Perl gives a warning
+        # and will not output UTF-8 for Unicode non-characters such as
+        # U+10FFFF.  In this case, silently fall back to plain text, on
+        # the theory that the user wants something.
+        # 
+        # Having an option to output binary bytes nevertheless is
+        # possible, but seems unlikely to be practically useful, so skip
+        # it until it gets requested.
+        my $res;
+        if ($self->{'to_utf8'}) {
+          # The warning about non-characters is only given when the code
+          # point is attempted to be output, not just manipulated.
+          # http://stackoverflow.com/questions/5127725/how-could-i-catch-an-unicode-non-character-warning
+          #
+          # Therefore, we have to try to output it within an eval.
+          # Since opening /dev/null or a temporary file means
+          # more system-dependent checks, use a string as our
+          # filehandle; this was introduced ca.2000, which should be old
+          # enough.  We hope.
+          eval {
+            use warnings FATAL => qw(all);
+            my ($fh, $string);
+            open($fh, ">", \$string) || die "open(U string eval) failed: $!";
+            binmode($fh, ":utf8") || die "binmode(U string eval) failed: $!";
+            print $fh chr(hex("$arg"));
+          };
+          if ($@) {
+            warn "\@U chr(hex($arg)) eval failed: $@\n" if ($self->{'DEBUG'});
+            $res = "U+$arg";       # chr won't work
+          } else {
+            $res = chr(hex($arg)); # ok to call chr
+          }
+        } else {
+          $res = "U+$arg";  # not outputting UTF-8
+        }
+        $result .= $self->_count_added($formatter->{'container'}, 
+                   $formatter->{'container'}->add_text($res, $res)); 
       } else {
-        # binary if utf-8 being output, else ascii.
-        $res = $self->{'to_utf8'} ? chr(hex($arg)) : "U+$arg";
+        $result = '';  # arg was not defined
       }
-
-      $result .= $self->_count_added($formatter->{'container'}, 
-                 $formatter->{'container'}->add_text($res, $res)); 
       return $result;
 
     } elsif ($command eq 'value') {

@@ -1,3 +1,4 @@
+# $Id$
 use strict;
 
 use File::Spec;
@@ -540,6 +541,9 @@ In float with caption.
 ['setfilename_in_paragraph',
 'Some text
 @setfilename filename.info
+'],
+['invalid_U',
+'@U @U{} @U{z} @U{abc} @U{9999999999999} @U{110000} @U{10FFFF}
 '],
 ['test_errormsg',
 'Some text

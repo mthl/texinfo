@@ -5326,6 +5326,7 @@ sub _parse_texi($;$)
                 #  $current_command->{'extra'}->{'format'} = $argument; 
                 #}
               }
+
             } elsif ($current->{'parent'}->{'cmdname'} eq 'errormsg') {
               if (! _ignore_global_commands($self)) {
                 my $error_message_text 
@@ -5333,6 +5334,48 @@ sub _parse_texi($;$)
                             {Texinfo::Common::_convert_text_options($self)});
                 $self->line_error($error_message_text, $line_nr);
               }
+
+            } elsif ($current->{'parent'}->{'cmdname'} eq 'U') {
+              my $arg 
+               = Texinfo::Convert::Text::convert($current,
+                          {Texinfo::Common::_convert_text_options($self)});
+              if (!defined($arg) || !$arg) {
+                $self->line_warn($self->__("no argument specified for \@U"),
+                  $line_nr);
+
+              } elsif ($arg !~ /^[0-9A-Fa-f]+$/) {
+                $self->line_error(
+            sprintf($self->__("non-hex digits in argument for \@U: %s"), $arg),
+                  $line_nr);
+
+              } elsif (length ($arg) < 4) {
+                # Perl doesn't mind, but too much trouble to do in TeX.
+                $self->line_warn(
+sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
+                  $line_nr);
+
+              } else {
+                # we don't want to call hex at all if the value isn't
+                # going to fit; so first use eval to check.
+                # Since integer overflow is only a warning, have to make
+                # warnings fatal for the eval to be effective.
+                eval qq!use warnings FATAL => qw(all); hex("$arg")!;
+                if ($@) {
+                  # leave clue in case something else went wrong.
+                  warn "\@U hex($arg) eval failed: $@\n" if ($self->{'DEBUG'});
+                  $self->line_error(
+      sprintf($self->__("argument for \@U exceeds size of integer: %s"), $arg),
+                    $line_nr);
+
+                # ok, value can be given to hex(), so try it.
+                } elsif (hex($arg) > 0x10FFFF) {
+                  $self->line_error(
+    sprintf($self->__("argument for \@U exceeds Unicode maximum 0x10FFFF: %s"),
+            $arg),
+                    $line_nr);
+                }
+              }
+
             } elsif (_command_with_command_as_argument($current->{'parent'}->{'parent'})
                  and scalar(@{$current->{'contents'}}) == 0) {
                print STDERR "FOR PARENT \@$current->{'parent'}->{'parent'}->{'parent'}->{'cmdname'} command_as_argument braces $current->{'cmdname'}\n" if ($self->{'DEBUG'});
@@ -7251,7 +7294,7 @@ L<Texinfo manual|http://www.gnu.org/s/texinfo/manual/texinfo/>
 
 Mention other useful documentation such as the documentation of
 related modules or operating system documentation (such as man pages
-in UNIX), or any relevant external documentation such as RFCs or
+in Unix), or any relevant external documentation such as RFCs or
 standards.
 
 If you have a mailing list set up for your module, mention it here.

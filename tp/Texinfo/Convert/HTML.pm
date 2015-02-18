@@ -1839,23 +1839,14 @@ sub _convert_U_command($$$$)
   my $cmdname = shift;
   my $command = shift;
   my $args = shift;
+
+  my $arg = $args->[0]->{'normal'};
   my $res;
-
-  my $text = $args->[0]->{'normal'};
-  # these tests should be in the parser; duplicated in Plaintext.pm
-  if (!defined($text) || !$text) {
-    $self->line_warn($self->__("no argument specified for \@U"),
-                     $command->{'line_nr'});
-    $res = '';
-
-  } elsif ($text !~ /^[0-9A-Fa-f]+$/) {
-    $self->line_error(
-      sprintf($self->__("non-hex digits in argument for \@U: %s"), $text),
-      $command->{'line_nr'});
-    $res = '';
-
+  if (defined($arg) && $arg) {
+    # checks on the value already done in Parser, just output it here.
+    $res = "&#x$arg;";
   } else {
-    $res = "&#x$text;"; # ok
+    $res = '';
   }
   return $res;
 }

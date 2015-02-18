@@ -56,6 +56,8 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 @,c@&quot;u &#231;&#252; 
 
 </para>
+<para>@U{0075} &#x0075;
+</para>
 <para>@* 
 
 @ followed by a space
@@ -552,6 +554,8 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 @,c &#231;
 @,c@&quot;u &#231;&#252; 
 
+</para>
+<para>@U{0075} &#x0075;
 </para>
 <para>@* 
 
@@ -1050,6 +1054,8 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 @,c &#231;
 @,c@&quot;u &#231;&#252; 
 
+</para>
+<para>@U{0075} &#x0075;
 </para>
 <para>@* 
 
@@ -1550,6 +1556,8 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 @,c@&quot;u &#231;&#252; 
 
 </para>
+<para>@U{0075} &#x0075;
+</para>
 <para>@* 
 
 @ followed by a space
@@ -2048,6 +2056,8 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 @,c@&quot;u &#231;&#252; 
 
 </para>
+<para>@U{0075} &#x0075;
+</para>
 <para>@* 
 
 @ followed by a space
@@ -2540,6 +2550,8 @@ kbd: <userinput>``simple-double--three---four----''</userinput>
 @,c &#231;
 @,c@&quot;u &#231;&#252; 
 
+
+@U{0075} &#x0075;
 
 @* 
 

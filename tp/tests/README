@@ -68,9 +68,11 @@ out_parser/a_test/a_test.1.  All the commands called are output in
 tests.log.
 
 Giving -copy as the first argument to ../run_parser_all.sh or
-parser_tests.sh (or long_tests.sh or tex_html_tests.sh) will cause the
-references to be regenerated.  For example, to update the references for
-one particular test:
+parser_tests.sh (or long_tests.sh or tex_html_tests.sh, which need
+environment variables LONG_TESTS resp. TEX_HTML_TESTS, or ALL_TESTS, to
+be set, but otherwise operate similarly) will cause the references to be
+regenerated.  For example, to update the references for one particular
+test:
 
 $ cd formatting
 $ ../run_parser_all.sh -copy a_test

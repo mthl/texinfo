@@ -1,3 +1,27 @@
+2015-02-17  Karl Berry  <karl@gnu.org>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): do syntactic checks on @U
+	argument here.
+	* tp/Texinfo/Convert/HTML.pm (_convert_U_command): change accordingly.
+	* tp/Texinfo/Convert/Plaintext.pm (_convert): change accordingly;
+	also check if the Unicode character is valid before outputting it.
+	
+	* tp/tests/coverage_macro.texi,
+	* tp/t/02coverage.t,
+	* tp/t/05paragraph.t,
+	* tp/t/plaintext_tests.t: test it.  (Re)generate results.
+	
+	* NEWS,
+	* doc/refcard/txirefcard.tex,
+	* doc/texinfo.texi (Inserting Unicode),
+	(HTML Xref Command Expansion),
+	(Command Summary): document it.
+
+	* doc/refcard/txicmdcheck: report commands missing from the findex.
+	
+	* tp/tests/README: mention envvars for long_tests and tex_html_tests.
+	* tp/t/README: (non-)copyright for tp/t, wording.
+
 2015-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* INSTALL, README, README-alpha, TODO: 2015.

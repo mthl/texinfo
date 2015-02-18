@@ -31,6 +31,7 @@ sub main {
   my %man_cmds = &read_refman ("../texinfo.texi");
   my %tp_cmds = &read_tp ("../../util/txicmdlist");
 
+  # find the commands that are covered everywhere.
   my @found = ();
   for my $cc (keys %card_cmds) {
     if (exists $idx_cmds{$cc}
@@ -47,12 +48,29 @@ sub main {
   printf ("    common %d: @{[sort @found]}\n", @found + 0)
     unless $no_common;
 
-  my @card_only = keys %card_cmds;
-  printf "refcard only %s: @{[sort @card_only]}\n", @card_only + 0;
-
-  # there are numerous @findex entries that are not @-commands.
+  # there are numerous @findex entries which are not @-commands, which
+  # can be seen this way:
   #my @idx_only = keys %idx_cmds;
   #printf "findex  only %s: @{[sort @idx_only]}\n", @idx_only + 0;
+  #
+  # let's not report those, but we do want to report normal commands that
+  # did not have findex entries: those which are present in all the
+  # other lists.
+  my @idx_missing = ();
+  for my $cc (sort keys %card_cmds) {
+    if (exists $man_cmds{$cc} && exists $tp_cmds{$cc}) {
+      push (@idx_missing, $cc);
+      delete $card_cmds{$cc};
+      delete $man_cmds{$cc};
+      delete $tp_cmds{$cc};
+    }
+  }
+  printf "findex missing %s: @idx_missing\n", @idx_missing + 0
+    if @idx_missing;
+
+  # now report on commands only in some other subset.
+  my @card_only = keys %card_cmds;
+  printf "refcard only %s: @{[sort @card_only]}\n", @card_only + 0;
 
   my @man_only = keys %man_cmds;
   printf "refman  only %s: @{[sort @man_only]}\n", @man_only + 0;

@@ -422,13 +422,11 @@ which they conventionally appear.
 \txicmd{@copying}{}{Specify copyright and licensing text. Pair with \code{@end copying}.}
 \txicmd{@insertcopying}{}{Insert text defined by \code{@copying}.}
 
-
 \subsection{Internationalization}
 
 \txicmd{@documentencoding}{enc}{Declare the input encoding to be \var{enc}; use right after \code{@setfilename}.  Default is \code{US-ASCII}; other possibilities: \code{UTF-8}, \code{ISO-8859-1}, \code{koi8-r}, \dots}
 \txicmd{@documentlanguage}{LL\rmbrack[\code{_}CC]}{Declare the current language as the two-character \acro{ISO}-639 abbreviation \var{LL}, optionally followed by an underscore and a two-letter \acro{ISO} 3166 two-letter country code (\var{CC}). Default is \code{en_US}.}
 \txicmd{@frenchspacing}{\code{on|off}}{Control spacing after punctuation.}
-
 
 \subsection{Info directory specifications}
 
@@ -438,7 +436,6 @@ which they conventionally appear.
 \subsection{\acro{HTML} document description}
 
 \txicmd{@documentdescription}{}{Set the document description text for \acro{HTML}; default is just the title of the document. Pair with \code{@end documentdescription}.}
-
 
 \subsection{Title pages}
 
@@ -450,7 +447,6 @@ which they conventionally appear.
 \txicmd{@subtitle}{subtitle}{Within \code{@titlepage}, display \var{subtitle}.}
 \txicmd{@author}{author}{Within \code{@titlepage}, display \var{author}.}
 
-
 \subsection{Tables of contents}
 
 \txicmd{@shortcontents}{}{Print a short table of contents (chapter-level entries only). Not relevant to Info.}
@@ -458,6 +454,7 @@ which they conventionally appear.
 \txicmd{@contents}{}{Print a complete table of contents. Has no effect in Info, which uses menus instead.}
 \txicmd{@setcontentsaftertitlepage}{}{Put the table of contents after the `\code{@end titlepage}' even if the \code{@contents} is at the end.}
 \txicmd{@setshortcontentsaftertitlepage}{}{Place the short table of contents after the `\code{@end titlepage}' command even if the \code{@shortcontents} command is at the end.}
+
 
 \section{Nodes}
 
@@ -742,6 +739,7 @@ exception of \code{@tieaccent}.
 \txicmd{@registeredsymbol}{\ttbraced{}}{Insert the registered symbol, \registeredsymbol.}
 \txicmd{@textdegree}{\ttbraced{}}{Insert the degree symbol, \raise.8ex\hbox{$\circ$}.}
 \txicmd{@today}{\ttbraced{}}{Insert the current date, in `1 Jan 2000' style.}
+\txicmd{@U}{\ttbraced{x}}{Insert Unicode character U+\var{x} (hex).}
 
 \subsection{Glyphs for code examples}
 
@@ -913,9 +911,9 @@ The default paper size is \acro{US} letter-size, 8x11in.
 
 \section{Document preferences}
 
-It is usually best to omit any of these settings from the Texinfo
-document, thus allowing users to easily override the defaults when
-processing the document according to their desires.
+It is usually best to omit any of these (merely preferential) settings
+from the Texinfo document, so users can easily override the defaults
+when processing the document.
 
 \txicmd{@codequoteundirected}{\code{on|off}}{Use undirected single quote for \code{'}; default off.}
 \txicmd{@codequotebacktick}{\code{on|off}}{Use backtick (standalone grave accent) for \code{`}; default off.}
@@ -983,7 +981,7 @@ work in both.
 \infokey C-g         Cancel the current operation.\cr
 \endinfokeys
 
-The Texinfo reference manual is available via \code{info texinfo}\linebreak
+The Texinfo manual is available via \code{info texinfo}\linebreak
 (and at \code{http://www.gnu.org/software/texinfo/manual}).
 
 \copyrightnotice

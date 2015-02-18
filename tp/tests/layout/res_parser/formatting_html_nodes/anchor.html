@@ -42,6 +42,8 @@ kbd: ``simple-double-three-four-''
 @,c@"u c,u" 
 
 
+@U{0075} 0075
+
 @* 
 
 @ followed by a space
@@ -529,6 +531,12 @@ Invalid use of @':
 @dotless{ij} ij
 @dotless{-a} -a
 @dotless{a} a
+
+@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg z
+@U{abc}, with <4 hex digits abc
+@U{FFFFFFFFFFFFFF}, value much too large FFFFFFFFFFFFFF
+@U{110000}, value just beyond Unicode 110000
 
 @TeX, but without brace TeX@# #
 

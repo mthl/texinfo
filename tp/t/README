@@ -1,3 +1,17 @@
+$Id$
+texinfo/tp/t/README
+
+  Copyright 2010, 2011, 2012, 2013, 2014, 2015
+  Free Software Foundation, Inc.
+
+  Copying and distribution of this README file, with or without
+  modification, are permitted in any medium without royalty provided the
+  copyright notice and this notice are preserved.
+
+Files anywhere within the texinfo/tp/t/ subdirectory which have no
+other copyright notice are hereby placed in the public domain.
+
+
 These tests are run by "make check" under tp/.  (The test files are 
 listed in tp/Makefile.tres, which is a generated file.)  A single .t 
 test file can be run on its own with
@@ -34,21 +48,22 @@ files for the "test_image" test within t/03.coverage_braces.t, run
 Some tests under this directory use input files in the 'input_files' 
 subdirectory.  
 
-For some tests, as well as a .pl file as usual in results/*/, actual output
-files are generated.  For those tests, there are directories with reference
-test results (with names prefixed with res_), and directories with the obtained
-results (with names prefixed with out_).  For example, many of the tests whose
-results are in the 'results/indices' directory follow this format.  (The same
-convention is used in the test suite in ../tests.)
+For some tests, as well as a .pl file as usual in results/*/, actual
+output files are generated.  For those tests, there are directories with
+reference test results (with names prefixed with res_), and directories
+with the obtained results (with names prefixed with out_).  For example,
+many of the tests whose results are in the 'results/indices' directory
+follow this format.  (The same convention is used by the test suite in
+../tests.)
 
-Tests can be managed using the script in ../maintain/all_tests.sh.  For 
-example, "./maintain/all_tests.sh generate" regenerates all of the 
-reference test results (run from the upper-level directory), and 
+Tests can be managed using the script in ../maintain/all_tests.sh.  For
+example, "./maintain/all_tests.sh generate" regenerates all of the
+reference test results (run from the upper-level directory), and
 "./maintain/all_tests.sh diff" makes a diff of all resulting files
 against references.
 
 From the top directory, you can also create texinfo files corresponding with
-tests by running something along
+tests by running something along the lines of:
 
   perl -w t/60macro.t -c
 

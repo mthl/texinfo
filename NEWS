@@ -25,10 +25,11 @@ one of the relevant sections:
 
 * Language:
   . new commands @sub and @sup, for textual subscripts and superscripts.
+  . new command @U to insert a Unicode character by code point.
 
 * texinfo.tex:
-  . @url/@uref output now the same in PDF as in DVI, showing the url
-    even if the second argument is given, not just as link target.
+  . @url/@uref output in PDF now the same as in DVI, showing the url
+    even if the second argument is given, not just as a link target.
     TeX option \urefurlonlylinktrue gives previous behavior, of invisible urls.
     PDF-only \linkcolor and \urlcolor specify colors (default black).
 
@@ -38,7 +39,7 @@ one of the relevant sections:
   . Docbook output no longer uses <lineannotation> for @r.
   . -D'var val' on the command line works as intended again.
   . --plaintext output can be split.
-  . somewhat faster.
+  . a bit faster.
 
 * info:
   . invoking `info foo bar' looks for bar as an index entry in manual foo,
@@ -51,7 +52,7 @@ one of the relevant sections:
   . new variable infopath-no-defaults allows omitting the compile-time
     Info directory from the Info search path.
   . separate `infokey' program has been removed - the .infokey file is now
-    read directly by info.
+    read directly by Info.
   . new variable `highlight-searches' allows highlighting results from a search
   . support for mouse scrollwheel, controlled by 'mouse' variable.
   . new variable 'key_time' to control how long to wait for byte
@@ -86,6 +87,7 @@ one of the relevant sections:
   . new translation ca (catalan).
   . automake-1.15, gettext-0.19.4.
 
+
 5.2 (26 September 2013)
 * Language:
   . new commands @inlinefmtifelse, @inlineifset, @inlineifclear, for
