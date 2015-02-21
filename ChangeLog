@@ -1,3 +1,11 @@
+2015-02-21  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/info-utils.c [__MINGW32__]: Undef wcwidth, to avoid its
+	redirection from the MinGW-specific version in pcterm.c.
+
+	* info/pcterm.c (wcwidth) [_WIN32] [!HAVE_WCWIDTH]: A replacement
+	for wcwidth that works around the slow-down in the Gnulib version.
+
 2015-02-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_move_to_prev_xref)

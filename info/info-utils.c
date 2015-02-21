@@ -27,12 +27,17 @@
 #include <langinfo.h>
 #if HAVE_ICONV
 # include <iconv.h>
-#ifdef __MINGW32__
-# define nl_langinfo rpl_nl_langinfo
-extern char * rpl_nl_langinfo (nl_item);
-#endif
 #endif
 #include <wchar.h>
+#ifdef __MINGW32__
+/* MinGW uses a replacement nl_langinfo, see pcterm.c.  */
+# define nl_langinfo rpl_nl_langinfo
+extern char * rpl_nl_langinfo (nl_item);
+/* MinGW uses its own replacement wcwidth, see pcterm.c for the
+   reasons.  Since Gnulib's wchar.h might redirect wcwidth to
+   rpl_wcwidth, we explicitly undo that here.  */
+#undef wcwidth
+#endif
 
 #ifdef __hpux
 #define va_copy(ap1,ap2) memcpy((&ap1),(&ap2),sizeof(va_list))

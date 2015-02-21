@@ -663,6 +663,23 @@ rpl_nl_langinfo (nl_item item)
     return nl_langinfo (item);
 }
 
+#ifndef HAVE_WCWIDTH
+/* A replacement for wcwidth.  The Gnulib version calls setlocale for
+   every character Info is about to display, which makes display of
+   large nodes annoyingly slow.
+
+   Note that the Gnulib version is still compiled and put into
+   libgnu.a, because the configure script doesn't know about this
+   replacement.  But the linker will not pull the Gnulib version into
+   the binary, because it resolves the calls to this replacement
+   function.  */
+int
+wcwidth (int wc)
+{
+  return wc == 0 ? 0 : iswprint (wc) ? 1 : -1;
+}
+#endif
+
 #endif	/* _WIN32 */
 
 /* Turn on reverse video. */
