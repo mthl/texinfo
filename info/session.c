@@ -2494,6 +2494,24 @@ info_move_to_xref (WINDOW *window, int dir)
 
 void info_move_to_next_xref (WINDOW *, int count);
 
+/* Remove history entries from START inclusive to END exclusive.
+   Warning: be careful about removing the last history entry, as
+   info_set_node_of_window includes the currently displayed node in
+   the history. */
+static void
+cleanup_history (WINDOW *window, int start, int end)
+{
+  int i;
+  for (i = start; i < end; i++)
+    {
+      free_history_node (window->hist[i]->node);
+      free (window->hist[i]);
+    }
+  memmove (&window->hist[start], &window->hist[end],
+           (window->hist_index - end) * sizeof (WINDOW_STATE *));
+  window->hist_index -= end - start;
+}
+
 DECLARE_INFO_COMMAND (info_move_to_prev_xref,
                       _("Move to the previous cross reference"))
 {
@@ -2501,10 +2519,16 @@ DECLARE_INFO_COMMAND (info_move_to_prev_xref,
     info_move_to_next_xref (window, -count);
   else
     {
+      size_t last_hist_index, starting_hist_index;
+      char *initial_nodename = window->node->nodename;
+
+      last_hist_index = starting_hist_index = window->hist_index - 1;
+
       while (count > 0)
         {
           if (info_move_to_xref (window, -1))
             {
+              last_hist_index = window->hist_index - 1;
               count--;
               continue;
             }
@@ -2531,13 +2555,23 @@ DECLARE_INFO_COMMAND (info_move_to_prev_xref,
               return;
             }
 
-          if (backward_move_node_structure (window, info_scroll_behaviour)
-                  != 0)
+          if (backward_move_node_structure (window, info_scroll_behaviour != 0)
+              || !strcmp (window->node->nodename, initial_nodename))
             {
-              return; /* No earlier nodes in file. */
+              break; /* No earlier nodes in file, or we are back where we
+                         started. */
             }
           window->point = window->node->nodelen - 1;
         }
+
+      /* Go back to the last place a reference was found, or
+         the starting place. */
+      while (window->hist_index > last_hist_index + 1)
+        forget_node (window);
+
+      /* Remove any intermediate nodes. */
+      if (last_hist_index != starting_hist_index)
+        cleanup_history (window, starting_hist_index + 1, last_hist_index);
     }
 }
 
@@ -2548,10 +2582,16 @@ DECLARE_INFO_COMMAND (info_move_to_next_xref,
     info_move_to_prev_xref (window, -count);
   else
     {
+      size_t last_hist_index, starting_hist_index;
+      char *initial_nodename = window->node->nodename;
+
+      last_hist_index = starting_hist_index = window->hist_index - 1;
+
       while (count > 0)
         {
           if (info_move_to_xref (window, 1))
             {
+              last_hist_index = window->hist_index - 1;
               count--;
               continue;
             }
@@ -2575,12 +2615,23 @@ DECLARE_INFO_COMMAND (info_move_to_next_xref,
               return;
             }
 
-          if (forward_move_node_structure (window, info_scroll_behaviour)
-                   != 0)
+          if (forward_move_node_structure (window, info_scroll_behaviour) != 0
+              || !strcmp (window->node->nodename, initial_nodename))
             {
-              return; /* No later nodes in file. */
+              /*TODO: Print an error. */
+              break; /* No later nodes in file, or we are back where we
+                         started. */
             }
         }
+
+      /* Go back to the last place a reference was found, or
+         the starting place. */
+      while (window->hist_index > last_hist_index + 1)
+        forget_node (window);
+
+      /* Remove any intermediate nodes. */
+      if (last_hist_index != starting_hist_index)
+        cleanup_history (window, starting_hist_index + 1, last_hist_index);
     }
 }
 

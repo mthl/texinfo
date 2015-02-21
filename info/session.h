@@ -49,13 +49,13 @@ extern int info_scroll_behaviour;
 
 extern int cursor_movement_scrolls_p;
 
-/* Values for scroll_last_node */
-#define SLN_Stop   0 /* Stop at the last node */
-#define SLN_Top    1 /* Go to the top node */
-
 /* Controls what to do when a scrolling command is issued at the end of the
    last node. */
 extern int scroll_last_node;
+
+/* Values for scroll_last_node */
+#define SLN_Stop   0 /* Stop at the last node */
+#define SLN_Top    1 /* Go to the top node */
 
 int get_input_key (void);
 int get_another_input_key (void);

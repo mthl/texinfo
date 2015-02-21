@@ -1,3 +1,11 @@
+2015-02-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_move_to_prev_xref)
+	(info_move_to_next_xref): Don't include skipped-over nodes in
+	window history, and handle case of no xref being found.
+	(cleanup_history): New function.
+	* info/t/tab-no-xref.sh, info/t/tab-skip-node.sh: New tests.
+
 2015-02-17  Karl Berry  <karl@gnu.org>
 
 	* tp/Texinfo/Parser.pm (_parse_texi): do syntactic checks on @U
