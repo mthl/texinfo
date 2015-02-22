@@ -1,7 +1,7 @@
 $Id$
 texinfo/tp/README
 
-  Copyright 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
+  Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -34,7 +34,7 @@ test the command itself.
 
 This module is part of GNU Texinfo.  A standalone Perl module may also be
 produced from within the the Texinfo tree, using 
-  ./maintain/prepare_perl_module.sh
+  ./maintain/prepare_perl_standalone_module_archive.sh
 The resulting module, although standalone, should always be regenerated
 from the sources in Texinfo, to avoid divergence of sources.
 

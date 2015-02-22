@@ -95,7 +95,7 @@ a trivial script along these lines:
 #!/bin/sh
 exec /YOUR/TEXINFO/DIR/tp/texi2any.pl "$@"
 
-
+For information on creating and modifying
 
 Steps for making a release (pretest or official):
 

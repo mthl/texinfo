@@ -74,3 +74,7 @@ test, here arg_body_expansion_order:
 
 The output files will be created with -o, in t/output_files/$test_category/
 
+When adding Perl (sub)tests under t/, also run
+maintain/prepare_perl_module_files.sh to regenerate
+maintain/MANIFEST_generated_files, or a "plan" (aka results file) will
+be missing at distcheck.

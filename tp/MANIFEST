@@ -2,6 +2,8 @@ COPYING
 Changes
 DebugTexinfo/DebugCount.pm
 DebugTexinfo/DebugTree.pm
+LocaleData/ca.us-ascii/LC_MESSAGES/texinfo_document.mo
+LocaleData/ca/LC_MESSAGES/texinfo.mo
 LocaleData/cs/LC_MESSAGES/texinfo.mo
 LocaleData/da/LC_MESSAGES/texinfo.mo
 LocaleData/de.us-ascii/LC_MESSAGES/texinfo_document.mo
@@ -29,6 +31,7 @@ LocaleData/pl/LC_MESSAGES/texinfo.mo
 LocaleData/pl/LC_MESSAGES/texinfo_document.mo
 LocaleData/pt.us-ascii/LC_MESSAGES/texinfo_document.mo
 LocaleData/pt_BR.us-ascii/LC_MESSAGES/texinfo_document.mo
+LocaleData/pt_BR/LC_MESSAGES/texinfo.mo
 LocaleData/ro/LC_MESSAGES/texinfo.mo
 LocaleData/ru/LC_MESSAGES/texinfo.mo
 LocaleData/rw/LC_MESSAGES/texinfo.mo
@@ -90,6 +93,7 @@ maintain/template.pod
 po/Makefile
 po/PACKAGE
 po/POTFILES.in
+po/ca.po
 po/cs.po
 po/da.po
 po/de.po
@@ -106,6 +110,7 @@ po/ja.po
 po/nb.po
 po/nl.po
 po/pl.po
+po/pt_BR.po
 po/ro.po
 po/ru.po
 po/rw.po
@@ -120,6 +125,7 @@ po/zh_TW.po
 po_document/Makefile
 po_document/PACKAGE
 po_document/POTFILES.in
+po_document/ca.us-ascii.po
 po_document/de.us-ascii.po
 po_document/eo.po
 po_document/es.us-ascii.po
@@ -474,6 +480,7 @@ t/results/coverage/hyphenation.pl
 t/results/coverage/indentedblock.pl
 t/results/coverage/indicateurl_end_lines.pl
 t/results/coverage/insertcopying.pl
+t/results/coverage/invalid_U.pl
 t/results/coverage/item_container.pl
 t/results/coverage/lettered_accent_and_spaces.pl
 t/results/coverage/math.pl
@@ -1022,6 +1029,7 @@ t/results/multitable/paragraph_in_cells.pl
 t/results/multitable/prototype_brace_no_brace.pl
 t/results/multitable/prototype_brace_no_brace_comment.pl
 t/results/multitable/prototype_no_brace.pl
+t/results/multitable/ref_in_multitable.pl
 t/results/multitable/w_in_multitable.pl
 t/results/paragraph/close_paragraph_command.pl
 t/results/paragraph/commands_in_flushright.pl
@@ -1039,6 +1047,7 @@ t/results/paragraph/text_comment.pl
 t/results/paragraph/text_line.pl
 t/results/paragraph/text_space_comment.pl
 t/results/paragraph/two_lines.pl
+t/results/plaintext_tests/U_with_utf8_enable_encoding.pl
 t/results/plaintext_tests/accent_command_punctuation.pl
 t/results/plaintext_tests/accents_in_var_enable_encoding.pl
 t/results/plaintext_tests/after_punctuation_character_in_command.pl

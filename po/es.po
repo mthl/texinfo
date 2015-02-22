@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: texinfo-5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2013-09-13 09:54-0700\n"
-"PO-Revision-Date: 2015-02-19 23:39+0100\n"
+"PO-Revision-Date: 2015-02-22 13:17+0100\n"
 "Last-Translator: Antonio Ceballos <aceballos@gmail.com>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
 "Language: es\n"
@@ -2692,36 +2692,35 @@ msgstr "no hay un '%cend %s' correspondiente"
 msgid "misplaced %c"
 msgstr "carácter `%c' fuera de lugar"
 
-# TODO next
 #: tp/Texinfo/Parser.pm:1790 tp/Texinfo/Parser.pm:3146
-#, fuzzy, perl-format
+#, perl-format
 msgid "unmatched `%c%s'"
-msgstr "Final de bloque inexistente (`%c%s')"
+msgstr "`%c%s' desemparejado"
 
 #: tp/Texinfo/Parser.pm:2025
-#, fuzzy, perl-format
+#, perl-format
 msgid "macro `%s' called with too many args"
-msgstr "La llamada al macro '%s' en la línea %d contiene demasiados argumentos"
+msgstr "La llamada a la macro '%s' contiene demasiados argumentos"
 
 #: tp/Texinfo/Parser.pm:2047
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s missing close brace"
-msgstr "%c%s se esperaba leer `}'"
+msgstr "@%s se esperaba leer `}'"
 
 #: tp/Texinfo/Parser.pm:2055
-#, fuzzy, perl-format
+#, perl-format
 msgid "macro `%s' declared without argument called with an argument"
-msgstr "La llamada al macro '%s' en la línea %d contiene demasiados argumentos"
+msgstr "La llamada a la macro '%s', declarada sin argumentos, contiene un argumento"
 
 #: tp/Texinfo/Parser.pm:2090
-#, fuzzy, perl-format
+#, perl-format
 msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
-msgstr "\\ fue leído durante la expansión del macro seguido de '%s' en vez de por un parámetro válido"
+msgstr "se leyó \\, al expandir @%s, tras '%s' en vez de un nombre de parámetro o \\"
 
 #: tp/Texinfo/Parser.pm:2494
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s `%s' previously defined"
-msgstr "el macro '%s' ya ha sido definido en este documento"
+msgstr "@%s '%s' ya ha sido definido anteriormente"
 
 #: tp/Texinfo/Parser.pm:2499
 #, fuzzy, perl-format
@@ -2729,19 +2728,20 @@ msgid "here is the previous definition as @%s"
 msgstr "la definición previa de `%s' se encuentra aquí"
 
 #: tp/Texinfo/Parser.pm:2860
-#, fuzzy, perl-format
+#, perl-format
 msgid "missing name for @%s"
-msgstr "nombre de acción ausente"
+msgstr "falta un nombre para @%s"
 
 #: tp/Texinfo/Parser.pm:2865
 #, perl-format
 msgid "missing category for @%s"
-msgstr ""
+msgstr "falta una categoría para @%s"
 
+# TODO review
 #: tp/Texinfo/Parser.pm:2917
-#, fuzzy, perl-format
+#, perl-format
 msgid "unexpected argument on @%s line: %s"
-msgstr "Argumento erróneo para @%s: %s"
+msgstr "argumento erróneo en una línea @%s: %s"
 
 #: tp/Texinfo/Parser.pm:2933
 #, fuzzy
@@ -2749,15 +2749,15 @@ msgid "empty multitable"
 msgstr "%s: fichero vacío"
 
 #: tp/Texinfo/Parser.pm:2989 tp/Texinfo/Parser.pm:5516
-#, fuzzy, perl-format
+#, perl-format
 msgid "superfluous argument to @%s"
-msgstr "Argumento erróneo para @%s"
+msgstr "argumento superfluo para @%s"
 
 #: tp/Texinfo/Parser.pm:2995 tp/Texinfo/Parser.pm:5538
 #: tp/Texinfo/Parser.pm:5550
-#, fuzzy, perl-format
+#, perl-format
 msgid "bad argument to @%s"
-msgstr "Argumento erróneo para @%s"
+msgstr "argumento erróneo para @%s"
 
 #: tp/Texinfo/Parser.pm:3006
 #, perl-format
@@ -2774,11 +2774,12 @@ msgstr ""
 msgid "accent command `@%s' not allowed as @%s argument"
 msgstr "%s: la opción `--%s' no permite argumento alguno\n"
 
+# TODO: uno o varios
 #: tp/Texinfo/Parser.pm:3124 tp/Texinfo/Parser.pm:3263
 #: tp/Texinfo/Parser.pm:5509
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s missing argument"
-msgstr "%s: se necesita nombre de fichero que procesar.\n"
+msgstr "a @%s le falta argumento"
 
 #: tp/Texinfo/Parser.pm:3136
 #, fuzzy, perl-format
@@ -2793,19 +2794,19 @@ msgstr "Argumento erróneo para @%s: %s"
 #: tp/Texinfo/Parser.pm:3163 tp/Texinfo/Parser.pm:5593
 #: tp/Texinfo/Parser.pm:5638 tp/Texinfo/Parser.pm:5667
 #: tp/Texinfo/Parser.pm:5708 tp/Texinfo/Parser.pm:5786
-#, fuzzy, perl-format
+#, perl-format
 msgid "bad argument to @%s: %s"
-msgstr "Argumento erróneo para @%s: %s"
+msgstr "argumento erróneo para @%s: %s"
 
 #: tp/Texinfo/Parser.pm:3182
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s: could not open %s: %s"
-msgstr "%s: no se pudo abrir --css-file: %s"
+msgstr "@%s: no se pudo abrir %s: %s"
 
 #: tp/Texinfo/Parser.pm:3194
 #, perl-format
 msgid "encoding `%s' is not a canonical texinfo encoding"
-msgstr ""
+msgstr "la condificación `%s' no es una codificación canónica de texinfo"
 
 #: tp/Texinfo/Parser.pm:3203
 #, perl-format
@@ -2815,56 +2816,56 @@ msgstr "`%s' no se corresponde con ningún tipo de codificación conocido"
 #: tp/Texinfo/Parser.pm:3353
 #, perl-format
 msgid "@%s after the first element"
-msgstr ""
+msgstr "@%s después del primer elemento"
 
 #: tp/Texinfo/Parser.pm:3360
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s only meaningful on a @multitable line"
-msgstr "@%s carece de sentido fuera de influencias de entornos como `@titlepage'"
+msgstr "@%s carece de sentido fuera de una línea @multitable"
 
 #: tp/Texinfo/Parser.pm:3400
 #, perl-format
 msgid "@%s should not be associated with @top"
-msgstr ""
+msgstr "@%s no debe estar asociado con @top"
 
 #: tp/Texinfo/Parser.pm:3412
 #, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
-msgstr ""
+msgstr "@node precede a @%s, pero las partes no pueden estar asociadas con los nodos"
 
 #: tp/Texinfo/Parser.pm:3514
-#, fuzzy, perl-format
+#, perl-format
 msgid "empty argument in @%s"
-msgstr "Argumento erróneo para @%s"
+msgstr "argumento vacío en @%s"
 
 #: tp/Texinfo/Parser.pm:3518
 #, perl-format
 msgid "empty node name after expansion `%s'"
-msgstr ""
+msgstr "nombre de nodo vacío tras expandir `%s'"
 
 #: tp/Texinfo/Parser.pm:3561
-#, fuzzy, perl-format
+#, perl-format
 msgid "empty menu entry name in `%s'"
-msgstr "El nodo '%s' no contiene menú alguno."
+msgstr "nombre de entrada de menú vacío en `%s'"
 
 #: tp/Texinfo/Parser.pm:3569
 msgid "empty node name in menu entry"
-msgstr ""
+msgstr "nombre de nodo vacío en una entrada de menú"
 
 #: tp/Texinfo/Parser.pm:3642
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s should not appear in @%s"
-msgstr "%s: no se pudo abrir --css-file: %s"
+msgstr "@%s no puede aparecer en @%s"
 
 #: tp/Texinfo/Parser.pm:3774
 #, perl-format
 msgid "@end %s should only appear at a line beginning"
-msgstr ""
+msgstr "@end %s solo puede aparecer al comienzo de una línea"
 
 #: tp/Texinfo/Parser.pm:3797
 #, perl-format
 msgid "macro `%s' previously defined"
-msgstr "el macro '%s' ya ha sido definido en este documento"
+msgstr "la macro '%s' ya ha sido definida en este documento"
 
 #: tp/Texinfo/Parser.pm:3800
 #, perl-format
@@ -2874,7 +2875,7 @@ msgstr "la definición previa de '%s' se encuentra aquí"
 #: tp/Texinfo/Parser.pm:3805
 #, perl-format
 msgid "redefining Texinfo language command: @%s"
-msgstr ""
+msgstr "se redefine la orden del lenguaje Texinfo: @%s"
 
 #: tp/Texinfo/Parser.pm:3854
 #, perl-format
@@ -2884,17 +2885,19 @@ msgstr ""
 #: tp/Texinfo/Parser.pm:3916
 #, perl-format
 msgid "@%s defined with zero or more than one argument should be invoked with {}"
-msgstr ""
+msgstr "@%s definido sin ningún argumento o con más de uno tiene que ser invocado con {}"
 
 #: tp/Texinfo/Parser.pm:3940
 #, perl-format
 msgid "macro call nested too deeply (set MAX_NESTED_MACROS to override; current value %d)"
 msgstr ""
+"anidamiento demasiado profundo en llamada a macro (habría que modificar\n"
+"MAX_NESTED_MACROS; su valor actual es %d)"
 
 #: tp/Texinfo/Parser.pm:3949
 #, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
-msgstr ""
+msgstr "no se permite llamar a la macro %s recursivamente; utilice @rmacro si lo necesita"
 
 #: tp/Texinfo/Parser.pm:4005
 #, perl-format
@@ -2902,14 +2905,14 @@ msgid "accent command `@%s' must not be followed by whitespace"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:4011
-#, fuzzy, perl-format
+#, perl-format
 msgid "use braces to give a command as an argument to @%s"
-msgstr "Use llaves para suplir un comando como argumento a @%s"
+msgstr "use llaves para pasar una orden como argumento de @%s"
 
 #: tp/Texinfo/Parser.pm:4024 tp/Texinfo/Parser.pm:5124
-#, fuzzy, perl-format
+#, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
-msgstr "el uso de `%c%s' presupone como siguientes argumentos `i' o `j', no `%c'"
+msgstr "el uso de `%c%s' presupone como argumentos `i' o `j', no `%s'"
 
 #: tp/Texinfo/Parser.pm:4036
 #, perl-format
@@ -2917,9 +2920,9 @@ msgid "accent command `@%s' must not be followed by new line"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:4047
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s expected braces"
-msgstr "%c%s se esperaban llaves"
+msgstr "@%s esperaba llaves"
 
 #: tp/Texinfo/Parser.pm:4207
 #, perl-format
@@ -2928,22 +2931,22 @@ msgstr "etiqueta indefinida: %s"
 
 #: tp/Texinfo/Parser.pm:4210
 msgid "bad syntax for @value"
-msgstr ""
+msgstr "sintaxis de @value incorrecta"
 
 #: tp/Texinfo/Parser.pm:4217
-#, fuzzy, perl-format
+#, perl-format
 msgid "%c%s is obsolete."
-msgstr "%c%s es una sintaxis ya obsoleta"
+msgstr "%c%s es una sintaxis ya obsoleta."
 
 #: tp/Texinfo/Parser.pm:4220
-#, fuzzy, perl-format
+#, perl-format
 msgid "%c%s is obsolete; %s"
-msgstr "%c%s es una sintaxis ya obsoleta"
+msgstr "%c%s es una sintaxis ya obsoleta; %s"
 
 #: tp/Texinfo/Parser.pm:4229
 #, perl-format
 msgid "@%s should only appear at a line beginning"
-msgstr ""
+msgstr "@%s solo puede aparecer al comienzo de una línea"
 
 #: tp/Texinfo/Parser.pm:4320
 #, fuzzy, perl-format
@@ -2953,7 +2956,7 @@ msgstr "`@%s' carece de sentido bajo la influencia de un bloque `@%s'"
 #: tp/Texinfo/Parser.pm:4329
 #, perl-format
 msgid "@%s should only appear in heading or footing"
-msgstr ""
+msgstr "@%s solo puede aparecer en el encabezado o al pie"
 
 #: tp/Texinfo/Parser.pm:4455 tp/Texinfo/Parser.pm:4472
 #: tp/Texinfo/Parser.pm:4522
@@ -2968,12 +2971,12 @@ msgstr "%s: fichero vacío"
 
 #: tp/Texinfo/Parser.pm:4488
 msgid "@tab before @item"
-msgstr ""
+msgstr "@tab antes de @item"
 
 #: tp/Texinfo/Parser.pm:4491
-#, fuzzy, perl-format
+#, perl-format
 msgid "too many columns in multitable item (max %d)"
-msgstr "Demasiadas columnas para el elemento multi-tabla (max %d)"
+msgstr "demasiadas columnas para el elemento multi-tabla (max %d)"
 
 #: tp/Texinfo/Parser.pm:4528
 msgid "ignoring @tab outside of multitable"
@@ -2982,7 +2985,7 @@ msgstr "ignorando `@tab' no influenciado por el entorno `multitable'"
 #: tp/Texinfo/Parser.pm:4532
 #, perl-format
 msgid "@%s outside of table or list"
-msgstr ""
+msgstr "@%s fuera de tabla o lista"
 
 #: tp/Texinfo/Parser.pm:4567
 #, fuzzy, perl-format
@@ -2996,7 +2999,7 @@ msgstr "`@%s' carece de sentido fuera de influencias de entornos como `@titlepag
 
 #: tp/Texinfo/Parser.pm:4613
 msgid "@dircategory after first node"
-msgstr ""
+msgstr "@dircategory después del primer nodo"
 
 #: tp/Texinfo/Parser.pm:4778
 #, fuzzy, perl-format
@@ -3005,12 +3008,12 @@ msgstr "No está permitido anidar notas a pie de página en sí mismas"
 
 #: tp/Texinfo/Parser.pm:4796
 msgid "@direntry after first node"
-msgstr ""
+msgstr "@direntry después del primer nodo"
 
 #: tp/Texinfo/Parser.pm:4804
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s seen before first @node"
-msgstr "`@menu' ha sido leído antes que `@node', se creará un nodo `Top'"
+msgstr "se ha encontrado un @%s antes del primer @node"
 
 #: tp/Texinfo/Parser.pm:4807
 msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
@@ -3019,8 +3022,9 @@ msgstr "¿Quizás su nodo `@top' debería quedar bajo la influencia de un bloque
 #: tp/Texinfo/Parser.pm:4869
 #, perl-format
 msgid "@%s should only appear in math context"
-msgstr ""
+msgstr "@%s solo puede aparecer en un contexto matemático"
 
+# TODO next
 #: tp/Texinfo/Parser.pm:4877
 #, fuzzy, perl-format
 msgid "unknown command `%s'"

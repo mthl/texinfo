@@ -172,7 +172,8 @@ including the exact invocation of texi2any, which can alter anything.
 For even more, use sh -vx to show exactly what run_parser_all is doing.
 
 When satisfied, add the .texi in subdir/Makefile.am.
-And of course commit all the files and try a make check (or long-checks,
+
+Of course commit all the files and try a make check (or long-checks,
 as needed) afterward to verify it gets run, and passes.
 
-The regenerate_cmd_tests helper script that runs as part of the
+See tp/t/README for info about those tests.

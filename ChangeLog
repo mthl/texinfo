@@ -1,3 +1,18 @@
+2015-02-22  Karl Berry  <karl@gnu.org>
+
+	* info/Makefile.am (EXTRA_DIST): remove t/Cleanup.inc (gone).
+	* README-hacking,
+	* tp/README,
+	* tp/tests/README,
+	* tp/t/README: a few words about adding new tests.
+	
+	* tp/maintain/all_tests.sh,
+	* tp/maintain/regenerate_cmd_tests.sh,
+	* tp/maintain/prepare_perl_module_files.sh: copyright years.
+	
+	* tp/maintain/MANIFEST_generated_files,
+	* tp/MANIFEST: regenerate.
+
 2015-02-21  Eli Zaretskii  <eliz@gnu.org>
 
 	* info/info-utils.c [__MINGW32__]: Undef wcwidth, to avoid its
