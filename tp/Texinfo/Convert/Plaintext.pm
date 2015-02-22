@@ -3375,6 +3375,7 @@ sub indent_menu_descriptions($;$)
 1;
 
 __END__
+# $Id$
 # Automatically generated from maintain/template.pod
 
 =head1 NAME
@@ -3387,6 +3388,8 @@ Texinfo::Convert::Plaintext - Convert Texinfo tree to Plaintext
     = Texinfo::Convert::Plaintext->converter({'parser' => $parser});
 
   $converter->output($tree);
+  $converter->convert($tree);
+  $converter->convert_tree($tree);
 
 =head1 DESCRIPTION
 
@@ -3398,7 +3401,7 @@ Texinfo::Convert::Plaintext converts a Texinfo tree to Plaintext.
 
 =item $converter = Texinfo::Convert::Plaintext->converter($options)
 
-Initialize a Plaintext converter.  
+Initialize converter from Texinfo to Plaintext.  
 
 The I<$options> hash reference holds options for the converter.  In
 this option hash reference a parser object may be associated with the 
@@ -3432,7 +3435,7 @@ Patrice Dumas, E<lt>pertusus@free.frE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+Copyright 2015 Free Software Foundation, Inc.
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

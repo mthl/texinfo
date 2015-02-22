@@ -1,5 +1,12 @@
 2015-02-22  Karl Berry  <karl@gnu.org>
 
+	* tp/maintain/template.pod: tweak text, add __HTML signal.
+	* tp/maintain/regenerate_converters_documentation.sh: HTML-specific.
+	* tp/Makefile.am (do-pm-doc): new target to call that script.
+	* tp/Texinfo/Convert/*.pm: remake pod with that script/target.
+
+2015-02-22  Karl Berry  <karl@gnu.org>
+
 	* info/Makefile.am (EXTRA_DIST): remove t/Cleanup.inc (gone).
 	* README-hacking,
 	* tp/README,

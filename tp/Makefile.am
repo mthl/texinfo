@@ -212,6 +212,9 @@ EXTRA_DIST = \
   $(perl_specific_files) \
   maintain/lib
 
+# MANIFEST is used for the Perl module.
+# maintain/MANIFEST_generated_files is used for dist(check).
+# They are made by maintain/prepare_perl_module_files.sh.
 MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
 	LC_ALL=C; export LC_ALL; LANGUAGE=C; export LANGUAGE; \
 	echo "$(dist_modules_DATA) $(dist_converters_DATA)" \
@@ -222,6 +225,14 @@ MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
 	 | sed 's/  */\n/g' \
 	 | cat - $(srcdir)/maintain/MANIFEST_generated_files \
 	 | sort >$@
+
+# template.pod is the basis for the .pm documentation, and the script
+# invoked here updates them; to be run when template.pod changes.
+# 
+# If we ever make that documentation more extensive, the .pm doc could
+# (and probably should) just be maintained separately, by hand.
+do-pm-doc:
+	./maintain/regenerate_converters_documentation.sh
 
 maintain/catalog.xml: maintain/catalog.xml.in Makefile
 	$(MKDIR_P) maintain
