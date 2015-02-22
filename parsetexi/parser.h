@@ -18,6 +18,7 @@ ELEMENT *close_commands (ELEMENT *current, enum command_id closed_command,
 /* In end_line.c */
 NODE_SPEC_EXTRA *parse_node_manual (ELEMENT *node);
 ELEMENT *end_line (ELEMENT *current);
+ELEMENT *parse_special_misc_command (char *line, enum command_id cmd);
 
 /* In debug.c */
 void debug (char *s, ...);
@@ -56,6 +57,8 @@ ELEMENT *parse_macro_command_line (enum command_id, char **line_inout,
                                    ELEMENT *parent);
 ELEMENT *handle_macro (ELEMENT *current, char **line_inout,
                        enum command_id cmd_id);
+void store_value (char *name, char *value);
+char *fetch_value (char *name, int len);
 
 /* In multitable.c */
 ELEMENT *item_line_parent (ELEMENT *current);

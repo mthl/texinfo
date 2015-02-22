@@ -28,13 +28,14 @@
 enum input_type { IN_file, IN_text };
 
 typedef struct {
-    enum input_type type;
+    enum input_type type; /* IN_file or IN_text */
 
     FILE *file;
     char *filename;
 
-    char *text;
-    char *ptext; /* How far we are through 'text'. */
+    char *text;  /* Input text to be parsed as Texinfo. */
+    char *ptext; /* How far we are through 'text'.  Used to split 'text'
+                    into lines. */
     int line_number;
 } INPUT;
 
@@ -45,13 +46,14 @@ static size_t input_space = 0;
 /* Current filename and line number. */
 LINE_NR line_nr;
 
-/* Collect text until a newline is found. */
-// I don't really understand the difference between this and next_text.
-// When would next_text not return a string ending in a newline?
-// Unlike new_text, new_line's return value doesn't end in '\n'.
-// Return value should not be freed by caller, and becomes invalid after
-// a subsequent call.
 // 1961
+/* Collect text from the input sources until a newline is found.  This is used 
+   instead of next_text when we need to be sure we get an entire line of 
+   Texinfo input (for example as a line argument to a command), which might not 
+   be the case if the input is the result of a macro expansion.
+
+   Return value should not be freed by caller, and becomes invalid after
+   a subsequent call. */
 char *
 new_line (void)
 {
@@ -107,7 +109,10 @@ next_text (void)
             }
           p = strchrnul (i->ptext, '\n');
           new = strndup (i->ptext, p - i->ptext + 1);
-          i->ptext = p + 1;
+          if (*p)
+            i->ptext = p + 1;
+          else
+            i->ptext = p; /* The next time, we will pop the input source. */
           return new;
           // what if it doesn't end in a newline ?
 
@@ -171,6 +176,8 @@ save_line_nr (void)
     }
 }
 
+/* Store TEXT as a source for Texinfo content.  TEXT will be later free'd
+   and must be allocated on the heap. */
 void
 input_push_text (char *text)
 {

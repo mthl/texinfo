@@ -58,6 +58,87 @@ is_decimal_number (char *string)
   return 1;
 }
 
+/* Process argument to special line command. */
+ELEMENT *
+parse_special_misc_command (char *line, enum command_id cmd
+                           /* , int *has_comment */)
+{
+#define ADD_ARG(string, len) do { \
+  ELEMENT *E = new_element (ET_NONE); \
+  text_append_n (&E->text, string, len); \
+  add_to_element_contents (args, E); \
+} while (0)
+
+  ELEMENT *args = new_element (ET_NONE);
+  char *p, *q;
+
+  switch (cmd)
+    {
+    case CM_set:
+      {
+        
+        /* Check if the line matches the Perl regular expression
+
+        /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)
+        (\@(c|comment)((\@|\s+).*)?|[^\S\f]+(.*?))?[^\S\f]*$/
+
+          */
+
+      p = line;
+      p += strspn (p, whitespace_chars);
+      if (!*p)
+        goto set_no_name;
+      if (!isalnum (*p) && *p != '-' && *p != '_')
+        goto set_invalid;
+      q = strpbrk (p,
+                   " \t\f\r\n"       /* whitespace */
+                   "{\\}~^+\"<>|@"); /* other bytes that aren't allowed */
+
+      ADD_ARG(p, q - p); /* name */
+
+      /* TODO: Skip optional comment. */
+      /* This is strange - how can you have a comment in the middle
+         of a line?  And what does "@comment@" mean? */
+
+      p = q + strspn (q, whitespace_chars);
+      /* Actually, whitespace characters except form feed. */
+
+      /* Find trailing whitespace on line. */
+      q = strchr (p, '\0');
+      while (strchr (whitespace_chars, *q))
+        q--;
+
+      if (q > p)
+        ADD_ARG(p, q - p + 1); /* value */
+      else
+        ADD_ARG("", 0);
+
+      store_value (args->contents.list[0]->text.text,
+                   args->contents.list[1]->text.text);
+      /* TODO - unless ignore_global_commands is on */
+
+      break;
+set_no_name:
+      line_error ("@set requires a name");
+      break;
+set_invalid:
+      line_error ("bad name for @set");
+      break;
+      }
+    case CM_clear:
+      break;
+    case CM_unmacro:
+      break;
+    case CM_clickstyle:
+      break;
+    default:
+      abort ();
+    }
+
+  return args;
+#undef ADD_ARG
+}
+
 /* Parse the arguments to a line command.  Return an element whose contents
    is an array of the arguments.  For some commands, there is further 
    processing of the arguments (for example, for an @alias, remember the

@@ -194,6 +194,8 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout)
   size_t arg_number = 0;
   size_t arg_space = 0;
 
+  arg_list = malloc (sizeof (char *));
+
   text_init (&arg);
 
   while (braces_level > 0)
@@ -253,7 +255,8 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout)
               if (arg_number == arg_space)
                 {
                   arg_list = realloc (arg_list,
-                                      (arg_space += 5) * sizeof (char *));
+                                      (1+(arg_space += 5)) * sizeof (char *));
+                  /* Include space for terminating null element. */
                   if (!arg_list)
                     abort ();
                 }
@@ -278,6 +281,7 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout)
   line = pline;
 
   *line_inout = line;
+  arg_list[arg_number] = 0;
   return arg_list;
 }
 
@@ -304,11 +308,11 @@ expand_macro_body (ELEMENT *macro, char *arguments[], TEXT *expanded)
 
       /* There should be at least a newline. */
       if (body[i]->text.end == 0)
-        abort ();
+        continue;
 
       ptext = body[i]->text.text;
       if (i == macro->contents.number - 1)
-        ; // strip newline
+        ; // TODO: strip newline
       
       while (1)
         {
@@ -406,12 +410,50 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
     free (arguments);
   }
 
-
   // 3958 Pop macro stack
 
-  // 3961 Split expansion into lines.
+  // 3961
+  /* Put expansion in front of the current line. */
+  input_push_text (strdup (line));
+  line = strchr (line, '\0');
   input_push_text (expanded.text);
 
   *line_inout = line;
   return current;
+}
+
+
+/* @set and @value */
+
+typedef struct {
+    char *name;
+    char *value;
+} VALUE;
+
+static VALUE *value_list;
+static size_t value_number;
+static size_t value_space;
+
+void
+store_value (char *name, char *value)
+{
+  if (value_number == value_space)
+    {
+      value_list = realloc (value_list, (value_space += 5) * sizeof (VALUE));
+    }
+  value_list[value_number].name = name;
+  value_list[value_number++].value = value;
+}
+/* TODO: What if it is already defined? */
+
+char *
+fetch_value (char *name, int len)
+{
+  int i;
+  for (i = 0; i < value_number; i++)
+    {
+      if (!memcmp (value_list[i].name, name, len) && !value_list[i].name[len])
+        return value_list[i].value;
+    }
+  return 0;
 }

@@ -1,3 +1,4 @@
+/* handle_commands.c -- what to do when a command name is first read */
 /* Copyright 2010, 2011, 2012, 2013, 2014, 2015
    Free Software Foundation, Inc.
 
@@ -19,6 +20,7 @@
 
 #include "parser.h"
 #include "input.h"
+#include "text.h"
 
 /* Return a containing @itemize or @enumerate if inside it. */
 // 1847
@@ -80,22 +82,71 @@ handle_misc_command (ELEMENT *current, char **line_inout,
         current = begin_preformatted (current);
       */
     }
-  // all the cases using the raw line
+  /* All the cases using the raw line.
+     I don't understand what the difference is between these. */
   else if (arg_spec == MISC_skipline /* 4347 */
            || arg_spec == MISC_lineraw
            || arg_spec == MISC_special)
     {
+      ELEMENT *args = 0;
+      /* 4350 TODO: If the current input is the result of a macro expansion,
+         it may not be a complete line.  Check for this and acquire the rest
+         of the line if necessary. */
+
       misc = new_element (ET_NONE);
       misc->cmd = cmd_id;
 
-      /* If @set or @clear */
-      /* else */ /* 4402 */
+      if (arg_spec == MISC_skipline || arg_spec == MISC_lineraw)
         {
-          add_to_element_contents (current, misc);
+          ELEMENT *arg;
+          args = new_element (ET_NONE);
+          arg = new_element (ET_NONE);
+          add_to_element_contents (args, arg);
+          text_append (&arg->text, line);
         }
-      current = end_line (current);
+      else /* arg_spec == MISC_special */
+        {
+          args = parse_special_misc_command (line, cmd_id); //4362
+          add_extra_string (misc, "arg_line", line);
+        }
 
-      // 4429 @bye
+      if ((cmd_id == CM_set || cmd_id == CM_clear)
+          && 0 )
+        {
+          /* TODO: Handle @set txicodequoteundirected as an
+             obsolete alternative to @codequoteundirected. */
+        }
+      else // 4402
+        {
+          int i;
+          add_to_element_contents (current, misc);
+
+          for (i = 0; i < args->contents.number; i++)
+            {
+              ELEMENT *misc_arg = new_element (ET_misc_arg);
+              text_append_n (&misc_arg->text, 
+                             args->contents.list[i]->text.text,
+                             args->contents.list[i]->text.end);
+              add_to_element_contents (misc, misc_arg);
+            }
+          /* TODO: Could we have just set misc->args directly as args? */
+
+          if (args->contents.number > 0 && arg_spec != MISC_skipline)
+            add_extra_key_misc_args (misc, "misc_args", args);
+        }
+
+      /* if (!ignore_global_commands)
+        {
+        } */
+
+      // mark_and_warn_invalid ();
+      // register_global_command ();
+
+      if (arg_spec != MISC_special /* || !has_comment */ )
+        current = end_line (current);
+
+      // 4429 TODO @bye
+
       if (close_preformatted_command(cmd_id))
         current = begin_preformatted (current);
 

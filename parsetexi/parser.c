@@ -829,13 +829,59 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
       line = line_after_command;
       debug ("COMMAND %s", command);
 
-#if 0
-      /* Check if this is an alias command */
+      /* TODO: Check if this is an alias command */
 
-      /* @value */
+      /* 4172 @value */
+      if (cmd_id == CM_value)
+        {
+          char *arg_start;
+          if (*line != '{')
+            goto value_invalid;
 
-      /* warn on deprecated command */
-#endif
+          line++;
+          if (!isalnum (*line) && *line != '-' && *line != '_')
+            goto value_invalid;
+          arg_start = line;
+
+          line++;
+          line = strpbrk (line,
+                   " \t\f\r\n"       /* whitespace */
+                   "{\\}~^+\"<>|@"); /* other bytes that aren't allowed */
+          if (*line != '}')
+            goto value_invalid;
+
+          if (1) /* @value syntax is valid */
+            {
+              char *value;
+value_valid:
+              value = fetch_value (arg_start, line - arg_start);
+              if (!value)
+                {
+                  line_errorf ("undefined flag: %.*s", line - arg_start, 
+                               arg_start);
+                }
+              else
+                {
+                  /* TODO: The Perl code has cases for the value being
+                     an array or hash - check when this can happen. */
+
+                  line++; /* past '}' */
+                  input_push_text (strdup (line));
+                  line = strchr (line, '\0');
+                  input_push_text (strdup (value));
+                  retval = 0;
+                  goto funexit;
+                  //return;
+                }
+            }
+          else
+            {
+value_invalid:
+              line_error ("bad syntax for @value");
+            }
+        }
+
+      /* TODO: warn on deprecated command */
 
       /* warn on not appearing at line beginning 4226 */
       if (!abort_empty_line (&current, NULL))
@@ -889,7 +935,8 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
         }
       /* line 4289 */
       /* the 'misc-commands' - no braces and not block commands (includes
-         @end) */
+         @end).  Mostly taking a line argument, except for a small number
+         of exceptions, like @tab. */
       else if (command_data(cmd_id).flags & CF_misc)
         {
           current = handle_misc_command (current, &line, cmd_id);

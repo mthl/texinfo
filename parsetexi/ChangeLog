@@ -1,3 +1,12 @@
+2015-02-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* macro.c (store_value, fetch_value): New functions.
+	* end_line.c (parse_special_misc_command): First implementation.  
+	Handle @value.
+	* handle_commands.c (handle_misc_command) <MISC_special etc.>: 
+	More complete.
+	* parser.c (process_remaining_on_line): Handle @value.
+
 2015-02-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* api.c (build_index_data): New function.

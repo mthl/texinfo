@@ -1,0 +1,17 @@
+@node Top
+
+@macro foo {p, q}
+Together: \p\ & \q\.
+@end macro
+@foo{a, b}
+
+XXXXXXXX@foo{c, d}YYYYYYYYYYYYY
+
+@macro bar
+Lah-di-dah.
+Dum-di-dum.
+
+
+@end macro
+
+flobble flible @bar{} worstst wortlsee
