@@ -2,6 +2,9 @@
 
 	* pretest 5.9.90.
 	* configure.ac: version.
+	
+	* util/srclist.txt: sync po_document/Makefile.in.in.
+	* configure.ac, etc.: finish gettext 0.19.4 update.
 
 2015-02-22  Karl Berry  <karl@gnu.org>
 

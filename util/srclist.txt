@@ -3,7 +3,8 @@
 # This is input for the script config/srclist-update in the gnulib
 # project on savannah, and the wrapper srclist-txi in this directory.
 # 
-# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2011, 2012, 2013
+# Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2011, 2012, 2013,
+# 2014, 2015
 # Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
@@ -22,6 +23,7 @@ $EMACSSRC/doc/misc/info.texi			doc	doclicense
 
 $GETTEXT/gettext-runtime/ABOUT-NLS		.
 #
+$GETTEXT/gettext-tools/po_document/Makefile.in.in	po
 $GETTEXT/gettext-tools/po/Makefile.in.in	po
 $GETTEXT/gettext-tools/po/Makevars.template	po
 $GETTEXT/gettext-tools/po/Rules-quot		po
