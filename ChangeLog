@@ -1,5 +1,10 @@
 2015-02-22  Karl Berry  <karl@gnu.org>
 
+	* pretest 5.9.90.
+	* configure.ac: version.
+
+2015-02-22  Karl Berry  <karl@gnu.org>
+
 	* tp/maintain/template.pod: tweak text, add __HTML signal.
 	* tp/maintain/regenerate_converters_documentation.sh: HTML-specific.
 	* tp/Makefile.am (do-pm-doc): new target to call that script.

@@ -112,7 +112,7 @@ wwwdoc-build:
 	&& $(gendocs_invoke) -o $(manual2) $(manual2) $(manual2_title) \
 	&& $(gendocs_invoke) -o $(manual3) $(manual3) $(manual3_title) \
 	&& pod2html $(pod2texi_pl) >pod2texi.html \
-	@echo "Manuals for web distribution under: $(doctemp)/"
+	&& echo "Manuals ready for web distribution under: $(doctemp)/"
 #
 # At official release, we need to update:
 # http://www.gnu.org/software/texinfo/manual/

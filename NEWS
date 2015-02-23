@@ -34,6 +34,8 @@ one of the relevant sections:
     PDF-only \linkcolor and \urlcolor specify colors (default black).
 
 * texi2any:
+  . customization variable TOP_NODE_UP_URL now replaces all (dir) references;
+    recommended setting for GNU packages is /manual/.
   . new customization variable INDEX_SPECIAL_CHARS_WARNING to complain
     when index entries contain a colon.
   . Docbook output no longer uses <lineannotation> for @r.
