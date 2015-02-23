@@ -489,8 +489,8 @@ AC_DEFUN([gl_INIT],
   gl_THREADLIB
   gl_HEADER_TIME_H
   gl_UNISTD_H
-  gl_LIBUNISTRING_LIBHEADER([0.9], [unitypes.h])
-  gl_LIBUNISTRING_LIBHEADER([0.9], [uniwidth.h])
+  gl_LIBUNISTRING_LIBHEADER([0.9.4], [unitypes.h])
+  gl_LIBUNISTRING_LIBHEADER([0.9.4], [uniwidth.h])
   gl_LIBUNISTRING_MODULE([0.9.5], [uniwidth/width])
   gl_FUNC_VASNPRINTF
   gl_FUNC_VASPRINTF
