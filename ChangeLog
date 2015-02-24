@@ -1,3 +1,8 @@
+2015-02-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infomap.c (fetch_user_maps): Print an error message if 
+	couldn't open init file specified with --init-file.
+
 2015-02-24  Eli Zaretskii  <eliz@gnu.org>
 
 	* info/terminal.c [HAVE_NCURSES_TERMCAP_H && __MINGW32__]: Don't
