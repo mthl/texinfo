@@ -1,3 +1,9 @@
+2015-02-24  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/terminal.c [HAVE_NCURSES_TERMCAP_H && __MINGW32__]: Don't
+	include ncurses/termcap.h on MinGW, even if it's available, to
+	avoid a useless run-time dependency on the ncurses shared library.
+
 2015-02-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi: Remove obsolete note about running

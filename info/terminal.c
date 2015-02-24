@@ -30,12 +30,15 @@
 #include <signal.h>
 
 /* The Unix termcap interface code. */
-#ifdef HAVE_NCURSES_TERMCAP_H
+/* With MinGW, if the user has ncurses installed, including
+   ncurses/termcap.h will cause the Info binary depend on the ncurses
+   DLL, just because BC and PC are declared there, although they are
+   never used in the MinGW build.  Avoid that useless dependency.  */
+#if defined (HAVE_NCURSES_TERMCAP_H) && !defined (__MINGW32__)
 #include <ncurses/termcap.h>
-#else
-#ifdef HAVE_TERMCAP_H
+#elif defined (HAVE_TERMCAP_H)
 #include <termcap.h>
-#else
+#else  /* (!HAVE_NCURSES_TERMCAP_H || __MINGW32__) && !HAVE_TERMCAP_H */
 /* On Solaris2, sys/types.h #includes sys/reg.h, which #defines PC.
    Unfortunately, PC is a global variable used by the termcap library. */
 #undef PC
@@ -47,7 +50,6 @@ short ospeed; /* Terminal output baud rate */
 extern int tgetnum (), tgetflag (), tgetent ();
 extern char *tgetstr (), *tgoto ();
 extern int tputs ();
-#endif /* not HAVE_TERMCAP_H */
 #endif /* not HAVE_NCURSES_TERMCAP_H */
 
 /* Function "hooks".  If you make one of these point to a function, that
