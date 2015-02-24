@@ -93,6 +93,7 @@ one of the relevant sections:
   . new translation ca (catalan).
   . automake-1.15, gettext-0.19.4.
 
+
 5.2 (26 September 2013)
 * Language:
   . new commands @inlinefmtifelse, @inlineifset, @inlineifclear, for

@@ -64,9 +64,6 @@ developing GNU and promoting software freedom.''
 * texindex: (texinfo)Format with tex/texindex.  Sort Texinfo index files.
 @end direntry
 
-@c Before release, run C-u C-c C-u C-a (texinfo-all-menus-update with a
-@c prefix arg).  This updates the node pointers, which texinfmt.el needs.
-
 @c Set smallbook if printing in smallbook format so the example of the
 @c smallbook font is actually written using smallbook; in bigbook, a kludge
 @c is used for TeX output.  Do this through the -t option to texi2dvi,
