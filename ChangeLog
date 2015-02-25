@@ -1,3 +1,9 @@
+2015-02-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/man.c (get_manpage_from_formatter)
+	[PIPE_USE_FORK, !PIPE_USE_FORK]: If exit status of "man" command 
+	is non-zero, throw away its output.  Report from Eli Zaretskii.
+
 2015-02-25  Eli Zaretskii  <eliz@gnu.org>
 
 	* info/pcterm.c (w32_info_prep, w32_info_unprep, w32_cleanup)

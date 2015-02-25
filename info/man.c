@@ -323,6 +323,7 @@ get_manpage_from_formatter (char *formatter_args[])
   char *formatted_page = NULL;
   int pipes[2];
   pid_t child;
+  int formatter_status = 0;
 
   /* Open a pipe to this program, read the output, and save it away
      in FORMATTED_PAGE.  The reader end of the pipe is pipes[0]; the
@@ -341,7 +342,7 @@ get_manpage_from_formatter (char *formatter_args[])
       close (pipes[1]);
       formatted_page = read_from_fd (pipes[0]);
       close (pipes[0]);
-      wait (NULL); /* Wait for child process to exit. */
+      wait (&formatter_status); /* Wait for child process to exit. */
     }
   else
     { /* In the child, close the read end of the pipe, make the write end
@@ -387,14 +388,16 @@ get_manpage_from_formatter (char *formatter_args[])
     if (fpipe == 0)
       return NULL;
     formatted_page = read_from_fd (fileno (fpipe));
-    if (pclose (fpipe) == -1)
-      {
-	if (formatted_page)
-	  free (formatted_page);
-	return NULL;
-      }
+    formatter_status = pclose (fpipe);
   }
 #endif /* !PIPE_USE_FORK */
+
+  if (formatter_status != 0) /* Check for failure. */
+    {
+      if (formatted_page)
+        free (formatted_page);
+      return NULL;
+    }
 
   /* If we have the page, then clean it up. */
   if (formatted_page)
