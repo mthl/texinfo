@@ -1,3 +1,13 @@
+2015-02-25  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/pcterm.c (w32_info_prep, w32_info_unprep, w32_cleanup)
+	(gettextinfo, textattr, ScreenGetCursor, ScreenSetCursor)
+	(ScreenClear, clreol, ScreenVisualBell, movetext, ScreenRows)
+	(ScreenCols, _set_screen_lines, w32_set_screen_dimensions)
+	(pc_put_text, pc_write_chars, pc_unprep_terminal) [_WIN32]: Do the
+	minimum (mostly, nothing) when not connected to the terminal
+	device.
+
 2015-02-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infomap.c (fetch_user_maps): Print an error message if 

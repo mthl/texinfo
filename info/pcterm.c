@@ -106,35 +106,44 @@ static unsigned const char * find_sequence (int);
 void
 w32_info_prep (void)
 {
-  SetConsoleActiveScreenBuffer (hinfo);
-  current_attr = norm_attr;
-  hscreen = hinfo;
-  SetConsoleMode (hstdin, ENABLE_WINDOW_INPUT);
-  GetConsoleMode (hscreen, &old_outpmode);
-  SetConsoleMode (hscreen, old_outpmode & ~ENABLE_WRAP_AT_EOL_OUTPUT);
+  if (hinfo != INVALID_HANDLE_VALUE)
+    {
+      SetConsoleActiveScreenBuffer (hinfo);
+      current_attr = norm_attr;
+      hscreen = hinfo;
+      SetConsoleMode (hstdin, ENABLE_WINDOW_INPUT);
+      GetConsoleMode (hscreen, &old_outpmode);
+      SetConsoleMode (hscreen, old_outpmode & ~ENABLE_WRAP_AT_EOL_OUTPUT);
+    }
 }
 
 void
 w32_info_unprep (void)
 {
-  SetConsoleActiveScreenBuffer (hstdout);
-  current_attr = outside_info.normattr;
-  hscreen = hstdout;
-  SetConsoleMode (hstdin, old_inpmode);
+  if (hinfo != INVALID_HANDLE_VALUE)
+    {
+      SetConsoleActiveScreenBuffer (hstdout);
+      current_attr = outside_info.normattr;
+      hscreen = hstdout;
+      SetConsoleMode (hstdin, old_inpmode);
+    }
 }
 
 void
 w32_cleanup (void)
 {
-  COORD cursor_pos;
+  if (hinfo != INVALID_HANDLE_VALUE)
+    {
+      COORD cursor_pos;
 
-  /* Restore the original position of the cursor.  */
-  cursor_pos.X = outside_info.curx;
-  cursor_pos.Y = outside_info.cury;
-  SetConsoleCursorPosition (hstdout, cursor_pos);
+      /* Restore the original position of the cursor.  */
+      cursor_pos.X = outside_info.curx;
+      cursor_pos.Y = outside_info.cury;
+      SetConsoleCursorPosition (hstdout, cursor_pos);
 
-  /* Close the input handle we created.  */
-  CloseHandle (hinfo);
+      /* Close the input handle we created.  */
+      CloseHandle (hinfo);
+    }
 }
 
 static void w32_info_init (void) __attribute__((constructor));
@@ -154,52 +163,63 @@ gettextinfo (struct text_info *ti)
 {
   CONSOLE_SCREEN_BUFFER_INFO csbi;
   static TCHAR errbuf[500];
+  DWORD ignored;
 
   hstdin = GetStdHandle (STD_INPUT_HANDLE);
   hstdout = GetStdHandle (STD_OUTPUT_HANDLE);
-  hinfo = CreateConsoleScreenBuffer (GENERIC_READ | GENERIC_WRITE,
-				     FILE_SHARE_READ | FILE_SHARE_WRITE,
-				     NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
 
   if (hstdin != INVALID_HANDLE_VALUE
       && hstdout != INVALID_HANDLE_VALUE
-      && hinfo != INVALID_HANDLE_VALUE
-      && GetConsoleMode (hstdin, &old_inpmode)
-      && GetConsoleScreenBufferInfo (hstdout, &csbi))
+      && GetConsoleMode (hstdout, &ignored)
+      && GetConsoleMode (hstdin, &old_inpmode))
     {
-      ti->normattr = csbi.wAttributes;
-      ti->winleft = 1;
-      ti->wintop = 1;
-      ti->winright = csbi.srWindow.Right + 1;
-      ti->winbottom = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
-      ti->attribute = csbi.wAttributes;
-      ti->screenheight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
-      ti->screenwidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-      ti->curx = csbi.dwCursorPosition.X;
-      ti->cury = csbi.dwCursorPosition.Y;
-      ti->bufsize = csbi.dwSize;
+      hinfo = CreateConsoleScreenBuffer (GENERIC_READ | GENERIC_WRITE,
+					 FILE_SHARE_READ | FILE_SHARE_WRITE,
+					 NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
+      if (hinfo != INVALID_HANDLE_VALUE
+	  && GetConsoleScreenBufferInfo (hstdout, &csbi))
+	{
+	  ti->normattr = csbi.wAttributes;
+	  ti->winleft = 1;
+	  ti->wintop = 1;
+	  ti->winright = csbi.srWindow.Right + 1;
+	  ti->winbottom = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+	  ti->attribute = csbi.wAttributes;
+	  ti->screenheight = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+	  ti->screenwidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+	  ti->curx = csbi.dwCursorPosition.X;
+	  ti->cury = csbi.dwCursorPosition.Y;
+	  ti->bufsize = csbi.dwSize;
 
-      atexit (w32_cleanup);
+	  atexit (w32_cleanup);
+	}
+      else
+	{
+	  DWORD error_no = GetLastError ();
+
+	  if (!FormatMessage (FORMAT_MESSAGE_FROM_SYSTEM, NULL,
+			      error_no,
+			      0, /* choose most suitable language */
+			      errbuf, sizeof (errbuf), NULL))
+	    sprintf (errbuf, "w32 error %u", error_no);
+	  CloseHandle (hinfo);
+	  info_error (_("Terminal cannot be initialized: %s\n"), errbuf);
+	  exit (1);
+	}
     }
   else
     {
-      DWORD error_no = GetLastError ();
-
-      if (!FormatMessage (FORMAT_MESSAGE_FROM_SYSTEM, NULL,
-			  error_no,
-			  0, /* choose most suitable language */
-			  errbuf, sizeof (errbuf), NULL))
-	sprintf (errbuf, "w32 error %u", error_no);
-      CloseHandle (hinfo);
-      info_error (_("Terminal cannot be initialized: %s\n"), errbuf);
-      exit (1);
+      /* We were invoked non-interactively.  Do the minimum we must.   */
+      ti->screenheight = 24;
+      ti->screenwidth = 80;
     }
 }
 
 void
 textattr (int attr)
 {
-  SetConsoleTextAttribute (hscreen, attr);
+  if (hscreen != INVALID_HANDLE_VALUE)
+    SetConsoleTextAttribute (hscreen, attr);
 }
 
 void
@@ -213,144 +233,188 @@ ScreenGetCursor (int *row, int *col)
 {
   CONSOLE_SCREEN_BUFFER_INFO csbi;
 
-  GetConsoleScreenBufferInfo (hscreen, &csbi);
-  *row = csbi.dwCursorPosition.Y;
-  *col = csbi.dwCursorPosition.X;
+  if (hscreen == INVALID_HANDLE_VALUE)
+    *row = *col = 0;
+  else
+    {
+      GetConsoleScreenBufferInfo (hscreen, &csbi);
+      *row = csbi.dwCursorPosition.Y;
+      *col = csbi.dwCursorPosition.X;
+    }
 }
 
 void
 ScreenSetCursor (int row, int col)
 {
-  COORD cursor_pos;
+  if (hscreen != INVALID_HANDLE_VALUE)
+    {
+      COORD cursor_pos;
 
-  cursor_pos.X = col;
-  cursor_pos.Y = row;
+      cursor_pos.X = col;
+      cursor_pos.Y = row;
 
-  SetConsoleCursorPosition (hscreen, cursor_pos);
+      SetConsoleCursorPosition (hscreen, cursor_pos);
+    }
 }
 
 void
 ScreenClear (void)
 {
-  DWORD nchars = screenwidth * screenheight;
-  COORD start_pos;
-  DWORD written;
+  if (hscreen != INVALID_HANDLE_VALUE)
+    {
+      DWORD nchars = screenwidth * screenheight;
+      COORD start_pos;
+      DWORD written;
 
-  start_pos.X = start_pos.Y = 0;
-  FillConsoleOutputAttribute (hscreen, norm_attr, nchars, start_pos, &written);
-  FillConsoleOutputCharacter (hscreen, ' ', nchars, start_pos, &written);
+      start_pos.X = start_pos.Y = 0;
+      FillConsoleOutputAttribute (hscreen, norm_attr, nchars, start_pos,
+				  &written);
+      FillConsoleOutputCharacter (hscreen, ' ', nchars, start_pos, &written);
+    }
 }
 
 void
 clreol (void)
 {
-  DWORD nchars;
-  COORD start_pos;
-  DWORD written;
-  CONSOLE_SCREEN_BUFFER_INFO csbi;
+  if (hscreen != INVALID_HANDLE_VALUE)
+    {
+      DWORD nchars;
+      COORD start_pos;
+      DWORD written;
+      CONSOLE_SCREEN_BUFFER_INFO csbi;
 
-  GetConsoleScreenBufferInfo (hscreen, &csbi);
-  start_pos = csbi.dwCursorPosition;
-  nchars = csbi.dwSize.X - start_pos.X;
+      GetConsoleScreenBufferInfo (hscreen, &csbi);
+      start_pos = csbi.dwCursorPosition;
+      nchars = csbi.dwSize.X - start_pos.X;
 
-  FillConsoleOutputAttribute (hscreen, current_attr, nchars, start_pos,
-			      &written);
-  FillConsoleOutputCharacter (hscreen, ' ', nchars, start_pos, &written);
+      FillConsoleOutputAttribute (hscreen, current_attr, nchars, start_pos,
+				  &written);
+      FillConsoleOutputCharacter (hscreen, ' ', nchars, start_pos, &written);
+    }
 }
 
 void
 ScreenVisualBell (void)
 {
-  DWORD nchars = screenwidth * screenheight;
-  COORD start_pos;
-  DWORD written;
-  PWORD attr;
-  DWORD i;
+  if (hscreen != INVALID_HANDLE_VALUE)
+    {
+      DWORD nchars = screenwidth * screenheight;
+      COORD start_pos;
+      DWORD written;
+      PWORD attr;
+      DWORD i;
 
-  start_pos.X = start_pos.Y = 0;
-  attr = xmalloc (nchars * sizeof (WORD));
-  ReadConsoleOutputAttribute (hscreen, attr, nchars, start_pos, &written);
-  for (i = 0; i < nchars; ++i)
-    attr[i] ^= norm_attr ^ inv_attr;
-  WriteConsoleOutputAttribute (hscreen, attr, nchars, start_pos, &written);
-  Sleep (50);
-  for (i = 0; i < nchars; ++i)
-    attr[i] ^= norm_attr ^ inv_attr;
-  WriteConsoleOutputAttribute (hscreen, attr, nchars, start_pos, &written);
-  free (attr);
+      start_pos.X = start_pos.Y = 0;
+      attr = xmalloc (nchars * sizeof (WORD));
+      ReadConsoleOutputAttribute (hscreen, attr, nchars, start_pos, &written);
+      for (i = 0; i < nchars; ++i)
+	attr[i] ^= norm_attr ^ inv_attr;
+      WriteConsoleOutputAttribute (hscreen, attr, nchars, start_pos, &written);
+      Sleep (50);
+      for (i = 0; i < nchars; ++i)
+	attr[i] ^= norm_attr ^ inv_attr;
+      WriteConsoleOutputAttribute (hscreen, attr, nchars, start_pos, &written);
+      free (attr);
+    }
+  else
+    {
+      printf ("%c", '\a');
+      fflush (stdout);
+    }
 }
 
 int
 movetext(int left, int top, int right, int bottom, int destleft, int desttop)
 {
-  SMALL_RECT src;
-  COORD dest;
-  CHAR_INFO fill;
+  if (hscreen != INVALID_HANDLE_VALUE)
+    {
+      SMALL_RECT src;
+      COORD dest;
+      CHAR_INFO fill;
 
-  src.Left = left - 1;
-  src.Top = top - 1;
-  src.Right = right - 1;
-  src.Bottom = bottom - 1;
+      src.Left = left - 1;
+      src.Top = top - 1;
+      src.Right = right - 1;
+      src.Bottom = bottom - 1;
 
-  dest.X = destleft - 1;
-  dest.Y = desttop - 1;
+      dest.X = destleft - 1;
+      dest.Y = desttop - 1;
 
-  fill.Attributes = norm_attr;
-  fill.Char.AsciiChar = (CHAR)' ';
+      fill.Attributes = norm_attr;
+      fill.Char.AsciiChar = (CHAR)' ';
 
-  return ScrollConsoleScreenBuffer (hscreen, &src , NULL, dest, &fill) != 0;
+      return ScrollConsoleScreenBuffer (hscreen, &src , NULL, dest, &fill) != 0;
+    }
+  else
+    return 0;
 }
 
 int
 ScreenRows (void)
 {
-  CONSOLE_SCREEN_BUFFER_INFO csbi;
+  if (hscreen != INVALID_HANDLE_VALUE)
+    {
+      CONSOLE_SCREEN_BUFFER_INFO csbi;
 
-  GetConsoleScreenBufferInfo (hscreen, &csbi);
-  return csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+      GetConsoleScreenBufferInfo (hscreen, &csbi);
+      return csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
+    }
+  else
+    return 24;
 }
 
 int
 ScreenCols (void)
 {
-  CONSOLE_SCREEN_BUFFER_INFO csbi;
+  if (hscreen != INVALID_HANDLE_VALUE)
+    {
+      CONSOLE_SCREEN_BUFFER_INFO csbi;
 
-  GetConsoleScreenBufferInfo (hscreen, &csbi);
-  return csbi.srWindow.Right - csbi.srWindow.Left + 1;
+      GetConsoleScreenBufferInfo (hscreen, &csbi);
+      return csbi.srWindow.Right - csbi.srWindow.Left + 1;
+    }
+  else
+    return 80;
 }
 
 void
 _set_screen_lines (int lines)
 {
-  SMALL_RECT window_rectangle;
-  CONSOLE_SCREEN_BUFFER_INFO csbi;
-  COORD scrbufsize;
+  if (hscreen != INVALID_HANDLE_VALUE)
+    {
+      SMALL_RECT window_rectangle;
+      CONSOLE_SCREEN_BUFFER_INFO csbi;
+      COORD scrbufsize;
 
-  GetConsoleScreenBufferInfo (hscreen, &csbi);
+      GetConsoleScreenBufferInfo (hscreen, &csbi);
 
-  window_rectangle = csbi.srWindow;
-  window_rectangle.Bottom = window_rectangle.Top + lines - 1;
-  SetConsoleWindowInfo (hscreen, TRUE, &window_rectangle);
+      window_rectangle = csbi.srWindow;
+      window_rectangle.Bottom = window_rectangle.Top + lines - 1;
+      SetConsoleWindowInfo (hscreen, TRUE, &window_rectangle);
 
-  /* Set the screen buffer size to the same dimensions as the window,
-     so that the dysfunctional scroll bar disappears.  */
-  scrbufsize.X = window_rectangle.Right - window_rectangle.Left + 1;
-  scrbufsize.Y = window_rectangle.Bottom - window_rectangle.Top + 1;
-  SetConsoleScreenBufferSize (hscreen, scrbufsize);
+      /* Set the screen buffer size to the same dimensions as the window,
+	 so that the dysfunctional scroll bar disappears.  */
+      scrbufsize.X = window_rectangle.Right - window_rectangle.Left + 1;
+      scrbufsize.Y = window_rectangle.Bottom - window_rectangle.Top + 1;
+      SetConsoleScreenBufferSize (hscreen, scrbufsize);
+    }
 }
 
 void
 w32_set_screen_dimensions (int cols, int rows)
 {
-  SMALL_RECT window_rectangle;
-  CONSOLE_SCREEN_BUFFER_INFO csbi;
+  if (hscreen != INVALID_HANDLE_VALUE)
+    {
+      SMALL_RECT window_rectangle;
+      CONSOLE_SCREEN_BUFFER_INFO csbi;
 
-  GetConsoleScreenBufferInfo (hscreen, &csbi);
+      GetConsoleScreenBufferInfo (hscreen, &csbi);
 
-  window_rectangle = csbi.srWindow;
-  window_rectangle.Bottom = window_rectangle.Top + rows - 1;
-  window_rectangle.Right = window_rectangle.Left + cols - 1;
-  SetConsoleWindowInfo (hscreen, TRUE, &window_rectangle);
+      window_rectangle = csbi.srWindow;
+      window_rectangle.Bottom = window_rectangle.Top + rows - 1;
+      window_rectangle.Right = window_rectangle.Left + cols - 1;
+      SetConsoleWindowInfo (hscreen, TRUE, &window_rectangle);
+    }
 }
 
 /* Emulate `sleep'.  */
@@ -763,6 +827,8 @@ pc_put_text (string)
   if (speech_friendly)
     fputs (string, stdout);
 #ifdef __MINGW32__
+  else if (hscreen == INVALID_HANDLE_VALUE)
+    fputs (string, stdout);
   else if (output_cp == CP_UTF8 || output_cp == CP_UTF7)
     write_utf (output_cp, string, -1);
 #endif
@@ -796,6 +862,8 @@ pc_write_chars (string, nchars)
   if (speech_friendly)
     printf ("%.*s", nchars, string);
 #ifdef __MINGW32__
+  else if (hscreen == INVALID_HANDLE_VALUE)
+    printf ("%.*s", nchars, string);
   else if (output_cp == CP_UTF8 || output_cp == CP_UTF7)
     write_utf (output_cp, string, nchars);
 #endif
@@ -885,7 +953,8 @@ pc_unprep_terminal (void)
     pc_clear_to_eol ();	/* for text attributes to really take effect */
 #endif
 #ifdef _WIN32
-  SetConsoleScreenBufferSize (hstdout, outside_info.bufsize);
+  if (hscreen != INVALID_HANDLE_VALUE)
+    SetConsoleScreenBufferSize (hstdout, outside_info.bufsize);
 #endif
 
   /* Switch back to text mode on stdin.  */
