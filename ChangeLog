@@ -1,5 +1,13 @@
 2015-02-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* configure.ac: Check for posix_openpt in AC_CHECK_FUNCS, and 
+	set automake conditional "have_ptys" depending on result.
+	* info/Makefile.am (check_PROGRAMS): Build of "pseudotty" 
+	dependent upon "have_ptys".
+	* info/t/Init-inter.inc: Skip test if pseudotty not built.
+
+2015-02-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/man.c (get_manpage_from_formatter)
 	[PIPE_USE_FORK, !PIPE_USE_FORK]: If exit status of "man" command 
 	is non-zero, throw away its output.  Report from Eli Zaretskii.

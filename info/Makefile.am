@@ -78,8 +78,10 @@ BUILT_SOURCES = funs.h
 
 # Test suite
 
+if have_ptys
 check_PROGRAMS = pseudotty
 pseudotty_SOURCES = pseudotty.c
+endif
 
 TESTS = \
 	t/file.sh \

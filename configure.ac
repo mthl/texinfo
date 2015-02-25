@@ -167,8 +167,11 @@ AC_FUNC_VPRINTF
 # that anyone compiling new texinfo still has such a thing? we'll see.
 # AC_FUNC_SETVBUF_REVERSED
 AC_CHECK_FUNCS(bzero getcwd memset setlocale setvbuf sigaction sigprocmask \
-               sigsetmask strchr)
+	       sigsetmask strchr posix_openpt)
 AC_REPLACE_FUNCS(memcpy memmove strdup strerror)
+
+# Used for Info tests
+AM_CONDITIONAL([have_ptys], [test x$ac_cv_func_posix_openpt = xyes])
 
 # We want to recognize djgpp to avoid the useless warning about no
 # term library.

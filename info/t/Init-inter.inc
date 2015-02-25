@@ -16,6 +16,9 @@
 # Initialize test of interactive operation
 # This file is to be sourced, not run directly
 
+# Skip test if pseudotty wasn't built
+test -x pseudotty || exit 77
+
 #  we may look up whether a couple of utilities exist.
 
 # Systems which define $COMSPEC or $ComSpec use semicolons to separate
