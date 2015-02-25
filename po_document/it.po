@@ -1,14 +1,14 @@
 # Italian translations of resulting document strings.
 # Copyright (C) 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
-# Federico Bruni <fedelogy@gmail.com>, 2013.
+# Federico Bruni <fedelogy@gmail.com>, 2013, 2015.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo_document 5.0\n"
+"Project-Id-Version: texinfo_document 5.9.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2015-02-22 16:21-0800\n"
-"PO-Revision-Date: 2013-03-24 11:22+0100\n"
+"PO-Revision-Date: 2015-02-24 21:36+0100\n"
 "Last-Translator: Federico Bruni <fedelogy@gmail.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.5\n"
+"X-Generator: Gtranslator 2.91.6\n"
 
 #: tp/Texinfo/Common.pm:714 tp/Texinfo/Common.pm:719
 msgid "Function"
@@ -313,22 +313,22 @@ msgstr "@tie{ }-- {category}: {type} {name}"
 #: tp/Texinfo/Convert/Plaintext.pm:2837
 #, perl-brace-format
 msgid "@tie{ }-- {category} of {class}: {name} {arguments}"
-msgstr "@tie{ }-- {category} of {class}: {name} {arguments}"
+msgstr "@tie{ }-- {category} di {class}: {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2843
 #, perl-brace-format
 msgid "@tie{ }-- {category} of {class}: {name}"
-msgstr "@tie{ }-- {category} of {class}: {name}"
+msgstr "@tie{ }-- {category} di {class}: {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2852
 #, perl-brace-format
 msgid "@tie{ }-- {category} on {class}: {name} {arguments}"
-msgstr "@tie{ }-- {category} on {class}: {name} {arguments}"
+msgstr "@tie{ }-- {category} su {class}: {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2858
 #, perl-brace-format
 msgid "@tie{ }-- {category} on {class}: {name}"
-msgstr "@tie{ }-- {category} on {class}: {name}"
+msgstr "@tie{ }-- {category} su {class}: {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2873
 #, perl-brace-format
@@ -762,16 +762,13 @@ msgstr "{category} su {class}: @strong{{name}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4117
 #, perl-brace-format
-msgid ""
-"{category} on {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} su {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+msgid "{category} on {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+msgstr "{category} su {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4121
 #, perl-brace-format
 msgid "{category} on {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} su {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
+msgstr "{category} su {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4132
 #, perl-brace-format
@@ -785,16 +782,13 @@ msgstr "{category} su {class}: @emph{{type}} @strong{{name}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4150
 #, perl-brace-format
-msgid ""
-"{category} of {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} di {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+msgid "{category} of {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
+msgstr "{category} di {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4154
 #, perl-brace-format
 msgid "{category} of {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
-msgstr ""
-"{category} di {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
+msgstr "{category} di {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/HTML.pm:4165
 #, perl-brace-format
@@ -808,12 +802,8 @@ msgstr "{category} di {class}: @emph{{type}} @strong{{name}}"
 
 #: tp/Texinfo/Convert/HTML.pm:6096
 #, perl-brace-format
-msgid ""
-"This document was generated on @emph{@today{}} using "
-"@uref{{program_homepage}, @emph{{program}}}."
-msgstr ""
-"Questo documento è stato generato il @emph{@today{}} con "
-"@uref{{program_homepage}, @emph{{program}}}."
+msgid "This document was generated on @emph{@today{}} using @uref{{program_homepage}, @emph{{program}}}."
+msgstr "Questo documento è stato generato il @emph{@today{}} con @uref{{program_homepage}, @emph{{program}}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6101
 msgid "This document was generated on @emph{@today{}}."
@@ -831,8 +821,7 @@ msgstr "Il nodo cercato è {href}."
 
 #: tp/Texinfo/Convert/HTML.pm:6353
 msgid "  The buttons in the navigation panels have the following meaning:"
-msgstr ""
-"  I pulsanti nei pannelli di navigazione hanno il seguente significato:"
+msgstr "  I pulsanti nei pannelli di navigazione hanno il seguente significato:"
 
 #: tp/Texinfo/Convert/HTML.pm:6359
 msgid "Button"
@@ -851,14 +840,8 @@ msgid "From 1.2.3 go to"
 msgstr "Da 1.2.3 vai a"
 
 #: tp/Texinfo/Convert/HTML.pm:6388
-msgid ""
-"  where the @strong{ Example } assumes that the current position is at "
-"@strong{ Subsubsection One-Two-Three } of a document of the following "
-"structure:"
-msgstr ""
-"  dove @strong{ Esempio } assume che l'attuale posizione è alla "
-"@strong{ Sottosottosezione Uno-Due-Tre } di un documento che ha la seguente "
-"struttura:"
+msgid "  where the @strong{ Example } assumes that the current position is at @strong{ Subsubsection One-Two-Three } of a document of the following structure:"
+msgstr "  dove @strong{ Esempio } assume che l'attuale posizione è alla @strong{ Sottosottosezione Uno-Due-Tre } di un documento che ha la seguente struttura:"
 
 #: tp/Texinfo/Convert/HTML.pm:6398
 msgid "Section One"
