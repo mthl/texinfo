@@ -1,3 +1,10 @@
+2015-02-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (display_startup_message): Startup message 
+	changed.  Note added for translators.
+	* po/Makevars (XGETTEXT_OPTIONS): Add -cTRANSLATORS flag.
+	* po/POTFILES.in: Add info/infomap.c.
+
 2015-02-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* configure.ac: Check for posix_openpt in AC_CHECK_FUNCS, and 

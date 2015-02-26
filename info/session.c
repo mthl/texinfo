@@ -184,7 +184,9 @@ display_startup_message (void)
   char *format;
 
   format = replace_in_documentation
-(_("Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item, \\[get-info-help-node] for tutorial."),
+  /* TRANSLATORS: This message should fit within 79 characters, otherwise
+     anything after the 80th character will not be displayed. */
+(_("Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-help-node] for tutorial."),
      0);
 
   window_message_in_echo_area (format, VERSION, NULL);

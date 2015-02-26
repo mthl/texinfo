@@ -20,6 +20,7 @@ info/indices.h
 info/info-utils.c
 info/info.c
 info/infodoc.c
+info/infomap.c
 info/infokey.c
 info/m-x.c
 info/makedoc.c
