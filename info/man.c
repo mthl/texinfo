@@ -392,16 +392,32 @@ get_manpage_from_formatter (char *formatter_args[])
   }
 #endif /* !PIPE_USE_FORK */
 
+  if (!formatted_page)
+    return 0;
+
   if (formatter_status != 0) /* Check for failure. */
     {
-      if (formatted_page)
-        free (formatted_page);
-      return NULL;
+      int i;
+      char *p;
+      /* It is possible for "man -a" to output a man page and still to exit 
+         with a non-zero status.  This was found to happen when duplicate man 
+         pages were found.  Hence, still treat it as a success if more than 
+         three lines were output.  (A small amount of output could be error 
+         messages that were sent to standard output.) */
+      p = formatted_page;
+      for (i = 0; i < 3; i++)
+        {
+          p = strchr (p, '\n');
+          if (!p)
+            {
+              free (formatted_page);
+              return NULL;
+            }
+        }
     }
 
   /* If we have the page, then clean it up. */
-  if (formatted_page)
-    clean_manpage (formatted_page);
+  clean_manpage (formatted_page);
 
   return formatted_page;
 }

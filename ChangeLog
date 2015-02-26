@@ -5,6 +5,11 @@
 
 2015-02-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/man.c (get_manpage_from_formatter): Accept output of 
+	"man" despite a failing exit status if it is long enough.
+
+2015-02-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (display_startup_message): Startup message 
 	changed.  Note added for translators.
 	* po/Makevars (XGETTEXT_OPTIONS): Add -cTRANSLATORS flag.
