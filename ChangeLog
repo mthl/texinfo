@@ -1,3 +1,8 @@
+2015-02-26  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/tests/t/stdout.sh, tp/tests/t/stdout_split.sh: use $PERL
+	from defs to call texi2any.pl.  Report from Eli Zaretskii.
+
 2015-02-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (display_startup_message): Startup message 
