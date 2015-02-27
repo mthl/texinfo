@@ -700,48 +700,48 @@ open_possibly_compressed_file (char *filename,
     opened_filename = &local_opened_filename;
 
   *opened_filename = filename;
-  f = freopen (*opened_filename, FOPEN_RBIN, stdin);
+  f = fopen (*opened_filename, FOPEN_RBIN);
   if (!f)
     {
       *opened_filename = concat (filename, ".gz", "");
-      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
+      f = fopen (*opened_filename, FOPEN_RBIN);
     }
   if (!f)
     {
       free (*opened_filename);
       *opened_filename = concat (filename, ".xz", "");
-      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
+      f = fopen (*opened_filename, FOPEN_RBIN);
     }
   if (!f)
     {
       free (*opened_filename);
       *opened_filename = concat (filename, ".bz2", "");
-      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
+      f = fopen (*opened_filename, FOPEN_RBIN);
     }
   if (!f)
     {
       free (*opened_filename);
       *opened_filename = concat (filename, ".lz", "");
-      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
+      f = fopen (*opened_filename, FOPEN_RBIN);
     }
   if (!f)
     {
      free (*opened_filename);
      *opened_filename = concat (filename, ".lzma", "");
-     f = freopen (*opened_filename, FOPEN_RBIN, stdin);
+     f = fopen (*opened_filename, FOPEN_RBIN);
     }
 #ifdef __MSDOS__
   if (!f)
     {
       free (*opened_filename);
       *opened_filename = concat (filename, ".igz", "");
-      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
+      f = fopen (*opened_filename, FOPEN_RBIN);
     }
   if (!f)
     {
       free (*opened_filename);
       *opened_filename = concat (filename, ".inz", "");
-      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
+      f = fopen (*opened_filename, FOPEN_RBIN);
     }
 #endif /* __MSDOS__ */
   if (!f)
@@ -757,7 +757,7 @@ open_possibly_compressed_file (char *filename,
           (*create_callback) (filename);
 
           /* And try opening it again.  */
-          f = freopen (*opened_filename, FOPEN_RBIN, stdin);
+          f = fopen (*opened_filename, FOPEN_RBIN);
           if (!f)
             return 0;
         }
@@ -843,6 +843,9 @@ open_possibly_compressed_file (char *filename,
 
   if (*compression_program)
     { /* It's compressed, so open a pipe.  */
+      f = freopen (*opened_filename, FOPEN_RBIN, stdin);
+      if (!f)
+        return 0;
       char *command = concat (*compression_program, " -d", "");
       f = popen (command, "r");
       if (! f)
