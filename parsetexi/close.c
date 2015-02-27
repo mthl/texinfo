@@ -70,8 +70,8 @@ close_current (ELEMENT *current)
     }
   else if (current->type != ET_NONE)
     {
-      debug ("CLOSING type %s", element_type_names[current->type]);
       enum context c;
+      debug ("CLOSING type %s", element_type_names[current->type]);
       switch (current->type)
         {
         case ET_bracketed:

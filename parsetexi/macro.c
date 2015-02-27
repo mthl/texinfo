@@ -23,6 +23,7 @@
 #include "tree.h"
 #include "text.h"
 #include "input.h"
+#include "errors.h"
 
 typedef struct {
     char *macro_name;
@@ -213,8 +214,8 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
           line = new_line ();
           if (!line)
             {
-              line_error ("@%s missing close brace", 
-                          command_data(cmd).cmdname);
+              line_errorf ("@%s missing close brace", 
+                           command_data(cmd).cmdname);
               line = "\n";
               goto funexit;
             }

@@ -30,8 +30,8 @@ enum context {
 
 /* Contexts where an empty line doesn't start a new paragraph. */
 /* line 492 */
-#define in_no_paragraph_contexts(c) \
-  ((c) == ct_math \
+#define in_paragraph_context(c) \
+  !((c) == ct_math \
    || (c) == ct_menu \
    || (c) == ct_def \
    || (c) == ct_preformatted \

@@ -335,12 +335,27 @@ parse_line_command_args (ELEMENT *line_command)
       {
         char *name = 0;
         char *p = line;
-        if (!isalnum (*p))
-          goto defindex_invalid;
 
         name = read_command_name (&p);
         if (*p)
           goto defindex_invalid; /* Trailing characters. */
+
+        /* Disallow index names NAME where it is likely that for
+           a source file BASE.texi, there will be other files called
+           BASE.NAME in the same directory.  This is to prevent such
+           files being overwritten by the files produced by texindex. */
+        {
+          /* TODO: Also forbid existing index names. */
+          static char *forbidden_index_names[] = {
+            "info", "ps", "pdf", "htm", "html",
+            "log", "aux", "dvi", "texi", "txi",
+            "texinfo", "tex", "bib", 0
+          };
+          char **ptr;
+          for (ptr = forbidden_index_names; *ptr; ptr++)
+            if (!strcmp (name, *ptr))
+              goto defindex_reserved;
+        }
 
         ADD_ARG (name);
         /* TODO: Store the index. */
@@ -348,6 +363,9 @@ parse_line_command_args (ELEMENT *line_command)
       defindex_invalid:
         line_errorf ("bad argument to @%s: %s",
                      command_data(command).cmdname, line);
+        break;
+      defindex_reserved:
+        line_errorf ("reserved index name %s", name);
         break;
       }
     case CM_synindex:
@@ -1110,7 +1128,7 @@ end_line (ELEMENT *current)
           add_to_element_contents (current, e);
         }
       //else if () // in menu_entry_description
-      else if (!in_no_paragraph_contexts (current_context ()))
+      else if (in_paragraph_context (current_context ()))
         {
           current = end_paragraph (current);
         }

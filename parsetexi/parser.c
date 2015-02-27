@@ -55,32 +55,19 @@ looking_at (char *s1, char *s2)
 char *
 read_command_name (char **ptr)
 {
-  char *p = *ptr;
+  char *p = *ptr, *q;
   char *ret = 0;
 
-  /* List of single character Texinfo commands. */
-  if (strchr ("([\"'~@}{,.!?"
-              " \f\n\r\t" /* \s in Perl */
-              "*-^`=:|/\\",
-          *p))
-    {
-      ret = malloc (2);
-      ret[0] = *p++;
-      ret[1] = '\0';
-    }
-  else
-    {
-      /* Look for a sequence of alphanumeric characters or hyphens, where the
-         first isn't a hyphen. */
-      char *q = p;
-      if (!isalnum (*q))
-        return 0; /* Invalid. */
+  /* Look for a sequence of alphanumeric characters or hyphens, where the
+     first isn't a hyphen. */
+  q = p;
+  if (!isalnum (*q))
+    return 0; /* Invalid. */
 
-      while (isalnum (*++q) || *q == '-')
-        ;
-      ret = strndup (p, q - p);
-      p = q;
-    }
+  while (isalnum (*q) || *q == '-')
+    q++;
+  ret = strndup (p, q - p);
+  p = q;
 
   *ptr = p;
   return ret;
@@ -200,7 +187,7 @@ begin_paragraph_p (ELEMENT *current)
            || current->type == ET_text_root
            || current->type == ET_document_root
            || current->type == ET_brace_command_context)
-         && !in_no_paragraph_contexts (current_context ());
+         && in_paragraph_context (current_context ());
 }
 
 /* Line 1146 */
@@ -604,8 +591,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
   int retval = 1; /* Return value of function */
   enum command_id end_cmd;
 
-  char *command = 0;
-  enum command_id cmd_id = CM_NONE;
+  enum command_id cmd = CM_NONE;
 
   /* If in raw block, or ignored conditional block. */
   // 3727
@@ -772,15 +758,28 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
 
   if (*line == '@')
     {
-      line_after_command = line;
+      line_after_command = line + 1;
 
-      line_after_command++;
-      command = read_command_name (&line_after_command);
-      cmd_id = lookup_command (command);
-      if (cmd_id == 0)
+      /* List of single character Texinfo commands. */
+      if (strchr ("([\"'~@}{,.!?"
+                  " \f\n\r\t"
+                  "*-^`=:|/\\",
+              *line_after_command))
         {
-          /* Unknown command */
-          //abort ();
+          char single_char[2];
+          single_char[0] = *line_after_command++;
+          single_char[1] = '\0';
+          cmd = lookup_command (single_char);
+        }
+      else
+        {
+          char *command = read_command_name (&line_after_command);
+
+          if (!command || !(cmd = lookup_command (command)))
+            {
+              /* Unknown command */
+              //abort ();
+            }
         }
     }
 
@@ -810,10 +809,10 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
 
   /* Handle user-defined macros before anything else because their expansion 
      may lead to changes in the line. */
-  if (cmd_id && (command_data(cmd_id).flags & CF_MACRO)) // 3894
+  if (cmd && (command_data(cmd).flags & CF_MACRO)) // 3894
     {
       line = line_after_command;
-      current = handle_macro (current, &line, cmd_id);
+      current = handle_macro (current, &line, cmd);
     }
 
   /* 3983 Cases that may "lead to command closing": brace commands that don't 
@@ -822,7 +821,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
   /* This condition is only checked immediately after the command opening, 
      otherwise the current element is in the 'args' and not right in the 
      commmand container. */
-  else if (!cmd_id && command_flags(current) & CF_brace && *line != '{')
+  else if (!cmd && command_flags(current) & CF_brace && *line != '{')
     {
       if (command_with_command_as_argument (current->parent)) // 3988
         {
@@ -852,15 +851,15 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
 
   /* line 4161 */
   /* Any other @-command. */
-  else if (cmd_id)
+  else if (cmd)
     {
       line = line_after_command;
-      debug ("COMMAND %s", command);
+      debug ("COMMAND %s", command_data(cmd).cmdname);
 
       /* TODO: Check if this is an alias command */
 
       /* 4172 @value */
-      if (cmd_id == CM_value)
+      if (cmd == CM_value)
         {
           char *arg_start;
           if (*line != '{')
@@ -923,7 +922,7 @@ value_invalid:
 #endif
 
       /* 4276 check if begins or ends a paragraph */
-      if (!(command_data(cmd_id).flags & (CF_misc | CF_block)))
+      if (!(command_data(cmd).flags & (CF_misc | CF_block)))
           {
           /*
              Unless no paragraph commands (line 311):
@@ -941,15 +940,15 @@ value_invalid:
         }
 
       // 4281
-      if (cmd_id != 0)
+      if (cmd != 0)
         {
-          if (close_paragraph_command (cmd_id))
+          if (close_paragraph_command (cmd))
             current = end_paragraph (current);
-          if (close_preformatted_command (cmd_id))
+          if (close_preformatted_command (cmd))
             current = end_preformatted (current);
         }
 
-      if (cmd_id == 0)
+      if (cmd == 0)
         {
           // Unknown command
           /* FIXME: Just add it as a new element for now to check it worked. */
@@ -965,16 +964,16 @@ value_invalid:
       /* the 'misc-commands' - no braces and not block commands (includes
          @end).  Mostly taking a line argument, except for a small number
          of exceptions, like @tab. */
-      else if (command_data(cmd_id).flags & CF_misc)
+      else if (command_data(cmd).flags & CF_misc)
         {
-          current = handle_misc_command (current, &line, cmd_id);
+          current = handle_misc_command (current, &line, cmd);
         }
 
       /* line 4632 */
-      else if (command_data(cmd_id).flags & CF_block)
+      else if (command_data(cmd).flags & CF_block)
         {
           int new_line = 0;
-          current = handle_block_command (current, &line, cmd_id, &new_line);
+          current = handle_block_command (current, &line, cmd, &new_line);
           if (new_line)
             {
               /* For @macro, to get a new line.  This is done instead of
@@ -984,19 +983,19 @@ value_invalid:
             }
         }
 
-      else if (command_data(cmd_id).flags & CF_brace) /* line 4835 */
+      else if (command_data(cmd).flags & CF_brace) /* line 4835 */
         /* or definfoenclose */
         {
-          current = handle_brace_command (current, &line, cmd_id);
+          current = handle_brace_command (current, &line, cmd);
         }
 
       /* No-brace command */
-      else if (command_data(cmd_id).flags & CF_nobrace) /* 4864 */
+      else if (command_data(cmd).flags & CF_nobrace) /* 4864 */
         {
           ELEMENT *nobrace;
 
           nobrace = new_element (ET_NONE);
-          nobrace->cmd = cmd_id;
+          nobrace->cmd = cmd;
           add_to_element_contents (current, nobrace);
 
           // @\
