@@ -385,7 +385,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
       /* Alternative is to use longjmp to go where "last;" does in the Perl 
          version. */
       line = strchr (line, '\0');
-      get_new_line = 1;
+      *get_new_line = 1;
       goto funexit;
     }
   else if (command_data(cmd_id).data == BLOCK_conditional)

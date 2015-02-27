@@ -2,6 +2,7 @@
 * Counters for e.g. numbers of arguments read so far for a brace 
 command, or the row in a table.
 * check valid nestings
+* @deffn, @deffnx, etc.
 * Implement parser options
 * Character encoding issues - read and pass to Perl correctly.
 * gnulib integration for strrchr, strchrnul, asprintf, etc.  Eliminate
