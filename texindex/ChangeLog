@@ -1,3 +1,9 @@
+2015-02-27         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* jrweave, jrtangle: Updated to current version. In particular,
+	jrtangle should work out of the box on Windows, thanks to
+	Eli Zaretskii.
+
 2015-01-08  Karl Berry  <karl@gnu.org>
 
 	* version.texi: remove, no easy way to automatically update it.

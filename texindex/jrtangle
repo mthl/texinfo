@@ -1,6 +1,6 @@
 #! /usr/local/bin/gawk -f
 #
-# Copyright (C) 2013, 2014 Arnold David Robbins
+# Copyright (C) 2013, 2014, 2015 Arnold David Robbins
 # 
 # This file is part of TexiWeb Jr., a literate programming system.
 # 
@@ -372,20 +372,31 @@ function code_body(name)
 	next
 }
 BEGIN {
-	Update_recipe = \
-		"PATH=/bin:/usr/bin\n" \
-		"export PATH\n" \
-		"destname=\"@DIR@/@FILE@\"\n" \
-		"outname=\"${destname}@SUFFIX@\"\n" \
-		"if [ ! -f \"$destname\" ]\n" \
-		"then\n" \
-		"\tmv \"$outname\" \"$destname\"\n" \
-		"elif cmp -s \"$outname\" \"$destname\" > /dev/null\n" \
-		"then\n" \
-		"\trm \"$outname\"\n" \
-		"else\n" \
-		"\tmv \"$outname\" \"$destname\"\n" \
-		"fi\n"
+	# This condition should distinguish between the native and
+	# MSYS (POSIX-ish) Gawk.  We rely on the fact that MSYS mounts
+	# /tmp and sets $TEMP to point to it, but resets the value
+	# back to the native C:/Foo/Bar value when invoking native
+	# programs.
+	if (ENVIRON["TEMP"] ~ /^[A-Z]:[\\\/]/) {
+		# MS-Windows recipe
+		Update_recipe = \
+			"fc /B \"@DIR@\\@FILE@\" \"@DIR@\\@FILE@@SUFFIX@\" >nul 2>&1 || move /Y \"@DIR@\\@FILE@\" \"@DIR@\\@FILE@@SUFFIX@\" >nul"
+	} else {
+		# POSIX recipe
+		Update_recipe = \
+			"PATH=/bin:/usr/bin\n" \
+			"export PATH\n" \
+			"destname=\"@DIR@/@FILE@\"\n" \
+			"outname=\"${destname}@SUFFIX@\"\n" \
+			"if [ ! -f \"$destname\" ]\n" \
+			"then\n" \
+			"\tmv \"$outname\" \"$destname\"\n" \
+			"elif cmp -s \"$outname\" \"$destname\" > /dev/null\n" \
+			"then\n" \
+			"\trm \"$outname\"\n" \
+			"else\n" \
+			"\tmv \"$outname\" \"$destname\"\n" \
+			"fi\n"
 }
 /^@file_update_recipe[[:space:]]*$/,
 			/^@end file_update_recipe[[:space:]]*$/ {
@@ -445,7 +456,7 @@ function create_update_recipe(file, results,
 	results["output"] = (dir "/" file suffix)
 }
 BEGIN {
-	if (Debug ~ /shell/)
+	if (Debug ~ /shell/ && ENVIRON["TEMP"] !~ /^[A-Z]:[\\\/]/)
 		if (length(Shell_debug) == 0)
 			Shell_debug = "set -x; "
 }
