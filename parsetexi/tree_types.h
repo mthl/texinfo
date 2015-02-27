@@ -34,7 +34,8 @@ enum extra_type {
     extra_misc_args,
     extra_node_spec,
     extra_node_spec_array,
-    extra_string
+    extra_string,
+    extra_deleted
 };
 
 typedef struct KEY_PAIR {

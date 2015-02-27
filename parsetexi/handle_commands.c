@@ -107,7 +107,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
       else /* arg_spec == MISC_special */
         {
           args = parse_special_misc_command (line, cmd_id); //4362
-          add_extra_string (misc, "arg_line", line);
+          add_extra_string (misc, "arg_line", strdup (line));
         }
 
       if ((cmd_id == CM_set || cmd_id == CM_clear)
@@ -317,7 +317,9 @@ handle_misc_command (ELEMENT *current, char **line_inout,
               else
                 {
                   // error - deffnx not after deffn
-                  abort ();
+                  line_errorf ("must be after @%s to use @%s",
+                               command_data(base_command).cmdname,
+                               command_data(cmd_id).cmdname);
                 }
             }
         } /* 4571 */
@@ -364,7 +366,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 /* line 4632 */
 ELEMENT *
 handle_block_command (ELEMENT *current, char **line_inout,
-                      enum command_id cmd_id)
+                      enum command_id cmd_id, int *get_new_line)
 {
   char *line = *line_inout;
   unsigned long flags = command_data(cmd_id).flags;
@@ -379,10 +381,11 @@ handle_block_command (ELEMENT *current, char **line_inout,
       current = macro;
 
       /* 4640 FIXME */
-      /* The line should be advanced to the end, so a new line should be read 
-         immediately after this. */
+      /* A new line should be read immediately after this.  */
       /* Alternative is to use longjmp to go where "last;" does in the Perl 
          version. */
+      line = strchr (line, '\0');
+      get_new_line = 1;
       goto funexit;
     }
   else if (command_data(cmd_id).data == BLOCK_conditional)
@@ -405,8 +408,25 @@ handle_block_command (ELEMENT *current, char **line_inout,
     }
   else /* line 4710 */
     {
-      if (flags & CF_menu)
+      // 4715
+      if (flags & CF_menu
+          && (current->type == ET_menu_comment
+              || current->type == ET_menu_entry_description))
         {
+#if 0
+          /* This is for @detailmenu within @menu */
+          ELEMENT *menu = current->parent;
+          //abort ();
+          if (current->contents.number == 0)
+            {
+              destroy_element (pop_element_from_contents (menu));
+              if (pop_context () != ct_preformatted)
+                abort ();
+            }
+          if (menu->type == ET_menu_entry)
+            menu = menu->parent;
+          current = last_contents_child (menu);
+#endif
         }
 
       // 4740

@@ -16,6 +16,7 @@
 #include <stdlib.h>
 
 #include "parser.h"
+#include "errors.h"
 
 /* In parser.c. */
 ELEMENT *end_paragraph (ELEMENT *current);
@@ -57,8 +58,6 @@ close_command_cleanup (ELEMENT *current)
     } // 1635
 }
 
-/* 1638 - 1794 */
-
 /* 1642 */
 static ELEMENT *
 close_current (ELEMENT *current)
@@ -71,21 +70,28 @@ close_current (ELEMENT *current)
     }
   else if (current->type != ET_NONE)
     {
+      debug ("CLOSING type %s", element_type_names[current->type]);
       enum context c;
       switch (current->type)
         {
         case ET_bracketed:
-          /* error */
+          command_error ("misplaced {");
+          current = current->parent;
           break;
         case ET_menu_comment:
         case ET_menu_entry_description:
           c = pop_context ();
           if (c != ct_preformatted)
-            {
-              /* error */
-            }
+            abort ();
 
-          /* close empty menu_comment */
+          /* 1700 Remove empty menu_comment */
+          if (current->contents.number == 0)
+            {
+              current = current->parent;
+              destroy_element (pop_element_from_contents (current));
+            }
+          else
+            current = current->parent;
 
           break;
         case ET_misc_line_arg:
@@ -96,9 +102,12 @@ close_current (ELEMENT *current)
               /* error */
               abort ();
             }
+          current = current->parent;
+          break;
+        default:
+          current = current->parent;
           break;
         }
-      current = current->parent;
     }
   else
     {
@@ -157,6 +166,10 @@ close_commands (ELEMENT *current, enum command_id closed_command,
       // 1784 maybe pop regions stack
       *closed_element = current;
       current = current->parent; /* 1788 */
+    }
+  else if (closed_command)
+    {
+      line_errorf ("unmatched @end %s", command_data(closed_command).cmdname);
     }
 
   return current;

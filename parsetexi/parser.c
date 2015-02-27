@@ -374,9 +374,21 @@ abort_empty_line (ELEMENT **current_inout, char *additional_text)
       // FIXME: How and when is this condition exactly met?
       if (last_child->text.end == 0) //2121
         {
-          // 'extra' stuff
+          KEY_PAIR *k = 0;
+          
+          /* FIXME: does extra key get removed from current or 
+             current->parent?  */
+          if (current->parent)
+            k = lookup_extra_key (current->parent, "spaces_before_argument");
+          if (k) // && k->value == last_contents_child (current))
+            {
+              k->key = "";
+              k->value = 0;
+              k->type = extra_deleted;
+            }
 
           destroy_element (pop_element_from_contents (current));
+          /* TODO: Maybe we could avoid adding it in the first place? */
         }
       else if (last_child->type == ET_empty_line) //2132
         {
@@ -595,14 +607,6 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
   char *command = 0;
   enum command_id cmd_id = CM_NONE;
 
-  /* We could be after a @macro line.  See comment in handle_block_command 
-     4640. */
-  if (!*line)
-    {
-      retval = 0;
-      goto funexit;
-    }
-
   /* If in raw block, or ignored conditional block. */
   // 3727
   if (command_flags(current) & CF_block
@@ -780,6 +784,30 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
         }
     }
 
+  /* There are cases when we need more input, but we don't want to
+     get it in the top-level loop in parse_texi - this is mostly
+     (always?) when we don't want to start a new, empty line, and
+     need to get more from the current, incomplete line of input. */
+  while (*line == '\0')
+    {
+      static char *allocated_text;
+      debug ("EMPTY TEXT");
+
+      /* Each place we supply Texinfo input we store the supplied
+         input in a static variable like allocated_text, to prevent
+         memory leaks.  */
+      free (allocated_text);
+      line = allocated_text = next_text ();
+
+      if (!line)
+        {
+          /* TODO: Can this only happen at end of file? */
+          current = end_line (current);
+          retval = 0;
+        }
+      goto funexit;
+    }
+
   /* Handle user-defined macros before anything else because their expansion 
      may lead to changes in the line. */
   if (cmd_id && (command_data(cmd_id).flags & CF_MACRO)) // 3894
@@ -945,7 +973,15 @@ value_invalid:
       /* line 4632 */
       else if (command_data(cmd_id).flags & CF_block)
         {
-          current = handle_block_command (current, &line, cmd_id);
+          int new_line = 0;
+          current = handle_block_command (current, &line, cmd_id, &new_line);
+          if (new_line)
+            {
+              /* For @macro, to get a new line.  This is done instead of
+                 doing the EMPTY TEXT (3879) code on the next time round. */
+              retval = 0;
+              goto funexit;
+            }
         }
 
       else if (command_data(cmd_id).flags & CF_brace) /* line 4835 */

@@ -1,7 +1,9 @@
 #! /usr/bin/env bash
 
 #DEBUG='perl -d'
+#DEBUG='perl -d:NYTProf'
 #OPTIONS='-c DEBUG=1 --no-validate'
+#VALGRIND='valgrind --vgdb-error=0'
 COMMAND=${COMMAND:-./texi2any-C.pl}
 
-PERL5LIB=../tp:../tp/maintain/lib/libintl-perl/lib:../tp/maintain/lib/Text-Unidecode/lib/:../tp/maintain/lib/Unicode-EastAsianWidth/lib:./Parsetexi/lib:./Parsetexi/blib/lib:./Parsetexi/blib/arch/auto/Parsetexi:../tp/Texinfo/Convert/XSParagraph/lib:../tp/Texinfo/Convert/XSParagraph/blib/arch/auto/XSParagraph ${DEBUG} ${COMMAND} ${OPTIONS} "$@"
+PERL5LIB=../tp:../tp/maintain/lib/libintl-perl/lib:../tp/maintain/lib/Text-Unidecode/lib/:../tp/maintain/lib/Unicode-EastAsianWidth/lib:./Parsetexi/lib:./Parsetexi/blib/lib:./Parsetexi/blib/arch/auto/Parsetexi:../tp/Texinfo/Convert/XSParagraph/lib:../tp/Texinfo/Convert/XSParagraph/blib/arch/auto/XSParagraph ${VALGRIND} ${DEBUG} ${COMMAND} ${OPTIONS} "$@"

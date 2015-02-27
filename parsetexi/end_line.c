@@ -1,3 +1,4 @@
+/* end_line.c -- what to do at the end of a whole line of input
 /* Copyright 2010, 2011, 2012, 2013, 2014, 2015
    Free Software Foundation, Inc.
 
@@ -795,6 +796,7 @@ end_line_starting_block (ELEMENT *current)
   return current;
 }
 
+// 3100
 /* Actions to be taken at the end of an argument to a line command
    not starting a block. */
 static ELEMENT *
@@ -841,16 +843,18 @@ end_line_misc_line (ELEMENT *current)
          Common/Text.pm on the first element of current->args. */
       /* however, this makes it impossible to decouple the parser and 
          output stages...  Any use of Texinfo::Convert is problematic. */
+      /* Fortunately Text.pm is not too complicated (unlike Plaintext.pm). */
 
+      // TODO: Convert properly.
       if (current->args.number > 0)
         text = text_convert (current->args.list[0]);
       else
         text = "foo";
 
-      if (!strcmp (text, ""))
+      if (!text || !strcmp (text, ""))
         {
-          /* 3123 warning - missing argument */
-          abort ();
+          // 3123
+          line_warnf ("@%s missing argument", command_data(cmd_id).cmdname);
         }
       else
         {
@@ -860,10 +864,6 @@ end_line_misc_line (ELEMENT *current)
 
               /* Set end_command - used below. */
               end_command = read_command_name (&line);
-
-              /* Check argument meets format of a Texinfo command
-                 (alphanumberic character followed by alphanumeric 
-                 characters or hyphens. */
 
               /* Check if argument is a block Texinfo command. */
               end_id = lookup_command (end_command);

@@ -180,10 +180,11 @@ lookup_macro_parameter (char *name, ELEMENT *macro)
   return -1;
 }
 
-/* LINE points to after opening brace in a macro invocation. */
+/* LINE points to after the opening brace in a macro invocation.  CMD is the
+   command identifier of the macro command. */
 // 1984
 char **
-expand_macro_arguments (ELEMENT *macro, char **line_inout)
+expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
 {
   char *line = *line_inout;
   char *pline = line;
@@ -208,11 +209,17 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout)
       if (!*sep)
         {
           debug ("MACRO ARG end of line");
-          // FIXME: How to free line?
-          // We could keep a reference to it in a static variable in
-          // new_line.
+          text_append (&arg, pline);
           line = new_line ();
+          if (!line)
+            {
+              line_error ("@%s missing close brace", 
+                          command_data(cmd).cmdname);
+              line = "\n";
+              goto funexit;
+            }
           pline = line;
+          continue;
         }
 
       text_append_n (&arg, pline, sep - pline);
@@ -250,23 +257,20 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout)
           // 2021 check for too many args
 
           /* Add the last argument read to the list. */
-          if (arg.end > 0)
+          if (arg_number == arg_space)
             {
-              if (arg_number == arg_space)
-                {
-                  arg_list = realloc (arg_list,
-                                      (1+(arg_space += 5)) * sizeof (char *));
-                  /* Include space for terminating null element. */
-                  if (!arg_list)
-                    abort ();
-                }
-              arg_list[arg_number++] = arg.text;
-              text_init (&arg);
+              arg_list = realloc (arg_list,
+                                  (1+(arg_space += 5)) * sizeof (char *));
+              /* Include space for terminating null element. */
+              if (!arg_list)
+                abort ();
             }
+          if (arg.space > 0)
+            arg_list[arg_number++] = arg.text;
           else
-          // then what? e.g. is "@m {     }" one empty argument or none?
-            if (arg_number != 0)
-              abort ();
+            arg_list[arg_number++] = strdup ("");
+          text_init (&arg);
+          // TODO: is "@m {     }" one empty argument or none?
 
           debug ("MACRO NEW ARG");
           pline = sep + 1;
@@ -280,6 +284,7 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout)
   debug ("END MACRO ARGS EXPANSION");
   line = pline;
 
+funexit:
   *line_inout = line;
   arg_list[arg_number] = 0;
   return arg_list;
@@ -371,11 +376,11 @@ lookup_macro (enum command_id cmd)
 ELEMENT *
 handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
 {
-  char *line;
+  char *line, *p;
   MACRO *macro_record;
   ELEMENT *macro;
   TEXT expanded;
-  char **arguments;
+  char **arguments = 0;
 
   line = *line_inout;
   text_init (&expanded);
@@ -387,28 +392,38 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
 
   // 3907 Get number of args.
 
-  line += strspn (line, whitespace_chars);
-  if (*line == '{')
+  p = line + strspn (line, whitespace_chars);
+  if (*p == '{')
     {
+      line = p;
       line++;
       /* In the Perl version formfeed is excluded for some reason. */
       line += strspn (line, whitespace_chars);
-      arguments = expand_macro_arguments (macro, &line);
+      arguments = expand_macro_arguments (macro, &line, cmd);
+    }
+  else
+    {
+      /* TODO: Warning depending on the number of arguments this macro
+         is supposed to take. */
+
+      /* TODO: Otherwise, if it takes a single line of input,
+         and we don't have a full line of input already, call new_line. */
     }
 
   expand_macro_body (macro, arguments, &expanded);
   debug ("MACROBODY: %s||||||", expanded.text);
 
   /* Free arguments. */
-  {
-    char **s = arguments;
-    while (*s)
-      {
-        free (*s);
-        s++;
-      }
-    free (arguments);
-  }
+  if (arguments)
+    {
+      char **s = arguments;
+      while (*s)
+        {
+          free (*s);
+          s++;
+        }
+      free (arguments);
+    }
 
   // 3958 Pop macro stack
 

@@ -16,7 +16,7 @@
 #include <stdio.h>
 
 /* Whether to dump debugging output on stderr. */
-int debug_output = 0;
+int debug_output = 1;
 
 void
 debug (char *s, ...)

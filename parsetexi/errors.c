@@ -61,6 +61,29 @@ line_errorf (char *format, ...)
   line_error (message);
 }
 
+void
+line_warn (char *message)
+{
+  if (error_number == error_space)
+    {
+      error_list = realloc (error_list,
+                            (error_space += 10) * sizeof (ERROR_MESSAGE));
+    }
+  error_list[error_number].message = message;
+  error_list[error_number].type = warning;
+  error_list[error_number++].line_nr = line_nr; /* Field-by-field copy. */
+}
+
+void
+line_warnf (char *format, ...)
+{
+  va_list v;
+  char *message;
+
+  va_start (v, format);
+  vasprintf (&message, format, v);
+  line_warn (message);
+}
 
 char *
 dump_errors (void)

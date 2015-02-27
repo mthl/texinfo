@@ -233,6 +233,8 @@ dump_extra (ELEMENT *e, TEXT *text)
     {
       for (i = 0; i < e->extra_number; i++)
         {
+          if (e->extra[i].type == extra_deleted)
+            continue;
           if (e->extra[i].type == extra_index_entry)
             {
               /* A "index_entry" extra key on a command defining an index

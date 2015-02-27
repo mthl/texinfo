@@ -1,4 +1,4 @@
-* @set/@value
+* conditionals on @set/@value, output format
 * Counters for e.g. numbers of arguments read so far for a brace 
 command, or the row in a table.
 * check valid nestings
@@ -11,6 +11,7 @@ command, or the row in a table.
 test suites.
 * find where "strlen" and "text_append" are used and try to remove them, for 
 efficiency.  Also newSVpv (..., 0);
+* Add "TODO" anywhere in the code with explanations of what is not done yet.
 
 Integration with rest of Perl code:
 

@@ -225,6 +225,9 @@ element_to_perl_hash (ELEMENT *e)
           char *key = e->extra[i].key;
           ELEMENT *f = e->extra[i].value;
 
+          if (e->extra[i].type == extra_deleted)
+            continue;
+
           switch (e->extra[i].type)
             {
             case extra_element:

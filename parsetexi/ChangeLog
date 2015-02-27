@@ -1,3 +1,11 @@
+2015-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tree_types.h (enum extra_type): Add extra_deleted.
+	* parser.c (abort_empty_line): Remove "spaces_before_argument" 
+	extra value.
+	(process_remaining_on_line): Add check for empty input ("EMPTY 
+	TEXT").
+
 2015-02-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* macro.c (store_value, fetch_value): New functions.
