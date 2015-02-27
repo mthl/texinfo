@@ -843,12 +843,15 @@ open_possibly_compressed_file (char *filename,
 
   if (*compression_program)
     { /* It's compressed, so open a pipe.  */
+      char *command = concat (*compression_program, " -d", "");
+
+      if (fclose (f) < 0)
+        return 0;
       f = freopen (*opened_filename, FOPEN_RBIN, stdin);
       if (!f)
         return 0;
-      char *command = concat (*compression_program, " -d", "");
       f = popen (command, "r");
-      if (! f)
+      if (!f)
         {
           /* Used for error message in calling code. */
           *opened_filename = command;
@@ -1393,7 +1396,6 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
   size_t offset_out = 0;        /* Index in `line_out' for next char. */
   static char *line_out = NULL;
   static size_t allocated_out = 0;
-  int saved_errno;
   if (!desc || !name)
     return 1;
 
@@ -1511,8 +1513,6 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
 
       line_out[offset_out++] = c;
     }
-
-  saved_errno = errno;
 
   if (desc_len <= 2)
     strncat (*outstr, "\n", 1);

@@ -1,3 +1,12 @@
+2015-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* install-info/install-info.c (open_possibly_compressed_file): 
+	If file is compressed, close it before opening it again on 
+	stdin.
+	(format_entry): Remove unused local variable.
+	* install-info/Makefile.am (SUBDIRS): Put "." before tests to 
+	make sure that "make check" works without doing "make" first.
+
 2015-02-27  Ken Brown  <kbrown@cornell.edu>
 
 	* install-info/install-info.c (open_possibly_compressed_file):
