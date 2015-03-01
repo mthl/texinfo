@@ -30,6 +30,8 @@ static NODE *get_visited_nodes (void);
 static const char *
 nodemenu_format_info (void)
 {
+  /* TRANSLATORS: The "\n* Menu:\n\n" part of this should not be translated, as 
+     it is part of the Info syntax. */
   return _("\n* Menu:\n\n\
   (File)Node                        Lines   Size   Containing File\n\
   ----------                        -----   ----   ---------------");
