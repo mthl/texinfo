@@ -42,20 +42,20 @@ item_container_parent (ELEMENT *current)
 /* Line 4289 */
 ELEMENT *
 handle_misc_command (ELEMENT *current, char **line_inout,
-                     enum command_id cmd_id)
+                     enum command_id cmd)
 {
   ELEMENT *misc = 0;
   char *line = *line_inout;
   int arg_spec;
 
   /* Root commands (like @node) and @bye 4290 */
-  if (command_data(cmd_id).flags & CF_root || cmd_id == CM_bye)
+  if (command_data(cmd).flags & CF_root || cmd == CM_bye)
     {
       ELEMENT *closed_elt; /* Not used */
-      current = close_commands (current, 0, &closed_elt, cmd_id);
+      current = close_commands (current, 0, &closed_elt, cmd);
       if (current->type == ET_text_root)
         {
-          if (cmd_id != CM_bye)
+          if (cmd != CM_bye)
             {
               /* Something to do with document_root and text_root. */
               ELEMENT *new_root = new_element (ET_document_root);
@@ -73,13 +73,13 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 
   /* Look up information about this command ( noarg skipline skipspace text 
      line lineraw /^\d$/). */
-  arg_spec = command_data(cmd_id).data;
+  arg_spec = command_data(cmd).data;
 
   /* noarg */
   if (arg_spec == MISC_noarg)
     {
       /*
-      if (close_preformatted_command(cmd_id))
+      if (close_preformatted_command(cmd))
         current = begin_preformatted (current);
       */
     }
@@ -95,7 +95,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
          of the line if necessary. */
 
       misc = new_element (ET_NONE);
-      misc->cmd = cmd_id;
+      misc->cmd = cmd;
 
       if (arg_spec == MISC_skipline || arg_spec == MISC_lineraw)
         {
@@ -107,11 +107,11 @@ handle_misc_command (ELEMENT *current, char **line_inout,
         }
       else /* arg_spec == MISC_special */
         {
-          args = parse_special_misc_command (line, cmd_id); //4362
+          args = parse_special_misc_command (line, cmd); //4362
           add_extra_string (misc, "arg_line", strdup (line));
         }
 
-      if ((cmd_id == CM_set || cmd_id == CM_clear)
+      if ((cmd == CM_set || cmd == CM_clear)
           && 0 )
         {
           /* TODO: Handle @set txicodequoteundirected as an
@@ -148,32 +148,34 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 
       // 4429 TODO @bye
 
-      if (close_preformatted_command(cmd_id))
+      if (close_preformatted_command(cmd))
         current = begin_preformatted (current);
 
       line += strlen (line); /* FIXME: Where does the control flow go? */
     }
-  else /* line 4435 - text, line, skipspace or a number */
+  else
     {
+      /* line 4435 - text, line, skipspace or a number.
+         (This includes handling of "@end", which is MISC_text.) */
+
       int line_arg = 0;
 
       if (arg_spec != MISC_skipspace)
         line_arg = 1;
-      /* @END IS SOMEWHERE IN HERE ('text') */
 
       /* 4439 */
       /* Special handling of @item because it can appear
          in several contents: in an @itemize, a @table, or
          a @multitable. */
-      if (cmd_id == CM_item || cmd_id == CM_itemx
-          || cmd_id == CM_headitem || cmd_id == CM_tab)
+      if (cmd == CM_item || cmd == CM_itemx
+          || cmd == CM_headitem || cmd == CM_tab)
         {
           ELEMENT *parent;
 
           // itemize or enumerate 4443
           if ((parent = item_container_parent (current)))
             {
-              if (cmd_id == CM_item)
+              if (cmd == CM_item)
                 {
                   ELEMENT *misc;
                   debug ("ITEM CONTAINER");
@@ -197,7 +199,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           // *table
           else if ((parent = item_line_parent (current)))
             {
-              if (cmd_id == CM_item || cmd_id == CM_itemx)
+              if (cmd == CM_item || cmd == CM_itemx)
                 {
                   ELEMENT *misc;
 
@@ -205,7 +207,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                   current = parent;
                   // gather_previous_item ();
                   misc = new_element (ET_NONE);
-                  misc->cmd = cmd_id;
+                  misc->cmd = cmd;
                   add_to_element_contents (current, misc);
                   line_arg = 1;
                 }
@@ -213,8 +215,8 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           // multitable
           else if ((parent = item_multitable_parent (current))) // 4477
             {
-              if (cmd_id != CM_item && cmd_id != CM_headitem
-                  && cmd_id != CM_tab)
+              if (cmd != CM_item && cmd != CM_headitem
+                  && cmd != CM_tab)
                 {
                   /* 4521 error - not meaningful */
                   abort ();
@@ -225,7 +227,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                   /* if
                     {
                     }
-                  else */ if (cmd_id == CM_tab)
+                  else */ if (cmd == CM_tab)
                     { // 4484
                       ELEMENT *row;
 
@@ -237,7 +239,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                         {
                           ELEMENT *misc;
                           misc = new_element (ET_NONE);
-                          misc->cmd = cmd_id;
+                          misc->cmd = cmd;
                           add_to_element_contents (row, misc);
                           current = misc;
                           debug ("TAB");
@@ -254,7 +256,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                       row = new_element (ET_row);
                       add_to_element_contents (parent, row);
                       misc = new_element (ET_NONE);
-                      misc->cmd = cmd_id;
+                      misc->cmd = cmd;
                       add_to_element_contents (row, misc);
                       current = misc;
 
@@ -262,7 +264,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                     }
                 }
             } /* item_multitable_parent */
-          else if (cmd_id == CM_tab) // 4526
+          else if (cmd == CM_tab) // 4526
             {
               // error - tab outside of multitable
               current = begin_preformatted (current);
@@ -279,7 +281,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
         {
           /* Add to contents */
           misc = new_element (ET_NONE);
-          misc->cmd = cmd_id;
+          misc->cmd = cmd;
           misc->line_nr = line_nr;
           add_to_element_contents (current, misc);
 
@@ -289,7 +291,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
             }
 
           /* 4546 - def*x */
-          if (command_data(cmd_id).flags & CF_def)
+          if (command_data(cmd).flags & CF_def)
             {
               enum command_id base_command;
               char *base_name;
@@ -297,7 +299,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 
               /* Find the command with "x" stripped from the end, e.g.
                  deffnx -> deffn. */
-              base_name = strdup (command_data(cmd_id).cmdname);
+              base_name = strdup (command_data(cmd).cmdname);
               base_len = strlen (base_name);
               if (base_name[base_len - 1] != 'x')
                 abort ();
@@ -313,14 +315,14 @@ handle_misc_command (ELEMENT *current, char **line_inout,
               if (current->cmd == base_command)
                 {
                   // Does this gather an "inter_def_item" ?
-                  // gather_def_item (current, cmd_id);
+                  // gather_def_item (current, cmd);
                 }
               else
                 {
                   // error - deffnx not after deffn
                   line_errorf ("must be after @%s to use @%s",
                                command_data(base_command).cmdname,
-                               command_data(cmd_id).cmdname);
+                               command_data(cmd).cmdname);
                 }
             }
         } /* 4571 */
@@ -336,9 +338,17 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           add_to_element_args (current, arg);
 
           /* 4584 - node */
+          if (cmd == CM_node)
+            {
+              /* At most three comma-separated arguments to @node.  This
+                 is the only (non-block) line command taking comma-separated
+                 arguments.  Its arguments will be gathered the same as
+                 those of some block line commands and brace commands. */
+              current->remaining_args = 3;
+            }
           /* 4586 - author */
           /* 4612 - dircategory */
-          if (cmd_id == CM_dircategory && current_node)
+          if (cmd == CM_dircategory && current_node)
             {
               /* warning - @dircategory after first node. */
               abort ();
@@ -349,7 +359,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 
           /* add 'line' to context_stack (Parser.pm:141).  This will be the
              case while we read the argument on this line. */
-          if (!(command_data(cmd_id).flags & CF_def))
+          if (!(command_data(cmd).flags & CF_def))
             push_context (ct_line);
         }
       start_empty_line_after_command (current, &line); //4621

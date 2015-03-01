@@ -1,3 +1,11 @@
+2015-03-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* end_line.c (parse_line_commanad_args) <CM_defindex>: Call 
+	add_index.
+	* handle_commands.c (handle_misc_command) <CM_node>: Set 
+	remaining_args on element.
+	* api.c (element_to_perl_hash): Output 'line_nr'.
+
 2015-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tree_types.h (enum extra_type): Add extra_deleted.

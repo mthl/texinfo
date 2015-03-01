@@ -566,24 +566,24 @@ dump_entries_of_index (INDEX *idx)
 static void
 dump_indices_information (void)
 {
-  INDEX *i;
+  INDEX **i, *idx;
 
   text_append (&indices_dump, "\n$INDEX_NAMES = {\n");
-  for (i = index_names; i->name; i++)
+  for (i = index_names; (idx = *i); i++)
     {
-      text_printf (&indices_dump, "'%s' => {", i->name);
-      text_printf (&indices_dump, "'name' => '%s',", i->name);
+      text_printf (&indices_dump, "'%s' => {", idx->name);
+      text_printf (&indices_dump, "'name' => '%s',", idx->name);
       text_printf (&indices_dump, "'in_code' => 0,");
 
       /* TODO: This is a list of recognized prefixes for the index. */
       text_printf (&indices_dump, "'prefix' => ['%c', '%s'],",
-                   *i->name, i->name);
+                   *idx->name, idx->name);
 
       /* TODO: Handle index merging. */
       text_printf (&indices_dump, "'contained_indices' => {'%s'=>1},",
-                   i->name);
+                   idx->name);
 
-      dump_entries_of_index (i);
+      dump_entries_of_index (idx);
 
       text_printf (&indices_dump, "},\n");
     }

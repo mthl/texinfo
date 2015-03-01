@@ -340,7 +340,28 @@ element_to_perl_hash (ELEMENT *e)
 #undef STORE
     }
 
-  /* TODO: line_nr. */
+  if (e->line_nr.line_nr)
+    {
+#define STORE(key, sv) hv_store (hv, key, strlen (key), sv, 0)
+      LINE_NR *line_nr = &e->line_nr;
+      HV *hv = newHV ();
+      hv_store (e->hv, "line_nr", strlen ("line_nr"),
+                newRV_inc((SV *)hv), 0);
+
+      if (line_nr->file_name)
+        {
+          STORE("file_name", newSVpv (line_nr->file_name, 0));
+        }
+
+      if (line_nr->line_nr)
+        {
+          STORE("line_nr", newSViv (line_nr->line_nr));
+        }
+
+      /* TODO: macro. */
+      STORE("macro", newSVpv ("", 0));
+#undef STORE
+    }
 }
 
 HV *
@@ -467,17 +488,17 @@ HV *
 build_index_data (void)
 {
   HV *hv;
-  INDEX *i;
+  INDEX **i, *idx;
 
   dTHX;
 
   hv = newHV ();
 
-  for (i = index_names; i->name; i++)
+  for (i = index_names; (idx = *i); i++)
     {
       HV *hv2;
-      hv2 = build_single_index_data (i);
-      hv_store (hv, i->name, strlen (i->name), newRV_inc ((SV *)hv2), 0);
+      hv2 = build_single_index_data (idx);
+      hv_store (hv, idx->name, strlen (idx->name), newRV_inc ((SV *)hv2), 0);
     }
 
   return hv;

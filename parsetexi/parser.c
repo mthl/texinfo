@@ -984,7 +984,6 @@ value_invalid:
         }
 
       else if (command_data(cmd).flags & CF_brace) /* line 4835 */
-        /* or definfoenclose */
         {
           current = handle_brace_command (current, &line, cmd);
         }

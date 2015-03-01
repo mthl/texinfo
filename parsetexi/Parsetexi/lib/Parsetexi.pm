@@ -250,7 +250,6 @@ sub parse_texi_file ($$)
 
     $LABELS = build_label_list ();
 
-    # TODO: Get $INDEX_NAMES as well
     $INDEX_NAMES = build_index_data ();
 
   } elsif (0) {

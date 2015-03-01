@@ -235,6 +235,7 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
           break;
         case '{':
           braces_level++;
+          text_append_n (&arg, sep, 1);
           pline = sep + 1;
           break;
         case '}':

@@ -15,19 +15,14 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include <string.h>
+#include <stdio.h>
 
 #include "parser.h"
 #include "indices.h"
 
-INDEX index_names[] = {
-  {"cp", "c",},
-  {"fn", "f",},
-  {"vr", "v",},
-  {"ky", "k",},
-  {"pg", "p",},
-  {"tp", "t",},
-  {0, 0},
-};
+INDEX **index_names;
+int number_of_indices;
+int space_for_indices;
 
 typedef struct {
     enum command_id cmd;
@@ -69,21 +64,73 @@ index_of_command (enum command_id cmd)
 }
 
 void
+add_index_command (char *cmdname, INDEX *idx)
+{
+  enum command_id new = add_texinfo_command (cmdname);
+  user_defined_command_data[new & ~USER_COMMAND_BIT].flags
+    = CF_misc | CF_index_entry_command;
+  user_defined_command_data[new & ~USER_COMMAND_BIT].data = MISC_line;
+  associate_command_to_index (new, idx);
+}
+
+static INDEX *
+add_index_internal (char *name, int in_code)
+{
+  INDEX *idx = malloc (sizeof (INDEX));
+  char *cmdname;
+
+  memset (idx, 0, sizeof *idx);
+  idx->name = name;
+  idx->prefix = name;
+  if (number_of_indices == space_for_indices)
+    {
+      space_for_indices += 5;
+      index_names = realloc (index_names, (space_for_indices + 1)
+                             * sizeof (INDEX *));
+    }
+  index_names[number_of_indices++] = idx;
+  index_names[number_of_indices] = 0;
+
+  /* For example, "rq" -> "rqindex". */
+  asprintf (&cmdname, "%s%s", name, "index");
+  add_index_command (cmdname, idx);
+  free (cmdname);
+  return idx;
+}
+
+void
+add_index (char *name, int in_code)
+{
+  INDEX *idx;
+
+  idx = add_index_internal (name, in_code);
+}
+
+void
 init_index_commands (void)
 {
-  INDEX *i;
+  INDEX *idx;
+  char **p;
+  char *default_indices[] = {
+    "cp",
+    "fn",
+    "vr",
+    "ky",
+    "pg",
+    "tp",
+    0,
+  };
   char name[] = "?index";
-  for (i = index_names; i->name; i++)
+
+  for (p = default_indices; *p; p++)
     {
-      enum command_id new;
-      name[0] = *i->prefix;
-      new = add_texinfo_command (name);
-      user_defined_command_data[new & ~USER_COMMAND_BIT].flags
-        = CF_misc | CF_index_entry_command;
-      user_defined_command_data[new & ~USER_COMMAND_BIT].data = MISC_line;
-      associate_command_to_index (new, i);
+      /* Both @cpindex and @cindex are added. */
+      idx = add_index_internal (*p, 0);
+      *name = **p;
+      add_index_command (name, idx);
     }
 }
+
 
 // 2530
 /* INDEX_AT_COMMAND is the Texinfo @-command defining the index entry.

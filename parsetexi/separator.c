@@ -316,10 +316,20 @@ handle_comma (ELEMENT *current, char **line_inout)
       register_command_arg (current, "brace_command_contents");
       //remove_empty_content_arguments ();
     }
+  else
+    {
+      isolate_last_space (current, 0);
+      if (command_flags(current->parent) & CF_block)
+        {
+          register_command_arg (current, "block_command_line_contents");
+        }
+    }
 
   type = current->type;
   current = current->parent;
+
 #if 0
+  /* TODO 5244 */
   if (current is an inline command (like inlineraw) all brace commands))
     {
     }
@@ -359,7 +369,7 @@ handle_separator (ELEMENT *current, char separator, char **line_inout)
   else if (separator == ',' && current->type == ET_misc_line_arg
            && current->parent->cmd == CM_node) // 5297
     {
-      // Warning - superfluous arguments for node
+      line_warn ("superfluous arguments for node");
     }
   /* 5303 After a separator in a menu. */
   else if ((separator == ','

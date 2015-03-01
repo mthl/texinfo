@@ -157,7 +157,7 @@ parse_line_command_args (ELEMENT *line_command)
   ELEMENT *line_args;
   ELEMENT *arg = line_command->args.list[0];
   ELEMENT *argarg = 0;
-  enum command_id command = line_command->cmd;
+  enum command_id cmd;
   char *line;
   int i;
 
@@ -196,10 +196,10 @@ parse_line_command_args (ELEMENT *line_command)
   if (argarg->text.end == 0)
     abort ();
 
-  command = line_command->cmd;
+  cmd = line_command->cmd;
   line = argarg->text.text;
 
-  switch (command)
+  switch (cmd)
     {
     case CM_alias:
       {
@@ -343,7 +343,7 @@ parse_line_command_args (ELEMENT *line_command)
         /* Disallow index names NAME where it is likely that for
            a source file BASE.texi, there will be other files called
            BASE.NAME in the same directory.  This is to prevent such
-           files being overwritten by the files produced by texindex. */
+           files being overwritten by the files read by texindex. */
         {
           /* TODO: Also forbid existing index names. */
           static char *forbidden_index_names[] = {
@@ -358,11 +358,13 @@ parse_line_command_args (ELEMENT *line_command)
         }
 
         ADD_ARG (name);
-        /* TODO: Store the index. */
+
+        add_index (name, cmd == CM_defcodeindex ? 1 : 0);
+
         break;
       defindex_invalid:
         line_errorf ("bad argument to @%s: %s",
-                     command_data(command).cmdname, line);
+                     command_data(cmd).cmdname, line);
         break;
       defindex_reserved:
         line_errorf ("reserved index name %s", name);
@@ -396,7 +398,7 @@ parse_line_command_args (ELEMENT *line_command)
         break;
       synindex_invalid:
         line_errorf ("bad argument to @%s: %s",
-                     command_data(command).cmdname, line);
+                     command_data(cmd).cmdname, line);
         free (from); free (to);
         break;
       }
@@ -419,7 +421,7 @@ parse_line_command_args (ELEMENT *line_command)
           }
         else
           line_errorf ("@%s argument must be `top' or `bottom', not `%s'",
-                       command_data(command).cmdname, line);
+                       command_data(cmd).cmdname, line);
 
         break;
       }
@@ -940,10 +942,10 @@ end_line_misc_line (ELEMENT *current)
       nodes_manuals = malloc (sizeof (NODE_SPEC_EXTRA *) * 2);
       nodes_manuals[1] = 0;
 
+      // TODO: Add the other args to @node as well, if they were given
       first_arg = current->args.list[0];
       nodes_manuals[0] = parse_node_manual (first_arg);
       add_extra_node_spec_array (current, "nodes_manuals", nodes_manuals);
-
 
       /* Also set 'normalized' here.  The normalized labels are actually 
          the keys of "labels_information($parser)". */

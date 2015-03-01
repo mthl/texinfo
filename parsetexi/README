@@ -6,6 +6,7 @@ makeinfo in this directory wraps texi2any-C.pl, which is tp/texi2any.pl
 changed to use the module in the Parsetexi subdirectory instead of 
 Texinfo::Parser.
 
+=====================================================================
 Notes -
 How to debug with valgrind -
 export PERL5LIB to the value in the makeinfo script
@@ -17,5 +18,15 @@ VAL perl ./texi2any-C.pl texinfo.texi
 also
 
 valgrind --vgdb-error=0 perl texi2any-C.pl texinfo.texi
+
+=====================================================================
+
+Can compare execution runs of parsetexi and Perl makeinfo with
+
+makeinfo -C DEBUG=1 node_structure.texi |& less
+
+vs.
+
+./parsetexi node_structure.texi |& less
 
 
