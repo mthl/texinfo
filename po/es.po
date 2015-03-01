@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: texinfo-5.9.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2015-02-22 16:49-0800\n"
-"PO-Revision-Date: 2015-02-28 18:54+0100\n"
+"PO-Revision-Date: 2015-03-01 12:15+0100\n"
 "Last-Translator: Antonio Ceballos <aceballos@gmail.com>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
 "Language: es\n"
@@ -2908,70 +2908,69 @@ msgid "printindex before document beginning: @printindex %s"
 msgstr ""
 
 #: tp/Texinfo/Parser.pm:5875
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
-msgstr "%s: argumento de %s debe ser numérico, así que '%s' no es válido.\n"
+msgstr "el argumento de @%s debe ser `top' o `bottom', no '%s'"
 
 #: tp/Texinfo/Parser.pm:5883
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "Sólo @%s 10 or 11 está soportado, no '%s'"
 
-# TODO next
 #: tp/Texinfo/Parser.pm:5891
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
-msgstr "%s: `--footnote-style' toma como argumentos `separate' o `end', no '%s'.\n"
+msgstr "el argumento de @%s debe ser `separate' o `end', no '%s'"
 
 #: tp/Texinfo/Parser.pm:5899
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
-msgstr "%s: argumento de %s debe ser numérico, así que '%s' no es válido.\n"
+msgstr "el argumento de @%s debe ser `on', `off' o `odd', no '%s'"
 
 #: tp/Texinfo/Parser.pm:5917 tp/Texinfo/Parser.pm:5922
-#, fuzzy, perl-format
+#, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
-msgstr "%s: `--paragraph-indent' toma un argumento numérico/`none'/`asis', y no '%s'.\n"
+msgstr "el argumento de @paragraphindent debe ser numérico/`none'/`asis', no '%s'"
 
 #: tp/Texinfo/Parser.pm:5930
-#, fuzzy, perl-format
+#, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
-msgstr "%s: `--paragraph-indent' toma un argumento numérico/`none'/`asis', y no '%s'.\n"
+msgstr "el argumento de @firstparagraphindent debe ser `none' o `insert', no '%s'"
 
 #: tp/Texinfo/Parser.pm:5940
-#, fuzzy, perl-format
+#, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
-msgstr "%s: `--paragraph-indent' toma un argumento numérico/`none'/`asis', y no '%s'.\n"
+msgstr "el argumento de @exampleindent debe ser numérico/`asis', no '%s'"
 
 #: tp/Texinfo/Parser.pm:5951
-#, fuzzy, perl-format
+#, perl-format
 msgid "expected @%s on or off, not `%s'"
 msgstr "Se esperaba leer @%s \"on\" u \"off\", no '%s'"
 
 #: tp/Texinfo/Parser.pm:5961
 #, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
-msgstr ""
+msgstr "el argumento de @kbdinputstyle debe ser `code'/`example'/`distinct', no '%s'"
 
 #: tp/Texinfo/Parser.pm:5969
-#, fuzzy, perl-format
+#, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
-msgstr "%s: `--footnote-style' toma como argumentos `separate' o `end', no '%s'.\n"
+msgstr "el argumento de @allowcodebreaks debe ser `true' o `false', no '%s'"
 
 #: tp/Texinfo/Parser.pm:5977
-#, fuzzy, perl-format
+#, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
-msgstr "%s: `--footnote-style' toma como argumentos `separate' o `end', no '%s'.\n"
+msgstr "el argumento de @urefbreakstyle debe ser `after'/`before'/`none', no '%s'"
 
 #: tp/Texinfo/Structuring.pm:232
 #, perl-format
 msgid "raising the section level of @%s which is too low"
-msgstr ""
+msgstr "se sube el nivel de sección de @%s, que es demasiado bajo"
 
 #: tp/Texinfo/Structuring.pm:264
 #, perl-format
 msgid "no chapter-level command before @%s"
-msgstr ""
+msgstr "no hay órdenes de nivel de capítulo antes de @%s"
 
 #: tp/Texinfo/Structuring.pm:269
 #, perl-format
@@ -2984,14 +2983,14 @@ msgid "no sectioning command associated with @%s"
 msgstr ""
 
 #: tp/Texinfo/Structuring.pm:507
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s not empty"
-msgstr "%s: fichero vacío"
+msgstr "@%s no vacío"
 
 #: tp/Texinfo/Structuring.pm:563 tp/Texinfo/Structuring.pm:1345
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s reference to nonexistent node `%s'"
-msgstr "`%s' hace referencia a un nodo inexistente (`%s'), quizás debido a un seccionado incorrecto del documento"
+msgstr "@%s hace referencia a un nodo inexistente (`%s')"
 
 #: tp/Texinfo/Structuring.pm:576
 #, perl-format
@@ -3024,9 +3023,9 @@ msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
 msgstr ""
 
 #: tp/Texinfo/Structuring.pm:833
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s reference to nonexistent `%s'"
-msgstr "Nodo '%s' no referenciado"
+msgstr "%s hace referencia a algo que no existe (`%s')"
 
 #: tp/Texinfo/Structuring.pm:853
 #, fuzzy, perl-format
@@ -3049,47 +3048,47 @@ msgid "empty index key in @%s"
 msgstr ""
 
 #: tp/init/chm.pm:221 tp/init/chm.pm:277 tp/init/chm.pm:348
-#, fuzzy, perl-format
+#, perl-format
 msgid "chm.pm: could not open %s for writing: %s\n"
-msgstr "%s: no se pudo abrir --css-file: %s"
+msgstr "chm.pm: no se ha podido abrir %s para escritura: %s\n"
 
 #: tp/init/chm.pm:267 tp/init/chm.pm:338 tp/init/chm.pm:399
 #, perl-format
 msgid "chm.pm: error on closing %s: %s"
-msgstr ""
+msgstr "chm.pm: error al cerrar %s: %s"
 
 #: tp/init/latex2html.pm:200
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: could not open latex file %s for writing: %s"
-msgstr "%s: no se pudo abrir --css-file: %s"
+msgstr "l2h: no se ha podido abrir para escritura el fichero de latex %s: %s"
 
 #: tp/init/latex2html.pm:341
 msgid "l2h: L2H_TMP directory contains a dot"
-msgstr ""
+msgstr "l2h: el directorio L2H_TMP contiene un punto"
 
 #: tp/init/latex2html.pm:346
 msgid "l2h: current directory contains a dot"
-msgstr ""
+msgstr "l2h: el directorio actual contiene un punto"
 
 #: tp/init/latex2html.pm:374
 #, perl-format
 msgid "l2h: command did not succeed: %s"
-msgstr ""
+msgstr "l2h: la orden no terminó con éxito: %s"
 
 #: tp/init/latex2html.pm:422
 #, perl-format
 msgid "l2h: image has invalid extension: %s"
-msgstr ""
+msgstr "l2h: la extensión de la imagen no es válida: %s"
 
 #: tp/init/latex2html.pm:438
 #, perl-format
 msgid "l2h: rename %s as %s failed: %s"
-msgstr ""
+msgstr "l2h: el cambio de nombre de %s por %s ha fallado: %s"
 
 #: tp/init/latex2html.pm:460
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: could not open %s: %s"
-msgstr "%s: no se pudo abrir --css-file: %s"
+msgstr "l2h: no se ha podido abrir %s: %s"
 
 #: tp/init/latex2html.pm:493
 #, perl-format
@@ -3099,12 +3098,12 @@ msgstr ""
 #: tp/init/latex2html.pm:504
 #, perl-format
 msgid "latex2html.pm: processing produced %d items in HTML; expected %d, the number of items found in the document"
-msgstr ""
+msgstr "latex2html.pm: el procesamiento ha producido %d elementos en HTML; se esperaban %d, el número de elementos que se han encontrado en el documento"
 
 #: tp/init/latex2html.pm:534
 #, perl-format
 msgid "l2h: could not determine the fragment %d for @%s"
-msgstr ""
+msgstr "l2h: no se ha podido determinar el fragmento %d para @%s"
 
 #: tp/init/latex2html.pm:560
 #, perl-format
@@ -3112,39 +3111,39 @@ msgid "l2h: could not extract the fragment %d for @%s with output counter %d fro
 msgstr ""
 
 #: tp/init/latex2html.pm:621
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: could not load %s: %s"
-msgstr "%s: no se pudo abrir --css-file: %s"
+msgstr "l2h: no se ha podido cargar %s: %s"
 
 #: tp/init/latex2html.pm:634
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: could not open %s for writing: %s"
-msgstr "%s: no se pudo abrir --css-file: %s"
+msgstr "l2h: no se ha podido abrir %s para escritura: %s"
 
 #: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
-#, fuzzy, perl-format
+#, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
-msgstr "%s: no se pudo abrir --css-file: %s"
+msgstr "tex4ht.pm: no se ha podido abrir %s: %s"
 
 #: tp/init/tex4ht.pm:219
 #, perl-format
 msgid "tex4ht.pm: chdir %s failed: %s"
-msgstr ""
+msgstr "tex4ht.pm: fallo al cambiar al directorio %s: %s"
 
 #: tp/init/tex4ht.pm:232
 #, perl-format
 msgid "tex4ht.pm: unable to return to initial directory: %s"
-msgstr ""
+msgstr "tex4ht.pm: no se ha podido volver al directorio inicial: %s"
 
 #: tp/init/tex4ht.pm:244
 #, perl-format
 msgid "tex4ht.pm: output file missing: %s"
-msgstr ""
+msgstr "tex4ht.pm: falta el fichero de salida: %s"
 
 #: tp/init/tex4ht.pm:260
 #, perl-format
 msgid "tex4ht.pm: command failed: %s"
-msgstr ""
+msgstr "tex4ht.pm: la orden ha fallado: %s"
 
 #: tp/init/tex4ht.pm:294
 #, perl-format
@@ -3154,7 +3153,7 @@ msgstr ""
 #: tp/init/tex4ht.pm:301
 #, perl-format
 msgid "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of items found in the document for @%s"
-msgstr ""
+msgstr "tex4ht.pm: el procesamiento ha producido %d elementos en HTML; se esperaban %d, el número de elementos que se han encontrado en el documento para %s"
 
 #: tp/init/tex4ht.pm:321
 #, perl-format
@@ -3164,32 +3163,32 @@ msgstr ""
 #: tp/init/tex4ht.pm:336
 #, perl-format
 msgid "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of items found in the document for @%s"
-msgstr ""
+msgstr "tex4ht.pm: el procesamiento ha recuperado %d elementos en HTML; se esperaban %d, el número de elementos que se han encontrado en el documento para %s"
 
 #: tp/texi2any.pl:386
-#, fuzzy, perl-format
+#, perl-format
 msgid "error loading %s: %s\n"
-msgstr "error mientras se escribía al fichero '%s'"
+msgstr "error al cargar %s: %s\n"
 
 #: tp/texi2any.pl:399
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s: unknown variable %s"
-msgstr "acción desconocida '%s'"
+msgstr "%s: variable desconocida %s"
 
 #: tp/texi2any.pl:403
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s: obsolete variable %s\n"
-msgstr "Establecer variable: "
+msgstr "%s: variable obsoleta %s\n"
 
 #: tp/texi2any.pl:418
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s: unknown variable %s\n"
-msgstr "acción desconocida '%s'"
+msgstr "%s: variable desconocida %s\n"
 
 #: tp/texi2any.pl:422
-#, fuzzy, perl-format
+#, perl-format
 msgid "obsolete variable %s\n"
-msgstr "Establecer variable: "
+msgstr "variable obsoleta %s\n"
 
 #: tp/texi2any.pl:487
 #, fuzzy, perl-format
@@ -3202,16 +3201,11 @@ msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "ignorando valor desconocido de TEXINFO_OUTPUT_FORMAT ('%s').\n"
 
 #: tp/texi2any.pl:733
-#, fuzzy, perl-format
-#| msgid "Usage: %s [OPTION]... FILE...\n"
+#, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
-msgstr "Modo de empleo: %s [OPCIÓN]... FICHERO...\n"
+msgstr "Modo de empleo: %s [OPCIÓN]... FICHERO-TEXINFO...\n"
 
 #: tp/texi2any.pl:736
-#, fuzzy
-#| msgid ""
-#| "Translate Texinfo source documentation to various other formats, by default\n"
-#| "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -3221,9 +3215,12 @@ msgid ""
 msgstr ""
 "Convierte ficheros escritos en Texinfo a varios otros formatos, por defecto a\n"
 "formato Info, que puede ser leído con Emacs o el visor de ficheros Info de GNU.\n"
+"\n"
+"Por lo común este programa se instala tanto como `makeinfo' como `texi2any';\n"
+"el comportamiento es idéntico, y no depende del nombre que se haya instalado.\n"
 
 #: tp/texi2any.pl:742
-#, fuzzy, perl-format
+#, perl-format
 msgid ""
 "General options:\n"
 "      --document-language=STR locale to use in translating Texinfo keywords\n"
@@ -3240,25 +3237,30 @@ msgid ""
 "  -v, --verbose               explain what is being done.\n"
 "      --version               display version information and exit.\n"
 msgstr ""
-"Opciones generales;\n"
-"      --error-limit=NÚMERO    dar por finalizado el proceso del fichero en\n"
-"                                cuestión tras un número de errors mayor o igual\n"
-"                                a NÚMERO (por defecto %d).\n"
+"Opciones generales:\n"
 "      --document-language=TEXTO\n"
 "                              locale a usar con el fin de traducir primitivas\n"
 "                                Texinfo para el documento final (C por defecto).\n"
+"      --error-limit=NÚMERO    dar por finalizado el proceso del fichero en\n"
+"                                cuestión tras un número de errores mayor o igual\n"
+"                                a NÚMERO (por defecto %d).\n"
 "      --force                 generar documento de salida incluso si se\n"
 "                                encontraron errores durante el proceso.\n"
 "      --help                  mostrar este mensaje de ayuda.\n"
 "      --no-validate           suprimir la validación de enlaces.\n"
-"      --no-warn               suprimir mensajes de precaución (pero no errores).\n"
-"  -v, --verbose               explicar que se está haciendo durante el proceso\n"
+"      --no-warn               suprimir mensajes de advertencia (pero no errores).\n"
+"      --conf-dir=DIR          buscar también en DIR los ficheros de\n"
+"                                 inicialización.\n"
+"      --info-file=FICHERO     cargar FICHERO para modificar el comportamiento\n"
+"                                 predefinido.\n"
+"  -c, --set-customization-variable VAR=VAL  asigna el valor VAL a la variable\n"
+"                                 personalizada VAR.\n"
+"  -v, --verbose               explicar qué se está haciendo durante el proceso\n"
 "                                del documento en cuestión.\n"
 "      --version               mostrar información sobre la versión de esta\n"
 "                                aplicación informática.\n"
 
 #: tp/texi2any.pl:758
-#, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -3271,11 +3273,14 @@ msgstr ""
 "Selección de formato de salida (por defecto se producen ficheros Info):\n"
 "      --docbook               generar un fichero en formato Docbook XML.\n"
 "      --html                  generar un fichero en formato HTML.\n"
+"      --plaintext             generar un fichero en formato de texto plano.\n"
 "      --xml                   generar un fichero en formato Texinfo XML.\n"
 "      --plaintext             generar un fichero en texto plano.\n"
+"      --dvi, --dvipdf, --ps, --pdf  llamar a texi2dvi para generar la salida\n"
+"                                después de comprobar la validez de\n"
+"                                FICHERO-TEXINFO.\n"
 
 #: tp/texi2any.pl:766
-#, fuzzy
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -3298,8 +3303,8 @@ msgid ""
 "                                Otherwise, DEST names the output file.\n"
 msgstr ""
 "Opciones generales de salida:\n"
-"  -E, --macro-expand=FICHERO  escribir un fichero FICHERO en el que cualquier\n"
-"                                macro presente es expandido (primitivas\n"
+"  -E, --macro-expand=FICHERO  escribir un fichero FICHERO en el que toda\n"
+"                                macro presente es expandida (las primitivas\n"
 "                                `@setfilename' serán ignoradas).\n"
 "      --no-headers            suprimir separadores de nodos, líneas de `Nodo:'\n"
 "                                y menús del fichero Info (produciendo así\n"
@@ -3307,12 +3312,17 @@ msgstr ""
 "                                documento menor); también se escribe por\n"
 "                                defecto a la salida estándar (stdout).\n"
 "      --no-split              no generar un documento Info o HTML multi-página;\n"
-"                                generar un sólo documento que ocurre en una\n"
-"                                sóla página.\n"
-"      --number-sections       numerar capítulos y secciones.\n"
-"  -o, --output=FICHERO        escribir en fichero FICHERO (se toma como nombre\n"
-"                               de directorio si el formato de salida es HTML\n"
-"                               en modo multi-documento/multi-página).\n"
+"                                generar un solo documento que se extienda a lo\n"
+"                                largo de una sola página.\n"
+"      --[no-]number-sections  numerar capítulos y secciones (activado por defecto).\n"
+"  -o, --output=DESTINO        escribir en fichero DESTINO.\n"
+"                                Con salida multi-página, se crea DESTINO como\n"
+"                                 directorio y se guardan en él los ficheros.\n"
+"                                Con salida mono-página, si DESTINO ya existe\n"
+"                                 como directorio o termina en /, se guardan en\n"
+"                                 él los ficheros.\n"
+"                                En caso contrario, DESTINO es el nombre del\n"
+"                                 fichero.\n"
 
 #: tp/texi2any.pl:786
 #, perl-format
@@ -3332,7 +3342,7 @@ msgid ""
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
 "Opciones para Info y texto plano:\n"
-"      --disable-encoding      no generar acentos y caracteres especiales en el\n"
+"      --disable-encoding      no generar acentos ni caracteres especiales en el\n"
 "                                documento de salida, ignorar la primitiva\n"
 "                                `@documentencoding' si está presente.\n"
 "      --enable-encoding       contradecir `--disable-encoding' (por defecto).\n"
@@ -3344,7 +3354,7 @@ msgstr ""
 "                                en el que son definidas (este es el estilo por\n"
 "                                defecto).\n"
 "      --paragraph-indent=NÚMERO\n"
-"                              proveer a párrafos con un márgen dado por el\n"
+"                              proveer a párrafos con un margen dado por el\n"
 "                                número de espacios NÚMERO (por defecto %d). Si\n"
 "                                NÚMERO fuese `none' no se insertarán márgenes;\n"
 "                                si NÚMERO es `asis', se preservarán los márgenes\n"
@@ -3353,7 +3363,6 @@ msgstr ""
 "                                una es de un tamaño NÚMERO (por defecto %d).\n"
 
 #: tp/texi2any.pl:803
-#, fuzzy
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3372,23 +3381,32 @@ msgstr ""
 "      --css-ref=URL           generar referencias a una hoja de estilo CSS.\n"
 "      --internal-links=FICHERO\n"
 "                              producir lista de enlaces internos en FICHERO.\n"
+"      --split=DIVISIÓN        partir en DIVISIÓN, donde DIVISIÓN puede ser\n"
+"                                `chapter', `section' o `node'.\n"
 "      --transliterate-file-names\n"
 "                              producir nombres de ficheros en formato ASCII.\n"
+"      --node-files            producir ficheros de redirección para nodos y\n"
+"                                anclajes; lo predefinido es configurarlo solo\n"
+"                                si hay división.\n"
 
 #: tp/texi2any.pl:814
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
+"opciones para XML y Docbook:\n"
+"      --output-indent=VAL     no hace nada; se mantiene por compatibilidad.\n"
 
 #: tp/texi2any.pl:817
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
+"Opciones para DVI/PS/PDF:\n"
+"      --Xopt=OPC              pasa OPC a text2dvi; puede repetirse.\n"
 
+# TODO review shell
 #: tp/texi2any.pl:820
-#, fuzzy
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -3399,10 +3417,12 @@ msgid ""
 "  -U VAR                        undefine the variable VAR, as with @clear.\n"
 msgstr ""
 "Opciones para ficheros de entrada:\n"
-"      --commands-in-node-names  permitir comandos `@' en nombres de nodo.\n"
+"      --commands-in-node-names  no hace nada; se mantiene por compatibilidad.\n"
 "  -D VARIABLE                   definir la variable VARIABLE, tal y como si así\n"
 "                                  hubiera sido especificado en el propio\n"
 "                                  documento mediante el uso de `@set VARIABLE'.\n"
+"  -D 'VARIABLE VALOR'           definir la variable VARIABLE y asignarle el\n"
+"                                  valor VALOR (un argumento de «shell»).\n"
 "  -I DIRECTORIO                 añadir el directorio DIRECTORIO al final de la\n"
 "                                  lista de búsqueda para primitivas `@include'.\n"
 "  -P DIRECTORIO                 añadir el directorio DIRECTORIO al principio\n"
@@ -3414,7 +3434,6 @@ msgstr ""
 "                                  `@clear VARIABLE'.\n"
 
 #: tp/texi2any.pl:828
-#, fuzzy
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -3442,20 +3461,18 @@ msgstr ""
 "                      salida no es Info.\n"
 "  --ifplaintext     procesar primitivas `@ifplaintext' incluso cuando el formato\n"
 "                      de salida no es texto plano.\n"
-"  --iftex           procesar primitivas `@iftex' y `@tex', conlleva\n"
-"                      `--no-split'.\n"
+"  --iftex           procesar primitivas `@iftex' y `@tex'.\n"
 "  --ifxml           procesar primitivas `@ifxml' y `@xml'.\n"
-"  --no-ifdocbook    no procesar primitivas `@ifdocbook' o `@docbook'.\n"
-"  --no-ifhtml       no procesar primitivas `@ifhtml' o `@html'.\n"
+"  --no-ifdocbook    no procesar primitivas `@ifdocbook' ni `@docbook'.\n"
+"  --no-ifhtml       no procesar primitivas `@ifhtml' ni `@html'.\n"
 "  --no-ifinfo       no procesar primitivas `@ifinfo'.\n"
 "  --no-ifplaintext  no procesar primitivas `@ifplaintext'.\n"
-"  --no-iftex        no procesar primitivas `@iftex' o `@tex'.\n"
-"  --no-ifxml        no procesar primitivas `@ifxml' o `@xml'.\n"
+"  --no-iftex        no procesar primitivas `@iftex' ni `@tex'.\n"
+"  --no-ifxml        no procesar primitivas `@ifxml' ni `@xml'.\n"
 "\n"
 "  También, para las opciones de tipo --no-ifFORMATO, procesar `@ifnotFORMATO'.\n"
 
 #: tp/texi2any.pl:845
-#, fuzzy
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating Docbook, --ifdocbook is on and the others are off;\n"
@@ -3466,13 +3483,13 @@ msgid ""
 msgstr ""
 "  Las acciones por defecto para primitivas condicionales del tipo `@if...'\n"
 "  dependen en gran medida del formato de salida seleccionado:\n"
-"  si este es HTML, --ifhtml estará activo, mientras el resto no;\n"
-"  si este es Info, --ifinfo estará activo, mientras el resto no;\n"
-"  si este es texto plano, --ifplaintext estará activo, mientras el resto no;\n"
-"  si este es XML, --ifxml estará activo, mientras el resto no;\n"
+"  si este es Docbook, --ifdocbook estará activo, mientras que el resto no;\n"
+"  si este es HTML, --ifhtml estará activo, mientras que el resto no;\n"
+"  si este es Info, --ifinfo estará activo, mientras que el resto no;\n"
+"  si este es texto plano, --ifplaintext estará activo, mientras que el resto no;\n"
+"  si este es XML, --ifxml estará activo, mientras que el resto no;\n"
 
 #: tp/texi2any.pl:852
-#, fuzzy
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -3488,39 +3505,52 @@ msgid ""
 msgstr ""
 "Ejemplos:\n"
 "\n"
-"  makeinfo foo.texi                      escribe el fichero cuyo nombre viene\n"
-"                                         dado por el contenido de la primitiva\n"
-"                                         `@setfilename' en el fichero de\n"
-"                                         entrada, en formato Info.\n"
+"  makeinfo foo.texi                      escribe en el fichero cuyo nombre\n"
+"                                         viene dado por el contenido de la\n"
+"                                         primitiva `@setfilename' en el fichero\n"
+"                                         de\n"
+" entrada, en formato Info.\n"
 "\n"
-"  makeinfo --html foo.texi               escribe el fichero cuyo nombre viene\n"
-"                                         dado por el contenido de la primitiva\n"
-"                                         `@setfilename' en el fichero de\n"
-"                                         entrada, en formato html.\n"
+"  makeinfo --html foo.texi               escribe en el fichero cuyo nombre\n"
+"                                         viene dado por el contenido de la\n"
+"                                         primitiva `@setfilename' en el fichero\n"
+"                                         de entrada, en formato HTML.\n"
 "\n"
-"  makeinfo --docbook foo.texi            escribe el fichero cuyo nombre viene\n"
-"                                         dado por el contenido de la primitiva\n"
-"                                         `@setfilename' en el fichero de\n"
-"                                         entrada, en formato docbook.\n"
+"  makeinfo --xml foo.texi                escribe en el fichero cuyo nombre\n"
+"                                         viene dado por el contenido de la\n"
+"                                         primitiva `@setfilename' en el fichero\n"
+"                                         de entrada, en formato XML.\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi  escribe el fichero cuyo nombre viene\n"
-"                                         dado por el contenido de la primitiva\n"
-"                                         `@setfilename' en el fichero de\n"
-"                                         entrada, en formato HTML, sin menus o\n"
-"                                         información alguna sobre nodos o\n"
+"  makeinfo --docbook foo.texi            escribe en el fichero cuyo nombre\n"
+"                                         viene dado por el contenido de la\n"
+"                                         primitiva `@setfilename' en el fichero\n"
+"                                         de entrada, en formato Docbook.\n"
+"\n"
+"  makeinfo --plaintext foo.texi          escribe en la salida estándar\n"
+"                                         en formato de texto plano.\n"
+"\n"
+"  makeinfo --pdf foo.texi                escribe utilizando texi2dvi\n"
+"                                         en formato PDF.\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  escribe en el fichero cuyo nombre\n"
+"                                         viene dado por el contenido de la\n"
+"                                         primitiva `@setfilename' en el fichero\n"
+"                                         de entrada, en formato HTML, sin menus\n"
+"                                         ni información alguna sobre nodos o\n"
 "                                         líneas.\n"
 "\n"
-"  makeinfo --number-sections foo.texi    escribe el fichero cuyo nombre viene\n"
-"                                         dado por el contenido de la primitiva\n"
-"                                         `@setfilename' en el fichero de\n"
-"                                         entrada, en formato Info, numerando\n"
+"  makeinfo --number-sections foo.texi    escribe en el fichero cuyo nombre\n"
+"                                         viene dado por el contenido de la\n"
+"                                         primitiva `@setfilename' en el fichero\n"
+"                                         de entrada, en formato Info, numerando\n"
 "                                         secciones y capítulos.\n"
 "\n"
-"  makeinfo --no-split foo.texi           escribe el fichero cuyo nombre viene\n"
-"                                         dado por el contenido de la primitiva\n"
-"                                         `@setfilename' en el fichero de\n"
-"                                         entrada, en formato Info, todo en un\n"
-"                                         mismo fichero.\n"
+"  makeinfo --no-split foo.texi           escribe en el fichero cuyo nombre\n"
+"                                         viene dado por el contenido de la\n"
+"                                         primitiva `@setfilename' en el fichero\n"
+"                                         de entrada, en formato Info, todo en\n"
+"                                         un mismo fichero, sin importar cuán\n"
+"                                         grande sea.\n"
 
 #: tp/texi2any.pl:899
 #, perl-format
@@ -3535,21 +3565,21 @@ msgstr "%s: `--paragraph-indent' toma un argumento numérico/`none'/`asis', y no
 #: tp/texi2any.pl:1067
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
-msgstr ""
+msgstr "%s: al generar %s, solo puede especificarse un FICHERO de entrada con -o\n"
 
 #: tp/texi2any.pl:1071
 msgid "--Xopt option without printed output"
-msgstr ""
+msgstr "opción --Xopt sin salida impresa"
 
 #: tp/texi2any.pl:1081
-#, fuzzy, perl-format
+#, perl-format
 msgid "unknown tree transformation %s"
-msgstr "acción desconocida '%s'"
+msgstr "transformación de árbol desconocida '%s'"
 
 #: tp/texi2any.pl:1088
 #, perl-format
 msgid "ignoring splitting for format %s"
-msgstr ""
+msgstr "no se realiza división para el formato %s"
 
 #: tp/texi2any.pl:1138
 #, perl-format
@@ -3566,14 +3596,14 @@ msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 
 #: tp/texi2any.pl:1242
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing macro expand file %s: %s\n"
-msgstr "error cerrando fichero '%s'"
+msgstr "error al cerrar el fichero de expansión de macros '%s': %s\n"
 
 #: tp/texi2any.pl:1248
 #, perl-format
 msgid "could not open %s for writing: %s\n"
-msgstr "no se pudo abrir %s por escribir: %s\n"
+msgstr "no se pudo abrir %s para escriturea: %s\n"
 
 #: tp/texi2any.pl:1273
 msgid "insert_nodes_for_sectioning_commands transformation return no result. No section?"
@@ -3585,14 +3615,14 @@ msgid "%s: error on closing %s: %s\n"
 msgstr "%s: error cerrando %s: %s\n"
 
 #: tp/texi2any.pl:1366 tp/texi2any.pl:1400
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
-msgstr "%s: ignorando el segundo argumento '%s' para los enlaces internos.\n"
+msgstr "%s: error al cerrar el fichero de enlaces internos %s: %s\n"
 
 #: tp/texi2any.pl:1372 tp/texi2any.pl:1406
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
-msgstr "%s: no se pudo abrir %s por escribir: %s\n"
+msgstr "%s: no se pudo abrir %s para escritura: %s\n"
 
 #~ msgid "Insert this character"
 #~ msgstr "Insertar este carácter"
