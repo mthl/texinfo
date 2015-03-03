@@ -1,5 +1,12 @@
 2015-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/Init-test.inc: Trap SIGINT.
+	(cleanup): Kill the subshell that launched ginfo and delete FIFO 
+	file for communicating that subshell was finished.
+	* info/t/Timeout-test.inc: Clear SUBSHELL shell variable.
+
+2015-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infodoc.c (info_get_info_help_node): If in a help
 	window, close it before loading the tutorial.
 

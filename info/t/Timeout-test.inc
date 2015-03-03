@@ -39,5 +39,8 @@ elif test "$FINISHED" != finished; then
   TIMED_OUT=1
 fi
 
+# Subshell is gone, so avoid trying to kill it in cleanup
+SUBSHELL=0
+
 rm -f $FINISHEDFIFO
 
