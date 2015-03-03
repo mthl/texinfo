@@ -1,11 +1,18 @@
 2015-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-stnd.texi (infokey format): Example .infokey changed 
+	to include "ESC u" for clearing search highlight.  Line setting 
+	scroll-step to its default value removed.  Suggest keys Up and 
+	Down to scroll up and down.
+
+2015-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/Init-inter.inc: Create a background process to hold a 
 	FIFO open for writing, instead of opening it read-write for 
 	pseudotty.
 	Eliminate extra invocation of mknod.  Remove extra shell 
 	variable with same value as another.
-	* info/t/Init-test.inc (cleanup): Kill this background subshell.
+	* info/t/Init-test.inc (cleanup): Kill this background process.
 
 	* info/pseudotty.c: Exit for end-of-file on either of the file 
 	descriptors being used.
