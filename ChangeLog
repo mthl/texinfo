@@ -1,3 +1,8 @@
+2015-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Invoking texi2any): Change a cross-reference 
+	to explain customization variables.
+
 2015-03-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodemenu.c (nodemenu_format_info): Add note for 

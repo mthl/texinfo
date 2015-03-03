@@ -17777,7 +17777,7 @@ If not set or otherwise specified, Info output is the default.
 
 The customization variable of the same name is also read; if set, that
 overrides an environment variable setting, but not a command-line
-option.  @xref{Customization Variables for @@-Commands}.
+option.  @xref{Customization Variables and Options}.
 
 
 @node @t{texi2any} Printed Output
