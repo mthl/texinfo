@@ -1,5 +1,10 @@
 2015-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/infodoc.c (info_get_info_help_node): If in a help
+	window, close it before loading the tutorial.
+
+2015-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-stnd.texi (infokey format): Example .infokey changed 
 	to include "ESC u" for clearing search highlight.  Line setting 
 	scroll-step to its default value removed.  Suggest keys Up and 

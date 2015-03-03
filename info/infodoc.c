@@ -369,6 +369,18 @@ DECLARE_INFO_COMMAND (info_get_info_help_node, _("Visit Info node '(info)Help'")
       }
   }
 
+  /* If there is more than one window on the screen, check if the user typed 
+     "H" for help message before typing "h" for tutorial.  If so, close help 
+     message so the tutorial will not be in a small window. */
+  if (windows->next)
+    {
+      WINDOW *help_window = get_internal_info_window (info_help_nodename);
+      if (help_window && help_window == active_window)
+        {
+          info_delete_window_internal (help_window);
+        }
+    }
+
   /* If the current window is small, show the small screen help. */
   if (active_window->height < 24)
     nodename = "Help-Small-Screen";
