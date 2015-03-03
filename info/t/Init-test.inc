@@ -37,7 +37,7 @@ GINFO_OUTPUT=t/`basename $0.out`
 
 # These are only used for interactive tests
 PIPEIN=t/`basename $0.pipein`
-PIPEOUT=t/`basename $0.pipeout`
+PTY_TYPE=t/`basename $0.pipeout`
 
 # Remove left over file from previous tests
 rm -f $GINFO_OUTPUT
@@ -47,6 +47,7 @@ INFO_PRINT_COMMAND=">$GINFO_OUTPUT"; export INFO_PRINT_COMMAND
 
 # Not an interactive test
 PTY_PID=0
+WEDGE_PTY_PID=0
 
 # Get error messages in English
 LC_ALL=C; export LC_ALL
@@ -58,12 +59,22 @@ TERM=dumb; export TERM
 cleanup ()
 {
   # Delete created files and kill spawned processes if any.
-  rm -f $GINFO_OUTPUT
-  rm -f $PIPEIN $PIPEOUT
   test $PTY_PID -ne 0 && kill $PTY_PID
+  
+  test $WEDGE_PTY_PID -ne 0 && kill $WEDGE_PTY_PID
+
+  rm -f $GINFO_OUTPUT
+  rm -f $PIPEIN $PTY_TYPE
   
   if test -n "$TIMED_OUT"; then
     return 1
   fi
+  #killall `basename $0`
   exit $RETVAL
 }
+
+# Uncomment this line and "killall" above if previous test runs were not
+# cleaned up properly, and rerun "make check".
+
+#cleanup
+

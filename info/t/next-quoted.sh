@@ -18,9 +18,10 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
+run_ginfo -f quoting
 # Go to a node with colons and commas in its name with "n"
-printf 'n\t\rDq' >$PTY_TYPE &
-$GINFO -f quoting
+printf 'n\t\rDq' >$PTY_TYPE
+. $t/Timeout-test.inc
 
 if test ! -f $GINFO_OUTPUT; then
   RETVAL=1

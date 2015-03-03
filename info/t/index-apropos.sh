@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,12 +18,13 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
+run_ginfo
+
 # Type "M-x index-apropos", look for "link" in indices, select first
 # result. Then type "i" followed by <TAB> to check the indices in the
 # file are still there.
 printf '\033xindex-apropos\rlink\r\t\ri\t\x07q' >$PTY_TYPE &
-$GINFO
-RETVAL=$?
+. $t/Timeout-test.inc
 
 cleanup
 

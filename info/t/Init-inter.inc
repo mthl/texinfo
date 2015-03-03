@@ -62,14 +62,12 @@ TERM=vt100; export TERM
 FINISHEDFIFO=t/`basename $0.finished`
 
 # Create named pipes to communicate with pseudotty program, or quit.
-rm -f $PIPEIN $PIPEOUT  # must already be defined
+rm -f $PIPEIN $PTY_TYPE # must already be defined
 if findprog mknod; then # check for mknod to give a better error msg
   mknod $PIPEIN p
-  mknod $PIPEIN p
-  mknod $PIPEOUT p
-  PTY_TYPE=$PIPEOUT
+  mknod $PTY_TYPE p
   #
-  if test ! -r $PIPEIN || test ! -r $PIPEOUT; then
+  if test ! -r $PIPEIN || test ! -r $PTY_TYPE; then
     echo "$0: could not mknod pipes" >&2
     exit 77
   fi
@@ -79,13 +77,31 @@ else
   exit 77
 fi
 
-# fixme: must check for <> support.
+# When pseudotty opens $PTY_TYPE for reading, this will freeze until the FIFO 
+# is also opened for writing.  The "select" call in pseudotty could also
+# return end-of-file if it is opened and then closed.  We could avoid this
+# by opening it read-write (with "3<>$PTY_TYPE").  However, this might not
+# be portable to some systems, and POSIX doesn't guarantee that a FIFO can
+# be opened read-write.  Thus, we keep the pipe open for writing using a
+# background process instead.
 
-# We can feed input bytes into $PTY_TYPE to be passed onto ginfo.  pseudotty
-# only reads from fd 3, but opening the pipe read-write means: (i) there will
-# always be a process with it open for writing, so pseudotty will not hang when
-# opening it; and (ii) select() will never return for an end-of-file on fd 3.
-./pseudotty >$PIPEIN 3<>$PTY_TYPE &
+# Wedge open pipe
+sleep 10 3>$PTY_TYPE &
+WEDGE_PTY_PID=$!
+
+# If we wanted the process to be open indefinitely, we could use an
+# infinite loop in a subshell, like:
+#
+#( exec 3>$PTY_TYPE ; while true; do sleep 100000; done) &
+#
+# Howewever, then we would have the problem of how to kill the "sleep"
+# process in that subshell.  Another idea is
+#
+# test -r t/wedge_cat.fifo || mkfifo t/wedge_cat.fifo
+# cat 3>$PTY_TYPE <wedge_cat.fifo &
+
+# We can feed input bytes into $PTY_TYPE to be passed onto ginfo
+./pseudotty >$PIPEIN 3<$PTY_TYPE &
 PTY_PID=$!
 
 # Get name of pseudo-terminal slave device

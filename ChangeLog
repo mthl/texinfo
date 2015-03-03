@@ -1,12 +1,29 @@
 2015-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/Init-inter.inc: Create a background process to hold a 
+	FIFO open for writing, instead of opening it read-write for 
+	pseudotty.
+	Eliminate extra invocation of mknod.  Remove extra shell 
+	variable with same value as another.
+	* info/t/Init-test.inc (cleanup): Kill this background subshell.
+
+	* info/pseudotty.c: Exit for end-of-file on either of the file 
+	descriptors being used.
+
+	* info/t/index-apropos.sh, info/t/last-no-history.sh, 
+	info/t/next-quoted.sh, info/t/quoted-label-and-target.sh, 
+	info/t/quoted-label-as-target.sh, info/t/quoted-target.sh: Run 
+	ginfo with "run_ginfo" and source t/Timeout-test.inc.
+
+2015-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Invoking texi2any): Change a cross-reference 
 	to explain customization variables.
 
 2015-03-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodemenu.c (nodemenu_format_info): Add note for 
-	tranlators.
+	translators.
 	* doc/texinfo.texi (Writing a Node): Fix minor typo.
 
 2015-02-27  Gavin Smith  <gavinsmith0123@gmail.com>

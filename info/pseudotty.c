@@ -2,7 +2,7 @@
    standard output.  Read and ignore any data sent to terminal.  This
    is so we can run tests interactively without messing up the screen.
 
-   Copyright 2014 Free Software Foundation, Inc.
+   Copyright 2014, 2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -66,26 +66,37 @@ main (void)
       FD_SET (CONTROL, &read_set);
 
       select (FD_SETSIZE, &read_set, 0, 0, 0);
+
       if (FD_ISSET (CONTROL, &read_set))
         {
           int c, success;
           errno = 0;
           do
             {
+              error (0, 0, "trying to read");
               success = read (CONTROL, &c, 1);
+              if (success < 0)
+                {
+                  if (errno != EINTR)
+                    {
+                      error (0, errno, "read error on control channel");
+                      sleep (1);
+                    }
+                }
+              else if (success == 0)
+                {
+                  error (0, 0, "end of file on control channel");
+                  exit (1);
+                }
+              else if (success == 1)
+                break;
             }
-          while (success != 1 && errno == EINTR);
-          if (!success)
-            {
-              error (0, 0, "read error on control channel");
-              sleep (1);
-            }
-          else
-            {
-              /* Feed any read bytes to the program being controlled. */
-              write (master, &c, 1);
-            }
+          while (1);
+
+          /* Feed any read bytes to the program being controlled. */
+          write (master, &c, 1);
         }
+
       if (FD_ISSET (master, &read_set))
         {
           int c, success;
@@ -98,7 +109,7 @@ main (void)
           if (!success)
             {
               error (0, 0, "read error on master fd");
-              sleep (1); /* Don't flood stderr with error messages. */
+              exit (1);
             }
         }
     }

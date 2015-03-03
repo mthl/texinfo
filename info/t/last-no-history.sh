@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,10 +18,11 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
+run_ginfo -f intera
+
 # Try to go back in history when there is no earlier node
-printf lq >$PTY_TYPE &
-$GINFO -f intera
-RETVAL=$?
+printf lq >$PTY_TYPE
+. $t/Timeout-test.inc
 
 cleanup
 
