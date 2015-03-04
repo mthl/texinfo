@@ -137,6 +137,7 @@ TESTS = \
 	t/index-completing.sh \
 	t/split-index.sh \
 	t/index-long-nodeline.sh \
+	t/empty-infopath.sh \
 	t/menu-sequence.sh \
 	t/relative-reference.sh \
 	t/resize-in-completions.sh \

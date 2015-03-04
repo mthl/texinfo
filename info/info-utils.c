@@ -1123,27 +1123,27 @@ parse_top_node_line (NODE *node)
       skip_input (skip_whitespace (inptr));
 
       /* Check what field we are looking at */
-      if (!strncmp (inptr, INFO_FILE_LABEL, strlen(INFO_FILE_LABEL)))
+      if (!strncasecmp (inptr, INFO_FILE_LABEL, strlen(INFO_FILE_LABEL)))
         {
           skip_input (strlen(INFO_FILE_LABEL));
           store_in = &dummy;
         }
-      else if (!strncmp (inptr, INFO_NODE_LABEL, strlen(INFO_NODE_LABEL)))
+      else if (!strncasecmp (inptr, INFO_NODE_LABEL, strlen(INFO_NODE_LABEL)))
         {
           skip_input (strlen(INFO_NODE_LABEL));
           store_in = &dummy;
         }
-      else if (!strncmp (inptr, INFO_PREV_LABEL, strlen(INFO_PREV_LABEL)))
+      else if (!strncasecmp (inptr, INFO_PREV_LABEL, strlen(INFO_PREV_LABEL)))
         {
           skip_input (strlen(INFO_PREV_LABEL));
           store_in = &node->prev;
         }
-      else if (!strncmp (inptr, INFO_NEXT_LABEL, strlen(INFO_NEXT_LABEL)))
+      else if (!strncasecmp (inptr, INFO_NEXT_LABEL, strlen(INFO_NEXT_LABEL)))
         {
           skip_input (strlen(INFO_NEXT_LABEL));
           store_in = &node->next;
         }
-      else if (!strncmp (inptr, INFO_UP_LABEL, strlen(INFO_UP_LABEL)))
+      else if (!strncasecmp (inptr, INFO_UP_LABEL, strlen(INFO_UP_LABEL)))
         {
           skip_input (strlen(INFO_UP_LABEL));
           store_in = &node->up;
@@ -1477,12 +1477,13 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
       int line_len;
       int length = 0; /* Length of specification */
 
-      length = skip_whitespace (inptr);
+      length = strspn (inptr, " ");
       length += read_bracketed_filename (inptr + length, &entry->filename);
       length += skip_whitespace (inptr + length);
 
       /* Get the node name. */
-      length += read_quoted_string (inptr + length, ",.", 2, &entry->nodename);
+      length += read_quoted_string (inptr + length, ",.\t\n", 2, 
+                                    &entry->nodename);
       if (inptr[length] == '.') /* A '.' terminating the entry. */
         length++;
 

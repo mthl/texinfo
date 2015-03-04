@@ -1,3 +1,15 @@
+2015-03-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (parse_top_node_line): Check for labels 
+	case-insensitively, as was done before.
+	(scan_reference_target): Allow a tab to terminate a node name in 
+	a menu entry.
+	* info/infopath.c (infopath_next): Handle case when the search 
+	path is empty.
+	* info/session.c (info_select_reference): Default to "Top" in 
+	error message if node couldn't be loaded.
+	* into/t/empty-infopath.sh: New test.
+
 2015-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-test.inc: Trap SIGINT.
