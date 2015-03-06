@@ -90,7 +90,6 @@ get_manpage_node (char *pagename)
   /* Node wasn't found, or its contents were freed since last time. */
   if (!node->contents)
     {
-      char header[1024];
       int hlen, plen;
 
       page = get_manpage_contents (pagename);
@@ -100,7 +99,8 @@ get_manpage_node (char *pagename)
 
       if (!preprocess_nodes_p)
         {
-          sprintf (header, "%s %s,  %s %s,  %s (dir)\n\n",
+          char *header;
+          asprintf (&header, "%s %s,  %s %s,  %s (dir)\n\n",
                    INFO_FILE_LABEL, MANPAGE_FILE_BUFFER_NAME,
                    INFO_NODE_LABEL, pagename,
                    INFO_UP_LABEL);
@@ -113,6 +113,7 @@ get_manpage_node (char *pagename)
           /* Set nodelen. */
           node->nodelen = hlen + plen;
 
+          free (header);
           /* FIXME: Don't allocate page just to immediately free it. */
           free (page);
         }

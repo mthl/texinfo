@@ -1,3 +1,8 @@
+2015-03-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/man.c (get_manpage_node): Avoid using fixed-size buffer 
+	to construct string.  Report from James Chang.
+
 2015-03-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (parse_top_node_line): Check for labels 
