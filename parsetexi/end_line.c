@@ -755,6 +755,7 @@ end_line_starting_block (ELEMENT *current)
     {
     }
   current = current->parent; //2965
+  //counter_pop (&count_remaining_args);
 
   /* Don't consider empty argument of block @-command as argument,
      reparent them as contents. */
@@ -1008,7 +1009,7 @@ end_line_misc_line (ELEMENT *current)
   current = current->parent; /* 3285 */
   if (end_command) /* Set above */
     {
-      /* more processing of @end */
+      /* More processing of @end */
       ELEMENT *end_elt;
 
       debug ("END COMMAND %s", end_command);
@@ -1079,6 +1080,8 @@ end_line_misc_line (ELEMENT *current)
   else if (command_data(cmd_id).flags & CF_root) /* 3380 */
     {
       current = last_contents_child (current);
+      if (cmd_id == CM_node)
+        counter_pop (&count_remaining_args);
       
       /* 3383 Destroy all contents (why do we do this?) */
       while (last_contents_child (current))

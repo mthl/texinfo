@@ -31,6 +31,10 @@ close_command_cleanup (ELEMENT *current)
   if (current->cmd == CM_multitable)
     {
     }
+  else if (current->cmd == CM_itemize || current->cmd == CM_enumerate)
+    {
+      counter_pop (&count_items);
+    }
 
   /* Put everything after the last @def*x command in a def_item type
      container. */

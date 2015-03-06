@@ -177,13 +177,14 @@ handle_misc_command (ELEMENT *current, char **line_inout,
             {
               if (cmd == CM_item)
                 {
-                  ELEMENT *misc;
+                  ELEMENT *misc; char *s;
                   debug ("ITEM CONTAINER");
+                  counter_inc (&count_items);
                   misc = new_element (ET_NONE);
                   misc->cmd = CM_item;
 
-                  add_extra_string (misc, "item_number", "1");
-                  /* TODO: Keep count. */
+                  asprintf (&s, "%d", counter_value (&count_items, parent));
+                  add_extra_string (misc, "item_number", s);
 
                   add_to_element_contents (parent, misc);
                   current = misc;
@@ -260,6 +261,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                       add_to_element_contents (row, misc);
                       current = misc;
 
+                      /* TODO: Keep count. */
                       add_extra_string (current, "cell_number", "1");
                     }
                 }
@@ -344,7 +346,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                  is the only (non-block) line command taking comma-separated
                  arguments.  Its arguments will be gathered the same as
                  those of some block line commands and brace commands. */
-              current->remaining_args = 3;
+              counter_push (&count_remaining_args, current, 3);
             }
           /* 4586 - author */
           /* 4612 - dircategory */
@@ -375,18 +377,21 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 }
 
 /* line 4632 */
+/* A command name has been read that starts a multiline block, which should
+   end in @end <command name>.  The block will be processed until 
+   "end_line_misc_line" in end_line.c processes the @end command. */
 ELEMENT *
 handle_block_command (ELEMENT *current, char **line_inout,
-                      enum command_id cmd_id, int *get_new_line)
+                      enum command_id cmd, int *get_new_line)
 {
   char *line = *line_inout;
-  unsigned long flags = command_data(cmd_id).flags;
+  unsigned long flags = command_data(cmd).flags;
 
   /* New macro being defined. */
-  if (cmd_id == CM_macro || cmd_id == CM_rmacro)
+  if (cmd == CM_macro || cmd == CM_rmacro)
     {
       ELEMENT *macro;
-      macro = parse_macro_command_line (cmd_id, &line, current);
+      macro = parse_macro_command_line (cmd, &line, current);
       add_to_element_contents (current, macro);
       // mark_and_warn_invalid ();
       current = macro;
@@ -399,20 +404,20 @@ handle_block_command (ELEMENT *current, char **line_inout,
       *get_new_line = 1;
       goto funexit;
     }
-  else if (command_data(cmd_id).data == BLOCK_conditional)
+  else if (command_data(cmd).data == BLOCK_conditional)
     {
       // 4699 - If conditional true, push onto conditional stack.  Otherwise
       // open a new element (which we shall later remove).
 
-      debug ("CONDITIONAL %s", command_data(cmd_id).cmdname);
-      if (cmd_id != CM_ifnotinfo) // TODO
-        push_conditional_stack (cmd_id); // Not ignored
+      debug ("CONDITIONAL %s", command_data(cmd).cmdname);
+      if (cmd != CM_ifnotinfo) // TODO
+        push_conditional_stack (cmd); // Not ignored
       else
         {
           // Ignored.
           ELEMENT *e;
           e = new_element (ET_NONE);
-          e->cmd = cmd_id;
+          e->cmd = cmd;
           add_to_element_contents (current, e);
           current = e;
         }
@@ -446,7 +451,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
           ELEMENT *block, *def_line;
           push_context (ct_def);
           block = new_element (ET_NONE);
-          block->cmd = cmd_id;
+          block->cmd = cmd;
           add_to_element_contents (current, block);
           current = block;
           def_line = new_element (ET_def_line);
@@ -458,17 +463,17 @@ handle_block_command (ELEMENT *current, char **line_inout,
           /*  line 4756 */
           ELEMENT *block = new_element (ET_NONE);
 
-          block->cmd = cmd_id;
+          block->cmd = cmd;
           add_to_element_contents (current, block);
           current = block;
         }
 
       /* 4763 Check if 'block args command' */
-      if (command_data(cmd_id).data != BLOCK_raw)
+      if (command_data(cmd).data != BLOCK_raw)
         {
-          if (command_data(cmd_id).flags & CF_preformatted)
+          if (command_data(cmd).flags & CF_preformatted)
             push_context (ct_preformatted);
-          else if (command_data(cmd_id).flags & CF_format_raw)
+          else if (command_data(cmd).flags & CF_format_raw)
             {
               push_context (ct_rawpreformatted);
             }
@@ -476,7 +481,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
           // regionsstack
 
           // 4784 menu commands
-          if (command_data(cmd_id).flags & CF_menu)
+          if (command_data(cmd).flags & CF_menu)
             {
               if (current_context () == ct_preformatted)
                 push_context (ct_preformatted);
@@ -489,11 +494,11 @@ handle_block_command (ELEMENT *current, char **line_inout,
 
               if (current_node)
                 {
-                  if (cmd_id == CM_direntry)
+                  if (cmd == CM_direntry)
                     {
                       // warning
                     }
-                  else if (cmd_id == CM_menu)
+                  else if (cmd == CM_menu)
                     {
                       // add to array of menus for current node
                     }
@@ -503,12 +508,17 @@ handle_block_command (ELEMENT *current, char **line_inout,
                 }
             }
 
+          if (cmd == CM_itemize || cmd == CM_enumerate)
+            counter_push (&count_items, current, 0);
+          /* Note that no equivalent thing is done in the Perl code, because
+             'item_count' is assumed to start at 0. */
+
           // 4816
           {
             ELEMENT *bla = new_element (ET_block_line_arg);
             add_to_element_args (current, bla);
             current = bla;
-            if (!(command_data(cmd_id).flags & CF_def))
+            if (!(command_data(cmd).flags & CF_def))
               push_context (ct_line);
 
             /* Note that an ET_empty_line_after_command gets reparented in the 
@@ -529,13 +539,13 @@ funexit:
 /* 4835 */
 ELEMENT *
 handle_brace_command (ELEMENT *current, char **line_inout,
-                      enum command_id cmd_id)
+                      enum command_id cmd)
 {
   char *line = *line_inout;
   ELEMENT *e;
 
   e = new_element (ET_NONE);
-  e->cmd = cmd_id;
+  e->cmd = cmd;
   add_to_element_contents (current, e);
   current = e;
 

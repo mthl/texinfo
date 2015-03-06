@@ -69,8 +69,9 @@ handle_open_brace (ELEMENT *current, char **line_inout)
 
       command = current->cmd;
       /* 4896 */
-      current->remaining_args = command_data(current->cmd).data;
-      current->remaining_args--;
+      counter_push (&count_remaining_args, current,
+                    command_data(current->cmd).data);
+      counter_dec (&count_remaining_args);
 
       arg = new_element (ET_NONE);
       add_to_element_args (current, arg);
@@ -217,6 +218,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
 
       closed_command = current->parent->cmd;
       debug ("CLOSING(brace) %s", command_data(closed_command).cmdname);
+      counter_pop (&count_remaining_args);
 
       // 5044 check for brace command that doesn't take arguments has in
       // fact been given arguments.
@@ -335,7 +337,7 @@ handle_comma (ELEMENT *current, char **line_inout)
     }
 #endif
 
-  current->remaining_args--;
+  counter_dec (&count_remaining_args);
   new_arg = new_element (type);
   add_to_element_args (current, new_arg);
   current = new_arg;
@@ -362,7 +364,8 @@ handle_separator (ELEMENT *current, char separator, char **line_inout)
     }
   /* If a comma is seen after all the arguments for the command have been
      read, it is included in the last argument. */
-  else if (separator == ',' && current->parent->remaining_args > 0) // 5228
+  else if (separator == ',' // 5228
+           && counter_value (&count_remaining_args, current->parent) > 0)
     {
       current = handle_comma (current, &line);
     }

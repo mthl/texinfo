@@ -109,6 +109,11 @@ pop_conditional_stack (void)
 }
 
 
+/* Counters */
+COUNTER count_remaining_args;
+COUNTER count_items;
+
+
 /* lines 1-751 - comments, variable declarations, package imports, 
    initializations, utilities */
 

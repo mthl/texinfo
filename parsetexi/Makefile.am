@@ -36,7 +36,8 @@ libparsetexi_a_SOURCES=api.c api.h \
 		  extra.c \
 		  menus.c \
 		  labels.c \
-		  errors.c errors.h
+		  errors.c errors.h \
+		  counter.c counter.h
 
 parsetexi_SOURCES=$(libparsetexi_a_SOURCES) main.c
 

@@ -1,3 +1,7 @@
+2015-03-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* counter.c: New file.
+
 2015-03-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* end_line.c (parse_line_commanad_args) <CM_defindex>: Call 

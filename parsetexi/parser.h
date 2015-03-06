@@ -81,3 +81,7 @@ KEY_PAIR *lookup_extra_key (ELEMENT *e, char *key);
 /* In menus.c */
 int handle_menu (ELEMENT **current_inout, char **line_inout);
 ELEMENT *enter_menu_entry_node (ELEMENT *current);
+
+#include "counter.h"
+/* Defined in parser.c */
+extern COUNTER count_remaining_args, count_items;
