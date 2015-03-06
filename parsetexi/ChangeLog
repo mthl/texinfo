@@ -1,6 +1,7 @@
 2015-03-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* counter.c: New file.
+	* commands.h (command_name): New macro.
 
 2015-03-01  Gavin Smith  <gavinsmith0123@gmail.com>
 

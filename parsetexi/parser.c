@@ -112,13 +112,9 @@ pop_conditional_stack (void)
 /* Counters */
 COUNTER count_remaining_args;
 COUNTER count_items;
+COUNTER count_cells;
 
 
-/* lines 1-751 - comments, variable declarations, package imports, 
-   initializations, utilities */
-
-/* lines 751 - 983 - user-visible functions, entry points */
-/* parse_texi_file */
 /* 835 */
 void
 parse_texi_file (const char *filename_in)
@@ -673,11 +669,11 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
               destroy_element (popped);
 
               // abort until end of line, calling new_line
-              debug ("CLOSED conditional %s", command_data(end_cmd).cmdname);
+              debug ("CLOSED conditional %s", command_name(end_cmd));
             }
           else
             {
-              debug ("CLOSED raw %s", command_data(end_cmd).cmdname);
+              debug ("CLOSED raw %s", command_name(end_cmd));
               start_empty_line_after_command (current, &line); // 3831
             }
         }
@@ -845,7 +841,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
           /* TODO: Check 'IGNORE_SPACES_AFTER_BRACED_COMMAND_NAME' config
              variable. */
           line_errorf ("@%s expected braces",
-                       command_data(current->cmd).cmdname);
+                       command_name(current->cmd));
           current = current->parent;
         }
     }
@@ -859,7 +855,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
   else if (cmd)
     {
       line = line_after_command;
-      debug ("COMMAND %s", command_data(cmd).cmdname);
+      debug ("COMMAND %s", command_name(cmd));
 
       /* TODO: Check if this is an alias command */
 
@@ -1047,14 +1043,14 @@ value_invalid:
       if (current->type)
         debug ("END LINE (%s)", element_type_names[current->type]);
       else if (current->cmd)
-        debug ("END LINE (@%s)", command_data(current->cmd).cmdname);
+        debug ("END LINE (@%s)", command_name(current->cmd));
       else
         debug ("END LINE");
       if (current->parent)
         {
           debug_nonl (" <- ");
           if (current->parent->cmd)
-            debug_nonl("@%s", command_data(current->parent->cmd).cmdname);
+            debug_nonl("@%s", command_name(current->parent->cmd));
           if (current->parent->type)
             debug_nonl("(%s)", element_type_names[current->parent->type]);
           debug ("");

@@ -34,6 +34,7 @@ enum command_id lookup_command (char *cmdname);
    : user_defined_command_data[(id) & ~USER_COMMAND_BIT])
 
 #define command_flags(e) (command_data((e)->cmd).flags)
+#define command_name(cmd) (command_data(cmd).cmdname)
 
 enum command_id add_texinfo_command (char *name);
 

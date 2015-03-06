@@ -20,6 +20,7 @@
 #include "parser.h"
 #include "tree.h"
 #include "text.h"
+#include "error.h"
 
 // 3600
 /* Add the contents of CURRENT as an element to the extra value with

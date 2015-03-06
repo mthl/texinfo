@@ -170,14 +170,14 @@ handle_misc_command (ELEMENT *current, char **line_inout,
       if (cmd == CM_item || cmd == CM_itemx
           || cmd == CM_headitem || cmd == CM_tab)
         {
-          ELEMENT *parent;
+          ELEMENT *misc, *parent;
 
           // itemize or enumerate 4443
           if ((parent = item_container_parent (current)))
             {
               if (cmd == CM_item)
                 {
-                  ELEMENT *misc; char *s;
+                  char *s;
                   debug ("ITEM CONTAINER");
                   counter_inc (&count_items);
                   misc = new_element (ET_NONE);
@@ -202,8 +202,6 @@ handle_misc_command (ELEMENT *current, char **line_inout,
             {
               if (cmd == CM_item || cmd == CM_itemx)
                 {
-                  ELEMENT *misc;
-
                   debug ("ITEM_LINE");
                   current = parent;
                   // gather_previous_item ();
@@ -213,14 +211,15 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                   line_arg = 1;
                 }
             }
-          // multitable
+          /* In a @multitable */
           else if ((parent = item_multitable_parent (current))) // 4477
             {
               if (cmd != CM_item && cmd != CM_headitem
                   && cmd != CM_tab)
                 {
-                  /* 4521 error - not meaningful */
-                  abort ();
+                  line_errorf ("@%s not meaningful inside @%s block",
+                              command_name(cmd),
+                              command_name(parent->cmd)); // 4521
                 }
               else
                 { /* 4480 */
@@ -234,52 +233,71 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 
                       row = last_contents_child (parent);
                       if (row->type == ET_before_item)
-                        abort ();/* error */
-                      /* else if too many columns */
+                        line_error ("@tab before @item");
+                      /* TODO 4489
+                      else if (counter_value (&count_cells, row)
+                              >= counter_value (&max_columns, parent))
+                        {
+                          line_error ("too many columns in multitable item"
+                                      " (max %d)",
+                                      counter_value (&max_columns, parent));
+                        }
+                      */
                       else // 4493
                         {
-                          ELEMENT *misc;
+                          char *s;
+                          counter_inc (&count_cells);
                           misc = new_element (ET_NONE);
                           misc->cmd = cmd;
                           add_to_element_contents (row, misc);
                           current = misc;
                           debug ("TAB");
 
-                          /* TODO: Keep count. */
-                          add_extra_string (current, "cell_number", "2");
+                          asprintf (&s, "%d",
+                                    counter_value (&count_cells, parent));
+                          add_extra_string (current, "cell_number", s);
                         }
                     }
                   else /* 4505 @item or @headitem */
                     {
-                      ELEMENT *row, *misc;
+                      ELEMENT *row; char *s;
 
                       debug ("ROW");
                       row = new_element (ET_row);
                       add_to_element_contents (parent, row);
+                      /* The Perl code sets the "row_number" extra value,
+                         although it doesn't look it is used anywhere. */
+
                       misc = new_element (ET_NONE);
                       misc->cmd = cmd;
                       add_to_element_contents (row, misc);
                       current = misc;
 
-                      /* TODO: Keep count. */
-                      add_extra_string (current, "cell_number", "1");
+                      if (counter_value (&count_cells, parent) != -1)
+                        counter_pop (&count_cells);
+                      counter_push (&count_cells, row, 1);
+                      asprintf (&s, "%d",
+                                counter_value (&count_cells, parent));
+                      add_extra_string (current, "cell_number", s);
                     }
                 }
-            } /* item_multitable_parent */
+            } /* In @multitable */
           else if (cmd == CM_tab) // 4526
             {
-              // error - tab outside of multitable
+              line_error ("ignoring @tab outside of multitable");
               current = begin_preformatted (current);
             }
           else
             {
-              /* error */
-              // this is reached too much at the moment
-              //abort ();
+              line_errorf ("@%s outside of table or list",
+                          command_name(cmd));
               current = begin_preformatted (current);
             }
+          if (misc)
+            misc->line_nr = line_nr; // 4535
         }
-      else /* not item, itemx, headitem, nor tab 4536 */
+      /*************************************************************/
+      else /* Not @item, @itemx, @headitem, nor @tab 4536 */
         {
           /* Add to contents */
           misc = new_element (ET_NONE);
@@ -301,7 +319,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 
               /* Find the command with "x" stripped from the end, e.g.
                  deffnx -> deffn. */
-              base_name = strdup (command_data(cmd).cmdname);
+              base_name = strdup (command_name(cmd));
               base_len = strlen (base_name);
               if (base_name[base_len - 1] != 'x')
                 abort ();
@@ -323,8 +341,8 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                 {
                   // error - deffnx not after deffn
                   line_errorf ("must be after @%s to use @%s",
-                               command_data(base_command).cmdname,
-                               command_data(cmd).cmdname);
+                               command_name(base_command),
+                               command_name(cmd));
                 }
             }
         } /* 4571 */
@@ -409,7 +427,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
       // 4699 - If conditional true, push onto conditional stack.  Otherwise
       // open a new element (which we shall later remove).
 
-      debug ("CONDITIONAL %s", command_data(cmd).cmdname);
+      debug ("CONDITIONAL %s", command_name(cmd));
       if (cmd != CM_ifnotinfo) // TODO
         push_conditional_stack (cmd); // Not ignored
       else

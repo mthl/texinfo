@@ -78,7 +78,7 @@ convert_to_normalized_internal (ELEMENT *root, TEXT *result, int in_uc)
             case CM_CLOSE_BRACE:
             case CM_OPEN_BRACE:
             case CM_BACKSLASH:
-              ADD(command_data(root->cmd).cmdname);
+              ADD(command_name(root->cmd));
               break;
             default:
               /* Shouldn't get here. */

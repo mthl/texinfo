@@ -18,9 +18,6 @@
 #include "parser.h"
 #include "errors.h"
 
-/* In parser.c. */
-ELEMENT *end_paragraph (ELEMENT *current);
-
 // 1512
 void
 close_command_cleanup (ELEMENT *current)
@@ -30,6 +27,12 @@ close_command_cleanup (ELEMENT *current)
 
   if (current->cmd == CM_multitable)
     {
+      if (counter_value (&count_cells, current) != -1)
+        counter_pop (&count_cells);
+      /* TODO
+      if (counter_value (&max_columns, current) != -1)
+        counter_pop (&count_cells);
+      */
     }
   else if (current->cmd == CM_itemize || current->cmd == CM_enumerate)
     {
@@ -69,7 +72,7 @@ close_current (ELEMENT *current)
   /* Element is a command */
   if (current->cmd)
     {
-      debug ("CLOSING (close_current) %s", command_data(current->cmd).cmdname);
+      debug ("CLOSING (close_current) %s", command_name(current->cmd));
       current = current->parent; /* TODO */
     }
   else if (current->type != ET_NONE)
@@ -173,7 +176,7 @@ close_commands (ELEMENT *current, enum command_id closed_command,
     }
   else if (closed_command)
     {
-      line_errorf ("unmatched @end %s", command_data(closed_command).cmdname);
+      line_errorf ("unmatched @end %s", command_name(closed_command));
     }
 
   return current;

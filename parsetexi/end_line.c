@@ -364,7 +364,7 @@ parse_line_command_args (ELEMENT *line_command)
         break;
       defindex_invalid:
         line_errorf ("bad argument to @%s: %s",
-                     command_data(cmd).cmdname, line);
+                     command_name(cmd), line);
         break;
       defindex_reserved:
         line_errorf ("reserved index name %s", name);
@@ -398,7 +398,7 @@ parse_line_command_args (ELEMENT *line_command)
         break;
       synindex_invalid:
         line_errorf ("bad argument to @%s: %s",
-                     command_data(cmd).cmdname, line);
+                     command_name(cmd), line);
         free (from); free (to);
         break;
       }
@@ -421,7 +421,7 @@ parse_line_command_args (ELEMENT *line_command)
           }
         else
           line_errorf ("@%s argument must be `top' or `bottom', not `%s'",
-                       command_data(cmd).cmdname, line);
+                       command_name(cmd), line);
 
         break;
       }
@@ -823,7 +823,7 @@ end_line_starting_block (ELEMENT *current)
 static ELEMENT *
 end_line_misc_line (ELEMENT *current)
 {
-  enum command_id cmd_id;
+  enum command_id cmd;
   int arg_type;
   enum context c;
   ELEMENT *misc_cmd;
@@ -834,11 +834,11 @@ end_line_misc_line (ELEMENT *current)
 
   current = current->parent;
   misc_cmd = current;
-  cmd_id = current->cmd;
-  if (!cmd_id)
+  cmd = current->cmd;
+  if (!cmd)
     abort ();
 
-  arg_type = command_data(cmd_id).data;
+  arg_type = command_data(cmd).data;
    
   /* Check 'line' is top of the context stack */
   c = pop_context ();
@@ -849,7 +849,7 @@ end_line_misc_line (ELEMENT *current)
     }
 
   // 3114
-  debug ("MISC END %s", command_data(cmd_id).cmdname);
+  debug ("MISC END %s", command_name(cmd));
 
   if (arg_type > 0)
     {
@@ -875,7 +875,7 @@ end_line_misc_line (ELEMENT *current)
       if (!text || !strcmp (text, ""))
         {
           // 3123
-          line_warnf ("@%s missing argument", command_data(cmd_id).cmdname);
+          line_warnf ("@%s missing argument", command_name(cmd));
         }
       else
         {
@@ -1039,20 +1039,20 @@ end_line_misc_line (ELEMENT *current)
     } /* 3340 */
   else
     {
-      if (close_preformatted_command (cmd_id))
+      if (close_preformatted_command (cmd))
         current = begin_preformatted (current);
     }
 
   /* 3346 included file */
 
   /* 3350 */
-  if (cmd_id == CM_setfilename && (current_node || current_section))
+  if (cmd == CM_setfilename && (current_node || current_section))
     {
       /* warning */
       abort ();
     }
   /* 3355 columnfractions */
-  else if (cmd_id == CM_columnfractions)
+  else if (cmd == CM_columnfractions)
     {
       ELEMENT *before_item;
       KEY_PAIR *misc_args;
@@ -1077,10 +1077,10 @@ end_line_misc_line (ELEMENT *current)
       add_to_element_contents (current, before_item);
       current = before_item;
     }
-  else if (command_data(cmd_id).flags & CF_root) /* 3380 */
+  else if (command_data(cmd).flags & CF_root) /* 3380 */
     {
       current = last_contents_child (current);
-      if (cmd_id == CM_node)
+      if (cmd == CM_node)
         counter_pop (&count_remaining_args);
       
       /* 3383 Destroy all contents (why do we do this?) */
@@ -1088,7 +1088,7 @@ end_line_misc_line (ELEMENT *current)
         destroy_element (pop_element_from_contents (current));
 
       /* Set 'associated_section' extra key for a node. */
-      if (cmd_id != CM_node && cmd_id != CM_part)
+      if (cmd != CM_node && cmd != CM_part)
         {
           if (current_node)
             {

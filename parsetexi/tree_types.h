@@ -81,9 +81,6 @@ typedef struct ELEMENT {
     size_t extra_number;
     size_t extra_space;
 
-    /* Not used in final output. */
-    int remaining_args; /* Could be a stack instead. */
-
     /* Set to route_not_in_tree if element not in main tree.  Also
        used for routing information along with 'index_in_parent' when
        dumping to a text stream. */

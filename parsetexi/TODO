@@ -1,6 +1,6 @@
 * conditionals on @set/@value, output format
-* Counters for e.g. numbers of arguments read so far for a brace 
-command, or the row in a table.
+* Check everywhere we store values, we check properly what to do if the
+  values are already defined.
 * check valid nestings
 * @deffn, @deffnx, etc.
 * Implement parser options

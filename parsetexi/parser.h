@@ -84,4 +84,4 @@ ELEMENT *enter_menu_entry_node (ELEMENT *current);
 
 #include "counter.h"
 /* Defined in parser.c */
-extern COUNTER count_remaining_args, count_items;
+extern COUNTER count_remaining_args, count_items, count_cells;

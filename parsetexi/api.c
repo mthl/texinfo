@@ -167,7 +167,7 @@ element_to_perl_hash (ELEMENT *e)
 
   if (e->cmd)
     {
-      sv = newSVpv (command_data(e->cmd).cmdname, 0);
+      sv = newSVpv (command_name(e->cmd), 0);
       hv_store (e->hv, "cmdname", strlen ("cmdname"), sv, 0);
 
       /* TODO: Same optimizations as for 'type'. */
@@ -441,9 +441,9 @@ build_single_index_data (INDEX *i)
       STORE2("index_name", newSVpv (i->name, 0));
       STORE2("index_prefix", newSVpv (i->name, 1));
       STORE2("index_at_command",
-             newSVpv (command_data(e->index_at_command).cmdname, 0));
+             newSVpv (command_name(e->index_at_command), 0));
       STORE2("index_type_command",
-             newSVpv (command_data(e->index_type_command).cmdname, 0));
+             newSVpv (command_name(e->index_type_command), 0));
       STORE2("command",
              newRV_inc ((SV *)e->command->hv));
       STORE2("number", newSViv (j));
