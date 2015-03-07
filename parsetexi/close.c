@@ -43,25 +43,101 @@ close_command_cleanup (ELEMENT *current)
      container. */
   if (command_data(current->cmd).flags & CF_def)
     {
-      /* "At this point the end command hasn't been added to the command
-         contents, so checks cannot be done at this point." */
       gather_def_item (current);
     }
 
-  /* "item_line" commands */
   if (current->cmd == CM_table
       || current->cmd == CM_ftable
       || current->cmd == CM_vtable)
     {
-      /* "At this point the end command hasn't been added to the command
-         contents, so checks cannot be done at this point." */
       if (current->contents.number > 0)
-        ;//gather_previous_item (current);
+        gather_previous_item (current, 0);
     }
 
   // 1570
-  if (command_data(current->cmd).flags & CF_blockitem)
+  /* Block commands that contain @item's - e.g. @multitable, @table,
+     @itemize. */
+  if (command_data(current->cmd).flags & CF_blockitem
+      && current->contents.number > 0)
     {
+      int have_leading_spaces = 0;
+      ELEMENT *before_item;
+      if (current->contents.number >= 0
+          && current->contents.list[0]->type == ET_empty_line_after_command
+          && current->contents.list[1]->type == ET_before_item)
+        {
+          have_leading_spaces = 1;
+          before_item = current->contents.list[1];
+        }
+      else
+        {
+          before_item = current->contents.list[0];
+          /* TODO: before_item is ELEMENT or ELEMENT * ? */
+        }
+
+      /* Perl code here checks if before_item exists, but it already assumed
+         that it existed by accessing 'type' key on it. */
+
+      // 1585
+      /* Reparent @end from a ET_before_item to the block command */
+      {
+      KEY_PAIR *k = lookup_extra_key (current, "end_command");
+      ELEMENT *e = k ? k->value : 0;
+      if (k && last_contents_child (before_item)
+          && last_contents_child (before_item) == e)
+        {
+          add_to_element_contents (current,
+                                   pop_element_from_contents (before_item));
+        }
+      }
+
+      /* Now if the ET_before_item is empty, remove it. */
+      if (before_item->contents.number == 0)
+        {
+          destroy_element (remove_from_contents (current,
+                                                 have_leading_spaces ? 1 : 0));
+        }
+      else /* Non-empty ET_before_item */
+        {
+          int empty_before_item = 1, i;
+          /* Check if contents consist soley of @comment's. */
+          for (i = 0; i < before_item->contents.number; i++)
+            {
+              enum command_id c = before_item->contents.list[i]->cmd;
+              if (c != CM_c && c != CM_comment)
+                {
+                  empty_before_item = 0;
+                }
+            }
+
+          if (!empty_before_item)
+            {
+              int empty_format = 1;
+              /* Check for an element that could represent an @item in the
+                 block.  The type of this element will depend on the block 
+                 command we are in. */
+              for (i = 0; i < current->contents.number; i++)
+                {
+                  ELEMENT *e = current->contents.list[i];
+                  if (e == before_item)
+                    continue;
+                  if (e->cmd != CM_NONE
+                         && (e->cmd != CM_c && e->cmd != CM_comment
+                             && e->cmd != CM_end)
+                      || e->type != CM_NONE
+                         && e->type != ET_empty_line_after_command)
+                    {
+                      empty_format = 0;
+                      break;
+                    }
+                }
+
+              if (empty_format)
+                line_warnf ("@%s has text but no @item",
+                            command_name(current->cmd));
+            }
+        }
+
     } // 1635
 }
 

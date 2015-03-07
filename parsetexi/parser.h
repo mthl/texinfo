@@ -63,6 +63,7 @@ char *fetch_value (char *name, int len);
 /* In multitable.c */
 ELEMENT *item_line_parent (ELEMENT *current);
 ELEMENT *item_multitable_parent (ELEMENT *current);
+void gather_previous_item (ELEMENT *current, enum command_id next_command);
 
 #include "dump_perl.h"
 

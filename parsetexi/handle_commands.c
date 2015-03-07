@@ -172,7 +172,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
         {
           ELEMENT *misc, *parent;
 
-          // itemize or enumerate 4443
+          /* @itemize or @enumerate */ // 4443
           if ((parent = item_container_parent (current)))
             {
               if (cmd == CM_item)
@@ -192,23 +192,27 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                 }
               else
                 {
-                  // error
-                  abort ();
+                  line_errorf ("@%s not meaningful within `@%s' block");
                 }
-              //begin_preformatted ();
+              current = begin_preformatted (current);
             }
-          // *table
+          /* @table, @vtable, @ftable */
           else if ((parent = item_line_parent (current)))
             {
               if (cmd == CM_item || cmd == CM_itemx)
                 {
                   debug ("ITEM_LINE");
                   current = parent;
-                  // gather_previous_item ();
+                  gather_previous_item (current, cmd);
                   misc = new_element (ET_NONE);
                   misc->cmd = cmd;
                   add_to_element_contents (current, misc);
                   line_arg = 1;
+                }
+              else
+                {
+                  line_errorf ("@%s not meaningful within `@%s' block");
+                  current = begin_preformatted (current);
                 }
             }
           /* In a @multitable */
@@ -223,9 +227,11 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                 }
               else
                 { /* 4480 */
-                  // check for empty multitable
-                  /* if
+                  /* TODO - need the max_columns value for this
+                  if (counter_value (max_columns, parent) == 0)
                     {
+                      line_warnf ("@%s in empty multitable",
+                                  command_name(cmd));
                     }
                   else */ if (cmd == CM_tab)
                     { // 4484
@@ -235,8 +241,8 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                       if (row->type == ET_before_item)
                         line_error ("@tab before @item");
                       /* TODO 4489
-                      else if (counter_value (&count_cells, row)
-                              >= counter_value (&max_columns, parent))
+                      else if (counter_value (&count_cells, parent)
+                               >= counter_value (&max_columns, parent))
                         {
                           line_error ("too many columns in multitable item"
                                       " (max %d)",

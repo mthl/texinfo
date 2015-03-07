@@ -305,7 +305,11 @@ sub parse_texi_file ($$)
   $tree_stream = dump_errors();
   eval $tree_stream;
   for my $error (@{$ERRORS}) {
-    $self->line_error ($error->{'message'}, $error->{'line_nr'});
+    if ($error->{'type'} eq 'error') {
+      $self->line_error ($error->{'message'}, $error->{'line_nr'});
+    } else {
+      $self->line_warn ($error->{'message'}, $error->{'line_nr'});
+    }
   }
 
 

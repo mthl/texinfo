@@ -1,3 +1,10 @@
+2015-03-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* Parsetexi/lib/Parsetexi.pm (parse_texi_file): Handle warnings 
+	as well as error messages.
+	* close.c (close_command_cleanup) <CF_blockitem>: More complete.
+	* multitable.c (gather_previous_item): Implement.
+
 2015-03-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* counter.c: New file.
