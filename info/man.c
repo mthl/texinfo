@@ -100,11 +100,10 @@ get_manpage_node (char *pagename)
       if (!preprocess_nodes_p)
         {
           char *header;
-          asprintf (&header, "%s %s,  %s %s,  %s (dir)\n\n",
+          hlen = asprintf (&header, "%s %s,  %s %s,  %s (dir)\n\n",
                    INFO_FILE_LABEL, MANPAGE_FILE_BUFFER_NAME,
                    INFO_NODE_LABEL, pagename,
                    INFO_UP_LABEL);
-          hlen = strlen (header);
 
           node->contents = xcalloc (1, hlen + plen + 1);
           memcpy (node->contents, header, hlen);

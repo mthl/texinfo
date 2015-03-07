@@ -291,10 +291,11 @@ dir_entry_of_infodir (char *label, char *searchdir)
       dir_node = info_get_node (dir_fullpath, "Top");
       free (dir_fullpath);
       entry = info_get_menu_entry_by_label (dir_node, label, 1);
-      if (!entry)
+      if (!entry || !entry->filename)
         {
           free_history_node (dir_node);
           continue;
+          /* A dir entry with no filename is unlikely, but not impossible. */
         }
 
       entry = info_copy_reference (entry);

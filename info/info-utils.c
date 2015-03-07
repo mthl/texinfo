@@ -1477,9 +1477,9 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
       int line_len;
       int length = 0; /* Length of specification */
 
-      length = strspn (inptr, " ");
+      length = skip_whitespace (inptr);
       length += read_bracketed_filename (inptr + length, &entry->filename);
-      length += skip_whitespace (inptr + length);
+      length += strspn (inptr + length, " ");
 
       /* Get the node name. */
       length += read_quoted_string (inptr + length, ",.\t\n", 2, 
