@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: texinfo-5.9.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2015-02-22 16:49-0800\n"
-"PO-Revision-Date: 2015-03-01 12:15+0100\n"
+"PO-Revision-Date: 2015-03-08 11:02+0100\n"
 "Last-Translator: Antonio Ceballos <aceballos@gmail.com>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
 "Language: es\n"
@@ -82,24 +82,23 @@ msgstr "%s: la opción '-W %s' no permite argumento alguno\n"
 #: gnulib/lib/getopt.c:1043 gnulib/lib/getopt.c:1061
 #, c-format
 msgid "%s: option '-W %s' requires an argument\n"
-msgstr "%s: la opción '%s' requiere un argumento\n"
+msgstr "%s: la opción '-W %s' requiere un argumento\n"
 
 #: gnulib/lib/regcomp.c:131
 msgid "Success"
-msgstr ""
+msgstr "Encontrado"
 
 #: gnulib/lib/regcomp.c:134
 msgid "No match"
-msgstr ""
+msgstr "No hay coincidencias"
 
 #: gnulib/lib/regcomp.c:137
 msgid "Invalid regular expression"
 msgstr "Expresión regular no válida"
 
-# TODO review
 #: gnulib/lib/regcomp.c:140
 msgid "Invalid collation character"
-msgstr "Inválido carácter fundido"
+msgstr "Carácter de combinación incorrecto"
 
 #: gnulib/lib/regcomp.c:143
 msgid "Invalid character class name"
@@ -111,7 +110,7 @@ msgstr "Barra inclinada inversa al final"
 
 #: gnulib/lib/regcomp.c:149
 msgid "Invalid back reference"
-msgstr ""
+msgstr "Referencia retroactiva no válida"
 
 #: gnulib/lib/regcomp.c:152
 msgid "Unmatched [ or [^"
@@ -189,10 +188,9 @@ msgstr "Retroceder una palabra"
 msgid "Delete the character under the cursor"
 msgstr "Borrar el carácter bajo el cursor"
 
-# TODO review
 #: info/echo-area.c:457
 msgid "Delete the character behind the cursor"
-msgstr "Borrar el cáracter anterior a la posición del cursor"
+msgstr "Borrar el cáracter que está detrás del cursor"
 
 #: info/echo-area.c:478
 msgid "Cancel or quit operation"
@@ -250,7 +248,7 @@ msgstr "Nada que completar"
 msgid "Not complete"
 msgstr "Incompleto"
 
-# TODO review
+# TODO review completion=entrada
 #: info/echo-area.c:1032
 msgid "List possible completions"
 msgstr "Listar posibles entradas"
@@ -299,11 +297,10 @@ msgstr "buscando el fichero %s en %s"
 msgid "found file %s"
 msgstr "encontrado el fichero %s"
 
-# TODO review
 #: info/footnotes.c:231
 #, c-format
 msgid "Footnotes could not be displayed"
-msgstr "Las notas a pie de página no pudieron ser mostradas"
+msgstr "No se pudieron mostrar las notas a pie de página"
 
 #: info/footnotes.c:251
 msgid "Show the footnotes associated with this node in another window"
@@ -342,7 +339,7 @@ msgstr ""
 "Ir al siguiente elemento del índice que concuerde desde la última vez que se\n"
 "ejecutó la orden '\\[index-search]'."
 
-# TODO review
+# TODO review index=text
 #: info/indices.c:431
 #, c-format
 msgid "No previous index search string."
@@ -367,7 +364,6 @@ msgstr "Buscando índices de '%s'..."
 msgid "Grovel all known info file's indices for a string and build a menu"
 msgstr "Buscar un texto entre todos los ficheros Info disponibles y generar un menú"
 
-# TODO review
 #: info/indices.c:614 info/indices.c:616
 msgid "Index apropos"
 msgstr "Índice de apropos"
@@ -623,7 +619,7 @@ msgstr "El nodo '(%s)%s' no se ha encontrado."
 msgid "Cannot find a window!"
 msgstr "¡No se ha podido encontrar una ventana!"
 
-# TODO review
+# TODO review point=cursor
 #: info/info.c:1031
 msgid "Point doesn't appear within this window's node!"
 msgstr "¡El cursor no parece estar sobre nodo alguno en esta ventana!"
@@ -877,10 +873,9 @@ msgstr "%s no ha sido definido."
 msgid "Show what to type to execute a given command"
 msgstr "Muestra qué teclas pulsar para ejecutar una orden determinada"
 
-# TODO review
 #: info/infodoc.c:858
 msgid "Where is command: "
-msgstr "Orden \"donde está\": "
+msgstr "Dónde está la orden: "
 
 #: info/infodoc.c:880
 #, c-format
@@ -928,10 +923,9 @@ msgid "missing action name"
 msgstr "nombre de acción ausente"
 
 #: info/infokey.c:450
-#, fuzzy, c-format
-#| msgid "key sequence too long"
+#, c-format
 msgid "cannot bind key sequence to menu-digit"
-msgstr "secuencia de teclas demasiado larga"
+msgstr "no se puede asociar la secuencia de teclas a un dígito de menú"
 
 #: info/infokey.c:458
 #, c-format
@@ -1355,7 +1349,6 @@ msgstr "Leer una referencia a páginas del manual y seleccionarla"
 msgid "Get Manpage: "
 msgstr "Página de manual a buscar: "
 
-# TODO review Top
 #: info/session.c:3497
 msgid "Select the node 'Top' in this file"
 msgstr "Seleccionar el nodo 'Top' de este fichero"
@@ -1375,7 +1368,7 @@ msgstr "Seleccionar el nodo usado más recientemente"
 #: info/session.c:3531
 #, c-format
 msgid "No earlier node in history"
-msgstr ""
+msgstr "No hay nodos anteriores en la historia"
 
 #: info/session.c:3535
 msgid "Read the name of a file and select it"
@@ -1410,10 +1403,9 @@ msgstr "cerrando %s"
 msgid "writing node %s..."
 msgstr "escribiendo nodo %s..."
 
-# TODO review pipe
 #: info/session.c:3723
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
-msgstr "Volcar el contenido de este nodo a través de INFO_PRINT_COMMAND"
+msgstr "Volcar (vía «pipe») el contenido de este nodo a través de INFO_PRINT_COMMAND"
 
 #: info/session.c:3751
 #, c-format
@@ -1517,7 +1509,7 @@ msgstr "Repetir la última búsqueda en dirección contraria"
 
 #: info/session.c:4335
 msgid "Clear displayed search matches"
-msgstr ""
+msgstr "Borra las coincidencias de búsqueda visualizadas"
 
 #: info/session.c:4352 info/session.c:4358
 msgid "Search interactively for a string as you type it"
@@ -1539,7 +1531,6 @@ msgstr "Búsqueda interactiva (exp.reg.): "
 msgid "I-search: "
 msgstr "Búsqueda interactiva: "
 
-# Review
 #: info/session.c:4501 info/session.c:4504
 msgid "Failing "
 msgstr "Falló "
@@ -1548,7 +1539,6 @@ msgstr "Falló "
 msgid "Cancel current operation"
 msgstr "Cancelar la operación en curso"
 
-# TODO review
 #: info/session.c:4884
 msgid "Quit"
 msgstr "Cancelado"
@@ -1582,13 +1572,12 @@ msgstr "Orden desconocida (%s)."
 #: info/session.c:4960
 #, c-format
 msgid "\"%s\" is invalid"
-msgstr "\"%s\" es inválido"
+msgstr "\"%s\" no es válida"
 
-# TODO género
 #: info/session.c:4961
 #, c-format
 msgid "'%s' is invalid"
-msgstr "'%s' no es válido"
+msgstr "'%s' no es válida"
 
 #: info/session.c:5278
 msgid "Add this digit to the current numeric argument"
@@ -1665,7 +1654,7 @@ msgstr "Excluir los directorios predeterminados de la ruta de búsqueda del fich
 
 #: info/variables.c:112
 msgid "Hide some Info file syntax in the text of nodes"
-msgstr ""
+msgstr "Oculta parcialmente la sintaxis del fichero Info en el texto de los nodos"
 
 #: info/variables.c:116
 msgid "Length of time in milliseconds to wait for the next byte in a sequence indicating that a key has been pressed"
@@ -1673,11 +1662,11 @@ msgstr "Tiempo de espera en milisegundos para el siguiente byte de una serie que
 
 #: info/variables.c:120
 msgid "Highlight search matches"
-msgstr ""
+msgstr "Resalta las coincidencias de la búsqueda"
 
 #: info/variables.c:124
 msgid "Method to use to track mouse events"
-msgstr ""
+msgstr "Método para realizar el seguimiento de los eventos del ratón"
 
 #: info/variables.c:130
 msgid "Explain the use of a variable"
@@ -1695,7 +1684,6 @@ msgstr "Establecer el valor de una variable"
 msgid "Set variable: "
 msgstr "Establecer variable: "
 
-# TODO review
 #: info/variables.c:174
 #, c-format
 msgid "Set %s to value (%d): "
@@ -1734,7 +1722,7 @@ msgstr " Sub-fichero: %s"
 msgid "%s: empty file"
 msgstr "%s: fichero vacío"
 
-# TODO review
+# TODO review test
 #: install-info/install-info.c:294
 #, c-format
 msgid "%s for %s"
@@ -1745,13 +1733,13 @@ msgstr "%s para %s"
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\tPruebe `%s --help' para obtener una lista de las opciones soportadas.\n"
 
-# TODO review DIR-FILE
+# TODO ASK DIR-FILE
 #: install-info/install-info.c:541
 #, c-format
 msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
 msgstr "Modo de empleo: %s [OPCIÓN]... [FICHERO_INFO [FICHERO_ÍNDICE]]\n"
 
-# TODO review DIR-FILE
+# TODO ASK DIR-FILE
 #: install-info/install-info.c:543
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
 msgstr ""
@@ -1763,6 +1751,8 @@ msgid ""
 "INFO-FILE and DIR-FILE are required unless the --info-file\n"
 "or --dir-file (or --info-dir) options are given, respectively."
 msgstr ""
+"FICHERO_INFO y FICHERO_ÍNDICE son necesarios a menos que una de las opciones\n"
+"--info-file o --dir-file (o --info-dir), respectivamente, sea especificada."
 
 #: install-info/install-info.c:548
 msgid ""
@@ -1780,7 +1770,6 @@ msgstr ""
 "                       para que comiencen en la columna COL."
 
 #: install-info/install-info.c:555
-#, fuzzy
 msgid ""
 " --debug             report what is being done.\n"
 " --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
@@ -1796,15 +1785,18 @@ msgid ""
 msgstr ""
 " --debug             informar de lo que se está haciendo.\n"
 " --delete            eliminar del fichero índice FICHERO_ÍNDICE las entradas\n"
-"                     existentes que referencian el fichero FICHERO_INFO\n"
-" --description=TEXTO   la descripción de la entrada es TEXTO;\n"
-"                       usado junto con `--name' equivale al `--entry'\n"
+"                       existentes que referencian el fichero FICHERO_INFO;\n"
+"                       no insertar ninguna entrada nueva.\n"
+" --defsection=TEXT   igual que --section, pero solo se utiliza TEXTO si no hay\n"
+"                       ninguna sección en el fichero FICHERO_INFO (reemplazando\n"
+"                       \"Miscellaneous\").\n"
+" --description=TEXTO la descripción de la entrada es TEXTO;\n"
+"                       usado junto con `--name' equivale a `--entry'\n"
 " --dir-file=NOMBRE   el nombre del fichero índice;\n"
-"                     equivale al usar el argumento FICHERO_ÍNDICE\n"
-" --dry-run           lo mismo que `--test'"
+"                       equivale a usar el argumento FICHERO_ÍNDICE.\n"
+" --dry-run           lo mismo que `--test'."
 
 #: install-info/install-info.c:568
-#, fuzzy
 msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry,\n"
 "                      overriding any corresponding entry from DIR-FILE.\n"
@@ -1815,12 +1807,14 @@ msgid ""
 "                       from information in the Info file itself."
 msgstr ""
 " --entry=TEXTO       insertar el texto TEXTO como entrada en el fichero índice\n"
-"                     especificado; TEXTO debe cumplir con el formato usado para\n"
-"                     describir elementos de menu en Info, más cero o más líneas\n"
-"                     extra que comiencen con un espacio en blanco.  Si usted\n"
-"                     especifica más de un elemento, todos serán añadidos; en\n"
-"                     caso contrario estos vendrán determinados por los datos\n"
-"                     existentes en el fichero Info en cuestión"
+"                      especificado, anulando así las entradas correspondientes\n"
+"                      en FICHERO_ÍNDICE.\n"
+"                     TEXTO debe cumplir con el formato usado para describir\n"
+"                      elementos de menu en Info, opcionalmente seguido de\n"
+"                      líneas extra que comiencen con un espacio en blanco.\n"
+"                     Si usted especifica más de un elemento, se añadirán todos.\n"
+"                     Si no especifica ninguno, estos vendrán determinados por\n"
+"                      los datos existentes en el fichero Info en cuestión."
 
 #: install-info/install-info.c:577
 msgid ""
@@ -1838,7 +1832,7 @@ msgstr ""
 " --item=TEXTO        alias para --entry=TEXTO.\n"
 " --keep-old          no sustituir entradas, ni eliminar secciones vacías."
 
-# TODO review FICHERO_INDICE
+# TODO ASK DIR=FICHERO_INDICE
 #: install-info/install-info.c:585
 msgid ""
 " --maxwidth, --max-width=COL  wrap description at column COL.\n"
@@ -1855,7 +1849,6 @@ msgstr ""
 " --no-indent         no dar formato a las nuevas entradas en el FICHERO_ÍNDICE\n"
 " --quiet             suprimir mensajes de advertencia"
 
-# TODO ¿traducir 'miscellaneous'?
 #: install-info/install-info.c:593
 msgid ""
 " --regex=R           put this file's entries in all sections that match the\n"
@@ -1912,7 +1905,6 @@ msgstr ""
 "Texinfo en general pueden ser dirigidas a <help-texinfo@gnu.org>.\n"
 "El sitio web de Texinfo es: http://www.gnu.org/software/texinfo/"
 
-# TODO review
 #: install-info/install-info.c:643
 #, c-format
 msgid ""
@@ -1940,13 +1932,13 @@ msgstr ""
 "\n"
 "  Este (el Directorio principal) proporciona un menú que contiene las entradas\n"
 "  principales. Tecleando \"q\" saldrá de esta aplicación informática, tecleando\n"
-"  \"?\" prodrá producir un listado de todos los comandos disponibles a modo de\n"
-"  referencia; tecleando \"d\" volverá a esta pantalla, \"h\" provee de información\n"
-"  a usuarios/as primerizos/as; presionando \"mEmacs<Return>\" podrá visitar\n"
+"  \"?\" prodrá obtener un listado de todos los comandos disponibles a modo de\n"
+"  referencia; tecleando \"d\" volverá a esta pantalla, \"h\" ofrece información\n"
+"  para usuarios/as primerizos/as; presionando \"mEmacs<Return>\" podrá visitar\n"
 "  el manual de Emacs, etc.\n"
 "\n"
 "  También puede usted usar Info desde Emacs. En la versión de Emacs con\n"
-"  ventanas puede hacer click con el botón izquierdo del ratón sobre elementos\n"
+"  ventanas puede hacer click con el botón derecho del ratón sobre elementos\n"
 "  de menú o sobre enlaces para seleccionarlos o seguirlos.\n"
 "\n"
 "%s\n"
@@ -1966,7 +1958,7 @@ msgstr "`START-INFO-DIR-ENTRY' presente, pero sin pareja (END-INFO-DIR-ENTRY)"
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "`END-INFO-DIR-ENTRY' presente, pero sin pareja (START-INFO-DIR-ENTRY)"
 
-# TODO dir file
+# TODO ASK dir file
 #: install-info/install-info.c:2034 install-info/install-info.c:2044
 #, c-format
 msgid "%s: already have dir file: %s\n"
@@ -2107,7 +2099,7 @@ msgstr "no se pudo abrir %s: %s"
 #: tp/Texinfo/Common.pm:2107
 #, perl-format
 msgid "could not protect hash character in @%s"
-msgstr ""
+msgstr "no se ha podido proteger el carácter almohadilla en @%s"
 
 #: tp/Texinfo/Convert/Converter.pm:395 tp/Texinfo/Convert/Converter.pm:414
 #, perl-format
@@ -2117,7 +2109,7 @@ msgstr "Variable obsoleta %s\n"
 #: tp/Texinfo/Convert/Converter.pm:794
 #, perl-format
 msgid "%s: output incompatible with split"
-msgstr ""
+msgstr "%s: salida incompatible con división"
 
 #: tp/Texinfo/Convert/Converter.pm:876 tp/Texinfo/Convert/Converter.pm:909
 #: tp/Texinfo/Convert/DocBook.pm:361 tp/Texinfo/Convert/HTML.pm:6926
@@ -2156,7 +2148,7 @@ msgstr "El fichero @image '%s' (para HTML) no se ha encontrado; se utilizará '%
 #: tp/Texinfo/Convert/HTML.pm:2373
 #, perl-format
 msgid "raw format %s is not converted"
-msgstr ""
+msgstr "el formato en bruto %s no se ha convertido"
 
 #: tp/Texinfo/Convert/HTML.pm:4883
 msgid "string not closed in css file"
@@ -2185,6 +2177,7 @@ msgstr "no se pudo abrir '--include-file' %s: %s"
 msgid "error on closing CSS file %s: %s"
 msgstr "error cerrando el fichero CSS '%s': %s"
 
+# TODO next
 #: tp/Texinfo/Convert/HTML.pm:5796 tp/Texinfo/Convert/HTML.pm:5800
 #, fuzzy, perl-format
 msgid "no htmlxref.cnf entry found for `%s'"
