@@ -1,3 +1,16 @@
+2015-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (parse_top_node_line): Check for 
+	INFO_ALTPREV_LABEL, as was done before.
+
+2015-03-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/man.c (get_manpage_node): Use return value of asprintf 
+	instead of calling strlen.
+	* info/dir.c (dir_entry_of_infodir): Check for null filename.
+	* info/info-utils.c (scan_reference_target): Allow skipping tabs
+	before filename component of menu entry, and not after.
+
 2015-03-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/man.c (get_manpage_node): Avoid using fixed-size buffer 

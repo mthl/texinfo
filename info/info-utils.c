@@ -1138,6 +1138,12 @@ parse_top_node_line (NODE *node)
           skip_input (strlen(INFO_PREV_LABEL));
           store_in = &node->prev;
         }
+      else if (!strncasecmp (inptr, INFO_ALTPREV_LABEL, 
+                             strlen(INFO_ALTPREV_LABEL)))
+        {
+          skip_input (strlen(INFO_ALTPREV_LABEL));
+          store_in = &node->prev;
+        }
       else if (!strncasecmp (inptr, INFO_NEXT_LABEL, strlen(INFO_NEXT_LABEL)))
         {
           skip_input (strlen(INFO_NEXT_LABEL));
