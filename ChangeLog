@@ -1,5 +1,11 @@
 2015-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/search.c (regexp_search): Permit zero-length matches, so 
+	that "^" doesn't search through entire file.  Pass REG_NOTBOL 
+	flag to regexec.
+
+2015-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (parse_top_node_line): Check for 
 	INFO_ALTPREV_LABEL, as was done before.
 
