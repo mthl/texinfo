@@ -35,6 +35,10 @@ static REFERENCE **index_index = NULL;
 
 /* The offset of the most recently selected index element. */
 static int index_offset = 0;
+
+/* Whether we are doing initial index search. */
+static int index_initial = 0;
+
 /* Whether we are doing partial index search */
 static int index_partial = 0;
 
@@ -240,10 +244,7 @@ DECLARE_INFO_COMMAND (info_index_search,
       return;
     }
 
-  /* Reset the index offset. */
-  index_offset = 0;
-
-  /* Start the search right after/before this index. */
+  /* Start the search either at the first or last index entry. */
   if (count < 0)
     {
       register int i;
@@ -253,6 +254,7 @@ DECLARE_INFO_COMMAND (info_index_search,
   else
     {
       index_offset = -1;
+      index_initial = 0;
       index_partial = 0;
     }
   
@@ -262,8 +264,6 @@ DECLARE_INFO_COMMAND (info_index_search,
   free (index_search);
   index_search = line;
 
-  /* Find an exact match, or, failing that, the first index entry containing
-     the partial string. */
   info_next_index_match (window, count);
 
   /* If the search failed, return the index offset to where it belongs. */
@@ -297,11 +297,16 @@ index_entry_matches (REFERENCE *ent, const char *str, size_t len)
 }
 
 /* Search for the next occurence of STRING in FB's indices starting at OFFSET 
-   in direction DIR.  If INDEX_PARTIAL is 0, try to get an exact match first, 
-   otherwise only look for partial matches.  If a match is found, set *RESULT 
-   to the matching index entry, and *FOUND_OFFSET to its offset in 
-   INDEX_INDEX.  Otherwise set *RESULT to null.  If we found a partial match, 
-   update INDEX_PARTIAL to 1.  */
+   in direction DIR.
+   
+   Try to get an exact match, If no match found, progress onto looking for 
+   initial matches, then non-initial substrings, updating the values of 
+   INDEX_INITIAL and INDEX_PARTIAL.
+
+   If a match is found, set *RESULT to the matching index entry, and
+   *FOUND_OFFSET to its offset in INDEX_INDEX.  Otherwise set *RESULT to null.  
+   If we found a partial match, set *MATCH_OFFSET to the end of the match 
+   within the index entry text, else to 0.  */
 void
 next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
                   REFERENCE **result, int *found_offset, int *match_offset)
@@ -325,33 +330,57 @@ next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
       free (index_search); index_search = string;
     }
 
-  if (!index_partial)
+  if (!index_initial && !index_partial)
     {
       /* First try to find an exact match. */
       for (i = offset + dir; i > -1 && index_index[i]; i += dir)
         if (index_entry_matches (index_index[i], string, search_len))
-	  break;
+          {
+            *match_offset = 0;
+            break;
+          }
 
-      /* If that failed, look for the next substring match. */
       if (i < 0 || !index_index[i])
 	{
           offset = 0;
+          index_initial = 1;
+	}
+    }
+
+  if (index_initial)
+    {
+      for (i = offset + dir; i > -1 && index_index[i]; i += dir)
+        if (!index_entry_matches (index_index[i], string, search_len)
+            && !strncmp (index_index[i]->label, string, search_len))
+          {
+            *match_offset = search_len;
+            break;
+          }
+
+      if (i < 0 || !index_index[i])
+	{
+          offset = 0;
+          index_initial = 0;
           index_partial = 1;
 	}
     }
 
   if (index_partial)
     {
-      /* When looking for substrings, take care not to return previous exact
-	 matches. */
+      /* Looking for substrings, not returning previous matches. */
       for (i = offset + dir; i > -1 && index_index[i]; i += dir)
-        if (!index_entry_matches (index_index[i], string, search_len))
-	  {
-            partial_match = string_in_line (string, index_index[i]->label);
-            if (partial_match != -1)
-	      break;
-	  }
-      index_partial = partial_match > 0;
+        {
+          if (!index_index[i]->label[0])
+            continue;
+          partial_match = string_in_line (string, index_index[i]->label + 1);
+          if (partial_match != -1)
+            {
+              *match_offset = partial_match + 1;
+              break;
+            }
+        }
+      if (partial_match <= 0)
+        index_partial = 0;
     }
 
   if (i < 0 || !index_index[i])
@@ -363,7 +392,6 @@ next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
     }
 
   *found_offset = i;
-  *match_offset = partial_match;
 }
 
 /* Display a message saying where the index match was found. */
@@ -820,13 +848,21 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   text_buffer_printf (&text, "\n* Menu:\n\n");
 
   cnt = 0;
-  for (i = 0; index_index[i]; i++)
+
+  index_offset = 0;
+  index_initial = 0;
+  index_partial = 0;
+  while (1)
     {
-      if (string_in_line (index_search, index_index[i]->label) != -1)
-	{
-	  format_reference (index_index[i], fb->filename, &text);
-	  cnt++;
-	}
+      REFERENCE *result;
+      int match_offset;
+
+      next_index_match (file_buffer_of_window (window), index_search, 
+                        index_offset, 1, &result, &i, &match_offset);
+      if (!result)
+        break;
+      format_reference (index_index[i], fb->filename, &text);
+      cnt++;
     }
   text_buffer_add_char (&text, '\0');
 

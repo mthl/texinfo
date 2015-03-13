@@ -1,3 +1,13 @@
+2015-03-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (index_initial): New variable.
+	(info_index_search): Initialize index_initial as well as 
+	index_partial.
+	(next_index_match): Search for initial substrings after 
+	searching for exact matches.
+	(info_virtual_index): Call next_index_match to get index entries 
+	in order.
+
 2015-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/search.c (regexp_search): Permit zero-length matches, so 
