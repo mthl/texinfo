@@ -1,14 +1,14 @@
-# translation of texinfo-4.13.92.po to Turkish
-# Copyright (C) 2002, 2004, 2007, 2008, 2012 Free Software Foundation, Inc.
+# translation of texinfo-5.9.90.po to Turkish
+# Copyright (C) 2002, 2004, 2007, 2008, 2012, 2015 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
-# texinfo-4.13.92 Türkçe Çevirisi
-# Eyüp Hakan Duran <hakan_duran@hotmail.com>, 2002, 2004, 2007, 2008, 2012.
+# texinfo-5.9.90 Türkçe Çevirisi
+# Eyüp Hakan Duran <hakan_duran@hotmail.com>, 2002, 2004, 2007, 2008, 2012, 2015.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 4.13.92\n"
+"Project-Id-Version: texinfo 5.9.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2015-02-22 16:49-0800\n"
-"PO-Revision-Date: 2012-12-24 23:21-0600\n"
+"PO-Revision-Date: 2015-03-13 09:29-0500\n"
 "Last-Translator: Eyüp Hakan Duran <hakan_duran@hotmail.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
 "Language: tr\n"
@@ -16,8 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.5\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: gnulib/lib/error.c:191
 msgid "Unknown system error"
@@ -29,9 +28,9 @@ msgid "%s: option '%s' is ambiguous; possibilities:"
 msgstr "%s: '%s' seçeneği belirsiz; olasılıklar:"
 
 #: gnulib/lib/getopt.c:619
-#, fuzzy, c-format
+#, c-format
 msgid "%s: option '%s' is ambiguous\n"
-msgstr "%s: '-W %s' seçeneği belirsiz\n"
+msgstr "%s: %s' seçeneği belirsiz\n"
 
 #: gnulib/lib/getopt.c:654 gnulib/lib/getopt.c:658
 #, c-format
@@ -278,19 +277,19 @@ msgid "Scroll the completions window"
 msgstr "Tamamlama penceresini kaydırır"
 
 #: info/filesys.c:91
-#, fuzzy, c-format
+#, c-format
 msgid "looking for file \"%s\""
-msgstr "`%s' çıktı dosyasını kapatmada hata"
+msgstr "dosya \"%s\" aranıyor"
 
 #: info/filesys.c:158
-#, fuzzy, c-format
+#, c-format
 msgid "looking for file %s in %s"
-msgstr "`%s' çıktı dosyasını kapatmada hata"
+msgstr "Dosya %1$s, %2$s'nin içinde aranıyor"
 
 #: info/filesys.c:227 info/filesys.c:241 info/filesys.c:262
-#, fuzzy, c-format
+#, c-format
 msgid "found file %s"
-msgstr "`%s' çıktı dosyasını kapatmada hata"
+msgstr "dosya %s bulundu"
 
 #: info/footnotes.c:231
 #, c-format
@@ -324,17 +323,13 @@ msgid "Index entry: "
 msgstr "indeks girişi: "
 
 #: info/indices.c:410
-#, fuzzy, c-format
+#, c-format
 msgid "Found '%s' in %s. ('\\[next-index-match]' tries to find next.)"
-msgstr ""
-"`%s' bulundu - %s içinde. (`\\[next-index-match]' sonrakini bulmayı dener.)"
+msgstr "'%1$s' %2$s'nin içinde bulundu. ('\\[next-index-match]' sonrakini bulmayı dener.)"
 
 #: info/indices.c:420
-#, fuzzy
-msgid ""
-"Go to the next matching index item from the last '\\[index-search]' command"
-msgstr ""
-"Son `\\[index-search]'komutundan bir sonraki eşleşen indeks öğesine gider"
+msgid "Go to the next matching index item from the last '\\[index-search]' command"
+msgstr "Son '\\[index-search]' komutundan bir sonraki eşleşen indeks öğesine git"
 
 #: info/indices.c:431
 #, c-format
@@ -342,89 +337,85 @@ msgid "No previous index search string."
 msgstr "Daha önce bir indeks arama dizgesi yok."
 
 #: info/indices.c:449
-#, fuzzy, c-format
+#, c-format
 msgid "No more index entries containing '%s'."
-msgstr "`%s' içeren daha başka indeks girdisi yok."
+msgstr "'%s' içeren daha başka indeks girdisi yok."
 
 #: info/indices.c:450 info/indices.c:836
-#, fuzzy, c-format
+#, c-format
 msgid "No index entries containing '%s'."
-msgstr "`%s' içeren indeks girdisi yok."
+msgstr "'%s' içeren indeks girdisi yok."
 
 #: info/indices.c:553
-#, fuzzy, c-format
+#, c-format
 msgid "Scanning indices of '%s'..."
-msgstr "`%s' indislerini tarıyor..."
+msgstr "'%s' indislerini tarıyor..."
 
 #: info/indices.c:606
 msgid "Grovel all known info file's indices for a string and build a menu"
-msgstr ""
-"Bir dizge için tüm bilinen bilgi dosyalarının indislerinide ekleyerek bir "
-"menu oluşturur"
+msgstr "Bir dizge için tüm bilinen bilgi dosyalarının indislerinide ekleyerek bir menu oluşturur"
 
 #: info/indices.c:614 info/indices.c:616
-#, fuzzy
 msgid "Index apropos"
-msgstr "İndeks hakkında:"
+msgstr "İndeks hakkında"
 
 #: info/indices.c:656
-#, fuzzy, c-format
+#, c-format
 msgid "Index entries containing '%s':\n"
-msgstr "`%s' içeren indeks girdisi yok."
+msgstr "'%s' içeren indeks girdileri:\n"
 
 #: info/indices.c:761
 msgid "List all matches of a string in the index"
 msgstr "İndekste dizgeyle eşleşenleri listele"
 
 #: info/indices.c:788 info/indices.c:790
-#, fuzzy
 msgid "Index topic"
-msgstr "İndeks konusu:"
+msgstr "İndeks konusu"
 
 #: info/indices.h:40
-#, fuzzy, c-format
+#, c-format
 msgid "No available info files have '%s' in their indices."
-msgstr "Mevcut bilgi dosyalarından hiçbirisinin indisinde `%s' yok."
+msgstr "Mevcut bilgi dosyalarından hiçbirisinin indisinde '%s' yok."
 
 #: info/info-utils.c:897
 #, c-format
 msgid "Error converting file character encoding."
-msgstr ""
+msgstr "Dosya karakter kodlamasını dönüştürmede hata."
 
 #: info/info.c:223 info/session.c:2696
-#, fuzzy, c-format
+#, c-format
 msgid "No menu item '%s' in node '%s'."
-msgstr "`%2$s' düğümünde `%1$s' menü öğesi yok."
+msgstr "'%2$s' düğümünde '%1$s' menü öğesi yok."
 
 #: info/info.c:306
-#, fuzzy, c-format
+#, c-format
 msgid "No file given for node '%s'."
-msgstr "Menüsü olmayan düğüm `%s'."
+msgstr "Düğüm '%s' için dosya yok."
 
 #: info/info.c:328
 #, c-format
 msgid "No program name given."
-msgstr ""
+msgstr "Program adı verilmedi."
 
 #: info/info.c:493
 #, c-format
 msgid "invalid number: %s\n"
-msgstr ""
+msgstr "Geçersiz numara: %s\n"
 
 #: info/info.c:673
 #, c-format
 msgid "malformed variable assignment: %s"
-msgstr ""
+msgstr "kusurlu değişken ataması: %s"
 
 #: info/info.c:680 info/infokey.c:537
-#, fuzzy, c-format
+#, c-format
 msgid "%s: no such variable"
-msgstr "Bilinmeyen değişken %s\n"
+msgstr "%s: böyle bir değişken yok"
 
 #: info/info.c:686 info/infokey.c:539
-#, fuzzy, c-format
+#, c-format
 msgid "value %s is not valid for variable %s"
-msgstr "Bir Info değişkeninin değerini belirler"
+msgstr "%1$s değeri %2$s değişkeni için geçerli değil"
 
 #: info/info.c:698
 #, c-format
@@ -435,21 +426,19 @@ msgstr "Daha fazla bilgi için --help seçeneğini kullanın.\n"
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
-"html>\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
 "Telif Hakkı (C) %s Özgür Yazılım Vakfı Inc.\n"
-"Lisans GPLv3+: GNU GPL sürüm 3 ya da sonrası <http://gnu.org/licenses/gpl."
-"html>\n"
+"Lisans GPLv3+: GNU GPL sürüm 3 ya da sonrası <http://gnu.org/licenses/gpl.html>\n"
 "Bu özgür yazılımdır: değiştirip dağıtma özgürlüğüne sahipsiniz.\n"
 "Yasaların elverdiği ölçüde HİÇBİR GARANTİ yoktur.\n"
 
 #: info/info.c:878
-#, fuzzy, c-format
+#, c-format
 msgid "no index entries found for '%s'\n"
-msgstr "`%s' için indeks girdisi yok.\n"
+msgstr "'%s' için indeks girdisi yok.\n"
 
 #: info/info.c:931
 #, c-format
@@ -463,26 +452,22 @@ msgstr ""
 "Info biçemindeki belgeleri okuyun.\n"
 
 #: info/info.c:937
-#, fuzzy
 msgid ""
 "Options:\n"
 "  -a, --all                    use all matching manuals.\n"
-"  -k, --apropos=STRING         look up STRING in all indices of all "
-"manuals.\n"
+"  -k, --apropos=STRING         look up STRING in all indices of all manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILE           remember user keystrokes in FILENAME.\n"
 "  -f, --file=MANUAL            specify Info manual to visit."
 msgstr ""
 "Seçenekler:\n"
-"  -k, --apopros=DİZGE         tüm manüellerin tüm indekslerinde DİZGE'yi "
-"arar.\n"
+"  -a, --all                    eşleşen tüm manüelleri kullan.\n"
+"  -k, --apopros=DİZGE         tüm manüellerin tüm indekslerinde DİZGE'yi arar.\n"
 "  -d, --directory=DİZ         DİZ'i INFO YOLU'na ekler.\n"
-"      --dribble=DOSYAADI       DOSYAADI'ndaki kullanıcı tuşbasımlarını "
-"anımsar.\n"
+"      --dribble=DOSYAADI       DOSYAADI'ndaki kullanıcı tuşbasımlarını anımsar.\n"
 "  -f, --file=DOSYAADI          ziyaret edilecek Info dosyasını belirler."
 
 #: info/info.c:945
-#, fuzzy
 msgid ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=STRING    go to node pointed by index entry STRING.\n"
@@ -490,22 +475,18 @@ msgid ""
 "  -o, --output=FILE            output selected nodes to FILE."
 msgstr ""
 "  -h, --help                   bu yardımı görüntüler ve çıkar.\n"
-"      --index-search=DİZGE    İndeks girdisi DİZGE tarafından işaret edilen "
-"düğüme gider.\n"
-"  -n, --node=DÜĞÜMADI          İlk ziyaret edilen Info dosyasında düğümleri "
-"belirler.\n"
-"  -o, --output=DOSYAADI        Seçili düğümlerden DOSYAAYDI'na çıktı alır."
+"      --index-search=DİZGE    İndeks girdisi DİZGE tarafından işaret edilen düğüme gider.\n"
+"  -n, --node=DÜĞÜMADI          İlk ziyaret edilen Info dosyasında düğümleri belirler.\n"
+"  -o, --output=DOSYAADI        Seçili düğümlerden DOSYAADI'na çıktı alır."
 
 #: info/info.c:951
-#, fuzzy
 msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 "      --no-raw-escapes         output escapes as literal text.\n"
 "      --restore=FILE           read initial keystrokes from FILE.\n"
 "  -O, --show-options, --usage  go to command-line options node."
 msgstr ""
-"  -R, --raw-escapes            \"ham\" ANSI kaçışlardan çıktı alır "
-"(öntanımlı).\n"
+"  -R, --raw-escapes            \"ham\" ANSI kaçışlardan çıktı alır (öntanımlı).\n"
 "      --no-raw-escapes         kaçışların okunur metin gibi çıktısını alır.\n"
 "      --restore=DOSYAADI       ilk tuşbasımlarını DOSYAADI'ndan okur.\n"
 "  -Q, --show-options, --usage  komut satırı seçenekler düğümüne gider."
@@ -515,10 +496,8 @@ msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
 msgstr "  -b, --speech-friendly       konuşma sentezcilerine dostça davranır."
 
 #: info/info.c:962
-#, fuzzy
 msgid ""
-"      --strict-node-location   (for debugging) use Info file pointers as-"
-"is.\n"
+"      --strict-node-location   (for debugging) use Info file pointers as-is.\n"
 "      --subnodes               recursively output menu items.\n"
 "  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
@@ -526,16 +505,15 @@ msgid ""
 "  -w, --where, --location      print physical location of Info file.\n"
 "  -x, --debug=NUMBER           set debugging level (-1 for all).\n"
 msgstr ""
-"      --stict*node-location   (hata ayıklamak için) Info dosyası "
-"göstergelerini olduğu gibi kullan. \n"
+"      --strict*node-location   (hata ayıklamak için) Info dosyası göstergelerini olduğu gibi kullan. \n"
 "      --subnotes               menü ögelerinin özyineli çıktısını alır.\n"
-"      --vi-keys                vi ve less benzeri tuş bağlantılarını "
-"kullanır.\n"
+"  -v, --variable VAR=DEĞER    Info değişkeni VAR'a DEĞER atar.\n"
+"      --vi-keys                vi ve less benzeri tuş bağlantılarını kullanır.\n"
 "      --version                sürüm bilgisini gösterir ve çıkar.\n"
-"  -w, --where, --location      Info dosyasının fiziksel konumunu yazdırır."
+"  -w, --where, --location      Info dosyasının fiziksel konumunu yazdırır.\n"
+"  -x, --debug=NUMARA        hata ayıklama düzeyini belirler (tümü için -1).\n"
 
 #: info/info.c:971
-#, fuzzy
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -546,22 +524,20 @@ msgid ""
 msgstr ""
 "\n"
 "Eğer mevcutsa, ilk seçenek-olmayan argüman başlanacak menü girdisidir;\n"
-"bu, tüm INFO YOLU içindeki `dir' dosyalarında aranır.\n"
+"bu, tüm INFOYOLU içindeki `dir' dosyalarında aranır.\n"
 "Mevcut değilse, info tüm `dir' dosyalarını birleştirir ve sonucu gösterir.\n"
 "Kalan tüm argümanlar, ilk ziyaret edilen düğüme göreceli menü\n"
 "ögesi isimleri olarak işlem görür."
 
 #: info/info.c:978
-#, fuzzy
 msgid ""
 "\n"
 "For a summary of key bindings, type H within Info."
 msgstr ""
 "\n"
-"Tuş bağlantılarının bir özeti için Info içinden h tuşlayın."
+"Tuş bağlantılarının bir özeti için Info içinden H tuşlayın."
 
 #: info/info.c:981
-#, fuzzy
 msgid ""
 "\n"
 "Examples:\n"
@@ -579,14 +555,13 @@ msgstr ""
 "\n"
 "Örnekler:\n"
 "  info                       en üst düzey dir menüsünü gösterir\n"
-"  info info                  Info okuyucuları için genel el kitabını "
-"gösterir\n"
+"  info info                  Info okuyucuları için genel el kitabını gösterir\n"
 "  info info-stnd             bu Info programına özgü el kitabını gösterir\n"
 "  info emacs                 en üst düzey dir'den emacs düğümünden başlatır\n"
-"  info emasc buffers         emacs elkitabı içinden tampon düğümünden "
-"başlatır\n"
-"  info --show-options emacs  emacs'ın komut satırı seçenekleri bulunan "
-"düğümden başlatır\n"
+"  info emasc buffers         emacs elkitabı içinden tampon düğümünden başlatır\n"
+"  info emacs -n Files        emacs elkitabı içinden Dosya düğümünden başlatır.\n"
+"  info '(emacs)Files'         Dosya düğümünden başlamak için alternatif seçenek\n"
+"  info --show-options emacs  emacs'ın komut satırı seçenekleri bulunan düğümden başlatır\n"
 "  info --subnodes -o out.txt emacs  tüm elkitabını out.txt'e çıkartır\n"
 "  info -f ./foo.info         dir aramadan ./foo.info dosyasını gösterir"
 
@@ -603,14 +578,14 @@ msgstr ""
 "Texinfo anasayfası: http://www.gnu.org/software/texinfo/"
 
 #: info/info.c:1028
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot find node '%s'."
-msgstr "`%s' düğümü bulunamadı."
+msgstr "'%s' düğümü bulunamadı."
 
 #: info/info.c:1029
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot find node '(%s)%s'."
-msgstr "`(%s)%s' düğümü bulunamadı."
+msgstr "'(%s)%s' düğümü bulunamadı."
 
 #: info/info.c:1030
 msgid "Cannot find a window!"
@@ -637,19 +612,19 @@ msgid "No cross references in this node."
 msgstr "Bu düğümde çapraz başvuru yok."
 
 #: info/info.c:1036
-#, fuzzy, c-format
+#, c-format
 msgid "No '%s' pointer for this node."
-msgstr "Bu düğüm için `%s' yer gösterici yok."
+msgstr "Bu düğüm için '%s' yer gösterici yok."
 
 #: info/info.c:1037
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
-msgstr "Info komutu `%c' bilinmiyor; yardım almak için `?' deneyin."
+msgstr "Info komutu '%c' bilinmiyor; yardım almak için '?' deneyin."
 
 #: info/info.c:1038
-#, fuzzy, c-format
+#, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
-msgstr "`%s' terminal türü Info çalıştırmak için yeterince akıllı değil."
+msgstr "'%s' terminal türü Info çalıştırmak için yeterince akıllı değil."
 
 #: info/info.c:1039
 msgid "You are already at the last page of this node."
@@ -716,12 +691,8 @@ msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
 msgstr "\\%-10[move-to-next-xref]  Bir sonraki yardımlı metin linkine atlar.\n"
 
 #: info/infodoc.c:54
-msgid ""
-"\\%-10[select-reference-this-line]  Follow the hypertext link under the "
-"cursor.\n"
-msgstr ""
-"\\%-10[select-reference-this-line]  İmleç altındaki yardımlı metin linkini "
-"izler.\n"
+msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under the cursor.\n"
+msgstr "\\%-10[select-reference-this-line]  İmleç altındaki yardımlı metin linkini izler.\n"
 
 #: info/infodoc.c:55
 msgid "\\%-10[history-node]  Go back to the last node seen in this window.\n"
@@ -752,9 +723,8 @@ msgid "\\%-10[top-node]  Go to the top node of this document.\n"
 msgstr "\\%-10[top-node]  Bu belgenin en üst düğümüne gider.\n"
 
 #: info/infodoc.c:63
-#, fuzzy
 msgid "\\%-10[dir-node]  Go to the main 'directory' node.\n"
-msgstr "\\%-10[dir-node]  Ana `directory' düğümüne gider.\n"
+msgstr "\\%-10[dir-node]  Ana 'directory' düğümüne gider.\n"
 
 #: info/infodoc.c:65
 msgid "1...9       Pick the first...ninth item in this node's menu.\n"
@@ -794,8 +764,7 @@ msgid ""
 "              select the node referenced by the first entry found.\n"
 msgstr ""
 "\\%-10[index-search]  İndeks girdileri içinde belirli bir dizgeyi arar\n"
-"              ve bulunan ilk girdi tarafından gönderme yapılan düğümü "
-"seçer.\n"
+"              ve bulunan ilk girdi tarafından gönderme yapılan düğümü seçer.\n"
 
 #: info/infodoc.c:76
 msgid "\\%-10[virtual-index]  Synthesize menu of matching index entries.\n"
@@ -808,7 +777,7 @@ msgstr "\\%-10[abort-key]  Mevcut işlemi iptal eder.\n"
 #: info/infodoc.c:197
 #, c-format
 msgid "This is GNU Info version %s.  "
-msgstr ""
+msgstr "Bu, GNU Info sürüm %s.  "
 
 #: info/infodoc.c:198
 msgid "The current search path is:\n"
@@ -850,9 +819,8 @@ msgid "Display help message"
 msgstr "Bu yardım iletisini gösterir"
 
 #: info/infodoc.c:348
-#, fuzzy
 msgid "Visit Info node '(info)Help'"
-msgstr "Info düğümünü `(info)Help' ziyaret eder"
+msgstr "Info düğümünü '(info)Help' ziyaret eder"
 
 #: info/infodoc.c:435
 msgid "Print documentation for KEY"
@@ -877,9 +845,9 @@ msgid "Where is command: "
 msgstr "Komutun yeri: "
 
 #: info/infodoc.c:880
-#, fuzzy, c-format
+#, c-format
 msgid "'%s' is not on any keys"
-msgstr "`%s' bir tuş üzerinde değil"
+msgstr "'%s' bir tuş üzerinde değil"
 
 #: info/infodoc.c:886
 #, c-format
@@ -892,9 +860,9 @@ msgid "%s can be invoked via %s."
 msgstr "%s, %s üzerinden çağrılabilir."
 
 #: info/infodoc.c:895
-#, fuzzy, c-format
+#, c-format
 msgid "There is no function named '%s'"
-msgstr "`%s' isimli bir işlev yok"
+msgstr "'%s' isimli bir işlev yok"
 
 #: info/infokey.c:229
 #, c-format
@@ -922,9 +890,9 @@ msgid "missing action name"
 msgstr "kayıp eylem adı"
 
 #: info/infokey.c:450
-#, fuzzy, c-format
+#, c-format
 msgid "cannot bind key sequence to menu-digit"
-msgstr "anahtar sıralaması çok uzun"
+msgstr "anahtar sıralaması menü-rakamına bağlanamadı"
 
 #: info/infokey.c:458
 #, c-format
@@ -979,9 +947,9 @@ msgid "Read a command name in the echo area and execute it"
 msgstr "Eko alanından komut ismini okur ve onu çalıştırır"
 
 #: info/m-x.c:136
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot execute an 'echo-area' command here."
-msgstr "Bir `eko-alanı' komutu burada çalıştırılamaz."
+msgstr "Bir 'eko-alanı' komutu burada çalıştırılamaz."
 
 #: info/m-x.c:149
 #, c-format
@@ -1003,8 +971,7 @@ msgid ""
 "   Source files groveled to make this file include:\n"
 "\n"
 msgstr ""
-"   Bu dosyanın içermesini sağlamak için peşi sıra sürüklenen kaynak "
-"dosyalar:\n"
+"   Bu dosyanın içermesini sağlamak için peşi sıra sürüklenen kaynak dosyalar:\n"
 "\n"
 
 #: info/makedoc.c:466
@@ -1013,7 +980,6 @@ msgid "Couldn't manipulate the file %s.\n"
 msgstr "%s dosyası manipüle edilemedi.\n"
 
 #: info/nodemenu.c:33
-#, fuzzy
 msgid ""
 "\n"
 "* Menu:\n"
@@ -1023,23 +989,21 @@ msgid ""
 msgstr ""
 "\n"
 "* Menü:\n"
-"  (Dosya)Düğüm                     Satır   Boyut   İçerdiği Dosya\n"
+"\n"
+"  (Dosya)Düğüm                Satır   Boyut   İçerdiği Dosya\n"
 "  ------------                     -----   -----   --------------"
 
 #: info/nodemenu.c:185
-#, fuzzy
 msgid ""
 "Here is the menu of nodes you have recently visited.\n"
 "Select one from this menu, or use '\\[history-node]' in another window.\n"
 msgstr ""
-"Son zamanlarda uğradığınız düğüm menüsünü görmektesiniz.\n"
+"En son uğradığınız düğüm menüsünü görmektesiniz.\n"
 "Ya bu menüden seçin, ya da başka bir pencerede `\\[history-node]' kullanın.\n"
 
 #: info/nodemenu.c:206
 msgid "Make a window containing a menu of all of the currently visited nodes"
-msgstr ""
-"Son zamanlarda uğradığınız tüm düğümlerin menüsünü içeren bir pencere "
-"oluşturur"
+msgstr "Son zamanlarda uğradığınız tüm düğümlerin menüsünü içeren bir pencere oluşturur"
 
 #: info/nodemenu.c:251
 msgid "Select a node which has been previously visited in a visible window"
@@ -1066,31 +1030,27 @@ msgstr "düzenli ifade hatası: %s"
 
 #: info/session.c:60
 msgid "Show all matching files"
-msgstr ""
+msgstr "Eşleşen tüm dosyaları göster"
 
 #: info/session.c:64
-#, fuzzy, c-format
+#, c-format
 msgid "No file index"
-msgstr "İndeks yok."
+msgstr "Dosya indeksi yok"
 
 #: info/session.c:187
-#, fuzzy, c-format
-msgid ""
-"Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
-"for menu item, \\[get-info-help-node] for tutorial."
-msgstr ""
-"Info sürüm %s'e hoşgeldiniz. Yardım için \\[get-help-window], menü öğesi "
-"için \\[menu-item] yazınız."
+#, c-format
+msgid "Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] for menu item, \\[get-info-help-node] for tutorial."
+msgstr "Info sürüm %s'e hoşgeldiniz. Yardım için \\[get-help-window], menü öğesi için \\[menu-item] rehber için \\[get-info-help-node] yazınız."
 
 #: info/session.c:764
-#, fuzzy, c-format
+#, c-format
 msgid "can't open %s: %s"
-msgstr "%1$s yazmak için açılamıyor: %2$s"
+msgstr "%s açılamıyor: %s"
 
 #: info/session.c:770
 #, c-format
 msgid "debugging output diverted to \"%s\""
-msgstr ""
+msgstr "hata ayıklama çıktısı \"%s\"'e yönlendirildi"
 
 #: info/session.c:1212
 msgid "Move down to the next line"
@@ -1130,13 +1090,11 @@ msgstr "Bu pencerede geriye doğru kaydırır"
 
 #: info/session.c:1493
 msgid "Scroll forward in this window and set default window size"
-msgstr ""
-"Bu pencerede ileriye doğru kaydırır ve öntanımlı pencere boyutuna ayarlar"
+msgstr "Bu pencerede ileriye doğru kaydırır ve öntanımlı pencere boyutuna ayarlar"
 
 #: info/session.c:1508
 msgid "Scroll backward in this window and set default window size"
-msgstr ""
-"Bu pencerede geriye doğru kaydırır ve öntanımlı pencere boyutunu ayarlar"
+msgstr "Bu pencerede geriye doğru kaydırır ve öntanımlı pencere boyutunu ayarlar"
 
 #: info/session.c:1514
 msgid "Scroll forward in this window staying within node"
@@ -1147,16 +1105,11 @@ msgid "Scroll backward in this window staying within node"
 msgstr "Bu pencerede, düğüm içinde kalarak geriye doğru kaydırır"
 
 #: info/session.c:1537
-msgid ""
-"Scroll forward in this window staying within node and set default window size"
-msgstr ""
-"Bu pencerede, düğüm içinde kalarak ileriye doğru kaydırır ve öntanımlı "
-"pencere boyutunu ayarlar"
+msgid "Scroll forward in this window staying within node and set default window size"
+msgstr "Bu pencerede, düğüm içinde kalarak ileriye doğru kaydırır ve öntanımlı pencere boyutunu ayarlar"
 
 #: info/session.c:1564
-msgid ""
-"Scroll backward in this window staying within node and set default window "
-"size"
+msgid "Scroll backward in this window staying within node and set default window size"
 msgstr "geri ve set öntanımlı"
 
 #: info/session.c:1570
@@ -1282,14 +1235,14 @@ msgid "Select reference or menu item appearing on this line"
 msgstr "Bu satırdaki referans ya da menü öğesini seçer"
 
 #: info/session.c:2674
-#, fuzzy, c-format
+#, c-format
 msgid "No menu in node '%s'."
-msgstr "Menüsü olmayan düğüm `%s'."
+msgstr "Menüsü olmayan düğüm '%s'."
 
 #: info/session.c:2721
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to find node referenced by '%s' in '%s'."
-msgstr "`%2$s''de `%1$s' tarafından başvurulan düğüm bulunamadı."
+msgstr "'%2$s''de '%1$s' tarafından başvurulan düğüm bulunamadı."
 
 #: info/session.c:2771
 msgid "Read a list of menus starting from dir and follow them"
@@ -1328,7 +1281,6 @@ msgid "No more nodes within this document."
 msgstr "Bu belge içinde başka düğüm yok."
 
 #: info/session.c:3100 info/session.c:3135
-#, fuzzy
 msgid "No 'Prev' or 'Up' for this node within this document."
 msgstr "Bu belge içinde, bu düğüm için `Önceki' ya da `Yukarı' yok."
 
@@ -1366,18 +1318,16 @@ msgid "Get Manpage: "
 msgstr "Alınacak klavuz sayfası: "
 
 #: info/session.c:3497
-#, fuzzy
 msgid "Select the node 'Top' in this file"
 msgstr "Bu dosyadaki `En Üst' düğümü seç"
 
 #: info/session.c:3503
-#, fuzzy
 msgid "Select the node '(dir)'"
-msgstr "`(dizin)' düğümünü seç"
+msgstr "'(dizin)' düğümünü seç"
 
 #: info/session.c:3509
 msgid "Show full file name of node being displayed"
-msgstr ""
+msgstr "Görüntülenen düğümün tam dosya adını göster"
 
 #: info/session.c:3526
 msgid "Select the most recently selected node"
@@ -1386,7 +1336,7 @@ msgstr "En son seçilen düğümü seçer"
 #: info/session.c:3531
 #, c-format
 msgid "No earlier node in history"
-msgstr ""
+msgstr "Geçmişte daha önceki bir düğüm yok"
 
 #: info/session.c:3535
 msgid "Read the name of a file and select it"
@@ -1397,27 +1347,27 @@ msgid "Find file: "
 msgstr "Dosyayı bul: "
 
 #: info/session.c:3556
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot find '%s'."
-msgstr "`%s' bulunamıyor."
+msgstr "'%s' bulunamıyor."
 
 #: info/session.c:3605
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create output file '%s'."
-msgstr "Çıktı dosyası `%s' oluşturulamıyor."
+msgstr "Çıktı dosyası '%s' oluşturulamıyor."
 
 #: info/session.c:3619
-#, fuzzy, c-format
+#, c-format
 msgid "error writing to %s: %s"
-msgstr "`%s''e yazma hatası"
+msgstr "%s'e yazma hatası:%s"
 
 #: info/session.c:3628
-#, fuzzy, c-format
+#, c-format
 msgid "closing %s"
-msgstr "%s siliniyor\n"
+msgstr "%s kapatılıyor"
 
 #: info/session.c:3677
-#, fuzzy, c-format
+#, c-format
 msgid "writing node %s..."
 msgstr "%s düğümü yazılıyor..."
 
@@ -1426,19 +1376,19 @@ msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "Bu düğümün içeriğini INFO_PRINT_COMMAND üzerinden veri yolla"
 
 #: info/session.c:3751
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot open pipe to '%s'."
-msgstr "Veri yolu `%s''e açılamıyor."
+msgstr "Veri yolu '%s''e açılamıyor."
 
 #: info/session.c:3756
-#, fuzzy, c-format
+#, c-format
 msgid "printing node %s..."
 msgstr "%s düğümü yazdırılıyor..."
 
 #: info/session.c:3764
-#, fuzzy, c-format
+#, c-format
 msgid "finished printing node %s"
-msgstr "%s düğümü yazdırılıyor..."
+msgstr "%s düğümünün yazdırılması tamamlandı..."
 
 #: info/session.c:3796
 msgid "Toggle the usage of regular expressions in searches"
@@ -1493,9 +1443,9 @@ msgid " backward"
 msgstr " geriye doğru"
 
 #: info/session.c:4134
-#, fuzzy, c-format
+#, c-format
 msgid "%s%s%s: "
-msgstr "%s%s%s [%s]: "
+msgstr "%s%s%s: "
 
 #: info/session.c:4154
 msgid "Search string too short"
@@ -1527,7 +1477,7 @@ msgstr "Son aramayı ters yönde yineler"
 
 #: info/session.c:4335
 msgid "Clear displayed search matches"
-msgstr ""
+msgstr "Görüntülenen eşleşmiş aramaları sil"
 
 #: info/session.c:4352 info/session.c:4358
 msgid "Search interactively for a string as you type it"
@@ -1562,14 +1512,13 @@ msgid "Quit"
 msgstr "Çık"
 
 #: info/session.c:4889
-#, fuzzy
 msgid "Display version of Info being run"
-msgstr "sürüm bilgisini görüntüler ve çıkar"
+msgstr "Çalışan Ino'nun sürüm bilgisini görüntüler"
 
 #: info/session.c:4891
 #, c-format
 msgid "GNU Info version %s"
-msgstr ""
+msgstr "GNU Info sürüm %s"
 
 #: info/session.c:4896
 msgid "Redraw the display"
@@ -1594,9 +1543,9 @@ msgid "\"%s\" is invalid"
 msgstr "\"%s\" geçersiz"
 
 #: info/session.c:4961
-#, fuzzy, c-format
+#, c-format
 msgid "'%s' is invalid"
-msgstr "`%s' geçersiz"
+msgstr "'%s' geçersiz"
 
 #: info/session.c:5278
 msgid "Add this digit to the current numeric argument"
@@ -1617,9 +1566,7 @@ msgstr "\"Açık\" olduğunda, dipnotlar otomatik olarak görünür ve kaybolur"
 
 #: info/variables.c:55
 msgid "When \"On\", creating or deleting a window resizes other windows"
-msgstr ""
-"\"Açık\" olduğunda, bir pencereyi oluşturma ya da silme, diğerlerini yeniden "
-"boyutlandırır"
+msgstr "\"Açık\" olduğunda, bir pencereyi oluşturma ya da silme, diğerlerini yeniden boyutlandırır"
 
 #: info/variables.c:59
 msgid "When \"On\", flash the screen instead of ringing the bell"
@@ -1631,9 +1578,7 @@ msgstr "\"Açık\" olduğunda, hatalar zilin çalmasına neden olur"
 
 #: info/variables.c:67
 msgid "When \"On\", Info garbage collects files which had to be uncompressed"
-msgstr ""
-"\"Açık\" olduğunda Info çöpü, sıkıştırması açılmak zorunda olan dosyaları "
-"biriktirir"
+msgstr "\"Açık\" olduğunda Info çöpü, sıkıştırması açılmak zorunda olan dosyaları biriktirir"
 
 #: info/variables.c:70
 msgid "When \"On\", the portion of the matched search string is highlighted"
@@ -1653,18 +1598,14 @@ msgstr "İmleç penceere dışına taşındığında kaydırılacak satır sayı
 
 #: info/variables.c:87
 msgid "Controls whether scroll-behavior affects cursor movement commands"
-msgstr ""
-"Metin kaydırma davranışının imleç hareket komutlarını etkileyip "
-"etkilemeyeceğini kontrol eder"
+msgstr "Metin kaydırma davranışının imleç hareket komutlarını etkileyip etkilemeyeceğini kontrol eder"
 
 #: info/variables.c:91
 msgid "When \"On\", Info accepts and displays ISO Latin characters"
-msgstr ""
-"\"Açık\" olduğunda Info, ISO Latin karakterleri kabul eder ve görüntüler"
+msgstr "\"Açık\" olduğunda Info, ISO Latin karakterleri kabul eder ve görüntüler"
 
 #: info/variables.c:95
-msgid ""
-"What to do when a scrolling command is issued at the end of the last node"
+msgid "What to do when a scrolling command is issued at the end of the last node"
 msgstr "Son düğümün sonunda kaydırma istendiğinde yapılacak şey"
 
 #: info/variables.c:100
@@ -1673,29 +1614,27 @@ msgstr "Arama dizgesinin minimum uzunluğu"
 
 #: info/variables.c:104
 msgid "Skip current window when searching"
-msgstr ""
+msgstr "Ararken mevcut pencereyi atla"
 
 #: info/variables.c:108
 msgid "Exclude default directories from file search path"
-msgstr ""
+msgstr "Öntanımlı dizinleri dosya arama yolundan hariç tut"
 
 #: info/variables.c:112
 msgid "Hide some Info file syntax in the text of nodes"
-msgstr ""
+msgstr "Bazı Info dosyası söz dizimini düğüm metni içine gizle"
 
 #: info/variables.c:116
-msgid ""
-"Length of time in milliseconds to wait for the next byte in a sequence "
-"indicating that a key has been pressed"
-msgstr ""
+msgid "Length of time in milliseconds to wait for the next byte in a sequence indicating that a key has been pressed"
+msgstr "Bir tuşa basıldığını belirten sıradaki bitin milisaniye biriminde bekleme süresi"
 
 #: info/variables.c:120
 msgid "Highlight search matches"
-msgstr ""
+msgstr "Eşleşen aramaları vurgula"
 
 #: info/variables.c:124
 msgid "Method to use to track mouse events"
-msgstr ""
+msgstr "Fare olaylarını izlemek için kullanılacak yöntem"
 
 #: info/variables.c:130
 msgid "Explain the use of a variable"
@@ -1732,14 +1671,14 @@ msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), satır ----, "
 
 #: info/window.c:972
-#, fuzzy, c-format
+#, c-format
 msgid "-%s---Info: %s, %ld lines --%s--"
-msgstr "-%s---Info: %s, %d satır --%s--"
+msgstr "-%s---Info: %s, %ld satır --%s--"
 
 #: info/window.c:976
-#, fuzzy, c-format
+#, c-format
 msgid "-%s%s-Info: (%s)%s, %ld lines --%s--"
-msgstr "-%s%s-Info: (%s)%s, %d satır --%s--"
+msgstr "-%s%s-Info: (%s)%s, %ld satır --%s--"
 
 #: info/window.c:982
 #, c-format
@@ -1768,14 +1707,15 @@ msgstr "Kullanım: %s [SEÇENEK]... [INFO-DOSYASI [DİZİN-DOSYASI]]\n"
 
 #: install-info/install-info.c:543
 msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
-msgstr ""
-"DİZİN-DOSYASI Info dizininden INFO-DOSYASI içine girdi ekle ya da çıkar"
+msgstr "DİZİN-DOSYASI Info dizininden INFO-DOSYASI içine girdi ekle ya da çıkar"
 
 #: install-info/install-info.c:544
 msgid ""
 "INFO-FILE and DIR-FILE are required unless the --info-file\n"
 "or --dir-file (or --info-dir) options are given, respectively."
 msgstr ""
+"Eğer sırasıyla --info-file ya da --dir-file (ya da --info-dir) seçenekleri\n"
+"verilmemişse INFO-FILE ve DIR-FILE gerekmektedir."
 
 #: install-info/install-info.c:548
 msgid ""
@@ -1785,16 +1725,19 @@ msgid ""
 " --calign=COL        format second and subsequent description lines to\n"
 "                       start at column COL."
 msgstr ""
+"Seçenekler:\n"
+" --add-once            yalnızca ilk eşleşen bölüme eklenir, hepsine değil.\n"
+" --align=SÜT            yeni girdilerin tarifini SÜT sütunundan başlatır.\n"
+" calign=SÜT               tariflerin ikinci ve devam eden satırlarını SÜT\n"
+"                     sütunundan başlatır."
 
 #: install-info/install-info.c:555
-#, fuzzy
 msgid ""
 " --debug             report what is being done.\n"
 " --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
 "                      don't insert any new entries.\n"
 " --defsection=TEXT   like --section, but only use TEXT if no sections\n"
-"                      are present in INFO-FILE (replacing \"Miscellaneous"
-"\").\n"
+"                      are present in INFO-FILE (replacing \"Miscellaneous\").\n"
 " --description=TEXT  the description of the entry is TEXT; used with\n"
 "                      the --name option to become synonymous with the\n"
 "                      --entry option.\n"
@@ -1802,48 +1745,37 @@ msgid ""
 "                      equivalent to using the DIR-FILE argument.\n"
 " --dry-run           same as --test."
 msgstr ""
-"Seçenekler:\n"
 " --debug             yapılmakta olanı rapor et.\n"
-" --delete             DIZIN-DOSYASI'ndan INFO-DOSYASI için mevcut girdileri "
-"sil;\n"
+" --delete             DIZIN-DOSYASI'ndan INFO-DOSYASI için mevcut girdileri sil;\n"
 "                      hiç yeni girdi ekleme.\n"
-" --description=METİN  girdinin açıklaması METİN'dir; --entry seçeneğiyle\n"
-"                      eşanlamlı hale gelmesi için --name seçeneğiyle "
-"birlikte\n"
+" --defsection=METİN   --section gibi, ama INFO-DOSYASI içinde bölüm yoksa\n"
+"                         yalnızca METİN kullanılır (\"Çeşitli\"nin yerine)\n"
+". --description=METİN  girdinin açıklaması METİN'dir; --entry seçeneğiyle\n"
+"                      eşanlamlı hale gelmesi için --name seçeneğiyle birlikte\n"
 "                      kullanılır.\n"
 " --dir-file=AD     Info dizindosyasının adını belirtir; DİZİN-DOSYASI \n"
 "                      argümanını kullanmakla eşdeğerdir.\n"
 " --dry-run           --test ile aynı."
 
 #: install-info/install-info.c:568
-#, fuzzy
 msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry,\n"
 "                      overriding any corresponding entry from DIR-FILE.\n"
 "                      TEXT is written as an Info menu item line followed\n"
-"                       by zero or more extra lines starting with "
-"whitespace.\n"
+"                       by zero or more extra lines starting with whitespace.\n"
 "                      If you specify more than one entry, all are added.\n"
 "                      If you don't specify any entries, they are determined\n"
 "                       from information in the Info file itself."
 msgstr ""
-" --entry              =METİN        METİN'i Info dizin girdisi olarak "
-"ekler.\n"
-"                      METİN, Info menü ögesi olarak yazılıp, sıfır ya da "
-"boşlukla\n"
-"                       başlayan diğer satırlarla devam eder.\n"
-"                       Eğer birden fazla girdi belirtirseniz, tümü "
-"eklenir. \n"
+" --entry=METİN        METİN'i, DIR-FILE'den karşılık gelen girdileri\n"
+"                      geçersiz kılarak Info dizin girdisi olarak ekler.\n"
+"                      METİN, Info menü ögesi olarak yazılıp, sıfır ya da\n"
+"                        boşlukla başlayan diğer satırlarla devam eder.\n"
+"                       Eğer birden fazla girdi belirtirseniz, tümü eklenir. \n"
 "                        Eğer hiçbir girdi belirtmezseniz bunlar, Info\n"
-"                       dosyasının içindeki bilgiden belirlenir.\n"
-"                       Silinirken, METİN, silinecek girdiyi belirler.\n"
-"                       Eğer girdi Info dosyasında belirlendiği gibi "
-"değilse,\n"
-"                       ve Info dosyasının temel adı da bulunamıyorsa\n"
-"                       METİN yalnızca son çare olarak silinir."
+"                       dosyasının içindeki bilgiden belirlenir."
 
 #: install-info/install-info.c:577
-#, fuzzy
 msgid ""
 " --help              display this help and exit.\n"
 " --info-dir=DIR      same as --dir-file=DIR/dir.\n"
@@ -1857,15 +1789,9 @@ msgstr ""
 " --info-file=DOSYA    dizine kurulacak Info dosyasını belirler; \n"
 "                      INFO-DOSYASI argümanını kullanmakla eşdeğerdir.\n"
 " --item=METİN         --entry=METİN ile aynı.\n"
-" --keep-old          girdileri değiştirmez ya da boş bölümleri silmez.\n"
-"  -menuentry=METİN    --name=METİN ile aynı.\n"
-" --name=METİN         girdinin adı METİN'dir; --description ile\n"
-"                      kullanıldığında --entry seçeneğiyle eşanlamlı olur.\n"
-" --no-indent         DİZİN dosyasındaki yeni girdileri biçemlemez.\n"
-" --quiet             uyarıları baskılar."
+" --keep-old          girdileri değiştirmez ya da boş bölümleri silmez."
 
 #: install-info/install-info.c:585
-#, fuzzy
 msgid ""
 " --maxwidth, --max-width=COL  wrap description at column COL.\n"
 " --menuentry=TEXT    same as --name=TEXT.\n"
@@ -1874,20 +1800,14 @@ msgid ""
 " --no-indent         do not format new entries in the DIR file.\n"
 " --quiet             suppress warnings."
 msgstr ""
-" --help              bu yardımı gösterir ve çıkar.\n"
-" --info-dir=DİZİN      --dir-file=DİZİN/dizin ile aynı.\n"
-" --info-file=DOSYA    dizine kurulacak Info dosyasını belirler; \n"
-"                      INFO-DOSYASI argümanını kullanmakla eşdeğerdir.\n"
-" --item=METİN         --entry=METİN ile aynı.\n"
-" --keep-old          girdileri değiştirmez ya da boş bölümleri silmez.\n"
-"  -menuentry=METİN    --name=METİN ile aynı.\n"
+" --maxwidth,  --maxwidth=SÜT  tarifi SÜT sütununda sarmalar.\n"
+" -menuentry=METİN    --name=METİN ile aynı.\n"
 " --name=METİN         girdinin adı METİN'dir; --description ile\n"
 "                      kullanıldığında --entry seçeneğiyle eşanlamlı olur.\n"
 " --no-indent         DİZİN dosyasındaki yeni girdileri biçemlemez.\n"
 " --quiet             uyarıları baskılar."
 
 #: install-info/install-info.c:593
-#, fuzzy
 msgid ""
 " --regex=R           put this file's entries in all sections that match the\n"
 "                      regular expression R (ignoring case).\n"
@@ -1897,26 +1817,22 @@ msgid ""
 " --section=SEC       put entries in section SEC of the directory.\n"
 "                      If you specify more than one section, all the entries\n"
 "                       are added in each of the sections.\n"
-"                      If you don't specify any sections, they are "
-"determined\n"
+"                      If you don't specify any sections, they are determined\n"
 "                       from information in the Info file itself;\n"
 "                       if nothing is available there, the --defsection\n"
 "                       value is used; if that is not specified, the\n"
 "                       final default is \"Miscellaneous\".\n"
 " --section R SEC     equivalent to --regex=R --section=SEC --add-once."
 msgstr ""
-" --regex=R           bu dosyanın tüm bölümlerindeki R düzenli ifadesine uyan "
-"(büyük/\n"
+" --regex=R           bu dosyanın tüm bölümlerindeki R düzenli ifadesine uyan (büyük/\n"
 "                      küçük harf duyarsız) tüm girdilerini koyar.\n"
 " --remove            --delet ile aynı.\n"
 " --remove-exactly    yalnızca info dosya adı tam olarak eşleşirse siler;\n"
 "                      .info ve .gz uzantıları yok sayılmaz.\n"
 " --section=BÖLÜM       girdileri dizinin BÖLÜM bölümüne koyar.\n"
-"                      Birden fazla bölüm belirtirseniz, her bir bölüme tüm "
-"girdiler\n"
+"                      Birden fazla bölüm belirtirseniz, her bir bölüme tüm girdiler\n"
 "                       eklenir.\n"
-"                       Eğer hiçbir bölüm belirtmezseniz bunlar, Info "
-"dosyasındaki\n"
+"                       Eğer hiçbir bölüm belirtmezseniz bunlar, Info dosyasındaki\n"
 "                       bilgiden belirlenir.\n"
 " --section R BÖLÜM     --regex=R --section=BÖLÜM --add-once ile eşdeğer."
 
@@ -1941,7 +1857,7 @@ msgstr ""
 "Texinfo anasayfası: http://www.gnu.org/software/texinfo/"
 
 #: install-info/install-info.c:643
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
 "topmost node of the Info hierarchy, called (dir)Top.\n"
@@ -1962,12 +1878,11 @@ msgstr ""
 "Bu, .../info/dir dosyası olup, (dir)Üst adı verilen, Info\n"
 "hiyerarşisinin en üst düğümünü içerir.\n"
 "Info'yu ilk çalıştırdığınızda bu düğüme bakarak başlıyor olursunuz.\n"
-"\n"
+"%c\n"
 "%s\tBu, INFO ağacının tepesidir\n"
 "\n"
 "  Bu (Dizin düğümü), temel konuların bir menüsünü verir.\n"
-"  \"q\" tuşuyla çıkar, \"?\" ile tüm Info komutlarını listeler, \"d\" ile "
-"buraya döner,\n"
+"  \"q\" tuşuyla çıkar, \"?\" ile tüm Info komutlarını listeler, \"d\" ile buraya döner,\n"
 "  \"h\" ile yeni başlayanlar için bir klavuz alabilir,\n"
 "  \"mEmacs<Return>\" ile Emacs klavuzunu ziyaret edebilirsiniz, vs.\n"
 "\n"
@@ -2027,9 +1942,9 @@ msgid "No dir file specified; try --help for more information."
 msgstr "dizin dosyası belirtilmemiş; daha fazla bilgi için --help deneyin."
 
 #: install-info/install-info.c:2274
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read %s."
-msgstr "%1$s okunamıyor: %2$s"
+msgstr "%s okunamıyor."
 
 #: install-info/install-info.c:2421
 #, c-format
@@ -2050,7 +1965,7 @@ msgstr "`%s' için girdi bulunamadı; hiçbir şey silinmedi"
 #: tp/Texinfo/Convert/Info.pm:99 tp/Texinfo/Convert/Info.pm:203
 #: tp/Texinfo/Convert/Info.pm:229 tp/Texinfo/Convert/Plaintext.pm:534
 #: tp/Texinfo/Convert/TexinfoXML.pm:457
-#, fuzzy, perl-format
+#, perl-format
 msgid "could not open %s for writing: %s"
 msgstr "%1$s yazmak için açılamıyor: %2$s"
 
@@ -2078,59 +1993,56 @@ msgid "%s is not a valid split possibility"
 msgstr "%s geçerli bir bölme olasılığı değildir"
 
 #: tp/Texinfo/Common.pm:1142
-#, fuzzy, perl-format
+#, perl-format
 msgid "could not read %s: %s"
 msgstr "%1$s okunamıyor: %2$s"
 
 #: tp/Texinfo/Common.pm:1161
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing @verbatiminclude file %s: %s"
 msgstr "%1$s @verbatiminclude dosyasını kapatmada hata: %2$s"
 
 #: tp/Texinfo/Common.pm:1167 tp/Texinfo/Parser.pm:3343
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s: could not find %s"
 msgstr "@%1$s: %2$s bulunamıyor"
 
 #: tp/Texinfo/Common.pm:1511
-#, fuzzy, perl-format
+#, perl-format
 msgid "could not open html refs config file %s: %s"
 msgstr "%1$s html başvuru ayar dosyası açılamıyor: %2$s"
 
 #: tp/Texinfo/Common.pm:1539
-#, fuzzy
 msgid "missing type"
 msgstr "Kayıp tür"
 
 #: tp/Texinfo/Common.pm:1542
-#, fuzzy, perl-format
+#, perl-format
 msgid "unrecognized type: %s"
 msgstr "Bilinmeyen tür: %s"
 
 #: tp/Texinfo/Common.pm:1559
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing html refs config file %s: %s"
 msgstr "%1$s html başvuru ayar dosyasını kapatmada hata: %2$s"
 
 #: tp/Texinfo/Common.pm:1594
-#, fuzzy
 msgid "no node to be renamed"
-msgstr "%s:%d: yeniden adlandırılacak düğüm yok\n"
+msgstr "yeniden adlandırılacak düğüm yok"
 
 #: tp/Texinfo/Common.pm:1605
-#, fuzzy
 msgid "nodes without a new name at the end of file"
-msgstr "%s:%d: dosya sonunda yeni adı olmayan düğümler\n"
+msgstr "dosya sonunda yeni adı olmayan düğümler"
 
 #: tp/Texinfo/Common.pm:1615 tp/Texinfo/Parser.pm:926
-#, fuzzy, perl-format
+#, perl-format
 msgid "could not open %s: %s"
-msgstr "%1$s yazmak için açılamıyor: %2$s"
+msgstr "%1$s açılamıyor: %2$s"
 
 #: tp/Texinfo/Common.pm:2107
 #, perl-format
 msgid "could not protect hash character in @%s"
-msgstr ""
+msgstr "@%s içindeki sayı karakteri korunamıyor"
 
 #: tp/Texinfo/Convert/Converter.pm:395 tp/Texinfo/Convert/Converter.pm:414
 #, perl-format
@@ -2140,7 +2052,7 @@ msgstr "Kullanım dışı değişken %s\n"
 #: tp/Texinfo/Convert/Converter.pm:794
 #, perl-format
 msgid "%s: output incompatible with split"
-msgstr ""
+msgstr "%s: çıktı bölmeyle uyumsuz"
 
 #: tp/Texinfo/Convert/Converter.pm:876 tp/Texinfo/Convert/Converter.pm:909
 #: tp/Texinfo/Convert/DocBook.pm:361 tp/Texinfo/Convert/HTML.pm:6926
@@ -2148,19 +2060,19 @@ msgstr ""
 #: tp/Texinfo/Convert/Info.pm:162 tp/Texinfo/Convert/Info.pm:188
 #: tp/Texinfo/Convert/Info.pm:219 tp/Texinfo/Convert/Info.pm:282
 #: tp/Texinfo/Convert/TexinfoXML.pm:476 tp/Texinfo/Parser.pm:2034
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing %s: %s"
 msgstr "%1$s'i kapatmada hata: %2$s"
 
 #: tp/Texinfo/Convert/Converter.pm:987
-#, fuzzy, perl-format
+#, perl-format
 msgid "could not create directories `%s' or `%s': %s"
 msgstr "`%1$s' ya da `%2$s' dizinleri oluşturulamıyor: %3$s"
 
 #: tp/Texinfo/Convert/Converter.pm:995
-#, fuzzy, perl-format
+#, perl-format
 msgid "could not create directory `%s': %s"
-msgstr "`%1$s' dizinleri oluşturulamıyor: %2$s"
+msgstr "`%1$s' dizini oluşturulamıyor: %2$s"
 
 #: tp/Texinfo/Convert/DocBook.pm:968
 #, perl-format
@@ -2168,9 +2080,8 @@ msgid "@image file `%s' not found, using `%s'"
 msgstr "@image dosyası `%1$s' bulunamıyor, `%2$s' kullanılacak"
 
 #: tp/Texinfo/Convert/DocBook.pm:1082 tp/Texinfo/Parser.pm:5343
-#, fuzzy
 msgid "no argument specified for @U"
-msgstr "`%c%s' komutu için bir düğüm adı belirtilmedi"
+msgstr "@U için argüman belirtlimedi"
 
 #: tp/Texinfo/Convert/HTML.pm:1684
 #, perl-format
@@ -2178,29 +2089,26 @@ msgid "@image file `%s' (for HTML) not found, using `%s'"
 msgstr "@image dosyası `%1$s' (HTML için) bulunamadı, `%2$s' kullanılacak"
 
 #: tp/Texinfo/Convert/HTML.pm:2373
-#, fuzzy, perl-format
+#, perl-format
 msgid "raw format %s is not converted"
-msgstr "Ham biçem %s dönüştürülmedi"
+msgstr "ham biçem %s dönüştürülmedi"
 
 #: tp/Texinfo/Convert/HTML.pm:4883
-#, fuzzy
 msgid "string not closed in css file"
-msgstr "%s:%d: css dosyasında dizge kapatılmadı"
+msgstr "css dosyasında dizge kapatılmadı"
 
 #: tp/Texinfo/Convert/HTML.pm:4885
-#, fuzzy
 msgid "--css-include ended in comment"
-msgstr "%s:%d: --css-include yorum içinde sonlandı"
+msgstr "--css-include yorum içinde sonlandı"
 
 #: tp/Texinfo/Convert/HTML.pm:4887
-#, fuzzy
 msgid "@import not finished in css file"
-msgstr "%s:%d css dosyasında @import bitmedi"
+msgstr "css dosyasında @import bitmedi"
 
 #: tp/Texinfo/Convert/HTML.pm:4913
-#, fuzzy, perl-format
+#, perl-format
 msgid "CSS file %s not found"
-msgstr "css dosyası %s bulunamadı"
+msgstr "CSS dosyası %s bulunamadı"
 
 #: tp/Texinfo/Convert/HTML.pm:4919
 #, perl-format
@@ -2208,84 +2116,78 @@ msgid "could not open --include-file %s: %s"
 msgstr "--include-file %1$s açılamadı: %2$s"
 
 #: tp/Texinfo/Convert/HTML.pm:4929
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing CSS file %s: %s"
 msgstr "CSS dosyası %1$s'i kapatmada hata: %2$s"
 
 #: tp/Texinfo/Convert/HTML.pm:5796 tp/Texinfo/Convert/HTML.pm:5800
-#, fuzzy, perl-format
+#, perl-format
 msgid "no htmlxref.cnf entry found for `%s'"
 msgstr "`%s' için htmlxref.cnf girdisi bulunamadı"
 
 #: tp/Texinfo/Convert/HTML.pm:6494
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing frame file %s: %s"
-msgstr "Çerçeve dosyası %1$s'i kapatmada hata: %2$s"
+msgstr "çerçeve dosyası %1$s'i kapatmada hata: %2$s"
 
 #: tp/Texinfo/Convert/HTML.pm:6518
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing TOC frame file %s: %s"
 msgstr "TOC çerçeve dosyası %1$s'i kapatmada hata: %2$s"
 
 #: tp/Texinfo/Convert/HTML.pm:6633
-#, fuzzy, perl-format
+#, perl-format
 msgid "handler %s of stage %s priority %s failed"
-msgstr "Evre %2$s öncelik %3$s'in kotarıcısı %1$s başarısız"
+msgstr "evre %2$s öncelik %3$s'in kotarıcısı %1$s başarısız"
 
 #: tp/Texinfo/Convert/HTML.pm:6834
-#, fuzzy
 msgid "must specify a title with a title command or @top"
-msgstr "Başlık komutu ya da @top ile bir başlık belirlemelisiniz"
+msgstr "başlık komutu ya da @top ile bir başlık belirlemelisiniz"
 
 #: tp/Texinfo/Convert/HTML.pm:7043
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing redirection node file %s: %s"
-msgstr "Yeniden yönlendirme düğüm dosyası %1$s'i kapatmada hata: %2$s"
+msgstr "yeniden yönlendirme düğüm dosyası %1$s'i kapatmada hata: %2$s"
 
 #: tp/Texinfo/Convert/HTML.pm:7068
-#, fuzzy, perl-format
+#, perl-format
 msgid "old name for `%s' is a node of the document"
 msgstr "`%s'nin önceki adı bu belgenin bir düğümüdür"
 
 #: tp/Texinfo/Convert/HTML.pm:7074
-#, fuzzy, perl-format
+#, perl-format
 msgid "file empty for renamed node `%s'"
-msgstr "Yeniden adlandırılmış `%s' düğüm dosyası boş"
+msgstr "yeniden adlandırılmış `%s' düğüm dosyası boş"
 
 #: tp/Texinfo/Convert/HTML.pm:7088
-#, fuzzy, perl-format
+#, perl-format
 msgid "target node (new name for `%s') not in document: %s"
-msgstr "Hedef düğüm (`%s'nin yeni adı) belgede yok: %s"
+msgstr "hedef düğüm (`%s'nin yeni adı) belgede yok: %s"
 
 #: tp/Texinfo/Convert/HTML.pm:7120
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing renamed node redirection file %s: %s"
-msgstr ""
-"Yeniden adlandırılmış düğüm yeniden yönlendirme dosyası %s'i kapatmada hata: "
-"%s"
+msgstr "yeniden adlandırılmış düğüm yeniden yönlendirme dosyası %s'i kapatmada hata: %s"
 
 #: tp/Texinfo/Convert/HTML.pm:7158
-#, fuzzy
 msgid "empty node name"
-msgstr "Boş düğüm adı"
+msgstr "boş düğüm adı"
 
 #: tp/Texinfo/Convert/HTML.pm:7160 tp/Texinfo/Parser.pm:3690
-#, fuzzy, perl-format
+#, perl-format
 msgid "syntax for an external node used for `%s'"
 msgstr "`%s' için kullanılan bir harici düğümün sözdizimi"
 
 #: tp/Texinfo/Convert/Info.pm:108
-#, fuzzy
 msgid "document without nodes"
-msgstr "Düğümsüz belge."
+msgstr "düğümsüz belge"
 
 #: tp/Texinfo/Convert/Info.pm:125
-#, fuzzy
 msgid "document without Top node"
-msgstr "Top düğümü olmayan belge."
+msgstr "Top düğümü olmayan belge"
 
 #: tp/Texinfo/Convert/Info.pm:172
-#, fuzzy, perl-format
+#, perl-format
 msgid "rename %s failed: %s"
 msgstr "%1$s yeniden adlandırma başarısız: %2$s"
 
@@ -2300,22 +2202,22 @@ msgid "@%s outside of any node"
 msgstr "@%s tüm düğümlerin dışında"
 
 #: tp/Texinfo/Convert/Info.pm:409
-#, fuzzy, perl-format
+#, perl-format
 msgid "@node name should not contain `,': %s"
-msgstr "@itemx başlamamalı @%s"
+msgstr "@node adı `,' içermemeli: %s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:1275
 #, perl-format
 msgid "Index entry in @%s with : produces invalid Info: %s"
-msgstr ""
+msgstr "@%s 'deki : içeren dizin girdisi geçersiz Info üretiyor: %s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:1320 tp/Texinfo/Parser.pm:2721
-#, fuzzy, perl-format
+#, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "`%s' indeks girdisi tüm düğümlerin dışında"
 
 #: tp/Texinfo/Convert/Plaintext.pm:1433
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "İmge metin dosyası %1$s'i kapatmada hata: %2$s"
 
@@ -2325,32 +2227,28 @@ msgid "@image file `%s' unreadable: %s"
 msgstr "@image dosyası `%1$s' okunamıyor: %2$s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:1461
-#, fuzzy, perl-format
+#, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr "@image dosyası `%s.txt' ya da alternatif metin bulunamadı"
 
 #: tp/Texinfo/Convert/Plaintext.pm:1850
-msgid ""
-"@strong{Note...} produces a spurious cross-reference in Info; reword to "
-"avoid that"
-msgstr ""
-"@strong{Not...} Info'da sahte bir çapraz-başvuru oluşturur; bundan kaçınmak "
-"için yazımı değiştirin"
+msgid "@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"
+msgstr "@strong{Not...} Info'da sahte bir çapraz-başvuru oluşturur; bundan kaçınmak için yazımı değiştirin"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2070
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s cross-reference name should not contain `:'"
-msgstr "@%s'de `%s' açılımından sonra boş çapraz başvuru adı"
+msgstr "@%s çapraz başvuru adı `:' içermemeli"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2087
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s node name should not contain `%s'"
-msgstr "@%s @%s'de görülmemeli"
+msgstr "@%s düğüm adı `%s' içermemeli"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2102
 #, perl-format
 msgid "@%s node name should not contain `:'"
-msgstr ""
+msgstr "@%s düğüm adı `:' içermemeli"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2125
 #, perl-format
@@ -2362,18 +2260,17 @@ msgid "`.' or `,' must follow @xref"
 msgstr "`.' ya da `,' @xref'i izlemelidir"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2964
-#, fuzzy, perl-format
+#, perl-format
 msgid "menu entry node name should not contain `%s'"
-msgstr "`%s' de boş menü girdi adı"
+msgstr "menü girdisi düğüm adı `%s' içermemeli"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2971
 msgid "menu entry node name should not contain `:'"
-msgstr ""
+msgstr "menü girdisi düğüm adı `:' içermemeli"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2982
-#, fuzzy
 msgid "menu entry name should not contain `:'"
-msgstr "`%s' de boş menü girdi adı"
+msgstr "menü girdi adı `:' içermemeli"
 
 #: tp/Texinfo/Parser.pm:910
 #, perl-format
@@ -2381,19 +2278,19 @@ msgid "@%s should only appear at beginning or end of document"
 msgstr "@%s yalnızca belgenin başında ya da sonunda görünmelidir"
 
 #: tp/Texinfo/Parser.pm:1160 tp/Texinfo/Structuring.pm:613
-#, fuzzy, perl-format
+#, perl-format
 msgid "multiple @%s"
-msgstr "Çok sayıda @%s"
+msgstr "çok sayıda @%s"
 
 #: tp/Texinfo/Parser.pm:1194
-#, fuzzy, perl-format
+#, perl-format
 msgid "bad syntax for @%s argument: %s"
-msgstr "@%s argümanı için hatalı sözdüzüm: %s"
+msgstr "@%s argümanı için hatalı sözdizimi: %s"
 
 #: tp/Texinfo/Parser.pm:1210
-#, fuzzy, perl-format
+#, perl-format
 msgid "bad or empty @%s formal argument: %s"
-msgstr "Hatalı ya da boş @%s resmi argümanı: %s"
+msgstr "hatalı ya da boş @%s resmi argümanı: %s"
 
 #: tp/Texinfo/Parser.pm:1219 tp/Texinfo/Parser.pm:4811
 #: tp/Texinfo/Parser.pm:4837 tp/Texinfo/Parser.pm:5602
@@ -2405,19 +2302,19 @@ msgstr "%c%s bir isim gerektirir"
 #: tp/Texinfo/Parser.pm:1223 tp/Texinfo/Parser.pm:4814
 #: tp/Texinfo/Parser.pm:4840 tp/Texinfo/Parser.pm:5605
 #: tp/Texinfo/Parser.pm:5621 tp/Texinfo/Parser.pm:5636
-#, fuzzy, perl-format
+#, perl-format
 msgid "bad name for @%s"
-msgstr "@%s'ye hatalı argüman"
+msgstr "@%s için kötü isim"
 
 #: tp/Texinfo/Parser.pm:1341
-#, fuzzy, perl-format
+#, perl-format
 msgid "@end %s seen before @%s closing brace"
-msgstr "@%s, @end'den önce görüldü %s"
+msgstr "@end %s, @%s'in kapama küme parantezinden önce görüldü"
 
 #: tp/Texinfo/Parser.pm:1345
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s seen before @%s closing brace"
-msgstr "@%s, @end'den önce görüldü %s"
+msgstr "@%s, @%s'in kapama küme parantezinden önce görüldü"
 
 #: tp/Texinfo/Parser.pm:1350
 #, perl-format
@@ -2454,25 +2351,25 @@ msgid "@%s seen before @end %s"
 msgstr "@%s, @end'den önce görüldü %s"
 
 #: tp/Texinfo/Parser.pm:1750
-#, fuzzy, perl-format
+#, perl-format
 msgid "no matching `%cend %s'"
-msgstr "Eşleşen `%cend %s' yok"
+msgstr "eşleşen `%cend %s' yok"
 
 #: tp/Texinfo/Parser.pm:1776 tp/Texinfo/Parser.pm:5159
 #: tp/Texinfo/Parser.pm:5424
-#, fuzzy, perl-format
+#, perl-format
 msgid "misplaced %c"
-msgstr "Yanlış yerleştirilmiş %c"
+msgstr "yanlış yerleştirilmiş %c"
 
 #: tp/Texinfo/Parser.pm:1874 tp/Texinfo/Parser.pm:3302
-#, fuzzy, perl-format
+#, perl-format
 msgid "unmatched `%c%s'"
-msgstr "Eşleşmeyen `%c%s'"
+msgstr "eşleşmeyen `%c%s'"
 
 #: tp/Texinfo/Parser.pm:2109
-#, fuzzy, perl-format
+#, perl-format
 msgid "macro `%s' called with too many args"
-msgstr "Makro `%s' çok sayıda arg.la çağrıldı"
+msgstr "makro `%s' çok sayıda arg.la çağrıldı"
 
 #: tp/Texinfo/Parser.pm:2131
 #, perl-format
@@ -2480,9 +2377,9 @@ msgid "@%s missing close brace"
 msgstr "@%s kayıp küme parantezi"
 
 #: tp/Texinfo/Parser.pm:2139
-#, fuzzy, perl-format
+#, perl-format
 msgid "macro `%s' declared without argument called with an argument"
-msgstr "Makro `%s' argümansız tanımlandı, argümanla kullanıldı"
+msgstr "makro `%s' argümansız tanımlandı, argümanla kullanıldı"
 
 #: tp/Texinfo/Parser.pm:2174
 #, perl-format
@@ -2500,17 +2397,17 @@ msgid "here is the previous definition as @%s"
 msgstr "işte @%s olarak önceki tanım"
 
 #: tp/Texinfo/Parser.pm:3016
-#, fuzzy, perl-format
+#, perl-format
 msgid "missing name for @%s"
 msgstr "@%s için kayıp isim"
 
 #: tp/Texinfo/Parser.pm:3021
-#, fuzzy, perl-format
+#, perl-format
 msgid "missing category for @%s"
 msgstr "@%s için kayıp kategori"
 
 #: tp/Texinfo/Parser.pm:3073
-#, fuzzy, perl-format
+#, perl-format
 msgid "unexpected argument on @%s line: %s"
 msgstr "@%s satırında beklenmedik argüman: %s"
 
@@ -2519,13 +2416,13 @@ msgid "empty multitable"
 msgstr "boş çoklutablo"
 
 #: tp/Texinfo/Parser.pm:3145 tp/Texinfo/Parser.pm:5715
-#, fuzzy, perl-format
+#, perl-format
 msgid "superfluous argument to @%s"
 msgstr "@%s'e fazladan argüman"
 
 #: tp/Texinfo/Parser.pm:3151 tp/Texinfo/Parser.pm:5737
 #: tp/Texinfo/Parser.pm:5749
-#, fuzzy, perl-format
+#, perl-format
 msgid "bad argument to @%s"
 msgstr "@%s'ye hatalı argüman"
 
@@ -2535,15 +2432,14 @@ msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s bir argüman gerektirir: %c öğesi için biçimlendirici"
 
 #: tp/Texinfo/Parser.pm:3167
-#, fuzzy, perl-format
+#, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
-msgstr ""
-"@%s komutu küme parantezi içinde argüman kabul etmiyor @%s satırında olmamalı"
+msgstr "@%s komutu küme parantezi içinde argüman kabul etmiyor @%s satırında olmamalı"
 
 #: tp/Texinfo/Parser.pm:3202
-#, fuzzy, perl-format
+#, perl-format
 msgid "accent command `@%s' not allowed as @%s argument"
-msgstr "Vurgu komutu `@%s'ın @%s argümanı olmasına izin verilmiyor"
+msgstr "vurgu komutu `@%s'in @%s argümanı olmasına izin verilmiyor"
 
 #: tp/Texinfo/Parser.pm:3280 tp/Texinfo/Parser.pm:3419
 #: tp/Texinfo/Parser.pm:5708
@@ -2552,29 +2448,29 @@ msgid "@%s missing argument"
 msgstr "@%s kayıp argüman"
 
 #: tp/Texinfo/Parser.pm:3292
-#, fuzzy, perl-format
+#, perl-format
 msgid "unknown @end %s"
-msgstr "Bilinmeyen @end %s"
+msgstr "bilinmeyen @end %s"
 
 #: tp/Texinfo/Parser.pm:3314 tp/Texinfo/Parser.pm:3936
-#, fuzzy, perl-format
+#, perl-format
 msgid "superfluous argument to @%s %s: %s"
 msgstr "@%s %s'e fazladan argüman: %s"
 
 #: tp/Texinfo/Parser.pm:3319 tp/Texinfo/Parser.pm:5792
 #: tp/Texinfo/Parser.pm:5837 tp/Texinfo/Parser.pm:5866
 #: tp/Texinfo/Parser.pm:5907 tp/Texinfo/Parser.pm:5985
-#, fuzzy, perl-format
+#, perl-format
 msgid "bad argument to @%s: %s"
-msgstr "@%s:%s'ye hatalı argüman"
+msgstr "@%s'e hatalı argüman: %s"
 
 #: tp/Texinfo/Parser.pm:3338
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s: could not open %s: %s"
 msgstr "@%s: %s açılamıyor: %s"
 
 #: tp/Texinfo/Parser.pm:3350
-#, fuzzy, perl-format
+#, perl-format
 msgid "encoding `%s' is not a canonical texinfo encoding"
 msgstr "`%s' kodlaması kanonik bir texinfo kodlaması değil"
 
@@ -2601,28 +2497,26 @@ msgstr "@%s @top ile ilintili olmamalı"
 #: tp/Texinfo/Parser.pm:3568
 #, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
-msgstr ""
-"@node @%s'den önce geliyor, fakat parçaları düğümlerle ilişkili olmayabilir"
+msgstr "@node @%s'den önce geliyor, fakat parçaları düğümlerle ilişkili olmayabilir"
 
 #: tp/Texinfo/Parser.pm:3670
-#, fuzzy, perl-format
+#, perl-format
 msgid "empty argument in @%s"
 msgstr "@%s'de boş argüman"
 
 #: tp/Texinfo/Parser.pm:3674
-#, fuzzy, perl-format
+#, perl-format
 msgid "empty node name after expansion `%s'"
 msgstr "`%s' açılımından sonra boş düğüm adı"
 
 #: tp/Texinfo/Parser.pm:3717
-#, fuzzy, perl-format
+#, perl-format
 msgid "empty menu entry name in `%s'"
 msgstr "`%s' de boş menü girdi adı"
 
 #: tp/Texinfo/Parser.pm:3725
-#, fuzzy
 msgid "empty node name in menu entry"
-msgstr "Menü girdisinde boş düğüm"
+msgstr "menü girdisinde boş düğüm adı"
 
 #: tp/Texinfo/Parser.pm:3798
 #, perl-format
@@ -2645,7 +2539,7 @@ msgid "here is the previous definition of `%s'"
 msgstr "işte `%s''nin önceki tanımı"
 
 #: tp/Texinfo/Parser.pm:3961
-#, fuzzy, perl-format
+#, perl-format
 msgid "redefining Texinfo language command: @%s"
 msgstr "Texinfo dil komutu yeniden tanımlanıyor: @%s"
 
@@ -2656,34 +2550,28 @@ msgstr "ilişkili karakteri olmayan @%s"
 
 #: tp/Texinfo/Parser.pm:4072
 #, perl-format
-msgid ""
-"@%s defined with zero or more than one argument should be invoked with {}"
+msgid "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr "sıfırla tanımlanmış @%s ya da birden çok argüman {} ile çağrılmalı"
 
 #: tp/Texinfo/Parser.pm:4096
-#, fuzzy, perl-format
-msgid ""
-"macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
-"value %d)"
-msgstr ""
-"Makro çağrısı çok içiçe (geçersiz kılmak için MAX_NESTED_MACROS'u atayın; "
-"mevcut değer %d)"
+#, perl-format
+msgid "macro call nested too deeply (set MAX_NESTED_MACROS to override; current value %d)"
+msgstr "makro çağrısı çok içiçe (geçersiz kılmak için MAX_NESTED_MACROS'u atayın; mevcut değer %d)"
 
 #: tp/Texinfo/Parser.pm:4105
-#, fuzzy, perl-format
+#, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
-msgstr ""
-"%s makrosunun özyineli çağrısına izin verilmiyor; gerekirse @rmacro kullanın"
+msgstr "%s makrosunun özyineli çağrısına izin verilmiyor; gerekirse @rmacro kullanın"
 
 #: tp/Texinfo/Parser.pm:4161
-#, fuzzy, perl-format
+#, perl-format
 msgid "accent command `@%s' must not be followed by whitespace"
 msgstr "`@%s' aksan komutundan sonra beyaz boşluk gelmemeli"
 
 #: tp/Texinfo/Parser.pm:4167
-#, fuzzy, perl-format
+#, perl-format
 msgid "use braces to give a command as an argument to @%s"
-msgstr "@%s'e argüman olarak bir komut vermek için {} kullanın"
+msgstr "@%s'e argüman olarak bir komut vermek için küme parantezleri kullanın"
 
 #: tp/Texinfo/Parser.pm:4180 tp/Texinfo/Parser.pm:5280
 #, perl-format
@@ -2691,7 +2579,7 @@ msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s argüman olarak `i' ya da `j' gerektirir, `%s' değil"
 
 #: tp/Texinfo/Parser.pm:4192
-#, fuzzy, perl-format
+#, perl-format
 msgid "accent command `@%s' must not be followed by new line"
 msgstr "`@%s' aksan komutundan sonra yeni satır gelmemelidir"
 
@@ -2706,7 +2594,6 @@ msgid "undefined flag: %s"
 msgstr "tanımlanmamış bayrak: %s"
 
 #: tp/Texinfo/Parser.pm:4366
-#, fuzzy
 msgid "bad syntax for @value"
 msgstr "@value için bozuk sözdizimi"
 
@@ -2751,9 +2638,9 @@ msgid "@tab before @item"
 msgstr "@item'den önce @tab"
 
 #: tp/Texinfo/Parser.pm:4647
-#, fuzzy, perl-format
+#, perl-format
 msgid "too many columns in multitable item (max %d)"
-msgstr "Çok-tablolu öğede, çok fazla sütun (maks %d)"
+msgstr "çok-tablolu ögede, çok fazla sütun (maks %d)"
 
 #: tp/Texinfo/Parser.pm:4684
 msgid "ignoring @tab outside of multitable"
@@ -2765,7 +2652,7 @@ msgid "@%s outside of table or list"
 msgstr "tablo ya da liste dışında @%s"
 
 #: tp/Texinfo/Parser.pm:4723
-#, fuzzy, perl-format
+#, perl-format
 msgid "must be after `@%s' to use `@%s'"
 msgstr "`@%2$s' kullanmak için `@%1$s' den sonra ol(un)malıdır"
 
@@ -2779,7 +2666,7 @@ msgid "@dircategory after first node"
 msgstr "ilk düğümden sonra @dircategory"
 
 #: tp/Texinfo/Parser.pm:4934
-#, fuzzy, perl-format
+#, perl-format
 msgid "region %s inside region %s is not allowed"
 msgstr "%2$s bölgesi içinde %1$s bölgesine izin verilmez"
 
@@ -2793,11 +2680,8 @@ msgid "@%s seen before first @node"
 msgstr "ilk @node öncesinde @%s görüldü"
 
 #: tp/Texinfo/Parser.pm:4963
-msgid ""
-"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
-msgstr ""
-"belki de sizin @top düğümünüz, @ifinfo'dan ziyade @ifnottex içine "
-"sarılmalıdır?"
+msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr "belki de sizin @top düğümünüz, @ifinfo'dan ziyade @ifnottex içine sarılmalıdır?"
 
 #: tp/Texinfo/Parser.pm:5025
 #, perl-format
@@ -2805,14 +2689,13 @@ msgid "@%s should only appear in math context"
 msgstr "@%s yalnızca matematik bağlamında görünmelidir"
 
 #: tp/Texinfo/Parser.pm:5033
-#, fuzzy, perl-format
+#, perl-format
 msgid "unknown command `%s'"
-msgstr "Bilinmeyen komut `%s'"
+msgstr "bilinmeyen komut `%s'"
 
 #: tp/Texinfo/Parser.pm:5043
-#, fuzzy
 msgid "unexpected @"
-msgstr "Beklenmedik @"
+msgstr "beklenmedik @"
 
 #: tp/Texinfo/Parser.pm:5072
 #, perl-format
@@ -2825,27 +2708,27 @@ msgid "@%s should be right below `@float'"
 msgstr "@%s, `@float'ın hemen altında olmalıdır"
 
 #: tp/Texinfo/Parser.pm:5085
-#, fuzzy, perl-format
+#, perl-format
 msgid "ignoring multiple @%s"
-msgstr "Çok sayıda @%s yok sayılıyor"
+msgstr "çok sayıda @%s yok sayılıyor"
 
 #: tp/Texinfo/Parser.pm:5204
-#, fuzzy, perl-format
+#, perl-format
 msgid "command @%s does not accept arguments"
 msgstr "@%s komutu argüman kabul etmez"
 
 #: tp/Texinfo/Parser.pm:5228
-#, fuzzy, perl-format
+#, perl-format
 msgid "command @%s missing a node or external manual argument"
 msgstr "@%s komutunda bir düğüm ya da harici manüel argüman eksik"
 
 #: tp/Texinfo/Parser.pm:5247
-#, fuzzy, perl-format
+#, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
 msgstr "@%s'de `%s' açılımından sonra boş çapraz başvuru adı"
 
 #: tp/Texinfo/Parser.pm:5258
-#, fuzzy, perl-format
+#, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
 msgstr "@%s'de `%s' açılımından sonra boş çapraz başvuru başlığı"
 
@@ -2859,32 +2742,31 @@ msgid "@%s missing first argument"
 msgstr "@%s'de eksik ilk argüman"
 
 #: tp/Texinfo/Parser.pm:5348
-#, fuzzy, perl-format
+#, perl-format
 msgid "non-hex digits in argument for @U: %s"
-msgstr "@%s:%s'ye hatalı argüman"
+msgstr "@U için olan argümanda hex olmayan rakamlar: %s"
 
 #: tp/Texinfo/Parser.pm:5354
 #, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
-msgstr ""
+msgstr "@U için olan argümanda dörtten az sayıda hex rakam: %s"
 
 #: tp/Texinfo/Parser.pm:5367
 #, perl-format
 msgid "argument for @U exceeds size of integer: %s"
-msgstr ""
+msgstr "@U için olan argüman tam sayı boyutunu aşıyor: %s"
 
 #: tp/Texinfo/Parser.pm:5373
 #, perl-format
 msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
-msgstr ""
+msgstr "@U için olan argüman Unicode maksimumu olan 0x10FFF'yi aşıyor: %s"
 
 #: tp/Texinfo/Parser.pm:5500
-#, fuzzy
 msgid "superfluous arguments for node"
-msgstr "Düğüm için çok fazla argüman"
+msgstr "düğüm için çok fazla argüman"
 
 #: tp/Texinfo/Parser.pm:5550
-#, fuzzy, perl-format
+#, perl-format
 msgid "expected @end %s"
 msgstr "@end beklenirdi %s"
 
@@ -2894,19 +2776,19 @@ msgid "@%s should only accept a @-command as argument, not `%s'"
 msgstr "@%s argüman olarak yalnızca bir @-komut kabul etmelidir, `%s' değil"
 
 #: tp/Texinfo/Parser.pm:5659
-#, fuzzy, perl-format
+#, perl-format
 msgid "remaining argument on @%s line: %s"
 msgstr "@%s satırında kalan argüman: %s"
 
 #: tp/Texinfo/Parser.pm:5732
-#, fuzzy, perl-format
+#, perl-format
 msgid "environment command %s as argument to @%s"
 msgstr "@%s'e argüman olarak çevre komutu %s"
 
 #: tp/Texinfo/Parser.pm:5754
-#, fuzzy, perl-format
+#, perl-format
 msgid "empty @%s"
-msgstr "Boş @%s"
+msgstr "boş @%s"
 
 #: tp/Texinfo/Parser.pm:5762
 #, perl-format
@@ -2919,17 +2801,17 @@ msgid "@sp arg must be numeric, not `%s'"
 msgstr "@sp arg sayısal olmalıdır `%s' değil"
 
 #: tp/Texinfo/Parser.pm:5780
-#, fuzzy, perl-format
+#, perl-format
 msgid "reserved index name %s"
-msgstr "Ayrılmış dizin adı %s"
+msgstr "ayrılmış dizin adı %s"
 
 #: tp/Texinfo/Parser.pm:5799
-#, fuzzy, perl-format
+#, perl-format
 msgid "unknown source index in @%s: %s"
 msgstr "@%s'de bilinmeyen kaynak dizini: %s"
 
 #: tp/Texinfo/Parser.pm:5802
-#, fuzzy, perl-format
+#, perl-format
 msgid "unknown destination index in @%s: %s"
 msgstr "@%s'de bilinmeyen hedef dizini: %s"
 
@@ -2939,17 +2821,17 @@ msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr "@%s, %s'in kendi içine kaynaşmasına yol açar, yok sayılıyor"
 
 #: tp/Texinfo/Parser.pm:5845
-#, fuzzy, perl-format
+#, perl-format
 msgid "unknown index `%s' in @printindex"
 msgstr "@printindex içinde bilinmeyen indeks `%s'"
 
 #: tp/Texinfo/Parser.pm:5851
-#, fuzzy, perl-format
+#, perl-format
 msgid "printing an index `%s' merged in another one `%s'"
 msgstr "`%2$s' içine kaynaştırılmış bir `%1$s' dizini yazdırılıyor"
 
 #: tp/Texinfo/Parser.pm:5859
-#, fuzzy, perl-format
+#, perl-format
 msgid "printindex before document beginning: @printindex %s"
 msgstr "Belge başlangıcından önce printindex: @printindex %s"
 
@@ -2989,9 +2871,9 @@ msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr "@exampleindent arg sayısal/`asis' olmalıdır, `%s' değil"
 
 #: tp/Texinfo/Parser.pm:5951
-#, fuzzy, perl-format
+#, perl-format
 msgid "expected @%s on or off, not `%s'"
-msgstr "%1$s'de açık ya da kapalı bakleniyordu, `%2$s' değil"
+msgstr "@%s açık ya da kapalı bekleniyordu, `%s' değil"
 
 #: tp/Texinfo/Parser.pm:5961
 #, perl-format
@@ -3009,30 +2891,29 @@ msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr "@urefbreakstyle arg `after'/`before'/`none' olmalıdır, `%s' değil"
 
 #: tp/Texinfo/Structuring.pm:232
-#, fuzzy, perl-format
+#, perl-format
 msgid "raising the section level of @%s which is too low"
 msgstr "@%s'in çok düşük olan bölüm düzeyi yükseltiliyor"
 
 #: tp/Texinfo/Structuring.pm:264
-#, fuzzy, perl-format
+#, perl-format
 msgid "no chapter-level command before @%s"
 msgstr "@%s'den önce kısım düzeyi komutu yok"
 
 #: tp/Texinfo/Structuring.pm:269
-#, fuzzy, perl-format
+#, perl-format
 msgid "lowering the section level of @%s appearing after a lower element"
-msgstr ""
-"Daha düşük düzeyde bir unsurdan sonra görülen @%s'in bölüm düzeyi düşürülüyor"
+msgstr "daha düşük düzeyde bir unsurdan sonra görülen @%s'in bölüm düzeyi düşürülüyor"
 
 #: tp/Texinfo/Structuring.pm:358
-#, fuzzy, perl-format
+#, perl-format
 msgid "no sectioning command associated with @%s"
-msgstr "@%s ile ilintili bir bölümleme kmoutu yok"
+msgstr "@%s ile ilintili bir bölümleme komutu yok"
 
 #: tp/Texinfo/Structuring.pm:507
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s not empty"
-msgstr "boş @multitable'de @%s"
+msgstr "@%s boş değil"
 
 #: tp/Texinfo/Structuring.pm:563 tp/Texinfo/Structuring.pm:1345
 #, perl-format
@@ -3040,9 +2921,9 @@ msgid "@%s reference to nonexistent node `%s'"
 msgstr "varolmayan düğüm `%s'e @%s referansı"
 
 #: tp/Texinfo/Structuring.pm:576
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s entry node name `%s' different from %s name `%s'"
-msgstr "Menü girdisi düğüm adı `%s' %s adı olan `%s'den farklı"
+msgstr "@%s girdi düğüm adı `%s', %s adından farklı `%s'"
 
 #: tp/Texinfo/Structuring.pm:681
 #, perl-format
@@ -3050,19 +2931,19 @@ msgid "unreferenced node `%s'"
 msgstr "başvurulmamış düğüm `%s'"
 
 #: tp/Texinfo/Structuring.pm:727
-#, fuzzy, perl-format
+#, perl-format
 msgid "node `%s' is %s for `%s' in sectioning but not in menu"
-msgstr "Düğüm `1$%s' `%3$s' için bölümlemede %2$s fakat menüde değil"
+msgstr "düğüm `1$%s' `%3$s' için bölümlemede %2$s fakat menüde değil"
 
 #: tp/Texinfo/Structuring.pm:734
-#, fuzzy, perl-format
+#, perl-format
 msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
-msgstr "Düğüm %1$s `%3$s' menüsündeki `%2$s' ve bölümlemedeki `%4$s' farklı"
+msgstr "düğüm %1$s `%3$s' menüsündeki `%2$s' ve bölümlemedeki `%4$s' farklı"
 
 #: tp/Texinfo/Structuring.pm:752
-#, fuzzy, perl-format
+#, perl-format
 msgid "node `%s' is %s for `%s' in menu but not in sectioning"
-msgstr "Düğüm `%s' menüdeki `%s' için %s fakat bölümlemede değil"
+msgstr "düğüm `%s' menüdeki `%s' için %s fakat bölümlemede değil"
 
 #: tp/Texinfo/Structuring.pm:806
 #, perl-format
@@ -3075,14 +2956,12 @@ msgid "%s reference to nonexistent `%s'"
 msgstr "varolmayan düğüm `%s' e %s referansı"
 
 #: tp/Texinfo/Structuring.pm:853
-#, fuzzy, perl-format
+#, perl-format
 msgid "node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr ""
-"Düğüm `%s', Yukarı hedefi olmasına karşın, `%s' için eksik menü öğesi "
-"içeriyor"
+msgstr "düğüm `%s', Yukarı hedefi olmasına karşın, `%s' için eksik menü öğesi içeriyor"
 
 #: tp/Texinfo/Structuring.pm:861
-#, fuzzy, perl-format
+#, perl-format
 msgid "for `%s', up in menu `%s' and up `%s' don't match"
 msgstr "`%s' için, menü `%s' deki yukarı ve `%s' yukarısı eşleşmiyor"
 
@@ -3092,141 +2971,127 @@ msgid "@%s to `%s', different from %s name `%s'"
 msgstr "`%s'e @%s, `%s' %s adından farklı"
 
 #: tp/Texinfo/Structuring.pm:2023
-#, fuzzy, perl-format
+#, perl-format
 msgid "empty index key in @%s"
 msgstr "@%s'de boş dizin anahtarı"
 
 #: tp/init/chm.pm:221 tp/init/chm.pm:277 tp/init/chm.pm:348
-#, fuzzy, perl-format
+#, perl-format
 msgid "chm.pm: could not open %s for writing: %s\n"
-msgstr "%s yazmak için açılamıyorı: %s\n"
+msgstr "chm.pm %s'i yazmak için açamıyor: %s\n"
 
 #: tp/init/chm.pm:267 tp/init/chm.pm:338 tp/init/chm.pm:399
-#, fuzzy, perl-format
+#, perl-format
 msgid "chm.pm: error on closing %s: %s"
-msgstr "%1$s'i kapatmada hata: %2$s"
+msgstr "chm.pm: %s'i kapatmada hata: %s"
 
 #: tp/init/latex2html.pm:200
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: could not open latex file %s for writing: %s"
-msgstr "%1$s yazmak için açılamıyor: %2$s"
+msgstr "l2h: latex dosyası %s yazmak için açılamıyor: %s"
 
 #: tp/init/latex2html.pm:341
 msgid "l2h: L2H_TMP directory contains a dot"
-msgstr ""
+msgstr "l2h: L2H_TMP dizini bir nokta içeriyor"
 
 #: tp/init/latex2html.pm:346
 msgid "l2h: current directory contains a dot"
-msgstr ""
+msgstr "l2h: mevcut dizin bir nokta içeriyor"
 
 #: tp/init/latex2html.pm:374
 #, perl-format
 msgid "l2h: command did not succeed: %s"
-msgstr ""
+msgstr "l2h: komut başarılı omadı: %s"
 
 #: tp/init/latex2html.pm:422
 #, perl-format
 msgid "l2h: image has invalid extension: %s"
-msgstr ""
+msgstr "l2h: resmin geçersiz uzantısı var: %s"
 
 #: tp/init/latex2html.pm:438
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: rename %s as %s failed: %s"
-msgstr "%1$s yeniden adlandırma başarısız: %2$s"
+msgstr "l2h: %s'in %s olarak yeniden adlandırılması başarısız: %s"
 
 #: tp/init/latex2html.pm:460
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: could not open %s: %s"
-msgstr "@%s: %s açılamıyor: %s"
+msgstr "l2h: %s açılamıyor: %s"
 
 #: tp/init/latex2html.pm:493
 #, perl-format
 msgid "latex2html.pm: end of @%s item %d not found"
-msgstr ""
+msgstr "latex2html.pm: @%s ögesinin sonu %d bulunamadı"
 
 #: tp/init/latex2html.pm:504
-#, fuzzy, perl-format
-msgid ""
-"latex2html.pm: processing produced %d items in HTML; expected %d, the number "
-"of items found in the document"
-msgstr ""
-"tex4ht işlemesi HTML'de %d öğe üretti; %d bekleniyordu, belgede bulunan öğe "
-"sayısı"
+#, perl-format
+msgid "latex2html.pm: processing produced %d items in HTML; expected %d, the number of items found in the document"
+msgstr "latex2html.pm: işleme HTML'de %d öğe üretti; %d bekleniyordu, belgede bulunan öğe sayısı"
 
 #: tp/init/latex2html.pm:534
 #, perl-format
 msgid "l2h: could not determine the fragment %d for @%s"
-msgstr ""
+msgstr "l2h: %d parçası @%s için belirlenemedi"
 
 #: tp/init/latex2html.pm:560
 #, perl-format
-msgid ""
-"l2h: could not extract the fragment %d for @%s with output counter %d from "
-"HTML"
-msgstr ""
+msgid "l2h: could not extract the fragment %d for @%s with output counter %d from HTML"
+msgstr "l2h: %d parçası, @%s için HTML'den çıktı sayacı %d ile  çıkarılamadı"
 
 #: tp/init/latex2html.pm:621
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: could not load %s: %s"
-msgstr "--include-file %1$s açılamadı: %2$s"
+msgstr "l2h: %s yüklenemedi: %s"
 
 #: tp/init/latex2html.pm:634
-#, fuzzy, perl-format
+#, perl-format
 msgid "l2h: could not open %s for writing: %s"
-msgstr "%1$s yazmak için açılamıyor: %2$s"
+msgstr "l2h: %s yazmak için açılamıyor: %s"
 
 #: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
-#, fuzzy, perl-format
+#, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
-msgstr "@%s: %s açılamıyor: %s"
+msgstr "tex4ht.pm: %s açılamadı: %s"
 
 #: tp/init/tex4ht.pm:219
-#, fuzzy, perl-format
+#, perl-format
 msgid "tex4ht.pm: chdir %s failed: %s"
-msgstr "%1$s yeniden adlandırma başarısız: %2$s"
+msgstr "tex4ht.pm: %s dizinine geçme başarısız: %s"
 
 #: tp/init/tex4ht.pm:232
 #, perl-format
 msgid "tex4ht.pm: unable to return to initial directory: %s"
-msgstr ""
+msgstr "tex4ht.pm: başlangıç dizinine dönülemedi: %s"
 
 #: tp/init/tex4ht.pm:244
-#, fuzzy, perl-format
+#, perl-format
 msgid "tex4ht.pm: output file missing: %s"
-msgstr "tex4ht çıktı dosyası kayıp: %s"
+msgstr "tex4ht.pm: çıktı dosyası kayıp: %s"
 
 #: tp/init/tex4ht.pm:260
-#, fuzzy, perl-format
+#, perl-format
 msgid "tex4ht.pm: command failed: %s"
-msgstr "%1$s yeniden adlandırma başarısız: %2$s"
+msgstr "tex4ht.pm: komut başarısız: %s"
 
 #: tp/init/tex4ht.pm:294
 #, perl-format
 msgid "tex4ht.pm: end of @%s item %d not found"
-msgstr ""
+msgstr "tex4ht.pm: @%s sonu %d ögesi bulunamadı"
 
 #: tp/init/tex4ht.pm:301
-#, fuzzy, perl-format
-msgid ""
-"tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
-"items found in the document for @%s"
-msgstr ""
-"tex4ht işlemesi HTML'de %d öğe üretti; %d bekleniyordu, belgede bulunan öğe "
-"sayısı"
+#, perl-format
+msgid "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of items found in the document for @%s"
+msgstr "tex4ht.pm: işleme HTML'de %d öge üretti; %d bekleniyordu, @%s için belgede bulunan öge sayısı"
 
 #: tp/init/tex4ht.pm:321
-#, fuzzy, perl-format
+#, perl-format
 msgid "tex4ht.pm: output has no HTML item for @%s %s"
-msgstr "tex4ht çıktısında @%s %s için hiç HTML öğesi yok"
+msgstr "tex4ht.pm: çıktıda @%s %s için hiç HTML ögesi yok"
 
 #: tp/init/tex4ht.pm:336
-#, fuzzy, perl-format
-msgid ""
-"tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of "
-"items found in the document for @%s"
-msgstr ""
-"tex4ht işlemesi HTML'de %d öğe üretti; %d bekleniyordu, belgede bulunan öğe "
-"sayısı"
+#, perl-format
+msgid "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of items found in the document for @%s"
+msgstr "tex4ht.pm: işleme HTML'de %d öge toparladı; %d bekleniyordu, @%s için belgede bulunan öge sayısı"
 
 #: tp/texi2any.pl:386
 #, perl-format
@@ -3234,42 +3099,41 @@ msgid "error loading %s: %s\n"
 msgstr "%s yüklenirken hata: %s\n"
 
 #: tp/texi2any.pl:399
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s: unknown variable %s"
-msgstr "Bilinmeyen değişken %s\n"
+msgstr "%s: bilinmeyen değişken %s"
 
 #: tp/texi2any.pl:403
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s: obsolete variable %s\n"
-msgstr "Kullanım dışı değişken %s\n"
+msgstr "%s: kullanım dışı değişken %s\n"
 
 #: tp/texi2any.pl:418
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s: unknown variable %s\n"
-msgstr "Bilinmeyen değişken %s\n"
+msgstr "%sŞ bilinmeyen değişken %s\n"
 
 #: tp/texi2any.pl:422
-#, fuzzy, perl-format
+#, perl-format
 msgid "obsolete variable %s\n"
-msgstr "Kullanım dışı değişken %s\n"
+msgstr "kullanım dışı değişken %s\n"
 
 #: tp/texi2any.pl:487
-#, fuzzy, perl-format
+#, perl-format
 msgid "could not read init file %s"
 msgstr "init dosyası %s okunamıyor"
 
 #: tp/texi2any.pl:650
-#, fuzzy, perl-format
+#, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
-msgstr "%s: Tanınamayan TEXINFO_OUTPUT_FORMAT değeri `%s' yok sayılıyor.\n"
+msgstr "tanınamayan TEXINFO_OUTPUT_FORMAT değeri `%s' yok sayılıyor.\n"
 
 #: tp/texi2any.pl:733
-#, fuzzy, perl-format
+#, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
-msgstr "Kullanım: %s [SEÇENEK]... DOSYA...\n"
+msgstr "Kullanım: %s [SEÇENEK]... TEXINFO-DOSYASI...\n"
 
 #: tp/texi2any.pl:736
-#, fuzzy
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -3278,11 +3142,13 @@ msgid ""
 "the behavior is identical, and does not depend on the installed name.\n"
 msgstr ""
 "Öntanımlı olarak Texinfo kaynak belgelerini diğer çeşitli biçemlere çevirir\n"
-"Info dosyaları çevrimiçi Emacs ya da tek başına GNU Info'yla okunmak için "
-"uygundur.\n"
+"Info dosyaları çevrimiçi Emacs ya da tek başına GNU Info'yla okunmak için uygundur.\n"
+"\n"
+"Bu program genellikle hem `makeinfo', hem de `texi2any' şeklinde kurulur;\n"
+"davranış, kurulum adından bağımsız olarak, özdeştir.\n"
 
 #: tp/texi2any.pl:742
-#, fuzzy, perl-format
+#, perl-format
 msgid ""
 "General options:\n"
 "      --document-language=STR locale to use in translating Texinfo keywords\n"
@@ -3300,25 +3166,21 @@ msgid ""
 "      --version               display version information and exit.\n"
 msgstr ""
 "Genel seçenekler:\n"
-"      --document-language=STR Çıktı belgesi için Texinfo anahtar "
-"sözcüklerini \n"
-"                                çevirmekte kullanılacak yerel (öntanımlı "
-"C).\n"
+"      --document-language=STR Çıktı belgesi için Texinfo anahtar sözcüklerini \n"
+"                                çevirmekte kullanılacak yerel (öntanımlı C).\n"
 "      --error-limit=ADET      ADET hatadan sonra çıkar (öntanımlı %d).\n"
 "      --force                 hatalarda dahi çıktıyı korur.\n"
 "      --help                  bu yardımı görüntüler ve çıkar.\n"
 "      --no-validate           düğüm çapraz-başvuru onaylamasını baskılar.\n"
 "      --no-warn               uyarıları baskılar (fakat hataları değil).\n"
 "      --conf-dir=DİZİN          DİZİN'de ilklendirme dosyalarını da arar.\n"
-"      --init-file=DOSYA        öntanımlı davranışı değiştirmek için DOSYA'yı "
-"yükle.\n"
+"      --init-file=DOSYA        öntanımlı davranışı değiştirmek için DOSYA'yı yükle.\n"
 "  -c, --set-customization-variable DĞŞ=DEĞ özelleştirme değişkeni DĞŞ'e\n"
 "                                DEĞ'i atar\n"
 "  -v, --verbose               ne yapılıyor olduğunu açıklar.\n"
 "      --version               sürüm bilgisini görüntüler ve çıkar.\n"
 
 #: tp/texi2any.pl:758
-#, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -3333,21 +3195,17 @@ msgstr ""
 "      --html                 Info yerine HTML çıktısı üretir.\n"
 "      --plaintext            Info yerine salt metin çıktısı üretir.\n"
 "      --xml                  Info yerine Texinfo XML çıktısı üretir.\n"
-"      --dvi, --dvipdf, --ps, --pdf  belirtilen çıktıyı oluşturmak için "
-"texi2dvi'ı çağırır.\n"
+"      --dvi, --dvipdf, --ps, --pdf  TEXINFO-FILE'in geçerliliğini kontrol ettikten sonra,\n"
+"                                belirtilen çıktıyı oluşturmak için texi2dvi'ı çağırır.\n"
 
 #: tp/texi2any.pl:766
-#, fuzzy
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
 "                                ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and "
-"menus\n"
-"                                from Info output (thus producing plain "
-"text)\n"
-"                                or from HTML (thus producing shorter "
-"output).\n"
+"      --no-headers            suppress node separators, Node: lines, and menus\n"
+"                                from Info output (thus producing plain text)\n"
+"                                or from HTML (thus producing shorter output).\n"
 "                                Also, if producing Info, write to\n"
 "                                standard output by default.\n"
 "      --no-split              suppress any splitting of the output;\n"
@@ -3355,8 +3213,7 @@ msgid ""
 "      --[no-]number-sections  output chapter and sectioning numbers;\n"
 "                                default is on.\n"
 "  -o, --output=DEST           output to DEST.\n"
-"                                With split output, create DEST as a "
-"directory\n"
+"                                With split output, create DEST as a directory\n"
 "                                 and put the output files there.\n"
 "                                With non-split output, if DEST is already\n"
 "                                 a directory or ends with a /,\n"
@@ -3366,28 +3223,21 @@ msgstr ""
 "Genel çıktı seçenekleri:\n"
 "  -E, --macro-expand DOSYA   makro-genişletilmiş kaynak çıktısını herhangi\n"
 "                             bir @setfilename'i yoksayarak DOSYA'ya yazar.\n"
-"      --no-headers           Info ya da HTML çıktısında düğüm ayraçlarını, "
-"Node:\n"
-"                               satırlarını ve menüleri baskılar (salt metin "
-"ya da daha kısa çıktı\n"
+"      --no-headers           Info ya da HTML çıktısında düğüm ayraçlarını, Node:\n"
+"                               satırlarını ve menüleri baskılar (salt metin ya da daha kısa çıktı\n"
 "                               üretmek üzere); ayrıca, öntanımlı olarak\n"
 "                               standart çıktıya yazar.\n"
-"      --no-split             Info ya da HTML çıktısının bölünmesini "
-"baskılar,\n"
+"      --no-split             Info ya da HTML çıktısının bölünmesini baskılar,\n"
 "                             yalnızca bir çıktı dosyası oluşturur.\n"
-"      --[no-]number-sections  kısım ve bölüm numaralarının çıktısını alır; "
-"öntanımlı\n"
+"      --[no-]number-sections  kısım ve bölüm numaralarının çıktısını alır; öntanımlı\n"
 "                               olarak açıktır.\n"
 "  -o, --output=HEDEF         çıktıyı HEDEF'e yazar.\n"
-"                               Bölünmüş çıktıda HEDEF'i dizin olarak "
-"oluştur\n"
+"                               Bölünmüş çıktıda HEDEF'i dizin olarak oluştur\n"
 "                               ve dosyaları oraya çıkar.\n"
-"                               Bölünmemiş çıktıda, eğer HEDEF zaten bir "
-"dizinse\n"
+"                               Bölünmemiş çıktıda, eğer HEDEF zaten bir dizinse\n"
 "                               ya da bir / ile bitiyorsa\n"
 "                               çıktı dosyalarını oraya koy.\n"
-"                               Aksi halde, HEDEF çıktı dosyasını "
-"adlandırır.\n"
+"                               Aksi halde, HEDEF çıktı dosyasını adlandırır.\n"
 
 #: tp/texi2any.pl:786
 #, perl-format
@@ -3396,39 +3246,29 @@ msgid ""
 "      --disable-encoding      do not output accented and special characters\n"
 "                                in Info output based on @documentencoding.\n"
 "      --enable-encoding       override --disable-encoding (default).\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default "
-"%d).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node, "
-"in\n"
-"                                which they are defined (this is the "
-"default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
-"%d).\n"
+"                                `end' to put them at the end of the node, in\n"
+"                                which they are defined (this is the default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
 "Info ve salt metin için seçenekler:\n"
-"      --disable-encoding      aksanlı ve özel karakterlerin çıktısını "
-"@documentencoding'e\n"
+"      --disable-encoding      aksanlı ve özel karakterlerin çıktısını @documentencoding'e\n"
 "                                dayalı olarak Info çıktısına yazmaz.\n"
-"      --enable-encoding       --disable encoding'i (öntanımlı) geçersiz "
-"kılar.\n"
-"      --fill-column=ADET       Info satırlarını ADET karakterde bitir "
-"(öntanımlı %d)\n"
-"      --footnote-style=STİL   Info'da dipnotların çıktısını STİL'e göre "
-"yazar:\n"
+"      --enable-encoding       --disable encoding'i (öntanımlı) geçersiz kılar.\n"
+"      --fill-column=ADET       Info satırlarını ADET karakterde bitir (öntanımlı %d)\n"
+"      --footnote-style=STİL   Info'da dipnotların çıktısını STİL'e göre yazar:\n"
 "                                 kendi düğümlerine koymak için `separate';\n"
 "                                 tanımlandıkları düğümün sonuna koymak için\n"
 "                                 `end' (öntanımlı).\n"
-"      --paragraph-indent=DEG   Info paragraflarını DEG boşluk girintiler "
-"(öntanımlı %d).\n"
+"      --paragraph-indent=DEG   Info paragraflarını DEG boşluk girintiler (öntanımlı %d).\n"
 "                                Eğer DEG `none' ise girintilemez; eğer DEG\n"
 "                                `asis' ise mevcut girintiyi korur.\n"
-"      --spilt-size=NUM        Info dosyalarını NUM boyutuna böler (öntanımlı "
-"%d).\n"
+"      --spilt-size=NUM        Info dosyalarını NUM boyutuna böler (öntanımlı %d).\n"
 
 #: tp/texi2any.pl:803
 msgid ""
@@ -3450,10 +3290,8 @@ msgstr ""
 "      --internal-links=DOSYA   DOSYA içinde iç linklerin listesini üretir.\n"
 "      --split=AYIR           AYIR noktasından böler; AYIR `kısım', `bölüm'\n"
 "                               ya da `düğüm' olabilir\n"
-"      --transliterate-file-names   dosya isimlerini ASCII alfabesine "
-"dönüştürerek üretir.\n"
-"      --node-files           düğümler ve çıpalar için yeniden yönlendirme "
-"dosyaları üretir;\n"
+"      --transliterate-file-names   dosya isimlerini ASCII alfabesine dönüştürerek üretir.\n"
+"      --node-files           düğümler ve çıpalar için yeniden yönlendirme dosyaları üretir;\n"
 "                                öntanımlısı yalnızca bölünmüşse atanır.\n"
 
 #: tp/texi2any.pl:814
@@ -3462,8 +3300,7 @@ msgid ""
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 "XML ve Docbook Seçenekleri:\n"
-"      --output-indent=DEĞ     hiçbir şey yapmaz, uyumluluk için "
-"korunmuştur.\n"
+"      --output-indent=DEĞ     hiçbir şey yapmaz, uyumluluk için korunmuştur.\n"
 
 #: tp/texi2any.pl:817
 msgid ""
@@ -3474,7 +3311,6 @@ msgstr ""
 "      --Xopt=OPT              OPT'i texi2dvi'e aktar; yinelenebilir.\n"
 
 #: tp/texi2any.pl:820
-#, fuzzy
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -3485,13 +3321,11 @@ msgid ""
 "  -U VAR                        undefine the variable VAR, as with @clear.\n"
 msgstr ""
 "Girdi dosyası seçenekleri:\n"
-"      --commands-in-node-names   hiçbir şey yapmaz, uyumluluk için "
-"korunmuştur.\n"
+"      --commands-in-node-names   hiçbir şey yapmaz, uyumluluk için korunmuştur.\n"
 "  -D VAR             VAR değişkenini, @set ile olduğu gibi tanımlar.\n"
 "  -I DIR                DIR'ı @include arama yolu sonuna ekler.\n"
 "  -P DIR              DIR'ı @include arama yolu başına ekler.\n"
-"  -U VAR             VAR değişkeninin tanımını, @clear ile olduğu gibi geri "
-"alır.\n"
+"  -U VAR             VAR değişkeninin tanımını, @clear ile olduğu gibi geri alır.\n"
 
 #: tp/texi2any.pl:828
 msgid ""
@@ -3552,12 +3386,10 @@ msgid ""
 "  makeinfo --html foo.texi               write HTML to @setfilename\n"
 "  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
 "  makeinfo --docbook foo.texi            write Docbook XML to @setfilename\n"
-"  makeinfo --plaintext foo.texi          write plain text to standard "
-"output\n"
+"  makeinfo --plaintext foo.texi          write plain text to standard output\n"
 "  makeinfo --pdf foo.texi                write PDF using texi2dvi\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi  write html without node lines, "
-"menus\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, menus\n"
 "  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
 "  makeinfo --no-split foo.texi           write one Info file however big\n"
 msgstr ""
@@ -3570,40 +3402,35 @@ msgstr ""
 "  makeinfo --pdf foo.texi                texi2dvi kullanarak PDF yazar\n"
 "\n"
 "  makeinfo --html --no-headres foo.texi düğüm çizgisiz, menüsüz html yazar\n"
-"  makeinfo --number-sections foo.texi   numaralanmış kısımları olan Info "
-"yazar\n"
-"  makeinfo --no-split foo.texi      ne büyüklükte olursa olsun tek Info "
-"dosyası yazar\n"
+"  makeinfo --number-sections foo.texi   numaralanmış kısımları olan Info yazar\n"
+"  makeinfo --no-split foo.texi      ne büyüklükte olursa olsun tek Info dosyası yazar\n"
 
 #: tp/texi2any.pl:899
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr ""
-"%1$s: --footnote-style arg. `separate' ya da `end' olmalıdır, `%2$s' değil.\n"
+msgstr "%1$s: --footnote-style arg. `separate' ya da `end' olmalıdır, `%2$s' değil.\n"
 
 #: tp/texi2any.pl:990
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr ""
-"%1$s: --paragraph-indent arg. sayısal/`none'/`asis' olmalıdır, `%2$s' "
-"değil.\n"
+msgstr "%1$s: --paragraph-indent arg. sayısal/`none'/`asis' olmalıdır, `%2$s' değil.\n"
 
 #: tp/texi2any.pl:1067
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
-msgstr "%s oluşturulurken -o ile yalnızca bir girdi DOSYAsı belirtilebilir"
+msgstr "%s: %s oluşturulurken -o ile yalnızca bir girdi DOSYAsı belirtilebilir\n"
 
 #: tp/texi2any.pl:1071
 msgid "--Xopt option without printed output"
 msgstr "yazdırılmış çıktı olmadan--Xopt seçeneği"
 
 #: tp/texi2any.pl:1081
-#, fuzzy, perl-format
+#, perl-format
 msgid "unknown tree transformation %s"
-msgstr "Bilinmeyen ağaç dönüşümü %s"
+msgstr "bilinmeyen ağaç dönüşümü %s"
 
 #: tp/texi2any.pl:1088
-#, fuzzy, perl-format
+#, perl-format
 msgid "ignoring splitting for format %s"
 msgstr "%s biçemi için bölme yok sayılıyor"
 
@@ -3622,37 +3449,33 @@ msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr "fill_gaps_in_sectioning dönüşümü sonuç geri döndürmedi. Bölüm yok mu?"
 
 #: tp/texi2any.pl:1242
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "%s makro genişletme dosyasını kapatmada hata: %s\n"
 
 #: tp/texi2any.pl:1248
-#, fuzzy, perl-format
+#, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "%s yazmak için açılamıyorı: %s\n"
 
 #: tp/texi2any.pl:1273
-msgid ""
-"insert_nodes_for_sectioning_commands transformation return no result. No "
-"section?"
-msgstr ""
-"insert_nodes_for_sectioning_commands dönüşümü sonuç geri döndürmüyor. Bölüm "
-"yok mu?"
+msgid "insert_nodes_for_sectioning_commands transformation return no result. No section?"
+msgstr "insert_nodes_for_sectioning_commands dönüşümü sonuç geri döndürmüyor. Bölüm yok mu?"
 
 #: tp/texi2any.pl:1343 tp/texi2any.pl:1419
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s: error on closing %s: %s\n"
-msgstr "%s'i kapatmada hata: %s\n"
+msgstr "%s: %s'i kapatmada hata: %s\n"
 
 #: tp/texi2any.pl:1366 tp/texi2any.pl:1400
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
-msgstr "%s dahili bağlantı dosyasını kapatmada hata: %s\n"
+msgstr "%s: %s dahili bağlantı dosyasını kapatmada hata: %s\n"
 
 #: tp/texi2any.pl:1372 tp/texi2any.pl:1406
-#, fuzzy, perl-format
+#, perl-format
 msgid "%s: could not open %s for writing: %s\n"
-msgstr "%s yazmak için açılamıyorı: %s\n"
+msgstr "%s: %s yazmak için açılamıyorı: %s\n"
 
 #~ msgid "Insert this character"
 #~ msgstr "Bu karakteri yerleştirir"
@@ -3670,15 +3493,8 @@ msgstr "%s yazmak için açılamıyorı: %s\n"
 #~ "\n"
 #~ "* Menü: `%s' indislerini içeren düğümler:\n"
 
-#~ msgid "No index"
-#~ msgstr "İndeks yok."
-
 #~ msgid "Index for `%s'"
 #~ msgstr "`%s' için indeks"
-
-#, fuzzy
-#~ msgid "File names matching `%s'"
-#~ msgstr "Eşleşen `%cend %s' yok"
 
 #~ msgid ""
 #~ "Basic Commands in Info Windows\n"
@@ -3770,22 +3586,17 @@ msgstr "%s yazmak için açılamıyorı: %s\n"
 
 #~ msgid ""
 #~ "  %-10s  Search for a specified string in the index entries of this Info\n"
-#~ "              file, and select the node referenced by the first entry "
-#~ "found.\n"
+#~ "              file, and select the node referenced by the first entry found.\n"
 #~ msgstr ""
-#~ "  %-10s  Bu Info dosyasındaki indeks girdileri içinde belirli bir dizgeyi "
-#~ "arar\n"
-#~ "              ve bulunan ilk girdi tarafından gönderme yapılan düğümü "
-#~ "seçer.\n"
+#~ "  %-10s  Bu Info dosyasındaki indeks girdileri içinde belirli bir dizgeyi arar\n"
+#~ "              ve bulunan ilk girdi tarafından gönderme yapılan düğümü seçer.\n"
 
 #~ msgid ""
 #~ "  %-10s  Move to node specified by name.\n"
-#~ "              You may include a filename as well, as in "
-#~ "(FILENAME)NODENAME.\n"
+#~ "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 #~ msgstr ""
 #~ "  %-10s  İsmiyle belirtilen düğüme gider.\n"
-#~ "              (DOSYAADI)DÜĞÜMADI şeklinde bir dosya adı da "
-#~ "ekleyebilirsiniz.\n"
+#~ "              (DOSYAADI)DÜĞÜMADI şeklinde bir dosya adı da ekleyebilirsiniz.\n"
 
 #~ msgid ""
 #~ "  %-10s  Search forward for a specified string,\n"
@@ -3823,9 +3634,6 @@ msgstr "%s yazmak için açılamıyorı: %s\n"
 #~ msgid "cannot create output file `%s'"
 #~ msgstr "`%s' çıktı dosyası oluşturulamıyor"
 
-#~ msgid "error writing to `%s'"
-#~ msgstr "`%s''e yazma hatası"
-
 #~ msgid "error closing output file `%s'"
 #~ msgstr "`%s' çıktı dosyasını kapatmada hata"
 
@@ -3836,8 +3644,7 @@ msgstr "%s yazmak için açılamıyorı: %s\n"
 #~ "Usage: %s [OPTION]... [INPUT-FILE]\n"
 #~ "\n"
 #~ "Compile infokey source file to infokey file.  Reads INPUT-FILE (default\n"
-#~ "$HOME/.infokey) and writes compiled key file to (by default) $HOME/."
-#~ "info.\n"
+#~ "$HOME/.infokey) and writes compiled key file to (by default) $HOME/.info.\n"
 #~ "\n"
 #~ "Options:\n"
 #~ "  --output FILE        output to FILE instead of $HOME/.info\n"
@@ -3864,26 +3671,17 @@ msgstr "%s yazmak için açılamıyorı: %s\n"
 #~ msgid "Error reading infokey file `%s' - short read"
 #~ msgstr "infokey dosyası `%s' okumada hata - çok kısa"
 
-#~ msgid ""
-#~ "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
-#~ msgstr ""
-#~ "Geçersiz infokey dosyası `%s' (hatalı sihirli numaralar) -- güncellemek "
-#~ "için infokey yürütün"
+#~ msgid "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+#~ msgstr "Geçersiz infokey dosyası `%s' (hatalı sihirli numaralar) -- güncellemek için infokey yürütün"
 
 #~ msgid "Your infokey file `%s' is out of date -- run infokey to update it"
 #~ msgstr "infokey dosyanız `%s' eskimiş -- güncellemek için infokey yürütün"
 
-#~ msgid ""
-#~ "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
-#~ msgstr ""
-#~ "Geçersiz infokey dosyası `%s' (hatalı bölüm uzunluğu) -- güncellemek için "
-#~ "infokey yürütün"
+#~ msgid "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+#~ msgstr "Geçersiz infokey dosyası `%s' (hatalı bölüm uzunluğu) -- güncellemek için infokey yürütün"
 
-#~ msgid ""
-#~ "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
-#~ msgstr ""
-#~ "Geçersiz infokey dosyası `%s' (hatalı bölüm kodu) -- güncellemek için "
-#~ "infokey yürütün"
+#~ msgid "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+#~ msgstr "Geçersiz infokey dosyası `%s' (hatalı bölüm kodu) -- güncellemek için infokey yürütün"
 
 #~ msgid "Bad data in infokey file -- some key bindings ignored"
 #~ msgstr "Infokey dosyasında hatalı veri -- bazı tuş bağlantıları yoksayıldı"
@@ -3909,16 +3707,35 @@ msgstr "%s yazmak için açılamıyorı: %s\n"
 #~ msgid "Kill this node"
 #~ msgstr "Bu düğümü öldürür"
 
-#, fuzzy
-#~ msgid "writing file %s"
-#~ msgstr "%s düğümü yazılıyor..."
-
-#, fuzzy
-#~ msgid "closing file %s"
-#~ msgstr "`%s' çıktı dosyasını kapatmada hata"
+#~ msgid "Done."
+#~ msgstr "Bitti."
 
 #~ msgid "Internally used by \\[universal-argument]"
 #~ msgstr "Dahili olarak \\[universal argument] tarafından kullanılıyor"
+
+#~ msgid "protect_hashchar_at_line_beginning cannot protect in @%s"
+#~ msgstr "protect_hashchar_at_line_beginning @%s'de koruyamıyor"
+
+#~ msgid "Can't read file %s: %s"
+#~ msgstr "%1$s dosyası okunamıyor: %2$s"
+
+#~ msgid "%s:%d: warning: %s (possibly involving @%s)\n"
+#~ msgstr "%s.%d: uyarı: %s (muhtemelen @%s ile ilgili) \n"
+
+#~ msgid "%s:%d: warning: %s\n"
+#~ msgstr "%s:%d: uyarı: %s\n"
+
+#~ msgid "warning: %s\n"
+#~ msgstr "uyarı: %s\n"
+
+#~ msgid "Menu reference to nonexistent node `%s'"
+#~ msgstr "Varolmayan düğüm `%s'e menü referansı"
+
+#~ msgid "Can't open %s for writing: %s\n"
+#~ msgstr "%s yazmak için açılamıyor: %s\n"
+
+#~ msgid "chdir to %s failed"
+#~ msgstr "%s'e chdir başarısız"
 
 #~ msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "Kullanım: makeinfo [SEÇENEK]... TEXINFO-DOSYASI...\n"
@@ -3935,11 +3752,8 @@ msgstr "%s yazmak için açılamıyorı: %s\n"
 #~ msgid "Generate a sorted index for each TeX output FILE.\n"
 #~ msgstr "Her TeX çıktı DOSYAsı için sıralanmış bir indeks oluşturur.\n"
 
-#~ msgid ""
-#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-#~ msgstr ""
-#~ "Genellikle DOSYA... bir `foo.texi' belgesi için `foo.%c%c' olarak "
-#~ "belirtilir.\n"
+#~ msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+#~ msgstr "Genellikle DOSYA... bir `foo.texi' belgesi için `foo.%c%c' olarak belirtilir.\n"
 
 #~ msgid ""
 #~ "\n"
@@ -3959,42 +3773,6 @@ msgstr "%s yazmak için açılamıyorı: %s\n"
 
 #~ msgid "entry %s follows an entry with a secondary name"
 #~ msgstr "%s girdisi, ikincil isimli bir girdiyi takip ediyor"
-
-#~ msgid "Done."
-#~ msgstr "Bitti."
-
-#, fuzzy
-#~ msgid "tex4ht.pm: could not open %s"
-#~ msgstr "@%s: %s açılamıyor: %s"
-
-#, fuzzy
-#~ msgid "menu reference to nonexistent node `%s'"
-#~ msgstr "Varolmayan düğüm `%s'e menü referansı"
-
-#~ msgid "protect_hashchar_at_line_beginning cannot protect in @%s"
-#~ msgstr "protect_hashchar_at_line_beginning @%s'de koruyamıyor"
-
-#~ msgid "Can't read file %s: %s"
-#~ msgstr "%1$s dosyası okunamıyor: %2$s"
-
-#~ msgid "%s:%d: warning: %s (possibly involving @%s)\n"
-#~ msgstr "%s.%d: uyarı: %s (muhtemelen @%s ile ilgili) \n"
-
-#~ msgid "%s:%d: warning: %s\n"
-#~ msgstr "%s:%d: uyarı: %s\n"
-
-#~ msgid "warning: %s\n"
-#~ msgstr "uyarı: %s\n"
-
-#, fuzzy
-#~ msgid "chm.pm:%s: Cannot open for writing: %s\n"
-#~ msgstr "%s yazmak için açılamıyor: %s\n"
-
-#~ msgid "tex4ht error opening %s: %s"
-#~ msgstr "%s'i açmada tex4ht hatası: %s"
-
-#~ msgid "chdir to %s failed"
-#~ msgstr "%s'e chdir başarısız"
 
 #~ msgid "%s: illegal option -- %c\n"
 #~ msgstr "%s: kuraldışı seçenek -- %c\n"
@@ -4187,16 +3965,12 @@ msgstr "%s yazmak için açılamıyorı: %s\n"
 
 #~ msgid ""
 #~ "Options for XML and Docbook:\n"
-#~ "      --output-indent=VAL     indent XML elements by VAL spaces (default "
-#~ "%d).\n"
-#~ "                                If VAL is 0, ignorable whitespace is "
-#~ "dropped.\n"
+#~ "      --output-indent=VAL     indent XML elements by VAL spaces (default %d).\n"
+#~ "                                If VAL is 0, ignorable whitespace is dropped.\n"
 #~ msgstr ""
 #~ "XML ve Docbook için seçenekler:\n"
-#~ "      --output-indent=DEĞER        XML elementlerini DEĞER kadar boşluk "
-#~ "girintilendir (öntanımlı %d).\n"
-#~ "                                     eğer DEĞER 0 ise yok sayılabilen "
-#~ "beyaz boşluk silinir.\n"
+#~ "      --output-indent=DEĞER        XML elementlerini DEĞER kadar boşluk girintilendir (öntanımlı %d).\n"
+#~ "                                     eğer DEĞER 0 ise yok sayılabilen beyaz boşluk silinir.\n"
 
 #~ msgid "%s: could not open macro expansion output `%s'"
 #~ msgstr "%s:makro genişleme çıktısı `%s' açılamadı"
@@ -4216,34 +3990,20 @@ msgstr "%s yazmak için açılamıyorı: %s\n"
 #~ msgid "No `%s' found in `%s'"
 #~ msgstr "`%2$s' içinde `%1$s' yok"
 
-#~ msgid ""
-#~ "%s: Skipping macro expansion to stdout as Info output is going there.\n"
-#~ msgstr ""
-#~ "%s: Makro genişlemesini, Info çıktısı da oraya gittiğinden, stdout'a "
-#~ "atlatıyor.\n"
+#~ msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
+#~ msgstr "%s: Makro genişlemesini, Info çıktısı da oraya gittiğinden, stdout'a atlatıyor.\n"
 
 #~ msgid "Making %s file `%s' from `%s'.\n"
 #~ msgstr "`%3$s''den %1$s dosya `%2$s' yapılıyor.\n"
 
-#~ msgid ""
-#~ "%s: Removing macro output file `%s' due to errors; use --force to "
-#~ "preserve.\n"
-#~ msgstr ""
-#~ "%1$s: Makro çıktı dosyası `%2$s' hatalardan dolayı siliniyor; korumak "
-#~ "için --force kullanınız.\n"
+#~ msgid "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
+#~ msgstr "%1$s: Makro çıktı dosyası `%2$s' hatalardan dolayı siliniyor; korumak için --force kullanınız.\n"
 
-#~ msgid ""
-#~ "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
-#~ msgstr ""
-#~ "%1$s: Çıktı dosyası `%2$s' hatalardan dolayı siliniyor; korumak için --"
-#~ "force kullanınız.\n"
+#~ msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
+#~ msgstr "%1$s: Çıktı dosyası `%2$s' hatalardan dolayı siliniyor; korumak için --force kullanınız.\n"
 
-#~ msgid ""
-#~ "%s: Removing internal links output file `%s' due to errors; use --force "
-#~ "to preserve.\n"
-#~ msgstr ""
-#~ "%s: İç linkler çıktı dosyası `%s' hatalardan dolayı siliniyor; korumak "
-#~ "için --force kullanınız.\n"
+#~ msgid "%s: Removing internal links output file `%s' due to errors; use --force to preserve.\n"
+#~ msgstr "%s: İç linkler çıktı dosyası `%s' hatalardan dolayı siliniyor; korumak için --force kullanınız.\n"
 
 #~ msgid "NO_NAME!"
 #~ msgstr "İSİMSİZ!"
@@ -4291,8 +4051,7 @@ msgstr "%s yazmak için açılamıyorı: %s\n"
 #~ msgstr "Çıpa `%1$s' ve düğüm `%2$s' aynı dosya adına yönlendiriyor"
 
 #~ msgid "This @anchor command ignored; references to it will not work"
-#~ msgstr ""
-#~ "Bu @anchor komutu yoksayıldı; buraya yönelik başvurular çalışmayacak"
+#~ msgstr "Bu @anchor komutu yoksayıldı; buraya yönelik başvurular çalışmayacak"
 
 #~ msgid "Rename this anchor or use the `--no-split' option"
 #~ msgstr "Bu çıpayı yeniden adlandırın ya da `--no-split' seçeneğini kullanın"
@@ -4306,11 +4065,8 @@ msgstr "%s yazmak için açılamıyorı: %s\n"
 #~ msgid "@anchor command ignored; references to it will not work"
 #~ msgstr "@anchor komutu yoksayıldı; buraya yönelik başvurular çalışmayacak"
 
-#~ msgid ""
-#~ "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
-#~ msgstr ""
-#~ "Düğüm `%s''in sonraki alanı şuraya işaret etmiyor (yanlış bölümleme "
-#~ "nedeniyle?)"
+#~ msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
+#~ msgstr "Düğüm `%s''in sonraki alanı şuraya işaret etmiyor (yanlış bölümleme nedeniyle?)"
 
 #~ msgid "This node (%s) has the bad Prev"
 #~ msgstr "Bu düğüm (%s) hatalı Önceki'ne sahip"
@@ -4345,11 +4101,8 @@ msgstr "%s yazmak için açılamıyorı: %s\n"
 #~ msgid "%ctop used before %cnode, defaulting to %s"
 #~ msgstr "%cüst, %cdüğümden önce kullanıldı, %s'e öntanımlanıyor"
 
-#~ msgid ""
-#~ "@headitem as the last item of @multitable produces invalid Docbook "
-#~ "documents"
-#~ msgstr ""
-#~ "@multitable'ın son öğesi @headitem geçersiz Docbook belgeleri üretiyor"
+#~ msgid "@headitem as the last item of @multitable produces invalid Docbook documents"
+#~ msgstr "@multitable'ın son öğesi @headitem geçersiz Docbook belgeleri üretiyor"
 
 #~ msgid "of"
 #~ msgstr "kapalı"
