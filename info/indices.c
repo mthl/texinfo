@@ -375,7 +375,7 @@ next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
               partial_match = string_in_line (string, index_index[i]->label);
               if (partial_match != -1)
                 {
-                  *match_offset = partial_match + 1;
+                  *match_offset = partial_match;
                   break;
                 }
             }
