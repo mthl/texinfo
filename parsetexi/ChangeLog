@@ -1,3 +1,7 @@
+2015-03-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* close.c (close_command_cleanup): @multitable handling.
+
 2015-03-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* Parsetexi/lib/Parsetexi.pm (parse_texi_file): Handle warnings 

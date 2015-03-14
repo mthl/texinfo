@@ -14,6 +14,7 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 #include <stdlib.h>
+#include <string.h>
 
 #include "parser.h"
 #include "errors.h"
@@ -25,8 +26,53 @@ close_command_cleanup (ELEMENT *current)
   if (!current->cmd)
     return;
 
+  // 1520
   if (current->cmd == CM_multitable)
     {
+      int in_head_or_rows = -1, i;
+      ELEMENT_LIST old_contents = current->contents;
+
+      /* Clear current contents. */
+      memset (&current->contents, 0, sizeof (ELEMENT_LIST));
+
+      /* Rearrange the contents of the multitable to collect rows into
+         ET_multitable_head and ET_multitable_body elements. */
+      for (i = 0; i < old_contents.number; i++)
+        {
+          ELEMENT *row = old_contents.list[i];
+
+          if (row->type == ET_row)
+            {
+              /* Check if we need to open a new container. */
+              if (contents_child_by_index (row, 0)->cmd == CM_headitem)
+                {
+                  if (in_head_or_rows <= 0)
+                    {
+                      add_to_element_contents (current,
+                                        new_element (ET_multitable_head));
+                      in_head_or_rows = 1;
+                    }
+                }
+              else if (contents_child_by_index (row, 0)->cmd == CM_item)
+                {
+                  if (in_head_or_rows == 1 || in_head_or_rows == -1)
+                    {
+                      add_to_element_contents (current,
+                                        new_element (ET_multitable_body));
+                      in_head_or_rows = 0;
+                    }
+                }
+
+              add_to_element_contents (last_contents_child(current), row);
+            }
+          else
+            {
+              add_to_element_contents (current, row);
+              in_head_or_rows = -1;
+            }
+        }
+      free (old_contents.list);
+
       if (counter_value (&count_cells, current) != -1)
         counter_pop (&count_cells);
       /* TODO
