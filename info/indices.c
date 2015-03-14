@@ -367,16 +367,17 @@ next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
 
   if (index_partial)
     {
-      /* Looking for substrings, not returning previous matches. */
+      /* Look for substrings, excluding case-matching inital matches. */
       for (i = offset + dir; i > -1 && index_index[i]; i += dir)
         {
-          if (!index_index[i]->label[0])
-            continue;
-          partial_match = string_in_line (string, index_index[i]->label + 1);
-          if (partial_match != -1)
+          if (strncmp (index_index[i]->label, string, search_len) != 0)
             {
-              *match_offset = partial_match + 1;
-              break;
+              partial_match = string_in_line (string, index_index[i]->label);
+              if (partial_match != -1)
+                {
+                  *match_offset = partial_match + 1;
+                  break;
+                }
             }
         }
       if (partial_match <= 0)
