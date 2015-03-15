@@ -6953,7 +6953,7 @@ an I<inter_def_item> container.
 =item row
 
 In C<@multitable>, a I<multitable_head> container contains all the rows
-with C<@headitem>, while I<multitable_body> contains the rows associate 
+with C<@headitem>, while I<multitable_body> contains the rows associated
 with C<@item>.  A I<row> container contains the C<@item> and @<tab> 
 forming a row.
 
