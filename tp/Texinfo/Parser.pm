@@ -6924,11 +6924,12 @@ with items (C<@table>, C<@multitable>, C<@enumerate>...).
 =item inter_item
 
 Those containers appear in C<@table>, C<@ftable> and C<@vtable>.
-A I<table_entry> container contains C<@item> and C<@itemx> and
-the text following the C<@item> and C<@itemx> entries.  A I<table_term>
-container holds all the C<@item> and C<@itemx> of the I<table_entry>.
-The I<table_item> container holds the content following the I<table_term>.
-If there is some content before an C<@itemx> (normally only comments, 
+A I<table_entry> container contains an entire row of the table.
+It contains a I<table_term> container, which holds all the C<@item> and
+C<@itemx> lines.  This is followed by a I<table_item> container, which
+holds the content that is to go into the second column of the table.
+
+If there is any content before an C<@itemx> (normally only comments, 
 empty lines or maybe index entries are allowed), it will be in 
 a container with type I<inter_item>. 
 
@@ -6952,7 +6953,7 @@ an I<inter_def_item> container.
 =item row
 
 In C<@multitable>, a I<multitable_head> container contains all the rows
-with C<@headitem>, while I<multitable_body> contains the rows associated 
+with C<@headitem>, while I<multitable_body> contains the rows associate 
 with C<@item>.  A I<row> container contains the C<@item> and @<tab> 
 forming a row.
 
