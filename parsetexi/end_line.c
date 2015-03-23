@@ -1048,8 +1048,7 @@ end_line_misc_line (ELEMENT *current)
   /* 3350 */
   if (cmd == CM_setfilename && (current_node || current_section))
     {
-      /* warning */
-      abort ();
+      command_warn ("@setfilename after the first element");
     }
   /* 3355 columnfractions */
   else if (cmd == CM_columnfractions)
@@ -1185,27 +1184,80 @@ end_line (ELEMENT *current)
         }
     }
 
-  /* Is it a def line 2778 */
+  /* End of a definition line, like @deffn */ // 2778
   else if (current->parent && current->parent->type == ET_def_line)
     {
       enum element_type def_command;
+      DEF_ARGS_EXTRA *arguments = 0;
 
       if (pop_context () != ct_def)
-        {
-          abort ();
-        }
+        abort ();
 
-#if 0
       /* current->parent is a ET_def_line, and current->parent->parent
          the def command. */
       def_command = current->parent->parent->cmd;
-      // strip a trailing x
-      parse_def (def_command, current->contents);
-#endif
+      /* Strip an trailing x from the command, e.g. @deffnx -> @deffn */
+      if (command_data(def_command).flags & CF_misc)
+        {
+          char *stripped = strdup (command_name(def_command));
+          stripped[strlen (stripped) - 1] = '\0';
+          def_command = lookup_command (stripped);
+          free (stripped);
+        }
 
-      current = current->parent->parent;
+      arguments = parse_def (def_command, current->contents);
+
+      /* Now record the index entry. */
+      if (arguments)
+        {
+          ELEMENT *name = 0, *class = 0; /* From arguments. */
+          ELEMENT *index_entry = 0; /* Index entry text. */
+          char *label;
+          int i;
+
+          add_extra_def_args (current->parent, "def_args", arguments);
+
+          /* We use the keys "name" and "class" from the arguments. */
+          for (i = 0; (label = arguments->labels[i]); i++)
+            {
+              if (!strcmp (label, "name"))
+                name = arguments->elements[i];
+              else if (!strcmp (label, "class"))
+                class = arguments->elements[i];
+            }
+
+          if (name) // 2811
+            {
+              if (name->type == ET_bracketed_def_content
+                  && (name->contents.number == 0
+                      || (name->contents.number == 1
+&& name->contents.list[0]->text.text[
+strspn (name->contents.list[0]->text.text, whitespace_chars)] == '\0')))
+                {
+                }
+              else
+                index_entry = name;
+            }
+
+          if (index_entry) // 2822
+            {
+
+              // enter_index_entry (); // 2853
+            }
+          else
+            {
+              command_warnf ("missing name for @%s",
+                             "<original_def_cmdname>"); // TODO
+            }
+        }
+      else
+        {
+          command_warnf ("missing category for @%s",
+                         "<original_def_cmdname>"); // TODO
+        }
+
+      current = current->parent->parent; // 2868
       current = begin_preformatted (current);
-
     }
 
   // 2872

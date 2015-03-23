@@ -1,3 +1,14 @@
+2015-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tree_types.h (enum extra_type): Add extra_def_args.
+	(DEF_ARGS_EXTRA): New type.
+	* api.c (element_to_perl_hash),
+	* dump_perl.c (dump_extra): Handle extra_def_args.
+	* def.c (parse_def, next_bracketed_or_word): First 
+	implementations.
+	* end_line.c <ET_def_line>: Call parse_def.  Don't record the 
+	index entry yet.
+
 2015-03-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* close.c (close_command_cleanup): @multitable handling.

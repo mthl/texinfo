@@ -360,17 +360,17 @@ deftypecv		block,def
 defop			block,def
 deftp			block,def
 #   shortcuts
-defun			block,def
-defmac			block,def
-defspec			block,def
-defvar			block,def
-defopt			block,def
-deftypefun		block,def
-deftypevar		block,def
-defivar			block,def
-deftypeivar		block,def
-defmethod		block,def
-deftypemethod		block,def
+defun			block,def,def_alias
+defmac			block,def,def_alias
+defspec			block,def,def_alias
+defvar			block,def,def_alias
+defopt			block,def,def_alias
+deftypefun		block,def,def_alias
+deftypevar		block,def,def_alias
+defivar			block,def,def_alias
+deftypeivar		block,def,def_alias
+defmethod		block,def,def_alias
+deftypemethod		block,def,def_alias
 
 # def*x
 deffnx			misc,def
@@ -383,17 +383,17 @@ deftypecvx		misc,def
 defopx			misc,def
 deftpx			misc,def
 #   shortcuts
-defunx			misc,def
-defmacx			misc,def
-defspecx		misc,def
-defvarx			misc,def
-defoptx			misc,def
-deftypefunx		misc,def
-deftypevarx		misc,def
-defivarx		misc,def
-deftypeivarx		misc,def
-defmethodx		misc,def
-deftypemethodx		misc,def
+defunx			misc,def,def_alias
+defmacx			misc,def,def_alias
+defspecx		misc,def,def_alias
+defvarx			misc,def,def_alias
+defoptx			misc,def,def_alias
+deftypefunx		misc,def,def_alias
+deftypevarx		misc,def,def_alias
+defivarx		misc,def,def_alias
+deftypeivarx		misc,def,def_alias
+defmethodx		misc,def,def_alias
+deftypemethodx		misc,def,def_alias
 
 # 760
 multitable		block,blockitem		BLOCK_multitable

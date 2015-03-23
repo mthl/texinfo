@@ -311,6 +311,30 @@ dump_extra (ELEMENT *e, TEXT *text)
               dump_string (value, text);
               text_append_n (text, "',\n", 3);
             }
+          else if (e->extra[i].type == extra_def_args)
+            {
+              DEF_ARGS_EXTRA *value = (DEF_ARGS_EXTRA *) e->extra[i].value;
+              int j;
+              char *label;
+
+              text_append_n (text, "'", 1);
+              text_append (text, e->extra[i].key);
+              text_append (text, "' => [\n");
+
+              for (j = 0; (label = value->labels[j]); j++)
+                {
+                  dump_indent (text);
+                  text_append_n (text, "['", 2);
+                  text_append (text, label);
+                  text_append_n (text, "', ", 3);
+
+                  dump_element (value->elements[j], text);
+                  text_append_n (text, "],\n", 3);
+                }
+              dump_indent (text);
+              text_append_n (text, "],\n", 3);
+              /* TODO: Also output a "def_parsed_hash". */
+            }
           else if (e->extra[i].value->parent_type == route_not_in_tree)
             {
               switch (e->extra[i].type)

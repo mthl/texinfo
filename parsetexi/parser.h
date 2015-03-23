@@ -76,6 +76,7 @@ void add_extra_key_index_entry (ELEMENT *e, char *key, INDEX_ENTRY_REF *value);
 void add_extra_key_misc_args (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_node_spec (ELEMENT *e, char *key, NODE_SPEC_EXTRA *value);
 void add_extra_node_spec_array (ELEMENT *, char *, NODE_SPEC_EXTRA **value);
+void add_extra_def_args (ELEMENT *e, char *key, DEF_ARGS_EXTRA *value);
 void add_extra_string (ELEMENT *e, char *key, char *value);
 KEY_PAIR *lookup_extra_key (ELEMENT *e, char *key);
 

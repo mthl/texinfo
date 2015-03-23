@@ -35,6 +35,7 @@ enum extra_type {
     extra_node_spec,
     extra_node_spec_array,
     extra_string,
+    extra_def_args,
     extra_deleted
 };
 
@@ -143,4 +144,12 @@ typedef struct {
     ELEMENT *node_content;
     char *normalized;
 } NODE_SPEC_EXTRA;
+
+typedef struct {
+    char **labels;
+    ELEMENT **elements;
+    int nelements;
+    int space;
+} DEF_ARGS_EXTRA;
+
 

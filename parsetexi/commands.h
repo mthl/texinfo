@@ -41,7 +41,7 @@ enum command_id add_texinfo_command (char *name);
 /* In indices.c */
 void init_index_commands (void);
 
-/* Available command flags.  Based on tp/Texinfo/Common.tp. */
+/* Available command flags.  Based on tp/Texinfo/Common.pm. */
 
 #define CF_misc			        0x0001
 #define CF_default_index	        0x0002
@@ -62,7 +62,7 @@ void init_index_commands (void);
 #define CF_format_raw		        0x8000
 // #define free                     	0x00010000
 #define CF_def		        	0x00020000
-#define CF_def_aliases	        	0x00040000
+#define CF_def_alias	        	0x00040000
 #define CF_menu		        	0x00080000
 #define CF_align	        	0x00100000
 #define CF_region	        	0x00200000

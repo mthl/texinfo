@@ -1,4 +1,5 @@
 * conditionals on @set/@value, output format
+* implement command_warn properly
 * Check everywhere we store values, we check properly what to do if the
   values are already defined.
 * check valid nestings

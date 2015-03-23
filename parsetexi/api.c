@@ -332,6 +332,56 @@ element_to_perl_hash (ELEMENT *e)
                be much nicer if we could get rid of the need for this key. */
             /* Could we set this afterwards in build_index_data? */
               break;
+            case extra_def_args:
+              {
+              /* Value is an array of two-element arrays. */
+              AV *av, *av2;
+              HV *def_parsed_hash;
+              char *label;
+              int j;
+              DEF_ARGS_EXTRA *d = (DEF_ARGS_EXTRA *) f;
+
+              av = newAV ();
+              STORE(newRV_inc ((SV *)av));
+
+              /* Also create a "def_parsed_hash" extra value.  The key name
+                 for this is hard-coded here. */
+              def_parsed_hash = newHV ();
+              hv_store (extra, "def_parsed_hash",
+                        strlen ("def_parsed_hash"),
+                        newRV_inc ((SV *)def_parsed_hash), 0);
+
+              for (j = 0; (label = d->labels[j]); j++)
+                {
+                  ELEMENT *elt = d->elements[j];
+                  av2 = newAV ();
+                  av_push (av, newRV_inc ((SV *)av2));
+                  av_push (av2, newSVpv (label, 0));
+                  if (!elt->hv)
+                    {
+                      /* TODO: Same problem as "extra_element" cross-tree
+                         references. */
+                      if (elt->parent_type != route_not_in_tree)
+                        abort ();
+                      element_to_perl_hash (elt);
+                    }
+                  if (!elt->hv)
+                    abort ();
+                  av_push (av2, newRV_inc ((SV *)elt->hv));
+
+                  /* Set keys of "def_parsed_hash". */
+                  // 2793
+                  if (strcmp (label, "spaces")
+                      && strcmp (label, "arg") && strcmp (label, "typearg")
+                      && strcmp (label, "delimiter"))
+                    {
+                      hv_store (def_parsed_hash, label, strlen (label),
+                                newRV_inc ((SV *)elt->hv), 0);
+                    }
+                }
+
+              break;
+              }
             default:
               abort ();
               break;

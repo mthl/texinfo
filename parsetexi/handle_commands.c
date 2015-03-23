@@ -325,7 +325,10 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 
               /* Find the command with "x" stripped from the end, e.g.
                  deffnx -> deffn. */
-              base_name = strdup (command_name(cmd));
+              base_name = command_name(cmd);
+              add_extra_string (misc, "original_def_cmdname", base_name);
+
+              base_name = strdup (base_name);
               base_len = strlen (base_name);
               if (base_name[base_len - 1] != 'x')
                 abort ();
@@ -333,11 +336,11 @@ handle_misc_command (ELEMENT *current, char **line_inout,
               base_command = lookup_command (base_name);
               if (base_command == CM_NONE)
                 abort ();
-              free (base_name);
+              add_extra_string (misc, "def_command", base_name);
 
               //check_no_text ();
               push_context (ct_def);
-              misc->type = ET_def_line;
+              misc->type = ET_def_line; // 4553
               if (current->cmd == base_command)
                 {
                   // Does this gather an "inter_def_item" ?
@@ -481,6 +484,9 @@ handle_block_command (ELEMENT *current, char **line_inout,
           def_line = new_element (ET_def_line);
           add_to_element_contents (current, def_line);
           current = def_line;
+          add_extra_string (current, "def_command", command_name(cmd));
+          add_extra_string (current, "original_def_cmdname", 
+                            command_name(cmd));
         }
       else
         {

@@ -98,6 +98,13 @@ add_extra_node_spec_array (ELEMENT *e, char *key, NODE_SPEC_EXTRA **value)
 }
 
 void
+add_extra_def_args (ELEMENT *e, char *key, DEF_ARGS_EXTRA *value)
+{
+  add_extra_key (e, key, (ELEMENT *) value);
+  e->extra[e->extra_number - 1].type = extra_def_args;
+}
+
+void
 add_extra_string (ELEMENT *e, char *key, char *value)
 {
   add_extra_key (e, key, (ELEMENT *) value);
