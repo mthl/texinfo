@@ -93,8 +93,6 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
         {
           /* Text is completely spaces. */
           spaces = remove_from_contents (e, 0); // 2341
-          if (spaces->parent_type != route_not_in_tree)
-            abort ();
           //spaces->type = ET_spaces; // TODO: No such element type.
 
           /* Remove a trailing newline. */
@@ -173,13 +171,13 @@ typedef struct {
 DEF_ALIAS def_aliases[] = {
   CM_defun, CM_deffn, "Function",
   CM_defmac, CM_deffn, "Macro",
-  CM_defspec, CM_deffn, "Special Form",
+  CM_defspec, CM_deffn, "{Special Form}",
   CM_defvar, CM_defvr, "Variable",
-  CM_defopt, CM_defvr, "User Option",
+  CM_defopt, CM_defvr, "{User Option}",
   CM_deftypefun, CM_deftypefn, "Function",
   CM_deftypevar, CM_deftypevr, "Variable",
-  CM_defivar, CM_defcv, "Instance Variable",
-  CM_deftypeivar, CM_deftypecv, "Instance Variable",
+  CM_defivar, CM_defcv, "{Instance Variable}",
+  CM_deftypeivar, CM_deftypecv, "{Instance Variable}",
   CM_defmethod, CM_defop, "Method",
   CM_deftypemethod, CM_deftypeop, "Method",
   0, 0, 0
@@ -201,9 +199,6 @@ add_to_def_args_extra (DEF_ARGS_EXTRA *d, char *label, ELEMENT *arg)
   if (!arg)
     return; /* Probably a bug */
 
-  if (arg->parent_type != route_not_in_tree)
-    abort ();
-
   d->labels[d->nelements] = label;
   d->elements[d->nelements++] = arg;
   d->labels[d->nelements] = 0;
@@ -221,7 +216,7 @@ parse_def (enum command_id command, ELEMENT_LIST contents)
 
   ELEMENT *arg_line; /* Copy of argument line. */
   ELEMENT *arg, *spaces; /* Arguments and spaces extracted from line. */
-  ELEMENT *e;
+  ELEMENT *e, *e1;
 
   enum command_id original_command = CM_NONE;
 
@@ -232,24 +227,35 @@ parse_def (enum command_id command, ELEMENT_LIST contents)
   arg_line = new_element (ET_NONE);
   for (i = 0; i < contents.number; i++)
     {
-      ELEMENT *copy = malloc (sizeof (ELEMENT));
-      *copy = *contents.list[i];
-      text_init (&copy->text);
-      text_append_n (&copy->text,
-                     contents.list[i]->text.text,
-                     contents.list[i]->text.end);
-      add_to_element_contents (arg_line, copy);
-      copy->parent_type = route_not_in_tree;
+      if (contents.list[i]->text.space > 0)
+        {
+          /* Copy text to avoid changing the original. */
+          ELEMENT *copy = new_element (ET_NONE);
+          copy->parent_type = route_not_in_tree;
+          text_init (&copy->text);
+          text_append_n (&copy->text,
+                         contents.list[i]->text.text,
+                         contents.list[i]->text.end);
+          add_to_contents_as_array (arg_line, copy);
 
-      /* Note that these copied elements should be destroyed with
-         shallow_destroy_element, not destroy_element, because their
-         contents and args are shared with in-tree elements. */
+          /* Note that these copied elements should be destroyed with
+             shallow_destroy_element, not destroy_element, because their
+             contents and args are shared with in-tree elements. */
+
+          /* When all the elements were copied, some @var command elements did 
+             not show up in the output, maybe because they needed a parent
+             element. */
+        }
+      else
+        {
+          add_to_contents_as_array (arg_line, contents.list[i]);
+        }
     }
 
   if (arg_line->contents.number > 0 // 2385
       && arg_line->contents.list[0]->type == ET_empty_spaces_after_command)
     {
-      shallow_destroy_element (remove_from_contents (arg_line, 0));
+      remove_from_contents (arg_line, 0);
     }
 
   /* Check for "def alias" - for example @defun for @deffn. */
@@ -264,6 +270,10 @@ parse_def (enum command_id command, ELEMENT_LIST contents)
         }
       abort (); /* Has CF_def_alias but no alias defined. */
 found:
+      /* Prepended content is stuck into contents, so
+         @defun is converted into
+         @deffn Function */
+
       category = def_aliases[i].category;
       original_command = command;
       command = def_aliases[i].command;
@@ -272,24 +282,30 @@ found:
          this is actually a general Texinfo tree, instead of just a string. */
       /* tree = gdt (category); */
 
-      /* Overwrite command with @deffn.
-
-         Prepended content is stuck into contents, so
-         @defun is converted into
-         @deffn Function */
-
-      e = new_element (ET_NONE);
-      text_append (&e->text, category);
-      insert_into_contents (arg_line, e, 0);
-      e->parent_type = route_not_in_tree;
+      if (*category != '{')
+        {
+          e = new_element (ET_NONE);
+          text_append (&e->text, category);
+          insert_into_contents (arg_line, e, 0);
+          e->parent_type = route_not_in_tree;
+        }
+      else
+        {
+          /* Used when category text has a space in it. */
+          e = new_element (ET_bracketed);
+          insert_into_contents (arg_line, e, 0);
+          e->parent_type = route_not_in_tree;
+          e1 = new_element (ET_NONE);
+          text_append_n (&e1->text, category + 1, strlen (category) - 2);
+          add_to_element_contents (e, e1);
+          e1->parent_type = route_not_in_tree;
+        }
 
       e = new_element (ET_NONE);
       text_append_n (&e->text, " ", 1);
       insert_into_contents (arg_line, e, 1);
       e->parent_type = route_not_in_tree;
     }
-
-  // 2418 - copy text in contents
 
   /* Read arguments as CATEGORY [CLASS] [TYPE] NAME [ARGUMENTS].
   
@@ -377,6 +393,10 @@ found:
               add_to_def_args_extra (def_args, "delimiter", e);
               p += len;
             }
+        }
+      else
+        {
+          add_to_def_args_extra (def_args, "arg", arg);
         }
     }
 
