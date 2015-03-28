@@ -1187,7 +1187,7 @@ end_line (ELEMENT *current)
   /* End of a definition line, like @deffn */ // 2778
   else if (current->parent && current->parent->type == ET_def_line)
     {
-      enum element_type def_command;
+      enum command_id def_command, original_def_command;
       DEF_ARGS_EXTRA *arguments = 0;
 
       if (pop_context () != ct_def)
@@ -1195,7 +1195,7 @@ end_line (ELEMENT *current)
 
       /* current->parent is a ET_def_line, and current->parent->parent
          the def command. */
-      def_command = current->parent->parent->cmd;
+      original_def_command = def_command = current->parent->parent->cmd;
       /* Strip an trailing x from the command, e.g. @deffnx -> @deffn */
       if (command_data(def_command).flags & CF_misc)
         {
@@ -1228,32 +1228,38 @@ end_line (ELEMENT *current)
 
           if (name) // 2811
             {
-              if (name->type == ET_bracketed_def_content
-                  && (name->contents.number == 0
-                      || (name->contents.number == 1
-&& name->contents.list[0]->text.text[
-strspn (name->contents.list[0]->text.text, whitespace_chars)] == '\0')))
-                {
-                }
-              else
+              /* Set index_entry unless an empty ET_bracketed_def_content. */
+              if (name->type != ET_bracketed_def_content
+                  || name->contents.number >= 2)
                 index_entry = name;
+              else if (name->contents.number == 1)
+                {
+                  char *t = name->contents.list[0]->text.text;
+                  if (t[strspn (t, whitespace_chars)] != '\0')
+                    index_entry = name;
+                }
             }
 
           if (index_entry) // 2822
             {
-
-              // enter_index_entry (); // 2853
+              ELEMENT *index_contents = new_element (ET_NONE);
+              index_contents->parent_type = route_not_in_tree;
+              add_to_contents_as_array (index_contents, index_entry);
+              enter_index_entry (def_command,
+                                 original_def_command,
+                                 current->parent,
+                                 index_contents); // 2853
             }
           else
             {
               command_warnf ("missing name for @%s",
-                             "<original_def_cmdname>"); // TODO
+                             command_name (original_def_command));
             }
         }
       else
         {
           command_warnf ("missing category for @%s",
-                         "<original_def_cmdname>"); // TODO
+                         command_name (original_def_command));
         }
 
       current = current->parent->parent; // 2868

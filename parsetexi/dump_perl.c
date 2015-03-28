@@ -569,7 +569,10 @@ dump_entries_of_index (INDEX *idx)
       if (e->content)
         {
           text_printf (&indices_dump, "'content' => ");
-          dump_route_to_element (e->content, &indices_dump);
+          if (e->content->parent_type != route_not_in_tree)
+            dump_route_to_element (e->content, &indices_dump);
+          else
+            dump_element (e->content, &indices_dump);
           text_printf (&indices_dump, "{'contents'}");
           text_printf (&indices_dump, ",\n");
         }

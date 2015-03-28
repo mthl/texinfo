@@ -183,7 +183,6 @@ DEF_ALIAS def_aliases[] = {
   0, 0, 0
 };
 
-/* Note that ARG should not be an element in the main tree. */
 static void
 add_to_def_args_extra (DEF_ARGS_EXTRA *d, char *label, ELEMENT *arg)
 {
@@ -225,7 +224,8 @@ parse_def (enum command_id command, ELEMENT_LIST contents)
 
   /* Copy contents of argument line. */
   arg_line = new_element (ET_NONE);
-  for (i = 0; i < contents.number; i++)
+  for (i = contents.list[0]->type != ET_empty_spaces_after_command ? 0 : 1;
+       i < contents.number; i++)
     {
       if (contents.list[i]->text.space > 0)
         {

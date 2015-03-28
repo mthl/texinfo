@@ -63,7 +63,10 @@ index_of_command (enum command_id cmd)
   return 0;
 }
 
-void
+
+/* Save a new Texinfo command with the name CMDNAME and record that it
+   creates index entries in IDX. */
+static void
 add_index_command (char *cmdname, INDEX *idx)
 {
   enum command_id new = add_texinfo_command (cmdname);
@@ -77,7 +80,6 @@ static INDEX *
 add_index_internal (char *name, int in_code)
 {
   INDEX *idx = malloc (sizeof (INDEX));
-  char *cmdname;
 
   memset (idx, 0, sizeof *idx);
   idx->name = name;
@@ -90,20 +92,37 @@ add_index_internal (char *name, int in_code)
     }
   index_names[number_of_indices++] = idx;
   index_names[number_of_indices] = 0;
+  return idx;
+}
+
+/* NAME is the name of an index, e.g. "cp" */
+static INDEX *
+index_by_name (char *name)
+{
+  int i;
+
+  for (i = 0; i < num_index_commands; i++)
+    {
+      if (!strcmp (index_names[i]->name, name))
+        return index_names[i];
+    }
+  return 0;
+}
+
+
+/* Add a user defined index with the name NAME */
+void
+add_index (char *name, int in_code)
+{
+  INDEX *idx;
+  char *cmdname;
+
+  idx = add_index_internal (name, in_code);
 
   /* For example, "rq" -> "rqindex". */
   asprintf (&cmdname, "%s%s", name, "index");
   add_index_command (cmdname, idx);
   free (cmdname);
-  return idx;
-}
-
-void
-add_index (char *name, int in_code)
-{
-  INDEX *idx;
-
-  idx = add_index_internal (name, in_code);
 }
 
 void
@@ -112,23 +131,87 @@ init_index_commands (void)
   INDEX *idx;
   char **p;
   char *default_indices[] = {
-    "cp",
-    "fn",
-    "vr",
-    "ky",
-    "pg",
-    "tp",
+    "cp", /* concepts */
+    "fn", /* functions */
+    "vr", /* variables */
+    "ky", /* keystrokes */
+    "pg", /* programs */
+    "tp", /* types */
     0,
   };
+  int i, j;
+
   char name[] = "?index";
+  char name2[] = "??index";
+
+#define MAX (10 * 2)
+
+#define X(command) CM_##command, CM_##command##x
+  struct def_cmds { char *name; enum command_id id[MAX]; }
+    def_command_indices[] = {
+      "fn",
+
+      {X(deffn),
+       X(deftypefn),
+       X(deftypeop),
+       X(defop),
+       X(defun),
+       X(defmac),
+       X(defspec),
+       X(deftypefun),
+       X(defmethod),
+       X(deftypemethod),
+      },
+
+      "vr",
+     
+      {X(defvr),
+       X(deftypevr),
+       X(defcv),
+       X(deftypecv),
+       X(defvar),
+       X(defivar),
+       X(defopt),
+       X(deftypevar),
+       X(deftypeivar),
+      },
+
+      "tp",
+     
+      {X(deftp),}
+    };
+#undef X
 
   for (p = default_indices; *p; p++)
     {
-      /* Both @cpindex and @cindex are added. */
+      /* Both @cindex and @cpindex are added. */
       idx = add_index_internal (*p, 0);
+
       *name = **p;
-      add_index_command (name, idx);
+      add_index_command (name, idx); /* @cindex */
+
+      name2[0] = (*p)[0];
+      name2[1] = (*p)[1];
+      add_index_command (name2, idx); /* @cpindex */
     }
+
+  for (i = 0;
+       i < sizeof (def_command_indices) / sizeof (def_command_indices[0]);
+       i++)
+    {
+      enum command_id cmd;
+      idx = index_by_name (def_command_indices[i].name);
+      if (idx)
+        {
+          for (j = 0; j < MAX; j++)
+            {
+              cmd = def_command_indices[i].id[j];
+              if (cmd)
+                associate_command_to_index (cmd, idx);
+            }
+        }
+    }
+#undef MAX
 }
 
 

@@ -500,6 +500,12 @@ build_single_index_data (INDEX *i)
       if (e->content)
         {
           SV **contents_array;
+          if (!e->content->hv)
+            {
+              if (e->content->parent_type != route_not_in_tree)
+                abort ();
+              element_to_perl_hash (e->content);
+            }
           contents_array = hv_fetch (e->content->hv,
                                     "contents", strlen ("contents"), 0);
 
