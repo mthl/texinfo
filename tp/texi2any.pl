@@ -213,17 +213,19 @@ Locale::Messages->select_package('gettext_pp');
 
 #my @search_locale_dirs = ("$datadir/locale", (map $_ . '/LocaleData', @INC),
 #  qw (/usr/share/locale /usr/local/share/locale));
+my @search_locale_dirs = ();
 
 if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
      and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
   # in case of build from the source directory, out of source build, 
   # this helps to locate the locales.
   my $locales_dir_found = 0;
-  foreach my $locales_dir (
+  @search_locale_dirs = (
     File::Spec->catdir($libsrcdir, $updir, 'LocaleData'),
-    File::Spec->catdir($curdir, 'LocaleData'), 
+    File::Spec->catdir($curdir, 'LocaleData'),
     File::Spec->catdir($updir, $updir, $updir, 'tp', 'LocaleData'),
-    File::Spec->catdir($updir, $updir, 'tp', 'LocaleData')) {
+    File::Spec->catdir($updir, $updir, 'tp', 'LocaleData'));
+  foreach my $locales_dir (@search_locale_dirs) {
     if (-d $locales_dir) {
       Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
       # the messages in this domain are not regenerated automatically, 
@@ -234,7 +236,7 @@ if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
     }
   }
   if (!$locales_dir_found) {
-    warn "Locales dir for document strings not found\n";
+    warn "Locales dir for document strings not found (@search_locale_dirs)\n";
   }
 } else {
   Locale::Messages::bindtextdomain ($strings_textdomain, 
