@@ -18,16 +18,6 @@ LC_ALL=C; export LC_ALL
 prepended_command=
 #prepended_command=time
 
-res_dir=res_parser
-out_dir=out_parser
-# used for tex4ht and latex2html results to keep their raw output
-raw_out_dir=raw_out_parser
-#res_dir_ref=res
-#command=texi2html.pl
-diffs_dir=diffs
-one_test_logs_dir=test_log
-
-logfile=tests.log
 main_command='texi2any.pl'
 
 # formats can be specified by first line of tests-parser.txt.
@@ -37,7 +27,7 @@ commands=':'
 
 clean=no
 copy=no
-mydir=
+#mydir=
 
 while [ z"$1" = 'z-clean' -o z"$1" = 'z-copy'  -o z"$1" = 'z-dir' ]; do
   if [ z"$1" = 'z-clean' ]; then
@@ -52,10 +42,30 @@ while [ z"$1" = 'z-clean' -o z"$1" = 'z-copy'  -o z"$1" = 'z-dir' ]; do
   fi
   if [ z"$1" = 'z-dir' ]; then
     shift 
-    mydir=`echo "$1" | sed 's:/*$::'`'/'
+    #mydir=`echo "$1" | sed 's:/*$::'`'/'
+    testdir=`echo "$1" | sed 's:/*$::'`'/'
     shift
   fi
 done
+
+if [ "z$testdir" = 'z' ]; then
+  testdir=.
+fi
+
+if [ "z$srcdir" = 'z' ]; then
+  srcdir=.
+fi
+
+one_test_logs_dir=$testdir/test_log
+logfile=$testdir/tests.log
+
+res_dir=res_parser
+out_dir=out_parser
+# used for tex4ht and latex2html results to keep their raw output
+raw_out_dir=raw_out_parser
+#res_dir_ref=res
+#command=texi2html.pl
+diffs_dir=diffs
 
 no_latex2html=yes
 if which latex2html > /dev/null 2>&1; then
@@ -86,27 +96,13 @@ if test -n "$1"; then
   logfile=$one_test_logs_dir/$test_name.log
 fi
 
-# The script is always run in a test directory.  If srcdir_test is
-# set, it should be set to the test directory name.  In this case
-# testdir is the test directory parent, in srcdir.
-if [ "z$srcdir_test" = 'z' ]; then
-  testdir=.
-  srcdir_test=.
-else
-  if [ "z$srcdir" = 'z' ]; then
-     testdir=..
-  else
-     testdir=../$srcdir
-  fi
-fi
-
 #echo "testdir $testdir srcdir_test $srcdir_test" 1>&2
 
-base_results_dir=$testdir/$srcdir_test
+base_results_dir=$testdir/
 test_file=tests-parser.txt
-driving_file=$testdir/$srcdir_test/$test_file
+driving_file=$srcdir/$testdir/$test_file
 
-echo "base_results_dir: $base_results_dir" >$logfile
+echo "testdir: $testdir" >$logfile
 echo "driving_file: $driving_file" >>$logfile
 
 if test -f "$driving_file"; then
@@ -125,7 +121,7 @@ fi
 
 for command_dir in $commands; do
   dir_suffix=`echo $command_dir | cut -d':' -f2`
-  resdir=${res_dir}${dir_suffix}/
+  resdir=$srcdir/$testdir/${res_dir}${dir_suffix}/
   test -d "$resdir" || mkdir "$resdir"
   echo "made result dir: $resdir" >>$logfile
 done
@@ -146,16 +142,16 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
     if [ "z$clean" = 'zyes' ]; then
       for command_dir in $commands; do
         dir_suffix=`echo $command_dir | cut -d':' -f2`
-        outdir="${out_dir}${dir_suffix}/"
-        raw_outdir="${raw_out_dir}${dir_suffix}/"
+        outdir="$testdir/${out_dir}${dir_suffix}/"
+        raw_outdir="$testdir/${raw_out_dir}${dir_suffix}/"
         [ -d "${outdir}$dir" ] && rm -rf "${outdir}$dir"
         [ -d "${raw_outdir}$dir" ] && rm -rf "${raw_outdir}$dir"
       done
     else
       for command_dir in $commands; do
         dir_suffix=`echo $command_dir | cut -d':' -f2`
-        outdir="${out_dir}${dir_suffix}/"
-        resdir="${res_dir}${dir_suffix}/"
+        outdir="$testdir/${out_dir}${dir_suffix}/"
+        resdir="$srcdir/$testdir/${res_dir}${dir_suffix}/"
         if [ -d "${outdir}$dir" ]; then
           if [ -d "${resdir}$dir" ]; then
           # ugly hack to avoid CVS and .svn
@@ -174,10 +170,10 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
   exit 0
 fi
 
-. ../../defs || exit 1
+. $testdir/../../defs || exit 1
 
-test -d $diffs_dir || mkdir $diffs_dir
-staging_dir_res=$diffs_dir/staging_res/
+test -d $testdir/$diffs_dir || mkdir $testdir/$diffs_dir
+staging_dir_res=$testdir/$diffs_dir/staging_res/
 if test z"$clean" = 'zyes' ; then
   rm -rf $staging_dir_res
 else
@@ -186,7 +182,7 @@ fi
 
 for command_dir in $commands; do
   dir_suffix=`echo $command_dir | cut -d':' -f2`
-  outdir="${out_dir}${dir_suffix}/"
+  outdir="$testdir/${out_dir}${dir_suffix}/"
   test -d "${outdir}" || mkdir "${outdir}"
 done
 
@@ -209,8 +205,8 @@ while read line; do
 
   basename=`basename $file .texi`
   remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]*  *[a-zA-Z0-9_./-]* *//' \
-      | sed 's,@PATH_SEPARATOR@,'"${PATH_SEPARATOR}$testdir/$srcdir_test/"',g'`
-  src_file="$testdir/$srcdir_test/$file"
+      | sed 's,@PATH_SEPARATOR@,'"${PATH_SEPARATOR}$testdir/"',g'`
+  src_file="$srcdir/$testdir/$file"
   
   for command_dir in $commands; do
     format_option=
@@ -227,7 +223,7 @@ while read line; do
       fi
     fi
     command_run=
-    for command_location_dir in "$testdir/$srcdir_test/../../" ../../; do
+    for command_location_dir in "$srcdir/../" "$srcdir/../../" $testdir/../../; do
       if [ -f "$command_location_dir/$command" ]; then
         command_run="$command_location_dir/$command"
         break
@@ -243,9 +239,8 @@ while read line; do
       exit 1
     fi
     
-    outdir="${out_dir}${dir_suffix}/"
-    results_dir="$testdir/$srcdir_test/${res_dir}${dir_suffix}"
-    #results_dir_ref="$testdir/$srcdir_test/${res_dir_ref}${dir_suffix}"
+    outdir="$testdir/${out_dir}${dir_suffix}/"
+    results_dir="$srcdir/$testdir/${res_dir}${dir_suffix}"
     if test "z$current" = 'ztexi' ; then
       if test $one_test = 'yes' \
          && test -n "$the_basename" \
@@ -260,11 +255,11 @@ while read line; do
       mkdir "${outdir}$dir"
       remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
       command_file=
-      # -I $testdir/$srcdir_test/ is useful when file name is found using 
+      # -I $testdir/ is useful when file name is found using 
       # @setfilename
       echo "$command $dir" >>$logfile
       #echo "$dir($format)"
-      cmd="$prepended_command $PERL -w -I $testdir/$srcdir_test/../../ -I $testdir/$srcdir_test/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $testdir/$srcdir_test/../../maintain/lib/libintl-perl/lib/ -I $testdir/$srcdir_test/../../maintain/lib/Text-Unidecode/lib/ $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../t/init/ --conf-dir $testdir/$srcdir_test/../../init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 --output ${outdir}$dir/ -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-customization-variable=DUMP_TEXI=1 --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2" >> $logfile
+      cmd="$prepended_command $PERL -w -I $srcdir/../ -I $srcdir/../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../maintain/lib/libintl-perl/lib/ -I $srcdir/../maintain/lib/Text-Unidecode/lib/ $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 --output ${outdir}$dir/ -I $testdir/ -I $srcdir/ --set-customization-variable=DUMP_TEXI=1 --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2" >> $logfile
       echo "$cmd" >>$logfile
       eval $cmd
       ret=$?
@@ -315,7 +310,7 @@ while read line; do
       mkdir "${outdir}$dir"
       remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
       echo "$command $dir -> ${outdir}$dir" >> $logfile
-      cmd="$prepended_command $PERL -w -I $testdir/$srcdir_test/../../ -I $testdir/$srcdir_test/../../maintain/lib/Unicode-EastAsianWidth/lib/ -I $testdir/$srcdir_test/../../maintain/lib/libintl-perl/lib/ -I $testdir/$srcdir_test/../../maintain/lib/Text-Unidecode/lib/ $command_run $format_option --force --conf-dir $testdir/$srcdir_test/../../t/init/ --conf-dir $testdir/$srcdir_test/../../init -I $testdir/$srcdir_test/ -I $testdir/$srcdir_test/../ --set-customization-variable L2H_FILE=$testdir/$srcdir_test/../../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 $l2h_tmp_dir --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
+      cmd="$prepended_command $PERL -w -I $srcdir/../ -I $srcdir/../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../maintain/lib/libintl-perl/lib/ -I $srcdir/../maintain/lib/Text-Unidecode/lib/ $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init -I $testdir/ -I $srcdir/ --set-customization-variable L2H_FILE=$srcdir/../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 $l2h_tmp_dir --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
       echo "$cmd" >>$logfile
       eval $cmd
       ret=$?
@@ -344,7 +339,7 @@ while read line; do
         if test "$use_latex2html" = 'yes' || test "$use_tex4ht" = 'yes' ; then
 
           # store raw output
-          raw_outdir="${raw_out_dir}${dir_suffix}/"
+          raw_outdir="$testdir/${raw_out_dir}${dir_suffix}/"
           test -d "${raw_outdir}" || mkdir "${raw_outdir}"
           rm -rf "${raw_outdir}$dir"
           cp -pr ${outdir}$dir/ "${raw_outdir}"
@@ -392,13 +387,13 @@ while read line; do
                 ${outdir}$dir/*_l2h.css ${outdir}$dir/*_l2h_images.pl
         fi
 
-        diff $DIFF_A_OPTION $DIFF_U_OPTION -r "${staging_dir_res}$dir" "${outdir}$dir" 2>>$logfile > "$diffs_dir/$diff_base.diff"
+        diff $DIFF_A_OPTION $DIFF_U_OPTION -r "${staging_dir_res}$dir" "${outdir}$dir" 2>>$logfile > "$testdir/$diffs_dir/$diff_base.diff"
         dif_ret=$?
         if [ $dif_ret != 0 ]; then
-          echo "D: ${mydir}$diffs_dir/$diff_base.diff"
+          echo "D: $testdir/$diffs_dir/$diff_base.diff"
           return_code=1
         else
-          rm "$diffs_dir/$diff_base.diff"
+          rm "$testdir/$diffs_dir/$diff_base.diff"
         fi
       else
         echo "no res($format): $dir"

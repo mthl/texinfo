@@ -22,9 +22,16 @@ echo "  $cmd"
 $chicken eval $cmd || exit 1
 
 # Generates an include file for tp/tests/Makefile.am.
-cmd="(cd tp/tests && ../maintain/regenerate_cmd_tests.sh Makefile.onetst -base 'formatting htmlxref htmlxref-only_mono htmlxref-only_split' -long 'sectioning coverage indices nested_formats contents layout' -tex_html 'tex_html')"
+cmd="(cd tp/tests && ../maintain/regenerate_cmd_tests.sh Makefile.onetst . -base 'formatting' -long 'sectioning coverage indices nested_formats contents layout' -tex_html 'tex_html')"
 echo "  $cmd"
 $chicken eval $cmd || exit 1
+
+# Generates an include file for each of tp/tests/htmlxref*/Makefile.am.
+for dir in htmlxref htmlxref-only_mono htmlxref-only_split; do
+  cmd="(cd tp/tests/$dir && ../../maintain/regenerate_cmd_tests.sh Makefile.onetst $dir -base .)"
+  echo "  $cmd"
+  $chicken eval $cmd || exit 1
+done
 
 # This overwrites lots of files with older versions.
 # I keep the newest versions of files common between distributions up to

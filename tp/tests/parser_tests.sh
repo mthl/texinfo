@@ -39,7 +39,8 @@ while [ z"$1" != 'z' ]; do
   dir=$1
   shift
   [ -d "$dir" ] || mkdir $dir
-  (srcdir_test=$dir; export srcdir_test; cd "$dir" && ../"$srcdir"/"$command" -dir $dir $arg)
+  #(srcdir_test=$dir; export srcdir_test; cd "$dir" && ../"$srcdir"/"$command" -dir $dir $arg)
+  "$srcdir"/"$command" -dir $dir $arg
   result=$?
   if [ "z$result" = 'z0' ]; then
     result_text=ok

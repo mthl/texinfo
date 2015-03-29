@@ -1,3 +1,14 @@
+2015-03-29  Patrice Dumas  <pertusus@free.fr>
+
+	* autogen.sh, tp/maintain/regenerate_cmd_tests.sh, 
+	tp/tests/Makefile.am, tp/tests/htmlxref*/Makefile.am, 
+	tp/tests/parser_tests.sh, tp/tests/run_parser_all.sh: 
+	avoid changing directory when running tests.  
+	Arrange to be able to run tests directly in subdirectories 
+	for tests that need it, namely tests in tests/htmlxref*.
+	* tp/tests/test_scripts/*, tp/tests/htmlxref*/test_scripts/: 
+	generate/regenerate.
+
 2015-03-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (next_index_match) <substring search>: Find 

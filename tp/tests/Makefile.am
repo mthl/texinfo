@@ -16,23 +16,26 @@ include $(srcdir)/Makefile.onetst
 $(srcdir)/Makefile.onetst: \
   ../maintain/regenerate_cmd_tests.sh $(test_driving_files_generated_list)
 	cd $(srcdir) \
-	&& $(SHELL) ../maintain/regenerate_cmd_tests.sh "$@" \
+	&& $(SHELL) ../maintain/regenerate_cmd_tests.sh "$@" . \
 	  -base '$(base_tests)' \
 	  -long '$(long_tests)' \
 	  -tex_html '$(tex_html_tests)'
-
+#htmlxref htmlxref-only_mono htmlxref-only_split
 base_tests = \
- formatting htmlxref htmlxref-only_mono htmlxref-only_split
+ formatting 
 long_tests = \
  sectioning coverage indices nested_formats contents layout
 tex_html_tests = \
  tex_html
 
-DIST_SUBDIRS = many_input_files $(base_tests) $(long_tests) $(tex_html_tests)
-SUBDIRS = . many_input_files
+test_subdirs = htmlxref htmlxref-only_mono htmlxref-only_split
+
+DIST_SUBDIRS = many_input_files $(test_subdirs) $(base_tests) $(long_tests) $(tex_html_tests)
+SUBDIRS = . many_input_files $(test_subdirs)
 
 copy-tests: copy-base copy-long
 	cd many_input_files && $(MAKE) copy-tests
+	for dir in $(test_subdirs); do (cd $$dir && $(MAKE) copy-tests); done
 
 copy-base:
 	$(srcdir)/parser_tests.sh -copy $(base_tests)
@@ -67,9 +70,12 @@ tex-html-checks tex-html-check: all
 # this is in order to have the htmlxref.cnf files in the build dir.
 # This is done in this directory to be sure that the files are there
 # when check is done in this directory.
+# Some files are in 2 directories in order to get the same result
+# in both test run locations.
 all-local: htmlxref/htmlxref.cnf htmlxref-only_mono/htmlxref.cnf \
  htmlxref-only_split/htmlxref.cnf htmlxref-only_split/.texinfo/htmlxref.cnf \
- sectioning/equivalent_nodes-noderename.cnf \
+ equivalent_nodes-noderename.cnf sectioning/equivalent_nodes-noderename.cnf \
+ unknown_nodes_renamed-noderename.cnf \
  formatting/unknown_nodes_renamed-noderename.cnf coverage_macro-cr.texi
 
 htmlxref/htmlxref.cnf: htmlxref/htmlxref.cnf-ref
@@ -91,7 +97,13 @@ htmlxref-only_split/.texinfo:
 sectioning/equivalent_nodes-noderename.cnf: sectioning/renamednodes.cnf-ref
 	${INSTALL_DATA} $(srcdir)/sectioning/renamednodes.cnf-ref $@
 
+equivalent_nodes-noderename.cnf: sectioning/renamednodes.cnf-ref
+	${INSTALL_DATA} $(srcdir)/sectioning/renamednodes.cnf-ref $@
+
 formatting/unknown_nodes_renamed-noderename.cnf: formatting/unknown_nodes_renamed-noderename.cnf-ref
+	${INSTALL_DATA} $(srcdir)/formatting/unknown_nodes_renamed-noderename.cnf-ref $@
+
+unknown_nodes_renamed-noderename.cnf: formatting/unknown_nodes_renamed-noderename.cnf-ref
 	${INSTALL_DATA} $(srcdir)/formatting/unknown_nodes_renamed-noderename.cnf-ref $@
 
 coverage_macro-cr.texi: coverage_macro.texi
@@ -100,6 +112,9 @@ coverage_macro-cr.texi: coverage_macro.texi
 EXTRA_DIST = run_parser_all.sh parser_tests.sh \
  $(old_test_scripts) $(one_test_files_generated_list) coverage_macro.texi \
  coverage_macro-cr.texi $(other_tests) reference
+
+DISTCLEANFILES = unknown_nodes_renamed-noderename.cnf \
+ equivalent_nodes-noderename.cnf
 
 dist-hook:
 	rm -rf `find $(distdir)/reference -name .svn`
