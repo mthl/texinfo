@@ -1,3 +1,9 @@
+2015-04-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Invoking install-info): Include ellipsis 
+	within square brackets in synopsis.  Report from Benno 
+	Schulenberg.
+
 2015-04-04  Karl Berry  <karl@gnu.org>
 
 	* doc/texinfo.texi (Not Ending a Sentence): no need for @:

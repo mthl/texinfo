@@ -19641,7 +19641,7 @@ run as part of software installation, or when constructing a @file{dir} file
 for all manuals on a system.  Synopsis:
 
 @example
-install-info [@var{option}]@dots{} [@var{info-file} [@var{dir-file}]]
+install-info [@var{option}@dots{}] [@var{info-file} [@var{dir-file}]]
 @end example
 
 If @var{info-file} or @var{dir-file} are not specified, the options
