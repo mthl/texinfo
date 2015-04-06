@@ -1,3 +1,9 @@
+2015-04-06  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/pcterm.c (w32_info_prep): Enable mouse input.
+	(w32_kbd_read): Support mouse wheel events by scrolling display
+	like mouse_event_handler does.
+
 2015-04-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.c (add_initial_nodes) <--node>: Look through node 

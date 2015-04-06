@@ -111,7 +111,7 @@ w32_info_prep (void)
       SetConsoleActiveScreenBuffer (hinfo);
       current_attr = norm_attr;
       hscreen = hinfo;
-      SetConsoleMode (hstdin, ENABLE_WINDOW_INPUT);
+      SetConsoleMode (hstdin, ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT);
       GetConsoleMode (hscreen, &old_outpmode);
       SetConsoleMode (hscreen, old_outpmode & ~ENABLE_WRAP_AT_EOL_OUTPUT);
     }
@@ -639,6 +639,28 @@ w32_kbd_read (unsigned char *inbuf, size_t n)
 		    display_initialize_display (screenwidth, screenheight);
 		    window_new_screen_size (screenwidth, screenheight);
 		    redisplay_after_signal ();
+		  }
+		  break;
+		case MOUSE_EVENT:
+		  {
+		    /* Only vertical wheel support for now.  */
+		    int wheeled =
+		      (inrec.Event.MouseEvent.dwEventFlags & MOUSE_WHEELED) != 0;
+		    if (wheeled && mouse_protocol == MP_NORMAL_TRACKING)
+		      {
+			extern void info_up_line (WINDOW *, int count);
+			extern void info_down_line (WINDOW *, int count);
+			extern WINDOW *active_window;
+
+			int hiword =
+			  HIWORD (inrec.Event.MouseEvent.dwButtonState);
+
+			if ((hiword & 0xFF00) == 0)
+			  info_up_line (active_window, 3);
+			else
+			  info_down_line (active_window, 3);
+			display_update_display ();
+		      }
 		  }
 		  break;
 		default:
