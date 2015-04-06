@@ -1,3 +1,10 @@
+2015-04-06  Sergey Poznyakoff  <gray@gnu.org>
+
+	* util/texi2dvi (comment_iftex, uncomment_iftex): preserve @top
+	node for first run to avoid makeinfo complaint.
+	Mail to bug-texinfo, 02 Mar 2015 11:38:53 (and thread ff.,
+	continuing into April).
+	
 2015-04-06  Eli Zaretskii  <eliz@gnu.org>
 
 	* info/pcterm.c (w32_info_prep): Enable mouse input.

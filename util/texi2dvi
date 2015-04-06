@@ -1574,6 +1574,10 @@ done
 # (with `@c _texi2dvi') TeX sections so that makeinfo does not try to
 # parse them.  Nevertheless, while commenting TeX sections, don't
 # comment @macro/@end macro so that makeinfo does propagate them.
+# Similarly, preserve the @top node to avoid makeinfo complaining about
+# it being missed.  Comment it out after preprocessing, so that it does
+# not appear in the generated document.
+#
 # Unfortunately makeinfo --iftex --no-ifinfo doesn't work well enough
 # (yet), makeinfo can't parse the TeX commands, so work around with sed.
 #
@@ -1592,6 +1596,10 @@ comment_iftex=\
 }
 /^@ifnottex/,/^@end ifnottex/{
   s/^/@c (_texi2dvi)/
+  /^@c (_texi2dvi)@node Top/,/^@c (_texi2dvi)@end ifnottex/ {
+    /^@c (_texi2dvi)@end ifnottex/b
+    s/^@c (_texi2dvi)//
+  }
 }
 /^@ifinfo/,/^@end ifinfo/{
   /^@node/p
@@ -1604,8 +1612,11 @@ s/^@end ifnotinfo/@c _texi2dvi@end ifnotinfo/'
 
 # Uncommenting is simpler: remove any leading `@c texi2dvi'; repeated
 # copies can sneak in via macro invocations.
-uncomment_iftex='s/^@c _texi2dvi\(@c _texi2dvi\)*//'
-
+uncomment_iftex=\
+'s/^@c _texi2dvi\(@c _texi2dvi\)*//
+/^@c (_texi2dvi)@ifnottex/,/^@c (_texi2dvi)@end ifnottex/{
+  s/^/@c (_texi2dvi)/
+}'
 
 #  Main program continues - command line parsing.
 #
