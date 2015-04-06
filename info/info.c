@@ -287,32 +287,91 @@ add_initial_nodes (int argc, char **argv, char **error)
       if (user_nodenames_index > 0 && ref_index > 0)
         {
           info_reference_free (ref_list[0]);
+          ref_list[0] = 0;
           ref_index = 0;
         }
 
       for (i = 0; user_nodenames[i]; i++)
         {
-          char *node_filename;
+          char *node_filename = 0;
+          char *node_nodename = 0;
 
           /* Parse node spec to support invoking
              like info --node "(emacs)Buffers". */
           info_parse_node (user_nodenames[i]);
           if (info_parsed_filename)
-            node_filename = info_parsed_filename;
+            {
+              node_filename = info_parsed_filename;
+              node_nodename = info_parsed_nodename;
+            }
           else
             {
+              FILE_BUFFER *file_buffer;
+              TAG *tag;
+              int j;
+
               if (!initial_file)
                 {
+                  free (*error);
                   asprintf (error, _("No file given for node '%s'."),
                             user_nodenames[i]);
                   continue;
                 }
+
+              /* Check for a node by this name, and if there isn't one
+                 look for an inexact match. */
+
               node_filename = initial_file;
+              node_nodename = 0;
+
+              file_buffer = info_find_file (node_filename);
+
+              /* First look for an exact match. */
+              for (j = 0; (tag = file_buffer->tags[j]); j++)
+                if (strcmp (user_nodenames[i], tag->nodename) == 0)
+                  {
+                    node_nodename = tag->nodename;
+                    break;
+                  }
+
+              if (!node_nodename)
+                {
+                  int best_guess = -1;
+                  int len = strlen (user_nodenames[i]);
+                  for (j = 0; (tag = file_buffer->tags[j]); j++)
+                    {
+                      if (mbscasecmp (user_nodenames[i], tag->nodename) == 0)
+                        {
+                          /* Exact, case-insensitive match. */
+                          node_nodename = tag->nodename;
+                          best_guess = -1;
+                          break;
+                        }
+                      else if (best_guess == -1
+                               && (mbsncasecmp (user_nodenames[i],
+                                                tag->nodename, len) == 0))
+                        /* Case-insensitive initial substring. */
+                        best_guess = j;
+                    }
+                  if (best_guess != -1)
+                    {
+                      node_nodename = file_buffer->tags[best_guess]->nodename;
+                    }
+                }
+
+              if (!node_nodename)
+                {
+                  free (*error);
+                  asprintf (error, _("Cannot find node '%s'."),
+                            user_nodenames[i]);
+                  continue;
+                }
             }
 
-          add_pointer_to_array
-            (info_new_reference (node_filename, info_parsed_nodename),
-             ref_index, ref_list, ref_slots, 2);
+          if (node_filename && node_nodename)
+            add_pointer_to_array
+              (info_new_reference (node_filename, node_nodename),
+               ref_index, ref_list, ref_slots, 2);
         }
     }
 

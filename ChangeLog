@@ -1,5 +1,13 @@
 2015-04-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info.c (add_initial_nodes) <--node>: Look through node 
+	names of file for argument, and if not found look for a 
+	case-insensitive initial match.
+	* info/nodes.c (info_get_node_of_file_buffer): Remove doubled 
+	condition.
+
+2015-04-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Invoking install-info): Include ellipsis 
 	within square brackets in synopsis.  Report from Benno 
 	Schulenberg.

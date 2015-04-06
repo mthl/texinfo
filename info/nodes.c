@@ -1069,11 +1069,8 @@ info_get_node_of_file_buffer (FILE_BUFFER *file_buffer, char *nodename)
       node->nodelen = file_buffer->filesize;
       node->body_start = 0;
     }
-  /* If this is the "main" info file, it might contain a tags table.  Search
-     the tags table for an entry which matches the node that we want.  If
-     there is a tags table, get the file which contains this node, but don't
-     bother building a node list for it. */
-  else if (file_buffer->tags)
+  /* Search the tags table for an entry which matches the node that we want. */
+  else
     {
       TAG *tag;
       int i;
