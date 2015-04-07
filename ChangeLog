@@ -1,3 +1,7 @@
+2015-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi: Comments changed.
+
 2015-04-06  Sergey Poznyakoff  <gray@gnu.org>
 
 	* util/texi2dvi (comment_iftex, uncomment_iftex): preserve @top

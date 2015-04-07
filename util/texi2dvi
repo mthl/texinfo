@@ -1569,7 +1569,11 @@ for var in $tex_envvars; do
   export $var
 done
 
-# A sed script that preprocesses Texinfo sources in order to keep the
+# Unfortunately, makeinfo --iftex --no-ifinfo doesn't work well enough
+# in versions before 5.0, as makeinfo can't parse the TeX commands
+# inside @tex blocks, so work around with sed.
+#
+# This sed script preprocesses Texinfo sources in order to keep the
 # iftex sections only.  We want to remove non-TeX sections, and comment
 # (with `@c _texi2dvi') TeX sections so that makeinfo does not try to
 # parse them.  Nevertheless, while commenting TeX sections, don't
@@ -1578,11 +1582,10 @@ done
 # it being missed.  Comment it out after preprocessing, so that it does
 # not appear in the generated document.
 #
-# Unfortunately makeinfo --iftex --no-ifinfo doesn't work well enough
-# (yet), makeinfo can't parse the TeX commands, so work around with sed.
-#
-# We assume that `@c _texi2dvi' starting a line is not present in the
-# document.
+# We assume that `@c _texi2dvi' or `@c (_texi2dvi)' starting a line is
+# not present in the document.  Additionally, conditionally defined
+# macros inside the @top node may end up with the wrong value, although
+# this is unlikely in practice.
 #
 comment_iftex=\
 '/^@tex/,/^@end tex/{
@@ -1610,8 +1613,9 @@ comment_iftex=\
 s/^@ifnotinfo/@c _texi2dvi@ifnotinfo/
 s/^@end ifnotinfo/@c _texi2dvi@end ifnotinfo/'
 
-# Uncommenting is simpler: remove any leading `@c texi2dvi'; repeated
-# copies can sneak in via macro invocations.
+# Uncomment @iftex blocks by removing any leading `@c texi2dvi' (repeated
+# copies can sneak in via macro invocations).  Likewise, comment out
+# the @top node inside a @ifnottex block.
 uncomment_iftex=\
 's/^@c _texi2dvi\(@c _texi2dvi\)*//
 /^@c (_texi2dvi)@ifnottex/,/^@c (_texi2dvi)@end ifnottex/{
