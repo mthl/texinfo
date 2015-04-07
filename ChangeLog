@@ -1,5 +1,14 @@
 2015-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (forward_move_node_structure) <Up and Next>,
+	(backward_move_node_structure) <Prev and down>: Clean up window
+	history so to add only one node in history.  Report from Benno 
+	Schulenberg.
+	(backward_move_node_structure): Case-insensitive check for name 
+	of (dir).
+
+2015-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/texi2dvi: Comments changed.
 
 2015-04-06  Sergey Poznyakoff  <gray@gnu.org>

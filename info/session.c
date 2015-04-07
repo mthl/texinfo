@@ -3011,6 +3011,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
            are no more nodes. */
         {
           int up_counter;
+          int starting_hist_index = window->hist_index;
 
           /* Back up through the "Up:" pointers until we have found a "Next:"
              that isn't the same as the first menu item found in that node. */
@@ -3039,6 +3040,11 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                   /* This node has a "Next" pointer, and it is not the
                      same as the first menu item found in this node. */
                   info_handle_pointer ("Next", window);
+
+                  /* Don't include intermediate nodes in the window's
+                     history.  */
+                  cleanup_history (window, starting_hist_index,
+                                   window->hist_index - 1);
                   return 0;
                 }
               else
@@ -3096,8 +3102,7 @@ backward_move_node_structure (WINDOW *window, int behaviour)
         {
           /* If up is the dir node, we are at the top node.
              Don't do anything. */
-          if (   !strcmp ("(dir)", window->node->up)
-              || !strcmp ("(DIR)", window->node->up))
+          if (!strncasecmp (window->node->up, "(dir)", strlen ("(dir)")))
             {
               info_error ("%s", 
                     _("No 'Prev' or 'Up' for this node within this document."));
@@ -3114,6 +3119,7 @@ backward_move_node_structure (WINDOW *window, int behaviour)
              in the menus as far as possible. */
           else if (window->node->prev)
             {
+              int starting_hist_index = window->hist_index;
               info_handle_pointer ("Prev", window);
               if (!(window->node->flags & N_IsIndex))
                 {
@@ -3125,6 +3131,10 @@ backward_move_node_structure (WINDOW *window, int behaviour)
                       if (!info_select_reference (window, entry))
                         break;
                     }
+                  /* Don't include intermediate nodes in the window's
+                     history.  */
+                  cleanup_history (window, starting_hist_index,
+                                   window->hist_index - 1);
                 }
             }
           else /* 'Up' but no 'Prev' */
