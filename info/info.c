@@ -442,13 +442,55 @@ add_initial_nodes (int argc, char **argv, char **error)
       else if (argc == 1 && argv[0])
         {
           FILE_BUFFER *fb;
-          REFERENCE *nearest;
+          REFERENCE *match;
 
           debug (3, ("looking in indices"));
           fb = info_find_file (ref_list[0]->filename);
           if (fb)
             {
-              nearest = look_in_indices (fb, argv[0]);
+              match = look_in_indices (fb, argv[0], 0);
+              if (match)
+                {
+                  argv += argc; argc = 0;
+                  free (*error); *error = 0;
+
+                  info_reference_free (ref_list[0]);
+                  ref_list[0] = info_copy_reference (match);
+                }
+            }
+        }
+
+      /* If there are arguments remaining, follow menus inexactly. */
+      if (argc != 0)
+        {
+          initial_node = info_get_node_with_defaults (ref_list[0]->filename,
+                                                      ref_list[0]->nodename,
+                                                      0);
+          free (*error); *error = 0;
+          node_via_menus = info_follow_menus (initial_node, argv, error, 0);
+          if (node_via_menus && (argc >= 2 || !*error))
+            {
+              argv += argc; argc = 0;
+
+              info_reference_free (ref_list[0]);
+              ref_list[0] = info_new_reference (node_via_menus->fullpath,
+                                                node_via_menus->nodename);
+              free_history_node (node_via_menus);
+            }
+        }
+
+      /* If still no nodes found, and there is exactly one argument remaining,
+         look in indices sloppily. */
+      if (argc == 1)
+        {
+          FILE_BUFFER *fb;
+          REFERENCE *nearest;
+
+          debug (3, ("looking in indices sloppily"));
+          fb = info_find_file (ref_list[0]->filename);
+          if (fb)
+            {
+              nearest = look_in_indices (fb, argv[0], 1);
               if (nearest)
                 {
                   argv += argc; argc = 0;
@@ -457,25 +499,6 @@ add_initial_nodes (int argc, char **argv, char **error)
                   info_reference_free (ref_list[0]);
                   ref_list[0] = info_copy_reference (nearest);
                 }
-            }
-        }
-
-      /* If there are arguments remaining, follow menus
-         inexactly. */
-      if (argc != 0)
-        {
-          initial_node = info_get_node_with_defaults (ref_list[0]->filename,
-                                                      ref_list[0]->nodename,
-                                                      0);
-          node_via_menus = info_follow_menus (initial_node, argv, error, 0);
-          if (node_via_menus)
-            {
-              argv += argc; argc = 0;
-
-              info_reference_free (ref_list[0]);
-              ref_list[0] = info_new_reference (node_via_menus->fullpath,
-                                                node_via_menus->nodename);
-              free_history_node (node_via_menus);
             }
         }
     }

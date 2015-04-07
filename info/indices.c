@@ -488,12 +488,13 @@ DECLARE_INFO_COMMAND (info_next_index_match,
   info_select_reference (window, result);
 }
 
-/* Look for the best match of STRING in the indices of FB.  Return null if no 
-   match is found.  Return value should not be freed or modified.  This differs 
-   from the behaviour of next_index_match in that only _initial_ substrings are 
+/* Look for the best match of STRING in the indices of FB.  If SLOPPY, allow 
+   case-insensitive initial substrings to match.  Return null if no match is 
+   found.  Return value should not be freed or modified.  This differs from the 
+   behaviour of next_index_match in that only _initial_ substrings are 
    considered. */
 REFERENCE *
-look_in_indices (FILE_BUFFER *fb, char *string)
+look_in_indices (FILE_BUFFER *fb, char *string, int sloppy)
 {
   REFERENCE **index_ptr;
   REFERENCE *nearest = 0;
@@ -515,7 +516,7 @@ look_in_indices (FILE_BUFFER *fb, char *string)
           break;
         }
       /* Case-insensitive initial substring. */
-      if (!nearest && !mbsncasecmp (string, (*index_ptr)->label,
+      if (sloppy && !nearest && !mbsncasecmp (string, (*index_ptr)->label,
                                     mbslen (string)))
         {
           nearest = *index_ptr;

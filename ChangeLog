@@ -1,5 +1,11 @@
 2015-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info.c (add_initial_nodes): Follow menus inexactly before 
+	checking indices sloppily.  Reported by Benno Schulenberg.
+	* info/indices.c (look_in_indices): Arguments changed.
+
+2015-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (forward_move_node_structure) <Up and Next>,
 	(backward_move_node_structure) <Prev and down>: Clean up window
 	history so to add only one node in history.  Report from Benno 
