@@ -667,7 +667,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
               popped = pop_element_from_contents (current);
               if (popped->cmd != end_cmd)
                 abort(); //error
-              destroy_element (popped);
+              destroy_element_and_children (popped);
 
               // abort until end of line, calling new_line
               debug ("CLOSED conditional %s", command_name(end_cmd));

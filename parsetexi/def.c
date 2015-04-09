@@ -393,6 +393,7 @@ found:
               add_to_def_args_extra (def_args, "delimiter", e);
               p += len;
             }
+          destroy_element (arg);
         }
       else
         {

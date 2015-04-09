@@ -58,6 +58,21 @@ destroy_element (ELEMENT *e)
   free (e);
 }
 
+/* Recursively destroy this element and all data in its descendants.
+   TODO: Also extra information. */
+void
+destroy_element_and_children (ELEMENT *e)
+{
+  int i;
+
+  for (i = 0; i < e->contents.number; i++)
+    destroy_element_and_children (e->contents.list[i]);
+  for (i = 0; i < e->args.number; i++)
+    destroy_element_and_children (e->args.list[i]);
+
+  destroy_element (e);
+}
+
 /* Make sure there is space for at least one more element. */
 static void
 reallocate_list (ELEMENT_LIST *list)

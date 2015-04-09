@@ -1018,6 +1018,7 @@ end_line_misc_line (ELEMENT *current)
       ELEMENT *end_elt;
 
       debug ("END COMMAND %s", end_command);
+      free (end_command);
 
       /* Reparent the "@end" element to be a child of the block element. */
       end_elt = pop_element_from_contents (current);
@@ -1041,7 +1042,12 @@ end_line_misc_line (ELEMENT *current)
           if (close_preformatted_command (end_id))
             current = begin_preformatted (current);
         }
-      free (end_command);
+      else
+        {
+          /* The "@end" line does not appear in the final tree for a
+             conditional block. */
+          destroy_element_and_children (end_elt);
+        }
     } /* 3340 */
   else
     {
