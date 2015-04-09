@@ -650,6 +650,8 @@ dump_tree_to_perl (ELEMENT *root)
      will exist by the time this is read. */
   if (tree_to_indices_dump.end > 0)
     printf ("%s", tree_to_indices_dump.text);
+
+  free (output.text);
 }
 
 /************************************************************/

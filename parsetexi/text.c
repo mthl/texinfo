@@ -28,10 +28,12 @@ text_alloc (TEXT *t, size_t len)
 {
   if (t->end + len > t->space)
     {
-      /* FIXME: Double it instead? */
       t->space = t->end + len;
       if (t->space < 10)
         t->space = 10;
+      /* This makes a huge difference under Valgrind, is not noticable
+         otherwise. */
+      t->space *= 2;
       t->text = realloc (t->text, t->space);
       if (!t->text)
         abort ();

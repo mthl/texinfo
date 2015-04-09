@@ -152,7 +152,6 @@ parse_line_command_args (ELEMENT *line_command)
     ELEMENT *E = new_element (ET_NONE); \
     text_append (&E->text, string); \
     add_to_element_contents (line_args, E); \
-    free (string); \
 } while (0)
 
   ELEMENT *line_args;
@@ -227,6 +226,7 @@ parse_line_command_args (ELEMENT *line_command)
 
         ADD_ARG(new);
         ADD_ARG(existing);
+        free (new); free (existing);
 
         /* TODO: Rememer the alias. */
         break;
@@ -266,9 +266,9 @@ parse_line_command_args (ELEMENT *line_command)
         if (*line == ',')
           goto definfoenclose_invalid; /* Too many args. */
 
-        ADD_ARG(new_command);
-        ADD_ARG(start);
-        ADD_ARG(end);
+        ADD_ARG(new_command); free (new_command);
+        ADD_ARG(start); free (start);
+        ADD_ARG(end); free (end);
         break;
       definfoenclose_invalid:
         line_error ("bad argument to @definfoenclose");
@@ -359,7 +359,7 @@ parse_line_command_args (ELEMENT *line_command)
         }
 
         add_index (name, cmd == CM_defcodeindex ? 1 : 0);
-        ADD_ARG (name);
+        ADD_ARG(name);
 
         break;
       defindex_invalid:
@@ -391,8 +391,8 @@ parse_line_command_args (ELEMENT *line_command)
         if (!to)
           goto synindex_invalid;
 
-        ADD_ARG(from);
-        ADD_ARG(to);
+        ADD_ARG(from); free (from);
+        ADD_ARG(to); free (to);
 
         /* TODO: Rememer the synonym. */
         break;
