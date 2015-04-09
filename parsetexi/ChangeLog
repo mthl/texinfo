@@ -1,3 +1,10 @@
+2015-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* end_line.c (parse_line_command_args) <CM_synindex>: Record
+	index synonym.
+	* api.c (build_single_index_data): Create "contained_indices" 
+	and "merged_in".
+
 2015-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tree_types.h (enum extra_type): Add extra_def_args.

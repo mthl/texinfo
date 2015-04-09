@@ -96,7 +96,7 @@ add_index_internal (char *name, int in_code)
 }
 
 /* NAME is the name of an index, e.g. "cp" */
-static INDEX *
+INDEX *
 index_by_name (char *name)
 {
   int i;
@@ -261,4 +261,13 @@ enter_index_entry (enum command_id index_type_command,
 
   add_extra_key_index_entry (current, "index_entry", ier);
 
+}
+
+
+INDEX *
+ultimate_index (INDEX *index)
+{
+  while (index->merged_in)
+    index = index->merged_in;
+  return index;
 }

@@ -120,14 +120,20 @@ typedef struct {
     enum command_id region;
 } INDEX_ENTRY;
 
-typedef struct {
+typedef struct INDEX {
     char *name;
     char *prefix;
     // int in_code;
 
+    struct INDEX *merged_in; /* Index this index is merged into, if any. */
+
     INDEX_ENTRY *index_entries;
     size_t index_number;
     size_t index_space;
+
+    /********* Used when building Perl hash value ********************/
+    void *hv;
+    void *contained_hv;
 } INDEX;
 
 /* Used when dumping to a text stream only.  A reference to an

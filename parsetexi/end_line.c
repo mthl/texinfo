@@ -371,10 +371,11 @@ parse_line_command_args (ELEMENT *line_command)
         break;
       }
     case CM_synindex:
-    case CM_syncodeindex:
+    case CM_syncodeindex: // 5595
       {
         /* synindex FROM TO */
         char *from = 0, *to = 0;
+        INDEX *from_index, *to_index;
         char *p = line;
 
         if (!isalnum (*p))
@@ -391,12 +392,39 @@ parse_line_command_args (ELEMENT *line_command)
         if (!to)
           goto synindex_invalid;
 
-        ADD_ARG(from); free (from);
-        ADD_ARG(to); free (to);
+        ADD_ARG(from);
+        ADD_ARG(to);
 
-        /* TODO: Rememer the synonym. */
+        from_index = index_by_name (from);
+        to_index = index_by_name (to);
+        if (!from_index)
+          line_errorf ("unknown source index in @%s: %s", command_name(cmd),
+                       from);
+        if (!to_index)
+          line_errorf ("unknown source index in @%s: %s", command_name(cmd),
+                       to);
+
+        if (from_index && to_index) // 5606
+          {
+            INDEX *current_to = to_index;
+            /* Find ultimate index this merges to. */
+            current_to = ultimate_index (current_to);
+
+            if (current_to != from_index)
+              {
+                /* TODO: unless "ignore_global_commands" */
+                from_index->merged_in = current_to;
+              }
+            else
+              line_warnf ("@%s leads to a merging of %s in itself, ignoring",
+                          command_name(cmd), from);
+          }
+
+        free (from);
+        free (to);
+
         break;
-      synindex_invalid:
+      synindex_invalid: // 5638
         line_errorf ("bad argument to @%s: %s",
                      command_name(cmd), line);
         free (from); free (to);

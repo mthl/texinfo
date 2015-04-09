@@ -781,7 +781,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
             {
               cmd = lookup_command (command);
               if (!cmd)
-                line_errorf ("unknown command `%s'", command); // 4877
+                ;//line_errorf ("unknown command `%s'", command); // 4877
             }
           free (command);
         }

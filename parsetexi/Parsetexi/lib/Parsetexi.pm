@@ -298,6 +298,12 @@ sub parse_texi_file ($$)
   $self->{'labels'} = $LABELS;
 
   $self->{'index_names'} = $INDEX_NAMES;
+  #for my $index (keys %$INDEX_NAMES) {
+  #  if ($INDEX_NAMES->{$index}->{'merged_in'}) {
+  #    $self->{'merged_indices'}-> {$index}
+  #      = $INDEX_NAMES->{$index}->{'merged_in'};
+  #  }
+  #}
 
   # Copy the errors into the error list in Texinfo::Report.
   # TODO: Could we just access the error list directly instead of going

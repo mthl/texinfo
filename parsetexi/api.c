@@ -445,22 +445,30 @@ build_label_list (void)
   return label_hash;
 }
 
-/* Return hash value for a single entry in $self->{'index_names'}, containing
-   information about a single index. */
-static HV *
+/* Ensure that I->hv is a hash value for a single entry in 
+   $self->{'index_names'}, containing information about a single index. */
+static void
 build_single_index_data (INDEX *i)
 {
 #define STORE(key, value) hv_store (hv, key, strlen (key), value, 0)
 
   HV *hv;
   AV *prefix_array;
-  HV *contained;
   AV *entries;
   int j;
 
   dTHX;
 
-  hv = newHV ();
+  if (!i->hv)
+    {
+      hv = newHV ();
+      i->hv = (void *) hv;
+    }
+  else
+    {
+      hv = (HV *) i->hv;
+    }
+
   STORE("name", newSVpv (i->name, 0));
   STORE("in_code", newSVpv ("0", 1));
 
@@ -470,9 +478,39 @@ build_single_index_data (INDEX *i)
   av_push (prefix_array, newSVpv (i->name, 0));
   STORE("prefix", newRV_inc ((SV *) prefix_array));
 
-  contained = newHV ();
-  hv_store (contained, i->name, strlen (i->name), newSViv(1), 0);
-  STORE("contained_indices", newRV_inc ((SV *) contained));
+  if (i->merged_in)
+    {
+      /* This index is merged in another one. */
+      INDEX *ultimate = ultimate_index (i);
+
+      if (!ultimate->hv)
+        {
+          ultimate->hv = (void *) newHV ();
+          ultimate->contained_hv = (void *) newHV ();
+          hv_store (ultimate->hv,
+                    "contained_indices",
+                    strlen ("contained_indices"),
+                    newRV_inc ((SV *)(HV *) ultimate->contained_hv),
+                    0);
+        }
+
+      hv_store (ultimate->contained_hv, i->name, strlen (i->name),
+                newSViv (1), 0);
+
+      STORE("merged_in", newSVpv (ultimate->name, 0));
+
+      /* See also code in end_line.c (parse_line_command_args) <CM_synindex>.
+         FIXME: Do we need to keep the original values of contained_indices?
+         I don't think so. */
+    }
+
+  if (!i->contained_hv)
+    {
+      i->contained_hv = newHV ();
+      STORE("contained_indices", newRV_inc ((SV *)(HV *) i->contained_hv));
+    }
+  /* Record that this index "contains itself". */
+  hv_store (i->contained_hv, i->name, strlen (i->name), newSViv(1), 0);
 
   entries = newAV ();
   STORE("index_entries", newRV_inc ((SV *) entries));
@@ -533,8 +571,6 @@ build_single_index_data (INDEX *i)
       }
 #undef STORE2
     }
-
-  return hv;
 }
 
 /* Return object to be used as $self->{'index_names'} in the perl code.
@@ -553,7 +589,8 @@ build_index_data (void)
   for (i = index_names; (idx = *i); i++)
     {
       HV *hv2;
-      hv2 = build_single_index_data (idx);
+      build_single_index_data (idx);
+      hv2 = idx->hv;
       hv_store (hv, idx->name, strlen (idx->name), newRV_inc ((SV *)hv2), 0);
     }
 

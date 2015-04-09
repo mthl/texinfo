@@ -446,7 +446,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
       // open a new element (which we shall later remove).
 
       debug ("CONDITIONAL %s", command_name(cmd));
-      if (cmd != CM_ifnotinfo) // TODO
+      if (cmd != CM_ifnotinfo) // && cmd != CM_iftex) // TODO
         push_conditional_stack (cmd); // Not ignored
       else
         {
