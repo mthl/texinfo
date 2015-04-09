@@ -1,6 +1,11 @@
+2015-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Variables) <mouse>: Add note about text 
+	selection with the mouse.
+
 2015-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* info.c (add_initial_nodes): Follow menus inexactly before 
+	* info/info.c (add_initial_nodes): Follow menus inexactly before 
 	checking indices sloppily.  Reported by Benno Schulenberg.
 	* info/indices.c (look_in_indices): Arguments changed.
 

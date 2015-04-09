@@ -2224,6 +2224,14 @@ it detects that the terminal supports it.  This enables you to scroll the
 contents of the active window with a mouse scrollwheel.  Set this variable
 to @code{Off} to disable the use of a mouse.
 
+@cindex Selecting text with the mouse
+@cindex xterm mouse selections
+On terminal emulators running under the X Window System, such as
+@command{xterm}, you can usually select text with the mouse.  However,
+mouse tracking mode may interfere with this.  When this happens, you may
+be able to select text by holding down the @kbd{Shift} key while
+clicking and dragging.
+
 @anchor{scroll-behavior}
 @item scroll-behavior
 @itemx scroll-behaviour
