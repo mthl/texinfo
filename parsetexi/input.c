@@ -71,10 +71,7 @@ new_line (void)
       free (new);
 
       if (t.text[t.end - 1] == '\n')
-        {
-          t.text[t.end - 1] = '\0';
-          break;
-        }
+        break;
     }
 
   if (t.end > 0)

@@ -109,7 +109,7 @@ parse_special_misc_command (char *line, enum command_id cmd
       while (strchr (whitespace_chars, *q))
         q--;
 
-      if (q > p)
+      if (q >= p)
         ADD_ARG(p, q - p + 1); /* value */
       else
         ADD_ARG("", 0);

@@ -595,6 +595,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
 
   enum command_id cmd = CM_NONE;
 
+  /********* BLOCK_raw or (ignored) BLOCK_conditional ******************/
   /* If in raw block, or ignored conditional block. */
   // 3727
   if (command_flags(current) & CF_block
@@ -781,7 +782,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
             {
               cmd = lookup_command (command);
               if (!cmd)
-                ;//line_errorf ("unknown command `%s'", command); // 4877
+                line_errorf ("unknown command `%s'", command); // 4877
             }
           free (command);
         }
@@ -898,11 +899,10 @@ value_valid:
 
                   line++; /* past '}' */
                   input_push_text (strdup (line));
-                  line = strchr (line, '\0');
                   input_push_text (strdup (value));
-                  retval = 0;
+                  line = new_line ();
+                  retval = 1;
                   goto funexit;
-                  //return;
                 }
             }
           else
