@@ -150,6 +150,7 @@ parse_texi_file (const char *filename_in)
       ELEMENT *l;
 
       /* FIXME: _next_text isn't used in Perl. */
+      free (line);
       line = next_text ();
       if (!line)
         abort (); /* Empty file? */
@@ -776,11 +777,13 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
         {
           char *command = read_command_name (&line_after_command);
 
-          if (!command || !(cmd = lookup_command (command)))
+          if (command)
             {
-              /* Unknown command */
-              //abort ();
+              cmd = lookup_command (command);
+              if (!cmd)
+                line_errorf ("unknown command `%s'", command); // 4877
             }
+          free (command);
         }
     }
 

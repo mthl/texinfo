@@ -152,6 +152,7 @@ parse_line_command_args (ELEMENT *line_command)
     ELEMENT *E = new_element (ET_NONE); \
     text_append (&E->text, string); \
     add_to_element_contents (line_args, E); \
+    free (string); \
 } while (0)
 
   ELEMENT *line_args;
@@ -357,9 +358,8 @@ parse_line_command_args (ELEMENT *line_command)
               goto defindex_reserved;
         }
 
-        ADD_ARG (name);
-
         add_index (name, cmd == CM_defcodeindex ? 1 : 0);
+        ADD_ARG (name);
 
         break;
       defindex_invalid:
@@ -614,8 +614,8 @@ parse_node_manual (ELEMENT *node)
              elements? */
           ELEMENT *first;
           first = malloc (sizeof (ELEMENT));
-          first->parent_type = route_not_in_tree;
           memcpy (first, trimmed->contents.list[0], sizeof (ELEMENT));
+          first->parent_type = route_not_in_tree;
           first->text.text = malloc (first->text.space);
           memcpy (first->text.text,
                   trimmed->contents.list[0]->text.text + 1,
@@ -667,6 +667,8 @@ parse_node_manual (ELEMENT *node)
 
                   insert_into_contents (trimmed, after, 0);
                 }
+              if (e->parent_type == route_not_in_tree)
+                destroy_element (e);
               break;
             }
         }
@@ -684,6 +686,7 @@ parse_node_manual (ELEMENT *node)
     {
       result->node_content = 0;
       result->normalized = "";
+      destroy_element (trimmed);
     }
   return result;
 }
@@ -891,6 +894,8 @@ end_line_misc_line (ELEMENT *current)
               if (end_id == 0 || !(command_data(end_id).flags & CF_block))
                 {
                   /* error - unknown @end */
+                  command_warnf ("unknown @end %s", end_command);
+                  free (end_command); end_command = 0;
                 }
               else
                 {
@@ -1036,6 +1041,7 @@ end_line_misc_line (ELEMENT *current)
           if (close_preformatted_command (end_id))
             current = begin_preformatted (current);
         }
+      free (end_command);
     } /* 3340 */
   else
     {

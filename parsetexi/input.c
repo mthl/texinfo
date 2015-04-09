@@ -136,6 +136,7 @@ next_text (void)
               line_nr.line_nr++;
               return line;
             }
+          free (line); line = 0;
           break;
         default:
           abort ();

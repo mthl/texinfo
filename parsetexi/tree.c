@@ -20,10 +20,14 @@
 #include "tree_types.h"
 #include "tree.h"
 
+//int element_counter;
+
 ELEMENT *
 new_element (enum element_type type)
 {
   ELEMENT *e = malloc (sizeof (ELEMENT));
+
+  //element_counter++;
 
   /* Zero all elements */
   memset (e, 0, sizeof (*e));

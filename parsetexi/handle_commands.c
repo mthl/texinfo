@@ -134,6 +134,14 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 
           if (args->contents.number > 0 && arg_spec != MISC_skipline)
             add_extra_key_misc_args (misc, "misc_args", args);
+          else
+            {
+              for (i = 0; i < args->contents.number; i++)
+                {
+                  destroy_element (args->contents.list[i]);
+                }
+              destroy_element (args);
+            }
         }
 
       /* if (!ignore_global_commands)
@@ -164,6 +172,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
         line_arg = 1;
 
       /* 4439 */
+      /*************************************************************/
       /* Special handling of @item because it can appear
          in several contents: in an @itemize, a @table, or
          a @multitable. */
