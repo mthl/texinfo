@@ -430,10 +430,35 @@ parse_line_command_args (ELEMENT *line_command)
         free (from); free (to);
         break;
       }
-    case CM_printindex:
+    case CM_printindex: // 5641
       {
-        /* TODO */
-        ADD_ARG (line);
+        char *arg;
+        char *p = line;
+        arg = read_command_name (&p);
+        if (!arg || *p)
+          line_errorf ("bad argument to @printindex: %s", line);
+        else
+          {
+            INDEX *idx = index_by_name (arg);
+            if (!idx)
+              line_errorf ("unknown index `%s' in @printindex", arg);
+            else
+              {
+                // 5650
+                if (idx->merged_in)
+                  line_warnf
+                    ("printing an index `%s' merged in another one, `%s'",
+                     arg, idx->merged_in->name);
+                if (!current_node && !current_section)
+                  // TODO && nothing on regions stack?
+                  {
+                    line_warnf ("printindex before document beginning: "
+                                "@printindex %s", arg);
+                  }
+                ADD_ARG (arg);
+              }
+          }
+        free (arg);
         break;
       }
     case CM_everyheadingmarks:

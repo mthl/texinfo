@@ -49,8 +49,10 @@ looking_at (char *s1, char *s2)
   return !strncmp (s1, s2, strlen (s2));
 }
 
-/* Return value to be freed by caller.  *PTR is advanced past the read name.
-   Return 0 if name is invalid. */
+/* Look for a sequence of alphanumeric characters or hyphens, where the
+   first isn't a hyphen.  This is the format of (non-single-character) Texinfo 
+   commands, but is also used elsewhere.  Return value to be freed by caller.
+   *PTR is advanced past the read name.  Return 0 if name is invalid. */
 // 4161
 char *
 read_command_name (char **ptr)
@@ -58,8 +60,6 @@ read_command_name (char **ptr)
   char *p = *ptr, *q;
   char *ret = 0;
 
-  /* Look for a sequence of alphanumeric characters or hyphens, where the
-     first isn't a hyphen. */
   q = p;
   if (!isalnum (*q))
     return 0; /* Invalid. */
