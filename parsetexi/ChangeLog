@@ -1,3 +1,13 @@
+2015-04-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* Parsetexi/lib/Parsetexi.pm (parser): Add code to receive 
+	"values" configuration value.
+	(parse_texi_line): First implementation.
+	* Parsetexi/Parsetexi.xs (parse_string, store_value)
+	(wipe_values): Expose.
+	* api.c (parse_string): New function.
+	* macro.c (wipe_values): New function.
+
 2015-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* end_line.c (parse_line_command_args) <CM_synindex>: Record

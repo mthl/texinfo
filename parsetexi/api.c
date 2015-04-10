@@ -49,6 +49,19 @@ get_root (void)
   return Root;
 }
 
+/* Set ROOT to root of tree obtained by parsing the Texinfo code in STRING.
+   Used for parse_texi_line. */
+void
+parse_string (char *string)
+{
+  ELEMENT *root;
+  init_index_commands (); /* FIXME - probably not necessary */
+  root = new_element (ET_root_line);
+  input_push_text (strdup (string));
+  Root = parse_texi (root);
+}
+
+
 char *
 element_type_name (ELEMENT *e)
 {

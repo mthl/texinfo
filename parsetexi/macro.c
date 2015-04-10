@@ -451,14 +451,26 @@ static size_t value_number;
 static size_t value_space;
 
 void
+wipe_values (void)
+{
+  size_t i;
+  for (i = 0; i < value_number; i++)
+    {
+      free (value_list[i].name);
+      free (value_list[i].value);
+    }
+  value_number = 0;
+}
+
+void
 store_value (char *name, char *value)
 {
   if (value_number == value_space)
     {
       value_list = realloc (value_list, (value_space += 5) * sizeof (VALUE));
     }
-  value_list[value_number].name = name;
-  value_list[value_number++].value = value;
+  value_list[value_number].name = strdup (name);
+  value_list[value_number++].value = strdup (value);
 }
 /* TODO: What if it is already defined? */
 

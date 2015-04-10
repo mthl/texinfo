@@ -30,6 +30,7 @@ ELEMENT *handle_separator (ELEMENT *current, char separator,
                            char **line_inout);
 
 /* In parser.c */
+ELEMENT *parse_texi (ELEMENT *root_elt);
 void push_conditional_stack (enum command_id cond);
 enum command_id pop_conditional_stack (void);
 extern size_t conditional_number;

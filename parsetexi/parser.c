@@ -30,9 +30,6 @@
 
 //macro_stack;
 
-/* Declarations of functions in this file */
-ELEMENT *parse_texi (ELEMENT *root_elt);
-
 
 /* Utility functions */
 
@@ -896,6 +893,8 @@ value_valid:
                 {
                   /* TODO: The Perl code has cases for the value being
                      an array or hash - check when this can happen. */
+                  /* This happens when the values are set by the "gdt" function 
+                     in Structuring.pm.  */
 
                   line++; /* past '}' */
                   input_push_text (strdup (line));

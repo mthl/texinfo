@@ -117,6 +117,7 @@ sub parser (;$$)
   $parser->{'gettext'} = $parser_default_configuration{'gettext'};
   $parser->{'pgettext'} = $parser_default_configuration{'pgettext'};
 
+  wipe_values ();
   if (defined($conf)) {
     foreach my $key (keys (%$conf)) {
       if ($key eq 'include_directories') {
@@ -125,9 +126,25 @@ sub parser (;$$)
           warn "got dir $d\n";
           add_include_directory ($d);
         }
-
+      } elsif ($key eq 'values') {
+	# This is used by Texinfo::Structuring::gdt for substituted values
+	for my $v (keys %{$conf->{'values'}}) {
+	  if (ref($conf->{'values'}->{$v}) eq 'HASH') {
+	    if (defined ($conf->{'values'}->{$v}->{'text'})) {
+	      store_value ($v, $conf->{'values'}->{$v}->{'text'});
+	    } else {
+	      store_value ($v, "<<HASH WITH NO TEXT>>");
+	    }
+	  } elsif (ref($conf->{'values'}->{$v}) eq 'SCALAR') {
+	    store_value ($v, $conf->{'values'}->{$v});
+	  } elsif (ref($conf->{'values'}->{$v}) eq 'ARRAY') {
+	    store_value ($v, "<<ARRAY VALUE>>");
+	  } else {
+	    store_value ($v, "<<UNKNOWN VALUE>>");
+	  }
+	}
       } else {
-        warn "ignoring parser configuration value \"$key\"\n";
+	#warn "ignoring parser configuration value \"$key\"\n";
       }
     }
   }
@@ -226,7 +243,7 @@ sub _complete_node_list ($$) {
   }
 }
 
-# Stub for Texinfo::Parser::parse_texi_file (line 835)
+# Replacement for Texinfo::Parser::parse_texi_file (line 835)
 sub parse_texi_file ($$)
 {
   my $self = shift;
@@ -325,6 +342,25 @@ sub parse_texi_file ($$)
   #print $bar;
 
   return $TREE;
+}
+
+# Replacement for Texinfo::Parser::parse_texi_line (line 918)
+sub parse_texi_line($$;$$$$)
+{
+    my $self = shift;
+    my $text = shift;
+    my $lines_nr = shift;
+    my $file = shift;
+    my $macro = shift;
+    my $fixed_line_number = shift;
+
+    return undef if (!defined($text));
+
+    $self = parser() if (!defined($self));
+    parse_string($text);
+    my $tree = build_texinfo_tree ();
+    _add_parents ($tree);
+    return $tree;
 }
 
 # Public interfaces of Texinfo::Parser (starting line 942)

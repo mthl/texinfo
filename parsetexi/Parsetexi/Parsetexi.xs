@@ -1,14 +1,20 @@
+#define context perl_context
+
 #define PERL_NO_GET_CONTEXT
 #include "EXTERN.h"
 #include "perl.h"
 #include "XSUB.h"
 
+#undef context
+
 #include "ppport.h"
 
-#include "../tree_types.h"
+#include "../parser.h"
+
 #include "../tree.h"
 #include "../api.h"
 #include "../errors.h"
+
 
 HV *build_texinfo_tree (void);
 HV *build_label_list (void);
@@ -44,6 +50,18 @@ dump_errors ()
 void
 parse_file(filename)
         char * filename
+
+void
+parse_string(string)
+        char * string
+
+void
+store_value (name, value)
+        char *name
+        char *value
+
+void
+wipe_values ()
 
 ELEMENT *
 get_root()
