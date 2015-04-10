@@ -806,6 +806,11 @@ end_line_starting_block (ELEMENT *current)
 
       add_extra_key_contents (current->parent, "prototypes", prototypes);
     }
+  else
+    {
+      isolate_last_space (current, ET_space_at_end_block_command); // 2939
+      register_command_arg (current, "block_command_line_contents");
+    }
 
   if (current->parent->cmd == CM_float) // 2943
     {

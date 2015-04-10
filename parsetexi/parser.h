@@ -26,6 +26,7 @@ void debug_nonl (char *s, ...);
 extern int debug_output;
 
 /* In separator.c */
+void register_command_arg (ELEMENT *current, char *key);
 ELEMENT *handle_separator (ELEMENT *current, char separator,
                            char **line_inout);
 
@@ -52,14 +53,7 @@ extern const char *digit_chars;
 extern ELEMENT *current_node;
 extern ELEMENT *current_section;
 
-/* In macro.c */
-void new_macro (char *name, ELEMENT *macro);
-ELEMENT *parse_macro_command_line (enum command_id, char **line_inout,
-                                   ELEMENT *parent);
-ELEMENT *handle_macro (ELEMENT *current, char **line_inout,
-                       enum command_id cmd_id);
-void store_value (char *name, char *value);
-char *fetch_value (char *name, int len);
+#include "macro.h"
 
 /* In multitable.c */
 ELEMENT *item_line_parent (ELEMENT *current);

@@ -30,8 +30,7 @@
 
    For a brace command $element, $element->{'args'} has pretty much the same 
    information as $element->{'extra'}->{'brace_command_contents'}. */
-
-static void
+void
 register_command_arg (ELEMENT *current, char *key)
 {
   ELEMENT *value;

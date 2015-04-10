@@ -1,19 +1,15 @@
-#define context perl_context
-
 #define PERL_NO_GET_CONTEXT
 #include "EXTERN.h"
 #include "perl.h"
 #include "XSUB.h"
 
-#undef context
-
 #include "ppport.h"
 
-#include "../parser.h"
-
+#include "../tree_types.h"
 #include "../tree.h"
 #include "../api.h"
 #include "../errors.h"
+#include "../macro.h"
 
 
 HV *build_texinfo_tree (void);

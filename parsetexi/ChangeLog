@@ -1,5 +1,13 @@
 2015-04-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* end_line.c (end_line_starting_block): Call 
+	register_command_arg.
+	* parser.c (process_remaining_on_line) <command with command as 
+	argument, like @itemize @bullet>: Set command_as_argument extra 
+	value.
+
+2015-04-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* Parsetexi/lib/Parsetexi.pm (parser): Add code to receive 
 	"values" configuration value.
 	(parse_texi_line): First implementation.

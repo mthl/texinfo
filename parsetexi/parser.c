@@ -396,7 +396,7 @@ abort_empty_line (ELEMENT **current_inout, char *additional_text)
 
 /* 2149 */
 /* Split any trailing whitespace on the last contents child of CURRENT into
-   own element, ET_spaces_at_end by default.
+   its own element, ET_spaces_at_end by default.
   
    This is used for the argument to a line command, and for the arguments to a 
    brace command taking a given number of arguments.
@@ -494,16 +494,22 @@ trim_spaces_comment_from_content (ELEMENT *original)
   trimmed->parent_type = route_not_in_tree;
   for (i = 0; i < original->contents.number; i++)
     {
-      if (original->contents.list[i]->type != ET_empty_spaces_after_command
-        && original->contents.list[i]->type != ET_spaces_at_end
-        && original->contents.list[i]->type != ET_empty_spaces_before_argument)
+      enum element_type t = original->contents.list[i]->type;
+      if (t != ET_empty_line_after_command
+          && t != ET_empty_spaces_after_command
+          && t != ET_empty_spaces_before_argument
+          && t != ET_empty_space_at_end_def_bracketed
+          && t != ET_empty_spaces_after_close_brace
+          && t != ET_spaces_at_end
+          && t != ET_space_at_end_block_command
+          && original->contents.list[i]->cmd != CM_c
+          && original->contents.list[i]->cmd != CM_comment)
         {
           /* FIXME: Is this safe to serialize? */
           /* For example, if there are extra keys in the elements under each 
              argument?  They may not be set in a copy.
              Hopefully there aren't many extra keys set on commands in 
              node names. */
-          //add_to_element_contents (trimmed, original->contents.list[i]);
           add_to_contents_as_array (trimmed, original->contents.list[i]);
         }
     }
@@ -827,8 +833,13 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
     {
       if (command_with_command_as_argument (current->parent)) // 3988
         {
-          debug ("FOR PARENT");
-          current->type = ET_command_as_argument;
+          debug ("FOR PARENT @%s command_as_argument @%s",
+                 command_name(current->parent->parent->cmd),
+                 command_name(current->cmd));
+          if (!current->type)
+            current->type = ET_command_as_argument;
+          add_extra_key_element (current->parent->parent, 
+                                 "command_as_argument", current);
           current = current->parent;
         }
       else if (command_flags (current) & CF_accent) // 3996 - accent commands

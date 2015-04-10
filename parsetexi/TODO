@@ -1,5 +1,6 @@
 * conditionals on @set/@value, output format
 * implement command_warn properly
+* floats
 * Check everywhere we store values, we check properly what to do if the
   values are already defined.
 * check valid nestings
@@ -47,7 +48,7 @@ be taken to quote correctly special characters in the values, like "@",
 the overall structure of the makeinfo program and might not lose much 
 flexibility in return.  Most of the strings in texinfo_document.pot 
 don't use any Texinfo commands, and the others could be expressed 
-directly in the output format, e.g.  instead of
+directly in the output format, e.g. instead of
 
 msgid "{category} on {class}: @strong{{name}}
 
