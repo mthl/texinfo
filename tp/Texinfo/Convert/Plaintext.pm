@@ -612,7 +612,7 @@ sub new_formatter($$;$)
          'indent_level'      => $self->{'format_context'}->[-1]->{'indent_level'}, 
   };
   $container_conf->{'frenchspacing'} = 1 
-    if ($self->get_conf('frenchspacing') eq 'on');
+    if ($self->{'conf'}->{'frenchspacing'} eq 'on');
   $container_conf->{'counter'} 
     = $self->{'text_element_context'}->[-1]->{'counter'}
       if (defined($self->{'text_element_context'}->[-1]->{'counter'}));
@@ -651,7 +651,7 @@ sub new_formatter($$;$)
                    #'code' => 0, 'code_command'=> 0,
                    'font_type_stack' => [{}],
                    'w' => 0, 'type' => $type,
-                   'frenchspacing_stack' => [$self->get_conf('frenchspacing')]};
+                'frenchspacing_stack' => [$self->{'conf'}->{'frenchspacing'}]};
 
   if ($type eq 'unfilled') {
     foreach my $context (reverse(@{$self->{'context'}})) {

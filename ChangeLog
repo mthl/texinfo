@@ -1,3 +1,8 @@
+2015-04-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (new_formatter): Replace
+	function call to get_conf with hash lookup.
+
 2015-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/info-stnd.texi (Variables) <mouse>: Add note about text 
