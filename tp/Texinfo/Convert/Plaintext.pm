@@ -763,8 +763,13 @@ sub _count_added($$$)
   my $container = shift;
   my $text = shift;
 
-  $self->_add_lines_count($container->end_line_count());
-  $self->_add_text_count($text);
+  #$self->_add_lines_count($container->end_line_count());
+  $self->{'count_context'}->[-1]->{'lines'} += $container->end_line_count();
+
+  #$self->_add_text_count($text);
+  $self->{'count_context'}->[-1]->{'bytes'} +=
+    Texinfo::Common::count_bytes($self, $text,
+                                 $self->{'output_perl_encoding'});
   return $text;
 }
 

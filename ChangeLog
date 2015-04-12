@@ -2,6 +2,8 @@
 
 	* tp/Texinfo/Convert/Plaintext.pm (new_formatter): Replace
 	function call to get_conf with hash lookup.
+	(_count_added): Call Texinfo::Common::count_bytes directly 
+	instead of via _add_text_count, and inline _add_lines_count.
 
 2015-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
