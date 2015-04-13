@@ -1,3 +1,9 @@
+2015-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (count_bytes): Add special handling of 
+	case when output encoding is UTF-8, and for other encodings save 
+	result of Encode::find_encoding between function calls.
+
 2015-04-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm (new_formatter): Replace

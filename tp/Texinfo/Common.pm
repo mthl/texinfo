@@ -1667,6 +1667,10 @@ sub _convert_text_options($)
   return %options;
 }
 
+# Used in count_bytes
+my $Encode_encoding_object;
+my $last_encoding;
+
 sub count_bytes($$;$) 
 {
   my $self = shift;
@@ -1677,8 +1681,32 @@ sub count_bytes($$;$)
     $encoding = $self->get_conf('OUTPUT_PERL_ENCODING');
   }
 
-  if ($encoding and $encoding ne 'ascii') {
-    return length(Encode::encode($encoding, $string));
+  if ($encoding eq 'utf-8-strict') {
+    if (Encode::is_utf8($string)) {
+      # Get the number of bytes in the underlying storage.  This may
+      # be slightly faster than calling Encode::encode_utf8.
+      use bytes;
+      return length($string);
+
+      # Here's another way of doing it.
+      #Encode::_utf8_off($string);
+      #my $length = length($string);
+      #Encode::_utf8_on($string);
+      #return $length
+    } else {
+      return length(Encode::encode_utf8($string));
+    }
+  } elsif ($encoding and $encoding ne 'ascii') {
+    if (!defined($last_encoding) or $last_encoding ne $encoding) {
+      # Look up and save encoding object for next time.  This is
+      # slightly faster than calling Encode::encode.
+      $last_encoding = $encoding;
+      $Encode_encoding_object = Encode::find_encoding($encoding);
+      if (!defined($Encode_encoding_object)) {
+        Carp::croak "Unknown encoding '$encoding'";
+      }
+    }
+    return length($Encode_encoding_object->encode($string));
   } else {
     return length($string);
     #my $length = length($string);
