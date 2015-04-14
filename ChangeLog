@@ -7,6 +7,10 @@
 	* tp/Texinfo/Convert/Unicode.pm (unicode_text): Don't normalize 
 	return value.
 
+	* tp/Texinfo/Convert/Paragraph.pm (add_text): Don't track 
+	"underlying text" separately if it is the same as the text given 
+	to be wrapped.
+
 2015-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Common.pm (count_bytes): Add special handling of 

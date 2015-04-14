@@ -318,7 +318,6 @@ sub add_text($$;$)
   my $paragraph = shift;
   my $text = shift;
   my $underlying_text = shift;
-  $underlying_text = $text if (!defined($underlying_text));
   $paragraph->{'end_line_count'} = 0;
   my $result = '';
 
@@ -332,7 +331,8 @@ sub add_text($$;$)
     # \x{202f}\x{00a0} are non breaking spaces
     if ($text =~ s/^([^\S\x{202f}\x{00a0}]+)//) {
       my $spaces = $1;
-      $underlying_text =~ s/^([^\S\x{202f}\x{00a0}]+)//;
+      $underlying_text =~ s/^([^\S\x{202f}\x{00a0}]+)//
+        if defined($underlying_text);
       print STDERR "SPACES($paragraph->{'counter'}) `"._print_escaped_spaces($spaces)."'\n" if ($paragraph->{'DEBUG'});
       #my $added_word = $paragraph->{'word'};
       if ($paragraph->{'protect_spaces'}) {
@@ -404,8 +404,13 @@ sub add_text($$;$)
       }
     } elsif ($text =~ s/^(\p{InFullwidth})//) {
       my $added = $1;
-      $underlying_text =~ s/^(\p{InFullwidth})//;
-      my $underlying_added = $1;
+      my $underlying_added;
+      if (defined($underlying_text)) {
+        $underlying_text =~ s/^(\p{InFullwidth})//;
+        $underlying_added = $1;
+      } else {
+        $underlying_added = $added;
+      }
       
       print STDERR "EAST_ASIAN\n" if ($paragraph->{'DEBUG'});
       if (!defined($paragraph->{'word'})) {
@@ -425,8 +430,13 @@ sub add_text($$;$)
       $paragraph->{'space'} = '';
     } elsif ($text =~ s/^(([^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)//) {
       my $added_word = $1;
-      $underlying_text =~ s/^(([^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)//;
-      my $underlying_added_word = $1;
+      my $underlying_added_word;
+      if (defined($underlying_text)) {
+        $underlying_text =~ s/^(([^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)//;
+        $underlying_added_word = $1;
+      } else {
+        $underlying_added_word = $added_word;
+      }
 
       $result .= $paragraph->_add_next($added_word, $underlying_added_word);
 
