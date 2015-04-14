@@ -1296,9 +1296,10 @@ sub _printindex_formatted($$;$)
     #$self->_add_text_count($entry_line);
     
     my $line_width = Texinfo::Convert::Unicode::string_width($entry_line);
+    my $entry_line_addition = '';
     if ($line_width < $index_length_to_node) {
       my $spaces = ' ' x ($index_length_to_node - $line_width);
-      $entry_line .= $spaces;
+      $entry_line_addition .= $spaces;
       $self->_add_text_count($spaces);
     }
     my $node = $entry_nodes{$entry};
@@ -1315,7 +1316,7 @@ sub _printindex_formatted($$;$)
         $self->{'outside_of_any_node_text'}->{'count'} 
           = $end_context->{'bytes'};
       }
-      $entry_line .= $self->{'outside_of_any_node_text'}->{'text'};
+      $entry_line_addition .= $self->{'outside_of_any_node_text'}->{'text'};
       $self->{'count_context'}->[-1]->{'bytes'} 
             += $self->{'outside_of_any_node_text'}->{'count'};
       # FIXME when outside of sectioning commands this message was already
@@ -1328,18 +1329,19 @@ sub _printindex_formatted($$;$)
       }
     } else {
       my ($node_line, $byte_count) = $self->_node_line($node);
-      $entry_line .= $node_line;
+      $entry_line_addition .= $node_line;
       $self->{'count_context'}->[-1]->{'bytes'} += $byte_count;
     }
-    $entry_line .= '.';
+    $entry_line_addition .= '.';
     $self->_add_text_count('.');
 
+    $entry_line .= $entry_line_addition;
     $result .= $entry_line;
 
     my $line_nr = $line_nrs{$entry};
     my $line_nr_spaces = sprintf("%${max_index_line_nr_string_length}d", $line_nr);
     my $line_part = "(line ${line_nr_spaces})";
-    $line_width = Texinfo::Convert::Unicode::string_width($entry_line);
+    $line_width += Texinfo::Convert::Unicode::string_width($entry_line_addition);
     my $line_part_width = Texinfo::Convert::Unicode::string_width($line_part);
     if ($line_width + $line_part_width +1 > $self->{'fillcolumn'}) {
       $line_part = "\n" . ' ' x ($self->{'fillcolumn'} - $line_part_width) 
