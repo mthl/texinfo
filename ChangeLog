@@ -1,3 +1,8 @@
+2015-04-22  Karl Berry  <karl@gnu.org>
+
+	* doc/txi-es.tex (\putwordin): new define, as `en'.
+	From davidam, help-texinfo 21 Apr 2015 01:38:38.
+
 2015-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Conver/Plaintext.pm (_printindex_formatted): Don't 
