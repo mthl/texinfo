@@ -1,3 +1,10 @@
+2015-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (converter_initialize)
+	<utf-8 output>: Override $self->{'style_map'}->{'dfn'} to use
+	directed double quotes.  Use of directed quotes for @dfn 
+	suggested by Paul Eggert.
+
 2015-04-22  Karl Berry  <karl@gnu.org>
 
 	* doc/txi-es.tex (\putwordin): new define, as `en'.
