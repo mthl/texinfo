@@ -1,3 +1,8 @@
+2015-04-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Add note about updating DTD version number in 
+	configure.ac.  (Thien-Thi Nguyen, bug-texinfo 2015-03-01.)
+
 2015-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm (converter_initialize)
