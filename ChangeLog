@@ -1,3 +1,9 @@
+2015-04-29  Karl Berry  <karl@freefriends.org>
+
+	* doc/texinfo.tex (\nonasciistringdefs): make active definitions
+	for 80..9f, needed for (e.g.) second byte of UTF-8 sequences.
+	Report from Jean-Charles Malahieude, 28 Apr 2015 13:21:10.
+
 2015-04-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* README-hacking: Add note about updating DTD version number in 
