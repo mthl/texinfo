@@ -1271,7 +1271,7 @@ sub _begin_paragraph($$;$)
   return 0;
 }
 
-sub _begin_preformatted($)
+sub _begin_preformatted($$)
 {
   my $self = shift;
   my $current = shift;
@@ -1593,7 +1593,7 @@ sub _gather_def_item($;$)
 }
 
 # close formats
-sub _close_command_cleanup($$$) {
+sub _close_command_cleanup($$) {
   my $self = shift;
   my $current = shift;
 
@@ -1644,7 +1644,7 @@ sub _close_command_cleanup($$$) {
     # At this point the end command hasn't been added to the command contents.
     # so checks cannot be done at this point.
     if (@{$current->{'contents'}}) {
-      $self->_gather_previous_item($current);
+      _gather_previous_item($self, $current);
     }
   }
   
@@ -1834,9 +1834,9 @@ sub _close_commands($$$;$$)
                and ($root_commands{$current->{'cmdname'}}
                     or ($closed_command and $current->{'parent'}->{'cmdname'}
                        and $context_brace_commands{$current->{'parent'}->{'cmdname'}})))){
-    $self->_close_command_cleanup($current);
-    $current = $self->_close_current($current, $line_nr, $closed_command, 
-                                     $interrupting_command);
+    _close_command_cleanup($self, $current);
+    $current = _close_current($self, $current, $line_nr, $closed_command, 
+                              $interrupting_command);
   }
 
   my $closed_element;
@@ -2436,7 +2436,7 @@ sub _next_bracketed_or_word($$)
   if ($contents->[0]->{'type'} and $contents->[0]->{'type'} eq 'bracketed') {
     #print STDERR "Return bracketed\n";
     my $bracketed = shift @{$contents};
-    $self->_isolate_last_space($bracketed, 'empty_space_at_end_def_bracketed');
+    _isolate_last_space($self, $bracketed, 'empty_space_at_end_def_bracketed');
     my $bracketed_def_content = { 'contents' => $bracketed->{'contents'},
                                   'parent' => $bracketed->{'parent'},
                                   'type' => 'bracketed_def_content', };
@@ -2515,7 +2515,7 @@ sub _parse_def($$$)
   # tokenize the line.  We need to do that in order to be able to 
   # look ahead for spaces.
   while (@contents) {
-    my ($spaces, $next) = $self->_next_bracketed_or_word(\@contents);
+    my ($spaces, $next) = _next_bracketed_or_word($self, \@contents);
     # if there is no argument at all, the leading space is not associated
     # to the @-command, so end up being gathered here.  We do not want to
     # have this leading space appear in the arguments ever, so we ignore
@@ -2940,8 +2940,7 @@ sub _end_line($$$)
       die; 
     }
     my $def_command = $current->{'parent'}->{'extra'}->{'def_command'};
-    my $arguments = $self->_parse_def($def_command, 
-                                      $current->{'contents'});
+    my $arguments = _parse_def($self, $def_command, $current->{'contents'});
     if (scalar(@$arguments)) {
       $current->{'parent'}->{'extra'}->{'def_args'} = $arguments;
       my $def_parsed_hash;
@@ -3022,7 +3021,7 @@ sub _end_line($$$)
          $current->{'parent'}->{'extra'}->{'original_def_cmdname'});
     }
     $current = $current->{'parent'}->{'parent'};
-    $current = $self->_begin_preformatted($current);
+    $current = _begin_preformatted($self, $current);
 
   # other block command lines
   } elsif ($current->{'type'}
@@ -3092,8 +3091,8 @@ sub _end_line($$$)
       $multitable->{'extra'}->{'prototypes_line'} = \@prototype_line;
 
     } else {
-      $self->_isolate_last_space($current, 'space_at_end_block_command');
-      $self->_register_command_arg($current, 'block_command_line_contents');
+      _isolate_last_space($self, $current, 'space_at_end_block_command');
+      _register_command_arg($self, $current, 'block_command_line_contents');
     } 
     # @float args
     if ($current->{'parent'}->{'cmdname'}
@@ -3238,7 +3237,7 @@ sub _end_line($$$)
       print STDERR "MENU_COMMENT OPEN\n" if ($self->{'DEBUG'});
       push @{$self->{'context_stack'}}, 'preformatted';
     }
-    $current = $self->_begin_preformatted($current);
+    $current = _begin_preformatted($self, $current);
 
   # if we are after a @end verbatim, we must restart a preformatted if needed,
   # since there is no @end command explicitly associated to raw commands
@@ -3250,7 +3249,7 @@ sub _end_line($$$)
            and $current->{'contents'}->[-1]->{'extra'}
            and $current->{'contents'}->[-1]->{'extra'}->{'command'}
            and $current->{'contents'}->[-1]->{'extra'}->{'command'}->{'cmdname'} eq 'verbatim') {
-    $current = $self->_begin_preformatted($current);
+    $current = _begin_preformatted($self, $current);
   # misc command line arguments
   # Never go here if skipline/noarg/...
   } elsif ($current->{'type'} 
@@ -3260,7 +3259,7 @@ sub _end_line($$$)
       $self->_bug_message("context $context instead of line in misc_line_arg", 
                           $line_nr, $current);
     }
-    $self->_isolate_last_space($current);
+    _isolate_last_space($self, $current);
 
     # first parent is the @command, second is the parent
     $current = $current->{'parent'};
@@ -3450,7 +3449,7 @@ sub _end_line($$$)
         if ($closed_command) {
           $misc_cmd->{'extra'}->{'command'} = $closed_command;
           $closed_command->{'extra'}->{'end_command'} = $misc_cmd;
-          $self->_close_command_cleanup($closed_command);
+          _close_command_cleanup($self, $closed_command);
           $end->{'parent'} = $closed_command;
 
           # register @insertcopying as a macro if INLINE_INSERTCOPYING is set.
@@ -3490,11 +3489,11 @@ sub _end_line($$$)
         } else {
           #print STDERR "LLLLLLLLLLLL Cannot be here...\n";
         }
-        $current = $self->_begin_preformatted($current)
+        $current = _begin_preformatted($self, $current)
           if ($close_preformatted_commands{$end_command});
       }
     } else {
-      $current = $self->_begin_preformatted($current) 
+      $current = _begin_preformatted($self, $current) 
         if ($close_preformatted_commands{$command});
     }
     # if a file was included, remove completly the include file command.
@@ -3613,13 +3612,13 @@ sub _end_line($$$)
     if ($self->{'context_stack'}->[-1] eq 'def') {
       while ($current->{'parent'} and !($current->{'parent'}->{'type'}
             and $current->{'parent'}->{'type'} eq 'def_line')) {
-        $current = $self->_close_current($current, $line_nr);
+        $current = _close_current($self, $current, $line_nr);
       }
     } else {
       while ($current->{'parent'} and !($current->{'type'}
              and ($current->{'type'} eq 'block_line_arg'
                   or $current->{'type'} eq 'misc_line_arg'))) {
-        $current = $self->_close_current($current, $line_nr);
+        $current = _close_current($self, $current, $line_nr);
       }
     }
 
@@ -3718,7 +3717,7 @@ sub _register_extra_menu_entry_information($$;$)
           Texinfo::Convert::Texinfo::convert($current)), $line_nr);
       }
     } elsif ($arg->{'type'} eq 'menu_entry_node') {
-      $self->_isolate_last_space($arg, 'space_at_end_menu_node');
+      _isolate_last_space($self, $arg, 'space_at_end_menu_node');
       my $parsed_entry_node = _parse_node_manual($arg);
       if (! defined($parsed_entry_node)) {
         if ($self->{'SHOW_MENU'}) {
@@ -4492,11 +4491,11 @@ sub _parse_texi($;$)
               push @{$current->{'contents'}}, $misc;
               # also sets invalid_nesting in that case
               $misc->{'extra'}->{'invalid_nesting'} = 1 if ($only_in_headings);
-              $self->_register_global_command($command, $misc, $line_nr);
+              _register_global_command($self, $command, $misc, $line_nr);
             }
-            $self->_mark_and_warn_invalid($command, $invalid_parent,
-                                              $line_nr, $misc);
-            $current = $self->_begin_preformatted($current)
+            _mark_and_warn_invalid($self, $command, $invalid_parent,
+                                   $line_nr, $misc);
+            $current = _begin_preformatted($self, $current)
               if ($close_preformatted_commands{$command});
 
           # all the cases using the raw line
@@ -4515,7 +4514,7 @@ sub _parse_texi($;$)
               $args = [ $line ];
             } elsif ($arg_spec eq 'special') {
               ($args, $has_comment) 
-                = $self->_parse_special_misc_command($line, $command, $line_nr);
+               = _parse_special_misc_command($self, $line, $command, $line_nr);
               $misc->{'extra'}->{'arg_line'} = $line;
             }
 
@@ -4574,9 +4573,9 @@ sub _parse_texi($;$)
                 $self->{'novalidate'} = 1;
               }
             }
-            $self->_mark_and_warn_invalid($command, $invalid_parent,
-                                              $line_nr, $misc);
-            $self->_register_global_command($command, $misc, $line_nr);
+            _mark_and_warn_invalid($self, $command, $invalid_parent,
+                                   $line_nr, $misc);
+            _register_global_command($self, $command, $misc, $line_nr);
             # the end of line is ignored for special commands
             if ($arg_spec ne 'special' or !$has_comment) {
               $current = _end_line($self, $current, $line_nr);
@@ -4585,7 +4584,7 @@ sub _parse_texi($;$)
             last NEXT_LINE if ($command eq 'bye');
             # Even if _end_line is called, it is not done since there is 
             # no misc_line_arg
-            $current = $self->_begin_preformatted($current)
+            $current = _begin_preformatted($self, $current)
               if ($close_preformatted_commands{$command});
             last;
           } else {
@@ -4611,13 +4610,13 @@ sub _parse_texi($;$)
                                 "\@%s not meaningful inside `\@%s' block"), 
                                    $command, $parent->{'cmdname'}), $line_nr);
                 }
-                $current = $self->_begin_preformatted($current);
+                $current = _begin_preformatted($self, $current);
               # *table
               } elsif ($parent = _item_line_parent($current)) {
                 if ($command eq 'item' or $command eq 'itemx') {
                   print STDERR "ITEM_LINE\n" if ($self->{'DEBUG'});
                   $current = $parent;
-                  $self->_gather_previous_item($current, $command, $line_nr);
+                  _gather_previous_item($self, $current, $command, $line_nr);
                   $misc = { 'cmdname' => $command, 'parent' => $current };
                   push @{$current->{'contents'}}, $misc;
                   # since in the %misc_commands hash the entry for those 
@@ -4627,7 +4626,7 @@ sub _parse_texi($;$)
                   $self->line_error(sprintf($self->__(
                                   "\@%s not meaningful inside `\@%s' block"), 
                                     $command, $parent->{'cmdname'}), $line_nr);
-                  $current = $self->_begin_preformatted($current);
+                  $current = _begin_preformatted($self, $current);
                 }
               # multitable
               } elsif ($parent = _item_multitable_parent($current)) {
@@ -4678,15 +4677,15 @@ sub _parse_texi($;$)
                            "\@%s not meaningful inside `\@%s' block"), 
                                $command, $parent->{'cmdname'}), $line_nr);
                 }
-                $current = $self->_begin_preformatted($current);
+                $current = _begin_preformatted($self, $current);
               } elsif ($command eq 'tab') {
                 $self->line_error($self->__(
                            "ignoring \@tab outside of multitable"), $line_nr);
-                $current = $self->_begin_preformatted($current);
+                $current = _begin_preformatted($self, $current);
               } else {
                 $self->line_error (sprintf($self->__(
                    "\@%s outside of table or list"), $command), $line_nr);
-                $current = $self->_begin_preformatted($current);
+                $current = _begin_preformatted($self, $current);
               }
               $misc->{'line_nr'} = $line_nr if (defined($misc));
             } else {
@@ -4776,10 +4775,10 @@ sub _parse_texi($;$)
             }
             $line = _start_empty_line_after_command($line, $current, $misc);
           }
-          $self->_mark_and_warn_invalid($command, $invalid_parent,
-                                            $line_nr, $misc);
+          _mark_and_warn_invalid($self, $command, $invalid_parent,
+                                 $line_nr, $misc);
 
-          $self->_register_global_command($command, $misc, $line_nr);
+          _register_global_command($self, $command, $misc, $line_nr);
           if ($command eq 'dircategory' 
               and ! _ignore_global_commands($self)) {
             push @{$self->{'info'}->{'dircategory_direntry'}}, $misc;
@@ -4788,10 +4787,10 @@ sub _parse_texi($;$)
         } elsif (exists($block_commands{$command})) {
           if ($command eq 'macro' or $command eq 'rmacro') {
             my $macro = _parse_macro_command_line($self, $command, $line, 
-                                 $current, $line_nr);
+                                                  $current, $line_nr);
             push @{$current->{'contents'}}, $macro;
-            $self->_mark_and_warn_invalid($command, $invalid_parent,
-                                       $line_nr, $current->{'contents'}->[-1]);
+            _mark_and_warn_invalid($self, $command, $invalid_parent,
+                                   $line_nr, $current->{'contents'}->[-1]);
             $current = $current->{'contents'}->[-1];
             last;
           } elsif ($block_commands{$command} eq 'conditional') {
@@ -4982,9 +4981,9 @@ sub _parse_texi($;$)
                 unless ($def_commands{$command});
             }
             $block->{'line_nr'} = $line_nr;
-            $self->_mark_and_warn_invalid($command, $invalid_parent,
-                                              $line_nr, $block);
-            $self->_register_global_command($command, $block, $line_nr);
+            _mark_and_warn_invalid($self, $command, $invalid_parent,
+                                   $line_nr, $block);
+            _register_global_command($self, $command, $block, $line_nr);
 
             $line = _start_empty_line_after_command($line, $current, $block);
           }
@@ -4996,8 +4995,8 @@ sub _parse_texi($;$)
                                             'contents' => [] };
           $current->{'contents'}->[-1]->{'line_nr'} = $line_nr
             if ($keep_line_nr_brace_commands{$command});
-          $self->_mark_and_warn_invalid($command, $invalid_parent,
-                                       $line_nr, $current->{'contents'}->[-1]);
+          _mark_and_warn_invalid($self, $command, $invalid_parent,
+                                 $line_nr, $current->{'contents'}->[-1]);
           $current = $current->{'contents'}->[-1];
           if ($command eq 'click') {
             $current->{'extra'}->{'clickstyle'} = $self->{'clickstyle'};
@@ -5187,9 +5186,9 @@ sub _parse_texi($;$)
                    or $simple_text_commands{$current->{'parent'}->{'cmdname'}})
                 and $current->{'parent'}->{'cmdname'} ne 'math') {
               # @inline* always have end spaces considered as normal text 
-              $self->_isolate_last_space($current) 
+              _isolate_last_space($self, $current) 
                 unless ($inline_commands{$current->{'parent'}->{'cmdname'}});
-              $self->_register_command_arg($current, 'brace_command_contents');
+              _register_command_arg($self, $current, 'brace_command_contents');
               # Remove empty arguments, as far as possible
               _remove_empty_content_arguments($current);
             }
@@ -5384,15 +5383,15 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
                $current->{'parent'}->{'parent'}->{'parent'}->{'extra'}->{'command_as_argument'} 
                   = $current->{'parent'};
             }
-            $self->_register_global_command($current->{'parent'}->{'cmdname'},
-                                            $current->{'parent'}, $line_nr);
+            _register_global_command($self, $current->{'parent'}->{'cmdname'},
+                                     $current->{'parent'}, $line_nr);
             if ($command_ignore_space_after{$current->{'parent'}->{'cmdname'}}) {
               push @{$current->{'parent'}->{'parent'}->{'contents'}}, 
                  {'type' => 'empty_spaces_after_close_brace',
                   'text' => '' };                          
             }
             $current = $current->{'parent'}->{'parent'};
-            $current = $self->_begin_preformatted ($current)
+            $current = _begin_preformatted ($self, $current)
                if ($close_preformatted_commands{$closed_command});
           # lone braces accepted right in a rawpreformatted
           } elsif ($current->{'type'}
@@ -5414,10 +5413,11 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
               }
               print STDERR "CLOSING(context command) \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'DEBUG'});
               my $closed_command = $current->{'parent'}->{'cmdname'};
-              $self->_register_global_command($current->{'parent'}->{'cmdname'},
-                                              $current->{'parent'}, $line_nr);
+              _register_global_command($self,
+                                       $current->{'parent'}->{'cmdname'},
+                                       $current->{'parent'}, $line_nr);
               $current = $current->{'parent'}->{'parent'};
-              $current = $self->_begin_preformatted ($current)
+              $current = _begin_preformatted ($self, $current)
                  if ($close_preformatted_commands{$closed_command});
             }
           } else {
@@ -5430,12 +5430,12 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
           if ($brace_commands{$current->{'parent'}->{'cmdname'}} 
               and ($brace_commands{$current->{'parent'}->{'cmdname'}} > 1
                  or $simple_text_commands{$current->{'parent'}->{'cmdname'}})) {
-            $self->_isolate_last_space($current);
-            $self->_register_command_arg($current, 'brace_command_contents');
+            _isolate_last_space($self, $current);
+            _register_command_arg($self, $current, 'brace_command_contents');
           } else {
-            $self->_isolate_last_space($current);
+            _isolate_last_space($self, $current);
             if (exists $block_commands{$current->{'parent'}->{'cmdname'}}) {
-              $self->_register_command_arg($current, 'block_command_line_contents');
+              _register_command_arg($self, $current, 'block_command_line_contents');
             }
           }
           my $type = $current->{'type'};

@@ -1,3 +1,8 @@
+2015-04-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm: Don't use object-oriented method call 
+	syntax for functions in same file.
+
 2015-04-29  Karl Berry  <karl@freefriends.org>
 
 	* doc/texinfo.tex (\nonasciistringdefs): make active definitions
