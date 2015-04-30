@@ -1,6 +1,7 @@
 2015-04-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* tp/Texinfo/Parser.pm, tp/Texinfo/Convert/Paragraph.pm:
+	* tp/Texinfo/Parser.pm, tp/Texinfo/Convert/Paragraph.pm,
+	tp/Texinfo/Convert/Plaintext.pm:
 	Don't use object-oriented method call syntax for functions in 
 	same file.
 

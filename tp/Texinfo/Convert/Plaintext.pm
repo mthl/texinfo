@@ -466,7 +466,7 @@ sub _convert_element($$)
 
   print STDERR "END NODE ($self->{'count_context'}->[-1]->{'lines'},$self->{'count_context'}->[-1]->{'bytes'})\n" if ($self->{'debug'});
 
-  $result .= $self->_footnotes($element);
+  $result .= _footnotes($self, $element);
 
   $self->_count_context_bug_message('footnotes ', $element);
 
@@ -487,12 +487,12 @@ sub convert($$)
   if (!defined($elements)) {
     $result = $self->_convert($root);
     $self->_count_context_bug_message('no element ');
-    my $footnotes = $self->_footnotes();
+    my $footnotes = _footnotes($self);
     $self->_count_context_bug_message('no element footnotes ');
     $result .= $footnotes;
   } else {
     foreach my $node (@$elements) {
-      my $node_text = $self->_convert_element($node);
+      my $node_text = _convert_element($self, $node);
       $result .= $node_text;
     }
   }
@@ -508,7 +508,7 @@ sub convert_tree($$)
   $self->{'empty_lines_count'} = 1;
   my $result;
   if ($root->{'type'} and $root->{'type'} eq 'element') {
-    $result = $self->_convert_element($root);
+    $result = _convert_element($self, $root);
   } else {
     $result = $self->_convert($root);
   }
@@ -682,7 +682,7 @@ sub convert_line($$;$)
   my $formatter = $self->new_formatter('line', $conf);
   push @{$self->{'formatters'}}, $formatter;
   my $text = $self->_convert($converted);
-  $text .= $self->_count_added($formatter->{'container'},
+  $text .= _count_added($self, $formatter->{'container'},
                                $formatter->{'container'}->end());
   pop @{$self->{'formatters'}};
   return $text;
@@ -698,7 +698,7 @@ sub convert_unfilled($$;$)
   $formatter->{'font_type_stack'}->[-1]->{'monospace'} = 1;
   push @{$self->{'formatters'}}, $formatter;
   my $result = $self->_convert($converted);
-  $result .= $self->_count_added($formatter->{'container'},
+  $result .= _count_added($self, $formatter->{'container'},
                                  $formatter->{'container'}->end());
   pop @{$self->{'formatters'}};
   return $result;
@@ -1510,6 +1510,9 @@ sub _get_form_feeds($)
 
 sub _convert($$);
 
+# Convert the Texinfo tree under $ROOT to plain text.  Note that this
+# function should be called as "$self->_convert" to allow the
+# DebugTexinfo::DebugCount::_convert method to override this one.
 sub _convert($$)
 {
   my $self = shift;
@@ -1593,7 +1596,7 @@ sub _convert($$)
         $result .= _get_form_feeds($root->{'text'});
         $self->_add_text_count($result);
       }
-      $result .= $self->_count_added($formatter->{'container'},
+      $result .= _count_added($self, $formatter->{'container'},
                 $formatter->{'container'}->add_text("\n"));
       return $result;
     } else {
@@ -1606,13 +1609,13 @@ sub _convert($$)
     if (!$formatter->{'_top_formatter'}) {
       if ($root->{'type'} and ($root->{'type'} eq 'raw' 
                                or $root->{'type'} eq 'last_raw_newline')) {
-        $result = $self->_count_added($formatter->{'container'},
+        $result = _count_added($self, $formatter->{'container'},
                     $formatter->{'container'}->add_next($root->{'text'}));
       } elsif ($root->{'type'} and ($root->{'type'} eq 'underlying_text')) {
         $formatter->{'container'}->add_underlying_text($root->{'text'});
       } else {
         my ($text, $lower_case_text) = $self->_process_text($root, $formatter);
-        $result = $self->_count_added($formatter->{'container'},
+        $result = _count_added($self, $formatter->{'container'},
                     $formatter->{'container'}->add_text($text, $lower_case_text));
       }
       return $result;
@@ -1700,18 +1703,18 @@ sub _convert($$)
         $formatter->{'container'}->inhibit_end_sentence();
         return '';
       } elsif ($command eq '*') {
-        $result = $self->_count_added($formatter->{'container'},
+        $result = _count_added($self, $formatter->{'container'},
                               $formatter->{'container'}->add_pending_word());
-        $result .= $self->_count_added($formatter->{'container'},
+        $result .= _count_added($self, $formatter->{'container'},
                               $formatter->{'container'}->end_line());
       } elsif ($command eq '.' or $command eq '?' or $command eq '!') {
-        $result .= $self->_count_added($formatter->{'container'},
+        $result .= _count_added($self, $formatter->{'container'},
             $formatter->{'container'}->add_next($command, undef, 1));
       } elsif ($command eq ' ' or $command eq "\n" or $command eq "\t") {
-        $result .= $self->_count_added($formatter->{'container'}, 
+        $result .= _count_added($self, $formatter->{'container'}, 
             $formatter->{'container'}->add_next($no_brace_commands{$command}));
       } else {
-        $result .= $self->_count_added($formatter->{'container'}, 
+        $result .= _count_added($self, $formatter->{'container'}, 
             $formatter->{'container'}->add_text($no_brace_commands{$command}));
       }
       return $result;
@@ -1736,18 +1739,18 @@ sub _convert($$)
                              $self->{'convert_text_options'});
       }
       if ($punctuation_no_arg_commands{$command}) {
-        $result .= $self->_count_added($formatter->{'container'},
+        $result .= _count_added($self, $formatter->{'container'},
                     $formatter->{'container'}->add_next($text, undef, 1));
       } elsif ($command eq 'tie') {
         $formatter->{'w'}++;
-        $result .= $self->_count_added($formatter->{'container'},
+        $result .= _count_added($self, $formatter->{'container'},
             $formatter->{'container'}->set_space_protection(1,undef))
           if ($formatter->{'w'} == 1);
-        $result .= $self->_count_added($formatter->{'container'}, 
+        $result .= _count_added($self, $formatter->{'container'}, 
                        $formatter->{'container'}->add_text($text,
                                                            $lower_case_text)); 
         $formatter->{'w'}--;
-        $result .= $self->_count_added($formatter->{'container'},
+        $result .= _count_added($self, $formatter->{'container'},
             $formatter->{'container'}->set_space_protection(0,undef))
           if ($formatter->{'w'} == 0);
       } else {
@@ -1756,7 +1759,7 @@ sub _convert($$)
         if (!$letter_no_arg_commands{$command}) {
           $lower_case_text = lc($text);
         }
-        $result .= $self->_count_added($formatter->{'container'}, 
+        $result .= _count_added($self, $formatter->{'container'}, 
                        $formatter->{'container'}->add_text($text,
                                                            $lower_case_text)); 
         if ($command eq 'dots') {
@@ -1785,7 +1788,7 @@ sub _convert($$)
         $accented_text_lower_case
          = Texinfo::Convert::Text::text_accents($root, $encoding);
       }
-      $result .= $self->_count_added($formatter->{'container'},
+      $result .= _count_added($self, $formatter->{'container'},
          $formatter->{'container'}->add_text($accented_text, 
                                              $accented_text_lower_case));
       # in case the text added ends with punctuation.  
@@ -1822,7 +1825,7 @@ sub _convert($$)
       }
       if ($command eq 'w') {
         $formatter->{'w'}++;
-        $result .= $self->_count_added($formatter->{'container'},
+        $result .= _count_added($self, $formatter->{'container'},
             $formatter->{'container'}->set_space_protection(1,undef))
           if ($formatter->{'w'} == 1);
       }
@@ -1845,7 +1848,7 @@ sub _convert($$)
       if ($non_quoted_commands_when_nested{$command}) {
         $formatter->{'font_type_stack'}->[-1]->{'code_command'}++;
       }
-      $result .= $self->_count_added($formatter->{'container'},
+      $result .= _count_added($self, $formatter->{'container'},
                $formatter->{'container'}->add_next($text_before, 
                                                    undef, undef, 1))
          if ($text_before ne '');
@@ -1862,13 +1865,13 @@ sub _convert($$)
                            $root->{'line_nr'});
         }
       }
-      $result .= $self->_count_added($formatter->{'container'},
+      $result .= _count_added($self, $formatter->{'container'},
                $formatter->{'container'}->add_next($text_after,
                                                    undef, undef, 1))
          if ($text_after ne '');
       if ($command eq 'w') {
         $formatter->{'w'}--;
-        $result .= $self->_count_added($formatter->{'container'},
+        $result .= _count_added($self, $formatter->{'container'},
             $formatter->{'container'}->set_space_protection(0,undef))
           if ($formatter->{'w'} == 0);
       }
@@ -1901,7 +1904,7 @@ sub _convert($$)
       }
       return $result;
     } elsif ($root->{'cmdname'} eq 'image') {
-      $result = $self->_count_added($formatter->{'container'},
+      $result = _count_added($self, $formatter->{'container'},
                    $formatter->{'container'}->add_pending_word(1));
       my ($image, $lines_count) = $self->_image($root);
       $self->_add_lines_count($lines_count);
@@ -1981,7 +1984,7 @@ sub _convert($$)
       if (!$self->{'in_copying_header'}) {
         $self->_error_outside_of_any_node($root);
       }
-      $result .= $self->_count_added($formatter->{'container'},
+      $result .= _count_added($self, $formatter->{'container'},
            $formatter->{'container'}->add_next("($formatted_footnote_number)", 
                                                   undef, undef, 1));
       if ($self->get_conf('footnotestyle') eq 'separate' and $self->{'node'}) {
@@ -1996,7 +1999,7 @@ sub _convert($$)
       }
       return $result;
     } elsif ($command eq 'anchor') {
-      $result = $self->_count_added($formatter->{'container'},
+      $result = _count_added($self, $formatter->{'container'},
                    $formatter->{'container'}->add_pending_word());
       $result .= $self->_anchor($root);
       return $result;
@@ -2042,7 +2045,7 @@ sub _convert($$)
         if ($self->{'document_context'}->[-1]->{'in_multitable'}) {
           $in_multitable = 1;
           $formatter->{'w'}++;
-          $result .= $self->_count_added($formatter->{'container'},
+          $result .= _count_added($self, $formatter->{'container'},
             $formatter->{'container'}->set_space_protection(1,undef))
           if ($formatter->{'w'} == 1);
         }
@@ -2149,7 +2152,7 @@ sub _convert($$)
 
         if ($in_multitable) {
           $formatter->{'w'}--;
-          $result .= $self->_count_added($formatter->{'container'},
+          $result .= _count_added($self, $formatter->{'container'},
               $formatter->{'container'}->set_space_protection(0,undef))
             if ($formatter->{'w'} == 0);
         }
@@ -2272,7 +2275,7 @@ sub _convert($$)
         } else {
           $res = "U+$arg";  # not outputting UTF-8
         }
-        $result .= $self->_count_added($formatter->{'container'}, 
+        $result .= _count_added($self, $formatter->{'container'}, 
                    $formatter->{'container'}->add_text($res, $res)); 
       } else {
         $result = '';  # arg was not defined
@@ -2307,9 +2310,9 @@ sub _convert($$)
           or $root->{'cmdname'} eq 'float') {
         if ($self->{'formatters'}->[-1]->{'type'} eq 'paragraph'
             and $format_raw_commands{$root->{'cmdname'}}) {
-          $result .= $self->_count_added($formatter->{'container'},
+          $result .= _count_added($self, $formatter->{'container'},
                               $formatter->{'container'}->add_pending_word(1));
-          $result .= $self->_count_added($formatter->{'container'},
+          $result .= _count_added($self, $formatter->{'container'},
                               $formatter->{'container'}->end_line());
         }
         push @{$self->{'context'}}, $root->{'cmdname'};
@@ -2318,9 +2321,9 @@ sub _convert($$)
       } elsif ($raw_commands{$root->{'cmdname'}}) {
         if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
           # reuse the current formatter if not in top level
-          $result .= $self->_count_added($formatter->{'container'},
+          $result .= _count_added($self, $formatter->{'container'},
                               $formatter->{'container'}->add_pending_word(1));
-          $result .= $self->_count_added($formatter->{'container'},
+          $result .= _count_added($self, $formatter->{'container'},
                               $formatter->{'container'}->end_line());
         } else {
           # if in top level, the raw block command is turned into a 
@@ -2497,7 +2500,7 @@ sub _convert($$)
                  + $item_indent_format_length{$root->{'parent'}->{'cmdname'}}});
       push @{$self->{'formatters'}}, $line;
       if ($root->{'parent'}->{'cmdname'} eq 'enumerate') {
-        $result = $self->_count_added($line->{'container'},
+        $result = _count_added($self, $line->{'container'},
             $line->{'container'}->add_next(
                Texinfo::Common::enumerate_item_representation(
                  $root->{'parent'}->{'extra'}->{'enumerate_specification'},
@@ -2511,7 +2514,7 @@ sub _convert($$)
               { 'text' => ' ' }]
           });
       }
-      $result .= $self->_count_added($line->{'container'}, 
+      $result .= _count_added($self, $line->{'container'}, 
                                      $line->{'container'}->end());
       print STDERR "  $root->{'parent'}->{'cmdname'}($root->{'extra'}->{'item_number'}) -> |$result|\n" 
          if ($self->{'debug'});
@@ -2675,7 +2678,7 @@ sub _convert($$)
         # this useless copy avoids perl changing the type to integer!
         my $sp_nr = $root->{'extra'}->{'misc_args'}->[0];
         for (my $i = 0; $i < $sp_nr; $i++) {
-          $result .= $self->_count_added($formatter->{'container'},
+          $result .= _count_added($self, $formatter->{'container'},
                 $formatter->{'container'}->end_line());
         }
         
@@ -2945,7 +2948,7 @@ sub _convert($$)
         push @{$self->{'formatters'}}, $def_paragraph;
 
         $result .= $self->_convert({'type' => '_code', 'contents' => [$tree]});
-        $result .= $self->_count_added($def_paragraph->{'container'},
+        $result .= _count_added($self, $def_paragraph->{'container'},
                                       $def_paragraph->{'container'}->end());
 
         pop @{$self->{'formatters'}};
@@ -3016,7 +3019,7 @@ sub _convert($$)
       $formatter->{'container'}->set_space_protection(undef,
         undef,undef,1);
     } elsif ($root->{'type'} eq 'bracketed') {
-      $result .= $self->_count_added($formatter->{'container'}, 
+      $result .= _count_added($self, $formatter->{'container'}, 
                    $formatter->{'container'}->add_text('{'));
     }
   }
@@ -3056,7 +3059,7 @@ sub _convert($$)
       $formatter->{'container'}->set_space_protection(undef,
         undef, undef, $frenchspacing);
     } elsif ($root->{'type'} eq 'bracketed') {
-      $result .= $self->_count_added($formatter->{'container'}, 
+      $result .= _count_added($self, $formatter->{'container'}, 
                                      $formatter->{'container'}->add_text('}'));
     } elsif ($root->{'type'} eq 'row') {
       my @cell_beginnings;
@@ -3180,7 +3183,7 @@ sub _convert($$)
   }
   # close paragraphs and preformatted
   if ($paragraph) {
-    $result .= $self->_count_added($paragraph->{'container'},
+    $result .= _count_added($self, $paragraph->{'container'},
                                    $paragraph->{'container'}->end());
     if ($self->{'context'}->[-1] eq 'flushright') {
       $result = $self->_align_environment($result, 
@@ -3189,7 +3192,7 @@ sub _convert($$)
     pop @{$self->{'formatters'}};
     delete $self->{'text_element_context'}->[-1]->{'counter'};
   } elsif ($preformatted) {
-    $result .= $self->_count_added($preformatted->{'container'},
+    $result .= _count_added($self, $preformatted->{'container'},
                                    $preformatted->{'container'}->end());
     if ($result ne '') {
       $result = $self->ensure_end_of_line($result);
