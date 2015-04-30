@@ -717,7 +717,9 @@ sub _add_text_count($$)
 {
   my $self = shift;
   my $text = shift;
-  $self->{'count_context'}->[-1]->{'bytes'} += $self->count_bytes($text);
+  $self->{'count_context'}->[-1]->{'bytes'}
+      += Texinfo::Common::count_bytes($self, $text, 
+                                      $self->{'output_perl_encoding'});
 }
 
 sub _add_lines_count($$)
@@ -793,8 +795,8 @@ sub _add_newline_if_needed($) {
   my $self = shift;
   if (defined($self->{'empty_lines_count'}) 
        and $self->{'empty_lines_count'} == 0) {
-    $self->_add_text_count("\n");
-    $self->_add_lines_count(1);
+    _add_text_count($self, "\n");
+    _add_lines_count($self, 1);
     $self->{'empty_lines_count'} = 1;
     return "\n";
   }
@@ -811,14 +813,14 @@ sub _footnotes($;$)
 
   my $result = '';
   if (scalar(@{$self->{'pending_footnotes'}})) {
-    $result .= $self->_add_newline_if_needed();
+    $result .= _add_newline_if_needed($self);
     print STDERR "FOOTNOTES ".scalar(@{$self->{'pending_footnotes'}})."\n"
         if ($self->{'debug'});
     if ($self->get_conf('footnotestyle') eq 'end' or !defined($element)) {
       my $footnotes_header = "   ---------- Footnotes ----------\n\n";
       $result .= $footnotes_header;
-      $self->_add_text_count($footnotes_header);
-      $self->_add_lines_count(2);
+      _add_text_count($self, $footnotes_header);
+      _add_lines_count($self, 2);
       $self->{'empty_lines_count'} = 1;
     } else {
 
@@ -868,11 +870,11 @@ sub _footnotes($;$)
       $result .= $footnote_text;
       $self->{'text_element_context'}->[-1]->{'counter'} += 
          Texinfo::Convert::Unicode::string_width($footnote_text);
-      $self->_add_text_count($footnote_text);
+      _add_text_count($self, $footnote_text);
       $self->{'empty_lines_count'} = 0;
 
       $result .= $self->_convert($footnote->{'root'}->{'args'}->[0]); 
-      $result .= $self->_add_newline_if_needed();
+      $result .= _add_newline_if_needed($self);
       
       my $old_context = pop @{$self->{'context'}};
       die if ($old_context ne 'footnote');
@@ -1135,8 +1137,8 @@ sub _menu($$)
 
   if ($menu_command->{'cmdname'} eq 'menu') {
     my $result = "* Menu:\n\n";
-    $self->_add_text_count($result);
-    $self->_add_lines_count(2);
+    _add_text_count($self, $result);
+    _add_lines_count($self, 2);
     return $result;
   } else {
     return '';
@@ -1210,12 +1212,12 @@ sub _printindex_formatted($$;$)
   }
 
   my $result = '';
-  $result .= $self->_add_newline_if_needed();
+  $result .= _add_newline_if_needed($self);
   if ($in_info) {
     my $info_printindex_magic = "\x{00}\x{08}[index\x{00}\x{08}]\n";
     $result .= $info_printindex_magic;
-    $self->_add_text_count($info_printindex_magic);
-    $self->_add_lines_count(1);
+    _add_text_count($self, $info_printindex_magic);
+    _add_lines_count($self, 1);
   }
   my $heading = "* Menu:\n\n";
 
@@ -1293,18 +1295,18 @@ sub _printindex_formatted($$;$)
     } else {
       $entry_counts{$entry_text}++;
       $entry_nr = ' <'.$entry_counts{$entry_text}.'>';
-      $self->_add_text_count($entry_nr);
+      _add_text_count($self, $entry_nr);
     }
     my $entry_line = "* $entry_text${entry_nr}: ";
-    $self->_add_text_count("* ".": ");
-    #$self->_add_text_count($entry_line);
+    _add_text_count($self, "* ".": ");
+    #_add_text_count($self, $entry_line);
     
     my $line_width = Texinfo::Convert::Unicode::string_width($entry_line);
     my $entry_line_addition = '';
     if ($line_width < $index_length_to_node) {
       my $spaces = ' ' x ($index_length_to_node - $line_width);
       $entry_line_addition .= $spaces;
-      $self->_add_text_count($spaces);
+      _add_text_count($self, $spaces);
     }
     my $node = $entry_nodes{$entry};
 
@@ -1337,7 +1339,7 @@ sub _printindex_formatted($$;$)
       $self->{'count_context'}->[-1]->{'bytes'} += $byte_count;
     }
     $entry_line_addition .= '.';
-    $self->_add_text_count('.');
+    _add_text_count($self, '.');
 
     $entry_line .= $entry_line_addition;
     $result .= $entry_line;
@@ -1356,14 +1358,14 @@ sub _printindex_formatted($$;$)
         = ' ' x ($self->{'fillcolumn'} - $line_part_width - $line_width)
            . "$line_part\n";
     }
-    $self->_add_lines_count(1);
-    $self->_add_text_count($line_part);
+    _add_lines_count($self, 1);
+    _add_text_count($self, $line_part);
     $result .= $line_part;
   }
 
   $result .= "\n"; 
-  $self->_add_text_count("\n");
-  $self->_add_lines_count(1);
+  _add_text_count($self, "\n");
+  _add_lines_count($self, 1);
   
   return $result;
 }
@@ -1409,8 +1411,8 @@ sub ensure_end_of_line($$)
     $self->{'count_context'}->[-1]->{'lines'} -= 1;
   }
   $text .= "\n";
-  $self->_add_text_count("\n");
-  $self->_add_lines_count(1);
+  _add_text_count($self, "\n");
+  _add_lines_count($self, 1);
   return $text;
 }
 
@@ -1572,7 +1574,7 @@ sub _convert($$)
     if ($root->{'text'} =~ /\f/) {
       $result = _get_form_feeds($root->{'text'});
     }
-    $self->_add_text_count($result);
+    _add_text_count($self, $result);
     print STDERR "IGNORABLE SPACE: ($result)\n" if ($self->{'debug'});
     return $result;
   }
@@ -1594,7 +1596,7 @@ sub _convert($$)
       $result = "";
       if ($root->{'text'} =~ /\f/) {
         $result .= _get_form_feeds($root->{'text'});
-        $self->_add_text_count($result);
+        _add_text_count($self, $result);
       }
       $result .= _count_added($self, $formatter->{'container'},
                 $formatter->{'container'}->add_text("\n"));
@@ -1621,7 +1623,7 @@ sub _convert($$)
       return $result;
     # the following is only possible if paragraphindent is set to asis
     } elsif ($root->{'type'} and $root->{'type'} eq 'empty_spaces_before_paragraph') {
-      $self->_add_text_count($root->{'text'});
+      _add_text_count($self, $root->{'text'});
       return $root->{'text'};
     # ignore text outside of any format, but warn if ignored text not empty
     } elsif ($root->{'text'} =~ /\S/) {
@@ -1907,8 +1909,8 @@ sub _convert($$)
       $result = _count_added($self, $formatter->{'container'},
                    $formatter->{'container'}->add_pending_word(1));
       my ($image, $lines_count) = $self->_image($root);
-      $self->_add_lines_count($lines_count);
-      $self->_add_text_count($image);
+      _add_lines_count($self, $lines_count);
+      _add_text_count($self, $image);
       if ($image ne '' and $formatter->{'type'} ne 'paragraph') {
         $self->{'empty_lines_count'} = 0;
       }
@@ -2226,8 +2228,8 @@ sub _convert($$)
         $self->get_conf('NUMBER_SECTIONS'),
         ($self->{'format_context'}->[-1]->{'indent_level'}) * $indent_length);
       $self->{'empty_lines_count'} = 0 unless ($result eq '');
-      $self->_add_text_count($result);
-      $self->_add_lines_count(2);
+      _add_text_count($self, $result);
+      _add_lines_count($self, 2);
       return $result;
 
     } elsif ($command eq 'U') {
@@ -2394,7 +2396,7 @@ sub _convert($$)
           = $self->{'empty_lines_count'};
         $self->{'document_context'}->[-1]->{'in_multitable'}++;
       } elsif ($root->{'cmdname'} eq 'float') {
-        $result .= $self->_add_newline_if_needed();
+        $result .= _add_newline_if_needed($self);
         if ($root->{'extra'} and $root->{'extra'}->{'normalized'}) {
           $result .= $self->_anchor($root);
         }
@@ -2413,8 +2415,8 @@ sub _convert($$)
         if ($contents ne '') {
           $contents .= "\n";
           $self->{'empty_lines_count'} = 1;
-          $self->_add_text_count($contents);
-          $self->_add_lines_count($lines_count+1);
+          _add_text_count($self, $contents);
+          _add_lines_count($self, $lines_count+1);
         }
         $self->{'setcontentsaftertitlepage_done'} = 1;
         $result .= $contents;
@@ -2428,8 +2430,8 @@ sub _convert($$)
         if ($contents ne '') {
           $contents .= "\n";
           $self->{'empty_lines_count'} = 1;
-          $self->_add_text_count($contents);
-          $self->_add_lines_count($lines_count+1);
+          _add_text_count($self, $contents);
+          _add_lines_count($self, $lines_count+1);
         }
 
         $self->{'setshortcontentsaftertitlepage_done'} = 1;
@@ -2462,13 +2464,13 @@ sub _convert($$)
                                              $self->get_conf('NUMBER_SECTIONS'),
                            ($self->{'format_context'}->[-1]->{'indent_level'})
                                            * $indent_length);
-        $result .= $self->_add_newline_if_needed();
+        $result .= _add_newline_if_needed($self);
         $self->{'empty_lines_count'} = 0 unless ($heading_underlined eq '');
-        $self->_add_text_count($heading_underlined);
+        _add_text_count($self, $heading_underlined);
         $result .= $heading_underlined;
         if ($heading_underlined ne '') {
           $self->_add_lines_count(2);
-          $result .= $self->_add_newline_if_needed();
+          $result .= _add_newline_if_needed($self);
         }
       }
       $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
@@ -2670,8 +2672,8 @@ sub _convert($$)
         pop @{$self->{'count_context'}};
       }
       $self->{'format_context'}->[-1]->{'paragraph_count'}++;
-      $self->_add_text_count($result);
-      $self->_add_lines_count($lines_count);
+      _add_text_count($self, $result);
+      _add_lines_count($self, $lines_count);
       return $result;
     } elsif ($root->{'cmdname'} eq 'sp') {
       if ($root->{'extra'}->{'misc_args'}->[0]) {
@@ -2694,8 +2696,8 @@ sub _convert($$)
         ($result, $lines_count) 
             = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
                               'contents');
-        $self->_add_lines_count($lines_count);
-        $self->_add_text_count($result);
+        _add_lines_count($self, $lines_count);
+        _add_text_count($self, $result);
       }
       return $result;
     } elsif ($root->{'cmdname'} eq 'shortcontents' 
@@ -2707,8 +2709,8 @@ sub _convert($$)
         ($result, $lines_count) 
               = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
                               'shortcontents');
-        $self->_add_lines_count($lines_count);
-        $self->_add_text_count($result);
+        _add_lines_count($self, $lines_count);
+        _add_text_count($self, $result);
       }
       return $result;
     # all the @-commands that have an information for the formatting, like
@@ -3224,7 +3226,7 @@ sub _convert($$)
                or defined($root->{'number'})
                or $root->{'extra'}->{'caption'} or $root->{'extra'}->{'shortcaption'})) {
         
-        $result .= $self->_add_newline_if_needed();
+        $result .= _add_newline_if_needed($self);
         my ($caption, $prepended) = Texinfo::Common::float_name_caption($self,
                                                                         $root);
         if ($prepended) {
