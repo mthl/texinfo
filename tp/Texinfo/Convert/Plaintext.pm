@@ -466,7 +466,7 @@ sub _convert_element($$)
 
   print STDERR "END NODE ($self->{'count_context'}->[-1]->{'lines'},$self->{'count_context'}->[-1]->{'bytes'})\n" if ($self->{'debug'});
 
-  $result .= _footnotes($self, $element);
+  $result .= $self->_footnotes($element);
 
   $self->_count_context_bug_message('footnotes ', $element);
 
@@ -487,7 +487,7 @@ sub convert($$)
   if (!defined($elements)) {
     $result = $self->_convert($root);
     $self->_count_context_bug_message('no element ');
-    my $footnotes = _footnotes($self);
+    my $footnotes = $self->_footnotes();
     $self->_count_context_bug_message('no element footnotes ');
     $result .= $footnotes;
   } else {
@@ -1222,8 +1222,8 @@ sub _printindex_formatted($$;$)
   my $heading = "* Menu:\n\n";
 
   $result .= $heading;
-  $self->_add_text_count($heading);
-  $self->_add_lines_count(2);
+  _add_text_count($self, $heading);
+  _add_lines_count($self, 2);
 
   # first determine the line numbers for the spacing of their formatting
   my %line_nrs;
@@ -1352,7 +1352,7 @@ sub _printindex_formatted($$;$)
     if ($line_width + $line_part_width +1 > $self->{'fillcolumn'}) {
       $line_part = "\n" . ' ' x ($self->{'fillcolumn'} - $line_part_width) 
            . "$line_part\n";
-      $self->_add_lines_count(1);
+      _add_lines_count($self, 1);
     } else { 
       $line_part 
         = ' ' x ($self->{'fillcolumn'} - $line_part_width - $line_width)
@@ -1616,7 +1616,7 @@ sub _convert($$)
       } elsif ($root->{'type'} and ($root->{'type'} eq 'underlying_text')) {
         $formatter->{'container'}->add_underlying_text($root->{'text'});
       } else {
-        my ($text, $lower_case_text) = $self->_process_text($root, $formatter);
+        my ($text, $lower_case_text) = _process_text($self, $root, $formatter);
         $result = _count_added($self, $formatter->{'container'},
                     $formatter->{'container'}->add_text($text, $lower_case_text));
       }
@@ -2469,7 +2469,7 @@ sub _convert($$)
         _add_text_count($self, $heading_underlined);
         $result .= $heading_underlined;
         if ($heading_underlined ne '') {
-          $self->_add_lines_count(2);
+          _add_lines_count($self, 2);
           $result .= _add_newline_if_needed($self);
         }
       }

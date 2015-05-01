@@ -1,3 +1,10 @@
+2015-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Plaintext.pm: Change a few more function calls not 
+	to use method call syntax.
+	(convert, _convert_element): Use method call syntax to call 
+	_footnotes.  (Mail from Patrice.)
+
 2015-04-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm, tp/Texinfo/Convert/Paragraph.pm,
