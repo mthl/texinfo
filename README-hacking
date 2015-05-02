@@ -155,12 +155,15 @@ TEXINFO_DTD_VERSION should already have been updated to $ver in
 configure.ac if it was needed, but check again.  See comments in
 configure.ac, and run (at the top level) make dtd-check.
 
-Set up dtd directory on web pages:
+# ... set up dtd directory on web pages:
 cd $HOME/gnu/www/texinfo/dtd # or wherever webpages checkout is
 mkdir $ver && cvs add $ver
 cp $tutil/texinfo.dtd $ver
-cvs add $ver $ver/texinfo.dtd
+cvs add -kb $ver $ver/texinfo.dtd
 cvs commit -m$ver $ver
+
+# If -kb is forgotten, $Id$ expansion will happen by CVS.
+# cvs admin -kb texinfo.dtd, then cvs update -A, might recover.
 
 #  ... tag source tree:
 svn copy -r 5382 -m'texinfo_5_2 tag based on r5382' \

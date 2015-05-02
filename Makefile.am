@@ -88,7 +88,7 @@ long-checks:
 wget = wget
 dtd_url = http://www.gnu.org/software/texinfo/dtd/$(TEXINFO_DTD_VERSION)/texinfo.dtd
 dtd-check:
-	$(wget) -N $(dtd_url) -O $@-1 \
+	$(wget) -nv $(dtd_url) -O $@-1 \
 	&& diff $@-1 $(srcdir)/util/texinfo.dtd \
 	&& rm -f $@-1
 
