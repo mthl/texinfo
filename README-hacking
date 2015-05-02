@@ -90,10 +90,10 @@ directly.  This is the original source file for the program, so it's
 convenient to be able to make changes and then run it.
 
 To run it under a name that doesn't end in .pl, e.g., "makeinfo", you
-can set the environment variable TEXINFO_DEV_SOURCE to 1, or symlink to
-a trivial script along these lines:
+can use an alias, or set the environment variable TEXINFO_DEV_SOURCE to 1,
+or symlink to a trivial script along these lines:
 #!/bin/sh
-exec /YOUR/TEXINFO/DIR/tp/texi2any.pl "$@"
+exec /YOUR/TEXINFO/CHECKOUT/tp/texi2any.pl "$@"
 
 For information on creating and modifying
 
@@ -103,7 +103,7 @@ Steps for making a release (pretest or official):
 Ensure texinfo.tex, texi2dvi, and htmlxref.cnf are updated on ftp.gnu.org.
 Ensure TXI_XLATE in doc/Makefile.am matches actual file list.
 Check that TEXINFO_DTD_VERSION has been updated to the next version in
-configure.ac if the DTD has been modified since the last release.
+  configure.ac if the DTD has been modified since the last release.
 
 - Official releases only:
 version number in texi2dvi, texi2pdf, txirefcard.tex.
@@ -112,11 +112,11 @@ version and date in NEWS.
 sync texi2html/test/ results with tp/.
 ensure building standalone modules for CPAN still works.
 make V=1 pdf and fix underfull/overfull boxes.
-specially plead with bug-texinfo / beebe / compile farms to try.
+special pleading with bug-texinfo / beebe / compile farms to try.
 try groff.texinfo from groff source repo.
 
 - Changes to sources:
-update version in configure.ac, ChangeLog.
+update version in configure.ac, notice in ChangeLog.
 gnulib-tool --add-import  # for pretest
 util/srclist-txi          # for pretest
 pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
@@ -126,7 +126,7 @@ make -C po update-po      # but don't commit yet, dist updates po_document
 make -C doc wwwdoc-build  # and -install for official (and eventual commit)
 (export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
 svn commit                # when clean, then distcheck to be sure
-#create diff  for official, see below 
+#create diff for official, see below 
 
 - To do the actual upload:
 pkg=texinfo
@@ -135,7 +135,8 @@ ver=5.2
 then do one of:
 gnupload --to alpha.gnu.org:$pkg $pkg-$ver.tar.xz                #pretest
 gnupload --to ftp.gnu.org:$pkg   $pkg-$ver.tar.{gz,xz} *.diff.xz #official
-  (also gnupload texi2dvi at each official release.)
+  (also gnupload texi2dvi at each official release.
+   The standalone texinfo.tex should already be up to date, but check.)
 
 and the corresponding, to save in local archives:
 mv -v $pkg-$ver.tar.xz* $misc/archive/$pkg/alpha/                #pretest
@@ -144,17 +145,22 @@ mv -v $pkg-$ver.tar.{gz,xz}* *.diff.xz $misc/archive/$pkg/prod/  #official
 For pretest release, send announcement to bug-texinfo.
 
 - When official release is out there ...
-  ... update DTD and web pages:
-cd $HOME/gnu/www/texinfo/dtd # or wherever webpages checkout is
-mkdir $ver; svn add $ver
-cp $tutil/texinfo.dtd $ver
-cvs add $ver $ver/texinfo.dtd
-cvs commit -m$ver $ver
-
 update home page (texinfo.html) and commit as needed.
 update manual (make wwwdoc-install, cvs commit), including:
   pod2html $txi/Pod-Simple-Texinfo/pod2texi.pl \
   | fgrep -v 'rev="made"' >manual/pod2texi.html
+
+#  ... dtd version check:
+TEXINFO_DTD_VERSION should already have been updated to $ver in
+configure.ac if it was needed, but check again.  See comments in
+configure.ac, and run (at the top level) make dtd-check.
+
+Set up dtd directory on web pages:
+cd $HOME/gnu/www/texinfo/dtd # or wherever webpages checkout is
+mkdir $ver && cvs add $ver
+cp $tutil/texinfo.dtd $ver
+cvs add $ver $ver/texinfo.dtd
+cvs commit -m$ver $ver
 
 #  ... tag source tree:
 svn copy -r 5382 -m'texinfo_5_2 tag based on r5382' \

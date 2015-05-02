@@ -1,3 +1,13 @@
+2015-05-02  Karl Berry  <karl@freefriends.org>
+
+	* configure.ac (TEXINFO_DTD_VERSION): update to 6.0, with commentary.
+	* Makefile.am (dtd-check): new target to be run at make dist (by hand).
+	* util/texinfo.dtd: describe when to update.
+	* README-hacking: more about DTD version check and more.
+	* In tp/tests/formatting/res/parser/
+	*   cond_xml/cond.xml,
+	*   split_for_format_not_split/simplest.xml: regenerate.
+
 2015-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Plaintext.pm: Change a few more function calls not 

@@ -164,6 +164,8 @@ This will create subdir/out_parser*/newtest/ with the test results
 (as explained above), as well as stdout in newtest.1 and stderr in newtest.2.
 Look carefully to be sure they are as they should be.
 
+For XML output, perhaps check validity using the commands in tp/TODO.
+
 When things look good, use the -copy option to create the
 subdir/res_parser*/newtest/ subdirs and copy the output files there.
 

@@ -25,17 +25,17 @@ AM_INIT_AUTOMAKE([1.14 dist-xz
 AC_CONFIG_HEADERS([config.h:config.in])dnl Keep filename to 8.3 for MS-DOS.
 AC_CONFIG_SRCDIR([info/info.c])
 
-# version for the dtd.  It is manually set to the next version number 
-# rather than $PACKAGE_VERSION as soon as the DTD is modified.  There 
-# are 3 reasons for that:
-# 1. to avoid using a DTD from internet that wouldn't be in sync;
-# 2. to avoid unnnecessary changes in XML output file headers, in
-#    test results for instance.  Otherwise after a release the 
-#    devel version and the pretest versions would be used;
-# 3. it may be kept as is in case there were no change in the DTD
-#    between releases.  This is highly improbable, but who knows.
-# TEXINFO_DTD_VERSION=$PACKAGE_VERSION
-TEXINFO_DTD_VERSION=5.0
+# TexinfoXML DTD (./util/texinfo.dtd) version:
+# manually set this to the next version number rather than
+# $PACKAGE_VERSION, as soon as the DTD is modified, and perhaps put the
+# file on the web, too.  Several reasons:
+# 1. To avoid using a DTD from the Internet that wouldn't be in sync;
+# 2. To avoid unnnecessary changes in XML output file headers, in
+#    test results for instance.
+# 3. It may be kept as is in case there were no change in the DTD
+#    between releases.  This is rare, but has happened.
+#
+TEXINFO_DTD_VERSION=6.0
 AC_SUBST([TEXINFO_DTD_VERSION])
 
 # Conditional texi2html support.

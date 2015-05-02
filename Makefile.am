@@ -83,10 +83,20 @@ endif
 long-checks:
 	cd tp/tests && $(MAKE) long-checks
 
-# From coreutils.
+# to be run before making a distribution: ensure that the texinfo.dtd on
+# the web is what we will be releasing.  See README-hacking.
+wget = wget
+dtd_url = http://www.gnu.org/software/texinfo/dtd/$(TEXINFO_DTD_VERSION)/texinfo.dtd
+dtd-check:
+	$(wget) -N $(dtd_url) -O $@-1 \
+	&& diff $@-1 $(srcdir)/util/texinfo.dtd \
+	&& rm -f $@-1
+
+# emacs-page
+# From coreutils.  Use when making a release.
 # Verify that all source files using _() are listed in po/POTFILES.in.
 # Run this before making pretests, as well as official releases, so that
-# translators will see changed strings.
+# translators will see changed strings.  See README-hacking.
 po-check:
 	@if test -f po/POTFILES.in; then				\
 	  grep -E -v '^(#|$$)' po/POTFILES.in				\
