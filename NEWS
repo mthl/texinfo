@@ -157,7 +157,8 @@ one of the relevant sections:
   . new environments @raggedright, @smallquotation,
       @indentedblock, and @smallindentedblock.
   . new commands @codequoteundirected and @codequotebacktick,
-      for a better interface than the @set variables; now respected by @kbd.
+      for a better interface than "@set txicodequoteundirected" and
+      "@set txicodequotebacktick"; now respected by @kbd.
   . new command @xrefautomaticsectiontitle to allow using section titles
       in cross references by default, instead of node names.
   . new commands for Texinfo special characters:

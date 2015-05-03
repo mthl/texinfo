@@ -1,3 +1,10 @@
+2015-05-03  Eli Zaretskii  <eliz@gnu.org>
+
+	* NEWS: Mention txicodequoteundirected and txicodequotebacktick.
+
+	* doc/texinfo.texi (Inserting Quote Characters): Mention and index
+	txicodequoteundirected and txicodequotebacktick.
+
 2015-05-02  Karl Berry  <karl@freefriends.org>
 
 	* configure.ac (TEXINFO_DTD_VERSION): update to 6.0, with commentary.

@@ -11055,8 +11055,12 @@ These settings affect @code{@@code}, @code{@@example}, @code{@@kbd},
 @code{@@samp}, @code{@@verb}, and @code{@@verbatim}.  @xref{Useful
 Highlighting}.
 
-This feature used to be controlled by @code{@@set} variable names;
-they are still supported, but the command interface is preferred.
+@vindex txicodequoteundirected@r{, obsolete variable}
+@vindex txicodequotebacktick@r{, obsolete variable}
+This feature used to be controlled by using @code{@@set} to change the
+values of the corresponding variables @code{txicodequoteundirected}
+and @code{txicodequotebacktick}; they are still supported, but the
+command interface is preferred.
 
 
 @node Inserting Space
