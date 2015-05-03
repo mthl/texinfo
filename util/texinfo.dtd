@@ -12,7 +12,8 @@
   TEXINFO_DTD_VERSION in configure.ac (if not already done).
   See comments there for explanation.
   
-  Original author: Philippe Martin.
+  Email bug-texinfo@gnu.org with any discussion.
+  (Original author: Philippe Martin.)
 -->
 
 <!-- * ENTITIES * -->
