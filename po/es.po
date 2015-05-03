@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: texinfo-5.9.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
 "POT-Creation-Date: 2015-02-22 16:49-0800\n"
-"PO-Revision-Date: 2015-04-05 19:22+0200\n"
+"PO-Revision-Date: 2015-05-03 18:53+0200\n"
 "Last-Translator: Antonio Ceballos <aceballos@gmail.com>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
 "Language: es\n"
@@ -2275,7 +2275,7 @@ msgstr "la entrada para el índice '%s' se encuentra fuera de nodo alguno"
 
 #  TODO ASK
 #: tp/Texinfo/Convert/Plaintext.pm:1433
-#, fuzzy, perl-format
+#, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "error al cerrar el fichero de texto imagen %s: %s"
 
