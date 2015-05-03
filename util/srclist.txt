@@ -34,8 +34,8 @@ $GETTEXT/gettext-tools/po/en@boldquot.header	po
 $GETTEXT/gettext-tools/po/en@quot.header	po
 $GETTEXT/gettext-tools/po/insert-header.sin	po
 $GETTEXT/gettext-tools/po/quot.sed		po
-$GETTEXT/gettext-tools/po/remove-potcdate.sed	po
 $GETTEXT/gettext-tools/po/remove-potcdate.sin	po
+$GETTEXT/gettext-tools/po/remove-potcdate.sin	po_document
 
 
 $GNULIBSRC/build-aux/compile		build-aux
