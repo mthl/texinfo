@@ -585,7 +585,6 @@ xspara_add_text (char *text)
 
               if (strchr (state.word.text, '\n'))
                 {
-                  printf ("protecting space\n");
                   /* Replace any '\n' with a ' '. Note that state.word_counter 
                      will still be correct after this. */
                   char *ptr = state.word.text;
