@@ -124,6 +124,7 @@ make
 make po-check             # update po/POTFILES.in as needed
 make -C po update-po      # but don't commit yet, dist updates po_document
 make -C doc wwwdoc-build  # and -install for official (and eventual commit)
+make long-checks          # distcheck does not do this
 (export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
 svn commit                # when clean, then distcheck to be sure
 #create diff for official, see below 
