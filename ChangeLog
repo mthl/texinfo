@@ -1,3 +1,8 @@
+2015-05-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Unicode.pm (string_width): Calculate string
+	width using "unpack" function.
+
 2015-05-03  Karl Berry  <karl@freefriends.org>
 
 	* pretest 5.9.91.
