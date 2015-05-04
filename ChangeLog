@@ -3,6 +3,15 @@
 	* tp/Texinfo/Convert/Unicode.pm (string_width): Calculate string
 	width using "unpack" function.
 
+	* tp/Texinfo/Convert/Paragraph.pm
+
+	(_add_next): Add new argument "$newlines_impossible" to elimate
+	a regex match.  Don't access arguments we don't need.
+	(add_text): Use "split" function to split up text.
+	Try to eliminate regex matches for a newline character.
+	Save some flags in local variables.  Reorder a condition.  Add 
+	"o" flag to some regexes that used variables.
+
 2015-05-03  Karl Berry  <karl@freefriends.org>
 
 	* pretest 5.9.91.
