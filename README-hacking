@@ -118,7 +118,7 @@ try groff.texinfo from groff source repo.
 - Changes to sources:
 update version in configure.ac, notice in ChangeLog.
 gnulib-tool --add-import  # for pretest
-util/srclist-txi          # for pretest
+util/srclist-txi          # for pretest 
 pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
 make
 make po-check             # update po/POTFILES.in as needed
@@ -162,8 +162,11 @@ cp $tutil/texinfo.dtd $ver
 cvs add -kb $ver $ver/texinfo.dtd
 cvs commit -m$ver $ver
 
-# If -kb is forgotten, $Id$ expansion will happen by CVS.
-# cvs admin -kb texinfo.dtd, then cvs update -A, might recover.
+# If -kb is forgotten, CVS will do its own $Id expansion.
+# Recover by editing and committing a new version of texinfo.dtd in svn,
+# copying it again to the cvs dir, then:
+# cvs admin -kb texinfo.dtd; cvs update -A.
+# (See the "How to store binary files" node in the CVS manual.)
 
 #  ... tag source tree:
 svn copy -r 5382 -m'texinfo_5_2 tag based on r5382' \
