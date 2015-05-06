@@ -1,5 +1,10 @@
 2015-05-06  Karl Berry  <karl@freefriends.org>
 
+	* doc/texinfo.tex (\ensuremath): new helper macro.
+	Use it throughout, replacing simple \ifmmode ... \fi and
+	for additional math chars.
+	(2020, 2021, 2225): define these Unicode chars (from cmsy).
+
 	* doc/texinfo.texi (key): not using @key in indexes is an rms
 	edict (from many years ago, maybe he would revisit if any need).
 
