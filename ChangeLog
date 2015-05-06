@@ -1,16 +1,22 @@
+2015-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (parse_texi): Only use regex to look for
+	@-command once instead of twice.  Reorder a condition to make 
+	regex execution less likely.  Combine "ABORT MENU STAR" and 
+	"MENU ENTRY (certainly)" blocks into a single condition.
+
 2015-05-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Unicode.pm (string_width): Calculate string
 	width using "unpack" function.
 
-	* tp/Texinfo/Convert/Paragraph.pm
-
-	(_add_next): Add new argument "$newlines_impossible" to elimate
-	a regex match.  Don't access arguments we don't need.
-	(add_text): Use "split" function to split up text.
-	Try to eliminate regex matches for a newline character.
-	Save some flags in local variables.  Reorder a condition.  Add 
-	"o" flag to some regexes that used variables.
+	* tp/Texinfo/Convert/Paragraph.pm (_add_next): Add new argument 
+	"$newlines_impossible" to elimate a regex match.  Don't access 
+	arguments we don't need.
+	(add_text): Use "split" function to split up text.  Try to 
+	eliminate regex matches for a newline character.  Save some 
+	flags in local variables.  Reorder a condition.  Add "o" flag to 
+	some regexes that used variables.
 
 2015-05-03  Karl Berry  <karl@freefriends.org>
 
