@@ -7550,6 +7550,7 @@ to the modifier key in isolation, use the @code{@@key} command.  For
 example, write @samp{@@kbd@{Meta-a@}} to produce @kbd{Meta-a} and
 @samp{@@key@{META@}} to produce @key{META}.
 
+@c per rms.
 As a convention in GNU manuals, @code{@@key} should not be used in
 index entries.
 

@@ -1,3 +1,8 @@
+2015-05-06  Karl Berry  <karl@freefriends.org>
+
+	* doc/texinfo.texi (key): not using @key in indexes is an rms
+	edict (from many years ago, maybe he would revisit if any need).
+
 2015-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (parse_texi): Only use regex to look for
