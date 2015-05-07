@@ -1,3 +1,22 @@
+2015-05-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_add_text_count)
+	(_count_added): Don't call Texinfo::Common::count_bytes, collect 
+	the argument instead into a string.
+	(_update_count_context): Count the text collected in 
+	_add_text_count.
+
+	* tp/Texinfo/Convert/Plaintext.pm (add_location)
+	(_update_locations_counts, _align_environment, _node_line)
+	(_printindex_formatted, _convert),
+	* tp/Texinfo/Convert/Info.pm (output),
+	* tp/DebugTexinfo/DebugCount.pm (_convert):
+	Call _update_count_context before accessing 'bytes' value of 
+	current count context.
+
+	* tp/Texinfo/Convert/Plaintext.pm (_count_added): Access
+	'end_line_count' value on hash directly instead of via function 
+	call.
 2015-05-06  Karl Berry  <karl@freefriends.org>
 
 	* doc/texinfo.tex (\ensuremath): new helper macro.
