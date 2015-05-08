@@ -413,6 +413,7 @@ get_manpage_from_formatter (char *formatter_args[])
               free (formatted_page);
               return NULL;
             }
+          p++;
         }
     }
 

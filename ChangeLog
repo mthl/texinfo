@@ -1,3 +1,8 @@
+2015-05-09  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/man.c (get_manpage_from_formatter) <failed exit status>:
+	Fix check whether there are enough lines in formatter's output.
+
 2015-05-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm (_add_text_count)
@@ -17,6 +22,7 @@
 	* tp/Texinfo/Convert/Plaintext.pm (_count_added): Access
 	'end_line_count' value on hash directly instead of via function 
 	call.
+
 2015-05-06  Karl Berry  <karl@freefriends.org>
 
 	* doc/texinfo.tex (\ensuremath): new helper macro.
