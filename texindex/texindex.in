@@ -44,7 +44,7 @@ fi
 #
 # else use configured value for awk.
 if test -z "$awk_binary"; then
-  awk_configured="@AWK@"
+  awk_binary="@AWK@"
 fi
 #
 # that should never be empty, but just in case, else fall back to plain

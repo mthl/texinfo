@@ -1,3 +1,7 @@
+2015-05-09  Karl Berry  <karl@freefriends.org>
+
+	* texindex/texindex.in: set awk_binary, not awk_configured.
+
 2015-05-09  Eli Zaretskii  <eliz@gnu.org>
 
 	* info/man.c (get_manpage_from_formatter) <failed exit status>:
