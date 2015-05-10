@@ -1,3 +1,8 @@
+2015-05-10  Eli Zaretskii  <eliz@gnu.org>
+
+	* util/texindex.bat: New file.
+	* util/Makefile.am (w32_bat): Add texindex.bat.
+
 2015-05-09  Karl Berry  <karl@freefriends.org>
 
 	* texindex/texindex.in: set awk_binary, not awk_configured.

@@ -16,7 +16,7 @@
 bin_SCRIPTS = texi2dvi texi2pdf pdftexi2dvi
 nodist_noinst_SCRIPTS = txixml2texi
 
-w32_bat = makeinfo.bat pod2texi.bat texi2any.bat
+w32_bat = makeinfo.bat pod2texi.bat texi2any.bat texindex.bat
 if HOST_IS_WINDOWS
  bin_SCRIPTS += $(w32_bat)
 endif
