@@ -52,7 +52,9 @@ if exist %tiscript% goto UserScript
 echo %0: could not locate texindex.awk script, quitting
 exit /b 1
 :UserScript
-REM Finally, invoke the script
-REM We do not use zeroth arg here because Gawk will interpret
+REM Double each backslash in our name because Gawk will interpret
 REM backslashes in the name such that e.g. \t becomes a TAB
-"%awkbinary%" -v Invocation_name="%~nx0" -f "%tiscript%" -- %*
+set mypath=%0
+set escaped=%mypath:\=\\%
+REM Finally, invoke the script
+"%awkbinary%" -v Invocation_name="%escaped%" -f "%tiscript%" -- %*
