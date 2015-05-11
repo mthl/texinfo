@@ -1114,11 +1114,11 @@ convert_eols (FILE_BUFFER *destination, FILE_BUFFER *source)
     }
   *d = '\0';
 
+  destination->filesize = d - destination->contents;
   /* EOL conversion can shrink the text quite a bit.  We don't
      want to waste storage.  */
   destination->contents = xrealloc (destination->contents,
                                     d - destination->contents + 1);
-  destination->filesize = d - destination->contents;
 }
 
 /* Magic number that RMS used to decide how much a tags table pointer could
@@ -1251,6 +1251,7 @@ find_node_from_tag (FILE_BUFFER *parent, FILE_BUFFER *fb, TAG *tag)
       if (!w->hist)
         continue;
 
+      w->node = 0;
       for (h = w->hist; *h; h++)
         {
           NODE *n = (*h)->node;;
@@ -1273,6 +1274,8 @@ find_node_from_tag (FILE_BUFFER *parent, FILE_BUFFER *fb, TAG *tag)
                 }
             }
         }
+      if (h > w->hist)
+        w->node = (*(h - 1))->node;
     }
 
   if (success)

@@ -1,3 +1,12 @@
+2015-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (convert_eols): Do pointer arithmetic before 
+	reallocating.
+	(find_node_from_tag) <EOL conversion>: Also update 'node' field 
+	of each window as well as the histories.
+	* info/info.c (add_initial_nodes) <inexact menu following>: 
+	Always free reached node.
+
 2015-05-10  Eli Zaretskii  <eliz@gnu.org>
 
 	* util/texindex.bat: New file.

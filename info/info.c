@@ -468,13 +468,16 @@ add_initial_nodes (int argc, char **argv, char **error)
                                                       0);
           free (*error); *error = 0;
           node_via_menus = info_follow_menus (initial_node, argv, error, 0);
-          if (node_via_menus && (argc >= 2 || !*error))
+          if (node_via_menus)
             {
-              argv += argc; argc = 0;
+              if (argc >= 2 || !*error)
+                {
+                  argv += argc; argc = 0;
 
-              info_reference_free (ref_list[0]);
-              ref_list[0] = info_new_reference (node_via_menus->fullpath,
-                                                node_via_menus->nodename);
+                  info_reference_free (ref_list[0]);
+                  ref_list[0] = info_new_reference (node_via_menus->fullpath,
+                                                    node_via_menus->nodename);
+                }
               free_history_node (node_via_menus);
             }
         }
