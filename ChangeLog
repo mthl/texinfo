@@ -1,5 +1,9 @@
 2015-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Pretest 5.9.92.
+
+2015-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c (convert_eols): Do pointer arithmetic before 
 	reallocating.
 	(find_node_from_tag) <EOL conversion>: Also update 'node' field 
