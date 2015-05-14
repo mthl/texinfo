@@ -1,3 +1,9 @@
+2015-05-14  Karl Berry  <karl@freefriends.org>
+
+	* texindex/texindex.in (escaped0): double backslashes in $0
+	for passing to awk.
+	Report from Eli on texinfo-devel, 09 May 2015 14:04:37.
+
 2015-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Pretest 5.9.92.
