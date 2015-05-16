@@ -1,3 +1,9 @@
+2015-05-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/pseudotty.c: Define a global "program_name" variable for 
+	use by "error" function.  Include string.h to make sure we get a 
+	declaration of memset.  Reported by Dagobert Michelsen.
+
 2015-05-14  Karl Berry  <karl@freefriends.org>
 
 	* texindex/texindex.in (escaped0): double backslashes in $0

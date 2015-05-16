@@ -30,8 +30,12 @@
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define CONTROL 3
+
+/* Used by "error" function. */
+const char *program_name = "pseudotty";
 
 int
 main (void)
