@@ -1,7 +1,7 @@
 2015-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-test.inc: Split GINFO variable into GINFO and 
-	GINFO_OPTIONS, and provide GINFO alias to use them together.
+	GINFO_OPTIONS, and provide GINFO function to use them together.
 	* info/t/Init-inter.inc: Pass GINFO_OPTIONS variable as 
 	arguments to GINFO.  (Attempt at fixing error message on
 	Solaris 10, "./ginfo --init-file ./t/Infokey-config: not found".  

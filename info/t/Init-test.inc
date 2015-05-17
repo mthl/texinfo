@@ -24,7 +24,7 @@ GINFO="./ginfo"
 GINFO_OPTIONS="--init-file $srcdir/t/Infokey-config"
 #GINFO="valgrind --log-file=$0.val.log --leak-check=full ./ginfo --init-file $srcdir/t/Infokey-config"
 
-alias GINFO='${GINFO} ${GINFO_OPTIONS}'
+GINFO () { ${GINFO} ${GINFO_OPTIONS} "$@" ; }
 
 # Set this to the name of the process
 GINFO_NAME=ginfo
