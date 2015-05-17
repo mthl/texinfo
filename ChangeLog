@@ -8,6 +8,10 @@
 	Maybe word splitting isn't happening.)
 	* info/t/*.sh: Use GINFO alias instead of $GINFO.
 
+	* info/t/Init-test.inc: Remove portability code for "local" 
+	builtin.  It doesn't work.
+	(findprog): Don't use "local".
+
 2015-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/index-apropos.sh: Don't run printf in background to 

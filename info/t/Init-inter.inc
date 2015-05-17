@@ -31,47 +31,10 @@ else
   path_sep=":"
 fi
 
-#  Generic auxiliary functions.
-#
-# In case `local' is not supported by the shell, provide a function
-# that simulates it by simply performing the assignments.  This means
-# that we must not expect `local' to work, i.e., we must not (i) rely
-# on it during recursion, and (ii) have two local declarations of the
-# same variable.  (ii) is easy to check statically, and our test suite
-# does make sure there is never twice a static local declaration of a
-# variable.  (i) cannot be checked easily, so just be careful.
-#
-# Note that since we might use a function simulating `local', we can
-# no longer rely on the fact that no IFS-splitting is performed.  So,
-# while
-#
-# foo=$bar
-#
-# is fine (no IFS-splitting), never write
-#
-# local foo=$bar
-#
-# but rather
-#
-# local foo="$bar"
-(
-  foo=bar
-  test_local () {
-    local foo=foo
-  }
-  test_local >/dev/null 2>&1
-  test $foo = bar
-) || eval '
-local () {
-  case $1 in
-    *=*) eval "$1";;
-  esac
-}
-'
 # findprog PROG - Return true if PROG is somewhere in PATH, else false.
 findprog ()
 {
-  local saveIFS="$IFS"
+  saveIFS=$IFS
   IFS=$path_sep  # break path components at the path separator
   for dir in $PATH; do
     IFS=$saveIFS
