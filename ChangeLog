@@ -6,6 +6,9 @@
 	* info/pseudotty.c: Include sys/select.h for fd_set and others.  
 	Reported by Assaf Gordon.
 
+	* info/pseudotty.c: Log bytes received from control channel, for 
+	better trouble-shooting.
+
 2015-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-inter.inc: Copy shell portability code for "local" 

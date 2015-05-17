@@ -74,7 +74,7 @@ main (void)
 
       if (FD_ISSET (CONTROL, &read_set))
         {
-          int c, success;
+          char c, success;
           errno = 0;
           do
             {
@@ -94,7 +94,10 @@ main (void)
                   exit (1);
                 }
               else if (success == 1)
-                break;
+                {
+                  error (0, 0, "read byte 0x%02X", c);
+                  break;
+                }
             }
           while (1);
 
