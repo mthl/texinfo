@@ -57,8 +57,8 @@ LC_ALL=C; export LC_ALL
 TERM=dumb; export TERM
 
 # Clean up if the test is interrupted, for example if the user types
-# C-c, to avoid lingering child processes.
-trap cleanup SIGINT
+# C-c, to avoid lingering child processes.  Signal 2 is SIGINT.
+trap cleanup 2
 
 # Cleanup and exit
 cleanup ()
