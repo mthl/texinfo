@@ -3,6 +3,8 @@
 	* info/t/index-apropos.sh: Don't run printf in background to 
 	pass input keystrokes into program.  (Attempt at fixing test 
 	failure reported by Assaf Gordon.)
+	* info/pseudotty.c: Include sys/select.h for fd_set and others.  
+	Reported by Assaf Gordon.
 
 2015-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
