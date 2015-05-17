@@ -154,7 +154,8 @@ run_ginfo ()
 {
   rm -f $FINISHEDFIFO
   mkfifo $FINISHEDFIFO
-  { $GINFO "$@" ; test $? -eq 0 || echo failure >$FINISHEDFIFO ;
+  { $GINFO $GINFO_OPTIONS "$@" ;
+    test $? -eq 0 || echo failure >$FINISHEDFIFO ;
     echo finished >$FINISHEDFIFO ; } 0<>$PTS_DEVICE 1<&0 &
   SUBSHELL=$!
 

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2014 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,8 +23,8 @@ srcdir=${srcdir:-.}
 # Programmer's Guide" (23NOV2013 build of GNU COBOL 2.1), 
 # "gnucobpg.info", to be inaccessible when the error has built up to be 
 # more than the 1000 bytes of tolerance.
-$GINFO --strict-node-location --file cr-tag-table.info \
-       --node Second >$GINFO_OUTPUT
+GINFO --strict-node-location --file cr-tag-table.info \
+      --node Second >$GINFO_OUTPUT
 
 grep 'Node: Second' $GINFO_OUTPUT
 RETVAL=$?
