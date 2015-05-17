@@ -9,6 +9,9 @@
 	* info/pseudotty.c: Log bytes received from control channel, for 
 	better trouble-shooting.
 
+	* po/Makevars: Escape "$" in XGETTEXT_OPTIONS.  (Attempt at 
+	fixing build failure on FreeBSD 9.3, reported by Assaf Gordon.)
+
 2015-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-inter.inc: Copy shell portability code for "local" 

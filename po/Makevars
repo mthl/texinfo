@@ -7,14 +7,14 @@ DOMAIN = $(PACKAGE)
 subdir = po
 top_builddir = ..
 
-# These options get passed to xgettext.
+# These options get passed to xgettext.  "$" is escaped as "$$" here.
 XGETTEXT_OPTIONS = \
  -cTRANSLATORS\
  --keyword=_\
  --keyword=N_\
  --keyword=__\
  -k__\
- -k\$__\
+ -k\$$__\
  -k%__\
  -k__x\
  -k__n:1,2\
