@@ -4,6 +4,7 @@
 	builtin from util/texi2dvi.
 	* init/t/Init-test.inc: Use "2" as argument to "trap" instead of 
 	"SIGINT" for portability to Solaris, among others.
+	* init/t/empty-infopath.sh: Set and export variable separately.
 	(Automated build report via Dagobert Michelsen and 
 	platform-testers.)
 
