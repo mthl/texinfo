@@ -395,27 +395,31 @@ get_manpage_from_formatter (char *formatter_args[])
   if (!formatted_page)
     return 0;
 
-  if (formatter_status != 0) /* Check for failure. */
-    {
-      int i;
-      char *p;
-      /* It is possible for "man -a" to output a man page and still to exit 
-         with a non-zero status.  This was found to happen when duplicate man 
-         pages were found.  Hence, still treat it as a success if more than 
-         three lines were output.  (A small amount of output could be error 
-         messages that were sent to standard output.) */
-      p = formatted_page;
-      for (i = 0; i < 3; i++)
-        {
-          p = strchr (p, '\n');
-          if (!p)
-            {
-              free (formatted_page);
-              return NULL;
-            }
-          p++;
-        }
-    }
+  /* We could check the exit status of "man -a" to see if successfully
+     output a man page  However:
+      * It is possible for "man -a" to output a man page and still to exit with
+        a non-zero status.  This was found to happen when duplicate man pages 
+        were found.
+      * "man" was found to exit with a zero status on Solaris 10 even when
+        it found nothing.
+     Hence, treat it as a success if more than three lines were output.  (A 
+     small amount of output could be error messages that were sent to standard 
+     output.) */
+  {
+    int i;
+    char *p;
+    p = formatted_page;
+    for (i = 0; i < 3; i++)
+      {
+        p = strchr (p, '\n');
+        if (!p)
+          {
+            free (formatted_page);
+            return NULL;
+          }
+        p++;
+      }
+  }
 
   /* If we have the page, then clean it up. */
   clean_manpage (formatted_page);

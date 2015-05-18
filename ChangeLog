@@ -9,6 +9,9 @@
 	running it in a subshell.  If exit status of "read -t" is 1, 
 	report that an end-of-file was likely.
 
+	* info/man.c (get_manpage_from_formatter): Ignore exit status of 
+	man page formatter.
+
 2015-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-test.inc: Split GINFO variable into GINFO and 
