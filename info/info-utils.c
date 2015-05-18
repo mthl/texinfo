@@ -506,7 +506,7 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
   int printable_limit = ISO_Latin_p ? 255 : 127;
   struct text_buffer *rep = &printed_rep;
 
-  char *cur_ptr = (char *) mbi_cur_ptr (*iter);
+  unsigned char *cur_ptr = (unsigned char *) mbi_cur_ptr (*iter);
   size_t cur_len = mb_len (mbi_cur (*iter));
 
   text_buffer_reset (&printed_rep);
@@ -587,12 +587,14 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
     }
   else
     {
-      /* Use original bytes, although not recognized as anything.  This
-         shouldn't happen because of the many cases above .*/
-
-      *pchars = cur_len;
-      *pbytes = cur_len;
-      text_buffer_add_string (rep, cur_ptr, cur_len);
+      /* Original byte was not recognized as anything.  Display its octal 
+         value.  This could happen in the C locale for bytes above 128,
+         or for bytes 128-159 in an ISO-8859-1 locale.  Don't output the bytes 
+         as they are, because they could have special meaning to the 
+         terminal. */
+      *pchars = 4;
+      *pbytes = 4;
+      text_buffer_printf (rep, "\\%0o", *cur_ptr);
       return text_buffer_base (rep);
     }
 }

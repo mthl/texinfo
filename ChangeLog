@@ -1,5 +1,11 @@
 2015-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (printed_representation): Declare char * as 
+	unsigned, so that check for printable limit works.  Display 
+	unknown bytes with an octal representation.
+
+2015-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/Init-test.inc, info/t/Init-inter.inc, info/t/*.sh:
 	Revert split of GINFO variable from yesterday.
 
