@@ -89,6 +89,11 @@ fi
 sleep 10 3>$PTY_TYPE &
 WEDGE_PTY_PID=$!
 
+# Also keep the pipe open for reading in case pseudotty exits, so that
+# trying to open the pipe for writing doesn't hang.
+sleep 10 3<$PTY_TYPE &
+WEDGE_PTY_PID2=$!
+
 # If we wanted the process to be open indefinitely, we could use an
 # infinite loop in a subshell, like:
 #

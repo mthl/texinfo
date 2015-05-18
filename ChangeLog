@@ -1,3 +1,14 @@
+2015-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-test.inc, info/t/Init-inter.inc, info/t/*.sh:
+	Revert split of GINFO variable from yesterday.
+
+	* info/t/Init-inter.inc: Wedge pipe for input key presses open 
+	for reading as well as for writing.
+	* info/t/Timeout-test.inc: Try to detect if "read -t" works by 
+	running it in a subshell.  If exit status of "read -t" is 1, 
+	report that an end-of-file was likely.
+
 2015-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-test.inc: Split GINFO variable into GINFO and 

@@ -18,4 +18,4 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 
 # Follow an reference to "file-menu" in dir without matching label exactly
-GINFO --output - FiLe-M | grep "^File: file-menu,"
+$GINFO --output - FiLe-M | grep "^File: file-menu,"

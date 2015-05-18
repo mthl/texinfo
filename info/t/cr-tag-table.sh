@@ -23,7 +23,7 @@ srcdir=${srcdir:-.}
 # Programmer's Guide" (23NOV2013 build of GNU COBOL 2.1), 
 # "gnucobpg.info", to be inaccessible when the error has built up to be 
 # more than the 1000 bytes of tolerance.
-GINFO --strict-node-location --file cr-tag-table.info \
+$GINFO --strict-node-location --file cr-tag-table.info \
       --node Second >$GINFO_OUTPUT
 
 grep 'Node: Second' $GINFO_OUTPUT

@@ -18,8 +18,21 @@
 # Not timed out yet
 TIMED_OUT=
 
-read -t 3 FINISHED <>$FINISHEDFIFO
-if test $? != 0 -a $? -le 128 ; then
+# Attempt to test if "read -t" works.  Under Solaris 10, read -t below
+# should exit the subshell with an error exit status.
+(read -t 0; exit 0)
+if test $? != 0; then
+  status=2
+else
+  read -t 3 FINISHED <>$FINISHEDFIFO
+  status=$?
+fi
+
+if test $status = 1; then
+  echo 'read -t failed - probably end-of-file' >&2
+  RETVAL=1
+
+elif test $status != 0 -a $status -le 128 ; then
   # Exit status of 'read' should be 0 on a successful read, or
   # greater than 128 if it timed out.
   rm -f $FINISHEDFIFO

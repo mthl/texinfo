@@ -24,4 +24,4 @@ srcdir=${srcdir:-.}
 # the dir node, but the former does not output the dir node, just an
 # error message.
 
-GINFO --output - not-a-file 2>&1 | grep 'No menu item'
+$GINFO --output - not-a-file 2>&1 | grep 'No menu item'

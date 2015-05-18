@@ -18,4 +18,4 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 
 # Load top-level dir node
-GINFO --output -
+$GINFO --output -

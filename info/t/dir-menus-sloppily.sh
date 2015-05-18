@@ -18,6 +18,6 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 
 # Follow several menus in a file inexactly to get to desired node
-GINFO --output - file-menu first nod nod \
+$GINFO --output - file-menu first nod nod \
   | grep 'Arrived at Node 3.'
 

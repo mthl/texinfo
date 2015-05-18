@@ -20,5 +20,5 @@ srcdir=${srcdir:-.}
 # Load a node in loaded file using --node, without using --file to
 # specify the desired file.
 
-GINFO --output - file-menu --node Unreachable \
+$GINFO --output - file-menu --node Unreachable \
   | grep 'not linked to elsewhere'

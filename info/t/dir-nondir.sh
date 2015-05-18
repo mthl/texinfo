@@ -18,4 +18,4 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 
 # Load a file despite it not being listed in dir.
-GINFO --output - sample | grep "This is a simple Info file."
+$GINFO --output - sample | grep "This is a simple Info file."

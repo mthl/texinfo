@@ -20,11 +20,8 @@
 srcdir=${srcdir:-.}
 
 # Use the second line to run the program under valgrind.
-GINFO="./ginfo"
-GINFO_OPTIONS="--init-file $srcdir/t/Infokey-config"
+GINFO="./ginfo --init-file $srcdir/t/Infokey-config"
 #GINFO="valgrind --log-file=$0.val.log --leak-check=full ./ginfo --init-file $srcdir/t/Infokey-config"
-
-GINFO () { ${GINFO} ${GINFO_OPTIONS} "$@" ; }
 
 # Set this to the name of the process
 GINFO_NAME=ginfo
@@ -51,6 +48,7 @@ INFO_PRINT_COMMAND=">$GINFO_OUTPUT"; export INFO_PRINT_COMMAND
 # Not an interactive test
 PTY_PID=0
 WEDGE_PTY_PID=0
+WEDGE_PTY_PID2=0
 SUBSHELL=0
 
 # Get error messages in English
@@ -69,6 +67,7 @@ cleanup ()
   # Delete created files and kill spawned processes if any.
   test $PTY_PID -ne 0 && kill $PTY_PID
   test $WEDGE_PTY_PID -ne 0 && kill $WEDGE_PTY_PID
+  test $WEDGE_PTY_PID2 -ne 0 && kill $WEDGE_PTY_PID2
   test $SUBSHELL -ne 0 && kill $SUBSHELL
 
   rm -f $GINFO_OUTPUT

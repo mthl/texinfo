@@ -18,5 +18,5 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 
 # Follow an index entry in a file found through dir
-GINFO --output - split 'entry text' \
+$GINFO --output - split 'entry text' \
   | grep 'Node: Target node'

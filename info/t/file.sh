@@ -18,7 +18,7 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 
 # Check that we can reach a file with --file
-GINFO --file file-menu >$GINFO_OUTPUT
+$GINFO --file file-menu >$GINFO_OUTPUT
 
 # Check that the entire file was dumped, and not just the Top node
 grep 'Node: Top' $GINFO_OUTPUT \
