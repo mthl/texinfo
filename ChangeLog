@@ -1,3 +1,9 @@
+2015-05-20  Karl Berry  <karl@freefriends.org>
+
+	* util/texi2dvi (generated_files_get): make punctuation optional
+	on the \openout line, to cater to luatex 0.80.0.  Noted
+	by Wybo Dekker, report http://tracker.luatex.org/view.php?id=909.
+
 2015-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (printed_representation): Declare char * as 
