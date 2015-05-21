@@ -59,13 +59,17 @@ main (void)
     exit (1);
 
   error (0, 0, "%s", name);
+
   printf ("%s\n", name);
-  fclose (stdout);
+  if (fclose (stdout) != 0)
+    {
+      error (1, 0, "error closing stdout: aborting");
+    }
 
   FD_ZERO (&read_set);
 
   error (0, 0, "entering main loop");
-  for (;;)
+  while (1)
     {
       FD_SET (master, &read_set);
       FD_SET (CONTROL, &read_set);
@@ -74,9 +78,10 @@ main (void)
 
       if (FD_ISSET (CONTROL, &read_set))
         {
-          char c, success;
+          char c;
+          int success;
           errno = 0;
-          do
+          while (1)
             {
               error (0, 0, "trying to read");
               success = read (CONTROL, &c, 1);
@@ -90,8 +95,7 @@ main (void)
                 }
               else if (success == 0)
                 {
-                  error (0, 0, "end of file on control channel");
-                  exit (1);
+                  error (1, 0, "end of file on control channel");
                 }
               else if (success == 1)
                 {
@@ -99,7 +103,6 @@ main (void)
                   break;
                 }
             }
-          while (1);
 
           /* Feed any read bytes to the program being controlled. */
           write (master, &c, 1);
@@ -107,7 +110,8 @@ main (void)
 
       if (FD_ISSET (master, &read_set))
         {
-          int c, success;
+          char c;
+          int success;
           errno = 0;
           do
             {

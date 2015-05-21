@@ -1,3 +1,9 @@
+2015-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/pseudotty.c: Check return value of fclose.  Use an int to 
+	hold return value of read.  Consistent syntax for infinite 
+	loops.  (Suggestions from Karl Berry.)
+
 2015-05-20  Karl Berry  <karl@freefriends.org>
 
 	* util/texi2dvi (generated_files_get): make punctuation optional
