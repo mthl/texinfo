@@ -1,3 +1,9 @@
+2015-05-26  Karl Berry  <karl@freefriends.org>
+
+	* doc/texinfo.tex (\setnonasciicharscatcodenonglobal):
+	rm spurious blank line.  Report from David Kastrup,
+	26 May 2015 15:14:06.	
+
 2015-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/pseudotty.c: Check return value of fclose.  Use an int to 
