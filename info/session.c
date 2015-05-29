@@ -184,8 +184,9 @@ display_startup_message (void)
   char *format;
 
   format = replace_in_documentation
-  /* TRANSLATORS: This message should fit within 79 characters, otherwise
-     anything after the 80th character will not be displayed. */
+  /* TRANSLATORS: Try to keep this message (when "expanded") at most 79 
+     characters; anything after the 79th character will not actually be 
+     displayed on an 80-column terminal. */
 (_("Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-help-node] for tutorial."),
      0);
 
