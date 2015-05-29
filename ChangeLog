@@ -1,3 +1,12 @@
+2015-05-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_read_and_dispatch): Make call to 
+	window_clear_echo_area conditional on read_key_sequence not 
+	having dispatched to a user command itself, so error messages 
+	aren't cleared.
+	(read_key_sequence) <menu digit>: Clear echo area first.
+	Reported by Benno Schulenberg.
+
 2015-05-29  Benno Schulenberg <bensberg@justemail.net> (tiny change)
 
 	* info/session.c (display_startup_message): Reword note to 

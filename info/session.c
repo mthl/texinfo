@@ -238,11 +238,10 @@ info_read_and_dispatch (void)
       display_cursor_at_point (active_window);
 
       cmd = read_key_sequence (info_keymap, 1, 1, 0, &count);
-      if (!info_keyseq_displayed_p)
-        window_clear_echo_area ();
-
       if (cmd)
         {
+          if (!info_keyseq_displayed_p)
+            window_clear_echo_area ();
 
           (*cmd) (active_window, count);
 
@@ -5234,6 +5233,7 @@ read_key_sequence (Keymap map, int menu, int mouse,
           int k = key;
           if (k > KEYMAP_META_BASE)
             k -= KEYMAP_META_BASE;
+          window_clear_echo_area ();
           menu_digit (active_window, k);
           return 0;
         }
