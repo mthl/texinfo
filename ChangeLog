@@ -1,3 +1,9 @@
+2015-05-30  Karl Berry  <karl@freefriends.org>
+
+	* util/texi2dvi (generated_files_get): another attempt at making
+	punctuation optional on the \openout line, for luatex.
+	Report from Wybo Dekker.
+
 2015-05-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_read_and_dispatch): Make call to 

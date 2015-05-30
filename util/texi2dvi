@@ -753,10 +753,14 @@ generated_files_get ()
   # Gather the files created by TeX.
   (
     if test -f "$1.log"; then
-      # historically the output is like: \openout1 = `foobar.tex'.
+      # Usually the output is like: \openout1 = `foobar.tex'.
+      # (including the final period)
       # but luatex outputs: \openout1 = foobar.tex
-      # so we have to make the punctuation optional.
-      $SED -n -e "s,^\\\\openout.* = \`*\\(.*\\)'*\\.*,\\1,p" "$1.log"
+      # (no quotes, no period).
+      # So we have to make the punctuation optional.
+      grep '^\\openout[0-9]' "$1.log" \
+        | $SED -e "s/\\\\openout[^=]*= *[\`']*//" \
+             -e "s/'\.$//"
     fi
     echo "$1.log"
   ) |
