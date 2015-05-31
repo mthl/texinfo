@@ -1,5 +1,10 @@
 2015-05-31  Karl Berry  <karl@freefriends.org>
 
+	* pretest 5.9.93.
+	* configure.ac (AC_INIT): update.
+
+2015-05-31  Karl Berry  <karl@freefriends.org>
+
 	* po/Makefile.in.in ($(DOMAIN).pot-update): invoke xgettext a
 	second time with --join-existing --language=awk texindex/ti.twjr,
 	since there is apparently no other way to get ti.twjr's strings
@@ -136,7 +141,7 @@
 
 2015-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	Pretest 5.9.92.
+	* Pretest 5.9.92.
 
 2015-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
