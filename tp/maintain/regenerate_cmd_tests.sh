@@ -60,7 +60,7 @@ for test_dir in $test_dirs; do
     test_driving_files="$test_driving_files $driving_file"
     while read line
     do
-    if echo $line | grep -qs '^ *#'; then continue; fi
+    if echo $line | grep '^ *#' >/dev/null; then continue; fi
 # there are better ways
     name=`echo $line | awk '{print $1}'`
     arg=$name

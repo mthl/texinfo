@@ -1,3 +1,14 @@
+2015-05-31  Karl Berry  <karl@freefriends.org>
+
+	* tp/tests/run_parser_all.sh,
+	* tp/maintain/regenerate_cmd_tests.sh: use grep >/dev/null
+	instead of -qs; Solaris 5.10 grep does not support -q.
+
+	* tp/tests/run_parser_all.sh: exec /usr/xpg4/bin/sh for Solaris 5.10.
+
+	* tp/tests/run_parser_all.sh: test "z$file" rather than "$zfile",
+	as intended.
+
 2015-05-30  Karl Berry  <karl@freefriends.org>
 
 	* util/texi2dvi (generated_files_get): another attempt at making
