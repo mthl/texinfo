@@ -105,7 +105,7 @@ po-check:
 	  for file in $$($(CVS_LIST_EXCEPT))				\
 	              `find [a-z]* -name '*.[ch]' 			\
 		                -o -name '*.p[lm]'			\
-				-o -name '*.twjr'`; do			\
+				-o -name '*.notyettwjr'`; do		\
 	    # don't look at sources from some subdirs.			\
 	    case $$file in						\
 	      contrib/* ) continue;;					\

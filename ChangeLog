@@ -7,6 +7,7 @@
 	* util/srclist.txt: must manually merge po/Makefile.in.in
 	instead of just copying until xgettext knows about .twjr.
 	* po/POTFILES.in: remove texindex/ti.twjr.
+	* Makefile.am (po-check): don't expect *.twjr in po/POTFILES.in.
 
 2015-05-31  Karl Berry  <karl@freefriends.org>
 
