@@ -147,7 +147,7 @@ function version()
 {
   print "texindex (GNU texinfo)", Texindex_version
   print ""
-  print _"Copyright (C) 2015 Free Software Foundation, Inc."
+  printf _"Copyright (C) %s Free Software Foundation, Inc.\n", "2015"
   print _"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
   print _"This is free software: you are free to change and redistribute it."
   print _"There is NO WARRANTY, to the extent permitted by law."
@@ -161,7 +161,7 @@ BEGIN {
   EXIT_SUCCESS = 0
   EXIT_FAILURE = 1
   
-  Texindex_version = "5.2dev"
+  Texindex_version = "5.9.93"
   if (! Invocation_name) {
     # provide fallback in case it's not passed in.
     Invocation_name = "texindex"
