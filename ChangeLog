@@ -1,8 +1,20 @@
 2015-05-31  Karl Berry  <karl@freefriends.org>
 
+	* po/Makefile.in.in ($(DOMAIN).pot-update): invoke xgettext a
+	second time with --join-existing --language=awk texindex/ti.twjr,
+	since there is apparently no other way to get ti.twjr's strings
+	into texinfo.pot.
+	* util/srclist.txt: must manually merge po/Makefile.in.in
+	instead of just copying until xgettext knows about .twjr.
+	* po/POTFILES.in: remove texindex/ti.twjr.
+
+2015-05-31  Karl Berry  <karl@freefriends.org>
+
 	* po/Makevars (PACKAGE_GNU, MSGINIT_OPTIONS, PO_DEPENDS_ON_POT,
 	DIST_DEPENDS_ON_UPDATE_PO): new variables to sync with
 	Makevars.template from gettext-0.19.4 (and earlier.)
+
+2015-05-31  Karl Berry  <karl@freefriends.org>
 
 	* tp/tests/run_parser_all.sh,
 	* tp/maintain/regenerate_cmd_tests.sh: use grep >/dev/null

@@ -26,7 +26,8 @@ $EMACSSRC/doc/misc/info.texi			doc	doclicense
 $GETTEXT/gettext-runtime/ABOUT-NLS		.
 #
 $GETTEXT/gettext-tools/po/Makefile.in.in	po_document
-$GETTEXT/gettext-tools/po/Makefile.in.in	po
+# must merge by hand, not just copy, until .twjr is supported by gettext.
+#$GETTEXT/gettext-tools/po/Makefile.in.in	po
 $GETTEXT/gettext-tools/po/Makevars.template	po
 $GETTEXT/gettext-tools/po/Rules-quot		po
 $GETTEXT/gettext-tools/po/boldquot.sed		po
