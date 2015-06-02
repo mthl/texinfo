@@ -76,5 +76,5 @@ ti.texi: ti.twjr
 	  | $(do_subst) -e "s,[@]UPDATED[@],$$UPDATED,g" \
 	  >ti.texi || rm -f ti.texi
 
-# a fun cartoon used in the literate program, and the document itself.
-EXTRA_DIST += dek_idx.png ti.pdf
+# a fun cartoon used in the literate program.
+EXTRA_DIST += dek_idx.png

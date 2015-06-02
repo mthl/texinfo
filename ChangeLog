@@ -1,8 +1,8 @@
 2015-06-02  Karl Berry  <karl@freefriends.org>
 
-	* texindex/ti.twjr (Seen): re-initialize for each output file.
+	* texindex/ti.twjr (Seen): re-initialize for each output file,
+	so a duplicated index entry is kept if it's in a different index.
 	Doc: discuss @ vs. \ as command character; indexing updates.
-	* texindex/Makefile.am (EXTRA_DIST): let's include ti.pdf.
 	* doc/texinfo.texi (Details of texindex): a bit more about twjr.
 	
 	* doc/texinfo.tex (\lastsection): define as empty in case

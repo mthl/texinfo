@@ -16458,9 +16458,7 @@ know that the new @command{texindex} is a literate program
 (@url{http://en.wikipedia.org/wiki/Literate_programming}) using
 Texinfo for documentation and (portable) @code{awk} for code.  A
 single source file, @file{texindex/ti.twjr} in this case, produces the
-runnable program, a printable document, and an online document.  The
-printable document, @file{texindex/ti.pdf}, is included in the Texinfo
-distribution.
+runnable program, a printable document, and an online document.
 
 The system is called @file{texiwebjr} and was created by Arnold
 Robbins, who also wrote the new @command{texindex}.  Not
