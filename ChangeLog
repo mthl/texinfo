@@ -1,5 +1,11 @@
 2015-06-02  Karl Berry  <karl@freefriends.org>
 
+	* po_document/Makevars (PACKAGE_GNU, MSGINIT_OPTIONS,
+	PO_DEPENDS_ON_POT, DIST_DEPENDS_ON_UPDATE_PO): new variables,
+	as with po/Makevars a couple days ago.
+
+2015-06-02  Karl Berry  <karl@freefriends.org>
+
 	* texindex/ti.twjr (Seen): re-initialize for each output file,
 	so a duplicated index entry is kept if it's in a different index.
 	Doc: discuss @ vs. \ as command character; indexing updates.
