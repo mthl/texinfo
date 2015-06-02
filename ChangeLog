@@ -1,7 +1,16 @@
+2015-06-02  Karl Berry  <karl@freefriends.org>
+
+	* texindex/ti.twjr (Seen): re-initialize for each output file.
+	Doc: discuss @ vs. \ as command character; indexing updates.
+	* texindex/Makefile.am (EXTRA_DIST): let's include ti.pdf.
+	* doc/texinfo.texi (Details of texindex): a bit more about twjr.
+	
+	* doc/texinfo.tex (\lastsection): define as empty in case
+	a sub(sub)heading occurs out of sequence.
+
 2015-05-31  Karl Berry  <karl@freefriends.org>
 
-	* pretest 5.9.93.
-	* configure.ac (AC_INIT): update.
+	* configure.ac (AC_INIT): prepare for 5.993 pretest.
 
 2015-05-31  Karl Berry  <karl@freefriends.org>
 

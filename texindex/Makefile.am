@@ -13,11 +13,9 @@
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 # basic plan: what users invoke will be texindex, a shell script wrapper
-# for texindex.awk.
-# 
-# texindex will be created from texindex.in by configure.
-# texindex.awk will be created from ti.twjr by the maintainer (before
-# make dist), using the texiwebjr system.
+# created from texindex.in by configure.
+# texindex.awk does the real work; it is created from ti.twjr 
+# using rules here invoking the texiwebjr utilities.
 
 # what we want installed in $(bindir).
 dist_bin_SCRIPTS = texindex
@@ -78,5 +76,5 @@ ti.texi: ti.twjr
 	  | $(do_subst) -e "s,[@]UPDATED[@],$$UPDATED,g" \
 	  >ti.texi || rm -f ti.texi
 
-# just a fun cartoon used in the literate document.
-EXTRA_DIST += dek_idx.png
+# a fun cartoon used in the literate program, and the document itself.
+EXTRA_DIST += dek_idx.png ti.pdf

@@ -16330,7 +16330,7 @@ example, @file{foo.cps} is made from @file{foo.cp}.  The
 index output file, and @code{texindex} does not alter it.
 
 After you have sorted the indices, you need to rerun @code{tex} on the
-Texinfo file.  This regenerates the DVI file, this time with
+Texinfo file.  This regenerates the output file, this time with
 up-to-date index entries.
 
 Finally, you may need to run @code{tex} one more time, to get the page
@@ -16425,8 +16425,8 @@ initial'' shown in the index:
 @end example
 
 @findex \usebracesinindexestrue
-However, to enable this behavior, it's necessary (for now) to give a
-special option to @TeX{} early in a source document:
+However, to enable this behavior, it's necessary (for the time being)
+to give a special option to @TeX{} early in a source document:
 
 @example
 @@tex
@@ -16440,7 +16440,7 @@ with an incorrect error message (@samp{No page number in \entry...})
 on such index entries when handled in the normal way.  Therefore
 @TeX{} wrote out an incorrect ``sort string'' using the @samp{|}
 character; this did not affect the text of the entry, but the index
-initial was the incorrect @samp{|} (and sorting was not perfect).
+initial was the incorrect @samp{|}, and sorting was not perfect.
 
 Because of that fatal error, and because relatively few documents have
 index entries beginning with braces, we want to provide some
@@ -16452,17 +16452,21 @@ true by default (the above @TeX{} code will continue to work fine).
 @cindex Texinfo, and literate programming
 @cindex Robbins, Arnold
 @pindex texiwebjr
+@pindex ti.twjr
 Although not a matter of functionality, readers may be interested to
 know that the new @command{texindex} is a literate program
 (@url{http://en.wikipedia.org/wiki/Literate_programming}) using
-Texinfo itself for documentation and (portable) @code{awk} for the
-code.  A single source file, @file{ti.twjr} in this case, produces the
+Texinfo for documentation and (portable) @code{awk} for code.  A
+single source file, @file{texindex/ti.twjr} in this case, produces the
 runnable program, a printable document, and an online document.  The
-system is called @file{texiwebjr} and was created by Arnold Robbins,
-who also wrote the new @command{texindex} (and not coincidentally is
-the long-time maintainer of Gawk, @pxref{Top,,, gawk, The GNU Awk
-User's Guide}).  The file @file{texindex/Makefile.am} shows example
-usage.
+printable document, @file{texindex/ti.pdf}, is included in the Texinfo
+distribution.
+
+The system is called @file{texiwebjr} and was created by Arnold
+Robbins, who also wrote the new @command{texindex}.  Not
+coincidentally, he is also the long-time maintainer of Gawk,
+@pxref{Top,,, gawk, The GNU Awk User's Guide}).  The file
+@file{texindex/Makefile.am} shows example usage of the system.
 
 
 @node Print with @t{lpr}

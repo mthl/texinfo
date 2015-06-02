@@ -198,8 +198,9 @@ function beginfile(filename)
   # Reinitialize these for each input file
   del_array(Data)
   del_array(Keys)
-  Do_initials = FALSE
+  del_array(Seen)
   Entries = 0
+  Do_initials = FALSE
   Prev_initial = ""
 
   Command_char = substr($0, 1, 1)
