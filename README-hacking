@@ -115,6 +115,12 @@ Ensure TXI_XLATE in doc/Makefile.am matches actual file list.
 Check that TEXINFO_DTD_VERSION has been updated to the next version in
   configure.ac if the DTD has been modified since the last release.
 
+- When close to official release:
+special pleading with bug-texinfo / beebe / platform-testers to try.
+check OpenCSW build reports at
+  https://buildfarm.opencsw.org/buildbot/waterfall?category=texinfo
+try groff.texinfo from groff source repo.
+
 - Official releases only:
 version number in texi2dvi, texi2pdf, txirefcard.tex.
 version and date in NEWS.
@@ -122,10 +128,6 @@ version and date in NEWS.
 sync texi2html/test/ results with tp/.
 ensure building standalone modules for CPAN still works.
 make V=1 pdf and fix underfull/overfull boxes.
-special pleading with bug-texinfo / beebe / compile farms to try.
-check OpenCSW build reports at
-  https://buildfarm.opencsw.org/buildbot/waterfall?category=texinfo
-try groff.texinfo from groff source repo.
 
 - Changes to sources:
 update version in configure.ac, notice in ChangeLog.

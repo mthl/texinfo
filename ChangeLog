@@ -1,3 +1,7 @@
+2015-06-03  Karl Berry  <karl@freefriends.org>
+
+	* pretest 5.9.93.
+
 2015-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-inter.inc (run_ginfo): Close fd opened to control 

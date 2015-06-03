@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-05-31 14:08-0700\n"
+"POT-Creation-Date: 2015-06-03 15:28-0700\n"
 "PO-Revision-Date: 2015-05-04 11:27+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -400,7 +400,7 @@ msgstr "Меню вузла «%2$s» не містить пункту «%1$s»."
 msgid "No file given for node '%s'."
 msgstr "Для вузла «%s» не вказано файла."
 
-#: info/info.c:365 info/info.c:1113
+#: info/info.c:365 info/info.c:1115
 #, c-format
 msgid "Cannot find node '%s'."
 msgstr "Не вдалося знайти вузол «%s»."
@@ -436,7 +436,8 @@ msgid "Try --help for more information.\n"
 msgstr "Спробуйте --help, щоб отримати більше інформації.\n"
 
 #: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:878
-#, c-format, perl-format
+#: texindex/ti.twjr:1293
+#, c-format, awk-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -596,79 +597,78 @@ msgstr ""
 "  info -f ./foo.info         просто показати файл ./foo.info, без пошуку у "
 "dir"
 
-#: info/info.c:1079
+#: info/info.c:1081 install-info/install-info.c:616 tp/texi2any.pl:866
+#: texindex/ti.twjr:1282
 msgid ""
-"\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
-"\n"
-"Надсилайте звіти про помилки на адресу bug-texinfo@gnu.org,\n"
-"загальні питання та обговорення - на адресу help-texinfo@gnu.org.\n"
+"Надсилайте звіти про помилки до bug-texinfo@gnu.org,\n"
+"загальні запитання й обговорення до help-texinfo@gnu.org.\n"
 "Домашня сторінка texinfo: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1114
+#: info/info.c:1116
 #, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "Не вдається знайти вузол «(%s)%s»."
 
-#: info/info.c:1115
+#: info/info.c:1117
 msgid "Cannot find a window!"
 msgstr "Не вдається знайти вікно!"
 
-#: info/info.c:1116
+#: info/info.c:1118
 msgid "Point doesn't appear within this window's node!"
 msgstr "Пункт не перебуває у вузлі цього вікна!"
 
-#: info/info.c:1117
+#: info/info.c:1119
 msgid "Cannot delete the last window."
 msgstr "Неможливо вилучити єдине вікно."
 
-#: info/info.c:1118
+#: info/info.c:1120
 msgid "No menu in this node."
 msgstr "Цей вузол не має меню."
 
-#: info/info.c:1119
+#: info/info.c:1121
 msgid "No footnotes in this node."
 msgstr "Цей вузол не має виносок."
 
-#: info/info.c:1120
+#: info/info.c:1122
 msgid "No cross references in this node."
 msgstr "Цей вузол не містить перехресних посилань."
 
-#: info/info.c:1121
+#: info/info.c:1123
 #, c-format
 msgid "No '%s' pointer for this node."
 msgstr "Немає вказівника «%s» для цього вузла."
 
-#: info/info.c:1122
+#: info/info.c:1124
 #, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "Невідома команда «%c»; спробуйте «?», щоб отримати довідку."
 
-#: info/info.c:1123
+#: info/info.c:1125
 #, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "Термінал «%s» недостатньо потужний для роботи Info."
 
-#: info/info.c:1124
+#: info/info.c:1126
 msgid "You are already at the last page of this node."
 msgstr "Ви вже на останній сторінці цього вузла."
 
-#: info/info.c:1125
+#: info/info.c:1127
 msgid "You are already at the first page of this node."
 msgstr "Ви вже на першій сторінці цього вузла."
 
-#: info/info.c:1126
+#: info/info.c:1128
 msgid "Only one window."
 msgstr "Є лише одне вікно."
 
-#: info/info.c:1127
+#: info/info.c:1129
 msgid "Resulting window would be too small."
 msgstr "Отримане вікно буде занадто малим."
 
-#: info/info.c:1128
+#: info/info.c:1130
 msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "Недостатньо місця для вікна довідки, будь ласка, приберіть одне з вікон."
@@ -1930,16 +1930,6 @@ msgstr ""
 " --silent            не показувати попереджень.\n"
 " --test              не оновлювати ФАЙЛ-DIR.\n"
 " --version           показати інформацію про версію й вийти."
-
-#: install-info/install-info.c:616 tp/texi2any.pl:866
-msgid ""
-"Email bug reports to bug-texinfo@gnu.org,\n"
-"general questions and discussion to help-texinfo@gnu.org.\n"
-"Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-"Надсилайте звіти про помилки до bug-texinfo@gnu.org,\n"
-"загальні запитання й обговорення до help-texinfo@gnu.org.\n"
-"Домашня сторінка texinfo: http://www.gnu.org/software/texinfo/"
 
 #: install-info/install-info.c:643
 #, c-format
@@ -3679,98 +3669,80 @@ msgstr "%s: помилка під час спроби закрити файл в
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: не вдалося відкрити %s для запису даних: %s\n"
 
-#: texindex/ti.twjr:349
+#: texindex/ti.twjr:373
 #, fuzzy, awk-format
 msgid "%s: unrecognized option `%s'\n"
 msgstr "%s: невідомий параметр «--%s»\n"
 
-#: texindex/ti.twjr:410
+#: texindex/ti.twjr:444
 #, fuzzy, awk-format
 msgid "%s is not a Texinfo index file\n"
 msgstr "%s: це не файл покажчика texinfo"
 
-#: texindex/ti.twjr:509
+#: texindex/ti.twjr:543
 #, awk-format
 msgid "%s:%d: Bad key %s in record\n"
 msgstr ""
 
-#: texindex/ti.twjr:532
+#: texindex/ti.twjr:566
 #, awk-format
 msgid "%s:%d: Bad entry; expected three fields, not %d\n"
 msgstr ""
 
-#: texindex/ti.twjr:691
+#: texindex/ti.twjr:725
 #, awk-format
 msgid "%s:%d: Bad entry; expected %s at column %d\n"
 msgstr ""
 
-#: texindex/ti.twjr:1218
+#: texindex/ti.twjr:1254
 msgid "..."
 msgstr ""
 
-#: texindex/ti.twjr:1237
+#: texindex/ti.twjr:1273
 #, fuzzy, awk-format
 msgid "Usage: %s [OPTION]... FILE...\n"
 msgstr "Usage: %s [ПАРАМЕТР]... ФАЙЛ-TEXINFO...\n"
 
-#: texindex/ti.twjr:1238
+#: texindex/ti.twjr:1274
 #, fuzzy
 msgid "Generate a sorted index for each TeX output FILE."
 msgstr "Генерує упорядкований покажчик для кожного файлу виводу TeX.\n"
 
-#: texindex/ti.twjr:1239
+#: texindex/ti.twjr:1275
 #, fuzzy
 msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
 msgstr "Зазвичай, ФАЙЛ... вказується як `foo.%c%c' для документу `foo.texi'.\n"
 
-#: texindex/ti.twjr:1241
+#: texindex/ti.twjr:1277
 #, fuzzy
 msgid "Options:"
 msgstr ""
 "\n"
 "Параметри:\n"
 
-#: texindex/ti.twjr:1242
+#: texindex/ti.twjr:1278
 #, fuzzy
 msgid " -h, --help   display this help and exit"
 msgstr "показати цю довідку й вийти"
 
-#: texindex/ti.twjr:1243
+#: texindex/ti.twjr:1279
 msgid " --version    display version information and exit"
 msgstr ""
 
-#: texindex/ti.twjr:1244
+#: texindex/ti.twjr:1280
 msgid " --           end option processing"
 msgstr ""
 
-#: texindex/ti.twjr:1246
-msgid "Email bug reports to bug-texinfo@gnu.org,"
-msgstr ""
-
-#: texindex/ti.twjr:1247
-msgid "general questions and discussion to help-texinfo@gnu.org."
-msgstr ""
-
-#: texindex/ti.twjr:1248
-msgid "Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-
-#: texindex/ti.twjr:1257
-msgid "Copyright (C) 2015 Free Software Foundation, Inc."
-msgstr ""
-
-#: texindex/ti.twjr:1258
-msgid ""
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
-msgstr ""
-
-#: texindex/ti.twjr:1259
-msgid "This is free software: you are free to change and redistribute it."
-msgstr ""
-
-#: texindex/ti.twjr:1260
-msgid "There is NO WARRANTY, to the extent permitted by law."
-msgstr ""
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Надсилайте звіти про помилки на адресу bug-texinfo@gnu.org,\n"
+#~ "загальні питання та обговорення - на адресу help-texinfo@gnu.org.\n"
+#~ "Домашня сторінка texinfo: http://www.gnu.org/software/texinfo/"
 
 #~ msgid "Insert this character"
 #~ msgstr "Вставити цей символ"

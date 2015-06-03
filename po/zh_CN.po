@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-05-31 14:08-0700\n"
+"POT-Creation-Date: 2015-06-03 15:28-0700\n"
 "PO-Revision-Date: 2009-05-21 15:08中国标准时间\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -407,7 +407,7 @@ msgstr "节点“%2$s”中没有菜单项“%1$s”。"
 msgid "No file given for node '%s'."
 msgstr "节点“%s”中没有菜单。"
 
-#: info/info.c:365 info/info.c:1113
+#: info/info.c:365 info/info.c:1115
 #, fuzzy, c-format
 msgid "Cannot find node '%s'."
 msgstr "无法找到节点“%s”。"
@@ -443,7 +443,8 @@ msgid "Try --help for more information.\n"
 msgstr "尝试 --更多的求助信息。\n"
 
 #: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:878
-#, c-format, perl-format
+#: texindex/ti.twjr:1293
+#, c-format, awk-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -591,79 +592,78 @@ msgstr ""
 "  info --subnodes -o out.txt emacs  将整个手册页输出至 out.txt\n"
 "  info -f ./foo.info         显示文件 ./foo.info，而不是查找目录"
 
-#: info/info.c:1079
+#: info/info.c:1081 install-info/install-info.c:616 tp/texi2any.pl:866
+#: texindex/ti.twjr:1282
 msgid ""
-"\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
-"\n"
 "请将错误报告发送到 bug-texinfo@gnu.org，\n"
 "一般的问题和讨论请发送到 help-texinfo@gnu.org。\n"
 "Texinfo 主页：http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1114
+#: info/info.c:1116
 #, fuzzy, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "无法找到节点“(%s)%s”。"
 
-#: info/info.c:1115
+#: info/info.c:1117
 msgid "Cannot find a window!"
 msgstr "无法找到一个窗口！"
 
-#: info/info.c:1116
+#: info/info.c:1118
 msgid "Point doesn't appear within this window's node!"
 msgstr "光标没有出现在该窗口的节点之中！"
 
-#: info/info.c:1117
+#: info/info.c:1119
 msgid "Cannot delete the last window."
 msgstr "无法删除最后的窗口。"
 
-#: info/info.c:1118
+#: info/info.c:1120
 msgid "No menu in this node."
 msgstr "该节点中没有菜单。"
 
-#: info/info.c:1119
+#: info/info.c:1121
 msgid "No footnotes in this node."
 msgstr "该节点中没有脚注。"
 
-#: info/info.c:1120
+#: info/info.c:1122
 msgid "No cross references in this node."
 msgstr "该节点中没有交叉引用。"
 
-#: info/info.c:1121
+#: info/info.c:1123
 #, fuzzy, c-format
 msgid "No '%s' pointer for this node."
 msgstr "该节点中没有“%s”指针"
 
-#: info/info.c:1122
+#: info/info.c:1124
 #, fuzzy, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "未知的 Info 命令“%c”；请以“?”获得帮助。"
 
-#: info/info.c:1123
+#: info/info.c:1125
 #, fuzzy, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "终端类型“%s”的能力不足以支持 Info 的运行。"
 
-#: info/info.c:1124
+#: info/info.c:1126
 msgid "You are already at the last page of this node."
 msgstr "您已经在该节点的最后一个页面中了。"
 
-#: info/info.c:1125
+#: info/info.c:1127
 msgid "You are already at the first page of this node."
 msgstr "您已经在该节点的第一页中了。"
 
-#: info/info.c:1126
+#: info/info.c:1128
 msgid "Only one window."
 msgstr "只有一个窗口。"
 
-#: info/info.c:1127
+#: info/info.c:1129
 msgid "Resulting window would be too small."
 msgstr "结果窗口将会太小。"
 
-#: info/info.c:1128
+#: info/info.c:1130
 msgid "Not enough room for a help window, please delete a window."
 msgstr "没有足够的空间用于求助窗口，请删除一个窗口。"
 
@@ -1910,16 +1910,6 @@ msgstr ""
 " --silent            不输出警告。\n"
 " --test              不更新 DIR-FILE。\n"
 " --version           显示版本信息并退出。"
-
-#: install-info/install-info.c:616 tp/texi2any.pl:866
-msgid ""
-"Email bug reports to bug-texinfo@gnu.org,\n"
-"general questions and discussion to help-texinfo@gnu.org.\n"
-"Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-"请将错误报告发送到 bug-texinfo@gnu.org，\n"
-"一般的问题和讨论请发送到 help-texinfo@gnu.org。\n"
-"Texinfo 主页：http://www.gnu.org/software/texinfo/"
 
 #: install-info/install-info.c:643
 #, fuzzy, c-format
@@ -3563,98 +3553,80 @@ msgstr "关闭输出文件“%s”时出错"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: 无法打开 --css-file: %s"
 
-#: texindex/ti.twjr:349
+#: texindex/ti.twjr:373
 #, fuzzy, awk-format
 msgid "%s: unrecognized option `%s'\n"
 msgstr "%s：不能识别的选项“--%s”\n"
 
-#: texindex/ti.twjr:410
+#: texindex/ti.twjr:444
 #, fuzzy, awk-format
 msgid "%s is not a Texinfo index file\n"
 msgstr "%s：不是 texinfo 索引文件"
 
-#: texindex/ti.twjr:509
+#: texindex/ti.twjr:543
 #, awk-format
 msgid "%s:%d: Bad key %s in record\n"
 msgstr ""
 
-#: texindex/ti.twjr:532
+#: texindex/ti.twjr:566
 #, awk-format
 msgid "%s:%d: Bad entry; expected three fields, not %d\n"
 msgstr ""
 
-#: texindex/ti.twjr:691
+#: texindex/ti.twjr:725
 #, awk-format
 msgid "%s:%d: Bad entry; expected %s at column %d\n"
 msgstr ""
 
-#: texindex/ti.twjr:1218
+#: texindex/ti.twjr:1254
 msgid "..."
 msgstr ""
 
-#: texindex/ti.twjr:1237
+#: texindex/ti.twjr:1273
 #, fuzzy, awk-format
 msgid "Usage: %s [OPTION]... FILE...\n"
 msgstr "用法：%s [选项]... 文件...\n"
 
-#: texindex/ti.twjr:1238
+#: texindex/ti.twjr:1274
 #, fuzzy
 msgid "Generate a sorted index for each TeX output FILE."
 msgstr "为每个 TeX 输出文件生成排序的索引。\n"
 
-#: texindex/ti.twjr:1239
+#: texindex/ti.twjr:1275
 #, fuzzy
 msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
 msgstr "对于文档“foo.texi”，FILE... 通常为“foo.%c%c”的形式。\n"
 
-#: texindex/ti.twjr:1241
+#: texindex/ti.twjr:1277
 #, fuzzy
 msgid "Options:"
 msgstr ""
 "\n"
 "选项：\n"
 
-#: texindex/ti.twjr:1242
+#: texindex/ti.twjr:1278
 #, fuzzy
 msgid " -h, --help   display this help and exit"
 msgstr "显示该求助信息并退出"
 
-#: texindex/ti.twjr:1243
+#: texindex/ti.twjr:1279
 msgid " --version    display version information and exit"
 msgstr ""
 
-#: texindex/ti.twjr:1244
+#: texindex/ti.twjr:1280
 msgid " --           end option processing"
 msgstr ""
 
-#: texindex/ti.twjr:1246
-msgid "Email bug reports to bug-texinfo@gnu.org,"
-msgstr ""
-
-#: texindex/ti.twjr:1247
-msgid "general questions and discussion to help-texinfo@gnu.org."
-msgstr ""
-
-#: texindex/ti.twjr:1248
-msgid "Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-
-#: texindex/ti.twjr:1257
-msgid "Copyright (C) 2015 Free Software Foundation, Inc."
-msgstr ""
-
-#: texindex/ti.twjr:1258
-msgid ""
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
-msgstr ""
-
-#: texindex/ti.twjr:1259
-msgid "This is free software: you are free to change and redistribute it."
-msgstr ""
-
-#: texindex/ti.twjr:1260
-msgid "There is NO WARRANTY, to the extent permitted by law."
-msgstr ""
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "请将错误报告发送到 bug-texinfo@gnu.org，\n"
+#~ "一般的问题和讨论请发送到 help-texinfo@gnu.org。\n"
+#~ "Texinfo 主页：http://www.gnu.org/software/texinfo/"
 
 #~ msgid "Insert this character"
 #~ msgstr "插入该字符"

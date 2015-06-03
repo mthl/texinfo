@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-05-31 14:08-0700\n"
+"POT-Creation-Date: 2015-06-03 15:28-0700\n"
 "PO-Revision-Date: 2013-09-20 13:31+0200\n"
 "Last-Translator: Francesco Groccia <frgroccia@gmail.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -399,7 +399,7 @@ msgstr "Nessuna voce di menù «%s» nel nodo «%s»."
 msgid "No file given for node '%s'."
 msgstr "Nessun menù nel nodo «%s»."
 
-#: info/info.c:365 info/info.c:1113
+#: info/info.c:365 info/info.c:1115
 #, fuzzy, c-format
 msgid "Cannot find node '%s'."
 msgstr "Impossibile trovare il nodo «%s»."
@@ -435,7 +435,8 @@ msgid "Try --help for more information.\n"
 msgstr "Usare «--help» per maggiori informazioni.\n"
 
 #: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:878
-#, c-format, perl-format
+#: texindex/ti.twjr:1293
+#, c-format, awk-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -601,79 +602,78 @@ msgstr ""
 "  info -f ./foo.info         mostra il file «./foo.info» senza cercare la "
 "cartella"
 
-#: info/info.c:1079
+#: info/info.c:1081 install-info/install-info.c:616 tp/texi2any.pl:866
+#: texindex/ti.twjr:1282
 msgid ""
-"\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 msgstr ""
-"\n"
 "Per segnalare un bug inviare un'email a bug-texinfo@gnu.org,\n"
 "per domande generali e discussioni: help-texinfo@gnu.org.\n"
 "Sito web di Texinfo: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1114
+#: info/info.c:1116
 #, fuzzy, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "Impossibile trovare il nodo «(%s)%s»."
 
-#: info/info.c:1115
+#: info/info.c:1117
 msgid "Cannot find a window!"
 msgstr "Impossibile trovare una finestra!"
 
-#: info/info.c:1116
+#: info/info.c:1118
 msgid "Point doesn't appear within this window's node!"
 msgstr "Il cursore non appare nel nodo di questa finestra!"
 
-#: info/info.c:1117
+#: info/info.c:1119
 msgid "Cannot delete the last window."
 msgstr "Impossibile eliminare l'ultima finestra."
 
-#: info/info.c:1118
+#: info/info.c:1120
 msgid "No menu in this node."
 msgstr "Nessun menù in questo nodo."
 
-#: info/info.c:1119
+#: info/info.c:1121
 msgid "No footnotes in this node."
 msgstr "Nessun piè di pagina in questo nodo."
 
-#: info/info.c:1120
+#: info/info.c:1122
 msgid "No cross references in this node."
 msgstr "Nessun riferimento incrociato in questo nodo."
 
-#: info/info.c:1121
+#: info/info.c:1123
 #, fuzzy, c-format
 msgid "No '%s' pointer for this node."
 msgstr "Nessun puntatore a «%s» per questo nodo."
 
-#: info/info.c:1122
+#: info/info.c:1124
 #, fuzzy, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "Comando Info «%c» sconosciuto; usare «?» per l'aiuto."
 
-#: info/info.c:1123
+#: info/info.c:1125
 #, fuzzy, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "Il tipo di terminale «%s» non è in grado di avviare il programma Info."
 
-#: info/info.c:1124
+#: info/info.c:1126
 msgid "You are already at the last page of this node."
 msgstr "Sei già all'ultima pagina di questo nodo."
 
-#: info/info.c:1125
+#: info/info.c:1127
 msgid "You are already at the first page of this node."
 msgstr "Questa è già la prima pagina del nodo corrente."
 
-#: info/info.c:1126
+#: info/info.c:1128
 msgid "Only one window."
 msgstr "Solo una finestra."
 
-#: info/info.c:1127
+#: info/info.c:1129
 msgid "Resulting window would be too small."
 msgstr "La finestra risultante sarebbe troppo piccola."
 
-#: info/info.c:1128
+#: info/info.c:1130
 msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "Non c'è abbastanza spazio per visualizzare una finestra di aiuto. Eliminare "
@@ -1953,16 +1953,6 @@ msgstr ""
 " --silent            ignora gli avvertimenti.\n"
 " --test              ignora l'aggiornamento del DIR-FILE.\n"
 " --version           mostra le informazioni di versione ed esce."
-
-#: install-info/install-info.c:616 tp/texi2any.pl:866
-msgid ""
-"Email bug reports to bug-texinfo@gnu.org,\n"
-"general questions and discussion to help-texinfo@gnu.org.\n"
-"Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-"Per segnalare un bug inviare un'email a bug-texinfo@gnu.org,\n"
-"per domande generali e discussioni: help-texinfo@gnu.org.\n"
-"Sito web di Texinfo: http://www.gnu.org/software/texinfo/"
 
 #: install-info/install-info.c:643
 #, c-format
@@ -3713,100 +3703,82 @@ msgstr ""
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: impossibile aprire %s per la scrittura: %s\n"
 
-#: texindex/ti.twjr:349
+#: texindex/ti.twjr:373
 #, fuzzy, awk-format
 msgid "%s: unrecognized option `%s'\n"
 msgstr "%s: opzione non riconosciuta «--%s»\n"
 
-#: texindex/ti.twjr:410
+#: texindex/ti.twjr:444
 #, fuzzy, awk-format
 msgid "%s is not a Texinfo index file\n"
 msgstr "%s: non è un file indice texinfo"
 
-#: texindex/ti.twjr:509
+#: texindex/ti.twjr:543
 #, awk-format
 msgid "%s:%d: Bad key %s in record\n"
 msgstr ""
 
-#: texindex/ti.twjr:532
+#: texindex/ti.twjr:566
 #, awk-format
 msgid "%s:%d: Bad entry; expected three fields, not %d\n"
 msgstr ""
 
-#: texindex/ti.twjr:691
+#: texindex/ti.twjr:725
 #, awk-format
 msgid "%s:%d: Bad entry; expected %s at column %d\n"
 msgstr ""
 
-#: texindex/ti.twjr:1218
+#: texindex/ti.twjr:1254
 msgid "..."
 msgstr ""
 
-#: texindex/ti.twjr:1237
+#: texindex/ti.twjr:1273
 #, fuzzy, awk-format
 msgid "Usage: %s [OPTION]... FILE...\n"
 msgstr "Uso: %s [OPZIONE]... FILE...\n"
 
-#: texindex/ti.twjr:1238
+#: texindex/ti.twjr:1274
 #, fuzzy
 msgid "Generate a sorted index for each TeX output FILE."
 msgstr "Genera un indice ordinato per ogni file TeX di uscita.\n"
 
-#: texindex/ti.twjr:1239
+#: texindex/ti.twjr:1275
 #, fuzzy
 msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
 msgstr ""
 "Solitamente FILE... viene indicato come «foo.%c%c» per un documento «foo."
 "texi».\n"
 
-#: texindex/ti.twjr:1241
+#: texindex/ti.twjr:1277
 #, fuzzy
 msgid "Options:"
 msgstr ""
 "\n"
 "Opzioni:\n"
 
-#: texindex/ti.twjr:1242
+#: texindex/ti.twjr:1278
 #, fuzzy
 msgid " -h, --help   display this help and exit"
 msgstr "mostra questa guida ed esce"
 
-#: texindex/ti.twjr:1243
+#: texindex/ti.twjr:1279
 msgid " --version    display version information and exit"
 msgstr ""
 
-#: texindex/ti.twjr:1244
+#: texindex/ti.twjr:1280
 msgid " --           end option processing"
 msgstr ""
 
-#: texindex/ti.twjr:1246
-msgid "Email bug reports to bug-texinfo@gnu.org,"
-msgstr ""
-
-#: texindex/ti.twjr:1247
-msgid "general questions and discussion to help-texinfo@gnu.org."
-msgstr ""
-
-#: texindex/ti.twjr:1248
-msgid "Texinfo home page: http://www.gnu.org/software/texinfo/"
-msgstr ""
-
-#: texindex/ti.twjr:1257
-msgid "Copyright (C) 2015 Free Software Foundation, Inc."
-msgstr ""
-
-#: texindex/ti.twjr:1258
-msgid ""
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
-msgstr ""
-
-#: texindex/ti.twjr:1259
-msgid "This is free software: you are free to change and redistribute it."
-msgstr ""
-
-#: texindex/ti.twjr:1260
-msgid "There is NO WARRANTY, to the extent permitted by law."
-msgstr ""
+#~ msgid ""
+#~ "\n"
+#~ "Email bug reports to bug-texinfo@gnu.org,\n"
+#~ "general questions and discussion to help-texinfo@gnu.org.\n"
+#~ "Texinfo home page: http://www.gnu.org/software/texinfo/"
+#~ msgstr ""
+#~ "\n"
+#~ "Per segnalare un bug inviare un'email a bug-texinfo@gnu.org,\n"
+#~ "per domande generali e discussioni: help-texinfo@gnu.org.\n"
+#~ "Sito web di Texinfo: http://www.gnu.org/software/texinfo/"
 
 #~ msgid "Insert this character"
 #~ msgstr "Inserisci questo carattere"
