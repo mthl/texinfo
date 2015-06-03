@@ -43,16 +43,6 @@ Other -W options can be useful too, and patches are welcome to resolve
 diagnostics; however, removing all possible warning messages, or
 warnings with nonfree compilers, is explicitly not a goal.
 
-If you want to delve into making a new backend for the Perl makeinfo,
-the documentation in tp/Texinfo/Convert/Converter.pm is a good starting
-point, as it describes the existing backends and other places to look.
-
-Translations are handled through the Translation Project.  When a new
-.po is posted in
-  http://translationproject.org/latest/texinfo 
-  http://translationproject.org/latest/texinfo_document
-it should be installed.
-
 This distribution also uses Gnulib (http://www.gnu.org/software/gnulib)
 to share common files.  Gnulib files used in Texinfo are checked in to
 the repository.  If you get automake/conf/etc. errors from ./autogen.sh,
@@ -66,11 +56,11 @@ The currently-used gnulib modules and other gnulib information are
 recorded in gnulib/m4/gnulib-cache.m4.  Given a source checkout of
 gnulib, you can update the files with gnulib-tool --add-import.
 
-And, when running gnulib-tool --add-import or otherwise adding modules,
-remember to check what files were added (e.g., run "svn status build-aux
-gnulib") and add them to the repository with "svn add"; likewise for
-removals.  Likewise for adding new generated files (typically
-gnulib/lib/foo.h from foo.h.in) to the ignore list.
+When running gnulib-tool --add-import or otherwise adding modules, it is
+necessary to check what files were added (e.g., run "svn status
+build-aux gnulib") and add them to the repository with "svn add";
+likewise for removals.  Likewise for adding new generated files
+(typically gnulib/lib/foo.h from foo.h.in) to the ignore list.
 
 
 
@@ -95,7 +85,27 @@ or symlink to a trivial script along these lines:
 #!/bin/sh
 exec /YOUR/TEXINFO/CHECKOUT/tp/texi2any.pl "$@"
 
-For information on creating and modifying
+
+
+References for working on various parts of the system:
+
+If you want to delve into making a new backend for the Perl makeinfo,
+the documentation in tp/Texinfo/Convert/Converter.pm is a good starting
+point, as it describes the existing backends and other places to look.
+
+If you want to delve into texinfo.tex, a thorough plain TeX reference
+is available under the GFDL:
+  TeX by Topic - http://www.eijkhout.net/texbytopic/texbytopic.html
+Another book on plain TeX, also available under the GFDL, is a GNU package:
+  TeX for the Impatient - http://www.gnu.org/software/teximpatient/
+
+The texindex program is implemented using the TexiWebJR literate
+programming system, combining Texinfo and Awk
+(https://github.com/arnoldrobbins/texiwebjr).  Running "make ti.pdf"
+in the texindex/ subdirectory creates the printable form of the
+program.  All the usual Texinfo output formats are possible.
+
+
 
 Steps for making a release (pretest or official):
 

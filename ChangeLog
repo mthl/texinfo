@@ -1,3 +1,9 @@
+2015-06-03  Karl Berry  <karl@freefriends.org>
+
+	* AUTHORS (Robbins, Smith): add.
+	* README-hacking: mention TeX by Topic, TeX for the Impatient,
+	and texiwebjr.
+
 2015-06-02  Karl Berry  <karl@freefriends.org>
 
 	* po_document/Makevars (PACKAGE_GNU, MSGINIT_OPTIONS,
