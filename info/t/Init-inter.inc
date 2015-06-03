@@ -100,7 +100,11 @@ run_ginfo ()
 {
   rm -f $FINISHEDFIFO
   mkfifo $FINISHEDFIFO
-  { $GINFO $GINFO_OPTIONS "$@" ;
+  { # Close fd opened to control FIFO in subshell so pseudotty can exit 
+    # for an EOF.  This prevents lingering processes if a test is 
+    # interrupted.
+    exec 7>&- ;
+    $GINFO $GINFO_OPTIONS "$@" ;
     test $? -eq 0 || echo failure >$FINISHEDFIFO ;
     echo finished >$FINISHEDFIFO ; } 0<>$PTS_DEVICE 1<&0 &
   SUBSHELL=$!

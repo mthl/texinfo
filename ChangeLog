@@ -1,3 +1,9 @@
+2015-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc (run_ginfo): Close fd opened to control 
+	FIFO in subshell so pseudotty can exit for an EOF.  This 
+	prevents lingering processes if a test is interrupted.
+
 2015-06-03  Karl Berry  <karl@freefriends.org>
 
 	* texindex/ti.twjr (usage, version): combine multi-line strings.
