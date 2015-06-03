@@ -123,6 +123,8 @@ sync texi2html/test/ results with tp/.
 ensure building standalone modules for CPAN still works.
 make V=1 pdf and fix underfull/overfull boxes.
 special pleading with bug-texinfo / beebe / compile farms to try.
+check OpenCSW build reports at
+  https://buildfarm.opencsw.org/buildbot/waterfall?category=texinfo
 try groff.texinfo from groff source repo.
 
 - Changes to sources:
