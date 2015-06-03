@@ -136,9 +136,9 @@ function usage(exit_val)
   print _" --version    display version information and exit"
   print _" --           end option processing"
   print ""
-  print _"Email bug reports to bug-texinfo@gnu.org,"
-  print _"general questions and discussion to help-texinfo@gnu.org."
-  print _"Texinfo home page: http://www.gnu.org/software/texinfo/"
+  print _"Email bug reports to bug-texinfo@gnu.org,\n\
+general questions and discussion to help-texinfo@gnu.org.\n\
+Texinfo home page: http://www.gnu.org/software/texinfo/";
 
   exit exit_val
 }
@@ -147,10 +147,10 @@ function version()
 {
   print "texindex (GNU texinfo)", Texindex_version
   print ""
-  printf _"Copyright (C) %s Free Software Foundation, Inc.\n", "2015"
-  print _"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>"
-  print _"This is free software: you are free to change and redistribute it."
-  print _"There is NO WARRANTY, to the extent permitted by law."
+  printf _"Copyright (C) %s Free Software Foundation, Inc.\n\
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
+This is free software: you are free to change and redistribute it.\n\
+There is NO WARRANTY, to the extent permitted by law.\n", "2015";
 
   exit EXIT_SUCCESS
 }

@@ -1,3 +1,13 @@
+2015-06-03  Karl Berry  <karl@freefriends.org>
+
+	* texindex/ti.twjr (usage, version): combine multi-line strings.
+	Suggested by Benno.
+	* info/info.c (info_short_help): no leading newline on trailing
+	block, to merge string with other occurrences.
+	* Makefile.am (update-po): new convenience target to build both
+	po and po_document strings.
+	* texindex/Makefile.am: doc tweaks.
+
 2015-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/pseudotty.c: Don't get control channel from an already 

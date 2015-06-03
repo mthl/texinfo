@@ -1076,7 +1076,9 @@ Examples:\n\
   info --subnodes -o out.txt emacs  dump entire manual to out.txt\n\
   info -f ./foo.info         show file ./foo.info, not searching dir"));
 
-  puts (_("\n\
+  puts ("");
+
+  puts (_("\
 Email bug reports to bug-texinfo@gnu.org,\n\
 general questions and discussion to help-texinfo@gnu.org.\n\
 Texinfo home page: http://www.gnu.org/software/texinfo/"));
