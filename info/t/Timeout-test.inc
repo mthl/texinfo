@@ -24,7 +24,7 @@ TIMED_OUT=
 if test $? != 0; then
   status=2
 else
-  read -t 3 FINISHED <>$FINISHEDFIFO
+  read -t 3 FINISHED <$FINISHEDFIFO
   status=$?
 fi
 

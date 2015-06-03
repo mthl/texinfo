@@ -47,8 +47,6 @@ INFO_PRINT_COMMAND=">$GINFO_OUTPUT"; export INFO_PRINT_COMMAND
 
 # Not an interactive test
 PTY_PID=0
-WEDGE_PTY_PID=0
-WEDGE_PTY_PID2=0
 SUBSHELL=0
 
 # Get error messages in English
@@ -66,8 +64,6 @@ cleanup ()
 {
   # Delete created files and kill spawned processes if any.
   test $PTY_PID -ne 0 && kill $PTY_PID
-  test $WEDGE_PTY_PID -ne 0 && kill $WEDGE_PTY_PID
-  test $WEDGE_PTY_PID2 -ne 0 && kill $WEDGE_PTY_PID2
   test $SUBSHELL -ne 0 && kill $SUBSHELL
 
   rm -f $GINFO_OUTPUT
@@ -77,7 +73,7 @@ cleanup ()
   if test -n "$TIMED_OUT"; then
     return 1
   fi
-  #killall `basename $0`
+  #killall `basename $0`  # see below
   exit $RETVAL
 }
 

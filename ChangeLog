@@ -1,5 +1,20 @@
 2015-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/pseudotty.c: Don't get control channel from an already 
+	redirected file descriptor, get it from the filename of a FIFO 
+	passed on the command line.  #define _XOPEN_SOURCE as 500 to 
+	expose prototype of "ptsname" under NetBSD 6.1.4.
+	* info/t/Init-inter.inc: Create control channel FIFO and pass 
+	name of it to pseudotty.  Don't use background processes to keep 
+	the control FIFO open.  Redirect FIFO for communicating name of 
+	pty slave device within a subshell.  Keep control FIFO open 
+	using file descriptor redirection in main shell process.
+	* info/t/Init-test.inc: Remove unneeded cleanup code.
+	* info/t/Timeout-test.inc: Don't try to open FIFO for indicating 
+	that ginfo has finished read-write.
+
+2015-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* README-hacking: mention OpenCSW build reports
 
 2015-06-03  Karl Berry  <karl@freefriends.org>

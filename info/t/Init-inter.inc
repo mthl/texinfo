@@ -77,40 +77,18 @@ else
   exit 77
 fi
 
-# When pseudotty opens $PTY_TYPE for reading, this will freeze until the FIFO 
-# is also opened for writing.  The "select" call in pseudotty could also
-# return end-of-file if it is opened and then closed.  We could avoid this
-# by opening it read-write (with "3<>$PTY_TYPE").  However, this might not
-# be portable to some systems, and POSIX doesn't guarantee that a FIFO can
-# be opened read-write.  Thus, we keep the pipe open for writing using a
-# background process instead.
-
-# Wedge open pipe
-sleep 10 3>$PTY_TYPE &
-WEDGE_PTY_PID=$!
-
-# Also keep the pipe open for reading in case pseudotty exits, so that
-# trying to open the pipe for writing doesn't hang.
-sleep 10 3<$PTY_TYPE &
-WEDGE_PTY_PID2=$!
-
-# If we wanted the process to be open indefinitely, we could use an
-# infinite loop in a subshell, like:
-#
-#( exec 3>$PTY_TYPE ; while true; do sleep 100000; done) &
-#
-# Howewever, then we would have the problem of how to kill the "sleep"
-# process in that subshell.  Another idea is
-#
-# test -r t/wedge_cat.fifo || mkfifo t/wedge_cat.fifo
-# cat 3>$PTY_TYPE <wedge_cat.fifo &
-
-# We can feed input bytes into $PTY_TYPE to be passed onto ginfo
-./pseudotty >$PIPEIN 3<$PTY_TYPE &
+# We can feed input bytes into $PTY_TYPE to be passed onto ginfo, as
+# if they were typed by a user in an interactive session.
+# We redirect to the FIFO within a subshell, because under NetBSD 6.1.4
+# it hangs otherwise.
+(./pseudotty "$PTY_TYPE" >$PIPEIN) &
 PTY_PID=$!
-
 # Get name of pseudo-terminal slave device
 read PTS_DEVICE <$PIPEIN
+
+# Keeping the FIFO open for writing prevents the select call in
+# pseudotty returning EOF after a single "printf something >$PTY_TYPE".
+exec 7>$PTY_TYPE
 
 # glibc can kill a running process if it detects a condition like a
 # double free.  This specifies that the message it prints when it does
