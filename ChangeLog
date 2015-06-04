@@ -1,6 +1,11 @@
+2015-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Infokey-config: Set key-time=0 to try to increase 
+	predictability of interactive tests.
+
 2015-06-03  Karl Berry  <karl@freefriends.org>
 
-	* pretest 5.9.93.
+	* prepare for pretest 5.9.93.
 
 2015-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
