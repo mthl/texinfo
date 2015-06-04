@@ -90,10 +90,7 @@ main (int argc, char *argv[])
               if (success < 0)
                 {
                   if (errno != EINTR)
-                    {
-                      error (0, errno, "read error on control channel");
-                      sleep (1);
-                    }
+                    error (1, errno, "read error on control channel");
                 }
               else if (success == 0)
                 {
@@ -107,7 +104,24 @@ main (int argc, char *argv[])
             }
 
           /* Feed any read bytes to the program being controlled. */
-          write (master, &c, 1);
+          do
+            {
+              success = write (master, &c, 1);
+              if (success == 0)
+                {
+                  error (0, 0, "couldn't send byte!");
+                  sleep (1);
+                  continue;
+                }
+            }
+          while (success == -1 && errno == EINTR);
+
+          if (success != 1)
+            {
+              /* The controlled process has probably exited, or been killed. */
+              error (0, 0, "couldn't send byte (giving up)");
+              sleep (1);
+            }
         }
 
       if (FD_ISSET (master, &read_set))
@@ -119,11 +133,13 @@ main (int argc, char *argv[])
             {
               success = read (master, &c, 1);
             }
-          while (success != 1 && errno == EINTR);
-          if (!success)
+          while (success == -1 && errno == EINTR);
+
+          if (success == -1)
             {
+              /* The controlled process has probably exited, or been killed. */
               error (0, 0, "read error on master fd");
-              exit (1);
+              sleep (1);
             }
         }
     }

@@ -22,6 +22,7 @@ TIMED_OUT=
 # should exit the subshell with an error exit status.
 (read -t 0; exit 0)
 if test $? != 0; then
+  # skip test below
   status=2
 else
   read -t 3 FINISHED <$FINISHEDFIFO

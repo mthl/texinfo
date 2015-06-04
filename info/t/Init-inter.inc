@@ -81,7 +81,7 @@ fi
 # if they were typed by a user in an interactive session.
 # We redirect to the FIFO within a subshell, because under NetBSD 6.1.4
 # it hangs otherwise.
-(./pseudotty "$PTY_TYPE" >$PIPEIN) &
+(exec ./pseudotty "$PTY_TYPE" >$PIPEIN) &
 PTY_PID=$!
 # Get name of pseudo-terminal slave device
 read PTS_DEVICE <$PIPEIN
@@ -104,10 +104,18 @@ run_ginfo ()
     # for an EOF.  This prevents lingering processes if a test is 
     # interrupted.
     exec 7>&- ;
+    exec 8>$FINISHEDFIFO ;
     $GINFO $GINFO_OPTIONS "$@" ;
     test $? -eq 0 || echo failure >$FINISHEDFIFO ;
     echo finished >$FINISHEDFIFO ; } 0<>$PTS_DEVICE 1<&0 &
   SUBSHELL=$!
+  exec 8<$FINISHEDFIFO
+
+  # Although we don't write to the FIFO in this process, we still need
+  # to open it for writing, because if the above subshell exits before
+  # we read from it, we won't be able to open it - even though 
+  # "finished" is buffered.
+  exec 9>$FINISHEDFIFO
 
   # Check for pgrep
   if findprog pgrep; then

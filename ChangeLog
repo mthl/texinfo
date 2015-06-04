@@ -1,5 +1,16 @@
 2015-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/pseudotty.c: Check for failure from "write" call.  Don't 
+	exit for an error communicating with controlled process; do exit 
+	for error on control channel.
+	* info/t/Init-inter.inc: Open FIFO for commmunicating that ginfo 
+	has finished on both ends, to allow timeout to work.  Start 
+	pseudotty with "exec" in case there is an intermediate shell, to 
+	get its PID correctly.
+	* info/t/README: Update.
+
+2015-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/Infokey-config: Set key-time=0 to try to increase 
 	predictability of interactive tests.
 
