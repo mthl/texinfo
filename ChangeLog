@@ -1,3 +1,8 @@
+2015-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/adjust-anchors.sh: Add comment about name of character 
+	encoding.  Export LC_ALL instead of LANG.
+
 2015-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/pseudotty.c: Check for failure from "write" call.  Don't 
