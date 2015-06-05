@@ -55,6 +55,9 @@ LC_ALL=C; export LC_ALL
 # Make sure that non-interactive operation works even if terminal is dumb
 TERM=dumb; export TERM
 
+# For interactive tests, we try to set this in Init-inter.inc
+STTY=true
+
 # Clean up if the test is interrupted, for example if the user types
 # C-c, to avoid lingering child processes.  Signal 2 is SIGINT.
 trap cleanup 2
@@ -73,6 +76,12 @@ cleanup ()
   if test -n "$TIMED_OUT"; then
     return 1
   fi
+
+  # We do this because some versions of ksh93 (including that in
+  # Solaris 11) have a bug where a timed-out "read -t" can mess up
+  # the terminal settings, leading to characters not being echoed.
+  $STTY sane
+
   #killall `basename $0`  # see below
   exit $RETVAL
 }

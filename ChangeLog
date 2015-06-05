@@ -1,5 +1,11 @@
 2015-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/Init-test.inc (cleanup): Run "stty sane" (interactive 
+	tests only).
+	* info/t/Init-inter.inc: Check for stty program.
+
+2015-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/adjust-anchors.sh: Add comment about name of character 
 	encoding.  Export LC_ALL instead of LANG.
 

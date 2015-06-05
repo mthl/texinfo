@@ -61,6 +61,9 @@ TERM=vt100; export TERM
 
 FINISHEDFIFO=t/`basename $0.finished`
 
+# See cleanup in Init-test.inc
+findprog stty && STTY=stty
+
 # Create named pipes to communicate with pseudotty program, or quit.
 rm -f $PIPEIN $PTY_TYPE # must already be defined
 if findprog mknod; then # check for mknod to give a better error msg
