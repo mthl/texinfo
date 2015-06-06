@@ -1,3 +1,8 @@
+2015-06-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/index-apropos.sh: Wait for 'index-apropos' command to 
+	finish before we sent more key strokes.
+
 2015-06-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-test.inc (cleanup): Run "stty sane" (interactive 
