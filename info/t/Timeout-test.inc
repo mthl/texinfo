@@ -19,8 +19,10 @@
 TIMED_OUT=
 
 # Attempt to test if "read -t" works.  Under Solaris 10, read -t below
-# should exit the subshell with an error exit status.
-(read -t 0; exit 0)
+# should exit the subshell with an error exit status.  Under some other
+# shells the subshell will not exit but the "read -t" will have an exit
+# status of 2, representing a syntax error.
+(read -t 0 ; test $? != 2 ; exit $?)
 if test $? != 0; then
   # skip test below
   status=2

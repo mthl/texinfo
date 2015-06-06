@@ -1,5 +1,10 @@
 2015-06-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/Timeout-test.inc: Check for "read -t" slightly 
+	differently.
+
+2015-06-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/Init-test.inc,
 	* info/t/Init-inter.inc: Check if running the test turned off 
 	terminal echoing, and only run "stty sane" if that is the case.
