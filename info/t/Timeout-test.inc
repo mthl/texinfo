@@ -29,6 +29,7 @@ else
   status=$?
 fi
 
+RETVAL=0
 if test $status = 1; then
   echo 'read -t failed - probably end-of-file' >&2
   RETVAL=1

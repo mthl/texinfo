@@ -61,8 +61,9 @@ TERM=vt100; export TERM
 
 FINISHEDFIFO=t/`basename $0.finished`
 
-# See cleanup in Init-test.inc
-findprog stty && STTY=stty
+# See cleanup in Init-test.inc.
+findprog stty && { STTY=stty ; reset_required=yes ; }
+test $reset_required=yes && { $STTY | grep [-]echo ; } && reset_required=no
 
 # Create named pipes to communicate with pseudotty program, or quit.
 rm -f $PIPEIN $PTY_TYPE # must already be defined

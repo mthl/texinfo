@@ -1,5 +1,13 @@
 2015-06-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/Init-test.inc,
+	* info/t/Init-inter.inc: Check if running the test turned off 
+	terminal echoing, and only run "stty sane" if that is the case.
+	* info/t/Timeout-test.inc: Default exit status of test to 
+	success.
+
+2015-06-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/index-apropos.sh: Wait for 'index-apropos' command to 
 	finish before we sent more key strokes.
 

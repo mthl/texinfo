@@ -57,6 +57,7 @@ TERM=dumb; export TERM
 
 # For interactive tests, we try to set this in Init-inter.inc
 STTY=true
+reset_required=no
 
 # Clean up if the test is interrupted, for example if the user types
 # C-c, to avoid lingering child processes.  Signal 2 is SIGINT.
@@ -73,14 +74,15 @@ cleanup ()
   rm -f $PIPEIN $PTY_TYPE
   rm -f $FINISHEDFIFO
   
-  if test -n "$TIMED_OUT"; then
-    return 1
-  fi
-
   # We do this because some versions of ksh93 (including that in
   # Solaris 11) have a bug where a timed-out "read -t" can mess up
   # the terminal settings, leading to characters not being echoed.
-  $STTY sane
+  # This is only done if we don't start with "-echo" at the beginning.
+  test $reset_required = yes && { $STTY | grep '[-]echo' ; } && $STTY sane
+
+  if test -n "$TIMED_OUT"; then
+    exit 1
+  fi
 
   #killall `basename $0`  # see below
   exit $RETVAL
