@@ -1,6 +1,10 @@
 2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* info/t/replaced-viewed.sh: Use rm -f instead of rm.
+	* info/t/index-apropos.sh: Don't send C-g to controlled program.
+
+2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/replace-viewed.sh: Use rm -f instead of rm.
 
 2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
