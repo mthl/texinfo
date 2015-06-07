@@ -32,15 +32,14 @@ while test ! -f $GINFO_OUTPUT ; do sleep 1 ; done
 cat $GINFO_OUTPUT
 
 # Now replace the file while it is being viewed.
-rm t/replace-viewed.info
+rm -f t/replace-viewed.info
 cp $t/infodir/sample.info t/replace-viewed.info
 
 # Do a search.  This triggers ginfo's internal garbage collection.
 printf '/what\r' >$PTY_TYPE
 printf q >$PTY_TYPE
 
-rm t/replace-viewed.info
-
+rm -f t/replace-viewed.info
 . $t/Timeout-test.inc
 
 cleanup
