@@ -141,6 +141,7 @@ TESTS = \
 	t/menu-sequence.sh \
 	t/relative-reference.sh \
 	t/resize-in-completions.sh \
+	t/replace-viewed.sh \
 	t/search-skip-screen.sh \
 	t/search-empty.sh \
 	t/inc-sea-forward.sh \
@@ -157,6 +158,7 @@ TESTS = \
 	t/help.sh
 
 XFAIL_TESTS = \
+	t/replace-viewed.sh \
 	t/quoted-label-as-target.sh \
 	t/quoted-target.sh \
 	t/quoted-label-and-target.sh \

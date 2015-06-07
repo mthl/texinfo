@@ -1,3 +1,13 @@
+2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/replaced-viewed.sh: New test.  (Bug reported by Benno 
+	Schulenberg).
+	* info/Makefile.am (TESTS, XFAIL_TESTS): Add it.
+
+2015-06-07  Karl Berry  <karl@freefriends.org>
+
+	* Pretest 5.9.93.
+
 2015-06-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Timeout-test.inc: Check for "read -t" slightly 
