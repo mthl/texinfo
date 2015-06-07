@@ -158,7 +158,6 @@ TESTS = \
 	t/help.sh
 
 XFAIL_TESTS = \
-	t/replace-viewed.sh \
 	t/quoted-label-as-target.sh \
 	t/quoted-target.sh \
 	t/quoted-label-and-target.sh \

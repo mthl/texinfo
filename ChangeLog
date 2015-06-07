@@ -1,5 +1,13 @@
 2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (forget_info_file): Function replaced.  Don't 
+	free the file buffer because it could still be referenced in a 
+	displayed node.
+	* info/Makefile.am (XFAIL_TESTS): Remove replace-viewed.sh.
+	* info/nodes.h (N_Gone): New symbol.
+
+2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/replaced-viewed.sh: New test.  (Bug reported by Benno 
 	Schulenberg).
 	* info/Makefile.am (TESTS, XFAIL_TESTS): Add it.

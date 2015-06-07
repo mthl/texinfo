@@ -67,6 +67,7 @@ typedef struct {
 #define N_IsDir        0x400    /* A dir node. */
 #define N_Subfile      0x800    /* File buffer is a subfile of a split file. */
 #define N_EOLs_Converted 0x1000 /* CR bytes were stripped before LF. */
+#define N_Gone         0x2000   /* File is no more. */
 
 /* String constants. */
 #define INFO_FILE_LABEL                 "File:"
