@@ -1,5 +1,11 @@
 2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/c-u-m-x-scroll-forward: Synch with controlled program 
+	before sending in typed input.  (Attempt at fixing test failures 
+	under CentOS.)
+
+2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/index-apropos.sh: Don't send C-g to controlled program.
 
 2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
