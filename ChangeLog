@@ -1,5 +1,13 @@
 2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* configure.ac (AC_CHECK_HEADERS): Check for stropts.h.
+	* info/pseudotty.c [HAVE_STROPTS_H]: Perform STREAMS ioctl's on 
+	slave device, as recommended in the GNU C Library Reference 
+	Manual.  (Attempt at stopping hang of test replace-viewed.sh 
+	under Solaris 10.)
+
+2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/c-u-m-x-scroll-forward: Synch with controlled program 
 	before sending in typed input.  (Attempt at fixing test failures 
 	under CentOS.)

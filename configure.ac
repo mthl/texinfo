@@ -138,7 +138,7 @@ AC_CHECK_FUNC(sigblock, , [AC_CHECK_LIB(bsd, sigblock)])
 AC_HEADER_STAT
 AC_HEADER_STDC
 AC_CHECK_HEADERS(fcntl.h io.h limits.h pwd.h string.h strings.h \
-  termcap.h termio.h termios.h unistd.h \
+  stropts.h termcap.h termio.h termios.h unistd.h \
   sys/fcntl.h sys/file.h sys/ioctl.h sys/stream.h \
   sys/time.h sys/ttold.h sys/wait.h)
 
