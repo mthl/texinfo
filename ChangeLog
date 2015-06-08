@@ -1,3 +1,8 @@
+2015-06-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Timeout-test.inc: Also check that "time -t 0" produces 
+	no output.  (Attempt at stopping failures under OpenBSD 5.5.)
+
 2015-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* configure.ac (AC_CHECK_HEADERS): Check for stropts.h.
