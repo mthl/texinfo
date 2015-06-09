@@ -282,7 +282,7 @@ dir_entry_of_infodir (char *label, char *searchdir)
   NODE *dir_node;
   REFERENCE *entry;
 
-  for (da_index = 0; dir_filename = dirs_to_add[da_index]; da_index++)
+  for (da_index = 0; (dir_filename = dirs_to_add[da_index]); da_index++)
     {
       dir_fullpath = info_add_extension (searchdir, dir_filename, &dummy);
       if (!dir_fullpath)

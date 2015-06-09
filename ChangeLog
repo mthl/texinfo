@@ -1,5 +1,16 @@
 2015-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/indices.c (info_virtual_index): Change type of a local 
+	variable to match expected type of argument to next_index_match.	
+	* info/dir.c (dir_entry_of_infodir),
+	* info/info-utils.c (info_get_menu_entry_by_label): Add 
+	parentheses around assignment for clarity.
+	* info/info-utils.c (printed_representation): Change declaration 
+	of a variable from an unsigned char * to a char * and cast it 
+	when we need to check the referent is in a range.
+
+2015-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* gnulib: Add stdarg module, to try to fix compilations in C89 
 	mode due to lack of va_copy.
 	* README-hacking: Add note how to ignore files in SVN.

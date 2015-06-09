@@ -794,7 +794,7 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   FILE_BUFFER *fb;
   NODE *node;
   struct text_buffer text;
-  size_t i;
+  int i;
   size_t cnt;
   
   fb = file_buffer_of_window (window);
