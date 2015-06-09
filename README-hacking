@@ -60,8 +60,8 @@ When running gnulib-tool --add-import or otherwise adding modules, it is
 necessary to check what files were added (e.g., run "svn status
 build-aux gnulib") and add them to the repository with "svn add";
 likewise for removals.  Likewise for adding new generated files
-(typically gnulib/lib/foo.h from foo.h.in) to the ignore list (with
-e.g. "SVN_EDITOR=vi svn propedit svn:ignore gnulib/lib").
+(typically gnulib/lib/foo.h from foo.h.in) to the ignore list (e.g.,
+  svn propedit svn:ignore gnulib/lib/foo.h).
 
 
 
