@@ -1,3 +1,8 @@
+2015-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* gnulib: Add stdarg module, to try to fix compilations in C89 
+	mode due to lack of va_copy.
+
 2015-06-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Timeout-test.inc: Also check that "time -t 0" produces 
