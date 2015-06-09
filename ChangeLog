@@ -2,6 +2,7 @@
 
 	* gnulib: Add stdarg module, to try to fix compilations in C89 
 	mode due to lack of va_copy.
+	* README-hacking: Add note how to ignore files in SVN.
 
 2015-06-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
