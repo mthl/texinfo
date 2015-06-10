@@ -98,11 +98,11 @@ sub read_refcard {
     next unless /^\\txicmd/;
     chomp;
     my $xcmd = 0;
-    s/\\txicmdarg{.*?}}?//; # first get rid of the arguments
-    s/}{.*//;               # then the descriptions
-    s/^\\txicmdx{// && ($xcmd = 1);  # used for the @def...x
-    s/^\\txicmd{//;         # finally the markup cmd itself
-    s/\\ttbraced{}//g;      # quote cmd list
+    s/\\txicmdarg\{.*?\}\}?//; # first get rid of the arguments
+    s/\}\{.*//;                # then the descriptions
+    s/^\\txicmdx\{// && ($xcmd = 1);  # used for the @def...x
+    s/^\\txicmd\{//;           # finally the markup cmd itself
+    s/\\ttbraced\{\}//g;       # quote cmd list
     
     my (@cmds) = split (/,? +/, $_);  # occasionally we combine cmds
     
