@@ -1,3 +1,9 @@
+2015-06-11  Karl Berry  <karl@freefriends.org>
+
+	* tp/Texinfo/Convert/UnFilled.pm (_add_text),
+	* tp/Texinfo/Convert/Plaintext.pm (_contents):
+        avoid negative repeat counts, which cause a warning in perl 5.22.0.
+
 2015-06-10  Karl Berry  <karl@freefriends.org>
 
 	* doc/refcard/txicmdcheck (read_refcard): \escape all the {

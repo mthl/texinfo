@@ -1129,7 +1129,9 @@ sub _contents($$$)
       my $text = $section_title;
       chomp ($text);
       $text .= "\n";
-      $result .= (' ' x (2*($section->{'level'} - ($root_level+1)))) . $text;
+      my $repeat_count = 2 * ($section->{'level'} - ($root_level+1));
+      ($result .= (' ' x $repeat_count)) if $repeat_count > 0;
+      $result .= $text;
       $lines_count++;
       if ($section->{'section_childs'} 
           and ($contents or $section->{'level'} < $root_level+1)) {
