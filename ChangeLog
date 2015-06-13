@@ -1,3 +1,8 @@
+2015-06-13  Karl Berry  <karl@freefriends.org>
+
+	* info/t/Init-test.inc: set -x so the t/*.log files have
+	more tracing in case of debugging.
+
 2015-06-11  Karl Berry  <karl@freefriends.org>
 
 	* tp/Texinfo/Convert/UnFilled.pm (_add_text),
