@@ -1,3 +1,12 @@
+2015-06-14  Karl Berry  <karl@freefriends.org>
+
+	* doc/texinfo.tex (\tcfont, \etcfont): new macros.
+	(\ecfont): call \etcfont now, so we can equally support tc* with ec*.
+	(\latonechardefs) <a2,a4,a5,a6>,
+	(\utfeightchardefs) <00A2,00A4,00A5,00A6>: can now support
+	characters cents, currency, yen, broken bar (among others from
+	the LaTeX TS1 encoding, but we'll leave it at that for now).
+
 2015-06-13  Karl Berry  <karl@freefriends.org>
 
 	* info/t/Init-test.inc: set -x so the t/*.log files have
