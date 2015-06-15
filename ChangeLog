@@ -1,3 +1,9 @@
+2015-06-15  Eli Zaretskii  <eliz@gnu.org>, and
+            Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (open_out): Run "binmode" on file handle, 
+	to disable conversion of LF to CR LF under MS-Windows.
+
 2015-06-14  Karl Berry  <karl@freefriends.org>
 
 	* doc/texinfo.tex (\tcfont, \etcfont): new macros.

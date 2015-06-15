@@ -1052,6 +1052,7 @@ sub open_out($$;$)
   }
 
   if ($file eq '-') {
+    binmode(STDOUT);
     binmode(STDOUT, ":encoding($encoding)") if ($encoding);
     if ($self) {
       $self->{'unclosed_files'}->{$file} = \*STDOUT;
@@ -1062,6 +1063,9 @@ sub open_out($$;$)
   if (!open ($filehandle, '>', $file)) {
     return undef; 
   }
+  # We run binmode to turn off outputting LF as CR LF under MS-Windows,
+  # so that Info tag tables will have correct offsets.
+  binmode(STDOUT);
   if ($encoding) {
     if ($encoding eq 'utf8' or $encoding eq 'utf-8-strict') {
       binmode($filehandle, ':utf8');
