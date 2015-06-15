@@ -11,10 +11,10 @@
 #include "../errors.h"
 #include "../macro.h"
 
-
 HV *build_texinfo_tree (void);
 HV *build_label_list (void);
 HV *build_index_data (void);
+HV *build_global_info (void);
 
 MODULE = Parsetexi		PACKAGE = Parsetexi		
 
@@ -91,4 +91,7 @@ build_label_list ()
 
 HV *
 build_index_data ()
+
+HV *
+build_global_info ()
 

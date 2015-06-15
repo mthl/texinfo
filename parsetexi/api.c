@@ -31,6 +31,7 @@
 #include "input.h"
 #include "labels.h"
 #include "indices.h"
+#include "api.h"
 
 ELEMENT *Root;
 
@@ -222,6 +223,7 @@ element_to_perl_hash (ELEMENT *e)
     {
       sv = newSVpv (e->text.text, e->text.end);
       hv_store (e->hv, "text", strlen ("text"), sv, 0);
+      SvUTF8_on (sv);
     }
 
   if (e->extra_number > 0)
@@ -610,5 +612,19 @@ build_index_data (void)
   return hv;
 }
 
+
+/* Return object to be used as $self->{'info'} in the Perl code, retrievable
+   with the 'global_informations' function. */
+HV *
+build_global_info (void)
+{
+  HV *hv;
 
+  dTHX;
 
+  hv = newHV ();
+  if (global_info.input_encoding_name)
+    hv_store (hv, "input_encoding_name", strlen ("input_encoding_name"),
+              newSVpv (global_info.input_encoding_name, 0), 0);
+  return hv;
+}

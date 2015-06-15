@@ -1,3 +1,14 @@
+2015-06-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* Parsetexi/Parsetexi.xs,
+	* api.c (build_global_info): New function.
+	* Parsetexi/lib/Parsetexi.pm (parse_texi_file): Fetch the 
+	"global information," including the @documentencoding.
+
+	* parser.c (global_info): New struct variable.
+	* end_line.c (end_line_misc_line) <@documentencoding> Save 
+	document encoding.
+
 2015-04-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* end_line.c (end_line_starting_block): Call 

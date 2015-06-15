@@ -254,7 +254,7 @@ sub parse_texi_file ($$)
 
   #print "Getting tree...\n";
 
-  my ($TREE, $LABELS, $INDEX_NAMES, $ERRORS);
+  my ($TREE, $LABELS, $INDEX_NAMES, $ERRORS, $GLOBAL_INFO);
   if (1) {
     # This is our third way of passing the data: construct it using
     # Perl api directly.
@@ -268,6 +268,10 @@ sub parse_texi_file ($$)
     $LABELS = build_label_list ();
 
     $INDEX_NAMES = build_index_data ();
+
+    # Commenting out this line changes the run time of makeinfo elisp.texi
+    # from about 17.0 sec to 13.0 sec.  documentencoding is utf-8.
+    $GLOBAL_INFO = build_global_info ();
 
   } elsif (0) {
     # $| = 1; # Flush after each print
@@ -306,10 +310,21 @@ sub parse_texi_file ($$)
   }
 
   print "Adjusting tree...\n";
-  _add_parents ($TREE);
+  #_add_parents ($TREE);
   _complete_node_list ($self, $TREE);
   print "Adjusted tree.\n";
 
+  $self->{'info'} = $GLOBAL_INFO;
+  print "!!! ENCODING IS ", $self->{'info'}->{'input_encoding_name'} , "\n";
+
+  if (defined($self->{'info'}->{'input_encoding_name'})) {
+    my ($texinfo_encoding, $perl_encoding, $input_encoding)
+      = Texinfo::Encoding::encoding_alias(
+            $self->{'info'}->{'input_encoding_name'});
+    $self->{'info'}->{'input_encoding_name'} = $input_encoding;
+    #print "!!! ENCODING IS ", $self->{'info'}->{'input_encoding_name'} , "\n";
+
+  }
   $self->{'info'}->{'input_file_name'} = $file_name;
 
   $self->{'labels'} = $LABELS;

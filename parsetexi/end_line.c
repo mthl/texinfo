@@ -935,8 +935,7 @@ end_line_misc_line (ELEMENT *current)
 
       if (!text || !strcmp (text, ""))
         {
-          // 3123
-          line_warnf ("@%s missing argument", command_name(cmd));
+          line_warnf ("@%s missing argument", command_name(cmd)); // 3123
         }
       else
         {
@@ -951,7 +950,6 @@ end_line_misc_line (ELEMENT *current)
               end_id = lookup_command (end_command);
               if (end_id == 0 || !(command_data(end_id).flags & CF_block))
                 {
-                  /* error - unknown @end */
                   command_warnf ("unknown @end %s", end_command);
                   free (end_command); end_command = 0;
                 }
@@ -978,17 +976,29 @@ end_line_misc_line (ELEMENT *current)
                     }
                 }
             }
-          else if (current->cmd == CM_include) /* 3166 */
+          else if (current->cmd == CM_include) // 3166
             {
               debug ("Include %s", text);
               input_push_file (text);
             }
-          else if (current->cmd == CM_documentencoding)
-            /* 3190 */
+          else if (current->cmd == CM_documentencoding) // 3190
             {
+              // TODO: ignore_global_commands
+              /* See tp/Texinfo/Encoding.pm (whole file) */
+              // TODO: Canonicalize encoding
+
+              /* 'us-ascii', 'utf-8', 'iso-8859-1',
+                 'iso-8859-15','iso-8859-2','koi8-r', 'koi8-u' */
+
+              add_extra_string (current, "input_encoding_name",
+                                text); // 3199
+
+              global_info.input_encoding_name = text; // 3210
+
+              // TODO: Need to convert input in input.c from this encoding.
+              // (INPUT_PERL_ENCODING in Perl version)
             }
-          else if (current->cmd == CM_documentlanguage)
-            /* 3223 */
+          else if (current->cmd == CM_documentlanguage) // 3223
             {
             }
         }

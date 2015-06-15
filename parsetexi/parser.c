@@ -112,6 +112,11 @@ COUNTER count_items;
 COUNTER count_cells;
 
 
+/* Information that is not local to where it is set in the Texinfo input,
+   for example document language and encoding. */
+GLOBAL_INFO global_info;
+
+
 /* 835 */
 void
 parse_texi_file (const char *filename_in)
@@ -905,7 +910,7 @@ value_valid:
                   /* TODO: The Perl code has cases for the value being
                      an array or hash - check when this can happen. */
                   /* This happens when the values are set by the "gdt" function 
-                     in Structuring.pm.  */
+                     in Report.pm.  */
 
                   line++; /* past '}' */
                   input_push_text (strdup (line));
