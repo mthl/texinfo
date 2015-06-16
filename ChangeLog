@@ -1,3 +1,12 @@
+2015-06-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Commom.pm (open_out): Add parameter which 
+	conditionalizes the calls to "binmode" on file handle.
+	* tp/Texinfo/Convert/Info.pm (_open_info_file): New function,
+	wrapping Texinfo::Common::open_out.  Call 
+	Texinfo::Common::open_out so that it calls "binmode".
+	(output): Call _open_info_file instead of open_out directly.
+
 2015-06-15  Eli Zaretskii  <eliz@gnu.org>, and
             Gavin Smith  <gavinsmith0123@gmail.com>
 

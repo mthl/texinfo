@@ -1040,11 +1040,12 @@ sub locate_include_file($$)
   return $file;
 }
 
-sub open_out($$;$)
+sub open_out($$;$$)
 {
   my $self = shift;
   my $file = shift;
   my $encoding = shift;
+  my $use_binmode = shift;
 
   if (!defined($encoding) and $self 
       and defined($self->get_conf('OUTPUT_PERL_ENCODING'))) {
@@ -1052,7 +1053,7 @@ sub open_out($$;$)
   }
 
   if ($file eq '-') {
-    binmode(STDOUT);
+    binmode(STDOUT) if $use_binmode;
     binmode(STDOUT, ":encoding($encoding)") if ($encoding);
     if ($self) {
       $self->{'unclosed_files'}->{$file} = \*STDOUT;
@@ -1064,8 +1065,9 @@ sub open_out($$;$)
     return undef; 
   }
   # We run binmode to turn off outputting LF as CR LF under MS-Windows,
-  # so that Info tag tables will have correct offsets.
-  binmode(STDOUT);
+  # so that Info tag tables will have correct offsets.  This must be done
+  # before setting the encoding filters with binmode.
+  binmode(STDOUT) if $use_binmode;
   if ($encoding) {
     if ($encoding eq 'utf8' or $encoding eq 'utf-8-strict') {
       binmode($filehandle, ':utf8');
