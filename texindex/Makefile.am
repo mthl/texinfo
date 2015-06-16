@@ -76,3 +76,7 @@ ti.texi: ti.twjr
 
 # a fun cartoon used in the literate program.
 EXTRA_DIST += dek_idx.png
+
+TESTS = \
+        tests/ti-helpversion.sh
+EXTRA_DIST += $(TESTS)
