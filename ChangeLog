@@ -7,6 +7,13 @@
 	Texinfo::Common::open_out so that it calls "binmode".
 	(output): Call _open_info_file instead of open_out directly.
 
+2015-06-16  Karl Berry  <karl@freefriends.org>
+
+	* texindex/tests/ti-helpversion: new test, in new subdir, with
+	fingers crossed.
+	* texindex/Makefile.am (TESTS): new variable setting.
+	(EXTRA_DIST): include $(TESTS).
+
 2015-06-15  Eli Zaretskii  <eliz@gnu.org>, and
             Gavin Smith  <gavinsmith0123@gmail.com>
 
