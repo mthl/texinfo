@@ -1,3 +1,10 @@
+2015-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* parser.c (process_remaining_on_line) <@value> Add element to 
+	tree for unexpanded value.
+	* api.c (element_to_perl_hash): Output 'type' as name for 
+	unexpanded @value.
+
 2015-06-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* Parsetexi/Parsetexi.xs,

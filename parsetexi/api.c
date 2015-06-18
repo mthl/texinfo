@@ -222,7 +222,10 @@ element_to_perl_hash (ELEMENT *e)
   if (e->text.space > 0)
     {
       sv = newSVpv (e->text.text, e->text.end);
-      hv_store (e->hv, "text", strlen ("text"), sv, 0);
+      if (e->cmd != CM_value)
+        hv_store (e->hv, "text", strlen ("text"), sv, 0);
+      else
+        hv_store (e->hv, "type", strlen ("type"), sv, 0);
       SvUTF8_on (sv);
     }
 

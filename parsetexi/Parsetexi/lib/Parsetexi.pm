@@ -127,16 +127,13 @@ sub parser (;$$)
           add_include_directory ($d);
         }
       } elsif ($key eq 'values') {
-	# This is used by Texinfo::Structuring::gdt for substituted values
+	# This is used by Texinfo::Report::gdt for substituted values
 	for my $v (keys %{$conf->{'values'}}) {
-	  if (ref($conf->{'values'}->{$v}) eq 'HASH') {
-	    if (defined ($conf->{'values'}->{$v}->{'text'})) {
-	      store_value ($v, $conf->{'values'}->{$v}->{'text'});
-	    } else {
-	      store_value ($v, "<<HASH WITH NO TEXT>>");
-	    }
-	  } elsif (ref($conf->{'values'}->{$v}) eq 'SCALAR') {
+	  if (!ref($conf->{'values'}->{$v})) {
+	    warn "v is $v", "\n";
 	    store_value ($v, $conf->{'values'}->{$v});
+          } elsif (ref($conf->{'values'}->{$v}) eq 'HASH') {
+            store_value ($v, "<<HASH VALUE>>");
 	  } elsif (ref($conf->{'values'}->{$v}) eq 'ARRAY') {
 	    store_value ($v, "<<ARRAY VALUE>>");
 	  } else {

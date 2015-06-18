@@ -902,8 +902,27 @@ value_valid:
               value = fetch_value (arg_start, line - arg_start);
               if (!value)
                 {
+                  /* Add element for unexpanded @value.
+                     This is not necessarily an error - in
+                     Texinfo::Report::gdt we deliberately pass
+                     in undefined values. */
+                  ELEMENT *value_elt;
                   line_errorf ("undefined flag: %.*s", line - arg_start, 
                                arg_start);
+                  value_elt = new_element (ET_NONE);
+                  value_elt->cmd = CM_value;
+                  text_append_n (&value_elt->text, arg_start,
+                                 line - arg_start);
+                  /* In the Perl code, the name of the flag is stored in
+                     the "type" field.  We need to store in 'text' instead
+                     and then output it as the type in
+                     dump_perl.c / api.c. */
+
+                  add_to_element_contents (current, value_elt);
+
+                  /* Prevent merging with following.  TODO: Check why
+                     this happens in the first place. */
+                  add_to_element_contents (current, new_element (ET_NONE));
                 }
               else
                 {
@@ -916,9 +935,9 @@ value_valid:
                   input_push_text (strdup (line));
                   input_push_text (strdup (value));
                   line = new_line ();
-                  retval = 1;
-                  goto funexit;
                 }
+              retval = 1;
+              goto funexit;
             }
           else
             {
