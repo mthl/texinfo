@@ -1,3 +1,8 @@
+2015-06-18  Karl Berry  <karl@freefriends.org>
+
+	* pretest 5.9.94.
+	* configure.ac: version.
+
 2015-06-18  Eli Zaretskii  <eliz@gnu.org>
 
 	Avoid "implicit declaration" warnings in pcterm.c.
