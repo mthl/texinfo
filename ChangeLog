@@ -1,3 +1,8 @@
+2015-06-18  Eli Zaretskii  <eliz@gnu.org>
+
+	* tp/Texinfo/Common.pm (open_out): Call binmode on opened file 
+	handle as intended.
+
 2015-06-18  Karl Berry  <karl@freefriends.org>
 
 	* pretest 5.9.94.

@@ -1067,7 +1067,7 @@ sub open_out($$;$$)
   # We run binmode to turn off outputting LF as CR LF under MS-Windows,
   # so that Info tag tables will have correct offsets.  This must be done
   # before setting the encoding filters with binmode.
-  binmode(STDOUT) if $use_binmode;
+  binmode($filehandle) if $use_binmode;
   if ($encoding) {
     if ($encoding eq 'utf8' or $encoding eq 'utf-8-strict') {
       binmode($filehandle, ':utf8');
