@@ -70,6 +70,12 @@ enum text_modes { LASTMODE=-1 };
 #undef read
 #undef _read
 
+#include "display.h"
+
+int kill (pid_t, int);
+void reset_info_window_sizes (void);
+void redisplay_after_signal (void);
+
 #endif
 
 #include "variables.h"

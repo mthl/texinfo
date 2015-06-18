@@ -1,3 +1,9 @@
+2015-06-18  Eli Zaretskii  <eliz@gnu.org>
+
+	Avoid "implicit declaration" warnings in pcterm.c.
+	* info/pcterm.c: Include display.h.  Provide prototypes for
+	'kill', 'reset_info_window_sizes', and 'redisplay_after_signal'.
+
 2015-06-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Commom.pm (open_out): Add parameter which 
