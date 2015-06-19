@@ -15,6 +15,8 @@ test suites.
 efficiency.  Also newSVpv (..., 0);
 * Add "TODO" anywhere in the code with explanations of what is not done yet.
 
+================================================================
+
 Texinfo::Report::gdt and parse_texi_line -
 
 Multiple Texinfo::Parser objects are created in a run of texi2any.  The
@@ -39,11 +41,12 @@ passed back into C.  We have code (in api.c) to translate our C
 representations of the Texinfo tree to Perl data structures, but not 
 vice versa.
 
-Suggestions:
-* Convert the values with $self->_convert to strings, then give the 
-values as strings, followed by parsing as Texinfo.  Care would have to 
-be taken to quote correctly special characters in the values, like "@", 
-"{" and "}".
+We deal with this by leaving the @value's undefined, letting an element 
+representing a use of an unused @value appear in the parse tree, and 
+then substituting in the parse trees for the @value's afterwards, in 
+Texinfo::Report::gdt.  See diff below.
+
+Other suggestions:
 * Don't call parse_texi_line at all.  This would be a simplification of 
 the overall structure of the makeinfo program and might not lose much 
 flexibility in return.  Most of the strings in texinfo_document.pot 
@@ -58,28 +61,53 @@ msgid "{category} on {class}: <strong>{name}</strong>"
 
 Some of the translation strings use Texinfo commands for characters, 
 e.g. "@'e".  This would have to be replaced with whatever method other 
-programs using gettext use for special characters.
+programs using gettext use for special characters.  It would also stop 
+translation strings being reused across output formats, creating more 
+work for translators.
+
 * Write code translating Perl tree elements into C data structures and 
-allow them to be passed to the parser as @value's.
+allow them to be passed to the parser as @value's.  I am very reluctant 
+to do this.
 
 To use the current implementation, do the following to 
 tp/Texinfo/Report.pm:
 
-Index: Report.pm
+Index: Texinfo/Report.pm
 ===================================================================
---- Report.pm   (revision 6198)
-+++ Report.pm   (working copy)
-@@ -48,7 +48,8 @@ use File::Basename;
- 
+--- Texinfo/Report.pm   (revision 6344)
++++ Texinfo/Report.pm   (working copy)
+@@ -49,6 +49,7 @@ use File::Basename;
  use Locale::Messages;
  # to be able to load a parser if none was given to gdt.
--use Texinfo::Parser;
-+#use Texinfo::Parser;
+ use Texinfo::Parser;
 +use Parsetexi;
  
  # return the errors and warnings
  sub errors($)
-@@ -399,7 +400,8 @@ sub gdt($$;$$)
+@@ -244,7 +245,8 @@ sub _encode_i18n_string($$)
+   return Encode::decode($encoding, $string);
+ }
+ 
+-# handle translations of in-document strings.
++# Get document translation - handle translations of in-document strings.
++# Return a parsed Texinfo tree
+ sub gdt($$;$$)
+ {
+   my $self = shift;
+@@ -376,7 +378,11 @@ sub gdt($$;$$)
+     $translation_result =~ s/\{($re)\}/\@value\{_$1\}/g;
+     foreach my $substitution(keys %$context) {
+       #print STDERR "$translation_result $substitution $context->{$substitution}\n";
+-      $parser_conf->{'values'}->{'_'.$substitution} = $context->{$substitution};
++      if (!ref($context->{$substitution})) {
++        #warn "setting $substitution to $context->{$substitution}\n";
++        $parser_conf->{'values'}->{'_'.$substitution}
++          = $context->{$substitution};
++      }
+     }
+   }
+ 
+@@ -399,7 +405,8 @@ sub gdt($$;$$)
      }
    }
    #my $parser = Texinfo::Parser::parser($parser_conf);
@@ -89,16 +117,77 @@ Index: Report.pm
    if ($parser->{'DEBUG'}) {
      print STDERR "GDT $translation_result\n";
    }
+@@ -411,10 +418,67 @@ sub gdt($$;$$)
+   } else {
+     $tree = $parser->parse_texi_line($translation_result);
+   }
++  #warn '--------------------------------------', "\n";
++  #warn Texinfo::Parser::_print_tree ($tree);
++  $tree = _substitute ($tree, $context);
++  #warn Texinfo::Parser::_print_tree ($tree);
++  #warn '--------------------------------------', "\n";
+   return $tree;
+ }
+ 
++sub _substitute_element_array ($$);
++sub _substitute_element_array ($$) {
++  my $array = shift; my $context = shift;
+ 
++  # "the push @{$current->{'contents'}}, {}; prevents a trailing
++  # text to be merged, to avoid having the value tree modified."
++
++  # It's not necessary now, but we are yet to update the test
++  # results to remove the extra {}'s.
++
++  @{$array} = map {
++    if ($_->{'cmdname'} and $_->{'cmdname'} eq 'value'
++      and $_->{'type'}
++    ) {
++      my $name = $_->{'type'};
++      $name =~ s/^_//;
++      if (ref($context->{$name}) eq 'HASH') {
++        ( $context->{$name} , {} );
++      } elsif (ref($context->{$name}) eq 'ARRAY') {
++        ( @{$context->{$name}} , {} );
++      }
++    } else {
++      _substitute($_, $context);
++      ( $_ );
++    }
++  } @{$array};
++}
++
++sub _substitute ($$);
++sub _substitute ($$) {
++  my $tree = shift; my $context = shift;
++
++  if ($tree->{'contents'}) {
++    _substitute_element_array ($tree->{'contents'}, $context);
++  }
++
++  if ($tree->{'args'}) {
++    _substitute_element_array ($tree->{'args'}, $context);
++  }
++
++  # Used for @email and @url
++  if ($tree->{'extra'} and $tree->{'extra'}{'brace_command_contents'}) {
++    for my $arg (@{$tree->{'extra'}{'brace_command_contents'}}) {
++      if ($arg) {
++        _substitute_element_array ($arg, $context);
++      }
++    }
++  }
++
++  return $tree;
++}
++
++
+ 1;
+ 
+ __END__
+
 
 ===================================================================
-
-As said, the implementation is not complete so it gives output like
-
- -- <<HASH WITH NO TEXT>>: count-loop <<ARRAY VALUE>>
-      This imaginary special form implements a loop that executes the
-      BODY forms and then increments the variable VAR on each iteration.
-
-
 
 
 Integration with rest of Perl code:
