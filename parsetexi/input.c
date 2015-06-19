@@ -128,6 +128,9 @@ next_text (void)
               if (comment)
                 *comment = '\n';
 
+              /* TODO: convert from @documentencoding to UTF-8, assuming we 
+                 want to use UTF-8 internally. */
+
               // 1920 CPP_LINE_DIRECTIVES
 
               line_nr.line_nr++;

@@ -226,7 +226,17 @@ element_to_perl_hash (ELEMENT *e)
         hv_store (e->hv, "text", strlen ("text"), sv, 0);
       else
         hv_store (e->hv, "type", strlen ("type"), sv, 0);
-      SvUTF8_on (sv);
+
+      //SvUTF8_on (sv);
+      /* We will have to do something like that, but first we need to make sure 
+         the strings we have are in UTF-8 to start with.  This would lead to an 
+         unnecessary round trip with "@documentencoding ISO-8859-1" for Info 
+         and plain text output, when we first convert the characters in the 
+         input file to UTF-8, and convert them back again for the output.
+      
+         The alternative is to leave the UTF-8 flag off, and hope that Perl 
+         interprets 8-bit encodings like ISO-8859-1 correctly.  See
+         "How does Perl store UTF-8 strings?" in "man perlguts". */
     }
 
   if (e->extra_number > 0)
