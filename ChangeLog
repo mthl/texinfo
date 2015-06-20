@@ -1,3 +1,8 @@
+2015-06-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/pseudotty.c: Attempt to register display size as 0 by 0.
+	* info/t/c-u-m-x-scroll-forward.sh: Comment changed.
+
 2015-06-20  Eli Zaretskii  <eliz@gnu.org>
 
 	* info/pcterm.c (kill): Move prototype from here...

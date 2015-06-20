@@ -37,6 +37,8 @@
 #include <stropts.h>
 #endif
 
+#include "termdep.h"
+
 /* Used by "error" function. */
 const char *program_name = "pseudotty";
 
@@ -83,6 +85,19 @@ main (int argc, char *argv[])
   error (0, 0, "...closed");
   */
 #endif
+
+#if defined (TIOCSWINSZ)
+  {
+    struct winsize ws;
+    ws.ws_col = ws.ws_row = 0;
+
+    error (0, 0, "attempting to set window size");
+    if (ioctl (master, TIOCSWINSZ, &ws) == 0)
+      error (0, 0, "...succeeded");
+    else
+      error (0, 0, "...failed");
+  }
+#endif 
 
   printf ("%s\n", name);
   if (fclose (stdout) != 0)
