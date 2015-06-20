@@ -1,3 +1,14 @@
+2015-06-20  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/pcterm.c (kill): Move prototype from here...
+	* system.h: ...to here, conditioned by __MINGW32__.  This solves
+	compiler warnings in signals.c.
+	* info/pcterm.c	(wcwidth): Make function's signature consistent
+	with Gnulib's prototype in gnulib/lib/wchar.h.
+
+	* info/session.c (w32_read): Provide prototype, to avoid compiler
+	warnings.
+
 2015-06-18  Eli Zaretskii  <eliz@gnu.org>
 
 	* tp/Texinfo/Common.pm (open_out): Call binmode on opened file 

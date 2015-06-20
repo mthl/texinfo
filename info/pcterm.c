@@ -72,7 +72,6 @@ enum text_modes { LASTMODE=-1 };
 
 #include "display.h"
 
-int kill (pid_t, int);
 void reset_info_window_sizes (void);
 void redisplay_after_signal (void);
 
@@ -766,7 +765,7 @@ rpl_nl_langinfo (nl_item item)
    the binary, because it resolves the calls to this replacement
    function.  */
 int
-wcwidth (int wc)
+wcwidth (wchar_t wc)
 {
   return wc == 0 ? 0 : iswprint (wc) ? 1 : -1;
 }

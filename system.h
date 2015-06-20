@@ -164,6 +164,7 @@ extern int strcoll ();
 # else  /* O_BINARY && !__CYGWIN__ */
 #  ifdef __MINGW32__
 #   define SET_SCREEN_SIZE_HELPER terminal_prep_terminal()
+extern int kill (pid_t, int);
 #  endif  /* _WIN32 */
 #  define DEFAULT_TMPDIR	"c:/"
 #  define PATH_SEP	";"
