@@ -589,6 +589,8 @@ is_end_current_command (ELEMENT *current, char **line,
   return 1;
 }
 
+#define GET_A_NEW_LINE 0
+
 /* line 3725 */
 /* *LINEP is a pointer into the line being processed.  It is advanced past any
    bytes processed.  Return 0 when we need to read a new line. */
@@ -703,7 +705,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
               add_to_element_contents (current, e);
             }
 
-          retval = 0; /* 3844 */
+          retval = GET_A_NEW_LINE; /* 3844 */
           goto funexit;
         }
     } /********* BLOCK_raw or (ignored) BLOCK_conditional 3897 *************/
@@ -713,26 +715,32 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
     {
       char c;
       char *q;
+
       /* Save the deliminating character in 'type', if not already done.
-         This is a reuse of 'type' for a different purpose. */
+         This is a reuse of 'type' for a different purpose.
+         If we use 'text' instead, we can get extra text stuck on the end of it 
+         for some reason (probably from "merging text"). */
       if (!current->parent->type)
         {
           if (!*line)
             {
               line_error ("@verb without associated character");
+              // TODO: How should we recover from this?
+              retval = GET_A_NEW_LINE; goto funexit;
             }
           else
             current->parent->type = (enum element_type) *line++;
         }
 
       c = (char) current->parent->type;
+
       /* Look forward for the delimiter character followed by a close
          brace. */
       q = line;
       do
         {
           q = strchr (q, c);
-          if (q[1] == '}' || !q)
+          if (!q || q[1] == '}')
             break;
           q++;
         }
@@ -758,9 +766,9 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
           text_append (&e->text, line);
           add_to_element_contents (current, e);
 
-          debug ("LINE VERB: %s", line);
+          debug_nonl ("LINE VERB: %s", line);
 
-          retval = 0; goto funexit;  /* Get next line. */
+          retval = GET_A_NEW_LINE; goto funexit;  /* Get next line. */
         }
     } /* CM_verb */
 
@@ -815,7 +823,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
         {
           /* TODO: Can this only happen at end of file? */
           current = end_line (current);
-          retval = 0;
+          retval = GET_A_NEW_LINE;
         }
       goto funexit;
     }
@@ -1016,8 +1024,7 @@ value_invalid:
             {
               /* For @macro, to get a new line.  This is done instead of
                  doing the EMPTY TEXT (3879) code on the next time round. */
-              retval = 0;
-              goto funexit;
+              retval = GET_A_NEW_LINE; goto funexit;
             }
         }
 
@@ -1104,7 +1111,7 @@ value_invalid:
 
       /* '@end' is processed in here. */
       current = end_line (current); /* 5344 */
-      retval = 0;
+      retval = GET_A_NEW_LINE;
     }
 
 funexit:

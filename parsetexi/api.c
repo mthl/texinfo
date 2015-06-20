@@ -172,7 +172,15 @@ element_to_perl_hash (ELEMENT *e)
 
   if (e->type)
     {
-      sv = newSVpv (element_type_names[e->type], 0);
+      if (e->cmd != CM_verb)
+        {
+          sv = newSVpv (element_type_names[e->type], 0);
+        }
+      else
+        {
+          char c = (char) e->type;
+          sv = newSVpv (&c, 1);
+        }
       hv_store (e->hv, "type", strlen ("type"), sv, 0);
 
       /* TODO: Could precompute hash of "type", and also reuse

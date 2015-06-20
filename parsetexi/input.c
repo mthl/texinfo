@@ -126,10 +126,16 @@ next_text (void)
               /* Strip off a comment. */
               comment = strchr (line, '\x7F');
               if (comment)
-                *comment = '\n';
+                {
+                  *comment = '\n';
+                  comment[1] = '\0';
+                }
 
               /* TODO: convert from @documentencoding to UTF-8, assuming we 
                  want to use UTF-8 internally. */
+
+              /* Could and check for malformed input: see
+                 <http://savannah.gnu.org/bugs/?42896>. */
 
               // 1920 CPP_LINE_DIRECTIVES
 
@@ -186,8 +192,8 @@ input_push_text (char *text)
 
   if (input_number == input_space)
     {
-      input_stack = realloc (input_stack,
-                             (input_space *= 1.5) * sizeof (INPUT));
+      input_space++; input_space *= 1.5;
+      input_stack = realloc (input_stack, input_space * sizeof (INPUT));
       if (!input_stack)
         abort ();
     }
