@@ -407,7 +407,6 @@ xspara__add_next (TEXT *result,
           state.word_counter = 0;
 
           xspara__end_line ();
-          text_append_n (result, "\n", 1);
         }
       else
         {

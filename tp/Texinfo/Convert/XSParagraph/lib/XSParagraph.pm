@@ -41,6 +41,7 @@ XSLoader::load('XSParagraph', $VERSION);
 # Used for debugging.  Not implemented.
 sub dump($)
 {
+  return "\n";
 }
 
 sub add_underlying_text($$)
