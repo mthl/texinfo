@@ -1,5 +1,12 @@
 2015-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/echo-area.c (info_read_in_echo_area)
+	(info_read_completing_internal, info_read_maybe_completing)
+	(info_read_completing_in_echo_area_with_exclusions): Add const
+	qualifier to char * in parameter list.
+
+2015-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* run gnulib --add-import
 
 2015-06-20  Gavin Smith  <gavinsmith0123@gmail.com>
