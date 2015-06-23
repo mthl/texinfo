@@ -161,3 +161,12 @@ run_ginfo ()
     GINFO_PID=unknown
   fi
 }
+
+synch_with_program ()
+{
+  # Wait for the program to do its terminal initialization, so that
+  # bytes like C-u and C-s will not be special.
+  printf D >$PTY_TYPE
+  while test ! -f $GINFO_OUTPUT ; do sleep 1 ; done
+  rm -f $GINFO_OUTPUT
+}

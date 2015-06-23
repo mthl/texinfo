@@ -2,6 +2,12 @@
 
 	* info/t/Init-inter.inc (run_ginfo): Remove delay if PID of 
 	process is unknown.
+	
+	* info/t/Init-inter.inc (synch_with_program): Add function.
+	* info/t/c-u-m-x-scroll-forward.sh, info/t/gc-split.sh,
+	info/t/inc-sea-forward-non-regex.sh, info/t/inc-sea-forward.sh,
+	info/t/inc-sea-history.sh, info/t/inc-sea-insensitive.sh: Use 
+	it.
 
 2015-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
