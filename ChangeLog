@@ -1,5 +1,9 @@
 2015-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/pseudotty.c: Define _XOPEN_SOURCE as 600 instead of 500.
+
+2015-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/echo-area.c (info_read_in_echo_area)
 	(info_read_completing_internal, info_read_maybe_completing)
 	(info_read_completing_in_echo_area_with_exclusions): Add const
