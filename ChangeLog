@@ -1,5 +1,10 @@
 2015-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/Init-inter.inc (run_ginfo): Remove delay if PID of 
+	process is unknown.
+
+2015-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/pseudotty.c: Define _XOPEN_SOURCE as 600 instead of 500.
 
 2015-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
