@@ -1,5 +1,15 @@
 2015-06-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\macrolineargctxt): New macro, based on 
+	\macroargctxt.
+	(\defmacro) <one argument non-recursive>,
+	<one argument recursive>: Don't call \macroargctxt.
+	(\braceorlinexxx) Call \macroargctxt only if a { follows the 
+	macro name, otherwise call \macrolineargctxt.  (Various reports 
+	from, inter alia, Werner Lemberg and David Kastrup.)
+
+2015-06-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/DocBook.pm (@inline_elements): Add 
 	'subscript' and 'superscript' so they can show up in a @def* 
 	line.  Bug report from Per Bothner.
