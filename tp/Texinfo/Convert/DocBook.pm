@@ -121,7 +121,8 @@ my %upper_case_style_commands = (
 );
 
 my @inline_elements = ('emphasis', 'abbrev', 'acronym', 'link', 
-  'inlinemediaobject', 'firstterm', 'footnote', 'replaceable', 'wordasword');
+  'inlinemediaobject', 'firstterm', 'footnote', 'replaceable',
+  'subscript', 'superscript', 'wordasword');
 my %inline_elements;
 foreach my $inline_element (@inline_elements) {
   $inline_elements{$inline_element} = 1;
