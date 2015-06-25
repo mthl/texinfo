@@ -11102,8 +11102,8 @@ headings or lists.  Texinfo supports three commands:
 of which insert a single space into the output.  (Here,
 @code{@@@kbd{SPACE}} represents an @samp{@@} character followed by a
 space, i.e., @samp{@@ }, @kbd{TAB} represents an actual tab character,
-and @kbd{NL} represent the tab character and end-of-line, i.e., when
-@samp{@@} is the last character on a line.)
+and @code{@@@kbd{NL}} represents an @samp{@@} character and end-of-line, 
+i.e., when @samp{@@} is the last character on a line.)
 
 For example,
 @example

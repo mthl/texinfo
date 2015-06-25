@@ -1,3 +1,7 @@
+2015-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Multiple Spaces): Correct explanation of @NL.
+
 2015-06-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\macrolineargctxt): New macro, based on 
