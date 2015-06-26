@@ -163,9 +163,15 @@ bcc coordinator@translationproject.org.
 
 - When official release is out there ...
 update home page (texinfo.html) and commit as needed.
-update manual (make wwwdoc-install, cvs commit), including:
+including:
   pod2html $txi/Pod-Simple-Texinfo/pod2texi.pl \
   | fgrep -v 'rev="made"' >manual/pod2texi.html
+Copy documentation files to web checkout with, e.g.
+  make -C doc \
+  wwwdoc-install www_target=../../TEXINFO_WEB_PAGES/texinfo/manual/
+Check for removed files with, e.g. ls -ltu $(www_target)/*/html_node, 
+followed by cvs rm -f.  Likewise, check for added files with
+cvs -qn update, followed by cvs add.  When done, run cvs commit.
 
 #  ... dtd version check:
 TEXINFO_DTD_VERSION should already have been updated to $ver in
@@ -185,10 +191,10 @@ cvs commit -m$ver $ver
 # cvs admin -kb texinfo.dtd; cvs update -A.
 # (See the "How to store binary files" node in the CVS manual.)
 
-#  ... tag source tree:
+#  ... tag source tree (use your own username before @):
 svn copy -r 5382 -m'texinfo_5_2 tag based on r5382' \
-  svn+ssh://svn.savannah.gnu.org/texinfo/trunk \
-  svn+ssh://svn.savannah.gnu.org/texinfo/tags/texinfo_5_2
+  svn+ssh://gavin@svn.savannah.gnu.org/texinfo/trunk \
+  svn+ssh://gavin@svn.savannah.gnu.org/texinfo/tags/texinfo_5_2
 [for karl: /srv/svn/texinfo]  
 
   ... update texinfo at tug.org (contact root@tug.org); from last time:

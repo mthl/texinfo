@@ -1,5 +1,10 @@
 2015-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README-hacking: Notes on how to tag source tree and update 
+	manual web pages.
+
+2015-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS, util/texi2dvi, util/texi2pdf, 
 	doc/refcard/txirefcard.tex, configure.ac: 6.0 release.
 
