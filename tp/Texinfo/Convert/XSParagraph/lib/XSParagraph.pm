@@ -29,7 +29,7 @@ our @EXPORT = qw(
 	
 );
 
-our $VERSION = '0.01';
+our $VERSION = '6.0';
 
 require XSLoader;
 XSLoader::load('XSParagraph', $VERSION);
@@ -44,6 +44,7 @@ sub dump($)
   return "\n";
 }
 
+# Will not be implemented.
 sub add_underlying_text($$)
 {
 }

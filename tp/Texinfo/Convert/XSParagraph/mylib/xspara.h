@@ -10,4 +10,4 @@ void xspara__end_line (void);
 char *xspara_end_line (void);
 char *xspara_get_pending (void);
 char *xspara_end (void);
-char *xspara_add_pending_word (char *add_spaces);
+char *xspara_add_pending_word (int add_spaces);

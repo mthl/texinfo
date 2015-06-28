@@ -94,9 +94,17 @@ SV *
 xspara_add_pending_word (paragraph, ...)
         HV * paragraph
     PREINIT:
-        char *add_spaces = 0;
+        int add_spaces = 0;
         char *retval;
     CODE:
+        items -= 1;
+        if (items > 0)
+          {
+            if (SvOK(ST(1)))
+              {
+                add_spaces = (int)SvIV(ST(1));;
+              }
+          }
         //xspara_set_state (paragraph);
         retval = xspara_add_pending_word (add_spaces);
         xspara_get_state (paragraph);
@@ -152,6 +160,7 @@ xspara_add_text (paragraph, text_in, ...)
            process it properly in xspara_add_next. */
         /* "man perlguts" possibly says not to do this, but it's
            hard to tell what it's talking about. */
+        /* It's about the dangers of changing your arguments. */
         if (!SvUTF8 (text_in))
           {
             //printf ("upgrading <%s>\n", SvPV_nolen (text_in));
@@ -223,6 +232,13 @@ xspara_inhibit_end_sentence (paragraph)
         //xspara_set_state (paragraph);
         xspara_inhibit_end_sentence ();
         xspara_get_state (paragraph);
+
+void
+xspara_allow_end_sentence (paragraph)
+        HV * paragraph
+    CODE:
+        //xspara_set_state (paragraph);
+        xspara_allow_end_sentence ();
   
 # Optional parameters are IGNORE_COLUMNS, KEEP_END_LINES, FRENCHSPACING
 # Pass them to the C function as -1 if not given or undef.

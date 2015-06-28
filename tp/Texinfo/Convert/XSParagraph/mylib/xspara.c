@@ -29,6 +29,9 @@ typedef struct {
                   the line to be too long, the line should have been cut before
                   saving it. */
 
+    /* When word.end == 0, this indicates a word of length 0. */
+    int invisible_pending_word;
+
     /* Length of space in multibyte characters. */
     int space_counter;
 
@@ -50,6 +53,9 @@ typedef struct {
     int end_line_count; /* Number of newlines so far in an output unit, i.e.
                            with add_text or add_next. */
 
+    wint_t last_letter; /* Last letter in word, used to decide if we're
+                            at the end of a sentence. */
+
     /* Options set with set_space_protection. */
     int protect_spaces; /* Line break forbidden, as in @w. */
     int ignore_columns; /* Don't cut line at right margin.  Used by
@@ -66,7 +72,7 @@ static PARAGRAPH state;
 void
 xspara_hello (void)
 {
-  puts ("hello world");
+  /* puts ("hello world"); */
   if (!setlocale (LC_CTYPE, "en_US.utf8"))
     {
       fprintf (stderr, "Couldn't set UTF-8 character type in locale.\n");
@@ -74,9 +80,11 @@ xspara_hello (void)
     }
   else
     {
+      /*
       fprintf (stderr, "tried to set LC_CTYPE to UTF-8.\n");
       fprintf (stderr, "character encoding is: %s\n",
                nl_langinfo (CODESET));
+       */
     }
 }
 
@@ -89,11 +97,14 @@ xspara_new (HV *conf)
   free (state.space.text);
   free (state.word.text);
 
+  //fprintf (stderr, "PARAGRAPH\n");
+
   /* Default values for formatter. */
   memset (&state, 0, sizeof (state));
   state.max = 72;
   state.indent_length_next = -1; /* Special value meaning undefined. */
   state.end_sentence = -2; /* Special value meaning undefined. */
+  state.last_letter = L'\0';
 
   if (conf)
     xspara_set_state (conf);
@@ -120,6 +131,8 @@ xspara_set_state (HV *hash)
 
   /* Alternatively, let the "paragraph" object be an integer giving
      an index into an array of PARAGRAPH objects. */
+
+  /* We could have multiple paragraphs going at once for a footnote. */
 
   /* Fetch all these so they are set, and reset for each paragraph. */
   FETCH_INT("end_sentence", state.end_sentence);
@@ -273,26 +286,29 @@ xspara_get_pending (void)
   return t.text;
 }
 
-/* Append to RESULT pending space followed by pending word, plus optional 
-   spaces, in the result string.  Assume we don't need to wrap a line. */
+/* Append to RESULT pending space followed by pending word.  Assume we don't 
+   need to wrap a line.  Only add spaces without a word if ADD_SPACES. */
 void
-xspara__add_pending_word (TEXT *result, char *add_spaces)
+xspara__add_pending_word (TEXT *result, int add_spaces)
 {
-  if (state.word.end == 0 && !add_spaces)
+  if (state.word.end == 0 && !state.invisible_pending_word && !add_spaces)
     return;
 
   if (state.indent_length > state.counter)
     {
+      int i;
       /* If we are not up to the left margin yet, output spaces to get there, 
          and ignore 'state.space', the pending space string.  In this case 
          state.counter is probably 0.  */
-      int i;
+
+      //fprintf (stderr, "INDENT\n");
       for (i = 0; i < state.indent_length - state.counter; i++)
         text_append (result, " ");
       state.counter = state.indent_length;
     }
   else if (state.space.end > 0)
     {
+      //fprintf (stderr, "ADD_SPACES\n");
       text_append_n (result, state.space.text, state.space.end);
 
       state.counter += state.space_counter;
@@ -300,19 +316,21 @@ xspara__add_pending_word (TEXT *result, char *add_spaces)
       state.space_counter = 0;
     }
 
-  if (state.word.end > 0)
+  if (state.word.end > 0 || state.invisible_pending_word)
     {
+      //fprintf (stderr, "ADD_WORD\n");
       text_append_n (result, state.word.text, state.word.end);
       state.counter += state.word_counter;
 
       state.word.end = 0;
       state.word_counter = 0;
+      state.invisible_pending_word = 0;
     }
 }
 
 /* Function for users of this module. */
 char *
-xspara_add_pending_word (char *add_spaces)
+xspara_add_pending_word (int add_spaces)
 {
   TEXT ret;
 
@@ -345,7 +363,8 @@ xspara_end (void)
     return "";
 }
 
-/* Add WORD to paragraph in RESULT, not refilling it. */
+/* Add WORD to paragraph in RESULT, not refilling WORD.  If we go past the end 
+   of the line start a new one. */
 // 184
 void
 xspara__add_next (TEXT *result,
@@ -358,7 +377,7 @@ xspara__add_next (TEXT *result,
 
   if (word) // 196
     {
-      if (state.word.end == 0)
+      if (state.word.end == 0 && !state.invisible_pending_word)
         {
           /* Check if we are at the end of a sentence and if we need to
              output two spaces after the full stop.  If so, check if the
@@ -371,7 +390,7 @@ xspara__add_next (TEXT *result,
            */
 
           if (state.counter != 0 && state.space.end > 0
-              && state.end_sentence == 1)
+              && state.end_sentence == 1 && !state.french_spacing)
             {
               wchar_t wc;
               size_t char_len;
@@ -399,12 +418,14 @@ xspara__add_next (TEXT *result,
              pending ouput in the results string, and start a new line.
              TODO: Does line_counter get incremented properly in this 
              circumstance? */
+          /* TODO: Could we just call _add_pending_word here? */
           text_append_n (result, state.space.text, state.space.end);
           state.space.end = 0;
           state.space_counter = 0;
           text_append_n (result, state.word.text, state.word.end);
           state.word.end = 0;
           state.word_counter = 0;
+          state.invisible_pending_word = 0;
 
           xspara__end_line ();
         }
@@ -473,6 +494,7 @@ xspara_add_next (char *text, int text_len, int end_sentence)
 
   text_init (&t);
   state.end_line_count = 0;
+  //fprintf (stderr, "PASSED EOS %d\n", end_sentence);
   xspara__add_next (&t, text, text_len, 0, end_sentence, 0);
 
   if (t.space > 0)
@@ -482,9 +504,15 @@ xspara_add_next (char *text, int text_len, int end_sentence)
 }
 
 void
-xspara_inhibit_end_sentence (paragraph)
+xspara_inhibit_end_sentence (void)
 {
   state.end_sentence = 0;
+}
+
+void
+xspara_allow_end_sentence (void)
+{
+  state.last_letter = L'a'; /* A lower-case letter. */
 }
 
 /* -1 in a parameter means leave that value as it is. */
@@ -501,6 +529,12 @@ xspara_set_space_protection (int protect_spaces,
   if (keep_end_lines != -1)
     state.keep_end_lines = keep_end_lines;
 
+  /*fprintf (stderr, "SETTING SPACE (%d, %d, %d, %d)\n",
+                                   protect_spaces,
+                                   ignore_columns,
+                                   keep_end_lines,
+                                   french_spacing);*/
+
   /* If at the end of a sentence, and due to output the end of sentence
      space, and we switch to French spacing, then make the space up to
      two spaces.
@@ -513,8 +547,9 @@ xspara_set_space_protection (int protect_spaces,
       && state.end_sentence != -2 && state.end_sentence != 0
       && state.counter != 0
       && state.space.end > 0
-      && state.word.end == 0)
+      && state.word.end == 0 && !state.invisible_pending_word)
     {
+      //fprintf (stderr, "SWITCH TO FRENCH SPACING\n");
       while (state.space_counter < 2)
         {
           text_append_n (&state.space, " ", 1);
@@ -526,15 +561,25 @@ xspara_set_space_protection (int protect_spaces,
     }
 
   if (french_spacing != -1)
-    state.french_spacing = french_spacing;
+    {
+      //fprintf (stderr, "setting french sp\n");
+      state.french_spacing = french_spacing;
+    }
 
- if (protect_spaces)
+ if (protect_spaces != -1 && state.protect_spaces)
    {
-     /* "Begin a word, to have something even if empty. " */
-     /* TODO: Don't understand this. */
+     if (state.word.end == 0)
+       {
+         //fprintf (stderr, "ADD INVISIBLE WORD\n");
+         /* In _add_pending_word this meant that an "empty word" would
+            be output.  This makes "a @w{} b" -> "a  b", not "a b", and
+            "a @w{}" at end of paragraph -> "a ", not "a". */
+
+         state.invisible_pending_word = 1;
+       }
    }
 
- return ""; /* Why? */
+ return ""; /* TODO: Check if we can remove this. */
 }
 
 /*****************************************************************/
@@ -550,11 +595,6 @@ xspara_add_text (char *text)
   wchar_t wc;
   size_t char_len;
   TEXT result;
-  wchar_t last_char;
-  
-  last_char = L'\0';
-
-  //return text; /* Return the input, unwrapped. */
 
   text_init (&result);
 
@@ -573,7 +613,7 @@ xspara_add_text (char *text)
 
       if (iswspace (wc))
         {
-          last_char = L'\0';
+          state.last_letter = L'\0';
 
           /* If protect_spaces is on, ... */
           if (state.protect_spaces) // 338
@@ -594,9 +634,12 @@ xspara_add_text (char *text)
                       ptr++;
                     }
 
+                  /* TODO: Get rid of !state.french_spacing.  This is needed
+                     when Plaintext.pm passed in a non-French spacing end
+                     sentence via add_text, used by @? and similar. */
                   if (state.end_sentence == 1 && !state.french_spacing)
                     { // 347
-                      /* TODO: Make the space at the end of the word up to
+                      /* Make the space at the end of the word up to
                          two spaces. */
 
                       /* However, other spaces within a @w aren't doubled.
@@ -611,6 +654,12 @@ xspara_add_text (char *text)
 
                        */
 
+                      if (ptr == state.word.text + 1 || !iswspace(ptr[-2]))
+                        {
+                          text_append_n (&state.word, " ", 1);
+                        }
+                      /* Note that that doesn't check for any
+                         fancy spaces. */
                     }
                 }
               if (state.counter != 0
@@ -624,19 +673,19 @@ xspara_add_text (char *text)
             {
               xspara__add_pending_word (&result, 0);
 
-              state.space.end = 0;
-              state.space_counter = 0;
-
               if (state.counter != 0)
                 {
                   /* If we are at the end of a sentence where two spaces
                      are required. */
-                  if (state.end_sentence == 1) // 371
+                  if (state.end_sentence == 1
+                      && !state.french_spacing) // 371
                     {
                       char *q = p + char_len;
                       wchar_t q_char;
                       size_t q_len;
                       int at_least_two = 0;
+
+                      //fprintf (stderr, "DOUBLING SPACE\n");
 
                       /* Check if the next character is whitespace as well. */
                       q_len = mbrtowc (&q_char, q, 10, NULL);
@@ -727,7 +776,6 @@ xspara_add_text (char *text)
                         {
                           /* Otherwise, an extra space is added
                              in _add_next. */
-
                           state.space.end = 0;
                           state.space_counter = 0;
                           if (*p == '\n' || *p == '\r')
@@ -740,19 +788,16 @@ xspara_add_text (char *text)
                     }
                   else /* Not at end of sentence. */ // 388
                     {
-                      state.space.end = 0;
-                      state.space_counter = 0;
-
-                      /* TODO: Add all the space characters, not just
-                         one? */
-                      if (*p == '\n' || *p == '\r')
-                        text_append_n (&state.space, " ", 1);
-                      else
-                        text_append_n (&state.space, p, char_len); // 391
-                      state.space_counter++;
-                      
-                      /* TODO: Skip following spaces, to collapse space 
-                         between words to one space? */
+                      //fprintf (stderr, "NOT END S\n");
+                      /* Only save the first space. */
+                      if (state.space_counter < 1)
+                        {
+                          if (*p == '\n' || *p == '\r')
+                            text_append_n (&state.space, " ", 1);
+                          else
+                            text_append_n (&state.space, p, char_len); // 391
+                          state.space_counter++;
+                        }
                     }
                 }
             } // 394
@@ -773,11 +818,11 @@ xspara_add_text (char *text)
       else /************** Not a white space character. *****************/
         {
           int width = wcwidth (wc);
+          /*************** Double width character. *********************/
           if (width == 2) // 406
             {
-              /* Double width character. */
 
-              last_char = L'\0';
+              state.last_letter = L'\0';
 
               /* It appears we allow a line break in between Chinese characters 
                  even if there was no space between them, unlike single-width 
@@ -796,6 +841,7 @@ xspara_add_text (char *text)
               xspara__add_pending_word (&result, 0);
               state.end_sentence = -2;
             }
+          /*************** Word character ******************************/
           else if (width == 1) // 427
             {
               char *added_word;
@@ -812,8 +858,11 @@ xspara_add_text (char *text)
               if (strchr (".?!", *p))
                 {
                   /* Doesn't count if preceded by an upper-case letter. */
-                  if (!iswupper (last_char))
+                  if (!iswupper (state.last_letter))
                     {
+                      //fprintf (stderr, "END_SENTENCE (%d)\n",
+                               //state.french_spacing);
+
                       if (state.french_spacing)
                         state.end_sentence = -1;
                       else
@@ -831,17 +880,21 @@ xspara_add_text (char *text)
                      a string like "aaaa.bbbb" doesn't mark an end of 
                      sentence. */
                   state.end_sentence = -2;
-                  last_char = wc;
+                  state.last_letter = wc;
                 }
+            }
+          else if (wc == L'\b')
+            {
+              /* Code to say that a following full stop (or question or
+                 exclamation mark) may be an end of sentence. */
+              xspara_allow_end_sentence ();
             }
           else
             {
-              /* Not printable, or possibly a tab. */
-              p += char_len;
-              fprintf (stderr, "invalid sequence\n");
-              fprintf (stderr, "character encoding is: %s\n",
-                       nl_langinfo (CODESET));
-              continue;
+              /* Not printable, possibly a tab, or a combining character.
+                 Add it to the pending word without increasing the column 
+                 count. */
+              text_append_n (&state.word, p, char_len);
             }
         }
 
