@@ -87,6 +87,9 @@ BEGIN
     # cause trouble if the modules are separately installed.
     push @INC, $texinfolibdir;
   }
+  push @INC, "${texinfolibdir}Texinfo/Convert/XSParagraph/lib";
+  push @INC, "${texinfolibdir}Texinfo/Convert/XSParagraph/blib/arch";
+  push @INC, "${texinfolibdir}Texinfo/Convert/XSParagraph";
 
   # '@USE_EXTERNAL_LIBINTL @ and similar are substituted in the
   # makefile using values from configure

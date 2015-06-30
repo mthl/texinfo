@@ -168,6 +168,9 @@ sub end($)
   return $result;
 }
 
+my $end_sentence_character = quotemeta('.?!');
+my $after_punctuation_characters = quotemeta('"\')]');
+
 sub add_next($;$$$$)
 {
   my $paragraph = shift;
@@ -176,25 +179,27 @@ sub add_next($;$$$$)
   my $end_sentence = shift;
   my $transparent = shift;
   $paragraph->{'end_line_count'} = 0;
-  return _add_next($paragraph, $word, undef, $space, $end_sentence, 
+  return _add_next($paragraph, $word, $space, $end_sentence, 
                    $transparent);
 }
 
 # add a word and/or spaces and end of sentence.
 sub _add_next($;$$$$$$)
 {
-  my $paragraph = $_[0];
-  my $word = $_[1];
-  my $space = $_[3];
-  my $end_sentence = $_[4];
-  my $transparent = $_[5];
+  my $paragraph = shift;
+  my $word = shift;
+  my $space = shift;
+  my $end_sentence = shift;
+  my $transparent = shift;
+  my $newlines_impossible = shift;
   my $result = '';
 
   if (defined($word)) {
-    my $underlying_word = $_[2];
-    my $newlines_impossible = $_[6];
-    $underlying_word = $word if (!defined($underlying_word));
-
+    my $disinhibit = 0;
+    # Reverse the insertion of the control character in Plaintext.pm.
+    if ($word =~ s/\x08$//) {
+      $disinhibit = 1;
+    }
     if (!defined($paragraph->{'word'})) {
       $paragraph->{'word'} = '';
       $paragraph->{'underlying_word'} = '';
@@ -212,7 +217,18 @@ sub _add_next($;$$$$$$)
     }
     
     $paragraph->{'word'} .= $word;
-    $paragraph->{'underlying_word'} .= $underlying_word unless($transparent);
+
+    if (!$transparent) {
+      if ($disinhibit) {
+        $paragraph->{'underlying_word'} = 'a';
+      } elsif ($word =~
+           /([^$end_sentence_character$after_punctuation_characters])
+            [$end_sentence_character$after_punctuation_characters]*$/x) {
+        # Save the last character in $word before punctuation
+        $paragraph->{'underlying_word'} = $1;
+      }
+    }
+
     if (!$newlines_impossible and $word =~ /\n/) {
       $result .= $paragraph->{'space'};
       $paragraph->{'space'} = '';
@@ -229,13 +245,7 @@ sub _add_next($;$$$$$$)
       if (defined($paragraph->{'word'})) {
         $para_word = $paragraph->{'word'};
       }
-      my $para_underlying_word = 'UNDEF';;
-      if (defined($paragraph->{'underlying_word'})) {
-        $para_underlying_word = $paragraph->{'word'};
-      }
-
       print STDERR "WORD+ $word -> $para_word\n";
-      print STDERR "UNDERLYING_WORD+ $underlying_word -> $para_underlying_word\n";
     }
     # The $paragraph->{'counter'} != 0 is here to avoid having an
     # additional line output when the text is longer than the max.
@@ -280,6 +290,13 @@ sub inhibit_end_sentence($)
   $paragraph->{'end_sentence'} = 0;
 }
 
+sub allow_end_sentence($)
+{
+  my $paragraph = shift;
+  printf STDERR "ALLOW END SENTENCE\n" if $paragraph->{'DEBUG'};
+  $paragraph->{'underlying_word'} = 'a'; # lower-case
+}
+
 sub set_space_protection($$;$$$)
 {
   my $paragraph = shift;
@@ -309,9 +326,6 @@ sub set_space_protection($$;$$$)
   }
   return '';
 }
-
-my $end_sentence_character = quotemeta('.?!');
-my $after_punctuation_characters = quotemeta('"\')]');
 
 # wrap a text.
 sub add_text($$;$)
@@ -347,13 +361,11 @@ sub add_text($$;$)
     }
     # \x{202f}\x{00a0} are non breaking spaces
     if (defined $spaces) {
-      $underlying_text =~ s/^([^\S\x{202f}\x{00a0}]+)//
-        if defined($underlying_text);
       print STDERR "SPACES($paragraph->{'counter'}) `"._print_escaped_spaces($spaces)."'\n" if $debug_flag;
       #my $added_word = $paragraph->{'word'};
       if ($protect_spaces_flag) {
         $paragraph->{'word'} .= $spaces;
-        $paragraph->{'underlying_word'} .= $spaces;
+        $paragraph->{'underlying_word'} = substr($spaces, -1);
         $paragraph->{'word_counter'} += length($spaces);
         #$paragraph->{'space'} .= $spaces;
         if ($paragraph->{'word'} =~ s/\n/ /g 
@@ -362,15 +374,9 @@ sub add_text($$;$)
            and $paragraph->{'end_sentence'} > 0) {
           $paragraph->{'word'} =~ /(\s*)$/;
           if (length($1) < 2) {
-            #$paragraph->{'word'} =~ s/(\s*)$/  /;
-            #$paragraph->{'underlying_word'} =~ s/(\s*)$/  /;
-            #my $removed = $1;
-            #$paragraph->{'word_counter'} += length('  ') - length($removed);
             my $added = ' ' x (2 - length($1));
             $paragraph->{'word'} .= $added;
-            $paragraph->{'word'} =~ /(\s*)$/;
-            my $end_spaces = $1;
-            $paragraph->{'underlying_word'} =~ s/(\s*)$/$end_spaces/;
+            $paragraph->{'underlying_word'} = ' ';
             $paragraph->{'word_counter'} += length($added);
           }
         }
@@ -422,23 +428,32 @@ sub add_text($$;$)
         $result .= _end_line($paragraph);
       }
     } elsif (defined $added_word) {
-      my $underlying_added_word;
-      if (defined($underlying_text)) {
-        $underlying_text =~ s/^(([^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)//;
-        $underlying_added_word = $1;
-      } else {
-        $underlying_added_word = $added_word;
+      # Whether a sentence end is permitted in spite of a preceding
+      # upper case letter.
+      my $disinhibit = 0;
+
+      # Reverse the insertion of the control character in Plaintext.pm.
+      if ($added_word =~ s/\x08(?=[$end_sentence_character]
+                                  [$after_punctuation_characters]*$)//x) {
+        $disinhibit = 1;
       }
 
-      $result .= _add_next($paragraph, $added_word, $underlying_added_word,
-                           undef, undef, undef, !$newline_possible_flag);
+      $result .= _add_next($paragraph, $added_word, undef, undef,
+                           undef, !$newline_possible_flag);
 
-      # now check if it is considered as an end of sentence
+      my $last_letter = $paragraph->{'underlying_word'};
+
+      # Check if it is considered as an end of sentence.  There are two things
+      # to check: one, that we have a ., ! or ?; and second, that it is not
+      # preceded by an upper-case letter (ignoring some punctuation)
       if (defined($paragraph->{'end_sentence'})
-          and $underlying_added_word =~ /^[$after_punctuation_characters]*$/o) {
+          and $added_word =~ /^[$after_punctuation_characters]*$/o) {
         # do nothing in the case of a continuation of after_punctuation_characters
-      } elsif ($paragraph->{'underlying_word'} =~ /[$end_sentence_character][$after_punctuation_characters]*$/o
-           and $paragraph->{'underlying_word'} !~ /[[:upper:]][$end_sentence_character$after_punctuation_characters]*$/o) {
+      } elsif (($disinhibit
+                or !$last_letter
+                or $last_letter !~ /[[:upper:]]/)
+              and $added_word =~ /[$end_sentence_character]
+                                  [$after_punctuation_characters]*$/x) {
         if ($paragraph->{'frenchspacing'}) {
           $paragraph->{'end_sentence'} = -1;
         } else {

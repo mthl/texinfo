@@ -1,3 +1,48 @@
+2015-06-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Line.pm, tp/Texinfo/Convert/Paragraph.pm,
+	tp/Texinfo/Convert/UnFilled.pm: (allow_end_sentence): New function.
+
+	* tp/Texinfo/Convert/Line.pm, tp/Texinfo/Convert/Paragraph.pm,
+	tp/Texinfo/Convert/UnFilled.pm (_add_text, add_next, _add_next): 
+	Handle backspace as a marker to allow an end of sentence.
+
+	* tp/Texinfo/Convert/Plaintext.pm (_protect_sentence_ends): New 
+	function.
+	(_process_text): Don't return a pair the second element of which 
+	is the underlying text.  Instead, call _protect_sentence_ends on 
+	the text.  No special handing of @code or @var.  Caller in 
+	_convert updated.
+
+	(new_formatter): Add commented-out line to use XSParagraph 
+	instead of Texinfo::Convert::Paragraph.
+
+	(_count_added): Reinstate a commented-out use of end_line_count 
+	method.
+
+	(_convert): Remove check for 'underlying_text' element, which 
+	was only used for @acronym and @abbr.
+	<@acronym and @abbr>: Don't cause underlying text to be saved in 
+	the formatters.  Instead, call allow_end_sentence after 
+	converting the argument, and return the result of the 
+	conversion.
+	<close @var and close monospace>: Call allow_end_sentence method 
+	on formatter.
+	<brace commands with no arguments> If command is not a single 
+	character, call allow_end_sentence after converting.  Call
+	allow_end_sentence if in @var or monospace.
+	<accent commands>: Don't pass underlying text to the formatters.
+	Always call allow_end_sentence in @var and monospace, and call 
+	it when in @sc and the original output would have been not have 
+	been an uppercase letter.
+
+	* tp/texi2any.pl (BEGIN) <in-source run> Add directories for 
+	XSParagraph to @INC.
+	* tp/Makefile.am (AM_T_LOG_FLAGS): Add -I flags for XSParagraph.
+
+	* tp/t/paragraph.t (underlying text lower case)
+	(line underlying text lower case): Tests removed.
+
 2015-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* README-hacking: Notes on how to tag source tree and update 

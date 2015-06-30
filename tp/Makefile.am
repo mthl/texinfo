@@ -175,6 +175,9 @@ T_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) \
                        $(top_srcdir)/build-aux/tap-driver.sh
 T_LOG_COMPILER = $(PERL)
 AM_T_LOG_FLAGS = -w
+AM_T_LOG_FLAGS += -ITexinfo/Convert/XSParagraph/lib
+AM_T_LOG_FLAGS += -ITexinfo/Convert/XSParagraph/blib/arch
+
 AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir;
 
 # just a convenience for running these additional tests.

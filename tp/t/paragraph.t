@@ -2,7 +2,7 @@ use strict;
 
 use Test::More;
 use File::Spec;
-BEGIN { plan tests => 129;
+BEGIN { plan tests => 127;
         if (defined($ENV{'top_srcdir'})) {
           unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
           my $lib_dir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp', 'maintain');
@@ -490,11 +490,6 @@ is ($para->{'lines_counter'}, 1, 'count lines text pending');
 $result .= $para->end();
 is ($para->{'lines_counter'}, 2, 'count lines end paragraph');
 
-$para = Texinfo::Convert::Paragraph->new();
-$result = $para->add_text('AA. BB.', 'aa. bb.');
-$result .= $para->end();
-is ($result, "AA.  BB.\n", 'underlying text lower case');
-
 sub test_line($$$;$)
 {
   my $args = shift;
@@ -690,11 +685,6 @@ is ($line->{'lines_counter'}, 1, 'line count line first line end');
 $result .= $line->add_text("\n");
 $result .= $line->end();
 is ($line->{'lines_counter'}, 2, 'line count line end line');
-
-$line = Texinfo::Convert::Line->new();
-$result = $line->add_text('AA. BB.', 'aa. bb.');
-$result .= $line->end();
-is ($result, "AA.  BB.", 'line underlying text lower case');
 
 my $unfilled = Texinfo::Convert::UnFilled->new({'indent_length' => 5});
 $result = '';

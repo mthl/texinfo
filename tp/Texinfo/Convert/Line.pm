@@ -166,6 +166,9 @@ sub add_next($;$$$$)
   return $line->_add_next($word, undef, $space, $end_sentence, $transparent);
 }
 
+my $end_sentence_character = quotemeta('.?!');
+my $after_punctuation_characters = quotemeta('"\')]');
+
 # add a word and/or spaces and end of sentence.
 sub _add_next($;$$$$$)
 {
@@ -180,6 +183,10 @@ sub _add_next($;$$$$$)
   $underlying_word = $word if (!defined($underlying_word));
 
   if (defined($word)) {
+    my $disinhibit; # full stop after capital letter ends sentence
+    if ($word =~ s/\x08$//) {
+      $disinhibit = 1;
+    }
     if (!defined($line->{'word'})) {
       $line->{'word'} = '';
       $line->{'underlying_word'} = '';
@@ -194,7 +201,18 @@ sub _add_next($;$$$$$)
       }
     }
     $line->{'word'} .= $word;
-    $line->{'underlying_word'} .= $underlying_word unless ($transparent);
+
+    if (!$transparent) {
+      if ($disinhibit) {
+        $line->{'underlying_word'} = 'a';
+      } elsif ($word =~
+           /([^$end_sentence_character$after_punctuation_characters])
+            [$end_sentence_character$after_punctuation_characters]*$/x) {
+        # Save the last character in $word before punctuation
+        $line->{'underlying_word'} = $1;
+      }
+    }
+
     if ($line->{'DEBUG'}) {
       print STDERR "WORD+.L $word -> $line->{'word'}\n";
       print STDERR "WORD+.L $underlying_word -> $line->{'underlying_word'}\n";
@@ -231,6 +249,12 @@ sub inhibit_end_sentence($)
   $line->{'end_sentence'} = 0;
 }
 
+sub allow_end_sentence($)
+{
+  my $line = shift;
+  $line->{'underlying_text'} = 'a'; # lower-case
+}
+
 sub set_space_protection($$;$$$)
 {
   my $line = shift;
@@ -260,9 +284,6 @@ sub set_space_protection($$;$$$)
   }
   return '';
 }
-
-my $end_sentence_character = quotemeta('.?!');
-my $after_punctuation_characters = quotemeta('"\')]');
 
 # wrap a text.
 sub add_text($$;$)
@@ -316,16 +337,32 @@ sub add_text($$;$)
       }
     } elsif ($text =~ s/^(([^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)//) {
       my $added_word = $1;
-      $underlying_text =~ s/^(([^\s\p{InFullwidth}]|[\x{202f}\x{00a0}])+)//;
-      my $underlying_added_word = $1;
 
-      $result .= $line->_add_next($added_word, $underlying_added_word);
-      # now check if it is considered as an end of sentence
-      if (defined($line->{'end_sentence'}) and 
-        $added_word =~ /^[$after_punctuation_characters]*$/) {
-        # do nothing in the case of a continuation of after_punctuation_characters
-      } elsif ($line->{'underlying_word'} =~ /[$end_sentence_character][$after_punctuation_characters]*$/
-           and $line->{'underlying_word'} !~ /[[:upper:]][$end_sentence_character$after_punctuation_characters]*$/) {
+      # Whether a sentence end is permitted in spite of a preceding
+      # upper case letter.
+      my $disinhibit = 0;
+
+      # Reverse the insertion of the control character in Plaintext.pm.
+      if ($added_word =~ s/\x08(?=[$end_sentence_character]
+        [$after_punctuation_characters]*$)//x) {
+        $disinhibit = 0;
+      }
+      $result .= _add_next($line, $added_word);
+
+      my $last_letter = $line->{'underlying_word'};
+
+      # Check if it is considered as an end of sentence.  There are two things
+      # to check: one, that we have a ., ! or ?; and second, that it is not
+      # preceded by an upper-case letter (ignoring some punctuation)
+      if (defined($line->{'end_sentence'})
+          and $added_word =~ /^[$after_punctuation_characters]*$/) {
+        # do nothing in the case of a continuation of 
+        # after_punctuation_characters
+      } elsif (($disinhibit
+                or !$last_letter
+                or $last_letter !~ /[[:upper:]]/)
+              and $added_word =~ /[$end_sentence_character]
+                                  [$after_punctuation_characters]*$/x) {
         if ($line->{'frenchspacing'}) {
           $line->{'end_sentence'} = -1;
         } else {

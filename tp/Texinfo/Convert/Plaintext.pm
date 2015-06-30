@@ -31,6 +31,10 @@ use Texinfo::Convert::Paragraph;
 use Texinfo::Convert::Line;
 use Texinfo::Convert::UnFilled;
 
+use XSParagraph;
+XSParagraph::hello ();
+# TODO: Run initialization code for XSParagraph implicitly.
+
 use Carp qw(cluck);
 
 require Exporter;
@@ -54,7 +58,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '5.1.90';
+$VERSION = '6.0';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -551,6 +555,34 @@ sub _output_old($$)
   return undef;
 }
 
+my $end_sentence = quotemeta('.?!');
+my $after_punctuation = quotemeta('"\')]');
+
+sub _protect_sentence_ends ($) {
+  my $text = shift;
+  # Avoid suppressing end of sentence, by inserting a control character
+  # in front of the full stop.  The choice of BS for this is arbitrary.
+  $text =~ s/(?<=[^[:upper:]])
+             (?=[$end_sentence][$after_punctuation]*(?:\s|$))
+             /\x08/gx;
+
+  # Also insert a control character at end of string, to protect a full stop 
+  # that may follow later.
+
+  #$text =~ s/(?<=[^[:upper:]][$after_punctuation]*)$/\x08/;
+  # Perl doesn't support "variable length lookbehind"
+
+  $text = reverse $text;
+  $text =~ s/^(?=[$after_punctuation]*
+                 (?:[^[:upper:]\s]|[\x{202f}\x{00a0}]))
+            /\x08/x;
+  $text = reverse $text;
+
+  return $text;
+}
+
+# Convert ``, '', `, ', ---, -- in $COMMAND->{'text'} to their output,
+# possibly coverting to upper case as well.
 sub _process_text($$$)
 {
   my $self = shift;
@@ -558,30 +590,22 @@ sub _process_text($$$)
   my $context = shift;
   my $text = $command->{'text'};
 
+  if ($context->{'upper_case'}
+      or $self->{'formatters'}[-1]->{'var'}) {
+    $text = _protect_sentence_ends($text);
 
-  my $lower_case_text;
-  if ($context->{'upper_case'}) {
-    $lower_case_text = $text;
+    if ($self->{'debug'}) {
+      my $debug_text = $text;
+      $debug_text =~ s/\x08/!!/g;
+      print STDERR "markers:<$debug_text>\n";
+    }
+
     $text = uc($text);
   }
-  # Even if in upper case, in code style or @var always end a sentence.
-  if (#$context->{'code'} 
-      $context->{'font_type_stack'}->[-1]->{'monospace'}
-      or $context->{'var'}) {
-    $lower_case_text = lc($text);
-  }
+
   if ($self->{'to_utf8'}) {
-    if (defined($lower_case_text)) {
-      $lower_case_text 
-        = Texinfo::Convert::Unicode::unicode_text($lower_case_text, 
-          #$context->{'code'});
-          $context->{'font_type_stack'}->[-1]->{'monospace'});
-    }
-    return (Texinfo::Convert::Unicode::unicode_text($text, 
-            $context->{'font_type_stack'}->[-1]->{'monospace'}),
-            #$context->{'code'}),
-            $lower_case_text);
-  #} elsif (!$context->{'code'}) {
+    return Texinfo::Convert::Unicode::unicode_text($text, 
+            $context->{'font_type_stack'}->[-1]->{'monospace'});
   } elsif (!$context->{'font_type_stack'}->[-1]->{'monospace'}) {
     $text =~ s/---/\x{1F}/g;
     $text =~ s/--/-/g;
@@ -589,16 +613,8 @@ sub _process_text($$$)
     $text =~ s/``/"/g;
     $text =~ s/\'\'/"/g;
     $text =~ s/`/'/g;
-    if (defined($lower_case_text)) {
-      $lower_case_text =~ s/---/\x{1F}/g;
-      $lower_case_text =~ s/--/-/g;
-      $lower_case_text =~ s/\x{1F}/--/g;
-      $lower_case_text =~ s/``/"/g;
-      $lower_case_text =~ s/\'\'/"/g;
-      $lower_case_text =~ s/`/'/g;
-    }
   }
-  return ($text, $lower_case_text);
+  return $text;
 }
 
 sub new_formatter($$;$)
@@ -641,6 +657,7 @@ sub new_formatter($$;$)
     $container = Texinfo::Convert::Line->new($container_conf);
   } elsif ($type eq 'paragraph') {
     $container = Texinfo::Convert::Paragraph->new($container_conf);
+    #$container = XSParagraph->new($container_conf);
   } elsif ($type eq 'unfilled') {
     $container = Texinfo::Convert::UnFilled->new($container_conf);
   } else {
@@ -786,8 +803,7 @@ sub _count_added($$$)
   my $container = shift;
   my $text = shift;
 
-  #$self->_add_lines_count($container->end_line_count());
-  $self->{'count_context'}->[-1]->{'lines'} += $container->{'end_line_count'};
+  $self->_add_lines_count($container->end_line_count());
 
   #$self->_add_text_count($text);
   #$self->{'count_context'}->[-1]->{'bytes'} +=
@@ -1640,12 +1656,10 @@ sub _convert($$)
                                or $root->{'type'} eq 'last_raw_newline')) {
         $result = _count_added($self, $formatter->{'container'},
                     $formatter->{'container'}->add_next($root->{'text'}));
-      } elsif ($root->{'type'} and ($root->{'type'} eq 'underlying_text')) {
-        $formatter->{'container'}->add_underlying_text($root->{'text'});
       } else {
-        my ($text, $lower_case_text) = _process_text($self, $root, $formatter);
+        my $text = _process_text($self, $root, $formatter);
         $result = _count_added($self, $formatter->{'container'},
-                    $formatter->{'container'}->add_text($text, $lower_case_text));
+                    $formatter->{'container'}->add_text($text));
       }
       return $result;
     # the following is only possible if paragraphindent is set to asis
@@ -1754,19 +1768,22 @@ sub _convert($$)
       my $text;
       
       $text = Texinfo::Convert::Text::brace_no_arg_command($root, 
-                            {%{$self->{'convert_text_options'}}, 
-                             'sc' => $formatter->{'upper_case'}});
-      my $lower_case_text;
-      # always double spacing, so set underlying text lower case.
-      if ($formatter->{'var'} 
-          or $formatter->{'font_type_stack'}->[-1]->{'monospace'}) {
-        $lower_case_text = Texinfo::Convert::Text::brace_no_arg_command($root,
-                             {%{$self->{'convert_text_options'}},
-                              'lc' => 1});
-      } elsif ($formatter->{'upper_case'}) {
-        $lower_case_text = Texinfo::Convert::Text::brace_no_arg_command($root,
-                             $self->{'convert_text_options'});
+                                         $self->{'convert_text_options'});
+
+      # @AA{} should suppress an end sentence, @aa{} shouldn't.  This
+      # is the case whether we are in @sc or not.
+      if ($formatter->{'upper_case'}
+          and $letter_no_arg_commands{$root->{'cmdname'}}) {
+        $text = _protect_sentence_ends($text);
+        $text = uc($text);
+
+        if ($self->{'DEBUG'}) {
+          my $debug_text = $text;
+          $debug_text =~ s/\x08/!!/g;
+          print STDERR "accent markers:$debug_text\n";
+        }
       }
+
       if ($punctuation_no_arg_commands{$command}) {
         $result .= _count_added($self, $formatter->{'container'},
                     $formatter->{'container'}->add_next($text, undef, 1));
@@ -1776,24 +1793,27 @@ sub _convert($$)
             $formatter->{'container'}->set_space_protection(1,undef))
           if ($formatter->{'w'} == 1);
         $result .= _count_added($self, $formatter->{'container'}, 
-                       $formatter->{'container'}->add_text($text,
-                                                           $lower_case_text)); 
+                       $formatter->{'container'}->add_text($text));
         $formatter->{'w'}--;
         $result .= _count_added($self, $formatter->{'container'},
             $formatter->{'container'}->set_space_protection(0,undef))
           if ($formatter->{'w'} == 0);
       } else {
-        # This is to have @TeX{}, for example, be considered as tex
-        # as underlying text in order not to prevent end sentences.
-        if (!$letter_no_arg_commands{$command}) {
-          $lower_case_text = lc($text);
-        }
         $result .= _count_added($self, $formatter->{'container'}, 
-                       $formatter->{'container'}->add_text($text,
-                                                           $lower_case_text)); 
+                       $formatter->{'container'}->add_text($text));
+
+        # This is to have @TeX{}, for example, not to prevent end sentences.
+        if (!$letter_no_arg_commands{$command}) {
+          $formatter->{'container'}->allow_end_sentence();
+        }
+
         if ($command eq 'dots') {
           $formatter->{'container'}->inhibit_end_sentence();
         }
+      }
+      if ($formatter->{'var'} 
+          or $formatter->{'font_type_stack'}->[-1]->{'monospace'}) {
+        $formatter->{'container'}->allow_end_sentence();
       }
       return $result;
     # commands with braces
@@ -1808,18 +1828,22 @@ sub _convert($$)
       }
       my $accented_text 
          = Texinfo::Convert::Text::text_accents($root, $encoding, $sc);
-      my $accented_text_lower_case;
-      if ($formatter->{'var'} 
-          or $formatter->{'font_type_stack'}->[-1]->{'monospace'}) {
-        $accented_text_lower_case
-         = Texinfo::Convert::Text::text_accents($root, $encoding, -1);
-      } elsif ($formatter->{'upper_case'}) {
-        $accented_text_lower_case
+      $result .= _count_added($self, $formatter->{'container'},
+         $formatter->{'container'}->add_text($accented_text));
+
+      my $accented_text_original;
+      if ($formatter->{'upper_case'}) {
+        $accented_text_original
          = Texinfo::Convert::Text::text_accents($root, $encoding);
       }
-      $result .= _count_added($self, $formatter->{'container'},
-         $formatter->{'container'}->add_text($accented_text, 
-                                             $accented_text_lower_case));
+
+      if ($accented_text_original
+            and $accented_text_original !~ /[[:upper:]]/
+          or $formatter->{'var'} 
+          or $formatter->{'font_type_stack'}->[-1]->{'monospace'}) {
+        $formatter->{'container'}->allow_end_sentence();
+      }
+
       # in case the text added ends with punctuation.  
       # If the text is empty (likely because of an error) previous 
       # punctuation will be cancelled, we don't want that.
@@ -1907,6 +1931,7 @@ sub _convert($$)
       if ($code_style_commands{$command}) {
         #$formatter->{'code'}--;
         $formatter->{'font_type_stack'}->[-1]->{'monospace'}--;
+        $formatter->{'container'}->allow_end_sentence();
         pop @{$formatter->{'font_type_stack'}}
           if !$formatter->{'font_type_stack'}->[-1]->{'monospace'};
       } elsif ($regular_font_style_commands{$command}) {
@@ -1929,7 +1954,11 @@ sub _convert($$)
       }
       if ($upper_case_commands{$command}) {
         $formatter->{'upper_case'}--;
-        $formatter->{'var'}-- if ($command eq 'var');
+        if ($command eq 'var') {
+          $formatter->{'var'}--;
+          # Allow a following full stop to terminate a sentence.
+          $formatter->{'container'}->allow_end_sentence();
+        }
       }
       return $result;
     } elsif ($root->{'cmdname'} eq 'image') {
@@ -2207,13 +2236,13 @@ sub _convert($$)
                              $root->{'extra'}->{'brace_command_contents'}->[-1]});
           #print STDERR "".Data::Dumper->Dump([$prepended])."\n";
           unshift @{$self->{'current_contents'}->[-1]}, $prepended;
+          return '';
         } else {
-          # FIXME The underlying_text added is very ugly.  It leads to 'a'
-          # being prepended in the underlying word after the abbr or acronym,
-          # the intended effect being that a following period is always
-          # interpreted as ending a sentence.
-          unshift @{$self->{'current_contents'}->[-1]}, ($argument,
-                    {'type' => 'underlying_text', 'text' => 'a'});
+          $result = $self->_convert($argument);
+
+          # We want to permit an end of sentence, but not force it as @. does.
+          $formatter->{'container'}->allow_end_sentence();
+          return $result;
         }
       }
       return '';

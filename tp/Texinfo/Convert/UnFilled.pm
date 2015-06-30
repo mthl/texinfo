@@ -88,6 +88,7 @@ sub _add_text($$)
 {
   my $line = shift;
   my $text = shift;
+  $text =~ s/\x08//g;
   if ($line->{'line_beginning'}) {
     if ($line->{'indent_length'}) {
       my $nspaces = $line->{'indent_length'} - $line->{'counter'};
@@ -172,6 +173,11 @@ sub add_underlying_text($$)
 }
 
 sub inhibit_end_sentence($)
+{
+  my $line = shift;
+}
+
+sub allow_end_sentence($)
 {
   my $line = shift;
 }
