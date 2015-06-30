@@ -166,12 +166,6 @@ sub add_next($;$$$$)
   return $result;
 }
 
-sub add_underlying_text($$)
-{
-  my $line = shift;
-  my $underlying_text = shift;
-}
-
 sub inhibit_end_sentence($)
 {
   my $line = shift;
@@ -192,7 +186,6 @@ sub add_text($$)
 {
   my $line = shift;
   my $text = shift;
-  my $underlying_text = shift;
 
   $line->{'end_line_count'} = 0;
   return $line->_add_text($text);

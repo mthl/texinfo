@@ -31,8 +31,8 @@ use Texinfo::Convert::Paragraph;
 use Texinfo::Convert::Line;
 use Texinfo::Convert::UnFilled;
 
-use XSParagraph;
-XSParagraph::hello ();
+#use XSParagraph;
+#XSParagraph::hello ();
 # TODO: Run initialization code for XSParagraph implicitly.
 
 use Carp qw(cluck);
@@ -2334,7 +2334,7 @@ sub _convert($$)
           $res = "U+$arg";  # not outputting UTF-8
         }
         $result .= _count_added($self, $formatter->{'container'}, 
-                   $formatter->{'container'}->add_text($res, $res)); 
+                   $formatter->{'container'}->add_text($res));
       } else {
         $result = '';  # arg was not defined
       }

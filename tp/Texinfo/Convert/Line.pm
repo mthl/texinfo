@@ -232,17 +232,6 @@ sub _add_next($;$$$$$)
   return $result;
 }
 
-sub add_underlying_text($$)
-{
-  my $line = shift;
-  my $underlying_text = shift;
-  if (defined($underlying_text)) {
-    $line->{'underlying_word'} = ''
-       if (!defined($line->{'underlying_word'}));
-    $line->{'underlying_word'} .= $underlying_text;
-  }
-}
-
 sub inhibit_end_sentence($)
 {
   my $line = shift;
@@ -286,12 +275,11 @@ sub set_space_protection($$;$$$)
 }
 
 # wrap a text.
-sub add_text($$;$)
+sub add_text($$)
 {
   my $line = shift;
   my $text = shift;
-  my $underlying_text = shift;
-  $underlying_text = $text if (!defined($underlying_text));
+  my $underlying_text = $text;
   $line->{'end_line_count'} = 0;
   my $result = '';
 
@@ -303,7 +291,6 @@ sub add_text($$;$)
     }
     # \x{202f}\x{00a0} are non breaking spaces
     if ($text =~ s/^([^\S\x{202f}\x{00a0}\n]+)//) {
-      $underlying_text =~ s/^([^\S\x{202f}\x{00a0}\n]+)//;
       my $spaces = $1;
       print STDERR "SPACES.L\n" if ($line->{'DEBUG'});
       if ($line->{'protect_spaces'}) {
@@ -375,19 +362,15 @@ sub add_text($$;$)
         delete $line->{'end_sentence'};
       }
     } elsif ($text =~ s/^\n//) {
-      $underlying_text =~ s/^\n//;
       $result .= $line->_end_line();
     } elsif ($text =~ s/^(\p{InFullwidth})//) {
       my $added = $1;
-      $underlying_text =~ s/^(\p{InFullwidth})//;
-      my $underlying_added = $1;
       print STDERR "EAST_ASIAN.L\n" if ($line->{'DEBUG'});
       if (!defined($line->{'word'})) {
         $line->{'word'} = '';
-        $line->{'underlying_word'} = '';
       }
       $line->{'word'} .= $added;
-      $line->{'underlying_word'} .= $underlying_added; 
+      $line->{'underlying_word'} = $added;
       $result .= $line->_add_pending_word();
       delete $line->{'end_sentence'};
       $line->{'space'} = '';

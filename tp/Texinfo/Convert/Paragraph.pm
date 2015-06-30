@@ -273,17 +273,6 @@ sub _add_next($;$$$$$$)
   return $result;
 }
 
-sub add_underlying_text($$)
-{
-  my $paragraph = shift;
-  my $underlying_text = shift;
-  if (defined($underlying_text)) {
-    $paragraph->{'underlying_word'} = ''
-       if (!defined($paragraph->{'underlying_word'}));
-    $paragraph->{'underlying_word'} .= $underlying_text;
-  }
-}
-
 sub inhibit_end_sentence($)
 {
   my $paragraph = shift;
@@ -328,11 +317,10 @@ sub set_space_protection($$;$$$)
 }
 
 # wrap a text.
-sub add_text($$;$)
+sub add_text($$)
 {
   my $paragraph = shift;
   my $text = shift;
-  my $underlying_text = shift;
   $paragraph->{'end_line_count'} = 0;
   my $result = '';
 
@@ -466,21 +454,12 @@ sub add_text($$;$)
           if (defined($paragraph->{'end_sentence'}) and $paragraph->{'DEBUG'});
       }
     } elsif (defined $fullwidth_segment) {
-      my $underlying_added;
-      if (defined($underlying_text)) {
-        $underlying_text =~ s/^(\p{InFullwidth})//;
-        $underlying_added = $1;
-      } else {
-        $underlying_added = $fullwidth_segment;
-      }
-      
       print STDERR "EAST_ASIAN\n" if ($paragraph->{'DEBUG'});
       if (!defined($paragraph->{'word'})) {
         $paragraph->{'word'} = '';
-        $paragraph->{'underlying_word'} = '';
       }
       $paragraph->{'word'} .= $fullwidth_segment;
-      $paragraph->{'underlying_word'} .= $underlying_added; 
+      $paragraph->{'underlying_word'} = $fullwidth_segment;
       $paragraph->{'word_counter'} += 2;
       if ($paragraph->{'counter'} != 0 and
           $paragraph->{'counter'} + $paragraph->{'word_counter'} 
