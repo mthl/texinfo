@@ -146,7 +146,7 @@ svn commit                # when clean, then distcheck to be sure
 
 - To do the actual upload:
 pkg=texinfo
-ver=5.2
+ver=6.0
 
 then do one of:
 gnupload --to alpha.gnu.org:$pkg $pkg-$ver.tar.xz                #pretest
@@ -178,7 +178,7 @@ TEXINFO_DTD_VERSION should already have been updated to $ver in
 configure.ac if it was needed, but check again.  See comments in
 configure.ac, and run (at the top level) make dtd-check.
 
-# ... set up dtd directory on web pages:
+#  ... set up dtd directory on web pages:
 cd $HOME/gnu/www/texinfo/dtd # or wherever webpages checkout is
 mkdir $ver && cvs add $ver
 cp $tutil/texinfo.dtd $ver
@@ -188,18 +188,18 @@ cvs commit -m$ver $ver
 # If -kb is forgotten, CVS will do its own $Id expansion.
 # Recover by editing and committing a new version of texinfo.dtd in svn,
 # copying it again to the cvs dir, then:
-# cvs admin -kb texinfo.dtd; cvs update -A.
+#   cvs admin -kb texinfo.dtd; cvs update -A
 # (See the "How to store binary files" node in the CVS manual.)
 
 #  ... tag source tree (use your own username before @):
-svn copy -r 5382 -m'texinfo_5_2 tag based on r5382' \
+svn copy -r 6363 -m'texinfo_6_0 tag based on r6363' \
   svn+ssh://gavin@svn.savannah.gnu.org/texinfo/trunk \
-  svn+ssh://gavin@svn.savannah.gnu.org/texinfo/tags/texinfo_5_2
+  svn+ssh://gavin@svn.savannah.gnu.org/texinfo/tags/texinfo_6_0
 [for karl: /srv/svn/texinfo]  
 
   ... update texinfo at tug.org (contact root@tug.org); from last time:
-prev=5.1
-ver=5.2
+prev=5.2
+ver=6.0
 cd ~ftp/tex
 rm -rf texinfo-$prev*
 cp ~/texinfo-$ver.tar.{gz,xz} .
@@ -214,8 +214,8 @@ send announcement to info-gnu,
 news item at savannah.
 
   ... make diffs at official release:
-prev=5.1
-ver=5.2
+prev=5.2
+ver=6.0
 cd $misc/archive/$pkg/prod
 tar xf $txi/texinfo-$ver.tar.gz
 tar xf texinfo-$prev.tar.gz
@@ -227,4 +227,4 @@ ro texinfo-*$ver*
   
   ... [personal for karl] move mail:
 mv ~/mail/txi.done $ver.mail
-gzip $ver.mail
+bzip2 $ver.mail

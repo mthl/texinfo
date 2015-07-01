@@ -1,3 +1,9 @@
+2015-07-01  Karl Berry  <karl@freefriends.org>
+
+	* doc/texinfo.tex: doc tweaks.
+
+	* README-hacking: more doc updates for 6.0 release.
+
 2015-06-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Line.pm, tp/Texinfo/Convert/Paragraph.pm,
