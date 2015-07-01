@@ -1,3 +1,11 @@
+2015-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/terminal.c (terminal_initialize_terminal): Save values of 
+	LINES and COLUMNS environmental variables.
+	(terminal_get_screen_size): Use saved values.
+	* info/t/c-u-m-x-scroll-forward.sh: Correct use of 
+	synch_with_program function.
+
 2015-07-01  Karl Berry  <karl@freefriends.org>
 
 	* doc/texinfo.tex: doc tweaks.

@@ -535,6 +535,9 @@ terminal_new_terminal (char *terminal_name)
     }
 }
 
+/* Saved values of the LINES and COLUMNS environmental variables. */
+static char *env_lines, *env_columns;
+
 /* Set the global variables SCREENWIDTH and SCREENHEIGHT. */
 void
 terminal_get_screen_size (void)
@@ -562,8 +565,8 @@ terminal_get_screen_size (void)
         {
           char *sw = getenv ("COLUMNS");
 
-          if (sw)
-            screenwidth = atoi (sw);
+          if (env_columns)
+            screenwidth = atoi (env_columns);
 
           if (screenwidth <= 0)
             screenwidth = tgetnum ("co");
@@ -572,10 +575,8 @@ terminal_get_screen_size (void)
       /* Environment variable LINES overrides setting of "li". */
       if (screenheight <= 0)
         {
-          char *sh = getenv ("LINES");
-
-          if (sh)
-            screenheight = atoi (sh);
+          if (env_lines)
+            screenheight = atoi (env_lines);
 
           if (screenheight <= 0)
             screenheight = tgetnum ("li");
@@ -732,6 +733,12 @@ terminal_initialize_terminal (char *terminal_name)
   term_name = terminal_name ? terminal_name : getenv ("TERM");
   if (!term_name)
     term_name = "dumb";
+
+  env_lines = getenv ("LINES");
+  env_columns = getenv ("COLUMNS");
+  /* We save LINES and COLUMNS before the call to tgetent below, because
+     on some openSUSE systems, including openSUSE 12.3, the call to tgetent 
+     changes the values returned by getenv for these. */
 
   if (!term_string_buffer)
     term_string_buffer = xmalloc (2048);
