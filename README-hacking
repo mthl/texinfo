@@ -197,7 +197,7 @@ svn copy -r 6363 -m'texinfo_6_0 tag based on r6363' \
   svn+ssh://gavin@svn.savannah.gnu.org/texinfo/tags/texinfo_6_0
 [for karl: /srv/svn/texinfo]  
 
-  ... update texinfo at tug.org (contact root@tug.org); from last time:
+#  ... update texinfo at tug.org (contact root@tug.org):
 prev=5.2
 ver=6.0
 cd ~ftp/tex
@@ -208,12 +208,12 @@ ln -s texinfo-$ver.tar.gz texinfo.tar.gz
 !!:gs/gz/xz
 relink texinfo $ver
 
-  ... announcements:
+#  ... announcements:
 send announcement to info-gnu,
   cc bug-texinfo and bcc coordinator@translationproject.org.
 news item at savannah.
 
-  ... make diffs at official release:
+#  ... make diffs at official release:
 prev=5.2
 ver=6.0
 cd $misc/archive/$pkg/prod
@@ -224,7 +224,11 @@ ls -l !$
 gnupload --to ftp.gnu.org:texinfo !$
 rm -rf texinfo-$ver texinfo-$prev
 ro texinfo-*$ver*
-  
-  ... [personal for karl] move mail:
+
+#  ... post-release, or when development resumes:
+configure.ac, util/texi2dvi: add "dev" to versions for clarity,
+until it's time to do pretests again.
+
+#  ... [personal for karl] move mail:
 mv ~/mail/txi.done $ver.mail
 bzip2 $ver.mail

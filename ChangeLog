@@ -1,3 +1,9 @@
+2015-07-02  Karl Berry  <karl@freefriends.org>
+
+	* configure.ac (AC_INIT),
+	* util/texi2dvi (version): go to 6.0dev since we are past the release.
+	* README-hacking: mention it.
+
 2015-07-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/configure.ac 
@@ -27,7 +33,7 @@
 	* configure.ac (AC_CONFIG_SUBDIRS): Configure 
 	tp/Texinfo/Convert/XSParagraph.
 	* tp/Makefile.am (SUBDIRS): Add Texinfo/Convert/XSParagraph.
-	(do_subst): Substitue also for "@pkglibexecdir@" in texi2any.pl.
+	(do_subst): Substitute also for "@pkglibexecdir@" in texi2any.pl.
 	* doc/Makefile.am: Pass -I flag to makeinfo to find in-source 
 	XSParagraph module.
 
