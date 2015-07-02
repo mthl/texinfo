@@ -5,7 +5,9 @@ require DynaLoader;
 
 use DynaLoader;
 
-use 5.018001;
+# same as texi2any.pl, although I don't know what the real requirement
+# is for this module.
+use 5.00405;
 use strict;
 use warnings;
 

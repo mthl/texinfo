@@ -1,5 +1,15 @@
 2015-07-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/configure.ac 
+	(lookup_perl_flags): Strip any compiler flags that
+	aren't -I or -D.
+	* tp/Texinfo/Convert/XSParagraph/mylib/xspara.c (hello): Try a
+	"en_US.UTF-8" locale.
+	* tp/Texinfo/Convert/XSParagraph/lib/XSParagraph.pm: Reduce 
+	required Perl version.
+
+2015-07-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/lib/XSParagraph.pm: Rewritten 
 	to use DynaLoader module, instead of XSLoader.  Look for a 
 	Libtool *.la file and extract the name of the loadable object 
