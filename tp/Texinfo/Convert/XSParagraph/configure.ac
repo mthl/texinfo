@@ -28,6 +28,7 @@ lookup_perl_flags([ccflags])
 lookup_perl_flags([cccdlflags])
 
 lookup_perl_conf([archlibexp])
+lookup_perl_conf([cc])
 # TODO: would be nice to be able to do lookup_perl_conf([ccflags cccdlflags])
 # A for loop doesn't work; it has to be expanded at m4 time
 

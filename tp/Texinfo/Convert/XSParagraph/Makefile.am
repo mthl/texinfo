@@ -30,6 +30,10 @@ PERL_INC = $(PERL_CONF_archlibexp)/CORE
 
 #PERL = /usr/bin/perl5.18.1
 
+# It's essential that we use the same compiler that was used to build
+# Perl.  Otherwise Perl's "config.h" will be incorrect.
+CC = $(PERL_CONF_cc)
+
 #XSUBPPARGS = -typemap /usr/share/perl5/ExtUtils/typemap
 
 .xs.c:
