@@ -1,3 +1,26 @@
+2015-07-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/lib/XSParagraph.pm: Rewritten 
+	to use DynaLoader module, instead of XSLoader.  Look for a 
+	Libtool *.la file and extract the name of the loadable object 
+	from it.
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am,
+	tp/Texinfo/Convert/XSParagraph/configure.ac,
+	tp/Texinfo/Convert/XSParagraph/fetch_conf.pl: New files.
+
+	* tp/texi2any.pl (BEGIN) <in source run>, <not in source run>:
+	Add directories to look for loadable modules in to @INC.
+
+	* tp/Texinfo/Convert/Plaintext.pm: Uncomment import of 
+	XSParagraph (but don't use it yet).
+
+	* configure.ac (AC_CONFIG_SUBDIRS): Configure 
+	tp/Texinfo/Convert/XSParagraph.
+	* tp/Makefile.am (SUBDIRS): Add Texinfo/Convert/XSParagraph.
+	(do_subst): Substitue also for "@pkglibexecdir@" in texi2any.pl.
+	* doc/Makefile.am: Pass -I flag to makeinfo to find in-source 
+	XSParagraph module.
+
 2015-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/terminal.c (terminal_initialize_terminal): Save values of 
