@@ -21,6 +21,8 @@
 	* doc/Makefile.am: Pass -I flag to makeinfo to find in-source 
 	XSParagraph module.
 
+	* autogen.sh: Run autoreconf in tp/Texinfo/Convert/XSParagraph.
+
 2015-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/terminal.c (terminal_initialize_terminal): Save values of 

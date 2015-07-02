@@ -48,6 +48,10 @@ cmd="$ACLOCAL -I gnulib/m4 && $AUTOCONF && $AUTOHEADER && $AUTOMAKE"
 echo "  $cmd $*"
 $chicken eval $cmd "$@" || exit 1
 
+cmd="(cd tp/Texinfo/Convert/XSParagraph && autoreconf --install)"
+echo "  $cmd"
+$chicken eval $cmd || exit 1
+
 echo
 echo "Now run configure with your desired options, for instance:"
 echo "  ./configure CFLAGS='-g'"
