@@ -25,7 +25,9 @@ $(srcdir)/Makefile.docstr: maintain/regenerate_docstr.sh \
 	cd $(srcdir) \
 	&& $(SHELL) ./maintain/regenerate_docstr.sh "$@"
 
-SUBDIRS = . tests
+SUBDIRS = Texinfo/Convert/XSParagraph
+#SUBDIRS =
+SUBDIRS += . tests
 
 bin_SCRIPTS = texi2any
 
@@ -37,6 +39,7 @@ do_subst = sed \
   -e 's,[@]prefix[@],$(prefix),g' \
   -e 's,[@]datarootdir[@],$(datarootdir),g' \
   -e 's,[@]datadir[@],$(datadir),g' \
+  -e 's,[@]pkglibexecdir[@],$(pkglibexecdir),g' \
   -e 's,[@]PACKAGE[@],$(PACKAGE),g' \
   -e 's,[@]USE_EXTERNAL_LIBINTL[@],$(USE_EXTERNAL_LIBINTL),g' \
   -e 's,[@]USE_EXTERNAL_EASTASIANWIDTH[@],$(USE_EXTERNAL_EASTASIANWIDTH),g' \

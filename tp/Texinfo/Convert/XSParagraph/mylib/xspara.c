@@ -72,7 +72,7 @@ static PARAGRAPH state;
 void
 xspara_hello (void)
 {
-  /* puts ("hello world"); */
+  puts ("hello world");
   if (!setlocale (LC_CTYPE, "en_US.utf8"))
     {
       fprintf (stderr, "Couldn't set UTF-8 character type in locale.\n");
