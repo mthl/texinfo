@@ -1,3 +1,7 @@
+2015-07-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/Makefile.am: Change path in -I flag to makeinfo.
+
 2015-07-02  Karl Berry  <karl@freefriends.org>
 
 	* configure.ac (AC_INIT),
