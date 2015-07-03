@@ -42,7 +42,7 @@ tpdir = $(top_srcdir)/tp
 MAKEINFO = $(PERL) -I "$(tpdir)" "$(tpdir)"/texi2any.pl
 #
 tplibdir = $(tpdir)/maintain/lib
-mi_perl5lib_path = "$(tpdir):$(tplibdir)/libintl-perl/lib:$(tplibdir)/Unicode-EastAsianWidth/lib:$(tplibdir)/Text-Unidecode/lib"
+mi_perl5lib_path = "$(tpdir):$(tplibdir)/libintl-perl/lib:$(tplibdir)/Unicode-EastAsianWidth/lib:$(tplibdir)/Text-Unidecode/lib:$(tpdir)/Texinfo/Convert/XSParagraph:$(tpdir)/Texinfo/Convert/XSParagraph/lib"
 mi_perl5lib = PERL5LIB=$(mi_perl5lib_path); export PERL5LIB
 
 # Set up the variables.  makeinfo, texindex are no longer a .exe(cutable).

@@ -1,3 +1,8 @@
+2015-07-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* man/Makefile.am (mi_perl5lib_path): Add directories containing 
+	XSParagraph files.
+
 2015-07-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/configure.ac: Retrieve "cc" 
