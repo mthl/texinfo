@@ -1,5 +1,12 @@
 2015-07-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README-hacking: Mention gnupload --user and --replace.  Move 
+	dtd version check earlier, and explanations of how to make diffs 
+	and upload dtd file earlier.  Explanation of how to upload 
+	texi2dvi.  Move explanations of release announcements together.
+
+2015-07-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/texi2dvi (local): Remove.  All usages removed.  Rename
 	variables in some functions to reduce chances of a conflict.
 	Failure to run on a Solaris 10 shell reported by Brian Ripley.

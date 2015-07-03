@@ -126,52 +126,10 @@ try groff.texinfo from groff source repo.
 version number in texi2dvi, texi2pdf, txirefcard.tex.
 version and date in NEWS.
 (cd tp && ./maintain/change_perl_modules_version.sh auto)
+  -- this updates all the version numbers in the Perl modules
 sync texi2html/test/ results with tp/.
 ensure building standalone modules for CPAN still works.
 make V=1 pdf and fix underfull/overfull boxes.
-
-- Changes to sources:
-update version in configure.ac, notice in ChangeLog.
-gnulib-tool --add-import  # for pretest
-util/srclist-txi          # for pretest 
-pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
-make
-make po-check             # update po/POTFILES.in as needed
-make update-po            # both po and po_document needed, build a dist first
-make -C doc wwwdoc-build  # and -install for official (and eventual commit)
-make long-checks          # distcheck does not do this
-(export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
-svn commit                # when clean, then distcheck to be sure
-#create diff for official, see below 
-
-- To do the actual upload:
-pkg=texinfo
-ver=6.0
-
-then do one of:
-gnupload --to alpha.gnu.org:$pkg $pkg-$ver.tar.xz                #pretest
-gnupload --to ftp.gnu.org:$pkg   $pkg-$ver.tar.{gz,xz} *.diff.xz #official
-  (also gnupload texi2dvi at each official release.
-   The standalone texinfo.tex should already be up to date, but check.)
-
-and the corresponding, to save in local archives:
-mv -v $pkg-$ver.tar.xz* $misc/archive/$pkg/alpha/                #pretest
-mv -v $pkg-$ver.tar.{gz,xz}* *.diff.xz $misc/archive/$pkg/prod/  #official
-
-For pretest release, send announcement to bug-texinfo and
-bcc coordinator@translationproject.org.
-
-- When official release is out there ...
-update home page (texinfo.html) and commit as needed.
-including:
-  pod2html $txi/Pod-Simple-Texinfo/pod2texi.pl \
-  | fgrep -v 'rev="made"' >manual/pod2texi.html
-Copy documentation files to web checkout with, e.g.
-  make -C doc \
-  wwwdoc-install www_target=../../TEXINFO_WEB_PAGES/texinfo/manual/
-Check for removed files with, e.g. ls -ltu $(www_target)/*/html_node, 
-followed by cvs rm -f.  Likewise, check for added files with
-cvs -qn update, followed by cvs add.  When done, run cvs commit.
 
 #  ... dtd version check:
 TEXINFO_DTD_VERSION should already have been updated to $ver in
@@ -191,27 +149,19 @@ cvs commit -m$ver $ver
 #   cvs admin -kb texinfo.dtd; cvs update -A
 # (See the "How to store binary files" node in the CVS manual.)
 
-#  ... tag source tree (use your own username before @):
-svn copy -r 6363 -m'texinfo_6_0 tag based on r6363' \
-  svn+ssh://gavin@svn.savannah.gnu.org/texinfo/trunk \
-  svn+ssh://gavin@svn.savannah.gnu.org/texinfo/tags/texinfo_6_0
-[for karl: /srv/svn/texinfo]  
 
-#  ... update texinfo at tug.org (contact root@tug.org):
-prev=5.2
-ver=6.0
-cd ~ftp/tex
-rm -rf texinfo-$prev*
-cp ~/texinfo-$ver.tar.{gz,xz} .
-tar xzf texinfo-$ver.tar.gz
-ln -s texinfo-$ver.tar.gz texinfo.tar.gz
-!!:gs/gz/xz
-relink texinfo $ver
-
-#  ... announcements:
-send announcement to info-gnu,
-  cc bug-texinfo and bcc coordinator@translationproject.org.
-news item at savannah.
+- Changes to sources:
+update version in configure.ac, notice in ChangeLog.
+gnulib-tool --add-import  # for pretest
+util/srclist-txi          # for pretest 
+pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
+make
+make po-check             # update po/POTFILES.in as needed
+make update-po            # both po and po_document needed, build a dist first
+make -C doc wwwdoc-build  # and -install for official (and eventual commit)
+make long-checks          # distcheck does not do this
+(export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
+svn commit                # when clean, then distcheck to be sure
 
 #  ... make diffs at official release:
 prev=5.2
@@ -224,6 +174,59 @@ ls -l !$
 gnupload --to ftp.gnu.org:texinfo !$
 rm -rf texinfo-$ver texinfo-$prev
 ro texinfo-*$ver*
+
+- To do the actual upload:
+pkg=texinfo
+ver=6.0
+
+then do one of:
+gnupload --to alpha.gnu.org:$pkg $pkg-$ver.tar.xz                #pretest
+gnupload --to ftp.gnu.org:$pkg   $pkg-$ver.tar.{gz,xz} *.diff.xz #official
+   Use --user option if not using default key
+   texinfo.tex and texi2dvi should already be up to date, but check.  Use
+gnupload --replace --to ftp.gnu.org:texinfo texi2dvi
+
+and the corresponding, to save in local archives:
+mv -v $pkg-$ver.tar.xz* $misc/archive/$pkg/alpha/                #pretest
+mv -v $pkg-$ver.tar.{gz,xz}* *.diff.xz $misc/archive/$pkg/prod/  #official
+
+- When official release is out there ...
+update home page (texinfo.html) and commit as needed.
+including:
+  pod2html $txi/Pod-Simple-Texinfo/pod2texi.pl \
+  | fgrep -v 'rev="made"' >manual/pod2texi.html
+Copy documentation files to web checkout with, e.g.
+  make -C doc \
+  wwwdoc-install www_target=../../TEXINFO_WEB_PAGES/texinfo/manual/
+Check for removed files with, e.g. ls -ltu $(www_target)/*/html_node, 
+followed by cvs rm -f.  Likewise, check for added files with
+cvs -qn update, followed by cvs add.  When done, run cvs commit.
+
+#  Official releases only: tag source tree (use your own username before @):
+svn copy -r 6363 -m'texinfo_6_0 tag based on r6363' \
+  svn+ssh://gavin@svn.savannah.gnu.org/texinfo/trunk \
+  svn+ssh://gavin@svn.savannah.gnu.org/texinfo/tags/texinfo_6_0
+[for karl: /srv/svn/texinfo]  
+
+#  Official releases only: ... update texinfo at tug.org
+#  (contact root@tug.org):
+prev=5.2
+ver=6.0
+cd ~ftp/tex
+rm -rf texinfo-$prev*
+cp ~/texinfo-$ver.tar.{gz,xz} .
+tar xzf texinfo-$ver.tar.gz
+ln -s texinfo-$ver.tar.gz texinfo.tar.gz
+!!:gs/gz/xz
+relink texinfo $ver
+
+#  For pretest release, send announcement to bug-texinfo and
+bcc coordinator@translationproject.org.
+
+#  For official releases:
+send announcement to info-gnu,
+  cc bug-texinfo and bcc coordinator@translationproject.org.
+news item at savannah.
 
 #  ... post-release, or when development resumes:
 configure.ac, util/texi2dvi: add "dev" to versions for clarity,
