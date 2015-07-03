@@ -50,8 +50,11 @@ BEGIN
   my ($real_command_name, $command_directory, $command_suffix) 
      = fileparse($0, '.pl');
 
+  # These are substituted by the Makefile to create "texi2any".
   my $datadir = '@datadir@';
   my $package = '@PACKAGE@';
+  my $packagedir = '@pkglibexecdir@/Texinfo';
+
   my $updir = File::Spec->updir();
 
   my $texinfolibdir;
@@ -67,7 +70,12 @@ BEGIN
     }
     $lib_dir = File::Spec->catdir($texinfolibdir, 'maintain');
     unshift @INC, $texinfolibdir;
+
+    # For XSParagraph.pm, XSParagraph.la, and XSParagraph.so.
+    push @INC, "${texinfolibdir}Texinfo/Convert/XSParagraph/lib";
+    push @INC, "${texinfolibdir}Texinfo/Convert/XSParagraph";
   } elsif ($datadir ne '@' .'datadir@' and $package ne '@' . 'PACKAGE@'
+           and $packagedir ne '@' .'pkglibexecdir@/Texinfo'
            and $datadir ne '') {
     $texinfolibdir = File::Spec->catdir($datadir, $package);
     # try to make package relocatable, will only work if standard relative paths
@@ -86,10 +94,10 @@ BEGIN
     # searched for before the installation directories.  This could
     # cause trouble if the modules are separately installed.
     push @INC, $texinfolibdir;
+
+    # For XSParagraph.pm and XSParagraph.so.
+    push @INC, $packagedir;
   }
-  push @INC, "${texinfolibdir}Texinfo/Convert/XSParagraph/lib";
-  push @INC, "${texinfolibdir}Texinfo/Convert/XSParagraph/blib/arch";
-  push @INC, "${texinfolibdir}Texinfo/Convert/XSParagraph";
 
   # '@USE_EXTERNAL_LIBINTL @ and similar are substituted in the
   # makefile using values from configure

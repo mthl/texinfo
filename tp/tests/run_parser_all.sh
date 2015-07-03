@@ -274,7 +274,8 @@ while read line; do
       # @setfilename
       echo "$command $dir" >>$logfile
       #echo "$dir($format)"
-      cmd="$prepended_command $PERL -w -I $srcdir/../ -I $srcdir/../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../maintain/lib/libintl-perl/lib/ -I $srcdir/../maintain/lib/Text-Unidecode/lib/ $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 --output ${outdir}$dir/ -I $testdir/ -I $srcdir/ --set-customization-variable=DUMP_TEXI=1 --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2" >> $logfile
+      cmd="$prepended_command $PERL -w -I $srcdir/../ -I $srcdir/../maintain/lib/Unicode-EastAsianWidth/lib/ -I $srcdir/../maintain/lib/libintl-perl/lib/ -I $srcdir/../maintain/lib/Text-Unidecode/lib/ -I ../tp/Texinfo/Convert/XSParagraph -I ../tp/Texinfo/Convert/XSParagraph/lib $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 --output ${outdir}$dir/ -I $testdir/ -I $srcdir/ --set-customization-variable=DUMP_TEXI=1 --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2" >> $logfile
+      # Note we didn't use $srcdir in the XSParagraph -I options.
       echo "$cmd" >>$logfile
       eval $cmd
       ret=$?

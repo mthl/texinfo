@@ -3,6 +3,12 @@
 	* man/Makefile.am (mi_perl5lib_path): Add directories containing 
 	XSParagraph files.
 
+	* tp/texi2any.pl (BEGIN): Change directories to look for modules 
+	in.
+	* tp/tests/run_parser_all.sh: Pass more -I flags when running 
+	texi2any.
+	* tp/Makefile.am (AM_T_LOG_FLAGS): -I flags changed.
+
 2015-07-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/configure.ac: Retrieve "cc" 

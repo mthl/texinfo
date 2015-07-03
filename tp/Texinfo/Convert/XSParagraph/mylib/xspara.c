@@ -72,7 +72,7 @@ static PARAGRAPH state;
 void
 xspara_hello (void)
 {
-  puts ("hello world");
+  //puts ("initializing XSParagraph");
   if (!setlocale (LC_CTYPE, "en_US.UTF-8")
       && !setlocale (LC_CTYPE, "en_US.utf8"))
     {

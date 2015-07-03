@@ -51,7 +51,7 @@ sub _find_file($) {
   for my $dir (@INC) {
     #print "checking $dir/$file\n";
     if (-f "$dir/$file") {
-      print "found $dir/$file\n";
+      #print "found $dir/$file\n";
       return ($dir, "$dir/$file");
     }
   }
@@ -90,7 +90,7 @@ if (!$dlpath) {
   die "XSParagraph: couldn't find $dlname\n";
 }
 
-print STDERR "loadable object is at $dlpath\n";
+#print STDERR "loadable object is at $dlpath\n";
 
 my $module = "XSParagraph";
 
