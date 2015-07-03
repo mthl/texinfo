@@ -247,43 +247,6 @@ EOF
 
 
 #  Generic auxiliary functions.
-#
-# In case `local' is not supported by the shell, provide a function
-# that simulates it by simply performing the assignments.  This means
-# that we must not expect `local' to work, i.e., we must not (i) rely
-# on it during recursion, and (ii) have two local declarations of the
-# same variable.  (ii) is easy to check statically, and our test suite
-# does make sure there is never twice a static local declaration of a
-# variable.  (i) cannot be checked easily, so just be careful.
-#
-# Note that since we might use a function simulating `local', we can
-# no longer rely on the fact that no IFS-splitting is performed.  So,
-# while
-#
-# foo=$bar
-#
-# is fine (no IFS-splitting), never write
-#
-# local foo=$bar
-#
-# but rather
-#
-# local foo="$bar"
-(
-  foo=bar
-  test_local () {
-    local foo=foo
-  }
-  test_local >/dev/null 2>&1
-  test $foo = bar
-) || eval '
-local () {
-  case $1 in
-    *=*) eval "$1";;
-  esac
-}
-'
-
 
 # cd_orig - Return to the original directory.
 cd_orig ()
@@ -322,17 +285,14 @@ absolute ()
       # Absolute paths don't need to be expanded.
       echo "$1"
       ;;
-   *) local slashes
-      slashes=`echo "$1" | $SED -n 's,.*[^/]\(/*\)$,\1,p'`
-      local rel
-      rel=$orig_pwd/`func_dirname "$1"`
-      if test -d "$rel"; then
-        (cd "$rel" 2>/dev/null \
-         && local n
-         n=`pwd`/`basename "$1"`"$slashes"
-         echo "$n")
+   *) absolute_slashes=`echo "$1" | $SED -n 's,.*[^/]\(/*\)$,\1,p'`
+      absolute_rel=$orig_pwd/`func_dirname "$1"`
+      if test -d "$absolute_rel"; then
+        (cd "$absolute_rel" 2>/dev/null \
+         && absolute_name=`pwd`/`basename "$1"`"$absolute_slashes"
+         echo "$absolute_name")
       else
-        error 1 "not a directory: $rel"
+        error 1 "not a directory: $absolute_rel"
       fi
       ;;
   esac
@@ -359,11 +319,11 @@ ensure_dir ()
 #   failure if EXIT_STATUS is non-null.
 error ()
 {
-  local s="$1"
+  error_status="$1"
   shift
   report "$@"
-  if test "$s" != 0; then
-    exit $s
+  if test "$error_status" != 0; then
+    exit $error_status
   fi
 }
 
@@ -371,7 +331,7 @@ error ()
 # findprog PROG - Return true if PROG is somewhere in PATH, else false.
 findprog ()
 {
-  local saveIFS="$IFS"
+  saveIFS="$IFS"
   IFS=$path_sep  # break path components at the path separator
   for dir in $PATH; do
     IFS=$saveIFS
@@ -425,11 +385,11 @@ verbose ()
 # list_append LIST-NAME ELEM - Append ELEM to (the contents of) LIST-NAME.
 list_append ()
 {
-  local la_l="$1"
+  list_name="$1"
   shift
-  eval set X \$$la_l "$@"
+  eval set X \$$list_name "$@"
   shift
-  eval $la_l=\""$@"\"
+  eval $list_name=\""$@"\"
 }
 
 
@@ -438,28 +398,27 @@ list_append ()
 # DIR-LIST.  Make the paths absolute.
 list_concat_dirs ()
 {
-  local lcd_list="$1"
+  lcd_list="$1"
   # Empty path components are meaningful to tex.  We rewrite them as
   # `EMPTY' so they don't get lost when we split on $path_sep.
   # Hopefully no one will have an actual directory named EMPTY.
-  local replace_EMPTY="-e 's/^$path_sep/EMPTY$path_sep/g' \
-                       -e 's/$path_sep\$/${path_sep}EMPTY/g' \
-                       -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
+  lcd_replace_EMPTY="-e 's/^$path_sep/EMPTY$path_sep/g' \
+                     -e 's/$path_sep\$/${path_sep}EMPTY/g' \
+                     -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
   save_IFS=$IFS
   IFS=$path_sep
-  set x `echo "$2" | eval $SED $replace_EMPTY`; shift
+  set x `echo "$2" | eval $SED $lcd_replace_EMPTY`; shift
   IFS=$save_IFS
-  local dir
-  for dir
+  for lcd_dir
   do
-    case $dir in
+    case $lcd_dir in
       EMPTY)
        list_append $lcd_list ""
        ;;
       *)
-       if test -d $dir; then
-          dir=`absolute "$dir"`
-         list_append $lcd_list "$dir"
+       if test -d $lcd_dir; then
+          dir=`absolute "$lcd_dir"`
+         list_append $lcd_list "$lcd_dir"
        fi
        ;;
     esac
@@ -471,15 +430,15 @@ list_concat_dirs ()
 # of LIST-NAME preceded by SEP.
 list_prefix ()
 {
-  local lp_p="$2"
+  lp_separator="$2"
   eval set X \$$1
   shift
-  local lp_res
+  lp_result=''
   for i
   do
-    lp_res="$lp_res \"$lp_p\" \"$i\""
+    lp_result="$lp_result \"$lp_separator\" \"$i\""
   done
-  echo "$lp_res"
+  echo "$lp_result"
 }
 
 # list_infix LIST-NAME SEP -> STRING - Same as list_prefix, but a separator.
@@ -487,28 +446,28 @@ list_infix ()
 {
   eval set X \$$1
   shift
-  local la_IFS="$IFS"
+  save_IFS="$IFS"
   IFS=$path_sep
   echo "$*"
-  IFS=$la_IFS
+  IFS=$save_IFS
 }
 
 # list_dir_to_abs LIST-NAME - Convert list to using only absolute dir names.
 # Currently unused, but should replace absolute_filenames some day.
 list_dir_to_abs ()
 {
-  local ld_l="$1"
-  eval set X \$$ld_l
+  ldta_list="$1"
+  eval set X \$$ldta_list
   shift
-  local ld_res
+  ldta_result=''
   for dir
   do
     dir=`absolute "$dir"`
     test -d "$dir" || continue
-    ld_res="$ld_res \"$dir\""
+    ldta_result="$ldata_result \"$dir\""
   done
-  set X $ld_res; shift
-  eval $ld_l=\"$@\"
+  set X $ldta_result; shift
+  eval $ldta_list=\"$@\"
 }
 
 
@@ -555,35 +514,34 @@ absolute_filenames ()
   # Empty path components are meaningful to tex.  We rewrite them as
   # `EMPTY' so they don't get lost when we split on $path_sep.
   # Hopefully no one will have an actual directory named EMPTY.
-  local replace_empty="-e 's/^$path_sep/EMPTY$path_sep/g' \
-                       -e 's/$path_sep\$/${path_sep}EMPTY/g' \
-                       -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
-  local res
-  res=`echo "$1" | eval $SED $replace_empty`
+  af_replace_empty="-e 's/^$path_sep/EMPTY$path_sep/g' \
+                    -e 's/$path_sep\$/${path_sep}EMPTY/g' \
+                    -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
+  af_result=`echo "$1" | eval $SED $af_replace_empty`
   save_IFS=$IFS
   IFS=$path_sep
-  set x $res; shift
-  res=.
+  set x $af_result; shift
+  af_result=.
   for dir
   do
     case $dir in
       EMPTY)
-        res=$res$path_sep
+        af_result=$af_result$path_sep
         ;;
       *)
         if test -d "$dir"; then
-          res=$res$path_sep`absolute "$dir"`
+          af_result=$af_result$path_sep`absolute "$dir"`
         else
           # Even if $dir is not a directory, preserve it in the path.
           # It might contain metacharacters that TeX will expand in
           # turn, e.g., /some/path/{a,b,c}.  This will not get the
           # implicit absolutification of the path, but we can't help that.
-          res=$res$path_sep$dir
+          af_result=$af_result$path_sep$dir
         fi
         ;;
     esac
   done
-  echo "$res"
+  echo "$af_result"
 }
 
 
@@ -593,11 +551,9 @@ output_base_name ()
 {
   case $oname in
     '') echo "$1";;
-     *) local out_noext
-        out_noext=`noext "$oname"`
-        local file_ext
-        file_ext=`echo "$1" | $SED 's/^.*\.//'`
-        echo "$out_noext.$file_ext"
+     *) obn_out_noext=`noext "$oname"`
+        obn_file_ext=`echo "$1" | $SED 's/^.*\.//'`
+        echo "$obn_out_noext.$obn_file_ext"
       ;;
   esac
 }
@@ -630,23 +586,17 @@ move_to_dest ()
     false:) return;;
   esac
 
-  local destfile
-  local destdir
-  local destbase
-  local sourcedir
-  local sourcebase
-
   for file
   do
     test -f "$file" \
     || error 1 "no such file or directory: $file"
     case $tidy:$oname in
-      true:)  destdir=$orig_pwd
-              destfile=$destdir/$file;;
-      true:*) destfile=`output_base_name "$file"`
-              destdir=`dirname "$destfile"`;;
-      false:*) destfile=$oname
-               destdir=`dirname "$destfile"`;;
+      true:)  mtd_destdir=$orig_pwd
+              mtd_destfile=$mtd_destdir/$file;;
+      true:*) mtd_destfile=`output_base_name "$file"`
+              mtd_destdir=`dirname "$mtd_destfile"`;;
+      false:*) mtd_destfile=$oname
+               mtd_destdir=`dirname "$mtd_destfile"`;;
     esac
  
     # We want to compare the source location and the output location,
@@ -656,17 +606,18 @@ move_to_dest ()
     # directory names, canonicalized with pwd.  We can't use cmp -s
     # since the output file might not actually change from run to run;
     # e.g., TeX DVI output is timestamped to only the nearest minute.
-    destdir=`cd "$destdir" && pwd`
-    destbase=`basename "$destfile"`
+    mtd_destdir=`cd "$mtd_destdir" && pwd`
+    mtd_destbase=`basename "$mtd_destfile"`
 
-    sourcedir=`dirname "$file"`
-    sourcedir=`cd "$sourcedir" && pwd`
-    sourcebase=`basename "$file"`
+    mtd_sourcedir=`dirname "$file"`
+    mtd_sourcedir=`cd "$mtd_sourcedir" && pwd`
+    mtd_sourcebase=`basename "$file"`
 
-    if test "$sourcedir/$sourcebase" != "$destdir/$destbase"; then
-      verbose "Moving $file to $destfile"
-      rm -f "$destfile"
-      mv "$file" "$destfile"
+    if test "$mtd_sourcedir/$mtd_sourcebase" != "$mtd_destdir/$mtd_destbase"
+    then
+      verbose "Moving $file to $mtd_destfile"
+      rm -f "$mtd_destfile"
+      mv "$file" "$mtd_destfile"
     fi
   done
 }
@@ -745,9 +696,9 @@ xref_file_p ()
 # filtered by (piped through) PREDICATE-FILTER if specified.
 generated_files_get ()
 {
-  local filter=true
+  gfg_filter=true
   if test -n "$2"; then
-    filter=$2
+    gfg_filter=$2
   fi
 
   # Gather the files created by TeX.
@@ -791,7 +742,7 @@ generated_files_get ()
   # "command not found" message (and filtering is ineffective).
   # The situation with a newline is presumably even worse.
   while read file; do
-    if $filter "$file"; then
+    if $gfg_filter "$file"; then
       echo $file
     fi
   done |
@@ -907,7 +858,7 @@ run_tex ()
   esac
 
   # Note that this will be used via an eval: quote properly.
-  local cmd="$tex"
+  tex_cmd="$tex"
 
   # If possible, make TeX report error locations in GNU format.
   if $line_error; then
@@ -921,26 +872,27 @@ run_tex ()
     # The mk program and perhaps others want to parse TeX's
     # original error messages.
     case $tex_help in
-      *file-line-error*) cmd="$cmd --file-line-error";;
+      *file-line-error*) tex_cmd="$tex_cmd --file-line-error";;
     esac
   fi
 
   # Tell TeX about TCX file, if specified.
-  test -n "$translate_file" && cmd="$cmd --translate-file=$translate_file"
+  test -n "$translate_file" \
+                       && tex_cmd="$tex_cmd --translate-file=$translate_file"
 
   # Tell TeX to make source specials (for backtracking from output to
   # source, given a sufficiently smart editor), if specified.
-  test -n "$src_specials" && cmd="$cmd $src_specials"
+  test -n "$src_specials" && tex_cmd="$tex_cmd $src_specials"
 
   # Tell TeX to allow running external executables
-  test -n "$shell_escape" && cmd="$cmd $shell_escape"
+  test -n "$shell_escape" && tex_cmd="$tex_cmd $shell_escape"
 
   # Tell TeX to be batch if requested.
   if $batch; then
     # \batchmode does not show terminal output at all, so we don't
     # want that.  And even in batch mode, TeX insists on having input
     # from the user.  Close its stdin to make it impossible.
-    cmd="$cmd </dev/null '${escape}nonstopmode'"
+    tex_cmd="$tex_cmd </dev/null '${escape}nonstopmode'"
   fi
 
   # we'd like to handle arbitrary input file names, especially
@@ -953,14 +905,14 @@ run_tex ()
     # be expanded to itself, as far as \input will see.  (This is the
     # same thing that texinfo.tex does in general, BTW.)
     normaltilde="${escape}catcode126=12 ${escape}def${escape}normaltilde{~}"
-    cmd="$cmd '$normaltilde${escape}catcode126=13 ${escape}let~\normaltilde '"
+    tex_cmd="$tex_cmd '$normaltilde${escape}catcode126=13 ${escape}let~\normaltilde '"
   fi
   # Other special (non-active) characters could be supported by
   # resetting their catcodes to other on the command line and changing
   # texinfo.tex to initialize everything to plain catcodes.  Maybe someday.
 
   # append the \input command.
-  cmd="$cmd '${escape}input'"
+  tex_cmd="$tex_cmd '${escape}input'"
 
   # TeX's \input does not (easily or reliably) support whitespace
   # characters or other special characters in file names.  Our intensive
@@ -982,16 +934,16 @@ run_tex ()
         run rm -f "$_run_tex_file_name"
         run ln -s "$in_input"
       fi
-      cmd="$cmd '$_run_tex_file_name'"
+      tex_cmd="$tex_cmd '$_run_tex_file_name'"
       ;;
 
     *)
-      cmd="$cmd '$in_input'"
+      tex_cmd="$tex_cmd '$in_input'"
       ;;
   esac
 
-  verbose "$0: Running $cmd ..."
-  if eval "$cmd" >&5; then
+  verbose "$0: Running $tex_cmd ..."
+  if eval "$tex_cmd" >&5; then
     case $out_lang in
       dvi | pdf ) move_to_dest "$in_noext.$out_lang";;
     esac
@@ -1054,7 +1006,6 @@ run_bibtex ()
 # But we won't know that if the index files are out of date or nonexistent.
 run_index ()
 {
-  local index_files
   index_files=`generated_files_get $in_noext index_file_p`
   test -n "$index_files" \
   || return 0
@@ -1063,8 +1014,6 @@ run_index ()
   : ${TEXINDEX:=texindex}
   : ${TEXINDY:=texindy}
 
-  local index_file
-  local index_noext
   case $in_lang:$latex2html:`out_lang_tex` in
     latex:tex4ht:html)
       for index_file in $index_files
@@ -1166,18 +1115,18 @@ run_tex_suite ()
   fi
 
   # Count the number of cycles.
-  local cycle=0
+  suite_cycle=0
 
   while :; do
     # check for (probably) LaTeX loop (e.g. varioref)
-    if test $cycle -eq "$max_iters"; then
+    if test $suite_cycle -eq "$max_iters"; then
       error 0 "Maximum of $max_iters cycles exceeded"
       break
     fi
 
     # report progress
-    cycle=`expr $cycle + 1`
-    verbose "Cycle $cycle for $command_line_filename"
+    suite_cycle=`expr $suite_cycle + 1`
+    verbose "Cycle $suite_cycle for $command_line_filename"
 
     xref_files_save
 
@@ -1273,15 +1222,14 @@ to tex itself simply not working."
     work_src=$workdir/src
     ensure_dir "$work_src"
     in_src=$work_src/$in_base
-    local miincludes
-    miincludes=`list_prefix includes -I`
+    run_mi_includes=`list_prefix includes -I`
     verbose "Macro-expanding $command_line_filename to $in_src ..."
     # eval $makeinfo because it might be defined as something complex
     # (running missing) and then we end up with things like '"-I"',
     # and "-I" (including the quotes) is not an option name.  This
     # happens with gettext 0.14.5, at least.
     $SED "$comment_iftex" "$command_line_filename" \
-      | eval $makeinfo --footnote-style=end -I "$in_dir" $miincludes \
+      | eval $makeinfo --footnote-style=end -I "$in_dir" $run_mi_includes \
         -o /dev/null --macro-expand=- \
       | $SED "$uncomment_iftex" >"$in_src"
     # Continue only if everything succeeded.
@@ -1305,7 +1253,6 @@ insert_commands ()
     in_xtr=$work_xtr/$in_base
     ensure_dir "$work_xtr"
     verbose "Inserting extra commands: $textra"
-    local textra_cmd
     case $in_lang in
       latex)   textra_cmd=1i;;
       texinfo) textra_cmd='/^@setfilename/a';;
@@ -1365,27 +1312,27 @@ compute_language ()
 # to handle images some day.
 run_hevea ()
 {
-  local hevea="${HEVEA:-hevea}"
-  local run_hevea="$hevea"
+  run_hevea_name="${HEVEA:-hevea}"
+  run_hevea_cmd="$run_hevea_name"
 
   case $1 in
     html) ;;
-    text|info) run_hevea="$run_hevea -$1";;
-    *) error 1 "run_hevea: invalid argument: $1";;
+    text|info) run_hevea_cmd="$run_hevea_cmd -$1";;
+    *) error 1 "run_hevea_cmd: invalid argument: $1";;
   esac
 
   # Compiling to the tmp directory enables to preserve a previous
   # successful compilation.
-  run_hevea="$run_hevea -fix -O -o '$out_base'"
-  run_hevea="$run_hevea `list_prefix includes -I` -I '$orig_pwd' "
-  run_hevea="$run_hevea '$in_input'"
+  run_hevea_cmd="$run_hevea_cmd -fix -O -o '$out_base'"
+  run_hevea_cmd="$run_hevea_cmd `list_prefix includes -I` -I '$orig_pwd' "
+  run_hevea_cmd="$run_hevea_cmd '$in_input'"
 
   if $debug; then
-    run_hevea="$run_hevea -v -v"
+    run_hevea_cmd="$run_hevea_cmd -v -v"
   fi
 
-  verbose "running $run_hevea"
-  if eval "$run_hevea" >&5; then
+  verbose "running $run_hevea_cmd"
+  if eval "$run_hevea_cmd" >&5; then
     # hevea leaves trailing white spaces, this is annoying.
     case $1 in text|info)
       perl -pi -e 's/[ \t]+$//g' "$out_base"*;;
@@ -1396,7 +1343,7 @@ run_hevea ()
                move_to_dest "$out_base"*;;
     esac
   else
-    error 1 "$hevea exited with bad status, quitting."
+    error 1 "$run_hevea_name exited with bad status, quitting."
   fi
 }
 
@@ -1471,8 +1418,8 @@ mostly_clean ()
   set X "$t2ddir"
   shift
   $tidy || {
-    local log="$work_build/$in_noext.log"
-    set X ${1+"$@"} "$log" `generated_files_get "$work_build/$in_noext"`
+    mc_log="$work_build/$in_noext.log"
+    set X ${1+"$@"} "$mc_log" `generated_files_get "$work_build/$in_noext"`
     shift
   }
   remove ${1+"$@"}

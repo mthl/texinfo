@@ -1,5 +1,11 @@
 2015-07-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* util/texi2dvi (local): Remove.  All usages removed.  Rename
+	variables in some functions to reduce chances of a conflict.
+	Failure to run on a Solaris 10 shell reported by Brian Ripley.
+
+2015-07-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Updating Nodes and Menus)
 	(Updating Commands, Printing)
 	(@setfilename, @settitle, @titlefont @center @sp)
