@@ -1,5 +1,30 @@
 2015-07-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Updating Nodes and Menus)
+	(Updating Commands, Printing)
+	(@setfilename, @settitle, @titlefont @center @sp)
+	(Heading Generation, The Top Node, @setchapternewpage)
+	(@headings, @paragraphindent, @firstparagraphindent)
+	(Chapter Structuring, Structuring Command Types)
+	(@majorheading @chapheading, @section)
+	(Raise/lower sections, @node, Writing a Node)
+	(@top Command, Node Menu Illustration, Menu Location)
+	(Writing a Menu, @ref, @pxref, @code, @kbd, @quotation)
+	(@verbatim, @small..., @display, @format, @noindent, @table)
+	(@ftable @vtable, Multi-column Tables, Multitable Rows)
+	(@caption @shortcaption, @listoffloats, Footnote Styles)
+	(@syncodeindex, @page, @need, Raw Formatter Commands, @set @value)
+	(@ifset @ifclear, Macro Details, @definfoenclose)
+	(#line Directive, Using Include Files, Include Files Requirements)
+	(Requirements Summary, makeinfo Options)
+	(Other Customization Variables, HTML CSS)
+	(HTML Xref Link Preservation, Command List, Tips)
+	(Heading Choice, Using texinfo-show-structure)
+	(Info Format Preamble, Writing a Node, Showing the Structure):
+	Change some instances of "an" to "a" before @-commands.
+
+2015-07-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* man/Makefile.am (mi_perl5lib_path): Add directories containing 
 	XSParagraph files.
 
