@@ -1,5 +1,13 @@
 2015-07-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Plaintext.pm (_convert) <brace commands 
+	with no arguments>: Don't call 
+	Texinfo::Convert::Text::brace_no_arg_command for @dots or 
+	@enddots, to prevent the Unicode ellipsis character from being 
+	used.
+
+2015-07-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Makefile.am,
 	* tp/tests/htmlxref/Makefile.am,
 	* tp/tests/htmlxref-only_mono/Makefile.am,

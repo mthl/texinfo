@@ -1767,8 +1767,13 @@ sub _convert($$)
     } elsif (exists($brace_no_arg_commands{$root->{'cmdname'}})) {
       my $text;
       
-      $text = Texinfo::Convert::Text::brace_no_arg_command($root, 
-                                         $self->{'convert_text_options'});
+      if ($command eq 'dots' or $command eq 'enddots') {
+        # Don't use Unicode ellipsis character.
+        $text = '...';
+      } else {
+        $text = Texinfo::Convert::Text::brace_no_arg_command($root, 
+                                           $self->{'convert_text_options'});
+      }
 
       # @AA{} should suppress an end sentence, @aa{} shouldn't.  This
       # is the case whether we are in @sc or not.
