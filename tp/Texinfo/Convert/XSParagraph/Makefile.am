@@ -34,6 +34,8 @@ PERL_INC = $(PERL_CONF_archlibexp)/CORE
 # Perl.  Otherwise Perl's "config.h" will be incorrect.
 CC = $(PERL_CONF_cc)
 
+XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
+
 #XSUBPPARGS = -typemap /usr/share/perl5/ExtUtils/typemap
 
 .xs.c:

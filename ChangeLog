@@ -1,5 +1,12 @@
 2015-07-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Retrieve
+	"privlibexp" Perl configuration value.
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Use it for 
+	-typemap argument to xsubpp.
+
+2015-07-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi: Change "a @node line" back to "an @node 
 	line".
 
