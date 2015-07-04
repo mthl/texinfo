@@ -14,6 +14,7 @@ EXTRA_DIST = $(TESTS) \
   indices_res index_split_res tex_l2h_res tex_t4ht_res
 
 TESTS = indices.sh tex_l2h.sh tex_t4ht.sh
+AM_TESTS_ENVIRONMENT = PERL5LIB='$(top_builddir)/tp/Texinfo/Convert/XSParagraph'; export PERL5LIB;
 
 test_dirs = indices index_split
 tex_html_dirs = tex_l2h tex_t4ht

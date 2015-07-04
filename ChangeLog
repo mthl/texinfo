@@ -1,5 +1,18 @@
 2015-07-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Makefile.am,
+	* tp/tests/htmlxref/Makefile.am,
+	* tp/tests/htmlxref-only_mono/Makefile.am,
+	* tp/tests/htmlxref-only_split/Makefile.am,
+	* tp/tests/many_input_files/Makefile.am,
+	* tp/tests/run_parser_all.sh,
+	* tp/tests/t/stdout.sh,
+	* tp/tests/t/stdout_split.sh:
+	Look for XSParagraph.la file in $builddir and XSParagraph.pm in
+	$srcdir, to facilitate VPATH builds.
+
+2015-07-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/configure.ac: Retrieve
 	"privlibexp" Perl configuration value.
 	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Use it for 
