@@ -288,7 +288,7 @@ Nodes
 The @code{@@node} Command
 
 * Node Names::                  How to choose node and pointer names.
-* Writing a Node::              How to write a @code{@@node} line.
+* Writing a Node::              How to write an @code{@@node} line.
 * Node Line Requirements::      Keep names unique.
 * First Node::                  How to write a `Top' node.
 * @t{@@top} Command::                How to use the @code{@@top} command.
@@ -2144,7 +2144,7 @@ typing @w{@kbd{C-u C-c C-s}}, it will list not only those lines with the
 @@-commands for @code{@@chapter}, @code{@@section}, and the like, but
 also the @code{@@node} lines.  You can use @code{texinfo-show-structure}
 with a prefix argument to check whether the `Next', `Previous', and `Up'
-pointers of a @code{@@node} line are correct.
+pointers of an @code{@@node} line are correct.
 
 Often, when you are working on a manual, you will be interested only
 in the structure of the current chapter.  In this case, you can mark
@@ -2179,7 +2179,7 @@ Texinfo mode provides commands for automatically creating or updating
 menus and node pointers.  The commands are called ``update'' commands
 because their most frequent use is for updating a Texinfo file after you
 have worked on it; but you can use them to insert the `Next',
-`Previous', and `Up' pointers into a @code{@@node} line that has none
+`Previous', and `Up' pointers into an @code{@@node} line that has none
 and to create menus in a file that has none.
 
 If you do not use any updating commands, you need to write menus and
@@ -2221,7 +2221,7 @@ a line beginning with @code{@@chapter}, @code{@@section}, or other
 similar command.)
 
 You can write the structuring command line on the line that follows
-immediately after a @code{@@node} line or else on the line that
+immediately after an @code{@@node} line or else on the line that
 follows after a single @code{@@comment} line or a single
 @code{@@ifinfo} line.  You cannot interpose more than one line between
 the @code{@@node} line and the structuring command line; and you may
@@ -3761,7 +3761,7 @@ the @code{@@node Top} line (@pxref{@t{@@top} Command}).
 The contents of the `Top' node should appear only in the online output;
 none of it should appear in printed output, so enclose it between
 @code{@@ifnottex} and @code{@@end ifnottex} commands.  (@TeX{} does not
-print either a @code{@@node} line or a menu; they appear only in Info;
+print either an @code{@@node} line or a menu; they appear only in Info;
 strictly speaking, you are not required to enclose these parts between
 @code{@@ifnottex} and @code{@@end ifnottex}, but it is simplest to do
 so.  @xref{Conditionals, , Conditionally Visible Text}.)
@@ -4996,7 +4996,7 @@ follow the navigation using (typically) @kbd{M-@var{letter}}, e.g.,
 @kbd{M-n} for the `Next' node, from anywhere within the node.
 
 Usually, you write one of the chapter-structuring command lines
-immediately after a @code{@@node} line---for example, an
+immediately after an @code{@@node} line---for example, an
 @code{@@section} or @code{@@subsection} line.  @xref{Structuring
 Command Types}.
 
@@ -5015,7 +5015,7 @@ References}.
 
 @menu
 * Node Names::                  How to choose node and pointer names.
-* Writing a Node::              How to write a @code{@@node} line.
+* Writing a Node::              How to write an @code{@@node} line.
 * Node Line Requirements::      Keep names unique.
 * First Node::                  How to write a `Top' node.
 * @t{@@top} Command::                How to use the @code{@@top} command.
@@ -5071,12 +5071,12 @@ for all of Info.
 
 
 @node Writing a Node
-@subsection Writing a @code{@@node} Line
-@cindex Writing a @code{@@node} line
+@subsection Writing an @code{@@node} Line
+@cindex Writing an @code{@@node} line
 @cindex @code{@@node} line writing
 @cindex Node line writing
 
-The easiest and preferred way to write a @code{@@node} line is to
+The easiest and preferred way to write an @code{@@node} line is to
 write @code{@@node} at the beginning of a line and then the name of
 the node, like this:
 
@@ -5120,7 +5120,7 @@ that you write a segment so you can easily make cross references.
 Useful cross references are an especially important feature of a good
 Texinfo manual.
 
-After you have inserted a @code{@@node} line, you should immediately
+After you have inserted an @code{@@node} line, you should immediately
 write an @@-command for the chapter or section and insert its name.
 Next (and this is important!), put in several index entries.  Usually,
 you will find at least two and often as many as four or five ways of
@@ -5574,7 +5574,7 @@ construct to determine the relationships between nodes and sectioning
 commands.
 
 Here is the beginning of the chapter in this manual called ``Ending a
-Texinfo File''.  This shows a @code{@@node} line followed by an
+Texinfo File''.  This shows an @code{@@node} line followed by an
 @code{@@chapter} line, and then by indexing lines.  The manual uses
 implictly determined node pointers; therefore, nothing else is needed
 on the @code{@@node} line.

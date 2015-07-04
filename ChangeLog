@@ -1,3 +1,8 @@
+2015-07-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi: Change "a @node line" back to "an @node 
+	line".
+
 2015-07-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* README-hacking: Mention gnupload --user and --replace.  Move 
