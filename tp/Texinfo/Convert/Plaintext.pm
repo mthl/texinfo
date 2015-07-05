@@ -298,6 +298,13 @@ $style_map{'key'} = ['<', '>'];
 $style_map{'sub'} = ['_{', '}'];
 $style_map{'sup'} = ['^{', '}'];
 
+# Commands producing styles that are output in node names and index entries.
+my %index_style_commands;
+for my $index_style_command ('strong', 'emph', 'sub', 'sup') {
+  $index_style_commands{$index_style_command} = 1;
+}
+
+
 # in those commands, there is no addition of double space after a dot.
 # math is special
 my %no_punctation_munging_commands;
@@ -672,7 +679,8 @@ sub new_formatter($$;$)
                    #'code' => 0, 'code_command'=> 0,
                    'font_type_stack' => [{}],
                    'w' => 0, 'type' => $type,
-                'frenchspacing_stack' => [$self->{'conf'}->{'frenchspacing'}]};
+              'frenchspacing_stack' => [$self->{'conf'}->{'frenchspacing'}],
+              'suppress_styles' => $conf->{'suppress_styles'}};
 
   if ($type eq 'unfilled') {
     foreach my $context (reverse(@{$self->{'context'}})) {
@@ -1199,7 +1207,7 @@ sub _normalize_top_node($)
   return Texinfo::Common::normalize_top_node_name($node);
 }
 
-# cache formatted node line and returns it
+# convert and cache a node name.  $NODE is a node element.
 sub _node_line($$)
 {
   my $self = shift;
@@ -1209,7 +1217,8 @@ sub _node_line($$)
               'contents' => $node->{'extra'}->{'node_content'}};
     push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
     $self->{'node_lines_text'}->{$node}->{'text'} 
-       = _normalize_top_node($self->convert_line($node_text));
+       = _normalize_top_node($self->convert_line($node_text,
+                                                 {'suppress_styles' => 1}));
     _update_count_context($self);
     my $end_context = pop @{$self->{'count_context'}};
     $self->{'node_lines_text'}->{$node}->{'count'} 
@@ -1321,7 +1330,8 @@ sub _printindex_formatted($$;$)
       $entry_tree->{'type'} = 'frenchspacing';
     }
     my $entry_text = '';
-    $entry_text .= $self->convert_line($entry_tree, {'indent' => 0});
+    $entry_text .= $self->convert_line($entry_tree, {'indent' => 0,
+                                                     'suppress_styles' => 1});
     next if ($entry_text !~ /\S/);
     # FIXME protect instead
     if ($entry_text =~ /:/ and $self->get_conf('INDEX_SPECIAL_CHARS_WARNING')) {
@@ -1891,15 +1901,17 @@ sub _convert($$)
       if ($root->{'type'} and $root->{'type'} eq 'definfoenclose_command') {
         $text_before = $root->{'extra'}->{'begin'};
         $text_after = $root->{'extra'}->{'end'};
-      } else {
-        if ($non_quoted_commands_when_nested{$command} 
+      } elsif ($non_quoted_commands_when_nested{$command} 
             and $formatter->{'font_type_stack'}->[-1]->{'code_command'}) {
-          $text_before = '';
-          $text_after = '';
-        } else {
-          $text_before = $self->{'style_map'}->{$command}->[0];
-          $text_after = $self->{'style_map'}->{$command}->[1];
-        }
+        $text_before = '';
+        $text_after = '';
+      } elsif ($formatter->{'suppress_styles'}
+               and !$index_style_commands{$command}) {
+        $text_before = '';
+        $text_after = '';
+      } else {
+        $text_before = $self->{'style_map'}->{$command}->[0];
+        $text_after = $self->{'style_map'}->{$command}->[1];
       }
       # do this after determining $text_before/$text_after such that it
       # doesn't impact the current command, but only commands nested within
@@ -2154,8 +2166,11 @@ sub _convert($$)
             $result .= $self->_convert({'contents' => $file});
           }
           # node name
+          $self->{'formatters'}->[-1]->{'suppress_styles'} = 1;
           my $node_text = $self->_convert({'type' => '_code',
                                            'contents' => $node_content});
+          delete $self->{'formatters'}->[-1]->{'suppress_styles'};
+
           my $node_text_checked = $node_text 
              .$self->{'formatters'}->[-1]->{'container'}->get_pending();
           if ($node_text_checked =~ /([,\t]|\.\s)/m 
@@ -2169,8 +2184,11 @@ sub _convert($$)
           if ($file) {
             $result .= $self->_convert({'contents' => $file});
           }
+          $self->{'formatters'}->[-1]->{'suppress_styles'} = 1;
           my $node_text = $self->_convert({'type' => '_code',
                                            'contents' => $node_content});
+          delete $self->{'formatters'}->[-1]->{'suppress_styles'};
+
           my $node_text_checked = $node_text 
              .$self->{'formatters'}->[-1]->{'container'}->get_pending();
           if ($node_text_checked =~ /:/m

@@ -1,3 +1,16 @@
+2015-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm
+	(new_formatter): Set 'suppress_styles' on formatter object.
+	(_node_line, _printindex_formatted): Pass 'suppress_styles' 
+	option to line formatter.
+	(%index_style_commands): New hash.
+	(_convert) <command has styles>: If styles are suppressed, 
+	suppress styles unless the command is in %index_style_commands, 
+	or it was defined with @definfoenclose.
+	<cross-reference command>: Suppress styles for converting node 
+	name.
+
 2015-07-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm (_convert) <brace commands 
