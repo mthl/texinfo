@@ -758,7 +758,7 @@ truc 1
 * Menu:
 
 * anch::
-* \'floa\'::
+* floa::
 
 
 Tag Table:

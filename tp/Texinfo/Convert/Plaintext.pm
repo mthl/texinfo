@@ -3050,8 +3050,11 @@ sub _convert($$)
       my $entry_name_seen = 0;
       foreach my $arg (@{$root->{'args'}}) {
         if ($arg->{'type'} eq 'menu_entry_node') {
+          $self->{'formatters'}->[-1]->{'suppress_styles'} = 1;
           my $node_text = $self->_convert({'type' => '_code',
                                       'contents' => $arg->{'contents'}});
+
+          delete $self->{'formatters'}->[-1]->{'suppress_styles'};
           if ($entry_name_seen) {
             if ($node_text =~ /([,\t]|\.\s)/
                 and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {

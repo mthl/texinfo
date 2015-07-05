@@ -18,6 +18,7 @@
 	or it was defined with @definfoenclose.
 	<cross-reference command>: Suppress styles for converting node 
 	name.
+	<menu entry>: Suppress styles for node names.
 
 2015-07-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
