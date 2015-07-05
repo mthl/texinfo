@@ -2721,7 +2721,7 @@ sub _enter_index_entry($$$$$$$)
     $self->line_warn(sprintf($self->__("entry for index `%s' outside of any node"), 
                              $index_name), $line_nr);
   }
-  #print STDERR "INDEX ENTRY \@$command->{'cmdname'} $index_name($number)\n";
+  #print STDERR "INDEX ENTRY \@$command $index_name($number)\n";
   unless (_ignore_global_commands($self)) {
     push @{$index->{'index_entries'}}, $index_entry;
   }

@@ -1,3 +1,11 @@
+2015-07-05  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Structuring.pm (_sort_index_entries,
+	_sort_index_entries_in_letter): use 'index_at_command'
+	to sort index entries when 'number' is not enough.  Report
+	from Norbert Preining and Chris Lamb.
+	* tp/t/09indices.t: add corresponding test case.
+
 2015-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm

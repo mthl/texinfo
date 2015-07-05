@@ -1984,6 +1984,12 @@ sub _sort_index_entries($$)
   if ($res == 0) {
     $res = ($key1->{'number'} <=> $key2->{'number'});
   }
+  # This may happen if 2 indices are merged as the number is per 
+  # index name.  The @-command should be different though, for 
+  # index names to be different.
+  if ($res == 0) {
+    $res = ($key1->{'index_at_command'} cmp $key2->{'index_at_command'});
+  }
   return $res;
 }
 
@@ -1996,6 +2002,9 @@ sub _sort_index_entries_in_letter($$)
   my $res = ($a cmp $b);
   if ($res == 0) {
     $res = ($key1->{'number'} <=> $key2->{'number'});
+  }
+  if ($res == 0) {
+    $res = ($key1->{'index_at_command'} cmp $key2->{'index_at_command'});
   }
   return $res;
 }
