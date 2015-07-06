@@ -1,5 +1,10 @@
 2015-07-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Inserting Quotation Marks): Narrow prototype 
+	text for rightmost column.
+
+2015-07-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi: Change @t to @code, @command or @samp in 
 	node names.
 
