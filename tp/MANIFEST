@@ -11,8 +11,8 @@ LocaleData/de/LC_MESSAGES/texinfo.mo
 LocaleData/de_AT/LC_MESSAGES/texinfo.mo
 LocaleData/eo/LC_MESSAGES/texinfo.mo
 LocaleData/eo/LC_MESSAGES/texinfo_document.mo
-LocaleData/es.us-ascii/LC_MESSAGES/texinfo_document.mo
 LocaleData/es/LC_MESSAGES/texinfo.mo
+LocaleData/es/LC_MESSAGES/texinfo_document.mo
 LocaleData/fr/LC_MESSAGES/texinfo.mo
 LocaleData/fr/LC_MESSAGES/texinfo_document.mo
 LocaleData/he/LC_MESSAGES/texinfo.mo
@@ -39,6 +39,7 @@ LocaleData/sl/LC_MESSAGES/texinfo.mo
 LocaleData/sv/LC_MESSAGES/texinfo.mo
 LocaleData/tr/LC_MESSAGES/texinfo.mo
 LocaleData/uk/LC_MESSAGES/texinfo.mo
+LocaleData/uk/LC_MESSAGES/texinfo_document.mo
 LocaleData/vi/LC_MESSAGES/texinfo.mo
 LocaleData/zh_CN/LC_MESSAGES/texinfo.mo
 LocaleData/zh_TW/LC_MESSAGES/texinfo.mo
@@ -128,7 +129,7 @@ po_document/POTFILES.in
 po_document/ca.us-ascii.po
 po_document/de.us-ascii.po
 po_document/eo.po
-po_document/es.us-ascii.po
+po_document/es.po
 po_document/fr.po
 po_document/hu.po
 po_document/it.po
@@ -138,6 +139,7 @@ po_document/pl.po
 po_document/pt.us-ascii.po
 po_document/pt_BR.us-ascii.po
 po_document/texinfo_document.pot
+po_document/uk.po
 prove.sh
 t/01use.t
 t/02coverage.t
@@ -707,6 +709,7 @@ t/results/indices/printindex_index_entry_in_copying_in_footnote.pl
 t/results/indices/printindex_index_entry_in_copying_no_insertcopying.pl
 t/results/indices/printindex_with_space_before.pl
 t/results/indices/recursive_synindex.pl
+t/results/indices/same_index_entry_merged_indices.pl
 t/results/indices/syncode_index_print_both.pl
 t/results/indices/syncodeindex_to_plain.pl
 t/results/indices/unknown_index_entry.pl
