@@ -1,5 +1,11 @@
 2015-07-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/test_utils.pl: Add directories containing XSParagraph 
+	files to the module include path, so that running, e.g.,
+	"perl -w t/80include.t" works.  Suggestion from Patrice.
+
+2015-07-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Inserting Quotation Marks): Narrow prototype 
 	text for rightmost column.
 
