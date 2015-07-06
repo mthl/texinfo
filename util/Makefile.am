@@ -64,3 +64,5 @@ EXTRA_DIST = README detexinfo dir-example \
   tests  
 
 DISTCLEANFILES = txixml2texi
+
+TESTS=tests/texi2dvi_helpversion.sh
