@@ -2,7 +2,7 @@
 
 set -x
 
-texi2dvi=./texi2dvi
+texi2dvi=$srcdir/texi2dvi
 
 out=`$texi2dvi --version`
 if test $? -ne 0 || test -z "$out"; then

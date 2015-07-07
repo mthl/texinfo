@@ -1,3 +1,9 @@
+2015-07-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/Makefile.am (EXTRA_DIST): Distribute TESTS, but not
+	all the contents of the test subdirectory, as this makes it 
+	possible for *.trs files to be be distributed.
+
 2015-07-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/Makefile.am (TESTS): Add variable.
