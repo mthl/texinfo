@@ -30,7 +30,7 @@ base tests, "make long-checks" for the long tests, or "make all-checks"
 for both.
 
 * Using ./parser_tests.sh with the directories one want to run the tests 
-in given as arguments 
+in given as arguments
 
 * By going into one directory and running ../run_parser_all.sh, like
 $ cd formatting
@@ -70,9 +70,9 @@ tests.log.
 Giving -copy as the first argument to ../run_parser_all.sh or
 parser_tests.sh (or long_tests.sh or tex_html_tests.sh, which need
 environment variables LONG_TESTS resp. TEX_HTML_TESTS, or ALL_TESTS, to
-be set, but otherwise operate similarly) will cause the references to be
-regenerated.  For example, to update the references for one particular
-test:
+be set to "yes", but otherwise operate similarly) will cause the 
+reference results to be regenerated.  For example, to update the 
+reference results for one particular test:
 
 $ cd formatting
 $ ../run_parser_all.sh -copy a_test
