@@ -50,16 +50,12 @@ sub dump($)
 {
   my $self = shift;
   my $word = 'UNDEF';
-  my $underlying = '';
   if (defined($self->{'word'})) {
     $word = $self->{'word'};
-    if ($self->{'word'} ne $self->{'underlying_word'}) {
-      $underlying = ", underlying_word: $self->{'underlying_word'},";
-    }
   }
   my $end_sentence = 'UNDEF';
   $end_sentence = $self->{'end_sentence'} if (defined($self->{'end_sentence'}));
-  print STDERR "para ($self->{'counter'}+$self->{'word_counter'}) word: $word, space `$self->{'space'}'${underlying} end_sentence: $end_sentence\n"; 
+  print STDERR "para ($self->{'counter'}+$self->{'word_counter'}) word: $word, space `$self->{'space'}' end_sentence: $end_sentence\n"; 
 }
 
 sub _cut_line($)
@@ -145,7 +141,7 @@ sub _add_pending_word($;$)
       print STDERR "ADD_WORD[$paragraph->{'word'}]+$paragraph->{'word_counter'} ($paragraph->{'counter'})\n"
         if ($paragraph->{'DEBUG'});
       $paragraph->{'word'} = undef;
-      $paragraph->{'underlying_word'} = undef;
+      $paragraph->{'last_char'} = undef;
       $paragraph->{'word_counter'} = 0;
     }
     $paragraph->{'space'} = '';
@@ -171,6 +167,10 @@ sub end($)
 my $end_sentence_character = quotemeta('.?!');
 my $after_punctuation_characters = quotemeta('"\')]');
 
+# Add $WORD and/or $SPACE, returning the text to be added to the paragraph. 
+# Any end of sentence punctuation in $WORD that should be allowed to end a 
+# sentence but which would otherwise be preceded by an upper-case letter should 
+# instead by preceded by a backspace character.
 sub add_next($;$$$$)
 {
   my $paragraph = shift;
@@ -202,7 +202,7 @@ sub _add_next($;$$$$$$)
     }
     if (!defined($paragraph->{'word'})) {
       $paragraph->{'word'} = '';
-      $paragraph->{'underlying_word'} = '';
+      $paragraph->{'last_char'} = '';
       if ($paragraph->{'end_sentence'} 
            and $paragraph->{'end_sentence'} > 0
            and !$paragraph->{'frenchspacing'}
@@ -220,12 +220,12 @@ sub _add_next($;$$$$$$)
 
     if (!$transparent) {
       if ($disinhibit) {
-        $paragraph->{'underlying_word'} = 'a';
+        $paragraph->{'last_char'} = 'a';
       } elsif ($word =~
            /([^$end_sentence_character$after_punctuation_characters])
             [$end_sentence_character$after_punctuation_characters]*$/x) {
         # Save the last character in $word before punctuation
-        $paragraph->{'underlying_word'} = $1;
+        $paragraph->{'last_char'} = $1;
       }
     }
 
@@ -236,7 +236,7 @@ sub _add_next($;$$$$$$)
       _end_line($paragraph);
       $paragraph->{'word_counter'} = 0;
       $paragraph->{'word'} = undef;
-      $paragraph->{'underlying_word'} = undef;
+      $paragraph->{'last_char'} = undef;
     } else {
       $paragraph->{'word_counter'} += length($word);
     }
@@ -283,7 +283,7 @@ sub allow_end_sentence($)
 {
   my $paragraph = shift;
   printf STDERR "ALLOW END SENTENCE\n" if $paragraph->{'DEBUG'};
-  $paragraph->{'underlying_word'} = 'a'; # lower-case
+  $paragraph->{'last_char'} = 'a'; # lower-case
 }
 
 sub set_space_protection($$;$$$)
@@ -316,7 +316,10 @@ sub set_space_protection($$;$$$)
   return '';
 }
 
-# wrap a text.
+# Wrap $TEXT, returning the wrapped text, taking into account the current state 
+# of $PARAGRAPH.  Any end of sentence punctuation in $TEXT that should be 
+# allowed to end a sentence but which would otherwise be preceded by an 
+# upper-case letter should instead by preceded by a backspace character.
 sub add_text($$)
 {
   my $paragraph = shift;
@@ -353,7 +356,7 @@ sub add_text($$)
       #my $added_word = $paragraph->{'word'};
       if ($protect_spaces_flag) {
         $paragraph->{'word'} .= $spaces;
-        $paragraph->{'underlying_word'} = substr($spaces, -1);
+        $paragraph->{'last_char'} = substr($spaces, -1);
         $paragraph->{'word_counter'} += length($spaces);
         #$paragraph->{'space'} .= $spaces;
         if ($paragraph->{'word'} =~ s/\n/ /g 
@@ -364,7 +367,7 @@ sub add_text($$)
           if (length($1) < 2) {
             my $added = ' ' x (2 - length($1));
             $paragraph->{'word'} .= $added;
-            $paragraph->{'underlying_word'} = ' ';
+            $paragraph->{'last_char'} = ' ';
             $paragraph->{'word_counter'} += length($added);
           }
         }
@@ -429,8 +432,6 @@ sub add_text($$)
       $result .= _add_next($paragraph, $added_word, undef, undef,
                            undef, !$newline_possible_flag);
 
-      my $last_letter = $paragraph->{'underlying_word'};
-
       # Check if it is considered as an end of sentence.  There are two things
       # to check: one, that we have a ., ! or ?; and second, that it is not
       # preceded by an upper-case letter (ignoring some punctuation)
@@ -438,8 +439,8 @@ sub add_text($$)
           and $added_word =~ /^[$after_punctuation_characters]*$/o) {
         # do nothing in the case of a continuation of after_punctuation_characters
       } elsif (($disinhibit
-                or !$last_letter
-                or $last_letter !~ /[[:upper:]]/)
+                or !$paragraph->{'last_char'}
+                or $paragraph->{'last_char'} !~ /[[:upper:]]/)
               and $added_word =~ /[$end_sentence_character]
                                   [$after_punctuation_characters]*$/x) {
         if ($paragraph->{'frenchspacing'}) {
@@ -459,7 +460,7 @@ sub add_text($$)
         $paragraph->{'word'} = '';
       }
       $paragraph->{'word'} .= $fullwidth_segment;
-      $paragraph->{'underlying_word'} = $fullwidth_segment;
+      $paragraph->{'last_char'} = $fullwidth_segment;
       $paragraph->{'word_counter'} += 2;
       if ($paragraph->{'counter'} != 0 and
           $paragraph->{'counter'} + $paragraph->{'word_counter'} 

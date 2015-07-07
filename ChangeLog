@@ -1,5 +1,11 @@
 2015-07-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Line.pm,
+	* tp/Texinfo/Convert/Paragraph.pm: Rename 'underlying_text' key 
+	to 'last_char'.  Add some comments.
+
+2015-07-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Plaintext.pm (%index_style_commands): Add 'key'.
 	* NEWS: Mention reduced text styles.
 
