@@ -58,7 +58,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.0';
+$VERSION = '6.0dev';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;
@@ -300,7 +300,7 @@ $style_map{'sup'} = ['^{', '}'];
 
 # Commands producing styles that are output in node names and index entries.
 my %index_style_commands;
-for my $index_style_command ('strong', 'emph', 'sub', 'sup') {
+for my $index_style_command ('strong', 'emph', 'sub', 'sup', 'key') {
   $index_style_commands{$index_style_command} = 1;
 }
 

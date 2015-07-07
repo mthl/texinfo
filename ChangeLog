@@ -1,5 +1,10 @@
 2015-07-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Plaintext.pm (%index_style_commands): Add 'key'.
+	* NEWS: Mention reduced text styles.
+
+2015-07-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/Makefile.am (EXTRA_DIST): Distribute TESTS, but not
 	all the contents of the test subdirectory, as this makes it 
 	possible for *.trs files to be be distributed.

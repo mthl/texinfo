@@ -22,6 +22,11 @@ one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
+* makeinfo
+  . quotation marks are left out for node names and index entries in
+    Info output where they would have been produced by commands such
+    as @file or @option.
+
 
 6.0 (26 June 2015)
 * Language:
