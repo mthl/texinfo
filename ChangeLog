@@ -21,6 +21,8 @@
 	* info/nodemenu.c (format_node_info): Use { 0 } for null struct 
 	initializer instead of {}.
 
+	* info/info-utils.c (underlining_on, underlining_off): Removed.
+
 2015-07-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Line.pm,

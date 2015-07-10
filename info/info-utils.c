@@ -1087,28 +1087,6 @@ skip_tag_contents (long n)
     }
 }
 
-/* ANSI escape codes */
-#define ANSI_UNDERLINING_OFF "\033[24m"
-#define ANSI_UNDERLINING_ON  "\033[4m"
-
-/* Turn off underlining */
-static void
-underlining_off (void)
-{
-  return;
-  write_extra_bytes_to_output (ANSI_UNDERLINING_OFF,
-                               strlen (ANSI_UNDERLINING_OFF));
-}
-
-/* Turn on underlining */
-static void
-underlining_on (void)
-{
-  return;
-  write_extra_bytes_to_output (ANSI_UNDERLINING_ON,
-                               strlen (ANSI_UNDERLINING_ON));
-}
-
 /* Read first line of node and set next, prev and up. */
 static void
 parse_top_node_line (NODE *node)
