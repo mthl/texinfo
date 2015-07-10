@@ -60,6 +60,8 @@ VFunction *terminal_begin_inverse_hook = NULL;
 VFunction *terminal_end_inverse_hook = NULL;
 VFunction *terminal_begin_standout_hook = NULL;
 VFunction *terminal_end_standout_hook = NULL;
+VFunction *terminal_begin_underline_hook = NULL;
+VFunction *terminal_end_underline_hook = NULL;
 VFunction *terminal_prep_terminal_hook = NULL;
 VFunction *terminal_unprep_terminal_hook = NULL;
 VFunction *terminal_up_line_hook = NULL;
@@ -126,6 +128,9 @@ static char *term_Km;
 
 /* Strings entering and leaving standout mode. */
 char *term_so, *term_se;
+
+/* Strings entering and leaving underline mode. */
+char *term_us, *term_ue;
 
 /* Although I can't find any documentation that says this is supposed to
    return its argument, all the code I've looked at (termutils, less)
@@ -392,6 +397,28 @@ terminal_end_standout (void)
   else
     {
       send_to_terminal (term_se);
+    }
+}
+
+void
+terminal_begin_underline (void)
+{
+  if (terminal_begin_underline_hook)
+    (*terminal_begin_underline_hook) ();
+  else
+    {
+      send_to_terminal (term_us);
+    }
+}
+
+void
+terminal_end_underline (void)
+{
+  if (terminal_end_underline_hook)
+    (*terminal_end_underline_hook) ();
+  else
+    {
+      send_to_terminal (term_ue);
     }
 }
 
@@ -822,6 +849,12 @@ terminal_initialize_terminal (char *terminal_name)
     term_se = tgetstr ("se", &buffer);
   else
     term_se = NULL;
+
+  term_us = tgetstr ("us", &buffer);
+  if (term_us)
+    term_ue = tgetstr ("ue", &buffer);
+  else
+    term_ue = NULL;
 
   if (!term_cr)
     term_cr =  "\r";

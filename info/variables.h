@@ -81,6 +81,7 @@ extern int infopath_no_defaults_p;
 extern int preprocess_nodes_p;
 extern int key_time;
 extern int highlight_searches_p;
+extern int xref_rendition_p;
 extern int mouse_protocol;
 
 

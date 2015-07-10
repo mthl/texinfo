@@ -120,6 +120,10 @@ VARIABLE_ALIST info_variables[] = {
       N_("Highlight search matches"),
     &highlight_searches_p, (char **)on_off_choices },
 
+  { "xref-rendition",
+      N_("Underline cross-references and menu entries"),
+    &xref_rendition_p, (char **)on_off_choices },
+
   { "mouse",
       N_("Method to use to track mouse events"),
     &mouse_protocol, (char **)mouse_choices },

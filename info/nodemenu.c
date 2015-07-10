@@ -52,7 +52,7 @@ format_node_info (NODE *node)
 {
   register int i;
   char *containing_file;
-  static struct text_buffer line_buffer = {};
+  static struct text_buffer line_buffer = { 0 };
 
   if (!text_buffer_base (&line_buffer))
     text_buffer_init (&line_buffer);

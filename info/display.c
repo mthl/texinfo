@@ -225,7 +225,12 @@ display_node_text (long pl_num, char *printed_line,
 }
 
 
+/* User variable to control whether matches from a search are highlighted. */
 int highlight_searches_p = 0;
+
+/* Controls whether cross-references and menu entries are underlined.
+   TODO: have a choice of different styles and colours. */
+int xref_rendition_p = 0;
 
 /* Given an array MATCHES with regions, and an offset *MATCH_INDEX, decide
    if we are inside a region at offset OFF.  The matches are assumed not
@@ -254,6 +259,31 @@ decide_if_in_match (long off, int *in_match, regmatch_t *matches,
   *in_match = m;
 }
 
+/* Similar to decide_if_in_match, but used for reference highlighting. */
+static void
+decide_if_in_reference (long off, int *in_ref, REFERENCE **references,
+                        int *ref_index)
+{
+  int i = *ref_index;
+  int m = *in_ref;
+
+  for (; (references[i]); i++)
+    {
+      if (references[i]->start > off)
+        break;
+
+      m = 1;
+
+      if (references[i]->end > off)
+        break;
+
+      m = 0;
+    }
+
+  *ref_index = i;
+  *in_ref = m;
+}
+
 /* Print each line in the window into our local buffer, and then
    check the contents of that buffer against the display.  If they
    differ, update the display.
@@ -277,8 +307,19 @@ display_update_window_1 (WINDOW *win)
   size_t match_index = 0;
   int in_match = 0; /* If we have highlighting on for a match. */
 
+  REFERENCE **refs = 0;
+  int ref_index = 0, in_ref = 0;
+  int ref_seen_in_line = 0;
+
+  /* Set to 1 when we are in the text of a cross-reference and at the start of 
+     a new line, and haven't seen a non-whitespace character yet. */
+  int ref_leading_whitespace = 0;
+
   if (highlight_searches_p)
     matches = win->matches;
+
+  if (xref_rendition_p)
+    refs = win->node->references;
 
   /* Find first search match after the start of the page, and check whether
      we start inside a match. */
@@ -289,12 +330,28 @@ display_update_window_1 (WINDOW *win)
                           matches, win->match_count, &match_index);
     }
 
+  /* Likewise, check whether we start within a cross-reference or menu 
+     entry.  */
+  if (refs)
+    {
+      ref_index = 0;
+      decide_if_in_reference (win->line_starts[win->pagetop], &in_ref,
+                              refs, &ref_index);
+    }
+
   text_buffer_init (&tb_printed_line);
 
   if (in_match)
     {
       terminal_begin_standout ();
       match_seen_in_line = 1;
+      terminal_goto_xy (0, win->first_row);
+    }
+
+  if (in_ref)
+    {
+      terminal_begin_underline ();
+      ref_seen_in_line = 1;
       terminal_goto_xy (0, win->first_row);
     }
 
@@ -323,6 +380,11 @@ display_update_window_1 (WINDOW *win)
       rep = printed_representation (&iter, &delim, pl_chars, &pchars, &pbytes);
 
       cur_ptr = mbi_cur_ptr (iter);
+      if (ref_leading_whitespace && !strchr (" \t", *cur_ptr))
+        {
+          ref_leading_whitespace = 0;
+          terminal_begin_underline ();
+        }
 
       if (matches && match_index != win->match_count)
         {
@@ -341,23 +403,56 @@ display_update_window_1 (WINDOW *win)
                 {
                   match_seen_in_line = 1;
 
-                  /* Output the line so far. */
-                  terminal_goto_xy (0, win->first_row + pl_num);
-                  terminal_write_chars (text_buffer_base (&tb_printed_line),
-                                      text_buffer_off (&tb_printed_line));
+                  if (!ref_seen_in_line)
+                    {
+                      /* Output the line so far. */
+                      terminal_goto_xy (0, win->first_row + pl_num);
+                      terminal_write_chars
+                                        (text_buffer_base (&tb_printed_line),
+                                         text_buffer_off (&tb_printed_line));
+                    }
                 }
               terminal_begin_standout ();
             }
         }
 
+      if (refs && refs[ref_index])
+        {
+          int was_in_ref = in_ref;
+          decide_if_in_reference (cur_ptr - win->node->contents,
+                                  &in_ref, refs, &ref_index);
+
+          if (was_in_ref && !in_ref)
+            {
+              ref_leading_whitespace = 0;
+              terminal_end_underline ();
+            }
+          else if (!was_in_ref && in_ref)
+            {
+              if (!ref_seen_in_line)
+                {
+                  ref_seen_in_line = 1;
+
+                  if (!match_seen_in_line)
+                    {
+                      /* Output the line so far. */
+                      terminal_goto_xy (0, win->first_row + pl_num);
+                      terminal_write_chars
+                                        (text_buffer_base (&tb_printed_line),
+                                         text_buffer_off (&tb_printed_line));
+                    }
+                }
+              terminal_begin_underline ();
+            }
+        }
+
+      /* If a newline character has been seen, or we have reached the
+         edge of the display.  */
       if (delim || pl_chars + pchars >= win->width)
         {
-          /* If this character cannot be printed in this line, we have
-             found the end of this line as it would appear on the screen. */
-
           text_buffer_add_char (&tb_printed_line, '\0');
 
-          if (!match_seen_in_line)
+          if (!match_seen_in_line && !ref_seen_in_line)
             {
               finish = display_node_text (win->first_row + pl_num,
                           text_buffer_base (&tb_printed_line),
@@ -372,8 +467,8 @@ display_update_window_1 (WINDOW *win)
             }
 
           /* Check if a line continuation character should be displayed.
-             Don't print one if printing the last character in this window 
-             could possibly cause the screen to scroll. */
+             Don't print one on the very last line of the display as this could 
+             cause scrolling. */
           if (!delim && 1 + pl_num + win->first_row < the_screen->height)
             {
               terminal_goto_xy (win->width - 1, win->first_row + pl_num);
@@ -396,18 +491,33 @@ display_update_window_1 (WINDOW *win)
                   if (matches)
                     {
                       /* Check if the next line starts in a match. */
-                      decide_if_in_match (mbi_cur_ptr (iter) - win->node->contents,
-                                          &in_match, matches, win->match_count,
-                                          &match_index);
+                      decide_if_in_match
+                                   (mbi_cur_ptr (iter) - win->node->contents,
+                                    &in_match, matches, win->match_count,
+                                    &match_index);
                       if (!in_match)
                         terminal_end_standout ();
+                    }
+
+                  if (refs)
+                    {
+                      if (in_ref)
+                        terminal_end_underline ();
+
+                      /* Check if the next line starts in a match. */
+                      decide_if_in_reference
+                                   (mbi_cur_ptr (iter) - win->node->contents,
+                                    &in_ref, refs, &ref_index);
                     }
                 }
               fflush (stdout);
             }
 
           /* Set for next line. */
-          match_seen_in_line = in_match ? 1 : 0;
+          match_seen_in_line = in_match;
+          ref_seen_in_line = in_ref;
+          ref_leading_whitespace = in_ref;
+          terminal_end_underline ();
           ++pl_num;
 
           pl_chars = 0;
@@ -418,13 +528,13 @@ display_update_window_1 (WINDOW *win)
 
           /* Go to the start of the next line if we are outputting in this
              function. */
-          if (match_seen_in_line)
+          if (match_seen_in_line || ref_seen_in_line)
             terminal_goto_xy (0, win->first_row + pl_num);
         }
 
       if (*cur_ptr != '\n' && rep) 
         {
-          if (!match_seen_in_line)
+          if (!match_seen_in_line && !ref_seen_in_line)
             text_buffer_add_string (&tb_printed_line, rep, pbytes);
           else
             terminal_write_chars (rep, pbytes);
@@ -435,7 +545,7 @@ display_update_window_1 (WINDOW *win)
     }
 
   /* This would be the very last line of the node. */
-  if (pl_chars && !match_seen_in_line)
+  if (pl_chars && !match_seen_in_line && !ref_seen_in_line)
     {
       text_buffer_add_char (&tb_printed_line, '\0');
       display_node_text (win->first_row + pl_num,
@@ -447,6 +557,11 @@ display_update_window_1 (WINDOW *win)
 
   if (in_match)
     terminal_end_standout ();
+
+  /* Unlike search match highlighting, we always turn reference highlighting
+     off at the end of each line. */
+  /*if (in_ref)
+    terminal_end_underline (); */
 
   text_buffer_free (&tb_printed_line);
   return pl_num;

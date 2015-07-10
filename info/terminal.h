@@ -118,6 +118,12 @@ extern VFunction *terminal_begin_standout_hook;
 extern void terminal_end_standout (void);
 extern VFunction *terminal_end_standout_hook;
 
+/* Turn on and off underline mode if possible. */
+void terminal_begin_underline (void);
+extern VFunction *terminal_begin_underline_hook;
+void terminal_end_underline (void);
+extern VFunction *terminal_end_underline_hook;
+
 /* Scroll an area of the terminal, starting with the region from START
    to END, AMOUNT lines.  If AMOUNT is negative, the lines are scrolled
    towards the top of the screen, else they are scrolled towards the

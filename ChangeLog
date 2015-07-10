@@ -1,3 +1,26 @@
+2015-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/variables.c (info_variables): New user variable 
+	'xref-rendition'.
+	* info/display.c (xref_rendition_p): New variable.
+	* info/terminal.c (terminal_begin_underline, terminal_end_underline):
+	New functions.
+
+	* info/info-utils.c (scan_reference_label): Don't place terminal 
+	escape characters in text of node.  Alter expression used for 
+	end of a label.
+
+	* info/display.c (decide_if_in_reference): New function, based
+	on decide_if_in_match.
+	(display_update_window_1): Keep track of whether we are in a 
+	cross-reference or menu item and turn on and off underlining 
+	accordingly, if xref-rendition=On.
+
+	* info/info-utils.c (printed_rep),
+	* info/infodoc.c (pretty_keyseq),
+	* info/nodemenu.c (format_node_info): Use { 0 } for null struct 
+	initializer instead of {}.
+
 2015-07-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Line.pm,

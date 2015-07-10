@@ -489,13 +489,14 @@ ansi_escape (mbi_iterator_t iter, size_t *plen)
   return 0;
 }
 
-static struct text_buffer printed_rep = {}; /* Initialize with all zeroes. */
+static struct text_buffer printed_rep = { 0 };
 
 /* Return pointer to string that is the printed representation of character
    (or other logical unit) at ITER if it were printed at screen column
-   PL_CHARS.  Use ITER_SETBYTES (info-utils.h) on ITER if byte length is
-   different.  If ITER points at an end-of-line character, set *DELIM to this
-   character.  *PCHARS gets the number of screen columns taken up by
+   PL_CHARS.  Use ITER_SETBYTES (info-utils.h) on ITER if we need to advance 
+   past a unit that the multibyte iteractor doesn't know about (like an ANSI 
+   escape sequence).  If ITER points at an end-of-line character, set *DELIM to 
+   this character.  *PCHARS gets the number of screen columns taken up by
    outputting the return value, and *PBYTES the number of bytes in returned
    string.  Return value is not null-terminated.  Return value must not be
    freed by caller. */
@@ -612,7 +613,11 @@ int preprocess_nodes_p;
 /* Whether contents of nodes should be rewritten. */
 static int rewrite_p;
 
-static char *input_start, *inptr;
+/* inptr is moved forward through the body of a node. */
+static char *inptr;
+
+/* Pointer to first byte of node (after node separator). */
+static char *input_start;
 
 /* Number of bytes in node contents. */
 static size_t input_length;
@@ -1090,6 +1095,7 @@ skip_tag_contents (long n)
 static void
 underlining_off (void)
 {
+  return;
   write_extra_bytes_to_output (ANSI_UNDERLINING_OFF,
                                strlen (ANSI_UNDERLINING_OFF));
 }
@@ -1098,6 +1104,7 @@ underlining_off (void)
 static void
 underlining_on (void)
 {
+  return;
   write_extra_bytes_to_output (ANSI_UNDERLINING_ON,
                                strlen (ANSI_UNDERLINING_ON));
 }
@@ -1297,7 +1304,6 @@ scan_reference_marker (REFERENCE *entry)
 static int
 scan_reference_label (REFERENCE *entry)
 {
-  char *nl_ptr;
   char *end;
   char *label = 0;
   long label_len;
@@ -1328,42 +1334,16 @@ scan_reference_label (REFERENCE *entry)
 
   end = inptr + label_len;
 
-  underlining_on ();
-
-  /* Must start underlining first so that entry->start points to a printable
-     character.  Otherwise the cursor can end up in the previous column. */
   if (preprocess_nodes_p)
     entry->start = text_buffer_off (&output_buf);
 
-  /* Write text of label.  If there is a newline in the middle of
-     a reference label, turn off underlining until text starts again. */
-  while (inptr < end)
-    {
-      nl_ptr = strchr (inptr, '\n');
-      if (!nl_ptr || nl_ptr >= end)
-        break;
-
-      copy_input_to_output (nl_ptr - inptr);
-
-      /* Note we do this before the newline is output.  This way if
-         the first half of the label is on the bottom line of the
-         screen, underlining will not be left on. */
-      underlining_off ();
-
-      /* Output newline and any whitespace at start of next line. */
-      copy_input_to_output (1 + skip_whitespace (nl_ptr + 1));
-
-      underlining_on ();
-    }
-
-  /* Output rest of label */
+  /* Write text of label. */
   copy_input_to_output (end - inptr);
-  underlining_off ();
 
-  if (preprocess_nodes_p)
+  if (rewrite_p)
     entry->end = text_buffer_off (&output_buf);
   else
-    entry->end = entry->start + label_len;
+    entry->end = end - input_start;
 
 #ifdef QUOTE_NODENAMES
   if (inptr[0] == '\177')

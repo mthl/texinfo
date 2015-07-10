@@ -606,7 +606,7 @@ pretty_keyname (int key)
 char *
 pretty_keyseq (int *keyseq)
 {
-  static struct text_buffer rep = {};
+  static struct text_buffer rep = { 0 };
 
   if (!text_buffer_base (&rep))
     text_buffer_init (&rep);
