@@ -362,12 +362,9 @@ display_update_window_1 (WINDOW *win)
       terminal_begin_underline ();
       ref_seen_in_line = 1;
       terminal_goto_xy (0, win->first_row);
-      if (point_in_line)
-        {
-          point_in_line = 0;
-          terminal_begin_standout ();
-          ref_highlighted = 1;
-        }
+      point_in_line = 0; /* Don't try to highlight a later reference. */
+      terminal_begin_standout ();
+      ref_highlighted = 1;
     }
 
   for (mbi_init (iter, start, win->node->contents + win->node->nodelen - 
@@ -400,7 +397,10 @@ display_update_window_1 (WINDOW *win)
           ref_leading_whitespace = 0;
           terminal_begin_underline ();
           if (ref_highlighted)
-            terminal_begin_standout ();
+            {
+              terminal_begin_standout ();
+              point_in_line = 0;
+            }
         }
 
       if (matches && match_index != win->match_count)
@@ -469,12 +469,18 @@ display_update_window_1 (WINDOW *win)
               /* Highlight the first reference in the line after the
                  cursor.  This is a stronger condition than the code
                  in info_follow_reference_this_line, which can follow
-                 a reference before the cursor if none appears after it.
-                 Additionally, we fail to highlight a reference if it is
-                 split across lines and the cursor isn't on the first line. */
+                 a reference before the cursor if none appears after it. */
               if (point_in_line && win->point < refs[ref_index]->end)
                 {
                   point_in_line = 0;
+                  terminal_begin_standout ();
+                  ref_highlighted = 1;
+                }
+              else if (win->point >= refs[ref_index]->start
+                       && win->point < refs[ref_index]->end)
+                {
+                  /* This will be the case if the point is in a 
+                     cross-reference, but not in the current line. */
                   terminal_begin_standout ();
                   ref_highlighted = 1;
                 }
