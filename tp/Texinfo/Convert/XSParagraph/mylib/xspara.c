@@ -6,7 +6,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <locale.h>
+#ifndef _WIN32
 #include <langinfo.h>
+#endif
 #include <wchar.h>
 #include <wctype.h>
 
@@ -67,7 +69,118 @@ typedef struct {
 
 static PARAGRAPH state;
 
+#ifdef _WIN32
 
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#include <errno.h>
+
+char *
+w32_setlocale (int category, const char *value)
+{
+  if (_stricmp (value, "en_us.utf-8") != 0)
+    return NULL;
+
+  /* Switch to the Windows U.S. English locale with its default
+     codeset.  We will handle the non-ASCII text ourselves, so the
+     codeset is unimportant, and Windows doesn't support UTF-8 as the
+     codeset anyway.  */
+  return setlocale (category, "ENU");
+}
+#define setlocale(c,v)  w32_setlocale(c,v)
+
+size_t
+mbrlen (const char * __restrict__ mbs, size_t n, mbstate_t * __restrict__ ps)
+{
+  unsigned char byte1 = *mbs;
+
+  if (ps != NULL)
+    {
+      errno = ENOSYS;
+      return -1;
+    }
+
+  return
+    ((byte1 & 0x80) == 0) ? 1 : ((byte1 & 0x20) == 0) ? 2 :
+    ((byte1 & 0x10) == 0) ? 3 : 4;
+}
+
+/* Convert a UTF-8 encoded multibyte string to a wide character.  */
+size_t
+mbrtowc (wchar_t * __restrict__ pwc, const char * __restrict__ mbs, size_t n,
+	 mbstate_t * __restrict__ ps)
+{
+  if (mbs == NULL)
+    return 0;
+  else
+    {
+      wchar_t wc[2];
+      size_t n_utf16 = MultiByteToWideChar (CP_UTF8, MB_ERR_INVALID_CHARS,
+					    mbs, n, wc, 2);
+      if (n_utf16 == 0)
+	{
+	  errno = EILSEQ;
+	  return (size_t)-1;
+	}
+      if (ps != NULL)
+	{
+	  errno = ENOSYS;
+	  return (size_t)-1;
+	}
+      /* We don't support UTF-16 surrogates, because the calling code
+	 doesn't, and because character classification functions on
+	 Windows don't support anything beyond the BMP anyway.  So we
+	 return the first character of the surrogate pair and set
+	 errno.  */
+      if (n_utf16 > 1)
+	errno = ENOSYS;
+      if (pwc != NULL)
+	*pwc = wc[0];
+
+      return mbrlen (mbs, n, ps);
+    }
+}
+
+int
+iswspace (wint_t wc)
+{
+  /* See Unicode's Proplist.txt.  */
+  if ((wc >= 0x09 && wc <= 0x0D)
+      || wc == 0x20
+      || wc == 0x85
+      || wc == 0xA0
+      || wc == 0x1680
+      || (wc >= 0x2000 && wc <= 0x200A)
+      || wc == 0x2028
+      || wc == 0x2029
+      || wc == 0x202F
+      || wc == 0x205F
+      || wc == 0x3000)
+    return 1;
+
+  return 0;
+}
+
+/* FIXME: Provide a real implementation.  */
+int
+wcwidth (const wchar_t wc)
+{
+  return wc == 0 ? 0 : 1;
+}
+
+int
+iswupper (wint_t wc)
+{
+  WORD char_type;
+  BOOL status = GetStringTypeW (CT_CTYPE1, &wc, 1, &char_type);
+
+  if (!status || (char_type & C1_UPPER) == 0)
+    return 0;
+
+  return 1;
+}
+
+#endif
 
 void
 xspara_hello (void)

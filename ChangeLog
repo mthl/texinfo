@@ -1,3 +1,13 @@
+2015-07-11  Eli Zaretskii  <eliz@gnu.org>
+
+	* tp/Texinfo/Convert/XSParagraph/mylib/xspara.c [_WIN32]: Don't
+	include langinfo.h.
+	(w32_setlocale) [_WIN32]: A stub implementation for switching to a
+	en_US.UTF-8 locale.
+	(mbrlen, mbrtowc, iswspace, wcwidth, iswupper) [_WIN32]:
+	Implementations of these functions that support UTF-8 multibyte
+	sequences.
+
 2015-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/mylib/xspara.c 
