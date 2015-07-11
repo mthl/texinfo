@@ -1,3 +1,13 @@
+2015-07-11  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/pcterm.c (highvideo, normvideo) [_WIN32]: New functions.
+	(pc_begin_underline, pc_end_underline, pc_begin_standout)
+	(pc_end_standout): New functions.
+	(pc_initialize_terminal): Set up hooks for standout and underlined
+	text.
+	(top level) <xref_attr>: Declare.
+	(pc_initialize_terminal): Initialize xref_attr.
+
 2015-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/display.c (display_update_window_1): Better handling of 
