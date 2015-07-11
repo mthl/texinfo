@@ -1,3 +1,8 @@
+2015-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/mylib/xspara.c (hello): Use
+	locale from environment if it is suitable.
+
 2015-07-11  Eli Zaretskii  <eliz@gnu.org>
 
 	* tp/Texinfo/Convert/XSParagraph/mylib/xspara.c (xspara_add_text):

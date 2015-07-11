@@ -205,7 +205,10 @@ xspara_hello (void)
       || len >= 5 && !memcmp (".utf8", cur + len - 5, 5)
       || len >= 6 && !memcmp (".utf-8", cur + len - 6, 6)
       || len >= 5 && !memcmp (".UTF8", cur + len - 5, 5))
-    goto success; /* In a UTF-8 locale already. */
+    {
+      setlocale (LC_CTYPE, ""); /* Use the locale from the environment. */
+      goto success;
+    }
 
   /* Otherwise try altering the current locale name. */
   dot = strchr (cur, '.');
