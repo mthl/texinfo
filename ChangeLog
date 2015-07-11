@@ -1,7 +1,8 @@
 2015-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/XSParagraph.xs,
-	tp/Texinfo/Convert/XSParagraph/mylib/xspara.c: Add
+	tp/Texinfo/Convert/XSParagraph/mylib/xspara.c,
+	tp/Texinfo/Convert/XSParagraph/mylib/text.c: Add
 	an "#include <config.h>" line.
 	* tp/Texinfo/Convert/XSParagraph/configure.ac (AM_CPPFLAGS)
 	(XSParagraph_la_LIBADD): Refer to Gnulib headers and library.
