@@ -40,11 +40,12 @@ done
 #cmd="autoreconf --verbose --force --install --include=m4"
 
 # So instead:
+: ${LIBTOOLIZE=libtoolize}
 : ${ACLOCAL=aclocal}
 : ${AUTOHEADER=autoheader}
 : ${AUTOMAKE=automake}
 : ${AUTOCONF=autoconf}
-cmd="$ACLOCAL -I gnulib/m4 && $AUTOCONF && $AUTOHEADER && $AUTOMAKE"
+cmd="$LIBTOOLIZE && $ACLOCAL -I gnulib/m4 && $AUTOCONF && $AUTOHEADER && $AUTOMAKE"
 echo "  $cmd $*"
 $chicken eval $cmd "$@" || exit 1
 
