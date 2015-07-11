@@ -63,7 +63,7 @@ display_clear_display (DISPLAY_LINE **display)
 /* Non-zero if we didn't completely redisplay a window. */
 int display_was_interrupted_p = 0;
 
-/* Update the windows on the display. */
+/* Check each window on the screen, and update it if it needs updating. */
 void
 display_update_display (void)
 {
@@ -75,13 +75,12 @@ display_update_display (void)
   signal_block_winch ();
   display_was_interrupted_p = 0;
 
-  /* For every window in the list, check contents against the display. */
   for (win = windows; win; win = win->next)
     {
       /* Only re-display visible windows which need updating. */
-      if (((win->flags & W_WindowVisible) == 0) ||
-          ((win->flags & W_UpdateWindow) == 0) ||
-          (win->height == 0))
+      if ((win->flags & W_WindowVisible) == 0
+          || (win->flags & W_UpdateWindow) == 0
+          || win->height == 0)
         continue;
 
       display_update_one_window (win);
@@ -315,6 +314,10 @@ display_update_window_1 (WINDOW *win)
      a new line, and haven't seen a non-whitespace character yet. */
   int ref_leading_whitespace = 0;
 
+  int cur_line = win->pagetop;
+  int point_in_line = 0; /* Point is on the line being update. */
+  int ref_highlighted = 0;
+
   if (highlight_searches_p)
     matches = win->matches;
 
@@ -326,7 +329,7 @@ display_update_window_1 (WINDOW *win)
   if (matches)
     {
       match_index = 0;
-      decide_if_in_match (win->line_starts[win->pagetop], &in_match,
+      decide_if_in_match (win->line_starts[cur_line], &in_match,
                           matches, win->match_count, &match_index);
     }
 
@@ -335,7 +338,7 @@ display_update_window_1 (WINDOW *win)
   if (refs)
     {
       ref_index = 0;
-      decide_if_in_reference (win->line_starts[win->pagetop], &in_ref,
+      decide_if_in_reference (win->line_starts[cur_line], &in_ref,
                               refs, &ref_index);
     }
 
@@ -348,15 +351,27 @@ display_update_window_1 (WINDOW *win)
       terminal_goto_xy (0, win->first_row);
     }
 
+  if (win->point >= win->line_starts[cur_line]
+      && win->point < win->line_starts[cur_line + 1])
+    point_in_line = 1;
+  else
+    point_in_line = 0;
+
   if (in_ref)
     {
       terminal_begin_underline ();
       ref_seen_in_line = 1;
       terminal_goto_xy (0, win->first_row);
+      if (point_in_line)
+        {
+          point_in_line = 0;
+          terminal_begin_standout ();
+          ref_highlighted = 1;
+        }
     }
 
-  for (mbi_init (iter, start, 
-                 win->node->contents + win->node->nodelen - start);
+  for (mbi_init (iter, start, win->node->contents + win->node->nodelen - 
+                 start);
        mbi_avail (iter);
        mbi_advance (iter))
     {
@@ -384,6 +399,8 @@ display_update_window_1 (WINDOW *win)
         {
           ref_leading_whitespace = 0;
           terminal_begin_underline ();
+          if (ref_highlighted)
+            terminal_begin_standout ();
         }
 
       if (matches && match_index != win->match_count)
@@ -393,7 +410,7 @@ display_update_window_1 (WINDOW *win)
                               &in_match, matches, win->match_count,
                               &match_index);
 
-          if (was_in_match && !in_match)
+          if (was_in_match && !in_match && !ref_highlighted)
             {
               terminal_end_standout ();
             }
@@ -426,6 +443,11 @@ display_update_window_1 (WINDOW *win)
             {
               ref_leading_whitespace = 0;
               terminal_end_underline ();
+              if (ref_highlighted && !in_match)
+                {
+                  ref_highlighted = 0;
+                  terminal_end_standout ();
+                }
             }
           else if (!was_in_ref && in_ref)
             {
@@ -443,6 +465,19 @@ display_update_window_1 (WINDOW *win)
                     }
                 }
               terminal_begin_underline ();
+
+              /* Highlight the first reference in the line after the
+                 cursor.  This is a stronger condition than the code
+                 in info_follow_reference_this_line, which can follow
+                 a reference before the cursor if none appears after it.
+                 Additionally, we fail to highlight a reference if it is
+                 split across lines and the cursor isn't on the first line. */
+              if (point_in_line && win->point < refs[ref_index]->end)
+                {
+                  point_in_line = 0;
+                  terminal_begin_standout ();
+                  ref_highlighted = 1;
+                }
             }
         }
 
@@ -501,16 +536,27 @@ display_update_window_1 (WINDOW *win)
 
                   if (refs)
                     {
-                      if (in_ref)
-                        terminal_end_underline ();
-
                       /* Check if the next line starts in a match. */
                       decide_if_in_reference
                                    (mbi_cur_ptr (iter) - win->node->contents,
                                     &in_ref, refs, &ref_index);
+                      /* TODO: Something here? */
                     }
                 }
               fflush (stdout);
+            }
+
+          if (refs)
+            {
+              if (in_ref)
+                {
+                  /* Don't underline or highlight leading
+                     whitespace when a cross-reference is split
+                     across lines. */
+                  terminal_end_underline ();
+                  if (ref_highlighted && !in_match)
+                    terminal_end_standout ();
+                }
             }
 
           /* Set for next line. */
@@ -519,6 +565,13 @@ display_update_window_1 (WINDOW *win)
           ref_leading_whitespace = in_ref;
           terminal_end_underline ();
           ++pl_num;
+
+          cur_line++;
+          if (win->point >= win->line_starts[cur_line]
+              && win->point < win->line_starts[cur_line + 1])
+            point_in_line = 1;
+          else
+            point_in_line = 0;
 
           pl_chars = 0;
           text_buffer_reset (&tb_printed_line);

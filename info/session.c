@@ -27,6 +27,7 @@
 #include "search.h"
 #include "footnotes.h"
 #include "man.h"
+#include "variables.h"
 
 #ifdef HAVE_SYS_IOCTL_H
 #include <sys/ioctl.h>
@@ -235,6 +236,11 @@ info_read_and_dispatch (void)
     {
       if (!info_any_buffered_input_p ())
         display_update_display ();
+
+      /* Some redisplay might be necessary if the cursor has moved and
+         a different reference (or no reference) has to be highlighted. */
+      if (xref_rendition_p)
+        display_update_one_window (active_window);
 
       display_cursor_at_point (active_window);
 

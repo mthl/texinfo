@@ -1,5 +1,13 @@
 2015-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/display.c (display_update_window_1) <xref-rendition=1>:
+	Highlight the reference that we expect will be followed if the 
+	user presses return.
+	* info/session.c (read_and_dispatch) <xref-rendition=On>: Call
+	display_update_one_window after each user command.
+
+2015-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/variables.c (info_variables): New user variable 
 	'xref-rendition'.
 	* info/display.c (xref_rendition_p): New variable.
