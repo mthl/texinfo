@@ -1,5 +1,11 @@
 2015-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/mylib/xspara.c 
+	(xspara_add_text) <space doubling in @w>: Change a call to 
+	iswspace to a call to isspace.  Reported by Eli Zaretskii.
+
+2015-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/mylib/xspara.c (xspara_hello): 
 	If setting "en_US.UTF-8" as the locale fails, try basing a 
 	locale name on the current locale name.

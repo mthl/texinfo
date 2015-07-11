@@ -691,7 +691,7 @@ xspara_add_text (char *text)
 
                        */
 
-                      if (ptr == state.word.text + 1 || !iswspace(ptr[-2]))
+                      if (ptr == state.word.text + 1 || !isspace(ptr[-2]))
                         {
                           text_append_n (&state.word, " ", 1);
                         }
