@@ -2249,7 +2249,8 @@ info_menu_or_ref_item (WINDOW *window, int menu_item, int xref, int ask_p)
 
           /* If a reference contains the point, prefer it.  Otherwise prefer a
              reference after the cursor to one before it. */
-          if (refs[which]->start >= window->point)
+          if (window->point >= refs[which]->start
+              && window->point < refs[which]->end)
             break;
         }
     }

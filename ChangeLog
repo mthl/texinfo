@@ -6,6 +6,9 @@
 	* info/session.c (read_and_dispatch) <xref-rendition=On>: Call
 	display_update_one_window after each user command.
 
+	* info/session.c (info_menu_or_ref_item): Fix condition for 
+	multiple cross-references in one line.
+
 2015-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/variables.c (info_variables): New user variable 
