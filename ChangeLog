@@ -6,6 +6,9 @@
 	* tp/Texinfo/Convert/XSParagraph/configure.ac (AM_CPPFLAGS)
 	(XSParagraph_la_LIBADD): Refer to Gnulib headers and library.
 
+	* install-info/Makefile.am: Change Gnulib library file from 
+	libgnu.a to libgnu.la.
+
 2015-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/Makefile.am (LDADD): Change Gnulib library file from 
