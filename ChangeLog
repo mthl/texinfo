@@ -1,6 +1,7 @@
 2015-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* run gnulib-tool --add-import --libtool at top level
+	* configure.ac (LT_INIT): Use.
 
 2015-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
 

@@ -82,6 +82,8 @@ gl_EARLY
 # Rest of Gnulib.
 gl_INIT
 
+LT_INIT
+
 # help2man to generate man pages.
 AM_MISSING_PROG(HELP2MAN, help2man)
 
