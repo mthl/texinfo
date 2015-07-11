@@ -1,3 +1,9 @@
+2015-07-11  Eli Zaretskii  <eliz@gnu.org>
+
+	* tp/Texinfo/Convert/XSParagraph/mylib/xspara.c (xspara_add_text):
+	Use dTHX to avoid perl error about undefined "my_perl" due to
+	Perl's "free" being used.
+
 2015-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* run gnulib-tool --add-import --libtool at top level

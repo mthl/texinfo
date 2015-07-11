@@ -747,6 +747,7 @@ xspara_add_text (char *text)
   wchar_t wc;
   size_t char_len;
   TEXT result;
+  dTHX;
 
   text_init (&result);
 
