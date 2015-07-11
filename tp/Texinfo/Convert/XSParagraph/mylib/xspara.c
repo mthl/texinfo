@@ -72,15 +72,51 @@ static PARAGRAPH state;
 void
 xspara_hello (void)
 {
+  char *utf8_locale = 0;
+  int len;
+  char *cur;
+  char *dot;
+
   //puts ("initializing XSParagraph");
-  if (!setlocale (LC_CTYPE, "en_US.UTF-8")
-      && !setlocale (LC_CTYPE, "en_US.utf8"))
+  if (setlocale (LC_CTYPE, "en_US.UTF-8")
+      || setlocale (LC_CTYPE, "en_US.utf8"))
+    goto success;
+
+  cur = setlocale (LC_CTYPE, 0); /* Name of current locale. */
+  if (!cur)
+    goto failure;
+  len = strlen (cur);
+  if (len >= 6 && !memcmp (".UTF-8", cur + len - 6, 6)
+      || len >= 5 && !memcmp (".utf8", cur + len - 5, 5)
+      || len >= 6 && !memcmp (".utf-8", cur + len - 6, 6)
+      || len >= 5 && !memcmp (".UTF8", cur + len - 5, 5))
+    goto success; /* In a UTF-8 locale already. */
+
+  /* Otherwise try altering the current locale name. */
+  dot = strchr (cur, '.');
+  if (!dot)
+    dot = cur + len;
+  utf8_locale = malloc (len + 6 + 1); /* enough to add ".UTF-8" to end */
+  memcpy (utf8_locale, cur, dot - cur);
+  dot = utf8_locale + (dot - cur);
+  memcpy (dot, ".UTF-8", 7);
+  if (setlocale (LC_CTYPE, utf8_locale))
+    goto success;
+
+  memcpy (dot, ".utf8", 6);
+  if (setlocale (LC_CTYPE, utf8_locale))
+    goto success;
+      
+  if (1)
     {
+failure:
       fprintf (stderr, "Couldn't set UTF-8 character type in locale.\n");
       abort ();
     }
   else
     {
+success: ;
+      free (utf8_locale);
       /*
       fprintf (stderr, "tried to set LC_CTYPE to UTF-8.\n");
       fprintf (stderr, "character encoding is: %s\n",

@@ -1,3 +1,9 @@
+2015-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/mylib/xspara.c (xspara_hello): 
+	If setting "en_US.UTF-8" as the locale fails, try basing a 
+	locale name on the current locale name.
+
 2015-07-11  Eli Zaretskii  <eliz@gnu.org>
 
 	* info/pcterm.c (highvideo, normvideo) [_WIN32]: New functions.
