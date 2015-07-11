@@ -190,6 +190,8 @@ xspara_hello (void)
   char *cur;
   char *dot;
 
+  dTHX;
+
   //puts ("initializing XSParagraph");
   if (setlocale (LC_CTYPE, "en_US.UTF-8")
       || setlocale (LC_CTYPE, "en_US.utf8"))

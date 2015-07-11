@@ -1,3 +1,9 @@
+2015-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/mylib/xspara.c (xspara_hello):
+	Use dTHX to avoid perl error about undefined "my_perl" due to 
+	Perl's "malloc" being used.
+	
 2015-07-11  Eli Zaretskii  <eliz@gnu.org>
 
 	* tp/Texinfo/Convert/XSParagraph/mylib/xspara.c [_WIN32]: Don't
