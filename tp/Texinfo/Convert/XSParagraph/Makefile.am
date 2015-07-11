@@ -16,6 +16,20 @@
 
 AUTOMAKE_OPTIONS=foreign subdir-objects
 
+######################## Gnulib ################################
+
+real_topsrcdir=$(top_srcdir)/../../../..
+real_topbuilddir=$(top_builddir)/../../../..
+AM_CPPFLAGS =                                   \
+  -I$(real_topsrcdir)                           \
+  -I$(real_topsrcdir)/gnulib/lib                \
+  -I$(real_topbuilddir)/gnulib/lib
+
+XSParagraph_la_LIBADD = $(real_topbuilddir)/gnulib/lib/libgnu.la \
+	                $(TERMLIBS) $(LIBINTL) $(LIBICONV)
+
+################### End Gnulib section #########################
+
 modulesdir = $(pkglibexecdir)/Texinfo
 dist_modules_DATA = lib/XSParagraph.pm
 

@@ -1,5 +1,13 @@
 2015-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.xs,
+	tp/Texinfo/Convert/XSParagraph/mylib/xspara.c: Add
+	an "#include <config.h>" line.
+	* tp/Texinfo/Convert/XSParagraph/configure.ac (AM_CPPFLAGS)
+	(XSParagraph_la_LIBADD): Refer to Gnulib headers and library.
+
+2015-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/Makefile.am (LDADD): Change Gnulib library file from 
 	libgnu.a to libgnu.la.
 	* man/Makefile.am (mi_perl5lib_path): Look for produced library 

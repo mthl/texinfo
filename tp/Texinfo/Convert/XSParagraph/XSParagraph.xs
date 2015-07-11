@@ -1,3 +1,6 @@
+#include <config.h>
+/* Gnulib needs the config.h from the top-level directory. */
+
 #define PERL_NO_GET_CONTEXT
 #include "EXTERN.h"
 #include "perl.h"
