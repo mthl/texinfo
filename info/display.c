@@ -362,9 +362,12 @@ display_update_window_1 (WINDOW *win)
       terminal_begin_underline ();
       ref_seen_in_line = 1;
       terminal_goto_xy (0, win->first_row);
-      point_in_line = 0; /* Don't try to highlight a later reference. */
-      terminal_begin_standout ();
-      ref_highlighted = 1;
+      if (point_in_line)
+        {
+          point_in_line = 0; /* Don't try to highlight a later reference. */
+          terminal_begin_standout ();
+          ref_highlighted = 1;
+        }
     }
 
   for (mbi_init (iter, start, win->node->contents + win->node->nodelen - 
