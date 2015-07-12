@@ -1,9 +1,13 @@
 AC_INIT([texinfo], [6.0])
 AM_INIT_AUTOMAKE
-LT_INIT
 AC_CONFIG_MACRO_DIR([m4])
 
 AC_PROG_CC
+
+gl_EARLY
+gl_INIT
+
+LT_INIT
 
 AC_DEFUN([lookup_perl_conf],
          [echo Getting Perl conf value $1
@@ -37,5 +41,6 @@ lookup_perl_conf([privlibexp])
 AC_PATH_PROG([PERL], [perl])
 AC_PATH_PROG([XSUBPP], [xsubpp])
 
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile lib/Makefile])
+AC_CONFIG_HEADERS([config.h:config.in])
 AC_OUTPUT

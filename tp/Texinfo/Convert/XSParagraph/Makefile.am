@@ -16,24 +16,30 @@
 
 AUTOMAKE_OPTIONS=foreign subdir-objects
 
+EXTRA_DIST=
+
 ######################## Gnulib ################################
 
-real_topsrcdir=$(top_srcdir)/../../../..
-real_topbuilddir=$(top_builddir)/../../../..
-AM_CPPFLAGS =                                   \
-  -I$(real_topsrcdir)                           \
-  -I$(real_topsrcdir)/gnulib/lib                \
-  -I$(real_topbuilddir)/gnulib/lib
+AM_CPPFLAGS =                \
+  -I$(srcdir)                \
+  -I$(srcdir)/gnulib/lib     \
+  -I$(builddir)/gnulib/lib
 
-XSParagraph_la_LIBADD = $(real_topbuilddir)/gnulib/lib/libgnu.la \
+XSParagraph_la_LIBADD = $(builddir)/lib/libgnu.la \
 	                $(TERMLIBS) $(LIBINTL) $(LIBICONV)
+
+ACLOCAL_AMFLAGS = -I m4
+
+SUBDIRS=lib
+
+EXTRA_DIST+=m4/gnulib-cache.m4
 
 ################### End Gnulib section #########################
 
 modulesdir = $(pkglibexecdir)/Texinfo
 dist_modules_DATA = lib/XSParagraph.pm
 
-EXTRA_DIST = fetch_conf.pl
+EXTRA_DIST += fetch_conf.pl
 
 # TODO: Rules for installing
 

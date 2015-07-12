@@ -22,7 +22,7 @@ DISTCLEANFILES = texinfo.info* info*.info*
 # cross-compiling.
 tpdir = $(top_srcdir)/tp
 tplibdir = $(tpdir)/maintain/lib
-MAKEINFO = $(PERL) -I "$(tpdir)" -I "$(tplibdir)/libintl-perl/lib" -I "$(tpdir)/Texinfo/Convert/XSParagraph/lib" -I "$(tpdir)/Texinfo/Convert/XSParagraph" -I "$(tplibdir)/Unicode-EastAsianWidth/lib" -I "$(tplibdir)/Text-Unidecode/lib" $(top_builddir)/tp/texi2any
+MAKEINFO = $(PERL) -I "$(tpdir)" -I "$(tplibdir)/libintl-perl/lib" -I "$(tpdir)/Texinfo/Convert/XSParagraph/lib" -I "../tp/Texinfo/Convert/XSParagraph" -I "$(tplibdir)/Unicode-EastAsianWidth/lib" -I "$(tplibdir)/Text-Unidecode/lib" $(top_builddir)/tp/texi2any
 
 # We'd also like to use something like this, but Automake calls
 # "install-info" directly.
