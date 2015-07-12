@@ -5,6 +5,7 @@
 	* info/Makefile.am,
 	install-info/Makefile.am: Change Gnulib library file from 
 	libgnu.la to libgnu.a.
+	* autogen.sh: Remove use of libtoolize.
 
 	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Refer to gnulib 
 	files in subdirectory.
