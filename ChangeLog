@@ -1,5 +1,10 @@
 2015-07-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/display.c (display_update_window_1): Sometimes highlight 
+	a reference when the point is after its end.
+
+2015-07-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* run gnulib-tool --add-import --no-libtool
 	* configure.ac (LT_INIT): Remove.
 	* info/Makefile.am,

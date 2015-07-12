@@ -359,19 +359,13 @@ display_update_window_1 (WINDOW *win)
 
   if (in_ref)
     {
-      terminal_begin_underline ();
+      ref_leading_whitespace = 1;
       ref_seen_in_line = 1;
       terminal_goto_xy (0, win->first_row);
-      if (point_in_line)
-        {
-          point_in_line = 0; /* Don't try to highlight a later reference. */
-          terminal_begin_standout ();
-          ref_highlighted = 1;
-        }
     }
 
-  for (mbi_init (iter, start, win->node->contents + win->node->nodelen - 
-                 start);
+  for (mbi_init (iter, start,
+                 win->node->contents + win->node->nodelen - start);
        mbi_avail (iter);
        mbi_advance (iter))
     {
@@ -387,24 +381,15 @@ display_update_window_1 (WINDOW *win)
       if (pl_num == win->height)
         break;
 
-      /* Check if this line of the window is off the screen.  This might happen
-         if the screen was resized very small. */
+      /* Check if this line of the window is off the screen.  This might 
+         happen if the screen was resized very small. */
       if (win->first_row + pl_num >= screenheight)
         break;
 
-      rep = printed_representation (&iter, &delim, pl_chars, &pchars, &pbytes);
+      rep = printed_representation (&iter, &delim, pl_chars,
+                                    &pchars, &pbytes);
 
       cur_ptr = mbi_cur_ptr (iter);
-      if (ref_leading_whitespace && !strchr (" \t", *cur_ptr))
-        {
-          ref_leading_whitespace = 0;
-          terminal_begin_underline ();
-          if (ref_highlighted)
-            {
-              terminal_begin_standout ();
-              point_in_line = 0;
-            }
-        }
 
       if (matches && match_index != win->match_count)
         {
@@ -452,7 +437,7 @@ display_update_window_1 (WINDOW *win)
                   terminal_end_standout ();
                 }
             }
-          else if (!was_in_ref && in_ref)
+          else if (!was_in_ref && in_ref || ref_leading_whitespace)
             {
               if (!ref_seen_in_line)
                 {
@@ -467,25 +452,57 @@ display_update_window_1 (WINDOW *win)
                                          text_buffer_off (&tb_printed_line));
                     }
                 }
-              terminal_begin_underline ();
 
-              /* Highlight the first reference in the line after the
-                 cursor.  This is a stronger condition than the code
-                 in info_follow_reference_this_line, which can follow
-                 a reference before the cursor if none appears after it. */
               if (point_in_line && win->point < refs[ref_index]->end)
                 {
+                  /* The reference in is the part of the line after
+                     the cursor, or the reference contains the cursor. */
                   point_in_line = 0;
-                  terminal_begin_standout ();
+                  ref_highlighted = 1;
+                }
+              else if (point_in_line
+                       && (!refs[ref_index + 1]
+                           || refs[ref_index + 1]->start
+                              >= win->line_starts[cur_line + 1]))
+                {
+                  /* The reference label is before the cursor in
+                     the current line and none occurs after it in
+                     the current line. */
+                  point_in_line = 0;
                   ref_highlighted = 1;
                 }
               else if (win->point >= refs[ref_index]->start
                        && win->point < refs[ref_index]->end)
                 {
-                  /* This will be the case if the point is in a 
-                     cross-reference, but not in the current line. */
-                  terminal_begin_standout ();
+                  /* The point is in a cross-reference, but not in the 
+                     current line. */
                   ref_highlighted = 1;
+                }
+              else if (win->point >= win->line_starts[cur_line + 1]
+                       && win->point < win->line_starts[cur_line + 2]
+                       && refs[ref_index]->end
+                          >= win->line_starts[cur_line + 1]
+                       && (!refs[ref_index + 1]
+                           || refs[ref_index + 1]->start
+                              >= win->line_starts[cur_line + 2]))
+                {
+                  /* Point is in the next line, not inside this reference,
+                     but this reference continues onto the next line and
+                     no other reference follows it in the line. */
+                  ref_highlighted = 1;
+                }
+
+              if (ref_leading_whitespace && !strchr (" \t", *cur_ptr))
+                ref_leading_whitespace = 0;
+
+              if (!ref_leading_whitespace)
+                {
+                  terminal_begin_underline ();
+                  if (ref_highlighted)
+                    {
+                      terminal_begin_standout ();
+                      point_in_line = 0;
+                    }
                 }
             }
         }
