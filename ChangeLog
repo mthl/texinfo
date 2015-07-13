@@ -1,3 +1,37 @@
+2015-07-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.h (TAG): New field "cache".  Remove nodelen field.  
+	All uses of TAG.nodelen changed to use TAG.cache.nodelen.
+	* info/nodes.c (info_node_of_tag): Save information about node,
+	like contents and reference list, in cache field.
+	(find_node_from_tag): If reseting tag table entry, free and 
+	clear contents and reference lists.  Use N_IsInternal flag 
+	instead of N_WasRewritten to decide if a node has independent 
+	data.
+	(get_nodes_of_info_file, build_tag_table): Function renamed.
+
+	* info/window.c (text_buffer_to_node): Set N_IsInternal flag on node.
+	* info/dir.c (build_dir_node): Don't set N_IsInternal flag on 
+	node.
+	(get_dir_node): Don't do a deep copy of dir node.
+	* info/indices.c (info_indices_of_file_buffer): Don't free 
+	reference list of node returned from info_node_of_tag.
+	(info_index_apropos): Free contents of apropos node if scanning 
+	it changes it.  Don't set N_WasRewritten flag.
+	* info/man.c (get_manpage_node): Don't set N_IsInternal flag for 
+	man page node.  Don't return a new reference list each time the 
+	same man page is requested.
+	* info/window.c (test_buffer_to_node): Set N_IsInternal on 
+	returned node.
+
+	* info/session.c (info_split_window): Don't duplicate fields in 
+	copied node, as they are recorded in the tag table.
+	(free_history_node): Only free data in node if node is internal.
+	(info_select_reference): Copy fields of argument.
+
+	* info/window.c (calculate_line_starts): Have one line start at 
+	end of node.
+
 2015-07-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/display.c (display_update_window_1): Sometimes highlight 

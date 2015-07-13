@@ -104,11 +104,8 @@ typedef struct {
   char *nodename;               /* The node pointed to by this tag. */
   long nodestart;               /* The value read from the tag table. */
   long nodestart_adjusted;
-  size_t nodelen;               /* The length of this node.
-                                   nodelen == -1 if length is unknown
-                                   because node hasn't been read yet.
-                                   nodelen == 0 if it is an anchor. */
   int flags;                    /* Same as NODE.flags. */
+  NODE cache;
 } TAG;
 
 /* The following structure is used to remember information about the contents

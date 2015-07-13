@@ -871,13 +871,13 @@ show_error_node (char *error)
 void
 free_history_node (NODE *n)
 {
-  if (!n)
-    return;
-  if (n->flags & N_WasRewritten)
-    free (n->contents);
-  info_free_references (n->references);
-  free (n->next); free (n->prev); free (n->up);
-  free (n->nodename);
+  if (n && (n->flags & N_IsInternal))
+    {
+      free (n->contents);
+      info_free_references (n->references);
+      free (n->next); free (n->prev); free (n->up);
+      free (n->nodename);
+    }
   free (n);
 }
 
@@ -1840,19 +1840,22 @@ DECLARE_INFO_COMMAND (info_split_window, _("Split the current window"))
       NODE *copy = xmalloc (sizeof (NODE));
       *copy = *window->node; /* Field-by-field copy of structure. */
 
-      /* This allows us to free nodes without checking if these fields
-         are shared by NODE objects in other windows. */
-      copy->references = info_copy_references (copy->references);
-      copy->nodename = xstrdup (copy->nodename);
+      if (copy->flags & N_IsInternal)
+        {
+          /* This allows us to free nodes without checking if these fields
+             are shared by NODE objects in other windows.  For non-internal
+             nodes, this data is stored in the tag table. */
+          copy->references = info_copy_references (copy->references);
+          copy->nodename = xstrdup (copy->nodename);
 
-      if (copy->up)
-        copy->up = xstrdup (copy->up);
-      if (copy->next)
-        copy->next = xstrdup (copy->next);
-      if (copy->prev)
-        copy->prev = xstrdup (copy->prev);
-      if (copy->flags & N_WasRewritten)
-        copy->contents = xstrdup (copy->contents);
+          if (copy->up)
+            copy->up = xstrdup (copy->up);
+          if (copy->next)
+            copy->next = xstrdup (copy->next);
+          if (copy->prev)
+            copy->prev = xstrdup (copy->prev);
+          copy->contents = xstrdup (copy->contents);
+        }
 
       info_set_node_of_window (split, copy);
       /* Make sure point still appears in the active window. */
@@ -1992,8 +1995,16 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
   NODE *node;
   char *file_system_error = NULL;
 
-  node = info_get_node_with_defaults (entry->filename, entry->nodename,
-                                      window->node);
+  /* We need to copy everything from entry because the call to 
+     info_get_node_with_defaults can free it if it came from
+     the tag table of a file. */
+  char *filename = entry->filename;
+  char *nodename = entry->nodename;
+  char *label = entry->label;
+  int line_number = entry->line_number;
+
+  /* problem here: this call can free 'entry' if the tag table is rewritten. */
+  node = info_get_node_with_defaults (filename, nodename, window->node);
 
   /* Try something a little weird.  If the node couldn't be found, and the
      reference was of the form "foo::", see if the entry->label can be found
@@ -2003,13 +2014,12 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
       if (info_recent_file_error)
         file_system_error = xstrdup (info_recent_file_error);
 
-      if (entry->nodename
-          && entry->label && (strcmp (entry->nodename, entry->label) == 0))
+      if (nodename && label && !strcmp (nodename, label))
         {
           free (file_system_error);
           file_system_error = NULL;
 
-          node = info_get_node (entry->label, "Top");
+          node = info_get_node (label, "Top");
           if (!node && info_recent_file_error)
             file_system_error = xstrdup (info_recent_file_error);
         }
@@ -2023,8 +2033,7 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
           free (file_system_error);
         }
       else
-        info_error (msg_cant_find_node,
-                    entry->nodename ? entry->nodename : "Top");
+        info_error (msg_cant_find_node, nodename ? nodename : "Top");
       return 0;
     }
 
@@ -2048,10 +2057,10 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
         }
   info_set_node_of_window (window, node);
 
-  if (entry->line_number > 0)
+  if (line_number > 0)
     {
       /* Go to the line given by entry->line_number. */
-      long line = window_log_to_phys_line (window, entry->line_number - 1);
+      long line = window_log_to_phys_line (window, line_number - 1);
 
       if (line >= 0 && line < window->line_count)
         {
@@ -2220,9 +2229,6 @@ info_menu_or_ref_item (WINDOW *window, int menu_item, int xref, int ask_p)
   else /* !menu_item && !xref */
     return;
 
-  /* Default the selected reference to the one which is on the line that
-     point is in. */
-
   line_no = window_line_of_point (window);
   this_line = window->line_starts[line_no];
   if (window->line_starts[line_no + 1])
@@ -2230,6 +2236,8 @@ info_menu_or_ref_item (WINDOW *window, int menu_item, int xref, int ask_p)
   else
     next_line = window->node->nodelen;
 
+  /* Look for a reference in the current line, preferring one that
+     the point is in, otherwise preferring after the point. */
   for (which = 0; refs[which]; which++)
     {
       /* If we got to the next line without finding an eligible reference. */
@@ -2257,7 +2265,6 @@ info_menu_or_ref_item (WINDOW *window, int menu_item, int xref, int ask_p)
   if (closest != -1)
     defentry = refs[closest];
 
-  /* If we are going to ask the user a question, do it now. */
   if (ask_p)
     {
       char *prompt;
@@ -2918,7 +2925,7 @@ DECLARE_INFO_COMMAND (info_last_node, _("Select the last node in this file"))
       if (count == 0 || (count == 1 && !info_explicit_arg))
         count = -1;
       for (i = 0; count && fb->tags[i]; i++)
-        if (fb->tags[i]->nodelen != 0) /* don't count anchor tags */
+        if (fb->tags[i]->cache.nodelen != 0) /* don't count anchor tags */
           {
             count--;
             last_node_tag_idx = i;
@@ -2951,7 +2958,7 @@ DECLARE_INFO_COMMAND (info_first_node, _("Select the first node in this file"))
       int last_node_tag_idx = -1;
 
       for (i = 0; count && fb->tags[i]; i++)
-        if (fb->tags[i]->nodelen != 0) /* don't count anchor tags */
+        if (fb->tags[i]->cache.nodelen != 0) /* don't count anchor tags */
           {
             count--;
             last_node_tag_idx = i;
@@ -4073,7 +4080,7 @@ info_search_internal (char *string, WINDOW *window,
             }
           
           tag = file_buffer->tags[i];
-          if (tag->nodelen != 0)
+          if (tag->cache.nodelen != 0)
             break;
         }
 
@@ -4115,7 +4122,7 @@ info_search_internal (char *string, WINDOW *window,
         }
 
       if (dir < 0)
-        start = tag->nodelen;
+        start = tag->cache.nodelen;
       else
         start = 0;
 

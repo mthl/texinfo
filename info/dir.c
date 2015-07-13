@@ -53,11 +53,6 @@ get_dir_node (void)
   node = xmalloc (sizeof (NODE));
   *node = *dir_node;
 
-  /* Allow the node to be passed to free_history_node. */
-  if (node->flags & N_WasRewritten)
-    node->flags &= ~N_WasRewritten;
-  node->references = info_copy_references (node->references);
-  node->nodename = xstrdup (node->nodename);
   return node;
 }
 
@@ -143,10 +138,8 @@ build_dir_node (void)
         }
     }
 
-  {
-    node->flags |= (N_IsDir | N_IsInternal);
-    scan_node_contents (node, 0, 0);
-  }
+  node->flags |= N_IsDir;
+  scan_node_contents (node, 0, 0);
   return node;
 }
 
@@ -311,5 +304,4 @@ dir_entry_of_infodir (char *label, char *searchdir)
     }
   return 0;
 }
-
 

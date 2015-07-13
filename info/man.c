@@ -79,7 +79,7 @@ get_manpage_node (char *pagename)
       node = info_create_node ();
       node->fullpath = MANPAGE_FILE_BUFFER_NAME;
       node->nodename = xstrdup (pagename);
-      node->flags |= (N_HasTagsTable | N_IsManPage | N_IsInternal);
+      node->flags |= N_HasTagsTable | N_IsManPage;
 
       /* Save this node. */
       add_pointer_to_array (node, manpage_node_index,
@@ -123,13 +123,12 @@ get_manpage_node (char *pagename)
         }
 
       node->body_start = strcspn (node->contents, "\n");
+      node->references = xrefs_of_manpage (node);
+      node->up = "(dir)";
     }
 
   node2 = xmalloc (sizeof (NODE));
   *node2 = *node;
-  node2->references = xrefs_of_manpage (node2);
-  node2->nodename = xstrdup (pagename);
-  node2->up = xstrdup ("(dir)");
   return node2;
 }
 

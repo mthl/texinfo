@@ -1146,6 +1146,7 @@ text_buffer_to_node (struct text_buffer *tb)
   text_buffer_add_char (tb, '\0');
 
   node->contents = text_buffer_base (tb);
+  node->flags |= N_IsInternal;
   return node;
 }
 
@@ -1246,7 +1247,11 @@ calculate_line_starts (WINDOW *win)
     }
 
   if (pl_chars)
-    collect_line_starts (win, ll_num, pl_start);
+    collect_line_starts (win, ll_num++, pl_start);
+
+  /* Have one line start at the end of the node. */
+  collect_line_starts (win, ll_num, mbi_cur_ptr (iter) - win->node->contents);
+  win->line_count--;
 
   /* Finally, initialize the line map for the current line. */
   window_line_map_init (win);

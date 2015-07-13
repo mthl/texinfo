@@ -84,7 +84,7 @@ typedef struct window_struct
   long *line_starts;    /* Offsets of printed line starts in node->contents.*/
   long *log_line_no;    /* Number of logical line corresponding to each
                            physical one. */
-  long line_count;      /* Number of elements in LINE_STARTS and LOG_LINE_NO.*/
+  long line_count;      /* Number of printed lines in node. */
   size_t line_slots;    /* Allocated space in LINE_STARTS and LOG_LINE_NO. */
 
   int flags;            /* See below for details. */
