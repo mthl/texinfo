@@ -1611,8 +1611,9 @@ forward_to_info_syntax (char *contents)
 
    If FB is non-null, it is the file containing the node, and TAG_PTR is an 
    offset into FB->tags.  If the node contents are rewritten, adjust anchors
-   that occur in the node. */
-
+   that occur in the node and store adjusted value as TAG->nodestart_adjusted, 
+   otherwise simply copy TAG->nodestart to TAG->nodestart_adjusted for each 
+   anchor in the node. */
 void
 scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
 {
@@ -1748,6 +1749,16 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
          written.  Subtracting 1 gives the offset of our terminating
          null, that is, the length. */
       node->nodelen = text_buffer_off (&output_buf) - 1;
+    }
+  else if (fb && tag_ptr)
+    {
+      /* Set nodestart_adjusted for all of the anchors in this node. */
+      tag_ptr++;
+      while (*tag_ptr && (*tag_ptr)->cache.nodelen == 0)
+        {
+          (*tag_ptr)->nodestart_adjusted = (*tag_ptr)->nodestart;
+          tag_ptr++;
+        }
     }
 }
 

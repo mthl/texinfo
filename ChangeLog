@@ -1,5 +1,12 @@
 2015-07-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (scan_node_contents): Always set 
+	nodestart_adjusted for anchors in a node, whether rewriting the 
+	node's contents or not.  Failure to follow a cross-reference to 
+	an anchor reported by Ludovic Courtes.
+
+2015-07-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.h (TAG): New field "cache".  Remove nodelen field.  
 	All uses of TAG.nodelen changed to use TAG.cache.nodelen.
 	* info/nodes.c (info_node_of_tag): Save information about node,
