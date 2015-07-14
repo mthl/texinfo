@@ -128,6 +128,7 @@ TESTS = \
 	t/window-split-dir.sh \
 	t/last-node-not-top-level.sh \
 	t/adjust-anchors.sh \
+	t/xref-to-anchor.sh \
 	t/search-after-tag.sh \
 	t/split-file-menu.sh \
 	t/index.sh \

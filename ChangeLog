@@ -1,5 +1,9 @@
 2015-07-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/xref-to-anchor.sh: New test.
+
+2015-07-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (scan_node_contents): Always set 
 	nodestart_adjusted for anchors in a node, whether rewriting the 
 	node's contents or not.  Failure to follow a cross-reference to 
