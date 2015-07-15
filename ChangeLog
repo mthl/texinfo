@@ -1,5 +1,9 @@
 2015-07-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/dir-entry-to-subdir.sh: New test.
+
+2015-07-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/window-split-dir.sh: Check exit status of grep.
 
 2015-07-14  Gavin Smith  <gavinsmith0123@gmail.com>

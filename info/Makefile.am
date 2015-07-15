@@ -108,6 +108,7 @@ TESTS = \
 	t/dir-menus-sloppily.sh \
 	t/where-dir-file.sh \
 	t/dir-dangling-entry.sh \
+	t/dir-entry-to-subdir.sh \
 	t/spec-file-node.sh \
 	t/spec-no-node.sh \
 	t/spec-menu.sh \
@@ -163,7 +164,8 @@ XFAIL_TESTS = \
 	t/quoted-target.sh \
 	t/quoted-label-and-target.sh \
 	t/goto-quoted.sh \
-	t/next-quoted.sh
+	t/next-quoted.sh \
+	t/dir-entry-to-subdir.sh
 
 EXTRA_DIST += $(TESTS) $(XFAIL_TESTS) \
   t/README t/infodir \
