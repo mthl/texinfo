@@ -19,7 +19,7 @@ srcdir=${srcdir:-.}
 . $t/Init-inter.inc
 
 # Follow a dir entry to a file in a subdirectory of infodir
-run_ginfo -f subdir
+run_ginfo subdir
 printf 'Dq' >$PTY_TYPE
 . $t/Timeout-test.inc
 
