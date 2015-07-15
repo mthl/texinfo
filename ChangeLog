@@ -1,4 +1,8 @@
-2015-07-13  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-07-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/window-split-dir.sh: Check exit status of grep.
+
+2015-07-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/xref-to-anchor.sh: New test.
 
