@@ -558,7 +558,8 @@ info_find_file (char *filename)
   int is_fullpath;
   
   /* If full path to the file has been given, we must find it exactly. */
-  is_fullpath = IS_ABSOLUTE (filename) || HAS_SLASH (filename);
+  is_fullpath = IS_ABSOLUTE (filename)
+                || filename[0] == '.' && IS_SLASH(filename[1]);
 
   /* First try to find the file in our list of already loaded files. */
   if (info_loaded_files)

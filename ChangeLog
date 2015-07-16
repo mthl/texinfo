@@ -1,3 +1,19 @@
+2015-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (info_find_file): If filename has slash, look for
+	it in search path if it does not begin "./".
+	* info/filesys.c (info_find_fullpath): Don't look for a filename 
+	beginning "./" in the search path, but otherwise look for the 
+	filename in the search path even if it contains a slash.
+	(info_file_find_next_in_path): Prefix returned path with "./" if 
+	it is relative to the current directory.
+	(info_add_extension): Allow second argument to be null.
+
+	* info/info.c (main) <--file or slash in argument>: If argument 
+	not an absolute path, prefix it with "./".  Call 
+	info_add_extension instead of info_find_fullpath for arguments 
+	other than simple filenames.
+
 2015-07-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/dir-entry-to-subdir.sh: New test.

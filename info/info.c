@@ -825,7 +825,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
      for a matching entry. */
   if (!user_filename && argv[0] && HAS_SLASH (argv[0]))
     {
-      user_filename = argv[0];
+      user_filename = xstrdup (argv[0]);
       argv++; /* Advance past first remaining argument. */
       argc--;
     }
@@ -873,7 +873,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       /* --all */
       if (!user_filename && argv[0])
         {
-          user_filename = argv[0];
+          user_filename = xstrdup (argv[0]);
           argv++; argc--;
         }
       else if (!user_filename)
@@ -904,9 +904,28 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       /* User used "--file". */
       if (user_filename)
         {
-          initial_file = info_find_fullpath (user_filename, 0);
-          if (!initial_file && filesys_error_number)
-            error = filesys_error_string (user_filename, filesys_error_number);
+          if (!IS_ABSOLUTE(user_filename) && HAS_SLASH(user_filename)
+              && !(user_filename[0] == '.' && IS_SLASH(user_filename[1])))
+            {
+              /* Prefix "./" to the filename to prevent a lookup
+                 in INFOPATH.  */
+              char *s;
+              asprintf (&s, "%s%s", "./", user_filename);
+              free (user_filename);
+              user_filename = s;
+            }
+          if (IS_ABSOLUTE(user_filename) || HAS_SLASH(user_filename))
+            initial_file = info_add_extension (0, user_filename, 0);
+          else
+            initial_file = info_find_fullpath (user_filename, 0);
+
+          if (!initial_file)
+            {
+              if (!filesys_error_number)
+                filesys_error_number = ENOENT;
+              error = filesys_error_string (user_filename, 
+                                            filesys_error_number);
+            }
           else
             add_pointer_to_array (info_new_reference (initial_file, "Top"),
                                   ref_index, ref_list, ref_slots, 2);

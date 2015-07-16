@@ -164,8 +164,7 @@ XFAIL_TESTS = \
 	t/quoted-target.sh \
 	t/quoted-label-and-target.sh \
 	t/goto-quoted.sh \
-	t/next-quoted.sh \
-	t/dir-entry-to-subdir.sh
+	t/next-quoted.sh
 
 EXTRA_DIST += $(TESTS) $(XFAIL_TESTS) \
   t/README t/infodir \
