@@ -1201,7 +1201,7 @@ find_node_from_tag (FILE_BUFFER *parent, FILE_BUFFER *fb, TAG *tag)
     {
       /* For split files, only restore the part of the tag table for
          the subfile. */
-      if (!strcmp ((*t)->filename, fb->fullpath))
+      if (!FILENAME_CMP ((*t)->filename, fb->fullpath))
         {
           NODE *n = &(*t)->cache;
           (*t)->nodestart_adjusted = -1;
@@ -1237,8 +1237,8 @@ find_node_from_tag (FILE_BUFFER *parent, FILE_BUFFER *fb, TAG *tag)
         {
           NODE *n = (*h)->node;;
           if (!(n->flags & N_IsInternal)
-              && (n->subfile ? (!strcmp (n->subfile, fb->fullpath))
-                             : (!strcmp (n->fullpath, fb->fullpath))))
+              && (n->subfile ? (!FILENAME_CMP (n->subfile, fb->fullpath))
+                             : (!FILENAME_CMP (n->fullpath, fb->fullpath))))
             {
               /* The call to info_get_node is indirectly recursive, but it 
                  should not recurse twice because of the N_EOLs_Converted 
@@ -1293,7 +1293,7 @@ info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr)
   FILE_BUFFER *parent; /* File containing tag table. */
   FILE_BUFFER *subfile; /* File containing node. */
  
-  if (!strcmp (fb->fullpath, tag->filename))
+  if (!FILENAME_CMP (fb->fullpath, tag->filename))
     parent = subfile = fb;
   else
     {
