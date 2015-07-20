@@ -1,3 +1,9 @@
+2015-07-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (find_node_from_tag) <resetting tag table>: Don't
+	forget that tags for anchors refer to anchors.  Report from
+	Eli Zaretskii.
+
 2015-07-18  Eli Zaretskii  <eliz@gnu.org>
 
 	* info/nodes.c (find_node_from_tag, info_node_of_tag): Use

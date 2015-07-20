@@ -1204,13 +1204,15 @@ find_node_from_tag (FILE_BUFFER *parent, FILE_BUFFER *fb, TAG *tag)
       if (!FILENAME_CMP ((*t)->filename, fb->fullpath))
         {
           NODE *n = &(*t)->cache;
+          int is_anchor = n->nodelen == 0;
           (*t)->nodestart_adjusted = -1;
           if (n->flags & N_WasRewritten)
             free (n->contents);
           info_free_references (n->references);
           free (n->next); free (n->prev); free (n->up);
           memset (n, 0, sizeof (NODE));
-          n->nodelen = -1;
+          if (!is_anchor)
+            n->nodelen = -1;
         }
     }
 
