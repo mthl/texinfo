@@ -1,3 +1,12 @@
+2015-07-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/display.c (display_update_window_1, display_update_node_text):
+	Rename function.  Avoid outputting line with standout or underline if
+	nothing has changed on it.
+	(display_process_line): Function split out from 
+	display_update_node_text.
+	(writing_out): New file-level variable.
+
 2015-07-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.c (find_node_from_tag) <resetting tag table>: Don't
