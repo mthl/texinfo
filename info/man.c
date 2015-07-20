@@ -578,7 +578,7 @@ xrefs_of_manpage (NODE *node)
       int section, section_end;
 
       for (name = position; name > 0; name--)
-        if (whitespace (s.buffer[name]))
+        if (whitespace_or_newline (s.buffer[name]))
           break;
 
       if (name != 0)

@@ -1,5 +1,10 @@
 2015-07-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/man.c (xrefs_of_manpage): An open parenthesis precededed 
+	by a newline cannot be part of a man page cross-reference.
+
+2015-07-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/display.c (display_update_node_text) <W_NoWrap>: Fix, 
 	broken in last commit.
 
