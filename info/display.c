@@ -645,7 +645,10 @@ start_of_line:
               for (; mbi_avail (iter); mbi_advance (iter))
                 if (mb_len (mbi_cur (iter)) == 1
                     && *mbi_cur_ptr (iter) == '\n')
-                  break;
+                  {
+                    mbi_advance (iter);
+                    break;
+                  }
             }
           fflush (stdout);
         }

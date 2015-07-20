@@ -1,5 +1,10 @@
 2015-07-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/display.c (display_update_node_text) <W_NoWrap>: Fix, 
+	broken in last commit.
+
+2015-07-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/display.c (display_update_window_1, display_update_node_text):
 	Rename function.  Avoid outputting line with standout or underline if
 	nothing has changed on it.
