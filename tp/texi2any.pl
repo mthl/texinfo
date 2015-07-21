@@ -1302,7 +1302,10 @@ while(@input_files) {
 
   if ($tree_transformations{'complete_tree_nodes_menus'}) {
     Texinfo::Structuring::complete_tree_nodes_menus($parser, $tree);
+  } elsif (!$parser->{'validatemenus'}) {
+    Texinfo::Structuring::add_missing_menus($parser, $tree);
   }
+
   if ($tree_transformations{'indent_menu_descriptions'}) {
     Texinfo::Convert::Plaintext::indent_menu_descriptions(undef, $parser);
   }

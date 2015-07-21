@@ -92,7 +92,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.0';
+$VERSION = '6.0dev';
 
 sub N__($)
 {
@@ -3270,6 +3270,16 @@ sub _end_line($$$)
     if ($self->{'misc_commands'}->{$command} =~ /^\d$/) {
       my $args = _parse_line_command_args($self, $current, $line_nr);
       $current->{'extra'}->{'misc_args'} = $args if (defined($args));
+      if ($command eq 'validatemenus') {
+        if ($args and $args->[0]) {
+          my $arg = $args->[0];
+          if ($arg eq 'on') {
+            $self->{'validatemenus'} = 1;
+          } elsif ($arg eq 'off') {
+            $self->{'validatemenus'} = 0;
+          }
+        }
+      }
     } elsif ($self->{'misc_commands'}->{$command} eq 'text') {
       my $text = Texinfo::Convert::Text::convert($current->{'args'}->[0],
                                                  {'code' => 1, 
@@ -5957,6 +5967,7 @@ sub _parse_line_command_args($$$)
            or $command eq 'xrefautomaticsectiontitle'
            or $command eq 'codequoteundirected'
            or $command eq 'codequotebacktick'
+           or $command eq 'validatemenus'
            or $command eq 'deftypefnnewline') {
     if ($line eq 'on' or $line eq 'off') {
       $args = [$line];

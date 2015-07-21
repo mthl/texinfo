@@ -22,6 +22,13 @@ one of the relevant sections:
   http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
 
 -------------------------------------------------------------------------------
+* Language:
+  . You can now optionally miss out the @menu from nodes with other
+    nodes below them in the document structure.  The new command 
+    @validatemenus controls whether to check that @menu is given in 
+    these circumstances.  For Info and HTML output, makeinfo will, when 
+    needed, create a menu for nodes lacking one given explicitly.
+
 * makeinfo
   . quotation marks are left out for node names and index entries in
     Info output where they would have been produced by commands such

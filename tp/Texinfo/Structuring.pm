@@ -43,6 +43,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
+  add_missing_menus
   associate_internal_references
   complete_tree_nodes_menus
   elements_directions
@@ -69,7 +70,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.0';
+$VERSION = '6.0dev';
 
 
 my %types_to_enter;
@@ -1683,6 +1684,40 @@ sub _new_block_command($$$)
   return $new_block;
 }
 
+sub add_node_menu_if_missing($$)
+{
+  my $self = shift;
+  my $node = shift;
+  
+  if (!$node->{'extra'}->{'associated_section'}->{'section_childs'}
+      or $node->{'menus'} and @{$node->{'menus'}}) {
+    return;
+  }
+
+  my @node_childs;
+  foreach my $child (@{$node->{'extra'}->{'associated_section'}->{'section_childs'}}) {
+    if ($child->{'extra'} and $child->{'extra'}->{'associated_node'}) {
+      push @node_childs, $child->{'extra'}->{'associated_node'};
+    }
+  }
+
+  my @pending;
+  for my $child (@node_childs) {
+    my $entry = _new_node_menu_entry($self, 
+                                     $child->{'extra'}->{'node_content'});
+    push @pending, $entry;
+  }
+
+  # Add a menu to this node
+  my $section = $node->{'extra'}->{'associated_section'};
+  my $current_menu = _new_block_command (\@pending, $section, 'menu');
+  push @{$section->{'contents'}}, $current_menu;
+  push @{$section->{'contents'}}, {'type' => 'empty_line',
+                                   'text' => "\n", 
+                                   'parent' => $section};
+  push @{$node->{'menus'}}, $current_menu;
+}
+
 sub complete_node_menu($$)
 {
   my $self = shift;
@@ -1779,6 +1814,25 @@ sub complete_node_menu($$)
         push @{$current_menu->{'contents'}}, @pending;
         push @{$current_menu->{'contents'}}, $end if ($end);
       }
+    }
+  }
+}
+
+# This should be called after sectioning_structure
+sub add_missing_menus($$)
+{
+  my $self = shift;
+  my $root = shift;
+  if (!$root->{'type'} or $root->{'type'} ne 'document_root'
+      or !$root->{'contents'}) {
+    return undef;
+  }
+  foreach my $content (@{$root->{'contents'}}) {
+    if ($content->{'cmdname'} and $content->{'cmdname'} eq 'node'
+        and (scalar(@{$content->{'extra'}->{'nodes_manuals'}}) == 1)
+        and $content->{'extra'} 
+        and $content->{'extra'}->{'associated_section'}) {
+      add_node_menu_if_missing($self, $content);
     }
   }
 }

@@ -1,3 +1,22 @@
+2015-07-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Mention new command @validatemenus.
+	* tp/Texinfo/Common.pm (%default_parser_state_configuration): 
+	Add validatemenus flag.
+	(%misc_commands): Add 'validatemenus'.
+	* tp/Texinfo/Parser.pm (_end_line) <@validatemenus>: Set flag on 
+	parser.
+	(_parse_line_command_args): Accept 'on' and 'off' as the 
+	argument to @validatemenus.
+
+	* tp/Texinfo/Structuring.pm (add_missing_menus): New function, 
+	based on complete_tree_nodes_menus.
+	(add_node_menu_if_missing): New function, based on 
+	complete_node_menu.
+
+	* tp/texi2any.pl: Call add_missing_menus if 'validatemenus' flag 
+	is not turned on in parser object.
+
 2015-07-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/man.c (xrefs_of_manpage): An open parenthesis precededed 
