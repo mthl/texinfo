@@ -1,5 +1,10 @@
 2015-07-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Paragraph.pm (add_text): Don't double space
+	after a full stop at the end of a line inside a @w{ ... }.
+
+2015-07-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* contrib/nontests: New directory.  Move most of the files from 
 	util/tests into it.  Suggestion from Karl Berry on 7th July.
 	* contrib/tests/README: Say that tests were for util directory.

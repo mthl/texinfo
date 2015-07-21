@@ -353,24 +353,12 @@ sub add_text($$)
     # \x{202f}\x{00a0} are non breaking spaces
     if (defined $spaces) {
       print STDERR "SPACES($paragraph->{'counter'}) `"._print_escaped_spaces($spaces)."'\n" if $debug_flag;
-      #my $added_word = $paragraph->{'word'};
       if ($protect_spaces_flag) {
         $paragraph->{'word'} .= $spaces;
         $paragraph->{'last_char'} = substr($spaces, -1);
         $paragraph->{'word_counter'} += length($spaces);
-        #$paragraph->{'space'} .= $spaces;
-        if ($paragraph->{'word'} =~ s/\n/ /g 
-           and !$paragraph->{'frenchspacing'} 
-           and $paragraph->{'end_sentence'}
-           and $paragraph->{'end_sentence'} > 0) {
-          $paragraph->{'word'} =~ /(\s*)$/;
-          if (length($1) < 2) {
-            my $added = ' ' x (2 - length($1));
-            $paragraph->{'word'} .= $added;
-            $paragraph->{'last_char'} = ' ';
-            $paragraph->{'word_counter'} += length($added);
-          }
-        }
+        $paragraph->{'word'} =~ s/\n/ /g;
+
         # The $paragraph->{'counter'} != 0 is here to avoid having an
         # additional line output when the text is longer than the max.
         if ($paragraph->{'counter'} != 0 and 

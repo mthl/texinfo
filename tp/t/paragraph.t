@@ -370,7 +370,7 @@ $result .= $para->add_text("a");
 $result .= $para->add_text('  ');
 $result .= $para->set_space_protection(0,0);
 $result .= $para->add_text("c ");
-is ($result, "aa.)    bb  eee    .)_  aa  . gg.  a  c\n", "protected spaces many inputs");
+is ($result, "aa.)    bb  eee    .)_ aa  . gg.  a  c\n", "protected spaces many inputs");
 $para->end();
 
 $para = Texinfo::Convert::Paragraph->new({'max' => 10});
@@ -403,7 +403,7 @@ $result .= $para->add_text ("ccc dddd");
 $result .= $para->set_space_protection(0,0);
 $result .= $para->add_text ("gg.\n");
 $result .= $para->end();
-is ($result, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbb bbbbb bbb b b b b b b b b b bb .  ccc ddddgg.\n", 'long text followed by text protected'); 
+is ($result, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbb bbbbb bbb b b b b b b b b b bb . ccc ddddgg.\n", 'long text followed by text protected'); 
 
 $para = Texinfo::Convert::Paragraph->new();
 $result = '';
