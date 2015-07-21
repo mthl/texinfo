@@ -23,6 +23,10 @@
 @syncodeindex vr cp
 @syncodeindex pg cp
 
+@tex
+\global\usebracesinindexestrue
+@end tex
+
 @paragraphindent 2
 @c finalout
 

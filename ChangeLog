@@ -1,5 +1,10 @@
 2015-07-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi: Add \global\usebracesinindexestrue at start 
+	of file.
+
+2015-07-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Updating Nodes and Menus): Don't say that 
 	updating node pointers is required, because makeinfo determines 
 	them automatically.
