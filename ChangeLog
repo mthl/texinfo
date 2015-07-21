@@ -1,5 +1,28 @@
 2015-07-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Updating Nodes and Menus): Don't say that 
+	updating node pointers is required, because makeinfo determines 
+	them automatically.
+	(Updating Requirements): Don't say that makeinfo requires menus.
+	(Chapter Structuring): Remove aside about "sectioning 
+	structuring".
+	(Tree Structuring): Don't mention that node pointers are 
+	implicit in example.
+	(Raise/Lower Sections): Reword paragraph about a problem that 
+	can arise to emphasize that menus need to match the sectioning 
+	structure.
+	(Node Names): Rename section title from "Choosing Node and 
+	Pointer Names" to "Choosing Node Names".
+	(Writing a Node): Reorder section to put description of node 
+	pointers later.
+	(Node Line Requirements): Move bullet point about node pointers 
+	later in section.
+	(@top Command): Remove mention of node pointers.
+	(Node Menu Illustration): Delete an unecessary word.  Remove a 
+	mention of implicitly determined node pointers.
+
+2015-07-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Paragraph.pm (add_text): Don't double space
 	after a full stop at the end of a line inside a @w{ ... }.
 
