@@ -1,5 +1,11 @@
 2015-07-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* contrib/nontests: New directory.  Move most of the files from 
+	util/tests into it.  Suggestion from Karl Berry on 7th July.
+	* contrib/tests/README: Say that tests were for util directory.
+
+2015-07-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Mention new command @validatemenus.
 	* tp/Texinfo/Common.pm (%default_parser_state_configuration): 
 	Add validatemenus flag.
