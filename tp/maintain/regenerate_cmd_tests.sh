@@ -15,6 +15,9 @@
 #
 # Originally written by Patrice Dumas.
 
+# This script is run from "tp/tests/Makefile.am" to regenerate
+# "tp/tests/Makefile.onetst".
+
 #set -x
 
 test_file='tests-parser.txt'
@@ -47,8 +50,10 @@ done
 (
 cd "$dir/../tests/$destdir" || exit 1
 
-test_driving_files='test_driving_files_generated_list ='
-one_test_files='one_test_files_generated_list = '
+test_driving_files='# List of files that describe tests.  See tp/tests/README.
+test_driving_files_generated_list ='
+one_test_files='# List of test scripts that only run one test
+one_test_files_generated_list = '
 
 gather_tests() {
 type=$1

@@ -1,4 +1,11 @@
 2015-07-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/Makefile.am: Give a clue for what "onetst" stands 
+	for, and elaborate on purpose of tests-parser.txt files.
+	* tp/maintain/regenerate_cmd_tests.sh: Say where this file is 
+	run from.  Place some comments in the generated file.
+
+2015-07-22  Gavin Smith  <gavinsmith0123@gmail.com>
 	
 	* tp/Texinfo/Convert/XSParagraph/mylib: Move all files up a 
 	level.
