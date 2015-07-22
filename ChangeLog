@@ -16,6 +16,11 @@
 	(Writing a Menu, Menu Parts): Move advice about extraneous 
 	whitespace from Writing a Menu.
 
+2015-07-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Top): Add menu comment to separate 
+	Appendices from Chapters.
+
 2015-07-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi: Add \global\usebracesinindexestrue at start 
