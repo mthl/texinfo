@@ -8,7 +8,7 @@
 
 #include "ppport.h"
 
-#include "mylib/xspara.h"
+#include "xspara.h"
 
 
 MODULE = XSParagraph	PACKAGE = XSParagraph     PREFIX = xspara_	

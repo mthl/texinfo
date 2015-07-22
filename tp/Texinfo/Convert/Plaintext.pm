@@ -663,8 +663,8 @@ sub new_formatter($$;$)
   if ($type eq 'line') {
     $container = Texinfo::Convert::Line->new($container_conf);
   } elsif ($type eq 'paragraph') {
-    $container = Texinfo::Convert::Paragraph->new($container_conf);
-    #$container = XSParagraph->new($container_conf);
+    #$container = Texinfo::Convert::Paragraph->new($container_conf);
+    $container = XSParagraph->new($container_conf);
   } elsif ($type eq 'unfilled') {
     $container = Texinfo::Convert::UnFilled->new($container_conf);
   } else {

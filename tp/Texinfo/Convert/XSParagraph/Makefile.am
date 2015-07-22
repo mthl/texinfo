@@ -71,8 +71,8 @@ XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
 # -------------------------------------------------------
 
 modules_LTLIBRARIES = XSParagraph.la
-XSParagraph_la_SOURCES = XSParagraph.c mylib/xspara.c mylib/xspara.h \
-			 mylib/text.c mylib/text.h ppport.h
+XSParagraph_la_SOURCES = XSParagraph.c xspara.c xspara.h \
+			 text.c text.h ppport.h
 
 BUILT_SOURCES = XSParagraph.c
 
