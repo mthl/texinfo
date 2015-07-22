@@ -25,19 +25,25 @@ use 5.006;
 
 use Test::More;
 use File::Spec;
-BEGIN { if (defined($ENV{'top_srcdir'})) {
-          my $lib_dir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp', 'maintain');
-          unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'libintl-perl', 'lib'),
-                         File::Spec->catdir($lib_dir, 'lib', 'Unicode-EastAsianWidth', 'lib'),
-                         File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'),
-                         File::Spec->catdir($ENV{'top_srcdir'}, 'tp', 'Texinfo', 'Convert', 'XSParagraph', 'lib'),
-                         File::Spec->catdir($ENV{'top_srcdir'}, 'tp', 'Texinfo', 'Convert', 'XSParagraph'));
-      }};
+BEGIN {
+  if (defined($ENV{'top_srcdir'})) {
+    my $lib_dir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp', 'maintain');
+    unshift @INC,
+      (File::Spec->catdir($lib_dir, 'lib', 'libintl-perl', 'lib'),
+       File::Spec->catdir($lib_dir, 'lib', 'Unicode-EastAsianWidth', 'lib'),
+       File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'),
+       File::Spec->catdir($ENV{'top_srcdir'}, 'tp',
+                                        'Texinfo', 'Convert', 'XSParagraph'));
+  }
+  if (defined($ENV{'top_builddir'})) {
+    unshift @INC, (File::Spec->catdir($ENV{'top_builddir'}, 'tp',
+                                         'Texinfo', 'Convert', 'XSParagraph'));
+  }
+}
 
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use lib 'maintain/lib/libintl-perl/lib/';
 use lib 'maintain/lib/Text-Unidecode/lib/';
-use lib 'Texinfo/Convert/XSParagraph/lib';
 use lib 'Texinfo/Convert/XSParagraph';
 use Texinfo::Parser;
 use Texinfo::Convert::Text;

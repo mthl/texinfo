@@ -179,9 +179,9 @@ T_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) \
 T_LOG_COMPILER = $(PERL)
 AM_T_LOG_FLAGS = -w
 AM_T_LOG_FLAGS += -ITexinfo/Convert/XSParagraph
-AM_T_LOG_FLAGS += -I$(srcdir)/Texinfo/Convert/XSParagraph/lib
+AM_T_LOG_FLAGS += -I$(srcdir)/Texinfo/Convert/XSParagraph
 
-AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir;
+AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir; builddir="$(srcdir)"; export buildir;
 
 # just a convenience for running these additional tests.
 long-checks:

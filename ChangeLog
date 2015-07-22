@@ -2,6 +2,9 @@
 	
 	* tp/Texinfo/Convert/XSParagraph/mylib: Move all files up a 
 	level.
+	* tp/Texinfo/Convert/XSParagraph/lib/XSParagraph.pm: Move up a 
+	level.
+	* tp/t/test_utils.pl: Include builddir for XSParagraph in @INC.
 
 2015-07-22  Gavin Smith  <gavinsmith0123@gmail.com>
 

@@ -72,7 +72,6 @@ BEGIN
     unshift @INC, $texinfolibdir;
 
     # For XSParagraph.pm, XSParagraph.la, and XSParagraph.so.
-    push @INC, "${texinfolibdir}Texinfo/Convert/XSParagraph/lib";
     push @INC, "${texinfolibdir}Texinfo/Convert/XSParagraph";
   } elsif ($datadir ne '@' .'datadir@' and $package ne '@' . 'PACKAGE@'
            and $packagedir ne '@' .'pkglibexecdir@/Texinfo'

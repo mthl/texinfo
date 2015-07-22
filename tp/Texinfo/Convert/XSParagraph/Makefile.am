@@ -37,7 +37,7 @@ EXTRA_DIST+=m4/gnulib-cache.m4
 ################### End Gnulib section #########################
 
 modulesdir = $(pkglibexecdir)/Texinfo
-dist_modules_DATA = lib/XSParagraph.pm
+dist_modules_DATA = XSParagraph.pm
 
 EXTRA_DIST += fetch_conf.pl
 
