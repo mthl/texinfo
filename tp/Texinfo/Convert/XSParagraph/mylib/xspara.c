@@ -790,35 +790,8 @@ xspara_add_text (char *text)
                         *ptr = ' ';
                       ptr++;
                     }
-
-                  /* TODO: Get rid of !state.french_spacing.  This is needed
-                     when Plaintext.pm passed in a non-French spacing end
-                     sentence via add_text, used by @? and similar. */
-                  if (state.end_sentence == 1 && !state.french_spacing)
-                    { // 347
-                      /* Make the space at the end of the word up to
-                         two spaces. */
-
-                      /* However, other spaces within a @w aren't doubled.
-                         For example,
-
-                           soffv. gvrtg. rgger. @w{hello. hello.
-                           more here.}
-
-                         outputs
-
-                           soffv.  gvrtg.  rgger.  hello. hello.  more here.
-
-                       */
-
-                      if (ptr == state.word.text + 1 || !isspace(ptr[-2]))
-                        {
-                          text_append_n (&state.word, " ", 1);
-                        }
-                      /* Note that that doesn't check for any
-                         fancy spaces. */
-                    }
                 }
+
               if (state.counter != 0
                   && state.counter + state.word_counter + state.space_counter
                      > state.max)
