@@ -153,12 +153,13 @@ the menu lists all the lower level nodes in the document.
 * Conditionals::                Specifying text for only some output cases.
 * Defining New Texinfo Commands:: User-defined macros and aliases.
 * Include Files::               How to incorporate other Texinfo files.
-
 * Hardcopy::                    Output for paper, with @TeX{}.
 * Generic Translator @command{texi2any}:: @command{texi2any}, an all-purpose converter.
 * Creating and Installing Info Files:: Details on Info output.
 * Generating HTML::             Details on HTML output.
 @c * texi2any Output Customization:: Fine tuning with initialization files.
+
+Appendices
 
 * Command List::                All the Texinfo @@-commands.
 * Tips::                        Hints on how to write a Texinfo document.
@@ -5606,56 +5607,14 @@ line, and then by indexing lines.
 you use menus to go to such nodes.  Menus have no effect in printed
 manuals and do not appear in them.
 
-It's usually best if a node with a menu does not contain much text.
-If you find yourself with a lot of text before a menu, we generally
-recommend moving all but a couple of paragraphs into a new subnode.
-Otherwise, it is easy for readers to miss the menu.
-
 @menu
-* Menu Location::               Menus go at the ends of nodes.
 * Writing a Menu::              What is a menu?
+* Menu Example::                Two and three part menu entries.
+* Menu Location::               Menus go at the ends of nodes.
 * Menu Parts::                  A menu entry has three parts.
 * Less Cluttered Menu Entry::   Two part menu entry.
-* Menu Example::                Two and three part menu entries.
 * Other Info Files::            How to refer to a different Info file.
 @end menu
-
-
-@node Menu Location
-@section Menu Location
-@cindex Menu location
-@cindex Location of menus
-
-There may be at most one menu in a node.  A menu is conventionally
-located at the end of a node, without any regular text or additional
-commands between the @code{@@end menu} and the beginning of the next
-node.
-
-@cindex Info format, and menus
-This convention is useful, since a reader who uses the menu could
-easily miss any such text.  Also, any such post-menu text will be
-considered part of the menu in Info output (which has no marker for
-the end of a menu).  Thus, a line beginning with @samp{* } will likely
-be incorrectly handled.
-
-@cindex Hierarchical documents, and menus
-Technically, menus can carry you to any node, regardless of the
-structure of the document; even to nodes in a different Info file.
-However, we do not recommend making use of this, because it is hard
-for readers to follow.  Also, the @command{makeinfo} implicit pointer
-creation feature (@pxref{@command{makeinfo} Pointer Creation}) and GNU
-Emacs Texinfo mode updating commands work only to create menus of
-subordinate nodes in a hierarchically structured document.  It is much
-better to use cross references to refer to arbitrary nodes.
-
-Years ago, we recommended using a @samp{@@heading} command within an
-@code{@@ifinfo} conditional instead of the normal sectioning commands
-after a very short node with a menu.  This had the advantage of making
-the printed output look better, because there was no very short text
-between two headings on the page.  But it does not work with
-@command{makeinfo}'s implicit pointer creation, and it also makes the
-XML output incorrect, since it does not reflect the true document
-structure.  So, we no longer recommend this.
 
 
 @node Writing a Menu
@@ -5663,9 +5622,9 @@ structure.  So, we no longer recommend this.
 @cindex Writing a menu
 @cindex Menu writing
 
-A menu consists of a @code{@@menu} command on a line by itself
-followed by menu entry lines or menu comment lines and then by an
-@code{@@end menu} command on a line by itself.
+A menu consists of a @code{@@menu} command on a line by itself,
+followed by menu entry lines or menu comment lines, and then followed
+by an @code{@@end menu} command on a line by itself.
 
 A menu looks like this:
 
@@ -5683,17 +5642,27 @@ Larger Units of Text
 
 @cindex Spaces, in menus
 In a menu, every line that begins with an @w{@samp{* }} is a @dfn{menu
-entry}.  (Note the space after the asterisk.)  A line that does not
-start with an @w{@samp{* }} may also appear in a menu.  Such a line is
-not a menu entry but rather a @dfn{menu comment} line that appears in
-the Info file.  In the example above, the line @samp{Larger Units of
-Text} is such a menu comment line; the two lines starting with
-@w{@samp{* }} are menu entries.  Space characters in a menu are
-preserved as-is in the Info output; this allows you to format the menu
-as you wish.  Unfortunately you must type node names without any extra
-spaces or some versions of some Info readers will not find the
-node (@pxref{Node Line Requirements}).
+entry}.  (Note the space after the asterisk.)
 
+A line that does not start with an @w{@samp{* }} may also appear in a
+menu.  Such a line is not a menu entry but rather a @dfn{menu comment}
+line that appears in the Info file.  In the example above, the line
+@samp{Larger Units of Text} is such a menu comment line; the two lines
+starting with @w{@samp{* }} are menu entries.
+
+@cindex Hierarchical documents, and menus
+Technically, menus can carry you to any node, regardless of the
+structure of the document; even to nodes in a different Info file.
+However, we do not recommend making use of this, because it is hard
+for readers to follow.  Also, the @command{makeinfo} implicit pointer
+creation feature (@pxref{@command{makeinfo} Pointer Creation}) and GNU
+Emacs Texinfo mode updating commands work only to create menus of
+subordinate nodes in a hierarchically structured document.  It is much
+better to use cross references to refer to arbitrary nodes.
+
+In Info, a user selects a node with the @kbd{m} (@code{Info-menu})
+command.  The menu entry name is what the user types after the @kbd{m}
+command.
 @opindex accesskey@r{, in HTML output of menus}
 In the HTML output from @command{makeinfo}, the @code{accesskey}
 attribute is used with the values @samp{1}@dots{}@samp{9} for the
@@ -5701,93 +5670,12 @@ first nine entries.  This allows people using web browsers to follow
 the first menu entries using (typically) @kbd{M-@var{digit}}, e.g.,
 @kbd{M-1} for the first entry.
 
-
-@node Menu Parts
-@section The Parts of a Menu
-@cindex Parts of a menu
-@cindex Menu parts
-@cindex @code{@@menu} parts
-
-A menu entry has three parts, only the second of which is required:
-
-@enumerate
-@item
-The menu entry name (optional).
-
-@item
-The name of the node (required).
-
-@item
-A description of the item (optional).
-@end enumerate
-
-The template for a generic menu entry looks like this (but see the
-next section for one more possibility):
-
-@example
-* @var{menu-entry-name}: @var{node-name}.   @var{description}
-@end example
-
-Follow the menu entry name with a single colon and follow the node
-name with tab, comma, newline, or the two characters period and space
-(@samp{. }).
-
-@command{makeinfo} warns when the text of a menu item (and node names
-and cross references) contains a problematic construct that will
-interfere with its parsing in Info.  If you don't want to see the
-warnings, you can set the customization variable
-@code{INFO_SPECIAL_CHARS_WARNING} to @samp{0} (@pxref{Other
-Customization Variables}).
-
-In Info, a user selects a node with the @kbd{m} (@code{Info-menu})
-command.  The menu entry name is what the user types after the @kbd{m}
-command.
-
-The third part of a menu entry is a descriptive phrase or sentence.
-Menu entry names and node names are often short; the description
-explains to the reader what the node is about.  A useful description
-complements the node name rather than repeats it.  The description,
-which is optional, can spread over multiple lines; if it does, some
-authors prefer to indent the second line while others prefer to align
-it with the first (and all others).  It's up to you.  An empty line,
-or the next menu entry, ends a description.
-
-
-@node Less Cluttered Menu Entry
-@section Less Cluttered Menu Entry
-@cindex Two part menu entry
-@cindex Double-colon menu entries
-@cindex Menu entries with two colons
-@cindex Less cluttered menu entry
-@cindex Uncluttered menu entry
-
-When the menu entry name and node name are the same, you can write
-the name immediately after the asterisk and space at the beginning of
-the line and follow the name with two colons.
-
-@need 800
-For example, write
-
-@example
-* Name::                        @var{description}
-@end example
-
-@need 800
-@noindent
-instead of
-
-@example
-* Name: Name.                   @var{description}
-@end example
-
-We recommend using the node name for the menu entry name whenever
-possible, since it reduces visual clutter in the menu.
-
-
 @node Menu Example
 @section A Menu Example
 @cindex Menu example
 @cindex Example menu
+
+@c merge with Writing a Menu node?
 
 A menu looks like this in Texinfo:
 
@@ -5852,6 +5740,126 @@ appears in the menu, but is not an entry.
 Since no file name is specified with either @samp{Files} or
 @samp{Buffers}, they must be the names of nodes in the same Info file
 (@pxref{Other Info Files, , Referring to Other Info Files}).
+
+
+@node Menu Location
+@section Menu Location
+@cindex Menu location
+@cindex Location of menus
+
+There may be at most one menu in a node.  A menu is conventionally
+located at the end of a node, without any regular text or additional
+commands between the @code{@@end menu} and the beginning of the next
+node.
+
+@cindex Info format, and menus
+This convention is useful, since a reader who uses the menu could
+easily miss any such text.  Also, any such post-menu text will be
+considered part of the menu in Info output (which has no marker for
+the end of a menu).  Thus, a line beginning with @samp{* } will likely
+be incorrectly handled.
+
+It's usually best if a node with a menu does not contain much text.
+If you find yourself with a lot of text before a menu, we generally
+recommend moving all but a couple of paragraphs into a new subnode.
+Otherwise, it is easy for readers to miss the menu.
+
+@ignore
+Years ago, we recommended using a @samp{@@heading} command within an
+@code{@@ifinfo} conditional instead of the normal sectioning commands
+after a very short node with a menu.  This had the advantage of making
+the printed output look better, because there was no very short text
+between two headings on the page.  But it does not work with
+@command{makeinfo}'s implicit pointer creation, and it also makes the
+XML output incorrect, since it does not reflect the true document
+structure.  So, we no longer recommend this.
+@end ignore
+
+
+@node Menu Parts
+@section The Parts of a Menu
+@cindex Parts of a menu
+@cindex Menu parts
+@cindex @code{@@menu} parts
+
+A menu entry has three parts, only the second of which is required:
+
+@enumerate
+@item
+The menu entry name (optional).
+
+@item
+The name of the node (required).
+
+@item
+A description of the item (optional).
+@end enumerate
+
+The template for a generic menu entry looks like this (but see the
+next section for one more possibility):
+
+@example
+* @var{menu-entry-name}: @var{node-name}.   @var{description}
+@end example
+
+Follow the menu entry name with a single colon, and follow the node
+name with tab, comma, newline, or the two characters period and space
+(@samp{. }).
+
+The third part of a menu entry is a descriptive phrase or sentence.
+Menu entry names and node names are often short; the description
+explains to the reader what the node is about.  A useful description
+complements the node name rather than repeats it.  The description,
+which is optional, can spread over multiple lines; if it does, some
+authors prefer to indent the second line while others prefer to align
+it with the first (and all others).  It's up to you.  An empty line,
+or the next menu entry, ends a description.
+
+Space characters in a menu are preserved as-is in the Info output; this
+allows you to format the menu as you wish.  Unfortunately you must type
+node names without any extra spaces or some versions of some Info
+readers will not find the node (@pxref{Node Line Requirements}).
+
+
+@command{makeinfo} warns when the text of a menu item (and node names
+and cross references) contains a problematic construct that will
+interfere with its parsing in Info.  If you don't want to see the
+warnings, you can set the customization variable
+@code{INFO_SPECIAL_CHARS_WARNING} to @samp{0} (@pxref{Other
+Customization Variables}).
+
+
+
+@node Less Cluttered Menu Entry
+@section Less Cluttered Menu Entry
+@cindex Two part menu entry
+@cindex Double-colon menu entries
+@cindex Menu entries with two colons
+@cindex Less cluttered menu entry
+@cindex Uncluttered menu entry
+
+When the menu entry name and node name are the same, you can write
+the name immediately after the asterisk and space at the beginning of
+the line and follow the name with two colons.
+
+@need 800
+For example, write
+
+@example
+* Name::                        @var{description}
+@end example
+
+@need 800
+@noindent
+instead of
+
+@example
+* Name: Name.                   @var{description}
+@end example
+
+We recommend using the node name for the menu entry name whenever
+possible, since it reduces visual clutter in the menu.
+
 
 @node Other Info Files
 @section Referring to Other Info Files

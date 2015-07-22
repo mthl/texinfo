@@ -1,3 +1,21 @@
+2015-07-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Writing A Menu): Move node before "Menu 
+	Location" node.
+	(Menus, Menu Location): Move advice on writing short nodes to 
+	Menu Location.
+	(Menu Parts, Menu Location): Move advice on how to access menu 
+	entries in Info to be next to the advice on how to access menu 
+	entries in HTML.
+	(Menu Location): Place obsolete advice within an @ignore block.	
+	Move exhortation to use a hierarchical structure to Writing A 
+	Menu, because that isn't to do with the menu location.
+	(Menu Example): Move node to be just after Writing A Menu node.
+	(Writing a Menu): Split paragraph about menu entries and menu 
+	comments into two.
+	(Writing a Menu, Menu Parts): Move advice about extraneous 
+	whitespace from Writing a Menu.
+
 2015-07-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi: Add \global\usebracesinindexestrue at start 
