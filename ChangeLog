@@ -1,5 +1,10 @@
 2015-07-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Makefile.am: Reword comments about purpose of Makefile.tres 
+	and Makefile.docstr.
+
+2015-07-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (read_quoted_string) [QUOTE_NODENAMES]: Make 
 	unconditional.
 	(printed_representation): Suppress display of character \177.

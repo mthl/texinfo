@@ -11,10 +11,10 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-# A long list of files that we generate and some rules.
+# Generated lists of tests and of test result files, and some rules.
 include $(srcdir)/Makefile.tres
 
-# Document string locale files and associated rules.
+# Generated list of document string locale files and associated rules.
 include $(srcdir)/Makefile.docstr
 
 $(srcdir)/Makefile.tres: maintain/regenerate_file_lists.pl
