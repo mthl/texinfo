@@ -155,6 +155,8 @@ TESTS = \
 	t/quoted-label-as-target.sh \
 	t/quoted-target.sh \
 	t/quoted-label-and-target.sh \
+	t/quoted-manual-in-target.sh \
+	t/quoted-manual-in-label.sh \
 	t/goto-quoted.sh \
 	t/next-quoted.sh \
 	t/help.sh

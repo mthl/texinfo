@@ -1,5 +1,14 @@
 2015-07-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (scan_reference_target): Remove quoting 
+	characters from label.
+	(scan_reference_label): Handle case of a manual name appearing 
+	in a label along with a quoted node name.
+	* info/t/quoted-manual-in-target.sh,
+	* info/t/quoted-manual-in-label.sh: New tests.
+
+2015-07-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Makefile.am: Reword comments about purpose of Makefile.tres 
 	and Makefile.docstr.
 

@@ -1284,14 +1284,18 @@ static int
 scan_reference_label (REFERENCE *entry)
 {
   char *dummy;
-  long label_len;
+  int label_len = 0;
+
+  /* Handle case of cross-reference like (FILE)^?NODE^?::. */
+  if (inptr[0] == '(')
+    label_len = read_bracketed_filename (inptr, 0);
 
   /* Search forward to ":" to get label name.  Cross-references may have
      a newline in the middle. */
   if (entry->type == REFERENCE_MENU_ITEM)
-    label_len = read_quoted_string (inptr, ":", 1, &dummy);
+    label_len += read_quoted_string (inptr + label_len, ":", 1, &dummy);
   else
-    label_len = read_quoted_string (inptr, ":", 2, &dummy);
+    label_len += read_quoted_string (inptr + label_len, ":", 2, &dummy);
   free (dummy);
     
   if (label_len == 0)
@@ -1328,29 +1332,38 @@ static int
 scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
 {
   int i;
+  int label_len;
 
   /* If this reference entry continues with another ':' then the target
      of the reference is given by the label. */
+  if (*inptr == ':')
+    info_parse_node (entry->label);
+
+  label_len = strlen (entry->label);
+  if (label_len >= 2 && entry->label[label_len - 1] == 0177)
+    {
+      /* Remove the DEL bytes.  We don't do this until after calling
+         info_parse_node so that ^?(FOO)BAR^?:: refers to a node called 
+         "(FOO)BAR" within the current manual. */
+      char *p = strchr (entry->label, '\177');
+      memmove (p, p + 1, label_len - (p - entry->label) - 1);
+      entry->label[label_len - 2] = '\0';
+    }
+
   if (*inptr == ':')
     {
       skip_input (1);
       if (entry->type == REFERENCE_MENU_ITEM)
         write_extra_bytes_to_output (" ", 1);
 
-      info_parse_node (entry->label);
       if (info_parsed_filename)
         entry->filename = xstrdup (info_parsed_filename);
       if (info_parsed_nodename)
         entry->nodename = xstrdup (info_parsed_nodename);
 
-      if (inptr[-1] == '\177')
-        {
-          /* TODO: Remove the DEL bytes.  We don't do this until after calling
-             info_parse_node so that ^?(FOO)BAR^?:: refers to a node called 
-             "(FOO)BAR" within the current manual. */
-        }
       return 1;
     }
+
 
   /* This entry continues with a specific target.  Parse the
      file name and node name from the specification. */
