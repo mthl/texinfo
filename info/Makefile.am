@@ -159,13 +159,6 @@ TESTS = \
 	t/next-quoted.sh \
 	t/help.sh
 
-XFAIL_TESTS = \
-	t/quoted-label-as-target.sh \
-	t/quoted-target.sh \
-	t/quoted-label-and-target.sh \
-	t/goto-quoted.sh \
-	t/next-quoted.sh
-
 EXTRA_DIST += $(TESTS) $(XFAIL_TESTS) \
   t/README t/infodir \
   t/Init-inter.inc t/Init-test.inc t/Timeout-test.inc \

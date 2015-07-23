@@ -1,3 +1,23 @@
+2015-07-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (read_quoted_string) [QUOTE_NODENAMES]: Make 
+	unconditional.
+	(printed_representation): Suppress display of character \177.
+	(parse_top_node_line): Get length of filename in node pointers 
+	separately.
+	(read_bracketed_filename): Update comment.  Allow out parameter 
+	to take a null value.
+	(info_parse_node): Call read_quoted_string to get node name.
+	(scan_reference_label): Don't remove quoting.
+	(scan_reference_target): Add TODO to remove it here instead.
+
+	* info/session.c (info_handle_pointer): Call info_parse_node on 
+	pointer text.
+	(info_parse_and_select): Call info_parse_node.
+
+	* info/nodes.c (get_filename_and_nodename): Don't call 
+	info_parse_node.
+
 2015-07-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/Makefile.am: Give a clue for what "onetst" stands 

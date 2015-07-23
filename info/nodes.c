@@ -971,35 +971,30 @@ info_get_node (char *filename_in, char *nodename_in)
   return info_get_node_with_defaults (filename_in, nodename_in, 0);
 }
 
-/* Get filename and nodename of node to load using defaults from NODE. Output
-   values should be freed by caller. */
+/* Get filename and nodename of node to load using defaults from NODE.
+   Output values should be freed by caller. */
 static void
 get_filename_and_nodename (NODE *node,
                            char **filename, char **nodename,
                            char *filename_in, char *nodename_in)
 {
-  /* Get file name, nodename */
-  info_parse_node (nodename_in);
-
-  if (info_parsed_filename)
-    *filename = info_parsed_filename;
-  else if (filename_in)
-    *filename = filename_in;
+  *filename = filename_in;
 
   /* If FILENAME is not specified, it defaults to "dir". */
-  if (!*filename)
+  if (filename_in)
+    *filename = xstrdup (filename_in);
+  else
     {
       if (node)
-        *filename = node->fullpath;
+        *filename = xstrdup (node->fullpath);
       else
-        *filename = "dir";
+        *filename = xstrdup ("dir");
     }
-  *filename = xstrdup (*filename);
 
-  if (info_parsed_nodename)
-    *nodename = xstrdup (info_parsed_nodename);
-  /* If NODENAME is not specified, it defaults to "Top". */
+  if (nodename_in && *nodename_in)
+    *nodename = xstrdup (nodename_in);
   else
+    /* If NODENAME is not specified, it defaults to "Top". */
     *nodename = xstrdup ("Top");
 }
 

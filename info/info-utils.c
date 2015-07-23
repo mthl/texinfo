@@ -56,8 +56,8 @@ char *info_parsed_filename = NULL;
 char *info_parsed_nodename = NULL;
 
 /* Read a filename surrounded by "(" and ")", accounting for matching
-   characters.  Return length of read filename.  On error, set *FILENAME
-   to null and return 0.  */
+   characters, and place it in *FILENAME if FILENAME is not null.  Return 
+   length of read filename.  On error, set *FILENAME to null and return 0.  */
 int
 read_bracketed_filename (char *string, char **filename)
 {
@@ -65,7 +65,6 @@ read_bracketed_filename (char *string, char **filename)
   int count = 0; /* Level of nesting. */
   int first_close = -1; /* First ")" encountered. */
 
-  *filename = 0;
   if (*string != '(')
     return 0;
 
@@ -91,13 +90,19 @@ read_bracketed_filename (char *string, char **filename)
   if (count > 0)
     {
       if (first_close == -1)
-        return 0;
+        {
+          if (filename)
+            *filename = 0;
+          return 0;
+        }
       i = first_close;
     }
 
-  /* Remember parsed filename. */
-  *filename = xcalloc (1, i + 1);
-  memcpy (*filename, string, i);
+  if (filename)
+    {
+      *filename = xcalloc (1, i + 1);
+      memcpy (*filename, string, i);
+    }
 
   return i + 2; /* Length of filename plus "(" and ")". */
 }
@@ -126,11 +131,10 @@ info_parse_node (char *string)
 
   /* Parse out nodename. */
   string += skip_whitespace_and_newlines (string);
-  nodename_len = strlen (string);
+  nodename_len = read_quoted_string (string, "", 0, &info_parsed_nodename);
 
   if (nodename_len != 0)
     {
-      info_parsed_nodename = xstrdup (string);
       canonicalize_whitespace (info_parsed_nodename);
     }
 }
@@ -141,9 +145,7 @@ info_parse_node (char *string)
    TERMINATOR is an empty string, finish at a null character.   LINES is
    the number of lines that the string can span.  If LINES is zero, there is no
    limit.  Return length of string including any quoting characters.  Return
-   0 if input was invalid.
-
-   TODO: Decide on best method of quoting. */
+   0 if input was invalid. */
 long
 read_quoted_string (char *start, char *terminator, int lines, char **output)
 {
@@ -184,7 +186,6 @@ read_quoted_string (char *start, char *terminator, int lines, char **output)
           (*output)[len] = '\0';
         }
     }
-#ifdef QUOTE_NODENAMES
   else
     {
       len = strcspn (start + 1, "\177");
@@ -203,13 +204,6 @@ read_quoted_string (char *start, char *terminator, int lines, char **output)
 
       len += 2;
     }
-#else /* ! QUOTE_NODENAMES */
-  else
-    {
-      *output = xstrdup ("");
-      len = 0;
-    }
-#endif
 
   if (nl)
     *nl = saved_char;
@@ -580,10 +574,8 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
     }
   else if (*cur_ptr == DEL)
     {
-      *pchars = 2;
-      *pbytes = 2;
-      text_buffer_add_char (rep, '^');
-      text_buffer_add_char (rep, '?');
+      *pchars = 0;
+      *pbytes = 0;
       return text_buffer_base (rep);
     }
   else
@@ -1092,15 +1084,14 @@ skip_tag_contents (long n)
 static void
 parse_top_node_line (NODE *node)
 {
-  char **store_in, *dummy = 0;
+  char **store_in;
+  char *nodename;
   int value_length;
 
   /* If the first line is empty, leave it in.  This is the case
      in the index-apropos window. */
   if (*inptr == '\n')
-    {
-      return;
-    }
+    return;
 
   node->next = node->prev = node->up = 0;
 
@@ -1114,12 +1105,10 @@ parse_top_node_line (NODE *node)
       if (!strncasecmp (inptr, INFO_FILE_LABEL, strlen(INFO_FILE_LABEL)))
         {
           skip_input (strlen(INFO_FILE_LABEL));
-          store_in = &dummy;
         }
       else if (!strncasecmp (inptr, INFO_NODE_LABEL, strlen(INFO_NODE_LABEL)))
         {
           skip_input (strlen(INFO_NODE_LABEL));
-          store_in = &dummy;
         }
       else if (!strncasecmp (inptr, INFO_PREV_LABEL, strlen(INFO_PREV_LABEL)))
         {
@@ -1144,20 +1133,31 @@ parse_top_node_line (NODE *node)
         }
       else 
         {
-          store_in = &dummy;
+          store_in = 0;
           /* Not recognized - code below will skip to next comma */
         }
         
       skip_input (skip_whitespace (inptr));
 
+      if (*inptr != '(')
+        value_length = 0;
+      else
+        {
+          value_length = read_bracketed_filename (inptr, 0);
+        }
+
       /* Separate at commas or newlines, so it will work for
          filenames including full stops. */
-      /* TODO: Account for "(dir)" and "(DIR)". */
-      value_length = read_quoted_string (inptr, "\n\r\t,", 1, store_in);
+      value_length += read_quoted_string (inptr + value_length,
+                                          "\n\r\t,", 1, &nodename);
+      if (store_in)
+        {
+          *store_in = xmalloc (value_length + 1);
+          strncpy (*store_in, inptr, value_length);
+          (*store_in)[value_length] = '\0';
+        }
 
-      free (dummy); dummy = 0;
-
-      /* Skip past value and any quoting or separating characters. */
+      free (nodename);
       skip_input (value_length);
 
       if (*inptr == '\n')
@@ -1209,7 +1209,7 @@ avoid_see_see (char *ptr, char *base)
   return 0;
 }
 
-/* Output, replace or hide text introducing a reference.  inptr starts on
+/* Output, replace or hide text introducing a reference.  INPTR starts on
    the first byte of a sequence introducing a reference and finishes on the
    first (non-whitespace) byte of the reference label. */
 static int
@@ -1283,51 +1283,35 @@ scan_reference_marker (REFERENCE *entry)
 static int
 scan_reference_label (REFERENCE *entry)
 {
-  char *end;
-  char *label = 0;
+  char *dummy;
   long label_len;
 
   /* Search forward to ":" to get label name.  Cross-references may have
      a newline in the middle. */
   if (entry->type == REFERENCE_MENU_ITEM)
-    label_len = read_quoted_string (inptr, ":", 1, &label);
+    label_len = read_quoted_string (inptr, ":", 1, &dummy);
   else
-    label_len = read_quoted_string (inptr, ":", 2, &label);
+    label_len = read_quoted_string (inptr, ":", 2, &dummy);
+  free (dummy);
     
   if (label_len == 0)
-    {
-      free (label);
-      return 0;
-    }
+    return 0;
 
-  entry->label = label;
+  entry->label = xmalloc (label_len + 1);
+  memcpy (entry->label, inptr, label_len);
+  entry->label[label_len] = '\0';
   canonicalize_whitespace (entry->label);
-
-#ifdef QUOTE_NODENAMES
-  if (inptr[0] == '\177')
-    {
-      skip_input (1);
-      label_len -= 2;
-    }
-#endif
-
-  end = inptr + label_len;
 
   if (preprocess_nodes_p)
     entry->start = text_buffer_off (&output_buf);
 
   /* Write text of label. */
-  copy_input_to_output (end - inptr);
+  copy_input_to_output (label_len);
 
   if (rewrite_p)
     entry->end = text_buffer_off (&output_buf);
   else
-    entry->end = end - input_start;
-
-#ifdef QUOTE_NODENAMES
-  if (inptr[0] == '\177')
-    skip_input (1);
-#endif
+    entry->end = inptr - input_start;
 
   /* Colon after label. */
   skip_input (1);
@@ -1345,16 +1329,26 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
 {
   int i;
 
-  /* If this reference entry continues with another ':' then the reference is
-     within the same file, and the nodename is the same as the label. */
+  /* If this reference entry continues with another ':' then the target
+     of the reference is given by the label. */
   if (*inptr == ':')
     {
       skip_input (1);
       if (entry->type == REFERENCE_MENU_ITEM)
         write_extra_bytes_to_output (" ", 1);
 
-      entry->filename = 0;
-      entry->nodename = xstrdup (entry->label);
+      info_parse_node (entry->label);
+      if (info_parsed_filename)
+        entry->filename = xstrdup (info_parsed_filename);
+      if (info_parsed_nodename)
+        entry->nodename = xstrdup (info_parsed_nodename);
+
+      if (inptr[-1] == '\177')
+        {
+          /* TODO: Remove the DEL bytes.  We don't do this until after calling
+             info_parse_node so that ^?(FOO)BAR^?:: refers to a node called 
+             "(FOO)BAR" within the current manual. */
+        }
       return 1;
     }
 

@@ -2003,7 +2003,6 @@ info_select_reference (WINDOW *window, REFERENCE *entry)
   char *label = entry->label;
   int line_number = entry->line_number;
 
-  /* problem here: this call can free 'entry' if the tag table is rewritten. */
   node = info_get_node_with_defaults (filename, nodename, window->node);
 
   /* Try something a little weird.  If the node couldn't be found, and the
@@ -2079,9 +2078,9 @@ info_parse_and_select (char *line, WINDOW *window)
 {
   REFERENCE entry;
 
-  /* info_parse_node will be called on 'line' in subsequent functions. */
-  entry.nodename = line;
-  entry.filename = 0;
+  info_parse_node (line);
+  entry.filename = info_parsed_filename;
+  entry.nodename = info_parsed_nodename;
   entry.line_number = 0;
   entry.label = "*info-parse-and-select*";
 
@@ -2855,7 +2854,10 @@ info_handle_pointer (char *label, WINDOW *window)
       return 0;
     }
 
-  node = info_get_node_with_defaults (0, description, window->node);
+  info_parse_node (description);
+  node = info_get_node_with_defaults (info_parsed_filename,
+                                      info_parsed_nodename,
+                                      window->node);
   if (!node)
     {
       if (info_recent_file_error)
