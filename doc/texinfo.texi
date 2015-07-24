@@ -5660,6 +5660,14 @@ Emacs Texinfo mode updating commands work only to create menus of
 subordinate nodes in a hierarchically structured document.  It is much
 better to use cross references to refer to arbitrary nodes.
 
+@cindex Menus, automatically generating
+@findex validatemenus
+@command{makeinfo} can automatically generate menus in nodes for Info 
+and HTML output, based on the chapter structure of the document.  To 
+specify that you want it to do this, place the line 
+@samp{@@validatemenus off} near the beginning of the document, after 
+@samp{@@setfilename}.
+
 In Info, a user selects a node with the @kbd{m} (@code{Info-menu})
 command.  The menu entry name is what the user types after the @kbd{m}
 command.
@@ -21974,6 +21982,10 @@ characters: @code{after}, @code{before}, @code{none}.
 @item @@v@{@var{c}@}
 Generate check accent over the character @var{c}, as in @v{o}.
 @xref{Inserting Accents}.
+
+@item @@validatemenus @var{on-off}
+Control whether menus can be automatically generated.  @xref{Writing a 
+Menu}.
 
 @item @@value@{@var{txivar}@}
 Insert the value, if any, of the Texinfo variable @var{txivar},

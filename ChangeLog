@@ -1,5 +1,10 @@
 2015-07-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Writing a Menu, Command List),
+	* doc/refcard/txirefcard.tex: Document @validatemenus.
+
+2015-07-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Nodes): Combine two sentences.  Move advice 
 	on not renaming nodes to Node Names.  Remove sentence saying 
 	that nodes don't impose a hierarchical structure.
