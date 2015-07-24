@@ -1,3 +1,17 @@
+2015-07-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Nodes): Combine two sentences.  Move advice 
+	on not renaming nodes to Node Names.  Remove sentence saying 
+	that nodes don't impose a hierarchical structure.
+	(@node): Change word "stretch" to "region".  Move remark on how 
+	definition of node compares to definition of sections later.  
+	Change wording of reference to Node Line Requirements.  Move 
+	explanation of use of chapter structuring command earlier.  
+	Reword paragraph about formatting for printing.  Move mention of 
+	@anchor and cross-references to Nodes.  Move description of 
+	optional arguments later in node.
+	(makeinfo Pointer Creation): Move section to end of chapter.
+
 2015-07-24  Carlos O'Donell  <carlos@redhat.com> (tiny change)
 
 	* util/htmlxref.cnf (flex): Add entries pointing to
