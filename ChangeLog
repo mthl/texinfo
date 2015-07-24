@@ -1,3 +1,7 @@
+2015-07-24  Karl Berry  <karl@freefriends.org>
+
+	* util/htmlxref.cnf (flex): no mono manual.
+
 2015-07-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/refcard/txirefcard.texi: 'h' for Info tutorial, not 'H'.
