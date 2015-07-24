@@ -229,6 +229,10 @@ emms		node	${GS}/emms/manual/
 findutils	mono	${GS}/findutils/manual/html_mono/find.html
 findutils	node	${GS}/findutils/manual/html_node/find_html
 
+FLEX = http://flex.sourceforge.net
+flex		mono	${FLEX}/manual/index.html
+flex		node	${FLEX}/manual/
+
 gama		mono	${GS}/gama/manual/gama.html
 gama		node	${GS}/gama/manual/html_node/
 

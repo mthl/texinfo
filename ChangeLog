@@ -1,3 +1,8 @@
+2015-07-24  Carlos O'Donell  <carlos@redhat.com> (tiny change)
+
+	* util/htmlxref.cnf (flex): Add entries pointing to
+	http://flex.sourceforge.net.
+
 2015-07-24  Arnold D. Robbins     <arnold@skeeve.com>
 
 	* doc/texinfo.texi: Minor updates with respect to name / spelling
