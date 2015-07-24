@@ -24,10 +24,10 @@ one of the relevant sections:
 -------------------------------------------------------------------------------
 * Language:
   . You can now optionally miss out the @menu from nodes with other
-    nodes below them in the document structure.  The new command 
-    @validatemenus controls whether to check that @menu is given in 
-    these circumstances.  For Info and HTML output, makeinfo will, when 
-    needed, create a menu for nodes lacking one given explicitly.
+    nodes below them in the document structure.  If you use 
+    "@validatemenus off" near the start of a Texinfo file,
+    makeinfo will, where needed, create a menu for nodes lacking one 
+    given explicitly.
 
 * makeinfo
   . quotation marks are left out for node names and index entries in
