@@ -16462,10 +16462,10 @@ Texinfo for documentation and (portable) @code{awk} for code.  A
 single source file, @file{texindex/ti.twjr} in this case, produces the
 runnable program, a printable document, and an online document.
 
-The system is called @file{texiwebjr} and was created by Arnold
+The system is called TexiWeb Jr.@: and was created by Arnold
 Robbins, who also wrote the new @command{texindex}.  Not
-coincidentally, he is also the long-time maintainer of Gawk,
-@pxref{Top,,, gawk, The GNU Awk User's Guide}).  The file
+coincidentally, he is also the long-time maintainer of @command{gawk}
+(GNU Awk, @pxref{Top,,, gawk, The GNU Awk User's Guide}).  The file
 @file{texindex/Makefile.am} shows example usage of the system.
 
 
