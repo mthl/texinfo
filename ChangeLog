@@ -4,6 +4,11 @@
 	* tp/Texinfo/Convert/XSParagraph/XSParagraph.pm: Don't goto a 
 	label inside an if (0) { ... } block.
 
+	* tp/Texinfo/Convert/XSParagraph/configure.ac (fetch_conf): New 
+	function, to replace fetch_conf.pl script.  Use Perl executable 
+	from ${PERL} instead of /usr/bin/env perl, to make it easier for
+	the user to use a different perl.
+
 2015-07-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm (new_formatter): Uncomment 
