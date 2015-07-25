@@ -9,6 +9,9 @@
 	BEGIN block.  Call XSParagraph::init, and on error, replace 
 	XSParagraph module with Texinfo::Convert::Paragraph.
 
+	* tp/t/converters_tests.t: Skip
+	"at_commands_in_refs_utf8 file_info".
+
 2015-07-24  Karl Berry  <karl@freefriends.org>
 
 	* util/htmlxref.cnf (flex): no mono manual.
