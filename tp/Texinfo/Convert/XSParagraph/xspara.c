@@ -183,8 +183,8 @@ iswupper (wint_t wc)
 
 #endif
 
-void
-xspara_hello (void)
+int
+xspara_init (void)
 {
   char *utf8_locale = 0;
   int len;
@@ -230,7 +230,7 @@ xspara_hello (void)
     {
 failure:
       fprintf (stderr, "Couldn't set UTF-8 character type in locale.\n");
-      abort ();
+      return 0; /* failure */
     }
   else
     {
@@ -241,6 +241,7 @@ success: ;
       fprintf (stderr, "character encoding is: %s\n",
                nl_langinfo (CODESET));
        */
+      return 1; /* success */
     }
 }
 

@@ -32,8 +32,6 @@ use Texinfo::Convert::Line;
 use Texinfo::Convert::UnFilled;
 
 use XSParagraph;
-XSParagraph::hello ();
-# TODO: Run initialization code for XSParagraph implicitly.
 
 use Carp qw(cluck);
 

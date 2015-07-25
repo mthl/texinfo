@@ -1,5 +1,4 @@
 #include <config.h>
-/* Gnulib needs the config.h from the top-level directory. */
 
 #define PERL_NO_GET_CONTEXT
 #include "EXTERN.h"
@@ -11,10 +10,10 @@
 #include "xspara.h"
 
 
-MODULE = XSParagraph	PACKAGE = XSParagraph     PREFIX = xspara_	
+MODULE = XSParagraph	PACKAGE = XSParagraph     PREFIX = xspara_
 
-void
-xspara_hello()
+int
+xspara_init ()
 
 void
 xspara_set_state (state)

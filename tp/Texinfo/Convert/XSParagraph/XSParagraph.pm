@@ -34,9 +34,7 @@ our @EXPORT = qw(
 	
 );
 
-our $VERSION = '6.0';
-#bootstrap XSParagraph $VERSION;
-
+BEGIN {
 # We get this from XSParagraph.la
 # my $dlpath = "Texinfo/Convert/XSParagraph/.libs/XSParagraph.so.0";
 
@@ -60,13 +58,15 @@ sub _find_file($) {
 
 my ($libtool_dir, $libtool_archive) = _find_file("XSParagraph.la");
 if (!$libtool_archive) {
-  die "XSParagraph: couldn't find Libtool archive file\n";
+  warn "XSParagraph: couldn't find Libtool archive file\n";
+  goto FALLBACK;
 }
 
 my $fh;
 open $fh, $libtool_archive;
 if (!$fh) {
-  die "XSParagraph: couldn't open Libtool archive file\n";
+  warn "XSParagraph: couldn't open Libtool archive file\n";
+  goto FALLBACK;
 }
 
 # Look for the line in XSParagraph.la giving the name of the loadable object.
@@ -78,7 +78,8 @@ while (my $line = <$fh>) {
   }
 }
 if (!$dlname) {
-  die "XSParagraph: couldn't find name of shared object\n";
+  warn "XSParagraph: couldn't find name of shared object\n";
+  goto FALLBACK;
 }
 
 # The *.so file is under .libs in the source directory.
@@ -87,14 +88,17 @@ push @DynaLoader::dl_library_path, "$libtool_dir/.libs";
 
 my $dlpath = DynaLoader::dl_findfile($dlname);
 if (!$dlpath) {
-  die "XSParagraph: couldn't find $dlname\n";
+  warn "XSParagraph: couldn't find $dlname\n";
+  goto FALLBACK;
 }
 
 #print STDERR "loadable object is at $dlpath\n";
 
 my $module = "XSParagraph";
+our $VERSION = '6.0';
 
 # Following steps under "bootstrap" in "man DynaLoader".
+#bootstrap XSParagraph $VERSION;
 
 # TODO: Execute blib/arch/auto/XSParagraph/XSParagraph.bs ?
 # That file is empty.
@@ -103,7 +107,8 @@ my $module = "XSParagraph";
 my $flags = 0;
 my $libref = DynaLoader::dl_load_file($dlpath, $flags);
 if (!$libref) {
-  die "XSParagraph: couldn't load file $dlpath\n";
+  warn "XSParagraph: couldn't load file $dlpath\n";
+  goto FALLBACK;
 }
 my @undefined_symbols = DynaLoader::dl_undef_symbols();
 if ($#undefined_symbols+1 != 0) {
@@ -111,13 +116,15 @@ if ($#undefined_symbols+1 != 0) {
 }
 my $symref = DynaLoader::dl_find_symbol($libref, "boot_$module");
 if (!$symref) {
-  die "XSParagraph: couldn't find boot_$module symbol\n";
+  warn "XSParagraph: couldn't find boot_$module symbol\n";
+  goto FALLBACK;
 }
 my $boot_fn = DynaLoader::dl_install_xsub("${module}::bootstrap",
                                                 $symref, $dlname);
 
 if (!$boot_fn) {
-  die "XSParagraph: couldn't bootstrap\n";
+  warn "XSParagraph: couldn't bootstrap\n";
+  goto FALLBACK;
 }
 
 push @DynaLoader::dl_shared_objects, $dlpath; # record files loaded
@@ -127,6 +134,20 @@ push @DynaLoader::dl_shared_objects, $dlpath; # record files loaded
 # be called from Perl code.
 &$boot_fn($module, $VERSION);
 
+if (!XSParagraph::init ()) {
+  warn "XSParagraph: error initializing\n";
+  goto FALLBACK;
+}
+
+if (0) {
+FALLBACK:
+  # Fall back to using the Perl code.
+  *XSParagraph:: = *Texinfo::Convert::Paragraph::;
+}
+
+} # end BEGIN
+
+
 # Preloaded methods go here.
 
 #########################################################################
@@ -135,11 +156,6 @@ push @DynaLoader::dl_shared_objects, $dlpath; # record files loaded
 sub dump($)
 {
   return "\n";
-}
-
-# Will not be implemented.
-sub add_underlying_text($$)
-{
 }
 
 1;

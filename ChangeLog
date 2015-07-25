@@ -1,17 +1,28 @@
+2015-07-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (new_formatter): Uncomment 
+	line using XSParagraph module.  Don't call XSParagraph::hello.
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_hello)
+	(xspara_init): Rename.  Specify whether an error occurred in the 
+	return value.
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.pm: Place code in 
+	BEGIN block.  Call XSParagraph::init, and on error, replace 
+	XSParagraph module with Texinfo::Convert::Paragraph.
+
 2015-07-24  Karl Berry  <karl@freefriends.org>
 
 	* util/htmlxref.cnf (flex): no mono manual.
 
-2015-07-25  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-07-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/refcard/txirefcard.texi: 'h' for Info tutorial, not 'H'.
 
-2015-07-25  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-07-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Writing a Menu, Command List),
 	* doc/refcard/txirefcard.tex: Document @validatemenus.
 
-2015-07-25  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-07-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Nodes): Combine two sentences.  Move advice 
 	on not renaming nodes to Node Names.  Remove sentence saying 
