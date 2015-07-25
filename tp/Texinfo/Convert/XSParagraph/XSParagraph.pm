@@ -138,13 +138,12 @@ if (!XSParagraph::init ()) {
   warn "XSParagraph: error initializing\n";
   goto FALLBACK;
 }
+goto DONTFALLBACK;
 
-if (0) {
 FALLBACK:
   # Fall back to using the Perl code.
   *XSParagraph:: = *Texinfo::Convert::Paragraph::;
-}
-
+DONTFALLBACK: ;
 } # end BEGIN
 
 

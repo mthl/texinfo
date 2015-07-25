@@ -1,5 +1,11 @@
 2015-07-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Clear CFLAGS.
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.pm: Don't goto a 
+	label inside an if (0) { ... } block.
+
+2015-07-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Plaintext.pm (new_formatter): Uncomment 
 	line using XSParagraph module.  Don't call XSParagraph::hello.
 	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_hello)

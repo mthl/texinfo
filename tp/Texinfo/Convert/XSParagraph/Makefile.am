@@ -76,6 +76,10 @@ XSParagraph_la_SOURCES = XSParagraph.c xspara.c xspara.h \
 
 BUILT_SOURCES = XSParagraph.c
 
+# Clear any flags set by configure at the top level, because the 
+# compiler used in this subdirectory might be different.
+CFLAGS =
+
 XSParagraph_la_CFLAGS =
 
 #CCFLAGS = -D_REENTRANT -D_GNU_SOURCE -fno-strict-aliasing -pipe -fstack-protector -I/usr/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64
