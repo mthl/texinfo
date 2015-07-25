@@ -20,13 +20,13 @@ fetch_conf ()
           # be other \ sequences we want to process as well.  This is
           # the escape sequence for single-quoted strings in Perl.
           conf_value=`echo $conf_value \
-              | sed -e 's/^@<:@^=@:>@*= *//' \
-                    -e 's/^'\''//'           \
-                    -e 's/ *; *$//'          \
-                    -e 's/'\''$//'           \
-                    -e 's/\\"/"/g'           \
-                    -e 's/\\'\''/\'\''/g'    \
-                    -e 's/\\\\/\\/g'         `
+              | sed -e 's/^@<:@^=@:>@*= *//'   \
+                    -e 's/^'\\''//'            \
+                    -e 's/ *; *$//'            \
+                    -e 's/'\\''$//'            \
+                    -e 's/\\\\"/"/g'           \
+                    -e 's/\\\\'\\''/\\'\\''/g' \
+                    -e 's/\\\\\\\\/\\\\/g'     `
           echo got "$conf_value"
 } 
 
