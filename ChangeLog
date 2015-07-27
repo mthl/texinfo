@@ -1,3 +1,12 @@
+2015-07-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Paragraph.pm,
+	* tp/Texinfo/Convert/Line.pm,
+	* tp/Texinfo/Convert/UnFilled.pm,
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.xs,
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (add_next): Remove an 
+	unused parameter.
+
 2015-07-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Clear CFLAGS.
