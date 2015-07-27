@@ -151,25 +151,23 @@ sub end($)
   return $result;
 }
 
-sub add_next($;$$$)
+sub add_next($;$$)
 {
   my $line = shift;
   my $word = shift;
-  my $end_sentence = shift;
   my $transparent = shift;
   $line->{'end_line_count'} = 0;
-  return $line->_add_next($word, $end_sentence, $transparent);
+  return $line->_add_next($word, $transparent);
 }
 
 my $end_sentence_character = quotemeta('.?!');
 my $after_punctuation_characters = quotemeta('"\')]');
 
-# add a word and/or end of sentence.
-sub _add_next($;$$$)
+# add a word
+sub _add_next($;$$)
 {
   my $line = shift;
   my $word = shift;
-  my $end_sentence = shift;
   my $transparent = shift;
   my $result = '';
 
@@ -209,16 +207,20 @@ sub _add_next($;$$$)
     }
   }
 
-  if (defined($end_sentence)) {
-    $line->{'end_sentence'} = $end_sentence;
-  }
   return $result;
 }
 
-sub inhibit_end_sentence($)
+sub remove_end_sentence($)
 {
   my $line = shift;
   $line->{'end_sentence'} = 0;
+}
+
+sub add_end_sentence($;$)
+{
+  my $line = shift;
+  my $value = shift;
+  $line->{'end_sentence'} = $value;
 }
 
 sub allow_end_sentence($)

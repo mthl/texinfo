@@ -3,6 +3,10 @@
 	* tp/Texinfo/Convert/XSParagraph/xspara.c: Remove all comments 
 	with out-of-date line numbers for Paragraph.pm.
 
+	* tp/Texinfo/Convert/Paragraph.pm
+	(inhibit_end_sentence, remove_end_sentence): Rename.
+	(add_end_sentence): New function, split from _add_next.
+
 2015-07-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Paragraph.pm,

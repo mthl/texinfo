@@ -524,9 +524,7 @@ xspara_end (void)
    of the line start a new one. */
 void
 xspara__add_next (TEXT *result,
-                  char *word, int word_len,
-                  int end_sentence,
-                  int transparent)
+                  char *word, int word_len, int transparent)
 {
   if (word)
     {
@@ -612,24 +610,18 @@ xspara__add_next (TEXT *result,
           xspara__cut_line (result);
         }
     }
-
-  if (end_sentence != -2)
-    {
-      //fprintf (stderr, "end sentence %d\n", end_sentence);
-      state.end_sentence = end_sentence;
-    }
 }
 
 /* Like _add_next but zero end_line_count at beginning. */
 char *
-xspara_add_next (char *text, int text_len, int end_sentence)
+xspara_add_next (char *text, int text_len)
 {
   TEXT t;
 
   text_init (&t);
   state.end_line_count = 0;
   //fprintf (stderr, "PASSED EOS %d\n", end_sentence);
-  xspara__add_next (&t, text, text_len, end_sentence, 0);
+  xspara__add_next (&t, text, text_len, 0);
 
   if (t.space > 0)
     return t.text;
@@ -638,9 +630,15 @@ xspara_add_next (char *text, int text_len, int end_sentence)
 }
 
 void
-xspara_inhibit_end_sentence (void)
+xspara_remove_end_sentence (void)
 {
   state.end_sentence = 0;
+}
+
+void
+xspara_add_end_sentence (int value)
+{
+  state.end_sentence = value;
 }
 
 void
@@ -957,7 +955,7 @@ xspara_add_text (char *text)
               memcpy (added_word, p, char_len);
               added_word[char_len] = '\0';
 
-              xspara__add_next (&result, added_word, char_len, -2, 0);
+              xspara__add_next (&result, added_word, char_len, 0);
               free (added_word);
 
               /* Now check if it is considered as an end of sentence, and

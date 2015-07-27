@@ -1751,7 +1751,7 @@ sub _convert($$)
     my $command = $root->{'cmdname'};
     if (defined($no_brace_commands{$command})) {
       if ($command eq ':') {
-        $formatter->{'container'}->inhibit_end_sentence();
+        $formatter->{'container'}->remove_end_sentence();
         return '';
       } elsif ($command eq '*') {
         $result = _count_added($self, $formatter->{'container'},
@@ -1760,7 +1760,8 @@ sub _convert($$)
                               $formatter->{'container'}->end_line());
       } elsif ($command eq '.' or $command eq '?' or $command eq '!') {
         $result .= _count_added($self, $formatter->{'container'},
-            $formatter->{'container'}->add_next($command, 1));
+            $formatter->{'container'}->add_next($command));
+        $formatter->{'container'}->add_end_sentence(1);
       } elsif ($command eq ' ' or $command eq "\n" or $command eq "\t") {
         $result .= _count_added($self, $formatter->{'container'}, 
             $formatter->{'container'}->add_next($no_brace_commands{$command}));
@@ -1799,7 +1800,8 @@ sub _convert($$)
 
       if ($punctuation_no_arg_commands{$command}) {
         $result .= _count_added($self, $formatter->{'container'},
-                    $formatter->{'container'}->add_next($text, 1));
+                    $formatter->{'container'}->add_next($text));
+        $formatter->{'container'}->add_end_sentence(1);
       } elsif ($command eq 'tie') {
         $formatter->{'w'}++;
         $result .= _count_added($self, $formatter->{'container'},
@@ -1821,7 +1823,7 @@ sub _convert($$)
         }
 
         if ($command eq 'dots') {
-          $formatter->{'container'}->inhibit_end_sentence();
+          $formatter->{'container'}->remove_end_sentence();
         }
       }
       if ($formatter->{'var'} 
@@ -1860,7 +1862,7 @@ sub _convert($$)
       # in case the text added ends with punctuation.  
       # If the text is empty (likely because of an error) previous 
       # punctuation will be cancelled, we don't want that.
-      $formatter->{'container'}->inhibit_end_sentence()
+      $formatter->{'container'}->remove_end_sentence()
         if ($accented_text ne '');
       return $result;
     } elsif ($self->{'style_map'}->{$command} 
@@ -1917,8 +1919,7 @@ sub _convert($$)
         $formatter->{'font_type_stack'}->[-1]->{'code_command'}++;
       }
       $result .= _count_added($self, $formatter->{'container'},
-               $formatter->{'container'}->add_next($text_before, 
-                                                   undef, 1))
+               $formatter->{'container'}->add_next($text_before, 1))
          if ($text_before ne '');
       if ($root->{'args'}) {
         $result .= $self->_convert($root->{'args'}->[0]);
@@ -1934,8 +1935,7 @@ sub _convert($$)
         }
       }
       $result .= _count_added($self, $formatter->{'container'},
-               $formatter->{'container'}->add_next($text_after,
-                                                   undef, 1))
+               $formatter->{'container'}->add_next($text_after, 1))
          if ($text_after ne '');
       if ($command eq 'w') {
         $formatter->{'w'}--;
@@ -2058,8 +2058,8 @@ sub _convert($$)
         $self->_error_outside_of_any_node($root);
       }
       $result .= _count_added($self, $formatter->{'container'},
-           $formatter->{'container'}->add_next("($formatted_footnote_number)", 
-                                                  undef, 1));
+           $formatter->{'container'}->add_next
+                                        ("($formatted_footnote_number)", 1));
       if ($self->get_conf('footnotestyle') eq 'separate' and $self->{'node'}) {
         $result .= $self->_convert({'contents' => 
          [{'text' => ' ('},

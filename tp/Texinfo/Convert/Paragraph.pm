@@ -19,7 +19,7 @@
 
 # this module has nothing Texinfo specific.  In contrast with existing
 # modules Text::Wrap, Text::Format, it keeps a state of the paragraph 
-# and wait for text to be feed.
+# and waits for text to be fed into it.
 
 package Texinfo::Convert::Paragraph;
 
@@ -171,22 +171,20 @@ my $after_punctuation_characters = quotemeta('"\')]');
 # Any end of sentence punctuation in $WORD that should be allowed to end a 
 # sentence but which would otherwise be preceded by an upper-case letter should 
 # instead by preceded by a backspace character.
-sub add_next($;$$$)
+sub add_next($;$$)
 {
   my $paragraph = shift;
   my $word = shift;
-  my $end_sentence = shift;
   my $transparent = shift;
   $paragraph->{'end_line_count'} = 0;
-  return _add_next($paragraph, $word, $end_sentence, $transparent);
+  return _add_next($paragraph, $word, $transparent);
 }
 
 # add a word and/or end of sentence.
-sub _add_next($;$$$$)
+sub _add_next($;$$$)
 {
   my $paragraph = shift;
   my $word = shift;
-  my $end_sentence = shift;
   my $transparent = shift;
   my $newlines_impossible = shift;
   my $result = '';
@@ -252,16 +250,19 @@ sub _add_next($;$$$$)
       $result .= _cut_line($paragraph);
     }
   }
-  if (defined($end_sentence)) {
-    $paragraph->{'end_sentence'} = $end_sentence;
-  }
   return $result;
 }
 
-sub inhibit_end_sentence($)
+sub remove_end_sentence($)
 {
   my $paragraph = shift;
   $paragraph->{'end_sentence'} = 0;
+}
+
+sub add_end_sentence($;$) {
+  my $paragraph = shift;
+  my $value = shift;
+  $paragraph->{'end_sentence'} = $value;
 }
 
 sub allow_end_sentence($)
@@ -402,7 +403,7 @@ sub add_text($$)
         $disinhibit = 1;
       }
 
-      $result .= _add_next($paragraph, $added_word, undef, undef,
+      $result .= _add_next($paragraph, $added_word, undef,
                            !$newline_possible_flag);
 
       # Check if it is considered as an end of sentence.  There are two things

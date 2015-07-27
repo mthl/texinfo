@@ -190,30 +190,17 @@ xspara_add_next (paragraph, text_in, ...)
         STRLEN text_len;
         //int utf8;
         char *retval;
-        int end_sentence = -2;
     CODE:
-        items -= 2;
-
-        if (items > 0)
-          {
-            if (SvOK(ST(2)))
-              {
-                end_sentence = (int)SvIV(ST(2));
-              }
-            items--;
-          }
+        /* TODO: Propagate 'transparent' argument. */
 
         /* Always convert the input to UTF8 with sv_utf8_upgrade, so we can 
            process it properly in xspara_add_next. */
         if (!SvUTF8 (text_in))
-          {
-            sv_utf8_upgrade (text_in);
-          }
+          sv_utf8_upgrade (text_in);
         text = SvPV (text_in, text_len);
 
         //xspara_set_state (paragraph);
-        //fprintf (stderr, "end sentence %d\n", end_sentence);
-        retval = xspara_add_next (text, text_len, end_sentence);
+        retval = xspara_add_next (text, text_len);
         xspara_get_state (paragraph);
 
         RETVAL = newSVpv (retval, 0);
@@ -224,11 +211,24 @@ xspara_add_next (paragraph, text_in, ...)
 
 
 void
-xspara_inhibit_end_sentence (paragraph)
+xspara_remove_end_sentence (paragraph)
         HV * paragraph
     CODE:
         //xspara_set_state (paragraph);
-        xspara_inhibit_end_sentence ();
+        xspara_remove_end_sentence ();
+        xspara_get_state (paragraph);
+
+void
+xspara_add_end_sentence (paragraph, value)
+        HV * paragraph
+        SV * value
+    PREINIT:
+        int intvalue = 0;
+    CODE:
+        if (SvOK(value))
+          intvalue = (int)SvIV(value);
+        //xspara_set_state (paragraph);
+        xspara_add_end_sentence (intvalue);
         xspara_get_state (paragraph);
 
 void
