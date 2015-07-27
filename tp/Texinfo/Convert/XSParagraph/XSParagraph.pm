@@ -1,4 +1,4 @@
-# Copyright 2010, 2011, 2012, 2014 Free Software Foundation, Inc.
+# Copyright 2014, 2015 Free Software Foundation, Inc.
 
 package XSParagraph;
 require DynaLoader;

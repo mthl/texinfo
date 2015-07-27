@@ -2,19 +2,29 @@ use strict;
 
 use Test::More;
 use File::Spec;
-BEGIN { plan tests => 127;
+
+BEGIN { plan tests => 127 * 2 - 45;
         if (defined($ENV{'top_srcdir'})) {
           unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
           my $lib_dir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp', 'maintain');
           unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'libintl-perl', 'lib'),
                          File::Spec->catdir($lib_dir, 'lib', 'Unicode-EastAsianWidth', 'lib'),
                          File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'));
-      }};
+      }
+    };
 
 use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use Texinfo::Convert::Paragraph;
+use lib 'Texinfo/Convert/XSParagraph';
+use Texinfo::Convert::XSParagraph::XSParagraph;
 use Texinfo::Convert::Line;
 use Texinfo::Convert::UnFilled;
+
+# We do the test for Texinfo::Convert::Paragraph tests twice, once with 
+# Texinfo::Convert::Paragraph, once with XSParagraph.  A few them are only done 
+# once, though.
+my $testing_XSParagraph;
+DOITAGAIN:
 ok(1, "modules loading"); # If we made it this far, we're ok.
 
 sub test_para($$$;$)
@@ -484,6 +494,7 @@ $result .= $para->add_text(" ggg\n");
 is ($result, 'aa   ggg', 'space protected space');
 $para->end();
 
+if (!$testing_XSParagraph) {
 $para = Texinfo::Convert::Paragraph->new({'max' => 8});
 $result = $para->add_text('aa ');
 is ($para->{'lines_counter'}, 0, 'count lines first');
@@ -491,6 +502,11 @@ $result .= $para->add_text('bbbbbbbbbbbbbbbbbbbb');
 is ($para->{'lines_counter'}, 1, 'count lines text pending');
 $result .= $para->end();
 is ($para->{'lines_counter'}, 2, 'count lines end paragraph');
+
+  *Texinfo::Convert::Paragraph:: = *XSParagraph::;
+  $testing_XSParagraph = 1;
+  goto DOITAGAIN;
+}
 
 sub test_line($$$;$)
 {

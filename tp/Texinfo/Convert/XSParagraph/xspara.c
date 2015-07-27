@@ -523,105 +523,138 @@ xspara_end (void)
 /* Add WORD to paragraph in RESULT, not refilling WORD.  If we go past the end 
    of the line start a new one. */
 void
-xspara__add_next (TEXT *result,
-                  char *word, int word_len, int transparent)
+xspara__add_next (TEXT *result, char *word, int word_len, int transparent)
 {
-  if (word)
+  int disinhibit = 0;
+  if (!word)
+    return;
+
+  //printf ("LAST CHAR IS NOW %lc\n", (wchar_t) state.last_letter);
+  if (word_len >= 1 && word[word_len - 1] == '\b')
     {
-      if (state.word.end == 0 && !state.invisible_pending_word)
+      word[--word_len] = '\0';
+      disinhibit = 1;
+    }
+
+  if (state.word.end == 0 && !state.invisible_pending_word)
+    {
+      /* Check if we are at the end of a sentence and if we need to
+         output two spaces after the full stop.  If so, check if the
+         word we are given begins with whitespace.  If it doesn't,
+         double the pending space.
+
+         We checked above if there was a pending word because if there
+         was, it is due to be output after the end-sentence whitespace,
+         not the string that was passed as an argument to this function.  
+       */
+      state.last_letter = L'\0';
+
+      if (state.counter != 0 && state.space.end > 0
+          && state.end_sentence == 1 && !state.french_spacing)
         {
-          /* Check if we are at the end of a sentence and if we need to
-             output two spaces after the full stop.  If so, check if the
-             word we are given begins with whitespace.  If it doesn't,
-             double the pending space.
+          wchar_t wc;
+          size_t char_len;
 
-             We checked above if there was a pending word because if there
-             was, it is due to be output after the end-sentence whitespace,
-             not the string that was passed as an argument to this function.  
-           */
-
-          if (state.counter != 0 && state.space.end > 0
-              && state.end_sentence == 1 && !state.french_spacing)
+          char_len = mbrtowc (&wc, word, 10, NULL);
+          if ((long) char_len > 0 && !iswspace (wc))
             {
-              wchar_t wc;
-              size_t char_len;
-
-              char_len = mbrtowc (&wc, word, 10, NULL);
-              if ((long) char_len > 0 && !iswspace (wc))
+              /* Make the pending space up to two spaces. */
+              while (state.space_counter < 2)
                 {
-                  /* Make the pending space up to two spaces. */
-                  while (state.space_counter < 2)
-                    {
-                      text_append_n (&state.space, " ", 1);
-                      state.space_counter++;
-                    }
+                  text_append_n (&state.space, " ", 1);
+                  state.space_counter++;
                 }
-
-              state.end_sentence = -2;
             }
+
+          state.end_sentence = -2;
         }
+    }
 
-      text_append_n (&state.word, word, word_len);
+  text_append_n (&state.word, word, word_len);
 
-      if (strchr (word, '\n'))
-        {
-          /* If there was a newline in the word we just added, put the entire
-             pending ouput in the results string, and start a new line.
-             TODO: Does line_counter get incremented properly in this 
-             circumstance? */
-          /* TODO: Could we just call _add_pending_word here? */
-          text_append_n (result, state.space.text, state.space.end);
-          state.space.end = 0;
-          state.space_counter = 0;
-          text_append_n (result, state.word.text, state.word.end);
-          state.word.end = 0;
-          state.word_counter = 0;
-          state.invisible_pending_word = 0;
-
-          xspara__end_line ();
-        }
+  if (!transparent)
+    {
+      if (disinhibit)
+        state.last_letter = L'a'; /* a lower-case letter */
       else
         {
-          /* The possibility of two-column characters is ignored here. */
-
-          /* Calculate length of multibyte string in characters. */
-          int len = 0;
-          int left = word_len;
-          wchar_t w;
-          char *p = word;
-
-          while (left > 0)
+          /* Save last character in WORD */
+          char *p = word + word_len;
+          while (p > word)
             {
-              int char_len = mbrtowc (&w, p, 10, NULL);
-              left -= char_len;
-              p += char_len;
-              len++;
+              p--;
+              if ((long) mbrlen(p, 10, NULL) > 0)
+                {
+                  wchar_t wc = L'\0';
+                  mbrtowc (&wc, p, 10, NULL);
+                  if (!wcschr (L".?!\"')]", wc))
+                    {
+                      state.last_letter = wc;
+                      break;
+                    }
+                }
             }
 
-          state.word_counter += len;
+        }
+    }
+
+  if (strchr (word, '\n'))
+    {
+      /* If there was a newline in the word we just added, put the entire
+         pending ouput in the results string, and start a new line.
+         TODO: Does line_counter get incremented properly in this 
+         circumstance? */
+      /* TODO: Could we just call _add_pending_word here? */
+      text_append_n (result, state.space.text, state.space.end);
+      state.space.end = 0;
+      state.space_counter = 0;
+      text_append_n (result, state.word.text, state.word.end);
+      state.word.end = 0;
+      state.word_counter = 0;
+      state.invisible_pending_word = 0;
+
+      xspara__end_line ();
+    }
+  else
+    {
+      /* The possibility of two-column characters is ignored here. */
+
+      /* Calculate length of multibyte string in characters. */
+      int len = 0;
+      int left = word_len;
+      wchar_t w;
+      char *p = word;
+
+      while (left > 0)
+        {
+          int char_len = mbrtowc (&w, p, 10, NULL);
+          left -= char_len;
+          p += char_len;
+          len++;
         }
 
-      /* TODO: Shift this into the "else" clause above, because 
-         xspara__end_line would have set state.counter to 0. */
-      if (state.counter != 0
-          && state.counter + state.word_counter + state.space_counter
-              > state.max)
-        {
-          xspara__cut_line (result);
-        }
+      state.word_counter += len;
+    }
+
+  /* TODO: Shift this into the "else" clause above, because 
+     xspara__end_line would have set state.counter to 0. */
+  if (state.counter != 0
+      && state.counter + state.word_counter + state.space_counter
+          > state.max)
+    {
+      xspara__cut_line (result);
     }
 }
 
 /* Like _add_next but zero end_line_count at beginning. */
 char *
-xspara_add_next (char *text, int text_len)
+xspara_add_next (char *text, int text_len, int transparent)
 {
   TEXT t;
 
   text_init (&t);
   state.end_line_count = 0;
-  //fprintf (stderr, "PASSED EOS %d\n", end_sentence);
-  xspara__add_next (&t, text, text_len, 0);
+  xspara__add_next (&t, text, text_len, transparent);
 
   if (t.space > 0)
     return t.text;

@@ -26,18 +26,21 @@ xspara_get_state (state)
 # Return a reference blessed into the XSParagraph class
 # CLASS is ignored because we know it is "XSParagraph".  Optional
 # CONF parameter.
-# CONF is supposed to be optional.  Just make it non-optional, because
-# I'm having problems getting the conf in and I may not be reading it
-# properly
 SV *
-xspara_new (class, conf)
+xspara_new (class, ...)
         SV * class
-        HV * conf
     PREINIT:
         HV *hv;
         HV *pkg;
+        HV *conf = 0;
         int id;
     CODE:
+        items--;
+        if (items > 0)
+          {
+            if (SvROK(ST(1)) && SvTYPE(SvRV(ST(1))) == SVt_PVHV)
+              conf = (HV *) SvRV(ST(1));
+          }
         /* id is ignored at the moment.  This call simply
            resets the state of the paragraph formatter. */
         id = xspara_new (conf);
@@ -188,10 +191,18 @@ xspara_add_next (paragraph, text_in, ...)
     PREINIT:
         char *text;
         STRLEN text_len;
-        //int utf8;
         char *retval;
+        SV *arg_in;
+        int transparent = 0;
     CODE:
-        /* TODO: Propagate 'transparent' argument. */
+        items -= 2;
+        if (items > 0)
+          {
+            items--;
+            arg_in = ST(2);
+            if (SvOK(arg_in))
+              transparent = (int)SvIV(arg_in);
+          }
 
         /* Always convert the input to UTF8 with sv_utf8_upgrade, so we can 
            process it properly in xspara_add_next. */
@@ -200,7 +211,7 @@ xspara_add_next (paragraph, text_in, ...)
         text = SvPV (text_in, text_len);
 
         //xspara_set_state (paragraph);
-        retval = xspara_add_next (text, text_len);
+        retval = xspara_add_next (text, text_len, transparent);
         xspara_get_state (paragraph);
 
         RETVAL = newSVpv (retval, 0);

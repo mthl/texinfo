@@ -1,5 +1,17 @@
 2015-07-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.xs
+	(xspara_new): Optional conf parameter.
+	(xspara_add_next): Propagate 'transparent' argument.
+	* tp/Texinfo/Convert/XSParagraph/xspara.c
+	(xspara_add_next, xspara__add_next): Update state.last_letter, 
+	taking into account 'transparent' argument.
+
+	* tp/t/paragraph.t: Run tests for XSParagraph module as well as 
+	Texinfo::Convert::XSParagraph.
+
+2015-07-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/xspara.c: Remove all comments 
 	with out-of-date line numbers for Paragraph.pm.
 
