@@ -1,5 +1,10 @@
 2015-07-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/xspara.c: Remove all comments 
+	with out-of-date line numbers for Paragraph.pm.
+
+2015-07-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Paragraph.pm,
 	* tp/Texinfo/Convert/Line.pm,
 	* tp/Texinfo/Convert/UnFilled.pm,

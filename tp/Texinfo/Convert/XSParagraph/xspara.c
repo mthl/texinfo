@@ -522,14 +522,13 @@ xspara_end (void)
 
 /* Add WORD to paragraph in RESULT, not refilling WORD.  If we go past the end 
    of the line start a new one. */
-// 184
 void
 xspara__add_next (TEXT *result,
                   char *word, int word_len,
                   int end_sentence,
                   int transparent)
 {
-  if (word) // 196
+  if (word)
     {
       if (state.word.end == 0 && !state.invisible_pending_word)
         {
@@ -564,9 +563,9 @@ xspara__add_next (TEXT *result,
             }
         }
 
-      text_append_n (&state.word, word, word_len); // 213
+      text_append_n (&state.word, word, word_len);
 
-      if (strchr (word, '\n')) // 215
+      if (strchr (word, '\n'))
         {
           /* If there was a newline in the word we just added, put the entire
              pending ouput in the results string, and start a new line.
@@ -610,7 +609,7 @@ xspara__add_next (TEXT *result,
           && state.counter + state.word_counter + state.space_counter
               > state.max)
         {
-          xspara__cut_line (result); // 244
+          xspara__cut_line (result);
         }
     }
 
@@ -752,7 +751,7 @@ xspara_add_text (char *text)
           state.last_letter = L'\0';
 
           /* If protect_spaces is on, ... */
-          if (state.protect_spaces) // 338
+          if (state.protect_spaces)
             {
               /* Append the spaces to the pending word. */
               text_append_n (&state.word, p, char_len);
@@ -778,7 +777,7 @@ xspara_add_text (char *text)
                   xspara__cut_line (&result);
                 }
             }
-          else // 368 /* protect_spaces off */
+          else /* protect_spaces off */
             {
               xspara__add_pending_word (&result, 0);
 
@@ -787,7 +786,7 @@ xspara_add_text (char *text)
                   /* If we are at the end of a sentence where two spaces
                      are required. */
                   if (state.end_sentence == 1
-                      && !state.french_spacing) // 371
+                      && !state.french_spacing)
                     {
                       char *q = p + char_len;
                       wchar_t q_char;
@@ -878,7 +877,7 @@ xspara_add_text (char *text)
                             }
 
                           /* Reset the end_sentence flag. */
-                          state.end_sentence = -2; // 381
+                          state.end_sentence = -2;
                           continue;
                         }
                       else
@@ -895,7 +894,7 @@ xspara_add_text (char *text)
                         }
 
                     }
-                  else /* Not at end of sentence. */ // 388
+                  else /* Not at end of sentence. */
                     {
                       //fprintf (stderr, "NOT END S\n");
                       /* Only save the first space. */
@@ -904,18 +903,18 @@ xspara_add_text (char *text)
                           if (*p == '\n' || *p == '\r')
                             text_append_n (&state.space, " ", 1);
                           else
-                            text_append_n (&state.space, p, char_len); // 391
+                            text_append_n (&state.space, p, char_len);
                           state.space_counter++;
                         }
                     }
                 }
-            } // 394
+            }
 
           /* If not enough space in the line for the pending space, start
              a new line. */
           if (state.counter + state.space_counter > state.max)
             {
-              xspara__cut_line (&result); // 400
+              xspara__cut_line (&result);
             }
 
           if (*p == '\n' && state.keep_end_lines)
@@ -928,7 +927,7 @@ xspara_add_text (char *text)
         {
           int width = wcwidth (wc);
           /*************** Double width character. *********************/
-          if (width == 2) // 406
+          if (width == 2)
             {
 
               state.last_letter = L'\0';
@@ -951,7 +950,7 @@ xspara_add_text (char *text)
               state.end_sentence = -2;
             }
           /*************** Word character ******************************/
-          else if (width == 1) // 427
+          else if (width == 1)
             {
               char *added_word;
               added_word = malloc (char_len + 1);
