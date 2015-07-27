@@ -175,7 +175,7 @@ is ($result, "A_.)  Next\n", 'add_next: period after next, not transparent');
 $para = Texinfo::Convert::Paragraph->new();
 $result = '';
 $result .= $para->add_text("A");
-$result .= $para->add_next('_', undef, 1);
+$result .= $para->add_next('_', 1);
 $result .= $para->add_text(".)");
 $result .= $para->add_text(" Next");
 $result .= $para->end();
