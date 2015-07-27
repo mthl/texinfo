@@ -167,28 +167,25 @@ sub end($)
 my $end_sentence_character = quotemeta('.?!');
 my $after_punctuation_characters = quotemeta('"\')]');
 
-# Add $WORD and/or $SPACE, returning the text to be added to the paragraph. 
+# Add $WORD to paragraph, returning the text to be added to the paragraph. 
 # Any end of sentence punctuation in $WORD that should be allowed to end a 
 # sentence but which would otherwise be preceded by an upper-case letter should 
 # instead by preceded by a backspace character.
-sub add_next($;$$$$)
+sub add_next($;$$$)
 {
   my $paragraph = shift;
   my $word = shift;
-  my $space = shift;
   my $end_sentence = shift;
   my $transparent = shift;
   $paragraph->{'end_line_count'} = 0;
-  return _add_next($paragraph, $word, $space, $end_sentence, 
-                   $transparent);
+  return _add_next($paragraph, $word, $end_sentence, $transparent);
 }
 
-# add a word and/or spaces and end of sentence.
-sub _add_next($;$$$$$$)
+# add a word and/or end of sentence.
+sub _add_next($;$$$$)
 {
   my $paragraph = shift;
   my $word = shift;
-  my $space = shift;
   my $end_sentence = shift;
   my $transparent = shift;
   my $newlines_impossible = shift;
@@ -253,18 +250,6 @@ sub _add_next($;$$$$$$)
         $paragraph->{'counter'} + $paragraph->{'word_counter'} + 
            length($paragraph->{'space'}) > $paragraph->{'max'}) {
       $result .= _cut_line($paragraph);
-    }
-  }
-  if (defined($space)) {
-    if ($paragraph->{'protect_spaces'}) {
-      $result .= _add_text($paragraph, $space);
-    } else {
-      $result .= _add_pending_word($paragraph);
-      $paragraph->{'space'} = $space;
-      if ($paragraph->{'counter'} + length($paragraph->{'space'}) 
-                      > $paragraph->{'max'}) {
-        $result .= _cut_line($paragraph);
-      }
     }
   }
   if (defined($end_sentence)) {
@@ -418,7 +403,7 @@ sub add_text($$)
       }
 
       $result .= _add_next($paragraph, $added_word, undef, undef,
-                           undef, !$newline_possible_flag);
+                           !$newline_possible_flag);
 
       # Check if it is considered as an end of sentence.  There are two things
       # to check: one, that we have a ., ! or ?; and second, that it is not

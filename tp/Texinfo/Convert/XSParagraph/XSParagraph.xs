@@ -196,14 +196,9 @@ xspara_add_next (paragraph, text_in, ...)
 
         if (items > 0)
           {
-            items--; /* space */
-          }
-
-        if (items > 0)
-          {
-            if (SvOK(ST(3)))
+            if (SvOK(ST(2)))
               {
-                end_sentence = (int)SvIV(ST(3));
+                end_sentence = (int)SvIV(ST(2));
               }
             items--;
           }
@@ -217,6 +212,7 @@ xspara_add_next (paragraph, text_in, ...)
         text = SvPV (text_in, text_len);
 
         //xspara_set_state (paragraph);
+        //fprintf (stderr, "end sentence %d\n", end_sentence);
         retval = xspara_add_next (text, text_len, end_sentence);
         xspara_get_state (paragraph);
 

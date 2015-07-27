@@ -13,7 +13,7 @@
 #include <wchar.h>
 #include <wctype.h>
 
-/* See "How do I use all this in extensions in 'man perlguts'. */
+/* See "How do I use all this in extensions" in 'man perlguts'. */
 #define PERL_NO_GET_CONTEXT
 
 #include "EXTERN.h"
@@ -526,12 +526,9 @@ xspara_end (void)
 void
 xspara__add_next (TEXT *result,
                   char *word, int word_len,
-                  char *space,
                   int end_sentence,
                   int transparent)
 {
-  //return word;
-
   if (word) // 196
     {
       if (state.word.end == 0 && !state.invisible_pending_word)
@@ -617,30 +614,11 @@ xspara__add_next (TEXT *result,
         }
     }
 
-  if (space) // 247
-    {
-      if (state.protect_spaces)
-        ;
-        /* The Perl code uses a non-existent "_add_text" function.  Presumably
-           this part of the code is never reached. */
-      else
-        {
-          xspara__add_pending_word (result, 0);
-
-          state.space.end = 0;
-          state.space_counter = 0;
-          text_append (&state.space, space);
-          state.space_counter++;
-          if (state.counter + state.space_counter > state.max)
-            xspara__cut_line (result); // 255
-        }
-    }
-
   if (end_sentence != -2)
     {
+      //fprintf (stderr, "end sentence %d\n", end_sentence);
       state.end_sentence = end_sentence;
     }
-
 }
 
 /* Like _add_next but zero end_line_count at beginning. */
@@ -652,7 +630,7 @@ xspara_add_next (char *text, int text_len, int end_sentence)
   text_init (&t);
   state.end_line_count = 0;
   //fprintf (stderr, "PASSED EOS %d\n", end_sentence);
-  xspara__add_next (&t, text, text_len, 0, end_sentence, 0);
+  xspara__add_next (&t, text, text_len, end_sentence, 0);
 
   if (t.space > 0)
     return t.text;
@@ -980,7 +958,7 @@ xspara_add_text (char *text)
               memcpy (added_word, p, char_len);
               added_word[char_len] = '\0';
 
-              xspara__add_next (&result, added_word, char_len, NULL, -2, 0);
+              xspara__add_next (&result, added_word, char_len, -2, 0);
               free (added_word);
 
               /* Now check if it is considered as an end of sentence, and

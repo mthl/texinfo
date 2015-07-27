@@ -1760,7 +1760,7 @@ sub _convert($$)
                               $formatter->{'container'}->end_line());
       } elsif ($command eq '.' or $command eq '?' or $command eq '!') {
         $result .= _count_added($self, $formatter->{'container'},
-            $formatter->{'container'}->add_next($command, undef, 1));
+            $formatter->{'container'}->add_next($command, 1));
       } elsif ($command eq ' ' or $command eq "\n" or $command eq "\t") {
         $result .= _count_added($self, $formatter->{'container'}, 
             $formatter->{'container'}->add_next($no_brace_commands{$command}));
@@ -1799,7 +1799,7 @@ sub _convert($$)
 
       if ($punctuation_no_arg_commands{$command}) {
         $result .= _count_added($self, $formatter->{'container'},
-                    $formatter->{'container'}->add_next($text, undef, 1));
+                    $formatter->{'container'}->add_next($text, 1));
       } elsif ($command eq 'tie') {
         $formatter->{'w'}++;
         $result .= _count_added($self, $formatter->{'container'},
@@ -1918,7 +1918,7 @@ sub _convert($$)
       }
       $result .= _count_added($self, $formatter->{'container'},
                $formatter->{'container'}->add_next($text_before, 
-                                                   undef, undef, 1))
+                                                   undef, 1))
          if ($text_before ne '');
       if ($root->{'args'}) {
         $result .= $self->_convert($root->{'args'}->[0]);
@@ -1935,7 +1935,7 @@ sub _convert($$)
       }
       $result .= _count_added($self, $formatter->{'container'},
                $formatter->{'container'}->add_next($text_after,
-                                                   undef, undef, 1))
+                                                   undef, 1))
          if ($text_after ne '');
       if ($command eq 'w') {
         $formatter->{'w'}--;
@@ -2059,7 +2059,7 @@ sub _convert($$)
       }
       $result .= _count_added($self, $formatter->{'container'},
            $formatter->{'container'}->add_next("($formatted_footnote_number)", 
-                                                  undef, undef, 1));
+                                                  undef, 1));
       if ($self->get_conf('footnotestyle') eq 'separate' and $self->{'node'}) {
         $result .= $self->_convert({'contents' => 
          [{'text' => ' ('},

@@ -151,26 +151,24 @@ sub end($)
   return $result;
 }
 
-sub add_next($;$$$$)
+sub add_next($;$$$)
 {
   my $line = shift;
   my $word = shift;
-  my $space = shift;
   my $end_sentence = shift;
   my $transparent = shift;
   $line->{'end_line_count'} = 0;
-  return $line->_add_next($word, $space, $end_sentence, $transparent);
+  return $line->_add_next($word, $end_sentence, $transparent);
 }
 
 my $end_sentence_character = quotemeta('.?!');
 my $after_punctuation_characters = quotemeta('"\')]');
 
-# add a word and/or spaces and end of sentence.
-sub _add_next($;$$$$)
+# add a word and/or end of sentence.
+sub _add_next($;$$$)
 {
   my $line = shift;
   my $word = shift;
-  my $space = shift;
   my $end_sentence = shift;
   my $transparent = shift;
   my $result = '';
@@ -210,14 +208,7 @@ sub _add_next($;$$$$)
       print STDERR "WORD+.L $word -> $line->{'word'}\n";
     }
   }
-  if (defined($space)) {
-    if ($line->{'protect_spaces'}) {
-      $result .= $line->_add_text($space);
-    } else {
-      $result .= $line->_add_pending_word();
-      $line->{'space'} = $space;
-    }
-  }
+
   if (defined($end_sentence)) {
     $line->{'end_sentence'} = $end_sentence;
   }
