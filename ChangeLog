@@ -1,5 +1,10 @@
 2015-07-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph: Run "libtoolize --copy --force"
+	for libtool 2.4.6.
+
+2015-07-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl: Import fewer modules by default, for speed.  
 	(texi2any --help changed from about 0.4 s to about 0.1 s.).
 	(%formats_table): Store name of required module in 'module' 
