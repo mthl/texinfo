@@ -2,15 +2,6 @@ AC_INIT([texinfo], [6.0])
 AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIR([m4])
 
-AC_PROG_CC
-
-gl_EARLY
-gl_INIT
-
-LT_INIT
-
-AC_PATH_PROG([PERL], [perl])
-
 fetch_conf ()
 {
           conf_value=`${PERL} -V:$1`
@@ -48,12 +39,25 @@ AC_DEFUN([lookup_perl_flags],
           AC_SUBST([PERL_CONF_$1], [$conf_value])
          ])
 
+AC_PATH_PROG([PERL], [perl])
+
+# It's essential that we use the same compiler that was used to build
+# Perl.  Otherwise Perl's "config.h" will be incorrect.
+lookup_perl_conf([cc])
+CC=$conf_value
+
+AC_PROG_CC
+
+gl_EARLY
+gl_INIT
+
+LT_INIT
+
 
 lookup_perl_flags([ccflags])
 lookup_perl_flags([cccdlflags])
 
 lookup_perl_conf([archlibexp])
-lookup_perl_conf([cc])
 lookup_perl_conf([privlibexp])
 
 # TODO: would be nice to be able to do lookup_perl_conf([ccflags cccdlflags])

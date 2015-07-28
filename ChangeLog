@@ -1,5 +1,15 @@
 2015-07-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Check for
+	Perl's CC before AC_PROG_CC so the automatic dependency checking 
+	style will not be inappropriate.
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Move setting of CC 
+	from here to configure.ac.
+
+	* tp/texi2any.pl: Show error message if loading a module failed.
+
+2015-07-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph: Run "libtoolize --copy --force"
 	for libtool 2.4.6.
 
