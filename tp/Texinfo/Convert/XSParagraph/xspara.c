@@ -777,7 +777,8 @@ xspara_add_text (char *text)
           continue;
         }
 
-      if (iswspace (wc))
+      /* 00A0 and 202F are non-breaking spaces in Unicode. */
+      if (iswspace (wc) && wc != L'\x00a0' && wc != L'\x202f')
         {
           state.last_letter = L'\0';
 

@@ -1,5 +1,10 @@
 2015-07-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (add_text): Check for
+	some non-breaking spaces.
+
+2015-07-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/configure.ac: Check for
 	Perl's CC before AC_PROG_CC so the automatic dependency checking 
 	style will not be inappropriate.
