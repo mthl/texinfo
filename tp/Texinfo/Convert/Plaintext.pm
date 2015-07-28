@@ -26,12 +26,11 @@ use strict;
 use Texinfo::Convert::Converter;
 use Texinfo::Common;
 use Texinfo::Convert::Texinfo;
+use XSParagraph;
 use Texinfo::Convert::Text;
-use Texinfo::Convert::Paragraph;
 use Texinfo::Convert::Line;
 use Texinfo::Convert::UnFilled;
 
-use XSParagraph;
 
 use Carp qw(cluck);
 

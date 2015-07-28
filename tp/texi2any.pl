@@ -111,21 +111,10 @@ BEGIN
       unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'));
     }
   }
-}
+} # end BEGIN
 
-use Texinfo::Convert::Texinfo;
-use Texinfo::Parser;
-use Texinfo::Structuring;
-use Texinfo::Convert::Info;
-use Texinfo::Convert::HTML;
-use Texinfo::Convert::TexinfoXML;
-use Texinfo::Convert::TexinfoSXML;
-use Texinfo::Convert::DocBook;
-use Texinfo::Convert::TextContent;
-use Texinfo::Convert::PlainTexinfo;
-use Texinfo::Convert::IXINSXML;
-use DebugTexinfo::DebugCount;
-use DebugTexinfo::DebugTree;
+use Locale::Messages;
+use Texinfo::Common;
 
 my ($real_command_name, $command_directory, $command_suffix) 
    = fileparse($0, '.pl');
@@ -290,6 +279,7 @@ if ($configured_version eq '@' . 'PACKAGE_VERSION@') {
   } else {
     # used in the standalone perl module, as $hardcoded_version is undef
     # and it should never be configured in that setup
+    require Texinfo::Parser;
     $configured_version = $Texinfo::Parser::VERSION;
   }
 }
@@ -392,6 +382,7 @@ sub _load_config($$) {
 
 sub _load_init_file($) {
   my $file = shift;
+  require Texinfo::Convert::HTML;
   eval { require($file) ;};
   my $e = $@;
   if ($e ne '') {
@@ -564,13 +555,13 @@ my %formats_table = (
  'info' => {
              'nodes_tree' => 1,
              'floats' => 1,
-             'converter' => sub{Texinfo::Convert::Info->converter(@_)},
+             'module' => 'Texinfo::Convert::Info'
            },
   'plaintext' => {
              'nodes_tree' => 1,
              'floats' => 1,
              'split' => 1,
-             'converter' => sub{Texinfo::Convert::Plaintext->converter(@_)},
+             'module' => 'Texinfo::Convert::Plaintext'
            },
   'html' => {
              'nodes_tree' => 1,
@@ -580,26 +571,26 @@ my %formats_table = (
              'simple_menu' => 1,
              'move_index_entries_after_items' => 1,
              'no_warn_non_empty_parts' => 1,
-             'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
+             'module' => 'Texinfo::Convert::HTML'
            },
   'texinfoxml' => {
              'nodes_tree' => 1,
-             'converter' => sub{Texinfo::Convert::TexinfoXML->converter(@_)},
+             'module' => 'Texinfo::Convert::TexinfoXML',
              'floats' => 1,
            },
   'texinfosxml' => {
              'nodes_tree' => 1,
-             'converter' => sub{Texinfo::Convert::TexinfoSXML->converter(@_)},
+             'module' => 'Texinfo::Convert::TexinfoSXML',
              'floats' => 1,
            },
   'ixinsxml' => {
              'nodes_tree' => 1,
-             'converter' => sub{Texinfo::Convert::IXINSXML->converter(@_)},
+             'module' => 'Texinfo::Convert::IXINSXML'
            },
   'docbook' => {
              'move_index_entries_after_items' => 1,
              'no_warn_non_empty_parts' => 1,
-             'converter' => sub{Texinfo::Convert::DocBook->converter(@_)},
+             'module' => 'Texinfo::Convert::DocBook'
            },
   'pdf' => {
              'texi2dvi_format' => 1,
@@ -616,11 +607,11 @@ my %formats_table = (
   'debugcount' => {
              'nodes_tree' => 1,
              'floats' => 1,
-             'converter' => sub{DebugTexinfo::DebugCount->converter(@_)},
+             'converter' => 'DebugTexinfo::DebugCount'
            },
   'debugtree' => {
           'split' => 1,
-          'converter' => sub{DebugTexinfo::DebugTree->converter(@_)},
+          'converter' => 'DebugTexinfo::DebugTree'
          },
   'textcontent' => {
             'converter' => sub{Texinfo::Convert::TextContent->converter(@_)},
@@ -1083,6 +1074,11 @@ if ($call_texi2dvi) {
   document_warn(__('--Xopt option without printed output')); 
 }
 
+require Texinfo::Parser;
+require Texinfo::Structuring;
+# Avoid loading these modules until down here to speed up the case
+# when they are not needed.
+
 my %tree_transformations;
 if (get_conf('TREE_TRANSFORMATIONS')) {
   my @transformations = split /,/, get_conf('TREE_TRANSFORMATIONS');
@@ -1109,6 +1105,15 @@ foreach my $expanded_format (@{$default_expanded_format}) {
 
 my $converter_class;
 my %converter_defaults;
+
+if (defined($formats_table{$format}->{'module'})) {
+  # Speed up initialization by only loading the module we need.
+  eval "require $formats_table{$format}->{'module'};";
+  eval '$formats_table{$format}->{\'converter\'} = sub{'.
+                $formats_table{$format}->{'module'}
+        .'->converter(@_)};';
+}
+
 # This gets the class right, even though there is a sub...
 if (defined($formats_table{$format}->{'converter'})) {
   $converter_class = ref(&{$formats_table{$format}->{'converter'}});
@@ -1241,6 +1246,7 @@ while(@input_files) {
   }
 
   if (defined(get_conf('MACRO_EXPAND')) and $file_number == 0) {
+    require Texinfo::Convert::Texinfo;
     my $texinfo_text = Texinfo::Convert::Texinfo::convert($tree, 1);
     #print STDERR "$texinfo_text\n";
     my $macro_expand_file = get_conf('MACRO_EXPAND');
