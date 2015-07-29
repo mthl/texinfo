@@ -211,7 +211,7 @@ Updating Nodes and Menus
                                   missing nodes lines, and update
                                   nodes in sequence.
 
-Beginning a Texinfo File
+Beginning and Ending a Texinfo File
 
 * Sample Beginning::            A sample beginning for a Texinfo file.
 * Texinfo File Header::         The first lines.
@@ -220,6 +220,7 @@ Beginning a Texinfo File
 * Contents::                    How to create a table of contents.
 * The Top Node::                Creating the `Top' node and master menu.
 * Global Document Commands::    Affecting formatting throughout.
+* Ending a File::               What is at the end of a Texinfo file?
 
 Texinfo File Header
 
@@ -261,11 +262,6 @@ Global Document Commands
 * @code{@@firstparagraphindent}::       Suppressing first paragraph indentation.
 * @code{@@exampleindent}::              Specify environment indentation.
 
-Ending a Texinfo File
-
-* Printing Indices & Menus::    How to print an index in hardcopy and
-                                 generate index menus in Info.
-
 Chapter Structuring
 
 * Tree Structuring::            A manual is like an upside down tree @dots{}
@@ -284,13 +280,13 @@ Chapter Structuring
 Nodes
 
 * @code{@@node}::                       Creating nodes, in detail.
-* @command{makeinfo} Pointer Creation::   Letting makeinfo determine node pointers.
 * @code{@@anchor}::                     Defining arbitrary cross reference targets.
 * Node Menu Illustration::      A diagram, and sample nodes and menus.
+* @command{makeinfo} Pointer Creation::   Letting makeinfo determine node pointers.
 
 The @code{@@node} Command
 
-* Node Names::                  How to choose node and pointer names.
+* Node Names::                  How to choose node names.
 * Writing a Node::              How to write an @code{@@node} line.
 * Node Line Requirements::      Keep names unique.
 * First Node::                  How to write a `Top' node.
@@ -298,11 +294,11 @@ The @code{@@node} Command
 
 Menus
 
-* Menu Location::               Menus go at the ends of nodes.
 * Writing a Menu::              What is a menu?
+* Menu Example::                Two and three part menu entries.
+* Menu Location::               Menus go at the ends of nodes.
 * Menu Parts::                  A menu entry has three parts.
 * Less Cluttered Menu Entry::   Two part menu entry.
-* Menu Example::                Two and three part menu entries.
 * Other Info Files::            How to refer to a different Info file.
 
 Cross References
@@ -325,6 +321,13 @@ Cross References
 * Two Arguments::               @code{@@xref} with two arguments.
 * Three Arguments::             @code{@@xref} with three arguments.
 * Four and Five Arguments::     @code{@@xref} with four and five arguments.
+
+@code{@@url}, @code{@@uref@{@var{url}[, @var{text}][, @var{replacement}]@}}
+
+* @code{@@url} Examples::           Examples of using all the forms of @code{@@url}.
+* URL Line Breaking::       How lines are broken within @code{@@url} text.
+* @code{@@url} PDF Output Format::  A special option to hide links in PDF output.
+* PDF Colors::              Colorizing urls and other links in PDF output.
 
 Marking Text, Words and Phrases
 
@@ -422,6 +425,8 @@ Indices
 * Predefined Indices::          Use different indices for different kinds
                                  of entries.
 * Indexing Commands::           How to make an index entry.
+* Printing Indices & Menus::    How to print an index in hardcopy and
+                                 generate index menus in Info.
 * Combining Indices::           How to combine indices.
 * New Indices::                 How to define your own indices.
 
@@ -538,10 +543,11 @@ Conditionally Visible Text
 * Testing for Texinfo Commands:: Testing if a Texinfo command is available.
 * Conditional Nesting::         Using conditionals inside conditionals.
 
-@code{@@set}, @code{@@clear}, and @code{@@value}
+Flags: @code{@@set}, @code{@@clear}, conditionals, and @code{@@value}
 
 * @code{@@set @@value}::                 Expand a flag variable to a string.
 * @code{@@ifset @@ifclear}::             Format a region if a flag is set.
+* @code{@@inlineifset @@inlineifclear}:: Brace-delimited flag conditionals.
 * @code{@@value} Example::              An easy way to update edition information.
 
 Defining New Texinfo Commands
@@ -576,7 +582,7 @@ Formatting and Printing Hardcopy
 * Format with @command{texi2dvi}::        The simplest way to format.
 * Format with @command{tex}/@command{texindex}::    Formatting with explicit shell commands.
 * Print with @command{lpr}::              How to print.
-* Within Emacs::                Printing from an Emacs shell.
+* Within Emacs::                How to format and print from an Emacs shell.
 * Texinfo Mode Printing::       How to format and print in Texinfo mode.
 * Compile-Command::             How to print using Emacs's compile command.
 * Requirements Summary::        @TeX{} formatting requirements summary.
@@ -595,7 +601,7 @@ Format with @command{tex}/@command{texindex}
 * Formatting Partial Documents::
 * Details of @command{texindex}::
 
-@code{texi2any}: The Generic Translator for Texinfo
+@command{texi2any}: The Generic Translator for Texinfo
 
 * Reference Implementation::    @command{texi2any}: the reference implementation.
 * Invoking @command{texi2any}::           Running the translator from a shell.
@@ -610,6 +616,7 @@ Customization Variables
 
 * Commands: Customization Variables for @@-Commands.
 * Options:  Customization Variables and Options.
+* HTML:     HTML Customization Variables.
 * Other:    Other Customization Variables.
 
 Creating and Installing Info Files
@@ -619,7 +626,7 @@ Creating and Installing Info Files
 
 Creating an Info File
 
-* @command{makeinfo} Advantages::         @code{makeinfo} provides better error checking.
+* @command{makeinfo} Advantages::         @command{makeinfo} provides better error checking.
 * @code{makeinfo} in Emacs::           How to run @code{makeinfo} from Emacs.
 * @code{texinfo-format} commands::     Two Info formatting commands written
                                  in Emacs Lisp are an alternative
@@ -636,14 +643,14 @@ Installing an Info File
                                  located in other directories.
 * Installing Dir Entries::      How to specify what menu entry to add
                                  to the Info directory.
-* Invoking @command{install-info}::       @command{install-info} options.
+* Invoking @command{install-info}::       @code{install-info} options.
 
 Generating HTML
 
-* HTML Translation::            Details of the HTML output.
-* HTML Splitting::              How HTML output is split.
-* HTML CSS::                    Influencing HTML output with Cascading Style Sheets.
-* HTML Xref::                   Cross references in HTML output.
+* HTML Translation::       Details of the HTML output.
+* HTML Splitting::         How HTML output is split.
+* HTML CSS::               Influencing HTML output with Cascading Style Sheets.
+* HTML Xref::              Cross references in HTML output.
 
 HTML Cross References
 
@@ -676,7 +683,7 @@ Page Headings
 
 Catching Mistakes
 
-* @command{makeinfo} Preferred::          @command{makeinfo} finds errors.
+* @command{makeinfo} Preferred::          @code{makeinfo} finds errors.
 * Debugging with Info::         How to catch errors with Info formatting.
 * Debugging with @TeX{}::          How to catch errors with @TeX{} formatting.
 * Using @code{texinfo-show-structure}:: How to use @code{texinfo-show-structure}.
@@ -710,6 +717,7 @@ Info Format Text Constructs
 * Image: Info Format Image.
 * Printindex: Info Format Printindex.
 * Xref:  Info Format Cross Reference.
+
 @end detailmenu
 @end menu
 

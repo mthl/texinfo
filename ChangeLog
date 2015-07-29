@@ -1,5 +1,9 @@
 2015-07-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi: Run M-x texinfo-master-menu in Emacs.
+
+2015-07-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Printing Indices & Menus): Move node to 
 	indices chapter.
 	(Ending a File): Add cross-reference to Printing Indices & 
