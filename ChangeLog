@@ -1,5 +1,10 @@
 2015-07-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (info_node_of_tag): Don't save a pointer into a 
+	file buffer, only an offset.
+
+2015-07-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/XSParagraph.pm: Heed TEXINFO_XS
 	environmental variable.  Idea by Karl Berry.
 

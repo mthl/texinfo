@@ -1352,8 +1352,9 @@ info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr)
       set_tag_nodelen (subfile, tag);
     }
 
-  if (!tag->cache.contents)
+  if (!tag->cache.nodename)
     {
+      /* Data for node has not been generated yet. */
       NODE *cache = &tag->cache;
       cache->contents = subfile->contents + tag->nodestart_adjusted;
       cache->contents += skip_node_separator (cache->contents);
@@ -1371,11 +1372,21 @@ info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr)
 
       if (!preprocess_nodes_p)
         node_set_body_start (cache);
+
+      /* Don't save a pointer into a file buffer, because it might be
+         garbage collected. */
+      if (!(cache->flags & N_WasRewritten))
+        cache->contents = 0;
     }
 
   /* Initialize the node from the tag. */
   node = xmalloc (sizeof (NODE));
   memcpy (node, &tag->cache, sizeof (NODE));
+  if (!node->contents)
+    {
+      node->contents = subfile->contents + tag->nodestart_adjusted;
+      node->contents += skip_node_separator (node->contents);
+    }
 
   /* We can't set this when tag table is built, because
      if file is split, we don't know which of the sub-files
