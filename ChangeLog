@@ -1,5 +1,17 @@
 2015-07-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Printing Indices & Menus): Move node to 
+	indices chapter.
+	(Ending a File): Add cross-reference to Printing Indices & 
+	Menus.
+	(File End): Move into end of Ending a File.
+	(Ending a File): Subordinate to Beginning a File chapter.
+	(Beginning a File): Rename Beginning and Ending a File.  (This 
+	also makes the document short table of contents fit on a single 
+	page.)  Remove a sentence.
+
+2015-07-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c (info_node_of_tag): Don't save a pointer into a 
 	file buffer, only an offset.
 

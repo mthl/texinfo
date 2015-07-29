@@ -133,8 +133,7 @@ the menu lists all the lower level nodes in the document.
 * Copying Conditions::          Your rights.
 * Overview::                    Texinfo in brief.
 * Texinfo Mode::                Using the GNU Emacs Texinfo mode.
-* Beginning a File::            What is at the beginning of a Texinfo file?
-* Ending a File::               What is at the end of a Texinfo file?
+* Beginning and Ending a File:: Beginning and end of a Texinfo file.
 * Chapter Structuring::         Creating chapters, sections, appendices, etc.
 * Nodes::                       Writing nodes, the basic unit of Texinfo.
 * Menus::                       Writing menus.
@@ -266,7 +265,6 @@ Ending a Texinfo File
 
 * Printing Indices & Menus::    How to print an index in hardcopy and
                                  generate index menus in Info.
-* File End::                    How to mark the end of a file.
 
 Chapter Structuring
 
@@ -1568,9 +1566,9 @@ intimidating than they are: most of the material is standard
 boilerplate; when writing a manual, you simply change the names as
 appropriate.
 
-@xref{Beginning a File}, for full documentation on the commands listed
-here.  @xref{GNU Sample Texts}, for the full texts to be used in GNU
-manuals.
+@xref{Beginning and Ending a File}, for full documentation on the 
+commands listed here.  @xref{GNU Sample Texts}, for the full texts to be 
+used in GNU manuals.
 
 In the following, the sample text is @emph{indented}; comments on it are
 not.  The complete file, without interspersed comments, is shown in
@@ -2806,20 +2804,20 @@ M-x texinfo-sequential-node-update
 @end example
 
 
-@node Beginning a File
-@chapter Beginning a Texinfo File
+@node Beginning and Ending a File
+@anchor{Beginning a File} @c old name
+@chapter Beginning and Ending a Texinfo File
 @cindex Beginning a Texinfo file
 @cindex Texinfo file beginning
 @cindex File beginning
+
+This chapter expands on the minimal complete Texinfo source file
+previously given (@pxref{Six Parts}).
 
 Certain pieces of information must be provided at the beginning of a
 Texinfo file, such as the name for the output file(s), the title of the
 document, and the Top node.  A table of contents is also generally
 produced here.
-
-This chapter expands on the minimal complete Texinfo source file
-previously given (@pxref{Six Parts}).  It describes the numerous
-commands for handling the traditional frontmatter items in Texinfo.
 
 @cindex Frontmatter, text in
 Straight text outside of any command before the Top node should be
@@ -2835,6 +2833,7 @@ default not shown in Info readers, and so on.
 * Contents::                    How to create a table of contents.
 * The Top Node::                Creating the `Top' node and master menu.
 * Global Document Commands::    Affecting formatting throughout.
+* Ending a File::               What is at the end of a Texinfo file?
 @end menu
 
 
@@ -4205,15 +4204,15 @@ Header}.
 
 
 @node Ending a File
-@chapter Ending a Texinfo File
+@section Ending a Texinfo File
 @cindex Ending a Texinfo file
 @cindex Texinfo file ending
 @cindex File ending
 @findex bye
 
-The end of a Texinfo file should include commands to create indices,
-and the @code{@@bye} command to mark the last line to be processed.
-For example:
+The end of a Texinfo file should include commands to create indices
+(@pxref{Printing Indices & Menus}), and the @code{@@bye} command to mark
+the last line to be processed.  For example:
 
 @example
 @@node Index
@@ -4224,110 +4223,8 @@ For example:
 @@bye
 @end example
 
-@menu
-* Printing Indices & Menus::    How to print an index in hardcopy and
-                                 generate index menus in Info.
-* File End::                    How to mark the end of a file.
-@end menu
-
-
-@node Printing Indices & Menus
-@section Printing Indices and Menus
-@cindex Printing an index
-@cindex Indices, printing and menus
-@cindex Generating menus with indices
-@cindex Menus generated with indices
-
-To print an index means to include it as part of a manual or Info file.
-This does not happen automatically just because you use @code{@@cindex}
-or other index-entry generating commands in the Texinfo file; those just
-cause the raw data for the index to be accumulated.  To generate an
-index, you must include the @code{@@printindex} command at the place in
-the document where you want the index to appear.  Also, as part of the
-process of creating a printed manual, you must run a program called
-@code{texindex} (@pxref{Hardcopy}) to sort the raw data to produce a
-sorted index file.  The sorted index file is what is actually used to
-print the index.
-
-Texinfo offers six separate types of predefined index, which suffice
-in most cases.  @xref{Indices}, for information on this, as well
-defining your own new indices, combining indices, and, most
-importantly advice on writing the actual index entries.  This section
-focuses on printing indices, which is done with the
-@code{@@printindex} command.
-
-@findex printindex
-@code{@@printindex} takes one argument, a two-letter index
-abbreviation.  It reads the corresponding sorted index file (for
-printed output), and formats it appropriately into an index.
-
-The @code{@@printindex} command does not generate a chapter heading
-for the index, since different manuals have different needs.
-Consequently, you should precede the @code{@@printindex} command with
-a suitable section or chapter command (usually @code{@@appendix} or
-@code{@@unnumbered}) to supply the chapter heading and put the index
-into the table of contents.  Precede the chapter heading with an
-@code{@@node} line as usual.
-
-For example:
-
-@smallexample
-@group
-@@node Variable Index
-@@unnumbered Variable Index
-
-@@printindex vr
-@end group
-
-@group
-@@node Concept Index
-@@unnumbered Concept Index
-
-@@printindex cp
-@end group
-@end smallexample
-
-If you have more than one index, we recommend placing the concept index last.
-
-@itemize
-@item
-In printed output, @code{@@printindex} produces a traditional
-two-column index, with dot leaders between the index terms and page
-numbers.
-
-@item
-In Info output, @code{@@printindex} produces a special menu containing
-the line number of the entry, relative to the start of the node.  Info
-readers can use this to go to the exact line of an entry, not just the
-containing node.  (Older Info readers will just go to the node.)
-Here's an example:
-
-@smallexample
-* First index entry:   Top.   (line  7)
-@end smallexample
-
-@noindent The actual number of spaces is variable, to right-justify
-the line number; it's been reduced here to make the line fit in the
-printed manual.
-
-@item
-In plain text output, @code{@@printindex} produces the same menu, but
-the line numbers are relative to the start of the file, since that's
-more convenient for that format.
-
-@item
-In HTML output, @code{@@printindex} produces links to the index
-entries.
-
-@item
-In XML and Docbook output, it simply records the index to be printed.
-@end itemize
-
-
-@node File End
-@section @code{@@bye} File Ending
 @findex bye
-
+@anchor{File End}
 An @code{@@bye} command terminates Texinfo processing.  None of the
 formatters process anything following @code{@@bye}; any such text is
 completely ignored.  The @code{@@bye} command should be on a line by
@@ -10422,6 +10319,8 @@ indices.
 * Predefined Indices::          Use different indices for different kinds
                                  of entries.
 * Indexing Commands::           How to make an index entry.
+* Printing Indices & Menus::    How to print an index in hardcopy and
+                                 generate index menus in Info.
 * Combining Indices::           How to combine indices.
 * New Indices::                 How to define your own indices.
 @end menu
@@ -10605,6 +10504,99 @@ menu entry name from the node name, so a colon in the entry itself
 confuses Info.  @xref{Menu Parts}, for more information about the
 structure of a menu entry.
 @end quotation
+
+
+@node Printing Indices & Menus
+@section Printing Indices and Menus
+@cindex Printing an index
+@cindex Indices, printing and menus
+@cindex Generating menus with indices
+@cindex Menus generated with indices
+
+To print an index means to include it as part of a manual or Info file.
+This does not happen automatically just because you use @code{@@cindex}
+or other index-entry generating commands in the Texinfo file; those just
+cause the raw data for the index to be accumulated.  To generate an
+index, you must include the @code{@@printindex} command at the place in
+the document where you want the index to appear.  Also, as part of the
+process of creating a printed manual, you must run a program called
+@code{texindex} (@pxref{Hardcopy}) to sort the raw data to produce a
+sorted index file.  The sorted index file is what is actually used to
+print the index.
+
+Texinfo offers six separate types of predefined index, which suffice
+in most cases.  @xref{Indices}, for information on this, as well
+defining your own new indices, combining indices, and, most
+importantly advice on writing the actual index entries.  This section
+focuses on printing indices, which is done with the
+@code{@@printindex} command.
+
+@findex printindex
+@code{@@printindex} takes one argument, a two-letter index
+abbreviation.  It reads the corresponding sorted index file (for
+printed output), and formats it appropriately into an index.
+
+The @code{@@printindex} command does not generate a chapter heading
+for the index, since different manuals have different needs.
+Consequently, you should precede the @code{@@printindex} command with
+a suitable section or chapter command (usually @code{@@appendix} or
+@code{@@unnumbered}) to supply the chapter heading and put the index
+into the table of contents.  Precede the chapter heading with an
+@code{@@node} line as usual.
+
+For example:
+
+@smallexample
+@group
+@@node Variable Index
+@@unnumbered Variable Index
+
+@@printindex vr
+@end group
+
+@group
+@@node Concept Index
+@@unnumbered Concept Index
+
+@@printindex cp
+@end group
+@end smallexample
+
+If you have more than one index, we recommend placing the concept index last.
+
+@itemize
+@item
+In printed output, @code{@@printindex} produces a traditional
+two-column index, with dot leaders between the index terms and page
+numbers.
+
+@item
+In Info output, @code{@@printindex} produces a special menu containing
+the line number of the entry, relative to the start of the node.  Info
+readers can use this to go to the exact line of an entry, not just the
+containing node.  (Older Info readers will just go to the node.)
+Here's an example:
+
+@smallexample
+* First index entry:   Top.   (line  7)
+@end smallexample
+
+@noindent The actual number of spaces is variable, to right-justify
+the line number; it's been reduced here to make the line fit in the
+printed manual.
+
+@item
+In plain text output, @code{@@printindex} produces the same menu, but
+the line numbers are relative to the start of the file, since that's
+more convenient for that format.
+
+@item
+In HTML output, @code{@@printindex} produces links to the index
+entries.
+
+@item
+In XML and Docbook output, it simply records the index to be printed.
+@end itemize
 
 
 @node Combining Indices
@@ -22693,8 +22685,8 @@ They're included here nonetheless because many manuals do (or could)
 benefit from them.
 
 @xref{Short Sample}, for a minimal example of a Texinfo file.
-@xref{Beginning a File}, for a full explanation of that minimal
-example.
+@xref{Beginning and Ending a File}, for a full explanation of that
+minimal example.
 
 Here are some notes on the example:
 
