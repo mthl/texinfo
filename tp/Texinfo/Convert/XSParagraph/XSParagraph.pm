@@ -47,21 +47,52 @@ our @EXPORT = qw(
 );
 
 BEGIN {
-# We get this from XSParagraph.la
-# my $dlpath = "Texinfo/Convert/XSParagraph/.libs/XSParagraph.so.0";
+# Possible values for TEXINFO_XS environmental variable:
+#
+# TEXINFO_XS=omit     # don't try loading xs at all
+# TEXINFO_XS=default  # try xs, silent fallback
+# TEXINFO_XS=warn     # try xs, warn on failure
+# TEXINFO_XS=required # abort if not loadable, no fallback
+# TEXINFO_XS=debug    # voluminuous debugging
+#
+# Other values are treated at the moment as 'default'.
 
-# The following uses the module built by the ExtUtils::MakeMaker makefile.
-# my $dlname = "Texinfo/Convert/XSParagraph/blib/arch/auto/XSParagraph/XSParagraph.so";
+my $TEXINFO_XS = $ENV{'TEXINFO_XS'};
+if (!defined($TEXINFO_XS)) {
+  $TEXINFO_XS = '';
+}
 
+if ($TEXINFO_XS eq 'omit') {
+  # Don't try to use the XS module
+  goto FALLBACK;
+}
+
+# For verbose information about what's being done
+sub _debug($) {
+  if ($TEXINFO_XS eq 'debug') {
+    my $msg = shift;
+    warn $msg . "\n";
+  }
+}
+
+# For messages to say that XS module couldn't be loaded
+sub _fatal($) {
+  if ($TEXINFO_XS eq 'debug'
+      or $TEXINFO_XS eq 'required'
+      or $TEXINFO_XS eq 'warn') {
+    my $msg = shift;
+    warn $msg . "\n";
+  }
+}
 
 # We look for the .la and .so files in @INC because this allows us to override
 # which modules are used using -I flags to "perl".
 sub _find_file($) {
   my $file = shift;
   for my $dir (@INC) {
-    #print "checking $dir/$file\n";
+    _debug "checking $dir/$file";
     if (-f "$dir/$file") {
-      #print "found $dir/$file\n";
+      _debug "found $dir/$file";
       return ($dir, "$dir/$file");
     }
   }
@@ -70,14 +101,14 @@ sub _find_file($) {
 
 my ($libtool_dir, $libtool_archive) = _find_file("XSParagraph.la");
 if (!$libtool_archive) {
-  warn "XSParagraph: couldn't find Libtool archive file\n";
+  _fatal "XSParagraph: couldn't find Libtool archive file";
   goto FALLBACK;
 }
 
 my $fh;
 open $fh, $libtool_archive;
 if (!$fh) {
-  warn "XSParagraph: couldn't open Libtool archive file\n";
+  _fatal "XSParagraph: couldn't open Libtool archive file";
   goto FALLBACK;
 }
 
@@ -90,7 +121,7 @@ while (my $line = <$fh>) {
   }
 }
 if (!$dlname) {
-  warn "XSParagraph: couldn't find name of shared object\n";
+  _fatal "XSParagraph: couldn't find name of shared object";
   goto FALLBACK;
 }
 
@@ -100,7 +131,7 @@ push @DynaLoader::dl_library_path, "$libtool_dir/.libs";
 
 my $dlpath = DynaLoader::dl_findfile($dlname);
 if (!$dlpath) {
-  warn "XSParagraph: couldn't find $dlname\n";
+  _fatal "XSParagraph: couldn't find $dlname";
   goto FALLBACK;
 }
 
@@ -119,23 +150,23 @@ our $VERSION = '6.0';
 my $flags = 0;
 my $libref = DynaLoader::dl_load_file($dlpath, $flags);
 if (!$libref) {
-  warn "XSParagraph: couldn't load file $dlpath\n";
+  _fatal "XSParagraph: couldn't load file $dlpath";
   goto FALLBACK;
 }
 my @undefined_symbols = DynaLoader::dl_undef_symbols();
 if ($#undefined_symbols+1 != 0) {
-  warn "XSParagraph: still have undefined symbols after dl_load_file\n";
+  _fatal "XSParagraph: still have undefined symbols after dl_load_file";
 }
 my $symref = DynaLoader::dl_find_symbol($libref, "boot_$module");
 if (!$symref) {
-  warn "XSParagraph: couldn't find boot_$module symbol\n";
+  _fatal "XSParagraph: couldn't find boot_$module symbol";
   goto FALLBACK;
 }
 my $boot_fn = DynaLoader::dl_install_xsub("${module}::bootstrap",
                                                 $symref, $dlname);
 
 if (!$boot_fn) {
-  warn "XSParagraph: couldn't bootstrap\n";
+  _fatal "XSParagraph: couldn't bootstrap";
   goto FALLBACK;
 }
 
@@ -147,12 +178,18 @@ push @DynaLoader::dl_shared_objects, $dlpath; # record files loaded
 &$boot_fn($module, $VERSION);
 
 if (!XSParagraph::init ()) {
-  warn "XSParagraph: error initializing\n";
+  _fatal "XSParagraph: error initializing";
   goto FALLBACK;
 }
 goto DONTFALLBACK;
 
 FALLBACK:
+  if ($TEXINFO_XS eq 'required') {
+    die "unset the TEXINFO_XS environmental variable to use the "
+       ."pure Perl modules\n";
+  } elsif ($TEXINFO_XS eq 'warn' or $TEXINFO_XS eq 'debug') {
+    warn "falling back to pure Perl modules\n";
+  }
   # Fall back to using the Perl code.
   require Texinfo::Convert::Paragraph;
   *XSParagraph:: = *Texinfo::Convert::Paragraph::;
