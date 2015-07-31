@@ -34,6 +34,10 @@ one of the relevant sections:
     Info output where they would have been produced by commands such
     as @file or @option.
 
+* info
+  . internal changes to reduce memory use and increase speed of
+    searches, relative to last release
+
 
 6.0 (26 June 2015)
 * Language:

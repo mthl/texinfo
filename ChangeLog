@@ -1,5 +1,10 @@
 2015-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* NEWS: Mention improvements in speed and memory usage for Info.  
+	(Changes on 2015-07-31 and 2015-07-13.)
+
+2015-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c (info_node_of_tag, info_node_of_tag_ext): Rename 
 	and add an extra argument.  Call scan_node_contents 
 	conditionally.
