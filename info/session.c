@@ -3892,13 +3892,12 @@ match_in_match_list (regmatch_t *matches, size_t match_count,
 /* Search for STRING in NODE starting at START.  The DIR argument says which
    direction to search in.  If it is positive, search forward, else backwards.
 
-   If the string was found, return its location in POFF,  set the
-   window's node to be NODE, its point to be the found string, and readjust
-   the window's pagetop.  
+   If the string was found, return its location in POFF, set the
+   window's node, its point to be the found string, and readjust
+   the window's pagetop.  NODE can be retained as a field within WINDOW.
 
    WINDOW->matches should be a list of matches for NODE->contents, or null.
-   If new matches are calculated, they are saved in WINDOW->matches.
-*/
+   If new matches are calculated, they are saved in WINDOW->matches.  */
 static enum search_result
 info_search_in_node_internal (WINDOW *window, NODE *node,
                               char *string, long start,
@@ -3937,6 +3936,24 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
   
   if (result != search_success)
     return result;
+
+  if (node->flags & N_Simple)
+    {
+      /* There are matches in the node, but it hasn't been scanned yet.  Get
+         the node again, because its contents may differ. */
+      enum search_result subresult;
+      NODE *full_node;
+
+      free (matches);
+      full_node = info_get_node (node->fullpath, node->nodename);
+      subresult = info_search_in_node_internal (window, full_node,
+                                    string, start,
+                                    dir, case_sensitive,
+                                    match_regexp, poff);
+      if (window->node != full_node)
+        free (full_node);
+      return subresult;
+    }
 
   if (dir > 0)
     {
@@ -4045,12 +4062,11 @@ info_search_internal (char *string, WINDOW *window,
       result = info_search_in_node_internal (window, node, string, start, dir,
                  case_sensitive, use_regex, start_off);
 
+      if (node != window->node)
+        free_history_node (node);
+
       if (result == search_invalid)
-        {
-          if (node != window->node)
-            free_history_node (node);
-          return 1;
-        }
+        return 1;
 
       if (result == search_success)
         {
@@ -4102,12 +4118,10 @@ info_search_internal (char *string, WINDOW *window,
         }
 
       /* Get a new node to search in. */
-      if (node != window->node)
-        free_history_node (node);
       free (window->matches);
       window->matches = 0;
 
-      node = info_get_node (file_buffer->filename, tag->nodename);
+      node = info_node_of_tag_fast (file_buffer, &tag);
       if (!node)
         {
           /* If not doing i-search... */
@@ -4139,8 +4153,6 @@ info_search_internal (char *string, WINDOW *window,
     info_error ("%s", _("Search failed."));
 
 funexit:
-  if (node != window->node)
-    free_history_node (node);
   return -1;
 }
 

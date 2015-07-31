@@ -1277,9 +1277,11 @@ set_tag_nodelen (FILE_BUFFER *subfile, TAG *tag)
 }
 
 /* Return the node described by *TAG_PTR, retrieving contents from subfile
-   if the file is split.  Return 0 on failure. */
-NODE *
-info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr)
+   if the file is split.  Return 0 on failure.  If FAST, don't process the
+   node to find cross-references, a menu, or perform character encoding
+   conversion. */
+static NODE *
+info_node_of_tag_ext (FILE_BUFFER *fb, TAG **tag_ptr, int fast)
 {
   TAG *tag = *tag_ptr;
   NODE *node;
@@ -1352,7 +1354,7 @@ info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr)
       set_tag_nodelen (subfile, tag);
     }
 
-  if (!tag->cache.nodename)
+  if (!tag->cache.nodename || (tag->cache.flags & N_Simple))
     {
       /* Data for node has not been generated yet. */
       NODE *cache = &tag->cache;
@@ -1365,10 +1367,16 @@ info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr)
       if (parent != subfile)
         cache->subfile = tag->filename;
 
-      /* Read locations of references in node and similar.  Strip Info file
-         syntax from node if preprocess_nodes=On.  Adjust the offsets of
-         anchors that occur within the node.*/
-      scan_node_contents (cache, parent, tag_ptr);
+      if (!fast)
+        {
+          /* Read locations of references in node and similar.  Strip Info file
+             syntax from node if preprocess_nodes=On.  Adjust the offsets of
+             anchors that occur within the node. */
+          scan_node_contents (cache, parent, tag_ptr);
+          cache->flags &= ~N_Simple;
+        }
+      else
+        cache->flags |= N_Simple;
 
       if (!preprocess_nodes_p)
         node_set_body_start (cache);
@@ -1411,4 +1419,16 @@ info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr)
     }
 
   return node;
+}
+
+NODE *
+info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr)
+{
+  return info_node_of_tag_ext (fb, tag_ptr, 0);
+}
+
+NODE *
+info_node_of_tag_fast (FILE_BUFFER *fb, TAG **tag_ptr)
+{
+  return info_node_of_tag_ext (fb, tag_ptr, 1);
 }

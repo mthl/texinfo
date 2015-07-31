@@ -204,7 +204,10 @@ regexp_search (char *regexp, int is_literal, int is_insensitive,
   *matches_out = matches;
   *match_count_out = match_count;
 
-  return search_success;
+  if (match_count == 0)
+    return search_not_found;
+  else
+    return search_success;
 }
 
 /* Search forwards for STRING through the text delimited in BINDING. */

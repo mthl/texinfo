@@ -68,6 +68,7 @@ typedef struct {
 #define N_Subfile      0x800    /* File buffer is a subfile of a split file. */
 #define N_EOLs_Converted 0x1000 /* CR bytes were stripped before LF. */
 #define N_Gone         0x2000   /* File is no more. */
+#define N_Simple       0x4000   /* Data about cross-references is missing. */
 
 /* String constants. */
 #define INFO_FILE_LABEL                 "File:"
@@ -158,6 +159,7 @@ extern NODE *info_get_node_with_defaults (char *filename, char *nodename,
                                           NODE *defaults);
 
 extern NODE *info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr);
+extern NODE *info_node_of_tag_fast (FILE_BUFFER *fb, TAG **tag_ptr);
 
 /* Return a pointer to a NODE structure for the Info node NODENAME in
    FILE_BUFFER.  NODENAME can be passed as NULL, in which case the

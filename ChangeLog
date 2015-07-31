@@ -1,3 +1,20 @@
+2015-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (info_node_of_tag, info_node_of_tag_ext): Rename 
+	and add an extra argument.  Call scan_node_contents 
+	conditionally.
+	(info_node_of_tag, info_node_of_tag_fast): New functions.
+	* info/session.c (info_search_internal): Call 
+	info_node_of_tag_fast to get node.
+	(info_search_in_node_internal): If there is a match, fetch the 
+	node and do the search again.
+	(info_search_internal): Always free a node if it wasn't retained 
+	in the window.
+
+	* info/nodes.h (N_Simple): New flag.
+	* info/session.c (regexp_search): Indicate search not found in 
+	return value if that is the case.
+
 2015-07-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi: Run M-x texinfo-master-menu in Emacs.
