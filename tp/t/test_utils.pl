@@ -23,28 +23,26 @@ use strict;
 
 use 5.006;
 
-use Test::More;
+use File::Basename;
 use File::Spec;
-BEGIN {
-  if (defined($ENV{'top_srcdir'})) {
-    my $lib_dir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp', 'maintain');
-    unshift @INC,
-      (File::Spec->catdir($lib_dir, 'lib', 'libintl-perl', 'lib'),
-       File::Spec->catdir($lib_dir, 'lib', 'Unicode-EastAsianWidth', 'lib'),
-       File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'),
-       File::Spec->catdir($ENV{'top_srcdir'}, 'tp',
-                                        'Texinfo', 'Convert', 'XSParagraph'));
-  }
-  if (defined($ENV{'top_builddir'})) {
-    unshift @INC, (File::Spec->catdir($ENV{'top_builddir'}, 'tp',
-                                         'Texinfo', 'Convert', 'XSParagraph'));
-  }
-}
 
-use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
-use lib 'maintain/lib/libintl-perl/lib/';
-use lib 'maintain/lib/Text-Unidecode/lib/';
-use lib 'Texinfo/Convert/XSParagraph';
+BEGIN {
+
+if (!$ENV{'top_srcdir'}) {
+  my ($real_command_name, $command_directory, $command_suffix) 
+     = fileparse($0, '.pl');
+  my $updir = File::Spec->updir();
+
+  # tp/t -> tp/t/../..
+  $ENV{'top_srcdir'} = File::Spec->catdir($command_directory, $updir, $updir);
+}
+require Texinfo::ModulePath;
+Texinfo::ModulePath::init();
+
+} # end BEGIN
+
+use Test::More;
+
 use Texinfo::Parser;
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Texinfo;

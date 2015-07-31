@@ -26,7 +26,7 @@ use strict;
 use Texinfo::Convert::Converter;
 use Texinfo::Common;
 use Texinfo::Convert::Texinfo;
-use XSParagraph;
+use Texinfo::Convert::XSParagraph::XSParagraph;
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Line;
 use Texinfo::Convert::UnFilled;
@@ -661,7 +661,8 @@ sub new_formatter($$;$)
     $container = Texinfo::Convert::Line->new($container_conf);
   } elsif ($type eq 'paragraph') {
     #$container = Texinfo::Convert::Paragraph->new($container_conf);
-    $container = XSParagraph->new($container_conf);
+    $container =
+             Texinfo::Convert::XSParagraph::XSParagraph->new($container_conf);
   } elsif ($type eq 'unfilled') {
     $container = Texinfo::Convert::UnFilled->new($container_conf);
   } else {

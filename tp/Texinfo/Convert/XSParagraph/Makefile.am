@@ -36,7 +36,9 @@ EXTRA_DIST+=m4/gnulib-cache.m4
 
 ################### End Gnulib section #########################
 
-modulesdir = $(pkglibexecdir)/Texinfo
+modulesdir = $(pkgdatadir)/Texinfo/Convert/XSParagraph
+xsdir = $(pkglibexecdir)
+
 dist_modules_DATA = XSParagraph.pm
 
 EXTRA_DIST += fetch_conf.pl
@@ -59,7 +61,7 @@ XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
 
 # -------------------------------------------------------
 
-modules_LTLIBRARIES = XSParagraph.la
+xs_LTLIBRARIES = XSParagraph.la
 XSParagraph_la_SOURCES = XSParagraph.c xspara.c xspara.h \
 			 text.c text.h ppport.h
 

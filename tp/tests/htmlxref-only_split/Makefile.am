@@ -8,7 +8,7 @@ $(srcdir)/Makefile.onetst: \
 	  -base .
 
 TESTS = $(one_test_files_generated_list)
-AM_TESTS_ENVIRONMENT = PERL5LIB='$(top_builddir)/tp/Texinfo/Convert/XSParagraph'; export PERL5LIB;
+AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir; builddir="$(builddir)"; export buildir; top_builddir="$(top_builddir)"; export top_builddir;
 
 copy-tests:
 	$(srcdir)/../run_parser_all.sh -copy

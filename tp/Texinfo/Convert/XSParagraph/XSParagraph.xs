@@ -10,7 +10,7 @@
 #include "xspara.h"
 
 
-MODULE = XSParagraph	PACKAGE = XSParagraph     PREFIX = xspara_
+MODULE = Texinfo::Convert::XSParagraph::XSParagraph PACKAGE = Texinfo::Convert::XSParagraph::XSParagraph PREFIX = xspara_
 
 int
 xspara_init ()
@@ -48,7 +48,7 @@ xspara_new (class, ...)
         /* Create a new blessed hash reference, which the other functions
            need as their first argument. */
         /* Note that nothing is actually put in the hash yet. */
-        pkg = gv_stashpv ("XSParagraph", 0);
+        pkg = gv_stashpv ("Texinfo::Convert::XSParagraph::XSParagraph", 0);
         hv = newHV ();
         RETVAL = newRV_inc ((SV *) hv);
         sv_bless (RETVAL, pkg);

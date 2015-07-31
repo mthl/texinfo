@@ -39,18 +39,20 @@ MAINTAINERCLEANFILES = $(man_MANS)
 # Use the programs built in our distribution, taking account of possible
 # cross-compiling.  makeinfo needs a bunch of our included modules.
 tpdir = $(top_srcdir)/tp
-MAKEINFO = $(PERL) -I "$(tpdir)" "$(tpdir)"/texi2any.pl
+MAKEINFO_ENVIRONMENT = TEXINFO_DEV_SOURCE=1 ; export TEXINFO_DEV_SOURCE ; \
+                       top_srcdir="$(top_srcdir)" ; export top_srcdir ; \
+                       top_builddir="$(top_srcdir)" ; export top_builddir ;
+
+MAKEINFO = $(MAKEINFO_ENVIRIONMENT) $(PERL) "$(tpdir)"/texi2any.pl
 #
-tplibdir = $(tpdir)/maintain/lib
-mi_perl5lib_path = "$(tpdir):$(tplibdir)/libintl-perl/lib:$(tplibdir)/Unicode-EastAsianWidth/lib:$(tplibdir)/Text-Unidecode/lib:../tp/Texinfo/Convert/XSParagraph:$(tpdir)/Texinfo/Convert/XSParagraph"
-mi_perl5lib = PERL5LIB=$(mi_perl5lib_path); export PERL5LIB
+mi_env = TEXINFO_DEV_SOURCE=1; export TEXINFO_DEV_SOURCE;
 
 # Set up the variables.  makeinfo, texindex are no longer a .exe(cutable).
 man_rule_0 = \
   exe_ext="$(EXEEXT)" \
   && program=`expr '/$@' : '.*/\(.*\)\.1'` \
   && case $$program in \
-         makeinfo) dir=tp; $(mi_perl5lib); exe_ext="";; \
+         makeinfo) dir=tp; $(mi_env) exe_ext="";; \
             info*) dir=info; test $$program != info || program=g$$program;; \
     *install-info) dir=install-info; program=g$$program;; \
         *texindex) dir=texindex; exe_ext="";; \

@@ -18,11 +18,10 @@ SUBDIRS = tp_api
 info_TEXINFOS = texinfo.texi info-stnd.texi info.texi
 DISTCLEANFILES = texinfo.info* info*.info*
 
-# Use the programs built in our distribution, taking account of possible
-# cross-compiling.
-tpdir = $(top_srcdir)/tp
-tplibdir = $(tpdir)/maintain/lib
-MAKEINFO = $(PERL) -I "$(tpdir)" -I "$(tplibdir)/libintl-perl/lib" -I "$(tpdir)/Texinfo/Convert/XSParagraph" -I "../tp/Texinfo/Convert/XSParagraph" -I "$(tplibdir)/Unicode-EastAsianWidth/lib" -I "$(tplibdir)/Text-Unidecode/lib" $(top_builddir)/tp/texi2any
+MAKEINFO_ENVIRONMENT = TEXINFO_DEV_SOURCE=1 ; export TEXINFO_DEV_SOURCE ; \
+                       top_srcdir="$(top_srcdir)" ; export top_srcdir ; \
+                       top_builddir="$(top_builddir)" ; export top_builddir ;
+MAKEINFO = $(MAKEINFO_ENVIRONMENT) $(PERL) $(top_builddir)/tp/texi2any
 
 # We'd also like to use something like this, but Automake calls
 # "install-info" directly.

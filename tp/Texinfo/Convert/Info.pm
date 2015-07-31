@@ -304,7 +304,7 @@ sub _info_header($)
   my $self = shift;
 
   $self->_set_global_multiple_commands();
-  my $paragraph = XSParagraph->new();
+  my $paragraph = Texinfo::Convert::XSParagraph::XSParagraph->new();
   my $result = $paragraph->add_text("This is ");
   # This ensures that spaces in file are kept.
   $result .= $paragraph->add_next($self->{'output_filename'});

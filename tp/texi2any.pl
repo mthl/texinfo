@@ -49,67 +49,46 @@ BEGIN
   $^W = 1;
   my ($real_command_name, $command_directory, $command_suffix) 
      = fileparse($0, '.pl');
+  my $updir = File::Spec->updir();
 
   # These are substituted by the Makefile to create "texi2any".
   my $datadir = '@datadir@';
   my $package = '@PACKAGE@';
   my $packagedir = '@pkglibexecdir@/Texinfo';
 
-  my $updir = File::Spec->updir();
-
-  my $texinfolibdir;
-  my $lib_dir;
-
-  # in-source run
-  if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
-       and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
-    if (defined($ENV{'top_srcdir'})) {
-      $texinfolibdir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
-    } else {
-      $texinfolibdir = $command_directory;
+  if ($datadir eq '@' .'datadir@' or $package eq '@' . 'PACKAGE@'
+      or $packagedir eq '@' .'pkglibexecdir@/Texinfo'
+      or defined($ENV{'TEXINFO_DEV_SOURCE'})
+         and $ENV{'TEXINFO_DEV_SOURCE'} ne '0')
+  {
+    if (!defined($ENV{'top_builddir'})) {
+      $ENV{'top_builddir'} = File::Spec->catdir($command_directory, $updir);
     }
-    $lib_dir = File::Spec->catdir($texinfolibdir, 'maintain');
-    unshift @INC, $texinfolibdir;
+    # In-source run.
+    #warn "in source\n";
+    my $lib_dir = File::Spec->catdir($ENV{'top_builddir'}, 'tp');
 
-    # For XSParagraph.pm, XSParagraph.la, and XSParagraph.so.
-    push @INC, "${texinfolibdir}Texinfo/Convert/XSParagraph";
-  } elsif ($datadir ne '@' .'datadir@' and $package ne '@' . 'PACKAGE@'
-           and $packagedir ne '@' .'pkglibexecdir@/Texinfo'
-           and $datadir ne '') {
-    $texinfolibdir = File::Spec->catdir($datadir, $package);
-    # try to make package relocatable, will only work if standard relative paths
-    # are used
-    if (! -f File::Spec->catfile($texinfolibdir, 'Texinfo', 'Parser.pm')
+    unshift @INC, $lib_dir;
+
+    require Texinfo::ModulePath;
+    Texinfo::ModulePath::init();
+  } else {
+    # Look for modules in their installed locations.
+
+    my $lib_dir = File::Spec->catdir($datadir, $package);
+
+    # try to make package relocatable, will only work if
+    # standard relative paths are used
+    if (! -f File::Spec->catfile($lib_dir, 'Texinfo', 'Parser.pm')
         and -f File::Spec->catfile($command_directory, $updir, 'share', 
                                    'texinfo', 'Texinfo', 'Parser.pm')) {
-      $texinfolibdir = File::Spec->catdir($command_directory, $updir, 
+      $lib_dir = File::Spec->catdir($command_directory, $updir, 
                                           'share', 'texinfo');
     }
-    $lib_dir = $texinfolibdir;
-    #unshift @INC, $texinfolibdir;
-    # the directory where modules are searched for is placed last
-    # in @INC, as we do not want to take precedence over perl -I 
-    # arguments.  It unfortunatly means that system directories are 
-    # searched for before the installation directories.  This could
-    # cause trouble if the modules are separately installed.
-    push @INC, $texinfolibdir;
+    unshift @INC, $lib_dir;
 
-    # For XSParagraph.pm and XSParagraph.so.
-    push @INC, $packagedir;
-  }
-
-  # '@USE_EXTERNAL_LIBINTL @ and similar are substituted in the
-  # makefile using values from configure
-  if (defined($texinfolibdir)) {
-    if ('@USE_EXTERNAL_LIBINTL@' ne 'yes') {
-      unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'libintl-perl', 'lib'));
-    }
-    if ('@USE_EXTERNAL_EASTASIANWIDTH@' ne 'yes') {
-      unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'Unicode-EastAsianWidth', 'lib'));
-    }
-    if ('@USE_EXTERNAL_UNIDECODE@' ne 'yes') {
-      unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'));
-    }
+    require Texinfo::ModulePath;
+    Texinfo::ModulePath::init($lib_dir, $packagedir);
   }
 } # end BEGIN
 

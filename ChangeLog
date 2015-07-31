@@ -1,5 +1,40 @@
 2015-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/ModulePath.pm.in: New file, to add directories to 
+	module search path.
+	* configure.ac: Process it to create ModulePath.pm.
+	* tp/Makefile.am: List ModulePath.pm.in and ModulePath.pm.
+	* tp/texi2any.pl (BEGIN): Use Texinfo::ModulePath module.  Don't 
+	look at file extension of invoked program to decide whether to 
+	use installed modules; instead, check whether strings like 
+	@these@ have been substituted.
+	* README-hacking: Update advice on running uninstalled texi2any 
+	scripts.
+	* tp/paragraph.t (BEGIN): Use Texinfo::ModulePath.
+	* tp/t/test_utils.t (BEGIN): Use Texinfo::ModulePath.
+
+	* tp/Texinfo/Convert/Info.pm,
+	* tp/Texinfo/Convert/Plaintext.pm,
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.pm,
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.xs,
+	* tp/t/paragraph.t: Uniformly refer to XSParagraph.pm
+	as "Texinfo::Convert::XSParagraph::XSParagraph".
+
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Install 
+	XSParagraph.pm under $(pkgdatadir)/Texinfo/Convert/XSParagraph.
+
+	* tp/tests/htmlxref/Makefile.am,
+	* tp/tests/htmlxref-only_mono/Makefile.am,
+	* tp/tests/htmlxref-only_split/Makefile.am,
+	* tp/tests/many_input_files/indices.sh,
+	* tp/tests/many_input_files/tex_t4ht.sh,
+	* tp/tests/run_parser_all.sh
+	Set AM_TESTS_ENVIRONMENT to pass 'top_srcdir', 'top_builddir' 
+	onto tests.  Don't specify location of directories containing 
+	Perl modules with "-I" flags to Perl.
+
+2015-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Mention improvements in speed and memory usage for Info.  
 	(Changes on 2015-07-31 and 2015-07-13.)
 

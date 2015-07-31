@@ -80,11 +80,9 @@ http://ftpmirror.gnu.org/texinfo.
 directly.  This is the original source file for the program, so it's
 convenient to be able to make changes and then run it.
 
-To run it under a name that doesn't end in .pl, e.g., "makeinfo", you
-can use an alias, or set the environment variable TEXINFO_DEV_SOURCE to 1,
-or symlink to a trivial script along these lines:
-#!/bin/sh
-exec /YOUR/TEXINFO/CHECKOUT/tp/texi2any.pl "$@"
+To run the output "tp/texi2any" instead, you can set the environment
+variable TEXINFO_DEV_SOURCE to 1.  Otherwise, it will try to use
+Texinfo's Perl modules in the installed locations.
 
 
 

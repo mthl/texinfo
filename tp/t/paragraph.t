@@ -2,20 +2,26 @@ use strict;
 
 use Test::More;
 use File::Spec;
+use File::Basename;
 
-BEGIN { plan tests => 127 * 2 - 45;
-        if (defined($ENV{'top_srcdir'})) {
-          unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
-          my $lib_dir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp', 'maintain');
-          unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'libintl-perl', 'lib'),
-                         File::Spec->catdir($lib_dir, 'lib', 'Unicode-EastAsianWidth', 'lib'),
-                         File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'));
-      }
-    };
+BEGIN {
 
-use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
+plan tests => 127 * 2 - 45;
+
+my ($real_command_name, $command_directory, $command_suffix)
+  = fileparse($0, '.t');
+my $updir = File::Spec->updir();
+my $up = File::Spec->catdir($command_directory, $updir);
+push @INC, $up;
+if (!defined($ENV{'top_srcdir'})) {
+  $ENV{'top_srcdir'} = File::Spec->catdir($up, $updir);
+}
+require Texinfo::ModulePath;
+Texinfo::ModulePath::init();
+
+}; # end BEGIN
+
 use Texinfo::Convert::Paragraph;
-use lib 'Texinfo/Convert/XSParagraph';
 use Texinfo::Convert::XSParagraph::XSParagraph;
 use Texinfo::Convert::Line;
 use Texinfo::Convert::UnFilled;
@@ -503,7 +509,8 @@ is ($para->{'lines_counter'}, 1, 'count lines text pending');
 $result .= $para->end();
 is ($para->{'lines_counter'}, 2, 'count lines end paragraph');
 
-  *Texinfo::Convert::Paragraph:: = *XSParagraph::;
+  *Texinfo::Convert::Paragraph::
+                             = *Texinfo::Convert::XSParagraph::XSParagraph::;
   $testing_XSParagraph = 1;
   goto DOITAGAIN;
 }

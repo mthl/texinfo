@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-package XSParagraph;
+package Texinfo::Convert::XSParagraph::XSParagraph;
 
 use DynaLoader;
 
@@ -137,7 +137,7 @@ if (!$dlpath) {
 
 #print STDERR "loadable object is at $dlpath\n";
 
-my $module = "XSParagraph";
+my $module = "Texinfo::Convert::XSParagraph::XSParagraph";
 our $VERSION = '6.0';
 
 # Following steps under "bootstrap" in "man DynaLoader".
@@ -157,7 +157,9 @@ my @undefined_symbols = DynaLoader::dl_undef_symbols();
 if ($#undefined_symbols+1 != 0) {
   _fatal "XSParagraph: still have undefined symbols after dl_load_file";
 }
-my $symref = DynaLoader::dl_find_symbol($libref, "boot_$module");
+my $bootname = "boot_$module";
+$bootname =~ s/:/_/g;
+my $symref = DynaLoader::dl_find_symbol($libref, $bootname);
 if (!$symref) {
   _fatal "XSParagraph: couldn't find boot_$module symbol";
   goto FALLBACK;
@@ -177,7 +179,7 @@ push @DynaLoader::dl_shared_objects, $dlpath; # record files loaded
 # be called from Perl code.
 &$boot_fn($module, $VERSION);
 
-if (!XSParagraph::init ()) {
+if (!Texinfo::Convert::XSParagraph::XSParagraph::init ()) {
   _fatal "XSParagraph: error initializing";
   goto FALLBACK;
 }
@@ -192,7 +194,8 @@ FALLBACK:
   }
   # Fall back to using the Perl code.
   require Texinfo::Convert::Paragraph;
-  *XSParagraph:: = *Texinfo::Convert::Paragraph::;
+  *Texinfo::Convert::XSParagraph::XSParagraph::
+                                          = *Texinfo::Convert::Paragraph::;
 DONTFALLBACK: ;
 } # end BEGIN
 
