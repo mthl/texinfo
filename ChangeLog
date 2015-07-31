@@ -28,7 +28,9 @@
 	* tp/tests/htmlxref-only_split/Makefile.am,
 	* tp/tests/many_input_files/indices.sh,
 	* tp/tests/many_input_files/tex_t4ht.sh,
-	* tp/tests/run_parser_all.sh
+	* tp/tests/run_parser_all.sh,
+	* doc/Makefile.am,
+	* man/Makefile.am:
 	Set AM_TESTS_ENVIRONMENT to pass 'top_srcdir', 'top_builddir' 
 	onto tests.  Don't specify location of directories containing 
 	Perl modules with "-I" flags to Perl.
