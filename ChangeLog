@@ -1,3 +1,12 @@
+2015-08-01  Karl Berry  <karl@freefriends.org>
+
+	* doc/texinfo.tex (\ctrl): remove this long-obsolete control sequence.
+	(\hatchar): use this instead of \hat for the \chardef,
+	to avoid conflict with plain's (math accent) \hat.
+	(\activehat): use it.
+	Based on ideas in (tiny change) bug-texinfo mail
+	from Ralph Schleicher, 01 Aug 2015 21:37:58.
+
 2015-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/ModulePath.pm.in: New file, to add directories to 
