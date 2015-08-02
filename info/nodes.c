@@ -717,6 +717,13 @@ info_load_file (char *fullpath, int is_subfile)
   file_buffer = make_file_buffer ();
   file_buffer->fullpath = xstrdup (fullpath);
   file_buffer->filename = filename_non_directory (file_buffer->fullpath);
+  file_buffer->filename = xstrdup (file_buffer->filename);
+  /* Strip off a file extension, so we can find it again in info_find_file. */
+  {
+    char *p = strchr (file_buffer->filename, '.');
+    if (p)
+      *p = '\0';
+  }
   file_buffer->finfo = finfo;
   file_buffer->filesize = filesize;
   file_buffer->contents = contents;
@@ -1242,7 +1249,10 @@ find_node_from_tag (FILE_BUFFER *parent, FILE_BUFFER *fb, TAG *tag)
                  conditional above. */
               (*h)->node = info_get_node (n->fullpath, n->nodename);
               if ((*h)->node)
-                free_history_node (n);
+                {
+                  (*h)->node->active_menu = n->active_menu;
+                  free_history_node (n);
+                }
               else
                 {
                   /* We found the node before, but now we can't.  Just leave

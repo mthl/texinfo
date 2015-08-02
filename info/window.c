@@ -27,8 +27,6 @@
 #include "tag.h"
 #include "variables.h"
 
-static void calculate_line_starts (WINDOW *window);
-
 /* The window which describes the screen. */
 WINDOW *the_screen = NULL;
 
@@ -824,6 +822,9 @@ window_line_of_point (WINDOW *window)
 {
   register int i, start = 0;
 
+  if (!window->line_starts)
+    calculate_line_starts (window);
+
   /* Try to optimize.  Check to see if point is past the pagetop for
      this window, and if so, start searching forward from there. */
   if (window->pagetop > -1 && window->pagetop < window->line_count
@@ -1170,7 +1171,7 @@ collect_line_starts (WINDOW *win, long ll_num, long pl_start)
 
    Note that this function must agree with what display_update_one_window
    in display.c does. */
-static void
+void
 calculate_line_starts (WINDOW *win)
 {
   long pl_chars = 0;     /* Number of characters in line so far. */

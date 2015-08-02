@@ -96,9 +96,9 @@ typedef struct window_struct
   size_t match_count;
 
   /* History of nodes visited in this window. */
-  WINDOW_STATE **hist;       /* Nodes visited in this window. */
-  size_t hist_index;            /* Index where to add the next node. */
-  size_t hist_slots;            /* Number of slots allocated to HIST. */
+  WINDOW_STATE **hist;  /* Nodes visited in this window, including current. */  
+  size_t hist_index;    /* Index where to add the next node. */
+  size_t hist_slots;    /* Number of slots allocated to HIST. */
 } WINDOW;
 
 #define W_UpdateWindow  0x01    /* WINDOW needs updating. */

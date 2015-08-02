@@ -1,3 +1,29 @@
+2015-08-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.h (NODE): New field 'active_menu'.
+	(N_SeenBySearch): New flag.
+
+	* info/session.c (tree_search_check_node)
+	(tree_search_check_node_backwards): New functions.
+	(info_tree_search, info_tree_search_next, info_tree_search_prev): New
+	user commmands (experimental).
+
+	* info/session.c (put_node_in_window, forget_node_fast) 
+	(wipe_seen_flags, info_set_node_of_window_fast) 
+	(tag_of_reference): New utility functions.
+
+	* info/nodes.c (find_node_from_tag): Preserve active_menu field 
+	for nodes in window histories.
+	* info/infomap.c (default_emacs_like_info_keys): Add bindings 
+	for new commands.
+	* info/window.c (window_line_of_point),
+	* info/display.c (display_update_one_window): Calculate line 
+	starts if needed.
+	(calculate_line_starts): No longer static.
+	* info/nodes.c (info_load_file): Store filename without file 
+	extension.
+	* info/window.h (WINDOW): Update a comment.
+
 2015-08-01  Karl Berry  <karl@freefriends.org>
 
 	* doc/texinfo.tex (\ctrl): remove this long-obsolete control sequence.

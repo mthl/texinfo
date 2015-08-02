@@ -49,9 +49,10 @@ typedef struct {
   long body_start;              /* Offset of the actual node body */
   int flags;                    /* See immediately below. */
   REFERENCE **references;       /* Cross-references or menu items in node.
-                                   references == 0 implies uninitialized,
-                                   not empty */
+                                   Null-terminated.  references == 0 implies 
+                                   uninitialized, not empty */
   char *up, *prev, *next;       /* Names of nearby nodes. */
+  int active_menu;              /* Used for subnodes search. */
 } NODE;
 
 /* Values for NODE.flags or FILE_BUFFER.flags. */
@@ -69,6 +70,7 @@ typedef struct {
 #define N_EOLs_Converted 0x1000 /* CR bytes were stripped before LF. */
 #define N_Gone         0x2000   /* File is no more. */
 #define N_Simple       0x4000   /* Data about cross-references is missing. */
+#define N_SeenBySearch 0x8000   /* Node has already been seen in a search. */
 
 /* String constants. */
 #define INFO_FILE_LABEL                 "File:"
@@ -106,7 +108,7 @@ typedef struct {
   long nodestart;               /* The value read from the tag table. */
   long nodestart_adjusted;
   int flags;                    /* Same as NODE.flags. */
-  NODE cache;
+  NODE cache;                   /* Saved information about pointed-to node. */
 } TAG;
 
 /* The following structure is used to remember information about the contents

@@ -881,18 +881,46 @@ free_history_node (NODE *n)
   free (n);
 }
 
+static void
+put_node_in_window (WINDOW *win, NODE *node)
+{
+  win->node = node;
+  win->pagetop = 0;
+  win->point = 0;
+  free (win->matches); win->matches = 0;
+  free (win->line_starts); win->line_starts = 0;
+  free (win->log_line_no); win->log_line_no = 0;
+  win->flags |= W_UpdateWindow;
+}
+
 /* Go back one in the node history. */
-void
-forget_node (WINDOW *win)
+int
+forget_node_fast (WINDOW *win)
 {
   int i = win->hist_index;
   if (i == 0)
-    return;
+    return 0;
 
   free_history_node (win->hist[i - 1]->node);
   free (win->hist[i - 1]);
   win->hist[i - 1] = 0;
   i = --win->hist_index;
+
+  if (i == 0)
+    /* Window history is empty. */
+    win->node = 0;
+  else
+    {
+      put_node_in_window (win, win->hist[i - 1]->node);
+      win->point = win->hist[i - 1]->point;
+    }
+  return i;
+}
+
+void
+forget_node (WINDOW *win)
+{
+  int i = forget_node_fast (win);
 
   if (i == 0)
     {
@@ -920,6 +948,27 @@ forget_window_and_nodes (WINDOW *win)
       free (win->hist[i]);
     }
   free (win->hist);
+}
+
+/* Like info_set_node_of_window, but only do enough so to extend the
+   window history, avoiding calculating line starts. */
+void
+info_set_node_of_window_fast (WINDOW *win, NODE *node)
+{
+  WINDOW_STATE *new;
+
+  if (win->hist_index && win->hist[win->hist_index - 1]->node == win->node)
+    {
+      win->hist[win->hist_index - 1]->pagetop = win->pagetop;
+      win->hist[win->hist_index - 1]->point = win->point;
+    }
+  put_node_in_window (win, node);
+
+  new = xmalloc (sizeof (WINDOW_STATE));
+  new->node = win->node;
+  new->pagetop = win->pagetop;
+  new->point = win->point;
+  add_pointer_to_array (new, win->hist_index, win->hist, win->hist_slots, 16);
 }
 
 /* Set WINDOW to show NODE.  Remember the new window in our list of
@@ -4260,6 +4309,344 @@ info_search_1 (WINDOW *window, int count, int case_sensitive)
   /* Perhaps free the unreferenced file buffers that were searched, but
      not retained. */
   gc_file_buffers_and_nodes ();
+}
+
+/* Set *T to an offset within the tags table of the node referenced by R,
+   using WINDOW for defaults.  *FB is set to the file buffer structure for
+   the node. */
+static int
+tag_of_reference (REFERENCE *r, WINDOW *window, FILE_BUFFER **fb, TAG ***t)
+{
+  char *filename, *nodename;
+  int i;
+
+  filename = r->filename;
+  nodename = r->nodename;
+  if (!filename)
+    filename = window->node->fullpath;
+  if (!nodename || !*nodename)
+    nodename = "Top";
+
+  *fb = info_find_file (filename);
+  if (!*fb)
+    return 0;
+
+  for (i = 0; *(*t = &(*fb)->tags[i]); i++)
+    if (!strcmp (nodename, (**t)->nodename))
+      goto found_tag;
+  return 0;
+found_tag: ;
+  return 1;
+}
+
+static void tree_search_check_node (WINDOW *window);
+static void tree_search_check_node_backwards (WINDOW *window);
+
+/* Search in WINDOW->node, and nodes reachable by menus from it, for
+   WINDOW->search_string. */
+static void
+tree_search_check_node (WINDOW *window)
+{
+  long start_off;
+  enum search_result result;
+  char *string;
+  int previous_match;
+
+  if (window->node->active_menu != 0)
+    previous_match = 1;
+  else
+    {
+      previous_match = 0;
+      window->node->active_menu = -99;
+    }
+  string = xstrdup (window->search_string);
+  goto check_node;
+
+check_node:
+  result = info_search_in_node_internal (window, window->node,
+                                  string,
+                                  window->point + 1,
+                                  1, /* Search forwards */
+                                  1, /* Case-sensitive */
+                                  0, /* No regular expressions. */
+                                  &start_off);
+  if (result == search_success)
+    {
+      info_show_point (window);
+      goto funexit;
+    }
+
+  /* Otherwise, try each menu entry in turn. */
+  if (window->matches)
+    window->point++; /* Find this match again if/when we come back. */
+  goto check_menus;
+
+  /* At this juncture, window->node->active_menu is the index of the last
+     reference in the node to have been checked, plus one.  -99 is a special 
+     code to say that none of them have been checked. */
+check_menus:
+  if (!(window->node->flags & N_IsIndex)) /* Don't go down menus in index  */
+    {                               /* nodes, because this leads to loops. */
+      REFERENCE *r;
+      int ref_index;
+      if (window->node->active_menu != -99)
+        ref_index = window->node->active_menu;
+      else
+        ref_index = 0;
+      for (; (r = window->node->references[ref_index]); ref_index++)
+        if (r->type == REFERENCE_MENU_ITEM)
+          {
+            FILE_BUFFER *file_buffer;
+            TAG **tag;
+            NODE *node;
+
+            if (!tag_of_reference (r, window, &file_buffer, &tag))
+              continue;
+
+            if ((*tag)->flags & N_SeenBySearch)
+              continue;
+            (*tag)->flags |= N_SeenBySearch;
+
+            window->node->active_menu = ref_index + 1;
+            node = info_node_of_tag (file_buffer, tag);
+            if (!node)
+              continue;
+            info_set_node_of_window_fast (window, node);
+            window->node->active_menu = -99;
+            goto check_node;
+          }
+    }
+  goto go_up;
+
+go_up:
+  /* If no more menu entries, try going back. */
+  if (window->hist_index >= 2
+      && window->hist[window->hist_index - 2]->node->active_menu != 0)
+    {
+      forget_node_fast (window);
+      goto check_menus;
+    }
+
+  /* Go back to the final match. */
+  if (previous_match)
+    {
+      REFERENCE *mentry;
+
+      message_in_echo_area (_("Going back to last match from %s"),
+                            window->node->nodename);
+
+      /* This is a trick.  Add an arbitrary node to the window history,
+         but set active_menu to one more than the number of references.  When
+         we call tree_search_check_node_backwards, this will repeatedly go down 
+         the last menu entry for us. */
+      {
+        int n = 0;
+
+        while (window->node->references[n])
+          n++;
+        window->node->active_menu = n + 1;
+
+        mentry = select_menu_digit (window, '1');
+        if (!mentry)
+          goto funexit;
+        if (!info_select_reference (window, mentry))
+          goto funexit;
+        window->node->active_menu = -99;
+      }
+      window->point = window->node->body_start;
+      tree_search_check_node_backwards (window);
+    }
+  info_error (_("No more matches."));
+
+  /*window->node->active_menu = 0;
+  free (window->search_string); window->search_string = 0;*/
+
+funexit:
+  free (string);
+} /*********** end tree_search_check_node *************/
+
+
+/* The same as tree_search_check_node, but backwards. */
+static void
+tree_search_check_node_backwards (WINDOW *window)
+{
+  long start_off;
+  enum search_result result;
+  char *string;
+
+  string = xstrdup (window->search_string);
+  goto check_node;
+
+check_node:
+  result = info_search_in_node_internal (window, window->node,
+                                  string,
+                                  window->point - 1,
+                                 -1, /* Search backwards */
+                                  1, /* Case-sensitive */
+                                  0, /* No regular expressions. */
+                                  &start_off);
+  if (result == search_success)
+    {
+      info_show_point (window);
+      goto funexit;
+    }
+
+  goto go_up;
+
+  /* Check through menus in current node, in reverse order.
+     At this juncture, window->node->active_menu is the index of the last
+     reference in the node to have been checked, plus one.  -99 is a special 
+     code to say that none of them have been checked. */
+check_menus:
+  if (!(window->node->flags & N_IsIndex)) /* Don't go down menus in index  */
+    {                               /* nodes, because this leads to loops. */
+      REFERENCE *r;
+      int ref_index;
+      if (window->node->active_menu == -99)
+        goto check_node;
+      else
+        ref_index = window->node->active_menu - 2;
+      for (; ref_index >= 0; ref_index--)
+        {
+          r = window->node->references[ref_index];
+          if (r->type == REFERENCE_MENU_ITEM)
+            {
+              TAG **tag;
+              FILE_BUFFER *file_buffer;
+              NODE *node;
+
+              if (!tag_of_reference (r, window, &file_buffer, &tag))
+                continue;
+
+              /* This inverts what is done for the forwards search.  It's 
+                 possible that we will visit the nodes in a different order if 
+                 there is more than one reference to a node. */
+              if (!((*tag)->flags & N_SeenBySearch))
+                {
+                  /*fprintf (stderr, "omitting (%s)%s\n",
+                     (*tag)->filename,
+                     (*tag)->nodename);*/
+                  continue;
+                }
+
+              node = info_node_of_tag (file_buffer, tag);
+              if (!node)
+                continue;
+              window->node->active_menu = ref_index + 1;
+              info_set_node_of_window_fast (window, node);
+              window->point = window->node->nodelen;
+              {
+                /* Start at the last menu entry in the subordinate node. */
+                int i;
+                i = 0;
+                while(window->node->references[i])
+                  i++;
+                window->node->active_menu = i + 1;
+              }
+              goto check_menus;
+            }
+        }
+    }
+  window->node->active_menu = -99;
+  goto check_node;
+
+  /* Try going back. */
+go_up:
+  if (window->hist_index >= 2
+      && window->hist[window->hist_index - 2]->node->active_menu != 0)
+    {
+      TAG **tag;
+      REFERENCE *r;
+      FILE_BUFFER *file_buffer;
+
+      //fprintf (stderr, "going up to %d\n", window->node->active_menu);
+      forget_node_fast (window);
+      r = window->node->references[window->node->active_menu - 1];
+
+      /* Clear the flag to say we've been to the node we just came back
+         from.  This reverse the order from the forwards search, where
+         we set this flag just before going down. */
+      if (r && tag_of_reference (r, window, &file_buffer, &tag))
+        {
+          (*tag)->flags &= ~N_SeenBySearch;
+        }
+
+      goto check_menus;
+    }
+
+  /* Otherwise, no result. */
+  info_error (_("No more matches."));
+  /*window->node->active_menu = 0;
+  free (window->search_string); window->search_string = 0;*/
+
+funexit:
+  free (string);
+} /*********** end tree_search_check_node_backwards *************/
+
+
+/* Clear N_SeenBySearch for all nodes. */
+void
+wipe_seen_flags (void)
+{
+  int fb_index;
+  TAG **t;
+
+  for (fb_index = 0; fb_index < info_loaded_files_index; fb_index++)
+    {
+      t = info_loaded_files[fb_index]->tags;
+      if (!t)
+        continue; /* Probably a sub-file of a split file. */
+      for (; *t; t++)
+        {
+          (*t)->flags &= ~N_SeenBySearch;
+        }
+    }
+}
+
+DECLARE_INFO_COMMAND (info_tree_search,
+                      _("Search this node and subnodes for a string."))
+{
+  char *prompt, *line;
+  int i;
+
+  /* TODO: Display manual name */
+  asprintf (&prompt, "Search under %s: ",
+            //window->node->filename,
+            window->node->nodename);
+  line = info_read_in_echo_area (prompt); free (prompt);
+  if (!line)
+    return;
+
+  /* Remove relics of previous tree searches. */
+  wipe_seen_flags ();
+  for (i = 0; i < window->hist_index; i++)
+    window->hist[i]->node->active_menu = 0;
+  window->search_string = line;
+  tree_search_check_node (window);
+}
+
+DECLARE_INFO_COMMAND (info_tree_search_next,
+                      _("Go to next match in Info sub-tree"))
+{
+  if (!window->search_string || window->node->active_menu == 0)
+    {
+      info_error (_("No active search"));
+      return;
+    }
+
+  tree_search_check_node (window);
+}
+
+DECLARE_INFO_COMMAND (info_tree_search_prev,
+                      _("Go to previous match in Info sub-tree"))
+{
+  if (!window->search_string || window->node->active_menu == 0)
+    {
+      info_error (_("No active search"));
+      return;
+    }
+
+  tree_search_check_node_backwards (window);
 }
 
 DECLARE_INFO_COMMAND (info_search_case_sensitively,

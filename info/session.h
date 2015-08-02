@@ -64,6 +64,7 @@ VFunction *read_key_sequence (Keymap map, int menu, int mouse,
                               int insert, int *count);
 extern unsigned char info_input_pending_p (void);
 extern void info_set_node_of_window (WINDOW *window, NODE *node);
+extern void info_set_node_of_window_fast (WINDOW *window, NODE *node);
 extern void initialize_keyseq (void);
 extern void add_char_to_keyseq (int character);
 extern FILE_BUFFER *file_buffer_of_window (WINDOW *window);
@@ -81,8 +82,9 @@ extern char *program_name_from_file_name (char *file_name);
    associated nodes. */
 extern void info_delete_window_internal (WINDOW *window);
 
-extern void forget_window_and_nodes (WINDOW *window);
-extern void forget_node (WINDOW *win);
+void forget_window_and_nodes (WINDOW *window);
+void forget_node (WINDOW *win);
+int forget_node_fast (WINDOW *win);
 
 /* Tell Info that input is coming from the file FILENAME. */
 extern void info_set_input_from_file (char *filename);

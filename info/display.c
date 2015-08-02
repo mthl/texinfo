@@ -702,8 +702,10 @@ display_update_one_window (WINDOW *win)
   if ((win->first_row < 0) || (win->first_row > the_screen->height))
     goto funexit;
 
-  if (win->node && win->line_starts)
+  if (win->node)
     {
+      if (!win->line_starts)
+        calculate_line_starts (win);
       line_index = display_update_node_text (win);
 
       if (display_was_interrupted_p)
