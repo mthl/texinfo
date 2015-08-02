@@ -19,7 +19,7 @@
 	* info/window.c (window_line_of_point),
 	* info/display.c (display_update_one_window): Calculate line 
 	starts if needed.
-	(calculate_line_starts): No longer static.
+	* info/window.c (calculate_line_starts): No longer static.
 	* info/nodes.c (info_load_file): Store filename without file 
 	extension.
 	* info/window.h (WINDOW): Update a comment.

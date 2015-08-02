@@ -72,6 +72,4 @@ extern void display_scroll_display (int start, int end, int amount);
 extern void display_scroll_line_starts (WINDOW *window, int old_pagetop,
     long *old_starts, int old_count);
 
-void calculate_line_starts (WINDOW *window);
-
 #endif /* not INFO_DISPLAY_H */

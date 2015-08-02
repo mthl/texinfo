@@ -234,4 +234,7 @@ extern void window_line_map_init (WINDOW *win);
 
 extern long window_log_to_phys_line (WINDOW *window, long ln);
 
+void calculate_line_starts (WINDOW *window);
+
+
 #endif /* not INFO_WINDOW_H */
