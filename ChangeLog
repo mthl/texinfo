@@ -1,5 +1,9 @@
 2015-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi: Remove commented-out appendices.
+
+2015-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\initialfonts): New macro.
 	(\initial): Split into \initial and \initialx.  Use 
 	\initialfonts in \initial, and use \egroup at the end of 
