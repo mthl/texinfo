@@ -1,5 +1,13 @@
 2015-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Short Sample Texinfo File): Remove some 
+	unnecessary words.
+	(Sample Texinfo Files): Reword slightly.
+	(Short Sample): Remove some unnecessary words and sentences, and 
+	rearrange some paragraphs.
+
+2015-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi: Remove commented-out appendices.
 
 2015-08-03  Gavin Smith  <gavinsmith0123@gmail.com>

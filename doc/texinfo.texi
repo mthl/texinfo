@@ -1566,21 +1566,19 @@ closes with the @code{@@bye} command on a line of its own.
 @section A Short Sample Texinfo File
 @cindex Sample Texinfo file, with comments
 
-Here is a very short but complete Texinfo file, in the six conventional
+Here is a short but complete Texinfo file consisting of the
 parts enumerated in the previous section, so you can see how Texinfo
-source appears in practice.  The first three parts of the file, from
-@samp{\input texinfo} through to @samp{@@end titlepage}, look more
-intimidating than they are: most of the material is standard
-boilerplate; when writing a manual, you simply change the names as
-appropriate.
+source appears in practice.  The first three parts of the file are
+mostly boilerplate: when writing a manual, you simply change
+the names as appropriate.
 
-@xref{Beginning and Ending a File}, for full documentation on the 
-commands listed here.  @xref{GNU Sample Texts}, for the full texts to be 
+The complete file, without interspersed comments, is shown in
+@ref{Short Sample Texinfo File}.
+
+@xref{Beginning and Ending a File}, for more documentation on the
+commands listed here.  @xref{GNU Sample Texts}, for the full texts to be
 used in GNU manuals.
 
-In the following, the sample text is @emph{indented}; comments on it are
-not.  The complete file, without interspersed comments, is shown in
-@ref{Short Sample Texinfo File}.
 
 @subheading Part 1: Header
 
@@ -22583,8 +22581,8 @@ Write notes for yourself at the very end of a Texinfo file after the
 @appendix Sample Texinfo Files
 @cindex Sample Texinfo files
 
-The first example is from the first chapter (@pxref{Short Sample}),
-given here in its entirety, without commentary.  The second
+The first example from the first chapter (@pxref{Short Sample}) is
+given here in its entirety, without commentary.  The second example
 includes the full texts to be used in GNU manuals.
 
 @menu
@@ -22599,9 +22597,8 @@ includes the full texts to be used in GNU manuals.
 @section Short Sample
 @cindex Sample Texinfo file, no comments
 
-Here is a complete, short sample Texinfo file, without any commentary.
-You can see this file, with comments, in the first chapter.  @xref{Short
-Sample}.
+Here is a complete, short sample Texinfo file.  You can see this file, 
+with comments, in the first chapter.  @xref{Short Sample}.
 
 In a nutshell: The @command{makeinfo} program transforms a Texinfo
 source file such as this into an Info file or HTML; and @TeX{} typesets
