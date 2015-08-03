@@ -1,3 +1,13 @@
+2015-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\initialfonts): New macro.
+	(\initial): Split into \initial and \initialx.  Use 
+	\initialfonts in \initial, and use \egroup at the end of 
+	\initialx.  Rely on the use of \secfonts in \initialfonts 
+	instead of \let\tentt=\sectt etc.
+	(\normalhyphen, \usemathbackslash): New control sequences.
+	(\secrmnotbold): New font.
+
 2015-08-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.h (NODE): New field 'active_menu'.

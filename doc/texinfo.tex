@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-08-01.14}
+\def\texinfoversion{2015-08-03.11}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -1884,6 +1884,7 @@ end
 % Section fonts (14.4pt).
 \def\secnominalsize{14pt}
 \setfont\secrm\rmbshape{12}{\magstep1}{OT1}
+\setfont\secrmnotbold\rmshape{12}{\magstep1}{OT1}
 \setfont\secit\itbshape{10}{\magstep2}{OT1IT}
 \setfont\secsl\slbshape{10}{\magstep2}{OT1}
 \setfont\sectt\ttbshape{12}{\magstep1}{OT1TT}
@@ -5023,10 +5024,39 @@ end
 % These macros are used by the sorted index file itself.
 % Change them to control the appearance of the index.
 
-\def\initial#1{{%
-  % Some minor font changes for the special characters.
-  \let\tentt=\sectt \let\tt=\sectt \let\sf=\sectt
-  %
+\let\normalhyphen=-
+{\catcode`\/=13 \catcode`\-=13 \catcode`\^=13 \catcode`\~=13 \catcode`\_=13
+\catcode`\|=13 \catcode`\<=13 \catcode`\>=13 \catcode`\+=13 \catcode`\"=13
+\catcode`\$=3
+\gdef\initialfonts{%
+  \usemathbackslash
+  \secfonts
+  % Some changes for non-alphabetic characters.  Using the glyphs from the
+  % math fonts looks more consistent than the typewriter font used elsewhere
+  % for these characters.
+  % Can't get bold backslash so don't use bold forward slash
+  \catcode`\/=13
+  \def/{{\secrmnotbold \normalslash}}
+  \catcode`\-=13
+  \def-{{\normalhyphen\normalhyphen}}
+  \let^=\normalcaret
+  \let~=\normaltilde
+  \def\_{%
+    \leavevmode \kern.07em \vbox{\hrule width.33em height.06ex}\kern .07em }
+  \def|{$\vert$}
+  \def<{$\less$}
+  \def>{$\gtr$}
+  \def+{$\normalplus$}
+  \let"=\normaldoublequote
+}}
+
+\def\initial{%
+  \bgroup
+  \initialfonts
+  \initialx
+}
+
+\def\initialx#1{%
   % Remove any glue we may have, we'll be inserting our own.
   \removelastskip
   %
@@ -5047,7 +5077,8 @@ end
   % Do our best not to break after the initial.
   \nobreak
   \vskip .33\baselineskip plus .1\baselineskip
-}}
+  \egroup % \initialfonts
+}
 
 % \entry typesets a paragraph consisting of the text (#1), dot leaders, and
 % then page number (#2) flushed to the right margin.  It is used for index
@@ -10261,6 +10292,8 @@ directory should work if nowhere else does.}
 % catcode other.  We switch back and forth between these.
 @gdef@rawbackslash{@let\=@backslashcurfont}
 @gdef@otherbackslash{@let\=@realbackslash}
+
+@gdef@usemathbackslash{@def@backslashcurfont{@math{@backslash}}}
 
 % Same as @turnoffactive except outputs \ as {\tt\char`\\} instead of
 % the literal character `\'.  Also revert - to its normal character, in
