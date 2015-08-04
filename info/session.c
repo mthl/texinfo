@@ -4339,6 +4339,9 @@ found_tag: ;
   return 1;
 }
 
+/* Value for NODE.active_menu */
+#define BEFORE_MENU -99
+
 static void tree_search_check_node (WINDOW *window);
 static void tree_search_check_node_backwards (WINDOW *window);
 
@@ -4357,7 +4360,7 @@ tree_search_check_node (WINDOW *window)
   else
     {
       previous_match = 0;
-      window->node->active_menu = -99;
+      window->node->active_menu = BEFORE_MENU;
     }
   string = xstrdup (window->search_string);
   goto check_node;
@@ -4382,14 +4385,14 @@ check_node:
   goto check_menus;
 
   /* At this juncture, window->node->active_menu is the index of the last
-     reference in the node to have been checked, plus one.  -99 is a special 
-     code to say that none of them have been checked. */
+     reference in the node to have been checked, plus one.  BEFORE_MENU is a 
+     special code to say that none of them have been checked. */
 check_menus:
   if (!(window->node->flags & N_IsIndex)) /* Don't go down menus in index  */
     {                               /* nodes, because this leads to loops. */
       REFERENCE *r;
       int ref_index;
-      if (window->node->active_menu != -99)
+      if (window->node->active_menu != BEFORE_MENU)
         ref_index = window->node->active_menu;
       else
         ref_index = 0;
@@ -4412,7 +4415,7 @@ check_menus:
             if (!node)
               continue;
             info_set_node_of_window_fast (window, node);
-            window->node->active_menu = -99;
+            window->node->active_menu = BEFORE_MENU;
             goto check_node;
           }
     }
@@ -4451,15 +4454,12 @@ go_up:
           goto funexit;
         if (!info_select_reference (window, mentry))
           goto funexit;
-        window->node->active_menu = -99;
+        window->node->active_menu = BEFORE_MENU;
       }
       window->point = window->node->body_start;
       tree_search_check_node_backwards (window);
     }
   info_error (_("No more matches."));
-
-  /*window->node->active_menu = 0;
-  free (window->search_string); window->search_string = 0;*/
 
 funexit:
   free (string);
@@ -4495,14 +4495,14 @@ check_node:
 
   /* Check through menus in current node, in reverse order.
      At this juncture, window->node->active_menu is the index of the last
-     reference in the node to have been checked, plus one.  -99 is a special 
-     code to say that none of them have been checked. */
+     reference in the node to have been checked, plus one.  BEFORE_MENU is a 
+     special code to say that none of them have been checked. */
 check_menus:
   if (!(window->node->flags & N_IsIndex)) /* Don't go down menus in index  */
     {                               /* nodes, because this leads to loops. */
       REFERENCE *r;
       int ref_index;
-      if (window->node->active_menu == -99)
+      if (window->node->active_menu == BEFORE_MENU)
         goto check_node;
       else
         ref_index = window->node->active_menu - 2;
@@ -4522,12 +4522,7 @@ check_menus:
                  possible that we will visit the nodes in a different order if 
                  there is more than one reference to a node. */
               if (!((*tag)->flags & N_SeenBySearch))
-                {
-                  /*fprintf (stderr, "omitting (%s)%s\n",
-                     (*tag)->filename,
-                     (*tag)->nodename);*/
-                  continue;
-                }
+                continue;
 
               node = info_node_of_tag (file_buffer, tag);
               if (!node)
@@ -4547,7 +4542,7 @@ check_menus:
             }
         }
     }
-  window->node->active_menu = -99;
+  window->node->active_menu = BEFORE_MENU;
   goto check_node;
 
   /* Try going back. */
@@ -4559,7 +4554,6 @@ go_up:
       REFERENCE *r;
       FILE_BUFFER *file_buffer;
 
-      //fprintf (stderr, "going up to %d\n", window->node->active_menu);
       forget_node_fast (window);
       r = window->node->references[window->node->active_menu - 1];
 
@@ -4576,8 +4570,6 @@ go_up:
 
   /* Otherwise, no result. */
   info_error (_("No more matches."));
-  /*window->node->active_menu = 0;
-  free (window->search_string); window->search_string = 0;*/
 
 funexit:
   free (string);
@@ -4611,7 +4603,6 @@ DECLARE_INFO_COMMAND (info_tree_search,
 
   /* TODO: Display manual name */
   asprintf (&prompt, "Search under %s: ",
-            //window->node->filename,
             window->node->nodename);
   line = info_read_in_echo_area (prompt); free (prompt);
   if (!line)
@@ -4648,6 +4639,7 @@ DECLARE_INFO_COMMAND (info_tree_search_prev,
 
   tree_search_check_node_backwards (window);
 }
+#undef BEFORE_MENU
 
 DECLARE_INFO_COMMAND (info_search_case_sensitively,
                       _("Read a string and search for it case-sensitively"))
