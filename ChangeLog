@@ -1,4 +1,12 @@
-2015-08-04  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-08-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/variables.c (info_variables): New user variable 
+	"follow-strategy".
+	* info/nodes.c (info_get_node_with_defaults): If 
+	follow-strategy=remain (the default), try to remain within the 
+	same directory as the node we're coming from.
+
+2015-08-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* configure.ac,
 	* tp/Texinfo/Convert/XSParagraph/configure.ac,
@@ -6,7 +14,7 @@
 	PERL_EXT_CFLAGS, PERL_EXT_CPPFLAGS, PERL_EXT_LDLAGS as user 
 	variables.
 
-2015-08-04  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-08-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* configure.ac,
 	* tp/Texinfo/Convert/XSParagraph/configure.ac: Add 

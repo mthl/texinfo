@@ -36,6 +36,8 @@ static char *on_off_choices[] = { "Off", "On", NULL };
 
 static char *mouse_choices[] = { "Off", "normal-tracking", NULL };
 
+static char *follow_strategy_choices[] = { "remain", "path", NULL };
+
 /* Choices used by the completer when reading a value for the user-visible
    variable "scroll-behaviour". */
 static char *info_scroll_choices[] = { "Continuous", "Next Only",
@@ -127,6 +129,10 @@ VARIABLE_ALIST info_variables[] = {
   { "mouse",
       N_("Method to use to track mouse events"),
     &mouse_protocol, (char **)mouse_choices },
+
+  { "follow-strategy",
+      N_("Method to use to track mouse events"),
+    &follow_strategy, (char **)follow_strategy_choices },
 
   { NULL }
 };

@@ -901,6 +901,11 @@ get_node_length (SEARCH_BINDING *binding)
   return i - binding->start;
 }
 
+#define FOLLOW_REMAIN 0
+#define FOLLOW_PATH 1
+
+int follow_strategy;
+
 /* Return a pointer to a NODE structure for the Info node (FILENAME)NODENAME,
    using DEFAULTS for defaults.  If DEFAULTS is null, the defaults are:
    - If FILENAME is NULL, `dir' is used.
@@ -934,8 +939,35 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
       goto cleanup_and_exit;
     }
 
-  /* Find the correct info file, or give up.  */
-  file_buffer = info_find_file (filename);
+
+  if (follow_strategy == FOLLOW_REMAIN
+      && defaults && defaults->fullpath)
+    {
+      /* Find the directory in the filename for defaults, and look in
+         that directory first. */
+      char *file_in_same_dir;
+      char saved_char, *p;
+
+      p = defaults->fullpath + strlen (defaults->fullpath);
+      while (p > defaults->fullpath && !IS_SLASH (*p))
+        p--;
+
+      if (p > defaults->fullpath)
+        {
+          saved_char = *p;
+          *p = 0;
+
+          file_in_same_dir = info_add_extension (defaults->fullpath,
+                                                 filename, 0);
+          if (file_in_same_dir)
+            file_buffer = info_find_file (file_in_same_dir);
+          free (file_in_same_dir);
+          *p = saved_char;
+        }
+    }
+
+  if (!file_buffer)
+    file_buffer = info_find_file (filename);
 
   if (file_buffer)
     {

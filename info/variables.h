@@ -83,6 +83,7 @@ extern int key_time;
 extern int highlight_searches_p;
 extern int xref_rendition_p;
 extern int mouse_protocol;
+extern int follow_strategy;
 
 
 #endif /* not INFO_VARIABLES_H */
