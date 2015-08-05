@@ -67,19 +67,16 @@ XSParagraph_la_SOURCES = XSParagraph.c xspara.c xspara.h \
 
 BUILT_SOURCES = XSParagraph.c
 
-# Clear any flags set by configure at the top level, because the 
-# compiler used in this subdirectory might be different.
-CFLAGS =
+# Override these variables set by configure at the top level, because 
+# the compiler used in this subdirectory might be different.  
+# PERL_EXT_var are user variables, allowing configuring at the top-level 
+# with e.g. "./configure CFLAGS='-g -O0' PERL_EXT_CFLAGS='-g'".
 
-XSParagraph_la_CFLAGS =
+CFLAGS = $(PERL_EXT_CFLAGS)
+CPPFLAGS = $(PERL_EXT_CPPFLAGS)
+LDFLAGS = $(PERL_EXT_LDFLAGS)
 
-#CCFLAGS = -D_REENTRANT -D_GNU_SOURCE -fno-strict-aliasing -pipe -fstack-protector -I/usr/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64
-# Apparently these may be wrong if Perl was compiled with a different 
-# compiler from the one we're using.
-# Maybe we should strip out anything that isn't a -D or -I flag.
-# See http://lists.gnu.org/archive/html/bug-texinfo/2015-06/msg00077.html,
-# and http://www.tokiwinter.com/fix-perl-make-errors-under-solaris/
-XSParagraph_la_CFLAGS += $(PERL_CONF_ccflags)
+XSParagraph_la_CFLAGS = $(PERL_CONF_ccflags)
 
 XSParagraph_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"  "-I$(PERL_INC)"
 

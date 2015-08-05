@@ -72,6 +72,13 @@ LT_INIT
 # aren't really used: otherwise, configure complains about undefined
 # variables.
 
+# User variables for a Perl XS extension, which may be different, for
+# example if the Perl interpreter being used was compiled with a
+# different compiler.  Also in top-level configure.ac.
+AC_ARG_VAR([PERL_EXT_CFLAGS], [Compiler flags for a Perl extension])
+AC_ARG_VAR([PERL_EXT_CPPFLAGS], [C preprocessor flags for a Perl extension])
+AC_ARG_VAR([PERL_EXT_LDFLAGS], [Linker flags for a Perl extension])
+
 if test x$disable_xs != xyes; then
 lookup_perl_flags([ccflags])
 lookup_perl_flags([cccdlflags])

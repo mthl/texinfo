@@ -57,6 +57,13 @@ specify where it is using
 ])
 fi
 
+# User variables for a Perl XS extension, which may be different, for
+# example if the Perl interpreter being used was compiled with a
+# different compiler.  Also in tp/Texinfo/Convert/XSParagraph/configure.ac.
+AC_ARG_VAR([PERL_EXT_CFLAGS], [Compiler flags for a Perl extension])
+AC_ARG_VAR([PERL_EXT_CPPFLAGS], [C preprocessor flags for a Perl extension])
+AC_ARG_VAR([PERL_EXT_LDFLAGS], [Linker flags for a Perl extension])
+
 AC_MSG_CHECKING([Perl version and Encode module])
 if $PERL -e "use 5.007_003; use Encode;" > /dev/null 2>&1; then
   perl_version_requirement='yes'
