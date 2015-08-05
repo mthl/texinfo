@@ -39,12 +39,27 @@ AC_DEFUN([lookup_perl_flags],
           AC_SUBST([PERL_CONF_$1], [$conf_value])
          ])
 
-AC_PATH_PROG([PERL], [perl])
+AC_ARG_ENABLE([perl-xs],
+    AC_HELP_STRING([--enable-perl-xs],
+              [build Perl XS modules for speed (default: yes)]),
+    [if test $enableval = 'no'; then
+       disable_xs=yes
+     else
+       disable_xs=no
+     fi],
+     [disable_xs=no])
 
-# It's essential that we use the same compiler that was used to build
-# Perl.  Otherwise Perl's "config.h" will be incorrect.
-lookup_perl_conf([cc])
-CC=$conf_value
+# See (automake)Conditional Subdirectories.  Even if --disable-perl-xs
+# is given, we still need to configure this directory minimally, so that
+# "make dist" will work.
+if test x$disable_xs != xyes; then
+  AC_PATH_PROG([PERL], [perl])
+  
+  # It's essential that we use the same compiler that was used to build
+  # Perl.  Otherwise Perl's "config.h" will be incorrect.
+  lookup_perl_conf([cc])
+  CC=$conf_value
+fi
 
 AC_PROG_CC
 
@@ -53,7 +68,11 @@ gl_INIT
 
 LT_INIT
 
+# The above are still necessary for --disable-perl-xs even though they 
+# aren't really used: otherwise, configure complains about undefined
+# variables.
 
+if test x$disable_xs != xyes; then
 lookup_perl_flags([ccflags])
 lookup_perl_flags([cccdlflags])
 
@@ -65,6 +84,9 @@ lookup_perl_conf([privlibexp])
 
 AC_PATH_PROG([XSUBPP], [xsubpp])
 
-AC_CONFIG_FILES([Makefile lib/Makefile])
 AC_CONFIG_HEADERS([config.h:config.in])
+
+fi # not disable_xs
+
+AC_CONFIG_FILES([Makefile lib/Makefile])
 AC_OUTPUT

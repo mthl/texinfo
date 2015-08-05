@@ -345,6 +345,18 @@ AC_ARG_WITH([external-libintl-perl],
 
 AC_SUBST([USE_EXTERNAL_LIBINTL])
 
+AC_ARG_ENABLE([perl-xs],
+    AC_HELP_STRING([--enable-perl-xs],
+              [build Perl XS modules for speed (default: yes)]),
+    [if test $enableval = 'no'; then
+       disable_xs=yes
+     else
+       disable_xs=no
+     fi],
+     [disable_xs=no])
+AC_SUBST([disable_xs])
+AM_CONDITIONAL([DISABLE_XS], [test "z$disable_xs" = 'zyes'])
+
 
 # Tests.
 AC_CONFIG_FILES([install-info/tests/defs])

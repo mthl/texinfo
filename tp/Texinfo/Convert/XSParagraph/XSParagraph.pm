@@ -99,6 +99,12 @@ sub _find_file($) {
   return undef;
 }
 
+our $disable_XS;
+if ($disable_XS) {
+  _fatal "use of XS modules was disabled when Texinfo was built";
+  goto FALLBACK;
+}
+
 my ($libtool_dir, $libtool_archive) = _find_file("XSParagraph.la");
 if (!$libtool_archive) {
   _fatal "XSParagraph: couldn't find Libtool archive file";

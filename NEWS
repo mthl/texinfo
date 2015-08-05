@@ -24,17 +24,24 @@ one of the relevant sections:
 -------------------------------------------------------------------------------
 * Language:
   . You can now optionally miss out the @menu from nodes with other
-    nodes below them in the document structure.  If you use 
+    nodes below them in the document structure.  If you use
     "@validatemenus off" near the start of a Texinfo file,
     makeinfo will, where needed, create a menu for nodes lacking one 
     given explicitly.
 
 * makeinfo
+  . Some Perl modules have been rewritten in C to increase speed.
+    Disable at build time with "configure --disable-perl-xs".  The 
+    environment variable `TEXINFO_XS' controls how they are used by 
+    makeinfo.  (IN PROGRESS)
   . quotation marks are left out for node names and index entries in
     Info output where they would have been produced by commands such
     as @file or @option.
 
 * info
+  . new user variable `xref-rendition' enables underlining and
+    highlighting of cross-references (IN PROGRESS)
+  . new command M-x tree-search to search all subnodes of a node (IN PROGRESS)
   . internal changes to reduce memory use and increase speed of
     searches, relative to last release
 

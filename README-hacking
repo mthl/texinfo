@@ -82,7 +82,10 @@ convenient to be able to make changes and then run it.
 
 To run the output "tp/texi2any" instead, you can set the environment
 variable TEXINFO_DEV_SOURCE to 1.  Otherwise, it will try to use
-Texinfo's Perl modules in the installed locations.
+Texinfo's Perl modules in the installed locations.  "tp/texi2any" uses
+the Perl interpreter found by configure, so you might want to run that 
+instead of texi2any.pl if it's different to the default interpreter in 
+your environment.
 
 
 

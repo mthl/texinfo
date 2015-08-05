@@ -25,9 +25,17 @@ $(srcdir)/Makefile.docstr: maintain/regenerate_docstr.sh \
 	cd $(srcdir) \
 	&& $(SHELL) ./maintain/regenerate_docstr.sh "$@"
 
-SUBDIRS = Texinfo/Convert/XSParagraph
-#SUBDIRS =
+
+SUBDIRS =
+if ! DISABLE_XS
+SUBDIRS += Texinfo/Convert/XSParagraph
+endif
+
 SUBDIRS += . tests
+
+DIST_SUBDIRS = Texinfo/Convert/XSParagraph tests
+# Necessary ?
+
 
 bin_SCRIPTS = texi2any
 
@@ -45,6 +53,7 @@ do_subst = sed \
   -e 's,[@]USE_EXTERNAL_EASTASIANWIDTH[@],$(USE_EXTERNAL_EASTASIANWIDTH),g' \
   -e 's,[@]USE_EXTERNAL_UNIDECODE[@],$(USE_EXTERNAL_UNIDECODE),g' \
   -e 's,[@]TEXINFO_DTD_VERSION[@],$(TEXINFO_DTD_VERSION),g' \
+  -e 's,[@]disable_xs[@],$(disable_xs),g' \
   -e '1 s,/usr/bin/env perl,$(PERL),g'
 
 texi2any: texi2any.pl $(top_builddir)/config.status

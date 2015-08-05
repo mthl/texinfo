@@ -65,7 +65,6 @@ BEGIN
       $ENV{'top_builddir'} = File::Spec->catdir($command_directory, $updir);
     }
     # In-source run.
-    #warn "in source\n";
     my $lib_dir = File::Spec->catdir($ENV{'top_builddir'}, 'tp');
 
     unshift @INC, $lib_dir;
@@ -91,6 +90,15 @@ BEGIN
     Texinfo::ModulePath::init($lib_dir, $packagedir);
   }
 } # end BEGIN
+
+BEGIN {
+  my $disable_xs = '@disable_xs@';
+  if ($disable_xs eq 'yes') {
+    package Texinfo::Convert::XSParagraph::XSParagraph;
+    our $disable_XS;
+    $disable_XS = 1;
+  }
+}
 
 use Locale::Messages;
 use Texinfo::Common;
