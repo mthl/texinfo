@@ -1,7 +1,8 @@
 2015-08-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* configure.ac,
-	* tp/Texinfo/Convert/XSParagraph/configure.ac: Recognize
+	* tp/Texinfo/Convert/XSParagraph/configure.ac,
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Recognize
 	PERL_EXT_CFLAGS, PERL_EXT_CPPFLAGS, PERL_EXT_LDLAGS as user 
 	variables.
 
