@@ -1,5 +1,25 @@
 2015-08-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* configure.ac,
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Add 
+	--enable-perl-xs option.  Record result via Autoconf output 
+	variable and Automake conditional.
+	* tp/Makefile.am: Substitute result into texi2any.pl.
+	* tp/Makefile.am: If --disable-perl-xs was given, don't build in 
+	XSParagraph subdirectory
+
+	* tp/texi2any.pl: Substitute choice for --enable-perl-xs option, 
+	and propagate to Texinfo::Convert::XSParagraph::XSParagraph module.
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.pm: If 
+	--disable-perl-xs was given to configure, disable use of Perl XS 
+	modules.
+	* README-hacking: Mention a case when you might want to run 
+	tp/texi2any.
+
+	* NEWS: Update with some work in progress.
+
+2015-08-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (BEFORE_MENUS): New symbol.  Use it instead of 
 	literal value.  Remove some commented-out code.
 
