@@ -8181,10 +8181,6 @@ a typewriter font where that is supported (e.g., HTML and PDF), but no
 distinction is needed in Info or plain text: @code{@@t@{foo@}}
 produces @t{foo}, cf. @code{@@code@{foo@}} producing @code{foo}.
 
-For example, we use @code{@@t} in the @code{@@node} commands for this
-manual to specify the Texinfo command names, because the quotes which
-@code{@@code} outputs look extraneous in that particular context.
-
 In general, the other font commands are unlikely to be useful; they
 exist primarily to make it possible to document the functionality of
 specific font effects, such as in @TeX{} and related packages.

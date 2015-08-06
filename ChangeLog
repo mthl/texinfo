@@ -1,3 +1,8 @@
+2015-08-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Fonts): Remove obsolete paragraph about 
+	using @t in a node name.
+
 2015-08-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/variables.c (info_variables): New user variable 
