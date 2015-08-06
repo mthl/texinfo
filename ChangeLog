@@ -1,5 +1,12 @@
 2015-08-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* TODO: Remove @else, obsolete problem with scrolling to bottom 
+	of help, full text search and reference highlighting (both in 
+	progress, unnecessary customization of which key to report in 
+	help).  Add suggestion for another Info display mode.
+
+2015-08-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Fonts): Remove obsolete paragraph about 
 	using @t in a node name.
 
