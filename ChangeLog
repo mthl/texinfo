@@ -1,3 +1,8 @@
+2015-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/variables.c (info_variables): Help string for 
+	"follow-strategy".
+
 2015-08-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* TODO: Remove @else, obsolete problem with scrolling to bottom 

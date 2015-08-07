@@ -131,7 +131,7 @@ VARIABLE_ALIST info_variables[] = {
     &mouse_protocol, (char **)mouse_choices },
 
   { "follow-strategy",
-      N_("Method to use to track mouse events"),
+      N_("How to follow a cross-reference"),
     &follow_strategy, (char **)follow_strategy_choices },
 
   { NULL }
