@@ -62,14 +62,14 @@ license to the document, as described in section 6 of the license.
 @node Top
 @top Stand-alone GNU Info
 
-If you do not know how to use Info, but have a working Info reader,
-you should read the Info manual before this one (@pxref{Top,,, info,
-Info}), as it includes more background information and a thorough
-tutorial.
-
 This documentation describes the stand-alone Info reader that is part
-of the Texinfo distribution, not the Info reader that is part of GNU
-Emacs.
+of the Texinfo distribution, which you can use to read Info
+documentation.
+
+For a tutorial and more background information about the Info system,
+as well as information about the Info reader that is part of GNU Emacs,
+read the Info manual before this one (@pxref{Top,,, info, Info}).
+
 @end ifnottex
 
 @menu
@@ -94,8 +94,8 @@ Emacs.
 @chapter Stand-alone Info
 
 The @dfn{Info} program described here is a stand-alone program, part
-of the Texinfo distribution, which is used to view Info files on an
-ASCII terminal.  @dfn{Info files} are typically the result of
+of the Texinfo distribution, which is used to view Info files on a
+text terminal.  @dfn{Info files} are typically the result of
 processing Texinfo files with the program @code{makeinfo} (also in the
 Texinfo distribution).
 

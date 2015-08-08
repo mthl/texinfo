@@ -7,6 +7,10 @@
 	* doc/info-stnd.texi (Searching Commands, Index Commands): Split
 	Searching Commands in two.
 
+	* doc/info-stnd.texi (Top): Re-jig.
+	(Stand-alone Info): Change "ASCII terminal" to "text terminal", 
+	to cover e.g. UTF-8 and ISO-8859-1.
+
 2015-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/variables.c (info_variables): Help string for 
