@@ -10313,9 +10313,6 @@ functions, an index for variables, an index for concepts, and so on.
 You can combine indices or use them for other than their canonical
 purpose.  Lastly, you can define your own new indices.
 
-@xref{Printing Indices & Menus}, for information on how to print
-indices.
-
 @menu
 * Index Entries::               Choose different words for index entries.
 * Predefined Indices::          Use different indices for different kinds

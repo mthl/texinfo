@@ -1,5 +1,9 @@
 2015-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Indices): Remove unnecessary cross-reference.
+
+2015-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (_scroll_forward, _scroll_backward): Set point 
 	at beginning (resp. end) of node if going backwards (resp.  
 	forwards) failed.  If we did go backwards, put the cursor at the
