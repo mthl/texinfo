@@ -3052,8 +3052,10 @@ forward_move_node_structure (WINDOW *window, int behaviour)
     case IS_Continuous:
       {
         /* If this node contains a menu, select its first entry.  Indices
-           are an exception, as their menus lead nowhere meaningful. */
-        if (!(window->node->flags & N_IsIndex))
+           are an exception, as their menus lead nowhere meaningful.  Likewise
+           for dir nodes. */
+        if (!(window->node->flags & N_IsIndex)
+            && !(window->node->flags & N_IsDir))
           {
             REFERENCE *entry;
 

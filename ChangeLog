@@ -1,5 +1,11 @@
 2015-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (forward_move_node_structure): Don't go down a 
+	menu for a dir node.  (Broken since 2015-07-13 when N_IsInternal 
+	ceased to be set for dir nodes.)
+	
+2015-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi (Cursor Commands): Remove explanation for 
 	having cursor movement commands in Info.  Change "have" to "has" 
 	and "identical to" to "the same as".
