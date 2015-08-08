@@ -1225,6 +1225,17 @@ case-sensitive; otherwise Info ignores the letter case.
 Interactively search backward through the Info file for a string as
 you type it.  If the string includes upper-case characters, the search
 is case-sensitive; otherwise Info ignores the letter case.
+
+@item @kbd{M-/} (@code{tree-search})
+@findex tree-search
+Recursively search this node and any subnodes listed in menus for a 
+string.
+
+@item @kbd{M-@}} (@code{tree-search-next})
+@itemx @kbd{M-@{} (@code{tree-search-previous})
+@findex tree-search-next
+@findex tree-search-previous
+Go forwards and backwards through the matches for an active tree search.
 @end table
 
 The most basic searching command is @samp{s} or @samp{/}
@@ -1239,6 +1250,11 @@ default search string.
 @dfn{Incremental searching} is similar to basic searching, but the
 string is looked up while you are typing it, instead of waiting until
 the entire search string has been specified.
+
+The tree search can be used from the @code{dir} node to search through
+all Info files installed on the system.  It can also be used to search 
+through a particular chapter of a manual when you are not interested in
+matches in other chapters.
 
 @vindex highlight-searches
 @findex clear-search

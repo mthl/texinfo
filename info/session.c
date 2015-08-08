@@ -4628,7 +4628,7 @@ DECLARE_INFO_COMMAND (info_tree_search_next,
   tree_search_check_node (window);
 }
 
-DECLARE_INFO_COMMAND (info_tree_search_prev,
+DECLARE_INFO_COMMAND (info_tree_search_previous,
                       _("Go to previous match in Info sub-tree"))
 {
   if (!window->search_string || window->node->active_menu == 0)

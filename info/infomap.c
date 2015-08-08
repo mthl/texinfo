@@ -232,7 +232,7 @@ static int default_emacs_like_info_keys[] =
   KEYMAP_META('x'), NUL,                 A_info_execute_command,
   KEYMAP_META('/'), NUL,                 A_info_tree_search,
   KEYMAP_META('}'), NUL,                 A_info_tree_search_next,
-  KEYMAP_META('{'), NUL,                 A_info_tree_search_prev,
+  KEYMAP_META('{'), NUL,                 A_info_tree_search_previous,
 
   CONTROL('x'), CONTROL('b'), NUL,        A_list_visited_nodes,
   CONTROL('x'), CONTROL('c'), NUL,        A_info_quit,

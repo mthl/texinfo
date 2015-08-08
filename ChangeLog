@@ -25,6 +25,10 @@
 	'search-next'.
 	(Index Commands) <i>: Remove mention of unreliable feature.
 
+	* doc/info-stnd.texi (Search Commands): Document 'tree-search'.
+	* info/session.c (info_tree_search_prev, info_tree_search_previous):
+	Rename.
+
 2015-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/variables.c (info_variables): Help string for 
