@@ -1,5 +1,12 @@
 2015-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (_scroll_forward, _scroll_backward): Set point 
+	at beginning (resp. end) of node if going backwards (resp.  
+	forwards) failed.  Change since Texinfo 5.2 reported by
+	Benno Schulenberg.
+
+2015-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (forward_move_node_structure): Don't go down a 
 	menu for a dir node.  (Broken since 2015-07-13 when N_IsInternal 
 	ceased to be set for dir nodes.)

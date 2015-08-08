@@ -1485,7 +1485,11 @@ _scroll_forward (WINDOW *window, int count, int nodeonly)
             {
               /* If there are no more lines to scroll here, error, or get
                  another node. */
-              forward_move_node_structure (window, info_scroll_behaviour);
+              if (forward_move_node_structure (window, info_scroll_behaviour)
+                  == 0)
+                window->point = 0;
+              else
+                info_end_of_node (window, 1);
             }
           return;
         }
@@ -1511,6 +1515,8 @@ _scroll_backward (WINDOW *window, int count, int nodeonly)
               if (backward_move_node_structure (window, info_scroll_behaviour)
                   == 0)
                 info_end_of_node (window, 1);
+              else
+                window->point = 0;
             }
           return;
         }
