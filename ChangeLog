@@ -11,6 +11,20 @@
 	(Stand-alone Info): Change "ASCII terminal" to "text terminal", 
 	to cover e.g. UTF-8 and ISO-8859-1.
 
+	* doc/info-stnd.texi (Search Commands): Move mention of 
+	'min-search-length' to end.  Remove repeated information about 
+	'}' and '{'.  Remove mention that default search string is 
+	displayed between '[' and ']'.  Move paragraph about incremental 
+	searching to be next to paragraph about non-incremental 
+	searching.  Move description of 'search-next' and 
+	'search-previous' commands earlier, and mention that regex use 
+	(or not) is also maintained.  Remove unnecessary mention that 
+	lines in the same node are not skipped.  Rely more on 
+	description for 'search-next', and mention that 
+	'search-previous' usually goes back to the same match after a 
+	'search-next'.
+	(Index Commands) <i>: Remove mention of unreliable feature.
+
 2015-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/variables.c (info_variables): Help string for 

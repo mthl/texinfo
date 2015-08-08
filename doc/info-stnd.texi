@@ -1145,10 +1145,6 @@ otherwise Info ignores the letter case.  With a numeric argument of
 @var{N}, search for @var{N}th occurrence of the string.  Negative
 arguments search backwards.
 
-Normally, the search pattern should not be shorter than some
-predefined limit.  By default, this limit is set to 1 character.
-@xref{min-search-length}, for more information on this.
-
 @item @kbd{M-x search-backward}
 @itemx @kbd{?}, vi-like operation
 @kindex ?, vi-like operation
@@ -1162,6 +1158,41 @@ occurrence of the string.  Negative arguments search forward.
 If you do not have a convenient key sequence bound to this command, an
 alternative is to first perform a forward search, and then use the
 @code{search-previous} command, described below.
+
+@anchor{repeated-search}
+@item @kbd{C-x @kbd{n}} (@code{search-next})
+@itemx @kbd{@}}
+@itemx @kbd{n}, vi-like operation
+@kindex C-x n
+@kindex @}
+@kindex n, vi-like operation
+@findex search-next
+@cindex repeated search
+Search forwards for the string used for the last search command.
+Case sensitivity and use of regular expressions are kept the same.  With
+a numeric argument of @var{n}, search for @var{n}th next occurrence.
+
+By default, the search starts at the position immediately following
+the cursor.  However, if the variable @code{search-skip-screen}
+(@pxref{Variables,, @code{search-skip-screen}}) is set, it starts at
+the beginning of the next page, thereby skipping all visibly displayed
+lines.
+
+@item @kbd{C-x @kbd{N}} (@code{search-previous})
+@itemx @kbd{@{}
+@itemx @kbd{N}, vi-like operation
+@kindex C-x N
+@kindex @{
+@kindex n, vi-like operation
+@findex search-previous
+Just like @code{search-next}, but in reverse.  You can use
+@code{search-next} and @code{search-previous} together to move forward
+and backward through matches.  @code{search-previous} usually goes to
+the place in the file that was displayed before an immediately preceding
+@code{search-next}, and vice versa.@footnote{This sometimes doesn't
+happen when @code{search-skip-screen} is @code{On}, and the search goes
+across nodes.}
+
 
 @item @kbd{R} (@code{toggle-regexp})
 @kindex R
@@ -1179,42 +1210,6 @@ Read a string in the echo area and search for it case-sensitively, even
 if the string includes only lower-case letters.  With a numeric argument
 of @var{N}, search for @var{N}th occurrence of the string.  Negative
 arguments search backwards.
-
-@anchor{repeated-search}
-@item @kbd{C-x @kbd{n}} (@code{search-next})
-@itemx @kbd{@}}
-@itemx @kbd{n}, vi-like operation
-@kindex C-x n
-@kindex @}
-@kindex n, vi-like operation
-@findex search-next
-@cindex repeated search
-Search for the same string used in the last search command, in the
-same direction, and with the same case-sensitivity option.  With a
-numeric argument of @var{n}, search for @var{n}th next occurrence.
-
-By default, the search starts at the position immediately following
-the cursor.  However, if the variable @code{search-skip-screen}
-(@pxref{Variables,, @code{search-skip-screen}}) is set, it starts at
-the beginning of the next page, thereby skipping all visibly displayed
-lines (but not any further lines in the current node).
-
-@item @kbd{C-x @kbd{N}} (@code{search-previous})
-@itemx @kbd{@{}
-@itemx @kbd{N}, vi-like operation
-@kindex C-x N
-@kindex @{
-@kindex n, vi-like operation
-@findex search-previous
-Search for the same string used in the last search command, and with
-the same case-sensitivity option, but in the reverse direction.  With
-a numeric argument of @var{n}, search for the @var{n}th previous
-occurrence.
-
-By default, the search starts at the position immediately preceding
-the cursor, but skips visible lines if the variable
-@code{search-skip-screen} is set, as with @code{@}} (see preceding
-item).
 
 @item @kbd{C-s} (@code{isearch-forward})
 @kindex C-s
@@ -1238,22 +1233,18 @@ echo area, and then searches the remainder of the Info file for an
 occurrence of that string.  If the string is found, the node containing
 it is selected, and the cursor is left positioned at the start of the
 found string.  Subsequent @samp{s} commands show you the default search
-string within @samp{[} and @samp{]}; pressing @key{RET} instead of
-typing a new string will use the default search string.
+string; pressing @key{RET} instead of typing a new string will use the
+default search string.
 
-Using the @samp{@}} or @samp{@{} commands (or the @samp{n} or @samp{N}
-commands under @samp{--vi-keys}; @pxref{--vi-keys}), is a faster way of
-searching for the same string.
+@dfn{Incremental searching} is similar to basic searching, but the
+string is looked up while you are typing it, instead of waiting until
+the entire search string has been specified.
 
 @vindex highlight-searches
 @findex clear-search
 If the @code{highlight-searches} variable is set, matches from search
 commands will be highlighted.  @xref{Variables,, @code{highlight-searches}}.
 Use the @kbd{M-x clear-search} command to clear any search highlights.
-
-@dfn{Incremental searching} is similar to basic searching, but the
-string is looked up while you are typing it, instead of waiting until
-the entire search string has been specified.
 
 @cindex search, and case-sensitivity
 @cindex case-sensitivity, and search
@@ -1265,6 +1256,10 @@ even for a string that includes only lower-case letters, by using the
 @samp{S} command (@code{search-case-sensitively}).  The @samp{n} and
 @samp{N} commands operate case-sensitively if the last search command
 was @samp{S}.
+
+Normally, the search pattern should not be shorter than some
+predefined limit.  By default, this limit is set to 1 character.
+@xref{min-search-length}, for more information on this.
 
 
 @node Index Commands
@@ -1284,8 +1279,7 @@ particular topic.
 @cindex index, searching
 @cindex searching, in the indices
 Look up a string in the indices for this Info file, and select a node
-to which the found index entry points.  If you press @key{RET} without
-giving a string, Info takes you to an index node in the file.
+to which the found index entry points.
 
 @item @kbd{I} (@code{virtual-index})
 @kindex I
