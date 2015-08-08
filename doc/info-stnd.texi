@@ -79,7 +79,8 @@ Emacs.
 * Scrolling Commands::          Commands for reading the text within a node.
 * Node Commands::               Commands for selecting a new node.
 * Searching Commands::          Commands for searching an Info file.
-* Xref Commands::               Commands for selecting cross references.
+* Index Commands::              Commands for looking up in indices.
+* Xref Commands::               Commands for selecting cross-references.
 * Window Commands::             Commands which manipulate multiple windows.
 * Printing Nodes::              How to print out the contents of a node.
 * Miscellaneous Commands::      A few commands that defy categorization.
@@ -1128,8 +1129,7 @@ See also @pxref{--raw-escapes}.
 @cindex searching
 
 GNU Info allows you to search for a sequence of characters throughout an
-entire Info file, search through the indices of an Info file, or find
-areas within an Info file which discuss a particular topic.
+entire Info file.  Here are the commands to do this:
 
 @table @asis
 @item @kbd{s} (@code{search})
@@ -1230,33 +1230,6 @@ case-sensitive; otherwise Info ignores the letter case.
 Interactively search backward through the Info file for a string as
 you type it.  If the string includes upper-case characters, the search
 is case-sensitive; otherwise Info ignores the letter case.
-
-@item @kbd{i} (@code{index-search})
-@kindex i
-@findex index-search
-@cindex index, searching
-@cindex searching, in the indices
-Look up a string in the indices for this Info file, and select a node
-to which the found index entry points.  If you press @key{RET} without
-giving a string, Info takes you to an index node in the file.
-
-@item @kbd{I} (@code{virtual-index})
-@kindex I
-@findex virtual-index
-@cindex index, virtual
-Look up a string in the indices for this Info file, and show all the
-matches in a new virtual node, synthesized on the fly.
-
-@item @kbd{,} (@code{next-index-match})
-@kindex ,
-@findex next-index-match
-Move to the node containing the next matching index item from the last
-@samp{i} command.
-
-@item @kbd{M-x index-apropos}
-@findex index-apropos
-Grovel the indices of all the known Info files on your system for a
-string, and build a menu of the possible matches.
 @end table
 
 The most basic searching command is @samp{s} or @samp{/}
@@ -1292,6 +1265,46 @@ even for a string that includes only lower-case letters, by using the
 @samp{S} command (@code{search-case-sensitively}).  The @samp{n} and
 @samp{N} commands operate case-sensitively if the last search command
 was @samp{S}.
+
+
+@node Index Commands
+@chapter Index Commands
+@cindex index
+@cindex indices
+@cindex indexes
+
+GNU Info has commands to search through the indices of an Info file, 
+which helps you find areas within an Info file which discuss a 
+particular topic.
+
+@table @asis
+@item @kbd{i} (@code{index-search})
+@kindex i
+@findex index-search
+@cindex index, searching
+@cindex searching, in the indices
+Look up a string in the indices for this Info file, and select a node
+to which the found index entry points.  If you press @key{RET} without
+giving a string, Info takes you to an index node in the file.
+
+@item @kbd{I} (@code{virtual-index})
+@kindex I
+@findex virtual-index
+@cindex index, virtual
+Look up a string in the indices for this Info file, and show all the
+matches in a new virtual node, synthesized on the fly.
+
+@item @kbd{,} (@code{next-index-match})
+@kindex ,
+@findex next-index-match
+Move to the node containing the next matching index item from the last
+@samp{i} command.
+
+@item @kbd{M-x index-apropos}
+@findex index-apropos
+Grovel the indices of all the known Info files on your system for a
+string, and build a menu of the possible matches.
+@end table
 
 The most efficient means of finding something quickly in a manual is
 the @samp{i} command (@code{index-search}).  This command prompts for
