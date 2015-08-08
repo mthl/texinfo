@@ -1514,7 +1514,10 @@ _scroll_backward (WINDOW *window, int count, int nodeonly)
                  another node. */
               if (backward_move_node_structure (window, info_scroll_behaviour)
                   == 0)
-                info_end_of_node (window, 1);
+                {
+                  info_end_of_node (window, 1);
+                  window->point = window->line_starts[window->pagetop];
+                }
               else
                 window->point = 0;
             }
