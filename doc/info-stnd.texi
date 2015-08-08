@@ -568,20 +568,16 @@ settings.
 @cindex cursor, moving
 @cindex moving the cursor
 
-Many people find that reading screens of text page by page is made
-easier when one is able to indicate particular pieces of text with
-some kind of pointing device.  Since this is the case, GNU Info (both
-the Emacs and stand-alone versions) have several commands which allow
-you to move the cursor about the screen.  The notation used in this
-manual to describe keystrokes is identical to the notation used within
-the Emacs manual, and the GNU Readline manual.  @xref{User Input,,,
-emacs, The GNU Emacs Manual}, if you are unfamiliar with the
-notation.@footnote{Here's a short summary.  @kbd{C-@var{x}} means
-press the @kbd{CTRL} key and the key @var{x}.  @kbd{M-@var{x}} means
-press the @kbd{META} key and the key @var{x}.  On many terminals the
-@kbd{META} key is known as the @kbd{ALT} key.  @kbd{SPC} is the space
-bar.  The other keys are usually called by the names imprinted on
-them.}
+GNU Info has several commands which allow you to move the cursor about
+the screen.  The notation used in this manual to describe keystrokes
+is the same as the notation used within the Emacs manual, and the GNU
+Readline manual.  @xref{User Input,,, emacs, The GNU Emacs Manual},
+if you are unfamiliar with the notation.  @footnote{Here's a short
+summary.  @kbd{C-@var{x}} means press the @kbd{CTRL} key and the
+key @var{x}.  @kbd{M-@var{x}} means press the @kbd{META} key and
+the key @var{x}.  On many terminals the @kbd{META} key is known as
+the @kbd{ALT} key.  @kbd{SPC} is the space bar.  The other keys are
+usually called by the names imprinted on them.}
 
 The following table lists the basic cursor movement commands in Info.
 Each entry consists of the key sequence you should type to execute the

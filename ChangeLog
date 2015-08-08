@@ -1,3 +1,9 @@
+2015-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Cursor Commands): Remove explanation for 
+	having cursor movement commands in Info.  Change "have" to "has" 
+	and "identical to" to "the same as".
+
 2015-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/variables.c (info_variables): Help string for 
