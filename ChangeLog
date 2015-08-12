@@ -1,3 +1,10 @@
+2015-08-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (apropos_in_all_indices): Check if there is no 
+	filename, to avoid crash with "info -k" when there is a 
+	malformed dir entry.  Crash reported by Ivan Pacheco, and cause 
+	of crash discovered by Sergey Poznyakoff.
+
 2015-08-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Indices): Remove unnecessary cross-reference.

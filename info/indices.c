@@ -561,12 +561,15 @@ apropos_in_all_indices (char *search_string, int inform)
       FILE_BUFFER *this_fb;
 
       this_item = dir_menu[dir_index];
+      if (!this_item->filename)
+        continue;
 
       /* If we already scanned this file, don't do that again.
          In addition to being faster, this also avoids having
          multiple identical entries in the *Apropos* menu.  */
       for (i = 0; i < dir_index; i++)
-        if (FILENAME_CMP (this_item->filename, dir_menu[i]->filename) == 0)
+        if (dir_menu[i]->filename
+            && FILENAME_CMP (this_item->filename, dir_menu[i]->filename) == 0)
           break;
       if (i < dir_index)
         continue;
