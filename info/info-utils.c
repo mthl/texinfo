@@ -1395,6 +1395,7 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
           else
             nl_off = 0;
         }
+      canonicalize_whitespace (entry->nodename);
 
       if (entry->filename)
         {

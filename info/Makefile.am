@@ -119,6 +119,7 @@ TESTS = \
 	t/tab-argument.sh \
 	t/tab-no-xref.sh \
 	t/tab-skip-node.sh \
+	t/xref-across-lines.sh \
 	t/body-start.sh \
 	t/end-of-line.sh \
 	t/goal-column.sh \
