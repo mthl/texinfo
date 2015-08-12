@@ -9337,13 +9337,13 @@ using @code{@@enumerate} with an argument of @kbd{a}.
 @item
 @code{@@enumerate}
 
-Without an argument, produce a numbered list, starting with the
-number@tie{}1.
+Without an argument, produce a numbered list, with the first item
+numbered@tie{}1.
 
 @item
-@code{@@enumerate @var{positive-integer}}
+@code{@@enumerate @var{unsigned-integer}}
 
-With a (positive) numeric argument, start a numbered list with that
+With an (unsigned) numeric argument, start a numbered list with that
 number.  You can use this to continue a list that you interrupted with
 other text.
 

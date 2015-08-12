@@ -1,3 +1,8 @@
+2015-08-12  Karl Berry  <karl@freefriends.org>
+
+	* doc/texinfo.texi (@code{@@enumerate}): be clearer that
+	@enumerate 0 is allowed, but signed numbers are not.
+
 2015-08-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (scan_reference_target): Always canonicalize
