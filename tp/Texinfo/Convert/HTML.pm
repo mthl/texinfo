@@ -2913,10 +2913,16 @@ sub _convert_enumerate_command($$$$)
   if ($self->in_string()) {
     return $content;
   }
-  if ($content ne '') {
-    return "<ol>\n" . $content . "</ol>\n";
-  } else {
+  if ($content eq '') {
     return '';
+  }
+  if ($command->{'extra'}{'enumerate_specification'}
+      and $command->{'extra'}{'enumerate_specification'} =~ /^\d*$/
+      and $command->{'extra'}{'enumerate_specification'} ne '1') {
+    return "<ol start=\"$command->{'extra'}{'enumerate_specification'}\">\n"
+           . $content . "</ol>\n";
+  } else {
+    return "<ol>\n" . $content . "</ol>\n";
   }
 }
 
