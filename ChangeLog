@@ -1,5 +1,11 @@
 2015-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Info Format Specification): Uncomment 
+	material on node quoting, and add advice not to use it until 
+	it's more widely supported.
+
+2015-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (@variable_string_settables): Add 
 	'INFO_SPECIAL_CHARS_QUOTE'.
 	* tp/Texinfo/Convert/Info.pm (_node) <INFO_SPECIAL_CHARS_QUOTE>: 
