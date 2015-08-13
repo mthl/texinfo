@@ -1,5 +1,10 @@
 2015-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (@ftable @vtable): Mention that @itemx as well 
+	as @item creates an index eentry.
+
+2015-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi (Variables): Replace @table with @vtable 
 	and remove @vindex lines.
 
