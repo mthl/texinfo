@@ -135,26 +135,8 @@ xspara_end (paragraph)
         RETVAL
 
 
-
-#
-# Here's the code using 'char *'.
-# The ... is for the underlying_text argument.
-#char *
-#xspara_add_text (paragraph, text, ...)
-#        HV * paragraph
-#        char * text
-#    CODE:
-#        xspara_set_state (paragraph);
-#        RETVAL = xspara_add_text (text);
-#        xspara_get_state (paragraph);
-#    OUTPUT:
-#        RETVAL
-#
-
-
-# The ... is for the underlying_text argument.
 SV *
-xspara_add_text (paragraph, text_in, ...)
+xspara_add_text (paragraph, text_in)
         HV * paragraph
         SV * text_in
     PREINIT:
@@ -163,15 +145,9 @@ xspara_add_text (paragraph, text_in, ...)
     CODE:
         /* Always convert the input to UTF8 with sv_utf8_upgrade, so we can 
            process it properly in xspara_add_next. */
-        /* "man perlguts" possibly says not to do this, but it's
-           hard to tell what it's talking about. */
-        /* It's about the dangers of changing your arguments. */
         if (!SvUTF8 (text_in))
-          {
-            //printf ("upgrading <%s>\n", SvPV_nolen (text_in));
-            sv_utf8_upgrade (text_in);
-            //printf ("got <%s>\n", SvPV_nolen (text_in));
-          }
+          sv_utf8_upgrade (text_in);
+
         text = SvPV_nolen (text_in);
 
         //xspara_set_state (paragraph);

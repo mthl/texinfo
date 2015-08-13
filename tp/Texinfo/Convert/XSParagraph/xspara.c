@@ -286,10 +286,11 @@ xspara_set_state (HV *hash)
   /* None of this is really needed, under the big assumption that
      we only have one "paragraph" object going at once. */
 
-  /* Alternatively, let the "paragraph" object be an integer giving
+  /* If we did need it, the "paragraph" object could be an integer giving
      an index into an array of PARAGRAPH objects. */
 
-  /* We could have multiple paragraphs going at once for a footnote. */
+  /* You might imagine we would have multiple paragraphs going at once for a 
+     footnote, but this appears not to happen.  */
 
   /* Fetch all these so they are set, and reset for each paragraph. */
   FETCH_INT("end_sentence", state.end_sentence);
@@ -322,26 +323,6 @@ xspara_set_state (HV *hash)
       abort ();
     }
   return;
-#if  0
-
-  val = FETCH("word");
-  if (!val)
-    {
-      report ("word is null");
-      abort ();
-    }
-
-  //free (state.word);
-  //state.word = SvPV (*val, state.word_len);
-  /* FIXME: strdup etc. */
-
-  return;
-
-  val = FETCH("space");
-  state.space.text = SvPV (*val, state.space.end);
-
-#endif
-
 
 #undef FETCH
 #undef FETCH_INT
@@ -392,8 +373,6 @@ xspara__cut_line (TEXT *result)
     {
       xspara__end_line ();
 
-      /* Another option is to use Perl strings, and use
-         "sv_catpv" for this. */
       text_append (result, "\n");
     }
 }
@@ -521,7 +500,9 @@ xspara_end (void)
 }
 
 /* Add WORD to paragraph in RESULT, not refilling WORD.  If we go past the end 
-   of the line start a new one. */
+   of the line start a new one.  TRANSPARENT means that the letters in WORD
+   are ignored for the purpose of deciding whether a full stop ends a sentence
+   or not. */
 void
 xspara__add_next (TEXT *result, char *word, int word_len, int transparent)
 {
@@ -825,8 +806,6 @@ xspara_add_text (char *text)
                       size_t q_len;
                       int at_least_two = 0;
 
-                      //fprintf (stderr, "DOUBLING SPACE\n");
-
                       /* Check if the next character is whitespace as well. */
                       q_len = mbrtowc (&q_char, q, 10, NULL);
                       if ((long) q_len > 0)
@@ -928,7 +907,6 @@ xspara_add_text (char *text)
                     }
                   else /* Not at end of sentence. */
                     {
-                      //fprintf (stderr, "NOT END S\n");
                       /* Only save the first space. */
                       if (state.space_counter < 1)
                         {
@@ -1000,9 +978,6 @@ xspara_add_text (char *text)
                   /* Doesn't count if preceded by an upper-case letter. */
                   if (!iswupper (state.last_letter))
                     {
-                      //fprintf (stderr, "END_SENTENCE (%d)\n",
-                               //state.french_spacing);
-
                       if (state.french_spacing)
                         state.end_sentence = -1;
                       else
@@ -1045,9 +1020,6 @@ xspara_add_text (char *text)
     return result.text;
   else
     return "";
-  /* TODO: I still don't know if Perl's PV's need unique storage, on the
-     heap or w/e. */
-
 }
 
 
