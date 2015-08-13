@@ -42,6 +42,9 @@ one of the relevant sections:
   . new user variable `xref-rendition' enables underlining and
     highlighting of cross-references (IN PROGRESS)
   . new command M-x tree-search to search all subnodes of a node (IN PROGRESS)
+  . Now tries to find referenced manuals in the same directory as the
+    current file first, before looking in search path.  Customize this
+    with new variable `follow-strategy'.
   . internal changes to reduce memory use and increase speed of
     searches, relative to last release
 

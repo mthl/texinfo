@@ -2166,6 +2166,24 @@ top or bottom of a node.
 @vindex errors-ring-bell
 When set to @code{On} (the default), errors cause the bell to ring.
 
+@item follow-strategy
+@vindex follow-strategy
+When set to @code{remain} (the default), Info tries to remain within the
+directory containing the currently displayed Info file when following a
+cross-reference to an external manual, before looking for the referenced
+manual in the search path.  The alternative value is @code{path}, which
+means to look through the search path right away.
+
+@code{remain} is intended to be useful for several Texinfo manuals that
+all reference each other and whose versions should match each other.
+(For example, various manuals relating to a particular version of
+Emacs.)
+
+The alternative behaviour, with @code{path}, may be useful when your
+Info file search path parallels your command shell's search path, and
+you always want to find documentation of the version of the program that
+the shell would execute.
+
 @item gc-compressed-files
 @vindex gc-compressed-files
 When set to @code{On}, Info garbage collects files which had to be
