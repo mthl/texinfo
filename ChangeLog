@@ -1,5 +1,19 @@
 2015-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (@variable_string_settables): Add 
+	'INFO_SPECIAL_CHARS_QUOTE'.
+	* tp/Texinfo/Convert/Info.pm (_node) <INFO_SPECIAL_CHARS_QUOTE>: 
+	Add quoting characters around node name if required.
+	* tp/Texinfo/Convert/Plaintext.pm (_convert) <xrefs and menus>
+	<INFO_SPECIAL_CHARS_QUOTE>: Add quoting characters around 
+	segments of cross-references and menu entries if they contain 
+	problematic characters.
+	<xrefs> <INFO_SPECIAL_CHARS_WARNING>: Warn if a node name 
+	contains a full stop even if it is not followed by whitespace, 
+	as this still breaks readers.
+
+2015-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/HTML.pm (_convert_enumerate_command): Use
 	<ol start="NUMBER"> for numeric argument other than 1.
 

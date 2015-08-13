@@ -2151,14 +2151,26 @@ sub _convert($$)
           # needed, as last word is added only when : is added below
           my $name_text_checked = $name_text
              .$self->{'formatters'}->[-1]->{'container'}->get_pending();
-          if ($name_text_checked =~ /:/m 
-              and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
-            $self->line_warn(sprintf($self->__(
-               "\@%s cross-reference name should not contain `:'"), $command),
-                             $root->{'line_nr'});
+          my $quoting_required = 0;
+          if ($name_text_checked =~ /:/m) { 
+              if ($self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
+                $self->line_warn(sprintf($self->__(
+                   "\@%s cross-reference name should not contain `:'"),
+                                               $command), $root->{'line_nr'});
+              }
+              if ($self->get_conf('INFO_SPECIAL_CHARS_QUOTE')) {
+                $quoting_required = 1;
+              }
           }
+          my $pre_quote = $quoting_required ? "\x{7f}" : '';
+          my $post_quote = $pre_quote;
+          $name_text .= $self->_convert({'contents' => [
+                {'text' => "$post_quote: "}]});
+          $name_text =~ s/^(\s*)/$1$pre_quote/ if $pre_quote;
           $result .= $name_text;
-          $result .= $self->_convert({'contents' => [{'text' => ': '}]});
+          _count_added($self,$self->{'formatters'}[-1]{'container'},
+                       $pre_quote)
+            if $pre_quote;
 
           if ($file) {
             $result .= $self->_convert({'contents' => $file});
@@ -2171,14 +2183,26 @@ sub _convert($$)
 
           my $node_text_checked = $node_text 
              .$self->{'formatters'}->[-1]->{'container'}->get_pending();
-          if ($node_text_checked =~ /([,\t]|\.\s)/m 
-              and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
-            $self->line_warn(sprintf($self->__(
-               "\@%s node name should not contain `%s'"), $command, $1),
-                             $root->{'line_nr'});
+          $quoting_required = 0;
+          if ($node_text_checked =~ /([,\t\.])/m ) {
+              if ($self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
+                $self->line_warn(sprintf($self->__(
+                   "\@%s node name should not contain `%s'"), $command, $1),
+                                 $root->{'line_nr'});
+              }
+              if ($self->get_conf('INFO_SPECIAL_CHARS_QUOTE')) {
+                $quoting_required = 1;
+              }
           }
+          $pre_quote = $quoting_required ? "\x{7f}" : '';
+          $post_quote = $pre_quote;
+          $node_text =~ s/^(\s*)/$1$pre_quote/ if $pre_quote;
+          _count_added($self,$self->{'formatters'}[-1]{'container'},
+                       $pre_quote);
           $result .= $node_text;
-        } else {
+          _count_added($self,$self->{'formatters'}[-1]{'container'},
+            $self->{'formatters'}->[-1]->{'container'}->add_next($post_quote));
+        } else { # Label same as node specification
           if ($file) {
             $result .= $self->_convert({'contents' => $file});
           }
@@ -2189,14 +2213,37 @@ sub _convert($$)
 
           my $node_text_checked = $node_text 
              .$self->{'formatters'}->[-1]->{'container'}->get_pending();
-          if ($node_text_checked =~ /:/m
-              and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
-            $self->line_warn(sprintf($self->__(
-               "\@%s node name should not contain `:'"), $command),
-                             $root->{'line_nr'});
+          my $quoting_required = 0;
+          if ($node_text_checked =~ /:/m) {
+            if ($self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
+              $self->line_warn(sprintf($self->__(
+                 "\@%s node name should not contain `:'"), $command),
+                               $root->{'line_nr'});
+            }
+            if ($self->get_conf('INFO_SPECIAL_CHARS_QUOTE')) {
+              $quoting_required = 1;
+            }
+          }
+          my $pre_quote = $quoting_required ? "\x{7f}" : '';
+          my $post_quote = $pre_quote;
+          $node_text .= $self->_convert({'contents' => [
+                {'text' => "${post_quote}::"}]});
+          _count_added($self,$self->{'formatters'}[-1]{'container'},
+                       $pre_quote)
+            if $pre_quote;
+          if ($pre_quote) {
+            # This is needed to get a pending word.  We could use
+            # add_pending_word, but that would not include following 
+            # punctuation in the word.
+            my $next = $self->{'current_contents'}->[-1]->[0];
+            if ($next) {
+              $node_text .= $self->_convert($next);
+              shift @{$self->{'current_contents'}->[-1]};
+            }
+
+            $node_text =~ s/^(\s*)/$1$pre_quote/;
           }
           $result .= $node_text;
-          $result .= $self->_convert({'contents' => [{'text' => '::'}]});
         }
         # we could use $formatter, but in case it was changed in _convert 
         # we play it safe.
@@ -2206,7 +2253,8 @@ sub _convert($$)
         # If command is @xref, the punctuation must always follow the
         # command, for other commands it may be in the argument, hence the
         # use of $pending.
-        if ($command eq 'xref' or ($pending !~ /[\.,]$/ and $pending !~ /::$/)) {
+        if ($name and ($command eq 'xref'
+            or ($pending !~ /[\.,]$/ and $pending !~ /::$/))) {
           my $next = $self->{'current_contents'}->[-1]->[0];
           if (!($next and $next->{'text'} and $next->{'text'} =~ /^[\.,]/)) {
             if ($command eq 'xref') {
@@ -3047,38 +3095,53 @@ sub _convert($$)
       #}
       my $entry_name_seen = 0;
       foreach my $arg (@{$root->{'args'}}) {
+        my ($pre_quote, $post_quote);
         if ($arg->{'type'} eq 'menu_entry_node') {
           $self->{'formatters'}->[-1]->{'suppress_styles'} = 1;
           my $node_text = $self->_convert({'type' => '_code',
                                       'contents' => $arg->{'contents'}});
 
           delete $self->{'formatters'}->[-1]->{'suppress_styles'};
+          $pre_quote = $post_quote = '';
           if ($entry_name_seen) {
-            if ($node_text =~ /([,\t]|\.\s)/
-                and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
-              $self->line_warn(sprintf($self->__(
-                 "menu entry node name should not contain `%s'"), $1),
-                             $root->{'line_nr'});
+            if ($node_text =~ /([,\t]|\.\s)/) {
+              if ($self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
+                $self->line_warn(sprintf($self->__(
+                   "menu entry node name should not contain `%s'"), $1),
+                               $root->{'line_nr'});
+              }
+            }
+            if ($self->get_conf('INFO_SPECIAL_CHARS_QUOTE')) {
+              $pre_quote = $post_quote = "\x{7f}";
             }
           } else {
-            if ($node_text =~ /:/
-                and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
-              $self->line_warn($self->__(
-               "menu entry node name should not contain `:'"),
-                             $root->{'line_nr'});
+            if ($node_text =~ /:/) {
+              if ($self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
+                $self->line_warn($self->__(
+                 "menu entry node name should not contain `:'"),
+                               $root->{'line_nr'});
+              }
+              if ($self->get_conf('INFO_SPECIAL_CHARS_QUOTE')) {
+                $pre_quote = $post_quote = "\x{7f}";
+              }
             }
           }
-          $result .= $node_text;
+          $result .= $pre_quote . $node_text . $post_quote;
         } elsif ($arg->{'type'} eq 'menu_entry_name') {
           my $entry_name = $self->_convert($arg);
           $entry_name_seen = 1;
-          if ($entry_name =~ /:/
-              and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
-            $self->line_warn($self->__(
-               "menu entry name should not contain `:'"),
-                             $root->{'line_nr'});
+          $pre_quote = $post_quote = '';
+          if ($entry_name =~ /:/) {
+            if ($self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
+              $self->line_warn($self->__(
+                 "menu entry name should not contain `:'"),
+                               $root->{'line_nr'});
+            }
+            if ($self->get_conf('INFO_SPECIAL_CHARS_QUOTE')) {
+              $pre_quote = $post_quote = "\x{7f}";
+            }
           }
-          $result .= $entry_name;
+          $result .= $pre_quote . $entry_name . $post_quote;
         } else {
           $result .= $self->_convert($arg);
         }

@@ -414,13 +414,22 @@ sub _node($$)
   $result .= $node_begin;
   $self->_add_text_count($node_begin);
   my ($node_text, $byte_count) = $self->_node_line($node);
-  if ($node_text =~ /,/ and $self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
-    $self->line_warn(sprintf($self->__(
-               "\@node name should not contain `,': %s"), $node_text),
-                             $node->{'line_nr'});
+  my $pre_quote = '';
+  my $post_quote = '';
+  if ($node_text =~ /,/) {
+    if ($self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
+      $self->line_warn(sprintf($self->__(
+                 "\@node name should not contain `,': %s"), $node_text),
+                               $node->{'line_nr'});
+    }
+    if ($self->get_conf('INFO_SPECIAL_CHARS_QUOTE')) {
+      $pre_quote = "\x{7f}";
+      $post_quote = $pre_quote;
+      $self->{'count_context'}->[-1]->{'bytes'} += 2;
+    }
   }
   $self->{'count_context'}->[-1]->{'bytes'} += $byte_count;
-  $result .= $node_text;
+  $result .= $pre_quote . $node_text . $post_quote;
   foreach my $direction(@directions) {
     if ($node->{'node_'.lc($direction)}) {
       my $node_direction = $node->{'node_'.lc($direction)};
