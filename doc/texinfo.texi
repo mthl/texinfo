@@ -160,6 +160,7 @@ the menu lists all the lower level nodes in the document.
 Appendices
 
 * Command List::                All the Texinfo @@-commands.
+* Command Contexts::            Which commands can be used where.
 * Tips::                        Hints on how to write a Texinfo document.
 * Sample Texinfo Files::        Complete examples, including full texts.
 * Texinfo Mode::                Using the GNU Emacs Texinfo mode.
@@ -182,7 +183,7 @@ Overview of Texinfo
 * Texinfo Document Structure::  How Texinfo manuals are usually arranged.
 * Info Files::                  What is an Info file?
 * Printed Books::               Characteristics of a printed book or manual.
-* Formatting Commands::         @@-commands are used for formatting.
+* Command Syntax::              @@-commands are used for formatting.
 * Conventions::                 General rules for writing a Texinfo file.
 * Comments::                    Writing comments and ignored text in general.
 * Minimum::                     What a Texinfo file must have.
@@ -641,11 +642,6 @@ HTML Cross References
 * Configuration:     HTML Xref Configuration. htmlxref.cnf.
 * Preserving links:  HTML Xref Link Preservation. MANUAL-noderename.cnf.
 
-@@-Command List
-
-* Command Syntax::             General syntax for varieties of @@-commands.
-* Command Contexts::           Guidelines for which commands can be used where.
-
 Sample Texinfo Files
 
 * Short Sample Texinfo File::
@@ -821,7 +817,7 @@ online at @url{http://www.gnu.org/doc}.
 * Texinfo Document Structure::  How Texinfo manuals are usually arranged.
 * Info Files::                  What is an Info file?
 * Printed Books::               Characteristics of a printed book or manual.
-* Formatting Commands::         @@-commands are used for formatting.
+* Command Syntax::              @@-commands are used for formatting.
 * Conventions::                 General rules for writing a Texinfo file.
 * Comments::                    Writing comments and ignored text in general.
 * Minimum::                     What a Texinfo file must have.
@@ -1229,17 +1225,19 @@ formatting commands that Texinfo supports are necessarily limited.
 not part of the Texinfo distribution.
 
 
-@node Formatting Commands
-@section @@-commands
+@node Command Syntax
+@section @@-Command Syntax
+@anchor{Formatting Commands} @c old name
+@cindex @@-command syntax
+@cindex Syntax, of @@-commands
+@cindex Command syntax
+
 @cindex @@-commands
 @cindex Formatting commands
-
 In a Texinfo file, the commands you write to describe the contents of
 the manual are preceded by an @samp{@@} character; they are called
-@dfn{@@-commands}.  For example, @code{@@node} is the command to
-indicate a node and @code{@@chapter} is the command to indicate the
-start of a chapter.  Almost all @@ command names are entirely
-lowercase.
+@dfn{@@-commands}.  (The @samp{@@} in Texinfo has the same meaning that
+@samp{\} has in plain @TeX{}.)
 
 Texinfo's @@-commands are a strictly limited set of constructs.  The
 strict limits are primarily intended to ``force'' you, the author, to
@@ -1257,44 +1255,81 @@ meaning.  In its other thread of derivation, the word came to mean `to
 assert in a manner against which others may make counter assertions',
 which led to the meaning of `argument' as a dispute.} they take, you
 need to write @@-commands on lines of their own or as part of
-sentences:
+sentences.  Texinfo has the following types of @@-command:
 
-@itemize @bullet
-@item
-Some commands are written at the start of a line and the rest of the
-line comprises the argument text, such as @code{@@chapter} (which
-creates chapter titles).
+@table @asis
+@item 1. Brace commands
+These commands start with @@ followed by a letter or a word, followed by an
+argument within braces.  For example, the command @code{@@dfn} indicates
+the introductory or defining use of a term; it is used as follows: @samp{In
+Texinfo, @@@@-commands are @@dfn@{mark-up@} commands.}
 
-@item
-Some commands can appear anywhere, generally within a sentence, and
-are followed by empty braces, such as @code{@@dots@{@}} (which creates
-an ellipsis @dots{}).
+@item 2. Line commands
+These commands occupy an entire line.  The line starts with @@,
+followed by the name of the command (a word); for example, @code{@@center}
+or @code{@@cindex}.  If no argument is needed, the word is followed by
+the end of the line.  If there is an argument, it is separated from
+the command name by a space.  Braces are not used.
 
-@item
-Some commands can appear anywhere, generally within a sentence, and
-are followed by the argument text in braces, such as
-@code{@@code@{a+1@}} (which marks text as being code, @code{a+1} being
-the argument in this case).
-
-@item
-Some commands are written at the start of a line, with general text on
+@item 3. Block commands
+These commands are written at the start of a line, with general text on
 following lines, terminated by a matching @code{@@end} command on a
 line of its own.  For example, @code{@@example}, then the lines of a
-coding example, then @code{@@end example}.
-@end itemize
+coding example, then @code{@@end example}.  Some of these block commands
+take arguments as line commands do; for example, @code{@@enumerate A}
+opening an environment terminated by @code{@@end enumerate}.  Here
+@samp{A} is the argument.
 
-@noindent
+@item 4. Symbol insertion commands with no arguments
+These commands start with @@ followed by a word followed by a
+left and right- brace.  These commands insert special symbols in
+the document; they do not take arguments.  Some examples:
+@code{@@dots@{@}} @result{} @samp{@dots{}}, @code{@@equiv@{@}}
+@result{} @samp{@equiv{}}, @code{@@TeX@{@}} @result{} `@TeX{}', and
+@code{@@bullet@{@}} @result{} @samp{@bullet{}}.
+
+@item 5. Non-alphabetic commands
+The names of commands in all of the above categories consist of
+alphabetic characters, almost entirely in lower-case.  Unlike those, the
+non-alphabetic commands commands consist of an @@ followed by a
+punctuation mark or other character that is not part of the Latin
+alphabet.  Non-alphabetic commands are almost always part of text
+within a paragraph.  The non-alphabetic commands include @code{@@@@},
+@code{@@@{}, @code{@@@}}, @code{@@.}, @code{@@@kbd{SPACE}}, and most of
+the accent commands.
+
+@item 6. Miscellaneous commands
+There are a handful of commands that don't fit into any of the above
+categories; for example, the obsolete command @code{@@refill}, which is
+always used at the end of a paragraph immediately following the final
+period or other punctuation character.  @code{@@refill} takes no
+argument and does not require braces.  Likewise, @code{@@tab} used in a
+@code{@@multitable} block does not take arguments, and is not followed 
+by braces.
+@end table
+
+Whitespace following an @@-command name is optional and (usually)
+ignored if present.  The exceptions are contexts when whitespace is
+significant, e.g., an @code{@@example} environment.
+
+@cindex Braces and argument syntax
+Thus, the alphabetic commands fall into classes that have
+different argument syntaxes.  You cannot tell to which class a command
+belongs by the appearance of its name, but you can tell by the
+command's meaning: if the command stands for a glyph, it is in
+class 4 and does not require an argument; if it makes sense to use the
+command among other text as part of a paragraph, the command
+is in class 1 and must be followed by an argument in braces.
+
 @cindex Braces, when to use
 As a general rule, a command requires braces if it mingles among other
 text; but it does not need braces if it is on a line of its own.  The
 non-alphabetic commands, such as @code{@@:}, are exceptions to the
 rule; they do not need braces.
 
-As you gain experience with Texinfo, you will rapidly learn how to
-write the different commands: the different ways to write commands
-actually make it easier to write and read Texinfo files than if all
-commands followed exactly the same syntax.  @xref{Command Syntax, ,
-@@-Command Syntax}, for all the details.
+The purpose of having different syntax for commands is to make Texinfo
+files easier to read, and also to help the GNU Emacs paragraph and
+filling commands work properly.
 
 
 @node Conventions
@@ -19785,14 +19820,8 @@ brackets, @t{[}@w{ }@t{]}, indicate optional arguments; an ellipsis,
 @samp{@dots{}}, indicates repeated text.
 
 More specifics on the general syntax of different @@-commands are
-given in the section below.
+given in @ref{Command Syntax}.
 
-@menu
-* Command Syntax::             General syntax for varieties of @@-commands.
-* Command Contexts::           Guidelines for which commands can be used where.
-@end menu
-
-@sp 1
 @table @code
 @item @@@var{whitespace}
 An @code{@@} followed by a space, tab, or newline produces a normal,
@@ -21092,84 +21121,16 @@ references.  @xref{Three Arguments}.
 @end table
 
 
-@node Command Syntax
-@section @@-Command Syntax
-@cindex @@-command syntax
-@cindex Syntax, of @@-commands
-@cindex Command syntax
-
-The character @samp{@@} is used to start all Texinfo commands.  (It
-has the same meaning that @samp{\} has in plain @TeX{}.)  Texinfo has
-four types of @@-command:
-
-@table @asis
-@item 1. Non-alphabetic commands.
-These commands consist of an @@ followed by a punctuation mark or
-other character that is not part of the Latin alphabet.  Non-alphabetic
-commands are almost always part of the text within a paragraph.  The
-non-alphabetic commands include @code{@@@@}, @code{@@@{}, @code{@@@}},
-@code{@@.}, @code{@@@kbd{SPACE}}, most of the accent commands, and
-many more.
-
-@item 2. Alphabetic commands that do not require arguments.
-These commands start with @@ followed by a word followed by a
-left and right- brace.  These commands insert special symbols in
-the document; they do not take arguments.  Some examples:
-@code{@@dots@{@}} @result{} @samp{@dots{}}, @code{@@equiv@{@}}
-@result{} @samp{@equiv{}}, @code{@@TeX@{@}} @result{} `@TeX{}', and
-@code{@@bullet@{@}} @result{} @samp{@bullet{}}.
-
-@item 3. Alphabetic commands that require arguments within braces.
-These commands start with @@ followed by a letter or a word, followed by an
-argument within braces.  For example, the command @code{@@dfn} indicates
-the introductory or defining use of a term; it is used as follows: @samp{In
-Texinfo, @@@@-commands are @@dfn@{mark-up@} commands.}
-
-@item 4. Alphabetic commands that occupy an entire line.
-These commands occupy an entire line.  The line starts with @@,
-followed by the name of the command (a word); for example, @code{@@center}
-or @code{@@cindex}.  If no argument is needed, the word is followed by
-the end of the line.  If there is an argument, it is separated from
-the command name by a space.  Braces are not used.
-@end table
-
-Whitespace following an @@-command name are optional and (usually)
-ignored if present.  The exceptions are contexts whee whitespace is
-significant, e.g., an @code{@@example} environment.
-
-@cindex Braces and argument syntax
-Thus, the alphabetic commands fall into classes that have
-different argument syntaxes.  You cannot tell to which class a command
-belongs by the appearance of its name, but you can tell by the
-command's meaning: if the command stands for a glyph, it is in
-class 2 and does not require an argument; if it makes sense to use the
-command among other text as part of a paragraph, the command
-is in class 3 and must be followed by an argument in braces;
-otherwise, it is in class 4 and uses the rest of the line as its
-argument.
-
-The purpose of having a different syntax for commands of classes 3
-and@tie{}4 is to make Texinfo files easier to read, and also to help
-the GNU Emacs paragraph and filling commands work properly.  There is
-only one exception to this rule: the command @code{@@refill}, which is
-always used at the end of a paragraph immediately following the final
-period or other punctuation character.  @code{@@refill} takes no
-argument and does @emph{not} require braces.  @code{@@refill} never
-confuses the Emacs paragraph commands because it cannot appear at the
-beginning of a line.  It is also no longer needed, since all
-formatters now refill paragraphs automatically.
-
-
 @node Command Contexts
-@section @@-Command Contexts
+@appendix @@-Command Contexts
 
 @cindex Contexts, of @@-commands
 
 Here we describe approximately which @@-commands can be used in which
-contexts.  It merely gives the general idea and is not exhaustive or
-meant to be a complete reference.  Discrepancies between the
-information here and the @code{makeinfo} or @TeX{} implementations
-are most likely to be resolved in favor of the implementation.
+contexts.  It not exhaustive or meant to be a complete reference.
+Discrepancies between the information here and the @code{makeinfo} or
+@TeX{} implementations are most likely to be resolved in favor of the
+implementation.
 
 By @dfn{general text} below, we mean anything except sectioning and
 other such outer-level document commands, such as @code{@@section},
@@ -21203,8 +21164,7 @@ contain cross reference commands (@code{@@ref}, @code{@@xref},
 @code{@@shortcaption} may only appear inside @code{@@float}.
 
 For precise and complete information, we suggest looking into the
-extensive test suite in the sources, which exhaustively try
-combinations.
+test suite in the sources, which exhaustively tries combinations.
 
 
 @node Tips
@@ -21971,7 +21931,7 @@ notice and this notice are preserved.
 
 
 @node Texinfo Mode
-@chapter Using Texinfo Mode
+@appendix Using Texinfo Mode
 @cindex Texinfo mode
 @cindex Mode, using Texinfo
 @cindex GNU Emacs
