@@ -1,7 +1,11 @@
+2015-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Texinfo Mode): Move to an appendix.
+
 2015-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* doc/texinfo.tex (@ftable @vtable): Mention that @itemx as well 
-	as @item creates an index eentry.
+	* doc/texinfo.texi (@ftable @vtable): Mention that @itemx as 
+	well as @item creates an index entry.
 
 2015-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
