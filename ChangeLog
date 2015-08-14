@@ -1,5 +1,11 @@
 2015-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* makeinfo/README,
+	* texi2any/README: Refer to directory containing texi2any 
+	implementation.
+
+2015-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (printed_representation): Remove code 
 	looking at value of ISO_Latin_p, which doesn't do anything.  (It 
 	hasn't done much since the display routines became locale-aware.)

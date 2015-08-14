@@ -1,6 +1,6 @@
 texinfo/texi2html/README
 
-  Copyright (C) 2010 Free Software Foundation, Inc.
+  Copyright (C) 2010, 2015 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -14,3 +14,6 @@ and XML.  The HTML output is extremely configurable, at several levels.
 One highly customized example is at http://www.singular.uni-kl.de/Manual/html.
 
 For information about the arrangement of the sources, see README.dev.
+
+texi2html is no longer developed; it has been replaced by a new 
+implementation, texi2any: see ../tp.
