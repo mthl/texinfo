@@ -30,10 +30,6 @@
 # include <iconv.h>
 #endif
 
-/* When non-zero, various display and input functions handle ISO Latin
-   character sets correctly. */
-extern int ISO_Latin_p;
-
 /* Variable which holds the most recent filename parsed as a result of
    calling info_parse_xxx (). */
 extern char *info_parsed_filename;

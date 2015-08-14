@@ -647,6 +647,10 @@ add_seq_to_byte_map (int key_id, char *seq)
     }
 }
 
+/* When non-zero, various display and input functions handle extended
+   character sets such as ISO Latin or UTF-8 correctly. */
+int ISO_Latin_p = 1;
+
 /* Initialize byte map read in get_input_key. */
 static void
 initialize_byte_map (void)

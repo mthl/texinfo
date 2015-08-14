@@ -43,10 +43,6 @@ extern char * rpl_nl_langinfo (nl_item);
 #define va_copy(ap1,ap2) memcpy((&ap1),(&ap2),sizeof(va_list))
 #endif
 
-/* When non-zero, various display and input functions handle ISO Latin
-   character sets correctly. */
-int ISO_Latin_p = 1;
-
 /* Variable which holds the most recent filename parsed as a result of
    calling info_parse_xxx (). */
 char *info_parsed_filename = NULL;
@@ -498,7 +494,6 @@ char *
 printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
                         size_t *pchars, size_t *pbytes) 
 {
-  int printable_limit = ISO_Latin_p ? 255 : 127;
   struct text_buffer *rep = &printed_rep;
 
   char *cur_ptr = (char *) mbi_cur_ptr (*iter);
@@ -562,14 +557,6 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
       *pbytes = 2;
       text_buffer_add_char (rep, '^');
       text_buffer_add_char (rep, *cur_ptr | 0x40);
-      return text_buffer_base (rep);
-    }
-  /* Show META-x as "\370".  */
-  else if (*(unsigned char *)cur_ptr > printable_limit)
-    {
-      *pchars = 4;
-      *pbytes = 4;
-      text_buffer_printf (rep, "\\%0o", *cur_ptr);
       return text_buffer_base (rep);
     }
   else if (*cur_ptr == DEL)

@@ -2215,11 +2215,15 @@ is not added to the search path for Info files.
 
 @item ISO-Latin
 @cindex ISO Latin characters
-When set to @code{On}, Info accepts and displays ISO Latin characters;
-the default is @code{Off}, i.e., an ASCII character set.
-@code{ISO-Latin} tells Info that it is running in an environment where
-the European standard character set is in use, and allows you to input
-such characters to Info, as well as display them.
+@cindex Meta key sets eighth bit
+The default is @code{On}, which means that Info accepts and displays
+characters represented by bytes with values 128 and above, such as
+characters in the UTF-8 encoding or in various 8-bit ISO Latin
+characters, as well as allowing you to input such characters.
+
+The only reason to set this variable to @code{Off} would be if your
+terminal set the eighth bit of a byte to represent the Meta key being
+pressed.
 
 @item key-time
 @cindex slow network connections
