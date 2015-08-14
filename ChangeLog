@@ -1,7 +1,7 @@
 2015-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* makeinfo/README,
-	* texi2any/README: Refer to directory containing texi2any 
+	* texi2html/README: Refer to directory containing texi2any 
 	implementation.
 
 2015-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
