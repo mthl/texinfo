@@ -1,3 +1,7 @@
+2015-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* autogen.sh: Run libtoolize before autoreconf.
+
 2015-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* makeinfo/README,

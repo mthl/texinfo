@@ -48,7 +48,9 @@ cmd="$ACLOCAL -I gnulib/m4 && $AUTOCONF && $AUTOHEADER && $AUTOMAKE"
 echo "  $cmd $*"
 $chicken eval $cmd "$@" || exit 1
 
-cmd="(cd tp/Texinfo/Convert/XSParagraph && autoreconf --install)"
+: ${LIBTOOLIZE=libtoolize}
+cmd="(cd tp/Texinfo/Convert/XSParagraph && ${LIBTOOLIZE} \
+ && autoreconf --force --verbose --install)"
 echo "  $cmd"
 $chicken eval $cmd || exit 1
 
