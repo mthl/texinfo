@@ -594,11 +594,11 @@ my %formats_table = (
   'debugcount' => {
              'nodes_tree' => 1,
              'floats' => 1,
-             'converter' => 'DebugTexinfo::DebugCount'
+             'module' => 'DebugTexinfo::DebugCount'
            },
   'debugtree' => {
           'split' => 1,
-          'converter' => 'DebugTexinfo::DebugTree'
+          'module' => 'DebugTexinfo::DebugTree'
          },
   'textcontent' => {
             'converter' => sub{Texinfo::Convert::TextContent->converter(@_)},
