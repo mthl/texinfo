@@ -7,17 +7,14 @@ fetch_conf ()
           conf_value=`${PERL} -V:$1`
           echo got "$conf_value"
           # This turns a string like "cc='cc';" into a string like "cc".
-          # We also turn \" into ", \' into ' and \\ into \.  There may 
-          # be other \ sequences we want to process as well.  This is
-          # the escape sequence for single-quoted strings in Perl.
+          # Afterwards, convert \ into / in case \ is a path separator,
+          # so it is not interpreted as a special character by the shell.
           conf_value=`echo $conf_value \
               | sed -e 's/^@<:@^=@:>@*= *//'   \
                     -e 's/^'\\''//'            \
                     -e 's/ *; *$//'            \
                     -e 's/'\\''$//'            \
-                    -e 's/\\\\"/"/g'           \
-                    -e 's/\\\\'\\''/\\'\\''/g' \
-                    -e 's/\\\\\\\\/\\\\/g'     `
+                    -e 's/\\\\/\\//g'          `
           echo got "$conf_value"
 } 
 
