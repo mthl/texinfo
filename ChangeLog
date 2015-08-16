@@ -1,5 +1,9 @@
 2015-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/60macro.t: New test 'macro_expands_to_empty'.
+
+2015-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl (%formats_table): Use the right key name to 
 	store module names for 'debugtree' and 'debugcount'.
 
