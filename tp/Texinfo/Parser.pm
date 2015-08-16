@@ -4128,15 +4128,15 @@ sub _parse_texi($;$)
           next if ($found);
         }
 
-        unshift @{$self->{'macro_stack'}}, $expanded_macro;
-        print STDERR "UNSHIFT MACRO_STACK: $expanded_macro->{'args'}->[0]->{'text'}\n"
-          if ($self->{'DEBUG'});
         my $expanded_lines = _text_to_lines($expanded);
         chomp ($expanded_lines->[-1]);
         pop @$expanded_lines if ($expanded_lines->[-1] eq '');
         print STDERR "MACRO EXPANSION LINES: ".join('|', @$expanded_lines)
                                      ."|\nEND LINES MACRO EXPANSION\n" if ($self->{'DEBUG'});
         next if (!@$expanded_lines);
+        unshift @{$self->{'macro_stack'}}, $expanded_macro;
+        print STDERR "UNSHIFT MACRO_STACK: $expanded_macro->{'args'}->[0]->{'text'}\n"
+          if ($self->{'DEBUG'});
         my $new_lines = _complete_line_nr($expanded_lines, 
                             $line_nr->{'line_nr'}, $line_nr->{'file_name'},
                             $expanded_macro->{'args'}->[0]->{'text'}, 1);

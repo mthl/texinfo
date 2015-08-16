@@ -1,5 +1,12 @@
 2015-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi) <macro expansion>: If macro 
+	expansion is empty, don't add to macro expansion stack.  Problem 
+	with empty macro body, leading to error about recursive macro 
+	usage, reported by Vincent Belaiche.
+
+2015-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* autogen.sh: Run libtoolize before autoreconf.
 
 2015-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
