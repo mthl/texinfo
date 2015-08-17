@@ -1,3 +1,10 @@
+2015-08-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\passargtomacro): New macro, to convert 
+	doubled backslashes into single backslashes in macro argument.
+	(\braceorline) <braced argument>: Call \passargtomacro.
+	(\macroargctxt): Make catcode of \ active (13) instead of escape (0).
+
 2015-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/60macro.t: New test 'macro_expands_to_empty'.

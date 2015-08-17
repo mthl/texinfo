@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-08-03.11}
+\def\texinfoversion{2015-08-17.10}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -7458,25 +7458,12 @@ end
   \usembodybackslash
 }
 
-\def\macroargctxt{% used when scanning invocations
+\def\macroargctxt{% used when scanning braced macro arguments
   \scanctxt
-  \catcode`\\=0
+  \catcode`\\=\active
 }
-% why catcode 0 for \ in the above?  To recognize \\ \{ \} as "escapes"
-% for the single characters \ { }.  Thus, we end up with the "commands"
-% that would be written @\ @{ @} in a Texinfo document.
-% 
-% We already have @{ and @}.  For @\, we define it here, and only for
-% this purpose, to produce a typewriter backslash (so, the @\ that we
-% define for @math can't be used with @macro calls):
-%
+
 \def\\{\normalbackslash}%
-% 
-% We would like to do this for \, too, since that is what makeinfo does.
-% But it is not possible, because Texinfo already has a command @, for a
-% cedilla accent.  Documents must use @comma{} instead.
-%
-% \anythingelse will almost certainly be an error of some kind.
 
 \def\macrolineargctxt{% used for whole-line arguments without braces
   \scanctxt
@@ -7907,16 +7894,86 @@ end
 
 \def\norecurse#1{\bgroup\cslet{#1}{macsave.#1}}
 
+
+{\catcode`\@=0 \catcode`\\=13
+@catcode`@_=11
+
+% Call #1 with a list of tokens #2, with any doubled backslashes in #2
+% compressed to one.
+@gdef@passargtomacro#1#2{%
+  @def@the_macro{#1}%
+  @def@pending_backslash{}%
+  @def@finish{@finish}%
+  @def@arg_result{}%
+  @let@next_token=@relax
+  @add_segment#2\@finish\%
+}
+
+% Input stream is just after a backslash.  If the next token is not a
+% backslash, process the rest of the argument; otherwise, remove the next
+% token.
+@gdef@look_ahead{%
+  @futurelet@next_token@look_aheadzzz}
+@gdef@look_aheadzzz{%
+  @ifx@next_token\%
+   @let@next=@gobble_and_check_finish 
+  @else
+   @let@next=@add_segment
+  @fi@next
+}
+
+% Double backslash found.  Add a single backslash here.
+@gdef@gobble_and_check_finish#1{%
+  @add_the_backslash
+  @def@pending_backslash{}%
+  @futurelet@next_token@add_segment
+}
+
+% append a backslash to \arg_result
+@gdef@add_the_backslash{%
+  @expandafter@gdef@expandafter@arg_result@expandafter{@arg_result\}%
+}
+
+% Input stream is either at the start of the argument, or just after a 
+% backslash sequence, either a lone backslash, or a doubled backslash.  
+% \next_token contains the first token in the input stream: if it is \finish, 
+% finish; otherwise, append to \arg_result the segment of the argument up until
+% the next backslash.  \pending_backslash contains a backslash to represent
+% a backslash just before the start of the input stream that has not been
+% added to \arg_result.
+@gdef@add_segment#1\{%
+@ifx@next_token@finish
+  @let@next=@call_the_macro%
+@else
+  @let@next=@look_ahead
+  %
+  % append to @arg_result
+  % token list registers might be better
+  @expandafter@expandafter@expandafter@gdef
+  @expandafter@expandafter@expandafter@arg_result
+  @expandafter@expandafter@expandafter{%
+  @expandafter@arg_result
+  @pending_backslash#1}%
+  @def@pending_backslash{\}%
+@fi@next}
+
+@gdef@call_the_macro{@expandafter@the_macro@expandafter{@arg_result}}
+
+}
+
 % \braceorline MAC is used for a one-argument macro MAC.  It checks
 % whether the next non-whitespace character is a {.  It sets the context
 % for reading the argument (slightly different in the two cases).  Then,
-% to read the argument, in the whole-line case, it then calls the
-% regular \parsearg MAC; in the lbrace case, it just calls MAC itself.
+% to read the argument, in the whole-line case, it then calls the regular
+% \parsearg MAC; in the lbrace case, it calls \passargtomacro MAC.
 % 
 \def\braceorline#1{\let\macnamexxx=#1\futurelet\nchar\braceorlinexxx}
 \def\braceorlinexxx{%
-  \ifx\nchar\bgroup\macroargctxt
-  \else\macrolineargctxt\expandafter\parsearg
+  \ifx\nchar\bgroup
+    \macroargctxt
+    \expandafter\passargtomacro
+  \else
+    \macrolineargctxt\expandafter\parsearg
   \fi \macnamexxx}
 
 
