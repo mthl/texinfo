@@ -8,21 +8,18 @@
 use strict;
 use warnings;
 
-use Test::More tests => 1;
-BEGIN { use_ok('XSParagraph') };
+use Test::More tests => 2;
+BEGIN { use_ok('Texinfo::Convert::XSParagraph::XSParagraph') };
 
 #########################
 
 # Insert your test code below, the Test::More module is use()ed here so read
 # its man page ( perldoc Test::More ) for help writing this test script.
 
-my $paragraph;
-$paragraph = {'word' => 'hello world', 'end_sentence' => 0};
+my $paragraph = Texinfo::Convert::XSParagraph::XSParagraph::new({});
 
-print STDERR "Perl: here 1\n";
-XSParagraph::set_state ($paragraph);
-print STDERR "Perl: here 2\n";
-XSParagraph::get_state ($paragraph);
-print STDERR "In Perl: word set is ", $paragraph->{'word'}, "\n";
-print STDERR "In Perl: end_sentence is ", $paragraph->{'end_sentence'}, "\n";
+my $input = "Some text.";
+my $text = $paragraph->add_text($input);
+$text .=  $paragraph->end();
 
+is($text, $input."\n");

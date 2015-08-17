@@ -1,3 +1,14 @@
+2015-08-17  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/XSParagraph/MANIFEST, 
+	Texinfo/Convert/XSParagraph/Makefile.PL, 
+	Texinfo/Convert/XSParagraph/XSParagraph.pm,
+	Texinfo/Convert/XSParagraph/t/XSParagraph.t: update stand-alone
+	perl module code.  Remove unneeded or generated files.
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am,
+	tp/Texinfo/Convert/XSParagraph/prepare_standalone_perl_module.sh:
+	script that can be used to build a stand-alone module.
+
 2015-08-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\scanmacro): Strip a trailing active newline 

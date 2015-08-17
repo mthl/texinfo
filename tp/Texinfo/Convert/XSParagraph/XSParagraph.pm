@@ -47,13 +47,19 @@ our @EXPORT = qw(
 );
 
 BEGIN {
+
+my $module = "Texinfo::Convert::XSParagraph::XSParagraph";
+our $VERSION = '6.0';
+
 # Possible values for TEXINFO_XS environmental variable:
 #
-# TEXINFO_XS=omit     # don't try loading xs at all
-# TEXINFO_XS=default  # try xs, silent fallback
-# TEXINFO_XS=warn     # try xs, warn on failure
-# TEXINFO_XS=required # abort if not loadable, no fallback
-# TEXINFO_XS=debug    # voluminuous debugging
+# TEXINFO_XS=omit          # don't try loading xs at all
+# TEXINFO_XS=default       # try xs, libtool and then perl paths, silent fallback
+# TEXINFO_XS=libtool       # try xs, libtool only, silent fallback
+# TEXINFO_XS=stand-alone   # try xs, perl paths only, silent fallback
+# TEXINFO_XS=warn          # try xs, libtool and then perl paths, warn on failure
+# TEXINFO_XS=required      # abort if not loadable, no fallback
+# TEXINFO_XS=debug         # voluminuous debugging
 #
 # Other values are treated at the moment as 'default'.
 
@@ -105,10 +111,35 @@ if ($disable_XS) {
   goto FALLBACK;
 }
 
-my ($libtool_dir, $libtool_archive) = _find_file("XSParagraph.la");
+my ($libtool_dir, $libtool_archive);
+if ($TEXINFO_XS ne 'stand-alone') {
+  my ($libtool_dir, $libtool_archive) = _find_file("XSParagraph.la");
+  if (!$libtool_archive) {
+    if ($TEXINFO_XS eq 'libtool') {
+      _fatal "XSParagraph: couldn't find Libtool archive file";
+      goto FALLBACK;
+    }
+    _debug "XSParagraph: couldn't find Libtool archive file";
+  }
+}
+
+my $dlname = undef;
+my $dlpath = undef;
+
+# Try perl paths
 if (!$libtool_archive) {
-  _fatal "XSParagraph: couldn't find Libtool archive file";
-  goto FALLBACK;
+  my @modparts = split(/::/,$module);
+  my $modfname = $modparts[-1];
+  my $modpname = join('/',@modparts);
+  # the directories with -L prepended setup direcctory to
+  # be in the search path. Then $modfname is prepended as it is
+  # the name really searched for.
+  $dlpath = DynaLoader::dl_findfile(map("-L$_/auto/$modpname", @INC), $modfname);
+  if (!$dlpath) {
+    _fatal "XSParagraph: couldn't find $module";
+    goto FALLBACK;
+  }
+  goto LOAD;
 }
 
 my $fh;
@@ -119,7 +150,6 @@ if (!$fh) {
 }
 
 # Look for the line in XSParagraph.la giving the name of the loadable object.
-my $dlname = undef;
 while (my $line = <$fh>) {
   if ($line =~ /^\s*dlname\s*=\s*'([^']+)'\s$/) {
     $dlname = $1;
@@ -135,16 +165,15 @@ if (!$dlname) {
 push @DynaLoader::dl_library_path, $libtool_dir;
 push @DynaLoader::dl_library_path, "$libtool_dir/.libs";
 
-my $dlpath = DynaLoader::dl_findfile($dlname);
+$dlpath = DynaLoader::dl_findfile($dlname);
 if (!$dlpath) {
   _fatal "XSParagraph: couldn't find $dlname";
   goto FALLBACK;
 }
 
-#print STDERR "loadable object is at $dlpath\n";
+LOAD:
 
-my $module = "Texinfo::Convert::XSParagraph::XSParagraph";
-our $VERSION = '6.0';
+#print STDERR "loadable object is at $dlpath\n";
 
 # Following steps under "bootstrap" in "man DynaLoader".
 #bootstrap XSParagraph $VERSION;

@@ -83,3 +83,11 @@ XSParagraph_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"  "
 XSParagraph_la_LDFLAGS=-module $(PERL_CONF_cccdlflags)
 
 
+# only used to regenerate a stand-alone perl module
+perl_specific_files = \
+  Makefile.PL \
+  MANIFEST \
+  prepare_standalone_perl_module.sh
+
+EXTRA_DIST += $(perl_specific_files)
+
