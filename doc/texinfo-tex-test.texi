@@ -81,6 +81,12 @@ three backslashes outside \\\
 
 1 and 2 @Mac \a\\b
 
+in @@code:@*
+1 @code{@Mac{\}}@*
+1 @code{@Mac{\\}}@*
+2 @code{@Mac{\\\}}@*
+2 @code{@Mac{\\\\}}
+
 one backslash outside \
 
 two backslashes outside \\
