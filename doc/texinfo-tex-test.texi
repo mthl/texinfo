@@ -110,5 +110,38 @@ x  x
 @end example
 @Mac
 
+@section Trailing newlines in macro bodies
+
+Output should be doubled:
+
+1y
+
+z
+x2
+
+@macro nbsp
+y
+              
+z
+x
+@end macro
+
+1@nbsp{}2
+
+Output should be doubled:
+
+
+@example
+1y
+
+z
+x2
+@end example
+
+@example
+1@nbsp{}2
+@end example
+
+
 
 @bye

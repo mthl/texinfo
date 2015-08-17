@@ -1,5 +1,11 @@
 2015-08-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\scanmacro): Strip a trailing active newline 
+	from the macro body if newlines are active.
+	* doc/texinfo-tex-test.texi: Add example.
+	
+2015-08-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\macrobodyctxt): Make catcode of space 
 	\other, so they are preserved when expanded in a context like 
 	@example.
