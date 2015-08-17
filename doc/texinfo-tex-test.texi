@@ -1,0 +1,92 @@
+% texinfo.tex -- test file for texinfo.tex
+%
+% Copyright 2015 Free Software Foundation, Inc.
+%
+% This file is free software: you can redistribute it and/or
+% modify it under the terms of the GNU General Public License as
+% published by the Free Software Foundation, either version 3 of the
+% License, or (at your option) any later version.
+%
+% This file is distributed in the hope that it will be
+% useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+% of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+% General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%
+\input texinfo
+@setfilename
+@settitle Test Document for @file{texinfo.tex}
+
+@contents
+
+@chapter Backslashes in macro arguments
+
+@macro Mac{x}
+A\x\A
+@end macro
+
+@macro Mactwo{x, y}
+B\x\B C\y\C
+@end macro
+
+@rmacro RMac{x}
+Z\x\Z
+@end rmacro
+
+The number refers to the number of backslashes that should appear
+
+0 @Mac{}
+
+0 @Mac{a}
+
+0 @Mac{a}X
+
+1 @Mac{a\\}
+
+1 @Mac{a\}X
+
+1 @Mac{a\\}X
+
+2 @Mac{a\\\}X
+
+1 @Mac{\}X
+
+1 @Mac{\a}X
+
+1 @Mac{\\a}X
+
+1 @Mac{\\}X
+
+2 @Mac{\\\}X
+
+2 and 1 @Mac{\\\aaa\}X
+
+1 and 1 @Mac{\a\\b}X
+
+one backslash outside \
+
+two backslashes outside \\
+
+three backslashes outside \\\
+
+0 @Mac a 
+
+1 @Mac a\
+
+2 @Mac a\\ 
+
+3 @Mac a\\\
+
+1 and 2 @Mac \a\\b
+
+one backslash outside \
+
+two backslashes outside \\
+
+three backslashes outside \\\
+
+test @,c for c cedilla
+
+@bye

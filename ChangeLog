@@ -1,5 +1,10 @@
 2015-08-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo-tex-test.texi: Add test file.
+	* README-hacking: Mention to check texinfo-tex-test.texi.
+
+2015-08-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\passargtomacro): New macro, to convert 
 	doubled backslashes into single backslashes in macro argument.
 	(\braceorline) <braced argument>: Call \passargtomacro.
