@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-08-17.10}
+\def\texinfoversion{2015-08-17.15}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -7452,13 +7452,17 @@ end
 
 \def\macrobodyctxt{% used for @macro definitions
   \scanctxt
+  \catcode`\ =\other
   \catcode`\{=\other
   \catcode`\}=\other
   \catcode`\^^M=\other
   \usembodybackslash
 }
 
-\def\macroargctxt{% used when scanning braced macro arguments
+% Used when scanning braced macro arguments.  Note, however, that catcode
+% changes here are ineffectual if the macro invocation was nested inside
+% an argument to another Texinfo command.
+\def\macroargctxt{%
   \scanctxt
   \catcode`\\=\active
 }
@@ -7625,12 +7629,12 @@ end
 
 % These two commands read recursive and nonrecursive macro bodies.
 % (They're different since rec and nonrec macros end differently.)
-%
+% Set \temp to the body of the macro, and call \defmacro.
 \catcode `\@\texiatcatcode
-\long\def\parsemacbody#1@end macro%
-{\xdef\temp{\eatcr{#1}}\endgroup\defmacro}%
-\long\def\parsermacbody#1@end rmacro%
-{\xdef\temp{\eatcr{#1}}\endgroup\defmacro}%
+{\catcode`\ =\other\long\gdef\parsemacbody#1@end macro{%
+\xdef\temp{\eatcr{#1}}\endgroup\defmacro}}%
+{\catcode`\ =\other\long\gdef\parsermacbody#1@end rmacro{%
+\xdef\temp{\eatcr{#1}}\endgroup\defmacro}}%
 \catcode `\@=11\relax
 
 \let\endargs@\relax
@@ -7810,8 +7814,9 @@ end
    \long\def#2{#4}%
 }
 
-% This defines a Texinfo @macro. There are eight cases: recursive and
-% nonrecursive macros of zero, one, up to nine, and many arguments.
+% This defines a Texinfo @macro.  \temp has the body of the macro in it.
+% There are eight cases: recursive and nonrecursive macros of zero, one,
+% up to nine, and many arguments.
 % Much magic with \expandafter here.
 % \xdef is used so that macro definitions will survive the file
 % they're defined in; @include reads the file inside a group.

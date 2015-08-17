@@ -21,7 +21,8 @@
 
 @contents
 
-@chapter Backslashes in macro arguments
+@chapter Macros
+@section Backslashes in macro arguments
 
 @macro Mac{x}
 A\x\A
@@ -94,5 +95,20 @@ two backslashes outside \\
 three backslashes outside \\\
 
 test @,c for c cedilla
+
+@section Spaces in macro bodies
+
+Distance between the two x's should be the same
+
+@macro Mac
+@example
+x  x
+@end example
+@end macro
+@example
+x  x
+@end example
+@Mac
+
 
 @bye

@@ -1,5 +1,15 @@
 2015-08-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\macrobodyctxt): Make catcode of space 
+	\other, so they are preserved when expanded in a context like 
+	@example.
+	(\parsemacbody, \parsermacbody): Terminate macro body at line 
+	with space with catcode \other.
+	(\macroargctxt, \defmacro): Update comments.
+	* doc/texinfo-tex-test.texi: Add example.
+
+2015-08-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo-tex-test.texi: Add example with macro invocation 
 	nested inside an argument.
 
