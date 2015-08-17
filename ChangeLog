@@ -1,18 +1,18 @@
-2015-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/60macro.t: New test 'macro_expands_to_empty'.
 
-2015-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/texi2any.pl (%formats_table): Use the right key name to 
 	store module names for 'debugtree' and 'debugcount'.
 
-2015-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/configure.ac: Convert backward 
 	slashes to forward slashes in Perl's configuration values.
 
-2015-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi) <macro expansion>: If macro 
 	expansion is empty, don't add to macro expansion stack.  Problem 
