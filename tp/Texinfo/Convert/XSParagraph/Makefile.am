@@ -41,23 +41,12 @@ xsdir = $(pkglibexecdir)
 
 dist_modules_DATA = XSParagraph.pm
 
-EXTRA_DIST += fetch_conf.pl
-
 PERL_INC = $(PERL_CONF_archlibexp)/CORE
 
 XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
 
-#XSUBPPARGS = -typemap /usr/share/perl5/ExtUtils/typemap
-
 .xs.c:
 	$(XSUBPP) $(XSUBPPARGS) $*.xs > $*.xsc && mv $*.xsc $*.c
-
-# We won't need this rule
-#.xs$(OBJ_EXT):
-#	$(XSUBPPRUN) $(XSPROTOARG) $(XSUBPPARGS) $*.xs > $*.xsc \
-#		&& mv $*.xsc $*.c
-#	$(CCCMD) $(CCCDLFLAGS) "-I$(PERL_INC)" $(PASTHRU_DEFINE) \
-#	$(DEFINE) $*.c
 
 # -------------------------------------------------------
 
@@ -66,6 +55,7 @@ XSParagraph_la_SOURCES = XSParagraph.c xspara.c xspara.h \
 			 text.c text.h ppport.h
 
 BUILT_SOURCES = XSParagraph.c
+EXTRA_DIST += XSParagraph.xs
 
 # Override these variables set by configure at the top level, because 
 # the compiler used in this subdirectory might be different.  

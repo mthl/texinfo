@@ -53,9 +53,13 @@ if test x$disable_xs != xyes; then
   AC_PATH_PROG([PERL], [perl])
   
   # It's essential that we use the same compiler that was used to build
-  # Perl.  Otherwise Perl's "config.h" will be incorrect.
+  # Perl.  Otherwise Perl's "config.h" will be incorrect.  This overrides
+  # the check in AC_PROG_CC below.
   lookup_perl_conf([cc])
   CC=$conf_value
+
+  # Wipe the cache value in case -C was given at the top level
+  ac_cv_prog_CC=
 fi
 
 AC_PROG_CC

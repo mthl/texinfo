@@ -47,16 +47,6 @@ switch to a UTF-8 locale, so that the C standard library multibyte
 functions operate on the UTF-8 data correctly.  Could this break 
 anything for the running Perl instance?
 
-* Effect of newlines at sentence ends within @w{ ... }.  Normally within 
-@w, spaces are not doubled after a full stop, e.g
-"@w{Sentence one. Sentence two.}"  However the current code in 
-Paragraph.pm creates a double space in cases like
-
-@w{Sentence one.
-Sentence two.}.
-
-Is this correct?
-
 * Check that we correctly imitate variables being "undefined" in Perl.
 
 * Check where space doubling at an end of a sentence is done - it is 
