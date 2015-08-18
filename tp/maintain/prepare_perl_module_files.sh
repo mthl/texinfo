@@ -17,12 +17,18 @@
 
 set -e
 
+# to get a reproducible locales independent sort.
+LC_ALL=C; export LC_ALL
+
 # Regenerate files required for perl
 
 ./maintain/change_perl_modules_version.sh auto
 
 # This regenerate files in t/include_dir/
 make
+# regenerate the list of XSParagraph files
+sed 's;^;Texinfo/Convert/XSParagraph/;' < Texinfo/Convert/XSParagraph/MANIFEST > maintain/MANIFEST_XSParagraph_files
+
 PACKAGE=`grep '^PACKAGE = ' Makefile | sed 's/^PACKAGE = //'`
 if test z"$PACKAGE" = 'z' ; then 
   exit 1
@@ -56,3 +62,6 @@ cp -p ../COPYING .
 sed 's/\(my \$hardcoded_version = \).*/\1 undef;/' texi2any.pl > texi2any
 chmod a+x texi2any
 touch -r texi2any.pl texi2any
+# We could imagine using an even more stripped down version, as
+# the default paths should be ok in a standalone module.
+cp -p Texinfo/ModulePath.pm.in Texinfo/ModulePath.pm

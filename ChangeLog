@@ -1,3 +1,13 @@
+2015-08-18  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.pm, 
+	tp/Texinfo/Convert/XSParagraph/Makefile.PL: remove letters
+	from $VERSION, as it breaks loading of module.  Fix undefined variables.
+	* tp/MANIFEST, tp/Makefile.PL, tp/Makefile.am, 
+	tp/maintain/clean_perl_module_files.sh, 
+	tp/maintain/prepare_perl_module_files.sh: update.  Do XSParagraph
+	recursively.
+
 2015-08-17  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Convert/XSParagraph/MANIFEST, 

@@ -49,17 +49,20 @@ our @EXPORT = qw(
 BEGIN {
 
 my $module = "Texinfo::Convert::XSParagraph::XSParagraph";
-our $VERSION = '6.0';
+our $VERSION = '6.0dev';
+# match what is used as version in xsub, with non numeric characters
+# removed, as they trigger an error on module version check.
+$VERSION =~ s/[[:alpha:]]+//i;
 
 # Possible values for TEXINFO_XS environmental variable:
 #
-# TEXINFO_XS=omit          # don't try loading xs at all
-# TEXINFO_XS=default       # try xs, libtool and then perl paths, silent fallback
-# TEXINFO_XS=libtool       # try xs, libtool only, silent fallback
-# TEXINFO_XS=stand-alone   # try xs, perl paths only, silent fallback
-# TEXINFO_XS=warn          # try xs, libtool and then perl paths, warn on failure
-# TEXINFO_XS=required      # abort if not loadable, no fallback
-# TEXINFO_XS=debug         # voluminuous debugging
+# TEXINFO_XS=omit         # don't try loading xs at all
+# TEXINFO_XS=default      # try xs, libtool and then perl paths, silent fallback
+# TEXINFO_XS=libtool      # try xs, libtool only, silent fallback
+# TEXINFO_XS=standalone   # try xs, perl paths only, silent fallback
+# TEXINFO_XS=warn         # try xs, libtool and then perl paths, warn on failure
+# TEXINFO_XS=required     # abort if not loadable, no fallback
+# TEXINFO_XS=debug        # voluminuous debugging
 #
 # Other values are treated at the moment as 'default'.
 
@@ -113,7 +116,7 @@ if ($disable_XS) {
 
 my ($libtool_dir, $libtool_archive);
 if ($TEXINFO_XS ne 'stand-alone') {
-  my ($libtool_dir, $libtool_archive) = _find_file("XSParagraph.la");
+  ($libtool_dir, $libtool_archive) = _find_file("XSParagraph.la");
   if (!$libtool_archive) {
     if ($TEXINFO_XS eq 'libtool') {
       _fatal "XSParagraph: couldn't find Libtool archive file";
@@ -129,12 +132,12 @@ my $dlpath = undef;
 # Try perl paths
 if (!$libtool_archive) {
   my @modparts = split(/::/,$module);
-  my $modfname = $modparts[-1];
+  my $dlname = $modparts[-1];
   my $modpname = join('/',@modparts);
-  # the directories with -L prepended setup direcctory to
-  # be in the search path. Then $modfname is prepended as it is
+  # the directories with -L prepended setup directories to
+  # be in the search path. Then $dlname is prepended as it is
   # the name really searched for.
-  $dlpath = DynaLoader::dl_findfile(map("-L$_/auto/$modpname", @INC), $modfname);
+  $dlpath = DynaLoader::dl_findfile(map("-L$_/auto/$modpname", @INC), $dlname);
   if (!$dlpath) {
     _fatal "XSParagraph: couldn't find $module";
     goto FALLBACK;

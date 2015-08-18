@@ -241,10 +241,10 @@ MANIFEST: maintain/MANIFEST_generated_files Makefile.am Makefile.tres
 	echo "$(dist_modules_DATA) $(dist_converters_DATA)" \
 	"$(dist_debugmodules_DATA) $(dist_init_DATA)" \
 	"$(test_files) $(tp_tests) $(test_files_generated_list)" \
-	"texi2any README TODO COPYING" \
+	"texi2any README TODO COPYING $(modules_DATA)" \
 	"$(maintenance_files) $(perl_specific_files)" \
 	 | sed 's/  */\n/g' \
-	 | cat - $(srcdir)/maintain/MANIFEST_generated_files \
+	 | cat - $(srcdir)/maintain/MANIFEST_generated_files $(srcdir)/maintain/MANIFEST_XSParagraph_files \
 	 | sort >$@
 
 # template.pod is the basis for the .pm documentation, and the script
