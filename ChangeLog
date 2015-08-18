@@ -1,5 +1,20 @@
 2015-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* configure.ac: Only configure in tp/Texinfo/Convert/XSParagraph
+	subdirectory if building XS extensions is turned on.
+
+2015-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/TestXS: New subdirectory, containing a test XS module to 
+	test whether such can be built.
+	* tp/Makefile.am: Distribute tp/TestXS.
+	* configure.ac <--enable-perl-xs>: Make default value "check", 
+	and for that value, build and test the TestXS module.  Subsitute 
+	an 'enable_xs' output variable.
+	* tp/texi2any.pl: Get 'enable_xs' Autoconf output variable.
+
+2015-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/configure.ac: Wipe Autoconf 
 	cache value for AC_PROG_CC.
 	* tp/Texinfo/Convert/XSParagraph/README: Remove done issue.

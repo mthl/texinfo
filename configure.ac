@@ -376,6 +376,10 @@ AC_SUBST([enable_xs])
 
 AM_CONDITIONAL([DISABLE_XS], [test "z$enable_xs" = zno])
 
+if test $enable_xs = yes; then
+  AC_CONFIG_SUBDIRS([tp/Texinfo/Convert/XSParagraph])
+fi
+
 
 # Tests.
 AC_CONFIG_FILES([install-info/tests/defs])
@@ -495,8 +499,6 @@ AC_CONFIG_FILES([\
   tp/defs
   Pod-Simple-Texinfo/Makefile
 ])
-
-AC_CONFIG_SUBDIRS([tp/Texinfo/Convert/XSParagraph])
 
 AC_OUTPUT
 
