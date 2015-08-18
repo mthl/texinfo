@@ -1,5 +1,15 @@
 2015-08-19  Patrice Dumas  <pertusus@free.fr>
 
+	* tp/Texinfo/Convert/XSParagraph/Makefile.PL,
+	tp/Texinfo/Convert/XSParagraph/Makefile.am,
+	tp/Texinfo/Convert/XSParagraph/XSParagraph.pm,
+	tp/Texinfo/Convert/XSParagraph/configure.ac: use a specific value
+	for the XSParagraph XS interface version, instead of the project 
+	version, and use it to match with bootstrap in XSParagraph.pm.
+	Do not version the XSParagraph shared object, as it is only dlopened.
+
+2015-08-19  Patrice Dumas  <pertusus@free.fr>
+
 	* tp/Texinfo/Convert/XSParagraph/XSParagraph.xs, 
 	tp/Texinfo/Convert/XSParagraph/*.c: protect #include <config.h> by
 	#ifdef HAVE_CONFIG_H.

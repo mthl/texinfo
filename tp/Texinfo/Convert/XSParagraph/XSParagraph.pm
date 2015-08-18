@@ -50,9 +50,11 @@ BEGIN {
 
 my $module = "Texinfo::Convert::XSParagraph::XSParagraph";
 our $VERSION = '6.0dev';
-# match what is used as version in xsub, with non numeric characters
-# removed, as they trigger an error on module version check.
-$VERSION =~ s/[[:alpha:]]+//i;
+# Module interface number, to be changed when the XS interface changes.  
+# The value used for the .xs file compilation is set in configure.ac.  
+# Both should correspond, but it should be manually changed here to make
+# sure that a changed interface has not been missed.
+my $XSPARAGRAPH_INTERFACE_VERSION = "1";
 
 # Possible values for TEXINFO_XS environmental variable:
 #
@@ -215,7 +217,7 @@ push @DynaLoader::dl_shared_objects, $dlpath; # record files loaded
 # This is the module bootstrap function, which causes all the other
 # functions (XSUB's) provided by the module to become available to
 # be called from Perl code.
-&$boot_fn($module, $VERSION);
+&$boot_fn($module, $XSPARAGRAPH_INTERFACE_VERSION);
 
 if (!Texinfo::Convert::XSParagraph::XSParagraph::init ()) {
   _fatal "XSParagraph: error initializing";

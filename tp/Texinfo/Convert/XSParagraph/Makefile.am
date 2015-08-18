@@ -68,9 +68,9 @@ LDFLAGS = $(PERL_EXT_LDFLAGS)
 
 XSParagraph_la_CFLAGS = $(PERL_CONF_ccflags)
 
-XSParagraph_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"  "-I$(PERL_INC)"
+XSParagraph_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(XSPARAGRAPH_INTERFACE_VERSION)\"  "-I$(PERL_INC)"
 
-XSParagraph_la_LDFLAGS=-module $(PERL_CONF_cccdlflags)
+XSParagraph_la_LDFLAGS=-avoid-version -module $(PERL_CONF_cccdlflags)
 
 
 # only used to regenerate a stand-alone perl module

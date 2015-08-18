@@ -80,6 +80,16 @@ AC_ARG_VAR([PERL_EXT_CFLAGS], [Compiler flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_CPPFLAGS], [C preprocessor flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_LDFLAGS], [Linker flags for a Perl extension])
 
+# version of the XSParagraph interface
+XSPARAGRAPH_INTERFACE_VERSION=1
+AC_ARG_WITH([interface-version],
+  AC_HELP_STRING([--with-interface-version],
+   dnl FIXME $XSPARAGRAPH_INTERFACE_VERSION is not expanded
+   [interface version (default: 1)]),
+   [XSPARAGRAPH_INTERFACE_VERSION=$with_interface_version])
+
+AC_SUBST([XSPARAGRAPH_INTERFACE_VERSION])
+
 if test x$disable_xs != xyes; then
 lookup_perl_flags([ccflags])
 lookup_perl_flags([cccdlflags])
