@@ -34,7 +34,7 @@ endif
 SUBDIRS += . tests
 
 DIST_SUBDIRS = Texinfo/Convert/XSParagraph tests
-# Necessary ?
+DIST_SUBDIRS += TestXS
 
 
 bin_SCRIPTS = texi2any
@@ -179,7 +179,7 @@ document_domain = $(PACKAGE)_document
 # $(document_strings_mo_files) and $(test_copied_include_files) come from
 # generated makefiles, Makefile.tres and Makefile.documents_strings_mo_files
 all-local: maintain/catalog.xml $(document_strings_mo_files) \
-           $(test_copied_include_files) 
+           $(test_copied_include_files)
 
 tp_tests = prove.sh
 

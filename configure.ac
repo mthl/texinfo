@@ -354,15 +354,27 @@ AC_SUBST([USE_EXTERNAL_LIBINTL])
 
 AC_ARG_ENABLE([perl-xs],
     AC_HELP_STRING([--enable-perl-xs],
-              [build Perl XS modules for speed (default: yes)]),
-    [if test $enableval = 'no'; then
-       disable_xs=yes
-     else
-       disable_xs=no
-     fi],
-     [disable_xs=no])
-AC_SUBST([disable_xs])
-AM_CONDITIONAL([DISABLE_XS], [test "z$disable_xs" = 'zyes'])
+              [build Perl XS modules for speed (default: check)]),
+    [ enable_xs=$enableval],
+    [ enable_xs=check])
+
+if test $enable_xs = check; then
+  AC_MSG_CHECKING([whether we can build Perl extension modules])
+  enable_xs=no
+  (cd tp/TestXS && ./configure PERL=${PERL} && make \
+    && ${PERL} -w fail.pl | grep 'message from XS module') >/dev/null \
+  && enable_xs=yes
+  AC_MSG_RESULT([$enable_xs])
+  # We can't use AC_CONFIG_SUBDIRS here because it isn't executed right
+  # away.  There is the problem of not passing on all the options we 
+  # were given to the subsidiary configure script.  If the check gets it
+  # wrong the user needs to give --enable-perl-xs or --disable-perl-xs
+  # themselves.
+fi
+
+AC_SUBST([enable_xs])
+
+AM_CONDITIONAL([DISABLE_XS], [test "z$enable_xs" = zno])
 
 
 # Tests.
