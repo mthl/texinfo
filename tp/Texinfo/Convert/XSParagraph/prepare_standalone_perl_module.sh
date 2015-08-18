@@ -1,10 +1,14 @@
 #! /bin/sh
 
-export TEXINFO_XS=module
 # Make sure that we start with the automake generated Makefile
 ./config.status
+# remove .la file
+make clean
 
-VERSION=`grep '^VERSION = ' Makefile | sed 's/^VERSION = *//'`
+# The version of the module is set using the main configure.ac version
+#VERSION=`grep '^VERSION = ' Makefile | sed 's/^VERSION = *//'`
+#[ z"$VERSION" = 'z' ] && exit 1
+VERSION=`grep ' $VERSION = '"'" XSParagraph.pm | sed 's/^.* $VERSION = '"'\([^']\+\)'"'; *$/\1/'`
 [ z"$VERSION" = 'z' ] && exit 1
 perl Makefile.PL NO_MYMETA=1
 rm -f Texinfo-Convert-XSParagraph-XSParagraph-$VERSION.tar.gz
