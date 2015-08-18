@@ -1,3 +1,9 @@
+2015-08-19  Patrice Dumas  <pertusus@free.fr>
+
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.xs, 
+	tp/Texinfo/Convert/XSParagraph/*.c: protect #include <config.h> by
+	#ifdef HAVE_CONFIG_H.
+
 2015-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* configure.ac: Only configure in tp/Texinfo/Convert/XSParagraph
