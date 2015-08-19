@@ -142,6 +142,48 @@ x2
 1@nbsp{}2
 @end example
 
+@section Open or close a group in a macro
+
+Output should be doubled
+
+@tracingmacros=1
+@macro Example
+@example
+@group
+@end macro
+
+@macro endExample
+@end group
+@end example
+@end macro
+
+x
+@Example
+groff [ -abceghijklpstvzCEGNRSUVXZ ]
+@endExample
+x
+
+x
+@example
+@group@comment
+groff [ -abceghijklpstvzCEGNRSUVXZ ]
+@end group
+@end example
+x
+
+@section @,c in macro argument
+
+@macro mactwo{argfirst, argsecond}
+\argfirst\+\argsecond\.
+@end macro
+
+@tracingmacros=1
+
+@set fc Fran@,cois
+@mactwo{@value{fc},}@*
+@mactwo{Fran@,cois,}@*
+Fran@,cois+.
+
 
 
 @bye

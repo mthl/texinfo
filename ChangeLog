@@ -1,5 +1,13 @@
 2015-08-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\scanctxt, \macrobodyctxt): Move change of 
+	catcode of @ to \macrobodyctxt, so that the , in @, doesn't 
+	separate arguments to a macro.
+	* doc/texinfo-tex-test.texi: Add example with @,c in a macro 
+	argument.
+
+2015-08-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Using Texinfo,  Overview): Merge Using 
 	Texinfo into the introductory material for the containing 
 	chapter.
