@@ -40,7 +40,7 @@ refcard_files = refcard/Makefile refcard/txicmdcheck \
 EXTRA_DIST = epsf.tex texinfo.tex \
              fdl.texi \
 	     $(man_MANS) $(TXI_XLATE) \
-	     $(refcard_files)
+	     $(refcard_files) test-texinfo-tex.texi
 
 if INSTALL_WARNINGS
 install-data-local:

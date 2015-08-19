@@ -1,3 +1,27 @@
+2015-08-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\defmacro) <non-recursive 0-9 args>: Don't 
+	call \scanmacro in a group.  Add comments to distinguish 
+	recursive and non-recursive definitions.
+	(\comment, \c): change catcode of carriage return to active, not 
+	other. Ths doesn't have any effect, but reduces the number of 
+	different catcodes that carriage return can take, so is simpler.  
+	For \comment only, duplicate self past the end of a macro 
+	expansion.
+	(\scanmacro): Append \comment to argument to \scantokens.  Don't 
+	change category codes before \scantokens or surround \scantokens 
+	in a group.  Use a marker \aftermacro after the \scantokens 
+	argument.
+	(\gobblecr): Removed.
+	(\scanexp): Add line changing catcodes before call to 
+	\scanmacro, within a group, and comment it out for now.
+	These changes appear to allow the macros to work in the manual 
+	for groff, Edition 1.22.3, Autumn 2014.
+
+	* doc/texinfo-tex-test.texi: Add example with opening and 
+	closing a TeX group via a @macro.
+	* doc/Makefile.am: Distribute texinfo-tex-test.texi.
+
 2015-08-19  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Convert/XSParagraph/Makefile.PL,
