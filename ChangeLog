@@ -1,5 +1,11 @@
 2015-08-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Using Texinfo,  Overview): Merge Using 
+	Texinfo into the introductory material for the containing 
+	chapter.
+
+2015-08-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\defmacro) <non-recursive 0-9 args>: Don't 
 	call \scanmacro in a group.  Add comments to distinguish 
 	recursive and non-recursive definitions.
