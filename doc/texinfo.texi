@@ -14464,9 +14464,6 @@ open-ended set of names, and the possible resulting errors are
 unpredictable.
 
 @item
-All macros are expanded inside at least one @TeX{} group.
-
-@item
 Macro arguments cannot cross lines.
 
 @item
@@ -14485,33 +14482,6 @@ Macros can't be reliably used in the argument to accent commands
 @item
 The backslash escape for commas in macro arguments does not work;
 @code{@@comma@{@}} must be used.
-
-@item
-As a consequence, if a macro takes two or more arguments, and you want
-to pass an argument with the Texinfo command @code{@@,} (to produce a
-cedilla, @pxref{Inserting Accents}), you have to use @code{@@value} or
-another work-around.  Otherwise, @TeX{} takes the comma as separating
-the arguments.  Example:
-
-@example
-@@macro mactwo@{argfirst, argsecond@}
-\argfirst\+\argsecond\.
-@@end macro
-@@set fc Fran@@,cois
-@@mactwo@{@@value@{fc@}@}
-@end example
-
-@noindent produces:
-
-@display
-Fran@,cois+.
-@end display
-
-The natural-seeming @code{@@mactwo@{Fran@@,cois@}} passes the two
-arguments @samp{Fran@@} and @samp{cois} to the macro, and nothing good
-results.  And, as just mentioned, although the comma can be escaped
-with a backslash for @code{makeinfo} (@samp{@@\,}), that doesn't work
-in @TeX{}, so there is no other solution.
 
 @item
 It is usually best to avoid comments inside macro definitions, but

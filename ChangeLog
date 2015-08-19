@@ -1,5 +1,9 @@
 2015-08-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Macro Details): Remove two obsolete caveats.
+
+2015-08-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\scanctxt, \macrobodyctxt): Move change of 
 	catcode of @ to \macrobodyctxt, so that the , in @, doesn't 
 	separate arguments to a macro.
