@@ -1,5 +1,9 @@
 2015-08-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\scanargctxt): Put \catcode`\@=\other here as well.
+
+2015-08-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Invoking Macros):  Remove duplicate material 
 	about commas in the argument to a one-arg macro.  Mention that \ 
 	escapes aren't used for whole-line arguments.  Mention that \{ 
