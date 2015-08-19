@@ -1,5 +1,12 @@
 2015-08-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Invoking Macros):  Remove duplicate material 
+	about commas in the argument to a one-arg macro.  Mention that \ 
+	escapes aren't used for whole-line arguments.  Mention that \{ 
+	and \} don't work in TeX.
+
+2015-08-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Macro Details): Remove two obsolete caveats.
 
 2015-08-19  Gavin Smith  <gavinsmith0123@gmail.com>

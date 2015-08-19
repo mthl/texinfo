@@ -14281,7 +14281,7 @@ No arguments here.
 @end display
 
 @cindex Comma, in macro arguments
-Passing macro arguments containing commas requires special care, since
+Passing macro arguments containing commas requires care, since
 commas also separate the arguments.  To include a comma character in
 an argument, the most reliable method is to use the @code{@@comma@{@}}
 command.  For @code{makeinfo}, you can also prepend a backslash
@@ -14346,29 +14346,26 @@ will produce the string @samp{foobarbaz}.
 to be treated as a part of an argument.
 @end enumerate
 
-@cindex Braces, in macro arguments
 @cindex Backslash, in macro arguments
-In addition to the comma, characters that need to be quoted in macro
-arguments are curly braces and backslash.  For example:
+@cindex Braces, in macro arguments
+The backslash itself can be quoted in macro arguments with another
+backslash.  For example:
 
 @example
-@@@var{macname} @{\\\@{\@}\,@}
+@@@var{macname} @{\\bleh@}
 @end example
 
 @noindent
-will pass the (almost certainly error-producing) argument
-@samp{\@{@},} to @var{macname}.
+will pass the argument @samp{\bleh} to @var{macname}.
 
-Unfortunately, this has not been reliably implemented in @TeX{}.  When
-macros are used in the argument to other commands, for example, errors
-or incorrect output (the @samp{\} ``escape'' being included literally)
-are likely to result.
+@command{makeinfo} also recognizes @samp{\@{} and @samp{\@}} sequences
+for curly braces, but these are not recognized by the implementation in
+@TeX{}.  There should, however, rarely be a need for these, as they are
+only needed when a macro argument contains unbalanced braces.
 
-If a macro is defined to take exactly one argument, it can (but need
-not) be invoked without any braces; then the entire rest of the line
-after the macro name is used as the argument.  (Braces around the
-argument(s) are required in all other cases, i.e., if the macro takes
-either zero or more than one argument.)  For example:
+If a macro is defined to take exactly one argument, it can be
+invoked without any braces, taking all of the line after the macro name
+as the argument.  For example:
 
 @example
 @@macro bar @{p@}
@@ -14383,22 +14380,9 @@ Twice: \p\ & \p\.
 Twice: aah & aah.
 @end display
 
-Likewise, if a macro is defined to take exactly one argument, and is
-invoked with braces, the braced text is passed as the argument, also
-regardless of commas.  For example:
-
-@example
-@@macro bar @{p@}
-Twice: \p\ & \p\.
-@@end macro
-@@bar@{a,b@}
-@end example
-
-@noindent produces:
-
-@display
-Twice: a,b & a,b.
-@end display
+@noindent
+In these arguments, there is no escaping of special characters, so each
+@samp{\} stands for itself.
 
 If a macro is defined to take more than one argument, but is called
 with only one (in braces), the remaining arguments are set to the
