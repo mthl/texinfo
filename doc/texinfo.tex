@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-08-19.20}
+\def\texinfoversion{2015-08-20.13}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -4460,31 +4460,6 @@ end
   % should use @lbracechar and @rbracechar?
   \def\{{{\tt\char123}}%
   \def\}{{\tt\char125}}%
-  %
-  % I don't entirely understand this, but when an index entry is
-  % generated from a macro call, the \endinput which \scanmacro inserts
-  % causes processing to be prematurely terminated.  This is,
-  % apparently, because \indexsorttmp is fully expanded, and \endinput
-  % is an expandable command.  The redefinition below makes \endinput
-  % disappear altogether for that purpose -- although logging shows that
-  % processing continues to some further point.  On the other hand, it
-  % seems \endinput does not hurt in the printed index arg, since that
-  % is still getting written without apparent harm.
-  %
-  % Sample source (mac-idx3.tex, reported by Graham Percival to
-  % help-texinfo, 22may06):
-  % @macro funindex {WORD}
-  % @findex xyz
-  % @end macro
-  % ...
-  % @funindex commtest
-  % This is not enough to reproduce the bug, but it gives the flavor.
-  %
-  % Sample whatsit resulting:
-  % .@write3{\entry{xyz}{@folio }{@code {xyz@endinput }}}
-  %
-  % So:
-  \let\endinput = \empty
   %
   % Do the redefinitions.
   \commondummies

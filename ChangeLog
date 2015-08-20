@@ -1,3 +1,9 @@
+2015-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\indexdummies): Remove redefinition of 
+	\endinput, since \endinput has not been added in \scanmacro 
+	since 2010-12-23.
+
 2015-08-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\scanargctxt): Put \catcode`\@=\other here as well.
