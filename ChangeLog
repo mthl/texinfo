@@ -1,3 +1,13 @@
+2015-08-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\scanmacro): Alias \c with \texinfoc and use 
+	it instead of \c at end of macro body.
+	(\parsearg): Strip of a texinfoc comment as well.
+	* doc/texinfo-tex-test.texi: Add example with a @macro expansion 
+	inside @math.
+
+	* NEWS: Mention change for non-alphanumeric index initials.
+
 2015-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\indexdummies): Remove redefinition of 

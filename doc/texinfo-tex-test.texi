@@ -184,6 +184,14 @@ x
 @mactwo{Fran@,cois,}@*
 Fran@,cois+.
 
+@section Macro in argument to @@math
+
+@macro frac {a,b}
+\a\ @over \b\
+@end macro
+
+exceeds @math{@frac{1,16}} pt
+
 
 
 @bye
