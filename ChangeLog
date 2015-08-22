@@ -1,3 +1,9 @@
+2015-08-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\initialfonts): Don't use \secfonts because 
+	this changes \baselineskip.  Add % at end of some lines.
+	(\balancecolumns): Add \vfill at the bottom of both columns.
+
 2015-08-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\scanmacro): Alias \c with \texinfoc and use 

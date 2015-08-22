@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-08-21.13}
+\def\texinfoversion{2015-08-22.20}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -5019,23 +5019,24 @@ end
 \catcode`\$=3
 \gdef\initialfonts{%
   \usemathbackslash
-  \secfonts
+  \let\tentt=\sectt \let\tt=\sectt \let\sf=\sectt
+  \resetmathfonts
   % Some changes for non-alphabetic characters.  Using the glyphs from the
   % math fonts looks more consistent than the typewriter font used elsewhere
   % for these characters.
   % Can't get bold backslash so don't use bold forward slash
   \catcode`\/=13
-  \def/{{\secrmnotbold \normalslash}}
+  \def/{{\secrmnotbold \normalslash}}%
   \catcode`\-=13
-  \def-{{\normalhyphen\normalhyphen}}
+  \def-{{\normalhyphen\normalhyphen}}%
   \let^=\normalcaret
   \let~=\normaltilde
   \def\_{%
     \leavevmode \kern.07em \vbox{\hrule width.33em height.06ex}\kern .07em }
-  \def|{$\vert$}
-  \def<{$\less$}
-  \def>{$\gtr$}
-  \def+{$\normalplus$}
+  \def|{$\vert$}%
+  \def<{$\less$}%
+  \def>{$\gtr$}%
+  \def+{$\normalplus$}%
   \let"=\normaldoublequote
 }}
 
@@ -5326,7 +5327,7 @@ end
   \pagegoal = \vsize
 }
 %
-% Called at the end of the double column material.
+% Only called for the last of the double column material.
 \def\balancecolumns{%
   \setbox0 = \vbox{\unvbox255}% like \box255 but more efficient, see p.120.
   \dimen@ = \ht0
@@ -5346,8 +5347,8 @@ end
     \repeat
   }%
   %debug\message{split to \the\dimen@, column heights: \the\ht1, \the\ht3.}%
-  \setbox0=\vbox to\dimen@{\unvbox1}%
-  \setbox2=\vbox to\dimen@{\unvbox3}%
+  \setbox0=\vbox to\dimen@{\unvbox1\vfill}%
+  \setbox2=\vbox to\dimen@{\unvbox3\vfill}%
   %
   \pagesofar
 }
