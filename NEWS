@@ -33,7 +33,6 @@ one of the relevant sections:
   . For initials in indices that are non-alphanumeric characters (for
     example, backslash, or braces), avoid use of a typewriter font.  
     This gives a more consistent appearance.
-  . \c no longer has its plain TeX meaning inside @tex or @math.
 
 * makeinfo
   . Some Perl modules have been rewritten in C to increase speed.
