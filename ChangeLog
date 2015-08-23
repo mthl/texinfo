@@ -1,3 +1,11 @@
+2015-08-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\initial): Use \secfonts but within a group.  
+	Use default glyph for double quote.  Add bonus for page break 
+	before initial.
+	(\balancecolumns): If final column is short, don't split it in 
+	two.
+
 2015-08-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\initialfonts): Don't use \secfonts because 

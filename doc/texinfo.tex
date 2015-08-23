@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-08-22.20}
+\def\texinfoversion{2015-08-23.16}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -310,7 +310,9 @@
 \def\prevsectiondefs{}
 \def\lastcolordefs{}
 
+
 % Main output routine.
+%
 \chardef\PAGE = 255
 \output = {\onepageout{\pagecontents\PAGE}}
 
@@ -5018,12 +5020,10 @@ end
 \catcode`\|=13 \catcode`\<=13 \catcode`\>=13 \catcode`\+=13 \catcode`\"=13
 \catcode`\$=3
 \gdef\initialfonts{%
-  \usemathbackslash
-  \let\tentt=\sectt \let\tt=\sectt \let\sf=\sectt
-  \resetmathfonts
   % Some changes for non-alphabetic characters.  Using the glyphs from the
   % math fonts looks more consistent than the typewriter font used elsewhere
   % for these characters.
+  \usemathbackslash
   % Can't get bold backslash so don't use bold forward slash
   \catcode`\/=13
   \def/{{\secrmnotbold \normalslash}}%
@@ -5037,7 +5037,6 @@ end
   \def<{$\less$}%
   \def>{$\gtr$}%
   \def+{$\normalplus$}%
-  \let"=\normaldoublequote
 }}
 
 \def\initial{%
@@ -5051,9 +5050,11 @@ end
   \removelastskip
   %
   % We like breaks before the index initials, so insert a bonus.
+  % The glue before the bonus allows a little bit of space at the
+  % bottom of a column to reduce an increase in inter-line spacing.
   \nobreak
   \vskip 0pt plus 3\baselineskip
-  \penalty 0
+  \penalty -300 
   \vskip 0pt plus -3\baselineskip
   %
   % Typeset the initial.  Making this add up to a whole number of
@@ -5063,7 +5064,9 @@ end
   %
   % No shrink because it confuses \balancecolumns.
   \vskip 1.67\baselineskip plus .5\baselineskip
+  \bgroup \secfonts % Initial is the same size as section headings
   \leftline{\secbf #1}%
+  \egroup
   % Do our best not to break after the initial.
   \nobreak
   \vskip .33\baselineskip plus .1\baselineskip
@@ -5333,6 +5336,11 @@ end
   \dimen@ = \ht0
   \advance\dimen@ by \topskip
   \advance\dimen@ by-\baselineskip
+  \ifdim\dimen@<10\baselineskip
+    % Don't split a short final column in two.
+    \global\setbox1 = \copy0
+    \global\setbox3 = \vbox{}
+  \else
   \divide\dimen@ by 2 % target to split to
   %debug\message{final 2-column material height=\the\ht0, target=\the\dimen@.}%
   \splittopskip = \topskip
@@ -5346,6 +5354,7 @@ end
       \global\advance\dimen@ by 1pt
     \repeat
   }%
+  \fi
   %debug\message{split to \the\dimen@, column heights: \the\ht1, \the\ht3.}%
   \setbox0=\vbox to\dimen@{\unvbox1\vfill}%
   \setbox2=\vbox to\dimen@{\unvbox3\vfill}%
