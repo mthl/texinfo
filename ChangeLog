@@ -6,6 +6,9 @@
 	(\balancecolumns): If final column is short, don't split it in 
 	two.
 
+	* doc/texinfo-tex-test.texi: Add examples for formatting 
+	indices.
+
 2015-08-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\initialfonts): Don't use \secfonts because 
