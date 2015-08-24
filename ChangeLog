@@ -1,3 +1,23 @@
+2015-08-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\balancecolumns): Increase height of column 
+	that shouldn't be split.  Add a missing %.
+
+	(\normalbackslash, \ttbackslash): Rename, to avoid confusion 
+	with other \normal... commands that are defined to character 
+	tokens with catcode other.
+
+	(\initial): Define \\ for coming from a sorted index file.
+	(\\): Remove definition, formerly used for user-defined macros.
+
+	(\eatinput): Eat to end of line, to account for first line being
+	`\input texinfo.tex' instead of merely `input texinfo'.
+	(\enablebackslashhack): New definition.  Let \ to @eatinput and
+	provide for it to be turned off after the first line.  Use it on
+	the very last line of the file.
+	(\setfilename): No longer use \fixbackslash.
+	(\otherifyactive): Inline into single usage site.
+
 2015-08-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\initial): Use \secfonts but within a group.  
