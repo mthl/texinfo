@@ -364,6 +364,35 @@ See following pages
 \initial{A}
 \entry{aaaa}{1}
 \entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\finishindex
+
+@commenceindex
+\initial{A}
+\entry{aaaa}{1}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{bbbb}{2}
+\entry{cccc}{17}
+\finishindex
+
+@section Non-alphanumeric Index Initials
+
+/ and \ should be mirror images.
+
+@commenceindex
+\initial{\\}
+\initial{/}
+\initial{|}
+\initial{\{}
+\initial{\}}
+\initial{F}
 \finishindex
 
 

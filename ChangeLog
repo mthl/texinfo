@@ -1,5 +1,10 @@
 2015-08-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo-tex-test.texi: Add more examples of short indices, 
+	and show some index initial glyphs.
+
+2015-08-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\balancecolumns): Increase height of column 
 	that shouldn't be split.  Add a missing %.
 
