@@ -1,5 +1,11 @@
 2015-08-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\sortas): New macro.
+	(\dosubindwrite): Give it a special definition.  Trim spaces
+	from index entry.
+
+2015-08-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* ti/ti.twjr (extract_initial): Read initials delimited by 
 	balanced curly braces, to be compatible with older versions
 	of texinfo.tex.
