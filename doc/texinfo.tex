@@ -346,10 +346,10 @@
     \normalturnoffactive  % \ in index entries must not stay \, e.g., if
                % the page break happens to be in the middle of an example.
                % We don't want .vr (or whatever) entries like this:
-               % \entry{{\tt \indexbackslash }acronym}{32}{\code {\acronym}}
+               % \entry{{\indexbackslash }acronym}{32}{\code {\acronym}}
                % "\acronym" won't work when it's read back in;
                % it needs to be
-               % {\code {{\tt \backslashcurfont }acronym}
+               % {\code {{\backslashcurfont }acronym}
     \shipout\vbox{%
       % Do this early so pdf references go to the beginning of the page.
       \ifpdfmakepagedest \pdfdest name{\the\pageno} xyz\fi
@@ -4450,7 +4450,8 @@ end
 \def\docodeindex#1{\edef\indexname{#1}\parsearg\singlecodeindexer}
 \def\singlecodeindexer #1{\doind{\indexname}{\code{#1}}}
 
-% Take care of Texinfo commands that can appear in an index entry.
+% Used when writing an index entry out to an index file, to prevent
+% expansion of Texinfo commands that can appear in an index entry.
 % Since there are some commands we want to expand, and others we don't,
 % we have to laboriously prevent expansion for those that we don't.
 %
@@ -4679,6 +4680,9 @@ end
 % For testing: output @{ and @} in index sort strings as \{ and \}.
 \newif\ifusebracesinindexes
 
+\let\indexlbrace\relax
+\let\indexrbrace\relax
+
 % \indexnofonts is used when outputting the strings to sort the index
 % by, and when constructing control sequence names.  It eliminates all
 % control sequences and just writes whatever the best ASCII sort string
@@ -4704,16 +4708,10 @@ end
   \def\_{\normalunderscore}%
   \def\-{}% @- shouldn't affect sorting
   %
-  % Unfortunately, texindex is not prepared to handle braces in the
-  % content at all.  So for index sorting, we map @{ and @} to strings
-  % starting with |, since that ASCII character is between ASCII { and }.
-  \ifusebracesinindexes
-    \def\lbracechar{\lbracecmd}%
-    \def\rbracechar{\rbracecmd}%
-  \else
-    \def\lbracechar{|a}%
-    \def\rbracechar{|b}%
-  \fi
+  % Unfortunately, texindex < 6.0 is not prepared to handle braces in the
+  % content at all, so these won't be sorted in ASCII order.
+  \def\lbracechar{{\indexlbrace}}%
+  \def\rbracechar{{\indexrbrace}}%
   \let\{=\lbracechar
   \let\}=\rbracechar
   %
@@ -4795,7 +4793,6 @@ end
 {\catcode`\`=\active
  \gdef\indexlquoteignore{\let`=\empty}}
 
-\let\indexbackslash=0  %overridden during \printindex.
 \let\SETmarginindex=\relax % put index entries in margin (undocumented)?
 
 % Most index entries go through here, but \dosubind is the general case.
@@ -4825,6 +4822,13 @@ end
   \fi
 }
 
+% Output \ as {\indexbackslash}, because \ is an escape character in
+% the index files.
+\let\indexbackslash=\relax
+{\catcode`\@=0 \catcode`\\=\active
+  @gdef@useindexbackslash{@def\{{@indexbackslash}}}
+}
+
 % Write the entry in \toks0 to the index file:
 %
 \def\dosubindwrite{%
@@ -4835,8 +4839,8 @@ end
   %
   % Remember, we are within a group.
   \indexdummies % Must do this here, since \bf, etc expand at this stage
-  \def\backslashcurfont{\indexbackslash}% \indexbackslash isn't defined now
-      % so it will be output as is; and it will print as backslash.
+  \useindexbackslash % \indexbackslash isn't defined now so it will be output 
+                     % as is; and it will print as backslash.
   %
   % Process the index entry with all font commands turned off, to
   % get the string to sort by.
@@ -5000,7 +5004,9 @@ end
       % Index files are almost Texinfo source, but we use \ as the escape
       % character.  It would be better to use @, but that's too big a change
       % to make right now.
-      \def\indexbackslash{\backslashcurfont}%
+      \def\indexbackslash{\ttbackslash}%
+      \let\indexlbrace\{   % Likewise, set these sequences for braces
+      \let\indexrbrace\}   % used in the sort key.
       \catcode`\\ = 0
       \escapechar = `\\
       \begindoublecolumns
@@ -5014,9 +5020,6 @@ end
 % These macros are used by the sorted index file itself.
 % Change them to control the appearance of the index.
 
-{\catcode`\@=0 \catcode`\\=13
-@gdef@usemathbackslash{@def@\{@math{@backslash}}}}
-
 \let\normalhyphen=-
 {\catcode`\/=13 \catcode`\-=13 \catcode`\^=13 \catcode`\~=13 \catcode`\_=13
 \catcode`\|=13 \catcode`\<=13 \catcode`\>=13 \catcode`\+=13 \catcode`\"=13
@@ -5025,7 +5028,8 @@ end
   % Some changes for non-alphabetic characters.  Using the glyphs from the
   % math fonts looks more consistent than the typewriter font used elsewhere
   % for these characters.
-  \usemathbackslash
+  \def\indexbackslash{\math{\backslash}}%
+  \let\\=\indexbackslash
   %
   % Can't get bold backslash so don't use bold forward slash
   \catcode`\/=13

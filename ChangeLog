@@ -1,5 +1,20 @@
 2015-08-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* ti/ti.twjr (extract_initial): Read initials delimited by 
+	balanced curly braces, to be compatible with older versions
+	of texinfo.tex.
+	(Special_chars): Remove backslash.
+	(Problem reported by Norbert Preining, bug-texinfo, on 6 July.)
+
+	* doc/texinfo.tex (\dosubindwrite): Output \ as 
+	{\indexbackslash}, not {\tt \indexbackslash}.
+	(\usemathbackslash): Removed.
+	(\indexnofonts): Likewise, output { and } as braced sequences, 
+	to be recognized by older versions of texindex.
+	(\printindex): Give these braced sequences meaning.
+
+2015-08-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo-tex-test.texi: Add more examples of short indices, 
 	and show some index initial glyphs.
 
