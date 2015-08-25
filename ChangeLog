@@ -1,5 +1,29 @@
 2015-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Nodes, Cross References): Move @anchor node 
+	between chapters.
+	(Overview): Move Texinfo Document Structure node later, and
+	Adding Output Formats later, and History earlier.
+	(Adding Output Formats): Move material about man pages to the 
+	end.  Reword slightly.
+	(Output Formats) <Info>: Be slightly less detailed, because the 
+	reader might not know what "nodes" are yet.
+	(Six Parts, Short Sample): Merge Six Parts into Short Sample.
+	<Header>: Mention that %**start of header is for the benefit of 
+	Emacs, moved from Minimum.
+	(Minimum): Remove use of @emph and the word "good".  Explain why 
+	@bye is needed.  Put discussion of which file extensions are 
+	preferred in a footnote.
+	
+	(Overview): Split off later sections into a new chapter, Writing 
+	a Texinfo File.
+
+	(Chapter Structuring): Move chapter after Nodes and Menus.
+
+	* doc/texinfo.texi: Remove @shorttitlepage.
+
+2015-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (%brace_commands): Add 'sortas'.
 	* tp/Texinfo/Convert/Plaintext.pm (%ignored_commands): Add 
 	'sortas'.
