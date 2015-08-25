@@ -1263,6 +1263,9 @@ role of @command{texi2any}.
 @node Writing a Texinfo File
 @chapter Writing a Texinfo File
 
+This chapter describes Texinfo syntax and what is required in a Texinfo 
+file, and gives a short sample file.
+
 @menu
 * Command Syntax::              @@-commands are used for formatting.
 * Conventions::                 General rules for writing a Texinfo file.
