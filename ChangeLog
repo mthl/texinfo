@@ -1,5 +1,14 @@
 2015-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Indexing Commands): Document @sortas{}.  
+	Move example usage earlier.  Move discussion of typeface 
+	earlier, leaving general advice on writing index entries at the 
+	end.
+	(Index Entries): Move to after Indexing Commands, and move 
+	advice from there to here.
+
+2015-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Writing a Texinfo File): Add a short blurb 
 	to say what chapter is about.
 

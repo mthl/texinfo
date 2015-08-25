@@ -9344,40 +9344,15 @@ You can combine indices or use them for other than their canonical
 purpose.  Lastly, you can define your own new indices.
 
 @menu
-* Index Entries::               Choose different words for index entries.
 * Predefined Indices::          Use different indices for different kinds
                                  of entries.
 * Indexing Commands::           How to make an index entry.
+* Index Entries::               Choose different words for index entries.
 * Printing Indices & Menus::    How to print an index in hardcopy and
                                  generate index menus in Info.
 * Combining Indices::           How to combine indices.
 * New Indices::                 How to define your own indices.
 @end menu
-
-
-@node Index Entries
-@section Making Index Entries
-@cindex Index entries, making
-@cindex Entries, making index
-
-When you are making index entries, it is good practice to think of the
-different ways people may look for something.  Different people
-@emph{do not} think of the same words when they look something up.  A
-helpful index will have items indexed under all the different words
-that people may use.  For example, one reader may think it obvious
-that the two-letter names for indices should be listed under
-``Indices, two-letter names, since ``Indices'' are the general
-concept.  But another reader may remember the specific concept of
-two-letter names and search for the entry listed as ``Two letter names
-for indices''.  A good index will have both entries and will help both
-readers.
-
-Like typesetting, the construction of an index is a skilled art, the
-subtleties of which may not be appreciated until you need to do it
-yourself.
-
-@xref{Printing Indices & Menus}, for information about printing an
-index at the end of a book or creating an index menu in an Info file.
 
 
 @node Predefined Indices
@@ -9475,6 +9450,49 @@ Each predefined index has its own indexing command---@code{@@cindex}
 for the concept index, @code{@@findex} for the function index, and so
 on, as listed in the previous section.
 
+Index entries should precede the visible material that is being
+indexed.  For instance:
+
+@example
+@@cindex hello
+Hello, there!
+@end example
+
+@noindent Among other reasons, that way following indexing links (in
+whatever context) ends up before the material, where readers want to
+be, instead of after.
+
+@cindex Index font types
+By default, entries for a concept index are printed in a small roman
+font and entries for the other indices are printed in a small
+@code{@@code} font.  You may change the way part of an entry is
+printed with the usual Texinfo commands, such as @code{@@file} for
+file names (@pxref{Marking Text}), and @code{@@r} for the normal roman
+font (@pxref{Fonts}).
+
+@findex sortas
+@cindex sort keys for index entries
+Sometimes you may wish to have an index entry sorted as if it were
+something else.  For example, the index for this manual has an entry
+@samp{@@findex \mathopsup}.  In the printed output, this will be sorted 
+under its first character, a backslash, but it might be nicer to sort it 
+under the letter `M', as if the backslash were not there.  For such 
+cases, you can specify a sort key with @code{@@sortkey} immediately 
+following the index command.  For example: @samp{@@findex 
+@@sortas@{mathopsup@} \mathopsup}.
+
+@quotation Caution
+Do not use a colon in an index entry.  In Info, a colon separates the
+menu entry name from the node name, so a colon in the entry itself
+confuses Info.  @xref{Menu Parts}, for more information about the
+structure of a menu entry.
+@end quotation
+
+@node Index Entries
+@section Making Index Entries
+@cindex Index entries, making
+@cindex Entries, making index
+
 @cindex Writing index entries
 @cindex Index entries, advice on writing
 @cindex Advice on writing entries
@@ -9507,32 +9525,22 @@ opportunity to make otherwise-identical index entries be more
 specific, so readers can more easily find the exact place they are
 looking for.
 
-Index entries should precede the visible material that is being
-indexed.  For instance:
 
-@example
-@@cindex hello
-Hello, there!
-@end example
+When you are making index entries, it is good practice to think of the
+different ways people may look for something.  Different people
+@emph{do not} think of the same words when they look something up.  A
+helpful index will have items indexed under all the different words
+that people may use.  For example, one reader may think it obvious
+that the two-letter names for indices should be listed under
+``Indices, two-letter names, since ``Indices'' are the general
+concept.  But another reader may remember the specific concept of
+two-letter names and search for the entry listed as ``Two letter names
+for indices''.  A good index will have both entries and will help both
+readers.
 
-@noindent Among other reasons, that way following indexing links (in
-whatever context) ends up before the material, where readers want to
-be, instead of after.
-
-@cindex Index font types
-By default, entries for a concept index are printed in a small roman
-font and entries for the other indices are printed in a small
-@code{@@code} font.  You may change the way part of an entry is
-printed with the usual Texinfo commands, such as @code{@@file} for
-file names (@pxref{Marking Text}), and @code{@@r} for the normal roman
-font (@pxref{Fonts}).
-
-@quotation Caution
-Do not use a colon in an index entry.  In Info, a colon separates the
-menu entry name from the node name, so a colon in the entry itself
-confuses Info.  @xref{Menu Parts}, for more information about the
-structure of a menu entry.
-@end quotation
+Like typesetting, the construction of an index is a skilled art, the
+subtleties of which may not be appreciated until you need to do it
+yourself.
 
 
 @node Printing Indices & Menus
