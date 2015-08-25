@@ -1,5 +1,6 @@
 #ifdef HAVE_CONFIG_H
-  #include <config.h>
+  /* configure generated header file */
+  #include <xsparagraph_acconfig.h>
 #endif
 
 #define PERL_NO_GET_CONTEXT

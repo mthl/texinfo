@@ -3,7 +3,8 @@
 #define _GNU_SOURCE
 
 #ifdef HAVE_CONFIG_H
-  #include <config.h>
+  /* configure generated header file */
+  #include <xsparagraph_acconfig.h>
 #endif
 #include <stdlib.h>
 #include <stdio.h>

@@ -102,7 +102,12 @@ lookup_perl_conf([privlibexp])
 
 AC_PATH_PROG([XSUBPP], [xsubpp])
 
-AC_CONFIG_HEADERS([config.h:config.in])
+# we do not use config.h because there is already a config.h file in 
+# perl includes directory.  The header file in the build directory
+# should always be generated, so in principle there is no possibility
+# of including the one in perl directory.  Using another file name is
+# an extra security.
+AC_CONFIG_HEADERS([xsparagraph_acconfig.h:config.in])
 
 fi # not disable_xs
 
