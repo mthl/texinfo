@@ -3,6 +3,7 @@
 	* tp/Texinfo/Convert/XSParagraph/text.c,
 	tp/Texinfo/Convert/XSParagraph/xspara.c: remove unneeded
 	_GNU_SOURCE.
+	* doc/Makefile.am (EXTRA_DIST): correct typo in texinfo-tex-test.texi.
 
 2015-08-25  Patrice Dumas  <pertusus@free.fr>
 
