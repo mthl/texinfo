@@ -1,3 +1,14 @@
+2015-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\setfilename): No longer call \openindices.
+	(\openindices): Place body inline in texinfo.tex.
+	(\requireopenindexfile): New macro.
+	(\dosubind) <not @novalidate>: Use it.
+	(\newindex, \newcodeindex): Don't open an index file, and record
+	the file handle as a dummy value.
+
+	* NEWS: Mention change for opening index files on demand.
+
 2015-08-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\sortas): New macro.
