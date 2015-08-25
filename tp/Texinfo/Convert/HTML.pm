@@ -1169,7 +1169,7 @@ foreach my $misc_command (keys(%misc_commands)) {
 }
 
 foreach my $ignored_brace_commands ('caption', 'shortcaption', 
-  'hyphenation') {
+  'hyphenation', 'sortas') {
   #$ignored_commands{$ignored_brace_commands} = 1;
   $default_commands_conversion{$ignored_brace_commands} = undef;
 }

@@ -1,5 +1,13 @@
 2015-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (%brace_commands): Add 'sortas'.
+	* tp/Texinfo/Convert/Plaintext.pm (%ignored_commands): Add 
+	'sortas'.
+	* tp/Texinfo/Convert/HTML.pm (%default_commands_conversion): Set 
+	conversion for @sortas to nothing, so command is ignored.
+
+2015-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\setfilename): No longer call \openindices.
 	(\openindices): Place body inline in texinfo.tex.
 	(\requireopenindexfile): New macro.

@@ -606,7 +606,7 @@ foreach my $command ('r', 'i', 'b', 'sansserif', 'slanted') {
 }
 
 foreach my $one_arg_command ('U', 'ctrl', 'dmn', 'w', 'key',
-    'titlefont', 'hyphenation', 'anchor', 'errormsg') {
+    'titlefont', 'hyphenation', 'anchor', 'errormsg', 'sortas') {
   $brace_commands{$one_arg_command} = 1;
 }
 
@@ -618,7 +618,7 @@ foreach my $command ('code', 'command', 'env', 'file', 'kbd', 'key', 'option',
 }
 
 
-# Commands that enclose full texts
+# Commands that enclose full texts, that can contain multiple paragraphs.
 our %context_brace_commands;
 foreach my $context_brace_command ('footnote', 'caption',
     'shortcaption', 'math') {

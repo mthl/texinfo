@@ -160,7 +160,7 @@ foreach my $misc_command (keys(%misc_commands)) {
 
 my %ignored_commands = %ignored_misc_commands;
 foreach my $ignored_brace_commands ('caption', 'shortcaption', 
-  'hyphenation') {
+  'hyphenation', 'sortas') {
   $ignored_commands{$ignored_brace_commands} = 1;
 }
 
