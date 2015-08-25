@@ -1,7 +1,5 @@
 /* Copyright 2010, 2011, 2012, 2014, 2015 Free Software Foundation, Inc. */
 
-#define _GNU_SOURCE
-
 #ifdef HAVE_CONFIG_H
   #include <config.h>
 #endif
