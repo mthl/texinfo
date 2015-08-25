@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-08-25.12}
+\def\texinfoversion{2015-08-25.18}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -4826,7 +4826,7 @@ end
 }
 
 % Definition for writing index entry text.
-\def\sortas#1{}%
+\def\sortas#1{\eatspaces}%
 
 % Definition for writing index entry sort key.  @sortas{} must occur at
 % the beginning of the index entry, like
@@ -4862,9 +4862,7 @@ end
   % sorted result.
   \edef\temp{%
     \write\writeto{%
-      \string\entry{\indexsortkey}{\noexpand\folio}%
-                   {\expandafter\eatspaces\expandafter{\the\toks0}}}%
-                         % This (^) removes a space after a @sortas.
+      \string\entry{\indexsortkey}{\noexpand\folio}{\the\toks0}}%
   }%
   \temp
 }

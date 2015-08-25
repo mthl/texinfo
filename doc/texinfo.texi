@@ -10766,7 +10766,7 @@ does not try to use produce good mathematical formatting in any way
 (no use of MathML, etc.).  The HTML output is enclosed by
 @code{<em>...</em>}, but nothing more.
 
-@findex \mathopsup
+@findex @sortas{mathopsup} \mathopsup
 However, as far as the @TeX{} output is concerned, plain @TeX{}
 mathematical commands are allowed in @code{@@math}, starting with
 @samp{\}.  In essence, @code{@@math} switches into plain @TeX{} math

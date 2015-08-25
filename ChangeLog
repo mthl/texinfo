@@ -1,5 +1,11 @@
 2015-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\sortas): Expand to \eatspaces, to remove a 
+	following space.
+	* doc/texinfo.texi (\mathopsup): Use @sortas{mathopsup}.
+
+2015-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Indexing Commands): Document @sortas{}.  
 	Move example usage earlier.  Move discussion of typeface 
 	earlier, leaving general advice on writing index entries at the 
