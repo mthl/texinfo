@@ -543,9 +543,8 @@ Prints the version information of Info and exits.
 @cindex Less-like key bindings
 This option binds functions to keys differently, to emulate the key
 bindings of @code{vi} and Less.  The default key bindings are generally
-modeled after Emacs.
-(@xref{Custom Key Bindings},
-for a more general way of altering GNU Info's key bindings.)
+modeled after Emacs.  (@xref{Custom Key Bindings} for a more general way 
+of altering GNU Info's key bindings.)
 
 @item --where
 @itemx --location
@@ -558,7 +557,7 @@ reading it and starting Info.
 @end table
 
 Finally, Info defines many default key bindings and variables.
-@xref{Custom Key Bindings}, for information on how to customize these
+@xref{Custom Key Bindings} for information on how to customize these
 settings.
 
 @c FIXME: the feature with lowercasing the file name isn't documented
@@ -572,7 +571,7 @@ settings.
 GNU Info has several commands which allow you to move the cursor about
 the screen.  The notation used in this manual to describe keystrokes
 is the same as the notation used within the Emacs manual, and the GNU
-Readline manual.  @xref{User Input,,, emacs, The GNU Emacs Manual},
+Readline manual.  @xref{User Input,,, emacs, The GNU Emacs Manual}
 if you are unfamiliar with the notation.  @footnote{Here's a short
 summary.  @kbd{C-@var{x}} means press the @kbd{CTRL} key and the
 key @var{x}.  @kbd{M-@var{x}} means press the @kbd{META} key and
@@ -588,8 +587,8 @@ by name.  @xref{M-x, , Executing an extended command, emacs, The GNU
 Emacs Manual}, for more detailed information.} command name (displayed
 in parentheses), and a short description of what the command does.
 All of the cursor motion commands can take a @dfn{numeric} argument
-(see @ref{Miscellaneous Commands, @code{universal-argument}, to find
-out how to supply them}.  With a numeric argument, the motion commands
+(see @ref{Miscellaneous Commands, @code{universal-argument}} to find
+out how to supply them).  With a numeric argument, the motion commands
 are simply executed that many times; for example, a numeric argument
 of 4 given to @code{next-line} causes the cursor to move down 4 lines.
 With a negative numeric argument, the motion is reversed; an argument
@@ -694,7 +693,7 @@ current node is visible on the screen.
 
 Scrolling commands are bound differently when @samp{--vi-keys}
 operation is in effect (@pxref{--vi-keys}).  These key bindings are
-designated with ``vi-like operation''.  @xref{Custom Key Bindings},
+designated with ``vi-like operation''.  @xref{Custom Key Bindings}
 for information on arbitrarily customizing key bindings and variable
 settings.
 
@@ -1275,7 +1274,7 @@ was @samp{S}.
 
 Normally, the search pattern should not be shorter than some
 predefined limit.  By default, this limit is set to 1 character.
-@xref{min-search-length}, for more information on this.
+@xref{min-search-length} for more information on this.
 
 
 @node Index Commands

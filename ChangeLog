@@ -1,6 +1,18 @@
 2015-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* doc/texinfo.tex (Cross References): Don't mention nodes and 
+	* doc/texinfo.tex (\pxref, \xref, \ref): If there isn't 
+	punctuation after the argument when we output the page number,
+	supply a comma after the page number.
+
+	(\enablebackslashhack): Also use @c to turn off initial 
+	definition of backslash.
+	
+	* doc/info-stnd.texi: Remove commas following cross-references 
+	where they aren't needed.
+
+2015-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Cross References): Don't mention nodes and 
 	anchors in summary, for simplicity.
 	(Cross Reference Commands): Say there are only three main 
 	cross-reference commands, and not four, and also mention @uref.
