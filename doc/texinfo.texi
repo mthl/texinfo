@@ -286,7 +286,7 @@ Cross References
 * Cross Reference Commands::    A summary of the different commands.
 * Cross Reference Parts::       A cross reference has several parts.
 * @code{@@xref}::                       Begin a reference with `See' @dots{}
-* Top Node Naming::             How to refer to the beginning of another file.
+* Referring to a Manual as a Whole::   Refer to an entire manual.
 * @code{@@ref}::                        A reference for the last part of a sentence.
 * @code{@@pxref}::                      How to write a parenthetical cross reference.
 * @code{@@anchor}::                     Defining arbitrary cross-reference targets
@@ -4809,7 +4809,7 @@ places to which cross references can refer.
 * Cross Reference Commands::    A summary of the different commands.
 * Cross Reference Parts::       A cross reference has several parts.
 * @code{@@xref}::                       Begin a reference with `See' @dots{}
-* Top Node Naming::             How to refer to the beginning of another file.
+* Referring to a Manual as a Whole::   Refer to an entire manual.
 * @code{@@ref}::                        A reference for the last part of a sentence.
 * @code{@@pxref}::                      How to write a parenthetical cross reference.
 * @code{@@anchor}::                     Defining arbitrary cross-reference targets
@@ -5472,13 +5472,11 @@ Finally, it's also allowed to leave out all the arguments
 whole.  See the next section.
 
 
-@node Top Node Naming
-@section Naming a `Top' Node
-@cindex Naming a `Top' Node in references
-@cindex `Top' node naming for references
-
+@node Referring to a Manual as a Whole
+@section Referring to a Manual as a Whole
 @cindex Manual, referring to as a whole
 @cindex Referring to an entire manual
+@anchor{Top Node Naming} @c old name
 
 Ordinarily, you must always name a node in a cross reference.
 However, it's not unusual to want to refer to another manual as a
@@ -17248,7 +17246,7 @@ beginning of the output; default false.
 @item KEEP_TOP_EXTERNAL_REF
 For HTML@.  If set, do not ignore @samp{Top} as the first
 argument for an external ref to a manual, as is done by default.
-@xref{Top Node Naming}.
+@xref{Referring to a Manual as a Whole}.
 
 @item L2H
 For HTML@.  If set, @command{latex2html} is used to convert @code{@@math}
