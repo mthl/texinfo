@@ -1,6 +1,25 @@
 2015-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* doc/texinfo.tex (Top Node Naming)
+	* doc/texinfo.tex (Cross References): Don't mention nodes and 
+	anchors in summary, for simplicity.
+	(Cross Reference Commands): Say there are only three main 
+	cross-reference commands, and not four, and also mention @uref.
+
+	(Cross References) Refer to second and third arguments as 
+	"online label" and "printed label", to show why they are separate.
+
+	(Reference Syntax): Remove example output, because we had that 
+	before in Cross Reference Parts.  Move references to @node and 
+	@anchor nodes to Cross Reference Parts.  Merge the rest of it 
+	into Cross Reference Parts and remove the node.
+
+	(@xref): Remove material saying what the output looks like and 
+	how it is used, because that was already covered in the 
+	"References" node.
+
+2015-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Top Node Naming)
 	(Referring to a Manual as a Whole): Rename node and section.
 
 2015-08-25  Patrice Dumas  <pertusus@free.fr>

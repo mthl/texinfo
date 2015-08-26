@@ -296,7 +296,6 @@ Cross References
 
 @code{@@xref}
 
-* Reference Syntax::            What a reference looks like and requires.
 * One Argument::                @code{@@xref} with one argument.
 * Two Arguments::               @code{@@xref} with two arguments.
 * Three Arguments::             @code{@@xref} with three arguments.
@@ -4800,9 +4799,8 @@ on a line of its own.
 @cindex Cross references
 @cindex References
 
-@dfn{Cross references} are used to refer the reader to other parts of the
-same or different Texinfo files.  In Texinfo, nodes and anchors are the
-places to which cross references can refer.
+@dfn{Cross-references} are used to refer the reader to other parts of the
+same or different Texinfo files.
 
 @menu
 * References::                  What cross references are for.
@@ -4863,7 +4861,7 @@ lines in order to name the places to which you make cross references.
 @section Different Cross Reference Commands
 @cindex Different cross reference commands
 
-There are four different cross reference commands:
+There are three different cross-reference commands:
 
 @table @code
 @item @@xref
@@ -4881,62 +4879,57 @@ Used within parentheses, at the end of a sentence, or otherwise before
 punctuation, to make a reference.  Its output starts with a lowercase
 `see' in the printed manual and in HTML, and a lowercase @samp{*note}
 in Info.  (@samp{p} is for `parenthesis'.)
-
-@item @@inforef
-Used to make a reference to an Info file for which there is no printed
-manual.
 @end table
 
-@noindent
-The @code{@@cite} command is used to make references to books and
-manuals for which there is no corresponding Info file and, therefore,
-no node to which to point.  @xref{@code{@@cite}}.
+Additionally, there are commands to produce references to documents
+outside the Texinfo system.  The @code{@@cite} command is used
+to make references to books and manuals.  @code{@@url} produces
+a @acronym{URL}, for example a reference to a page on the World
+Wide Web.  @code{@@inforef} is used to make a reference to an Info
+file for which there is no printed manual.
 
 
 @node Cross Reference Parts
 @section Parts of a Cross Reference
 @cindex Cross reference parts
 @cindex Parts of a cross reference
+@anchor{Reference Syntax} @c merged node
 
-A cross reference command to a node requires only one argument, which
-is the name of the node to which it refers.  But a cross reference
-command may contain up to four additional arguments.  By using these
-arguments, you can provide a cross reference name, a topic description
-or section title for the printed output, the name of a different
-manual file, and the name of a different printed manual.  To refer
-to another manual as a whole, the manual file and/or the name of the
-printed manual are the only required arguments (@pxref{Top Node
-Naming}).
-
-Here is a simple cross reference example:
+A cross-reference command requires only one argument, which is
+the name of the node to which it refers.  Here is a simple example:
 
 @example
 @@xref@{Node name@}.
 @end example
 
 @noindent
-which produces
+In Info output, this produces
 
 @example
 *Note Node name::.
 @end example
 
 @noindent
-in Info and
+In a printed manual, the output is
 
 @quotation
 See Section @var{nnn} [Node name], page @var{ppp}.
 @end quotation
 
-@noindent
-in a printed manual.
+A cross-reference command may contain up to four additional arguments.
+By using these arguments, you can provide a cross reference name,
+a topic description or section title for the printed output, the name
+of a different manual file, and the name of a different printed manual.
+To refer to another manual as a whole, the manual file and/or the name
+of the printed manual are the only required arguments (@pxref{Referring
+to a Manual as a Whole}).
 
 @need 700
 Here is an example of a full five-part cross reference:
 
 @example
 @group
-@@xref@{Node name, Cross Reference Name, Particular Topic,
+@@xref@{Node name, Online Label, Printed Label,
 info-file-name, A Printed Manual@}, for details.
 @end group
 @end example
@@ -4945,7 +4938,7 @@ info-file-name, A Printed Manual@}, for details.
 which produces
 
 @example
-*Note Cross Reference Name: (info-file-name)Node name,
+*Note Online Label: (info-file-name)Node name,
 for details.
 @end example
 
@@ -4953,7 +4946,7 @@ for details.
 in Info and
 
 @quotation
-See section ``Particular Topic'' in @i{A Printed Manual}, for details.
+See section ``Printed Label'' in @i{A Printed Manual}, for details.
 @end quotation
 
 @noindent
@@ -4967,15 +4960,20 @@ The node or anchor name (required, except for reference to whole
 manuals).  This is the location to which the cross reference takes
 you.  In a printed document, the location of the node provides the
 page reference only for references within the same document.
+Use @code{@@node} to define the node (@pxref{Writing a Node}), or 
+@code{@@anchor} (@pxref{@code{@@anchor}}).
+
+Write a node name in a cross reference in exactly the same way as in
+the @code{@@node} line, including the same capitalization; otherwise, the
+formatters may not find the reference.
 
 @item
-The cross reference name.  If you include this argument, it becomes
-the first part of the cross reference.  It is usually omitted; then
+A label for online output.  It is usually omitted; then
 the topic description (third argument) is used if it was specified;
 if that was omitted as well, the node name is used.
 
 @item
-A topic description or section name.  Often, this is the title of the
+A label for printed output.  Often, this is the title or topic of the
 section.  This is used as the name of the reference in the printed
 manual.  If omitted, the node name is used.
 
@@ -4993,17 +4991,24 @@ this:
 
 @example
 @group
-@@xref@{@var{node-name}, @var{cross-reference-name}, @var{title-or-topic},
+@@xref@{@var{node-name}, @var{online-label}, @var{printed-label},
 @var{info-file-name}, @var{printed-manual-title}@}.
 @end group
 @end example
 
+Whitespace before and after the commas separating these arguments is
+ignored.  To include a comma in one of the arguments, use
+@code{@@comma@{@}} (@pxref{Inserting a Comma}).
+
+A period or comma should follow the closing brace of an @code{@@xref}.
+It is required to terminate the cross-reference.  This period or comma
+will appear in the output.  This period or comma is not generated
+automatically, so you must write it yourself; otherwise, Info will
+not recognize the end of the reference.  (The @code{@@pxref} command
+works differently; @pxref{@code{@@pxref}}.)
+
 Cross references with one, two, three, four, and five arguments are
 described separately following the description of @code{@@xref}.
-
-Write a node name in a cross reference in exactly the same way as in
-the @code{@@node} line, including the same capitalization; otherwise, the
-formatters may not find the reference.
 
 @command{makeinfo} warns when the text of a cross reference (and node
 names and menu items) contains a problematic construct that will
@@ -5021,85 +5026,15 @@ Customization Variables}).
 @cindex Cross references using @code{@@xref}
 @cindex References using @code{@@xref}
 
-The @code{@@xref} command generates a cross reference for the
-beginning of a sentence.  The Info formatting commands convert it into
-an Info cross reference, which the Info @samp{f} command can use to
-bring you directly to another node.  The @TeX{} typesetting commands
-convert it into a page reference, or a reference to another book or
-manual.  In the HTML output format the cross reference is output
-as a hyperlink.
+The @code{@@xref} command generates a cross-reference for the
+beginning of a sentence.
 
 @menu
-* Reference Syntax::            What a reference looks like and requires.
 * One Argument::                @code{@@xref} with one argument.
 * Two Arguments::               @code{@@xref} with two arguments.
 * Three Arguments::             @code{@@xref} with three arguments.
 * Four and Five Arguments::     @code{@@xref} with four and five arguments.
 @end menu
-
-@node Reference Syntax
-@subsection What a Reference Looks Like and Requires
-
-Most often, an Info cross reference looks like this:
-
-@example
-*Note @var{node-name}::.
-@end example
-
-@noindent
-or like this
-
-@example
-*Note @var{cross-reference-name}: @var{node-name}.
-@end example
-
-@noindent
-In @TeX{}, a cross reference looks like this:
-
-@quotation
-See Section @var{section-number} [@var{node-name}], page @var{page}.
-@end quotation
-
-@noindent
-or like this
-
-@quotation
-See Section @var{section-number} [@var{title-or-topic}], page @var{page}.
-@end quotation
-
-The @code{@@xref} command does not generate a period or comma to end
-the cross reference automatically.  You must write that period or
-comma yourself; otherwise, Info will not recognize the end of the
-reference.  (The @code{@@pxref} command works differently;
-@pxref{@code{@@pxref}}.)
-
-@quotation Caution
-A period or comma @emph{must} follow the closing brace of an
-@code{@@xref}.  It is required to terminate the cross reference.  This
-period or comma will appear in the output.
-@end quotation
-
-@code{@@xref} must refer to a node by name.  Use @code{@@node} to
-define the node (@pxref{Writing a Node}), or @code{@@anchor}
-(@pxref{@code{@@anchor}}).
-
-@code{@@xref} is followed by several arguments inside braces,
-separated by commas.  Whitespace before and after these commas is
-ignored.
-
-A cross reference to a node within the current file requires only the
-name of a node; but it may contain up to four additional arguments.
-Each of these variations produces a cross reference that looks
-somewhat different.  A cross reference to another manual as a whole
-only requires the fourth or fifth argument.
-
-@quotation Note
-Commas separate arguments in a cross reference, so you must not
-include a comma in the title or any other part lest the formatters
-mistake them for separators.  @code{@@comma@{@}} may be used to
-protect such commas (@pxref{Inserting a Comma}).
-@end quotation
-
 
 @node One Argument
 @subsection @code{@@xref} with One Argument
@@ -5261,7 +5196,7 @@ The template is like this:
 
 @example
 @group
-@@xref@{@var{node-name}, @var{cross-reference-name}, @var{title-or-topic}@}.
+@@xref@{@var{node-name}, @var{online-label}, @var{printed-label}@}.
 @end group
 @end example
 
@@ -5364,7 +5299,7 @@ The full template is:
 
 @example
 @group
-@@xref@{@var{node-name}, @var{cross-reference-name}, @var{title-or-topic},
+@@xref@{@var{node-name}, @var{online-label}, @var{printed-label},
 @var{info-file-name}, @var{printed-manual-title}@}.
 @end group
 @end example
