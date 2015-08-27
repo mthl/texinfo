@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-08-26.18}
+\def\texinfoversion{2015-08-27.20}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -4707,7 +4707,7 @@ end
   \def\L{L}%
   \def\OE{OE}%
   \def\O{O}%
-  \def\TH{ZZZ}%
+  \def\TH{TH}%
   \def\aa{aa}%
   \def\ae{ae}%
   \def\dh{dzz}%
@@ -4719,7 +4719,7 @@ end
   \def\o{o}%
   \def\questiondown{?}%
   \def\ss{ss}%
-  \def\th{zzz}%
+  \def\th{th}%
   %
   \def\LaTeX{LaTeX}%
   \def\TeX{TeX}%
@@ -4826,7 +4826,7 @@ end
 }
 
 % Definition for writing index entry text.
-\def\sortas#1{\eatspaces}%
+\def\sortas#1{\ignorespaces}%
 
 % Definition for writing index entry sort key.  @sortas{} must occur at
 % the beginning of the index entry, like
