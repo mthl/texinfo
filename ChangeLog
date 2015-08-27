@@ -1,3 +1,18 @@
+2015-08-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Chapter Structuring): Remove reference to 
+	node pointer deduction.  Abbreviate explanation of when to use 
+	@node.
+	(Nodes): Move some of that material here.
+	(Menus): Make this chapter a section of the Nodes chapter.
+	(@node): Merge this into Nodes node, raising level of 
+	subsections to sections.  Move @findex line to Writing a Node.
+	Move material about optional arguments to @node to Writing a Node.
+	(Texinfo Document Structure): Make a section of the Nodes 
+	chapter.  Surround "child nodes" in @dfn.  Don't say that the 
+	first child has its parent as its Prev node, as this appears not 
+	to be true.  Merge some material from Nodes into this section.
+
 2015-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\pxref, \xref, \ref): If there isn't 
