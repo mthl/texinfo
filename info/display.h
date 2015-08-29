@@ -72,13 +72,4 @@ void display_scroll_display (int start, int end, int amount);
 void display_scroll_line_starts (WINDOW *window, int old_pagetop,
     long *old_starts, int old_count);
 
-typedef struct {
-    unsigned long mask;
-    unsigned long value;
-} RENDITION;
-
-extern RENDITION ref_rendition;
-extern RENDITION hl_ref_rendition;
-extern RENDITION match_rendition;
-
 #endif /* not INFO_DISPLAY_H */

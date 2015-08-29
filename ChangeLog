@@ -1,5 +1,20 @@
 2015-08-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/display.h, info/variables.h (RENDITION): Move definition.
+	* info/display.c (highlight_searches_p, xref_rendition_p): Remove.
+	* info/variables.c (set_variable_to_value): Make highlight-searches=On
+	equivalent to match-rendition=standout.
+	* info/display.c (display_process_line): If hl-ref-rendition 
+	hasn't been given, use ref-rendition for active links.
+
+	* info/terminal.c (terminal_end_bold, terminal_end_blink): 
+	Remove, repacing them with:
+	(terminal_end_all_modes): New function.
+	(terminal_switch_rendition): Manage to turn off boldface and 
+	blinking without leaving everything else turned off as well.
+
+2015-08-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/terminal.c (terminal_default_colour, terminal_set_colour):
 	Add hooks.
 

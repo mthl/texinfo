@@ -80,10 +80,17 @@ extern int search_skip_screen_p;
 extern int infopath_no_defaults_p;
 extern int preprocess_nodes_p;
 extern int key_time;
-extern int highlight_searches_p;
-extern int xref_rendition_p;
 extern int mouse_protocol;
 extern int follow_strategy;
+
+typedef struct {
+    unsigned long mask;
+    unsigned long value;
+} RENDITION;
+
+extern RENDITION ref_rendition;
+extern RENDITION hl_ref_rendition;
+extern RENDITION match_rendition;
 
 
 #endif /* not INFO_VARIABLES_H */

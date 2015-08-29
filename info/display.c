@@ -24,6 +24,7 @@
 #include "session.h"
 #include "tag.h"
 #include "signals.h"
+#include "variables.h"
 
 static void free_display (DISPLAY_LINE **display);
 static DISPLAY_LINE **make_display (int width, int height);
@@ -223,13 +224,6 @@ display_update_line (long pl_num, char *printed_line,
   return 0;
 }
 
-
-/* User variable to control whether matches from a search are highlighted. */
-int highlight_searches_p = 0;
-
-/* Controls whether cross-references and menu entries are underlined.
-   TODO: have a choice of different styles and colours. */
-int xref_rendition_p = 0;
 
 /* Given an array MATCHES with regions, and an offset *MATCH_INDEX, decide
    if we are inside a region at offset OFF.  The matches are assumed not
@@ -468,7 +462,8 @@ display_process_line (WINDOW *win,
           RENDITION match = {0, 0};
 
           if (in_ref_proper)
-            ref = ref_highlighted? hl_ref_rendition : ref_rendition;
+            ref = ref_highlighted && hl_ref_rendition.mask
+                    ? hl_ref_rendition : ref_rendition;
           if (in_match)
             match = match_rendition;
           if (!ref_highlighted)
@@ -527,9 +522,9 @@ display_update_node_text (WINDOW *win)
 
   matches = 0;
   refs = 0;
-  if (highlight_searches_p)
+  if (match_rendition.mask)
     matches = win->matches;
-  if (xref_rendition_p)
+  if (ref_rendition.mask)
     refs = win->node->references;
 
   pl_num = 0;

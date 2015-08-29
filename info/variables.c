@@ -53,6 +53,8 @@ static char *scroll_last_node_choices[] = { "Stop", "Top", NULL };
    this variable. */
 char *rendition_variable = 0;
 
+static char *highlight_searches;
+
 
 /* Note that the 'where_set' field of each element in the array is
    not given and defaults to 0. */
@@ -126,14 +128,6 @@ VARIABLE_ALIST info_variables[] = {
       N_("Length of time in milliseconds to wait for the next byte in a sequence indicating that a key has been pressed"),
     &key_time, NULL },
 
-  { "highlight-searches",
-      N_("Highlight search matches"),
-    &highlight_searches_p, (char **)on_off_choices },
-
-  { "xref-rendition",
-      N_("Underline cross-references and menu entries"),
-    &xref_rendition_p, (char **)on_off_choices },
-
   { "mouse",
       N_("Method to use to track mouse events"),
     &mouse_protocol, (char **)mouse_choices },
@@ -141,6 +135,10 @@ VARIABLE_ALIST info_variables[] = {
   { "follow-strategy",
       N_("How to follow a cross-reference"),
     &follow_strategy, (char **)follow_strategy_choices },
+
+  { "highlight-searches",
+      N_("Highlight search matches"),
+    &highlight_searches, (char **)on_off_choices },
 
   { "ref-rendition",
       N_("Styles for links"),
@@ -350,6 +348,18 @@ set_variable_to_value (VARIABLE_ALIST *var, char *value, int where)
   if (var->choices)
     {
       register int j;
+      VARIABLE_ALIST our_var;
+
+      /* "highlight-searches=On" is equivalent to
+         "match-rendition=standout". */
+      if (var->value == &highlight_searches)
+        {
+          our_var.choices = &rendition_variable;
+          our_var.value = &match_rendition;
+          var = &our_var;
+          value = highlight_searches = xstrdup ("standout");
+          /* Save new string to prevent a memory leak being apparent. */
+        }
 
       if (var->choices != &rendition_variable)
         {

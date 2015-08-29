@@ -63,9 +63,8 @@ VFunction *terminal_end_standout_hook = NULL;
 VFunction *terminal_begin_underline_hook = NULL;
 VFunction *terminal_end_underline_hook = NULL;
 VFunction *terminal_begin_bold_hook = NULL;
-VFunction *terminal_end_bold_hook = NULL;
 VFunction *terminal_begin_blink_hook = NULL;
-VFunction *terminal_end_blink_hook = NULL;
+VFunction *terminal_end_all_modes_hook = NULL;
 VFunction *terminal_default_colour_hook = NULL;
 VFunction *terminal_set_colour_hook = NULL;
 VFunction *terminal_prep_terminal_hook = NULL;
@@ -457,17 +456,6 @@ terminal_begin_bold (void)
 }
 
 void
-terminal_end_bold (void)
-{
-  if (terminal_end_bold_hook)
-    (*terminal_end_bold_hook) ();
-  else
-    {
-      send_to_terminal (term_me); /* FIXME - this turns off too much */
-    }
-}
-
-void
 terminal_begin_blink (void)
 {
   if (terminal_begin_blink_hook)
@@ -479,13 +467,13 @@ terminal_begin_blink (void)
 }
 
 void
-terminal_end_blink (void)
+terminal_end_all_modes (void)
 {
-  if (terminal_end_blink_hook)
-    (*terminal_end_blink_hook) ();
+  if (terminal_end_all_modes_hook)
+    (*terminal_end_all_modes_hook) ();
   else
     {
-      send_to_terminal (term_me); /* FIXME */
+      send_to_terminal (term_me);
     }
 }
 
@@ -640,10 +628,24 @@ terminal_set_colour (int colour)
    rendition. */
 static unsigned long terminal_rendition;
 
+/* Modes for which there aren't termcap entries for turning them off. */
+#define COMBINED_MODES (BOLD_MASK | BLINK_MASK)
+
 void
 terminal_switch_rendition (unsigned long new)
 {
   unsigned long old = terminal_rendition;
+  int all_modes_turned_off = 0;
+
+  if ((old & new & COMBINED_MODES) != (old & COMBINED_MODES))
+    {
+      /* Some modes we can't turn off by themselves, so if we need to turn
+         one of them off, turn back on all the ones that should be on 
+         afterwards. */
+      terminal_end_all_modes ();
+      old = 0;
+    }
+
   if ((new & COLOUR_MASK) != (old & COLOUR_MASK))
     {
       /* Switch colour. */
@@ -677,15 +679,11 @@ terminal_switch_rendition (unsigned long new)
     {
       if ((new & BOLD_MASK))
         terminal_begin_bold ();
-      else
-        terminal_end_bold ();
     }
   if ((new & BLINK_MASK) != (old & BLINK_MASK))
     {
       if ((new & BLINK_MASK))
         terminal_begin_blink ();
-      else
-        terminal_end_blink ();
     }
   terminal_rendition = new;
 }
