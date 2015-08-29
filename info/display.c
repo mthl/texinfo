@@ -498,7 +498,8 @@ display_process_line (WINDOW *win,
       mbi_advance (iter);
     }
 
-  wrap_terminal_switch_rendition (tb_printed_line, empty, empty, empty);
+  if (writing_out != DEFAULT)
+    wrap_terminal_switch_rendition (tb_printed_line, empty, empty, empty);
 
   *iter_inout = iter;
 }

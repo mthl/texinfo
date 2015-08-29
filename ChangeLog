@@ -1,5 +1,10 @@
 2015-08-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/display.c (display_process_line): Don't append codes to 
+	line if we are still in the DEFAULT phase.
+
+2015-08-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi (Colors and Styles): New chapter.
 
 2015-08-29  Gavin Smith  <gavinsmith0123@gmail.com>
