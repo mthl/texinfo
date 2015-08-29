@@ -1,5 +1,9 @@
 2015-08-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-stnd.texi (Colors and Styles): New chapter.
+
+2015-08-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/display.h, info/variables.h (RENDITION): Move definition.
 	* info/display.c (highlight_searches_p, xref_rendition_p): Remove.
 	* info/variables.c (set_variable_to_value): Make highlight-searches=On
