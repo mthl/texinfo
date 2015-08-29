@@ -1,5 +1,10 @@
 2015-08-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/terminal.c (terminal_default_colour, terminal_set_colour):
+	Add hooks.
+
+2015-08-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/variable.c (set_variable_to_value): Handle rendition
 	variables in user init file.
 	(info_variables): Add user variables "ref-rendition",

@@ -66,6 +66,8 @@ VFunction *terminal_begin_bold_hook = NULL;
 VFunction *terminal_end_bold_hook = NULL;
 VFunction *terminal_begin_blink_hook = NULL;
 VFunction *terminal_end_blink_hook = NULL;
+VFunction *terminal_default_colour_hook = NULL;
+VFunction *terminal_set_colour_hook = NULL;
 VFunction *terminal_prep_terminal_hook = NULL;
 VFunction *terminal_unprep_terminal_hook = NULL;
 VFunction *terminal_up_line_hook = NULL;
@@ -618,13 +620,19 @@ terminal_scroll_terminal (int start, int end, int amount)
 static void
 terminal_default_colour (void)
 {
-  tputs (term_op, 0, output_character_function);
+  if (terminal_default_colour_hook)
+    (*terminal_default_colour_hook) ();
+  else
+    tputs (term_op, 0, output_character_function);
 }
 
 static void
 terminal_set_colour (int colour)
 {
-  tputs (tgoto (term_AF, 0, colour), 0, output_character_function);
+  if (terminal_set_colour_hook)
+    (*terminal_set_colour_hook) (colour);
+  else
+    tputs (tgoto (term_AF, 0, colour), 0, output_character_function);
 }
 
 /* Information about what styles like colour, underlining, boldface are
@@ -647,7 +655,7 @@ terminal_switch_rendition (unsigned long new)
         }
       else if ((new & COLOUR_MASK) >= 8)
         {
-          terminal_set_colour ((new & COLOUR_MASK - 8));
+          terminal_set_colour ((new & COLOUR_MASK) - 8);
         }
       /* Colour values from 1 to 7 don't do anything right now. */
     }
