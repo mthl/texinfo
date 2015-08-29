@@ -1,7 +1,7 @@
 /* terminal.h -- The external interface to terminal I/O.
    $Id$
 
-   Copyright 1993, 1996, 1997, 2001, 2002, 2004, 2007, 2013, 2014
+   Copyright 1993, 1996, 1997, 2001, 2002, 2004, 2007, 2013, 2014, 2015
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -150,5 +150,28 @@ extern char *term_so, *term_se;
 #define MP_NONE 0
 #define MP_NORMAL_TRACKING 1
 extern int mouse_protocol;
+
+#define COLOUR_MASK             000000000017
+#define COLOUR_BLACK    8 + 0
+#define COLOUR_RED      8 + 1
+#define COLOUR_GREEN    8 + 2
+#define COLOUR_YELLOW   8 + 3
+#define COLOUR_BLUE     8 + 4
+#define COLOUR_MAGENTA  8 + 5
+#define COLOUR_CYAN     8 + 6
+#define COLOUR_WHITE    8 + 7
+#define UNDERLINE_MASK          000000000020
+#define STANDOUT_MASK           000000000040
+#define BOLD_MASK               000000000100
+#define ZERO1_MASK              000000000200
+#define BLINK_MASK              000000000400
+#define ZERO2_MASK              000000100000
+#define ZERO3_MASK              000040000000
+#define ZERO4_MASK              020000000000
+
+/* ZEROi_MASK are always zero bits. */
+
+void terminal_switch_rendition (unsigned long desired_rendition);
+
 
 #endif /* !TERMINAL_H */

@@ -2,7 +2,7 @@
    $Id$
 
    Copyright 1993, 1997, 2001, 2002, 2004, 2007, 2008, 2011, 2013,
-   2014 Free Software Foundation, Inc.
+   2014, 2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,6 +23,8 @@
 #include "session.h"
 #include "echo-area.h"
 #include "variables.h"
+#include "terminal.h"
+#include "display.h"
 
 /* **************************************************************** */
 /*                                                                  */
@@ -45,6 +47,12 @@ static char *info_scroll_choices[] = { "Continuous", "Next Only",
 
 /* Choices for the scroll-last-node variable */
 static char *scroll_last_node_choices[] = { "Stop", "Top", NULL };
+
+/* Set choices to address of this to indicate takes a value in the
+   format for specifying renditions.  Nothing is actually stored in
+   this variable. */
+char *rendition_variable = 0;
+
 
 /* Note that the 'where_set' field of each element in the array is
    not given and defaults to 0. */
@@ -134,8 +142,21 @@ VARIABLE_ALIST info_variables[] = {
       N_("How to follow a cross-reference"),
     &follow_strategy, (char **)follow_strategy_choices },
 
+  { "ref-rendition",
+      N_("Styles for links"),
+    &ref_rendition, &rendition_variable },
+
+  { "hl-ref-rendition",
+      N_("Styles for active links"),
+    &hl_ref_rendition, &rendition_variable },
+
+  { "match-rendition",
+      N_("Styles for search matches"),
+    &match_rendition, &rendition_variable },
+
   { NULL }
 };
+
 
 DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
 {
@@ -315,6 +336,9 @@ make_variable_completions_array (void)
   return array;
 }
 
+/* VALUE is a string that is the value of the variable specified
+   by the user.  Update our internal data structure VAR using this
+   information. */
 int
 set_variable_to_value (VARIABLE_ALIST *var, char *value, int where)
 {
@@ -326,15 +350,75 @@ set_variable_to_value (VARIABLE_ALIST *var, char *value, int where)
   if (var->choices)
     {
       register int j;
-      
-      /* Find the choice in our list of choices. */
-      for (j = 0; var->choices[j]; j++)
-	if (strcmp (var->choices[j], value) == 0)
-	  {
-	    *var->value = j;
-            var->where_set = where;
-	    return 1;
-	  }
+
+      if (var->choices != &rendition_variable)
+        {
+          /* Find the choice in our list of choices. */
+          for (j = 0; var->choices[j]; j++)
+            if (strcmp (var->choices[j], value) == 0)
+              {
+                *var->value = j;
+                var->where_set = where;
+                return 1;
+              }
+        }
+      else
+        {
+          static struct {
+              unsigned long mask;
+              unsigned long value;
+              char *name;
+          } styles[] = {
+              COLOUR_MASK, COLOUR_BLACK,   "black",
+              COLOUR_MASK, COLOUR_RED,     "red",
+              COLOUR_MASK, COLOUR_GREEN,   "green",
+              COLOUR_MASK, COLOUR_YELLOW,  "yellow",
+              COLOUR_MASK, COLOUR_BLUE,    "blue",
+              COLOUR_MASK, COLOUR_MAGENTA, "magenta",
+              COLOUR_MASK, COLOUR_CYAN,    "cyan",
+              COLOUR_MASK, COLOUR_WHITE,   "white",
+              COLOUR_MASK, 0,           "nocolour",
+              COLOUR_MASK, 0,           "nocolor",
+              UNDERLINE_MASK, UNDERLINE_MASK, "underline",
+              UNDERLINE_MASK, 0,              "nounderline",
+              STANDOUT_MASK, STANDOUT_MASK, "standout",
+              STANDOUT_MASK, 0,             "nostandout",
+              BOLD_MASK, BOLD_MASK,         "bold",
+              BOLD_MASK, 0,                 "regular",
+              BOLD_MASK, 0,                 "nobold",
+              BLINK_MASK, BLINK_MASK,       "blink",
+              BLINK_MASK, 0,                "noblink",
+          };
+          int i;
+          char *component;
+          unsigned long rendition_mask = 0;
+          unsigned long rendition_value = 0;
+
+          component = strtok (value, ",");
+          while (component)
+            {
+              for (i = 0; (styles[i].name); i++)
+                {
+                  if (!strcmp (styles[i].name, component))
+                    break;
+                }
+              if (styles[i].name)
+                {
+                  rendition_mask |= styles[i].mask;
+                  rendition_value &= ~styles[i].mask;
+                  rendition_value |= styles[i].value;
+                }
+              /* If not found, silently ignore, in case more options are
+                 added in the future. */
+
+              component = strtok (0, ",");
+            }
+
+          /* Now all the specified styles are recorded in rendition_value. */
+          ((RENDITION *)var->value)->mask = rendition_mask;
+          ((RENDITION *)var->value)->value = rendition_value;
+        }
+      return 1;
     }
   else
     {

@@ -2,7 +2,7 @@
    $Id$
 
    Copyright 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1997, 1998,
-   1999, 2001, 2002, 2004, 2007, 2008, 2012, 2013, 2014
+   1999, 2001, 2002, 2004, 2007, 2008, 2012, 2013, 2014, 2015
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -62,6 +62,10 @@ VFunction *terminal_begin_standout_hook = NULL;
 VFunction *terminal_end_standout_hook = NULL;
 VFunction *terminal_begin_underline_hook = NULL;
 VFunction *terminal_end_underline_hook = NULL;
+VFunction *terminal_begin_bold_hook = NULL;
+VFunction *terminal_end_bold_hook = NULL;
+VFunction *terminal_begin_blink_hook = NULL;
+VFunction *terminal_end_blink_hook = NULL;
 VFunction *terminal_prep_terminal_hook = NULL;
 VFunction *terminal_unprep_terminal_hook = NULL;
 VFunction *terminal_up_line_hook = NULL;
@@ -131,6 +135,23 @@ char *term_so, *term_se;
 
 /* Strings entering and leaving underline mode. */
 char *term_us, *term_ue;
+
+/* Set foreground and background colours (terminfo setaf and setab) */
+char *term_AF, *term_AB;
+
+/* Restore original colours, both foreground and background.
+   ("original pair") */
+char *term_op;
+
+/* Turn on bold mode. */
+char *term_md;
+
+/* Turn on blink mode. */
+char *term_mb;
+
+/* Exit all attribute modes. */
+char *term_me;
+
 
 /* Although I can't find any documentation that says this is supposed to
    return its argument, all the code I've looked at (termutils, less)
@@ -422,6 +443,50 @@ terminal_end_underline (void)
     }
 }
 
+void
+terminal_begin_bold (void)
+{
+  if (terminal_begin_bold_hook)
+    (*terminal_begin_bold_hook) ();
+  else
+    {
+      send_to_terminal (term_md);
+    }
+}
+
+void
+terminal_end_bold (void)
+{
+  if (terminal_end_bold_hook)
+    (*terminal_end_bold_hook) ();
+  else
+    {
+      send_to_terminal (term_me); /* FIXME - this turns off too much */
+    }
+}
+
+void
+terminal_begin_blink (void)
+{
+  if (terminal_begin_blink_hook)
+    (*terminal_begin_underline_hook) ();
+  else
+    {
+      send_to_terminal (term_mb);
+    }
+}
+
+void
+terminal_end_blink (void)
+{
+  if (terminal_end_blink_hook)
+    (*terminal_end_blink_hook) ();
+  else
+    {
+      send_to_terminal (term_me); /* FIXME */
+    }
+}
+
 /* Ring the terminal bell.  The bell is run visibly if it both has one and
    terminal_use_visible_bell_p is non-zero. */
 void
@@ -549,6 +614,75 @@ terminal_scroll_terminal (int start, int end, int amount)
     }
 }
 
+/* Revert to the default foreground and background colours. */
+static void
+terminal_default_colour (void)
+{
+  tputs (term_op, 0, output_character_function);
+}
+
+static void
+terminal_set_colour (int colour)
+{
+  tputs (tgoto (term_AF, 0, colour), 0, output_character_function);
+}
+
+/* Information about what styles like colour, underlining, boldface are
+   currently output for text on the screen.  All zero represents the default
+   rendition. */
+static unsigned long terminal_rendition;
+
+void
+terminal_switch_rendition (unsigned long new)
+{
+  unsigned long old = terminal_rendition;
+  if ((new & COLOUR_MASK) != (old & COLOUR_MASK))
+    {
+      /* Switch colour. */
+      if ((new & COLOUR_MASK) == 00)
+        {
+          terminal_default_colour ();
+          /* Once we do the background colour as well, we should
+             record that the background colour has been reset. */
+        }
+      else if ((new & COLOUR_MASK) >= 8)
+        {
+          terminal_set_colour ((new & COLOUR_MASK - 8));
+        }
+      /* Colour values from 1 to 7 don't do anything right now. */
+    }
+  if ((new & UNDERLINE_MASK) != (old & UNDERLINE_MASK))
+    {
+      if ((new & UNDERLINE_MASK))
+        terminal_begin_underline ();
+      else
+        terminal_end_underline ();
+    }
+  if ((new & STANDOUT_MASK) != (old & STANDOUT_MASK))
+    {
+      if ((new & STANDOUT_MASK))
+        terminal_begin_standout ();
+      else
+        terminal_end_standout ();
+    }
+  if ((new & BOLD_MASK) != (old & BOLD_MASK))
+    {
+      if ((new & BOLD_MASK))
+        terminal_begin_bold ();
+      else
+        terminal_end_bold ();
+    }
+  if ((new & BLINK_MASK) != (old & BLINK_MASK))
+    {
+      if ((new & BLINK_MASK))
+        terminal_begin_blink ();
+      else
+        terminal_end_blink ();
+    }
+  terminal_rendition = new;
+}
+
+
 /* Re-initialize the terminal considering that the TERM/TERMCAP variable
    has changed. */
 void
@@ -590,8 +724,6 @@ terminal_get_screen_size (void)
       /* Environment variable COLUMNS overrides setting of "co". */
       if (screenwidth <= 0)
         {
-          char *sw = getenv ("COLUMNS");
-
           if (env_columns)
             screenwidth = atoi (env_columns);
 
@@ -859,6 +991,21 @@ terminal_initialize_terminal (char *terminal_name)
     term_ue = tgetstr ("ue", &buffer);
   else
     term_ue = NULL;
+
+  term_AF = tgetstr ("AF", &buffer);
+  if (term_AF)
+    term_AB = tgetstr ("AB", &buffer);
+  else
+    term_AB = NULL;
+
+  term_op = tgetstr ("op", &buffer);
+
+  term_md = tgetstr ("md", &buffer);
+  term_mb = tgetstr ("mb", &buffer);
+
+  term_me = tgetstr ("me", &buffer);
+  if (!term_me)
+    term_md = 0; /* Don't use modes if we can't turn them off. */
 
   if (!term_cr)
     term_cr =  "\r";

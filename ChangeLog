@@ -1,3 +1,35 @@
+2015-08-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/variable.c (set_variable_to_value): Handle rendition
+	variables in user init file.
+	(info_variables): Add user variables "ref-rendition",
+	"hl-ref-rendition", "match-rendition".
+	* info/display.h (RENDITION): New type.  Remove superfluous 
+	"extern" modifers for function declarations.
+	* info/terminal.h
+	(COLOUR_MASK, COLOUR_BLACK, COLOUR_RED, COLOUR_GREEN)
+	(COLOUR_YELLOW, COLOUR_BLUE, COLOUR_MAGENTA, COLOUR_CYAN)
+	(COLOUR_WHITE, UNDERLINE_MASK, STANDOUT_MASK, BOLD_MASK)
+	(ZERO1_MASK, BLINK_MASK): New symbols.
+	* info/terminal.c (terminal_switch_rendition): New function.
+	(terminal_default_colour, terminal_set_colour)
+	(terminal_begin_blink, terminal_end_blink)
+	(terminal_begin_bold, terminal_end_bold): New functions used by
+	terminal_switch_rendition.
+	(term_AF, term_AB, term_op, term_md, term_mb, term_me): New variables.
+	(terminal_initialize_terminal): Set them.
+
+	* info/display.c (wrap_terminal_switch_rendition): New function, 
+	to wrap terminal_switch_rendition function.
+	(wrap_terminal_begin_standout, wrap_terminal_end_standout)
+	(wrap_terminal_begin_underline, wrap_terminal_end_underline): 
+	Remove.
+
+	(display_process_line): Instead of saying directly whether 
+	underline or standout need to be turned on or off, decide which 
+	sets of renditions should be in effect, the order of their 
+	priority, and call wrap_terminal_switch_rendition with them.
+
 2015-08-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\sortas): Use \ignorespaces.

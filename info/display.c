@@ -293,43 +293,39 @@ static int writing_out;
 #define COLLECT 1
 #define WRITEOUT 2 /* Values for writing_out global. */
 
+/* Combine rendition masks that are active, in order of priority,
+   then check what's currently active on the display, and output
+   the necessary codes to switch.  The list of rendition masks is
+   the complete information about what the style should now be.
+   RENDITION3 takes priority over RENDITION2, which in turn takes
+   priority over RENDITION1. */
 static void
-wrap_terminal_begin_standout (struct text_buffer *printed_line)
+wrap_terminal_switch_rendition (struct text_buffer *printed_line,
+                                 RENDITION rendition1,
+                                 RENDITION rendition2,
+                                 RENDITION rendition3)
 {
-  if (writing_out == WRITEOUT)
-    terminal_begin_standout ();
-  else /* writing_out == COLLECT */
-    /* Add marker to string to record that standout starts here.  The text
-       added here, and in the other functions, is not output to the terminal, 
-       and is only used internally.  */
-    text_buffer_add_string (printed_line, "\033so", 3);
-}
+  long int desired_rendition = 0;
+  desired_rendition = rendition1.value;
+  desired_rendition &= ~rendition2.mask;
+  desired_rendition |= rendition2.value;
+  desired_rendition &= ~rendition3.mask;
+  desired_rendition |= rendition3.value;
 
-static void
-wrap_terminal_end_standout (struct text_buffer *printed_line)
-{
   if (writing_out == WRITEOUT)
-    terminal_end_standout ();
+    terminal_switch_rendition (desired_rendition);
   else
-    text_buffer_add_string (printed_line, "\033se", 3);
-}
+    {
+      /* Guarantee that each byte is non-zero, by having at least one
+         non-zero bit in it.  See ZERO1_MASK symbol in display.c. */
+      desired_rendition = ~desired_rendition;
 
-static void
-wrap_terminal_begin_underline (struct text_buffer *printed_line)
-{
-  if (writing_out == WRITEOUT)
-    terminal_begin_underline ();
-  else
-    text_buffer_add_string (printed_line, "\033us", 3);
-}
-
-static void
-wrap_terminal_end_underline (struct text_buffer *printed_line)
-{
-  if (writing_out == WRITEOUT)
-    terminal_end_underline ();
-  else
-    text_buffer_add_string (printed_line, "\033ue", 3);
+      /* The text added here is only used internally to see when the
+         display has changed, and is not output to the terminal. */
+      text_buffer_add_string (printed_line, "\033", 1);
+      text_buffer_add_string (printed_line, &desired_rendition,
+                              sizeof (long));
+    }
 }
 
 /* Set in display_update_node_text if matches or references are to be 
@@ -348,6 +344,11 @@ static int ref_highlighted;
 
 static int pl_num; /* Number of printed lines done so far. */
 
+RENDITION ref_rendition = {0, 0};
+RENDITION hl_ref_rendition = {0, 0};
+RENDITION match_rendition = {0, 0};
+
+
 /* Process a line from the node in WIN starting at ITER, and advancing ITER
    to the end of the line.  What is done with the line depends on the value
    of WRITING_OUT.
@@ -363,11 +364,10 @@ display_process_line (WINDOW *win,
   size_t pchars = 0; /* Printed chars */
   size_t pbytes = 0; /* Bytes to output. */
   char *rep;
-  int in_match = 0, in_ref = 0;
+  int in_match = 0;
+  int in_ref = 0, in_ref_proper = 0;
+  RENDITION empty = {0, 0};
 
-  /* Set to 1 when we are in the text of a cross-reference and at the start 
-     of a new line, and haven't seen a non-whitespace character yet. */
-  int ref_leading_whitespace = 1;
   int point_in_line;
 
   if (win->point >= win->line_starts[win->pagetop + pl_num]
@@ -380,18 +380,12 @@ display_process_line (WINDOW *win,
 
   while (1)
     {
+      int was_in_ref_proper = in_ref_proper;
+      int was_in_match = in_match;
+
       if (!mbi_avail (iter))
         break;
       cur_ptr = mbi_cur_ptr (iter);
-
-      if (ref_leading_whitespace && !strchr (" \t", *cur_ptr))
-        {
-          ref_leading_whitespace = 0;
-          if (in_ref)
-            wrap_terminal_begin_underline (tb_printed_line);
-          if (!in_match && ref_highlighted)
-            wrap_terminal_begin_standout (tb_printed_line);
-        }
 
       if (matches && match_index != win->match_count)
         {
@@ -400,14 +394,8 @@ display_process_line (WINDOW *win,
                               &in_match, matches, win->match_count,
                               &match_index);
 
-          if (was_in_match && !in_match && !ref_highlighted)
-            wrap_terminal_end_standout (tb_printed_line);
-          else if (!was_in_match && in_match)
-            {
-              if (writing_out == DEFAULT)
-                writing_out = COLLECT;
-              wrap_terminal_begin_standout (tb_printed_line);
-            }
+          if (!was_in_match && in_match && writing_out == DEFAULT)
+            writing_out = COLLECT;
         }
 
       if (refs && refs[ref_index])
@@ -418,13 +406,7 @@ display_process_line (WINDOW *win,
 
           if (was_in_ref && !in_ref)
             {
-              ref_leading_whitespace = 0;
-              wrap_terminal_end_underline (tb_printed_line);
-              if (ref_highlighted && !in_match)
-                {
-                  ref_highlighted = 0;
-                  wrap_terminal_end_standout (tb_printed_line);
-                }
+              in_ref_proper = ref_highlighted = 0;
             }
           else if (!was_in_ref && in_ref)
             {
@@ -472,16 +454,32 @@ display_process_line (WINDOW *win,
                      no other reference follows it in the line. */
                   ref_highlighted = 1;
                 }
+            }
+        }
 
-              if (!ref_leading_whitespace)
-                {
-                  wrap_terminal_begin_underline (tb_printed_line);
-                  if (ref_highlighted)
-                    {
-                      wrap_terminal_begin_standout (tb_printed_line);
-                      point_in_line = 0;
-                    }
-                }
+      if (in_ref && !in_ref_proper && !strchr (" \t", *cur_ptr))
+        in_ref_proper = 1;
+
+      if (was_in_ref_proper != in_ref_proper || was_in_match != in_match)
+        {
+          /* Calculate the new rendition for output characters, and call
+             the function to switch to it. */
+          RENDITION ref = {0, 0};
+          RENDITION match = {0, 0};
+
+          if (in_ref_proper)
+            ref = ref_highlighted? hl_ref_rendition : ref_rendition;
+          if (in_match)
+            match = match_rendition;
+          if (!ref_highlighted)
+            {
+              wrap_terminal_switch_rendition (tb_printed_line,
+                                              ref, match, empty);
+            }
+          else
+            {
+              wrap_terminal_switch_rendition (tb_printed_line,
+                                              match, ref, empty);
             }
         }
 
@@ -505,10 +503,7 @@ display_process_line (WINDOW *win,
       mbi_advance (iter);
     }
 
-  if (in_ref)
-    wrap_terminal_end_underline (tb_printed_line);
-  if (ref_highlighted || in_match)
-    wrap_terminal_end_standout (tb_printed_line);
+  wrap_terminal_switch_rendition (tb_printed_line, empty, empty, empty);
 
   *iter_inout = iter;
 }
