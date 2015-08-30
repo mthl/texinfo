@@ -1,3 +1,13 @@
+2015-08-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\initialfonts, \initialglyphs): Rename, and 
+	add a missing %.
+	(\balancecolumns): Make the columns have flush bottoms only if 
+	their heights are not too different.
+	* doc/texinfo-tex-test.texi: Add example to show flush column 
+	bottoms in the middle of an index, and tweak examples of short 
+	indices.
+
 2015-08-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/display.c (display_process_line): Don't append codes to 

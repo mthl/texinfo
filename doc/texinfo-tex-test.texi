@@ -19,6 +19,8 @@
 @setfilename
 @settitle Test Document for @file{texinfo.tex}
 
+@everyheading @thischapter @| @| @thissection
+
 @contents
 
 @chapter Macros
@@ -339,10 +341,150 @@ the start of a page.
 \entry {References using \code {@inforef}}{62}
 \finishindex
 
+@section Index page break not before initial
+
+The next index is to show the bottoms of columns when the next page 
+doesn't start with an initial.
+
+@commenceindex
+\initial {P}
+\entry {\code {PACKAGE}}{196}
+\entry {\code {PACKAGE_AND_VERSION}}{196}
+\entry {\code {PACKAGE_NAME}}{196}
+\entry {\code {PACKAGE_URL}}{196}
+\entry {\code {PACKAGE_VERSION}}{196}
+\entry {Page breaks, awkward}{124}
+\entry {Page breaks, forcing}{126}
+\entry {Page delimiter in Texinfo mode}{261}
+\entry {Page headings}{270}
+\entry {Page numbering}{270}
+\entry {Page sizes for books}{175}
+\entry {Page sizes, customized}{175}
+\entry {\code {page-delimiter}}{261}
+\entry {Pages, starting odd}{29}
+\entry {Paper size, A4}{175}
+\entry {Paragraph indentation control}{31}
+\entry {Paragraph, marking text within}{66}
+\entry {\code {paragraphindent}}{187}
+\entry {Parameters to macros}{154}
+\entry {Parentheses in node name}{37}
+\entry {Parsing errors}{202}
+\entry {Part of file formatting and printing}{266}
+\entry {Part pages}{50}
+\entry {Partial documents, formatting}{168}
+\entry {Parts of a cross reference}{54}
+\entry {Parts of a master menu}{28}
+\entry {Parts of a menu}{43}
+\entry {Patches, contributing}{4}
+\entry {PCL file, for printing}{170}
+\entry {\code {pdf image inclusions}}{97}
+\entry {PDF output}{176}
+\entry {PDF output of urls}{64}
+\entry {PDF output, overview}{5}
+\entry {\code {pdfetex}}{167}
+\entry {\code {pdftex}}{176}
+\entry {\code {pdftex\r {, and images}}}{97}
+\entry {\code {pdftexi2dvi}}{166}
+\entry {Period in node name}{37}
+\entry {Periods, inserting}{111}
+\entry {Perl format strings for translation}{199}
+\entry {Perl POD, converting to Texinfo}{200}
+\entry {Permissions text, including}{22}
+\entry {Permissions, printed}{25}
+\entry {\code {pg} (program) index}{102}
+\entry {Picas}{98}
+\entry {Pictures, inserting}{97}
+\entry {Pinard, Fran\,{c}ois}{7}
+\entry {Plain \TeX {}}{146}
+\entry {Plain text output with \option {--plaintext}}{183}
+\entry {Plain text output, overview}{4}
+\entry {\code {png image format}}{97}
+\entry {POD, converting to Texinfo}{200}
+\entry {\code {pod2texi}}{200}
+\entry {Point, indicating in a buffer}{121}
+\entry {Pointer creation with \code {makeinfo}}{40}
+\entry {Pointer validation with \code {makeinfo}}{185}
+\entry {Pointer validation, suppressing}{168}
+\entry {Pointer validation, suppressing from command line}{182}
+\entry {Points (dimension)}{98}
+\entry {PostScript output, overview}{4}
+\entry {Pounds symbol}{118}
+\entry {\code {PRE_ABOUT}}{192}
+\entry {\code {PRE_BODY_CLOSE}}{192}
+\entry {Preamble, in Info format}{283}
+\entry {Predefined names for indices}{105}
+\entry {Preface, etc., and Docbook}{48}
+\entry {\code {PREFIX}}{196}
+\entry {Preparing for \TeX {}}{173}
+\entry {Preserving HTML links to old nodes}{221}
+\entry {Prev node of Top node}{38}
+\entry {Preventing first paragraph indentation}{32}
+\entry {Preventing line and page breaks}{124}
+\entry {Print and format in Texinfo mode}{170}
+\entry {Print, format from Emacs shell}{170}
+\entry {Printed book and manual characteristics}{6}
+\entry {Printed output, indicating}{120}
+\entry {Printed output, through \command {texi2any}}{185}
+\entry {Printed permissions}{25}
+\entry {Printing a region or buffer}{266}
+\entry {Printing an index}{104}
+\entry {Printing cost, reducing}{75}
+\entry {Printing cropmarks}{176}
+\entry {Printing DVI files, on MS-DOS/MS-Windows}{170}
+\entry {Printing hardcopy}{166}
+\entry {Problems, catching}{275}
+\entry {\code {PROGRAM}}{196}
+\entry {Program names, indicating}{72}
+\entry {\code {PROGRAM_NAME_IN_FOOTER}}{192}
+\entry {Programming, glyphs for}{119}
+\entry {Pronunciation of Texinfo}{3}
+\entry {Prototype row, column widths defined by}{93}
+\initial {Q}
+\entry {Quotation characters (`'), in source}{114}
+\entry {Quotation marks, French}{115}
+\entry {Quotation marks, German}{115}
+\entry {Quotation marks, inserting}{114}
+\entry {Quotations}{78}
+\entry {Quotations in smaller fonts}{82}
+\entry {Quote characters, inserting}{110}
+\entry {Quoting, automatic for some macros}{156}
+\entry {Ragged left, without filling}{83}
+\entry {Ragged right, with filling}{84}
+\entry {Ragged right, without filling}{83}
+\entry {Raising and lowering sections}{51}
+\entry {Raw formatter commands}{146}
+\entry {Raw HTML}{213}
+\entry {raw text output}{188}
+\entry {RCS $Id}{253}
+\entry {Recommended names for keys}{69}
+\entry {Rectangle, black in hardcopy}{174}
+\entry {Recursive macro invocations}{155}
+\entry {Reducing font size}{75}
+\entry {Reference implementation}{178}
+\entry {Reference to @-commands}{223}
+\entry {References}{53}
+\entry {References using \code {@inforef}}{62}
+\entry {Raw formatter commands}{146}
+\entry {Raw HTML}{213}
+\entry {raw text output}{188}
+\entry {RCS $Id}{253}
+\entry {Recommended names for keys}{69}
+\entry {Rectangle, black in hardcopy}{174}
+\entry {Recursive macro invocations}{155}
+\entry {Reducing font size}{75}
+\entry {Reference implementation}{178}
+\entry {Reference to @-commands}{223}
+\entry {References}{53}
+\entry {References using \code {@inforef}}{62}
+\finishindex
 
 @section Short indices
 
 See following pages
+
+@tracingmacros=1
+@showboxdepth=1000
+@showboxbreadth=1000
 
 @commenceindex
 \initial{A}
@@ -357,6 +499,16 @@ See following pages
 \initial{B}
 \entry{bbbb}{2}
 \initial{C}
+\entry{cccc}{2}
+\finishindex
+
+@commenceindex
+\initial{A}
+\entry{aaaa}{1}
+\initial{B}
+\entry{bbbb}{2}
+\initial{C}
+\entry{cccc}{2}
 \entry{cccc}{2}
 \finishindex
 
