@@ -1,3 +1,9 @@
+2015-08-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\balancecolumns): Fix case of short final 
+	column which we don't try to break.
+	* NEWS: Mention a change to index formatting.
+
 2015-08-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\initialfonts, \initialglyphs): Rename, and 

@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-08-31.00}
+\def\texinfoversion{2015-08-31.16}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -5352,9 +5352,6 @@ end
   \advance\dimen@ by-\baselineskip
   \ifdim\dimen@<14\baselineskip
     % Don't split a short final column in two.
-    \global\setbox1 = \copy0
-    \setbox0=\vbox{}%
-    \setbox0=\vbox to\dimen@{\unvbox1}%
     \setbox2=\vbox{}%
   \else
     \divide\dimen@ by 2 % target to split to
@@ -5370,17 +5367,17 @@ end
         \global\advance\dimen@ by 1pt
       \repeat
     }%
-  \fi
-  \multiply\dimen@ii by 4
-  \divide\dimen@ii by 5
-  \ifdim\ht3<\dimen@ii
-    % Column heights are too different, so don't make their bottoms
-    % flush with each other
-    \setbox0=\vbox to\dimen@{\unvbox1\vfill}%
-    \setbox2=\vbox to\dimen@{\unvbox3\vfill}%
-  \else
-    \setbox0=\vbox to\dimen@{\unvbox1}%
-    \setbox2=\vbox to\dimen@{\unvbox3}%
+    \multiply\dimen@ii by 4
+    \divide\dimen@ii by 5
+    \ifdim\ht3<\dimen@ii
+      % Column heights are too different, so don't make their bottoms
+      % flush with each other
+      \setbox0=\vbox to\dimen@{\unvbox1\vfill}%
+      \setbox2=\vbox to\dimen@{\unvbox3\vfill}%
+    \else
+      \setbox0=\vbox to\dimen@{\unvbox1}%
+      \setbox2=\vbox to\dimen@{\unvbox3}%
+    \fi
   \fi
   %
   \pagesofar

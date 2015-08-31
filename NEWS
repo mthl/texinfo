@@ -38,6 +38,8 @@ one of the relevant sections:
   . For initials in indices that are non-alphanumeric characters (for
     example, backslash, or braces), avoid use of a typewriter font.  
     This gives a more consistent appearance.
+  . Have a stronger preference for breaking a column in an index before
+    a letter heading.
 
 * makeinfo
   . Some Perl modules have been rewritten in C to increase speed.
