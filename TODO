@@ -23,7 +23,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     @inlineset{flag, ...}, @inlineifset{flag, if set} or @inlineifset{flag,
     if set, if not set} in analogy with @inlinefmt.
   - @xindexterm [def] primary [,secondary [,tertiary]]  or some such?
-  - Add a @sortkey command for indices like @findex @sortkey{command} @@command
   - Allow subitems and `see' and `see also' in indices.
   - generalize @vtable/@htable to any defined index.
   - generalize @deffn/etc. with variants that don't make index entries.
@@ -106,6 +105,8 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     last one, and be able to toggle display of a node's subnodes.  
     (Could be hard to implement though, because of how much code assumes 
     that only one node is in a window at once.)
+  - Make q quit help, like Less, and :q in Vim.
+  - Make DEL exit echo area when it's empty
         
 
 * install-info:

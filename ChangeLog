@@ -1,3 +1,14 @@
+2015-08-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (printed_representation): Cast a char * to
+	unsigned * so undisplayable bytes aren't always displayed as \377.
+	(degrade_utf8): Add A", O" and U".
+	* info/window.c (window_make_modeline) <preprocess_nodes_p>: Put
+	"Info:" in status line, and eliminate space after closing 
+	parenthesis.
+	* TODO: Remove @sortkey suggestion, as this is in progress as 
+	@sortas.  Add a couple of suggestions for Info browser.
+
 2015-08-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\balancecolumns): Fix case of short final 

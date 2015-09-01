@@ -929,7 +929,7 @@ window_make_modeline (WINDOW *window)
 
         name = filename_non_directory (node->fullpath);
 
-        modeline_len += strlen ("--() --");
+        modeline_len += strlen ("--Info:() --");
         modeline_len += 3; /* strlen (location_indicator) */
         modeline_len += strlen (name);
         if (nodename) modeline_len += strlen (nodename);
@@ -938,15 +938,17 @@ window_make_modeline (WINDOW *window)
 
         modeline = xcalloc (1, 1 + modeline_len);
 
+        sprintf (modeline + strlen (modeline), "%s", location_indicator);
+        sprintf (modeline + strlen (modeline), "--Info: ");
+
         /* Omit any extension like ".info.gz" from file name. */
         dot = strcspn (name, ".");
 
-        sprintf (modeline, "%s--", location_indicator);
         if (name && strcmp ("", name))
           {
             sprintf (modeline + strlen (modeline), "(");
             strncpy (modeline + strlen (modeline), name, dot);
-            sprintf (modeline + strlen (modeline), ") ");
+            sprintf (modeline + strlen (modeline), ")");
           }
         sprintf (modeline + strlen (modeline), "%s--", nodename);
       }

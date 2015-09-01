@@ -574,7 +574,7 @@ printed_representation (mbi_iterator_t *iter, int *delim, size_t pl_chars,
          terminal. */
       *pchars = 4;
       *pbytes = 4;
-      text_buffer_printf (rep, "\\%0o", *cur_ptr);
+      text_buffer_printf (rep, "\\%o", *(unsigned char *)cur_ptr);
       return text_buffer_base (rep);
     }
 }
@@ -776,6 +776,10 @@ degrade_utf8 (char **from, size_t *from_left)
     {"\xC3\xAB","e\""},  /* Lower case letter e with diaeresis */
     {"\xC3\xB6","o\""},  /* Lower case letter o with diaeresis */
     {"\xC3\xBC","u\""},  /* Lower case letter u with diaeresis */
+    {"\xC3\x84", "A\""},  /* Upper case letter A with diaeresis. */
+    {"\xC3\x96", "O\""},  /* Upper case letter O with diaeresis. */
+    {"\xC3\x9c", "U\""},  /* Upper case letter U with diaeresis. */
+
     {"\xC3\xB1","n~"},  /* Lower case letter n with tilde */
     {"\xC3\x87","C,"},  /* Upper case letter C with cedilla */
     {"\xC3\xA7","c,"},  /* Lower case letter c with cedilla */
