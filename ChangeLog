@@ -1,5 +1,13 @@
 2015-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Indexing Commands): Update documentation of 
+	@sortas.
+	(Command List): Add @sortas.
+	* doc/refcard/txirefcard.tex: Add @sortas.
+	* NEWS: Mention @sortas.
+
+2015-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex: Let - always be active, and set it to 
 	\normaldash.
 	(\indexnonalnumdisappear, \indexnonalnumreappear): New control 

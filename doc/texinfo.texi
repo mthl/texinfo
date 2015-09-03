@@ -9359,14 +9359,17 @@ font (@pxref{Fonts}).
 
 @findex sortas
 @cindex sort keys for index entries
-Sometimes you may wish to have an index entry sorted as if it were
-something else.  For example, the index for this manual has an entry
-@samp{@@findex \mathopsup}.  In the printed output, this will be sorted 
-under its first character, a backslash, but it might be nicer to sort it 
-under the letter `M', as if the backslash were not there.  For such 
-cases, you can specify a sort key with @code{@@sortas} immediately 
-following the index command.  For example: @samp{@@findex 
-@@sortas@{mathopsup@} \mathopsup}.
+@cindex index sorting
+For the printed output, some characters are ignored in the text for 
+index entries for the purposes of sorting.  For example, the 
+@samp{\mathopsup} entry in the index for this manual is sorted as if it 
+were @samp{mathopsup}, as if the backslash were not there.  Hence, it 
+will appear among the other entries beginning `M'.
+
+You may specify an explicit sort key with @code{@@sortas} immediately 
+following the index command.  For example: @samp{@@findex @@sortas@{\@} 
+\ @@r@{(literal \ in @@code@{@@@@math@})} sorts the index entry this 
+produces under backslash.
 
 @quotation Caution
 Do not use a colon in an index entry.  In Info, a colon separates the
@@ -20654,6 +20657,10 @@ with @code{@@end smalllisp}.  @xref{@code{@@small@dots{}}}.
 @item @@smallquotation
 Like @code{@@quotation}, but use a smaller font size where possible.
 Pair with @code{@@end smallquotation}.  @xref{@code{@@small@dots{}}}.
+
+@item @@sortas @{@var{key}@}
+Used in the arguments to index commands to give a string by which the 
+index entry should be sorted.  @xref{Indexing Commands}.
 
 @item @@sp @var{n}
 Skip @var{n} blank lines.  @xref{@code{@@sp}}.

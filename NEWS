@@ -30,6 +30,10 @@ one of the relevant sections:
     given explicitly.
 
 * texinfo.tex:
+  . A few characters (like \ and -) are now ignored in index entries for
+    the purposes of sorting.  You may explicity specify a sort key by
+    preceding the text of the entry with the @sortas commmand with the
+    sort key desired as a braced argument.
   . The default indices (cp, ky and so on) now don't get a file opened
     for them unless they are actually used.  This reduces the number of
     files that a run of TeX produces, and also allows for a greater
