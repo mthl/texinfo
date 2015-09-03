@@ -8926,7 +8926,7 @@ indentation.  If you want it centered, use @code{@@center}
 
 @cindex Alt attribute for images
 @cindex Images, alternate text for
-@findex - (in image alt string)
+@findex @sortas{-} -@r{ (in image alt string)}
 For HTML output, @code{makeinfo} sets the @dfn{alt attribute} for
 inline images to the optional @var{alttext} (fourth) argument to
 @code{@@image}, if supplied.  If not supplied, @code{makeinfo} uses
@@ -9364,7 +9364,7 @@ something else.  For example, the index for this manual has an entry
 @samp{@@findex \mathopsup}.  In the printed output, this will be sorted 
 under its first character, a backslash, but it might be nicer to sort it 
 under the letter `M', as if the backslash were not there.  For such 
-cases, you can specify a sort key with @code{@@sortkey} immediately 
+cases, you can specify a sort key with @code{@@sortas} immediately 
 following the index command.  For example: @samp{@@findex 
 @@sortas@{mathopsup@} \mathopsup}.
 
@@ -10294,7 +10294,7 @@ non-ASCII (e.g., pre-accented) characters in the source file.
 
 @findex " @r{(umlaut accent)}
 @cindex Umlaut accent
-@findex ' @r{(umlaut accent)}
+@findex ' @r{(acute accent)}
 @cindex Acute accent
 @findex = @r{(macron accent)}
 @cindex Macron accent
@@ -10653,7 +10653,7 @@ does not try to use produce good mathematical formatting in any way
 (no use of MathML, etc.).  The HTML output is enclosed by
 @code{<em>...</em>}, but nothing more.
 
-@findex @sortas{mathopsup} \mathopsup
+@findex \mathopsup
 However, as far as the @TeX{} output is concerned, plain @TeX{}
 mathematical commands are allowed in @code{@@math}, starting with
 @samp{\}.  In essence, @code{@@math} switches into plain @TeX{} math
@@ -10697,7 +10697,7 @@ Here's an example:
 \sin 2\pi \equiv \cos 3\pi
 @end example
 
-@findex \ @r{(literal \ in @code{@@math})}
+@findex @sortas{\} \ @r{(literal \ in @code{@@math})}
 Since @samp{\} is an escape character inside @code{@@math}, you can
 use @code{@@\} to get a literal backslash (@code{\\} will work in
 @TeX{}, but you'd get the literal two characters @samp{\\} in Info).
@@ -11495,7 +11495,7 @@ effect in the other output format.
 @section @code{@@-} and @code{@@hyphenation}: Helping @TeX{} Hyphenate
 
 @anchor{- and hyphenation}@c old name
-@findex - @r{(discretionary hyphen)}
+@findex @sortas{-} - @r{(discretionary hyphen)}
 @findex hyphenation
 @cindex Hyphenation, helping @TeX{} do
 @cindex Fine-tuning, and hyphenation
@@ -11534,7 +11534,7 @@ these commands have any effect there.
 @anchor{allowcodebreaks}@c old name
 @findex allowcodebreaks
 @cindex Breaks, within @code{@@code}
-@cindex -, breakpoint within @code{@@code}
+@cindex @sortas{-} -, breakpoint within @code{@@code}
 @cindex Hyphen, breakpoint within @code{@@code}
 @cindex Dash, breakpoint within @code{@@code}
 @cindex _, breakpoint within @code{@@code}
@@ -15614,8 +15614,8 @@ For more information, see:
 @section Preparing for @TeX{}
 @cindex Preparing for @TeX{}
 @cindex @TeX{} input initialization
-@cindex @b{.profile} initialization file
-@cindex @b{.cshrc} initialization file
+@cindex @sortas{profile init} @file{.profile} initialization file
+@cindex @sortas{cshrc init} @file{.cshrc} initialization file
 @cindex Initialization file for @TeX{} input
 
 @TeX{} needs to know where to find the @file{texinfo.tex} file that the
@@ -18967,7 +18967,7 @@ The option @option{--css-include=@var{file}} includes the contents
 details are somewhat tricky, as described in the following, to provide
 maximum flexibility.
 
-@cindex @@import specifications, in CSS files
+@cindex @samp{@@import} specifications, in CSS files
 The CSS file may begin with so-called @samp{@@import} directives,
 which link to external CSS specifications for browsers to use when
 interpreting the document.  Again, a full description is beyond our

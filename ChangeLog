@@ -1,3 +1,21 @@
+2015-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex: Let - always be active, and set it to 
+	\normaldash.
+	(\indexnonalnumdisappear, \indexnonalnumreappear): New control 
+	sequences.  Make -, < and \ disappear by default for index sort
+	keys.
+	(\dosubindwrite): Call \indexnonalnumdisappear.
+	(\indexwritesortas): Call \indexnonalnumreappear.
+	(\indexwritesortas, \dosubindwrite): Cope better if @sortas{...}
+	is not put at the very beginning of the argument.
+	(\normalhyphen): Remove, and replace \normalhyphen with 
+	\normaldash.
+
+	* doc/texinfo.texi: Add @sortas keys for some index entries.  
+	Remove it for \mathopsup.
+	Correct entry <<' (umlaut accent)>> to <<' (acute accent)>>.
+
 2015-08-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (printed_representation): Cast a char * to
