@@ -1,9 +1,42 @@
-2015-08-04  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-09-02  Vincent Belaïche  <vincent.belaiche@gmail.com>, and
+	    Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi
+	(generated_files_get_from_log): new function.
+	(generated_files_get_from_fls): new function.
+	(generated_files_get): Generate files based on log
+	file or fls file whichever applicable according to variable
+	generated_files_get_method.
+
+	(make_tex_cmd): New function taking on preamble part of
+	run_tex.  Insert -recorder option when applicable, based on 
+	recorder_option_maybe variable.
+	(run_tex): Delegate to make_tex_cmd making of the tex command.
+	(make_openout_test): new function.
+	(check_recorder_support): new function.
+	(check_openout_in_log_support): new function.
+	(set_aux_files_from_fls): new function.
+	(set_aux_files_from_log): new function.
+	(decide_aux_files_method): new function.
+	(Main part/preamble to action): call decide_aux_files_method.
+	(End of file): Add "Local Variables" comments to set indent 
+	style for Emacs.
+
+	(run_tex_suite): Call run_core_conversion before run_index, to 
+	avoid overwriting a sorted index file.
+	(run_core_conversion): If a recorder file was output, rename it 
+	to avoid it being overwritten.
+	(compile): Put backup directory at front of search path for TeX.
+	(absolute_filenames): Don't prepend "." to the list.
+	
+	(xref_files_save): Comment changed.	
+
+2015-09-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\dosubindwrite): If index sort key ends up as 
 	empty, use a space.
 
-2015-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Indexing Commands): Update documentation of 
 	@sortas.
@@ -11,7 +44,7 @@
 	* doc/refcard/txirefcard.tex: Add @sortas.
 	* NEWS: Mention @sortas.
 
-2015-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex: Let - always be active, and set it to 
 	\normaldash.
@@ -29,7 +62,7 @@
 	Remove it for \mathopsup.
 	Correct entry <<' (umlaut accent)>> to <<' (acute accent)>>.
 
-2015-08-01  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-09-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (printed_representation): Cast a char * to
 	unsigned * so undisplayable bytes aren't always displayed as \377.
