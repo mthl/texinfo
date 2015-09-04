@@ -1,3 +1,8 @@
+2015-08-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\dosubindwrite): If index sort key ends up as 
+	empty, use a space.
+
 2015-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Indexing Commands): Update documentation of 
