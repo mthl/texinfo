@@ -28,6 +28,8 @@ one of the relevant sections:
     "@validatemenus off" near the start of a Texinfo file,
     makeinfo will, where needed, create a menu for nodes lacking one 
     given explicitly.
+  . An @setfilename line is no longer required at the start of a
+    Texinfo file.
 
 * texinfo.tex:
   . A few characters (like \ and -) are now ignored in index entries for

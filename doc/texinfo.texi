@@ -6,9 +6,6 @@
 @c header' node for more info.
 @c %**start of header
 
-@c makeinfo and texinfo.tex ignore all text before @setfilename.
-@setfilename texinfo.info
-
 @c Automake automatically updates version.texi to @set VERSION and
 @c @set UPDATED to appropriate values.
 @include version.texi
@@ -1486,9 +1483,8 @@ part of the command.)
 Often, you can write the @code{@@comment} or @code{@@c} in the middle
 of a line, and only the text that follows after the @code{@@comment}
 or @code{@@c} command does not appear; but some commands, such as
-@code{@@settitle} and @code{@@setfilename}, work on a whole line.  You
-cannot use @code{@@comment} or @code{@@c} within a line beginning with
-such a command.
+@code{@@settitle}, work on a whole line.  You cannot use @code{@@comment}
+or @code{@@c} within a line beginning with such a command.
 
 @findex DEL @r{(comment character)}
 @cindex Catcode for comments in @TeX{}
@@ -1531,7 +1527,6 @@ formats, a Texinfo file must begin with lines like this:
 @example
 @group
 \input texinfo
-@@setfilename @var{info-file-name}
 @@settitle @var{name-of-manual}
 @end group
 @end example
@@ -1556,11 +1551,6 @@ The @samp{\input texinfo} line tells @TeX{} to use the
 backslash, @samp{\}; this is correct for @TeX{}.)
 
 @item
-The @code{@@setfilename} line provides a name for the Info file and
-tells @TeX{} to open auxiliary files.  @strong{All text before
-@code{@@setfilename} is ignored!}
-
-@item
 The @code{@@settitle} line specifies a title for the page headers (or
 footers) of the printed manual, and the default title and document
 description for the @samp{<head>} in HTML@.  Strictly speaking,
@@ -1576,7 +1566,7 @@ run.
 
 Furthermore, you will usually provide a Texinfo file with a title page,
 indices, and the like, all of which are explained in this manual.  But
-the minimum, which can be useful for short documents, is just the three
+the minimum, which can be useful for short documents, is just the two
 lines at the beginning and the one line at the end.
 
 
@@ -1607,7 +1597,6 @@ use, names the file, and carries out other such housekeeping tasks.
 @group
 \input texinfo   @@c -*-texinfo-*-
 @@c %**start of header
-@@setfilename sample.info
 @@settitle Sample Manual 1.0
 @@c %**end of header
 @end group
@@ -1617,10 +1606,9 @@ If you use Emacs, it is also useful to include mode setting and
 start-of-header and end-of-header lines at the beginning of a Texinfo
 file.  In the first line, @samp{-*-texinfo-*-} causes Emacs to switch 
 into Texinfo mode when you edit the file.
-The @code{@@c ...header} lines above which surround the
-@code{@@setfilename} and @code{@@settitle} lines allow you to process,
-within Emacs, just part of the Texinfo source.  (@xref{Start of
-Header}.)
+The @code{@@c ...header} lines above which surround the 
+@code{@@settitle} line allow you to process, within Emacs, just part of 
+the Texinfo source.  (@xref{Start of Header}.)
 
 
 @subheading Summary Description and Copyright
@@ -1826,7 +1814,6 @@ the most critical.
 @example
 \input texinfo   @@c -*-texinfo-*-
 @@c %**start of header
-@@setfilename @var{infoname}.info
 @@settitle @var{name-of-manual} @var{version}
 @@c %**end of header
 
@@ -1896,16 +1883,13 @@ This manual is for @var{program}, version @var{version}.
 @cindex Header for Texinfo files
 @cindex Texinfo file header
 
-Texinfo files start with at least three lines that provide Texinfo
-translators with necessary information.  These are the @code{\input
-texinfo} line, the @code{@@settitle} line, and the
-@code{@@setfilename} line.
+Texinfo files start with at least two lines.  These are the
+@code{\input texinfo} line and the @code{@@settitle} line.
 
 Also, if you want to format just part of the Texinfo file in Emacs,
-you must write the @code{@@settitle} and @code{@@setfilename} lines
-between start-of-header and end-of-header lines.  These start- and
-end-of-header lines are optional, but they do no harm, so you might as
-well always include them.
+you must write the @code{@@settitle} line between start-of-header and
+end-of-header lines.  These start- and end-of-header lines are optional,
+but they do no harm, so you might as well always include them.
 
 Any command that affects document formatting as a whole makes sense to
 include in the header.  @code{@@synindex} (@pxref{@code{@@synindex}}),
@@ -1918,13 +1902,12 @@ like this:
 @group
 \input texinfo   @@c -*-texinfo-*-
 @@c %**start of header
-@@setfilename sample.info
 @@settitle Sample Manual 1.0
 @@c %**end of header
 @end group
 @end example
 
-(@xref{GNU Sample Texts}, for complete sample texts.)
+(@xref{GNU Sample Texts} for complete sample texts.)
 
 @menu
 * First Line::                  The first line of a Texinfo file.
@@ -1980,11 +1963,10 @@ A start-of-header line is a Texinfo comment that looks like this:
 @end example
 
 Write the start-of-header line on the second line of a Texinfo file.
-Follow the start-of-header line with @code{@@setfilename} and
-@code{@@settitle} lines and, optionally, with other commands that
-globally affect the document formatting, such as @code{@@synindex} or
-@code{@@footnotestyle}; and then by an end-of-header line (@pxref{End of
-Header}).
+Follow the start-of-header line with an @code{@@settitle} line and,
+optionally, with other commands that globally affect the document
+formatting, such as @code{@@synindex} or @code{@@footnotestyle}; and
+then by an end-of-header line (@pxref{End of Header}).
 
 The start- and end-of-header lines allow you to format only part of a
 Texinfo file for Info or printing.  @xref{@code{texinfo-format} commands}.
@@ -2053,13 +2035,6 @@ When producing another output format, @code{makeinfo} will replace any
 final extension with the output format-specific extension (@samp{html}
 when generating HTML, for example), or add a dot followed by the
 extension (@samp{.html} for HTML) if the given name has no extension.
-
-@pindex texinfo.cnf
-The @code{@@setfilename} line produces no output when you typeset a
-manual with @TeX{}, but it is nevertheless essential: it opens the
-index and other auxiliary files used by Texinfo, and also reads
-@file{texinfo.cnf} if that file is present on your system
-(@pxref{Preparing for @TeX{}}).
 
 If there is no @code{@@setfilename} line, @code{makeinfo} uses the
 input file name to determine the output name: first, any of the
@@ -3912,8 +3887,7 @@ better to use cross references to refer to arbitrary nodes.
 @command{makeinfo} can automatically generate menus in nodes for Info 
 and HTML output, based on the chapter structure of the document.  To 
 specify that you want it to do this, place the line 
-@samp{@@validatemenus off} near the beginning of the document, after 
-@samp{@@setfilename}.
+@samp{@@validatemenus off} near the beginning of the document.
 
 In Info, a user selects a node with the @kbd{m} (@code{Info-menu})
 command.  The menu entry name is what the user types after the @kbd{m}
@@ -6536,7 +6510,6 @@ this:
 @example
 @group
 \input texinfo
-@@@@setfilename @@var@{info-file-name@}
 @@@@settitle @@var@{name-of-manual@}
 @end group
 @end example
@@ -6547,7 +6520,6 @@ This produces:
 @example
 @group
 \input texinfo
-@@setfilename @var{info-file-name}
 @@settitle @var{name-of-manual}
 @end group
 @end example
@@ -12916,8 +12888,7 @@ supports, see @ref{Inserting Accents}.
 @cindex Document language, declaring
 
 The @code{@@documentlanguage} command declares the current document
-locale.  Write it on a line by itself, near the beginning of the file,
-but after @code{@@setfilename} (@pxref{@code{@@setfilename}}):
+locale.  Write it on a line by itself, near the beginning of the file.
 
 @example
 @@documentlanguage @var{ll}[_@var{cc}]
@@ -12997,8 +12968,7 @@ the official web site for ISO@tie{}3166 can be found via
 The @code{@@documentencoding} command declares the input document
 encoding, and can also affect the encoding of the output.  Write it on
 a line by itself, with a valid encoding specification following, near
-the beginning of the file but after @code{@@setfilename}
-(@pxref{@code{@@setfilename}}):
+the beginning of the file.
 
 @example
 @@documentencoding @var{enc}
@@ -14901,7 +14871,6 @@ would insert a main or master menu:
 @group
 \input texinfo @@c -*-texinfo-*-
 @c %**start of header
-@@setfilename include-example.info
 @@settitle Include Example
 @c %**end of header
 @end group
@@ -15080,8 +15049,8 @@ to invoke the shell on the @samp{texi2dvi} script.)
 
 @opindex --command@r{, for @command{texi2dvi}}
 One useful option to @code{texi2dvi} is @samp{--command=@var{cmd}}.
-This inserts @var{cmd} on a line by itself after the
-@code{@@setfilename} in a temporary copy of the input file before
+This inserts @var{cmd} on a line by itself, after a
+@code{@@setfilename} line in a temporary copy of the input file, before
 running @TeX{}.  With this, you can specify different printing
 formats, such as @code{@@smallbook} (@pxref{@code{@@smallbook}}),
 @code{@@afourpaper} (@pxref{A4 Paper}), or @code{@@pagesizes}
@@ -15266,15 +15235,13 @@ incomplete, or to print just one chapter of a document.  In such a
 case, the usual auxiliary files that @TeX{} creates and warnings
 @TeX{} gives about undefined cross references are just nuisances.  You
 can avoid them with the @code{@@novalidate} command, which you must
-give @emph{before} the @code{@@setfilename} command
-(@pxref{@code{@@setfilename}}).
+give @emph{before} any sectioning or cross-reference commands.
 
 Thus, the beginning of your file would look approximately like this:
 
 @example
 \input texinfo
 @@novalidate
-@@setfilename myfile.info
 @dots{}
 @end example
 
@@ -15574,16 +15541,15 @@ this way; see @ref{Compilation, , , emacs, The GNU Emacs Manual}.
 @cindex Formatting requirements
 
 Every Texinfo file that is to be input to @TeX{} must begin with a
-@code{\input} command, and must contain a @code{@@setfilename} command:
+@code{\input} command:
 
 @example
 \input texinfo
-@@setfilename @var{arg-not-used-by-@TeX{}}
 @end example
 
 @noindent
-The first command instructs @TeX{} to load the macros it needs to
-process a Texinfo file and the second command opens auxiliary files.
+This instructs @TeX{} to load the macros it needs to process a Texinfo
+file.
 
 Every Texinfo file must end with a line that terminates @TeX{}'s
 processing and forces out unfinished pages:
@@ -15592,7 +15558,7 @@ processing and forces out unfinished pages:
 @@bye
 @end example
 
-Strictly speaking, these lines are all a Texinfo file needs to be
+Strictly speaking, these two lines are all a Texinfo file needs to be
 processed successfully by @TeX{}.
 
 Usually, however, the beginning includes a @code{@@settitle} command
@@ -15670,9 +15636,8 @@ default in a reasonable @TeX{} installation.
 @pindex texinfo.cnf @r{installation}
 @cindex Customizing of @TeX{} for Texinfo
 @cindex Site-wide Texinfo configuration file
-Optionally, you may create a file @file{texinfo.cnf} for site
-configuration.  This file is read by @TeX{} when the
-@code{@@setfilename} command is executed (@pxref{@code{@@setfilename}}).
+Optionally, you may create a file @file{texinfo.cnf} for site configuration.
+This file is read by @TeX{} at the beginning of a Texinfo file.
 You can put any commands you like there, according to local site-wide
 conventions.  They will be read by @TeX{} when processing any Texinfo
 document.  For example, if @file{texinfo.cnf} contains the line
@@ -15861,7 +15826,6 @@ would write the header for this manual:
 @group
 \input texinfo    @@c -*-texinfo-*-
 @@c %**start of header
-@@setfilename texinfo
 @@settitle Texinfo
 @@afourpaper
 @@c %**end of header
@@ -20434,8 +20398,8 @@ Prevent text from being indented as if it were a new paragraph.
 
 @item @@novalidate
 Suppress validation of node references and omit creation of auxiliary
-files with @TeX{}.  Use before @code{@@setfilename}.  @xref{Pointer
-Validation}.
+files with @TeX{}.  Use before any sectioning or cross-reference 
+commands.  @xref{Pointer Validation}.
 
 @item @@O@{@}
 @itemx @@o@{@}
@@ -20595,9 +20559,8 @@ Put the table of contents after the @samp{@@end titlepage} even if the
 @code{@@contents} command is at the end.  @xref{Contents}.
 
 @item @@setfilename @var{info-file-name}
-Provide a name to be used for the output files.  This command is essential
-for @TeX{} formatting as well, even though it produces no output of
-its own.  @xref{@code{@@setfilename}}.
+Provide a name to be used for the output files.  This command is ignored
+for @TeX{} formatting.  @xref{@code{@@setfilename}}.
 
 @item @@setshortcontentsaftertitlepage
 Place the short table of contents after the @samp{@@end titlepage}
@@ -21413,7 +21376,6 @@ it for a printed manual.
 @example
 \input texinfo   @@c -*-texinfo-*-
 @@c %**start of header
-@@setfilename sample.info
 @@settitle Sample Manual 1.0
 @@c %**end of header
 
@@ -21587,7 +21549,6 @@ Here is the sample document:
 \input texinfo   @c -*-texinfo-*-
 @comment $Id@w{$}
 @comment %**start of header
-@setfilename sample.info
 @include version.texi
 @settitle GNU Sample @value{VERSION}
 @syncodeindex pg cp
@@ -22412,10 +22373,7 @@ C-c C-m C-b
 M-x makeinfo-buffer
 @end example
 
-For @TeX{} or the Info formatting commands to work, the file @emph{must}
-include a line that has @code{@@setfilename} in its header.
-
-@xref{Creating an Info File}, for details about Info formatting.
+@xref{Creating an Info File} for details about Info formatting.
 
 @node Printing
 @comment node-name,  next,  previous,  up

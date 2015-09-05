@@ -1,5 +1,17 @@
 2015-09-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Info Formatting, Comments, Minimum)
+	(Sample Beginning, Texinfo File Header, Start of Header)
+	(Writing a Menu, @var, @documentlanguage, documentencoding)
+	(Sample Include File, Format with texi2dvi)
+	(Formatting Partial Documents, Requirements Summary)
+	(Preparing for TeX, A4 Paper, Command List)
+	(Short Sample Texinfo File, GNU Sample Texts)
+	(@setfilename),
+	* NEWS: @setfilename is now no longer required.
+
+2015-09-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\requireauxfile): New macro.
 	(\refx, \Efloat): Use it.
 	(\fixbackslash): Read texinfo.cnf here if it exists.
