@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-09-05.20}
+\def\texinfoversion{2015-09-05.22}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -1046,32 +1046,8 @@ where each line of input produces a line of output.}
 % @refill is a no-op.
 \let\refill=\relax
 
-% If working on a large document in chapters, it is convenient to
-% be able to disable indexing, cross-referencing, and contents, for test runs.
-% This is done with @novalidate (before @setfilename).
-%
-\newif\iflinks \linkstrue % by default we want the aux files.
-\let\novalidate = \linksfalse
-
-% @setfilename is done at the beginning of every texinfo file.  So open
-% here some of the files we need to have open while reading the input.
-% This makes it possible to make a .fmt file for texinfo.
-\def\setfilename{%
-   \iflinks
-     \tryauxfile
-     % Open the new aux file.  TeX will close it automatically at exit.
-     \immediate\openout\auxfile=\jobname.aux
-   \fi % \openindices needs to do some work in any case.
-   \let\setfilename=\comment % Ignore extra @setfilename cmds.
-   %
-   % If texinfo.cnf is present on the system, read it.
-   % Useful for site-wide @afourpaper, etc.
-   \openin 1 texinfo.cnf
-   \ifeof 1 \else \input texinfo.cnf \fi
-   \closein 1
-   %
-   \comment % Ignore the actual filename.
-}
+% @setfilename INFO-FILENAME - ignored
+\let\setfilename=\comment
 
 % @bye.
 \outer\def\bye{\pagealignmacro\tracingstats=1\ptexend}
@@ -8119,6 +8095,7 @@ end
   \pdfmkdest{#1}%
   \iflinks
     {%
+      \requireauxfile
       \atdummies  % preserve commands, but don't expand them
       \edef\writexrdef##1##2{%
 	\write\auxfile{@xrdef{#1-% #1 of \setref, expanded by the \edef
@@ -8383,6 +8360,7 @@ end
 % If its value is nonempty, SUFFIX is output afterward.
 %
 \def\refx#1#2{%
+  \requireauxfile
   {%
     \indexnofonts
     \otherbackslash
@@ -8444,6 +8422,23 @@ end
     \expandafter\xdef\csname floatlist\iffloattype\endcsname{\the\toks0
       {\safexrefname}}%
   \fi
+}
+
+% If working on a large document in chapters, it is convenient to
+% be able to disable indexing, cross-referencing, and contents, for test runs.
+% This is done with @novalidate at the beginning of the file.
+%
+\newif\iflinks \linkstrue % by default we want the aux files.
+\let\novalidate = \linksfalse
+
+% Used when writing to the aux file, or when using data from it.
+\def\requireauxfile{%
+  \iflinks
+    \tryauxfile
+    % Open the new aux file.  TeX will close it automatically at exit.
+    \immediate\openout\auxfile=\jobname.aux
+  \fi
+  \global\let\requireauxfile=\relax   % Only do this once.
 }
 
 % Read the last existing aux file, if any.  No error if none exists.
@@ -8919,6 +8914,7 @@ end
       % \floatlabel-lof.  Besides \floatident, we include the short
       % caption if specified, else the full caption if specified, else nothing.
       {%
+        \requireauxfile
         \atdummies
         %
         % since we read the caption text in the macro world, where ^^M
@@ -10477,6 +10473,16 @@ directory should work if nowhere else does.}
   % file name, in case not using a pre-dumped format.
   @catcode`+=@active
   @catcode`@_=@active
+  %
+  % If texinfo.cnf is present on the system, read it.
+  % Useful for site-wide @afourpaper, etc.  This macro, @fixbackslash, gets
+  % called at the beginning of every Texinfo file.  Not opening texinfo.cnf
+  % directly in this file, texinfo.tex, makes it possible to make a format
+  % file for Texinfo.
+  %
+  @openin 1 texinfo.cnf
+  @ifeof 1 @else @input texinfo.cnf @fi
+  @closein 1
 }
 
 
