@@ -1,3 +1,15 @@
+2015-09-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\initialglyphs): Use chapter size for caret.  
+	Change shape of underscore back to what it was in regular text.
+	Increase end-of-column glue before initial heading from 3 lines 
+	of stretch to 6.
+	(\entry): Reduce stretch of glue before an entry from 1pt to 0.5pt.
+	Remove an out-of-date comment, because '-' is always active now.
+	(\initial): Put \secfonts inside the argument to \leftline.
+	(\balancecolumns): Remove glue from bottom of first column to 
+	make sure it is higher than the second.
+
 2015-09-04  Vincent Belaïche  <vincent.belaiche@gmail.com>, and
 	    Gavin Smith  <gavinsmith0123@gmail.com>
 

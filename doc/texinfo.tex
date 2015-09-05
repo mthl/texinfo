@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-09-04.11}
+\def\texinfoversion{2015-09-05.20}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -5078,10 +5078,10 @@ end
   \catcode`\/=13
   \def/{{\secrmnotbold \normalslash}}%
   \def-{{\normaldash\normaldash}}% en dash `--'
-  \let^=\normalcaret
+  \def^{{\chapbf \normalcaret}}
   \let~=\normaltilde
   \def\_{%
-    \leavevmode \kern.07em \vbox{\hrule width.33em height.06ex}\kern .07em }%
+     \leavevmode \kern.07em \vbox{\hrule width.3em height.1ex}\kern .07em }%
   \def|{$\vert$}%
   \def<{$\less$}%
   \def>{$\gtr$}%
@@ -5102,9 +5102,9 @@ end
   % The glue before the bonus allows a little bit of space at the
   % bottom of a column to reduce an increase in inter-line spacing.
   \nobreak
-  \vskip 0pt plus 3\baselineskip
+  \vskip 0pt plus 6\baselineskip
   \penalty -300 
-  \vskip 0pt plus -3\baselineskip
+  \vskip 0pt plus -6\baselineskip
   %
   % Typeset the initial.  Making this add up to a whole number of
   % baselineskips increases the chance of the dots lining up from column
@@ -5113,26 +5113,20 @@ end
   %
   % No shrink because it confuses \balancecolumns.
   \vskip 1.67\baselineskip plus .5\baselineskip
-  \bgroup \secfonts % Initial is the same size as section headings
-  \leftline{\secbf #1}%
-  \egroup
+  \leftline{\secfonts \secbf #1}%
+  % \secfonts is inside the argument of \leftline so that the change of
+  % \baselineskip will not affect any glue inserted before the vbox that
+  % \leftline creates.
   % Do our best not to break after the initial.
   \nobreak
   \vskip .33\baselineskip plus .1\baselineskip
-  \egroup % \initialfonts
+  \egroup % \initialglyphs
 }
 
 % \entry typesets a paragraph consisting of the text (#1), dot leaders, and
 % then page number (#2) flushed to the right margin.  It is used for index
 % and table of contents entries.  The paragraph is indented by \leftskip.
 %
-% A straightforward implementation would start like this:
-%	\def\entry#1#2{...
-% But this freezes the catcodes in the argument, and can cause problems to
-% @code, which sets - active.  This problem was fixed by a kludge---
-% ``-'' was active throughout whole index, but this isn't really right.
-% The right solution is to prevent \entry from swallowing the whole text.
-%                                 --kasal, 21nov03
 \def\entry{%
   \begingroup
     %
@@ -5165,7 +5159,7 @@ end
     %
     % A bit of stretch before each entry for the benefit of balancing
     % columns.
-    \vskip 0pt plus1pt
+    \vskip 0pt plus0.5pt
     %
     % When reading the text of entry, convert explicit line breaks
     % from @* into spaces.  The user might give these in long section
@@ -5399,7 +5393,10 @@ end
       \loop
         \global\setbox3 = \copy0
         \global\setbox1 = \vsplit3 to \dimen@
-      \ifdim\ht3>\dimen@
+        % Remove glue from bottom of first column to
+        % make sure it is higher than the second.
+        \global\setbox1 = \vbox{\unvbox1\unpenalty\unskip}%
+      \ifdim\ht3>\ht1
         \global\advance\dimen@ by 1pt
       \repeat
     }%
