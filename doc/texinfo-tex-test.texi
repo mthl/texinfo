@@ -1,4 +1,4 @@
-% texinfo.tex -- test file for texinfo.tex
+% texinfo-tex-test.texi -- test file for texinfo.tex
 %
 % Copyright 2015 Free Software Foundation, Inc.
 %
@@ -16,7 +16,6 @@
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %
 \input texinfo
-@setfilename
 @settitle Test Document for @file{texinfo.tex}
 
 @everyheading @thischapter @| @| @thissection
@@ -148,7 +147,6 @@ x2
 
 Output should be doubled
 
-@tracingmacros=1
 @macro Example
 @example
 @group
@@ -179,8 +177,6 @@ x
 \argfirst\+\argsecond\.
 @end macro
 
-@tracingmacros=1
-
 @set fc Fran@,cois
 @mactwo{@value{fc},}@*
 @mactwo{Fran@,cois,}@*
@@ -193,6 +189,53 @@ Fran@,cois+.
 @end macro
 
 exceeds @math{@frac{1,16}} pt
+
+
+@section Trim whitespace from macro arguments
+
+@macro Mac{a}
+<X\a\X>
+@end macro
+
+@macro Mactwo{a,b}
+<X\a\X\b\X>
+@end macro
+
+No space should appear right after an `X':
+
+@noindent @Mac{b} @Mac{ b} @Mac{b  } @Mac{ b }
+
+@noindent @Mactwo{b,c} @Mactwo{ b, c} @Mactwo{b  ,c  } @Mactwo{ b , c }
+
+
+@section Multi-line macro argument
+
+@tracingmacros=1
+@macro Mac{text}
+@cartouche
+<@b{FIXME}>
+@example
+\text\
+@end example
+\text\
+@noindent </>
+@end cartouche
+@end macro
+
+@Mac{
+Here's an extended
+macro argument, with
+newlines.
+
+And multiple paragraphs.
+Like an argument to @code{@@footnote}.
+}
+
+(The double space in the @code{@@example} is due to the way 
+@code{\scantokens} inserts spaces after control sequences.)
+
+
+
 
 @chapter Index display
 
@@ -482,7 +525,6 @@ doesn't start with an initial.
 
 See following pages
 
-@tracingmacros=1
 @showboxdepth=1000
 @showboxbreadth=1000
 

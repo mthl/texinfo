@@ -1,5 +1,34 @@
 2015-09-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\macroargctxt): Do \catcode`\^^M=\other, to 
+	preserve newlines in a macro argument.
+	(\parsemargdef): Put \processmacroarg instead of \xeatspaces in 
+	\macarg.ARG.
+	(\gobblespaces): New macro.
+	(\defmacro): If number of parameters is 1, don't use \eatspaces 
+	on the argument, but do put \gobblespaces before it.
+
+	(\getargs): Say in comment what this macro does.
+
+	Move code to process macros with more than 9 arguments together 
+	in the file.
+	(\getargvals@@): Remove comment.
+	(\setemptyargvalues@): Change a word in a comment.
+
+	(\parsemacbody, \parsermacbody, \defmacro): Rename \temp to 
+	\macrobody.
+
+	(\texisavetoksstackpoint, \texirestoretoksstackpoint) 
+	(\texionouternewtoks): Remove these macros which aren't used anywhere.
+
+	* doc/texinfo-tex-test.texi: Add examples for a multi-line macro 
+	argument, and trimming whitespace from a macro argument.
+
+	Some of these changes are to handle better macros in the GNU tar 
+	manual.
+
+2015-09-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi: Re-add "@setfilename" line, required by 
 	Automake 1.15.  Reported by Stefan Husmann.
 
