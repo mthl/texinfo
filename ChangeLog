@@ -1,4 +1,9 @@
-2015-09-05  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-09-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\itemizeitem): Check not in inner mode before 
+	using \vadjust.
+
+2015-09-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\macroargctxt): Do \catcode`\^^M=\other, to 
 	preserve newlines in a macro argument.
@@ -27,7 +32,7 @@
 	Some of these changes are to handle better macros in the GNU tar 
 	manual.
 
-2015-09-05  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-09-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi: Re-add "@setfilename" line, required by 
 	Automake 1.15.  Reported by Stefan Husmann.
