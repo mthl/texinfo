@@ -1,5 +1,19 @@
 2015-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Command Syntax): Make a section of an 
+	appendix on @-commands.
+	(@-Command Details): New appendix.
+	(Command List, Command Contexts): Make sections of the new 
+	appendix.
+	(Conventions): Move some of the information from Command Syntax 
+	here.
+	(Short Sample): Reorder words in a heading.
+	(Def Cmd Continuation Lines, Inserting an Atsign): Add 
+	@sortas{@@} specifiers
+	(@documentdescription): Add @code around "<meta>".
+
+2015-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\indexnonalnumdisappear)
 	(\indexnonalnumreappear): Disregard @ when sorting index 
 	entries.
