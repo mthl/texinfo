@@ -1,3 +1,14 @@
+2015-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\indexnonalnumdisappear)
+	(\indexnonalnumreappear): Disregard @ when sorting index 
+	entries.
+	Remove commented-out definition of \l.
+	(\initial): Reduce end of column glue from 6 lines to 5 lines.
+	(\group, \addgroupbox): Split out function.
+	(\cartouche): Use \addgroupbox, in order to break the page if 
+	there isn't enough room on the current page for the cartouche.
+
 2015-09-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\itemizeitem): Check not in inner mode before 

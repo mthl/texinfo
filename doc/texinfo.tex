@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-09-06.22}
+\def\texinfoversion{2015-09-07.22}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -690,6 +690,12 @@
     \endgraf % Not \par, as it may have been set to \lisppar.
     \global\dimen1 = \prevdepth
   \egroup           % End the \vtop.
+  \addgroupbox
+  \prevdepth = \dimen1
+  \checkinserts
+}
+
+\def\addgroupbox{
   % \dimen0 is the vertical size of the group's box.
   \dimen0 = \ht\groupbox  \advance\dimen0 by \dp\groupbox
   % \dimen2 is how much space is left on the page (more or less).
@@ -702,9 +708,8 @@
     \fi
   \fi
   \box\groupbox
-  \prevdepth = \dimen1
-  \checkinserts
 }
+
 %
 % TeX puts in an \escapechar (i.e., `@') at the beginning of the help
 % message, so this ends up printing `@group can only ...'.
@@ -2753,11 +2758,6 @@ end
 %
 \def\dmn#1{\thinspace #1}
 
-% @l was never documented to mean ``switch to the Lisp font'',
-% and it is not used as such in any manual I can find.  We need it for
-% Polish suppressed-l.  --karl, 22sep96.
-%\def\l#1{{\li #1}\null}
-
 % @acronym for "FBI", "NATO", and the like.
 % We print this one point size smaller, since it's intended for
 % all-uppercase.
@@ -4660,12 +4660,14 @@ end
     \backslashdisappear
     \def-{}%
     \def<{}%
+    \def\@{}%
   }
 
   \gdef\indexnonalnumreappear{%
     \useindexbackslash
     \let-\normaldash
     \let<\normalless
+    \def\@{@}%
   }
 }
 
@@ -5083,9 +5085,9 @@ end
   % The glue before the bonus allows a little bit of space at the
   % bottom of a column to reduce an increase in inter-line spacing.
   \nobreak
-  \vskip 0pt plus 6\baselineskip
+  \vskip 0pt plus 5\baselineskip
   \penalty -300 
-  \vskip 0pt plus -6\baselineskip
+  \vskip 0pt plus -5\baselineskip
   %
   % Typeset the initial.  Making this add up to a whole number of
   % baselineskips increases the chance of the dots lining up from column
@@ -6538,7 +6540,7 @@ end
   % collide with the section heading.
   \ifnum\lastpenalty>10000 \vskip\parskip \penalty\lastpenalty \fi
   %
-  \vbox\bgroup
+  \setbox\groupbox=\vbox\bgroup
       \baselineskip=0pt\parskip=0pt\lineskip=0pt
       \carttop
       \hbox\bgroup
@@ -6562,6 +6564,7 @@ end
       \egroup
       \cartbot
   \egroup
+  \addgroupbox
   \checkinserts
 }
 
