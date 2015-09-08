@@ -1,3 +1,16 @@
+2015-09-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (usage),
+	doc/texinfo.texi (Format with texi2dvi): Move discussion of the 
+	pros and cons of --tidy.
+
+	* doc/texinfo.texi (Format with texi2dvi): Mention that a line 
+	can't start with "@c (_texi2dvi)" either.  In paragraph about 
+	etex, change "they are" to "it is" in a sentence, and reorder a 
+	sentence, and move this paragraph to the end.  Move --command 
+	paragraph after discussion of output and input format options.
+	Move mention of --help earlier.
+
 2015-09-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/texi2dvi (make_openout_test): Add a comment.

@@ -179,35 +179,16 @@ Build modes:
   --max-iterations=N   don't process files more than N times [$max_iters]
 
 The MODE specifies where the TeX compilation takes place, and, as a
-consequence, how auxiliary files are treated.  The build mode
-can also be set using the environment variable TEXI2DVI_BUILD_MODE.
+consequence, how auxiliary files are treated.  The build mode can also
+be set using the environment variable TEXI2DVI_BUILD_MODE.
 
-Valid MODEs are:
+Valid values of MODE are:
   \`local'      compile in the current directory, leaving all the auxiliary
                files around.  This is the traditional TeX use.
   \`tidy'       compile in a local *.t2d directory, where the auxiliary files
                are left.  Output files are copied back to the original file.
   \`clean'      same as \`tidy', but remove the auxiliary directory afterwards.
                Every compilation therefore requires the full cycle.
-
-Using the \`tidy' mode brings several advantages:
-  - the current directory is not cluttered with plethora of temporary files.
-  - clutter can be even further reduced using --build-dir=dir: all the *.t2d
-    directories are stored there.
-  - clutter can be reduced to zero using, e.g., --build-dir=/tmp/\$USER.t2d
-    or --build-dir=\$HOME/.t2d.
-  - the output file is updated after every successful TeX run, for
-    sake of concurrent visualization of the output.  In a \`local' build
-    the viewer stops during the whole TeX run.
-  - if the compilation fails, the previous state of the output file
-    is preserved.
-  - PDF and DVI compilation are kept in separate subdirectories
-    preventing any possibility of auxiliary file incompatibility.
-
-On the other hand, because \`tidy' compilation takes place in another
-directory, occasionally TeX won't be able to find some files (e.g., when
-using \\graphicspath): in that case, use -I to specify the additional
-directories to consider.
 
 The values of these environment variables are used to run the
 corresponding commands, if they are set:
