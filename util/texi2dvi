@@ -1446,12 +1446,15 @@ make_openout_test ()
 \immediate\openout\ourwrite dum.dum
 \bye
 EOF
+    # \bye doesn't work for LaTeX, but it will cause latex
+    # to exit with an input error.
     recorder_option_maybe="$1"
     make_tex_cmd 
-    tex_cmd="$tex_cmd openout.tex"
+    tex_cmd="$tex_cmd ./openout.tex"
+    # ./ in case . isn't in path
     verbose "$0: running $tex_cmd ..."
     rm -fr "openout.$2"
-    eval "$tex_cmd" > /dev/null 2>&1
+    eval "$tex_cmd" </dev/null >/dev/null 2>&1
 }
 
 # Check tex supports -recorder option

@@ -1,3 +1,8 @@
+2015-09-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (make_openout_test): Put "./" in front of path 
+	of test file.  Supply /dev/null as input of TeX engine.
+
 2015-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Command Syntax): Make a section of an 
