@@ -1,5 +1,14 @@
 2015-09-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* util/texi2dvi (make_openout_test): Add a comment.
+
+2015-09-08  Vincent Belaïche  <vincent.belaiche@gmail.com>
+
+	* util/texi2dvi (make_openout_test): Save and restore 
+	catcode_special, and use catcode_special=false for make_tex_cmd.
+
+2015-09-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/texi2dvi (make_openout_test): Put "./" in front of path 
 	of test file.  Supply /dev/null as input of TeX engine.
 

@@ -1436,6 +1436,8 @@ compile ()
   run_tex_suite
 }
 
+# make_openout_test FLAGS EXTENSION
+# - Run TeX with an input file that performs an \openout.  Pass FLAGS to TeX.
 #
 make_openout_test ()
 {
@@ -1449,7 +1451,10 @@ EOF
     # \bye doesn't work for LaTeX, but it will cause latex
     # to exit with an input error.
     recorder_option_maybe="$1"
-    make_tex_cmd 
+    save_catcode_special=$catcode_special
+    catcode_special=false
+    make_tex_cmd
+    catcode_special=$save_catcode_special
     tex_cmd="$tex_cmd ./openout.tex"
     # ./ in case . isn't in path
     verbose "$0: running $tex_cmd ..."
