@@ -4,6 +4,13 @@
 	Add caveat about @setfilename removal.
 	* doc/texinfo-tex-test.texi: Add examples for cross-references, 
 	and part pages.
+	* doc/texinfo.texi (One Argument, Two Arguments, Three Arguments)
+	(Four and Five Arguments, @ref, @pxref, Cross Reference Parts)
+	Update to reflect automatic comma insertion.
+	(References, One Argument): Consolidate discussion of output of 
+	cross-references in References node.
+
+	(Three Arguments): Remove a couple of sentences.
 
 2015-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
 

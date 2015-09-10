@@ -4690,27 +4690,21 @@ need.  For this reason, such creations should contain many cross
 references to help readers find other information that they may not
 have read.
 
-In a printed manual, a cross reference results in a page reference,
-unless it is to another manual altogether, in which case the cross
-reference names that manual.
+In a printed manual, a cross-reference results in a page reference,
+unless it is to another manual altogether, in which case the
+cross-reference names that manual.  In Info, a cross-reference results
+in an entry that you can follow using the Info @samp{f} command.
+(@xref{Help-Xref,, Following cross-references, info, Info}.)  In HTML, a
+cross-reference results in an hyperlink.
 
-In Info, a cross reference results in an entry that you can follow
-using the Info @samp{f} command.  (@xref{Help-Xref,, Following
-cross-references, info, Info}.)
-
-In HTML, a cross reference results in an hyperlink.
-
-The various cross reference commands use nodes (or anchors,
-@pxref{@code{@@anchor}}) to define cross reference locations.  This is
-evident in Info and HTML, in which a cross reference takes you to the
-specified location.
-
-@TeX{} also needs nodes to define cross reference locations, but the
-action is less obvious.  When @TeX{} generates a DVI file, it records
-each node's page number and uses the page numbers in making
-references.  Thus, even if you are writing a manual that will only be
-printed, and not used online, you must nonetheless write @code{@@node}
-lines in order to name the places to which you make cross references.
+The various cross-reference commands use nodes (or anchors,
+@pxref{@code{@@anchor}}) to define cross-reference locations.
+@TeX{} needs nodes to define cross-reference locations.  When @TeX{}
+generates a DVI file, it records each node's page number and uses the 
+page numbers in making references.  Thus, even if you are writing a 
+manual that will only be printed, and not used online, you must 
+nonetheless write @code{@@node} lines in order to name the places to 
+which you make cross-references.
 
 @need 800
 @node Cross Reference Commands
@@ -4856,13 +4850,6 @@ Whitespace before and after the commas separating these arguments is
 ignored.  To include a comma in one of the arguments, use
 @code{@@comma@{@}} (@pxref{Inserting a Comma}).
 
-A period or comma should follow the closing brace of an @code{@@xref}.
-It is required to terminate the cross-reference.  This period or comma
-will appear in the output.  This period or comma is not generated
-automatically, so you must write it yourself; otherwise, Info will
-not recognize the end of the reference.  (The @code{@@pxref} command
-works differently; @pxref{@code{@@pxref}}.)
-
 Cross references with one, two, three, four, and five arguments are
 described separately following the description of @code{@@xref}.
 
@@ -4897,10 +4884,7 @@ beginning of a sentence.
 @cindex One-argument form of cross references
 
 The simplest form of @code{@@xref} takes one argument, the name of
-another node in the same Texinfo file.  The Info formatters produce
-output that the Info readers can use to jump to the reference; @TeX{}
-produces output that specifies the page and section number for you;
-the HTML output is a normal hyperlink.
+another node in the same Texinfo file.
 
 @need 700
 @noindent
@@ -4926,51 +4910,20 @@ See Section 3.1 [Tropical Storms], page 24.
 
 @noindent
 in a printed manual.
-(Note that in the preceding example the closing brace to
-@code{@@xref}'s argument is followed by a period.)
-
-You can write a clause after the cross reference, like this:
-
-@example
-@@xref@{Tropical Storms@}, for more info.
-@end example
-
-@noindent
-which produces
-
-@example
-*Note Tropical Storms::, for more info.
-@end example
-
-@noindent
-in Info and
-
-@quotation
-See Section 3.1 [Tropical Storms], page 24, for more info.
-@end quotation
-
-
-@noindent
-in a printed manual.  Note that in the preceding example the closing
-brace to @code{@@xref} is followed by a comma, then the additional
-text.  It's a common mistake to follow an @code{@@xref} command with a
-space, but this is never correct.
 
 
 @node Two Arguments
 @subsection @code{@@xref} with Two Arguments
 @cindex Two-argument form of cross references
 
-With two arguments, the second is used as the name of the cross
-reference, while the first is still the name of the node to which the
-cross reference points.
+With two arguments, the second is used as a label for the online output.
 
 @need 750
 @noindent
 The template is like this:
 
 @example
-@@xref@{@var{node-name}, @var{cross-reference-name}@}.
+@@xref@{@var{node-name}, @var{online-label}@}.
 @end example
 
 @need 700
@@ -4996,34 +4949,7 @@ See Section 5.2 [Electrical Effects], page 57.
 @end quotation
 
 @noindent
-in a printed manual.
-(Note that in the preceding example the closing brace is followed by a
-period; and that the node name is printed, not the cross reference name.)
-
-You can write a clause after the cross reference, like this:
-
-@example
-@@xref@{Electrical Effects, Lightning@}, for more info.
-@end example
-
-@noindent
-which produces
-
-@example
-*Note Lightning: Electrical Effects, for more info.
-@end example
-
-@noindent
-in Info and
-
-@quotation
-See Section 5.2 [Electrical Effects], page 57, for more info.
-@end quotation
-
-@noindent
-in a printed manual.  (Note that in the preceding example the closing
-brace is followed by a comma, and then by the clause, which is
-followed by a period.)
+in a printed manual, where the node name is printed.
 
 The second argument to cross references must observe some of the
 restrictions for node names (@pxref{Node Line Requirements}).  The
@@ -5037,14 +4963,7 @@ with the parsing of the Info file.
 
 A third argument replaces the node name in the @TeX{} output.  The third
 argument should be the name of the section in the printed output, or
-else state the topic discussed by that section.  Often, you will want to
-use initial uppercase letters so it will be easier to read when the
-reference is printed.  Use a third argument when the node name is
-unsuitable because of syntax or meaning.
-
-Remember to write a comma or period after the closing brace of an
-@code{@@xref} to terminate the cross reference.  In the following
-examples, a clause follows a terminating comma.
+else state the topic discussed by that section.
 
 @need 750
 @noindent
@@ -5145,9 +5064,6 @@ names.
 In a cross reference, a fourth argument specifies the name of another
 Info file, different from the file in which the reference appears, and
 a fifth argument specifies its title as a printed manual.
-
-Remember that a comma or period must follow the closing brace of an
-@code{@@xref} command to terminate the cross reference.
 
 @need 800
 @noindent
@@ -5394,16 +5310,6 @@ but is awkward to read in Info, ``note'' being a verb:
 Sea surges are described in *note Hurricanes::.
 @end example
 
-You should write a period or comma immediately after a @code{@@ref}
-command with two or more arguments.  If there is no such following
-punctuation, @command{makeinfo} will generate a (grammatically
-incorrect) period in the Info output; otherwise, the cross reference
-would fail completely, due to the current syntax of Info format.
-
-In general, it is best to use @code{@@ref} only when you need some
-word other than ``see'' to precede the reference.  When ``see'' (or
-``See'') is ok, @code{@@xref} and @code{@@pxref} are preferable.
-
 
 @node @code{@@pxref}
 @section @code{@@pxref}
@@ -5416,27 +5322,8 @@ word other than ``see'' to precede the reference.  When ``see'' (or
 The parenthetical reference command, @code{@@pxref}, is nearly the
 same as @code{@@xref}, but it is best used at the end of a sentence or
 before a closing parenthesis.  The command differs from @code{@@xref}
-in two ways:
-
-@enumerate
-@item
-@TeX{} typesets the reference for the printed manual with a lowercase
-`see' rather than an uppercase `See'.
-
-@item
-The Info formatting commands automatically end the reference with a
-closing colon or period, if necessary.
-@end enumerate
-
-@code{@@pxref} is designed so that the output looks right and works
-right at the end of a sentence or parenthetical phrase, both in
-printed output and in an Info file.  In a printed manual, a closing
-comma or period should not follow a cross reference within
-parentheses; such punctuation is wrong.  But in an Info file, suitable
-closing punctuation must follow the cross reference so Info can
-recognize its end.  @code{@@pxref} spares you the need to use
-complicated methods to put a terminator into one form of the output
-and not the other.
+in that @TeX{} typesets the reference for the printed manual with a
+lowercase `see' rather than an uppercase `See'.
 
 @noindent
 With one argument, a parenthetical cross reference looks like this:
@@ -5508,12 +5395,6 @@ which outputs (in Info):
 @example
 @dots{} For more information, *note More::.
 @end example
-
-@noindent
-In general, @code{@@pxref} should only be followed by a comma, period,
-or right parenthesis; in other cases, @command{makeinfo} has to insert
-a period to make the cross reference work correctly in Info, and that
-period looks wrong.
 
 As a matter of style, @code{@@pxref} is best used at the ends of
 sentences.  Although it technically works in the middle of a sentence,
