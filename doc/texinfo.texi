@@ -2988,10 +2988,6 @@ end-of-header line at the beginning of a Texinfo file, so the region
 formatting commands indent paragraphs as specified.  @xref{Start of
 Header}.
 
-A peculiarity of the @code{texinfo-format-buffer} and
-@code{texinfo-format-region} commands is that they do not indent (nor
-fill) paragraphs that contain @code{@@w} or @code{@@*} commands.
-
 
 @node @code{@@firstparagraphindent}
 @subsection @code{@@firstparagraphindent}: Indenting After Headings
@@ -17918,6 +17914,10 @@ provide you with further help in finding formatting errors.  These
 procedures are described in an appendix; see @ref{Catching Mistakes}.
 However, the @code{makeinfo} program provides better error checking
 (@pxref{@code{makeinfo} in Emacs}).
+
+A peculiarity of the @code{texinfo-format-buffer} and
+@code{texinfo-format-region} commands is that they do not indent (nor
+fill) paragraphs that contain @code{@@w} or @code{@@*} commands.
 
 
 @node Batch Formatting

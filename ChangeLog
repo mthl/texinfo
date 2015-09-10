@@ -1,5 +1,13 @@
 2015-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (@paragraphindent): Move sentence about 
+	texinfo-format-buffer out of here, as it appears not to be 
+	relevant.
+	(texinfo-format commands): Move it here.
+
+
+2015-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Mention comma insertion for cross-reference commands.  
 	Add caveat about @setfilename removal.
 	* doc/texinfo-tex-test.texi: Add examples for cross-references, 
