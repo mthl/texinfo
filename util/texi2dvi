@@ -203,6 +203,12 @@ dvipdf dvi2pdf dvitopdf.
 Any CMD strings are added after @setfilename for Texinfo input, or in
 the first line for LaTeX input.
 
+If Texinfo is installed on your site, then the command
+
+  info texi2dvi
+  
+should give you access to more documentation.
+
 Report bugs to bug-texinfo@gnu.org,
 general questions and discussion to help-texinfo@gnu.org.
 GNU Texinfo home page: <http://www.gnu.org/software/texinfo/>
