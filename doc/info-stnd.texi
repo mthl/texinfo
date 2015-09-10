@@ -1514,12 +1514,9 @@ A @dfn{mode line} is a line of inverse video which appears at the bottom
 of an Info window.  It describes the contents of the window just above
 it; this information includes the name of the file and node appearing in
 that window, the number of screen lines it takes to display the node,
-and the percentage of text that is above the top of the window.  It can
-also tell you if the indirect tags table for this Info file needs to be
-updated, and whether or not the Info file was compressed when stored on
-disk.
+and the percentage of text that is above the top of the window.
 
-Here is a sample mode line for a window containing an uncompressed file
+Here is a sample mode line for a window containing a file
 named @file{dir}, showing the node @samp{Top}.
 
 @example
@@ -1530,21 +1527,12 @@ named @file{dir}, showing the node @samp{Top}.
 @end group
 @end example
 
-When a node comes from a file which is compressed on disk, this is
-indicated in the mode line with two small @samp{z}'s.  In addition, if
-the Info file containing the node has been split into subfiles, the name
-of the subfile containing the node appears in the mode line as well:
-
-@example
---zz-Info: (emacs)Top, 291 lines --Top-- Subfile: emacs-1.Z-------------
-@end example
-
 Truncation of long lines (as opposed to wrapping them to the next
 display line, @pxref{Scrolling Commands, toggle-wrap}) is indicated by a
 @samp{$} at the left edge of the mode line:
 
 @example
---$--Info: (texinfo)Top, 480 lines --Top-- Subfile: texinfo-1-----------
+--$--Info: (texinfo)Top, 480 lines --Top--------------------------------
 @end example
 
 When Info makes a node internally, such that there is no corresponding
@@ -2410,7 +2398,7 @@ Here is an sample excerpt from an @file{.infokey} file:
 @example
 #var
 ref-rendition=yellow
-hl-ref-rendition=bold,yellow
+hl-ref-rendition=yellow,bold
 match-rendition=underline,bold,nocolour
 @end example
 

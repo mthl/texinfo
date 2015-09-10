@@ -1,3 +1,12 @@
+2015-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/window.c (window_make_modeline),
+	* doc/info-stnd.texi (The Mode Line): Remove *Tags out of Date* 
+	message, because it often won't fit in the mode line, the user 
+	won't know what it means, or be able to do anything about it.  
+	Also remove "Subfile:" part for split files (the subfile can 
+	still be shown with the "=" command.), and the "zz" part.
+
 2015-09-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/texi2dvi (usage),

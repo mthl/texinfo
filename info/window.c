@@ -899,7 +899,6 @@ window_make_modeline (WINDOW *window)
     int modeline_len = 0;
     char *parent = NULL, *filename = "*no file*";
     char *nodename = "*no node*";
-    const char *update_message = NULL;
     NODE *node = window->node;
 
     if (node)
@@ -917,9 +916,6 @@ window_make_modeline (WINDOW *window)
             parent = 0;
             filename = filename_non_directory (node->fullpath);
           }
-
-        if (node->flags & N_UpdateTags)
-          update_message = _("--*** Tags out of Date ***");
       }
 
     if (preprocess_nodes_p)
@@ -954,11 +950,6 @@ window_make_modeline (WINDOW *window)
       }
     else
       {
-        if (node && node->subfile)
-            modeline_len += strlen ("Subfile: ") + strlen (node->subfile);
-
-        if (update_message)
-          modeline_len += strlen (update_message);
         modeline_len += strlen (filename);
         modeline_len += strlen (nodename);
         modeline_len += 4;          /* strlen (location_indicator). */
@@ -976,16 +967,10 @@ window_make_modeline (WINDOW *window)
                    (window->flags & W_NoWrap) ? "$" : "-",
                    nodename, window->line_count, location_indicator);
         else
-          sprintf (modeline, _("-%s%s-Info: (%s)%s, %ld lines --%s--"),
+          sprintf (modeline, _("-%s---Info: (%s)%s, %ld lines --%s--"),
                    (window->flags & W_NoWrap) ? "$" : "-",
-                   (node && (node->flags & N_IsCompressed)) ? "zz" : "--",
                    parent ? parent : filename,
                    nodename, window->line_count, location_indicator);
-        if (node->subfile)
-          sprintf (modeline + strlen (modeline), _(" Subfile: %s"), filename);
-
-        if (update_message)
-          sprintf (modeline + strlen (modeline), "%s", update_message);
       }
 
     i = strlen (modeline);
