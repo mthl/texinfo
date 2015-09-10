@@ -15086,6 +15086,35 @@ not required, and the DVI output is identical.
 same, but we still run @command{pdfetex} to cater to ancient @TeX{}
 installations.)
 
+@cindex filename recorder for @TeX{}
+@cindex @samp{\openout} line in log file
+@command{texi2dvi} attempts to detect auxiliary files output by @TeX{}, 
+either by using the @option{-recorder} option, or by scanning for 
+@samp{\openout} in the log file that a run of @TeX{} produces.  You may
+control how @command{texi2dvi} does this with the @env{TEXI2DVI_USE_RECORDER}
+environment variable.  Valid values are:
+
+@table @samp
+@item yes
+use the @option{-recorder} option, no checks.
+
+@item no
+scan for @samp{\openout} in the log file, no checks.
+
+@item yesmaybe
+check whether @option{-recorder} option is supported, and if yes
+use it, otherwise check for tracing @samp{\openout} in the log file is 
+supported, and if yes use it, else it is an error.
+
+@item nomaybe
+same as @samp{yesmaybe}, except that the @samp{\openout} trace in log 
+file is checked first.
+@end table
+
+The default behaviour is that specified by @samp{yesmaybe}.
+This environment variable is provided for troubleshooting purposes, and 
+may change or disappear in the future.
+
 
 @node Format with @command{tex}/@command{texindex}
 @section Format with @command{tex}/@command{texindex}

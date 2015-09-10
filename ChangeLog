@@ -1,6 +1,8 @@
 2015-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/texi2dvi (usage): Add reference to "info texi2dvi".
+	* doc/texinfo.texi (Format with texi2dvi): Document 
+	TEXI2DVI_USE_RECORDER.
 
 2015-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
