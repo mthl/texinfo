@@ -22,6 +22,8 @@
 
 @contents
 
+@part Part One@*Sample part page
+
 @chapter Macros
 @section Backslashes in macro arguments
 
@@ -589,5 +591,22 @@ See following pages
 \initial{F}
 \finishindex
 
+
+@part Another part@*Note no headline on this page
+
+@chapter Cross-references
+
+Check commas surrounding page number:
+
+@noindent
+@xref{Target}, for more information (@code{@@xref})@*
+@xref{Target} for more information@*
+@xref{Target}.@*
+See @ref{Target}, for more information (@code{@@ref})@*
+See @ref{Target} for more information@*
+See @ref{Target}.@*
+
+@node Target
+@section Target
 
 @bye
