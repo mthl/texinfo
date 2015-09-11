@@ -1,5 +1,10 @@
 2015-09-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\part): Call \chapmacro in order to output a 
+	mark on the page to clear \thischapter.
+
+2015-09-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\onepageout): Check if we've just changed 
 	chapter, and if so, blank \thischapter so the name of the 
 	chapter isn't doubled in the headline.
