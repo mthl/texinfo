@@ -1,5 +1,10 @@
 2015-09-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo-tex-texi.texi: Add example of chapter after a part 
+	page, and examples of @pxref.
+
+2015-09-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\part): Call \chapmacro in order to output a 
 	mark on the page to clear \thischapter.
 

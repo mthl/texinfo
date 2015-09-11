@@ -18,7 +18,7 @@
 \input texinfo
 @settitle Test Document for @file{texinfo.tex}
 
-@everyheading @thischapter @| @| @thissection
+@everyheading @thischapter @| @| @thissection{} p@thispage
 
 @contents
 
@@ -594,6 +594,11 @@ See following pages
 
 @part Another part@*Note no headline on this page
 
+@chapter First chapter after a part page
+
+Have a look at the headline.
+
+
 @chapter Cross-references
 
 Check commas surrounding page number:
@@ -605,6 +610,8 @@ Check commas surrounding page number:
 See @ref{Target}, for more information (@code{@@ref})@*
 See @ref{Target} for more information@*
 See @ref{Target}.@*
+(@pxref{Target}) (@code{@@pxref})@*
+(@pxref{Target,, Hurricanes})
 
 @node Target
 @section Target
