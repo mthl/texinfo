@@ -1,10 +1,31 @@
+2015-09-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\onepageout): Check if we've just changed 
+	chapter, and if so, blank \thischapter so the name of the 
+	chapter isn't doubled in the headline.
+
+	(\bindingoffset, \normaloffset, \pagewidth, \pageheight)
+	(\finalout): No change, but move in file closer to the rest of 
+	the output stuff.
+
+	(\begindoublecolumns): Propagate information in \topmark and 
+	\firstmark across first output routine.
+
+	(\gettopheadingmarks, \getbottomheadingmarks, \onepageout)
+	(\pagebody, \centerchap, \chappager, \chapoddpage, \chapmacro)
+	(\headline, \footline): Add or change comments.
+
+	(\initial): Increase pre-initial stretch from 0.5\baselineskip 
+	to 1\baselineskip.
+	(\balancecolumns): When not balancing final columns, allow glue
+	in second column to stretch.
+
 2015-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (@paragraphindent): Move sentence about 
 	texinfo-format-buffer out of here, as it appears not to be 
 	relevant.
 	(texinfo-format commands): Move it here.
-
 
 2015-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
