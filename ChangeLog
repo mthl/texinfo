@@ -1,5 +1,11 @@
 2015-09-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-utils.c (avoid_see_see): Function removed.
+	(scan_reference_marker) <hide-note-references=On>: Hide "*note" 
+	more enthusiastically.
+
+2015-09-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\entryrightmargin): Define sequence with 
 	\newdimen.
 	(\startcontents): Instead of reducing \hsize, set 

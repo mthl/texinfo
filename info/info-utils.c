@@ -1161,50 +1161,11 @@ parse_top_node_line (NODE *node)
     }
 }
 
-/* Check if preceding word is a word like "see".  BASE points before PTR in
-   a block of allocated memory. */
-static int
-avoid_see_see (char *ptr, char *base)
-{
-  /* TODO: Only do this for English-language files. */
-  static char *words_like_see[] = {
-    "see", "See", "In", "in", "of", "also"
-  };
-  int i;
-  int word_len = 0;
-
-  if (ptr == base)
-    return 0;
-
-  /* Skip past whitespace, and then go to beginning of preceding word. */
-  ptr--;
-  while (ptr > base && (*ptr == ' ' || *ptr == '\n' || *ptr == '\r'
-                        || *ptr == '\t' || *ptr == '('))
-    ptr--;
-
-  while (ptr > base && !(*ptr == ' ' || *ptr == '\n' || *ptr == '\r'
-                         || *ptr == '\t' || *ptr == '(' ))
-    {
-      ptr--;
-      word_len++;
-    }
-
-  ptr++;
-
-  /* Check if it is in our list. */
-  for (i = 0; i < sizeof (words_like_see) / sizeof (char *); i++)
-    {
-      if (!strncmp (words_like_see[i], ptr, word_len))
-        return 1;
-    }
-  return 0;
-}
-
 /* Output, replace or hide text introducing a reference.  INPTR starts on
    the first byte of a sequence introducing a reference and finishes on the
    first (non-whitespace) byte of the reference label. */
 static int
-scan_reference_marker (REFERENCE *entry)
+scan_reference_marker (REFERENCE *entry, int in_parentheses)
 {
   /* When preprocess_nodes is Off, we position the cursor on
      the "*" when moving between references. */
@@ -1241,23 +1202,28 @@ scan_reference_marker (REFERENCE *entry)
          and "See" in HTML and print.  @ref and @pxref output "*note "
          in Info format, and either nothing at all or "see" in HTML
          and print.  Unfortunately, there is no easy way to distinguish
-         between these latter two cases.  We must make do with
-         displayed manuals occasionally containing "See see" and the
-         like. */
+         between these latter two cases. */
       /* TODO: Internationalize these strings, but only if we know the
          language of the document. */
       if (inptr[1] == 'N')
-        write_extra_bytes_to_output ("See", 3);
-      else
         {
-          previous_word_is_like_see = avoid_see_see (inptr, input_start);
-
-          if (!previous_word_is_like_see)
-            write_extra_bytes_to_output ("see", 3);
+          write_extra_bytes_to_output ("See", 3);
+          in_parentheses = 1;
+        }
+      else if (in_parentheses)
+        {
+          write_extra_bytes_to_output ("see", 3);
+          /* Only output the "see" for input like "(*note ...)", which
+             would have come from a use of @pxref.  We used to output "see" for 
+             "*note" in more circumstances, with a list of words where to
+             suppress it (to avoid "see *note" turning into "see see"), but
+             such a list can't be complete or reliable.  It's better to remove 
+             it with more enthusiasm, then if the document writer wants a "see"
+             to appear, they can add one themselves. */
         }
 
       skip_input (strlen ("*Note"));
-      if (previous_word_is_like_see)
+      if (!in_parentheses)
         skip_input (skip_whitespace (inptr));
     }
 
@@ -1691,7 +1657,7 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
 
           save_conversion_state ();
           
-          if (!scan_reference_marker (entry)
+          if (!scan_reference_marker (entry, in_parentheses)
               || !scan_reference_label (entry)
               || !scan_reference_target (entry, node, in_parentheses))
             {
