@@ -1,5 +1,25 @@
 2015-09-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\entryrightmargin): Define sequence with 
+	\newdimen.
+	(\startcontents): Instead of reducing \hsize, set 
+	\entryrightmargin.
+	(\entry): Set \rightskip and \parfillskip to add a margin at the 
+	right which we can stretch into if needed, from the value of 
+	\entryrightmargin.  Add setting for \linepenalty.  Set 
+	\hangafter explicitly.
+	(\finishentry): Remove \hfil glue before leaders.  Use 
+	\thinspace before page number instead of `\ '.
+	(\indexdotfill): Use a non-infinite stretch for the leaders.
+	(\chapentry): Move page numbers to right slightly.
+
+	(\chapmacro): Cancel \topskip glue before heading.
+	(\appentry): Narrow the space after word "Appendix".
+
+	(\indexdummies): Remove part of comment.
+
+2015-09-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Macro Details): Reinstate discussion of 
 	workaround for macro arguments with cedillas.  Also arguments to 
 	macros with a single argument should be able to cross lines.
