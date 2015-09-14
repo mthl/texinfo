@@ -1,3 +1,9 @@
+2015-09-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Macro Details): Reinstate discussion of 
+	workaround for macro arguments with cedillas.  Also arguments to 
+	macros with a single argument should be able to cross lines.
+
 2015-09-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo-tex-texi.texi: Add example of chapter after a part 
