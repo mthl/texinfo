@@ -1,3 +1,8 @@
+2015-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/refcard/Makefile: Put "./" in front of txicmdcheck and 
+	txivarcheck.
+
 2015-09-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/info-utils.c (avoid_see_see): Function removed.
