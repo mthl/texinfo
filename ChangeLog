@@ -4,6 +4,8 @@
 	txivarcheck.
 	* README-hacking: Mention "make ccheck" and "make vcheck" for 
 	refcard.
+	* doc/refcard/txicmdcheck (read_refman): Look for @section line
+	instead of @appendix.  Failure reported by Karl.
 
 2015-09-14  Gavin Smith  <gavinsmith0123@gmail.com>
 

@@ -179,7 +179,7 @@ sub read_refman {
   $FILE = $fname;
   open (FILE) || die "open($FILE) failed: $!";
   while (<FILE>) {
-    last if /^\@appendix \@\@-Command List/;  # ignore until right appendix
+    last if /^\@section \@\@-Command List/;  # ignore until right section
   }
   while (<FILE>) {
     last if /^\@end table/; # ignore again after the summary
