@@ -123,6 +123,7 @@ Ensure texinfo.tex, texi2dvi, and htmlxref.cnf are updated on ftp.gnu.org.
 Ensure TXI_XLATE in doc/Makefile.am matches actual file list.
 Check that TEXINFO_DTD_VERSION has been updated to the next version in
   configure.ac if the DTD has been modified since the last release.
+Check "make ccheck" and "make vcheck" work in "doc/refcard".
 
 - Official releases only:
 version number in texi2dvi, texi2pdf, txirefcard.tex.
