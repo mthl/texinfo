@@ -1,5 +1,10 @@
 2015-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi
+	(Customization Variables for @-Commands): Add @validatemenus.
+
+2015-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/refcard/Makefile: Put "./" in front of txicmdcheck and 
 	txivarcheck.
 	* README-hacking: Mention "make ccheck" and "make vcheck" for 

@@ -16708,9 +16708,8 @@ variable with the same name (minus the leading @code{@@}):
 @@oddheading    @@oddheadingmarks
 @@pagesizes     @@paragraphindent
 @@setchapternewpage @@setcontentsaftertitlepage
-@@setfilename
-@@setshortcontentsaftertitlepage @@shortcontents
-@@urefbreakstyle @@xrefautomaticsectiontitle
+@@setfilename   @@setshortcontentsaftertitlepage @@shortcontents
+@@urefbreakstyle @@validatemenus @@xrefautomaticsectiontitle
 @end smallexample
 
 Setting such a customization variable to a value @samp{foo} is similar
