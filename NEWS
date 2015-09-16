@@ -29,7 +29,16 @@ one of the relevant sections:
     makeinfo will, where needed, create a menu for nodes lacking one 
     given explicitly.
   . An @setfilename line is no longer required at the start of a
-    Texinfo file.
+    Texinfo file.  (Be aware, though, that some other tools may require 
+    it, for example Automake.)
+  . For processing with TeX, a comma is automatically provided following
+    a @ref command when needed to separate the page number from 
+    following text, so you don't need to add one yourself.  This gives 
+    you the choice of whether to have a comma there in Info or HTML 
+    output.  For example "@xref{Another Section} for more information"
+    produces "See Another Section, page NN, for more information" in the
+    printed output, and "*Note Another Section:: for more information" 
+    in the Info output.
 
 * texinfo.tex:
   . A few characters (like \ and -) are now ignored in index entries for
