@@ -17255,6 +17255,12 @@ default @samp{:}.
 If set, warn about @samp{:} in index entry, as it leads to invalid entries in
 index menus in output Info files.  For Info and plaintext only.
 
+@item INFO_SPECIAL_CHARS_QUOTE
+If set, whenever there are problematic characters for Info output in
+places such as node names or menu items, surround the part of the
+construct where they appear with quoting characters, as described in
+@ref{Info Format Specification}.  @xref{Node Line Requirements}.
+
 @item INFO_SPECIAL_CHARS_WARNING
 If set, warn about problematic constructs for Info output (such as the
 string @samp{::}) in node names, menu items, and cross references;

@@ -2,6 +2,7 @@
 
 	* doc/texinfo.texi
 	(Customization Variables for @-Commands): Add @validatemenus.
+	(Other Customization Variables): Mention INFO_SPECIAL_CHARS_QUOTE.
 
 2015-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
