@@ -64,6 +64,9 @@ one of the relevant sections:
   . quotation marks are left out for node names and index entries in
     Info output where they would have been produced by commands such
     as @file or @option.
+  . New customization variable INFO_SPECIAL_CHARS_QUOTE to allow use of
+    a quoting mechanism for problematic constructs in Info output, for
+    example node names containing colons or commas.
 
 * info
   . new user variable `xref-rendition' enables underlining and
