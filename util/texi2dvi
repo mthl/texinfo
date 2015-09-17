@@ -1145,17 +1145,13 @@ run_tex_suite ()
     xref_files_save
 
     run_core_conversion
+    xref_files_changed || break
 
-    # We ran the conversion before making the sorted index files
-    # because otherwise a sorted *.fls file (for an index `fl') could
-    # be overwritten by a *.fls file produced with --recorder.
-    #   We run bibtex first, because it's more likely for the indexes
+    # We run bibtex first, because it's more likely for the indexes
     # to change after bibtex is run than the reverse, though either
     # would be rare.
     run_bibtex
     run_index
-
-    xref_files_changed || break
   done
 
   # If we were using thumbpdf and producing PDF, then run thumbpdf
@@ -1369,6 +1365,9 @@ run_hevea ()
 # run_core_conversion - Run TeX (or HeVeA).
 run_core_conversion ()
 {
+  # Backup a sorted index file
+  test -f "$in_noext.fls" && cp "$in_noext.fls" "$in_noext.f0s"
+
   case $in_lang:$latex2html:`out_lang_tex` in
     *:dvi|*:pdf|latex:tex4ht:html)
         run_tex;;
@@ -1377,7 +1376,17 @@ run_core_conversion ()
     *)
         error 1 "invalid input/output combination: $in_lang/$out_lang";;
   esac
+  # Use a different extension for a recorder file
   test -f "$in_noext.fls" && mv "$in_noext.fls" "$in_noext.flz"
+
+  # Restore a sorted index file
+  test -f "$in_noext.f0s" && mv "$in_noext.f0s" "$in_noext.fls"
+
+  # Stop this last command leading to an exit because of "set -e".  Even though
+  # failures in non-final components of command lists don't cause set -e
+  # to fail (failure for "test -f"), it would lead the exit status of the call
+  # to run_core_conversion to be non-zero, which *would* lead to an exit.
+  true
 }
 
 

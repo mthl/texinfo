@@ -1,4 +1,14 @@
-2015-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (run_tex_suite): Call xref_files_changed right 
+	after run_core_conversion to avoid one extra generation of the 
+	sorted index files which isn't necessary.  Reported by
+	Vincent Belaiche.
+	(run_core_conversion): Backup and restore a sorted *.fls index 
+	file to avoid it being overwritten by run_core_conversion, and 
+	so it can be checked by xref_files_changed.
+
+2015-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\entry): Store index entry in a \vtop to 
 	allow something else to be added first.
@@ -12,11 +22,11 @@
 	(\chapmacro): Don't cancel \topskip: this change was of dubious merit.
 	(\initialglyphs): Print tilde in chapter size.
 
-2015-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* NEWS: Mention INFO_SPECIAL_CHARS_QUOTE.
 
-2015-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi
 	(Customization Variables for @-Commands): Add @validatemenus.
