@@ -1,5 +1,19 @@
 2015-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\entry): Store index entry in a \vtop to 
+	allow something else to be added first.
+	(\entryorphanpenalty): Used by \entry, nothing by default.
+	(\indexorphanpenalty): Check if index entry is followed by 
+	another index entry: if not, insert a penalty before it, to 
+	discourage orphaned index entries at the top of columns.
+	(\printindex): Instead of reading entire file with \input, read 
+	it line by line.  Set \entryorphanpenalty to \indexorphanpenalty.
+
+	(\chapmacro): Don't cancel \topskip: this change was of dubious merit.
+	(\initialglyphs): Print tilde in chapter size.
+
+2015-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Mention INFO_SPECIAL_CHARS_QUOTE.
 
 2015-09-15  Gavin Smith  <gavinsmith0123@gmail.com>

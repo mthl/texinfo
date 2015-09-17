@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-09-14.16}
+\def\texinfoversion{2015-09-17.11}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -5059,11 +5059,13 @@ end
     % there is some text.
     \putwordIndexNonexistent
   \else
+    \catcode`\\ = 0
+    \escapechar = `\\
     %
     % If the index file exists but is empty, then \openin leaves \ifeof
     % false.  We have to make TeX try to read something from the file, so
     % it can discover if there is anything in it.
-    \read 1 to \temp
+    \read 1 to \thisline
     \ifeof 1
       \putwordIndexIsEmpty
     \else
@@ -5073,15 +5075,35 @@ end
       \def\indexbackslash{\ttbackslash}%
       \let\indexlbrace\{   % Likewise, set these sequences for braces
       \let\indexrbrace\}   % used in the sort key.
-      \catcode`\\ = 0
-      \escapechar = `\\
       \begindoublecolumns
-      \input \jobname.#1s
+      \let\entryorphanpenalty=\indexorphanpenalty
+      %
+      % Read input from the index file line by line.
+      \loopdo
+        \ifeof1
+          \let\firsttoken\relax
+        \else
+          \read 1 to \nextline
+          \edef\act{\gdef\noexpand\firsttoken{\getfirsttoken\nextline}}%
+          \act
+        \fi
+        \thisline
+        %
+        \ifeof1\else
+        \let\thisline\nextline
+      \repeat
+      %%
       \enddoublecolumns
     \fi
   \fi
   \closein 1
 \endgroup}
+
+\def\getfirsttoken#1{\expandafter\getfirsttokenx#1\endfirsttoken}
+\long\def\getfirsttokenx#1#2\endfirsttoken{\noexpand#1}
+
+\def\loopdo#1\repeat{\def\body{#1}\loopdoxxx}
+\def\loopdoxxx{\let\next=\relax\body\let\next=\loopdoxxx\fi\next}
 
 % These macros are used by the sorted index file itself.
 % Change them to control the appearance of the index.
@@ -5100,8 +5122,8 @@ end
   \catcode`\/=13
   \def/{{\secrmnotbold \normalslash}}%
   \def-{{\normaldash\normaldash}}% en dash `--'
-  \def^{{\chapbf \normalcaret}}
-  \let~=\normaltilde
+  \def^{{\chapbf \normalcaret}}%
+  \def~{{\chapbf \normaltilde}}%
   \def\_{%
      \leavevmode \kern.07em \vbox{\hrule width.3em height.1ex}\kern .07em }%
   \def|{$\vert$}%
@@ -5194,20 +5216,14 @@ end
     % on one line.
     \advance \parfillskip by 0pt minus .6\entryrightmargin
     %
-    % \hangindent is only relevant when the entry text and page number
-    % don't both fit on one line.  In that case, bob suggests starting the
-    % dots pretty far over on the line.  Unfortunately, a large
-    % indentation looks wrong when the entry text itself is broken across
-    % lines.  So we use a small indentation and put up with long leaders.
-    \hangafter = 1
-    \hangindent = 2em
-    %
     % Swallow the left brace of the text (first parameter):
     \afterassignment\doentry
     \let\temp =
 }
 \def\entrybreak{\unskip\space\ignorespaces}%
 \def\doentry{%
+    % Save the text of the entry in a \vtop.
+    \global\setbox\entryindexbox=\vtop\bgroup
     \bgroup % Instead of the swallowed brace.
       \noindent
       \aftergroup\finishentry
@@ -5233,8 +5249,50 @@ end
 	\thinspace#1%
       \fi
     \fi
+    % Parameters for formatting this paragraph, reset for each paragraph.
+    %
+    % \hangindent is only relevant when the entry text and page number
+    % don't both fit on one line.  In that case, bob suggests starting the
+    % dots pretty far over on the line.  Unfortunately, a large
+    % indentation looks wrong when the entry text itself is broken across
+    % lines.  So we use a small indentation and put up with long leaders.
+    %
+    \hangafter = 1
+    \hangindent = 2em
     \par
+    \egroup % The \vtop
   \endgroup
+  % delay text of entry until after penalty
+  \bgroup\aftergroup\insertindexentrybox
+  \entryorphanpenalty
+}
+
+\newbox\entryindexbox
+\def\insertindexentrybox{%
+\lineskip=0.8ex % This comes into effect when the \vtop has a large depth
+              % due to the paragraph in it having several lines.
+\box\entryindexbox}
+
+% Default is no penalty
+\let\entryorphanpenalty\egroup
+
+% Used from \printindex.  \firsttoken should be the first token
+% after the \entry.  If it's not another \entry, we are at the last
+% line of a group of index entries, so insert a penalty to discourage
+% orphaned index entries.
+\long\def\indexorphanpenalty{%
+  \def\isentry{\entry}%
+  \ifx\firsttoken\isentry
+  \else
+    \unskip\penalty 9000
+    % The \unskip here stops breaking before the glue.  It relies on the
+    % \vskip above being there, otherwise there is an error
+    % "You can't use `\unskip' in vertical mode".  There has to be glue
+    % in the current vertical list that hasn't been added to the
+    % "current page".  See Chapter 24 of the TeXbook.  This contradicts
+    % Section 8.3.7 in "TeX by Topic," though.
+  \fi
+  \egroup % now comes the box added with \aftergroup
 }
 
 % Like plain.tex's \dotfill, except uses up at least 1.2 em.
@@ -5984,8 +6042,6 @@ end
     % \donoderef, because we include the current node name in the toc
     % entry, and \donoderef resets it to empty.
     \writetocentry{\toctype}{#1}{#3}%
-    %
-    \hbox{}\kern-\topskip % Cancel \topskip glue before heading
     %
     % For pdftex, we have to write out the node definition (aka, make
     % the pdfdest) after any page break, but before the actual text has
