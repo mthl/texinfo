@@ -1,5 +1,17 @@
 2015-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\entry): Use a finite \rightskip to encourage
+	more words onto the earlier lines.  Increase \linepenalty and
+	\hyphenpenalty.  No interword stretch.  Make hanging indent 1em
+	instead of 2em.  Use a completely shrinkable space before the
+	page number.
+	(\indexdotfill): Reduce stretchability to balance stretch of 
+	\rightskip in previous lines.
+
+(\initial): Move initial slightly to left.
+
+2015-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/texi2dvi (run_tex_suite): Call xref_files_changed right 
 	after run_core_conversion to avoid one extra generation of the 
 	sorted index files which isn't necessary.  Reported by
