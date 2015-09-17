@@ -328,7 +328,7 @@ written to the file @file{infodebug} in the current working directory.
 @itemx -d @var{directory-path}
 @cindex @code{--directory} (@code{-d}) command line option
 @cindex directory path
-@cindex INFOPATH
+@cindex @env{INFOPATH}
 @anchor{INFOPATH}
 Add @var{directory-path} to the list of directory paths searched
 when Info needs to find a file.  You may issue @code{--directory}
@@ -1872,15 +1872,15 @@ Info provides you with a command for doing this.
 @table @asis
 @item @kbd{M-x print-node}
 @findex print-node
-@cindex INFO_PRINT_COMMAND, environment variable
+@cindex @env{INFO_PRINT_COMMAND}, environment variable
 Pipe the contents of the current node through the command in the
-environment variable @code{INFO_PRINT_COMMAND}.  If the variable does not
+environment variable @env{INFO_PRINT_COMMAND}.  If the variable does not
 exist, the node is simply piped to @code{lpr} (on DOS/Windows, the
 default is to print the node to the local printer device, @file{PRN}).
 
 @cindex printing nodes to the local printer
 @cindex local printer device
-The value of @code{INFO_PRINT_COMMAND} may begin with the @samp{>}
+The value of @env{INFO_PRINT_COMMAND} may begin with the @samp{>}
 character, as in @samp{>/dev/printer}, in which case Info treats the
 rest as the name of a file or a device.  Instead of piping to a command,
 Info opens the file, writes the node contents, and closes the file,

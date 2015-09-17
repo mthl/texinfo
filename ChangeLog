@@ -1,5 +1,10 @@
 2015-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-stnd.texi (Invoking Info, Printing Nodes): Use @env 
+	in index entries and in text for environment variables.
+
+2015-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\entry): Use a finite \rightskip to encourage
 	more words onto the earlier lines.  Increase \linepenalty and
 	\hyphenpenalty.  No interword stretch.  Make hanging indent 1em
@@ -8,7 +13,7 @@
 	(\indexdotfill): Reduce stretchability to balance stretch of 
 	\rightskip in previous lines.
 
-(\initial): Move initial slightly to left.
+	(\initial): Move initial slightly to left.
 
 2015-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
