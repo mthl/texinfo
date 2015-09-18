@@ -1,9 +1,14 @@
-2015-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi: Don't exempt mingw and djgpp from using ; as a 
+	path separator.  Suggested by Eli Zaretskii.
+
+2015-09-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/info-stnd.texi (Invoking Info, Printing Nodes): Use @env 
 	in index entries and in text for environment variables.
 
-2015-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-09-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\entry): Use a finite \rightskip to encourage
 	more words onto the earlier lines.  Increase \linepenalty and
@@ -15,7 +20,7 @@
 
 	(\initial): Move initial slightly to left.
 
-2015-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-09-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/texi2dvi (run_tex_suite): Call xref_files_changed right 
 	after run_core_conversion to avoid one extra generation of the 
@@ -25,7 +30,7 @@
 	file to avoid it being overwritten by run_core_conversion, and 
 	so it can be checked by xref_files_changed.
 
-2015-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-09-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\entry): Store index entry in a \vtop to 
 	allow something else to be added first.
