@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-09-17.15}
+\def\texinfoversion{2015-09-20.15}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -5195,7 +5195,7 @@ end
     \vskip 0pt plus0.5pt
     %
     % Badness calculation for paragraph affected by -
-    %  How much \indexdotfill is stretched, or how much \pafillskip is shrunk
+    %  How much \indexdotfill is stretched, or how much \parfillskip is shrunk
     %  Number of lines (\linepenalty)
     %  
     % Do not prefer a separate line ending with a hyphen to fewer lines.
@@ -5278,8 +5278,9 @@ end
 
 \newbox\entryindexbox
 \def\insertindexentrybox{%
-\lineskip=0.8ex % This comes into effect when the \vtop has a large depth
-              % due to the paragraph in it having several lines.
+\lineskip=.8ex plus .6ex % This comes into effect when the \vtop has a large 
+                         % depth due to the paragraph in it having several 
+                         % lines.
 \box\entryindexbox}
 
 % Default is no penalty
@@ -6626,6 +6627,24 @@ end
     \endgraf
     \ifdim\lastskip<\envskipamount
       \removelastskip
+      \ifnum\lastpenalty<10000
+        % Penalize breaking before the environment, because preceding text
+        % often leads into it.
+        \penalty100
+      \fi
+      \vskip\envskipamount
+    \fi
+  \fi
+}}
+
+\def\afterenvbreak{{%
+  % =10000 instead of <10000 because of a special case in \itemzzz and
+  % \sectionheading, q.v.
+  \ifnum \lastpenalty=10000 \else
+    \advance\envskipamount by \parskip
+    \endgraf
+    \ifdim\lastskip<\envskipamount
+      \removelastskip
       % it's not a good place to break if the last penalty was \nobreak
       % or better ...
       \ifnum\lastpenalty<10000 \penalty-50 \fi
@@ -6633,8 +6652,6 @@ end
     \fi
   \fi
 }}
-
-\let\afterenvbreak = \aboveenvbreak
 
 % \nonarrowing is a flag.  If "set", @lisp etc don't narrow margins; it will
 % also clear it, so that its embedded environments do the narrowing again.

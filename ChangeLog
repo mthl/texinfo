@@ -1,5 +1,13 @@
 2015-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\afterenvbreak): Copy from \aboveenvbreak.
+	(\aboveenvbreak): Insert a penalty for page breaking above 
+	environment, instead of a bonus.
+
+	(\insertindexentrybox): Set \lineskip with stretch.
+
+2015-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/texi2dvi: Don't exempt mingw and djgpp from using ; as a 
 	path separator.  Suggested by Eli Zaretskii.
 
