@@ -1,4 +1,21 @@
-2015-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-09-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\defmacro) <2-9 arguments> Define 
+	\processmacroarg as \xprocessmacroarg, and make the latter 
+	unexpandable.
+	(\scanmacro): Define \xprocessmacroarg as 
+	\passargtomacro\eatspaces, to reduce doubled backslashes to one.
+	(\commondummiesnofonts): Give \xprocessmacroarg a definition.
+
+	(\defmacro): Define helper macros with names ending in "@" 
+	instead of "x", because this causes funny results when the file 
+	contains two user-defined macros one of which has the same name 
+	as the other with an extra "x" on the end.
+
+	* doc/texinfo-tex-test.texi: Add examples with a macro with two 
+	arguments.
+
+2015-09-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\afterenvbreak): Copy from \aboveenvbreak.
 	(\aboveenvbreak): Insert a penalty for page breaking above 

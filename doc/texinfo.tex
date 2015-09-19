@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-09-20.15}
+\def\texinfoversion{2015-09-19.22}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -4679,6 +4679,7 @@ end
   % that we make for arg2 (see \parsemargdef ff.).  We want all this to be
   % expanded for the sake of the index, so we end up just seeing "bar".
   \let\xeatspaces = \eatspaces
+  \let\xprocessmacroarg\eatspaces
 }
 
 % For testing: output @{ and @} in index sort strings as \{ and \}.
@@ -7547,6 +7548,8 @@ end
 \def\scanmacro#1{%
   \newlinechar`\^^M
   \let\xeatspaces\eatspaces
+  % Reduce doubled backslashes to one
+  \def\xprocessmacroarg{\passargtomacro\eatspaces}%
   %
   % Process the macro body under the current catcode regime.
   \scantokens{#1\texinfoc}\aftermacro%
@@ -7804,11 +7807,11 @@ end
 {\catcode`\ =\other\long\gdef\parsermacbody#1@end rmacro{%
 \xdef\macrobody{\eatcr{#1}}\endgroup\defmacro}}%
 
-%%%%%%%%%%%%%% Code for > 10 arguments only   %%%%%%%%%%%%%%%%%%
-
 % Make @ a letter, so that we can make private-to-Texinfo macro names.
 \edef\texiatcatcode{\the\catcode`\@}
 \catcode `@=11\relax
+
+%%%%%%%%%%%%%% Code for > 10 arguments only   %%%%%%%%%%%%%%%%%%
 
 % If there are 10 or more arguments, a different technique is used, where the
 % hook remains in the body, and when macro is to be expanded the body is
@@ -8008,8 +8011,6 @@ end
    \long\def#2{#4}%
 }
 
-\catcode `\@\texiatcatcode\relax % end private-to-Texinfo catcodes
-
 
 %%%%%%%%%%%%%% End of code for > 10 arguments %%%%%%%%%%%%%%%%%%
 
@@ -8023,7 +8024,7 @@ end
 
 % This defines a Texinfo @macro or @rmacro, called by \parsemacbody.
 %    \macrobody has the body of the macro in it, with placeholders for
-% its parameters.
+% its parameters, looking like "\processmacroarg{\hash 1}".
 %    \paramno is the number of parameters
 %    \paramlist is a TeX parameter text, e.g. "#1,#2,#3,"
 % There are eight cases: recursive and nonrecursive macros of zero, one,
@@ -8040,8 +8041,8 @@ end
     % when the argument to \eatspaces is read, leading to line-based
     % commands like "@itemize" not being read correctly.
   \else
-    \let\xeatspaces\relax
-    \def\processmacroarg{\xeatspaces}%
+    \def\processmacroarg{\xprocessmacroarg}%
+    \let\xprocessmacroarg\relax
   \fi
   \ifrecursive   %%%%%%%%%%%%%% Recursive %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \ifcase\paramno
@@ -8052,25 +8053,25 @@ end
       \expandafter\xdef\csname\the\macname\endcsname{%
          \bgroup
          \noexpand\braceorline
-         \expandafter\noexpand\csname\the\macname xxx\endcsname}%
-      \expandafter\xdef\csname\the\macname xxx\endcsname##1{%
-         \expandafter\noexpand\csname\the\macname xxxx\endcsname{%
+         \expandafter\noexpand\csname\the\macname @@@\endcsname}%
+      \expandafter\xdef\csname\the\macname @@@\endcsname##1{%
+         \expandafter\noexpand\csname\the\macname @@@@\endcsname{%
            \noexpand\gobblespaces##1\empty}%
            % The \empty is for \gobblespaces in case #1 is empty
          }%
-      \expandafter\xdef\csname\the\macname xxxx\endcsname##1{%
+      \expandafter\xdef\csname\the\macname @@@@\endcsname##1{%
          \egroup\noexpand\scanmacro{\macrobody}}%
     \else
       \ifnum\paramno<10\relax % at most 9
         \expandafter\xdef\csname\the\macname\endcsname{%
            \bgroup\noexpand\macroargctxt
-           \noexpand\csname\the\macname xx\endcsname}%
-        \expandafter\xdef\csname\the\macname xx\endcsname##1{%
-            \expandafter\noexpand\csname\the\macname xxx\endcsname ##1,}%
+           \noexpand\csname\the\macname @@\endcsname}%
+        \expandafter\xdef\csname\the\macname @@\endcsname##1{%
+            \expandafter\noexpand\csname\the\macname @@@\endcsname ##1,}%
         \expandafter\expandafter
         \expandafter\xdef
         \expandafter\expandafter
-          \csname\the\macname xxx\endcsname
+          \csname\the\macname @@@\endcsname
             \paramlist{\egroup\noexpand\scanmacro{\macrobody}}%
       \else % 10 or more
         \expandafter\xdef\csname\the\macname\endcsname{%
@@ -8089,13 +8090,13 @@ end
       \expandafter\xdef\csname\the\macname\endcsname{%
          \bgroup
          \noexpand\braceorline
-         \expandafter\noexpand\csname\the\macname xxx\endcsname}%
-      \expandafter\xdef\csname\the\macname xxx\endcsname##1{%
-         \expandafter\noexpand\csname\the\macname xxxx\endcsname{%
+         \expandafter\noexpand\csname\the\macname @@@\endcsname}%
+      \expandafter\xdef\csname\the\macname @@@\endcsname##1{%
+         \expandafter\noexpand\csname\the\macname @@@@\endcsname{%
            \noexpand\gobblespaces##1\empty}%
            % The \empty is for \gobblespaces in case #1 is empty
          }%
-      \expandafter\xdef\csname\the\macname xxxx\endcsname##1{%
+      \expandafter\xdef\csname\the\macname @@@@\endcsname##1{%
         \egroup
         \noexpand\scanmacro{\macrobody}%
         }%
@@ -8103,13 +8104,13 @@ end
       \ifnum\paramno<10\relax
         \expandafter\xdef\csname\the\macname\endcsname{%
            \bgroup\noexpand\macroargctxt
-           \expandafter\noexpand\csname\the\macname xx\endcsname}%
-        \expandafter\xdef\csname\the\macname xx\endcsname##1{%
-            \expandafter\noexpand\csname\the\macname xxx\endcsname ##1,}%
+           \expandafter\noexpand\csname\the\macname @@\endcsname}%
+        \expandafter\xdef\csname\the\macname @@\endcsname##1{%
+            \expandafter\noexpand\csname\the\macname @@@\endcsname ##1,}%
         \expandafter\expandafter
         \expandafter\xdef
         \expandafter\expandafter
-        \csname\the\macname xxx\endcsname
+        \csname\the\macname @@@\endcsname
         \paramlist{%
             \egroup
             \noexpand\scanmacro{\macrobody}%
@@ -8123,6 +8124,8 @@ end
       \fi
     \fi
   \fi}
+
+\catcode `\@\texiatcatcode\relax % end private-to-Texinfo catcodes
 
 \def\norecurse#1{\bgroup\cslet{#1}{macsave.#1}}
 

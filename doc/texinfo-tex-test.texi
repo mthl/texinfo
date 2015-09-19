@@ -32,7 +32,7 @@ A\x\A
 @end macro
 
 @macro Mactwo{x, y}
-B\x\B C\y\C
+<\x\>.<\y\>@.
 @end macro
 
 @rmacro RMac{x}
@@ -97,7 +97,13 @@ two backslashes outside \\
 
 three backslashes outside \\\
 
-test @,c for c cedilla
+Macros with two arguments:
+0+0 @Mactwo{A,B}
+0+0 @Mactwo{A, B}
+1+0 @Mactwo{\A, B}
+0+1 @Mactwo{A, \\B}
+2+1 @Mactwo{\\\A, \\B}
+2+2 @Mactwo{\\\A, \\\\B}
 
 @section Spaces in macro bodies
 
@@ -212,7 +218,6 @@ No space should appear right after an `X':
 
 @section Multi-line macro argument
 
-@tracingmacros=1
 @macro Mac{text}
 @cartouche
 <@b{FIXME}>
