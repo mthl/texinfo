@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-09-19.22}
+\def\texinfoversion{2015-09-20.17}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -1843,8 +1843,10 @@ end
 % A few fonts for @defun names and args.
 \setfont\defbf\bfshape{10}{\magstep1}{OT1}
 \setfont\deftt\ttshape{10}{\magstep1}{OT1TT}
+\setfont\defsl\slshape{10}{\magstep1}{OT1TT}
 \setfont\defttsl\ttslshape{10}{\magstep1}{OT1TT}
-\def\df{\let\tentt=\deftt \let\tenbf = \defbf \let\tenttsl=\defttsl \bf}
+\def\df{\let\tentt=\deftt \let\tenbf = \defbf
+\let\tenttsl=\defttsl \let\tensl=\defsl \bf}
 
 % Fonts for indices, footnotes, small examples (9pt).
 \def\smallnominalsize{9pt}
@@ -1975,8 +1977,10 @@ end
 % A few fonts for @defun names and args.
 \setfont\defbf\bfshape{10}{\magstephalf}{OT1}
 \setfont\deftt\ttshape{10}{\magstephalf}{OT1TT}
+\setfont\defsl\slshape{10}{\magstephalf}{OT1TT}
 \setfont\defttsl\ttslshape{10}{\magstephalf}{OT1TT}
-\def\df{\let\tentt=\deftt \let\tenbf = \defbf \let\tenttsl=\defttsl \bf}
+\def\df{\let\tentt=\deftt \let\tenbf = \defbf
+\let\tensl=\defsl \let\tenttsl=\defttsl \bf}
 
 % Fonts for indices, footnotes, small examples (9pt).
 \def\smallnominalsize{9pt}
@@ -4860,7 +4864,10 @@ end
 \def\requireopenindexfile#1{%
 \ifnum\csname #1indfile\endcsname=0
   \expandafter\newwrite \csname#1indfile\endcsname
-  \openout \csname#1indfile\endcsname \jobname.#1 % Open the file
+  \immediate\openout\csname#1indfile\endcsname \jobname.#1 % Open the file
+  % Using \immediate here prevents an object entering into the current box,
+  % which could confound checks such as those in \safewhatsit for preceding
+  % skips.
 \fi}
 
 % Output \ as {\indexbackslash}, because \ is an escape character in
@@ -7199,7 +7206,7 @@ end
   \temp
 }
 
-% \domakedefun \deffn \deffnx \deffnheader
+% \domakedefun \deffn \deffnx \deffnheader { (defn. of \deffnheader) }
 %
 % Define \deffn and \deffnx, without parameters.
 % \deffnheader has to be defined explicitly.
