@@ -1,5 +1,11 @@
 2015-09-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Optional Arguments): Remove use of @var from 
+	example of @defspec with optional arguments.  Change a @samp to 
+	@code around @dots{} to avoid unwanted inverted commas.
+
+2015-09-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\requireopenindexfile): Use \immediate before 
 	\openout.
 	(\df): Also define a \defsl font in addition to \defttsl, so we get
