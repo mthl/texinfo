@@ -1,3 +1,54 @@
+2015-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (decide_aux_files_method): Default to not using 
+	recorder.
+	(run_core_conversion): Eliminate all renaming to handle indexes 
+	called "fl".  When \openout lines are missing from the log file, 
+	this will be dealt with by changes to texinfo.tex.
+	(generated_files_get_from_fls): Use fls extension (not flz).
+
+	(generated_files_get): Don't add extra files to the list or 
+	filter it at all.  Don't take any arguments.
+	(filter_files): New function, using the filtering logic that was 
+	in generated_files_get.
+	(aux_file_p, bibtex_file_p, index_file_p): Make suitable for 
+	using with filter_files by echoing file name if the predicate is 
+	true of the file.
+
+	(all_files, add_all_filter): Logic for finding generated files 
+	moved from generated_files_get, used in mostly_clean function.
+	(top-level part of script): Call generated_files_get to set 
+	a value for xref_files_new before calling mostly_clean.
+	(mostly_clean): Call all_files to get list of files to remove, 
+	instead of generated_files_get.
+
+	(generated_files_get_from_fls, generated_files_get_from_log): 
+	Don't output names of log or recorder file.
+	(xref_files_changed): Compare all files output, not just those 
+	that pass xref_files_p (not including the *.log or *.fls files 
+	themselves).  However, don't compare derivative files such as
+	sorted index files.
+	(xref_files_p): Add comment to say this function isn't used.
+	(run_tex_suite): Call xref_files_save once at the beginning, and 
+	then immediately after each use of xref_files_changed in the 
+	main loop.  This reduces the chances of an infinite loop 
+	happening if one of the output files is overwritten by mistake 
+	in the meantime.
+	(xref_files_save): Don't call generated_files_get; use value of 
+	xref_files_new for the files to save.
+	(run_index, run_bibtex): Call filter_files instead of 
+	generated_files_get.
+
+	(compile): Put working directory back at the start of TEXINPUTS, 
+	as this is clearer, and it was reported that on some versions of 
+	MikTeX, the working directory always took priority regardless.
+	Remove backup directory from search path, as this was a trick 
+	for processing fl indices that didn't work reliably.
+	Redirect output of test for \openout lines in log file to /dev/null.
+
+	(usage): Move some options that aren't "build modes" out of the 
+	build mode section.
+
 2015-09-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Optional Arguments): Remove use of @var from 
