@@ -15006,9 +15006,8 @@ same as @samp{yesmaybe}, except that the @samp{\openout} trace in log
 file is checked first.
 @end table
 
-The default behaviour is that specified by @samp{yesmaybe}.
-This environment variable is provided for troubleshooting purposes, and 
-may change or disappear in the future.
+The default is @samp{nomaybe}.  This environment variable is provided 
+for troubleshooting purposes, and may change or disappear in the future.
 
 
 @node Format with @command{tex}/@command{texindex}

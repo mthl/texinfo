@@ -1,3 +1,8 @@
+2015-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Format with texi2dvi): Update to reflect new 
+	default for TEXI2DVI_USE_RECORDER.
+
 2015-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\requireopenindexfile, \printindex): If
