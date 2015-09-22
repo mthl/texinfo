@@ -1,5 +1,12 @@
 2015-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\requireopenindexfile, \printindex): If
+	index is called "fl", use file extensions "f1" and "f1s" 
+	instead, because "fls" conflicts with the extension for the 
+	filename recorder.
+
+2015-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/texi2dvi (decide_aux_files_method): Default to not using 
 	recorder.
 	(run_core_conversion): Eliminate all renaming to handle indexes 
