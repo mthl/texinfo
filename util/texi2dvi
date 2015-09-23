@@ -1231,6 +1231,60 @@ to tex itself simply not working."
   fi
 }
 
+# Unfortunately, makeinfo --iftex --no-ifinfo doesn't work well enough
+# in versions before 5.0, as makeinfo can't parse the TeX commands
+# inside @tex blocks, so work around with sed.
+#
+# This sed script preprocesses Texinfo sources in order to keep the
+# iftex sections only.  We want to remove non-TeX sections, and comment
+# (with `@c _texi2dvi') TeX sections so that makeinfo does not try to
+# parse them.  Nevertheless, while commenting TeX sections, don't
+# comment @macro/@end macro so that makeinfo does propagate them.
+# Similarly, preserve the @top node to avoid makeinfo complaining about
+# it being missed.  Comment it out after preprocessing, so that it does
+# not appear in the generated document.
+#
+# We assume that `@c _texi2dvi' or `@c (_texi2dvi)' starting a line is
+# not present in the document.  Additionally, conditionally defined
+# macros inside the @top node may end up with the wrong value, although
+# this is unlikely in practice.
+#
+comment_iftex=\
+'/^@tex/,/^@end tex/{
+  s/^/@c _texi2dvi/
+}
+/^@iftex/,/^@end iftex/{
+  s/^/@c _texi2dvi/
+  /^@c _texi2dvi@macro/,/^@c _texi2dvi@end macro/{
+    s/^@c _texi2dvi//
+  }
+}
+/^@ifnottex/,/^@end ifnottex/{
+  s/^/@c (_texi2dvi)/
+  /^@c (_texi2dvi)@node Top/,/^@c (_texi2dvi)@end ifnottex/ {
+    /^@c (_texi2dvi)@end ifnottex/b
+    s/^@c (_texi2dvi)//
+  }
+}
+/^@ifinfo/,/^@end ifinfo/{
+  /^@node/p
+  /^@menu/,/^@end menu/p
+  t
+  s/^/@c (_texi2dvi)/
+}
+s/^@ifnotinfo/@c _texi2dvi@ifnotinfo/
+s/^@end ifnotinfo/@c _texi2dvi@end ifnotinfo/'
+
+# Uncomment @iftex blocks by removing any leading `@c texi2dvi' (repeated
+# copies can sneak in via macro invocations).  Likewise, comment out
+# the @top node inside a @ifnottex block.
+uncomment_iftex=\
+'s/^@c _texi2dvi\(@c _texi2dvi\)*//
+/^@c (_texi2dvi)@ifnottex/,/^@c (_texi2dvi)@end ifnottex/{
+  s/^/@c (_texi2dvi)/
+}'
+
+
 # insert_commands - Insert $textra commands after @setfilename (Texinfo)
 # or at the beginning of the file (LaTeX).  Recommended to be used for
 # @finalout, @smallbook, etc.
@@ -1659,7 +1713,10 @@ input_file_name_decode ()
 }
 
 
-#  Main program starts - initialize more variables.
+# 
+#################### Main program starts ##########################
+
+# Initialize more variables.
 #
 # Save TEXINPUTS so we can construct a new TEXINPUTS path for each file.
 # Likewise for bibtex and makeindex.
@@ -1670,61 +1727,6 @@ for var in $tex_envvars; do
   export $var
 done
 
-# Unfortunately, makeinfo --iftex --no-ifinfo doesn't work well enough
-# in versions before 5.0, as makeinfo can't parse the TeX commands
-# inside @tex blocks, so work around with sed.
-#
-# This sed script preprocesses Texinfo sources in order to keep the
-# iftex sections only.  We want to remove non-TeX sections, and comment
-# (with `@c _texi2dvi') TeX sections so that makeinfo does not try to
-# parse them.  Nevertheless, while commenting TeX sections, don't
-# comment @macro/@end macro so that makeinfo does propagate them.
-# Similarly, preserve the @top node to avoid makeinfo complaining about
-# it being missed.  Comment it out after preprocessing, so that it does
-# not appear in the generated document.
-#
-# We assume that `@c _texi2dvi' or `@c (_texi2dvi)' starting a line is
-# not present in the document.  Additionally, conditionally defined
-# macros inside the @top node may end up with the wrong value, although
-# this is unlikely in practice.
-#
-comment_iftex=\
-'/^@tex/,/^@end tex/{
-  s/^/@c _texi2dvi/
-}
-/^@iftex/,/^@end iftex/{
-  s/^/@c _texi2dvi/
-  /^@c _texi2dvi@macro/,/^@c _texi2dvi@end macro/{
-    s/^@c _texi2dvi//
-  }
-}
-/^@ifnottex/,/^@end ifnottex/{
-  s/^/@c (_texi2dvi)/
-  /^@c (_texi2dvi)@node Top/,/^@c (_texi2dvi)@end ifnottex/ {
-    /^@c (_texi2dvi)@end ifnottex/b
-    s/^@c (_texi2dvi)//
-  }
-}
-/^@ifinfo/,/^@end ifinfo/{
-  /^@node/p
-  /^@menu/,/^@end menu/p
-  t
-  s/^/@c (_texi2dvi)/
-}
-s/^@ifnotinfo/@c _texi2dvi@ifnotinfo/
-s/^@end ifnotinfo/@c _texi2dvi@end ifnotinfo/'
-
-# Uncomment @iftex blocks by removing any leading `@c texi2dvi' (repeated
-# copies can sneak in via macro invocations).  Likewise, comment out
-# the @top node inside a @ifnottex block.
-uncomment_iftex=\
-'s/^@c _texi2dvi\(@c _texi2dvi\)*//
-/^@c (_texi2dvi)@ifnottex/,/^@c (_texi2dvi)@end ifnottex/{
-  s/^/@c (_texi2dvi)/
-}'
-
-#  Main program continues - command line parsing.
-#
 # Push a token among the arguments that will be used to notice when we
 # ended options/arguments parsing.
 # Use "set dummy ...; shift" rather than 'set - ..." because on

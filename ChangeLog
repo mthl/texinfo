@@ -1,5 +1,10 @@
 2015-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* util/texi2dvi (comment_iftex, uncomment_iftex): Move in file 
+	closer to where they are used.
+
+2015-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/texi2dvi (generated_files_get_from_fls): Avoid exiting 
 	script with 'set -e' if file list is empty.
 
