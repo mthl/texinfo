@@ -699,8 +699,8 @@ generated_files_get_from_log ()
 generated_files_get_from_fls ()
 {
   if test -f "$1.fls"; then
-    grep '^OUTPUT ' "$1.fls" \
-      | cut -b 8-
+    grep '^OUTPUT ' "$1.fls" | cut -b 8- \
+      | grep -v '\.dvi$' | grep -v '\.log$' | grep -v '\.pdf$'
   fi
 }
 
