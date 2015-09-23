@@ -1440,7 +1440,7 @@ check_openout_in_log_support ()
   verbose "Checking TeX \openout in log support..."
   make_openout_test "" log
   if test -f openout.log \
-     && grep '^\\openout0 *= *`\?dum\.dum'\''\?' openout.log >/dev/null
+     && grep '^\\openout..\? *= *`\?dum\.dum'\''\?' openout.log >/dev/null
   then
     cd_orig
     verbose "Checking TeX \openout in log support... yes"
