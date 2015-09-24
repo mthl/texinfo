@@ -709,6 +709,14 @@ generated_files_get_from_fls ()
 generated_files_get ()
 {
   $generated_files_get_method "$in_noext"
+  if test $generated_files_get_method = generated_files_get_from_fls; then
+    if test -r "$in_noext.fl"; then
+      report 'WARNING!!  The fl index may typeset as garbage!' # goes to stderr
+      report 'Try upgrading your version of texinfo.tex, or else try setting'
+      report 'the environment variable TEXI2DVI_USE_RECORDER to '\''no'\''.'
+report 'Once you'\''ve done that, delete the file with an '\''fl'\'' extension.'
+    fi
+  fi
 }
 
 
@@ -1640,19 +1648,23 @@ cleanup ()
 }
 
 
-#  input_file_name_decode - Decode COMMAND_LINE_FILENAME, and compute:
-# - COMMAND_LINE_FILENAME clean of TeX commands
+#  input_file_name_decode - Decode COMMAND_LINE_FILENAME, and set the
+# following shell variables:
+#
+# - COMMAND_LINE_FILENAME
+#   The filename given on the commmand line, but cleaned of TeX commands.
 # - IN_DIR
-#   The directory to the input file, possibly absolute if needed.
+#   The directory containing the input file, possibly absolute if needed.
 # - IN_DIR_ABS
 #   The absolute directory of the input file.
 # - IN_BASE
 #   The input file base name (no directory part).
 # - IN_NOEXT
-#   The input file name without extensions (nor directory part).
+#   The input file name with neither file extensions nor directory part.
 # - IN_INPUT
-#   Defaults to COMMAND_LINE_FILENAME, but might change if the
-#   input is preprocessed.  With directory, possibly absolute.
+#   The path to the input file for passing as a command-line argument
+#   to TeX.  Defaults to COMMAND_LINE_FILENAME, but might change if the
+#   input is preprocessed.
 input_file_name_decode ()
 {
   # See if we are run from within AUC-Tex, in which case we are
