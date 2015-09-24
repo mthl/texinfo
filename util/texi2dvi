@@ -86,14 +86,20 @@ IFS="$space$tab$newline"
 : ${EGREP=egrep}
 
 # Systems which define $COMSPEC or $ComSpec use semicolons to separate
-# directories in TEXINPUTS -- except for Cygwin, where COMSPEC
+# directories in TEXINPUTS -- except for Cygwin and Msys, where COMSPEC
 # might be inherited, but : is used.
+
+# In the case of Msys, uname returns a value derived from MSYSTEM, as
+# MSYSTEM is user configurable, it is not so safe to use it to detect
+# Msys. It is safer to use OSTYPE, this is why we set MSYSTEM to
+# $OSTYPE before calling uname
 if test -n "$COMSPEC$ComSpec" \
-   && uname | $EGREP -iv 'cygwin' >/dev/null; then
+   && MSYSTEM=$OSTYPE uname | $EGREP -iv 'cygwin|msys' >/dev/null; then
   path_sep=";"
 else
   path_sep=":"
 fi
+
 
 # Pacify verbose cds.
 CDPATH=${ZSH_VERSION+.}$path_sep
@@ -391,7 +397,7 @@ list_concat_dirs ()
   # Hopefully no one will have an actual directory named EMPTY.
   lcd_replace_EMPTY="-e 's/^$path_sep/EMPTY$path_sep/g' \
                      -e 's/$path_sep\$/${path_sep}EMPTY/g' \
-                     -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
+                     -e 's/$path_sep$path_sep/${path_sep}EMPTY${path_sep}/g'"
   save_IFS=$IFS
   IFS=$path_sep
   set x `echo "$2" | eval $SED $lcd_replace_EMPTY`; shift
@@ -503,7 +509,7 @@ absolute_filenames ()
   # Hopefully no one will have an actual directory named EMPTY.
   af_replace_empty="-e 's/^$path_sep/EMPTY$path_sep/g' \
                     -e 's/$path_sep\$/${path_sep}EMPTY/g' \
-                    -e 's/$path_sep$path_sep/${path_sep}EMPTY:/g'"
+                    -e 's/$path_sep$path_sep/${path_sep}EMPTY${path_sep}/g'"
   af_result=`echo "$1" | eval $SED $af_replace_empty`
   save_IFS=$IFS
   IFS=$path_sep
