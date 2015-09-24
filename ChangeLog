@@ -1,11 +1,11 @@
-2015-09-23  Vincent Belaïche  <vincent.belaiche@gmail.com>
+2015-09-24  Vincent Belaïche  <vincent.belaiche@gmail.com>
 
 	* util/texi2dvi: Exempt msys as well as cygwin from using 
 	semicolon as a path separator.
 	(list_concat_dirs, absolute_filenames): Replace a literal colon 
 	with an expansion of a variable.
 
-2015-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/texi2dvi (generated_files_get): Print a warning if the
 	filename recorder is used along with an index file with an "fl"
