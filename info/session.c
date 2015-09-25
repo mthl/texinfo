@@ -2585,6 +2585,7 @@ cleanup_history (WINDOW *window, int start, int end)
   memmove (&window->hist[start], &window->hist[end],
            (window->hist_index - end) * sizeof (WINDOW_STATE *));
   window->hist_index -= end - start;
+  window->hist[window->hist_index] = 0;
 }
 
 DECLARE_INFO_COMMAND (info_move_to_prev_xref,
@@ -4794,7 +4795,8 @@ DECLARE_INFO_COMMAND (isearch_backward,
 
 /* Structure defining the current state of an incremental search. */
 typedef struct {
-  NODE *node;           /* The node displayed in this window. */
+  char *fullpath;
+  char *nodename;
   long pagetop;         /* LINE_STARTS[PAGETOP] is first line in WINDOW. */
   long point;           /* Point in window. */
   long start;           /* Offset in node contents where search started. */
@@ -4821,7 +4823,8 @@ static size_t isearch_states_slots = 0;
 static void
 window_get_state (WINDOW *window, SEARCH_STATE *state)
 {
-  state->node = window->node;
+  state->fullpath = window->node->fullpath;
+  state->nodename = window->node->nodename;
   state->pagetop = window->pagetop;
   state->point = window->point;
 }
@@ -4830,8 +4833,12 @@ window_get_state (WINDOW *window, SEARCH_STATE *state)
 static void
 window_set_state (WINDOW *window, SEARCH_STATE *state)
 {
-  if (window->node != state->node)
-    window_set_node_of_window (window, state->node);
+  if (strcmp(window->node->fullpath, state->fullpath)
+      || strcmp(window->node->nodename, state->nodename))
+    {
+      NODE *n = info_get_node (state->fullpath, state->nodename);
+      info_set_node_of_window (window, n);
+    }
   window->pagetop = state->pagetop;
   window->point = state->point;
 }
@@ -5238,7 +5245,8 @@ gotfunc:
         {
           /* Make sure the match is visible, and update the display. */
 
-          if (mystate.node == window->node
+          if (!strcmp(window->node->fullpath, mystate.fullpath)
+              && !strcmp(window->node->nodename, mystate.nodename)
               && mystate.pagetop != window->pagetop)
             {
               int newtop = window->pagetop;
@@ -5262,32 +5270,24 @@ gotfunc:
      started the incremental search if the match was in a different node. */
   {
     int i = window->hist_index - 1;
-    while (i >= starting_history_entry
-           && window->node != window->hist[i]->node)
-      {
-        free_history_node (window->hist[i]->node);
-        free (window->hist[i]);
-        i--;
-      }
+    int j = starting_history_entry;
 
-    if (i > starting_history_entry)
+    if (i > j)
       {
-        /* History entry i is the only one we want to keep. */
-        int i2 = i - 1;
-        while (i2 > starting_history_entry)
+        if (!strcmp(window->hist[i]->node->nodename,
+                    window->hist[j]->node->nodename)
+            && !strcmp(window->hist[j]->node->fullpath,
+                       window->hist[i]->node->fullpath))
           {
-            free_history_node (window->hist[i2]->node);
-            free (window->hist[i2]);
-            i2--;
+            /* If we end up at the same node we started at, don't extend
+               the history at all. */
+            cleanup_history (window, j, i);
           }
-        window->hist[starting_history_entry + 1] = window->hist[i];
-        window->hist_index = starting_history_entry + 2;
+        else
+          {
+            cleanup_history (window, j + 1, i);
+          }
       }
-    else
-      /* The match was in the first node checked.  No extra history entries 
-         are needed. */
-      window->hist_index = starting_history_entry + 1;
-    window->hist[window->hist_index] = 0;
   }
 
   /* Perhaps GC some file buffers. */

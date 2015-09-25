@@ -1,3 +1,17 @@
+2015-09-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (incremental_search)
+	(window_set_state, window_get_state): Refer to nodes by their 
+	filename and nodename instead of with a NODE object.
+	(window_set_state): Use info_set_node_of_window instead of 
+	window_set_node_of_window, in order to put the node in the 
+	window history.
+	(incremental_search): Call cleanup_history to adjust the 
+	window's history at the end of the incremental search.
+	(cleanup_history): Null final entry in history array.
+
+	* info/t/inc-sea-bs-after-strip-cr.sh: New test.
+
 2015-09-24  Vincent Belaïche  <vincent.belaiche@gmail.com>
 
 	* util/texi2dvi: Exempt msys as well as cygwin from using 
