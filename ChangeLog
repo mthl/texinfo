@@ -1,3 +1,16 @@
+2015-09-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/README: Mention tests under tp/tests.  Remove "texinfo/" 
+	from start of a path.
+	* tp/tests/README: Change a word "one" to "a".  Add headings
+	"Regenerating test results" and "Checking test results".  Add an 
+	example to show how to investigate a test failure.  Change 
+	"content" to "contents" and "files" to "file", and "line 
+	oriented" to "line-oriented".
+
+	* tp/t/tests/test_scripts/layout_formatting_regions.sh: Update 
+	results for this "long-checks" test (more to come).
+
 2015-09-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (incremental_search)

@@ -32,15 +32,17 @@ for both.
 * Using ./parser_tests.sh with the directories one want to run the tests 
 in given as arguments
 
-* By going into one directory and running ../run_parser_all.sh, like
+* By going into a directory and running ../run_parser_all.sh, like
 $ cd formatting
 $ ../run_parser_all.sh
 
-* By going into one directory and running one specific test, like
+* By going into a directory and running one specific test, like
 $ cd formatting
 $ ../run_parser_all.sh cond
 (see below for info on how test names are specified).
 
+Checking test results
+---------------------
 The test results are in the out_parser directories; the reference
 results are in res_parser directories.  There can be these pairs.
 - out_parser/ and res_parser/ for html output in texi2html style;
@@ -48,11 +50,26 @@ results are in res_parser directories.  There can be these pairs.
 - out_parser_info/ and res_parser_info/ for info results;
 and diffs are put in the diffs/ subdir.
 
-If a test failed when run via parser_tests.sh or run_parser_all.sh, then
- F: a_test_directory 
-is printed, if there is a diff with the references, a
+For example, to investigate a failure in the 
+test_scripts/layout_formaatting_docbook.sh test, compare the contents of the
+files in the layout_res_parser/formatting_docbook and 
+layout_out_parser/formatting_docbook directories, e.g.
+
+diff {res,out}_parser/formatting_docbook/formatting.2
+
+Also look in the layout/diffs directory.
+
+If the test results are as expected, copy the output files onto the 
+reference files.  Otherwise, if they need more investigation, see "Tests 
+specification" below, to find out what input file, etc. was used for the 
+test.
+
+When running tests via parser_tests.sh or run_parser_all.sh, then
+a test failure causes
+ F: a_test_directory
+to be printed.  If there is a diff with the references, then
  D: a_test_directory
-is printed. If there are no reference to compare with, 
+is printed. If there are no reference to compare with, then
  no res: a_test_directory
 is printed.
 
@@ -66,6 +83,9 @@ for the remainder of the explanation. The stderr output is in
 out_parser/a_test/a_test.2, stdout output is in 
 out_parser/a_test/a_test.1.  All the commands called are output in 
 tests.log.
+
+Regenerating test results
+=========================
 
 Giving -copy as the first argument to ../run_parser_all.sh or
 parser_tests.sh (or long_tests.sh or tex_html_tests.sh, which need
@@ -85,7 +105,7 @@ copy-tex-html targets do it directly.
 
 
 TeX4ht and LaTeX2HTML tests
----------------------------
+===========================
 The tex4ht and latex2HTML related tests are not run automatically, as
 some test results involving latex2HTML or tex4ht depend on the setup and 
 version of these tools.
@@ -100,8 +120,8 @@ the directory is passed through on the command line.
 
 Tests specification
 ===================
-Test runs are driven by the content of the tests-parser.txt files in
-each subdirectory. This is a line oriented file. A # starts a
+Test runs are driven by the contents of the tests-parser.txt file in
+each subdirectory. This is a line-oriented file. A # starts a
 comment, except that the very first line of the file can be, e.g.,
 # formats :html
 which says which formats to generate.

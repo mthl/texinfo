@@ -8,8 +8,10 @@ texinfo/tp/t/README
   modification, are permitted in any medium without royalty provided the
   copyright notice and this notice are preserved.
 
-Files anywhere within the texinfo/tp/t/ subdirectory which have no
+Files anywhere within the tp/t subdirectory which have no
 other copyright notice are hereby placed in the public domain.
+
+See also the tests in the tp/tests directory.
 
 
 These tests are run by "make check" under tp/.  (The test files are 
