@@ -62,7 +62,8 @@ Also look in the layout/diffs directory.
 If the test results are as expected, copy the output files onto the 
 reference files.  Otherwise, if they need more investigation, see "Tests 
 specification" below, to find out what input file, etc. was used for the 
-test.
+test.  Sometimes you need to use "makeinfo -F" to force an output file 
+to be created.
 
 When running tests via parser_tests.sh or run_parser_all.sh, then
 a test failure causes

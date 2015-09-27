@@ -2196,12 +2196,15 @@ sub _convert($$)
           }
           $pre_quote = $quoting_required ? "\x{7f}" : '';
           $post_quote = $pre_quote;
-          $node_text =~ s/^(\s*)/$1$pre_quote/ if $pre_quote;
-          _count_added($self,$self->{'formatters'}[-1]{'container'},
-                       $pre_quote);
+          if ($pre_quote) {
+            $node_text =~ s/^(\s*)/$1$pre_quote/;
+            _count_added($self,$self->{'formatters'}[-1]{'container'},
+                         $pre_quote);
+          }
           $result .= $node_text;
-          _count_added($self,$self->{'formatters'}[-1]{'container'},
-            $self->{'formatters'}->[-1]->{'container'}->add_next($post_quote));
+          _count_added($self, $self->{'formatters'}[-1]{'container'},
+            $self->{'formatters'}->[-1]->{'container'}->add_next($post_quote))
+                 if $post_quote;
         } else { # Label same as node specification
           if ($file) {
             $result .= $self->_convert({'contents' => $file});

@@ -1,5 +1,11 @@
 2015-09-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/README: Mention -F option to makeinfo.
+	* tp/Texinfo/Convert/Plaintext.pm (_convert) <xref commands>:
+	Conditionalize a call to _count_added.
+
+2015-09-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/README: Mention tests under tp/tests.  Remove "texinfo/" 
 	from start of a path.
 	* tp/tests/README: Change a word "one" to "a".  Add headings
