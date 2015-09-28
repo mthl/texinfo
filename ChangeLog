@@ -1,3 +1,8 @@
+2015-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	*  tp/Texinfo/Convert/DocBook.pm:
+	Add "use Texinfo::Convert::Plaintext" declaration.
+
 2015-09-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/README: Mention -F option to makeinfo.

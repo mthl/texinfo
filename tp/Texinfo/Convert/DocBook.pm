@@ -27,6 +27,7 @@ use Texinfo::Convert::Converter;
 use Texinfo::Common;
 use Texinfo::Convert::Unicode;
 use Texinfo::Convert::Text;
+use Texinfo::Convert::Plaintext;
 # for debugging
 use Texinfo::Convert::Texinfo;
 use Data::Dumper;
