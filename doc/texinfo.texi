@@ -8083,56 +8083,52 @@ explanatory exhibits, and command-line option summaries.
 @anchor{table}@c old name
 
 @cindex Definition lists, typesetting
-Use the @code{@@table} command to produce two-column tables.  It is
-typically used when you have a list of items and a brief text with
-each one, such as ``definition lists''.
+Use the @code{@@table} command to produce a two-column table.  This 
+command is typically used when you have a list of items and a brief text 
+with each one, such as a list of definitions.
 
 Write the @code{@@table} command at the beginning of a line, after a
-blank line, and follow it on the same line with an argument that is a
-Texinfo ``indicating'' command such as @code{@@code}, @code{@@samp},
+blank line, and follow it on the same line with an argument that is an
+`indicating'' command, such as @code{@@code}, @code{@@samp},
 @code{@@var}, @code{@@option}, or @code{@@kbd} (@pxref{Indicating}).
-
-This command will be applied to the text that goes into the first
-column of each item and thus determines how it will be highlighted.
-For example, @code{@@table @@code} will cause the text in the first
-column to be output as if it had been the argument to a @code{@@code}
-command.
+This command will be applied to the text in the first column.  For 
+example, @code{@@table @@code} will cause the text in the first column 
+to be output as if it had been the argument to a @code{@@code} command.
 
 @anchor{@code{@@asis}}@c command name with @, for consistency
 @findex asis
-You may also use the @code{@@asis} command as an argument to
-@code{@@table}.  @code{@@asis} is a command that does nothing; if you
+You may use the @code{@@asis} command as an argument to
+@code{@@table}.  @code{@@asis} is a command that does nothing: if you
 use this command after @code{@@table}, the first column entries are
 output without added highlighting (``as is'').
 
 The @code{@@table} command works with other commands besides those
 explicitly mentioned here.  However, you can only use predefined
-Texinfo commands that normally take an argument in braces.  You cannot
-reliably use a new command defined with @code{@@macro}, but an
+Texinfo commands that take an argument in braces.  You cannot
+reliably use a new command defined with @code{@@macro}, although an
 @code{@@alias} (for a suitable predefined command) is acceptable.
 @xref{Defining New Texinfo Commands}.
 
 @findex item
 Begin each table entry with an @code{@@item} command at the beginning
-of a line.  Write the first column text on the same line as the
-@code{@@item} command.  Write the second column text on the line
-following the @code{@@item} line and on subsequent lines.  (You do not
-need to type anything for an empty second column entry.)  You may
+of a line.  Write the text for the first column on the same line as the
+@code{@@item} command.  Write the text for the second column on the line
+following the @code{@@item} line and on subsequent lines.  You may
 write as many lines of supporting text as you wish, even several
 paragraphs.  But only the text on the same line as the @code{@@item}
 will be placed in the first column (including any footnotes).
+You do not need to type anything for an empty second column.
 
 Normally, you should put a blank line before an @code{@@item} line
 (except the first one).  This puts a blank line in the Info file.
 Except when the entries are very brief, a blank line looks better.
-
 End the table with a line consisting of @code{@@end table}, followed
 by a blank line.  @TeX{} will always start a new paragraph after the
 table, so the blank line is needed for the Info output to be analogous.
 
 @need 1500
-The following table, for example, highlights the text in the first
-column with a @code{@@samp} command:
+For example, the following table highlights the text in the first
+column with the @code{@@samp} command:
 
 @example
 @group

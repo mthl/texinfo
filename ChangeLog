@@ -1,5 +1,24 @@
 2015-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (@table): Change "tables" plural to "table" 
+	singular.  Remove word "Texinfo" qualifying "command".  Add a 
+	comma before "such as".  Change "It" to "This command".  Change 
+	"definition lists" in quotation marks to "list of definitions".
+	Join second and third paragraphs to reduce ambiguity about what 
+	"This command" refers to.  Change "that goes into" into "in", 
+	and delete "and thus determines how it will be highlighted." and 
+	delete "of each item".  In paragraph about @asis, Delete word 
+	"also", and change a semicolon into a colon.  Delete word 
+	"normally", and change "but" to "although".  Change "first 
+	column text" to "text for the first column", and "second column 
+	text" to "text for the second column".  Move material about an 
+	empty second column to end of paragraph, and change "column 
+	entry" to "column".  Join two paragraphs about empty lines.
+	Begin paragraph introducing example with "For example", and 
+	change "a @samp command" to "the @samp command".
+
+2015-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/DocBook.pm:
 	Add "use Texinfo::Convert::Plaintext" declaration.
 	
