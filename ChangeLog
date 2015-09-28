@@ -1,7 +1,10 @@
 2015-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	*  tp/Texinfo/Convert/DocBook.pm:
+	* tp/Texinfo/Convert/DocBook.pm:
 	Add "use Texinfo::Convert::Plaintext" declaration.
+	
+	* tp/Texinfo/Structuring.pm (add_node_menu_if_missing): Account 
+	for the case that there are no children nodes.
 
 2015-09-27  Gavin Smith  <gavinsmith0123@gmail.com>
 

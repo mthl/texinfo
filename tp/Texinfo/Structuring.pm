@@ -1701,6 +1701,10 @@ sub add_node_menu_if_missing($$)
     }
   }
 
+  if ($#node_childs+1 == 0) {
+    return;
+  }
+
   my @pending;
   for my $child (@node_childs) {
     my $entry = _new_node_menu_entry($self, 
