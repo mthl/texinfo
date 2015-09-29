@@ -184,7 +184,7 @@ static int default_emacs_like_info_keys[] =
   '<', NUL,                       A_info_first_node,
   '=', NUL,                       A_info_display_file_info,
   '>', NUL,                       A_info_last_node,
-  '?', NUL,                       A_info_get_help_window,
+  '?', NUL,                       A_info_search_backward,
   '[', NUL,                       A_info_global_prev_node,
   ']', NUL,                       A_info_global_next_node,
   'b', NUL,                       A_info_beginning_of_node,

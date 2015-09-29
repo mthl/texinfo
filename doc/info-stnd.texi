@@ -1145,19 +1145,14 @@ otherwise Info ignores the letter case.  With a numeric argument of
 @var{N}, search for @var{N}th occurrence of the string.  Negative
 arguments search backwards.
 
-@item @kbd{M-x search-backward}
-@itemx @kbd{?}, vi-like operation
-@kindex ?, vi-like operation
+@item @kbd{?} (@code{search-backward})
+@kindex ?
 @findex search-backward
 Read a string in the echo area and search backward through the Info file
 for that string.  If the string includes upper-case characters, the Info
 file is searched case-sensitively; otherwise Info ignores the letter
 case.  With a numeric argument of @var{N}, search for @var{N}th
 occurrence of the string.  Negative arguments search forward.
-
-If you do not have a convenient key sequence bound to this command, an
-alternative is to first perform a forward search, and then use the
-@code{search-previous} command, described below.
 
 @anchor{repeated-search}
 @item @kbd{C-x @kbd{n}} (@code{search-next})
@@ -1918,7 +1913,6 @@ Read the name of an Info command in the echo area, and then display
 a key sequence which can be typed in order to invoke that command.
 
 @item @kbd{H} (@code{get-help-window})
-@itemx @kbd{?}
 @itemx @key{F1} (on DOS/Windows only)
 @itemx @kbd{h} and @kbd{H}, vi-like operation
 @kindex C-h

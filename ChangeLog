@@ -1,6 +1,12 @@
 2015-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infomap.c (default_emacs_like_info_keys),
+	* info/info-stnd.texi (Searching Commands): Make '?' search 
+	backwards, for consistency with 'less'.
+
+2015-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infomap.c (default_emacs_like_info_keys),
 	* info/info-stnd.texi (Miscellaneous Commands):
 	Make C-h scroll backwards, in case the terminal sends C-h for 
 	the delete or backspace key.
