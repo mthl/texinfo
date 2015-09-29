@@ -45,6 +45,7 @@ one of the relevant sections:
     the purposes of sorting.  You may explicity specify a sort key by
     preceding the text of the entry with the @sortas commmand with the
     sort key desired as a braced argument.
+  . Use a larger font for arguments in a @deffn line and similar.
   . The default indices (cp, ky and so on) now don't get a file opened
     for them unless they are actually used.  This reduces the number of
     files that a run of TeX produces, and also allows for a greater
@@ -55,6 +56,10 @@ one of the relevant sections:
     This gives a more consistent appearance.
   . Have a stronger preference for breaking a column in an index before
     a letter heading.
+  . Formatting improvements in tables of contents and indices.  Entries
+    can extend slightly into the margin instead of being broken across 
+    two lines, and text is split more evenly across lines.  Reduce 
+    chance of an orphaned index entry appearing at the top of a column.
 
 * makeinfo
   . Some Perl modules have been rewritten in C to increase speed.
@@ -75,6 +80,8 @@ one of the relevant sections:
   . Now tries to find referenced manuals in the same directory as the
     current file first, before looking in search path.  Customize this
     with new variable `follow-strategy'.
+  . `q' closes a window instead of quitting altogether if there's more
+    than one, for example if a help window is open.
   . internal changes to reduce memory use and increase speed of
     searches, relative to last release
 

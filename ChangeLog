@@ -1,5 +1,10 @@
 2015-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* NEWS: Mention q can close a window, mention index and TOC 
+	formatting changes, mention @deffn formatting change.
+
+2015-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_quit),
 	* TODO: Make q close a window if there's more than one on the 
 	screen.
