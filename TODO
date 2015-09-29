@@ -105,7 +105,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     last one, and be able to toggle display of a node's subnodes.  
     (Could be hard to implement though, because of how much code assumes 
     that only one node is in a window at once.)
-  - Make q quit help, like Less, and :q in Vim.
   - Make DEL exit echo area when it's empty
         
 

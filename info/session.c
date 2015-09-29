@@ -5364,7 +5364,10 @@ DECLARE_INFO_COMMAND (info_redraw_display, _("Redraw the display"))
 /* Exit from info */
 DECLARE_INFO_COMMAND (info_quit, _("Quit using Info"))
 {
-  quit_info_immediately = 1;
+  if (window->next || window->prev)
+    info_delete_window (window, count);
+  else
+    quit_info_immediately = 1;
 }
 
 
