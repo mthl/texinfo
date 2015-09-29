@@ -160,7 +160,7 @@ static int default_emacs_like_info_keys[] =
   CONTROL('b'), NUL,              A_info_backward_char,
   CONTROL('e'), NUL,              A_info_end_of_line,
   CONTROL('f'), NUL,              A_info_forward_char,
-  CONTROL('h'), NUL,              A_info_get_help_window,
+  CONTROL('h'), NUL,              A_info_scroll_backward,
   CONTROL('l'), NUL,              A_info_redraw_display,
   CONTROL('n'), NUL,              A_info_next_line,
   CONTROL('p'), NUL,              A_info_prev_line,
@@ -253,7 +253,7 @@ static int default_emacs_like_info_keys[] =
 
   KEY_RIGHT_ARROW, NUL,         A_info_forward_char,
   KEY_LEFT_ARROW, NUL,          A_info_backward_char,
-  KEY_DELETE, NUL,                A_info_scroll_backward,
+  KEY_DELETE, NUL,              A_info_scroll_backward,
   
   ESC, KEY_PAGE_UP, NUL,        A_info_scroll_other_window_backward,
   ESC, KEY_PAGE_DOWN, NUL,      A_info_scroll_other_window,

@@ -1917,8 +1917,7 @@ description of what the variable affects.
 Read the name of an Info command in the echo area, and then display
 a key sequence which can be typed in order to invoke that command.
 
-@item @kbd{C-h} (@code{get-help-window})
-@itemx @kbd{H}
+@item @kbd{H} (@code{get-help-window})
 @itemx @kbd{?}
 @itemx @key{F1} (on DOS/Windows only)
 @itemx @kbd{h} and @kbd{H}, vi-like operation
