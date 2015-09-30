@@ -1,5 +1,10 @@
 2015-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/index-apropos.sh, info/t/split-footnotes.sh: Send an 
+	extra q to quit.
+
+2015-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/echo-area.c (ea_rubout),
 	* TODO: Abort echo area read if backspace at start of area and 
 	user input is empty.
