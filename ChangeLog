@@ -1,5 +1,10 @@
 2015-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/echo-area.c (input_line_prompt): Remove unused variable.
+	(PUSHED_EA): Remove unused field 'prompt'.
+
+2015-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (parser) <INLINE_INSERTCOPYING>: Change
 	"insercopying" to "insertcopying".
 
