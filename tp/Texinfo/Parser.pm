@@ -679,8 +679,8 @@ sub parser(;$$)
   $parser->{'close_paragraph_commands'} = {%close_paragraph_commands};
   $parser->{'close_preformatted_commands'} = {%close_preformatted_commands};
   if ($parser->{'INLINE_INSERTCOPYING'}) {
-    delete $parser->{'close_paragraph_commands'}->{'insercopying'};
-    delete $parser->{'close_preformatted_commands'}->{'insercopying'};
+    delete $parser->{'close_paragraph_commands'}->{'insertcopying'};
+    delete $parser->{'close_preformatted_commands'}->{'insertcopying'};
   }
   # a hash is simply concatenated.  It should be like %index_names.
   if (ref($parser->{'indices'}) eq 'HASH') {
