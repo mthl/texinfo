@@ -459,7 +459,13 @@ DECLARE_INFO_COMMAND (ea_rubout, _("Delete the character behind the cursor"))
       int start;
 
       if (input_line_point == input_line_beg)
-        return;
+        {
+          /* Abort echo area read if backspace at start of area and user input 
+             is empty. */
+          if (input_line_beg == input_line_end)
+            info_aborted_echo_area = 1;
+          return;
+        }
 
       start = input_line_point;
       ea_backward (window, count);
