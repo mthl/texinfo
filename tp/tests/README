@@ -30,16 +30,7 @@ base tests, "make long-checks" for the long tests, or "make all-checks"
 for both.
 
 * Using ./parser_tests.sh with the directories one want to run the tests 
-in given as arguments
-
-* By going into a directory and running ../run_parser_all.sh, like
-$ cd formatting
-$ ../run_parser_all.sh
-
-* By going into a directory and running one specific test, like
-$ cd formatting
-$ ../run_parser_all.sh cond
-(see below for info on how test names are specified).
+in given as arguments, for example "./parser_tests.sh formatting".
 
 Checking test results
 ---------------------
