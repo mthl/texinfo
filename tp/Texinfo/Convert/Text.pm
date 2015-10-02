@@ -286,6 +286,7 @@ my %underline_symbol = (
   4 => '.'
 );
 
+# Return the text of an underlined heading, possibly indented.
 sub heading($$$;$$)
 {
   my $current = shift;

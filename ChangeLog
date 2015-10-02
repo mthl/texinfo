@@ -1,5 +1,9 @@
 2015-10-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Text.pm (heading): Add a comment.
+
+2015-10-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/README: Remove instructions that don't work any more.
 
 2015-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
