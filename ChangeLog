@@ -1,5 +1,9 @@
 2015-10-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/30section.t: Add new test 'loweredheading'.
+
+2015-10-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Mention the last @lowersections fix, and mention macro 
 	changes in texinfo.tex (newlines in a macro argument, relevant 
 	for gcc manual).
