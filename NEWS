@@ -45,6 +45,9 @@ one of the relevant sections:
     the purposes of sorting.  You may explicity specify a sort key by
     preceding the text of the entry with the @sortas commmand with the
     sort key desired as a braced argument.
+  . Changes to macro handling to more closely match makeinfo.  Ends of
+    lines are preserved in an argument to a macro taking a single 
+    argument.
   . Use a larger font for arguments in a @deffn line and similar.
   . The default indices (cp, ky and so on) now don't get a file opened
     for them unless they are actually used.  This reduces the number of
@@ -72,6 +75,8 @@ one of the relevant sections:
   . New customization variable INFO_SPECIAL_CHARS_QUOTE to allow use of
     a quoting mechanism for problematic constructs in Info output, for
     example node names containing colons or commas.
+  . Commands like @heading are affected by @lowersections and @raisesections
+    again, as was the case before Texinfo 5.0.
 
 * info
   . new user variable `xref-rendition' enables underlining and

@@ -1,5 +1,11 @@
 2015-10-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* NEWS: Mention the last @lowersections fix, and mention macro 
+	changes in texinfo.tex (newlines in a macro argument, relevant 
+	for gcc manual).
+
+2015-10-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Structuring.pm (_section_level): Function moved to 
 	tp/Texinfo/Parser.pm.  All uses updated to access 'level' value 
 	of element instead.
