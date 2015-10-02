@@ -156,30 +156,7 @@ $unnumbered_commands{'top'} = 1;
 $unnumbered_commands{'centerchap'} = 1;
 $unnumbered_commands{'part'} = 1;
 
-my $min_level = $command_structuring_level{'chapter'};
-my $max_level = $command_structuring_level{'subsubsection'};
-
-sub _section_level($)
-{
-  my $section = shift;
-  my $level = $command_structuring_level{$section->{'cmdname'}};
-  # correct level according to raise/lowersections
-  if ($section->{'extra'} and $section->{'extra'}->{'sections_level'}) {
-    $level -= $section->{'extra'}->{'sections_level'};
-    if ($level < $min_level) {
-      if ($command_structuring_level{$section->{'cmdname'}} < $min_level) {
-        $level = $command_structuring_level{$section->{'cmdname'}};
-      } else {
-        $level = $min_level;
-      }
-    } elsif ($level > $max_level) {
-      $level = $max_level;
-    }
-  }
-  return $level;
-}
 # sets:
-# 'level'
 # 'number'
 # 'section_childs'
 # 'section_up'
@@ -222,8 +199,11 @@ sub sectioning_structure($$)
           $section_top = $content;
         }
       }
-      my $level = _section_level($content);
-      $content->{'level'} = $level;
+      my $level = $content->{'level'};
+      if (!defined($level)) {
+        warn "bug: level not defined for $content->{'cmdname'}\n";
+        $level = $content->{'level'} = 0;
+      }
 
       if ($previous_section) {
         # new command is below
@@ -439,11 +419,11 @@ sub fill_gaps_in_sectioning($)
       next;
     }
     my $current_section = shift @sections_list;
-    my $current_section_level = _section_level($current_section);
+    my $current_section_level = $current_section->{'level'};
     my $next_section = $sections_list[0];
     
     if (defined($next_section)) {
-      my $next_section_level = _section_level($next_section);
+      my $next_section_level = $next_section->{'level'};
       if ($next_section_level - $current_section_level > 1) {
         my @correct_level_offset_commands = _correct_level($next_section,
                                                           $contents[-1]);

@@ -1,5 +1,19 @@
 2015-10-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Structuring.pm (_section_level): Function moved to 
+	tp/Texinfo/Parser.pm.  All uses updated to access 'level' value 
+	of element instead.
+	* tp/Texinfo/Parser.pm (_end_line) <command is in in 
+	command_structuring_level>: Don't set 'level' value.
+	(_parse_texi) <sectioning commands>: Set 'sections_level' extra 
+	value on element, and set 'level' value by calling _section_level.
+	Do it for all sectioning elements, and not just those that are 
+	"root commands", to include @heading and similar.  This is 
+	intended to make @heading affected by @lowersections and 
+	@raisesections, reported by Quinn Greer not to work.
+
+2015-10-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Changes: File deleted.
 
 2015-10-02  Gavin Smith  <gavinsmith0123@gmail.com>

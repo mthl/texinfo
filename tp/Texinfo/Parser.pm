@@ -3443,9 +3443,6 @@ sub _end_line($$$)
           $current->{'type'} = 'index_entry_command';
         }
       }
-      if (defined($command_structuring_level{$command})) {
-        $current->{'level'} = $command_structuring_level{$command};
-      }
     }
     $current = $current->{'parent'};
     if ($end_command) {
@@ -4715,10 +4712,12 @@ sub _parse_texi($;$)
               $misc = { 'cmdname' => $command, 'parent' => $current,
                   'line_nr' => $line_nr };
               push @{$current->{'contents'}}, $misc;
-              if ($self->{'sections_level'} and $root_commands{$command}
-                   and $command ne 'node' and $command ne 'part') {
-                $current->{'contents'}->[-1]->{'extra'}->{'sections_level'}
-                  = $self->{'sections_level'};
+              if ($sectioning_commands{$command}) {
+                if ($self->{'sections_level'}) {
+                  $current->{'contents'}->[-1]->{'extra'}->{'sections_level'}
+                    = $self->{'sections_level'};
+                }
+                $misc->{'level'} = _section_level($misc);
               }
               # def*x
               if ($def_commands{$command}) {
@@ -5593,6 +5592,29 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
   return $root;
 }
 
+my $min_level = $command_structuring_level{'chapter'};
+my $max_level = $command_structuring_level{'subsubsection'};
+
+# Return numbered level of an element
+sub _section_level($)
+{
+  my $section = shift;
+  my $level = $command_structuring_level{$section->{'cmdname'}};
+  # correct level according to raise/lowersections
+  if ($section->{'extra'} and $section->{'extra'}->{'sections_level'}) {
+    $level -= $section->{'extra'}->{'sections_level'};
+    if ($level < $min_level) {
+      if ($command_structuring_level{$section->{'cmdname'}} < $min_level) {
+        $level = $command_structuring_level{$section->{'cmdname'}};
+      } else {
+        $level = $min_level;
+      }
+    } elsif ($level > $max_level) {
+      $level = $max_level;
+    }
+  }
+  return $level;
+}
 
 # parse special line @-commands, unmacro, set, clear, clickstyle.
 # Also remove spaces or ignore text, as specified in the misc_commands hash.
