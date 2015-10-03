@@ -1,5 +1,12 @@
 2015-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/display.c (ref_rendition, hl_ref_rendition, match_rendition):
+	Use non-plain default renditions.
+	(display_update_node_text): Still highlight cross-references if 
+	hl_ref_rendition is given but ref_rendition isn't.
+
+2015-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Defining Macros, Macro Details): Advice on 
 	ending a macro body with '@c'.
 

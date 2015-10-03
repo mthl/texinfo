@@ -338,9 +338,9 @@ static int ref_highlighted;
 
 static int pl_num; /* Number of printed lines done so far. */
 
-RENDITION ref_rendition = {0, 0};
-RENDITION hl_ref_rendition = {0, 0};
-RENDITION match_rendition = {0, 0};
+RENDITION ref_rendition = {UNDERLINE_MASK, UNDERLINE_MASK};
+RENDITION hl_ref_rendition = {UNDERLINE_MASK, 0};
+RENDITION match_rendition = {STANDOUT_MASK, STANDOUT_MASK};
 
 
 /* Process a line from the node in WIN starting at ITER, and advancing ITER
@@ -525,7 +525,7 @@ display_update_node_text (WINDOW *win)
   refs = 0;
   if (match_rendition.mask)
     matches = win->matches;
-  if (ref_rendition.mask)
+  if (ref_rendition.mask || hl_ref_rendition.mask)
     refs = win->node->references;
 
   pl_num = 0;
