@@ -1,3 +1,8 @@
+2015-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Defining Macros, Macro Details): Advice on 
+	ending a macro body with '@c'.
+
 2015-10-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/30section.t: Add new test 'loweredheading'.
