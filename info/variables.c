@@ -40,6 +40,8 @@ static char *mouse_choices[] = { "Off", "normal-tracking", NULL };
 
 static char *follow_strategy_choices[] = { "remain", "path", NULL };
 
+static char *nodeline_choices[] = { "no", "print", "pointers", NULL };
+
 /* Choices used by the completer when reading a value for the user-visible
    variable "scroll-behaviour". */
 static char *info_scroll_choices[] = { "Continuous", "Next Only",
@@ -151,6 +153,10 @@ VARIABLE_ALIST info_variables[] = {
   { "match-rendition",
       N_("Styles for search matches"),
     &match_rendition, &rendition_variable },
+
+  { "nodeline",
+      N_("How to print the information line at the start of a node"),
+    &nodeline_print, (char **)nodeline_choices },
 
   { NULL }
 };

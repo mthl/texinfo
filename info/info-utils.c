@@ -1071,93 +1071,114 @@ skip_tag_contents (long n)
     }
 }
 
+#define NO_NODELINE 0
+#define PRINT_NODELINE 1
+#define NODELINE_POINTERS_ONLY 2
+int nodeline_print = 2;
+
 /* Read first line of node and set next, prev and up. */
 static void
 parse_top_node_line (NODE *node)
 {
-  char **store_in;
+  char **store_in = 0;
   char *nodename;
+  char *ptr, *ptr2;
+  char *display_start = 0;
   int value_length;
 
   /* If the first line is empty, leave it in.  This is the case
      in the index-apropos window. */
-  if (*inptr == '\n')
+  if (*node->contents == '\n')
     return;
 
   node->next = node->prev = node->up = 0;
+  ptr = node->contents;
 
   while (1)
     {
       store_in = 0;
 
-      skip_input (skip_whitespace (inptr));
+      ptr += skip_whitespace (ptr);
 
       /* Check what field we are looking at */
-      if (!strncasecmp (inptr, INFO_FILE_LABEL, strlen(INFO_FILE_LABEL)))
+      if (!strncasecmp (ptr, INFO_FILE_LABEL, strlen(INFO_FILE_LABEL)))
         {
-          skip_input (strlen(INFO_FILE_LABEL));
+          ptr2 = ptr + strlen (INFO_FILE_LABEL);
         }
-      else if (!strncasecmp (inptr, INFO_NODE_LABEL, strlen(INFO_NODE_LABEL)))
+      else if (!strncasecmp (ptr, INFO_NODE_LABEL, strlen(INFO_NODE_LABEL)))
         {
-          skip_input (strlen(INFO_NODE_LABEL));
+          ptr2 = ptr + strlen (INFO_NODE_LABEL);
         }
-      else if (!strncasecmp (inptr, INFO_PREV_LABEL, strlen(INFO_PREV_LABEL)))
+      else if (!strncasecmp (ptr, INFO_PREV_LABEL, strlen(INFO_PREV_LABEL)))
         {
-          skip_input (strlen(INFO_PREV_LABEL));
+          ptr2 = ptr + strlen (INFO_PREV_LABEL);
           store_in = &node->prev;
         }
-      else if (!strncasecmp (inptr, INFO_ALTPREV_LABEL, 
+      else if (!strncasecmp (ptr, INFO_ALTPREV_LABEL, 
                              strlen(INFO_ALTPREV_LABEL)))
         {
-          skip_input (strlen(INFO_ALTPREV_LABEL));
+          ptr2 = ptr + strlen (INFO_ALTPREV_LABEL);
           store_in = &node->prev;
         }
-      else if (!strncasecmp (inptr, INFO_NEXT_LABEL, strlen(INFO_NEXT_LABEL)))
+      else if (!strncasecmp (ptr, INFO_NEXT_LABEL, strlen(INFO_NEXT_LABEL)))
         {
-          skip_input (strlen(INFO_NEXT_LABEL));
+          ptr2 = ptr + strlen (INFO_NEXT_LABEL);
           store_in = &node->next;
         }
-      else if (!strncasecmp (inptr, INFO_UP_LABEL, strlen(INFO_UP_LABEL)))
+      else if (!strncasecmp (ptr, INFO_UP_LABEL, strlen(INFO_UP_LABEL)))
         {
-          skip_input (strlen(INFO_UP_LABEL));
+          ptr2 = ptr + strlen (INFO_UP_LABEL);
           store_in = &node->up;
         }
       else 
         {
+          ptr2 = ptr;
           store_in = 0;
           /* Not recognized - code below will skip to next comma */
         }
         
-      skip_input (skip_whitespace (inptr));
+      if (nodeline_print==NODELINE_POINTERS_ONLY && !display_start && store_in)
+        display_start = ptr;
+      ptr = ptr2;
 
-      if (*inptr != '(')
+      ptr += skip_whitespace (ptr);
+
+      if (*ptr != '(')
         value_length = 0;
       else
-        {
-          value_length = read_bracketed_filename (inptr, 0);
-        }
+        value_length = read_bracketed_filename (ptr, 0);
 
       /* Separate at commas or newlines, so it will work for
          filenames including full stops. */
-      value_length += read_quoted_string (inptr + value_length,
+      value_length += read_quoted_string (ptr + value_length,
                                           "\n\r\t,", 1, &nodename);
       if (store_in)
         {
           *store_in = xmalloc (value_length + 1);
-          strncpy (*store_in, inptr, value_length);
+          strncpy (*store_in, ptr, value_length);
           (*store_in)[value_length] = '\0';
         }
 
       free (nodename);
-      skip_input (value_length);
+      ptr += value_length;
 
-      if (*inptr == '\n')
+      if (*ptr == '\n')
         {
-          skip_input (1);
+          ptr++;
           break;
         }
 
-      skip_input (1); /* Point after field terminator */
+      ptr += 1; /* Point after field terminator */
+    }
+  if (display_start)
+    {
+      node->nodelen -= display_start - node->contents;
+      node->contents = display_start;
+    }
+  else if (nodeline_print == NO_NODELINE)
+    {
+      node->nodelen -= ptr - node->contents;
+      node->contents = ptr;
     }
 }
 
@@ -1628,13 +1649,14 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
   refs = calloc (1, sizeof *refs);
   refs_slots = 1;
 
+  parse_top_node_line (node);
+
   /* This should be the only time we assign to inptr in this function -
      all other assignment should be done with the helper functions above. */
   inptr = node->contents;
   input_start = node->contents;
   input_length = node->nodelen;
 
-  parse_top_node_line (node);
 
   while ((match = forward_to_info_syntax (inptr))
           && match < node->contents + node->nodelen)

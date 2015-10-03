@@ -1770,6 +1770,7 @@ gc_file_buffers_and_nodes (void)
       if (!fb_referenced[i])
         {
           FILE_BUFFER *fb = info_loaded_files[i];
+          TAG **t;
 
           if (fb->flags & N_TagsIndirect)
             continue;
@@ -1790,6 +1791,14 @@ gc_file_buffers_and_nodes (void)
 
           free (fb->contents);
           fb->contents = 0;
+
+          /* Clear pointers into the file contents in the tags table. */
+          if (fb->tags)
+            for (t = fb->tags; (*t); t++)
+              {
+                if (!((*t)->cache.flags & N_WasRewritten))
+                  (*t)->cache.contents = 0;
+              }
         }
     }
 
@@ -2009,8 +2018,8 @@ DECLARE_INFO_COMMAND (info_keep_one_window, _("Delete all other windows"))
       amount -= (window->pagetop - pagetop);
       display_scroll_display (start, end, amount);
     }
-
   window->flags |= W_UpdateWindow;
+  gc_file_buffers_and_nodes ();
 }
 
 /* Change the size of WINDOW by AMOUNT. */

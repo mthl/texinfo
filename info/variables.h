@@ -82,6 +82,7 @@ extern int preprocess_nodes_p;
 extern int key_time;
 extern int mouse_protocol;
 extern int follow_strategy;
+extern int nodeline_print;
 
 typedef struct {
     unsigned long mask;

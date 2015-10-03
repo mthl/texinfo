@@ -1396,7 +1396,7 @@ info_node_of_tag_ext (FILE_BUFFER *fb, TAG **tag_ptr, int fast)
       set_tag_nodelen (subfile, tag);
     }
 
-  if (!tag->cache.nodename || (tag->cache.flags & N_Simple))
+  if (!tag->cache.contents || (tag->cache.flags & N_Simple))
     {
       /* Data for node has not been generated yet. */
       NODE *cache = &tag->cache;
@@ -1422,11 +1422,6 @@ info_node_of_tag_ext (FILE_BUFFER *fb, TAG **tag_ptr, int fast)
 
       if (!preprocess_nodes_p)
         node_set_body_start (cache);
-
-      /* Don't save a pointer into a file buffer, because it might be
-         garbage collected. */
-      if (!(cache->flags & N_WasRewritten))
-        cache->contents = 0;
     }
 
   /* Initialize the node from the tag. */

@@ -1,5 +1,22 @@
 2015-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/variables.c (info_variables): New user variable 'nodeline'.
+	* info/info-utils.c (parse_top_node_line): Depending on value of 
+	user variable 'nodeline', include more or less of the nodeline 
+	in the displayed node.
+	(scan_node_contents): Set inptr after calling parse_top_node_line.
+	* info/nodes.c (info_node_of_tag): Check contents field of a tag 
+	table entry to see if the node has to be (re-)scanned.  Don't 
+	null contents field after scan_node_contents returns.
+	* info/session.c (gc_file_buffers_and_nodes): Clear contents 
+	field of tags table when gc'ing a file buffer.
+	* info/t/Infokey-config: Set 'nodeline'.
+
+	* info/session.c (info_keep_one_window):
+	Call gc_file_buffers_and_nodes.
+
+2015-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/display.c (ref_rendition, hl_ref_rendition, match_rendition):
 	Use non-plain default renditions.
 	(display_update_node_text): Still highlight cross-references if 
