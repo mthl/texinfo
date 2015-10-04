@@ -1,3 +1,9 @@
+2015-10-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\pdfurl): Define \xprocessmacroarg in case we 
+	are in a macro expansion.  Problem with @email used via a @macro 
+	in PDF output reported by Arnold Robbins.
+
 2015-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/variables.c (info_variables): New user variable 'nodeline'.
