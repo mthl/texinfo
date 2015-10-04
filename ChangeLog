@@ -1,5 +1,10 @@
 2015-10-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Overview): Put contents of a footnote in the 
+	main text.
+
+2015-10-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\entry) <no page numbers>: Add a \hfill where 
 	\indexdotfill would be.  This prevents a short part name being 
 	split across lines in a table of contents.

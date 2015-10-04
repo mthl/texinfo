@@ -805,7 +805,6 @@ formatting program, so if you need to lay out a newspaper, devise a
 glossy magazine ad, or follow the exact formatting requirements of
 a publishing house, Texinfo may not be the simplest tool.
 
-Texinfo@footnote{
 @cindex Spelling of Texinfo
 @cindex Pronunciation of Texinfo
 Spell ``Texinfo'' with a capital ``T'' and the other letters in
@@ -814,7 +813,9 @@ lowercase.  The first syllable of ``Texinfo'' is pronounced like
 pronunciation of @TeX{}.  Pronounce @TeX{} as if the @samp{X} were
 the last sound in the name `Bach'.  In the word @TeX{}, the @samp{X}
 is, rather than the English letter ``ex'', actually the Greek letter
-``chi''. } is the official documentation format of the GNU project.
+``chi''.
+
+Texinfo is the official documentation format of the GNU project.
 More information, including manuals for GNU packages, is available
 at the @uref{http://www.gnu.org/doc/, GNU documentation web page}.
 
