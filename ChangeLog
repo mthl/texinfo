@@ -1,5 +1,11 @@
 2015-10-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\entry) <no page numbers>: Add a \hfill where 
+	\indexdotfill would be.  This prevents a short part name being 
+	split across lines in a table of contents.
+
+2015-10-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\pdfurl): Define \xprocessmacroarg in case we 
 	are in a macro expansion.  Problem with @email used via a @macro 
 	in PDF output reported by Arnold Robbins.
