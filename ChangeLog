@@ -1,5 +1,10 @@
 2015-10-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/man.c (xrefs_of_manpage): Exclude first line of manpage.
+	(get_manpage_node): Don't add an extra line to the manpage node.
+
+2015-10-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Overview): Put contents of a footnote in the 
 	main text.
 

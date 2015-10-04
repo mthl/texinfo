@@ -97,32 +97,10 @@ get_manpage_node (char *pagename)
         return 0;
       plen = strlen (page);
 
-      if (!preprocess_nodes_p)
-        {
-          char *header;
-          hlen = asprintf (&header, "%s %s,  %s %s,  %s (dir)\n\n",
-                   INFO_FILE_LABEL, MANPAGE_FILE_BUFFER_NAME,
-                   INFO_NODE_LABEL, pagename,
-                   INFO_UP_LABEL);
+      node->contents = page;
+      node->nodelen = plen;
 
-          node->contents = xcalloc (1, hlen + plen + 1);
-          memcpy (node->contents, header, hlen);
-          memcpy (node->contents + hlen, page, plen);
-
-          /* Set nodelen. */
-          node->nodelen = hlen + plen;
-
-          free (header);
-          /* FIXME: Don't allocate page just to immediately free it. */
-          free (page);
-        }
-      else
-        {
-          node->contents = page;
-          node->nodelen = plen;
-        }
-
-      node->body_start = strcspn (node->contents, "\n");
+      node->body_start = 0;
       node->references = xrefs_of_manpage (node);
       node->up = "(dir)";
     }
@@ -570,6 +548,11 @@ xrefs_of_manpage (NODE *node)
   s.flags = 0;
   s.end = node->nodelen;
 
+  /* Exclude first line, which often looks like:
+CAT(1)                           User Commands                          CAT(1)
+  */
+  s.start = strcspn (node->contents, "\n");
+
   /* Build a list of references.  A reference is alphabetic characters
      followed by non-whitespace text within parenthesis leading with a digit. */
   while (search_forward ("(", &s, &position) == search_success)
@@ -581,8 +564,9 @@ xrefs_of_manpage (NODE *node)
         if (whitespace_or_newline (s.buffer[name]))
           break;
 
-      if (name != 0)
-        name++;
+      if (name == 0)
+        goto skip;
+      name++;
 
       if (name == position)
         goto skip; /* Whitespace immediately before '('. */
