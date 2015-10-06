@@ -1,5 +1,10 @@
 2015-10-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\part): Set \pchapsepmacro before using 
+	\chapmacro to avoid extra blank pages following a part page.
+
+2015-10-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Conditional Commands): Delete words "but 
 	without the special historical case".
 
