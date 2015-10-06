@@ -12922,8 +12922,7 @@ output.
 @findex ifplaintext
 @findex iftex
 @findex ifxml
-The environments for the other formats are analogous, but without the
-special historical case:
+The environments for the other formats are analogous:
 
 @table @code
 @item @@ifdocbook @dots{} @@end ifdocbook
