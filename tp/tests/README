@@ -27,7 +27,7 @@ This testsuite can be run one of the following ways:
 
 * Using the makefile rules: "make check" (in this directory) for the 
 base tests, "make long-checks" for the long tests, or "make all-checks" 
-for both.
+for both.  These use the scripts under the test_scripts directory.
 
 * Using ./parser_tests.sh with the directories one want to run the tests 
 in given as arguments, for example "./parser_tests.sh formatting".
@@ -86,8 +86,7 @@ be set to "yes", but otherwise operate similarly) will cause the
 reference results to be regenerated.  For example, to update the 
 reference results for one particular test:
 
-$ cd formatting
-$ ../run_parser_all.sh -copy a_test
+$ ./parser_tests.sh -copy formatting
 The copy-* make targets update all the references for various large sets
 of tests via this method.
 
