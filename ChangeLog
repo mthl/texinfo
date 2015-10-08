@@ -1,5 +1,11 @@
 2015-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/HTML.pm (_convert_raw_command),
+	* tp/Texinfo/Convert/Docbook.pm (_convert): Don't remove newline 
+	from the last line of a raw format block.
+
+2015-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi (Variables): Document 'nodeline' variable.
 	* NEWS: Announce new variables.
 

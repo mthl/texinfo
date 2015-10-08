@@ -2367,7 +2367,6 @@ sub _convert_raw_command($$$$)
   my $content = shift;
 
   if ($cmdname eq $self->{'output_format'}) {
-    chomp ($content);
     return $content;
   }
   $self->line_warn(sprintf($self->__("raw format %s is not converted"), 

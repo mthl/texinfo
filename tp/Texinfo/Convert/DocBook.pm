@@ -1348,15 +1348,11 @@ sub _convert($$;$)
     # a pending_prepend still there may happen if a quotation is empty.
     delete $self->{'pending_prepend'};
     #$result .= "</$root->{'cmdname'}>\n";
-    if ($self->{'document_context'}->[-1]->{'raw'}) {
-      chomp ($result);
-      chomp ($result);
-    } else {
-      if (exists($docbook_preformatted_formats{$root->{'cmdname'}})) {
-        my $format = pop @{$self->{'document_context'}->[-1]->{'preformatted_stack'}};
-        die "BUG $format ne $docbook_preformatted_formats{$root->{'cmdname'}}"
-         if ($format ne $docbook_preformatted_formats{$root->{'cmdname'}});
-      }
+    if (!$self->{'document_context'}->[-1]->{'raw'}
+        and exists($docbook_preformatted_formats{$root->{'cmdname'}})) {
+      my $format = pop @{$self->{'document_context'}->[-1]->{'preformatted_stack'}};
+      die "BUG $format ne $docbook_preformatted_formats{$root->{'cmdname'}}"
+        if ($format ne $docbook_preformatted_formats{$root->{'cmdname'}});
     }
     if ($self->{'context_block_commands'}->{$root->{'cmdname'}}) {
       pop @{$self->{'document_context'}};
