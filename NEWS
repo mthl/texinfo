@@ -79,8 +79,11 @@ one of the relevant sections:
     again, as was the case before Texinfo 5.0.
 
 * info
-  . new user variable `xref-rendition' enables underlining and
-    highlighting of cross-references (IN PROGRESS)
+  . New user variables `ref-rendition', `hl-ref-rendition', and
+    `match-rendition' enable cutomization of how cross-references and 
+    search matches are highlighted.
+  . By default only the node pointers are displayed at the top of a node.
+    Customize this with the `nodeline' variable.
   . new command M-x tree-search to search all subnodes of a node (IN PROGRESS)
   . Now tries to find referenced manuals in the same directory as the
     current file first, before looking in search path.  Customize this

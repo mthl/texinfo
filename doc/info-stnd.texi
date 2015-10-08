@@ -2243,6 +2243,16 @@ mouse tracking mode may interfere with this.  When this happens, you may
 be able to select text by holding down the @kbd{Shift} key while
 clicking and dragging.
 
+@item nodeline
+@cindex node header line
+How to print the node header line that appears at the top of each node.
+By default only the pointers to neighbouring nodes are displayed
+(the ``Next'', ``Prev'', and ``Up'' pointers): this corresponds to
+the @code{pointers} value for this variable.  To print the entire line,
+set @code{nodeline} to the value @code{print}, which will include the
+filename and name of the node.  To not display the header line at all,
+use the value @code{no}.
+
 @anchor{scroll-behavior}
 @item scroll-behavior
 @itemx scroll-behaviour

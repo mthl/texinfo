@@ -1,5 +1,10 @@
 2015-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-stnd.texi (Variables): Document 'nodeline' variable.
+	* NEWS: Announce new variables.
+
+2015-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Macro Details): Mention problem with index 
 	entries.
 
