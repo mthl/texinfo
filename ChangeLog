@@ -1,3 +1,8 @@
+2015-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Macro Details): Mention problem with index 
+	entries.
+
 2015-10-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\part): Set \pchapsepmacro before using 

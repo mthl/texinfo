@@ -14079,6 +14079,11 @@ macros containing line-oriented commands or text, such as
 @code{@@example} environments, may behave unpredictably in @TeX{}.
 
 @item
+Texinfo commands in the expansion of a macro in the text of an index 
+entry may end up being typeset as literal text (including an ``@@'' 
+sign), instead of being interpreted with their intended meaning.
+
+@item
 White space is ignored at the beginnings of lines.
 
 @item
