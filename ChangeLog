@@ -1,5 +1,11 @@
 2015-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Testing for Texinfo Commands): Use @@@@ in 
+	example instead of @@ in order to output "@@".  Also use @@, @{ 
+	and @} to match the other example.
+
+2015-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo-tex-test.texi (Document Encoding): New test 
 	chapter to test UTF-8 characters.
 

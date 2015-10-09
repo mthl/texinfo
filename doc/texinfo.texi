@@ -13646,7 +13646,7 @@ this:
 @example
 @@ifset txicommandconditionals
 @@ifcommandnotdefined foobarnode
-(Good, @samp{@@foobarnode} is not defined.)
+(Good, @@samp@{@@@@foobarnode@} is not defined.)
 @@end ifcommandnotdefined
 @@end ifset
 @end example
