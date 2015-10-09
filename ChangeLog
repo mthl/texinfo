@@ -1,3 +1,10 @@
+2015-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\documentencoding): Read argument with 
+	altered catcodes.  This has been broken since 2015-09-03 when
+	the catcode of - was changed.
+	(\parseargdef): Comment changed.
+
 2015-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/Makefile.am: Remove a commented-outline, and move a 
