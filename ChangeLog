@@ -1,5 +1,10 @@
 2015-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\utfeightchardefs): Add several missing 
+	definitions, requested by Oliver Heimlich.
+
+2015-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\documentencoding): Read argument with 
 	altered catcodes.  This has been broken since 2015-09-03 when
 	the catcode of - was changed.
