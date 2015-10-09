@@ -621,4 +621,18 @@ See @ref{Target}.@*
 @node Target
 @section Target
 
+@chapter Document encoding
+
+@documentencoding UTF-8
+
+
+Test of a few UTF-8 sequences.
+
+∃x∈X, x < ∞, s.t. x ∧ y
+
+A∩B=C
+
+(spacing here doesn't matter because we're not in math mode)
+
+
 @bye
