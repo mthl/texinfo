@@ -1,3 +1,7 @@
+2015-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (@setfilename): @setfilename not required.
+
 2015-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Testing for Texinfo Commands): Use @@@@ in 

@@ -1921,9 +1921,6 @@ in a document is generally @code{@@setfilename}:
 @@setfilename @var{info-file-name}
 @end example
 
-This command is required for @TeX{}, and very strongly recommended for
-@code{makeinfo}.
-
 Write the @code{@@setfilename} command at the beginning of a line and
 follow it on the same line by the Info file name.  Do not write
 anything else on the line.
