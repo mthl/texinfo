@@ -13634,6 +13634,7 @@ and linked from the Texinfo home page
 (@url{http://www.gnu.org/software/texinfo}) to see when a particular
 command was added.
 
+@vindex txicommandconditionals
 These command-checking conditionals themselves were added in
 Texinfo@tie{}5.0, released in 2013---decades after Texinfo's
 inception.  In order to test if they themselves are available,
