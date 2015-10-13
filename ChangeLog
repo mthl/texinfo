@@ -1,3 +1,14 @@
+2015-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\entry): Get length of index entry text and 
+	length of whole entry.  If it's too long, use \parshape to split 
+	the entry across two lines.  Use \rightskip and \leftskip to 
+	align first line of entry to the left, and last line to the 
+	right.  Increase \hyphenpenalty to 10000.  Re-add a comment to 
+	explain why the entry text isn't absorbed as a macro argument.
+	(\indexdotfill): Increase stretchability of leaders to "filll" 
+	level.
+
 2015-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (@setfilename): @setfilename not required.
