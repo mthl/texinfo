@@ -1,5 +1,10 @@
 2015-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\indexnonalnumdisappear, \indexnonalnumreappear):
+	Disable ignoring \, < and @ until we have options for them.
+
+2015-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\entry): Get length of index entry text and 
 	length of whole entry.  If it's too long, use \parshape to split 
 	the entry across two lines.  Use \rightskip and \leftskip to 
