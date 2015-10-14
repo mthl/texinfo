@@ -221,7 +221,6 @@ maintenance_files = \
 
 perl_specific_files = \
   Makefile.PL \
-  Changes \
   MANIFEST
 
 EXTRA_DIST = \

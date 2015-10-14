@@ -1,5 +1,9 @@
 2015-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Makefile.am (perl_specific_files): Remove 'Changes'.
+
+2015-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi: Ignore @, \ and < when sorting index entries.
 
 2015-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
