@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-10-13.16}
+\def\texinfoversion{2015-10-14.18}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -4606,6 +4606,8 @@ end
 }
 
 % \commondummiesnofonts: common to \commondummies and \indexnofonts.
+% Define \definedumyletter, \definedummyaccent and \definedummyword before
+% using.
 %
 \def\commondummiesnofonts{%
   % Control letters and accents.
@@ -4701,19 +4703,34 @@ end
 {
 \catcode`\<=13
 \catcode`\-=13
+\catcode`\`=13
   \gdef\indexnonalnumdisappear{%
-    % disabled until we can introduce options for them.
-    %\backslashdisappear
-    \def-{}%
-    %\def<{}%
-    %\def\@{}%
+    \expandafter\ifx\csname SETtxiindexlquoteignore\endcsname\relax\else
+      % @set txiindexlquoteignore makes us ignore left quotes in the sort term.
+      % (Introduced for FSFS 2nd ed.)
+      \let`=\empty
+    \fi
+    %
+    \expandafter\ifx\csname SETtxiindexbackslashignore\endcsname\relax\else
+      \backslashdisappear
+    \fi
+    %
+    \expandafter\ifx\csname SETtxiindexhyphenignore\endcsname\relax\else
+      \def-{}%
+    \fi
+    \expandafter\ifx\csname SETtxiindexlessthanignore\endcsname\relax\else
+      \def<{}%
+    \fi
+    \expandafter\ifx\csname SETtxiindexatsignignore\endcsname\relax\else
+      \def\@{}%
+    \fi
   }
 
   \gdef\indexnonalnumreappear{%
-    %\useindexbackslash
+    \useindexbackslash
     \let-\normaldash
-    %\let<\normalless
-    %\def\@{@}%
+    \let<\normalless
+    \def\@{@}%
   }
 }
 
@@ -4730,7 +4747,6 @@ end
   \def\definedummyletter##1{\let##1\empty}%
   % All control words become @asis by default; overrides below.
   \let\definedummyword\definedummyaccent
-  %
   \commondummiesnofonts
   %
   % Don't no-op \tt, since it isn't a user-level command
@@ -4743,8 +4759,6 @@ end
   \def\_{\normalunderscore}%
   \def\-{}% @- shouldn't affect sorting
   %
-  % Unfortunately, texindex < 6.0 is not prepared to handle braces in the
-  % content at all, so these won't be sorted in ASCII order.
   \def\lbracechar{{\indexlbrace}}%
   \def\rbracechar{{\indexrbrace}}%
   \let\{=\lbracechar
@@ -4807,9 +4821,6 @@ end
   \def\result{=>}%
   \def\textdegree{o}%
   %
-  \expandafter\ifx\csname SETtxiindexlquoteignore\endcsname\relax
-  \else \indexlquoteignore \fi
-  %
   % We need to get rid of all macros, leaving only the arguments (if present).
   % Of course this is not nearly correct, but it is the best we can do for now.
   % makeinfo does not expand macros in the argument to @deffn, which ends up
@@ -4823,10 +4834,6 @@ end
   \macrolist
 }
 
-% Undocumented (for FSFS 2nd ed.): @set txiindexlquoteignore makes us
-% ignore left quotes in the sort term.
-{\catcode`\`=\active
- \gdef\indexlquoteignore{\let`=\empty}}
 
 \let\SETmarginindex=\relax % put index entries in margin (undocumented)?
 
@@ -4919,9 +4926,9 @@ end
   % Get the string to sort by, by processing the index entry with all
   % font commands turned off.
   {\indexnofonts
+   \indexnonalnumdisappear
    \xdef\indexsortkey{}%
    \let\sortas=\indexwritesortas
-   \indexnonalnumdisappear
    \edef\temp{\the\toks0}%
    \setbox\dummybox = \hbox{\temp}% Make sure to execute any \sortas
    \ifx\indexsortkey\empty
