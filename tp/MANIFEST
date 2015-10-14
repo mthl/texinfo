@@ -1,5 +1,4 @@
 COPYING
-Changes
 DebugTexinfo/DebugCount.pm
 DebugTexinfo/DebugTree.pm
 LocaleData/ca.us-ascii/LC_MESSAGES/texinfo_document.mo
@@ -1238,6 +1237,7 @@ t/results/sectioning/lone_Top_node.pl
 t/results/sectioning/lone_contents.pl
 t/results/sectioning/loop_nodes.pl
 t/results/sectioning/lowered_subsubsection.pl
+t/results/sectioning/loweredheading.pl
 t/results/sectioning/menutextorder.pl
 t/results/sectioning/more_sections_than_nodes.pl
 t/results/sectioning/next_in_menu_is_below.pl
