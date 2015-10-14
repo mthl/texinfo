@@ -6845,7 +6845,7 @@ selects the @t{fixed-width}, typewriter-style font used by @code{@@code};
 others, at which time it did not seem desirable to use very short
 names for such infrequently needed features.)
 
-@cindex <lineannotation> Docbook tag
+@cindex @code{<lineannotation>} Docbook tag
 The @code{@@r} command can be useful in example-like environments, to
 write comments in the standard roman font instead of the fixed-width
 font.  This looks better in printed output, and produces a
