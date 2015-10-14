@@ -79,6 +79,10 @@ developing GNU and promoting software freedom.''
 @c If you like blank pages, add through texi2dvi -t.
 @c setchapternewpage odd
 
+@set txiindexatsignignore
+@set txiindexbackslashignore
+@set txiindexlessthanignore
+
 
 @titlepage
 @title Texinfo
