@@ -208,7 +208,7 @@ function beginfile(filename)
       || substr($0, 2, 5) != "entry")
     fatal(_"%s is not a Texinfo index file\n", filename)
 
-  Special_chars = "{}"
+  Special_chars = "{}" Command_char
 }
 function endfile(filename,    i, prev_initial, initial)
 {
