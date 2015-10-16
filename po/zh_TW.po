@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-10-14 18:21+0100\n"
+"POT-Creation-Date: 2015-10-16 18:35+0100\n"
 "PO-Revision-Date: 2002-03-08 04:56+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -80,86 +80,86 @@ msgstr "%s: 選項 `-W %s' 不可含有引數\n"
 msgid "%s: option '-W %s' requires an argument\n"
 msgstr "%s: 選項 `%s' 必須含有引數\n"
 
-#: gnulib/lib/regcomp.c:131
+#: gnulib/lib/regcomp.c:135
 msgid "Success"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:134
+#: gnulib/lib/regcomp.c:138
 msgid "No match"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:137
+#: gnulib/lib/regcomp.c:141
 #, fuzzy
 msgid "Invalid regular expression"
 msgstr "沒有前一次的搜尋字串"
 
-#: gnulib/lib/regcomp.c:140
+#: gnulib/lib/regcomp.c:144
 #, fuzzy
 msgid "Invalid collation character"
 msgstr "插入本字元"
 
-#: gnulib/lib/regcomp.c:143
+#: gnulib/lib/regcomp.c:147
 #, fuzzy
 msgid "Invalid character class name"
 msgstr "插入本字元"
 
-#: gnulib/lib/regcomp.c:146
+#: gnulib/lib/regcomp.c:150
 msgid "Trailing backslash"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:149
+#: gnulib/lib/regcomp.c:153
 msgid "Invalid back reference"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:152
+#: gnulib/lib/regcomp.c:156
 #, fuzzy
 msgid "Unmatched [ or [^"
 msgstr "未配對的 }"
 
-#: gnulib/lib/regcomp.c:155
+#: gnulib/lib/regcomp.c:159
 #, fuzzy
 msgid "Unmatched ( or \\("
 msgstr "未配對的 }"
 
-#: gnulib/lib/regcomp.c:158
+#: gnulib/lib/regcomp.c:162
 #, fuzzy
 msgid "Unmatched \\{"
 msgstr "未配對的 }"
 
-#: gnulib/lib/regcomp.c:161
+#: gnulib/lib/regcomp.c:165
 msgid "Invalid content of \\{\\}"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:164
+#: gnulib/lib/regcomp.c:168
 msgid "Invalid range end"
 msgstr ""
 
-#: gnulib/lib/regcomp.c:167
+#: gnulib/lib/regcomp.c:171
 #, fuzzy
 msgid "Memory exhausted"
 msgstr "虛擬記憶體耗盡"
 
-#: gnulib/lib/regcomp.c:170
+#: gnulib/lib/regcomp.c:174
 #, fuzzy
 msgid "Invalid preceding regular expression"
 msgstr "沒有前一次的搜尋字串"
 
-#: gnulib/lib/regcomp.c:173
+#: gnulib/lib/regcomp.c:177
 #, fuzzy
 msgid "Premature end of regular expression"
 msgstr "沒有前一次的搜尋字串"
 
-#: gnulib/lib/regcomp.c:176
+#: gnulib/lib/regcomp.c:180
 #, fuzzy
 msgid "Regular expression too big"
 msgstr "沒有前一次的搜尋字串"
 
-#: gnulib/lib/regcomp.c:179
+#: gnulib/lib/regcomp.c:183
 #, fuzzy
 msgid "Unmatched ) or \\)"
 msgstr "未配對的 }"
 
-#: gnulib/lib/regcomp.c:707
+#: gnulib/lib/regcomp.c:711
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "沒有前一次的搜尋字串"
