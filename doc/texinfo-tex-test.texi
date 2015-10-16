@@ -20,37 +20,6 @@
 
 @everyheading @thischapter @| @| @thissection{} p@thispage
 
-@showboxdepth=1000
-@showboxbreadth=1000
-
-@tex
-\gdef \commenceindex{%
-\page
-\begindoublecolumns
-\smallfonts \rm
-\tolerance = 9500
-\plainfrenchspacing
-\everypar = {}%
-\catcode`\\=0 \catcode`\@=12
-}
-
-\gdef \finishindex{%
-\catcode`\@=0 \catcode`\\=13
-\enddoublecolumns
-}
-@end tex
-
-@chapter Index display
-
-@section Long index entries
-
-@commenceindex
-\entry {\code {-c}}{18, 20, 22, 27, 28, 38, 43, 51, 54, 65, 83, 91, 105, 
-124, 125, 127, 129, 135, 139, 143, 145, 148, 187}
-\entry {\code {-c}}{18, 20, 22, 27, 28, 38, 43, 51, 54, 65, 83, 91, 105, 
-124, 125, 127, 129, 135, 139, 143, 145, 148}
-\hrule
-\finishindex
 @contents
 
 @part Part One@*Sample part page
@@ -275,6 +244,15 @@ Like an argument to @code{@@footnote}.
 
 
 
+@chapter Index display
+
+@section End-column glue
+
+See next page.  A little bit of space should appear at the bottom of the 
+second column, instead of flush bottoms and a conspicuous increase in 
+inter-baseline spacing.  This test only works if the `R' initial is at
+the start of a page.
+
 @tex
 \gdef \commenceindex{%
 \page
@@ -291,22 +269,6 @@ Like an argument to @code{@@footnote}.
 \enddoublecolumns
 }
 @end tex
-
-@chapter Index display
-
-@section Long index entries
-
-@commenceindex
-\entry {\code {-c}}{18, 20, 22, 27, 28, 38, 43, 51, 54, 65, 83, 91, 105, 
-124, 125, 127, 129, 135, 139, 143, 145, 148, 187}
-\finishindex
-
-@section End-column glue
-
-See next page.  A little bit of space should appear at the bottom of the 
-second column, instead of flush bottoms and a conspicuous increase in 
-inter-baseline spacing.  This test only works if the `R' initial is at
-the start of a page.
 
 @commenceindex
 \initial {P}
@@ -570,6 +532,9 @@ doesn't start with an initial.
 
 See following pages
 
+@showboxdepth=1000
+@showboxbreadth=1000
+
 @commenceindex
 \initial{A}
 \entry{aaaa}{1}
@@ -630,7 +595,6 @@ See following pages
 \initial{\}}
 \initial{F}
 \finishindex
-
 
 
 @part Another part@*Note no headline on this page
