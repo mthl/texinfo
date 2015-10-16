@@ -1,3 +1,7 @@
+2015-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/README: Mention running maintain/regenerate_file_lists.sh.
+
 2015-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Makefile.am (perl_specific_files): Remove 'Changes'.
