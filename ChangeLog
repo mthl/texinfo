@@ -1,5 +1,9 @@
 2015-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* gnulib: Run gnulib-tool for updated Gnulib.
+
+2015-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* README-hacking: Mention dist-xz option for Automake.
 
 2015-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
