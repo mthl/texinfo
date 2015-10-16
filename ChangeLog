@@ -1,5 +1,12 @@
 2015-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* Run gnulib-tool at top-level to remove vasprintf-posix module 
+	and use vasprintf instead.  This is intended to reduce the 
+	number of checks done in the configure script, including those 
+	for math.h functions.
+
+2015-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Get 'make distcheck' to work:
 
 	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Remove XSParagraph.c
