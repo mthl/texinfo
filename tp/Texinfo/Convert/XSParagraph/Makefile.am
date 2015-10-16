@@ -46,7 +46,7 @@ PERL_INC = $(PERL_CONF_archlibexp)/CORE
 XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
 
 .xs.c:
-	$(XSUBPP) $(XSUBPPARGS) $*.xs > $*.xsc && mv $*.xsc $*.c
+	$(XSUBPP) $(XSUBPPARGS) $< > $*.xsc && mv $*.xsc $*.c
 
 # -------------------------------------------------------
 
@@ -54,7 +54,7 @@ xs_LTLIBRARIES = XSParagraph.la
 XSParagraph_la_SOURCES = XSParagraph.c xspara.c xspara.h \
 			 text.c text.h ppport.h
 
-BUILT_SOURCES = XSParagraph.c
+CLEANFILES = XSParagraph.c
 EXTRA_DIST += XSParagraph.xs
 
 # Override these variables set by configure at the top level, because 

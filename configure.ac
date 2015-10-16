@@ -358,6 +358,9 @@ AC_ARG_ENABLE([perl-xs],
     [ enable_xs=$enableval],
     [ enable_xs=check])
 
+# Configure in TestXS directory unconditionally so that "make dist"
+# works.
+AC_CONFIG_SUBDIRS([tp/TestXS])
 if test $enable_xs = check; then
   AC_MSG_CHECKING([whether we can build Perl extension modules])
   enable_xs=no
@@ -365,26 +368,23 @@ if test $enable_xs = check; then
     && ${PERL} -w fail.pl | grep 'message from XS module') >/dev/null \
   && enable_xs=yes
   AC_MSG_RESULT([$enable_xs])
-  # We can't use AC_CONFIG_SUBDIRS here because it isn't executed right
-  # away.  There is the problem of not passing on all the options we 
-  # were given to the subsidiary configure script.  If the check gets it
-  # wrong the user needs to give --enable-perl-xs or --disable-perl-xs
-  # themselves.
+  # There is a problem here of not passing on all the options we 
+  # were given to the subsidiary configure script.  This could lead the
+  # test to give the wrong answer, in which case the user would need to 
+  # give --enable-perl-xs or --disable-perl-xs themselves.
 fi
 
 AC_SUBST([enable_xs])
 
 AM_CONDITIONAL([DISABLE_XS], [test "z$enable_xs" = zno])
 
-if test $enable_xs = yes; then
-  AC_CONFIG_SUBDIRS([tp/Texinfo/Convert/XSParagraph])
-fi
+AC_CONFIG_SUBDIRS([tp/Texinfo/Convert/XSParagraph])
 
 
 # Tests.
 AC_CONFIG_FILES([install-info/tests/defs])
-dnl Except we cannot enable the TeX-related tests,
-dnl so don't waste time configuring them.  See util/tests/README.
+dnl We cannot enable the TeX-related tests, so don't waste time
+dnl configuring them.  See contrib/nontests/README.
 dnl AC_CONFIG_FILES([util/tests/defs])
 dnl AC_CHECK_PROGS([HEVEA], [hevea], [])
 dnl AC_CHECK_PROGS([TEX], [tex], [])

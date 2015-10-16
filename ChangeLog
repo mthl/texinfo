@@ -1,5 +1,16 @@
 2015-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Get 'make distcheck' to work:
+
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Remove XSParagraph.c
+	from BUILT_SOURCES, and add it to CLEANFILES.  Use $< instead of 
+	$*.xs in .xs.c rule.
+	* configure.ac: Configure in tp/TestXS and in
+	tp/Texinfo/Convert/XSParagraph unconditionally.  Update comment 
+	referring to ignored TeX tests.
+
+2015-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/README: Mention running maintain/regenerate_file_lists.sh.
 
 2015-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
