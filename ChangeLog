@@ -1,5 +1,9 @@
 2015-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README-hacking: Mention dist-xz option for Automake.
+
+2015-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* Run gnulib-tool at top-level to remove vasprintf-posix module 
 	and use vasprintf instead.  This is intended to reduce the 
 	number of checks done in the configure script, including those 
