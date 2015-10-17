@@ -14,9 +14,8 @@
 
 SUBDIRS = tp_api
 
-# Put the Texinfo manual first because that's the most important.
-info_TEXINFOS = texinfo.texi info-stnd.texi info.texi
-DISTCLEANFILES = texinfo.info* info*.info*
+info_TEXINFOS = texinfo.texi info-stnd.texi
+DISTCLEANFILES = texinfo.info* info-stnd.info*
 
 MAKEINFO_ENVIRONMENT = TEXINFO_DEV_SOURCE=1 ; export TEXINFO_DEV_SOURCE ; \
                        top_srcdir="$(top_srcdir)" ; export top_srcdir ; \

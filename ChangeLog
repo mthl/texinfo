@@ -1,5 +1,9 @@
 2015-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info.texi: Remove file, as it is distributed with Emacs.
+
+2015-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl (BEGIN): Look in @pkglibexecdir@ for loadable 
 	modules, not @pkglibexecdir@/Texinfo.
 
