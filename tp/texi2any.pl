@@ -54,10 +54,10 @@ BEGIN
   # These are substituted by the Makefile to create "texi2any".
   my $datadir = '@datadir@';
   my $package = '@PACKAGE@';
-  my $packagedir = '@pkglibexecdir@/Texinfo';
+  my $packagedir = '@pkglibexecdir@';
 
   if ($datadir eq '@' .'datadir@' or $package eq '@' . 'PACKAGE@'
-      or $packagedir eq '@' .'pkglibexecdir@/Texinfo'
+      or $packagedir eq '@' .'pkglibexecdir@'
       or defined($ENV{'TEXINFO_DEV_SOURCE'})
          and $ENV{'TEXINFO_DEV_SOURCE'} ne '0')
   {
