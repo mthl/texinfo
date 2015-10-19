@@ -21,14 +21,15 @@ Texinfo::ModulePath::init();
 
 }; # end BEGIN
 
-use Texinfo::Convert::Paragraph;
-use Texinfo::Convert::XSParagraph::XSParagraph;
+use Texinfo::Convert::ParagraphNonXS;
 use Texinfo::Convert::Line;
 use Texinfo::Convert::UnFilled;
 
 # We do the test for Texinfo::Convert::Paragraph tests twice, once with 
 # Texinfo::Convert::Paragraph, once with XSParagraph.  A few them are only done 
 # once, though.
+local *xsmodule = *Texinfo::Convert::Paragraph::;
+*Texinfo::Convert::Paragraph:: = *Texinfo::Convert::ParagraphNonXS::;
 my $testing_XSParagraph;
 DOITAGAIN:
 ok(1, "modules loading"); # If we made it this far, we're ok.
@@ -509,8 +510,8 @@ is ($para->{'lines_counter'}, 1, 'count lines text pending');
 $result .= $para->end();
 is ($para->{'lines_counter'}, 2, 'count lines end paragraph');
 
-  *Texinfo::Convert::Paragraph::
-                             = *Texinfo::Convert::XSParagraph::XSParagraph::;
+  use Texinfo::Convert::Paragraph;
+  *Texinfo::Convert::Paragraph:: = *xsmodule;
   $testing_XSParagraph = 1;
   goto DOITAGAIN;
 }

@@ -1,5 +1,14 @@
 2015-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Paragraph.pm,
+	tp/Texinfo/Convert/ParagraphNonXS.pm: Rename.
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.pm,
+	tp/Texinfo/Convert/Paragraph.pm: Move and rename.  This allows 
+	code to refer to the Texinfo::Convert::Paragraph module, as it 
+	did before (instead of Texinfo::Convert::XSParagraph::XSParagraph).
+
+2015-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (parse_top_node_line): Adjust
 	output_bytes_difference and node_offset according to how much of 
 	the nodeline was printed.

@@ -39,8 +39,6 @@ EXTRA_DIST+=m4/gnulib-cache.m4
 modulesdir = $(pkgdatadir)/Texinfo/Convert/XSParagraph
 xsdir = $(pkglibexecdir)
 
-dist_modules_DATA = XSParagraph.pm
-
 PERL_INC = $(PERL_CONF_archlibexp)/CORE
 
 XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap

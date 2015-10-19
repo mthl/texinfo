@@ -94,7 +94,7 @@ BEGIN
 BEGIN {
   my $enable_xs = '@enable_xs@';
   if ($enable_xs eq 'no') {
-    package Texinfo::Convert::XSParagraph::XSParagraph;
+    package Texinfo::Convert::Paragraph;
     our $disable_XS;
     $disable_XS = 1;
   }
