@@ -45,7 +45,7 @@ typedef struct {
   char *nodename;               /* The name of this node. */
   char *contents;               /* Characters appearing in this node. */
   long nodelen;                 /* The length of the CONTENTS member. */
-  unsigned long display_pos;    /* Where to display at, if nonzero.  */
+  long display_pos;             /* Where to display at, if nonzero.  */
   long body_start;              /* Offset of the actual node body */
   int flags;                    /* See immediately below. */
   REFERENCE **references;       /* Cross-references or menu items in node.

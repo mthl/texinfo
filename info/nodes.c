@@ -1453,6 +1453,8 @@ info_node_of_tag_ext (FILE_BUFFER *fb, TAG **tag_ptr, int fast)
          the screen), which looks wrong.  */
       if (node->display_pos >= (unsigned long) node->nodelen)
         node->display_pos = node->nodelen - 1;
+      else if (node->display_pos < 0)
+        node->display_pos = 0; /* Shouldn't happen. */
     }
 
   return node;

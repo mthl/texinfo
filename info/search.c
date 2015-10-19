@@ -491,8 +491,8 @@ find_node_separator (SEARCH_BINDING *binding)
   return -1;
 }
 
-/* Return the length of the node separator characters that BODY is
-   currently pointing at. */
+/* Return the length of the node separator characters that BODY is currently
+   pointing at.  If it's not pointing at a node separator, return 0. */
 int
 skip_node_separator (char *body)
 {

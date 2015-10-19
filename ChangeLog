@@ -1,3 +1,18 @@
+2015-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (parse_top_node_line): Adjust
+	output_bytes_difference and node_offset according to how much of 
+	the nodeline was printed.
+	(scan_node_contents) <not rewriting node>: Adjust anchors with 
+	output_bytes_difference.
+	(scan_reference_marker): Avoid referring to output_bytes_difference.
+	(copy_input_to_output): Formatting change.
+
+	* info/nodes.h (NODE): Change type of 'display_pos' to signed.
+	* info/nodes.c (info_node_of_tag): Check if the anchor position 
+	we ended up has gone negative, and if so, set it to 0.
+	* info/search.c (skip_node_separator): Comment changed.
+
 2015-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/info.texi: Remove file, as it is distributed with Emacs.

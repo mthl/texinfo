@@ -607,10 +607,12 @@ struct text_buffer output_buf;
    a result of byte counts changing due to character encoding conversion or
    inserted/deleted text. */
 static TAG **anchor_to_adjust;
-static int node_offset; /* Offset within file buffer of first byte of node. */
+/* Offset within file buffer of first byte of node, used for anchor
+   adjustment. */
+static int node_offset;
 
-/* Difference between the number of bytes input in the file and
-   bytes output.  If !rewrite_p, this should stay 0. */
+/* Difference so far between the number of bytes input in the file and
+   bytes output.  Used to adjust the values of anchors in nodes. */
 static long int output_bytes_difference;
 
 /* Whether we are converting the character encoding of the file. */
@@ -970,8 +972,8 @@ copy_input_to_output (long n)
 
               if (anchor_to_adjust)
                 {
-                  char *first_anchor = input_start - node_offset
-                                       + (*anchor_to_adjust)->nodestart;
+                  char *first_anchor = input_start
+                             + (*anchor_to_adjust)->nodestart - node_offset;
 
                   /* If there is an anchor in the input: */
                   if (first_anchor < inptr + bytes_left)
@@ -1172,11 +1174,15 @@ parse_top_node_line (NODE *node)
     }
   if (display_start)
     {
+      output_bytes_difference = display_start - node->contents;
+      node_offset += output_bytes_difference;
       node->nodelen -= display_start - node->contents;
       node->contents = display_start;
     }
   else if (nodeline_print == NO_NODELINE)
     {
+      output_bytes_difference = ptr - node->contents;
+      node_offset += output_bytes_difference;
       node->nodelen -= ptr - node->contents;
       node->contents = ptr;
     }
@@ -1191,7 +1197,12 @@ scan_reference_marker (REFERENCE *entry, int in_parentheses)
   /* When preprocess_nodes is Off, we position the cursor on
      the "*" when moving between references. */
   if (!preprocess_nodes_p)
-    entry->start = inptr - input_start - output_bytes_difference;
+    {
+      if (rewrite_p)
+        entry->start = text_buffer_off(&output_buf);
+      else
+        entry->start = inptr - input_start;
+    }
 
   /* Check what we found based on first character of match */
   if (inptr[0] == '\n')
@@ -1743,7 +1754,8 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
       tag_ptr++;
       while (*tag_ptr && (*tag_ptr)->cache.nodelen == 0)
         {
-          (*tag_ptr)->nodestart_adjusted = (*tag_ptr)->nodestart;
+          (*tag_ptr)->nodestart_adjusted = (*tag_ptr)->nodestart
+                                             - output_bytes_difference;
           tag_ptr++;
         }
     }
