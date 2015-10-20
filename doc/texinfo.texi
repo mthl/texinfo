@@ -27,7 +27,6 @@
 \global\usebracesinindexestrue
 @end tex
 
-@paragraphindent 2
 @c finalout
 
 @comment %**end of header
@@ -82,6 +81,7 @@ developing GNU and promoting software freedom.''
 @set txiindexatsignignore
 @set txiindexbackslashignore
 @set txiindexlessthanignore
+@set txiindexhyphenignore
 
 
 @titlepage
