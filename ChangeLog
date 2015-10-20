@@ -2,6 +2,8 @@
 
 	* doc/texinfo.texi: Remove "@paragraphindent 2" line and add
 	"@set txiindexhyphenignore".
+	* NEWS: Update with txiindexbackslashignore etc.  Mention that 
+	info.info is no longer distributed.
 
 2015-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
