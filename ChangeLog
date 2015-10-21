@@ -1,5 +1,11 @@
 2015-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\scanmacro, \commondummiesnofonts): Remove 
+	definition of \xeatspaces, because this control sequence isn't 
+	used any more.
+
+2015-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/TestXS: Move test extension into tp/Texinfo/Convert/XSParagraph
 	and remove directory.  This should make the test more reliable 
 	as the conditions of building are more similar to those of the 
