@@ -358,13 +358,12 @@ AC_ARG_ENABLE([perl-xs],
     [ enable_xs=$enableval],
     [ enable_xs=check])
 
-# Configure in TestXS directory unconditionally so that "make dist"
-# works.
-AC_CONFIG_SUBDIRS([tp/TestXS])
+AC_CONFIG_SUBDIRS([tp/Texinfo/Convert/XSParagraph])
 if test $enable_xs = check; then
   AC_MSG_CHECKING([whether we can build Perl extension modules])
   enable_xs=no
-  (cd tp/TestXS && ./configure PERL=${PERL} && make \
+  (cd tp/Texinfo/Convert/XSParagraph \
+   && ./configure PERL=${PERL} && make TestXS.la \
     && ${PERL} -w fail.pl | grep 'message from XS module') >/dev/null \
   && enable_xs=yes
   AC_MSG_RESULT([$enable_xs])
@@ -377,8 +376,6 @@ fi
 AC_SUBST([enable_xs])
 
 AM_CONDITIONAL([DISABLE_XS], [test "z$enable_xs" = zno])
-
-AC_CONFIG_SUBDIRS([tp/Texinfo/Convert/XSParagraph])
 
 
 # Tests.

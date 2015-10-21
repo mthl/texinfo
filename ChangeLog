@@ -1,5 +1,20 @@
 2015-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/TestXS: Move test extension into tp/Texinfo/Convert/XSParagraph
+	and remove directory.  This should make the test more reliable 
+	as the conditions of building are more similar to those of the 
+	real extension.  It should make the package a little smaller as 
+	we have one fewer configure script, Makefile and libtool program.
+
+	* tp/Texinfo/Convert/XSParagraph/TestXS.pm,
+	tp/Texinfo/Convert/XSParagraph/TestXS.xs
+	tp/Texinfo/Convert/XSParagraph/fail.pl: New locations of files.
+
+	* configure.ac, tp/Makefile.am, 
+	tp/Texinfo/Convert/XSParagraph/Makefile.am: Update.
+
+2015-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi (Invoking Info): Change mention of 
 	command-line variable to match synopsis.  Fix an ungrammatical 
 	sentence.

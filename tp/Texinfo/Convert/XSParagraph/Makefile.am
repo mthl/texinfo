@@ -39,6 +39,8 @@ EXTRA_DIST+=m4/gnulib-cache.m4
 modulesdir = $(pkgdatadir)/Texinfo/Convert/XSParagraph
 xsdir = $(pkglibexecdir)
 
+dist_modules_DATA = TestXS.pm
+
 PERL_INC = $(PERL_CONF_archlibexp)/CORE
 
 XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
@@ -48,11 +50,17 @@ XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
 
 # -------------------------------------------------------
 
-xs_LTLIBRARIES = XSParagraph.la
+CLEANFILES =
+
+xs_LTLIBRARIES = XSParagraph.la TestXS.la
 XSParagraph_la_SOURCES = XSParagraph.c xspara.c xspara.h \
 			 text.c text.h ppport.h
+TestXS_la_SOURCES = TestXS.c ppport.h
 
-CLEANFILES = XSParagraph.c
+CLEANFILES += TestXS.c
+EXTRA_DIST += TestXS.xs
+
+CLEANFILES += XSParagraph.c
 EXTRA_DIST += XSParagraph.xs
 
 # Override these variables set by configure at the top level, because 
@@ -70,6 +78,12 @@ XSParagraph_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(XSPARAGRAPH_I
 
 XSParagraph_la_LDFLAGS=-avoid-version -module $(PERL_CONF_cccdlflags)
 
+
+TestXS_la_CFLAGS = $(PERL_CONF_ccflags)
+
+TestXS_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"  "-I$(PERL_INC)"
+
+TestXS_la_LDFLAGS=-module $(PERL_CONF_cccdlflags)
 
 # only used to regenerate a stand-alone perl module
 perl_specific_files = \

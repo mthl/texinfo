@@ -34,7 +34,6 @@ endif
 SUBDIRS += . tests
 
 DIST_SUBDIRS = Texinfo/Convert/XSParagraph tests
-DIST_SUBDIRS += TestXS
 
 
 bin_SCRIPTS = texi2any
