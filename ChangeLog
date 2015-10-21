@@ -1,5 +1,11 @@
 2015-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-stnd.texi (Top): Move cross-reference to (info) to 
+	Stand-alone Info node.  Add advice to press H for a list of key 
+	bindings and explain how to move forward and backward in manual.
+
+2015-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/terminal.c, NEWS, doc/info-stnd.texi (Variables): Turn 
 	mouse variable off by default.
 

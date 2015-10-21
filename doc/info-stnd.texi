@@ -62,13 +62,13 @@ license to the document, as described in section 6 of the license.
 @node Top
 @top Stand-alone GNU Info
 
-This documentation describes the stand-alone Info reader that is part
-of the Texinfo distribution, which you can use to read Info
-documentation.
+This documentation describes the stand-alone Info reader which you can
+use to read Info documentation.
 
-For a tutorial and more background information about the Info system,
-as well as information about the Info reader that is part of GNU Emacs,
-read the Info manual before this one (@pxref{Top,,, info, Info}).
+If you are new to the Info reader, then you can get started by typing
+@samp{H} for a list of basic key bindings.  You can read through the
+rest of this manual by typing @key{SPC} and @key{DEL} (or @key{Space}
+and @key{Backspace}) to move forwards and backwards in it.
 
 @end ifnottex
 
@@ -115,7 +115,9 @@ reader supports the X Window System and other such bitmapped
 interfaces, not just plain ASCII, so if you want a prettier display
 for Info files, you should try it.  You can use Emacs Info without
 using Emacs for anything else.  (Type @kbd{C-x C-c} to exit; this also
-works in the stand-alone Info reader.)
+works in the stand-alone Info reader.)  @xref{Top,,, info, Info} for a
+tutorial and more background information about the Info system, as well
+as information about the Info reader that is part of GNU Emacs,
 
 @cindex bugs, reporting
 Please report bugs in this stand-alone Info program to
@@ -2230,10 +2232,10 @@ result in an error.
 
 @item mouse
 What method to use to get input from a mouse device.  The default value is
-@code{normal-tracking}, which makes Info use ``normal tracking mode'' if
-it detects that the terminal supports it.  This enables you to scroll the
-contents of the active window with a mouse scrollwheel.  Set this variable
-to @code{Off} to disable the use of a mouse.
+@samp{Off}.  Set this variable to @code{normal-tracking} to make Info use
+``normal tracking mode'' if it detects that the terminal supports it.  This 
+enables you to scroll the contents of the active window with a mouse 
+scrollwheel.
 
 @cindex Selecting text with the mouse
 @cindex xterm mouse selections
