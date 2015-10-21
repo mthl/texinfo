@@ -91,6 +91,8 @@ one of the relevant sections:
   . Now tries to find referenced manuals in the same directory as the
     current file first, before looking in search path.  Customize this
     with new variable `follow-strategy'.
+  . The `mouse' variable is now off by default, in order not to
+    interfere with the selection of text in a terminal emulator window.
   . `q' closes a window instead of quitting altogether if there's more
     than one, for example if a help window is open.
   . internal changes to reduce memory use and increase speed of

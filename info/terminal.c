@@ -83,7 +83,7 @@ VFunction *terminal_write_chars_hook = NULL;
 VFunction *terminal_scroll_terminal_hook = NULL;
 
 /* User variable 'mouse'.  Values can be MP_* constants in terminal.h. */
-int mouse_protocol = MP_NORMAL_TRACKING;
+int mouse_protocol = MP_NONE;
 
 /* **************************************************************** */
 /*                                                                  */

@@ -1,3 +1,8 @@
+2015-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/terminal.c, NEWS, doc/info-stnd.texi (Variables): Turn 
+	mouse variable off by default.
+
 2015-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi: Remove "@paragraphindent 2" line and add
