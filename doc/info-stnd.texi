@@ -243,8 +243,8 @@ looks in its top-level menu for a @samp{Overview} item, looks in the menu
 of the node referenced, and finally displays the node referenced by the
 @samp{Using Texinfo} item.
 
-If there was only one @var{menu-item} argument and it wasn't found as a
-menu item, Info looks for it as an index entry. For example:
+If there was only one @var{menu-or-index-item} argument and it wasn't
+found as a menu item, Info looks for it as an index entry. For example:
 
 @example
 info libc printf
@@ -254,7 +254,7 @@ info libc printf
 This loads the libc Info manual and first looks for @code{printf} in
 the top-level menu as usual; since it isn't there (at this writing),
 it then looks in the indices.  If it's found there (which it is),
-displays the relevant node at the given location.
+the relevant node at the given location is displayed.
 
 A complete list of options follows.
 
