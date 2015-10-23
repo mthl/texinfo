@@ -9135,16 +9135,28 @@ font (@pxref{Fonts}).
 @findex sortas
 @cindex sort keys for index entries
 @cindex index sorting
-For the printed output, some characters are ignored in the text for 
-index entries for the purposes of sorting.  For example, the 
-@samp{\mathopsup} entry in the index for this manual is sorted as if it 
-were @samp{mathopsup}, as if the backslash were not there.  Hence, it 
-will appear among the other entries beginning `M'.
+For the printed output, you may specify an explicit sort key for an
+index entry using @code{@@sortas} immediately following the index
+command.  For example: @samp{@@findex @@sortas@{\@} \ @@r@{(literal
+\ in @@code@{@@@@math@})} sorts the index entry this produces under
+backslash.
 
-You may specify an explicit sort key with @code{@@sortas} immediately 
-following the index command.  For example: @samp{@@findex @@sortas@{\@} 
-\ @@r@{(literal \ in @@code@{@@@@math@})} sorts the index entry this 
-produces under backslash.
+@vindex txiindexbackslashignore
+@vindex txiindexhyphenignore
+@vindex txiindexlessthanignore
+@vindex txiindexatsignignore
+To reduce the quantity of sort keys you need to provide explicitly,
+you may choose to ignore certain characters in index entries
+for the purposes of sorting.  The characters that you can
+currently choose to ignore are @samp{\}, @samp{-}, @samp{<}
+and @samp{@@}, which are ignored by giving as an argument to the
+@code{@@set} command, respectively, @code{txiindexbackslashignore},
+@code{txiindexhyphenignore}, @code{txiindexlessthanignore} and
+@code{txiindexatsignignore}.  For example, specifying @samp{@@set
+txiindexbackslashignore} causes the @samp{\mathopsup} entry in the
+index for this manual to be sorted as if it were @samp{mathopsup},
+so that it appears among the other entries beginning `M'.
+
 
 @quotation Caution
 Do not use a colon in an index entry.  In Info, a colon separates the

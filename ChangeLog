@@ -1,3 +1,8 @@
+2015-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Indexing Commands): Update to mention 
+	txiindexhyphenignore etc.
+
 2015-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\scanmacro, \commondummiesnofonts): Remove 
