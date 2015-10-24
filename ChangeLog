@@ -1,3 +1,16 @@
+2015-10-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Not Ending a Sentence): Remove example of 
+	incorrect input to make it easy to spot the correct input.  Add 
+	'@findex :'.  Remove mention of typing on a typewriter.  Change 
+	an "or" to a comma.  Be more explicit about which case is which 
+	for when the extra space is wanted.  Remove words "after a 
+	period" when we mentioned earlier in the sentence other 
+	punctuation marks than the period.  Use a numbered list of 
+	situations where @: should be used.  Move mention of HTML and 
+	DocBook output to end of node.  Mention a trick to remember 
+	whether we are forcing an end of sentence or suppressing one.
+
 2015-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Indexing Commands): Update to mention 

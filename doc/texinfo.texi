@@ -9847,60 +9847,60 @@ To produce a non-breakable space, see @ref{@code{@@tie}}.
 @cindex Sentence non-ending punctuation
 @cindex Periods, inserting
 @cindex Spacing, in the middle of sentences
-Depending on whether a period or exclamation point or question mark is
-inside or at the end of a sentence, slightly less or more space is
-inserted after a period in a typeset manual.  Since it is not always
-possible to determine automatically when a period ends a sentence,
-special commands are needed in some circumstances.  Usually, Texinfo
-can guess how to handle periods, so you do not need to use the special
-commands; you just enter a period as you would if you were using a
-typewriter: put two spaces after the period, question mark, or
-exclamation mark that ends a sentence.
+When a period, exclamation point or question mark is
+at the end of a sentence, slightly more space is
+inserted after it in a typeset manual.
 
 @findex <colon> @r{(suppress end-of-sentence space)}
+@findex :
+Usually, Texinfo can determine automatically when a period ends a 
+sentence.  However, special commands are needed in some circumstances.
 Use the @code{@@:} command after a period, question mark, exclamation
-mark, or colon that should not be followed by extra space.  For
-example, use @code{@@:} after periods that end (lowercase)
-abbreviations which are not at the ends of sentences.
+mark or colon that should not be followed by extra space.  This is 
+necessary in the following situations:
 
-Also, when a parenthetical remark in the middle of a sentence (like
-this one!)@: ends with a period, exclamation point, or question mark,
+@enumerate
+@item After a period that ends a lowercase abbreviation which is not at 
+the end of a sentences.
+
+@item When a parenthetical remark in the middle of a sentence (like
+this one!)@: ends with a period, exclamation point or question mark,
 @code{@@:} should be used after the right parenthesis.  Similarly for
 right brackets and right quotes (both single and double).
+@end enumerate
 
-For example,
+For example:
 
 @example
-foo vs.@@: bar (or?)@@: baz
-foo vs. bar (or?) baz
+@samp{foo vs.@@: bar (or?)@@: baz},
 @end example
 
 @noindent
-@ifnottex
-produces
-@end ifnottex
-@iftex
-produces the following.  If you look carefully at this printed output,
-you will see a bit of extraneous space after the @samp{vs.}@: and
-@samp{(or?)}@: in the second line.
-@end iftex
+The first line below shows the output, and for comparison, the second 
+line shows the spacing when the @samp{@@:} commands were not used.
 
 @quotation
 foo vs.@: bar (or?)@: baz@*
 foo vs. bar (or?) baz
 @end quotation
 
-@noindent
-@code{@@:} has no effect on the HTML or Docbook output.
+@iftex
+If you look carefully, you will see a bit of extraneous space after the 
+@samp{vs.}@: and @samp{(or?)}@:.
+@end iftex
 
-Do not put braces after @code{@@:} (or any non-alphabetic command).
+It may help you to remember what @code{@@:} does by imagining that it 
+stands for an invisible lower-case character that stops a word ending in 
+a period.
 
 A few Texinfo commands force normal interword spacing, so that you
 don't have to insert @code{@@:} where you otherwise would.  These are
 the code-like highlighting commands, @code{@@var}, @code{@@abbr}, and
 @code{@@acronym} (@pxref{Useful Highlighting}).  For example, in
-@samp{@@code@{foo. bar@}} the period is not considered the end of a
+@samp{@@code@{foo. bar@}} the period is not considered to be the end of a
 sentence, and no extra space is inserted.
+
+@code{@@:} has no effect on the HTML or Docbook output.
 
 
 @node Ending a Sentence
@@ -9953,7 +9953,11 @@ sentences.
 
 The meanings of @code{@@:} and @code{@@.}, etc.@: in Texinfo are
 designed to work well with the Emacs sentence motion commands
-(@pxref{Sentences,,, emacs, The GNU Emacs Manual}).
+(@pxref{Sentences,,, emacs, The GNU Emacs Manual}).  It may help to 
+imagine that the @samp{@@} in @samp{@@.}, etc., is an invisible 
+lower-case letter `a' which makes an upper-case letter before it 
+immaterial for the purposes of deciding whether the period ends the 
+sentence.
 
 A few Texinfo commands are not considered as being an abbreviation,
 even though they may end with a capital letter when expanded, so that
