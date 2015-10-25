@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-10-21.19}
+\def\texinfoversion{2015-10-25.20}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -5247,7 +5247,7 @@ end
     % The following is kludged to not output a line of dots in the index if
     % there are no page numbers.  The next person who breaks this will be
     % cursed by a Unix daemon.
-    \setbox\boxB = \hbox{#1}%
+    \global\setbox\boxB = \hbox{#1}%
     \ifdim\wd\boxB = 0pt
       \null\nobreak\hfill\ %
     \else
@@ -5262,6 +5262,9 @@ end
       \fi
     \fi
     \egroup % end \boxA
+    \ifdim\wd\boxB = 0pt
+    \global\setbox\entryindexbox=\box\boxA
+    \else
     \global\setbox\entryindexbox=\vtop\bgroup\noindent
     % We want the text of the entries to be aligned to the left, and the
     % page numbers to be aligned to the right.
@@ -5312,6 +5315,7 @@ end
     %
     \par % format the paragraph
     \egroup % The \vtop
+    \fi
   \endgroup
   % delay text of entry until after penalty
   \bgroup\aftergroup\insertindexentrybox
