@@ -273,6 +273,7 @@ Like an argument to @code{@@footnote}.
 124, 125, 127, 129, 135, 139, 143, 145, 148}
 \entry{Testing for Texinfo Commands: \code {\@ifcommanddefined}, \code 
 {\@ifcommandnotdefined}}{148}
+\entry {\code {--dereference-command-line-symlink-to-dir}}{78}
 \finishindex
 
 @section End-column glue
