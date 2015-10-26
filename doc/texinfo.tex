@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-10-26.14}
+\def\texinfoversion{2015-10-26.15}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -5228,7 +5228,7 @@ end
 }
 \def\entrybreak{\unskip\space\ignorespaces}%
 \def\doentry{%
-    % Save the text of the entry in a \vtop.
+    % Save the text of the entry
     \global\setbox\boxA=\hbox\bgroup
     \bgroup % Instead of the swallowed brace.
       \noindent
@@ -5264,7 +5264,7 @@ end
     \ifdim\wd\boxB = 0pt
     \global\setbox\entryindexbox=\box\boxA
     \else
-    \global\setbox\entryindexbox=\vtop\bgroup\noindent
+    \global\setbox\entryindexbox=\vbox\bgroup\noindent
     % We want the text of the entries to be aligned to the left, and the
     % page numbers to be aligned to the right.
     %
@@ -5310,7 +5310,7 @@ end
     \hyphenpenalty=5000  % Discourage hyphenation.
     %
     \par % format the paragraph
-    \egroup % The \vtop
+    \egroup % The \vbox
     \fi
   \endgroup
   % delay text of entry until after penalty
@@ -5323,8 +5323,8 @@ end
 
 \newbox\entryindexbox
 \def\insertindexentrybox{%
-\lineskip=.8ex plus .6ex % This comes into effect when the \vtop has a large 
-                         % depth due to the paragraph in it having several 
+\lineskip=.8ex plus .6ex % This comes into effect when the \vbox has a large 
+                         % height due to the paragraph in it having several 
                          % lines.
 \box\entryindexbox}
 
