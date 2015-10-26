@@ -1,3 +1,7 @@
+2015-10-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Long index entries): New section.
+
 2015-10-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\entry): Fix display of TOC entries for part 
