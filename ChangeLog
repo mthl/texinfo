@@ -1,3 +1,10 @@
+2015-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\entry): When deciding whether an entry will 
+	fit in a single line, don't include the left and right margins.  
+	Allow for \rightskip in arguments to \parshape.  Reduce 
+	allowable stretch into margin.  Formatting.
+
 2015-10-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\entry): Use a \vbox instead of a \vtop, for 
