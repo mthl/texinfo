@@ -1,3 +1,14 @@
+2015-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\begindoublecolumns): Set \topskip to 0pt.  
+	This avoids a smaller gap appearing at the top of a column due 
+	to a long index entry in a vbox with a large height.
+	(\pagesofar): Add a gap above the columns close to what \topskip 
+	did before.
+	(\entry): Increase threshold for a long line.
+	(\insertindexentrybox): Reduce \lineskip.
+
+
 2015-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\entry): When deciding whether an entry will 

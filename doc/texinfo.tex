@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-10-27.10}
+\def\texinfoversion{2015-10-28.11}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -5294,7 +5294,7 @@ end
       \advance\dimen@ii by -1\entryrightmargin
       \advance\dimen@ii by 1\dimen@i
       \ifdim\wd\boxA > \dimen@ii % If the entry doesn't fit in one line
-      \ifdim\dimen@ > 0.5\dimen@ii   % due to long index text
+      \ifdim\dimen@ > 0.8\dimen@ii   % due to long index text
         \dimen@ = 0.7\dimen@ % Try to split the text roughly evenly
         \dimen@ii = \hsize
         \advance \dimen@ii by -1em
@@ -5333,7 +5333,7 @@ end
 
 \newbox\entryindexbox
 \def\insertindexentrybox{%
-\lineskip=.8ex plus .6ex % This comes into effect when the \vbox has a large 
+\lineskip=.4ex plus .3ex % This comes into effect when the \vbox has a large 
                          % height due to the paragraph in it having several 
                          % lines.
 \box\entryindexbox}
@@ -5391,6 +5391,8 @@ end
 
 \newbox\partialpage
 \newdimen\doublecolumnhsize
+\newdimen\doublecolumntopgap
+\doublecolumntopgap = 0pt
 
 \newtoks\savedtopmark % Used in \begindoublecolumns
 \newtoks\savedfirstmark
@@ -5458,7 +5460,11 @@ end
   %
   % Double the \vsize as well.  (We don't need a separate register here,
   % since nobody clobbers \vsize.)
+  \global\doublecolumntopgap = \topskip
+  \global\advance\doublecolumntopgap by -1\baselineskip
+  \global\advance\vsize by -1\doublecolumntopgap
   \vsize = 2\vsize
+  \topskip=0pt
 }
 
 % The double-column output routine for all double-column pages except
@@ -5487,10 +5493,13 @@ end
   %
   \hsize = \doublecolumnhsize
   \wd0=\hsize \wd2=\hsize
-  \hbox to\pagewidth{\box0\hfil\box2}%
+  \vbox{%
+    \vskip\doublecolumntopgap
+    \hbox to\pagewidth{\box0\hfil\box2}}%
 }
-%
-% All done with double columns.
+
+
+% Finished with with double columns.
 \def\enddoublecolumns{%
   % The following penalty ensures that the page builder is exercised
   % _before_ we change the output routine.  This is necessary in the
