@@ -274,6 +274,8 @@ Like an argument to @code{@@footnote}.
 \entry{Testing for Texinfo Commands: \code {\@ifcommanddefined}, \code 
 {\@ifcommandnotdefined}}{148}
 \entry {\code {--dereference-command-line-symlink-to-dir}}{78}
+\entry {built-in shell commands, conflicts with}{119, 139, 144, 145, 
+148, 163, 191, 196, 197}
 \finishindex
 
 @section End-column glue
