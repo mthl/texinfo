@@ -1,5 +1,11 @@
 2015-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\DeclareUnicodeCharacter): If character 
+	already defined, print a warning, but don't make it a fatal 
+	error.  Suggestion from Oliver Heimlich, 2nd October (bug-texinfo).
+
+2015-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\utfeightchardefs): Add the rest of the Greek 
 	alphabet.
 	* doc/texinfo-tex-test.texi: Add some Greek text.
