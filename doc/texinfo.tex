@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-10-28.11}
+\def\texinfoversion{2015-10-28.17}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -5333,7 +5333,7 @@ end
 
 \newbox\entryindexbox
 \def\insertindexentrybox{%
-\lineskip=.4ex plus .3ex % This comes into effect when the \vbox has a large 
+\lineskip=.7ex plus .5ex % This comes into effect when the \vbox has a large 
                          % height due to the paragraph in it having several 
                          % lines.
 \box\entryindexbox}
@@ -10125,8 +10125,77 @@ directory should work if nowhere else does.}
 
   \DeclareUnicodeCharacter{02DB}{\ogonek{ }}
 
-  % Greek letters
+  % Greek letters upper case
+  \DeclareUnicodeCharacter{0391}{{\it A}}
+  \DeclareUnicodeCharacter{0392}{{\it B}}
+  \DeclareUnicodeCharacter{0393}{\ensuremath{\mit\Gamma}}
+  \DeclareUnicodeCharacter{0394}{\ensuremath{\mit\Delta}}
+  \DeclareUnicodeCharacter{0395}{{\it E}}
+  \DeclareUnicodeCharacter{0396}{{\it Z}}
+  \DeclareUnicodeCharacter{0397}{{\it H}}
+  \DeclareUnicodeCharacter{0398}{\ensuremath{\mit\Theta}}
+  \DeclareUnicodeCharacter{0399}{{\it I}}
+  \DeclareUnicodeCharacter{039A}{{\it K}}
+  \DeclareUnicodeCharacter{039B}{\ensuremath{\mit\Lambda}}
+  \DeclareUnicodeCharacter{039C}{{\it M}}
+  \DeclareUnicodeCharacter{039D}{{\it N}}
+  \DeclareUnicodeCharacter{039E}{\ensuremath{\mit\Xi}}
+  \DeclareUnicodeCharacter{039F}{{\it O}}
+  \DeclareUnicodeCharacter{03A0}{\ensuremath{\mit\Pi}}
+  \DeclareUnicodeCharacter{03A1}{{\it P}}
+  %\DeclareUnicodeCharacter{03A2}{} % none - corresponds to final sigma
+  \DeclareUnicodeCharacter{03A3}{\ensuremath{\mit\Sigma}}
+  \DeclareUnicodeCharacter{03A4}{{\it T}}
+  \DeclareUnicodeCharacter{03A5}{\ensuremath{\mit\Upsilon}}
+  \DeclareUnicodeCharacter{03A6}{\ensuremath{\mit\Phi}}
+  \DeclareUnicodeCharacter{03A7}{{\it X}}
+  \DeclareUnicodeCharacter{03A8}{\ensuremath{\mit\Psi}}
+  \DeclareUnicodeCharacter{03A9}{\ensuremath{\mit\Omega}}
+
+  % Vowels with accents
+  \DeclareUnicodeCharacter{0390}{\ensuremath{\ddot{\acute\iota}}}
+  \DeclareUnicodeCharacter{03AC}{\ensuremath{\acute\alpha}}
+  \DeclareUnicodeCharacter{03AD}{\ensuremath{\acute\epsilon}}
+  \DeclareUnicodeCharacter{03AE}{\ensuremath{\acute\eta}}
+  \DeclareUnicodeCharacter{03AF}{\ensuremath{\acute\iota}}
+  \DeclareUnicodeCharacter{03B0}{\ensuremath{\acute{\ddot\upsilon}}}
+
+  % Standalone accent
+  \DeclareUnicodeCharacter{0384}{\ensuremath{\acute{\ }}}
+
+  % Greek letters lower case
+  \DeclareUnicodeCharacter{03B1}{\ensuremath\alpha}
+  \DeclareUnicodeCharacter{03B2}{\ensuremath\beta}
+  \DeclareUnicodeCharacter{03B3}{\ensuremath\gamma}
+  \DeclareUnicodeCharacter{03B4}{\ensuremath\delta}
+  \DeclareUnicodeCharacter{03B5}{\ensuremath\epsilon}
+  \DeclareUnicodeCharacter{03B6}{\ensuremath\zeta}
+  \DeclareUnicodeCharacter{03B7}{\ensuremath\eta}
+  \DeclareUnicodeCharacter{03B8}{\ensuremath\theta}
+  \DeclareUnicodeCharacter{03B9}{\ensuremath\iota}
+  \DeclareUnicodeCharacter{03BA}{\ensuremath\kappa}
+  \DeclareUnicodeCharacter{03BB}{\ensuremath\lambda}
+  \DeclareUnicodeCharacter{03BC}{\ensuremath\mu}
+  \DeclareUnicodeCharacter{03BD}{\ensuremath\nu}
+  \DeclareUnicodeCharacter{03BE}{\ensuremath\xi}
+  \DeclareUnicodeCharacter{03BF}{{\it o}} % omicron
   \DeclareUnicodeCharacter{03C0}{\ensuremath\pi}
+  \DeclareUnicodeCharacter{03C1}{\ensuremath\rho}
+  \DeclareUnicodeCharacter{03C2}{\ensuremath\varsigma}
+  \DeclareUnicodeCharacter{03C3}{\ensuremath\sigma}
+  \DeclareUnicodeCharacter{03C4}{\ensuremath\tau}
+  \DeclareUnicodeCharacter{03C5}{\ensuremath\upsilon}
+  \DeclareUnicodeCharacter{03C6}{\ensuremath\phi}
+  \DeclareUnicodeCharacter{03C7}{\ensuremath\chi}
+  \DeclareUnicodeCharacter{03C8}{\ensuremath\psi}
+  \DeclareUnicodeCharacter{03C9}{\ensuremath\omega}
+
+  % More Greek vowels with accents
+  \DeclareUnicodeCharacter{03CA}{\ensuremath{\ddot\iota}}
+  \DeclareUnicodeCharacter{03CB}{\ensuremath{\ddot\upsilon}}
+  \DeclareUnicodeCharacter{03CC}{\ensuremath{\acute o}}
+  \DeclareUnicodeCharacter{03CD}{\ensuremath{\acute\upsilon}}
+  \DeclareUnicodeCharacter{03CE}{\ensuremath{\acute\omega}}
 
   \DeclareUnicodeCharacter{1E02}{\dotaccent{B}}
   \DeclareUnicodeCharacter{1E03}{\dotaccent{b}}
