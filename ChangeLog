@@ -1,5 +1,11 @@
 2015-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/README: Mention purpose of htmlxref, 
+	htmlxref-only_mono and htmlxref-only_split subdirectories.  
+	(Info from Patrice.)
+
+2015-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\utfeightchardefs): More definitions for 
 	mathematical symbols, from Karl.
 

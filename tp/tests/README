@@ -11,6 +11,7 @@ texinfo/tp/tests/README
 Files anywhere within the texinfo/tp/tests/ subdirectory which have no
 other copyright notice are hereby placed in the public domain.
 
+This directory contains tests of the texi2any program.
 
 Prerequisites
 =============
@@ -141,7 +142,7 @@ Using "texi" as the test name is special. In that case the directory name
 is constructed by appending _ followed by the manual name without the .texi
 extension to "texi". And the result is not processed normally, but instead
 macros are expanded and regions that are not processed removed and the 
-result is put in a file with the same name than the manual. 
+result is put in a file with the same name as the manual. 
 
 texi manual.texi
 
@@ -158,6 +159,16 @@ example with coverage_macro.texi).
 Init files
 ----------
 Init files are searched for in ../t/init/.
+
+Subdirectories
+--------------
+
+There are three subdirectories containing tests, each of which is 
+organized like this one: htmlxref, htmlxref-only_mono and htmlxref-only_split.
+These groups of tests are in their own subdirectorie so they can use 
+their own htmlxref.cnf init file (which is copied to the build dir in 
+tests/Makefile.am).  In htmlxref-only_split, using a .texinfo directory 
+is tested.
 
 
 Creating a new test
