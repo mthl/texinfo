@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-10-28.18}
+\def\texinfoversion{2015-10-29.16}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -10197,6 +10197,11 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{03CD}{\ensuremath{\acute\upsilon}}
   \DeclareUnicodeCharacter{03CE}{\ensuremath{\acute\omega}}
 
+  % Variant Greek letters
+  \DeclareUnicodeCharacter{03D1}{\ensuremath\vartheta}
+  \DeclareUnicodeCharacter{03D6}{\ensuremath\varpi}
+  \DeclareUnicodeCharacter{03F1}{\ensuremath\varrho}
+
   \DeclareUnicodeCharacter{1E02}{\dotaccent{B}}
   \DeclareUnicodeCharacter{1E03}{\dotaccent{b}}
   \DeclareUnicodeCharacter{1E04}{\udotaccent{B}}
@@ -10351,7 +10356,7 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{2203}{\ensuremath\exists}
   \DeclareUnicodeCharacter{2208}{\ensuremath\in}
   \DeclareUnicodeCharacter{2212}{\minus}
-  \DeclareUnicodeCharacter{2217}{\point}
+  \DeclareUnicodeCharacter{2217}{\ast}
   \DeclareUnicodeCharacter{221E}{\ensuremath\infty}
   \DeclareUnicodeCharacter{2225}{\ensuremath\parallel}
   \DeclareUnicodeCharacter{2227}{\ensuremath\wedge}
@@ -10361,6 +10366,138 @@ directory should work if nowhere else does.}
   \DeclareUnicodeCharacter{2265}{\ensuremath\geq}
   \DeclareUnicodeCharacter{2282}{\ensuremath\subset}
   \DeclareUnicodeCharacter{2287}{\ensuremath\supseteq}
+
+  \DeclareUnicodeCharacter{2016}{\ensuremath\Vert}
+  \DeclareUnicodeCharacter{2032}{\ensuremath\prime}
+  \DeclareUnicodeCharacter{210F}{\ensuremath\hbar}
+  \DeclareUnicodeCharacter{2111}{\ensuremath\Im}
+  \DeclareUnicodeCharacter{2113}{\ensuremath\ell}
+  \DeclareUnicodeCharacter{2118}{\ensuremath\wp}
+  \DeclareUnicodeCharacter{211C}{\ensuremath\Re}
+  \DeclareUnicodeCharacter{2127}{\ensuremath\mho}
+  \DeclareUnicodeCharacter{2135}{\ensuremath\aleph}
+  \DeclareUnicodeCharacter{2190}{\ensuremath\leftarrow}
+  \DeclareUnicodeCharacter{2191}{\ensuremath\uparrow}
+  \DeclareUnicodeCharacter{2193}{\ensuremath\downarrow}
+  \DeclareUnicodeCharacter{2194}{\ensuremath\leftrightarrow}
+  \DeclareUnicodeCharacter{2195}{\ensuremath\updownarrow}
+  \DeclareUnicodeCharacter{2196}{\ensuremath\nwarrow}
+  \DeclareUnicodeCharacter{2197}{\ensuremath\nearrow}
+  \DeclareUnicodeCharacter{2198}{\ensuremath\searrow}
+  \DeclareUnicodeCharacter{2199}{\ensuremath\swarrow}
+  \DeclareUnicodeCharacter{21A6}{\ensuremath\mapsto}
+  \DeclareUnicodeCharacter{21A9}{\ensuremath\hookleftarrow}
+  \DeclareUnicodeCharacter{21AA}{\ensuremath\hookrightarrow}
+  \DeclareUnicodeCharacter{21BC}{\ensuremath\leftharpoonup}
+  \DeclareUnicodeCharacter{21BD}{\ensuremath\leftharpoondown}
+  \DeclareUnicodeCharacter{21BE}{\ensuremath\upharpoonright}
+  \DeclareUnicodeCharacter{21C0}{\ensuremath\rightharpoonup}
+  \DeclareUnicodeCharacter{21C1}{\ensuremath\rightharpoondown}
+  \DeclareUnicodeCharacter{21CC}{\ensuremath\rightleftharpoons}
+  \DeclareUnicodeCharacter{21D0}{\ensuremath\Leftarrow}
+  \DeclareUnicodeCharacter{21D1}{\ensuremath\Uparrow}
+  \DeclareUnicodeCharacter{21D3}{\ensuremath\Downarrow}
+  \DeclareUnicodeCharacter{21D4}{\ensuremath\Leftrightarrow}
+  \DeclareUnicodeCharacter{21D5}{\ensuremath\Updownarrow}
+  \DeclareUnicodeCharacter{21DD}{\ensuremath\leadsto}
+  \DeclareUnicodeCharacter{2201}{\ensuremath\complement}
+  \DeclareUnicodeCharacter{2202}{\ensuremath\partial}
+  \DeclareUnicodeCharacter{2205}{\ensuremath\emptyset}
+  \DeclareUnicodeCharacter{2207}{\ensuremath\nabla}
+  \DeclareUnicodeCharacter{2209}{\ensuremath\notin}
+  \DeclareUnicodeCharacter{220B}{\ensuremath\owns}
+  \DeclareUnicodeCharacter{220F}{\ensuremath\prod}
+  \DeclareUnicodeCharacter{2210}{\ensuremath\coprod}
+  \DeclareUnicodeCharacter{2211}{\ensuremath\sum}
+  \DeclareUnicodeCharacter{2213}{\ensuremath\mp}
+  \DeclareUnicodeCharacter{2218}{\ensuremath\circ}
+  \DeclareUnicodeCharacter{221A}{\ensuremath\surd}
+  \DeclareUnicodeCharacter{221D}{\ensuremath\propto}
+  \DeclareUnicodeCharacter{2220}{\ensuremath\angle}
+  \DeclareUnicodeCharacter{2223}{\ensuremath\mid}
+  \DeclareUnicodeCharacter{2228}{\ensuremath\vee}
+  \DeclareUnicodeCharacter{222A}{\ensuremath\cup}
+  \DeclareUnicodeCharacter{222B}{\ensuremath\smallint}
+  \DeclareUnicodeCharacter{222E}{\ensuremath\oint}
+  \DeclareUnicodeCharacter{223C}{\ensuremath\sim}
+  \DeclareUnicodeCharacter{2240}{\ensuremath\wr}
+  \DeclareUnicodeCharacter{2243}{\ensuremath\simeq}
+  \DeclareUnicodeCharacter{2245}{\ensuremath\cong}
+  \DeclareUnicodeCharacter{2248}{\ensuremath\approx}
+  \DeclareUnicodeCharacter{224D}{\ensuremath\asymp}
+  \DeclareUnicodeCharacter{2250}{\ensuremath\doteq}
+  \DeclareUnicodeCharacter{2260}{\ensuremath\neq}
+  \DeclareUnicodeCharacter{226A}{\ensuremath\ll}
+  \DeclareUnicodeCharacter{226B}{\ensuremath\gg}
+  \DeclareUnicodeCharacter{227A}{\ensuremath\prec}
+  \DeclareUnicodeCharacter{227B}{\ensuremath\succ}
+  \DeclareUnicodeCharacter{2283}{\ensuremath\supset}
+  \DeclareUnicodeCharacter{2286}{\ensuremath\subseteq}
+  \DeclareUnicodeCharacter{228E}{\ensuremath\uplus}
+  \DeclareUnicodeCharacter{228F}{\ensuremath\sqsubset}
+  \DeclareUnicodeCharacter{2290}{\ensuremath\sqsupset}
+  \DeclareUnicodeCharacter{2291}{\ensuremath\sqsubseteq}
+  \DeclareUnicodeCharacter{2292}{\ensuremath\sqsupseteq}
+  \DeclareUnicodeCharacter{2293}{\ensuremath\sqcap}
+  \DeclareUnicodeCharacter{2294}{\ensuremath\sqcup}
+  \DeclareUnicodeCharacter{2295}{\ensuremath\oplus}
+  \DeclareUnicodeCharacter{2296}{\ensuremath\ominus}
+  \DeclareUnicodeCharacter{2297}{\ensuremath\otimes}
+  \DeclareUnicodeCharacter{2298}{\ensuremath\oslash}
+  \DeclareUnicodeCharacter{2299}{\ensuremath\odot}
+  \DeclareUnicodeCharacter{22A2}{\ensuremath\vdash}
+  \DeclareUnicodeCharacter{22A3}{\ensuremath\dashv}
+  \DeclareUnicodeCharacter{22A4}{\ensuremath\ptextop}
+  \DeclareUnicodeCharacter{22A5}{\ensuremath\bot}
+  \DeclareUnicodeCharacter{22A8}{\ensuremath\models}
+  \DeclareUnicodeCharacter{22B4}{\ensuremath\unlhd}
+  \DeclareUnicodeCharacter{22B5}{\ensuremath\unrhd}
+  \DeclareUnicodeCharacter{22C0}{\ensuremath\bigwedge}
+  \DeclareUnicodeCharacter{22C1}{\ensuremath\bigvee}
+  \DeclareUnicodeCharacter{22C2}{\ensuremath\bigcap}
+  \DeclareUnicodeCharacter{22C3}{\ensuremath\bigcup}
+  \DeclareUnicodeCharacter{22C4}{\ensuremath\diamond}
+  \DeclareUnicodeCharacter{22C5}{\ensuremath\cdot}
+  \DeclareUnicodeCharacter{22C6}{\ensuremath\star}
+  \DeclareUnicodeCharacter{22C8}{\ensuremath\bowtie}
+  \DeclareUnicodeCharacter{2308}{\ensuremath\lceil}
+  \DeclareUnicodeCharacter{2309}{\ensuremath\rceil}
+  \DeclareUnicodeCharacter{230A}{\ensuremath\lfloor}
+  \DeclareUnicodeCharacter{230B}{\ensuremath\rfloor}
+  \DeclareUnicodeCharacter{2322}{\ensuremath\frown}
+  \DeclareUnicodeCharacter{2323}{\ensuremath\smile}
+
+  \DeclareUnicodeCharacter{25A1}{\ensuremath\Box}
+  \DeclareUnicodeCharacter{25B3}{\ensuremath\triangle}
+  \DeclareUnicodeCharacter{25B7}{\ensuremath\triangleright}
+  \DeclareUnicodeCharacter{25BD}{\ensuremath\bigtriangledown}
+  \DeclareUnicodeCharacter{25C1}{\ensuremath\triangleleft}
+  \DeclareUnicodeCharacter{25C7}{\ensuremath\Diamond}
+  \DeclareUnicodeCharacter{2660}{\ensuremath\spadesuit}
+  \DeclareUnicodeCharacter{2661}{\ensuremath\heartsuit}
+  \DeclareUnicodeCharacter{2662}{\ensuremath\diamondsuit}
+  \DeclareUnicodeCharacter{2663}{\ensuremath\clubsuit}
+  \DeclareUnicodeCharacter{266D}{\ensuremath\flat}
+  \DeclareUnicodeCharacter{266E}{\ensuremath\natural}
+  \DeclareUnicodeCharacter{266F}{\ensuremath\sharp}
+  \DeclareUnicodeCharacter{26AA}{\ensuremath\bigcirc}
+  \DeclareUnicodeCharacter{27B9}{\ensuremath\rangle}
+  \DeclareUnicodeCharacter{27C2}{\ensuremath\perp}
+  \DeclareUnicodeCharacter{27E8}{\ensuremath\langle}
+  \DeclareUnicodeCharacter{27F5}{\ensuremath\longleftarrow}
+  \DeclareUnicodeCharacter{27F6}{\ensuremath\longrightarrow}
+  \DeclareUnicodeCharacter{27F7}{\ensuremath\longleftrightarrow}
+  \DeclareUnicodeCharacter{27FC}{\ensuremath\longmapsto}
+  \DeclareUnicodeCharacter{29F5}{\ensuremath\setminus}
+  \DeclareUnicodeCharacter{2A00}{\ensuremath\bigodot}
+  \DeclareUnicodeCharacter{2A01}{\ensuremath\bigoplus}
+  \DeclareUnicodeCharacter{2A02}{\ensuremath\bigotimes}
+  \DeclareUnicodeCharacter{2A04}{\ensuremath\biguplus}
+  \DeclareUnicodeCharacter{2A06}{\ensuremath\bigsqcup}
+  \DeclareUnicodeCharacter{2A1D}{\ensuremath\Join}
+  \DeclareUnicodeCharacter{2A3F}{\ensuremath\amalg}
+  \DeclareUnicodeCharacter{2AAF}{\ensuremath\preceq}
+  \DeclareUnicodeCharacter{2AB0}{\ensuremath\succeq}
 
   \global\mathchardef\checkmark="1370 % actually the square root sign
   \DeclareUnicodeCharacter{2713}{\ensuremath\checkmark}

@@ -1,3 +1,8 @@
+2015-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\utfeightchardefs): More definitions for 
+	mathematical symbols, from Karl.
+
 2015-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\DeclareUnicodeCharacter): If character 
