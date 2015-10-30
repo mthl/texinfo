@@ -636,7 +636,6 @@ ensure_dirfile_exists (char *dirfile)
     {
       FILE *f;
       char *readerr = strerror (errno);
-      close (desc);
       f = fopen (dirfile, "w");
       if (f)
         {
@@ -1153,6 +1152,7 @@ parse_input (const struct line_data *lines, int nlines,
                   next->text_len = lines[i].start - start_of_this_entry;
                   next->entry_sections = head;
                   next->entry_sections_tail = tail;
+                  next->missing_basename = 0;
                   next->next = *entries;
                   *entries = next;
                   n_entries++;

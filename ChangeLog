@@ -1,5 +1,11 @@
 2015-10-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* install-info/install-info.c (parse_input): Initialize 
+	missing_basename field of spec_entry structure.
+	(ensure_dirfile_exists): Don't call close on a negative value.
+
+2015-10-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (@display, @table): Move advice about using 
 	@table inside @display to @table node.
 	(@small...): Move later in chapter.
