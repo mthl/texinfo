@@ -1,3 +1,12 @@
+2015-10-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (@display, @table): Move advice about using 
+	@table inside @display to @table node.
+	(@small...): Move later in chapter.
+	(@verbatiminclude): Move to Include Files chapter.
+	(@lisp): Remove footnote suggesting that C or Fortran could be 
+	embedded inside Texinfo files.
+
 2015-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/README: Mention purpose of htmlxref, 
@@ -7,7 +16,7 @@
 2015-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\utfeightchardefs): More definitions for 
-	mathematical symbols, from Karl.
+	mathematical symbols, from Karl, from Jim Hefferon.
 
 2015-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
 

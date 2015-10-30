@@ -6905,9 +6905,7 @@ beginning of that line, and with only one space between the
 * @code{@@indentedblock}::              Block of text indented on left.
 * @code{@@example}::                    Writing an example in a fixed-width font.
 * @code{@@verbatim}::                   Writing a verbatim example.
-* @code{@@verbatiminclude}::            Including a file verbatim.
 * @code{@@lisp}::                       Illustrating Lisp code.
-* @code{@@small@dots{}}::                   Examples in a smaller font.
 * @code{@@display}::                    Writing an example in the current font.
 * @code{@@format}::                     Writing an example without narrowed margins.
 * @code{@@exdent}::                     Undo indentation on a line.
@@ -6916,6 +6914,7 @@ beginning of that line, and with only one space between the
 * @code{@@noindent}::                   Preventing paragraph indentation.
 * @code{@@indent}::                     Forcing paragraph indentation.
 * @code{@@cartouche}::                  Drawing rounded rectangles around text.
+* @code{@@small@dots{}}::                   Examples in a smaller font.
 @end menu
 
 
@@ -7266,43 +7265,7 @@ an @code{@@smallformat} environment, as shown here:
 Finally, a word of warning: it is not reliable to use
 @code{@@verbatim} inside other Texinfo constructs.
 
-
-@node @code{@@verbatiminclude}
-@section @code{@@verbatiminclude} @var{file}: Include a File Verbatim
-
-@anchor{verbatiminclude}@c old name
-@findex verbatiminclude
-@cindex Verbatim, include file
-@cindex Including a file verbatim
-
-You can include the exact contents of a file in the document with the
-@code{@@verbatiminclude} command:
-
-@example
-@@verbatiminclude @var{filename}
-@end example
-
-The contents of @var{filename} is printed in a verbatim environment
-(@pxref{@code{@@verbatim}}).  Generally, the file is printed exactly
-as it is, with all special characters and white space retained.  No
-indentation is added; if you want indentation, enclose the
-@code{@@verbatiminclude} within @code{@@example}
-(@pxref{@code{@@example}}).
-
-The name of the file is taken literally, with a single exception:
-@code{@@value@{@var{var}@}} references are expanded.  This makes it
-possible to include files in other directories within a distribution,
-for instance:
-
-@example
-@@verbatiminclude @@value@{top_srcdir@}/NEWS
-@end example
-
-@noindent (You still have to get @code{top_srcdir} defined in the
-first place.)
-
-For a method on printing the file contents in a smaller font size, see
-the end of the previous section on @code{@@verbatim}.
+See also @ref{@code{@@verbatiminclude}}.
 
 
 @node @code{@@lisp}
@@ -7324,68 +7287,8 @@ Use @code{@@lisp} instead of @code{@@example} to preserve information
 regarding the nature of the example.  This is useful, for example, if
 you write a function that evaluates only and all the Lisp code in a
 Texinfo file.  Then you can use the Texinfo file as a Lisp
-library.@footnote{It would be straightforward to extend Texinfo to work
-in a similar fashion for C, Fortran, or other languages.}
-
-Mark the end of @code{@@lisp} with @code{@@end lisp} on a line by
-itself.
-
-
-@node @code{@@small@dots{}}
-@section @code{@@small@dots{}} Block Commands
-
-@anchor{small}@c old name
-@findex smallexample
-@findex smallformat
-@findex smalllisp
-@findex smallquotation
-@cindex Small examples
-@cindex Examples in smaller fonts
-@cindex Quotations in smaller fonts
-@cindex Lisp examples in smaller fonts
-
-In addition to the regular @code{@@example} and similar commands,
-Texinfo has ``small'' example-style commands.  These are
-@code{@@smallquotation}, @code{@@smallindentedblock},
-@code{@@smalldisplay}, @code{@@smallexample}, @code{@@smallformat},
-and @code{@@smalllisp}.
-
-In Info output, the @code{@@small@dots{}} commands are equivalent to
-their non-small companion commands.
-
-In @TeX{}, however, the @code{@@small@dots{}} commands typeset text in
-a smaller font than the non-small example commands.  Thus, for
-instance, code examples can contain longer lines and still fit on a
-page without needing to be rewritten.
-
-A smaller font size is also requested in HTML output, and (as usual)
-retained in the Texinfo@tie{}XML transliteration.
-
-Mark the end of a @code{@@small@dots{}} block with a corresponding
-@code{@@end small@dots{}}.  For example, pair @code{@@smallexample} with
-@code{@@end smallexample}.
-
-Here is an example of the font used by the @code{@@smallexample}
-command (in Info, the output will be the same as usual):
-
-@smallexample
-@dots{} to make sure that you have the freedom to
-distribute copies of free software (and charge for
-this service if you wish), that you receive source
-code or can get it if you want it, that you can
-change the software or use pieces of it in new free
-programs; and that you know you can do these things.
-@end smallexample
-
-The @code{@@small@dots{}} commands use the same font style as their
-normal counterparts: @code{@@smallexample} and @code{@@smalllisp} use
-a fixed-width font, and everything else uses the regular font.
-They also have the same behavior in other respects---whether filling
-is done and whether margins are narrowed.
-
-As a general rule, a printed document looks better if you use only one
-of (for instance) @code{@@example} or @code{@@smallexample}
-consistently within a chapter.
+library.  Mark the end of @code{@@lisp} with @code{@@end lisp} on a line
+by itself.
 
 
 @node @code{@@display}
@@ -7410,12 +7313,6 @@ indents the text, but does not fill it.
 Texinfo also provides the environment @code{@@smalldisplay}, which is
 like @code{@@display} but uses a smaller font size.
 @xref{@code{@@small@dots{}}}.
-
-The @code{@@table} command (@pxref{@code{@@table}}) is not supported
-inside @code{@@display}.  Since @code{@@display} is line-oriented, it
-doesn't make sense to use them together.  If you want to indent a
-table, try @code{@@quotation} (@pxref{@code{@@quotation}}) or
-@code{@@indentedblock} (@pxref{@code{@@indentedblock}}).
 
 
 @node @code{@@format}
@@ -7729,6 +7626,64 @@ Info, you'll see the @code{@@cartouche} had no effect):
 @end cartouche
 
 @code{@@cartouche} also implies @code{@@group} (@pxref{@code{@@group}}).
+
+@node @code{@@small@dots{}}
+@section @code{@@small@dots{}} Block Commands
+
+@anchor{small}@c old name
+@findex smallexample
+@findex smallformat
+@findex smalllisp
+@findex smallquotation
+@cindex Small examples
+@cindex Examples in smaller fonts
+@cindex Quotations in smaller fonts
+@cindex Lisp examples in smaller fonts
+
+In addition to the regular @code{@@example} and similar commands,
+Texinfo has ``small'' example-style commands.  These are
+@code{@@smallquotation}, @code{@@smallindentedblock},
+@code{@@smalldisplay}, @code{@@smallexample}, @code{@@smallformat},
+and @code{@@smalllisp}.
+
+In Info output, the @code{@@small@dots{}} commands are equivalent to
+their non-small companion commands.
+
+In @TeX{}, however, the @code{@@small@dots{}} commands typeset text in
+a smaller font than the non-small example commands.  Thus, for
+instance, code examples can contain longer lines and still fit on a
+page without needing to be rewritten.
+
+A smaller font size is also requested in HTML output, and (as usual)
+retained in the Texinfo@tie{}XML transliteration.
+
+Mark the end of a @code{@@small@dots{}} block with a corresponding
+@code{@@end small@dots{}}.  For example, pair @code{@@smallexample} with
+@code{@@end smallexample}.
+
+Here is an example of the font used by the @code{@@smallexample}
+command (in Info, the output will be the same as usual):
+
+@smallexample
+@dots{} to make sure that you have the freedom to
+distribute copies of free software (and charge for
+this service if you wish), that you receive source
+code or can get it if you want it, that you can
+change the software or use pieces of it in new free
+programs; and that you know you can do these things.
+@end smallexample
+
+The @code{@@small@dots{}} commands use the same font style as their
+normal counterparts: @code{@@smallexample} and @code{@@smalllisp} use
+a fixed-width font, and everything else uses the regular font.
+They also have the same behavior in other respects---whether filling
+is done and whether margins are narrowed.
+
+As a general rule, a printed document looks better if you use only one
+of (for instance) @code{@@example} or @code{@@smallexample}
+consistently within a chapter.
+
+
 
 
 @node Lists and Tables
@@ -8159,6 +8114,11 @@ Text for @samp{bar}.
 If you want to list two or more named items with a single block of
 text, use the @code{@@itemx} command.  (@xref{@code{@@itemx}}.)
 
+The @code{@@table} command (@pxref{@code{@@table}}) is not supported
+inside @code{@@display}.  Since @code{@@display} is line-oriented, it
+doesn't make sense to use them together.  If you want to indent a
+table, try @code{@@quotation} (@pxref{@code{@@quotation}}) or
+@code{@@indentedblock} (@pxref{@code{@@indentedblock}}).
 
 @node @code{@@ftable @@vtable}
 @subsection @code{@@ftable} and @code{@@vtable}
@@ -14552,6 +14512,7 @@ collection of conveniently small parts.
 * Include Files Requirements::  @code{texinfo-multiple-files-update} needs.
 * Sample Include File::         A sample outer file with included files
                                      within it; and a sample included file.
+* @code{@@verbatiminclude}::            Including a file verbatim.
 * Include Files Evolution::     How use of the @code{@@include} command
                                      has changed over time.
 @end menu
@@ -14756,6 +14717,44 @@ The outer Texinfo source file for @cite{The GNU Emacs Lisp Reference
 Manual} is named @file{elisp.texi}.  This outer file contains a master
 menu with 417 entries and a list of 41 @code{@@include}
 files.
+
+
+@node @code{@@verbatiminclude}
+@section @code{@@verbatiminclude} @var{file}: Include a File Verbatim
+
+@anchor{verbatiminclude}@c old name
+@findex verbatiminclude
+@cindex Verbatim, include file
+@cindex Including a file verbatim
+
+You can include the exact contents of a file in the document with the
+@code{@@verbatiminclude} command:
+
+@example
+@@verbatiminclude @var{filename}
+@end example
+
+The contents of @var{filename} is printed in a verbatim environment
+(@pxref{@code{@@verbatim}}).  Generally, the file is printed exactly
+as it is, with all special characters and white space retained.  No
+indentation is added; if you want indentation, enclose the
+@code{@@verbatiminclude} within @code{@@example}
+(@pxref{@code{@@example}}).
+
+The name of the file is taken literally, with a single exception:
+@code{@@value@{@var{var}@}} references are expanded.  This makes it
+possible to include files in other directories within a distribution,
+for instance:
+
+@example
+@@verbatiminclude @@value@{top_srcdir@}/NEWS
+@end example
+
+@noindent (You still have to get @code{top_srcdir} defined in the
+first place.)
+
+For a method on printing the file contents in a smaller font size, see
+the end of the section on @code{@@verbatim}.
 
 
 @node Include Files Evolution
