@@ -55,8 +55,8 @@ static char *scroll_last_node_choices[] = { "Stop", "Top", NULL };
    this variable. */
 char *rendition_variable = 0;
 
-static char *highlight_searches;
-
+/* Address of this indicates the 'highlight-searches' variable. */
+static int *highlight_searches;
 
 /* Note that the 'where_set' field of each element in the array is
    not given and defaults to 0. */
@@ -174,10 +174,10 @@ DECLARE_INFO_COMMAND (describe_variable, _("Explain the use of a variable"))
 
   if (var->choices)
     asprintf (&description, "%s (%s): %s.",
-             var->name, var->choices[*var->value], _(var->doc));
+             var->name, var->choices[*(int *)var->value], _(var->doc));
   else
     asprintf (&description, "%s (%d): %s.",
-	     var->name, *var->value, _(var->doc));
+             var->name, *(int *)var->value, _(var->doc));
 
   window_message_in_echo_area ("%s", description);
   free (description);
@@ -204,7 +204,7 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
       if (info_explicit_arg || count != 1)
         potential_value = count;
       else
-        potential_value = *(var->value);
+        potential_value = *(int *)(var->value);
 
       sprintf (prompt, _("Set %s to value (%d): "),
                var->name, potential_value);
@@ -241,7 +241,7 @@ DECLARE_INFO_COMMAND (set_variable, _("Set the value of an Info variable"))
         }
 
       sprintf (prompt, _("Set %s to value (%s): "),
-               var->name, var->choices[*(var->value)]);
+               var->name, var->choices[*(int *)(var->value)]);
 
       /* Ask the completer to read a variable value for us. */
       line = info_read_completing_in_echo_area (prompt, array);
@@ -360,20 +360,16 @@ set_variable_to_value (VARIABLE_ALIST *var, char *value, int where)
          "match-rendition=standout". */
       if (var->value == &highlight_searches)
         {
-          our_var.choices = &rendition_variable;
-          our_var.value = &match_rendition;
-          var = &our_var;
-          value = highlight_searches = xstrdup ("standout");
-          /* Save new string to prevent a memory leak being apparent. */
+          match_rendition.mask = STANDOUT_MASK;
+          match_rendition.value = STANDOUT_MASK;
         }
-
-      if (var->choices != &rendition_variable)
+      else if (var->choices != (char **) &rendition_variable)
         {
           /* Find the choice in our list of choices. */
           for (j = 0; var->choices[j]; j++)
             if (strcmp (var->choices[j], value) == 0)
               {
-                *var->value = j;
+                *(int *)var->value = j;
                 var->where_set = where;
                 return 1;
               }
@@ -442,7 +438,7 @@ set_variable_to_value (VARIABLE_ALIST *var, char *value, int where)
       long n = strtol (value, &p, 10);
       if (*p == 0 && INT_MIN <= n && n <= INT_MAX)
 	{
-	  *var->value = n;
+          *(int *)var->value = n;
 	  return 1;
 	}
     }

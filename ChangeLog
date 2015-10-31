@@ -1,5 +1,15 @@
 2015-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix compiler warnings.
+	* info/variables.h (VARIABLE_ALIST): Change type of 'value' 
+	field from int * to void *.  All uses updated to cast as 
+	appropriate.
+	* info/variables.c (highlight_searches): Type changed to int *.
+	* info/display.c (wrap_terminal_switch_rendition): Cast from 
+	long * to char *.
+
+2015-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/README: Remove.
 
 2015-10-31  Gavin Smith  <gavinsmith0123@gmail.com>

@@ -35,7 +35,7 @@
 typedef struct {
   char *name;                   /* Polite name. */
   char *doc;                    /* Documentation string. */
-  int *value;                   /* Address of value. */
+  void *value;                  /* Address of value. */
   char **choices;               /* Array of strings or NULL if numeric only. */
   int where_set;                /* Where this variable was set. */
 } VARIABLE_ALIST;

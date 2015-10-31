@@ -317,7 +317,7 @@ wrap_terminal_switch_rendition (struct text_buffer *printed_line,
       /* The text added here is only used internally to see when the
          display has changed, and is not output to the terminal. */
       text_buffer_add_string (printed_line, "\033", 1);
-      text_buffer_add_string (printed_line, &desired_rendition,
+      text_buffer_add_string (printed_line, (char *) &desired_rendition,
                               sizeof (long));
     }
 }
