@@ -51,6 +51,8 @@ one of the relevant sections:
   . Changes to macro handling to more closely match makeinfo.  Ends of
     lines are preserved in an argument to a macro taking a single 
     argument.
+  . By default, suppress heading line on a page with a chapter on it, to
+    avoid having the chapter title repeated.
   . Use a larger font for arguments in a @deffn line and similar.
   . The default indices (cp, ky and so on) now don't get a file opened
     for them unless they are actually used.  This reduces the number of
@@ -66,6 +68,10 @@ one of the relevant sections:
     can extend slightly into the margin instead of being broken across 
     two lines, and text is split more evenly across lines.  Reduce 
     chance of an orphaned index entry appearing at the top of a column.
+
+* texi2dvi
+  . Support of getting output files using the `-recorder' option to TeX,
+    to try to support more TeX engines.
 
 * makeinfo
   . Some Perl modules have been rewritten in C to increase speed.
@@ -95,6 +101,11 @@ one of the relevant sections:
     interfere with the selection of text in a terminal emulator window.
   . `q' closes a window instead of quitting altogether if there's more
     than one, for example if a help window is open.
+  . Several bug fixes, including:
+      . one causing the wrong position in a node to be shown when
+        following an "anchor" cross-reference
+      . one causing a test failure in the t/c-u-m-x-scroll-forward.sh
+        test on some platforms
   . internal changes to reduce memory use and increase speed of
     searches, relative to last release
 
