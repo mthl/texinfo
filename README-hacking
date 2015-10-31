@@ -43,6 +43,9 @@ Other -W options can be useful too, and patches are welcome to resolve
 diagnostics; however, removing all possible warning messages, or
 warnings with nonfree compilers, is explicitly not a goal.
 
+Gnulib
+------
+
 This distribution also uses Gnulib (http://www.gnu.org/software/gnulib)
 to share common files.  Gnulib files used in Texinfo are checked in to
 the repository.  If you get automake/conf/etc. errors from ./autogen.sh,
@@ -62,6 +65,18 @@ build-aux gnulib") and add them to the repository with "svn add";
 likewise for removals, likewise for adding new generated files
 (typically gnulib/lib/foo.h from foo.h.in) to the ignore list (e.g.,
   svn propedit svn:ignore gnulib/lib).
+
+
+Subdirectories in repository
+----------------------------
+
+In addition to the subdirectories listed in README, there are these 
+directories in the source control repository:
+
+makeinfo/  - Implementation of makeinfo in C, distributed before version 5.0
+texi2html/ - Perl program to generate HTML from Texinfo, superseded by texi2any
+parsetexi/ - Incomplete reimplementation of Texinfo::Parser in C
+
 
 
 
@@ -112,6 +127,7 @@ program.  All the usual Texinfo output formats are possible.
 Steps for making a release (pretest or official):
 
 - When close to official release:
+check at latest automake/autoconf/gettext version, and mention in NEWS
 special pleading with bug-texinfo / beebe / platform-testers to try.
 check OpenCSW build reports at
   https://buildfarm.opencsw.org/buildbot/waterfall?category=texinfo
@@ -133,6 +149,7 @@ version and date in NEWS.
 (cd tp && ./maintain/change_perl_modules_version.sh auto)
   -- this updates all the version numbers in the Perl modules
 sync texi2html/test/ results with tp/.
+check that texindex version is updated properly
 ensure building standalone modules for CPAN still works.
 make V=1 pdf and fix underfull/overfull boxes.
 

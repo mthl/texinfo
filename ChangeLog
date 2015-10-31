@@ -1,3 +1,8 @@
+2015-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Mention purposes of subdirectories, couple of 
+	more checks for a release.
+
 2015-10-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* install-info/install-info.c (parse_input): Initialize 
