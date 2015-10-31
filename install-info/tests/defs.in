@@ -41,12 +41,12 @@ fi
 
 # Use first line to run valgrind on the tests.  After "make check",
 # check for errors with "grep ERROR\ SUM *.log".
-#valgrind=valgrind
+#valgrind='valgrind '
 valgrind=
 
 # Two variables we use in the test scripts:
 top_builddir='@top_builddir@'
-install_info=${valgrind}\ ${top_builddir}/install-info/ginstall-info
+install_info=${valgrind}${top_builddir}/install-info/ginstall-info
 export install_info
 #
 top_srcdir='@top_srcdir@'
