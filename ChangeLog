@@ -1,3 +1,8 @@
+2015-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/Makefile.am: Remove commented-out lines and 
+	formatting.
+
 2015-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Fix compiler warnings.

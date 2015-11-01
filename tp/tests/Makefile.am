@@ -22,13 +22,9 @@ $(srcdir)/Makefile.onetst: \
 	  -long '$(long_tests)' \
 	  -tex_html '$(tex_html_tests)'
 
-#htmlxref htmlxref-only_mono htmlxref-only_split
-base_tests = \
- formatting 
-long_tests = \
- sectioning coverage indices nested_formats contents layout
-tex_html_tests = \
- tex_html
+base_tests = formatting 
+long_tests = sectioning coverage indices nested_formats contents layout
+tex_html_tests = tex_html
 
 test_subdirs = htmlxref htmlxref-only_mono htmlxref-only_split
 
