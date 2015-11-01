@@ -29,7 +29,7 @@ AM_CPPFLAGS =                                   \
 
 LDADD = $(top_builddir)/gnulib/lib/libgnu.a $(TERMLIBS) $(LIBINTL) $(LIBICONV)
 
-EXTRA_DIST = README pcterm.c
+EXTRA_DIST = pcterm.c
 
 ginfo_SOURCES = dir.c display.c display.h doc.h dribble.c dribble.h \
   echo-area.c echo-area.h \
@@ -164,6 +164,6 @@ TESTS = \
 	t/help.sh
 
 EXTRA_DIST += $(TESTS) $(XFAIL_TESTS) \
-  t/infodir \
+  t/README t/infodir \
   t/Init-inter.inc t/Init-test.inc t/Timeout-test.inc \
   t/Infokey-config t/node-target
