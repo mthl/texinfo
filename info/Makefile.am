@@ -164,6 +164,6 @@ TESTS = \
 	t/help.sh
 
 EXTRA_DIST += $(TESTS) $(XFAIL_TESTS) \
-  t/README t/infodir \
+  t/infodir \
   t/Init-inter.inc t/Init-test.inc t/Timeout-test.inc \
   t/Infokey-config t/node-target
