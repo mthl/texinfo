@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-10-16 18:35+0100\n"
+"POT-Creation-Date: 2015-10-31 11:50+0000\n"
 "PO-Revision-Date: 2015-06-07 10:23+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -381,7 +381,7 @@ msgstr "Indeksa temo"
 msgid "No available info files have '%s' in their indices."
 msgstr "Malestas «%s» en la indeksoj de ĉiuj disponeblaj Info-dosieroj."
 
-#: info/info-utils.c:887
+#: info/info-utils.c:889
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Eraro dum konverto de signara kodo."
@@ -1954,7 +1954,7 @@ msgstr ""
 "  --test                ne ĝisdatigi la katalogan dosieron\n"
 "  --version             montri programversion kaj eliri"
 
-#: install-info/install-info.c:643
+#: install-info/install-info.c:642
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -1989,12 +1989,12 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:667
+#: install-info/install-info.c:666
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: ne eblas legi (%s) kaj ne eblas krei (%s)"
 
-#: install-info/install-info.c:1134 install-info/install-info.c:1174
+#: install-info/install-info.c:1133 install-info/install-info.c:1174
 #, c-format
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY sen para END-INFO-DIR-ENTRY"
@@ -2304,33 +2304,33 @@ msgstr "'@%s' ekster iu ajn nodo"
 msgid "@node name should not contain `,': %s"
 msgstr "'@node' -- nomo ne devus enteni «,»: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1336
+#: tp/Texinfo/Convert/Plaintext.pm:1334
 #, perl-format
 msgid "Index entry in @%s with : produces invalid Info: %s"
 msgstr "Indeksero en @%s kun «:» produktas nevalidan Info-on: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1383 tp/Texinfo/Parser.pm:2721
+#: tp/Texinfo/Convert/Plaintext.pm:1381 tp/Texinfo/Parser.pm:2721
 #, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "elemento por indekso «%s» estas ekster iu ajn nodo"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1497
+#: tp/Texinfo/Convert/Plaintext.pm:1495
 #, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "eraro dum fermo de %s (dosiero kun 'image'-teksto): %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1502
+#: tp/Texinfo/Convert/Plaintext.pm:1500
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "Dosiero «%s» en komando '@image' ne legeblas: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1525
+#: tp/Texinfo/Convert/Plaintext.pm:1523
 #, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr ""
 "ne eblas trovi dosieron «%s.txt» en komando '@image' nek alternativan tekston"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1933
+#: tp/Texinfo/Convert/Plaintext.pm:1931
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -2338,40 +2338,40 @@ msgstr ""
 "«@strong{Note...}» estigas falsan referencon en Info; alivortigu por eviti "
 "tion"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2158
+#: tp/Texinfo/Convert/Plaintext.pm:2156
 #, perl-format
 msgid "@%s cross-reference name should not contain `:'"
 msgstr "'@%s' -- referenca nomo ne devus enteni «:»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2190
+#: tp/Texinfo/Convert/Plaintext.pm:2188
 #, perl-format
 msgid "@%s node name should not contain `%s'"
 msgstr "'@%s' -- nodnomo ne devus enteni «%s»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2223
+#: tp/Texinfo/Convert/Plaintext.pm:2221
 #, perl-format
 msgid "@%s node name should not contain `:'"
 msgstr "'@%s' -- nodnomo ne devus enteni «:»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2269
+#: tp/Texinfo/Convert/Plaintext.pm:2267
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "Post '@xref' sekvendas «.» aŭ «,», ne «%s»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2272
+#: tp/Texinfo/Convert/Plaintext.pm:2270
 msgid "`.' or `,' must follow @xref"
 msgstr "Post '@xref' sekvendas «.» aŭ «,»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3113
+#: tp/Texinfo/Convert/Plaintext.pm:3111
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "nodnomo en menuero ne devus enteni «%s»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3124
+#: tp/Texinfo/Convert/Plaintext.pm:3122
 msgid "menu entry node name should not contain `:'"
 msgstr "nodnomo en menuero ne devus enteni «:»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3140
+#: tp/Texinfo/Convert/Plaintext.pm:3138
 msgid "menu entry name should not contain `:'"
 msgstr "menuernomo ne devus enteni «:»"
 

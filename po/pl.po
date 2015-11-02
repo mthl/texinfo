@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-10-16 18:35+0100\n"
+"POT-Creation-Date: 2015-10-31 11:50+0000\n"
 "PO-Revision-Date: 2015-06-10 21:45+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -380,7 +380,7 @@ msgstr "Temat indeksu"
 msgid "No available info files have '%s' in their indices."
 msgstr "Żaden z dostępnych plików info nie zawiera '%s' w swoich indeksach."
 
-#: info/info-utils.c:887
+#: info/info-utils.c:889
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Błąd przy konwersji kodowania znaków pliku."
@@ -1966,7 +1966,7 @@ msgstr ""
 " --test               pominięcie uaktualniania PLIKU-DIR.\n"
 " --version            wyświetlenie informacji o wersji i zakończenie."
 
-#: install-info/install-info.c:643
+#: install-info/install-info.c:642
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -2002,12 +2002,12 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:667
+#: install-info/install-info.c:666
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: nie można odczytać (%s) ani utworzyć (%s)"
 
-#: install-info/install-info.c:1134 install-info/install-info.c:1174
+#: install-info/install-info.c:1133 install-info/install-info.c:1174
 #, c-format
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY bez odpowiadającego END-INFO-DIR-ENTRY"
@@ -2317,32 +2317,32 @@ msgstr "@%s poza jakimkolwiek węzłem"
 msgid "@node name should not contain `,': %s"
 msgstr "nazwa @node nie powinna zawierać `,': %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1336
+#: tp/Texinfo/Convert/Plaintext.pm:1334
 #, perl-format
 msgid "Index entry in @%s with : produces invalid Info: %s"
 msgstr "Wpis indeksu w @%s z : tworzy błędny plik Info: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1383 tp/Texinfo/Parser.pm:2721
+#: tp/Texinfo/Convert/Plaintext.pm:1381 tp/Texinfo/Parser.pm:2721
 #, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "wpis dla indeksu `%s' poza jakimkolwiek węzłem"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1497
+#: tp/Texinfo/Convert/Plaintext.pm:1495
 #, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "błąd podczas zamykania pliku tekstowego obrazu %s: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1502
+#: tp/Texinfo/Convert/Plaintext.pm:1500
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "Plik @image `%s' nieczytelny: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1525
+#: tp/Texinfo/Convert/Plaintext.pm:1523
 #, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr "nie odnaleziono pliku @image `%s.txt' ani alternatywnego tekstu"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1933
+#: tp/Texinfo/Convert/Plaintext.pm:1931
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -2350,40 +2350,40 @@ msgstr ""
 "@string{Note...} tworzy nieprawdziwe odniesienia w Info; należy "
 "przeredagować aby zapobiec temu"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2158
+#: tp/Texinfo/Convert/Plaintext.pm:2156
 #, perl-format
 msgid "@%s cross-reference name should not contain `:'"
 msgstr "nazwa odwołania @%s nie powinna zawierać `:'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2190
+#: tp/Texinfo/Convert/Plaintext.pm:2188
 #, perl-format
 msgid "@%s node name should not contain `%s'"
 msgstr "nazwa węzła @%s nie powinna zawierać `%s'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2223
+#: tp/Texinfo/Convert/Plaintext.pm:2221
 #, perl-format
 msgid "@%s node name should not contain `:'"
 msgstr "nazwa węzła @%s nie powinna zawierać `:'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2269
+#: tp/Texinfo/Convert/Plaintext.pm:2267
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "Po @xref musi wystąpić `.' lub `,', a nie %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2272
+#: tp/Texinfo/Convert/Plaintext.pm:2270
 msgid "`.' or `,' must follow @xref"
 msgstr "Po @xref musi wystąpić `.' lub `,'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3113
+#: tp/Texinfo/Convert/Plaintext.pm:3111
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "nazwa węzła wpisu menu nie powinna zawierać `%s'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3124
+#: tp/Texinfo/Convert/Plaintext.pm:3122
 msgid "menu entry node name should not contain `:'"
 msgstr "nazwa węzła wpisu menu nie powinna zawierać `:'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3140
+#: tp/Texinfo/Convert/Plaintext.pm:3138
 msgid "menu entry name should not contain `:'"
 msgstr "nazwa wpisu menu nie powinna zawierać `:'"
 

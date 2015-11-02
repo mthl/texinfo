@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-10-16 18:35+0100\n"
+"POT-Creation-Date: 2015-10-31 11:50+0000\n"
 "PO-Revision-Date: 2012-08-10 18:31+0100\n"
 "Last-Translator: Klemen Košir <klemen.kosir@gmx.com>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -395,7 +395,7 @@ msgstr "Vnos kazala: "
 msgid "No available info files have '%s' in their indices."
 msgstr "Nobena razpoložljiva podatkovna datoteka nima `%s' v svojih kazalih."
 
-#: info/info-utils.c:887
+#: info/info-utils.c:889
 #, c-format
 msgid "Error converting file character encoding."
 msgstr ""
@@ -1957,7 +1957,7 @@ msgstr ""
 " --test zatri posodabljanje MAPE-DATOTEK.\n"
 " --version prikaži podrobnosti različice in končaj."
 
-#: install-info/install-info.c:643
+#: install-info/install-info.c:642
 #, fuzzy, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -1992,12 +1992,12 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:667
+#: install-info/install-info.c:666
 #, fuzzy, c-format
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: ni mogoče brati (%s) in ni mogoče ustvariti (%s)\n"
 
-#: install-info/install-info.c:1134 install-info/install-info.c:1174
+#: install-info/install-info.c:1133 install-info/install-info.c:1174
 #, c-format
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY nima ujemajočega END-INFO-DIR-ENTRY"
@@ -2312,32 +2312,32 @@ msgstr "(zunaj vseh vozlišč)"
 msgid "@node name should not contain `,': %s"
 msgstr "%s: ni mogoče odpreti --css-file: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1336
+#: tp/Texinfo/Convert/Plaintext.pm:1334
 #, perl-format
 msgid "Index entry in @%s with : produces invalid Info: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1383 tp/Texinfo/Parser.pm:2721
+#: tp/Texinfo/Convert/Plaintext.pm:1381 tp/Texinfo/Parser.pm:2721
 #, fuzzy, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "Vnos za kazalo `%s' je zunaj vseh vozlišč"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1497
+#: tp/Texinfo/Convert/Plaintext.pm:1495
 #, fuzzy, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "napaka med končanjem datoteke vnosa `%s'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1502
+#: tp/Texinfo/Convert/Plaintext.pm:1500
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "datoteka @image `%s' je neberljiva: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1525
+#: tp/Texinfo/Convert/Plaintext.pm:1523
 #, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1933
+#: tp/Texinfo/Convert/Plaintext.pm:1931
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -2345,42 +2345,42 @@ msgstr ""
 "@strong{Opomba ...} ustvari lažni navzkrižni sklic v Info; ponovno ubesedite "
 "za izognitev temu"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2158
+#: tp/Texinfo/Convert/Plaintext.pm:2156
 #, fuzzy, perl-format
 msgid "@%s cross-reference name should not contain `:'"
 msgstr "%s: ni mogoče odpreti --css-file: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2190
+#: tp/Texinfo/Convert/Plaintext.pm:2188
 #, fuzzy, perl-format
 msgid "@%s node name should not contain `%s'"
 msgstr "%s: ni mogoče odpreti --css-file: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2223
+#: tp/Texinfo/Convert/Plaintext.pm:2221
 #, fuzzy, perl-format
 msgid "@%s node name should not contain `:'"
 msgstr "%s: ni mogoče odpreti --css-file: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2269
+#: tp/Texinfo/Convert/Plaintext.pm:2267
 #, fuzzy, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "`.' ali `,' morata slediti @%s, ne `%c'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2272
+#: tp/Texinfo/Convert/Plaintext.pm:2270
 #, fuzzy
 msgid "`.' or `,' must follow @xref"
 msgstr "`.' ali `,' morata slediti @%s, ne `%c'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3113
+#: tp/Texinfo/Convert/Plaintext.pm:3111
 #, fuzzy, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "V vozlišču `%s' ni menijev."
 
-#: tp/Texinfo/Convert/Plaintext.pm:3124
+#: tp/Texinfo/Convert/Plaintext.pm:3122
 #, fuzzy
 msgid "menu entry node name should not contain `:'"
 msgstr "V vozlišču `%s' ni menijev."
 
-#: tp/Texinfo/Convert/Plaintext.pm:3140
+#: tp/Texinfo/Convert/Plaintext.pm:3138
 #, fuzzy
 msgid "menu entry name should not contain `:'"
 msgstr "V vozlišču `%s' ni menijev."

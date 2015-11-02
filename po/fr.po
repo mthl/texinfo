@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-10-16 18:35+0100\n"
+"POT-Creation-Date: 2015-10-31 11:50+0000\n"
 "PO-Revision-Date: 2015-06-07 12:37+0200\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@orange.fr>\n"
 "Language-Team: French <traduc@traduc.org>\n"
@@ -388,7 +388,7 @@ msgstr "Sujet de l'index"
 msgid "No available info files have '%s' in their indices."
 msgstr "« %s » n'est présent dans aucun des index disponibles."
 
-#: info/info-utils.c:887
+#: info/info-utils.c:889
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Erreur lors de la conversion d'encodage de caracères du fichier."
@@ -1977,7 +1977,7 @@ msgstr ""
 " --test              Ne met pas à jour FICHIER-DIR.\n"
 " --version           Affiche la version puis s'arrête."
 
-#: install-info/install-info.c:643
+#: install-info/install-info.c:642
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
@@ -2014,12 +2014,12 @@ msgstr ""
 "\n"
 "%s\n"
 
-#: install-info/install-info.c:667
+#: install-info/install-info.c:666
 #, c-format
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s : impossible de lire (%s) et de créer (%s)"
 
-#: install-info/install-info.c:1134 install-info/install-info.c:1174
+#: install-info/install-info.c:1133 install-info/install-info.c:1174
 #, c-format
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY sans END-INFO-DIR-ENTRY correspondant"
@@ -2331,33 +2331,33 @@ msgstr "@%s hors de tout nœud"
 msgid "@node name should not contain `,': %s"
 msgstr "nom de @node ne doit pas contenir de « , » : %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1336
+#: tp/Texinfo/Convert/Plaintext.pm:1334
 #, perl-format
 msgid "Index entry in @%s with : produces invalid Info: %s"
 msgstr ""
 "Une entrée d'index dans @%s comporte un : qui produit de l'Info invalide : %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1383 tp/Texinfo/Parser.pm:2721
+#: tp/Texinfo/Convert/Plaintext.pm:1381 tp/Texinfo/Parser.pm:2721
 #, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "l'entrée de l'index « %s » est hors de tout nœud"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1497
+#: tp/Texinfo/Convert/Plaintext.pm:1495
 #, perl-format
 msgid "error on closing image text file %s: %s"
 msgstr "erreur de fermeture du fichier texte image %s : %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1502
+#: tp/Texinfo/Convert/Plaintext.pm:1500
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
 msgstr "fichier @image « %s » illisible : %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1525
+#: tp/Texinfo/Convert/Plaintext.pm:1523
 #, perl-format
 msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr "fichier @image « %s.txt » et texte de remplacement non trouvés"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1933
+#: tp/Texinfo/Convert/Plaintext.pm:1931
 msgid ""
 "@strong{Note...} produces a spurious cross-reference in Info; reword to "
 "avoid that"
@@ -2365,40 +2365,40 @@ msgstr ""
 "@strong{Note...} produit un renvoi parasite dans Info ; reformulez pour "
 "éviter cela"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2158
+#: tp/Texinfo/Convert/Plaintext.pm:2156
 #, perl-format
 msgid "@%s cross-reference name should not contain `:'"
 msgstr "un nom de renvoi @%s ne devrait pas contenir de « : »"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2190
+#: tp/Texinfo/Convert/Plaintext.pm:2188
 #, perl-format
 msgid "@%s node name should not contain `%s'"
 msgstr "un nom de nœud @%s ne devrait pas contenir de « %s »"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2223
+#: tp/Texinfo/Convert/Plaintext.pm:2221
 #, perl-format
 msgid "@%s node name should not contain `:'"
 msgstr "le nom d'un nœud @%s ne devrait pas contenir de « : »"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2269
+#: tp/Texinfo/Convert/Plaintext.pm:2267
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "« . » ou « , » doit suivre @xref, pas %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2272
+#: tp/Texinfo/Convert/Plaintext.pm:2270
 msgid "`.' or `,' must follow @xref"
 msgstr "« . » ou « , » doit suivre @xref"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3113
+#: tp/Texinfo/Convert/Plaintext.pm:3111
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "un nom de nœud en entrée de menu ne devrait contenir de « %s »"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3124
+#: tp/Texinfo/Convert/Plaintext.pm:3122
 msgid "menu entry node name should not contain `:'"
 msgstr "un nom de nœud en entrée de menu ne devrait contenir de « : »"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3140
+#: tp/Texinfo/Convert/Plaintext.pm:3138
 msgid "menu entry name should not contain `:'"
 msgstr "une entrée de menu ne devrait pas contenir de « : »"
 
