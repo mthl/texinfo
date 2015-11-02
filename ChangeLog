@@ -1,3 +1,10 @@
+2015-11-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Makefile.am: Remove a commented-out line.
+	* Texinfo/Convert/XSParagraph/configure.ac: Comment out or 
+	delete messages printing results and use AC_MSG_CHECKING and 
+	AS_MSG_RESULT.
+
 2015-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/Makefile.am: Remove commented-out lines and 

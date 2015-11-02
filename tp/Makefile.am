@@ -184,7 +184,6 @@ all-local: maintain/catalog.xml $(document_strings_mo_files) \
 tp_tests = prove.sh
 
 if TP_TESTS
-#TESTS = $(tp_tests)
 TESTS = $(test_tap_files_generated_list)
 endif
 
