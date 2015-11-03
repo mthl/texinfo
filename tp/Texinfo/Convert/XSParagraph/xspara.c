@@ -422,8 +422,9 @@ xspara_get_pending (void)
   return t.text;
 }
 
-/* Append to RESULT pending space followed by pending word.  Assume we don't 
-   need to wrap a line.  Only add spaces without a word if ADD_SPACES. */
+/* Append to RESULT pending space followed by pending word, clearing them 
+   afterwards.  Assume we don't need to wrap a line.  Only add spaces without a 
+   word if ADD_SPACES. */
 void
 xspara__add_pending_word (TEXT *result, int add_spaces)
 {
@@ -939,11 +940,10 @@ xspara_add_text (char *text)
           /*************** Double width character. *********************/
           if (width == 2)
             {
-
               state.last_letter = L'\0';
 
-              /* It appears we allow a line break in between Chinese characters 
-                 even if there was no space between them, unlike single-width 
+              /* We allow a line break in between Chinese characters even if 
+                 there was no space between them, unlike single-width 
                  characters. */
 
               /* Append wc to state.word. */
@@ -956,7 +956,10 @@ xspara_add_text (char *text)
                 {
                   xspara__cut_line (&result);
                 }
-              xspara__add_pending_word (&result, 0);
+              /* If protect_spaces is on, accumulate the characters so that
+                 they can be pushed onto the next line if necessary. */
+              if (!state.protect_spaces)
+                xspara__add_pending_word (&result, 0);
               state.end_sentence = -2;
             }
           /*************** Word character ******************************/

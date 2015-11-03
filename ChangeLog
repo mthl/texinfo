@@ -1,5 +1,13 @@
 2015-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/xspara.c:
+	(xspara_add_text) <double-width character>: If protect_spaces is 
+	on, accumulate double-width characters instead of sticking them 
+	in the output right away.
+	(xspara__add_pending_word): Comment changed.
+
+2015-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Paragraph.pm: Use the correct symbol name 
 	for the XS bootstrap function.  Print the name of the loaded 
 	library file if debug output is on, as well as the name of the 
