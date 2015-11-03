@@ -48,7 +48,7 @@ our @EXPORT = qw(
 
 BEGIN {
 
-my $module = "Texinfo::Convert::XSParagraph::XSParagraph::";
+my $module = "Texinfo::Convert::XSParagraph::XSParagraph";
 our $VERSION = '6.0dev';
 # Module interface number, to be changed when the XS interface changes.  
 # The value used for the .xs file compilation is set in configure.ac.  
@@ -193,15 +193,17 @@ if (!$libref) {
   _fatal "XSParagraph: couldn't load file $dlpath";
   goto FALLBACK;
 }
+_debug "$dlpath loaded";
 my @undefined_symbols = DynaLoader::dl_undef_symbols();
 if ($#undefined_symbols+1 != 0) {
   _fatal "XSParagraph: still have undefined symbols after dl_load_file";
 }
 my $bootname = "boot_$module";
 $bootname =~ s/:/_/g;
+_debug "looking for $bootname";
 my $symref = DynaLoader::dl_find_symbol($libref, $bootname);
 if (!$symref) {
-  _fatal "XSParagraph: couldn't find boot_$module symbol";
+  _fatal "XSParagraph: couldn't find $bootname symbol";
   goto FALLBACK;
 }
 my $boot_fn = DynaLoader::dl_install_xsub("${module}::bootstrap",
@@ -219,11 +221,11 @@ push @DynaLoader::dl_shared_objects, $dlpath; # record files loaded
 # be called from Perl code.
 &$boot_fn($module, $XSPARAGRAPH_INTERFACE_VERSION);
 
-*Texinfo::Convert::Paragraph = *Texinfo::Convert::XSParagraph::XSParagraph::;
-if (!Texinfo::Convert::Paragraph::init ()) {
+if (!Texinfo::Convert::XSParagraph::XSParagraph::init ()) {
   _fatal "XSParagraph: error initializing";
   goto FALLBACK;
 }
+*Texinfo::Convert::Paragraph:: = *Texinfo::Convert::XSParagraph::XSParagraph::;
 goto DONTFALLBACK;
 
 FALLBACK:
