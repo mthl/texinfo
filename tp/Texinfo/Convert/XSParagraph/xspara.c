@@ -66,6 +66,7 @@ typedef struct {
     int keep_end_lines; /* A newline in the input ends a line in the output.
                            Used by @flushleft and @flushright. */
     int french_spacing; /* Only one space, not two, after a full stop. */
+    int double_width_no_break; /* No line break between double width chars. */
 } PARAGRAPH;
 
 static PARAGRAPH state;
@@ -667,7 +668,8 @@ char *
 xspara_set_space_protection (int protect_spaces,
                              int ignore_columns,
                              int keep_end_lines,
-                             int french_spacing)
+                             int french_spacing,
+                             int double_width_no_break)
 {
   if (protect_spaces != -1)
     state.protect_spaces = protect_spaces;
@@ -675,6 +677,8 @@ xspara_set_space_protection (int protect_spaces,
     state.ignore_columns = ignore_columns;
   if (keep_end_lines != -1)
     state.keep_end_lines = keep_end_lines;
+  if (double_width_no_break != -1)
+    state.double_width_no_break = double_width_no_break;
 
   /*fprintf (stderr, "SETTING SPACE (%d, %d, %d, %d)\n",
                                    protect_spaces,
@@ -958,9 +962,11 @@ xspara_add_text (char *text)
                 }
               /* If protect_spaces is on, accumulate the characters so that
                  they can be pushed onto the next line if necessary. */
-              if (!state.protect_spaces)
-                xspara__add_pending_word (&result, 0);
-              state.end_sentence = -2;
+              if (!state.protect_spaces && !state.double_width_no_break)
+                {
+                  xspara__add_pending_word (&result, 0);
+                  state.end_sentence = -2;
+                }
             }
           /*************** Word character ******************************/
           else if (width == 1)

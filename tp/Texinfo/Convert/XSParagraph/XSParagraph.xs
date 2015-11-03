@@ -227,7 +227,8 @@ xspara_allow_end_sentence (paragraph)
         //xspara_set_state (paragraph);
         xspara_allow_end_sentence ();
   
-# Optional parameters are IGNORE_COLUMNS, KEEP_END_LINES, FRENCHSPACING
+# Optional parameters are IGNORE_COLUMNS, KEEP_END_LINES, FRENCHSPACING,
+# DOUBLE_WIDTH_NO_BREAK.
 # Pass them to the C function as -1 if not given or undef.
 char *
 xspara_set_space_protection (paragraph, space_protection_in, ...)
@@ -238,6 +239,7 @@ xspara_set_space_protection (paragraph, space_protection_in, ...)
         int ignore_columns = -1;
         int keep_end_lines = -1;
         int french_spacing = -1;
+        int double_width_no_break = -1;
         SV *arg_in;
     CODE:
         if (SvOK(space_protection_in))
@@ -265,11 +267,18 @@ xspara_set_space_protection (paragraph, space_protection_in, ...)
             if (SvOK(arg_in))
               french_spacing = (int)SvIV(arg_in);
           }
+        if (items > 0)
+          {
+            items--;
+            arg_in = ST(5);
+            if (SvOK(arg_in))
+              double_width_no_break = (int)SvIV(arg_in);
+          }
 
         //xspara_set_state (paragraph);
         RETVAL = xspara_set_space_protection
           (space_protection, ignore_columns, keep_end_lines,
-           french_spacing);
+           french_spacing, double_width_no_break);
         xspara_get_state (paragraph);
     OUTPUT:
         RETVAL

@@ -12,6 +12,9 @@
 	commands>.  Call set_space_protection to set 
 	'double_width_no_break' for the output for the cross-reference.
 
+	* tp/Texinfo/Convert/XSParagraph/xspara.c 
+	(xspara_set_space_protection, xspara_add_text): Likewise.
+
 2015-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/plaintext.t (east_asian_in_w): New test.
