@@ -441,7 +441,9 @@ sub add_text($$)
                                > $paragraph->{'max'}) {
         $result .= _cut_line($paragraph);
       }
-      $result .= _add_pending_word($paragraph);
+      if (!$paragraph->{'protect_spaces'}) {
+        $result .= _add_pending_word($paragraph);
+      }
       delete $paragraph->{'end_sentence'};
       $paragraph->{'space'} = '';
     }

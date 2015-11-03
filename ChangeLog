@@ -5,6 +5,8 @@
 	on, accumulate double-width characters instead of sticking them 
 	in the output right away.
 	(xspara__add_pending_word): Comment changed.
+	* tp/Texinfo/Convert/ParagraphNonXS.pm (add_text) <double-width
+	text>: Likewise.
 
 2015-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
