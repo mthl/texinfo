@@ -2120,6 +2120,11 @@ sub _convert($$)
             $formatter->{'container'}->set_space_protection(1,undef))
           if ($formatter->{'w'} == 1);
         }
+        # Disallow breaks in runs of Chinese text in node names, because a 
+        # break would be normalized to a single space by the Info reader, and 
+        # the node wouldn't be found.
+        $formatter->{'container'}
+  ->set_space_protection(undef,undef,undef,undef,1); # double_width_no_break
 
         if ($command eq 'xref') {
           $result = $self->_convert({'contents' => [{'text' => '*Note '}]});
@@ -2284,6 +2289,8 @@ sub _convert($$)
               $formatter->{'container'}->set_space_protection(0,undef))
             if ($formatter->{'w'} == 0);
         }
+        $formatter->{'container'}
+  ->set_space_protection(undef,undef,undef,undef,0); # double_width_no_break
         return $result;
       }
       return '';

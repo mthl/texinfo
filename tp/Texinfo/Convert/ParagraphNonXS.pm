@@ -272,13 +272,14 @@ sub allow_end_sentence($)
   $paragraph->{'last_char'} = 'a'; # lower-case
 }
 
-sub set_space_protection($$;$$$)
+sub set_space_protection($$;$$$$)
 {
   my $paragraph = shift;
   my $space_protection = shift;
   my $ignore_columns = shift;
   my $keep_end_lines = shift;
   my $frenchspacing = shift;
+  my $double_width_no_break = shift;
   $paragraph->{'protect_spaces'} = $space_protection 
     if defined($space_protection);
   $paragraph->{'ignore_columns'} = $ignore_columns
@@ -295,6 +296,8 @@ sub set_space_protection($$;$$$)
   }
   $paragraph->{'frenchspacing'} = $frenchspacing
     if defined($frenchspacing);
+  $paragraph->{'double_width_no_break'} = $double_width_no_break
+    if defined($double_width_no_break);
   # begin a word, to have something even if empty
   if ($space_protection) {
     _add_next($paragraph, '');
@@ -441,11 +444,12 @@ sub add_text($$)
                                > $paragraph->{'max'}) {
         $result .= _cut_line($paragraph);
       }
-      if (!$paragraph->{'protect_spaces'}) {
+      if (!$paragraph->{'protect_spaces'}
+          and !$paragraph->{'double_width_no_break'}) {
         $result .= _add_pending_word($paragraph);
+        $paragraph->{'space'} = '';
       }
       delete $paragraph->{'end_sentence'};
-      $paragraph->{'space'} = '';
     }
   }
   return $result;

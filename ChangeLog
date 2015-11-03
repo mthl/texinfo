@@ -1,5 +1,19 @@
 2015-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Prevent line breaks in Chinese text in cross-refereces, reported 
+	by Brendan O'Dea.	
+	
+	* tp/Texinfo/Convert/ParagraphNonXS.pm
+	(set_space_protection): New parameter, 'double_width_no_break'.
+	(add_text) <double-width character>: If 'double_width_no_break' 
+	flag is on, accumulate double-width characters just as if 
+	'protect_spaces' were on.
+	* tp/Texinfo/Convert/Plaintext.pm (_convert) <Cross-reference 
+	commands>.  Call set_space_protection to set 
+	'double_width_no_break' for the output for the cross-reference.
+
+2015-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/plaintext.t (east_asian_in_w): New test.
 	* tp/t/input_files/east_asian_in_w.texi: Input file.
 	* t/results/plaintext_tests/
