@@ -1,5 +1,13 @@
 2015-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/plaintext.t (east_asian_in_w): New test.
+	* tp/t/input_files/east_asian_in_w.texi: Input file.
+	* t/results/plaintext_tests/
+	east_asian_in_w/res_plaintext/east_asian_in_w.txt: Reference 
+	output file.
+
+2015-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/xspara.c:
 	(xspara_add_text) <double-width character>: If protect_spaces is 
 	on, accumulate double-width characters instead of sticking them 

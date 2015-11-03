@@ -977,6 +977,9 @@ undef, {'test_file' => 'all_spaces.texi',
         'todo' => {'file_plaintext' => 
                           'NEL handled differently between perl versions'}}
 ],
+['east_asian_in_w',
+undef, {'test_file' => 'east_asian_in_w.texi'}
+],
 );
 
 foreach my $test (@test_cases) {
