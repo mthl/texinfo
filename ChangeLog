@@ -1,5 +1,10 @@
 2015-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* install-info/install-info.c (format_entry): Add comment for 
+	local variable, and goto label.
+
+2015-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* install-info/install-info.c (format_entry): Use a local 
 	variable to avoid dereferences of output variable.
 

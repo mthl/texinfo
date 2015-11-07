@@ -1379,11 +1379,12 @@ adjust_column (size_t column, char c)
   return column;
 }
 
-/* Indent the Info entry's NAME and DESCRIPTION.  Lines are wrapped at the
-   WIDTH column.  The description on first line is indented at the CALIGN-th 
-   column, and all subsequent lines are indented at the ALIGN-th column.  
-   The resulting Info entry is put into OUTSTR.
+/* Format the Info entry's NAME and DESCRIPTION.
    NAME is of the form "* TEXT (TEXT)[:TEXT].".
+   The description on the first line is indented at the CALIGN-th column, and 
+   all subsequent lines are indented at the ALIGN-th column.
+   Lines are wrapped at the WIDTH column.
+   The resulting Info entry is put into OUTSTR.
  */
 static int
 format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
@@ -1393,9 +1394,11 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
   int i, j;
   char c;
   size_t column = 0;            /* Screen column where next char will go */
-  size_t offset_out = 0;        /* Index in `line_out' for next char. */
+
+  /* Used to collect a line at a time, before transferring to outstr. */
   static char *line_out = NULL;
-  static size_t allocated_out = 0;
+  size_t offset_out = 0;           /* Index in `line_out' for next char. */
+  static size_t allocated_out = 0; /* Space allocated in `line_out'. */
   char *outstr;
 
   if (!desc || !name)
@@ -1447,11 +1450,12 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
       if (c == '\n')
         {
           line_out[offset_out++] = c;
-          strncat (outstr, line_out, offset_out); /************/
+          strncat (outstr, line_out, offset_out);
           column = offset_out = 0;
           continue;
         }
 
+      /* Come here from inside "column > width" block below. */
     rescan:
       column = adjust_column (column, c);
 
@@ -1512,7 +1516,6 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
           column = offset_out = 0;
           goto rescan;
         }
-
       line_out[offset_out++] = c;
     }
 
