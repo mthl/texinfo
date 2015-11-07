@@ -1,5 +1,10 @@
 2015-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* install-info/install-info.c (format_entry): Use a local 
+	variable to avoid dereferences of output variable.
+
+2015-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Comments and formatting changes.
 	* install-info/install-info.c (parse_input): Combine a comment 
 	with comment at start of function, and add more information.

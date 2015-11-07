@@ -1386,9 +1386,9 @@ adjust_column (size_t column, char c)
    NAME is of the form "* TEXT (TEXT)[:TEXT].".
  */
 static int
-format_entry (char *name, size_t name_len, char *desc, size_t desc_len, 
-              int calign, int align, size_t width, 
-              char **outstr, size_t *outstr_len)
+format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
+              int calign, int align, size_t width,
+              char **outstr_out, size_t *outstr_len)
 {
   int i, j;
   char c;
@@ -1396,15 +1396,17 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
   size_t offset_out = 0;        /* Index in `line_out' for next char. */
   static char *line_out = NULL;
   static size_t allocated_out = 0;
+  char *outstr;
+
   if (!desc || !name)
     return 1;
 
-  *outstr = malloc (width  + 
+  outstr = malloc (width  + 
                     (((desc_len  + width) / (width - align)) * width) * 2 
                     * sizeof (char));
-  *outstr[0] = '\0';
+  outstr[0] = '\0';
 
-  strncat (*outstr, name, name_len);
+  strncat (outstr, name, name_len);
 
   column = name_len;
 
@@ -1413,12 +1415,12 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
       /* Name is too long to have description on the same line. */
       if (desc_len > 1)
         {
-          strncat (*outstr, "\n", 1);
+          strncat (outstr, "\n", 1);
           column = 0;
           for (j = 0; j < calign - 1; j++)
             {
               column = adjust_column (column, ' ');
-              strncat (*outstr, " ", 1);
+              strncat (outstr, " ", 1);
             }
         }
     }
@@ -1428,7 +1430,7 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
         if (desc_len <= 2)
           break;
         column = adjust_column (column, ' ');
-        strncat (*outstr, " ", 1);
+        strncat (outstr, " ", 1);
       }
 
   for (i = 0; i < desc_len; i++)
@@ -1445,7 +1447,7 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
       if (c == '\n')
         {
           line_out[offset_out++] = c;
-          strncat (*outstr, line_out, offset_out);
+          strncat (outstr, line_out, offset_out); /************/
           column = offset_out = 0;
           continue;
         }
@@ -1480,12 +1482,12 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
 
               /* Found a blank.  Don't output the part after it. */
               logical_end++;
-              strncat (*outstr, line_out, logical_end);
-              strncat (*outstr, "\n", 1);
+              strncat (outstr, line_out, logical_end);
+              strncat (outstr, "\n", 1);
               for (j = 0; j < align - 1; j++)
                 {
                   column = adjust_column (column, ' ');
-                  strncat (*outstr, " ", 1);
+                  strncat (outstr, " ", 1);
                 }
 
               /* Move the remainder to the beginning of the next 
@@ -1506,7 +1508,7 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
             }
 
           line_out[offset_out++] = '\n';
-          strncat (*outstr, line_out, offset_out);
+          strncat (outstr, line_out, offset_out);
           column = offset_out = 0;
           goto rescan;
         }
@@ -1515,12 +1517,13 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
     }
 
   if (desc_len <= 2)
-    strncat (*outstr, "\n", 1);
+    strncat (outstr, "\n", 1);
 
   if (offset_out)
-    strncat (*outstr, line_out, offset_out);
+    strncat (outstr, line_out, offset_out);
 
-  *outstr_len = strlen (*outstr);
+  *outstr_out = outstr;
+  *outstr_len = strlen (outstr);
   return 1;
 }
 
