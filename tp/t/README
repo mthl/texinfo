@@ -20,6 +20,10 @@ test file can be run on its own with
 
   perl -w t/03coverage_braces.t
 
+Another way, which works when doing an out-of-source build, is
+
+  make check TESTS=t/03coverage_braces.t
+
 Most test files use a testing infrastructure from t/test_utils.pl.  In
 that case the reference output files for the test of a test category 
 $test_category.t file are in t/results/$test_category/.  For example, if 
@@ -48,7 +52,8 @@ files for the "test_image" test within t/03.coverage_braces.t, run
   perl -w t/03coverage_braces.t -g test_image
 
 Some tests under this directory use input files in the 'input_files' 
-subdirectory.  
+subdirectory.  When adding a test that uses an input file, add its path 
+to tp/Makefile.am.
 
 For some tests, as well as a .pl file as usual in results/*/, actual
 output files are generated.  For those tests, there are directories with
@@ -64,7 +69,7 @@ reference test results (run from the upper-level directory), and
 "./maintain/all_tests.sh diff" makes a diff of all resulting files
 against references.
 
-From the top directory, you can also create texinfo files corresponding with
+From the top directory, you can also create texinfo files corresponding to
 tests by running something along the lines of:
 
   perl -w t/60macro.t -c

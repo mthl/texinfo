@@ -164,6 +164,7 @@ test_files = \
  t/input_files/contents_no_section.texi \
  t/input_files/cpp_lines.texi \
  t/input_files/delcomment.texi \
+ t/input_files/east_asian_in_w.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi \
  t/input_files/japanese_utf8.texi \

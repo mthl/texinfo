@@ -1,5 +1,11 @@
 2015-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Makefile.am (test_files): Add east_asian_in_w.texi.
+	* tp/t/README: Mention listing test input files in Makefile.am.  
+	Mention another way of running a single test.
+
+2015-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/Makefile.am (EXTRA_DIST): Add 
 	fail.pl.
 
