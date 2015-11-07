@@ -53,7 +53,7 @@ BEGIN {
 #
 # Other values are treated at the moment as 'default'.
 
-my $TEXINFO_XS = $ENV{'TEXINFO_XS'};
+my $TEXINFO_XS = 'debug';
 if (!defined($TEXINFO_XS)) {
   $TEXINFO_XS = '';
 }
@@ -187,17 +187,7 @@ if (!TestXS::init ()) {
 }
 goto DONTFALLBACK;
 
-FALLBACK:
-  if ($TEXINFO_XS eq 'required') {
-    die "unset the TEXINFO_XS environmental variable to use the "
-       ."pure Perl modules\n";
-  } elsif ($TEXINFO_XS eq 'warn' or $TEXINFO_XS eq 'debug') {
-    warn "falling back to pure Perl modules\n";
-  }
-  # Fall back to using the Perl code.
-  require Texinfo::Convert::Paragraph;
-  *Texinfo::Convert::XSParagraph::XSParagraph::
-                                          = *Texinfo::Convert::Paragraph::;
+FALLBACK: ;
 DONTFALLBACK: ;
 } # end BEGIN
 
