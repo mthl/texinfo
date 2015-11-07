@@ -1,5 +1,12 @@
 2015-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/paragraph.t: Access paragraph formatting modules via a 
+	string with the name of the module in it.  Aliasing a module's 
+	namespace to switch between modules doesn't seem to work 
+	reliably.
+
+2015-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/TestXS.pm: Always print 
 	debugging output, and remove fallback code copied from 
 	XSParagraph.pm.
