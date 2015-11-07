@@ -13,12 +13,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-package Texinfo::Convert::XSParagraph::XSParagraph;
+package Texinfo::Convert::XSParagraph::TestXS;
 
 use DynaLoader;
 
-# same as texi2any.pl, although I don't know what the real requirement
-# is for this module.
 use 5.00405;
 use strict;
 use warnings;
@@ -35,9 +33,7 @@ our @ISA = qw(Exporter DynaLoader);
 # If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
 # will save memory.
 our %EXPORT_TAGS = ( 'all' => [ qw(
-    add_next
-    add_text
-	
+
 ) ] );
 
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -144,7 +140,7 @@ if (!$dlpath) {
 #print STDERR "loadable object is at $dlpath\n";
 
 my $module = "TestXS";
-our $VERSION = '6.0dev';
+our $module_version = '6.0';
 
 # Following steps under "bootstrap" in "man DynaLoader".
 #bootstrap XSParagraph $VERSION;
@@ -183,7 +179,7 @@ push @DynaLoader::dl_shared_objects, $dlpath; # record files loaded
 # This is the module bootstrap function, which causes all the other
 # functions (XSUB's) provided by the module to become available to
 # be called from Perl code.
-&$boot_fn($module, $VERSION);
+&$boot_fn($module, $module_version);
 
 if (!TestXS::init ()) {
   _fatal "XSParagraph: error initializing";
@@ -209,12 +205,6 @@ DONTFALLBACK: ;
 # Preloaded methods go here.
 
 #########################################################################
-
-# Used for debugging.  Not implemented.
-sub dump($)
-{
-  return "\n";
-}
 
 1;
 __END__
