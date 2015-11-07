@@ -1,3 +1,12 @@
+2015-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Comments and formatting changes.
+	* install-info/install-info.c (parse_input): Combine a comment 
+	with comment at start of function, and add more information.
+	Change another comment.
+	(install_entry_here): Formatting changes.
+	(main) <not deleting>: Comment changed for grammar.
+
 2015-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Prevent line breaks in Chinese text in cross-refereces, reported 

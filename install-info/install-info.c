@@ -1062,8 +1062,13 @@ output_dirfile (char *dirfile, int dir_nlines, struct line_data *dir_lines,
     fclose (output);
 }
 
-/* Parse the input to find the section names and the entry names it
-   specifies.  Return the number of entries to add from this file.  */
+/* Read through the input LINES, to find the section names and the
+   entry names it specifies. Each INFO-DIR-SECTION entry is added
+   to the SECTIONS linked list.  Each START-INFO-DIR-ENTRY block is added to 
+   the ENTRIES linked list, and the last group of INFO-DIR-SECTION entries
+   is recorded in next->entry_sections and next->entry_sections_tail, where
+   next is the new entry.  Return the number of entries to add from this 
+   file.  */
 int
 parse_input (const struct line_data *lines, int nlines,
              struct spec_section **sections, struct spec_entry **entries,
@@ -1082,12 +1087,6 @@ parse_input (const struct line_data *lines, int nlines,
   if (ignore_sections && ignore_entries)
     return 0;
 
-  /* Loop here processing lines from the input file.  Each
-     INFO-DIR-SECTION entry is added to the SECTIONS linked list.
-     Each START-INFO-DIR-ENTRY block is added to the ENTRIES linked
-     list, and all its entries inherit the chain of SECTION entries
-     defined by the last group of INFO-DIR-SECTION entries we have
-     seen until that point.  */
   for (i = 0; i < nlines; i++)
     {
       if (!ignore_sections
@@ -1129,6 +1128,8 @@ parse_input (const struct line_data *lines, int nlines,
                  tail pointer.  */
               reset_tail = 1;
 
+              /* Save start of the entry.  If this is non-zero, we're
+                 already inside an entry, so fail. */
               if (start_of_this_entry != 0)
                 fatal (_("START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"));
               start_of_this_entry = lines[i + 1].start;
@@ -1141,9 +1142,8 @@ parse_input (const struct line_data *lines, int nlines,
                                 lines[i].start, lines[i].size)
                       && sizeof ("END-INFO-DIR-ENTRY") - 1 == lines[i].size))
                 {
-                  /* We found an end of this entry.  Allocate another
-                     entry, fill its data, and add it to the linked
-                     list.  */
+                  /* We found the end of this entry.  Save its contents
+                     in a new entry in the linked list.  */
                   struct spec_entry *next
                     = (struct spec_entry *) xmalloc (sizeof (struct spec_entry));
                   next->text
@@ -2342,8 +2342,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
                    &input_sections, &entries_to_add_from_file, delete_flag);
   if (!delete_flag)
     {
-      /* If there are no entries on the command-line at all, so we use the 
-         entries found in the Info file itself (if any). */
+      /* If there are no entries on the command-line at all, use the entries
+         found in the Info file itself (if any). */
       if (entries_to_add == NULL)
         {
           entries_to_add = entries_to_add_from_file;
@@ -2776,11 +2776,9 @@ compare_entries_text (const void *p1, const void *p2)
   return mbsncasecmp (text1, text2, len1 <= len2 ? len1 : len2);
 }
 
-/* Insert ENTRY into the add_entries_before vector
-   for line number LINE_NUMBER of the dir file.
-   DIR_LINES and N_ENTRIES carry information from like-named variables
-   in main.  */
-
+/* Insert ENTRY into the ADD_ENTRIES_BEFORE vector for line number LINE_NUMBER 
+   of the dir file.  DIR_LINES and N_ENTRIES carry information from like-named 
+   variables in main.  */
 void
 insert_entry_here (struct spec_entry *entry, int line_number,
                    struct line_data *dir_lines, int n_entries)
@@ -2801,8 +2799,8 @@ insert_entry_here (struct spec_entry *entry, int line_number,
   for (i = 0; i < n_entries; i++)
     if (dir_lines[line_number].add_entries_before[i] == 0
         || menu_line_lessp (entry->text, strlen (entry->text),
-                            dir_lines[line_number].add_entries_before[i]->text,
-                            strlen (dir_lines[line_number].add_entries_before[i]->text)))
+              dir_lines[line_number].add_entries_before[i]->text,
+              strlen (dir_lines[line_number].add_entries_before[i]->text)))
       break;
 
   if (i == n_entries)
