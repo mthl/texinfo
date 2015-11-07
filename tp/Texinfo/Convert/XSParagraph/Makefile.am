@@ -45,6 +45,8 @@ PERL_INC = $(PERL_CONF_archlibexp)/CORE
 
 XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
 
+EXTRA_DIST+=fail.pl
+
 .xs.c:
 	$(XSUBPP) $(XSUBPPARGS) $< > $*.xsc && mv $*.xsc $*.c
 

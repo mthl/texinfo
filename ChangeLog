@@ -1,5 +1,10 @@
 2015-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am (EXTRA_DIST): Add 
+	fail.pl.
+
+2015-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/TestXS.pm: Change package name.
 	Remove comments copied from XSParagraph.pm.  Remove unused 
 	functions, also copied here.  Rename $VERSION variable to avoid 
