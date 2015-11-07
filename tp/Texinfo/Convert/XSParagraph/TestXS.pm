@@ -144,7 +144,7 @@ if (!$dlpath) {
 #print STDERR "loadable object is at $dlpath\n";
 
 my $module = "TestXS";
-our $VERSION = '6.0';
+our $VERSION = '6.0dev';
 
 # Following steps under "bootstrap" in "man DynaLoader".
 #bootstrap XSParagraph $VERSION;

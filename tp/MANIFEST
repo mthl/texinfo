@@ -1079,6 +1079,8 @@ t/results/plaintext_tests/chinese_mixed_with_en/res_plaintext/chinese_mixed_with
 t/results/plaintext_tests/code_commands_and_punctuation.pl
 t/results/plaintext_tests/command_brace_no_arg_punctuation.pl
 t/results/plaintext_tests/commands_and_punctuation.pl
+t/results/plaintext_tests/east_asian_in_w.pl
+t/results/plaintext_tests/east_asian_in_w/res_plaintext/east_asian_in_w.txt
 t/results/plaintext_tests/empty_line_in_example_end.pl
 t/results/plaintext_tests/empty_multitable_in_itemize.pl
 t/results/plaintext_tests/end_sentence_space_protected.pl
