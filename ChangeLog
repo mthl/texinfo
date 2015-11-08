@@ -1,3 +1,11 @@
+2015-11-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.xs,
+	* tp/Texinfo/Convert/XSParagraph/text.c,
+	* tp/Texinfo/Convert/XSParagraph/xspara.c: Add copyright and 
+	licence text.
+
 2015-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/paragraph.t: Access paragraph formatting modules via a 
