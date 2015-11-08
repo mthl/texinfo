@@ -1,3 +1,18 @@
+#ifdef HAVE_CONFIG_H
+  #include <config.h>
+#endif
+
+#define PERL_NO_GET_CONTEXT
+#include "EXTERN.h"
+#include "perl.h"
+#include "XSUB.h"
+
+#include "ppport.h"
+
+#include "xspara.h"
+
+MODULE = Texinfo::Convert::XSParagraph::XSParagraph PACKAGE = Texinfo::Convert::XSParagraph::XSParagraph PREFIX = xspara_
+
 #  Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 #
 #  This program is free software: you can redistribute it and/or modify
@@ -12,22 +27,6 @@
 #
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.  
-
-#ifdef HAVE_CONFIG_H
-  #include <config.h>
-#endif
-
-#define PERL_NO_GET_CONTEXT
-#include "EXTERN.h"
-#include "perl.h"
-#include "XSUB.h"
-
-#include "ppport.h"
-
-#include "xspara.h"
-
-
-MODULE = Texinfo::Convert::XSParagraph::XSParagraph PACKAGE = Texinfo::Convert::XSParagraph::XSParagraph PREFIX = xspara_
 
 int
 xspara_init ()
