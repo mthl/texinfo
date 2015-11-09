@@ -2,6 +2,9 @@
 
 	* tp/texi2any.pl: Use srcdir as well as builddir to set module 
 	search path.
+	* man/Makefile.am (MAKEINFO_ENVIRONMENT): Set value of 
+	top_builddir correctly.
+	(mi_env): Use MAKEINFO_ENVIRONMENT, as it wasn't used otherwise.
 
 2015-11-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
