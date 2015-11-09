@@ -36,6 +36,8 @@ use Getopt::Long qw(GetOptions);
 # for carp
 #use Carp;
 
+use Texinfo::Convert::Converter;
+
 Getopt::Long::Configure("gnu_getopt");
 
 # This big BEGIN block deals with finding modules and 
