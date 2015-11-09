@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-10-31 11:50+0000\n"
+"POT-Creation-Date: 2015-11-09 19:25+0000\n"
 "PO-Revision-Date: 2015-06-07 15:47+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
@@ -436,7 +436,7 @@ msgstr "giá trị %s là không hợp lệ với biến %s"
 msgid "Try --help for more information.\n"
 msgstr "Hãy thử lệnh trợ giúp “--help” để xem thông tin thêm.\n"
 
-#: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:866
+#: info/info.c:805 install-info/install-info.c:2218 tp/texi2any.pl:870
 #: texindex/ti.twjr:1309
 #, c-format, awk-format, perl-format
 msgid ""
@@ -591,7 +591,7 @@ msgstr ""
 "  info -f ./foo.info         hiển thị tập tin “./foo.info”, không tìm kiếm "
 "thư mục"
 
-#: info/info.c:1100 install-info/install-info.c:616 tp/texi2any.pl:854
+#: info/info.c:1100 install-info/install-info.c:616 tp/texi2any.pl:858
 #: texindex/ti.twjr:1298
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -1995,7 +1995,7 @@ msgstr ""
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: không thể đọc (%s) và không thể tạo (%s)"
 
-#: install-info/install-info.c:1133 install-info/install-info.c:1174
+#: install-info/install-info.c:1134 install-info/install-info.c:1174
 #, c-format
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr ""
@@ -2009,56 +2009,56 @@ msgstr ""
 "Có “END-INFO-DIR-ENTRY” (mục nhập thư mục Info kết thúc) mà không có “START-"
 "INFO-DIR-ENTRY” (mục nhập thư mục Info đầu) tương ứng"
 
-#: install-info/install-info.c:2037 install-info/install-info.c:2047
+#: install-info/install-info.c:2043 install-info/install-info.c:2053
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: đã có tập tin thư mục: %s\n"
 
-#: install-info/install-info.c:2143
+#: install-info/install-info.c:2149
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: hãy ghi rõ tập tin Info chỉ một lần.\n"
 
-#: install-info/install-info.c:2176
+#: install-info/install-info.c:2182
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "Biểu thức chính quy thêm được ghi rõ nên bỏ qua “%s”"
 
-#: install-info/install-info.c:2188
+#: install-info/install-info.c:2194
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "Gặp lỗi trong biểu thức chính quy “%s”: %s"
 
-#: install-info/install-info.c:2250
+#: install-info/install-info.c:2256
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "đối số dòng lệnh thừa “%s”"
 
-#: install-info/install-info.c:2254
+#: install-info/install-info.c:2260
 #, c-format
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Chưa ghi rõ tập tin nhập vào; Hãy chạy dùng tùy chọn “--help” để xem thông "
 "tin thêm."
 
-#: install-info/install-info.c:2256
+#: install-info/install-info.c:2262
 #, c-format
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "Chưa ghi rõ tập tin thư mục. Hãy chạy lệnh trợ giúp “--help” để xem thông "
 "tin thêm."
 
-#: install-info/install-info.c:2277
+#: install-info/install-info.c:2283
 #, c-format
 msgid "Could not read %s."
 msgstr "Không thể đọc %s."
 
-#: install-info/install-info.c:2424
+#: install-info/install-info.c:2430
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "không có mục nhập thư mục Info trong “%s”"
 
-#: install-info/install-info.c:2672
+#: install-info/install-info.c:2678
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "không tìm thấy mục nhập cho “%s” nên không xóa gì"
@@ -2346,40 +2346,40 @@ msgstr ""
 "“@strong{Note…}” tạo một tham chiếu chéo giả trong Info; hãy sửa đổi để "
 "tránh nó"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2156
+#: tp/Texinfo/Convert/Plaintext.pm:2161
 #, perl-format
 msgid "@%s cross-reference name should not contain `:'"
 msgstr "tên tham chiếu chéo @%s không được phép chứa “:”"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2188
+#: tp/Texinfo/Convert/Plaintext.pm:2193
 #, perl-format
 msgid "@%s node name should not contain `%s'"
 msgstr "tên nút @%s không được chứa “%s”"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2221
+#: tp/Texinfo/Convert/Plaintext.pm:2226
 #, perl-format
 msgid "@%s node name should not contain `:'"
 msgstr "tên nút @%s không được chứa dấu hai chấm “:”"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2267
+#: tp/Texinfo/Convert/Plaintext.pm:2272
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "“.” hay “,” phải theo sau @xref, không phải %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2270
+#: tp/Texinfo/Convert/Plaintext.pm:2275
 msgid "`.' or `,' must follow @xref"
 msgstr "“.” hay “,” phải theo sau @xref"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3111
+#: tp/Texinfo/Convert/Plaintext.pm:3118
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "tên mục trình đơn không được chứa “%s”"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3122
+#: tp/Texinfo/Convert/Plaintext.pm:3129
 msgid "menu entry node name should not contain `:'"
 msgstr "tên nút mục trình đơn không được chứa dấu hai chấm “:”"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3138
+#: tp/Texinfo/Convert/Plaintext.pm:3145
 msgid "menu entry name should not contain `:'"
 msgstr "tên mục trình đơn không được chứa dấu hai chấm “:”"
 
@@ -3266,49 +3266,49 @@ msgstr ""
 "tex4ht.pm: xử lý tìm lại %d mục trong HTML; cần %d, con số được tìm thấy "
 "trong tài liệu dành cho @%s"
 
-#: tp/texi2any.pl:376
+#: tp/texi2any.pl:380
 #, perl-format
 msgid "error loading %s: %s\n"
 msgstr "lỗi tải %s: %s\n"
 
-#: tp/texi2any.pl:389
+#: tp/texi2any.pl:393
 #, perl-format
 msgid "%s: unknown variable %s"
 msgstr "%s: không hiểu biến %s"
 
-#: tp/texi2any.pl:393
+#: tp/texi2any.pl:397
 #, perl-format
 msgid "%s: obsolete variable %s\n"
 msgstr "%s: biến %s đã lạc hậu\n"
 
-#: tp/texi2any.pl:408
+#: tp/texi2any.pl:412
 #, perl-format
 msgid "%s: unknown variable %s\n"
 msgstr "%s: không hiểu biến %s\n"
 
-#: tp/texi2any.pl:412
+#: tp/texi2any.pl:416
 #, perl-format
 msgid "obsolete variable %s\n"
 msgstr "biến %s đã lạc hậu\n"
 
-#: tp/texi2any.pl:477
+#: tp/texi2any.pl:481
 #, perl-format
 msgid "could not read init file %s"
 msgstr "không thể đọc tập tin khởi tạo %s"
 
-#: tp/texi2any.pl:640
+#: tp/texi2any.pl:644
 #, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr ""
 "bỏ qua giá trị không chấp nhận được “TEXINFO_OUTPUT_FORMAT” (định dạng xuất "
 "Texinfo) “%s”\n"
 
-#: tp/texi2any.pl:723
+#: tp/texi2any.pl:727
 #, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Cách dùng: %s [TÙY-CHỌN]… TẬP-TIN-TEXTINFO…\n"
 
-#: tp/texi2any.pl:726
+#: tp/texi2any.pl:730
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -3323,7 +3323,7 @@ msgstr ""
 "Chương trình này thường được cài cùng cả “makeinfo” và “texi2any';\n"
 "chúng làm cùng nhiệm vụ, không phụ thuộc vào tên được cài đặt.\n"
 
-#: tp/texi2any.pl:732
+#: tp/texi2any.pl:736
 #, perl-format
 msgid ""
 "General options:\n"
@@ -3362,7 +3362,7 @@ msgstr ""
 "  -v, --verbose                diễn tả việc đang được làm \n"
 "      --version                hiển thị thông tin phiên bản rồi thoát.\n"
 
-#: tp/texi2any.pl:748
+#: tp/texi2any.pl:752
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -3381,7 +3381,7 @@ msgstr ""
 "                               sau khi kiểm tra tính hợp lệ của TẬP-TIN-"
 "INFO\n"
 
-#: tp/texi2any.pl:756
+#: tp/texi2any.pl:760
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -3430,7 +3430,7 @@ msgstr ""
 "                                đặt tập tin kết xuất ở đây.\n"
 "                               Nếu không, tên ĐÍCH là tập tin kết xuất.\n"
 
-#: tp/texi2any.pl:776
+#: tp/texi2any.pl:780
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3474,7 +3474,7 @@ msgstr ""
 "      --split-size=SỐ        chia tách các tập tin Info ở kích cỡ SỐ (mặc "
 "định là %d).\n"
 
-#: tp/texi2any.pl:793
+#: tp/texi2any.pl:797
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3501,7 +3501,7 @@ msgstr ""
 "nút                               và điểm neo; mặc định chỉ được đặt nếu "
 "tách.\n"
 
-#: tp/texi2any.pl:804
+#: tp/texi2any.pl:808
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
@@ -3509,7 +3509,7 @@ msgstr ""
 "Các tùy chọn cho XML và Docbook:\n"
 "      --output-indent=VAL     chẳng làm gì, giữ lại để tương thích.\n"
 
-#: tp/texi2any.pl:807
+#: tp/texi2any.pl:811
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
@@ -3517,7 +3517,7 @@ msgstr ""
 "Tùy chọn cho DVI/PS/PDF:\n"
 "      --Xopt=OPT              chuyển OPT cho texi2dvi; có thể lặp lại.\n"
 
-#: tp/texi2any.pl:810
+#: tp/texi2any.pl:814
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -3539,7 +3539,7 @@ msgstr ""
 "kiếm @include.\n"
 "  -U BIẾN                       hủy định nghĩa biến này, giống như @clear.\n"
 
-#: tp/texi2any.pl:818
+#: tp/texi2any.pl:822
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -3577,7 +3577,7 @@ msgstr ""
 "  Đồng thời, đối với các tùy chọn “--no-ifĐỊNH_DẠNG”, phải xử lý văn bản "
 "@ifnotĐỊNH_DẠNG.\n"
 
-#: tp/texi2any.pl:835
+#: tp/texi2any.pl:839
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating Docbook, --ifdocbook is on and the others are off;\n"
@@ -3593,7 +3593,7 @@ msgstr ""
 "  nếu tạo chữ dạng thô thì bật “--ifplaintext” và các cái khác bị tắt;\n"
 "  nếu tạo XML thì bật “--ifxml” và các cái khác bị tắt;\n"
 
-#: tp/texi2any.pl:842
+#: tp/texi2any.pl:846
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -3624,7 +3624,7 @@ msgstr ""
 "  makeinfo --no-split phu.texi           ghi một tập tin Info, bất chấp kích "
 "cỡ tối đa\n"
 
-#: tp/texi2any.pl:889
+#: tp/texi2any.pl:893
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
@@ -3633,7 +3633,7 @@ msgstr ""
 " * end        cuối\n"
 "không phải “%s”.\n"
 
-#: tp/texi2any.pl:980
+#: tp/texi2any.pl:984
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
@@ -3643,54 +3643,54 @@ msgstr ""
 " * asis       như thế\n"
 "không phải “%s”.\n"
 
-#: tp/texi2any.pl:1057
+#: tp/texi2any.pl:1061
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 "%s: khi đang tạo %s, chỉ một TẬP-TIN đầu vào có thể được chỉ ra cùng với tùy "
 "chọn -o\n"
 
-#: tp/texi2any.pl:1061
+#: tp/texi2any.pl:1065
 msgid "--Xopt option without printed output"
 msgstr "tùy chọn --Xopt không in ra kết xuất"
 
-#: tp/texi2any.pl:1076
+#: tp/texi2any.pl:1080
 #, perl-format
 msgid "unknown tree transformation %s"
 msgstr "không hiểu sự biến đổi cây %s"
 
-#: tp/texi2any.pl:1083
+#: tp/texi2any.pl:1087
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr "bỏ qua việc chia cắt cho định dạng %s"
 
-#: tp/texi2any.pl:1143
+#: tp/texi2any.pl:1147
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: thiếu đối số tập tin.\n"
 
-#: tp/texi2any.pl:1144
+#: tp/texi2any.pl:1148
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Hãy thử lệnh trợ giúp “%s --help” để xem thông tin thêm.\n"
 
-#: tp/texi2any.pl:1225
+#: tp/texi2any.pl:1229
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 "chuyển đổi dạng fill_gaps_in_sectioning không trả về kết quả nào. Không có "
 "chương nào à?"
 
-#: tp/texi2any.pl:1248
+#: tp/texi2any.pl:1252
 #, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "gặp lỗi khi đóng tập tin vĩ lệnh mở rộng %s: %s\n"
 
-#: tp/texi2any.pl:1254
+#: tp/texi2any.pl:1258
 #, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "không thể mở “%s” để ghi: %s\n"
 
-#: tp/texi2any.pl:1279
+#: tp/texi2any.pl:1283
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
@@ -3698,17 +3698,17 @@ msgstr ""
 "sự biến đổi insert_nodes_for_sectioning_commands không trả về kết quả. Không "
 "có chương nào à?"
 
-#: tp/texi2any.pl:1352 tp/texi2any.pl:1428
+#: tp/texi2any.pl:1356 tp/texi2any.pl:1432
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr "%s: lỗi đóng tập tin %s: %s\n"
 
-#: tp/texi2any.pl:1375 tp/texi2any.pl:1409
+#: tp/texi2any.pl:1379 tp/texi2any.pl:1413
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "%s: gặp lỗi khi đóng tập tin liên kết nội tại %s: %s\n"
 
-#: tp/texi2any.pl:1381 tp/texi2any.pl:1415
+#: tp/texi2any.pl:1385 tp/texi2any.pl:1419
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: không thể mở “%s” để ghi: %s\n"

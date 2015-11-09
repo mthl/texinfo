@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.0.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-10-31 11:50+0000\n"
+"POT-Creation-Date: 2015-11-09 19:25+0000\n"
 "PO-Revision-Date: 2013-04-18 00:43+0200\n"
 "Last-Translator: Tomislav Krznar <tomislav.krznar@gmail.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -435,7 +435,7 @@ msgstr "Postavi vrijednost Info varijable"
 msgid "Try --help for more information.\n"
 msgstr "Pokušajte --help za više informacija.\n"
 
-#: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:866
+#: info/info.c:805 install-info/install-info.c:2218 tp/texi2any.pl:870
 #: texindex/ti.twjr:1309
 #, c-format, awk-format, perl-format
 msgid ""
@@ -591,7 +591,7 @@ msgstr ""
 "  info -f ./foo.info         prikaži datoteku ./foo.info, bez pretraživanja "
 "direktorija"
 
-#: info/info.c:1100 install-info/install-info.c:616 tp/texi2any.pl:854
+#: info/info.c:1100 install-info/install-info.c:616 tp/texi2any.pl:858
 #: texindex/ti.twjr:1298
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
@@ -2000,7 +2000,7 @@ msgstr ""
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: ne mogu čitati (%s) niti mogu napraviti (%s)"
 
-#: install-info/install-info.c:1133 install-info/install-info.c:1174
+#: install-info/install-info.c:1134 install-info/install-info.c:1174
 #, c-format
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY nema odgovarajući END-INFO-DIR-ENTRY"
@@ -2010,52 +2010,52 @@ msgstr "START-INFO-DIR-ENTRY nema odgovarajući END-INFO-DIR-ENTRY"
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY nema odgovarajući START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:2037 install-info/install-info.c:2047
+#: install-info/install-info.c:2043 install-info/install-info.c:2053
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: već ima dir datoteku: %s\n"
 
-#: install-info/install-info.c:2143
+#: install-info/install-info.c:2149
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Navedite Info datoteku samo jednom.\n"
 
-#: install-info/install-info.c:2176
+#: install-info/install-info.c:2182
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "Naveden višak regularnih izraza, zanemarujem „%s”"
 
-#: install-info/install-info.c:2188
+#: install-info/install-info.c:2194
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "Greška u regularnom izrazu „%s”: %s"
 
-#: install-info/install-info.c:2250
+#: install-info/install-info.c:2256
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "višak argumenata naredbenog retka „%s”"
 
-#: install-info/install-info.c:2254
+#: install-info/install-info.c:2260
 #, c-format
 msgid "No input file specified; try --help for more information."
 msgstr "Nije navedena ulazna datoteka, pokušajte --help za više informacija."
 
-#: install-info/install-info.c:2256
+#: install-info/install-info.c:2262
 #, c-format
 msgid "No dir file specified; try --help for more information."
 msgstr "Nije navedena dir datoteka, pokušajte --help za više informacija."
 
-#: install-info/install-info.c:2277
+#: install-info/install-info.c:2283
 #, fuzzy, c-format
 msgid "Could not read %s."
 msgstr "ne mogu čitati %s: %s"
 
-#: install-info/install-info.c:2424
+#: install-info/install-info.c:2430
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "nema info dir stavke u „%s”"
 
-#: install-info/install-info.c:2672
+#: install-info/install-info.c:2678
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "nema pronađenih stavki za „%s”, ništa nije izbrisano"
@@ -2345,41 +2345,41 @@ msgstr ""
 "@strong{Bilješka...} proizvodi lažnu Info unakrsnu referencu, promijenite "
 "riječi za izbjegavanje"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2156
+#: tp/Texinfo/Convert/Plaintext.pm:2161
 #, fuzzy, perl-format
 msgid "@%s cross-reference name should not contain `:'"
 msgstr "u @%s prazno ime unakrsne reference nakon proširenja „%s”"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2188
+#: tp/Texinfo/Convert/Plaintext.pm:2193
 #, fuzzy, perl-format
 msgid "@%s node name should not contain `%s'"
 msgstr "@%s se ne bi trebao pojaviti u @%s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2221
+#: tp/Texinfo/Convert/Plaintext.pm:2226
 #, fuzzy, perl-format
 msgid "@%s node name should not contain `:'"
 msgstr "@%s se ne bi trebao pojaviti u @%s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2267
+#: tp/Texinfo/Convert/Plaintext.pm:2272
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr "nakon @xref mora slijediti „.” ili „,”, ne %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2270
+#: tp/Texinfo/Convert/Plaintext.pm:2275
 msgid "`.' or `,' must follow @xref"
 msgstr "nakon @xref mora slijediti „.” ili „,”"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3111
+#: tp/Texinfo/Convert/Plaintext.pm:3118
 #, fuzzy, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "prazno ime stavke izbornika u „%s”"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3122
+#: tp/Texinfo/Convert/Plaintext.pm:3129
 #, fuzzy
 msgid "menu entry node name should not contain `:'"
 msgstr "prazno ime stavke izbornika u „%s”"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3138
+#: tp/Texinfo/Convert/Plaintext.pm:3145
 #, fuzzy
 msgid "menu entry name should not contain `:'"
 msgstr "prazno ime stavke izbornika u „%s”"
@@ -3232,47 +3232,47 @@ msgstr ""
 "tex4ht.pm: obrada je dohvatila %d elemenata u HTML-u, očekivano je %d, "
 "koliko ih je pronađeno u dokumentu za @%s"
 
-#: tp/texi2any.pl:376
+#: tp/texi2any.pl:380
 #, perl-format
 msgid "error loading %s: %s\n"
 msgstr "greška pri učitavanju %s: %s\n"
 
-#: tp/texi2any.pl:389
+#: tp/texi2any.pl:393
 #, perl-format
 msgid "%s: unknown variable %s"
 msgstr "%s: nepoznata varijabla %s"
 
-#: tp/texi2any.pl:393
+#: tp/texi2any.pl:397
 #, perl-format
 msgid "%s: obsolete variable %s\n"
 msgstr "%s: zastarjela varijabla %s\n"
 
-#: tp/texi2any.pl:408
+#: tp/texi2any.pl:412
 #, perl-format
 msgid "%s: unknown variable %s\n"
 msgstr "%s: nepoznata varijabla %s\n"
 
-#: tp/texi2any.pl:412
+#: tp/texi2any.pl:416
 #, perl-format
 msgid "obsolete variable %s\n"
 msgstr "zastarjela varijabla %s\n"
 
-#: tp/texi2any.pl:477
+#: tp/texi2any.pl:481
 #, perl-format
 msgid "could not read init file %s"
 msgstr "ne mogu čitati datoteku inicijalizacije %s"
 
-#: tp/texi2any.pl:640
+#: tp/texi2any.pl:644
 #, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "zanemarujem neprepoznatu TEXINFO_OUTPUT_FORMAT vrijednost „%s”\n"
 
-#: tp/texi2any.pl:723
+#: tp/texi2any.pl:727
 #, fuzzy, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Uporaba: %s [OPCIJA]... DATOTEKA...\n"
 
-#: tp/texi2any.pl:726
+#: tp/texi2any.pl:730
 #, fuzzy
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
@@ -3284,7 +3284,7 @@ msgstr ""
 "Prevedi Texinfo izvornu dokumentaciju u razne oblike, uobičajeno u Info\n"
 "datoteke prikladne čitanju programima Emacs ili samostalnim GNU Info.\n"
 
-#: tp/texi2any.pl:732
+#: tp/texi2any.pl:736
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -3319,7 +3319,7 @@ msgstr ""
 "  -v, --verbose               pojasni što se događa.\n"
 "      --version               prikaži informacije o inačici i izađi.\n"
 
-#: tp/texi2any.pl:748
+#: tp/texi2any.pl:752
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -3338,7 +3338,7 @@ msgstr ""
 "      --dvi, --dvipdf, --ps, --pdf  pozovi texi2dvi za stvaranje odabranog "
 "izlaza.\n"
 
-#: tp/texi2any.pl:756
+#: tp/texi2any.pl:760
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -3390,7 +3390,7 @@ msgstr ""
 "                                U suprotnom, ODREDIŠTE je ime izlazne "
 "datoteke.\n"
 
-#: tp/texi2any.pl:776
+#: tp/texi2any.pl:780
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3427,7 +3427,7 @@ msgstr ""
 "      --split-size=BROJ       podijeli Info datoteke na veličinu BROJ\n"
 "                                (zadano %d).\n"
 
-#: tp/texi2any.pl:793
+#: tp/texi2any.pl:797
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3453,7 +3453,7 @@ msgstr ""
 "                              sidra, uključeno samo ako se koristi "
 "rastavljanje.\n"
 
-#: tp/texi2any.pl:804
+#: tp/texi2any.pl:808
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
@@ -3461,7 +3461,7 @@ msgstr ""
 "Opcije za XML i Docbook:\n"
 "      --output-indent=VRIJ    ne radi ništa, zadržano zbog kompatibilnosti.\n"
 
-#: tp/texi2any.pl:807
+#: tp/texi2any.pl:811
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
@@ -3470,7 +3470,7 @@ msgstr ""
 "      --Xopt=OPCIJA           navedi OPCIJU za texi2dvi, može se "
 "ponavljati.\n"
 
-#: tp/texi2any.pl:810
+#: tp/texi2any.pl:814
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -3492,7 +3492,7 @@ msgstr ""
 "  -U VAR                        ukloni definiciju varijable VAR, kao sa "
 "@clear.\n"
 
-#: tp/texi2any.pl:818
+#: tp/texi2any.pl:822
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -3529,7 +3529,7 @@ msgstr ""
 "\n"
 "  Također za opcije --no-ifOBLIK ne obrađuj @ifnotOBLIK tekst.\n"
 
-#: tp/texi2any.pl:835
+#: tp/texi2any.pl:839
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating Docbook, --ifdocbook is on and the others are off;\n"
@@ -3546,7 +3546,7 @@ msgstr ""
 "isključeni,\n"
 "  ako se stvara XML, --ifxml je uključen, a ostali su isključeni.\n"
 
-#: tp/texi2any.pl:842
+#: tp/texi2any.pl:846
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -3579,64 +3579,64 @@ msgstr ""
 "  makeinfo --no-split foo.texi           napravi jednu Info datoteku "
 "neovisno o veličini\n"
 
-#: tp/texi2any.pl:889
+#: tp/texi2any.pl:893
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: --footnote-style argument mora biti „separate” ili „end”, ne „%s”.\n"
 
-#: tp/texi2any.pl:980
+#: tp/texi2any.pl:984
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: --paragraph-indent argument mora biti brojčani/„none”/„asis”, ne „%s”.\n"
 
-#: tp/texi2any.pl:1057
+#: tp/texi2any.pl:1061
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 "%s: pri stvaranju %s, opcijom -o može se navesti samo jedna ulazna DATOTEKA\n"
 
-#: tp/texi2any.pl:1061
+#: tp/texi2any.pl:1065
 msgid "--Xopt option without printed output"
 msgstr "--Xopt opcija bez ispisanog izlaza"
 
-#: tp/texi2any.pl:1076
+#: tp/texi2any.pl:1080
 #, perl-format
 msgid "unknown tree transformation %s"
 msgstr "nepoznata transformacija stabla %s"
 
-#: tp/texi2any.pl:1083
+#: tp/texi2any.pl:1087
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr "zanemarujem razdvajanje za oblik %s"
 
-#: tp/texi2any.pl:1143
+#: tp/texi2any.pl:1147
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: nedostaje argument datoteke.\n"
 
-#: tp/texi2any.pl:1144
+#: tp/texi2any.pl:1148
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Pokušajte „%s --help” za više informacija.\n"
 
-#: tp/texi2any.pl:1225
+#: tp/texi2any.pl:1229
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 "fill_gaps_in_sectioning transformacija ne vraća rezultat. Nema odjeljka?"
 
-#: tp/texi2any.pl:1248
+#: tp/texi2any.pl:1252
 #, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "greška pri zatvaranju makro proširene datoteke %s: %s\n"
 
-#: tp/texi2any.pl:1254
+#: tp/texi2any.pl:1258
 #, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "ne mogu otvoriti %s za pisanje: %s\n"
 
-#: tp/texi2any.pl:1279
+#: tp/texi2any.pl:1283
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
@@ -3644,17 +3644,17 @@ msgstr ""
 "insert_nodes_for_sectioning_commands transformacija ne vraća rezultat. Nema "
 "odjeljka?"
 
-#: tp/texi2any.pl:1352 tp/texi2any.pl:1428
+#: tp/texi2any.pl:1356 tp/texi2any.pl:1432
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr "%s: greška pri zatvaranju %s: %s\n"
 
-#: tp/texi2any.pl:1375 tp/texi2any.pl:1409
+#: tp/texi2any.pl:1379 tp/texi2any.pl:1413
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "%s: greška pri zatvaranju datoteke unutarnjih veza %s: %s\n"
 
-#: tp/texi2any.pl:1381 tp/texi2any.pl:1415
+#: tp/texi2any.pl:1385 tp/texi2any.pl:1419
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: ne mogu otvoriti %s za pisanje: %s\n"

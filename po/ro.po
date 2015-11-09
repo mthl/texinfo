@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-10-31 11:50+0000\n"
+"POT-Creation-Date: 2015-11-09 19:25+0000\n"
 "PO-Revision-Date: 2005-05-03 12:00+05\n"
 "Last-Translator: Laurentiu Buzdugan <lbuz@rolix.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -445,7 +445,7 @@ msgstr "Seteazã valoarea unei variabile Info"
 msgid "Try --help for more information.\n"
 msgstr "Încercaþi --help pentru informaþii suplimentare.\n"
 
-#: info/info.c:805 install-info/install-info.c:2212 tp/texi2any.pl:866
+#: info/info.c:805 install-info/install-info.c:2218 tp/texi2any.pl:870
 #: texindex/ti.twjr:1309
 #, c-format, awk-format, perl-format
 msgid ""
@@ -547,7 +547,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1100 install-info/install-info.c:616 tp/texi2any.pl:854
+#: info/info.c:1100 install-info/install-info.c:616 tp/texi2any.pl:858
 #: texindex/ti.twjr:1298
 #, fuzzy
 msgid ""
@@ -1947,7 +1947,7 @@ msgstr ""
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: nu am putut citi (%s) ºi nu am putut crea (%s)\n"
 
-#: install-info/install-info.c:1133 install-info/install-info.c:1174
+#: install-info/install-info.c:1134 install-info/install-info.c:1174
 #, c-format
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY fãrã un END-INFO-DIR-ENTRY corespunzãtor"
@@ -1957,56 +1957,56 @@ msgstr "START-INFO-DIR-ENTRY fãrã un END-INFO-DIR-ENTRY corespunzãtor"
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY fãrã un  START-INFO-DIR-ENTRY corespunzãtor"
 
-#: install-info/install-info.c:2037 install-info/install-info.c:2047
+#: install-info/install-info.c:2043 install-info/install-info.c:2053
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: are deja fiºier dir: %s\n"
 
-#: install-info/install-info.c:2143
+#: install-info/install-info.c:2149
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Specificã fiºierul Info o singurã datã.\n"
 
-#: install-info/install-info.c:2176
+#: install-info/install-info.c:2182
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr ""
 
-#: install-info/install-info.c:2188
+#: install-info/install-info.c:2194
 #, fuzzy, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "Nici un ºir cãutat anterior"
 
-#: install-info/install-info.c:2250
+#: install-info/install-info.c:2256
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "argument suplimentar în linia de comandã `%s'"
 
-#: install-info/install-info.c:2254
+#: install-info/install-info.c:2260
 #, c-format
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Nici un fiºier de intrare specificat; încercaþi --help pentru informaþii "
 "suplimentare."
 
-#: install-info/install-info.c:2256
+#: install-info/install-info.c:2262
 #, c-format
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "Nici un fiºier dir specificat; încercaþi --help pentru informaþii "
 "suplimentare."
 
-#: install-info/install-info.c:2277
+#: install-info/install-info.c:2283
 #, fuzzy, c-format
 msgid "Could not read %s."
 msgstr "Nu pot crea directorul `%s': %s"
 
-#: install-info/install-info.c:2424
+#: install-info/install-info.c:2430
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "nici o intrare dir info în `%s'"
 
-#: install-info/install-info.c:2672
+#: install-info/install-info.c:2678
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "nici o intrare gãsitã pentru `%s'; n-am ºters nimic"
@@ -2299,41 +2299,41 @@ msgstr ""
 "@strong{Notã...] produce o referinþã încruciºatã falsã în Info; reformulaþi "
 "pentru a o evita"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2156
+#: tp/Texinfo/Convert/Plaintext.pm:2161
 #, fuzzy, perl-format
 msgid "@%s cross-reference name should not contain `:'"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2188
+#: tp/Texinfo/Convert/Plaintext.pm:2193
 #, fuzzy, perl-format
 msgid "@%s node name should not contain `%s'"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2221
+#: tp/Texinfo/Convert/Plaintext.pm:2226
 #, fuzzy, perl-format
 msgid "@%s node name should not contain `:'"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2267
+#: tp/Texinfo/Convert/Plaintext.pm:2272
 #, perl-format
 msgid "`.' or `,' must follow @xref, not %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2270
+#: tp/Texinfo/Convert/Plaintext.pm:2275
 msgid "`.' or `,' must follow @xref"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:3111
+#: tp/Texinfo/Convert/Plaintext.pm:3118
 #, fuzzy, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3122
+#: tp/Texinfo/Convert/Plaintext.pm:3129
 #, fuzzy
 msgid "menu entry node name should not contain `:'"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3138
+#: tp/Texinfo/Convert/Plaintext.pm:3145
 #, fuzzy
 msgid "menu entry name should not contain `:'"
 msgstr "Argument nepotrivit pentru @%s"
@@ -3189,47 +3189,47 @@ msgid ""
 "items found in the document for @%s"
 msgstr ""
 
-#: tp/texi2any.pl:376
+#: tp/texi2any.pl:380
 #, fuzzy, perl-format
 msgid "error loading %s: %s\n"
 msgstr "eroare la scrierea în `%s'"
 
-#: tp/texi2any.pl:389
+#: tp/texi2any.pl:393
 #, fuzzy, perl-format
 msgid "%s: unknown variable %s"
 msgstr "Comandã necunoscutã `%s'"
 
-#: tp/texi2any.pl:393
+#: tp/texi2any.pl:397
 #, fuzzy, perl-format
 msgid "%s: obsolete variable %s\n"
 msgstr "Seteazã variabilã: "
 
-#: tp/texi2any.pl:408
+#: tp/texi2any.pl:412
 #, fuzzy, perl-format
 msgid "%s: unknown variable %s\n"
 msgstr "Comandã necunoscutã `%s'"
 
-#: tp/texi2any.pl:412
+#: tp/texi2any.pl:416
 #, fuzzy, perl-format
 msgid "obsolete variable %s\n"
 msgstr "Seteazã variabilã: "
 
-#: tp/texi2any.pl:477
+#: tp/texi2any.pl:481
 #, fuzzy, perl-format
 msgid "could not read init file %s"
 msgstr "nu pot deschide fiºierul de intrare `%s'"
 
-#: tp/texi2any.pl:640
+#: tp/texi2any.pl:644
 #, fuzzy, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "%s: Ignor valoare nerecunoscutã TEXINFO_OUTPUT_FORMAT `%s'.\n"
 
-#: tp/texi2any.pl:723
+#: tp/texi2any.pl:727
 #, fuzzy, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Folosire: %s [OPÞIUNI]... FIªIER...\n"
 
-#: tp/texi2any.pl:726
+#: tp/texi2any.pl:730
 #, fuzzy
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
@@ -3241,7 +3241,7 @@ msgstr ""
 "Translateazã documentaþia sursã Texinfo în diferite alte formate, implicit\n"
 "fiºiere Info potrivite pentru citit online cu Emacs sau GNU Info.\n"
 
-#: tp/texi2any.pl:732
+#: tp/texi2any.pl:736
 #, fuzzy, perl-format
 msgid ""
 "General options:\n"
@@ -3271,7 +3271,7 @@ msgstr ""
 "      --version               afiºeazã informaþii despre versiune ºi "
 "terminã.\n"
 
-#: tp/texi2any.pl:748
+#: tp/texi2any.pl:752
 #, fuzzy
 msgid ""
 "Output format selection (default is to produce Info):\n"
@@ -3288,7 +3288,7 @@ msgstr ""
 "      --xml                 ieºire Texinfo XML în loc de Info.\n"
 "      --plaintext           ieºire text simplu în loc de Info.\n"
 
-#: tp/texi2any.pl:756
+#: tp/texi2any.pl:760
 #, fuzzy
 msgid ""
 "General output options:\n"
@@ -3329,7 +3329,7 @@ msgstr ""
 "      --number-sections     scrie numere de capitole ºi secþiuni.\n"
 "  -o, --output=FIªIER       scrie în FIªIER (director dacã multiple HTML),\n"
 
-#: tp/texi2any.pl:776
+#: tp/texi2any.pl:780
 #, fuzzy, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3369,7 +3369,7 @@ msgstr ""
 "      --split-size=NUM        împarte fiºierele Info de dimens. NUM "
 "(implicit %d).\n"
 
-#: tp/texi2any.pl:793
+#: tp/texi2any.pl:797
 #, fuzzy
 msgid ""
 "Options for HTML:\n"
@@ -3387,19 +3387,19 @@ msgstr ""
 "      --css-include=FIªIER      include FIªIER în HTML <stil> ieºire;\n"
 "                                  citeºte stdin dacã FIªIER este -.\n"
 
-#: tp/texi2any.pl:804
+#: tp/texi2any.pl:808
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:807
+#: tp/texi2any.pl:811
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:810
+#: tp/texi2any.pl:814
 #, fuzzy
 msgid ""
 "Input file options:\n"
@@ -3417,7 +3417,7 @@ msgstr ""
 "  -P DIR                        prepend DIR la calea de cãutare @include.\n"
 "  -U VAR                        nedefineºte variabila VAR, ca ºi @clear.\n"
 
-#: tp/texi2any.pl:818
+#: tp/texi2any.pl:822
 #, fuzzy
 msgid ""
 "Conditional processing in input:\n"
@@ -3457,7 +3457,7 @@ msgstr ""
 "  De asemenea, pentru opþiunile --no-ifFORMAT, proceseazã text "
 "@ifnotFORMAT.\n"
 
-#: tp/texi2any.pl:835
+#: tp/texi2any.pl:839
 #, fuzzy
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
@@ -3474,7 +3474,7 @@ msgstr ""
 "  dacã generaþi text simplu, --ifplaintext este selectat iar restul sunt "
 "deselectate;\n"
 
-#: tp/texi2any.pl:842
+#: tp/texi2any.pl:846
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -3506,78 +3506,78 @@ msgstr ""
 "  makeinfo --no-split foo.texi          scrie un singur fiºier Info "
 "indiferent cât de mare\n"
 
-#: tp/texi2any.pl:889
+#: tp/texi2any.pl:893
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
 "%s: --footnote-style arg trebuie sã fie `separate' sau `end', nu `%s'.\n"
 
-#: tp/texi2any.pl:980
+#: tp/texi2any.pl:984
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: --paragraph-indent arg trebuie sã fie numeric/`none'/`asis', nu `%s'.\n"
 
-#: tp/texi2any.pl:1057
+#: tp/texi2any.pl:1061
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 
-#: tp/texi2any.pl:1061
+#: tp/texi2any.pl:1065
 msgid "--Xopt option without printed output"
 msgstr ""
 
-#: tp/texi2any.pl:1076
+#: tp/texi2any.pl:1080
 #, fuzzy, perl-format
 msgid "unknown tree transformation %s"
 msgstr "Comandã necunoscutã `%s'"
 
-#: tp/texi2any.pl:1083
+#: tp/texi2any.pl:1087
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:1143
+#: tp/texi2any.pl:1147
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: lipseºte fiºierul argument.\n"
 
-#: tp/texi2any.pl:1144
+#: tp/texi2any.pl:1148
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Încercaþi `%s --help' pentru informaþii suplimentare.\n"
 
-#: tp/texi2any.pl:1225
+#: tp/texi2any.pl:1229
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 
-#: tp/texi2any.pl:1248
+#: tp/texi2any.pl:1252
 #, fuzzy, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 
-#: tp/texi2any.pl:1254
+#: tp/texi2any.pl:1258
 #, fuzzy, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/texi2any.pl:1279
+#: tp/texi2any.pl:1283
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
 msgstr ""
 
-#: tp/texi2any.pl:1352 tp/texi2any.pl:1428
+#: tp/texi2any.pl:1356 tp/texi2any.pl:1432
 #, fuzzy, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr "eroare la scrierea în `%s'"
 
-#: tp/texi2any.pl:1375 tp/texi2any.pl:1409
+#: tp/texi2any.pl:1379 tp/texi2any.pl:1413
 #, fuzzy, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 
-#: tp/texi2any.pl:1381 tp/texi2any.pl:1415
+#: tp/texi2any.pl:1385 tp/texi2any.pl:1419
 #, fuzzy, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: nu am putut deschide --css-file: %s"
