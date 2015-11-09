@@ -36,8 +36,6 @@ use Getopt::Long qw(GetOptions);
 # for carp
 #use Carp;
 
-use Texinfo::Convert::Converter;
-
 Getopt::Long::Configure("gnu_getopt");
 
 # This big BEGIN block deals with finding modules and 
@@ -63,12 +61,15 @@ BEGIN
       or defined($ENV{'TEXINFO_DEV_SOURCE'})
          and $ENV{'TEXINFO_DEV_SOURCE'} ne '0')
   {
+    # Use uninstalled modules
+
+    # To find Texinfo::ModulePath
     if (!defined($ENV{'top_builddir'})) {
       $ENV{'top_builddir'} = File::Spec->catdir($command_directory, $updir);
     }
-    # In-source run.
-    my $lib_dir = File::Spec->catdir($ENV{'top_builddir'}, 'tp');
+    unshift @INC, File::Spec->catdir($ENV{'top_builddir'}, 'tp');
 
+    my $lib_dir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
     unshift @INC, $lib_dir;
 
     require Texinfo::ModulePath;
@@ -104,6 +105,7 @@ BEGIN {
 
 use Locale::Messages;
 use Texinfo::Common;
+use Texinfo::Convert::Converter;
 
 my ($real_command_name, $command_directory, $command_suffix) 
    = fileparse($0, '.pl');
