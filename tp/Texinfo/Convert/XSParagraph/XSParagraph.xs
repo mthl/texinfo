@@ -28,6 +28,8 @@ MODULE = Texinfo::Convert::XSParagraph::XSParagraph PACKAGE = Texinfo::Convert::
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.  
 
+PROTOTYPES: ENABLE
+
 int
 xspara_init ()
 

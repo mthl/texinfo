@@ -11,6 +11,8 @@
 
 MODULE = TestXS PACKAGE = TestXS PREFIX = xspara_
 
+PROTOTYPES: ENABLE
+
 int
 xspara_init ()
     CODE:

@@ -1,5 +1,10 @@
-2015-11-08  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-11-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.xs,
+	* tp/Texinfo/Convert/XSParagraph/TestXS.xs: Add "PROTOTYPES: ENABLE"
+	line to get rid of a warning.
+
+2015-11-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/XSParagraph.xs,
 	* tp/Texinfo/Convert/XSParagraph/text.c,
