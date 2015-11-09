@@ -29,9 +29,6 @@ our @ISA = qw(Exporter DynaLoader);
 # names by default without a very good reason. Use EXPORT_OK instead.
 # Do not simply export all your public functions/methods/constants.
 
-# This allows declaration	use XSParagraph ':all';
-# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
-# will save memory.
 our %EXPORT_TAGS = ( 'all' => [ qw(
 
 ) ] );
@@ -53,7 +50,7 @@ BEGIN {
 #
 # Other values are treated at the moment as 'default'.
 
-my $TEXINFO_XS = 'debug';
+#my $TEXINFO_XS = 'debug';
 if (!defined($TEXINFO_XS)) {
   $TEXINFO_XS = '';
 }
@@ -103,18 +100,18 @@ if ($disable_XS) {
 
 my ($libtool_dir, $libtool_archive) = _find_file("TestXS.la");
 if (!$libtool_archive) {
-  _fatal "XSParagraph: couldn't find Libtool archive file";
+  _fatal "couldn't find Libtool archive file";
   goto FALLBACK;
 }
 
 my $fh;
 open $fh, $libtool_archive;
 if (!$fh) {
-  _fatal "XSParagraph: couldn't open Libtool archive file";
+  _fatal "couldn't open Libtool archive file";
   goto FALLBACK;
 }
 
-# Look for the line in XSParagraph.la giving the name of the loadable object.
+# Look for the line in TestXS.la giving the name of the loadable object.
 my $dlname = undef;
 while (my $line = <$fh>) {
   if ($line =~ /^\s*dlname\s*=\s*'([^']+)'\s$/) {
@@ -123,7 +120,7 @@ while (my $line = <$fh>) {
   }
 }
 if (!$dlname) {
-  _fatal "XSParagraph: couldn't find name of shared object";
+  _fatal "couldn't find name of shared object";
   goto FALLBACK;
 }
 
@@ -133,7 +130,7 @@ push @DynaLoader::dl_library_path, "$libtool_dir/.libs";
 
 my $dlpath = DynaLoader::dl_findfile($dlname);
 if (!$dlpath) {
-  _fatal "XSParagraph: couldn't find $dlname";
+  _fatal "couldn't find $dlname";
   goto FALLBACK;
 }
 
@@ -142,35 +139,28 @@ if (!$dlpath) {
 my $module = "TestXS";
 our $module_version = '6.0';
 
-# Following steps under "bootstrap" in "man DynaLoader".
-#bootstrap XSParagraph $VERSION;
-
-# TODO: Execute blib/arch/auto/XSParagraph/XSParagraph.bs ?
-# That file is empty.
-
-#my $flags = dl_load_flags $module; # This is 0 in DynaLoader
 my $flags = 0;
 my $libref = DynaLoader::dl_load_file($dlpath, $flags);
 if (!$libref) {
-  _fatal "XSParagraph: couldn't load file $dlpath";
+  _fatal "couldn't load file $dlpath";
   goto FALLBACK;
 }
 my @undefined_symbols = DynaLoader::dl_undef_symbols();
 if ($#undefined_symbols+1 != 0) {
-  _fatal "XSParagraph: still have undefined symbols after dl_load_file";
+  _fatal "still have undefined symbols after dl_load_file";
 }
 my $bootname = "boot_$module";
 $bootname =~ s/:/_/g;
 my $symref = DynaLoader::dl_find_symbol($libref, $bootname);
 if (!$symref) {
-  _fatal "XSParagraph: couldn't find boot_$module symbol";
+  _fatal "couldn't find boot_$module symbol";
   goto FALLBACK;
 }
 my $boot_fn = DynaLoader::dl_install_xsub("${module}::bootstrap",
                                                 $symref, $dlname);
 
 if (!$boot_fn) {
-  _fatal "XSParagraph: couldn't bootstrap";
+  _fatal "couldn't bootstrap";
   goto FALLBACK;
 }
 
@@ -182,7 +172,7 @@ push @DynaLoader::dl_shared_objects, $dlpath; # record files loaded
 &$boot_fn($module, $module_version);
 
 if (!TestXS::init ()) {
-  _fatal "XSParagraph: error initializing";
+  _fatal "error initializing";
   goto FALLBACK;
 }
 goto DONTFALLBACK;

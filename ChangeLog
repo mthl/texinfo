@@ -1,5 +1,11 @@
 2015-11-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/TestXS.pm: Remove mentions of 
+	"XSParagraph" in comments and messages.  Comment out line for 
+	debugging output.
+
+2015-11-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl: Use srcdir as well as builddir to set module 
 	search path.
 	* man/Makefile.am (MAKEINFO_ENVIRONMENT): Set value of 
