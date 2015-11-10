@@ -1,5 +1,10 @@
 2015-11-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README-hacking: Add hints about the interdependencies between 
+	subdirectories.
+
+2015-11-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* configure.ac: Pass on all the options we were passed when 
 	calling configure in the XSParagraph subdirectory.  Don't use 
 	AC_CONFIG_SUBDIRS for this subdirectory, to save configuring

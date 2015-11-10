@@ -43,6 +43,14 @@ Other -W options can be useful too, and patches are welcome to resolve
 diagnostics; however, removing all possible warning messages, or
 warnings with nonfree compilers, is explicitly not a goal.
 
+Running make in one particular subdirectory is possible, for example
+make -C info.  However there are interdependencies between the 
+subdirectories, notably on gnulib, so if you don't want to run "make", 
+you may have to run "make -C gnulib/lib" first.
+
+Additionally, make dist may not work until make has been run at least 
+once, because of rules to create man pages under the man/ directory.
+
 Gnulib
 ------
 
