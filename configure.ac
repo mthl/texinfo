@@ -12,6 +12,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
+configure_options="$@"
 AC_INIT([GNU Texinfo], [6.0dev], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
@@ -358,19 +359,31 @@ AC_ARG_ENABLE([perl-xs],
     [ enable_xs=$enableval],
     [ enable_xs=check])
 
-AC_CONFIG_SUBDIRS([tp/Texinfo/Convert/XSParagraph])
+# Pass on all the options we were given to the subsidiary configure 
+# script.
+# Don't use AC_CONFIG_SUBDIRS for this because it isn't done right away,
+# and we need it for the check that follows.
+# We should have some processing of the options here: see 
+# _AC_OUTPUT_SUBDIRS internal autoconf macro in
+# /usr/share/autoconf/autoconf/status.m4.
+#
+(mkdir -p tp/Texinfo/Convert/XSParagraph \
+ && cd tp/Texinfo/Convert/XSParagraph \
+ && ../../../../${srcdir}/tp/Texinfo/Convert/XSParagraph/configure \
+        --disable-option-checking $configure_options)
+
 if test $enable_xs = check; then
   AC_MSG_CHECKING([whether we can build Perl extension modules])
   enable_xs=no
   (cd tp/Texinfo/Convert/XSParagraph \
-   && ./configure PERL=${PERL} && make TestXS.la \
-    && ${PERL} -w fail.pl | grep 'message from XS module') >/dev/null \
+   && make clean \
+   && make TestXS.la \
+   && ${PERL} -I . \
+              -I ../../../../${srcdir}/tp/Texinfo/Convert/XSParagraph \
+              -w ../../../../${srcdir}/tp/Texinfo/Convert/XSParagraph/fail.pl \
+      | grep 'message from XS module') >/dev/null \
   && enable_xs=yes
   AC_MSG_RESULT([$enable_xs])
-  # There is a problem here of not passing on all the options we 
-  # were given to the subsidiary configure script.  This could lead the
-  # test to give the wrong answer, in which case the user would need to 
-  # give --enable-perl-xs or --disable-perl-xs themselves.
 fi
 
 AC_SUBST([enable_xs])

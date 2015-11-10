@@ -1,3 +1,13 @@
+2015-11-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* configure.ac: Pass on all the options we were passed when 
+	calling configure in the XSParagraph subdirectory.  Don't use 
+	AC_CONFIG_SUBDIRS for this subdirectory, to save configuring
+	it twice.  When testing if we can build and load Perl extension 
+	modules, pass -I flags to Perl to put directories containing 
+	files at start of module search path.  Account for out-of-source 
+	builds by using srcdir variable.
+
 2015-11-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/TestXS.pm: Remove mentions of 
