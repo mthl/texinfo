@@ -1,5 +1,11 @@
 2015-11-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* configure.ac: Handle srcdir being an absolute path for 
+	building in XSParagraph subdirectory.  Used code from Autoconf's 
+	_AC_SRCDIRS macro (release 2.69).
+
+2015-11-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* README-hacking: Add hints about the interdependencies between 
 	subdirectories.
 

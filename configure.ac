@@ -367,9 +367,20 @@ AC_ARG_ENABLE([perl-xs],
 # _AC_OUTPUT_SUBDIRS internal autoconf macro in
 # /usr/share/autoconf/autoconf/status.m4.
 #
+
+# Set xs_srcdir to the path from XSParagraph builddir to srcdir
+case $srcdir in
+  .)  # We are building in place.
+    xs_srcdir=. ;;
+  [[\\/]]* | ?:[[\\/]]* )  # Absolute name.
+    xs_srcdir=$srcdir/tp/Texinfo/Convert/XSParagraph ;;
+  *) # Relative name.
+    xs_srcdir=../../../../$srcdir/tp/Texinfo/Convert/XSParagraph ;;
+esac
+
 (mkdir -p tp/Texinfo/Convert/XSParagraph \
  && cd tp/Texinfo/Convert/XSParagraph \
- && ../../../../${srcdir}/tp/Texinfo/Convert/XSParagraph/configure \
+ && ${xs_srcdir}/configure \
         --disable-option-checking $configure_options)
 
 if test $enable_xs = check; then
@@ -379,8 +390,8 @@ if test $enable_xs = check; then
    && make clean \
    && make TestXS.la \
    && ${PERL} -I . \
-              -I ../../../../${srcdir}/tp/Texinfo/Convert/XSParagraph \
-              -w ../../../../${srcdir}/tp/Texinfo/Convert/XSParagraph/fail.pl \
+              -I ${xs_srcdir} \
+              -w ${xs_srcdir}/fail.pl \
       | grep 'message from XS module') >/dev/null \
   && enable_xs=yes
   AC_MSG_RESULT([$enable_xs])
