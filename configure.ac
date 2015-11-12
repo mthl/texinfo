@@ -12,7 +12,6 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-configure_options="$@"
 AC_INIT([GNU Texinfo], [6.0dev], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
@@ -359,15 +358,6 @@ AC_ARG_ENABLE([perl-xs],
     [ enable_xs=$enableval],
     [ enable_xs=check])
 
-# Pass on all the options we were given to the subsidiary configure 
-# script.
-# Don't use AC_CONFIG_SUBDIRS for this because it isn't done right away,
-# and we need it for the check that follows.
-# We should have some processing of the options here: see 
-# _AC_OUTPUT_SUBDIRS internal autoconf macro in
-# /usr/share/autoconf/autoconf/status.m4.
-#
-
 # Set xs_srcdir to the path from XSParagraph builddir to srcdir
 case $srcdir in
   .)  # We are building in place.
@@ -378,10 +368,18 @@ case $srcdir in
     xs_srcdir=../../../../$srcdir/tp/Texinfo/Convert/XSParagraph ;;
 esac
 
-(mkdir -p tp/Texinfo/Convert/XSParagraph \
- && cd tp/Texinfo/Convert/XSParagraph \
- && ${xs_srcdir}/configure \
-        --disable-option-checking $configure_options)
+# Pass on all the options we were given to the subsidiary configure 
+# script.
+# Don't use AC_CONFIG_SUBDIRS for this because it isn't done right away,
+# and we need it for the check that follows.
+# We should have some processing of the options here: see 
+# _AC_OUTPUT_SUBDIRS internal autoconf macro in
+# /usr/share/autoconf/autoconf/status.m4.
+#
+save_subdirs=$subdirs
+subdirs=tp/Texinfo/Convert/XSParagraph
+_AC_OUTPUT_SUBDIRS
+subdirs=$save_subdirs
 
 if test $enable_xs = check; then
   AC_MSG_CHECKING([whether we can build Perl extension modules])
