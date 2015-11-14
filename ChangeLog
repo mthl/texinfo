@@ -1,5 +1,10 @@
 2015-11-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Makefile.am (do_subst): Substitute @enable_xs@ in 
+	texi2any.pl as intended.
+
+2015-11-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl (BEGIN): Check if top_srcdir environment 
 	variable is defined.
 
