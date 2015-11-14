@@ -56,7 +56,7 @@ our $VERSION = '6.0dev';
 # sure that a changed interface has not been missed.
 my $XSPARAGRAPH_INTERFACE_VERSION = "1";
 
-# Possible values for TEXINFO_XS environmental variable:
+# Possible values for TEXINFO_XS environment variable:
 #
 # TEXINFO_XS=omit         # don't try loading xs at all
 # TEXINFO_XS=default      # try xs, libtool and then perl paths, silent fallback
@@ -230,7 +230,7 @@ goto DONTFALLBACK;
 
 FALLBACK:
   if ($TEXINFO_XS eq 'required') {
-    die "unset the TEXINFO_XS environmental variable to use the "
+    die "unset the TEXINFO_XS environment variable to use the "
        ."pure Perl modules\n";
   } elsif ($TEXINFO_XS eq 'warn' or $TEXINFO_XS eq 'debug') {
     warn "falling back to pure Perl modules\n";

@@ -1,5 +1,10 @@
 2015-11-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Paragraph.pm: Change a couple of instances 
+	of "environmental variable" to "environment variable."
+
+2015-11-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Makefile.am (do_subst): Substitute @enable_xs@ in 
 	texi2any.pl as intended.
 
