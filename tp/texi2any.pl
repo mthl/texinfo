@@ -69,8 +69,10 @@ BEGIN
     }
     unshift @INC, File::Spec->catdir($ENV{'top_builddir'}, 'tp');
 
-    my $lib_dir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
-    unshift @INC, $lib_dir;
+    if (defined($ENV{'top_srcdir'})) {
+      my $lib_dir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
+      unshift @INC, $lib_dir;
+    }
 
     require Texinfo::ModulePath;
     Texinfo::ModulePath::init();
