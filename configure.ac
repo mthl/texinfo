@@ -372,13 +372,16 @@ esac
 # script.
 # Don't use AC_CONFIG_SUBDIRS for this because it isn't done right away,
 # and we need it for the check that follows.
-# We should have some processing of the options here: see 
-# _AC_OUTPUT_SUBDIRS internal autoconf macro in
-# /usr/share/autoconf/autoconf/status.m4.
+# We use the _AC_OUTPUT_SUBDIRS internal autoconf macro
+# (in /usr/share/autoconf/autoconf/status.m4) for this in order to
+# pass on the configure command line correctly; for example, adjusting
+# paths.  It is done in a subshell to be resilient against failure of the
+# subsidiary configure script, which happens if the C compiler is found
+# not to work.
 #
 save_subdirs=$subdirs
 subdirs=tp/Texinfo/Convert/XSParagraph
-_AC_OUTPUT_SUBDIRS
+( _AC_OUTPUT_SUBDIRS ) || enable_xs=no
 subdirs=$save_subdirs
 
 if test $enable_xs = check; then

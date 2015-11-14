@@ -1,5 +1,9 @@
 2015-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* configure.ac: Use _AC_OUTPUT_SUBDIRS macro inside a subshell.
+
+2015-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* configure.ac: Use _AC_OUTPUT_SUBDIRS macro to configure in 
 	subdirectory.
 
