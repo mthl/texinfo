@@ -1,3 +1,8 @@
+2015-11-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-text-test.texi: Add examples of spaces in macro 
+	arguments, and nested macro use.
+
 2015-11-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Paragraph.pm: Change a couple of instances 

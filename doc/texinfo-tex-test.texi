@@ -19,6 +19,7 @@
 @settitle Test Document for @file{texinfo.tex}
 
 @everyheading @thischapter @| @| @thissection{} p@thispage
+@paragraphindent 0
 
 @showboxdepth=1000
 @showboxbreadth=1000
@@ -44,6 +45,7 @@ Z\x\Z
 
 The number refers to the number of backslashes that should appear
 
+@tracingmacros=1
 0 @Mac{}
 
 0 @Mac{a}
@@ -108,6 +110,19 @@ Macros with two arguments:
 2+1 @Mactwo{\\\A, \\B}
 2+2 @Mactwo{\\\A, \\\\B}
 
+space between backslashes: @Mac{\ \}@*
+space between backslashes line arg: @Mac \ \
+
+space after backslashes, two arguments:@*
+@Mactwo{\ \\, \ \\}@*
+@Mactwo{\\ \\, \\ \\}@*
+@Mactwo{\\ a, \\ b}@*
+
+other spaces:@*
+@Mactwo{h \\, i \\}@*
+@Mactwo{h \\, i \\}@*
+@Mactwo{h a, i b}@*
+
 @section Spaces in macro bodies
 
 Distance between the two x's should be the same
@@ -121,6 +136,21 @@ x  x
 x  x
 @end example
 @Mac
+
+@section Macro use inside macro argument
+
+@macro Innermac{arg}
+xx \arg\ xx
+@end macro
+
+@macro Outermac{arg}
+\arg\
+@c
+@end macro
+
+@Outermac{@Innermac{e}}
+should be@*
+xx e xx
 
 @section Trailing newlines in macro bodies
 
