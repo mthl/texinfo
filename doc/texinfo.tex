@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-11-16.18}
+\def\texinfoversion{2015-11-16.19}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -5201,16 +5201,12 @@ end
     % from @* into spaces.  The user might give these in long section
     % titles, for instance.
     \def\*{\unskip\space\ignorespaces}%
-    \def\entrybreak{\hfil\break}%
+    \def\entrybreak{\hfil\break}% An undocumented command
     %
     % A bit of stretch before each entry for the benefit of balancing
     % columns.
     \vskip 0pt plus0.5pt
     %
-    % Badness calculation for paragraph affected by -
-    %  How much \indexdotfill is stretched, or how much \parfillskip is shrunk
-    %  Number of lines (\linepenalty)
-    %  
     % Swallow the left brace of the text (first parameter):
     \afterassignment\doentry
     \let\temp =
@@ -5282,7 +5278,9 @@ end
       \advance\dimen@ii by -1\leftskip
       \advance\dimen@ii by -1\entryrightmargin
       \advance\dimen@ii by 1\dimen@i
+      \let\maybestrut=\relax
       \ifdim\wd\boxA > \dimen@ii % If the entry doesn't fit in one line
+        \let\maybestrut=\strut
       \ifdim\dimen@ > 0.8\dimen@ii   % due to long index text
         \dimen@ = 0.7\dimen@ % Try to split the text roughly evenly
         \dimen@ii = \hsize
@@ -5297,7 +5295,9 @@ end
         % Ideally we'd add a finite glue at the end of the first line only, but
         % TeX doesn't seem to provide a way to do such a thing.
       \fi\fi
+      \maybestrut  % Add a strut on the first and last lines
       \unhbox\boxA
+      \maybestrut
       %
       % Do not prefer a separate line ending with a hyphen to fewer lines.
       \finalhyphendemerits = 0
@@ -5322,9 +5322,9 @@ end
 
 \newbox\entryindexbox
 \def\insertindexentrybox{%
-\lineskip=.7ex plus .5ex % This comes into effect when the \vbox has a large 
-                         % height due to the paragraph in it having several 
-                         % lines.
+\lineskip=0pt    % This comes into effect when the \vbox has a large 
+                 % height due to the paragraph in it having several 
+                 % lines.
 \box\entryindexbox}
 
 % Default is no penalty

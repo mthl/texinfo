@@ -1,5 +1,11 @@
 2015-11-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\entry): For multi-line entries, use a \strut 
+	on first and last lines.  Comments changed or removed.
+	(\insertindexentrybox): Set \lineskip to 0pt.
+
+2015-11-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\passargtomacro): Rewrite to operate purely 
 	at TeX's expansion stage.
 	(\defmacro): Use \passargtomacro for macros of more than one 
