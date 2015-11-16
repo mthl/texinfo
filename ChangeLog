@@ -1,3 +1,15 @@
+2015-11-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\passargtomacro): Rewrite to operate purely 
+	at TeX's expansion stage.
+	(\defmacro): Use \passargtomacro for macros of more than one 
+	argument.
+	(\macroargctxt): Change catcode of space.
+	(\scanmacro): Don't call \passargtomacro because macro arguments 
+	have already been processed.
+	(\pdfurl, \commondummiesnofonts): Remove definition of 
+	\xprocessmacroarg.
+
 2015-11-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo-text-test.texi: Add examples of spaces in macro 
