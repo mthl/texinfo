@@ -110,6 +110,15 @@ Macros with two arguments:
 2+1 @Mactwo{\\\A, \\B}
 2+2 @Mactwo{\\\A, \\\\B}
 
+Space between macro name and opening brace (thus: @samp{@@Mactwo @{}):
+
+0+0 @Mactwo {A,B}
+0+0 @Mactwo {A, B}
+1+0 @Mactwo {\A, B}
+0+1 @Mactwo {A, \\B}
+2+1 @Mactwo {\\\A, \\B}
+2+2 @Mactwo {\\\A, \\\\B}
+
 space between backslashes: @Mac{\ \}@*
 space between backslashes line arg: @Mac \ \
 
@@ -117,6 +126,7 @@ space after backslashes, two arguments:@*
 @Mactwo{\ \\, \ \\}@*
 @Mactwo{\\ \\, \\ \\}@*
 @Mactwo{\\ a, \\ b}@*
+@Mactwo{\ a, \ b}@*
 
 other spaces:@*
 @Mactwo{h \\, i \\}@*
