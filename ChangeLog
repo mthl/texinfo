@@ -1,5 +1,9 @@
 2015-11-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README-hacking: Mention problem with "make dist" and XS modules.
+
+2015-11-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo-tex-test.texi: Add examples of space between macro 
 	name and opening brace.
 

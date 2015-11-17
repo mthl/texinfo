@@ -51,6 +51,9 @@ you may have to run "make -C gnulib/lib" first.
 Additionally, make dist may not work until make has been run at least 
 once, because of rules to create man pages under the man/ directory.
 
+"make dist" will fail if the use of Perl XS extension modules is 
+disabled and there is no Makefile in the XSParagraph subdirectory.
+
 Gnulib
 ------
 
