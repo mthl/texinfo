@@ -178,7 +178,7 @@
 
 	* tp/t/plaintext.t (east_asian_in_w): New test.
 	* tp/t/input_files/east_asian_in_w.texi: Input file.
-	* t/results/plaintext_tests/
+	* tp/t/results/plaintext_tests/
 	east_asian_in_w/res_plaintext/east_asian_in_w.txt: Reference 
 	output file.
 
