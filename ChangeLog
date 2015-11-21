@@ -1,5 +1,12 @@
 2015-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/ParagraphNonXS.pm (_add_next): Don't count 
+	DEL bytes in width of word.
+	* tp/t/results/plaintext_tests/
+	quote_node_names/res_plaintext/quote_node_names.txt: Update.
+
+2015-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/README: Mention run_all function.
 	* tp/t/test_utils.pl (test, run_all, output_texi_file): Comments 
 	added.

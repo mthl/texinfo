@@ -1,5 +1,5 @@
-*Note the::caption and a word: normal node.  *Note the::caption:
-normal node.
+*Note the::caption and a word: normal node.  *Note the::caption: normal
+node.
 
    *Note the::caption and a word: blah:blah.  *Note the::caption:
 blah:blah.

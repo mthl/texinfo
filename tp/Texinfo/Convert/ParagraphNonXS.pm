@@ -180,7 +180,7 @@ sub add_next($;$$)
   return _add_next($paragraph, $word, $transparent);
 }
 
-# add a word and/or end of sentence.
+# add a word
 sub _add_next($;$$$)
 {
   my $paragraph = shift;
@@ -202,7 +202,7 @@ sub _add_next($;$$$)
            and $paragraph->{'end_sentence'} > 0
            and !$paragraph->{'frenchspacing'}
            and $paragraph->{'counter'} != 0 and $paragraph->{'space'}) {
-        # do not to double space if there are leading spaces in word
+        # do not double space if there are leading spaces in word
         if ($word !~ /^\s/) {
           #$paragraph->{'space'} = '  ';
           $paragraph->{'space'} .= ' ' x (2 - length($paragraph->{'space'}));
@@ -233,7 +233,13 @@ sub _add_next($;$$$)
       $paragraph->{'word'} = undef;
       $paragraph->{'last_char'} = undef;
     } else {
-      $paragraph->{'word_counter'} += length($word);
+      my $word2;
+      $word2 = $word;
+      $word2 =~ s/[\177]//g;
+      $paragraph->{'word_counter'} += length($word2);
+      # We don't count DEL bytes here for INFO_SPECIAL_CHARS_QUOTE.  We 
+      # shouldn't count combining characters for accents either: see the
+      # t/converters_tests.t (at_commands_in_refs_utf8) test.
     }
     if ($paragraph->{'DEBUG'}) {
       my $para_word = 'UNDEF';;
