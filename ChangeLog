@@ -1,5 +1,11 @@
 2015-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/README: Mention run_all function.
+	* tp/t/test_utils.pl (test, run_all, output_texi_file): Comments 
+	added.
+
+2015-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/plaintext.t (quote_node_names): New test.
 	* tp/t/input_files/nodequote.texi: Input file.
 	* tp/t/results/plaintext_tests/

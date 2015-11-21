@@ -666,6 +666,8 @@ sub debugcount($$$$$$;$)
   return ($errors, $result);
 }
 
+# Run a single test case.  Each test case is an array
+# [TEST_NAME, TEST_TEXT, PARSER_OPTIONS, CONVERTER_OPTIONS]
 sub test($$) 
 {
   my $self = shift;
@@ -682,6 +684,7 @@ sub test($$)
   $test_text = shift @$test_case;
   $parser_options = shift @$test_case if (@$test_case);
   $converter_options = shift @$test_case if (@$test_case);
+
   my $test_file;
   if ($parser_options->{'test_file'}) {
     $test_file = $input_files_dir . $parser_options->{'test_file'};
@@ -1094,7 +1097,14 @@ sub test($$)
   return $tests_count;
 }
 
-# if a $test_case_name is given, only run that test.
+# Main entry point for the tests.
+#   $NAME - a string, name of test
+#   $TEST_CASES - array of sub-tests
+#   If $TEST_CASE_NAME is given, only run that test.
+#   $GENERATE means to generate reference test results (-g from command line).
+#   $DEBUG for debugging.
+# The $ARG_COMPLETE variable is the -c option, to create Texinfo files for the
+# test cases.
 sub run_all($$;$$$)
 {
   my $name = shift;
@@ -1139,6 +1149,7 @@ sub run_all($$;$$$)
   }
 }
 
+# Create a Texinfo file for a test case; used when -c option is given.
 sub output_texi_file($)
 {
   my $self = shift;
