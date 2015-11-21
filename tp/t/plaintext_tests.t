@@ -980,6 +980,11 @@ undef, {'test_file' => 'all_spaces.texi',
 ['east_asian_in_w',
 undef, {'test_file' => 'east_asian_in_w.texi'}
 ],
+['quote_node_names',
+undef, {'test_file' => 'nodequote.texi',},
+{'INFO_SPECIAL_CHARS_QUOTE' => 1,
+ 'INFO_SPECIAL_CHARS_WARNING' => 0,}
+],
 );
 
 foreach my $test (@test_cases) {

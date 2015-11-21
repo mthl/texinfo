@@ -1,3 +1,12 @@
+2015-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/plaintext.t (quote_node_names): New test.
+	* tp/t/input_files/nodequote.texi: Input file.
+	* tp/t/results/plaintext_tests/
+	quote_node_names/res_plaintext/quote_node_names.txt: Reference 
+	output file.
+	* tp/Makefile.am (test_files): Add nodequote.texi.
+
 2015-11-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* README-hacking: Mention problem with "make dist" and XS modules.
