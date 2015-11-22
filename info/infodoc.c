@@ -388,14 +388,19 @@ DECLARE_INFO_COMMAND (info_get_info_help_node, _("Visit Info node '(info)Help'")
     nodename = "Help";
 
   /* Try to get the info file for Info. */
-  node = info_get_node ("Info", nodename);
+  node = info_get_node ("info", nodename);
+
+  /* info.info is distributed with Emacs, not Texinfo, so fall back to 
+     info-stnd.info if it isn't there. */
+  if (!node)
+    node = info_get_node ("info-stnd", "Top");
 
   if (!node)
     {
       if (info_recent_file_error)
         info_error ("%s", info_recent_file_error);
       else
-        info_error (msg_cant_file_node, "Info", nodename);
+        info_error (msg_cant_file_node, "info", nodename);
         
       return;
     }
