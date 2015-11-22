@@ -1,5 +1,10 @@
 2015-11-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/xspara.c: Change // comments 
+	to /* ... */ style.  Remove commented-out lines for debugging.
+
+2015-11-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/variables.c (info_variables): Rename
 	hl-ref-rendition to active-link-style,
 	ref-rendition to link-style,

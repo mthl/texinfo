@@ -207,7 +207,6 @@ xspara_init (void)
 
   dTHX;
 
-  //puts ("initializing XSParagraph");
   if (setlocale (LC_CTYPE, "en_US.UTF-8")
       || setlocale (LC_CTYPE, "en_US.utf8"))
     goto success;
@@ -267,8 +266,6 @@ xspara_new (HV *conf)
   /* Avoid leaking the memory used last time. */
   free (state.space.text);
   free (state.word.text);
-
-  //fprintf (stderr, "PARAGRAPH\n");
 
   /* Default values for formatter. */
   memset (&state, 0, sizeof (state));
@@ -452,14 +449,12 @@ xspara__add_pending_word (TEXT *result, int add_spaces)
          and ignore 'state.space', the pending space string.  In this case 
          state.counter is probably 0.  */
 
-      //fprintf (stderr, "INDENT\n");
       for (i = 0; i < state.indent_length - state.counter; i++)
         text_append (result, " ");
       state.counter = state.indent_length;
     }
   else if (state.space.end > 0)
     {
-      //fprintf (stderr, "ADD_SPACES\n");
       text_append_n (result, state.space.text, state.space.end);
 
       state.counter += state.space_counter;
@@ -469,7 +464,6 @@ xspara__add_pending_word (TEXT *result, int add_spaces)
 
   if (state.word.end > 0 || state.invisible_pending_word)
     {
-      //fprintf (stderr, "ADD_WORD\n");
       text_append_n (result, state.word.text, state.word.end);
       state.counter += state.word_counter;
 
@@ -525,7 +519,6 @@ xspara__add_next (TEXT *result, char *word, int word_len, int transparent)
   if (!word)
     return;
 
-  //printf ("LAST CHAR IS NOW %lc\n", (wchar_t) state.last_letter);
   if (word_len >= 1 && word[word_len - 1] == '\b')
     {
       word[--word_len] = '\0';
@@ -713,7 +706,6 @@ xspara_set_space_protection (int protect_spaces,
       && state.space.end > 0
       && state.word.end == 0 && !state.invisible_pending_word)
     {
-      //fprintf (stderr, "SWITCH TO FRENCH SPACING\n");
       while (state.space_counter < 2)
         {
           text_append_n (&state.space, " ", 1);
@@ -726,7 +718,6 @@ xspara_set_space_protection (int protect_spaces,
 
   if (french_spacing != -1)
     {
-      //fprintf (stderr, "setting french sp\n");
       state.french_spacing = french_spacing;
     }
 
@@ -734,7 +725,6 @@ xspara_set_space_protection (int protect_spaces,
    {
      if (state.word.end == 0)
        {
-         //fprintf (stderr, "ADD INVISIBLE WORD\n");
          /* In _add_pending_word this meant that an "empty word" would
             be output.  This makes "a @w{} b" -> "a  b", not "a b", and
             "a @w{}" at end of paragraph -> "a ", not "a". */
