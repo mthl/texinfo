@@ -1,5 +1,17 @@
 2015-11-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/terminal.h
+	(BGCOLOUR_MASK, BGCOLOUR_BLACK, BGCOLOUR_RED, BGCOLOUR_GREEN)
+	(BGCOLOUR_YELLOW, BGCOLOUR_BLUE, BGCOLOUR_MAGENTA, BGCOLOUR_CYAN)
+	(BGCOLOUR_WHITE): New symbols.
+	* info/variables.c (set_variable_to_value): Add styles for 
+	background colours.
+	* info/terminal.c (terminal_switch_rendition): Handle background 
+	colour changing.
+	(terminal_set_bgcolour): New function.
+
+2015-11-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* install-info/tests/ii-0058-test: New test, for an empty dir 
 	file.
 
@@ -1365,7 +1377,7 @@
 
 2015-08-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* info/variable.c (set_variable_to_value): Handle rendition
+	* info/variables.c (set_variable_to_value): Handle rendition
 	variables in user init file.
 	(info_variables): Add user variables "ref-rendition",
 	"hl-ref-rendition", "match-rendition".

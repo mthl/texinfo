@@ -152,19 +152,28 @@ extern char *term_so, *term_se;
 extern int mouse_protocol;
 
 #define COLOUR_MASK             000000000017
-#define COLOUR_BLACK    8 + 0
-#define COLOUR_RED      8 + 1
-#define COLOUR_GREEN    8 + 2
-#define COLOUR_YELLOW   8 + 3
-#define COLOUR_BLUE     8 + 4
-#define COLOUR_MAGENTA  8 + 5
-#define COLOUR_CYAN     8 + 6
-#define COLOUR_WHITE    8 + 7
+#define COLOUR_BLACK    (8 + 0)
+#define COLOUR_RED      (8 + 1)
+#define COLOUR_GREEN    (8 + 2)
+#define COLOUR_YELLOW   (8 + 3)
+#define COLOUR_BLUE     (8 + 4)
+#define COLOUR_MAGENTA  (8 + 5)
+#define COLOUR_CYAN     (8 + 6)
+#define COLOUR_WHITE    (8 + 7)
 #define UNDERLINE_MASK          000000000020
 #define STANDOUT_MASK           000000000040
 #define BOLD_MASK               000000000100
 #define ZERO1_MASK              000000000200
 #define BLINK_MASK              000000000400
+#define BGCOLOUR_MASK           000000017000
+#define BGCOLOUR_BLACK    ((8 + 0) << 9)
+#define BGCOLOUR_RED      ((8 + 1) << 9)
+#define BGCOLOUR_GREEN    ((8 + 2) << 9)
+#define BGCOLOUR_YELLOW   ((8 + 3) << 9)
+#define BGCOLOUR_BLUE     ((8 + 4) << 9)
+#define BGCOLOUR_MAGENTA  ((8 + 5) << 9)
+#define BGCOLOUR_CYAN     ((8 + 6) << 9)
+#define BGCOLOUR_WHITE    ((8 + 7) << 9)
 #define ZERO2_MASK              000000100000
 #define ZERO3_MASK              000040000000
 #define ZERO4_MASK              020000000000

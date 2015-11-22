@@ -67,6 +67,7 @@ VFunction *terminal_begin_blink_hook = NULL;
 VFunction *terminal_end_all_modes_hook = NULL;
 VFunction *terminal_default_colour_hook = NULL;
 VFunction *terminal_set_colour_hook = NULL;
+VFunction *terminal_set_bgcolour_hook = NULL;
 VFunction *terminal_prep_terminal_hook = NULL;
 VFunction *terminal_unprep_terminal_hook = NULL;
 VFunction *terminal_up_line_hook = NULL;
@@ -623,6 +624,15 @@ terminal_set_colour (int colour)
     tputs (tgoto (term_AF, 0, colour), 0, output_character_function);
 }
 
+static void
+terminal_set_bgcolour (int colour)
+{
+  if (terminal_set_bgcolour_hook)
+    (*terminal_set_bgcolour_hook) (colour);
+  else
+    tputs (tgoto (term_AB, 0, colour), 0, output_character_function);
+}
+
 /* Information about what styles like colour, underlining, boldface are
    currently output for text on the screen.  All zero represents the default
    rendition. */
@@ -635,7 +645,6 @@ void
 terminal_switch_rendition (unsigned long new)
 {
   unsigned long old = terminal_rendition;
-  int all_modes_turned_off = 0;
 
   if ((old & new & COMBINED_MODES) != (old & COMBINED_MODES))
     {
@@ -652,12 +661,24 @@ terminal_switch_rendition (unsigned long new)
       if ((new & COLOUR_MASK) == 00)
         {
           terminal_default_colour ();
-          /* Once we do the background colour as well, we should
-             record that the background colour has been reset. */
+          old &= ~BGCOLOUR_MASK;
         }
       else if ((new & COLOUR_MASK) >= 8)
         {
           terminal_set_colour ((new & COLOUR_MASK) - 8);
+        }
+      /* Colour values from 1 to 7 don't do anything right now. */
+    }
+  if ((new & BGCOLOUR_MASK) != (old & BGCOLOUR_MASK))
+    {
+      /* Switch colour. */
+      if ((new & BGCOLOUR_MASK) == 00)
+        {
+          terminal_default_colour ();
+        }
+      else if ((new & BGCOLOUR_MASK) >> 9 >= 8)
+        {
+          terminal_set_bgcolour (((new & BGCOLOUR_MASK) >> 9) - 8);
         }
       /* Colour values from 1 to 7 don't do anything right now. */
     }
