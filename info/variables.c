@@ -142,15 +142,15 @@ VARIABLE_ALIST info_variables[] = {
       N_("Highlight search matches"),
     &highlight_searches, (char **)on_off_choices },
 
-  { "ref-rendition",
+  { "link-style",
       N_("Styles for links"),
     &ref_rendition, &rendition_variable },
 
-  { "hl-ref-rendition",
+  { "active-link-style",
       N_("Styles for active links"),
     &hl_ref_rendition, &rendition_variable },
 
-  { "match-rendition",
+  { "match-style",
       N_("Styles for search matches"),
     &match_rendition, &rendition_variable },
 

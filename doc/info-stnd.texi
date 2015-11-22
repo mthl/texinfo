@@ -2344,14 +2344,14 @@ including colors, boldface and underline.  Here are the variables that
 are available to do this:
 
 @vtable @code
-@item ref-rendition
+@item link-style
 Used for cross-references and menu entries.
 
-@item hl-ref-rendition
+@item active-link-style
 Used for a cross-references or menu entry when typing @key{RET} would 
 have the effect of following said cross-reference or menu entry.
 
-@item match-rendition
+@item match-style
 Used for matches from a search command.  (@xref{Searching Commands}.)
 @end vtable
 

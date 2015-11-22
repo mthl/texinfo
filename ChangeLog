@@ -1,3 +1,12 @@
+2015-11-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/variables.c (info_variables): Rename
+	hl-ref-rendition to active-link-style,
+	ref-rendition to link-style,
+	match-rendition to match-style.
+	* NEWS: Update.
+	* doc/info-stnd.texi (Colors and Styles): Update.
+
 2015-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/ParagraphNonXS.pm (_add_next): Don't count 
