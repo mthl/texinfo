@@ -2368,12 +2368,27 @@ values in the following table:
 @itemx magenta
 @itemx cyan
 @itemx white
-@cindex Coloured text
-Use the color specified.
+@cindex Coloured foreground
+Use the color specified for text.
 
 @item nocolour
 @itemx nocolor
 Turn off any color that was in effect, using the terminal's default color.
+
+@item  bgblack
+@itemx bgred
+@itemx bggreen
+@itemx bgyellow
+@itemx bgblue
+@itemx bgmagenta
+@itemx bgcyan
+@itemx bgwhite
+@cindex Coloured background
+Use the color specified for the background.
+
+@item nocolour
+@itemx nocolor
+Use the terminal's default background color.
 
 @item underline
 @itemx nounderline

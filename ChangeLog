@@ -10,6 +10,9 @@
 	colour changing.
 	(terminal_set_bgcolour): New function.
 
+	* info/info-stnd.texi (Colors and Styles): Document background 
+	colour customization.
+
 2015-11-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* install-info/tests/ii-0058-test: New test, for an empty dir 
