@@ -2402,9 +2402,9 @@ Here is an sample excerpt from an @file{.infokey} file:
 
 @example
 #var
-ref-rendition=yellow
-hl-ref-rendition=yellow,bold
-match-rendition=underline,bold,nocolour
+link-style=yellow
+active-link-style=yellow,bold
+match-style=underline,bold,nocolour
 @end example
 
 @noindent With this, cross-references are all yellow, and active 
