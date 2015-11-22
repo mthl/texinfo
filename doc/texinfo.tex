@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2015-11-16.19}
+\def\texinfoversion{2015-11-22.14}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -362,11 +362,12 @@
   \ifodd\pageno \getoddfootingmarks \else \getevenfootingmarks \fi
   %
   \ifx\curchaptername\prevchaptername
+    \let\thischapterheading\thischapter
   \else
-    % If on the first page of a chapter, clear @thischapter so it
-    % doesn't appear in the headline, because the chapter is already
-    % shown in the chapter heading.
-    \def\thischapter{}%
+    % \thischapterheading is the same as \thischapter except it is blank
+    % for the first page of a chapter.  This is to prevent the chapter name 
+    % being shown twice.
+    \def\thischapterheading{}%
   \fi
   %
   \global\setbox\headlinebox = \vbox{\commmonheadfootline \makeheadline}%
@@ -3516,7 +3517,7 @@ end
 \global\evenfootline={\hfil}
 \global\oddfootline={\hfil}
 \global\evenheadline={\line{\folio\hfil\thistitle}}
-\global\oddheadline={\line{\thischapter\hfil\folio}}
+\global\oddheadline={\line{\thischapterheading\hfil\folio}}
 \global\let\contentsalignmacro = \chapoddpage
 }
 \let\contentsalignmacro = \chappager
@@ -3527,8 +3528,8 @@ end
 \global\pageno=1
 \global\evenfootline={\hfil}
 \global\oddfootline={\hfil}
-\global\evenheadline={\line{\thischapter\hfil\folio}}
-\global\oddheadline={\line{\thischapter\hfil\folio}}
+\global\evenheadline={\line{\thischapterheading\hfil\folio}}
+\global\oddheadline={\line{\thischapterheading\hfil\folio}}
 \global\let\contentsalignmacro = \chappager
 }
 \def\HEADINGSon{\HEADINGSdouble}
@@ -3539,7 +3540,7 @@ end
 \global\evenfootline={\hfil}
 \global\oddfootline={\hfil}
 \global\evenheadline={\line{\folio\hfil\thistitle}}
-\global\oddheadline={\line{\thischapter\hfil\folio}}
+\global\oddheadline={\line{\thischapterheading\hfil\folio}}
 \global\let\contentsalignmacro = \chapoddpage
 }
 
@@ -3547,8 +3548,8 @@ end
 \def\HEADINGSsinglex{%
 \global\evenfootline={\hfil}
 \global\oddfootline={\hfil}
-\global\evenheadline={\line{\thischapter\hfil\folio}}
-\global\oddheadline={\line{\thischapter\hfil\folio}}
+\global\evenheadline={\line{\thischapterheading\hfil\folio}}
+\global\oddheadline={\line{\thischapterheading\hfil\folio}}
 \global\let\contentsalignmacro = \chappager
 }
 
