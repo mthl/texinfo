@@ -1,5 +1,10 @@
 2015-11-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* install-info/tests/ii-0058-test: New test, for an empty dir 
+	file.
+
+2015-11-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* install-info/install-info.c (open_possibly_compressed_file): 
 	If file is empty, try to create it if passed a callback for 
 	doing so.  Problem with zero-sized dir files reported by

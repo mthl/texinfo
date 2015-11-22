@@ -22,7 +22,7 @@ ii-0036-test ii-0037-test ii-0038-test ii-0039-test ii-0040-test \
 ii-0041-test ii-0042-test ii-0043-test ii-0044-test ii-0045-test \
 ii-0046-test ii-0047-test ii-0048-test ii-0049-test ii-0050-test \
 ii-0051-test ii-0052-test ii-0053-test ii-0054-test ii-0055-test \
-ii-0056-test ii-0057-test
+ii-0056-test ii-0057-test ii-0058-test
 
 noinst_SCRIPTS=$(TESTS)
 
