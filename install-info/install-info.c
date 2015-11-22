@@ -670,6 +670,7 @@ The first time you invoke Info you start off looking at this node.\n\
   else
     close (desc); /* It already existed, so fine.  */
 }
+
 
 /* Open FILENAME and return the resulting stream pointer.  If it doesn't
    exist, try FILENAME.gz.  If that doesn't exist either, call
@@ -769,11 +770,28 @@ open_possibly_compressed_file (char *filename,
   nread = fread (data, sizeof (data), 1, f);
   if (nread != 1)
     {
-      /* Empty files don't set errno.  Calling code can check for
-         this, so make sure errno == 0 just in case it isn't already. */
       if (nread == 0)
-        errno = 0;
-      return 0;
+        {
+          /* Try to create the file if its empty. */
+          if (feof (f) && create_callback)
+            {
+              if (fclose (f) != 0)
+                return 0; /* unknown error closing file */
+
+              if (remove (filename) != 0)
+                return 0; /* unknown error deleting file */
+
+              (*create_callback) (filename);
+              f = fopen (*opened_filename, FOPEN_RBIN);
+              if (!f)
+                return 0;
+              nread = fread (data, sizeof (data), 1, f);
+              if (nread == 0)
+                return 0;
+            }
+        }
+      errno = 0;
+      return 0; /* unknown error */
     }
 
   if (!compression_program)
@@ -1404,9 +1422,8 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
   if (!desc || !name)
     return 1;
 
-  outstr = malloc (width  + 
-                    (((desc_len  + width) / (width - align)) * width) * 2 
-                    * sizeof (char));
+  outstr = xmalloc (width
+         + (desc_len + width) / (width - align) * width * 2 * sizeof (char));
   outstr[0] = '\0';
 
   strncat (outstr, name, name_len);
@@ -1444,7 +1461,9 @@ format_entry (char *name, size_t name_len, char *desc, size_t desc_len,
       if (offset_out + 1 >= allocated_out)
         {
           allocated_out = offset_out + 1;
-          line_out = (char *) realloc ((void *)line_out, allocated_out);
+          line_out = (char *) xrealloc ((void *)line_out, allocated_out + 1);
+          /* The + 1 here shouldn't be necessary, but a crash was reported
+             for a following strncat call. */
         }
 
       if (c == '\n')

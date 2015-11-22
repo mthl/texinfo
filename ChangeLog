@@ -1,5 +1,15 @@
 2015-11-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* install-info/install-info.c (open_possibly_compressed_file): 
+	If file is empty, try to create it if passed a callback for 
+	doing so.  Problem with zero-sized dir files reported by
+	Pedrum Mohageri.
+	(format_entry): Use xmalloc instead of malloc.  Allocate an 
+	extra byte.  Crash with strncat under Mac OS X Yosemite reported 
+	by Alan Wehmann.
+
+2015-11-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infodoc.c (info_get_info_help_node): Resort to 
 	"(info-stnd)" if "(info)" isn't found.  Look for "(info)" 
 	instead of "(Info)".
