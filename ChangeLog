@@ -1,3 +1,11 @@
+2015-11-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\spaceisspace): Comment changed and \chardef 
+	removed.
+	(\ampChar, \colonChar, \commaChar, \dotChar, \questChar)
+	(\semiChar, \hashChar, \lquoteChar, \rquoteChar): Remove these 
+	\chardef's, and use literal constants instead.
+
 2015-11-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/terminal.h
