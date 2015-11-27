@@ -1,4 +1,8 @@
-2015-11-26  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-11-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (PDF Link colours): New example.
+
+2015-11-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\inserintindexentrybox): Save depth of last 
 	subbox of box containing index entry.  Set \prevdepth to this 

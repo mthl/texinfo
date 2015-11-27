@@ -700,4 +700,87 @@ Greek text:
 
 double accent --- ταΐζω
 
+
+@chapter PDF link colours
+
+For PDF only.
+
+
+Check that
+colour change continues on next page
+for @acronym{URL} split across pages,
+and doesn't change the colour of the heading line.
+
+Push down to end of page
+
+par
+
+@tex
+\global\def\urlcolor{0.32 0.39 0.50}%
+@end tex
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+par
+
+
+@uref{aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/
+aaaaa/bbbbb/aaaaa/bbbbb/}
+
+par
+
+
+
 @bye
