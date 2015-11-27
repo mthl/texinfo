@@ -126,6 +126,9 @@ is available under the GFDL:
   TeX by Topic - http://www.eijkhout.net/texbytopic/texbytopic.html
 Another book on plain TeX, also available under the GFDL, is a GNU package:
   TeX for the Impatient - http://www.gnu.org/software/teximpatient/
+Occasionally you may need to know about the details of the PDF format.
+A reference for this is the PDF reference, Sixth Edition, version 1.7,  
+downloadable at http://www.adobe.com/devnet/pdf/pdf_reference_archive.html
 
 The texindex program is implemented using the TexiWebJR literate
 programming system, combining Texinfo and Awk
