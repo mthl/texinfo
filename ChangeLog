@@ -1,3 +1,20 @@
+2015-11-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\inserintindexentrybox): Save depth of last 
+	subbox of box containing index entry.  Set \prevdepth to this 
+	value at the start of the next box for an index entry.
+	(\begindoublecolumns): Start off the saved depth as 0.
+	(\entry): Remove struts for multi-line index entries.
+	(\entry): Turn off marks for \pdflink.
+
+	(\pdfsetcolor): Update comment to match code re PDF operators
+	k, K, rg and RG.
+
+	(|, _, "): Minor formatting and comment changes for active 
+	characters code.
+
+	(\scanexp): Comment added to say this is for copying and captions.
+
 2015-11-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\spaceisspace): Comment changed and \chardef 
