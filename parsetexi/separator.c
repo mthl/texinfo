@@ -141,8 +141,8 @@ handle_open_brace (ELEMENT *current, char **line_inout)
     }
 
   /* 4967 */
-  else if (current->parent->cmd == CM_multitable
-           || current->parent->type == ET_def_line)
+  else if (current->parent && (current->parent->cmd == CM_multitable
+           || current->parent->type == ET_def_line))
     {
       ELEMENT *b, *e;
       b = new_element (ET_bracketed);

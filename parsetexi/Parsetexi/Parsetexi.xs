@@ -52,6 +52,10 @@ parse_string(string)
         char * string
 
 void
+parse_text(string)
+        char * string
+
+void
 store_value (name, value)
         char *name
         char *value

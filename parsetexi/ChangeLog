@@ -1,5 +1,9 @@
 2015-11-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* Parsetexi/lib/Parsetexi.pm (parse_texi_text): Add function.
+
+2015-11-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Update so works again.
 
 	* texi2any-C.pl, texi2any-C-2.pl: Replaced, to match most

@@ -371,7 +371,7 @@ sub parse_texi_text($$;$$$$)
     return undef if (!defined($text));
 
     $self = parser() if (!defined($self));
-    parse_string($text);
+    parse_text($text);
     my $tree = build_texinfo_tree ();
     _add_parents ($tree);
     return $tree;

@@ -62,6 +62,17 @@ parse_string (char *string)
   Root = parse_texi (root);
 }
 
+/* Used for parse_texi_text. */
+void
+parse_text (char *string)
+{
+  ELEMENT *root;
+  init_index_commands (); /* FIXME - probably not necessary */
+  root = new_element (ET_text_root);
+  input_push_text (strdup (string));
+  Root = parse_texi (root);
+}
+
 
 char *
 element_type_name (ELEMENT *e)
