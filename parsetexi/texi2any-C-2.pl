@@ -2,7 +2,7 @@
 
 # texi2any: Texinfo converter.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -49,75 +49,65 @@ BEGIN
   $^W = 1;
   my ($real_command_name, $command_directory, $command_suffix) 
      = fileparse($0, '.pl');
-
-  my $datadir = '@datadir@';
-  my $package = '@PACKAGE@';
   my $updir = File::Spec->updir();
 
-  my $texinfolibdir;
-  my $lib_dir;
+  # These are substituted by the Makefile to create "texi2any".
+  my $datadir = '@datadir@';
+  my $package = '@PACKAGE@';
+  my $packagedir = '@pkglibexecdir@';
 
-  # in-source run
-  if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
-       and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
-    if (defined($ENV{'top_srcdir'})) {
-      $texinfolibdir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
-    } else {
-      $texinfolibdir = $command_directory;
+  if ($datadir eq '@' .'datadir@' or $package eq '@' . 'PACKAGE@'
+      or $packagedir eq '@' .'pkglibexecdir@'
+      or defined($ENV{'TEXINFO_DEV_SOURCE'})
+         and $ENV{'TEXINFO_DEV_SOURCE'} ne '0')
+  {
+    # Use uninstalled modules
+
+    # To find Texinfo::ModulePath
+    if (!defined($ENV{'top_builddir'})) {
+      $ENV{'top_builddir'} = File::Spec->catdir($command_directory, $updir);
     }
-    $lib_dir = File::Spec->catdir($texinfolibdir, 'maintain');
-    unshift @INC, $texinfolibdir;
-  } elsif ($datadir ne '@' .'datadir@' and $package ne '@' . 'PACKAGE@'
-           and $datadir ne '') {
-    $texinfolibdir = File::Spec->catdir($datadir, $package);
-    # try to make package relocatable, will only work if standard relative paths
-    # are used
-    if (! -f File::Spec->catfile($texinfolibdir, 'Texinfo', 'Parser.pm')
+    unshift @INC, File::Spec->catdir($ENV{'top_builddir'}, 'tp');
+
+    if (defined($ENV{'top_srcdir'})) {
+      my $lib_dir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
+      unshift @INC, $lib_dir;
+    }
+
+    require Texinfo::ModulePath;
+    Texinfo::ModulePath::init();
+  } else {
+    # Look for modules in their installed locations.
+
+    my $lib_dir = File::Spec->catdir($datadir, $package);
+
+    # try to make package relocatable, will only work if
+    # standard relative paths are used
+    if (! -f File::Spec->catfile($lib_dir, 'Texinfo', 'Parser.pm')
         and -f File::Spec->catfile($command_directory, $updir, 'share', 
                                    'texinfo', 'Texinfo', 'Parser.pm')) {
-      $texinfolibdir = File::Spec->catdir($command_directory, $updir, 
+      $lib_dir = File::Spec->catdir($command_directory, $updir, 
                                           'share', 'texinfo');
     }
-    $lib_dir = $texinfolibdir;
-    #unshift @INC, $texinfolibdir;
-    # the directory where modules are searched for is placed last
-    # in @INC, as we do not want to take precedence over perl -I 
-    # arguments.  It unfortunatly means that system directories are 
-    # searched for before the installation directories.  This could
-    # cause trouble if the modules are separately installed.
-    push @INC, $texinfolibdir;
-  }
+    unshift @INC, $lib_dir;
 
-  # '@USE_EXTERNAL_LIBINTL @ and similar are substituted in the
-  # makefile using values from configure
-  if (defined($texinfolibdir)) {
-    if ('@USE_EXTERNAL_LIBINTL@' ne 'yes') {
-      unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'libintl-perl', 'lib'));
-    }
-    if ('@USE_EXTERNAL_EASTASIANWIDTH@' ne 'yes') {
-      unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'Unicode-EastAsianWidth', 'lib'));
-    }
-    if ('@USE_EXTERNAL_UNIDECODE@' ne 'yes') {
-      unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'));
-    }
+    require Texinfo::ModulePath;
+    Texinfo::ModulePath::init($lib_dir, $packagedir);
+  }
+} # end BEGIN
+
+BEGIN {
+  my $enable_xs = '@enable_xs@';
+  if ($enable_xs eq 'no') {
+    package Texinfo::Convert::Paragraph;
+    our $disable_XS;
+    $disable_XS = 1;
   }
 }
 
-use Texinfo::Convert::Texinfo;
-use Texinfo::Parser;
-use Texinfo::Structuring;
-use Texinfo::Convert::Info;
-use Texinfo::Convert::HTML;
-use Texinfo::Convert::TexinfoXML;
-use Texinfo::Convert::TexinfoSXML;
-use Texinfo::Convert::DocBook;
-use Texinfo::Convert::TextContent;
-use Texinfo::Convert::PlainTexinfo;
-use Texinfo::Convert::IXINSXML;
-use DebugTexinfo::DebugCount;
-use DebugTexinfo::DebugTree;
-
-use Parsetexi;
+use Locale::Messages;
+use Texinfo::Common;
+use Texinfo::Convert::Converter;
 
 my ($real_command_name, $command_directory, $command_suffix) 
    = fileparse($0, '.pl');
@@ -215,17 +205,19 @@ Locale::Messages->select_package('gettext_pp');
 
 #my @search_locale_dirs = ("$datadir/locale", (map $_ . '/LocaleData', @INC),
 #  qw (/usr/share/locale /usr/local/share/locale));
+my @search_locale_dirs = ();
 
 if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
      and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
   # in case of build from the source directory, out of source build, 
   # this helps to locate the locales.
   my $locales_dir_found = 0;
-  foreach my $locales_dir (
+  @search_locale_dirs = (
     File::Spec->catdir($libsrcdir, $updir, 'LocaleData'),
-    File::Spec->catdir($curdir, 'LocaleData'), 
+    File::Spec->catdir($curdir, 'LocaleData'),
     File::Spec->catdir($updir, $updir, $updir, 'tp', 'LocaleData'),
-    File::Spec->catdir($updir, $updir, 'tp', 'LocaleData')) {
+    File::Spec->catdir($updir, $updir, 'tp', 'LocaleData'));
+  foreach my $locales_dir (@search_locale_dirs) {
     if (-d $locales_dir) {
       Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
       # the messages in this domain are not regenerated automatically, 
@@ -236,7 +228,7 @@ if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'})
     }
   }
   if (!$locales_dir_found) {
-    warn "Locales dir for document strings not found\n";
+    warn "Locales dir for document strings not found (@search_locale_dirs)\n";
   }
 } else {
   Locale::Messages::bindtextdomain ($strings_textdomain, 
@@ -280,6 +272,7 @@ if ($configured_version eq '@' . 'PACKAGE_VERSION@') {
   } else {
     # used in the standalone perl module, as $hardcoded_version is undef
     # and it should never be configured in that setup
+    require Texinfo::Parser;
     $configured_version = $Texinfo::Parser::VERSION;
   }
 }
@@ -382,6 +375,7 @@ sub _load_config($$) {
 
 sub _load_init_file($) {
   my $file = shift;
+  require Texinfo::Convert::HTML;
   eval { require($file) ;};
   my $e = $@;
   if ($e ne '') {
@@ -554,13 +548,13 @@ my %formats_table = (
  'info' => {
              'nodes_tree' => 1,
              'floats' => 1,
-             'converter' => sub{Texinfo::Convert::Info->converter(@_)},
+             'module' => 'Texinfo::Convert::Info'
            },
   'plaintext' => {
              'nodes_tree' => 1,
              'floats' => 1,
              'split' => 1,
-             'converter' => sub{Texinfo::Convert::Plaintext->converter(@_)},
+             'module' => 'Texinfo::Convert::Plaintext'
            },
   'html' => {
              'nodes_tree' => 1,
@@ -570,26 +564,26 @@ my %formats_table = (
              'simple_menu' => 1,
              'move_index_entries_after_items' => 1,
              'no_warn_non_empty_parts' => 1,
-             'converter' => sub{Texinfo::Convert::HTML->converter(@_)},
+             'module' => 'Texinfo::Convert::HTML'
            },
   'texinfoxml' => {
              'nodes_tree' => 1,
-             'converter' => sub{Texinfo::Convert::TexinfoXML->converter(@_)},
+             'module' => 'Texinfo::Convert::TexinfoXML',
              'floats' => 1,
            },
   'texinfosxml' => {
              'nodes_tree' => 1,
-             'converter' => sub{Texinfo::Convert::TexinfoSXML->converter(@_)},
+             'module' => 'Texinfo::Convert::TexinfoSXML',
              'floats' => 1,
            },
   'ixinsxml' => {
              'nodes_tree' => 1,
-             'converter' => sub{Texinfo::Convert::IXINSXML->converter(@_)},
+             'module' => 'Texinfo::Convert::IXINSXML'
            },
   'docbook' => {
              'move_index_entries_after_items' => 1,
              'no_warn_non_empty_parts' => 1,
-             'converter' => sub{Texinfo::Convert::DocBook->converter(@_)},
+             'module' => 'Texinfo::Convert::DocBook'
            },
   'pdf' => {
              'texi2dvi_format' => 1,
@@ -606,11 +600,11 @@ my %formats_table = (
   'debugcount' => {
              'nodes_tree' => 1,
              'floats' => 1,
-             'converter' => sub{DebugTexinfo::DebugCount->converter(@_)},
+             'module' => 'DebugTexinfo::DebugCount'
            },
   'debugtree' => {
           'split' => 1,
-          'converter' => sub{DebugTexinfo::DebugTree->converter(@_)},
+          'module' => 'DebugTexinfo::DebugTree'
          },
   'textcontent' => {
             'converter' => sub{Texinfo::Convert::TextContent->converter(@_)},
@@ -732,11 +726,14 @@ sub _get_converter_default($)
 sub makeinfo_help()
 {
   my $makeinfo_help =
-    __("Usage: makeinfo [OPTION]... TEXINFO-FILE...\n")
-  . __("  or:  texi2any [OPTION]... TEXINFO-FILE...\n")
+    sprintf(__("Usage: %s [OPTION]... TEXINFO-FILE...\n"),
+    $real_command_name . $command_suffix)
 ."\n".
 __("Translate Texinfo source documentation to various other formats, by default
-Info files suitable for reading online with Emacs or standalone GNU Info.\n")
+Info files suitable for reading online with Emacs or standalone GNU Info.
+
+This program is commonly installed as both `makeinfo' and `texi2any';
+the behavior is identical, and does not depend on the installed name.\n")
 ."\n";
   $makeinfo_help .= sprintf(__("General options:
       --document-language=STR locale to use in translating Texinfo keywords
@@ -751,7 +748,8 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
   -c, --set-customization-variable VAR=VAL  set customization variable VAR 
                                 to value VAL.
   -v, --verbose               explain what is being done.
-      --version               display version information and exit.\n"), get_conf('ERROR_LIMIT'))
+      --version               display version information and exit.\n"),
+    get_conf('ERROR_LIMIT'))
 ."\n";
   $makeinfo_help .= __("Output format selection (default is to produce Info):
       --docbook               output Docbook XML rather than Info.
@@ -760,7 +758,6 @@ Info files suitable for reading online with Emacs or standalone GNU Info.\n")
       --xml                   output Texinfo XML rather than Info.
       --dvi, --dvipdf, --ps, --pdf  call texi2dvi to generate given output,
                                 after checking validity of TEXINFO-FILE.\n")
-
 ."\n";
   $makeinfo_help .= __("General output options:
   -E, --macro-expand=FILE     output macro-expanded source to FILE,
@@ -871,11 +868,11 @@ my $latex2html_file = 'latex2html.pm';
 
 my $result_options = Getopt::Long::GetOptions (
  'help|h' => sub { print makeinfo_help(); exit 0; },
- 'version|V' => sub {print "$real_command_name (GNU texinfo) $configured_version\n\n";
+ 'version|V' => sub {print "$program_name (GNU texinfo) $configured_version\n\n";
     printf __("Copyright (C) %s Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.\n"), "2014";
+There is NO WARRANTY, to the extent permitted by law.\n"), "2015";
       exit 0;},
  'macro-expand|E=s' => sub { set_from_cmdline('MACRO_EXPAND', $_[1]); },
  'ifhtml!' => sub { set_expansion('html', $_[1]); },
@@ -1004,15 +1001,15 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2014";
  'silent|quiet' => sub {set_from_cmdline('SILENT', $_[1]);
                          push @texi2dvi_args, '--'.$_[0];},
    
- 'plaintext' => sub {$format = set_format($_[0]);},
- 'html' => sub {$format = set_format($_[0]);},
- 'info' => sub {$format = set_format($_[0]);},
- 'docbook' => sub {$format = set_format($_[0]);},
- 'xml' => sub {$format = set_format($_[0]);},
- 'dvi' => sub {$format = set_format($_[0]);},
- 'dvipdf' => sub {$format = set_format($_[0]);},
- 'ps' => sub {$format = set_format($_[0]);},
- 'pdf' => sub {$format = set_format($_[0]);},
+ 'plaintext' => sub {$format = set_format($_[0].'');},
+ 'html' => sub {$format = set_format($_[0].'');},
+ 'info' => sub {$format = set_format($_[0].'');},
+ 'docbook' => sub {$format = set_format($_[0].'');},
+ 'xml' => sub {$format = set_format($_[0].'');},
+ 'dvi' => sub {$format = set_format($_[0].'');},
+ 'dvipdf' => sub {$format = set_format($_[0].'');},
+ 'ps' => sub {$format = set_format($_[0].'');},
+ 'pdf' => sub {$format = set_format($_[0].'');},
  'debug=i' => sub {set_from_cmdline('DEBUG', $_[1]); 
                    $parser_default_options->{'DEBUG'} = $_[1];
                    push @texi2dvi_args, '--'.$_[0]; },
@@ -1070,6 +1067,12 @@ if ($call_texi2dvi) {
   document_warn(__('--Xopt option without printed output')); 
 }
 
+require Texinfo::Parser;
+require Parsetexi;
+require Texinfo::Structuring;
+# Avoid loading these modules until down here to speed up the case
+# when they are not needed.
+
 my %tree_transformations;
 if (get_conf('TREE_TRANSFORMATIONS')) {
   my @transformations = split /,/, get_conf('TREE_TRANSFORMATIONS');
@@ -1096,6 +1099,16 @@ foreach my $expanded_format (@{$default_expanded_format}) {
 
 my $converter_class;
 my %converter_defaults;
+
+if (defined($formats_table{$format}->{'module'})) {
+  # Speed up initialization by only loading the module we need.
+  eval "require $formats_table{$format}->{'module'};"
+      or die "$@";
+  eval '$formats_table{$format}->{\'converter\'} = sub{'.
+                $formats_table{$format}->{'module'}
+        .'->converter(@_)};';
+}
+
 # This gets the class right, even though there is a sub...
 if (defined($formats_table{$format}->{'converter'})) {
   $converter_class = ref(&{$formats_table{$format}->{'converter'}});
@@ -1195,6 +1208,9 @@ while(@input_files) {
   my $parser = Parsetexi::parser($parser_options);
   my $tree = $parser->parse_texi_file($input_file_name);
 
+  #my $global_commands = $parser->global_commands_information();
+  #print STDERR join('|', keys(%$global_commands))."\n";
+
   if (!defined($tree) or $format eq 'parse') {
     handle_errors($parser, $error_count, \@opened_files);
     next;
@@ -1226,6 +1242,7 @@ while(@input_files) {
   }
 
   if (defined(get_conf('MACRO_EXPAND')) and $file_number == 0) {
+    require Texinfo::Convert::Texinfo;
     my $texinfo_text = Texinfo::Convert::Texinfo::convert($tree, 1);
     #print STDERR "$texinfo_text\n";
     my $macro_expand_file = get_conf('MACRO_EXPAND');
@@ -1286,7 +1303,10 @@ while(@input_files) {
 
   if ($tree_transformations{'complete_tree_nodes_menus'}) {
     Texinfo::Structuring::complete_tree_nodes_menus($parser, $tree);
+  } elsif (!$parser->{'validatemenus'}) {
+    Texinfo::Structuring::add_missing_menus($parser, $tree);
   }
+
   if ($tree_transformations{'indent_menu_descriptions'}) {
     Texinfo::Convert::Plaintext::indent_menu_descriptions(undef, $parser);
   }

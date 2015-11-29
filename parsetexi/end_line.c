@@ -1069,14 +1069,6 @@ end_line_misc_line (ELEMENT *current)
                              contents);
           current->type = ET_index_entry_command;
         }
-
-      if (command_flags(current) & CF_sectioning)
-        {
-          /* TODO: Set the right level. */
-          /* Alternatively, maybe the receiving code could lookup the
-             sectioning level. */
-          add_extra_string (current, "level", "1");
-        }
     }
 
   current = current->parent; /* 3285 */

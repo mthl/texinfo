@@ -176,14 +176,14 @@ sub _add_parents ($) {
 
   if (exists $elt->{'contents'}) {
     foreach my $child (@{$elt->{'contents'}}) {
-      $child->{'parent'} = $elt;
+      #$child->{'parent'} = $elt;
       _add_parents ($child);
     }
   }
 
   if (exists $elt->{'args'}) {
     foreach my $child (@{$elt->{'args'}}) {
-      $child->{'parent'} = $elt;
+      #$child->{'parent'} = $elt;
       _add_parents ($child);
     }
   }
@@ -307,7 +307,7 @@ sub parse_texi_file ($$)
   }
 
   print "Adjusting tree...\n";
-  #_add_parents ($TREE);
+  _add_parents ($TREE);
   _complete_node_list ($self, $TREE);
   print "Adjusted tree.\n";
 

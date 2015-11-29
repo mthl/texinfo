@@ -1,3 +1,14 @@
+2015-11-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Update so works again.
+
+	* texi2any-C.pl, texi2any-C-2.pl: Replaced, to match most
+	recent revision.
+	* Parsetexi/lib/Parsetexi.pm: Set 'level' value from value in 
+	'extra'.
+	* Match changes made in the main code on 2015-10-02 to make 
+	@heading affected by @lowersections.
+
 2015-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* parser.c (process_remaining_on_line) <@value> Add element to 

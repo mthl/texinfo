@@ -23,6 +23,8 @@
 #include "text.h"
 #include "errors.h"
 
+static int section_level (ELEMENT *section);
+
 /* Return a containing @itemize or @enumerate if inside it. */
 // 1847
 ELEMENT *
@@ -320,9 +322,17 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           misc->line_nr = line_nr;
           add_to_element_contents (current, misc);
 
-          /* If root command, and not node or part: */
+          if (command_data(cmd).flags & CF_sectioning)
             {
               /* Store section level in 'extra' key. */
+              /* TODO: @part? */
+              /*add_extra_string (last_contents_child (current), 
+                "sections_level", "1");
+                                //"0\0""1\0"[level * 2]);*/
+              add_extra_string (misc, "level",
+                          &("0\0" "0\0" "1\0" "2\0" "3\0" "4\0"
+                                  "5\0" "6\0" "7\0" "8\0" "9\0" + 2)
+                                  [section_level (misc) * 2]);
             }
 
           /* 4546 - def*x */
@@ -410,6 +420,38 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 
   *line_inout = line;
   return current;
+}
+
+/* Return numbered level of an element */
+static int
+section_level (ELEMENT *section)
+{
+  int level;
+int min_level = 0, max_level = 5;
+
+  switch (section->cmd)
+    {
+    case CM_top: level = 0; break;
+    case CM_chapter: level = 1; break;
+    case CM_unnumbered: level = 1; break;
+    case CM_chapheading: level = 1; break;
+    case CM_appendix: level = 1; break;
+    case CM_section: level = 2; break;
+    case CM_unnumberedsec: level = 2; break;
+    case CM_heading: level = 2; break;
+    case CM_appendixsec: level = 2; break;
+    case CM_subsection: level = 3; break;
+    case CM_unnumberedsubsec: level = 3; break;
+    case CM_subheading: level = 3; break;
+    case CM_appendixsubsec: level = 3; break;
+    case CM_subsubsection: level = 4; break;
+    case CM_unnumberedsubsubsec: level = 4; break;
+    case CM_subsubheading: level = 4; break;
+    case CM_appendixsubsubsec: level = 4; break;
+    default: level = -1; break;
+    }
+  return level;
+  /* then adjust according to raise-/lowersections. */
 }
 
 /* line 4632 */
