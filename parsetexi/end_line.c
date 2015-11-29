@@ -163,6 +163,13 @@ parse_line_command_args (ELEMENT *line_command)
 
   line_args = new_element (ET_NONE);
 
+  if (arg->contents.number == 0)
+    {
+      /*command_errorf ("@%s missing argument",
+                      command_name (line_command->cmd));*/
+      return 0;
+    }
+
   i = 0;
   while (i < arg->contents.number)
     {
@@ -185,7 +192,8 @@ parse_line_command_args (ELEMENT *line_command)
       else
         {
           /* Error - too many arguments. */
-          abort ();
+          line_errorf ("superfluous argument to @%s",
+                       command_name (line_command->cmd));
         }
     }
   if (!argarg)
@@ -194,7 +202,7 @@ parse_line_command_args (ELEMENT *line_command)
     }
 
   if (argarg->text.end == 0)
-    abort ();
+     return 0; // 5519
 
   cmd = line_command->cmd;
   line = argarg->text.text;
@@ -945,35 +953,41 @@ end_line_misc_line (ELEMENT *current)
 
               /* Set end_command - used below. */
               end_command = read_command_name (&line);
-
-              /* Check if argument is a block Texinfo command. */
-              end_id = lookup_command (end_command);
-              if (end_id == 0 || !(command_data(end_id).flags & CF_block))
+              if (end_command)
                 {
-                  command_warnf ("unknown @end %s", end_command);
-                  free (end_command); end_command = 0;
+                  /* Check if argument is a block Texinfo command. */
+                  end_id = lookup_command (end_command);
+                  if (end_id == 0 || !(command_data(end_id).flags & CF_block))
+                    {
+                      command_warnf ("unknown @end %s", end_command);
+                      free (end_command); end_command = 0;
+                    }
+                  else
+                    {
+                      debug ("END BLOCK %s", end_command);
+                      /* 3140 Handle conditional block commands (e.g.  
+                         @ifinfo) */
+
+                      /* If we are in a non-ignored conditional, there is not
+                         an element for the block in the tree; it is recorded 
+                         in the conditional stack.  Pop it and check it is the 
+                         same as the one given in the @end line. */
+
+                      if (command_data(end_id).data == BLOCK_conditional)
+                        {
+                          if (conditional_number > 0)
+                            {
+                              enum command_id popped;
+                              popped = pop_conditional_stack ();
+                              if (popped != end_id)
+                                abort ();
+                            }
+                        }
+                    }
                 }
               else
                 {
-                  debug ("END BLOCK %s", end_command);
-                  /* 3140 Handle conditional block commands (e.g.  
-                     @ifinfo) */
-
-                  /* If we are in a non-ignored conditional, there is not
-                     an element for the block in the tree; it is recorded 
-                     in the conditional stack.  Pop it and check it is the 
-                     same as the one given in the @end line. */
-
-                  if (command_data(end_id).data == BLOCK_conditional)
-                    {
-                      if (conditional_number > 0)
-                        {
-                          enum command_id popped;
-                          popped = pop_conditional_stack ();
-                          if (popped != end_id)
-                            abort ();
-                        }
-                    }
+                  command_errorf ("bad argument to @end: %s", line);
                 }
             }
           else if (current->cmd == CM_include) // 3166

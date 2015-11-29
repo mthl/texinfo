@@ -121,9 +121,9 @@ sub parser (;$$)
   if (defined($conf)) {
     foreach my $key (keys (%$conf)) {
       if ($key eq 'include_directories') {
-        warn "Passed include_directories\n";
+        #warn "Passed include_directories\n";
         foreach my $d (@{$conf->{'include_directories'}}) {
-          warn "got dir $d\n";
+          #warn "got dir $d\n";
           add_include_directory ($d);
         }
       } elsif ($key eq 'values') {

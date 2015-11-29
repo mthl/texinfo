@@ -239,12 +239,10 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       else if (command_data(closed_command).flags & (CF_explained | CF_inline))
         { // 5129
         }
-      else if (closed_command == CM_errormsg)
+      else if (closed_command == CM_errormsg) // 5173
         {
-          // XXXXX !!!!!!
-          // Texinfo::Convert::Text::convert (...)
-          // XXXXX !!!!!!
-          abort ();
+          // if (!ignore_global_commands)
+          line_error (text_convert (current));
         }
       else if (command_with_command_as_argument (current->parent->parent)
                && current->contents.number == 0)

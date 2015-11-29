@@ -40,6 +40,7 @@ static size_t error_space = 0;
 void
 line_error (char *message)
 {
+  if (!message) abort ();
   if (error_number == error_space)
     {
       error_list = realloc (error_list,
@@ -64,6 +65,7 @@ line_errorf (char *format, ...)
 void
 line_warn (char *message)
 {
+  if (!message) abort ();
   if (error_number == error_space)
     {
       error_list = realloc (error_list,

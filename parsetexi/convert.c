@@ -32,10 +32,10 @@ text_convert (ELEMENT *e)
       if (e->contents.list[which]->type == ET_spaces_at_end)
         which--;
 
-      if (which > 0)
+      if (which > 0 && e->contents.list[which]->text.text)
         return e->contents.list[which]->text.text;
     }
-  return "bar";
+  return "AAAAAAAAA";
 }
 
 /* IN_UC is non-zero if we are converting to upper case. */
