@@ -356,6 +356,27 @@ sub parse_texi_file ($$)
   return $TREE;
 }
 
+# Replacement for Texinfo::Parser::parse_texi_text (line 757)
+#
+# Used in tests under tp/t.
+sub parse_texi_text($$;$$$$)
+{
+    my $self = shift;
+    my $text = shift;
+    my $lines_nr = shift;
+    my $file = shift;
+    my $macro = shift;
+    my $fixed_line_number = shift;
+
+    return undef if (!defined($text));
+
+    $self = parser() if (!defined($self));
+    parse_string($text);
+    my $tree = build_texinfo_tree ();
+    _add_parents ($tree);
+    return $tree;
+}
+
 # Replacement for Texinfo::Parser::parse_texi_line (line 918)
 sub parse_texi_line($$;$$$$)
 {
