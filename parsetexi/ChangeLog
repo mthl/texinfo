@@ -1,3 +1,8 @@
+2015-11-30  Gavin Smith  <gavinsmith0123@gmail.com>
+ 
+	* Parsetexi/lib/Parsetexi.pm (parser): Set conf keys on parser 
+	object.
+
 2015-11-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* Parsetexi/lib/Parsetexi.pm (parse_texi_text): Add function.

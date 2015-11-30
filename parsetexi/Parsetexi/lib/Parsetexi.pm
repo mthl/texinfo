@@ -82,6 +82,16 @@ my %parser_default_configuration =
   (%Texinfo::Common::default_parser_state_configuration,
    %default_customization_values);
 
+use Data::Dumper;
+
+# simple deep copy of a structure
+sub _deep_copy($)
+{
+  my $struct = shift;
+  my $string = Data::Dumper->Dump([$struct], ['struct']);
+  eval $string;
+  return $struct;
+}
 
 # Stub for Texinfo::Parser::parser (line 574)
 sub parser (;$$)
@@ -120,6 +130,12 @@ sub parser (;$$)
   wipe_values ();
   if (defined($conf)) {
     foreach my $key (keys (%$conf)) {
+      if (ref($conf->{$key}) ne 'CODE' and $key ne 'values') {
+        $parser->{$key} = _deep_copy($conf->{$key});
+      } else {
+        #$parser->{$key} = $conf->{$key};
+      }
+
       if ($key eq 'include_directories') {
         #warn "Passed include_directories\n";
         foreach my $d (@{$conf->{'include_directories'}}) {
