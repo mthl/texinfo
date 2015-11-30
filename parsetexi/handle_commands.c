@@ -238,28 +238,31 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                 }
               else
                 { /* 4480 */
-                  /* TODO - need the max_columns value for this
-                  if (counter_value (max_columns, parent) == 0)
+                  int max_columns = 0;
+                  KEY_PAIR *prototypes;
+
+                  prototypes = lookup_extra_key  (parent, "prototypes");
+                  if (prototypes)
+                    max_columns = prototypes->value->contents.number;
+
+                  if (max_columns == 0)
                     {
                       line_warnf ("@%s in empty multitable",
                                   command_name(cmd));
                     }
-                  else */ if (cmd == CM_tab)
+                  else if (cmd == CM_tab)
                     { // 4484
                       ELEMENT *row;
-
                       row = last_contents_child (parent);
                       if (row->type == ET_before_item)
                         line_error ("@tab before @item");
-                      /* TODO 4489
+                      // 4489
                       else if (counter_value (&count_cells, parent)
-                               >= counter_value (&max_columns, parent))
+                               >= max_columns)
                         {
-                          line_error ("too many columns in multitable item"
-                                      " (max %d)",
-                                      counter_value (&max_columns, parent));
+                          line_errorf ("too many columns in multitable item"
+                                       " (max %d)", max_columns);
                         }
-                      */
                       else // 4493
                         {
                           char *s;
@@ -271,7 +274,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                           debug ("TAB");
 
                           asprintf (&s, "%d",
-                                    counter_value (&count_cells, parent));
+                                    counter_value (&count_cells, row));
                           add_extra_string (current, "cell_number", s);
                         }
                     }
@@ -294,7 +297,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                         counter_pop (&count_cells);
                       counter_push (&count_cells, row, 1);
                       asprintf (&s, "%d",
-                                counter_value (&count_cells, parent));
+                                counter_value (&count_cells, row));
                       add_extra_string (current, "cell_number", s);
                     }
                 }

@@ -793,7 +793,7 @@ end_line_starting_block (ELEMENT *current)
               new->type = ET_bracketed_multitable_prototype;
               add_to_element_contents (prototypes, new);
             }
-          else if (e->text.end > 0)
+          else if (e->text.end > 0) // 2893
             {
               /* TODO: Split the text up by whitespace. */
 
@@ -806,11 +806,14 @@ end_line_starting_block (ELEMENT *current)
                   add_to_element_contents (prototypes, new);
                 }
             }
-          else
+          else // 2913
             {
               abort (); /*TODO*/
             }
         }
+
+      //add_extra_number (current->parent, "max_columns",
+            //prototypes->contents.number);
 
       add_extra_key_contents (current->parent, "prototypes", prototypes);
     }
