@@ -61,9 +61,9 @@ new_macro (char *name, ELEMENT *macro)
 }
 
 // 1088
-/* COMMAND_ID will be either CM_macro or CM_rmacro.  Read the line defining a 
-   macro's name and the arguments it takes, and return this information in a 
-   new ELEMENT. */
+/* CMD will be either CM_macro or CM_rmacro.  Read the line defining a macro's 
+   name and the arguments it takes, and return this information in a new 
+   ELEMENT. */
 ELEMENT *
 parse_macro_command_line (enum command_id cmd, char **line_inout,
                           ELEMENT *parent)
@@ -80,7 +80,9 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
   name = read_command_name (&line);
   if (!name)
     {
-      abort (); //error
+      line_errorf ("@%s requires a name", command_name (cmd));
+      add_extra_string (macro, "invalid_syntax", "1");
+      return macro;
     }
 
   macro_name = new_element (ET_macro_name);

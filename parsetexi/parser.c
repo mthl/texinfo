@@ -661,10 +661,12 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
                   || (current->parent->cmd != CM_macro
                       && current->parent->cmd != CM_rmacro)))
             {
-              char *name;
-
-              name = element_text (args_child_by_index (current, 0));
-              new_macro (name, current); // 3808
+              if (!lookup_extra_key (current, "invalid_syntax"))
+                {
+                  char *name;
+                  name = element_text (args_child_by_index (current, 0));
+                  new_macro (name, current); // 3808
+                }
             }
 
           current = current->parent;

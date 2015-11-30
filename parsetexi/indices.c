@@ -101,7 +101,7 @@ index_by_name (char *name)
 {
   int i;
 
-  for (i = 0; i < num_index_commands; i++)
+  for (i = 0; i < number_of_indices; i++)
     {
       if (!strcmp (index_names[i]->name, name))
         return index_names[i];

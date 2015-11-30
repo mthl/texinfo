@@ -1114,14 +1114,20 @@ end_line_misc_line (ELEMENT *current)
           current = close_commands (current, end_id,
                           &closed_command, 0); /* 3292 */
           if (!closed_command)
-            abort (); // 3335
-
-          close_command_cleanup (closed_command);
-          // 3301 INLINE_INSERTCOPYING
-          add_to_element_contents (closed_command, end_elt); // 3321
-          // 3324 ET_menu_comment
-          if (close_preformatted_command (end_id))
-            current = begin_preformatted (current);
+            {
+              /* shouldn't get here, but got here
+                 on 2015.11.30 for t/16raw.t */
+              //abort (); // 3335
+            }
+          else
+            {
+              close_command_cleanup (closed_command);
+              // 3301 INLINE_INSERTCOPYING
+              add_to_element_contents (closed_command, end_elt); // 3321
+              // 3324 ET_menu_comment
+              if (close_preformatted_command (end_id))
+                current = begin_preformatted (current);
+            }
         }
       else
         {
@@ -1332,7 +1338,7 @@ end_line (ELEMENT *current)
               else if (name->contents.number == 1)
                 {
                   char *t = name->contents.list[0]->text.text;
-                  if (t[strspn (t, whitespace_chars)] != '\0')
+                  if (t && t[strspn (t, whitespace_chars)] != '\0')
                     index_entry = name;
                 }
             }
