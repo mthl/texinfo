@@ -77,6 +77,7 @@ add_extra_key_index_entry (ELEMENT *e, char *key, INDEX_ENTRY_REF *value)
 void
 add_extra_key_misc_args (ELEMENT *e, char *key, ELEMENT *value)
 {
+  if (!value) return;
   add_extra_key (e, key, value);
   e->extra[e->extra_number - 1].type = extra_misc_args;
 }

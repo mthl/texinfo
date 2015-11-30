@@ -163,10 +163,11 @@ parse_line_command_args (ELEMENT *line_command)
 
   line_args = new_element (ET_NONE);
 
+  cmd = line_command->cmd;
   if (arg->contents.number == 0)
     {
       /*command_errorf ("@%s missing argument",
-                      command_name (line_command->cmd));*/
+                      command_name (cmd));*/
       return 0;
     }
 
@@ -193,18 +194,21 @@ parse_line_command_args (ELEMENT *line_command)
         {
           /* Error - too many arguments. */
           line_errorf ("superfluous argument to @%s",
-                       command_name (line_command->cmd));
+                       command_name (cmd));
+          break;
         }
     }
+
   if (!argarg)
     {
-      abort();
+      command_errorf ("@%s missing argument", command_name(cmd));
+      add_extra_string (line_command, "missing_argument", "1");
+      return 0;
     }
 
   if (argarg->text.end == 0)
      return 0; // 5519
 
-  cmd = line_command->cmd;
   line = argarg->text.text;
 
   switch (cmd)
@@ -1148,22 +1152,26 @@ end_line_misc_line (ELEMENT *current)
       /* Check if in multitable. */
       if (!current->parent || current->parent->cmd != CM_multitable)
         {
-          abort ();
+          command_error
+            ("@columnfractions only meaningful on a @multitable line");
         }
-
-      // pop and check context stack
-
-      current = current->parent;
-
-      if (misc_args = lookup_extra_key (misc_cmd, "misc_args"))
+      else
         {
-          add_extra_key_misc_args (current, "columnfractions", 
-                                   misc_args->value);
-        }
+          // pop and check context stack
+          //pop_context (); /* ct_line */;
 
-      before_item = new_element (ET_before_item);
-      add_to_element_contents (current, before_item);
-      current = before_item;
+          current = current->parent;
+
+          if (misc_args = lookup_extra_key (misc_cmd, "misc_args"))
+            {
+              add_extra_key_misc_args (current, "columnfractions", 
+                                       misc_args->value);
+            }
+
+          before_item = new_element (ET_before_item);
+          add_to_element_contents (current, before_item);
+          current = before_item;
+        }
     }
   else if (command_data(cmd).flags & CF_root) /* 3380 */
     {
