@@ -812,7 +812,22 @@ end_line_starting_block (ELEMENT *current)
             }
           else // 2913
             {
-              abort (); /*TODO*/
+              // Perl code was sceptical whether we could get here,
+              // but we got here from t/21multitable.t on 2015.11.30.
+              if (!e->cmd)
+                {
+                  command_warnf ("unexpected argument on @%s line:",
+                                 command_name(current->cmd));
+                  // TODO: Convert argument to Texinfo
+                }
+              else if (e->cmd != CM_c && e->cmd != CM_comment)
+                {
+                  /* Copy element. */
+                  ELEMENT *new;
+                  new = malloc (sizeof (ELEMENT));
+                  memcpy (new, e, sizeof (ELEMENT));
+                  add_to_element_contents (prototypes, new);
+                }
             }
         }
 

@@ -238,7 +238,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                 }
               else
                 { /* 4480 */
-                  int max_columns = 0;
+                  int max_columns = 99; // FIXME
                   KEY_PAIR *prototypes;
 
                   prototypes = lookup_extra_key  (parent, "prototypes");
@@ -257,7 +257,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                       if (row->type == ET_before_item)
                         line_error ("@tab before @item");
                       // 4489
-                      else if (counter_value (&count_cells, parent)
+                      else if (counter_value (&count_cells, row)
                                >= max_columns)
                         {
                           line_errorf ("too many columns in multitable item"
@@ -301,6 +301,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                       add_extra_string (current, "cell_number", s);
                     }
                 }
+              current = begin_preformatted (current);
             } /* In @multitable */
           else if (cmd == CM_tab) // 4526
             {
