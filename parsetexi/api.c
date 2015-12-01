@@ -280,13 +280,18 @@ element_to_perl_hash (ELEMENT *e)
             case extra_element:
               /* For references to other parts of the tree, create the hash so 
                  we can point to it.  */
-              if (!f->hv && f->parent_type != route_not_in_tree)
+              if (!f->hv)
                 {
-                  /* TODO: Are there any extra values which are
-                     extra_element that are route_not_in_tree?  Consider
-                     eliminating use of 'parent_type' to differentiate types
-                     of extra value. */
-                  f->hv = newHV ();
+                  if (f->parent_type != route_not_in_tree)
+                    {
+                      /* TODO: Are there any extra values which are
+                         extra_element that are route_not_in_tree?  Consider
+                         eliminating use of 'parent_type' to differentiate types
+                         of extra value. */
+                      f->hv = newHV ();
+                    }
+                  else
+                    element_to_perl_hash (f);
                 }
               STORE(newRV_inc ((SV *)f->hv));
               break;
@@ -317,11 +322,15 @@ element_to_perl_hash (ELEMENT *e)
                     {
                       ELEMENT *h;
                       h = g->contents.list[k];
-                      /* TODO: Check if any of the elements in the array
-                         are not in the main tree - if so, we will have to
-                         create them. */
                       if (!h->hv)
-                        h->hv = newHV ();
+                        {
+                          if (h->parent_type != route_not_in_tree)
+                            h->hv = newHV ();
+                          else
+                            {
+                              element_to_perl_hash (h);
+                            }
+                        }
                       av_push (av2, newRV_inc ((SV*)h->hv));
                     }
                 }

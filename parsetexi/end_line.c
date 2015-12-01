@@ -888,6 +888,32 @@ end_line_starting_block (ELEMENT *current)
 
       /* 3052 - if no command_as_argument given, default to @bullet for
          @itemize, and @asis for @table. */
+      if (current->cmd == CM_itemize
+        && !lookup_extra_key (current, "block_command_line_contents"))
+        {
+          ELEMENT *e, *contents, *contents2;
+
+          e = new_element (ET_command_as_argument);
+          e->cmd = CM_bullet;
+          e->parent_type = route_not_in_tree;
+          //e->parent = current; // FIXME: done in Perl code
+          add_extra_key_element (current, "command_as_argument", e);
+
+          contents = new_element (ET_NONE);
+          contents2 = new_element (ET_NONE);
+          contents2->parent_type = route_not_in_tree;
+          add_to_contents_as_array (contents2, e);
+          add_to_element_contents (contents, contents2);
+          add_extra_key_contents_array (current, "block_command_line_contents",
+                                        contents);
+        }
+      else if (item_line_command (current->cmd)
+          && !lookup_extra_key (current, "command_as_argument"))
+        {
+          ELEMENT *e = new_element (ET_command_as_argument);
+          e->cmd = CM_asis;
+          add_extra_key_element (current, "command_as_argument", e);
+        }
 
       {
         ELEMENT *bi = new_element (ET_before_item);
@@ -974,6 +1000,7 @@ end_line_misc_line (ELEMENT *current)
         }
       else
         {
+          add_extra_string (current, "text_arg", text);
           if (current->cmd == CM_end) /* 3128 */
             {
               char *line = text;
@@ -1002,14 +1029,23 @@ end_line_misc_line (ELEMENT *current)
 
                       if (command_data(end_id).data == BLOCK_conditional)
                         {
-                          if (conditional_number > 0)
+                          enum command_id popped;
+                          if (conditional_number == 0)
+                            goto conditional_stack_fail;
+                          popped = pop_conditional_stack ();
+                          if (popped != end_id)
                             {
-                              enum command_id popped;
-                              popped = pop_conditional_stack ();
-                              if (popped != end_id)
-                                abort ();
+                              push_conditional_stack (popped);
+                              goto conditional_stack_fail;
+                            }
+                          if (0)
+                            {
+                          conditional_stack_fail:
+                              command_error ("unmatched @end");
                             }
                         }
+                      add_extra_string (current, "command_argument",
+                                        strdup (end_command));
                     }
                 }
               else

@@ -555,6 +555,8 @@ start_empty_line_after_command (ELEMENT *current, char **line_inout,
 
 /* Parts of parse_texi lines 3676 - 5372 */
 
+/* If the parent element takes a command as an argument, like
+   @itemize @bullet. */
 int
 command_with_command_as_argument (ELEMENT *current)
 {

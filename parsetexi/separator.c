@@ -37,6 +37,13 @@ register_command_arg (ELEMENT *current, char *key)
   ELEMENT *new;
   KEY_PAIR *k;
 
+  new = trim_spaces_comment_from_content (current);
+  if (new->contents.number == 0)
+    {
+      free (new);
+      return;
+    }
+
   /* FIXME: Could we add all the command args together, instead of one-by-one,
      to avoid having to look for the extra value every time? */
   k = lookup_extra_key (current->parent, key);
@@ -48,8 +55,6 @@ register_command_arg (ELEMENT *current, char *key)
       value->parent_type = route_not_in_tree;
       add_extra_key_contents_array (current->parent, key, value);
     }
-
-  new = trim_spaces_comment_from_content (current);
 
   add_to_contents_as_array (value, new);
 }

@@ -110,10 +110,11 @@ next_text (void)
             i->ptext = p + 1;
           else
             i->ptext = p; /* The next time, we will pop the input source. */
-          return new;
 
-          if (line_nr.line_nr != 0)
-              line_nr.line_nr++;
+          if (line_nr.line_nr != -1)
+            line_nr.line_nr++;
+
+          return new;
           // what if it doesn't end in a newline ?
 
           break;
@@ -216,7 +217,7 @@ void
 input_push_text_with_line_nos (char *text)
 {
   input_push_text (text);
-  line_nr.line_nr = 1;
+  line_nr.line_nr = 0;
   line_nr.file_name = 0;
 }
 
