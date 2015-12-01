@@ -69,7 +69,7 @@ parse_text (char *string)
   ELEMENT *root;
   init_index_commands (); /* FIXME - probably not necessary */
   root = new_element (ET_text_root);
-  input_push_text (strdup (string));
+  input_push_text_with_line_nos (strdup (string));
   Root = parse_texi (root);
 }
 
@@ -449,6 +449,8 @@ element_to_perl_hash (ELEMENT *e)
         {
           STORE("file_name", newSVpv (line_nr->file_name, 0));
         }
+      else
+        STORE("file_name", newSVpv ("", 0));
 
       if (line_nr->line_nr)
         {

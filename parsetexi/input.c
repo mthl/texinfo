@@ -111,6 +111,9 @@ next_text (void)
           else
             i->ptext = p; /* The next time, we will pop the input source. */
           return new;
+
+          if (line_nr.line_nr != 0)
+              line_nr.line_nr++;
           // what if it doesn't end in a newline ?
 
           break;
@@ -205,6 +208,16 @@ input_push_text (char *text)
 
   /* TODO: What goes in LINE_NR?  It depends whether this text is the result of 
      a macro expansion, or was pushed back when reading the file preamble. */
+}
+
+/* Used in tests - like input_push_text, but the lines from the text have
+   line numbers. */
+void
+input_push_text_with_line_nos (char *text)
+{
+  input_push_text (text);
+  line_nr.line_nr = 1;
+  line_nr.file_name = 0;
 }
 
 

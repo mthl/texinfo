@@ -534,9 +534,11 @@ handle_block_command (ELEMENT *current, char **line_inout,
           push_context (ct_def);
           block = new_element (ET_NONE);
           block->cmd = cmd;
+          block->line_nr = line_nr;
           add_to_element_contents (current, block);
           current = block;
           def_line = new_element (ET_def_line);
+          def_line->line_nr = line_nr;
           add_to_element_contents (current, def_line);
           current = def_line;
           add_extra_string (current, "def_command", command_name(cmd));
@@ -549,6 +551,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
           ELEMENT *block = new_element (ET_NONE);
 
           block->cmd = cmd;
+          block->line_nr = line_nr;
           add_to_element_contents (current, block);
           current = block;
         }

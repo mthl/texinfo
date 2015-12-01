@@ -1,3 +1,8 @@
+2015-12-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* api.c (parse_text): Use new function input_push_text_with_line_nos
+	to keep track of line numbers (for tests).
+
 2015-11-30  Gavin Smith  <gavinsmith0123@gmail.com>
  
 	* Parsetexi/lib/Parsetexi.pm (parser): Set conf keys on parser 

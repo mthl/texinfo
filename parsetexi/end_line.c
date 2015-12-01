@@ -762,13 +762,9 @@ ELEMENT *
 end_line_starting_block (ELEMENT *current)
 {
   enum context c;
-  // pop and check context_stack
   c = pop_context ();
   if (c != ct_line)
-    {
-      // bug
-      abort ();
-    }
+    abort ();
 
   // 2881
   if (current->parent->cmd == CM_multitable)
@@ -844,6 +840,14 @@ end_line_starting_block (ELEMENT *current)
 
   if (current->parent->cmd == CM_float) // 2943
     {
+      current->parent->line_nr = line_nr;
+      if (current->parent->args.number > 0)
+        {
+          if (current->parent->args.number > 1)
+            {
+              // TODO 2950
+            }
+        }
     }
   current = current->parent; //2965
   //counter_pop (&count_remaining_args);
