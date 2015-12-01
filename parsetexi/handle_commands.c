@@ -414,7 +414,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           if (!(command_data(cmd).flags & CF_def))
             push_context (ct_line);
         }
-      start_empty_line_after_command (current, &line); //4621
+      start_empty_line_after_command (current, &line, misc); //4621
     }
 
   /* line 4622 */
@@ -506,6 +506,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
     }
   else /* line 4710 */
     {
+      ELEMENT *block = 0;
       // 4715
       if (flags & CF_menu
           && (current->type == ET_menu_comment
@@ -530,7 +531,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
       // 4740
       if (flags & CF_def)
         {
-          ELEMENT *block, *def_line;
+          ELEMENT *def_line;
           push_context (ct_def);
           block = new_element (ET_NONE);
           block->cmd = cmd;
@@ -548,7 +549,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
       else
         {
           /*  line 4756 */
-          ELEMENT *block = new_element (ET_NONE);
+          block = new_element (ET_NONE);
 
           block->cmd = cmd;
           block->line_nr = line_nr;
@@ -616,7 +617,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
         } /* 4827 */
       // mark_and_warn_invalid ();
       // register_global_command ();
-      start_empty_line_after_command (current, &line);
+      start_empty_line_after_command (current, &line, block);
     }
 
 funexit:

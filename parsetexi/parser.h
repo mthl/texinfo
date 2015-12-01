@@ -45,7 +45,8 @@ ELEMENT *begin_preformatted (ELEMENT *current);
 ELEMENT *end_preformatted (ELEMENT *current);
 char *read_command_name (char **ptr);
 ELEMENT *merge_text (ELEMENT *current, char *text);
-void start_empty_line_after_command (ELEMENT *current, char **line_inout);
+void start_empty_line_after_command (ELEMENT *current, char **line_inout,
+                                     ELEMENT *command);
 ELEMENT *trim_spaces_comment_from_content (ELEMENT *original);
 
 extern const char *whitespace_chars, *whitespace_chars_except_newline;

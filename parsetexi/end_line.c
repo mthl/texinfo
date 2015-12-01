@@ -1141,6 +1141,9 @@ end_line_misc_line (ELEMENT *current)
             }
           else
             {
+              // FIXME: end_elt correct?
+              add_extra_key_element (end_elt, "command", closed_command);
+              add_extra_key_element (closed_command, "end_command", end_elt);
               close_command_cleanup (closed_command);
               // 3301 INLINE_INSERTCOPYING
               add_to_element_contents (closed_command, end_elt); // 3321

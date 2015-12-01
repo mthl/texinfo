@@ -530,7 +530,8 @@ trim_spaces_comment_from_content (ELEMENT *original)
    text follows on the line.  Used after line commmands or commands starting
    a block. */
 void
-start_empty_line_after_command (ELEMENT *current, char **line_inout)
+start_empty_line_after_command (ELEMENT *current, char **line_inout,
+                                ELEMENT *command)
 {
   char *line = *line_inout;
   ELEMENT *e;
@@ -541,6 +542,12 @@ start_empty_line_after_command (ELEMENT *current, char **line_inout)
   add_to_element_contents (current, e);
   text_append_n (&e->text, line, len);
   line += len;
+
+  if (command)
+    {
+      add_extra_key_element (e, "command", command);
+      add_extra_key_element (command, "spaces_after_command", e);
+    }
 
   *line_inout = line;
 }
@@ -688,7 +695,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
           else
             {
               debug ("CLOSED raw %s", command_name(end_cmd));
-              start_empty_line_after_command (current, &line); // 3831
+              start_empty_line_after_command (current, &line, 0); // 3831
             }
         }
       else /* 3833 save the line verbatim */
@@ -1146,8 +1153,8 @@ parse_texi (ELEMENT *root_elt)
          element type can be changed in 'abort_empty_line' when more text is
          read. */
       if (!((command_flags(current) & CF_block)
-             && (command_data(current->cmd).data != BLOCK_raw
-                 || command_data(current->cmd).data != BLOCK_conditional)
+             && (command_data(current->cmd).data == BLOCK_raw
+                 || command_data(current->cmd).data == BLOCK_conditional)
             || current->parent && current->parent->cmd == CM_verb))
         {
           ELEMENT *e;
