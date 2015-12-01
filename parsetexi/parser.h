@@ -29,6 +29,7 @@ extern int debug_output;
 void register_command_arg (ELEMENT *current, char *key);
 ELEMENT *handle_separator (ELEMENT *current, char separator,
                            char **line_inout);
+void remove_empty_content_arguments (ELEMENT *current);
 
 /* In parser.c */
 ELEMENT *parse_texi (ELEMENT *root_elt);

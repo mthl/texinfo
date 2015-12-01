@@ -295,6 +295,32 @@ funexit:
   return current;
 }
 
+// 2577
+/* Remove 'brace_command_contents' or 'block_command_line_contents'
+   extra value if empty.
+   TODO: If not empty, remove empty elements thereof. */
+void
+remove_empty_content_arguments (ELEMENT *current)
+{
+  KEY_PAIR *k;
+
+  k = lookup_extra_key (current, "block_command_line_contents");
+  if (!k)
+    k = lookup_extra_key (current, "brace_command_contents");
+  if (!k)
+    return;
+
+  while (k->value->contents.number > 0
+         && last_contents_child(k->value)->contents.number == 0)
+    destroy_element (pop_element_from_contents (k->value));
+
+  if (k->value->contents.number == 0)
+    {
+      k->type = extra_deleted;
+    }
+}
+
+
 /* Handle a comma separating arguments to a Texinfo command. */
 /* 5228 */
 ELEMENT *
@@ -314,7 +340,7 @@ handle_comma (ELEMENT *current, char **line_inout)
       // 5033
       isolate_last_space (current, 0);
       register_command_arg (current, "brace_command_contents");
-      //remove_empty_content_arguments ();
+      remove_empty_content_arguments (current);
     }
   else
     {

@@ -864,6 +864,7 @@ end_line_starting_block (ELEMENT *current)
       // TODO: Free lists?
       current->args.number = 0;
     }
+  remove_empty_content_arguments (current);
 
   if (command_flags(current) & CF_blockitem) // 2981
     {

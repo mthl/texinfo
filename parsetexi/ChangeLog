@@ -1,5 +1,9 @@
 2015-12-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* separator.c (remove_empty_content_arguments): Implement.
+
+2015-12-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* api.c (parse_text): Use new function input_push_text_with_line_nos
 	to keep track of line numbers (for tests).
 
