@@ -206,7 +206,9 @@ element_to_perl_hash (ELEMENT *e)
       /* TODO: Same optimizations as for 'type'. */
     }
 
-  if (e->contents.number > 0)
+  if (e->contents.number > 0
+      || e->type == ET_text_root // FIXME special case
+      || e->cmd == CM_node) // FIXME special case
     {
       AV *av;
       int i;
@@ -339,7 +341,14 @@ element_to_perl_hash (ELEMENT *e)
             case extra_string:
               { /* A simple string. */
               char *value = (char *) f;
-              STORE(newSVpv (value, 0));
+              if (strcmp (key, "level"))
+                STORE(newSVpv (value, 0));
+              else
+                {
+                  // FIXME: don't use level as a separate key
+                  hv_store (e->hv, key, strlen (key),
+                           newSVpv(value, 0), 0);
+                }
               break;
               }
             case extra_misc_args:

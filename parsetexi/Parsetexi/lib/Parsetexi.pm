@@ -205,6 +205,7 @@ sub _add_parents ($) {
   }
 
   # 'level' is set in Parser.pm, but not under 'extra'.
+  # currently this isn't needed as level is set in api.c instead.
   if (defined ($elt->{'extra'}) and defined $elt->{'extra'}{'level'}) {
     $elt->{'level'} = $elt->{'extra'}{'level'};
   }

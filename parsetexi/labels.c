@@ -25,8 +25,12 @@ LABEL *labels_list = 0;
 size_t labels_number = 0;
 size_t labels_space = 0;
 
+/* Register a label, that is something that may be the target of a reference
+   and must be unique in the document.  Corresponds to @node, @anchor and 
+   @float second arg. */
 void register_label (ELEMENT *current, ELEMENT *label)
 {
+  char *normalized;
   if (labels_number == labels_space)
     {
       labels_space += 1;
@@ -36,6 +40,10 @@ void register_label (ELEMENT *current, ELEMENT *label)
         abort ();
     }
 
-  labels_list[labels_number].label = convert_to_normalized (label);
+  normalized = convert_to_normalized (label);
+  labels_list[labels_number].label = normalized;
   labels_list[labels_number++].target = current;
+
+  // 2504
+  add_extra_string (current, "normalized", normalized);
 }

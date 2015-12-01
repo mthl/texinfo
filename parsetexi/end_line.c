@@ -931,7 +931,7 @@ end_line_starting_block (ELEMENT *current)
       ELEMENT *menu_comment = new_element (ET_menu_comment);
       add_to_element_contents (current, menu_comment);
       current = menu_comment;
-      debug ("MENU COMMENT OPEN");
+      debug ("MENU_COMMENT OPEN");
       push_context (ct_preformatted);
     }
   current = begin_preformatted (current);
@@ -1176,17 +1176,29 @@ end_line_misc_line (ELEMENT *current)
               //abort (); // 3335
             }
           else
-            {
+            { // 3295
               // FIXME: end_elt correct?
               add_extra_key_element (end_elt, "command", closed_command);
               add_extra_key_element (closed_command, "end_command", end_elt);
               close_command_cleanup (closed_command);
+
               // 3301 INLINE_INSERTCOPYING
+
               add_to_element_contents (closed_command, end_elt); // 3321
+
               // 3324 ET_menu_comment
-              if (close_preformatted_command (end_id))
-                current = begin_preformatted (current);
+              if (command_flags(closed_command) & CF_menu)
+                {
+                  ELEMENT *e;
+                  debug ("CLOSE menu but still in menu context");
+                  e = new_element (ET_menu_comment);
+                  add_to_element_contents (current, e);
+                  current = e;
+                  push_context (ct_preformatted);
+                }
             }
+          if (close_preformatted_command (end_id))
+            current = begin_preformatted (current);
         }
       else
         {
@@ -1293,7 +1305,38 @@ end_line (ELEMENT *current)
           /* Add empty_line to higher-level element. */
           add_to_element_contents (current, e);
         }
-      //else if () // in menu_entry_description
+      else if (current->type == ET_preformatted
+               && current->parent->type == ET_menu_entry_description)
+        {
+          ELEMENT *empty_line, *e;
+          empty_line = pop_element_from_contents (current);
+          if (current->contents.number == 0)
+            {
+              current = current->parent;
+              pop_element_from_contents (current);
+            }
+          else
+            current = current->parent;
+
+          pop_context (); //ct_preformatted
+
+          current = current->parent->parent;
+          e = new_element (ET_menu_comment);
+          add_to_element_contents (current, e);
+
+          current = e;
+          e = new_element (ET_preformatted);
+          add_to_element_contents (current, e);
+
+          current = e;
+          e = new_element (ET_after_description_line);
+          text_append (&e->text, empty_line->text.text);
+          destroy_element (empty_line);
+          add_to_element_contents (current, e);
+
+          push_context (ct_preformatted);
+          debug ("MENU: END DESCRIPTION, OPEN COMMENT");
+        }
       else if (in_paragraph_context (current_context ()))
         {
           current = end_paragraph (current);
@@ -1305,7 +1348,7 @@ end_line (ELEMENT *current)
   else if (current->type == ET_menu_entry_name
            || current->type == ET_menu_entry_node)
     {
-      ELEMENT *end_comment;
+      ELEMENT *end_comment = 0;
       int empty_menu_entry_node = 0;
 
       if (current->type == ET_menu_entry_node)
@@ -1335,6 +1378,96 @@ end_line (ELEMENT *current)
       /* Abort the menu entry if there is no destination node given. */
       if (empty_menu_entry_node || current->type == ET_menu_entry_name)
         {
+          ELEMENT *menu, *menu_entry, *description_or_menu_comment = 0;
+          debug ("FINALLY NOT MENU ENTRY");
+          menu = current->parent->parent;
+          menu_entry = pop_element_from_contents (menu);
+          if (menu->contents.number > 0
+              && last_contents_child(menu)->type == ET_menu_entry)
+            { // 2697
+              ELEMENT *entry, *description = 0;
+              int j;
+
+              entry = last_contents_child(menu);
+              for (j = entry->args.number - 1; j >= 0; j--)
+                {
+                  ELEMENT *e = args_child_by_index (entry, j);
+                  if (e->type == ET_menu_entry_description)
+                    {
+                      description = e;
+                      break;
+                    }
+                }
+              if (description)
+                description_or_menu_comment = description;
+              else
+                { // 2707
+                  /* Normally this cannot happen. */
+                  abort ();
+                }
+            }
+          else if (menu->contents.number > 0
+                   && last_contents_child(menu)->type == ET_menu_comment)
+            { // 2716
+              description_or_menu_comment = last_contents_child(menu);
+            }
+          if (description_or_menu_comment)
+            {
+              current = description_or_menu_comment;
+              if (current->contents.number > 0
+                  && last_contents_child(current)->type == ET_preformatted)
+                current = last_contents_child(current);
+              else // 2725
+                {
+                  /* This should not happen */
+                  //abort ();
+                  ELEMENT *e;
+                  e = new_element (ET_preformatted);
+                  add_to_element_contents (current, e);
+                  current = e;
+                }
+              push_context (ct_preformatted);
+            }
+          else // 2735
+            {
+              ELEMENT *e;
+              e = new_element (ET_menu_comment);
+              add_to_element_contents (menu, e);
+              current = e;
+              e = new_element (ET_preformatted);
+              add_to_element_contents (current, e);
+              current = e;
+              push_context (ct_preformatted);
+              debug ("THEN MENU_COMMENT OPEN");
+            }
+          {
+          int i, j;
+          for (i = 0; i < menu_entry->args.number; i++)
+            {
+              ELEMENT *arg = args_child_by_index(menu_entry, i);
+              if (arg->text.end > 0)
+                current = merge_text (current, arg->text.text);
+              else
+                {
+                  ELEMENT *e;
+                  for (j = 0; j < arg->contents.number; j++)
+                    {
+                      e = contents_child_by_index (arg, j);
+                      if (e->text.end > 0)
+                        {
+                          current = merge_text (current, e->text.text);
+                          destroy_element (e);
+                        }
+                      else
+                        {
+                          add_to_element_contents (current, e);
+                        }
+                    }
+                }
+              destroy_element (arg);
+            }
+          destroy_element (menu_entry);
+          }
         }
       else // 2768
         {

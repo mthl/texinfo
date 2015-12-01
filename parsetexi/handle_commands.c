@@ -401,12 +401,8 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           /* 4586 - author */
           /* 4612 - dircategory */
           if (cmd == CM_dircategory && current_node)
-            {
-              /* warning - @dircategory after first node. */
-              abort ();
-            }
+            line_warn ("@dircategory after first node");
 
-          /* 4617 - current to the first argument (ELEMENT *arg).  */
           current = last_args_child (current); /* arg */
 
           /* add 'line' to context_stack (Parser.pm:141).  This will be the
