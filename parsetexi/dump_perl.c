@@ -545,6 +545,8 @@ dump_entries_of_index (INDEX *idx)
   int i;
   INDEX_ENTRY *e;
 
+  if (idx->index_number == 0)
+    return;
   text_printf (&indices_dump, "\n'index_entries' => [");
   for (i = 0; i < idx->index_number; i++)
     {

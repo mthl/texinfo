@@ -19,3 +19,6 @@ char *dump_root_element_2 (void);
 
 /* In input.c */
 void add_include_directory (char *filename);
+
+/* In indices.c */
+void init_index_commands (void);

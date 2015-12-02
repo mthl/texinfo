@@ -118,21 +118,25 @@ sub parser (;$$)
 
   );
 
-  my %parser_hash = %parser_blanks;
-  @parser_hash {keys %default_customization_values} =
-    values %default_customization_values;
+  # my %parser_hash = %parser_blanks;
+  # @parser_hash {keys %default_customization_values} =
+  #   values %default_customization_values;
 
-  my $parser = \%parser_hash;
+  # my $parser = \%parser_hash;
+
+  my $parser = _deep_copy(\%parser_default_configuration);
 
   $parser->{'gettext'} = $parser_default_configuration{'gettext'};
   $parser->{'pgettext'} = $parser_default_configuration{'pgettext'};
 
   wipe_values ();
+  init_index_commands ();
   if (defined($conf)) {
     foreach my $key (keys (%$conf)) {
       if (ref($conf->{$key}) ne 'CODE' and $key ne 'values') {
         $parser->{$key} = _deep_copy($conf->{$key});
       } else {
+        warn "key is $key";
         #$parser->{$key} = $conf->{$key};
       }
 
@@ -180,7 +184,9 @@ sub _parse_texi ($;$)
   my $self = shift;
   my $root = shift;
 
-  return Texinfo::Parser::_parse_texi ($self, $root);
+  my $self2 = Texinfo::Parser::parser();
+  $self2->{'input'} = $self->{'input'};
+  return Texinfo::Parser::_parse_texi ($self2, $root);
 }
 
 use Data::Dumper;
@@ -245,6 +251,9 @@ sub _complete_node_list ($$) {
   my $self = shift;
   my $root = shift;
 
+  if (!defined $self->{'nodes'}) {
+    $self->{'nodes'} = [];
+  }
   foreach my $child (@{$root->{'contents'}}) {
     if ($child->{'cmdname'} and $child->{'cmdname'} eq 'node') {
       push $self->{'nodes'}, $child;
@@ -329,7 +338,7 @@ sub parse_texi_file ($$)
   print "Adjusted tree.\n";
 
   $self->{'info'} = $GLOBAL_INFO;
-  print "!!! ENCODING IS ", $self->{'info'}->{'input_encoding_name'} , "\n";
+  #print "!!! ENCODING IS ", $self->{'info'}->{'input_encoding_name'} , "\n";
 
   if (defined($self->{'info'}->{'input_encoding_name'})) {
     my ($texinfo_encoding, $perl_encoding, $input_encoding)
@@ -343,7 +352,7 @@ sub parse_texi_file ($$)
 
   $self->{'labels'} = $LABELS;
 
-  $self->{'index_names'} = $INDEX_NAMES;
+  #$self->{'index_names'} = $INDEX_NAMES;
   #for my $index (keys %$INDEX_NAMES) {
   #  if ($INDEX_NAMES->{$index}->{'merged_in'}) {
   #    $self->{'merged_indices'}-> {$index}
@@ -351,9 +360,6 @@ sub parse_texi_file ($$)
   #  }
   #}
 
-  # Copy the errors into the error list in Texinfo::Report.
-  # TODO: Could we just access the error list directly instead of going
-  # through Texinfo::Report line_error?
   _get_errors ($self);
 
 
@@ -365,6 +371,9 @@ sub parse_texi_file ($$)
   return $TREE;
 }
 
+# Copy the errors into the error list in Texinfo::Report.
+# TODO: Could we just access the error list directly instead of going
+# through Texinfo::Report line_error?
 sub _get_errors($)
 {
   my $self = shift;
@@ -398,9 +407,17 @@ sub parse_texi_text($$;$$$$)
     wipe_errors ();
     parse_text($text);
     my $tree = build_texinfo_tree ();
-    $self->{'index_names'} = build_index_data ();
+    my $INDEX_NAMES = build_index_data ();
+    $self->{'index_names'} = $INDEX_NAMES;
+    for my $index (keys %$INDEX_NAMES) {
+      if ($INDEX_NAMES->{$index}->{'merged_in'}) {
+        $self->{'merged_indices'}-> {$index}
+          = $INDEX_NAMES->{$index}->{'merged_in'};
+      }
+    }
     _get_errors ($self);
     _add_parents ($tree);
+    _complete_node_list ($self, $tree);
     return $tree;
 }
 
@@ -427,6 +444,14 @@ sub parse_texi_line($$;$$$$)
 sub indices_information($)
 {
   my $self = shift;
+  my $INDEX_NAMES = build_index_data ();
+  $self->{'index_names'} = $INDEX_NAMES;
+  #for my $index (keys %$INDEX_NAMES) {
+  #  if ($INDEX_NAMES->{$index}->{'merged_in'}) {
+  #    $self->{'merged_indices'}-> {$index}
+  #      = $INDEX_NAMES->{$index}->{'merged_in'};
+  #  }
+  #}
   return ($self->{'index_names'}, $self->{'merged_indices'});
 }
 

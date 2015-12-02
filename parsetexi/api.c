@@ -58,7 +58,7 @@ void
 parse_string (char *string)
 {
   ELEMENT *root;
-  init_index_commands (); /* FIXME - probably not necessary */
+  //init_index_commands (); /* FIXME - probably not necessary */
   wipe_errors ();
   root = new_element (ET_root_line);
   input_push_text (strdup (string));
@@ -70,7 +70,7 @@ void
 parse_text (char *string)
 {
   ELEMENT *root;
-  init_index_commands (); /* FIXME - probably not necessary */
+  //init_index_commands (); /* FIXME - probably not necessary */
   wipe_errors ();
   root = new_element (ET_text_root);
   input_push_text_with_line_nos (strdup (string));
@@ -545,7 +545,7 @@ build_single_index_data (INDEX *i)
     }
 
   STORE("name", newSVpv (i->name, 0));
-  STORE("in_code", newSVpv (i->in_code ? "1" : "0", 1));
+  STORE("in_code", i->in_code ? newSViv(1) : newSViv(0));
 
   /* e.g. 'prefix' => ['k', 'ky'] */
   prefix_array = newAV ();
@@ -587,10 +587,14 @@ build_single_index_data (INDEX *i)
   /* Record that this index "contains itself". */
   hv_store (i->contained_hv, i->name, strlen (i->name), newSViv(1), 0);
 
-  entries = newAV ();
-  STORE("index_entries", newRV_inc ((SV *) entries));
+  if (i->index_number > 0)
+    {
+      entries = newAV ();
+      STORE("index_entries", newRV_inc ((SV *) entries));
+    }
 #undef STORE
 
+  if (i->index_number > 0)
   for (j = 0; j < i->index_number; j++)
     {
 #define STORE2(key, value) hv_store (entry, key, strlen (key), value, 0)
@@ -622,12 +626,22 @@ build_single_index_data (INDEX *i)
           contents_array = hv_fetch (e->content->hv,
                                     "contents", strlen ("contents"), 0);
 
-          /* Copy the reference to the array. */
-          STORE2("content", newRV_inc ((SV *)(AV *)SvRV(*contents_array)));
+          if (!contents_array)
+            {
+              element_to_perl_hash (e->content);
+              contents_array = hv_fetch (e->content->hv,
+                                         "contents", strlen ("contents"), 0);
+            }
 
-          /* FIXME: Allow to be different. */
-          STORE2("content_normalized",
-                 newRV_inc ((SV *)(AV *)SvRV(*contents_array)));
+          if (contents_array)
+            {
+              /* Copy the reference to the array. */
+              STORE2("content", newRV_inc ((SV *)(AV *)SvRV(*contents_array)));
+
+              /* FIXME: Allow to be different. */
+              STORE2("content_normalized",
+                     newRV_inc ((SV *)(AV *)SvRV(*contents_array)));
+            }
         }
       if (e->node)
         STORE2("node", newRV_inc ((SV *)e->node->hv));

@@ -66,6 +66,9 @@ store_value (name, value)
 void
 wipe_values ()
 
+void
+init_index_commands ()
+
 ELEMENT *
 get_root()
 
