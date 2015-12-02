@@ -541,7 +541,7 @@ build_single_index_data (INDEX *i)
     }
 
   STORE("name", newSVpv (i->name, 0));
-  STORE("in_code", newSVpv ("0", 1));
+  STORE("in_code", newSVpv (i->in_code ? "1" : "0", 1));
 
   /* e.g. 'prefix' => ['k', 'ky'] */
   prefix_array = newAV ();
@@ -605,7 +605,7 @@ build_single_index_data (INDEX *i)
              newSVpv (command_name(e->index_type_command), 0));
       STORE2("command",
              newRV_inc ((SV *)e->command->hv));
-      STORE2("number", newSViv (j));
+      STORE2("number", newSViv (j + 1));
       if (e->content)
         {
           SV **contents_array;
@@ -620,6 +620,10 @@ build_single_index_data (INDEX *i)
 
           /* Copy the reference to the array. */
           STORE2("content", newRV_inc ((SV *)(AV *)SvRV(*contents_array)));
+
+          /* FIXME: Allow to be different. */
+          STORE2("content_normalized",
+                 newRV_inc ((SV *)(AV *)SvRV(*contents_array)));
         }
       if (e->node)
         STORE2("node", newRV_inc ((SV *)e->node->hv));

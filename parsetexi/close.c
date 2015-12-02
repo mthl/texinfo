@@ -75,10 +75,6 @@ close_command_cleanup (ELEMENT *current)
 
       if (counter_value (&count_cells, current) != -1)
         counter_pop (&count_cells);
-      /* TODO
-      if (counter_value (&max_columns, current) != -1)
-        counter_pop (&count_cells);
-      */
     }
   else if (current->cmd == CM_itemize || current->cmd == CM_enumerate)
     {

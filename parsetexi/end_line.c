@@ -827,9 +827,11 @@ end_line_starting_block (ELEMENT *current)
             }
         }
 
-      //add_extra_number (current->parent, "max_columns",
-            //prototypes->contents.number);
-
+      {
+      char *s; /* FIXME: could just use prototypes instead */
+      asprintf (&s, "%d", prototypes->contents.number);
+      add_extra_string (current->parent, "max_columns", s);
+      }
       add_extra_key_contents (current->parent, "prototypes", prototypes);
     }
   else
@@ -1274,10 +1276,13 @@ end_line_misc_line (ELEMENT *current)
 
           current = current->parent;
 
-          if (misc_args = lookup_extra_key (misc_cmd, "misc_args"))
+          if ((misc_args = lookup_extra_key (misc_cmd, "misc_args")))
             {
+              char *s;
               add_extra_key_misc_args (current, "columnfractions", 
                                        misc_args->value);
+              asprintf (&s, "%d", misc_args->value->contents.number);
+              add_extra_string (current, "max_columns", s);
             }
 
           before_item = new_element (ET_before_item);

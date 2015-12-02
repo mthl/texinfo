@@ -225,7 +225,10 @@ init_index_commands (void)
    INDEX_AT_COMMAND is the Texinfo @-command defining the index entry.
    CONTENT is an element whose contents represent the text of the
    index entry.  CURRENT is the element in the main body of the manual that
-   the index entry refers to. */
+   the index entry refers to.
+
+   CONTENT_NORMALIZED would be "the index entry content, independent
+   of the current language." */
 void
 enter_index_entry (enum command_id index_type_command,
                    enum command_id index_at_command,

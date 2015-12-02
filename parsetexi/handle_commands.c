@@ -285,8 +285,11 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                       debug ("ROW");
                       row = new_element (ET_row);
                       add_to_element_contents (parent, row);
-                      /* The Perl code sets the "row_number" extra value,
-                         although it doesn't look it is used anywhere. */
+
+                      /* FIXME:The "row_number" extra value,
+                         isn't actually used anywhere. */
+                      asprintf (&s, "%d", parent->contents.number-1);
+                      add_extra_string (row, "row_number", s);
 
                       misc = new_element (ET_NONE);
                       misc->cmd = cmd;
