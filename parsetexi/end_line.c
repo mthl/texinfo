@@ -1139,7 +1139,29 @@ end_line_misc_line (ELEMENT *current)
       misc_content = trim_spaces_comment_from_content 
         (last_args_child(current));
 
-      add_extra_key_contents (current, "misc_content", misc_content);
+      if (current->cmd != CM_top && misc_content->contents.number == 0)
+        {
+          command_warnf ("@%s missing argument", command_name(current->cmd));
+          add_extra_string (current, "missing_argument", "1");
+        }
+      else
+        {
+          // 3266
+          add_extra_key_contents (current, "misc_content", misc_content);
+          if ((current->parent->cmd == CM_ftable
+               || current->parent->cmd == CM_vtable)
+              && (current->cmd == CM_item || current->cmd == CM_itemx))
+            {
+              enter_index_entry (current->parent->cmd,
+                                 current->cmd,
+                                 current, misc_content);
+            }
+          else
+            {
+              // 3273 possibly check for @def... command
+            }
+
+        }
 
       /* All the other "line" commands" */
       // 3273 - warning about missing argument

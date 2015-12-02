@@ -84,6 +84,7 @@ add_index_internal (char *name, int in_code)
   memset (idx, 0, sizeof *idx);
   idx->name = name;
   idx->prefix = name;
+  idx->in_code = in_code;
   if (number_of_indices == space_for_indices)
     {
       space_for_indices += 5;
@@ -129,15 +130,16 @@ void
 init_index_commands (void)
 {
   INDEX *idx;
-  char **p;
-  char *default_indices[] = {
-    "cp", /* concepts */
-    "fn", /* functions */
-    "vr", /* variables */
-    "ky", /* keystrokes */
-    "pg", /* programs */
-    "tp", /* types */
-    0,
+
+  struct def { char *name; int in_code; }
+  *p, default_indices[] = {
+    "cp", 0, /* concepts */
+    "fn", 1, /* functions */
+    "vr", 1, /* variables */
+    "ky", 1, /* keystrokes */
+    "pg", 1, /* programs */
+    "tp", 1, /* types */
+    0, 0
   };
   int i, j;
 
@@ -182,18 +184,21 @@ init_index_commands (void)
     };
 #undef X
 
-  for (p = default_indices; *p; p++)
+  for (p = default_indices; p->name; p++)
     {
       /* Both @cindex and @cpindex are added. */
-      idx = add_index_internal (*p, 0);
+      idx = add_index_internal (p->name, p->in_code);
 
-      *name = **p;
+      *name = p->name[0];
       add_index_command (name, idx); /* @cindex */
 
-      name2[0] = (*p)[0];
-      name2[1] = (*p)[1];
+      name2[0] = p->name[0];
+      name2[1] = p->name[1];
       add_index_command (name2, idx); /* @cpindex */
     }
+
+  associate_command_to_index (CM_vtable, index_by_name ("vr"));
+  associate_command_to_index (CM_ftable, index_by_name ("fn"));
 
   for (i = 0;
        i < sizeof (def_command_indices) / sizeof (def_command_indices[0]);
@@ -216,7 +221,8 @@ init_index_commands (void)
 
 
 // 2530
-/* INDEX_AT_COMMAND is the Texinfo @-command defining the index entry.
+/* INDEX_TYPE_COMMAND is used to determine which index to enter the entry in.
+   INDEX_AT_COMMAND is the Texinfo @-command defining the index entry.
    CONTENT is an element whose contents represent the text of the
    index entry.  CURRENT is the element in the main body of the manual that
    the index entry refers to. */

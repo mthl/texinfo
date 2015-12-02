@@ -390,6 +390,7 @@ sub parse_texi_text($$;$$$$)
     $self = parser() if (!defined($self));
     parse_text($text);
     my $tree = build_texinfo_tree ();
+    $self->{'index_names'} = build_index_data ();
     _add_parents ($tree);
     return $tree;
 }
