@@ -354,15 +354,7 @@ sub parse_texi_file ($$)
   # Copy the errors into the error list in Texinfo::Report.
   # TODO: Could we just access the error list directly instead of going
   # through Texinfo::Report line_error?
-  $tree_stream = dump_errors();
-  eval $tree_stream;
-  for my $error (@{$ERRORS}) {
-    if ($error->{'type'} eq 'error') {
-      $self->line_error ($error->{'message'}, $error->{'line_nr'});
-    } else {
-      $self->line_warn ($error->{'message'}, $error->{'line_nr'});
-    }
-  }
+  _get_errors ($self);
 
 
   #$Data::Dumper::Purity = 1;
@@ -371,6 +363,21 @@ sub parse_texi_file ($$)
   #print $bar;
 
   return $TREE;
+}
+
+sub _get_errors($)
+{
+  my $self = shift;
+  my $ERRORS;
+  my $tree_stream = dump_errors();
+  eval $tree_stream;
+  for my $error (@{$ERRORS}) {
+    if ($error->{'type'} eq 'error') {
+      $self->line_error ($error->{'message'}, $error->{'line_nr'});
+    } else {
+      $self->line_warn ($error->{'message'}, $error->{'line_nr'});
+    }
+  }
 }
 
 # Replacement for Texinfo::Parser::parse_texi_text (line 757)
@@ -388,9 +395,11 @@ sub parse_texi_text($$;$$$$)
     return undef if (!defined($text));
 
     $self = parser() if (!defined($self));
+    wipe_errors ();
     parse_text($text);
     my $tree = build_texinfo_tree ();
     $self->{'index_names'} = build_index_data ();
+    _get_errors ($self);
     _add_parents ($tree);
     return $tree;
 }

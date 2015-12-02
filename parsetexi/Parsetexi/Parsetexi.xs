@@ -44,6 +44,9 @@ char *
 dump_errors ()
 
 void
+wipe_errors ()
+
+void
 parse_file(filename)
         char * filename
 

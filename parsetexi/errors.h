@@ -2,6 +2,7 @@ void line_error (char *message);
 void line_errorf (char *format, ...);
 void line_warn (char *message);
 void line_warnf (char *format, ...);
+void wipe_errors (void);
 
 /* TODO: Proper implementations */
 #define command_error line_error

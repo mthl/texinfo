@@ -277,6 +277,8 @@ kbd		brace	BRACE_style
 option		brace	BRACE_style
 samp		brace	BRACE_style
 strong		brace	BRACE_style
+sub		brace	BRACE_style
+sup		brace	BRACE_style
 
 # Regular font style commands 595
 r		brace	BRACE_style

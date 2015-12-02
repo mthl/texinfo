@@ -428,11 +428,10 @@ dump_line_nr (LINE_NR *line_nr, TEXT *text)
   text_append_n (text, "{\n", 2);
   indent += 2;
 
-  if (line_nr->file_name)
-    {
-      dump_indent (text);
-      text_printf (text, "'file_name' => '%s',\n", line_nr->file_name);
-    }
+  dump_indent (text);
+  text_printf (text, "'file_name' => '%s',\n",
+               line_nr->file_name ?
+               line_nr->file_name : "");
 
   if (line_nr->line_nr)
     {

@@ -87,6 +87,12 @@ line_warnf (char *format, ...)
   line_warn (message);
 }
 
+void
+wipe_errors (void)
+{
+  error_number = 0;
+}
+
 char *
 dump_errors (void)
 {

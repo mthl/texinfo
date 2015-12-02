@@ -32,6 +32,7 @@
 #include "labels.h"
 #include "indices.h"
 #include "api.h"
+#include "errors.h"
 
 ELEMENT *Root;
 
@@ -41,6 +42,7 @@ parse_file (char *filename)
 {
   debug_output = 0;
   init_index_commands ();
+  wipe_errors ();
   parse_texi_file (filename);
 }
 
@@ -57,6 +59,7 @@ parse_string (char *string)
 {
   ELEMENT *root;
   init_index_commands (); /* FIXME - probably not necessary */
+  wipe_errors ();
   root = new_element (ET_root_line);
   input_push_text (strdup (string));
   Root = parse_texi (root);
@@ -68,6 +71,7 @@ parse_text (char *string)
 {
   ELEMENT *root;
   init_index_commands (); /* FIXME - probably not necessary */
+  wipe_errors ();
   root = new_element (ET_text_root);
   input_push_text_with_line_nos (strdup (string));
   Root = parse_texi (root);
