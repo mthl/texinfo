@@ -130,7 +130,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
               text_append_n (&misc_arg->text, 
                              args->contents.list[i]->text.text,
                              args->contents.list[i]->text.end);
-              add_to_element_contents (misc, misc_arg);
+              add_to_element_args (misc, misc_arg);
             }
           /* TODO: Could we have just set misc->args directly as args? */
 
@@ -181,7 +181,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
       if (cmd == CM_item || cmd == CM_itemx
           || cmd == CM_headitem || cmd == CM_tab)
         {
-          ELEMENT *misc = 0, *parent;
+          ELEMENT *parent;
 
           /* @itemize or @enumerate */ // 4443
           if ((parent = item_container_parent (current)))

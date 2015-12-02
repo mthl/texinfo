@@ -288,7 +288,6 @@ merge_text (ELEMENT *current, char *text)
 
       if (last_child
           && (last_child->type == ET_empty_line_after_command
-              || last_child->type == ET_empty_line_after_command
               || last_child->type == ET_empty_spaces_before_argument
               || last_child->type == ET_empty_spaces_after_close_brace))
         {
@@ -645,6 +644,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
       if (is_end_current_command (current, &line, &end_cmd))
         {
           ELEMENT *last_child;
+          ELEMENT *raw_command = current;
 
           last_child = last_contents_child (current);
            
@@ -696,8 +696,8 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
             }
           else
             {
-              debug ("CLOSED raw %s", command_name(end_cmd));
-              start_empty_line_after_command (current, &line, 0); // 3831
+              debug ("CLOSED raw %s", command_name(end_cmd)); // 3830
+              start_empty_line_after_command (current, &line, raw_command);
             }
         }
       else /* 3833 save the line verbatim */

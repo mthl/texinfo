@@ -171,8 +171,10 @@ element_to_perl_hash (ELEMENT *e)
       e->hv = newHV ();
     }
 
-  if (e->parent && e->parent_type != route_not_in_tree)
+  if (e->parent) // && e->parent_type != route_not_in_tree)
     {
+      if (!e->parent->hv)
+        e->parent->hv = newHV ();
       sv = newRV_inc ((SV *) e->parent->hv);
       hv_store (e->hv, "parent", strlen ("parent"), sv, 0);
     }
@@ -180,6 +182,8 @@ element_to_perl_hash (ELEMENT *e)
      i.e. the only out-of-tree elements are simple text elements
      (or other elements with no children) - otherwise we shall fail
      to set "parent" properly. */
+  /* FIXME: Sometimes extra values have parent set - try to remove this
+     in the Perl code as well. */
 
   if (e->type)
     {

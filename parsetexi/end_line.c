@@ -896,7 +896,7 @@ end_line_starting_block (ELEMENT *current)
           e = new_element (ET_command_as_argument);
           e->cmd = CM_bullet;
           e->parent_type = route_not_in_tree;
-          //e->parent = current; // FIXME: done in Perl code
+          e->parent = current;
           add_extra_key_element (current, "command_as_argument", e);
 
           contents = new_element (ET_NONE);
@@ -909,10 +909,23 @@ end_line_starting_block (ELEMENT *current)
         }
       else if (item_line_command (current->cmd)
           && !lookup_extra_key (current, "command_as_argument"))
-        {
-          ELEMENT *e = new_element (ET_command_as_argument);
+        { // 3064
+          ELEMENT *e, *contents, *contents2;
+
+          e = new_element (ET_command_as_argument);
           e->cmd = CM_asis;
+          e->parent_type = route_not_in_tree;
+          e->parent = current;
           add_extra_key_element (current, "command_as_argument", e);
+
+          contents = new_element (ET_NONE);
+          contents2 = new_element (ET_NONE);
+          contents2->parent_type = route_not_in_tree;
+          add_to_contents_as_array (contents2, e);
+          add_to_element_contents (contents, contents2);
+          add_extra_key_contents_array (current, "block_command_line_contents",
+                                        contents);
+          // FIXME: code duplication
         }
 
       {
