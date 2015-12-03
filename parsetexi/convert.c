@@ -268,6 +268,8 @@ convert_to_normalized (ELEMENT *label)
 {
   TEXT result;
 
+  if (!label)
+    return "";
   text_init (&result);
   convert_to_normalized_internal (label, &result, 0);
 
