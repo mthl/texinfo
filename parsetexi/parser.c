@@ -978,8 +978,18 @@ value_invalid:
       /* 4233 invalid nestings */
 #endif
 
-      /* 4276 check if begins or ends a paragraph */
-      if (!(command_data(cmd).flags & (CF_misc | CF_block)))
+      /* 4276 check command doesn't start a paragraph */
+      /* TODO store this in cmd->flags */
+      if (!(command_data(cmd).flags & (CF_misc | CF_block)
+            || cmd == CM_titlefont
+            || cmd == CM_caption
+            || cmd == CM_shortcaption
+            || cmd == CM_image
+            || cmd == CM_ASTERISK /* @* */
+            || cmd == CM_hyphenation
+            || cmd == CM_anchor
+            || cmd == CM_errormsg
+            || (command_data(cmd).flags & CF_index_entry_command)))
           {
           /*
              Unless no paragraph commands (line 311):
