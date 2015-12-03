@@ -634,6 +634,15 @@ handle_brace_command (ELEMENT *current, char **line_inout,
 
   e = new_element (ET_NONE);
   e->cmd = cmd;
+
+  // 4841
+  // 258 keep_line_nr_brace_commands
+  if (e->cmd == CM_titlefont || e->cmd == CM_anchor
+      || command_data(e->cmd).data > 0)
+    {
+      e->line_nr = line_nr;
+    }
+
   add_to_element_contents (current, e);
   current = e;
 

@@ -175,7 +175,9 @@ element_to_perl_hash (ELEMENT *e)
       e->hv = newHV ();
     }
 
-  if (e->parent) // && e->parent_type != route_not_in_tree)
+  if (e->parent //) // && e->parent_type != route_not_in_tree)
+    && e->type != ET_empty_spaces_before_argument) //FIXME :Set parent in
+                                                   // perl code
     {
       if (!e->parent->hv)
         e->parent->hv = newHV ();
@@ -216,6 +218,7 @@ element_to_perl_hash (ELEMENT *e)
 
   if (e->contents.number > 0
       || e->type == ET_text_root // FIXME special case
+      || e->cmd == CM_image // why image?
       || e->cmd == CM_node) // FIXME special case
     {
       AV *av;

@@ -115,6 +115,8 @@ handle_open_brace (ELEMENT *current, char **line_inout)
             e = new_element (ET_empty_spaces_before_argument);
             text_append_n (&e->text, line, n);
             add_to_element_contents (current, e);
+            add_extra_key_element (current->parent,
+                                   "spaces_before_argument", e);
             line += n;
           }
           current->type = ET_brace_command_context;
@@ -133,6 +135,8 @@ handle_open_brace (ELEMENT *current, char **line_inout)
             {
               ELEMENT *e;
               e = new_element (ET_empty_spaces_before_argument);
+              /* See comment in parser.c:merge_text */
+              text_append (&e->text, "");
               add_to_element_contents (current, e);
               add_extra_key_element (current->parent,
                                      "spaces_before_argument", e);
@@ -156,6 +160,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       /* TODO: Record the line number if we are in a def_line in case @ 
          protects the end of the line. */
       e = new_element (ET_empty_spaces_before_argument);
+      text_append (&e->text, ""); /* See comment in parser.c:merge_text */
       add_to_element_contents (current, e);
       debug ("BRACKETED in def/multitable");
 
@@ -333,7 +338,7 @@ handle_comma (ELEMENT *current, char **line_inout)
 {
   char *line = *line_inout;
   enum element_type type;
-  ELEMENT *new_arg;
+  ELEMENT *new_arg, *e;
 
   abort_empty_line (&current, NULL);
 
@@ -370,8 +375,9 @@ handle_comma (ELEMENT *current, char **line_inout)
   new_arg = new_element (type);
   add_to_element_args (current, new_arg);
   current = new_arg;
-  add_to_element_contents (current,
-      new_element (ET_empty_spaces_before_argument));
+  e = new_element (ET_empty_spaces_before_argument);
+  text_append (&e->text, ""); /* See comment in parser.c:merge_text */
+  add_to_element_contents (current, e);
   
   *line_inout = line;
   return current;

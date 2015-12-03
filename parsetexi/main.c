@@ -21,10 +21,12 @@
 #include "indices.h"
 #include "api.h"
 
+int debug_output;
 int
 main (int argc, char **argv)
 {
   //extern int element_counter;
+  debug_output = 1;
 
   if (argc <= 1)
     {

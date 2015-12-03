@@ -311,18 +311,22 @@ merge_text (ELEMENT *current, char *text)
       current = begin_paragraph (current);
     }
 
-  if (last_contents_child (current)
+  last_child = last_contents_child (current);
+  if (last_child
       /* There is a difference between the text being defined and empty,
          and not defined at all.  The latter is true for 'brace_command_arg'
-         elements.  We need to make sure that we initialize all elements with
-         text_append (&e->text, "") where we want merging with following
-         text. */
-      && last_contents_child (current)->text.space > 0
-      && !strchr (last_contents_child (current)->text.text, '\n')
+         elements.  We need either to make sure that we initialize all elements 
+         with text_append (&e->text, "") where we want merging with following
+         text, or treat as a special case here.
+         Unfortunately we can't make a special case for 
+         ET_empty_spaces_before_argument, because abort_empty_line above 
+         produces such an element that shouldn't be merged with. */
+      && (last_child->text.space > 0
+            && !strchr (last_child->text.text, '\n')
+             ) //|| last_child->type == ET_empty_spaces_before_argument)
       && !no_merge_with_following_text)
     {
       /* Append text to contents */
-      ELEMENT *last_child = last_contents_child (current);
       text_append (&last_child->text, text);
       debug ("MERGED TEXT: %s|||", text);
     }
@@ -361,23 +365,28 @@ abort_empty_line (ELEMENT **current_inout, char *additional_text)
              last_child->text.text);
       text_append (&last_child->text, additional_text);
 
-      // FIXME: How and when is this condition exactly met?
+      /* Remove element altogether if it's empty. */
       if (last_child->text.end == 0) //2121
         {
-          KEY_PAIR *k = 0;
+          KEY_PAIR *k = 0; ELEMENT *e;
           
           /* FIXME: does extra key get removed from current or 
              current->parent?  */
-          if (current->parent)
-            k = lookup_extra_key (current->parent, "spaces_before_argument");
-          if (k) // && k->value == last_contents_child (current))
+          if (current)
+            k = lookup_extra_key (current, "spaces_before_argument");
+          if (k && k->value == last_contents_child (current))
             {
               k->key = "";
               k->value = 0;
               k->type = extra_deleted;
             }
 
-          destroy_element (pop_element_from_contents (current));
+          /* FIXME: We can't destroy it, because it may still be
+             referred to by current->parent->extra.  This is an oversight
+             in the Perl implementation. */
+          e = pop_element_from_contents (current);
+          e->parent = 0; e->parent_type = route_not_in_tree;
+          //destroy_element (e);
           /* TODO: Maybe we could avoid adding it in the first place? */
         }
       else if (last_child->type == ET_empty_line) //2132
