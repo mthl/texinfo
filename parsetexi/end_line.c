@@ -1340,7 +1340,7 @@ end_line (ELEMENT *current)
           /* Remove empty_line element. */
           e = pop_element_from_contents (current);
 
-          current = end_paragraph (current);
+          current = end_paragraph (current, 0, 0);
 
           /* Add empty_line to higher-level element. */
           add_to_element_contents (current, e);
@@ -1379,7 +1379,7 @@ end_line (ELEMENT *current)
         }
       else if (in_paragraph_context (current_context ()))
         {
-          current = end_paragraph (current);
+          current = end_paragraph (current, 0, 0);
         }
     }
 

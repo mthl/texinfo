@@ -14,6 +14,9 @@ int item_line_command (enum command_id cmd_id);
 void close_command_cleanup (ELEMENT *current);
 ELEMENT *close_commands (ELEMENT *current, enum command_id closed_command,
                          ELEMENT **closed_element, enum command_id);
+ELEMENT *close_all_style_commands (ELEMENT *current,
+                               enum command_id closed_command,
+                               enum command_id interrupting_command);
 
 /* In end_line.c */
 NODE_SPEC_EXTRA *parse_node_manual (ELEMENT *node);
@@ -38,7 +41,9 @@ enum command_id pop_conditional_stack (void);
 extern size_t conditional_number;
 void parse_texi_file (const char *filename);
 int abort_empty_line (ELEMENT **current_inout, char *additional);
-ELEMENT *end_paragraph (ELEMENT *current);
+ELEMENT *end_paragraph (ELEMENT *current,
+                        enum command_id closed_command,
+                        enum command_id interrupting_command);
 void isolate_last_space (ELEMENT *current, enum element_type type);
 int command_with_command_as_argument (ELEMENT *current);
 ELEMENT *begin_preformatted (ELEMENT *current);

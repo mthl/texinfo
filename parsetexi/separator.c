@@ -280,7 +280,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
     {
       enum context c;
 
-      current = end_paragraph (current);
+      current = end_paragraph (current, 0, 0);
       if (1)
         {
           enum command_id closed_command;

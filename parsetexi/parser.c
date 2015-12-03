@@ -242,14 +242,16 @@ begin_preformatted (ELEMENT *current)
 
 /* 1310 */
 ELEMENT *
-end_paragraph (ELEMENT *current)
+end_paragraph (ELEMENT *current,
+               enum command_id closed_command,
+               enum command_id interrupting_command)
 {
-  /* close_all_style_commands (); */
-
+  current = close_all_style_commands (current,
+                                      closed_command, interrupting_command);
   if (current->type == ET_paragraph)
     {
-      current = current->parent;
       debug ("CLOSE PARA");
+      current = current->parent;
     }
 
   return current;
@@ -535,7 +537,7 @@ trim_spaces_comment_from_content (ELEMENT *original)
 /* Add an "ET_empty_line_after_command" element containing the whitespace at 
    the beginning of the rest of the line.  This element can be later changed to 
    a "ET_empty_spaces_after_command" element in 'abort_empty_line' if more
-   text follows on the line.  Used after line commmands or commands starting
+   text follows on the line.  Used after line commands or commands starting
    a block. */
 void
 start_empty_line_after_command (ELEMENT *current, char **line_inout,
@@ -864,7 +866,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
      @definfoenclose. */
   /* This condition is only checked immediately after the command opening, 
      otherwise the current element is in the 'args' and not right in the 
-     commmand container. */
+     command container. */
   else if (!cmd && command_flags(current) & CF_brace && *line != '{')
     {
       if (command_with_command_as_argument (current->parent)) // 3988
@@ -980,10 +982,30 @@ value_invalid:
       /* TODO: warn on deprecated command */
 
       /* warn on not appearing at line beginning 4226 */
-      if (!abort_empty_line (&current, NULL))
-        //  && begin_line_commands (command))
+      // begin line commands 315
+      // TODO maybe have a command flag for this
+      if (!abort_empty_line (&current, NULL)
+          && ((cmd == CM_node || cmd == CM_bye)
+              || (command_data(cmd).flags & CF_block)
+              || ((command_data(cmd).flags & CF_misc)
+                  && cmd != CM_comment
+                  && cmd != CM_c
+                  && cmd != CM_sp
+                  && cmd != CM_refill
+                  && cmd != CM_noindent
+                  && cmd != CM_indent
+                  && cmd != CM_columnfractions
+                  && cmd != CM_tab
+                  && cmd != CM_item
+                  && cmd != CM_headitem
+                  && cmd != CM_verbatiminclude
+                  && cmd != CM_set
+                  && cmd != CM_clear
+                  && cmd != CM_vskip)
+              || (command_data(cmd).flags & CF_in_heading)))
         {
-          /* warning */
+          line_warnf ("@%s should only appear at a line beginning",
+                      command_name(cmd));
         }
 
 #if 0
@@ -1022,7 +1044,7 @@ value_invalid:
       if (cmd != 0)
         {
           if (close_paragraph_command (cmd))
-            current = end_paragraph (current);
+            current = end_paragraph (current, 0, 0);
           if (close_preformatted_command (cmd))
             current = end_preformatted (current);
         }
@@ -1210,7 +1232,7 @@ parse_texi (ELEMENT *root_elt)
 #endif
 
     {
-      ELEMENT *dummy;
+      ELEMENT *dummy; // 5254
       current = close_commands (current, CM_NONE, &dummy, CM_NONE);
 
       /* Make sure we are at the very top - we could have stopped at the "top" 

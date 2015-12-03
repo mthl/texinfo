@@ -54,7 +54,7 @@ void init_index_commands (void);
 /* CF_code_style is set for brace commands only. */
 #define CF_code_style		        0x0100
 #define CF_regular_font_style	        0x0200
-// #define free          	        0x0400
+#define CF_in_heading     	        0x0400
 #define CF_ref			        0x0800
 #define CF_explained		        0x1000
 #define CF_block		        0x2000

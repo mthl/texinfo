@@ -19,6 +19,54 @@
 #include "parser.h"
 #include "errors.h"
 
+// 1246
+/* Possibly print an error message, and return CURRENT->parent. */
+static ELEMENT *
+close_brace_command (ELEMENT *current,
+                     enum command_id closed_command,
+                     enum command_id interrupting_command)
+{
+  if (current->cmd != CM_verb || current->type == ET_NONE)
+    {
+      if (closed_command)
+        command_errorf ("@end %s seen before @%s closing brace",
+                        command_name(closed_command),
+                        command_name(current->cmd));
+      else if (interrupting_command)
+        command_errorf ("%s seen before @%s closing brace",
+                        command_name(interrupting_command),
+                        command_name(current->cmd));
+      else
+        command_errorf ("@%s missing close brace",
+                        command_name(current->cmd));
+    }
+  else
+    {
+      command_errorf ("@%s missing closing delimiter sequence: %s",
+                      command_name(current->cmd),
+                      element_type_names[current->type]);
+    }
+  current = current->parent;
+  return current;
+}
+
+// 1292
+/* Close out any brace commands that mark text, not allowing multiple
+   paragraphs. */
+ELEMENT *
+close_all_style_commands (ELEMENT *current,
+                          enum command_id closed_command,
+                          enum command_id interrupting_command)
+{
+  while (current->parent
+         && (command_flags(current->parent) & CF_brace)
+         && !(command_data(current->parent->cmd).data == BRACE_context))
+    current = close_brace_command (current->parent,
+                                   closed_command, interrupting_command);
+
+  return current;
+}
+
 // 1512
 void
 close_command_cleanup (ELEMENT *current)
@@ -185,13 +233,25 @@ close_command_cleanup (ELEMENT *current)
 
 /* 1642 */
 static ELEMENT *
-close_current (ELEMENT *current)
+close_current (ELEMENT *current,
+               enum command_id closed_command,
+               enum command_id interrupting_command)
 {
   /* Element is a command */
   if (current->cmd)
     {
       debug ("CLOSING (close_current) %s", command_name(current->cmd));
-      current = current->parent; /* TODO */
+      if (command_flags(current) & CF_brace)
+        {
+          // pop_context ();
+          current = close_brace_command (current,
+                                         closed_command, interrupting_command);
+        }
+      else
+        {
+          current = current->parent;
+          // TODO
+        }
     }
   else if (current->type != ET_NONE)
     {
@@ -254,7 +314,7 @@ close_commands (ELEMENT *current, enum command_id closed_command,
                 ELEMENT **closed_element, enum command_id interrupting)
 {
   *closed_element = 0;
-  current = end_paragraph (current);
+  current = end_paragraph (current, closed_command, interrupting);
   current = end_preformatted (current);
 
   while (current->parent
@@ -263,7 +323,7 @@ close_commands (ELEMENT *current, enum command_id closed_command,
          && !(current->cmd && command_flags(current) & CF_root))
     {
       close_command_cleanup (current);
-      current = close_current (current);
+      current = close_current (current, closed_command, interrupting);
     }
 
   if (closed_command && current->cmd == closed_command)

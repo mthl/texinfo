@@ -148,12 +148,12 @@ item				misc		MISC_skipspace
 itemx				misc		MISC_skipspace
 tab				misc		MISC_skipspace
 # only valid in heading or footing
-thischapter			misc		MISC_noarg
-thischaptername			misc		MISC_noarg
-thischapternum			misc		MISC_noarg
-thisfile			misc		MISC_noarg
-thispage			misc		MISC_noarg
-thistitle			misc		MISC_noarg
+thischapter			misc,in_heading		MISC_noarg
+thischaptername			misc,in_heading		MISC_noarg
+thischapternum			misc,in_heading		MISC_noarg
+thisfile			misc,in_heading		MISC_noarg
+thispage			misc,in_heading		MISC_noarg
+thistitle			misc,in_heading		MISC_noarg
 # not valid for info (should be in @iftex)
 vskip				misc		MISC_lineraw
 # obsolete @-commands.
@@ -161,6 +161,8 @@ refill				misc		MISC_noarg
 # Remove spaces and end of lines after the 
 # commands? If no, they can lead to empty lines
 # TODO: Check what these two are.
+# They were obsolete and undocumented commands for macro definitions,
+# never supported in texinfo.tex.
 #quote-arg			misc		MISC_skipline
 #allow-recursion		misc		MISC_skipline
 
