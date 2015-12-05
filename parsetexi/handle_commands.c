@@ -104,9 +104,13 @@ handle_misc_command (ELEMENT *current, char **line_inout,
      line lineraw /^\d$/). */
   arg_spec = command_data(cmd).data;
 
-  /* noarg */
+  /* noarg 4312 */
   if (arg_spec == MISC_noarg)
     {
+      // TODO
+      misc = new_element (ET_NONE);
+      misc->cmd = cmd;
+      add_to_element_contents (current, misc);
       /*
       if (close_preformatted_command(cmd))
         current = begin_preformatted (current);
@@ -460,7 +464,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
   /* line 4622 */
   /* mark_and_warn_invalid (); */ /* possible error message due to invalid
                                      nesting */
-  //register_global_command ();
+  register_global_command (cmd, misc);
 
   *line_inout = line;
   return current;
@@ -656,7 +660,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
           }
         } /* 4827 */
       // mark_and_warn_invalid ();
-      // register_global_command ();
+      register_global_command (cmd, block);
       start_empty_line_after_command (current, &line, block);
     }
 
