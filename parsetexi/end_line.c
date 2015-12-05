@@ -166,7 +166,7 @@ parse_line_command_args (ELEMENT *line_command)
   cmd = line_command->cmd;
   if (arg->contents.number == 0)
     {
-      /*command_errorf ("@%s missing argument",
+      /*command_errorf (line_command, "@%s missing argument",
                       command_name (cmd));*/
       return 0;
     }
@@ -201,7 +201,7 @@ parse_line_command_args (ELEMENT *line_command)
 
   if (!argarg)
     {
-      command_errorf ("@%s missing argument", command_name(cmd));
+      command_errorf (line_command, "@%s missing argument", command_name(cmd));
       add_extra_string (line_command, "missing_argument", "1");
       return 0;
     }
@@ -812,7 +812,7 @@ end_line_starting_block (ELEMENT *current)
               // but we got here from t/21multitable.t on 2015.11.30.
               if (!e->cmd)
                 {
-                  command_warnf ("unexpected argument on @%s line:",
+                  command_warnf (current, "unexpected argument on @%s line:",
                                  command_name(current->cmd));
                   // TODO: Convert argument to Texinfo
                 }
@@ -1028,7 +1028,7 @@ end_line_misc_line (ELEMENT *current)
                   end_id = lookup_command (end_command);
                   if (end_id == 0 || !(command_data(end_id).flags & CF_block))
                     {
-                      command_warnf ("unknown @end %s", end_command);
+                      command_warnf (current, "unknown @end %s", end_command);
                       free (end_command); end_command = 0;
                     }
                   else
@@ -1056,7 +1056,7 @@ end_line_misc_line (ELEMENT *current)
                           if (0)
                             {
                           conditional_stack_fail:
-                              command_error ("unmatched @end");
+                              command_error (current, "unmatched @end");
                             }
                         }
                       add_extra_string (current, "command_argument",
@@ -1065,7 +1065,7 @@ end_line_misc_line (ELEMENT *current)
                 }
               else
                 {
-                  command_errorf ("bad argument to @end: %s", line);
+                  command_errorf (current, "bad argument to @end: %s", line);
                 }
             }
           else if (current->cmd == CM_include) // 3166
@@ -1143,7 +1143,8 @@ end_line_misc_line (ELEMENT *current)
 
       if (current->cmd != CM_top && misc_content->contents.number == 0)
         {
-          command_warnf ("@%s missing argument", command_name(current->cmd));
+          command_warnf (current, "@%s missing argument", 
+                         command_name(current->cmd));
           add_extra_string (current, "missing_argument", "1");
         }
       else
@@ -1255,7 +1256,7 @@ end_line_misc_line (ELEMENT *current)
   /* 3350 */
   if (cmd == CM_setfilename && (current_node || current_section))
     {
-      command_warn ("@setfilename after the first element");
+      command_warn (misc_cmd, "@setfilename after the first element");
     }
   /* 3355 columnfractions */
   else if (cmd == CM_columnfractions)
@@ -1266,13 +1267,13 @@ end_line_misc_line (ELEMENT *current)
       /* Check if in multitable. */
       if (!current->parent || current->parent->cmd != CM_multitable)
         {
-          command_error
-            ("@columnfractions only meaningful on a @multitable line");
+          command_error (current,
+            "@columnfractions only meaningful on a @multitable line");
         }
       else
         {
           // pop and check context stack
-          //pop_context (); /* ct_line */;
+          pop_context (); /* ct_line */;
 
           current = current->parent;
 
@@ -1587,13 +1588,13 @@ end_line (ELEMENT *current)
             }
           else
             {
-              command_warnf ("missing name for @%s",
+              command_warnf (current->parent, "missing name for @%s",
                              command_name (original_def_command));
             }
         }
       else
         {
-          command_warnf ("missing category for @%s",
+          command_warnf (current->parent, "missing category for @%s",
                          command_name (original_def_command));
         }
 

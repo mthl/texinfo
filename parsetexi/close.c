@@ -29,20 +29,24 @@ close_brace_command (ELEMENT *current,
   if (current->cmd != CM_verb || current->type == ET_NONE)
     {
       if (closed_command)
-        command_errorf ("@end %s seen before @%s closing brace",
+        command_errorf (current,
+                        "@end %s seen before @%s closing brace",
                         command_name(closed_command),
                         command_name(current->cmd));
       else if (interrupting_command)
-        command_errorf ("%s seen before @%s closing brace",
+        command_errorf (current,
+                        "%s seen before @%s closing brace",
                         command_name(interrupting_command),
                         command_name(current->cmd));
       else
-        command_errorf ("@%s missing close brace",
+        command_errorf (current,
+                        "@%s missing close brace",
                         command_name(current->cmd));
     }
   else
     {
-      command_errorf ("@%s missing closing delimiter sequence: %s",
+      command_errorf (current,
+                      "@%s missing closing delimiter sequence: %s",
                       command_name(current->cmd),
                       element_type_names[current->type]);
     }
@@ -260,7 +264,7 @@ close_current (ELEMENT *current,
       switch (current->type)
         {
         case ET_bracketed:
-          command_error ("misplaced {");
+          command_error (current, "misplaced {");
           current = current->parent;
           break;
         case ET_menu_comment:

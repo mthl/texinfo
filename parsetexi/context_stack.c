@@ -30,14 +30,12 @@ push_context (enum context c)
       stack = realloc (stack, (space += 5) * sizeof (enum context));
     }
 
-  /*
-  debug (">>>>>>>>>>>>>>>>>.PUSHING STACK AT %d  -- %s", top,
+  debug (">>>>>>>>>>>>>>>>>PUSHING STACK AT %d  -- %s", top,
          c == ct_preformatted ? "preformatted"
          : c == ct_line ? "line"
          : c == ct_def ? "def"
          : c == ct_menu ? "menu"
          : "");
-  */
   stack[top++] = c;
 }
 
@@ -47,7 +45,7 @@ pop_context ()
   if (top == 0)
     abort ();
 
-  /*  debug (">>>>>>>>>>>>>POPPING STACK AT %d", top - 1);  */
+  debug (">>>>>>>>>>>>>POPPING STACK AT %d", top - 1);
   return stack[--top];
 }
 

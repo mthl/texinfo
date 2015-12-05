@@ -37,6 +37,32 @@ static ERROR_MESSAGE *error_list = 0;
 static size_t error_number = 0;
 static size_t error_space = 0;
 
+static void
+line_error_internal (enum error_type type, LINE_NR *cmd_line_nr,
+                     char *format, va_list v)
+{
+  char *message;
+  vasprintf (&message, format, v);
+  if (!message) abort ();
+  if (error_number == error_space)
+    {
+      error_list = realloc (error_list,
+                            (error_space += 10) * sizeof (ERROR_MESSAGE));
+    }
+  error_list[error_number].message = message;
+  error_list[error_number].type = type;
+
+  if (cmd_line_nr)
+    {
+      if (cmd_line_nr->line_nr)
+        error_list[error_number++].line_nr = *cmd_line_nr;
+      else
+        error_list[error_number++].line_nr = line_nr;
+    }
+  else
+    error_list[error_number++].line_nr = line_nr;
+}
+
 void
 line_error (char *message)
 {
@@ -55,11 +81,9 @@ void
 line_errorf (char *format, ...)
 {
   va_list v;
-  char *message;
 
   va_start (v, format);
-  vasprintf (&message, format, v);
-  line_error (message);
+  line_error_internal (error, 0, format, v);
 }
 
 void
@@ -80,11 +104,27 @@ void
 line_warnf (char *format, ...)
 {
   va_list v;
-  char *message;
 
   va_start (v, format);
-  vasprintf (&message, format, v);
-  line_warn (message);
+  line_error_internal (warning, 0, format, v);
+}
+
+void
+command_warnf (ELEMENT *e, char *format, ...)
+{
+  va_list v;
+
+  va_start (v, format);
+  line_error_internal (warning, &e->line_nr, format, v);
+}
+
+void
+command_errorf (ELEMENT *e, char *format, ...)
+{
+  va_list v;
+
+  va_start (v, format);
+  line_error_internal (error, &e->line_nr, format, v);
 }
 
 void
