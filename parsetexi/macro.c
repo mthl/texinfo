@@ -375,6 +375,22 @@ lookup_macro (enum command_id cmd)
   return 0;
 }
 
+void
+delete_macro (char *name)
+{
+  enum command_id cmd;
+  MACRO *m;
+  cmd = lookup_command (name);
+  if (!cmd)
+    return;
+  m = lookup_macro (cmd);
+  if (!m)
+    return;
+  m->cmd = 0;
+  m->macro_name = "";
+  m->element = 0;
+}
+
 // 3898
 ELEMENT *
 handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)

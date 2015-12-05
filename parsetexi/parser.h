@@ -47,7 +47,9 @@ ELEMENT *end_paragraph (ELEMENT *current,
 void isolate_last_space (ELEMENT *current, enum element_type type);
 int command_with_command_as_argument (ELEMENT *current);
 ELEMENT *begin_preformatted (ELEMENT *current);
-ELEMENT *end_preformatted (ELEMENT *current);
+ELEMENT *end_preformatted (ELEMENT *current,
+                           enum command_id closed_command,
+                           enum command_id interrupting_command);
 char *read_command_name (char **ptr);
 ELEMENT *merge_text (ELEMENT *current, char *text);
 void start_empty_line_after_command (ELEMENT *current, char **line_inout,

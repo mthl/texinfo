@@ -319,7 +319,7 @@ close_commands (ELEMENT *current, enum command_id closed_command,
 {
   *closed_element = 0;
   current = end_paragraph (current, closed_command, interrupting);
-  current = end_preformatted (current);
+  current = end_preformatted (current, closed_command, interrupting);
 
   while (current->parent
          && (!closed_command || current->cmd != closed_command)

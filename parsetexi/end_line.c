@@ -60,6 +60,7 @@ is_decimal_number (char *string)
 }
 
 /* Process argument to special line command. */
+// 5377
 ELEMENT *
 parse_special_misc_command (char *line, enum command_id cmd
                            /* , int *has_comment */)
@@ -72,6 +73,7 @@ parse_special_misc_command (char *line, enum command_id cmd
 
   ELEMENT *args = new_element (ET_NONE);
   char *p, *q;
+  char *value;
 
   switch (cmd)
     {
@@ -99,7 +101,9 @@ parse_special_misc_command (char *line, enum command_id cmd
 
       /* TODO: Skip optional comment. */
       /* This is strange - how can you have a comment in the middle
-         of a line?  And what does "@comment@" mean? */
+         of a line?  And what does "@comment@" mean?
+         I guess this is following TeX syntax in ending reading a control
+         sequence name at an escape character. */
 
       p = q + strspn (q, whitespace_chars);
       /* Actually, whitespace characters except form feed. */
@@ -129,8 +133,44 @@ set_invalid:
     case CM_clear:
       break;
     case CM_unmacro:
+      p = line;
+      p += strspn (p, whitespace_chars);
+      if (!*p)
+        goto unmacro_noname;
+      q = p;
+      value = read_command_name (&q);
+      if (!value)
+        goto unmacro_badname;
+      /* TODO: Check comment syntax is right */
+      delete_macro (value);
+      ADD_ARG(value, q - p);
+      debug ("UNMACRO %s", value);
+      free (value);
+      break;
+unmacro_noname:
+      line_error ("@unmacro requires a name");
+      break;
+unmacro_badname:
+      line_error ("bad name for @unmacro");
       break;
     case CM_clickstyle:
+      p = line;
+      p += strspn (p, whitespace_chars);
+      if (*p++ != '@')
+        goto clickstyle_invalid;
+      q = p;
+      value = read_command_name (&q);
+      if (!value)
+        goto clickstyle_invalid;
+      ADD_ARG (p - 1, q - p + 1);
+      if (memcmp (q, "{}", 2))
+        q += 2;
+      free (value);
+      /* TODO: check comment */
+      break;
+clickstyle_invalid:
+      line_errorf ("@clickstyle should only accept an @-command as argument, "
+                   "not `%s'", line);
       break;
     default:
       abort ();

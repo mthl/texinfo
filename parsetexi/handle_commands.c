@@ -41,15 +41,42 @@ item_container_parent (ELEMENT *current)
   return 0;
 }
 
+// 1056
+/* Record the information from a command of global effect. */
+static int
+register_global_command (enum command_id cmd, ELEMENT *current)
+{
+  if (cmd == CM_shortcontents)
+    cmd == CM_summarycontents;
+
+  // TODO: Why even give @author this flag in the first place?
+  if (cmd != CM_author && (command_data(cmd).flags & CF_global))
+    {
+      if (!current->line_nr.line_nr)
+        current->line_nr = line_nr;
+      return 1;
+    }
+  else if ((command_data(cmd).flags & CF_global_unique))
+    {
+      if (!current->line_nr.line_nr)
+        current->line_nr = line_nr;
+      return 1;
+    }
+
+  return 0;
+}
+
 /* Line 4289 */
+/* STATUS is set to 1 if we should get a new line after this. */
 ELEMENT *
 handle_misc_command (ELEMENT *current, char **line_inout,
-                     enum command_id cmd)
+                     enum command_id cmd, int *status)
 {
   ELEMENT *misc = 0;
   char *line = *line_inout;
   int arg_spec;
 
+  *status = 0;
   /* Root commands (like @node) and @bye 4290 */
   if (command_data(cmd).flags & CF_root || cmd == CM_bye)
     {
@@ -92,9 +119,14 @@ handle_misc_command (ELEMENT *current, char **line_inout,
            || arg_spec == MISC_special)
     {
       ELEMENT *args = 0;
-      /* 4350 TODO: If the current input is the result of a macro expansion,
+      /* 4350 If the current input is the result of a macro expansion,
          it may not be a complete line.  Check for this and acquire the rest
          of the line if necessary. */
+      if (!strchr (line, '\n'))
+        {
+          input_push_text (strdup (line));
+          line = new_line ();
+        }
 
       misc = new_element (ET_NONE);
       misc->cmd = cmd;
@@ -151,17 +183,23 @@ handle_misc_command (ELEMENT *current, char **line_inout,
         } */
 
       // mark_and_warn_invalid ();
-      // register_global_command ();
+      register_global_command (cmd, misc); // 4423
 
       if (arg_spec != MISC_special /* || !has_comment */ )
         current = end_line (current);
 
-      // 4429 TODO @bye
+      // 4429
+      if (cmd == CM_bye)
+        {
+          // last NEXT_LINE
+        }
 
       if (close_preformatted_command(cmd))
         current = begin_preformatted (current);
 
-      line += strlen (line); /* FIXME: Where does the control flow go? */
+      //line += strlen (line); /* FIXME: Where does the control flow go? */
+      // last; go to line 3687
+      *status = 1; /* Get a new line */
     }
   else
     {

@@ -59,83 +59,83 @@ alias   		misc		2
 # number of arguments is not known in advance.
 columnfractions		misc		1
 # file names
-setfilename		misc		MISC_text
+setfilename		misc,global_unique		MISC_text
 verbatiminclude		misc		MISC_text
 include 		misc		MISC_text
 
 raisesections			misc		MISC_skipline
 lowersections			misc		MISC_skipline
-contents			misc		MISC_skipline
-shortcontents			misc		MISC_skipline
+contents			misc,global		MISC_skipline
+shortcontents			misc,global		MISC_skipline
 summarycontents			misc		MISC_skipline
-insertcopying			misc		MISC_noarg
-clickstyle			misc		MISC_special
+insertcopying			misc,global		MISC_noarg
+clickstyle			misc,global		MISC_special
 # more relevant in preamble
-setcontentsaftertitlepage	misc		MISC_skipline
-setshortcontentsaftertitlepage	misc		MISC_skipline
-documentencoding		misc	MISC_text
-novalidate			misc		MISC_skipline
+setcontentsaftertitlepage	misc,global_unique		MISC_skipline
+setshortcontentsaftertitlepage	misc,global_unique		MISC_skipline
+documentencoding		misc,global	MISC_text
+novalidate			misc,global_unique	MISC_skipline
+validatemenus			misc,global_unique     	1
 dircategory			misc		MISC_line
 # with direntry is significant
-pagesizes			misc		MISC_line
+pagesizes			misc,global_unique	MISC_line
 # or one? 200mm,150mm 11.5in
 finalout			misc		MISC_skipline
-paragraphindent			misc		1
+paragraphindent			misc,global		1
 # or a number and forbids anything else on the line
-firstparagraphindent		misc		1
-frenchspacing			misc		1
-codequoteundirected		misc		1
-codequotebacktick		misc		1
-xrefautomaticsectiontitle	misc		1
-deftypefnnewline		misc		1
-fonttextsize			misc		1
-allowcodebreaks			misc		1
-exampleindent			misc		1
-footnotestyle			misc		1
-urefbreakstyle			misc		1
+firstparagraphindent		misc,global		1
+frenchspacing			misc,global		1
+codequoteundirected		misc,global		1
+codequotebacktick		misc,global		1
+xrefautomaticsectiontitle	misc,global		1
+deftypefnnewline		misc,global		1
+fonttextsize			misc,global_unique		1
+allowcodebreaks			misc,global       		1
+exampleindent			misc,global		1
+footnotestyle			misc,global_unique		1
+urefbreakstyle			misc,global		1
 afourpaper			misc		MISC_skipline
 afivepaper			misc		MISC_skipline
 afourlatex			misc		MISC_skipline
 afourwide			misc		MISC_skipline
-headings			misc		1
-# interacts with setchapternewpage
-setchapternewpage		misc		1
+headings			misc,global		1
+setchapternewpage		misc,global_unique		1
 
 # only relevant in TeX, and special
-everyheading			misc		MISC_lineraw
-everyfooting			misc		MISC_lineraw
-evenheading			misc		MISC_lineraw
-evenfooting			misc		MISC_lineraw
-oddheading			misc		MISC_lineraw
-oddfooting			misc		MISC_lineraw
+everyheading			misc,global_unique		MISC_lineraw
+everyfooting			misc,global_unique		MISC_lineraw
+evenheading			misc,global_unique		MISC_lineraw
+evenfooting			misc,global_unique		MISC_lineraw
+oddheading			misc,global_unique		MISC_lineraw
+oddfooting			misc,global_unique		MISC_lineraw
 
 smallbook			misc		MISC_skipline
 syncodeindex			misc		2
 synindex			misc		2
 defindex			misc		1
 defcodeindex			misc		1
-documentlanguage		misc		MISC_text
-kbdinputstyle			misc		1
-everyheadingmarks		misc		1
-everyfootingmarks		misc		1
-evenheadingmarks		misc		1
-oddheadingmarks			misc		1
-evenfootingmarks		misc		1
-oddfootingmarks			misc		1
+documentlanguage		misc,global		MISC_text
+kbdinputstyle			misc,global		1
+everyheadingmarks		misc,global_unique		1
+everyfootingmarks		misc,global_unique		1
+evenheadingmarks		misc,global_unique		1
+oddheadingmarks			misc,global_unique		1
+evenfootingmarks		misc,global_unique		1
+oddfootingmarks			misc,global_unique		1
 # not valid for info (should be in @iftex)
 cropmarks			misc		MISC_skipline
 
 # formatting
 center				misc		MISC_line
-printindex			misc		1
-listoffloats			misc		MISC_line
+printindex			misc,global		1
+listoffloats			misc,global		MISC_line
 # especially in titlepage
 #  shorttitle
-shorttitlepage			misc		MISC_line
-settitle			misc		MISC_line
-author				misc		MISC_line
-subtitle			misc		MISC_line
-title				misc		MISC_line
+shorttitlepage			misc,global_unique	MISC_line
+settitle			misc,global_unique	MISC_line
+author				misc,global		MISC_line
+subtitle			misc,global		MISC_line
+title				misc,global_unique	MISC_line
 sp				misc		1
 page				misc		MISC_skipline
 need				misc		1
@@ -295,12 +295,12 @@ slanted		brace	BRACE_style
 # are said to take 1 argument in Common.pm.
 ctrl		brace	1
 dmn		brace	1
-titlefont	brace	1
+titlefont	brace,global	1
 
 w		brace	BRACE_other
 key		brace	BRACE_other
 
-hyphenation	brace	BRACE_other
+hyphenation	brace,global	BRACE_other
 anchor		brace	1
 errormsg	brace	1
 
@@ -318,7 +318,7 @@ verb		brace	BRACE_other
 t		brace	BRACE_other
 
 # context brace commands - commands that enclose full texts
-footnote	brace	BRACE_context
+footnote	brace,global	BRACE_context
 caption		brace	BRACE_context
 shortcaption	brace	BRACE_context
 math		brace	BRACE_context
@@ -404,7 +404,7 @@ multitable		block,blockitem		BLOCK_multitable
 
 # menu commands
 menu			block,menu
-detailmenu		block,menu
+detailmenu		block,menu,global
 direntry		block,menu
 
 # align commands
@@ -419,9 +419,9 @@ indentedblock		block
 smallindentedblock	block
 
 # region commands
-titlepage		block
-copying			block
-documentdescription	block
+titlepage		block,global_unique
+copying			block,global_unique
+documentdescription	block,global_unique
 
 # preformatted commands
 example			block,preformatted,preformatted_code
@@ -480,7 +480,7 @@ ifcommandnotdefined	block		BLOCK_conditional
 ##########################################################
 # Root commands - line 887
 node			root,misc			MISC_line
-top			root,misc,sectioning		MISC_line
+top			root,misc,sectioning,global_unique	MISC_line
 chapter			root,misc,sectioning		MISC_line
 unnumbered		root,misc,sectioning		MISC_line
 chapheading		misc,sectioning			MISC_line
@@ -498,7 +498,7 @@ unnumberedsubsubsec	root,misc,sectioning		MISC_line
 subsubheading		misc,sectioning			MISC_line
 appendixsubsubsec	root,misc,sectioning		MISC_line
 
-part			root,misc,sectioning	MISC_line
+part			root,misc,sectioning,global	MISC_line
 appendixsection		root,misc,sectioning	MISC_line
 majorheading		misc,sectioning		MISC_line
 centerchap		root,misc,sectioning	MISC_line

@@ -21,6 +21,7 @@
 #include "tree.h"
 #include "text.h"
 #include "errors.h"
+#include "convert.h"
 
 // 3600
 /* Add the contents of CURRENT as an element to the extra value with

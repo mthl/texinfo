@@ -259,9 +259,12 @@ end_paragraph (ELEMENT *current,
 
 /* 1328 */
 ELEMENT *
-end_preformatted (ELEMENT *current)
+end_preformatted (ELEMENT *current,
+                  enum command_id closed_command,
+                  enum command_id interrupting_command)
 {
-  //current = close_all_style_commands (current);
+  current = close_all_style_commands (current,
+                                      closed_command, interrupting_command);
   if (current->type == ET_preformatted
       || current->type == ET_rawpreformatted)
     {
@@ -833,6 +836,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
      get it in the top-level loop in parse_texi - this is mostly
      (always?) when we don't want to start a new, empty line, and
      need to get more from the current, incomplete line of input. */
+  // 3878
   while (*line == '\0')
     {
       static char *allocated_text;
@@ -849,8 +853,8 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
           /* TODO: Can this only happen at end of file? */
           current = end_line (current);
           retval = GET_A_NEW_LINE;
+          goto funexit;
         }
-      goto funexit;
     }
 
   /* Handle user-defined macros before anything else because their expansion 
@@ -1046,18 +1050,13 @@ value_invalid:
           if (close_paragraph_command (cmd))
             current = end_paragraph (current, 0, 0);
           if (close_preformatted_command (cmd))
-            current = end_preformatted (current);
+            current = end_preformatted (current, 0, 0);
         }
 
       if (cmd == 0)
         {
-          // Unknown command
-          /* FIXME: Just add it as a new element for now to check it worked. */
-          /* Elements corresponding to Texinfo commands don't have types.  They 
-             are identified by the cmdname instead. */
-          ELEMENT *e = new_element (ET_NONE);
-          e->cmd = CM_NONE;
-          add_to_element_contents (current, e);
+          // 4287 Unknown command
+          //line_errorf ("unknown command `@%s'",);
           retval = 1;
           goto funexit;
         }
@@ -1067,7 +1066,13 @@ value_invalid:
          of exceptions, like @tab. */
       else if (command_data(cmd).flags & CF_misc)
         {
-          current = handle_misc_command (current, &line, cmd);
+          int status;
+          current = handle_misc_command (current, &line, cmd, &status);
+          if (status == 1)
+            {
+              retval = GET_A_NEW_LINE;
+              goto funexit;
+            }
         }
 
       /* line 4632 */

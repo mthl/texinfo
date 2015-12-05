@@ -1,5 +1,9 @@
 2015-12-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* commands.h (CF_global, CF_global_unique): New flags.
+
+2015-12-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* errors.c (command_warnf, command_errorf): Implement.
 
 2015-12-01  Gavin Smith  <gavinsmith0123@gmail.com>
