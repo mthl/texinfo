@@ -124,8 +124,11 @@ handle_misc_command (ELEMENT *current, char **line_inout,
          of the line if necessary. */
       if (!strchr (line, '\n'))
         {
+          char *line2;
           input_push_text (strdup (line));
-          line = new_line ();
+          line2 = new_line ();
+          if (line2)
+            line = line2;
         }
 
       misc = new_element (ET_NONE);

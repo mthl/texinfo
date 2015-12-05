@@ -125,7 +125,13 @@ next_text (void)
             {
               char *comment;
               if (feof (input_file))
-                ; // Add a newline to the read line if one is missing.
+                {
+                  /* Add a newline at the end of the file if one is missing. */
+                  char *line2;
+                  asprintf (&line2, "%s\n", line);
+                  free (line);
+                  line = line2;
+                }
 
               /* Strip off a comment. */
               comment = strchr (line, '\x7F');

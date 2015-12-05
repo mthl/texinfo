@@ -719,7 +719,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
           ELEMENT *last = last_contents_child (current);
           /* Append to existing element only if the text is all
              whitespace.  */
-          if (last->type == ET_empty_line_after_command
+          if (last && last->type == ET_empty_line_after_command
               && line[strspn (line, whitespace_chars)] == '\0'
               && !strchr (last->text.text, '\n'))
             {
