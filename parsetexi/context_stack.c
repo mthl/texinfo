@@ -16,11 +16,19 @@
 
 #include <stdlib.h>
 
+#include "tree_types.h"
 #include "context_stack.h"
+#include "api.h"
 
 static enum context *stack;
 static size_t top; /* One above last pushed context. */
 static size_t space;
+
+void
+reset_context_stack (void)
+{
+  top = 0;
+}
 
 void
 push_context (enum context c)

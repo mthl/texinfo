@@ -281,11 +281,11 @@ sub parse_texi_file ($$)
   if (1) {
     # This is our third way of passing the data: construct it using
     # Perl api directly.
-    print "Parsing file...\n";
+    #print "Parsing file...\n";
     parse_file ($file_name);
-    print "Fetching data..\n";
+    #print "Fetching data..\n";
     $TREE = build_texinfo_tree ();
-    print "Got tree...\n";
+    #print "Got tree...\n";
     #print Texinfo::Parser::_print_tree ($TREE);
 
     $LABELS = build_label_list ();
@@ -336,6 +336,47 @@ sub parse_texi_file ($$)
   _add_parents ($TREE);
   _complete_node_list ($self, $TREE);
   print "Adjusted tree.\n";
+
+
+  # line 899
+  my $text_root;
+  if ($TREE->{'type'} eq 'text_root') {
+    $text_root = $TREE;
+  } elsif ($TREE->{'contents'} and $TREE->{'contents'}->[0]
+      and $TREE->{'contents'}->[0]->{'type'} eq 'text_root') {
+    $text_root = $TREE->{'contents'}->[0];
+  }
+
+  # Put everything before @setfilename in a special type.  This allows
+  # ignoring everything before @setfilename.
+
+  # The non-XS Perl code checks $self->{'extra'}->{'setfilename'}, which
+  # would be set in _register_global_command.
+  if ($self->{'IGNORE_BEFORE_SETFILENAME'} and $text_root) {
+    my $before_setfilename = {'type' => 'preamble_before_setfilename',
+      'parent' => $text_root,
+      'contents' => []};
+    while (@{$text_root->{'contents'}}
+        and (!$text_root->{'contents'}->[0]->{'cmdname'}
+          or $text_root->{'contents'}->[0]->{'cmdname'} ne 'setfilename')) {
+      my $content = shift @{$text_root->{'contents'}};
+      $content->{'parent'} = $before_setfilename;
+      push @{$before_setfilename->{'contents'}}, $content;
+    }
+    if (!@{$text_root->{'contents'}}) {
+      # not found
+      #splice @{$text_root->{'contents'}}, 0, 0, @$before_setfilename;
+      $text_root->{'contents'} = $before_setfilename;
+    }
+    else {
+    unshift (@{$text_root->{'contents'}}, $before_setfilename)
+      if (@{$before_setfilename->{'contents'}});
+    }
+  }
+
+
+
+  ############################################################
 
   $self->{'info'} = $GLOBAL_INFO;
   #print "!!! ENCODING IS ", $self->{'info'}->{'input_encoding_name'} , "\n";

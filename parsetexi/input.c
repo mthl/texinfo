@@ -136,10 +136,7 @@ next_text (void)
               /* Strip off a comment. */
               comment = strchr (line, '\x7F');
               if (comment)
-                {
-                  *comment = '\n';
-                  comment[1] = '\0';
-                }
+                *comment = '\0';
 
               /* TODO: convert from @documentencoding to UTF-8, assuming we 
                  want to use UTF-8 internally. */

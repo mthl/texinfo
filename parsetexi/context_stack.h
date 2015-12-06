@@ -42,3 +42,4 @@ void push_context (enum context c);
 enum context pop_context ();
 enum context current_context (void);
 
+void reset_context_stack (void);

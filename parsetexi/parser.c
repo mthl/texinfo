@@ -164,6 +164,8 @@ parse_texi_file (const char *filename_in)
           /* This line is not part of the preamble.  Shove back
              into input stream. */
           input_push_text (line);
+          if (line_nr.line_nr > 0)
+            line_nr.line_nr--;
           break;
         }
 
@@ -271,8 +273,14 @@ end_preformatted (ELEMENT *current,
       debug ("CLOSE PREFORMATTED %s",
              current->type == ET_preformatted ? "preformatted"
                                               : "rawpreformatted");
-      // remove if empty
-      current = current->parent;
+      if (current->contents.number == 0)
+        {
+          current = current->parent;
+          destroy_element (pop_element_from_contents (current));
+          debug ("popping");
+        }
+      else
+        current = current->parent;
     }
   return current;
 }

@@ -67,6 +67,9 @@ void
 wipe_values ()
 
 void
+reset_context_stack ()
+
+void
 init_index_commands ()
 
 ELEMENT *

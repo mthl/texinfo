@@ -43,6 +43,7 @@ parse_file (char *filename)
   debug_output = 0;
   init_index_commands ();
   wipe_errors ();
+  reset_context_stack ();
   parse_texi_file (filename);
 }
 
@@ -52,14 +53,22 @@ get_root (void)
   return Root;
 }
 
+static void
+reset_parser ()
+{
+  init_index_commands ();
+  wipe_errors ();
+  reset_context_stack ();
+  current_node = current_section = 0;
+}
+
 /* Set ROOT to root of tree obtained by parsing the Texinfo code in STRING.
    Used for parse_texi_line. */
 void
 parse_string (char *string)
 {
   ELEMENT *root;
-  //init_index_commands (); /* FIXME - probably not necessary */
-  wipe_errors ();
+  reset_parser ();
   root = new_element (ET_root_line);
   input_push_text (strdup (string));
   Root = parse_texi (root);
@@ -70,8 +79,7 @@ void
 parse_text (char *string)
 {
   ELEMENT *root;
-  //init_index_commands (); /* FIXME - probably not necessary */
-  wipe_errors ();
+  reset_parser ();
   root = new_element (ET_text_root);
   input_push_text_with_line_nos (strdup (string));
   Root = parse_texi (root);
@@ -176,6 +184,7 @@ element_to_perl_hash (ELEMENT *e)
     }
 
   if (e->parent //) // && e->parent_type != route_not_in_tree)
+    && e->type != ET_preamble_text
     && e->type != ET_empty_spaces_before_argument) //FIXME :Set parent in
                                                    // perl code
     {
