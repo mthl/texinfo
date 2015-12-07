@@ -332,10 +332,10 @@ sub parse_texi_file ($$)
     print "Read tree.\n";
   }
 
-  print "Adjusting tree...\n";
+  #print "Adjusting tree...\n";
   _add_parents ($TREE);
   _complete_node_list ($self, $TREE);
-  print "Adjusted tree.\n";
+  #print "Adjusted tree.\n";
 
 
   # line 899

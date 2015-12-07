@@ -15,10 +15,10 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
 
-#include "tree_types.h"
-#include "tree.h"
-#include "commands.h"
+#include "parser.h"
 #include "text.h"
 
 /* Stub for Texinfo::Convert::Text::convert */
@@ -38,7 +38,8 @@ text_convert (ELEMENT *e)
   return "AAAAAAAAA";
 }
 
-/* IN_UC is non-zero if we are converting to upper case. */
+/* Produce normalized node name recursively.  IN_UC is non-zero if we are 
+   converting to upper case.  */
 static void
 convert_to_normalized_internal (ELEMENT *root, TEXT *result, int in_uc)
 {
@@ -49,7 +50,26 @@ convert_to_normalized_internal (ELEMENT *root, TEXT *result, int in_uc)
 
   if (root->text.end > 0)
     {
-      text_append_n (result, root->text.text, root->text.end);
+      char *p = root->text.text, *q;
+      while (*p)
+        {
+          q = p;
+          while (isalnum (*q))
+            q++;
+          text_append_n (result, p, q - p);
+          p = q;
+          if (isspace (*p))
+            {
+              text_append (result, "-");
+              p += strspn (p, whitespace_chars);
+            }
+          else if (*p != '\0')
+            {
+              // FIXME: This is completely wrong as far as Unicode is concerned
+              text_printf (result, "_00%02x", *p);
+              p++;
+            }
+        }
     }
 
   if (root->cmd != CM_NONE) // 228 NodeNameNormalization.pm
@@ -272,6 +292,15 @@ convert_to_normalized (ELEMENT *label)
     return "";
   text_init (&result);
   convert_to_normalized_internal (label, &result, 0);
-
-  return result.text;
+  
+  if (result.end > 0 && isdigit (result.text[0]))
+    {
+      /* prefix "g_t" if starts with a digit */
+      char *s;
+      asprintf (&s, "g_t%s", result.text);
+      free (result.text);
+      return s;
+    }
+  else
+    return result.text;
 }

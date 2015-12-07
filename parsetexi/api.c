@@ -228,6 +228,7 @@ element_to_perl_hash (ELEMENT *e)
   if (e->contents.number > 0
       || e->type == ET_text_root // FIXME special case
       || e->cmd == CM_image // why image?
+      || e->cmd == CM_anchor
       || e->cmd == CM_node) // FIXME special case
     {
       AV *av;

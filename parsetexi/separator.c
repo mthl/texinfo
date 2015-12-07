@@ -22,6 +22,7 @@
 #include "text.h"
 #include "errors.h"
 #include "convert.h"
+#include "input.h"
 
 // 3600
 /* Add the contents of CURRENT as an element to the extra value with
@@ -236,6 +237,13 @@ handle_close_brace (ELEMENT *current, char **line_inout)
 
       if (closed_command == CM_anchor) // 5051
         {
+          NODE_SPEC_EXTRA *parsed_anchor;
+          current->parent->line_nr = line_nr;
+          parsed_anchor = parse_node_manual (current);
+          if (1) // check_node_label ()
+            {
+              register_label (current->parent, parsed_anchor);
+            }
         }
       else if (command_data(closed_command).flags & CF_ref) // 5062
         {

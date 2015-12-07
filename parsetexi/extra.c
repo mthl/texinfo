@@ -51,6 +51,7 @@ add_extra_key_contents (ELEMENT *e, char *key, ELEMENT *value)
   e->extra[e->extra_number - 1].type = extra_element_contents;
 }
 
+/* An array of content arrays. */
 void
 add_extra_key_contents_array (ELEMENT *e, char *key, ELEMENT *value)
 {

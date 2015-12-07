@@ -1155,6 +1155,8 @@ end_line_misc_line (ELEMENT *current)
 
       /* Also set 'normalized' here.  The normalized labels are actually 
          the keys of "labels_information($parser)". */
+      //nodes_manuals[0]->normalized
+       // = convert_to_normalized (nodes_manuals[0]->node_content);
 
       /*Check that the node name doesn't have a filename element for 
         referring to an external manual (_check_internal_node), and that it 
@@ -1167,7 +1169,7 @@ end_line_misc_line (ELEMENT *current)
       /* This sets 'node_content' and 'normalized' on the node, among
          other things (which were already set in parse_node_manual).
          Are we normalizing the name twice? */
-      register_label (current, nodes_manuals[0]->node_content);
+      register_label (current, nodes_manuals[0]);
 
       current_node = current;
     }

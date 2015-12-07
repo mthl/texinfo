@@ -30,4 +30,4 @@ typedef struct {
 
 extern LABEL *labels_list;
 extern size_t labels_number;
-void register_label (ELEMENT *current, ELEMENT *label);
+void register_label (ELEMENT *current, NODE_SPEC_EXTRA *label);
