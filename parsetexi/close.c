@@ -251,10 +251,33 @@ close_current (ELEMENT *current,
           current = close_brace_command (current,
                                          closed_command, interrupting_command);
         }
+      else if (command_flags(current) & CF_block)
+        {
+          if (closed_command)
+            {
+              line_errorf ("`@end' expected `%s', but saw `%s'",
+                           command_name(current->cmd),
+                           command_name(closed_command));
+            }
+          else if (interrupting_command)
+            {
+              line_errorf ("`%s' seen before @end %s",
+                           command_name(interrupting_command),
+                           command_name(current->cmd));
+            }
+          else
+            {
+              line_errorf ("no matching `@end %s'",
+                           command_name(current->cmd));
+              // TODO: ignored conditional
+            }
+          current = current->parent;
+        }
       else
         {
+          /* @item and @tab commands are closed here, as well as line commands 
+             with invalid content. */
           current = current->parent;
-          // TODO
         }
     }
   else if (current->type != ET_NONE)

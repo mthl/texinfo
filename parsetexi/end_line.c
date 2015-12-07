@@ -1267,7 +1267,8 @@ end_line_misc_line (ELEMENT *current)
               add_to_element_contents (closed_command, end_elt); // 3321
 
               // 3324 ET_menu_comment
-              if (command_flags(closed_command) & CF_menu)
+              if (command_flags(closed_command) & CF_menu
+                  && current_context () == ct_menu)
                 {
                   ELEMENT *e;
                   debug ("CLOSE menu but still in menu context");

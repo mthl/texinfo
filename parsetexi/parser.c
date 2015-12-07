@@ -785,13 +785,10 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
       if (q)
         {
           /* Save up to the delimiter character. */
-          if (q != line)
-            {
-              ELEMENT *e = new_element (ET_raw);
-              text_append_n (&e->text, line, q - line);
-              add_to_element_contents (current, e);
-              line = q + 1;
-            }
+          ELEMENT *e = new_element (ET_raw);
+          text_append_n (&e->text, line, q - line);
+          add_to_element_contents (current, e);
+          line = q + 1;
           debug ("END VERB");
           /* The '}' will close the @verb command in handle_separator below. */
         }

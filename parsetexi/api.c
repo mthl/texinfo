@@ -159,7 +159,7 @@ build_node_spec (NODE_SPEC_EXTRA *value)
                 build_perl_array (&value->node_content->contents), 0);
     }
 
-  if (value->normalized)
+  if (value->normalized && *value->normalized)
     {
       hv_store (hv, "normalized", strlen ("normalized"),
                 newSVpv (value->normalized, 0), 0);
@@ -230,6 +230,7 @@ element_to_perl_hash (ELEMENT *e)
       || e->type == ET_text_root // FIXME special case
       || e->cmd == CM_image // why image?
       || e->cmd == CM_anchor
+      || e->type == ET_menu_entry_name
       || e->cmd == CM_node) // FIXME special case
     {
       AV *av;

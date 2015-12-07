@@ -379,8 +379,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
               /* Store section level in 'extra' key. */
               /* TODO: @part? */
               /*add_extra_string (last_contents_child (current), 
-                "sections_level", "1");
-                                //"0\0""1\0"[level * 2]);*/
+                "sections_level", "1"); */
               add_extra_string (misc, "level",
                           &("0\0" "0\0" "1\0" "2\0" "3\0" "4\0"
                                   "5\0" "6\0" "7\0" "8\0" "9\0" + 2)
@@ -625,19 +624,24 @@ handle_block_command (ELEMENT *current, char **line_inout,
 
               // Record dir entry here
 
-              if (current_node)
+              if (current_node) // 4793
                 {
                   if (cmd == CM_direntry)
                     {
-                      // warning
+                      line_warn ("@direntry after first node");
                     }
                   else if (cmd == CM_menu)
                     {
                       // add to array of menus for current node
                     }
                 }
-              else
+              else if (cmd != CM_direntry)
                 {
+                  line_errorf ("@%s seen before first @node",
+                               command_name(cmd));
+                  line_errorf ("perhaps your @top node should be "
+                               "wrapped in @ifnottex rather than @ifinfo?");
+                  // 4810 unassociated menus
                 }
             }
 
