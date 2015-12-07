@@ -271,7 +271,19 @@ handle_close_brace (ELEMENT *current, char **line_inout)
             current->parent->type = ET_command_as_argument;
         }
       //register_global_command ();
-      // ET_empty_spaces_after_close_brace
+
+      // 5190
+      if (current->parent->cmd == CM_anchor
+          || current->parent->cmd == CM_hyphenation
+          || current->parent->cmd == CM_caption
+          || current->parent->cmd == CM_shortcaption)
+        {
+          ELEMENT *e;
+          e = new_element (ET_empty_spaces_after_close_brace);
+          text_append (&e->text, "");
+          add_to_element_contents (current->parent->parent, e);
+        }
+
       current = current->parent->parent;
       if (close_preformatted_command(closed_command))
         current = begin_preformatted (current);

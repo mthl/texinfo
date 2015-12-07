@@ -366,7 +366,7 @@ sub parse_texi_file ($$)
     if (!@{$text_root->{'contents'}}) {
       # not found
       #splice @{$text_root->{'contents'}}, 0, 0, @$before_setfilename;
-      $text_root->{'contents'} = $before_setfilename;
+      $text_root->{'contents'} = $before_setfilename->{'contents'};
     }
     else {
     unshift (@{$text_root->{'contents'}}, $before_setfilename)
