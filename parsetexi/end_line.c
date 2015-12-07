@@ -743,7 +743,7 @@ parse_node_manual (ELEMENT *node)
               || !(closing_bracket = strchr (e->text.text, ')')))
             {
               /* Put this element in the manual contents. */
-              add_to_element_contents (manual, e);
+              add_to_contents_as_array (manual, e);
             }
           else /* ')' in text - possible end of filename component */
             {
@@ -755,9 +755,10 @@ parse_node_manual (ELEMENT *node)
 
               before = new_element (ET_NONE);
               before->parent_type = route_not_in_tree;
+              before->parent = node; // FIXME - try not to set this
               text_append_n (&before->text, e->text.text,
                              closing_bracket - e->text.text);
-              add_to_element_contents (manual, before);
+              add_to_contents_as_array (manual, before);
 
               /* Skip ')' and any following whitespace.
                  Note that we don't manage to skip any multibyte
@@ -771,6 +772,8 @@ parse_node_manual (ELEMENT *node)
                                  e->text.text + e->text.end - closing_bracket);
 
                   insert_into_contents (trimmed, after, 0);
+                  after->parent_type = route_not_in_tree;
+                  after->parent = node;
                 }
               if (e->parent_type == route_not_in_tree)
                 destroy_element (e);
@@ -784,6 +787,8 @@ parse_node_manual (ELEMENT *node)
   /* If anything left, it is the node name. */
   if (trimmed->contents.number > 0)
     {
+      trimmed->parent_type = route_not_in_tree;
+      trimmed->parent = node;
       result->node_content = trimmed;
       result->normalized = convert_to_normalized (trimmed);
     }
