@@ -1920,7 +1920,7 @@ change it if you wish by setting the @code{tex-start-of-header} and/or
 
 The @code{@@setfilename} line specifies the name of the output file to
 be generated.
-When present, it should be the first Texinfo command (that is, after
+When present, it should be the first Texinfo command (that is, afte
 @samp{\input texinfo}).
 Write the @code{@@setfilename} command at the beginning of a line and
 follow it on the same line by the Info file name.
@@ -17264,6 +17264,7 @@ default @samp{:}.
 If set, warn about @samp{:} in index entry, as it leads to invalid entries in
 index menus in output Info files.  For Info and plaintext only.
 
+@anchor{INFO_SPECIAL_CHARS_QUOTE}
 @item INFO_SPECIAL_CHARS_QUOTE
 If set, whenever there are problematic characters for Info output in
 places such as node names or menu items, surround the part of the
@@ -23888,9 +23889,10 @@ Info readers.
 If it is necessary to refer to a node whose name contains any of
 these, the @t{<nodename>} should be surrounded by a pair of @t{<del>}
 characters.  There is support in @command{makeinfo} for adding these
-characters; however, we don't recommend you use it until such time as
-Info-reading programs that recognize this syntax are common.
-@xref{Node Line Requirements}.
+characters (@pxref{INFO_SPECIAL_CHARS_QUOTE}); however, we don't 
+recommend you make use of this support until such time as Info-reading 
+programs that recognize this syntax are common.  @xref{Node Line 
+Requirements}.
 
 The use of non-ASCII characters in the names of nodes is permitted,
 but can cause problems in cross-references between nodes in Info files
@@ -24065,7 +24067,7 @@ surrounded with a pair of @t{<del>} characters.  Likewise, if
 periods), it should be surrounded by a pair of @t{<del>} characters;
 then a terminating comma or period is not needed.
 
-As with cross-references, this quoting mechanism has as of the time of 
+As with node names, this quoting mechanism has as of the time of 
 writing limited support in Info-reading programs; hence we do not 
 recommend using it until this changes.
 
