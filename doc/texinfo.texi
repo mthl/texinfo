@@ -1918,16 +1918,22 @@ change it if you wish by setting the @code{tex-start-of-header} and/or
 @cindex Texinfo requires @code{@@setfilename}
 @cindex Output file name, required
 
-The first Texinfo command (that is, after the @code{\input texinfo})
-in a document is generally @code{@@setfilename}:
+The @code{@@setfilename} line specifies the name of the output file to
+be generated.
+When present, it should be the first Texinfo command (that is, after
+@samp{\input texinfo}).
+Write the @code{@@setfilename} command at the beginning of a line and
+follow it on the same line by the Info file name.
 
 @example
 @@setfilename @var{info-file-name}
 @end example
 
-Write the @code{@@setfilename} command at the beginning of a line and
-follow it on the same line by the Info file name.  Do not write
-anything else on the line.
+The name must be different from the name of the
+Texinfo file.  There are two conventions for choosing the name: you
+can either remove the extension (such as @samp{.texi}) entirely from
+the input file name, or (recommended) replace it with the @samp{.info}
+extension.
 
 @cindex Ignored before @code{@@setfilename}
 @cindex @samp{\input} source line ignored
@@ -1936,12 +1942,22 @@ ignore everything written before the @code{@@setfilename} line.  This
 is why the very first line of the file (the @code{\input} line) does
 not show up in the output.
 
-The @code{@@setfilename} line specifies the name of the output file to
-be generated.  This name must be different from the name of the
-Texinfo file.  There are two conventions for choosing the name: you
-can either remove the extension (such as @samp{.texi}) entirely from
-the input file name, or (recommended) replace it with the @samp{.info}
-extension.
+If there is no @code{@@setfilename} line, @code{makeinfo} uses the
+input file name to determine the output name: first, any of the
+extensions @code{.texi}, @code{.tex}, @code{.txi} or @code{.texinfo}
+is removed from the input file name; then, the output format specific
+extension is added---@code{.html} when generating HTML, @code{.info}
+when generating Info, etc.  The @code{\input} line is still ignored in
+this processing, as well as leading blank lines.
+
+When producing another output format, @code{makeinfo} will replace any
+final extension with the output format-specific extension (@samp{html}
+when generating HTML, for example), or add a dot followed by the
+extension (@samp{.html} for HTML) if the given name has no extension.
+
+@code{@@setfilename} used to be required by the Texinfo processors, and 
+some other programs may still expect it to be present; for example, 
+Automake (@pxref{Texinfo,,,automake, GNU Automake}).
 
 @cindex Length of file names
 @cindex File name collision
@@ -1960,19 +1976,6 @@ document is @file{texinfo} rather than @file{texinfo.info}.  When
 impose severe limits on file names, it may remove some characters from
 the original file name to leave enough space for the subfile suffix,
 thus producing files named @file{texin-10}, @file{gcc.i12}, etc.
-
-When producing another output format, @code{makeinfo} will replace any
-final extension with the output format-specific extension (@samp{html}
-when generating HTML, for example), or add a dot followed by the
-extension (@samp{.html} for HTML) if the given name has no extension.
-
-If there is no @code{@@setfilename} line, @code{makeinfo} uses the
-input file name to determine the output name: first, any of the
-extensions @code{.texi}, @code{.tex}, @code{.txi} or @code{.texinfo}
-is removed from the input file name; then, the output format specific
-extension is added---@code{.html} when generating HTML, @code{.info}
-when generating Info, etc.  The @code{\input} line is still ignored in
-this processing, as well as leading blank lines.
 
 See also the @option{--output} option in @ref{Invoking @command{texi2any}}.
 

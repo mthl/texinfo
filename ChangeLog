@@ -1,3 +1,8 @@
+2015-12-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (@setfilename): Some reordering.  Mention 
+	that @setfilename may still be required.
+
 2015-11-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* README-hacking: Refer to PDF reference.
