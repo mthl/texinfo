@@ -1,3 +1,13 @@
+2015-12-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (key_time, get_input_key_internal): Change 
+	interpretation of key-time=0 to mean 0 timeout instead of 
+	infinite timeout.  When key-time=0 and at least three bytes
+	come in at once the first of which is an ESC, yield the ESC as a 
+	key.  This should allow specifying byte sequences for special 
+	keys in .infokey, reported by Robert Ross not to work since 
+	Texinfo 6.0.
+
 2015-12-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (@setfilename): Some reordering.  Mention 

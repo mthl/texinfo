@@ -595,7 +595,7 @@ get_input_key (void)
 
 /* Time in milliseconds to wait for the next byte of a byte sequence
    corresponding to a key or key chord.  Settable with the 'key-time' user
-   variable.  If zero, wait indefinitely. */
+   variable. */
 int key_time = 100;
 
 /* Read bytes from input and return what key has been pressed.  Return -1 on
@@ -607,16 +607,14 @@ get_input_key_internal (void)
   unsigned char c;
   int esc_seen = 0;
   int pop_start;
-  unsigned char first;
+  int byte_count = 0;
   fill_input_buffer (1);
 
   if (pop_index == push_index)
     return -1; /* No input waiting.  This shouldn't happen. */
 
-  /* Save the first byte waiting in the input buffer. */
-  first = info_input_buffer[pop_index];
-
   b = byte_seq_to_key;
+  pop_start = pop_index;
 
   while (pop_index != push_index)
     {
@@ -624,6 +622,7 @@ get_input_key_internal (void)
       int unknown = 0;
       if (!get_byte_from_input_buffer (&c))
         break; /* Incomplete byte sequence. */
+      byte_count++;
 
       switch (b[c].type)
         {
@@ -631,7 +630,6 @@ get_input_key_internal (void)
           return b[c].key;
         case BYTEMAP_ESC:
           esc_seen = 1;
-          pop_start = pop_index;
           /* Fall through. */
         case BYTEMAP_MAP:
           in_map = 1;
@@ -657,12 +655,9 @@ get_input_key_internal (void)
           FD_ZERO (&readfds);
           FD_SET (fileno (info_input_stream), &readfds);
 
-          if (key_time)
-            {
-              timer.tv_sec = 0;
-              timer.tv_usec = key_time * 1000;
-              timerp = &timer;
-            }
+          timer.tv_sec = 0;
+          timer.tv_usec = key_time * 1000;
+          timerp = &timer;
           ready = select (fileno(info_input_stream)+1, &readfds,
                           NULL, NULL, timerp);
 #else
@@ -673,21 +668,28 @@ get_input_key_internal (void)
         }
     }
 
-  if (!esc_seen)
-    /* If the sequence was incomplete, return the first byte. */
-    return first;
+  /* Incomplete or unknown byte sequence. Start again with the first byte.  */
+  pop_index = pop_start;
+
+  if (!esc_seen || (byte_count >= 3 && key_time == 0))
+    {
+      /* If the sequence was incomplete, return the first byte.
+             Also return the first byte for sequences with ESC that are at
+         least three bytes long if 'key_time' is 0, to give some support for 
+         specifying byte sequences in .infokey for those sent by unrecognized
+         special keys (which would otherwise be skipped below). */
+      pop_index = pop_start;
+      get_byte_from_input_buffer (&c);
+      return c;
+    }
   else
     {
-      /* Start again with the first key after ESC. */
-      pop_index = pop_start;
+      get_byte_from_input_buffer (&c); /* Should be ESC */
 
       /* If there are no more characters, then decide that the escape key
          itself has been pressed. */
       if (pop_index == push_index)
         return 033;
-
-      /* Save the first byte waiting in the input buffer. */
-      first = info_input_buffer[pop_index];
 
       /* Skip byte sequences that look like they could have come from
          unrecognized keys, e.g. F3 or C-S-Left, to avoid them as being
@@ -700,11 +702,12 @@ get_input_key_internal (void)
       if (c == 'O')
         {
           /* If no more bytes, call it M-O. */
-          if (!get_byte_from_input_buffer (&c))
+          if (!info_any_buffered_input_p ())
             return 'O' + KEYMAP_META_BASE;
 
           /* Otherwise it could be an unrecognized key producing a sequence
-             ESC O (byte).  Ignore it. */
+             ESC O (byte).  Ignore it, discarding the next byte. */
+          get_byte_from_input_buffer (&c);
           return -1;
         }
 
