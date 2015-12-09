@@ -8,6 +8,9 @@
 	keys in .infokey, reported by Robert Ross not to work since 
 	Texinfo 6.0.
 
+	* doc/info-stnd.texi (Variables),
+	* NEWS: Meaning of key-time=0 has changed.
+
 2015-12-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (@setfilename): Some reordering.  Mention 

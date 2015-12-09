@@ -108,6 +108,9 @@ one of the relevant sections:
         test on some platforms
   . internal changes to reduce memory use and increase speed of
     searches, relative to last release
+  . The meaning of the `key-time' variable has changed when its value
+    is 0.  This value meant to wait forever in the last release, but now
+    it means that the next byte must be available immediately.
 
 * Miscellaneous
   . The `info.info' file is no longer distributed with Texinfo.
