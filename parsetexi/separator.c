@@ -287,10 +287,13 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       current = current->parent->parent;
       if (close_preformatted_command(closed_command))
         current = begin_preformatted (current);
-      // if close_preformatted begin_preformatted
     } /* CF_brace */
   else if (current->type == ET_rawpreformatted) // 5199
     {
+      /* lone right braces are accepted in a rawpreformatted */
+      ELEMENT *e = new_element (ET_NONE);
+      text_append_n (&e->text, "}", 1);
+      add_to_element_contents (current, e);
       goto funexit;
     }
   // 5203 -- context brace command (e.g. @footnote)

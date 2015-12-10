@@ -111,10 +111,8 @@ handle_misc_command (ELEMENT *current, char **line_inout,
       misc = new_element (ET_NONE);
       misc->cmd = cmd;
       add_to_element_contents (current, misc);
-      /*
       if (close_preformatted_command(cmd))
         current = begin_preformatted (current);
-      */
     }
   /* All the cases using the raw line.
      I don't understand what the difference is between these. */
@@ -687,7 +685,8 @@ handle_brace_command (ELEMENT *current, char **line_inout,
   // 4841
   // 258 keep_line_nr_brace_commands
   if (e->cmd == CM_titlefont || e->cmd == CM_anchor
-      || command_data(e->cmd).data > 0)
+      || command_data(e->cmd).data > 0
+      || command_data(e->cmd).data == BRACE_style)
     {
       e->line_nr = line_nr;
     }

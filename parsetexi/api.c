@@ -233,6 +233,9 @@ element_to_perl_hash (ELEMENT *e)
       || e->type == ET_menu_entry_name
       || e->type == ET_brace_command_arg
       || e->cmd == CM_TeX
+      || (command_data(e->cmd).flags & CF_brace
+          && (command_data(e->cmd).data > 0       // 4838
+              || command_data(e->cmd).data == BRACE_style))
       || e->cmd == CM_node) // FIXME special case
     {
       AV *av;
