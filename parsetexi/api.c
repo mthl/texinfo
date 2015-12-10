@@ -231,6 +231,8 @@ element_to_perl_hash (ELEMENT *e)
       || e->cmd == CM_image // why image?
       || e->cmd == CM_anchor
       || e->type == ET_menu_entry_name
+      || e->type == ET_brace_command_arg
+      || e->cmd == CM_TeX
       || e->cmd == CM_node) // FIXME special case
     {
       AV *av;

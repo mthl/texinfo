@@ -1106,6 +1106,12 @@ end_line_misc_line (ELEMENT *current)
                         }
                       add_extra_string (current, "command_argument",
                                         strdup (end_command));
+                      if (line[strspn (line, whitespace_chars)] != '\0')
+                        {
+                          command_errorf (current,
+                                          "superfluous argument to @end %s: "
+                                          "%s", end_command, line);
+                        }
                     }
                 }
               else

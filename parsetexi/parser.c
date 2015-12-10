@@ -891,7 +891,62 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
         }
       else if (command_flags (current) & CF_accent) // 3996 - accent commands
         {
-          // do accent stuff here
+          if (strchr (whitespace_chars_except_newline, *line))
+            {
+              if (isalpha (command_name(current->cmd)[0]))
+              /* e.g. @dotaccent */
+                {
+                  char *p; char *s;
+                  KEY_PAIR *k;
+                  p = line + strspn (line, whitespace_chars_except_newline);
+                  k = lookup_extra_key (current, "spaces");
+                  if (!k)
+                    {
+                      asprintf (&s, "%.*s", (int) (p - line), p);
+                      add_extra_string (current, "spaces", s);
+                    }
+                  else
+                    {
+                      asprintf (&s, "%s%.*s",
+                                (char *) k->value,
+                                (int) (p - line), p);
+                      free (k->value);
+                      k->value = (ELEMENT *) s;
+                    }
+                  line = p;
+                }
+              else if (*line == '@')
+                {
+                  line_errorf ("use braces to give a command as an argument "
+                               "to @%s", command_name(current->cmd));
+                  current = current->parent;
+                }
+              else if (*line != '\0' && *line != '\n' && *line != '\r')
+                {
+                  ELEMENT *e;
+                  debug ("ACCENT");
+                  e = new_element (ET_following_arg);
+                  add_to_element_args (current, e);
+                  text_append_n (&e->text, line, 1);
+                  if (current->cmd == CM_dotless
+                      && *line != 'i' && *line != 'j')
+                    {
+                      line_errorf ("@%s expects `i' or `j' as argument, "
+                                   "not `%c'", *line++);
+                    }
+                  if (isalpha (command_name(current->cmd)[0]))
+                    e->type = ET_space_command_arg;
+                  while (current->contents.number > 0)
+                    destroy_element (pop_element_from_contents (current));
+                  current = current->parent;
+                }
+              else // 4032
+                {
+                  debug ("STRANGE ACC");
+                  line_warnf ("accent command `@%s' must not be followed by "
+                              "a new line", command_name(current->cmd));
+                }
+            }
           current = current->parent;
           goto funexit;
         }
