@@ -38,6 +38,9 @@ you can see the difference between the expected and actual output with
 
   diff t/results/coverage_braces/test_image.pl{,.new}
 
+(Any number at the start of the name of the test, like "03" in this
+example, is removed.)
+
 To review all the differences for one of the *.t test files, you can do:
 
   for f in t/results/coverage_braces/*.pl; do echo --------; echo \

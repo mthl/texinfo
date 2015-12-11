@@ -1,3 +1,8 @@
+2015-12-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/README: Add remark about numbers being removed for test 
+	result subdirectories.
+
 2015-12-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (key_time, get_input_key_internal): Change 
