@@ -146,8 +146,6 @@ init_index_commands (void)
   char name[] = "?index";
   char name2[] = "??index";
 
-  number_of_indices = 0;
-
 #define MAX (10 * 2)
 
 #define X(command) CM_##command, CM_##command##x
@@ -185,6 +183,8 @@ init_index_commands (void)
       {X(deftp),}
     };
 #undef X
+
+  number_of_indices = 0;
 
   for (p = default_indices; p->name; p++)
     {

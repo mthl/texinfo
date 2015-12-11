@@ -89,7 +89,41 @@ handle_open_brace (ELEMENT *current, char **line_inout)
         {
           if (command == CM_caption || command == CM_shortcaption)
             {
-            }
+#define float floatxx
+              ELEMENT *float;
+              if (!current->parent->parent
+                  || current->parent->parent->cmd != CM_float)
+                {
+                  float = current->parent;
+                  while (float->parent && float->cmd != CM_float)
+                    float = float->parent;
+                  if (float->cmd != CM_float)
+                    {
+                      line_errorf ("@%s is not meaningful outside "
+                                   "`@float' environment",
+                                   command_name(command));
+                      float = 0;
+                    }
+                  else
+                    line_warnf ("@%s should be right below `@float'", 
+                                command_name(command));
+                }
+              else
+                float = current->parent->parent;
+              if (float)
+                {
+                  if (lookup_extra_key (float, command_name(command)))
+                    line_warnf ("ignoring multiple @%s",
+                                command_name(command));
+                  else
+                    {
+                      add_extra_key_element (current->parent, "float", float);
+                      add_extra_key_element (float, command_name(command), 
+                                             current->parent);
+                    }
+                }
+#undef float
+        }
 
           /* Add to context stack. */
           switch (command)

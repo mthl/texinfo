@@ -107,6 +107,13 @@ add_extra_def_args (ELEMENT *e, char *key, DEF_ARGS_EXTRA *value)
 }
 
 void
+add_extra_float_type (ELEMENT *e, char *key, EXTRA_FLOAT_TYPE *value)
+{
+  add_extra_key (e, key, (ELEMENT *) value);
+  e->extra[e->extra_number - 1].type = extra_float_type;
+}
+
+void
 add_extra_string (ELEMENT *e, char *key, char *value)
 {
   add_extra_key (e, key, (ELEMENT *) value);

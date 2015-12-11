@@ -801,6 +801,41 @@ parse_node_manual (ELEMENT *node)
   return result;
 }
 
+int
+parse_float_type (ELEMENT *current)
+{
+  ELEMENT *type_contents;
+  EXTRA_FLOAT_TYPE *eft;
+  eft = malloc (sizeof (EXTRA_FLOAT_TYPE));
+  eft->content = 0;
+  eft->normalized = 0;
+
+  if (current->args.number > 0)
+    {
+      type_contents = trim_spaces_comment_from_content 
+        (args_child_by_index(current, 0));
+      if (type_contents->contents.number > 0)
+        {
+          char *normalized;
+          normalized = convert_to_normalized (type_contents);
+          eft->content = type_contents;
+          if (normalized[strspn (normalized, "-")] != '\0')
+            eft->normalized = normalized;
+          /* TODO: why do we check there's a character that isn't '-'? */
+
+          add_extra_float_type (current, "type", eft);
+          return 1;
+        }
+      else
+        {
+          destroy_element (type_contents);
+        }
+    }
+  eft->normalized = "";
+  add_extra_float_type (current, "type", eft);
+  return 0;
+}
+
 /* Actions to be taken at the end of a line that started a block that
    has to be ended with "@end". */
 ELEMENT *
@@ -894,7 +929,11 @@ end_line_starting_block (ELEMENT *current)
             {
               // TODO 2950
             }
+          parse_float_type (current->parent);
+          //type = ;
         }
+      // add to global 'floats' array and set 'float_section' directly
+      // on $float.
     }
   current = current->parent; //2965
   //counter_pop (&count_remaining_args);
@@ -1001,7 +1040,7 @@ end_line_starting_block (ELEMENT *current)
 
 // 3100
 /* Actions to be taken at the end of an argument to a line command
-   not starting a block. */
+   not starting a block.  @end is processed in here. */
 static ELEMENT *
 end_line_misc_line (ELEMENT *current)
 {
@@ -1186,6 +1225,7 @@ end_line_misc_line (ELEMENT *current)
     }
   else if (current->cmd == CM_listoffloats) /* 3248 */
     {
+      parse_float_type (current);
     }
   else
     {

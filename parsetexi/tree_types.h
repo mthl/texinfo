@@ -36,6 +36,7 @@ enum extra_type {
     extra_node_spec_array,
     extra_string,
     extra_def_args,
+    extra_float_type,
     extra_deleted
 };
 
@@ -157,5 +158,10 @@ typedef struct {
     int nelements;
     int space;
 } DEF_ARGS_EXTRA;
+
+typedef struct {
+    ELEMENT *content;
+    char *normalized;
+} EXTRA_FLOAT_TYPE;
 
 

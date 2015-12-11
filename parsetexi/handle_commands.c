@@ -686,7 +686,8 @@ handle_brace_command (ELEMENT *current, char **line_inout,
   // 258 keep_line_nr_brace_commands
   if (e->cmd == CM_titlefont || e->cmd == CM_anchor
       || command_data(e->cmd).data > 0
-      || command_data(e->cmd).data == BRACE_style)
+      || command_data(e->cmd).data == BRACE_style
+      || command_data(e->cmd).data == BRACE_context)
     {
       e->line_nr = line_nr;
     }

@@ -235,7 +235,8 @@ element_to_perl_hash (ELEMENT *e)
       || e->cmd == CM_TeX
       || (command_data(e->cmd).flags & CF_brace
           && (command_data(e->cmd).data > 0       // 4838
-              || command_data(e->cmd).data == BRACE_style))
+              || command_data(e->cmd).data == BRACE_style
+              || command_data(e->cmd).data == BRACE_context))
       || e->cmd == CM_node) // FIXME special case
     {
       AV *av;
@@ -473,6 +474,19 @@ element_to_perl_hash (ELEMENT *e)
                     }
                 }
 
+              break;
+              }
+            case extra_float_type:
+              {
+              EXTRA_FLOAT_TYPE *eft = (EXTRA_FLOAT_TYPE *) f;
+              HV *type = newHV ();
+              if (eft->content)
+                hv_store (type, "content", strlen ("content"),
+                          build_perl_array (&eft->content->contents), 0);
+              if (eft->normalized)
+                hv_store (type, "normalized", strlen ("normalized"),
+                          newSVpv (eft->normalized, 0), 0);
+              STORE(newRV_inc ((SV *)type));
               break;
               }
             default:
