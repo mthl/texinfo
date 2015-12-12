@@ -36,14 +36,22 @@
 
 ELEMENT *Root;
 
+static void
+reset_parser ()
+{
+  wipe_user_commands ();
+  init_index_commands ();
+  wipe_errors ();
+  reset_context_stack ();
+  current_node = current_section = 0;
+}
+
 /* Set ROOT to root of tree obtained by parsing FILENAME. */
 void
 parse_file (char *filename)
 {
   debug_output = 0;
-  init_index_commands ();
-  wipe_errors ();
-  reset_context_stack ();
+  reset_parser ();
   parse_texi_file (filename);
 }
 
@@ -51,15 +59,6 @@ ELEMENT *
 get_root (void)
 {
   return Root;
-}
-
-static void
-reset_parser ()
-{
-  init_index_commands ();
-  wipe_errors ();
-  reset_context_stack ();
-  current_node = current_section = 0;
 }
 
 /* Set ROOT to root of tree obtained by parsing the Texinfo code in STRING.
@@ -236,7 +235,6 @@ element_to_perl_hash (ELEMENT *e)
       || (command_data(e->cmd).flags & CF_accent)
       || (command_data(e->cmd).flags & CF_brace
           && (command_data(e->cmd).data > 0       // 4838
-              || command_data(e->cmd).data == BRACE_style
               || command_data(e->cmd).data == BRACE_context))
       || e->cmd == CM_node) // FIXME special case
     {

@@ -227,8 +227,8 @@ close_command_cleanup (ELEMENT *current)
                 }
 
               if (empty_format)
-                line_warn ("@%s has text but no @item",
-                           command_name(current->cmd));
+                command_warn (current, "@%s has text but no @item",
+                              command_name(current->cmd));
             }
         }
 

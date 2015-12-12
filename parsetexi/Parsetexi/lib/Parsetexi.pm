@@ -131,6 +131,7 @@ sub parser (;$$)
 
   wipe_values ();
   init_index_commands ();
+  # fixme: these are overwritten immediately after
   if (defined($conf)) {
     foreach my $key (keys (%$conf)) {
       if (ref($conf->{$key}) ne 'CODE' and $key ne 'values') {
@@ -445,7 +446,6 @@ sub parse_texi_text($$;$$$$)
     return undef if (!defined($text));
 
     $self = parser() if (!defined($self));
-    wipe_errors ();
     parse_text($text);
     my $tree = build_texinfo_tree ();
     my $INDEX_NAMES = build_index_data ();
@@ -485,8 +485,10 @@ sub parse_texi_line($$;$$$$)
 sub indices_information($)
 {
   my $self = shift;
-  my $INDEX_NAMES = build_index_data ();
-  $self->{'index_names'} = $INDEX_NAMES;
+  if (!$self->{'index_names'}) {
+    my $INDEX_NAMES = build_index_data ();
+    $self->{'index_names'} = $INDEX_NAMES;
+  }
   #for my $index (keys %$INDEX_NAMES) {
   #  if ($INDEX_NAMES->{$index}->{'merged_in'}) {
   #    $self->{'merged_indices'}-> {$index}

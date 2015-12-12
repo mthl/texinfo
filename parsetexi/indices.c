@@ -185,6 +185,7 @@ init_index_commands (void)
 #undef X
 
   number_of_indices = 0;
+  num_index_commands = 0;
 
   for (p = default_indices; p->name; p++)
     {

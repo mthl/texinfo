@@ -84,6 +84,12 @@ add_texinfo_command (char *name)
   return ((enum command_id) user_defined_number++) | USER_COMMAND_BIT;
 }
 
+void
+wipe_user_commands (void)
+{
+  user_defined_number = 0;
+}
+
 /* Common.pm:841. */
 /* Commands that terminate a paragraph. */
 /* We may replace this function with a macro, or represent this infomation in

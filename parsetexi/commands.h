@@ -37,6 +37,7 @@ enum command_id lookup_command (char *cmdname);
 #define command_name(cmd) (command_data(cmd).cmdname)
 
 enum command_id add_texinfo_command (char *name);
+void wipe_user_commands (void);
 
 /* In indices.c */
 void init_index_commands (void);
