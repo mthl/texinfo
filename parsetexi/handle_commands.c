@@ -246,7 +246,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                 }
               else
                 {
-                  line_errorf ("@%s not meaningful within `@%s' block");
+                  line_error ("@%s not meaningful within `@%s' block");
                 }
               current = begin_preformatted (current);
             }
@@ -265,7 +265,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                 }
               else
                 {
-                  line_errorf ("@%s not meaningful within `@%s' block");
+                  line_error ("@%s not meaningful within `@%s' block");
                   current = begin_preformatted (current);
                 }
             }
@@ -275,7 +275,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
               if (cmd != CM_item && cmd != CM_headitem
                   && cmd != CM_tab)
                 {
-                  line_errorf ("@%s not meaningful inside @%s block",
+                  line_error ("@%s not meaningful inside @%s block",
                               command_name(cmd),
                               command_name(parent->cmd)); // 4521
                 }
@@ -290,8 +290,8 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 
                   if (max_columns == 0)
                     {
-                      line_warnf ("@%s in empty multitable",
-                                  command_name(cmd));
+                      line_warn ("@%s in empty multitable",
+                                 command_name(cmd));
                     }
                   else if (cmd == CM_tab)
                     { // 4484
@@ -303,8 +303,8 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                       else if (counter_value (&count_cells, row)
                                >= max_columns)
                         {
-                          line_errorf ("too many columns in multitable item"
-                                       " (max %d)", max_columns);
+                          line_error ("too many columns in multitable item"
+                                      " (max %d)", max_columns);
                         }
                       else // 4493
                         {
@@ -356,7 +356,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
             }
           else
             {
-              line_errorf ("@%s outside of table or list",
+              line_error ("@%s outside of table or list",
                           command_name(cmd));
               current = begin_preformatted (current);
             }
@@ -417,7 +417,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
               else
                 {
                   // error - deffnx not after deffn
-                  line_errorf ("must be after @%s to use @%s",
+                  line_error ("must be after @%s to use @%s",
                                command_name(base_command),
                                command_name(cmd));
                 }
@@ -635,10 +635,10 @@ handle_block_command (ELEMENT *current, char **line_inout,
                 }
               else if (cmd != CM_direntry)
                 {
-                  line_errorf ("@%s seen before first @node",
-                               command_name(cmd));
-                  line_errorf ("perhaps your @top node should be "
-                               "wrapped in @ifnottex rather than @ifinfo?");
+                  line_error ("@%s seen before first @node",
+                              command_name(cmd));
+                  line_error ("perhaps your @top node should be "
+                              "wrapped in @ifnottex rather than @ifinfo?");
                   // 4810 unassociated menus
                 }
             }

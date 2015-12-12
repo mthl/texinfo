@@ -169,7 +169,7 @@ unmacro_badname:
       /* TODO: check comment */
       break;
 clickstyle_invalid:
-      line_errorf ("@clickstyle should only accept an @-command as argument, "
+      line_error ("@clickstyle should only accept an @-command as argument, "
                    "not `%s'", line);
       break;
     default:
@@ -206,7 +206,7 @@ parse_line_command_args (ELEMENT *line_command)
   cmd = line_command->cmd;
   if (arg->contents.number == 0)
     {
-      /*command_errorf (line_command, "@%s missing argument",
+      /*command_error (line_command, "@%s missing argument",
                       command_name (cmd));*/
       return 0;
     }
@@ -233,7 +233,7 @@ parse_line_command_args (ELEMENT *line_command)
       else
         {
           /* Error - too many arguments. */
-          line_errorf ("superfluous argument to @%s",
+          line_error ("superfluous argument to @%s",
                        command_name (cmd));
           break;
         }
@@ -241,7 +241,7 @@ parse_line_command_args (ELEMENT *line_command)
 
   if (!argarg)
     {
-      command_errorf (line_command, "@%s missing argument", command_name(cmd));
+      command_error (line_command, "@%s missing argument", command_name(cmd));
       add_extra_string (line_command, "missing_argument", "1");
       return 0;
     }
@@ -355,7 +355,7 @@ parse_line_command_args (ELEMENT *line_command)
             /* Check argument is valid. */
             if (!is_decimal_number (arg))
               {
-                line_errorf ("column fraction not a number: %s", arg);
+                line_error ("column fraction not a number: %s", arg);
 
                 /* FIXME: Possible bug in the Perl version - it accepts
                    2x.2, 2.23x */
@@ -380,7 +380,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line);
           }
         else
-          line_errorf ("@sp arg must be numeric, not `%s'", line);
+          line_error ("@sp arg must be numeric, not `%s'", line);
         break;
       }
     case CM_defindex:
@@ -415,11 +415,11 @@ parse_line_command_args (ELEMENT *line_command)
 
         break;
       defindex_invalid:
-        line_errorf ("bad argument to @%s: %s",
+        line_error ("bad argument to @%s: %s",
                      command_name(cmd), line);
         break;
       defindex_reserved:
-        line_errorf ("reserved index name %s", name);
+        line_error ("reserved index name %s", name);
         break;
       }
     case CM_synindex:
@@ -450,10 +450,10 @@ parse_line_command_args (ELEMENT *line_command)
         from_index = index_by_name (from);
         to_index = index_by_name (to);
         if (!from_index)
-          line_errorf ("unknown source index in @%s: %s", command_name(cmd),
+          line_error ("unknown source index in @%s: %s", command_name(cmd),
                        from);
         if (!to_index)
-          line_errorf ("unknown source index in @%s: %s", command_name(cmd),
+          line_error ("unknown source index in @%s: %s", command_name(cmd),
                        to);
 
         if (from_index && to_index) // 5606
@@ -468,7 +468,7 @@ parse_line_command_args (ELEMENT *line_command)
                 from_index->merged_in = current_to;
               }
             else
-              line_warnf ("@%s leads to a merging of %s in itself, ignoring",
+              line_warn ("@%s leads to a merging of %s in itself, ignoring",
                           command_name(cmd), from);
           }
 
@@ -477,7 +477,7 @@ parse_line_command_args (ELEMENT *line_command)
 
         break;
       synindex_invalid: // 5638
-        line_errorf ("bad argument to @%s: %s",
+        line_error ("bad argument to @%s: %s",
                      command_name(cmd), line);
         free (from); free (to);
         break;
@@ -488,23 +488,23 @@ parse_line_command_args (ELEMENT *line_command)
         char *p = line;
         arg = read_command_name (&p);
         if (!arg || *p)
-          line_errorf ("bad argument to @printindex: %s", line);
+          line_error ("bad argument to @printindex: %s", line);
         else
           {
             INDEX *idx = index_by_name (arg);
             if (!idx)
-              line_errorf ("unknown index `%s' in @printindex", arg);
+              line_error ("unknown index `%s' in @printindex", arg);
             else
               {
                 // 5650
                 if (idx->merged_in)
-                  line_warnf
+                  line_warn
                     ("printing an index `%s' merged in another one, `%s'",
                      arg, idx->merged_in->name);
                 if (!current_node && !current_section)
                   // TODO && nothing on regions stack?
                   {
-                    line_warnf ("printindex before document beginning: "
+                    line_warn ("printindex before document beginning: "
                                 "@printindex %s", arg);
                   }
                 ADD_ARG (arg);
@@ -525,7 +525,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG (line);
           }
         else
-          line_errorf ("@%s argument must be `top' or `bottom', not `%s'",
+          line_error ("@%s argument must be `top' or `bottom', not `%s'",
                        command_name(cmd), line);
 
         break;
@@ -537,7 +537,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG (line);
           }
         else
-          line_errorf ("Only @fonttextsize 10 or 11 is supported, not "
+          line_error ("Only @fonttextsize 10 or 11 is supported, not "
                        "`%s'", line);
         break;
       }
@@ -548,7 +548,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line);
           }
         else
-          line_errorf ("@footnotestyle arg must be "
+          line_error ("@footnotestyle arg must be "
                        "`separate' or `end', not `%s'", line);
         break;
       }
@@ -560,7 +560,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line);
           }
         else
-          line_errorf ("@setchapternewpage argument must be "
+          line_error ("@setchapternewpage argument must be "
                        "`on', `off' or `odd', not `%s'", line);
         break;
       }
@@ -571,7 +571,7 @@ parse_line_command_args (ELEMENT *line_command)
         if (is_decimal_number (line))
           ADD_ARG(line);
         else
-          line_errorf ("bad argument to @need: %s", line);
+          line_error ("bad argument to @need: %s", line);
 
         break;
       }
@@ -588,7 +588,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line);
           }
         else
-          line_errorf ("@firstparagraph argument must be "
+          line_error ("@firstparagraph argument must be "
                        "`none' or `insert', not `%s'", line);
 
         break;
@@ -610,7 +610,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line);
           }
         else
-          line_errorf ("expected @%s on or off, not `%s'", line);
+          line_error ("expected @%s on or off, not `%s'", line);
 
         break;
       }
@@ -622,7 +622,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line);
           }
         else
-          line_errorf ("@kbdinputstyle arg must be "
+          line_error ("@kbdinputstyle arg must be "
                        "`code'/`example'/`distinct', not `%s'", line);
         break;
       }
@@ -633,7 +633,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line);
           }
         else
-          line_errorf ("@allowcodebreaks arg must be "
+          line_error ("@allowcodebreaks arg must be "
                        "`true' or `false', not `%s'", line);
         break;
       }
@@ -645,7 +645,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line);
           }
         else
-          line_errorf ("@urefbreakstyle arg must be "
+          line_error ("@urefbreakstyle arg must be "
                        "`after'/`before'/`none', not `%s'", line);
         break;
       }
@@ -658,7 +658,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line);
           }
         else
-          line_errorf ("bad argument to @headings: %s", line);
+          line_error ("bad argument to @headings: %s", line);
         break;
       }
     default:
@@ -892,8 +892,8 @@ end_line_starting_block (ELEMENT *current)
               // but we got here from t/21multitable.t on 2015.11.30.
               if (!e->cmd)
                 {
-                  command_warnf (current, "unexpected argument on @%s line:",
-                                 command_name(current->cmd));
+                  command_warn (current, "unexpected argument on @%s line:",
+                                command_name(current->cmd));
                   // TODO: Convert argument to Texinfo
                 }
               else if (e->cmd != CM_c && e->cmd != CM_comment)
@@ -1095,7 +1095,7 @@ end_line_misc_line (ELEMENT *current)
 
       if (!text || !strcmp (text, ""))
         {
-          line_warnf ("@%s missing argument", command_name(cmd)); // 3123
+          line_warn ("@%s missing argument", command_name(cmd)); // 3123
         }
       else
         {
@@ -1112,7 +1112,7 @@ end_line_misc_line (ELEMENT *current)
                   end_id = lookup_command (end_command);
                   if (end_id == 0 || !(command_data(end_id).flags & CF_block))
                     {
-                      command_warnf (current, "unknown @end %s", end_command);
+                      command_warn (current, "unknown @end %s", end_command);
                       free (end_command); end_command = 0;
                     }
                   else
@@ -1147,15 +1147,15 @@ end_line_misc_line (ELEMENT *current)
                                         strdup (end_command));
                       if (line[strspn (line, whitespace_chars)] != '\0')
                         {
-                          command_errorf (current,
-                                          "superfluous argument to @end %s: "
-                                          "%s", end_command, line);
+                          command_error (current,
+                                         "superfluous argument to @end %s: "
+                                         "%s", end_command, line);
                         }
                     }
                 }
               else
                 {
-                  command_errorf (current, "bad argument to @end: %s", line);
+                  command_error (current, "bad argument to @end: %s", line);
                 }
             }
           else if (current->cmd == CM_include) // 3166
@@ -1236,8 +1236,8 @@ end_line_misc_line (ELEMENT *current)
 
       if (current->cmd != CM_top && misc_content->contents.number == 0)
         {
-          command_warnf (current, "@%s missing argument", 
-                         command_name(current->cmd));
+          command_warn (current, "@%s missing argument", 
+                        command_name(current->cmd));
           add_extra_string (current, "missing_argument", "1");
         }
       else
@@ -1682,14 +1682,14 @@ end_line (ELEMENT *current)
             }
           else
             {
-              command_warnf (current->parent, "missing name for @%s",
-                             command_name (original_def_command));
+              command_warn (current->parent, "missing name for @%s",
+                            command_name (original_def_command));
             }
         }
       else
         {
-          command_warnf (current->parent, "missing category for @%s",
-                         command_name (original_def_command));
+          command_warn (current->parent, "missing category for @%s",
+                        command_name (original_def_command));
         }
 
       current = current->parent->parent; // 2868

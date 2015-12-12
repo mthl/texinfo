@@ -64,21 +64,7 @@ line_error_internal (enum error_type type, LINE_NR *cmd_line_nr,
 }
 
 void
-line_error (char *message)
-{
-  if (!message) abort ();
-  if (error_number == error_space)
-    {
-      error_list = realloc (error_list,
-                            (error_space += 10) * sizeof (ERROR_MESSAGE));
-    }
-  error_list[error_number].message = message;
-  error_list[error_number].type = error;
-  error_list[error_number++].line_nr = line_nr; /* Field-by-field copy. */
-}
-
-void
-line_errorf (char *format, ...)
+line_error (char *format, ...)
 {
   va_list v;
 
@@ -87,21 +73,7 @@ line_errorf (char *format, ...)
 }
 
 void
-line_warn (char *message)
-{
-  if (!message) abort ();
-  if (error_number == error_space)
-    {
-      error_list = realloc (error_list,
-                            (error_space += 10) * sizeof (ERROR_MESSAGE));
-    }
-  error_list[error_number].message = message;
-  error_list[error_number].type = warning;
-  error_list[error_number++].line_nr = line_nr; /* Field-by-field copy. */
-}
-
-void
-line_warnf (char *format, ...)
+line_warn (char *format, ...)
 {
   va_list v;
 
@@ -110,7 +82,7 @@ line_warnf (char *format, ...)
 }
 
 void
-command_warnf (ELEMENT *e, char *format, ...)
+command_warn (ELEMENT *e, char *format, ...)
 {
   va_list v;
 
@@ -119,7 +91,7 @@ command_warnf (ELEMENT *e, char *format, ...)
 }
 
 void
-command_errorf (ELEMENT *e, char *format, ...)
+command_error (ELEMENT *e, char *format, ...)
 {
   va_list v;
 

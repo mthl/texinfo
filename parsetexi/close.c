@@ -29,23 +29,23 @@ close_brace_command (ELEMENT *current,
   if (current->cmd != CM_verb || current->type == ET_NONE)
     {
       if (closed_command)
-        command_errorf (current,
+        command_error (current,
                         "@end %s seen before @%s closing brace",
                         command_name(closed_command),
                         command_name(current->cmd));
       else if (interrupting_command)
-        command_errorf (current,
+        command_error (current,
                         "%s seen before @%s closing brace",
                         command_name(interrupting_command),
                         command_name(current->cmd));
       else
-        command_errorf (current,
+        command_error (current,
                         "@%s missing close brace",
                         command_name(current->cmd));
     }
   else
     {
-      command_errorf (current,
+      command_error (current,
                       "@%s missing closing delimiter sequence: %s",
                       command_name(current->cmd),
                       element_type_names[current->type]);
@@ -227,8 +227,8 @@ close_command_cleanup (ELEMENT *current)
                 }
 
               if (empty_format)
-                line_warnf ("@%s has text but no @item",
-                            command_name(current->cmd));
+                line_warn ("@%s has text but no @item",
+                           command_name(current->cmd));
             }
         }
 
@@ -255,20 +255,20 @@ close_current (ELEMENT *current,
         {
           if (closed_command)
             {
-              line_errorf ("`@end' expected `%s', but saw `%s'",
-                           command_name(current->cmd),
-                           command_name(closed_command));
+              line_error ("`@end' expected `%s', but saw `%s'",
+                          command_name(current->cmd),
+                          command_name(closed_command));
             }
           else if (interrupting_command)
             {
-              line_errorf ("`%s' seen before @end %s",
-                           command_name(interrupting_command),
-                           command_name(current->cmd));
+              line_error ("`%s' seen before @end %s",
+                          command_name(interrupting_command),
+                          command_name(current->cmd));
             }
           else
             {
-              line_errorf ("no matching `@end %s'",
-                           command_name(current->cmd));
+              line_error ("no matching `@end %s'",
+                          command_name(current->cmd));
               // TODO: ignored conditional
             }
           current = current->parent;
@@ -381,7 +381,7 @@ close_commands (ELEMENT *current, enum command_id closed_command,
     }
   else if (closed_command)
     {
-      line_errorf ("unmatched @end %s", command_name(closed_command));
+      line_error ("unmatched @end %s", command_name(closed_command));
     }
 
   return current;

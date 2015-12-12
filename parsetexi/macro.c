@@ -80,7 +80,7 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
   name = read_command_name (&line);
   if (!name)
     {
-      line_errorf ("@%s requires a name", command_name (cmd));
+      line_error ("@%s requires a name", command_name (cmd));
       add_extra_string (macro, "invalid_syntax", "1");
       return macro;
     }
@@ -216,7 +216,7 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
           line = new_line ();
           if (!line)
             {
-              line_errorf ("@%s missing close brace", command_name(cmd));
+              line_error ("@%s missing close brace", command_name(cmd));
               line = "\n";
               goto funexit;
             }

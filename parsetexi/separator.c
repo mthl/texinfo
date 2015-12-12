@@ -99,22 +99,22 @@ handle_open_brace (ELEMENT *current, char **line_inout)
                     float = float->parent;
                   if (float->cmd != CM_float)
                     {
-                      line_errorf ("@%s is not meaningful outside "
-                                   "`@float' environment",
-                                   command_name(command));
+                      line_error ("@%s is not meaningful outside "
+                                  "`@float' environment",
+                                  command_name(command));
                       float = 0;
                     }
                   else
-                    line_warnf ("@%s should be right below `@float'", 
-                                command_name(command));
+                    line_warn ("@%s should be right below `@float'", 
+                               command_name(command));
                 }
               else
                 float = current->parent->parent;
               if (float)
                 {
                   if (lookup_extra_key (float, command_name(command)))
-                    line_warnf ("ignoring multiple @%s",
-                                command_name(command));
+                    line_warn ("ignoring multiple @%s",
+                               command_name(command));
                   else
                     {
                       add_extra_key_element (current->parent, "float", float);

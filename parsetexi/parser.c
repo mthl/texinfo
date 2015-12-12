@@ -831,7 +831,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
             {
               cmd = lookup_command (command);
               if (!cmd)
-                line_errorf ("unknown command `%s'", command); // 4877
+                line_error ("unknown command `%s'", command); // 4877
             }
           free (command);
         }
@@ -917,7 +917,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
                 }
               else if (*line == '@')
                 {
-                  line_errorf ("use braces to give a command as an argument "
+                  line_error ("use braces to give a command as an argument "
                                "to @%s", command_name(current->cmd));
                   current = current->parent;
                 }
@@ -931,7 +931,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
                   if (current->cmd == CM_dotless
                       && *line != 'i' && *line != 'j')
                     {
-                      line_errorf ("@%s expects `i' or `j' as argument, "
+                      line_error ("@%s expects `i' or `j' as argument, "
                                    "not `%c'", *line++);
                     }
                   if (isalpha (command_name(current->cmd)[0]))
@@ -943,8 +943,8 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
               else // 4032
                 {
                   debug ("STRANGE ACC");
-                  line_warnf ("accent command `@%s' must not be followed by "
-                              "a new line", command_name(current->cmd));
+                  line_warn ("accent command `@%s' must not be followed by "
+                             "a new line", command_name(current->cmd));
                 }
             }
           current = current->parent;
@@ -954,7 +954,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
         {
           /* TODO: Check 'IGNORE_SPACES_AFTER_BRACED_COMMAND_NAME' config
              variable. */
-          line_errorf ("@%s expected braces",
+          line_error ("@%s expected braces",
                        command_name(current->cmd));
           current = current->parent;
         }
@@ -1004,7 +1004,7 @@ value_valid:
                      Texinfo::Report::gdt we deliberately pass
                      in undefined values. */
                   ELEMENT *value_elt;
-                  line_errorf ("undefined flag: %.*s", line - arg_start, 
+                  line_error ("undefined flag: %.*s", line - arg_start, 
                                arg_start);
                   value_elt = new_element (ET_NONE);
                   value_elt->cmd = CM_value;
@@ -1068,8 +1068,8 @@ value_invalid:
                   && cmd != CM_vskip)
               || (command_data(cmd).flags & CF_in_heading)))
         {
-          line_warnf ("@%s should only appear at a line beginning",
-                      command_name(cmd));
+          line_warn ("@%s should only appear at a line beginning",
+                     command_name(cmd));
         }
 
 #if 0
@@ -1116,7 +1116,7 @@ value_invalid:
       if (cmd == 0)
         {
           // 4287 Unknown command
-          //line_errorf ("unknown command `@%s'",);
+          //line_error ("unknown command `@%s'",);
           retval = 1;
           goto funexit;
         }
@@ -1164,8 +1164,16 @@ value_invalid:
           add_to_element_contents (current, nobrace);
 
           // @\
-          // @NEWLINE
-
+          if (cmd == CM_BACKSLASH && current_context () != ct_math)
+            {
+              line_warn ("@\\ should only appear in math context");
+            }
+          if (cmd == CM_NEWLINE)
+            {
+              current = end_line (current);
+              retval = GET_A_NEW_LINE;
+              goto funexit;
+            }
         }
 #if 0
       else
@@ -1180,7 +1188,7 @@ value_invalid:
       char separator = *line++;
       debug ("SEPARATOR: %c", separator);
       if (separator == '@')
-        /* error */;
+        line_error ("unexpected @");
       else
         current = handle_separator (current, separator, &line);
     } /* 5326 */
