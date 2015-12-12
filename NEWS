@@ -89,7 +89,7 @@ one of the relevant sections:
 
 * info
   . New user variables `link-style', `active-link-style', and
-    `match-style' enable cutomization of how cross-references and search 
+    `match-style' enable customization of how cross-references and search 
     matches are highlighted.
   . By default only the node pointers are displayed at the top of a node.
     Customize this with the `nodeline' variable.
