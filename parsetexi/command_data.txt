@@ -293,6 +293,7 @@ slanted		brace	BRACE_style
 # I intend to use "1" for these commands only, and
 # use a different value for the other commands which
 # are said to take 1 argument in Common.pm.
+U		brace	1
 ctrl		brace	1
 dmn		brace	1
 titlefont	brace,global	1

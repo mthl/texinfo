@@ -1148,7 +1148,8 @@ value_invalid:
             }
         }
 
-      else if (command_data(cmd).flags & CF_brace) /* line 4835 */
+      else if (command_data(cmd).flags & CF_brace
+               || command_data(cmd).flags & CF_accent) /* line 4835 */
         {
           current = handle_brace_command (current, &line, cmd);
         }
