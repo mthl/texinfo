@@ -685,6 +685,7 @@ handle_brace_command (ELEMENT *current, char **line_inout,
   // 4841
   // 258 keep_line_nr_brace_commands
   if (e->cmd == CM_titlefont || e->cmd == CM_anchor
+      || (command_data(e->cmd).flags & CF_accent)
       || (command_data(e->cmd).flags & CF_brace
           && (command_data(e->cmd).data > 1
               || command_data(e->cmd).data == BRACE_context)))

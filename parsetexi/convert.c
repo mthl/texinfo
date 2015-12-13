@@ -79,12 +79,12 @@ convert_to_normalized_internal (ELEMENT *root, TEXT *result, int in_uc)
           switch (root->cmd) // 353 Common.pm
             {
             case CM_ASTERISK:
-              ADD("\n");
+              ADD("-");
               break;
             case CM_SPACE:
             case CM_TAB:
             case CM_NEWLINE:
-              ADD(" ");
+              ADD("-");
               break;
             case CM_HYPHEN:
             case CM_VERTICAL_BAR:
@@ -98,7 +98,7 @@ convert_to_normalized_internal (ELEMENT *root, TEXT *result, int in_uc)
             case CM_CLOSE_BRACE:
             case CM_OPEN_BRACE:
             case CM_BACKSLASH:
-              ADD(command_name(root->cmd));
+              text_printf (result, "_00%02x", *command_name(root->cmd));
               break;
             default:
               /* Shouldn't get here. */
@@ -128,15 +128,15 @@ convert_to_normalized_internal (ELEMENT *root, TEXT *result, int in_uc)
             case CM_bullet:
               ADD("_2022"); break;
             case CM_copyright:
-              ADD("_00A9"); break;
+              ADD("_00a9"); break;
             case CM_registeredsymbol:
-              ADD("_00AE"); break;
+              ADD("_00ae"); break;
             case CM_dots:
               ADD("_2026"); break;
             case CM_equiv:
               ADD("_2261"); break;
             case CM_expansion:
-              ADD("_21A6"); break;
+              ADD("_21a6"); break;
             case CM_arrow:
               ADD("_2192"); break;
             case CM_minus:
@@ -144,93 +144,93 @@ convert_to_normalized_internal (ELEMENT *root, TEXT *result, int in_uc)
             case CM_point:
               ADD("_2605"); break;
             case CM_print:
-              ADD("_22A3"); break;
+              ADD("_22a3"); break;
             case CM_result:
-              ADD("_21D2"); break;
+              ADD("_21d2"); break;
             case CM_aa:
-              ADD("_00E5"); break;
+              ADD("_00e5"); break;
             case CM_AA:
-              ADD("_00C5"); break;
+              ADD("_00c5"); break;
             case CM_ae:
-              ADD("_00E6"); break;
+              ADD("_00e6"); break;
             case CM_oe:
               ADD("_0153"); break;
             case CM_AE:
-              ADD("_00C6"); break;
+              ADD("_00c6"); break;
             case CM_OE:
               ADD("_0152"); break;
             case CM_o:
-              ADD("_00F8"); break;
+              ADD("_00f8"); break;
             case CM_O:
-              ADD("_00D8"); break;
+              ADD("_00d8"); break;
             case CM_ss:
-              ADD("_00DF"); break;
+              ADD("_00df"); break;
             case CM_DH:
-              ADD("_00D0"); break;
+              ADD("_00d0"); break;
             case CM_dh:
-              ADD("_00F0"); break;
+              ADD("_00f0"); break;
             case CM_TH:
-              ADD("_00DE"); break;
+              ADD("_00de"); break;
             case CM_th:
-              ADD("_00FE"); break;
+              ADD("_00fe"); break;
             case CM_l:
               ADD("_0142"); break;
             case CM_L:
               ADD("_0141"); break;
             case CM_exclamdown:
-              ADD("_00A1"); break;
+              ADD("_00a1"); break;
             case CM_questiondown:
-              ADD("_00BF"); break;
+              ADD("_00bf"); break;
             case CM_pounds:
-              ADD("_00A3"); break;
+              ADD("_00a3"); break;
             case CM_ordf:
-              ADD("_00AA"); break;
+              ADD("_00aa"); break;
             case CM_ordm:
-              ADD("_00BA"); break;
+              ADD("_00ba"); break;
             case CM_comma:
-              ADD("_002C"); break;
+              ADD("_002c"); break;
             case CM_atchar:
               ADD("_0040"); break;
             case CM_lbracechar:
-              ADD("_007B"); break;
+              ADD("_007b"); break;
             case CM_rbracechar:
-              ADD("_007D"); break;
+              ADD("_007d"); break;
             case CM_backslashchar:
-              ADD("_005C"); break;
+              ADD("_005c"); break;
             case CM_hashchar:
               ADD("_0023"); break;
             case CM_euro:
-              ADD("_20AC"); break;
+              ADD("_20ac"); break;
             case CM_geq:
               ADD("_2265"); break;
             case CM_leq:
               ADD("_2264"); break;
             case CM_textdegree:
-              ADD("_00B0"); break;
+              ADD("_00b0"); break;
             case CM_quotedblleft:
-              ADD("_201C"); break;
+              ADD("_201c"); break;
             case CM_quotedblright:
-              ADD("_201D"); break;
+              ADD("_201d"); break;
             case CM_quoteleft:
               ADD("_2018"); break;
             case CM_quoteright:
               ADD("_2019"); break;
             case CM_quotedblbase:
-              ADD("_201E"); break;
+              ADD("_201e"); break;
             case CM_quotesinglbase:
-              ADD("_201A"); break;
+              ADD("_201a"); break;
             case CM_guillemetleft:
-              ADD("_00AB"); break;
+              ADD("_00ab"); break;
             case CM_guillemetright:
-              ADD("_00BB"); break;
+              ADD("_00bb"); break;
             case CM_guillemotleft:
-              ADD("_00AB"); break;
+              ADD("_00ab"); break;
             case CM_guillemotright:
-              ADD("_00BB"); break;
+              ADD("_00bb"); break;
             case CM_guilsinglleft:
               ADD("_2039"); break;
             case CM_guilsinglright:
-              ADD("_203A"); break;
+              ADD("_203a"); break;
             case CM_click:
               ADD("_2192"); break;
             default:

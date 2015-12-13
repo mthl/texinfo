@@ -241,8 +241,7 @@ guilsinglleft	brace		0
 guilsinglright	brace		0
 
 # accent commands - can be called with or without braces
-# do we need both "brace" and "accent"?
-# there is special casing on line 3998
+# TODO do we need "brace" here as well?
 \"		brace,accent	BRACE_accent
 ~ 		brace,accent	BRACE_accent
 ^ 		brace,accent	BRACE_accent

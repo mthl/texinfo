@@ -235,6 +235,7 @@ element_to_perl_hash (ELEMENT *e)
       || (command_data(e->cmd).flags & CF_accent)
       || (command_data(e->cmd).flags & CF_brace
           && (command_data(e->cmd).data > 0       // 4838
+              || command_data(e->cmd).data == BRACE_style
               || command_data(e->cmd).data == BRACE_context))
       || e->cmd == CM_node) // FIXME special case
     {

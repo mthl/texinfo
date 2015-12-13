@@ -902,7 +902,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
                   k = lookup_extra_key (current, "spaces");
                   if (!k)
                     {
-                      asprintf (&s, "%.*s", (int) (p - line), p);
+                      asprintf (&s, "%.*s", (int) (p - line), line);
                       add_extra_string (current, "spaces", s);
                     }
                   else
@@ -915,45 +915,65 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
                     }
                   line = p;
                 }
-              else if (*line == '@')
+              else
                 {
-                  line_error ("use braces to give a command as an argument "
-                               "to @%s", command_name(current->cmd));
+                  line_warn ("accent command @%s must not be followed "
+                             "by whitespace", command_name(current->cmd));
                   current = current->parent;
-                }
-              else if (*line != '\0' && *line != '\n' && *line != '\r')
-                {
-                  ELEMENT *e;
-                  debug ("ACCENT");
-                  e = new_element (ET_following_arg);
-                  add_to_element_args (current, e);
-                  text_append_n (&e->text, line, 1);
-                  if (current->cmd == CM_dotless
-                      && *line != 'i' && *line != 'j')
-                    {
-                      line_error ("@%s expects `i' or `j' as argument, "
-                                   "not `%c'", *line++);
-                    }
-                  if (isalpha (command_name(current->cmd)[0]))
-                    e->type = ET_space_command_arg;
-                  while (current->contents.number > 0)
-                    destroy_element (pop_element_from_contents (current));
-                  current = current->parent;
-                }
-              else // 4032
-                {
-                  debug ("STRANGE ACC");
-                  line_warn ("accent command `@%s' must not be followed by "
-                             "a new line", command_name(current->cmd));
                 }
             }
-          current = current->parent;
+          else if (*line == '@')
+            {
+              line_error ("use braces to give a command as an argument "
+                          "to @%s", command_name(current->cmd));
+              current = current->parent;
+            }
+          else if (*line != '\0' && *line != '\n' && *line != '\r')
+            {
+              ELEMENT *e, *e2;
+              debug ("ACCENT");
+              e = new_element (ET_following_arg);
+              add_to_element_args (current, e);
+              e2 = new_element (ET_NONE);
+              text_append_n (&e2->text, line, 1);
+              add_to_element_contents (e, e2);
+
+              if (current->cmd == CM_dotless
+                  && *line != 'i' && *line != 'j')
+                {
+                  line_error ("@dotless expects `i' or `j' as argument, "
+                              "not `%c'", *line);
+                }
+              if (isalpha (command_name(current->cmd)[0]))
+                e->type = ET_space_command_arg;
+              while (current->contents.number > 0)
+                destroy_element (pop_element_from_contents (current));
+              line++;
+              current = current->parent;
+            }
+          else // 4032
+            {
+              debug ("STRANGE ACC");
+              line_warn ("accent command `@%s' must not be followed by "
+                         "a new line", command_name(current->cmd));
+              current = current->parent;
+            }
           goto funexit;
         }
       else // 4041
         {
           /* TODO: Check 'IGNORE_SPACES_AFTER_BRACED_COMMAND_NAME' config
              variable. */
+          if (1)
+            {
+              char *p;
+              p = line + strspn (line, whitespace_chars);
+              if (p != line)
+                {
+                  line = p;
+                  goto funexit;
+                }
+            }
           line_error ("@%s expected braces",
                        command_name(current->cmd));
           current = current->parent;
