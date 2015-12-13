@@ -566,8 +566,8 @@ start_empty_line_after_command (ELEMENT *current, char **line_inout,
 
   if (command)
     {
-      add_extra_key_element (e, "command", command);
-      add_extra_key_element (command, "spaces_after_command", e);
+      add_extra_element (e, "command", command);
+      add_extra_element (command, "spaces_after_command", e);
     }
 
   *line_inout = line;
@@ -885,7 +885,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
                  command_name(current->cmd));
           if (!current->type)
             current->type = ET_command_as_argument;
-          add_extra_key_element (current->parent->parent, 
+          add_extra_element (current->parent->parent, 
                                  "command_as_argument", current);
           current = current->parent;
         }

@@ -74,12 +74,12 @@ void gather_previous_item (ELEMENT *current, enum command_id next_command);
 #include "dump_perl.h"
 
 /* In extra.c */
-void add_extra_key_element (ELEMENT *e, char *key, ELEMENT *value);
-void add_extra_key_contents (ELEMENT *e, char *key, ELEMENT *value);
-void add_extra_key_contents_array (ELEMENT *e, char *key, ELEMENT *value);
-void add_extra_key_text (ELEMENT *e, char *key, ELEMENT *value);
-void add_extra_key_index_entry (ELEMENT *e, char *key, INDEX_ENTRY_REF *value);
-void add_extra_key_misc_args (ELEMENT *e, char *key, ELEMENT *value);
+void add_extra_element (ELEMENT *e, char *key, ELEMENT *value);
+void add_extra_contents (ELEMENT *e, char *key, ELEMENT *value);
+void add_extra_contents_array (ELEMENT *e, char *key, ELEMENT *value);
+void add_extra_text (ELEMENT *e, char *key, ELEMENT *value);
+void add_extra_index_entry (ELEMENT *e, char *key, INDEX_ENTRY_REF *value);
+void add_extra_misc_args (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_node_spec (ELEMENT *e, char *key, NODE_SPEC_EXTRA *value);
 void add_extra_node_spec_array (ELEMENT *, char *, NODE_SPEC_EXTRA **value);
 void add_extra_def_args (ELEMENT *e, char *key, DEF_ARGS_EXTRA *value);

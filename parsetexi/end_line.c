@@ -912,7 +912,7 @@ end_line_starting_block (ELEMENT *current)
       asprintf (&s, "%d", prototypes->contents.number);
       add_extra_string (current->parent, "max_columns", s);
       }
-      add_extra_key_contents (current->parent, "prototypes", prototypes);
+      add_extra_contents (current->parent, "prototypes", prototypes);
     }
   else
     {
@@ -983,14 +983,14 @@ end_line_starting_block (ELEMENT *current)
           e->cmd = CM_bullet;
           e->parent_type = route_not_in_tree;
           e->parent = current;
-          add_extra_key_element (current, "command_as_argument", e);
+          add_extra_element (current, "command_as_argument", e);
 
           contents = new_element (ET_NONE);
           contents2 = new_element (ET_NONE);
           contents2->parent_type = route_not_in_tree;
           add_to_contents_as_array (contents2, e);
           add_to_element_contents (contents, contents2);
-          add_extra_key_contents_array (current, "block_command_line_contents",
+          add_extra_contents_array (current, "block_command_line_contents",
                                         contents);
         }
       else if (item_line_command (current->cmd)
@@ -1002,14 +1002,14 @@ end_line_starting_block (ELEMENT *current)
           e->cmd = CM_asis;
           e->parent_type = route_not_in_tree;
           e->parent = current;
-          add_extra_key_element (current, "command_as_argument", e);
+          add_extra_element (current, "command_as_argument", e);
 
           contents = new_element (ET_NONE);
           contents2 = new_element (ET_NONE);
           contents2->parent_type = route_not_in_tree;
           add_to_contents_as_array (contents2, e);
           add_to_element_contents (contents, contents2);
-          add_extra_key_contents_array (current, "block_command_line_contents",
+          add_extra_contents_array (current, "block_command_line_contents",
                                         contents);
           // FIXME: code duplication
         }
@@ -1075,7 +1075,7 @@ end_line_misc_line (ELEMENT *current)
   if (arg_type > 0)
     {
       ELEMENT *args = parse_line_command_args (current);
-      add_extra_key_misc_args (current, "misc_args", args);
+      add_extra_misc_args (current, "misc_args", args);
     }
   else if (arg_type == MISC_text) /* 3118 */
     {
@@ -1213,7 +1213,7 @@ end_line_misc_line (ELEMENT *current)
         is not empty (_check_empty_node).  */
       //check_node_label ();
 
-      add_extra_key_contents (current, "node_content",
+      add_extra_contents (current, "node_content",
                               nodes_manuals[0]->node_content);
 
       /* This sets 'node_content' and 'normalized' on the node, among
@@ -1243,7 +1243,7 @@ end_line_misc_line (ELEMENT *current)
       else
         {
           // 3266
-          add_extra_key_contents (current, "misc_content", misc_content);
+          add_extra_contents (current, "misc_content", misc_content);
           if ((current->parent->cmd == CM_ftable
                || current->parent->cmd == CM_vtable)
               && (current->cmd == CM_item || current->cmd == CM_itemx))
@@ -1309,8 +1309,8 @@ end_line_misc_line (ELEMENT *current)
           else
             { // 3295
               // FIXME: end_elt correct?
-              add_extra_key_element (end_elt, "command", closed_command);
-              add_extra_key_element (closed_command, "end_command", end_elt);
+              add_extra_element (end_elt, "command", closed_command);
+              add_extra_element (closed_command, "end_command", end_elt);
               close_command_cleanup (closed_command);
 
               // 3301 INLINE_INSERTCOPYING
@@ -1374,7 +1374,7 @@ end_line_misc_line (ELEMENT *current)
           if ((misc_args = lookup_extra_key (misc_cmd, "misc_args")))
             {
               char *s;
-              add_extra_key_misc_args (current, "columnfractions", 
+              add_extra_misc_args (current, "columnfractions", 
                                        misc_args->value);
               asprintf (&s, "%d", misc_args->value->contents.number);
               add_extra_string (current, "max_columns", s);
@@ -1402,9 +1402,9 @@ end_line_misc_line (ELEMENT *current)
             {
               if (!lookup_extra_key (current_node, "associated_section"))
                 {
-                  add_extra_key_element
+                  add_extra_element
                     (current_node, "associated_section", current);
-                  add_extra_key_element
+                  add_extra_element
                     (current, "associated_node", current_node);
                 }
             }

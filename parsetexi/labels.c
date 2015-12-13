@@ -29,7 +29,6 @@ size_t labels_space = 0;
    and must be unique in the document.  Corresponds to @node, @anchor, and 
    second arg of @float. */
 void
-//register_label (ELEMENT *current, ELEMENT *label)
 register_label (ELEMENT *current, NODE_SPEC_EXTRA *label)
 {
   char *normalized = label->normalized;
@@ -49,5 +48,5 @@ register_label (ELEMENT *current, NODE_SPEC_EXTRA *label)
 
   // 2504
   add_extra_string (current, "normalized", normalized);
-  add_extra_key_contents (current, "node_content", label->node_content);
+  add_extra_contents (current, "node_content", label->node_content);
 }

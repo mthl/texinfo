@@ -172,7 +172,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           /* TODO: Could we have just set misc->args directly as args? */
 
           if (args->contents.number > 0 && arg_spec != MISC_skipline)
-            add_extra_key_misc_args (misc, "misc_args", args);
+            add_extra_misc_args (misc, "misc_args", args);
           else
             {
               for (i = 0; i < args->contents.number; i++)
@@ -454,7 +454,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                   if (parent->cmd == CM_titlepage)
                     {
                       // TODO 4595 global author
-                      add_extra_key_element (current, "titlepage", parent);
+                      add_extra_element (current, "titlepage", parent);
                       found = 1; break;
                     }
                   else if (parent->cmd == CM_quotation
@@ -467,10 +467,10 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                       else
                         {
                           e = new_element (ET_NONE);
-                          add_extra_key_contents (parent, "authors", e);
+                          add_extra_contents (parent, "authors", e);
                         }
                       add_to_contents_as_array (e, current);
-                      add_extra_key_element (current, "quotation", parent);
+                      add_extra_element (current, "quotation", parent);
                       found = 1; break;
                     }
                 }

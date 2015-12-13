@@ -35,7 +35,7 @@ register_extra_menu_entry_information (ELEMENT *current)
 
       if (arg->type == ET_menu_entry_name)
         {
-          add_extra_key_element (current, "menu_entry_name", arg);
+          add_extra_element (current, "menu_entry_name", arg);
 
           // Check menu label isn't empty
         }
@@ -53,7 +53,7 @@ register_extra_menu_entry_information (ELEMENT *current)
         }
       else if (arg->type == ET_menu_entry_description)
         {
-          add_extra_key_element (current, "menu_entry_description", arg);
+          add_extra_element (current, "menu_entry_description", arg);
         }
     }
 }

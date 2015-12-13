@@ -23,6 +23,7 @@
 #include "errors.h"
 #include "convert.h"
 #include "input.h"
+#include "labels.h"
 
 // 3600
 /* Add the contents of CURRENT as an element to the extra value with
@@ -55,7 +56,7 @@ register_command_arg (ELEMENT *current, char *key)
     {
       value = new_element (ET_NONE);
       value->parent_type = route_not_in_tree;
-      add_extra_key_contents_array (current->parent, key, value);
+      add_extra_contents_array (current->parent, key, value);
     }
 
   add_to_contents_as_array (value, new);
@@ -79,6 +80,8 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       counter_push (&count_remaining_args, current,
                     command_data(current->cmd).data);
       counter_dec (&count_remaining_args);
+
+      // TODO 4899 definfoenclose
 
       arg = new_element (ET_NONE);
       add_to_element_args (current, arg);
@@ -117,8 +120,8 @@ handle_open_brace (ELEMENT *current, char **line_inout)
                                command_name(command));
                   else
                     {
-                      add_extra_key_element (current->parent, "float", float);
-                      add_extra_key_element (float, command_name(command), 
+                      add_extra_element (current->parent, "float", float);
+                      add_extra_element (float, command_name(command), 
                                              current->parent);
                     }
                 }
@@ -151,7 +154,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
             e = new_element (ET_empty_spaces_before_argument);
             text_append_n (&e->text, line, n);
             add_to_element_contents (current, e);
-            add_extra_key_element (current->parent,
+            add_extra_element (current->parent,
                                    "spaces_before_argument", e);
             line += n;
           }
@@ -174,7 +177,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
               /* See comment in parser.c:merge_text */
               text_append (&e->text, "");
               add_to_element_contents (current, e);
-              add_extra_key_element (current->parent,
+              add_extra_element (current->parent,
                                      "spaces_before_argument", e);
             }
           else if (command_data(command).data == BRACE_inline)
@@ -193,13 +196,17 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       b = new_element (ET_bracketed);
       add_to_element_contents (current, b);
       current = b;
-      /* TODO: Record the line number if we are in a def_line in case @ 
-         protects the end of the line. */
+
+      /* We need the line number here in case @ protects the
+         end of the line.  */
+      if (current->parent->parent->type == ET_def_line)
+        current->line_nr = line_nr;
+
       e = new_element (ET_empty_spaces_before_argument);
       text_append (&e->text, ""); /* See comment in parser.c:merge_text */
       add_to_element_contents (current, e);
       debug ("BRACKETED in def/multitable");
-
+      add_extra_element (current, "spaces_before_argument", e);
     }
   else if (current->type == ET_rawpreformatted)
     {
@@ -219,11 +226,8 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       current = b;
       debug ("BRACKETED in math");
     }
-#if 0
-
   else
-    /*error*/;
-#endif
+    line_error ("misplaced {");
 
   *line_inout = line;
   return current;
@@ -257,26 +261,32 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       else if (command_data(current->parent->cmd).data > 0)
         {
           // 5033
-          isolate_last_space (current, 0);
+          /* @inline* always have end spaces considered as normal text */
+          if (!command_flags(current->parent) & CF_inline)
+            isolate_last_space (current, 0);
           register_command_arg (current, "brace_command_contents");
-          //remove_empty_content_arguments ();
+          remove_empty_content_arguments (current);
         }
 
       closed_command = current->parent->cmd;
       debug ("CLOSING(brace) %s", command_data(closed_command).cmdname);
       counter_pop (&count_remaining_args);
 
-      // 5044 check for brace command that doesn't take arguments has in
-      // fact been given arguments.
+      // 5044
+      if (current->contents.number > 0
+          && command_data(closed_command).data == 0)
+        line_warn ("command @%s does not accept arguments",
+                   command_name(closed_command));
 
       if (closed_command == CM_anchor) // 5051
         {
           NODE_SPEC_EXTRA *parsed_anchor;
           current->parent->line_nr = line_nr;
           parsed_anchor = parse_node_manual (current);
-          if (1) // check_node_label ()
+          if (1) // TODO check_node_label ()
             {
               register_label (current->parent, parsed_anchor);
+              // TODO "regions stack"
             }
         }
       else if (command_data(closed_command).flags & CF_ref) // 5062

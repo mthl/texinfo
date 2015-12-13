@@ -78,6 +78,10 @@ void init_index_commands (void);
 #define CF_index_entry_command  	0x40000000
 #define CF_global_unique		0x80000000
 
+/* NOTE: We've run out of spaces for flags, but some of these may not
+   be used, or may not be necessary. For example, region could be done
+   as BLOCK_region in data instead. */
+
 /* Types of misc command (has CF_misc flag).  Values for COMMAND.data. */
 /* See Common.pm:376 */
 #define MISC_special -1

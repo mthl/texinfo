@@ -36,7 +36,7 @@ add_extra_key (ELEMENT *e, char *key, ELEMENT *value)
 /* Add an extra key that is a reference to another element (for example, 
    'associated_section' on a node command element. */
 void
-add_extra_key_element (ELEMENT *e, char *key, ELEMENT *value)
+add_extra_element (ELEMENT *e, char *key, ELEMENT *value)
 {
   add_extra_key (e, key, value);
   e->extra[e->extra_number - 1].type = extra_element;
@@ -45,7 +45,7 @@ add_extra_key_element (ELEMENT *e, char *key, ELEMENT *value)
 /* Add an extra key that is a reference to the contents array of another
    element (for example, 'node_content' on a node command element). */
 void
-add_extra_key_contents (ELEMENT *e, char *key, ELEMENT *value)
+add_extra_contents (ELEMENT *e, char *key, ELEMENT *value)
 {
   add_extra_key (e, key, value);
   e->extra[e->extra_number - 1].type = extra_element_contents;
@@ -53,7 +53,7 @@ add_extra_key_contents (ELEMENT *e, char *key, ELEMENT *value)
 
 /* An array of content arrays. */
 void
-add_extra_key_contents_array (ELEMENT *e, char *key, ELEMENT *value)
+add_extra_contents_array (ELEMENT *e, char *key, ELEMENT *value)
 {
   add_extra_key (e, key, value);
   e->extra[e->extra_number - 1].type = extra_element_contents_array;
@@ -62,21 +62,21 @@ add_extra_key_contents_array (ELEMENT *e, char *key, ELEMENT *value)
 /* Add an extra key that is a reference to the text field of another
    element. */
 void
-add_extra_key_text (ELEMENT *e, char *key, ELEMENT *value)
+add_extra_text (ELEMENT *e, char *key, ELEMENT *value)
 {
   add_extra_key (e, key, value);
   e->extra[e->extra_number - 1].type = extra_element_text;
 }
 
 void
-add_extra_key_index_entry (ELEMENT *e, char *key, INDEX_ENTRY_REF *value)
+add_extra_index_entry (ELEMENT *e, char *key, INDEX_ENTRY_REF *value)
 {
   add_extra_key (e, key, (ELEMENT *) value);
   e->extra[e->extra_number - 1].type = extra_index_entry;
 }
 
 void
-add_extra_key_misc_args (ELEMENT *e, char *key, ELEMENT *value)
+add_extra_misc_args (ELEMENT *e, char *key, ELEMENT *value)
 {
   if (!value) return;
   add_extra_key (e, key, value);
