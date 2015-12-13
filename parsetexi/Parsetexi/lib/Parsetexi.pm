@@ -450,12 +450,17 @@ sub parse_texi_text($$;$$$$)
     my $tree = build_texinfo_tree ();
     my $INDEX_NAMES = build_index_data ();
     $self->{'index_names'} = $INDEX_NAMES;
+
     for my $index (keys %$INDEX_NAMES) {
       if ($INDEX_NAMES->{$index}->{'merged_in'}) {
         $self->{'merged_indices'}-> {$index}
           = $INDEX_NAMES->{$index}->{'merged_in'};
       }
     }
+
+    my $LABELS = build_label_list ();
+    $self->{'labels'} = $LABELS;
+
     _get_errors ($self);
     _add_parents ($tree);
     _complete_node_list ($self, $tree);

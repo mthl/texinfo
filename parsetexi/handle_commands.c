@@ -434,8 +434,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           arg = new_element (ET_misc_line_arg);
           add_to_element_args (current, arg);
 
-          /* 4584 - node */
-          if (cmd == CM_node)
+          if (cmd == CM_node) // 4584
             {
               /* At most three comma-separated arguments to @node.  This
                  is the only (non-block) line command taking comma-separated
@@ -443,9 +442,43 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                  those of some block line commands and brace commands. */
               counter_push (&count_remaining_args, current, 3);
             }
-          /* 4586 - author */
-          /* 4612 - dircategory */
-          if (cmd == CM_dircategory && current_node)
+          else if (cmd == CM_author)
+            {
+              ELEMENT *parent = current;
+              int found = 0;
+              while (parent->parent)
+                {
+                  parent = parent->parent;
+                  if (parent->type == ET_brace_command_context)
+                    break;
+                  if (parent->cmd == CM_titlepage)
+                    {
+                      // TODO 4595 global author
+                      add_extra_key_element (current, "titlepage", parent);
+                      found = 1; break;
+                    }
+                  else if (parent->cmd == CM_quotation
+                           || parent->cmd == CM_smallquotation)
+                    {
+                      KEY_PAIR *k; ELEMENT *e;
+                      k = lookup_extra_key (parent, "authors");
+                      if (k)
+                        e = k->value;
+                      else
+                        {
+                          e = new_element (ET_NONE);
+                          add_extra_key_contents (parent, "authors", e);
+                        }
+                      add_to_contents_as_array (e, current);
+                      add_extra_key_element (current, "quotation", parent);
+                      found = 1; break;
+                    }
+                }
+              if (!found)
+                line_warn ("@author not meaningful outside "
+                           "`@titlepage' and `@quotation' environments");
+            }
+          else if (cmd == CM_dircategory && current_node)
             line_warn ("@dircategory after first node");
 
           current = last_args_child (current); /* arg */
@@ -493,6 +526,10 @@ int min_level = 0, max_level = 5;
     case CM_unnumberedsubsubsec: level = 4; break;
     case CM_subsubheading: level = 4; break;
     case CM_appendixsubsubsec: level = 4; break;
+    case CM_part: level = 0; break;
+    case CM_appendixsection: level = 2; break;
+    case CM_majorheading: level = 1; break;
+    case CM_centerchap: level = 1; break;
     default: level = -1; break;
     }
   return level;
@@ -688,6 +725,7 @@ handle_brace_command (ELEMENT *current, char **line_inout,
       || (command_data(e->cmd).flags & CF_accent)
       || (command_data(e->cmd).flags & CF_brace
           && (command_data(e->cmd).data > 1
+              || command_data(e->cmd).data == BRACE_style
               || command_data(e->cmd).data == BRACE_context)))
     {
       e->line_nr = line_nr;

@@ -1183,7 +1183,6 @@ value_invalid:
           nobrace->cmd = cmd;
           add_to_element_contents (current, nobrace);
 
-          // @\
           if (cmd == CM_BACKSLASH && current_context () != ct_math)
             {
               line_warn ("@\\ should only appear in math context");

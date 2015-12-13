@@ -106,8 +106,11 @@ convert_to_normalized_internal (ELEMENT *root, TEXT *result, int in_uc)
             }
           return;
         }
-      else /* unicode_character_brace_no_arg_commands line 538 of Unicode.pm */
+      else
         {
+          /* unicode_character_brace_no_arg_commands line 538 of Unicode.pm */
+          /* text_brace_no_arg_commands line 73 of Text.pm */
+          /* Unicode.pm values have priority. */
           int not_processed = 0;
           /* TODO: There are more commands there than are listed in
              "(texinfo)HTML Xref Command Expansion", like @guillemetleft. */
@@ -233,6 +236,14 @@ convert_to_normalized_internal (ELEMENT *root, TEXT *result, int in_uc)
               ADD("_203a"); break;
             case CM_click:
               ADD("_2192"); break;
+            case CM_TeX:
+              ADD("TeX"); break;
+            case CM_LaTeX:
+              ADD("LaTeX"); break;
+            case CM_tie:
+              ADD(" "); break;
+            case CM_error:
+              ADD("error-->"); break;
             default:
               not_processed = 1;
             }
