@@ -80,6 +80,7 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
   char *text;
   ELEMENT *spaces = 0;
   int space_len;
+  ELEMENT *ret;
 
   *spaces_out = 0;
   if (e->contents.number == 0)
@@ -103,7 +104,10 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
             }
 
           if (spaces->text.end > 0)
-            *spaces_out = spaces;
+            {
+              *spaces_out = spaces;
+              (*spaces_out)->parent = 0;
+            }
           else
             shallow_destroy_element (spaces);
         }
@@ -123,12 +127,15 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
       //returned->parent = bracketed->parent;
       returned->contents = bracketed->contents;
       returned->parent_type = route_not_in_tree;
+      returned->parent = 0;
 
       return returned;
     }
   else if (e->contents.list[0]->cmd != CM_NONE) // 2363
     {
-      return remove_from_contents (e, 0);
+      ret = remove_from_contents (e, 0);
+      ret->parent = 0;
+      return ret;
     }
   else
     {
@@ -147,6 +154,7 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
           text_append_n (&spaces->text, text, space_len);
           text += space_len;
           *spaces_out = spaces;
+          (*spaces_out)->parent = 0;
         }
       arg_len = strcspn (text, whitespace_chars);
       text_append_n (&returned->text, text, arg_len);
@@ -158,6 +166,7 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
         shallow_destroy_element (remove_from_contents (e, 0));
 
       returned->parent_type = route_not_in_tree;
+      returned->parent = 0;
       return returned;
     }
 }
@@ -232,6 +241,7 @@ parse_def (enum command_id command, ELEMENT_LIST contents)
           /* Copy text to avoid changing the original. */
           ELEMENT *copy = new_element (ET_NONE);
           copy->parent_type = route_not_in_tree;
+          copy->parent = 0;
           text_init (&copy->text);
           text_append_n (&copy->text,
                          contents.list[i]->text.text,
@@ -241,10 +251,6 @@ parse_def (enum command_id command, ELEMENT_LIST contents)
           /* Note that these copied elements should be destroyed with
              shallow_destroy_element, not destroy_element, because their
              contents and args are shared with in-tree elements. */
-
-          /* When all the elements were copied, some @var command elements did 
-             not show up in the output, maybe because they needed a parent
-             element. */
         }
       else
         {
@@ -318,6 +324,9 @@ found:
 
   /* CATEGORY */
   arg = next_bracketed_or_word (arg_line, &spaces);
+
+  /* We need to null the parent because the parent element is
+     eventually destroyed. */
   if (spaces)
     add_to_def_args_extra (def_args, "spaces", spaces);
   add_to_def_args_extra (def_args, "category", arg);
