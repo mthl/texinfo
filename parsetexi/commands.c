@@ -84,6 +84,15 @@ add_texinfo_command (char *name)
   return ((enum command_id) user_defined_number++) | USER_COMMAND_BIT;
 }
 
+/* Remove CMD, for @unmacro. */
+void
+remove_texinfo_command (enum command_id cmd)
+{
+  cmd &= ~USER_COMMAND_BIT;
+  free (user_defined_command_data[cmd].cmdname);
+  user_defined_command_data[cmd].cmdname = "";
+}
+
 void
 wipe_user_commands (void)
 {
@@ -102,6 +111,8 @@ close_paragraph_command (enum command_id cmd_id)
     {
       if (command_data(cmd_id).data == BLOCK_conditional
           || command_data(cmd_id).data == BLOCK_raw)
+        return 0;
+      if (command_data(cmd_id).flags & CF_format_raw)
         return 0;
 
       return 1;
@@ -130,7 +141,14 @@ close_paragraph_command (enum command_id cmd_id)
      || cmd_id == CM_exdent)
     return 1;
 
-  /* def commands */
+  /* headings Common.pm:954 */
+  if ((command_data(cmd_id).flags & CF_sectioning)
+      && !(command_data(cmd_id).flags & CF_root))
+    return 1;
+
+  /* def commands 866 */
+  if ((command_data(cmd_id).flags & CF_def))
+    return 1;
 
   return 0;
 }

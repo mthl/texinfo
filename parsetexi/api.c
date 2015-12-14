@@ -121,6 +121,8 @@ build_perl_array (ELEMENT_LIST *e)
   sv = newRV_inc ((SV *) av);
   for (i = 0; i < e->number; i++)
     {
+      if (!e->list[i]) /* For arrays only, allow elements to be undef. */
+        av_push (av, newSV (0));
       if (!e->list[i]->hv)
         {
           if (e->list[i]->parent_type != route_not_in_tree)
@@ -234,7 +236,7 @@ element_to_perl_hash (ELEMENT *e)
       || e->cmd == CM_TeX
       || (command_data(e->cmd).flags & CF_accent)
       || (command_data(e->cmd).flags & CF_brace
-          && (command_data(e->cmd).data > 0       // 4838
+          && (command_data(e->cmd).data >= 0
               || command_data(e->cmd).data == BRACE_style
               || command_data(e->cmd).data == BRACE_context))
       || e->cmd == CM_node) // FIXME special case
@@ -342,28 +344,15 @@ element_to_perl_hash (ELEMENT *e)
               STORE(newRV_inc ((SV *)av));
               for (j = 0; j < f->contents.number; j++)
                 {
-                  AV *av2;
+                  SV *array;
                   ELEMENT *g;
 
                   g = f->contents.list[j];
-                  av2 = newAV ();
-                  av_push (av, newRV_inc ((SV *)av2));
-
-                  for (k = 0; k < g->contents.number; k++)
-                    {
-                      ELEMENT *h;
-                      h = g->contents.list[k];
-                      if (!h->hv)
-                        {
-                          if (h->parent_type != route_not_in_tree)
-                            h->hv = newHV ();
-                          else
-                            {
-                              element_to_perl_hash (h);
-                            }
-                        }
-                      av_push (av2, newRV_inc ((SV*)h->hv));
-                    }
+                  if (g)
+                    array = build_perl_array (&g->contents);
+                  else
+                    array = newSV (0); /* undef */
+                  av_push (av, array);
                 }
               break;
               }

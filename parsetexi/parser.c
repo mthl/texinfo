@@ -205,12 +205,35 @@ begin_paragraph (ELEMENT *current)
   if (begin_paragraph_p (current))
     {
       ELEMENT *e;
-      int indent = 0;
+      enum command_id indent = 0;
 
       /* Check if an @indent precedes the paragraph (to record it
          in the 'extra' key). */
+      if (current->contents.number > 0)
+        {
+          int i = current->contents.number - 1;
+          while (i > 0)
+            {
+              ELEMENT *child = contents_child_by_index (current, i);
+              if (child->type == ET_empty_line
+                  || child->type == ET_paragraph)
+                break;
+              if (close_paragraph_command(child->cmd))
+                break;
+              if (child->cmd == CM_indent
+                  || child->cmd == CM_noindent)
+                {
+                  indent = child->cmd;
+                  break;
+                }
+              i--;
+            }
+
+        }
 
       e = new_element (ET_paragraph);
+      if (indent)
+        add_extra_string (e, indent == CM_indent ? "indent" : "noindent", "1");
       add_to_element_contents (current, e);
       current = e;
 
@@ -866,8 +889,12 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
      may lead to changes in the line. */
   if (cmd && (command_data(cmd).flags & CF_MACRO)) // 3894
     {
+      static char *allocated_line;
       line = line_after_command;
       current = handle_macro (current, &line, cmd);
+      free (allocated_line);
+      allocated_line = next_text ();
+      line = allocated_line;
     }
 
   /* 3983 Cases that may "lead to command closing": brace commands that don't 

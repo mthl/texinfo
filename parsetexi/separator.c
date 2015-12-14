@@ -44,7 +44,7 @@ register_command_arg (ELEMENT *current, char *key)
   if (new->contents.number == 0)
     {
       free (new);
-      return;
+      new = 0;
     }
 
   /* FIXME: Could we add all the command args together, instead of one-by-one,
@@ -222,6 +222,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
     //     || ignore_global_commands () - whatever that is
     {
       ELEMENT *b = new_element (ET_bracketed);
+      b->line_nr = line_nr;
       add_to_element_contents (current, b);
       current = b;
       debug ("BRACKETED in math");
@@ -258,7 +259,8 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           /* The Perl code here checks that the popped context and the
              parent command match as strings. */
         }
-      else if (command_data(current->parent->cmd).data > 0)
+      else if (command_data(current->parent->cmd).data > 0 /* sic */
+               || command_data(current->parent->cmd).data == BRACE_inline)
         {
           // 5033
           /* @inline* always have end spaces considered as normal text */
@@ -291,10 +293,44 @@ handle_close_brace (ELEMENT *current, char **line_inout)
         }
       else if (command_data(closed_command).flags & CF_ref) // 5062
         {
+          ELEMENT *ref = current->parent, *args;
+          KEY_PAIR *k;
+          if (ref->args.number > 0)
+            {
+              k = lookup_extra_key (ref, "brace_command_contents");
+              args = k->value;
+              if (0)
+                {
+                  line_warn ("command @%s missing a node or external manual "
+                             "argument", command_name(closed_command));
+                }
+              else
+                {
+                  NODE_SPEC_EXTRA *nse;
+                  nse = parse_node_manual (args_child_by_index (ref, 0));
+                  if (nse)
+                    add_extra_node_spec (ref, "node_argument", nse);
+                  // TODO 5078 global internal_references array
+                }
+              // TODO 5085 check node name not empty after normalization
+            }
         }
-      else if (closed_command == CM_image)
+      else if (closed_command == CM_image) // 5109
         {
-          // check for filename argument
+          ELEMENT *image = current->parent;
+          KEY_PAIR *k;
+          if (image->args.number == 0)
+            goto image_no_args;
+          k = lookup_extra_key (image, "brace_command_contents");
+          if (!k)
+            goto image_no_args;
+          if (!contents_child_by_index (k->value, 0))
+            goto image_no_args;
+          if (0)
+            {
+          image_no_args:
+              line_error ("@image missing filename argument");
+            }
         }
       else if (closed_command == CM_dotless)
         {
@@ -389,8 +425,8 @@ remove_empty_content_arguments (ELEMENT *current)
     return;
 
   while (k->value->contents.number > 0
-         && last_contents_child(k->value)->contents.number == 0)
-    destroy_element (pop_element_from_contents (k->value));
+         && !last_contents_child(k->value)) // ->contents.number == 0)
+    pop_element_from_contents (k->value);
 
   if (k->value->contents.number == 0)
     {

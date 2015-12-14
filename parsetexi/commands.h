@@ -37,6 +37,7 @@ enum command_id lookup_command (char *cmdname);
 #define command_name(cmd) (command_data(cmd).cmdname)
 
 enum command_id add_texinfo_command (char *name);
+void remove_texinfo_command (enum command_id cmd);
 void wipe_user_commands (void);
 
 /* In indices.c */
@@ -80,7 +81,10 @@ void init_index_commands (void);
 
 /* NOTE: We've run out of spaces for flags, but some of these may not
    be used, or may not be necessary. For example, region could be done
-   as BLOCK_region in data instead. */
+   as BLOCK_region in data instead.
+   Candidates for flags:
+     CF_close_paragraph
+ */
 
 /* Types of misc command (has CF_misc flag).  Values for COMMAND.data. */
 /* See Common.pm:376 */

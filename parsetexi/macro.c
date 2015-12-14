@@ -389,6 +389,7 @@ delete_macro (char *name)
   m->cmd = 0;
   m->macro_name = "";
   m->element = 0;
+  remove_texinfo_command (cmd);
 }
 
 // 3898
