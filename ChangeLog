@@ -1,3 +1,13 @@
+2015-12-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* Mention gettext and automake versions in NEWS.
+
+2015-12-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Run gettextize.
+	* gnulib/m4/gettext.m4: Upgrade to gettext-0.19.6.
+	* configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.19.6.
+
 2015-12-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/README: Add remark about numbers being removed for test 

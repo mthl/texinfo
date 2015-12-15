@@ -78,7 +78,7 @@ one of the relevant sections:
     Disable at build time with "configure --disable-perl-xs".  The 
     environment variable `TEXINFO_XS' controls how they are used by 
     makeinfo.  (IN PROGRESS)
-  . quotation marks are left out for node names and index entries in
+  . Quotation marks are left out for node names and index entries in
     Info output where they would have been produced by commands such
     as @file or @option.
   . New customization variable INFO_SPECIAL_CHARS_QUOTE to allow use of
@@ -93,7 +93,7 @@ one of the relevant sections:
     matches are highlighted.
   . By default only the node pointers are displayed at the top of a node.
     Customize this with the `nodeline' variable.
-  . new command M-x tree-search to search all subnodes of a node (IN PROGRESS)
+  . New command M-x tree-search to search all subnodes of a node
   . Now tries to find referenced manuals in the same directory as the
     current file first, before looking in search path.  Customize this
     with new variable `follow-strategy'.
@@ -106,7 +106,7 @@ one of the relevant sections:
         following an "anchor" cross-reference
       . one causing a test failure in the t/c-u-m-x-scroll-forward.sh
         test on some platforms
-  . internal changes to reduce memory use and increase speed of
+  . Internal changes to reduce memory use and increase speed of
     searches, relative to last release
   . The meaning of the `key-time' variable has changed when its value
     is 0.  This value meant to wait forever in the last release, but now
@@ -114,6 +114,9 @@ one of the relevant sections:
 
 * Miscellaneous
   . The `info.info' file is no longer distributed with Texinfo.
+
+* Distribution:
+  . automake-1.15, gettext-0.19.6
 
 
 6.0 (26 June 2015)
