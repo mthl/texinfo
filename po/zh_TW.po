@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-11-09 19:25+0000\n"
+"POT-Creation-Date: 2015-11-14 19:18+0000\n"
 "PO-Revision-Date: 2002-03-08 04:56+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -441,7 +441,7 @@ msgstr "設定 Info 變數的數值"
 msgid "Try --help for more information.\n"
 msgstr "試試 --help 以取得更多的資訊.\n"
 
-#: info/info.c:805 install-info/install-info.c:2218 tp/texi2any.pl:870
+#: info/info.c:805 install-info/install-info.c:2217 tp/texi2any.pl:872
 #: texindex/ti.twjr:1309
 #, c-format, awk-format, perl-format
 msgid ""
@@ -540,7 +540,7 @@ msgid ""
 "  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:1100 install-info/install-info.c:616 tp/texi2any.pl:858
+#: info/info.c:1100 install-info/install-info.c:616 tp/texi2any.pl:860
 #: texindex/ti.twjr:1298
 #, fuzzy
 msgid ""
@@ -1925,52 +1925,52 @@ msgstr "有 START-INFO-DIR-ENTRY, 但是沒有相對應的 END-INFO-DIR-ENTRY"
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "有 END-INFO-DIR-ENTRY, 但是沒有相對應的 START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:2043 install-info/install-info.c:2053
+#: install-info/install-info.c:2042 install-info/install-info.c:2052
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr ""
 
-#: install-info/install-info.c:2149
+#: install-info/install-info.c:2148
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: 只有指定 Info 檔案一次.\n"
 
-#: install-info/install-info.c:2182
+#: install-info/install-info.c:2181
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr ""
 
-#: install-info/install-info.c:2194
+#: install-info/install-info.c:2193
 #, fuzzy, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "沒有前一次的搜尋字串"
 
-#: install-info/install-info.c:2256
+#: install-info/install-info.c:2255
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "多餘的命令列引數 `%s'"
 
-#: install-info/install-info.c:2260
+#: install-info/install-info.c:2259
 #, c-format
 msgid "No input file specified; try --help for more information."
 msgstr "未指定輸入檔案; 試試 --help 以取得更多的資訊."
 
-#: install-info/install-info.c:2262
+#: install-info/install-info.c:2261
 #, c-format
 msgid "No dir file specified; try --help for more information."
 msgstr "未指定 dir 檔案; 試試 --help 以取得取多的資訊."
 
-#: install-info/install-info.c:2283
+#: install-info/install-info.c:2282
 #, fuzzy, c-format
 msgid "Could not read %s."
 msgstr "無法建立輸出檔案 `%s'."
 
-#: install-info/install-info.c:2430
+#: install-info/install-info.c:2429
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "`%s' 內沒有 info dir 項目"
 
-#: install-info/install-info.c:2678
+#: install-info/install-info.c:2677
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "找不到 `%s' 的項目; 未刪除任何項目"
@@ -3141,47 +3141,47 @@ msgid ""
 "items found in the document for @%s"
 msgstr ""
 
-#: tp/texi2any.pl:380
+#: tp/texi2any.pl:382
 #, fuzzy, perl-format
 msgid "error loading %s: %s\n"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/texi2any.pl:393
+#: tp/texi2any.pl:395
 #, fuzzy, perl-format
 msgid "%s: unknown variable %s"
 msgstr "未知的命令 `%s'"
 
-#: tp/texi2any.pl:397
+#: tp/texi2any.pl:399
 #, fuzzy, perl-format
 msgid "%s: obsolete variable %s\n"
 msgstr "設定變數: "
 
-#: tp/texi2any.pl:412
+#: tp/texi2any.pl:414
 #, fuzzy, perl-format
 msgid "%s: unknown variable %s\n"
 msgstr "未知的命令 `%s'"
 
-#: tp/texi2any.pl:416
+#: tp/texi2any.pl:418
 #, fuzzy, perl-format
 msgid "obsolete variable %s\n"
 msgstr "設定變數: "
 
-#: tp/texi2any.pl:481
+#: tp/texi2any.pl:483
 #, fuzzy, perl-format
 msgid "could not read init file %s"
 msgstr "無法開啟至 `%s' 的管道."
 
-#: tp/texi2any.pl:644
+#: tp/texi2any.pl:646
 #, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr ""
 
-#: tp/texi2any.pl:727
+#: tp/texi2any.pl:729
 #, fuzzy, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "用法: %s [OPTION]... FILE...\n"
 
-#: tp/texi2any.pl:730
+#: tp/texi2any.pl:732
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -3190,7 +3190,7 @@ msgid ""
 "the behavior is identical, and does not depend on the installed name.\n"
 msgstr ""
 
-#: tp/texi2any.pl:736
+#: tp/texi2any.pl:738
 #, perl-format
 msgid ""
 "General options:\n"
@@ -3209,7 +3209,7 @@ msgid ""
 "      --version               display version information and exit.\n"
 msgstr ""
 
-#: tp/texi2any.pl:752
+#: tp/texi2any.pl:754
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -3220,7 +3220,7 @@ msgid ""
 "                                after checking validity of TEXINFO-FILE.\n"
 msgstr ""
 
-#: tp/texi2any.pl:760
+#: tp/texi2any.pl:762
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -3247,7 +3247,7 @@ msgid ""
 "                                Otherwise, DEST names the output file.\n"
 msgstr ""
 
-#: tp/texi2any.pl:780
+#: tp/texi2any.pl:782
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3269,7 +3269,7 @@ msgid ""
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
 
-#: tp/texi2any.pl:797
+#: tp/texi2any.pl:799
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3283,19 +3283,19 @@ msgid ""
 "                                anchors; default is set only if split.\n"
 msgstr ""
 
-#: tp/texi2any.pl:808
+#: tp/texi2any.pl:810
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 
-#: tp/texi2any.pl:811
+#: tp/texi2any.pl:813
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 
-#: tp/texi2any.pl:814
+#: tp/texi2any.pl:816
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -3306,7 +3306,7 @@ msgid ""
 "  -U VAR                        undefine the variable VAR, as with @clear.\n"
 msgstr ""
 
-#: tp/texi2any.pl:822
+#: tp/texi2any.pl:824
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -3326,7 +3326,7 @@ msgid ""
 "  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
 msgstr ""
 
-#: tp/texi2any.pl:839
+#: tp/texi2any.pl:841
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating Docbook, --ifdocbook is on and the others are off;\n"
@@ -3336,7 +3336,7 @@ msgid ""
 "  if generating XML, --ifxml is on and the others are off.\n"
 msgstr ""
 
-#: tp/texi2any.pl:846
+#: tp/texi2any.pl:848
 #, fuzzy
 msgid ""
 "Examples:\n"
@@ -3368,76 +3368,76 @@ msgstr ""
 "程式臭蟲, 請以電子郵件 (英文) 回報至 bug-texinfo@gnu.org,\n"
 "一般問題與討論, 請以電子郵件 (英文) 寄到 help-texinfo@gnu.org."
 
-#: tp/texi2any.pl:893
+#: tp/texi2any.pl:895
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr "%s: --footnote-style 的引數必須為 `separate' 或 `end', 而不是 `%s'.\n"
 
-#: tp/texi2any.pl:984
+#: tp/texi2any.pl:986
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr "%s: --paragraph-indent 的引數必須為 數值/`none'/`asis', 而不是 `%s'.\n"
 
-#: tp/texi2any.pl:1061
+#: tp/texi2any.pl:1063
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 
-#: tp/texi2any.pl:1065
+#: tp/texi2any.pl:1067
 msgid "--Xopt option without printed output"
 msgstr ""
 
-#: tp/texi2any.pl:1080
+#: tp/texi2any.pl:1082
 #, fuzzy, perl-format
 msgid "unknown tree transformation %s"
 msgstr "未知的命令 `%s'"
 
-#: tp/texi2any.pl:1087
+#: tp/texi2any.pl:1089
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr ""
 
-#: tp/texi2any.pl:1147
+#: tp/texi2any.pl:1149
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: 遺漏檔案引數.\n"
 
-#: tp/texi2any.pl:1148
+#: tp/texi2any.pl:1150
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "試試 `%s --help' 以取得更多的資訊.\n"
 
-#: tp/texi2any.pl:1229
+#: tp/texi2any.pl:1231
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 
-#: tp/texi2any.pl:1252
+#: tp/texi2any.pl:1254
 #, fuzzy, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/texi2any.pl:1258
+#: tp/texi2any.pl:1260
 #, fuzzy, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/texi2any.pl:1283
+#: tp/texi2any.pl:1285
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
 msgstr ""
 
-#: tp/texi2any.pl:1356 tp/texi2any.pl:1432
+#: tp/texi2any.pl:1358 tp/texi2any.pl:1434
 #, fuzzy, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/texi2any.pl:1379 tp/texi2any.pl:1413
+#: tp/texi2any.pl:1381 tp/texi2any.pl:1415
 #, fuzzy, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "無法建立輸出檔案 `%s'."
 
-#: tp/texi2any.pl:1385 tp/texi2any.pl:1419
+#: tp/texi2any.pl:1387 tp/texi2any.pl:1421
 #, fuzzy, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "無法建立輸出檔案 `%s'."
