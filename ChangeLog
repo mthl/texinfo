@@ -1,5 +1,10 @@
 2015-12-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info.c (get_initial_file): Change "info" to "info-stnd" if 
+	given as first non-option argument.
+
+2015-12-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* Mention gettext and automake versions in NEWS.
 
 2015-12-15  Gavin Smith  <gavinsmith0123@gmail.com>

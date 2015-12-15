@@ -179,10 +179,9 @@ get_initial_file (int *argc, char ***argv, char **error)
   /* If there are any more arguments, the initial file is the
      dir entry given by the first one. */
     {
-      /* If they say info -O info, we want to show them the invocation node
-         for standalone info; there's nothing useful in info.texi.  */
-      if (goto_invocation_p && (*argv)[0]
-          && mbscasecmp ((*argv)[0], "info") == 0)
+      /* If they say info info, show them info-stnd.texi.  (Get
+         info.texi with info -f info.) */
+      if ((*argv)[0] && mbscasecmp ((*argv)[0], "info") == 0)
         (*argv)[0] = "info-stnd";
 
       entry = lookup_dir_entry ((*argv)[0], 0);
