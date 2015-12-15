@@ -338,7 +338,7 @@ AC_SUBST([USE_EXTERNAL_UNIDECODE])
 # i18n support.  To update to a new version of gettext, run:
 #   gettextize -f -c
 # See http://gnu.org/s/gnulib/manual/html_node/gettextize-and-autopoint.html.
-AM_GNU_GETTEXT_VERSION([0.19.4])
+AM_GNU_GETTEXT_VERSION([0.19.6])
 AM_GNU_GETTEXT([external])
 
 USE_EXTERNAL_LIBINTL=no
@@ -393,7 +393,7 @@ if test $enable_xs = check; then
    && ${PERL} -I . \
               -I ${xs_srcdir} \
               -w ${xs_srcdir}/fail.pl \
-      | grep 'message from XS module') >/dev/null \
+      | grep 'message from XS module') \
   && enable_xs=yes
   AC_MSG_RESULT([$enable_xs])
 fi
