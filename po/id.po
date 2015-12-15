@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-11-14 19:18+0000\n"
+"POT-Creation-Date: 2015-12-15 15:21+0000\n"
 "PO-Revision-Date: 2014-08-11 17:30+0700\n"
 "Last-Translator: Arif E. Nugroho <arif_endro@yahoo.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -158,11 +158,11 @@ msgstr "Tidak ada string pencarian sebelumnya"
 msgid "memory exhausted"
 msgstr "kehabisan memori"
 
-#: info/echo-area.c:295 info/session.c:1383
+#: info/echo-area.c:295 info/session.c:1386
 msgid "Move forward a character"
 msgstr "Pindah kedepan satu karakter"
 
-#: info/echo-area.c:314 info/session.c:1396
+#: info/echo-area.c:314 info/session.c:1399
 msgid "Move backward a character"
 msgstr "Pinda kebelakang satu karakter"
 
@@ -174,11 +174,11 @@ msgstr "Pindah ke awal dari baris ini"
 msgid "Move to the end of this line"
 msgstr "Pindah ke akhir dari baris ini"
 
-#: info/echo-area.c:353 info/session.c:1411
+#: info/echo-area.c:353 info/session.c:1414
 msgid "Move forward a word"
 msgstr "Pindah kedepan satu kata"
 
-#: info/echo-area.c:393 info/session.c:1425
+#: info/echo-area.c:393 info/session.c:1428
 msgid "Move backward a word"
 msgstr "Pindah kebelakang satu kata"
 
@@ -390,54 +390,53 @@ msgstr "Info berkas tidak tersedia memiliki `%s' dalam indicesnya."
 msgid "Error converting file character encoding."
 msgstr ""
 
-#: info/info.c:223 info/session.c:2781
+#: info/info.c:222 info/session.c:2784
 #, fuzzy, c-format
 msgid "No menu item '%s' in node '%s'."
 msgstr "Tidak ada menu item `%s' dalam titik `%s'."
 
-#: info/info.c:316
+#: info/info.c:315
 #, fuzzy, c-format
 msgid "No file given for node '%s'."
 msgstr "Tidak ada menu dalam titik `%s'."
 
-#: info/info.c:365 info/info.c:1134
+#: info/info.c:364 info/info.c:1133
 #, fuzzy, c-format
 msgid "Cannot find node '%s'."
 msgstr "Tidak dapat menemukan titik `%s'."
 
-#: info/info.c:387
+#: info/info.c:386
 #, c-format
 msgid "No program name given."
 msgstr ""
 
-#: info/info.c:578
+#: info/info.c:577
 #, c-format
 msgid "invalid number: %s\n"
 msgstr "invalid number: %s\n"
 
-#: info/info.c:758
+#: info/info.c:757
 #, c-format
 msgid "malformed variable assignment: %s"
 msgstr "malformed variable assignment: %s"
 
-#: info/info.c:765 info/infokey.c:537
+#: info/info.c:764 info/infokey.c:537
 #, c-format
 msgid "%s: no such variable"
 msgstr "%s: no such variable"
 
-#: info/info.c:771 info/infokey.c:539
+#: info/info.c:770 info/infokey.c:539
 #, c-format
 msgid "value %s is not valid for variable %s"
 msgstr "Set nilai %s dari sebuah variabel Info %s"
 
-#: info/info.c:783
+#: info/info.c:782
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "Coba --help untuk informasi lebih lanjut.\n"
 
-#: info/info.c:805 install-info/install-info.c:2217 tp/texi2any.pl:872
-#: texindex/ti.twjr:1309
-#, c-format, awk-format, perl-format
+#: info/info.c:804 install-info/install-info.c:2239 tp/texi2any.pl:872
+#, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -453,12 +452,12 @@ msgstr ""
 "TIDAK ADA GARANSI, sampai batas yang masih diijinkan oleh hukum yang "
 "berlaku.\n"
 
-#: info/info.c:982
+#: info/info.c:981
 #, fuzzy, c-format
 msgid "no index entries found for '%s'\n"
 msgstr "tidak ada masukan indeks ditemukan untuk `%s'\n"
 
-#: info/info.c:1035
+#: info/info.c:1034
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -469,7 +468,7 @@ msgstr ""
 "\n"
 "Baca dokumentasi dalam format Info.\n"
 
-#: info/info.c:1041
+#: info/info.c:1040
 msgid ""
 "Options:\n"
 "  -a, --all                    use all matching manuals.\n"
@@ -487,7 +486,7 @@ msgstr ""
 "BERKAS.\n"
 "  -f, --file=NAMA BERKAS        spesifikasikan berkas Info untuk dikunjungi."
 
-#: info/info.c:1049
+#: info/info.c:1048
 msgid ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=STRING    go to node pointed by index entry STRING.\n"
@@ -501,7 +500,7 @@ msgstr ""
 "dikunjungi pertama.\n"
 "  -o, --output=NAMA BERKAS     keluarkan titik yang dipilih ke NAMA BERKAS."
 
-#: info/info.c:1055
+#: info/info.c:1054
 msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 "      --no-raw-escapes         output escapes as literal text.\n"
@@ -514,11 +513,11 @@ msgstr ""
 "BERKAS.\n"
 "  -O, --show-options, --usage  pergi ke titik opsi baris-perintah."
 
-#: info/info.c:1062
+#: info/info.c:1061
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
 msgstr "  -b, --speech-friendly        jadi ramah untuk berbicara synthesizer."
 
-#: info/info.c:1066
+#: info/info.c:1065
 msgid ""
 "      --strict-node-location   (for debugging) use Info file pointers as-"
 "is.\n"
@@ -538,7 +537,7 @@ msgstr ""
 "  -w, --where, --location      tampilkan lokasi pisik dari berkas Info.  -x, "
 "--debug=NUMBER           set debugging level (-1 for all).\n"
 
-#: info/info.c:1075
+#: info/info.c:1074
 #, fuzzy
 msgid ""
 "\n"
@@ -557,7 +556,7 @@ msgstr ""
 "Argumen sisa yang ada akan diperlakukan sebagai nama dari daftar menu\n"
 "relatif ke titik inisial yang dikunjungi."
 
-#: info/info.c:1082
+#: info/info.c:1081
 #, fuzzy
 msgid ""
 "\n"
@@ -566,7 +565,7 @@ msgstr ""
 "\n"
 "Untuk sebuah ringkasan dari binding kunci, ketik h didalam Info."
 
-#: info/info.c:1085
+#: info/info.c:1084
 #, fuzzy
 msgid ""
 "\n"
@@ -595,8 +594,7 @@ msgstr ""
 "  info --subnodes -o out.txt emacs dump seluruh manual ke out.txt\n"
 "  info -f ./foo.info         tampilkan berkas ./foo.info, bukan mencari dir"
 
-#: info/info.c:1100 install-info/install-info.c:616 tp/texi2any.pl:860
-#: texindex/ti.twjr:1298
+#: info/info.c:1099 install-info/install-info.c:616 tp/texi2any.pl:860
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -606,67 +604,67 @@ msgstr ""
 "pertanyaan umum dan diskusi ke help-texinfo@gnu.org.\n"
 "Texinfo halaman rumah: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1135
+#: info/info.c:1134
 #, fuzzy, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "Tidak dapat menemukan titik `(%s)%s'."
 
-#: info/info.c:1136
+#: info/info.c:1135
 msgid "Cannot find a window!"
 msgstr "Tidak dapat menemukan sebuah jendela!"
 
-#: info/info.c:1137
+#: info/info.c:1136
 msgid "Point doesn't appear within this window's node!"
 msgstr "Titik tidak kelihatan didalam titik jendela ini!"
 
-#: info/info.c:1138
+#: info/info.c:1137
 msgid "Cannot delete the last window."
 msgstr "Tidak dapat menghapus jendela terakhir."
 
-#: info/info.c:1139
+#: info/info.c:1138
 msgid "No menu in this node."
 msgstr "Tidak ada menu di titik ini."
 
-#: info/info.c:1140
+#: info/info.c:1139
 msgid "No footnotes in this node."
 msgstr "Tidak ada catatan kaki di titik ini."
 
-#: info/info.c:1141
+#: info/info.c:1140
 msgid "No cross references in this node."
 msgstr "Tidak ada referensi silang di titik ini."
 
-#: info/info.c:1142
+#: info/info.c:1141
 #, fuzzy, c-format
 msgid "No '%s' pointer for this node."
 msgstr "Tidak ada `%s' penunjuk untuk titik ini."
 
-#: info/info.c:1143
+#: info/info.c:1142
 #, fuzzy, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "Perintah Info `%c' tidak diketahui; coba `?' untuk bantuan."
 
-#: info/info.c:1144
+#: info/info.c:1143
 #, fuzzy, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "Tipe terminal `%s' tidak cukup pintar untuk menjalankan Info."
 
-#: info/info.c:1145
+#: info/info.c:1144
 msgid "You are already at the last page of this node."
 msgstr "Anda telah berada di akhir halaman dari titik ini."
 
-#: info/info.c:1146
+#: info/info.c:1145
 msgid "You are already at the first page of this node."
 msgstr "Anda telah berada di halaman pertama dari titik ini."
 
-#: info/info.c:1147
+#: info/info.c:1146
 msgid "Only one window."
 msgstr "Hanya satu jendela."
 
-#: info/info.c:1148
+#: info/info.c:1147
 msgid "Resulting window would be too small."
 msgstr "Menghasilkan jendela yang akan terlalu kecil."
 
-#: info/info.c:1149
+#: info/info.c:1148
 msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "Tidak cukup ruang untuk sebuah jendela bantuan, mohon hapus sebuah jendela."
@@ -861,45 +859,45 @@ msgstr "Tampilkan pesan bantuan"
 msgid "Visit Info node '(info)Help'"
 msgstr "Kunjungi titik Info `(info)Help'"
 
-#: info/infodoc.c:447
+#: info/infodoc.c:452
 msgid "Print documentation for KEY"
 msgstr "Tampilkan dokumentasi untuk KUNCI"
 
-#: info/infodoc.c:458
+#: info/infodoc.c:463
 #, c-format
 msgid "Describe key: %s"
 msgstr "Jelaskan kunci: %s"
 
-#: info/infodoc.c:468 info/infodoc.c:504
+#: info/infodoc.c:473 info/infodoc.c:509
 #, c-format
 msgid "%s is undefined."
 msgstr "%s tidak terdefinisi."
 
-#: info/infodoc.c:866
+#: info/infodoc.c:871
 msgid "Show what to type to execute a given command"
 msgstr ""
 "Tunjukkan apa yang harus diketikan untuk menjalankan perintah yang diberikan"
 
-#: info/infodoc.c:870
+#: info/infodoc.c:875
 msgid "Where is command: "
 msgstr "Dimana perintahnya: "
 
-#: info/infodoc.c:892
+#: info/infodoc.c:897
 #, fuzzy, c-format
 msgid "'%s' is not on any keys"
 msgstr "`%s' tidak di kunci apapun"
 
-#: info/infodoc.c:898
+#: info/infodoc.c:903
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s hanya dapat dipanggil melalui %s."
 
-#: info/infodoc.c:902
+#: info/infodoc.c:907
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s dapat dipanggil melalui %s."
 
-#: info/infodoc.c:907
+#: info/infodoc.c:912
 #, fuzzy, c-format
 msgid "There is no function named '%s'"
 msgstr "Tidak ada fungsi yang bernama `%s'"
@@ -1065,7 +1063,7 @@ msgstr ""
 msgid "Select visited node: "
 msgstr "Pilih titik yang dikunjungi: "
 
-#: info/nodemenu.c:278 info/session.c:2436
+#: info/nodemenu.c:278 info/session.c:2439
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "Referensi menghilang! (%s)."
@@ -1101,76 +1099,76 @@ msgstr ""
 "Selamat datang ke Info versi %s. Ketik \\[get-help-window] untuk bantuan, "
 "\\[menu-item] untuk item menu."
 
-#: info/session.c:773
+#: info/session.c:776
 #, c-format
 msgid "can't open %s: %s"
 msgstr "Tidak dapat menghapus berkas `%s': %s"
 
-#: info/session.c:779
+#: info/session.c:782
 #, c-format
 msgid "debugging output diverted to \"%s\""
 msgstr "debugging output diverted to \"%s\""
 
-#: info/session.c:1270
+#: info/session.c:1273
 msgid "Move down to the next line"
 msgstr "Pindah kebawah ke baris selanjutnya"
 
-#: info/session.c:1285
+#: info/session.c:1288
 msgid "Move up to the previous line"
 msgstr "Pindah keatas ke baris sebelumnya"
 
-#: info/session.c:1301
+#: info/session.c:1304
 msgid "Move the cursor to a specific line of the window"
 msgstr "Pindah kursor ke baris spesifik dari jendela"
 
-#: info/session.c:1333
+#: info/session.c:1336
 msgid "Move to the end of the line"
 msgstr "Pindah ke akhir dari baris"
 
-#: info/session.c:1358
+#: info/session.c:1361
 msgid "Move to the start of the line"
 msgstr "Pindah ke awal dari baris"
 
-#: info/session.c:1440
+#: info/session.c:1443
 msgid "Move to the start of this node"
 msgstr "Pindah ke awal dari titik ini"
 
-#: info/session.c:1447
+#: info/session.c:1450
 msgid "Move to the end of this node"
 msgstr "Pindah ke akhir dari titik ini"
 
-#: info/session.c:1538
+#: info/session.c:1541
 msgid "Scroll forward in this window"
 msgstr "Scroll kedepan di jendela ini"
 
-#: info/session.c:1552
+#: info/session.c:1555
 msgid "Scroll backward in this window"
 msgstr "Scroll kebelakang dalam jendela ini"
 
-#: info/session.c:1560
+#: info/session.c:1563
 msgid "Scroll forward in this window and set default window size"
 msgstr "Scroll kedepan dalam jendela ini dan set ukuran baku jendela"
 
-#: info/session.c:1575
+#: info/session.c:1578
 msgid "Scroll backward in this window and set default window size"
 msgstr "Scroll kebelakang dalam jendela ini dan set ukuran baku jendela"
 
-#: info/session.c:1581
+#: info/session.c:1584
 msgid "Scroll forward in this window staying within node"
 msgstr "Scroll kedepan dalam jendela ini tetap dalam titik"
 
-#: info/session.c:1596
+#: info/session.c:1599
 msgid "Scroll backward in this window staying within node"
 msgstr "Scroll kebelakang dalam jendela ini tetap dalam titik"
 
-#: info/session.c:1604
+#: info/session.c:1607
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr ""
 "Scroll kedepan dalam jendela ini tetap dalam titik dan set ukuran baku "
 "jendela"
 
-#: info/session.c:1631
+#: info/session.c:1634
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
@@ -1178,477 +1176,477 @@ msgstr ""
 "Scroll kebelakan dalam jendela ini tetap dalam titik dan set ukuran baku "
 "jendela"
 
-#: info/session.c:1637
+#: info/session.c:1640
 msgid "Scroll down by lines"
 msgstr "Scroll ke bawah dengan baris"
 
-#: info/session.c:1643
+#: info/session.c:1646
 msgid "Scroll up by lines"
 msgstr "Scroll ke atas dengan baris"
 
-#: info/session.c:1655
+#: info/session.c:1658
 msgid "Scroll down by half screen size"
 msgstr "Scroll kebawah dengan setengah ukuran layar"
 
-#: info/session.c:1682
+#: info/session.c:1685
 msgid "Scroll up by half screen size"
 msgstr "Scroll keatas dengan setengah ukuran layar"
 
-#: info/session.c:1688
+#: info/session.c:1691
 msgid "Scroll the other window"
 msgstr "Scroll ke jendela lain"
 
-#: info/session.c:1709
+#: info/session.c:1712
 msgid "Scroll the other window backward"
 msgstr "Scroll ke jendela lain terbalik"
 
-#: info/session.c:1818
+#: info/session.c:1821
 msgid "Select the next window"
 msgstr "Pilih jendela selanjutnya"
 
-#: info/session.c:1855
+#: info/session.c:1858
 msgid "Select the previous window"
 msgstr "Pilih jendela sebelumnya"
 
-#: info/session.c:1899
+#: info/session.c:1902
 msgid "Split the current window"
 msgstr "Pisahkan jendela sekarang"
 
-#: info/session.c:1944
+#: info/session.c:1947
 msgid "Delete the current window"
 msgstr "Hapus jendela sekarang"
 
-#: info/session.c:1949
+#: info/session.c:1952
 msgid "Cannot delete a permanent window"
 msgstr "Tidak dapat menghapus sebuah jendela permanen"
 
-#: info/session.c:1980
+#: info/session.c:1983
 msgid "Delete all other windows"
 msgstr "Hapus seluruh jendela lain"
 
-#: info/session.c:2026
+#: info/session.c:2029
 msgid "Grow (or shrink) this window"
 msgstr "Naikan (atau turunkan) jendela ini"
 
-#: info/session.c:2037
+#: info/session.c:2040
 msgid "Divide the available screen space among the visible windows"
 msgstr "Bagi ruang layar yang tersedia diantara jendela yang terlihat"
 
-#: info/session.c:2044
+#: info/session.c:2047
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "Toggle keadaan dari baris wrapping dalam jendela sekarang"
 
-#: info/session.c:2198
+#: info/session.c:2201
 msgid "Select this menu item"
 msgstr "Pilih menu item ini"
 
-#: info/session.c:2228
+#: info/session.c:2231
 #, c-format
 msgid "There isn't %d item in this menu."
 msgid_plural "There aren't %d items in this menu."
 msgstr[0] "Disana tidak ada %d item dalam menu ini."
 msgstr[1] "Disana tidak ada %d item dalam menu ini."
 
-#: info/session.c:2237
+#: info/session.c:2240
 msgid "Select the last item in this node's menu"
 msgstr "Pilih item terakhir dalam menu titik ini"
 
-#: info/session.c:2344 info/session.c:2345
+#: info/session.c:2347 info/session.c:2348
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Menu item (%s): "
 
-#: info/session.c:2348
+#: info/session.c:2351
 msgid "Menu item: "
 msgstr "Menu item: "
 
-#: info/session.c:2355 info/session.c:2356
+#: info/session.c:2358 info/session.c:2359
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Mengikuti xref (%s): "
 
-#: info/session.c:2359
+#: info/session.c:2362
 msgid "Follow xref: "
 msgstr "Mengikuti xref: "
 
-#: info/session.c:2448
+#: info/session.c:2451
 msgid "Read a menu item and select its node"
 msgstr "Baca sebuah item menu dan pilih titiknya"
 
-#: info/session.c:2473
+#: info/session.c:2476
 msgid "Read a footnote or cross reference and select its node"
 msgstr "Baca sebuah catatan kaki atau referensi silang dan pilih titiknya"
 
-#: info/session.c:2479
+#: info/session.c:2482
 msgid "Move to the start of this node's menu"
 msgstr "Pindah ke awal dari titik menu ini"
 
-#: info/session.c:2501
+#: info/session.c:2504
 msgid "Visit as many menu items at once as possible"
 msgstr "Kunjungi banyak menu item sekaligus jika memungkinkan"
 
-#: info/session.c:2601
+#: info/session.c:2604
 msgid "Move to the previous cross reference"
 msgstr "Pindah ke referensi silang sebelumnya"
 
-#: info/session.c:2664
+#: info/session.c:2667
 msgid "Move to the next cross reference"
 msgstr "Pindah ke referensi silang selanjutnya"
 
-#: info/session.c:2725
+#: info/session.c:2728
 msgid "Select reference or menu item appearing on this line"
 msgstr "Pilih referensi atau menu item muncul dalam baris ini"
 
-#: info/session.c:2759
+#: info/session.c:2762
 #, fuzzy, c-format
 msgid "No menu in node '%s'."
 msgstr "Tidak ada menu dalam titik `%s'."
 
-#: info/session.c:2806
+#: info/session.c:2809
 #, fuzzy, c-format
 msgid "Unable to find node referenced by '%s' in '%s'."
 msgstr "Tidak dapat menemukan titik direferensikan oleh `%s' dalam `%s'."
 
-#: info/session.c:2856
+#: info/session.c:2859
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Baca sebuah daftar dari menu berawal dari dir dan ikuti tersebut"
 
-#: info/session.c:2858
+#: info/session.c:2861
 msgid "Follow menus: "
 msgstr "Ikuti menus: "
 
-#: info/session.c:2963
+#: info/session.c:2966
 msgid "Select the Next node"
 msgstr "Pilih titik Sebelumnya"
 
-#: info/session.c:2970
+#: info/session.c:2973
 msgid "Select the Prev node"
 msgstr "Pilih titik Selanjutnya"
 
-#: info/session.c:2977
+#: info/session.c:2980
 msgid "Select the Up node"
 msgstr "Pilih titik Atas"
 
-#: info/session.c:2983
+#: info/session.c:2986
 msgid "Select the last node in this file"
 msgstr "Pilih titik terakhir dalam berkas ini"
 
-#: info/session.c:3010 info/session.c:3043
+#: info/session.c:3013 info/session.c:3046
 msgid "This window has no additional nodes"
 msgstr "Jendela ini tidak memiliki titik tambahan"
 
-#: info/session.c:3016
+#: info/session.c:3019
 msgid "Select the first node in this file"
 msgstr "Pilih titik pertama dalam berkas ini"
 
-#: info/session.c:3150
+#: info/session.c:3153
 msgid "No more nodes within this document."
 msgstr "Tidak ada titik lagi didalam dokumen ini."
 
-#: info/session.c:3195 info/session.c:3235
+#: info/session.c:3198 info/session.c:3238
 #, fuzzy
 msgid "No 'Prev' or 'Up' for this node within this document."
 msgstr "Tidak ada `Prev' atau `Up' untuk titik ini didalam dokumen ini."
 
-#: info/session.c:3248
+#: info/session.c:3251
 msgid "Move forwards or down through node structure"
 msgstr "Pindah kedepan atau kebawah melalui struktur titik"
 
-#: info/session.c:3265
+#: info/session.c:3268
 msgid "Move backwards or up through node structure"
 msgstr "Pindah kebelakang atau keatas melalui struktur node"
 
-#: info/session.c:3288
+#: info/session.c:3291
 msgid "Read a node name and select it"
 msgstr "Baca sebuah nama titik dan pilih itu"
 
-#: info/session.c:3342 info/session.c:3346
+#: info/session.c:3345 info/session.c:3349
 msgid "Goto node: "
 msgstr "Pergi ke titik: "
 
-#: info/session.c:3525
+#: info/session.c:3528
 msgid "Find the node describing program invocation"
 msgstr "Cari titik yang menjelaskan pemanggilan aplikasi"
 
-#: info/session.c:3527
+#: info/session.c:3530
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Cari titik pemanggilan dari [%s]: "
 
-#: info/session.c:3572
+#: info/session.c:3575
 msgid "Read a manpage reference and select it"
 msgstr "Baca sebuah referensi halaman manual dan pilih itu"
 
-#: info/session.c:3576
+#: info/session.c:3579
 msgid "Get Manpage: "
 msgstr "Dapatkan Halaman manual: "
 
-#: info/session.c:3597
+#: info/session.c:3600
 #, fuzzy
 msgid "Select the node 'Top' in this file"
 msgstr "Pilih titik `Top' dalam berkas ini"
 
-#: info/session.c:3603
+#: info/session.c:3606
 #, fuzzy
 msgid "Select the node '(dir)'"
 msgstr "Pilih titik `(dir)'"
 
-#: info/session.c:3609
+#: info/session.c:3612
 msgid "Show full file name of node being displayed"
 msgstr "Show full file name of node being displayed"
 
-#: info/session.c:3626
+#: info/session.c:3629
 msgid "Select the most recently selected node"
 msgstr "Pilih titik yang dipilih paling baru"
 
-#: info/session.c:3631
+#: info/session.c:3634
 #, c-format
 msgid "No earlier node in history"
 msgstr ""
 
-#: info/session.c:3635
+#: info/session.c:3638
 msgid "Read the name of a file and select it"
 msgstr "Baca nama dari sebuah berkas dan pilih itu"
 
-#: info/session.c:3639
+#: info/session.c:3642
 msgid "Find file: "
 msgstr "Cari berkas: "
 
-#: info/session.c:3656
+#: info/session.c:3659
 #, fuzzy, c-format
 msgid "Cannot find '%s'."
 msgstr "Tidak dapat menemukan `%s'."
 
-#: info/session.c:3705
+#: info/session.c:3708
 #, fuzzy, c-format
 msgid "Could not create output file '%s'."
 msgstr "Tidak dapat membuat berkas keluaran `%s'."
 
-#: info/session.c:3719
+#: info/session.c:3722
 #, c-format
 msgid "error writing to %s: %s"
 msgstr "error menulis ke `%s': %s"
 
-#: info/session.c:3728
+#: info/session.c:3731
 #, c-format
 msgid "closing %s"
 msgstr "Menghapus %s"
 
-#: info/session.c:3777
+#: info/session.c:3780
 #, c-format
 msgid "writing node %s..."
 msgstr "Menulis titik %s..."
 
-#: info/session.c:3823
+#: info/session.c:3826
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "Pipe isi dari titik ini melalui INFO_PRINT_COMMAND"
 
-#: info/session.c:3851
+#: info/session.c:3854
 #, fuzzy, c-format
 msgid "Cannot open pipe to '%s'."
 msgstr "Tidak dapat membuka pipe ke `%s'."
 
-#: info/session.c:3856
+#: info/session.c:3859
 #, c-format
 msgid "printing node %s..."
 msgstr "Mencetak titik %s..."
 
-#: info/session.c:3864
+#: info/session.c:3867
 #, c-format
 msgid "finished printing node %s"
 msgstr "Mencetak titik %s..."
 
-#: info/session.c:3896
+#: info/session.c:3899
 msgid "Toggle the usage of regular expressions in searches"
 msgstr "Toggle penggunaan dari ekspresi regular dalam pencarian"
 
-#: info/session.c:3900
+#: info/session.c:3903
 #, c-format
 msgid "Using regular expressions for searches."
 msgstr "Menggunakan ekspresi regular untuk pencarian."
 
-#: info/session.c:3901
+#: info/session.c:3904
 #, c-format
 msgid "Using literal strings for searches."
 msgstr "Menggunakan string literal untuk pencarian."
 
-#: info/session.c:4161
+#: info/session.c:4164
 msgid "Search continued from the end of the document."
 msgstr "Pencarian dilanjutkan dari akhir dari dokumen."
 
-#: info/session.c:4166
+#: info/session.c:4169
 msgid "Search continued from the beginning of the document."
 msgstr "Pencarian dilanjutkan dari awal dari dokumen."
 
-#: info/session.c:4186
+#: info/session.c:4189
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "Pencarian subfile %s ..."
 
-#: info/session.c:4223
+#: info/session.c:4226
 msgid "Search failed."
 msgstr "Pencarian gagal."
 
-#: info/session.c:4240
+#: info/session.c:4243
 #, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%s%s [%s]: "
 
-#: info/session.c:4241 info/session.c:4247
+#: info/session.c:4244 info/session.c:4250
 msgid "Regexp search"
 msgstr "Pencarian regexp"
 
-#: info/session.c:4241 info/session.c:4247
+#: info/session.c:4244 info/session.c:4250
 msgid "Search"
 msgstr "Pencarian"
 
-#: info/session.c:4242 info/session.c:4248
+#: info/session.c:4245 info/session.c:4251
 msgid " case-sensitively"
 msgstr " tidak membedakan besar huruf"
 
-#: info/session.c:4243 info/session.c:4249
+#: info/session.c:4246 info/session.c:4252
 msgid " backward"
 msgstr " kebelakang"
 
-#: info/session.c:4246
+#: info/session.c:4249
 #, fuzzy, c-format
 msgid "%s%s%s: "
 msgstr "%s%s%s [%s]: "
 
-#: info/session.c:4266
+#: info/session.c:4269
 msgid "Search string too short"
 msgstr "Search string too short"
 
-#: info/session.c:4459
+#: info/session.c:4462
 #, c-format
 msgid "Going back to last match from %s"
 msgstr ""
 
-#: info/session.c:4483 info/session.c:4593
+#: info/session.c:4486 info/session.c:4596
 #, fuzzy, c-format
 msgid "No more matches."
 msgstr "No match"
 
-#: info/session.c:4620
+#: info/session.c:4623
 msgid "Search this node and subnodes for a string."
 msgstr ""
 
-#: info/session.c:4641
+#: info/session.c:4644
 msgid "Go to next match in Info sub-tree"
 msgstr ""
 
-#: info/session.c:4645 info/session.c:4657
+#: info/session.c:4648 info/session.c:4660
 #, c-format
 msgid "No active search"
 msgstr ""
 
-#: info/session.c:4653
+#: info/session.c:4656
 msgid "Go to previous match in Info sub-tree"
 msgstr ""
 
-#: info/session.c:4666
+#: info/session.c:4669
 msgid "Read a string and search for it case-sensitively"
 msgstr "Baca sebuah string dan cari itu dengan tidak membedakan besar huruf"
 
-#: info/session.c:4671
+#: info/session.c:4674
 msgid "Read a string and search for it"
 msgstr "Baca sebuah string dan cari itu"
 
-#: info/session.c:4677
+#: info/session.c:4680
 msgid "Read a string and search backward for it"
 msgstr "Baca sebuah string dan cari kebelakang untuk itu"
 
-#: info/session.c:4685
+#: info/session.c:4688
 msgid "Repeat last search in the same direction"
 msgstr "Ulangi pencarian terakhir dalam arah yang sama"
 
-#: info/session.c:4693 info/session.c:4738
+#: info/session.c:4696 info/session.c:4741
 msgid "No previous search string"
 msgstr "Tidak ada string pencarian sebelumnya"
 
-#: info/session.c:4730
+#: info/session.c:4733
 msgid "Repeat last search in the reverse direction"
 msgstr "Ulangi pencarian terakhir dalam arah terbalik"
 
-#: info/session.c:4777
+#: info/session.c:4780
 msgid "Clear displayed search matches"
 msgstr ""
 
-#: info/session.c:4794 info/session.c:4800
+#: info/session.c:4797 info/session.c:4803
 msgid "Search interactively for a string as you type it"
 msgstr ""
 "Pencarian secara interaktif untuk sebuah string seperti anda mengetikkannya"
 
-#: info/session.c:4920
+#: info/session.c:4923
 msgid "Regexp I-search backward: "
 msgstr "Regexp I-search kebelakang: "
 
-#: info/session.c:4921
+#: info/session.c:4924
 msgid "I-search backward: "
 msgstr "I-search kebelakang: "
 
-#: info/session.c:4923
+#: info/session.c:4926
 msgid "Regexp I-search: "
 msgstr "Regexp I-search: "
 
-#: info/session.c:4924
+#: info/session.c:4927
 msgid "I-search: "
 msgstr "I-search: "
 
-#: info/session.c:4949 info/session.c:4952
+#: info/session.c:4952 info/session.c:4955
 msgid "Failing "
 msgstr "Menggagalkan "
 
-#: info/session.c:5318
+#: info/session.c:5321
 msgid "Cancel current operation"
 msgstr "Batalkan operasi sekarang"
 
-#: info/session.c:5325
+#: info/session.c:5328
 msgid "Quit"
 msgstr "Berhenti"
 
-#: info/session.c:5330
+#: info/session.c:5333
 #, fuzzy
 msgid "Display version of Info being run"
 msgstr "tampilkan informasi versi dan keluar"
 
-#: info/session.c:5332
+#: info/session.c:5335
 #, c-format
 msgid "GNU Info version %s"
 msgstr ""
 
-#: info/session.c:5337
+#: info/session.c:5340
 msgid "Redraw the display"
 msgstr "Gambar kembali tampilan"
 
-#: info/session.c:5374
+#: info/session.c:5377
 msgid "Quit using Info"
 msgstr "Berhenti menggunakan Info"
 
-#: info/session.c:5390
+#: info/session.c:5393
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Jalankan perintah terikat variasi kunci huruf kecil ini"
 
-#: info/session.c:5401
+#: info/session.c:5404
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "Perintah (%s) tidak diketahui."
 
-#: info/session.c:5404
+#: info/session.c:5407
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" tidak valid"
 
-#: info/session.c:5405
+#: info/session.c:5408
 #, fuzzy, c-format
 msgid "'%s' is invalid"
 msgstr "`%s' tidak valid"
 
-#: info/session.c:5723
+#: info/session.c:5726
 msgid "Add this digit to the current numeric argument"
 msgstr "Tambahkan digit ini ke argumen numerik sekarang"
 
-#: info/session.c:5730
+#: info/session.c:5733
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Awal (atau kelipatan dari 4) argumen numerik sekarang"
 
@@ -2025,66 +2023,66 @@ msgstr ""
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: tidak dapat membaca (%s) dan tidak dapat membuat (%s)"
 
-#: install-info/install-info.c:1134 install-info/install-info.c:1174
+#: install-info/install-info.c:1154 install-info/install-info.c:1194
 #, c-format
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY tanpat pasangan END-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1169
+#: install-info/install-info.c:1189
 #, c-format
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY tanpa pasangan START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:2042 install-info/install-info.c:2052
+#: install-info/install-info.c:2064 install-info/install-info.c:2074
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: telah memiliki berkas dir: %s\n"
 
-#: install-info/install-info.c:2148
+#: install-info/install-info.c:2170
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Spesifikasikan berkas Info hanya sekali.\n"
 
-#: install-info/install-info.c:2181
+#: install-info/install-info.c:2203
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "Ekstra ekspresi regular dispesifikasikan, mengabaikan `%s'"
 
-#: install-info/install-info.c:2193
+#: install-info/install-info.c:2215
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "Error dalam ekspresi regular `%s': %s"
 
-#: install-info/install-info.c:2255
+#: install-info/install-info.c:2277
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "kelebihan argumen baris perintah `%s'"
 
-#: install-info/install-info.c:2259
+#: install-info/install-info.c:2281
 #, c-format
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Tidak ada berkas masukan dispesifikasikan; coba --help untuk informasi lebih "
 "lanjut."
 
-#: install-info/install-info.c:2261
+#: install-info/install-info.c:2283
 #, c-format
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "Tidak ada berkas direktori dispesifikasikan; coba --help untuk informasi "
 "lebih lanjut."
 
-#: install-info/install-info.c:2282
+#: install-info/install-info.c:2304
 #, fuzzy, c-format
 msgid "Could not read %s."
 msgstr "%s: tidak dapat membuka --css-file: %s"
 
-#: install-info/install-info.c:2429
+#: install-info/install-info.c:2451
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "tidak ada masukan direktori info dalam `%s'"
 
-#: install-info/install-info.c:2677
+#: install-info/install-info.c:2699
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "tidak ada masukan ditemukan untuk `%s'; tidak ada yang dihapus"
@@ -3664,71 +3662,37 @@ msgstr "%s: mengabaikan keluaran link internal kedua `%s'. %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: tidak dapat membuka %s --css-file: %s\n"
 
-#: texindex/ti.twjr:373
-#, fuzzy, awk-format
-msgid "%s: unrecognized option `%s'\n"
-msgstr "%s: opsi tidak dikenal '--%s'\n"
-
-#: texindex/ti.twjr:444
-#, fuzzy, awk-format
-msgid "%s is not a Texinfo index file\n"
-msgstr "%s: bukan sebuah berkas indeks texinfo"
-
-#: texindex/ti.twjr:553
-#, awk-format
-msgid "%s:%d: Bad key %s in record\n"
-msgstr ""
-
-#: texindex/ti.twjr:582
-#, awk-format
-msgid "%s:%d: Bad entry; expected three fields, not %d\n"
-msgstr ""
-
-#: texindex/ti.twjr:741
-#, awk-format
-msgid "%s:%d: Bad entry; expected %s at column %d\n"
-msgstr ""
-
-#: texindex/ti.twjr:1270
-msgid "..."
-msgstr ""
-
-#: texindex/ti.twjr:1289
-#, fuzzy, awk-format
-msgid "Usage: %s [OPTION]... FILE...\n"
-msgstr "Penggunaan: %s [OPSI]... BERKAS...\n"
-
-#: texindex/ti.twjr:1290
 #, fuzzy
-msgid "Generate a sorted index for each TeX output FILE."
-msgstr "Buat sebuah indeks terurut untuk setiap BERKAS keluaran Tex.\n"
+#~ msgid "%s: unrecognized option `%s'\n"
+#~ msgstr "%s: opsi tidak dikenal '--%s'\n"
 
-#: texindex/ti.twjr:1291
 #, fuzzy
-msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
-msgstr ""
-"Biasanya BERKAS... dispesifikasikan sebagai `foo.%c%c' untuk sebuah dokumen "
-"`foo.texi'.\n"
+#~ msgid "%s is not a Texinfo index file\n"
+#~ msgstr "%s: bukan sebuah berkas indeks texinfo"
 
-#: texindex/ti.twjr:1293
 #, fuzzy
-msgid "Options:"
-msgstr ""
-"\n"
-"Opsi:\n"
+#~ msgid "Usage: %s [OPTION]... FILE...\n"
+#~ msgstr "Penggunaan: %s [OPSI]... BERKAS...\n"
 
-#: texindex/ti.twjr:1294
 #, fuzzy
-msgid " -h, --help   display this help and exit"
-msgstr "tampilkan bantuan ini dan keluar"
+#~ msgid "Generate a sorted index for each TeX output FILE."
+#~ msgstr "Buat sebuah indeks terurut untuk setiap BERKAS keluaran Tex.\n"
 
-#: texindex/ti.twjr:1295
-msgid " --version    display version information and exit"
-msgstr ""
+#, fuzzy
+#~ msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
+#~ msgstr ""
+#~ "Biasanya BERKAS... dispesifikasikan sebagai `foo.%c%c' untuk sebuah "
+#~ "dokumen `foo.texi'.\n"
 
-#: texindex/ti.twjr:1296
-msgid " --           end option processing"
-msgstr ""
+#, fuzzy
+#~ msgid "Options:"
+#~ msgstr ""
+#~ "\n"
+#~ "Opsi:\n"
+
+#, fuzzy
+#~ msgid " -h, --help   display this help and exit"
+#~ msgstr "tampilkan bantuan ini dan keluar"
 
 #~ msgid "--*** Tags out of Date ***"
 #~ msgstr "--*** Tags sudah kadaluarsa ***"

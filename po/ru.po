@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-11-14 19:18+0000\n"
+"POT-Creation-Date: 2015-12-15 15:21+0000\n"
 "PO-Revision-Date: 2015-05-05 19:05+0300\n"
 "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
 "Language-Team: Russian <gnu@mx.ru>\n"
@@ -162,11 +162,11 @@ msgstr "Нет предыдущего регулярного выражения"
 msgid "memory exhausted"
 msgstr "память исчерпана"
 
-#: info/echo-area.c:295 info/session.c:1383
+#: info/echo-area.c:295 info/session.c:1386
 msgid "Move forward a character"
 msgstr "Сместиться на символ вперед"
 
-#: info/echo-area.c:314 info/session.c:1396
+#: info/echo-area.c:314 info/session.c:1399
 msgid "Move backward a character"
 msgstr "Сместиться на символ назад"
 
@@ -178,11 +178,11 @@ msgstr "Сместиться в начало строки"
 msgid "Move to the end of this line"
 msgstr "Сместиться в конец строки"
 
-#: info/echo-area.c:353 info/session.c:1411
+#: info/echo-area.c:353 info/session.c:1414
 msgid "Move forward a word"
 msgstr "Сместиться на слово вперед"
 
-#: info/echo-area.c:393 info/session.c:1425
+#: info/echo-area.c:393 info/session.c:1428
 msgid "Move backward a word"
 msgstr "Сместиться на слово назад"
 
@@ -391,54 +391,53 @@ msgstr "Ни один из info-файлов не содержит «%s» в а�
 msgid "Error converting file character encoding."
 msgstr "Ошибка при преобразовании кодировки символов файла."
 
-#: info/info.c:223 info/session.c:2781
+#: info/info.c:222 info/session.c:2784
 #, c-format
 msgid "No menu item '%s' in node '%s'."
 msgstr "Пункт меню «%s» отсутствует в ноде «%s»."
 
-#: info/info.c:316
+#: info/info.c:315
 #, c-format
 msgid "No file given for node '%s'."
 msgstr "В ноде «%s» не указан файл."
 
-#: info/info.c:365 info/info.c:1134
+#: info/info.c:364 info/info.c:1133
 #, c-format
 msgid "Cannot find node '%s'."
 msgstr "Невозможно найти ноду «%s»."
 
-#: info/info.c:387
+#: info/info.c:386
 #, c-format
 msgid "No program name given."
 msgstr "Не задано имя программы."
 
-#: info/info.c:578
+#: info/info.c:577
 #, c-format
 msgid "invalid number: %s\n"
 msgstr "неверный номер: %s\n"
 
-#: info/info.c:758
+#: info/info.c:757
 #, c-format
 msgid "malformed variable assignment: %s"
 msgstr "неправильное назначение переменной: %s"
 
-#: info/info.c:765 info/infokey.c:537
+#: info/info.c:764 info/infokey.c:537
 #, c-format
 msgid "%s: no such variable"
 msgstr "%s: нет переменной с таким именем"
 
-#: info/info.c:771 info/infokey.c:539
+#: info/info.c:770 info/infokey.c:539
 #, c-format
 msgid "value %s is not valid for variable %s"
 msgstr "значение %s недопустимо для переменной %s"
 
-#: info/info.c:783
+#: info/info.c:782
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "Попробуйте --help для получения более подробного описания.\n"
 
-#: info/info.c:805 install-info/install-info.c:2217 tp/texi2any.pl:872
-#: texindex/ti.twjr:1309
-#, c-format, awk-format, perl-format
+#: info/info.c:804 install-info/install-info.c:2239 tp/texi2any.pl:872
+#, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -452,12 +451,12 @@ msgstr ""
 "Это свободное ПО: вы можете продавать и распространять его.\n"
 "Нет НИКАКИХ ГАРАНТИЙ до степени, разрешённой законом.\n"
 
-#: info/info.c:982
+#: info/info.c:981
 #, c-format
 msgid "no index entries found for '%s'\n"
 msgstr "для «%s» не найдено элементов в именном указателе\n"
 
-#: info/info.c:1035
+#: info/info.c:1034
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -468,7 +467,7 @@ msgstr ""
 "\n"
 "Чтение документации в формате Info.\n"
 
-#: info/info.c:1041
+#: info/info.c:1040
 msgid ""
 "Options:\n"
 "  -a, --all                    use all matching manuals.\n"
@@ -487,7 +486,7 @@ msgstr ""
 "ФАЙЛЕ\n"
 "  -f, --file=СПРАВОЧНИК        задать открываемый Info-справочник"
 
-#: info/info.c:1049
+#: info/info.c:1048
 msgid ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=STRING    go to node pointed by index entry STRING.\n"
@@ -500,7 +499,7 @@ msgstr ""
 "  -n, --node=ИМЯ_НОДЫ          задать ноды в файле Info, посещаемом впервые\n"
 "  -o, --output=ФАЙЛ            запись выбранных нод в ФАЙЛ"
 
-#: info/info.c:1055
+#: info/info.c:1054
 msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 "      --no-raw-escapes         output escapes as literal text.\n"
@@ -517,13 +516,13 @@ msgstr ""
 "  -O, --show-options, --usage  перейти к ноде, описывающей параметры\n"
 "                               командной строки"
 
-#: info/info.c:1062
+#: info/info.c:1061
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
 msgstr ""
 "  -b, --speech-friendly        выводить в формате, удобном для\n"
 "                               синтезаторов речи"
 
-#: info/info.c:1066
+#: info/info.c:1065
 msgid ""
 "      --strict-node-location   (for debugging) use Info file pointers as-"
 "is.\n"
@@ -543,7 +542,7 @@ msgstr ""
 "  -w, --where, --location      показать физическое расположение файла Info\n"
 "  -x, --debug=НОМЕР            задать уровень отладки (-1 для всех).\n"
 
-#: info/info.c:1075
+#: info/info.c:1074
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -559,7 +558,7 @@ msgstr ""
 "результат. Все остальные аргументы рассматриваются как имена пунктов\n"
 "меню относительно первой посещённой ноды."
 
-#: info/info.c:1082
+#: info/info.c:1081
 msgid ""
 "\n"
 "For a summary of key bindings, type H within Info."
@@ -567,7 +566,7 @@ msgstr ""
 "\n"
 "Для выдачи справки по привязкам клавиш нажмите H в Info."
 
-#: info/info.c:1085
+#: info/info.c:1084
 msgid ""
 "\n"
 "Examples:\n"
@@ -597,8 +596,7 @@ msgstr ""
 "  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
 "  info -f ./foo.info         показать файл ./foo.info, не искать каталог"
 
-#: info/info.c:1100 install-info/install-info.c:616 tp/texi2any.pl:860
-#: texindex/ti.twjr:1298
+#: info/info.c:1099 install-info/install-info.c:616 tp/texi2any.pl:860
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -608,68 +606,68 @@ msgstr ""
 "общее обсуждение и вопросы направляйте по адресу help-texinfo@gnu.org.\n"
 "Домашняя страница Texinfo: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1135
+#: info/info.c:1134
 #, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "Невозможно найти ноду «(%s)%s»."
 
-#: info/info.c:1136
+#: info/info.c:1135
 msgid "Cannot find a window!"
 msgstr "Невозможно найти окно!"
 
-#: info/info.c:1137
+#: info/info.c:1136
 msgid "Point doesn't appear within this window's node!"
 msgstr "Точка находится вне ноды этого окна!"
 
-#: info/info.c:1138
+#: info/info.c:1137
 msgid "Cannot delete the last window."
 msgstr "Невозможно удалить последнее окно."
 
-#: info/info.c:1139
+#: info/info.c:1138
 msgid "No menu in this node."
 msgstr "В этой ноде нет меню."
 
-#: info/info.c:1140
+#: info/info.c:1139
 msgid "No footnotes in this node."
 msgstr "В этой ноде нет сносок."
 
-#: info/info.c:1141
+#: info/info.c:1140
 msgid "No cross references in this node."
 msgstr "В этой ноде нет перекрёстных ссылок."
 
-#: info/info.c:1142
+#: info/info.c:1141
 #, c-format
 msgid "No '%s' pointer for this node."
 msgstr "Для этой ноды нет указателя «%s»."
 
-#: info/info.c:1143
+#: info/info.c:1142
 #, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "Команда Info «%c» неизвестна; попробуйте «?» для получения справки."
 
-#: info/info.c:1144
+#: info/info.c:1143
 #, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr ""
 "Тип терминала «%s» не обладает достаточными возможностями для запуска Info."
 
-#: info/info.c:1145
+#: info/info.c:1144
 msgid "You are already at the last page of this node."
 msgstr "Вы уже находитесь на последней странице этой ноды."
 
-#: info/info.c:1146
+#: info/info.c:1145
 msgid "You are already at the first page of this node."
 msgstr "Вы уже находитесь на первой странице этой ноды."
 
-#: info/info.c:1147
+#: info/info.c:1146
 msgid "Only one window."
 msgstr "Только одно окно."
 
-#: info/info.c:1148
+#: info/info.c:1147
 msgid "Resulting window would be too small."
 msgstr "Получившееся окно было бы слишком маленьким."
 
-#: info/info.c:1149
+#: info/info.c:1148
 msgid "Not enough room for a help window, please delete a window."
 msgstr ""
 "Не хватает места для справочного окна, пожалуйста, удалите какое-нибудь окно."
@@ -856,44 +854,44 @@ msgstr "Показать справку"
 msgid "Visit Info node '(info)Help'"
 msgstr "Обратиться к Info-ноде «(info)Help»"
 
-#: info/infodoc.c:447
+#: info/infodoc.c:452
 msgid "Print documentation for KEY"
 msgstr "Показать информацию о КЛАВИШЕ"
 
-#: info/infodoc.c:458
+#: info/infodoc.c:463
 #, c-format
 msgid "Describe key: %s"
 msgstr "Описать клавишу: %s"
 
-#: info/infodoc.c:468 info/infodoc.c:504
+#: info/infodoc.c:473 info/infodoc.c:509
 #, c-format
 msgid "%s is undefined."
 msgstr "%s не определено."
 
-#: info/infodoc.c:866
+#: info/infodoc.c:871
 msgid "Show what to type to execute a given command"
 msgstr "Показывает, что нужно напечатать, чтобы выполнить данную команду"
 
-#: info/infodoc.c:870
+#: info/infodoc.c:875
 msgid "Where is command: "
 msgstr "Команда: "
 
-#: info/infodoc.c:892
+#: info/infodoc.c:897
 #, c-format
 msgid "'%s' is not on any keys"
 msgstr "К «%s» не привязаны клавиши"
 
-#: info/infodoc.c:898
+#: info/infodoc.c:903
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s может быть вызвана только с помощью %s."
 
-#: info/infodoc.c:902
+#: info/infodoc.c:907
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s может быть вызвана с помощью %s."
 
-#: info/infodoc.c:907
+#: info/infodoc.c:912
 #, c-format
 msgid "There is no function named '%s'"
 msgstr "Функции с именем «%s» нет"
@@ -1054,7 +1052,7 @@ msgstr "Выбрать ранее посещённую ноду в видимо�
 msgid "Select visited node: "
 msgstr "Выбрать посещённую ранее ноду: "
 
-#: info/nodemenu.c:278 info/session.c:2436
+#: info/nodemenu.c:278 info/session.c:2439
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "Ссылка исчезла! (%s)."
@@ -1090,76 +1088,76 @@ msgstr ""
 "Добро пожаловать в Info версии %s. \\[get-help-window] — справка, \\[get-"
 "info-help-node] — обучающее руководство."
 
-#: info/session.c:773
+#: info/session.c:776
 #, c-format
 msgid "can't open %s: %s"
 msgstr "невозможно открыть %s: %s"
 
-#: info/session.c:779
+#: info/session.c:782
 #, c-format
 msgid "debugging output diverted to \"%s\""
 msgstr "отладочный вывод перенаправлен в «%s»"
 
-#: info/session.c:1270
+#: info/session.c:1273
 msgid "Move down to the next line"
 msgstr "Сместиться на строку ниже"
 
-#: info/session.c:1285
+#: info/session.c:1288
 msgid "Move up to the previous line"
 msgstr "Сместиться на строку выше"
 
-#: info/session.c:1301
+#: info/session.c:1304
 msgid "Move the cursor to a specific line of the window"
 msgstr "Переместить курсор к заданной строке окна"
 
-#: info/session.c:1333
+#: info/session.c:1336
 msgid "Move to the end of the line"
 msgstr "Сместиться в конец строки"
 
-#: info/session.c:1358
+#: info/session.c:1361
 msgid "Move to the start of the line"
 msgstr "Сместиться в начало строки"
 
-#: info/session.c:1440
+#: info/session.c:1443
 msgid "Move to the start of this node"
 msgstr "Переместиться в начало ноды"
 
-#: info/session.c:1447
+#: info/session.c:1450
 msgid "Move to the end of this node"
 msgstr "Переместиться в конец ноды"
 
-#: info/session.c:1538
+#: info/session.c:1541
 msgid "Scroll forward in this window"
 msgstr "Прокрутить вперёд текущее окно"
 
-#: info/session.c:1552
+#: info/session.c:1555
 msgid "Scroll backward in this window"
 msgstr "Прокрутить назад текущее окно"
 
-#: info/session.c:1560
+#: info/session.c:1563
 msgid "Scroll forward in this window and set default window size"
 msgstr "Прокрутить текущее окно вперёд и установить размер окна по умолчанию"
 
-#: info/session.c:1575
+#: info/session.c:1578
 msgid "Scroll backward in this window and set default window size"
 msgstr "Прокрутить текущее окно назад и установить размер окна по умолчанию"
 
-#: info/session.c:1581
+#: info/session.c:1584
 msgid "Scroll forward in this window staying within node"
 msgstr "Прокрутить вперёд текущее окно, оставаясь в текущей ноде"
 
-#: info/session.c:1596
+#: info/session.c:1599
 msgid "Scroll backward in this window staying within node"
 msgstr "Прокрутить назад текущее окно, оставаясь в текущей ноде"
 
-#: info/session.c:1604
+#: info/session.c:1607
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr ""
 "Прокрутить текущее окно вперёд, оставаясь в текущей ноде, и установить "
 "размер окна по умолчанию"
 
-#: info/session.c:1631
+#: info/session.c:1634
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
@@ -1167,71 +1165,71 @@ msgstr ""
 "Прокрутить текущее окно назад, оставаясь в текущей ноде, и установить размер "
 "окна по умолчанию"
 
-#: info/session.c:1637
+#: info/session.c:1640
 msgid "Scroll down by lines"
 msgstr "Прокрутить на несколько строк вниз"
 
-#: info/session.c:1643
+#: info/session.c:1646
 msgid "Scroll up by lines"
 msgstr "Прокрутить на несколько строк вверх"
 
-#: info/session.c:1655
+#: info/session.c:1658
 msgid "Scroll down by half screen size"
 msgstr "Прокрутить на полэкрана вниз"
 
-#: info/session.c:1682
+#: info/session.c:1685
 msgid "Scroll up by half screen size"
 msgstr "Прокрутить на полэкрана вверх"
 
-#: info/session.c:1688
+#: info/session.c:1691
 msgid "Scroll the other window"
 msgstr "Прокрутить другое окно"
 
-#: info/session.c:1709
+#: info/session.c:1712
 msgid "Scroll the other window backward"
 msgstr "Прокрутить другое окно назад"
 
-#: info/session.c:1818
+#: info/session.c:1821
 msgid "Select the next window"
 msgstr "Выбрать следующее окно"
 
-#: info/session.c:1855
+#: info/session.c:1858
 msgid "Select the previous window"
 msgstr "Выбрать предыдущее окно"
 
-#: info/session.c:1899
+#: info/session.c:1902
 msgid "Split the current window"
 msgstr "Разделить текущее окно"
 
-#: info/session.c:1944
+#: info/session.c:1947
 msgid "Delete the current window"
 msgstr "Удалить текущее окно"
 
-#: info/session.c:1949
+#: info/session.c:1952
 msgid "Cannot delete a permanent window"
 msgstr "Невозможно удалить постоянное окно"
 
-#: info/session.c:1980
+#: info/session.c:1983
 msgid "Delete all other windows"
 msgstr "Удалить все остальные окна"
 
-#: info/session.c:2026
+#: info/session.c:2029
 msgid "Grow (or shrink) this window"
 msgstr "Увеличить (или уменьшить) текущее окно"
 
-#: info/session.c:2037
+#: info/session.c:2040
 msgid "Divide the available screen space among the visible windows"
 msgstr "Разделить доступное место на экране между видимыми окнами"
 
-#: info/session.c:2044
+#: info/session.c:2047
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "Переключить режим разделения строк в текущем окне"
 
-#: info/session.c:2198
+#: info/session.c:2201
 msgid "Select this menu item"
 msgstr "Выбрать заданный пункт меню"
 
-#: info/session.c:2228
+#: info/session.c:2231
 #, c-format
 msgid "There isn't %d item in this menu."
 msgid_plural "There aren't %d items in this menu."
@@ -1239,401 +1237,401 @@ msgstr[0] "В этом меню нет %d пункта."
 msgstr[1] "В этом меню нет %d пунктов."
 msgstr[2] "В этом меню нет %d пунктов."
 
-#: info/session.c:2237
+#: info/session.c:2240
 msgid "Select the last item in this node's menu"
 msgstr "Выбрать последний пункт меню в текущей ноде"
 
-#: info/session.c:2344 info/session.c:2345
+#: info/session.c:2347 info/session.c:2348
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Пункт меню (%s): "
 
-#: info/session.c:2348
+#: info/session.c:2351
 msgid "Menu item: "
 msgstr "Пункт меню: "
 
-#: info/session.c:2355 info/session.c:2356
+#: info/session.c:2358 info/session.c:2359
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Перейти по ссылке (%s): "
 
-#: info/session.c:2359
+#: info/session.c:2362
 msgid "Follow xref: "
 msgstr "Перейти по ссылке: "
 
-#: info/session.c:2448
+#: info/session.c:2451
 msgid "Read a menu item and select its node"
 msgstr "Считать имя пункта меню и перейти к соответствующей ноде"
 
-#: info/session.c:2473
+#: info/session.c:2476
 msgid "Read a footnote or cross reference and select its node"
 msgstr "Считать имя ссылки или сноски и перейти к соответствующей ноде"
 
-#: info/session.c:2479
+#: info/session.c:2482
 msgid "Move to the start of this node's menu"
 msgstr "Сместиться к началу меню текущей ноды"
 
-#: info/session.c:2501
+#: info/session.c:2504
 msgid "Visit as many menu items at once as possible"
 msgstr "Просмотреть одновременно как можно больше нод"
 
-#: info/session.c:2601
+#: info/session.c:2604
 msgid "Move to the previous cross reference"
 msgstr "Перейти к предыдущей перекрёстной ссылке"
 
-#: info/session.c:2664
+#: info/session.c:2667
 msgid "Move to the next cross reference"
 msgstr "Перейти к следующей перекрёстной ссылке"
 
-#: info/session.c:2725
+#: info/session.c:2728
 msgid "Select reference or menu item appearing on this line"
 msgstr "Выбрать ссылку или пункт меню, находящийся на данной строке"
 
-#: info/session.c:2759
+#: info/session.c:2762
 #, c-format
 msgid "No menu in node '%s'."
 msgstr "В ноде «%s» нет меню."
 
-#: info/session.c:2806
+#: info/session.c:2809
 #, c-format
 msgid "Unable to find node referenced by '%s' in '%s'."
 msgstr "Невозможно найти ноду по ссылке «%s» в «%s»."
 
-#: info/session.c:2856
+#: info/session.c:2859
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Считать список меню, начинающийся с dir и проследовать по ним"
 
-#: info/session.c:2858
+#: info/session.c:2861
 msgid "Follow menus: "
 msgstr "Проследовать по меню: "
 
-#: info/session.c:2963
+#: info/session.c:2966
 msgid "Select the Next node"
 msgstr "Перейти на «Следующую» ноду"
 
-#: info/session.c:2970
+#: info/session.c:2973
 msgid "Select the Prev node"
 msgstr "Перейти на «Предыдущую» ноду"
 
-#: info/session.c:2977
+#: info/session.c:2980
 msgid "Select the Up node"
 msgstr "Перейти на «Верхнюю» ноду"
 
-#: info/session.c:2983
+#: info/session.c:2986
 msgid "Select the last node in this file"
 msgstr "Перейти на последнюю ноду в файле"
 
-#: info/session.c:3010 info/session.c:3043
+#: info/session.c:3013 info/session.c:3046
 msgid "This window has no additional nodes"
 msgstr "Это окно не имеет дополнительных нод"
 
-#: info/session.c:3016
+#: info/session.c:3019
 msgid "Select the first node in this file"
 msgstr "Перейти на первую ноду в файле"
 
-#: info/session.c:3150
+#: info/session.c:3153
 msgid "No more nodes within this document."
 msgstr "В этом документе больше нет нод."
 
-#: info/session.c:3195 info/session.c:3235
+#: info/session.c:3198 info/session.c:3238
 msgid "No 'Prev' or 'Up' for this node within this document."
 msgstr "В этом документе нет ссылки «Предыдущая» или «Вверх» для этой ноды."
 
-#: info/session.c:3248
+#: info/session.c:3251
 msgid "Move forwards or down through node structure"
 msgstr "Продвигаться вперёд или вниз по структуре нод"
 
-#: info/session.c:3265
+#: info/session.c:3268
 msgid "Move backwards or up through node structure"
 msgstr "Продвигаться назад или вверх по структуре нод"
 
-#: info/session.c:3288
+#: info/session.c:3291
 msgid "Read a node name and select it"
 msgstr "Считать имя ноды и перейти к ней"
 
-#: info/session.c:3342 info/session.c:3346
+#: info/session.c:3345 info/session.c:3349
 msgid "Goto node: "
 msgstr "Перейти к ноде: "
 
-#: info/session.c:3525
+#: info/session.c:3528
 msgid "Find the node describing program invocation"
 msgstr "Найти ноду, описывающую, как вызывать программу"
 
-#: info/session.c:3527
+#: info/session.c:3530
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Найти ноду Invocation для [%s]: "
 
-#: info/session.c:3572
+#: info/session.c:3575
 msgid "Read a manpage reference and select it"
 msgstr "Считать ссылку на справочную страницу (manpage) и перейти к ней"
 
-#: info/session.c:3576
+#: info/session.c:3579
 msgid "Get Manpage: "
 msgstr "Просмотреть справочную страницу (manpage): "
 
-#: info/session.c:3597
+#: info/session.c:3600
 msgid "Select the node 'Top' in this file"
 msgstr "Перейти на «Первую» ноду в этом файле"
 
-#: info/session.c:3603
+#: info/session.c:3606
 msgid "Select the node '(dir)'"
 msgstr "Перейти на ноду «(dir)»"
 
-#: info/session.c:3609
+#: info/session.c:3612
 msgid "Show full file name of node being displayed"
 msgstr "Показать полное имя файла отображаемой ноды"
 
-#: info/session.c:3626
+#: info/session.c:3629
 msgid "Select the most recently selected node"
 msgstr "Перейти к последней выбранной ноде"
 
-#: info/session.c:3631
+#: info/session.c:3634
 #, c-format
 msgid "No earlier node in history"
 msgstr "В истории нет более ранней ноды"
 
-#: info/session.c:3635
+#: info/session.c:3638
 msgid "Read the name of a file and select it"
 msgstr "Считать имя файла и перейти к нему"
 
-#: info/session.c:3639
+#: info/session.c:3642
 msgid "Find file: "
 msgstr "Найти файл: "
 
-#: info/session.c:3656
+#: info/session.c:3659
 #, c-format
 msgid "Cannot find '%s'."
 msgstr "Невозможно найти «%s»."
 
-#: info/session.c:3705
+#: info/session.c:3708
 #, c-format
 msgid "Could not create output file '%s'."
 msgstr "Невозможно создать выходной файл «%s»."
 
-#: info/session.c:3719
+#: info/session.c:3722
 #, c-format
 msgid "error writing to %s: %s"
 msgstr "ошибка записи в %s: %s"
 
-#: info/session.c:3728
+#: info/session.c:3731
 #, c-format
 msgid "closing %s"
 msgstr "закрывается %s"
 
-#: info/session.c:3777
+#: info/session.c:3780
 #, c-format
 msgid "writing node %s..."
 msgstr "запись ноды %s…"
 
-#: info/session.c:3823
+#: info/session.c:3826
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "Перенаправить содержимое этой ноды на вход команды INFO_PRINT_COMMAND"
 
-#: info/session.c:3851
+#: info/session.c:3854
 #, c-format
 msgid "Cannot open pipe to '%s'."
 msgstr "Невозможно открыть канал к «%s»."
 
-#: info/session.c:3856
+#: info/session.c:3859
 #, c-format
 msgid "printing node %s..."
 msgstr "печатается нода %s"
 
-#: info/session.c:3864
+#: info/session.c:3867
 #, c-format
 msgid "finished printing node %s"
 msgstr "печать ноды %s завершена"
 
-#: info/session.c:3896
+#: info/session.c:3899
 msgid "Toggle the usage of regular expressions in searches"
 msgstr "Переключить использование регулярных выражений в поиске"
 
-#: info/session.c:3900
+#: info/session.c:3903
 #, c-format
 msgid "Using regular expressions for searches."
 msgstr "Использование регулярных выражений при поиске."
 
-#: info/session.c:3901
+#: info/session.c:3904
 #, c-format
 msgid "Using literal strings for searches."
 msgstr "Использование обычных строк при поиске."
 
-#: info/session.c:4161
+#: info/session.c:4164
 msgid "Search continued from the end of the document."
 msgstr "Поиск продолжится с конца документа."
 
-#: info/session.c:4166
+#: info/session.c:4169
 msgid "Search continued from the beginning of the document."
 msgstr "Поиск продолжится с начала документа."
 
-#: info/session.c:4186
+#: info/session.c:4189
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "Поиск подфайла %s…"
 
-#: info/session.c:4223
+#: info/session.c:4226
 msgid "Search failed."
 msgstr "Не найдено."
 
-#: info/session.c:4240
+#: info/session.c:4243
 #, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%s%s [%s]: "
 
-#: info/session.c:4241 info/session.c:4247
+#: info/session.c:4244 info/session.c:4250
 msgid "Regexp search"
 msgstr "Поиск по регулярным выражениям"
 
-#: info/session.c:4241 info/session.c:4247
+#: info/session.c:4244 info/session.c:4250
 msgid "Search"
 msgstr "Поиск"
 
-#: info/session.c:4242 info/session.c:4248
+#: info/session.c:4245 info/session.c:4251
 msgid " case-sensitively"
 msgstr " c учётом регистра"
 
-#: info/session.c:4243 info/session.c:4249
+#: info/session.c:4246 info/session.c:4252
 msgid " backward"
 msgstr " обратный поиск"
 
-#: info/session.c:4246
+#: info/session.c:4249
 #, c-format
 msgid "%s%s%s: "
 msgstr "%s%s%s: "
 
-#: info/session.c:4266
+#: info/session.c:4269
 msgid "Search string too short"
 msgstr "Слишком короткая строка поиска"
 
-#: info/session.c:4459
+#: info/session.c:4462
 #, c-format
 msgid "Going back to last match from %s"
 msgstr ""
 
-#: info/session.c:4483 info/session.c:4593
+#: info/session.c:4486 info/session.c:4596
 #, fuzzy, c-format
 msgid "No more matches."
 msgstr "Нет соответствия"
 
-#: info/session.c:4620
+#: info/session.c:4623
 msgid "Search this node and subnodes for a string."
 msgstr ""
 
-#: info/session.c:4641
+#: info/session.c:4644
 msgid "Go to next match in Info sub-tree"
 msgstr ""
 
-#: info/session.c:4645 info/session.c:4657
+#: info/session.c:4648 info/session.c:4660
 #, c-format
 msgid "No active search"
 msgstr ""
 
-#: info/session.c:4653
+#: info/session.c:4656
 msgid "Go to previous match in Info sub-tree"
 msgstr ""
 
-#: info/session.c:4666
+#: info/session.c:4669
 msgid "Read a string and search for it case-sensitively"
 msgstr "Считать строку и запустить регистрозависимый поиск"
 
-#: info/session.c:4671
+#: info/session.c:4674
 msgid "Read a string and search for it"
 msgstr "Считать строку и запустить поиск"
 
-#: info/session.c:4677
+#: info/session.c:4680
 msgid "Read a string and search backward for it"
 msgstr "Считать строку и запустить поиск в обратном направлении"
 
-#: info/session.c:4685
+#: info/session.c:4688
 msgid "Repeat last search in the same direction"
 msgstr "Повторить последний поиск в том же направлении"
 
-#: info/session.c:4693 info/session.c:4738
+#: info/session.c:4696 info/session.c:4741
 msgid "No previous search string"
 msgstr "Нет строки предыдущего поиска"
 
-#: info/session.c:4730
+#: info/session.c:4733
 msgid "Repeat last search in the reverse direction"
 msgstr "Повторить последний поиск в обратном направлении"
 
-#: info/session.c:4777
+#: info/session.c:4780
 msgid "Clear displayed search matches"
 msgstr "Очистить показанные совпадения поиска"
 
-#: info/session.c:4794 info/session.c:4800
+#: info/session.c:4797 info/session.c:4803
 msgid "Search interactively for a string as you type it"
 msgstr "Запустить интерактивный поиск по мере ввода строки"
 
-#: info/session.c:4920
+#: info/session.c:4923
 msgid "Regexp I-search backward: "
 msgstr "Наращиваемый обратный поиск по регулярному выражению: "
 
-#: info/session.c:4921
+#: info/session.c:4924
 msgid "I-search backward: "
 msgstr "Наращиваемый обратный поиск: "
 
-#: info/session.c:4923
+#: info/session.c:4926
 msgid "Regexp I-search: "
 msgstr "Наращиваемый поиск по регулярному выражению: "
 
-#: info/session.c:4924
+#: info/session.c:4927
 msgid "I-search: "
 msgstr "Наращиваемый поиск: "
 
-#: info/session.c:4949 info/session.c:4952
+#: info/session.c:4952 info/session.c:4955
 msgid "Failing "
 msgstr "Не найдено "
 
-#: info/session.c:5318
+#: info/session.c:5321
 msgid "Cancel current operation"
 msgstr "Отменить выполнение текущей команды"
 
-#: info/session.c:5325
+#: info/session.c:5328
 msgid "Quit"
 msgstr "Выход"
 
-#: info/session.c:5330
+#: info/session.c:5333
 msgid "Display version of Info being run"
 msgstr "Показать версию запущенной Info"
 
-#: info/session.c:5332
+#: info/session.c:5335
 #, c-format
 msgid "GNU Info version %s"
 msgstr "GNU Info, версия %s"
 
-#: info/session.c:5337
+#: info/session.c:5340
 msgid "Redraw the display"
 msgstr "Перерисовать экран"
 
-#: info/session.c:5374
+#: info/session.c:5377
 msgid "Quit using Info"
 msgstr "Выйти из Info"
 
-#: info/session.c:5390
+#: info/session.c:5393
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Запустить команду, привязанную к этой клавише в нижнем регистре"
 
-#: info/session.c:5401
+#: info/session.c:5404
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "Неизвестная команда (%s)."
 
-#: info/session.c:5404
+#: info/session.c:5407
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "Неверная команда «%s»"
 
-#: info/session.c:5405
+#: info/session.c:5408
 #, c-format
 msgid "'%s' is invalid"
 msgstr "«%s» неверно"
 
-#: info/session.c:5723
+#: info/session.c:5726
 msgid "Add this digit to the current numeric argument"
 msgstr "Добавить цифру к текущему числовому аргументу"
 
-#: info/session.c:5730
+#: info/session.c:5733
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Начать (или умножить на 4) текущий числовой аргумент"
 
@@ -2002,66 +2000,66 @@ msgstr ""
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s: невозможно прочитать (%s) и создать (%s)"
 
-#: install-info/install-info.c:1134 install-info/install-info.c:1174
+#: install-info/install-info.c:1154 install-info/install-info.c:1194
 #, c-format
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY без соответствующего END-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1169
+#: install-info/install-info.c:1189
 #, c-format
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY без соответствующего START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:2042 install-info/install-info.c:2052
+#: install-info/install-info.c:2064 install-info/install-info.c:2074
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: уже существует файл dir: %s\n"
 
-#: install-info/install-info.c:2148
+#: install-info/install-info.c:2170
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Можно задать только один Info-файл.\n"
 
-#: install-info/install-info.c:2181
+#: install-info/install-info.c:2203
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "Указано дополнительное регулярное выражение, игнорируется «%s»"
 
-#: install-info/install-info.c:2193
+#: install-info/install-info.c:2215
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "Ошибка в регулярном выражении «%s»: %s"
 
-#: install-info/install-info.c:2255
+#: install-info/install-info.c:2277
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "лишний аргумент командной строки «%s»"
 
-#: install-info/install-info.c:2259
+#: install-info/install-info.c:2281
 #, c-format
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Не задан входной файл; попробуйте --help для получения более подробного "
 "описания."
 
-#: install-info/install-info.c:2261
+#: install-info/install-info.c:2283
 #, c-format
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "Не задан файл каталога; попробуйте --help для получения более подробного "
 "описания."
 
-#: install-info/install-info.c:2282
+#: install-info/install-info.c:2304
 #, c-format
 msgid "Could not read %s."
 msgstr "Невозможно прочитать %s."
 
-#: install-info/install-info.c:2429
+#: install-info/install-info.c:2451
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "в «%s» нет элемента info dir"
 
-#: install-info/install-info.c:2677
+#: install-info/install-info.c:2699
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "не найдены элементы для «%s»; ничего не удалено"
@@ -3665,71 +3663,37 @@ msgstr "%s: ошибка при закрытии файла внутренних
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: невозможно открыть %s для записи: %s\n"
 
-#: texindex/ti.twjr:373
-#, fuzzy, awk-format
-msgid "%s: unrecognized option `%s'\n"
-msgstr "%s: нераспознанный параметр «--%s»\n"
-
-#: texindex/ti.twjr:444
-#, fuzzy, awk-format
-msgid "%s is not a Texinfo index file\n"
-msgstr "%s: не texinfo-файл с алфавитным указателем"
-
-#: texindex/ti.twjr:553
-#, awk-format
-msgid "%s:%d: Bad key %s in record\n"
-msgstr ""
-
-#: texindex/ti.twjr:582
-#, awk-format
-msgid "%s:%d: Bad entry; expected three fields, not %d\n"
-msgstr ""
-
-#: texindex/ti.twjr:741
-#, awk-format
-msgid "%s:%d: Bad entry; expected %s at column %d\n"
-msgstr ""
-
-#: texindex/ti.twjr:1270
-msgid "..."
-msgstr ""
-
-#: texindex/ti.twjr:1289
-#, fuzzy, awk-format
-msgid "Usage: %s [OPTION]... FILE...\n"
-msgstr "Использование: %s [ПАРАМЕТР]… ФАЙЛ-TEXINFO…\n"
-
-#: texindex/ti.twjr:1290
 #, fuzzy
-msgid "Generate a sorted index for each TeX output FILE."
-msgstr ""
-"Создаёт сортированный алфавитный указатель для\n"
-"каждого выходного ФАЙЛА TeX.\n"
+#~ msgid "%s: unrecognized option `%s'\n"
+#~ msgstr "%s: нераспознанный параметр «--%s»\n"
 
-#: texindex/ti.twjr:1291
 #, fuzzy
-msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
-msgstr "Обычно, ФАЙЛ… для документа «foo.texi» задаётся как «foo.%c%c».\n"
+#~ msgid "%s is not a Texinfo index file\n"
+#~ msgstr "%s: не texinfo-файл с алфавитным указателем"
 
-#: texindex/ti.twjr:1293
 #, fuzzy
-msgid "Options:"
-msgstr ""
-"\n"
-"Параметры:\n"
+#~ msgid "Usage: %s [OPTION]... FILE...\n"
+#~ msgstr "Использование: %s [ПАРАМЕТР]… ФАЙЛ-TEXINFO…\n"
 
-#: texindex/ti.twjr:1294
 #, fuzzy
-msgid " -h, --help   display this help and exit"
-msgstr "показать эту справку и выйти"
+#~ msgid "Generate a sorted index for each TeX output FILE."
+#~ msgstr ""
+#~ "Создаёт сортированный алфавитный указатель для\n"
+#~ "каждого выходного ФАЙЛА TeX.\n"
 
-#: texindex/ti.twjr:1295
-msgid " --version    display version information and exit"
-msgstr ""
+#, fuzzy
+#~ msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
+#~ msgstr "Обычно, ФАЙЛ… для документа «foo.texi» задаётся как «foo.%c%c».\n"
 
-#: texindex/ti.twjr:1296
-msgid " --           end option processing"
-msgstr ""
+#, fuzzy
+#~ msgid "Options:"
+#~ msgstr ""
+#~ "\n"
+#~ "Параметры:\n"
+
+#, fuzzy
+#~ msgid " -h, --help   display this help and exit"
+#~ msgstr "показать эту справку и выйти"
 
 #~ msgid "--*** Tags out of Date ***"
 #~ msgstr "--*** Теги устарели ***"

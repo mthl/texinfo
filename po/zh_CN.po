@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-11-14 19:18+0000\n"
+"POT-Creation-Date: 2015-12-15 15:21+0000\n"
 "PO-Revision-Date: 2009-05-21 15:08中国标准时间\n"
 "Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
 "Language-Team: Chinese (simplified) <translation-team-zh-cn@lists."
@@ -171,11 +171,11 @@ msgstr "没有上次搜索字符串"
 msgid "memory exhausted"
 msgstr "虚拟内存耗尽"
 
-#: info/echo-area.c:295 info/session.c:1383
+#: info/echo-area.c:295 info/session.c:1386
 msgid "Move forward a character"
 msgstr "向前移动一个字符"
 
-#: info/echo-area.c:314 info/session.c:1396
+#: info/echo-area.c:314 info/session.c:1399
 msgid "Move backward a character"
 msgstr "向后移动一个字符"
 
@@ -187,11 +187,11 @@ msgstr "移动到本行的开头"
 msgid "Move to the end of this line"
 msgstr "移动到本行的末尾"
 
-#: info/echo-area.c:353 info/session.c:1411
+#: info/echo-area.c:353 info/session.c:1414
 msgid "Move forward a word"
 msgstr "向前移动一个单词"
 
-#: info/echo-area.c:393 info/session.c:1425
+#: info/echo-area.c:393 info/session.c:1428
 msgid "Move backward a word"
 msgstr "向后移动一个单词"
 
@@ -397,54 +397,53 @@ msgstr "在可用的 info 文件的索引中均不含有“%s”。"
 msgid "Error converting file character encoding."
 msgstr ""
 
-#: info/info.c:223 info/session.c:2781
+#: info/info.c:222 info/session.c:2784
 #, fuzzy, c-format
 msgid "No menu item '%s' in node '%s'."
 msgstr "节点“%2$s”中没有菜单项“%1$s”。"
 
-#: info/info.c:316
+#: info/info.c:315
 #, fuzzy, c-format
 msgid "No file given for node '%s'."
 msgstr "节点“%s”中没有菜单。"
 
-#: info/info.c:365 info/info.c:1134
+#: info/info.c:364 info/info.c:1133
 #, fuzzy, c-format
 msgid "Cannot find node '%s'."
 msgstr "无法找到节点“%s”。"
 
-#: info/info.c:387
+#: info/info.c:386
 #, c-format
 msgid "No program name given."
 msgstr ""
 
-#: info/info.c:578
+#: info/info.c:577
 #, c-format
 msgid "invalid number: %s\n"
 msgstr ""
 
-#: info/info.c:758
+#: info/info.c:757
 #, c-format
 msgid "malformed variable assignment: %s"
 msgstr ""
 
-#: info/info.c:765 info/infokey.c:537
+#: info/info.c:764 info/infokey.c:537
 #, fuzzy, c-format
 msgid "%s: no such variable"
 msgstr "未知的命令“%s”"
 
-#: info/info.c:771 info/infokey.c:539
+#: info/info.c:770 info/infokey.c:539
 #, fuzzy, c-format
 msgid "value %s is not valid for variable %s"
 msgstr "设定 Info 变量的值"
 
-#: info/info.c:783
+#: info/info.c:782
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "尝试 --更多的求助信息。\n"
 
-#: info/info.c:805 install-info/install-info.c:2217 tp/texi2any.pl:872
-#: texindex/ti.twjr:1309
-#, c-format, awk-format, perl-format
+#: info/info.c:804 install-info/install-info.c:2239 tp/texi2any.pl:872
+#, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -458,12 +457,12 @@ msgstr ""
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 
-#: info/info.c:982
+#: info/info.c:981
 #, fuzzy, c-format
 msgid "no index entries found for '%s'\n"
 msgstr "找不到含有“%s”的索引\n"
 
-#: info/info.c:1035
+#: info/info.c:1034
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
@@ -474,7 +473,7 @@ msgstr ""
 "\n"
 "以 Info 格式阅读文档。\n"
 
-#: info/info.c:1041
+#: info/info.c:1040
 #, fuzzy
 msgid ""
 "Options:\n"
@@ -491,7 +490,7 @@ msgstr ""
 "      --dribble=FILENAME       将用户的击键条目在 FILENAME 中。\n"
 "  -f, --file=FILENAME          指定想浏览的 Info 文件。"
 
-#: info/info.c:1049
+#: info/info.c:1048
 #, fuzzy
 msgid ""
 "  -h, --help                   display this help and exit.\n"
@@ -504,7 +503,7 @@ msgstr ""
 "  -n, --node=NODENAME          在首个浏览过的 Info 文件中指定节点。\n"
 "  -o, --output=FILENAME        将选中的节点全输出至 FILENAME。"
 
-#: info/info.c:1055
+#: info/info.c:1054
 #, fuzzy
 msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
@@ -517,12 +516,12 @@ msgstr ""
 "      --restore=FILENAME       从 FILENAME 中读取初始击键条目。\n"
 "  -O, --show-options, --usage  跳转至命令行选项节点。"
 
-#: info/info.c:1062
+#: info/info.c:1061
 #, fuzzy
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
 msgstr "  -b, --speech-friendly        对发音器兼容。"
 
-#: info/info.c:1066
+#: info/info.c:1065
 #, fuzzy
 msgid ""
 "      --strict-node-location   (for debugging) use Info file pointers as-"
@@ -539,7 +538,7 @@ msgstr ""
 "      --version                显示版本信息并退出。\n"
 "  -w, --where, --location      打印 Info 文件在系统中的位置。"
 
-#: info/info.c:1075
+#: info/info.c:1074
 #, fuzzy
 msgid ""
 "\n"
@@ -556,7 +555,7 @@ msgstr ""
 "任何后续参数都被认为是与初始浏览\n"
 "节点有关的菜单项名称。"
 
-#: info/info.c:1082
+#: info/info.c:1081
 #, fuzzy
 msgid ""
 "\n"
@@ -565,7 +564,7 @@ msgstr ""
 "\n"
 "在帮助信息中按 h 获取有关按键绑定的内容。"
 
-#: info/info.c:1085
+#: info/info.c:1084
 #, fuzzy
 msgid ""
 "\n"
@@ -592,8 +591,7 @@ msgstr ""
 "  info --subnodes -o out.txt emacs  将整个手册页输出至 out.txt\n"
 "  info -f ./foo.info         显示文件 ./foo.info，而不是查找目录"
 
-#: info/info.c:1100 install-info/install-info.c:616 tp/texi2any.pl:860
-#: texindex/ti.twjr:1298
+#: info/info.c:1099 install-info/install-info.c:616 tp/texi2any.pl:860
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -603,67 +601,67 @@ msgstr ""
 "一般的问题和讨论请发送到 help-texinfo@gnu.org。\n"
 "Texinfo 主页：http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1135
+#: info/info.c:1134
 #, fuzzy, c-format
 msgid "Cannot find node '(%s)%s'."
 msgstr "无法找到节点“(%s)%s”。"
 
-#: info/info.c:1136
+#: info/info.c:1135
 msgid "Cannot find a window!"
 msgstr "无法找到一个窗口！"
 
-#: info/info.c:1137
+#: info/info.c:1136
 msgid "Point doesn't appear within this window's node!"
 msgstr "光标没有出现在该窗口的节点之中！"
 
-#: info/info.c:1138
+#: info/info.c:1137
 msgid "Cannot delete the last window."
 msgstr "无法删除最后的窗口。"
 
-#: info/info.c:1139
+#: info/info.c:1138
 msgid "No menu in this node."
 msgstr "该节点中没有菜单。"
 
-#: info/info.c:1140
+#: info/info.c:1139
 msgid "No footnotes in this node."
 msgstr "该节点中没有脚注。"
 
-#: info/info.c:1141
+#: info/info.c:1140
 msgid "No cross references in this node."
 msgstr "该节点中没有交叉引用。"
 
-#: info/info.c:1142
+#: info/info.c:1141
 #, fuzzy, c-format
 msgid "No '%s' pointer for this node."
 msgstr "该节点中没有“%s”指针"
 
-#: info/info.c:1143
+#: info/info.c:1142
 #, fuzzy, c-format
 msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "未知的 Info 命令“%c”；请以“?”获得帮助。"
 
-#: info/info.c:1144
+#: info/info.c:1143
 #, fuzzy, c-format
 msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "终端类型“%s”的能力不足以支持 Info 的运行。"
 
-#: info/info.c:1145
+#: info/info.c:1144
 msgid "You are already at the last page of this node."
 msgstr "您已经在该节点的最后一个页面中了。"
 
-#: info/info.c:1146
+#: info/info.c:1145
 msgid "You are already at the first page of this node."
 msgstr "您已经在该节点的第一页中了。"
 
-#: info/info.c:1147
+#: info/info.c:1146
 msgid "Only one window."
 msgstr "只有一个窗口。"
 
-#: info/info.c:1148
+#: info/info.c:1147
 msgid "Resulting window would be too small."
 msgstr "结果窗口将会太小。"
 
-#: info/info.c:1149
+#: info/info.c:1148
 msgid "Not enough room for a help window, please delete a window."
 msgstr "没有足够的空间用于求助窗口，请删除一个窗口。"
 
@@ -850,44 +848,44 @@ msgstr "显示求助消息"
 msgid "Visit Info node '(info)Help'"
 msgstr "访问 Info 节点“(info)Help”"
 
-#: info/infodoc.c:447
+#: info/infodoc.c:452
 msgid "Print documentation for KEY"
 msgstr "打印关于 KEY 的文档"
 
-#: info/infodoc.c:458
+#: info/infodoc.c:463
 #, c-format
 msgid "Describe key: %s"
 msgstr "说明按键：%s"
 
-#: info/infodoc.c:468 info/infodoc.c:504
+#: info/infodoc.c:473 info/infodoc.c:509
 #, c-format
 msgid "%s is undefined."
 msgstr "%s 未定义。"
 
-#: info/infodoc.c:866
+#: info/infodoc.c:871
 msgid "Show what to type to execute a given command"
 msgstr "显示执行给定命令所需的按键"
 
-#: info/infodoc.c:870
+#: info/infodoc.c:875
 msgid "Where is command: "
 msgstr "命令为:"
 
-#: info/infodoc.c:892
+#: info/infodoc.c:897
 #, fuzzy, c-format
 msgid "'%s' is not on any keys"
 msgstr "“%s”未绑定到任何按键"
 
-#: info/infodoc.c:898
+#: info/infodoc.c:903
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s 不能通过 %s 调用。"
 
-#: info/infodoc.c:902
+#: info/infodoc.c:907
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s 可以通过 %s 调用。"
 
-#: info/infodoc.c:907
+#: info/infodoc.c:912
 #, fuzzy, c-format
 msgid "There is no function named '%s'"
 msgstr "没有名为“%s”的函数"
@@ -1049,7 +1047,7 @@ msgstr "选择一个已经在可见的窗口中访问的节点"
 msgid "Select visited node: "
 msgstr "选择已访问的节点："
 
-#: info/nodemenu.c:278 info/session.c:2436
+#: info/nodemenu.c:278 info/session.c:2439
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "引用消失了！(%s)。"
@@ -1085,549 +1083,549 @@ msgstr ""
 "欢迎使用 Info %s 版。输入 \\[get-help-window] 以获得帮助，\\[menu-item] 将得"
 "到菜单。"
 
-#: info/session.c:773
+#: info/session.c:776
 #, fuzzy, c-format
 msgid "can't open %s: %s"
 msgstr "%s: 无法打开 --css-file: %s"
 
-#: info/session.c:779
+#: info/session.c:782
 #, c-format
 msgid "debugging output diverted to \"%s\""
 msgstr ""
 
-#: info/session.c:1270
+#: info/session.c:1273
 msgid "Move down to the next line"
 msgstr "向下移动到下一行"
 
-#: info/session.c:1285
+#: info/session.c:1288
 msgid "Move up to the previous line"
 msgstr "向上移动到上一行"
 
-#: info/session.c:1301
+#: info/session.c:1304
 msgid "Move the cursor to a specific line of the window"
 msgstr "将光标移动到窗口的指定行"
 
-#: info/session.c:1333
+#: info/session.c:1336
 msgid "Move to the end of the line"
 msgstr "移动到行的末尾"
 
-#: info/session.c:1358
+#: info/session.c:1361
 msgid "Move to the start of the line"
 msgstr "移动到行的开头"
 
-#: info/session.c:1440
+#: info/session.c:1443
 msgid "Move to the start of this node"
 msgstr "移动到本节点的开头"
 
-#: info/session.c:1447
+#: info/session.c:1450
 msgid "Move to the end of this node"
 msgstr "移动到本节点的末尾"
 
-#: info/session.c:1538
+#: info/session.c:1541
 msgid "Scroll forward in this window"
 msgstr "在本窗口中向前滚动"
 
-#: info/session.c:1552
+#: info/session.c:1555
 msgid "Scroll backward in this window"
 msgstr "在本窗口中向后滚动"
 
-#: info/session.c:1560
+#: info/session.c:1563
 msgid "Scroll forward in this window and set default window size"
 msgstr "在本窗口中向前滚动并设置为默认窗口大小"
 
-#: info/session.c:1575
+#: info/session.c:1578
 msgid "Scroll backward in this window and set default window size"
 msgstr "在本窗口中向后滚动并设置为默认窗口大小"
 
-#: info/session.c:1581
+#: info/session.c:1584
 msgid "Scroll forward in this window staying within node"
 msgstr "在本窗口中向前滚动(不穿越节点)"
 
-#: info/session.c:1596
+#: info/session.c:1599
 msgid "Scroll backward in this window staying within node"
 msgstr "在本窗口中向后滚动(不穿越节点)"
 
-#: info/session.c:1604
+#: info/session.c:1607
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr "在本窗口中向前滚动(不穿越节点)并设置默认窗口大小"
 
-#: info/session.c:1631
+#: info/session.c:1634
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
 msgstr "在本窗口中向后滚动(不穿越节点)并设置为默认窗口大小"
 
-#: info/session.c:1637
+#: info/session.c:1640
 msgid "Scroll down by lines"
 msgstr "按行向下滚动"
 
-#: info/session.c:1643
+#: info/session.c:1646
 msgid "Scroll up by lines"
 msgstr "按行向上滚动"
 
-#: info/session.c:1655
+#: info/session.c:1658
 msgid "Scroll down by half screen size"
 msgstr "向下滚动半个屏幕"
 
-#: info/session.c:1682
+#: info/session.c:1685
 msgid "Scroll up by half screen size"
 msgstr "向上滚动半个屏幕"
 
-#: info/session.c:1688
+#: info/session.c:1691
 msgid "Scroll the other window"
 msgstr "滚动其它窗口"
 
-#: info/session.c:1709
+#: info/session.c:1712
 msgid "Scroll the other window backward"
 msgstr "向后滚动其它窗口"
 
-#: info/session.c:1818
+#: info/session.c:1821
 msgid "Select the next window"
 msgstr "选择下一个窗口"
 
-#: info/session.c:1855
+#: info/session.c:1858
 msgid "Select the previous window"
 msgstr "选择上一个窗口"
 
-#: info/session.c:1899
+#: info/session.c:1902
 msgid "Split the current window"
 msgstr "拆分当前窗口"
 
-#: info/session.c:1944
+#: info/session.c:1947
 msgid "Delete the current window"
 msgstr "删除当前窗口"
 
-#: info/session.c:1949
+#: info/session.c:1952
 msgid "Cannot delete a permanent window"
 msgstr "无法删除永久窗口"
 
-#: info/session.c:1980
+#: info/session.c:1983
 msgid "Delete all other windows"
 msgstr "删除所有其它窗口"
 
-#: info/session.c:2026
+#: info/session.c:2029
 msgid "Grow (or shrink) this window"
 msgstr "扩大(或缩小)本窗口"
 
-#: info/session.c:2037
+#: info/session.c:2040
 msgid "Divide the available screen space among the visible windows"
 msgstr "在可见的窗口间分配可用的屏幕空间"
 
-#: info/session.c:2044
+#: info/session.c:2047
 msgid "Toggle the state of line wrapping in the current window"
 msgstr "在当前窗口中切换行卷绕状态"
 
-#: info/session.c:2198
+#: info/session.c:2201
 msgid "Select this menu item"
 msgstr "选择本菜单项目"
 
-#: info/session.c:2228
+#: info/session.c:2231
 #, fuzzy, c-format
 msgid "There isn't %d item in this menu."
 msgid_plural "There aren't %d items in this menu."
 msgstr[0] "本菜单中没有第 %d 个项目。"
 msgstr[1] "本菜单中没有第 %d 个项目。"
 
-#: info/session.c:2237
+#: info/session.c:2240
 msgid "Select the last item in this node's menu"
 msgstr "选择本节点菜单中的最后一项"
 
-#: info/session.c:2344 info/session.c:2345
+#: info/session.c:2347 info/session.c:2348
 #, c-format
 msgid "Menu item (%s): "
 msgstr "菜单项 (%s)："
 
-#: info/session.c:2348
+#: info/session.c:2351
 msgid "Menu item: "
 msgstr "菜单项："
 
-#: info/session.c:2355 info/session.c:2356
+#: info/session.c:2358 info/session.c:2359
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "跟随交叉引用 (%s)："
 
-#: info/session.c:2359
+#: info/session.c:2362
 msgid "Follow xref: "
 msgstr "跟随交叉引用："
 
-#: info/session.c:2448
+#: info/session.c:2451
 msgid "Read a menu item and select its node"
 msgstr "读取菜单项并选择它的节点"
 
-#: info/session.c:2473
+#: info/session.c:2476
 msgid "Read a footnote or cross reference and select its node"
 msgstr "读取脚注或交叉引用并选择它的节点"
 
-#: info/session.c:2479
+#: info/session.c:2482
 msgid "Move to the start of this node's menu"
 msgstr "移动到本节点菜单的开头"
 
-#: info/session.c:2501
+#: info/session.c:2504
 msgid "Visit as many menu items at once as possible"
 msgstr "立刻访问尽可能多的菜单项"
 
-#: info/session.c:2601
+#: info/session.c:2604
 msgid "Move to the previous cross reference"
 msgstr "移动到上一个交叉引用"
 
-#: info/session.c:2664
+#: info/session.c:2667
 msgid "Move to the next cross reference"
 msgstr "移动到下一个交叉引用"
 
-#: info/session.c:2725
+#: info/session.c:2728
 msgid "Select reference or menu item appearing on this line"
 msgstr "选择出现在本行中的引用或菜单项"
 
-#: info/session.c:2759
+#: info/session.c:2762
 #, fuzzy, c-format
 msgid "No menu in node '%s'."
 msgstr "节点“%s”中没有菜单。"
 
-#: info/session.c:2806
+#: info/session.c:2809
 #, fuzzy, c-format
 msgid "Unable to find node referenced by '%s' in '%s'."
 msgstr "无法在“%2$s”中找到由“%1$s”引用的节点。"
 
-#: info/session.c:2856
+#: info/session.c:2859
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "读取自 dir 开始的菜单的列表并跟随它们"
 
-#: info/session.c:2858
+#: info/session.c:2861
 msgid "Follow menus: "
 msgstr "跟随菜单："
 
-#: info/session.c:2963
+#: info/session.c:2966
 msgid "Select the Next node"
 msgstr "选择下一个节点"
 
-#: info/session.c:2970
+#: info/session.c:2973
 msgid "Select the Prev node"
 msgstr "选择上一个节点"
 
-#: info/session.c:2977
+#: info/session.c:2980
 msgid "Select the Up node"
 msgstr "选择上层节点"
 
-#: info/session.c:2983
+#: info/session.c:2986
 msgid "Select the last node in this file"
 msgstr "选择本文件的最后一个节点"
 
-#: info/session.c:3010 info/session.c:3043
+#: info/session.c:3013 info/session.c:3046
 msgid "This window has no additional nodes"
 msgstr "该窗口没有附加节点"
 
-#: info/session.c:3016
+#: info/session.c:3019
 msgid "Select the first node in this file"
 msgstr "选择本文件的第一个节点"
 
-#: info/session.c:3150
+#: info/session.c:3153
 msgid "No more nodes within this document."
 msgstr "本文档中没有更多的节点。"
 
-#: info/session.c:3195 info/session.c:3235
+#: info/session.c:3198 info/session.c:3238
 #, fuzzy
 msgid "No 'Prev' or 'Up' for this node within this document."
 msgstr "在本文档中没有本节点的“上一个”或“上层”节点。"
 
-#: info/session.c:3248
+#: info/session.c:3251
 msgid "Move forwards or down through node structure"
 msgstr "在节点结构中向前或向下层移动"
 
-#: info/session.c:3265
+#: info/session.c:3268
 msgid "Move backwards or up through node structure"
 msgstr "在节点结构中向后或向上层移动"
 
-#: info/session.c:3288
+#: info/session.c:3291
 msgid "Read a node name and select it"
 msgstr "读取节点名并选择它"
 
-#: info/session.c:3342 info/session.c:3346
+#: info/session.c:3345 info/session.c:3349
 msgid "Goto node: "
 msgstr "转到节点："
 
-#: info/session.c:3525
+#: info/session.c:3528
 msgid "Find the node describing program invocation"
 msgstr "寻找说明程序调用的节点"
 
-#: info/session.c:3527
+#: info/session.c:3530
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "寻找 [%s] 的调用节点："
 
-#: info/session.c:3572
+#: info/session.c:3575
 msgid "Read a manpage reference and select it"
 msgstr "读取一个 man 手册的引用并选择它"
 
-#: info/session.c:3576
+#: info/session.c:3579
 msgid "Get Manpage: "
 msgstr "获取 man 手册："
 
-#: info/session.c:3597
+#: info/session.c:3600
 #, fuzzy
 msgid "Select the node 'Top' in this file"
 msgstr "选择本文件中的“顶”节点"
 
-#: info/session.c:3603
+#: info/session.c:3606
 #, fuzzy
 msgid "Select the node '(dir)'"
 msgstr "选择节点“(dir)”"
 
-#: info/session.c:3609
+#: info/session.c:3612
 msgid "Show full file name of node being displayed"
 msgstr ""
 
-#: info/session.c:3626
+#: info/session.c:3629
 msgid "Select the most recently selected node"
 msgstr "选择最近选择的节点"
 
-#: info/session.c:3631
+#: info/session.c:3634
 #, c-format
 msgid "No earlier node in history"
 msgstr ""
 
-#: info/session.c:3635
+#: info/session.c:3638
 msgid "Read the name of a file and select it"
 msgstr "读取文件名并选择它"
 
-#: info/session.c:3639
+#: info/session.c:3642
 msgid "Find file: "
 msgstr "寻找文件："
 
-#: info/session.c:3656
+#: info/session.c:3659
 #, fuzzy, c-format
 msgid "Cannot find '%s'."
 msgstr "无法寻找“%s”。"
 
-#: info/session.c:3705
+#: info/session.c:3708
 #, fuzzy, c-format
 msgid "Could not create output file '%s'."
 msgstr "无法创建输出文件“%s”。"
 
-#: info/session.c:3719
+#: info/session.c:3722
 #, fuzzy, c-format
 msgid "error writing to %s: %s"
 msgstr "写入“%s”时出错"
 
-#: info/session.c:3728
+#: info/session.c:3731
 #, fuzzy, c-format
 msgid "closing %s"
 msgstr "删除 %s\n"
 
-#: info/session.c:3777
+#: info/session.c:3780
 #, fuzzy, c-format
 msgid "writing node %s..."
 msgstr "正在写入节点 %s..."
 
-#: info/session.c:3823
+#: info/session.c:3826
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "通过管道将本节点的内容输出到 INFO_PRINT_COMMAND"
 
-#: info/session.c:3851
+#: info/session.c:3854
 #, fuzzy, c-format
 msgid "Cannot open pipe to '%s'."
 msgstr "无法打开到“%s”的管道。"
 
-#: info/session.c:3856
+#: info/session.c:3859
 #, fuzzy, c-format
 msgid "printing node %s..."
 msgstr "正在打印节点 %s..."
 
-#: info/session.c:3864
+#: info/session.c:3867
 #, fuzzy, c-format
 msgid "finished printing node %s"
 msgstr "正在打印节点 %s..."
 
-#: info/session.c:3896
+#: info/session.c:3899
 msgid "Toggle the usage of regular expressions in searches"
 msgstr "切换查寻时正则表达式的用法"
 
-#: info/session.c:3900
+#: info/session.c:3903
 #, c-format
 msgid "Using regular expressions for searches."
 msgstr "使用正则表达式来查寻"
 
-#: info/session.c:3901
+#: info/session.c:3904
 #, c-format
 msgid "Using literal strings for searches."
 msgstr "使用普通字符串来查寻"
 
-#: info/session.c:4161
+#: info/session.c:4164
 msgid "Search continued from the end of the document."
 msgstr "从文档底部继续查寻。"
 
-#: info/session.c:4166
+#: info/session.c:4169
 msgid "Search continued from the beginning of the document."
 msgstr "从此文档的开头继续查找。"
 
-#: info/session.c:4186
+#: info/session.c:4189
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "正在搜索子文件 %s ..."
 
-#: info/session.c:4223
+#: info/session.c:4226
 msgid "Search failed."
 msgstr "搜索失败。"
 
-#: info/session.c:4240
+#: info/session.c:4243
 #, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%s%s [%s]: "
 
-#: info/session.c:4241 info/session.c:4247
+#: info/session.c:4244 info/session.c:4250
 msgid "Regexp search"
 msgstr "正则表达式查找"
 
-#: info/session.c:4241 info/session.c:4247
+#: info/session.c:4244 info/session.c:4250
 msgid "Search"
 msgstr "搜索"
 
-#: info/session.c:4242 info/session.c:4248
+#: info/session.c:4245 info/session.c:4251
 msgid " case-sensitively"
 msgstr "大小写敏感"
 
-#: info/session.c:4243 info/session.c:4249
+#: info/session.c:4246 info/session.c:4252
 msgid " backward"
 msgstr "向后搜索"
 
-#: info/session.c:4246
+#: info/session.c:4249
 #, fuzzy, c-format
 msgid "%s%s%s: "
 msgstr "%s%s%s [%s]: "
 
-#: info/session.c:4266
+#: info/session.c:4269
 msgid "Search string too short"
 msgstr ""
 
-#: info/session.c:4459
+#: info/session.c:4462
 #, c-format
 msgid "Going back to last match from %s"
 msgstr ""
 
-#: info/session.c:4483 info/session.c:4593
+#: info/session.c:4486 info/session.c:4596
 #, c-format
 msgid "No more matches."
 msgstr ""
 
-#: info/session.c:4620
+#: info/session.c:4623
 msgid "Search this node and subnodes for a string."
 msgstr ""
 
-#: info/session.c:4641
+#: info/session.c:4644
 msgid "Go to next match in Info sub-tree"
 msgstr ""
 
-#: info/session.c:4645 info/session.c:4657
+#: info/session.c:4648 info/session.c:4660
 #, c-format
 msgid "No active search"
 msgstr ""
 
-#: info/session.c:4653
+#: info/session.c:4656
 msgid "Go to previous match in Info sub-tree"
 msgstr ""
 
-#: info/session.c:4666
+#: info/session.c:4669
 msgid "Read a string and search for it case-sensitively"
 msgstr "读取一个字符串并以大小写敏感的方式搜索它"
 
-#: info/session.c:4671
+#: info/session.c:4674
 msgid "Read a string and search for it"
 msgstr "读取一个字符串并搜索它"
 
-#: info/session.c:4677
+#: info/session.c:4680
 msgid "Read a string and search backward for it"
 msgstr "读取一个字符串并向后搜索它"
 
-#: info/session.c:4685
+#: info/session.c:4688
 msgid "Repeat last search in the same direction"
 msgstr "以相同的方向重复最后的搜索"
 
-#: info/session.c:4693 info/session.c:4738
+#: info/session.c:4696 info/session.c:4741
 msgid "No previous search string"
 msgstr "没有上次搜索字符串"
 
-#: info/session.c:4730
+#: info/session.c:4733
 msgid "Repeat last search in the reverse direction"
 msgstr "以相反的方向重复最后的搜索"
 
-#: info/session.c:4777
+#: info/session.c:4780
 msgid "Clear displayed search matches"
 msgstr ""
 
-#: info/session.c:4794 info/session.c:4800
+#: info/session.c:4797 info/session.c:4803
 msgid "Search interactively for a string as you type it"
 msgstr "在你输入的同时交互式地搜索字符串"
 
-#: info/session.c:4920
+#: info/session.c:4923
 msgid "Regexp I-search backward: "
 msgstr "向后增量搜索正则表达式: "
 
-#: info/session.c:4921
+#: info/session.c:4924
 msgid "I-search backward: "
 msgstr "向后增量搜索："
 
-#: info/session.c:4923
+#: info/session.c:4926
 msgid "Regexp I-search: "
 msgstr "增量搜索正则表达式: "
 
-#: info/session.c:4924
+#: info/session.c:4927
 msgid "I-search: "
 msgstr "增量搜索："
 
-#: info/session.c:4949 info/session.c:4952
+#: info/session.c:4952 info/session.c:4955
 msgid "Failing "
 msgstr "失败 "
 
-#: info/session.c:5318
+#: info/session.c:5321
 msgid "Cancel current operation"
 msgstr "取消当前操作"
 
-#: info/session.c:5325
+#: info/session.c:5328
 msgid "Quit"
 msgstr "退出"
 
-#: info/session.c:5330
+#: info/session.c:5333
 #, fuzzy
 msgid "Display version of Info being run"
 msgstr "显示版本信息并退出"
 
-#: info/session.c:5332
+#: info/session.c:5335
 #, fuzzy, c-format
 msgid "GNU Info version %s"
 msgstr "这是 %s，由 makeinfo 版本 %s 从 %s 生成。\n"
 
-#: info/session.c:5337
+#: info/session.c:5340
 msgid "Redraw the display"
 msgstr "重画显示"
 
-#: info/session.c:5374
+#: info/session.c:5377
 msgid "Quit using Info"
 msgstr "退出 Info"
 
-#: info/session.c:5390
+#: info/session.c:5393
 msgid "Run command bound to this key's lowercase variant"
 msgstr "运行到绑定到本按键的小写版本的命令"
 
-#: info/session.c:5401
+#: info/session.c:5404
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "未知的命令 (%s)。"
 
-#: info/session.c:5404
+#: info/session.c:5407
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "“%s”为非法"
 
-#: info/session.c:5405
+#: info/session.c:5408
 #, fuzzy, c-format
 msgid "'%s' is invalid"
 msgstr "“%s”是无效的"
 
-#: info/session.c:5723
+#: info/session.c:5726
 msgid "Add this digit to the current numeric argument"
 msgstr "将本数字添加到当前数值参数中"
 
-#: info/session.c:5730
+#: info/session.c:5733
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "开启(或乘以 4)当前数值参数"
 
@@ -1990,62 +1988,62 @@ msgstr ""
 msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s：即无法读入 (%s) 也无法创建 (%s)\n"
 
-#: install-info/install-info.c:1134 install-info/install-info.c:1174
+#: install-info/install-info.c:1154 install-info/install-info.c:1194
 #, c-format
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY 没有匹配的 END-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:1169
+#: install-info/install-info.c:1189
 #, c-format
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY 没有匹配的 START-INFO-DIR-ENTRY"
 
-#: install-info/install-info.c:2042 install-info/install-info.c:2052
+#: install-info/install-info.c:2064 install-info/install-info.c:2074
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: 已经存在了 dir 文件: %s\n"
 
-#: install-info/install-info.c:2148
+#: install-info/install-info.c:2170
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s：Info 文件只应该指定一次。\n"
 
-#: install-info/install-info.c:2181
+#: install-info/install-info.c:2203
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr "指定了额外的正则表达式，忽略 “%s”"
 
-#: install-info/install-info.c:2193
+#: install-info/install-info.c:2215
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr "正则表达式“%s”中存在错误: %s"
 
-#: install-info/install-info.c:2255
+#: install-info/install-info.c:2277
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "多余的命令行参数“%s”"
 
-#: install-info/install-info.c:2259
+#: install-info/install-info.c:2281
 #, c-format
 msgid "No input file specified; try --help for more information."
 msgstr "没有指定输出文件；试用 --help 以获得更多信息。"
 
-#: install-info/install-info.c:2261
+#: install-info/install-info.c:2283
 #, c-format
 msgid "No dir file specified; try --help for more information."
 msgstr "没有指定目录文件；试用 --help 以获得更多信息。"
 
-#: install-info/install-info.c:2282
+#: install-info/install-info.c:2304
 #, fuzzy, c-format
 msgid "Could not read %s."
 msgstr "无法创建目录“%s”：%s"
 
-#: install-info/install-info.c:2429
+#: install-info/install-info.c:2451
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "“%s”中没有 info 目录条目"
 
-#: install-info/install-info.c:2677
+#: install-info/install-info.c:2699
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "找不到关于“%s”的条目；未删除"
@@ -3591,69 +3589,35 @@ msgstr "关闭输出文件“%s”时出错"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: 无法打开 --css-file: %s"
 
-#: texindex/ti.twjr:373
-#, fuzzy, awk-format
-msgid "%s: unrecognized option `%s'\n"
-msgstr "%s：不能识别的选项“--%s”\n"
-
-#: texindex/ti.twjr:444
-#, fuzzy, awk-format
-msgid "%s is not a Texinfo index file\n"
-msgstr "%s：不是 texinfo 索引文件"
-
-#: texindex/ti.twjr:553
-#, awk-format
-msgid "%s:%d: Bad key %s in record\n"
-msgstr ""
-
-#: texindex/ti.twjr:582
-#, awk-format
-msgid "%s:%d: Bad entry; expected three fields, not %d\n"
-msgstr ""
-
-#: texindex/ti.twjr:741
-#, awk-format
-msgid "%s:%d: Bad entry; expected %s at column %d\n"
-msgstr ""
-
-#: texindex/ti.twjr:1270
-msgid "..."
-msgstr ""
-
-#: texindex/ti.twjr:1289
-#, fuzzy, awk-format
-msgid "Usage: %s [OPTION]... FILE...\n"
-msgstr "用法：%s [选项]... 文件...\n"
-
-#: texindex/ti.twjr:1290
 #, fuzzy
-msgid "Generate a sorted index for each TeX output FILE."
-msgstr "为每个 TeX 输出文件生成排序的索引。\n"
+#~ msgid "%s: unrecognized option `%s'\n"
+#~ msgstr "%s：不能识别的选项“--%s”\n"
 
-#: texindex/ti.twjr:1291
 #, fuzzy
-msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
-msgstr "对于文档“foo.texi”，FILE... 通常为“foo.%c%c”的形式。\n"
+#~ msgid "%s is not a Texinfo index file\n"
+#~ msgstr "%s：不是 texinfo 索引文件"
 
-#: texindex/ti.twjr:1293
 #, fuzzy
-msgid "Options:"
-msgstr ""
-"\n"
-"选项：\n"
+#~ msgid "Usage: %s [OPTION]... FILE...\n"
+#~ msgstr "用法：%s [选项]... 文件...\n"
 
-#: texindex/ti.twjr:1294
 #, fuzzy
-msgid " -h, --help   display this help and exit"
-msgstr "显示该求助信息并退出"
+#~ msgid "Generate a sorted index for each TeX output FILE."
+#~ msgstr "为每个 TeX 输出文件生成排序的索引。\n"
 
-#: texindex/ti.twjr:1295
-msgid " --version    display version information and exit"
-msgstr ""
+#, fuzzy
+#~ msgid "Usually FILE... is specified as `foo.??' for a document `foo.texi'."
+#~ msgstr "对于文档“foo.texi”，FILE... 通常为“foo.%c%c”的形式。\n"
 
-#: texindex/ti.twjr:1296
-msgid " --           end option processing"
-msgstr ""
+#, fuzzy
+#~ msgid "Options:"
+#~ msgstr ""
+#~ "\n"
+#~ "选项：\n"
+
+#, fuzzy
+#~ msgid " -h, --help   display this help and exit"
+#~ msgstr "显示该求助信息并退出"
 
 #~ msgid "--*** Tags out of Date ***"
 #~ msgstr "--*** 标记过期 ***"
