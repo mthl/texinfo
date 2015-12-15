@@ -73,7 +73,8 @@ shallow_destroy_element (ELEMENT *e)
 /* Used for definition line parsing.  Return next unit on the line after
    a definition command like @deffn.  The contents of E is what is remaining
    in the argument line.  *SPACES_OUT is set to an element with spaces before 
-   the line. */
+   the line.  Both of the elements that are output have their `parent' field
+   nulled (because the parent element is eventually destroyed). */
 static ELEMENT *
 next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
 {
@@ -325,8 +326,6 @@ found:
   /* CATEGORY */
   arg = next_bracketed_or_word (arg_line, &spaces);
 
-  /* We need to null the parent because the parent element is
-     eventually destroyed. */
   if (spaces)
     add_to_def_args_extra (def_args, "spaces", spaces);
   add_to_def_args_extra (def_args, "category", arg);
@@ -420,6 +419,7 @@ found:
     }
 
   destroy_element (arg_line);
+  add_to_def_args_extra (def_args, 0, 0);
   return def_args;
 
 #if 0

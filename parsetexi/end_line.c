@@ -1423,6 +1423,8 @@ end_line_misc_line (ELEMENT *current)
 ELEMENT *
 end_line (ELEMENT *current)
 {
+  ELEMENT *current_old = current; /* Used at very end of function */
+
   // 2621
   /* If empty line, start a new paragraph. */
   if (last_contents_child (current)
@@ -1614,17 +1616,20 @@ end_line (ELEMENT *current)
         }
     }
 
-  /* End of a definition line, like @deffn */ // 2778
+  /* End of a definition line, like @deffn */ // 2933
   else if (current->parent && current->parent->type == ET_def_line)
     {
       enum command_id def_command, original_def_command;
       DEF_ARGS_EXTRA *arguments = 0;
+      KEY_PAIR *k;
 
       if (pop_context () != ct_def)
         abort ();
 
-      /* current->parent is a ET_def_line, and current->parent->parent
-         the def command. */
+      k = lookup_extra_key (current->parent, "def_command");
+      if (k)
+        ; // TODO
+
       original_def_command = def_command = current->parent->parent->cmd;
       /* Strip an trailing x from the command, e.g. @deffnx -> @deffn */
       if (command_data(def_command).flags & CF_misc)
@@ -1648,8 +1653,9 @@ end_line (ELEMENT *current)
           add_extra_def_args (current->parent, "def_args", arguments);
 
           /* We use the keys "name" and "class" from the arguments. */
-          for (i = 0; (label = arguments->labels[i]); i++)
+          for (i = 0; i < arguments->nelements; i++)
             {
+              label = arguments->labels[i];
               if (!strcmp (label, "name"))
                 name = arguments->elements[i];
               else if (!strcmp (label, "class"))
@@ -1725,12 +1731,33 @@ end_line (ELEMENT *current)
       current = end_line_misc_line (current);
     }
 
-
-  // something to do with an empty line /* 3419 */
-
-  //if () /* 'line' or 'def' at top of "context stack" */
+  /* 'line' or 'def' at top of "context stack" - this happens when
+     line commands are nested (always incorrectly?) */
+  if (current_context () == ct_line || current_context () == ct_def)
     {
-      /* Recurse. */
+      debug ("Still opened line command");
+      if (current_context () == ct_line)
+        {
+          while (current->parent && current->type != ET_def_line)
+            {
+              current = close_current (current, 0, 0);
+            }
+        }
+      else
+        {
+          while (current->parent
+                 && current->type != ET_block_line_arg
+                 && current->type != ET_misc_line_arg)
+            {
+              current = close_current (current, 0, 0);
+            }
+        }
+
+      /* 2471 Check for infinite loop bugs */
+      if (current == current_old)
+        abort ();
+
+      current = end_line (current);
     }
   return current;
 } /* end_line 3487 */

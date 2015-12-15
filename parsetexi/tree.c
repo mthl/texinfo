@@ -55,6 +55,8 @@ destroy_element (ELEMENT *e)
   free (e->contents.list);
   free (e->args.list);
 
+  /* FIXME destroy extra values as well? */
+
   free (e);
 }
 

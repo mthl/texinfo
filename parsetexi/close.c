@@ -236,7 +236,7 @@ close_command_cleanup (ELEMENT *current)
 }
 
 /* 1642 */
-static ELEMENT *
+ELEMENT *
 close_current (ELEMENT *current,
                enum command_id closed_command,
                enum command_id interrupting_command)

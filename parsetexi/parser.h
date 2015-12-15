@@ -17,6 +17,9 @@ ELEMENT *close_commands (ELEMENT *current, enum command_id closed_command,
 ELEMENT *close_all_style_commands (ELEMENT *current,
                                enum command_id closed_command,
                                enum command_id interrupting_command);
+ELEMENT *close_current (ELEMENT *current,
+                        enum command_id closed_command,
+                        enum command_id interrupting_command);
 
 /* In end_line.c */
 NODE_SPEC_EXTRA *parse_node_manual (ELEMENT *node);

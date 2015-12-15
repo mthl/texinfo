@@ -420,7 +420,6 @@ element_to_perl_hash (ELEMENT *e)
               /* Value is an array of two-element arrays. */
               AV *av, *av2;
               HV *def_parsed_hash;
-              char *label;
               int j;
               DEF_ARGS_EXTRA *d = (DEF_ARGS_EXTRA *) f;
 
@@ -434,9 +433,10 @@ element_to_perl_hash (ELEMENT *e)
                         strlen ("def_parsed_hash"),
                         newRV_inc ((SV *)def_parsed_hash), 0);
 
-              for (j = 0; (label = d->labels[j]); j++)
+              for (j = 0; j < d->nelements; j++)
                 {
                   ELEMENT *elt = d->elements[j];
+                  char *label = d->labels[j];
                   av2 = newAV ();
                   av_push (av, newRV_inc ((SV *)av2));
                   av_push (av2, newSVpv (label, 0));

@@ -420,6 +420,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                   line_error ("must be after @%s to use @%s",
                                command_name(base_command),
                                command_name(cmd));
+                  add_extra_string (misc, "not_after_command", "1");
                 }
             }
         } /* 4571 */
