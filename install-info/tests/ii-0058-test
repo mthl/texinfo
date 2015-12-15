@@ -10,13 +10,12 @@
 . ./defs || exit 1
 
 outputdirfile=`mktemp ii58-XXXXXXXX`
-rm -f $outputdirfile
-touch $outputdirfile
+cp ${testdir}/ii-0058-input-dir-file $outputdirfile
 if [ "x$?" != "x0" ]; then
   exit 1
 fi
 
-${install_info} ${testdir}/ii-0001-input-info-file $outputdirfile
+${install_info} ${testdir}/ii-0058-input-info-file $outputdirfile
 retval=$?
 if [ "x$retval" != "x0" ]; then
   exit $retval

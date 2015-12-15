@@ -1,7 +1,14 @@
 2015-12-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* doc/info.c (get_initial_file): Change "info" to "info-stnd" if 
-	given as first non-option argument.
+	* install-info/tests/ii-0058-test: Work like other tests, for 
+	consistency.
+	* install-info/tests/Makefile.am: List files relating to this 
+	test.
+
+2015-12-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (get_initial_file): Change "info" to "info-stnd" 
+	if given as first non-option argument.
 
 2015-12-15  Gavin Smith  <gavinsmith0123@gmail.com>
 

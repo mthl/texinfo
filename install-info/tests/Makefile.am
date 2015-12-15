@@ -252,4 +252,7 @@ ii-0057-input-dir-file \
 ii-0057-input-info-file \
 ii-0057-expected-dir-file \
 \
+ii-0058-input-dir-file \
+ii-0058-input-info-file \
+ii-0058-expected-dir-file \
 README
