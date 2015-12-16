@@ -1,4 +1,9 @@
-2015-12-15  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-12-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\math): If in math mode, do nothing, so
+	nested @math work.
+
+2015-12-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* install-info/tests/ii-0058-test: Remove test, because empty 
 	dir file is already covered by ii-0018-test and ii-0019-test.
