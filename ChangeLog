@@ -1,5 +1,13 @@
 2015-12-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* install-info/tests/ii-0058-test: Remove test, because empty 
+	dir file is already covered by ii-0018-test and ii-0019-test.
+	* install-info/tests/ii-0018-test,
+	install-info/tests/ii-0019-test: Update to account for fact that 
+	an empty dir file now causes the dir file to be re-created.
+
+2015-12-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* install-info/tests/ii-0058-test: Work like other tests, for 
 	consistency.
 	* install-info/tests/Makefile.am: List files relating to this 
@@ -14,9 +22,8 @@
 
 	* Mention gettext and automake versions in NEWS.
 
-2015-12-15  Gavin Smith  <gavinsmith0123@gmail.com>
+2015-12-15  gettextize <bug-gnu-gettext@gnu.org>
 
-	Run gettextize.
 	* gnulib/m4/gettext.m4: Upgrade to gettext-0.19.6.
 	* configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.19.6.
 
