@@ -1,3 +1,19 @@
+2015-12-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Suppress chapter titles for single-page indices.
+
+	* doc/texinfo.tex (\savemarks, \restoremarks): New \def's, split 
+	out from \begindoublecolumns.
+	(\begindoublecolumns): Use them.
+	(\balancecolumns): Instead of outputting page so far, save it in 
+	a box.
+	(\enddoublecolumns): Use \savemarks inside output routine 
+	followed by \restoremarks outside, before adding the box that 
+	\balancecolumns saved.
+	(\onepageout): Use \topmark to get chapter title on previous 
+	page and \firstmark to get chapter title on current page.
+	(\domark): Comments changed.
+
 2015-12-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\math): If in math mode, do nothing, so
