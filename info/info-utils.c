@@ -1218,8 +1218,6 @@ scan_reference_marker (REFERENCE *entry, int in_parentheses)
     copy_input_to_output (strlen ("\n* "));
   else
     {
-      int previous_word_is_like_see = 0;
-
       /* Only match "*Note" if it is followed by a whitespace character so that 
          it will not be recognized if, e.g., it is surrounded in inverted 
          commas. */

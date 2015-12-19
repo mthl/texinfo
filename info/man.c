@@ -90,7 +90,7 @@ get_manpage_node (char *pagename)
   /* Node wasn't found, or its contents were freed since last time. */
   if (!node->contents)
     {
-      int hlen, plen;
+      int plen;
 
       page = get_manpage_contents (pagename);
       if (!page)

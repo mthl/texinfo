@@ -354,7 +354,6 @@ set_variable_to_value (VARIABLE_ALIST *var, char *value, int where)
   if (var->choices)
     {
       register int j;
-      VARIABLE_ALIST our_var;
 
       /* "highlight-searches=On" is equivalent to
          "match-rendition=standout". */

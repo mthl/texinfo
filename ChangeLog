@@ -1,6 +1,14 @@
 2015-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* (gnulib): Run gnulib --add-import.
+	* info/variables.c (set_variable_to_value),
+	* info/man.c (get_manpage_node),
+	* info/info-utils.c (scan_reference_marker): Remove unused variables.
+	* info/display.c (display_update_node_text): Move variable 
+	declaration to start of block.
+
+2015-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* gnulib: Run gnulib --add-import.
 
 2015-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
