@@ -1,5 +1,9 @@
 2015-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* (gnulib): Run gnulib --add-import.
+
+2015-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\begindoublecolumns): Remove \global 
 	qualifier from an assignment to \vsize.
 	(\enddoublecolumns): Some comments updated to reflect the fact 
