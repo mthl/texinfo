@@ -1,5 +1,12 @@
 2015-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\begindoublecolumns): Remove \global 
+	qualifier from an assignment to \vsize.
+	(\enddoublecolumns): Some comments updated to reflect the fact 
+	that \balancecolumns now saves its output in a box.
+
+2015-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <misc commands>: If command
 	@indent or @noindent is seen, start a new paragraph after the 
 	spaces following the command.
