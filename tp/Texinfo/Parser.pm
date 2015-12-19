@@ -1896,6 +1896,7 @@ sub _merge_text($$$)
     if ($current->{'contents'} and @{$current->{'contents'}}
       and $current->{'contents'}->[-1]->{'type'}
       and ($current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command'
+         or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_after_command'
          or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_before_argument'
          or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_after_close_brace')) {
       $no_merge_with_following_text = 1;
@@ -4796,6 +4797,29 @@ sub _parse_texi($;$)
                 unless ($def_commands{$command});
             }
             $line = _start_empty_line_after_command($line, $current, $misc);
+            if ($command eq 'indent'
+                or $command eq 'noindent') {
+              if ($line !~ /\n/) {
+                my ($new_line, $new_line_nr) =
+                  _new_line($self, $line_nr, undef);
+                $line .= $new_line if (defined($new_line));
+              }
+              $line =~ s/^(\s*)//;
+              if ($1) {
+                $current = _merge_text($self, $current, $1);
+              }
+              if ($line ne ''
+                  and $current->{'contents'}->[-1]->{'type'} eq
+                                                'empty_line_after_command') {
+                $current->{'contents'}->[-1]->{'type'}
+                                              = 'empty_spaces_after_command';
+              }
+              my $paragraph = _begin_paragraph($self, $current, $line_nr);
+              $current = $paragraph if $paragraph;
+              if ($line eq '') {
+                last;
+              }
+            }
           }
           _mark_and_warn_invalid($self, $command, $invalid_parent,
                                  $line_nr, $misc);

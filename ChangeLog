@@ -1,3 +1,19 @@
+2015-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <misc commands>: If command
+	@indent or @noindent is seen, start a new paragraph after the 
+	spaces following the command.
+	(_merge_text): Don't merge text into an 
+	empty_spaces_after_command element.
+	(Problem with starting a paragraph with an @image reported by 
+	Per Bothner.)
+
+	Changes to results of tests:
+	* tp/t/macro.t (unknown_macro_in_line_command): Non-whitespace 
+	text is not adjoined to empty spaces element.
+	* tp/t/xml_tests.t (comments_on_misc_command_line): Comment 
+	after @indent is inside a paragraph.
+
 2015-12-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Suppress chapter titles for single-page indices.
