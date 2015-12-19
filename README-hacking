@@ -157,13 +157,28 @@ Check "make ccheck" and "make vcheck" work in "doc/refcard".
 Check "dist-xz" is in the option list in configure.ac (often removed
 for speed when testing).
 
+- Changes to sources:
+update version in configure.ac, notice in ChangeLog.
+check that texindex version is updated properly
+  (rm ti.texi texindex.awk ; make)
+gnulib-tool --add-import  # for pretest
+util/srclist-txi          # for pretest 
+pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
+make
+make po-check             # update po/POTFILES.in as needed
+make update-po            # both po and po_document needed, build a dist first
+make -C doc wwwdoc-build  # and -install for official (and eventual commit)
+make long-checks          # distcheck does not do this
+(export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
+svn commit                # when clean, then distcheck to be sure
+
 - Official releases only:
 version number in texi2dvi, texi2pdf, txirefcard.tex.
 version and date in NEWS.
 (cd tp && ./maintain/change_perl_modules_version.sh auto)
   -- this updates all the version numbers in the Perl modules
 sync texi2html/test/ results with tp/.
-check that texindex version is updated properly
+
 ensure building standalone modules for CPAN still works.
 make V=1 pdf and fix underfull/overfull boxes.
 
@@ -184,20 +199,6 @@ cvs commit -m$ver $ver
 # copying it again to the cvs dir, then:
 #   cvs admin -kb texinfo.dtd; cvs update -A
 # (See the "How to store binary files" node in the CVS manual.)
-
-
-- Changes to sources:
-update version in configure.ac, notice in ChangeLog.
-gnulib-tool --add-import  # for pretest
-util/srclist-txi          # for pretest 
-pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
-make
-make po-check             # update po/POTFILES.in as needed
-make update-po            # both po and po_document needed, build a dist first
-make -C doc wwwdoc-build  # and -install for official (and eventual commit)
-make long-checks          # distcheck does not do this
-(export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
-svn commit                # when clean, then distcheck to be sure
 
 #  ... make diffs at official release:
 prev=5.2

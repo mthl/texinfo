@@ -1,5 +1,10 @@
 2015-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README-hacking: Move instructions for updating version earlier 
+	in file.  Add instructions for updating texindex version.
+
+2015-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/variables.c (set_variable_to_value),
 	* info/man.c (get_manpage_node),
 	* info/info-utils.c (scan_reference_marker): Remove unused variables.
