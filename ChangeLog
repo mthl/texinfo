@@ -1,5 +1,10 @@
 2015-12-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/Makefile.am (dist-hook): Remove backup files from t/infodir
+	subdirectory.
+
+2015-12-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\begindoublecolumns): If not much space left 
 	on page, start a new page.
 
