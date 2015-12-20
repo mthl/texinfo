@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-15 15:21+0000\n"
+"POT-Creation-Date: 2015-12-19 16:34+0000\n"
 "PO-Revision-Date: 2014-08-11 17:30+0700\n"
 "Last-Translator: Arif E. Nugroho <arif_endro@yahoo.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -2132,7 +2132,7 @@ msgstr "%s: tidak dapat membuka --css-file: %s"
 msgid "error on closing @verbatiminclude file %s: %s"
 msgstr "error menutup berkas keluaran `%s' : %s"
 
-#: tp/Texinfo/Common.pm:1176 tp/Texinfo/Parser.pm:3352
+#: tp/Texinfo/Common.pm:1176 tp/Texinfo/Parser.pm:3353
 #, perl-format
 msgid "@%s: could not find %s"
 msgstr "%s: tidak dapat membuka --css-file: %s"
@@ -2189,7 +2189,7 @@ msgstr ""
 #: tp/Texinfo/Convert/HTML.pm:6989 tp/Texinfo/Convert/IXIN.pm:915
 #: tp/Texinfo/Convert/Info.pm:161 tp/Texinfo/Convert/Info.pm:187
 #: tp/Texinfo/Convert/Info.pm:215 tp/Texinfo/Convert/Info.pm:275
-#: tp/Texinfo/Convert/TexinfoXML.pm:476 tp/Texinfo/Parser.pm:2034
+#: tp/Texinfo/Convert/TexinfoXML.pm:476 tp/Texinfo/Parser.pm:2035
 #, perl-format
 msgid "error on closing %s: %s"
 msgstr "error menutup berkas keluaran `%s': %s"
@@ -2209,7 +2209,7 @@ msgstr "Tidak dapat membuat direktori `%s': %s"
 msgid "@image file `%s' not found, using `%s'"
 msgstr "@image berkas `%s' tidak dapat dibaca: %s"
 
-#: tp/Texinfo/Convert/DocBook.pm:1084 tp/Texinfo/Parser.pm:5364
+#: tp/Texinfo/Convert/DocBook.pm:1084 tp/Texinfo/Parser.pm:5388
 #, fuzzy
 msgid "no argument specified for @U"
 msgstr "Tidak nama titik dispesifikasikan untuk perintah `%c%s'"
@@ -2304,7 +2304,7 @@ msgstr "error on closing renamed node redirection file %s: %s"
 msgid "empty node name"
 msgstr "empty node name"
 
-#: tp/Texinfo/Convert/HTML.pm:7165 tp/Texinfo/Parser.pm:3696
+#: tp/Texinfo/Convert/HTML.pm:7165 tp/Texinfo/Parser.pm:3697
 #, perl-format
 msgid "syntax for an external node used for `%s'"
 msgstr "syntax for an external node used for `%s'"
@@ -2342,7 +2342,7 @@ msgstr "@node name should not contain `,': %s"
 msgid "Index entry in @%s with : produces invalid Info: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1381 tp/Texinfo/Parser.pm:2721
+#: tp/Texinfo/Convert/Plaintext.pm:1381 tp/Texinfo/Parser.pm:2722
 #, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "Masukan untuk indeks `%s' diluar dari titik apapun"
@@ -2427,16 +2427,16 @@ msgstr "bad syntax for @%s argument: %s"
 msgid "bad or empty @%s formal argument: %s"
 msgstr "bad or empty @%s formal argument: %s"
 
-#: tp/Texinfo/Parser.pm:1219 tp/Texinfo/Parser.pm:4832
-#: tp/Texinfo/Parser.pm:4858 tp/Texinfo/Parser.pm:5647
-#: tp/Texinfo/Parser.pm:5663 tp/Texinfo/Parser.pm:5678
+#: tp/Texinfo/Parser.pm:1219 tp/Texinfo/Parser.pm:4856
+#: tp/Texinfo/Parser.pm:4882 tp/Texinfo/Parser.pm:5671
+#: tp/Texinfo/Parser.pm:5687 tp/Texinfo/Parser.pm:5702
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s membutuhkan sebuah nama"
 
-#: tp/Texinfo/Parser.pm:1223 tp/Texinfo/Parser.pm:4835
-#: tp/Texinfo/Parser.pm:4861 tp/Texinfo/Parser.pm:5650
-#: tp/Texinfo/Parser.pm:5666 tp/Texinfo/Parser.pm:5681
+#: tp/Texinfo/Parser.pm:1223 tp/Texinfo/Parser.pm:4859
+#: tp/Texinfo/Parser.pm:4885 tp/Texinfo/Parser.pm:5674
+#: tp/Texinfo/Parser.pm:5690 tp/Texinfo/Parser.pm:5705
 #, perl-format
 msgid "bad name for @%s"
 msgstr "Argumen ke @%s buruk"
@@ -2490,208 +2490,208 @@ msgstr "@%s seen before @end %s"
 msgid "no matching `%cend %s'"
 msgstr "Tidak cocok `%cend %s'"
 
-#: tp/Texinfo/Parser.pm:1776 tp/Texinfo/Parser.pm:5180
-#: tp/Texinfo/Parser.pm:5446
+#: tp/Texinfo/Parser.pm:1776 tp/Texinfo/Parser.pm:5204
+#: tp/Texinfo/Parser.pm:5470
 #, perl-format
 msgid "misplaced %c"
 msgstr "Salah tempat %c"
 
-#: tp/Texinfo/Parser.pm:1874 tp/Texinfo/Parser.pm:3311
+#: tp/Texinfo/Parser.pm:1874 tp/Texinfo/Parser.pm:3312
 #, perl-format
 msgid "unmatched `%c%s'"
 msgstr "Tidak cocok `%c%s'"
 
-#: tp/Texinfo/Parser.pm:2109
+#: tp/Texinfo/Parser.pm:2110
 #, perl-format
 msgid "macro `%s' called with too many args"
 msgstr "Makro `%s' dipanggil di baris dengan terlalu banyak args"
 
-#: tp/Texinfo/Parser.pm:2131
+#: tp/Texinfo/Parser.pm:2132
 #, perl-format
 msgid "@%s missing close brace"
 msgstr "@%s hilang kurung penutup"
 
-#: tp/Texinfo/Parser.pm:2139
+#: tp/Texinfo/Parser.pm:2140
 #, perl-format
 msgid "macro `%s' declared without argument called with an argument"
 msgstr "Makro `%s' dipanggil di baris dengan terlalu banyak args"
 
-#: tp/Texinfo/Parser.pm:2174
+#: tp/Texinfo/Parser.pm:2175
 #, perl-format
 msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
 msgstr ""
 "\\ dalam @%s ekspansi makro diikuti oleh `%s' daripada nama parameter \\"
 
-#: tp/Texinfo/Parser.pm:2649
+#: tp/Texinfo/Parser.pm:2650
 #, perl-format
 msgid "@%s `%s' previously defined"
 msgstr "@%s makro `%s' telah didefinisikan sebelumnya"
 
-#: tp/Texinfo/Parser.pm:2654
+#: tp/Texinfo/Parser.pm:2655
 #, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "disini adalah definisi sebelumnya dari `%s'"
 
-#: tp/Texinfo/Parser.pm:3015
+#: tp/Texinfo/Parser.pm:3016
 #, perl-format
 msgid "missing name for @%s"
 msgstr "hilang nama aksi @%s"
 
-#: tp/Texinfo/Parser.pm:3020
+#: tp/Texinfo/Parser.pm:3021
 #, perl-format
 msgid "missing category for @%s"
 msgstr "missing category for @%s"
 
-#: tp/Texinfo/Parser.pm:3072
+#: tp/Texinfo/Parser.pm:3073
 #, perl-format
 msgid "unexpected argument on @%s line: %s"
 msgstr "Argumen ke @%s: %s buruk"
 
-#: tp/Texinfo/Parser.pm:3088
+#: tp/Texinfo/Parser.pm:3089
 msgid "empty multitable"
 msgstr "berkas kosong"
 
-#: tp/Texinfo/Parser.pm:3144 tp/Texinfo/Parser.pm:5760
+#: tp/Texinfo/Parser.pm:3145 tp/Texinfo/Parser.pm:5784
 #, perl-format
 msgid "superfluous argument to @%s"
 msgstr "Argumen ke @%s buruk"
 
-#: tp/Texinfo/Parser.pm:3150 tp/Texinfo/Parser.pm:5782
-#: tp/Texinfo/Parser.pm:5794
+#: tp/Texinfo/Parser.pm:3151 tp/Texinfo/Parser.pm:5806
+#: tp/Texinfo/Parser.pm:5818
 #, perl-format
 msgid "bad argument to @%s"
 msgstr "Argumen ke @%s buruk"
 
-#: tp/Texinfo/Parser.pm:3161
+#: tp/Texinfo/Parser.pm:3162
 #, perl-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s membutuhkan sebuah argumen: peformat untuk %c item"
 
-#: tp/Texinfo/Parser.pm:3166
+#: tp/Texinfo/Parser.pm:3167
 #, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
 msgstr "command @%s not accepting argument in brace should not be on @%s line"
 
-#: tp/Texinfo/Parser.pm:3201
+#: tp/Texinfo/Parser.pm:3202
 #, perl-format
 msgid "accent command `@%s' not allowed as @%s argument"
 msgstr "%s: opsi `--%s' tidak mengijinkan sebuah argumen"
 
-#: tp/Texinfo/Parser.pm:3289 tp/Texinfo/Parser.pm:3428
-#: tp/Texinfo/Parser.pm:5753
+#: tp/Texinfo/Parser.pm:3290 tp/Texinfo/Parser.pm:3429
+#: tp/Texinfo/Parser.pm:5777
 #, perl-format
 msgid "@%s missing argument"
 msgstr "%s: hilang argumen berkas."
 
-#: tp/Texinfo/Parser.pm:3301
+#: tp/Texinfo/Parser.pm:3302
 #, perl-format
 msgid "unknown @end %s"
 msgstr "Indeks `%s' tidak diketahui"
 
-#: tp/Texinfo/Parser.pm:3323 tp/Texinfo/Parser.pm:3942
+#: tp/Texinfo/Parser.pm:3324 tp/Texinfo/Parser.pm:3943
 #, perl-format
 msgid "superfluous argument to @%s %s: %s"
 msgstr "Argumen ke @%s: %s buruk %s"
 
-#: tp/Texinfo/Parser.pm:3328 tp/Texinfo/Parser.pm:5837
-#: tp/Texinfo/Parser.pm:5882 tp/Texinfo/Parser.pm:5911
-#: tp/Texinfo/Parser.pm:5952 tp/Texinfo/Parser.pm:6031
+#: tp/Texinfo/Parser.pm:3329 tp/Texinfo/Parser.pm:5861
+#: tp/Texinfo/Parser.pm:5906 tp/Texinfo/Parser.pm:5935
+#: tp/Texinfo/Parser.pm:5976 tp/Texinfo/Parser.pm:6055
 #, perl-format
 msgid "bad argument to @%s: %s"
 msgstr "Argumen ke @%s: %s buruk"
 
-#: tp/Texinfo/Parser.pm:3347
+#: tp/Texinfo/Parser.pm:3348
 #, perl-format
 msgid "@%s: could not open %s: %s"
 msgstr "%s: tidak dapat membuka --css-file: %s %s"
 
-#: tp/Texinfo/Parser.pm:3359
+#: tp/Texinfo/Parser.pm:3360
 #, perl-format
 msgid "encoding `%s' is not a canonical texinfo encoding"
 msgstr "encoding `%s' is not a canonical texinfo encoding"
 
-#: tp/Texinfo/Parser.pm:3368
+#: tp/Texinfo/Parser.pm:3369
 #, perl-format
 msgid "unrecognized encoding name `%s'"
 msgstr "nama pengkodean `%s' tidak diketahui"
 
-#: tp/Texinfo/Parser.pm:3515
+#: tp/Texinfo/Parser.pm:3516
 #, perl-format
 msgid "@%s after the first element"
 msgstr "@%s after the first element"
 
-#: tp/Texinfo/Parser.pm:3522
+#: tp/Texinfo/Parser.pm:3523
 #, perl-format
 msgid "@%s only meaningful on a @multitable line"
 msgstr "@%s tidak berarti diluar lingkungan `@titlepage'"
 
-#: tp/Texinfo/Parser.pm:3562
+#: tp/Texinfo/Parser.pm:3563
 #, perl-format
 msgid "@%s should not be associated with @top"
 msgstr "@%s should not be associated with @top"
 
-#: tp/Texinfo/Parser.pm:3574
+#: tp/Texinfo/Parser.pm:3575
 #, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgstr "@node precedes @%s, but parts may not be associated with nodes"
 
-#: tp/Texinfo/Parser.pm:3676
+#: tp/Texinfo/Parser.pm:3677
 #, perl-format
 msgid "empty argument in @%s"
 msgstr "Argumen ke @%s buruk"
 
-#: tp/Texinfo/Parser.pm:3680
+#: tp/Texinfo/Parser.pm:3681
 #, perl-format
 msgid "empty node name after expansion `%s'"
 msgstr "empty node name after expansion `%s'"
 
-#: tp/Texinfo/Parser.pm:3723
+#: tp/Texinfo/Parser.pm:3724
 #, perl-format
 msgid "empty menu entry name in `%s'"
 msgstr "Tidak ada menu dalam titik `%s'."
 
-#: tp/Texinfo/Parser.pm:3731
+#: tp/Texinfo/Parser.pm:3732
 msgid "empty node name in menu entry"
 msgstr "empty node name in menu entry"
 
-#: tp/Texinfo/Parser.pm:3804
+#: tp/Texinfo/Parser.pm:3805
 #, perl-format
 msgid "@%s should not appear in @%s"
 msgstr "%s: tidak dapat membuka --css-file: %s"
 
-#: tp/Texinfo/Parser.pm:3936
+#: tp/Texinfo/Parser.pm:3937
 #, perl-format
 msgid "@end %s should only appear at a line beginning"
 msgstr "@end %s should only appear at a line beginning"
 
-#: tp/Texinfo/Parser.pm:3959
+#: tp/Texinfo/Parser.pm:3960
 #, perl-format
 msgid "macro `%s' previously defined"
 msgstr "makro `%s' telah didefinisikan sebelumnya"
 
-#: tp/Texinfo/Parser.pm:3962
+#: tp/Texinfo/Parser.pm:3963
 #, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "disini adalah definisi sebelumnya dari `%s'"
 
-#: tp/Texinfo/Parser.pm:3967
+#: tp/Texinfo/Parser.pm:3968
 #, perl-format
 msgid "redefining Texinfo language command: @%s"
 msgstr "redefining Texinfo language command: @%s"
 
-#: tp/Texinfo/Parser.pm:4016
+#: tp/Texinfo/Parser.pm:4017
 #, perl-format
 msgid "@%s without associated character"
 msgstr "@%s without associated character"
 
-#: tp/Texinfo/Parser.pm:4086
+#: tp/Texinfo/Parser.pm:4087
 #, perl-format
 msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 
-#: tp/Texinfo/Parser.pm:4110
+#: tp/Texinfo/Parser.pm:4111
 #, perl-format
 msgid ""
 "macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
@@ -2700,341 +2700,341 @@ msgstr ""
 "macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
 "value %d)"
 
-#: tp/Texinfo/Parser.pm:4119
+#: tp/Texinfo/Parser.pm:4120
 #, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr "recursive call of macro %s is not allowed; use @rmacro if needed"
 
-#: tp/Texinfo/Parser.pm:4175
+#: tp/Texinfo/Parser.pm:4176
 #, perl-format
 msgid "accent command `@%s' must not be followed by whitespace"
 msgstr "accent command `@%s' must not be followed by whitespace"
 
-#: tp/Texinfo/Parser.pm:4181
+#: tp/Texinfo/Parser.pm:4182
 #, perl-format
 msgid "use braces to give a command as an argument to @%s"
 msgstr ""
 "Gunakan kurung untuk memberi sebuah perintah sebagai sebuah argumen ke @%s"
 
-#: tp/Texinfo/Parser.pm:4194 tp/Texinfo/Parser.pm:5301
+#: tp/Texinfo/Parser.pm:4195 tp/Texinfo/Parser.pm:5325
 #, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s diduga `i' atau `j' sebagai sebuah argumen, bukan `%s'"
 
-#: tp/Texinfo/Parser.pm:4206
+#: tp/Texinfo/Parser.pm:4207
 #, perl-format
 msgid "accent command `@%s' must not be followed by new line"
 msgstr "accent command `@%s' must not be followed by new line"
 
-#: tp/Texinfo/Parser.pm:4217
+#: tp/Texinfo/Parser.pm:4218
 #, perl-format
 msgid "@%s expected braces"
 msgstr "@%s diduga kurung"
 
-#: tp/Texinfo/Parser.pm:4382
+#: tp/Texinfo/Parser.pm:4383
 #, perl-format
 msgid "undefined flag: %s"
 msgstr "opsi tidak terdefinisi: %s"
 
-#: tp/Texinfo/Parser.pm:4385
+#: tp/Texinfo/Parser.pm:4386
 msgid "bad syntax for @value"
 msgstr "bad syntax for @value"
 
-#: tp/Texinfo/Parser.pm:4392
+#: tp/Texinfo/Parser.pm:4393
 #, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s sudah ditinggalkan"
 
-#: tp/Texinfo/Parser.pm:4395
+#: tp/Texinfo/Parser.pm:4396
 #, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s sudah ditinggalkan %s"
 
-#: tp/Texinfo/Parser.pm:4404
+#: tp/Texinfo/Parser.pm:4405
 #, perl-format
 msgid "@%s should only appear at a line beginning"
 msgstr "@%s should only appear at a line beginning"
 
-#: tp/Texinfo/Parser.pm:4495
+#: tp/Texinfo/Parser.pm:4496
 #, perl-format
 msgid "@%s not allowed inside `@%s' block"
 msgstr "@%s tidak berarti didalam blok `@%s'"
 
-#: tp/Texinfo/Parser.pm:4504
+#: tp/Texinfo/Parser.pm:4505
 #, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr "@%s should only appear in heading or footing"
 
-#: tp/Texinfo/Parser.pm:4630 tp/Texinfo/Parser.pm:4647
-#: tp/Texinfo/Parser.pm:4697
+#: tp/Texinfo/Parser.pm:4631 tp/Texinfo/Parser.pm:4648
+#: tp/Texinfo/Parser.pm:4698
 #, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s tidak berarti didalam blok `@%s'"
 
-#: tp/Texinfo/Parser.pm:4657
+#: tp/Texinfo/Parser.pm:4658
 #, perl-format
 msgid "@%s in empty multitable"
 msgstr "@%s: berkas kosong"
 
-#: tp/Texinfo/Parser.pm:4663
+#: tp/Texinfo/Parser.pm:4664
 msgid "@tab before @item"
 msgstr "@tab before @item"
 
-#: tp/Texinfo/Parser.pm:4666
+#: tp/Texinfo/Parser.pm:4667
 #, perl-format
 msgid "too many columns in multitable item (max %d)"
 msgstr "Terlalu banyak kolom dalam multitable item (maksimal %d)"
 
-#: tp/Texinfo/Parser.pm:4703
+#: tp/Texinfo/Parser.pm:4704
 msgid "ignoring @tab outside of multitable"
 msgstr "mengabaikan @tab diluar dari multitabel"
 
-#: tp/Texinfo/Parser.pm:4707
+#: tp/Texinfo/Parser.pm:4708
 #, perl-format
 msgid "@%s outside of table or list"
 msgstr "@%s outside of table or list"
 
-#: tp/Texinfo/Parser.pm:4744
+#: tp/Texinfo/Parser.pm:4745
 #, perl-format
 msgid "must be after `@%s' to use `@%s'"
 msgstr "Harus berada dalam lingkungan `@%s' untuk menggunakan `@%s'"
 
-#: tp/Texinfo/Parser.pm:4786
+#: tp/Texinfo/Parser.pm:4787
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "@%s tidak berarti diluar lingkunga `@titlepage' dan `@quotation'"
 
-#: tp/Texinfo/Parser.pm:4790
+#: tp/Texinfo/Parser.pm:4791
 msgid "@dircategory after first node"
 msgstr "@dircategory after first node"
 
-#: tp/Texinfo/Parser.pm:4955
+#: tp/Texinfo/Parser.pm:4979
 #, perl-format
 msgid "region %s inside region %s is not allowed"
 msgstr "Catatan %s kaki didalam catatan kaki %s tidak diijinkan"
 
-#: tp/Texinfo/Parser.pm:4973
+#: tp/Texinfo/Parser.pm:4997
 msgid "@direntry after first node"
 msgstr "@direntry after first node"
 
-#: tp/Texinfo/Parser.pm:4981
+#: tp/Texinfo/Parser.pm:5005
 #, perl-format
 msgid "@%s seen before first @node"
 msgstr "@%s terlihat sebelum @node pertama, membuat titik `Top'"
 
-#: tp/Texinfo/Parser.pm:4984
+#: tp/Texinfo/Parser.pm:5008
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr ""
 "mungkin titik @top anda seharusnya wrapped dalam @ifnottex daripada @ifinfo?"
 
-#: tp/Texinfo/Parser.pm:5046
+#: tp/Texinfo/Parser.pm:5070
 #, perl-format
 msgid "@%s should only appear in math context"
 msgstr "@%s should only appear in math context"
 
-#: tp/Texinfo/Parser.pm:5054
+#: tp/Texinfo/Parser.pm:5078
 #, perl-format
 msgid "unknown command `%s'"
 msgstr "Perintah `%s' tidak diketahui"
 
-#: tp/Texinfo/Parser.pm:5064
+#: tp/Texinfo/Parser.pm:5088
 msgid "unexpected @"
 msgstr "Diduga @"
 
-#: tp/Texinfo/Parser.pm:5093
+#: tp/Texinfo/Parser.pm:5117
 #, perl-format
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "@%s tidak berarti diluar lingkungan `@float'"
 
-#: tp/Texinfo/Parser.pm:5098
+#: tp/Texinfo/Parser.pm:5122
 #, perl-format
 msgid "@%s should be right below `@float'"
 msgstr "@%s should be right below `@float'"
 
-#: tp/Texinfo/Parser.pm:5106
+#: tp/Texinfo/Parser.pm:5130
 #, perl-format
 msgid "ignoring multiple @%s"
 msgstr "ignoring multiple @%s"
 
-#: tp/Texinfo/Parser.pm:5225
+#: tp/Texinfo/Parser.pm:5249
 #, perl-format
 msgid "command @%s does not accept arguments"
 msgstr "command @%s does not accept arguments"
 
-#: tp/Texinfo/Parser.pm:5249
+#: tp/Texinfo/Parser.pm:5273
 #, perl-format
 msgid "command @%s missing a node or external manual argument"
 msgstr "command @%s missing a node or external manual argument"
 
-#: tp/Texinfo/Parser.pm:5268
+#: tp/Texinfo/Parser.pm:5292
 #, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
 msgstr "in @%s empty cross reference name after expansion `%s'"
 
-#: tp/Texinfo/Parser.pm:5279
+#: tp/Texinfo/Parser.pm:5303
 #, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
 msgstr "in @%s empty cross reference title after expansion `%s'"
 
-#: tp/Texinfo/Parser.pm:5292
+#: tp/Texinfo/Parser.pm:5316
 msgid "@image missing filename argument"
 msgstr "@image hilang argumen nama berkas"
 
-#: tp/Texinfo/Parser.pm:5324
+#: tp/Texinfo/Parser.pm:5348
 #, perl-format
 msgid "@%s missing first argument"
 msgstr "@%s: hilang argumen berkas."
 
-#: tp/Texinfo/Parser.pm:5369
+#: tp/Texinfo/Parser.pm:5393
 #, fuzzy, perl-format
 msgid "non-hex digits in argument for @U: %s"
 msgstr "Argumen ke @%s: %s buruk"
 
-#: tp/Texinfo/Parser.pm:5375
+#: tp/Texinfo/Parser.pm:5399
 #, fuzzy, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
 msgstr "Argumen ke @%s: %s buruk"
 
-#: tp/Texinfo/Parser.pm:5388
+#: tp/Texinfo/Parser.pm:5412
 #, perl-format
 msgid "argument for @U exceeds size of integer: %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5394
+#: tp/Texinfo/Parser.pm:5418
 #, perl-format
 msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5522
+#: tp/Texinfo/Parser.pm:5546
 msgid "superfluous arguments for node"
 msgstr "superfluous arguments for node"
 
-#: tp/Texinfo/Parser.pm:5572
+#: tp/Texinfo/Parser.pm:5596
 #, perl-format
 msgid "expected @end %s"
 msgstr "Diduga `%s'"
 
-#: tp/Texinfo/Parser.pm:5694
+#: tp/Texinfo/Parser.pm:5718
 #, perl-format
 msgid "@%s should only accept a @-command as argument, not `%s'"
 msgstr ""
 "@%s Gunakan kurung untuk memberi sebuah perintah sebagai sebuah argumen ke @"
 "%s"
 
-#: tp/Texinfo/Parser.pm:5704
+#: tp/Texinfo/Parser.pm:5728
 #, perl-format
 msgid "remaining argument on @%s line: %s"
 msgstr "Argumen ke @%s: %s buruk"
 
-#: tp/Texinfo/Parser.pm:5777
+#: tp/Texinfo/Parser.pm:5801
 #, perl-format
 msgid "environment command %s as argument to @%s"
 msgstr ""
 "Gunakan kurung untuk %s memberi sebuah perintah sebagai sebuah argumen ke @%s"
 
-#: tp/Texinfo/Parser.pm:5799
+#: tp/Texinfo/Parser.pm:5823
 #, perl-format
 msgid "empty @%s"
 msgstr "empty @%s"
 
-#: tp/Texinfo/Parser.pm:5807
+#: tp/Texinfo/Parser.pm:5831
 #, perl-format
 msgid "column fraction not a number: %s"
 msgstr "column fraction not a number: %s"
 
-#: tp/Texinfo/Parser.pm:5816
+#: tp/Texinfo/Parser.pm:5840
 #, perl-format
 msgid "@sp arg must be numeric, not `%s'"
 msgstr "@sp arg harus berupa numerik, bukan `%s'."
 
-#: tp/Texinfo/Parser.pm:5825
+#: tp/Texinfo/Parser.pm:5849
 #, perl-format
 msgid "reserved index name %s"
 msgstr "reserved index name %s"
 
-#: tp/Texinfo/Parser.pm:5844
+#: tp/Texinfo/Parser.pm:5868
 #, perl-format
 msgid "unknown source index in @%s: %s"
 msgstr "Indeks `%s' tidak diketahui %s"
 
-#: tp/Texinfo/Parser.pm:5847
+#: tp/Texinfo/Parser.pm:5871
 #, perl-format
 msgid "unknown destination index in @%s: %s"
 msgstr "unknown destination index in @%s: %s"
 
-#: tp/Texinfo/Parser.pm:5877
+#: tp/Texinfo/Parser.pm:5901
 #, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr "@%s leads to a merging of %s in itself, ignoring"
 
-#: tp/Texinfo/Parser.pm:5890
+#: tp/Texinfo/Parser.pm:5914
 #, perl-format
 msgid "unknown index `%s' in @printindex"
 msgstr "Indeks `%s' tidak diketahui dalam @printindex"
 
-#: tp/Texinfo/Parser.pm:5896
+#: tp/Texinfo/Parser.pm:5920
 #, perl-format
 msgid "printing an index `%s' merged in another one `%s'"
 msgstr "printing an index `%s' merged in another one `%s'"
 
-#: tp/Texinfo/Parser.pm:5904
+#: tp/Texinfo/Parser.pm:5928
 #, perl-format
 msgid "printindex before document beginning: @printindex %s"
 msgstr "printindex before document beginning: @printindex %s"
 
-#: tp/Texinfo/Parser.pm:5920
+#: tp/Texinfo/Parser.pm:5944
 #, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr "@%s arg harus berupa numerik, bukan `%s'"
 
-#: tp/Texinfo/Parser.pm:5928
+#: tp/Texinfo/Parser.pm:5952
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "Hanya @%s 10 atau 11 yang didukung, bukan `%s'"
 
-#: tp/Texinfo/Parser.pm:5936
+#: tp/Texinfo/Parser.pm:5960
 #, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr ""
 "@%s: --footnote-style arg harus berupa `separate' atau `end', bukan `%s'."
 
-#: tp/Texinfo/Parser.pm:5944
+#: tp/Texinfo/Parser.pm:5968
 #, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr "@%s arg harus berupa numerik, bukan `%s'."
 
-#: tp/Texinfo/Parser.pm:5962 tp/Texinfo/Parser.pm:5967
+#: tp/Texinfo/Parser.pm:5986 tp/Texinfo/Parser.pm:5991
 #, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr "--paragraph-indent arg harus berupa numerik/`none'/`asis', bukan `%s'."
 
-#: tp/Texinfo/Parser.pm:5975
+#: tp/Texinfo/Parser.pm:5999
 #, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr "--paragraph-indent arg harus berupa numerik/`none'/`asis', bukan `%s'."
 
-#: tp/Texinfo/Parser.pm:5985
+#: tp/Texinfo/Parser.pm:6009
 #, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr "--paragraph-indent arg harus berupa numerik/`none'/`asis', bukan `%s'."
 
-#: tp/Texinfo/Parser.pm:5997
+#: tp/Texinfo/Parser.pm:6021
 #, perl-format
 msgid "expected @%s on or off, not `%s'"
 msgstr "Diduga @%s on atau off, bukan `%s'"
 
-#: tp/Texinfo/Parser.pm:6007
+#: tp/Texinfo/Parser.pm:6031
 #, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 
-#: tp/Texinfo/Parser.pm:6015
+#: tp/Texinfo/Parser.pm:6039
 #, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr "--footnote-style arg harus berupa `separate' atau `end', bukan `%s'."
 
-#: tp/Texinfo/Parser.pm:6023
+#: tp/Texinfo/Parser.pm:6047
 #, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr "--footnote-style arg harus berupa `separate' atau `end', bukan `%s'."

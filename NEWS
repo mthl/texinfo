@@ -77,7 +77,7 @@ one of the relevant sections:
   . Some Perl modules have been rewritten in C to increase speed.
     Disable at build time with "configure --disable-perl-xs".  The 
     environment variable `TEXINFO_XS' controls how they are used by 
-    makeinfo.  (IN PROGRESS)
+    makeinfo.
   . Quotation marks are left out for node names and index entries in
     Info output where they would have been produced by commands such
     as @file or @option.

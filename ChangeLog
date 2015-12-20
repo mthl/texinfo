@@ -1,5 +1,10 @@
 2015-12-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* pretest 6.0.90.
+	* configure.ac: version.
+
+2015-12-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/Makefile.am (dist-hook): Remove backup files from t/infodir
 	subdirectory.
 

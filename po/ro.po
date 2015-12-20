@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-15 15:21+0000\n"
+"POT-Creation-Date: 2015-12-19 16:34+0000\n"
 "PO-Revision-Date: 2005-05-03 12:00+05\n"
 "Last-Translator: Laurentiu Buzdugan <lbuz@rolix.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -2054,7 +2054,7 @@ msgstr "Nu pot crea directorul `%s': %s"
 msgid "error on closing @verbatiminclude file %s: %s"
 msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 
-#: tp/Texinfo/Common.pm:1176 tp/Texinfo/Parser.pm:3352
+#: tp/Texinfo/Common.pm:1176 tp/Texinfo/Parser.pm:3353
 #, fuzzy, perl-format
 msgid "@%s: could not find %s"
 msgstr "Nu pot gãsi `%s'."
@@ -2112,7 +2112,7 @@ msgstr ""
 #: tp/Texinfo/Convert/HTML.pm:6989 tp/Texinfo/Convert/IXIN.pm:915
 #: tp/Texinfo/Convert/Info.pm:161 tp/Texinfo/Convert/Info.pm:187
 #: tp/Texinfo/Convert/Info.pm:215 tp/Texinfo/Convert/Info.pm:275
-#: tp/Texinfo/Convert/TexinfoXML.pm:476 tp/Texinfo/Parser.pm:2034
+#: tp/Texinfo/Convert/TexinfoXML.pm:476 tp/Texinfo/Parser.pm:2035
 #, fuzzy, perl-format
 msgid "error on closing %s: %s"
 msgstr "eroare la scrierea în `%s'"
@@ -2132,7 +2132,7 @@ msgstr "Nu pot crea directorul `%s': %s"
 msgid "@image file `%s' not found, using `%s'"
 msgstr "Fiºierul @image `%s' nu poate fi citit: %s"
 
-#: tp/Texinfo/Convert/DocBook.pm:1084 tp/Texinfo/Parser.pm:5364
+#: tp/Texinfo/Convert/DocBook.pm:1084 tp/Texinfo/Parser.pm:5388
 #, fuzzy
 msgid "no argument specified for @U"
 msgstr "Nici un nume specificat pentru comanda `%c%s'"
@@ -2229,7 +2229,7 @@ msgstr "eroare la închiderea fiºierului de ieºire `%s'"
 msgid "empty node name"
 msgstr "nici o intrare de index a fost gãsitã pentru `%s'\n"
 
-#: tp/Texinfo/Convert/HTML.pm:7165 tp/Texinfo/Parser.pm:3696
+#: tp/Texinfo/Convert/HTML.pm:7165 tp/Texinfo/Parser.pm:3697
 #, perl-format
 msgid "syntax for an external node used for `%s'"
 msgstr ""
@@ -2269,7 +2269,7 @@ msgstr "%s: nu am putut deschide --css-file: %s"
 msgid "Index entry in @%s with : produces invalid Info: %s"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:1381 tp/Texinfo/Parser.pm:2721
+#: tp/Texinfo/Convert/Plaintext.pm:1381 tp/Texinfo/Parser.pm:2722
 #, fuzzy, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "Intrarea pentru index-ul `%s' în afara oricãrui nod"
@@ -2356,16 +2356,16 @@ msgstr "Argument nepotrivit pentru @%s"
 msgid "bad or empty @%s formal argument: %s"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Parser.pm:1219 tp/Texinfo/Parser.pm:4832
-#: tp/Texinfo/Parser.pm:4858 tp/Texinfo/Parser.pm:5647
-#: tp/Texinfo/Parser.pm:5663 tp/Texinfo/Parser.pm:5678
+#: tp/Texinfo/Parser.pm:1219 tp/Texinfo/Parser.pm:4856
+#: tp/Texinfo/Parser.pm:4882 tp/Texinfo/Parser.pm:5671
+#: tp/Texinfo/Parser.pm:5687 tp/Texinfo/Parser.pm:5702
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s necesitã un nume"
 
-#: tp/Texinfo/Parser.pm:1223 tp/Texinfo/Parser.pm:4835
-#: tp/Texinfo/Parser.pm:4861 tp/Texinfo/Parser.pm:5650
-#: tp/Texinfo/Parser.pm:5666 tp/Texinfo/Parser.pm:5681
+#: tp/Texinfo/Parser.pm:1223 tp/Texinfo/Parser.pm:4859
+#: tp/Texinfo/Parser.pm:4885 tp/Texinfo/Parser.pm:5674
+#: tp/Texinfo/Parser.pm:5690 tp/Texinfo/Parser.pm:5705
 #, fuzzy, perl-format
 msgid "bad name for @%s"
 msgstr "Argument nepotrivit pentru @%s"
@@ -2419,557 +2419,557 @@ msgstr "@menu vãzut înainte de primul @node, creez nodul `Vârf'"
 msgid "no matching `%cend %s'"
 msgstr "Nici o potrivire %cend %s'"
 
-#: tp/Texinfo/Parser.pm:1776 tp/Texinfo/Parser.pm:5180
-#: tp/Texinfo/Parser.pm:5446
+#: tp/Texinfo/Parser.pm:1776 tp/Texinfo/Parser.pm:5204
+#: tp/Texinfo/Parser.pm:5470
 #, fuzzy, perl-format
 msgid "misplaced %c"
 msgstr "%c nelalocul lui"
 
-#: tp/Texinfo/Parser.pm:1874 tp/Texinfo/Parser.pm:3311
+#: tp/Texinfo/Parser.pm:1874 tp/Texinfo/Parser.pm:3312
 #, fuzzy, perl-format
 msgid "unmatched `%c%s'"
 msgstr "`%c%s' fãrã pereche"
 
-#: tp/Texinfo/Parser.pm:2109
+#: tp/Texinfo/Parser.pm:2110
 #, fuzzy, perl-format
 msgid "macro `%s' called with too many args"
 msgstr "Macro `%s' chemat pe linia %d cu prea multe argumente"
 
-#: tp/Texinfo/Parser.pm:2131
+#: tp/Texinfo/Parser.pm:2132
 #, fuzzy, perl-format
 msgid "@%s missing close brace"
 msgstr "%c%s lipseºte paranteza de închidere"
 
-#: tp/Texinfo/Parser.pm:2139
+#: tp/Texinfo/Parser.pm:2140
 #, fuzzy, perl-format
 msgid "macro `%s' declared without argument called with an argument"
 msgstr "Macro `%s' chemat pe linia %d cu prea multe argumente"
 
-#: tp/Texinfo/Parser.pm:2174
+#: tp/Texinfo/Parser.pm:2175
 #, fuzzy, perl-format
 msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
 msgstr "\\ in expansiunea macro urmatã de `%s' în loc de nume parametru"
 
-#: tp/Texinfo/Parser.pm:2649
+#: tp/Texinfo/Parser.pm:2650
 #, fuzzy, perl-format
 msgid "@%s `%s' previously defined"
 msgstr "macro-ul `%s' definit anterior"
 
-#: tp/Texinfo/Parser.pm:2654
+#: tp/Texinfo/Parser.pm:2655
 #, fuzzy, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "aici este definiþia anterioarã a lui `%s'"
 
-#: tp/Texinfo/Parser.pm:3015
+#: tp/Texinfo/Parser.pm:3016
 #, fuzzy, perl-format
 msgid "missing name for @%s"
 msgstr "Lipseºte `}' în @def arg"
 
-#: tp/Texinfo/Parser.pm:3020
+#: tp/Texinfo/Parser.pm:3021
 #, fuzzy, perl-format
 msgid "missing category for @%s"
 msgstr "Lipseºte `}' în @def arg"
 
-#: tp/Texinfo/Parser.pm:3072
+#: tp/Texinfo/Parser.pm:3073
 #, fuzzy, perl-format
 msgid "unexpected argument on @%s line: %s"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Parser.pm:3088
+#: tp/Texinfo/Parser.pm:3089
 #, fuzzy
 msgid "empty multitable"
 msgstr "%s: fiºier gol"
 
-#: tp/Texinfo/Parser.pm:3144 tp/Texinfo/Parser.pm:5760
+#: tp/Texinfo/Parser.pm:3145 tp/Texinfo/Parser.pm:5784
 #, fuzzy, perl-format
 msgid "superfluous argument to @%s"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Parser.pm:3150 tp/Texinfo/Parser.pm:5782
-#: tp/Texinfo/Parser.pm:5794
+#: tp/Texinfo/Parser.pm:3151 tp/Texinfo/Parser.pm:5806
+#: tp/Texinfo/Parser.pm:5818
 #, fuzzy, perl-format
 msgid "bad argument to @%s"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Parser.pm:3161
+#: tp/Texinfo/Parser.pm:3162
 #, perl-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s necesitã un argument: formatatorul pentru %citem"
 
-#: tp/Texinfo/Parser.pm:3166
+#: tp/Texinfo/Parser.pm:3167
 #, fuzzy, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
 msgstr "@item nu este permis în argument la @itemize"
 
-#: tp/Texinfo/Parser.pm:3201
+#: tp/Texinfo/Parser.pm:3202
 #, fuzzy, perl-format
 msgid "accent command `@%s' not allowed as @%s argument"
 msgstr "@item nu este permis în argument la @itemize"
 
-#: tp/Texinfo/Parser.pm:3289 tp/Texinfo/Parser.pm:3428
-#: tp/Texinfo/Parser.pm:5753
+#: tp/Texinfo/Parser.pm:3290 tp/Texinfo/Parser.pm:3429
+#: tp/Texinfo/Parser.pm:5777
 #, fuzzy, perl-format
 msgid "@%s missing argument"
 msgstr "%s: lipseºte fiºierul argument.\n"
 
-#: tp/Texinfo/Parser.pm:3301
+#: tp/Texinfo/Parser.pm:3302
 #, fuzzy, perl-format
 msgid "unknown @end %s"
 msgstr "Index necunoscut `%s'"
 
-#: tp/Texinfo/Parser.pm:3323 tp/Texinfo/Parser.pm:3942
+#: tp/Texinfo/Parser.pm:3324 tp/Texinfo/Parser.pm:3943
 #, fuzzy, perl-format
 msgid "superfluous argument to @%s %s: %s"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Parser.pm:3328 tp/Texinfo/Parser.pm:5837
-#: tp/Texinfo/Parser.pm:5882 tp/Texinfo/Parser.pm:5911
-#: tp/Texinfo/Parser.pm:5952 tp/Texinfo/Parser.pm:6031
+#: tp/Texinfo/Parser.pm:3329 tp/Texinfo/Parser.pm:5861
+#: tp/Texinfo/Parser.pm:5906 tp/Texinfo/Parser.pm:5935
+#: tp/Texinfo/Parser.pm:5976 tp/Texinfo/Parser.pm:6055
 #, fuzzy, perl-format
 msgid "bad argument to @%s: %s"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Parser.pm:3347
+#: tp/Texinfo/Parser.pm:3348
 #, fuzzy, perl-format
 msgid "@%s: could not open %s: %s"
 msgstr "Nu pot gãsi `%s'."
 
-#: tp/Texinfo/Parser.pm:3359
+#: tp/Texinfo/Parser.pm:3360
 #, perl-format
 msgid "encoding `%s' is not a canonical texinfo encoding"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3368
+#: tp/Texinfo/Parser.pm:3369
 #, perl-format
 msgid "unrecognized encoding name `%s'"
 msgstr "nume de codare nerecunoscut `%s'"
 
-#: tp/Texinfo/Parser.pm:3515
+#: tp/Texinfo/Parser.pm:3516
 #, perl-format
 msgid "@%s after the first element"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:3522
+#: tp/Texinfo/Parser.pm:3523
 #, fuzzy, perl-format
 msgid "@%s only meaningful on a @multitable line"
 msgstr "@%s nu are sens în exteriorul mediului `@titlepage'"
 
-#: tp/Texinfo/Parser.pm:3562
+#: tp/Texinfo/Parser.pm:3563
 #, fuzzy, perl-format
 msgid "@%s should not be associated with @top"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Parser.pm:3574
+#: tp/Texinfo/Parser.pm:3575
 #, fuzzy, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Parser.pm:3676
+#: tp/Texinfo/Parser.pm:3677
 #, fuzzy, perl-format
 msgid "empty argument in @%s"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Parser.pm:3680
+#: tp/Texinfo/Parser.pm:3681
 #, fuzzy, perl-format
 msgid "empty node name after expansion `%s'"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Parser.pm:3723
+#: tp/Texinfo/Parser.pm:3724
 #, fuzzy, perl-format
 msgid "empty menu entry name in `%s'"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Parser.pm:3731
+#: tp/Texinfo/Parser.pm:3732
 #, fuzzy
 msgid "empty node name in menu entry"
 msgstr "nici o intrare de index a fost gãsitã pentru `%s'\n"
 
-#: tp/Texinfo/Parser.pm:3804
+#: tp/Texinfo/Parser.pm:3805
 #, fuzzy, perl-format
 msgid "@%s should not appear in @%s"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Parser.pm:3936
+#: tp/Texinfo/Parser.pm:3937
 #, fuzzy, perl-format
 msgid "@end %s should only appear at a line beginning"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Parser.pm:3959
+#: tp/Texinfo/Parser.pm:3960
 #, perl-format
 msgid "macro `%s' previously defined"
 msgstr "macro-ul `%s' definit anterior"
 
-#: tp/Texinfo/Parser.pm:3962
+#: tp/Texinfo/Parser.pm:3963
 #, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "aici este definiþia anterioarã a lui `%s'"
 
-#: tp/Texinfo/Parser.pm:3967
+#: tp/Texinfo/Parser.pm:3968
 #, perl-format
 msgid "redefining Texinfo language command: @%s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4016
+#: tp/Texinfo/Parser.pm:4017
 #, fuzzy, perl-format
 msgid "@%s without associated character"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Parser.pm:4086
+#: tp/Texinfo/Parser.pm:4087
 #, perl-format
 msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4110
+#: tp/Texinfo/Parser.pm:4111
 #, perl-format
 msgid ""
 "macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
 "value %d)"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4119
+#: tp/Texinfo/Parser.pm:4120
 #, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4175
+#: tp/Texinfo/Parser.pm:4176
 #, fuzzy, perl-format
 msgid "accent command `@%s' must not be followed by whitespace"
 msgstr "@item nu este permis în argument la @itemize"
 
-#: tp/Texinfo/Parser.pm:4181
+#: tp/Texinfo/Parser.pm:4182
 #, fuzzy, perl-format
 msgid "use braces to give a command as an argument to @%s"
 msgstr "Folosiþi paranteze pentru a da o comandã ca argument lui @%s"
 
-#: tp/Texinfo/Parser.pm:4194 tp/Texinfo/Parser.pm:5301
+#: tp/Texinfo/Parser.pm:4195 tp/Texinfo/Parser.pm:5325
 #, fuzzy, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s aºteaptã `i' sau `j' ca argument, nu `%c'"
 
-#: tp/Texinfo/Parser.pm:4206
+#: tp/Texinfo/Parser.pm:4207
 #, fuzzy, perl-format
 msgid "accent command `@%s' must not be followed by new line"
 msgstr "@item nu este permis în argument la @itemize"
 
-#: tp/Texinfo/Parser.pm:4217
+#: tp/Texinfo/Parser.pm:4218
 #, fuzzy, perl-format
 msgid "@%s expected braces"
 msgstr "%c%s am aºteptat paranteze"
 
-#: tp/Texinfo/Parser.pm:4382
+#: tp/Texinfo/Parser.pm:4383
 #, perl-format
 msgid "undefined flag: %s"
 msgstr "marcaj nedefinit: %s"
 
-#: tp/Texinfo/Parser.pm:4385
+#: tp/Texinfo/Parser.pm:4386
 #, fuzzy
 msgid "bad syntax for @value"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Parser.pm:4392
+#: tp/Texinfo/Parser.pm:4393
 #, fuzzy, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s este depãsit"
 
-#: tp/Texinfo/Parser.pm:4395
+#: tp/Texinfo/Parser.pm:4396
 #, fuzzy, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s este depãsit"
 
-#: tp/Texinfo/Parser.pm:4404
+#: tp/Texinfo/Parser.pm:4405
 #, fuzzy, perl-format
 msgid "@%s should only appear at a line beginning"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Parser.pm:4495
+#: tp/Texinfo/Parser.pm:4496
 #, fuzzy, perl-format
 msgid "@%s not allowed inside `@%s' block"
 msgstr "@%s nu are sens în interiorul blocului `@%s'"
 
-#: tp/Texinfo/Parser.pm:4504
+#: tp/Texinfo/Parser.pm:4505
 #, fuzzy, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Parser.pm:4630 tp/Texinfo/Parser.pm:4647
-#: tp/Texinfo/Parser.pm:4697
+#: tp/Texinfo/Parser.pm:4631 tp/Texinfo/Parser.pm:4648
+#: tp/Texinfo/Parser.pm:4698
 #, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s nu are sens în interiorul blocului `@%s'"
 
-#: tp/Texinfo/Parser.pm:4657
+#: tp/Texinfo/Parser.pm:4658
 #, fuzzy, perl-format
 msgid "@%s in empty multitable"
 msgstr "%s: fiºier gol"
 
-#: tp/Texinfo/Parser.pm:4663
+#: tp/Texinfo/Parser.pm:4664
 #, fuzzy
 msgid "@tab before @item"
 msgstr "@menu vãzut înainte de primul @node, creez nodul `Vârf'"
 
-#: tp/Texinfo/Parser.pm:4666
+#: tp/Texinfo/Parser.pm:4667
 #, fuzzy, perl-format
 msgid "too many columns in multitable item (max %d)"
 msgstr "Prea multe coloane în articol multitabel (max %d)"
 
-#: tp/Texinfo/Parser.pm:4703
+#: tp/Texinfo/Parser.pm:4704
 msgid "ignoring @tab outside of multitable"
 msgstr "ignor @tab în afara multitabelului"
 
-#: tp/Texinfo/Parser.pm:4707
+#: tp/Texinfo/Parser.pm:4708
 #, fuzzy, perl-format
 msgid "@%s outside of table or list"
 msgstr "(în afara oricãrui nod)"
 
-#: tp/Texinfo/Parser.pm:4744
+#: tp/Texinfo/Parser.pm:4745
 #, fuzzy, perl-format
 msgid "must be after `@%s' to use `@%s'"
 msgstr "Trebuie sã fiþi în mediul `@%s' pentru a folosi `@%s'"
 
-#: tp/Texinfo/Parser.pm:4786
+#: tp/Texinfo/Parser.pm:4787
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "@%s nu are sens în exteriorul mediilor `@titlepage' ºi `@quotation'"
 
-#: tp/Texinfo/Parser.pm:4790
+#: tp/Texinfo/Parser.pm:4791
 #, fuzzy
 msgid "@dircategory after first node"
 msgstr "@menu vãzut înainte de primul @node, creez nodul `Vârf'"
 
-#: tp/Texinfo/Parser.pm:4955
+#: tp/Texinfo/Parser.pm:4979
 #, fuzzy, perl-format
 msgid "region %s inside region %s is not allowed"
 msgstr "Nu sun permise note de subsol în note de subsol"
 
-#: tp/Texinfo/Parser.pm:4973
+#: tp/Texinfo/Parser.pm:4997
 #, fuzzy
 msgid "@direntry after first node"
 msgstr "@menu vãzut înainte de primul @node, creez nodul `Vârf'"
 
-#: tp/Texinfo/Parser.pm:4981
+#: tp/Texinfo/Parser.pm:5005
 #, fuzzy, perl-format
 msgid "@%s seen before first @node"
 msgstr "@menu vãzut înainte de primul @node, creez nodul `Vârf'"
 
-#: tp/Texinfo/Parser.pm:4984
+#: tp/Texinfo/Parser.pm:5008
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr ""
 "probabil cã nodul d-voastrã @top ar trebui împachetat în @ifnottex în loc de "
 "@ifinfo?"
 
-#: tp/Texinfo/Parser.pm:5046
+#: tp/Texinfo/Parser.pm:5070
 #, fuzzy, perl-format
 msgid "@%s should only appear in math context"
 msgstr "%s: nu am putut deschide --css-file: %s"
 
-#: tp/Texinfo/Parser.pm:5054
+#: tp/Texinfo/Parser.pm:5078
 #, fuzzy, perl-format
 msgid "unknown command `%s'"
 msgstr "Comandã necunoscutã `%s'"
 
-#: tp/Texinfo/Parser.pm:5064
+#: tp/Texinfo/Parser.pm:5088
 #, fuzzy
 msgid "unexpected @"
 msgstr "Am aºteptat `%s'"
 
-#: tp/Texinfo/Parser.pm:5093
+#: tp/Texinfo/Parser.pm:5117
 #, fuzzy, perl-format
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "@%s nu are sens în exteriorul mediului `@float'"
 
-#: tp/Texinfo/Parser.pm:5098
+#: tp/Texinfo/Parser.pm:5122
 #, perl-format
 msgid "@%s should be right below `@float'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5106
+#: tp/Texinfo/Parser.pm:5130
 #, fuzzy, perl-format
 msgid "ignoring multiple @%s"
 msgstr "Scriu nod %s..."
 
-#: tp/Texinfo/Parser.pm:5225
+#: tp/Texinfo/Parser.pm:5249
 #, fuzzy, perl-format
 msgid "command @%s does not accept arguments"
 msgstr "@item nu este permis în argument la @itemize"
 
-#: tp/Texinfo/Parser.pm:5249
+#: tp/Texinfo/Parser.pm:5273
 #, fuzzy, perl-format
 msgid "command @%s missing a node or external manual argument"
 msgstr "%s: lipseºte fiºierul argument.\n"
 
-#: tp/Texinfo/Parser.pm:5268
+#: tp/Texinfo/Parser.pm:5292
 #, fuzzy, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Parser.pm:5279
+#: tp/Texinfo/Parser.pm:5303
 #, fuzzy, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Parser.pm:5292
+#: tp/Texinfo/Parser.pm:5316
 msgid "@image missing filename argument"
 msgstr "@image lipseºte fiºierul argument."
 
-#: tp/Texinfo/Parser.pm:5324
+#: tp/Texinfo/Parser.pm:5348
 #, fuzzy, perl-format
 msgid "@%s missing first argument"
 msgstr "%s: lipseºte fiºierul argument.\n"
 
-#: tp/Texinfo/Parser.pm:5369
+#: tp/Texinfo/Parser.pm:5393
 #, fuzzy, perl-format
 msgid "non-hex digits in argument for @U: %s"
 msgstr "@item nu este permis în argument la @itemize"
 
-#: tp/Texinfo/Parser.pm:5375
+#: tp/Texinfo/Parser.pm:5399
 #, fuzzy, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
 msgstr "@item nu este permis în argument la @itemize"
 
-#: tp/Texinfo/Parser.pm:5388
+#: tp/Texinfo/Parser.pm:5412
 #, perl-format
 msgid "argument for @U exceeds size of integer: %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5394
+#: tp/Texinfo/Parser.pm:5418
 #, perl-format
 msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5522
+#: tp/Texinfo/Parser.pm:5546
 #, fuzzy
 msgid "superfluous arguments for node"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Parser.pm:5572
+#: tp/Texinfo/Parser.pm:5596
 #, fuzzy, perl-format
 msgid "expected @end %s"
 msgstr "Am aºteptat `%s'"
 
-#: tp/Texinfo/Parser.pm:5694
+#: tp/Texinfo/Parser.pm:5718
 #, fuzzy, perl-format
 msgid "@%s should only accept a @-command as argument, not `%s'"
 msgstr "Folosiþi paranteze pentru a da o comandã ca argument lui @%s"
 
-#: tp/Texinfo/Parser.pm:5704
+#: tp/Texinfo/Parser.pm:5728
 #, fuzzy, perl-format
 msgid "remaining argument on @%s line: %s"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Parser.pm:5777
+#: tp/Texinfo/Parser.pm:5801
 #, fuzzy, perl-format
 msgid "environment command %s as argument to @%s"
 msgstr "Folosiþi paranteze pentru a da o comandã ca argument lui @%s"
 
-#: tp/Texinfo/Parser.pm:5799
+#: tp/Texinfo/Parser.pm:5823
 #, fuzzy, perl-format
 msgid "empty @%s"
 msgstr "Argument nepotrivit pentru @%s"
 
-#: tp/Texinfo/Parser.pm:5807
+#: tp/Texinfo/Parser.pm:5831
 #, perl-format
 msgid "column fraction not a number: %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5816
+#: tp/Texinfo/Parser.pm:5840
 #, fuzzy, perl-format
 msgid "@sp arg must be numeric, not `%s'"
 msgstr "%s: %s arg trebuie sã fie numeric, nu `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5825
+#: tp/Texinfo/Parser.pm:5849
 #, perl-format
 msgid "reserved index name %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5844
+#: tp/Texinfo/Parser.pm:5868
 #, fuzzy, perl-format
 msgid "unknown source index in @%s: %s"
 msgstr "Index necunoscut `%s'"
 
-#: tp/Texinfo/Parser.pm:5847
+#: tp/Texinfo/Parser.pm:5871
 #, fuzzy, perl-format
 msgid "unknown destination index in @%s: %s"
 msgstr "Index necunoscut `%s'"
 
-#: tp/Texinfo/Parser.pm:5877
+#: tp/Texinfo/Parser.pm:5901
 #, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5890
+#: tp/Texinfo/Parser.pm:5914
 #, fuzzy, perl-format
 msgid "unknown index `%s' in @printindex"
 msgstr "Index necunoscut `%s' în @printindex"
 
-#: tp/Texinfo/Parser.pm:5896
+#: tp/Texinfo/Parser.pm:5920
 #, perl-format
 msgid "printing an index `%s' merged in another one `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5904
+#: tp/Texinfo/Parser.pm:5928
 #, perl-format
 msgid "printindex before document beginning: @printindex %s"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5920
+#: tp/Texinfo/Parser.pm:5944
 #, fuzzy, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr "%s: %s arg trebuie sã fie numeric, nu `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5928
+#: tp/Texinfo/Parser.pm:5952
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:5936
+#: tp/Texinfo/Parser.pm:5960
 #, fuzzy, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr ""
 "%s: --footnote-style arg trebuie sã fie `separate' sau `end', nu `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5944
+#: tp/Texinfo/Parser.pm:5968
 #, fuzzy, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr "%s: %s arg trebuie sã fie numeric, nu `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5962 tp/Texinfo/Parser.pm:5967
+#: tp/Texinfo/Parser.pm:5986 tp/Texinfo/Parser.pm:5991
 #, fuzzy, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr ""
 "%s: --paragraph-indent arg trebuie sã fie numeric/`none'/`asis', nu `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5975
+#: tp/Texinfo/Parser.pm:5999
 #, fuzzy, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr ""
 "%s: --paragraph-indent arg trebuie sã fie numeric/`none'/`asis', nu `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5985
+#: tp/Texinfo/Parser.pm:6009
 #, fuzzy, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr ""
 "%s: --paragraph-indent arg trebuie sã fie numeric/`none'/`asis', nu `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:5997
+#: tp/Texinfo/Parser.pm:6021
 #, perl-format
 msgid "expected @%s on or off, not `%s'"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:6007
+#: tp/Texinfo/Parser.pm:6031
 #, fuzzy, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr ""
 "%s: --footnote-style arg trebuie sã fie `separate' sau `end', nu `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:6015
+#: tp/Texinfo/Parser.pm:6039
 #, fuzzy, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr ""
 "%s: --footnote-style arg trebuie sã fie `separate' sau `end', nu `%s'.\n"
 
-#: tp/Texinfo/Parser.pm:6023
+#: tp/Texinfo/Parser.pm:6047
 #, fuzzy, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr ""

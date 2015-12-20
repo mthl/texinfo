@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo_document 5.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-11-07 15:30+0000\n"
+"POT-Creation-Date: 2015-12-19 16:34+0000\n"
 "PO-Revision-Date: 2013-02-28 21:35+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -101,12 +101,12 @@ msgstr "{float_number}: "
 msgid "{float_number}\n"
 msgstr "{float_number}\n"
 
-#: tp/Texinfo/Parser.pm:2981
+#: tp/Texinfo/Parser.pm:2982
 #, perl-brace-format
 msgid "{name} on {class}"
 msgstr "{name} dla klasy {class}"
 
-#: tp/Texinfo/Parser.pm:2990
+#: tp/Texinfo/Parser.pm:2991
 #, perl-brace-format
 msgid "{name} of {class}"
 msgstr "{name} klasy {class}"
