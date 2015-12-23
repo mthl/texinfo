@@ -1,6 +1,6 @@
 2015-12-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* install-info/tests/defs: Put LC_ALL=C to get error messages in 
+	* install-info/tests/defs.in: Put LC_ALL=C to get messages in 
 	English.  Test failures reported by Norbert Preining.
 
 2015-12-23  Gavin Smith  <gavinsmith0123@gmail.com>

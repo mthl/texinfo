@@ -39,6 +39,9 @@ if test -z "$srcdir"; then
    test $srcdir = $0 && srcdir=.
 fi
 
+# Get messages in English
+LC_ALL=C ; export LC_ALL
+
 # Use first line to run valgrind on the tests.  After "make check",
 # check for errors with "grep ERROR\ SUM *.log".
 #valgrind='valgrind '
