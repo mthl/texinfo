@@ -388,7 +388,7 @@ looking_at_line (char *string, char *pointer)
   int len;
 
   len = strlen (string);
-  if (strncmp (pointer, string, len) != 0)
+  if (strncasecmp (pointer, string, len) != 0)
     return 0;
 
   pointer += len;
