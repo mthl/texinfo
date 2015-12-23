@@ -1,5 +1,13 @@
 2015-12-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Paragraph.pm: Remove empty function from 
+	end of file.  This is intended to fix a problem where an error 
+	message "Can't call mro_method_changed_in() on anonymous symbol 
+	table" would be printed for some versions of Perl.  Error 
+	reported by Nelson Beebe for several systems.
+
+2015-12-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/display.c (display_update_node_text): Move an assignment 
 	to a variable back where it was before, moved on 2015-12-19.  
 	Fixes problem with display reported by Benno Schulenberg.
