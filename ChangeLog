@@ -1,5 +1,10 @@
 2015-12-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* install-info/tests/defs: Put LC_ALL=C to get error messages in 
+	English.  Test failures reported by Norbert Preining.
+
+2015-12-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Paragraph.pm: Remove empty function from 
 	end of file.  This is intended to fix a problem where an error 
 	message "Can't call mro_method_changed_in() on anonymous symbol 
