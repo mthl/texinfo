@@ -1,3 +1,9 @@
+2015-12-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/display.c (display_update_node_text): Move an assignment 
+	to a variable back where it was before, moved on 2015-12-19.  
+	Fixes problem with display reported by Benno Schulenberg.
+
 2015-12-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/texi2any.pl: Remove spurious space at end of #! line.
