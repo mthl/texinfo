@@ -1,5 +1,15 @@
 2015-12-25  Eli Zaretskii  <eliz@gnu.org>
 
+	* info/pcterm.c (blinkvideo, textcolor, textbackground) [_WIN32]:
+	New functions.
+	(pc_begin_blink, pc_default_color, convert_color)
+	(pc_set_fg_color, pc_set_bg_color): New functions, to support
+	capabilities added to terminal.c.
+	(pc_initialize_terminal): Make the xref_attr use the lightcyan
+	color, to be more prominent.
+	(pc_initialize_terminal): Add hooks for the new attributes: bold,
+	blink, and foreground/background colors.
+
 	* info/info-utils.c (copy_converting): When 'iconv' finishes
 	conversion, call it with 2nd and 3rd arguments NULL to make sure
 	it flushes the last converted character to the output buffer.
