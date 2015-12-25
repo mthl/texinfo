@@ -1,3 +1,19 @@
+2015-12-25  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/info-utils.c (copy_converting): When 'iconv' finishes
+	conversion, call it with 2nd and 3rd arguments NULL to make sure
+	it flushes the last converted character to the output buffer.
+	This avoids losing the last character when libiconv conversion is
+	stateful.  Restore the input pointer before calling copy_direct if
+	'iconv' failed to convert a character.
+	(text_buffer_iconv): Use ICONV_CONST to avoid compiler warnings on
+	platforms where the 2nd argument to 'iconv' should have the
+	'const' qualifier.  Use the passed 'iconv_state' argument rather
+	than the global 'iconv_to_output'.
+
+	* info/info-utils.h (text_buffer_iconv): Adjust the prototype to
+	use ICONV_CONST.
+
 2015-12-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/search.c (looking_at_line): Check line case-insensitively 

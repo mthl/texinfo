@@ -123,7 +123,7 @@ size_t text_buffer_vprintf (struct text_buffer *buf, const char *format,
 size_t text_buffer_space_left (struct text_buffer *buf);
 #if HAVE_ICONV
 size_t text_buffer_iconv (struct text_buffer *buf, iconv_t iconv_state,
-                          char **inbuf, size_t *inbytesleft);
+                          ICONV_CONST char **inbuf, size_t *inbytesleft);
 #endif
 size_t text_buffer_add_string (struct text_buffer *buf, const char *str,
 			       size_t len);
