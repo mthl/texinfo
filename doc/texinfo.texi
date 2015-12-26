@@ -10042,7 +10042,6 @@ character.
 Exception: the argument to @code{@@tieaccent} must be enclosed in
 braces (since it is two characters instead of one).
 
-@findex documentencoding
 To get the true accented characters output in Info, not just the ASCII
 transliterations, it is necessary to specify @code{@@documentencoding}
 with an encoding which supports the required characters
@@ -10207,7 +10206,6 @@ Texinfo supports several other quotation marks used in languages other
 than English.  Below is a table with the commands Texinfo provides for
 inserting quotation marks.
 
-@findex documentencoding
 @cindex UTF-8
 @cindex ISO 8859-15
 @cindex Latin 9

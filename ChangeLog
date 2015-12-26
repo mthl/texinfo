@@ -1,5 +1,10 @@
 2015-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Inserting Accents, Inserting Quotation Marks):
+	Remove index entries for 'documentencoding'.
+
+2015-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (copy_converting): When using ASCII 
 	downgrade for unknown sequences, call 'iconv' with 2nd and 3rd 
 	arguments null to flush any converted character before using 
