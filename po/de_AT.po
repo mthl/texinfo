@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 3.12d\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-22 12:32+0000\n"
+"POT-Creation-Date: 2015-12-25 18:15+0000\n"
 "PO-Revision-Date: 1999-02-16 21:14+01:00\n"
 "Last-Translator: Karl Eichwalder <ke@suse.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -377,7 +377,7 @@ msgstr ""
 msgid "No available info files have '%s' in their indices."
 msgstr ""
 
-#: info/info-utils.c:889
+#: info/info-utils.c:893
 #, c-format
 msgid "Error converting file character encoding."
 msgstr ""

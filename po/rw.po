@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-22 12:32+0000\n"
+"POT-Creation-Date: 2015-12-25 18:15+0000\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -430,7 +430,7 @@ msgstr "Ikinjizwa mu mubarendanga...."
 msgid "No available info files have '%s' in their indices."
 msgstr "Bihari Ibisobanuro Idosiye in ibimenyetso"
 
-#: info/info-utils.c:889
+#: info/info-utils.c:893
 #, c-format
 msgid "Error converting file character encoding."
 msgstr ""
