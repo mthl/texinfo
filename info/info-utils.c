@@ -870,9 +870,6 @@ copy_converting (long n)
              and try again. */
           text_buffer_alloc (&output_buf, n);
           continue;
-        case EILSEQ:
-          /* Byte sequence in input buffer not recognized. */
-          break;
         case EINVAL:
           /* Incomplete byte sequence at end of input buffer.  Try to read
              more. */
@@ -891,16 +888,21 @@ copy_converting (long n)
               bytes_left = 0;
             }
           continue;
-        default: /* Unknown error - abort */
+        default: /* Unknown error */
           info_error (_("Error converting file character encoding."));
 
           /* Skip past current input and hope we don't get an
              error next time. */
           inptr += bytes_left;
           return 0;
+        case EILSEQ:
+          /* Byte sequence in input not recognized.  Degrade to ASCII.  */
+          break;
         }
 
-      /* Degrade to ASCII. */
+      /* Flush any waiting input in iconv_to_output and enter the
+         default shift state. */
+      text_buffer_iconv (&output_buf, iconv_to_output, NULL, NULL);
       
       if (file_is_in_utf8)
         {

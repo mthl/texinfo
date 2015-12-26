@@ -1,3 +1,12 @@
+2015-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (copy_converting): When using ASCII 
+	downgrade for unknown sequences, call 'iconv' with 2nd and 3rd 
+	arguments null to flush any converted character before using 
+	another iconv conversion state on the input.  Reorder switch
+	statement to put the only case that falls through to the end 
+	last.
+
 2015-12-25  Eli Zaretskii  <eliz@gnu.org>
 
 	* info/pcterm.c (blinkvideo, textcolor, textbackground) [_WIN32]:
