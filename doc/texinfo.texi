@@ -1524,24 +1524,14 @@ commands listed here.
 
 @noindent
 The header tells @TeX{} which definitions file to
-use, names the file, and carries out other such housekeeping tasks.
+use, names the manual, and carries out other such housekeeping tasks.
 
 @example
 @group
-\input texinfo   @@c -*-texinfo-*-
-@@c %**start of header
+\input texinfo
 @@settitle Sample Manual 1.0
-@@c %**end of header
 @end group
 @end example
-
-If you use Emacs, it is also useful to include mode setting and
-start-of-header and end-of-header lines at the beginning of a Texinfo
-file.  In the first line, @samp{-*-texinfo-*-} causes Emacs to switch 
-into Texinfo mode when you edit the file.
-The @code{@@c ...header} lines above which surround the 
-@code{@@settitle} line allow you to process, within Emacs, just part of 
-the Texinfo source.  (@xref{Start of Header}.)
 
 
 @subheading Summary Description and Copyright
@@ -1710,9 +1700,8 @@ This chapter expands on the minimal complete Texinfo source file
 previously given (@pxref{Short Sample}).
 
 Certain pieces of information must be provided at the beginning of a
-Texinfo file, such as the name for the output file(s), the title of the
-document, and the Top node.  A table of contents is also generally
-produced here.
+Texinfo file, such the title of the document and the Top node.  A table
+of contents is also generally produced here.
 
 @cindex Frontmatter, text in
 Straight text outside of any command before the Top node should be
@@ -1745,10 +1734,8 @@ the most critical.
 @xref{GNU Sample Texts}, for the full texts to be used in GNU manuals.
 
 @example
-\input texinfo   @@c -*-texinfo-*-
-@@c %**start of header
+\input texinfo
 @@settitle @var{name-of-manual} @var{version}
-@@c %**end of header
 
 @@copying
 This manual is for @var{program}, version @var{version}.
@@ -1828,15 +1815,13 @@ Any command that affects document formatting as a whole makes sense to
 include in the header.  @code{@@synindex} (@pxref{@code{@@synindex}}),
 for instance, is another command often included in the header.
 
-Thus, the beginning of a Texinfo file generally looks approximately
+Thus, the beginning of a Texinfo file looks approximately
 like this:
 
 @example
 @group
-\input texinfo   @@c -*-texinfo-*-
-@@c %**start of header
+\input texinfo
 @@settitle Sample Manual 1.0
-@@c %**end of header
 @end group
 @end example
 
@@ -1861,14 +1846,9 @@ Every Texinfo file that is to be the top-level input to @TeX{} must begin
 with a line that looks like this:
 
 @example
-\input texinfo   @@c -*-texinfo-*-
+\input texinfo
 @end example
 
-@noindent
-This line serves two functions:
-
-@enumerate
-@item
 When the file is processed by @TeX{}, the @samp{\input texinfo} command
 tells @TeX{} to load the macros needed for processing a Texinfo file.
 These are in a file called @file{texinfo.tex}, which should have been
@@ -1879,11 +1859,15 @@ file causes the switch from @samp{\} to @samp{@@}; before the switch
 occurs, @TeX{} requires @samp{\}, which is why it appears at the
 beginning of the file.
 
-@item
-When the file is edited in GNU Emacs, the @samp{-*-texinfo-*-} mode
-specification tells Emacs to use Texinfo mode.
-@end enumerate
+You may optionally follow this line with a comment to tell GNU Emacs
+to use Texinfo mode when the file is edited:
 
+@example
+\input texinfo   @@c -*-texinfo-*-
+@end example
+
+@noindent This may be useful when Emacs doesn't detect the file type 
+from the file extension automatically.
 
 @node Start of Header
 @subsection Start of Header
@@ -21371,10 +21355,8 @@ it for a printed manual.
 
 @sp 1
 @example
-\input texinfo   @@c -*-texinfo-*-
-@@c %**start of header
+\input texinfo
 @@settitle Sample Manual 1.0
-@@c %**end of header
 
 @@copying
 This is a short example of a complete Texinfo file.

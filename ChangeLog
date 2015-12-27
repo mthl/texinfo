@@ -1,3 +1,21 @@
+2015-12-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Short Sample): Remove use of "-*-texinfo-*-"
+	and "%** start of header", "%** end of header" from example.
+	Change "names the file" to "names the manual" since @setfilename isn't
+	here any more.
+	(Short Sample Texinfo File): Same changes to complete example 
+	without interleaved commentary.
+	(Sample Beginning): Remove the same parts.
+	(Texinfo File Header): Don't say that "-*-texinfo-*-" is 
+	required.  Delete word "generally".
+	(First Line): Mention optional "-*-texinfo-*-" here, for when 
+	the file type isn't detected from the file extension.
+	(Beginning and Ending a File): Don't say that the name of the 
+	output file has to be specified in a Texinfo file.
+
+	Suggestions from Per Bothner, Eli Zaretskii and Mathieu Lirzin.
+
 2015-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Inserting Accents, Inserting Quotation Marks):
