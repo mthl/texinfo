@@ -6,207 +6,303 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.x\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2007-09-03 05:23-0700\n"
+"POT-Creation-Date: 2015-12-29 17:15+0000\n"
 "PO-Revision-Date: 2006-02-18 16:00+0100\n"
 "Last-Translator: Máté LABÁDI <labadimate@freemail.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11\n"
 
-#: gnulib/lib/error.c:126
+#: gnulib/lib/error.c:191
 msgid "Unknown system error"
 msgstr ""
 
-#: gnulib/lib/getopt.c:531 gnulib/lib/getopt.c:547
-#, c-format
-msgid "%s: option `%s' is ambiguous\n"
+#: gnulib/lib/getopt.c:575 gnulib/lib/getopt.c:604
+#, fuzzy, c-format
+msgid "%s: option '%s' is ambiguous; possibilities:"
 msgstr "%s: „%s“ opció félreérthető\n"
 
-#: gnulib/lib/getopt.c:580 gnulib/lib/getopt.c:584
-#, c-format
-msgid "%s: option `--%s' doesn't allow an argument\n"
+#: gnulib/lib/getopt.c:619
+#, fuzzy, c-format
+msgid "%s: option '%s' is ambiguous\n"
+msgstr "%s: „%s“ opció félreérthető\n"
+
+#: gnulib/lib/getopt.c:654 gnulib/lib/getopt.c:658
+#, fuzzy, c-format
+msgid "%s: option '--%s' doesn't allow an argument\n"
 msgstr "%s: Opció „--%s“ nem fogad argumentumot\n"
 
-#: gnulib/lib/getopt.c:593 gnulib/lib/getopt.c:598
-#, c-format
-msgid "%s: option `%c%s' doesn't allow an argument\n"
+#: gnulib/lib/getopt.c:667 gnulib/lib/getopt.c:672
+#, fuzzy, c-format
+msgid "%s: option '%c%s' doesn't allow an argument\n"
 msgstr "%s: Opció „%c%s“ nem fogad argumentumot\n"
 
-#: gnulib/lib/getopt.c:641 gnulib/lib/getopt.c:660 gnulib/lib/getopt.c:976
-#: gnulib/lib/getopt.c:995
-#, c-format
-msgid "%s: option `%s' requires an argument\n"
+#: gnulib/lib/getopt.c:715 gnulib/lib/getopt.c:734
+#, fuzzy, c-format
+msgid "%s: option '--%s' requires an argument\n"
 msgstr "%s: Option „%s“ argumentumot vár\n"
 
-#: gnulib/lib/getopt.c:698 gnulib/lib/getopt.c:701
-#, c-format
-msgid "%s: unrecognized option `--%s'\n"
+#: gnulib/lib/getopt.c:772 gnulib/lib/getopt.c:775
+#, fuzzy, c-format
+msgid "%s: unrecognized option '--%s'\n"
 msgstr "%s: ismeretlen opció „--%s“\n"
 
-#: gnulib/lib/getopt.c:709 gnulib/lib/getopt.c:712
-#, c-format
-msgid "%s: unrecognized option `%c%s'\n"
+#: gnulib/lib/getopt.c:783 gnulib/lib/getopt.c:786
+#, fuzzy, c-format
+msgid "%s: unrecognized option '%c%s'\n"
 msgstr "%s: ismeretlen opció „%c%s“\n"
 
-#: gnulib/lib/getopt.c:764 gnulib/lib/getopt.c:767
-#, c-format
-msgid "%s: illegal option -- %c\n"
+#: gnulib/lib/getopt.c:835 gnulib/lib/getopt.c:838
+#, fuzzy, c-format
+msgid "%s: invalid option -- '%c'\n"
 msgstr "%s: érvénytelen opció -- %c\n"
 
-#: gnulib/lib/getopt.c:773 gnulib/lib/getopt.c:776
-#, c-format
-msgid "%s: invalid option -- %c\n"
-msgstr "%s: érvénytelen opció -- %c\n"
-
-#: gnulib/lib/getopt.c:828 gnulib/lib/getopt.c:844 gnulib/lib/getopt.c:1048
-#: gnulib/lib/getopt.c:1066
-#, c-format
-msgid "%s: option requires an argument -- %c\n"
+#: gnulib/lib/getopt.c:891 gnulib/lib/getopt.c:908 gnulib/lib/getopt.c:1118
+#: gnulib/lib/getopt.c:1136
+#, fuzzy, c-format
+msgid "%s: option requires an argument -- '%c'\n"
 msgstr "%s: Az opció egy argumentumot vár -- %c\n"
 
-#: gnulib/lib/getopt.c:897 gnulib/lib/getopt.c:913
-#, c-format
-msgid "%s: option `-W %s' is ambiguous\n"
+#: gnulib/lib/getopt.c:964 gnulib/lib/getopt.c:980
+#, fuzzy, c-format
+msgid "%s: option '-W %s' is ambiguous\n"
 msgstr "%s: Option „-W %s“ nem érthető\n"
 
-#: gnulib/lib/getopt.c:937 gnulib/lib/getopt.c:955
-#, c-format
-msgid "%s: option `-W %s' doesn't allow an argument\n"
+#: gnulib/lib/getopt.c:1004 gnulib/lib/getopt.c:1022
+#, fuzzy, c-format
+msgid "%s: option '-W %s' doesn't allow an argument\n"
 msgstr "%s: A  „-W %s“ opció nem vár argumentumot\n"
 
-#: gnulib/lib/xalloc-die.c:35 gnulib/lib/xsetenv.c:39
+#: gnulib/lib/getopt.c:1043 gnulib/lib/getopt.c:1061
+#, fuzzy, c-format
+msgid "%s: option '-W %s' requires an argument\n"
+msgstr "%s: Option „%s“ argumentumot vár\n"
+
+#: gnulib/lib/regcomp.c:135
+msgid "Success"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:138
+msgid "No match"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:141
+msgid "Invalid regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:144
+#, fuzzy
+msgid "Invalid collation character"
+msgstr "érvénytelen kódolt karakter: „%s“"
+
+#: gnulib/lib/regcomp.c:147
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "nem kedvelt karakter %c a @var-ban"
+
+#: gnulib/lib/regcomp.c:150
+msgid "Trailing backslash"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:153
+msgid "Invalid back reference"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:156
+#, fuzzy
+msgid "Unmatched [ or [^"
+msgstr "Pár nélküli }"
+
+#: gnulib/lib/regcomp.c:159
+#, fuzzy
+msgid "Unmatched ( or \\("
+msgstr "Pár nélküli }"
+
+#: gnulib/lib/regcomp.c:162
+#, fuzzy
+msgid "Unmatched \\{"
+msgstr "Pár nélküli }"
+
+#: gnulib/lib/regcomp.c:165
+msgid "Invalid content of \\{\\}"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:168
+msgid "Invalid range end"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:171
+msgid "Memory exhausted"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:174
+msgid "Invalid preceding regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:177
+msgid "Premature end of regular expression"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:180
+msgid "Regular expression too big"
+msgstr ""
+
+#: gnulib/lib/regcomp.c:183
+#, fuzzy
+msgid "Unmatched ) or \\)"
+msgstr "Pár nélküli }"
+
+# keresési feltétel / keresési szöveg / keresett szöveg ? LM
+#: gnulib/lib/regcomp.c:711
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "Nincs korábbi keresési feltétel"
+
+#: gnulib/lib/xalloc-die.c:34
 msgid "memory exhausted"
 msgstr ""
 
-#: info/echo-area.c:283 info/session.c:732
+#: info/echo-area.c:295 info/session.c:1386
 msgid "Move forward a character"
 msgstr "1 karakterrel előre"
 
-#: info/echo-area.c:295 info/session.c:764
+#: info/echo-area.c:314 info/session.c:1399
 msgid "Move backward a character"
 msgstr "1 karakterrel hátra"
 
-#: info/echo-area.c:307
+#: info/echo-area.c:340
 msgid "Move to the start of this line"
 msgstr "Ugrás a sor elejére"
 
-#: info/echo-area.c:312
+#: info/echo-area.c:345
 msgid "Move to the end of this line"
 msgstr "Ugrás a sor végére"
 
-#: info/echo-area.c:320 info/session.c:805
+#: info/echo-area.c:353 info/session.c:1414
 msgid "Move forward a word"
 msgstr "1 szóval előre"
 
-#: info/echo-area.c:360 info/session.c:878
+#: info/echo-area.c:393 info/session.c:1428
 msgid "Move backward a word"
 msgstr "1 szóval hátra"
 
-#: info/echo-area.c:400
+#: info/echo-area.c:433
 msgid "Delete the character under the cursor"
 msgstr "A kurzor alatti karakter törlése"
 
-#: info/echo-area.c:430
+#: info/echo-area.c:453
 msgid "Delete the character behind the cursor"
 msgstr "A kurzor előtti karakter törlése"
 
-#: info/echo-area.c:451
+#: info/echo-area.c:480
 msgid "Cancel or quit operation"
 msgstr "Művelet törlése vagy kilépés"
 
-#: info/echo-area.c:466
+#: info/echo-area.c:495
 msgid "Accept (or force completion of) this line"
 msgstr "E sor elfogadása (vagy kiegészítése)"
 
-#: info/echo-area.c:471
+#: info/echo-area.c:500
 msgid "Insert next character verbatim"
 msgstr "A következő karakter beszúrása"
 
-#: info/echo-area.c:479
-msgid "Insert this character"
-msgstr "E karakter beszúrása"
-
-#: info/echo-area.c:497
+#: info/echo-area.c:532
 msgid "Insert a TAB character"
 msgstr "Egy TAB karakter beszúrása"
 
-#: info/echo-area.c:504
+#: info/echo-area.c:584
 msgid "Transpose characters at point"
 msgstr "Itteni karakterek felcserélése "
 
-#: info/echo-area.c:555
+#: info/echo-area.c:653
 msgid "Yank back the contents of the last kill"
 msgstr "Utolsó törlés tartalmának visszaállítása"
 
 # IMO muss "kill" auch im Folgenden wörtlich üs werden -ke-
-#: info/echo-area.c:562
+#: info/echo-area.c:660
 msgid "Kill ring is empty"
 msgstr "A törlésnapló üres"
 
-#: info/echo-area.c:575
+#: info/echo-area.c:673
 msgid "Yank back a previous kill"
 msgstr "Egy korábbi törlés visszaállítása"
 
-#: info/echo-area.c:608
+#: info/echo-area.c:706
 msgid "Kill to the end of the line"
 msgstr "Törlés a sor végéig"
 
-#: info/echo-area.c:621
+#: info/echo-area.c:719
 msgid "Kill to the beginning of the line"
 msgstr "Törlés a sor elejéig"
 
-#: info/echo-area.c:633
+#: info/echo-area.c:731
 msgid "Kill the word following the cursor"
 msgstr "A kurzort követő szó törlése"
 
-#: info/echo-area.c:652
+#: info/echo-area.c:751
 msgid "Kill the word preceding the cursor"
 msgstr "A kurzort megelőző  szó törlése"
 
-#: info/echo-area.c:867 info/echo-area.c:923
+#: info/echo-area.c:983 info/echo-area.c:1041
 msgid "No completions"
 msgstr "Nincs kiegészítés"
 
-#: info/echo-area.c:869
+#: info/echo-area.c:985
 msgid "Not complete"
 msgstr "Nem teljes"
 
-#: info/echo-area.c:910
+#: info/echo-area.c:1034
 msgid "List possible completions"
 msgstr "Lehetséges kiegészítések listája"
 
-#: info/echo-area.c:927
+#: info/echo-area.c:1045
 msgid "Sole completion"
 msgstr "Egyszerű kiegészítés"
 
-#: info/echo-area.c:936
-msgid "One completion:\n"
-msgstr "1 kiegészítés:\n"
+#: info/echo-area.c:1054
+#, fuzzy, c-format
+msgid "%d completion:\n"
+msgid_plural "%d completions:\n"
+msgstr[0] "%d kiegészítés:\n"
+msgstr[1] "%d kiegészítés:\n"
 
-#: info/echo-area.c:937
-#, c-format
-msgid "%d completions:\n"
-msgstr "%d kiegészítés:\n"
-
-#: info/echo-area.c:1084
+#: info/echo-area.c:1171
 msgid "Insert completion"
 msgstr "Kiegészítés beszúrása"
 
-#: info/echo-area.c:1219
+#: info/echo-area.c:1273
+#, c-format
 msgid "Building completions..."
 msgstr "Kiegészítések felépítése ..."
 
-#: info/echo-area.c:1339
+#: info/echo-area.c:1392
 msgid "Scroll the completions window"
 msgstr "A kiegészítések ablak görgetése "
 
-#: info/footnotes.c:212
+#: info/filesys.c:90
+#, c-format
+msgid "looking for file \"%s\""
+msgstr ""
+
+#: info/filesys.c:152
+#, fuzzy, c-format
+msgid "looking for file %s in %s"
+msgstr "%s fájl („%s“) készítése „%s“-ból.\n"
+
+#: info/filesys.c:238 info/filesys.c:252 info/filesys.c:273
+#, fuzzy, c-format
+msgid "found file %s"
+msgstr "Fájl keresése: "
+
+#: info/footnotes.c:231
+#, c-format
 msgid "Footnotes could not be displayed"
 msgstr "A lábjegyzetek nem jeleníthetők meg"
 
-#: info/footnotes.c:238
+#: info/footnotes.c:251
 msgid "Show the footnotes associated with this node in another window"
 msgstr "E ponthoz tartozó lábjegyzetek megjelenítése egy másik ablakban"
 
@@ -214,92 +310,139 @@ msgstr "E ponthoz tartozó lábjegyzetek megjelenítése egy másik ablakban"
 msgid "---------- Footnotes ----------"
 msgstr "---------- Lábjegyzetek ----------"
 
-#: info/indices.c:171
-msgid "Look up a string in the index for this file"
-msgstr "Szöveg keresése a fájl tárgymutatójában"
-
-#: info/indices.c:198
+#: info/indices.c:123 info/indices.c:812
+#, c-format
 msgid "Finding index entries..."
 msgstr "Tárgymutatóbejegyzések keresése..."
 
-#: info/indices.c:206
+#: info/indices.c:203
+msgid "Look up a string in the index for this file"
+msgstr "Szöveg keresése a fájl tárgymutatójában"
+
+#: info/indices.c:215 info/indices.c:321 info/indices.c:818
+#, c-format
 msgid "No indices found."
 msgstr "Nincs tárgymutató."
 
-#: info/indices.c:216
+#: info/indices.c:219
 msgid "Index entry: "
 msgstr "Tárgymutatóbejegyzés: "
 
-#: info/indices.c:324
-msgid ""
-"Go to the next matching index item from the last `\\[index-search]' command"
-msgstr ""
-"Ugrás az előbbi „\\[index-search]“ paranccsal talált tárgymutató bejegyzéshez"
-
-#: info/indices.c:334
-msgid "No previous index search string."
-msgstr "Nincs korábbi keresési feltétel"
-
-#: info/indices.c:341
-msgid "No index entries."
-msgstr "Nincs tárgymutató."
-
-#: info/indices.c:374
-#, c-format
-msgid "No %sindex entries containing `%s'."
-msgstr "Nincs %stárgymutató-bejegyzés, ami „%s!H-t tartalmazná."
-
-#: info/indices.c:375
-msgid "more "
-msgstr "tovább"
-
-#: info/indices.c:385
-msgid "CAN'T SEE THIS"
-msgstr "EZ NEM LÁTHATÓ"
-
-#: info/indices.c:421
-#, c-format
-msgid "Found `%s' in %s. (`\\[next-index-match]' tries to find next.)"
+#: info/indices.c:436
+#, fuzzy, c-format
+msgid "Found '%s' in %s. ('\\[next-index-match]' tries to find next.)"
 msgstr ""
 "„%s“ szerepel ebben: %s . (következő keresés „\\[next-index-match]“ alapján.)"
 
-#: info/indices.c:540
+#: info/indices.c:446
+#, fuzzy
+msgid ""
+"Go to the next matching index item from the last '\\[index-search]' command"
+msgstr ""
+"Ugrás az előbbi „\\[index-search]“ paranccsal talált tárgymutató bejegyzéshez"
+
+#: info/indices.c:457
 #, c-format
-msgid "Scanning indices of `%s'..."
+msgid "No previous index search string."
+msgstr "Nincs korábbi keresési feltétel"
+
+#: info/indices.c:475
+#, fuzzy, c-format
+msgid "No more index entries containing '%s'."
+msgstr "Nincs %stárgymutató-bejegyzés, ami „%s!H-t tartalmazná."
+
+#: info/indices.c:476 info/indices.c:880
+#, fuzzy, c-format
+msgid "No index entries containing '%s'."
+msgstr "Nincs %stárgymutató-bejegyzés, ami „%s!H-t tartalmazná."
+
+#: info/indices.c:583
+#, fuzzy, c-format
+msgid "Scanning indices of '%s'..."
 msgstr "„%s“ tárgymutatóinak átnézése..."
 
-#: info/indices.c:595
-#, c-format
-msgid "No available info files have `%s' in their indices."
-msgstr "Nincs elérhető fájl, amely tárgymutatója tartalmazná  „%s“-t."
-
-#: info/indices.c:621
+#: info/indices.c:636
 msgid "Grovel all known info file's indices for a string and build a menu"
 msgstr ""
 "Adott sztring keresése minden ismert info fájl tárgymutatójában és menü "
 "építése"
 
-#: info/indices.c:625
-msgid "Index apropos: "
+#: info/indices.c:644 info/indices.c:646
+#, fuzzy
+msgid "Index apropos"
 msgstr "Tárgymutató apropók:"
 
-#: info/indices.c:653
-#, c-format
-msgid ""
-"\n"
-"* Menu: Nodes whose indices contain `%s':\n"
-msgstr ""
-"\n"
-"* Menü: Oldalak, amelyek tárgymutatói tartalmazzák „%s“-t:\n"
+#: info/indices.c:688
+#, fuzzy, c-format
+msgid "Index entries containing '%s':\n"
+msgstr "Nincs %stárgymutató-bejegyzés, ami „%s!H-t tartalmazná."
 
-#: info/info.c:287 info/infokey.c:899
+#: info/indices.c:797
+msgid "List all matches of a string in the index"
+msgstr ""
+
+#: info/indices.c:824 info/indices.c:826
+#, fuzzy
+msgid "Index topic"
+msgstr "Tárgymutató apropók:"
+
+#: info/indices.h:40
+#, fuzzy, c-format
+msgid "No available info files have '%s' in their indices."
+msgstr "Nincs elérhető fájl, amely tárgymutatója tartalmazná  „%s“-t."
+
+#: info/info-utils.c:892
+#, c-format
+msgid "Error converting file character encoding."
+msgstr ""
+
+#: info/info.c:222 info/session.c:2784
+#, fuzzy, c-format
+msgid "No menu item '%s' in node '%s'."
+msgstr "Nincs „%s“ menüelem a(z) „%s“ oldalon."
+
+#: info/info.c:315
+#, fuzzy, c-format
+msgid "No file given for node '%s'."
+msgstr "Nincs menü a(z) „%s“ oldalon."
+
+#: info/info.c:364 info/info.c:1133
+#, fuzzy, c-format
+msgid "Cannot find node '%s'."
+msgstr "A(z) „%s“ oldal nem található."
+
+#: info/info.c:386
+#, c-format
+msgid "No program name given."
+msgstr ""
+
+#: info/info.c:577
+#, c-format
+msgid "invalid number: %s\n"
+msgstr ""
+
+#: info/info.c:757
+#, c-format
+msgid "malformed variable assignment: %s"
+msgstr ""
+
+#: info/info.c:764 info/infokey.c:537
+#, c-format
+msgid "%s: no such variable"
+msgstr ""
+
+#: info/info.c:770 info/infokey.c:539
+#, fuzzy, c-format
+msgid "value %s is not valid for variable %s"
+msgstr "Egy Info változó beállítása"
+
+#: info/info.c:782
 #, c-format
 msgid "Try --help for more information.\n"
 msgstr "A --help több információt ad.\n"
 
-#: info/info.c:306 info/infokey.c:145 makeinfo/makeinfo.c:783
-#: util/install-info.c:1328 util/texindex.c:295
-#, c-format
+#: info/info.c:804 install-info/install-info.c:2239 tp/texi2any.pl:872
+#, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
 "License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
@@ -308,60 +451,97 @@ msgid ""
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
 
-#: info/info.c:511
-#, c-format
-msgid "no index entries found for `%s'\n"
+#: info/info.c:981
+#, fuzzy, c-format
+msgid "no index entries found for '%s'\n"
 msgstr "Nincs tárgymutató ehhez: %s\n"
 
-#: info/info.c:603
-msgid "  -b, --speech-friendly        be friendly to speech synthesizers.\n"
-msgstr ""
-
-#: info/info.c:610
+#: info/info.c:1034
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [MENU-ITEM...]\n"
 "\n"
 "Read documentation in Info format.\n"
-"\n"
+msgstr ""
+
+#: info/info.c:1040
+msgid ""
 "Options:\n"
-"      --apropos=STRING         look up STRING in all indices of all "
+"  -a, --all                    use all matching manuals.\n"
+"  -k, --apropos=STRING         look up STRING in all indices of all "
 "manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
-"      --dribble=FILENAME       remember user keystrokes in FILENAME.\n"
-"  -f, --file=FILENAME          specify Info file to visit.\n"
+"      --dribble=FILE           remember user keystrokes in FILENAME.\n"
+"  -f, --file=MANUAL            specify Info manual to visit."
+msgstr ""
+
+#: info/info.c:1048
+msgid ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=STRING    go to node pointed by index entry STRING.\n"
 "  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
-"  -o, --output=FILENAME        output selected nodes to FILENAME.\n"
+"  -o, --output=FILE            output selected nodes to FILE."
+msgstr ""
+
+#: info/info.c:1054
+msgid ""
 "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 "      --no-raw-escapes         output escapes as literal text.\n"
-"      --restore=FILENAME       read initial keystrokes from FILENAME.\n"
-"  -O, --show-options, --usage  go to command-line options node.\n"
-"%s      --subnodes               recursively output menu items.\n"
-"  -w, --where, --location      print physical location of Info file.\n"
+"      --restore=FILE           read initial keystrokes from FILE.\n"
+"  -O, --show-options, --usage  go to command-line options node."
+msgstr ""
+
+#: info/info.c:1061
+msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
+msgstr ""
+
+#: info/info.c:1065
+msgid ""
+"      --strict-node-location   (for debugging) use Info file pointers as-"
+"is.\n"
+"      --subnodes               recursively output menu items.\n"
+"  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
 "      --version                display version information and exit.\n"
+"  -w, --where, --location      print physical location of Info file.\n"
+"  -x, --debug=NUMBER           set debugging level (-1 for all).\n"
+msgstr ""
+
+#: info/info.c:1074
+msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
-"it is searched for in all `dir' files along INFOPATH.\n"
-"If it is not present, info merges all `dir' files and shows the result.\n"
+"it is searched for in all 'dir' files along INFOPATH.\n"
+"If it is not present, info merges all 'dir' files and shows the result.\n"
 "Any remaining arguments are treated as the names of menu\n"
-"items relative to the initial node visited.\n"
+"items relative to the initial node visited."
+msgstr ""
+
+#: info/info.c:1081
+msgid ""
+"\n"
+"For a summary of key bindings, type H within Info."
+msgstr ""
+
+#: info/info.c:1084
+msgid ""
 "\n"
 "Examples:\n"
 "  info                       show top-level dir menu\n"
+"  info info                  show the general manual for Info readers\n"
+"  info info-stnd             show the manual specific to this Info program\n"
 "  info emacs                 start at emacs node from top-level dir\n"
-"  info emacs buffers         start at buffers node within emacs manual\n"
+"  info emacs buffers         select buffers menu entry in emacs manual\n"
+"  info emacs -n Files        start at Files node within emacs manual\n"
+"  info '(emacs)Files'        alternative way to start at Files node\n"
 "  info --show-options emacs  start at node with emacs' command line options\n"
 "  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
-"  info -f ./foo.info         show file ./foo.info, not searching dir\n"
+"  info -f ./foo.info         show file ./foo.info, not searching dir"
 msgstr ""
 
-#: info/info.c:649 info/infokey.c:918 makeinfo/makeinfo.c:474
-#: util/install-info.c:491 util/texindex.c:259
+#: info/info.c:1099 install-info/install-info.c:616 tp/texi2any.pl:860
+#, fuzzy
 msgid ""
-"\n"
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
@@ -372,77 +552,72 @@ msgstr ""
 "címre küldhetők.\n"
 "Texinfo honlap: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:683
-#, c-format
-msgid "Cannot find node `%s'."
-msgstr "A(z) „%s“ oldal nem található."
-
-#: info/info.c:684
-#, c-format
-msgid "Cannot find node `(%s)%s'."
+#: info/info.c:1134
+#, fuzzy, c-format
+msgid "Cannot find node '(%s)%s'."
 msgstr "A(z) „(%s)%s“ oldal nem található."
 
-#: info/info.c:685
+#: info/info.c:1135
 msgid "Cannot find a window!"
 msgstr "Nem található ablak!"
 
 # ATNEZNI LM
-#: info/info.c:686
+#: info/info.c:1136
 msgid "Point doesn't appear within this window's node!"
 msgstr "A pont nem jelenik meg az ablakon látható oldalon!"
 
-#: info/info.c:687
+#: info/info.c:1137
 msgid "Cannot delete the last window."
 msgstr "Az utolsó ablak nem törölhető!"
 
 # node = csomópont? LM
 # vagy csak pont? sas
-#: info/info.c:688
+#: info/info.c:1138
 msgid "No menu in this node."
 msgstr "Nincs menü ezen az oldalon."
 
 # node = csomópont? LM
 # vagy csak pont? sas
-#: info/info.c:689
+#: info/info.c:1139
 msgid "No footnotes in this node."
 msgstr "Nincs lábjegyezet ezen az oldalon."
 
 # node = csomópont? LM
 # vagy csak pont? sas
-#: info/info.c:690
+#: info/info.c:1140
 msgid "No cross references in this node."
 msgstr "Ez az oldal nem tartalmaz kereszthivatkozást."
 
-#: info/info.c:691
-#, c-format
-msgid "No `%s' pointer for this node."
+#: info/info.c:1141
+#, fuzzy, c-format
+msgid "No '%s' pointer for this node."
 msgstr "Nincs „%s“ utalás ezen az oldalon."
 
-#: info/info.c:692
-#, c-format
-msgid "Unknown Info command `%c'; try `?' for help."
+#: info/info.c:1142
+#, fuzzy, c-format
+msgid "Unknown Info command '%c'; try '?' for help."
 msgstr "Ismeretlen Info parancs: „%c“. A „?“ súg."
 
 # smart = okos vagy smart = modern vagy smart = fejlett ? LM
 # sztem fejlett: sas
-#: info/info.c:693
-#, c-format
-msgid "Terminal type `%s' is not smart enough to run Info."
+#: info/info.c:1143
+#, fuzzy, c-format
+msgid "Terminal type '%s' is not smart enough to run Info."
 msgstr "A „%s“ termináltípus nem elég fejlett az Info futtatásához."
 
 # tegez/magáz? LM
 # talán egy kicsit jobb a magázás itt, de ahogy tetszik, de 1séges legyen - sas
-#: info/info.c:694
+#: info/info.c:1144
 msgid "You are already at the last page of this node."
 msgstr "Ön már az oldal utolsó lapját látja."
 
 # tegez/magáz? LM
 # talán egy kicsit jobb a magázás itt, de ahogy tetszik, de 1séges legyen - sas
-#: info/info.c:695
+#: info/info.c:1145
 msgid "You are already at the first page of this node."
 msgstr "Ön már az oldal legelső lapját látja."
 
-#: info/info.c:696
+#: info/info.c:1146
 msgid "Only one window."
 msgstr "Csak egy ablak."
 
@@ -450,386 +625,205 @@ msgstr "Csak egy ablak."
 # vagy
 # resulting window = létrejövő/keletkező ablak
 # LM
-#: info/info.c:697
+#: info/info.c:1147
 msgid "Resulting window would be too small."
 msgstr "Az eredményablak túl kicsi lenne."
 
 # tegez/magáz LM
 # ha lehet, legjobb elkerülni, például be kell zárni egy ablakot, amúgy itt: talán egy kicsit jobb a magázás, de ahogy tetszik, de 1séges legyen - sas
-#: info/info.c:698
+#: info/info.c:1148
 msgid "Not enough room for a help window, please delete a window."
 msgstr "Nincs elég hely súgóablakhoz, kérem zárjon be egy ablakot!."
 
-#: info/infodoc.c:45 info/infodoc.c:97
-msgid ""
-"Basic Commands in Info Windows\n"
-"******************************\n"
+#: info/infodoc.c:40
+msgid "Basic Info command keys\n"
 msgstr ""
-"Alapparancsok az Info ablakban\n"
-"******************************\n"
 
-#: info/infodoc.c:48
-msgid "\\%-10[quit-help]  Quit this help.\n"
+#: info/infodoc.c:42
+#, fuzzy
+msgid "\\%-10[quit-help]  Close this help window.\n"
 msgstr "\\%-10[quit-help]  Kilépés e súgóból. \n"
 
 # valahogy hangsúlyozni, hogy quit ALTOGETHER? LM
 # úgy érzem nem, de vajh mire utal ez? Arra, hogy: is? - sas
-#: info/infodoc.c:49
+#: info/infodoc.c:43
 msgid "\\%-10[quit]  Quit Info altogether.\n"
 msgstr "\\%-10[quit]  Kilépés az Info-ból.\n"
 
 # tutorial = bevezető ? LM
 # lehet - sas
-#: info/infodoc.c:50
+#: info/infodoc.c:44
 msgid "\\%-10[get-info-help-node]  Invoke the Info tutorial.\n"
 msgstr "\\%-10[get-info-help-node]  Az Info bevezető indítása\n"
 
-# node = csomópont? LM
-# vagy csak pont? sas
-#: info/infodoc.c:52 info/infodoc.c:104
-msgid ""
-"Selecting other nodes:\n"
-"----------------------\n"
-msgstr ""
-"További oldalak kiválasztása:\n"
-"-----------------------------\n"
+# hátra / felfele ? LM
+#: info/infodoc.c:46
+#, fuzzy
+msgid "\\%-10[prev-line]  Move up one line.\n"
+msgstr "\\%-10[prev-line]  Görgetés 1 sorral hátra.\n"
 
-# ATNEZNI LM
-#: info/infodoc.c:54
-msgid "\\%-10[next-node]  Move to the \"next\" node of this node.\n"
-msgstr "\\%-10[next-node]  Ugrás a következő oldalra.\n"
+# előre / lefele ? LM
+# előre - sas
+#: info/infodoc.c:47
+#, fuzzy
+msgid "\\%-10[next-line]  Move down one line.\n"
+msgstr "\\%-10[next-line]  Görgetés 1 sorral előre.\n"
 
-# ATNEZNI LM
-#: info/infodoc.c:55
-msgid "\\%-10[prev-node]  Move to the \"previous\" node of this node.\n"
-msgstr "\\%-10[prev-node]  Ugrás az előző oldalra.\n"
+# hátra / felfele ? LM
+#: info/infodoc.c:48
+#, fuzzy
+msgid "\\%-10[scroll-backward]  Scroll backward one screenful.\n"
+msgstr "\\%-10[scroll-backward]  Görgetés egy oldalt hátra.\n"
 
-# ATNEZNI LM
-#: info/infodoc.c:56
-msgid "\\%-10[up-node]  Move \"up\" from this node.\n"
-msgstr "\\%-10[up-node]  Ugrás a szülőoldalra.\n"
+# előre / lefele ? LM
+#: info/infodoc.c:49
+#, fuzzy
+msgid "\\%-10[scroll-forward]  Scroll forward one screenful.\n"
+msgstr "\\%-10[scroll-forward]  Görgetés egy oldalt előre.\n"
 
-#: info/infodoc.c:57
-msgid ""
-"\\%-10[menu-item]  Pick menu item specified by name.\n"
-"              Picking a menu item causes another node to be selected.\n"
-msgstr ""
+#: info/infodoc.c:50
+msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
+msgstr "\\%-10[beginning-of-node]  Ugrás az oldal elejéhez.\n"
 
-#: info/infodoc.c:59
-msgid ""
-"\\%-10[xref-item]  Follow a cross reference.  Reads name of reference.\n"
-msgstr ""
-"\\%-10[xref-item]  Kereszthivatkozás követése. A hivatkozás nevének "
-"beolvasása.\n"
-
-#: info/infodoc.c:60
-msgid "\\%-10[history-node]  Move to the last node seen in this window.\n"
-msgstr ""
-"\\%-10[history-node]  Ugrás az ebben az ablakban utoljára látott oldalra.\n"
+#: info/infodoc.c:51
+msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
+msgstr "\\%-10[end-of-node]  Ugrás az oldal végéhez.\n"
 
 # Hypertext ? LM
-#: info/infodoc.c:61
+#: info/infodoc.c:53
 #, fuzzy
-msgid "\\%-10[move-to-next-xref]  Skip to next hypertext link [*].\n"
+msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
 msgstr ""
 "\\%-10[move-to-next-xref]  Ugrás az oldalon található következő hypertext "
 "bejegyzésre.\n"
 
-#: info/infodoc.c:62
+#: info/infodoc.c:54
 #, fuzzy
-msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
-msgstr ""
-"\\%-10[move-to-next-xref]  Ugrás az oldalon található előző hypertext "
-"bejegyzésre.\n"
-
-#: info/infodoc.c:63
 msgid ""
-"\\%-10[select-reference-this-line]  Follow the hypertext link under cursor.\n"
+"\\%-10[select-reference-this-line]  Follow the hypertext link under the "
+"cursor.\n"
 msgstr ""
 "\\%-10[select-reference-this-line]  A kurzor alatti hypertext link "
 "követése.\n"
 
-#: info/infodoc.c:64
-msgid ""
-"\\%-10[dir-node]  Move to the `directory' node.  Equivalent to `\\[goto-"
-"node] (DIR)'.\n"
+#: info/infodoc.c:55
+#, fuzzy
+msgid "\\%-10[history-node]  Go back to the last node seen in this window.\n"
 msgstr ""
+"\\%-10[history-node]  Ugrás az ebben az ablakban utoljára látott oldalra.\n"
 
-#: info/infodoc.c:65
-msgid ""
-"\\%-10[top-node]  Move to the Top node.  Equivalent to `\\[goto-node] Top'.\n"
-msgstr ""
+# ATNEZNI LM
+#: info/infodoc.c:57
+#, fuzzy
+msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
+msgstr "\\%-10[prev-node]  Ugrás az előző oldalra.\n"
 
-#: info/infodoc.c:67
-msgid ""
-"[*]    Command acts within this node or the entire document, depending on\n"
-"the value of cursor-movement-scrolls variable\n"
-msgstr ""
+# ATNEZNI LM
+#: info/infodoc.c:58
+#, fuzzy
+msgid "\\%-10[global-next-node]  Go to the next node in the document.\n"
+msgstr "\\%-10[next-node]  Ugrás a következő oldalra.\n"
 
-#: info/infodoc.c:70 info/infodoc.c:118
-msgid ""
-"Moving within a node:\n"
-"---------------------\n"
-msgstr ""
-"Navigáció egy oldalon belül:\n"
-"----------------------------\n"
+# ATNEZNI LM
+#: info/infodoc.c:59
+#, fuzzy
+msgid "\\%-10[prev-node]  Go to the previous node on this level.\n"
+msgstr "\\%-10[prev-node]  Ugrás az előző oldalra.\n"
 
-#: info/infodoc.c:72
-msgid "\\%-10[beginning-of-node]  Go to the beginning of this node.\n"
-msgstr "\\%-10[beginning-of-node]  Ugrás az oldal elejéhez.\n"
+# ATNEZNI LM
+#: info/infodoc.c:60
+#, fuzzy
+msgid "\\%-10[next-node]  Go to the next node on this level.\n"
+msgstr "\\%-10[next-node]  Ugrás a következő oldalra.\n"
 
-#: info/infodoc.c:73
-msgid "\\%-10[end-of-node]  Go to the end of this node.\n"
+# ATNEZNI LM
+#: info/infodoc.c:61
+#, fuzzy
+msgid "\\%-10[up-node]  Go up one level.\n"
+msgstr "\\%-10[up-node]  Ugrás a szülőoldalra.\n"
+
+#: info/infodoc.c:62
+#, fuzzy
+msgid "\\%-10[top-node]  Go to the top node of this document.\n"
 msgstr "\\%-10[end-of-node]  Ugrás az oldal végéhez.\n"
 
-# előre / lefele ? LM
-# előre - sas
-#: info/infodoc.c:74
-msgid "\\%-10[next-line]  Scroll forward 1 line.\n"
-msgstr "\\%-10[next-line]  Görgetés 1 sorral előre.\n"
-
-# hátra / felfele ? LM
-#: info/infodoc.c:75
-msgid "\\%-10[prev-line]  Scroll backward 1 line.\n"
-msgstr "\\%-10[prev-line]  Görgetés 1 sorral hátra.\n"
-
-# előre / lefele ? LM
-#: info/infodoc.c:76
-msgid "\\%-10[scroll-forward]  Scroll forward a page.\n"
-msgstr "\\%-10[scroll-forward]  Görgetés egy oldalt előre.\n"
-
-# hátra / felfele ? LM
-#: info/infodoc.c:77
-msgid "\\%-10[scroll-backward]  Scroll backward a page.\n"
-msgstr "\\%-10[scroll-backward]  Görgetés egy oldalt hátra.\n"
-
-#: info/infodoc.c:79 info/infodoc.c:127
-msgid ""
-"Other commands:\n"
-"---------------\n"
-msgstr ""
-"Egyéb parancsok:\n"
-"----------------\n"
-
-#: info/infodoc.c:81
+#: info/infodoc.c:63
 #, fuzzy
-msgid "1...9       Pick first...ninth item in this node's menu.\n"
+msgid "\\%-10[dir-node]  Go to the main 'directory' node.\n"
+msgstr "\\%-10[end-of-node]  Ugrás az oldal végéhez.\n"
+
+#: info/infodoc.c:65
+#, fuzzy
+msgid "1...9       Pick the first...ninth item in this node's menu.\n"
 msgstr ""
 "  %-10s  Az oldalon található menü első ... kilencedik elemének "
 "kiválasztása.\n"
 
-#: info/infodoc.c:82
+#: info/infodoc.c:66
 #, fuzzy
-msgid "\\%-10[last-menu-item]  Pick last item in this node's menu.\n"
+msgid "\\%-10[last-menu-item]  Pick the last item in this node's menu.\n"
 msgstr ""
 "\\%-10[last-menu-item]  Az oldalhoz tartozó menü utolsó elemének "
 "kiválasztása.\n"
 
-#: info/infodoc.c:83
-msgid ""
-"\\%-10[index-search]  Search for a specified string in the index entries of "
-"this Info\n"
-"              file, and select the node referenced by the first entry "
-"found.\n"
-msgstr ""
-"\\%-10[index-search]  Megadott szöveg keresése a mostani Info fájlban\n"
-"              és az első találat által mutatott oldal kiválasztása.\n"
-
-#: info/infodoc.c:85
-msgid ""
-"\\%-10[goto-node]  Move to node specified by name.\n"
-"              You may include a filename as well, as in (FILENAME)NODENAME.\n"
-msgstr ""
-"\\%-10[goto-node]  Ugrás egy névvel megadott oldalra.\n"
-"              A névben akár egy fájl is szerepelhet, például (FÁJL)"
-"OLDALNEVE.\n"
-
-#: info/infodoc.c:87
-msgid ""
-"\\%-10[search]  Search forward for a specified string\n"
-"              and select the node in which the next occurrence is found.\n"
-msgstr ""
-
-#: info/infodoc.c:89
-msgid ""
-"\\%-10[search-backward]  Search backward for a specified string\n"
-"              and select the node in which the previous occurrence is "
-"found.\n"
-msgstr ""
-
-#: info/infodoc.c:100
-#, c-format
-msgid "  %-10s  Quit this help.\n"
-msgstr "  %-10s  Kilépés a súgóból.\n"
-
-# az altogether le legyen forditva ?
-#: info/infodoc.c:101
-#, c-format
-msgid "  %-10s  Quit Info altogether.\n"
-msgstr "  %-10s  Kilépés az Info-ból.\n"
-
-# tutorial = bemutató?
-#: info/infodoc.c:102
-#, c-format
-msgid "  %-10s  Invoke the Info tutorial.\n"
-msgstr "  %-10s  Az Info bemutató indítása.\n"
-
-#: info/infodoc.c:106
-#, c-format
-msgid "  %-10s  Move to the `next' node of this node.\n"
-msgstr "  %-10s  Ugrás a következő oldalra.\n"
-
-#: info/infodoc.c:107
-#, c-format
-msgid "  %-10s  Move to the `previous' node of this node.\n"
-msgstr "  %-10s  Ugrás az előző oldalra.\n"
-
-#: info/infodoc.c:108
-#, c-format
-msgid "  %-10s  Move `up' from this node.\n"
-msgstr "  %-10s  Ugrás a szülőoldalra.\n"
-
-#: info/infodoc.c:109
-#, c-format
-msgid "  %-10s  Pick menu item specified by name.\n"
+#: info/infodoc.c:67
+#, fuzzy
+msgid "\\%-10[menu-item]  Pick a menu item specified by name.\n"
 msgstr "  %-10s  Menüelem kiválasztása névvel.\n"
 
-# ATNEZNI LM
-# Egy másik oldalt meghívó menüelem kiválasztása? - sas
-#: info/infodoc.c:110
-msgid "              Picking a menu item causes another node to be selected.\n"
+#: info/infodoc.c:68
+#, fuzzy
+msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
 msgstr ""
-"              A menüelem kiválasztása miatt egy másik oldal lesz meghívva.\n"
+"\\%-10[xref-item]  Kereszthivatkozás követése. A hivatkozás nevének "
+"beolvasása.\n"
 
-#: info/infodoc.c:111
-#, c-format
-msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
-msgstr ""
-"  %-10s  Kereszthivatkozás követése. A hivatkozás nevének beolvasása.\n"
-
-#: info/infodoc.c:112
-#, c-format
-msgid "  %-10s  Move to the last node seen in this window.\n"
-msgstr "  %-10s  Ugrás az ablakban látható utolsó oldalra.\n"
-
-# hypertext link = ? LM
-# link = lánc, hivatkozás - sas
-#: info/infodoc.c:113
-#, c-format
-msgid "  %-10s  Skip to next hypertext link within this node.\n"
-msgstr "  %-10s  Ugrás az oldalon található következő hypertext linkre.\n"
-
-#: info/infodoc.c:114
-#, c-format
-msgid "  %-10s  Follow the hypertext link under cursor.\n"
-msgstr "  %-10s  A kurzor alatti hypertext link követése.\n"
-
-#: info/infodoc.c:115
-#, c-format
-msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
-msgstr "  %-10s  Ugrás a „directory“-oldalra. Egyenértékű ezzel: „g (DIR)“.\n"
-
-# top node = legfelső szintű oldal ? LM
-# szint nem kell - sas
-#: info/infodoc.c:116
-#, c-format
-msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
-msgstr "  %-10s  Ugrás a legfelső oldalra. Egyenértékű ezzel: „g Top“.\n"
-
-# előre / felfele / lefele ? LM
-# előre - sas
-#: info/infodoc.c:120
-#, c-format
-msgid "  %-10s  Scroll forward a page.\n"
-msgstr "  %-10s  Görgetés egy oldalt előre.\n"
-
-# hátra / vissza / felfele / lefele ? LM
-# hátra - sas
-#: info/infodoc.c:121
-#, c-format
-msgid "  %-10s  Scroll backward a page.\n"
-msgstr "  %-10s  Görgetés egy oldalt hátra.\n"
-
-#: info/infodoc.c:122
-#, c-format
-msgid "  %-10s  Go to the beginning of this node.\n"
-msgstr "  %-10s  Ugrás az oldal elejére.\n"
-
-#: info/infodoc.c:123
-#, c-format
-msgid "  %-10s  Go to the end of this node.\n"
-msgstr "  %-10s  Ugrás az oldal végére.\n"
-
-# előre / felfele / lefele ? LM
-# előre - sas
-#: info/infodoc.c:124
-#, c-format
-msgid "  %-10s  Scroll forward 1 line.\n"
-msgstr "  %-10s  Görgetés 1 sorral előre.\n"
-
-# hátra / vissza / felfele / lefele ? LM
-# hátra - sas
-#: info/infodoc.c:125
-#, c-format
-msgid "  %-10s  Scroll backward 1 line.\n"
-msgstr "  %-10s  Görgetés 1 sorral hátra.\n"
-
-#: info/infodoc.c:129
-#, c-format
-msgid "  %-10s  Pick first ... ninth item in node's menu.\n"
-msgstr ""
-"  %-10s  Az oldalon található menü első ... kilencedik elemének "
-"kiválasztása.\n"
-
-#: info/infodoc.c:130
-#, c-format
-msgid "  %-10s  Pick last item in node's menu.\n"
-msgstr "  %-10s  Az oldal utolsó menüelemének kiválasztása.\n"
-
-#: info/infodoc.c:133
-#, fuzzy, c-format
-msgid ""
-"  %-10s  Search for a specified string in the index entries of this Info\n"
-"              file, and select the node referenced by the first entry "
-"found.\n"
-msgstr ""
-"\\%-10[index-search]  Megadott szöveg keresése a mostani Info fájlban\n"
-"              és az első találat által mutatott oldal kiválasztása.\n"
-
-#: info/infodoc.c:135
-#, c-format
-msgid "  %-10s  Move to node specified by name.\n"
+#: info/infodoc.c:69
+#, fuzzy
+msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
 msgstr "  %-10s  Ugrás egy névvel megadott oldalra\n"
 
-#: info/infodoc.c:136
-msgid ""
-"              You may include a filename as well, as in (FILENAME)NODENAME.\n"
-msgstr "              Az állománynevet is meg lehet adni: (FÁJL)OLDALNEVE.\n"
+#: info/infodoc.c:71
+#, fuzzy
+msgid "\\%-10[search]  Search forward for a specified string.\n"
+msgstr "  %-10s  Adott szöveg keresése visszafele\n"
 
-#: info/infodoc.c:137
-#, fuzzy, c-format
+#: info/infodoc.c:72
+msgid "\\%-10[search-previous]  Search for previous occurrence.\n"
+msgstr ""
+
+#: info/infodoc.c:73
+msgid "\\%-10[search-next]  Search for next occurrence.\n"
+msgstr ""
+
+#: info/infodoc.c:74
+#, fuzzy
 msgid ""
-"  %-10s  Search forward for a specified string,\n"
-"              and select the node in which the next occurrence is found.\n"
+"\\%-10[index-search]  Search for a specified string in the index, and\n"
+"              select the node referenced by the first entry found.\n"
 msgstr ""
 "\\%-10[index-search]  Megadott szöveg keresése a mostani Info fájlban\n"
 "              és az első találat által mutatott oldal kiválasztása.\n"
 
-#: info/infodoc.c:139
-#, c-format
-msgid "  %-10s  Search backward for a specified string\n"
-msgstr "  %-10s  Adott szöveg keresése visszafele\n"
-
-#: info/infodoc.c:140
-msgid ""
-"              and select the node in which the next occurrence is found.\n"
+#: info/infodoc.c:76
+msgid "\\%-10[virtual-index]  Synthesize menu of matching index entries.\n"
 msgstr ""
 
-#: info/infodoc.c:320
+#: info/infodoc.c:78
+#, fuzzy
+msgid "\\%-10[abort-key]  Cancel the current operation.\n"
+msgstr "Jelen művelet törlése"
+
+#: info/infodoc.c:197
+#, fuzzy, c-format
+msgid "This is GNU Info version %s.  "
+msgstr "Ez itt %s, ami a makeinfo %s verziójával (%s) lett generálva.\n"
+
+#: info/infodoc.c:198
 msgid "The current search path is:\n"
 msgstr "Az aktuális keresési útvonal::\n"
 
-#: info/infodoc.c:324
+#: info/infodoc.c:203
 msgid ""
 "Commands available in Info windows:\n"
 "\n"
@@ -837,13 +831,13 @@ msgstr ""
 "Az Info ablakban elérhető parancsok:\n"
 "\n"
 
-#: info/infodoc.c:328
+#: info/infodoc.c:206
 msgid ""
 "Commands available in the echo area:\n"
 "\n"
 msgstr ""
 
-#: info/infodoc.c:351
+#: info/infodoc.c:226
 #, c-format
 msgid ""
 "The following commands can only be invoked via %s:\n"
@@ -852,7 +846,7 @@ msgstr ""
 "A következő parancsok csak %s -n keresztül hívhatók meg:\n"
 "\n"
 
-#: info/infodoc.c:355
+#: info/infodoc.c:231
 msgid ""
 "The following commands cannot be invoked at all:\n"
 "\n"
@@ -860,287 +854,199 @@ msgstr ""
 "A következő parancsokat egyáltalán nem lehet meghívni:\n"
 "\n"
 
-# tegez/magaz ? LM
-#: info/infodoc.c:379
-msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
-msgstr ""
-"--- A kilépéshez használja a(z) „\\[history-node]“-t vagy a(z)  „\\[kill-"
-"node]“-t ---\n"
-
 # súgó szöveg legyen vagy inkább segítő szöveg ? LM
 # súgó - sas
-#: info/infodoc.c:489
+#: info/infodoc.c:335
 msgid "Display help message"
 msgstr "Súgó szöveg megjelenítése"
 
 # node = oldal ? LM
-#: info/infodoc.c:507
-msgid "Visit Info node `(info)Help'"
+#: info/infodoc.c:348
+#, fuzzy
+msgid "Visit Info node '(info)Help'"
 msgstr "Info oldal „(info)Help“ meglátogatása"
 
 # KEY ? LM
 # utána kell nézni, mire vonatkozik, talán dokumentáció kiírása a kulcsszóhoz - sas
-#: info/infodoc.c:645
+#: info/infodoc.c:452
 msgid "Print documentation for KEY"
 msgstr "Dokumentáció nyomtatása KEY-hez"
 
 # key = kulcs ?
 # key = billentyű / karakter ? LM
-#: info/infodoc.c:657
+#: info/infodoc.c:463
 #, c-format
 msgid "Describe key: %s"
 msgstr "Leíró billentyű: %s"
 
-#: info/infodoc.c:668
-#, c-format
-msgid "ESC %s is undefined."
-msgstr "ESC %s nincs definiálva."
-
-#: info/infodoc.c:684 info/infodoc.c:713
+#: info/infodoc.c:473 info/infodoc.c:509
 #, c-format
 msgid "%s is undefined."
 msgstr "%s nincs definiálva."
 
-#: info/infodoc.c:734
-#, c-format
-msgid "%s is defined to %s."
-msgstr "%s %s-ként van definiálva."
-
 # esetleg egy jobb forditas ide ? LM
-#: info/infodoc.c:1157
+#: info/infodoc.c:871
 msgid "Show what to type to execute a given command"
 msgstr "Egy adott parancs futtatásához szükséges utasítás megjelenítése"
 
-#: info/infodoc.c:1161
+#: info/infodoc.c:875
 msgid "Where is command: "
 msgstr "Hol van a parancs: "
 
 # key = kulcs
 # key = billentyű ? LM
 # sztem itt billentyű - sas
-#: info/infodoc.c:1183
-#, c-format
-msgid "`%s' is not on any keys"
+#: info/infodoc.c:897
+#, fuzzy, c-format
+msgid "'%s' is not on any keys"
 msgstr "„%s“ egy billyentyűn sincs"
 
-#: info/infodoc.c:1190
+#: info/infodoc.c:903
 #, c-format
 msgid "%s can only be invoked via %s."
 msgstr "%s csak %s-n át hívható meg."
 
-#: info/infodoc.c:1194
+#: info/infodoc.c:907
 #, c-format
 msgid "%s can be invoked via %s."
 msgstr "%s meghívható %s-n keresztül."
 
-#: info/infodoc.c:1199
-#, c-format
-msgid "There is no function named `%s'"
+#: info/infodoc.c:912
+#, fuzzy, c-format
+msgid "There is no function named '%s'"
 msgstr "Nincs „%s“ nevű függvény"
 
-# argument = argumentum
-# argument = paraméter ? LM
-#: info/infokey.c:170
-msgid "incorrect number of arguments"
-msgstr "érvénytelen számú argumentum"
-
-#: info/infokey.c:201
-#, c-format
-msgid "cannot open input file `%s'"
+#: info/infomap.c:603
+#, fuzzy, c-format
+msgid "could not open init file %s"
 msgstr "a(z) „%s“ input fájl nem nyitható meg."
-
-#: info/infokey.c:215
-#, c-format
-msgid "cannot create output file `%s'"
-msgstr "a(z) „%s“ output fájl nem hozható létre."
-
-#: info/infokey.c:226
-#, c-format
-msgid "error writing to `%s'"
-msgstr "hiba „%s“ írásakor."
-
-#: info/infokey.c:232
-#, c-format
-msgid "error closing output file `%s'"
-msgstr "hiba a(z) „%s“ output fájl bezárásakor"
 
 # key sequence = billentyűkombináció ? LM
 # valsz inkább egymás után leütendő billentyűsorozoat - sas
-#: info/infokey.c:450
+#: info/infokey.c:229
+#, c-format
 msgid "key sequence too long"
 msgstr "a billentyűkombináció túl hosszú"
 
 # key sequence = billentyűkombináció ? LM
 # lehet, hogy inkább egymás után leütendő billentyűsorozoat - sas
-#: info/infokey.c:529
+#: info/infokey.c:306
+#, c-format
 msgid "missing key sequence"
 msgstr "hiányzó billentyűkombináció "
 
-#: info/infokey.c:610
+#: info/infokey.c:386
+#, c-format
 msgid "NUL character (\\000) not permitted"
 msgstr "A NUL karakter (\\000) tilos"
 
-#: info/infokey.c:641
+#: info/infokey.c:415
 #, c-format
 msgid "NUL character (^%c) not permitted"
 msgstr "A NUL karakter (^%c) tilos"
 
 # action=művelet ? LM
 # általában az - sas
-#: info/infokey.c:665
+#: info/infokey.c:438
+#, c-format
 msgid "missing action name"
 msgstr "hiányzó műveletnév"
 
-# section=szakasz?
-# A mondat eleje nagybetu vagy kisbetu? LM
-# túl hosszú szakad - ez a biztos - sas
-#: info/infokey.c:681 info/infokey.c:756
-msgid "section too long"
-msgstr "túl hosszú szakasz"
+# key sequence = billentyűkombináció ? LM
+# valsz inkább egymás után leütendő billentyűsorozoat - sas
+#: info/infokey.c:450
+#, fuzzy, c-format
+msgid "cannot bind key sequence to menu-digit"
+msgstr "a billentyűkombináció túl hosszú"
 
 # action=művelet ? LM
 # általában az - sas
-#: info/infokey.c:688
+#: info/infokey.c:458
 #, c-format
 msgid "unknown action `%s'"
 msgstr "ismeretlen művelet: „%s“."
 
-#: info/infokey.c:698
+#: info/infokey.c:482
+#, c-format
 msgid "action name too long"
 msgstr "túl hosszú műveletnév"
 
 # action=muvelet? LM
 # általában az - sas
-#: info/infokey.c:712
+#: info/infokey.c:495
 #, c-format
 msgid "extra characters following action `%s'"
 msgstr "`%s' művelet utáni extra karakterek"
 
-#: info/infokey.c:723
+#: info/infokey.c:506
+#, c-format
 msgid "missing variable name"
 msgstr "hiányzó változónév"
 
-#: info/infokey.c:733
+#: info/infokey.c:515
+#, c-format
 msgid "missing `=' immediately after variable name"
 msgstr "hiányzó „=“ jel közvetlen egy változónév után"
 
-#: info/infokey.c:741
+#: info/infokey.c:522
+#, c-format
 msgid "variable name too long"
 msgstr "túl hosszú változónév"
 
 # long = hosszú vagy
 # long = nagy ? LM
 # nagy - kiváló fordítási stílus! - sas
-#: info/infokey.c:765
+#: info/infokey.c:546
+#, c-format
 msgid "value too long"
 msgstr "túl nagy érték"
 
-#: info/infokey.c:890
+#: info/infokey.c:592
 #, c-format
 msgid "\"%s\", line %u: "
 msgstr "„%s“, %u. sor: "
 
-#: info/infokey.c:906
-#, c-format
-msgid ""
-"Usage: %s [OPTION]... [INPUT-FILE]\n"
-"\n"
-"Compile infokey source file to infokey file.  Reads INPUT-FILE (default\n"
-"$HOME/.infokey) and writes compiled key file to (by default) $HOME/.info.\n"
-"\n"
-"Options:\n"
-"  --output FILE        output to FILE instead of $HOME/.info\n"
-"  --help               display this help and exit.\n"
-"  --version            display version information and exit.\n"
-msgstr ""
-
-#: info/infomap.c:1499
-#, c-format
-msgid "Ignoring invalid infokey file `%s' - too small"
-msgstr ""
-
-#: info/infomap.c:1502
-#, c-format
-msgid "Ignoring invalid infokey file `%s' - too big"
-msgstr ""
-
-#: info/infomap.c:1515
-#, c-format
-msgid "Error reading infokey file `%s' - short read"
-msgstr ""
-
-#: info/infomap.c:1534
-#, c-format
-msgid ""
-"Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
-msgstr ""
-
-#: info/infomap.c:1543
-#, c-format
-msgid "Your infokey file `%s' is out of date -- run infokey to update it"
-msgstr ""
-
-#: info/infomap.c:1559
-#, c-format
-msgid ""
-"Invalid infokey file `%s' (bad section length) -- run infokey to update it"
-msgstr ""
-
-#: info/infomap.c:1580
-#, c-format
-msgid ""
-"Invalid infokey file `%s' (bad section code) -- run infokey to update it"
-msgstr ""
-
-#: info/infomap.c:1715
-msgid "Bad data in infokey file -- some key bindings ignored"
-msgstr ""
-
-#: info/infomap.c:1765
-msgid "Bad data in infokey file -- some var settings ignored"
-msgstr ""
-
-#: info/m-x.c:68
+#: info/m-x.c:66
 msgid "Read the name of an Info command and describe it"
 msgstr ""
 
-#: info/m-x.c:72
+#: info/m-x.c:70
 msgid "Describe command: "
 msgstr "Parancs leírása: "
 
 # FORDITANI
-#: info/m-x.c:95
+#: info/m-x.c:93
 msgid "Read a command name in the echo area and execute it"
 msgstr ""
 
-# FORDITANI
-#: info/m-x.c:139
-msgid "Cannot execute an `echo-area' command here."
+#: info/m-x.c:136
+#, c-format
+msgid "Cannot execute an 'echo-area' command here."
 msgstr ""
 
-#: info/m-x.c:153
+#: info/m-x.c:149
 #, c-format
 msgid "Undefined command: %s"
 msgstr "Definiálatlan parancs: %s"
 
-#: info/m-x.c:159
+#: info/m-x.c:155
 msgid "Set the height of the displayed window"
 msgstr "A megjelnített ablak magasságának beállítása"
 
-#: info/m-x.c:172
+#: info/m-x.c:168
 #, c-format
 msgid "Set screen height to (%d): "
 msgstr "A képernyő magasságának beállítása (%d): "
 
 # FORDITANI
-#: info/makedoc.c:163 info/makedoc.c:171
+#: info/makedoc.c:141
 #, c-format
 msgid ""
 "   Source files groveled to make this file include:\n"
 "\n"
 msgstr ""
 
-#: info/makedoc.c:551
+#: info/makedoc.c:466
 #, c-format
 msgid "Couldn't manipulate the file %s.\n"
 msgstr "A(z) „%s“ fájl nem módosítható.\n"
@@ -1148,10 +1054,14 @@ msgstr "A(z) „%s“ fájl nem módosítható.\n"
 # node = oldal ? LM
 # containing file ? LM
 # szerintem itt arról a fájlról van szó, amely tartalmazza ezt. (mondjuk: gazdafájl?) - sas
-#: info/nodemenu.c:30
+#. TRANSLATORS: The "\n* Menu:\n\n" part of this should not be translated, as
+#. it is part of the Info syntax.
+#: info/nodemenu.c:35
+#, fuzzy
 msgid ""
 "\n"
 "* Menu:\n"
+"\n"
 "  (File)Node                        Lines   Size   Containing File\n"
 "  ----------                        -----   ----   ---------------"
 msgstr ""
@@ -1160,151 +1070,136 @@ msgstr ""
 "  (Fájl)Oldal                     Sorok  Méret  Fájlt tartalmaz\n"
 "  -----------                     -----  -----  ---------------"
 
-# FORDITANI
-#: info/nodemenu.c:201
+#: info/nodemenu.c:187
 msgid ""
 "Here is the menu of nodes you have recently visited.\n"
-"Select one from this menu, or use `\\[history-node]' in another window.\n"
+"Select one from this menu, or use '\\[history-node]' in another window.\n"
 msgstr ""
 
 # FORDITANI
-#: info/nodemenu.c:223
+#: info/nodemenu.c:208
 msgid "Make a window containing a menu of all of the currently visited nodes"
 msgstr ""
 
 # FORDITANI
-#: info/nodemenu.c:303
+#: info/nodemenu.c:253
 msgid "Select a node which has been previously visited in a visible window"
 msgstr ""
 
-#: info/nodemenu.c:316
+#: info/nodemenu.c:260
 msgid "Select visited node: "
 msgstr "Meglátogatott oldal kiválasztása: "
 
-#: info/nodemenu.c:336 info/session.c:2398
+#: info/nodemenu.c:278 info/session.c:2439
 #, c-format
 msgid "The reference disappeared! (%s)."
 msgstr "A hivatkozás eltünt! (%s)."
 
-#: info/session.c:161
+#: info/pcterm.c:212
 #, c-format
+msgid "Terminal cannot be initialized: %s\n"
+msgstr ""
+
+#: info/search.c:166
+#, c-format
+msgid "regexp error: %s"
+msgstr ""
+
+#: info/session.c:62
+msgid "Show all matching files"
+msgstr ""
+
+#: info/session.c:66
+#, c-format
+msgid "No file index"
+msgstr ""
+
+#. TRANSLATORS: Try to keep this message (when "expanded") at most 79
+#. characters; anything after the 79th character will not actually be
+#. displayed on an 80-column terminal.
+#: info/session.c:192
+#, fuzzy, c-format
 msgid ""
-"Welcome to Info version %s. Type \\[get-help-window] for help, \\[menu-item] "
-"for menu item."
+"Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
+"help-node] for tutorial."
 msgstr ""
 "Üdvözöljük az Info %s verziójában. Segítség kéréséhez a(z) „\\[get-help-"
 "window]“-t, a menühöz ugráshoz a(z) „\\[menu-item]“-t kell begépelni"
 
-#: info/session.c:622
+#: info/session.c:776
+#, fuzzy, c-format
+msgid "can't open %s: %s"
+msgstr "Nem törölhető fájl: `%s': %s"
+
+#: info/session.c:782
+#, c-format
+msgid "debugging output diverted to \"%s\""
+msgstr ""
+
+#: info/session.c:1273
 msgid "Move down to the next line"
 msgstr "Ugrás a következő sorra"
 
-#: info/session.c:658
+#: info/session.c:1288
 msgid "Move up to the previous line"
 msgstr "Ugrás az előző sorra"
 
-#: info/session.c:693
+#: info/session.c:1304
+msgid "Move the cursor to a specific line of the window"
+msgstr "A kurzor mogatása az ablak egy adott sorára "
+
+#: info/session.c:1336
 msgid "Move to the end of the line"
 msgstr "Ugrás a sor végére"
 
-#: info/session.c:713
+#: info/session.c:1361
 msgid "Move to the start of the line"
 msgstr "Ugrás a sor elejére"
 
-#: info/session.c:983 makeinfo/node.c:1437
-msgid "Next"
-msgstr "Következő"
+#: info/session.c:1443
+msgid "Move to the start of this node"
+msgstr "Ugrás az oldal elejére"
 
-# követése / betöltése ?
-#: info/session.c:988
-msgid "Following Next node..."
-msgstr "Következő oldal betöltése..."
+#: info/session.c:1450
+msgid "Move to the end of this node"
+msgstr "Ugrás az oldal végére"
 
-#: info/session.c:1006
-msgid "Selecting first menu item..."
-msgstr "1. menüelem kiválasztása..."
-
-#: info/session.c:1018
-msgid "Selecting Next node..."
-msgstr "Következő oldal kiválasztása..."
-
-#: info/session.c:1089
-#, c-format
-msgid "Moving Up %d time(s), then Next."
-msgstr "Mozgás %d alkalommal felfele, majd a „Következő“ kiválasztása."
-
-# node=oldal ? LM
-#: info/session.c:1113
-msgid "No more nodes within this document."
-msgstr "Nincs több oldal e dokumentumban."
-
-#: info/session.c:1139
-msgid "No `Prev' for this node."
-msgstr "Nincs „Előző“ oldala e pontnak."
-
-# ATNEZNI LM
-#: info/session.c:1144 info/session.c:1206
-msgid "Moving Prev in this window."
-msgstr "Ugrás az Előzőre ebben az ablakban."
-
-# ATNEZNI LM
-#: info/session.c:1161
-msgid "No `Prev' or `Up' for this node within this document."
-msgstr "Nincs Előző vagy Fel lehetőség e ponthoz e dokumentumban."
-
-#: info/session.c:1167
-msgid "Moving Up in this window."
-msgstr "Mozgás Fel ebben az ablakban."
-
-# oldal ? LM
-#: info/session.c:1217
-msgid "Moving to `Prev's last menu item."
-msgstr "Ugrás az Előző utolsó menüelemére."
-
-#: info/session.c:1229
-msgid "Move forwards or down through node structure"
-msgstr "Mozgás előre vagy le az oldal szerkeztében"
-
-#: info/session.c:1245
-msgid "Move backwards or up through node structure"
-msgstr "Mozgás hátra vagy fel az oldal szerkezetében"
-
-#: info/session.c:1339
+#: info/session.c:1541
 msgid "Scroll forward in this window"
 msgstr "Görgetés előre az ablakban"
 
-#: info/session.c:1347
+#: info/session.c:1555
+msgid "Scroll backward in this window"
+msgstr "Görgetés hátra az ablakban"
+
+#: info/session.c:1563
 msgid "Scroll forward in this window and set default window size"
 msgstr "Görgetés előre az ablakban és beállítása alapértelmezett méretre"
 
+#: info/session.c:1578
+msgid "Scroll backward in this window and set default window size"
+msgstr "Görgetés hátra az ablakban és beállítása alapértelmezett méretre"
+
 # aktuális ? LM
 # Nem. [semmi], e, jelen, stb. - sas
-#: info/session.c:1355
+#: info/session.c:1584
 msgid "Scroll forward in this window staying within node"
 msgstr "Görgetés előre az ablakban ezen oldalon maradva"
 
-#: info/session.c:1363
+# aktuális ? LM
+# Nem. [semmi], e, jelen, stb. - sas
+#: info/session.c:1599
+msgid "Scroll backward in this window staying within node"
+msgstr "Görgetés hátra az ablakban ezen oldalon maradva"
+
+#: info/session.c:1607
 msgid ""
 "Scroll forward in this window staying within node and set default window size"
 msgstr ""
 "Görgetés előre az ablakban ezen oldalon maradva, és az alap ablakméret "
 "beállítása"
 
-#: info/session.c:1371
-msgid "Scroll backward in this window"
-msgstr "Görgetés hátra az ablakban"
-
-#: info/session.c:1379
-msgid "Scroll backward in this window and set default window size"
-msgstr "Görgetés hátra az ablakban és beállítása alapértelmezett méretre"
-
-# aktuális ? LM
-# Nem. [semmi], e, jelen, stb. - sas
-#: info/session.c:1388
-msgid "Scroll backward in this window staying within node"
-msgstr "Görgetés hátra az ablakban ezen oldalon maradva"
-
-#: info/session.c:1396
+#: info/session.c:1634
 msgid ""
 "Scroll backward in this window staying within node and set default window "
 "size"
@@ -1312,1704 +1207,785 @@ msgstr ""
 "Görgetés hátra az ablakban ezen oldalon maradva, és az alap ablakméret "
 "beállítása"
 
-#: info/session.c:1404
-msgid "Move to the start of this node"
-msgstr "Ugrás az oldal elejére"
-
-#: info/session.c:1411
-msgid "Move to the end of this node"
-msgstr "Ugrás az oldal végére"
-
-#: info/session.c:1418
+#: info/session.c:1640
 msgid "Scroll down by lines"
 msgstr "Görgetés soronként le"
 
-#: info/session.c:1435
+#: info/session.c:1646
 msgid "Scroll up by lines"
 msgstr "Görgetés soronként fel"
 
-#: info/session.c:1453
+#: info/session.c:1658
 msgid "Scroll down by half screen size"
 msgstr "Görgetés egy fél képernyőnyit le"
 
-#: info/session.c:1479
+#: info/session.c:1685
 msgid "Scroll up by half screen size"
 msgstr "Görgetés egy fél képernyőnyit fel"
 
-#: info/session.c:1508
-msgid "Select the next window"
-msgstr "Következő ablak kiválasztása"
-
-#: info/session.c:1547
-msgid "Select the previous window"
-msgstr "Előző ablak kiválasztása"
-
-#: info/session.c:1598
-msgid "Split the current window"
-msgstr "Jelen ablak felosztása"
-
-#: info/session.c:1679
-msgid "Delete the current window"
-msgstr "Jelen ablak törlése"
-
-#: info/session.c:1687
-msgid "Cannot delete a permanent window"
-msgstr "Egy állandó ablakot nem lehet törölni"
-
-#: info/session.c:1719
-msgid "Delete all other windows"
-msgstr "Többi ablak bezárása"
-
-#: info/session.c:1765
+#: info/session.c:1691
 msgid "Scroll the other window"
 msgstr "Másik ablak görgetése"
 
-#: info/session.c:1786
+#: info/session.c:1712
 msgid "Scroll the other window backward"
 msgstr "A másik ablak görgetése hátra"
 
+#: info/session.c:1821
+msgid "Select the next window"
+msgstr "Következő ablak kiválasztása"
+
+#: info/session.c:1858
+msgid "Select the previous window"
+msgstr "Előző ablak kiválasztása"
+
+#: info/session.c:1902
+msgid "Split the current window"
+msgstr "Jelen ablak felosztása"
+
+#: info/session.c:1947
+msgid "Delete the current window"
+msgstr "Jelen ablak törlése"
+
+#: info/session.c:1952
+msgid "Cannot delete a permanent window"
+msgstr "Egy állandó ablakot nem lehet törölni"
+
+#: info/session.c:1983
+msgid "Delete all other windows"
+msgstr "Többi ablak bezárása"
+
 # aktuális ? LM
 # Nem. [semmi], e, jelen, stb. - sas
-#: info/session.c:1792
+#: info/session.c:2029
 msgid "Grow (or shrink) this window"
 msgstr "Jelen ablak növelése (csökkentése)"
 
-#: info/session.c:1803
+#: info/session.c:2040
 msgid "Divide the available screen space among the visible windows"
 msgstr "Elérhető képernyőhely felosztása a látható ablakok közt"
 
 # FORDITANI
-#: info/session.c:1810
+#: info/session.c:2047
 msgid "Toggle the state of line wrapping in the current window"
 msgstr ""
 
-#: info/session.c:1982
-msgid "Select the Next node"
-msgstr "Következő oldal kiválasztása"
-
-#: info/session.c:1990
-msgid "Select the Prev node"
-msgstr "Előző oldal kiválasztása"
-
-#: info/session.c:1998
-msgid "Select the Up node"
-msgstr "Szülő oldal kiválasztása"
-
-#: info/session.c:2005
-msgid "Select the last node in this file"
-msgstr "A fájl utolsó oldala kiválasztása"
-
-#: info/session.c:2032 info/session.c:2065
-msgid "This window has no additional nodes"
-msgstr "Jelen ablaknak nincsenek további oldalai"
-
-#: info/session.c:2038
-msgid "Select the first node in this file"
-msgstr "A fájl első oldala kiválasztása"
-
-#: info/session.c:2072
-msgid "Select the last item in this node's menu"
-msgstr "Az oldal menüjében található utolsó elem kiválasztása"
-
-#: info/session.c:2078
+#: info/session.c:2201
 msgid "Select this menu item"
 msgstr "A menüelem kiválasztása"
 
-#: info/session.c:2111
-#, c-format
-msgid "There aren't %d items in this menu."
-msgstr "Nincs %d elem e menüben."
+#: info/session.c:2231
+#, fuzzy, c-format
+msgid "There isn't %d item in this menu."
+msgid_plural "There aren't %d items in this menu."
+msgstr[0] "Nincs %d elem e menüben."
+msgstr[1] "Nincs %d elem e menüben."
 
-#: info/session.c:2305 info/session.c:2306
+#: info/session.c:2240
+msgid "Select the last item in this node's menu"
+msgstr "Az oldal menüjében található utolsó elem kiválasztása"
+
+#: info/session.c:2347 info/session.c:2348
 #, c-format
 msgid "Menu item (%s): "
 msgstr "Menüelem (%s): "
 
-#: info/session.c:2309
+#: info/session.c:2351
 msgid "Menu item: "
 msgstr "Menüelem: "
 
 # miért nem Krhiv? :))) - sas
-#: info/session.c:2316 info/session.c:2317
+#: info/session.c:2358 info/session.c:2359
 #, c-format
 msgid "Follow xref (%s): "
 msgstr "Kereszthiv (%s) követése: "
 
 # miért nem Krhiv? :))) - sas
-#: info/session.c:2320
+#: info/session.c:2362
 msgid "Follow xref: "
 msgstr "Kereszthiv követése: "
 
-#: info/session.c:2449
+#: info/session.c:2451
 msgid "Read a menu item and select its node"
 msgstr "Egy menüelem elolvasása és oldalának kiválasztása"
 
-#: info/session.c:2457
+#: info/session.c:2476
 msgid "Read a footnote or cross reference and select its node"
 msgstr ""
 "Egy lábjegyzet vagy kereszthivatkozás elolvasása és oldalának kiválasztása"
 
-#: info/session.c:2463
+#: info/session.c:2482
 msgid "Move to the start of this node's menu"
 msgstr "Ugrás az oldalhoz tartozó menü elejére"
 
-#: info/session.c:2487
+#: info/session.c:2504
 msgid "Visit as many menu items at once as possible"
 msgstr "A lehető legtöbb menüelem meglátogatása egyszerre"
 
-#: info/session.c:2515
-msgid "Read a node name and select it"
-msgstr "Egy oldalnév elolvasása és kiválasztása"
+#: info/session.c:2604
+msgid "Move to the previous cross reference"
+msgstr "Ugrás az előző kereszthivatkozásra"
 
-#: info/session.c:2570 info/session.c:2575
-msgid "Goto node: "
-msgstr "Ugrás az oldalra: "
+#: info/session.c:2667
+msgid "Move to the next cross reference"
+msgstr "Ugrás a következő kereszthivatkozásra"
 
-#: info/session.c:2639
-#, c-format
-msgid "No menu in node `%s'."
+#: info/session.c:2728
+msgid "Select reference or menu item appearing on this line"
+msgstr "A sorban megjelenő hivatkozás vagy menüelem kiválasztása"
+
+#: info/session.c:2762
+#, fuzzy, c-format
+msgid "No menu in node '%s'."
 msgstr "Nincs menü a(z) „%s“ oldalon."
-
-#: info/session.c:2685
-#, c-format
-msgid "No menu item `%s' in node `%s'."
-msgstr "Nincs „%s“ menüelem a(z) „%s“ oldalon."
 
 # található / találom ? LM
 # lelem, találom, nincs - sas
-#: info/session.c:2715
-#, c-format
-msgid "Unable to find node referenced by `%s' in `%s'."
+#: info/session.c:2809
+#, fuzzy, c-format
+msgid "Unable to find node referenced by '%s' in '%s'."
 msgstr "Nincs a(z) „%s“ által hivatkozott oldal ebben: „%s“."
 
 # FORDITANI
-#: info/session.c:2765
+#: info/session.c:2859
 msgid "Read a list of menus starting from dir and follow them"
 msgstr ""
 
-#: info/session.c:2767
+#: info/session.c:2861
 msgid "Follow menus: "
 msgstr "Menük követése: "
 
+#: info/session.c:2966
+msgid "Select the Next node"
+msgstr "Következő oldal kiválasztása"
+
+#: info/session.c:2973
+msgid "Select the Prev node"
+msgstr "Előző oldal kiválasztása"
+
+#: info/session.c:2980
+msgid "Select the Up node"
+msgstr "Szülő oldal kiválasztása"
+
+#: info/session.c:2986
+msgid "Select the last node in this file"
+msgstr "A fájl utolsó oldala kiválasztása"
+
+#: info/session.c:3013 info/session.c:3046
+msgid "This window has no additional nodes"
+msgstr "Jelen ablaknak nincsenek további oldalai"
+
+#: info/session.c:3019
+msgid "Select the first node in this file"
+msgstr "A fájl első oldala kiválasztása"
+
+# node=oldal ? LM
+#: info/session.c:3153
+msgid "No more nodes within this document."
+msgstr "Nincs több oldal e dokumentumban."
+
+# ATNEZNI LM
+#: info/session.c:3198 info/session.c:3238
+#, fuzzy
+msgid "No 'Prev' or 'Up' for this node within this document."
+msgstr "Nincs Előző vagy Fel lehetőség e ponthoz e dokumentumban."
+
+#: info/session.c:3251
+msgid "Move forwards or down through node structure"
+msgstr "Mozgás előre vagy le az oldal szerkeztében"
+
+#: info/session.c:3268
+msgid "Move backwards or up through node structure"
+msgstr "Mozgás hátra vagy fel az oldal szerkezetében"
+
+#: info/session.c:3291
+msgid "Read a node name and select it"
+msgstr "Egy oldalnév elolvasása és kiválasztása"
+
+#: info/session.c:3345 info/session.c:3349
+msgid "Goto node: "
+msgstr "Ugrás az oldalra: "
+
 # FORDITANI
-#: info/session.c:2960
+#: info/session.c:3528
 msgid "Find the node describing program invocation"
 msgstr ""
 
 # FORDITANI
-#: info/session.c:2962
+#: info/session.c:3530
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr ""
 
-#: info/session.c:3000
+#: info/session.c:3575
 msgid "Read a manpage reference and select it"
 msgstr "Egy kéziköny oldal hivatkozás olvasása és kiválasztása"
 
 # Kézikönyv ? LM
 # Manpage = kézikönyv oldal. Adott esetben egyszerűen manlapként vagy manoldalként is hivatkozhatunk rájuk, mivel kissé elavultak. A GNU rendszer alapértelemzett dokumentációformátuma az Info. Ezért is olyan fontos a fordítás, amit készítesz :-) (és amibe ey icipicit besegítek ...) - sas
-#: info/session.c:3004
+#: info/session.c:3579
 msgid "Get Manpage: "
 msgstr "Kézikönyv oldal: "
 
-#: info/session.c:3034
-msgid "Select the node `Top' in this file"
+#: info/session.c:3600
+#, fuzzy
+msgid "Select the node 'Top' in this file"
 msgstr "Legfelső oldal kiválasztása e fájban"
 
-#: info/session.c:3040
-msgid "Select the node `(dir)'"
+#: info/session.c:3606
+#, fuzzy
+msgid "Select the node '(dir)'"
 msgstr "A „(dir)“ oldal kiválasztása"
 
-#: info/session.c:3057 info/session.c:3059
-#, c-format
-msgid "Kill node (%s): "
-msgstr "Oldal törlése (%s): "
+#: info/session.c:3612
+msgid "Show full file name of node being displayed"
+msgstr ""
 
-#: info/session.c:3111
-#, c-format
-msgid "Cannot kill node `%s'"
-msgstr "A(z) „%s“ oldal nem törölhető"
-
-#: info/session.c:3121
-msgid "Cannot kill the last node"
-msgstr "Az utolsó oldal nem törölhető"
-
-#: info/session.c:3207
+#: info/session.c:3629
 msgid "Select the most recently selected node"
 msgstr "A legutóbb választott oldal kiválasztása"
 
-#: info/session.c:3213
-msgid "Kill this node"
-msgstr "Ezen oldal törlése"
+#: info/session.c:3634
+#, c-format
+msgid "No earlier node in history"
+msgstr ""
 
-#: info/session.c:3221
+#: info/session.c:3638
 msgid "Read the name of a file and select it"
 msgstr "Fájlnév beolvasása és kiválasztása"
 
-#: info/session.c:3225
+#: info/session.c:3642
 msgid "Find file: "
 msgstr "Fájl keresése: "
 
 # található / találom
 # a mondatszerkezet miatt itt jó a nem található - sas
-#: info/session.c:3242
-#, c-format
-msgid "Cannot find `%s'."
+#: info/session.c:3659
+#, fuzzy, c-format
+msgid "Cannot find '%s'."
 msgstr "„%s“ nem található."
 
-#: info/session.c:3285 info/session.c:3403
-#, c-format
-msgid "Could not create output file `%s'."
+#: info/session.c:3708
+#, fuzzy, c-format
+msgid "Could not create output file '%s'."
 msgstr "A kimeneti fájl („%s“) nem hozható létre."
 
-#: info/session.c:3299 info/session.c:3421 info/session.c:3481
-msgid "Done."
-msgstr "Kész."
+#: info/session.c:3722
+#, fuzzy, c-format
+msgid "error writing to %s: %s"
+msgstr "hiba „%s“ írásakor."
+
+#: info/session.c:3731
+#, fuzzy, c-format
+msgid "closing %s"
+msgstr "Törlés: %s\n"
 
 # írás / mentés ? LM
 # írás - sas
-#: info/session.c:3354
-#, c-format
-msgid "Writing node %s..."
+#: info/session.c:3780
+#, fuzzy, c-format
+msgid "writing node %s..."
 msgstr "„%s“ oldal írása..."
 
 # pipe/cső ? LM
 # elolvasva, nekem a cső tetszik - sas
-#: info/session.c:3430
+#: info/session.c:3826
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "Ezen oldal tartalmának csőbe irányítása INFO_PRINT_COMMAND -al"
 
 # pipe / cső ? LM
 # semmiképen nem pipe - sas
-#: info/session.c:3465
-#, c-format
-msgid "Cannot open pipe to `%s'."
+#: info/session.c:3854
+#, fuzzy, c-format
+msgid "Cannot open pipe to '%s'."
 msgstr "Nem hozható létre cső ehhez:  „%s“."
 
-#: info/session.c:3471
-#, c-format
-msgid "Printing node %s..."
+#: info/session.c:3859
+#, fuzzy, c-format
+msgid "printing node %s..."
 msgstr "%s oldal nyomtatása..."
+
+#: info/session.c:3867
+#, fuzzy, c-format
+msgid "finished printing node %s"
+msgstr "%s oldal nyomtatása..."
+
+#: info/session.c:3899
+msgid "Toggle the usage of regular expressions in searches"
+msgstr ""
+
+#: info/session.c:3903
+#, c-format
+msgid "Using regular expressions for searches."
+msgstr ""
+
+#: info/session.c:3904
+#, c-format
+msgid "Using literal strings for searches."
+msgstr ""
+
+#: info/session.c:4164
+msgid "Search continued from the end of the document."
+msgstr ""
+
+#: info/session.c:4169
+#, fuzzy
+msgid "Search continued from the beginning of the document."
+msgstr "Törlés a sor elejéig"
 
 # alállomány ? LM
 # passz - sas
-#: info/session.c:3701
+#: info/session.c:4189
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "„%s“ alállomány keresése..."
 
-#: info/session.c:3753
-msgid "Read a string and search for it case-sensitively"
-msgstr "Szöveg beolvasása és keresése kis/nagybetű érzékenyen"
-
-#: info/session.c:3760
-msgid "Read a string and search for it"
-msgstr "Szöveg beolvasása és keresése "
-
-#: info/session.c:3768
-msgid "Read a string and search backward for it"
-msgstr "Szöveg beolvasása és keresése fel"
+#: info/session.c:4226
+msgid "Search failed."
+msgstr "A keresés sikertelen volt."
 
 # FORDITANI
-#: info/session.c:3804 info/session.c:3811
-#, c-format
-msgid "%s%sfor string [%s]: "
+#: info/session.c:4243
+#, fuzzy, c-format
+msgid "%s%s%s [%s]: "
 msgstr "%s%sa sztringhez [%s]: "
 
-#: info/session.c:3805 info/session.c:3812
-msgid "Search backward"
-msgstr "Keresés felfelé"
+#: info/session.c:4244 info/session.c:4250
+msgid "Regexp search"
+msgstr ""
 
-#: info/session.c:3806 info/session.c:3812
+#: info/session.c:4244 info/session.c:4250
 msgid "Search"
 msgstr "Keresés"
 
 # érzékenyen / érzékenység
-#: info/session.c:3807 info/session.c:3813
-msgid " case-sensitively "
+#: info/session.c:4245 info/session.c:4251
+#, fuzzy
+msgid " case-sensitively"
 msgstr "kis/nagybetű érzékenyen"
 
-#: info/session.c:3808 info/session.c:3813
-msgid " "
-msgstr " "
+#: info/session.c:4246 info/session.c:4252
+#, fuzzy
+msgid " backward"
+msgstr "Keresés felfelé"
 
-#: info/session.c:3852
-msgid "Search failed."
-msgstr "A keresés sikertelen volt."
+#: info/session.c:4249
+#, c-format
+msgid "%s%s%s: "
+msgstr ""
 
-#: info/session.c:3870
+#: info/session.c:4269
+msgid "Search string too short"
+msgstr ""
+
+#: info/session.c:4462
+#, c-format
+msgid "Going back to last match from %s"
+msgstr ""
+
+#: info/session.c:4486 info/session.c:4596
+#, c-format
+msgid "No more matches."
+msgstr ""
+
+#: info/session.c:4623
+msgid "Search this node and subnodes for a string."
+msgstr ""
+
+#: info/session.c:4644
+msgid "Go to next match in Info sub-tree"
+msgstr ""
+
+#: info/session.c:4648 info/session.c:4660
+#, c-format
+msgid "No active search"
+msgstr ""
+
+#: info/session.c:4656
+msgid "Go to previous match in Info sub-tree"
+msgstr ""
+
+#: info/session.c:4669
+msgid "Read a string and search for it case-sensitively"
+msgstr "Szöveg beolvasása és keresése kis/nagybetű érzékenyen"
+
+#: info/session.c:4674
+msgid "Read a string and search for it"
+msgstr "Szöveg beolvasása és keresése "
+
+#: info/session.c:4680
+msgid "Read a string and search backward for it"
+msgstr "Szöveg beolvasása és keresése fel"
+
+#: info/session.c:4688
 msgid "Repeat last search in the same direction"
 msgstr "Utolsó keresés ismétlése azonos irányba"
 
 # keresési feltétel / keresési szöveg / keresett szöveg ? LM
-#: info/session.c:3873 info/session.c:3883
+#: info/session.c:4696 info/session.c:4741
 msgid "No previous search string"
 msgstr "Nincs korábbi keresési feltétel"
 
-#: info/session.c:3880
+#: info/session.c:4733
 msgid "Repeat last search in the reverse direction"
 msgstr "Utolsó keresés ismétlése ellenirányban"
 
+#: info/session.c:4780
+msgid "Clear displayed search matches"
+msgstr ""
+
 # JAVITANI ?
-#: info/session.c:3899 info/session.c:3905
+#: info/session.c:4797 info/session.c:4803
 msgid "Search interactively for a string as you type it"
 msgstr "Egy szöveg interaktív keresése gépeléskor"
 
-#: info/session.c:3985
+#: info/session.c:4923
+#, fuzzy
+msgid "Regexp I-search backward: "
+msgstr "I.-keresés fel: "
+
+#: info/session.c:4924
 msgid "I-search backward: "
 msgstr "I.-keresés fel: "
 
-#: info/session.c:3987
+#: info/session.c:4926
+#, fuzzy
+msgid "Regexp I-search: "
+msgstr "I.-keresés: "
+
+#: info/session.c:4927
 msgid "I-search: "
 msgstr "I.-keresés: "
 
 # checkit
 # FORDITANI
-#: info/session.c:4012 info/session.c:4014
+#: info/session.c:4952 info/session.c:4955
 msgid "Failing "
 msgstr "Sikertelen"
 
-#: info/session.c:4480
-msgid "Move to the previous cross reference"
-msgstr "Ugrás az előző kereszthivatkozásra"
-
-#: info/session.c:4498
-msgid "Move to the next cross reference"
-msgstr "Ugrás a következő kereszthivatkozásra"
-
-#: info/session.c:4520
-msgid "Select reference or menu item appearing on this line"
-msgstr "A sorban megjelenő hivatkozás vagy menüelem kiválasztása"
-
-#: info/session.c:4543
+#: info/session.c:5321
 msgid "Cancel current operation"
 msgstr "Jelen művelet törlése"
 
-#: info/session.c:4550
+#: info/session.c:5328
 msgid "Quit"
 msgstr "Kilépés"
 
-#: info/session.c:4559
-msgid "Move the cursor to a specific line of the window"
-msgstr "A kurzor mogatása az ablak egy adott sorára "
+#: info/session.c:5333
+#, fuzzy
+msgid "Display version of Info being run"
+msgstr "kiírja a verzióinformációt és kilép"
 
-#: info/session.c:4591
+#: info/session.c:5335
+#, c-format
+msgid "GNU Info version %s"
+msgstr ""
+
+#: info/session.c:5340
 msgid "Redraw the display"
 msgstr "Képernyő frissítése"
 
 # rövidebb forma? Kilépés az Info-ból ? LM
 # általában NAON.! fontos a RÖV.SÉG, de itt kivételesen szerintem maradhat ez - sas
-#: info/session.c:4628
+#: info/session.c:5377
 msgid "Quit using Info"
 msgstr "Az Info használatának befejezése"
 
-#: info/session.c:4641
+#: info/session.c:5393
 msgid "Run command bound to this key's lowercase variant"
 msgstr "E karakter kisbetűs változatához rendelt parancs futtatása"
 
-#: info/session.c:4652
+#: info/session.c:5404
 #, c-format
 msgid "Unknown command (%s)."
 msgstr "Ismeretlen parancs (%s)."
 
-#: info/session.c:4655
+#: info/session.c:5407
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" érvénytelen"
 
-#: info/session.c:4656
-#, c-format
-msgid "`%s' is invalid"
+#: info/session.c:5408
+#, fuzzy, c-format
+msgid "'%s' is invalid"
 msgstr "„%s“ érvénytelen"
 
-#: info/session.c:4870
+#: info/session.c:5726
 msgid "Add this digit to the current numeric argument"
 msgstr "Add hozzá ezt a számjegyet az aktuális numerikus argumentumhoz"
 
-#: info/session.c:4879
+#: info/session.c:5733
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Start (vagy szorozd be 4-gyel) az aktuális numerikus argumentumot"
 
-#: info/session.c:4894
-msgid "Internally used by \\[universal-argument]"
-msgstr "Belső használatra a \\[universal-argument]-nek"
-
-#: info/tilde.c:336
+#: info/tilde.c:361
 #, c-format
 msgid "readline: Out of virtual memory!\n"
 msgstr "readline: Nincs több virtuális memória!\n"
 
 # on = be ? LM
-#: info/variables.c:37
+#: info/variables.c:65
 msgid "When \"On\", footnotes appear and disappear automatically"
 msgstr "„Be“ állapotban a lábjegyzetek automatikusan jelennek meg és tűnnek el"
 
-#: info/variables.c:41
+#: info/variables.c:69
 msgid "When \"On\", creating or deleting a window resizes other windows"
 msgstr ""
 "„Be“ állapotban egy ablak létrehozása vagy törlése a többi is átméretezi"
 
-#: info/variables.c:45
+#: info/variables.c:73
 msgid "When \"On\", flash the screen instead of ringing the bell"
 msgstr "„Be“ állapotban a képernyő villog csengő helyett"
 
-#: info/variables.c:49
+#: info/variables.c:77
 msgid "When \"On\", errors cause the bell to ring"
 msgstr "„Be“ állapotban, hibánál csngetés"
 
-#: info/variables.c:53
+#: info/variables.c:81
 msgid "When \"On\", Info garbage collects files which had to be uncompressed"
 msgstr "„Be“ állapotban az Info összegyűjti a tömörítendő fájlokat"
 
-#: info/variables.c:56
+#: info/variables.c:84
 msgid "When \"On\", the portion of the matched search string is highlighted"
 msgstr "„Be“ állapotban a megtalált szövegrészlet ki lesz emelve"
 
-#: info/variables.c:60
+#: info/variables.c:88
 msgid "Controls what happens when scrolling is requested at the end of a node"
 msgstr "Vezérli, hogy mi történjen, ha a görgetés a lap alján történik"
 
-#: info/variables.c:65
+#: info/variables.c:93
 msgid "Same as scroll-behaviour"
 msgstr ""
 
-#: info/variables.c:69
+#: info/variables.c:97
 msgid "The number lines to scroll when the cursor moves out of the window"
 msgstr "A görgetendő sorok száma, ha akurzor az ablakon kívülre mozog"
 
-#: info/variables.c:73
+#: info/variables.c:101
 msgid "Controls whether scroll-behavior affects cursor movement commands"
 msgstr ""
 
-#: info/variables.c:77
+#: info/variables.c:105
 msgid "When \"On\", Info accepts and displays ISO Latin characters"
 msgstr "„Be“ állapotban az Info elfogadja és kiírja az ISO Latin karaktereket"
 
-#: info/variables.c:83
+#: info/variables.c:109
+#, fuzzy
+msgid ""
+"What to do when a scrolling command is issued at the end of the last node"
+msgstr "Vezérli, hogy mi történjen, ha a görgetés a lap alján történik"
+
+#: info/variables.c:114
+msgid "Minimal length of a search string"
+msgstr ""
+
+#: info/variables.c:118
+msgid "Skip current window when searching"
+msgstr ""
+
+#: info/variables.c:122
+msgid "Exclude default directories from file search path"
+msgstr ""
+
+#: info/variables.c:126
+msgid "Hide some Info file syntax in the text of nodes"
+msgstr ""
+
+#: info/variables.c:130
+msgid ""
+"Length of time in milliseconds to wait for the next byte in a sequence "
+"indicating that a key has been pressed"
+msgstr ""
+
+#: info/variables.c:134
+msgid "Method to use to track mouse events"
+msgstr ""
+
+#: info/variables.c:138
+#, fuzzy
+msgid "How to follow a cross-reference"
+msgstr "Ugrás a következő kereszthivatkozásra"
+
+#: info/variables.c:142
+msgid "Highlight search matches"
+msgstr ""
+
+#: info/variables.c:146
+msgid "Styles for links"
+msgstr ""
+
+#: info/variables.c:150
+msgid "Styles for active links"
+msgstr ""
+
+#: info/variables.c:154
+msgid "Styles for search matches"
+msgstr ""
+
+#: info/variables.c:158
+msgid "How to print the information line at the start of a node"
+msgstr ""
+
+#: info/variables.c:165
 msgid "Explain the use of a variable"
 msgstr "A változó használatának elmagyarázása"
 
-#: info/variables.c:89
+#: info/variables.c:171
 msgid "Describe variable: "
 msgstr "Változó leírása: "
 
-#: info/variables.c:108
+#: info/variables.c:186
 msgid "Set the value of an Info variable"
 msgstr "Egy Info változó beállítása"
 
-#: info/variables.c:114
+#: info/variables.c:193
 msgid "Set variable: "
 msgstr "Változó beállítása:"
 
-#: info/variables.c:132
+#: info/variables.c:209
 #, c-format
 msgid "Set %s to value (%d): "
 msgstr "%s beállítása (%d): "
 
-#: info/variables.c:173
+#: info/variables.c:243
 #, c-format
 msgid "Set %s to value (%s): "
 msgstr "%s beállítása (%s): "
 
-#: info/window.c:1137
-msgid "--*** Tags out of Date ***"
-msgstr "--*** lejárt dátumú Tagek ***"
-
-#: info/window.c:1148
+#: info/window.c:959
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), sor ----, "
 
-#: info/window.c:1155
-#, c-format
-msgid "-%s---Info: %s, %d lines --%s--"
+#: info/window.c:966
+#, fuzzy, c-format
+msgid "-%s---Info: %s, %ld lines --%s--"
 msgstr "-%s---Info: %s, %d sor --%s--"
 
-#: info/window.c:1159
-#, c-format
-msgid "-%s%s-Info: (%s)%s, %d lines --%s--"
+#: info/window.c:970
+#, fuzzy, c-format
+msgid "-%s---Info: (%s)%s, %ld lines --%s--"
 msgstr "-%s%s-Info: (%s)%s, %d sor --%s--"
 
-# subfile ? LM
-# Passz - sas
-#: info/window.c:1166
+#: install-info/install-info.c:292
 #, c-format
-msgid " Subfile: %s"
-msgstr "Alfájl: %s"
+msgid "%s: empty file"
+msgstr "%s: üres fájl"
 
-#: lib/xexit.c:54
-msgid "ferror on stdout\n"
-msgstr ""
-
-#: lib/xexit.c:59
-msgid "fflush error on stdout\n"
-msgstr ""
-
-#: makeinfo/cmds.c:544 makeinfo/cmds.c:566
-#, c-format
-msgid "arguments to @%s ignored"
-msgstr "@%s argumentuma(i) figyelmen kívül lett(ek) hagyva"
-
-#: makeinfo/cmds.c:741
-msgid "January"
-msgstr "Január"
-
-#: makeinfo/cmds.c:741
-msgid "February"
-msgstr "Február"
-
-#: makeinfo/cmds.c:741
-msgid "March"
-msgstr "Március"
-
-#: makeinfo/cmds.c:741
-msgid "April"
-msgstr "Április"
-
-#: makeinfo/cmds.c:741
-msgid "May"
-msgstr "Május"
-
-#: makeinfo/cmds.c:742
-msgid "June"
-msgstr "Június"
-
-#: makeinfo/cmds.c:742
-msgid "July"
-msgstr "Július"
-
-#: makeinfo/cmds.c:742
-msgid "August"
-msgstr "Augusztus"
-
-#: makeinfo/cmds.c:742
-msgid "September"
-msgstr "Szeptember"
-
-#: makeinfo/cmds.c:742
-msgid "October"
-msgstr "Október"
-
-#: makeinfo/cmds.c:743
-msgid "November"
-msgstr "November"
-
-#: makeinfo/cmds.c:743
-msgid "December"
-msgstr "December"
-
-#: makeinfo/cmds.c:1095
-#, c-format
-msgid "unlikely character %c in @var"
-msgstr "nem kedvelt karakter %c a @var-ban"
-
-#: makeinfo/cmds.c:1138
-msgid "@sc argument all uppercase, thus no effect"
-msgstr "@sc argumentuma végig nagybetűs, így nincs hatása"
-
-#: makeinfo/cmds.c:1193
-#, c-format
-msgid "`{' expected, but saw `%c'"
-msgstr "„{“-t vártam, de „%c“-t láttam"
-
-#: makeinfo/cmds.c:1233
-msgid "end of file inside verb block"
-msgstr ""
-
-#: makeinfo/cmds.c:1241
-#, c-format
-msgid "`}' expected, but saw `%c'"
-msgstr "„}“-t vártam, de „%c“-t láttam"
-
-#: makeinfo/cmds.c:1272
-msgid ""
-"@strong{Note...} produces a spurious cross-reference in Info; reword to "
-"avoid that"
-msgstr ""
-
-#: makeinfo/cmds.c:1471
-#, c-format
-msgid "%c%s is obsolete"
-msgstr "%c%s elavult"
-
-#: makeinfo/cmds.c:1580
-#, c-format
-msgid "@sp requires a positive numeric argument, not `%s'"
-msgstr "@sp egy pozitív szám argumentumot vár, nem „%s“-t"
-
-#: makeinfo/cmds.c:1936 makeinfo/footnote.c:81
-#, c-format
-msgid "Bad argument to %c%s"
-msgstr "Rossz argumentum ide: %c%s"
-
-# elég / ahogy van ? LM
-#: makeinfo/cmds.c:1946 makeinfo/makeinfo.c:4272
-msgid "asis"
-msgstr ""
-
-#: makeinfo/cmds.c:1948 makeinfo/cmds.c:1978 makeinfo/makeinfo.c:4274
-msgid "none"
-msgstr "nincs"
-
-#: makeinfo/cmds.c:1962
-#, c-format
-msgid "Bad argument to @%s"
-msgstr "Rossz argumentum ide: @%s"
-
-#: makeinfo/cmds.c:1976
-msgid "insert"
-msgstr "beszúr"
-
-#: makeinfo/cmds.c:1992
-#, c-format
-msgid "Bad argument to @%s: %s"
-msgstr "Rossz argumentum ide: %s: %s"
-
-#: makeinfo/cmds.c:2075
-#, c-format
-msgid "Expected @%s on or off, not `%s'"
-msgstr "@%s on vagy off-t vártam, „%s“ helyett"
-
-#: makeinfo/cmds.c:2095
-#, c-format
-msgid "Only @%s 10 or 11 is supported, not `%s'"
-msgstr ""
-
-#: makeinfo/defun.c:83
-msgid "Missing `}' in @def arg"
-msgstr "Hiányzó „}“ a(z) @def arg.-ban"
-
-# Funkció ? LM
-#: makeinfo/defun.c:402
-msgid "Function"
-msgstr "Függvény"
-
-#: makeinfo/defun.c:405
-msgid "Macro"
-msgstr "Makró"
-
-# checkit
-# Form ? LM
-#: makeinfo/defun.c:408
-msgid "Special Form"
-msgstr "Kivételes forma"
-
-#: makeinfo/defun.c:412
-msgid "Variable"
-msgstr "Változó"
-
-#: makeinfo/defun.c:415
-msgid "User Option"
-msgstr "Felhasználói opció"
-
-# Instance ? LM
-# Példány? - sas
-#: makeinfo/defun.c:419
-msgid "Instance Variable"
-msgstr "Példány változó"
-
-#: makeinfo/defun.c:423
-msgid "Method"
-msgstr "Metódus"
-
-# of ? LM
-# Na, ezt nem tudjuk. Vagy elírás és on-off (be-ki), vagy valamiből valamire alkalmazva: of, on: innen: ide: . MI EZ??? TESZTELNI KELL!
-#: makeinfo/defun.c:499 makeinfo/defun.c:504 makeinfo/defun.c:544
-#: makeinfo/defun.c:643 makeinfo/xml.c:2135
-msgid "of"
-msgstr ""
-
-#: makeinfo/defun.c:508 makeinfo/defun.c:512 makeinfo/defun.c:516
-#: makeinfo/defun.c:550 makeinfo/defun.c:649 makeinfo/xml.c:2140
-msgid "on"
-msgstr ""
-
-#: makeinfo/defun.c:711
-#, c-format
-msgid "Must be in `@%s' environment to use `@%s'"
-msgstr "Csak a(z) „@%s“ környezetben használható a(z) „@%s“"
-
-#: makeinfo/files.c:434
-#, c-format
-msgid "%s: getwd: %s, %s\n"
-msgstr "%s: getwd: %s, %s\n"
-
-#: makeinfo/files.c:637
-#, c-format
-msgid "`%s' omitted before output filename"
-msgstr "„%s“ mellőzve lett a kimeneti fájlnév előtt"
-
-#: makeinfo/files.c:645
-#, c-format
-msgid "`%s' omitted since writing to stdout"
-msgstr "„%s“ mellőzve lett, mivel a stdout-ra írok"
-
-#: makeinfo/files.c:693
-msgid "Output buffer not empty."
-msgstr "A kimeneti puffer nem üres."
-
-#: makeinfo/float.c:181
-#, c-format
-msgid "Requested float type `%s' not previously used"
-msgstr ""
-
-#: makeinfo/float.c:376 makeinfo/float.c:382 makeinfo/index.c:924
-#: makeinfo/index.c:930 makeinfo/xref.c:133 makeinfo/xref.c:170
-#: makeinfo/xref.c:205
-msgid "See "
-msgstr "Lásd "
-
-#: makeinfo/footnote.c:149
-#, c-format
-msgid "`%c%s' needs an argument `{...}', not just `%s'"
-msgstr "„%c%s“ argumentumot vár „{...}“, nem csak „%s“-t"
-
-#: makeinfo/footnote.c:164
-#, c-format
-msgid "No closing brace for footnote `%s'"
-msgstr "A(z) „%s“ lábjegyzet záró kapcsoszárójele hiányzik "
-
-#: makeinfo/footnote.c:197
-msgid "Footnote defined without parent node"
-msgstr "Szülő nélkül definiált lábjegyzet"
-
-#: makeinfo/footnote.c:209
-msgid "Footnotes inside footnotes are not allowed"
-msgstr "Lábjegyzetben nem lehet lábjegyzet"
-
-# HTML
-#: makeinfo/footnote.c:301 makeinfo/index.c:189
-msgid "Footnotes"
-msgstr "Lábjegyzetek"
-
-#: makeinfo/html.c:86
-#, c-format
-msgid "%s: could not open --css-file: %s"
-msgstr "%s: A CSS fájl nem nyitható meg: %s"
-
-#: makeinfo/html.c:175
-#, c-format
-msgid "%s:%d: --css-file ended in comment"
-msgstr "%s:%d: --css-file kommenttel végződik"
-
-#: makeinfo/html.c:203
-msgid "Untitled"
-msgstr "Névtelen"
-
-#: makeinfo/html.c:421
-msgid "[unexpected] no html tag to pop"
-msgstr "[váratlan] nincs html tag, amit ki lehetne venni"
-
-#: makeinfo/html.c:764
-#, c-format
-msgid "[unexpected] invalid node name: `%s'"
-msgstr "[váratlan] érvénytelen oldalnév: „%s“"
-
-#: makeinfo/index.c:169
-#, c-format
-msgid "Unknown index `%s'"
-msgstr "Ismeretlen tárgymutató „%s“"
-
-#: makeinfo/index.c:234
-#, c-format
-msgid "Info cannot handle `:' in index entry `%s'"
-msgstr "Az Info nem tudja a „:“-t kezelni a „%s“ tárgymutatóbejegyzésben"
-
-#: makeinfo/index.c:412
-#, c-format
-msgid "Index `%s' already exists"
-msgstr "„%s“ tárgymutató már létezik"
-
-#: makeinfo/index.c:455
-#, c-format
-msgid "Unknown index `%s' and/or `%s' in @synindex"
-msgstr "Ismeretlen tárgymutató „%s“ és/vagy „%s“ itt: @synindex"
-
-#: makeinfo/index.c:661
-msgid "(line )"
-msgstr "(sor )"
-
-#: makeinfo/index.c:669
-#, c-format
-msgid "(line %*d)"
-msgstr "(%*d sor)"
-
-#: makeinfo/index.c:750
-#, c-format
-msgid "Unknown index `%s' in @printindex"
-msgstr "Ismeretlen tárgymutató „%s“ itt: @printindex"
-
-#: makeinfo/index.c:819
-#, c-format
-msgid "Entry for index `%s' outside of any node"
-msgstr "A(z) „%s“ tárgymutató bejegyzése az oldalakon kívülre esik"
-
-#: makeinfo/index.c:822 makeinfo/index.c:858
-msgid "(outside of any node)"
-msgstr "(az oldalakon kívül)"
-
-#: makeinfo/insertion.c:161
-msgid "@item not allowed in argument to @itemize"
-msgstr "@item nem szerepelhet az @itemize argumentumaként"
-
-# checkit
-# What does this mean? -ke-
-#: makeinfo/insertion.c:242
-msgid "Broken-Type in insertion_type_pname"
-msgstr ""
-
-#: makeinfo/insertion.c:338
-msgid "Enumeration stack overflow"
-msgstr ""
-
-#: makeinfo/insertion.c:370
-#, c-format
-msgid "lettering overflow, restarting at %c"
-msgstr ""
-
-# %citem ist ein Texinfo-Befehl
-#: makeinfo/insertion.c:635
-#, c-format
-msgid "%s requires an argument: the formatter for %citem"
-msgstr "%s egy argumentumot igényel: %citem formázását"
-
-# %cfloat ist ein Texinfo-Befehl
-#: makeinfo/insertion.c:723
-#, c-format
-msgid "%cfloat environments cannot be nested"
-msgstr "A %cfloat környezetet nem lehet beágyazni"
-
-#: makeinfo/insertion.c:977
-#, c-format
-msgid "`@end' expected `%s', but saw `%s'"
-msgstr "„@end“-t vártam „%s“, de „%s“-t találtam"
-
-#: makeinfo/insertion.c:1345
-#, c-format
-msgid "No matching `%cend %s'"
-msgstr "Nincs egyező „%cend %s“"
-
-#: makeinfo/insertion.c:1614
-#, c-format
-msgid "%s requires letter or digit"
-msgstr "%s betűt vagy számjegyet tartalmazhat"
-
-#: makeinfo/insertion.c:1707
-msgid "end of file inside verbatim block"
-msgstr "fájlvégét találtam egy nyitott blokkban"
-
-#: makeinfo/insertion.c:1931
-#, c-format
-msgid "@%s not meaningful outside `@float' environment"
-msgstr "A(z) @%s -nek nincs értelme a „@float“ környezeten kívül"
-
-#: makeinfo/insertion.c:1967
-msgid "@menu seen before first @node, creating `Top' node"
-msgstr ""
-"@menu-t találtam az első @node előtt. Létrehozom a „Szülő“ (Top) oldalt"
-
-#: makeinfo/insertion.c:1968
-msgid ""
-"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
-msgstr "esetleg a @top oldalt @ifnottex-be kellene tenni, @ifinfo helyett"
-
-#: makeinfo/insertion.c:1980
-msgid "@detailmenu seen before first node, creating `Top' node"
-msgstr ""
-"@detailmenu-t találtam az első @node előtt. Létrehozom a „Szülő“ (Top) oldalt"
-
-#: makeinfo/insertion.c:2036
-#, c-format
-msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
-msgstr ""
-"A(z) @%s -nek nincs értelme a „@titlepage“ és a „@quotation“ környezeten "
-"kívül"
-
-#: makeinfo/insertion.c:2050
-#, c-format
-msgid "@%s not meaningful outside `@titlepage' environment"
-msgstr "A(z) @%s -nek nincs értelme a „@titlepage“ környezeten kívül"
-
-#: makeinfo/insertion.c:2081
-#, c-format
-msgid "Unmatched `%c%s'"
-msgstr "Nem egyező „%c%s“"
-
-#: makeinfo/insertion.c:2086
-#, c-format
-msgid "`%c%s' needs something after it"
-msgstr "„%c%s“ után még írni kell valamit"
-
-#: makeinfo/insertion.c:2092
-#, c-format
-msgid "Bad argument `%s' to `@%s', using `%s'"
-msgstr "„%s“ rossz argument ehhez:: „@%s“, „%s“-t használom"
-
-#: makeinfo/insertion.c:2189
-#, c-format
-msgid "@%s not meaningful inside `@%s' block"
-msgstr "@%s -nek nincs jelentése a(z) „@%s“ blokkon belül"
-
-#: makeinfo/insertion.c:2198
-#, c-format
-msgid "@itemx not meaningful inside `%s' block"
-msgstr "@itemx -nek nincs jelentése a(z) „%s“ blokkon belül"
-
-# checkit
-#: makeinfo/insertion.c:2372
-#, c-format
-msgid "%c%s found outside of an insertion block"
-msgstr "%c%s egy beszúrási blokkon kívül található "
-
-#: makeinfo/lang.c:957
-#, c-format
-msgid "no default territory known for language `%s'"
-msgstr ""
-
-#: makeinfo/lang.c:1020
-#, c-format
-msgid "%s is not a valid ISO 639 language code"
-msgstr "%s nem egy ISO 639 szabvány szerinti nyelvkód"
-
-#: makeinfo/lang.c:1110
-#, c-format
-msgid "unrecognized encoding name `%s'"
-msgstr "ismeretlen kódolási név: „%s“"
-
-#: makeinfo/lang.c:1118
-#, c-format
-msgid "sorry, encoding `%s' not supported"
-msgstr "bocsánat, de a(z) „%s“ kódolás nem támogatott"
-
-#: makeinfo/lang.c:1170
-#, c-format
-msgid "invalid encoded character `%s'"
-msgstr "érvénytelen kódolt karakter: „%s“"
-
-#: makeinfo/lang.c:1478
-#, c-format
-msgid "%c%s expects `i' or `j' as argument, not `%c'"
-msgstr "%c%s „i“-t vagy „j“-t vár argumentumként, nem „%c“-t"
-
-#: makeinfo/lang.c:1482
-#, c-format
-msgid "%c%s expects a single character `i' or `j' as argument"
-msgstr "%c%s egy „i“ vagy „j“ karakter vár argumentumként"
-
-#: makeinfo/macro.c:128
-#, c-format
-msgid "macro `%s' previously defined"
-msgstr "a(z) „%s“ makró már korábban definiált lett"
-
-#: makeinfo/macro.c:132
-#, c-format
-msgid "here is the previous definition of `%s'"
-msgstr "„%s“ korábbi definíciója"
-
-#: makeinfo/macro.c:359
-#, c-format
-msgid "\\ in macro expansion followed by `%s' instead of parameter name"
-msgstr ""
-
-#: makeinfo/macro.c:401
-#, c-format
-msgid "Macro `%s' called on line %d with too many args"
-msgstr "A(z) „%s“ makró túl sok argumentummal lett meghívva a %d sorban"
-
-#: makeinfo/macro.c:580
-#, c-format
-msgid "%cend macro not found"
-msgstr "%cend makró nem található"
-
-#: makeinfo/macro.c:591
-msgid "@allow-recursion is deprecated; please use @rmacro instead"
-msgstr ""
-
-#: makeinfo/macro.c:606
-msgid "@quote-arg is deprecated; arguments are quoted by default"
-msgstr ""
-
-#: makeinfo/macro.c:649
-#, c-format
-msgid "mismatched @end %s with @%s"
-msgstr ""
-
-#: makeinfo/makeinfo.c:188
-#, c-format
-msgid "Too many errors!  Gave up.\n"
-msgstr "Túl sok hiba! Feladom.\n"
-
-#: makeinfo/makeinfo.c:306
-#, c-format
-msgid "%s:%d: warning: "
-msgstr "%s:%d: figyelem: "
-
-#: makeinfo/makeinfo.c:325 makeinfo/makeinfo.c:2297
-#, c-format
-msgid "Misplaced %c"
-msgstr "Rossz helyen levő %c"
-
-#: makeinfo/makeinfo.c:344
-#, c-format
-msgid "Try `%s --help' for more information.\n"
-msgstr "További információért próbálja meg a „%s --help“-t.\n"
-
-#: makeinfo/makeinfo.c:347
-#, c-format
-msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
-msgstr "Használat: %s [OPCIÓK] ... TEXINFO-FÁJL...\n"
-
-#: makeinfo/makeinfo.c:350
-msgid ""
-"Translate Texinfo source documentation to various other formats, by default\n"
-"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
-msgstr ""
-
-#: makeinfo/makeinfo.c:354
-#, c-format
-msgid ""
-"General options:\n"
-"      --error-limit=NUM       quit after NUM errors (default %d).\n"
-"      --document-language=STR locale to use in translating Texinfo keywords\n"
-"                                for the output document (default C).\n"
-"      --force                 preserve output even if errors.\n"
-"      --help                  display this help and exit.\n"
-"      --no-validate           suppress node cross-reference validation.\n"
-"      --no-warn               suppress warnings (but not errors).\n"
-"  -v, --verbose               explain what is being done.\n"
-"      --version               display version information and exit.\n"
-msgstr ""
-
-#: makeinfo/makeinfo.c:369
-#, no-wrap
-msgid ""
-"Output format selection (default is to produce Info):\n"
-"      --docbook               output Docbook XML rather than Info.\n"
-"      --html                  output HTML rather than Info.\n"
-"      --xml                   output Texinfo XML rather than Info.\n"
-"      --plaintext             output plain text rather than Info.\n"
-msgstr ""
-"Kimeneti formátum választás (az alap az Info):\n"
-"      --docbook               DocBook XML kimenet INfo helyett.\n"
-"      --html                  HTML kimenet Info helyett\n"
-"      --xml                   Texinfo XML kimenet Info helyett\n"
-"      --plaintext             sima szöveg kimenet Info helyett\n"
-
-#: makeinfo/makeinfo.c:377
-msgid ""
-"General output options:\n"
-"  -E, --macro-expand FILE     output macro-expanded source to FILE.\n"
-"                              ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and "
-"menus\n"
-"                                from Info output (thus producing plain "
-"text)\n"
-"                                or from HTML (thus producing shorter "
-"output);\n"
-"                                also, write to standard output by default.\n"
-"      --no-split              suppress splitting of Info or HTML output,\n"
-"                              generate only one output file.\n"
-"      --number-sections       output chapter and sectioning numbers.\n"
-"  -o, --output=FILE           output to FILE (directory if split HTML),\n"
-msgstr ""
-
-#: makeinfo/makeinfo.c:391
-#, c-format
-msgid ""
-"Options for Info and plain text:\n"
-"      --disable-encoding      do not output accented and special characters\n"
-"                                in Info output based on @documentencoding.\n"
-"      --enable-encoding       override --disable-encoding (default).\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default %"
-"d).\n"
-"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
-"                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node, "
-"in\n"
-"                                which they are defined (this is the "
-"default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %"
-"d).\n"
-"                                If VAL is `none', do not indent; if VAL is\n"
-"                                `asis', preserve existing indentation.\n"
-"      --split-size=NUM        split Info files at size NUM (default %d).\n"
-msgstr ""
-
-#: makeinfo/makeinfo.c:409
-msgid ""
-"Options for HTML:\n"
-"      --css-include=FILE      include FILE in HTML <style> output;\n"
-"                                read stdin if FILE is -.\n"
-"      --css-ref=URL           generate reference to a CSS file.\n"
-"      --transliterate-file-names\n"
-"                              produce file names in ASCII transliteration.\n"
-msgstr ""
-
-#: makeinfo/makeinfo.c:418
-#, c-format
-msgid ""
-"Options for XML and Docbook:\n"
-"      --output-indent=VAL     indent XML elements by VAL spaces (default %"
-"d).\n"
-"                                If VAL is 0, ignorable whitespace is "
-"dropped.\n"
-msgstr ""
-
-#: makeinfo/makeinfo.c:425
-msgid ""
-"Input file options:\n"
-"      --commands-in-node-names  allow @ commands in node names.\n"
-"  -D VAR                        define the variable VAR, as with @set.\n"
-"  -I DIR                        append DIR to the @include search path.\n"
-"  -P DIR                        prepend DIR to the @include search path.\n"
-"  -U VAR                        undefine the variable VAR, as with @clear.\n"
-msgstr ""
-
-#: makeinfo/makeinfo.c:434
-msgid ""
-"Conditional processing in input:\n"
-"  --ifdocbook       process @ifdocbook and @docbook even if\n"
-"                      not generating Docbook.\n"
-"  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
-"  --ifinfo          process @ifinfo even if not generating Info.\n"
-"  --ifplaintext     process @ifplaintext even if not generating plain text.\n"
-"  --iftex           process @iftex and @tex; implies --no-split.\n"
-"  --ifxml           process @ifxml and @xml.\n"
-"  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
-"  --no-ifhtml       do not process @ifhtml and @html text.\n"
-"  --no-ifinfo       do not process @ifinfo text.\n"
-"  --no-ifplaintext  do not process @ifplaintext text.\n"
-"  --no-iftex        do not process @iftex and @tex text.\n"
-"  --no-ifxml        do not process @ifxml and @xml text.\n"
-"\n"
-"  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
-msgstr ""
-
-#: makeinfo/makeinfo.c:453
-msgid ""
-"  The defaults for the @if... conditionals depend on the output format:\n"
-"  if generating HTML, --ifhtml is on and the others are off;\n"
-"  if generating Info, --ifinfo is on and the others are off;\n"
-"  if generating plain text, --ifplaintext is on and the others are off;\n"
-"  if generating XML, --ifxml is on and the others are off.\n"
-msgstr ""
-
-# Die "." am Zeilenende habe ich entfernt. -ke-
-#: makeinfo/makeinfo.c:461
-msgid ""
-"Examples:\n"
-"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
-"  makeinfo --html foo.texi               write HTML to @setfilename\n"
-"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
-"  makeinfo --docbook foo.texi            write DocBook XML to @setfilename\n"
-"  makeinfo --no-headers foo.texi         write plain text to standard "
-"output\n"
-"\n"
-"  makeinfo --html --no-headers foo.texi  write html without node lines, "
-"menus\n"
-"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
-"  makeinfo --no-split foo.texi           write one Info file however big\n"
-msgstr ""
-
-#: makeinfo/makeinfo.c:619
-#, c-format
-msgid "%s: Ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'.\n"
-msgstr ""
-"%s: Figyelmen kívül hagyom a fel nem ismert TEXINFO_OUTPUT_FORMAT értéket („%"
-"s“).\n"
-
-#: makeinfo/makeinfo.c:667 makeinfo/makeinfo.c:693 makeinfo/makeinfo.c:717
-#: makeinfo/makeinfo.c:761
-#, c-format
-msgid "%s: %s arg must be numeric, not `%s'.\n"
-msgstr "%s: a(z) %s argumentumának numerikusnak kell lennie, „%s“ helyett.\n"
-
-#: makeinfo/makeinfo.c:680
-#, c-format
-msgid "%s: could not open macro expansion output `%s'"
-msgstr "%s: nem tudom a makrókiterjesztés „%s“ kimenetét megnyitni"
-
-#: makeinfo/makeinfo.c:685
-#, c-format
-msgid "%s: ignoring second macro expansion output `%s'.\n"
-msgstr ""
-"%s: a második makrókiterjesztés „%s“ kimenetét figyelmen kívül hagyom.\n"
-
-#: makeinfo/makeinfo.c:732
-#, c-format
-msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr ""
-"%s: a --paragraph-indent argumentumának numerikusnak,  „none“-nak vagy  "
-"„asis“-nek kell lennie, „%s“ helyett.\n"
-
-#: makeinfo/makeinfo.c:750
-#, c-format
-msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr ""
-"%s: a --footnote-style argumentumának „separate“-nek vagy  „end“-nek kell "
-"lennie, „%s“ helyett.\n"
-
-#: makeinfo/makeinfo.c:825
-#, c-format
-msgid "%s: missing file argument.\n"
-msgstr "%s: hiányzó fájl argumentum.\n"
-
-#: makeinfo/makeinfo.c:1016 makeinfo/makeinfo.c:4121
-#, c-format
-msgid "Multiline command %c%s used improperly"
-msgstr "A többsoros %c%s parancs helytelenül van használva"
-
-#: makeinfo/makeinfo.c:1019
-#, c-format
-msgid "Expected `%s'"
-msgstr "„%s“-t várok"
-
-#: makeinfo/makeinfo.c:1498
-#, c-format
-msgid "Can't create directory `%s': %s"
-msgstr "A(z) „%s“ könyvtár nem hozható létre: %s"
-
-#: makeinfo/makeinfo.c:1544
-#, c-format
-msgid "No `%s' found in `%s'"
-msgstr "Nem található „%s“ ebben: „%s“"
-
-#: makeinfo/makeinfo.c:1624
-#, c-format
-msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
-msgstr ""
-"%s: A makrókiterjesztést átirányítom a stdout-ra, mivel az Info kimete oda "
-"megy.\n"
-
-#: makeinfo/makeinfo.c:1657
-#, c-format
-msgid "Making %s file `%s' from `%s'.\n"
-msgstr "%s fájl („%s“) készítése „%s“-ból.\n"
-
-#: makeinfo/makeinfo.c:1721
-#, c-format
-msgid ""
-"%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
-msgstr ""
-"%s: A fellépett hibák miatt eltávolítom a(z) „%s“ makró kimeneti állományt; "
-"a megtartásához használja  --force opciót.\n"
-
-#: makeinfo/makeinfo.c:1776
-#, c-format
-msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
-msgstr ""
-"%s: A fellépett hibák miatt eltávolítom a(z) „%s“ kimeneti állományt; a "
-"megtartásához használja  --force opciót.\n"
-
-#: makeinfo/makeinfo.c:2070
-#, c-format
-msgid "Unknown command `%s'"
-msgstr "Ismeretlen parancs: „%s“"
-
-#: makeinfo/makeinfo.c:2092
-#, c-format
-msgid "Use braces to give a command as an argument to @%s"
-msgstr "Kapcsos zárójelekkel egy parancsot is megadhat @%s argumentumaként"
-
-#: makeinfo/makeinfo.c:2351
-#, c-format
-msgid "%c%s expected braces"
-msgstr "%c%s kapcsos zárójelpárt vár"
-
-#: makeinfo/makeinfo.c:2364
-msgid "Unmatched }"
-msgstr "Pár nélküli }"
-
-#: makeinfo/makeinfo.c:2412
-msgid "NO_NAME!"
-msgstr "NINCS_NÉV!"
-
-#: makeinfo/makeinfo.c:2433
-#, c-format
-msgid "%c%s missing close brace"
-msgstr "%c%s hiányzó kapcsos bezárójel"
-
-#: makeinfo/makeinfo.c:2611
-#, c-format
-msgid "This is %s, produced by makeinfo version %s from %s.\n"
-msgstr "Ez itt %s, ami a makeinfo %s verziójával (%s) lett generálva.\n"
-
-#: makeinfo/makeinfo.c:3436
-#, c-format
-msgid "@image file `%s' (for HTML) not readable: %s"
-msgstr "@image a(z) „%s“ fájl (HTML) nem olvasható: %s"
-
-#: makeinfo/makeinfo.c:3442
-#, c-format
-msgid "No such file `%s'"
-msgstr "Nincs ilyen fájl: „%s“"
-
-#: makeinfo/makeinfo.c:3578
-#, c-format
-msgid "@image file `%s' (for text) unreadable: %s"
-msgstr "@image a(z) „%s“ fájl (szöveges) nem olvasható: %s"
-
-#: makeinfo/makeinfo.c:3587
-msgid "@image missing filename argument"
-msgstr "@image hiányzó fájlnév argumentum"
-
-# flag ? LM
-#: makeinfo/makeinfo.c:3805
-#, c-format
-msgid "undefined flag: %s"
-msgstr "ismeretlen flag: %s"
-
-# checkit
-#: makeinfo/makeinfo.c:3806
-#, c-format
-msgid "{No value for `%s'}"
-msgstr "{„%s“-hoz nincs érték}"
-
-#: makeinfo/makeinfo.c:3858
-#, c-format
-msgid "%c%s requires a name"
-msgstr "%c%s egy nevet igényel"
-
-# AATNEZNI ? LM
-#: makeinfo/makeinfo.c:3964
-#, c-format
-msgid "Reached eof before matching @end %s"
-msgstr "Korábban találtam fájl vége jelet, mint @end-t %s "
-
-#: makeinfo/makeinfo.c:4213
-#, c-format
-msgid "`%.40s...' is too long for expansion; not expanded"
-msgstr ""
-
-#: makeinfo/multi.c:116
-msgid "Missing } in @multitable template"
-msgstr "Hiányzó } a @multitable sablonban"
-
-#: makeinfo/multi.c:260
-#, c-format
-msgid "ignoring stray text `%s' after @multitable"
-msgstr ""
-"figyelmen kívül hagyom a @multitable után álló felesleges „%s“ szöveget"
-
-#: makeinfo/multi.c:400
-#, c-format
-msgid "Too many columns in multitable item (max %d)"
-msgstr "Túl sok oszlop szerepel a multitable elemben (max %d)"
-
-#: makeinfo/multi.c:563
-#, c-format
-msgid "[unexpected] cannot select column #%d in multitable"
-msgstr "[váratlan] nem lehet a(z) %d. oszlopot a multitable-ben kiválasztani"
-
-#: makeinfo/multi.c:592
-msgid "ignoring @tab outside of multitable"
-msgstr "figyelmen kívül hagyom a multitable-n kívül eső @tab-ot"
-
-# ATNEZNI ? LM
-#: makeinfo/multi.c:640
-#, c-format
-msgid "** Multicolumn output from last row:\n"
-msgstr "** Multicolumn kimenet az utolsó sortól:\n"
-
-#: makeinfo/multi.c:643
-#, c-format
-msgid "* column #%d: output = %s\n"
-msgstr "* %d. oszlop: kimenet = %s\n"
-
-#: makeinfo/node.c:279
-#, c-format
-msgid "Node `%s' previously defined at line %d"
-msgstr "A(z) „%s“ oldal korábban már definiálva lett a(z) %d. sorban"
-
-#: makeinfo/node.c:647
-#, c-format
-msgid "Formatting node %s...\n"
-msgstr "A(z) %s oldal formázása...\n"
-
-#: makeinfo/node.c:715
-#, c-format
-msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
-msgstr ""
-"A(z) „%s“ oldalon szerepelnie kell szekcionálás (sectioning) parancsnak (pl. "
-"%c%s)"
-
-#: makeinfo/node.c:879
-#, c-format
-msgid "No node name specified for `%c%s' command"
-msgstr "A(z) „%c%s“ parancshoz nem lett oldalnév rendelve"
-
-#: makeinfo/node.c:920 makeinfo/node.c:1161
-#, c-format
-msgid "Anchor `%s' and node `%s' map to the same file name"
-msgstr "A(z) „%s“ horgony és a(z) „%s“ oldal ugyanarra a fájlnévre mutatnak"
-
-#: makeinfo/node.c:923
-msgid "This @anchor command ignored; references to it will not work"
-msgstr ""
-"Ez az @anchor parancs figyelmen kívül lett hagyva; bármely rá való "
-"hivatkozás nem fog működni"
-
-#: makeinfo/node.c:925 makeinfo/node.c:1164
-msgid "Rename this anchor or use the `--no-split' option"
-msgstr "Nevezze át ezt a horgonyt vagy használja a „--no-split“ opciót"
-
-# split-HTML ? LM
-#: makeinfo/node.c:955
-#, c-format
-msgid "Unexpected string at end of split-HTML file `%s'"
-msgstr "Nem várt szöveg a(z) „%s“ split-HTML fájl végén"
-
-# HTML
-#: makeinfo/node.c:991
-msgid "Next:"
-msgstr "Következő:"
-
-#: makeinfo/node.c:1007
-msgid "Previous:"
-msgstr "Előző:"
-
-# HTML
-#: makeinfo/node.c:1021
-msgid "Up:"
-msgstr "Fel:"
-
-#: makeinfo/node.c:1158
-#, c-format
-msgid "Anchors `%s' and `%s' map to the same file name"
-msgstr "A(z) „%s“ és „%s“ horgonyok ugyanarra a fájlnévre mutatnak"
-
-#: makeinfo/node.c:1163
-msgid "@anchor command ignored; references to it will not work"
-msgstr ""
-"az @anchor parancs figyelmen kívül lett hagyva; bármely rá való hivatkozás "
-"nem fog működni"
-
-#: makeinfo/node.c:1360
-#, c-format
-msgid "%s reference to nonexistent node `%s' (perhaps incorrect sectioning?)"
-msgstr ""
-"%s egy nem létező oldalra („%s“) hivatkozik (esetleg hibás szekcionálás?)"
-
-#: makeinfo/node.c:1376
-msgid "Menu"
-msgstr "Menü"
-
-# ATNEZNI ? LM
-#: makeinfo/node.c:1378
-msgid "Cross"
-msgstr "Kereszt"
-
-# ATNEZNI ? LM
-#: makeinfo/node.c:1460
-#, c-format
-msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
-msgstr ""
-"A(z) „%s“ oldalnak a Következő (Next) mezője nem mutat sehova (esetleg hibás "
-"szekcionálás?)"
-
-#: makeinfo/node.c:1463
-#, c-format
-msgid "This node (%s) has the bad Prev"
-msgstr "Ennek az oldalnak (%s) hibás az Előző (Prev) mezője"
-
-#: makeinfo/node.c:1475
-msgid "Prev"
-msgstr "Előző"
-
-# ATNEZNI ? LM
-#: makeinfo/node.c:1518
-#, c-format
-msgid "Prev field of node `%s' not pointed to"
-msgstr "A(z) „%s“ oldalnak az Előző (Prev) mezője nem mutat sehova"
-
-#: makeinfo/node.c:1522
-#, c-format
-msgid "This node (%s) has the bad Next"
-msgstr "Ennek az oldalnak (%s) hibás a Következő (Next) mezője"
-
-#: makeinfo/node.c:1534
-#, c-format
-msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
-msgstr "„%s“-nek nincs Szülő (Up) mezője (esetleg hibás szekcionálás?)"
-
-#: makeinfo/node.c:1537
-msgid "Up"
-msgstr "Fel"
-
-#: makeinfo/node.c:1603
-#, c-format
-msgid "Node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr ""
-"A(z) „%s“ oldal nem tartalmaz menüelemet „%s“-hez, bár ez uóbbi a szülője"
-
-#: makeinfo/node.c:1635
-#, c-format
-msgid "unreferenced node `%s'"
-msgstr "nem hivatkozott oldal „%s“"
-
-#: makeinfo/node.c:1725
-#, c-format
-msgid "Removing %s\n"
-msgstr "Törlés: %s\n"
-
-#: makeinfo/node.c:1729
-#, c-format
-msgid "Can't remove file `%s': %s"
-msgstr "Nem törölhető fájl: `%s': %s"
-
-#: makeinfo/sectioning.c:122
-#, c-format
-msgid "Appendix %c"
-msgstr "Függelék: %c"
-
-#: makeinfo/sectioning.c:467
-#, c-format
-msgid "Internal error (search_sectioning) `%s'!"
-msgstr "Belső hiba (search_sectioning) „%s“!"
-
-#: makeinfo/sectioning.c:563
-#, c-format
-msgid "Internal error (search_sectioning) \"%s\"!"
-msgstr "Belső hiba (search_sectioning) „%s“!"
-
-#: makeinfo/sectioning.c:624
-#, c-format
-msgid "%c%s is obsolete; use %c%s instead"
-msgstr "%c%s már elavult; használja %c%s-t helyette"
-
-#: makeinfo/sectioning.c:640
-#, c-format
-msgid "Node with %ctop as a section already exists"
-msgstr "Olyan oldal már létezik, amelynek szekciója %ctop"
-
-#: makeinfo/sectioning.c:648
-#, c-format
-msgid "Here is the %ctop node"
-msgstr "Íme a %ctop oldal"
-
-#: makeinfo/sectioning.c:664
-#, c-format
-msgid "%ctop used before %cnode, defaulting to %s"
-msgstr ""
-"%ctop korábban szerepel, mint %cnode, az alapértelmezett %s-t használom"
-
-#: makeinfo/xml.c:1654
-#, c-format
-msgid "@image file `%s' unreadable: %s"
-msgstr "@image a(z) „%s“ fájl nem olvasható: %s"
-
-#: makeinfo/xml.c:1999
-msgid ""
-"@headitem as the last item of @multitable produces invalid Docbook documents"
-msgstr ""
-"ha a @headitem a @multitable utolsó elemeként szerepel, akkor a Docbook "
-"kimenet hibás lesz"
-
-#: makeinfo/xref.c:127
-msgid "First argument to cross-reference may not be empty"
-msgstr ""
-
-#: makeinfo/xref.c:133 makeinfo/xref.c:170 makeinfo/xref.c:205
-#: makeinfo/xref.c:459
-#, fuzzy
-msgid "see "
-msgstr "Lásd "
-
-#: makeinfo/xref.c:157
-#, c-format
-msgid "See section ``%s'' in "
-msgstr ""
-
-#: makeinfo/xref.c:252
-#, c-format
-msgid "Empty file name for HTML cross reference in `%s'"
-msgstr ""
-
-#: makeinfo/xref.c:387
-msgid "End of file reached while looking for `.' or `,'"
-msgstr ""
-
-#: makeinfo/xref.c:390
-#, c-format
-msgid "`.' or `,' must follow @%s, not `%c'"
-msgstr ""
-
-# node = csomópont? LM
-# vagy csak pont? sas
-#: makeinfo/xref.c:392
-#, fuzzy
-msgid "for cross-references in parentheses, use @pxref"
-msgstr "Ez az oldal nem tartalmaz kereszthivatkozást."
-
-#: makeinfo/xref.c:435
-msgid "First argument to @inforef may not be empty"
-msgstr ""
-
-#: util/install-info.c:170
-#, c-format
-msgid "%s: warning: "
-msgstr "%s: figyelem: "
-
-#: util/install-info.c:219
-#, c-format
-msgid " for %s"
+#: install-info/install-info.c:294
+#, fuzzy, c-format
+msgid "%s for %s"
 msgstr " ehhez: %s"
 
-#: util/install-info.c:444
+#: install-info/install-info.c:533
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
 msgstr "\tAz opciók teljes listájához próbálja meg a „%s --help“ parancsot!\n"
 
-#: util/install-info.c:452
-#, c-format
-msgid ""
-"Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
-"\n"
-"Add or remove entries in INFO-FILE from the Info directory DIR-FILE.\n"
-"\n"
-"Options:\n"
-" --debug           report what is being done.\n"
-" --delete          delete existing entries for INFO-FILE from DIR-FILE;\n"
-"                     don't insert any new entries.\n"
-" --dir-file=NAME   specify file name of Info directory file.\n"
-"                     This is equivalent to using the DIR-FILE argument.\n"
-" --entry=TEXT      insert TEXT as an Info directory entry.\n"
-"                     TEXT should have the form of an Info menu item line\n"
-"                     plus zero or more extra lines starting with "
-"whitespace.\n"
-"                     If you specify more than one entry, they are all "
-"added.\n"
-"                     If you don't specify any entries, they are determined\n"
-"                     from information in the Info file itself.\n"
-" --help            display this help and exit.\n"
-" --info-file=FILE  specify Info file to install in the directory.\n"
-"                     This is equivalent to using the INFO-FILE argument.\n"
-" --info-dir=DIR    same as --dir-file=DIR/dir.\n"
-" --item=TEXT       same as --entry TEXT.\n"
-"                     An Info directory entry is actually a menu item.\n"
-" --quiet           suppress warnings.\n"
-" --remove          same as --delete.\n"
-" --remove-exactly  only remove if the info file name matches exactly;\n"
-"                     .info and/or .gz suffixes are not ignored.\n"
-" --section=SEC     put this file's entries in section SEC of the directory.\n"
-"                     If you specify more than one section, all the entries\n"
-"                     are added in each of the sections.\n"
-"                     If you don't specify any sections, they are determined\n"
-"                     from information in the Info file itself.\n"
-" --section-regex=R if an entry is added to a section that does not exist,\n"
-"                     look for a section matching basic regular expression R\n"
-"                     (and ignoring case) before starting a new section.\n"
-" --test            suppress updating of DIR-FILE.\n"
-" --silent          suppress warnings.\n"
-" --version         display version information and exit.\n"
+#: install-info/install-info.c:541
+#, fuzzy, c-format
+msgid "Usage: %s [OPTION]... [INFO-FILE [DIR-FILE]]\n"
+msgstr "Használat: %s [OPCIÓK] ... TEXINFO-FÁJL...\n"
+
+#: install-info/install-info.c:543
+msgid "Add or remove entries in INFO-FILE from the Info directory DIR-FILE."
 msgstr ""
 
-#: util/install-info.c:518
+#: install-info/install-info.c:544
+msgid ""
+"INFO-FILE and DIR-FILE are required unless the --info-file\n"
+"or --dir-file (or --info-dir) options are given, respectively."
+msgstr ""
+
+#: install-info/install-info.c:548
+msgid ""
+"Options:\n"
+" --add-once          add only to first matching section, not all.\n"
+" --align=COL         start description of new entries at column COL.\n"
+" --calign=COL        format second and subsequent description lines to\n"
+"                       start at column COL."
+msgstr ""
+
+#: install-info/install-info.c:555
+msgid ""
+" --debug             report what is being done.\n"
+" --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
+"                      don't insert any new entries.\n"
+" --defsection=TEXT   like --section, but only use TEXT if no sections\n"
+"                      are present in INFO-FILE (replacing \"Miscellaneous"
+"\").\n"
+" --description=TEXT  the description of the entry is TEXT; used with\n"
+"                      the --name option to become synonymous with the\n"
+"                      --entry option.\n"
+" --dir-file=NAME     specify file name of Info directory file;\n"
+"                      equivalent to using the DIR-FILE argument.\n"
+" --dry-run           same as --test."
+msgstr ""
+
+#: install-info/install-info.c:568
+msgid ""
+" --entry=TEXT        insert TEXT as an Info directory entry,\n"
+"                      overriding any corresponding entry from DIR-FILE.\n"
+"                      TEXT is written as an Info menu item line followed\n"
+"                       by zero or more extra lines starting with "
+"whitespace.\n"
+"                      If you specify more than one entry, all are added.\n"
+"                      If you don't specify any entries, they are determined\n"
+"                       from information in the Info file itself."
+msgstr ""
+
+#: install-info/install-info.c:577
+msgid ""
+" --help              display this help and exit.\n"
+" --info-dir=DIR      same as --dir-file=DIR/dir.\n"
+" --info-file=FILE    specify Info file to install in the directory;\n"
+"                      equivalent to using the INFO-FILE argument.\n"
+" --item=TEXT         same as --entry=TEXT.\n"
+" --keep-old          do not replace entries, or remove empty sections."
+msgstr ""
+
+#: install-info/install-info.c:585
+msgid ""
+" --maxwidth, --max-width=COL  wrap description at column COL.\n"
+" --menuentry=TEXT    same as --name=TEXT.\n"
+" --name=TEXT         the name of the entry is TEXT; used with --description\n"
+"                      to become synonymous with the --entry option.\n"
+" --no-indent         do not format new entries in the DIR file.\n"
+" --quiet             suppress warnings."
+msgstr ""
+
+#: install-info/install-info.c:593
+msgid ""
+" --regex=R           put this file's entries in all sections that match the\n"
+"                      regular expression R (ignoring case).\n"
+" --remove            same as --delete.\n"
+" --remove-exactly    only remove if the info file name matches exactly;\n"
+"                      suffixes such as .info and .gz are not ignored.\n"
+" --section=SEC       put entries in section SEC of the directory.\n"
+"                      If you specify more than one section, all the entries\n"
+"                       are added in each of the sections.\n"
+"                      If you don't specify any sections, they are "
+"determined\n"
+"                       from information in the Info file itself;\n"
+"                       if nothing is available there, the --defsection\n"
+"                       value is used; if that is not specified, the\n"
+"                       final default is \"Miscellaneous\".\n"
+" --section R SEC     equivalent to --regex=R --section=SEC --add-once."
+msgstr ""
+
+#: install-info/install-info.c:609
+msgid ""
+" --silent            suppress warnings.\n"
+" --test              suppress updating of DIR-FILE.\n"
+" --version           display version information and exit."
+msgstr ""
+
+#: install-info/install-info.c:642
 #, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
 "topmost node of the Info hierarchy, called (dir)Top.\n"
 "The first time you invoke Info you start off looking at this node.\n"
-"\n"
+"%c\n"
 "%s\tThis is the top of the INFO tree\n"
 "\n"
 "  This (the Directory node) gives a menu of major topics.\n"
@@ -3023,131 +1999,2237 @@ msgid ""
 "%s\n"
 msgstr ""
 
-#: util/install-info.c:543
-#, c-format
-msgid "%s: could not read (%s) and could not create (%s)\n"
+#: install-info/install-info.c:666
+#, fuzzy, c-format
+msgid "%s: could not read (%s) and could not create (%s)"
 msgstr "%s:nem lehet beolvasni (%s) és nem lehet létrehozni (%s)\n"
 
-#: util/install-info.c:630
+#: install-info/install-info.c:1154 install-info/install-info.c:1194
 #, c-format
-msgid "%s: empty file"
-msgstr "%s: üres fájl"
-
-#: util/install-info.c:943 util/install-info.c:983
 msgid "START-INFO-DIR-ENTRY without matching END-INFO-DIR-ENTRY"
 msgstr "START-INFO-DIR-ENTRY-nek nincs END-INFO-DIR-ENTRY párja"
 
-#: util/install-info.c:978
+#: install-info/install-info.c:1189
+#, c-format
 msgid "END-INFO-DIR-ENTRY without matching START-INFO-DIR-ENTRY"
 msgstr "END-INFO-DIR-ENTRY-nek nincsSTART-INFO-DIR-ENTRY párja"
 
-#: util/install-info.c:1225 util/install-info.c:1235
+#: install-info/install-info.c:2064 install-info/install-info.c:2074
 #, c-format
 msgid "%s: already have dir file: %s\n"
 msgstr "%s: már van dir fájl: %s\n"
 
-#: util/install-info.c:1274
+#: install-info/install-info.c:2170
 #, c-format
 msgid "%s: Specify the Info file only once.\n"
 msgstr "%s: Az Info fájlt csak egyszer kell megadni!\n"
 
-#: util/install-info.c:1297
+#: install-info/install-info.c:2203
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
 msgstr ""
 
-#: util/install-info.c:1308
+#: install-info/install-info.c:2215
 #, c-format
 msgid "Error in regular expression `%s': %s"
 msgstr ""
 
-#: util/install-info.c:1353
+#: install-info/install-info.c:2277
 #, c-format
 msgid "excess command line argument `%s'"
 msgstr "felesleges parancssori argumentum: „%s“"
 
-#: util/install-info.c:1357
+#: install-info/install-info.c:2281
+#, c-format
 msgid "No input file specified; try --help for more information."
 msgstr ""
 "Nem lett input fájl megadva; további információért próbálja meg a --help-t!"
 
 # dir ? LM
-#: util/install-info.c:1360
+#: install-info/install-info.c:2283
+#, c-format
 msgid "No dir file specified; try --help for more information."
 msgstr ""
 "Nem lett dir fájl megadva; további információért próbálja meg a --help-t!"
 
+#: install-info/install-info.c:2304
+#, fuzzy, c-format
+msgid "Could not read %s."
+msgstr "A kimeneti fájl („%s“) nem hozható létre."
+
 # dir ? LM
-#: util/install-info.c:1384
+#: install-info/install-info.c:2451
 #, c-format
 msgid "no info dir entry in `%s'"
 msgstr "nincs info dir bejegyzés „%s“-ben"
 
-#: util/install-info.c:1525
-#, c-format
-msgid "menu item `%s' already exists, for file `%s'"
-msgstr "A(z) „%s“ menüelem már létezik a „%s“ fájlhoz"
-
-#: util/install-info.c:1548
+#: install-info/install-info.c:2699
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "„%s“-hez nem találtam bejegyzést; nincs mit törölni"
 
-#: util/texindex.c:223
-msgid "display this help and exit"
-msgstr "kiírja e súgót és kilép"
+#: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:855
+#: tp/Texinfo/Convert/Converter.pm:893 tp/Texinfo/Convert/Converter.pm:1204
+#: tp/Texinfo/Convert/DocBook.pm:327 tp/Texinfo/Convert/HTML.pm:6504
+#: tp/Texinfo/Convert/HTML.pm:6528 tp/Texinfo/Convert/HTML.pm:6905
+#: tp/Texinfo/Convert/HTML.pm:6963 tp/Texinfo/Convert/HTML.pm:7041
+#: tp/Texinfo/Convert/HTML.pm:7118 tp/Texinfo/Convert/IXIN.pm:293
+#: tp/Texinfo/Convert/Info.pm:295 tp/Texinfo/Convert/Plaintext.pm:546
+#: tp/Texinfo/Convert/TexinfoXML.pm:457
+#, fuzzy, perl-format
+msgid "could not open %s for writing: %s"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
 
-#: util/texindex.c:225
-msgid "send output to FILE"
-msgstr "kimenet átirányítása FILE-ba"
-
-#: util/texindex.c:227
-msgid "display version information and exit"
-msgstr "kiírja a verzióinformációt és kilép"
-
-#: util/texindex.c:237
-#, c-format
-msgid "Usage: %s [OPTION]... FILE...\n"
-msgstr "Használat: %s [OPCIÓK]... FÁJL...\n"
-
-#: util/texindex.c:238
-#, c-format
-msgid "Generate a sorted index for each TeX output FILE.\n"
-msgstr "Rendezett tárgymutató generálása minden TeX kimeneti fájlhoz.\n"
-
-#: util/texindex.c:241
-#, c-format
-msgid "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
-msgstr "FÁJL... általában „foo.%c%c“ alakú egy „foo.texi“ dokumentum esetén.\n"
-
-#: util/texindex.c:243
-#, c-format
-msgid ""
-"\n"
-"Options:\n"
+#: tp/Texinfo/Common.pm:881
+msgid "recursion is always allowed"
 msgstr ""
+
+#: tp/Texinfo/Common.pm:882
+msgid "arguments are quoted by default"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:1105
+#, fuzzy, perl-format
+msgid "%s is not a valid language code"
+msgstr "%s nem egy ISO 639 szabvány szerinti nyelvkód"
+
+#: tp/Texinfo/Common.pm:1110
+#, fuzzy, perl-format
+msgid "%s is not a valid region code"
+msgstr "%s nem egy ISO 639 szabvány szerinti nyelvkód"
+
+#: tp/Texinfo/Common.pm:1128
+#, perl-format
+msgid "%s is not a valid split possibility"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:1151
+#, fuzzy, perl-format
+msgid "could not read %s: %s"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
+
+#: tp/Texinfo/Common.pm:1170
+#, fuzzy, perl-format
+msgid "error on closing @verbatiminclude file %s: %s"
+msgstr "hiba a(z) „%s“ output fájl bezárásakor"
+
+#: tp/Texinfo/Common.pm:1176 tp/Texinfo/Parser.pm:3353
+#, fuzzy, perl-format
+msgid "@%s: could not find %s"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
+
+#: tp/Texinfo/Common.pm:1520
+#, fuzzy, perl-format
+msgid "could not open html refs config file %s: %s"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
+
+# action=művelet ? LM
+# általában az - sas
+#: tp/Texinfo/Common.pm:1548
+#, fuzzy
+msgid "missing type"
+msgstr "hiányzó műveletnév"
+
+#: tp/Texinfo/Common.pm:1551
+#, fuzzy, perl-format
+msgid "unrecognized type: %s"
+msgstr "%s: ismeretlen opció „--%s“\n"
+
+#: tp/Texinfo/Common.pm:1568
+#, fuzzy, perl-format
+msgid "error on closing html refs config file %s: %s"
+msgstr "hiba a(z) „%s“ output fájl bezárásakor"
+
+#: tp/Texinfo/Common.pm:1603
+msgid "no node to be renamed"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:1614
+msgid "nodes without a new name at the end of file"
+msgstr ""
+
+#: tp/Texinfo/Common.pm:1624 tp/Texinfo/Parser.pm:926
+#, fuzzy, perl-format
+msgid "could not open %s: %s"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
+
+#: tp/Texinfo/Common.pm:2144
+#, perl-format
+msgid "could not protect hash character in @%s"
+msgstr ""
+
+#: tp/Texinfo/Convert/Converter.pm:395 tp/Texinfo/Convert/Converter.pm:414
+#, fuzzy, perl-format
+msgid "Obsolete variable %s\n"
+msgstr "Változó beállítása:"
+
+#: tp/Texinfo/Convert/Converter.pm:794
+#, perl-format
+msgid "%s: output incompatible with split"
+msgstr ""
+
+#: tp/Texinfo/Convert/Converter.pm:876 tp/Texinfo/Convert/Converter.pm:909
+#: tp/Texinfo/Convert/DocBook.pm:363 tp/Texinfo/Convert/HTML.pm:6931
+#: tp/Texinfo/Convert/HTML.pm:6989 tp/Texinfo/Convert/IXIN.pm:915
+#: tp/Texinfo/Convert/Info.pm:161 tp/Texinfo/Convert/Info.pm:187
+#: tp/Texinfo/Convert/Info.pm:215 tp/Texinfo/Convert/Info.pm:275
+#: tp/Texinfo/Convert/TexinfoXML.pm:476 tp/Texinfo/Parser.pm:2035
+#, fuzzy, perl-format
+msgid "error on closing %s: %s"
+msgstr "hiba a(z) „%s“ output fájl bezárásakor"
+
+#: tp/Texinfo/Convert/Converter.pm:987
+#, fuzzy, perl-format
+msgid "could not create directories `%s' or `%s': %s"
+msgstr "A(z) „%s“ könyvtár nem hozható létre: %s"
+
+#: tp/Texinfo/Convert/Converter.pm:995
+#, fuzzy, perl-format
+msgid "could not create directory `%s': %s"
+msgstr "A(z) „%s“ könyvtár nem hozható létre: %s"
+
+#: tp/Texinfo/Convert/DocBook.pm:970
+#, fuzzy, perl-format
+msgid "@image file `%s' not found, using `%s'"
+msgstr "@image a(z) „%s“ fájl nem olvasható: %s"
+
+#: tp/Texinfo/Convert/DocBook.pm:1084 tp/Texinfo/Parser.pm:5388
+#, fuzzy
+msgid "no argument specified for @U"
+msgstr "A(z) „%c%s“ parancshoz nem lett oldalnév rendelve"
+
+#: tp/Texinfo/Convert/HTML.pm:1684
+#, fuzzy, perl-format
+msgid "@image file `%s' (for HTML) not found, using `%s'"
+msgstr "@image a(z) „%s“ fájl (HTML) nem olvasható: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:2372
+#, perl-format
+msgid "raw format %s is not converted"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4888
+msgid "string not closed in css file"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4890
+#, fuzzy
+msgid "--css-include ended in comment"
+msgstr "%s:%d: --css-file kommenttel végződik"
+
+#: tp/Texinfo/Convert/HTML.pm:4892
+msgid "@import not finished in css file"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4918
+#, perl-format
+msgid "CSS file %s not found"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:4924
+#, fuzzy, perl-format
+msgid "could not open --include-file %s: %s"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
+
+#: tp/Texinfo/Convert/HTML.pm:4934
+#, fuzzy, perl-format
+msgid "error on closing CSS file %s: %s"
+msgstr "hiba a(z) „%s“ output fájl bezárásakor"
+
+#: tp/Texinfo/Convert/HTML.pm:5801 tp/Texinfo/Convert/HTML.pm:5805
+#, fuzzy, perl-format
+msgid "no htmlxref.cnf entry found for `%s'"
+msgstr "Nincs tárgymutató ehhez: %s\n"
+
+#: tp/Texinfo/Convert/HTML.pm:6499
+#, fuzzy, perl-format
+msgid "error on closing frame file %s: %s"
+msgstr "hiba a(z) „%s“ output fájl bezárásakor"
+
+#: tp/Texinfo/Convert/HTML.pm:6523
+#, fuzzy, perl-format
+msgid "error on closing TOC frame file %s: %s"
+msgstr "hiba a(z) „%s“ output fájl bezárásakor"
+
+#: tp/Texinfo/Convert/HTML.pm:6638
+#, perl-format
+msgid "handler %s of stage %s priority %s failed"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:6839
+msgid "must specify a title with a title command or @top"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:7048
+#, fuzzy, perl-format
+msgid "error on closing redirection node file %s: %s"
+msgstr "hiba a(z) „%s“ output fájl bezárásakor"
+
+# ATNEZNI LM
+#: tp/Texinfo/Convert/HTML.pm:7073
+#, fuzzy, perl-format
+msgid "old name for `%s' is a node of the document"
+msgstr "Nincs Előző vagy Fel lehetőség e ponthoz e dokumentumban."
+
+#: tp/Texinfo/Convert/HTML.pm:7079
+#, fuzzy, perl-format
+msgid "file empty for renamed node `%s'"
+msgstr "nem hivatkozott oldal „%s“"
+
+#: tp/Texinfo/Convert/HTML.pm:7093
+#, perl-format
+msgid "target node (new name for `%s') not in document: %s"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:7125
+#, perl-format
+msgid "error on closing renamed node redirection file %s: %s"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:7163
+msgid "empty node name"
+msgstr ""
+
+#: tp/Texinfo/Convert/HTML.pm:7165 tp/Texinfo/Parser.pm:3697
+#, perl-format
+msgid "syntax for an external node used for `%s'"
+msgstr ""
+
+# node = csomópont? LM
+# vagy csak pont? sas
+#: tp/Texinfo/Convert/Info.pm:106
+#, fuzzy
+msgid "document without nodes"
+msgstr "Nincs menü ezen az oldalon."
+
+#: tp/Texinfo/Convert/Info.pm:123
+msgid "document without Top node"
+msgstr ""
+
+#: tp/Texinfo/Convert/Info.pm:171
+#, perl-format
+msgid "rename %s failed: %s"
+msgstr ""
+
+#: tp/Texinfo/Convert/Info.pm:247
+#, perl-format
+msgid "@%s output more than once: %s"
+msgstr ""
+
+#: tp/Texinfo/Convert/Info.pm:379
+#, fuzzy, perl-format
+msgid "@%s outside of any node"
+msgstr "(az oldalakon kívül)"
+
+#: tp/Texinfo/Convert/Info.pm:422
+#, perl-format
+msgid "@node name should not contain `,': %s"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:1334
+#, perl-format
+msgid "Index entry in @%s with : produces invalid Info: %s"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:1381 tp/Texinfo/Parser.pm:2722
+#, fuzzy, perl-format
+msgid "entry for index `%s' outside of any node"
+msgstr "A(z) „%s“ tárgymutató bejegyzése az oldalakon kívülre esik"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1495
+#, fuzzy, perl-format
+msgid "error on closing image text file %s: %s"
+msgstr "hiba a(z) „%s“ output fájl bezárásakor"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1500
+#, perl-format
+msgid "@image file `%s' unreadable: %s"
+msgstr "@image a(z) „%s“ fájl nem olvasható: %s"
+
+#: tp/Texinfo/Convert/Plaintext.pm:1523
+#, perl-format
+msgid "could not find @image file `%s.txt' nor alternate text"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:1931
+msgid ""
+"@strong{Note...} produces a spurious cross-reference in Info; reword to "
+"avoid that"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:2161
+#, perl-format
+msgid "@%s cross-reference name should not contain `:'"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:2193
+#, fuzzy, perl-format
+msgid "@%s node name should not contain `%s'"
+msgstr "Nincs %stárgymutató-bejegyzés, ami „%s!H-t tartalmazná."
+
+#: tp/Texinfo/Convert/Plaintext.pm:2226
+#, perl-format
+msgid "@%s node name should not contain `:'"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:2272
+#, perl-format
+msgid "`.' or `,' must follow @xref, not %s"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:2275
+msgid "`.' or `,' must follow @xref"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:3118
+#, perl-format
+msgid "menu entry node name should not contain `%s'"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:3129
+msgid "menu entry node name should not contain `:'"
+msgstr ""
+
+#: tp/Texinfo/Convert/Plaintext.pm:3145
+msgid "menu entry name should not contain `:'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:910
+#, perl-format
+msgid "@%s should only appear at beginning or end of document"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1160 tp/Texinfo/Structuring.pm:594
+#, perl-format
+msgid "multiple @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1194
+#, perl-format
+msgid "bad syntax for @%s argument: %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1210
+#, perl-format
+msgid "bad or empty @%s formal argument: %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1219 tp/Texinfo/Parser.pm:4856
+#: tp/Texinfo/Parser.pm:4882 tp/Texinfo/Parser.pm:5671
+#: tp/Texinfo/Parser.pm:5687 tp/Texinfo/Parser.pm:5702
+#, perl-format
+msgid "%c%s requires a name"
+msgstr "%c%s egy nevet igényel"
+
+#: tp/Texinfo/Parser.pm:1223 tp/Texinfo/Parser.pm:4859
+#: tp/Texinfo/Parser.pm:4885 tp/Texinfo/Parser.pm:5674
+#: tp/Texinfo/Parser.pm:5690 tp/Texinfo/Parser.pm:5705
+#, fuzzy, perl-format
+msgid "bad name for @%s"
+msgstr "Rossz argumentum ide: @%s"
+
+#: tp/Texinfo/Parser.pm:1341
+#, perl-format
+msgid "@end %s seen before @%s closing brace"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1345
+#, perl-format
+msgid "@%s seen before @%s closing brace"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1350
+#, perl-format
+msgid "%c%s missing close brace"
+msgstr "%c%s hiányzó kapcsos bezárójel"
+
+#: tp/Texinfo/Parser.pm:1354
+#, perl-format
+msgid "@%s missing closing delimiter sequence: %s}"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1476
+#, perl-format
+msgid "@itemx should not begin @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1544
+msgid "@itemx must follow @item"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1712
+#, perl-format
+msgid "@%s has text but no @item"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1743
+#, perl-format
+msgid "`@end' expected `%s', but saw `%s'"
+msgstr "„@end“-t vártam „%s“, de „%s“-t találtam"
+
+#: tp/Texinfo/Parser.pm:1746
+#, perl-format
+msgid "@%s seen before @end %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:1750
+#, fuzzy, perl-format
+msgid "no matching `%cend %s'"
+msgstr "Nincs egyező „%cend %s“"
+
+#: tp/Texinfo/Parser.pm:1776 tp/Texinfo/Parser.pm:5204
+#: tp/Texinfo/Parser.pm:5470
+#, fuzzy, perl-format
+msgid "misplaced %c"
+msgstr "Rossz helyen levő %c"
+
+#: tp/Texinfo/Parser.pm:1874 tp/Texinfo/Parser.pm:3312
+#, fuzzy, perl-format
+msgid "unmatched `%c%s'"
+msgstr "Nem egyező „%c%s“"
+
+#: tp/Texinfo/Parser.pm:2110
+#, fuzzy, perl-format
+msgid "macro `%s' called with too many args"
+msgstr "A(z) „%s“ makró túl sok argumentummal lett meghívva a %d sorban"
+
+#: tp/Texinfo/Parser.pm:2132
+#, fuzzy, perl-format
+msgid "@%s missing close brace"
+msgstr "%c%s hiányzó kapcsos bezárójel"
+
+#: tp/Texinfo/Parser.pm:2140
+#, fuzzy, perl-format
+msgid "macro `%s' declared without argument called with an argument"
+msgstr "A(z) „%s“ makró túl sok argumentummal lett meghívva a %d sorban"
+
+#: tp/Texinfo/Parser.pm:2175
+#, perl-format
+msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:2650
+#, fuzzy, perl-format
+msgid "@%s `%s' previously defined"
+msgstr "a(z) „%s“ makró már korábban definiált lett"
+
+#: tp/Texinfo/Parser.pm:2655
+#, fuzzy, perl-format
+msgid "here is the previous definition as @%s"
+msgstr "„%s“ korábbi definíciója"
+
+# action=művelet ? LM
+# általában az - sas
+#: tp/Texinfo/Parser.pm:3016
+#, fuzzy, perl-format
+msgid "missing name for @%s"
+msgstr "hiányzó műveletnév"
+
+#: tp/Texinfo/Parser.pm:3021
+#, perl-format
+msgid "missing category for @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3073
+#, fuzzy, perl-format
+msgid "unexpected argument on @%s line: %s"
+msgstr "Rossz argumentum ide: %s: %s"
+
+#: tp/Texinfo/Parser.pm:3089
+#, fuzzy
+msgid "empty multitable"
+msgstr "%s: üres fájl"
+
+#: tp/Texinfo/Parser.pm:3145 tp/Texinfo/Parser.pm:5784
+#, fuzzy, perl-format
+msgid "superfluous argument to @%s"
+msgstr "Rossz argumentum ide: @%s"
+
+#: tp/Texinfo/Parser.pm:3151 tp/Texinfo/Parser.pm:5806
+#: tp/Texinfo/Parser.pm:5818
+#, fuzzy, perl-format
+msgid "bad argument to @%s"
+msgstr "Rossz argumentum ide: @%s"
+
+# %citem ist ein Texinfo-Befehl
+#: tp/Texinfo/Parser.pm:3162
+#, perl-format
+msgid "%s requires an argument: the formatter for %citem"
+msgstr "%s egy argumentumot igényel: %citem formázását"
+
+#: tp/Texinfo/Parser.pm:3167
+#, perl-format
+msgid "command @%s not accepting argument in brace should not be on @%s line"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3202
+#, fuzzy, perl-format
+msgid "accent command `@%s' not allowed as @%s argument"
+msgstr "%s: Opció „--%s“ nem fogad argumentumot\n"
+
+#: tp/Texinfo/Parser.pm:3290 tp/Texinfo/Parser.pm:3429
+#: tp/Texinfo/Parser.pm:5777
+#, fuzzy, perl-format
+msgid "@%s missing argument"
+msgstr "%s: hiányzó fájl argumentum.\n"
+
+#: tp/Texinfo/Parser.pm:3302
+#, fuzzy, perl-format
+msgid "unknown @end %s"
+msgstr "Ismeretlen tárgymutató „%s“"
+
+#: tp/Texinfo/Parser.pm:3324 tp/Texinfo/Parser.pm:3943
+#, fuzzy, perl-format
+msgid "superfluous argument to @%s %s: %s"
+msgstr "Rossz argumentum ide: %s: %s"
+
+#: tp/Texinfo/Parser.pm:3329 tp/Texinfo/Parser.pm:5861
+#: tp/Texinfo/Parser.pm:5906 tp/Texinfo/Parser.pm:5935
+#: tp/Texinfo/Parser.pm:5976 tp/Texinfo/Parser.pm:6055
+#, fuzzy, perl-format
+msgid "bad argument to @%s: %s"
+msgstr "Rossz argumentum ide: %s: %s"
+
+#: tp/Texinfo/Parser.pm:3348
+#, fuzzy, perl-format
+msgid "@%s: could not open %s: %s"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
+
+#: tp/Texinfo/Parser.pm:3360
+#, perl-format
+msgid "encoding `%s' is not a canonical texinfo encoding"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3369
+#, perl-format
+msgid "unrecognized encoding name `%s'"
+msgstr "ismeretlen kódolási név: „%s“"
+
+#: tp/Texinfo/Parser.pm:3516
+#, perl-format
+msgid "@%s after the first element"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3523
+#, fuzzy, perl-format
+msgid "@%s only meaningful on a @multitable line"
+msgstr "A(z) @%s -nek nincs értelme a „@titlepage“ környezeten kívül"
+
+#: tp/Texinfo/Parser.pm:3563
+#, perl-format
+msgid "@%s should not be associated with @top"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3575
+#, perl-format
+msgid "@node precedes @%s, but parts may not be associated with nodes"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3677
+#, fuzzy, perl-format
+msgid "empty argument in @%s"
+msgstr "Rossz argumentum ide: @%s"
+
+#: tp/Texinfo/Parser.pm:3681
+#, perl-format
+msgid "empty node name after expansion `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3724
+#, fuzzy, perl-format
+msgid "empty menu entry name in `%s'"
+msgstr "Nincs menü a(z) „%s“ oldalon."
+
+#: tp/Texinfo/Parser.pm:3732
+msgid "empty node name in menu entry"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3805
+#, fuzzy, perl-format
+msgid "@%s should not appear in @%s"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
+
+#: tp/Texinfo/Parser.pm:3937
+#, perl-format
+msgid "@end %s should only appear at a line beginning"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:3960
+#, perl-format
+msgid "macro `%s' previously defined"
+msgstr "a(z) „%s“ makró már korábban definiált lett"
+
+#: tp/Texinfo/Parser.pm:3963
+#, perl-format
+msgid "here is the previous definition of `%s'"
+msgstr "„%s“ korábbi definíciója"
+
+#: tp/Texinfo/Parser.pm:3968
+#, perl-format
+msgid "redefining Texinfo language command: @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4017
+#, perl-format
+msgid "@%s without associated character"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4087
+#, perl-format
+msgid ""
+"@%s defined with zero or more than one argument should be invoked with {}"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4111
+#, perl-format
+msgid ""
+"macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
+"value %d)"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4120
+#, perl-format
+msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4176
+#, perl-format
+msgid "accent command `@%s' must not be followed by whitespace"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4182
+#, fuzzy, perl-format
+msgid "use braces to give a command as an argument to @%s"
+msgstr "Kapcsos zárójelekkel egy parancsot is megadhat @%s argumentumaként"
+
+#: tp/Texinfo/Parser.pm:4195 tp/Texinfo/Parser.pm:5325
+#, fuzzy, perl-format
+msgid "%c%s expects `i' or `j' as argument, not `%s'"
+msgstr "%c%s „i“-t vagy „j“-t vár argumentumként, nem „%c“-t"
+
+#: tp/Texinfo/Parser.pm:4207
+#, perl-format
+msgid "accent command `@%s' must not be followed by new line"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4218
+#, fuzzy, perl-format
+msgid "@%s expected braces"
+msgstr "%c%s kapcsos zárójelpárt vár"
+
+# flag ? LM
+#: tp/Texinfo/Parser.pm:4383
+#, perl-format
+msgid "undefined flag: %s"
+msgstr "ismeretlen flag: %s"
+
+#: tp/Texinfo/Parser.pm:4386
+msgid "bad syntax for @value"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4393
+#, fuzzy, perl-format
+msgid "%c%s is obsolete."
+msgstr "%c%s elavult"
+
+#: tp/Texinfo/Parser.pm:4396
+#, fuzzy, perl-format
+msgid "%c%s is obsolete; %s"
+msgstr "%c%s elavult"
+
+#: tp/Texinfo/Parser.pm:4405
+#, perl-format
+msgid "@%s should only appear at a line beginning"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4496
+#, fuzzy, perl-format
+msgid "@%s not allowed inside `@%s' block"
+msgstr "@%s -nek nincs jelentése a(z) „@%s“ blokkon belül"
+
+#: tp/Texinfo/Parser.pm:4505
+#, perl-format
+msgid "@%s should only appear in heading or footing"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4631 tp/Texinfo/Parser.pm:4648
+#: tp/Texinfo/Parser.pm:4698
+#, perl-format
+msgid "@%s not meaningful inside `@%s' block"
+msgstr "@%s -nek nincs jelentése a(z) „@%s“ blokkon belül"
+
+#: tp/Texinfo/Parser.pm:4658
+#, fuzzy, perl-format
+msgid "@%s in empty multitable"
+msgstr "%s: üres fájl"
+
+#: tp/Texinfo/Parser.pm:4664
+msgid "@tab before @item"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4667
+#, fuzzy, perl-format
+msgid "too many columns in multitable item (max %d)"
+msgstr "Túl sok oszlop szerepel a multitable elemben (max %d)"
+
+#: tp/Texinfo/Parser.pm:4704
+msgid "ignoring @tab outside of multitable"
+msgstr "figyelmen kívül hagyom a multitable-n kívül eső @tab-ot"
+
+#: tp/Texinfo/Parser.pm:4708
+#, perl-format
+msgid "@%s outside of table or list"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4745
+#, fuzzy, perl-format
+msgid "must be after `@%s' to use `@%s'"
+msgstr "Csak a(z) „@%s“ környezetben használható a(z) „@%s“"
+
+#: tp/Texinfo/Parser.pm:4787
+#, perl-format
+msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
+msgstr ""
+"A(z) @%s -nek nincs értelme a „@titlepage“ és a „@quotation“ környezeten "
+"kívül"
+
+#: tp/Texinfo/Parser.pm:4791
+msgid "@dircategory after first node"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:4979
+#, fuzzy, perl-format
+msgid "region %s inside region %s is not allowed"
+msgstr "Lábjegyzetben nem lehet lábjegyzet"
+
+#: tp/Texinfo/Parser.pm:4997
+msgid "@direntry after first node"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5005
+#, fuzzy, perl-format
+msgid "@%s seen before first @node"
+msgstr ""
+"@menu-t találtam az első @node előtt. Létrehozom a „Szülő“ (Top) oldalt"
+
+#: tp/Texinfo/Parser.pm:5008
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr "esetleg a @top oldalt @ifnottex-be kellene tenni, @ifinfo helyett"
+
+#: tp/Texinfo/Parser.pm:5070
+#, perl-format
+msgid "@%s should only appear in math context"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5078
+#, fuzzy, perl-format
+msgid "unknown command `%s'"
+msgstr "Ismeretlen parancs: „%s“"
+
+#: tp/Texinfo/Parser.pm:5088
+#, fuzzy
+msgid "unexpected @"
+msgstr "„%s“-t várok"
+
+#: tp/Texinfo/Parser.pm:5117
+#, fuzzy, perl-format
+msgid "@%s is not meaningful outside `@float' environment"
+msgstr "A(z) @%s -nek nincs értelme a „@float“ környezeten kívül"
+
+#: tp/Texinfo/Parser.pm:5122
+#, perl-format
+msgid "@%s should be right below `@float'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5130
+#, perl-format
+msgid "ignoring multiple @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5249
+#, perl-format
+msgid "command @%s does not accept arguments"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5273
+#, perl-format
+msgid "command @%s missing a node or external manual argument"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5292
+#, perl-format
+msgid "in @%s empty cross reference name after expansion `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5303
+#, perl-format
+msgid "in @%s empty cross reference title after expansion `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5316
+msgid "@image missing filename argument"
+msgstr "@image hiányzó fájlnév argumentum"
+
+#: tp/Texinfo/Parser.pm:5348
+#, fuzzy, perl-format
+msgid "@%s missing first argument"
+msgstr "%s: hiányzó fájl argumentum.\n"
+
+#: tp/Texinfo/Parser.pm:5393
+#, fuzzy, perl-format
+msgid "non-hex digits in argument for @U: %s"
+msgstr "Rossz argumentum ide: %s: %s"
+
+#: tp/Texinfo/Parser.pm:5399
+#, perl-format
+msgid "fewer than four hex digits in argument for @U: %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5412
+#, perl-format
+msgid "argument for @U exceeds size of integer: %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5418
+#, perl-format
+msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5546
+msgid "superfluous arguments for node"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5596
+#, fuzzy, perl-format
+msgid "expected @end %s"
+msgstr "„%s“-t várok"
+
+#: tp/Texinfo/Parser.pm:5718
+#, fuzzy, perl-format
+msgid "@%s should only accept a @-command as argument, not `%s'"
+msgstr "Kapcsos zárójelekkel egy parancsot is megadhat @%s argumentumaként"
+
+#: tp/Texinfo/Parser.pm:5728
+#, fuzzy, perl-format
+msgid "remaining argument on @%s line: %s"
+msgstr "Rossz argumentum ide: %s: %s"
+
+#: tp/Texinfo/Parser.pm:5801
+#, fuzzy, perl-format
+msgid "environment command %s as argument to @%s"
+msgstr "Kapcsos zárójelekkel egy parancsot is megadhat @%s argumentumaként"
+
+#: tp/Texinfo/Parser.pm:5823
+#, perl-format
+msgid "empty @%s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5831
+#, perl-format
+msgid "column fraction not a number: %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5840
+#, fuzzy, perl-format
+msgid "@sp arg must be numeric, not `%s'"
+msgstr "%s: a(z) %s argumentumának numerikusnak kell lennie, „%s“ helyett.\n"
+
+#: tp/Texinfo/Parser.pm:5849
+#, perl-format
+msgid "reserved index name %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5868
+#, fuzzy, perl-format
+msgid "unknown source index in @%s: %s"
+msgstr "Ismeretlen tárgymutató „%s“"
+
+#: tp/Texinfo/Parser.pm:5871
+#, perl-format
+msgid "unknown destination index in @%s: %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5901
+#, perl-format
+msgid "@%s leads to a merging of %s in itself, ignoring"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5914
+#, fuzzy, perl-format
+msgid "unknown index `%s' in @printindex"
+msgstr "Ismeretlen tárgymutató „%s“ itt: @printindex"
+
+#: tp/Texinfo/Parser.pm:5920
+#, perl-format
+msgid "printing an index `%s' merged in another one `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5928
+#, perl-format
+msgid "printindex before document beginning: @printindex %s"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5944
+#, fuzzy, perl-format
+msgid "@%s arg must be `top' or `bottom', not `%s'"
+msgstr "%s: a(z) %s argumentumának numerikusnak kell lennie, „%s“ helyett.\n"
+
+#: tp/Texinfo/Parser.pm:5952
+#, perl-format
+msgid "Only @%s 10 or 11 is supported, not `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:5960
+#, fuzzy, perl-format
+msgid "@%s arg must be `separate' or `end', not `%s'"
+msgstr ""
+"%s: a --footnote-style argumentumának „separate“-nek vagy  „end“-nek kell "
+"lennie, „%s“ helyett.\n"
+
+#: tp/Texinfo/Parser.pm:5968
+#, fuzzy, perl-format
+msgid "@%s arg must be `on', `off' or `odd', not `%s'"
+msgstr "%s: a(z) %s argumentumának numerikusnak kell lennie, „%s“ helyett.\n"
+
+#: tp/Texinfo/Parser.pm:5986 tp/Texinfo/Parser.pm:5991
+#, fuzzy, perl-format
+msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
+msgstr ""
+"%s: a --paragraph-indent argumentumának numerikusnak,  „none“-nak vagy  "
+"„asis“-nek kell lennie, „%s“ helyett.\n"
+
+#: tp/Texinfo/Parser.pm:5999
+#, fuzzy, perl-format
+msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
+msgstr ""
+"%s: a --paragraph-indent argumentumának numerikusnak,  „none“-nak vagy  "
+"„asis“-nek kell lennie, „%s“ helyett.\n"
+
+#: tp/Texinfo/Parser.pm:6009
+#, fuzzy, perl-format
+msgid "@exampleindent arg must be numeric/`asis', not `%s'"
+msgstr ""
+"%s: a --paragraph-indent argumentumának numerikusnak,  „none“-nak vagy  "
+"„asis“-nek kell lennie, „%s“ helyett.\n"
+
+#: tp/Texinfo/Parser.pm:6021
+#, fuzzy, perl-format
+msgid "expected @%s on or off, not `%s'"
+msgstr "@%s on vagy off-t vártam, „%s“ helyett"
+
+#: tp/Texinfo/Parser.pm:6031
+#, perl-format
+msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
+msgstr ""
+
+#: tp/Texinfo/Parser.pm:6039
+#, fuzzy, perl-format
+msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
+msgstr ""
+"%s: a --footnote-style argumentumának „separate“-nek vagy  „end“-nek kell "
+"lennie, „%s“ helyett.\n"
+
+#: tp/Texinfo/Parser.pm:6047
+#, fuzzy, perl-format
+msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
+msgstr ""
+"%s: a --footnote-style argumentumának „separate“-nek vagy  „end“-nek kell "
+"lennie, „%s“ helyett.\n"
+
+#: tp/Texinfo/Structuring.pm:213
+#, perl-format
+msgid "raising the section level of @%s which is too low"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:245
+#, perl-format
+msgid "no chapter-level command before @%s"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:250
+#, perl-format
+msgid "lowering the section level of @%s appearing after a lower element"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:339
+#, perl-format
+msgid "no sectioning command associated with @%s"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:488
+#, perl-format
+msgid "@%s not empty"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:544 tp/Texinfo/Structuring.pm:1326
+#, fuzzy, perl-format
+msgid "@%s reference to nonexistent node `%s'"
+msgstr ""
+"%s egy nem létező oldalra („%s“) hivatkozik (esetleg hibás szekcionálás?)"
+
+#: tp/Texinfo/Structuring.pm:557
+#, perl-format
+msgid "@%s entry node name `%s' different from %s name `%s'"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:662
+#, perl-format
+msgid "unreferenced node `%s'"
+msgstr "nem hivatkozott oldal „%s“"
+
+#: tp/Texinfo/Structuring.pm:708
+#, perl-format
+msgid "node `%s' is %s for `%s' in sectioning but not in menu"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:715
+#, perl-format
+msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:733
+#, perl-format
+msgid "node `%s' is %s for `%s' in menu but not in sectioning"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:787
+#, perl-format
+msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:814
+#, fuzzy, perl-format
+msgid "%s reference to nonexistent `%s'"
+msgstr "nem hivatkozott oldal „%s“"
+
+#: tp/Texinfo/Structuring.pm:834
+#, fuzzy, perl-format
+msgid "node `%s' lacks menu item for `%s' despite being its Up target"
+msgstr ""
+"A(z) „%s“ oldal nem tartalmaz menüelemet „%s“-hez, bár ez uóbbi a szülője"
+
+#: tp/Texinfo/Structuring.pm:842
+#, perl-format
+msgid "for `%s', up in menu `%s' and up `%s' don't match"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:1338
+#, perl-format
+msgid "@%s to `%s', different from %s name `%s'"
+msgstr ""
+
+#: tp/Texinfo/Structuring.pm:2070
+#, perl-format
+msgid "empty index key in @%s"
+msgstr ""
+
+#: tp/init/chm.pm:221 tp/init/chm.pm:277 tp/init/chm.pm:348
+#, fuzzy, perl-format
+msgid "chm.pm: could not open %s for writing: %s\n"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
+
+#: tp/init/chm.pm:267 tp/init/chm.pm:338 tp/init/chm.pm:399
+#, perl-format
+msgid "chm.pm: error on closing %s: %s"
+msgstr ""
+
+#: tp/init/latex2html.pm:200
+#, fuzzy, perl-format
+msgid "l2h: could not open latex file %s for writing: %s"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
+
+#: tp/init/latex2html.pm:341
+msgid "l2h: L2H_TMP directory contains a dot"
+msgstr ""
+
+#: tp/init/latex2html.pm:346
+msgid "l2h: current directory contains a dot"
+msgstr ""
+
+#: tp/init/latex2html.pm:374
+#, perl-format
+msgid "l2h: command did not succeed: %s"
+msgstr ""
+
+#: tp/init/latex2html.pm:422
+#, perl-format
+msgid "l2h: image has invalid extension: %s"
+msgstr ""
+
+#: tp/init/latex2html.pm:438
+#, perl-format
+msgid "l2h: rename %s as %s failed: %s"
+msgstr ""
+
+#: tp/init/latex2html.pm:460
+#, fuzzy, perl-format
+msgid "l2h: could not open %s: %s"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
+
+#: tp/init/latex2html.pm:493
+#, perl-format
+msgid "latex2html.pm: end of @%s item %d not found"
+msgstr ""
+
+#: tp/init/latex2html.pm:504
+#, perl-format
+msgid ""
+"latex2html.pm: processing produced %d items in HTML; expected %d, the number "
+"of items found in the document"
+msgstr ""
+
+#: tp/init/latex2html.pm:534
+#, perl-format
+msgid "l2h: could not determine the fragment %d for @%s"
+msgstr ""
+
+#: tp/init/latex2html.pm:560
+#, perl-format
+msgid ""
+"l2h: could not extract the fragment %d for @%s with output counter %d from "
+"HTML"
+msgstr ""
+
+#: tp/init/latex2html.pm:621
+#, fuzzy, perl-format
+msgid "l2h: could not load %s: %s"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
+
+#: tp/init/latex2html.pm:634
+#, fuzzy, perl-format
+msgid "l2h: could not open %s for writing: %s"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
+
+#: tp/init/tex4ht.pm:123 tp/init/tex4ht.pm:267
+#, fuzzy, perl-format
+msgid "tex4ht.pm: could not open %s: %s"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
+
+#: tp/init/tex4ht.pm:219
+#, perl-format
+msgid "tex4ht.pm: chdir %s failed: %s"
+msgstr ""
+
+#: tp/init/tex4ht.pm:232
+#, perl-format
+msgid "tex4ht.pm: unable to return to initial directory: %s"
+msgstr ""
+
+#: tp/init/tex4ht.pm:244
+#, perl-format
+msgid "tex4ht.pm: output file missing: %s"
+msgstr ""
+
+#: tp/init/tex4ht.pm:260
+#, perl-format
+msgid "tex4ht.pm: command failed: %s"
+msgstr ""
+
+#: tp/init/tex4ht.pm:294
+#, perl-format
+msgid "tex4ht.pm: end of @%s item %d not found"
+msgstr ""
+
+#: tp/init/tex4ht.pm:301
+#, perl-format
+msgid ""
+"tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
+"items found in the document for @%s"
+msgstr ""
+
+#: tp/init/tex4ht.pm:321
+#, perl-format
+msgid "tex4ht.pm: output has no HTML item for @%s %s"
+msgstr ""
+
+#: tp/init/tex4ht.pm:336
+#, perl-format
+msgid ""
+"tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of "
+"items found in the document for @%s"
+msgstr ""
+
+#: tp/texi2any.pl:382
+#, fuzzy, perl-format
+msgid "error loading %s: %s\n"
+msgstr "hiba „%s“ írásakor."
+
+# action=művelet ? LM
+# általában az - sas
+#: tp/texi2any.pl:395
+#, fuzzy, perl-format
+msgid "%s: unknown variable %s"
+msgstr "ismeretlen művelet: „%s“."
+
+#: tp/texi2any.pl:399
+#, fuzzy, perl-format
+msgid "%s: obsolete variable %s\n"
+msgstr "Változó beállítása:"
+
+# action=művelet ? LM
+# általában az - sas
+#: tp/texi2any.pl:414
+#, fuzzy, perl-format
+msgid "%s: unknown variable %s\n"
+msgstr "ismeretlen művelet: „%s“."
+
+#: tp/texi2any.pl:418
+#, fuzzy, perl-format
+msgid "obsolete variable %s\n"
+msgstr "Változó beállítása:"
+
+#: tp/texi2any.pl:483
+#, fuzzy, perl-format
+msgid "could not read init file %s"
+msgstr "A kimeneti fájl („%s“) nem hozható létre."
+
+#: tp/texi2any.pl:646
+#, fuzzy, perl-format
+msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
+msgstr ""
+"%s: Figyelmen kívül hagyom a fel nem ismert TEXINFO_OUTPUT_FORMAT értéket "
+"(„%s“).\n"
+
+#: tp/texi2any.pl:729
+#, perl-format
+msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
+msgstr "Használat: %s [OPCIÓK] ... TEXINFO-FÁJL...\n"
+
+#: tp/texi2any.pl:732
+msgid ""
+"Translate Texinfo source documentation to various other formats, by default\n"
+"Info files suitable for reading online with Emacs or standalone GNU Info.\n"
 "\n"
-"Opciók:\n"
+"This program is commonly installed as both `makeinfo' and `texi2any';\n"
+"the behavior is identical, and does not depend on the installed name.\n"
+msgstr ""
 
-#: util/texindex.c:743
-#, c-format
-msgid "failure reopening %s"
-msgstr "Hiba történt „%s“ újbóli megnyitásakor"
+#: tp/texi2any.pl:738
+#, perl-format
+msgid ""
+"General options:\n"
+"      --document-language=STR locale to use in translating Texinfo keywords\n"
+"                                for the output document (default C).\n"
+"      --error-limit=NUM       quit after NUM errors (default %d).\n"
+"      --force                 preserve output even if errors.\n"
+"      --help                  display this help and exit.\n"
+"      --no-validate           suppress node cross-reference validation.\n"
+"      --no-warn               suppress warnings (but not errors).\n"
+"      --conf-dir=DIR          search also for initialization files in DIR.\n"
+"      --init-file=FILE        load FILE to modify the default behavior.\n"
+"  -c, --set-customization-variable VAR=VAL  set customization variable VAR \n"
+"                                to value VAL.\n"
+"  -v, --verbose               explain what is being done.\n"
+"      --version               display version information and exit.\n"
+msgstr ""
 
-#: util/texindex.c:758 util/texindex.c:786
-#, c-format
-msgid "%s: not a texinfo index file"
-msgstr "%s: nem Texinfo tárgymutatófájl"
+#: tp/texi2any.pl:754
+#, fuzzy
+msgid ""
+"Output format selection (default is to produce Info):\n"
+"      --docbook               output Docbook XML rather than Info.\n"
+"      --html                  output HTML rather than Info.\n"
+"      --plaintext             output plain text rather than Info.\n"
+"      --xml                   output Texinfo XML rather than Info.\n"
+"      --dvi, --dvipdf, --ps, --pdf  call texi2dvi to generate given output,\n"
+"                                after checking validity of TEXINFO-FILE.\n"
+msgstr ""
+"Kimeneti formátum választás (az alap az Info):\n"
+"      --docbook               DocBook XML kimenet INfo helyett.\n"
+"      --html                  HTML kimenet Info helyett\n"
+"      --xml                   Texinfo XML kimenet Info helyett\n"
+"      --plaintext             sima szöveg kimenet Info helyett\n"
 
-#: util/texindex.c:993
-#, c-format
-msgid "No page number in %s"
-msgstr "Nem található oldalszám ebben: %s"
+#: tp/texi2any.pl:762
+msgid ""
+"General output options:\n"
+"  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
+"                                ignoring any @setfilename.\n"
+"      --no-headers            suppress node separators, Node: lines, and "
+"menus\n"
+"                                from Info output (thus producing plain "
+"text)\n"
+"                                or from HTML (thus producing shorter "
+"output).\n"
+"                                Also, if producing Info, write to\n"
+"                                standard output by default.\n"
+"      --no-split              suppress any splitting of the output;\n"
+"                                generate only one output file.\n"
+"      --[no-]number-sections  output chapter and sectioning numbers;\n"
+"                                default is on.\n"
+"  -o, --output=DEST           output to DEST.\n"
+"                                With split output, create DEST as a "
+"directory\n"
+"                                 and put the output files there.\n"
+"                                With non-split output, if DEST is already\n"
+"                                 a directory or ends with a /,\n"
+"                                 put the output file there.\n"
+"                                Otherwise, DEST names the output file.\n"
+msgstr ""
 
-#: util/texindex.c:1066
-#, c-format
-msgid "entry %s follows an entry with a secondary name"
-msgstr "a(z) %s bejegyzés egy másodlagos névvel rendelkező bejegyzést követ"
+#: tp/texi2any.pl:782
+#, perl-format
+msgid ""
+"Options for Info and plain text:\n"
+"      --disable-encoding      do not output accented and special characters\n"
+"                                in Info output based on @documentencoding.\n"
+"      --enable-encoding       override --disable-encoding (default).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default "
+"%d).\n"
+"      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
+"                                `separate' to put them in their own node;\n"
+"                                `end' to put them at the end of the node, "
+"in\n"
+"                                which they are defined (this is the "
+"default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
+"%d).\n"
+"                                If VAL is `none', do not indent; if VAL is\n"
+"                                `asis', preserve existing indentation.\n"
+"      --split-size=NUM        split Info files at size NUM (default %d).\n"
+msgstr ""
+
+#: tp/texi2any.pl:799
+msgid ""
+"Options for HTML:\n"
+"      --css-include=FILE      include FILE in HTML <style> output;\n"
+"                                read stdin if FILE is -.\n"
+"      --css-ref=URL           generate CSS reference to URL.\n"
+"      --internal-links=FILE   produce list of internal links in FILE.\n"
+"      --split=SPLIT           split at SPLIT, where SPLIT may be `chapter',\n"
+"                                `section' or `node'.\n"
+"      --transliterate-file-names  use file names in ASCII transliteration.\n"
+"      --node-files            produce redirection files for nodes and \n"
+"                                anchors; default is set only if split.\n"
+msgstr ""
+
+#: tp/texi2any.pl:810
+msgid ""
+"Options for XML and Docbook:\n"
+"      --output-indent=VAL     does nothing, retained for compatibility.\n"
+msgstr ""
+
+#: tp/texi2any.pl:813
+msgid ""
+"Options for DVI/PS/PDF:\n"
+"      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
+msgstr ""
+
+#: tp/texi2any.pl:816
+msgid ""
+"Input file options:\n"
+"      --commands-in-node-names  does nothing, retained for compatibility.\n"
+"  -D VAR                        define the variable VAR, as with @set.\n"
+"  -D 'VAR VAL'                  define VAR to VAL (one shell argument).\n"
+"  -I DIR                        append DIR to the @include search path.\n"
+"  -P DIR                        prepend DIR to the @include search path.\n"
+"  -U VAR                        undefine the variable VAR, as with @clear.\n"
+msgstr ""
+
+#: tp/texi2any.pl:824
+msgid ""
+"Conditional processing in input:\n"
+"  --ifdocbook       process @ifdocbook and @docbook even if\n"
+"                      not generating Docbook.\n"
+"  --ifhtml          process @ifhtml and @html even if not generating HTML.\n"
+"  --ifinfo          process @ifinfo even if not generating Info.\n"
+"  --ifplaintext     process @ifplaintext even if not generating plain text.\n"
+"  --iftex           process @iftex and @tex.\n"
+"  --ifxml           process @ifxml and @xml.\n"
+"  --no-ifdocbook    do not process @ifdocbook and @docbook text.\n"
+"  --no-ifhtml       do not process @ifhtml and @html text.\n"
+"  --no-ifinfo       do not process @ifinfo text.\n"
+"  --no-ifplaintext  do not process @ifplaintext text.\n"
+"  --no-iftex        do not process @iftex and @tex text.\n"
+"  --no-ifxml        do not process @ifxml and @xml text.\n"
+"\n"
+"  Also, for the --no-ifFORMAT options, do process @ifnotFORMAT text.\n"
+msgstr ""
+
+#: tp/texi2any.pl:841
+msgid ""
+"  The defaults for the @if... conditionals depend on the output format:\n"
+"  if generating Docbook, --ifdocbook is on and the others are off;\n"
+"  if generating HTML, --ifhtml is on and the others are off;\n"
+"  if generating Info, --ifinfo is on and the others are off;\n"
+"  if generating plain text, --ifplaintext is on and the others are off;\n"
+"  if generating XML, --ifxml is on and the others are off.\n"
+msgstr ""
+
+#: tp/texi2any.pl:848
+msgid ""
+"Examples:\n"
+"  makeinfo foo.texi                      write Info to foo's @setfilename\n"
+"  makeinfo --html foo.texi               write HTML to @setfilename\n"
+"  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
+"  makeinfo --docbook foo.texi            write Docbook XML to @setfilename\n"
+"  makeinfo --plaintext foo.texi          write plain text to standard "
+"output\n"
+"  makeinfo --pdf foo.texi                write PDF using texi2dvi\n"
+"\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, "
+"menus\n"
+"  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
+"  makeinfo --no-split foo.texi           write one Info file however big\n"
+msgstr ""
+
+#: tp/texi2any.pl:895
+#, perl-format
+msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+msgstr ""
+"%s: a --footnote-style argumentumának „separate“-nek vagy  „end“-nek kell "
+"lennie, „%s“ helyett.\n"
+
+#: tp/texi2any.pl:986
+#, perl-format
+msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
+msgstr ""
+"%s: a --paragraph-indent argumentumának numerikusnak,  „none“-nak vagy  "
+"„asis“-nek kell lennie, „%s“ helyett.\n"
+
+#: tp/texi2any.pl:1063
+#, perl-format
+msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
+msgstr ""
+
+#: tp/texi2any.pl:1067
+msgid "--Xopt option without printed output"
+msgstr ""
+
+# action=művelet ? LM
+# általában az - sas
+#: tp/texi2any.pl:1082
+#, fuzzy, perl-format
+msgid "unknown tree transformation %s"
+msgstr "ismeretlen művelet: „%s“."
+
+#: tp/texi2any.pl:1089
+#, perl-format
+msgid "ignoring splitting for format %s"
+msgstr ""
+
+#: tp/texi2any.pl:1149
+#, perl-format
+msgid "%s: missing file argument.\n"
+msgstr "%s: hiányzó fájl argumentum.\n"
+
+#: tp/texi2any.pl:1150
+#, perl-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "További információért próbálja meg a „%s --help“-t.\n"
+
+#: tp/texi2any.pl:1231
+msgid "fill_gaps_in_sectioning transformation return no result. No section?"
+msgstr ""
+
+#: tp/texi2any.pl:1254
+#, fuzzy, perl-format
+msgid "error on closing macro expand file %s: %s\n"
+msgstr "hiba a(z) „%s“ output fájl bezárásakor"
+
+#: tp/texi2any.pl:1260
+#, fuzzy, perl-format
+msgid "could not open %s for writing: %s\n"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
+
+#: tp/texi2any.pl:1285
+msgid ""
+"insert_nodes_for_sectioning_commands transformation return no result. No "
+"section?"
+msgstr ""
+
+#: tp/texi2any.pl:1358 tp/texi2any.pl:1434
+#, perl-format
+msgid "%s: error on closing %s: %s\n"
+msgstr ""
+
+#: tp/texi2any.pl:1381 tp/texi2any.pl:1415
+#, perl-format
+msgid "%s: error on closing internal links file %s: %s\n"
+msgstr ""
+
+#: tp/texi2any.pl:1387 tp/texi2any.pl:1421
+#, fuzzy, perl-format
+msgid "%s: could not open %s for writing: %s\n"
+msgstr "%s: A CSS fájl nem nyitható meg: %s"
+
+#~ msgid "%s: illegal option -- %c\n"
+#~ msgstr "%s: érvénytelen opció -- %c\n"
+
+#~ msgid "Insert this character"
+#~ msgstr "E karakter beszúrása"
+
+#~ msgid "One completion:\n"
+#~ msgstr "1 kiegészítés:\n"
+
+#~ msgid "No index entries."
+#~ msgstr "Nincs tárgymutató."
+
+#~ msgid "more "
+#~ msgstr "tovább"
+
+#~ msgid "CAN'T SEE THIS"
+#~ msgstr "EZ NEM LÁTHATÓ"
+
+#~ msgid ""
+#~ "\n"
+#~ "* Menu: Nodes whose indices contain `%s':\n"
+#~ msgstr ""
+#~ "\n"
+#~ "* Menü: Oldalak, amelyek tárgymutatói tartalmazzák „%s“-t:\n"
+
+#~ msgid ""
+#~ "Basic Commands in Info Windows\n"
+#~ "******************************\n"
+#~ msgstr ""
+#~ "Alapparancsok az Info ablakban\n"
+#~ "******************************\n"
+
+# node = csomópont? LM
+# vagy csak pont? sas
+#~ msgid ""
+#~ "Selecting other nodes:\n"
+#~ "----------------------\n"
+#~ msgstr ""
+#~ "További oldalak kiválasztása:\n"
+#~ "-----------------------------\n"
+
+#, fuzzy
+#~ msgid "\\%-10[move-to-prev-xref]  Skip to previous hypertext link [*].\n"
+#~ msgstr ""
+#~ "\\%-10[move-to-next-xref]  Ugrás az oldalon található előző hypertext "
+#~ "bejegyzésre.\n"
+
+#~ msgid ""
+#~ "Moving within a node:\n"
+#~ "---------------------\n"
+#~ msgstr ""
+#~ "Navigáció egy oldalon belül:\n"
+#~ "----------------------------\n"
+
+#~ msgid ""
+#~ "Other commands:\n"
+#~ "---------------\n"
+#~ msgstr ""
+#~ "Egyéb parancsok:\n"
+#~ "----------------\n"
+
+#~ msgid ""
+#~ "\\%-10[goto-node]  Move to node specified by name.\n"
+#~ "              You may include a filename as well, as in "
+#~ "(FILENAME)NODENAME.\n"
+#~ msgstr ""
+#~ "\\%-10[goto-node]  Ugrás egy névvel megadott oldalra.\n"
+#~ "              A névben akár egy fájl is szerepelhet, például "
+#~ "(FÁJL)OLDALNEVE.\n"
+
+#~ msgid "  %-10s  Quit this help.\n"
+#~ msgstr "  %-10s  Kilépés a súgóból.\n"
+
+# az altogether le legyen forditva ?
+#~ msgid "  %-10s  Quit Info altogether.\n"
+#~ msgstr "  %-10s  Kilépés az Info-ból.\n"
+
+# tutorial = bemutató?
+#~ msgid "  %-10s  Invoke the Info tutorial.\n"
+#~ msgstr "  %-10s  Az Info bemutató indítása.\n"
+
+#~ msgid "  %-10s  Move to the `next' node of this node.\n"
+#~ msgstr "  %-10s  Ugrás a következő oldalra.\n"
+
+#~ msgid "  %-10s  Move to the `previous' node of this node.\n"
+#~ msgstr "  %-10s  Ugrás az előző oldalra.\n"
+
+#~ msgid "  %-10s  Move `up' from this node.\n"
+#~ msgstr "  %-10s  Ugrás a szülőoldalra.\n"
+
+# ATNEZNI LM
+# Egy másik oldalt meghívó menüelem kiválasztása? - sas
+#~ msgid ""
+#~ "              Picking a menu item causes another node to be selected.\n"
+#~ msgstr ""
+#~ "              A menüelem kiválasztása miatt egy másik oldal lesz "
+#~ "meghívva.\n"
+
+#~ msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
+#~ msgstr ""
+#~ "  %-10s  Kereszthivatkozás követése. A hivatkozás nevének beolvasása.\n"
+
+#~ msgid "  %-10s  Move to the last node seen in this window.\n"
+#~ msgstr "  %-10s  Ugrás az ablakban látható utolsó oldalra.\n"
+
+# hypertext link = ? LM
+# link = lánc, hivatkozás - sas
+#~ msgid "  %-10s  Skip to next hypertext link within this node.\n"
+#~ msgstr "  %-10s  Ugrás az oldalon található következő hypertext linkre.\n"
+
+#~ msgid "  %-10s  Follow the hypertext link under cursor.\n"
+#~ msgstr "  %-10s  A kurzor alatti hypertext link követése.\n"
+
+#~ msgid "  %-10s  Move to the `directory' node.  Equivalent to `g (DIR)'.\n"
+#~ msgstr ""
+#~ "  %-10s  Ugrás a „directory“-oldalra. Egyenértékű ezzel: „g (DIR)“.\n"
+
+# top node = legfelső szintű oldal ? LM
+# szint nem kell - sas
+#~ msgid "  %-10s  Move to the Top node.  Equivalent to `g Top'.\n"
+#~ msgstr "  %-10s  Ugrás a legfelső oldalra. Egyenértékű ezzel: „g Top“.\n"
+
+# előre / felfele / lefele ? LM
+# előre - sas
+#~ msgid "  %-10s  Scroll forward a page.\n"
+#~ msgstr "  %-10s  Görgetés egy oldalt előre.\n"
+
+# hátra / vissza / felfele / lefele ? LM
+# hátra - sas
+#~ msgid "  %-10s  Scroll backward a page.\n"
+#~ msgstr "  %-10s  Görgetés egy oldalt hátra.\n"
+
+#~ msgid "  %-10s  Go to the beginning of this node.\n"
+#~ msgstr "  %-10s  Ugrás az oldal elejére.\n"
+
+#~ msgid "  %-10s  Go to the end of this node.\n"
+#~ msgstr "  %-10s  Ugrás az oldal végére.\n"
+
+# előre / felfele / lefele ? LM
+# előre - sas
+#~ msgid "  %-10s  Scroll forward 1 line.\n"
+#~ msgstr "  %-10s  Görgetés 1 sorral előre.\n"
+
+# hátra / vissza / felfele / lefele ? LM
+# hátra - sas
+#~ msgid "  %-10s  Scroll backward 1 line.\n"
+#~ msgstr "  %-10s  Görgetés 1 sorral hátra.\n"
+
+#~ msgid "  %-10s  Pick first ... ninth item in node's menu.\n"
+#~ msgstr ""
+#~ "  %-10s  Az oldalon található menü első ... kilencedik elemének "
+#~ "kiválasztása.\n"
+
+#~ msgid "  %-10s  Pick last item in node's menu.\n"
+#~ msgstr "  %-10s  Az oldal utolsó menüelemének kiválasztása.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Search for a specified string in the index entries of this Info\n"
+#~ "              file, and select the node referenced by the first entry "
+#~ "found.\n"
+#~ msgstr ""
+#~ "\\%-10[index-search]  Megadott szöveg keresése a mostani Info fájlban\n"
+#~ "              és az első találat által mutatott oldal kiválasztása.\n"
+
+#~ msgid ""
+#~ "              You may include a filename as well, as in "
+#~ "(FILENAME)NODENAME.\n"
+#~ msgstr ""
+#~ "              Az állománynevet is meg lehet adni: (FÁJL)OLDALNEVE.\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  %-10s  Search forward for a specified string,\n"
+#~ "              and select the node in which the next occurrence is found.\n"
+#~ msgstr ""
+#~ "\\%-10[index-search]  Megadott szöveg keresése a mostani Info fájlban\n"
+#~ "              és az első találat által mutatott oldal kiválasztása.\n"
+
+# tegez/magaz ? LM
+#~ msgid "--- Use `\\[history-node]' or `\\[kill-node]' to exit ---\n"
+#~ msgstr ""
+#~ "--- A kilépéshez használja a(z) „\\[history-node]“-t vagy a(z)  „\\[kill-"
+#~ "node]“-t ---\n"
+
+#~ msgid "ESC %s is undefined."
+#~ msgstr "ESC %s nincs definiálva."
+
+#~ msgid "%s is defined to %s."
+#~ msgstr "%s %s-ként van definiálva."
+
+# argument = argumentum
+# argument = paraméter ? LM
+#~ msgid "incorrect number of arguments"
+#~ msgstr "érvénytelen számú argumentum"
+
+#~ msgid "cannot create output file `%s'"
+#~ msgstr "a(z) „%s“ output fájl nem hozható létre."
+
+# section=szakasz?
+# A mondat eleje nagybetu vagy kisbetu? LM
+# túl hosszú szakad - ez a biztos - sas
+#~ msgid "section too long"
+#~ msgstr "túl hosszú szakasz"
+
+#~ msgid "Next"
+#~ msgstr "Következő"
+
+# követése / betöltése ?
+#~ msgid "Following Next node..."
+#~ msgstr "Következő oldal betöltése..."
+
+#~ msgid "Selecting first menu item..."
+#~ msgstr "1. menüelem kiválasztása..."
+
+#~ msgid "Selecting Next node..."
+#~ msgstr "Következő oldal kiválasztása..."
+
+#~ msgid "Moving Up %d time(s), then Next."
+#~ msgstr "Mozgás %d alkalommal felfele, majd a „Következő“ kiválasztása."
+
+#~ msgid "No `Prev' for this node."
+#~ msgstr "Nincs „Előző“ oldala e pontnak."
+
+# ATNEZNI LM
+#~ msgid "Moving Prev in this window."
+#~ msgstr "Ugrás az Előzőre ebben az ablakban."
+
+#~ msgid "Moving Up in this window."
+#~ msgstr "Mozgás Fel ebben az ablakban."
+
+# oldal ? LM
+#~ msgid "Moving to `Prev's last menu item."
+#~ msgstr "Ugrás az Előző utolsó menüelemére."
+
+#~ msgid "Kill node (%s): "
+#~ msgstr "Oldal törlése (%s): "
+
+#~ msgid "Cannot kill node `%s'"
+#~ msgstr "A(z) „%s“ oldal nem törölhető"
+
+#~ msgid "Cannot kill the last node"
+#~ msgstr "Az utolsó oldal nem törölhető"
+
+#~ msgid "Kill this node"
+#~ msgstr "Ezen oldal törlése"
+
+#~ msgid "Done."
+#~ msgstr "Kész."
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid "Internally used by \\[universal-argument]"
+#~ msgstr "Belső használatra a \\[universal-argument]-nek"
+
+#~ msgid "--*** Tags out of Date ***"
+#~ msgstr "--*** lejárt dátumú Tagek ***"
+
+# subfile ? LM
+# Passz - sas
+#~ msgid " Subfile: %s"
+#~ msgstr "Alfájl: %s"
+
+#~ msgid "arguments to @%s ignored"
+#~ msgstr "@%s argumentuma(i) figyelmen kívül lett(ek) hagyva"
+
+#~ msgid "January"
+#~ msgstr "Január"
+
+#~ msgid "February"
+#~ msgstr "Február"
+
+#~ msgid "March"
+#~ msgstr "Március"
+
+#~ msgid "April"
+#~ msgstr "Április"
+
+#~ msgid "May"
+#~ msgstr "Május"
+
+#~ msgid "June"
+#~ msgstr "Június"
+
+#~ msgid "July"
+#~ msgstr "Július"
+
+#~ msgid "August"
+#~ msgstr "Augusztus"
+
+#~ msgid "September"
+#~ msgstr "Szeptember"
+
+#~ msgid "October"
+#~ msgstr "Október"
+
+#~ msgid "November"
+#~ msgstr "November"
+
+#~ msgid "December"
+#~ msgstr "December"
+
+#~ msgid "@sc argument all uppercase, thus no effect"
+#~ msgstr "@sc argumentuma végig nagybetűs, így nincs hatása"
+
+#~ msgid "`{' expected, but saw `%c'"
+#~ msgstr "„{“-t vártam, de „%c“-t láttam"
+
+#~ msgid "`}' expected, but saw `%c'"
+#~ msgstr "„}“-t vártam, de „%c“-t láttam"
+
+#~ msgid "@sp requires a positive numeric argument, not `%s'"
+#~ msgstr "@sp egy pozitív szám argumentumot vár, nem „%s“-t"
+
+#~ msgid "Bad argument to %c%s"
+#~ msgstr "Rossz argumentum ide: %c%s"
+
+#~ msgid "none"
+#~ msgstr "nincs"
+
+#~ msgid "insert"
+#~ msgstr "beszúr"
+
+#~ msgid "Missing `}' in @def arg"
+#~ msgstr "Hiányzó „}“ a(z) @def arg.-ban"
+
+# Funkció ? LM
+#~ msgid "Function"
+#~ msgstr "Függvény"
+
+#~ msgid "Macro"
+#~ msgstr "Makró"
+
+# checkit
+# Form ? LM
+#~ msgid "Special Form"
+#~ msgstr "Kivételes forma"
+
+#~ msgid "Variable"
+#~ msgstr "Változó"
+
+#~ msgid "User Option"
+#~ msgstr "Felhasználói opció"
+
+# Instance ? LM
+# Példány? - sas
+#~ msgid "Instance Variable"
+#~ msgstr "Példány változó"
+
+#~ msgid "Method"
+#~ msgstr "Metódus"
+
+#~ msgid "%s: getwd: %s, %s\n"
+#~ msgstr "%s: getwd: %s, %s\n"
+
+#~ msgid "`%s' omitted before output filename"
+#~ msgstr "„%s“ mellőzve lett a kimeneti fájlnév előtt"
+
+#~ msgid "`%s' omitted since writing to stdout"
+#~ msgstr "„%s“ mellőzve lett, mivel a stdout-ra írok"
+
+#~ msgid "Output buffer not empty."
+#~ msgstr "A kimeneti puffer nem üres."
+
+#~ msgid "See "
+#~ msgstr "Lásd "
+
+#~ msgid "`%c%s' needs an argument `{...}', not just `%s'"
+#~ msgstr "„%c%s“ argumentumot vár „{...}“, nem csak „%s“-t"
+
+#~ msgid "No closing brace for footnote `%s'"
+#~ msgstr "A(z) „%s“ lábjegyzet záró kapcsoszárójele hiányzik "
+
+#~ msgid "Footnote defined without parent node"
+#~ msgstr "Szülő nélkül definiált lábjegyzet"
+
+# HTML
+#~ msgid "Footnotes"
+#~ msgstr "Lábjegyzetek"
+
+#~ msgid "Untitled"
+#~ msgstr "Névtelen"
+
+#~ msgid "[unexpected] no html tag to pop"
+#~ msgstr "[váratlan] nincs html tag, amit ki lehetne venni"
+
+#~ msgid "[unexpected] invalid node name: `%s'"
+#~ msgstr "[váratlan] érvénytelen oldalnév: „%s“"
+
+#~ msgid "Info cannot handle `:' in index entry `%s'"
+#~ msgstr "Az Info nem tudja a „:“-t kezelni a „%s“ tárgymutatóbejegyzésben"
+
+#~ msgid "Index `%s' already exists"
+#~ msgstr "„%s“ tárgymutató már létezik"
+
+#~ msgid "Unknown index `%s' and/or `%s' in @synindex"
+#~ msgstr "Ismeretlen tárgymutató „%s“ és/vagy „%s“ itt: @synindex"
+
+#~ msgid "(line )"
+#~ msgstr "(sor )"
+
+#~ msgid "(line %*d)"
+#~ msgstr "(%*d sor)"
+
+#~ msgid "@item not allowed in argument to @itemize"
+#~ msgstr "@item nem szerepelhet az @itemize argumentumaként"
+
+# %cfloat ist ein Texinfo-Befehl
+#~ msgid "%cfloat environments cannot be nested"
+#~ msgstr "A %cfloat környezetet nem lehet beágyazni"
+
+#~ msgid "%s requires letter or digit"
+#~ msgstr "%s betűt vagy számjegyet tartalmazhat"
+
+#~ msgid "end of file inside verbatim block"
+#~ msgstr "fájlvégét találtam egy nyitott blokkban"
+
+#~ msgid "@detailmenu seen before first node, creating `Top' node"
+#~ msgstr ""
+#~ "@detailmenu-t találtam az első @node előtt. Létrehozom a „Szülő“ (Top) "
+#~ "oldalt"
+
+#~ msgid "`%c%s' needs something after it"
+#~ msgstr "„%c%s“ után még írni kell valamit"
+
+#~ msgid "Bad argument `%s' to `@%s', using `%s'"
+#~ msgstr "„%s“ rossz argument ehhez:: „@%s“, „%s“-t használom"
+
+#~ msgid "@itemx not meaningful inside `%s' block"
+#~ msgstr "@itemx -nek nincs jelentése a(z) „%s“ blokkon belül"
+
+# checkit
+#~ msgid "%c%s found outside of an insertion block"
+#~ msgstr "%c%s egy beszúrási blokkon kívül található "
+
+#~ msgid "sorry, encoding `%s' not supported"
+#~ msgstr "bocsánat, de a(z) „%s“ kódolás nem támogatott"
+
+#~ msgid "%c%s expects a single character `i' or `j' as argument"
+#~ msgstr "%c%s egy „i“ vagy „j“ karakter vár argumentumként"
+
+#~ msgid "%cend macro not found"
+#~ msgstr "%cend makró nem található"
+
+#~ msgid "Too many errors!  Gave up.\n"
+#~ msgstr "Túl sok hiba! Feladom.\n"
+
+#~ msgid "%s:%d: warning: "
+#~ msgstr "%s:%d: figyelem: "
+
+#~ msgid "%s: could not open macro expansion output `%s'"
+#~ msgstr "%s: nem tudom a makrókiterjesztés „%s“ kimenetét megnyitni"
+
+#~ msgid "%s: ignoring second macro expansion output `%s'.\n"
+#~ msgstr ""
+#~ "%s: a második makrókiterjesztés „%s“ kimenetét figyelmen kívül hagyom.\n"
+
+#~ msgid "Multiline command %c%s used improperly"
+#~ msgstr "A többsoros %c%s parancs helytelenül van használva"
+
+#~ msgid "No `%s' found in `%s'"
+#~ msgstr "Nem található „%s“ ebben: „%s“"
+
+#~ msgid ""
+#~ "%s: Skipping macro expansion to stdout as Info output is going there.\n"
+#~ msgstr ""
+#~ "%s: A makrókiterjesztést átirányítom a stdout-ra, mivel az Info kimete "
+#~ "oda megy.\n"
+
+#~ msgid ""
+#~ "%s: Removing macro output file `%s' due to errors; use --force to "
+#~ "preserve.\n"
+#~ msgstr ""
+#~ "%s: A fellépett hibák miatt eltávolítom a(z) „%s“ makró kimeneti "
+#~ "állományt; a megtartásához használja  --force opciót.\n"
+
+#~ msgid ""
+#~ "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
+#~ msgstr ""
+#~ "%s: A fellépett hibák miatt eltávolítom a(z) „%s“ kimeneti állományt; a "
+#~ "megtartásához használja  --force opciót.\n"
+
+#~ msgid "NO_NAME!"
+#~ msgstr "NINCS_NÉV!"
+
+#~ msgid "No such file `%s'"
+#~ msgstr "Nincs ilyen fájl: „%s“"
+
+#~ msgid "@image file `%s' (for text) unreadable: %s"
+#~ msgstr "@image a(z) „%s“ fájl (szöveges) nem olvasható: %s"
+
+# checkit
+#~ msgid "{No value for `%s'}"
+#~ msgstr "{„%s“-hoz nincs érték}"
+
+# AATNEZNI ? LM
+#~ msgid "Reached eof before matching @end %s"
+#~ msgstr "Korábban találtam fájl vége jelet, mint @end-t %s "
+
+#~ msgid "Missing } in @multitable template"
+#~ msgstr "Hiányzó } a @multitable sablonban"
+
+#~ msgid "ignoring stray text `%s' after @multitable"
+#~ msgstr ""
+#~ "figyelmen kívül hagyom a @multitable után álló felesleges „%s“ szöveget"
+
+#~ msgid "[unexpected] cannot select column #%d in multitable"
+#~ msgstr ""
+#~ "[váratlan] nem lehet a(z) %d. oszlopot a multitable-ben kiválasztani"
+
+# ATNEZNI ? LM
+#~ msgid "** Multicolumn output from last row:\n"
+#~ msgstr "** Multicolumn kimenet az utolsó sortól:\n"
+
+#~ msgid "* column #%d: output = %s\n"
+#~ msgstr "* %d. oszlop: kimenet = %s\n"
+
+#~ msgid "Node `%s' previously defined at line %d"
+#~ msgstr "A(z) „%s“ oldal korábban már definiálva lett a(z) %d. sorban"
+
+#~ msgid "Formatting node %s...\n"
+#~ msgstr "A(z) %s oldal formázása...\n"
+
+#~ msgid "Node `%s' requires a sectioning command (e.g., %c%s)"
+#~ msgstr ""
+#~ "A(z) „%s“ oldalon szerepelnie kell szekcionálás (sectioning) parancsnak "
+#~ "(pl. %c%s)"
+
+#~ msgid "Anchor `%s' and node `%s' map to the same file name"
+#~ msgstr "A(z) „%s“ horgony és a(z) „%s“ oldal ugyanarra a fájlnévre mutatnak"
+
+#~ msgid "This @anchor command ignored; references to it will not work"
+#~ msgstr ""
+#~ "Ez az @anchor parancs figyelmen kívül lett hagyva; bármely rá való "
+#~ "hivatkozás nem fog működni"
+
+#~ msgid "Rename this anchor or use the `--no-split' option"
+#~ msgstr "Nevezze át ezt a horgonyt vagy használja a „--no-split“ opciót"
+
+# split-HTML ? LM
+#~ msgid "Unexpected string at end of split-HTML file `%s'"
+#~ msgstr "Nem várt szöveg a(z) „%s“ split-HTML fájl végén"
+
+# HTML
+#~ msgid "Next:"
+#~ msgstr "Következő:"
+
+#~ msgid "Previous:"
+#~ msgstr "Előző:"
+
+# HTML
+#~ msgid "Up:"
+#~ msgstr "Fel:"
+
+#~ msgid "Anchors `%s' and `%s' map to the same file name"
+#~ msgstr "A(z) „%s“ és „%s“ horgonyok ugyanarra a fájlnévre mutatnak"
+
+#~ msgid "@anchor command ignored; references to it will not work"
+#~ msgstr ""
+#~ "az @anchor parancs figyelmen kívül lett hagyva; bármely rá való "
+#~ "hivatkozás nem fog működni"
+
+#~ msgid "Menu"
+#~ msgstr "Menü"
+
+# ATNEZNI ? LM
+#~ msgid "Cross"
+#~ msgstr "Kereszt"
+
+# ATNEZNI ? LM
+#~ msgid ""
+#~ "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
+#~ msgstr ""
+#~ "A(z) „%s“ oldalnak a Következő (Next) mezője nem mutat sehova (esetleg "
+#~ "hibás szekcionálás?)"
+
+#~ msgid "This node (%s) has the bad Prev"
+#~ msgstr "Ennek az oldalnak (%s) hibás az Előző (Prev) mezője"
+
+#~ msgid "Prev"
+#~ msgstr "Előző"
+
+# ATNEZNI ? LM
+#~ msgid "Prev field of node `%s' not pointed to"
+#~ msgstr "A(z) „%s“ oldalnak az Előző (Prev) mezője nem mutat sehova"
+
+#~ msgid "This node (%s) has the bad Next"
+#~ msgstr "Ennek az oldalnak (%s) hibás a Következő (Next) mezője"
+
+#~ msgid "`%s' has no Up field (perhaps incorrect sectioning?)"
+#~ msgstr "„%s“-nek nincs Szülő (Up) mezője (esetleg hibás szekcionálás?)"
+
+#~ msgid "Up"
+#~ msgstr "Fel"
+
+#~ msgid "Appendix %c"
+#~ msgstr "Függelék: %c"
+
+#~ msgid "Internal error (search_sectioning) `%s'!"
+#~ msgstr "Belső hiba (search_sectioning) „%s“!"
+
+#~ msgid "Internal error (search_sectioning) \"%s\"!"
+#~ msgstr "Belső hiba (search_sectioning) „%s“!"
+
+#~ msgid "%c%s is obsolete; use %c%s instead"
+#~ msgstr "%c%s már elavult; használja %c%s-t helyette"
+
+#~ msgid "Node with %ctop as a section already exists"
+#~ msgstr "Olyan oldal már létezik, amelynek szekciója %ctop"
+
+#~ msgid "Here is the %ctop node"
+#~ msgstr "Íme a %ctop oldal"
+
+#~ msgid "%ctop used before %cnode, defaulting to %s"
+#~ msgstr ""
+#~ "%ctop korábban szerepel, mint %cnode, az alapértelmezett %s-t használom"
+
+#~ msgid ""
+#~ "@headitem as the last item of @multitable produces invalid Docbook "
+#~ "documents"
+#~ msgstr ""
+#~ "ha a @headitem a @multitable utolsó elemeként szerepel, akkor a Docbook "
+#~ "kimenet hibás lesz"
+
+#, fuzzy
+#~ msgid "see "
+#~ msgstr "Lásd "
+
+# node = csomópont? LM
+# vagy csak pont? sas
+#, fuzzy
+#~ msgid "for cross-references in parentheses, use @pxref"
+#~ msgstr "Ez az oldal nem tartalmaz kereszthivatkozást."
+
+#~ msgid "%s: warning: "
+#~ msgstr "%s: figyelem: "
+
+#~ msgid "menu item `%s' already exists, for file `%s'"
+#~ msgstr "A(z) „%s“ menüelem már létezik a „%s“ fájlhoz"
+
+#~ msgid "display this help and exit"
+#~ msgstr "kiírja e súgót és kilép"
+
+#~ msgid "send output to FILE"
+#~ msgstr "kimenet átirányítása FILE-ba"
+
+#~ msgid "Usage: %s [OPTION]... FILE...\n"
+#~ msgstr "Használat: %s [OPCIÓK]... FÁJL...\n"
+
+#~ msgid "Generate a sorted index for each TeX output FILE.\n"
+#~ msgstr "Rendezett tárgymutató generálása minden TeX kimeneti fájlhoz.\n"
+
+#~ msgid ""
+#~ "Usually FILE... is specified as `foo.%c%c' for a document `foo.texi'.\n"
+#~ msgstr ""
+#~ "FÁJL... általában „foo.%c%c“ alakú egy „foo.texi“ dokumentum esetén.\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Options:\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Opciók:\n"
+
+#~ msgid "failure reopening %s"
+#~ msgstr "Hiba történt „%s“ újbóli megnyitásakor"
+
+#~ msgid "%s: not a texinfo index file"
+#~ msgstr "%s: nem Texinfo tárgymutatófájl"
+
+#~ msgid "No page number in %s"
+#~ msgstr "Nem található oldalszám ebben: %s"
+
+#~ msgid "entry %s follows an entry with a secondary name"
+#~ msgstr "a(z) %s bejegyzés egy másodlagos névvel rendelkező bejegyzést követ"
 
 # tegez/magaz ? LM
 #~ msgid "\\%-10[menu-digit]  Pick first ... ninth item in node's menu.\n"

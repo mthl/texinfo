@@ -1,5 +1,10 @@
 2015-12-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* pretest 6.0.91.
+	* configure.ac: versionn
+
+2015-12-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Short Sample): Remove use of "-*-texinfo-*-"
 	and "%** start of header", "%** end of header" from example.
 	Change "names the file" to "names the manual" since @setfilename isn't
