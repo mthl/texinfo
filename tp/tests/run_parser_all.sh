@@ -30,6 +30,10 @@ test -f /usr/xpg4/bin/sh && test -z "$RANDOM" \
 
 LC_ALL=C; export LC_ALL
 
+# At least one test (coverage_formatting_utf8_enable_encoding.sh) has different
+# results with the XS paragraph formatter module.
+TEXINFO_XS=omit; export TEXINFO_XS
+
 prepended_command=
 #prepended_command=time
 
