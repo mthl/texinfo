@@ -876,7 +876,7 @@ xspara_add_text (char *text)
                               state.space.end = 0;
                               text_append_n (&state.space,
                                              new_space.text, new_space.end);
-                              free (new_space.text);
+                              text_destroy (&new_space);
                             }
 
                           /* Now get characters from the input. */

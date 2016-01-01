@@ -1,7 +1,15 @@
 2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/text.c (text_destroy): New 
+	function.
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_add_text): Use 
+	it instead of calling free directly, because free may have been 
+	redirected to Perl's version.
+
+2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_new): Don't 
-	call free on TEXT objects, but reuse the storage. Attempt at 
+	call free on TEXT objects, but reuse the storage.  Attempt at 
 	fixing 'Freed to wrong pool' error reported by Eli Zaretskii.
 
 2016-01-01  Eli Zaretskii  <eliz@gnu.org>
