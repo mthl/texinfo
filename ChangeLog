@@ -1,8 +1,14 @@
 2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am
+	(XSParagraph_la_LDFLAGS, TestXS_la_LDFLAGS): Add -no-undefined flag,
+	for MS-Windows.  Report from Eli Zaretskii.
+
+2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_add_text)
 	(xspara__add_next): Supply third argument to mbrtowc to say how 
-	many bytes are left.  Same for second argumet to mbrlen.
+	many bytes are left.  Same for second argument to mbrlen.
 	Suggestion from Eli Zaretskii.
 
 2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
