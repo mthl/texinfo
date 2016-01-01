@@ -1,3 +1,9 @@
+2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/run_parser_all.sh: Remove TEXINFO_XS=omit line.
+	* tp/tests/coverage/tests-parser.txt: Skip 
+	formatting_utf8_enable_encoding test.
+
 2015-12-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/run_parser_all.sh: Set TEXINFO_XS=omit to avoid failure
