@@ -126,13 +126,15 @@ size_t
 mbrtowc (wchar_t * __restrict__ pwc, const char * __restrict__ mbs, size_t n,
 	 mbstate_t * __restrict__ ps)
 {
+  int len = mbrlen (mbs, n, ps);
+
   if (mbs == NULL)
     return 0;
   else
     {
       wchar_t wc[2];
       size_t n_utf16 = MultiByteToWideChar (CP_UTF8, MB_ERR_INVALID_CHARS,
-					    mbs, n, wc, 2);
+					    mbs, len, wc, 2);
       if (n_utf16 == 0)
 	{
 	  errno = EILSEQ;
@@ -153,7 +155,7 @@ mbrtowc (wchar_t * __restrict__ pwc, const char * __restrict__ mbs, size_t n,
       if (pwc != NULL)
 	*pwc = wc[0];
 
-      return mbrlen (mbs, n, ps);
+      return len;
     }
 }
 

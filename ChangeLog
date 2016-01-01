@@ -1,3 +1,9 @@
+2016-01-01  Eli Zaretskii  <eliz@gnu.org>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (mbrtowc): Don't try to
+	convert more bytes than a single UTF-8 sequence at the beginning
+	of the argument string: otherwise MultiByteToWideChar fails.
+
 2016-01-01  Karl Berry  <karl@gnu.org>
 
 	* makeinfo/README,
