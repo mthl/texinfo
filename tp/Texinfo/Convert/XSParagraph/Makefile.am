@@ -1,19 +1,15 @@
-# Parts of this file derived from the output of MakeMaker version
-# 6.66 (Revision: 66600) from the contents of a Makefile.PL.
+# Makefile.am for XSParagraph
 #
-# Test with
-# make clean && make && (pushd ../../.. && ./texi2any.pl --version ; popd)
+# Copyright 2015, 2016 Free Software Foundation, Inc.
 #
-# Can use the MakeMaker makefile, for comparison with
-# "make -f Makefile.old"
-# "make -f Makefile.old install" gives
-# Installing /usr/local/lib/perl5/auto/XSParagraph/XSParagraph.so
-# Installing /usr/local/lib/perl5/auto/XSParagraph/XSParagraph.bs
-# Installing /usr/local/lib/perl5/XSParagraph.pm
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
 #
-# The *.bs is a "bootstrap" file which is empty, so we shouldn't have to
-# worry about it.
-
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
 AUTOMAKE_OPTIONS=foreign subdir-objects
 
 EXTRA_DIST=

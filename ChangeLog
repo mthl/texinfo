@@ -1,5 +1,12 @@
 2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Remove out-of-date 
+	comment at start of file and add copyright notice.
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Add copyright 
+	notice.
+
+2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/Makefile.am
 	(XSParagraph_la_LDFLAGS, TestXS_la_LDFLAGS): Add -no-undefined flag,
 	for MS-Windows.  Report from Eli Zaretskii.
