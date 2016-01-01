@@ -267,11 +267,14 @@ xspara_new (HV *conf)
   dTHX; /* Perl boiler plate */
 
   /* Avoid leaking the memory used last time. */
-  free (state.space.text);
-  free (state.word.text);
+  TEXT saved_space = state.space, saved_word = state.word;
 
-  /* Default values for formatter. */
+  /* Default values for formatter, reusing storage. */
   memset (&state, 0, sizeof (state));
+  state.space = saved_space;
+  state.word = saved_word;
+  state.space.end = state.word.end = 0;
+
   state.max = 72;
   state.indent_length_next = -1; /* Special value meaning undefined. */
   state.end_sentence = -2; /* Special value meaning undefined. */

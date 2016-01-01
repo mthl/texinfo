@@ -1,3 +1,9 @@
+2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_new): Don't 
+	call free on TEXT objects, but reuse the storage. Attempt at 
+	fixing 'Freed to wrong pool' error reported by Eli Zaretskii.
+
 2016-01-01  Eli Zaretskii  <eliz@gnu.org>
 
 	* tp/Texinfo/Convert/XSParagraph/xspara.c (mbrtowc): Don't try to
