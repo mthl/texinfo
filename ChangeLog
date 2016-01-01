@@ -1,3 +1,43 @@
+2016-01-01  Karl Berry  <karl@gnu.org>
+
+	* makeinfo/README,
+	* tp/Texinfo/Convert/Converter.pm,
+	* util/dir-example,
+	* build-aux/texinfo.tex: sync.
+	
+	* info/dir.c,
+	* info/echo-area.h,
+	* info/filesys.c,
+	* info/indices.c,
+	* info/indices.h,
+	* info/info-utils.h,
+	* info/infodoc.c,
+	* info/infomap.c,
+	* info/nodemenu.c,
+	* info/search.c,
+	* info/search.h,
+	* info/session.h,
+	* info/termdep.h,
+	* info/window.h,
+	* system.h,
+
+	* Pod-Simple-Texinfo/pod2texi.pl,
+	* doc/refcard/txirefcard.tex,
+	* doc/texinfo.texi,
+	* info/info.c,
+	* install-info/install-info.c,
+	* texindex/ti.twjr,
+	* tp/maintain/regenerate_cmd_tests.sh,
+	* tp/maintain/regenerate_docstr.sh,
+	* tp/maintain/regenerate_file_lists.pl,
+	* tp/maintain/template.pod,
+	* tp/texi2any.pl,
+	* util/pdftexi2dvi,
+	* util/texi-elements-by-size,
+	* util/texi2dvi,
+	* util/texi2pdf,
+	* util/texindex.bat: 2016.
+
 2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Remove out-of-date 
@@ -17325,7 +17365,7 @@
 	* doc/texinfo.tex (\initial): when breaking the column before the
 	  initial, allow for some space at the bottom of the column, so
 	  the baselineskip is preserved (more or less).
-	  Don't give negative penalty, it encouradges creating of underfull
+	  Don't give negative penalty, it encourages creating of underfull
 	  columns with stretched baselineskip.
 	  At the end, the \nobreak should be before \vskip, not after it.
 
@@ -21897,7 +21937,7 @@
 
 
 Copyright 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
-2013, 2014, 2015
+2013, 2014, 2015, 2016
 Free Software Foundation, Inc.
 
 Copying and distribution of this file, with or without modification,

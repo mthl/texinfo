@@ -38,7 +38,7 @@ printed manual from a single source using semantic markup.
 
 Copyright @copyright{} 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
 1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
-2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -1548,7 +1548,7 @@ which it is distributed.  @xref{GNU Sample Texts}.
 @@copying
 This is a short example of a complete Texinfo file, version 1.0.
 
-Copyright @@copyright@{@} 2015 Free Software Foundation, Inc.
+Copyright @@copyright@{@} 2016 Free Software Foundation, Inc.
 @@end copying
 @end group
 @end example
@@ -5660,7 +5660,7 @@ can insert @code{@@/} as needed (@pxref{Line Breaks}).
 
 @findex urefbreakstyle
 By default, in @TeX{} any such breaks at special characters will occur
-after the character.  Some people prefer such breaks to happen after
+after the character.  Some people prefer such breaks to happen before
 the special character.  This can be controlled with the
 @code{@@urefbreakstyle} command (this command has effect only in
 @TeX{}):
@@ -21361,7 +21361,7 @@ it for a printed manual.
 @@copying
 This is a short example of a complete Texinfo file.
 
-Copyright @@copyright@{@} 2015 Free Software Foundation, Inc.
+Copyright @@copyright@{@} 2016 Free Software Foundation, Inc.
 @@end copying
 
 @@titlepage
@@ -21536,7 +21536,7 @@ Here is the sample document:
 This manual is for GNU Sample (version @value{VERSION}, @value{UPDATED}),
 which is an example in the Texinfo documentation.
 
-Copyright @copyright{} 2015 Free Software Foundation, Inc.
+Copyright @copyright{} 2016 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -21626,7 +21626,7 @@ see the previous sections.
 @copying
 This document is a sample for allowing verbatim copying only.
 
-Copyright @copyright{} 2015 Free Software Foundation, Inc.
+Copyright @copyright{} 2016 Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to make and distribute verbatim copies
@@ -21657,7 +21657,7 @@ the license text itself.  For a complete sample document, see the
 previous sections.
 
 @example
-Copyright @@copyright@{@} 2015 Free Software Foundation, Inc.
+Copyright @@copyright@{@} 2016 Free Software Foundation, Inc.
 
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright

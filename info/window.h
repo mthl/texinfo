@@ -1,7 +1,7 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
    $Id$
 
-   Copyright 1993, 1997, 2004, 2007, 2011 2013, 2014
+   Copyright 1993, 1997, 2004, 2007, 2011 2013, 2014, 2015, 2016
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
