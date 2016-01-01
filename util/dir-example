@@ -532,7 +532,7 @@ Individual utilities
 * stty: (coreutils)stty invocation.             Print/change terminal settings.
 * su: (coreutils)su invocation.                 Modify user and group ID.
 * sum: (coreutils)sum invocation.               Print traditional checksum.
-* sync: (coreutils)sync invocation.             Synchronize memory and disk.
+* sync: (coreutils)sync invocation.             Synchronize memory to disk.
 * syslogd: (inetutils)syslogd invocation.       Syslog server.
 * tabs: (tput)Invoking tabs.                    Tab settings.
 * tac: (coreutils)tac invocation.               Reverse files.
