@@ -1,5 +1,11 @@
 2016-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (copy_converting): Don't check whether a 
+	value of type size_t is negative in loop condition, because 
+	size_t is unsigned.  Always loop instead.
+
+2016-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/terminal.c (term_mm, terminal_has_meta_p): Remove unused 
 	variables.
 	* info/terminal.c (terminal_initialize_terminal),

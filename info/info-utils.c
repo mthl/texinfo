@@ -847,14 +847,14 @@ copy_converting (long n)
   output_start = text_buffer_off (&output_buf);
   bytes_left = n;
   extra_at_end = 0;
-  while (bytes_left >= 0)
+  while (1)
     {
       iconv_ret = text_buffer_iconv (&output_buf, iconv_to_output,
                                      (ICONV_CONST char **)&inptr, &bytes_left);
 
       /* Make sure libiconv flushes out the last converted character.
 	 This is required when the conversion is stateful, in which
-	 case libiconv might not output the last charcater, waiting to
+	 case libiconv might not output the last character, waiting to
 	 see whether it should be combined with the next one.  */
       if (iconv_ret != (size_t) -1
 	  && text_buffer_iconv (&output_buf, iconv_to_output,
