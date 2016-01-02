@@ -1,3 +1,9 @@
+2016-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/run_parser_all.sh: Run sed on file logging standard 
+	error of program to account for variant output under MS-Windows, 
+	reported by Eli Zaretskii.
+
 2016-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/text.c (text_destroy): New 

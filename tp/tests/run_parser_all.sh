@@ -349,14 +349,15 @@ while read line; do
         chmod -R u+w "$staging_dir_res/$dir"
         rm -rf $staging_dir_res$dir/CVS $staging_dir_res$dir/.svn
 
+        # store raw output
+        raw_outdir="$testdir/${raw_out_dir}${dir_suffix}/"
+        test -d "${raw_outdir}" || mkdir "${raw_outdir}"
+        rm -rf "${raw_outdir}$dir"
+
         # with latex2html or tex4ht output is stored in raw_outdir, and files
         # are removed or modified from the output directory used for comparisons
         if test "$use_latex2html" = 'yes' || test "$use_tex4ht" = 'yes' ; then
 
-          # store raw output
-          raw_outdir="$testdir/${raw_out_dir}${dir_suffix}/"
-          test -d "${raw_outdir}" || mkdir "${raw_outdir}"
-          rm -rf "${raw_outdir}$dir"
           cp -pr ${outdir}$dir/ "${raw_outdir}"
 
           # remove files that are not reproducible
@@ -365,6 +366,10 @@ while read line; do
                 ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
                 ${outdir}$dir/*_l2h.html.* \
                 ${outdir}$dir/*_tex4ht_tex.html*
+        else
+          # Otherwise it's only the standard error that needs to be modified.
+          mkdir -p "${raw_outdir}$dir"
+          cp -p ${outdir}$dir/${basename}.2 "${raw_outdir}$dir"
         fi
         if test "$use_tex4ht" = 'yes' ; then
           # tex4ht may be customized to use dvipng or dvips, both being
@@ -374,6 +379,7 @@ while read line; do
         elif test "$use_latex2html" = 'yes' ; then
           sed -e 's/^texexpand.*/texexpand /' \
               -e '/is no longer supported at.*line/d' \
+              -e 's/^htmlxref/.\/htmlxref/' \
               $raw_outdir$dir/$basename.2 > $outdir$dir/$basename.2
           # "*"_images.pl" files are not guaranteed to be present
           for file in "${raw_outdir}$dir/"*"_labels.pl"; do
@@ -400,6 +406,11 @@ while read line; do
           # even with the normalizations above.
           rm -f ${outdir}$dir/*.aux ${outdir}$dir/*_images.out \
                 ${outdir}$dir/*_l2h.css ${outdir}$dir/*_l2h_images.pl
+        else
+          # Account for variant output under MS-Windows.  This transformation
+          # is also done above.
+          sed -e 's/^htmlxref/.\/htmlxref/' \
+              $raw_outdir$dir/$basename.2 > $outdir$dir/$basename.2
         fi
 
         diff $DIFF_A_OPTION $DIFF_U_OPTION -r "${staging_dir_res}$dir" "${outdir}$dir" 2>>$logfile > "$testdir/$diffs_dir/$diff_base.diff"
