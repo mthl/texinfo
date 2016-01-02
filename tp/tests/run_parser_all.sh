@@ -354,8 +354,9 @@ while read line; do
         test -d "${raw_outdir}" || mkdir "${raw_outdir}"
         rm -rf "${raw_outdir}$dir"
 
-        # with latex2html or tex4ht output is stored in raw_outdir, and files
+        # With latex2html or tex4ht output is stored in raw_outdir, and files
         # are removed or modified from the output directory used for comparisons
+        # NB there is similar code in many_input_files/tex_{l2h,t4ht}.sh.
         if test "$use_latex2html" = 'yes' || test "$use_tex4ht" = 'yes' ; then
 
           cp -pr ${outdir}$dir/ "${raw_outdir}"
@@ -412,6 +413,8 @@ while read line; do
           sed -e 's/^htmlxref/.\/htmlxref/' \
               $raw_outdir$dir/$basename.2 > $outdir$dir/$basename.2
         fi
+        test -d "$raw_outdir$dir" && rm -rf "$raw_outdir$dir"
+        # This directory isn't cleaned anywhere else.
 
         diff $DIFF_A_OPTION $DIFF_U_OPTION -r "${staging_dir_res}$dir" "${outdir}$dir" 2>>$logfile > "$testdir/$diffs_dir/$diff_base.diff"
         dif_ret=$?
