@@ -3556,8 +3556,8 @@ it is never lowered and nothing can be raised to it
 @node Node Menu Illustration
 @section Node and Menu Illustration
 
-Here is a copy of the diagram shown earlier that illustrates a Texinfo
-file with three chapters, each of which contains two sections.
+Here is a diagram that illustrates a Texinfo file with three chapters,
+each of which contains two sections.
 
 The ``root'' is at the top of the diagram and the ``leaves'' are at
 the bottom.  This is how such a diagram is drawn conventionally; it

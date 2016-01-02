@@ -1,5 +1,10 @@
 2016-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Node Menu Illustration): Change "copy of 
+	diagram" to "diagram".
+
+2016-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/run_parser_all.sh: Run sed on file logging standard 
 	error of program to account for variant output under MS-Windows, 
 	reported by Eli Zaretskii.
