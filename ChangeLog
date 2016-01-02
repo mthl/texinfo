@@ -1,5 +1,13 @@
 2016-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/terminal.c (term_mm, terminal_has_meta_p): Remove unused 
+	variables.
+	* info/terminal.c (terminal_initialize_terminal),
+	* info/pcterm.c (pc_initialize_terminal): Don't refer to removed 
+	variables.
+
+2016-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Node Menu Illustration): Change "copy of 
 	diagram" to "diagram".
 
