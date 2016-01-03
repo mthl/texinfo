@@ -28,6 +28,20 @@ Installation notes specific to Texinfo:
   For that, run configure --disable-install-warnings, or set
   enable_install_warnings=no in the environment.
 
+* The `makeinfo' program is a Perl program that can use extension
+  modules, known as XS modules.  The configure script will attempt to
+  detect whether such modules can be built and loaded on your
+  installation.  If you want to disable the use of XS modules, you can
+  give the --disable-perl-xs flag to `configure'; likewise, to use them
+  without checking, give the --enable-perl-xs flag.  Some of the
+  environment variables listed in the output of `./configure --help' may
+  be of use for building the XS modules.
+      After building the program, the use of XS modules can be
+  controlled with the `TEXINFO_XS' environment variable, which may be
+  useful for troubleshooting.  Set TEXINFO_XS=debug to print some
+  information as the modules are looked for and loaded, TEXINFO=omit to
+  disable their use, and TEXINFO_XS=required to force their use.
+
 * For instructions on compiling this distribution with DJGPP tools
   for MS-DOS and MS-Windows, see the file djgpp/README.
 

@@ -1,5 +1,9 @@
 2016-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* INSTALL: Some words about XS.
+
+2016-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Makefile.am,
 	* tp/Texinfo/Convert/XSParagraph/Makefile.am,
 	* tp/texi2any.pl: Replace uses of pkglibexecdir with pkglibdir.
