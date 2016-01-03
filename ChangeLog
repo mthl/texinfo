@@ -1,3 +1,13 @@
+2016-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Makefile.am,
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am,
+	* tp/texi2any.pl: Replace uses of pkglibexecdir with pkglibdir.
+	Modules installed under pkglibexecdir weren't being found due 
+	not being substituted by configure script.  Reported by
+	Andreas Schwab.  Probably related to AC_SUBST in 'gl_CONFIGMAKE'
+	in 'configmake' gnulib module overriding the default definition.
+
 2016-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (copy_converting): Don't check whether a 

@@ -33,7 +33,7 @@ EXTRA_DIST+=m4/gnulib-cache.m4
 ################### End Gnulib section #########################
 
 modulesdir = $(pkgdatadir)/Texinfo/Convert/XSParagraph
-xsdir = $(pkglibexecdir)
+xsdir = $(pkglibdir)
 
 dist_modules_DATA = TestXS.pm
 
