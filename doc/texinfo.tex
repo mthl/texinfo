@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-01-04.20}
+\def\texinfoversion{2016-01-04.21}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -11029,9 +11029,20 @@ callback.register("process_input_buffer", convert_line)
 {@catcode`@^=7 @catcode`@^^M=13%
 @gdef@eatinput input texinfo#1^^M{@fixbackslash}}
 
+% Emergency active definition of newline, in case an active newline token
+% appears by mistake.
+{@catcode`@^=7 @catcode13=13%
+@gdef@enableemergencynewline{%
+  @gdef^^M{%
+    @par%
+    %<warning: active newline>@par%
+}}}
+
+
 @gdef@fixbackslash{%
   @ifx\@eatinput @let\ = @ttbackslash @fi
   @catcode13=5 % regular end of line
+  @enableemergencynewline
   @let@c=@texinfoc
   % Also turn back on active characters that might appear in the input
   % file name, in case not using a pre-dumped format.
