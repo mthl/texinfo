@@ -1,6 +1,6 @@
 2016-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* doc/texinfo.tex (\enableemergencybackslash): New macro.
+	* doc/texinfo.tex (\enableemergencynewline): New macro.
 	(\fixbackslash): Use it, in order to give newline a default
 	active definition.
 
