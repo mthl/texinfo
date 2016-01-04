@@ -1,3 +1,8 @@
+2016-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm (%css_map): Use 'font-family: initial'
+	instead of 'font-family: serif' for @r.  Suggestion from Karl Berry.
+
 2016-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* INSTALL: Some words about XS.
