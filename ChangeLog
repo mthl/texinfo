@@ -1,5 +1,11 @@
 2016-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex, NEWS: For XeTeX and LuaTeX, use input by 
+	bytes instead of by UTF-8 codepoints.  Documents encoded in 
+	UTF-8 reported broken by Werner Lemberg.
+
+2016-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/HTML.pm (%css_map): Use 'font-family: initial'
 	instead of 'font-family: serif' for @r.  Suggestion from Karl Berry.
 

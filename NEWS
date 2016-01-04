@@ -68,6 +68,8 @@ one of the relevant sections:
     can extend slightly into the margin instead of being broken across 
     two lines, and text is split more evenly across lines.  Reduce 
     chance of an orphaned index entry appearing at the top of a column.
+  . Support character encodings beyond ASCII for XeTeX and LuaTeX by
+    reading file input byte-by-byte.
 
 * texi2dvi
   . Support of getting output files using the `-recorder' option to TeX,
