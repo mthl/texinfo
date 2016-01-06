@@ -55,6 +55,12 @@ XSParagraph_la_SOURCES = XSParagraph.c xspara.c xspara.h \
 			 text.c text.h ppport.h
 TestXS_la_SOURCES = TestXS.c ppport.h
 
+# TestXS has to be included in xs_LIBRARIES, and not noinst_LIBRARIES, 
+# otherwise dynamic libraries aren't built (a libtool bug).  Work around 
+# this by deleting it after it's installed.
+install-data-hook:
+	rm -f $(DESTDIR)$(xsdir)/TestXS*
+
 CLEANFILES += TestXS.c
 EXTRA_DIST += TestXS.xs
 
