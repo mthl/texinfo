@@ -1180,6 +1180,7 @@ ul.no-bullet {list-style: none}
 </dl>
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="info.html#Top" accesskey="2">(info)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 <pre class="verbatim">some @ verb{x atim
 * texinfo:: in @ verbatim
@@ -1193,11 +1194,13 @@ Log$
 * acronym::</acronym>
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre><div class="example">
 <pre class="example">* subsubsection::
 Menu comment
 </pre></div>
 <pre class="menu-comment">
+
 </pre></th></tr></table>
 <hr>
 

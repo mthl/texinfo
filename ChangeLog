@@ -1,5 +1,11 @@
 2016-01-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/HTML.pm (_convert_preformatted_type): Add an
+	extra newline after a <pre> tag if the contents begins with a 
+	newline.
+
+2016-01-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/README,
 	* tp/tests/README: 2016 in copyright dates.
 

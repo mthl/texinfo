@@ -444,6 +444,7 @@ ul.no-bullet {list-style: none}
 <tr><td align="left" valign="top">&bull; Copying Conditions:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Your rights.
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre></th></tr><tr><td align="left" valign="top">&bull; detailmenu:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>

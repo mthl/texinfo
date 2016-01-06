@@ -1027,14 +1027,17 @@ ul.no-bullet {list-style: none}
 <tr><td align="left" valign="top">&bull; <a href="manual.html#Top" accesskey="1">(manual)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 <ul>
 <li><pre class="menu-preformatted">
+
 </pre></li><li> <pre class="menu-preformatted">in item
 
 </pre></li></ul>
 <dl compact="compact">
 <dd><pre class="menu-preformatted">
+
 </pre></dd>
 <dt>table item</dt>
 <dd><pre class="menu-preformatted">
+
 Text.
 
 </pre></dd>

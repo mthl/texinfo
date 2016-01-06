@@ -315,6 +315,7 @@ ul.no-bullet {list-style: none}
 <tr><td align="left" valign="top">&bull; <a href="manual.html#n_002d_002d_002dode" accesskey="1">entry&mdash;in</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">description &mdash; in.
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 comment &mdash; in.
 </pre></th></tr></table>
 

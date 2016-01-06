@@ -3703,6 +3703,7 @@ sub _convert_preformatted_type($$$$)
   if ($self->in_string()) {
     return $content;
   }
+  $content =~ s/^\n/\n\n/; # a newline immediately after a <pre> is ignored.
   my $result = $self->_attribute_class('pre', $pre_class).">".$content."</pre>";
 
   # this may happen with lines without textual content 

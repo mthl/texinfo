@@ -417,12 +417,14 @@ ul.no-bullet {list-style: none}
 <tr><td align="left" valign="top">&bull; entry:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre><div class="example">
 <pre class="example">in 
 
 example
 </pre></div>
 <pre class="menu-comment">
+
 menu comment.
 
 </pre></th></tr></table>

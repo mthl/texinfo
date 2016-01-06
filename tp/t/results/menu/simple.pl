@@ -717,6 +717,7 @@ ul.no-bullet {list-style: none}
                  still description
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 new comment
 </pre></th></tr><tr><td align="left" valign="top">&bull; last node entry :</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
