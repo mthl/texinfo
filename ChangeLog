@@ -1,3 +1,9 @@
+2016-01-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* gnulib: Run gnulib-tool --add-import, omitting the "mkstemp" 
+	module which isn't used any where (possibly used in texindex.c, 
+	which isn't distributed any more).
+
 2016-01-07  Masamichi Hosoda  <trueroad@trueroad.jp> (tiny change)
 
         * doc/texinfo.tex: For XeTeX, fix input by bytes instead of
