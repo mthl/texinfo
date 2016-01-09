@@ -83,8 +83,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module mbtowc:
   # Code from module mbuiter:
   # Code from module memchr:
-  # Code from module memmem:
-  # Code from module memmem-simple:
   # Code from module mempcpy:
   # Code from module memrchr:
   # Code from module msvc-inval:
@@ -247,15 +245,6 @@ AC_DEFUN([gl_INIT],
     gl_PREREQ_MEMCHR
   fi
   gl_STRING_MODULE_INDICATOR([memchr])
-  gl_FUNC_MEMMEM
-  if test $HAVE_MEMMEM = 0 || test $REPLACE_MEMMEM = 1; then
-    AC_LIBOBJ([memmem])
-  fi
-  gl_FUNC_MEMMEM_SIMPLE
-  if test $HAVE_MEMMEM = 0 || test $REPLACE_MEMMEM = 1; then
-    AC_LIBOBJ([memmem])
-  fi
-  gl_STRING_MODULE_INDICATOR([memmem])
   gl_FUNC_MEMRCHR
   if test $ac_cv_func_memrchr = no; then
     AC_LIBOBJ([memrchr])
@@ -872,7 +861,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/mbuiter.h
   lib/memchr.c
   lib/memchr.valgrind
-  lib/memmem.c
   lib/mempcpy.c
   lib/memrchr.c
   lib/msvc-inval.c
@@ -996,7 +984,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/mbswidth.m4
   m4/mbtowc.m4
   m4/memchr.m4
-  m4/memmem.m4
   m4/mempcpy.m4
   m4/memrchr.m4
   m4/mmap-anon.m4

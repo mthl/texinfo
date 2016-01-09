@@ -4,6 +4,8 @@
 	module which isn't used any where (possibly used in texindex.c, 
 	which isn't distributed any more).
 
+	* gnulib: Run gnulib-tool --add-import, omitting "memmem".
+
 2016-01-07  Masamichi Hosoda  <trueroad@trueroad.jp> (tiny change)
 
         * doc/texinfo.tex: For XeTeX, fix input by bytes instead of
