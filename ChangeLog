@@ -1,5 +1,11 @@
 2016-01-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Print error if 
+	"xsubpp" program is not found.  This avoids an attempt to later
+	execute a "typemap" program when $(XSUBPP) -typemap is done.
+
+2016-01-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex: For LuaTeX, output bytes instead of UTF-8 
 	multi-byte characters.  Add comment to say this is a problem 
 	with XeTeX which we haven't fixed.  Problem under LuaTeX and 
