@@ -1,3 +1,10 @@
+2016-01-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex: For LuaTeX, output bytes instead of UTF-8 
+	multi-byte characters.  Add comment to say this is a problem 
+	with XeTeX which we haven't fixed.  Problem under LuaTeX and 
+	XeTeX reported by Masamichi Hosoda.
+
 2016-01-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* gnulib: Run gnulib-tool --add-import, omitting the "mkstemp" 
