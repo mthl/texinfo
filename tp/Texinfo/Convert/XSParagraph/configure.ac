@@ -77,6 +77,13 @@ fi
 AC_PROG_CC
 
 gl_EARLY
+
+AC_PATH_PROG([XSUBPP], [xsubpp])
+if test x$ac_cv_path_XSUBPP = x ; then
+ echo $ac_cv_path_XSUBPP
+  AC_MSG_ERROR([xsubpp not found])
+fi
+
 gl_INIT
 
 LT_INIT
@@ -111,14 +118,7 @@ lookup_perl_conf([privlibexp])
 # TODO: would be nice to be able to do lookup_perl_conf([ccflags cccdlflags])
 # A for loop doesn't work; it has to be expanded at m4 time
 
-AC_PATH_PROG([XSUBPP], [xsubpp])
-if test x$ac_cv_path_XSUBPP = x ; then
- echo $ac_cv_path_XSUBPP
-  AC_MSG_ERROR([xsubpp not found])
-fi
-
 AC_CONFIG_HEADERS([config.h:config.in])
-
 fi # not disable_xs
 
 AC_CONFIG_FILES([Makefile lib/Makefile])

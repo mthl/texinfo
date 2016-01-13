@@ -1,5 +1,11 @@
 2016-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Move check for 
+	xsubpp to before gl_INIT, in order not to waste time running the 
+	gnulib checks if the extension isn't going to be built anyway.
+
+2016-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/Init-inter.inc (synch_with_program): Remove function.
 	* info/t/c-u-m-x-scroll-forward.sh,
 	* info/t/inc-sea-forward.sh,
@@ -14,7 +20,7 @@
 
 2016-01-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Print error if 
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Print error if 
 	"xsubpp" program is not found.  This avoids an attempt to later
 	execute a "typemap" program when $(XSUBPP) -typemap is done.
 
