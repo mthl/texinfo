@@ -108,11 +108,13 @@ lookup_perl_flags([cccdlflags])
 
 lookup_perl_conf([archlibexp])
 lookup_perl_conf([privlibexp])
-
 # TODO: would be nice to be able to do lookup_perl_conf([ccflags cccdlflags])
 # A for loop doesn't work; it has to be expanded at m4 time
 
 AC_PATH_PROG([XSUBPP], [xsubpp])
+if test x$ac_cv_path_xsubpp = x ; then
+  AC_MSG_ERROR([xsubpp not found])
+fi
 
 AC_CONFIG_HEADERS([config.h:config.in])
 
