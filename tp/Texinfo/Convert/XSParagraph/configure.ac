@@ -80,7 +80,6 @@ gl_EARLY
 
 AC_PATH_PROG([XSUBPP], [xsubpp])
 if test x$ac_cv_path_XSUBPP = x ; then
- echo $ac_cv_path_XSUBPP
   AC_MSG_ERROR([xsubpp not found])
 fi
 
