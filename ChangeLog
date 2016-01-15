@@ -1,5 +1,10 @@
 2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/TestXS.pm: Re-add line for 
+	debugging output, for better trouble-shooting.
+
+2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/README: Add example of how to update long tests.
 
 2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
