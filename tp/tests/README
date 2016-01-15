@@ -91,6 +91,10 @@ $ ./parser_tests.sh -copy formatting
 The copy-* make targets update all the references for various large sets
 of tests via this method.
 
+To update a group of long tests:
+
+$ LONG_TESTS=yes ./parser_tests.sh -copy nested_formats
+
 Exception: in the many_input_files subdirectory, the *parser*.sh scripts
 can't be used for updating.  Instead, the Makefile's copy-tests and
 copy-tex-html targets do it directly.
