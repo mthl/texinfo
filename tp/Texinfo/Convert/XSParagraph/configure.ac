@@ -112,6 +112,16 @@ if test x$disable_xs != xyes; then
 lookup_perl_flags([ccflags])
 lookup_perl_flags([cccdlflags])
 
+lookup_perl_conf([libperl])
+# Change libperl.so into -lperl to indicate a library dependency to 
+# libtool.
+# Special case for Cygwin to change e.g. cygperl5_22.dll into -lperl
+PERL_CONF_libperl=`echo $PERL_CONF_libperl \
+           | sed -e 's/^lib/-l/' \
+                 -e 's/\..*//' \
+                 -e 's/^cygperl.*/-lperl/' `
+
+
 lookup_perl_conf([archlibexp])
 lookup_perl_conf([privlibexp])
 # TODO: would be nice to be able to do lookup_perl_conf([ccflags cccdlflags])

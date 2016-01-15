@@ -76,20 +76,19 @@ CFLAGS = $(PERL_EXT_CFLAGS)
 CPPFLAGS = $(PERL_EXT_CPPFLAGS)
 LDFLAGS = $(PERL_EXT_LDFLAGS)
 
-XSParagraph_la_CFLAGS = $(PERL_CONF_ccflags)
+AM_CFLAGS = $(PERL_CONF_ccflags)
 
+XSParagraph_la_CFLAGS = $(AM_CFLAGS)
 XSParagraph_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(XSPARAGRAPH_INTERFACE_VERSION)\"  "-I$(PERL_INC)"
 
-XSParagraph_la_LDFLAGS=-no-undefined -avoid-version -module $(PERL_CONF_cccdlflags)
-# The -no-undefined flag is for MS-Windows.  See info node
-# `(gnulib)Libtool and Windows'.
-
-
-TestXS_la_CFLAGS = $(PERL_CONF_ccflags)
-
+TestXS_la_CFLAGS = $(AM_CFLAGS)
 TestXS_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"  "-I$(PERL_INC)"
 
-TestXS_la_LDFLAGS=-no-undefined -module $(PERL_CONF_cccdlflags)
+AM_LDFLAGS = -no-undefined -L$(PERL_INC) $(PERL_CONF_libperl)
+AM_LDFLAGS += -avoid-version -module $(PERL_CONF_ccdlflags)
+# The -no-undefined flag is for MS-Windows.  See info node
+# `(gnulib)Libtool and Windows'.  The -L and -l options after it show
+# where to find the undefined symbols.
 
 # only used to regenerate a stand-alone perl module
 perl_specific_files = \

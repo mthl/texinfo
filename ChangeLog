@@ -1,5 +1,12 @@
 2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Get 'libperl' 
+	Perl config value, and transform it into a -l flag for libtool.
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am (AM_LDFLAGS): Use 
+	this flag along with -L$(PERL_INC).
+
+2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Info Format Specification): Mention that 
 	keywords in Info format should be read case-insensitively.  
 	Suggestion for manual from Karl Berry.
