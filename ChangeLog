@@ -1,5 +1,10 @@
 2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Get Perl conf 
+	value 'ccdlflags' for flags for linking the extension.
+
+2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/TestXS.pm: Re-add line for 
 	debugging output, for better trouble-shooting.
 

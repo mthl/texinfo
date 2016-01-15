@@ -112,6 +112,9 @@ if test x$disable_xs != xyes; then
 lookup_perl_flags([ccflags])
 lookup_perl_flags([cccdlflags])
 
+# flags for linking the extension, e.g. -rpath.
+lookup_perl_conf([ccdlflags])
+
 lookup_perl_conf([libperl])
 # Change libperl.so into -lperl to indicate a library dependency to 
 # libtool.
