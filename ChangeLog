@@ -1,5 +1,9 @@
 2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/README: Add example of how to update long tests.
+
+2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/configure.ac: Get 'libperl' 
 	Perl config value, and transform it into a -l flag for libtool.
 	* tp/Texinfo/Convert/XSParagraph/Makefile.am (AM_LDFLAGS): Use 
