@@ -23569,14 +23569,6 @@ the tag table and a directory of subfiles.
 
 Here we describe the technical details of the Info format.
 
-This format definition was written some 25 years after the Info format
-was first devised.  So in the event of conflicts between this
-definition and actual practice, practice wins.  It also assumes some
-general knowledge of Texinfo; it is meant to be a guide for
-implementors rather than a rigid technical standard.  We often refer
-back to other parts of this manual for examples and definitions,
-rather than redundantly spelling out every detail.
-
 In this formal description, the characters @code{<>*()|=#} are used
 for the language of the description itself.  Other characters are
 literal.  The formal constructs used are typical: @code{<...>}
@@ -23584,6 +23576,11 @@ indicates a metavariable name, @samp{=} means definition, @samp{*}
 repetition, @samp{?} optional, @samp{()} grouping, @samp{|}
 alternation, @samp{#} comment.  Exception: @samp{*} at the beginning
 of a line is literal.
+
+In general, programs that read Info files should try to be
+case-insensitive to keywords that occur in the file (for example,
+@samp{Tag Table} and @samp{Tag table} should be equivalent) in order to
+support Info-generating programs that use different capitalization.
 
 The sections in an Info file (such as nodes or tag tables) are separated
 with a sequence:
@@ -23598,14 +23595,18 @@ formfeed characters.  We refer to such sequences as @t{<separator>}.
 
 We specify literal parentheses (those that are part of the Info
 format) with @t{<lparen>} and @t{<rparen>}, meaning the single
-characters @samp{(} and @samp{)} respectively.
-@c.quote --- comment out the discussion of node name quoting here and
-@c.quote     elsewhere while it has limited implementation. -gavin, 2014-02-06.
-@c.quote     Hopefully we'll be able to reinstate it in the future.
-@c.quote We specify the @samp{CTRL-?} character (character number 127)
-@c.quote with @t{<del>}.  Finally,
-The two-character sequence @samp{^@var{x}} means the single
+characters @samp{(} and @samp{)} respectively.  We specify the
+@samp{CTRL-?} character (character number 127) @t{<del>}.  Finally,
+the two-character sequence @samp{^@var{x}} means the single
 character @samp{CTRL-@var{x}}, for any @var{x}.
+
+This format definition was written some 25 years after the Info format
+was first devised.  So in the event of conflicts between this
+definition and actual practice, practice wins.  It also assumes some
+general knowledge of Texinfo; it is meant to be a guide for
+implementors rather than a rigid technical standard.  We often refer
+back to other parts of this manual for examples and definitions,
+rather than redundantly spelling out every detail.
 
 @menu
 * General: Info Format General Layout.

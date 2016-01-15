@@ -1,3 +1,10 @@
+2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Info Format Specification): Mention that 
+	keywords in Info format should be read case-insensitively.  
+	Suggestion for manual from Karl Berry.
+	Move disclaimer about actual practice to the end of the node.
+
 2016-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/configure.ac: Move check for 
