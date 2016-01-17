@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2015-12-29 17:15+0000\n"
+"POT-Creation-Date: 2015-12-19 16:34+0000\n"
 "PO-Revision-Date: 2015-12-22 19:59+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -17,8 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 1.5\n"
 
 #: gnulib/lib/error.c:191
@@ -328,15 +327,11 @@ msgstr "Пункт покажчика: "
 #: info/indices.c:436
 #, c-format
 msgid "Found '%s' in %s. ('\\[next-index-match]' tries to find next.)"
-msgstr ""
-"«%s» знайдено у %s. («\\[next-index-match]» спробує знайти наступний збіг.)"
+msgstr "«%s» знайдено у %s. («\\[next-index-match]» спробує знайти наступний збіг.)"
 
 #: info/indices.c:446
-msgid ""
-"Go to the next matching index item from the last '\\[index-search]' command"
-msgstr ""
-"Перейти до наступного пункту покажчика, що був знайдений останньою командою "
-"«\\[index-search]»"
+msgid "Go to the next matching index item from the last '\\[index-search]' command"
+msgstr "Перейти до наступного пункту покажчика, що був знайдений останньою командою «\\[index-search]»"
 
 #: info/indices.c:457
 #, c-format
@@ -360,8 +355,7 @@ msgstr "Перегляд покажчиків «%s»..."
 
 #: info/indices.c:636
 msgid "Grovel all known info file's indices for a string and build a menu"
-msgstr ""
-"Виконати пошук рядка у всіх відомих покажчиках файлів і побудувати меню"
+msgstr "Виконати пошук рядка у всіх відомих покажчиках файлів і побудувати меню"
 
 #: info/indices.c:644 info/indices.c:646
 msgid "Index apropos"
@@ -385,7 +379,7 @@ msgstr "Тема покажчика"
 msgid "No available info files have '%s' in their indices."
 msgstr "Жоден доступний файл info не містить «%s» у покажчику."
 
-#: info/info-utils.c:892
+#: info/info-utils.c:889
 #, c-format
 msgid "Error converting file character encoding."
 msgstr "Помилка під час спроби змінити кодування символів у файлі."
@@ -439,16 +433,13 @@ msgstr "Спробуйте --help, щоб отримати більше інфо
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
-"html>\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"Ліцензія GPLv3+: GNU GPL версія 3, чи новіша <http://gnu.org/licenses/gpl."
-"html>\n"
-"Це вільне програмне забезпечення: ви можете змінювати та розповсюджувати "
-"його.\n"
+"Ліцензія GPLv3+: GNU GPL версія 3, чи новіша <http://gnu.org/licenses/gpl.html>\n"
+"Це вільне програмне забезпечення: ви можете змінювати та розповсюджувати його.\n"
 "Не надається НІЯКИХ ГАРАНТІЙ у рамках, передбачених законом.\n"
 
 #: info/info.c:981
@@ -471,16 +462,14 @@ msgstr ""
 msgid ""
 "Options:\n"
 "  -a, --all                    use all matching manuals.\n"
-"  -k, --apropos=STRING         look up STRING in all indices of all "
-"manuals.\n"
+"  -k, --apropos=STRING         look up STRING in all indices of all manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILE           remember user keystrokes in FILENAME.\n"
 "  -f, --file=MANUAL            specify Info manual to visit."
 msgstr ""
 "Параметри:\n"
 "  -a, --all                    використовувати усі відповідні підручники.\n"
-"  -k, --apropos=РЯДОК          шукати РЯДОК в усіх покажчиках усіх "
-"підручників.\n"
+"  -k, --apropos=РЯДОК          шукати РЯДОК в усіх покажчиках усіх підручників.\n"
 "  -d, --directory=ТЕКА         додати ТЕКУ до INFOPATH.\n"
 "      --dribble=ФАЙЛ           зберегти ввід користувача у ФАЙЛ.\n"
 "  -f, --file=ФАЙЛ              вказати файл Info для перегляду."
@@ -493,10 +482,8 @@ msgid ""
 "  -o, --output=FILE            output selected nodes to FILE."
 msgstr ""
 "  -h, --help                   показати цю довідку і вийти.\n"
-"      --index-search=РЯДОК     перейти до вузла, вказаного пунктом покажчика "
-"РЯДОК.\n"
-"  -n, --node=НАЗВА             вказати вузли у першому відкритому файлі "
-"Info.\n"
+"      --index-search=РЯДОК     перейти до вузла, вказаного пунктом покажчика РЯДОК.\n"
+"  -n, --node=НАЗВА             вказати вузли у першому відкритому файлі Info.\n"
 "  -o, --output=ФАЙЛ            зберегти обрані вузли до ФАЙЛА."
 
 #: info/info.c:1054
@@ -506,8 +493,7 @@ msgid ""
 "      --restore=FILE           read initial keystrokes from FILE.\n"
 "  -O, --show-options, --usage  go to command-line options node."
 msgstr ""
-"  -R, --raw-escapes            виводити керівні коди ANSI як є (зазвичай "
-"ввімкнено)\n"
+"  -R, --raw-escapes            виводити керівні коди ANSI як є (зазвичай ввімкнено)\n"
 "      --no-raw-escapes         виводити керівні коди як текст.\n"
 "      --restore=ФАЙЛ           прочитати початкові команди з ФАЙЛА.\n"
 "  -O, --show-options, --usage  перейти до вузла параметрів командного рядку."
@@ -518,8 +504,7 @@ msgstr " -b, --speech-friendly        зручний для синтезатор
 
 #: info/info.c:1065
 msgid ""
-"      --strict-node-location   (for debugging) use Info file pointers as-"
-"is.\n"
+"      --strict-node-location   (for debugging) use Info file pointers as-is.\n"
 "      --subnodes               recursively output menu items.\n"
 "  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
@@ -527,16 +512,13 @@ msgid ""
 "  -w, --where, --location      print physical location of Info file.\n"
 "  -x, --debug=NUMBER           set debugging level (-1 for all).\n"
 msgstr ""
-"      --strict-node-location   (для діагностики) використовувати вказівники "
-"файла Info без обробки.\n"
+"      --strict-node-location   (для діагностики) використовувати вказівники файла Info без обробки.\n"
 "      --subnodes               виводити пункти меню рекурсивно.\n"
 "  -v, --variable VAR=ЗНАЧЕННЯ  призначити ЗНАЧЕННЯ змінній Info VAR.\n"
-"      --vi-keys                використовувати подібні до vi та less "
-"призначення команд клавішам.\n"
+"      --vi-keys                використовувати подібні до vi та less призначення команд клавішам.\n"
 "      --version                показати інформацію про версію та вийти.\n"
 "  -w, --where, --location      вивести фізичне розташування файлу Info.\n"
-"  -x, --debug=ЧИСЛО            встановити рівень діагностики (-1 — усі "
-"рівні).\n"
+"  -x, --debug=ЧИСЛО            встановити рівень діагностики (-1 — усі рівні).\n"
 
 #: info/info.c:1074
 msgid ""
@@ -548,8 +530,7 @@ msgid ""
 "items relative to the initial node visited."
 msgstr ""
 "\n"
-"Перший аргумент, що не стосується до параметрів, буде пунктом меню, з якого "
-"треба почати;\n"
+"Перший аргумент, що не стосується до параметрів, буде пунктом меню, з якого треба почати;\n"
 "для цього виконується пошук в усіх файлах «dir», що є у INFOPATH.\n"
 "Якщо його не вказано, info з’єднає усі файли «dir» та покаже результат.\n"
 "Будь-які залишкові аргументи вважаються назвами пунктів\n"
@@ -561,8 +542,7 @@ msgid ""
 "For a summary of key bindings, type H within Info."
 msgstr ""
 "\n"
-"Щоб отримати короткий звіт про призначення команд клавішам - натисніть H "
-"усередині Info."
+"Щоб отримати короткий звіт про призначення команд клавішам - натисніть H усередині Info."
 
 #: info/info.c:1084
 msgid ""
@@ -583,18 +563,14 @@ msgstr ""
 "Приклади:\n"
 "  info                       показати меню dir верхнього рівня\n"
 "  info info                  показати довідник по переглядачам Info\n"
-"  info info-stnd             показати довідник, специфічний для цієї "
-"програми\n"
+"  info info-stnd             показати довідник, специфічний для цієї програми\n"
 "  info emacs                 почати з вузла emacs, що у dir верхнього рівня\n"
-"  info emacs buffers         почати з вузла buffers, що всередині підручника "
-"з emacs\n"
+"  info emacs buffers         почати з вузла buffers, що всередині підручника з emacs\n"
 "  info emacs -n Files        почати з вузла Files у підручнику з emacs\n"
 "  info '(emacs)Files'        інший спосіб відкрити вузол Files\n"
-"  info --show-options emacs  почати з вузла, що описує параметри командного "
-"рядку emacs\n"
+"  info --show-options emacs  почати з вузла, що описує параметри командного рядку emacs\n"
 "  info --subnodes -o out.txt emacs зберегти підручник цілком у файл out.txt\n"
-"  info -f ./foo.info         просто показати файл ./foo.info, без пошуку у "
-"dir"
+"  info -f ./foo.info         просто показати файл ./foo.info, без пошуку у dir"
 
 #: info/info.c:1099 install-info/install-info.c:616 tp/texi2any.pl:860
 msgid ""
@@ -668,8 +644,7 @@ msgstr "Отримане вікно буде занадто малим."
 
 #: info/info.c:1148
 msgid "Not enough room for a help window, please delete a window."
-msgstr ""
-"Недостатньо місця для вікна довідки, будь ласка, приберіть одне з вікон."
+msgstr "Недостатньо місця для вікна довідки, будь ласка, приберіть одне з вікон."
 
 #: info/infodoc.c:40
 msgid "Basic Info command keys\n"
@@ -713,23 +688,15 @@ msgstr "\\%-10[end-of-node]  Перейти до кінця цього вузл�
 
 #: info/infodoc.c:53
 msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
-msgstr ""
-"\\%-10[move-to-next-xref]  Пропустити до наступного гіпертекстового "
-"посилання.\n"
+msgstr "\\%-10[move-to-next-xref]  Пропустити до наступного гіпертекстового посилання.\n"
 
 #: info/infodoc.c:54
-msgid ""
-"\\%-10[select-reference-this-line]  Follow the hypertext link under the "
-"cursor.\n"
-msgstr ""
-"\\%-10[select-reference-this-line]  Перейти за гіпертекстовим посиланням під "
-"курсором.\n"
+msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under the cursor.\n"
+msgstr "\\%-10[select-reference-this-line]  Перейти за гіпертекстовим посиланням під курсором.\n"
 
 #: info/infodoc.c:55
 msgid "\\%-10[history-node]  Go back to the last node seen in this window.\n"
-msgstr ""
-"\\%-10[history-node]  Повернутися до останнього вузла, що переглядався у "
-"цьому вікні.\n"
+msgstr "\\%-10[history-node]  Повернутися до останнього вузла, що переглядався у цьому вікні.\n"
 
 #: info/infodoc.c:57
 msgid "\\%-10[global-prev-node]  Go to the previous node in the document.\n"
@@ -773,8 +740,7 @@ msgstr "\\%-10[menu-item]  Обрати пункт меню, вказаний з
 
 #: info/infodoc.c:68
 msgid "\\%-10[xref-item]  Follow a cross reference specified by name.\n"
-msgstr ""
-"\\%-10[xref-item]  Перейти за перехресним посиланням, вказаним за назвою.\n"
+msgstr "\\%-10[xref-item]  Перейти за перехресним посиланням, вказаним за назвою.\n"
 
 #: info/infodoc.c:69
 msgid "\\%-10[goto-node]  Go to a node specified by name.\n"
@@ -802,8 +768,7 @@ msgstr ""
 
 #: info/infodoc.c:76
 msgid "\\%-10[virtual-index]  Synthesize menu of matching index entries.\n"
-msgstr ""
-"\\%-10[virtual-index]  Створити меню з відповідних записів покажчика.\n"
+msgstr "\\%-10[virtual-index]  Створити меню з відповідних записів покажчика.\n"
 
 #: info/infodoc.c:78
 msgid "\\%-10[abort-key]  Cancel the current operation.\n"
@@ -1043,13 +1008,11 @@ msgid ""
 "Select one from this menu, or use '\\[history-node]' in another window.\n"
 msgstr ""
 "Це меню вузлів, що ви нещодавно відвідували.\n"
-"Оберіть один з вузлів цього меню або використайте «\\[history-node]» у "
-"іншому вікні.\n"
+"Оберіть один з вузлів цього меню або використайте «\\[history-node]» у іншому вікні.\n"
 
 #: info/nodemenu.c:208
 msgid "Make a window containing a menu of all of the currently visited nodes"
-msgstr ""
-"Створити вікно, що міститиме меню з усіх вузлів, що наразі переглядаються"
+msgstr "Створити вікно, що міститиме меню з усіх вузлів, що наразі переглядаються"
 
 #: info/nodemenu.c:253
 msgid "Select a node which has been previously visited in a visible window"
@@ -1064,7 +1027,7 @@ msgstr "Оберіть відвіданий вузол: "
 msgid "The reference disappeared! (%s)."
 msgstr "Посилання зникло! (%s)."
 
-#: info/pcterm.c:212
+#: info/pcterm.c:211
 #, c-format
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Не вдалося ініціалізувати термінал: %s\n"
@@ -1088,12 +1051,8 @@ msgstr "Немає покажчика файлів"
 #. displayed on an 80-column terminal.
 #: info/session.c:192
 #, c-format
-msgid ""
-"Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
-"help-node] for tutorial."
-msgstr ""
-"Вітаємо у Info версії %s. \\[get-help-window] — довідка, \\[get-info-help-"
-"node] — настанови."
+msgid "Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-help-node] for tutorial."
+msgstr "Вітаємо у Info версії %s. \\[get-help-window] — довідка, \\[get-info-help-node] — настанови."
 
 #: info/session.c:776
 #, c-format
@@ -1158,19 +1117,12 @@ msgid "Scroll backward in this window staying within node"
 msgstr "Гортати назад це вікно, не перетинаючи меж вузла"
 
 #: info/session.c:1607
-msgid ""
-"Scroll forward in this window staying within node and set default window size"
-msgstr ""
-"Гортати вперед це вікно, не перетинаючи меж вузла й встановити стандартний "
-"розмір вікна"
+msgid "Scroll forward in this window staying within node and set default window size"
+msgstr "Гортати вперед це вікно, не перетинаючи меж вузла й встановити стандартний розмір вікна"
 
 #: info/session.c:1634
-msgid ""
-"Scroll backward in this window staying within node and set default window "
-"size"
-msgstr ""
-"Гортати назад це вікно, не перетинаючи меж вузла й встановити стандартний "
-"розмір вікна"
+msgid "Scroll backward in this window staying within node and set default window size"
+msgstr "Гортати назад це вікно, не перетинаючи меж вузла й встановити стандартний розмір вікна"
 
 #: info/session.c:1640
 msgid "Scroll down by lines"
@@ -1342,8 +1294,7 @@ msgstr "Це останній вузол цього документу."
 
 #: info/session.c:3198 info/session.c:3238
 msgid "No 'Prev' or 'Up' for this node within this document."
-msgstr ""
-"У цього вузла немає «Попереднього» чи «Горішнього» вузла у цьому документі."
+msgstr "У цього вузла немає «Попереднього» чи «Горішнього» вузла у цьому документі."
 
 #: info/session.c:3251
 msgid "Move forwards or down through node structure"
@@ -1682,8 +1633,7 @@ msgstr "Те ж саме, що й scroll-behaviour"
 
 #: info/variables.c:97
 msgid "The number lines to scroll when the cursor moves out of the window"
-msgstr ""
-"Кількість рядків, що треба прокручувати, коли курсор досягає границі вікна"
+msgstr "Кількість рядків, що треба прокручувати, коли курсор досягає границі вікна"
 
 #: info/variables.c:101
 msgid "Controls whether scroll-behavior affects cursor movement commands"
@@ -1694,8 +1644,7 @@ msgid "When \"On\", Info accepts and displays ISO Latin characters"
 msgstr "Коли \"On\", Info приймає й показує символи ISO Latin"
 
 #: info/variables.c:109
-msgid ""
-"What to do when a scrolling command is issued at the end of the last node"
+msgid "What to do when a scrolling command is issued at the end of the last node"
 msgstr "Що робити при прокручуванні за кінець останнього вузла"
 
 #: info/variables.c:114
@@ -1715,12 +1664,8 @@ msgid "Hide some Info file syntax in the text of nodes"
 msgstr "Приховати деякі синтаксичні конструкції файлів Info у тексті вузлів"
 
 #: info/variables.c:130
-msgid ""
-"Length of time in milliseconds to wait for the next byte in a sequence "
-"indicating that a key has been pressed"
-msgstr ""
-"Тривалість очікування у мілісекундах на відзначення у наступному байті "
-"послідовності натискання клавіші"
+msgid "Length of time in milliseconds to wait for the next byte in a sequence indicating that a key has been pressed"
+msgstr "Тривалість очікування у мілісекундах на відзначення у наступному байті послідовності натискання клавіші"
 
 #: info/variables.c:134
 msgid "Method to use to track mouse events"
@@ -1831,11 +1776,9 @@ msgid ""
 "                       start at column COL."
 msgstr ""
 "Параметри:\n"
-" --add-once          додати лише до першого відповідного розділу, не до "
-"всіх.\n"
+" --add-once          додати лише до першого відповідного розділу, не до всіх.\n"
 " --align=COL         починати опис нових записів на позиції COL.\n"
-" --calign=COL        форматувати другий і наступні рядки опису так, щоб "
-"вони\n"
+" --calign=COL        форматувати другий і наступні рядки опису так, щоб вони\n"
 "                       починалися з позиції COL."
 
 #: install-info/install-info.c:555
@@ -1844,8 +1787,7 @@ msgid ""
 " --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
 "                      don't insert any new entries.\n"
 " --defsection=TEXT   like --section, but only use TEXT if no sections\n"
-"                      are present in INFO-FILE (replacing \"Miscellaneous"
-"\").\n"
+"                      are present in INFO-FILE (replacing \"Miscellaneous\").\n"
 " --description=TEXT  the description of the entry is TEXT; used with\n"
 "                      the --name option to become synonymous with the\n"
 "                      --entry option.\n"
@@ -1857,8 +1799,7 @@ msgstr ""
 " --delete            вилучити наявні записи для ФАЙЛА-INFO з ФАЙЛА-DIR;\n"
 "                      не вставляти жодних нових записів.\n"
 " --defsection=ТЕКСТ  подібне до --section, але використовується лише ТЕКСТ,\n"
-"                      якщо у ФАЙЛІ-INFO-FILE немає розділів (замінює "
-"«Інше»).\n"
+"                      якщо у ФАЙЛІ-INFO-FILE немає розділів (замінює «Інше»).\n"
 " --description=ТЕКСТ опис запису - це ТЕКСТ; у поєднанні з\n"
 "                      параметром --name стає тим же самим, що й\n"
 "                      параметр --entry.\n"
@@ -1871,22 +1812,17 @@ msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry,\n"
 "                      overriding any corresponding entry from DIR-FILE.\n"
 "                      TEXT is written as an Info menu item line followed\n"
-"                       by zero or more extra lines starting with "
-"whitespace.\n"
+"                       by zero or more extra lines starting with whitespace.\n"
 "                      If you specify more than one entry, all are added.\n"
 "                      If you don't specify any entries, they are determined\n"
 "                       from information in the Info file itself."
 msgstr ""
 " --entry=ТЕКСТ       вставити ТЕКСТ як запис у каталозі Info,\n"
-"                      перевизначивши будь-який відповідний запису з ФАЙЛА-"
-"DIR.\n"
+"                      перевизначивши будь-який відповідний запису з ФАЙЛА-DIR.\n"
 "                      ТЕКСТ записується як рядок пункту меню Info, за яким\n"
-"                       ідуть нуль або більше додаткових рядків, що "
-"починаються з пропуску.\n"
-"                      Якщо ви вкажете більш ніж один запис, буде додано всі "
-"ці записи.\n"
-"                      Якщо ви не вкажете жодного запису, їх буде визначено "
-"за\n"
+"                       ідуть нуль або більше додаткових рядків, що починаються з пропуску.\n"
+"                      Якщо ви вкажете більш ніж один запис, буде додано всі ці записи.\n"
+"                      Якщо ви не вкажете жодного запису, їх буде визначено за\n"
 "                       інформацією у файлі Info."
 
 #: install-info/install-info.c:577
@@ -1931,28 +1867,24 @@ msgid ""
 " --section=SEC       put entries in section SEC of the directory.\n"
 "                      If you specify more than one section, all the entries\n"
 "                       are added in each of the sections.\n"
-"                      If you don't specify any sections, they are "
-"determined\n"
+"                      If you don't specify any sections, they are determined\n"
 "                       from information in the Info file itself;\n"
 "                       if nothing is available there, the --defsection\n"
 "                       value is used; if that is not specified, the\n"
 "                       final default is \"Miscellaneous\".\n"
 " --section R SEC     equivalent to --regex=R --section=SEC --add-once."
 msgstr ""
-" --regex=R           розмістити записи цього файлу в усіх секціях, які "
-"збігаються з\n"
+" --regex=R           розмістити записи цього файлу в усіх секціях, які збігаються з\n"
 "                      регулярним виразом R (регістр не враховується).\n"
 " --remove            те ж саме, що й --delete.\n"
-" --remove-exactly    вилучати, лише якщо назва файлу точно відповідає "
-"запису;\n"
+" --remove-exactly    вилучати, лише якщо назва файлу точно відповідає запису;\n"
 "                      суфікси на кшталт .info та .gz не ігноруються.\n"
 " --section=СЕКЦІЯ    розмістити записи у секції СЕКЦІЯ каталогу.\n"
 "                      Якщо ви вкажете більше одної секції, усі записи буде\n"
 "                       додано до кожної з секцій.\n"
 "                      Якщо ви не вкажете жодної секції, їх буде визначено\n"
 "                       за інформацією у файлі Info;\n"
-"                       якщо немає доступних елементів, використовується "
-"значення\n"
+"                       якщо немає доступних елементів, використовується значення\n"
 "                       --defsection; якщо його не вказано, остаточним\n"
 "                       типовим є «Інше».\n"
 " --section R СЕКЦІЯ  те ж саме, що й --regex=R --section=СЕКЦІЯ --add-once."
@@ -1993,13 +1925,11 @@ msgstr ""
 "%s\tЦе верхівка дерева INFO\n"
 "\n"
 "  Цей вузол (вузол Каталогу) надає меню основних тем.\n"
-"  Набравши \"q\" можна вийти, \"?\" - отримати список команд Info, \"d\" "
-"поверне вас сюди,\n"
+"  Набравши \"q\" можна вийти, \"?\" - отримати список команд Info, \"d\" поверне вас сюди,\n"
 "  \"h\" надасть інформацію для початківців,\n"
 "  \"mEmacs<Enter>\" перейде до підручника з Emacs, і так далі.\n"
 "\n"
-"  У Emacs ви можете використовувати клік клавішею 2 миші на пункті меню чи "
-"перехресному посиланні,\n"
+"  У Emacs ви можете використовувати клік клавішею 2 миші на пункті меню чи перехресному посиланні,\n"
 "  щоб обрати його.\n"
 "\n"
 "%s\n"
@@ -2047,14 +1977,12 @@ msgstr "зайвий аргумент `%s'"
 #: install-info/install-info.c:2281
 #, c-format
 msgid "No input file specified; try --help for more information."
-msgstr ""
-"Не вказано вхідних файлів; спробуйте --help, щоб отримати більше інформації."
+msgstr "Не вказано вхідних файлів; спробуйте --help, щоб отримати більше інформації."
 
 #: install-info/install-info.c:2283
 #, c-format
 msgid "No dir file specified; try --help for more information."
-msgstr ""
-"Не вказано файл каталогу; спробуйте --help, щоб отримати більше інформації."
+msgstr "Не вказано файл каталогу; спробуйте --help, щоб отримати більше інформації."
 
 #: install-info/install-info.c:2304
 #, c-format
@@ -2276,15 +2204,12 @@ msgstr "файл перейменованого вузла «%s» є порож�
 #: tp/Texinfo/Convert/HTML.pm:7093
 #, perl-format
 msgid "target node (new name for `%s') not in document: %s"
-msgstr ""
-"вузол призначення (нова назва для «%s») перебуває за межами документа: %s"
+msgstr "вузол призначення (нова назва для «%s») перебуває за межами документа: %s"
 
 #: tp/Texinfo/Convert/HTML.pm:7125
 #, perl-format
 msgid "error on closing renamed node redirection file %s: %s"
-msgstr ""
-"помилка під час спроби закриття файла переспрямування перейменованого вузла, "
-"%s: %s"
+msgstr "помилка під час спроби закриття файла переспрямування перейменованого вузла, %s: %s"
 
 #: tp/Texinfo/Convert/HTML.pm:7163
 msgid "empty node name"
@@ -2349,12 +2274,8 @@ msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr "не вдалося знайти файл @image «%s.txt» або текст-замінник"
 
 #: tp/Texinfo/Convert/Plaintext.pm:1931
-msgid ""
-"@strong{Note...} produces a spurious cross-reference in Info; reword to "
-"avoid that"
-msgstr ""
-"@strong{Note...} створює хибні перехресні посилання у Info; переформулюйте, "
-"уникаючи цього"
+msgid "@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"
+msgstr "@strong{Note...} створює хибні перехресні посилання у Info; переформулюйте, уникаючи цього"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2161
 #, perl-format
@@ -2500,8 +2421,7 @@ msgstr "у @%s не вистачає кінцевої дужки"
 #: tp/Texinfo/Parser.pm:2140
 #, perl-format
 msgid "macro `%s' declared without argument called with an argument"
-msgstr ""
-"макровизначення «%s» оголошено без аргументу, з яким його слід викликати"
+msgstr "макровизначення «%s» оголошено без аргументу, з яким його слід викликати"
 
 #: tp/Texinfo/Parser.pm:2175
 #, perl-format
@@ -2556,9 +2476,7 @@ msgstr "%s потребує аргументу: форматер для %citem"
 #: tp/Texinfo/Parser.pm:3167
 #, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
-msgstr ""
-"команда @%s, що не приймає аргументів у дужках, не повинна розташовуватися у "
-"рядку @%s"
+msgstr "команда @%s, що не приймає аргументів у дужках, не повинна розташовуватися у рядку @%s"
 
 #: tp/Texinfo/Parser.pm:3202
 #, perl-format
@@ -2674,27 +2592,18 @@ msgstr "@%s без пов’язаного символу"
 
 #: tp/Texinfo/Parser.pm:4087
 #, perl-format
-msgid ""
-"@%s defined with zero or more than one argument should be invoked with {}"
-msgstr ""
-"команду @%s, визначену без аргументів або з понад одним аргументом, слід "
-"викликати з дужками, {}"
+msgid "@%s defined with zero or more than one argument should be invoked with {}"
+msgstr "команду @%s, визначену без аргументів або з понад одним аргументом, слід викликати з дужками, {}"
 
 #: tp/Texinfo/Parser.pm:4111
 #, perl-format
-msgid ""
-"macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
-"value %d)"
-msgstr ""
-"виклик макровизначення вкладено надто глибоко (встановіть більше значення "
-"MAX_NESTED_MACROS; поточне значення — %d)"
+msgid "macro call nested too deeply (set MAX_NESTED_MACROS to override; current value %d)"
+msgstr "виклик макровизначення вкладено надто глибоко (встановіть більше значення MAX_NESTED_MACROS; поточне значення — %d)"
 
 #: tp/Texinfo/Parser.pm:4120
 #, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
-msgstr ""
-"не можна рекурсивно викликати макровизначення %s; якщо потрібно, "
-"скористайтеся @rmacro"
+msgstr "не можна рекурсивно викликати макровизначення %s; якщо потрібно, скористайтеся @rmacro"
 
 #: tp/Texinfo/Parser.pm:4176
 #, perl-format
@@ -2813,10 +2722,8 @@ msgid "@%s seen before first @node"
 msgstr "@%s розташовано перед першим @node"
 
 #: tp/Texinfo/Parser.pm:5008
-msgid ""
-"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
-msgstr ""
-"мабуть, ваш вузол @top повинен бути обгорнутий у @ifnottex замість @ifinfo?"
+msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr "мабуть, ваш вузол @top повинен бути обгорнутий у @ifnottex замість @ifinfo?"
 
 #: tp/Texinfo/Parser.pm:5070
 #, perl-format
@@ -2860,15 +2767,12 @@ msgstr "у команді @%s не вистачає аргументу вузл�
 #: tp/Texinfo/Parser.pm:5292
 #, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
-msgstr ""
-"у @%s виявлено порожню назву перехресного посилання після розгортання «%s»"
+msgstr "у @%s виявлено порожню назву перехресного посилання після розгортання «%s»"
 
 #: tp/Texinfo/Parser.pm:5303
 #, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
-msgstr ""
-"у @%s виявлено порожній заголовок перехресного посилання після розгортання "
-"«%s»"
+msgstr "у @%s виявлено порожній заголовок перехресного посилання після розгортання «%s»"
 
 #: tp/Texinfo/Parser.pm:5316
 msgid "@image missing filename argument"
@@ -2897,9 +2801,7 @@ msgstr "аргумент @U перевищує за розміром розмі�
 #: tp/Texinfo/Parser.pm:5418
 #, perl-format
 msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
-msgstr ""
-"аргумент @U перевищує за розміром максимальний розмір для Unicode, 0x10FFFF: "
-"%s"
+msgstr "аргумент @U перевищує за розміром максимальний розмір для Unicode, 0x10FFFF: %s"
 
 #: tp/Texinfo/Parser.pm:5546
 msgid "superfluous arguments for node"
@@ -2998,14 +2900,12 @@ msgstr "аргументом @%s має бути «on», «off» або «odd»,
 #: tp/Texinfo/Parser.pm:5986 tp/Texinfo/Parser.pm:5991
 #, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
-msgstr ""
-"аргументом @paragraphindent має бути число, «none» або «asis», але не «%s»"
+msgstr "аргументом @paragraphindent має бути число, «none» або «asis», але не «%s»"
 
 #: tp/Texinfo/Parser.pm:5999
 #, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
-msgstr ""
-"аргументом @firstparagraphindent має бути «none» або «insert», але не «%s»"
+msgstr "аргументом @firstparagraphindent має бути «none» або «insert», але не «%s»"
 
 #: tp/Texinfo/Parser.pm:6009
 #, perl-format
@@ -3020,8 +2920,7 @@ msgstr "@%s мало бути on або off, але не «%s»"
 #: tp/Texinfo/Parser.pm:6031
 #, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
-msgstr ""
-"аргументом @kbdinputstyle має бути «code»/«example»/«distinct», але не «%s»"
+msgstr "аргументом @kbdinputstyle має бути «code»/«example»/«distinct», але не «%s»"
 
 #: tp/Texinfo/Parser.pm:6039
 #, perl-format
@@ -3031,8 +2930,7 @@ msgstr "аргументом @allowcodebreaks має бути «true» або «
 #: tp/Texinfo/Parser.pm:6047
 #, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
-msgstr ""
-"аргументом @urefbreakstyle має бути «after»/«before»/«none», але не «%s»"
+msgstr "аргументом @urefbreakstyle має бути «after»/«before»/«none», але не «%s»"
 
 #: tp/Texinfo/Structuring.pm:213
 #, perl-format
@@ -3082,9 +2980,7 @@ msgstr "вузол «%s» є вузлом %s для «%s» у структурі
 #: tp/Texinfo/Structuring.pm:715
 #, perl-format
 msgid "node %s `%s' in menu `%s' and in sectioning `%s' differ"
-msgstr ""
-"виявлено відмінності у записах вузла %s «%s» у меню «%s» і у структурі "
-"розділів «%s»"
+msgstr "виявлено відмінності у записах вузла %s «%s» у меню «%s» і у структурі розділів «%s»"
 
 #: tp/Texinfo/Structuring.pm:733
 #, perl-format
@@ -3171,12 +3067,8 @@ msgstr "latex2html.pm: не знайдено завершення запису @
 
 #: tp/init/latex2html.pm:504
 #, perl-format
-msgid ""
-"latex2html.pm: processing produced %d items in HTML; expected %d, the number "
-"of items found in the document"
-msgstr ""
-"latex2html.pm: обробляємо створені %d записів у HTML; мало бути %d, "
-"кількість записів, знайдених у документі"
+msgid "latex2html.pm: processing produced %d items in HTML; expected %d, the number of items found in the document"
+msgstr "latex2html.pm: обробляємо створені %d записів у HTML; мало бути %d, кількість записів, знайдених у документі"
 
 #: tp/init/latex2html.pm:534
 #, perl-format
@@ -3185,12 +3077,8 @@ msgstr "l2h: не вдалося визначити фрагмент %d для @
 
 #: tp/init/latex2html.pm:560
 #, perl-format
-msgid ""
-"l2h: could not extract the fragment %d for @%s with output counter %d from "
-"HTML"
-msgstr ""
-"l2h: не вдалося видобути фрагмент %d для @%s з лічильником виведення %d з "
-"HTML"
+msgid "l2h: could not extract the fragment %d for @%s with output counter %d from HTML"
+msgstr "l2h: не вдалося видобути фрагмент %d для @%s з лічильником виведення %d з HTML"
 
 #: tp/init/latex2html.pm:621
 #, perl-format
@@ -3234,12 +3122,8 @@ msgstr "tex4ht.pm: не знайдено завершення запису @%s �
 
 #: tp/init/tex4ht.pm:301
 #, perl-format
-msgid ""
-"tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
-"items found in the document for @%s"
-msgstr ""
-"tex4ht.pm: обробляємо створені %d записів у HTML; мало бути %d, кількість "
-"записів, знайдених у документі для @%s"
+msgid "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of items found in the document for @%s"
+msgstr "tex4ht.pm: обробляємо створені %d записів у HTML; мало бути %d, кількість записів, знайдених у документі для @%s"
 
 #: tp/init/tex4ht.pm:321
 #, perl-format
@@ -3248,12 +3132,8 @@ msgstr "tex4ht.pm: у виведених даних немає запису HTML
 
 #: tp/init/tex4ht.pm:336
 #, perl-format
-msgid ""
-"tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of "
-"items found in the document for @%s"
-msgstr ""
-"tex4ht.pm: обробляємо отримані %d записів у HTML; мало бути %d, кількість "
-"записів, знайдених у документі для @%s"
+msgid "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of items found in the document for @%s"
+msgstr "tex4ht.pm: обробляємо отримані %d записів у HTML; мало бути %d, кількість записів, знайдених у документі для @%s"
 
 #: tp/texi2any.pl:382
 #, perl-format
@@ -3303,12 +3183,10 @@ msgid ""
 "This program is commonly installed as both `makeinfo' and `texi2any';\n"
 "the behavior is identical, and does not depend on the installed name.\n"
 msgstr ""
-"Перетворює вихідну документацію Texinfo у різноманітні інші формати, "
-"зазвичай,\n"
+"Перетворює вихідну документацію Texinfo у різноманітні інші формати, зазвичай,\n"
 "у файли Info, що можна читати за допомогою Emacs чи GNU Info.\n"
 "\n"
-"У межах пакунка цієї програми типово встановлюються одразу «makeinfo» і "
-"«texi2any»;\n"
+"У межах пакунка цієї програми типово встановлюються одразу «makeinfo» і «texi2any»;\n"
 "поведінка цих компонентів є однаковою і не залежить від назви програми.\n"
 
 #: tp/texi2any.pl:738
@@ -3333,17 +3211,13 @@ msgstr ""
 "      --document-language=РЯДОК локаль для перекладу ключових слів Texinfo\n"
 "                                у документі-результаті (типовою є C).\n"
 "      --error-limit=ЧИСЛО     вийти після ЧИСЛА помилок (зазвичай %d).\n"
-"      --force                 продовжувати вивід навіть якщо трапляються "
-"помилки.\n"
+"      --force                 продовжувати вивід навіть якщо трапляються помилки.\n"
 "      --help                  показати цю довідку й вийти.\n"
 "      --no-validate           не перевіряти перехресні посилання вузлів.\n"
 "      --no-warn               не показувати попередження (але не помилки).\n"
-"      --conf-dir=КАТАЛОГ      шукати файли ініціалізації і у каталозі "
-"КАТАЛОГ.\n"
-"      --init-file=ФАЙЛ        завантажити ФАЙЛ для внесення змін до типової "
-"поведінки.\n"
-"  -c, --set-customization-variable VAR=VAL  встановити значення VAL для "
-"змінної\n"
+"      --conf-dir=КАТАЛОГ      шукати файли ініціалізації і у каталозі КАТАЛОГ.\n"
+"      --init-file=ФАЙЛ        завантажити ФАЙЛ для внесення змін до типової поведінки.\n"
+"  -c, --set-customization-variable VAR=VAL  встановити значення VAL для змінної\n"
 "                                 налаштовування VAR.\n"
 "  -v, --verbose               описувати, що буде робитися.\n"
 "      --version               показати інформацію про версію й вийти.\n"
@@ -3363,22 +3237,17 @@ msgstr ""
 "      --html                  виводити як HTML, а не як Info.\n"
 "      --plaintext             виводити як звичайний текст, а не як Info.\n"
 "      --xml                   виводити як Texinfo XML, а не як Info.\n"
-"      --dvi, --dvipdf, --ps, --pdf  викликати texi2dvi для створення "
-"вказаного формату\n"
-"                                після перевірки коректності файла ФАЙЛ-"
-"TEXINFO.\n"
+"      --dvi, --dvipdf, --ps, --pdf  викликати texi2dvi для створення вказаного формату\n"
+"                                після перевірки коректності файла ФАЙЛ-TEXINFO.\n"
 
 #: tp/texi2any.pl:762
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
 "                                ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and "
-"menus\n"
-"                                from Info output (thus producing plain "
-"text)\n"
-"                                or from HTML (thus producing shorter "
-"output).\n"
+"      --no-headers            suppress node separators, Node: lines, and menus\n"
+"                                from Info output (thus producing plain text)\n"
+"                                or from HTML (thus producing shorter output).\n"
 "                                Also, if producing Info, write to\n"
 "                                standard output by default.\n"
 "      --no-split              suppress any splitting of the output;\n"
@@ -3386,8 +3255,7 @@ msgid ""
 "      --[no-]number-sections  output chapter and sectioning numbers;\n"
 "                                default is on.\n"
 "  -o, --output=DEST           output to DEST.\n"
-"                                With split output, create DEST as a "
-"directory\n"
+"                                With split output, create DEST as a directory\n"
 "                                 and put the output files there.\n"
 "                                With non-split output, if DEST is already\n"
 "                                 a directory or ends with a /,\n"
@@ -3395,33 +3263,22 @@ msgid ""
 "                                Otherwise, DEST names the output file.\n"
 msgstr ""
 "Загальні параметри виводу:\n"
-"  -E, --macro-expand=ФАЙЛ     записати вихідний код після розкриття "
-"макровизначень\n"
+"  -E, --macro-expand=ФАЙЛ     записати вихідний код після розкриття макровизначень\n"
 "                                до ФАЙЛА, ігноруючи будь-які @setfilename.\n"
-"      --no-headers            не генерувати роздільників, рядків Node: та "
-"меню\n"
-"                                у виводі Info (таким чином виводячи простий "
-"текст)\n"
-"                                та у виводі HTML (таким чином виводячи "
-"коротший результат)\n"
-"                                також, зазвичай виводити у стандартний "
-"вивід.\n"
+"      --no-headers            не генерувати роздільників, рядків Node: та меню\n"
+"                                у виводі Info (таким чином виводячи простий текст)\n"
+"                                та у виводі HTML (таким чином виводячи коротший результат)\n"
+"                                також, зазвичай виводити у стандартний вивід.\n"
 "      --no-split              не розбивати вивід у Info та HTML,\n"
 "                                створити лише один файл виводу.\n"
-"      --number-sections       виводити номери глав та розділів, типово "
-"увімкнено.\n"
+"      --number-sections       виводити номери глав та розділів, типово увімкнено.\n"
 "  -o, --output=ПРИЗНАЧЕННЯ    виводити до ПРИЗНАЧЕННЯ.\n"
-"                                Якщо виведення відбувається з розбиттям, "
-"буде\n"
-"                                 створено каталог ПРИЗНАЧЕННЯ для виведення "
-"даних до нього.\n"
-"                                Якщо виведення відбувається без розбиття і "
-"ПРИЗНАЧЕННЯ\n"
+"                                Якщо виведення відбувається з розбиттям, буде\n"
+"                                 створено каталог ПРИЗНАЧЕННЯ для виведення даних до нього.\n"
+"                                Якщо виведення відбувається без розбиття і ПРИЗНАЧЕННЯ\n"
 "                                 є назвою каталогу або завершується на /,\n"
-"                                 виведений файл буде збережено у "
-"відповідному каталозі.\n"
-"                                У інших випадках, ПРИЗНАЧЕННЯ визначає назву "
-"файла-результату.\n"
+"                                 виведений файл буде збережено у відповідному каталозі.\n"
+"                                У інших випадках, ПРИЗНАЧЕННЯ визначає назву файла-результату.\n"
 
 #: tp/texi2any.pl:782
 #, perl-format
@@ -3430,38 +3287,29 @@ msgid ""
 "      --disable-encoding      do not output accented and special characters\n"
 "                                in Info output based on @documentencoding.\n"
 "      --enable-encoding       override --disable-encoding (default).\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default "
-"%d).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node, "
-"in\n"
-"                                which they are defined (this is the "
-"default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
-"%d).\n"
+"                                `end' to put them at the end of the node, in\n"
+"                                which they are defined (this is the default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
 "Параметри для Info та звичайного тексту:\n"
 "      --disable-encoding      не виводити спеціальні та акцентовані символи\n"
-"                                при виводі Info на основі "
-"@documentencoding.\n"
+"                                при виводі Info на основі @documentencoding.\n"
 "      --enable-encoding       скасувати --disable-encoding (типово).\n"
-"      --fill-column=ЧИСЛО     переносити рядки Info на ЧИСЛО символі (типово "
-"%d).\n"
+"      --fill-column=ЧИСЛО     переносити рядки Info на ЧИСЛО символі (типово %d).\n"
 "      --footnote-style=СТИЛЬ  виводити виноски у Info відповідно до СТИЛЮ:\n"
 "                                «separate» - розмістити в окремому вузлі;\n"
 "                                «end» - розмістити в кінці вузла, де\n"
 "                                їх визначено (типово)\n"
-"      --paragraph-indent=ЗНАЧЕННЯ  робити відступ для параграфів Info на "
-"ЗНАЧЕННЯ пропусків (типово %d).\n"
-"                                Якщо ЗНАЧЕННЯ «none» - не робити відступу; "
-"якщо ЗНАЧЕННЯ\n"
+"      --paragraph-indent=ЗНАЧЕННЯ  робити відступ для параграфів Info на ЗНАЧЕННЯ пропусків (типово %d).\n"
+"                                Якщо ЗНАЧЕННЯ «none» - не робити відступу; якщо ЗНАЧЕННЯ\n"
 "                                «asis» - зберігати наявний відступ.\n"
-"      --split-size=ЧИСЛО      розбивати файли Info, якщо їхній розмір "
-"перевищує ЧИСЛО (типово %d).\n"
+"      --split-size=ЧИСЛО      розбивати файли Info, якщо їхній розмір перевищує ЧИСЛО (типово %d).\n"
 
 #: tp/texi2any.pl:799
 msgid ""
@@ -3481,15 +3329,12 @@ msgstr ""
 "                                читає стандартний ввід, якщо вказано -.\n"
 "      --css-ref=URL           додати посилання на файл CSS.\n"
 "      --internal-links=ФАЙЛ   записати список внутрішніх посилань до ФАЙЛУ.\n"
-"      --split=ЧАСТИНА         ділити на частини, де ЧАСТИНОЮ може бути "
-"«chapter»,\n"
+"      --split=ЧАСТИНА         ділити на частини, де ЧАСТИНОЮ може бути «chapter»,\n"
 "                                «section» або «node».\n"
 "      --transliterate-file-names\n"
 "                              транслітеровувати у ASCII назви файлів.\n"
-"      --node-files            створювати файли переспрямовувань для вузлів і "
-"прив’язок;\n"
-"                                типово встановлюється лише для поділених "
-"документів.\n"
+"      --node-files            створювати файли переспрямовувань для вузлів і прив’язок;\n"
+"                                типово встановлюється лише для поділених документів.\n"
 
 #: tp/texi2any.pl:810
 msgid ""
@@ -3497,8 +3342,7 @@ msgid ""
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
 msgstr ""
 "Параметри для XML і Docbook:\n"
-"      --output-indent=VAL     нічого не робити, збережено для зворотної "
-"сумісності.\n"
+"      --output-indent=VAL     нічого не робити, збережено для зворотної сумісності.\n"
 
 #: tp/texi2any.pl:813
 msgid ""
@@ -3506,8 +3350,7 @@ msgid ""
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
 msgstr ""
 "Параметри DVI/PS/PDF:\n"
-"      --Xopt=ПАРАМЕТР         передати ПАРАМЕТР texi2dvi; можна "
-"використовувати декілька разів.\n"
+"      --Xopt=ПАРАМЕТР         передати ПАРАМЕТР texi2dvi; можна використовувати декілька разів.\n"
 
 #: tp/texi2any.pl:816
 msgid ""
@@ -3520,17 +3363,12 @@ msgid ""
 "  -U VAR                        undefine the variable VAR, as with @clear.\n"
 msgstr ""
 "Параметри вхідного файла:\n"
-"      --commands-in-node-names  нічого не робити, збережено для зворотної "
-"сумісності.\n"
-"  -D ЗМІННА                     визначити змінну ЗМІННА, те ж саме, що "
-"@set.\n"
-"  -D 'VAR VAL'                  визначити для змінної VAR значення VAL (один "
-"аргумент оболонки).\n"
+"      --commands-in-node-names  нічого не робити, збережено для зворотної сумісності.\n"
+"  -D ЗМІННА                     визначити змінну ЗМІННА, те ж саме, що @set.\n"
+"  -D 'VAR VAL'                  визначити для змінної VAR значення VAL (один аргумент оболонки).\n"
 "  -I ТЕКА                       додати ТЕКУ до кінця шляху пошуку @include.\n"
-"  -P ТЕКА                       додати ТЕКУ на початку шляху пошуку "
-"@include.\n"
-"  -U ЗМІННА                     скинути значення ЗМІННОЇ, те ж саме, що "
-"@clear.\n"
+"  -P ТЕКА                       додати ТЕКУ на початку шляху пошуку @include.\n"
+"  -U ЗМІННА                     скинути значення ЗМІННОЇ, те ж саме, що @clear.\n"
 
 #: tp/texi2any.pl:824
 msgid ""
@@ -3554,8 +3392,7 @@ msgstr ""
 "Обробка умовних конструкцій у вхідних даних:\n"
 "  --ifdocbook       обробляти @ifdocbook та @docbook навіть якщо\n"
 "                      створюємо не Docbook.\n"
-"  --ifhtml          обробляти @ifhtml та @html навіть якщо створюємо не "
-"HTML.\n"
+"  --ifhtml          обробляти @ifhtml та @html навіть якщо створюємо не HTML.\n"
 "  --ifinfo          обробляти @ifinfo навіть якщо створюємо не Info.\n"
 "  --ifplaintext     обробляти @ifplaintext навіть якщо створюємо не текст.\n"
 "  --iftex           обробляти @iftex та @tex.\n"
@@ -3592,53 +3429,39 @@ msgid ""
 "  makeinfo --html foo.texi               write HTML to @setfilename\n"
 "  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
 "  makeinfo --docbook foo.texi            write Docbook XML to @setfilename\n"
-"  makeinfo --plaintext foo.texi          write plain text to standard "
-"output\n"
+"  makeinfo --plaintext foo.texi          write plain text to standard output\n"
 "  makeinfo --pdf foo.texi                write PDF using texi2dvi\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi  write html without node lines, "
-"menus\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, menus\n"
 "  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
 "  makeinfo --no-split foo.texi           write one Info file however big\n"
 msgstr ""
 "Приклади:\n"
-"  makeinfo foo.texi                      записати Info до @setfilename з "
-"foo\n"
+"  makeinfo foo.texi                      записати Info до @setfilename з foo\n"
 "  makeinfo --html foo.texi               записати HTML до @setfilename\n"
-"  makeinfo --xml foo.texi                записати Texinfo XML до "
-"@setfilename\n"
-"  makeinfo --docbook foo.texi            записати Docbook XML до "
-"@setfilename\n"
-"  makeinfo --plaintext foo.texi          записати до стандартного виведення "
-"даних звичайний текст\n"
+"  makeinfo --xml foo.texi                записати Texinfo XML до @setfilename\n"
+"  makeinfo --docbook foo.texi            записати Docbook XML до @setfilename\n"
+"  makeinfo --plaintext foo.texi          записати до стандартного виведення даних звичайний текст\n"
 "  makeinfo --pdf foo.texi                записати PDF за допомогою texi2dvi\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi  записати html без рядків вузлів та "
-"меню\n"
-"  makeinfo --number-sections foo.texi    записати Info з пронумерованими "
-"секціями\n"
-"  makeinfo --no-split foo.texi           записати все в один файл Info (він "
-"буде великим)\n"
+"  makeinfo --html --no-headers foo.texi  записати html без рядків вузлів та меню\n"
+"  makeinfo --number-sections foo.texi    записати Info з пронумерованими секціями\n"
+"  makeinfo --no-split foo.texi           записати все в один файл Info (він буде великим)\n"
 
 #: tp/texi2any.pl:895
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr ""
-"%s: аргумент до --footnote-style має бути `separate' чи `end', а не `%s'.\n"
+msgstr "%s: аргумент до --footnote-style має бути `separate' чи `end', а не `%s'.\n"
 
 #: tp/texi2any.pl:986
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr ""
-"%s: аргумент до --paragraph-indent має бути числом, `none' чи `asis', а не `"
-"%s'.\n"
+msgstr "%s: аргумент до --paragraph-indent має бути числом, `none' чи `asis', а не `%s'.\n"
 
 #: tp/texi2any.pl:1063
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
-msgstr ""
-"%s: створення %s, за допомогою -o можна вказувати лише один файл вхідних "
-"даних\n"
+msgstr "%s: створення %s, за допомогою -o можна вказувати лише один файл вхідних даних\n"
 
 #: tp/texi2any.pl:1067
 msgid "--Xopt option without printed output"
@@ -3666,15 +3489,12 @@ msgstr "Спробуйте `%s --help', щоб отримати більше і�
 
 #: tp/texi2any.pl:1231
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
-msgstr ""
-"Перетворення fill_gaps_in_sectioning не дало ніяких результатів. Немає "
-"розділу?"
+msgstr "Перетворення fill_gaps_in_sectioning не дало ніяких результатів. Немає розділу?"
 
 #: tp/texi2any.pl:1254
 #, perl-format
 msgid "error on closing macro expand file %s: %s\n"
-msgstr ""
-"помилка під час спроби закрити файл розгортання макровизначень %s: %s\n"
+msgstr "помилка під час спроби закрити файл розгортання макровизначень %s: %s\n"
 
 #: tp/texi2any.pl:1260
 #, perl-format
@@ -3682,12 +3502,8 @@ msgid "could not open %s for writing: %s\n"
 msgstr "не вдалося відкрити %s для запису: %s\n"
 
 #: tp/texi2any.pl:1285
-msgid ""
-"insert_nodes_for_sectioning_commands transformation return no result. No "
-"section?"
-msgstr ""
-"Перетворення insert_nodes_for_sectioning_commands не дало ніяких "
-"результатів. Немає розділу?"
+msgid "insert_nodes_for_sectioning_commands transformation return no result. No section?"
+msgstr "Перетворення insert_nodes_for_sectioning_commands не дало ніяких результатів. Немає розділу?"
 
 #: tp/texi2any.pl:1358 tp/texi2any.pl:1434
 #, perl-format
@@ -3818,17 +3634,13 @@ msgstr "%s: не вдалося відкрити %s для запису дани
 #~ "              Вибір пункту меню призведе до вибору іншого вузла.\n"
 
 #~ msgid "  %-10s  Follow a cross reference.  Reads name of reference.\n"
-#~ msgstr ""
-#~ "  %-10s  Перейти за перехресним посиланням.  Читає назву посилання.\n"
+#~ msgstr "  %-10s  Перейти за перехресним посиланням.  Читає назву посилання.\n"
 
 #~ msgid "  %-10s  Move to the last node seen in this window.\n"
-#~ msgstr ""
-#~ "  %-10s  Перейти до останнього вузла, що переглядався у цьому вікні.\n"
+#~ msgstr "  %-10s  Перейти до останнього вузла, що переглядався у цьому вікні.\n"
 
 #~ msgid "  %-10s  Skip to next hypertext link within this node.\n"
-#~ msgstr ""
-#~ "  %-10s  Пропустити до наступного гіпертекстового посилання у цьому "
-#~ "вузлі.\n"
+#~ msgstr "  %-10s  Пропустити до наступного гіпертекстового посилання у цьому вузлі.\n"
 
 #~ msgid "  %-10s  Follow the hypertext link under cursor.\n"
 #~ msgstr "  %-10s  Перейти за гіпертекстовим посиланням під курсором.\n"
@@ -3879,21 +3691,17 @@ msgstr "%s: не вдалося відкрити %s для запису дани
 
 #~ msgid ""
 #~ "  %-10s  Search for a specified string in the index entries of this Info\n"
-#~ "              file, and select the node referenced by the first entry "
-#~ "found.\n"
+#~ "              file, and select the node referenced by the first entry found.\n"
 #~ msgstr ""
 #~ "  %-10s  Шукати вказаний серед у пунктів покажчика цього файла\n"
-#~ "              Info, та обрати вузол, на який посилається перший знайдений "
-#~ "пункт.\n"
+#~ "              Info, та обрати вузол, на який посилається перший знайдений пункт.\n"
 
 #~ msgid ""
 #~ "  %-10s  Move to node specified by name.\n"
-#~ "              You may include a filename as well, as in "
-#~ "(FILENAME)NODENAME.\n"
+#~ "              You may include a filename as well, as in (FILENAME)NODENAME.\n"
 #~ msgstr ""
 #~ "  %-10s  Перейти до вузла, вказаного за назвою.\n"
-#~ "              Ви можете вказати також й назву файла у вигляді "
-#~ "(ФАЙЛ)ВУЗОЛ.\n"
+#~ "              Ви можете вказати також й назву файла у вигляді (ФАЙЛ)ВУЗОЛ.\n"
 
 #~ msgid ""
 #~ "  %-10s  Search forward for a specified string,\n"
@@ -3944,8 +3752,7 @@ msgstr "%s: не вдалося відкрити %s для запису дани
 #~ "Usage: %s [OPTION]... [INPUT-FILE]\n"
 #~ "\n"
 #~ "Compile infokey source file to infokey file.  Reads INPUT-FILE (default\n"
-#~ "$HOME/.infokey) and writes compiled key file to (by default) $HOME/."
-#~ "info.\n"
+#~ "$HOME/.infokey) and writes compiled key file to (by default) $HOME/.info.\n"
 #~ "\n"
 #~ "Options:\n"
 #~ "  --output FILE        output to FILE instead of $HOME/.info\n"
@@ -3954,10 +3761,8 @@ msgstr "%s: не вдалося відкрити %s для запису дани
 #~ msgstr ""
 #~ "Використовуйте: %s [ПАРАМЕТР]... [ВХІДНИЙ ФАЙЛ]\n"
 #~ "\n"
-#~ "Компілює файл вихідного коду infokey у файл infokey.  Читає ВХІДНИЙ ФАЙЛ "
-#~ "(якщо\n"
-#~ "не вказано - $HOME/.infokey) та записує згенерований файл клавіш до "
-#~ "$HOME/.info (зазвичай).\n"
+#~ "Компілює файл вихідного коду infokey у файл infokey.  Читає ВХІДНИЙ ФАЙЛ (якщо\n"
+#~ "не вказано - $HOME/.infokey) та записує згенерований файл клавіш до $HOME/.info (зазвичай).\n"
 #~ "\n"
 #~ "Параметри:\n"
 #~ "  --output ФАЙЛ        записати до ФАЙЛ, замість $HOME/.info\n"
@@ -3973,35 +3778,23 @@ msgstr "%s: не вдалося відкрити %s для запису дани
 #~ msgid "Error reading infokey file `%s' - short read"
 #~ msgstr "Помилка читання файлу infokey `%s' - прочитано недостатньо даних"
 
-#~ msgid ""
-#~ "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
-#~ msgstr ""
-#~ "Неправильний файл infokey `%s' (невірні магічні номери) -- запустіть "
-#~ "infokey, щоб оновити його"
+#~ msgid "Invalid infokey file `%s' (bad magic numbers) -- run infokey to update it"
+#~ msgstr "Неправильний файл infokey `%s' (невірні магічні номери) -- запустіть infokey, щоб оновити його"
 
 #~ msgid "Your infokey file `%s' is out of date -- run infokey to update it"
-#~ msgstr ""
-#~ "Ваш файл infokey `%s' застарів -- запустіть infokey, щоб оновити його"
+#~ msgstr "Ваш файл infokey `%s' застарів -- запустіть infokey, щоб оновити його"
 
-#~ msgid ""
-#~ "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
-#~ msgstr ""
-#~ "Неправильний файл infokey `%s' (невірна довжина секції) -- запустіть "
-#~ "infokey, щоб оновити його"
+#~ msgid "Invalid infokey file `%s' (bad section length) -- run infokey to update it"
+#~ msgstr "Неправильний файл infokey `%s' (невірна довжина секції) -- запустіть infokey, щоб оновити його"
 
-#~ msgid ""
-#~ "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
-#~ msgstr ""
-#~ "Неправильний файл infokey `%s' (невірний код секції) -- запустіть "
-#~ "infokey, щоб оновити його"
+#~ msgid "Invalid infokey file `%s' (bad section code) -- run infokey to update it"
+#~ msgstr "Неправильний файл infokey `%s' (невірний код секції) -- запустіть infokey, щоб оновити його"
 
 #~ msgid "Bad data in infokey file -- some key bindings ignored"
-#~ msgstr ""
-#~ "Невірні дані у файлі infokey -- деякі призначення клавіш буде пропущено"
+#~ msgstr "Невірні дані у файлі infokey -- деякі призначення клавіш буде пропущено"
 
 #~ msgid "Bad data in infokey file -- some var settings ignored"
-#~ msgstr ""
-#~ "Невірні дані у файлі infokey -- встановлення деяких змінних буде пропущено"
+#~ msgstr "Невірні дані у файлі infokey -- встановлення деяких змінних буде пропущено"
 
 #~ msgid "Next"
 #~ msgstr "Наступний"
@@ -4211,8 +4004,7 @@ msgstr "%s: не вдалося відкрити %s для запису дани
 #~ msgstr "файл закінчився усередині блоку verbatim"
 
 #~ msgid "@detailmenu seen before first node, creating `Top' node"
-#~ msgstr ""
-#~ "знайдено @detailmenu перед першим вузлом, створюється горішній вузол `Top'"
+#~ msgstr "знайдено @detailmenu перед першим вузлом, створюється горішній вузол `Top'"
 
 #~ msgid "`%c%s' needs something after it"
 #~ msgstr "`%c%s' потребує щоб за ним щось було"
@@ -4239,9 +4031,7 @@ msgstr "%s: не вдалося відкрити %s для запису дани
 #~ msgstr "не знайдено %cend macro"
 
 #~ msgid "@allow-recursion is deprecated; please use @rmacro instead"
-#~ msgstr ""
-#~ "@allow-recursion є застарілим; будь ласка, використовуйте замість нього "
-#~ "@rmacro"
+#~ msgstr "@allow-recursion є застарілим; будь ласка, використовуйте замість нього @rmacro"
 
 #~ msgid "mismatched @end %s with @%s"
 #~ msgstr "невідповідний @end %s до @%s"
@@ -4254,16 +4044,12 @@ msgstr "%s: не вдалося відкрити %s для запису дани
 
 #~ msgid ""
 #~ "Options for XML and Docbook:\n"
-#~ "      --output-indent=VAL     indent XML elements by VAL spaces (default "
-#~ "%d).\n"
-#~ "                                If VAL is 0, ignorable whitespace is "
-#~ "dropped.\n"
+#~ "      --output-indent=VAL     indent XML elements by VAL spaces (default %d).\n"
+#~ "                                If VAL is 0, ignorable whitespace is dropped.\n"
 #~ msgstr ""
 #~ "Параметри для XML та Docbook:\n"
-#~ "      --output-indent=ЗНАЧЕННЯ  робити відступ для елементів XML на "
-#~ "ЗНАЧЕННЯ пропусків (типово %d).\n"
-#~ "                                Якщо ЗНАЧЕННЯ 0, усі нехтовні пробіли "
-#~ "будуть пропущені.\n"
+#~ "      --output-indent=ЗНАЧЕННЯ  робити відступ для елементів XML на ЗНАЧЕННЯ пропусків (типово %d).\n"
+#~ "                                Якщо ЗНАЧЕННЯ 0, усі нехтовні пробіли будуть пропущені.\n"
 
 #~ msgid "%s: could not open macro expansion output `%s'"
 #~ msgstr "%s: не вдається відкрити вивід для розкриття макровизначень `%s'"
@@ -4280,31 +4066,17 @@ msgstr "%s: не вдалося відкрити %s для запису дани
 #~ msgid "No `%s' found in `%s'"
 #~ msgstr "`%s' не знайдено у `%s'"
 
-#~ msgid ""
-#~ "%s: Skipping macro expansion to stdout as Info output is going there.\n"
-#~ msgstr ""
-#~ "%s: Розкриття макровизначень не виводиться у стандартний вивід, бо сюди "
-#~ "буде виведено Info.\n"
+#~ msgid "%s: Skipping macro expansion to stdout as Info output is going there.\n"
+#~ msgstr "%s: Розкриття макровизначень не виводиться у стандартний вивід, бо сюди буде виведено Info.\n"
 
-#~ msgid ""
-#~ "%s: Removing macro output file `%s' due to errors; use --force to "
-#~ "preserve.\n"
-#~ msgstr ""
-#~ "%s: Вилучення файлу розкриття макровизначень `%s' з-за помилок; "
-#~ "застосуйте --force, щоб зберегти його.\n"
+#~ msgid "%s: Removing macro output file `%s' due to errors; use --force to preserve.\n"
+#~ msgstr "%s: Вилучення файлу розкриття макровизначень `%s' з-за помилок; застосуйте --force, щоб зберегти його.\n"
 
-#~ msgid ""
-#~ "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
-#~ msgstr ""
-#~ "%s: Вилучення файлу виводу `%s' з-за помилок; застосуйте --force, щоб "
-#~ "зберегти його.\n"
+#~ msgid "%s: Removing output file `%s' due to errors; use --force to preserve.\n"
+#~ msgstr "%s: Вилучення файлу виводу `%s' з-за помилок; застосуйте --force, щоб зберегти його.\n"
 
-#~ msgid ""
-#~ "%s: Removing internal links output file `%s' due to errors; use --force "
-#~ "to preserve.\n"
-#~ msgstr ""
-#~ "%s: Вилучення файлу з посиланнями у документі `%s' з-за помилок; "
-#~ "застосуйте --force, щоб зберегти його.\n"
+#~ msgid "%s: Removing internal links output file `%s' due to errors; use --force to preserve.\n"
+#~ msgstr "%s: Вилучення файлу з посиланнями у документі `%s' з-за помилок; застосуйте --force, щоб зберегти його.\n"
 
 #~ msgid "NO_NAME!"
 #~ msgstr "НЕМА_НАЗВИ!"
@@ -4352,8 +4124,7 @@ msgstr "%s: не вдалося відкрити %s для запису дани
 #~ msgstr "Зв’язок `%s' та вузол `%s' посилаються на один файл"
 
 #~ msgid "This @anchor command ignored; references to it will not work"
-#~ msgstr ""
-#~ "Цю команду @anchor буде пропущено; посилання на неї не працюватимуть"
+#~ msgstr "Цю команду @anchor буде пропущено; посилання на неї не працюватимуть"
 
 #~ msgid "Rename this anchor or use the `--no-split' option"
 #~ msgstr "Перейменуйте цей зв’язок чи використайте параметр `--no-split'"
@@ -4367,11 +4138,8 @@ msgstr "%s: не вдалося відкрити %s для запису дани
 #~ msgid "@anchor command ignored; references to it will not work"
 #~ msgstr "Пропущено команду @anchor; посилання на неї не працюватимуть"
 
-#~ msgid ""
-#~ "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
-#~ msgstr ""
-#~ "Поле Next вузла `%s' не вказує на (мабуть, з-за неправильного "
-#~ "секціювання?)"
+#~ msgid "Next field of node `%s' not pointed to (perhaps incorrect sectioning?)"
+#~ msgstr "Поле Next вузла `%s' не вказує на (мабуть, з-за неправильного секціювання?)"
 
 #~ msgid "This node (%s) has the bad Prev"
 #~ msgstr "Цей вузол (%s) має неправильне поле Prev"
@@ -4406,12 +4174,8 @@ msgstr "%s: не вдалося відкрити %s для запису дани
 #~ msgid "%ctop used before %cnode, defaulting to %s"
 #~ msgstr "%ctop використано перед %cnode, повертаємося до типового %s"
 
-#~ msgid ""
-#~ "@headitem as the last item of @multitable produces invalid Docbook "
-#~ "documents"
-#~ msgstr ""
-#~ "@headitem, як останній об’єкт @multitable призводить до неправильних "
-#~ "документів Docbook"
+#~ msgid "@headitem as the last item of @multitable produces invalid Docbook documents"
+#~ msgstr "@headitem, як останній об’єкт @multitable призводить до неправильних документів Docbook"
 
 #, fuzzy
 #~ msgid "of"
