@@ -1,3 +1,21 @@
+2016-01-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\indexnofonts): Replace definitions of @{ and
+	@} so that \indexnofonts can be used for constructing a control
+	sequence name with \csname, as is done in \xrefX.  Give them
+	different values in order not to cause problems should two xref
+	names differ only by replacing @{ with @}.
+	(\dosubindwrite): Override definitions of @{ and @} set in 
+	\indexnofonts to their previous definitions in \indexnofonts.
+	@{ in xref broken reported by Karl Berry.
+
+2016-01-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	6.0.92 pretest.
+
+	* configure.ac, README, NEWS: 2016.
+	* configure.ac: 6.0.92 pretest.
+
 2016-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/configure.ac: Get Perl conf 
