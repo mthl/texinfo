@@ -1,5 +1,9 @@
 2016-01-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\xrefX): Move and edit a comment.
+
+2016-01-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\indexnofonts): Replace definitions of @{ and
 	@} so that \indexnofonts can be used for constructing a control
 	sequence name with \csname, as is done in \xrefX.  Give them
