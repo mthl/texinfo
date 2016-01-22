@@ -1,3 +1,11 @@
+2016-01-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm (_protect_space_codebreak): Rename 
+	to '_protect_space'.  Remove check for 'allowcodebreaks', as 
+	this led to broken URL's and a broken <title>.  Report from 
+	Padraig Brady via Karl Berry.
+	(%css_map): Remove CSS style for 'span.nocodebreak'.
+
 2016-01-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\xrefX): Move and edit a comment.

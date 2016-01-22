@@ -1056,7 +1056,6 @@ my %css_map = (
      'pre.smallexample'       => 'font-size: smaller',
      'span.sansserif'     => 'font-family: sans-serif; font-weight: normal',
      'span.roman'         => 'font-family: initial; font-weight: normal',
-     'span.nocodebreak'   => 'white-space: nowrap',
      'span.nolinebreak'   => 'white-space: nowrap',
      'kbd'                => 'font-style: oblique',
 );
@@ -3778,7 +3777,7 @@ sub _convert_text($$$)
       $text =~ s/\x{1F}/--/g;
     }
   }
-  $text = $self->_protect_space_codebreak($text);
+  $text = $self->_protect_space($text);
   return $text;
 }
 
@@ -7222,31 +7221,22 @@ sub _attribute_class($$$)
   return "<$element class=\"$class\"$style";
 }
 
-sub _protect_space_codebreak($$)
+sub _protect_space($$)
 {
   my $self = shift;
   my $text = shift;
 
   return $text if ($self->in_preformatted());
 
-  my $in_w;
-  $in_w = 1 if ($self->in_space_protected());
-
-  if ($in_w or $self->in_code() 
-      and $self->get_conf('allowcodebreaks') eq 'false') {
-    my $class = 'nolinebreak';
-    $class = 'nocodebreak' if ($self->in_code() 
-                           and $self->get_conf('allowcodebreaks') eq 'false');
-    my $open = $self->_attribute_class('span', $class);
+  if ($self->in_space_protected()) {
+    my $open = $self->_attribute_class('span', 'nolinebreak');
     if ($open ne '') {
       $open .= '>';
       # protect spaces in the html leading attribute in case we are in 'w'
-      $open =~ s/ /\x{1F}/g if ($in_w);
+      $open =~ s/ /\x{1F}/g;
       # special span to avoid breaking at _-
       $text =~ s/(\S*[_-]\S*)/${open}$1<\/span>/g;
     }
-  }
-  if ($in_w) {
     $text .= '&nbsp;' if (chomp($text));
     # protect spaces within text
     $text =~ s/ /&nbsp;/g;
