@@ -1,6 +1,7 @@
 2016-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* tp/Texinfo/Convert/XSParagraph/lib: Add gnulib module 'getline'.
+	* tp/Texinfo/Convert/XSParagraph/lib,
+	* tp/Texinfo/Convert/XSParagraph/m4: Add gnulib module 'getline'.
 
 2016-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
