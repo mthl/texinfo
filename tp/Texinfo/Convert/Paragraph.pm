@@ -116,8 +116,20 @@ if ($disable_XS) {
   goto FALLBACK;
 }
 
+# Check for a UTF-8 locale.  Skip the check if the 'locale' command doesn't
+# work.
+my $a = `locale -a 2>/dev/null`;
+if ($a and $a !~ /UTF-8/ and $a !~ /utf8/) {
+  _fatal "couldn't find a UTF-8 locale";
+  goto FALLBACK;
+}
+if (!$a) {
+  _debug "couldn't run 'locale -a': skipping check for a UTF-8 locale";
+}
+
+
 my ($libtool_dir, $libtool_archive);
-if ($TEXINFO_XS ne 'stand-alone') {
+if ($TEXINFO_XS ne 'standalone') {
   ($libtool_dir, $libtool_archive) = _find_file("XSParagraph.la");
   if (!$libtool_archive) {
     if ($TEXINFO_XS eq 'libtool') {
@@ -177,14 +189,6 @@ if (!$dlpath) {
 }
 
 LOAD:
-
-#print STDERR "loadable object is at $dlpath\n";
-
-# Following steps under "bootstrap" in "man DynaLoader".
-#bootstrap XSParagraph $VERSION;
-
-# TODO: Execute blib/arch/auto/XSParagraph/XSParagraph.bs ?
-# That file is empty.
 
 #my $flags = dl_load_flags $module; # This is 0 in DynaLoader
 my $flags = 0;

@@ -1,5 +1,16 @@
 2016-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Paragraph.pm: Add a check for a UTF-8 
+	locale in output of "locale -a".  Change 'stand-alone' to 
+	'standalone' in a string.  Remove some commented-out code.
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_init): If we 
+	fail to set a UTF-8 locale by other means, look at the output of 
+	"locale -a" and use the first line of output with "UTF-8" in it 
+	as the name of the locale to use.  Failure when no UTF-8 locale 
+	could be set reported by Kiyoshi Kanazawa.
+
+2016-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Move note about @copying next to the news for the 
 	release it was added in (Texinfo 4.2, April 2002).
 

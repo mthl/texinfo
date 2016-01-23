@@ -241,6 +241,37 @@ xspara_init (void)
   memcpy (dot, ".utf8", 6);
   if (setlocale (LC_CTYPE, utf8_locale))
     goto success;
+
+  /* Otherwise, look for any UTF-8 locale in the output of "locale -a". */
+  {
+  FILE *p;
+  char *line = 0;
+  size_t n = 0;
+  ssize_t ret;
+  p = popen ("locale -a", "r");
+  if (!p)
+    goto failure;
+  while (1)
+    {
+      ret = getline (&line, &n, p);
+      if (ret == (ssize_t) -1)
+        {
+          free (line);
+          pclose (p);
+          goto failure;
+        }
+      if (strstr (line, "UTF-8") || strstr (line, "utf8"))
+        {
+          line[ret - 1] = '\0';   /* Remove trailing newline. */
+          if (setlocale (LC_CTYPE, line))
+            {
+              free (line);
+              pclose (p);
+              goto success;
+            }
+        }
+    }
+  }
       
   if (1)
     {
