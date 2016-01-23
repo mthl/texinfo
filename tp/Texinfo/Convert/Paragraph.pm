@@ -118,7 +118,10 @@ if ($disable_XS) {
 
 # Check for a UTF-8 locale.  Skip the check if the 'locale' command doesn't
 # work.
-my $a = `locale -a 2>/dev/null`;
+my $a;
+if ($^O ne 'MSWin32') {
+  $a = `locale -a 2>/dev/null`;
+}
 if ($a and $a !~ /UTF-8/ and $a !~ /utf8/) {
   _fatal "couldn't find a UTF-8 locale";
   goto FALLBACK;
