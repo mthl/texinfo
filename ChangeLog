@@ -1,5 +1,9 @@
 2016-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/lib: Add gnulib module 'getline'.
+
+2016-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Paragraph.pm: Add a check for a UTF-8 
 	locale in output of "locale -a".  Change 'stand-alone' to 
 	'standalone' in a string.  Remove some commented-out code.
