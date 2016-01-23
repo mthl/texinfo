@@ -18,8 +18,8 @@ EXTRA_DIST=
 
 AM_CPPFLAGS =                \
   -I$(srcdir)                \
-  -I$(srcdir)/gnulib/lib     \
-  -I$(builddir)/gnulib/lib
+  -I$(srcdir)/lib     \
+  -I$(builddir)/lib
 
 XSParagraph_la_LIBADD = $(builddir)/lib/libgnu.la \
 	                $(TERMLIBS) $(LIBINTL) $(LIBICONV)
