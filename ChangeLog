@@ -1,3 +1,9 @@
+2016-01-23  Karl Berry  <karl@freefriends.org>
+
+	* contrib/perldoc-all/GNUmakefile (install): no need for grep,
+	since we don't install the split HTML any more.
+	($(texi_pod_doc_incl)): mention failure to get uniprops et al.
+
 2016-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/lib,
