@@ -1,3 +1,8 @@
+2016-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Move note about @copying next to the news for the 
+	release it was added in (Texinfo 4.2, April 2002).
+
 2016-01-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/HTML.pm (_protect_space_codebreak): Rename 

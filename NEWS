@@ -10,17 +10,6 @@ See the manual for detailed information.
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
-*** NEWS FOR ALL AUTHORS OF TEXINFO MANUALS ***
-
-As of version 4.2, Texinfo has a command @copying to define the
-copyright and copying permissions for a manual.  If you haven't already,
-please switch to using it in your next release, because the historical
-method of doing copyright permissions using @ifinfo failed to output
-copyright information in the HTML (or XML) formats.  The manual has
-detailed explanations and examples.  For convenience, here's a url to
-one of the relevant sections:
-  http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
-
 -------------------------------------------------------------------------------
 * Language:
   . You can now optionally miss out the @menu from nodes with other
@@ -734,6 +723,17 @@ one of the relevant sections:
  . gettext 0.11.5, autoconf 2.54, automake 1.7.1.
 
 
+*** NEWS FOR ALL AUTHORS OF TEXINFO MANUALS ***
+
+As of version 4.2, Texinfo has a command @copying to define the
+copyright and copying permissions for a manual.  If you haven't already,
+please switch to using it in your next release, because the historical
+method of doing copyright permissions using @ifinfo failed to output
+copyright information in the HTML (or XML) formats.  The manual has
+detailed explanations and examples.  For convenience, here's a url to
+one of the relevant sections:
+  http://www.gnu.org/software/texinfo/manual/texinfo/html_node/Document-Permissions.html
+
 4.2 (1 April 2002)
 * Language:
   . new command @copying to define copying permissions.  See above.
