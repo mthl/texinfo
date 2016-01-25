@@ -1,3 +1,8 @@
+2016-01-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac: Clear cache 
+	variable with 'unset'.
+
 2016-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Paragraph.pm: Check if using Windows, and 

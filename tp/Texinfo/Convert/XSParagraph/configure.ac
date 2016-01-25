@@ -71,7 +71,7 @@ if test x$disable_xs != xyes; then
   CC=$conf_value
 
   # Wipe the cache value in case -C was given at the top level
-  ac_cv_prog_CC=
+  ac_cv_prog_CC= ; unset ac_cv_prog_CC
 fi
 
 AC_PROG_CC
