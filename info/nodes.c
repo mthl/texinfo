@@ -1409,7 +1409,7 @@ info_node_of_tag_ext (FILE_BUFFER *fb, TAG **tag_ptr, int fast)
       if (parent != subfile)
         cache->subfile = tag->filename;
 
-      if (!fast)
+      if (!fast && !tag->cache.references)
         {
           /* Read locations of references in node and similar.  Strip Info file
              syntax from node if preprocess_nodes=On.  Adjust the offsets of

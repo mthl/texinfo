@@ -1,5 +1,12 @@
 2016-01-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (info_node_of_tag_ext): Check that references for 
+	node haven't already been initialized before calling 
+	scan_node_contents, to prevent a memory leak if a node from a 
+	previously garbage collected file is loaded again.
+
+2016-01-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/configure.ac: Clear cache 
 	variable with 'unset'.
 
