@@ -1,5 +1,9 @@
 2016-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/Init-inter.inc: Remove line accidentally added on 2016-01-13.
+
+2016-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (gc_file_buffers_and_nodes): Don't free file 
 	buffers corresponding to files that aren't there any more, 
 	because a node may still refer to them.

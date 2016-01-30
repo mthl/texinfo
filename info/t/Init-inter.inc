@@ -160,5 +160,4 @@ run_ginfo ()
     echo 'pgrep program not found - cannot get PID of ginfo process' >&2
     GINFO_PID=unknown
   fi
-  test x$GINFO_PID = xunknown
 }
