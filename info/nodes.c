@@ -812,7 +812,7 @@ static void
 forget_info_file (FILE_BUFFER *file_buffer)
 {
   file_buffer->flags |= N_Gone;
-  file_buffer->filename = "";
+  file_buffer->filename[0] = '\0';
   file_buffer->fullpath = "";
   memset (&file_buffer->finfo, 0, sizeof (struct stat));
 }

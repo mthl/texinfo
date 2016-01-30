@@ -1,4 +1,12 @@
-2016-01-25  Gavin Smith  <gavinsmith0123@gmail.com>
+2016-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (gc_file_buffers_and_nodes): Don't free file 
+	buffers corresponding to files that aren't there any more, 
+	because a node may still refer to them.
+	* info/nodes.c (forget_info_file): Overwrite filename of field 
+	with empty string to avoid a memory leak.
+
+2016-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.c (info_node_of_tag_ext): Check that references for 
 	node haven't already been initialized before calling 
