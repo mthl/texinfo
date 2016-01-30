@@ -1,5 +1,10 @@
 2016-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/replace-viewed.sh: Skip test if no process could be 
+	found, because it may not have started properly.
+
+2016-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/Init-inter.inc: Remove line accidentally added on 2016-01-13.
 
 2016-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
