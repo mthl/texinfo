@@ -12,7 +12,7 @@ See the manual for detailed information.
 
 -------------------------------------------------------------------------------
 * Language:
-  . You can now optionally miss out the @menu from nodes with other
+  . You can now omit the @menu from nodes with other
     nodes below them in the document structure.  If you use
     "@validatemenus off" near the start of a Texinfo file,
     makeinfo will, where needed, create a menu for nodes lacking one 
@@ -46,7 +46,7 @@ See the manual for detailed information.
   . The default indices (cp, ky and so on) now don't get a file opened
     for them unless they are actually used.  This reduces the number of
     files that a run of TeX produces, and also allows for a greater
-    number of user-defined indices, as you will not bump into TeX's limit
+    number of user-defined indices, so you will not bump into TeX's limit
     of 16 open files at once so soon.
   . For initials in indices that are non-alphanumeric characters (for
     example, backslash, or braces), avoid use of a typewriter font.  
@@ -60,11 +60,11 @@ See the manual for detailed information.
   . Support character encodings beyond ASCII for XeTeX and LuaTeX by
     reading file input byte-by-byte.
 
-* texi2dvi
-  . Support of getting output files using the `-recorder' option to TeX,
-    to try to support more TeX engines.
+* texi2dvi:
+  . Support for determining the output files using the `-recorder'
+    option to TeX, to help support more TeX engines.
 
-* makeinfo
+* texi2any:
   . Some Perl modules have been rewritten in C to increase speed.
     Disable at build time with "configure --disable-perl-xs".  The 
     environment variable `TEXINFO_XS' controls how they are used by 
@@ -78,7 +78,7 @@ See the manual for detailed information.
   . Commands like @heading are affected by @lowersections and @raisesections
     again, as was the case before Texinfo 5.0.
 
-* info
+* info:
   . New user variables `link-style', `active-link-style', and
     `match-style' enable customization of how cross-references and search 
     matches are highlighted.
@@ -103,11 +103,12 @@ See the manual for detailed information.
     is 0.  This value meant to wait forever in the last release, but now
     it means that the next byte must be available immediately.
 
-* Miscellaneous
-  . The `info.info' file is no longer distributed with Texinfo.
+* Documentation:
+  . The `info.info' file (and `info.texi' source) is no longer
+    distributed with Texinfo.  Now this manual is only in Emacs.
 
 * Distribution:
-  . automake-1.15, gettext-0.19.6
+  . automake-1.15, gettext-0.19.6.
 
 
 6.0 (26 June 2015)
