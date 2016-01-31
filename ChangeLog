@@ -1,5 +1,10 @@
 2016-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\utfeightchardefs): Comment out empty lines 
+	to prevent an end of paragraph.  Reported by Masamichi Hosoda.
+
+2016-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/pseudotty.c: Call fpathconf to get value to disable a 
 	special character in the termios structure.
 
