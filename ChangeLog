@@ -1,3 +1,8 @@
+2016-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/pseudotty.c: Call fpathconf to get value to disable a 
+	special character in the termios structure.
+
 2016-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/replace-viewed.sh: Skip test if no process could be 

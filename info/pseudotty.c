@@ -90,14 +90,16 @@ main (int argc, char *argv[])
 #if defined (HAVE_TERMIOS_H)
   {
   struct termios t;
+  long int disable;
+  disable = fpathconf (slave, _PC_VDISABLE);
   if (tcgetattr (slave, &t) == -1)
     error (0, 0, "error calling tcgetattr");
   else
     {
-      t.c_cc[VSTART] = -1; /* C-q */
-      t.c_cc[VSTOP] = -1;  /* C-s */
-      t.c_cc[VKILL] = -1;  /* C-u */
-      t.c_cc[VINTR] = -1;  /* C-c */
+      t.c_cc[VSTART] = disable; /* C-q */
+      t.c_cc[VSTOP] = disable;  /* C-s */
+      t.c_cc[VKILL] = disable;  /* C-u */
+      t.c_cc[VINTR] = disable;  /* C-c */
       if (tcsetattr (slave, TCSANOW, &t) == -1)
         error (0, 0, "error calling tcsetattr");
     }
