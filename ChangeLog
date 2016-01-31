@@ -1,5 +1,11 @@
 2016-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	6.0.93 pretest.
+
+	* configure.ac: 6.0.93 pretest.
+
+2016-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\utfeightchardefs): Comment out empty lines 
 	to prevent an end of paragraph.  Reported by Masamichi Hosoda.
 
