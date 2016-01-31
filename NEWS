@@ -1079,7 +1079,7 @@ Note that versions 2.6 and 2.7 Beta were only released to a select group.
 * Cleaner built in documentation, and documentation functions.
 
   Use:
-    o `M-x describe-variable' to read a variable's documenation
+    o `M-x describe-variable' to read a variable's documentation
     o `M-x describe-key' to find out what a particular keystroke does.
     o `M-x describe-function' to read a function's documentation.
     o `M-x where-is' to find out what keys invoke a particular function.
@@ -1135,7 +1135,7 @@ Note that versions 2.6 and 2.7 Beta were only released to a select group.
 * When scrolling with C-v, C-M-v, or M-v, only "Page Only" scrolling
   will happen.
 
-* Continous scrolling (along with `]' (info-global-next) and `['
+* Continuous scrolling (along with `]' (info-global-next) and `['
   (info-global-prev) works better.  `]' and `[' accept numeric
   arguments, moving that many nodes in that case.
 
@@ -1168,7 +1168,7 @@ Note that versions 2.6 and 2.7 Beta were only released to a select group.
 				    "Next Only" causes the Next or Prev node to
 				    be selected when you scroll past the bottom
 				    or top of a node.  "Continous" moves
-				    linearly through the files hierchichal
+				    linearly through the files hierarchical
 				    structure.
 
   `scroll-step'	        0	    Controls how scrolling is done for you when
@@ -1196,7 +1196,7 @@ Changes since 2.4 beta:
 * "configure" script now shipped with Info.
 * New function "set-variable" allows users to set various variables.
 * User-settable behaviour on end or beginning of node scrolling.  This
-  supercedes the SPC and DEL changes in 2.3 beta.
+  supersedes the SPC and DEL changes in 2.3 beta.
 
 ________________________________________
 This release of Info is version 2.4 beta.
@@ -1219,7 +1219,7 @@ Changes since 2.2 beta:
 * Screen height changes made quite robust.
 * Interactive function "set-screen-height" implements user height changes.
 * Scrolling on some terminals is faster now.
-* C-l with numeric arguement is fixed.
+* C-l with numeric argument is fixed.
 
 ----------------------------------------
 This release of Info is version 2.2 beta.
