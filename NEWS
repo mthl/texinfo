@@ -30,7 +30,7 @@ See the manual for detailed information.
     in the Info output.
 
 * texinfo.tex:
-  . You may explicity specify a sort key for an index entry by preceding
+  . You may explicitly specify a sort key for an index entry by preceding
     the text of the entry with the @sortas commmand with the sort key 
     desired as a braced argument.   Additionally, you may choose to
     ignore all occurences of the characters \, @, <, and - using new 
@@ -67,7 +67,7 @@ See the manual for detailed information.
 * texi2any:
   . Some Perl modules have been rewritten in C to increase speed.
     Disable at build time with "configure --disable-perl-xs".  The 
-    environment variable `TEXINFO_XS' controls how they are used by 
+    environment variable TEXINFO_XS controls how they are used by 
     makeinfo.
   . Quotation marks are left out for node names and index entries in
     Info output where they would have been produced by commands such
