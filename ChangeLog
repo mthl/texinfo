@@ -1,3 +1,8 @@
+2016-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\indexnofonts): Add % after \} and \{ because 
+	spaces are not skipped there.
+
 2016-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	6.0.93 pretest.
