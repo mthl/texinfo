@@ -12,11 +12,10 @@ See the manual for detailed information.
 
 -------------------------------------------------------------------------------
 * Language:
-  . You can now omit the @menu from nodes with other
-    nodes below them in the document structure.  If you use
-    "@validatemenus off" near the start of a Texinfo file,
-    makeinfo will, where needed, create a menu for nodes lacking one 
-    given explicitly.
+  . You can now omit the @menu from nodes with other nodes below them in
+    the document structure.  If you use "@validatemenus off" near the 
+    start of a Texinfo file, makeinfo will, where needed, create a menu 
+    for nodes lacking one given explicitly.
   . An @setfilename line is no longer required at the start of a
     Texinfo file.  (Be aware, though, that some other tools may require 
     it, for example Automake.)
@@ -46,8 +45,8 @@ See the manual for detailed information.
   . The default indices (cp, ky and so on) now don't get a file opened
     for them unless they are actually used.  This reduces the number of
     files that a run of TeX produces, and also allows for a greater
-    number of user-defined indices, so you will not bump into TeX's limit
-    of 16 open files at once so soon.
+    number of user-defined indices, because you will not bump into TeX's
+    limit of 16 open files at once so soon.
   . For initials in indices that are non-alphanumeric characters (for
     example, backslash, or braces), avoid use of a typewriter font.  
     This gives a more consistent appearance.
@@ -62,7 +61,7 @@ See the manual for detailed information.
 
 * texi2dvi:
   . Support for determining the output files using the `-recorder'
-    option to TeX, to help support more TeX engines.
+    option to TeX, to help to support more TeX engines.
 
 * texi2any:
   . Some Perl modules have been rewritten in C to increase speed.
@@ -84,7 +83,7 @@ See the manual for detailed information.
     matches are highlighted.
   . By default only the node pointers are displayed at the top of a node.
     Customize this with the `nodeline' variable.
-  . New command M-x tree-search to search all subnodes of a node
+  . New command M-x tree-search to search all subnodes of a node.
   . Now tries to find referenced manuals in the same directory as the
     current file first, before looking in search path.  Customize this
     with new variable `follow-strategy'.
