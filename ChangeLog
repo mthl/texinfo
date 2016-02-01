@@ -1,5 +1,12 @@
 2016-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\xrefX): Add a comma after the page number 
+	only if the cross-reference command is followed by a space, 
+	instead of listing possible punctuation characters.  Suggestion 
+	from Karl Berry.
+
+2016-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\indexnofonts): Add % after \} and \{ because 
 	spaces are not skipped there.
 
