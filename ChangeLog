@@ -1,3 +1,14 @@
+2016-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\chapmacro): Allow this macro to occur inside 
+	\titlepage, in case \setcontentsaftertitlepage is used.  Report 
+	of error message from Akim Demaille.
+
+2016-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\xrefX): Don't expand a control sequence 
+	following \if.  Report of possible problem from Karl Berry.
+
 2016-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\xrefX): Add a comma after the page number 
