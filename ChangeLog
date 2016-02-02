@@ -1,5 +1,10 @@
 2016-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* NEWS: Move NEWS about XS earlier and mention that pure Perl 
+	modules can still be used by default.  Suggestion from Karl Berry.
+
+2016-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* configure.ac: Add "(XS)" after "Perl extension" in message to 
 	make it easier to find in configure output.  Repeat message 
 	after output from trying to build and run an extension module so 

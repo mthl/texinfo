@@ -29,6 +29,22 @@ See the manual for detailed information.
     output, and "*Note Another Section:: for more information" in the
     Info output.
 
+* texi2any:
+  . Some Perl modules have been rewritten in C to increase speed.
+    If Perl extensions can be created, they are used by default; 
+    otherwise the pure Perl implementations are still used.
+    Disable at build time with "configure --disable-perl-xs".  The 
+    environment variable TEXINFO_XS controls how they are used by 
+    makeinfo.
+  . Quotation marks are left out for node names and index entries in
+    Info output where they would have been produced by commands such
+    as @file or @option.
+  . New customization variable INFO_SPECIAL_CHARS_QUOTE to allow use of
+    a quoting mechanism for problematic constructs in Info output, for
+    example node names containing colons or commas.
+  . Commands like @heading are affected by @lowersections and @raisesections
+    again, as was the case before Texinfo 5.0.
+
 * texinfo.tex:
   . You may explicitly specify a sort key for an index entry by preceding
     the text of the entry with the @sortas commmand with the sort key 
@@ -63,20 +79,6 @@ See the manual for detailed information.
 * texi2dvi:
   . Support for determining the output files using the `-recorder'
     option to TeX, to help to support more TeX engines.
-
-* texi2any:
-  . Some Perl modules have been rewritten in C to increase speed.
-    Disable at build time with "configure --disable-perl-xs".  The 
-    environment variable TEXINFO_XS controls how they are used by 
-    makeinfo.
-  . Quotation marks are left out for node names and index entries in
-    Info output where they would have been produced by commands such
-    as @file or @option.
-  . New customization variable INFO_SPECIAL_CHARS_QUOTE to allow use of
-    a quoting mechanism for problematic constructs in Info output, for
-    example node names containing colons or commas.
-  . Commands like @heading are affected by @lowersections and @raisesections
-    again, as was the case before Texinfo 5.0.
 
 * info:
   . New user variables `link-style', `active-link-style', and
