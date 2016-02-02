@@ -385,7 +385,8 @@ subdirs=tp/Texinfo/Convert/XSParagraph
 subdirs=$save_subdirs
 
 if test $enable_xs = check; then
-  AC_MSG_CHECKING([whether we can build Perl extension modules])
+  AC_MSG_CHECKING([whether we can build Perl extension (XS) modules])
+  AC_MSG_RESULT([])
   enable_xs=no
   (cd tp/Texinfo/Convert/XSParagraph \
    && make clean \
@@ -395,6 +396,7 @@ if test $enable_xs = check; then
               -w ${xs_srcdir}/fail.pl \
       | grep 'message from XS module') \
   && enable_xs=yes
+  AC_MSG_CHECKING([whether we can build Perl extension (XS) modules])
   AC_MSG_RESULT([$enable_xs])
 fi
 
