@@ -1,5 +1,15 @@
 2016-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\xrefX): Check for some commands following 
+	the closing brace of an @xref command which add space.  
+	Suggestion from Karl Berry.
+
+	* doc/texinfo-tex-test.texi (Cross-references): Add examples 
+	with tab, newline, @SPACE, @TAB, @NL, @*, and @: following 
+	@xref.
+
+2016-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (@inforef): Remove statement saying that 
 	@inforef must be followed by a comma or a full stop.  Reported 
 	by Karl Berry.
