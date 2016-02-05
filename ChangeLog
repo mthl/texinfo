@@ -1,3 +1,9 @@
+2016-02-05  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+        * doc/texinfo.tex (\doxeteximage):
+        @image support for XeTeX.
+        (\image): @image support for XeTeX.
+
 2016-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* NEWS: Move NEWS about XS earlier and mention that pure Perl 
