@@ -5475,15 +5475,10 @@ The Info file name.
 @end enumerate
 
 @noindent
-Separate the arguments with commas, as with @code{@@xref}.  Also, you
-must terminate the reference with a comma or period after the
-@samp{@}}, as you do with @code{@@xref}.
-
-@noindent
 The template is:
 
 @example
-@@inforef@{@var{node-name}, @var{cross-reference-name}, @var{info-file-name}@},
+@@inforef@{@var{node-name}, @var{cross-reference-name}, @var{info-file-name}@}
 @end example
 
 @need 800

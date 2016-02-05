@@ -1,3 +1,9 @@
+2016-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (@inforef): Remove statement saying that 
+	@inforef must be followed by a comma or a full stop.  Reported 
+	by Karl Berry.
+
 2016-02-05  Masamichi Hosoda  <trueroad@trueroad.jp>
 
         * doc/texinfo.tex (\doxeteximage):
