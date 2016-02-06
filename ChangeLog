@@ -1,5 +1,10 @@
 2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi: Change "cross reference" to "cross-reference"
+	throughout.
+
+2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Mention that behaviour is unchanged for comma or full 
 	stop following closing brace of @xref command.  Text from Karl Berry.
 	* NEWS: Change word 'makeinfo' to 'texi2any'.

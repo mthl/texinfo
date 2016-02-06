@@ -138,7 +138,7 @@ the menu lists all the lower-level nodes in the document.
 * Beginning and Ending a File:: Beginning and end of a Texinfo file.
 * Nodes::                       Writing nodes, the basic unit of Texinfo.
 * Chapter Structuring::         Creating chapters, sections, appendices, etc.
-* Cross References::            Writing cross references.
+* Cross References::            Writing cross-references.
 * Marking Text::                Marking words and phrases as code,
                                     keyboard input, meta-syntactic
                                     variables, and the like.
@@ -279,15 +279,15 @@ Chapter Structuring
 * @code{@@part}::                       Collections of chapters.
 * Raise/lower sections::        How to change commands' hierarchical level.
 
-Cross References
+Cross-references
 
-* References::                  What cross references are for.
+* References::                  What cross-references are for.
 * Cross Reference Commands::    A summary of the different commands.
-* Cross Reference Parts::       A cross reference has several parts.
+* Cross Reference Parts::       A cross-reference has several parts.
 * @code{@@xref}::                       Begin a reference with `See' @dots{}
 * Referring to a Manual as a Whole::   Refer to an entire manual.
 * @code{@@ref}::                        A reference for the last part of a sentence.
-* @code{@@pxref}::                      How to write a parenthetical cross reference.
+* @code{@@pxref}::                      How to write a parenthetical cross-reference.
 * @code{@@anchor}::                     Defining arbitrary cross-reference targets
 * @code{@@inforef}::                    How to refer to an Info-only file.
 * @code{@@url}::                        How to refer to a uniform resource locator.
@@ -628,9 +628,9 @@ Generating HTML
 * HTML Translation::       Details of the HTML output.
 * HTML Splitting::         How HTML output is split.
 * HTML CSS::               Influencing HTML output with Cascading Style Sheets.
-* HTML Xref::              Cross references in HTML output.
+* HTML Xref::              Cross-references in HTML output.
 
-HTML Cross References
+HTML Cross-references
 
 * Link Basics:       HTML Xref Link Basics.
 * Node Expansion:    HTML Xref Node Name Expansion.
@@ -1050,7 +1050,7 @@ program written by Donald Knuth of Stanford University.
 A Texinfo-based book is similar to any other typeset, printed work: it
 can have a title page, copyright page, table of contents, and preface,
 as well as chapters, numbered or unnumbered sections and subsections,
-page headers, cross references, footnotes, and indices.
+page headers, cross-references, footnotes, and indices.
 
 @TeX{} is a general purpose typesetting program.  Texinfo provides a
 file @file{texinfo.tex} that contains information (definitions or
@@ -3228,7 +3228,7 @@ proper nouns are capitalized.  Either way is fine; we recommend just
 being consistent.
 @end itemize
 
-Because node names are used in cross references, it is not desirable
+Because node names are used in cross-references, it is not desirable
 to casually change them once published.  Such name changes invalidate
 references from other manuals, from mail archives, and so on.
 @xref{HTML Xref Link Preservation}.
@@ -3352,13 +3352,13 @@ sections are all different.
 Node names can contain @@-commands.  The output is generally the
 natural result of the command; for example, using @code{@@TeX@{@}} in a
 node name results in the @TeX{} logo being output, as it would be in
-normal text.  Cross references should use @code{@@TeX@{@}} just as the
+normal text.  Cross-references should use @code{@@TeX@{@}} just as the
 node name does.
 
 For Info and HTML output, especially, it is necessary to expand
 commands to some sequence of plain characters; for instance,
 @code{@@TeX@{@}} expands to the three letters @samp{TeX} in the Info
-node name.  However, cross references to the node should not take the
+node name.  However, cross-references to the node should not take the
 ``shortcut'' of using @samp{TeX}; stick to the actual node name,
 commands and all.
 
@@ -3391,7 +3391,7 @@ specify an external manual.  (Perhaps these limitations will be
 removed some day.)
 
 @command{makeinfo} warns about such problematic usage in node names,
-menu items, and cross references.  If you don't want to see the
+menu items, and cross-references.  If you don't want to see the
 warnings, you can set the customization variable
 @code{INFO_SPECIAL_CHARS_WARNING} to @samp{0} (@pxref{Other
 Customization Variables}).
@@ -3638,7 +3638,7 @@ lead to other nodes at the same level---from chapter to chapter or
 from section to section (sometimes, as shown, the `Previous' pointer
 points up); an `Up' pointer usually leads to a node at the level above
 (closer to the `Top' node); and a `Menu' leads to nodes at a level
-below (closer to `leaves').  (A cross reference can point to a node at
+below (closer to `leaves').  (A cross-reference can point to a node at
 any level; see @ref{Cross References}.)
 
 A @code{@@node} command and a chapter structuring command are
@@ -3793,7 +3793,7 @@ for readers to follow.  Also, the @command{makeinfo} implicit pointer
 creation feature (@pxref{@command{makeinfo} Pointer Creation}) and GNU
 Emacs Texinfo mode updating commands work only to create menus of
 subordinate nodes in a hierarchically structured document.  It is much
-better to use cross references to refer to arbitrary nodes.
+better to use cross-references to refer to arbitrary nodes.
 
 @cindex Menus, automatically generating
 @findex validatemenus
@@ -3964,7 +3964,7 @@ readers will not find the node (@pxref{Node Line Requirements}).
 
 
 @command{makeinfo} warns when the text of a menu item (and node names
-and cross references) contains a problematic construct that will
+and cross-references) contains a problematic construct that will
 interfere with its parsing in Info.  If you don't want to see the
 warnings, you can set the customization variable
 @code{INFO_SPECIAL_CHARS_WARNING} to @samp{0} (@pxref{Other
@@ -4635,22 +4635,22 @@ on a line of its own.
 
 
 @node Cross References
-@chapter Cross References
-@cindex Making cross references
-@cindex Cross references
+@chapter Cross-references
+@cindex Making cross-references
+@cindex Cross-references
 @cindex References
 
 @dfn{Cross-references} are used to refer the reader to other parts of the
 same or different Texinfo files.
 
 @menu
-* References::                  What cross references are for.
+* References::                  What cross-references are for.
 * Cross Reference Commands::    A summary of the different commands.
-* Cross Reference Parts::       A cross reference has several parts.
+* Cross Reference Parts::       A cross-reference has several parts.
 * @code{@@xref}::                       Begin a reference with `See' @dots{}
 * Referring to a Manual as a Whole::   Refer to an entire manual.
 * @code{@@ref}::                        A reference for the last part of a sentence.
-* @code{@@pxref}::                      How to write a parenthetical cross reference.
+* @code{@@pxref}::                      How to write a parenthetical cross-reference.
 * @code{@@anchor}::                     Defining arbitrary cross-reference targets
 * @code{@@inforef}::                    How to refer to an Info-only file.
 * @code{@@url}::                        How to refer to a uniform resource locator.
@@ -4667,7 +4667,7 @@ to find information that should be presented to them as they need
 it.
 
 However, in any document, some information will be too detailed for
-the current context, or incidental to it; use cross references to
+the current context, or incidental to it; use cross-references to
 provide access to such information.  Also, an online help system or a
 reference manual is not like a novel; few read such documents in
 sequence from beginning to end.  Instead, people look up what they
@@ -4693,15 +4693,15 @@ which you make cross-references.
 
 @need 800
 @node Cross Reference Commands
-@section Different Cross Reference Commands
-@cindex Different cross reference commands
+@section Different Cross-reference Commands
+@cindex Different cross-reference commands
 
 There are three different cross-reference commands:
 
 @table @code
 @item @@xref
 Used to start a sentence in the printed manual and in HTML with
-@w{`See @dots{}'} or an Info cross reference saying @samp{*Note
+@w{`See @dots{}'} or an Info cross-reference saying @samp{*Note
 @var{name}: @var{node}.}.
 
 @item @@ref
@@ -4725,9 +4725,9 @@ file for which there is no printed manual.
 
 
 @node Cross Reference Parts
-@section Parts of a Cross Reference
-@cindex Cross reference parts
-@cindex Parts of a cross reference
+@section Parts of a Cross-reference
+@cindex Cross-reference parts
+@cindex Parts of a cross-reference
 @anchor{Reference Syntax} @c merged node
 
 A cross-reference command requires only one argument, which is
@@ -4752,7 +4752,7 @@ See Section @var{nnn} [Node name], page @var{ppp}.
 @end quotation
 
 A cross-reference command may contain up to four additional arguments.
-By using these arguments, you can provide a cross reference name,
+By using these arguments, you can provide a cross-reference name,
 a topic description or section title for the printed output, the name
 of a different manual file, and the name of a different printed manual.
 To refer to another manual as a whole, the manual file and/or the name
@@ -4760,7 +4760,7 @@ of the printed manual are the only required arguments (@pxref{Referring
 to a Manual as a Whole}).
 
 @need 700
-Here is an example of a full five-part cross reference:
+Here is an example of a full five-part cross-reference:
 
 @example
 @group
@@ -4787,18 +4787,18 @@ See section ``Printed Label'' in @i{A Printed Manual}, for details.
 @noindent
 in a printed book.
 
-The five possible arguments for a cross reference are:
+The five possible arguments for a cross-reference are:
 
 @enumerate
 @item
 The node or anchor name (required, except for reference to whole
-manuals).  This is the location to which the cross reference takes
+manuals).  This is the location to which the cross-reference takes
 you.  In a printed document, the location of the node provides the
 page reference only for references within the same document.
 Use @code{@@node} to define the node (@pxref{Writing a Node}), or 
 @code{@@anchor} (@pxref{@code{@@anchor}}).
 
-Write a node name in a cross reference in exactly the same way as in
+Write a node name in a cross-reference in exactly the same way as in
 the @code{@@node} line, including the same capitalization; otherwise, the
 formatters may not find the reference.
 
@@ -4821,7 +4821,7 @@ HTML.
 The name of a printed manual from a different Texinfo file.
 @end enumerate
 
-The template for a full five argument cross reference looks like
+The template for a full five argument cross-reference looks like
 this:
 
 @example
@@ -4863,10 +4863,10 @@ See Hurricanes, page @var{ppp} --- for the details
 @noindent instead of
 @w{`See Hurricanes, page @var{ppp}, --- for the details'}.
 
-Cross references with one, two, three, four, and five arguments are
+Cross-references with one, two, three, four, and five arguments are
 described separately following the description of @code{@@xref}.
 
-@command{makeinfo} warns when the text of a cross reference (and node
+@command{makeinfo} warns when the text of a cross-reference (and node
 names and menu items) contains a problematic construct that will
 interfere with its parsing in Info.  If you don't want to see the
 warnings, you can set the customization variable
@@ -4879,7 +4879,7 @@ Customization Variables}).
 
 @anchor{xref}@c old name
 @findex xref
-@cindex Cross references using @code{@@xref}
+@cindex Cross-references using @code{@@xref}
 @cindex References using @code{@@xref}
 
 The @code{@@xref} command generates a cross-reference for the
@@ -4894,7 +4894,7 @@ beginning of a sentence.
 
 @node One Argument
 @subsection @code{@@xref} with One Argument
-@cindex One-argument form of cross references
+@cindex One-argument form of cross-references
 
 The simplest form of @code{@@xref} takes one argument, the name of
 another node in the same Texinfo file.
@@ -4927,7 +4927,7 @@ in a printed manual.
 
 @node Two Arguments
 @subsection @code{@@xref} with Two Arguments
-@cindex Two-argument form of cross references
+@cindex Two-argument form of cross-references
 
 With two arguments, the second is used as a label for the online output.
 
@@ -4964,7 +4964,7 @@ See Section 5.2 [Electrical Effects], page 57.
 @noindent
 in a printed manual, where the node name is printed.
 
-The second argument to cross references must observe some of the
+The second argument to cross-references must observe some of the
 restrictions for node names (@pxref{Node Line Requirements}).  The
 most common issue is that colons cannot be used, since that interferes
 with the parsing of the Info file.
@@ -4972,7 +4972,7 @@ with the parsing of the Info file.
 
 @node Three Arguments
 @subsection @code{@@xref} with Three Arguments
-@cindex Three-argument form of cross references
+@cindex Three-argument form of cross-references
 
 A third argument replaces the node name in the @TeX{} output.  The third
 argument should be the name of the section in the printed output, or
@@ -5044,19 +5044,19 @@ See Section 5.2 [Thunder and Lightning], page 57, for details.
 @noindent
 in a printed manual.
 
-The third argument to cross references must observe some of the
+The third argument to cross-references must observe some of the
 restrictions for node names (@pxref{Node Line Requirements}).  The
 most common issue is that colons cannot be used, since that interferes
 with the parsing of the Info file.
 
-As a practical matter, it is often best to write cross references with
+As a practical matter, it is often best to write cross-references with
 just the first argument if the node name and the section title are the
 same (or nearly so), and with the first and third arguments only if the
 node name and title are different.
 
 @findex xrefautomaticsectiontitle
 Texinfo offers a setting to use the section title instead of node
-names by default in cross references (an explicitly specified third
+names by default in cross-references (an explicitly specified third
 argument still takes precedence):
 
 @example
@@ -5072,9 +5072,9 @@ names.
 
 @node Four and Five Arguments
 @subsection @code{@@xref} with Four and Five Arguments
-@cindex Four- and five argument forms of cross references
+@cindex Four- and five argument forms of cross-references
 
-In a cross reference, a fourth argument specifies the name of another
+In a cross-reference, a fourth argument specifies the name of another
 Info file, different from the file in which the reference appears, and
 a fifth argument specifies its title as a printed manual.
 
@@ -5124,7 +5124,7 @@ reference refers when that reference is to another manual.
 
 Next case: often, you will leave out the second argument when you use
 the long version of @code{@@xref}.  In this case, the third argument,
-the topic description, will be used as the cross reference name in
+the topic description, will be used as the cross-reference name in
 Info.  For example,
 
 @example
@@ -5198,12 +5198,12 @@ whole.  See the next section.
 @cindex Referring to an entire manual
 @anchor{Top Node Naming} @c old name
 
-Ordinarily, you must always name a node in a cross reference.
+Ordinarily, you must always name a node in a cross-reference.
 However, it's not unusual to want to refer to another manual as a
 whole, rather than a particular section within it.  In this case,
 giving any section name is an unnecessary distraction.
 
-So, with cross references to other manuals (@pxref{Four and Five
+So, with cross-references to other manuals (@pxref{Four and Five
 Arguments}), if the first argument is either @samp{Top} (capitalized
 just that way) or omitted entirely, and the third argument is omitted,
 the printed output includes no node or section name.  (The Info output
@@ -5234,7 +5234,7 @@ or not the `Top' node is explicitly specified.
 It's also possible (and is historical practice) to refer to a whole
 manual by specifying the `Top' node and an appropriate entry for the
 third argument to the @code{@@xref} command.  Using this idiom, to
-make a cross reference to @cite{The GNU Make Manual}, you would write:
+make a cross-reference to @cite{The GNU Make Manual}, you would write:
 
 @example
 @@xref@{Top,, Overview, make, The GNU Make Manual@}.
@@ -5262,7 +5262,7 @@ In this example, @samp{Top} is the name of the first node, and
 is no widely-used convention for naming the first section in a printed
 manual, this is just what the Make manual happens to use.  This
 arbitrariness of the first name is a principal reason why omitting the
-third argument in whole-manual cross references is preferable.
+third argument in whole-manual cross-references is preferable.
 
 
 @node @code{@@ref}
@@ -5270,7 +5270,7 @@ third argument in whole-manual cross references is preferable.
 
 @anchor{ref}@c old name
 @findex ref
-@cindex Cross references using @code{@@ref}
+@cindex Cross-references using @code{@@ref}
 @cindex References using @code{@@ref}
 
 @code{@@ref} is nearly the same as @code{@@xref} except that it does
@@ -5329,7 +5329,7 @@ Sea surges are described in *note Hurricanes::.
 
 @anchor{pxref}@c old name
 @findex pxref
-@cindex Cross references using @code{@@pxref}
+@cindex Cross-references using @code{@@pxref}
 @cindex References using @code{@@pxref}
 
 The parenthetical reference command, @code{@@pxref}, is nearly the
@@ -5339,7 +5339,7 @@ in that @TeX{} typesets the reference for the printed manual with a
 lowercase `see' rather than an uppercase `See'.
 
 @noindent
-With one argument, a parenthetical cross reference looks like this:
+With one argument, a parenthetical cross-reference looks like this:
 
 @cindex Flooding
 @example
@@ -5366,7 +5366,7 @@ in Info and
 @noindent
 in a printed manual.
 
-With two arguments, a parenthetical cross reference has this template:
+With two arguments, a parenthetical cross-reference has this template:
 
 @example
 @dots{} (@@pxref@{@var{node-name}, @var{cross-reference-name}@}) @dots{}
@@ -5415,13 +5415,13 @@ that location breaks up the flow of reading.
 
 
 @node @code{@@anchor}
-@section @code{@@anchor}: Defining Arbitrary Cross Reference Targets
+@section @code{@@anchor}: Defining Arbitrary Cross-reference Targets
 
 @anchor{anchor}@c old name
 @findex anchor
 @cindex Anchors
-@cindex Cross reference targets, arbitrary
-@cindex Targets for cross references, arbitrary
+@cindex Cross-reference targets, arbitrary
+@cindex Targets for cross-references, arbitrary
 
 An @dfn{anchor} is a position in your document, labelled so that
 cross-references can refer to it, just as they can to nodes.  You
@@ -5474,14 +5474,14 @@ document in Info.
 
 
 @node @code{@@inforef}
-@section @code{@@inforef}: Cross References to Info-only Material
+@section @code{@@inforef}: Cross-references to Info-only Material
 
 @anchor{inforef}@c old name
 @findex inforef
-@cindex Cross references using @code{@@inforef}
+@cindex Cross-references using @code{@@inforef}
 @cindex References using @code{@@inforef}
 
-@code{@@inforef} is used for making cross references to Info
+@code{@@inforef} is used for making cross-references to Info
 documents---even from a printed manual.  This might be because you
 want to refer to conditional @code{@@ifinfo} text
 (@pxref{Conditionals}), or because printed output is not available
@@ -5496,7 +5496,7 @@ order:
 The node name.
 
 @item
-The cross reference name (optional).
+The cross-reference name (optional).
 
 @item
 The Info file name.
@@ -5789,7 +5789,7 @@ Use the @code{@@cite} command for the name of a book that lacks a
 companion Info file.  The command produces italics in the printed
 manual, and quotation marks in the Info file.
 
-If a book is written in Texinfo, it is better to use a cross reference
+If a book is written in Texinfo, it is better to use a cross-reference
 command since a reader can easily follow such a reference in Info.
 @xref{@code{@@xref}}.
 
@@ -6271,7 +6271,7 @@ shown above.  As another example, @samp{@@verb@{...@}} prints a single
 
 It is not reliable to use @code{@@verb} inside other Texinfo
 constructs.  In particular, it does not work to use @code{@@verb} in
-anything related to cross referencing, such as section titles or
+anything related to cross-referencing, such as section titles or
 figure captions.
 
 
@@ -6738,7 +6738,7 @@ preceding example.
 
 @quotation Caution
 Do not use @code{@@strong} with the word @samp{Note} followed by a
-space; Info will mistake the combination for a cross reference.  Use a
+space; Info will mistake the combination for a cross-reference.  Use a
 phrase such as @strong{Please notice} or @strong{Caution} instead, or
 the optional argument to @code{@@quotation}---@samp{Note} is allowable
 there.
@@ -8430,10 +8430,10 @@ by a comma), @var{type} and @var{label}.  Both are optional.
 @item type
 Specifies the sort of float this is; typically a word such as
 ``Figure'', ``Table'', etc.  If this is not given, and @var{label} is,
-any cross referencing will simply use a bare number.
+any cross-referencing will simply use a bare number.
 
 @item label
-Specifies a cross reference label for this float.  If given, this
+Specifies a cross-reference label for this float.  If given, this
 float is automatically given a number, and will appear in any
 @code{@@listoffloats} output (@pxref{@code{@@listoffloats}}).  Cross
 references to @var{label} are allowed.
@@ -8566,7 +8566,7 @@ In Info, the result is a menu where each float can be selected.  In
 HTML, each line is a link to the float.  In printed output, the page
 number is included.
 
-Unnumbered floats (those without cross reference labels) are omitted
+Unnumbered floats (those without cross-reference labels) are omitted
 from the list of floats.
 
 
@@ -8850,7 +8850,7 @@ bottom of the page, below a horizontal line.
 
 In Info, the reference mark for a footnote is a pair of parentheses
 with the footnote number between them, like this: @samp{(1)}.  The
-reference mark is followed by a cross reference link to the footnote
+reference mark is followed by a cross-reference link to the footnote
 text if footnotes are put in separate nodes (@pxref{Footnote Styles}).
 
 In the HTML output, footnote references are generally marked with a
@@ -8901,7 +8901,7 @@ In the `Separate' node style, all the footnotes for a single
 node are placed in an automatically constructed node of
 their own.  In this style, a ``footnote reference'' follows
 each @samp{(@var{n})} reference mark in the body of the
-node.  The footnote reference is actually a cross reference
+node.  The footnote reference is actually a cross-reference
 which you use to reach the footnote node.
 
 The name of the node with the footnotes is constructed
@@ -12689,7 +12689,7 @@ Germany).
 
 @cindex Document strings, translation of
 For Info and other online output, this command changes the translation
-of various @dfn{document strings} such as ``see'' in cross references
+of various @dfn{document strings} such as ``see'' in cross-references
 (@pxref{Cross References}), ``Function' in defuns (@pxref{Definition
 Commands}), and so on.  Some strings, such as ``Node:'', ``Next:'',
 ``Menu:'', etc., are keywords in Info output, so are not translated
@@ -14801,7 +14801,7 @@ document simultaneously.
 In addition, the Info formatting commands have been extended to work
 with the @code{@@include} command so as to create a single large Info
 file that is split into smaller files if necessary.  This means that
-you can write menus and cross references without naming the different
+you can write menus and cross-references without naming the different
 Texinfo files.
 
 
@@ -15047,7 +15047,7 @@ tex foo.texi
 @end example
 
 @noindent @TeX{} will produce a @dfn{DVI file} as well as several auxiliary
-files containing information for indices, cross references, etc.  The
+files containing information for indices, cross-references, etc.  The
 DVI file (for @dfn{DeVice Independent} file) can be printed on
 virtually any device, perhaps after a further conversion (see the
 previous section).
@@ -15102,7 +15102,7 @@ Texinfo file.  This regenerates the output file, this time with
 up-to-date index entries.
 
 Finally, you may need to run @code{tex} one more time, to get the page
-numbers in the cross references correct.
+numbers in the cross-references correct.
 
 To summarize, this is a five step process.  (Alternatively, it's a
 one-step process: run @code{texi2dvi}; see the previous section.)
@@ -15110,7 +15110,7 @@ one-step process: run @code{texi2dvi}; see the previous section.)
 @enumerate
 @item
 Run @code{tex} on your Texinfo file.  This generates a DVI file (with
-undefined cross references and no indices), and the raw index files
+undefined cross-references and no indices), and the raw index files
 (with two letter extensions).
 
 @item
@@ -15119,8 +15119,8 @@ corresponding sorted index files (with three letter extensions).
 
 @item
 Run @code{tex} again on your Texinfo file.  This regenerates the DVI
-file, this time with indices and defined cross references, but with
-page numbers for the cross references from the previous run, generally
+file, this time with indices and defined cross-references, but with
+page numbers for the cross-references from the previous run, generally
 incorrect.
 
 @item
@@ -15128,7 +15128,7 @@ Sort the indices again, with @code{texindex}.
 
 @item
 Run @code{tex} one last time.  This time the correct page numbers are
-written for the cross references.
+written for the cross-references.
 @end enumerate
 
 @menu
@@ -15149,7 +15149,7 @@ written for the cross references.
 Sometimes you may wish to print a document while you know it is
 incomplete, or to print just one chapter of a document.  In such a
 case, the usual auxiliary files that @TeX{} creates and warnings
-@TeX{} gives about undefined cross references are just nuisances.  You
+@TeX{} gives about undefined cross-references are just nuisances.  You
 can avoid them with the @code{@@novalidate} command, which you must
 give @emph{before} any sectioning or cross-reference commands.
 
@@ -16356,7 +16356,7 @@ with hierarchically-structured manuals.  You should specify
 Suppress the pointer-validation phase of @code{makeinfo}---a dangerous
 thing to do.  This can also be done with the @code{@@novalidate}
 command (@pxref{Use @TeX{}}).  Normally, consistency checks are made
-to ensure that cross references can be resolved, etc.  @xref{Pointer
+to ensure that cross-references can be resolved, etc.  @xref{Pointer
 Validation}.
 
 @item --no-warn
@@ -16940,7 +16940,7 @@ commands; default @samp{2}.
 
 @item CHECK_HTMLXREF
 For HTML@.  Check that manuals which are the target of external
-cross references (@pxref{Four and Five Arguments}) are present in
+cross-references (@pxref{Four and Five Arguments}) are present in
 @file{htmlxref.cnf} (@pxref{HTML Xref Configuration}); default false.
 
 @item COMPLEX_FORMAT_IN_TABLE
@@ -16971,7 +16971,7 @@ default 0.
 
 @item EXTERNAL_DIR
 For HTML@.  Base directory for external manuals; default none.  It is
-better to use the general external cross reference mechanism
+better to use the general external cross-reference mechanism
 (@pxref{HTML Xref Configuration}) than this variable.
 
 @item EXTRA_HEAD
@@ -17117,7 +17117,7 @@ For HTML@.  File name used for the Top node, if @code{NODE_FILENAMES}
 is set; default is @code{index}.
 
 @item TOP_NODE_FILE_TARGET
-For HTML@.  File name used for the Top node in cross references;
+For HTML@.  File name used for the Top node in cross-references;
 default is @code{index}.
 
 @item TOP_NODE_UP_URL
@@ -17131,7 +17131,7 @@ Variables}.
 
 @item USE_ACCESSKEY
 @cindex @code{accesskey}, customization variable for
-For HTML@.  Use @code{accesskey} in cross references; default true.
+For HTML@.  Use @code{accesskey} in cross-references; default true.
 
 @item USE_ISO
 For HTML@.  Use entities for doubled single-quote characters
@@ -17145,7 +17145,7 @@ For HTML@.  Generate @code{<link>} elements in the HTML @code{<head>}
 output; default true.
 
 @item USE_REL_REV
-For HTML@.  Use @code{rel} in cross references; default true.
+For HTML@.  Use @code{rel} in cross-references; default true.
 
 @item VERTICAL_HEAD_NAVIGATION
 For HTML@.  If set, a vertical navigation panel is used; default false.
@@ -17159,14 +17159,14 @@ bottom of a page, set this to a sufficiently large number.  The
 default is 300.
 
 @item XREF_USE_FLOAT_LABEL
-For HTML@.  If set, for the float name in cross references, use the
+For HTML@.  If set, for the float name in cross-references, use the
 float label instead of the type followed by the float number
 (@pxref{@code{@@float}}).  The default is off.
 
 @item XREF_USE_NODE_NAME_ARG
-For HTML@.  Only relevant for cross reference commands with no cross
+For HTML@.  Only relevant for cross-reference commands with no cross
 reference name (second argument).  If set to@tie{}1, use the node name
-(first) argument in cross reference @@-commands for the text displayed
+(first) argument in cross-reference @@-commands for the text displayed
 as the hyperlink.  If set to@tie{}0, use the node name if
 @code{USE_NODES} is set, otherwise the section name.  If set to
 @samp{undef}, use the first argument in preformatted environments,
@@ -17226,7 +17226,7 @@ entity corresponding with the letter or the symbol being output,
 prefer the entity.  Set by default for HTML, but not XML.
 
 @item EXTERNAL_CROSSREF_SPLIT
-For cross references to other manuals, this determines if the other
+For cross-references to other manuals, this determines if the other
 manual is considered to be split or monolithic.  By default, it is set
 based on the value of @code{SPLIT}.  @xref{HTML Xref}, and @pxref{HTML
 Xref Configuration}.
@@ -17278,7 +17278,7 @@ construct where they appear with quoting characters, as described in
 
 @item INFO_SPECIAL_CHARS_WARNING
 If set, warn about problematic constructs for Info output (such as the
-string @samp{::}) in node names, menu items, and cross references;
+string @samp{::}) in node names, menu items, and cross-references;
 default true.  Do not warn about index entries, since parsing problems
 there don't prevent navigation; readers can still relatively easily
 find their way to the node in question.
@@ -17352,7 +17352,7 @@ the output format.  In particular, the XML-based formats use
 otherwise specified.  @xref{@code{@@documentencoding}}.
 
 @item OVERVIEW_LINK_TO_TOC
-If set, the cross references in the Overview link to the corresponding
+If set, the cross-references in the Overview link to the corresponding
 Table of Contents entries; default true.
 
 @item PACKAGE
@@ -17515,7 +17515,7 @@ are separated.  The default is true.
 
 @item USE_NODE_TARGET
 If set, use the node associated with a section for the section target
-in cross references; default true.
+in cross-references; default true.
 
 @item USE_NUMERIC_ENTITY
 For HTML and XML@.  If set, use numeric entities instead of ASCII
@@ -17555,7 +17555,7 @@ transliterate more characters; default true.
 
 @vindex documentlanguage @r{customization variable}
 @command{texi2any} writes fixed strings into the output document at
-various places: cross references, page footers, the help page,
+various places: cross-references, page footers, the help page,
 alternate text for images, and so on.  The string chosen depends on
 the value of the @code{documentlanguage} at the time of the string
 being output (@pxref{@code{@@documentlanguage}}, for the Texinfo
@@ -17907,7 +17907,7 @@ For example, you could write the following in your @file{.emacs} file:
 @end example
 
 @noindent
-@c Writing these three cross references using xref results in
+@c Writing these three cross-references using xref results in
 @c three references to the same named manual, which looks strange.
 @iftex
 For more information, see @ref{@command{makeinfo} Options}, as well as
@@ -18657,7 +18657,7 @@ for a brief overview of all the output formats.
 * HTML Translation::       Details of the HTML output.
 * HTML Splitting::         How HTML output is split.
 * HTML CSS::               Influencing HTML output with Cascading Style Sheets.
-* HTML Xref::              Cross references in HTML output.
+* HTML Xref::              Cross-references in HTML output.
 @end menu
 
 
@@ -18782,7 +18782,7 @@ It is also possible to split at chapters or sections with
 the file names are constructed after the name of the node associated
 with the relevant sectioning command.  Also, unless
 @option{--no-node-files} is specified, a redirection file is output
-for every node in order to more reliably support cross references to
+for every node in order to more reliably support cross-references to
 that manual (@pxref{HTML Xref}).
 
 When splitting, the HTML output files are written into a subdirectory,
@@ -18923,11 +18923,11 @@ influence the HTML output.  @xref{Customization Variables}.
 
 
 @node HTML Xref
-@section HTML Cross References
-@cindex HTML cross references
-@cindex Cross references, in HTML output
+@section HTML Cross-references
+@cindex HTML cross-references
+@cindex Cross-references, in HTML output
 
-Cross references between Texinfo manuals in HTML format become, in the
+Cross-references between Texinfo manuals in HTML format become, in the
 end, a standard HTML @code{<a>} link, but the details are
 unfortunately complex.  This section describes the algorithm used in
 detail, so that Texinfo can cooperate with other programs, such as
@@ -18957,8 +18957,8 @@ The algorithm was primarily devised by Patrice Dumas in 2003--04.
 
 
 @node HTML Xref Link Basics
-@subsection HTML Cross Reference Link Basics
-@cindex HTML cross reference link basics
+@subsection HTML Cross-reference Link Basics
+@cindex HTML cross-reference link basics
 
 For our purposes, an HTML link consists of four components: a host
 name, a directory part, a file part, and a target part.  We
@@ -18969,7 +18969,7 @@ http://@var{host}/@var{dir}/@var{file}.html#@var{target}
 @end example
 
 The information to construct a link comes from the node name and
-manual name in the cross reference command in the Texinfo source
+manual name in the cross-reference command in the Texinfo source
 (@pxref{Cross References}), and from @dfn{external information}
 (@pxref{HTML Xref Configuration}).
 
@@ -18981,7 +18981,7 @@ HTML links, the @samp{http://localhost/} could be omitted entirely.
 
 The @var{dir} and @var{file} parts are more complicated, and depend on
 the relative split/mono nature of both the manual being processed and
-the manual that the cross reference refers to.  The underlying idea is
+the manual that the cross-reference refers to.  The underlying idea is
 that there is one directory for Texinfo manuals in HTML, and a given
 @var{manual} is either available as a monolithic file
 @file{@var{manual}.html}, or a split subdirectory
@@ -19041,10 +19041,10 @@ actually present in.  @xref{HTML Xref Mismatch}.
 
 
 @node HTML Xref Node Name Expansion
-@subsection HTML Cross Reference Node Name Expansion
-@cindex HTML cross reference node name expansion
-@cindex node name expansion, in HTML cross references
-@cindex expansion, of node names in HTML cross references
+@subsection HTML Cross-reference Node Name Expansion
+@cindex HTML cross-reference node name expansion
+@cindex node name expansion, in HTML cross-references
+@cindex expansion, of node names in HTML cross-references
 
 As mentioned in the previous section, the key part of the HTML cross
 reference algorithm is the conversion of node names in the Texinfo
@@ -19054,7 +19054,7 @@ the @samp{-} and @samp{_} characters are all that can be used.
 (Although HTML anchors can contain most characters, XHTML is more
 restrictive.)
 
-Cross references in Texinfo can refer either to nodes or anchors
+Cross-references in Texinfo can refer either to nodes or anchors
 (@pxref{@code{@@anchor}}).  However, anchors are treated identically
 to nodes in this context, so we'll continue to say ``node'' names for
 simplicity.
@@ -19129,8 +19129,8 @@ independent of operating system.
 
 
 @node HTML Xref Command Expansion
-@subsection HTML Cross Reference Command Expansion
-@cindex HTML cross reference command expansion
+@subsection HTML Cross-reference Command Expansion
+@cindex HTML cross-reference command expansion
 
 Node names may contain @@-commands (@pxref{Node Line Requirements}).
 This section describes how they are handled.
@@ -19220,11 +19220,11 @@ Any other command is an error, and the result is unspecified.
 
 
 @node HTML Xref 8-bit Character Expansion
-@subsection HTML Cross Reference 8-bit Character Expansion
-@cindex HTML cross reference 8-bit character expansion
-@cindex 8-bit characters, in HTML cross references
-@cindex Expansion of 8-bit characters in HTML cross references
-@cindex Transliteration of 8-bit characters in HTML cross references
+@subsection HTML Cross-reference 8-bit Character Expansion
+@cindex HTML cross-reference 8-bit character expansion
+@cindex 8-bit characters, in HTML cross-references
+@cindex Expansion of 8-bit characters in HTML cross-references
+@cindex Transliteration of 8-bit characters in HTML cross-references
 
 Usually, characters other than plain 7-bit ASCII are transformed into
 the corresponding Unicode code point(s) in Normalization Form@tie{}C,
@@ -19276,9 +19276,9 @@ web.
 
 
 @node HTML Xref Mismatch
-@subsection HTML Cross Reference Mismatch
-@cindex HTML cross reference mismatch
-@cindex Mismatched HTML cross reference source and target
+@subsection HTML Cross-reference Mismatch
+@cindex HTML cross-reference mismatch
+@cindex Mismatched HTML cross-reference source and target
 
 As mentioned earlier (@pxref{HTML Xref Link Basics}), the generating
 software may need to guess whether a given manual being cross
@@ -19319,20 +19319,20 @@ Then, in the @code{<body>} tag of @file{manual.html}:
 
 Once again, this is something the software which generated the
 @emph{referent} manual has to do in advance, it's not something the
-software generating the cross reference in the present manual can
+software generating the cross-reference in the present manual can
 control.
 
 
 @node HTML Xref Configuration
-@subsection HTML Cross Reference Configuration: @file{htmlxref.cnf}
+@subsection HTML Cross-reference Configuration: @file{htmlxref.cnf}
 
 @pindex htmlxref.cnf
-@cindex HTML cross reference configuration
-@cindex Cross reference configuration, for HTML
+@cindex HTML cross-reference configuration
+@cindex Cross-reference configuration, for HTML
 @cindex Configuration, for HTML cross-manual references
 
 @command{makeinfo} reads a file named @file{htmlxref.cnf} to gather
-information for cross references to other manuals in HTML output.  It
+information for cross-references to other manuals in HTML output.  It
 is looked for in the following directories:
 
 @table @file
@@ -19401,17 +19401,17 @@ hello section $@{GS@}/hello/manual/html_section/
 hello node    $@{GS@}/hello/manual/html_node/
 @end smallexample
 
-@cindex monolithic manuals, for HTML cross references
+@cindex monolithic manuals, for HTML cross-references
 If the keyword is @code{mono}, @var{urlprefix} gives the host,
 directory, and file name for @var{manual} as one monolithic file.
 
-@cindex split manuals, for HTML cross references
+@cindex split manuals, for HTML cross-references
 If the keyword is @code{node}, @code{section}, or @code{chapter},
 @var{urlprefix} gives the host and directory for @var{manual} split
 into nodes, sections, or chapters, respectively.
 
 When available, @command{makeinfo} will use the ``corresponding''
-value for cross references between manuals.  That is, when generating
+value for cross-references between manuals.  That is, when generating
 monolithic output (@option{--no-split}), the @code{mono} url will be
 used, when generating output that is split by node, the @code{node}
 url will be used, etc.  However, if a manual is not available in that
@@ -19425,7 +19425,7 @@ chapter @result{} chapter, section, node,    mono
 mono    @result{} mono,    chapter, section, node
 @end smallexample
 
-@opindex --node-files@r{, and HTML cross references}
+@opindex --node-files@r{, and HTML cross-references}
 These section- and chapter-level cross-manual references can succeed
 only when the target manual was created using @option{--node-files};
 this is the default for split output.
@@ -19437,11 +19437,11 @@ usual.  You can get the latest version from
 
 
 @node HTML Xref Link Preservation
-@subsection HTML Cross Reference Link Preservation: @var{manual}@file{-noderename.cnf}
+@subsection HTML Cross-reference Link Preservation: @var{manual}@file{-noderename.cnf}
 
 @pindex noderename.cnf
 @pindex @var{manual}-noderename.cnf
-@cindex HTML cross reference link preservation
+@cindex HTML cross-reference link preservation
 @cindex Preserving HTML links to old nodes
 @cindex Old nodes, preserving links to
 @cindex Renaming nodes, and preserving links
@@ -19688,7 +19688,7 @@ Control breaking at @samp{-} and @samp{_} in @TeX{}.
 @xref{@code{@@allowcodebreaks}}.
 
 @item @@anchor@{@var{name}@}
-Define @var{name} as the current location for use as a cross reference
+Define @var{name} as the current location for use as a cross-reference
 target.  @xref{@code{@@anchor}}.
 
 @item @@appendix @var{title}
@@ -20277,7 +20277,7 @@ Indicate text that is a uniform resource locator for the World Wide
 Web.  @xref{@code{@@indicateurl}}.
 
 @item @@inforef@{@var{node-name}, [@var{entry-name}], @var{info-file-name}@}
-Make a cross reference to an Info file for which there is no printed
+Make a cross-reference to an Info file for which there is no printed
 manual.  @xref{@code{@@inforef}}.
 
 @item @@inlinefmt@{@var{fmt}, @var{text}@}
@@ -20809,7 +20809,7 @@ contents.  In Info, the title is underlined with periods.
 
 @item @@uref@{@var{url}[, @var{displayed-text}][, @var{replacement}@}
 @itemx @@url@{@var{url}[, @var{displayed-text}][, @var{replacement}@}
-Define a cross reference to an external uniform resource locator,
+Define a cross-reference to an external uniform resource locator,
 e.g., for the World Wide Web.  @xref{@code{@@url}}.
 
 @item @@urefbreakstyle @var{style}
@@ -20921,7 +20921,7 @@ In addition to the above, sectioning commands cannot contain
 In addition to the above, remaining commands (@code{@@node},
 @code{@@anchor}, @code{@@printindex}, @code{@@ref}, @code{@@math},
 @code{@@cindex}, @code{@@url}, @code{@@image}, and so on) cannot
-contain cross reference commands (@code{@@ref}, @code{@@xref},
+contain cross-reference commands (@code{@@ref}, @code{@@xref},
 @code{@@pxref} and @code{@@inforef}).  In one last addition,
 @code{@@shortcaption} may only appear inside @code{@@float}.
 
@@ -22064,7 +22064,7 @@ The menu updating commands remove menu entries that refer to other Info
 files since they do not refer to nodes within the current buffer.  This
 is a deficiency.  Rather than use menu entries, you can use cross
 references to refer to other Info files.  None of the updating commands
-affect cross references.
+affect cross-references.
 
 Texinfo mode has five updating commands that are used most often: two
 are for updating the node pointers or menu of a single node (or a
@@ -23081,7 +23081,8 @@ occurs, or not long after it.  The buffer will look like this:
 @end example
 
 The @code{texinfo-format-region} command sometimes provides slightly
-odd error messages.  For example, the following cross reference fails to format:
+odd error messages.  For example, the following cross-reference fails
+to format:
 
 @example
 (@@xref@{Catching Mistakes, for more info.)
@@ -23125,7 +23126,7 @@ No such node: "Catching Mistakes) The only way @dots{}
 
 @noindent
 This is because Info perceives the example of the error as the first
-cross reference in this node and if you type a @key{RET} immediately
+cross-reference in this node and if you type a @key{RET} immediately
 after typing the Info @kbd{f} command, Info will attempt to go to the
 referenced node.  If you type @kbd{f catch @key{TAB} @key{RET}}, Info
 will complete the node name of the correctly written example and take
@@ -23161,7 +23162,7 @@ indices.)@@refill
 @end example
 
 @noindent
-(The cross reference lacks a closing brace.)
+(The cross-reference lacks a closing brace.)
 @TeX{} produced the following output, after which it stopped:
 
 @example
@@ -23455,7 +23456,7 @@ In node "Texinfo Mode", should have Previous: Overview
 This is because every `Next' pointer should be matched by a
 `Previous' (in the node where the `Next' points) which points back.
 
-@code{Info-validate} also checks that all menu entries and cross references
+@code{Info-validate} also checks that all menu entries and cross-references
 point to actual nodes.
 
 @code{Info-validate} requires a tag table and does not work with files
@@ -24031,11 +24032,11 @@ node `Weather Phenomena'.
 
 
 @node Info Format Cross Reference
-@subsection Info Format: Cross Reference
+@subsection Info Format: Cross-reference
 
-@cindex Cross references, in Info format
+@cindex Cross-references, in Info format
 
-A general cross reference in Info format has one of the following two forms:
+A general cross-reference in Info format has one of the following two forms:
 
 @example
     <cross-reference> =
@@ -24097,7 +24098,7 @@ on this particular reference, and the @samp{for details.} is text
 belonging to the sentence, not part of the reference.
 
 The third example refers to the node `Top' in another manual, namely
-@samp{make}, with `Overview' being the label for this cross reference.
+@samp{make}, with `Overview' being the label for this cross-reference.
 
 The fourth example shows a colon character being quoted in a label,
 and the fifth example shows a period being quoted in a node name.
