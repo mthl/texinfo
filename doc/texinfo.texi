@@ -4835,11 +4835,24 @@ Whitespace before and after the commas separating these arguments is
 ignored.  To include a comma in one of the arguments, use
 @code{@@comma@{@}} (@pxref{Inserting a Comma}).
 
-@cindex Unwanted comma after cross-reference
+@cindex Comma after cross-reference
 When processing with TeX, a comma is automatically inserted after the
 page number for cross-references to within the same manual, unless the
 closing brace of the argument is followed by non-whitespace (such as a
-comma or period).  If an unwanted comma is added, follow the argument
+comma or period).  This gives you the choice of whether to have a comma
+there in Info or HTML output.  For example,
+
+@example
+@@xref@{Another Section@} for more information
+@end example
+
+@noindent produces
+@w{`See Another Section, page @var{ppp}, for more information'} in the 
+printed output, and
+@w{@samp{*Note Another Section:: for more information}} in the Info 
+output.
+
+If an unwanted comma is added, follow the argument
 with a command such as @samp{@@:}.  For example,
 @w{@samp{@@xref@{Hurricanes@}@@: --- for the details}} produces
 
