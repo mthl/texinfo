@@ -1,5 +1,16 @@
 2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README-hacking: Update notes about making a release.  Move 
+	"make po-check" line.  Remove "rm ti.texi" for updating texindex 
+	version.  Move gnulib-tool --add-import and util/srclist-txi, 
+	and say what the latter is for.  Move "official releases only" 
+	section only so that the "make distcheck" line above can be the 
+	final command to produce the release tarball.  Move upload 
+	instructions after this command.  Move instructions about 
+	tagging source tree.  Combine instructions about checking DTD.
+
+2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo-tex-test.texi,
 	* doc/Makefile.am,
 	* doc/info-stnd.texi,
