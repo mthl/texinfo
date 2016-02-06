@@ -1,5 +1,13 @@
 2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	6.1 release.
+	* configure.ac, NEWS, util/texi2dvi, util/texi2pdf,
+	doc/refcard/txirefcard.tex, texindex/texindex.awk,
+	texindex/texindex.in: Version number.
+	* build-aux/texinfo.tex: Update from doc/texinfo.tex.
+
+2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* README-hacking: Update notes about making a release.  Move 
 	"make po-check" line.  Remove "rm ti.texi" for updating texindex 
 	version.  Move gnulib-tool --add-import and util/srclist-txi, 
