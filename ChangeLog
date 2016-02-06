@@ -1,3 +1,7 @@
+2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* configure.ac: Update version to 6.1dev.
+
 2016-02-06  Eli Zaretskii  <eliz@gnu.org>
 
 	* tp/Texinfo/Convert/XSParagraph/xspara.c (popen, pclose)
