@@ -1,5 +1,13 @@
 2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo-tex-test.texi,
+	* doc/Makefile.am,
+	* doc/info-stnd.texi,
+	* Makefile.am,
+	* info/Makefile.am: 2016.
+
+2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi: Change "cross reference" to "cross-reference"
 	throughout.
 
