@@ -1,3 +1,9 @@
+2016-02-06  Eli Zaretskii  <eliz@gnu.org>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (popen, pclose)
+	[_WIN32]: Redefine to their non-Posix counterparts _popen and
+	_pclose, to countermand Perl redirections in XSUB.h.
+
 2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	6.1 release.

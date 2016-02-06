@@ -198,6 +198,16 @@ iswupper (wint_t wc)
   return 1;
 }
 
+/* Avoid warnings due to redefinition of popen/pclose in Perl headers.  */
+#ifdef popen
+# undef popen
+# define popen(c,m) _popen(c,m)
+#endif
+#ifdef pclose
+# undef pclose
+# define pclose(f)  _pclose(f)
+#endif
+
 #endif
 
 int
