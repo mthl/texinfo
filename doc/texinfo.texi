@@ -4827,13 +4827,28 @@ this:
 @example
 @group
 @@xref@{@var{node-name}, @var{online-label}, @var{printed-label},
-@var{info-file-name}, @var{printed-manual-title}@}.
+@var{info-file-name}, @var{printed-manual-title}@}
 @end group
 @end example
 
 Whitespace before and after the commas separating these arguments is
 ignored.  To include a comma in one of the arguments, use
 @code{@@comma@{@}} (@pxref{Inserting a Comma}).
+
+@cindex Unwanted comma after cross-reference
+When processing with TeX, a comma is automatically inserted after the
+page number for cross-references to within the same manual, unless the
+closing brace of the argument is followed by non-whitespace (such as a
+comma or period).  If an unwanted comma is added, follow the argument
+with a command such as @samp{@@:}.  For example,
+@w{@samp{@@xref@{Hurricanes@}@@: --- for the details}} produces
+
+@quotation
+See Hurricanes, page @var{ppp} --- for the details
+@end quotation
+
+@noindent instead of
+@w{`See Hurricanes, page @var{ppp}, --- for the details'}.
 
 Cross references with one, two, three, four, and five arguments are
 described separately following the description of @code{@@xref}.

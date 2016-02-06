@@ -1,3 +1,12 @@
+2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Mention that behaviour is unchanged for comma or full 
+	stop following closing brace of @xref command.  Text from Karl Berry.
+	* NEWS: Change word 'makeinfo' to 'texi2any'.
+	* doc/texinfo.texi (Cross Reference Parts): Mention how to avoid 
+	an unwanted comma after the cross-reference when processing with 
+	TeX.
+
 2016-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\xrefX): Check for some commands following 
