@@ -1,5 +1,11 @@
 2016-02-07  Masamichi Hosoda  <trueroad@trueroad.jp>
 
+	* doc/texinfo.tex (\unicodechardefs): Comment out end of lines 
+	to prevent extra space at the start of the page when native 
+	Unicode support is used.
+
+2016-02-07  Masamichi Hosoda  <trueroad@trueroad.jp>
+
         * doc/texinfo.tex:
 	Add PDF outline support for XeTeX.
 	(\pdfdest): set destination.
