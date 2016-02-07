@@ -1,3 +1,48 @@
+2016-02-07  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+        * doc/texinfo.tex:
+	Add native Unicode support for XeTeX and LuaTex.
+
+	(\iftxinativeunicodecapable): New switch.
+	(\iftxiusebytewiseio): New switch.
+
+        (\setbytewiseio): Set I/O by bytes instead of UTF-8 sequence
+	for XeTeX and LuaTex non-UTF-8 (byte-wise) encodings.
+
+	(\documentencoding): Remove input by bytes settings for XeTeX.
+	Add I/O by bytes settings for single-byte encodings.
+	Add native Unicode settings for UTF-8 encoding.
+
+	(\U): Any Unicode characters can be used by native Unicode.
+
+	(\DeclareUnicodeCharacterUTFviii): Rename from
+	\DeclareUnicodeCharacter.
+	(\DeclareUnicodeCharacterNative): For native Unicode,
+	Definition macro to replace the Unicode character.
+	(\DeclareUnicodeCharacterNativeThru): For native Unicode,
+	Definition macro not to replace (through) the Unicode character.
+	(\DeclareUnicodeCharacterNativeAtU): For native Unicode,
+	Definition macro that is used by @U command.
+	(\DeclareUnicodeCharacterNativeOther): For native Unicode,
+	Definition macro that is set catcode other non global.
+
+	(\unicodechardefs): Rename from \utfeightchardefs.
+	(\utfeightchardefs): UTF-8 byte sequence definitions (replacing and
+	@U command). It makes the setting that replace UTF-8 byte sequence.
+	(\nativeunicodechardefs): Native Unicode character replacing
+	definitions. It makes the setting that replace the Unicode characters.
+	(\nativeunicodechardefsthru): Native Unicode character ``through''
+	definitions. It makes the setting that does not replace
+	the Unicode characters.
+	(\nativeunicodechardefsatu): Native Unicode @U command definitions.
+	(\nativeunicodecharscatcodeothernonglobal):
+	Native Unicode catcode other non global definitions.
+	(\setcharscatcodeothernonglobal):
+	Catcode (non-ascii or native Unicode) are set to other non global.
+
+	(\throughcharactersdefs): Character ``through'' definitions.
+	It makes the setting that does not replace the characters.
+
 2016-02-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* configure.ac: Update version to 6.1dev.
