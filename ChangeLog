@@ -1,3 +1,17 @@
+2016-02-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\throughcharactersdefs): Rename to 
+	\passthroughcharacters, and change comment.
+	(\nonasciistringdefs): Change comment.
+	(\documentencoding) <UTF-8>: Change comment.
+	(\DeclareUnicodeCharacterUTFviii): Change comment.
+	(\nativeunicodechardefsthru, \DeclareUnicodeCharacterNativeThru):
+	Change comment, and move definition.
+	(\DeclareUnicodeCharacterNativeAtU): Change comment, and move 
+	definition.
+	(\setcharscatcodeothernonglobal): Comment changed.
+	(\DeclareUnicodeCharacterNative): Move definition.
+
 2016-02-07  Masamichi Hosoda  <trueroad@trueroad.jp>
 
         * doc/texinfo.tex:

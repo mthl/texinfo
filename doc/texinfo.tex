@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-02-07.10}
+\def\texinfoversion{2016-02-07.11}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -9630,7 +9630,7 @@ directory should work if nowhere else does.}
        % For native Unicode (XeTeX and LuaTeX)
        \nativeunicodechardefs
      \else
-       % For UTF-8 byte sequence (pdfTeX)
+       % For UTF-8 byte sequence (TeX, eTeX and pdfTeX)
        \setnonasciicharscatcode\active
        % since we already invoked \utfeightchardefs at the top level
        % (below), do not re-invoke it, then our check for duplicated
@@ -9966,7 +9966,7 @@ directory should work if nowhere else does.}
   \fi
 }
 
-% For UTF-8 byte sequence (pdfTeX)
+% For UTF-8 byte sequence (TeX, e-TeX and pdfTeX)
 % Definition macro to replace the Unicode character
 % Definition macro that is used by @U command
 %
@@ -10035,37 +10035,6 @@ directory should work if nowhere else does.}
     \uccode `#3\countUTFz
     \uppercase{\gdef\UTFviiiTmp{#2#3#4}}}
 \endgroup
-
-% For native Unicode (XeTeX and LuaTeX)
-% Definition macro to replace the Unicode character
-%
-\def\DeclareUnicodeCharacterNative#1#2{%
-  \catcode"#1=\active
-  \begingroup
-    \uccode`\~="#1\relax
-    \uppercase{\gdef~}{#2}%
-  \endgroup}
-
-% For native Unicode (XeTeX and LuaTeX)
-% Definition macro not to replace (through) the Unicode character
-%
-\def\DeclareUnicodeCharacterNativeThru#1#2{%
-  \catcode"#1=\active
-  \begingroup
-    \uccode`\.="#1\relax
-    \uppercase{\endgroup \def\UTFNativeTmp{.}}%
-  \begingroup
-    \uccode`\~="#1\relax
-    \uppercase{\endgroup \edef~}{\UTFNativeTmp}%
-}
-
-% For native Unicode (XeTeX and LuaTeX)
-% Definition macro that is used by @U command
-%
-\def\DeclareUnicodeCharacterNativeAtU#1#2{%
-  \def\UTFAtUTmp{#2}
-  \expandafter\globallet\csname uni:#1\endcsname \UTFAtUTmp
-}
 
 % For native Unicode (XeTeX and LuaTeX)
 % Definition macro that is set catcode other non global
@@ -10767,6 +10736,16 @@ directory should work if nowhere else does.}
   \unicodechardefs
 }
 
+% For native Unicode (XeTeX and LuaTeX)
+% Definition macro to replace the Unicode character
+%
+\def\DeclareUnicodeCharacterNative#1#2{%
+  \catcode"#1=\active
+  \begingroup
+    \uccode`\~="#1\relax
+    \uppercase{\gdef~}{#2}%
+  \endgroup}
+
 % Native Unicode (XeTeX and LuaTeX) character replacing definitions
 % It makes the setting that replace the Unicode characters.
 \def\nativeunicodechardefs{%
@@ -10774,11 +10753,32 @@ directory should work if nowhere else does.}
   \unicodechardefs
 }
 
-% Native Unicode (XeTeX and LuaTeX) character ``through'' definitions
+% For native Unicode (XeTeX and LuaTeX)
+% Definition macro not to make the Unicode character expand to a non-active 
+% token with the same character code.  Used when writing to auxiliary files.
+%
+\def\DeclareUnicodeCharacterNativeThru#1#2{%
+  \catcode"#1=\active
+  \begingroup
+    \uccode`\.="#1\relax
+    \uppercase{\endgroup \def\UTFNativeTmp{.}}%
+  \begingroup
+    \uccode`\~="#1\relax
+    \uppercase{\endgroup \edef~}{\UTFNativeTmp}%
+}
+
+% Native Unicode (XeTeX and LuaTeX) character ``through'' definitions.
 % It makes the setting that does not replace the Unicode characters.
 \def\nativeunicodechardefsthru{%
   \let\DeclareUnicodeCharacter\DeclareUnicodeCharacterNativeThru
   \unicodechardefs
+}
+
+% For native Unicode (XeTeX and LuaTeX).  Make the character token expand
+% to the sequences given in \unicodechardefs for printing.
+\def\DeclareUnicodeCharacterNativeAtU#1#2{%
+  \def\UTFAtUTmp{#2}
+  \expandafter\globallet\csname uni:#1\endcsname \UTFAtUTmp
 }
 
 % Native Unicode (XeTeX and LuaTeX) @U command definitions
@@ -10793,7 +10793,8 @@ directory should work if nowhere else does.}
   \unicodechardefs
 }
 
-% Catcode (non-ascii or native Unicode) are set to other non global.
+% Catcode (non-ASCII or native Unicode) are set to \other (non-global
+% assignments).
 \def\setcharscatcodeothernonglobal{%
   \iftxiusebytewiseio
     \setnonasciicharscatcodenonglobal\other
@@ -10807,8 +10808,8 @@ directory should work if nowhere else does.}
    \relax
 }
 
-% Non-ASCII bytes ``through'' definitions.
-% It makes the setting that does not replace the non-ASCII byte.
+% Redefine the active definitions of non-ASCII characters to expand to
+% non-active tokens with the same character code.
 \def\nonasciistringdefs{%
   \setnonasciicharscatcode\active
   \def\defstringchar##1{\def##1{\string##1}}%
@@ -10854,9 +10855,9 @@ directory should work if nowhere else does.}
   \defstringchar^^fc\defstringchar^^fd\defstringchar^^fe\defstringchar^^ff%
 }
 
-% Character ``through'' definitions.
-% It makes the setting that does not replace the characters.
-\def\throughcharactersdefs{%
+% Write characters literally, instead of using active definitions for
+% printing the correct glyphs.
+\def\passthroughcharacters{%
   \iftxiusebytewiseio
     \nonasciistringdefs
   \else
@@ -11219,7 +11220,7 @@ directory should work if nowhere else does.}
 %
 {@catcode`- = @active
  @gdef@normalturnoffactive{%
-   @throughcharactersdefs
+   @passthroughcharacters
    @let-=@normaldash
    @let"=@normaldoublequote
    @let$=@normaldollar %$ font-lock fix
