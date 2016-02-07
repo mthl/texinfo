@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-02-07.12}
+\def\texinfoversion{2016-02-07.14}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -10798,38 +10798,30 @@ directory should work if nowhere else does.}
 % For native Unicode (XeTeX and LuaTeX)
 % Definition macro to replace the Unicode character
 %
+\newif\ifnativeunicodereplace
+\nativeunicodereplacetrue
+
 \def\DeclareUnicodeCharacterNative#1#2{%
   \catcode"#1=\active
-  \begingroup
-    \uccode`\~="#1\relax
-    \uppercase{\gdef~}{#2}%
-  \endgroup}
+  \ifnativeunicodereplace
+    \begingroup
+      \uccode`\~="#1\relax
+      \uppercase{\gdef~}{#2}%
+    \endgroup
+  \else
+    \begingroup
+      \uccode`\.="#1\relax
+      \uppercase{\endgroup \def\UTFNativeTmp{.}}%
+    \begingroup
+      \uccode`\~="#1\relax
+      \uppercase{\endgroup \edef~}{\UTFNativeTmp}%
+  \fi
+}
 
 % Native Unicode (XeTeX and LuaTeX) character replacing definitions
 % It makes the setting that replace the Unicode characters.
 \def\nativeunicodechardefs{%
   \let\DeclareUnicodeCharacter\DeclareUnicodeCharacterNative
-  \unicodechardefs
-}
-
-% For native Unicode (XeTeX and LuaTeX)
-% Definition macro not to make the Unicode character expand to a non-active 
-% token with the same character code.  Used when writing to auxiliary files.
-%
-\def\DeclareUnicodeCharacterNativeThru#1#2{%
-  \catcode"#1=\active
-  \begingroup
-    \uccode`\.="#1\relax
-    \uppercase{\endgroup \def\UTFNativeTmp{.}}%
-  \begingroup
-    \uccode`\~="#1\relax
-    \uppercase{\endgroup \edef~}{\UTFNativeTmp}%
-}
-
-% Native Unicode (XeTeX and LuaTeX) character ``through'' definitions.
-% It makes the setting that does not replace the Unicode characters.
-\def\nativeunicodechardefsthru{%
-  \let\DeclareUnicodeCharacter\DeclareUnicodeCharacterNativeThru
   \unicodechardefs
 }
 
@@ -10920,7 +10912,7 @@ directory should work if nowhere else does.}
   \iftxiusebytewiseio
     \nonasciistringdefs
   \else
-    \nativeunicodechardefsthru
+    \nativeunicodereplacefalse
   \fi
 }
 
