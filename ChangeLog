@@ -1,6 +1,20 @@
 2016-02-08  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex:
+	Native Unicode replace switching instead of re-definition.
+
+	(\ifpassthroughchars): New switch.
+	(\DeclareUnicodeCharacterNative):
+	Integrate \DeclareUnicodeCharacterNativeThru.
+	Add capable to switch replace / pass-through characters.
+	(\DeclareUnicodeCharacterNativeThru): Remove.
+	(\nativeunicodechardefsthru): Remove.
+	(\passthroughcharacters):
+	Use switch instead of \nativeunicodechardefsthru.
+
+2016-02-08  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex:
 	Improve XeTeX PDF outline support.
 	(\pdfmkdest): Add \indexnofonts and \makevalueexpandable.
 	(\dopdfoutline): Add \turnoffactive.
