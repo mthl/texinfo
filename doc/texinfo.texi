@@ -978,13 +978,17 @@ specification usable for any sort of content (a reference is at
 unlike all the other output formats, is a transliteration of the
 Texinfo source rather than processed output.  That is, it translates
 the Texinfo markup commands into XML syntax, for further processing by
-XML tools.  The details of the output are defined in an XML DTD as
-usual, which is contained in a file @file{texinfo.dtd} included in the
+XML tools.  The XML contains enough information to recreate the
+original content, except for syntactic constructs such as Texinfo
+macros and conditionals.  The Texinfo source distribution includes a
+utility script @file{txixml2texi} to do that backward transformation.
+
+The details of the output syntax are defined in an XML DTD as usual,
+which is contained in a file @file{texinfo.dtd} included in the
 Texinfo source distribution and available via the Texinfo web pages.
-The XML contains enough information to recreate the original content,
-except for syntactic constructs such as Texinfo macros and
-conditionals.  The Texinfo source distribution includes a utility script
-@file{txixml2texi} to do that backward transformation.
+Texinfo XML files, and XML files in general, cannot be viewed in
+typical web browsers; they won't follow the DTD reference and as a
+result will simply report a (misleading) syntax error.
 @end table
 
 

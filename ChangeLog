@@ -1,3 +1,8 @@
+2016-02-09  Karl Berry  <karl@freefriends.org>
+
+	* doc/texinfo.texi (Output Formats) <XML>: explicitly mention that
+	web browsers cannot display our XML output, but just give an error.
+
 2016-02-09  Masamichi Hosoda  <trueroad@trueroad.jp>
 
         * doc/texinfo.tex: Fix XeTeX PDF outline support.
