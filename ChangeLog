@@ -1,3 +1,8 @@
+2016-02-09  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+        * doc/texinfo.tex: Fix XeTeX PDF outline support.
+        (\dopdfoutline): Add braces.
+
 2016-02-08  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex:
