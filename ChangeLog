@@ -1,3 +1,22 @@
+2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Implement --javascript-ref option, suggested by Per Bothner.
+
+	* tp/texi2any.pl ($result_options): New option --javascript-ref.
+	($cmdline_options): New value 'JAVASCRIPT_REFS'.
+	* tp/Texinfo/Convert/HTML.pm
+	(default_javascript_lines): New function.
+	(%default_formatting_references): Add 'javascript_lines', and 
+	comment changed.
+	(output): Call default_javascript_lines (indirectly).
+	(_file_header_informations): Look at and return 
+	'JAVASCRIPT_LINES' conf value.  Callers updated.
+	(_default_begin_file, default_node_redirection_page): Include 
+	lines referring to a JavaScript file in the file header.
+	* tp/Texinfo/Common.pm (@variable_string_settables): Add 
+	'JAVASCRIPT_LINES'.
+	(@variable_other_settables): Add 'JAVASCRIPT_REFS'.
+
 2016-02-09  Karl Berry  <karl@freefriends.org>
 
 	* doc/texinfo.texi (Output Formats) <XML>: explicitly mention that
