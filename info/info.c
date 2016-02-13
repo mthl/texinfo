@@ -793,9 +793,6 @@ main (int argc, char *argv[])
       dump_subnodes = 1;
     }
 
-  if (dump_subnodes)
-    dump_subnodes = DUMP_SUBNODES;
-  
   /* If the user specified --version, then show the version and exit. */
   if (print_version_p)
     {

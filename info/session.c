@@ -3693,7 +3693,7 @@ static void initialize_dumping (void);
    the nodes which appear in the menu of each node dumped. */
 void
 dump_nodes_to_file (REFERENCE **references,
-		    char *output_filename, int flags)
+                    char *output_filename, int dump_subnodes)
 {
   int i;
   FILE *output_stream;
@@ -3722,7 +3722,7 @@ dump_nodes_to_file (REFERENCE **references,
       if (dump_node_to_stream (references[i]->filename,
                                references[i]->nodename,
                                output_stream,
-			       flags & DUMP_SUBNODES) == DUMP_SYS_ERROR)
+                               dump_subnodes) == DUMP_SYS_ERROR)
 	{
 	  info_error (_("error writing to %s: %s"), output_filename,
                       strerror (errno));

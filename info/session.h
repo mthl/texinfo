@@ -72,8 +72,6 @@ FILE_BUFFER *file_buffer_of_window (WINDOW *window);
 int info_select_reference (WINDOW *window, REFERENCE *entry);
 int info_any_buffered_input_p (void);
 
-#define DUMP_SUBNODES 0x02
-
 void dump_nodes_to_file (REFERENCE **references,
 				char *output_filename, int flags);
 

@@ -1,5 +1,12 @@
 2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (dump_nodes_to_file): Argument changed from 
+	flags argument to a simple Boolean to say whether to dump 
+	subnodes.
+	* info/session.h (DUMP_SUBNODES): Remove definition.
+
+2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.h, info/echo-area.h, info/filesys.h, info/window.h,
 	info/indices.h, info/info-utils.h, info/search.h, info/session.h,
 	info/variables.h: Remove unnecessary "extern" modifier for 
