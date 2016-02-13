@@ -133,6 +133,7 @@ TESTS = \
 	t/xref-to-anchor.sh \
 	t/search-after-tag.sh \
 	t/split-file-menu.sh \
+	t/search-split-after-index.sh \
 	t/index.sh \
 	t/no-index.sh \
 	t/index-apropos.sh \

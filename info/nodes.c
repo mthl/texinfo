@@ -1384,8 +1384,6 @@ info_node_of_tag_ext (FILE_BUFFER *fb, TAG **tag_ptr, int fast)
       tag_ptr = &fb->tags[node_pos];
     }
 
-  /* Get the node. */
-
   /* We haven't checked the entry pointer yet.  Look for the node
      around about it and adjust it if necessary. */
   if (tag->cache.nodelen == -1)
@@ -1396,41 +1394,47 @@ info_node_of_tag_ext (FILE_BUFFER *fb, TAG **tag_ptr, int fast)
       set_tag_nodelen (subfile, tag);
     }
 
-  if (!tag->cache.contents || (tag->cache.flags & N_Simple))
+  node = xmalloc (sizeof (NODE));
+  memset (node, 0, sizeof (NODE));
+  if (tag->cache.references)
+    {
+      /* Initialize the node from the cache. */
+      *node = tag->cache;
+      if (!node->contents)
+        {
+          node->contents = subfile->contents + tag->nodestart_adjusted;
+          node->contents += skip_node_separator (node->contents);
+        }
+    }
+  else
     {
       /* Data for node has not been generated yet. */
-      NODE *cache = &tag->cache;
-      cache->contents = subfile->contents + tag->nodestart_adjusted;
-      cache->contents += skip_node_separator (cache->contents);
-      cache->nodename = tag->nodename;
-      cache->flags = tag->flags;
+      node->contents = subfile->contents + tag->nodestart_adjusted;
+      node->contents += skip_node_separator (node->contents);
+      node->nodelen = tag->cache.nodelen;
+      node->nodename = tag->nodename;
+      node->flags = tag->flags;
 
-      cache->fullpath = parent->fullpath;
+      node->fullpath = parent->fullpath;
       if (parent != subfile)
-        cache->subfile = tag->filename;
+        node->subfile = tag->filename;
 
-      if (!fast && !tag->cache.references)
+      if (fast)
+        node->flags |= N_Simple;
+      else
         {
           /* Read locations of references in node and similar.  Strip Info file
              syntax from node if preprocess_nodes=On.  Adjust the offsets of
              anchors that occur within the node. */
-          scan_node_contents (cache, parent, tag_ptr);
-          cache->flags &= ~N_Simple;
+          scan_node_contents (node, parent, tag_ptr);
+
+          if (!preprocess_nodes_p)
+            node_set_body_start (node);
+          tag->cache = *node;
+          if (!(node->flags & N_WasRewritten))
+            tag->cache.contents = 0; /* Pointer into file buffer
+                                        is not saved.  */
         }
-      else
-        cache->flags |= N_Simple;
-
-      if (!preprocess_nodes_p)
-        node_set_body_start (cache);
-    }
-
-  /* Initialize the node from the tag. */
-  node = xmalloc (sizeof (NODE));
-  memcpy (node, &tag->cache, sizeof (NODE));
-  if (!node->contents)
-    {
-      node->contents = subfile->contents + tag->nodestart_adjusted;
-      node->contents += skip_node_separator (node->contents);
     }
 
   /* We can't set this when tag table is built, because

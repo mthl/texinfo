@@ -1,5 +1,15 @@
 2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (info_node_of_tag_ext): Don't save a pointer into 
+	the file buffer in the tag table, because it could continue 
+	after the file buffer was garbage collected.  Change the logic 
+	around so that the NODE field of the TAG structure is 
+	initialized from the NODE object we return, instead of vice versa.
+	* info/nodes.h (FILE_BUFFER, TAG): Comments changed.
+	* info/t/search-split-after-index.sh: New test.
+
+2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Customization Variables and Options): Move 
 	@vindex commands after @item, so that the index entries refer to 
 	the right row of the @multitable.

@@ -106,7 +106,7 @@ typedef struct {
   char *filename;               /* The file where this node can be found. */
   char *nodename;               /* The node pointed to by this tag. */
   long nodestart;               /* The value read from the tag table. */
-  long nodestart_adjusted;
+  long nodestart_adjusted;      /* Where the node or anchor actually is. */
   int flags;                    /* Same as NODE.flags. */
   NODE cache;                   /* Saved information about pointed-to node. */
 } TAG;
@@ -115,9 +115,7 @@ typedef struct {
    of Info files that we have loaded at least once before.  The FINFO member
    is present so that we can reload the file if it has been modified since
    last being loaded.  All of the arrays appearing within this structure
-   are NULL terminated, and each array which can change size has a
-   corresponding SLOTS member which says how many slots have been allocated
-   (with malloc ()) for this array. */
+   are NULL terminated. */
 typedef struct {
   char *filename;               /* The filename used to find this file. */
   char *fullpath;               /* The full pathname of this info file. */
