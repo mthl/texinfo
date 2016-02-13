@@ -29,8 +29,8 @@ extern int show_index_match;
 REFERENCE **apropos_in_all_indices (char *search_string, int inform);
 
 /* User visible functions declared in indices.c. */
-extern void info_index_search (WINDOW *window, int count);
-extern void info_index_apropos (WINDOW *window, int count);
+void info_index_search (WINDOW *window, int count);
+void info_index_apropos (WINDOW *window, int count);
 void next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
                   REFERENCE **result, int *found_offset, int *match_offset);
 void report_index_match (int i, int match_offset);
