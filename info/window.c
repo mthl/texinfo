@@ -1183,22 +1183,24 @@ calculate_line_starts (WINDOW *win)
   if (nodeline_print != PRINT_NODELINE
       && !memcmp (win->node->contents, "File:", strlen ("File:")))
     {
-      char *s;
-      if (nodeline_print == NO_NODELINE)
+      char *s = strchr (win->node->contents, '\n');
+      if (s && nodeline_print == NO_NODELINE)
         {
-          s = strchr (win->node->contents, '\n');
-          if (s)
-            pl_start = s - win->node->contents + 1;
+          pl_start = s - win->node->contents + 1;
         }
-      else if (nodeline_print == NODELINE_POINTERS_ONLY)
+      else if (s && nodeline_print == NODELINE_POINTERS_ONLY)
         {
-          s = strstr (win->node->contents, "Next: ");
-          if (!s)
-            s = strstr (win->node->contents, "Prev: ");
-          if (!s)
-            s = strstr (win->node->contents, "Up: ");
-          if (s)
-            pl_start = s - win->node->contents;
+          char *s2;
+          char saved = *s;
+          *s = '\0';
+          s2 = strstr (win->node->contents, "Next: ");
+          if (!s2)
+            s2 = strstr (win->node->contents, "Prev: ");
+          if (!s2)
+            s2 = strstr (win->node->contents, "Up: ");
+          if (s2)
+            pl_start = s2 - win->node->contents;
+          *s = saved;
         }
     }
 

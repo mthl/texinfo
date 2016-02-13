@@ -139,38 +139,38 @@ extern size_t info_loaded_files_slots;
    already, or it may not.  If it does not already appear, find the file,
    and add it to the list of loaded files.  If the file cannot be found,
    return a NULL FILE_BUFFER *. */
-extern FILE_BUFFER *info_find_file (char *filename);
+FILE_BUFFER *info_find_file (char *filename);
 
 FILE_BUFFER *info_find_subfile (char *filename);
 
 TAG *info_create_tag (void);
 
 /* Return a pointer to a new NODE structure. */
-extern NODE *info_create_node (void);
+NODE *info_create_node (void);
 
 /* Return a pointer to a NODE structure for the Info node (FILENAME)NODENAME.
    FILENAME can be passed as NULL, in which case the filename of "dir" is used.
    NODENAME can be passed as NULL, in which case the nodename of "Top" is used.
    
    If the node cannot be found, return a NULL pointer. */
-extern NODE *info_get_node (char *filename, char *nodename);
+NODE *info_get_node (char *filename, char *nodename);
 
-extern NODE *info_get_node_with_defaults (char *filename, char *nodename,
+NODE *info_get_node_with_defaults (char *filename, char *nodename,
                                           NODE *defaults);
 
-extern NODE *info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr);
-extern NODE *info_node_of_tag_fast (FILE_BUFFER *fb, TAG **tag_ptr);
+NODE *info_node_of_tag (FILE_BUFFER *fb, TAG **tag_ptr);
+NODE *info_node_of_tag_fast (FILE_BUFFER *fb, TAG **tag_ptr);
 
 /* Return a pointer to a NODE structure for the Info node NODENAME in
    FILE_BUFFER.  NODENAME can be passed as NULL, in which case the
    nodename of "Top" is used.  If the node cannot be found, return a
    NULL pointer. */
-extern NODE *info_get_node_of_file_buffer (FILE_BUFFER *file_buffer,
+NODE *info_get_node_of_file_buffer (FILE_BUFFER *file_buffer,
                                            char *nodename);
 
 /* Grovel FILE_BUFFER->contents finding tags and nodes, and filling in the
    various slots.  This can also be used to rebuild a tag or node table. */
-extern void build_tags_and_nodes (FILE_BUFFER *file_buffer);
+void build_tags_and_nodes (FILE_BUFFER *file_buffer);
 
 void free_history_node (NODE *n);
 
@@ -178,15 +178,15 @@ void free_history_node (NODE *n);
 extern char *info_recent_file_error;
 
 /* Create a new, empty file buffer. */
-extern FILE_BUFFER *make_file_buffer (void);
+FILE_BUFFER *make_file_buffer (void);
 
 /* Non-zero means don't try to be smart when searching for nodes.  */
 extern int strict_node_location_p;
 
 
 /* Found in dir.c */
-extern NODE *get_dir_node (void);
-extern REFERENCE *lookup_dir_entry (char *label, int sloppy);
-extern REFERENCE *dir_entry_of_infodir (char *label, char *searchdir);
+NODE *get_dir_node (void);
+REFERENCE *lookup_dir_entry (char *label, int sloppy);
+REFERENCE *dir_entry_of_infodir (char *label, char *searchdir);
 
 #endif /* not NODES_H */

@@ -1,5 +1,10 @@
 2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/window.c (calculate_line_starts): Only look in first line 
+	of node for Info keywords.
+
+2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (nodeline_print): Move to info/window.c.
 	(parse_top_node_line): Remove code altering start of node 
 	depending on value of nodeline_print.
