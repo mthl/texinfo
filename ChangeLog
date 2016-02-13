@@ -1,5 +1,14 @@
 2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (nodeline_print): Move to info/window.c.
+	(parse_top_node_line): Remove code altering start of node 
+	depending on value of nodeline_print.
+	* info/window.c (calculate_line_starts): Use nodeline variable 
+	to decide where to start displaying the node.
+	(window_line_of_point): Comments changed.
+
+2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c (info_node_of_tag_ext): Don't save a pointer into 
 	the file buffer in the tag table, because it could continue 
 	after the file buffer was garbage collected.  Change the logic 

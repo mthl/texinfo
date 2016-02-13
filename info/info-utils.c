@@ -1103,19 +1103,13 @@ skip_tag_contents (long n)
     }
 }
 
-#define NO_NODELINE 0
-#define PRINT_NODELINE 1
-#define NODELINE_POINTERS_ONLY 2
-int nodeline_print = 2;
-
 /* Read first line of node and set next, prev and up. */
 static void
 parse_top_node_line (NODE *node)
 {
   char **store_in = 0;
   char *nodename;
-  char *ptr, *ptr2;
-  char *display_start = 0;
+  char *ptr;
   int value_length;
 
   /* If the first line is empty, leave it in.  This is the case
@@ -1135,44 +1129,38 @@ parse_top_node_line (NODE *node)
       /* Check what field we are looking at */
       if (!strncasecmp (ptr, INFO_FILE_LABEL, strlen(INFO_FILE_LABEL)))
         {
-          ptr2 = ptr + strlen (INFO_FILE_LABEL);
+          ptr += strlen (INFO_FILE_LABEL);
         }
       else if (!strncasecmp (ptr, INFO_NODE_LABEL, strlen(INFO_NODE_LABEL)))
         {
-          ptr2 = ptr + strlen (INFO_NODE_LABEL);
+          ptr += strlen (INFO_NODE_LABEL);
         }
       else if (!strncasecmp (ptr, INFO_PREV_LABEL, strlen(INFO_PREV_LABEL)))
         {
-          ptr2 = ptr + strlen (INFO_PREV_LABEL);
+          ptr += strlen (INFO_PREV_LABEL);
           store_in = &node->prev;
         }
       else if (!strncasecmp (ptr, INFO_ALTPREV_LABEL, 
                              strlen(INFO_ALTPREV_LABEL)))
         {
-          ptr2 = ptr + strlen (INFO_ALTPREV_LABEL);
+          ptr += strlen (INFO_ALTPREV_LABEL);
           store_in = &node->prev;
         }
       else if (!strncasecmp (ptr, INFO_NEXT_LABEL, strlen(INFO_NEXT_LABEL)))
         {
-          ptr2 = ptr + strlen (INFO_NEXT_LABEL);
+          ptr += strlen (INFO_NEXT_LABEL);
           store_in = &node->next;
         }
       else if (!strncasecmp (ptr, INFO_UP_LABEL, strlen(INFO_UP_LABEL)))
         {
-          ptr2 = ptr + strlen (INFO_UP_LABEL);
+          ptr += strlen (INFO_UP_LABEL);
           store_in = &node->up;
         }
       else 
         {
-          ptr2 = ptr;
           store_in = 0;
           /* Not recognized - code below will skip to next comma */
         }
-        
-      if (nodeline_print==NODELINE_POINTERS_ONLY && !display_start && store_in)
-        display_start = ptr;
-      ptr = ptr2;
-
       ptr += skip_whitespace (ptr);
 
       if (*ptr != '(')
@@ -1201,20 +1189,6 @@ parse_top_node_line (NODE *node)
         }
 
       ptr += 1; /* Point after field terminator */
-    }
-  if (display_start)
-    {
-      output_bytes_difference = display_start - node->contents;
-      node_offset += output_bytes_difference;
-      node->nodelen -= display_start - node->contents;
-      node->contents = display_start;
-    }
-  else if (nodeline_print == NO_NODELINE)
-    {
-      output_bytes_difference = ptr - node->contents;
-      node_offset += output_bytes_difference;
-      node->nodelen -= ptr - node->contents;
-      node->contents = ptr;
     }
 }
 

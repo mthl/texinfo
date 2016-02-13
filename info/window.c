@@ -825,8 +825,8 @@ window_line_of_point (WINDOW *window)
   if (!window->line_starts)
     calculate_line_starts (window);
 
-  /* Try to optimize.  Check to see if point is past the pagetop for
-     this window, and if so, start searching forward from there. */
+  /* Check if point is past the pagetop for this window, and if so, start 
+     searching forward from there. */
   if (window->pagetop > -1 && window->pagetop < window->line_count
       && window->line_starts[window->pagetop] <= window->point)
     start = window->pagetop;
@@ -837,13 +837,10 @@ window_line_of_point (WINDOW *window)
         break;
     }
 
-  /* Something is wrong with the above logic as it allows a negative
-     index to be returned for small windows.  Until someone figures it
-     out, at least don&#39;t core dump. */
   if (i > 0)
     return i - 1;
   else
-    return 0;
+    return 0; /* Shouldn't happen */
 }
 
 /* Get and return the printed column offset of the cursor in this window. */
@@ -1153,6 +1150,11 @@ collect_line_starts (WINDOW *win, long ll_num, long pl_start)
   win->log_line_no[win->line_count - 1] = ll_num;
 }
 
+#define NO_NODELINE 0
+#define PRINT_NODELINE 1
+#define NODELINE_POINTERS_ONLY 2
+int nodeline_print = 2;
+
 /* Calculate a list of line starts for the node belonging to WINDOW.  The
    line starts are offsets within WINDOW->node->contents.
 
@@ -1162,7 +1164,7 @@ void
 calculate_line_starts (WINDOW *win)
 {
   long pl_chars = 0;     /* Number of characters in line so far. */
-  long pl_start = 0;     /* Offset of start of current physical line. */
+  long pl_start;         /* Offset of start of current physical line. */
   long ll_num = 0;       /* Number of logical lines */
   mbi_iterator_t iter;
 
@@ -1177,7 +1179,32 @@ calculate_line_starts (WINDOW *win)
   if (!win->node)
     return;
 
-  for (mbi_init (iter, win->node->contents, win->node->nodelen);
+  pl_start = 0;
+  if (nodeline_print != PRINT_NODELINE
+      && !memcmp (win->node->contents, "File:", strlen ("File:")))
+    {
+      char *s;
+      if (nodeline_print == NO_NODELINE)
+        {
+          s = strchr (win->node->contents, '\n');
+          if (s)
+            pl_start = s - win->node->contents + 1;
+        }
+      else if (nodeline_print == NODELINE_POINTERS_ONLY)
+        {
+          s = strstr (win->node->contents, "Next: ");
+          if (!s)
+            s = strstr (win->node->contents, "Prev: ");
+          if (!s)
+            s = strstr (win->node->contents, "Up: ");
+          if (s)
+            pl_start = s - win->node->contents;
+        }
+    }
+
+  for (mbi_init (iter,
+                 win->node->contents + pl_start,
+                 win->node->nodelen - pl_start);
        mbi_avail (iter);
        mbi_advance (iter))
     {
