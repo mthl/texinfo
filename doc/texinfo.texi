@@ -16750,52 +16750,73 @@ meaning of the options.
 
 @multitable @columnfractions 0.5 0.5
 @headitem Option @tab Variable
+@item
 @vindex ENABLE_ENCODING
-@item @option{--enable-encoding}   @tab @code{ENABLE_ENCODING}
+@option{--enable-encoding}   @tab @code{ENABLE_ENCODING}
 @vindex documentlanguage
-@item @option{--document-language} @tab @code{documentlanguage}
+@item
+@option{--document-language} @tab @code{documentlanguage}
+@item
 @vindex ERROR_LIMIT
-@item @option{--error-limit}       @tab @code{ERROR_LIMIT}
+@option{--error-limit}       @tab @code{ERROR_LIMIT}
+@item
 @vindex FILLCOLUMN
-@item @option{--fill-column}       @tab @code{FILLCOLUMN}
+@option{--fill-column}       @tab @code{FILLCOLUMN}
 @vindex footnotestyle
-@item @option{--footnote-style}    @tab @code{footnotestyle}
+@item
+@option{--footnote-style}    @tab @code{footnotestyle}
+@item
 @vindex FORCE
-@item @option{--force}             @tab @code{FORCE}
+@option{--force}             @tab @code{FORCE}
 @vindex INTERNAL_LINKS
-@item @option{--internal-links}    @tab @code{INTERNAL_LINKS}
+@item
+@option{--internal-links}    @tab @code{INTERNAL_LINKS}
+@item
 @vindex MACRO_EXPAND
-@item @option{--macro-expand}      @tab @code{MACRO_EXPAND}
+@option{--macro-expand}      @tab @code{MACRO_EXPAND}
+@item
 @vindex HEADERS
 @vindex SHOW_MENU
-@item @option{--headers}           @tab @code{HEADERS}, @code{SHOW_MENU}
+@option{--headers}           @tab @code{HEADERS}, @code{SHOW_MENU}
+@item
 @vindex NO_WARN
-@item @option{--no-warn}           @tab @code{NO_WARN}
+@option{--no-warn}           @tab @code{NO_WARN}
+@item
 @vindex novalidate
-@item @option{--no-validate}       @tab @code{novalidate}
+@option{--no-validate}       @tab @code{novalidate}
+@item
 @vindex NUMBER_FOOTNOTES
-@item @option{--number-footnotes}  @tab @code{NUMBER_FOOTNOTES}
+@option{--number-footnotes}  @tab @code{NUMBER_FOOTNOTES}
+@item
 @vindex NUMBER_SECTIONS
-@item @option{--number-sections}   @tab @code{NUMBER_SECTIONS}
+@option{--number-sections}   @tab @code{NUMBER_SECTIONS}
+@item
 @vindex NODE_FILES
-@item @option{--node-files}        @tab @code{NODE_FILES}
+@option{--node-files}        @tab @code{NODE_FILES}
+@item
 @vindex OUT
 @vindex OUTFILE
 @vindex SUBDIR
-@item @option{--output}            @tab @code{OUT}, @code{OUTFILE},
+@option{--output}            @tab @code{OUT}, @code{OUTFILE},
                                         @code{SUBDIR}
+@item
 @vindex paragraphindent
-@item @option{--paragraph-indent}  @tab @code{paragraphindent}
+@option{--paragraph-indent}  @tab @code{paragraphindent}
+@item
 @vindex SILENT
-@item @option{--silent}            @tab @code{SILENT}
+@option{--silent}            @tab @code{SILENT}
+@item
 @vindex SPLIT
-@item @option{--split}             @tab @code{SPLIT}
+@option{--split}             @tab @code{SPLIT}
+@item
 @vindex SPLIT_SIZE
-@item @option{--split-size}        @tab @code{SPLIT_SIZE}
+@option{--split-size}        @tab @code{SPLIT_SIZE}
+@item
 @vindex TRANSLITERATE_FILE_NAMES
-@item @option{--transliterate-file-names} @tab @code{TRANSLITERATE_FILE_NAMES}
+@option{--transliterate-file-names} @tab @code{TRANSLITERATE_FILE_NAMES}
+@item
 @vindex VERBOSE
-@item @option{--verbose}           @tab @code{VERBOSE}
+@option{--verbose}           @tab @code{VERBOSE}
 @end multitable
 
 Setting such a customization variable to a value @samp{foo} is

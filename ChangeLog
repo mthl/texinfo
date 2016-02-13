@@ -1,5 +1,11 @@
 2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Customization Variables and Options): Move 
+	@vindex commands after @item, so that the index entries refer to 
+	the right row of the @multitable.
+
+2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Implement --javascript-ref option, suggested by Per Bothner.
 
 	* tp/texi2any.pl ($result_options): New option --javascript-ref.
