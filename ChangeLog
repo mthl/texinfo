@@ -1,5 +1,9 @@
 2016-02-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/TexinfoXML.pm (output): Add a comment.
+
+2016-02-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Tips): Add missing word "to".
 
 2016-02-14  Gavin Smith  <gavinsmith0123@gmail.com>
