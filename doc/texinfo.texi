@@ -21316,7 +21316,7 @@ beginning of the section that describes the functions.
 @subsubheading Node Length
 
 Keep nodes (sections) to a reasonable length, whatever reasonable
-might be in the given context.  Don't hesitate break up long nodes
+might be in the given context.  Don't hesitate to break up long nodes
 into subnodes and have an extensive tree structure; that's what it's
 there for.  Many times, readers will probably try to find a single
 specific point in the manual, using search, indexing, or just plain

@@ -1,5 +1,9 @@
 2016-02-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Tips): Add missing word "to".
+
+2016-02-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Structuring.pm (split_by_node): Add a comment.
 	* tp/Texinfo/Convert/HTML.pm (_prepare_elements, output)
 	(_convert_contents, _protect_space, _convert)
