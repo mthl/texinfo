@@ -851,6 +851,8 @@ sub nodes_tree($)
   return $top_node;
 }
 
+# Return a list of elements to be converted into pages.  Each element starts
+# with a @node as its first child (except possibly the first one).
 sub split_by_node($)
 {
   my $root = shift;

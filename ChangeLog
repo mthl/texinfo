@@ -1,3 +1,14 @@
+2016-02-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (split_by_node): Add a comment.
+	* tp/Texinfo/Convert/HTML.pm (_prepare_elements, output)
+	(_convert_contents, _protect_space, _convert)
+	(_convert_element_type): Add some comments and blank lines in 
+	source.  Remove some commented-out lines of code.  Add some 
+	capital letters in comments.
+	(%ignored_types): Remove commented-out variable.
+	(%default_types_conversion): Add a comment.
+
 2016-02-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (dump_nodes_to_file): Argument changed from 

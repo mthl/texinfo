@@ -1,7 +1,8 @@
 # $Id$
 # HTML.pm: output tree as HTML.
 #
-# Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2011, 2012, 2013, 2014, 2015,
+# 2016 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -3557,6 +3558,9 @@ foreach my $informative_command (@informative_global_commands) {
     = \&_convert_informative_command;
 }
 
+# Keys are tree element types, values are function references to convert
+# elements of that type.  Can be overridden with
+# Texinfo::Config::texinfo_types_conversion.
 my %default_types_conversion;
 
 sub default_types_conversion($$)
@@ -3567,15 +3571,12 @@ sub default_types_conversion($$)
 }
 
 # Ignored commands
-
-#my %ignored_types;
 foreach my $type ('empty_line_after_command', 'preamble',
             'preamble_before_setfilename',
             'empty_spaces_after_command', 'spaces_at_end',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
             'empty_spaces_after_close_brace', 
             'empty_space_at_end_def_bracketed') {
-  #$ignored_types{$type} = 1;
   $default_types_conversion{$type} = undef;
 }
 
@@ -4371,6 +4372,10 @@ sub _print_title($)
   return $result;
 }
 
+# Function for converting the top-level elements in the conversion: a section 
+# or a node.  $ELEMENT was created in this module (in _prepare_elements), with 
+# type 'element' (it's not a tree element created by the parser).  $CONTENT
+# is the contents of the node/section, already converted.
 sub _convert_element_type($$$$)
 {
   my $self = shift;
@@ -4378,12 +4383,6 @@ sub _convert_element_type($$$$)
   my $element = shift;
   my $content = shift;
 
-  #print STDERR "GGGGGGGG $element $element->{'parent'} $element->{'parent'}->{'type'}\n";
-  #print STDERR "$element->{'extra'}->{'special_element'}\n"
-  #   if ($element->{'extra'}->{'special_element'});
-  #if (!defined($element->{'parent'})) {
-  #  print STDERR "NO PARENT ".Texinfo::Parser::_print_current($element)."\n";
-  #}
   if ($self->in_string()) {
     if (defined($content)) {
       return $content;
@@ -4418,8 +4417,9 @@ sub _convert_element_type($$$$)
     $result .= &{$self->{'format_heading_text'}}($self, $class.'-heading', 
                        $heading, $level)."\n";
 
-    my $special_element_body .= &{$self->{'format_special_element_body'}}($self, 
-                                                 $special_element, $element);
+    my $special_element_body .= &{$self->{'format_special_element_body'}}
+                                    ($self, $special_element, $element);
+
     # This may happen with footnotes in regions that are not expanded,
     # like @copying or @titlepage
     if ($special_element_body eq '') {
@@ -5377,6 +5377,9 @@ sub _set_pages_files($$)
   }
 }
 
+# $ROOT is a parsed Texinfo tree.  Return a list of the "elements" we need to
+# output in the HTML file(s).  Each "element" is what can go in one HTML file,
+# such as the content between @node lines in the Texinfo source.
 sub _prepare_elements($$)
 {
   my $self = shift;
@@ -6721,6 +6724,9 @@ sub texinfo_register_type_formatting($$)
 
 }
 
+# Main function for outputting a manual in HTML.
+# $SELF is the output converter object of class Texinfo::Convert::HTML (this 
+# module), and $ROOT is the Texinfo tree from the parser.
 sub output($$)
 {
   my $self = shift;
@@ -6763,9 +6769,10 @@ sub output($$)
     = Texinfo::Common::collect_renamed_nodes($self, $self->{'input_basename_name'},
                                              $self->{'renamed_nodes'});
 
+
+  # Get the list of "elements" to be processed, i.e. nodes or sections.
   # This should return undef if called on a tree without node or sections.
-  my ($elements, $special_elements) 
-    = $self->_prepare_elements($root);
+  my ($elements, $special_elements) = $self->_prepare_elements($root);
 
   Texinfo::Structuring::split_pages($elements, $self->get_conf('SPLIT'));
 
@@ -6785,7 +6792,7 @@ sub output($$)
   # PrevFile and NextFile can be set.
   Texinfo::Structuring::elements_file_directions($self, $elements);
 
-  # associate the special elements that have no page to the main page.
+  # Associate the special elements that have no page with the main page.
   # This may only happen if not split.
   if ($special_elements 
       and $elements and $elements->[0] 
@@ -6907,10 +6914,10 @@ sub output($$)
   # that the correct language is set, for instance.  The @-command
   # will necessarily appear later on -- even if it appears a the
   # beginning of the file.
-  #
-  # Now do the output
+
   my $fh;
   my $output = '';
+
   if (!$elements or !defined($elements->[0]->{'filename'})) {
     # no page
     my $outfile;
@@ -6966,6 +6973,7 @@ sub output($$)
       if ($self->get_conf('DEBUG'));
     my %files;
     
+    # Now do the output, converting each member in @$elements in turn.
     $special_elements = [] if (!defined($special_elements));
     foreach my $element (@$elements, @$special_elements) {
       my $file_fh;
@@ -7199,6 +7207,7 @@ sub _parse_node_and_warn_external($$$$$)
   return undef;
 }
 
+# Convert the 'contents' of a tree element.
 sub _convert_contents($$$)
 {
   my $self = shift;
@@ -7259,20 +7268,21 @@ sub _protect_space($$)
     my $open = $self->_attribute_class('span', 'nolinebreak');
     if ($open ne '') {
       $open .= '>';
-      # protect spaces in the html leading attribute in case we are in 'w'
+      # Protect spaces in the html leading attribute in case we are in 'w'
       $open =~ s/ /\x{1F}/g;
-      # special span to avoid breaking at _-
+      # Special span to avoid breaking at _-
       $text =~ s/(\S*[_-]\S*)/${open}$1<\/span>/g;
     }
     $text .= '&nbsp;' if (chomp($text));
-    # protect spaces within text
+    # Protect spaces within text
     $text =~ s/ /&nbsp;/g;
-    # revert protected spaces in leading html attribute
+    # Revert protected spaces in leading html attribute
     $text =~ s/\x{1F}/ /g;
   }
   return $text;
 }
 
+# Convert tree element $ROOT, and return HTML text for the output files.
 sub _convert($$;$);
 
 sub _convert($$;$)
@@ -7302,9 +7312,6 @@ sub _convert($$;$)
       print STDERR " text: $text";
     }
     print STDERR "\n";
-   
-    #print STDERR "  Special def_command: $root->{'extra'}->{'def_command'}\n"
-    #  if (defined($root->{'extra'}) and $root->{'extra'}->{'def_command'});
   }
 
   if (ref($root) ne 'HASH') {
@@ -7327,7 +7334,7 @@ sub _convert($$;$)
     return '';
   }
 
-  # process text
+  # Process text
   if (defined($root->{'text'})) {
     # already converted to html, keep it as is
     if ($root->{'type'} and $root->{'type'} eq '_converted') {
@@ -7527,6 +7534,7 @@ sub _convert($$;$)
     push @{$self->{'document_context'}->[-1]->{'commands'}}, 
       $root->{'cmdname'}
         if ($root->{'cmdname'});
+
     if ($root->{'type'} eq 'paragraph') {
       $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'paragraph_number'}++;
     } elsif ($root->{'type'} eq 'preformatted'
@@ -7541,6 +7549,7 @@ sub _convert($$;$)
       push @{$self->{'document_context'}->[-1]->{'composition_context'}},
         $root->{'type'};
     }
+
     if ($self->{'code_types'}->{$root->{'type'}}) {
       #$self->{'document_context'}->[-1]->{'code'}++;
       push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1;
@@ -7548,6 +7557,7 @@ sub _convert($$;$)
     if ($root->{'type'} eq '_string') {
       $self->{'document_context'}->[-1]->{'string'}++;
     }
+
     my $content_formatted;
     if ($root->{'type'} eq 'definfoenclose_command') {
       if ($root->{'args'}) {
@@ -7556,6 +7566,7 @@ sub _convert($$;$)
     } elsif ($root->{'contents'}) {
       $content_formatted = $self->_convert_contents($root, $command_type);
     }
+
     my $result = '';
     if (exists($self->{'types_conversion'}->{$root->{'type'}})) {
       $result = &{$self->{'types_conversion'}->{$root->{'type'}}} ($self,
