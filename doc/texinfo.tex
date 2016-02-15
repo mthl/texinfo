@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-02-15.14}
+\def\texinfoversion{2016-02-15.16}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -310,7 +310,7 @@
 % Margin to add to right of even pages, to left of odd pages.
 \newdimen\bindingoffset
 \newdimen\normaloffset
-\newdimen\pagewidth \newdimen\pageheight
+\newdimen\txipagewidth \newdimen\txipageheight
 
 % Main output routine.
 %
@@ -334,7 +334,7 @@
   % Common context changes for both heading and footing.
   % Do this outside of the \shipout so @code etc. will be expanded in
   % the headline as they should be, not taken literally (outputting ''code).
-  \def\commmonheadfootline{\let\hsize=\pagewidth \texinfochars}
+  \def\commmonheadfootline{\let\hsize=\txipagewidth \texinfochars}
   %
   % Retrieve the information for the headings from the marks in the page,
   % and call Plain TeX's \makeheadline and \makefootline, which use the
@@ -433,7 +433,7 @@
 \newinsert\margin \dimen\margin=\maxdimen
 
 % Main part of page, including any footnotes
-\def\pagebody#1{\vbox to\pageheight{\boxmaxdepth=\maxdepth #1}}
+\def\pagebody#1{\vbox to\txipageheight{\boxmaxdepth=\maxdepth #1}}
 {\catcode`\@ =11
 \gdef\pagecontents#1{\ifvoid\topins\else\unvbox\topins\fi
 % marginal hacks, juha@viisa.uucp (Juha Takala)
@@ -724,11 +724,11 @@
   % \dimen0 is the vertical size of the group's box.
   \dimen0 = \ht\groupbox  \advance\dimen0 by \dp\groupbox
   % \dimen2 is how much space is left on the page (more or less).
-  \dimen2 = \pageheight   \advance\dimen2 by -\pagetotal
+  \dimen2 = \txipageheight   \advance\dimen2 by -\pagetotal
   % if the group doesn't fit on the current page, and it's a big big
   % group, force a page break.
   \ifdim \dimen0 > \dimen2
-    \ifdim \pagetotal < \vfilllimit\pageheight
+    \ifdim \pagetotal < \vfilllimit\txipageheight
       \page
     \fi
   \fi
@@ -1099,6 +1099,35 @@ where each line of input produces a line of output.}
 \newcount\countA
 \newif\ifpdf
 \newif\ifpdfmakepagedest
+
+%
+% For LuaTeX
+%
+
+\ifx\luatexversion\thisisundefined
+\else
+  \ifnum\luatexversion>84
+    % For LuaTeX >= 0.85
+    \def\pdfdest{\pdfextension dest}
+    \let\pdfoutput\outputmode
+    \def\pdfliteral{\pdfextension literal}
+    \def\pdfcatalog{\pdfextension catalog}
+    \def\pdftexversion{\numexpr\pdffeedback version\relax}
+    \let\pdfximage\saveimageresource
+    \let\pdfrefximage\useimageresource
+    \let\pdflastximage\lastsavedimageresourceindex
+    \def\pdfendlink{\pdfextension endlink\relax}
+    \def\pdfoutline{\pdfextension outline}
+    \def\pdfstartlink{\pdfextension startlink}
+    \def\pdffontattr{\pdfextension fontattr}
+    \def\pdfobj{\pdfextension obj}
+    \def\pdflastobj{\numexpr\pdffeedback lastobj\relax}
+    \let\pdfpagewidth\pagewidth
+    \let\pdfpageheight\pageheight
+    \edef\pdfhorigin{\pdfvariable horigin}
+    \edef\pdfvorigin{\pdfvariable vorigin}
+  \fi
+\fi
 
 % when pdftex is run in dvi mode, \pdfoutput is defined (so \pdfoutput=1
 % can be set).  So we test for \relax and 0 as well as being undefined.
@@ -3579,7 +3608,7 @@ end
   %
   % Leave some space for the footline.  Hopefully ok to assume
   % @evenfooting will not be used by itself.
-  \global\advance\pageheight by -12pt
+  \global\advance\txipageheight by -12pt
   \global\advance\vsize by -12pt
 }
 
@@ -5651,7 +5680,7 @@ end
   \wd0=\hsize \wd2=\hsize
   \vbox{%
     \vskip\doublecolumntopgap
-    \hbox to\pagewidth{\box0\hfil\box2}}%
+    \hbox to\txipagewidth{\box0\hfil\box2}}%
 }
 
 
@@ -5678,7 +5707,7 @@ end
   % goal.  When TeX sees \eject from below which follows the final
   % section, it invokes the new output routine that we've set after
   % \balancecolumns below; \onepageout will try to fit the two columns
-  % and the final section into the vbox of \pageheight (see
+  % and the final section into the vbox of \txipageheight (see
   % \pagebody), causing an overfull box.
   %
   % Note that glue won't work here, because glue does not exercise the
@@ -9052,7 +9081,7 @@ end
   % We want to typeset this text as a normal paragraph, even if the
   % footnote reference occurs in (for example) a display environment.
   % So reset some parameters.
-  \hsize=\pagewidth
+  \hsize=\txipagewidth
   \interlinepenalty\interfootnotelinepenalty
   \splittopskip\ht\strutbox % top baseline for broken footnotes
   \splitmaxdepth\dp\strutbox
@@ -11016,12 +11045,12 @@ directory should work if nowhere else does.}
   \advance\vsize by \topskip
   \outervsize = \vsize
   \advance\outervsize by 2\topandbottommargin
-  \pageheight = \vsize
+  \txipageheight = \vsize
   %
   \hsize = #2\relax
   \outerhsize = \hsize
   \advance\outerhsize by 0.5in
-  \pagewidth = \hsize
+  \txipagewidth = \hsize
   %
   \normaloffset = #4\relax
   \bindingoffset = #5\relax

@@ -1,5 +1,16 @@
 2016-02-15  Masamichi Hosoda  <trueroad@trueroad.jp>
 
+	* doc/texinfo.tex: Add LuaTeX >= 0.85 support.
+	(\txipagewidth): Rename from \pagewidth.
+	(\txipageheight): Rename from \pageheight.
+	(\pdfdest, \pdfoutput, \pdfliteral, \pdfcatalog, \pdftexversion)
+	(\pdfximage, \pdfrefximage, \pdflastximage, \pdfendlink, \pdfoutline)
+	(\pdfstartlink, \pdffontattr, \pdfobj, \pdflastobj)
+	(\pdfpagewidth, \pdfpageheight, \pdfhorigin, \pdfvorigin): 
+	Definitions for LuaTeX.
+
+2016-02-15  Masamichi Hosoda  <trueroad@trueroad.jp>
+
 	* doc/texinfo.tex: Fix PDF outline cmap for XeTeX.
 
 2016-02-14  Gavin Smith  <gavinsmith0123@gmail.com>
