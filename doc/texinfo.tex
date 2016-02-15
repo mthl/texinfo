@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-02-09.12}
+\def\texinfoversion{2016-02-15.14}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -1528,7 +1528,16 @@ output) for that.)}
   ]
 
   \special{pdf:docview << /PageMode /UseOutlines >> }
-  \special{pdf:tounicode UTF8-UTF16 }
+  \openin 1 uptex.tex % upTeX has UTF8-UTF16 cmap
+  \ifeof 1
+    % upTeX does not exist. To use UTF8-UCS2 cmap.
+    % In this case, non-BMP characters (over U+FFFF) can not be used.
+    \special{pdf:tounicode UTF8-UCS2}
+  \else
+    % upTeX exists. To use UTF8-UTF16 cmap.
+    % Non-BMP characters (over U+FFFF) can be used.
+    \special{pdf:tounicode UTF8-UTF16}
+  \fi
 \fi
 
 %
