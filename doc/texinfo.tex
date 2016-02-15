@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-02-15.16}
+\def\texinfoversion{2016-02-15.17}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -1106,6 +1106,35 @@ where each line of input produces a line of output.}
 
 \ifx\luatexversion\thisisundefined
 \else
+  % Escape PDF strings UTF-8 to UTF-16
+  \begingroup
+    \catcode`\%=12
+    \directlua{
+      function UTF16oct(str)
+        tex.sprint(string.char(0x5c) .. '376' .. string.char(0x5c) .. '377')
+        for c in string.utfvalues(str) do
+          if c < 0x10000 then
+            tex.sprint(
+              string.format(string.char(0x5c) .. string.char(0x25) .. '03o' ..
+                            string.char(0x5c) .. string.char(0x25) .. '03o',
+                            (c / 256), (c % 256)))
+          else
+            c = c - 0x10000
+            local c_hi = c / 1024 + 0xd800
+            local c_lo = c % 1024 + 0xdc00
+            tex.sprint(
+              string.format(string.char(0x5c) .. string.char(0x25) .. '03o' ..
+                            string.char(0x5c) .. string.char(0x25) .. '03o' ..
+                            string.char(0x5c) .. string.char(0x25) .. '03o' ..
+                            string.char(0x5c) .. string.char(0x25) .. '03o',
+                            (c_hi / 256), (c_hi % 256),
+                            (c_lo / 256), (c_lo % 256)))
+          end
+        end
+      end
+    }
+  \endgroup
+  \def\pdfescapestring#1{\directlua{UTF16oct('\luaescapestring{#1}')}}
   \ifnum\luatexversion>84
     % For LuaTeX >= 0.85
     \def\pdfdest{\pdfextension dest}
@@ -1312,18 +1341,23 @@ output) for that.)}
     % page number.  We could generate a destination for the section
     % text in the case where a section has no node, but it doesn't
     % seem worth the trouble, since most documents are normally structured.
-    \edef\pdfoutlinedest{#3}%
-    \ifx\pdfoutlinedest\empty
-      \def\pdfoutlinedest{#4}%
-    \else
-      \txiescapepdf\pdfoutlinedest
-    \fi
-    %
-    % Also escape PDF chars in the display string.
-    \edef\pdfoutlinetext{#1}%
-    \txiescapepdf\pdfoutlinetext
-    %
-    \pdfoutline goto name{\pdfmkpgn{\pdfoutlinedest}}#2{\pdfoutlinetext}%
+    {
+      \ifx\luatexversion\thisisundefined \else
+        \turnoffactive % LuaTeX can use Unicode strings for PDF
+      \fi
+      \edef\pdfoutlinedest{#3}%
+      \ifx\pdfoutlinedest\empty
+        \def\pdfoutlinedest{#4}%
+      \else
+        \txiescapepdf\pdfoutlinedest
+      \fi
+      %
+      % Also escape PDF chars in the display string.
+      \edef\pdfoutlinetext{#1}%
+      \txiescapepdf\pdfoutlinetext
+      %
+      \pdfoutline goto name{\pdfmkpgn{\pdfoutlinedest}}#2{\pdfoutlinetext}%
+    }
   }
   %
   \def\pdfmakeoutlines{%

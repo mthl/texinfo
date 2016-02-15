@@ -1,5 +1,13 @@
 2016-02-15  Masamichi Hosoda  <trueroad@trueroad.jp>
 
+	* doc/texinfo.tex: Add LuaTeX PDF outline Unicode strings 
+	support.
+	(UTF16oct): New Lua function.
+	(\pdfescapestring): New macro.
+	(\dopdfoutline): Add Unicode support for LuaTeX.
+
+2016-02-15  Masamichi Hosoda  <trueroad@trueroad.jp>
+
 	* doc/texinfo.tex: Add LuaTeX >= 0.85 support.
 	(\txipagewidth): Rename from \pagewidth.
 	(\txipageheight): Rename from \pageheight.
