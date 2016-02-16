@@ -1,3 +1,16 @@
+2016-02-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\setchapterstyle, \headings, \setchapternewpage)
+	(\everyheadingmarks, \everyfootingmarks): Define with 
+	\parseargdef to read argument on the line instead of delimiting 
+	the argument with a space.  This is necessary in case newlines 
+	are active, which is the case at the very start of the file due 
+	to the definitions in \enablebackslashhack.  Broken 
+	@setchapternewpage reported by Norbert Preining.
+	(\enablebackslashhack): Turn off special meanings after two 
+	active newlines instead of after three, and add comments to 
+	explain what is going on.
+
 2016-02-15  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex: Add LuaTeX PDF outline Unicode strings 
