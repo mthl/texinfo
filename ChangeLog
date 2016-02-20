@@ -1,5 +1,10 @@
 2016-02-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\setchapterstyle): Remove implementation.  
+	(Obsolete since at least 3.8 release, September 1996).
+
+2016-02-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\setcontentsaftertitlepage)
 	(\setshortcontentsaftertitlepage): Replace definitions with a 
 	message saying that these aren't Texinfo commands any more.
