@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-02-16.15}
+\def\texinfoversion{2016-02-20.22}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -3477,13 +3477,16 @@ end
 \newif\ifseenauthor
 \newif\iffinishedtitlepage
 
-% Do an implicit @contents or @shortcontents after @end titlepage if the
-% user says @setcontentsaftertitlepage or @setshortcontentsaftertitlepage.
-%
-\newif\ifsetcontentsaftertitlepage
- \let\setcontentsaftertitlepage = \setcontentsaftertitlepagetrue
-\newif\ifsetshortcontentsaftertitlepage
- \let\setshortcontentsaftertitlepage = \setshortcontentsaftertitlepagetrue
+% @setcontentsaftertitlepage used to do an implicit @contents or
+% @shortcontents after @end titlepage, but it is now obsolete.
+\def\setcontentsaftertitlepage{%
+  \errmessage{@setcontentsaftertitlepage has been removed as a Texinfo
+              command; move your @contents command if you want the contents
+              after the title page.}}%
+\def\setshortcontentsaftertitlepage{%
+  \errmessage{@setshortcontentsaftertitlepage has been removed as a Texinfo
+              command; move your @shortcontents and @contents commands if you 
+              want the contents after the title page.}}%
 
 \parseargdef\shorttitlepage{%
   \begingroup \hbox{}\vskip 1.5in \chaprm \centerline{#1}%
@@ -3525,20 +3528,6 @@ end
   % Need this before the \...aftertitlepage checks so that if they are
   % in effect the toc pages will come out with page numbers.
   \HEADINGSon
-  %
-  % If they want short, they certainly want long too.
-  \ifsetshortcontentsaftertitlepage
-    \shortcontents
-    \contents
-    \global\let\shortcontents = \relax
-    \global\let\contents = \relax
-  \fi
-  %
-  \ifsetcontentsaftertitlepage
-    \contents
-    \global\let\contents = \relax
-    \global\let\shortcontents = \relax
-  \fi
 }
 
 \def\finishtitlepage{%

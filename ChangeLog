@@ -1,9 +1,28 @@
 2016-02-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\setcontentsaftertitlepage)
+	(\setshortcontentsaftertitlepage): Replace definitions with a 
+	message saying that these aren't Texinfo commands any more.
+	(\Etitlepage): Remove handling of @setcontentsaftertitlepage.
+	and @setshortcontentsaftertitlepage.
+	(Karl Berry, bug-texinfo 2016-02-03).
+
+	* doc/texinfo.texi (@-Command Details, Obsolete @-Commands): New 
+	section node of appendix.
+	(Obsolete @-Commands): Add @setcontentsaftertitlepage and
+	@setshortcontentsaftertitlepage.
+	(Command List): Remove the same.
+	(Contents): Move information about @setcontentsaftertitlepage 
+	and @setshortcontentsaftertitlepage to appendix.
+
+	NB not done in texi2any yet.
+
+2016-02-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info.c (get_initial_file): Handle --file option here 
 	instead of in 'main', as well as handling invocation as "info 
 	'(FILE)NODE'", and the full path to FILE as the "initial file".  Use 
-	"dir" as the last resort of the initial file.  Don't add a node to the 
+	"dir" as the last resort for the initial file.  Don't add a node to the 
 	list of nodes to load.
 	(add_initial_nodes): Add "Top" node to list of nodes to load if no 
 	others are given.  Remove error message for initial_file undefined.

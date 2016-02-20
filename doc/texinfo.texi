@@ -2578,41 +2578,6 @@ corresponding entries in the full table of contents rather than the text
 of the document. The links in the full table of contents point to the
 main text of the document.
 
-In the past, the contents commands were sometimes placed at the end of
-the file, after any indices and just before the @code{@@bye}, but we
-no longer recommend this.
-
-@findex setcontentsaftertitlepage
-@findex setshortcontentsaftertitlepage
-@cindex Contents, after title page
-@cindex Table of contents, after title page
-However, since many existing Texinfo documents still do have the
-@code{@@contents} at the end of the manual, if you are a user printing
-a manual, you may wish to force the contents to be printed after the
-title page.  You can do this by specifying
-@code{@@setcontentsaftertitlepage} and/or
-@code{@@setshortcontentsaftertitlepage}.  The first prints only the
-main contents after the @code{@@end titlepage}; the second prints both
-the short contents and the main contents.  In either case, any
-subsequent @code{@@contents} or @code{@@shortcontents} is ignored.
-
-You need to include the @code{@@set@dots{}contentsaftertitlepage}
-commands early in the document (just after @code{@@setfilename}, for
-example).  We recommend using @command{texi2dvi} (@pxref{Format with
-@command{texi2dvi}}) to specify this without altering the source file at
-all.  For example:
-
-@example
-texi2dvi --texinfo=@@setcontentsaftertitlepage foo.texi
-@end example
-
-An alternative invocation, using @command{texi2any}:
-
-@example
-texi2any --dvi --Xopt --texinfo=@@setcontentsaftertitlepage foo.texi
-@end example
-
-
 
 @node The Top Node
 @section The `Top' Node and Master Menu
@@ -20583,18 +20548,9 @@ Define the Texinfo variable @var{txivar}, optionally to the value
 Specify whether chapters start on new pages, and if so, whether on
 odd-numbered (right-hand) new pages.  @xref{@code{@@setchapternewpage}}.
 
-@item @@setcontentsaftertitlepage
-Put the table of contents after the @samp{@@end titlepage} even if the
-@code{@@contents} command is at the end.  @xref{Contents}.
-
 @item @@setfilename @var{info-file-name}
 Provide a name to be used for the output files.  This command is ignored
 for @TeX{} formatting.  @xref{@code{@@setfilename}}.
-
-@item @@setshortcontentsaftertitlepage
-Place the short table of contents after the @samp{@@end titlepage}
-command even if the @code{@@shortcontents} command is at the end.
-@xref{Contents}.
 
 @item @@settitle @var{title}
 Specify the title for page headers in a printed manual, and the
@@ -20952,6 +20908,32 @@ contain cross-reference commands (@code{@@ref}, @code{@@xref},
 
 For precise and complete information, we suggest looking into the
 test suite in the sources, which exhaustively tries combinations.
+
+
+@node Obsolete @@-Commands
+@section Obsolete @@-Commands
+
+Here are Texinfo @@-commands which are obsolete or have been removed 
+completely.  This section is for historical purposes.
+
+@ftable @code
+@item @@setcontentsaftertitlepage
+@cindex Contents, after title page
+@cindex Table of contents, after title page
+In the past, the contents commands were sometimes placed at the end of
+the file, after any indices and just before the @code{@@bye}, but we
+no longer recommend this.
+This command could be used by a user printing a manual, to force the 
+contents to be printed after the title page
+(after the @samp{@@end titlepage} line)
+even if the @code{@@contents} command was at the end of the manual.  It 
+now does nothing.
+
+@item @@setshortcontentsaftertitlepage
+This placed the short table of contents after the @samp{@@end titlepage}
+command even if the @code{@@shortcontents} command was at the end.  It 
+now does nothing.
+@end ftable
 
 
 @node Tips
