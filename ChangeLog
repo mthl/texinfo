@@ -1,3 +1,21 @@
+2016-02-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (get_initial_file): Handle --file option here 
+	instead of in 'main', as well as handling invocation as "info 
+	'(FILE)NODE'", and the full path to FILE as the "initial file".  Use 
+	"dir" as the last resort of the initial file.  Don't add a node to the 
+	list of nodes to load.
+	(add_initial_nodes): Add "Top" node to list of nodes to load if no 
+	others are given.  Remove error message for initial_file undefined.
+	(main): Handle --where option separately for --all given and not given.
+	* info/session.c (info_follow_menus): Free initial node if following 
+	menus strictly and a menu entry is dangling.
+	* info/t/node-no-file.sh: Change expected error message.
+
+	This is so that "info --output -" outputs the dir node, as used to 
+	happen.  Vincent Lefevre reported that it doesn't happen for
+	Texinfo 6.1.
+
 2016-02-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\setchapterstyle, \headings, \setchapternewpage)

@@ -2815,7 +2815,13 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
                         entry->label,
                         node_printed_rep (initial_node));
             }
-          return strict ? 0 : initial_node;
+          if (strict)
+            {
+              free_history_node (initial_node);
+              return 0;
+            }
+          else
+            return initial_node;
         }
 
       debug (3, ("node: %s, %s", node->fullpath, node->nodename));
