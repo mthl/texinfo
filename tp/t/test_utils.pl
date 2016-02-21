@@ -809,8 +809,12 @@ sub test($$)
         if (!defined($format_converter_options->{'SUBDIR'})) {
           mkdir ($base) 
             if (! -d $base);
-          mkdir ($base."$test_out_dir/") 
-            if (! -d $base."$test_out_dir/");
+          if (! -d $base."$test_out_dir/") {
+            mkdir ($base."$test_out_dir/"); 
+          } else {
+            # remove any files from previous runs
+            unlink glob ($base."$test_out_dir/*"); 
+          }
           $format_converter_options->{'SUBDIR'} 
              = $base."$test_out_dir/";
         }

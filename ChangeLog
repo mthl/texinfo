@@ -1,5 +1,11 @@
 2016-02-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/test_utils.pl (test): When using an out_ directory (like 
+	out_info or out_html), delete its contents to prevent test 
+	failures from left-over files.
+
+2016-02-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (%misc_commands): Move 
 	'setcontentsaftertitlepage' and 'setshortcontentsaftertitlepage'
 	to obsolete section.
