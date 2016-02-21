@@ -1,5 +1,14 @@
 2016-02-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/contents/tests-parser.txt: Remove tests
+	'double_contents_setcontentsaftertitlepage',
+	'double_contents_setcontentsaftertitlepage_inline',
+	'double_contents_setcontentsaftertitlepage_book',
+	'double_contents_setcontentsaftertitlepage_book_chapter', and
+	'double_contents_setcontentsaftertitlepage_book_info'.
+
+2016-02-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/test_utils.pl (test): When using an out_ directory (like 
 	out_info or out_html), delete its contents to prevent test 
 	failures from left-over files.
