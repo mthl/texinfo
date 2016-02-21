@@ -64,8 +64,7 @@ my $NO_NUMBER_FOOTNOTE_SYMBOL = '*';
 
 my @informative_global_commands = ('paragraphindent', 'firstparagraphindent',
 'frenchspacing', 'documentencoding', 'footnotestyle', 'documentlanguage',
-'contents', 'shortcontents', 'summarycontents', 'setcontentsaftertitlepage',
-'setshortcontentsaftertitlepage', 'deftypefnnewline');
+'contents', 'shortcontents', 'summarycontents', 'deftypefnnewline');
 
 my %informative_commands;
 foreach my $informative_command (@informative_global_commands) {
@@ -2539,37 +2538,6 @@ sub _convert($$)
       $result .= $self->_node($root);
       $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
     } elsif ($sectioning_commands{$root->{'cmdname'}}) {
-      if ($self->get_conf('setcontentsaftertitlepage') 
-           and $root_commands{$root->{'cmdname'}}
-           and !$self->{'setcontentsaftertitlepage_done'}) {
-        my ($contents, $lines_count) 
-                = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
-                                  'contents');
-        if ($contents ne '') {
-          $contents .= "\n";
-          $self->{'empty_lines_count'} = 1;
-          _add_text_count($self, $contents);
-          _add_lines_count($self, $lines_count+1);
-        }
-        $self->{'setcontentsaftertitlepage_done'} = 1;
-        $result .= $contents;
-      } 
-      if ($self->get_conf('setshortcontentsaftertitlepage')
-            and $root_commands{$root->{'cmdname'}}
-            and !$self->{'setshortcontentsaftertitlepage_done'}) {
-        my ($contents, $lines_count) 
-                = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
-                              'shortcontents');
-        if ($contents ne '') {
-          $contents .= "\n";
-          $self->{'empty_lines_count'} = 1;
-          _add_text_count($self, $contents);
-          _add_lines_count($self, $lines_count+1);
-        }
-
-        $self->{'setshortcontentsaftertitlepage_done'} = 1;
-        $result .= $contents;
-      }
       # use settitle for empty @top
       # ignore @part
       my $contents;
@@ -2822,9 +2790,8 @@ sub _convert($$)
       }
       return $result;
     } elsif ($root->{'cmdname'} eq 'contents') {
-      if (!defined($self->get_conf('setcontentsaftertitlepage'))
-           and $self->{'structuring'}
-           and $self->{'structuring'}->{'sectioning_root'}) {
+      if ($self->{'structuring'}
+            and $self->{'structuring'}->{'sectioning_root'}) {
         my $lines_count;
         ($result, $lines_count) 
             = $self->_contents($self->{'structuring'}->{'sectioning_root'}, 
@@ -2835,8 +2802,7 @@ sub _convert($$)
       return $result;
     } elsif ($root->{'cmdname'} eq 'shortcontents' 
                or $root->{'cmdname'} eq 'summarycontents') {
-      if (!defined($self->get_conf('setshortcontentsaftertitlepage'))
-            and $self->{'structuring'}
+      if ($self->{'structuring'}
             and $self->{'structuring'}->{'sectioning_root'}) {
         my $lines_count;
         ($result, $lines_count) 

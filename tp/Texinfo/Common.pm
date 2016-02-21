@@ -182,9 +182,7 @@ our %document_settable_unique_at_commands = (
   # FIXME not clear here.
   'pagesizes' => undef,
   'setchapternewpage' => 'on',
-  'setcontentsaftertitlepage' => 0,
   'setfilename' => undef,
-  'setshortcontentsaftertitlepage' => 0,
   'everyheading'      => undef,
   'everyfooting'      => undef,
   'evenheading'       => undef,
@@ -426,8 +424,6 @@ our %misc_commands = (
   'insertcopying'     => 'noarg', # no arg
   'clickstyle'        => 'special', # arg should be an @-command
   # more relevant in preamble
-  'setcontentsaftertitlepage'      => 'skipline', # no arg
-  'setshortcontentsaftertitlepage' => 'skipline', # no arg
   'documentencoding'  => 'text', # or 1?
   'novalidate'        => 'skipline', # no arg
   'validatemenus'     => 1, # on off
@@ -514,6 +510,8 @@ our %misc_commands = (
   'vskip'             => 'lineraw', # arg line in TeX
   # obsolete @-commands.
   'refill'            => 'noarg',   # no arg (obsolete, to be ignored)
+  'setcontentsaftertitlepage'      => 'skipline', # no arg
+  'setshortcontentsaftertitlepage' => 'skipline', # no arg
   # Remove spaces and end of lines after the 
   # commands? If no, they can lead to empty lines
   'quote-arg'         => 'skipline',
@@ -880,6 +878,13 @@ our %deprecated_commands = (
   'ctrl' => '',
   'allow-recursion' => N__('recursion is always allowed'),
   'quote-arg' => N__('arguments are quoted by default'),
+
+  'setcontentsaftertitlepage' =>
+N__('move your @contents command if you want the contents after the title page'),
+
+  'setshortcontentsaftertitlepage' =>
+N__('move your @shortcontents and @contents commands if you want the contents after the title page'),
+
 );
 
 my %unformatted_block_commands;

@@ -1137,7 +1137,6 @@ my %kept_misc_commands;
 my @informative_global_commands = ('contents', 'shortcontents',
   'summarycontents', 'allowcodebreaks', 'documentlanguage',
   'footnotestyle', 'documentencoding', 
-  'setcontentsaftertitlepage', 'setshortcontentsaftertitlepage',
   'xrefautomaticsectiontitle', 'deftypefnnewline');
 # taken from global
 # 'documentencoding'
@@ -3543,8 +3542,7 @@ sub _convert_informative_command($$$$)
       and ($cmdname eq 'contents' or $cmdname eq 'shortcontents')
       and $self->get_conf($cmdname)
       and $self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
-      and scalar(@{$self->{'structuring'}->{'sections_list'}}) > 1
-      and ! $self->get_conf('set'.$cmdname.'aftertitlepage')) {
+      and scalar(@{$self->{'structuring'}->{'sections_list'}}) > 1) {
     return $self->_contents_inline_element($cmdname, $command);
   }
   if ($cmdname eq 'documentlanguage') {
@@ -4306,27 +4304,6 @@ sub _convert_root_text_type($$$$)
 
 $default_types_conversion{'text_root'} = \&_convert_root_text_type;
 
-sub _contents_shortcontents_in_title($)
-{
-  my $self = shift;
-
-  my $result = '';
-
-  if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
-      and scalar(@{$self->{'structuring'}->{'sections_list'}}) > 1) {
-    foreach my $command ('contents', 'shortcontents') {
-      if ($self->get_conf($command)
-          and $self->get_conf('set'.$command.'aftertitlepage')) {
-        my $contents_text = $self->_contents_inline_element($command, undef);
-        if ($contents_text ne '') {
-          $result .= $contents_text . $self->get_conf('DEFAULT_RULE')."\n";
-        }
-      }
-    }
-  }
-  return $result;
-}
-
 # Convert @titlepage.  Falls back to simpletitle.
 sub _default_titlepage($)
 {
@@ -4346,7 +4323,6 @@ sub _default_titlepage($)
   my $result = '';
   $result .= $titlepage_text.$self->get_conf('DEFAULT_RULE')."\n"
     if (defined($titlepage_text));
-  $result .= $self->_contents_shortcontents_in_title();
   return $result;
 }
 
@@ -4366,7 +4342,6 @@ sub _print_title($)
                                             0, {'cmdname' => 'settitle',
                      'contents' => $self->{'simpletitle_tree'}->{'contents'}});
       }
-      $result .= $self->_contents_shortcontents_in_title();
     }
   }
   return $result;
@@ -5437,9 +5412,7 @@ sub _prepare_special_elements($$)
     foreach my $cmdname ('contents', 'shortcontents') {
       my $type = $contents_command_element_name{$cmdname};
       if ($self->get_conf($cmdname)) {
-        if ($self->get_conf('INLINE_CONTENTS') 
-           or ($self->get_conf('set'.$cmdname.'aftertitlepage'))) {
-        } else {
+        if (not $self->get_conf('INLINE_CONTENTS')) {
           $do_special{$type} = 1;
         }
       }
@@ -5551,11 +5524,7 @@ sub _prepare_contents_elements($)
       my $type = $contents_command_element_name{$cmdname};
       if ($self->get_conf($cmdname)) {
         my $default_filename;
-        if ($self->get_conf('set'.$cmdname.'aftertitlepage')) {
-          if ($self->{'elements'}) {
-            $default_filename = $self->{'elements'}->[0]->{'filename'};
-          }
-        } elsif ($self->get_conf('INLINE_CONTENTS')) {
+        if ($self->get_conf('INLINE_CONTENTS')) {
           if ($self->{'extra'} and $self->{'extra'}->{$cmdname}) {
             foreach my $command(@{$self->{'extra'}->{$cmdname}}) {
               my ($element, $root_command) 

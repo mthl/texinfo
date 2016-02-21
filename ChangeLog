@@ -1,3 +1,31 @@
+2016-02-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (%misc_commands): Move 
+	'setcontentsaftertitlepage' and 'setshortcontentsaftertitlepage'
+	to obsolete section.
+	(%deprecated_commands): Add these two commands.
+
+	* tp/Texinfo/Common.pm (%document_settable_unique_at_commands): 
+	Remove these two commands.
+	* tp/Texinfo/Convert/Converter.pm (converter): Remove handling 
+	of these two commands.
+
+	* tp/Texinfo/Convert/HTML.pm (@informative_global_commands): 
+	Remove these two commands.
+	* tp/Texinfo/Convert/Plaintext.pm (@informative_global_commands):
+	Remove these two commands.
+	(_convert) <sectioning commands, @contents, @shortcontents>:
+	Remove handling of these two commands.
+	(_prepare_special_element, _prepare_contents_elements)
+	(_convert_informative_command): Remove handling of these two 
+	commands.
+	(_contents_short_contents_in_title): Removed.
+
+	* tp/t/30sectioning.t (setcontentsaftertitlepage)
+	(setshortcontentsaftertitlepage): Remove tests.
+	(section_in_unnumbered_plaintext, section_in_unnumbered_info): Remove
+	use of @setcontentsaftertitlepage in tests.
+
 2016-02-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\setchapterstyle): Remove implementation.  
