@@ -52,7 +52,6 @@ get_dir_node (void)
 
   node = xmalloc (sizeof (NODE));
   *node = *dir_node;
-  fprintf(stderr, "%p\n", node);
 
   return node;
 }

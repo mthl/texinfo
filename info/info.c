@@ -518,7 +518,6 @@ add_initial_nodes (int argc, char **argv, char **error)
             }
         }
 
-      fprintf(stderr, "B %p\n", initial_node);
       /* If there are arguments remaining, follow menus inexactly. */
       if (argc != 0)
         {
