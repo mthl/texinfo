@@ -1,3 +1,7 @@
+2016-02-22  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex: Fix PDF outline cmap for XeTeX.
+
 2016-02-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/contents/tests-parser.txt: Remove tests
