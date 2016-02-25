@@ -988,7 +988,8 @@ run_bibtex ()
 #                         that match PREDICATE.
 filter_files ()
 {
-  test -n "$xref_files_new" && echo "$xref_files_new" |
+  test -n "$xref_files_new" || return 0
+  echo "$xref_files_new" |
   # Filter existing files matching the criterion.
   #
   while read file; do

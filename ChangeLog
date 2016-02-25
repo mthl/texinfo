@@ -1,3 +1,11 @@
+2016-02-24  Vincent Belaïche  <vincentb1@users.sourceforge.net>
+
+	* util/texi2dvi (filter_files): Ensure that this function does not
+	make any non zero return status when the list of new xref files is
+	empty. Otherwise that causes a prematurate exit of calling
+	function, notably run_index. Remember texi2dvi is running under
+	set -e regime.
+
 2016-02-22  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex: Fix PDF outline cmap for XeTeX.
