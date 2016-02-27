@@ -1,9 +1,17 @@
 2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* tp/Texinfo/Common.pm (HTMLXREF): New customization variable.
+	* tp/tests/htmlxref/Makefile.am,
+	* tp/tests/htmlxref-only_mono/Makefile.am,
+	* tp/tests/htmlxref-only_split/Makefile.am: Remove unused rules.  
+	Don't use Makefile.onetst (no longer created) to say what to 
+	distribute.
+
+2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (@variable_string_settables): New 
+	customization variable HTMLXREF.
 	* tp/texi2any.pl: If HTMLXREF given on the command line, use it 
 	as the location of the htmlxref.cnf file.
-
 	* tp/Texinfo/Common.pm (parse_htmlxref_files): Move function to 
 	tp/Texinfo/Convert/HTML.pm.
 
@@ -17,6 +25,8 @@
 	htmlxref-only_split directories using a recursive make.  Run the 
 	tests in those directories the same way that all of the others 
 	are, except many_input_files.
+
+	* tp/tests/README: Remove section on subdirectories.
 
 2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
