@@ -1,5 +1,11 @@
 2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* po/Makevars, po_document/Makevars (DIST_DEPENDS_ON_UPDATE_PO): Set
+	to "no" to prevent "make distcheck" or "make dist" dirtying the
+	output of "svn diff".
+
+2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/htmlxref/Makefile.am,
 	* tp/tests/htmlxref-only_mono/Makefile.am,
 	* tp/tests/htmlxref-only_split/Makefile.am: Remove unused rules.  
