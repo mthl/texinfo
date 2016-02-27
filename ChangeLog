@@ -1,5 +1,12 @@
 2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/long-tests.sh,
+	* tp/tests/tex_html_tests.sh,
+	* tp/tests/parser_base_tests: Remove unused scripts for running 
+	tests.
+
+2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* po/Makevars, po_document/Makevars (DIST_DEPENDS_ON_UPDATE_PO): Set
 	to "no" to prevent "make distcheck" or "make dist" dirtying the
 	output of "svn diff".

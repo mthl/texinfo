@@ -104,9 +104,8 @@ unknown_nodes_renamed-noderename.cnf: formatting/unknown_nodes_renamed-noderenam
 coverage_macro-cr.texi: coverage_macro.texi
 	sed 's/$$/\r/' $(srcdir)/coverage_macro.texi > $@
 
-old_test_scripts = parser_base_tests long_tests.sh tex_html_tests.sh
 EXTRA_DIST = run_parser_all.sh parser_tests.sh \
- $(old_test_scripts) $(one_test_files_generated_list) coverage_macro.texi \
+ $(one_test_files_generated_list) coverage_macro.texi \
  coverage_macro-cr.texi $(other_tests) reference
 
 DISTCLEANFILES = unknown_nodes_renamed-noderename.cnf \
