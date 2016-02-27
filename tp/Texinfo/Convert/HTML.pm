@@ -4584,6 +4584,78 @@ sub _complete_commands_formatting($$)
   }
 }
 
+my %htmlxref_entries = (
+ 'node' => [ 'node', 'section', 'chapter', 'mono' ],
+ 'section' => [ 'section', 'chapter','node', 'mono' ],
+ 'chapter' => [ 'chapter', 'section', 'node', 'mono' ],
+ 'mono' => [ 'mono', 'chapter', 'section', 'node' ],
+);
+
+sub _parse_htmlxref_files($$)
+{
+  my $self = shift;
+  my $files = shift;
+  my $htmlxref;
+
+  foreach my $file (@$files) {
+    print STDERR "html refs config file: $file\n" if ($self->get_conf('DEBUG'));
+    unless (open (HTMLXREF, $file)) {
+      $self->document_warn(
+        sprintf($self->__("could not open html refs config file %s: %s"),
+          $file, $!));
+      next;
+    }
+    my $line_nr = 0;
+    my %variables;
+    while (my $hline = <HTMLXREF>) {
+      my $line = $hline;
+      $line_nr++;
+      next if $hline =~ /^\s*#/;
+      #$hline =~ s/[#]\s.*//;
+      $hline =~ s/^\s*//;
+      next if $hline =~ /^\s*$/;
+      chomp ($hline);
+      if ($hline =~ s/^\s*(\w+)\s*=\s*//) {
+        # handle variables
+        my $var = $1;
+        my $re = join '|', map { quotemeta $_ } keys %variables;
+        $hline =~ s/\$\{($re)\}/defined $variables{$1} ? $variables{$1} 
+                                                       : "\${$1}"/ge;
+        $variables{$var} = $hline;
+        next;
+      }
+      my @htmlxref = split /\s+/, $hline;
+      my $manual = shift @htmlxref;
+      my $split_or_mono = shift @htmlxref;
+      #print STDERR "$split_or_mono $Texi2HTML::Config::htmlxref_entries{$split_or_mono} $line_nr\n";
+      if (!defined($split_or_mono)) {
+        $self->file_line_warn($self->__("missing type"), $file, $line_nr);
+        next;
+      } elsif (!defined($htmlxref_entries{$split_or_mono})) {
+        $self->file_line_warn(sprintf($self->__("unrecognized type: %s"), 
+                               $split_or_mono), $file, $line_nr);
+        next;
+      }
+      my $href = shift @htmlxref;
+      next if (exists($htmlxref->{$manual}->{$split_or_mono}));
+
+      if (defined($href)) { # substitute 'variables'
+        my $re = join '|', map { quotemeta $_ } keys %variables;
+        $href =~ s/\$\{($re)\}/defined $variables{$1} ? $variables{$1} 
+                                                      : "\${$1}"/ge;
+        $href =~ s/\/*$// if ($split_or_mono ne 'mono');
+      }
+      $htmlxref->{$manual}->{$split_or_mono} = $href;
+    }
+    if (!close (HTMLXREF)) {
+      $self->document_warn(sprintf($self->__(
+                       "error on closing html refs config file %s: %s"),
+                             $file, $!));
+    }
+  }
+  return $htmlxref;
+}
+
 sub converter_initialize($)
 {
   my $self = shift;
@@ -4600,8 +4672,8 @@ sub converter_initialize($)
 
   $self->{'htmlxref'} = {};
   if ($self->{'htmlxref_files'}) {
-    $self->{'htmlxref'} = Texinfo::Common::parse_htmlxref_files($self, 
-                                                  $self->{'htmlxref_files'});
+    $self->{'htmlxref'} = _parse_htmlxref_files($self,
+                                                $self->{'htmlxref_files'});
   }
 
   foreach my $type (keys(%default_types_conversion)) {
@@ -5721,8 +5793,6 @@ sub _htmlxref($$)
 
   return $self->{'htmlxref'}->{$file};
 }
-
-my %htmlxref_entries = %Texinfo::Common::htmlxref_entries;
 
 sub _external_node_href($$$$)
 {

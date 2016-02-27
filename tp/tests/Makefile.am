@@ -1,6 +1,6 @@
 # $Id$
 # Makefile.am for texinfo/tp/tests.
-# Copyright 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -22,18 +22,15 @@ $(srcdir)/Makefile.onetst: \
 	  -long '$(long_tests)' \
 	  -tex_html '$(tex_html_tests)'
 
-base_tests = formatting 
+base_tests = formatting htmlxref htmlxref-only_mono htmlxref-only_split
 long_tests = sectioning coverage indices nested_formats contents layout
 tex_html_tests = tex_html
 
-test_subdirs = htmlxref htmlxref-only_mono htmlxref-only_split
-
-DIST_SUBDIRS = many_input_files $(test_subdirs) $(base_tests) $(long_tests) $(tex_html_tests)
-SUBDIRS = . many_input_files $(test_subdirs)
+DIST_SUBDIRS = many_input_files $(base_tests) $(long_tests) $(tex_html_tests)
+SUBDIRS = . many_input_files
 
 copy-tests: copy-base copy-long
 	cd many_input_files && $(MAKE) copy-tests
-	for dir in $(test_subdirs); do (cd $$dir && $(MAKE) copy-tests); done
 
 copy-base:
 	$(srcdir)/parser_tests.sh -copy $(base_tests)

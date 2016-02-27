@@ -1194,8 +1194,15 @@ while(@input_files) {
     unshift @htmlxref_dirs, $input_directory;
   }
   unshift @htmlxref_dirs, '.';
-  my @texinfo_htmlxref_files 
+
+  my @texinfo_htmlxref_files;
+  my $init_file_from_conf = get_conf('HTMLXREF');
+  if ($init_file_from_conf) {
+    @texinfo_htmlxref_files = ( $init_file_from_conf );
+  } else {
+    @texinfo_htmlxref_files 
       = locate_init_file ($texinfo_htmlxref, \@htmlxref_dirs, 1);
+  }
 
   my $parser_options = { %$parser_default_options };
 

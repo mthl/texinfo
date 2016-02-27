@@ -1,5 +1,25 @@
 2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (HTMLXREF): New customization variable.
+	* tp/texi2any.pl: If HTMLXREF given on the command line, use it 
+	as the location of the htmlxref.cnf file.
+
+	* tp/Texinfo/Common.pm (parse_htmlxref_files): Move function to 
+	tp/Texinfo/Convert/HTML.pm.
+
+	* tp/tests/htmlxref/tests-parser.txt,
+	* tp/tests/htmlxref-only_mono/tests-parser.txt,
+	* tp/tests/htmlxref-only_split/tests-parser.txt:
+	Set HTMLXREF customization variable.
+
+	* tp/tests/htmlxref/Makefile.am:
+	tp/tests/Makefile.am: Don't build in htmlxref, htmlxref-only_mono,
+	htmlxref-only_split directories using a recursive make.  Run the 
+	tests in those directories the same way that all of the others 
+	are, except many_input_files.
+
+2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (info_get_menu_entry_by_label): Always check 
 	case-insensitively, so that manpages are not preferred to a 
 	case-insensitive dir match when invoking.  Problem reported by 

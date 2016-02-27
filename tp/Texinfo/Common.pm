@@ -263,7 +263,8 @@ my @variable_string_settables = (
   'MACRO_BODY_IGNORES_LEADING_SPACE', 'CHECK_HTMLXREF',
   'TEXINFO_DTD_VERSION', 'TEXINFO_COLUMN_FOR_DESCRIPTION',
   'TEXINFO_OUTPUT_FORMAT', 'INFO_SPECIAL_CHARS_WARNING',
-  'INDEX_SPECIAL_CHARS_WARNING', 'INFO_SPECIAL_CHARS_QUOTE'
+  'INDEX_SPECIAL_CHARS_WARNING', 'INFO_SPECIAL_CHARS_QUOTE',
+  'HTMLXREF'
 );
 # Not strings. 
 # FIXME To be documented somewhere, but where?
@@ -1503,78 +1504,6 @@ sub is_content_empty($;$)
     }
   }
   return 1;
-}
-
-our %htmlxref_entries = (
- 'node' => [ 'node', 'section', 'chapter', 'mono' ],
- 'section' => [ 'section', 'chapter','node', 'mono' ],
- 'chapter' => [ 'chapter', 'section', 'node', 'mono' ],
- 'mono' => [ 'mono', 'chapter', 'section', 'node' ],
-);
-
-sub parse_htmlxref_files($$)
-{
-  my $self = shift;
-  my $files = shift;
-  my $htmlxref;
-
-  foreach my $file (@$files) {
-    print STDERR "html refs config file: $file\n" if ($self->get_conf('DEBUG'));
-    unless (open (HTMLXREF, $file)) {
-      $self->document_warn(
-        sprintf($self->__("could not open html refs config file %s: %s"),
-          $file, $!));
-      next;
-    }
-    my $line_nr = 0;
-    my %variables;
-    while (my $hline = <HTMLXREF>) {
-      my $line = $hline;
-      $line_nr++;
-      next if $hline =~ /^\s*#/;
-      #$hline =~ s/[#]\s.*//;
-      $hline =~ s/^\s*//;
-      next if $hline =~ /^\s*$/;
-      chomp ($hline);
-      if ($hline =~ s/^\s*(\w+)\s*=\s*//) {
-        # handle variables
-        my $var = $1;
-        my $re = join '|', map { quotemeta $_ } keys %variables;
-        $hline =~ s/\$\{($re)\}/defined $variables{$1} ? $variables{$1} 
-                                                       : "\${$1}"/ge;
-        $variables{$var} = $hline;
-        next;
-      }
-      my @htmlxref = split /\s+/, $hline;
-      my $manual = shift @htmlxref;
-      my $split_or_mono = shift @htmlxref;
-      #print STDERR "$split_or_mono $Texi2HTML::Config::htmlxref_entries{$split_or_mono} $line_nr\n";
-      if (!defined($split_or_mono)) {
-        $self->file_line_warn($self->__("missing type"), $file, $line_nr);
-        next;
-      } elsif (!defined($htmlxref_entries{$split_or_mono})) {
-        $self->file_line_warn(sprintf($self->__("unrecognized type: %s"), 
-                               $split_or_mono), $file, $line_nr);
-        next;
-      }
-      my $href = shift @htmlxref;
-      next if (exists($htmlxref->{$manual}->{$split_or_mono}));
-
-      if (defined($href)) { # substitute 'variables'
-        my $re = join '|', map { quotemeta $_ } keys %variables;
-        $href =~ s/\$\{($re)\}/defined $variables{$1} ? $variables{$1} 
-                                                      : "\${$1}"/ge;
-        $href =~ s/\/*$// if ($split_or_mono ne 'mono');
-      }
-      $htmlxref->{$manual}->{$split_or_mono} = $href;
-    }
-    if (!close (HTMLXREF)) {
-      $self->document_warn(sprintf($self->__(
-                       "error on closing html refs config file %s: %s"),
-                             $file, $!));
-    }
-  }
-  return $htmlxref;
 }
 
 sub parse_renamed_nodes_file($$;$$)
