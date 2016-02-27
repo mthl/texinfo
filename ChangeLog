@@ -1,3 +1,10 @@
+2016-02-27  Vincent Belaïche  <vincentb1@users.sourceforge.net>
+
+	* util/texi2dvi (make_openout_test): make compilation of openout
+	test in batch mode with using batch variable, rather than taking
+	input from /dev/null, so that there is no clash with --batch
+	command line option.
+
 2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/long-tests.sh,

@@ -1476,14 +1476,17 @@ EOF
     # to exit with an input error.
     recorder_option_maybe="$1"
     save_catcode_special=$catcode_special
+    save_batch=$batch
     catcode_special=false
+    batch=true
     make_tex_cmd
     catcode_special=$save_catcode_special
+    batch=$save_batch
     tex_cmd="$tex_cmd ./openout.tex"
     # ./ in case . isn't in path
     verbose "$0: running $tex_cmd ..."
     rm -fr "openout.$2"
-    eval "$tex_cmd" </dev/null >/dev/null 2>&1
+    eval "$tex_cmd" >/dev/null 2>&1
 }
 
 # Check tex supports -recorder option
