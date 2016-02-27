@@ -1,3 +1,10 @@
+2016-02-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (info_get_menu_entry_by_label): Always check 
+	case-insensitively, so that manpages are not preferred to a 
+	case-insensitive dir match when invoking.  Problem reported by 
+	Vincent Lefevre.
+
 2016-02-24  Vincent Belaïche  <vincentb1@users.sourceforge.net>
 
 	* util/texi2dvi (filter_files): Ensure that this function does not
