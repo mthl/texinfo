@@ -463,9 +463,12 @@ compile (FILE *fp, const char *filename, int *suppress_info, int *suppress_ea)
                       int keymap_bind_keyseq (Keymap, int *, KEYMAP_ENTRY *);
 
                       KEYMAP_ENTRY ke;
+                      static InfoCommand invalid_function = { 0 };
                       
                       ke.type = ISFUNC;
-                      ke.value.function = &function_doc_array[a];
+                      ke.value.function = a != A_INVALID
+                                            ? &function_doc_array[a]
+                                            : &invalid_function;
                       To_seq (0);
 
                       if (section == info)

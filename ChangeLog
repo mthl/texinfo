@@ -1,5 +1,12 @@
 2016-03-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/infokey.c: Check if key sequence was defined as "invalid" 
+	in infokey file, and if so, record it by saving a pointer to a 
+	null InfoCommand structure.  Broken handling of "invalid" 
+	reported by Ken Brown.
+
+2016-03-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/dir-example,
 	* install-info/install-info.c (ensure_dirfile_exists): Update 
 	message in dir node.
