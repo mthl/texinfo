@@ -74,7 +74,7 @@ build_dir_node (void)
 "A few useful Info commands:\n"
 "\n"
 "  'q' quits;\n"
-"  '?' lists all Info commands;\n"
+"  'H' lists all Info commands;\n"
 "  'h' starts the Info tutorial;\n"
 "  'mTexinfo RET' visits the Texinfo manual, etc.\n"
 

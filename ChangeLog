@@ -1,3 +1,14 @@
+2016-03-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/dir-example,
+	* install-info/install-info.c (ensure_dirfile_exists): Update 
+	message in dir node.
+
+2015-03-04  Ken Brown  <kbrown@cornell.edu>
+
+	* info/dir.c (build_dir_node): Update message in dir node to 
+	account for change in binding for '?' key, and use 'H' instead.
+
 2016-02-27  Vincent Belaïche  <vincentb1@users.sourceforge.net>
 
 	* util/texi2dvi (make_openout_test): make compilation of openout
