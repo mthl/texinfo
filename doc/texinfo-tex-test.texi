@@ -161,6 +161,16 @@ xx \arg\ xx
 should be@*
 xx e xx
 
+@section Closing brace following empty macro argument
+
+@macro Mac{x}
+A@acronym{\x\}A
+@end macro
+
+@Mac{}
+
+AA
+
 @section Trailing newlines in macro bodies
 
 Output should be doubled:
@@ -251,7 +261,7 @@ exceeds @math{@frac{1,16}} pt
 <X\a\X\b\X>
 @end macro
 
-No space should appear right after an `X':
+No trimming for single-arg macros.
 
 @noindent @Mac{b} @Mac{ b} @Mac{b  } @Mac{ b }
 

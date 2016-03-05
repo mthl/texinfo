@@ -1,5 +1,11 @@
 2016-03-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo-tex-test.texi: Add example with a closing brace 
+	following an empty macro argument.  Update remark about what is 
+	expected for space trimming from macro arguments.
+
+2016-03-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\defmacro): Don't attempt to strip spaces at 
 	the start of the argument to a macro taking only one argument.  
 	This could lead to an error ("Argument of @gobblespaces has an 
