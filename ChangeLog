@@ -1,9 +1,22 @@
+2016-03-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\defmacro): Don't attempt to strip spaces at 
+	the start of the argument to a macro taking only one argument.  
+	This could lead to an error ("Argument of @gobblespaces has an 
+	extra }") for an empty argmuent.  Reported by Norbert Preining 
+	for ESS manual.
+	(\gobblespaces): Removed.
+	(\parsemargdef, \scanmacro, \defmacro): Put "\xeatspaces" in 
+	body of macro, instead of "\processmacroarg".  For 
+	single-argument macros, make it disappear instead of letting it 
+	equal to \eatspaces.
+
 2016-03-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* info/infokey.c: Check if key sequence was defined as "invalid" 
-	in infokey file, and if so, record it by saving a pointer to a 
-	null InfoCommand structure.  Broken handling of "invalid" 
-	reported by Ken Brown.
+	* info/infokey.c (compile): Check if key sequence was defined as 
+	"invalid" in infokey file, and if so, record it by saving a 
+	pointer to a null InfoCommand structure.  Broken handling of 
+	"invalid" reported by Ken Brown.
 
 2016-03-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
