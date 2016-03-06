@@ -1,3 +1,31 @@
+2016-03-??  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Control expansion of non-ASCII bytes with a conditional.
+
+	* doc/texinfo.tex (\gdefchar): New macro.  If 
+	\ifpassthroughchars, output a token with catcode "other" for 
+	each byte instead of expanding into the TeX code to display the 
+	character.
+	(\latonechardefs, \lattwochardefs): Use \gdefchar instead of 
+	\gdef.
+	(definitions for bytes in UTF-8 sequences): Check value of 
+	\ifpassthroughchars, and if true, output a token with catcode 
+	"other".  Give definitions for bytes that could appear after the 
+	first in a UTF-8 sequence.  Use \gdef instead of \xdef when 
+	using \UTFviiLoop.  Add some comments.
+
+	(\passthroughcharacters): Remove macro, and replace uses of it 
+	with "\passthroughcharstrue".
+	(\nonasciistringdefs): Remove.
+
+	(\setcharscatcodeothernonglobal): Remove.
+	(\nativeunicodecharscatcodeothernonglobal): Remove.
+	(\scanctxt): Replace use of \setcharscatcodeothernonglobal with 
+	\passthroughcharstrue.
+	(\setupdatafile): Don't call \setcharscatcodeothernonglobal.  
+	(The existing call appeared not to do anything because it took 
+	place within a group.)
+
 2016-03-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo-tex-test.texi: Add example with a closing brace 
