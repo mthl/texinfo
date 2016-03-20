@@ -2,7 +2,7 @@
 
 	* util/texi2dvi (version): add +dev, since the release has happened.
 
-2016-03-??  Gavin Smith  <gavinsmith0123@gmail.com>
+2016-03-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Control expansion of non-ASCII bytes with a conditional.
 
