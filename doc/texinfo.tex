@@ -10865,6 +10865,10 @@ directory should work if nowhere else does.}
   \unicodechardefs
 }
 
+% Whether the active definitions of non-ASCII characters expand to
+% non-active tokens with the same character code.  This is used to
+% write characters literally, instead of using active definitions for
+% printing the correct glyphs.
 \newif\ifpassthroughchars
 \passthroughcharsfalse
 
@@ -10916,13 +10920,6 @@ directory should work if nowhere else does.}
 \def\asciichardefs{% nothing need be done
    \relax
 }
-
-% Whether the active definitions of non-ASCII characters expand to
-% non-active tokens with the same character code.  This is used to
-% write characters literally, instead of using active definitions for
-% printing the correct glyphs.
-\newif\ifpassthroughchars
-\passthroughcharsfalse
 
 % define all the unicode characters we know about, for the sake of @U.
 \iftxinativeunicodecapable

@@ -1,3 +1,8 @@
+2016-03-20  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\ifpassthroughchars):
+	Remove duplicated definition.
+
 2016-03-07  Karl Berry  <karl@freefriends.org>
 
 	* util/texi2dvi (version): add +dev, since the release has happened.
