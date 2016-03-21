@@ -882,7 +882,7 @@ xspara_add_text (char *text)
                         {
                           if (state.space_counter > 0)
                             {
-                              /* Truncuate to at most 2 spaces, and replace any 
+                              /* Truncate to at most 2 spaces, and replace any 
                                  '\n' or '\r' characters with ' '. */
 
                               TEXT new_space;
@@ -902,12 +902,16 @@ xspara_add_text (char *text)
                                     break;
                                   len = mbrlen (pspace, pspace_left, NULL);
 
-                                  /* Subtitute newlines in the pending space
+                                  /* Substitute newlines in the pending space
                                      with spaces. */
                                   if (*pspace == '\n' || *pspace == '\r')
                                     text_append_n (&new_space, " ", 1);
-                                  else
+                                  else if (len > 0)
                                     text_append_n (&new_space, pspace, len);
+                                  else
+                                    /* Skip one character and try again. */
+                                    len = 1;
+
                                   state.space_counter++;
 
                                   pspace += len;

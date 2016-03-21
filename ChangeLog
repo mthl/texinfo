@@ -1,3 +1,8 @@
+2016-03-21  Thomas Klausner  <tk@giga.or.at> (tiny change)
+
+	*  tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_add_text):
+	Do not call text_append_n with (size_t)-1.  Fix typos.
+
 2016-03-20  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex (\ifpassthroughchars):
