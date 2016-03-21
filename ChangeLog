@@ -1,3 +1,8 @@
+2016-03-21  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\ifxeteximgpdf): Remove.
+	(\doxeteximage): Improve XeTeX @image support.
+
 2016-03-21  Thomas Klausner  <tk@giga.or.at> (tiny change)
 
 	*  tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_add_text):
