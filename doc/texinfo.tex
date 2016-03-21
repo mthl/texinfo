@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-03-21.09}
+\def\texinfoversion{2016-03-21.10}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -1513,10 +1513,13 @@ output) for that.)}
 \fi  % \ifx\pdfoutput
 
 %
-% PDF outline support for XeTeX
+% For XeTeX
 %
 \ifx\XeTeXrevision\thisisundefined
 \else
+  %
+  % PDF outline support
+  %
   \pdfmakepagedesttrue \relax
   % Emulate the primitive of pdfTeX
   \def\pdfdest name#1 xyz{%
@@ -1596,13 +1599,9 @@ output) for that.)}
   % However, due to UTF-16 convert issue of xdvipdfmx 20150315,
   % ``\special{pdf:dest ...}'' can not handle non-ASCII strings.
   % It fixed by xdvipdfmx 20160106 (TeX Live SVN r39753).
-\fi
-
 %
-% @image support for XeTeX
-%
-\ifx\XeTeXrevision\thisisundefined
-\else
+  %
+  % @image support
   %
   % #1 is image name, #2 width (might be empty/whitespace), #3 height (ditto).
   \def\doxeteximage#1#2#3{%

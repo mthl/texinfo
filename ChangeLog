@@ -1,5 +1,9 @@
 2016-03-21  Masamichi Hosoda  <trueroad@trueroad.jp>
 
+	* doc/texinfo.tex: Join XeTeX support.
+
+2016-03-21  Masamichi Hosoda  <trueroad@trueroad.jp>
+
 	* doc/texinfo.tex (\ifxeteximgpdf): Remove.
 	(\doxeteximage): Improve XeTeX @image support.
 
