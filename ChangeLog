@@ -1,3 +1,9 @@
+2016-03-22  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\iftxiuseunicodedestname): New switch.
+	(\pdfmkdest, \dopdfoutline, \pdfmakeoutlines):
+	Add XeTeX Unicode PDF destination name support.
+
 2016-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\scanexp): Simply call \scanmacro instead of 
