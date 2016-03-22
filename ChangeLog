@@ -1,5 +1,10 @@
 2016-03-22  Masamichi Hosoda  <trueroad@trueroad.jp>
 
+	* doc/texinfo.tex (\pdfurl, \endlink): New macro.
+	Add XeTeX PDF URL link support.
+
+2016-03-22  Masamichi Hosoda  <trueroad@trueroad.jp>
+
 	* doc/texinfo.tex (\iftxiuseunicodedestname): New switch.
 	(\pdfmkdest, \dopdfoutline, \pdfmakeoutlines):
 	Add XeTeX Unicode PDF destination name support.

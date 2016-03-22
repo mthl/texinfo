@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-03-22.14}
+\def\texinfoversion{2016-03-22.15}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -1623,6 +1623,28 @@ output) for that.)}
   % However, due to UTF-16 convert issue of xdvipdfmx 20150315,
   % ``\special{pdf:dest ...}'' can not handle non-ASCII strings.
   % It fixed by xdvipdfmx 20160106 (TeX Live SVN r39753).
+%
+  % make a live url in pdf output.
+  \def\pdfurl#1{%
+    \begingroup
+      % it seems we really need yet another set of dummies; have not
+      % tried to figure out what each command should do in the context
+      % of @url.  for now, just make @/ a no-op, that's the only one
+      % people have actually reported a problem with.
+      %
+      \normalturnoffactive
+      \def\@{@}%
+      \let\/=\empty
+      \makevalueexpandable
+      % do we want to go so far as to use \indexnofonts instead of just
+      % special-casing \var here?
+      \def\var##1{##1}%
+      %
+      \leavevmode\setcolor{\urlcolor}%
+      \special{pdf:bann << /Border [0 0 0]
+        /Subtype /Link /A << /S /URI /URI (#1) >> >>}%
+    \endgroup}
+  \def\endlink{\setcolor{\maincolor}\special{pdf:eann}}
 %
   %
   % @image support
