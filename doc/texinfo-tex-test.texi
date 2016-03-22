@@ -694,6 +694,52 @@ See @ref{Target}.@*
 @node Target
 @section Target
 
+@chapter Copying and captions
+
+@section Copying
+
+@documentencoding UTF-8
+
+@copying
+This manual is for blah-de-blah.@*
+Backslash \@*
+
+Copyrite @copyright{} 201X@*
+þ þ þ þ þ þ þ þ
+@end copying
+
+Now for the @@insertcopying:
+
+@insertcopying
+
+
+@section Captions
+
+
+There's a float in this section.
+
+@float Figure,fig:ex1
+This is a float.
+
+@caption{This is a caption.
+Multiple paragraphs are allowed here.  Here are some ``special'' 
+characters: \ à.
+
+Paragraph breaks allowed.
+}
+
+@shortcaption{short caption text.}
+
+This float should have a caption somewhere.
+@end float
+
+List of floats now:
+
+@listoffloats Figure
+
+
+
+
 @chapter Document encoding
 
 @documentencoding UTF-8

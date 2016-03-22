@@ -1,3 +1,15 @@
+2016-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\scanexp): Simply call \scanmacro instead of 
+	expanding argument with \edef.
+	(\Efloat) <xref label for @float>: Don't call \scanexp.  Remove 
+	a comment.  Change some tabs to spaces.
+	* doc/test-texinfo-tex-texi.tex (Copying and captions): New 
+	section testing @float and @copying.
+
+	Broken Unicode character in @copying reported by Masamichi 
+	Hosoda.
+
 2016-03-21  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex: Combine sections with XeTeX support.
