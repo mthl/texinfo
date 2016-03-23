@@ -1,3 +1,9 @@
+2016-03-23  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\pdfgettoks, \pdfaddtokens, \adn, \poptoks, 
+	\maketoks, \makelink, \pdflink, \done): New Macro.
+	Add XeTeX PDF table of contents page number link support.
+
 2016-03-22  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex (\pdfurl, \endlink): New macro.
