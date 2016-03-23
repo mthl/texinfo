@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-03-23.12}
+\def\texinfoversion{2016-03-23.13}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -2883,6 +2883,7 @@ end
     \setbox0 = \hbox{\ignorespaces #2}% look for second arg
     \ifdim\wd0 > 0pt
       \ifpdf
+        % For pdfTeX and LuaTeX
         \ifurefurlonlylink
           % PDF plus option to not display url, show just arg
           \unhbox0             
@@ -2892,7 +2893,19 @@ end
           \unhbox0\ (\urefcode{#1})%
         \fi
       \else
-        \unhbox0\ (\urefcode{#1})% DVI, always show arg and url
+        \ifx\XeTeXrevision\thisisundefined
+          \unhbox0\ (\urefcode{#1})% DVI, always show arg and url
+        \else
+          % For XeTeX
+          \ifurefurlonlylink
+            % PDF plus option to not display url, show just arg
+            \unhbox0             
+          \else
+            % PDF, normally display both arg and url for consistency,
+            % visibility, if the pdf is eventually used to print, etc.
+            \unhbox0\ (\urefcode{#1})%
+          \fi
+        \fi
       \fi
     \else
       \urefcode{#1}% only url given, so show it
