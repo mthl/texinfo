@@ -1,5 +1,10 @@
 2016-03-23  Masamichi Hosoda  <trueroad@trueroad.jp>
 
+	* doc/texinfo.tex (\internalpagesizes):
+	Add XeTeX PDF paper size support.
+
+2016-03-23  Masamichi Hosoda  <trueroad@trueroad.jp>
+
 	* doc/texinfo.tex (\urefbreakfinish):
 	Add XeTeX \urefurlonlylinktrue support.
 
