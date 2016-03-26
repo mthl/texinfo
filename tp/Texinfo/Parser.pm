@@ -4375,6 +4375,11 @@ sub _parse_texi($;$)
                 push @{$current->{'contents'}}, {};
               }
             } else {
+              # Flag not defined.  This is an error if it comes from
+              # a user's document.  It is also expected behaviour for
+              # Texinfo::Report::gdt, where we want to defer substitution
+              # of the value until after the containing Texinfo is parsed.
+              _abort_empty_line($self, $current);
               # caller should expand something along 
               # gdt('@{No value for `{value}\'@}', {'value' => $value}, {'keep_texi'=> 1});
               push @{$current->{'contents'}}, { 'cmdname' => 'value',

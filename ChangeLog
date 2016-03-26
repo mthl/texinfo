@@ -1,5 +1,21 @@
 2016-03-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Report.pm (_subsititue, _substitute_element_array): 
+	New functions.
+	(gdt): Only pass @value's to parser if they are simple strings.
+	before running parser.  This will be necessary when we use the
+	XS parser, which we can't pass complex Perl data structures to.
+	Call _substitute afterwards on the resulting tree to fill in 
+	@value's.
+	* tp/Texinfo/Parser.pm (_parse_texi) <undefined @value>: Call 
+	_abort_empty_line as is done for the other cases.  Add a comment 
+	explaining when we'll get an undefined @value.
+	* tp/t: Update reference test results.  No empty elements ("{}") 
+	after value subsititutions any more.  Empty line elements before 
+	unknown values removed.
+
+2016-03-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/configure.ac (lookup_perl_flags):
 	Remove AC_DEFUN and use lookup_perl_conf instead.  Processing of
 	flags broken if one of them took an argument, e.g. '-arch'.  
