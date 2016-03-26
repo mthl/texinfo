@@ -36,18 +36,6 @@ AC_DEFUN([lookup_perl_conf],
           AC_SUBST([PERL_CONF_$1], [$conf_value])
 ])
 
-AC_DEFUN([lookup_perl_flags],
-         [AC_MSG_CHECKING([Perl flags for $1])
-
-          fetch_conf $1
-
-          # Remove any flags that aren't -I or -D
-          conf_value=`echo $conf_value | sed -e 's/-@<:@^ID@:>@@<:@^ @:>@*//g'`
-          AC_MSG_RESULT([$conf_value])
-
-          AC_SUBST([PERL_CONF_$1], [$conf_value])
-         ])
-
 AC_ARG_ENABLE([perl-xs],
     AC_HELP_STRING([--enable-perl-xs],
               [build Perl XS modules for speed (default: yes)]),
@@ -109,8 +97,8 @@ AC_ARG_WITH([interface-version],
 AC_SUBST([XSPARAGRAPH_INTERFACE_VERSION])
 
 if test x$disable_xs != xyes; then
-lookup_perl_flags([ccflags])
-lookup_perl_flags([cccdlflags])
+lookup_perl_conf([ccflags])
+lookup_perl_conf([cccdlflags])
 
 # flags for linking the extension, e.g. -rpath.
 lookup_perl_conf([ccdlflags])

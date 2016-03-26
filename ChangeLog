@@ -1,3 +1,10 @@
+2016-03-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac (lookup_perl_flags):
+	Remove AC_DEFUN and use lookup_perl_conf instead.  Processing of
+	flags broken if one of them took an argument, e.g. '-arch'.  
+	Broken build for Darwin reported by Jack Howart.
+
 2016-03-23  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex (\internalpagesizes):
