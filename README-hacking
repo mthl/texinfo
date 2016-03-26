@@ -157,13 +157,17 @@ Check that TEXINFO_DTD_VERSION has been updated to the next version in
 Check "make ccheck" and "make vcheck" work in "doc/refcard".
 Check "dist-xz" is in the option list in configure.ac (often removed
 for speed when testing).
+Update copyright years in many files for release; best to grep -r for
+  the previous year.  See also ChangeLog entries for "copyright years".
+  No need (though it's ok) to change every source file at once, just the
+  ones relevant to --version calls, etc., such as texindex.awk and info.c.
 make po-check             # update po/POTFILES.in as needed
 gnulib-tool --add-import  # for pretest
 util/srclist-txi          # for pretest, to sync files with other sources
 
 - Official releases only:
-version number in texi2dvi, texi2pdf, txirefcard.tex.
 version and date in NEWS.
+version number in texi2dvi, texi2pdf, txirefcard.tex.
 (cd tp && ./maintain/change_perl_modules_version.sh auto)
   -- this updates all the version numbers in the Perl modules
 sync texi2html/test/ results with tp/.
@@ -251,8 +255,8 @@ cvs -qn update, followed by cvs add.  When done, run cvs commit.
 
 #  Official releases only: ... update texinfo at tug.org
 #  (contact root@tug.org):
-prev=5.2
-ver=6.0
+prev=6.0
+ver=6.1
 cd ~ftp/tex
 rm -rf texinfo-$prev*
 cp ~/texinfo-$ver.tar.{gz,xz} .
