@@ -29,6 +29,7 @@ use Texinfo::Common;
 use Texinfo::Convert::Texinfo;
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Unicode;
+use Texinfo::Convert::NodeNameNormalization;
 
 use Carp qw(cluck);
 

@@ -1,5 +1,11 @@
 2016-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/HTML.pm: Add line
+	"use Texinfo::Convert::NodeNameNormalization" instead of relying 
+	on module being pulled in indirectly.
+
+2016-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* parsetexi, tp/parsetexi: Move subdirectory in preparation for 
 	integration into texi2any as an XS module.
 
