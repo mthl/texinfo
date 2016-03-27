@@ -1,7 +1,10 @@
 2016-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	Replace build system with automake/libtool one, copied from 
-	XSParagraph.
+	Replace MakeMaker build system with automake/libtool one, copied 
+	from XSParagraph.
+	* Parsetexi: Remove subdirectory.
+	* Parsetexi/Parsetexi.xs,
+	* Parsetexi/lib/Parsetexi.pm: Move to top level.
 
 2015-12-05  Gavin Smith  <gavinsmith0123@gmail.com>
 

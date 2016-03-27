@@ -1,6 +1,0 @@
-Revision history for Perl extension Parsetexi.
-
-0.01  Wed Dec 10 20:08:04 2014
-	- original version; created by h2xs 1.23 with options
-		-O -n Parsetexi tree.h
-
