@@ -1,20 +1,49 @@
-AUTOMAKE_OPTIONS=foreign
+AUTOMAKE_OPTIONS=foreign subdir-objects
 
-SUBDIRS=. Parsetexi
+ACLOCAL_AMFLAGS=-I m4
+
+EXTRA_DIST=
+CLEANFILES =
+
+modulesdir = $(pkgdatadir)/Parsetexi
+xsdir = $(pkglibdir)
+
+PERL_INC = $(PERL_CONF_archlibexp)/CORE
+
+XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
+
+.xs.c:
+	$(XSUBPP) $(XSUBPPARGS) $< > $*.xsc && mv $*.xsc $*.c
 
 bin_PROGRAMS=parsetexi
+xs_LTLIBRARIES = Parsetexi.la
 
-lib_LIBRARIES=libparsetexi.a
+CLEANFILES += Parsetexi.c
+EXTRA_DIST += Parsetexi.xs
 
-# See "perlembed" man page.
-# (I expected the ldopts flags to have to occur at the end of the cc 
-# command line, but this seems to work fine.
-# Otherwise LDADD would have to be set, but automake complains if you do
-# LDADD=`perl -MExtUtils::Embed -e ldopts`)
+# Override these variables set by configure at the top level, because 
+# the compiler used in this subdirectory might be different.  
+# PERL_EXT_var are user variables, allowing configuring at the top-level 
+# with e.g. "./configure CFLAGS='-g -O0' PERL_EXT_CFLAGS='-g'".
 
-AM_CFLAGS=`perl -MExtUtils::Embed -e ccopts -e ldopts`
+CFLAGS = $(PERL_EXT_CFLAGS)
+CPPFLAGS = $(PERL_EXT_CPPFLAGS)
+LDFLAGS = $(PERL_EXT_LDFLAGS)
 
-libparsetexi_a_SOURCES=api.c api.h \
+AM_CFLAGS = $(PERL_CONF_ccflags)
+
+Parsetexi_la_CFLAGS = $(AM_CFLAGS)
+Parsetexi_la_CFLAGS += -DVERSION=\"$(VERSION)\" "-I$(PERL_INC)"
+
+AM_LDFLAGS = -no-undefined -L$(PERL_INC) $(PERL_CONF_libperl)
+AM_LDFLAGS += -avoid-version -module $(PERL_CONF_ccdlflags)
+# The -no-undefined flag is for MS-Windows.  See info node
+# `(gnulib)Libtool and Windows'.  The -L and -l options after it show
+# where to find the undefined symbols.
+
+
+Parsetexi_la_SOURCES= Parsetexi.c \
+                  api.c api.h \
 		  parser.c parser.h tree_types.h \
 		  element_types.c element_types.h \
 		  commands.c commands.h \
@@ -46,7 +75,7 @@ BUILT_SOURCES=element_types.c element_types.h \
               command_data.c command_ids.h
 
 # Need to be distributed
-EXTRA_DIST=element_types.txt element_types.awk \
+EXTRA_DIST+=element_types.txt element_types.awk \
 	   command_data.txt command_data.awk
 
 # For reference

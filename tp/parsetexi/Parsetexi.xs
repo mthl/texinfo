@@ -5,11 +5,11 @@
 
 #include "ppport.h"
 
-#include "../tree_types.h"
-#include "../tree.h"
-#include "../api.h"
-#include "../errors.h"
-#include "../macro.h"
+#include "tree_types.h"
+#include "tree.h"
+#include "api.h"
+#include "errors.h"
+#include "macro.h"
 
 HV *build_texinfo_tree (void);
 HV *build_label_list (void);

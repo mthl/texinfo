@@ -1,3 +1,8 @@
+2016-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Replace build system with automake/libtool one, copied from 
+	XSParagraph.
+
 2015-12-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* commands.h (CF_global, CF_global_unique): New flags.
