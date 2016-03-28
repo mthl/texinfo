@@ -457,7 +457,6 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                                             }
                                           ],
                                           'cmdname' => 'dotless',
-                                          'contents' => [],
                                           'line_nr' => {},
                                           'parent' => {}
                                         }
@@ -467,7 +466,6 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                                     }
                                   ],
                                   'cmdname' => '^',
-                                  'contents' => [],
                                   'line_nr' => {},
                                   'parent' => {}
                                 },
@@ -1136,7 +1134,6 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                                         }
                                       ],
                                       'cmdname' => 'dotless',
-                                      'contents' => [],
                                       'line_nr' => {},
                                       'parent' => {}
                                     }
@@ -1146,7 +1143,6 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                                 }
                               ],
                               'cmdname' => '^',
-                              'contents' => [],
                               'line_nr' => {},
                               'parent' => {}
                             },
@@ -1766,7 +1762,6 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                                             }
                                           ],
                                           'cmdname' => 'dotless',
-                                          'contents' => [],
                                           'line_nr' => {},
                                           'parent' => {}
                                         }
@@ -1776,7 +1771,6 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                                     }
                                   ],
                                   'cmdname' => '^',
-                                  'contents' => [],
                                   'line_nr' => {},
                                   'parent' => {}
                                 },
@@ -2449,7 +2443,6 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                                             }
                                           ],
                                           'cmdname' => 'dotless',
-                                          'contents' => [],
                                           'line_nr' => {},
                                           'parent' => {}
                                         }
@@ -2459,7 +2452,6 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                                     }
                                   ],
                                   'cmdname' => '^',
-                                  'contents' => [],
                                   'line_nr' => {},
                                   'parent' => {}
                                 },
@@ -3040,7 +3032,6 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                                                     }
                                                   ],
                                                   'cmdname' => 'dotless',
-                                                  'contents' => [],
                                                   'line_nr' => {},
                                                   'parent' => {}
                                                 }
@@ -3050,7 +3041,6 @@ In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^
                                             }
                                           ],
                                           'cmdname' => '^',
-                                          'contents' => [],
                                           'line_nr' => {},
                                           'parent' => {}
                                         },

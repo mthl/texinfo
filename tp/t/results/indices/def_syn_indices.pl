@@ -329,6 +329,7 @@ $result_trees{'def_syn_indices'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'line_nr' => {},
                   'parent' => {}
                 },
                 {
@@ -353,7 +354,6 @@ $result_trees{'def_syn_indices'} = {
                             }
                           ],
                           'cmdname' => 'dotless',
-                          'contents' => [],
                           'line_nr' => {},
                           'parent' => {}
                         }
@@ -363,7 +363,6 @@ $result_trees{'def_syn_indices'} = {
                     }
                   ],
                   'cmdname' => '^',
-                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -1583,6 +1582,7 @@ $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'conte
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[4]{'args'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[4];
+$result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[4]{'line_nr'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'def_syn_indices'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'args'}[0];

@@ -74,6 +74,11 @@ $result_trees{'utf8_enable_encoding'} = {
             }
           ],
           'cmdname' => '^',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

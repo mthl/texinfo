@@ -18,7 +18,6 @@ $result_trees{'empty_accent'} = {
             }
           ],
           'cmdname' => '`',
-          'contents' => [],
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,

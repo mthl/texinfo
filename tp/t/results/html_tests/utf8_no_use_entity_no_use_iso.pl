@@ -74,6 +74,11 @@ $result_trees{'utf8_no_use_entity_no_use_iso'} = {
             }
           ],
           'cmdname' => '^',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 3,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {

@@ -278,6 +278,9 @@ foreach my $brace_command (keys (%brace_commands)) {
   $keep_line_nr_brace_commands{$brace_command} = 1
     if ($brace_commands{$brace_command} > 1);
 }
+foreach my $brace_command (keys (%accent_commands)) {
+  $keep_line_nr_brace_commands{$brace_command} = 1;
+}
 
 my %type_with_paragraph;
 foreach my $type ('before_item', 'text_root', 'document_root',
@@ -4198,7 +4201,6 @@ sub _parse_texi($;$)
             if ($current->{'cmdname'} =~ /^[a-zA-Z]/) {
               $current->{'args'}->[-1]->{'type'} = 'space_command_arg';
             }
-            delete $current->{'contents'};
             $current = $current->{'parent'};
           } else { # The accent is at end of line
             # whitespace for commands with letter.
@@ -5042,8 +5044,10 @@ sub _parse_texi($;$)
                or defined($self->{'definfoenclose'}->{$command})) {
           
           push @{$current->{'contents'}}, { 'cmdname' => $command, 
-                                            'parent' => $current, 
-                                            'contents' => [] };
+                                            'parent' => $current };
+          if (not $accent_commands{$command}) {
+            $current->{'contents'}->[-1]->{'contents'} = [];
+          }
           $current->{'contents'}->[-1]->{'line_nr'} = $line_nr
             if ($keep_line_nr_brace_commands{$command});
           _mark_and_warn_invalid($self, $command, $invalid_parent,

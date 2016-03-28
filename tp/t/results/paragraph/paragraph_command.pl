@@ -83,7 +83,6 @@ $result_trees{'paragraph_command'} = {
             }
           ],
           'cmdname' => 'dotless',
-          'contents' => [],
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 5,

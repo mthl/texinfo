@@ -143,7 +143,6 @@ $result_trees{'documentdescription'} = {
                             }
                           ],
                           'cmdname' => 'dotless',
-                          'contents' => [],
                           'line_nr' => {},
                           'parent' => {}
                         }
@@ -153,7 +152,6 @@ $result_trees{'documentdescription'} = {
                     }
                   ],
                   'cmdname' => '^',
-                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },

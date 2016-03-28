@@ -351,7 +351,6 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
                     }
                   ],
                   'cmdname' => 'dotless',
-                  'contents' => [],
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 9,
@@ -365,7 +364,6 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
             }
           ],
           'cmdname' => '^',
-          'contents' => [],
           'line_nr' => {},
           'parent' => {}
         },

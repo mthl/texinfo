@@ -215,6 +215,11 @@ $result_trees{'encoding_index_ascii'} = {
                     }
                   ],
                   'cmdname' => '\'',
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 8,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -235,6 +240,7 @@ $result_trees{'encoding_index_ascii'} = {
                     }
                   ],
                   'cmdname' => '\'',
+                  'line_nr' => {},
                   'parent' => {}
                 },
                 {
@@ -270,11 +276,7 @@ $result_trees{'encoding_index_ascii'} = {
             'misc_content' => [],
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 8,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {},
           'type' => 'index_entry_command'
         },
@@ -304,7 +306,6 @@ $result_trees{'encoding_index_ascii'} = {
                     }
                   ],
                   'cmdname' => '"',
-                  'contents' => [],
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 9,
@@ -330,7 +331,6 @@ $result_trees{'encoding_index_ascii'} = {
                     }
                   ],
                   'cmdname' => '"',
-                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -348,7 +348,6 @@ $result_trees{'encoding_index_ascii'} = {
                     }
                   ],
                   'cmdname' => '"',
-                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -366,7 +365,6 @@ $result_trees{'encoding_index_ascii'} = {
                     }
                   ],
                   'cmdname' => '"',
-                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -435,6 +433,11 @@ $result_trees{'encoding_index_ascii'} = {
                     }
                   ],
                   'cmdname' => '^',
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 10,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -455,6 +458,7 @@ $result_trees{'encoding_index_ascii'} = {
                     }
                   ],
                   'cmdname' => '^',
+                  'line_nr' => {},
                   'parent' => {}
                 },
                 {
@@ -471,6 +475,7 @@ $result_trees{'encoding_index_ascii'} = {
                     }
                   ],
                   'cmdname' => '^',
+                  'line_nr' => {},
                   'parent' => {}
                 },
                 {
@@ -487,6 +492,7 @@ $result_trees{'encoding_index_ascii'} = {
                     }
                   ],
                   'cmdname' => '^',
+                  'line_nr' => {},
                   'parent' => {}
                 },
                 {
@@ -503,6 +509,7 @@ $result_trees{'encoding_index_ascii'} = {
                     }
                   ],
                   'cmdname' => '^',
+                  'line_nr' => {},
                   'parent' => {}
                 },
                 {
@@ -541,11 +548,7 @@ $result_trees{'encoding_index_ascii'} = {
             'misc_content' => [],
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 10,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {},
           'type' => 'index_entry_command'
         },
@@ -2241,7 +2244,6 @@ $result_trees{'encoding_index_ascii'} = {
                     }
                   ],
                   'cmdname' => 'dotless',
-                  'contents' => [],
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 41,
@@ -2267,7 +2269,6 @@ $result_trees{'encoding_index_ascii'} = {
                     }
                   ],
                   'cmdname' => 'dotless',
-                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -2343,7 +2344,6 @@ $result_trees{'encoding_index_ascii'} = {
                             }
                           ],
                           'cmdname' => 'dotless',
-                          'contents' => [],
                           'line_nr' => {
                             'file_name' => '',
                             'line_nr' => 42,
@@ -2357,7 +2357,6 @@ $result_trees{'encoding_index_ascii'} = {
                     }
                   ],
                   'cmdname' => '^',
-                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -2383,7 +2382,6 @@ $result_trees{'encoding_index_ascii'} = {
                             }
                           ],
                           'cmdname' => 'dotless',
-                          'contents' => [],
                           'line_nr' => {},
                           'parent' => {}
                         }
@@ -2393,7 +2391,6 @@ $result_trees{'encoding_index_ascii'} = {
                     }
                   ],
                   'cmdname' => '^',
-                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -3724,6 +3721,7 @@ $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[3];
+$result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[3]{'line_nr'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1];
@@ -3735,6 +3733,7 @@ $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'extra'}{'in
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'extra'}{'index_entry'}{'node'} = $result_trees{'encoding_index_ascii'}{'contents'}[1];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'extra'}{'index_entry'}{'content'};
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'line_nr'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[2];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[2]{'args'}[0];
@@ -3776,15 +3775,19 @@ $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[3];
+$result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[3]{'line_nr'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[4]{'args'}[0];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[4];
+$result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[4]{'line_nr'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[5]{'args'}[0];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[5];
+$result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[5]{'line_nr'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[5]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[6];
+$result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[6]{'line_nr'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3];
@@ -3799,6 +3802,7 @@ $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'extra'}{'in
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'node'} = $result_trees{'encoding_index_ascii'}{'contents'}[1];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'extra'}{'misc_content'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'content'};
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'line_nr'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[4];
 $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'encoding_index_ascii'}{'contents'}[2]{'contents'}[4]{'args'}[0];

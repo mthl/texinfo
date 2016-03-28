@@ -363,7 +363,6 @@ $result_trees{'at_commands_glued_in_example'} = {
                         }
                       ],
                       'cmdname' => 'dotless',
-                      'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 10,
@@ -377,7 +376,6 @@ $result_trees{'at_commands_glued_in_example'} = {
                 }
               ],
               'cmdname' => '^',
-              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },

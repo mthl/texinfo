@@ -36,7 +36,6 @@ $result_trees{'accents'} = {
             }
           ],
           'cmdname' => '~',
-          'contents' => [],
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 2,
@@ -62,7 +61,6 @@ $result_trees{'accents'} = {
             }
           ],
           'cmdname' => '~',
-          'contents' => [],
           'line_nr' => {},
           'parent' => {}
         },
@@ -123,7 +121,6 @@ $result_trees{'accents'} = {
             }
           ],
           'cmdname' => '~',
-          'contents' => [],
           'line_nr' => {},
           'parent' => {}
         },
@@ -175,7 +172,6 @@ $result_trees{'accents'} = {
             }
           ],
           'cmdname' => '^',
-          'contents' => [],
           'line_nr' => {},
           'parent' => {}
         },

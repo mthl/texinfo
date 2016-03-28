@@ -103,7 +103,6 @@ $result_trees{'nested_args'} = {
                     }
                   ],
                   'cmdname' => '~',
-                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
