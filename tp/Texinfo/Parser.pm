@@ -5184,7 +5184,8 @@ sub _parse_texi($;$)
                   and $current->{'parent'}->{'parent'}->{'type'} eq 'def_line');
             push @{$current->{'contents'}}, 
                 {'type' => 'empty_spaces_before_argument',
-                 'text' => '' };
+                 'text' => '',
+                 'parent' => $current };
             print STDERR "BRACKETED in def/multitable\n" if ($self->{'DEBUG'});
             $current->{'extra'}->{'spaces_before_argument'}
                = $current->{'contents'}->[-1];
