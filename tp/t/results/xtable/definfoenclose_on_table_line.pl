@@ -70,6 +70,7 @@ $result_trees{'definfoenclose_on_table_line'} = {
             },
             {
               'cmdname' => 'phi',
+              'contents' => [],
               'extra' => {
                 'begin' => ':',
                 'end' => ':'

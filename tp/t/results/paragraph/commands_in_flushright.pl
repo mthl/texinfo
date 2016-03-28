@@ -371,6 +371,7 @@ $result_trees{'commands_in_flushright'} = {
                 },
                 {
                   'cmdname' => 'emph',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

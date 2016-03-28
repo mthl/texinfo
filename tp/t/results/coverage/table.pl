@@ -27,6 +27,7 @@ $result_trees{'table'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -239,6 +240,7 @@ $result_trees{'table'} = {
             },
             {
               'cmdname' => 'samp',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

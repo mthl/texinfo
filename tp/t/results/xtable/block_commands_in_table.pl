@@ -110,6 +110,7 @@ $result_trees{'block_commands_in_table'} = {
                 },
                 {
                   'cmdname' => 'emph',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -832,6 +833,7 @@ $result_trees{'block_commands_in_table'} = {
                 },
                 {
                   'cmdname' => 'strong',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -1143,6 +1145,7 @@ $result_trees{'block_commands_in_table'} = {
                 },
                 {
                   'cmdname' => 'r',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -1410,6 +1413,7 @@ $result_trees{'block_commands_in_table'} = {
                 },
                 {
                   'cmdname' => 'emph',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

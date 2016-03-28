@@ -23,6 +23,7 @@ $result_trees{'section_in_table'} = {
                 },
                 {
                   'cmdname' => 'asis',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

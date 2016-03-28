@@ -21,6 +21,7 @@ $result_trees{'no_arg_brace_command_on_table_line'} = {
             },
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

@@ -493,6 +493,7 @@ $result_trees{'complex_float'} = {
                     },
                     {
                       'cmdname' => 'emph',
+                      'contents' => [],
                       'parent' => {},
                       'type' => 'command_as_argument'
                     },
@@ -669,6 +670,7 @@ $result_trees{'complex_float'} = {
                     },
                     {
                       'cmdname' => 'minus',
+                      'contents' => [],
                       'parent' => {},
                       'type' => 'command_as_argument'
                     },
@@ -1340,6 +1342,7 @@ $result_trees{'complex_float'} = {
                             },
                             {
                               'cmdname' => 'emph',
+                              'contents' => [],
                               'parent' => {},
                               'type' => 'command_as_argument'
                             },
@@ -1880,6 +1883,7 @@ $result_trees{'complex_float'} = {
                             },
                             {
                               'cmdname' => 'minus',
+                              'contents' => [],
                               'parent' => {},
                               'type' => 'command_as_argument'
                             },
@@ -3033,6 +3037,7 @@ $result_trees{'complex_float'} = {
                             },
                             {
                               'cmdname' => 'emph',
+                              'contents' => [],
                               'parent' => {},
                               'type' => 'command_as_argument'
                             },
@@ -3573,6 +3578,7 @@ $result_trees{'complex_float'} = {
                             },
                             {
                               'cmdname' => 'minus',
+                              'contents' => [],
                               'parent' => {},
                               'type' => 'command_as_argument'
                             },

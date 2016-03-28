@@ -23,6 +23,7 @@ $result_trees{'section_in_nested_block_commands'} = {
                 },
                 {
                   'cmdname' => 'strong',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

@@ -269,6 +269,7 @@ $result_trees{'formats_only_title_comments'} = {
             },
             {
               'cmdname' => 'emph',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -399,6 +400,7 @@ $result_trees{'formats_only_title_comments'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

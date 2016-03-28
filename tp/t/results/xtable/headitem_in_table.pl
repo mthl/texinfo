@@ -21,6 +21,7 @@ $result_trees{'headitem_in_table'} = {
             },
             {
               'cmdname' => 'strong',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

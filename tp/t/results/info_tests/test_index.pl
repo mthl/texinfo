@@ -915,6 +915,7 @@ $result_trees{'test_index'} = {
                 },
                 {
                   'cmdname' => 'emph',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

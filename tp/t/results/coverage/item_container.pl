@@ -154,6 +154,7 @@ $result_trees{'item_container'} = {
             },
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

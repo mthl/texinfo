@@ -222,6 +222,7 @@ $result_trees{'in_errormsg'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

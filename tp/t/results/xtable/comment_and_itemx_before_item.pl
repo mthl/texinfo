@@ -21,6 +21,7 @@ $result_trees{'comment_and_itemx_before_item'} = {
             },
             {
               'cmdname' => 'code',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

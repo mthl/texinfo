@@ -235,6 +235,7 @@ After table.
                 },
                 {
                   'cmdname' => 'asis',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -647,6 +648,7 @@ After table.
                 },
                 {
                   'cmdname' => 'emph',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -969,6 +971,7 @@ After table.
                 },
                 {
                   'cmdname' => 'asis',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -1381,6 +1384,7 @@ After table.
                 },
                 {
                   'cmdname' => 'emph',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -1715,6 +1719,7 @@ After table.
                     },
                     {
                       'cmdname' => 'asis',
+                      'contents' => [],
                       'parent' => {},
                       'type' => 'command_as_argument'
                     },
@@ -2127,6 +2132,7 @@ After table.
                     },
                     {
                       'cmdname' => 'emph',
+                      'contents' => [],
                       'parent' => {},
                       'type' => 'command_as_argument'
                     },

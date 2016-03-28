@@ -21,6 +21,7 @@ $result_trees{'title_and_itemx_before_item'} = {
             },
             {
               'cmdname' => 'emph',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

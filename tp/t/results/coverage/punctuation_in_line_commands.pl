@@ -117,6 +117,7 @@ $result_trees{'punctuation_in_line_commands'} = {
                 },
                 {
                   'cmdname' => 'asis',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

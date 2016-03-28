@@ -242,6 +242,7 @@ $result_trees{'comments_end_lines'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

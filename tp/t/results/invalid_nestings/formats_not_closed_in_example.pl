@@ -45,6 +45,7 @@ $result_trees{'formats_not_closed_in_example'} = {
                 },
                 {
                   'cmdname' => 'asis',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

@@ -4160,7 +4160,6 @@ sub _parse_texi($;$)
            and $line !~ /^{/) {
         # special case for @-command as argument of @itemize or @*table.
         if (_command_with_command_as_argument($current->{'parent'})) {
-          delete $current->{'contents'};
           print STDERR "FOR PARENT \@$current->{'parent'}->{'parent'}->{'cmdname'} command_as_argument $current->{'cmdname'}\n" if ($self->{'DEBUG'});
           $current->{'type'} = 'command_as_argument' if (!$current->{'type'});
           $current->{'parent'}->{'parent'}->{'extra'}->{'command_as_argument'} 

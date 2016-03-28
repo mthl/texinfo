@@ -675,6 +675,7 @@ $result_trees{'center'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -828,6 +829,7 @@ $result_trees{'center'} = {
             },
             {
               'cmdname' => 'emph',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -1650,6 +1652,7 @@ $result_trees{'center'} = {
                     },
                     {
                       'cmdname' => 'asis',
+                      'contents' => [],
                       'parent' => {},
                       'type' => 'command_as_argument'
                     },

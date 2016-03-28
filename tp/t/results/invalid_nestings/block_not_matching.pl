@@ -195,6 +195,7 @@ $result_trees{'block_not_matching'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -318,6 +319,7 @@ $result_trees{'block_not_matching'} = {
             },
             {
               'cmdname' => 'emph',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

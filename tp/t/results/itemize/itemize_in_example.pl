@@ -33,6 +33,7 @@ $result_trees{'itemize_in_example'} = {
                 },
                 {
                   'cmdname' => 'bullet',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -179,6 +180,7 @@ $result_trees{'itemize_in_example'} = {
                 },
                 {
                   'cmdname' => 'asis',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

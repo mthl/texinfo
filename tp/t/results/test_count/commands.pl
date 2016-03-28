@@ -308,6 +308,7 @@ $result_trees{'commands'} = {
             },
             {
               'cmdname' => 'samp',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

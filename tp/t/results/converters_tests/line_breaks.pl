@@ -276,6 +276,7 @@ $result_trees{'line_breaks'} = {
             },
             {
               'cmdname' => 'strong',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

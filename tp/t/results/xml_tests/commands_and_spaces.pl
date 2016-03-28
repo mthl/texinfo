@@ -1527,6 +1527,7 @@ $result_trees{'commands_and_spaces'} = {
                 },
                 {
                   'cmdname' => 'strong',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

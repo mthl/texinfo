@@ -1,3 +1,17 @@
+2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <commands with commands as 
+	arguments>: Don't remove 'contents'.
+
+2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (%keep_line_nr_brace_commands): Add 
+	accent commands, so that the line number always recorded for 
+	accent commands (previously only done if the accent command took 
+	an argument in braces).
+	(_parse_texi) <brace commands>: Never define 'contents' for an 
+	accent command.
+
 2016-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/HTML.pm: Add line

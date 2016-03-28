@@ -123,6 +123,7 @@ $result_trees{'macro_in_brace_command'} = {
             },
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

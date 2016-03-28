@@ -68,6 +68,7 @@ $result_trees{'in_table'} = {
                 },
                 {
                   'cmdname' => 'xref',
+                  'contents' => [],
                   'extra' => {
                     'invalid_nesting' => 1
                   },
@@ -167,6 +168,7 @@ $result_trees{'in_table'} = {
                 },
                 {
                   'cmdname' => 'code',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -812,6 +814,7 @@ $result_trees{'in_table'} = {
                 },
                 {
                   'cmdname' => 'asis',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

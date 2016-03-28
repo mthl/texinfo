@@ -33,6 +33,7 @@ $result_trees{'tab_in_table_in_example'} = {
                 },
                 {
                   'cmdname' => 'code',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

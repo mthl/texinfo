@@ -21,6 +21,7 @@ $result_trees{'table_command_comment'} = {
             },
             {
               'cmdname' => 'code',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

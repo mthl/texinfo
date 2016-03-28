@@ -55,6 +55,7 @@ $result_trees{'table_in_code'} = {
             },
             {
               'cmdname' => 'emph',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

@@ -21,6 +21,7 @@ $result_trees{'table_on_item_line'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -71,6 +72,7 @@ $result_trees{'table_on_item_line'} = {
                                 },
                                 {
                                   'cmdname' => 'asis',
+                                  'contents' => [],
                                   'parent' => {},
                                   'type' => 'command_as_argument'
                                 },

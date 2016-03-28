@@ -21,6 +21,7 @@ $result_trees{'item_in_ref'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

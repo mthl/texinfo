@@ -75,6 +75,7 @@ $result_trees{'footnote_in_center'} = {
                                 },
                                 {
                                   'cmdname' => 'asis',
+                                  'contents' => [],
                                   'parent' => {},
                                   'type' => 'command_as_argument'
                                 },

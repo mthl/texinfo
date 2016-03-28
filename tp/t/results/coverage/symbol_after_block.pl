@@ -337,6 +337,7 @@ $result_trees{'symbol_after_block'} = {
             },
             {
               'cmdname' => 'emph',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -502,6 +503,7 @@ $result_trees{'symbol_after_block'} = {
             },
             {
               'cmdname' => 'emph',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -688,6 +690,7 @@ $result_trees{'symbol_after_block'} = {
             },
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -817,6 +820,7 @@ $result_trees{'symbol_after_block'} = {
             },
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

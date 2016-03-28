@@ -45,6 +45,7 @@ $result_trees{'table_in_example_in_display'} = {
                     },
                     {
                       'cmdname' => 'asis',
+                      'contents' => [],
                       'parent' => {},
                       'type' => 'command_as_argument'
                     },

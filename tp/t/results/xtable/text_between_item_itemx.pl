@@ -21,6 +21,7 @@ $result_trees{'text_between_item_itemx'} = {
             },
             {
               'cmdname' => 'strong',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

@@ -132,6 +132,7 @@ $result_trees{'preformatted'} = {
                 },
                 {
                   'cmdname' => 'code',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

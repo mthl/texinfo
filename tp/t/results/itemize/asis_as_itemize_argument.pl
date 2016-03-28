@@ -21,6 +21,7 @@ $result_trees{'asis_as_itemize_argument'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

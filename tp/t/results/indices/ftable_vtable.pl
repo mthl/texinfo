@@ -68,6 +68,7 @@ $result_trees{'ftable_vtable'} = {
                 },
                 {
                   'cmdname' => 'emph',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -366,6 +367,7 @@ $result_trees{'ftable_vtable'} = {
                 },
                 {
                   'cmdname' => 'emph',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

@@ -21,6 +21,7 @@ $result_trees{'set_on_item_line'} = {
             },
             {
               'cmdname' => 'code',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -362,6 +363,7 @@ $result_trees{'set_on_item_line'} = {
             },
             {
               'cmdname' => 'code',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

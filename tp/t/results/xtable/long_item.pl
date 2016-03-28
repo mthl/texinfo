@@ -21,6 +21,7 @@ $result_trees{'long_item'} = {
             },
             {
               'cmdname' => 'emph',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

@@ -21,6 +21,7 @@ $result_trees{'symbol_after_command'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

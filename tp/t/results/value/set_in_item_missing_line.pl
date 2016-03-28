@@ -21,6 +21,7 @@ $result_trees{'set_in_item_missing_line'} = {
             },
             {
               'cmdname' => 'code',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -247,6 +248,7 @@ $result_trees{'set_in_item_missing_line'} = {
             },
             {
               'cmdname' => 'code',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

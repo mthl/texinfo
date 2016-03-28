@@ -21,6 +21,7 @@ $result_trees{'inter_item_commands_in_itemize'} = {
             },
             {
               'cmdname' => 'minus',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -228,6 +229,7 @@ $result_trees{'inter_item_commands_in_itemize'} = {
             },
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

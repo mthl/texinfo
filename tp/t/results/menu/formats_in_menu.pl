@@ -108,6 +108,7 @@ $result_trees{'formats_in_menu'} = {
                             },
                             {
                               'cmdname' => 'asis',
+                              'contents' => [],
                               'parent' => {},
                               'type' => 'command_as_argument'
                             },

@@ -170,6 +170,7 @@ $result_trees{'colon_in_index_entry'} = {
                 },
                 {
                   'cmdname' => 'emph',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

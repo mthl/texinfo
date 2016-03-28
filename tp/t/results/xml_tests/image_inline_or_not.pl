@@ -633,6 +633,7 @@ $result_trees{'image_inline_or_not'} = {
                 },
                 {
                   'cmdname' => 'asis',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

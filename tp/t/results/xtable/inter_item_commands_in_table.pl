@@ -21,6 +21,7 @@ $result_trees{'inter_item_commands_in_table'} = {
             },
             {
               'cmdname' => 'code',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -222,6 +223,7 @@ $result_trees{'inter_item_commands_in_table'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -476,6 +478,7 @@ $result_trees{'inter_item_commands_in_table'} = {
             },
             {
               'cmdname' => 'var',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -986,6 +989,7 @@ $result_trees{'inter_item_commands_in_table'} = {
             },
             {
               'cmdname' => 'code',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -1229,6 +1233,7 @@ $result_trees{'inter_item_commands_in_table'} = {
             },
             {
               'cmdname' => 'code',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

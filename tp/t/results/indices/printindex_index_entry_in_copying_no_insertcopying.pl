@@ -357,6 +357,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
                     },
                     {
                       'cmdname' => 'asis',
+                      'contents' => [],
                       'parent' => {},
                       'type' => 'command_as_argument'
                     },

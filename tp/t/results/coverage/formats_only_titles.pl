@@ -208,6 +208,7 @@ $result_trees{'formats_only_titles'} = {
             },
             {
               'cmdname' => 'emph',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -320,6 +321,7 @@ $result_trees{'formats_only_titles'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },

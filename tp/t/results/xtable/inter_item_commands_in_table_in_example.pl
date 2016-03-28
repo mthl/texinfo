@@ -33,6 +33,7 @@ $result_trees{'inter_item_commands_in_table_in_example'} = {
                 },
                 {
                   'cmdname' => 'var',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

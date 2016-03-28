@@ -131,6 +131,7 @@ $result_trees{'empty_string_index_entry'} = {
                 },
                 {
                   'cmdname' => 'code',
+                  'contents' => [],
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },

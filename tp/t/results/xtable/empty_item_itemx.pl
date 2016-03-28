@@ -21,6 +21,7 @@ $result_trees{'empty_item_itemx'} = {
             },
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             },
