@@ -139,7 +139,7 @@ sub parser (;$$)
       if (ref($conf->{$key}) ne 'CODE' and $key ne 'values') {
         $parser->{$key} = _deep_copy($conf->{$key});
       } else {
-        warn "key is $key";
+        #warn "key is $key";
         #$parser->{$key} = $conf->{$key};
       }
 
@@ -176,7 +176,7 @@ sub parser (;$$)
   return $parser;
 }
 
-use Texinfo::Parser;
+#use Texinfo::Parser;
 
 # Wrapper for Parser.pm:_parse_texi.  We don't want to use this for the 
 # main tree, but it is called via some other functions like 
@@ -186,10 +186,11 @@ sub _parse_texi ($;$)
 {
   my $self = shift;
   my $root = shift;
-
-  my $self2 = Texinfo::Parser::parser();
-  $self2->{'input'} = $self->{'input'};
-  return Texinfo::Parser::_parse_texi ($self2, $root);
+  ##
+  ##  my $self2 = Texinfo::Parser::parser();
+  ##  $self2->{'input'} = $self->{'input'};
+  ##  return Texinfo::Parser::_parse_texi ($self2, $root);
+  return {};
 }
 
 use Data::Dumper;
@@ -492,16 +493,23 @@ sub parse_texi_line($$;$$$$)
 sub indices_information($)
 {
   my $self = shift;
+
+  my $INDEX_NAMES;
   if (!$self->{'index_names'}) {
-    my $INDEX_NAMES = build_index_data ();
+    $INDEX_NAMES = build_index_data ();
     $self->{'index_names'} = $INDEX_NAMES;
   }
-  #for my $index (keys %$INDEX_NAMES) {
-  #  if ($INDEX_NAMES->{$index}->{'merged_in'}) {
-  #    $self->{'merged_indices'}-> {$index}
-  #      = $INDEX_NAMES->{$index}->{'merged_in'};
-  #  }
-  #}
+  if (!$self->{'merged_indices'}) {
+    $self->{'merged_indices'} = {};
+    $INDEX_NAMES = $self->{'index_names'};
+    for my $index (keys %$INDEX_NAMES) {
+      if ($INDEX_NAMES->{$index}->{'merged_in'}) {
+        $self->{'merged_indices'}-> {$index}
+          = $INDEX_NAMES->{$index}->{'merged_in'};
+       }
+    }
+  }
+
   return ($self->{'index_names'}, $self->{'merged_indices'});
 }
 
