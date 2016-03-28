@@ -723,19 +723,10 @@ handle_brace_command (ELEMENT *current, char **line_inout,
   // 4841
   // 258 keep_line_nr_brace_commands
   // also 4989 sets line_nr.
-  /* The line number information is only ever used for accent commands
+  /* The line number information is only ever used for brace commands
      if the command is given with braces, but it's easier just to always
      store the information. */
-  if (e->cmd == CM_titlefont || e->cmd == CM_anchor
-      || (command_data(e->cmd).flags & CF_accent)
-      || (command_data(e->cmd).flags & CF_brace
-          && (command_data(e->cmd).data > 1
-              || command_data(e->cmd).data == BRACE_style
-              || command_data(e->cmd).data == BRACE_other
-              || command_data(e->cmd).data == BRACE_context)))
-    {
-      e->line_nr = line_nr;
-    }
+  e->line_nr = line_nr;
 
   add_to_element_contents (current, e);
   current = e;
