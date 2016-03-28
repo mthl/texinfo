@@ -295,9 +295,8 @@ element_to_perl_hash (ELEMENT *e)
     {
       HV *extra;
       int i;
+      int all_deleted = 1;
       extra = newHV ();
-      hv_store (e->hv, "extra", strlen ("extra"),
-                newRV_inc((SV *)extra), 0);
 
       for (i = 0; i < e->extra_number; i++)
         {
@@ -307,6 +306,7 @@ element_to_perl_hash (ELEMENT *e)
 
           if (e->extra[i].type == extra_deleted)
             continue;
+          all_deleted = 0;
 
           switch (e->extra[i].type)
             {
@@ -484,6 +484,10 @@ element_to_perl_hash (ELEMENT *e)
             }
         }
 #undef STORE
+
+      if (!all_deleted)
+        hv_store (e->hv, "extra", strlen ("extra"),
+                  newRV_inc((SV *)extra), 0);
     }
 
   if (e->line_nr.line_nr)

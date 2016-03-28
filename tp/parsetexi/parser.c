@@ -406,8 +406,7 @@ abort_empty_line (ELEMENT **current_inout, char *additional_text)
         {
           KEY_PAIR *k = 0; ELEMENT *e;
           
-          /* FIXME: does extra key get removed from current or 
-             current->parent?  */
+          /* Remove extra key from either from current or current->parent.  */
           if (current)
             k = lookup_extra_key (current, "spaces_before_argument");
           if (k && k->value == last_contents_child (current))
@@ -416,13 +415,20 @@ abort_empty_line (ELEMENT **current_inout, char *additional_text)
               k->value = 0;
               k->type = extra_deleted;
             }
+          else if (current->parent)
+            {
+              k = lookup_extra_key (current->parent, "spaces_before_argument");
+              if (k && k->value == last_contents_child (current))
+                {
+                  k->key = "";
+                  k->value = 0;
+                  k->type = extra_deleted;
+                }
+            }
 
-          /* FIXME: We can't destroy it, because it may still be
-             referred to by current->parent->extra.  This is an oversight
-             in the Perl implementation. */
           e = pop_element_from_contents (current);
           e->parent = 0; e->parent_type = route_not_in_tree;
-          //destroy_element (e);
+          destroy_element (e);
           /* TODO: Maybe we could avoid adding it in the first place? */
         }
       else if (last_child->type == ET_empty_line) //2132
