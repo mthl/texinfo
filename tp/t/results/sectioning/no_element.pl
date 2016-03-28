@@ -460,6 +460,7 @@ $result_trees{'no_element'} = {
         {
           'contents' => [
             {
+              'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_before_argument'
             },
@@ -887,6 +888,7 @@ $result_trees{'no_element'}{'contents'}[12]{'parent'} = $result_trees{'no_elemen
 $result_trees{'no_element'}{'contents'}[13]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'no_element'}{'contents'}[13];
 $result_trees{'no_element'}{'contents'}[13]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_element'}{'contents'}[13]{'args'}[0];
 $result_trees{'no_element'}{'contents'}[13]{'args'}[0]{'parent'} = $result_trees{'no_element'}{'contents'}[13];
+$result_trees{'no_element'}{'contents'}[13]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'no_element'}{'contents'}[13]{'args'}[1];
 $result_trees{'no_element'}{'contents'}[13]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'no_element'}{'contents'}[13]{'args'}[1];
 $result_trees{'no_element'}{'contents'}[13]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'no_element'}{'contents'}[13]{'args'}[1];
 $result_trees{'no_element'}{'contents'}[13]{'args'}[1]{'parent'} = $result_trees{'no_element'}{'contents'}[13];
