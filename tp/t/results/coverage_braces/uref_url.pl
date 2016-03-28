@@ -44,6 +44,7 @@ $result_trees{'uref_url'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -82,6 +83,7 @@ $result_trees{'uref_url'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -126,6 +128,7 @@ $result_trees{'uref_url'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -190,6 +193,7 @@ $result_trees{'uref_url'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -247,6 +251,7 @@ $result_trees{'uref_url'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -304,6 +309,7 @@ $result_trees{'uref_url'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -354,6 +360,7 @@ $result_trees{'uref_url'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -405,6 +412,7 @@ $result_trees{'uref_url'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -469,6 +477,7 @@ $result_trees{'uref_url'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -498,17 +507,20 @@ $result_trees{'uref_url'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0];
+$result_trees{'uref_url'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[2];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'uref_url'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[4];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[4]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[4]{'args'}[1];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[4]{'args'}[1]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[4];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[4]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[4]{'args'}[1]{'contents'}[0];
+$result_trees{'uref_url'}{'contents'}[0]{'contents'}[4]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[4]{'args'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[6]{'args'}[0];
@@ -520,6 +532,7 @@ $result_trees{'uref_url'}{'contents'}[0]{'contents'}[6]{'args'}[2]{'parent'} = $
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[6]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[6]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[6]{'args'}[1]{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[6]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[6]{'args'}[2]{'contents'}[0];
+$result_trees{'uref_url'}{'contents'}[0]{'contents'}[6]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[8];
@@ -529,6 +542,7 @@ $result_trees{'uref_url'}{'contents'}[0]{'contents'}[8]{'args'}[2]{'contents'}[0
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[8]{'args'}[2]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[8];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[8]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[8]{'args'}[1]{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[8]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[8]{'args'}[2]{'contents'}[0];
+$result_trees{'uref_url'}{'contents'}[0]{'contents'}[8]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[8]{'args'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[10]{'args'}[0];
@@ -538,6 +552,7 @@ $result_trees{'uref_url'}{'contents'}[0]{'contents'}[10]{'args'}[2]{'contents'}[
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[10]{'args'}[2]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[10];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[10]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[10]{'args'}[0]{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[10]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[10]{'args'}[2]{'contents'}[0];
+$result_trees{'uref_url'}{'contents'}[0]{'contents'}[10]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[10]{'args'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[10]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[11]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[12];
@@ -545,6 +560,7 @@ $result_trees{'uref_url'}{'contents'}[0]{'contents'}[12]{'args'}[1]{'parent'} = 
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[12]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[12]{'args'}[2];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[12]{'args'}[2]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[12];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[12]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[12]{'args'}[2]{'contents'}[0];
+$result_trees{'uref_url'}{'contents'}[0]{'contents'}[12]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[12]{'args'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[12]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[13]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[14]{'args'}[0];
@@ -553,6 +569,7 @@ $result_trees{'uref_url'}{'contents'}[0]{'contents'}[14]{'args'}[1]{'contents'}[
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[14]{'args'}[1]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[14];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[14]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[14]{'args'}[0]{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[14]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[14]{'args'}[1]{'contents'}[0];
+$result_trees{'uref_url'}{'contents'}[0]{'contents'}[14]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[14]{'args'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[14]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[15]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[16]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[16]{'args'}[0];
@@ -564,6 +581,7 @@ $result_trees{'uref_url'}{'contents'}[0]{'contents'}[16]{'args'}[2]{'parent'} = 
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[16]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[16]{'args'}[0]{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[16]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[16]{'args'}[1]{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[16]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[16]{'args'}[2]{'contents'}[0];
+$result_trees{'uref_url'}{'contents'}[0]{'contents'}[16]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'uref_url'}{'contents'}[0]{'contents'}[16]{'args'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[16]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'contents'}[17]{'parent'} = $result_trees{'uref_url'}{'contents'}[0];
 $result_trees{'uref_url'}{'contents'}[0]{'parent'} = $result_trees{'uref_url'};

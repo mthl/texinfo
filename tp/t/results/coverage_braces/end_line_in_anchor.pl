@@ -40,6 +40,7 @@ $result_trees{'end_line_in_anchor'} = {
         ],
         'normalized' => 'an-anchor',
         'spaces_before_argument' => {
+          'parent' => {},
           'text' => '',
           'type' => 'empty_spaces_before_argument'
         }
@@ -66,6 +67,7 @@ $result_trees{'end_line_in_anchor'}{'contents'}[0]{'extra'}{'brace_command_conte
 $result_trees{'end_line_in_anchor'}{'contents'}[0]{'extra'}{'brace_command_contents'}[0][1] = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'end_line_in_anchor'}{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'end_line_in_anchor'}{'contents'}[0]{'extra'}{'node_content'}[1] = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'end_line_in_anchor'}{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'end_line_in_anchor'}{'contents'}[0]{'args'}[0];
 $result_trees{'end_line_in_anchor'}{'contents'}[0]{'parent'} = $result_trees{'end_line_in_anchor'};
 
 $result_texis{'end_line_in_anchor'} = '@anchor{an

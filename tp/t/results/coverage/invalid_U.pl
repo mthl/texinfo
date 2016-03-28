@@ -43,6 +43,7 @@ $result_trees{'invalid_U'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -76,6 +77,7 @@ $result_trees{'invalid_U'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -109,6 +111,7 @@ $result_trees{'invalid_U'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -142,6 +145,7 @@ $result_trees{'invalid_U'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -175,6 +179,7 @@ $result_trees{'invalid_U'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -208,6 +213,7 @@ $result_trees{'invalid_U'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -229,36 +235,42 @@ $result_trees{'invalid_U'} = {
 };
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[1];
+$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[3];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[3]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[3]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[3]{'line_nr'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[5]{'args'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[5];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[5]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0];
+$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[5]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[5]{'args'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[5]{'line_nr'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[7]{'args'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[7];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[7]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0];
+$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[7]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[7]{'args'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[7]{'line_nr'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[9]{'args'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[9];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[9]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[9]{'args'}[0]{'contents'}[0];
+$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[9]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[9]{'args'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[9]{'line_nr'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[10]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[11]{'args'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[11];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[11]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[11]{'args'}[0]{'contents'}[0];
+$result_trees{'invalid_U'}{'contents'}[0]{'contents'}[11]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[11]{'args'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[11]{'line_nr'} = $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[11]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];
 $result_trees{'invalid_U'}{'contents'}[0]{'contents'}[12]{'parent'} = $result_trees{'invalid_U'}{'contents'}[0];

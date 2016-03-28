@@ -190,6 +190,7 @@ $result_trees{'macro_in_brace_command'} = {
                       ]
                     ],
                     'spaces_before_argument' => {
+                      'parent' => {},
                       'text' => '',
                       'type' => 'empty_spaces_before_argument'
                     }
@@ -311,6 +312,7 @@ $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'contents'
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][1] = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][2] = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'contents'}[1];
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'contents'}[1];
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'contents'}[1];

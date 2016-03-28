@@ -285,6 +285,7 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
                   'normalized' => '_0104-_0105-_02db-_0118-_0119'
                 },
                 'spaces_before_argument' => {
+                  'parent' => {},
                   'text' => '',
                   'type' => 'empty_spaces_before_argument'
                 }
@@ -694,6 +695,7 @@ $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'conte
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'extra'}{'spaces_after_command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'parent'} = $result_trees{'char_latin2_latin2_in_refs'};
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2];

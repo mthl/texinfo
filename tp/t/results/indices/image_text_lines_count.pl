@@ -69,6 +69,7 @@ $result_trees{'image_text_lines_count'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -227,6 +228,7 @@ $result_trees{'image_text_lines_count'}{'contents'}[1]{'contents'}[0]{'parent'} 
 $result_trees{'image_text_lines_count'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_text_lines_count'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'image_text_lines_count'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_text_lines_count'}{'contents'}[1]{'contents'}[1];
 $result_trees{'image_text_lines_count'}{'contents'}[1]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_text_lines_count'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'image_text_lines_count'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'image_text_lines_count'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'image_text_lines_count'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'image_text_lines_count'}{'contents'}[1];
 $result_trees{'image_text_lines_count'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'image_text_lines_count'}{'contents'}[1];
 $result_trees{'image_text_lines_count'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'image_text_lines_count'}{'contents'}[1];

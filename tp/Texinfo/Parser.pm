@@ -5153,7 +5153,8 @@ sub _parse_texi($;$)
                        or $simple_text_commands{$command})) {
                 push @{$current->{'contents'}}, 
                   {'type' => 'empty_spaces_before_argument',
-                   'text' => '' };
+                   'text' => '',
+                   'parent' => $current };
                 $current->{'parent'}->{'extra'}->{'spaces_before_argument'}
                    = $current->{'contents'}->[-1];
               }

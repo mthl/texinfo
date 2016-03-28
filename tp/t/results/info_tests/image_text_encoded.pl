@@ -76,6 +76,7 @@ $result_trees{'image_text_encoded'} = {
           ]
         ],
         'spaces_before_argument' => {
+          'parent' => {},
           'text' => '',
           'type' => 'empty_spaces_before_argument'
         }
@@ -106,6 +107,7 @@ $result_trees{'image_text_encoded'}{'contents'}[1]{'parent'} = $result_trees{'im
 $result_trees{'image_text_encoded'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_text_encoded'}{'contents'}[2]{'args'}[0];
 $result_trees{'image_text_encoded'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'image_text_encoded'}{'contents'}[2];
 $result_trees{'image_text_encoded'}{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_text_encoded'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'image_text_encoded'}{'contents'}[2]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'image_text_encoded'}{'contents'}[2]{'args'}[0];
 $result_trees{'image_text_encoded'}{'contents'}[2]{'parent'} = $result_trees{'image_text_encoded'};
 $result_trees{'image_text_encoded'}{'contents'}[3]{'parent'} = $result_trees{'image_text_encoded'};
 

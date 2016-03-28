@@ -60,6 +60,7 @@ $result_trees{'image_extension'} = {
           ]
         ],
         'spaces_before_argument' => {
+          'parent' => {},
           'text' => '',
           'type' => 'empty_spaces_before_argument'
         }
@@ -88,6 +89,7 @@ $result_trees{'image_extension'}{'contents'}[0]{'args'}[4]{'contents'}[0]{'paren
 $result_trees{'image_extension'}{'contents'}[0]{'args'}[4]{'parent'} = $result_trees{'image_extension'}{'contents'}[0];
 $result_trees{'image_extension'}{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_extension'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'image_extension'}{'contents'}[0]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'image_extension'}{'contents'}[0]{'args'}[4]{'contents'}[0];
+$result_trees{'image_extension'}{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'image_extension'}{'contents'}[0]{'args'}[0];
 $result_trees{'image_extension'}{'contents'}[0]{'parent'} = $result_trees{'image_extension'};
 $result_trees{'image_extension'}{'contents'}[1]{'parent'} = $result_trees{'image_extension'};
 

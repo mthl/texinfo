@@ -50,6 +50,7 @@ $result_trees{'anchor_and_empty_lines'} = {
         ],
         'normalized' => 'in-anchor',
         'spaces_before_argument' => {
+          'parent' => {},
           'text' => '',
           'type' => 'empty_spaces_before_argument'
         }
@@ -93,6 +94,7 @@ $result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'args'}[0]{'contents'}[0]
 $result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'anchor_and_empty_lines'}{'contents'}[2];
 $result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'args'}[0];
 $result_trees{'anchor_and_empty_lines'}{'contents'}[2]{'parent'} = $result_trees{'anchor_and_empty_lines'};
 $result_trees{'anchor_and_empty_lines'}{'contents'}[4]{'parent'} = $result_trees{'anchor_and_empty_lines'};
 $result_trees{'anchor_and_empty_lines'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'anchor_and_empty_lines'}{'contents'}[5];

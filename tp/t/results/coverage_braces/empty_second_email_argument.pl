@@ -14,6 +14,7 @@ $result_trees{'empty_second_email_argument'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_before_argument'
                 },
@@ -71,6 +72,7 @@ $result_trees{'empty_second_email_argument'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[0];

@@ -87,6 +87,7 @@ $result_trees{'image_in_paragraph'} = {
               ]
             ],
             'spaces_before_argument' => {
+              'parent' => {},
               'text' => '',
               'type' => 'empty_spaces_before_argument'
             }
@@ -126,6 +127,7 @@ $result_trees{'image_in_paragraph'}{'contents'}[0]{'contents'}[1]{'extra'}{'brac
 $result_trees{'image_in_paragraph'}{'contents'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'image_in_paragraph'}{'contents'}[0]{'contents'}[1]{'args'}[2]{'contents'}[0];
 $result_trees{'image_in_paragraph'}{'contents'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'image_in_paragraph'}{'contents'}[0]{'contents'}[1]{'args'}[3]{'contents'}[0];
 $result_trees{'image_in_paragraph'}{'contents'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'image_in_paragraph'}{'contents'}[0]{'contents'}[1]{'args'}[4]{'contents'}[0];
+$result_trees{'image_in_paragraph'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'image_in_paragraph'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'image_in_paragraph'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'image_in_paragraph'}{'contents'}[0];
 $result_trees{'image_in_paragraph'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'image_in_paragraph'}{'contents'}[0];
 $result_trees{'image_in_paragraph'}{'contents'}[0]{'parent'} = $result_trees{'image_in_paragraph'};
