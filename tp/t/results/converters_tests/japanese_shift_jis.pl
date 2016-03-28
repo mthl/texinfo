@@ -314,6 +314,11 @@ $result_trees{'japanese_shift_jis'} = {
                   ],
                   'cmdname' => 'copyright',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => 'japanese_shift_jis.texi',
+                    'line_nr' => 12,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {

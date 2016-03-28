@@ -27,6 +27,11 @@ $result_trees{'commands'} = {
           ],
           'cmdname' => 'TeX',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -164,6 +169,11 @@ $result_trees{'commands'} = {
                   'extra' => {
                     'clickstyle' => 'arrow'
                   },
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 3,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -177,11 +187,7 @@ $result_trees{'commands'} = {
           ],
           'cmdname' => 'clicksequence',
           'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 3,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -337,6 +343,11 @@ $result_trees{'commands'} = {
               ],
               'cmdname' => 'LaTeX',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 7,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -370,11 +381,7 @@ $result_trees{'commands'} = {
         'misc_content' => [],
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 7,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {},
       'type' => 'index_entry_command'
     },
@@ -481,6 +488,7 @@ $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0]{'contents'}[
 $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[13];
+$result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'line_nr'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'commands'}{'contents'}[0]{'contents'}[13]{'parent'} = $result_trees{'commands'}{'contents'}[0];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[14]{'parent'} = $result_trees{'commands'}{'contents'}[0];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[15]{'parent'} = $result_trees{'commands'}{'contents'}[0];
@@ -517,6 +525,7 @@ $result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content'}[1] =
 $result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content'};
 $result_trees{'commands'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content'};
 $result_trees{'commands'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'commands'}{'contents'}[2]{'line_nr'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'commands'}{'contents'}[2]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[3]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'commands'}{'contents'}[4];

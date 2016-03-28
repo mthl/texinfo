@@ -236,6 +236,11 @@ After table.
                 {
                   'cmdname' => 'asis',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 27,
+                    'macro' => 'myvtable'
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -610,11 +615,7 @@ After table.
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 27,
-            'macro' => 'myvtable'
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -649,6 +650,11 @@ After table.
                 {
                   'cmdname' => 'emph',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 27,
+                    'macro' => 'myvtable'
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -857,11 +863,7 @@ After table.
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 27,
-            'macro' => 'myvtable'
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -972,6 +974,11 @@ After table.
                 {
                   'cmdname' => 'asis',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 32,
+                    'macro' => 'myvtable'
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -1346,11 +1353,7 @@ After table.
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 32,
-            'macro' => 'myvtable'
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -1385,6 +1388,11 @@ After table.
                 {
                   'cmdname' => 'emph',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 32,
+                    'macro' => 'myvtable'
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -1593,11 +1601,7 @@ After table.
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 32,
-            'macro' => 'myvtable'
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -1720,6 +1724,11 @@ After table.
                     {
                       'cmdname' => 'asis',
                       'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 38,
+                        'macro' => 'myvtable'
+                      },
                       'parent' => {},
                       'type' => 'command_as_argument'
                     },
@@ -2094,11 +2103,7 @@ After table.
                 'end_command' => {},
                 'spaces_after_command' => {}
               },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 38,
-                'macro' => 'myvtable'
-              },
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -2133,6 +2138,11 @@ After table.
                     {
                       'cmdname' => 'emph',
                       'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 38,
+                        'macro' => 'myvtable'
+                      },
                       'parent' => {},
                       'type' => 'command_as_argument'
                     },
@@ -2341,11 +2351,7 @@ After table.
                 'end_command' => {},
                 'spaces_after_command' => {}
               },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 38,
-                'macro' => 'myvtable'
-              },
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -2577,6 +2583,7 @@ $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'extra'}{'block_comm
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'contents'}[3];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'table_nested'}{'contents'}[4];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'table_nested'}{'contents'}[4];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[3];
@@ -2624,6 +2631,7 @@ $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'extra'}{'block_comm
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'contents'}[2];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'table_nested'}{'contents'}[4];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[5];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[5]{'parent'} = $result_trees{'table_nested'}{'contents'}[4];
@@ -2720,6 +2728,7 @@ $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'extra'}{'block_comm
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'contents'}[3];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'table_nested'}{'contents'}[7];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[2];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[2];
@@ -2767,6 +2776,7 @@ $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'extra'}{'block_comm
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'contents'}[2];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[3]{'parent'} = $result_trees{'table_nested'}{'contents'}[7];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[4];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[4]{'parent'} = $result_trees{'table_nested'}{'contents'}[7];
@@ -2865,6 +2875,7 @@ $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'ext
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'contents'}[3];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[3];
@@ -2912,6 +2923,7 @@ $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'ext
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'contents'}[2];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
+$result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'line_nr'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[5];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1];

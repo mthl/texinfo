@@ -1,5 +1,12 @@
 2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (%keep_line_nr_brace_commands): Keep line 
+	number for all brace commands.
+	(_parse_texi) <open brace separator>: Don't save line number 
+	here.
+
+2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <commands with commands as 
 	arguments>: Don't remove 'contents'.
 

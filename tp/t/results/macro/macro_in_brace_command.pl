@@ -124,6 +124,11 @@ $result_trees{'macro_in_brace_command'} = {
             {
               'cmdname' => 'bullet',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 9,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -270,11 +275,7 @@ $result_trees{'macro_in_brace_command'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 9,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -329,6 +330,7 @@ $result_trees{'macro_in_brace_command'}{'contents'}[6]{'extra'}{'block_command_l
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'extra'}{'command_as_argument'} = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'args'}[0]{'contents'}[1];
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'extra'}{'end_command'} = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[1];
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'extra'}{'spaces_after_command'} = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'args'}[0]{'contents'}[0];
+$result_trees{'macro_in_brace_command'}{'contents'}[6]{'line_nr'} = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'parent'} = $result_trees{'macro_in_brace_command'};
 
 $result_texis{'macro_in_brace_command'} = '@macro foo

@@ -22,6 +22,11 @@ $result_trees{'empty_item_itemx'} = {
             {
               'cmdname' => 'asis',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -374,11 +379,7 @@ $result_trees{'empty_item_itemx'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 1,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -455,6 +456,7 @@ $result_trees{'empty_item_itemx'}{'contents'}[0]{'extra'}{'block_command_line_co
 $result_trees{'empty_item_itemx'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'empty_item_itemx'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'contents'}[4];
 $result_trees{'empty_item_itemx'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'empty_item_itemx'}{'contents'}[0]{'line_nr'} = $result_trees{'empty_item_itemx'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'empty_item_itemx'}{'contents'}[0]{'parent'} = $result_trees{'empty_item_itemx'};
 
 $result_texis{'empty_item_itemx'} = '@vtable @asis

@@ -69,6 +69,11 @@ $result_trees{'ftable_vtable'} = {
                 {
                   'cmdname' => 'emph',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 4,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -340,11 +345,7 @@ $result_trees{'ftable_vtable'} = {
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 4,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -368,6 +369,11 @@ $result_trees{'ftable_vtable'} = {
                 {
                   'cmdname' => 'emph',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 11,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -414,6 +420,11 @@ $result_trees{'ftable_vtable'} = {
                               ],
                               'cmdname' => 'error',
                               'contents' => [],
+                              'line_nr' => {
+                                'file_name' => '',
+                                'line_nr' => 12,
+                                'macro' => ''
+                              },
                               'parent' => {}
                             },
                             {
@@ -448,11 +459,7 @@ $result_trees{'ftable_vtable'} = {
                         'misc_content' => [],
                         'spaces_after_command' => {}
                       },
-                      'line_nr' => {
-                        'file_name' => '',
-                        'line_nr' => 12,
-                        'macro' => ''
-                      },
+                      'line_nr' => {},
                       'parent' => {}
                     },
                     {
@@ -652,11 +659,7 @@ $result_trees{'ftable_vtable'} = {
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 11,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -912,6 +915,7 @@ $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[1]{'extra'}{'block_com
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[1]{'line_nr'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ftable_vtable'}{'contents'}[1];
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'ftable_vtable'}{'contents'}[1];
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3];
@@ -933,6 +937,7 @@ $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'con
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'node'} = $result_trees{'ftable_vtable'}{'contents'}[1];
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'misc_content'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'};
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0];
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];
@@ -977,6 +982,7 @@ $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'extra'}{'block_com
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'extra'}{'command_as_argument'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'contents'}[2];
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'line_nr'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'ftable_vtable'}{'contents'}[1];
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'ftable_vtable'}{'contents'}[1];
 $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ftable_vtable'}{'contents'}[1]{'contents'}[5];

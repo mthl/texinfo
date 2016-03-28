@@ -338,6 +338,11 @@ $result_trees{'symbol_after_block'} = {
             {
               'cmdname' => 'emph',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 21,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -476,11 +481,7 @@ $result_trees{'symbol_after_block'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 21,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -504,6 +505,11 @@ $result_trees{'symbol_after_block'} = {
             {
               'cmdname' => 'emph',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 26,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -646,11 +652,7 @@ $result_trees{'symbol_after_block'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 26,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -691,6 +693,11 @@ $result_trees{'symbol_after_block'} = {
             {
               'cmdname' => 'bullet',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 33,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -793,11 +800,7 @@ $result_trees{'symbol_after_block'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 33,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -821,6 +824,11 @@ $result_trees{'symbol_after_block'} = {
             {
               'cmdname' => 'bullet',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 37,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -927,11 +935,7 @@ $result_trees{'symbol_after_block'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 37,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     },
     {
@@ -1965,6 +1969,7 @@ $result_trees{'symbol_after_block'}{'contents'}[14]{'extra'}{'block_command_line
 $result_trees{'symbol_after_block'}{'contents'}[14]{'extra'}{'command_as_argument'} = $result_trees{'symbol_after_block'}{'contents'}[14]{'args'}[0]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[14]{'extra'}{'end_command'} = $result_trees{'symbol_after_block'}{'contents'}[14]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[14]{'extra'}{'spaces_after_command'} = $result_trees{'symbol_after_block'}{'contents'}[14]{'args'}[0]{'contents'}[0];
+$result_trees{'symbol_after_block'}{'contents'}[14]{'line_nr'} = $result_trees{'symbol_after_block'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'symbol_after_block'}{'contents'}[14]{'parent'} = $result_trees{'symbol_after_block'};
 $result_trees{'symbol_after_block'}{'contents'}[15]{'parent'} = $result_trees{'symbol_after_block'};
 $result_trees{'symbol_after_block'}{'contents'}[16]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'symbol_after_block'}{'contents'}[16];
@@ -1998,6 +2003,7 @@ $result_trees{'symbol_after_block'}{'contents'}[16]{'extra'}{'block_command_line
 $result_trees{'symbol_after_block'}{'contents'}[16]{'extra'}{'command_as_argument'} = $result_trees{'symbol_after_block'}{'contents'}[16]{'args'}[0]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[16]{'extra'}{'end_command'} = $result_trees{'symbol_after_block'}{'contents'}[16]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[16]{'extra'}{'spaces_after_command'} = $result_trees{'symbol_after_block'}{'contents'}[16]{'args'}[0]{'contents'}[0];
+$result_trees{'symbol_after_block'}{'contents'}[16]{'line_nr'} = $result_trees{'symbol_after_block'}{'contents'}[16]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'symbol_after_block'}{'contents'}[16]{'parent'} = $result_trees{'symbol_after_block'};
 $result_trees{'symbol_after_block'}{'contents'}[17]{'parent'} = $result_trees{'symbol_after_block'};
 $result_trees{'symbol_after_block'}{'contents'}[18]{'contents'}[0]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[18];
@@ -2026,6 +2032,7 @@ $result_trees{'symbol_after_block'}{'contents'}[20]{'extra'}{'block_command_line
 $result_trees{'symbol_after_block'}{'contents'}[20]{'extra'}{'command_as_argument'} = $result_trees{'symbol_after_block'}{'contents'}[20]{'args'}[0]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[20]{'extra'}{'end_command'} = $result_trees{'symbol_after_block'}{'contents'}[20]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[20]{'extra'}{'spaces_after_command'} = $result_trees{'symbol_after_block'}{'contents'}[20]{'args'}[0]{'contents'}[0];
+$result_trees{'symbol_after_block'}{'contents'}[20]{'line_nr'} = $result_trees{'symbol_after_block'}{'contents'}[20]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'symbol_after_block'}{'contents'}[20]{'parent'} = $result_trees{'symbol_after_block'};
 $result_trees{'symbol_after_block'}{'contents'}[21]{'parent'} = $result_trees{'symbol_after_block'};
 $result_trees{'symbol_after_block'}{'contents'}[22]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'symbol_after_block'}{'contents'}[22];
@@ -2052,6 +2059,7 @@ $result_trees{'symbol_after_block'}{'contents'}[22]{'extra'}{'block_command_line
 $result_trees{'symbol_after_block'}{'contents'}[22]{'extra'}{'command_as_argument'} = $result_trees{'symbol_after_block'}{'contents'}[22]{'args'}[0]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[22]{'extra'}{'end_command'} = $result_trees{'symbol_after_block'}{'contents'}[22]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[22]{'extra'}{'spaces_after_command'} = $result_trees{'symbol_after_block'}{'contents'}[22]{'args'}[0]{'contents'}[0];
+$result_trees{'symbol_after_block'}{'contents'}[22]{'line_nr'} = $result_trees{'symbol_after_block'}{'contents'}[22]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'symbol_after_block'}{'contents'}[22]{'parent'} = $result_trees{'symbol_after_block'};
 $result_trees{'symbol_after_block'}{'contents'}[23]{'parent'} = $result_trees{'symbol_after_block'};
 $result_trees{'symbol_after_block'}{'contents'}[24]{'contents'}[0]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[24];

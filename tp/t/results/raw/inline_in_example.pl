@@ -68,6 +68,11 @@ $result_trees{'inline_in_example'} = {
                       ],
                       'cmdname' => 'lbracechar',
                       'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 4,
+                        'macro' => ''
+                      },
                       'parent' => {}
                     },
                     {

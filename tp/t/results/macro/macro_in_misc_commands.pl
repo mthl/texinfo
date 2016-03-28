@@ -1319,7 +1319,7 @@ $result_trees{'macro_in_misc_commands'} = {
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 76,
-                'macro' => ''
+                'macro' => 'strongmacro'
               },
               'parent' => {}
             },
@@ -1411,7 +1411,7 @@ $result_trees{'macro_in_misc_commands'} = {
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 80,
-                'macro' => ''
+                'macro' => 'strongmacro'
               },
               'parent' => {},
               'type' => 'definfoenclose_command'

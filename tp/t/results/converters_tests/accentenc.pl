@@ -1511,6 +1511,11 @@ $result_trees{'accentenc'} = {
               ],
               'cmdname' => 'questiondown',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 48,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -1527,6 +1532,7 @@ $result_trees{'accentenc'} = {
               ],
               'cmdname' => 'exclamdown',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1560,6 +1566,11 @@ $result_trees{'accentenc'} = {
               ],
               'cmdname' => 'aa',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 50,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -1576,6 +1587,7 @@ $result_trees{'accentenc'} = {
               ],
               'cmdname' => 'AA',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1609,6 +1621,11 @@ $result_trees{'accentenc'} = {
               ],
               'cmdname' => 'ae',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 52,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -1625,6 +1642,7 @@ $result_trees{'accentenc'} = {
               ],
               'cmdname' => 'AE',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1641,6 +1659,7 @@ $result_trees{'accentenc'} = {
               ],
               'cmdname' => 'oe',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1657,6 +1676,7 @@ $result_trees{'accentenc'} = {
               ],
               'cmdname' => 'OE',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1753,6 +1773,11 @@ $result_trees{'accentenc'} = {
               ],
               'cmdname' => 'l',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 56,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -1769,6 +1794,7 @@ $result_trees{'accentenc'} = {
               ],
               'cmdname' => 'L',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1802,6 +1828,11 @@ $result_trees{'accentenc'} = {
               ],
               'cmdname' => 'o',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 58,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -1818,6 +1849,7 @@ $result_trees{'accentenc'} = {
               ],
               'cmdname' => 'O',
               'contents' => [],
+              'line_nr' => {},
               'parent' => {}
             },
             {
@@ -1851,6 +1883,11 @@ $result_trees{'accentenc'} = {
               ],
               'cmdname' => 'ss',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 60,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -1884,6 +1921,11 @@ $result_trees{'accentenc'} = {
               ],
               'cmdname' => 'pounds',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 62,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -2670,6 +2712,7 @@ $result_trees{'accentenc'}{'contents'}[2]{'contents'}[43]{'contents'}[1]{'args'}
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[43]{'contents'}[1]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[43];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[43]{'contents'}[2]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[43];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[43]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[43]{'contents'}[3];
+$result_trees{'accentenc'}{'contents'}[2]{'contents'}[43]{'contents'}[3]{'line_nr'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[43]{'contents'}[1]{'line_nr'};
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[43]{'contents'}[3]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[43];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[43]{'contents'}[4]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[43];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[43]{'parent'} = $result_trees{'accentenc'}{'contents'}[2];
@@ -2679,6 +2722,7 @@ $result_trees{'accentenc'}{'contents'}[2]{'contents'}[45]{'contents'}[1]{'args'}
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[45]{'contents'}[1]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[45];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[45]{'contents'}[2]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[45];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[45]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[45]{'contents'}[3];
+$result_trees{'accentenc'}{'contents'}[2]{'contents'}[45]{'contents'}[3]{'line_nr'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[45]{'contents'}[1]{'line_nr'};
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[45]{'contents'}[3]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[45];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[45]{'contents'}[4]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[45];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[45]{'parent'} = $result_trees{'accentenc'}{'contents'}[2];
@@ -2688,12 +2732,15 @@ $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[1]{'args'}
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[1]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[2]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[3];
+$result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[3]{'line_nr'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[1]{'line_nr'};
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[3]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[4]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[5];
+$result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[5]{'line_nr'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[1]{'line_nr'};
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[5]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[6]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[7];
+$result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[7]{'line_nr'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[1]{'line_nr'};
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[7]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'contents'}[8]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[47]{'parent'} = $result_trees{'accentenc'}{'contents'}[2];
@@ -2715,6 +2762,7 @@ $result_trees{'accentenc'}{'contents'}[2]{'contents'}[51]{'contents'}[1]{'args'}
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[51]{'contents'}[1]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[51];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[51]{'contents'}[2]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[51];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[51]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[51]{'contents'}[3];
+$result_trees{'accentenc'}{'contents'}[2]{'contents'}[51]{'contents'}[3]{'line_nr'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[51]{'contents'}[1]{'line_nr'};
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[51]{'contents'}[3]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[51];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[51]{'contents'}[4]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[51];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[51]{'parent'} = $result_trees{'accentenc'}{'contents'}[2];
@@ -2724,6 +2772,7 @@ $result_trees{'accentenc'}{'contents'}[2]{'contents'}[53]{'contents'}[1]{'args'}
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[53]{'contents'}[1]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[53];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[53]{'contents'}[2]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[53];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[53]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[53]{'contents'}[3];
+$result_trees{'accentenc'}{'contents'}[2]{'contents'}[53]{'contents'}[3]{'line_nr'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[53]{'contents'}[1]{'line_nr'};
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[53]{'contents'}[3]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[53];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[53]{'contents'}[4]{'parent'} = $result_trees{'accentenc'}{'contents'}[2]{'contents'}[53];
 $result_trees{'accentenc'}{'contents'}[2]{'contents'}[53]{'parent'} = $result_trees{'accentenc'}{'contents'}[2];

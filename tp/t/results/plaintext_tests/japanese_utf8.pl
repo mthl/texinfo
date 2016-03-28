@@ -314,6 +314,11 @@ $result_trees{'japanese_utf8'} = {
                   ],
                   'cmdname' => 'copyright',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => 'japanese_utf8.texi',
+                    'line_nr' => 12,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {

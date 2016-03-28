@@ -19,6 +19,11 @@ $result_trees{'commands'} = {
           ],
           'cmdname' => 'TeX',
           'contents' => [],
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -309,6 +314,11 @@ $result_trees{'commands'} = {
             {
               'cmdname' => 'samp',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 12,
+                'macro' => ''
+              },
               'parent' => {},
               'type' => 'command_as_argument'
             },
@@ -459,11 +469,7 @@ $result_trees{'commands'} = {
         'end_command' => {},
         'spaces_after_command' => {}
       },
-      'line_nr' => {
-        'file_name' => '',
-        'line_nr' => 12,
-        'macro' => ''
-      },
+      'line_nr' => {},
       'parent' => {}
     }
   ],
@@ -556,6 +562,7 @@ $result_trees{'commands'}{'contents'}[9]{'extra'}{'block_command_line_contents'}
 $result_trees{'commands'}{'contents'}[9]{'extra'}{'command_as_argument'} = $result_trees{'commands'}{'contents'}[9]{'args'}[0]{'contents'}[1];
 $result_trees{'commands'}{'contents'}[9]{'extra'}{'end_command'} = $result_trees{'commands'}{'contents'}[9]{'contents'}[1];
 $result_trees{'commands'}{'contents'}[9]{'extra'}{'spaces_after_command'} = $result_trees{'commands'}{'contents'}[9]{'args'}[0]{'contents'}[0];
+$result_trees{'commands'}{'contents'}[9]{'line_nr'} = $result_trees{'commands'}{'contents'}[9]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'commands'}{'contents'}[9]{'parent'} = $result_trees{'commands'};
 
 $result_texis{'commands'} = '@TeX{}. Ab. @@. @

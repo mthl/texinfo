@@ -275,10 +275,6 @@ foreach my $keep_line_nr_brace_command ('titlefont', 'anchor') {
   $keep_line_nr_brace_commands{$keep_line_nr_brace_command} = 1;
 }
 foreach my $brace_command (keys (%brace_commands)) {
-  $keep_line_nr_brace_commands{$brace_command} = 1
-    if ($brace_commands{$brace_command} > 1);
-}
-foreach my $brace_command (keys (%accent_commands)) {
   $keep_line_nr_brace_commands{$brace_command} = 1;
 }
 
@@ -5104,7 +5100,6 @@ sub _parse_texi($;$)
                                    'contents' => [] } ];
             $current->{'remaining_args'} = $brace_commands{$command} -1
                   if ($brace_commands{$command} and $brace_commands{$command} -1);
-            $current->{'line_nr'} = $line_nr if ($brace_commands{$command});
             if ($self->{'definfoenclose'}->{$command}) {
               $current->{'remaining_args'} = 0;
             }

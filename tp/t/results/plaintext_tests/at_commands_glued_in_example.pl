@@ -48,6 +48,11 @@ $result_trees{'at_commands_glued_in_example'} = {
               ],
               'cmdname' => 'TeX',
               'contents' => [],
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {

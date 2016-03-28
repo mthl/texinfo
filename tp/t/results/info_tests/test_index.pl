@@ -499,6 +499,11 @@ $result_trees{'test_index'} = {
                       ],
                       'cmdname' => 'exclamdown',
                       'contents' => [],
+                      'line_nr' => {
+                        'file_name' => '',
+                        'line_nr' => 9,
+                        'macro' => ''
+                      },
                       'parent' => {}
                     },
                     {
@@ -532,11 +537,7 @@ $result_trees{'test_index'} = {
                 'misc_content' => [],
                 'spaces_after_command' => {}
               },
-              'line_nr' => {
-                'file_name' => '',
-                'line_nr' => 9,
-                'macro' => ''
-              },
+              'line_nr' => {},
               'parent' => {},
               'type' => 'index_entry_command'
             },
@@ -916,6 +917,11 @@ $result_trees{'test_index'} = {
                 {
                   'cmdname' => 'emph',
                   'contents' => [],
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 17,
+                    'macro' => ''
+                  },
                   'parent' => {},
                   'type' => 'command_as_argument'
                 },
@@ -1205,11 +1211,7 @@ $result_trees{'test_index'} = {
             'end_command' => {},
             'spaces_after_command' => {}
           },
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 17,
-            'macro' => ''
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -3858,6 +3860,7 @@ $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'extra'
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'extra'}{'index_entry'}{'node'} = $result_trees{'test_index'}{'contents'}[1];
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'extra'}{'misc_content'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'extra'}{'index_entry'}{'content'};
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'line_nr'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[3];
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[4];
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[3]{'contents'}[4]{'args'}[0];
@@ -3980,6 +3983,7 @@ $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'extra'}{'block_comman
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'extra'}{'command_as_argument'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'contents'}[1];
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'extra'}{'end_command'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'contents'}[2];
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'extra'}{'spaces_after_command'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'contents'}[0];
+$result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'line_nr'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[7]{'parent'} = $result_trees{'test_index'}{'contents'}[2];
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[8]{'parent'} = $result_trees{'test_index'}{'contents'}[2];
 $result_trees{'test_index'}{'contents'}[2]{'contents'}[9]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_index'}{'contents'}[2]{'contents'}[9];
