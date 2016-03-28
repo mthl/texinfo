@@ -2276,22 +2276,6 @@ sub _isolate_last_space($$;$)
   }
 }
 
-# used to put a node name in error messages.
-sub _node_extra_to_texi($)
-{
-  my $node = shift;
-  my $result = '';
-  if ($node->{'manual_content'}) {
-    $result = '('.Texinfo::Convert::Texinfo::convert({'contents'
-                                     => $node->{'manual_content'}}) .')';
-  }
-  if ($node->{'node_content'}) {
-    $result .= Texinfo::Convert::Texinfo::convert ({'contents'
-                                          => $node->{'node_content'}});
-  }
-  return $result;
-}
-
 sub _find_end_brace($$)
 {
   my $text = shift;
@@ -3702,7 +3686,7 @@ sub _check_internal_node($$$)
   my $line_nr = shift;
   if ($parsed_node and $parsed_node->{'manual_content'}) {
     $self->line_error (sprintf($self->__("syntax for an external node used for `%s'"),
-          _node_extra_to_texi($parsed_node)), $line_nr)
+          Texinfo::Structuring::node_extra_to_texi($parsed_node)), $line_nr)
   }
 }
 

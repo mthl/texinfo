@@ -1,5 +1,10 @@
 2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_node_extra_to_texi): Move to 
+	tp/Texinfo/Convert/Texinfo.pm and rename 'node_extra_to_texi'.
+
+2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_abort_empty_line): Check if 
 	'spaces_before_argument' extra value needs to be removed from 
 	parent as well as from current element.

@@ -29,6 +29,8 @@ use Texinfo::Convert::Text;
 # for error messages 
 use Texinfo::Convert::Texinfo;
 
+*node_extra_to_texi = \&Texinfo::Convert::Texinfo::node_extra_to_texi;
+
 use Carp qw(cluck);
 
 require Exporter;
@@ -541,11 +543,9 @@ sub _check_menu_entry($$$$)
   if (!$self->{'labels'}->{$menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'}}) {
     if ($check_menu_entries) {
       $self->line_error(sprintf($self->
-       __("\@%s reference to nonexistent node `%s'"), 
-         $command,
-         Texinfo::Parser::_node_extra_to_texi(
-                 $menu_content->{'extra'}->{'menu_entry_node'})), 
-        $menu_content->{'line_nr'});
+       __("\@%s reference to nonexistent node `%s'"), $command,
+          node_extra_to_texi($menu_content->{'extra'}->{'menu_entry_node'})), 
+       $menu_content->{'line_nr'});
     }
   } else {
     my $normalized_menu_node
@@ -556,11 +556,10 @@ sub _check_menu_entry($$$$)
       $self->line_warn(sprintf($self->
        __("\@%s entry node name `%s' different from %s name `%s'"), 
          $command,
-         Texinfo::Parser::_node_extra_to_texi(
-                 $menu_content->{'extra'}->{'menu_entry_node'}),
+         node_extra_to_texi($menu_content->{'extra'}->{'menu_entry_node'}),
          $menu_node->{'cmdname'},
-         Texinfo::Parser::_node_extra_to_texi($menu_node->{'extra'})),
-        $menu_content->{'line_nr'});
+         node_extra_to_texi($menu_node->{'extra'})),
+                            $menu_content->{'line_nr'});
     }
   }
   return $menu_node;
@@ -660,11 +659,8 @@ sub nodes_tree($)
     # warn if node is not top node and doesn't appear in menu
     if ($self->{'SHOW_MENU'} and $node ne $top_node and !$node->{'menu_up'}) {
       $self->line_warn(sprintf($self->__("unreferenced node `%s'"), 
-                    Texinfo::Parser::_node_extra_to_texi($node->{'extra'})), 
-                       $node->{'line_nr'});
+                    node_extra_to_texi($node->{'extra'})), $node->{'line_nr'});
     }
-    #print STDERR "Processing "
-    #  .Texinfo::Parser::_node_extra_to_texi($node->{'extra'})."\n";
    
     my $automatic_directions = 
       (scalar(@{$node->{'extra'}->{'nodes_manuals'}}) == 1);
@@ -706,17 +702,17 @@ sub nodes_tree($)
                 if (!$node->{'menu_'.$direction}) {
                   $self->line_warn(sprintf($self->
                     __("node `%s' is %s for `%s' in sectioning but not in menu"), 
-                  Texinfo::Parser::_node_extra_to_texi($node->{'node_'.$direction}->{'extra'}), 
+                  node_extra_to_texi($node->{'node_'.$direction}->{'extra'}), 
                   $direction,
-                  Texinfo::Parser::_node_extra_to_texi($node->{'extra'})),
+                  node_extra_to_texi($node->{'extra'})),
                   $node->{'line_nr'});
                 } elsif ($node->{'menu_'.$direction} ne $node->{'node_'.$direction}) {
                   $self->line_warn(sprintf($self->
                     __("node %s `%s' in menu `%s' and in sectioning `%s' differ"), 
                     $direction,
-                    Texinfo::Parser::_node_extra_to_texi($node->{'extra'}),
-                    Texinfo::Parser::_node_extra_to_texi($node->{'menu_'.$direction}->{'extra'}), 
-                    Texinfo::Parser::_node_extra_to_texi($node->{'node_'.$direction}->{'extra'})),
+                    node_extra_to_texi($node->{'extra'}),
+                    node_extra_to_texi($node->{'menu_'.$direction}->{'extra'}), 
+                    node_extra_to_texi($node->{'node_'.$direction}->{'extra'})),
                     $node->{'line_nr'});
                 }
               }
@@ -731,9 +727,9 @@ sub nodes_tree($)
             if ($self->{'SHOW_MENU'} and $node->{'extra'}->{'associated_section'}) {
               $self->line_warn(sprintf($self->
                   __("node `%s' is %s for `%s' in menu but not in sectioning"), 
-                Texinfo::Parser::_node_extra_to_texi($node->{'menu_'.$direction}->{'extra'}),
-                $direction,
-                Texinfo::Parser::_node_extra_to_texi($node->{'extra'}), 
+                node_extra_to_texi($node->{'menu_'.$direction}->{'extra'}),
+                                   $direction,
+                node_extra_to_texi($node->{'extra'}), 
                   ), 
                 $node->{'line_nr'});
             }
@@ -786,14 +782,11 @@ sub nodes_tree($)
               $self->line_warn(sprintf($self->
                 __("%s pointer `%s' (for node `%s') different from %s name `%s'"),
                   $direction_texts{$direction},
-                  Texinfo::Parser::_node_extra_to_texi(
-                        $node_direction),
-                  Texinfo::Parser::_node_extra_to_texi(
-                        $node->{'extra'}),
-                  $node_target->{'cmdname'},
-                  Texinfo::Parser::_node_extra_to_texi(
-                        $node_target->{'extra'})),
-                $node->{'line_nr'});
+                  node_extra_to_texi($node_direction),
+                  node_extra_to_texi($node->{'extra'}),
+                                     $node_target->{'cmdname'},
+                  node_extra_to_texi($node_target->{'extra'})),
+                                     $node->{'line_nr'});
             }
           } else {
             if ($self->{'novalidate'}) {
@@ -813,8 +806,7 @@ sub nodes_tree($)
               $self->line_error(sprintf($self->
                                   __("%s reference to nonexistent `%s'"),
                     $direction_texts{$direction},
-                    Texinfo::Parser::_node_extra_to_texi($node_direction)), 
-                    $node->{'line_nr'});
+                    node_extra_to_texi($node_direction)), $node->{'line_nr'});
             }
           }
         }
@@ -832,17 +824,17 @@ sub nodes_tree($)
       # up node is a real node but has no menu entry
         $self->line_error(sprintf($self->
            __("node `%s' lacks menu item for `%s' despite being its Up target"), 
-           Texinfo::Parser::_node_extra_to_texi($node->{'node_up'}->{'extra'}), 
-           Texinfo::Parser::_node_extra_to_texi($node->{'extra'})),
+           node_extra_to_texi($node->{'node_up'}->{'extra'}), 
+           node_extra_to_texi($node->{'extra'})),
            $node->{'node_up'}->{'line_nr'});
       # This leads to an error when there is an external nodes as up, and 
       # not in Top node.
       } elsif ($node->{'menu_up'}) {
         $self->line_warn(sprintf($self->
            __("for `%s', up in menu `%s' and up `%s' don't match"), 
-          Texinfo::Parser::_node_extra_to_texi($node->{'extra'}),
-          Texinfo::Parser::_node_extra_to_texi($node->{'menu_up'}->{'extra'}), 
-          Texinfo::Parser::_node_extra_to_texi($node->{'node_up'}->{'extra'})),
+          node_extra_to_texi($node->{'extra'}),
+          node_extra_to_texi($node->{'menu_up'}->{'extra'}), 
+          node_extra_to_texi($node->{'node_up'}->{'extra'})),
                         $node->{'line_nr'});
       }
     }
@@ -1326,9 +1318,8 @@ sub associate_internal_references($;$$)
     if (!defined($labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}})
          and !$self->{'novalidate'}) {
       $self->line_error(sprintf($self->__("\@%s reference to nonexistent node `%s'"),
-                           $ref->{'cmdname'}, 
-                           Texinfo::Parser::_node_extra_to_texi(
-                                $ref->{'extra'}->{'node_argument'})), 
+              $ref->{'cmdname'}, 
+              node_extra_to_texi($ref->{'extra'}->{'node_argument'})), 
                         $ref->{'line_nr'})
     } else {
       my $node_target 
@@ -1339,12 +1330,9 @@ sub associate_internal_references($;$$)
         $self->line_warn(sprintf($self->
            __("\@%s to `%s', different from %s name `%s'"), 
            $ref->{'cmdname'},
-           Texinfo::Parser::_node_extra_to_texi(
-              $ref->{'extra'}->{'node_argument'}),
+           node_extra_to_texi($ref->{'extra'}->{'node_argument'}),
            $node_target->{'cmdname'},
-           Texinfo::Parser::_node_extra_to_texi(
-                        $node_target->{'extra'})),
-          $ref->{'line_nr'});
+           node_extra_to_texi($node_target->{'extra'})), $ref->{'line_nr'});
       }
     }
   }

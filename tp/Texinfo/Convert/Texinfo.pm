@@ -1,6 +1,6 @@
 # Texinfo.pm: output a Texinfo tree as Texinfo.
 #
-# Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2016 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -39,6 +39,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 # will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
   convert
+  node_extra_to_texi
 ) ] );
 
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
@@ -102,6 +103,22 @@ sub convert ($;$)
     } 
   }
   #print STDERR "convert result: $result\n";
+  return $result;
+}
+
+# used to put a node name in error messages.
+sub node_extra_to_texi($)
+{
+  my $node = shift;
+  my $result = '';
+  if ($node->{'manual_content'}) {
+    $result = '('.Texinfo::Convert::Texinfo::convert({'contents'
+                                     => $node->{'manual_content'}}) .')';
+  }
+  if ($node->{'node_content'}) {
+    $result .= Texinfo::Convert::Texinfo::convert ({'contents'
+                                          => $node->{'node_content'}});
+  }
   return $result;
 }
 
