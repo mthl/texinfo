@@ -237,12 +237,7 @@ $result_trees{'commands'} = {
               [
                 {}
               ]
-            ],
-            'spaces_before_argument' => {
-              'parent' => {},
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            ]
           },
           'line_nr' => {
             'file_name' => '',
@@ -501,7 +496,6 @@ $result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'args'}[1]{'contents'}[
 $result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'args'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[16];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'args'}[0]{'contents'}[0];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'args'}[1]{'contents'}[1];
-$result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'args'}[0];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[16]{'parent'} = $result_trees{'commands'}{'contents'}[0];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[17]{'parent'} = $result_trees{'commands'}{'contents'}[0];
 $result_trees{'commands'}{'contents'}[0]{'contents'}[18]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[0]{'contents'}[18]{'args'}[0];

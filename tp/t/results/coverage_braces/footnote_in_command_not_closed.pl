@@ -42,13 +42,6 @@ $result_trees{'footnote_in_command_not_closed'} = {
                   ],
                   'cmdname' => 'footnote',
                   'contents' => [],
-                  'extra' => {
-                    'spaces_before_argument' => {
-                      'parent' => {},
-                      'text' => '',
-                      'type' => 'empty_spaces_before_argument'
-                    }
-                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 1,
@@ -78,7 +71,6 @@ $result_trees{'footnote_in_command_not_closed'}{'contents'}[0]{'contents'}[1]{'a
 $result_trees{'footnote_in_command_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'footnote_in_command_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'footnote_in_command_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'footnote_in_command_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'footnote_in_command_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'footnote_in_command_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'footnote_in_command_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'footnote_in_command_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'footnote_in_command_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'footnote_in_command_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'footnote_in_command_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'footnote_in_command_not_closed'}{'contents'}[0]{'contents'}[1];
 $result_trees{'footnote_in_command_not_closed'}{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'footnote_in_command_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};

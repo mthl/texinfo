@@ -2211,7 +2211,15 @@ sub _abort_empty_line($$;$)
                 eq $current->{'contents'}->[-1]) {
         delete ($current->{'extra'}->{'spaces_before_argument'});
         delete ($current->{'extra'}) if !(keys(%{$current->{'extra'}}));
+      } elsif ($current->{'parent'} and $current->{'parent'}->{'extra'} 
+          and $current->{'parent'}->{'extra'}->{'spaces_before_argument'}
+          and $current->{'parent'}->{'extra'}->{'spaces_before_argument'} 
+                eq $current->{'contents'}->[-1]) {
+        delete ($current->{'parent'}->{'extra'}->{'spaces_before_argument'});
+        delete ($current->{'parent'}->{'extra'})
+          if !(keys(%{$current->{'parent'}->{'extra'}}));
       }
+
       pop @{$current->{'contents'}} 
     } elsif ($current->{'contents'}->[-1]->{'type'} eq 'empty_line') {
       # exactly the same condition than to begin a paragraph

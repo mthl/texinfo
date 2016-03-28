@@ -27,12 +27,7 @@ $result_trees{'image_link_prefix'} = {
           [
             {}
           ]
-        ],
-        'spaces_before_argument' => {
-          'parent' => {},
-          'text' => '',
-          'type' => 'empty_spaces_before_argument'
-        }
+        ]
       },
       'line_nr' => {
         'file_name' => '',
@@ -47,7 +42,6 @@ $result_trees{'image_link_prefix'} = {
 $result_trees{'image_link_prefix'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_link_prefix'}{'contents'}[0]{'args'}[0];
 $result_trees{'image_link_prefix'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'image_link_prefix'}{'contents'}[0];
 $result_trees{'image_link_prefix'}{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_link_prefix'}{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'image_link_prefix'}{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'image_link_prefix'}{'contents'}[0]{'args'}[0];
 $result_trees{'image_link_prefix'}{'contents'}[0]{'parent'} = $result_trees{'image_link_prefix'};
 
 $result_texis{'image_link_prefix'} = '@image{image}';

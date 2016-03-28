@@ -158,12 +158,7 @@ $result_trees{'accents'} = {
                     'node_content' => [
                       {}
                     ],
-                    'normalized' => 'truc',
-                    'spaces_before_argument' => {
-                      'parent' => {},
-                      'text' => '',
-                      'type' => 'empty_spaces_before_argument'
-                    }
+                    'normalized' => 'truc'
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -215,7 +210,6 @@ $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]
 $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'accents'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'accents'}{'contents'}[2]{'contents'}[3];

@@ -24,13 +24,6 @@ $result_trees{'math_not_closed'} = {
           ],
           'cmdname' => 'math',
           'contents' => [],
-          'extra' => {
-            'spaces_before_argument' => {
-              'parent' => {},
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
@@ -47,7 +40,6 @@ $result_trees{'math_not_closed'} = {
 };
 $result_trees{'math_not_closed'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'math_not_closed'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'math_not_closed'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'math_not_closed'}{'contents'}[0]{'contents'}[0];
-$result_trees{'math_not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'math_not_closed'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'math_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'math_not_closed'}{'contents'}[0];
 $result_trees{'math_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'math_not_closed'};
 

@@ -70,12 +70,7 @@ $result_trees{'U_with_utf8_enable_encoding'} = {
               [
                 {}
               ]
-            ],
-            'spaces_before_argument' => {
-              'parent' => {},
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            ]
           },
           'line_nr' => {
             'file_name' => '',
@@ -106,7 +101,6 @@ $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[0]{'parent'} = $result_
 $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0];
 $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1];
 $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1];
 $result_trees{'U_with_utf8_enable_encoding'}{'contents'}[1]{'parent'} = $result_trees{'U_with_utf8_enable_encoding'};

@@ -131,11 +131,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -234,11 +229,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -342,11 +332,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -456,11 +441,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -572,11 +552,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -687,11 +662,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -808,11 +778,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -930,11 +895,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -1058,11 +1018,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -1203,11 +1158,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -1318,11 +1268,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -1439,11 +1384,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -1577,11 +1517,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -1698,11 +1633,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -1815,11 +1745,6 @@ $result_trees{'top_in_ref'} = {
                     }
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -1926,11 +1851,6 @@ $result_trees{'top_in_ref'} = {
                     }
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -2043,11 +1963,6 @@ $result_trees{'top_in_ref'} = {
                     }
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -2166,11 +2081,6 @@ $result_trees{'top_in_ref'} = {
                     }
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -2290,11 +2200,6 @@ $result_trees{'top_in_ref'} = {
                     }
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -2414,11 +2319,6 @@ $result_trees{'top_in_ref'} = {
                     }
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -2544,11 +2444,6 @@ $result_trees{'top_in_ref'} = {
                     }
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -2675,11 +2570,6 @@ $result_trees{'top_in_ref'} = {
                     }
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -2812,11 +2702,6 @@ $result_trees{'top_in_ref'} = {
                     }
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -2966,11 +2851,6 @@ $result_trees{'top_in_ref'} = {
                     }
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -3090,11 +2970,6 @@ $result_trees{'top_in_ref'} = {
                     }
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -3220,11 +3095,6 @@ $result_trees{'top_in_ref'} = {
                     }
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -3367,11 +3237,6 @@ $result_trees{'top_in_ref'} = {
                     }
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -3497,11 +3362,6 @@ $result_trees{'top_in_ref'} = {
                     }
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -3628,11 +3488,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -3711,11 +3566,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -3812,11 +3662,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -3914,11 +3759,6 @@ $result_trees{'top_in_ref'} = {
                     {}
                   ],
                   'normalized' => 'Top'
-                },
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
                 }
               },
               'line_nr' => {},
@@ -3980,7 +3820,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'label'} = $result_trees{'top_in_ref'}{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -4001,7 +3840,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'extra'
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'args'}[2]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'extra'}{'label'} = $result_trees{'top_in_ref'}{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -4022,7 +3860,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[10]{'args'
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[10]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[10]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[10]{'args'}[3]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[10]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[10]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[10]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[10]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[8]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -4044,7 +3881,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[14]{'args'
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[14]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[14]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[14]{'args'}[4]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[14]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[14]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[14]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[14]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[12]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[14]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[15]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -4068,7 +3904,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[18]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[18]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[18]{'args'}[2]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[18]{'extra'}{'label'} = $result_trees{'top_in_ref'}{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[18]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[18]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[18]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[18]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[18]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[16]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[18]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[19]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -4091,7 +3926,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[22]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[22]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[22]{'args'}[1]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[22]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[22]{'args'}[3]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[22]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[22]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[22]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[22]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[22]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[20]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[22]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[23]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -4115,7 +3949,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[26]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[26]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[26]{'args'}[1]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[26]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[26]{'args'}[4]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[26]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[26]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[26]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[26]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[26]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[24]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[26]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[27]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -4140,7 +3973,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[30]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[30]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[30]{'args'}[2]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[30]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[30]{'args'}[3]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[30]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[30]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[30]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[30]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[30]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[28]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[30]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[31]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -4166,7 +3998,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[34]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[34]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[34]{'args'}[2]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[34]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[34]{'args'}[4]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[34]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[34]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[34]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[34]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[34]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[32]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[34]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[35]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -4196,7 +4027,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[38]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[38]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[38]{'args'}[3]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[38]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[38]{'args'}[4]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[38]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[38]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[38]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[38]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[38]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[36]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[38]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[39]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -4219,7 +4049,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[42]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[42]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[42]{'args'}[2]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[42]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[42]{'args'}[3]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[42]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[42]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[42]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[42]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[42]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[40]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[42]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[43]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -4243,7 +4072,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[46]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[46]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[46]{'args'}[2]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[46]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[46]{'args'}[4]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[46]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[46]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[46]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[46]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[46]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[44]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[46]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[47]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -4271,7 +4099,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[50]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[50]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[50]{'args'}[3]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[50]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[50]{'args'}[4]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[50]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[50]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[50]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[50]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[50]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[48]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[50]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[51]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -4295,7 +4122,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[54]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[54]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[54]{'args'}[3]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[54]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[54]{'args'}[4]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[54]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[54]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[54]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[54]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[54]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[52]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[54]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[55]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1];
@@ -4317,7 +4143,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'extra'
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[1]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
@@ -4338,7 +4163,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[6]{'extra'
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[6]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[6]{'args'}[2]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[6]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[6]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[6]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[6]{'args'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[6]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[6]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[6]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[4]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[6]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[7]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
@@ -4360,7 +4184,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[10]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[10]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[10]{'args'}[3]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[10]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[10]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[10]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[10]{'args'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[10]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[10]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[10]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[8]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[10]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[11]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
@@ -4383,7 +4206,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[14]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[14]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[14]{'args'}[4]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[14]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[14]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[14]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[14]{'args'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[14]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[14]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[14]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[12]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[14]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[15]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
@@ -4407,7 +4229,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[18]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[18]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[18]{'args'}[2]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[18]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[18]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[18]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[18]{'args'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[18]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[18]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[18]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[16]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[18]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[19]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
@@ -4431,7 +4252,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[22]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[22]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[22]{'args'}[3]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[22]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[22]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[22]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[22]{'args'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[22]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[22]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[22]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[20]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[22]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[23]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
@@ -4456,7 +4276,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[26]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[26]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[26]{'args'}[4]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[26]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[26]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[26]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[26]{'args'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[26]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[26]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[26]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[24]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[26]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[27]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
@@ -4482,7 +4301,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[30]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[30]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[30]{'args'}[3]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[30]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[30]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[30]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[30]{'args'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[30]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[30]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[30]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[28]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[30]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[31]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
@@ -4509,7 +4327,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[34]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[34]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[34]{'args'}[4]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[34]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[34]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[34]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[34]{'args'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[34]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[34]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[34]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[32]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[34]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[35]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
@@ -4540,7 +4357,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[38]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[38]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[38]{'args'}[4]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[38]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[38]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[38]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[38]{'args'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[38]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[38]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[38]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[36]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[38]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[39]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
@@ -4564,7 +4380,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[42]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[42]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[42]{'args'}[3]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[42]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[42]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[42]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[42]{'args'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[42]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[42]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[42]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[40]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[42]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[43]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
@@ -4589,7 +4404,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[46]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[46]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[46]{'args'}[4]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[46]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[46]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[46]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[46]{'args'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[46]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[46]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[46]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[44]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[46]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[47]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
@@ -4618,7 +4432,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[50]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[50]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[50]{'args'}[4]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[50]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[50]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[50]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[50]{'args'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[50]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[50]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[50]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[48]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[50]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[51]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
@@ -4643,7 +4456,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[54]{'extra
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[54]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[54]{'args'}[4]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[54]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[54]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[54]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[54]{'args'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[54]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[54]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[54]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[52]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[54]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[55]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[3];
@@ -4669,7 +4481,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'extra'
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'args'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'args'}[2]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[3]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5];
@@ -4685,7 +4496,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[6]{'args'}
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[6];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[6]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[6]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[6]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[6]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[6]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[6]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[4]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[6]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[7]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5];
@@ -4705,7 +4515,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[10]{'args'
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[10]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[10]{'args'}[0]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[10]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[10]{'args'}[1]{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[10]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[10]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[10]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[10]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[10]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[8]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[10]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[11]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5];
@@ -4725,7 +4534,6 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[14]{'args'
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[14]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[14]{'args'}[0]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[14]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[14]{'args'}[2]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[14]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[14]{'args'}[0]{'contents'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[14]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[14]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[14]{'line_nr'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[12]{'line_nr'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[14]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[15]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5];

@@ -80,12 +80,7 @@ $result_trees{'test_errormsg'} = {
                 {},
                 {}
               ]
-            ],
-            'spaces_before_argument' => {
-              'parent' => {},
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            ]
           },
           'line_nr' => {},
           'parent' => {}
@@ -117,7 +112,6 @@ $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'extra'}{'brace_com
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][1] = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][2] = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2];
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][3] = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[3];
-$result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'line_nr'} = $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0];
 $result_trees{'test_errormsg'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_errormsg'}{'contents'}[0];

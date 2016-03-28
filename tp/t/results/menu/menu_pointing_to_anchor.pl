@@ -137,12 +137,7 @@ $result_trees{'menu_pointing_to_anchor'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'An-anchor',
-            'spaces_before_argument' => {
-              'parent' => {},
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'normalized' => 'An-anchor'
           },
           'line_nr' => {
             'file_name' => '',
@@ -325,7 +320,6 @@ $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'args'}[0
 $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3];
 $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2];
 $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2];
 $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'extra'}{'command'} = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[6];
@@ -417,11 +411,7 @@ $result_nodes{'menu_pointing_to_anchor'} = {
           }
         ]
       ],
-      'normalized' => 'An-anchor',
-      'spaces_before_argument' => {
-        'text' => '',
-        'type' => 'empty_spaces_before_argument'
-      }
+      'normalized' => 'An-anchor'
     },
     'node_prev' => {}
   },
@@ -473,11 +463,7 @@ $result_menus{'menu_pointing_to_anchor'} = {
           }
         ]
       ],
-      'normalized' => 'An-anchor',
-      'spaces_before_argument' => {
-        'text' => '',
-        'type' => 'empty_spaces_before_argument'
-      }
+      'normalized' => 'An-anchor'
     },
     'menu_up' => {},
     'menu_up_hash' => {

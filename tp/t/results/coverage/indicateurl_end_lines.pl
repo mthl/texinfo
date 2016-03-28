@@ -35,12 +35,7 @@ $result_trees{'indicateurl_end_lines'} = {
                 {},
                 {}
               ]
-            ],
-            'spaces_before_argument' => {
-              'parent' => {},
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            ]
           },
           'line_nr' => {
             'file_name' => '',
@@ -88,13 +83,6 @@ $result_trees{'indicateurl_end_lines'} = {
           ],
           'cmdname' => 'indicateurl',
           'contents' => [],
-          'extra' => {
-            'spaces_before_argument' => {
-              'parent' => {},
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 4,
@@ -125,7 +113,6 @@ $result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0]{
 $result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0];
 $result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][1] = $result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[0];
 $result_trees{'indicateurl_end_lines'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[0];
 $result_trees{'indicateurl_end_lines'}{'contents'}[0]{'parent'} = $result_trees{'indicateurl_end_lines'};
@@ -133,7 +120,6 @@ $result_trees{'indicateurl_end_lines'}{'contents'}[1]{'parent'} = $result_trees{
 $result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0];
-$result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'indicateurl_end_lines'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[2];
 $result_trees{'indicateurl_end_lines'}{'contents'}[2]{'parent'} = $result_trees{'indicateurl_end_lines'};
 $result_trees{'indicateurl_end_lines'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'indicateurl_end_lines'}{'contents'}[3];

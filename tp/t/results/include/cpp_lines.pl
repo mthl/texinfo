@@ -99,12 +99,7 @@ $result_trees{'cpp_lines'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {
                 'file_name' => 'g_f',
@@ -312,12 +307,7 @@ $result_trees{'cpp_lines'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {
                 'file_name' => 'g_f',
@@ -380,12 +370,7 @@ $result_trees{'cpp_lines'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {
                 'file_name' => 'g_f',
@@ -443,12 +428,7 @@ $result_trees{'cpp_lines'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {
                 'file_name' => 'inc',
@@ -494,12 +474,7 @@ $result_trees{'cpp_lines'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {
                 'file_name' => 'g_f',
@@ -593,12 +568,7 @@ $result_trees{'cpp_lines'} = {
                   [
                     {}
                   ]
-                ],
-                'spaces_before_argument' => {
-                  'parent' => {},
-                  'text' => '',
-                  'type' => 'empty_spaces_before_argument'
-                }
+                ]
               },
               'line_nr' => {
                 'file_name' => 'g_f',
@@ -672,7 +642,6 @@ $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_tre
 $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'args'}[0];
 $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[0];
 $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'args'}[0];
 $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[4];
 $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[4];
 $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[0];
@@ -708,7 +677,6 @@ $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_tre
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'args'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9]{'contents'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'args'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
@@ -719,7 +687,6 @@ $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[12]{'parent'} = $result_tr
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[13]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[13]{'contents'}[0]{'args'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[13]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[13]{'contents'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[13]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[13]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[13]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[13]{'contents'}[0]{'args'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[13]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[13];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[13]{'contents'}[1]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[13];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[13]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
@@ -729,7 +696,6 @@ $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[16]{'parent'} = $result_tr
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[17]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[17]{'contents'}[0]{'args'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[17]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[17]{'contents'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[17]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[17]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[17]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[17]{'contents'}[0]{'args'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[17]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[17];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[17]{'contents'}[1]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[17];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[17]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
@@ -737,7 +703,6 @@ $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[18]{'parent'} = $result_tr
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[19]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[19]{'contents'}[0]{'args'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[19]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[19]{'contents'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[19]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[19]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[19]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[19]{'contents'}[0]{'args'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[19]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[19];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[19]{'contents'}[1]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[19];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[19]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
@@ -752,7 +717,6 @@ $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[22]{'parent'} = $result_tr
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[23]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[23]{'contents'}[0]{'args'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[23]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[23]{'contents'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[23]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[23]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[23]{'contents'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[23]{'contents'}[0]{'args'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[23]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[23];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[23]{'contents'}[1]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[23];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[23]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];

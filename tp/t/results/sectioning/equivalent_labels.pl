@@ -89,12 +89,7 @@ $result_trees{'equivalent_labels'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'anch',
-            'spaces_before_argument' => {
-              'parent' => {},
-              'text' => '',
-              'type' => 'empty_spaces_before_argument'
-            }
+            'normalized' => 'anch'
           },
           'line_nr' => {},
           'parent' => {}
@@ -479,7 +474,6 @@ $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'con
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[1];
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[1]{'line_nr'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'equivalent_labels'}{'contents'}[1];
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[2];
@@ -594,11 +588,7 @@ $result_nodes{'equivalent_labels'} = {
           }
         ]
       ],
-      'normalized' => 'anch',
-      'spaces_before_argument' => {
-        'text' => '',
-        'type' => 'empty_spaces_before_argument'
-      }
+      'normalized' => 'anch'
     },
     'node_prev' => {}
   },
@@ -650,11 +640,7 @@ $result_menus{'equivalent_labels'} = {
           }
         ]
       ],
-      'normalized' => 'anch',
-      'spaces_before_argument' => {
-        'text' => '',
-        'type' => 'empty_spaces_before_argument'
-      }
+      'normalized' => 'anch'
     },
     'menu_next' => {
       'cmdname' => 'float',

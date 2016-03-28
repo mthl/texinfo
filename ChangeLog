@@ -1,7 +1,13 @@
 2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* tp/Texinfo/Parser.pm (): Always set parent on element of type 
-	'empty_spaces_before_argument'.
+	* tp/Texinfo/Parser.pm (_abort_empty_line): Check if 
+	'spaces_before_argument' extra value needs to be removed from 
+	parent as well as from current element.
+
+2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (parse_texi): Always set parent on 
+	element of type 'empty_spaces_before_argument'.
 
 2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
