@@ -1,3 +1,11 @@
+2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* Makefile.am: Disable standalone parsetexi program, as building it
+	doesn't work.
+	* command_data.awk: Fix command data for commands given by 
+	backslash escapes.
+
+
 2016-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Replace MakeMaker build system with automake/libtool one, copied 

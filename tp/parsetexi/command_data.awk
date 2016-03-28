@@ -100,11 +100,13 @@ BEGIN {
 }
 
 !/^$/ && !/^#/ {
-    if ($1 in bs_escapes)
-        commands[bs_escapes[$1]] = $2
-    else
-        commands[$1] = $2
-    data[$1] = $3
+    if ($1 in bs_escapes) {
+        c = bs_escapes[$1]
+    } else {
+        c = $1
+    }
+    commands[c] = $2
+    data[c] = $3
 }
 
 END {
