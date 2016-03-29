@@ -81,18 +81,21 @@
 
 2016-03-23  Masamichi Hosoda  <trueroad@trueroad.jp>
 
-	* doc/texinfo.tex (\email, \doemail): New macro.
+	* doc/texinfo.tex (\email, \doemail):
+	Copy from the definition for pdfTeX.
 	Add XeTeX @email support.
 
 2016-03-23  Masamichi Hosoda  <trueroad@trueroad.jp>
 
-	* doc/texinfo.tex (\pdfgettoks, \pdfaddtokens, \adn, \poptoks, 
-	\maketoks, \makelink, \pdflink, \done): New Macro.
+	* doc/texinfo.tex (\pdfgettoks, \pdfaddtokens, \adn, \poptoks) 
+	(\maketoks, \makelink, \pdflink, \done):
+	Copy from the definition for pdfTeX and modify for XeTeX.
 	Add XeTeX PDF table of contents page number link support.
 
 2016-03-22  Masamichi Hosoda  <trueroad@trueroad.jp>
 
-	* doc/texinfo.tex (\pdfurl, \endlink): New macro.
+	* doc/texinfo.tex (\pdfurl, \endlink):
+	Copy from the definition for pdfTeX and modify for XeTeX.
 	Add XeTeX PDF URL link support.
 
 2016-03-22  Masamichi Hosoda  <trueroad@trueroad.jp>
