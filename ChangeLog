@@ -1,5 +1,11 @@
 2016-03-29  Masamichi Hosoda  <trueroad@trueroad.jp>
 
+	* doc/texinfo.tex (\skipspaces, \getfilename):
+	Copy from the definition for pdfTeX.
+	(\xrefX): Add XeTeX @xref PDF link support.
+
+2016-03-29  Masamichi Hosoda  <trueroad@trueroad.jp>
+
 	* doc/texinfo.tex (\pdfmkdest, \dopdfoutline):
 	Add \txiescapepdf for XeTeX.
 
