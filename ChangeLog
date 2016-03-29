@@ -1,3 +1,8 @@
+2016-03-29  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\pdfmkdest, \dopdfoutline):
+	Add \txiescapepdf for XeTeX.
+
 2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_node_extra_to_texi): Move to 
