@@ -1616,7 +1616,7 @@ end_line (ELEMENT *current)
         }
     }
 
-  /* End of a definition line, like @deffn */ // 2933
+  /* End of a definition line, like @deffn */ // 2778
   else if (current->parent && current->parent->type == ET_def_line)
     {
       enum command_id def_command, original_def_command;
@@ -1628,9 +1628,12 @@ end_line (ELEMENT *current)
 
       k = lookup_extra_key (current->parent, "def_command");
       if (k)
-        ; // TODO
+        original_def_command = lookup_command ((char *) k->value);
+      else
+        original_def_command = current->parent->parent->cmd;
+      // TODO: What if k is not defined?
 
-      original_def_command = def_command = current->parent->parent->cmd;
+      def_command = original_def_command;
       /* Strip an trailing x from the command, e.g. @deffnx -> @deffn */
       if (command_data(def_command).flags & CF_misc)
         {

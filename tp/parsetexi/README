@@ -3,6 +3,11 @@ in tp/Texinfo/Parser.pm.
 
 =====================================================================
 Notes -
+
+should be able to debug with gdb.  Add
+
+./configure PERL_EXT_CFLAGS='-g -O0'
+
 How to debug with valgrind -
 export PERL5LIB to the value in the makeinfo script
 
