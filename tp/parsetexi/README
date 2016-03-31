@@ -1,10 +1,6 @@
 This is an experimental program intended to replicate the functionality 
 in tp/Texinfo/Parser.pm.
 
-makeinfo in this directory wraps texi2any-C-2.pl, which is 
-tp/texi2any.pl changed to use the module in the Parsetexi subdirectory 
-instead of Texinfo::Parser.
-
 =====================================================================
 Notes -
 How to debug with valgrind -

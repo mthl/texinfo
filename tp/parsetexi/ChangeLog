@@ -1,5 +1,9 @@
 2016-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* texi2any-2-C.pl: Remove file.
+
+2016-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* parser.c (process_remaining_on_line): Handle nested @macro.
 
 2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
