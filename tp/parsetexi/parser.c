@@ -699,16 +699,31 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
               goto funexit;
             }
         }
-#if 0
-      /* Else check for nested ifclear */
-     if (...)
+
+      /* Else check for nested @ifset (so that @end ifset doesn't
+         end the outermost @ifset). */
+      if (current->cmd == CM_ifclear || current->cmd == CM_ifset
+          || current->cmd == CM_ifcommanddefined
+          || current->cmd == CM_ifcommandnotdefined)
         {
-          /* ... */
-          current = current->contents.list[number];
-          break;
+          ELEMENT *e;
+          char *p = line;
+          p += strspn (p, whitespace_chars);
+          if (!strncmp (p, command_name(current->cmd),
+                        strlen (command_name(current->cmd))))
+            {
+              line = p;
+              p += strlen (command_name(current->cmd));
+              e = new_element (ET_NONE);
+              e->cmd = current->cmd;
+              add_extra_string (e, "line", strdup (line));
+              add_to_element_contents (current, e);
+              current = e;
+              retval = GET_A_NEW_LINE;
+              goto funexit;
+            }
         }
-      else
-#endif
+
       /* 3755 Else check if line is "@end ..." for current command. */
       if (is_end_current_command (current, &line, &end_cmd))
         {
