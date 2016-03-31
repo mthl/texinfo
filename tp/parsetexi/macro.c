@@ -75,6 +75,7 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
 
   macro = new_element (ET_NONE);
   macro->cmd = cmd;
+  macro->line_nr = line_nr;
 
   line += strspn (line, whitespace_chars);
   name = read_command_name (&line);

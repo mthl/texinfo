@@ -671,19 +671,37 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
       && (command_data(current->cmd).data == BLOCK_raw
           || command_data(current->cmd).data == BLOCK_conditional))
     { /* 3730 */
-#if 0
       /* Check if we are using a macro within a macro. */
-      if (...)
+      if (current->cmd == CM_macro || current->cmd == CM_rmacro)
         {
-          ELEMENT *e = new_element ();
-          /* ... */
-
-          current = current->contents.list[number];
-          break;
+          enum command_id cmd = 0;
+          char *p = line;
+          p += strspn (p, whitespace_chars);
+          if (!strncmp (p, "@macro", strlen ("@macro")))
+            {
+              p += strlen ("@macro");
+              cmd = CM_macro;
+            }
+          else if (!strncmp (p, "@rmacro", strlen ("@rmacro")))
+            {
+              p += strlen ("@rmacro");
+              cmd = CM_rmacro;
+            }
+          if (cmd)
+            {
+              ELEMENT *e = new_element (ET_NONE);
+              e->cmd = cmd;
+              line = p;
+              add_to_element_contents (current, e);
+              add_extra_string (e, "arg_line", strdup (line));
+              current = e;
+              retval = GET_A_NEW_LINE;
+              goto funexit;
+            }
         }
-
+#if 0
       /* Else check for nested ifclear */
-      else if (...)
+     if (...)
         {
           /* ... */
           current = current->contents.list[number];

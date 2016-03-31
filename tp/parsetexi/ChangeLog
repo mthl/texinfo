@@ -1,10 +1,13 @@
+2016-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* parser.c (process_remaining_on_line): Handle nested @macro.
+
 2016-03-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* Makefile.am: Disable standalone parsetexi program, as building it
 	doesn't work.
 	* command_data.awk: Fix command data for commands given by 
 	backslash escapes.
-
 
 2016-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
 

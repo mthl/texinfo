@@ -557,10 +557,8 @@ handle_block_command (ELEMENT *current, char **line_inout,
       // mark_and_warn_invalid ();
       current = macro;
 
-      /* 4640 FIXME */
+      /* 4640 */
       /* A new line should be read immediately after this.  */
-      /* Alternative is to use longjmp to go where "last;" does in the Perl 
-         version. */
       line = strchr (line, '\0');
       *get_new_line = 1;
       goto funexit;
