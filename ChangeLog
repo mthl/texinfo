@@ -1,6 +1,12 @@
 2016-04-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_end_line) <@multitable prototypes>: Don't
+	set parent field for created 'bracketed_multitable_prototype' 
+	element.
+
+2016-04-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line) <@multitable prototypes>: Don't
 	save a 'prototypes_line' extra value for the multitable element.
 	* tp/Texinfo/Convert/TexinfoXML.pm (_convert) <@multitable>: 
 	Reconstruct the information that was in 'prototypes_line'.

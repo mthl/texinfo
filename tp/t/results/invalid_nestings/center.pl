@@ -1568,12 +1568,10 @@ $result_trees{'center'} = {
         'prototypes' => [
           {
             'contents' => [],
-            'parent' => {},
             'type' => 'bracketed_multitable_prototype'
           },
           {
             'contents' => [],
-            'parent' => {},
             'type' => 'bracketed_multitable_prototype'
           }
         ],
@@ -2061,9 +2059,7 @@ $result_trees{'center'}{'contents'}[33]{'contents'}[1]{'extra'}{'spaces_after_co
 $result_trees{'center'}{'contents'}[33]{'contents'}[1]{'parent'} = $result_trees{'center'}{'contents'}[33];
 $result_trees{'center'}{'contents'}[33]{'extra'}{'end_command'} = $result_trees{'center'}{'contents'}[33]{'contents'}[1];
 $result_trees{'center'}{'contents'}[33]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'center'}{'contents'}[33]{'args'}[0]{'contents'}[1]{'contents'};
-$result_trees{'center'}{'contents'}[33]{'extra'}{'prototypes'}[0]{'parent'} = $result_trees{'center'}{'contents'}[33]{'args'}[0];
 $result_trees{'center'}{'contents'}[33]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'center'}{'contents'}[33]{'args'}[0]{'contents'}[3]{'contents'};
-$result_trees{'center'}{'contents'}[33]{'extra'}{'prototypes'}[1]{'parent'} = $result_trees{'center'}{'contents'}[33]{'args'}[0];
 $result_trees{'center'}{'contents'}[33]{'extra'}{'spaces_after_command'} = $result_trees{'center'}{'contents'}[33]{'args'}[0]{'contents'}[0];
 $result_trees{'center'}{'contents'}[33]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[34]{'parent'} = $result_trees{'center'};

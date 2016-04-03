@@ -3032,7 +3032,6 @@ sub _end_line($$$)
       foreach my $content (@{$current->{'contents'}}) {
         if ($content->{'type'} and $content->{'type'} eq 'bracketed') {
           push @prototype_row, { 'contents' => $content->{'contents'},
-                                 'parent' => $content->{'parent'},
                                  'type' => 'bracketed_multitable_prototype'};
         } elsif ($content->{'text'}) {
           if ($content->{'text'} =~ /\S/) {
