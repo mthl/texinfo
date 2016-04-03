@@ -323,7 +323,7 @@ foreach my $other_forbidden_index_name ('info','ps','pdf','htm',
 
 # @-commands that do not start a paragraph
 my %default_no_paragraph_commands;
-# @-commands that should be at a line beginning
+# @-commands that should be at the beginning of a line
 my %begin_line_commands;
 
 foreach my $command ('node', 'end') {
@@ -1346,7 +1346,7 @@ sub _close_brace_command($$$;$$)
                                                        
     } else {
       $self->_command_error($current, $line_nr, 
-        $self->__("%c%s missing close brace"), ord('@'), $current->{'cmdname'});
+        $self->__("%c%s missing closing brace"), ord('@'), $current->{'cmdname'});
     }
   } else {
     $self->_command_error($current, $line_nr,
@@ -2128,7 +2128,7 @@ sub _expand_macro_arguments($$$$)
 
       ($line, $line_nr) = _new_line($self, $line_nr, $macro);
       if (!defined($line)) {
-        $self->line_error(sprintf($self->__("\@%s missing close brace"), 
+        $self->line_error(sprintf($self->__("\@%s missing closing brace"), 
            $name), $line_nr_orig);
         return ($arguments, "\n", $line_nr);
       }
@@ -3906,7 +3906,7 @@ sub _parse_texi($;$)
           } else {
             push @{$current->{'contents'}}, 
               { 'text' => $1, 'type' => 'raw', 'parent' => $current };
-            $self->line_warn(sprintf($self->__("\@end %s should only appear at a line beginning"), 
+            $self->line_warn(sprintf($self->__("\@end %s should only appear at the beginning of a line"), 
                                      $end_command), $line_nr);
           }
           # if there is a user defined macro that expandes to spaces, there
@@ -4377,7 +4377,7 @@ sub _parse_texi($;$)
         if (not _abort_empty_line($self, $current) 
                and $begin_line_commands{$command}) {
           $self->line_warn( 
-              sprintf($self->__("\@%s should only appear at a line beginning"), 
+              sprintf($self->__("\@%s should only appear at the beginning of a line"), 
                       $command), $line_nr);
         }
 
