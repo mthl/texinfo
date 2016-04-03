@@ -852,9 +852,6 @@ end_line_starting_block (ELEMENT *current)
       /* Parse prototype row for a @multitable.  Handling
          of @columnfractions is done elsewhere. */
 
-      /* TODO: Need to set both 'prototypes' and 'prototypes_line' 
-         values.  */
-
       int i;
       ELEMENT *prototypes = new_element (ET_NONE);
       prototypes->parent_type = route_not_in_tree;
@@ -871,7 +868,9 @@ end_line_starting_block (ELEMENT *current)
               new = malloc (sizeof (ELEMENT));
               memcpy (new, e, sizeof (ELEMENT));
               new->type = ET_bracketed_multitable_prototype;
-              add_to_element_contents (prototypes, new);
+              new->parent = 0;
+              new->parent_type = route_not_in_tree;
+              add_to_contents_as_array (prototypes, new);
             }
           else if (e->text.end > 0) // 2893
             {
@@ -883,7 +882,9 @@ end_line_starting_block (ELEMENT *current)
                   new = malloc (sizeof (ELEMENT));
                   memcpy (new, e, sizeof (ELEMENT));
                   new->type = ET_row_prototype;
-                  add_to_element_contents (prototypes, new);
+                  new->parent = 0;
+                  new->parent_type = route_not_in_tree;
+                  add_to_contents_as_array (prototypes, new);
                 }
             }
           else // 2913
@@ -902,7 +903,9 @@ end_line_starting_block (ELEMENT *current)
                   ELEMENT *new;
                   new = malloc (sizeof (ELEMENT));
                   memcpy (new, e, sizeof (ELEMENT));
-                  add_to_element_contents (prototypes, new);
+                  new->parent = 0;
+                  new->parent_type = route_not_in_tree;
+                  add_to_contents_as_array (prototypes, new);
                 }
             }
         }
