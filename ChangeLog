@@ -1,3 +1,10 @@
+2016-04-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line) <@multitable prototypes>: Don't
+	save a 'prototypes_line' extra value for the multitable element.
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert) <@multitable>: 
+	Reconstruct the information that was in 'prototypes_line'.
+
 2016-03-29  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex (\skipspaces, \getfilename):

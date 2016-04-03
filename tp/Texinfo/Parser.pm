@@ -3029,32 +3029,16 @@ sub _end_line($$$)
                and $current->{'parent'}->{'cmdname'} eq 'multitable') {
       # parse the prototypes and put them in a special arg
       my @prototype_row;
-      # do the same but keeping spaces information
-      my @prototype_line;
       foreach my $content (@{$current->{'contents'}}) {
         if ($content->{'type'} and $content->{'type'} eq 'bracketed') {
           push @prototype_row, { 'contents' => $content->{'contents'},
                                  'parent' => $content->{'parent'},
                                  'type' => 'bracketed_multitable_prototype'};
-          push @prototype_line, $content;
         } elsif ($content->{'text'}) {
           if ($content->{'text'} =~ /\S/) {
             foreach my $prototype (split /\s+/, $content->{'text'}) {
               push @prototype_row, { 'text' => $prototype, 
                             'type' => 'row_prototype' } unless ($prototype eq '');
-            }
-          }
-          # The regexp breaks between characters, with a non space followed
-          # by a space or a space followed by non space.  It is like \b, but
-          # for \s \S, and not \w \W.
-          foreach my $prototype_or_space (split /(?<=\S)(?=\s)|(?=\S)(?<=\s)/, 
-                                                          $content->{'text'}) {
-            if ($prototype_or_space =~ /\S/) {
-              push @prototype_line, {'text' => $prototype_or_space,
-                                     'type' => 'row_prototype' };
-            } elsif ($prototype_or_space =~ /\s/) {
-              push @prototype_line, {'text' => $prototype_or_space,
-                                     'type' => 'prototype_space' };
             }
           }
         } else {
@@ -3068,7 +3052,6 @@ sub _end_line($$$)
                    or $content->{'cmdname'} eq 'comment') {
           } else {
             push @prototype_row, $content;
-            push @prototype_line, $content;
           }
         }
       }
@@ -3080,7 +3063,6 @@ sub _end_line($$$)
                              $self->__("empty multitable"));
       }
       $multitable->{'extra'}->{'prototypes'} = \@prototype_row;
-      $multitable->{'extra'}->{'prototypes_line'} = \@prototype_line;
 
     } else {
       _isolate_last_space($self, $current, 'space_at_end_block_command');
@@ -7233,9 +7215,7 @@ of the definition, and as value the corresponding content tree.
 
 The key I<max_columns> holds the maximal number of columns.  If there
 are prototypes on the line they are in the array associated with 
-I<prototypes>.  In that case, I<prototypes_line> also holds this 
-information, and, in addition, keeps spaces with type C<prototype_space>.  
-If there is a C<@columnfractions> as argument, then the 
+I<prototypes>.  If there is a C<@columnfractions> as argument, then the 
 I<columnfractions> key is associated with the array of columnfractions
 arguments, holding all the column fractions.
 
