@@ -360,12 +360,12 @@ Topsecond item
 
 $result_errors{'item_in_ref'} = [
   {
-    'error_line' => ':5: @ref missing close brace
+    'error_line' => ':5: @ref missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@ref missing close brace',
+    'text' => '@ref missing closing brace',
     'type' => 'error'
   },
   {

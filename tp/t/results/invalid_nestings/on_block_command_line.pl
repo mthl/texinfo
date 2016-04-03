@@ -624,12 +624,12 @@ $result_errors{'on_block_command_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: @exdent should only appear at a line beginning
+    'error_line' => ':5: warning: @exdent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@exdent should only appear at a line beginning',
+    'text' => '@exdent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

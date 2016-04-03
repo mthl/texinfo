@@ -91,12 +91,12 @@ $result_texts{'text_before_after'} = 'before after
 
 $result_errors{'text_before_after'} = [
   {
-    'error_line' => ':1: warning: @macro should only appear at a line beginning
+    'error_line' => ':1: warning: @macro should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@macro should only appear at a line beginning',
+    'text' => '@macro should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

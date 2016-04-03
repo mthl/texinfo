@@ -328,12 +328,12 @@ $result_errors{'table_not_closed_in_menu_description'} = [
     'type' => 'error continuation'
   },
   {
-    'error_line' => ':2: warning: @table should only appear at a line beginning
+    'error_line' => ':2: warning: @table should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@table should only appear at a line beginning',
+    'text' => '@table should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

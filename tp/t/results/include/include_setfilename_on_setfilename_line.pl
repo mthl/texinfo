@@ -151,12 +151,12 @@ $result_texts{'include_setfilename_on_setfilename_line'} = '';
 
 $result_errors{'include_setfilename_on_setfilename_line'} = [
   {
-    'error_line' => ':1: warning: @setfilename should only appear at a line beginning
+    'error_line' => ':1: warning: @setfilename should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@setfilename should only appear at a line beginning',
+    'text' => '@setfilename should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -178,12 +178,12 @@ $result_errors{'include_setfilename_on_setfilename_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @include should only appear at a line beginning
+    'error_line' => ':1: warning: @include should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@include should only appear at a line beginning',
+    'text' => '@include should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

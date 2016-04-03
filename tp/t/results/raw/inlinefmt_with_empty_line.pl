@@ -244,12 +244,12 @@ $result_texts{'inlinefmt_with_empty_line'} = 'A {  a.  Now html
 
 $result_errors{'inlinefmt_with_empty_line'} = [
   {
-    'error_line' => ':1: @inlinefmt missing close brace
+    'error_line' => ':1: @inlinefmt missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@inlinefmt missing close brace',
+    'text' => '@inlinefmt missing closing brace',
     'type' => 'error'
   },
   {
@@ -262,12 +262,12 @@ $result_errors{'inlinefmt_with_empty_line'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':4: @inlinefmt missing close brace
+    'error_line' => ':4: @inlinefmt missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => '@inlinefmt missing close brace',
+    'text' => '@inlinefmt missing closing brace',
     'type' => 'error'
   },
   {

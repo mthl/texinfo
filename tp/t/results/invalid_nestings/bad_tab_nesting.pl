@@ -272,12 +272,12 @@ bidule
 
 $result_errors{'bad_tab_nesting'} = [
   {
-    'error_line' => ':3: @code missing close brace
+    'error_line' => ':3: @code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@code missing closing brace',
     'type' => 'error'
   },
   {

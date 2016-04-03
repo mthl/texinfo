@@ -53,12 +53,12 @@ $result_texts{'anchor_not_closed'} = '';
 
 $result_errors{'anchor_not_closed'} = [
   {
-    'error_line' => ':1: @anchor missing close brace
+    'error_line' => ':1: @anchor missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@anchor missing close brace',
+    'text' => '@anchor missing closing brace',
     'type' => 'error'
   }
 ];

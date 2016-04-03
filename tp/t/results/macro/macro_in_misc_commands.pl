@@ -5209,12 +5209,12 @@ $result_menus{'macro_in_misc_commands'}{'menu_child'}{'menu_up'} = $result_menus
 
 $result_errors{'macro_in_misc_commands'} = [
   {
-    'error_line' => ':23: warning: @documentlanguage should only appear at a line beginning
+    'error_line' => ':23: warning: @documentlanguage should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 23,
     'macro' => '',
-    'text' => '@documentlanguage should only appear at a line beginning',
+    'text' => '@documentlanguage should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -5227,12 +5227,12 @@ $result_errors{'macro_in_misc_commands'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':58: warning: @definfoenclose should only appear at a line beginning
+    'error_line' => ':58: warning: @definfoenclose should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 58,
     'macro' => '',
-    'text' => '@definfoenclose should only appear at a line beginning',
+    'text' => '@definfoenclose should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -5245,21 +5245,21 @@ $result_errors{'macro_in_misc_commands'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':162: warning: @page should only appear at a line beginning (possibly involving @pagemacro)
+    'error_line' => ':162: warning: @page should only appear at the beginning of a line (possibly involving @pagemacro)
 ',
     'file_name' => '',
     'line_nr' => 162,
     'macro' => 'pagemacro',
-    'text' => '@page should only appear at a line beginning',
+    'text' => '@page should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':173: warning: @page should only appear at a line beginning (possibly involving @pagemacro)
+    'error_line' => ':173: warning: @page should only appear at the beginning of a line (possibly involving @pagemacro)
 ',
     'file_name' => '',
     'line_nr' => 173,
     'macro' => 'pagemacro',
-    'text' => '@page should only appear at a line beginning',
+    'text' => '@page should only appear at the beginning of a line',
     'type' => 'warning'
   }
 ];

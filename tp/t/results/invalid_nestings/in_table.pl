@@ -1652,12 +1652,12 @@ $result_errors{'in_table'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':8: warning: @exdent should only appear at a line beginning
+    'error_line' => ':8: warning: @exdent should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 8,
     'macro' => '',
-    'text' => '@exdent should only appear at a line beginning',
+    'text' => '@exdent should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -1670,12 +1670,12 @@ $result_errors{'in_table'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':10: @ref missing close brace
+    'error_line' => ':10: @ref missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => '@ref missing close brace',
+    'text' => '@ref missing closing brace',
     'type' => 'error'
   },
   {

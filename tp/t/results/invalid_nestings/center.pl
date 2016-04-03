@@ -2198,12 +2198,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: warning: @cindex should only appear at a line beginning
+    'error_line' => ':3: warning: @cindex should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@cindex should only appear at a line beginning',
+    'text' => '@cindex should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -2252,12 +2252,12 @@ $result_errors{'center'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':9: warning: @center should only appear at a line beginning
+    'error_line' => ':9: warning: @center should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => '@center should only appear at a line beginning',
+    'text' => '@center should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -2270,12 +2270,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':11: @code missing close brace
+    'error_line' => ':11: @code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@code missing closing brace',
     'type' => 'error'
   },
   {
@@ -2288,21 +2288,21 @@ $result_errors{'center'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':15: warning: @center should only appear at a line beginning
+    'error_line' => ':15: warning: @center should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => '@center should only appear at a line beginning',
+    'text' => '@center should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':15: @code missing close brace
+    'error_line' => ':15: @code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@code missing closing brace',
     'type' => 'error'
   },
   {
@@ -2324,21 +2324,21 @@ $result_errors{'center'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':19: warning: @center should only appear at a line beginning
+    'error_line' => ':19: warning: @center should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 19,
     'macro' => '',
-    'text' => '@center should only appear at a line beginning',
+    'text' => '@center should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':19: @code missing close brace
+    'error_line' => ':19: @code missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 19,
     'macro' => '',
-    'text' => '@code missing close brace',
+    'text' => '@code missing closing brace',
     'type' => 'error'
   },
   {
@@ -2423,21 +2423,21 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':33: warning: @center should only appear at a line beginning
+    'error_line' => ':33: warning: @center should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 33,
     'macro' => '',
-    'text' => '@center should only appear at a line beginning',
+    'text' => '@center should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':33: @samp missing close brace
+    'error_line' => ':33: @samp missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 33,
     'macro' => '',
-    'text' => '@samp missing close brace',
+    'text' => '@samp missing closing brace',
     'type' => 'error'
   },
   {
@@ -2459,21 +2459,21 @@ $result_errors{'center'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':35: warning: @center should only appear at a line beginning
+    'error_line' => ':35: warning: @center should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 35,
     'macro' => '',
-    'text' => '@center should only appear at a line beginning',
+    'text' => '@center should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':35: @samp missing close brace
+    'error_line' => ':35: @samp missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 35,
     'macro' => '',
-    'text' => '@samp missing close brace',
+    'text' => '@samp missing closing brace',
     'type' => 'error'
   },
   {
@@ -2549,12 +2549,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':45: warning: @table should only appear at a line beginning
+    'error_line' => ':45: warning: @table should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 45,
     'macro' => '',
-    'text' => '@table should only appear at a line beginning',
+    'text' => '@table should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

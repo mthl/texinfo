@@ -247,12 +247,12 @@ $result_menus{'verbatim_in_ref'} = {
 
 $result_errors{'verbatim_in_ref'} = [
   {
-    'error_line' => ':3: @xref missing close brace
+    'error_line' => ':3: @xref missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@xref missing close brace',
+    'text' => '@xref missing closing brace',
     'type' => 'error'
   },
   {

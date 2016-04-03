@@ -65,12 +65,12 @@ $result_sectioning{'ignored_text'} = {};
 
 $result_errors{'ignored_text'} = [
   {
-    'error_line' => ':1: warning: @ifinfo should only appear at a line beginning
+    'error_line' => ':1: warning: @ifinfo should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@ifinfo should only appear at a line beginning',
+    'text' => '@ifinfo should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

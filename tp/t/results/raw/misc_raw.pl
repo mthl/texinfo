@@ -301,12 +301,12 @@ in verbatim2
 
 $result_errors{'misc_raw'} = [
   {
-    'error_line' => ':3: warning: @end should only appear at a line beginning
+    'error_line' => ':3: warning: @end should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@end should only appear at a line beginning',
+    'text' => '@end should only appear at the beginning of a line',
     'type' => 'warning'
   }
 ];

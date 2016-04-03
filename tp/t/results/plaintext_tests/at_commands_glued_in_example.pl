@@ -766,12 +766,12 @@ index';
 
 $result_errors{'at_commands_glued_in_example'} = [
   {
-    'error_line' => ':15: warning: @cindex should only appear at a line beginning
+    'error_line' => ':15: warning: @cindex should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => '@cindex should only appear at a line beginning',
+    'text' => '@cindex should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

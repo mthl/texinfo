@@ -87,12 +87,12 @@ $result_errors{'math_bracketed_not_closed'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':1: @math missing close brace
+    'error_line' => ':1: @math missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@math missing close brace',
+    'text' => '@math missing closing brace',
     'type' => 'error'
   }
 ];

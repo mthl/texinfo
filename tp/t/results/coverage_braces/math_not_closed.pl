@@ -50,12 +50,12 @@ $result_texts{'math_not_closed'} = '\\delta + 2';
 
 $result_errors{'math_not_closed'} = [
   {
-    'error_line' => ':1: @math missing close brace
+    'error_line' => ':1: @math missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@math missing close brace',
+    'text' => '@math missing closing brace',
     'type' => 'error'
   }
 ];

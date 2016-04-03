@@ -111,12 +111,12 @@ in verbatim
 
 $result_errors{'verbatim_in_brace_command'} = [
   {
-    'error_line' => ':1: @samp missing close brace
+    'error_line' => ':1: @samp missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@samp missing close brace',
+    'text' => '@samp missing closing brace',
     'type' => 'error'
   },
   {

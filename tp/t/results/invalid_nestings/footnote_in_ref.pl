@@ -248,12 +248,12 @@ $result_errors{'footnote_in_ref'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: @xref missing close brace
+    'error_line' => ':3: @xref missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@xref missing close brace',
+    'text' => '@xref missing closing brace',
     'type' => 'error'
   }
 ];

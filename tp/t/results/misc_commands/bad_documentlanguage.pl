@@ -241,21 +241,21 @@ documentlanguage
 
 $result_errors{'bad_documentlanguage'} = [
   {
-    'error_line' => ':2: warning: @documentlanguage should only appear at a line beginning
+    'error_line' => ':2: warning: @documentlanguage should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@documentlanguage should only appear at a line beginning',
+    'text' => '@documentlanguage should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':4: warning: @documentlanguage should only appear at a line beginning
+    'error_line' => ':4: warning: @documentlanguage should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => '@documentlanguage should only appear at a line beginning',
+    'text' => '@documentlanguage should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

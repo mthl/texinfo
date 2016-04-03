@@ -601,12 +601,12 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: warning: @documentencoding should only appear at a line beginning
+    'error_line' => ':6: warning: @documentencoding should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => '@documentencoding should only appear at a line beginning',
+    'text' => '@documentencoding should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

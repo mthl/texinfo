@@ -789,12 +789,12 @@ bbb
 
 $result_errors{'double_command'} = [
   {
-    'error_line' => ':1: warning: @deffnx should only appear at a line beginning
+    'error_line' => ':1: warning: @deffnx should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@deffnx should only appear at a line beginning',
+    'text' => '@deffnx should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -834,12 +834,12 @@ $result_errors{'double_command'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: warning: @defvr should only appear at a line beginning
+    'error_line' => ':5: warning: @defvr should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@defvr should only appear at a line beginning',
+    'text' => '@defvr should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

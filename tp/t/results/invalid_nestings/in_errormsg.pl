@@ -449,12 +449,12 @@ $result_errors{'in_errormsg'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':5: @errormsg missing close brace
+    'error_line' => ':5: @errormsg missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@errormsg missing close brace',
+    'text' => '@errormsg missing closing brace',
     'type' => 'error'
   },
   {

@@ -68,12 +68,12 @@ $result_texts{'empty_line_in_anchor'} = 'anchor
 
 $result_errors{'empty_line_in_anchor'} = [
   {
-    'error_line' => ':1: @anchor missing close brace
+    'error_line' => ':1: @anchor missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@anchor missing close brace',
+    'text' => '@anchor missing closing brace',
     'type' => 'error'
   },
   {

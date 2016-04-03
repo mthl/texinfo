@@ -144,12 +144,12 @@ cut by blank line
 
 $result_errors{'indicateurl_end_lines'} = [
   {
-    'error_line' => ':4: @indicateurl missing close brace
+    'error_line' => ':4: @indicateurl missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => '@indicateurl missing close brace',
+    'text' => '@indicateurl missing closing brace',
     'type' => 'error'
   },
   {

@@ -327,12 +327,12 @@ $result_menus{'ref_in_center'} = {
 
 $result_errors{'ref_in_center'} = [
   {
-    'error_line' => ':5: @ref missing close brace
+    'error_line' => ':5: @ref missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 5,
     'macro' => '',
-    'text' => '@ref missing close brace',
+    'text' => '@ref missing closing brace',
     'type' => 'error'
   },
   {

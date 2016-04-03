@@ -1915,21 +1915,21 @@ Before the opening command in block
 
 $result_errors{'raw_commands_and_end_of_lines'} = [
   {
-    'error_line' => ':13: warning: @html should only appear at a line beginning
+    'error_line' => ':13: warning: @html should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => '@html should only appear at a line beginning',
+    'text' => '@html should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':18: warning: @html should only appear at a line beginning
+    'error_line' => ':18: warning: @html should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 18,
     'macro' => '',
-    'text' => '@html should only appear at a line beginning',
+    'text' => '@html should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -1942,21 +1942,21 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':22: warning: @html should only appear at a line beginning
+    'error_line' => ':22: warning: @html should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => '@html should only appear at a line beginning',
+    'text' => '@html should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':27: warning: @html should only appear at a line beginning
+    'error_line' => ':27: warning: @html should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 27,
     'macro' => '',
-    'text' => '@html should only appear at a line beginning',
+    'text' => '@html should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -1969,21 +1969,21 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':41: warning: @tex should only appear at a line beginning
+    'error_line' => ':41: warning: @tex should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 41,
     'macro' => '',
-    'text' => '@tex should only appear at a line beginning',
+    'text' => '@tex should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':46: warning: @tex should only appear at a line beginning
+    'error_line' => ':46: warning: @tex should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 46,
     'macro' => '',
-    'text' => '@tex should only appear at a line beginning',
+    'text' => '@tex should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -1996,21 +1996,21 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':50: warning: @tex should only appear at a line beginning
+    'error_line' => ':50: warning: @tex should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 50,
     'macro' => '',
-    'text' => '@tex should only appear at a line beginning',
+    'text' => '@tex should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':55: warning: @tex should only appear at a line beginning
+    'error_line' => ':55: warning: @tex should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 55,
     'macro' => '',
-    'text' => '@tex should only appear at a line beginning',
+    'text' => '@tex should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -2023,21 +2023,21 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':69: warning: @verbatim should only appear at a line beginning
+    'error_line' => ':69: warning: @verbatim should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 69,
     'macro' => '',
-    'text' => '@verbatim should only appear at a line beginning',
+    'text' => '@verbatim should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':74: warning: @verbatim should only appear at a line beginning
+    'error_line' => ':74: warning: @verbatim should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 74,
     'macro' => '',
-    'text' => '@verbatim should only appear at a line beginning',
+    'text' => '@verbatim should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
@@ -2050,21 +2050,21 @@ $result_errors{'raw_commands_and_end_of_lines'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':78: warning: @verbatim should only appear at a line beginning
+    'error_line' => ':78: warning: @verbatim should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 78,
     'macro' => '',
-    'text' => '@verbatim should only appear at a line beginning',
+    'text' => '@verbatim should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {
-    'error_line' => ':83: warning: @verbatim should only appear at a line beginning
+    'error_line' => ':83: warning: @verbatim should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 83,
     'macro' => '',
-    'text' => '@verbatim should only appear at a line beginning',
+    'text' => '@verbatim should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

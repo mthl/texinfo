@@ -325,12 +325,12 @@ $result_errors{'def_not_closed_in_menu_description'} = [
     'type' => 'error continuation'
   },
   {
-    'error_line' => ':2: warning: @deffn should only appear at a line beginning
+    'error_line' => ':2: warning: @deffn should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@deffn should only appear at a line beginning',
+    'text' => '@deffn should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

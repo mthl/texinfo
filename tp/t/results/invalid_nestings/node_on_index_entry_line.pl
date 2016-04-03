@@ -305,12 +305,12 @@ $result_menus{'node_on_index_entry_line'} = {
 
 $result_errors{'node_on_index_entry_line'} = [
   {
-    'error_line' => ':2: warning: @node should only appear at a line beginning
+    'error_line' => ':2: warning: @node should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => '@node should only appear at a line beginning',
+    'text' => '@node should only appear at the beginning of a line',
     'type' => 'warning'
   },
   {

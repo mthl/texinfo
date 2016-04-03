@@ -68,12 +68,12 @@ $result_texts{'command_not_closed_in_documentencoding'} = '';
 
 $result_errors{'command_not_closed_in_documentencoding'} = [
   {
-    'error_line' => ':1: @strong missing close brace
+    'error_line' => ':1: @strong missing closing brace
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => '@strong missing close brace',
+    'text' => '@strong missing closing brace',
     'type' => 'error'
   },
   {
