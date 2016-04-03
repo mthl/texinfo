@@ -5979,7 +5979,7 @@ sub _parse_line_command_args($$$)
                                            $line), $line_nr);
     }
   } elsif ($command eq 'exampleindent') {
-    if ($line =~ /^([0-9]+)/) {
+    if ($line =~ /^([0-9]+)$/) {
       $args = [$1];
     } elsif ($line =~ /^(asis)$/) {
       $args = [$1];

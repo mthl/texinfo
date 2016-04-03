@@ -1,5 +1,10 @@
 2016-04-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_line_command_args) <@exampleindent>:
+	Don't permit trailing text after a numeric argument.
+
+2016-04-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm: Use "closing brace" instead of "close 
 	brace" in messages, and use "the beginning of a line" instead of 
 	"a line beginning".

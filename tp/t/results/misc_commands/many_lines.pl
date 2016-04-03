@@ -809,9 +809,6 @@ $result_trees{'many_lines'} = {
           ],
           'cmdname' => 'exampleindent',
           'extra' => {
-            'misc_args' => [
-              '6'
-            ],
             'spaces_after_command' => {}
           },
           'line_nr' => {
@@ -1961,6 +1958,15 @@ $result_errors{'many_lines'} = [
     'macro' => '',
     'text' => '@exampleindent should only appear at the beginning of a line',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':25: @exampleindent arg must be numeric/`asis\', not `6 on line following exampleindent\'
+',
+    'file_name' => '',
+    'line_nr' => 25,
+    'macro' => '',
+    'text' => '@exampleindent arg must be numeric/`asis\', not `6 on line following exampleindent\'',
+    'type' => 'error'
   },
   {
     'error_line' => ':26: warning: @exampleindent should only appear at the beginning of a line
