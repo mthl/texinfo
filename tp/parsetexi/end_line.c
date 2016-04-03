@@ -59,6 +59,14 @@ is_decimal_number (char *string)
   return 1;
 }
 
+static int
+is_whole_number (char *string)
+{
+  if (string[strspn (string, digit_chars)] == '\0')
+    return 1;
+  return 0;
+}
+
 /* Process argument to special line command. */
 // 5377
 ELEMENT *
@@ -525,7 +533,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG (line);
           }
         else
-          line_error ("@%s argument must be `top' or `bottom', not `%s'",
+          line_error ("@%s arg must be `top' or `bottom', not `%s'",
                        command_name(cmd), line);
 
         break;
@@ -560,7 +568,7 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line);
           }
         else
-          line_error ("@setchapternewpage argument must be "
+          line_error ("@setchapternewpage arg must be "
                        "`on', `off' or `odd', not `%s'", line);
         break;
       }
@@ -577,8 +585,12 @@ parse_line_command_args (ELEMENT *line_command)
       }
     case CM_paragraphindent:
       {
-        /*TODO*/
-
+        if (!strcmp (line, "none") || !strcmp (line, "asis")
+            || is_whole_number (line))
+          ADD_ARG(line);
+        else
+          line_error ("@paragraphindent arg must be "
+                       "numeric/`none'/`asis', not `%s'", line);
         break;
       }
     case CM_firstparagraphindent:
@@ -588,15 +600,18 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line);
           }
         else
-          line_error ("@firstparagraph argument must be "
+          line_error ("@firstparagraph arg must be "
                        "`none' or `insert', not `%s'", line);
 
         break;
       }
     case CM_exampleindent:
       {
-        /*TODO */
-
+        if (!strcmp (line, "asis") || is_whole_number (line))
+          ADD_ARG(line);
+        else
+          line_error ("@exampleindent arg must be "
+                       "numeric/`asis', not `%s'", line);
         break;
       }
     case CM_frenchspacing:
@@ -664,7 +679,13 @@ parse_line_command_args (ELEMENT *line_command)
     default:
       ;
     }
-  return line_args;
+  if (line_args->contents.number == 0)
+    {
+      destroy_element (line_args);
+      return 0;
+    }
+  else
+    return line_args;
 
 #undef ADD_ARG
 }
@@ -1093,7 +1114,8 @@ end_line_misc_line (ELEMENT *current)
   if (arg_type > 0)
     {
       ELEMENT *args = parse_line_command_args (current);
-      add_extra_misc_args (current, "misc_args", args);
+      if (args)
+        add_extra_misc_args (current, "misc_args", args);
     }
   else if (arg_type == MISC_text) /* 3118 */
     {

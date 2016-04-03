@@ -217,7 +217,7 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
           line = new_line ();
           if (!line)
             {
-              line_error ("@%s missing close brace", command_name(cmd));
+              line_error ("@%s missing closing brace", command_name(cmd));
               line = "\n";
               goto funexit;
             }

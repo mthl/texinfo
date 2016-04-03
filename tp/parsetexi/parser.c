@@ -1154,7 +1154,7 @@ value_invalid:
                   && cmd != CM_vskip)
               || (command_data(cmd).flags & CF_in_heading)))
         {
-          line_warn ("@%s should only appear at a line beginning",
+          line_warn ("@%s should only appear at the beginning of a line", 
                      command_name(cmd));
         }
 

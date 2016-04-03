@@ -40,7 +40,7 @@ close_brace_command (ELEMENT *current,
                         command_name(current->cmd));
       else
         command_error (current,
-                        "@%s missing close brace",
+                        "@%s missing closing brace",
                         command_name(current->cmd));
     }
   else
