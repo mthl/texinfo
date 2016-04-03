@@ -430,6 +430,7 @@ remove_empty_content_arguments (ELEMENT *current)
 
   if (k->value->contents.number == 0)
     {
+      k->key = "";
       k->type = extra_deleted;
     }
 }

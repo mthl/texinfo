@@ -970,7 +970,22 @@ end_line_starting_block (ELEMENT *current)
           // check that command_as_argument is alone on the line
         }
 
-      // check if command_as_argument isn't an accent command
+      // 3040 Check if command_as_argument isn't an accent command
+      if (current->cmd == CM_itemize || item_line_command(current->cmd))
+        {
+          KEY_PAIR *k = lookup_extra_key (current, "command_as_argument");
+          if (k && k->value)
+            {
+              char *s = (char *) k->value;
+              enum command_id cmd = lookup_command (s);
+              if (cmd && (command_data(cmd).flags & CF_accent))
+                {
+                  command_warn (current, "accent command `@%s' "
+                                "not allowed as @%s argument", s,
+                                command_name(current->cmd));
+                }
+            }
+        }
 
       /* 3052 - if no command_as_argument given, default to @bullet for
          @itemize, and @asis for @table. */

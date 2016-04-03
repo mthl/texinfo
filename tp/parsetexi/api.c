@@ -234,7 +234,7 @@ element_to_perl_hash (ELEMENT *e)
       || e->type == ET_brace_command_arg
       || e->cmd == CM_TeX
       || (command_data(e->cmd).flags & CF_brace
-          && (command_data(e->cmd).data >= 0
+          && (command_data(e->cmd).data > 0
               || command_data(e->cmd).data == BRACE_style
               || command_data(e->cmd).data == BRACE_context
               || command_data(e->cmd).data == BRACE_other
