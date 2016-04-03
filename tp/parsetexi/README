@@ -1,6 +1,10 @@
 This is an experimental program intended to replicate the functionality 
 in tp/Texinfo/Parser.pm.
 
+
+some modifications needed to run at the moment.  diff in 
+tp/diff-for-test-parsetexi.diff
+
 =====================================================================
 Notes -
 
