@@ -152,7 +152,7 @@ foreach my $key(keys(%parser_default_configuration)) {
 #
 # expanded_formats_hash   each key comes from expanded_formats value is 1
 # index_names             a structure holding the link between index 
-#                         names, prefixes, merged indices,
+#                         names, merged indices,
 #                         initial value is %index_names in Texinfo::Common.
 # context_stack           stack of the contexts, more recent on top.
 #                         'line' is added when on a line or 
@@ -190,8 +190,7 @@ foreach my $key(keys(%parser_default_configuration)) {
 # current_node            last seen node.
 # current_section         last seen section.
 # nodes                   list of nodes.
-# command_index_prefix    associate a command name to an index prefix.
-# prefix_to_index_name    associate an index prefix to the index name.
+# command_index           associate a command name with an index name
 # floats                  key is the normalized float type, value is an array
 #                         reference holding all the floats.
 # internal_references     an array holding all the internal references.
@@ -250,7 +249,7 @@ my %item_line_commands        = %Texinfo::Common::item_line_commands;
 my %deprecated_commands       = %Texinfo::Common::deprecated_commands;
 my %root_commands             = %Texinfo::Common::root_commands;
 my %sectioning_commands       = %Texinfo::Common::sectioning_commands;
-my %command_index_prefix      = %Texinfo::Common::command_index_prefix;
+my %command_index             = %Texinfo::Common::command_index;
 my %command_structuring_level = %Texinfo::Common::command_structuring_level;
 my %ref_commands              = %Texinfo::Common::ref_commands;
 my %region_commands           = %Texinfo::Common::region_commands;
@@ -311,9 +310,10 @@ my %index_names = %Texinfo::Common::index_names;
 # index names that cannot be set by the user.
 my %forbidden_index_name = ();
 
-foreach my $name(keys(%index_names)) {
-  foreach my $prefix (@{$index_names{$name}->{'prefix'}}) {
-    $forbidden_index_name{$prefix} = 1;
+foreach my $name (keys(%index_names)) {
+  $forbidden_index_name{$name} = 1;
+  if ($name =~ /^(.).$/) {
+    $forbidden_index_name{$1} = 1;
   }
 }
 
@@ -559,30 +559,6 @@ sub _ignore_global_commands($)
   return !$self->{'expanded_formats_stack'}->[-1];
 }
 
-# enter all the commands associated with an index name using the prefix
-# list
-sub _register_index_commands($$)
-{
-  my $self = shift;
-  my $index_name = shift;
-  if (!$self->{'index_names'}->{$index_name}->{'prefix'}) {
-    $self->{'index_names'}->{$index_name}->{'prefix'} = [$index_name];
-  }
-  if (!exists($self->{'index_names'}->{$index_name}->{'name'})) {
-    $self->{'index_names'}->{$index_name}->{'name'} = $index_name;
-  }
-  if (!exists($self->{'index_names'}->{$index_name}->{'contained_indices'})) {
-    $self->{'index_names'}->{$index_name}->{'contained_indices'}->{$index_name} = 1;
-  }
-  foreach my $prefix (@{$self->{'index_names'}->{$index_name}->{'prefix'}}) {
-    $self->{'misc_commands'}->{$prefix.'index'} = 'line';
-    $self->{'no_paragraph_commands'}->{$prefix.'index'} = 1;
-    $self->{'valid_nestings'}->{$prefix.'index'} = \%in_simple_text_commands;
-    $self->{'command_index_prefix'}->{$prefix.'index'} = $prefix;
-    $self->{'prefix_to_index_name'}->{$prefix} = $index_name;
-  }
-}
-
 sub _setup_conf($$$)
 {
   my $parser = shift;
@@ -675,7 +651,7 @@ sub parser(;$$)
   $parser->{'valid_nestings'} = dclone(\%default_valid_nestings);
   $parser->{'no_paragraph_commands'} = { %default_no_paragraph_commands };
   $parser->{'index_names'} = dclone(\%index_names);
-  $parser->{'command_index_prefix'} = {%command_index_prefix};
+  $parser->{'command_index'} = {%command_index};
   $parser->{'close_paragraph_commands'} = {%close_paragraph_commands};
   $parser->{'close_preformatted_commands'} = {%close_preformatted_commands};
   if ($parser->{'INLINE_INSERTCOPYING'}) {
@@ -692,7 +668,18 @@ sub parser(;$$)
     }
   }
   foreach my $index (keys (%{$parser->{'index_names'}})) {
-    $parser->_register_index_commands($index);
+    if (!exists($parser->{'index_names'}->{$index}->{'name'})) {
+      $parser->{'index_names'}->{$index}->{'name'} = $index;
+    }
+    if (!exists($parser->{'index_names'}->{$index}->{'contained_indices'})) {
+      $parser->{'index_names'}->{$index}->{'contained_indices'}->{$index} = 1;
+    }
+    foreach my $prefix ($index, substr($index, 0, 1)) {
+      $parser->{'misc_commands'}->{$prefix.'index'} = 'line';
+      $parser->{'no_paragraph_commands'}->{$prefix.'index'} = 1;
+      $parser->{'valid_nestings'}->{$prefix.'index'} = \%in_simple_text_commands;
+      $parser->{'command_index'}->{$prefix.'index'} = $index;
+    }
   }
   if ($parser->{'merged_indices'}) {
     foreach my $index_from (keys (%{$parser->{'merged_indices'}})) {
@@ -739,7 +726,7 @@ my $simple_parser_misc_commands = dclone(\%misc_commands);
 my $simple_parser_valid_nestings = dclone(\%default_valid_nestings);
 my $simple_parser_no_paragraph_commands = { %default_no_paragraph_commands };
 my $simple_parser_index_names = dclone(\%index_names);
-my $simple_parser_command_index_prefix = {%command_index_prefix};
+my $simple_parser_command_index = {%command_index};
 my $simple_parser_close_paragraph_commands = {%close_paragraph_commands};
 my $simple_parser_close_preformatted_commands = {%close_preformatted_commands};
 sub simple_parser(;$)
@@ -755,7 +742,7 @@ sub simple_parser(;$)
   $parser->{'valid_nestings'} = $simple_parser_valid_nestings;
   $parser->{'no_paragraph_commands'} = $simple_parser_no_paragraph_commands;
   $parser->{'index_names'} = $simple_parser_index_names;
-  $parser->{'command_index_prefix'} = $simple_parser_command_index_prefix;
+  $parser->{'command_index'} = $simple_parser_command_index;
   $parser->{'close_paragraph_commands'} = $simple_parser_close_paragraph_commands;
   $parser->{'close_preformatted_commands'} = $simple_parser_close_preformatted_commands;
 
@@ -2689,8 +2676,7 @@ sub _enter_index_entry($$$$$$$)
 
   $content_normalized = $content if (!defined($content_normalized));
 
-  my $prefix = $self->{'command_index_prefix'}->{$command_container};
-  my $index_name = $self->{'prefix_to_index_name'}->{$prefix};
+  my $index_name = $self->{'command_index'}->{$command_container};
   my $index = $self->{'index_names'}->{$index_name};
 
   my $number;
@@ -2702,7 +2688,6 @@ sub _enter_index_entry($$$$$$$)
   my $index_entry = { 'index_name'           => $index_name,
                       'index_at_command'     => $command,
                       'index_type_command'   => $command_container,
-                      'index_prefix'         => $prefix,
                       'content'              => $content,
                       'content_normalized'   => $content_normalized,
                       'command'              => $current,
@@ -2972,7 +2957,7 @@ sub _end_line($$$)
       if (defined($index_entry)) {
         my $index_contents_normalized;
         if ($def_parsed_hash->{'class'}) {
-          if ($command_index_prefix{$def_command} eq 'f') {
+          if ($command_index{$def_command} eq 'fn') {
             $index_entry = $self->gdt('{name} on {class}', 
                                   {'name' => $def_parsed_hash->{'name'},
                                    'class' => $def_parsed_hash->{'class'}});
@@ -2980,7 +2965,7 @@ sub _end_line($$$)
              = [_non_bracketed_contents($def_parsed_hash->{'name'}),
                 { 'text' => ' on '},
                 _non_bracketed_contents($def_parsed_hash->{'class'})];
-          } elsif ($command_index_prefix{$def_command} eq 'v'
+          } elsif ($command_index{$def_command} eq 'vr'
                   and $def_command ne 'defcv') {
             $index_entry = $self->gdt('{name} of {class}', 
                                      {'name' => $def_parsed_hash->{'name'},
@@ -3408,12 +3393,12 @@ sub _end_line($$$)
       } else {
         $current->{'extra'}->{'misc_content'} = \@contents;
         if (($command eq 'item' or $command eq 'itemx')
-            and $self->{'command_index_prefix'}->{$current->{'parent'}->{'cmdname'}}) {
+            and $self->{'command_index'}->{$current->{'parent'}->{'cmdname'}}) {
           _enter_index_entry($self, $current->{'parent'}->{'cmdname'}, 
                              $command, $current,
                              $current->{'extra'}->{'misc_content'}, 
                              undef, $line_nr);
-        } elsif ($self->{'command_index_prefix'}->{$current->{'cmdname'}}) {
+        } elsif ($self->{'command_index'}->{$current->{'cmdname'}}) {
           _enter_index_entry($self, $current->{'cmdname'}, 
                              $current->{'cmdname'}, $current,
                              $current->{'extra'}->{'misc_content'}, 
@@ -4848,7 +4833,7 @@ sub _parse_texi($;$)
                   or $self->{'macros'}->{$name}
                   or $self->{'definfoenclose'}->{$name}
                   or $self->{'aliases'}->{$name}
-                  or $self->{'command_index_prefix'}->{$name}
+                  or $self->{'command_index'}->{$name}
                 );
                 if (($command_is_defined
                      and $command eq 'ifcommanddefined')
@@ -5839,7 +5824,16 @@ sub _parse_line_command_args($$$)
         $args = [$name];
         if (! _ignore_global_commands($self)) {
           $self->{'index_names'}->{$name} = {'in_code' => $in_code};
-          $self->_register_index_commands($name);
+          if (!exists($self->{'index_names'}->{$name}->{'name'})) {
+            $self->{'index_names'}->{$name}->{'name'} = $name;
+          }
+          if (!exists($self->{'index_names'}->{$name}->{'contained_indices'})) {
+            $self->{'index_names'}->{$name}->{'contained_indices'}->{$name} = 1;
+          }
+          $self->{'misc_commands'}->{$name.'index'} = 'line';
+          $self->{'no_paragraph_commands'}->{$name.'index'} = 1;
+          $self->{'valid_nestings'}->{$name.'index'} = \%in_simple_text_commands;
+          $self->{'command_index'}->{$name.'index'} = $name;
         }
       }
     } else {
@@ -6399,10 +6393,6 @@ The keys of the index entry structures are
 
 The index name.
 
-=item index_prefix
-
-The associated index prefix.
-
 =item index_at_command
 
 The name of the @-command associated with the index entry.
@@ -6443,22 +6433,19 @@ if it is in such an environement.
 
 =back
 
-The following shows the references corresponding with the default indexes
+The following shows the references corresponding to the default indexes
 I<cp> and I<fn>, the I<fn> index having its entries formatted as code and 
 the indices corresponding to the following texinfo
 
   @defindex some
   @defcodeindex code
 
-  $index_names = {'cp' => {'name' => 'cp', 'in_code' => 0, 
-                                           'prefix' => ['c', 'cp']},
-                  'fn' => {'name' => 'fn', 'in_code' => 1, 
-                                           'prefix' => ['f', 'fn']},
+  $index_names = {'cp' => {'name' => 'cp', 'in_code' => 0, },
+                  'fn' => {'name' => 'fn', 'in_code' => 1, },
                   'some' => {'in_code' => 0},
                   'code' => {'in_code' => 1}};
 
-If C<name> is not set, it is set to the index name.  If C<prefix> is 
-not set, it is set to an array containing the index name.
+If C<name> is not set, it is set to the index name.
 
 I<$merged_indices_hash> is a hash reference, the key is an index
 name merged in the value.

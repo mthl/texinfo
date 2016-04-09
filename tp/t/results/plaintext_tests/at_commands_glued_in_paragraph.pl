@@ -535,7 +535,6 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => 'index',
               'number' => 1

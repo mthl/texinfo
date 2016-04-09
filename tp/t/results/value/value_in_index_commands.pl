@@ -484,7 +484,6 @@ $result_trees{'value_in_index_commands'} = {
               'in_code' => 0,
               'index_at_command' => 'trucindex',
               'index_name' => 'truc',
-              'index_prefix' => 'truc',
               'index_type_command' => 'trucindex',
               'key' => 'index truc',
               'node' => {},
@@ -630,7 +629,6 @@ $result_trees{'value_in_index_commands'} = {
               'in_code' => 1,
               'index_at_command' => 'codeidxindex',
               'index_name' => 'codeidx',
-              'index_prefix' => 'codeidx',
               'index_type_command' => 'codeidxindex',
               'key' => 'a index entry te\' i^',
               'node' => {},
@@ -687,7 +685,6 @@ $result_trees{'value_in_index_commands'} = {
               'in_code' => 1,
               'index_at_command' => 'kindex',
               'index_name' => 'ky',
-              'index_prefix' => 'k',
               'index_type_command' => 'kindex',
               'key' => 'truc kindex',
               'node' => {},
@@ -742,7 +739,6 @@ $result_trees{'value_in_index_commands'} = {
               'in_code' => 1,
               'index_at_command' => 'pindex',
               'index_name' => 'pg',
-              'index_prefix' => 'p',
               'index_type_command' => 'pindex',
               'key' => 'pindex codeidx',
               'node' => {},
@@ -1168,10 +1164,7 @@ $result_indices{'value_in_index_commands'} = {
         'codeidx' => 1
       },
       'in_code' => 1,
-      'name' => 'codeidx',
-      'prefix' => [
-        'codeidx'
-      ]
+      'name' => 'codeidx'
     },
     'cp' => {
       'contained_indices' => {
@@ -1179,11 +1172,7 @@ $result_indices{'value_in_index_commands'} = {
       },
       'in_code' => 1,
       'merged_in' => 'fn',
-      'name' => 'cp',
-      'prefix' => [
-        'c',
-        'cp'
-      ]
+      'name' => 'cp'
     },
     'fn' => {
       'contained_indices' => {
@@ -1191,65 +1180,42 @@ $result_indices{'value_in_index_commands'} = {
         'fn' => 1
       },
       'in_code' => 1,
-      'name' => 'fn',
-      'prefix' => [
-        'f',
-        'fn'
-      ]
+      'name' => 'fn'
     },
     'ky' => {
       'contained_indices' => {
         'ky' => 1
       },
       'in_code' => 1,
-      'name' => 'ky',
-      'prefix' => [
-        'k',
-        'ky'
-      ]
+      'name' => 'ky'
     },
     'pg' => {
       'contained_indices' => {
         'pg' => 1
       },
       'in_code' => 1,
-      'name' => 'pg',
-      'prefix' => [
-        'p',
-        'pg'
-      ]
+      'name' => 'pg'
     },
     'tp' => {
       'contained_indices' => {
         'tp' => 1
       },
       'in_code' => 1,
-      'name' => 'tp',
-      'prefix' => [
-        't',
-        'tp'
-      ]
+      'name' => 'tp'
     },
     'truc' => {
       'contained_indices' => {
         'truc' => 1
       },
       'in_code' => 0,
-      'name' => 'truc',
-      'prefix' => [
-        'truc'
-      ]
+      'name' => 'truc'
     },
     'vr' => {
       'contained_indices' => {
         'vr' => 1
       },
       'in_code' => 1,
-      'name' => 'vr',
-      'prefix' => [
-        'v',
-        'vr'
-      ]
+      'name' => 'vr'
     }
   },
   'merged_indices' => {

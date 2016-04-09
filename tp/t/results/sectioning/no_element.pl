@@ -759,7 +759,6 @@ $result_trees{'no_element'} = {
           'in_code' => 0,
           'index_at_command' => 'cindex',
           'index_name' => 'cp',
-          'index_prefix' => 'c',
           'index_type_command' => 'cindex',
           'key' => 'index entry',
           'number' => 1

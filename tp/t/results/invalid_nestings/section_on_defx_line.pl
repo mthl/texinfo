@@ -105,7 +105,6 @@ $result_trees{'section_on_defx_line'} = {
                   'in_code' => 1,
                   'index_at_command' => 'deffn',
                   'index_name' => 'fn',
-                  'index_prefix' => 'f',
                   'index_type_command' => 'deffn',
                   'key' => 'j',
                   'number' => 1

@@ -1,5 +1,25 @@
 2016-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (%index_names): Don't set a 'prefix' 
+	array on each member.
+	(%command_index_prefix): Replace with a new variable called 
+	%command_index.
+	(definition_category, %index_type_def): Update.
+
+	* tp/Texinfo/Parser.pm (%command_index_prefix, %command_index): Update.
+	(_enter_index_entry, _register_index_commands): Don't use 
+	$self->{'prefix_to_index_name'}.  Don't set 'index_prefix' on 
+	index entry record.
+	(_end_line) <def commands>,
+	(_end_line) <@item, @itemx>,
+	(_parse_texi) <@ifcommanddefined>,
+	(parser, simple_parser): Use %command_index instead of 
+	%command_index_prefix.
+	(_register_index_commmands): Don't use 'prefix' array on index 
+	record.  Inline into calling sites.
+
+2016-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (parse_texi_file, _parse_texi): Set 
 	'parent' field on created elements in the main tree.
 

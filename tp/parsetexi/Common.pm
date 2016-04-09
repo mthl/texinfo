@@ -721,21 +721,21 @@ our %def_map = (
     'deftypemethod', {'deftypeop' => gdt('Method')},
 );
 
-# the type of index, f: function, v: variable, t: type
+# the type of index, fn: function, vr: variable, tp: type
 my %index_type_def = (
- 'f' => ['deffn', 'deftypefn', 'deftypeop', 'defop'],
- 'v' => ['defvr', 'deftypevr', 'defcv', 'deftypecv' ],
- 't' => ['deftp']
+ 'fn' => ['deffn', 'deftypefn', 'deftypeop', 'defop'],
+ 'vr' => ['defvr', 'deftypevr', 'defcv', 'deftypecv' ],
+ 'tp' => ['deftp']
 );
 
-our %command_index_prefix;
+our %command_index;
 
-$command_index_prefix{'vtable'} = 'v';
-$command_index_prefix{'ftable'} = 'f';
+$command_index{'vtable'} = 'vr';
+$command_index{'ftable'} = 'fn';
 
 foreach my $index_type (keys %index_type_def) {
   foreach my $def (@{$index_type_def{$index_type}}) {
-    $command_index_prefix{$def} = $index_type;
+    $command_index{$def} = $index_type;
   }
 }
 
@@ -744,14 +744,14 @@ our %def_aliases;
 foreach my $def_command(keys %def_map) {
   if (ref($def_map{$def_command}) eq 'HASH') {
     my ($real_command) = keys (%{$def_map{$def_command}});
-    $command_index_prefix{$def_command} = $command_index_prefix{$real_command};
+    $command_index{$def_command} = $command_index{$real_command};
     $def_aliases{$def_command} = $real_command;
   }
   $block_commands{$def_command} = 'def';
   $misc_commands{$def_command.'x'} = 'line';
   $def_commands{$def_command} = 1;
   $def_commands{$def_command.'x'} = 1;
-  $command_index_prefix{$def_command.'x'} = $command_index_prefix{$def_command};
+  $command_index{$def_command.'x'} = $command_index{$def_command};
 }
 
 #print STDERR "".Data::Dumper->Dump([\%def_aliases]);
@@ -1180,16 +1180,15 @@ sub definition_category($$)
   return $arg_category
     if (!defined($arg_class));
   
-  my $style = 
-    $command_index_prefix{$current->{'extra'}->{'def_command'}};
-  if ($style eq 'f') {
+  my $style = $command_index{$current->{'extra'}->{'def_command'}};
+  if ($style eq 'fn') {
     if ($self) {
       return $self->gdt('{category} on {class}', { 'category' => $arg_category,
                                           'class' => $arg_class });
     } else {
       return {'contents' => [$arg_category, {'text' => ' on '}, $arg_class]};
     }
-  } elsif ($style eq 'v') {
+  } elsif ($style eq 'vr') {
     if ($self) {
       return $self->gdt('{category} of {class}', { 'category' => $arg_category,
                                           'class' => $arg_class });

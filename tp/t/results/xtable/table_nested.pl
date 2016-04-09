@@ -299,7 +299,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'first item',
                           'number' => 1
@@ -352,7 +351,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'itemx',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'second itemx',
                           'number' => 2
@@ -446,7 +444,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'second item',
                           'number' => 3
@@ -540,7 +537,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'last',
                           'number' => 4
@@ -1037,7 +1033,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'first item',
                           'number' => 5
@@ -1090,7 +1085,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'itemx',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'second itemx',
                           'number' => 6
@@ -1184,7 +1178,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'second item',
                           'number' => 7
@@ -1278,7 +1271,6 @@ After table.
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'last',
                           'number' => 8
@@ -1787,7 +1779,6 @@ After table.
                               'in_code' => 1,
                               'index_at_command' => 'item',
                               'index_name' => 'vr',
-                              'index_prefix' => 'v',
                               'index_type_command' => 'vtable',
                               'key' => 'first item',
                               'number' => 9
@@ -1840,7 +1831,6 @@ After table.
                               'in_code' => 1,
                               'index_at_command' => 'itemx',
                               'index_name' => 'vr',
-                              'index_prefix' => 'v',
                               'index_type_command' => 'vtable',
                               'key' => 'second itemx',
                               'number' => 10
@@ -1934,7 +1924,6 @@ After table.
                               'in_code' => 1,
                               'index_at_command' => 'item',
                               'index_name' => 'vr',
-                              'index_prefix' => 'v',
                               'index_type_command' => 'vtable',
                               'key' => 'second item',
                               'number' => 11
@@ -2028,7 +2017,6 @@ After table.
                               'in_code' => 1,
                               'index_at_command' => 'item',
                               'index_name' => 'vr',
-                              'index_prefix' => 'v',
                               'index_type_command' => 'vtable',
                               'key' => 'last',
                               'number' => 12

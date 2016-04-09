@@ -196,7 +196,6 @@ $result_trees{'preformatted'} = {
                           'in_code' => 1,
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => 'item in table in format',
                           'number' => 1

@@ -341,7 +341,6 @@ $result_trees{'no_category_or_no_name'} = {
               'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f',
               'index_type_command' => 'deffn',
               'key' => 'b',
               'number' => 1

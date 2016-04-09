@@ -129,7 +129,6 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                           'in_code' => 1,
                           'index_at_command' => 'deffn',
                           'index_name' => 'fn',
-                          'index_prefix' => 'f',
                           'index_type_command' => 'deffn',
                           'key' => 'truc',
                           'number' => 1

@@ -228,7 +228,6 @@ $result_trees{'end_of_lines_protected'} = {
               'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f',
               'index_type_command' => 'deffn',
               'key' => 'deffn_name',
               'number' => 1

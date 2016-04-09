@@ -140,7 +140,6 @@ $result_trees{'block_not_matching'} = {
               'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
-              'index_prefix' => 'f',
               'index_type_command' => 'deffn',
               'key' => 'print_navigation',
               'number' => 1

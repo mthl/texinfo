@@ -133,7 +133,6 @@ $result_trees{'colon_in_index_entry'} = {
               'in_code' => 0,
               'index_at_command' => 'cindex',
               'index_name' => 'cp',
-              'index_prefix' => 'c',
               'index_type_command' => 'cindex',
               'key' => 'a:b',
               'node' => {},
@@ -234,7 +233,6 @@ $result_trees{'colon_in_index_entry'} = {
                           'in_code' => 0,
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
-                          'index_prefix' => 'v',
                           'index_type_command' => 'vtable',
                           'key' => '%main::value',
                           'node' => {},
@@ -442,7 +440,6 @@ $result_trees{'colon_in_index_entry'} = {
                   'in_code' => 0,
                   'index_at_command' => 'defvr',
                   'index_name' => 'vr',
-                  'index_prefix' => 'v',
                   'index_type_command' => 'defvr',
                   'key' => 'c:d',
                   'node' => {},
@@ -588,7 +585,6 @@ $result_trees{'colon_in_index_entry'} = {
                   'in_code' => 0,
                   'index_at_command' => 'defvrx',
                   'index_name' => 'vr',
-                  'index_prefix' => 'v',
                   'index_type_command' => 'defvr',
                   'key' => 'z:t',
                   'node' => {},
@@ -920,55 +916,35 @@ $result_indices{'colon_in_index_entry'} = {
         'vr' => 1
       },
       'in_code' => 0,
-      'name' => 'cp',
-      'prefix' => [
-        'c',
-        'cp'
-      ]
+      'name' => 'cp'
     },
     'fn' => {
       'contained_indices' => {
         'fn' => 1
       },
       'in_code' => 1,
-      'name' => 'fn',
-      'prefix' => [
-        'f',
-        'fn'
-      ]
+      'name' => 'fn'
     },
     'ky' => {
       'contained_indices' => {
         'ky' => 1
       },
       'in_code' => 1,
-      'name' => 'ky',
-      'prefix' => [
-        'k',
-        'ky'
-      ]
+      'name' => 'ky'
     },
     'pg' => {
       'contained_indices' => {
         'pg' => 1
       },
       'in_code' => 1,
-      'name' => 'pg',
-      'prefix' => [
-        'p',
-        'pg'
-      ]
+      'name' => 'pg'
     },
     'tp' => {
       'contained_indices' => {
         'tp' => 1
       },
       'in_code' => 1,
-      'name' => 'tp',
-      'prefix' => [
-        't',
-        'tp'
-      ]
+      'name' => 'tp'
     },
     'vr' => {
       'contained_indices' => {
@@ -976,11 +952,7 @@ $result_indices{'colon_in_index_entry'} = {
       },
       'in_code' => 0,
       'merged_in' => 'cp',
-      'name' => 'vr',
-      'prefix' => [
-        'v',
-        'vr'
-      ]
+      'name' => 'vr'
     }
   },
   'merged_indices' => {
