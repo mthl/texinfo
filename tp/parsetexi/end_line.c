@@ -463,9 +463,6 @@ parse_line_command_args (ELEMENT *line_command)
         if (*p)
           goto synindex_invalid; /* More at end of line. */
 
-        ADD_ARG(from);
-        ADD_ARG(to);
-
         from_index = index_by_name (from);
         to_index = index_by_name (to);
         if (!from_index)
@@ -485,6 +482,8 @@ parse_line_command_args (ELEMENT *line_command)
               {
                 /* TODO: unless "ignore_global_commands" */
                 from_index->merged_in = current_to;
+                ADD_ARG(from);
+                ADD_ARG(to);
               }
             else
               line_warn ("@%s leads to a merging of %s in itself, ignoring",
