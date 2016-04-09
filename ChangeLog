@@ -1,5 +1,10 @@
 2016-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_node_manual): Move implementation 
+	of function to tp/Texinfo/Common.pm.
+
+2016-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Reduce references to Texinfo::Parser module.
 
 	* tp/Texinfo/Parser.pm (_parse_def): Remove commented-out code.

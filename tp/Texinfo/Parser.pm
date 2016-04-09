@@ -2266,59 +2266,6 @@ sub _isolate_last_space($$;$)
   }
 }
 
-sub _find_end_brace($$)
-{
-  my $text = shift;
-  my $braces_count = shift;
-
-  my $before = '';
-  while ($braces_count > 0 and length($text)) {
-    if ($text =~ s/([^()]*)([()])//) {
-      $before .= $1.$2;
-      my $brace = $2;
-      if ($brace eq '(') {
-        $braces_count++;
-      } else {
-        $braces_count--;
-        if ($braces_count == 0) {
-          return ($before, $text, 0);
-        }
-      }
-    } else {
-      $before .= $text;
-      $text = '';
-    }
-  }
-  return ($before, undef, $braces_count);
-}
-
-# This only counts opening braces, and returns 0 once all the parentheses
-# are closed
-sub _count_opened_tree_braces($$);
-sub _count_opened_tree_braces($$)
-{
-  my $current = shift;
-  my $braces_count = shift;
-  if (defined($current->{'text'})) {
-    my ($before, $after);
-    ($before, $after, $braces_count) = _find_end_brace($current->{'text'},
-                                                          $braces_count);
-  }
-  if ($current->{'args'}) {
-    foreach my $arg (@{$current->{'args'}}) {
-      $braces_count = _count_opened_tree_braces($arg, $braces_count);
-      return $braces_count if ($braces_count == 0);
-    }
-  }
-  if ($current->{'contents'}) {
-    foreach my $content (@{$current->{'contents'}}) {
-      $braces_count = _count_opened_tree_braces($content, $braces_count);
-      return $braces_count if ($braces_count == 0);
-    }
-  }
-  return $braces_count;
-}
-
 # $NODE->{'contents'} is the Texinfo fo the specification of a node.
 # Returned object is a hash with three fields:
 #
@@ -2332,57 +2279,7 @@ sub _count_opened_tree_braces($$)
 sub _parse_node_manual($)
 {
   my $node = shift;
-  my @contents = @{$node->{'contents'}};
-  _trim_spaces_comment_from_content(\@contents);
-
-  my $manual;
-  my $result;
-#print STDERR "RRR $contents[0] and $contents[0]->{'text'} \n";
-  if ($contents[0] and $contents[0]->{'text'} and $contents[0]->{'text'} =~ /^\(/) {
-    my $braces_count = 1;
-    if ($contents[0]->{'text'} !~ /^\($/) {
-      my $brace = shift @contents;
-      my $brace_text = $brace->{'text'};
-      $brace_text =~ s/^\(//;
-      unshift @contents, { 'text' => $brace_text, 'type' => $brace->{'type'},
-                           'parent' => $brace->{'parent'} } if $brace_text ne '';
-    } else {
-      shift @contents;
-    }
-    while(@contents) {
-      my $content = shift @contents;
-      if (!defined($content->{'text'}) or $content->{'text'} !~ /\)/) {
-        push @$manual, $content;
-        $braces_count = _count_opened_tree_braces($content, $braces_count);
-        # This is an error, braces were closed in a command
-        if ($braces_count == 0) {
-          last;
-        }
-      } else {
-        my ($before, $after);
-        ($before, $after, $braces_count) = _find_end_brace($content->{'text'},
-                                                              $braces_count);
-        if ($braces_count == 0) {
-          $before =~ s/\)$//;
-          push @$manual, { 'text' => $before, 'parent' => $content->{'parent'} }
-            if ($before ne '');
-          $after =~ s/^\s*//;
-          unshift @contents,  { 'text' => $after, 'parent' => $content->{'parent'} }
-            if ($after ne '');
-          last;
-        } else {
-          push @$manual, $content;
-        }
-      }
-    }
-    $result->{'manual_content'} = $manual if (defined($manual));
-  }
-  if (@contents) {
-    $result->{'node_content'} = \@contents;
-    $result->{'normalized'} =
-      Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => \@contents});
-  }
-  return $result;
+  return Texinfo::Common::parse_node_manual ($node);
 }
 
 sub _parse_float_type($)
