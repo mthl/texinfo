@@ -66,6 +66,7 @@ extern ELEMENT *current_node;
 extern ELEMENT *current_section;
 
 extern GLOBAL_INFO global_info;
+extern char *global_clickstyle;
 
 #include "macro.h"
 

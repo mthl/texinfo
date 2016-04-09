@@ -115,6 +115,7 @@ COUNTER count_cells;
 /* Information that is not local to where it is set in the Texinfo input,
    for example document language and encoding. */
 GLOBAL_INFO global_info;
+char *global_clickstyle = "arrow";
 
 
 /* 835 */

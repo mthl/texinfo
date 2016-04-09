@@ -238,6 +238,7 @@ element_to_perl_hash (ELEMENT *e)
               || command_data(e->cmd).data == BRACE_style
               || command_data(e->cmd).data == BRACE_context
               || command_data(e->cmd).data == BRACE_other
+              || command_data(e->cmd).data == BRACE_accent
               ))
       || e->cmd == CM_node) // FIXME special case
     // FIXME: Makes no sense to have 'contents' created for glyph commands like

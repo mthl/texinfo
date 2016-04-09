@@ -171,6 +171,15 @@ unmacro_badname:
       if (!value)
         goto clickstyle_invalid;
       ADD_ARG (p - 1, q - p + 1);
+      global_clickstyle = malloc (q - p + 1);
+      {
+        enum command_id c;
+        c = lookup_command (value);
+        if (!c)
+          ; // TODO
+        global_clickstyle = command_name(c);
+      }
+      /* TODO: Check if it is a real command */
       if (memcmp (q, "{}", 2))
         q += 2;
       free (value);

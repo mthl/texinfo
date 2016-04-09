@@ -731,6 +731,10 @@ handle_brace_command (ELEMENT *current, char **line_inout,
 
   // mark_and_warn_invalid
   // click, kbd, definfoenclose
+  if (cmd == CM_click)
+    {
+      add_extra_string (e, "clickstyle", global_clickstyle);
+    }
 
   *line_inout = line;
   return current;
