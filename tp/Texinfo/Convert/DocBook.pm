@@ -587,7 +587,7 @@ sub _convert($$;$)
                     and $root->{'parent'}->{'type'}
                     and $root->{'parent'}->{'type'} eq 'row') {
           warn "BUG: multitable cell command not in a row "
-            .Texinfo::Parser::_print_current($root);
+            .Texinfo::Common::_print_current($root);
         }
         
         $result .= "<entry>";

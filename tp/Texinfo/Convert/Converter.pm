@@ -929,7 +929,7 @@ sub _bug_message($$;$)
     }
     if ($current) {
       $current_element_message = "current: ". 
-        Texinfo::Parser::_print_current($current);
+        Texinfo::Common::_print_current($current);
     }
   }
   my $additional_information = '';

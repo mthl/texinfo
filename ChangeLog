@@ -3,13 +3,20 @@
 	Reduce references to Texinfo::Parser module.
 
 	* tp/Texinfo/Parser.pm (_parse_def): Remove commented-out code.
-	* tp/Texinfo/HTML.pm: Refer to Texinfo::Common::_print_current 
-	instead of Texinfo::Parser::_print_current.
+	* tp/Texinfo/Convert/HTML.pm: Refer to 
+	Texinfo::Common::_print_current instead of 
+	Texinfo::Parser::_print_current.
 	(command_filename, _convert_key_command) 
 	(_convert_indicateurl_command, _convert_ctrl_command)
 	(_convert_titlefont_command, _convert_style_command)
 	(_convert_float_command): Remove commented-out code.
 	* tp/Texinfo/Parser.pm (_parse_node_manual): Add a comment.
+
+	* tp/Texinfo/Convert/Converter.pm (_bug_message),
+	* tp/Texinfo/Convert/DocBook.pm (_convert),
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert):
+	Refer to Texinfo::Common::_print_current instead of 
+	Texinfo::Parser::_print_current.
 
 2016-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
