@@ -184,10 +184,7 @@ element_to_perl_hash (ELEMENT *e)
       e->hv = newHV ();
     }
 
-  if (e->parent //) // && e->parent_type != route_not_in_tree)
-    && e->type != ET_preamble_text
-    && e->type != ET_empty_spaces_after_close_brace) //FIXME :Set parent in
-                                                     // perl code
+  if (e->parent) // && e->parent_type != route_not_in_tree)
     {
       if (!e->parent->hv)
         e->parent->hv = newHV ();
