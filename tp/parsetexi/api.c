@@ -555,7 +555,6 @@ build_single_index_data (INDEX *i)
 #define STORE(key, value) hv_store (hv, key, strlen (key), value, 0)
 
   HV *hv;
-  AV *prefix_array;
   AV *entries;
   int j;
 
@@ -573,12 +572,6 @@ build_single_index_data (INDEX *i)
 
   STORE("name", newSVpv (i->name, 0));
   STORE("in_code", i->in_code ? newSViv(1) : newSViv(0));
-
-  /* e.g. 'prefix' => ['k', 'ky'] */
-  prefix_array = newAV ();
-  av_push (prefix_array, newSVpv (i->name, 1));
-  av_push (prefix_array, newSVpv (i->name, 0));
-  STORE("prefix", newRV_inc ((SV *) prefix_array));
 
   if (i->merged_in)
     {
@@ -633,7 +626,6 @@ build_single_index_data (INDEX *i)
       av_push (entries, newRV_inc ((SV *)entry));
 
       STORE2("index_name", newSVpv (i->name, 0));
-      STORE2("index_prefix", newSVpv (i->name, 1));
       STORE2("index_at_command",
              newSVpv (command_name(e->index_at_command), 0));
       STORE2("index_type_command",
