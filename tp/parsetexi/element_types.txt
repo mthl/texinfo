@@ -1,4 +1,4 @@
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
 # Free Software Foundation, Inc.
 #
 # This file is part of GNU Texinfo.
@@ -39,6 +39,7 @@ empty_spaces_before_paragraph
 preamble_text
 space_at_end_menu_node
 after_description_line
+spaces
 
 # Other special types
 text_root

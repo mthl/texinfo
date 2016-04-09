@@ -95,7 +95,7 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
         {
           /* Text is completely spaces. */
           spaces = remove_from_contents (e, 0); // 2341
-          //spaces->type = ET_spaces; // TODO: No such element type.
+          spaces->type = ET_spaces;
 
           /* Remove a trailing newline. */
           if (spaces->text.end > 0
@@ -149,8 +149,7 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
       space_len = strspn (text, whitespace_chars);
       if (space_len > 0)
         {
-          //spaces = new_element (ET_spaces);
-          spaces = new_element (ET_NONE);
+          spaces = new_element (ET_spaces);
           spaces->parent_type = route_not_in_tree;
           text_append_n (&spaces->text, text, space_len);
           text += space_len;

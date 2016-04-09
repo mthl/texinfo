@@ -19,6 +19,7 @@ char *element_type_names[] = {
 "preamble_text",
 "space_at_end_menu_node",
 "after_description_line",
+"spaces",
 "text_root",
 "document_root",
 "root_line",
