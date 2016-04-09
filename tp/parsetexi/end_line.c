@@ -460,6 +460,8 @@ parse_line_command_args (ELEMENT *line_command)
         to = read_command_name (&p);
         if (!to)
           goto synindex_invalid;
+        if (*p)
+          goto synindex_invalid; /* More at end of line. */
 
         ADD_ARG(from);
         ADD_ARG(to);
