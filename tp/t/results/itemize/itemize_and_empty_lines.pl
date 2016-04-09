@@ -1143,6 +1143,7 @@ $result_trees{'itemize_and_empty_lines'} = {
           [
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }

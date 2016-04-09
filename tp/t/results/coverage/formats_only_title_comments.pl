@@ -101,6 +101,7 @@ $result_trees{'formats_only_title_comments'} = {
           [
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }

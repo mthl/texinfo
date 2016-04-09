@@ -538,6 +538,7 @@ $result_trees{'redirection_same_labels'} = [
                           }
                         ],
                         'cmdname' => '"',
+                        'contents' => [],
                         'line_nr' => {
                           'file_name' => '',
                           'line_nr' => 18,
@@ -612,6 +613,7 @@ $result_trees{'redirection_same_labels'} = [
                                   }
                                 ],
                                 'cmdname' => 'dotless',
+                                'contents' => [],
                                 'line_nr' => {
                                   'file_name' => '',
                                   'line_nr' => 19,
@@ -625,6 +627,7 @@ $result_trees{'redirection_same_labels'} = [
                           }
                         ],
                         'cmdname' => '~',
+                        'contents' => [],
                         'line_nr' => {},
                         'parent' => {}
                       }
@@ -769,6 +772,7 @@ $result_trees{'redirection_same_labels'} = [
                   }
                 ],
                 'cmdname' => '"',
+                'contents' => [],
                 'line_nr' => {
                   'file_name' => '',
                   'line_nr' => 22,
@@ -842,6 +846,7 @@ $result_trees{'redirection_same_labels'} = [
                           }
                         ],
                         'cmdname' => 'dotless',
+                        'contents' => [],
                         'line_nr' => {
                           'file_name' => '',
                           'line_nr' => 24,
@@ -855,6 +860,7 @@ $result_trees{'redirection_same_labels'} = [
                   }
                 ],
                 'cmdname' => '~',
+                'contents' => [],
                 'line_nr' => {},
                 'parent' => {}
               },
@@ -1024,6 +1030,7 @@ $result_trees{'redirection_same_labels'} = [
                           }
                         ],
                         'cmdname' => '^',
+                        'contents' => [],
                         'line_nr' => {
                           'file_name' => '',
                           'line_nr' => 30,
@@ -1172,6 +1179,7 @@ $result_trees{'redirection_same_labels'} = [
                   }
                 ],
                 'cmdname' => '^',
+                'contents' => [],
                 'line_nr' => {
                   'file_name' => '',
                   'line_nr' => 33,

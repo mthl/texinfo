@@ -68,6 +68,7 @@ $result_trees{'at_commands_in_node'} = {
                 }
               ],
               'cmdname' => '"',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -93,6 +94,7 @@ $result_trees{'at_commands_in_node'} = {
                         }
                       ],
                       'cmdname' => 'dotless',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -102,6 +104,7 @@ $result_trees{'at_commands_in_node'} = {
                 }
               ],
               'cmdname' => '"',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -127,6 +130,7 @@ $result_trees{'at_commands_in_node'} = {
                         }
                       ],
                       'cmdname' => '=',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -136,6 +140,7 @@ $result_trees{'at_commands_in_node'} = {
                 }
               ],
               'cmdname' => '`',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -178,6 +183,7 @@ $result_trees{'at_commands_in_node'} = {
                         }
                       ],
                       'cmdname' => '\'',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -187,6 +193,7 @@ $result_trees{'at_commands_in_node'} = {
                 }
               ],
               'cmdname' => ',',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },

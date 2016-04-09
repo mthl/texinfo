@@ -192,6 +192,7 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
                       [
                         {
                           'cmdname' => 'bullet',
+                          'contents' => [],
                           'parent' => {},
                           'type' => 'command_as_argument'
                         }

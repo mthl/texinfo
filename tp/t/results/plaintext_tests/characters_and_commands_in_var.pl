@@ -197,6 +197,7 @@ $result_trees{'characters_and_commands_in_var'} = {
                     }
                   ],
                   'cmdname' => ',',
+                  'contents' => [],
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 6,
@@ -222,6 +223,7 @@ $result_trees{'characters_and_commands_in_var'} = {
                     }
                   ],
                   'cmdname' => 'u',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -243,6 +245,7 @@ $result_trees{'characters_and_commands_in_var'} = {
                     }
                   ],
                   'cmdname' => '`',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },

@@ -94,6 +94,7 @@ $result_trees{'punctuation_and_code_style_commands_utf8'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 }
@@ -187,6 +188,7 @@ $result_trees{'punctuation_and_code_style_commands_utf8'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 }
@@ -284,6 +286,7 @@ $result_trees{'punctuation_and_code_style_commands_utf8'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 }

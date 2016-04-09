@@ -94,6 +94,7 @@ $result_trees{'punctuation_and_upper_case_commands_utf8'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 }
@@ -187,6 +188,7 @@ $result_trees{'punctuation_and_upper_case_commands_utf8'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 }
@@ -284,6 +286,7 @@ $result_trees{'punctuation_and_upper_case_commands_utf8'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 }
@@ -393,6 +396,7 @@ $result_trees{'punctuation_and_upper_case_commands_utf8'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 }
@@ -486,6 +490,7 @@ $result_trees{'punctuation_and_upper_case_commands_utf8'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 }
@@ -583,6 +588,7 @@ $result_trees{'punctuation_and_upper_case_commands_utf8'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 }

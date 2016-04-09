@@ -595,6 +595,7 @@ $result_trees{'node'} = {
                 }
               ],
               'cmdname' => ',',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },

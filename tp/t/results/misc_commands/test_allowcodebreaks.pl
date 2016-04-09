@@ -481,6 +481,7 @@ anc-hor@anchor{A node\\nr\\}}
                         }
                       ],
                       'cmdname' => '\'',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     },
@@ -986,6 +987,7 @@ anc-hor@anchor{A node\\nr\\}}
                         }
                       ],
                       'cmdname' => '\'',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     },
@@ -1454,6 +1456,7 @@ anc-hor@anchor{A node\\nr\\}}
                                 }
                               ],
                               'cmdname' => '\'',
+                              'contents' => [],
                               'line_nr' => {},
                               'parent' => {}
                             },
@@ -1992,6 +1995,7 @@ anc-hor@anchor{A node\\nr\\}}
                         }
                       ],
                       'cmdname' => '\'',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     },

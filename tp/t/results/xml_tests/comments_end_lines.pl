@@ -117,6 +117,7 @@ $result_trees{'comments_end_lines'} = {
           [
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }

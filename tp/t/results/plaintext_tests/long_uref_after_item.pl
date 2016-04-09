@@ -130,6 +130,7 @@ $result_trees{'long_uref_after_item'} = {
           [
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }

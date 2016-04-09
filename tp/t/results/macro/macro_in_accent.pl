@@ -125,6 +125,7 @@ $result_trees{'macro_in_accent'} = {
             }
           ],
           'cmdname' => 'ringaccent',
+          'contents' => [],
           'extra' => {
             'spaces' => ' '
           },
@@ -154,6 +155,7 @@ $result_trees{'macro_in_accent'} = {
             }
           ],
           'cmdname' => 'ringaccent',
+          'contents' => [],
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 10,
@@ -180,6 +182,7 @@ $result_trees{'macro_in_accent'} = {
             }
           ],
           'cmdname' => '~',
+          'contents' => [],
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 11,
@@ -206,6 +209,7 @@ $result_trees{'macro_in_accent'} = {
             }
           ],
           'cmdname' => '~',
+          'contents' => [],
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 12,
@@ -244,6 +248,7 @@ $result_trees{'macro_in_accent'} = {
             }
           ],
           'cmdname' => 'ringaccent',
+          'contents' => [],
           'extra' => {
             'spaces' => '  '
           },

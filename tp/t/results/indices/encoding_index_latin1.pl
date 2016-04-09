@@ -270,6 +270,7 @@ $result_trees{'encoding_index_latin1'} = {
                     }
                   ],
                   'cmdname' => '"',
+                  'contents' => [],
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 9,
@@ -295,6 +296,7 @@ $result_trees{'encoding_index_latin1'} = {
                     }
                   ],
                   'cmdname' => '"',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -312,6 +314,7 @@ $result_trees{'encoding_index_latin1'} = {
                     }
                   ],
                   'cmdname' => '"',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -329,6 +332,7 @@ $result_trees{'encoding_index_latin1'} = {
                     }
                   ],
                   'cmdname' => '"',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -397,6 +401,7 @@ $result_trees{'encoding_index_latin1'} = {
                     }
                   ],
                   'cmdname' => '^',
+                  'contents' => [],
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 10,
@@ -422,6 +427,7 @@ $result_trees{'encoding_index_latin1'} = {
                     }
                   ],
                   'cmdname' => '^',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -439,6 +445,7 @@ $result_trees{'encoding_index_latin1'} = {
                     }
                   ],
                   'cmdname' => '^',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -456,6 +463,7 @@ $result_trees{'encoding_index_latin1'} = {
                     }
                   ],
                   'cmdname' => '^',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -473,6 +481,7 @@ $result_trees{'encoding_index_latin1'} = {
                     }
                   ],
                   'cmdname' => '^',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -2210,6 +2219,7 @@ $result_trees{'encoding_index_latin1'} = {
                     }
                   ],
                   'cmdname' => 'dotless',
+                  'contents' => [],
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 41,
@@ -2235,6 +2245,7 @@ $result_trees{'encoding_index_latin1'} = {
                     }
                   ],
                   'cmdname' => 'dotless',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -2310,6 +2321,7 @@ $result_trees{'encoding_index_latin1'} = {
                             }
                           ],
                           'cmdname' => 'dotless',
+                          'contents' => [],
                           'line_nr' => {
                             'file_name' => '',
                             'line_nr' => 42,
@@ -2323,6 +2335,7 @@ $result_trees{'encoding_index_latin1'} = {
                     }
                   ],
                   'cmdname' => '^',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -2348,6 +2361,7 @@ $result_trees{'encoding_index_latin1'} = {
                             }
                           ],
                           'cmdname' => 'dotless',
+                          'contents' => [],
                           'line_nr' => {},
                           'parent' => {}
                         }
@@ -2357,6 +2371,7 @@ $result_trees{'encoding_index_latin1'} = {
                     }
                   ],
                   'cmdname' => '^',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },

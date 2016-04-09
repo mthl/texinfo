@@ -53,6 +53,7 @@ $result_trees{'punctuation_and_code_style_commands'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 }
@@ -146,6 +147,7 @@ $result_trees{'punctuation_and_code_style_commands'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 }
@@ -243,6 +245,7 @@ $result_trees{'punctuation_and_code_style_commands'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 }

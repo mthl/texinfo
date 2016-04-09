@@ -168,6 +168,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
                                 }
                               ],
                               'cmdname' => 'dotless',
+                              'contents' => [],
                               'line_nr' => {
                                 'file_name' => '',
                                 'line_nr' => 6,
@@ -181,6 +182,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
                         }
                       ],
                       'cmdname' => '~',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -190,6 +192,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
                 }
               ],
               'cmdname' => '=',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -232,6 +235,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
                                 }
                               ],
                               'cmdname' => '~',
+                              'contents' => [],
                               'line_nr' => {
                                 'file_name' => '',
                                 'line_nr' => 8,
@@ -245,6 +249,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
                         }
                       ],
                       'cmdname' => ',',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -254,6 +259,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
                 }
               ],
               'cmdname' => '=',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -292,6 +298,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
                         }
                       ],
                       'cmdname' => 'ubaraccent',
+                      'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 10,
@@ -305,6 +312,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
                 }
               ],
               'cmdname' => '=',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -347,6 +355,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
                                 }
                               ],
                               'cmdname' => '`',
+                              'contents' => [],
                               'line_nr' => {
                                 'file_name' => '',
                                 'line_nr' => 12,
@@ -360,6 +369,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
                         }
                       ],
                       'cmdname' => 'udotaccent',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -369,6 +379,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
                 }
               ],
               'cmdname' => '^',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -411,6 +422,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
                                 }
                               ],
                               'cmdname' => '`',
+                              'contents' => [],
                               'line_nr' => {
                                 'file_name' => '',
                                 'line_nr' => 14,
@@ -424,6 +436,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
                         }
                       ],
                       'cmdname' => '\'',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -433,6 +446,7 @@ $result_trees{'weird_accents_disable_encoding'} = {
                 }
               ],
               'cmdname' => '=',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },

@@ -150,6 +150,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                                 }
                               ],
                               'cmdname' => '~',
+                              'contents' => [],
                               'line_nr' => {
                                 'file_name' => '',
                                 'line_nr' => 6,
@@ -219,6 +220,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                         }
                       ],
                       'cmdname' => '"',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     },
@@ -244,6 +246,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                                 }
                               ],
                               'cmdname' => 'dotless',
+                              'contents' => [],
                               'line_nr' => {},
                               'parent' => {}
                             }
@@ -253,6 +256,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                         }
                       ],
                       'cmdname' => '"',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     },
@@ -278,6 +282,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                                 }
                               ],
                               'cmdname' => '=',
+                              'contents' => [],
                               'line_nr' => {},
                               'parent' => {}
                             }
@@ -287,6 +292,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                         }
                       ],
                       'cmdname' => '`',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     },
@@ -329,6 +335,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                                 }
                               ],
                               'cmdname' => '\'',
+                              'contents' => [],
                               'line_nr' => {},
                               'parent' => {}
                             }
@@ -338,6 +345,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                         }
                       ],
                       'cmdname' => ',',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     },
@@ -523,6 +531,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                         }
                       ],
                       'cmdname' => '~',
+                      'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 9,
@@ -592,6 +601,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                 }
               ],
               'cmdname' => '"',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -617,6 +627,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                         }
                       ],
                       'cmdname' => 'dotless',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -626,6 +637,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                 }
               ],
               'cmdname' => '"',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -651,6 +663,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                         }
                       ],
                       'cmdname' => '=',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -660,6 +673,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                 }
               ],
               'cmdname' => '`',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -702,6 +716,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                         }
                       ],
                       'cmdname' => '\'',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -711,6 +726,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                 }
               ],
               'cmdname' => ',',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -829,6 +845,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                 }
               ],
               'cmdname' => '"',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -854,6 +871,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                         }
                       ],
                       'cmdname' => 'dotless',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -863,6 +881,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                 }
               ],
               'cmdname' => '"',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -888,6 +907,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                         }
                       ],
                       'cmdname' => '=',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -897,6 +917,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                 }
               ],
               'cmdname' => '`',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -939,6 +960,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                         }
                       ],
                       'cmdname' => '\'',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -948,6 +970,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                 }
               ],
               'cmdname' => ',',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -1076,6 +1099,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                         }
                       ],
                       'cmdname' => '"',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     },
@@ -1114,6 +1138,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                                 }
                               ],
                               'cmdname' => 'dotless',
+                              'contents' => [],
                               'line_nr' => {},
                               'parent' => {}
                             }
@@ -1123,6 +1148,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                         }
                       ],
                       'cmdname' => '"',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     },
@@ -1148,6 +1174,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                                 }
                               ],
                               'cmdname' => '=',
+                              'contents' => [],
                               'line_nr' => {},
                               'parent' => {}
                             }
@@ -1157,6 +1184,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
                         }
                       ],
                       'cmdname' => '`',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     },

@@ -35,6 +35,7 @@ $result_trees{'nested_in_sc'} = {
                             }
                           ],
                           'cmdname' => '~',
+                          'contents' => [],
                           'line_nr' => {
                             'file_name' => '',
                             'line_nr' => 1,
@@ -103,6 +104,7 @@ $result_trees{'nested_in_sc'} = {
                             }
                           ],
                           'cmdname' => '~',
+                          'contents' => [],
                           'line_nr' => {},
                           'parent' => {}
                         },

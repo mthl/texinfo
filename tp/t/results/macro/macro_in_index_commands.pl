@@ -710,6 +710,7 @@ $result_trees{'macro_in_index_commands'} = {
                     }
                   ],
                   'cmdname' => '\'',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -735,6 +736,7 @@ $result_trees{'macro_in_index_commands'} = {
                             }
                           ],
                           'cmdname' => 'dotless',
+                          'contents' => [],
                           'line_nr' => {},
                           'parent' => {}
                         }
@@ -744,6 +746,7 @@ $result_trees{'macro_in_index_commands'} = {
                     }
                   ],
                   'cmdname' => '^',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },

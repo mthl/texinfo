@@ -125,6 +125,7 @@ $result_trees{'comments_on_block_command_lines'} = {
           [
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }

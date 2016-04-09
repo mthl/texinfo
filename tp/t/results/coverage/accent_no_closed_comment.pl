@@ -41,6 +41,7 @@ $result_trees{'accent_no_closed_comment'} = {
             }
           ],
           'cmdname' => '~',
+          'contents' => [],
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,

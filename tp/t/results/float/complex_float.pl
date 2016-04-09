@@ -957,6 +957,7 @@ $result_trees{'complex_float'} = {
                                     }
                                   ],
                                   'cmdname' => '\'',
+                                  'contents' => [],
                                   'line_nr' => {},
                                   'parent' => {}
                                 },
@@ -978,6 +979,7 @@ $result_trees{'complex_float'} = {
                                             }
                                           ],
                                           'cmdname' => 'dotless',
+                                          'contents' => [],
                                           'line_nr' => {},
                                           'parent' => {}
                                         }
@@ -987,6 +989,7 @@ $result_trees{'complex_float'} = {
                                     }
                                   ],
                                   'cmdname' => '^',
+                                  'contents' => [],
                                   'line_nr' => {},
                                   'parent' => {}
                                 }
@@ -2141,6 +2144,7 @@ $result_trees{'complex_float'} = {
                                             }
                                           ],
                                           'cmdname' => '\'',
+                                          'contents' => [],
                                           'line_nr' => {},
                                           'parent' => {}
                                         },
@@ -2162,6 +2166,7 @@ $result_trees{'complex_float'} = {
                                                     }
                                                   ],
                                                   'cmdname' => 'dotless',
+                                                  'contents' => [],
                                                   'line_nr' => {},
                                                   'parent' => {}
                                                 }
@@ -2171,6 +2176,7 @@ $result_trees{'complex_float'} = {
                                             }
                                           ],
                                           'cmdname' => '^',
+                                          'contents' => [],
                                           'line_nr' => {},
                                           'parent' => {}
                                         }
@@ -2397,6 +2403,7 @@ $result_trees{'complex_float'} = {
                                             }
                                           ],
                                           'cmdname' => '\'',
+                                          'contents' => [],
                                           'line_nr' => {},
                                           'parent' => {}
                                         },
@@ -2418,6 +2425,7 @@ $result_trees{'complex_float'} = {
                                                     }
                                                   ],
                                                   'cmdname' => 'dotless',
+                                                  'contents' => [],
                                                   'line_nr' => {},
                                                   'parent' => {}
                                                 }
@@ -2427,6 +2435,7 @@ $result_trees{'complex_float'} = {
                                             }
                                           ],
                                           'cmdname' => '^',
+                                          'contents' => [],
                                           'line_nr' => {},
                                           'parent' => {}
                                         }
@@ -3845,6 +3854,7 @@ $result_trees{'complex_float'} = {
                                             }
                                           ],
                                           'cmdname' => '\'',
+                                          'contents' => [],
                                           'line_nr' => {},
                                           'parent' => {}
                                         },
@@ -3866,6 +3876,7 @@ $result_trees{'complex_float'} = {
                                                     }
                                                   ],
                                                   'cmdname' => 'dotless',
+                                                  'contents' => [],
                                                   'line_nr' => {},
                                                   'parent' => {}
                                                 }
@@ -3875,6 +3886,7 @@ $result_trees{'complex_float'} = {
                                             }
                                           ],
                                           'cmdname' => '^',
+                                          'contents' => [],
                                           'line_nr' => {},
                                           'parent' => {}
                                         }

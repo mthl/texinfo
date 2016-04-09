@@ -329,6 +329,7 @@ $result_trees{'def_syn_indices'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -354,6 +355,7 @@ $result_trees{'def_syn_indices'} = {
                             }
                           ],
                           'cmdname' => 'dotless',
+                          'contents' => [],
                           'line_nr' => {},
                           'parent' => {}
                         }
@@ -363,6 +365,7 @@ $result_trees{'def_syn_indices'} = {
                     }
                   ],
                   'cmdname' => '^',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },

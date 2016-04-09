@@ -57,6 +57,7 @@ $result_trees{'commands'} = {
             }
           ],
           'cmdname' => '"',
+          'contents' => [],
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 2,
@@ -86,6 +87,7 @@ $result_trees{'commands'} = {
                     }
                   ],
                   'cmdname' => 'dotless',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 }
@@ -95,6 +97,7 @@ $result_trees{'commands'} = {
             }
           ],
           'cmdname' => '^',
+          'contents' => [],
           'line_nr' => {},
           'parent' => {}
         },
@@ -116,6 +119,7 @@ $result_trees{'commands'} = {
             }
           ],
           'cmdname' => '~',
+          'contents' => [],
           'line_nr' => {},
           'parent' => {}
         },
@@ -137,6 +141,7 @@ $result_trees{'commands'} = {
             }
           ],
           'cmdname' => 'ringaccent',
+          'contents' => [],
           'extra' => {
             'spaces' => ' '
           },

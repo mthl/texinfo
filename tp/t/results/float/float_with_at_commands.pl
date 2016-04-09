@@ -37,6 +37,7 @@ $result_trees{'float_with_at_commands'} = {
                 }
               ],
               'cmdname' => '\'',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 1,
@@ -77,6 +78,7 @@ $result_trees{'float_with_at_commands'} = {
                 }
               ],
               'cmdname' => '`',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -98,6 +100,7 @@ $result_trees{'float_with_at_commands'} = {
                 }
               ],
               'cmdname' => '\'',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -144,6 +147,7 @@ $result_trees{'float_with_at_commands'} = {
                 }
               ],
               'cmdname' => '`',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 3,
@@ -169,6 +173,7 @@ $result_trees{'float_with_at_commands'} = {
                 }
               ],
               'cmdname' => '\'',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -205,6 +210,7 @@ $result_trees{'float_with_at_commands'} = {
                         }
                       ],
                       'cmdname' => '`',
+                      'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 4,
@@ -230,6 +236,7 @@ $result_trees{'float_with_at_commands'} = {
                         }
                       ],
                       'cmdname' => '\'',
+                      'contents' => [],
                       'line_nr' => {},
                       'parent' => {}
                     },
@@ -388,6 +395,7 @@ $result_trees{'float_with_at_commands'} = {
                 }
               ],
               'cmdname' => '\'',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 9,

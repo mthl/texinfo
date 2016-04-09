@@ -143,6 +143,7 @@ $result_trees{'no_arg_brace_command_on_table_line'} = {
           [
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }

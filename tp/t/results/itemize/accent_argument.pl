@@ -21,6 +21,7 @@ $result_trees{'accent_argument'} = {
             },
             {
               'cmdname' => '~',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 1,
@@ -135,6 +136,7 @@ $result_trees{'accent_argument'} = {
           [
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }
@@ -167,6 +169,7 @@ $result_trees{'accent_argument'} = {
             },
             {
               'cmdname' => '~',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -269,6 +272,7 @@ $result_trees{'accent_argument'} = {
           [
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }

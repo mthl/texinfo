@@ -104,6 +104,7 @@ $result_trees{'quotation_author'} = {
                         }
                       ],
                       'cmdname' => '~',
+                      'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 5,

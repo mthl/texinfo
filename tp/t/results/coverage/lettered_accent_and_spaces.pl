@@ -23,6 +23,7 @@ $result_trees{'lettered_accent_and_spaces'} = {
             }
           ],
           'cmdname' => 'ringaccent',
+          'contents' => [],
           'extra' => {
             'spaces' => '    '
           },

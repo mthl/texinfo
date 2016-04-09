@@ -1,7 +1,8 @@
 # $Id$
 # Parser.pm: parse texinfo code into a tree.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 
+# Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -3181,6 +3182,7 @@ sub _end_line($$$)
           and $current->{'cmdname'} eq 'itemize') {
         $current->{'extra'}->{'block_command_line_contents'} = [
           [ { 'cmdname' => 'bullet', 
+              'contents' => [],
             'type' => 'command_as_argument',
             'parent' => $current }
           ]
@@ -3191,6 +3193,7 @@ sub _end_line($$$)
               ! $current->{'extra'}->{'command_as_argument'}) {
         $current->{'extra'}->{'block_command_line_contents'} = [
           [ { 'cmdname' => 'asis', 
+              'contents' => [],
             'type' => 'command_as_argument',
             'parent' => $current }
           ]
@@ -5012,10 +5015,8 @@ sub _parse_texi($;$)
                or defined($self->{'definfoenclose'}->{$command})) {
           
           push @{$current->{'contents'}}, { 'cmdname' => $command, 
-                                            'parent' => $current };
-          if (not $accent_commands{$command}) {
-            $current->{'contents'}->[-1]->{'contents'} = [];
-          }
+                                            'parent' => $current,
+                                            'contents' => [] };
           $current->{'contents'}->[-1]->{'line_nr'} = $line_nr
             if ($keep_line_nr_brace_commands{$command});
           _mark_and_warn_invalid($self, $command, $invalid_parent,

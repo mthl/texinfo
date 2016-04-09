@@ -37,6 +37,7 @@ $result_trees{'listoffloats_with_commands'} = {
                 }
               ],
               'cmdname' => '\'',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 1,
@@ -62,6 +63,7 @@ $result_trees{'listoffloats_with_commands'} = {
                 }
               ],
               'cmdname' => '`',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },

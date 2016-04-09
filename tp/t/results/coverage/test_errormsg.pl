@@ -36,6 +36,7 @@ $result_trees{'test_errormsg'} = {
                     }
                   ],
                   'cmdname' => '~',
+                  'contents' => [],
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 2,

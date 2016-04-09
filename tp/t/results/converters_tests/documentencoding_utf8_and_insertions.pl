@@ -100,6 +100,7 @@ $result_trees{'documentencoding_utf8_and_insertions'} = {
             }
           ],
           'cmdname' => '~',
+          'contents' => [],
           'line_nr' => {},
           'parent' => {}
         },
@@ -176,6 +177,7 @@ $result_trees{'documentencoding_utf8_and_insertions'} = {
                 }
               ],
               'cmdname' => '~',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },

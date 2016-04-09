@@ -23,6 +23,7 @@ $result_trees{'accent_and_dash'} = {
             }
           ],
           'cmdname' => '^',
+          'contents' => [],
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,

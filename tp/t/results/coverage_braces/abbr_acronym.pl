@@ -192,6 +192,7 @@ $result_trees{'abbr_acronym'} = {
                     }
                   ],
                   'cmdname' => '\'',
+                  'contents' => [],
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 4,
@@ -245,6 +246,7 @@ $result_trees{'abbr_acronym'} = {
                     }
                   ],
                   'cmdname' => '\'',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -343,6 +345,7 @@ $result_trees{'abbr_acronym'} = {
                     }
                   ],
                   'cmdname' => '\'',
+                  'contents' => [],
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 5,

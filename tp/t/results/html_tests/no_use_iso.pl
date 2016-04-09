@@ -27,6 +27,7 @@ $result_trees{'no_use_iso'} = {
             }
           ],
           'cmdname' => '^',
+          'contents' => [],
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,

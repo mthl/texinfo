@@ -74,6 +74,7 @@ $result_trees{'utf8_enable_encoding_no_use_iso'} = {
             }
           ],
           'cmdname' => '^',
+          'contents' => [],
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 3,

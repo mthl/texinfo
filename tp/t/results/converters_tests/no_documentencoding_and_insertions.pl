@@ -59,6 +59,7 @@ $result_trees{'no_documentencoding_and_insertions'} = {
             }
           ],
           'cmdname' => '~',
+          'contents' => [],
           'line_nr' => {},
           'parent' => {}
         },
@@ -135,6 +136,7 @@ $result_trees{'no_documentencoding_and_insertions'} = {
                 }
               ],
               'cmdname' => '~',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },

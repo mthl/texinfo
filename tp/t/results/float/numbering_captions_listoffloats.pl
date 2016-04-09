@@ -2367,6 +2367,7 @@ $result_trees{'numbering_captions_listoffloats'} = {
                     }
                   ],
                   'cmdname' => '\'',
+                  'contents' => [],
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 77,
@@ -2392,6 +2393,7 @@ $result_trees{'numbering_captions_listoffloats'} = {
                     }
                   ],
                   'cmdname' => '`',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -2447,6 +2449,7 @@ $result_trees{'numbering_captions_listoffloats'} = {
                     }
                   ],
                   'cmdname' => '\'',
+                  'contents' => [],
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 78,
@@ -2472,6 +2475,7 @@ $result_trees{'numbering_captions_listoffloats'} = {
                     }
                   ],
                   'cmdname' => '`',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -2514,6 +2518,7 @@ $result_trees{'numbering_captions_listoffloats'} = {
                             }
                           ],
                           'cmdname' => '\'',
+                          'contents' => [],
                           'line_nr' => {
                             'file_name' => '',
                             'line_nr' => 80,
@@ -2539,6 +2544,7 @@ $result_trees{'numbering_captions_listoffloats'} = {
                             }
                           ],
                           'cmdname' => '`',
+                          'contents' => [],
                           'line_nr' => {},
                           'parent' => {}
                         },
@@ -6329,6 +6335,7 @@ $result_trees{'numbering_captions_listoffloats'} = {
                     }
                   ],
                   'cmdname' => '\'',
+                  'contents' => [],
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 196,
@@ -6354,6 +6361,7 @@ $result_trees{'numbering_captions_listoffloats'} = {
                     }
                   ],
                   'cmdname' => '`',
+                  'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
                 },

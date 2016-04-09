@@ -21,6 +21,7 @@ $result_trees{'accent_on_table_line'} = {
             },
             {
               'cmdname' => '~',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 1,
@@ -214,6 +215,7 @@ $result_trees{'accent_on_table_line'} = {
           [
             {
               'cmdname' => 'asis',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }

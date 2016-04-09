@@ -151,6 +151,7 @@ $result_trees{'empty_commands'} = {
             }
           ],
           'cmdname' => '~',
+          'contents' => [],
           'line_nr' => {},
           'parent' => {}
         },
@@ -167,6 +168,7 @@ $result_trees{'empty_commands'} = {
             }
           ],
           'cmdname' => 'dotless',
+          'contents' => [],
           'line_nr' => {},
           'parent' => {}
         },

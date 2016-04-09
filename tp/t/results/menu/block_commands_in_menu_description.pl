@@ -260,6 +260,7 @@ $result_trees{'block_commands_in_menu_description'} = {
                           [
                             {
                               'cmdname' => 'bullet',
+                              'contents' => [],
                               'parent' => {},
                               'type' => 'command_as_argument'
                             }

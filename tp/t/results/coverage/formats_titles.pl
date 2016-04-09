@@ -117,6 +117,7 @@ $result_trees{'formats_titles'} = {
           [
             {
               'cmdname' => 'bullet',
+              'contents' => [],
               'parent' => {},
               'type' => 'command_as_argument'
             }

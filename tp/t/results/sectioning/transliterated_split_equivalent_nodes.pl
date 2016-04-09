@@ -83,6 +83,7 @@ $result_trees{'transliterated_split_equivalent_nodes'} = [
                           }
                         ],
                         'cmdname' => '~',
+                        'contents' => [],
                         'line_nr' => {
                           'file_name' => '',
                           'line_nr' => 4,
@@ -210,6 +211,7 @@ $result_trees{'transliterated_split_equivalent_nodes'} = [
                           }
                         ],
                         'cmdname' => '^',
+                        'contents' => [],
                         'line_nr' => {
                           'file_name' => '',
                           'line_nr' => 6,
@@ -372,6 +374,7 @@ $result_trees{'transliterated_split_equivalent_nodes'} = [
                   }
                 ],
                 'cmdname' => '~',
+                'contents' => [],
                 'line_nr' => {
                   'file_name' => '',
                   'line_nr' => 9,
@@ -517,6 +520,7 @@ $result_trees{'transliterated_split_equivalent_nodes'} = [
                   }
                 ],
                 'cmdname' => '^',
+                'contents' => [],
                 'line_nr' => {
                   'file_name' => '',
                   'line_nr' => 13,

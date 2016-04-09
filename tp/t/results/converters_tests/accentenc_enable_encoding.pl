@@ -164,6 +164,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '`',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 6,
@@ -189,6 +190,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '`',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -227,6 +229,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '\'',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 8,
@@ -252,6 +255,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '\'',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -290,6 +294,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '^',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 10,
@@ -315,6 +320,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '^',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -353,6 +359,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '"',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 12,
@@ -378,6 +385,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '"',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -416,6 +424,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '`',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 14,
@@ -441,6 +450,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '`',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -479,6 +489,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '\'',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 16,
@@ -504,6 +515,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '\'',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -542,6 +554,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '^',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 18,
@@ -567,6 +580,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '^',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -605,6 +619,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '"',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 20,
@@ -630,6 +645,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '"',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -668,6 +684,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => ',',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 22,
@@ -693,6 +710,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => ',',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -731,6 +749,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '~',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 24,
@@ -756,6 +775,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '~',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -794,6 +814,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '=',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 26,
@@ -819,6 +840,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '=',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -883,6 +905,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'H',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -904,6 +927,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'H',
+              'contents' => [],
               'extra' => {
                 'spaces' => ' '
               },
@@ -945,6 +969,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'dotaccent',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 30,
@@ -970,6 +995,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'dotaccent',
+              'contents' => [],
               'extra' => {
                 'spaces' => ' '
               },
@@ -1011,6 +1037,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'ringaccent',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 32,
@@ -1036,6 +1063,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'ringaccent',
+              'contents' => [],
               'extra' => {
                 'spaces' => ' '
               },
@@ -1077,6 +1105,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'tieaccent',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 34,
@@ -1119,6 +1148,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'u',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 36,
@@ -1144,6 +1174,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'u',
+              'contents' => [],
               'extra' => {
                 'spaces' => ' '
               },
@@ -1185,6 +1216,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'ubaraccent',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 38,
@@ -1210,6 +1242,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'ubaraccent',
+              'contents' => [],
               'extra' => {
                 'spaces' => ' '
               },
@@ -1251,6 +1284,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'udotaccent',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 40,
@@ -1276,6 +1310,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'udotaccent',
+              'contents' => [],
               'extra' => {
                 'spaces' => ' '
               },
@@ -1317,6 +1352,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'v',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 42,
@@ -1342,6 +1378,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'v',
+              'contents' => [],
               'extra' => {
                 'spaces' => ' '
               },
@@ -1383,6 +1420,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'ogonek',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 44,
@@ -1408,6 +1446,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'ogonek',
+              'contents' => [],
               'extra' => {
                 'spaces' => ' '
               },
@@ -1449,6 +1488,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'ogonek',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 46,
@@ -1474,6 +1514,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'ogonek',
+              'contents' => [],
               'extra' => {
                 'spaces' => ' '
               },
@@ -1714,6 +1755,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'dotless',
+              'contents' => [],
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 54,
@@ -1739,6 +1781,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => 'dotless',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -1985,6 +2028,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                         }
                       ],
                       'cmdname' => 'dotless',
+                      'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 65,
@@ -1998,6 +2042,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '`',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -2040,6 +2085,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                         }
                       ],
                       'cmdname' => 'dotless',
+                      'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 67,
@@ -2053,6 +2099,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '\'',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -2095,6 +2142,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                         }
                       ],
                       'cmdname' => 'dotless',
+                      'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 69,
@@ -2108,6 +2156,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '^',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -2150,6 +2199,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                         }
                       ],
                       'cmdname' => 'dotless',
+                      'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 71,
@@ -2163,6 +2213,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '"',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -2223,6 +2274,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                         }
                       ],
                       'cmdname' => 'dotless',
+                      'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 74,
@@ -2236,6 +2288,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '`',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -2278,6 +2331,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                         }
                       ],
                       'cmdname' => 'dotless',
+                      'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 76,
@@ -2291,6 +2345,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '\'',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -2333,6 +2388,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                         }
                       ],
                       'cmdname' => 'dotless',
+                      'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 78,
@@ -2346,6 +2402,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '^',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
@@ -2388,6 +2445,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                         }
                       ],
                       'cmdname' => 'dotless',
+                      'contents' => [],
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 80,
@@ -2401,6 +2459,7 @@ $result_trees{'accentenc_enable_encoding'} = {
                 }
               ],
               'cmdname' => '"',
+              'contents' => [],
               'line_nr' => {},
               'parent' => {}
             },
