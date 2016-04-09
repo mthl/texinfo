@@ -2319,6 +2319,15 @@ sub _count_opened_tree_braces($$)
   return $braces_count;
 }
 
+# $NODE->{'contents'} is the Texinfo fo the specification of a node.
+# Returned object is a hash with three fields:
+#
+#     manual_content - Texinfo tree for a manual name extracted from the
+#                      node specification.
+#     node_content - Texinfo tree for the node name on its own
+#     normalized - a string with the node name after HTML node name
+#                  normalization is applied
+#
 # retrieve a leading manual name in parentheses, if there is one.
 sub _parse_node_manual($)
 {
@@ -2503,10 +2512,7 @@ sub _parse_def($$$)
     # have this leading space appear in the arguments ever, so we ignore
     # it here.
     push @def_line, ['spaces', $spaces] if ((defined($spaces)) and scalar(@def_line) != 0);
-    #print STDERR "spaces `".Texinfo::Convert::Texinfo::convert($spaces)."'\n" if (defined($spaces));
     last if (!defined($next));
-    #print "$next, $next->{'type'}\n";
-    #print STDERR "NEXT ".Texinfo::Convert::Texinfo::convert($next)."\n";
     if ($next->{'type'} and $next->{'type'} eq 'bracketed_def_content') {
       push @def_line, ['bracketed', $next];
     } else {
@@ -2517,8 +2523,6 @@ sub _parse_def($$$)
   my $arg = shift (@args);
   while (@def_line) {
     my $token = $def_line[0];
-    #print STDERR "next token: $token->[0]. arg $arg\n";
-    #print STDERR "NEXT ".Texinfo::Convert::Texinfo::convert($token->[1])."\n";
     # finish previous item
     if ($token->[0] eq 'spaces' or $token->[0] eq 'bracketed') {
       # we create a {'contents' =>} only if there is more than one
@@ -2552,22 +2556,8 @@ sub _parse_def($$$)
   } elsif (scalar(@$argument_content) == 1) {
     push @result, [$arg, $argument_content->[0]];
   }
-  #foreach my $arg (@args) {
-  #  #print STDERR "$command $arg"._print_current($contents[0]);
-  #  #foreach my $content (@contents) {print STDERR " "._print_current($content)};
-  #  #print STDERR " contents ->".Texinfo::Convert::Texinfo::convert ({'contents' => \@contents});
-  #  my ($spaces, $next) = $self->_next_bracketed_or_word(\@contents);
-  #  last if (!defined($next));
-  #  #my $spaces_string = 'NOSPACE';
-  #  #if (defined($spaces)) {
-  #  #  $spaces_string = "`".Texinfo::Convert::Texinfo::convert($spaces)."'";
- #   #}
-  #  #print STDERR "NEXT $spaces_string [$arg] ".Texinfo::Convert::Texinfo::convert($next)."\n";
-  #  push @result, ['spaces', $spaces] if (defined($spaces));
-  #  push @result, [$arg, $next];
-  #}
+
   my @args_results;
-  #while (@contents) {
   while (@def_line) {
     my $spaces;
     my $next_token = shift @def_line;
@@ -2576,7 +2566,6 @@ sub _parse_def($$$)
       $next_token = shift @def_line;
     }
     my $next = $next_token->[1];
-    #my ($spaces, $next) = $self->_next_bracketed_or_word(\@contents);
     push @args_results, ['spaces', $spaces] if (defined($spaces));
     last if (!defined($next));
     if (defined($next->{'text'})) {

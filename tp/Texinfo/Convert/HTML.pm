@@ -302,7 +302,6 @@ sub command_filename($$)
       return $element->{'filename'};
     }
   }
-  #print STDERR "No filename ".Texinfo::Parser::_print_command_args_texi($command);
   return undef;
 }
 
@@ -508,7 +507,7 @@ sub command_text($$;$)
       } else {
         if (!$command->{'extra'}->{'misc_content'}) {
           cluck "No misc_content: "
-            .Texinfo::Parser::_print_current($command);
+            .Texinfo::Common::_print_current($command);
         }
         if (defined($command->{'number'})
             and ($self->get_conf('NUMBER_SECTIONS')
@@ -1376,7 +1375,6 @@ sub _convert_style_command($$$$)
   if (!defined($text)) {
     # happens with bogus @-commands without argument, like @strong something
     #cluck "text not defined in _convert_style_command";
-    #print STDERR Texinfo::Parser::_print_current($command);
     return '';
   }
   # handle the effect of kbdinputstyle
@@ -1749,7 +1747,6 @@ sub _convert_key_command($$$$)
   my $text = $args->[0]->{'normal'};
   if (!defined($text)) {
     # happens with bogus @-commands without argument, like @strong something
-    #print STDERR Texinfo::Parser::_print_current($command);
     return '';
   }
   if ($self->in_string()) {
@@ -1782,7 +1779,6 @@ sub _convert_indicateurl_command($$$$)
   my $text = $args->[0]->{'normal'};
   if (!defined($text)) {
     # happens with bogus @-commands without argument, like @strong something
-    #print STDERR Texinfo::Parser::_print_current($command);
     return '';
   }
   if (!$self->in_string()) {
@@ -1808,7 +1804,6 @@ sub _convert_ctrl_command($$$$)
   my $text = $args->[0]->{'normal'};
   if (!defined($text)) {
     # happens with bogus @-commands without argument, like @strong something
-    #print STDERR Texinfo::Parser::_print_current($command);
     return '';
   }
   return $self->protect_text('^') .$text;
@@ -1826,7 +1821,6 @@ sub _convert_titlefont_command($$$$)
   my $text = $args->[0]->{'normal'};
   if (!defined($text)) {
     # happens with bogus @-commands without argument, like @strong something
-    #print STDERR Texinfo::Parser::_print_current($command);
     return '';
   }
   return &{$self->{'format_heading_text'}}($self, 'titlefont', $text, 0, $command);
@@ -2818,8 +2812,6 @@ sub _convert_float_command($$$$$)
   } else {
     $prepended_text = '';
   }
-  #print STDERR "Float $prepended_text: caption $caption ".
-  #  Texinfo::Parser::_print_current ($caption)."\n";
   
   if ($caption and $caption_text eq '') {
     $caption_text = $self->convert_tree_new_formatting_context(
@@ -3664,7 +3656,7 @@ sub _convert_preformatted_type($$$$)
 
   if (!defined($content)) {
     cluck "content undef in _convert_preformatted_type " 
-       .Texinfo::Parser::_print_current($command);
+       .Texinfo::Common::_print_current($command);
   }
 
   my $current = $command;
@@ -5681,7 +5673,7 @@ sub _prepare_global_targets($$)
   } elsif ($node_top) {
     my $element_top = $node_top->{'parent'};
     if (!$element_top) {
-      die "No parent for node_top: ".Texinfo::Parser::_print_current($node_top);
+      die "No parent for node_top: ".Texinfo::Common::_print_current($node_top);
     }
     $self->{'global_target_elements'}->{'Top'} = $element_top;
   } else {
@@ -5971,7 +5963,7 @@ sub _element_direction($$$$;$)
     ######## debug
     if (!$element_target->{'type'}) {
       die "No type for element_target $direction $element_target: "
-        . Texinfo::Parser::_print_current_keys($element_target)
+        . Texinfo::Common::_print_current_keys($element_target)
         . "directions :". Texinfo::Structuring::_print_directions($element);
     }
     ########
@@ -7256,7 +7248,7 @@ sub _convert_contents($$$)
   my $content_formatted = '';
   if (ref($root->{'contents'}) ne 'ARRAY') {
     cluck "for $root contents not an array: $root->{'contents'}";
-    print STDERR Texinfo::Parser::_print_current($root);
+    print STDERR Texinfo::Common::_print_current($root);
   }
 
   my $content_idx = 0;
@@ -7264,8 +7256,8 @@ sub _convert_contents($$$)
     my $new_content = $self->_convert($content, "$command_type [$content_idx]");
     if (!defined($new_content)) {
       cluck "content not defined for $command_type [$content_idx]\n";
-      print STDERR "root is: ".Texinfo::Parser::_print_current ($root);
-      print STDERR "content is: ".Texinfo::Parser::_print_current ($content);
+      print STDERR "root is: ".Texinfo::Common::_print_current ($root);
+      print STDERR "content is: ".Texinfo::Common::_print_current ($content);
     } else {
       $content_formatted .= $new_content;
     }
