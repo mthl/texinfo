@@ -14,6 +14,7 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => '\\input texinfo
 ',
                   'type' => 'preamble_text'
@@ -643,6 +644,7 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[1];

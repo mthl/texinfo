@@ -950,7 +950,9 @@ sub parse_texi_file($$)
     foreach my $line (@first_lines) {
       push @{$root->{'contents'}->[-1]->{'contents'}}, 
                                    { 'text' => $line,
-                                     'type' => 'preamble_text' };
+                                     'type' => 'preamble_text',
+                                     'parent' => $root->{'contents'}->[-1]
+                                   };
     }
   }
   my ($directories, $suffix);
@@ -5167,7 +5169,8 @@ sub _parse_texi($;$)
           # lone braces accepted right in a rawpreformatted
           } elsif ($current->{'type'} 
                    and $current->{'type'} eq 'rawpreformatted') {
-            push @{$current->{'contents'}}, {'text' => '{' };
+            push @{$current->{'contents'}}, {'text' => '{',
+                                             'parent' => $current };
           # matching braces accepted in a rawpreformatted or math or ignored
           # code
           } elsif ($self->{'context_stack'}->[-1] eq 'math'
@@ -5413,7 +5416,9 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
             if ($command_ignore_space_after{$current->{'parent'}->{'cmdname'}}) {
               push @{$current->{'parent'}->{'parent'}->{'contents'}}, 
                  {'type' => 'empty_spaces_after_close_brace',
-                  'text' => '' };                          
+                  'text' => '',
+                  'parent' => $current->{'parent'}->{'parent'}
+                 };                          
             }
             $current = $current->{'parent'}->{'parent'};
             $current = _begin_preformatted ($self, $current)
@@ -5421,7 +5426,8 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
           # lone braces accepted right in a rawpreformatted
           } elsif ($current->{'type'}
                    and $current->{'type'} eq 'rawpreformatted') {
-            push @{$current->{'contents'}}, {'text' => '}' };
+            push @{$current->{'contents'}}, {'text' => '}',
+                                             'parent' => $current };
           # footnote caption closing, when there is a paragraph inside.
           } elsif ($context_brace_commands{$self->{'context_stack'}->[-1]}) {
              # closing the context under broader situations

@@ -14,6 +14,7 @@ $result_trees{'sample_utf8'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => '\\input texinfo   @c -*-texinfo-*-
 ',
                   'type' => 'preamble_text'
@@ -1671,6 +1672,7 @@ $result_trees{'sample_utf8'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0];
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'sample_utf8'}{'contents'}[0]{'contents'}[0];

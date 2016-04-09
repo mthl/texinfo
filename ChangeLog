@@ -1,5 +1,10 @@
 2016-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (parse_texi_file, _parse_texi): Set 
+	'parent' field on created elements in the main tree.
+
+2016-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <brace commands>: Define 
 	'contents' for all brace commands again (changed on 2016-03-28).  
 	(_end_line) <@itemize, @table>: Add 'contents' for @asis and 

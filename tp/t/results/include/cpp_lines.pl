@@ -14,6 +14,7 @@ $result_trees{'cpp_lines'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => '\\input texinfo
 ',
                   'type' => 'preamble_text'
@@ -628,6 +629,7 @@ $result_trees{'cpp_lines'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[0];
 $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[0];
 $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'cpp_lines'}{'contents'}[0]{'contents'}[1];

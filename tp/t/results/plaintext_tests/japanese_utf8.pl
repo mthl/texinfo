@@ -14,6 +14,7 @@ $result_trees{'japanese_utf8'} = {
             {
               'contents' => [
                 {
+                  'parent' => {},
                   'text' => '\\input texinfo @c -*- coding: utf-8; mode: texinfo; -*-
 ',
                   'type' => 'preamble_text'
@@ -960,6 +961,7 @@ $result_trees{'japanese_utf8'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_utf8'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];
