@@ -416,8 +416,11 @@ handle_misc_command (ELEMENT *current, char **line_inout,
               misc->type = ET_def_line; // 4553
               if (current->cmd == base_command)
                 {
-                  // Does this gather an "inter_def_item" ?
-                  // gather_def_item (current, cmd);
+                  ELEMENT *e = pop_element_from_contents (current);
+                  /* e should be the same as misc */
+                  /* Gather an "inter_def_item" element. */
+                  gather_def_item (current, cmd);
+                  add_to_element_contents (current, e);
                 }
               else
                 {

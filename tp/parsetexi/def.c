@@ -21,14 +21,16 @@
 
 // 1471
 void
-gather_def_item (ELEMENT *current /* , enum command_id next_command */ )
+gather_def_item (ELEMENT *current, enum command_id next_command)
 {
   enum element_type type;
   ELEMENT *def_item;
   int contents_count, i;
 
-  // TODO: ET_inter_def_item.
-  type = ET_def_item;
+  if (next_command)
+    type = ET_inter_def_item; /* Between @def*x and @def*. */
+  else
+    type = ET_def_item;
 
   if (!current->cmd)
     return;
@@ -73,8 +75,7 @@ shallow_destroy_element (ELEMENT *e)
 /* Used for definition line parsing.  Return next unit on the line after
    a definition command like @deffn.  The contents of E is what is remaining
    in the argument line.  *SPACES_OUT is set to an element with spaces before 
-   the line.  Both of the elements that are output have their `parent' field
-   nulled (because the parent element is eventually destroyed). */
+   the line. */
 static ELEMENT *
 next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
 {
@@ -125,17 +126,16 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
       // isolate_last_space (bracketed, ET_empty_space_at_end_def_bracketed);
 
       /* TODO: Why do we need the parent ? */
-      //returned->parent = bracketed->parent;
+      returned->parent = bracketed->parent;
       returned->contents = bracketed->contents;
       returned->parent_type = route_not_in_tree;
-      returned->parent = 0;
 
       return returned;
     }
   else if (e->contents.list[0]->cmd != CM_NONE) // 2363
     {
       ret = remove_from_contents (e, 0);
-      ret->parent = 0;
+      //ret->parent = 0;
       return ret;
     }
   else
@@ -154,7 +154,7 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
           text_append_n (&spaces->text, text, space_len);
           text += space_len;
           *spaces_out = spaces;
-          (*spaces_out)->parent = 0;
+          //(*spaces_out)->parent = 0;
         }
       arg_len = strcspn (text, whitespace_chars);
       text_append_n (&returned->text, text, arg_len);
@@ -166,7 +166,7 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
         shallow_destroy_element (remove_from_contents (e, 0));
 
       returned->parent_type = route_not_in_tree;
-      returned->parent = 0;
+      //returned->parent = 0;
       return returned;
     }
 }

@@ -137,7 +137,7 @@ close_command_cleanup (ELEMENT *current)
      container. */
   if (command_data(current->cmd).flags & CF_def)
     {
-      gather_def_item (current);
+      gather_def_item (current, 0);
     }
 
   if (current->cmd == CM_table

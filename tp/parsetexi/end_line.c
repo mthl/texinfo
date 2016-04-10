@@ -1224,6 +1224,7 @@ end_line_misc_line (ELEMENT *current)
 
               add_extra_string (current, "input_encoding_name",
                                 text); // 3199
+              add_extra_string (current, "input_perl_encoding", text);
 
               global_info.input_encoding_name = text; // 3210
 
@@ -1672,7 +1673,7 @@ end_line (ELEMENT *current)
       if (pop_context () != ct_def)
         abort ();
 
-      k = lookup_extra_key (current->parent, "def_command");
+      k = lookup_extra_key (current->parent, "original_def_cmdname");
       if (k)
         original_def_command = lookup_command ((char *) k->value);
       else
