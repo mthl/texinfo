@@ -273,7 +273,9 @@ enter_index_entry (enum command_id index_type_command,
 
   add_extra_index_entry (current, "index_entry", ier);
 
-  if (!current_section)
+  if (current_node)
+    ; // TODO
+  else if (!current_section)
     line_warn ("entry for index `%s' outside of any node", idx->name);
 }
 

@@ -1315,16 +1315,12 @@ end_line_misc_line (ELEMENT *current)
       /* Index commands */
       if (command_flags(current) & CF_index_entry_command)
         {
-          /* TODO: Trim space elements from contents.  Note we aren't
-             using the misc_content variable yet, because we have not
-             got a way to serialize a pointer from the index information
-             to a detached extra key that is not part of the main tree. */
           ELEMENT *contents;
           contents = last_args_child(current);
 
           // 3274
           enter_index_entry (current->cmd, current->cmd, current,
-                             contents);
+                             misc_content);
           current->type = ET_index_entry_command;
         }
     }
