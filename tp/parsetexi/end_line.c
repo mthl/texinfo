@@ -967,6 +967,7 @@ end_line_starting_block (ELEMENT *current)
       if (current->parent->args.number > 0)
         {
           KEY_PAIR *k;
+          EXTRA_FLOAT_TYPE *eft;
           if (current->parent->args.number > 1)
             {
               // 2950
@@ -984,9 +985,12 @@ end_line_starting_block (ELEMENT *current)
                 }
             }
           parse_float_type (f);
-          k = lookup_extra_key (f, "normalized");
+          k = lookup_extra_key (f, "type");
           if (k)
-            type = (char *) k->value;
+            {
+              eft = (EXTRA_FLOAT_TYPE *) k->value;
+              type = eft->normalized;
+            }
         }
       // add to global 'floats' array
       if (floats_number == floats_space)
