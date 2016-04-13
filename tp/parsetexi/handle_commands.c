@@ -696,6 +696,14 @@ handle_block_command (ELEMENT *current, char **line_inout,
           {
             ELEMENT *bla = new_element (ET_block_line_arg);
             add_to_element_args (current, bla);
+
+            if (command_data (current->cmd).data > 1)
+              {
+                counter_push (&count_remaining_args,
+                              current,
+                              command_data (current->cmd).data - 1);
+              }
+
             current = bla;
             if (!(command_data(cmd).flags & CF_def))
               push_context (ct_line);

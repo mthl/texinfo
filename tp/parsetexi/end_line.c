@@ -832,6 +832,11 @@ parse_node_manual (ELEMENT *node)
   return result;
 }
 
+/* Array of recorded @float's. */
+FLOAT_RECORD *floats_list = 0;
+size_t floats_number = 0;
+size_t floats_space = 0;
+
 int
 parse_float_type (ELEMENT *current)
 {
@@ -956,17 +961,42 @@ end_line_starting_block (ELEMENT *current)
 
   if (current->parent->cmd == CM_float) // 2943
     {
+      ELEMENT *f = current->parent;
+      char *type = "";
       current->parent->line_nr = line_nr;
       if (current->parent->args.number > 0)
         {
+          KEY_PAIR *k;
           if (current->parent->args.number > 1)
             {
-              // TODO 2950
+              // 2950
+              NODE_SPEC_EXTRA *float_label;
+              float_label = parse_node_manual (args_child_by_index (f, 1));
+              // TODO check_internal_node
+
+              if (float_label
+                  && float_label->node_content
+                  && *(float_label->normalized
+                       + strspn (float_label->normalized, "-")) != '\0')
+                {
+                  /* TODO: Why check if there is a character that isn't '-'? */
+                  register_label (f, float_label);
+                }
             }
-          parse_float_type (current->parent);
-          //type = ;
+          parse_float_type (f);
+          k = lookup_extra_key (f, "normalized");
+          if (k)
+            type = (char *) k->value;
         }
-      // add to global 'floats' array and set 'float_section' directly
+      // add to global 'floats' array
+      if (floats_number == floats_space)
+        {
+          floats_list = realloc (floats_list,
+                                 (floats_space += 5) * sizeof (FLOAT_RECORD));
+        }
+      floats_list[floats_number].type = type;
+      floats_list[floats_number++].element = f;
+      // set 'float_section' directly
       // on $float.
     }
   current = current->parent; //2965

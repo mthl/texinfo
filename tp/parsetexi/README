@@ -12,6 +12,12 @@ should be able to debug with gdb.  Add
 
 ./configure PERL_EXT_CFLAGS='-g -O0'
 
+For individual tests can do "gdb perl" followed by e.g.
+
+(gdb) r -w t/27float.t comment_space_comand_in_float
+
+After a single run can set breakpoints.
+
 How to debug with valgrind -
 export PERL5LIB to the value in the makeinfo script
 

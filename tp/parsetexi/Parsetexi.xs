@@ -13,6 +13,7 @@
 
 HV *build_texinfo_tree (void);
 HV *build_label_list (void);
+HV *build_float_list (void);
 HV *build_index_data (void);
 HV *build_global_info (void);
 
@@ -101,6 +102,9 @@ build_texinfo_tree ()
 
 HV *
 build_label_list ()
+
+HV *
+build_float_list ()
 
 HV *
 build_index_data ()

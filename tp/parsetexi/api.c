@@ -50,7 +50,7 @@ reset_parser ()
 void
 parse_file (char *filename)
 {
-  debug_output = 0;
+  debug_output = 1;
   reset_parser ();
   parse_texi_file (filename);
 }
@@ -545,6 +545,46 @@ build_label_list (void)
     }
 
   return label_hash;
+}
+
+/* Return hash for list of @float's that appeared in the file. */
+HV *
+build_float_list (void)
+{
+  HV *float_hash;
+  SV **type_array;
+  SV *sv;
+  AV *av;
+  int i;
+
+  dTHX;
+
+  float_hash = newHV ();
+
+  for (i = 0; i < floats_number; i++)
+    {
+      type_array = hv_fetch (float_hash,
+                             floats_list[i].type,
+                             strlen (floats_list[i].type),
+                             0);
+      if (!type_array)
+        {
+          av = newAV ();
+          hv_store (float_hash,
+                    floats_list[i].type,
+                    strlen (floats_list[i].type),
+                    newRV_inc ((SV *)av),
+                    0);
+        }
+      else
+        {
+          av = (AV *)SvRV (*type_array);
+        }
+      sv = newRV_inc ((SV *)floats_list[i].element->hv);
+      av_push (av, sv);
+    }
+
+  return float_hash;
 }
 
 /* Ensure that I->hv is a hash value for a single entry in 

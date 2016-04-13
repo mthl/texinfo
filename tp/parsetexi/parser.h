@@ -26,6 +26,15 @@ NODE_SPEC_EXTRA *parse_node_manual (ELEMENT *node);
 ELEMENT *end_line (ELEMENT *current);
 ELEMENT *parse_special_misc_command (char *line, enum command_id cmd);
 
+typedef struct {
+    char *type;
+    ELEMENT *element;
+} FLOAT_RECORD;
+
+extern FLOAT_RECORD *floats_list;
+extern size_t floats_number;
+extern size_t floats_space;
+
 /* In debug.c */
 void debug (char *s, ...);
 void debug_nonl (char *s, ...);

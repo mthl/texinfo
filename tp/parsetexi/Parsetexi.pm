@@ -109,9 +109,9 @@ sub parser (;$$)
     'index_names' => {},
     'merged_indices' => {},
     'nodes' => [],
+    'floats' => {},
 
     # These aren't implemented yet.
-    'floats' => {},
     'internal_references' => [],
 
     # Not used but present in case we pass the object into 
@@ -283,7 +283,8 @@ sub parse_texi_file ($$)
 
   #print "Getting tree...\n";
 
-  my ($TREE, $LABELS, $INDEX_NAMES, $ERRORS, $GLOBAL_INFO);
+  my ($TREE, $LABELS, $FLOATS,
+      $INDEX_NAMES, $ERRORS, $GLOBAL_INFO);
   if (1) {
     # This is our third way of passing the data: construct it using
     # Perl api directly.
@@ -295,6 +296,7 @@ sub parse_texi_file ($$)
     #print Texinfo::Parser::_print_tree ($TREE);
 
     $LABELS = build_label_list ();
+    $FLOATS = build_float_list ();
 
     $INDEX_NAMES = build_index_data ();
 
@@ -398,6 +400,7 @@ sub parse_texi_file ($$)
   $self->{'info'}->{'input_file_name'} = $file_name;
 
   $self->{'labels'} = $LABELS;
+  $self->{'floats'} = $FLOATS;
 
   #$self->{'index_names'} = $INDEX_NAMES;
   #for my $index (keys %$INDEX_NAMES) {
@@ -465,6 +468,9 @@ sub parse_texi_text($$;$$$$)
 
     my $LABELS = build_label_list ();
     $self->{'labels'} = $LABELS;
+
+    my $FLOATS = build_float_list ();
+    $self->{'floats'} = $FLOATS;
 
     _get_errors ($self);
     _add_parents ($tree);
