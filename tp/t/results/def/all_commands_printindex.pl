@@ -1616,7 +1616,6 @@ $result_trees{'all_commands_printindex'} = {
                           'text' => 'Special Form'
                         }
                       ],
-                      'parent' => undef,
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -1939,7 +1938,6 @@ $result_trees{'all_commands_printindex'} = {
                           'text' => 'User Option'
                         }
                       ],
-                      'parent' => undef,
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -2440,7 +2438,6 @@ $result_trees{'all_commands_printindex'} = {
                           'text' => 'Instance Variable'
                         }
                       ],
-                      'parent' => undef,
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -2626,7 +2623,6 @@ $result_trees{'all_commands_printindex'} = {
                           'text' => 'Instance Variable'
                         }
                       ],
-                      'parent' => undef,
                       'type' => 'bracketed_def_content'
                     }
                   ],

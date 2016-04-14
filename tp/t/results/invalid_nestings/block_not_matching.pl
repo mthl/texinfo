@@ -93,7 +93,6 @@ $result_trees{'block_not_matching'} = {
                 'category',
                 {
                   'contents' => [],
-                  'parent' => {},
                   'type' => 'bracketed_def_content'
                 }
               ],
@@ -624,7 +623,6 @@ $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'co
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0];
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
-$result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0];

@@ -2017,7 +2017,6 @@ $result_trees{'commands_and_spaces'} = {
                       'extra' => {
                         'spaces_before_argument' => {}
                       },
-                      'parent' => {},
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -2035,7 +2034,6 @@ $result_trees{'commands_and_spaces'} = {
                       'extra' => {
                         'spaces_before_argument' => {}
                       },
-                      'parent' => {},
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -2053,7 +2051,6 @@ $result_trees{'commands_and_spaces'} = {
                       'extra' => {
                         'spaces_before_argument' => {}
                       },
-                      'parent' => {},
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -2071,7 +2068,6 @@ $result_trees{'commands_and_spaces'} = {
                       'extra' => {
                         'spaces_before_argument' => {}
                       },
-                      'parent' => {},
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -2089,7 +2085,6 @@ $result_trees{'commands_and_spaces'} = {
                       'extra' => {
                         'spaces_before_argument' => {}
                       },
-                      'parent' => {},
                       'type' => 'bracketed_def_content'
                     }
                   ]
@@ -2622,19 +2617,14 @@ $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'};
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'extra'}{'spaces_before_argument'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[0];
-$result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[2][1]{'contents'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0]{'contents'}[3]{'contents'};
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[2][1]{'extra'}{'spaces_before_argument'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0]{'contents'}[3]{'contents'}[0];
-$result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[2][1]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[4][1]{'contents'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0]{'contents'}[5]{'contents'};
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[4][1]{'extra'}{'spaces_before_argument'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0]{'contents'}[5]{'contents'}[0];
-$result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[4][1]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[6][1]{'contents'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0]{'contents'}[7]{'contents'};
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[6][1]{'extra'}{'spaces_before_argument'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0]{'contents'}[7]{'contents'}[0];
-$result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[6][1]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[8][1]{'contents'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0]{'contents'}[9]{'contents'};
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[8][1]{'extra'}{'spaces_before_argument'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0]{'contents'}[9]{'contents'}[0];
-$result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[8][1]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'args'}[0];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'def_args'}[2][1];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[44]{'contents'}[0];

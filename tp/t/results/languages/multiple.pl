@@ -105,7 +105,6 @@ $result_trees{'multiple'} = {
                               'text' => 'Variable d\'instance'
                             }
                           ],
-                          'parent' => undef,
                           'type' => 'bracketed_def_content'
                         }
                       ],
@@ -379,7 +378,6 @@ $result_trees{'multiple'} = {
                           'text' => 'Variable d\'instance'
                         }
                       ],
-                      'parent' => undef,
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -626,7 +624,6 @@ $result_trees{'multiple'} = {
                           'text' => 'Instance Variable'
                         }
                       ],
-                      'parent' => undef,
                       'type' => 'bracketed_def_content'
                     }
                   ],

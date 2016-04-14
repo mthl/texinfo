@@ -132,7 +132,6 @@ $result_trees{'simple'} = {
                           'text' => 'Variable d\'instance'
                         }
                       ],
-                      'parent' => undef,
                       'type' => 'bracketed_def_content'
                     }
                   ],

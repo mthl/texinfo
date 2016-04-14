@@ -767,7 +767,6 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
                           'text' => 'Instance Variable'
                         }
                       ],
-                      'parent' => undef,
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -1139,7 +1138,6 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
                           'text' => 'Instance Variable'
                         }
                       ],
-                      'parent' => undef,
                       'type' => 'bracketed_def_content'
                     }
                   ],
@@ -1460,7 +1458,6 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
                           'text' => 'Variable d\'instance'
                         }
                       ],
-                      'parent' => undef,
                       'type' => 'bracketed_def_content'
                     }
                   ],

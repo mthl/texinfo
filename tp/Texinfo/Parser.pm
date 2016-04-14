@@ -2326,7 +2326,6 @@ sub _next_bracketed_or_word($$)
     my $bracketed = shift @{$contents};
     _isolate_last_space($self, $bracketed, 'empty_space_at_end_def_bracketed');
     my $bracketed_def_content = { 'contents' => $bracketed->{'contents'},
-                                  'parent' => $bracketed->{'parent'},
                                   'type' => 'bracketed_def_content', };
     if ($bracketed->{'extra'} and $bracketed->{'extra'}->{'spaces_before_argument'}) {
       $bracketed_def_content->{'extra'}->{'spaces_before_argument'}
