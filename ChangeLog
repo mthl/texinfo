@@ -1,3 +1,11 @@
+2016-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\scanmacro): Set catcode of @ to 0 so that 
+	@-commands in macro expansions aren't printed literally in an 
+	index, where \ is the escape character.
+	(\tex, \printindex): Don't set \escapechar.
+	Broken formatting reported by Christophe Rhodes and Norbert Preining.
+
 2016-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_node_manual): Move implementation 
