@@ -1702,6 +1702,7 @@ $result_trees{'image_inline_or_not'} = {
             ],
             'caption' => {},
             'end_command' => {},
+            'float_section' => {},
             'node_content' => [
               {}
             ],
@@ -1714,7 +1715,6 @@ $result_trees{'image_inline_or_not'} = {
               'normalized' => 'F'
             }
           },
-          'float_section' => {},
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 49,
@@ -2038,10 +2038,10 @@ $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'extra'}{'blo
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'extra'}{'block_command_line_contents'}[1][0] = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'args'}[1]{'contents'}[0];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'extra'}{'caption'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'contents'}[4];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'contents'}[6];
+$result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'extra'}{'float_section'} = $result_trees{'image_inline_or_not'}{'contents'}[4];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'args'}[1]{'contents'}[0];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'extra'}{'type'}{'content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'args'}[0]{'contents'}[1];
-$result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'float_section'} = $result_trees{'image_inline_or_not'}{'contents'}[4];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'contents'}[4]{'parent'} = $result_trees{'image_inline_or_not'}{'contents'}[4];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'image_inline_or_not'}{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'image_inline_or_not'}{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'image_inline_or_not'}{'contents'}[4]{'args'}[0]{'contents'}[0];
@@ -2300,6 +2300,12 @@ $result_floats{'image_inline_or_not'} = {
             'text_arg' => 'float'
           }
         },
+        'float_section' => {
+          'cmdname' => 'chapter',
+          'extra' => {},
+          'level' => 1,
+          'number' => 1
+        },
         'normalized' => 'g',
         'type' => {
           'content' => [
@@ -2309,12 +2315,6 @@ $result_floats{'image_inline_or_not'} = {
           ],
           'normalized' => 'F'
         }
-      },
-      'float_section' => {
-        'cmdname' => 'chapter',
-        'extra' => {},
-        'level' => 1,
-        'number' => 1
       },
       'number' => '1.1'
     }
