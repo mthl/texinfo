@@ -125,8 +125,6 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
 
       // isolate_last_space (bracketed, ET_empty_space_at_end_def_bracketed);
 
-      /* TODO: Why do we need the parent ? */
-      returned->parent = bracketed->parent;
       returned->contents = bracketed->contents;
       returned->parent_type = route_not_in_tree;
 

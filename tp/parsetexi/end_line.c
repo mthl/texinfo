@@ -1000,8 +1000,8 @@ end_line_starting_block (ELEMENT *current)
         }
       floats_list[floats_number].type = type;
       floats_list[floats_number++].element = f;
-      // set 'float_section' directly
-      // on $float.
+      if (current_section)
+        add_extra_element (f, "float_section", current_section);
     }
   current = current->parent; //2965
   //counter_pop (&count_remaining_args);

@@ -35,6 +35,8 @@ register_label (ELEMENT *current, NODE_SPEC_EXTRA *label)
 
   // 2494 TODO: check whether previously defined
 
+  if (!normalized)
+    return;
   if (labels_number == labels_space)
     {
       labels_space += 1;

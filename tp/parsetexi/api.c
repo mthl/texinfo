@@ -184,7 +184,7 @@ element_to_perl_hash (ELEMENT *e)
       e->hv = newHV ();
     }
 
-  if (e->parent && e->parent_type != route_not_in_tree)
+  if (e->parent) // && e->parent_type != route_not_in_tree)
     {
       if (!e->parent->hv)
         e->parent->hv = newHV ();
