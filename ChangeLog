@@ -1,5 +1,17 @@
 2016-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_end_line),
+	* tp/Texinfo/Structuring.pm (number_floats): Set
+	$float->{'extra'}->{'float_section'} instead of
+	$float->{'float_section'}, where $float is a @float element.
+
+2016-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_next_bracketed_or_word): Don't set 
+	parent field on created bracketed_def_content element.
+
+2016-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\scanmacro): Set catcode of @ to 0 so that 
 	@-commands in macro expansions aren't printed literally in an 
 	index, where \ is the escape character.

@@ -1350,8 +1350,8 @@ sub number_floats($)
                or !defined($float->{'extra'}->{'normalized'}));
       $float_index++;
       my $number;
-      if ($float->{'float_section'}) {
-        my $up = $float->{'float_section'};
+      if ($float->{'extra'}->{'float_section'}) {
+        my $up = $float->{'extra'}->{'float_section'};
         while ($up->{'section_up'} 
                #and $command_structuring_level{$up->{'cmdname'}} 
                and defined($up->{'section_up'}->{'cmdname'})
