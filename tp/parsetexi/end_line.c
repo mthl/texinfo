@@ -221,22 +221,24 @@ parse_line_command_args (ELEMENT *line_command)
   line_args = new_element (ET_NONE);
 
   cmd = line_command->cmd;
-  if (arg->contents.number == 0)
-    {
-      /*command_error (line_command, "@%s missing argument",
-                      command_name (cmd));*/
-      return 0;
-    }
 
+  /* Find the argument, and check there is only one. */
   i = 0;
   while (i < arg->contents.number)
     {
-      /* TODO: Ignore all the elements checked in 
-         trim_spaces_comment_from_content. */
+      /* Ignore all the elements checked
+         in trim_spaces_comment_from_content.  */
+      enum element_type t;
+      t = contents_child_by_index(arg, i)->type;
 
-      if (contents_child_by_index(arg, i)->type
-            == ET_empty_spaces_after_command
-          || contents_child_by_index(arg, i)->type == ET_spaces_at_end)
+      if (t == ET_empty_spaces_after_command
+          || t == ET_empty_spaces_before_argument
+          || t == ET_empty_space_at_end_def_bracketed
+          || t == ET_empty_spaces_after_close_brace
+          || t == ET_spaces_at_end
+          || t == ET_space_at_end_block_command
+          || contents_child_by_index(arg, i)->cmd == CM_c
+          || contents_child_by_index(arg, i)->cmd == CM_comment)
         {
           i++;
           continue;
@@ -256,7 +258,7 @@ parse_line_command_args (ELEMENT *line_command)
         }
     }
 
-  if (!argarg)
+  if (!argarg || argarg->text.end == 0)
     {
       command_error (line_command, "@%s missing argument", command_name(cmd));
       add_extra_string (line_command, "missing_argument", "1");

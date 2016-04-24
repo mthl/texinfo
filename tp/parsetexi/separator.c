@@ -349,6 +349,8 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           debug ("FOR PARENT ... command_as_argument_braces ...");
           if (!current->parent->type)
             current->parent->type = ET_command_as_argument;
+          add_extra_element (current->parent->parent->parent,
+                             "command_as_argument", current->parent);
         }
       //register_global_command ();
 
