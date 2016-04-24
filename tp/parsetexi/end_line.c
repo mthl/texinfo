@@ -1364,18 +1364,20 @@ end_line_misc_line (ELEMENT *current)
     {
       int i;
       ELEMENT *arg;
-      ELEMENT *first_arg;
 
       NODE_SPEC_EXTRA **nodes_manuals;
 
-      /* Construct 'nodes_manuals' array.  This is an 'extra' reference to 
-         an array that doesn't exist anywhere else. */
-      nodes_manuals = malloc (sizeof (NODE_SPEC_EXTRA *) * 2);
-      nodes_manuals[1] = 0;
+      /* Construct 'nodes_manuals' array.  Maximum of four elements
+         (node name, up, prev, next). */
+      nodes_manuals = malloc (sizeof (NODE_SPEC_EXTRA *) * 5);
 
-      // TODO: Add the other args to @node as well, if they were given
-      first_arg = current->args.list[0];
-      nodes_manuals[0] = parse_node_manual (first_arg);
+      for (i = 0; i < current->args.number && i < 4; i++)
+        {
+          arg = current->args.list[i];
+          nodes_manuals[i] = parse_node_manual (arg);
+        }
+      nodes_manuals[i] = 0;
+
       add_extra_node_spec_array (current, "nodes_manuals", nodes_manuals);
 
       /* Also set 'normalized' here.  The normalized labels are actually 

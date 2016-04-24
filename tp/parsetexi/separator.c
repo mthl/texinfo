@@ -264,7 +264,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
         {
           // 5033
           /* @inline* always have end spaces considered as normal text */
-          if (!command_flags(current->parent) & CF_inline)
+          if (!(command_flags(current->parent) & CF_inline))
             isolate_last_space (current, 0);
           register_command_arg (current, "brace_command_contents");
           remove_empty_content_arguments (current);
