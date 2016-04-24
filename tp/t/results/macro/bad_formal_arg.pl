@@ -48,10 +48,6 @@ $result_trees{'bad_formal_arg'} = {
       'extra' => {
         'arg_line' => ' bad  { , not_empty}
 ',
-        'args_index' => {
-          '' => 0,
-          'not_empty' => 1
-        },
         'invalid_syntax' => 1,
         'spaces_after_command' => {
           'extra' => {
@@ -112,10 +108,6 @@ $result_trees{'bad_formal_arg'} = {
       'extra' => {
         'arg_line' => ' badspace{first, in 2arg}
 ',
-        'args_index' => {
-          'first' => 0,
-          'in 2arg' => 1
-        },
         'invalid_syntax' => 1,
         'spaces_after_command' => {
           'extra' => {
@@ -197,9 +189,6 @@ $result_trees{'bad_formal_arg'} = {
       'extra' => {
         'arg_line' => ' abar {:::}
 ',
-        'args_index' => {
-          ':::' => 0
-        },
         'invalid_syntax' => 1,
         'spaces_after_command' => {
           'extra' => {

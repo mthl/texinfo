@@ -3828,6 +3828,8 @@ sub _parse_texi($;$)
                                        = $current->{'extra'}->{'args_index'};
                   delete $current->{'extra'}->{'args_index'};
                 }
+              } elsif (defined $current->{'extra'}->{'args_index'}) {
+                delete $current->{'extra'}->{'args_index'};
               }
             }
           }

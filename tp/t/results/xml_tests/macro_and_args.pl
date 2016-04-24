@@ -82,11 +82,6 @@ $result_trees{'macro_and_args'} = {
       'extra' => {
         'arg_line' => ' bad { ggg"@@^_ ff, nnn_b, ccc v}
 ',
-        'args_index' => {
-          'ccc v' => 2,
-          'ggg"@@^_ ff' => 0,
-          'nnn_b' => 1
-        },
         'invalid_syntax' => 1,
         'spaces_after_command' => {
           'extra' => {

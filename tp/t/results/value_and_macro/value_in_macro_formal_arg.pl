@@ -72,10 +72,6 @@ $result_trees{'value_in_macro_formal_arg'} = {
       'extra' => {
         'arg_line' => ' testvalue { arg , the@value{argument} }
 ',
-        'args_index' => {
-          'arg' => 0,
-          'the@value{argument' => 1
-        },
         'invalid_syntax' => 1,
         'spaces_after_command' => {
           'extra' => {

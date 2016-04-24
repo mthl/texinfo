@@ -130,9 +130,6 @@ $result_trees{'bad_argument'} = {
       'extra' => {
         'arg_line' => ' aftername {ggg} more
 ',
-        'args_index' => {
-          'ggg' => 0
-        },
         'invalid_syntax' => 1,
         'spaces_after_command' => {
           'extra' => {
