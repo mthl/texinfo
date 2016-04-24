@@ -77,6 +77,10 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
   macro->cmd = cmd;
   macro->line_nr = line_nr;
 
+  add_extra_string (macro, "arg_line", line);
+  /* FIXME: This extra value isn't used much, so is a candidate for
+     simplification. */
+
   line += strspn (line, whitespace_chars);
   name = read_command_name (&line);
   if (!name)

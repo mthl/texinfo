@@ -234,6 +234,7 @@ element_to_perl_hash (ELEMENT *e)
       || e->type == ET_text_root // FIXME special case
       || e->cmd == CM_image // why image?
       || e->cmd == CM_anchor
+      || e->cmd == CM_macro
       || e->type == ET_menu_entry_name
       || e->type == ET_brace_command_arg
       || e->cmd == CM_TeX
