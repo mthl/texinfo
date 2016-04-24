@@ -133,8 +133,10 @@ sub parser (;$$)
   $parser->{'gettext'} = $parser_default_configuration{'gettext'};
   $parser->{'pgettext'} = $parser_default_configuration{'pgettext'};
 
-  wipe_values ();
-  init_index_commands ();
+  ## wipe_values ();
+  ## init_index_commands ();
+  ## init_floats ();
+  reset_parser ();
   # fixme: these are overwritten immediately after
   if (defined($conf)) {
     foreach my $key (keys (%$conf)) {

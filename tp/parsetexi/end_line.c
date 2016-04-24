@@ -1239,7 +1239,7 @@ end_line_misc_line (ELEMENT *current)
     }
   else if (arg_type == MISC_text) /* 3118 */
     {
-      char *text;
+      char *text = 0;
      
       /* argument string has to be parsed as Texinfo. This calls convert in 
          Common/Text.pm on the first element of current->args. */
@@ -1249,9 +1249,23 @@ end_line_misc_line (ELEMENT *current)
 
       // TODO: Convert properly.
       if (current->args.number > 0)
-        text = text_convert (current->args.list[0]);
-      else
-        text = "foo";
+        {
+          int i;
+          ELEMENT *arg = current->args.list[0];
+          for (i = 0; i < arg->contents.number; i++)
+            {
+              ELEMENT *e = arg->contents.list[i];
+              if (e->type != ET_empty_spaces_after_command
+                  && e->type != ET_spaces_at_end
+                  && e->text.end > 0)
+                {
+                  text = e->text.text;
+                  break;
+                }
+            }
+        }
+      if (!text)
+        text = "";
 
       if (!text || !strcmp (text, ""))
         {

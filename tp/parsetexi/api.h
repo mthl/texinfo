@@ -6,6 +6,7 @@ ELEMENT *get_root (void);
 char *element_type_name (ELEMENT *element);
 int num_contents_children (ELEMENT *e);
 int num_args_children (ELEMENT *e);
+void reset_parser (void);
 
 //HV *build_global_info (void);
 

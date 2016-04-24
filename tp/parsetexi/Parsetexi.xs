@@ -112,3 +112,6 @@ build_index_data ()
 HV *
 build_global_info ()
 
+void
+reset_parser ()
+

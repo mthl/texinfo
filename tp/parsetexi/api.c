@@ -37,12 +37,19 @@
 ELEMENT *Root;
 
 static void
-reset_parser ()
+reset_floats ()
+{
+  floats_number = 0;
+}
+
+void
+reset_parser (void)
 {
   wipe_user_commands ();
   init_index_commands ();
   wipe_errors ();
   reset_context_stack ();
+  reset_floats ();
   current_node = current_section = 0;
 }
 
