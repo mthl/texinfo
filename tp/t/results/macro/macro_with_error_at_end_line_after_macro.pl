@@ -37,9 +37,6 @@ $result_trees{'macro_with_error_at_end_line_after_macro'} = {
       'extra' => {
         'arg_line' => ' witherror{string}
 ',
-        'args_index' => {
-          'string' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

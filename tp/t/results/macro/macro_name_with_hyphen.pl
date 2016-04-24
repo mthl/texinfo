@@ -42,10 +42,6 @@ $result_trees{'macro_name_with_hyphen'} = {
       'extra' => {
         'arg_line' => ' macro-one {arg-one, arg2}
 ',
-        'args_index' => {
-          'arg-one' => 0,
-          'arg2' => 1
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

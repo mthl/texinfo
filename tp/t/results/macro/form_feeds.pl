@@ -42,10 +42,6 @@ $result_trees{'form_feeds'} = {
       'extra' => {
         'arg_line' => ' mymacro{a, b}
 ',
-        'args_index' => {
-          'a' => 0,
-          'b' => 1
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -100,9 +96,6 @@ $result_trees{'form_feeds'} = {
       'extra' => {
         'arg_line' => ' oneargmacro{c}
 ',
-        'args_index' => {
-          'c' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

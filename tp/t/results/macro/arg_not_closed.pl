@@ -37,9 +37,6 @@ $result_trees{'arg_not_closed'} = {
       'extra' => {
         'arg_line' => ' foo {arg}
 ',
-        'args_index' => {
-          'arg' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

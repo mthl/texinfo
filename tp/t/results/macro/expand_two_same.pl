@@ -43,9 +43,6 @@ $result_trees{'expand_two_same'} = {
       'extra' => {
         'arg_line' => ' macrotwo { arg }
 ',
-        'args_index' => {
-          'arg' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

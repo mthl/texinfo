@@ -107,9 +107,6 @@ $result_trees{'test_allowcodebreaks'} = {
           'extra' => {
             'arg_line' => ' testallowcodebreakspara {nr}
 ',
-            'args_index' => {
-              'nr' => 0
-            },
             'spaces_after_command' => {
               'extra' => {
                 'command' => {}

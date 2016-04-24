@@ -48,10 +48,6 @@ $result_trees{'too_much_args'} = {
       'extra' => {
         'arg_line' => ' twoargs {first, second}
 ',
-        'args_index' => {
-          'first' => 0,
-          'second' => 1
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

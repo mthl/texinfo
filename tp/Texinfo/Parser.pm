@@ -2144,7 +2144,7 @@ sub _expand_macro_body($$$$) {
 
   my $macrobody = $macro->{'macrobody'};
   my $args_total = scalar(@{$macro->{'element'}->{'args'}}) -1;
-  my $args_index = $macro->{'element'}->{'extra'}->{'args_index'};
+  my $args_index = $macro->{'args_index'};
 
   my $i;
   for ($i=0; $i<=$args_total; $i++) {
@@ -3817,10 +3817,18 @@ sub _parse_texi($;$)
                                   "redefining Texinfo language command: \@%s"), 
                                           $name), $current->{'line_nr'});
               }
-              $self->{'macros'}->{$name} = {
-                'element' => $current,
-                'macrobody' => $macrobody
-              } unless ($current->{'extra'}->{'invalid_syntax'});
+              if (!$current->{'extra'}->{'invalid_syntax'}) {
+                $self->{'macros'}->{$name} = {
+                  'element' => $current,
+                  'macrobody' => $macrobody
+                };
+                # Don't need 'args_index' in final tree.
+                if (defined $current->{'extra'}->{'args_index'}) {
+                  $self->{'macros'}->{$name}->{'args_index'}
+                                       = $current->{'extra'}->{'args_index'};
+                  delete $current->{'extra'}->{'args_index'};
+                }
+              }
             }
           }
           $current = $current->{'parent'};
@@ -6426,8 +6434,7 @@ Is associated to a macro definition element
    'args' => [{'text' => 'mymacro', 'type' => 'macro_name'},
               {'text' => 'arg', 'type' => 'macro_arg}],
    'contents' => [{'text' => "coucou \arg\ after arg\n", 'type' => 'raw'}],
-   'extra' => {'arg_line' => " mymacro{arg}\n",
-               'macrobody' => "coucou \arg\ after arg\n"}}
+   'extra' => {'arg_line' => " mymacro{arg}\n", }}
 
 = item merged_indices
 
@@ -6998,10 +7005,7 @@ the command and the argument.
 =item C<@macro>
 
 I<invalid_syntax> is set if there was an error on the C<@macro>
-line.  The key I<args_index> associates format arguments with
-their index on the @macro line formal arguments definition.
-The I<macrobody> holds the @macro body.  I<arg_line> holds the
-line after C<@macro>.
+line.  I<arg_line> holds the line after C<@macro>.
 
 =item C<@node>
 

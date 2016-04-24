@@ -42,10 +42,6 @@ $result_trees{'implicit_quoting_recursion'} = {
       'extra' => {
         'arg_line' => ' cat{a,b}
 ',
-        'args_index' => {
-          'a' => 0,
-          'b' => 1
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

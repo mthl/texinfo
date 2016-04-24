@@ -37,9 +37,6 @@ $result_trees{'expansion_order'} = {
       'extra' => {
         'arg_line' => ' bidule{arg}
 ',
-        'args_index' => {
-          'arg' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

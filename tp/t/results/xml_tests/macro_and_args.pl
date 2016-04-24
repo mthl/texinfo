@@ -30,10 +30,6 @@ $result_trees{'macro_and_args'} = {
       'extra' => {
         'arg_line' => ' good { aaa, 2b-bb}
 ',
-        'args_index' => {
-          '2b-bb' => 1,
-          'aaa' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

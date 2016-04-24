@@ -37,9 +37,6 @@ $result_trees{'macro_in_ifset'} = {
       'extra' => {
         'arg_line' => ' macroone {arg}
 ',
-        'args_index' => {
-          'arg' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

@@ -129,9 +129,6 @@ $result_trees{'arg_body_expansion_order'} = {
       'extra' => {
         'arg_line' => ' redefineothermacro {arg}
 ',
-        'args_index' => {
-          'arg' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

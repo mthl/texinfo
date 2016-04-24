@@ -86,9 +86,6 @@ $result_trees{'macro_name_with_digit'} = {
       'extra' => {
         'arg_line' => ' macro11 {arg}
 ',
-        'args_index' => {
-          'arg' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

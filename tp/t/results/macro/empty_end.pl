@@ -37,9 +37,6 @@ $result_trees{'empty_end'} = {
       'extra' => {
         'arg_line' => ' foo {aaa, }
 ',
-        'args_index' => {
-          'aaa' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

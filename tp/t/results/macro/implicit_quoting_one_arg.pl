@@ -43,9 +43,6 @@ $result_trees{'implicit_quoting_one_arg'} = {
       'extra' => {
         'arg_line' => ' FIXME{a}
 ',
-        'args_index' => {
-          'a' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

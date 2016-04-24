@@ -98,9 +98,6 @@ $result_trees{'two_macros_on_a_line'} = {
       'extra' => {
         'arg_line' => ' mymacrowithargs{arg}
 ',
-        'args_index' => {
-          'arg' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

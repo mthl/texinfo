@@ -49,9 +49,6 @@ $result_trees{'ifset_in_macro_set'} = {
       'extra' => {
         'arg_line' => ' note {arg}
 ',
-        'args_index' => {
-          'arg' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

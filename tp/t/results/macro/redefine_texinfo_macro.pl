@@ -37,9 +37,6 @@ $result_trees{'redefine_texinfo_macro'} = {
       'extra' => {
         'arg_line' => ' code{arg}
 ',
-        'args_index' => {
-          'arg' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

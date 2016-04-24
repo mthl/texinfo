@@ -37,9 +37,6 @@ $result_trees{'complex_argument'} = {
       'extra' => {
         'arg_line' => ' macrotwo{arg}
 ',
-        'args_index' => {
-          'arg' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -172,10 +169,6 @@ $result_trees{'complex_argument'} = {
       'extra' => {
         'arg_line' => ' macrothree{text, arg}
 ',
-        'args_index' => {
-          'arg' => 1,
-          'text' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -473,9 +466,6 @@ $result_trees{'complex_argument'} = {
       'extra' => {
         'arg_line' => ' macroseven {truc}
 ',
-        'args_index' => {
-          'truc' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

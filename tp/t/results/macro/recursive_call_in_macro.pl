@@ -37,9 +37,6 @@ $result_trees{'recursive_call_in_macro'} = {
       'extra' => {
         'arg_line' => ' anorecurse{arg}
 ',
-        'args_index' => {
-          'arg' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

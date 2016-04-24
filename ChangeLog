@@ -1,5 +1,13 @@
 2016-04-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_expand_macro_body, _parse_texi):
+	Place 'args_index' hash as a value in the elements of
+	$self->{'macro'}, instead of being stored as an 'extra' value.
+	This change is because the 'arg_index' hash is not used outside 
+	of Parser.pm.
+
+2016-04-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_expand_macro_arguments)
 	(_expand_macro_body, _end_line <insertcopying>, parse_texi):
 	Make $self->{'macros'} hash contain hashes which refer to the 

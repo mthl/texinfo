@@ -72,10 +72,6 @@ $result_trees{'comma_value_in_macro_arg'} = {
       'extra' => {
         'arg_line' => ' macro1 { arg1 , arg2 }
 ',
-        'args_index' => {
-          'arg1' => 0,
-          'arg2' => 1
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

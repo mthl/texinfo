@@ -37,9 +37,6 @@ $result_trees{'macro_expands_to_empty'} = {
       'extra' => {
         'arg_line' => ' foo {arg}
 ',
-        'args_index' => {
-          'arg' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

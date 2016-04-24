@@ -37,9 +37,6 @@ $result_trees{'macro_one_arg_end_of_file'} = {
       'extra' => {
         'arg_line' => ' onearg{arg}
 ',
-        'args_index' => {
-          'arg' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

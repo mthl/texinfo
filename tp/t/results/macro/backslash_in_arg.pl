@@ -77,9 +77,6 @@ $result_trees{'backslash_in_arg'} = {
           'extra' => {
             'arg_line' => ' funindex {TEXT}
 ',
-            'args_index' => {
-              'TEXT' => 0
-            },
             'spaces_after_command' => {
               'extra' => {
                 'command' => {}

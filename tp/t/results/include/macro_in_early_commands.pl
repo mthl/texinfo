@@ -82,9 +82,6 @@ $result_trees{'macro_in_early_commands'} = {
           'extra' => {
             'arg_line' => ' end-file-name {ext}
 ',
-            'args_index' => {
-              'ext' => 0
-            },
             'spaces_after_command' => {
               'extra' => {
                 'command' => {}

@@ -42,10 +42,6 @@ $result_trees{'protect_in_body'} = {
       'extra' => {
         'arg_line' => ' macroone { arg1 , arg2 }
 ',
-        'args_index' => {
-          'arg1' => 0,
-          'arg2' => 1
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

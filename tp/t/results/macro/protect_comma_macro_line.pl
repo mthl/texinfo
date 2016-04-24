@@ -55,9 +55,6 @@ $result_trees{'protect_comma_macro_line'} = {
       'extra' => {
         'arg_line' => ' macrotwo { arg }
 ',
-        'args_index' => {
-          'arg' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

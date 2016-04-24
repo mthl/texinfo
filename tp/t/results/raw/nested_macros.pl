@@ -87,10 +87,6 @@ $result_trees{'nested_macros'} = {
       'extra' => {
         'arg_line' => ' truc   { arg,  ex}
 ',
-        'args_index' => {
-          'arg' => 0,
-          'ex' => 1
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

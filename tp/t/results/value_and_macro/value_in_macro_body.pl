@@ -67,9 +67,6 @@ $result_trees{'value_in_macro_body'} = {
       'extra' => {
         'arg_line' => ' testvaluebody { arg }
 ',
-        'args_index' => {
-          'arg' => 0
-        },
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
