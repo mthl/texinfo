@@ -907,21 +907,25 @@ end_line_starting_block (ELEMENT *current)
               memcpy (new, e, sizeof (ELEMENT));
               new->type = ET_bracketed_multitable_prototype;
               new->parent = 0;
+              new->extra_number = 0;
               new->parent_type = route_not_in_tree;
               add_to_contents_as_array (prototypes, new);
             }
           else if (e->text.end > 0) // 2893
             {
-              /* TODO: Split the text up by whitespace. */
-
-              if (e->text.text[strspn (e->text.text, whitespace_chars)])
+              /* Split the text up by whitespace. */
+              char *p, *p2;
+              p = e->text.text;
+              while (1)
                 {
                   ELEMENT *new;
-                  new = malloc (sizeof (ELEMENT));
-                  memcpy (new, e, sizeof (ELEMENT));
-                  new->type = ET_row_prototype;
-                  new->parent = 0;
+                  p2 = p + strspn (p, whitespace_chars);
+                  if (!*p2)
+                    break;
+                  p = p2 + strcspn (p2, whitespace_chars);
+                  new = new_element (ET_row_prototype);
                   new->parent_type = route_not_in_tree;
+                  text_append_n (&new->text, p2, p - p2);
                   add_to_contents_as_array (prototypes, new);
                 }
             }
@@ -937,13 +941,7 @@ end_line_starting_block (ELEMENT *current)
                 }
               else if (e->cmd != CM_c && e->cmd != CM_comment)
                 {
-                  /* Copy element. */
-                  ELEMENT *new;
-                  new = malloc (sizeof (ELEMENT));
-                  memcpy (new, e, sizeof (ELEMENT));
-                  new->parent = 0;
-                  new->parent_type = route_not_in_tree;
-                  add_to_contents_as_array (prototypes, new);
+                  add_to_contents_as_array (prototypes, e);
                 }
             }
         }

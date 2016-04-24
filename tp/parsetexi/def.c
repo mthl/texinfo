@@ -122,18 +122,22 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
     {
       ELEMENT *bracketed = remove_from_contents (e, 0);
       ELEMENT *returned = new_element (ET_bracketed_def_content);
+      KEY_PAIR *k;
 
-      // isolate_last_space (bracketed, ET_empty_space_at_end_def_bracketed);
+      isolate_last_space (bracketed, ET_empty_space_at_end_def_bracketed);
 
       returned->contents = bracketed->contents;
       returned->parent_type = route_not_in_tree;
+      k = lookup_extra_key (bracketed, "spaces_before_argument");
+      if (k)
+        add_extra_element (returned, "spaces_before_argument", k->value);
 
       return returned;
     }
   else if (e->contents.list[0]->cmd != CM_NONE) // 2363
     {
       ret = remove_from_contents (e, 0);
-      //ret->parent = 0;
+      ret->parent = 0;
       return ret;
     }
   else
