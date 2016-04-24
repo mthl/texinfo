@@ -41,6 +41,48 @@ item_container_parent (ELEMENT *current)
   return 0;
 }
 
+// 1352
+/* Check that there are no text holding environments (currently
+   checking only paragraphs and preformatted) in contents. */
+static int
+check_no_text (ELEMENT *current)
+{
+  int after_paragraph = 0;
+  int i, j;
+  for (i = 0; i < current->contents.number; i++)
+    {
+      enum element_type t;
+      ELEMENT *f;
+      f = current->contents.list[i];
+      t = f->type;
+      if (t == ET_paragraph)
+        {
+          after_paragraph = 1;
+          break;
+        }
+      else if (t == ET_preformatted
+               || t == ET_rawpreformatted)
+        {
+          for (j = 0; j < f->contents.number; j++)
+            {
+              ELEMENT *g = f->contents.list[j];
+              if ((g->text.end > 0
+                   && g->text.text[strspn (g->text.text, whitespace_chars)])
+                  || (g->cmd && g->cmd != CM_c
+                      && g->cmd != CM_comment
+                      && g->type != ET_index_entry_command))
+                {
+                  after_paragraph = 1;
+                  break;
+                }
+            }
+          if (after_paragraph)
+            break;
+        }
+    }
+  return after_paragraph;
+}
+
 // 1056
 /* Record the information from a command of global effect. */
 static int
@@ -395,6 +437,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
               enum command_id base_command;
               char *base_name;
               int base_len;
+              int after_paragraph;
 
               /* Find the command with "x" stripped from the end, e.g.
                  deffnx -> deffn. */
@@ -411,7 +454,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                 abort ();
               add_extra_string (misc, "def_command", base_name);
 
-              //check_no_text ();
+              after_paragraph = check_no_text (current);
               push_context (ct_def);
               misc->type = ET_def_line; // 4553
               if (current->cmd == base_command)
@@ -422,10 +465,10 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                   gather_def_item (current, cmd);
                   add_to_element_contents (current, e);
                 }
-              else
+              if (current->cmd != base_command || after_paragraph)
                 {
                   // error - deffnx not after deffn
-                  line_error ("must be after @%s to use @%s",
+                  line_error ("must be after `@%s' to use `@%s'",
                                command_name(base_command),
                                command_name(cmd));
                   add_extra_string (misc, "not_after_command", "1");

@@ -127,12 +127,10 @@ gather_previous_item (ELEMENT *current, enum command_id next_command)
     }
   else /* Gathering ET_inter_item between @item and @itemx */ // 1457
     {
-      /* TODO
-      // Text between @item and @itemx is only allowed in a few cases:
-      // comments, empty lines, or index entries
+      /* Text between @item and @itemx is only allowed in a few cases:
+         comments, empty lines, or index entries. */
       if (check_no_text (gathered))
         line_error ("@itemx must follow @item");
-      */
 
       if (gathered->contents.number > 0)
         add_to_element_contents (current, gathered);
