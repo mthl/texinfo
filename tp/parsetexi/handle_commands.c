@@ -541,6 +541,47 @@ handle_misc_command (ELEMENT *current, char **line_inout,
             push_context (ct_line);
         }
       start_empty_line_after_command (current, &line, misc); //4621
+
+      if (cmd == CM_indent || cmd == CM_noindent)
+        {
+          /* Start a new paragraph if not in one already. */
+          int spaces;
+          enum element_type t;
+          ELEMENT *paragraph;
+
+          /* Check if if we should change an ET_empty_line_after_command
+             element to ET_empty_spaces_after_command by looking ahead
+             to see what comes next. */
+#if 0
+          if (!strchr (line, '\n'))
+            {
+              new_line ();
+            }
+#endif
+          spaces = strspn (line, whitespace_chars);
+          if (spaces > 0)
+            {
+              char saved = line[spaces];
+              current = merge_text (current, line);
+              line[spaces] = saved;
+              line += spaces;
+            }
+          if (*line
+              && last_contents_child(current)->type
+                == ET_empty_line_after_command)
+            {
+              last_contents_child(current)->type
+                                              = ET_empty_spaces_after_command;
+            }
+          paragraph = begin_paragraph (current);
+          if (paragraph)
+            current = paragraph;
+          if (!*line)
+            {
+              *status = 1; /* Get a new line. */
+              goto funexit;
+            }
+        }
     }
 
   /* line 4622 */
@@ -548,6 +589,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                                      nesting */
   register_global_command (cmd, misc);
 
+funexit:
   *line_inout = line;
   return current;
 }
