@@ -40,8 +40,6 @@ $result_trees{'macro_in_ifset'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => '@end ifset
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

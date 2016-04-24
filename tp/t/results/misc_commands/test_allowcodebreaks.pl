@@ -110,13 +110,6 @@ $result_trees{'test_allowcodebreaks'} = {
             'args_index' => {
               'nr' => 0
             },
-            'macrobody' => 'Out of code --- out-of-code.
-@code{1aaa} @code{2aaa-} @code{-3bbb} @code{4aaa-bbb} 
-@code{ 5aaa-bb} @code{6aaa-bb } @code{ccc 7aaa-bbb} @code{ccc 8aaa-bbb ddd}
-@code{9aaa-bbb rrr_vv}
-@samp{fff-- --- minus@minus{}b aa-tt@\'eff_gg aa@r{r-oman} 
-anc-hor@anchor{A node\\nr\\}}
-',
             'spaces_after_command' => {
               'extra' => {
                 'command' => {}
@@ -183,11 +176,6 @@ anc-hor@anchor{A node\\nr\\}}
           ],
           'extra' => {
             'arg_line' => ' testallowcodebreaksexample{}
-',
-            'macrobody' => '
-@example
-@code{in-example}
-@end example
 ',
             'spaces_after_command' => {
               'extra' => {

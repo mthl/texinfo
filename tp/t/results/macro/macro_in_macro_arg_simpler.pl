@@ -32,8 +32,6 @@ $result_trees{'macro_in_macro_arg_simpler'} = {
       'extra' => {
         'arg_line' => ' macrooneone
 ',
-        'macrobody' => 'a, macro2
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -103,9 +101,6 @@ $result_trees{'macro_in_macro_arg_simpler'} = {
           'arg' => 1,
           'text' => 0
         },
-        'macrobody' => '\\text\\
-&&&& \\arg\\
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

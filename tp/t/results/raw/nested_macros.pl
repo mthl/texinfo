@@ -91,13 +91,6 @@ $result_trees{'nested_macros'} = {
           'arg' => 0,
           'ex' => 1
         },
-        'macrobody' => 'in macro \\arg\\
-@macro othermacro 
-other macro
-@end macro
-@macro
-@end macro
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

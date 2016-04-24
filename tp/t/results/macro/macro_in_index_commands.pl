@@ -34,8 +34,6 @@ $result_trees{'macro_in_index_commands'} = {
           'extra' => {
             'arg_line' => ' cp
 ',
-            'macrobody' => 'cp
-',
             'spaces_after_command' => {
               'extra' => {
                 'command' => {}
@@ -79,8 +77,6 @@ $result_trees{'macro_in_index_commands'} = {
           'extra' => {
             'arg_line' => ' fn 
 ',
-            'macrobody' => 'fn
-',
             'spaces_after_command' => {
               'extra' => {
                 'command' => {}
@@ -123,8 +119,6 @@ $result_trees{'macro_in_index_commands'} = {
           ],
           'extra' => {
             'arg_line' => ' syncodeindexcommand 
-',
-            'macrobody' => '@syncodeindex
 ',
             'spaces_after_command' => {
               'extra' => {
@@ -265,8 +259,6 @@ $result_trees{'macro_in_index_commands'} = {
           'extra' => {
             'arg_line' => ' truc 
 ',
-            'macrobody' => 'truc
-',
             'spaces_after_command' => {
               'extra' => {
                 'command' => {}
@@ -379,8 +371,6 @@ $result_trees{'macro_in_index_commands'} = {
           'extra' => {
             'arg_line' => ' trucindexcommand 
 ',
-            'macrobody' => '@trucindex
-',
             'spaces_after_command' => {
               'extra' => {
                 'command' => {}
@@ -429,8 +419,6 @@ $result_trees{'macro_in_index_commands'} = {
           ],
           'extra' => {
             'arg_line' => ' codeidx 
-',
-            'macrobody' => 'codeidx
 ',
             'spaces_after_command' => {
               'extra' => {
@@ -527,8 +515,6 @@ $result_trees{'macro_in_index_commands'} = {
           ],
           'extra' => {
             'arg_line' => ' defcodeindexentry 
-',
-            'macrobody' => 'a @var{index entry} t@\'e @^{@dotless{i}}
 ',
             'spaces_after_command' => {
               'extra' => {

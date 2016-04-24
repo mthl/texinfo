@@ -28,7 +28,6 @@ $result_trees{'no_macrobody'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => '',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

@@ -46,8 +46,6 @@ $result_trees{'form_feeds'} = {
           'a' => 0,
           'b' => 1
         },
-        'macrobody' => 'f \\a\\ n \\b\\
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -105,8 +103,6 @@ $result_trees{'form_feeds'} = {
         'args_index' => {
           'c' => 0
         },
-        'macrobody' => 'g \\c\\ v
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

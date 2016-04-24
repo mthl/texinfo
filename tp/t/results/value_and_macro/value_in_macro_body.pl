@@ -70,8 +70,6 @@ $result_trees{'value_in_macro_body'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => 'result: @emph{\\@value{bodyarg}\\  }
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

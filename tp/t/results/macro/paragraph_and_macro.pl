@@ -20,7 +20,6 @@ $result_trees{'paragraph_and_macro'} = {
       'extra' => {
         'arg_line' => ' aempty
 ',
-        'macrobody' => '',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -70,8 +69,6 @@ $result_trees{'paragraph_and_macro'} = {
       'extra' => {
         'arg_line' => ' aspace
 ',
-        'macrobody' => '   
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -120,8 +117,6 @@ $result_trees{'paragraph_and_macro'} = {
       ],
       'extra' => {
         'arg_line' => ' word
-',
-        'macrobody' => 'a word
 ',
         'spaces_after_command' => {
           'extra' => {

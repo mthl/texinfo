@@ -46,10 +46,6 @@ $result_trees{'test_image'} = {
           'extra' => {
             'arg_line' => ' files-char
 ',
-            'macrobody' => '@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
-
-In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
-',
             'spaces_after_command' => {
               'extra' => {
                 'command' => {}

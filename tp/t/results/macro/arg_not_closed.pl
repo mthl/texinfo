@@ -40,8 +40,6 @@ $result_trees{'arg_not_closed'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => 'foo
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

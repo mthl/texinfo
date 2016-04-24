@@ -46,8 +46,6 @@ $result_trees{'macro_name_with_hyphen'} = {
           'arg-one' => 0,
           'arg2' => 1
         },
-        'macrobody' => 'This \\arg-one\\ and that \\arg2\\.
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

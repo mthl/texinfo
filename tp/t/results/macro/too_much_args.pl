@@ -52,9 +52,6 @@ $result_trees{'too_much_args'} = {
           'first' => 0,
           'second' => 1
         },
-        'macrobody' => 'first arg: \\first\\
-second arg: \\second\\
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

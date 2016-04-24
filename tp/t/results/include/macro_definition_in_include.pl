@@ -32,8 +32,6 @@ $result_trees{'macro_definition_in_include'} = {
       'extra' => {
         'arg_line' => ' themacro
 ',
-        'macrobody' => 'in themacro
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

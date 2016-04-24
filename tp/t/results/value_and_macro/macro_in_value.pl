@@ -44,10 +44,6 @@ $result_trees{'macro_in_value'} = {
       'extra' => {
         'arg_line' => ' ab
 ',
-        'macrobody' => 'a
-
-b
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

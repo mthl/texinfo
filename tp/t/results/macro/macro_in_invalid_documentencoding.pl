@@ -32,8 +32,6 @@ $result_trees{'macro_in_invalid_documentencoding'} = {
       'extra' => {
         'arg_line' => ' badmacro
 ',
-        'macrobody' => 'badm
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

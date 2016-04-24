@@ -20,7 +20,6 @@ $result_trees{'empty_macro_no_arg'} = {
       'extra' => {
         'arg_line' => ' foo
 ',
-        'macrobody' => '',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

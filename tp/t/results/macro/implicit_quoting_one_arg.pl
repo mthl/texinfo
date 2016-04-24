@@ -46,8 +46,6 @@ $result_trees{'implicit_quoting_one_arg'} = {
         'args_index' => {
           'a' => 0
         },
-        'macrobody' => '@strong{FIXME: \\a\\}
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

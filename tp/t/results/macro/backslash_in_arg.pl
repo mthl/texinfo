@@ -80,8 +80,6 @@ $result_trees{'backslash_in_arg'} = {
             'args_index' => {
               'TEXT' => 0
             },
-            'macrobody' => '@findex \\TEXT\\
-',
             'spaces_after_command' => {
               'extra' => {
                 'command' => {}

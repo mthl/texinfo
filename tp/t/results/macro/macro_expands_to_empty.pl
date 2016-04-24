@@ -40,8 +40,6 @@ $result_trees{'macro_expands_to_empty'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => '\\arg\\
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

@@ -2055,6 +2055,7 @@ sub _new_line($$$)
   return ($new_line, $line_nr);
 }
 
+# $MACRO is the element in the tree defining the macro.
 sub _expand_macro_arguments($$$$)
 {
   my $self = shift;
@@ -2134,15 +2135,16 @@ sub _expand_macro_arguments($$$$)
   return ($arguments, $line, $line_nr);
 }
 
+# $MACRO is a member of $self->{'macros'}.
 sub _expand_macro_body($$$$) {
   my $self = shift;
   my $macro = shift;
   my $args = shift;
   my $line_nr = shift;
 
-  my $macrobody = $macro->{'extra'}->{'macrobody'};
-  my $args_total = scalar(@{$macro->{'args'}}) -1;
-  my $args_index = $macro->{'extra'}->{'args_index'};
+  my $macrobody = $macro->{'macrobody'};
+  my $args_total = scalar(@{$macro->{'element'}->{'args'}}) -1;
+  my $args_index = $macro->{'element'}->{'extra'}->{'args_index'};
 
   my $i;
   for ($i=0; $i<=$args_total; $i++) {
@@ -2162,7 +2164,7 @@ sub _expand_macro_body($$$$) {
         } else {
           $self->line_error(sprintf($self->__(
          "\\ in \@%s expansion followed `%s' instead of parameter name or \\"), 
-                             $macro->{'args'}->[0]->{'text'}, $arg), $line_nr);
+             $macro->{'element'}->{'args'}->[0]->{'text'}, $arg), $line_nr);
           $result .= '\\' . $arg;
         }
       }
@@ -3319,11 +3321,11 @@ sub _end_line($$$)
                          {'contents' => \@contents});
             
             #chomp ($body);
-            $self->{'macros'}->{'insertcopying'} = {
+            $self->{'macros'}->{'insertcopying'} =
+            { 'element' => {
                     'args' => [{'text' => 'insertcopying', 'type' => 'macro_name'}],
-                    'cmdname' => 'macro',
-                    'extra' => {'macrobody' => 
-                                 $self->_strip_macrobody_leading_space($body)}
+                    'cmdname' => 'macro', },
+              'macrobody' => $self->_strip_macrobody_leading_space($body)
             };
             $inline_copying = 1;
             print STDERR "INLINE_INSERTCOPYING as macro\n" if ($self->{'DEBUG'});
@@ -3796,7 +3798,7 @@ sub _parse_texi($;$)
                     or !$current->{'parent'}->{'cmdname'} 
                     or ($current->{'parent'}->{'cmdname'} ne 'macro'
                         and $current->{'parent'}->{'cmdname'} ne 'rmacro'))) {
-            $current->{'extra'}->{'macrobody'} = 
+            my $macrobody =
              $self->_strip_macrobody_leading_space(
                Texinfo::Convert::Texinfo::convert({ 'contents' 
                                              => $current->{'contents'} }));
@@ -3808,15 +3810,17 @@ sub _parse_texi($;$)
                                           $name), $current->{'line_nr'});
                 $self->line_warn(sprintf($self->__(
                                    "here is the previous definition of `%s'"), 
-                               $name), $self->{'macros'}->{$name}->{'line_nr'});
+               $name), $self->{'macros'}->{$name}->{'element'}->{'line_nr'});
               }
               if ($all_commands{$name}) {
                 $self->line_warn(sprintf($self->__(
                                   "redefining Texinfo language command: \@%s"), 
                                           $name), $current->{'line_nr'});
               }
-              $self->{'macros'}->{$name} = $current
-                unless ($current->{'extra'}->{'invalid_syntax'});
+              $self->{'macros'}->{$name} = {
+                'element' => $current,
+                'macrobody' => $macrobody
+              } unless ($current->{'extra'}->{'invalid_syntax'});
             }
           }
           $current = $current->{'parent'};
@@ -3921,7 +3925,7 @@ sub _parse_texi($;$)
           $command = $self->{'aliases'}->{$command};
         }
 
-        my $expanded_macro = $self->{'macros'}->{$command};
+        my $expanded_macro = $self->{'macros'}->{$command}->{'element'};
         my $args_number = scalar(@{$expanded_macro->{'args'}}) -1;
         my $arguments = [];
         if ($line =~ s/^\s*{[^\S\f]*//) { # macro with args
@@ -3944,7 +3948,8 @@ sub _parse_texi($;$)
           $arguments = [$line];
           $line = "\n" if ($has_end_of_line);
         }
-        my $expanded = _expand_macro_body ($self, $expanded_macro, 
+        my $expanded = _expand_macro_body ($self,
+                                   $self->{'macros'}->{$command},
                                    $arguments, $line_nr);
         print STDERR "MACROBODY: $expanded".'||||||'."\n" 
            if ($self->{'DEBUG'}); 

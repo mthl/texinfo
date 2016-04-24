@@ -32,8 +32,6 @@ $result_trees{'macro_in_brace_command'} = {
       'extra' => {
         'arg_line' => ' foo
 ',
-        'macrobody' => 'foo-expansion
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -82,8 +80,6 @@ $result_trees{'macro_in_brace_command'} = {
       ],
       'extra' => {
         'arg_line' => ' abar
-',
-        'macrobody' => 'bar-expansion
 ',
         'spaces_after_command' => {
           'extra' => {

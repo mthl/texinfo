@@ -38,8 +38,6 @@ $result_trees{'macro_in_ifset'} = {
       'extra' => {
         'arg_line' => ' truc {}
 ',
-        'macrobody' => 'truc
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

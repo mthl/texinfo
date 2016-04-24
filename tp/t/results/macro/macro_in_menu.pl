@@ -38,8 +38,6 @@ $result_trees{'macro_in_menu'} = {
       'extra' => {
         'arg_line' => ' astar
 ',
-        'macrobody' => '*
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -88,8 +86,6 @@ $result_trees{'macro_in_menu'} = {
       ],
       'extra' => {
         'arg_line' => ' starspaces
-',
-        'macrobody' => '* 
 ',
         'spaces_after_command' => {
           'extra' => {
@@ -140,8 +136,6 @@ $result_trees{'macro_in_menu'} = {
       'extra' => {
         'arg_line' => ' spaces
 ',
-        'macrobody' => '  
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -190,8 +184,6 @@ $result_trees{'macro_in_menu'} = {
       ],
       'extra' => {
         'arg_line' => ' aspace
-',
-        'macrobody' => ' 
 ',
         'spaces_after_command' => {
           'extra' => {
@@ -242,8 +234,6 @@ $result_trees{'macro_in_menu'} = {
       'extra' => {
         'arg_line' => ' twocolon
 ',
-        'macrobody' => '::
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -292,8 +282,6 @@ $result_trees{'macro_in_menu'} = {
       ],
       'extra' => {
         'arg_line' => ' acolon
-',
-        'macrobody' => ':
 ',
         'spaces_after_command' => {
           'extra' => {

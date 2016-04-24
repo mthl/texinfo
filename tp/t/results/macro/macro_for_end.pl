@@ -32,8 +32,6 @@ $result_trees{'macro_for_end'} = {
       'extra' => {
         'arg_line' => ' myend
 ',
-        'macrobody' => '@end
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

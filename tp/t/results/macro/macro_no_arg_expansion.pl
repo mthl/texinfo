@@ -32,8 +32,6 @@ $result_trees{'macro_no_arg_expansion'} = {
       'extra' => {
         'arg_line' => ' testone
 ',
-        'macrobody' => 'res1
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

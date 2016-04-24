@@ -46,8 +46,6 @@ $result_trees{'implicit_quoting_recursion'} = {
           'a' => 0,
           'b' => 1
         },
-        'macrobody' => '\\a\\\\b\\
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

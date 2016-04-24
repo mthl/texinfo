@@ -40,8 +40,6 @@ $result_trees{'empty_end'} = {
         'args_index' => {
           'aaa' => 0
         },
-        'macrobody' => 'in foo
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

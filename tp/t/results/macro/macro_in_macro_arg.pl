@@ -38,8 +38,6 @@ $result_trees{'macro_in_macro_arg'} = {
       'extra' => {
         'arg_line' => ' macroone
 ',
-        'macrobody' => 'a, @macrotwo
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -97,8 +95,6 @@ $result_trees{'macro_in_macro_arg'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => 'hello \\arg\\ after arg
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -168,9 +164,6 @@ $result_trees{'macro_in_macro_arg'} = {
           'arg' => 1,
           'text' => 0
         },
-        'macrobody' => '\\text\\
-&&&& \\arg\\
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

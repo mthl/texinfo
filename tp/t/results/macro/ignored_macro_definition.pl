@@ -32,8 +32,6 @@ $result_trees{'ignored_macro_definition'} = {
       'extra' => {
         'arg_line' => ' mymacro{}
 ',
-        'macrobody' => 'outside
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -128,8 +126,6 @@ $result_trees{'ignored_macro_definition'} = {
                   ],
                   'extra' => {
                     'arg_line' => ' mymacro{}
-',
-                    'macrobody' => 'in inlinefmt tex
 ',
                     'spaces_after_command' => {
                       'extra' => {

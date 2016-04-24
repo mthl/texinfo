@@ -70,11 +70,6 @@ $result_trees{'macro_expansion'} = {
           'arg1' => 0,
           'arg2' => 1
         },
-        'macrobody' => 'result of a macro with \\arg1\\ and 
-@verbatim
-\\arg2\\
-@end verbatim
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

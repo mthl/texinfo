@@ -58,11 +58,6 @@ $result_trees{'simple_imbricated_macro'} = {
       'extra' => {
         'arg_line' => ' truc {}
 ',
-        'macrobody' => 'truc.
-@macro bidule {}
-bidule.
-@end macro
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -118,8 +113,6 @@ bidule.
           ],
           'extra' => {
             'arg_line' => ' bidule {}
-',
-            'macrobody' => 'bidule.
 ',
             'spaces_after_command' => {
               'extra' => {

@@ -32,8 +32,6 @@ $result_trees{'two_macros_on_a_line'} = {
       'extra' => {
         'arg_line' => ' mymacro
 ',
-        'macrobody' => 'in mymacro
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -103,10 +101,6 @@ $result_trees{'two_macros_on_a_line'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => 'in with args
-now the arg \\arg\\
-after
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

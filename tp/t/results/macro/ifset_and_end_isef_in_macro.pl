@@ -32,8 +32,6 @@ $result_trees{'ifset_and_end_isef_in_macro'} = {
       'extra' => {
         'arg_line' => ' beginifset {}
 ',
-        'macrobody' => '@ifset a
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -82,8 +80,6 @@ $result_trees{'ifset_and_end_isef_in_macro'} = {
       ],
       'extra' => {
         'arg_line' => ' endifset {}
-',
-        'macrobody' => '@end ifset
 ',
         'spaces_after_command' => {
           'extra' => {

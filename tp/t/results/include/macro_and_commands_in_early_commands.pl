@@ -34,8 +34,6 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           'extra' => {
             'arg_line' => ' begin-file
 ',
-            'macrobody' => 'macro_i--n_pass@@
-',
             'spaces_after_command' => {
               'extra' => {
                 'command' => {}
@@ -137,8 +135,6 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           ],
           'extra' => {
             'arg_line' => ' latin1 
-',
-            'macrobody' => 'ISO-8859-1@@
 ',
             'spaces_after_command' => {
               'extra' => {
@@ -243,9 +239,6 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           ],
           'extra' => {
             'arg_line' => ' multiinclude
-',
-            'macrobody' => 'macro_included.texi
-@include inc_@@f--ile.texi
 ',
             'spaces_after_command' => {
               'extra' => {
@@ -383,8 +376,6 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           ],
           'extra' => {
             'arg_line' => ' themacro
-',
-            'macrobody' => 'in themacro
 ',
             'spaces_after_command' => {
               'extra' => {

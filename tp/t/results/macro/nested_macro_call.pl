@@ -32,8 +32,6 @@ $result_trees{'nested_macro_call'} = {
       'extra' => {
         'arg_line' => ' machin{}
 ',
-        'macrobody' => '(machin)
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -88,9 +86,6 @@ $result_trees{'nested_macro_call'} = {
       ],
       'extra' => {
         'arg_line' => ' truc{}
-',
-        'macrobody' => '@machin{}
-
 ',
         'spaces_after_command' => {
           'extra' => {

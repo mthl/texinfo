@@ -46,9 +46,6 @@ $result_trees{'expand_two_same'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => 'With a doubles arg \\arg\\ and re \\arg\\
-
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

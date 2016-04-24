@@ -46,8 +46,6 @@ $result_trees{'double_recursive_macro_call'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => '@mactwo{}
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -105,8 +103,6 @@ $result_trees{'double_recursive_macro_call'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => '@macone{}
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

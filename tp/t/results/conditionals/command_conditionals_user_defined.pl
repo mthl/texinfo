@@ -32,8 +32,6 @@ $result_trees{'command_conditionals_user_defined'} = {
       'extra' => {
         'arg_line' => ' truc
 ',
-        'macrobody' => 'machin
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

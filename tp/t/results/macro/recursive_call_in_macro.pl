@@ -40,8 +40,6 @@ $result_trees{'recursive_call_in_macro'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => '@anorecurse{arg}
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

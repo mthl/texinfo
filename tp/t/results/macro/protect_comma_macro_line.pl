@@ -58,11 +58,6 @@ $result_trees{'protect_comma_macro_line'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => 'we get \\arg\\ and another \\arg\\
-and another one on another line \\arg\\
-
-and a last in another paragraph
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

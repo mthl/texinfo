@@ -53,8 +53,6 @@ $result_trees{'bad_formal_arg'} = {
           'not_empty' => 1
         },
         'invalid_syntax' => 1,
-        'macrobody' => 'in bad macro
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -119,8 +117,6 @@ $result_trees{'bad_formal_arg'} = {
           'in 2arg' => 1
         },
         'invalid_syntax' => 1,
-        'macrobody' => 'bad space
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -205,11 +201,6 @@ $result_trees{'bad_formal_arg'} = {
           ':::' => 0
         },
         'invalid_syntax' => 1,
-        'macrobody' => 'in bar
-@macro foo {? aaa}
-in macro foo
-@end macro
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

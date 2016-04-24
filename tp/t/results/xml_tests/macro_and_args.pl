@@ -34,7 +34,6 @@ $result_trees{'macro_and_args'} = {
           '2b-bb' => 1,
           'aaa' => 0
         },
-        'macrobody' => '',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -93,7 +92,6 @@ $result_trees{'macro_and_args'} = {
           'nnn_b' => 1
         },
         'invalid_syntax' => 1,
-        'macrobody' => '',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

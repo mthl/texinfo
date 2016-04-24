@@ -1,3 +1,14 @@
+2016-04-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_expand_macro_arguments)
+	(_expand_macro_body, _end_line <insertcopying>, parse_texi):
+	Make $self->{'macros'} hash contain hashes which refer to the 
+	elements that define the macro with the 'element' key, instead 
+	of containing the elements themselves.  Define 'macrobody' on 
+	the elements of $self->{'macros'}, instead of defining it as an 
+	'extra' value.  This change is because the 'macrobody' is not 
+	used outside of Parser.pm.
+
 2016-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_end_line),

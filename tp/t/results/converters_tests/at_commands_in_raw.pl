@@ -72,8 +72,6 @@ $result_trees{'at_commands_in_raw'} = {
           'extra' => {
             'arg_line' => ' othermacro{}
 ',
-            'macrobody' => 'Other macro
-',
             'spaces_after_command' => {
               'extra' => {
                 'command' => {}
@@ -1301,8 +1299,6 @@ $result_trees{'at_commands_in_raw'} = {
                   'extra' => {
                     'arg_line' => ' mymacro{}
 ',
-                    'macrobody' => 'truc
-',
                     'spaces_after_command' => {
                       'extra' => {
                         'command' => {}
@@ -1360,8 +1356,6 @@ $result_trees{'at_commands_in_raw'} = {
                     'args_index' => {
                       'arg' => 0
                     },
-                    'macrobody' => 'Some \\arg\\.
-',
                     'spaces_after_command' => {
                       'extra' => {
                         'command' => {}

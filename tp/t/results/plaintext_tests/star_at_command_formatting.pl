@@ -98,19 +98,6 @@ $result_trees{'star_at_command_formatting'} = {
       'extra' => {
         'arg_line' => ' mymacro
 ',
-        'macrobody' => 'Some text @*
-more text. @
-Even more text. @* not at eol.
-
-Now followed by @@ : followed@*@ 
-And now followed by a space and @@ : follow @* @ 
-And now followed by a space and @@ and text: follow @* @ text
-Followed by empty asis and a space @asis{} 
-Followed by asis with space and a space @asis{ } 
-And now with * empty @@asis: @*@asis{} 
-And now with * asis with space @@asis: @* @asis{ }
-And end para.
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

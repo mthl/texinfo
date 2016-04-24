@@ -52,11 +52,6 @@ $result_trees{'def_in_copying'} = {
           'extra' => {
             'arg_line' => ' mymacro
 ',
-            'macrobody' => '@deffn aa bb cc
-@deffnx aax bbx ccx
-deffnx lines
-@end deffn
-',
             'spaces_after_command' => {
               'extra' => {
                 'command' => {}

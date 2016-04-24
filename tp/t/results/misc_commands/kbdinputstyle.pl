@@ -86,17 +86,6 @@ $result_trees{'kbdinputstyle'} = {
       'extra' => {
         'arg_line' => ' codekbdmacro
 ',
-        'macrobody' => '@code{in code out of example @code{in nested code}}.
-@kbd{kbd out of example}.
-@code{kbd @kbd{in code}}.
-
-in example
-@example
-@code{in code in example @code{in nested code}}.
-@kbd{kbd in example}.
-@code{kbd @kbd{in code} in example}.
-@end example
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

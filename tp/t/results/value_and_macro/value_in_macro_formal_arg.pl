@@ -77,8 +77,6 @@ $result_trees{'value_in_macro_formal_arg'} = {
           'the@value{argument' => 1
         },
         'invalid_syntax' => 1,
-        'macrobody' => 'result: @emph{\\arg\\} the \\the\\ thearg \\thearg\\ with value \\the@value{argument}\\
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

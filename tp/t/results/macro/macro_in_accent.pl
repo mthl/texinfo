@@ -32,8 +32,6 @@ $result_trees{'macro_in_accent'} = {
       'extra' => {
         'arg_line' => ' aletter
 ',
-        'macrobody' => 'a
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -82,8 +80,6 @@ $result_trees{'macro_in_accent'} = {
       ],
       'extra' => {
         'arg_line' => ' aspace
-',
-        'macrobody' => '  
 ',
         'spaces_after_command' => {
           'extra' => {

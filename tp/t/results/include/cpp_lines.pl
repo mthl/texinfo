@@ -260,8 +260,6 @@ $result_trees{'cpp_lines'} = {
           'extra' => {
             'arg_line' => ' macr
 ',
-            'macrobody' => '# line 7 "k"
-',
             'spaces_after_command' => {
               'extra' => {
                 'command' => {}

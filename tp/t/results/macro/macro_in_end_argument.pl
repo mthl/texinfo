@@ -32,8 +32,6 @@ $result_trees{'macro_in_end_argument'} = {
       'extra' => {
         'arg_line' => ' acartouche
 ',
-        'macrobody' => 'cartouche
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

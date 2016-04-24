@@ -40,8 +40,6 @@ $result_trees{'complex_argument'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => 'coucou \\arg\\ after arg
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -108,11 +106,6 @@ $result_trees{'complex_argument'} = {
       ],
       'extra' => {
         'arg_line' => ' macrofour {}
-',
-        'macrobody' => '1
-2
-3
-4
 ',
         'spaces_after_command' => {
           'extra' => {
@@ -183,9 +176,6 @@ $result_trees{'complex_argument'} = {
           'arg' => 1,
           'text' => 0
         },
-        'macrobody' => '\\text\\
-&&&& \\arg\\
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -486,8 +476,6 @@ $result_trees{'complex_argument'} = {
         'args_index' => {
           'truc' => 0
         },
-        'macrobody' => '@emph{\\truc\\}
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

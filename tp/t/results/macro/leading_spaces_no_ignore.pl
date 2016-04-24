@@ -38,9 +38,6 @@ $result_trees{'leading_spaces_no_ignore'} = {
       'extra' => {
         'arg_line' => ' mymacro
 ',
-        'macrobody' => '  Some  here
-  text
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

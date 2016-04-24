@@ -46,8 +46,6 @@ $result_trees{'protect_in_body_line_arg'} = {
           'arg1' => 0,
           'arg2' => 1
         },
-        'macrobody' => 'result: @emph{\\arg1\\} protected \\\\ -> \\\\arg1\\\\ @emph{\\arg2\\}
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

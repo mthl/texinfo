@@ -20,7 +20,6 @@ $result_trees{'double_macro_definition'} = {
       'extra' => {
         'arg_line' => ' foo
 ',
-        'macrobody' => '',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -58,7 +57,6 @@ $result_trees{'double_macro_definition'} = {
       'extra' => {
         'arg_line' => ' foo
 ',
-        'macrobody' => '',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

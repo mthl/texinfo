@@ -32,8 +32,6 @@ $result_trees{'macro_zero'} = {
       'extra' => {
         'arg_line' => ' zero
 ',
-        'macrobody' => '0
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

@@ -32,8 +32,6 @@ $result_trees{'macro_name_with_digit'} = {
       'extra' => {
         'arg_line' => ' macro1
 ',
-        'macrobody' => 'macro1
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -91,8 +89,6 @@ $result_trees{'macro_name_with_digit'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => 'expand \\arg\\
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

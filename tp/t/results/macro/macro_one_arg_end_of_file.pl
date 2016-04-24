@@ -40,8 +40,6 @@ $result_trees{'macro_one_arg_end_of_file'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => 'Arg \\arg\\.
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

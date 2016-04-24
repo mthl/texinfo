@@ -40,8 +40,6 @@ $result_trees{'expansion_order'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => '@machin{}
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -96,9 +94,6 @@ $result_trees{'expansion_order'} = {
       ],
       'extra' => {
         'arg_line' => ' machin
-',
-        'macrobody' => '\\\\arg\\\\
-
 ',
         'spaces_after_command' => {
           'extra' => {

@@ -26,8 +26,6 @@ $result_trees{'bad_argument'} = {
         'arg_line' => '
 ',
         'invalid_syntax' => 1,
-        'macrobody' => 'in macro
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -78,8 +76,6 @@ $result_trees{'bad_argument'} = {
         'arg_line' => ' abar aaa
 ',
         'invalid_syntax' => 1,
-        'macrobody' => 'in
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -138,8 +134,6 @@ $result_trees{'bad_argument'} = {
           'ggg' => 0
         },
         'invalid_syntax' => 1,
-        'macrobody' => 'in macro
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -183,8 +177,6 @@ $result_trees{'bad_argument'} = {
         'arg_line' => ' #badname
 ',
         'invalid_syntax' => 1,
-        'macrobody' => 'in #
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

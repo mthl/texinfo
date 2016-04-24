@@ -52,10 +52,6 @@ $result_trees{'ifclear_in_macro'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => '@ifclear notes 
-\\arg\\
-@end ifclear
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

@@ -40,8 +40,6 @@ $result_trees{'recursive_call_in_argument'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => 'a
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

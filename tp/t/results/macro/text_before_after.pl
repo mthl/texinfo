@@ -38,8 +38,6 @@ $result_trees{'text_before_after'} = {
           'extra' => {
             'arg_line' => ' mymacro
 ',
-            'macrobody' => 'in macro
-',
             'spaces_after_command' => {
               'extra' => {
                 'command' => {}

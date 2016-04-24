@@ -32,8 +32,6 @@ $result_trees{'zero_argument'} = {
       'extra' => {
         'arg_line' => ' foo {}
 ',
-        'macrobody' => 'in foo
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -82,8 +80,6 @@ $result_trees{'zero_argument'} = {
       ],
       'extra' => {
         'arg_line' => ' abar
-',
-        'macrobody' => 'in bar
 ',
         'spaces_after_command' => {
           'extra' => {

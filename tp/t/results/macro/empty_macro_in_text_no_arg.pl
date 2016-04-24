@@ -20,7 +20,6 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
       'extra' => {
         'arg_line' => ' texnl{}
 ',
-        'macrobody' => '',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -80,7 +79,6 @@ $result_trees{'empty_macro_in_text_no_arg'} = {
       'extra' => {
         'arg_line' => ' texnltwo
 ',
-        'macrobody' => '',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

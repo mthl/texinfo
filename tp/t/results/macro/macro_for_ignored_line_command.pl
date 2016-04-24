@@ -32,8 +32,6 @@ $result_trees{'macro_for_ignored_line_command'} = {
       'extra' => {
         'arg_line' => ' pagemacro
 ',
-        'macrobody' => '@page
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

@@ -32,8 +32,6 @@ $result_trees{'complete_macro_for_end'} = {
       'extra' => {
         'arg_line' => ' theend
 ',
-        'macrobody' => '@end cartouche
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

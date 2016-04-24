@@ -80,15 +80,6 @@ $result_trees{'nested_ifset_ifclear'} = {
       'extra' => {
         'arg_line' => ' conditionals{}
 ',
-        'macrobody' => '@ifset somevar
-@ifset anothervar
-Both somevar and anothervar are set.
-@end ifset
-@ifclear anothervar
-Somevar is set, anothervar is not.
-@end ifclear
-@end ifset
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

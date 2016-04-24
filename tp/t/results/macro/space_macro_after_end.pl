@@ -32,8 +32,6 @@ $result_trees{'space_macro_after_end'} = {
       'extra' => {
         'arg_line' => ' spaces
 ',
-        'macrobody' => '  
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}

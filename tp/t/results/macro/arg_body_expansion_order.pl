@@ -38,8 +38,6 @@ $result_trees{'arg_body_expansion_order'} = {
       'extra' => {
         'arg_line' => ' othermacro
 ',
-        'macrobody' => 'initial
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -134,12 +132,6 @@ $result_trees{'arg_body_expansion_order'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => '@unmacro othermacro
-@macro othermacro
-different
-@end macro
-\\arg\\
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
@@ -206,8 +198,6 @@ different
       ],
       'extra' => {
         'arg_line' => ' othermacro
-',
-        'macrobody' => 'different
 ',
         'spaces_after_command' => {
           'extra' => {

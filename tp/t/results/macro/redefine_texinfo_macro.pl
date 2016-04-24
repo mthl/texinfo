@@ -40,8 +40,6 @@ $result_trees{'redefine_texinfo_macro'} = {
         'args_index' => {
           'arg' => 0
         },
-        'macrobody' => '@emph{\\arg\\}
-',
         'spaces_after_command' => {
           'extra' => {
             'command' => {}
