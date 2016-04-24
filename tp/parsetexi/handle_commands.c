@@ -44,7 +44,7 @@ item_container_parent (ELEMENT *current)
 // 1352
 /* Check that there are no text holding environments (currently
    checking only paragraphs and preformatted) in contents. */
-static int
+int
 check_no_text (ELEMENT *current)
 {
   int after_paragraph = 0;
