@@ -77,7 +77,7 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
   macro->cmd = cmd;
   macro->line_nr = line_nr;
 
-  add_extra_string (macro, "arg_line", line);
+  add_extra_string (macro, "arg_line", strdup (line));
   /* FIXME: This extra value isn't used much, so is a candidate for
      simplification. */
 
@@ -143,6 +143,23 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
       arg = new_element (ET_macro_arg);
       text_append_n (&arg->text, args_ptr, q2 - args_ptr);
       add_to_element_args (macro, arg);
+
+      /* Check the argument name. */
+      {
+      char *p;
+      for (p = args_ptr; p < q2; p++)
+        {
+          if (!isalnum (*p) && *p != '_' && *p != '-')
+            {
+              char c = *q2; *q2 = 0;
+              line_error ("bad or empty @%s formal argument: %s",
+                          command_name(cmd), args_ptr);
+              *q2 = c;
+              add_extra_string (macro, "invalid_syntax", "1");
+              break;
+            }
+        }
+      }
 
       args_ptr = q + 1;
 
