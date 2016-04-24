@@ -1024,18 +1024,92 @@ end_line_starting_block (ELEMENT *current)
     {
       if (current->cmd == CM_enumerate)
         {
-          /* TODO: Can have e.g. 7, "A", or "a". */
-          add_extra_string (current, "enumerate_specification", "1");
+          char *spec = "1";
+          KEY_PAIR *k;
+
+          k = lookup_extra_key (current, "block_command_line_contents");
+          if (k)
+            {
+              ELEMENT *e = k->value;
+              if (e->contents.number >= 1)
+                {
+                  ELEMENT *f, *g;
+                  f = contents_child_by_index (e, 0);
+                  if (f->contents.number > 1)
+                    command_error (current, "superfluous argument to @%s",
+                                   command_name(current->cmd));
+                  g = contents_child_by_index (f, 0);
+                  if (g->text.end == 1
+                      && isalnum (g->text.text[0]))
+                    {
+                      spec = strdup (g->text.text);
+                    }
+                  else
+                    command_error (current, "bad argument to @%s",
+                                   command_name(current->cmd));
+                }
+            }
+          add_extra_string (current, "enumerate_specification", spec);
         }
       else if (item_line_command (current->cmd)) // 3002
         {
-          // check command_as_argument registered in 'extra', and
-          // that it accepts arguments in braces
+          KEY_PAIR *k;
+          k = lookup_extra_key (current, "command_as_argument");
+          if (!k)
+            command_error (current,
+                           "%s requires an argument: the formatter for @item",
+                           command_name(current->cmd));
+          else
+            {
+              ELEMENT *e = k->value;
+              if (!(command_flags(e) & CF_brace))
+                {
+                  command_error (current,
+                                 "command @%s not accepting argument in brace "
+                                 "should not be on @%s line",
+                                 e->cmd,
+                                 command_name(current->cmd));
+                  k->key = "";
+                  k->type = extra_deleted;
+                }
+            }
         }
 
+      /* check that command_as_argument of the @itemize is alone on the line,
+         otherwise it is not a command_as_argument */
       if (current->cmd == CM_itemize) // 3019
         {
-          // check that command_as_argument is alone on the line
+          KEY_PAIR *k;
+          k = lookup_extra_key (current, "command_as_argument");
+          if (k)
+            {
+              int i;
+              ELEMENT *e = args_child_by_index (current, 0);
+
+              for (i = 0; i < e->contents.number; i++)
+                {
+                  if (contents_child_by_index (e, i) == k->value)
+                    {
+                      i++;
+                      break;
+                    }
+                }
+              for (; i < e->contents.number; i++)
+                {
+                  ELEMENT *f = contents_child_by_index (e, i);
+                  if (f->cmd != CM_c
+                      && f->cmd != CM_comment
+                      && !(f->text.end > 0
+                           && !*(f->text.text
+                                 + strspn (f->text.text, whitespace_chars))))
+                    {
+                      k->value->type = ET_NONE;
+                      k->key = "";
+                      k->type = extra_deleted;
+                      break;
+                    }
+                }
+            }
         }
 
       // 3040 Check if command_as_argument isn't an accent command
