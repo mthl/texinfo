@@ -812,7 +812,7 @@ make_tex_cmd ()
 
   # do the special catcode trick for ~ in filenames only for Texinfo,
   # not LaTeX.
-  if test x"$in_lang" = xtexinfo && test $catcode_special = maybe; then
+  if test x"$in_lang" = xtexinfo && test $catcode_special != false; then
     catcode_special=true
   else
     catcode_special=false

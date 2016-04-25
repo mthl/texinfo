@@ -1,3 +1,11 @@
+2016-04-25  Theodore Ts'o  <tytso@mit.edu>  (tiny change)
+
+	* util/texi2dvi (make_tex_cmd): Check whether 'catcode_special' 
+	variable is equal to 'false' instead of 'maybe', so it doesn't 
+	get set to 'false' on the second round when the variable has the 
+	value 'true'.  Otherwise it breaks if the path to the file 
+	contains a tilde.
+	
 2016-04-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/texi2dvi (make_openout_test): Place double quotes around 
