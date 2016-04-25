@@ -1,3 +1,9 @@
+2016-04-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (make_openout_test): Place double quotes around 
+	expansion of shell variable to be more resilient in case path to 
+	file contains spaces.  Problem reported by Stephen H. Dawson.
+
 2016-04-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_expand_macro_body, _parse_texi):

@@ -1465,8 +1465,8 @@ compile ()
 #
 make_openout_test ()
 {
-    ensure_dir $workdir/check_recorder
-    cd $workdir/check_recorder
+    ensure_dir "$workdir"/check_recorder
+    cd "$workdir"/check_recorder
     cat > openout.tex <<EOF
 \newwrite\ourwrite
 \immediate\openout\ourwrite dum.dum
