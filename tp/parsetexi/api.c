@@ -57,7 +57,7 @@ reset_parser (void)
 void
 parse_file (char *filename)
 {
-  debug_output = 1;
+  debug_output = 0;
   reset_parser ();
   parse_texi_file (filename);
 }
@@ -76,7 +76,7 @@ parse_string (char *string)
   ELEMENT *root;
   reset_parser ();
   root = new_element (ET_root_line);
-  input_push_text (strdup (string));
+  input_push_text (strdup (string), 0);
   Root = parse_texi (root);
 }
 
@@ -87,7 +87,7 @@ parse_text (char *string)
   ELEMENT *root;
   reset_parser ();
   root = new_element (ET_text_root);
-  input_push_text_with_line_nos (strdup (string));
+  input_push_text_with_line_nos (strdup (string), 1);
   Root = parse_texi (root);
 }
 
@@ -518,8 +518,12 @@ element_to_perl_hash (ELEMENT *e)
           STORE("line_nr", newSViv (line_nr->line_nr));
         }
 
-      /* TODO: macro. */
-      STORE("macro", newSVpv ("", 0));
+      if (line_nr->macro)
+        {
+          STORE("macro", newSVpv (line_nr->macro, 0));
+        }
+      else
+        STORE("macro", newSVpv ("", 0));
 #undef STORE
     }
 }

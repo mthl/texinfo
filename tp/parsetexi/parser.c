@@ -164,9 +164,7 @@ parse_texi_file (const char *filename_in)
         {
           /* This line is not part of the preamble.  Shove back
              into input stream. */
-          input_push_text (line);
-          if (line_nr.line_nr > 0)
-            line_nr.line_nr--;
+          input_push (line, 0, line_nr.file_name, line_nr.line_nr);
           break;
         }
 
@@ -1116,8 +1114,8 @@ value_valid:
                      in Report.pm.  */
 
                   line++; /* past '}' */
-                  input_push_text (strdup (line));
-                  input_push_text (strdup (value));
+                  input_push_text (strdup (line), 0);
+                  input_push_text (strdup (value), 0);
                   line = new_line ();
                 }
               retval = 1;

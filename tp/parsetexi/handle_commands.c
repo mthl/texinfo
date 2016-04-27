@@ -169,7 +169,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
       if (!strchr (line, '\n'))
         {
           char *line2;
-          input_push_text (strdup (line));
+          input_push_text (strdup (line), 0);
           line2 = new_line ();
           if (line2)
             line = line2;
@@ -309,7 +309,6 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                 }
               else
                 {
-                  line_error ("@%s not meaningful within `@%s' block");
                   line_error ("@%s not meaningful within `@%s' block",
                               command_name(cmd),
                               command_name(parent->cmd));
@@ -552,12 +551,14 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           /* Check if if we should change an ET_empty_line_after_command
              element to ET_empty_spaces_after_command by looking ahead
              to see what comes next. */
-#if 0
           if (!strchr (line, '\n'))
             {
-              new_line ();
+              char *line2;
+              input_push_text (strdup (line), 0);
+              line2 = new_line ();
+              if (line2)
+                line = line2;
             }
-#endif
           spaces = strspn (line, whitespace_chars);
           if (spaces > 0)
             {

@@ -415,6 +415,7 @@ delete_macro (char *name)
 }
 
 // 3898
+/* CMD is the macro command. */
 ELEMENT *
 handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
 {
@@ -471,9 +472,9 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
 
   // 3961
   /* Put expansion in front of the current line. */
-  input_push_text (strdup (line));
+  input_push_text (strdup (line), 0);
   line = strchr (line, '\0');
-  input_push_text (expanded.text);
+  input_push_text (expanded.text, command_name(cmd));
 
   *line_inout = line;
   return current;

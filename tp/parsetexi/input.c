@@ -28,22 +28,21 @@
 enum input_type { IN_file, IN_text };
 
 typedef struct {
-    enum input_type type; /* IN_file or IN_text */
+    enum input_type type;
 
     FILE *file;
-    char *filename;
+    LINE_NR line_nr;
 
     char *text;  /* Input text to be parsed as Texinfo. */
     char *ptext; /* How far we are through 'text'.  Used to split 'text'
                     into lines. */
-    int line_number;
 } INPUT;
 
 static INPUT *input_stack = 0;
 static size_t input_number = 0;
 static size_t input_space = 0;
 
-/* Current filename and line number. */
+/* Current filename and line number.  Used for reporting. */
 LINE_NR line_nr;
 
 // 1961
@@ -104,6 +103,7 @@ next_text (void)
               free (i->text);
               break;
             }
+          /* Split off a line of input. */
           p = strchrnul (i->ptext, '\n');
           new = strndup (i->ptext, p - i->ptext + 1);
           if (*p)
@@ -111,11 +111,12 @@ next_text (void)
           else
             i->ptext = p; /* The next time, we will pop the input source. */
 
-          if (line_nr.line_nr != -1)
-            line_nr.line_nr++;
+          if (!i->line_nr.macro)
+            i->line_nr.line_nr++;
+
+          line_nr = i->line_nr;
 
           return new;
-          // what if it doesn't end in a newline ?
 
           break;
         case IN_file: // 1911
@@ -146,7 +147,9 @@ next_text (void)
 
               // 1920 CPP_LINE_DIRECTIVES
 
-              line_nr.line_nr++;
+              i->line_nr.line_nr++;
+              line_nr = i->line_nr;
+
               return line;
             }
           free (line); line = 0;
@@ -168,35 +171,13 @@ next_text (void)
             }
         }
       input_number--;
-      if (input_number > 0 && input_stack[input_number - 1].type == IN_file)
-        {
-          /* Restore LINE_NR. */
-          line_nr.line_nr = input_stack[input_number - 1].line_number;
-          line_nr.file_name = input_stack[input_number - 1].filename;
-        }
     }
   return 0;
 }
 
-static void
-save_line_nr (void)
-{
-  if (input_number == 0)
-    return;
-
-  if (input_stack[input_number - 1].type == IN_file)
-    {
-      input_stack[input_number - 1].line_number = line_nr.line_nr;
-    }
-}
-
-/* Store TEXT as a source for Texinfo content.  TEXT will be later free'd
-   and must be allocated on the heap. */
 void
-input_push_text (char *text)
+input_push (char *text, char *macro, char *filename, int line_number)
 {
-  save_line_nr ();
-
   if (input_number == input_space)
     {
       input_space++; input_space *= 1.5;
@@ -206,22 +187,34 @@ input_push_text (char *text)
     }
 
   input_stack[input_number].type = IN_text;
+  input_stack[input_number].file = 0;
   input_stack[input_number].text = text;
   input_stack[input_number].ptext = text;
-  input_number++;
 
-  /* TODO: What goes in LINE_NR?  It depends whether this text is the result of 
-     a macro expansion, or was pushed back when reading the file preamble. */
+  if (!macro)
+    line_number--;
+  input_stack[input_number].line_nr.line_nr = line_number;
+  input_stack[input_number].line_nr.file_name = filename;
+  input_stack[input_number].line_nr.macro = macro;
+  input_number++;
+}
+
+/* Store TEXT as a source for Texinfo content.  TEXT will be later free'd
+   and must be allocated on the heap.  MACRO is the name of a macro that
+   the text came from. */
+void
+input_push_text (char *text, char *macro)
+{
+  input_push (text, macro, 0, line_nr.line_nr);
 }
 
 /* Used in tests - like input_push_text, but the lines from the text have
    line numbers. */
 void
-input_push_text_with_line_nos (char *text)
+input_push_text_with_line_nos (char *text, int starting)
 {
-  input_push_text (text);
-  line_nr.line_nr = 0;
-  line_nr.file_name = 0;
+  input_push (text, 0, 0, starting);
+  input_stack[input_number - 1].type = IN_text;
 }
 
 
@@ -247,8 +240,6 @@ input_push_file (char *filename)
 {
   FILE *stream;
   int i;
-
-  save_line_nr ();
 
   for (i = 0; i < include_dirs_number; i++)
     {
@@ -280,12 +271,12 @@ input_push_file (char *filename)
 
   input_stack[input_number].type = IN_file;
   input_stack[input_number].file = stream;
-  input_stack[input_number].filename = filename;
-  input_stack[input_number].line_number = 0;
+  input_stack[input_number].line_nr.file_name = filename;
+  input_stack[input_number].line_nr.line_nr = 0;
+  input_stack[input_number].line_nr.macro = 0;
+  input_stack[input_number].text = 0;
+  input_stack[input_number].ptext = 0;
   input_number++;
-
-  line_nr.line_nr = 0;
-  line_nr.file_name = filename;
 
   return;
 }
