@@ -1337,16 +1337,54 @@ end_line_misc_line (ELEMENT *current)
             }
           else if (current->cmd == CM_documentencoding) // 3190
             {
+              int i; char *p;
               // TODO: ignore_global_commands
               /* See tp/Texinfo/Encoding.pm (whole file) */
-              // TODO: Canonicalize encoding
 
-              /* 'us-ascii', 'utf-8', 'iso-8859-1',
-                 'iso-8859-15','iso-8859-2','koi8-r', 'koi8-u' */
+              text = strdup (text);
+              for (p = text; *p; p++)
+                *p = tolower (*p);
+              add_extra_string (current, "input_encoding_name", text); // 3199
 
-              add_extra_string (current, "input_encoding_name",
-                                text); // 3199
-              add_extra_string (current, "input_perl_encoding", text);
+              {
+              static char *canonical_encodings[] = {
+                "us-ascii", "utf-8", "iso-8859-1",
+                "iso-8859-15","iso-8859-2","koi8-r", "koi8-u",
+                0
+              };
+
+              for (i = 0; (canonical_encodings[i]); i++)
+                {
+                  if (!strcasecmp (text, canonical_encodings[i]))
+                    break;
+                }
+              if (!(canonical_encodings[i]))
+                {
+                  command_warn (current, "encoding `%s' is not a "
+                                "canonical texinfo encoding");
+                }
+              }
+
+              {
+              struct encoding_map {
+                  char *from; char *to;
+              };
+              static struct encoding_map map[] = {
+                  "utf-8", "utf-8-strict"
+              };
+              char *perl_encoding = text;
+              for (i = 0; i < sizeof map / sizeof *map; i++)
+                {
+                  if (!strcasecmp (text, map[i].from))
+                    {
+                      perl_encoding = map[i].to;
+                      break;
+                    }
+                }
+              add_extra_string (current, "input_perl_encoding",
+                                perl_encoding);
+              }
+
 
               global_info.input_encoding_name = text; // 3210
 
