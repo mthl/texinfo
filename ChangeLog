@@ -1,3 +1,13 @@
+2016-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (usage): Streamline help message.  Don't mention 
+	option '-@' (but don't touch the implementation of this option 
+	to avoid breaking anything).  Don't mention pdftexi2dvi or 
+	--dvipdf in the summary.  Don't mention --silent as a synonym 
+	for --quiet, and don't mention --texinfo for --command.  Move 
+	mention of @setfilename next to --command.  Remove mention of 
+	AUC-TeX.  Only mention -E for --expand, and not -e.
+
 2016-04-25  Theodore Ts'o  <tytso@mit.edu>  (tiny change)
 
 	* util/texi2dvi (make_tex_cmd): Check whether 'catcode_special' 
