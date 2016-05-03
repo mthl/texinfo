@@ -1,3 +1,30 @@
+2016-05-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (cd_dir): New function, to change directory
+	while updating variables containing paths.
+	(cd_orig): Reverse the changes to these variables made in cd_dir.
+
+	(run_tex_suite, make_openout_test): Use 'cd_dir' instead of 
+	'cd'.
+
+	(input_file_name_decode, main program loop): Don't change 
+	variables t2ddir, in_dir to be absolute.  This could cause 
+	problems passing filenames to TeX if the absolute path to the 
+	input file contained a space or another unusual character.  
+	(Problem found following report by Stephen Dawson.)
+
+	(run_tex) [--tidy]: Remove code that uses a symbolic link to the 
+	file being processed.  This meant that --command didn't work 
+	along with --tidy due to the path to the file with the inserted 
+	commands being overridden.  It is less necessary when absolute 
+	paths aren't used.  (Problem found following report by
+	Guo Yixuan).
+
+	(cleanup): Refer to 'clean' and 'tidy' variables instead of 
+	'build_mode'.  (No functional change.)
+	(compile): Change a comment.
+
+
 2016-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/texi2dvi (usage): Streamline help message.  Don't mention 
