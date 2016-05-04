@@ -1,4 +1,9 @@
-2016-05-05  Gavin Smith  <gavinsmith0123@gmail.com>
+2016-05-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (cd_orig, cd_dir): Use SED variable instead of 
+	sed directly.
+
+2016-05-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/texi2dvi (usage): Change wording of documentation of 
 	--mostly-clean option.

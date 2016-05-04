@@ -242,7 +242,7 @@ cd_dir ()
 {
   cd "$1"
   # Replace each path component with ".." and remove any trailing slash.
-  cdd_prefix=`echo "$1" | sed -e 's/[^/\\][^/\\]*/../g' -e 's/[/\\]$//'`
+  cdd_prefix=`echo "$1" | \$SED -e 's/[^/\\][^/\\]*/../g' -e 's/[/\\]$//'`
 
   # Add this prefix for some variables.
   for cdd_dir in $path_vars; do
@@ -277,15 +277,15 @@ cd_orig ()
   
   # strip off ../../ from some variables
   # quote string by placing \ before each character (each either . or /)
-  cdd_prefix_q=`echo "$cdd_prefix" | sed -e 's/\\(.\\)/\\\\\\1/g'`
+  cdd_prefix_q=`echo "$cdd_prefix" | \$SED -e 's/\\(.\\)/\\\\\\1/g'`
   # after backslashes quote within backquoted string:
-  #             echo "$cdd_prefix" | sed -e 's/\(.\)/\\\1/g'
+  #             echo "$cdd_prefix" | $SED -e 's/\(.\)/\\\1/g'
 
   for cdo_dir in $path_vars ; do
-    eval "$cdo_dir=\`echo \"\$$cdo_dir\" | sed -e 's/^$cdd_prefix_q\///'\`"
+    eval "$cdo_dir=\`echo \"\$$cdo_dir\" | \$SED -e 's/^$cdd_prefix_q\///'\`"
 
     # Becomes
-    # CDO_DIR=`echo "$CDO_DIR" | sed -e 's/^CDD_PREFIX//'`
+    # CDO_DIR=`echo "$CDO_DIR" | $SED -e 's/^CDD_PREFIX//'`
 
     # eval $cdo_dir=\${$cdo_dir#\$cdd_prefix/}
     # would be simpler, but doesn't work in older shells.
