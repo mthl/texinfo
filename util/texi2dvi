@@ -145,9 +145,9 @@ General options:
   -q, --quiet         no output unless errors (implies --batch)
   -v, --version       display version information and exit successfully
   -V, --verbose       report on what is done
-  --max-iterations=N   don't process files more than N times [$max_iters]
-  --mostly-clean      remove the auxiliary files and directories,
-                         but not the output
+  --max-iterations=N  don't process files more than N times [$max_iters]
+  --mostly-clean      remove auxiliary files or directories from
+                          previous runs (but not the output)
 
 Output format:
       --dvi     output a DVI file [default]
@@ -242,7 +242,7 @@ cd_dir ()
 {
   cd "$1"
   # Replace each path component with ".." and remove any trailing slash.
-  cdd_prefix=`echo "$1" | sed -e 's/[^/\\]\+/../g' -e 's/[/\\]$//'`
+  cdd_prefix=`echo "$1" | sed -e 's/[^/\\][^/\\]*/../g' -e 's/[/\\]$//'`
 
   # Add this prefix for some variables.
   for cdd_dir in $path_vars; do
@@ -276,8 +276,19 @@ cd_orig ()
   cd "$orig_pwd" || exit 1
   
   # strip off ../../ from some variables
+  # quote string by placing \ before each character (each either . or /)
+  cdd_prefix_q=`echo "$cdd_prefix" | sed -e 's/\\(.\\)/\\\\\\1/g'`
+  # after backslashes quote within backquoted string:
+  #             echo "$cdd_prefix" | sed -e 's/\(.\)/\\\1/g'
+
   for cdo_dir in $path_vars ; do
-    eval $cdo_dir=\${$cdo_dir#\$cdd_prefix/}
+    eval "$cdo_dir=\`echo \"\$$cdo_dir\" | sed -e 's/^$cdd_prefix_q\///'\`"
+
+    # Becomes
+    # CDO_DIR=`echo "$CDO_DIR" | sed -e 's/^CDD_PREFIX//'`
+
+    # eval $cdo_dir=\${$cdo_dir#\$cdd_prefix/}
+    # would be simpler, but doesn't work in older shells.
   done
 }
 
@@ -1665,8 +1676,6 @@ cleanup ()
 #   The filename given on the commmand line, but cleaned of TeX commands.
 # - IN_DIR
 #   The directory containing the input file.
-# - IN_DIR_ABS
-#   The absolute directory of the input file.
 # - IN_BASE
 #   The input file base name (no directory part).
 # - IN_NOEXT
@@ -1706,7 +1715,6 @@ input_file_name_decode ()
 
   # Get the name of the current directory.
   in_dir=`func_dirname "$command_line_filename"`
-  in_dir_abs=`absolute "$in_dir"`
 
   # Strip directory part but leave extension.
   in_base=`basename "$command_line_filename"`

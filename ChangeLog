@@ -1,3 +1,14 @@
+2016-05-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (usage): Change wording of documentation of 
+	--mostly-clean option.
+	(input_file_name_decode): Remove unused 'in_dir_abs' variable.
+	(cd_orig): Don't use ${VAR#WORD} feature because it doesn't 
+	exist in some older shells.  Use sed instead.
+	(cd_dir): Don't use \+ feature of sed because it is said not to 
+	be portable.
+	(move_to_dest): Remove commented-out echo line.
+
 2016-05-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/texi2dvi (cd_dir): New function, to change directory
@@ -23,7 +34,6 @@
 	(cleanup): Refer to 'clean' and 'tidy' variables instead of 
 	'build_mode'.  (No functional change.)
 	(compile): Change a comment.
-
 
 2016-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
