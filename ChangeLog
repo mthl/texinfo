@@ -1,3 +1,17 @@
+2016-05-05  Vincent Belaïche  <vincentb1@users.sourceforge.net>, and
+	    Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (make_tex_cmd): Remove use of 'catcode_special'
+	variable for filenames containing a tilde.  Do not append
+	"\input" to the command-line to TeX.
+	(run_tex): Check whether the filename contains a funny character 
+	like a tilde.  If so, change the TeX category codes of some 
+	characters within a group, and use \expandafter to input a file 
+	outside of the group.  Append \input to the command-line.
+
+	(option parsing): Make -~ do nothing.
+	(make_openout_test): Don't refer to 'catcode_special' variable.
+
 2016-05-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/texi2dvi (cd_orig, cd_dir): Use SED variable instead of 

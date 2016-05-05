@@ -51,7 +51,6 @@ orig_pwd=`pwd`
 # Instead, assign them an empty value.
 action=compile
 batch=false     # interact normally
-catcode_special=maybe
 debug=false
 escape="\\"
 expand=false    # true for expansion via makeinfo
@@ -849,14 +848,6 @@ make_tex_cmd ()
     *) error 1 "$out_lang not supported for $in_lang";;
   esac
 
-  # do the special catcode trick for ~ in filenames only for Texinfo,
-  # not LaTeX.
-  if test x"$in_lang" = xtexinfo && test $catcode_special != false; then
-    catcode_special=true
-  else
-    catcode_special=false
-  fi
-
   # Beware of aux files in subdirectories that require the
   # subdirectory to exist.
   case $in_lang:$tidy in
@@ -912,32 +903,40 @@ make_tex_cmd ()
     # from the user.  Close its stdin to make it impossible.
     tex_cmd="$tex_cmd </dev/null '${escape}nonstopmode'"
   fi
-
-  # we'd like to handle arbitrary input file names, especially
-  # foo~bar/a~b.tex, since Debian likes ~ characters.
-  if $catcode_special; then
-    # The idea is to define \normaltilde as a catcode other ~ character,
-    # then make the active ~ be equivalent to that, instead of the plain
-    # TeX tie.  Then when the active ~ appears in the filename, it will
-    # be expanded to itself, as far as \input will see.  (This is the
-    # same thing that texinfo.tex does in general, BTW.)
-    normaltilde="${escape}catcode126=12 ${escape}def${escape}normaltilde{~}"
-    tex_cmd="$tex_cmd '$normaltilde${escape}catcode126=13 ${escape}let~\normaltilde '"
-  fi
-  # Other special (non-active) characters could be supported by
-  # resetting their catcodes to other on the command line and changing
-  # texinfo.tex to initialize everything to plain catcodes.  Maybe someday.
-
-  # append the \input command.
-  tex_cmd="$tex_cmd '${escape}input'"
 }
 
 # run_tex - Run TeX as "$tex $in_input", taking care of errors and logs.
 run_tex ()
 {
   make_tex_cmd
-    
-  tex_cmd="$tex_cmd '$in_input'"
+
+  tex_cmd=`(LC_ALL=C
+    if (echo "$in_input" | grep [^a-zA-Z0-9/.]) >/dev/null ; then
+      # If the filename has funny characters, change the TeX category codes of 
+      # some characters within a group, and use \expandafter to input the file
+      # outside of the group.
+
+      # Make > an end group character, as it's unlikely to appear in
+      # a filename.
+      tex_cmd="$tex_cmd '${escape}bgroup${escape}catcode62=2'"
+      # make letter {   }   $  #  ~   ^   &
+      for w in      123 125 36 35 126 136 26; do
+        # TODO: check if letter actually in filename in order
+        # to simplifiy TeX command line.
+        tex_cmd="$tex_cmd '${escape}catcode$w=11${escape}relax'"
+      done
+      # Set \toks0 to "\input FILENAME\relax"
+      tex_cmd="$tex_cmd'${escape}toks0${escape}bgroup"
+      tex_cmd="$tex_cmd${escape}input $in_input${escape}relax>"
+      tex_cmd="$tex_cmd${escape}expandafter${escape}egroup"
+      tex_cmd="$tex_cmd${escape}the${escape}toks0${escape}relax'"
+    else
+      # In the case of a simple filename, just pass the filename
+      # with no funny tricks.
+      tex_cmd="$tex_cmd '${escape}input' '$in_input'"
+    fi
+    echo "$tex_cmd")`
+
   verbose "$0: Running $tex_cmd ..."
   if eval "$tex_cmd" >&5; then
     case $out_lang in
@@ -1487,14 +1486,11 @@ EOF
     # \bye doesn't work for LaTeX, but it will cause latex
     # to exit with an input error.
     recorder_option_maybe="$1"
-    save_catcode_special=$catcode_special
     save_batch=$batch
-    catcode_special=false
     batch=true
     make_tex_cmd
-    catcode_special=$save_catcode_special
     batch=$save_batch
-    tex_cmd="$tex_cmd ./openout.tex"
+    tex_cmd="$tex_cmd '${escape}input' ./openout.tex"
     # ./ in case . isn't in path
     verbose "$0: running $tex_cmd ..."
     rm -fr "openout.$2"
@@ -1776,7 +1772,7 @@ while test x"$1" != x"$arg_sep"; do
 
   case "$1" in
     -@ ) escape=@;;
-    -~ ) catcode_special=false;;
+    -~ ) verbose "Option -~ is obsolete: texi2dvi ignores it.";;
     # Silently and without documentation accept -b and --b[atch] as synonyms.
     -b | --batch) batch=true;;
          --build)      shift; build_mode=$1;;
