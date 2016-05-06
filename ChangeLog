@@ -1,3 +1,13 @@
+2016-05-06  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo-ja.tex: New File.
+	Japanese texinfo.tex loader.
+	Some CJK packages are necessary to load before texinfo.tex.
+	* doc/txi-ja.tex: New File.
+	Japanese translations and font definitions for texinfo.tex.
+	* doc/short-sample-ja.tex: New File.
+	Short sample of Japanese Texinfo support files.
+
 2016-05-05  Vincent Belaïche  <vincentb1@users.sourceforge.net>, and
 	    Gavin Smith  <gavinsmith0123@gmail.com>
 
