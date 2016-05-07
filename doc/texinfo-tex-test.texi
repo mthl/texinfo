@@ -666,6 +666,13 @@ See following pages
 Have a look at the headline.
 
 
+@chapter Test of non-alphanumeric characters
+
+Not in code: @{@}@@#\
+
+In code @t{@{@}@@#\}
+
+
 @chapter Test of auxiliary files
 
 Need to test with @command{texi2dvi}.

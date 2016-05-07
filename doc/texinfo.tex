@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-05-07.18}
+\def\texinfoversion{2016-05-07.19}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -3269,8 +3269,8 @@ end
 % @{ @} @lbracechar{} @rbracechar{} all generate brace characters.
 % Unless we're in typewriter, use \ecfont because the CM text fonts do
 % not have braces, and we don't want to switch into math.
-\def\mylbrace{{\ifmonospace\else\ecfont\fi \char123}}
-\def\myrbrace{{\ifmonospace\else\ecfont\fi \char125}}
+\def\mylbrace{{\ifmonospace\char123\else\ensuremath\lbrace\fi}}
+\def\myrbrace{{\ifmonospace\char125\else\ensuremath\rbrace\fi}}
 \let\{=\mylbrace \let\lbracechar=\{
 \let\}=\myrbrace \let\rbracechar=\}
 \begingroup
@@ -8808,7 +8808,6 @@ end
      \else
        \txiescapepdf\pdfxrefdest  % escape PDF special chars
      \fi
-     \show\pdfxrefdest
      %
      \leavevmode
      \startlink attr{/Border [0 0 0]}%

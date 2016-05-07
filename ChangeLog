@@ -1,5 +1,13 @@
 2016-05-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\mylbrace, \myrbrace): Avoid use of \ecfont, 
+	because the user may not have it installed.  Use \lbrace and 
+	\rbrace from plain TeX instead.
+	* doc/texinfo-tex-test.texi (Test of non-alphanumeric characters):
+	New section.
+
+2016-05-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\commondummies): Define \value as a dummy.
 	Do not call \makevalueexpandable.
 	(\xrdef, \refx, \xrefX): Give \value a definition so we can get 
