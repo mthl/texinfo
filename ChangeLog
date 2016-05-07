@@ -1,3 +1,9 @@
+2016-05-07  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo-ja.tex (\writetocentry):
+	Fix XeTeX PDF link page number duplicates.
+	For XeTeX, change \pdfmakepagedesttrue timing to after TOC writing.
+
 2016-05-06  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo-ja.tex: New File.
