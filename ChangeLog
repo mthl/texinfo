@@ -1,3 +1,14 @@
+2016-05-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\commondummies): Define \value as a dummy.
+	Do not call \makevalueexpandable.
+	(\xrdef, \refx, \xrefX): Give \value a definition so we can get 
+	rid of it when making a control sequence name for a 
+	cross-reference target.  Comments changed.
+
+	* doc/texinfo-tex-test.texi (Test of auxiliary files): New 
+	section testing uses of @value in index entries and anchors.
+
 2016-05-07  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo-ja.tex (\writetocentry):

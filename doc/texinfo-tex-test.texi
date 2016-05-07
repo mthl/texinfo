@@ -666,6 +666,30 @@ See following pages
 Have a look at the headline.
 
 
+@chapter Test of auxiliary files
+
+Need to test with @command{texi2dvi}.
+
+Undefined value in anchor: @anchor{@value{ho} ho}
+
+Xref to said anchor: @xref{@value{ho} ho}.
+
+@set auxvalue this is the value
+Defined value in anchor: @anchor{@value{auxvalue} ho}
+
+Xref to said anchor: @xref{@value{auxvalue} ho}.
+
+@defindex ax
+
+value in index entry
+@axindex @value{ho} in index entry
+
+defined value in index entry
+@axindex @value{auxvalue} in index entry
+
+@printindex ax
+
+
 @chapter Cross-references
 
 Check commas surrounding page number:
