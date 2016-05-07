@@ -1,3 +1,11 @@
+2016-05-07  John Collins  <jcc8@psu.edu>  (tiny change)
+
+	* doc/texinfo.tex (\typeout): New macro defined like in LaTeX for
+	ensuring message are identical in format as those output by
+	latex/pdflatex.
+	(\requireopenindexfile): \typeout trace Writing index file.
+	(\printindex) \typeout trace No file.
+
 2016-05-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\mylbrace, \myrbrace): Avoid use of \ecfont, 

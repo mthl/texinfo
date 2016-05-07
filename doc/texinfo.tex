@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-05-07.19}
+\def\texinfoversion{2016-05-07.20}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -66,6 +66,10 @@
 % they might have appeared in the input file name.
 \everyjob{\message{[Texinfo version \texinfoversion]}%
   \catcode`+=\active \catcode`\_=\active}
+
+% LaTeX's \typeout.  This ensures that the messages it is used for
+% are identical in format to the corresponding ones from latex/pdflatex.
+\def\typeout{\immediate\write17}%
 
 \chardef\other=12
 
@@ -5155,9 +5159,10 @@ end
   \ifx\suffix\indexisfl\def\suffix{f1}\fi
   % Open the file
   \immediate\openout\csname#1indfile\endcsname \jobname.\suffix
-  % Using \immediate here prevents an object entering into the current box,
-  % which could confound checks such as those in \safewhatsit for preceding
-  % skips.
+  % Using \immediate above here prevents an object entering into the current 
+  % box, which could confound checks such as those in \safewhatsit for
+  % preceding skips.
+  \typeout{Writing index file \jobname.\suffix}%
 \fi}
 \def\indexisfl{fl}
 
@@ -5365,6 +5370,7 @@ end
     % index.  The easiest way to prevent this problem is to make sure
     % there is some text.
     \putwordIndexNonexistent
+    \typeout{No file \jobname.\indexname s.}%
   \else
     \catcode`\\ = 0
     %
