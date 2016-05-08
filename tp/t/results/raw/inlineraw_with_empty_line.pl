@@ -151,8 +151,7 @@ $result_trees{'inlineraw_with_empty_line'} = {
                       [
                         {}
                       ]
-                    ],
-                    'normalized' => 'HTML'
+                    ]
                   },
                   'line_nr' => {
                     'file_name' => '',

@@ -1,5 +1,12 @@
 2016-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi) <@abbr and @acronym>: Don't 
+	set 'normalized' values on elements.  Remove commented-out code.
+	(module documentation): Don't document that a list of the 
+	elements is kept in $self->{'explained_commands'}.  
+
+2016-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Structuring.pm (associate_internal_references): 
 	Avoid adding an undefined 'label' value under certain 
 	circumstances.

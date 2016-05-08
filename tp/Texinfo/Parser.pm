@@ -5227,7 +5227,6 @@ sub _parse_texi($;$)
                     = Texinfo::Convert::NodeNameNormalization::normalize_node(
                         {'contents' =>
                          $current_command->{'extra'}->{'brace_command_contents'}->[0]});
-                  $current_command->{'extra'}->{'normalized'} = $normalized_type;
                   if (!$current_command->{'extra'}->{'brace_command_contents'}->[1]) {
                     if ($self->{'explained_commands'}->{$current_command->{'cmdname'}}->{$normalized_type}) {
                       $current_command->{'extra'}->{'explanation_contents'} 
@@ -5237,13 +5236,7 @@ sub _parse_texi($;$)
                     $self->{'explained_commands'}->{$current_command->{'cmdname'}}->{$normalized_type} 
                       = $current_command->{'extra'}->{'brace_command_contents'}->[1];
                   }
-                }# else {
-                #  my $argument
-                #   = Texinfo::Convert::Text::convert({'contents' =>
-                #       $current_command->{'extra'}->{'brace_command_contents'}->[0]},
-                #       {Texinfo::Common::_convert_text_options($self)});
-                #  $current_command->{'extra'}->{'format'} = $argument; 
-                #}
+                }
               }
 
             } elsif ($current->{'parent'}->{'cmdname'} eq 'errormsg') {
@@ -6378,22 +6371,6 @@ A string, the command name associated with C<@clickstyle>.
 =item documentlanguage
 
 A string corresponding to a document language set by C<@documentlanguage>.
-
-=item explained_commands
-
-A hash reference of explained commands (currently abbr or acronym).
-The value is also a hash reference.  The key of this hash is a normalized
-first argument of these commands, the value is a content array
-corresponding to the explanation associated with this first argument.
-
-For example giving as an option:
-
-  'explained_commands' 
-    => {'acronym' => {'EU' => [{'text' => 'European Union'}]} 
-
-is the same as having the following texinfo code in the document:
-
-  @acronym{EU, European Union}
 
 =item INPUT_ENCODING_NAME
 

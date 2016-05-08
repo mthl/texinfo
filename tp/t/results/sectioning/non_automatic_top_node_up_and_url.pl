@@ -94,8 +94,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
                             [
                               {}
                             ]
-                          ],
-                          'normalized' => 'GNU'
+                          ]
                         },
                         'line_nr' => {
                           'file_name' => '',
@@ -124,8 +123,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
                       {},
                       {}
                     ]
-                  ],
-                  'normalized' => 'GNU'
+                  ]
                 },
                 'line_nr' => {},
                 'parent' => {}
@@ -185,8 +183,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
                               {}
                             ]
                           ],
-                          'explanation_contents' => [],
-                          'normalized' => 'GNU'
+                          'explanation_contents' => []
                         },
                         'line_nr' => {},
                         'parent' => {}
@@ -211,8 +208,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
                       {},
                       {}
                     ]
-                  ],
-                  'normalized' => 'GNU'
+                  ]
                 },
                 'line_nr' => {},
                 'parent' => {}
@@ -552,8 +548,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
                               {}
                             ]
                           ],
-                          'explanation_contents' => [],
-                          'normalized' => 'GNU'
+                          'explanation_contents' => []
                         },
                         'line_nr' => {
                           'file_name' => '',
@@ -582,8 +577,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
                       {},
                       {}
                     ]
-                  ],
-                  'normalized' => 'GNU'
+                  ]
                 },
                 'line_nr' => {},
                 'parent' => {}

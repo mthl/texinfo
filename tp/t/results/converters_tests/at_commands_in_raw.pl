@@ -900,8 +900,7 @@ $result_trees{'at_commands_in_raw'} = {
                       [
                         {}
                       ]
-                    ],
-                    'normalized' => 'FF'
+                    ]
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -1875,8 +1874,7 @@ $result_trees{'at_commands_in_raw'} = {
                   [
                     {}
                   ]
-                ],
-                'normalized' => 'FF'
+                ]
               },
               'line_nr' => {
                 'file_name' => '',

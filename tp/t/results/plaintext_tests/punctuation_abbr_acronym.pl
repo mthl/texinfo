@@ -29,8 +29,7 @@ $result_trees{'punctuation_abbr_acronym'} = {
               [
                 {}
               ]
-            ],
-            'normalized' => 'AAA'
+            ]
           },
           'line_nr' => {
             'file_name' => '',
@@ -63,8 +62,7 @@ $result_trees{'punctuation_abbr_acronym'} = {
               [
                 {}
               ]
-            ],
-            'normalized' => 'BBB'
+            ]
           },
           'line_nr' => {},
           'parent' => {}
@@ -93,8 +91,7 @@ $result_trees{'punctuation_abbr_acronym'} = {
               [
                 {}
               ]
-            ],
-            'normalized' => 'aaa'
+            ]
           },
           'line_nr' => {},
           'parent' => {}
@@ -123,8 +120,7 @@ $result_trees{'punctuation_abbr_acronym'} = {
               [
                 {}
               ]
-            ],
-            'normalized' => 'bbb'
+            ]
           },
           'line_nr' => {},
           'parent' => {}
@@ -172,8 +168,7 @@ $result_trees{'punctuation_abbr_acronym'} = {
               [
                 {}
               ]
-            ],
-            'normalized' => 'AAA'
+            ]
           },
           'line_nr' => {
             'file_name' => '',
@@ -224,8 +219,7 @@ $result_trees{'punctuation_abbr_acronym'} = {
               [
                 {}
               ]
-            ],
-            'normalized' => 'BBB'
+            ]
           },
           'line_nr' => {},
           'parent' => {}
@@ -272,8 +266,7 @@ $result_trees{'punctuation_abbr_acronym'} = {
               [
                 {}
               ]
-            ],
-            'normalized' => 'aaa'
+            ]
           },
           'line_nr' => {},
           'parent' => {}
@@ -321,8 +314,7 @@ $result_trees{'punctuation_abbr_acronym'} = {
               [
                 {}
               ]
-            ],
-            'normalized' => 'bbb'
+            ]
           },
           'line_nr' => {
             'file_name' => '',

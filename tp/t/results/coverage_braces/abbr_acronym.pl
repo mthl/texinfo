@@ -42,8 +42,7 @@ $result_trees{'abbr_acronym'} = {
               [
                 {}
               ]
-            ],
-            'normalized' => '_002d_002da'
+            ]
           },
           'line_nr' => {
             'file_name' => '',
@@ -78,8 +77,7 @@ $result_trees{'abbr_acronym'} = {
                 {}
               ]
             ],
-            'explanation_contents' => [],
-            'normalized' => '_002d_002da'
+            'explanation_contents' => []
           },
           'line_nr' => {
             'file_name' => '',
@@ -163,8 +161,7 @@ $result_trees{'abbr_acronym'} = {
                 {},
                 {}
               ]
-            ],
-            'normalized' => '_002d_002da'
+            ]
           },
           'line_nr' => {},
           'parent' => {}
@@ -316,8 +313,7 @@ $result_trees{'abbr_acronym'} = {
                 {},
                 {}
               ]
-            ],
-            'normalized' => '_00c9_002d_002da_002e-_002cA_002e'
+            ]
           },
           'line_nr' => {},
           'parent' => {}
@@ -390,8 +386,7 @@ $result_trees{'abbr_acronym'} = {
                 {}
               ]
             ],
-            'explanation_contents' => [],
-            'normalized' => '_00c9_002d_002da_002e-_002cA_002e'
+            'explanation_contents' => []
           },
           'line_nr' => {},
           'parent' => {}

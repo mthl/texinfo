@@ -177,8 +177,7 @@ $result_trees{'inlinefmt_with_empty_line'} = {
               [
                 {}
               ]
-            ],
-            'normalized' => 'HTML'
+            ]
           },
           'line_nr' => {
             'file_name' => '',

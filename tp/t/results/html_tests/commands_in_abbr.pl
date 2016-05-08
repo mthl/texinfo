@@ -70,8 +70,7 @@ $result_trees{'commands_in_abbr'} = {
                 {},
                 {}
               ]
-            ],
-            'normalized' => 'A'
+            ]
           },
           'line_nr' => {},
           'parent' => {}
@@ -166,8 +165,7 @@ $result_trees{'commands_in_abbr'} = {
                     {},
                     {}
                   ]
-                ],
-                'normalized' => 'A'
+                ]
               },
               'line_nr' => {},
               'parent' => {}

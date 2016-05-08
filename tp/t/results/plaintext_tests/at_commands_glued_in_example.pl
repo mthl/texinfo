@@ -133,8 +133,7 @@ $result_trees{'at_commands_glued_in_example'} = {
                   [
                     {}
                   ]
-                ],
-                'normalized' => 'ABC'
+                ]
               },
               'line_nr' => {
                 'file_name' => '',
@@ -173,8 +172,7 @@ $result_trees{'at_commands_glued_in_example'} = {
                     {}
                   ]
                 ],
-                'explanation_contents' => [],
-                'normalized' => 'ABC'
+                'explanation_contents' => []
               },
               'line_nr' => {
                 'file_name' => '',

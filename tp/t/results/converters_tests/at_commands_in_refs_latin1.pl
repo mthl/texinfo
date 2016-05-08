@@ -2744,8 +2744,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                           [
                             {}
                           ]
-                        ],
-                        'normalized' => 'AAA'
+                        ]
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -2779,8 +2778,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                             {}
                           ]
                         ],
-                        'explanation_contents' => [],
-                        'normalized' => 'AAA'
+                        'explanation_contents' => []
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -2809,8 +2807,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                           [
                             {}
                           ]
-                        ],
-                        'normalized' => 'BBB'
+                        ]
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -2906,8 +2903,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                           [
                             {}
                           ]
-                        ],
-                        'normalized' => 'CCC'
+                        ]
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -2941,8 +2937,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                             {}
                           ]
                         ],
-                        'explanation_contents' => [],
-                        'normalized' => 'CCC'
+                        'explanation_contents' => []
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -2971,8 +2966,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                           [
                             {}
                           ]
-                        ],
-                        'normalized' => 'DDD'
+                        ]
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -9388,8 +9382,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                   [
                     {}
                   ]
-                ],
-                'normalized' => 'AAA'
+                ]
               },
               'line_nr' => {
                 'file_name' => '',
@@ -9423,8 +9416,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                     {}
                   ]
                 ],
-                'explanation_contents' => [],
-                'normalized' => 'AAA'
+                'explanation_contents' => []
               },
               'line_nr' => {},
               'parent' => {}
@@ -9453,8 +9445,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                   [
                     {}
                   ]
-                ],
-                'normalized' => 'BBB'
+                ]
               },
               'line_nr' => {},
               'parent' => {}
@@ -9542,8 +9533,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                   [
                     {}
                   ]
-                ],
-                'normalized' => 'AAA'
+                ]
               },
               'line_nr' => {
                 'file_name' => '',
@@ -9577,8 +9567,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                     {}
                   ]
                 ],
-                'explanation_contents' => [],
-                'normalized' => 'AAA'
+                'explanation_contents' => []
               },
               'line_nr' => {},
               'parent' => {}
@@ -9607,8 +9596,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                   [
                     {}
                   ]
-                ],
-                'normalized' => 'BBB'
+                ]
               },
               'line_nr' => {},
               'parent' => {}
@@ -9698,8 +9686,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                   [
                     {}
                   ]
-                ],
-                'normalized' => 'CCC'
+                ]
               },
               'line_nr' => {
                 'file_name' => '',
@@ -9733,8 +9720,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                     {}
                   ]
                 ],
-                'explanation_contents' => [],
-                'normalized' => 'CCC'
+                'explanation_contents' => []
               },
               'line_nr' => {},
               'parent' => {}
@@ -9763,8 +9749,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                   [
                     {}
                   ]
-                ],
-                'normalized' => 'DDD'
+                ]
               },
               'line_nr' => {},
               'parent' => {}
@@ -9852,8 +9837,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                   [
                     {}
                   ]
-                ],
-                'normalized' => 'CCC'
+                ]
               },
               'line_nr' => {
                 'file_name' => '',
@@ -9887,8 +9871,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                     {}
                   ]
                 ],
-                'explanation_contents' => [],
-                'normalized' => 'CCC'
+                'explanation_contents' => []
               },
               'line_nr' => {},
               'parent' => {}
@@ -9917,8 +9900,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                   [
                     {}
                   ]
-                ],
-                'normalized' => 'DDD'
+                ]
               },
               'line_nr' => {},
               'parent' => {}
@@ -15204,8 +15186,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                           [
                             {}
                           ]
-                        ],
-                        'normalized' => 'AAA'
+                        ]
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -15239,8 +15220,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                             {}
                           ]
                         ],
-                        'explanation_contents' => [],
-                        'normalized' => 'AAA'
+                        'explanation_contents' => []
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -15269,8 +15249,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                           [
                             {}
                           ]
-                        ],
-                        'normalized' => 'BBB'
+                        ]
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -15354,8 +15333,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                           [
                             {}
                           ]
-                        ],
-                        'normalized' => 'CCC'
+                        ]
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -15389,8 +15367,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                             {}
                           ]
                         ],
-                        'explanation_contents' => [],
-                        'normalized' => 'CCC'
+                        'explanation_contents' => []
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -15419,8 +15396,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                           [
                             {}
                           ]
-                        ],
-                        'normalized' => 'DDD'
+                        ]
                       },
                       'line_nr' => {},
                       'parent' => {}

@@ -128,8 +128,7 @@ $result_trees{'inlinefmt'} = {
                       [
                         {}
                       ]
-                    ],
-                    'normalized' => 'HTML'
+                    ]
                   },
                   'line_nr' => {
                     'file_name' => '',

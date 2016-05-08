@@ -48,8 +48,7 @@ $result_trees{'recursive_acronym'} = {
                       [
                         {}
                       ]
-                    ],
-                    'normalized' => 'GNU'
+                    ]
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -78,8 +77,7 @@ $result_trees{'recursive_acronym'} = {
                 {},
                 {}
               ]
-            ],
-            'normalized' => 'GNU'
+            ]
           },
           'line_nr' => {},
           'parent' => {}

@@ -228,8 +228,7 @@ $result_trees{'inline_in_example'} = {
                           [
                             {}
                           ]
-                        ],
-                        'normalized' => 'HTML'
+                        ]
                       },
                       'line_nr' => {
                         'file_name' => '',

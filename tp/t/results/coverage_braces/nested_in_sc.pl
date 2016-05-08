@@ -178,8 +178,7 @@ $result_trees{'nested_in_sc'} = {
                               [
                                 {}
                               ]
-                            ],
-                            'normalized' => 'ABr'
+                            ]
                           },
                           'line_nr' => {},
                           'parent' => {}

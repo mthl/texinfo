@@ -128,8 +128,7 @@ $result_trees{'inlineraw'} = {
                       [
                         {}
                       ]
-                    ],
-                    'normalized' => 'HTML'
+                    ]
                   },
                   'line_nr' => {
                     'file_name' => '',
