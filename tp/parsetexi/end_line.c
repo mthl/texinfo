@@ -948,8 +948,11 @@ end_line_starting_block (ELEMENT *current)
 
       {
       char *s; /* FIXME: could just use prototypes instead */
-      asprintf (&s, "%d", prototypes->contents.number);
+      int max_columns = prototypes->contents.number;
+      asprintf (&s, "%d", max_columns);
       add_extra_string (current->parent, "max_columns", s);
+      if (max_columns == 0)
+        command_warn (current->parent, "empty multitable");
       }
       add_extra_contents (current->parent, "prototypes", prototypes);
     }

@@ -57,7 +57,7 @@ reset_parser (void)
 void
 parse_file (char *filename)
 {
-  debug_output = 0;
+  debug_output = 1;
   reset_parser ();
   parse_texi_file (filename);
 }
@@ -235,6 +235,9 @@ element_to_perl_hash (ELEMENT *e)
       || e->cmd == CM_image // why image?
       || e->cmd == CM_anchor
       || e->cmd == CM_macro
+      || e->cmd == CM_multitable
+      || e->cmd == CM_item
+      || e->cmd == CM_tab
       || e->type == ET_menu_entry_name
       || e->type == ET_brace_command_arg
       || e->cmd == CM_TeX

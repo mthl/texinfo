@@ -327,12 +327,18 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                 }
               else
                 { /* 4480 */
-                  int max_columns = 99; // FIXME
+                  int max_columns = 0;
                   KEY_PAIR *prototypes;
 
                   prototypes = lookup_extra_key  (parent, "prototypes");
                   if (prototypes)
                     max_columns = prototypes->value->contents.number;
+                  else
+                    {
+                      prototypes = lookup_extra_key(parent, "columnfractions");
+                      if (prototypes)
+                        max_columns = prototypes->value->contents.number;
+                    }
 
                   if (max_columns == 0)
                     {

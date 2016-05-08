@@ -425,6 +425,17 @@ abort_empty_line (ELEMENT **current_inout, char *additional_text)
                 }
             }
 
+          if (current)
+            {
+              k = lookup_extra_key (current, "spaces_after_command");
+              if (k && k->value == last_contents_child(current))
+                {
+                  k->key = "";
+                  k->value = 0;
+                  k->type = extra_deleted;
+                }
+            }
+
           e = pop_element_from_contents (current);
           e->parent = 0; e->parent_type = route_not_in_tree;
           destroy_element (e);
