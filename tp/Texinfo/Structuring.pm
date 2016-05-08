@@ -1315,12 +1315,13 @@ sub associate_internal_references($;$$)
   $refs = $self->internal_references_information() if (!defined($refs));
   return if (!defined($refs));
   foreach my $ref (@$refs) {
-    if (!defined($labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}})
-         and !$self->{'novalidate'}) {
-      $self->line_error(sprintf($self->__("\@%s reference to nonexistent node `%s'"),
-              $ref->{'cmdname'}, 
-              node_extra_to_texi($ref->{'extra'}->{'node_argument'})), 
-                        $ref->{'line_nr'})
+    if (!defined($labels->{$ref->{'extra'}{'node_argument'}{'normalized'}})) {
+      if (!$self->{'novalidate'}) {
+        $self->line_error(sprintf($self->__("\@%s reference to nonexistent node `%s'"),
+                $ref->{'cmdname'}, 
+                node_extra_to_texi($ref->{'extra'}->{'node_argument'})), 
+                          $ref->{'line_nr'})
+      }
     } else {
       my $node_target 
         = $labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}};

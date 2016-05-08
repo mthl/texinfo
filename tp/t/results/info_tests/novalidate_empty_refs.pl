@@ -100,7 +100,6 @@ $result_trees{'novalidate_empty_refs'} = {
                     {}
                   ]
                 ],
-                'label' => undef,
                 'node_argument' => {
                   'node_content' => [
                     {}
@@ -159,7 +158,6 @@ $result_trees{'novalidate_empty_refs'} = {
                     {}
                   ]
                 ],
-                'label' => undef,
                 'node_argument' => {
                   'node_content' => [
                     {}

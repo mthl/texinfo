@@ -243,7 +243,6 @@ $result_trees{'novalidate'} = {
                     {}
                   ]
                 ],
-                'label' => undef,
                 'node_argument' => {
                   'node_content' => [
                     {}

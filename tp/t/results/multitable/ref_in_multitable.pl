@@ -59,7 +59,6 @@ $result_trees{'ref_in_multitable'} = {
                 {}
               ]
             ],
-            'label' => undef,
             'node_argument' => {
               'node_content' => [
                 {},
@@ -227,7 +226,6 @@ $result_trees{'ref_in_multitable'} = {
                                 {}
                               ]
                             ],
-                            'label' => undef,
                             'node_argument' => {
                               'node_content' => [
                                 {}
@@ -340,7 +338,6 @@ $result_trees{'ref_in_multitable'} = {
                                 {}
                               ]
                             ],
-                            'label' => undef,
                             'node_argument' => {
                               'node_content' => [
                                 {}
@@ -431,7 +428,6 @@ $result_trees{'ref_in_multitable'} = {
                                             {}
                                           ]
                                         ],
-                                        'label' => undef,
                                         'node_argument' => {
                                           'node_content' => [
                                             {},
@@ -609,7 +605,6 @@ $result_trees{'ref_in_multitable'} = {
                 {}
               ]
             ],
-            'label' => undef,
             'node_argument' => {
               'node_content' => [
                 {},

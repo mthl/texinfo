@@ -1,5 +1,11 @@
 2016-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Structuring.pm (associate_internal_references): 
+	Avoid adding an undefined 'label' value under certain 
+	circumstances.
+
+2016-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_abort_empty_line): Remove a 
 	'spaces_after_command' empty extra value, just as an empty
 	'spaces_before_argument' value is removed.  This stops an 
