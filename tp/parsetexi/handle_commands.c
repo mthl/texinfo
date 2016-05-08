@@ -84,18 +84,69 @@ check_no_text (ELEMENT *current)
 }
 
 // 1056
-/* Record the information from a command of global effect. */
-static int
+/* Record the information from a command of global effect.
+   TODO: Could we scrap the first argument and use CURRENT->cmd? */
+int
 register_global_command (enum command_id cmd, ELEMENT *current)
 {
-  if (cmd == CM_shortcontents)
-    cmd == CM_summarycontents;
+  if ((command_data(cmd).flags & CF_global_unique))
+    {
+      if (cmd == CM_shortcontents)
+        cmd == CM_summarycontents;
+      switch (cmd)
+        {
+        case CM_copying:
+          global_info.copying = current; break;
+        case CM_settitle:
+          global_info.settitle = current; break;
+        case CM_shorttitlepage:
+          global_info.shorttitlepage = current; break;
+        case CM_title:
+          global_info.title = current; break;
+        case CM_titlepage:
+          global_info.titlepage = current; break;
+        case CM_top:
+          global_info.top = current; break;
+        }
+    }
+
 
   // TODO: Why even give @author this flag in the first place?
   if (cmd != CM_author && (command_data(cmd).flags & CF_global))
     {
       if (!current->line_nr.line_nr)
         current->line_nr = line_nr;
+      switch (cmd)
+        {
+        case CM_footnote:
+          add_to_contents_as_array (&global_info.footnotes, current);
+          break;
+        case CM_hyphenation:
+          add_to_contents_as_array (&global_info.hyphenation, current);
+          break;
+        case CM_insertcopying:
+          add_to_contents_as_array (&global_info.insertcopying, current);
+          break;
+        case CM_printindex:
+          add_to_contents_as_array (&global_info.printindex, current);
+          break;
+        case CM_subtitle:
+          add_to_contents_as_array (&global_info.subtitle, current);
+          break;
+        case CM_titlefont:
+          add_to_contents_as_array (&global_info.titlefont, current);
+          break;
+        case CM_listoffloats:
+          add_to_contents_as_array (&global_info.listoffloats, current);
+          break;
+        case CM_detailmenu:
+          add_to_contents_as_array (&global_info.detailmenu, current);
+          break;
+        case CM_part:
+          add_to_contents_as_array (&global_info.part, current);
+          break;
+        }
+      /* TODO: Check if all of these are necessary. */
       return 1;
     }
   else if ((command_data(cmd).flags & CF_global_unique))

@@ -325,8 +325,8 @@ shortcaption	brace	BRACE_context
 math		brace	BRACE_context
 
 # explained commands 624
-abbr		brace	1
-acronym		brace	1
+abbr		brace	2
+acronym		brace	2
 
 # inline format command
 inlineraw		brace,inline	BRACE_inline

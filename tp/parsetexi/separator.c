@@ -337,6 +337,9 @@ handle_close_brace (ELEMENT *current, char **line_inout)
         }
       else if (command_data(closed_command).flags & (CF_explained | CF_inline))
         { // 5129
+          /* TODO: For @abbr and @acronym, keep track of whether an expansion
+             for the abbreviation has been given.  This is used in the HTML
+             output for the <abbr title> attribute. */
         }
       else if (closed_command == CM_errormsg) // 5173
         {
@@ -352,7 +355,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           add_extra_element (current->parent->parent->parent,
                              "command_as_argument", current->parent);
         }
-      //register_global_command ();
+      register_global_command (current->parent->cmd, current->parent);
 
       // 5190
       if (current->parent->cmd == CM_anchor
@@ -394,7 +397,8 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           debug ("CLOSING(context command)");
           closed_command = current->parent->cmd;
 
-          // 5211
+          register_global_command (current->parent->cmd, current->parent);
+          // 5220
           current = current->parent->parent;
           if (close_preformatted_command(closed_command))
             current = begin_preformatted (current);

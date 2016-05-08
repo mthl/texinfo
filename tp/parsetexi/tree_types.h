@@ -104,7 +104,25 @@ typedef struct ELEMENT {
 typedef struct GLOBAL_INFO {
     char *input_file_name;
     char *input_encoding_name;
+
+    /* Elements that should be unique. */
     ELEMENT *settitle; /* Title of document. */
+    ELEMENT *copying;
+    ELEMENT *shorttitlepage;
+    ELEMENT *title;
+    ELEMENT *titlepage;
+    ELEMENT *top;
+
+    /* Arrays of elements */
+    ELEMENT footnotes;
+    ELEMENT hyphenation;
+    ELEMENT insertcopying;
+    ELEMENT printindex;
+    ELEMENT subtitle;
+    ELEMENT titlefont;
+    ELEMENT listoffloats;
+    ELEMENT detailmenu;
+    ELEMENT part;
 } GLOBAL_INFO;
 
 typedef struct {

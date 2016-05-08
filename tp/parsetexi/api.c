@@ -230,9 +230,12 @@ element_to_perl_hash (ELEMENT *e)
       /* TODO: Same optimizations as for 'type'. */
     }
 
+  /* FIXME sort out all these special cases */
   if (e->contents.number > 0
-      || e->type == ET_text_root // FIXME special case
+      || e->type == ET_text_root
       || e->cmd == CM_image // why image?
+      || e->cmd == CM_item && e->parent && e->parent->type == ET_row
+      || e->cmd == CM_tab && e->parent && e->parent->type == ET_row
       || e->cmd == CM_anchor
       || e->cmd == CM_macro
       || e->cmd == CM_multitable
@@ -785,14 +788,156 @@ HV *
 build_global_info2 (void)
 {
   HV *hv;
+  AV *av;
+  int i;
+  ELEMENT *e;
 
   dTHX;
 
   hv = newHV ();
+
+  /* These should be unique elements. */
+
   if (global_info.settitle && global_info.settitle->hv)
     {
       hv_store (hv, "settitle", strlen ("settitle"),
                 newRV_inc ((SV *) global_info.settitle->hv), 0);
+    }
+  if (global_info.copying && global_info.copying->hv)
+    {
+      hv_store (hv, "copying", strlen ("copying"),
+                newRV_inc ((SV *) global_info.copying->hv), 0);
+    }
+  if (global_info.shorttitlepage && global_info.shorttitlepage->hv)
+    {
+      hv_store (hv, "shorttitlepage", strlen ("shorttitlepage"),
+                newRV_inc ((SV *) global_info.shorttitlepage->hv), 0);
+    }
+  if (global_info.title && global_info.title->hv)
+    {
+      hv_store (hv, "title", strlen ("title"),
+                newRV_inc ((SV *) global_info.title->hv), 0);
+    }
+  if (global_info.titlepage && global_info.titlepage->hv)
+    {
+      hv_store (hv, "titlepage", strlen ("titlepage"),
+                newRV_inc ((SV *) global_info.titlepage->hv), 0);
+    }
+  if (global_info.top && global_info.top->hv)
+    {
+      hv_store (hv, "top", strlen ("top"),
+                newRV_inc ((SV *) global_info.top->hv), 0);
+    }
+
+  /* The following are arrays of elements. */
+
+  if (global_info.footnotes.contents.number > 0)
+    {
+      av = newAV ();
+      hv_store (hv, "footnote", strlen ("footnote"),
+                newRV_inc ((SV *) av), 0);
+      for (i = 0; i < global_info.footnotes.contents.number; i++)
+        {
+          e = contents_child_by_index (&global_info.footnotes, i);
+          if (e->hv)
+            av_push (av, newRV_inc ((SV *) e->hv));
+        }
+    }
+  if (global_info.hyphenation.contents.number > 0)
+    {
+      av = newAV ();
+      hv_store (hv, "hyphenation", strlen ("hyphenation"),
+                newRV_inc ((SV *) av), 0);
+      for (i = 0; i < global_info.hyphenation.contents.number; i++)
+        {
+          e = contents_child_by_index (&global_info.hyphenation, i);
+          if (e->hv)
+            av_push (av, newRV_inc ((SV *) e->hv));
+        }
+    }
+  if (global_info.insertcopying.contents.number > 0)
+    {
+      av = newAV ();
+      hv_store (hv, "insertcopying", strlen ("insertcopying"),
+                newRV_inc ((SV *) av), 0);
+      for (i = 0; i < global_info.insertcopying.contents.number; i++)
+        {
+          e = contents_child_by_index (&global_info.insertcopying, i);
+          if (e->hv)
+            av_push (av, newRV_inc ((SV *) e->hv));
+        }
+    }
+  if (global_info.printindex.contents.number > 0)
+    {
+      av = newAV ();
+      hv_store (hv, "printindex", strlen ("printindex"),
+                newRV_inc ((SV *) av), 0);
+      for (i = 0; i < global_info.printindex.contents.number; i++)
+        {
+          e = contents_child_by_index (&global_info.printindex, i);
+          if (e->hv)
+            av_push (av, newRV_inc ((SV *) e->hv));
+        }
+    }
+  if (global_info.subtitle.contents.number > 0)
+    {
+      av = newAV ();
+      hv_store (hv, "subtitle", strlen ("subtitle"),
+                newRV_inc ((SV *) av), 0);
+      for (i = 0; i < global_info.subtitle.contents.number; i++)
+        {
+          e = contents_child_by_index (&global_info.subtitle, i);
+          if (e->hv)
+            av_push (av, newRV_inc ((SV *) e->hv));
+        }
+    }
+  if (global_info.titlefont.contents.number > 0)
+    {
+      av = newAV ();
+      hv_store (hv, "titlefont", strlen ("titlefont"),
+                newRV_inc ((SV *) av), 0);
+      for (i = 0; i < global_info.titlefont.contents.number; i++)
+        {
+          e = contents_child_by_index (&global_info.titlefont, i);
+          if (e->hv)
+            av_push (av, newRV_inc ((SV *) e->hv));
+        }
+    }
+  if (global_info.listoffloats.contents.number > 0)
+    {
+      av = newAV ();
+      hv_store (hv, "listoffloats", strlen ("listoffloats"),
+                newRV_inc ((SV *) av), 0);
+      for (i = 0; i < global_info.listoffloats.contents.number; i++)
+        {
+          e = contents_child_by_index (&global_info.listoffloats, i);
+          if (e->hv)
+            av_push (av, newRV_inc ((SV *) e->hv));
+        }
+    }
+  if (global_info.detailmenu.contents.number > 0)
+    {
+      av = newAV ();
+      hv_store (hv, "detailmenu", strlen ("detailmenu"),
+                newRV_inc ((SV *) av), 0);
+      for (i = 0; i < global_info.detailmenu.contents.number; i++)
+        {
+          e = contents_child_by_index (&global_info.detailmenu, i);
+          if (e->hv)
+            av_push (av, newRV_inc ((SV *) e->hv));
+        }
+    }
+  if (global_info.part.contents.number > 0)
+    {
+      av = newAV ();
+      hv_store (hv, "part", strlen ("part"),
+                newRV_inc ((SV *) av), 0);
+      for (i = 0; i < global_info.part.contents.number; i++)
+        {
+          e = contents_child_by_index (&global_info.part, i);
+          if (e->hv)
+            av_push (av, newRV_inc ((SV *) e->hv));
+        }
     }
   return hv;
 }
