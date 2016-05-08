@@ -57,7 +57,7 @@ reset_parser (void)
 void
 parse_file (char *filename)
 {
-  debug_output = 1;
+  debug_output = 0;
   reset_parser ();
   parse_texi_file (filename);
 }
@@ -236,8 +236,6 @@ element_to_perl_hash (ELEMENT *e)
       || e->cmd == CM_anchor
       || e->cmd == CM_macro
       || e->cmd == CM_multitable
-      || e->cmd == CM_item
-      || e->cmd == CM_tab
       || e->type == ET_menu_entry_name
       || e->type == ET_brace_command_arg
       || e->cmd == CM_TeX
@@ -778,5 +776,23 @@ build_global_info (void)
   if (global_info.input_encoding_name)
     hv_store (hv, "input_encoding_name", strlen ("input_encoding_name"),
               newSVpv (global_info.input_encoding_name, 0), 0);
+  return hv;
+}
+
+/* Return object to be used as $self->{'extra'} in the Perl code, which
+   are mostly references to tree elements. */
+HV *
+build_global_info2 (void)
+{
+  HV *hv;
+
+  dTHX;
+
+  hv = newHV ();
+  if (global_info.settitle && global_info.settitle->hv)
+    {
+      hv_store (hv, "settitle", strlen ("settitle"),
+                newRV_inc ((SV *) global_info.settitle->hv), 0);
+    }
   return hv;
 }

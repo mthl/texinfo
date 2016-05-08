@@ -9,6 +9,7 @@ int num_args_children (ELEMENT *e);
 void reset_parser (void);
 
 //HV *build_global_info (void);
+//HV *build_global_info2 (void);
 
 /* Defined in dump_perl.c */
 char *dump_tree_to_string_1 (void);

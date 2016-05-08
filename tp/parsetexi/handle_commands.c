@@ -102,6 +102,16 @@ register_global_command (enum command_id cmd, ELEMENT *current)
     {
       if (!current->line_nr.line_nr)
         current->line_nr = line_nr;
+      switch (cmd)
+        {
+          extern int input_number;
+        case CM_setfilename:
+          /* Check if we are inside an @include, and if so, do nothing. */
+          if (input_number > 1)
+            break;
+        case CM_settitle:
+          global_info.settitle = current;
+        }
       return 1;
     }
 

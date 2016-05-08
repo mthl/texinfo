@@ -286,7 +286,7 @@ sub parse_texi_file ($$)
   #print "Getting tree...\n";
 
   my ($TREE, $LABELS, $FLOATS,
-      $INDEX_NAMES, $ERRORS, $GLOBAL_INFO);
+      $INDEX_NAMES, $ERRORS, $GLOBAL_INFO, $GLOBAL_INFO2);
   if (1) {
     # This is our third way of passing the data: construct it using
     # Perl api directly.
@@ -305,6 +305,8 @@ sub parse_texi_file ($$)
     # Commenting out this line changes the run time of makeinfo elisp.texi
     # from about 17.0 sec to 13.0 sec.  documentencoding is utf-8.
     $GLOBAL_INFO = build_global_info ();
+
+    $GLOBAL_INFO2 = build_global_info2 ();
 
   } elsif (0) {
     # $| = 1; # Flush after each print
@@ -390,6 +392,7 @@ sub parse_texi_file ($$)
 
   $self->{'info'} = $GLOBAL_INFO;
   #print "!!! ENCODING IS ", $self->{'info'}->{'input_encoding_name'} , "\n";
+  $self->{'extra'} = $GLOBAL_INFO2;
 
   if (defined($self->{'info'}->{'input_encoding_name'})) {
     my ($texinfo_encoding, $perl_encoding, $input_encoding)
@@ -473,6 +476,9 @@ sub parse_texi_text($$;$$$$)
 
     my $FLOATS = build_float_list ();
     $self->{'floats'} = $FLOATS;
+
+    my $GLOBAL_INFO2 = build_global_info2 ();
+    $self->{'extra'} = $GLOBAL_INFO2;
 
     _get_errors ($self);
     _add_parents ($tree);

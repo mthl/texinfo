@@ -39,7 +39,7 @@ typedef struct {
 } INPUT;
 
 static INPUT *input_stack = 0;
-static size_t input_number = 0;
+size_t input_number = 0;
 static size_t input_space = 0;
 
 /* Current filename and line number.  Used for reporting. */

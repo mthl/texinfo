@@ -104,6 +104,7 @@ typedef struct ELEMENT {
 typedef struct GLOBAL_INFO {
     char *input_file_name;
     char *input_encoding_name;
+    ELEMENT *settitle; /* Title of document. */
 } GLOBAL_INFO;
 
 typedef struct {
