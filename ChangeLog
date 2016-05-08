@@ -1,3 +1,10 @@
+2016-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_abort_empty_line): Remove a 
+	'spaces_after_command' empty extra value, just as an empty
+	'spaces_before_argument' value is removed.  This stops an 
+	'empty_line_after_command' element lingering as an extra value.
+
 2016-05-07  John Collins  <jcc8@psu.edu>  (tiny change)
 
 	* doc/texinfo.tex (\typeout): New macro defined like in LaTeX for

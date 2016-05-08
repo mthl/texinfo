@@ -2210,6 +2210,13 @@ sub _abort_empty_line($$;$)
         delete ($current->{'parent'}->{'extra'}->{'spaces_before_argument'});
         delete ($current->{'parent'}->{'extra'})
           if !(keys(%{$current->{'parent'}->{'extra'}}));
+      } elsif ($current->{'extra'} 
+          and $current->{'extra'}->{'spaces_after_command'}
+          and $current->{'extra'}->{'spaces_after_command'} 
+                eq $current->{'contents'}->[-1]) {
+        delete ($current->{'extra'}->{'spaces_after_command'});
+        delete ($current->{'extra'})
+          if !(keys(%{$current->{'extra'}}));
       }
 
       pop @{$current->{'contents'}} 
