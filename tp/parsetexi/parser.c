@@ -952,7 +952,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
   /* This condition is only checked immediately after the command opening, 
      otherwise the current element is in the 'args' and not right in the 
      command container. */
-  else if (!cmd && command_flags(current) & CF_brace && *line != '{')
+  else if (command_flags(current) & CF_brace && *line != '{')
     {
       if (command_with_command_as_argument (current->parent)) // 3988
         {

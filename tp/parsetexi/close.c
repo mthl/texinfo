@@ -93,6 +93,9 @@ close_command_cleanup (ELEMENT *current)
         {
           ELEMENT *row = old_contents.list[i];
 
+          if (counter_value (&count_cells, row) != -1)
+            counter_pop (&count_cells);
+
           if (row->type == ET_row)
             {
               /* Check if we need to open a new container. */
@@ -125,8 +128,6 @@ close_command_cleanup (ELEMENT *current)
         }
       free (old_contents.list);
 
-      if (counter_value (&count_cells, current) != -1)
-        counter_pop (&count_cells);
     }
   else if (current->cmd == CM_itemize || current->cmd == CM_enumerate)
     {
