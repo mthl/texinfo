@@ -211,7 +211,7 @@ begin_paragraph (ELEMENT *current)
       if (current->contents.number > 0)
         {
           int i = current->contents.number - 1;
-          while (i > 0)
+          while (i >= 0)
             {
               ELEMENT *child = contents_child_by_index (current, i);
               if (child->type == ET_empty_line
@@ -323,6 +323,7 @@ merge_text (ELEMENT *current, char *text)
 
       if (last_child
           && (last_child->type == ET_empty_line_after_command
+              || last_child->type == ET_empty_spaces_after_command
               || last_child->type == ET_empty_spaces_before_argument
               || last_child->type == ET_empty_spaces_after_close_brace))
         {
@@ -785,8 +786,15 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
                 abort(); //error
               destroy_element_and_children (popped);
 
-              // abort until end of line, calling new_line
+              /* Ignore until end of line */
+              if (!strchr (line, '\n'))
+                {
+                  debug ("IGNORE CLOSE LINE");
+                  line = new_line ();
+                }
               debug ("CLOSED conditional %s", command_name(end_cmd));
+              retval = GET_A_NEW_LINE;
+              goto funexit;
             }
           else
             {

@@ -724,14 +724,88 @@ handle_block_command (ELEMENT *current, char **line_inout,
       *get_new_line = 1;
       goto funexit;
     }
-  else if (command_data(cmd).data == BLOCK_conditional)
+  else if (command_data(cmd).data == BLOCK_conditional) //4641
     {
+      int iftrue = 0; /* Whether the conditional is true. */
+      if (cmd == CM_ifclear || cmd == CM_ifset
+          || cmd == CM_ifcommanddefined || cmd == CM_ifcommandnotdefined)
+        {
+          char *flag;
+          char *p = line;
+          p = line + strspn (line, whitespace_chars);
+          if (!*p)
+            line_error ("@%s requires a name", command_name(cmd));
+          else
+            {
+              flag = read_command_name (&p);
+              if (!flag)
+                goto bad_value;
+              else
+                {
+                  p += strspn (p, whitespace_chars);
+                  /* Check for a comment at the end of the line. */
+                  if (memcmp (p, "@c", 2) == 0)
+                    {
+                      p += 2;
+                      if (memcmp (p, "omment", 6) == 0)
+                        p += 7;
+                      if (*p && *p != '@' && !strchr (whitespace_chars, *p))
+                        goto bad_value; /* @c or @comment not terminated. */
+                    }
+                  else if (*p)
+                    goto bad_value; /* Trailing characters on line. */
+                }
+              if (1)
+                {
+                  // 4652
+                  if (cmd == CM_ifclear || cmd == CM_ifset)
+                    {
+                      char *val = fetch_value (flag, strlen (flag));
+                      if (val)
+                        iftrue = 1;
+                      if (cmd == CM_ifclear)
+                        iftrue = !iftrue;
+                    }
+                  else /* cmd == CM_ifcommanddefined
+                          || cmd == CM_ifcommandnotdefined */
+                    {
+                      enum command_id c = lookup_command (flag);
+                      if (c)
+                        iftrue = 1;
+                      if (cmd == CM_ifcommandnotdefined)
+                        iftrue = !iftrue;
+                    }
+                  debug ("CONDITIONAL @%s %s: %d", command_name(cmd), flag,
+                         iftrue);
+                }
+              else if (0)
+                {
+              bad_value:
+                  line_error ("bad name for @%s", command_name(cmd));
+                }
+
+            }
+        }
+      else if (!memcmp (command_name(cmd), "ifnot", 5))
+        {
+          /* FIXME: Check @ifnot* a nicer way. */
+          // TODO
+        }
+      else if (!memcmp (command_name(cmd), "if", 2))
+        {
+          // TODO
+        }
+      else
+        abort (); // BUG
+
+
       // 4699 - If conditional true, push onto conditional stack.  Otherwise
-      // open a new element (which we shall later remove).
+      // open a new element (which we shall later remove, in
+      // process_remaining_on_line ("CLOSED (conditional)").
 
       debug ("CONDITIONAL %s", command_name(cmd));
-      if (cmd != CM_ifnotinfo && cmd != CM_iftex) // TODO
-        push_conditional_stack (cmd); // Not ignored
+      if (iftrue)
+        push_conditional_stack (cmd);
       else
         {
           // Ignored.
