@@ -57,7 +57,7 @@ reset_parser (void)
 void
 parse_file (char *filename)
 {
-  debug_output = 1;
+  debug_output = 0;
   reset_parser ();
   parse_texi_file (filename);
 }

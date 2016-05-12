@@ -55,7 +55,7 @@ void init_index_commands (void);
 #define CF_style		        0x0080
 /* CF_code_style is set for brace commands only. */
 #define CF_code_style		        0x0100
-#define CF_regular_font_style	        0x0200
+#define CF_INFOENCLOSE  	        0x0200
 #define CF_in_heading     	        0x0400
 #define CF_ref			        0x0800
 #define CF_ALIAS                        0x1000
@@ -84,6 +84,8 @@ void init_index_commands (void);
    as BLOCK_region in data instead.
    Candidates for flags:
      CF_close_paragraph
+
+   Could combine CF_MACRO, CF_ALIAS, and CF_INFOENCLOSE into 2 bits.
  */
 
 /* Types of misc command (has CF_misc flag).  Values for COMMAND.data. */

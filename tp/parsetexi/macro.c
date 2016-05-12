@@ -525,5 +525,8 @@ fetch_value (char *name, int len)
       if (!memcmp (value_list[i].name, name, len) && !value_list[i].name[len])
         return value_list[i].value;
     }
+
+  if (!strcmp (name, "txicommandconditionals"))
+    return "1";
   return 0;
 }

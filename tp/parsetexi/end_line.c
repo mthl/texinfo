@@ -299,6 +299,10 @@ parse_line_command_args (ELEMENT *line_command)
         ADD_ARG(new);
         ADD_ARG(existing);
 
+        existing_cmd = lookup_command (existing);
+        if (!existing_cmd)
+          break; /* TODO: Error message */
+
         /* Remember the alias. */
         new_cmd = add_texinfo_command (new);
         new_cmd &= ~USER_COMMAND_BIT;
@@ -321,6 +325,7 @@ parse_line_command_args (ELEMENT *line_command)
       {
         /* @definfoenclose phoo,//,\\ */
         char *new_command = 0, *start = 0, *end = 0;
+        enum command_id new_cmd;
         int len;
 
         new_command = read_command_name (&line);
@@ -329,7 +334,7 @@ parse_line_command_args (ELEMENT *line_command)
 
         line += strspn (line, whitespace_chars);
         if (*line != ',')
-          goto alias_invalid;
+          goto definfoenclose_invalid;
         line++;
         line += strspn (line, whitespace_chars);
 
@@ -339,7 +344,7 @@ parse_line_command_args (ELEMENT *line_command)
         line += len;
 
         if (!*line)
-          goto alias_invalid; /* Not enough args. */
+          goto definfoenclose_invalid; /* Not enough args. */
         line++; /* Past ','. */
         line += strspn (line, whitespace_chars);
         len = strcspn (line, ",");
@@ -348,9 +353,17 @@ parse_line_command_args (ELEMENT *line_command)
         if (*line == ',')
           goto definfoenclose_invalid; /* Too many args. */
 
+        /* Remember it. */
+        new_cmd = add_texinfo_command (new_command);
+        new_cmd &= ~USER_COMMAND_BIT;
+        user_defined_command_data[new_cmd].flags
+          |= (CF_INFOENCLOSE & CF_brace);
+        /* TODO: Remember the data. */
+
         ADD_ARG(new_command); free (new_command);
         ADD_ARG(start); free (start);
         ADD_ARG(end); free (end);
+
         break;
       definfoenclose_invalid:
         line_error ("bad argument to @definfoenclose");
