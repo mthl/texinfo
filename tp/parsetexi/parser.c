@@ -915,6 +915,8 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
             }
           free (command);
         }
+      if (cmd && (command_data(cmd).flags & CF_ALIAS))
+        cmd = command_data(cmd).data;
     }
 
   /* There are cases when we need more input, but we don't want to

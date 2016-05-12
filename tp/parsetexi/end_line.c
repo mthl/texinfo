@@ -276,6 +276,7 @@ parse_line_command_args (ELEMENT *line_command)
       {
         /* @alias NEW = EXISTING */
         char *new = 0, *existing = 0;
+        enum command_id new_cmd, existing_cmd;
 
         if (!isalnum (*line)) /* This stops e.g. "@alias * = :" */
           goto alias_invalid;
@@ -297,9 +298,19 @@ parse_line_command_args (ELEMENT *line_command)
 
         ADD_ARG(new);
         ADD_ARG(existing);
+
+        /* Remember the alias. */
+        new_cmd = add_texinfo_command (new);
+        new_cmd &= ~USER_COMMAND_BIT;
+        user_defined_command_data[new_cmd].flags |= CF_ALIAS;
+
+        user_defined_command_data[new_cmd].data = existing_cmd;
+        /* Note the data field is an int, existing_cmd is
+           enum command_id, so would have problems if enum command_id
+           were wider than an int. */
+
         free (new); free (existing);
 
-        /* TODO: Rememer the alias. */
         break;
       alias_invalid:
         line_error ("bad argument to @alias");

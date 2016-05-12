@@ -801,7 +801,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
 
       // 4699 - If conditional true, push onto conditional stack.  Otherwise
       // open a new element (which we shall later remove, in
-      // process_remaining_on_line ("CLOSED (conditional)").
+      // process_remaining_on_line ("CLOSED conditional").
 
       debug ("CONDITIONAL %s", command_name(cmd));
       if (iftrue)
@@ -815,6 +815,10 @@ handle_block_command (ELEMENT *current, char **line_inout,
           add_to_element_contents (current, e);
           current = e;
         }
+      // 4709 ("last;")
+      line = strchr (line, '\0');
+      *get_new_line = 1;
+      goto funexit;
     }
   else /* line 4710 */
     {

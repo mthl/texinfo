@@ -58,7 +58,7 @@ void init_index_commands (void);
 #define CF_regular_font_style	        0x0200
 #define CF_in_heading     	        0x0400
 #define CF_ref			        0x0800
-/* free                 	        0x1000 */
+#define CF_ALIAS                        0x1000
 #define CF_block		        0x2000
 #define CF_raw			        0x4000
 #define CF_format_raw		        0x8000
