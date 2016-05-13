@@ -357,7 +357,7 @@ parse_line_command_args (ELEMENT *line_command)
         new_cmd = add_texinfo_command (new_command);
         new_cmd &= ~USER_COMMAND_BIT;
         user_defined_command_data[new_cmd].flags
-          |= (CF_INFOENCLOSE & CF_brace);
+          |= (CF_INFOENCLOSE | CF_brace);
         /* TODO: Remember the data. */
 
         ADD_ARG(new_command); free (new_command);

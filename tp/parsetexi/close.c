@@ -270,7 +270,12 @@ close_current (ELEMENT *current,
             {
               line_error ("no matching `@end %s'",
                           command_name(current->cmd));
-              // TODO: ignored conditional
+
+              /* Ignored conditional. */
+              if (command_data(current->cmd).data == BLOCK_conditional)
+                destroy_element (pop_element_from_contents (current->parent));
+              /* FIXME: Why not avoid adding the element
+                 in the first place? */
             }
           current = current->parent;
         }

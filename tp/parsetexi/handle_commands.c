@@ -786,14 +786,40 @@ handle_block_command (ELEMENT *current, char **line_inout,
 
             }
         }
-      else if (!memcmp (command_name(cmd), "ifnot", 5))
+      else if (!memcmp (command_name(cmd), "if", 2)) //4687
         {
-          /* FIXME: Check @ifnot* a nicer way. */
-          // TODO
-        }
-      else if (!memcmp (command_name(cmd), "if", 2))
-        {
-          // TODO
+          int i; char *p;
+          /* Handle @if* and @ifnot* */
+          /* FIXME: Check @if and @ifnot* a nicer way, without memcmp. */
+
+          struct expanded_format {
+              char *format;
+              int expandedp;
+          };
+          static struct expanded_format expanded_formats[] = {
+              "html", 0,
+              "docbook", 0,
+              "plaintext", 1,
+              "tex", 0,
+              "xml", 0,
+              "info", 1,
+          };
+          /* TODO: Allow user to change which formats are true. */
+
+          p = command_name(cmd) + 2; /* After "if". */
+          if (!memcmp (p, "not", 3))
+            p += 3; /* After "not". */
+          for (i = 0; i < sizeof (expanded_formats)/sizeof (*expanded_formats);
+               i++)
+            {
+              if (!strcmp (p, expanded_formats[i].format))
+                {
+                  iftrue = expanded_formats[i].expandedp;
+                  break;
+                }
+            }
+          if (!memcmp (command_name(cmd), "ifnot", 5))
+            iftrue = !iftrue;
         }
       else
         abort (); // BUG

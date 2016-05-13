@@ -672,6 +672,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
   char *line_after_command;
   int retval = 1; /* Return value of function */
   enum command_id end_cmd;
+  char *p;
 
   enum command_id cmd = CM_NONE;
 
@@ -736,6 +737,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
         }
 
       /* 3755 Else check if line is "@end ..." for current command. */
+      p = line;
       if (is_end_current_command (current, &line, &end_cmd))
         {
           ELEMENT *last_child;
@@ -743,9 +745,19 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
 
           last_child = last_contents_child (current);
            
-         if (last_child
-             && last_child->type == ET_raw
-             && current->cmd != CM_verbatim)
+          if (strchr (whitespace_chars, *p))
+            {
+              ELEMENT *e;
+              int n = strspn (line, whitespace_chars);
+              e = new_element (ET_raw);
+              text_append_n (&e->text, line, n);
+              line += n;
+              line_warn ("@end %s should only appear at the "
+                         "beginning of a line", command_name(end_cmd));
+            }
+          else if (last_child
+                   && last_child->type == ET_raw
+                   && current->cmd != CM_verbatim)
             {
               if (last_child->text.end > 0
                   && last_child->text.text[last_child->text.end - 1] == '\n')
