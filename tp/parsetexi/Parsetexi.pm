@@ -167,6 +167,12 @@ sub parser (;$$)
 	    store_value ($v, "<<UNKNOWN VALUE>>");
 	  }
 	}
+      } elsif ($key eq 'expanded_formats') {
+        clear_expanded_formats ();
+
+        for my $f (@{$parser->{$key}}) {
+          add_expanded_format ($f);
+        }
       } else {
 	#warn "ignoring parser configuration value \"$key\"\n";
       }

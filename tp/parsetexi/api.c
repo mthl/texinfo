@@ -46,10 +46,16 @@ void
 reset_parser (void)
 {
   wipe_user_commands ();
+  wipe_values ();
+  wipe_macros ();
   init_index_commands ();
   wipe_errors ();
   reset_context_stack ();
   reset_floats ();
+  clear_expanded_formats ();
+  add_expanded_format ("plaintext");
+  add_expanded_format ("info");
+
   current_node = current_section = 0;
 }
 
@@ -58,7 +64,6 @@ void
 parse_file (char *filename)
 {
   debug_output = 0;
-  reset_parser ();
   parse_texi_file (filename);
 }
 
@@ -74,7 +79,6 @@ void
 parse_string (char *string)
 {
   ELEMENT *root;
-  reset_parser ();
   root = new_element (ET_root_line);
   input_push_text (strdup (string), 0);
   Root = parse_texi (root);
@@ -85,7 +89,6 @@ void
 parse_text (char *string)
 {
   ELEMENT *root;
-  reset_parser ();
   root = new_element (ET_text_root);
   input_push_text_with_line_nos (strdup (string), 1);
   Root = parse_texi (root);
@@ -396,7 +399,12 @@ element_to_perl_hash (ELEMENT *e)
                                newSVpv (f->contents.list[j]->text.text,
                                         f->contents.list[j]->text.end));
                     }
-                  /* else an error? */
+                  else
+                    {
+                      /* Empty strings permitted. */
+                      av_push (av,
+                               newSVpv ("", 0));
+                    }
                 }
               break;
               }

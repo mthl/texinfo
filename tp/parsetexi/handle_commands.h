@@ -7,3 +7,6 @@ ELEMENT *handle_brace_command (ELEMENT *current, char **line_inout,
                                enum command_id cmd_id);
 int check_no_text (ELEMENT *current);
 int register_global_command (enum command_id cmd, ELEMENT *current);
+
+void clear_expanded_formats (void);
+void add_expanded_format (char *format);

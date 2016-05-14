@@ -119,3 +119,10 @@ build_global_info2 ()
 void
 reset_parser ()
 
+void
+clear_expanded_formats ()
+
+void
+add_expanded_format (format)
+     char *format
+

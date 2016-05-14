@@ -661,7 +661,8 @@ parse_line_command_args (ELEMENT *line_command)
             ADD_ARG(line);
           }
         else
-          line_error ("expected @%s on or off, not `%s'", line);
+          line_error ("expected @%s on or off, not `%s'",
+                      command_name(cmd), line);
 
         break;
       }

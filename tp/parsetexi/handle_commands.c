@@ -698,6 +698,48 @@ int min_level = 0, max_level = 5;
   /* then adjust according to raise-/lowersections. */
 }
 
+          /* TODO: Allow user to change which formats are true. */
+struct expanded_format {
+    char *format;
+    int expandedp;
+};
+static struct expanded_format expanded_formats[] = {
+    "html", 0,
+    "docbook", 0,
+    "plaintext", 1,
+    "tex", 0,
+    "xml", 0,
+    "info", 1,
+};
+
+void
+clear_expanded_formats (void)
+{
+  int i;
+  for (i = 0; i < sizeof (expanded_formats)/sizeof (*expanded_formats);
+       i++)
+    {
+      expanded_formats[i].expandedp = 0;
+    }
+}
+
+void
+add_expanded_format (char *format)
+{
+  int i;
+  for (i = 0; i < sizeof (expanded_formats)/sizeof (*expanded_formats);
+       i++)
+    {
+      if (!strcmp (format, expanded_formats[i].format))
+        {
+          expanded_formats[i].expandedp = 1;
+          break;
+        }
+    }
+  if (!strcmp (format, "plaintext"))
+    add_expanded_format ("info");
+}
+
 /* line 4632 */
 /* A command name has been read that starts a multiline block, which should
    end in @end <command name>.  The block will be processed until 
@@ -791,20 +833,6 @@ handle_block_command (ELEMENT *current, char **line_inout,
           int i; char *p;
           /* Handle @if* and @ifnot* */
           /* FIXME: Check @if and @ifnot* a nicer way, without memcmp. */
-
-          struct expanded_format {
-              char *format;
-              int expandedp;
-          };
-          static struct expanded_format expanded_formats[] = {
-              "html", 0,
-              "docbook", 0,
-              "plaintext", 1,
-              "tex", 0,
-              "xml", 0,
-              "info", 1,
-          };
-          /* TODO: Allow user to change which formats are true. */
 
           p = command_name(cmd) + 2; /* After "if". */
           if (!memcmp (p, "not", 3))

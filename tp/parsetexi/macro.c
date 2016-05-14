@@ -38,26 +38,37 @@ static size_t macro_space;
 
 /* Macro definition. */
 
+static MACRO *lookup_macro (enum command_id cmd);
+
 void
 new_macro (char *name, ELEMENT *macro)
 {
   enum command_id new;
+  MACRO *m = 0;
 
-  if (macro_number == macro_space)
+  /* Check for an existing definition first for us to overwrite. */
+  new = lookup_command (name);
+  if (new)
+    m = lookup_macro (new);
+  if (!m)
     {
-      macro_list = realloc (macro_list, (macro_space += 5) * sizeof (MACRO));
-      if (!macro_list)
-        abort ();
+      if (macro_number == macro_space)
+        {
+          macro_list = realloc (macro_list,
+                                (macro_space += 5) * sizeof (MACRO));
+          if (!macro_list)
+            abort ();
+        }
+      new = add_texinfo_command (name);
+      m = &macro_list[macro_number];
+      m->cmd = new;
+      macro_number++;
+      new &= ~USER_COMMAND_BIT;
+      user_defined_command_data[new].flags |= CF_MACRO;
     }
 
-  macro_list[macro_number].macro_name = name; /* strdup ? */
-  macro_list[macro_number].element = macro;
-
-  new = add_texinfo_command (name);
-  macro_list[macro_number++].cmd = new;
-  new &= ~USER_COMMAND_BIT;
-
-  user_defined_command_data[new].flags |= CF_MACRO;
+  m->macro_name = name; /* strdup ? */
+  m->element = macro;
 }
 
 // 1088
@@ -412,6 +423,12 @@ delete_macro (char *name)
   m->macro_name = "";
   m->element = 0;
   remove_texinfo_command (cmd);
+}
+
+void
+wipe_macros (void)
+{
+  macro_number = 0;
 }
 
 // 3898
