@@ -349,7 +349,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                 }
               else
                 {
-                  line_error ("@%s not meaningful within `@%s' block",
+                  line_error ("@%s not meaningful inside `@%s' block",
                               command_name(cmd),
                               command_name(parent->cmd));
                 }
@@ -370,7 +370,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                 }
               else
                 {
-                  line_error ("@%s not meaningful within `@%s' block",
+                  line_error ("@%s not meaningful inside `@%s' block",
                               command_name(cmd),
                               command_name(parent->cmd));
                   current = begin_preformatted (current);

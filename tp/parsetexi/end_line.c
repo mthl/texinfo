@@ -1114,15 +1114,18 @@ end_line_starting_block (ELEMENT *current)
           else
             {
               ELEMENT *e = k->value;
-              if (!(command_flags(e) & CF_brace))
+              if (!(command_flags(e) & CF_brace)
+                  || (command_data(e->cmd).data == 0))
                 {
                   command_error (current,
                                  "command @%s not accepting argument in brace "
                                  "should not be on @%s line",
-                                 e->cmd,
+                                 command_name(e->cmd),
                                  command_name(current->cmd));
                   k->key = "";
                   k->type = extra_deleted;
+                  /* FIXME: Error message for accent commands is done
+                     elsewhere (3040). */
                 }
             }
         }
@@ -1170,13 +1173,22 @@ end_line_starting_block (ELEMENT *current)
           KEY_PAIR *k = lookup_extra_key (current, "command_as_argument");
           if (k && k->value)
             {
-              char *s = (char *) k->value;
-              enum command_id cmd = lookup_command (s);
+              enum command_id cmd = k->value->cmd;
               if (cmd && (command_data(cmd).flags & CF_accent))
                 {
                   command_warn (current, "accent command `@%s' "
-                                "not allowed as @%s argument", s,
+                                "not allowed as @%s argument",
+                                command_name(cmd),
                                 command_name(current->cmd));
+                  k->key = "";
+                  k->value = 0;
+                  k->type = extra_deleted;
+                  k = lookup_extra_key (current,
+                                        "block_command_line_contents");
+                  if (k)
+                    {
+                      k->key = ""; k->type = extra_deleted;
+                    }
                 }
             }
         }
