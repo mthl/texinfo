@@ -87,8 +87,21 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       add_to_element_args (current, arg);
       current = arg;
 
-      /* 4903 */
-      if (command_data(command).data == BRACE_context)
+      if (command == CM_verb)
+        {
+          current->type = ET_brace_command_arg;
+          /* Save the deliminating character in 'type'.  This is a reuse of 
+             'type' for a different purpose. */
+          if (!*line || *line == '\n')
+            {
+              line_error ("@verb without associated character");
+              current->parent->type = 0;
+            }
+          else
+            current->parent->type = (enum element_type) *line++;
+        }
+        /* 4903 */
+      else if (command_data(command).data == BRACE_context)
         {
           if (command == CM_caption || command == CM_shortcaption)
             {

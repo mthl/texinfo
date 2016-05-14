@@ -1034,7 +1034,7 @@ handle_brace_command (ELEMENT *current, char **line_inout,
     {
       add_extra_string (e, "clickstyle", global_clickstyle);
     }
-  if (command_data(cmd).flags & CF_INFOENCLOSE)
+  else if (command_data(cmd).flags & CF_INFOENCLOSE)
     {
       INFO_ENCLOSE *ie = lookup_infoenclose (cmd);
       if (ie)

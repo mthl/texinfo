@@ -45,10 +45,18 @@ close_brace_command (ELEMENT *current,
     }
   else
     {
+      char s[2];
+      if ((char) current->type)
+        {
+          s[0] = (char) current->type;
+          s[1] = 0;
+        }
+      else
+        s[0] = 0;
+      
       command_error (current,
-                      "@%s missing closing delimiter sequence: %s",
-                      command_name(current->cmd),
-                      element_type_names[current->type]);
+                      "@%s missing closing delimiter sequence: %s}",
+                      command_name(current->cmd), s);
     }
   current = current->parent;
   return current;

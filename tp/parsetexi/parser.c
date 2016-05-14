@@ -845,35 +845,25 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
       char c;
       char *q;
 
-      /* Save the deliminating character in 'type', if not already done.
-         This is a reuse of 'type' for a different purpose.
-         If we use 'text' instead, we can get extra text stuck on the end of it 
-         for some reason (probably from "merging text"). */
-      if (!current->parent->type)
-        {
-          if (!*line)
-            {
-              line_error ("@verb without associated character");
-              // TODO: How should we recover from this?
-              retval = GET_A_NEW_LINE; goto funexit;
-            }
-          else
-            current->parent->type = (enum element_type) *line++;
-        }
-
       c = (char) current->parent->type;
-
-      /* Look forward for the delimiter character followed by a close
-         brace. */
-      q = line;
-      do
+      if (c)
         {
-          q = strchr (q, c);
-          if (!q || q[1] == '}')
-            break;
-          q++;
+          /* Look forward for the delimiter character followed by a close
+             brace. */
+          q = line;
+          while (1)
+            {
+              q = strchr (q, c);
+              if (!q || q[1] == '}')
+                break;
+              q++;
+            }
         }
-      while (1);
+      else
+        {
+          /* Look forward for a close brace. */
+          q = strchr (line, '}');
+        }
 
       if (q)
         {
@@ -884,8 +874,11 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
               text_append_n (&e->text, line, q - line);
               add_to_element_contents (current, e);
             }
-          line = q + 1;
           debug ("END VERB");
+          if (c)
+            line = q + 1;
+          else
+            line = q;
           /* The '}' will close the @verb command in handle_separator below. */
         }
       else
