@@ -524,14 +524,49 @@ wipe_values (void)
 void
 store_value (char *name, char *value)
 {
-  if (value_number == value_space)
+  int i;
+  VALUE *v = 0;
+  int len;
+
+  len = strlen (name);
+
+  /* Check if already defined. */
+  for (i = 0; i < value_number; i++)
     {
-      value_list = realloc (value_list, (value_space += 5) * sizeof (VALUE));
+      if (!memcmp (value_list[i].name, name, len) && !value_list[i].name[len])
+        {
+          v = &value_list[i];
+          free (v->name); free (v->value);
+          break;
+        }
     }
-  value_list[value_number].name = strdup (name);
-  value_list[value_number++].value = strdup (value);
+
+  if (!v)
+    {
+      if (value_number == value_space)
+        {
+          value_list = realloc (value_list, (value_space += 5) * sizeof (VALUE));
+        }
+      v = &value_list[value_number++];
+    }
+
+  v->name = strdup (name);
+  v->value = strdup (value);
 }
-/* TODO: What if it is already defined? */
+
+void
+clear_value (char *name, int len)
+{
+  int i;
+  for (i = 0; i < value_number; i++)
+    {
+      if (!memcmp (value_list[i].name, name, len) && !value_list[i].name[len])
+        {
+          value_list[i].name[0] = '\0';
+          value_list[i].value[0] = '\0';
+        }
+    }
+}
 
 char *
 fetch_value (char *name, int len)

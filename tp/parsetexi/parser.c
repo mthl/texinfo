@@ -721,10 +721,11 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
           ELEMENT *e;
           char *p = line;
           p += strspn (p, whitespace_chars);
-          if (!strncmp (p, command_name(current->cmd),
-                        strlen (command_name(current->cmd))))
+          if (*p == '@'
+              && !strncmp (p + 1, command_name(current->cmd),
+                           strlen (command_name(current->cmd))))
             {
-              line = p;
+              line = p + 1;
               p += strlen (command_name(current->cmd));
               e = new_element (ET_NONE);
               e->cmd = current->cmd;
@@ -877,9 +878,12 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
       if (q)
         {
           /* Save up to the delimiter character. */
-          ELEMENT *e = new_element (ET_raw);
-          text_append_n (&e->text, line, q - line);
-          add_to_element_contents (current, e);
+          if (q != line)
+            {
+              ELEMENT *e = new_element (ET_raw);
+              text_append_n (&e->text, line, q - line);
+              add_to_element_contents (current, e);
+            }
           line = q + 1;
           debug ("END VERB");
           /* The '}' will close the @verb command in handle_separator below. */

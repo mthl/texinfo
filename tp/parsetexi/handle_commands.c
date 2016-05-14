@@ -817,8 +817,6 @@ handle_block_command (ELEMENT *current, char **line_inout,
                       if (cmd == CM_ifcommandnotdefined)
                         iftrue = !iftrue;
                     }
-                  debug ("CONDITIONAL @%s %s: %d", command_name(cmd), flag,
-                         iftrue);
                 }
               else if (0)
                 {
@@ -857,7 +855,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
       // open a new element (which we shall later remove, in
       // process_remaining_on_line ("CLOSED conditional").
 
-      debug ("CONDITIONAL %s", command_name(cmd));
+      debug ("CONDITIONAL %s %d", command_name(cmd), iftrue);
       if (iftrue)
         push_conditional_stack (cmd);
       else

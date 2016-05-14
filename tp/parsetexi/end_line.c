@@ -80,7 +80,7 @@ parse_special_misc_command (char *line, enum command_id cmd
 } while (0)
 
   ELEMENT *args = new_element (ET_NONE);
-  char *p, *q;
+  char *p, *q, *r;
   char *value;
 
   switch (cmd)
@@ -139,7 +139,31 @@ set_invalid:
       break;
       }
     case CM_clear:
+      {
+      char *flag;
+      p = line;
+      p += strspn (p, whitespace_chars);
+      if (!*p)
+        goto clear_no_name;
+      q = p;
+      flag = read_command_name (&q);
+      if (!flag)
+        goto clear_invalid;
+      r = q + strspn (q, whitespace_chars);
+      if (*r)
+        goto clear_invalid; /* Trailing argument. */
+
+      ADD_ARG (p, q - p);
+      clear_value (p, q - p);
+      
       break;
+clear_no_name:
+      line_error ("@clear requires a name");
+      break;
+clear_invalid:
+      line_error ("bad name for @clear");
+      break;
+      }
     case CM_unmacro:
       p = line;
       p += strspn (p, whitespace_chars);
