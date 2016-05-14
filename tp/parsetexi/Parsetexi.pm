@@ -133,9 +133,6 @@ sub parser (;$$)
   $parser->{'gettext'} = $parser_default_configuration{'gettext'};
   $parser->{'pgettext'} = $parser_default_configuration{'pgettext'};
 
-  ## wipe_values ();
-  ## init_index_commands ();
-  ## init_floats ();
   reset_parser ();
   # fixme: these are overwritten immediately after
   if (defined($conf)) {
@@ -293,68 +290,20 @@ sub parse_texi_file ($$)
 
   my ($TREE, $LABELS, $FLOATS,
       $INDEX_NAMES, $ERRORS, $GLOBAL_INFO, $GLOBAL_INFO2);
-  if (1) {
-    # This is our third way of passing the data: construct it using
-    # Perl api directly.
-    #print "Parsing file...\n";
-    parse_file ($file_name);
-    #print "Fetching data..\n";
-    $TREE = build_texinfo_tree ();
-    #print "Got tree...\n";
-    #print Texinfo::Parser::_print_tree ($TREE);
+  parse_file ($file_name);
+  $TREE = build_texinfo_tree ();
 
-    $LABELS = build_label_list ();
-    $FLOATS = build_float_list ();
+  $LABELS = build_label_list ();
+  $FLOATS = build_float_list ();
 
-    $INDEX_NAMES = build_index_data ();
+  $INDEX_NAMES = build_index_data ();
 
-    # Commenting out this line changes the run time of makeinfo elisp.texi
-    # from about 17.0 sec to 13.0 sec.  documentencoding is utf-8.
-    $GLOBAL_INFO = build_global_info ();
+  $GLOBAL_INFO = build_global_info ();
 
-    $GLOBAL_INFO2 = build_global_info2 ();
+  $GLOBAL_INFO2 = build_global_info2 ();
 
-  } elsif (0) {
-    # $| = 1; # Flush after each print
-    print "Parsing file...\n";
-    parse_file ($file_name);
-    print "Fetching data\n";
-    $tree_stream = dump_tree_to_string_1 ();
-    #print "tree stream is $tree_stream\n";
-    eval $tree_stream;
-    $tree_stream = dump_root_element_1 ();
-    eval $tree_stream;
-    while (1) {
-      $tree_stream = dump_root_element_2 ();
-      last if (!defined $tree_stream);
-      eval $tree_stream;
-    }
-    $tree_stream = dump_tree_to_string_2 ();
-    #print "tree stream is $tree_stream\n";
-    eval $tree_stream;
-    $tree_stream = dump_tree_to_string_25 ();
-    #print "tree stream is $tree_stream\n";
-    eval $tree_stream;
-    $tree_stream = dump_tree_to_string_3 ();
-    #print "tree stream is $tree_stream\n";
-    eval $tree_stream;
-    print "Got data.\n";
-  } elsif (0) {
-
-    # This calls a separate executable instead of using the code
-    # compliled into Parsetexi.pm as a library.
-    $tree_stream = qx(./parsetexi $file_name 2>/dev/null);
-
-    print "Reading tree...\n";
-    eval $tree_stream;
-    print "Read tree.\n";
-  }
-
-  #print "Adjusting tree...\n";
   _add_parents ($TREE);
   _complete_node_list ($self, $TREE);
-  #print "Adjusted tree.\n";
-
 
   # line 899
   my $text_root;
@@ -392,12 +341,9 @@ sub parse_texi_file ($$)
     }
   }
 
-
-
   ############################################################
 
   $self->{'info'} = $GLOBAL_INFO;
-  #print "!!! ENCODING IS ", $self->{'info'}->{'input_encoding_name'} , "\n";
   $self->{'extra'} = $GLOBAL_INFO2;
 
   if (defined($self->{'info'}->{'input_encoding_name'})) {
@@ -405,29 +351,13 @@ sub parse_texi_file ($$)
       = Texinfo::Encoding::encoding_alias(
             $self->{'info'}->{'input_encoding_name'});
     $self->{'info'}->{'input_encoding_name'} = $input_encoding;
-    #print "!!! ENCODING IS ", $self->{'info'}->{'input_encoding_name'} , "\n";
-
   }
   $self->{'info'}->{'input_file_name'} = $file_name;
 
   $self->{'labels'} = $LABELS;
   $self->{'floats'} = $FLOATS;
 
-  #$self->{'index_names'} = $INDEX_NAMES;
-  #for my $index (keys %$INDEX_NAMES) {
-  #  if ($INDEX_NAMES->{$index}->{'merged_in'}) {
-  #    $self->{'merged_indices'}-> {$index}
-  #      = $INDEX_NAMES->{$index}->{'merged_in'};
-  #  }
-  #}
-
   _get_errors ($self);
-
-
-  #$Data::Dumper::Purity = 1;
-  #$Data::Dumper::Indent = 1;
-  #my $bar = Data::Dumper->Dump([$TREE], ['$TREE']);
-  #print $bar;
 
   return $TREE;
 }

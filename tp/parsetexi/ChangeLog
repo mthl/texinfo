@@ -1,3 +1,8 @@
+2016-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* Parsetexi.pm: Remove commented-out code to use other methods 
+	of getting data from C code.
+
 2016-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* texi2any-2-C.pl: Remove file.
