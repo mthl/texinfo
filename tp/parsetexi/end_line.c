@@ -302,8 +302,6 @@ parse_line_command_args (ELEMENT *line_command)
         char *new = 0, *existing = 0;
         enum command_id new_cmd, existing_cmd;
 
-        if (!isalnum (*line)) /* This stops e.g. "@alias * = :" */
-          goto alias_invalid;
         new = read_command_name (&line);
         if (!new)
           goto alias_invalid;
@@ -320,12 +318,21 @@ parse_line_command_args (ELEMENT *line_command)
         if (!existing)
           goto alias_invalid;
 
+        if (*line)
+          goto alias_invalid; /* Trailing argument. */
+
         ADD_ARG(new);
         ADD_ARG(existing);
 
         existing_cmd = lookup_command (existing);
         if (!existing_cmd)
           break; /* TODO: Error message */
+        else
+          {
+            if (command_data(existing_cmd).flags & CF_block)
+              line_warn ("environment command %s as argument to @alias",
+                         command_name(existing_cmd));
+          }
 
         /* Remember the alias. */
         new_cmd = add_texinfo_command (new);
