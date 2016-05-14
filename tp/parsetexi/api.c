@@ -63,7 +63,7 @@ reset_parser (void)
 void
 parse_file (char *filename)
 {
-  debug_output = 0;
+  debug_output = 1;
   parse_texi_file (filename);
 }
 
@@ -510,7 +510,8 @@ element_to_perl_hash (ELEMENT *e)
                   newRV_inc((SV *)extra), 0);
     }
 
-  if (e->line_nr.line_nr)
+  if (e->line_nr.line_nr
+      && !(command_flags(e) & CF_INFOENCLOSE))
     {
 #define STORE(key, sv) hv_store (hv, key, strlen (key), sv, 0)
       LINE_NR *line_nr = &e->line_nr;

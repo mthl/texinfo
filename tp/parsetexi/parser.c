@@ -927,9 +927,14 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
             {
               cmd = lookup_command (command);
               if (!cmd)
-                line_error ("unknown command `%s'", command); // 4877
+                {
+                  line_error ("unknown command `%s'", command); // 4877
+                  line = line_after_command;
+                }
             }
           free (command);
+          if (!cmd)
+            0;//goto funexit;
         }
       if (cmd && (command_data(cmd).flags & CF_ALIAS))
         cmd = command_data(cmd).data;
@@ -1142,6 +1147,7 @@ value_valid:
                   /* Prevent merging with following.  TODO: Check why
                      this happens in the first place. */
                   add_to_element_contents (current, new_element (ET_NONE));
+                  line++; /* past '}' */
                 }
               else
                 {
@@ -1238,7 +1244,6 @@ value_invalid:
       if (cmd == 0)
         {
           // 4287 Unknown command
-          //line_error ("unknown command `@%s'",);
           retval = 1;
           goto funexit;
         }

@@ -582,3 +582,55 @@ fetch_value (char *name, int len)
     return "1";
   return 0;
 }
+
+
+static INFO_ENCLOSE *infoencl_list;
+static size_t infoencl_number;
+static size_t infoencl_space;
+
+INFO_ENCLOSE *
+lookup_infoenclose (enum command_id cmd)
+{
+  int i;
+  for (i = 0; i < infoencl_number; i++)
+    {
+      if (infoencl_list[i].cmd == cmd)
+        return &infoencl_list[i];
+    }
+  return 0;
+}
+
+void
+add_infoenclose (enum command_id cmd, char *begin, char *end)
+{
+  int i;
+  INFO_ENCLOSE *ie = 0;
+
+  /* Check if already defined. */
+  for (i = 0; i < infoencl_number; i++)
+    {
+      if (infoencl_list[i].cmd == cmd)
+        {
+          ie = &infoencl_list[i];
+          free (ie->begin);
+          free (ie->end);
+          break;
+        }
+    }
+
+  if (!ie)
+    {
+      if (infoencl_number == infoencl_space)
+        {
+          infoencl_list = realloc (infoencl_list,
+                                   (infoencl_space += 5)
+                                   * sizeof (INFO_ENCLOSE));
+        }
+      ie = &infoencl_list[infoencl_number++];
+    }
+
+  ie->cmd = cmd;
+  ie->begin = strdup (begin);
+  ie->end = strdup (end);
+}
+

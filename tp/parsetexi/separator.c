@@ -552,7 +552,7 @@ handle_separator (ELEMENT *current, char separator, char **line_inout)
       char t[2];
       t[0] = separator;
       t[1] = '\0';
-      merge_text (current, t);
+      current = merge_text (current, t);
     }
 
   *line_inout = line;

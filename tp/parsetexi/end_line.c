@@ -379,10 +379,12 @@ parse_line_command_args (ELEMENT *line_command)
 
         /* Remember it. */
         new_cmd = add_texinfo_command (new_command);
+        add_infoenclose (new_cmd, start, end);
         new_cmd &= ~USER_COMMAND_BIT;
+
         user_defined_command_data[new_cmd].flags
           |= (CF_INFOENCLOSE | CF_brace);
-        /* TODO: Remember the data. */
+        user_defined_command_data[new_cmd].data = BRACE_style;
 
         ADD_ARG(new_command); free (new_command);
         ADD_ARG(start); free (start);
