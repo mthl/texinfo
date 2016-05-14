@@ -1364,12 +1364,17 @@ end_line_misc_line (ELEMENT *current)
                           if (0)
                             {
                           conditional_stack_fail:
-                              command_error (current, "unmatched @end");
+                              command_error (current, "unmatched `@end'");
+                              end_command = 0;
                             }
                         }
-                      add_extra_string (current, "command_argument",
-                                        strdup (end_command));
-                      if (line[strspn (line, whitespace_chars)] != '\0')
+                      if (end_command)
+                        {
+                          add_extra_string (current, "command_argument",
+                                            strdup (end_command));
+                        }
+                      if (end_command
+                          && line[strspn (line, whitespace_chars)] != '\0')
                         {
                           command_error (current,
                                          "superfluous argument to @end %s: "

@@ -387,7 +387,7 @@ close_commands (ELEMENT *current, enum command_id closed_command,
     }
   else if (closed_command)
     {
-      line_error ("unmatched @end %s", command_name(closed_command));
+      line_error ("unmatched `@end %s'", command_name(closed_command));
     }
 
   return current;

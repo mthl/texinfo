@@ -1419,12 +1419,13 @@ parse_texi (ELEMENT *root_elt)
         }
     }
 
-#if 0
   /* Check for unclosed conditionals */
-  while (...)
+  while (conditional_number > 0)
     {
+      line_error ("expected @end %s",
+                  command_name(conditional_stack[conditional_number - 1]));
+      conditional_number--;
     }
-#endif
 
     {
       ELEMENT *dummy; // 5254

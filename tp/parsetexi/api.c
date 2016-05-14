@@ -53,8 +53,8 @@ reset_parser (void)
   reset_context_stack ();
   reset_floats ();
   clear_expanded_formats ();
-  add_expanded_format ("plaintext");
-  add_expanded_format ("info");
+  //add_expanded_format ("plaintext");
+  //add_expanded_format ("info");
 
   current_node = current_section = 0;
 }

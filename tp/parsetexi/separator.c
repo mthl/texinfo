@@ -393,7 +393,9 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       enum context c;
 
       current = end_paragraph (current, 0, 0);
-      if (1)
+      if (current->parent
+          && (command_flags(current->parent) & CF_brace)
+          && (command_data(current->parent->cmd).data == BRACE_context))
         {
           enum command_id closed_command;
           c = pop_context ();
@@ -406,11 +408,11 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           if (close_preformatted_command(closed_command))
             current = begin_preformatted (current);
         }
-      else // 5224
-        {
-          /* error - misplaced } */
-          goto funexit;
-        }
+    }
+  else // 5224
+    {
+      line_error ("misplaced }");
+      goto funexit;
     }
   
 funexit:
