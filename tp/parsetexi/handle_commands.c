@@ -345,7 +345,6 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 
                   add_to_element_contents (parent, misc);
                   current = misc;
-                  current = begin_preformatted (current);
                 }
               else
                 {

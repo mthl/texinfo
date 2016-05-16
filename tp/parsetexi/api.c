@@ -156,6 +156,9 @@ build_node_spec (NODE_SPEC_EXTRA *value)
 
   dTHX;
 
+  if (!value->manual_content && !value->node_content)
+    return newSV(0); /* Perl 'undef' */
+
   hv = newHV ();
 
   if (value->manual_content)
@@ -235,6 +238,9 @@ element_to_perl_hash (ELEMENT *e)
   /* FIXME sort out all these special cases */
   if (e->contents.number > 0
       || e->type == ET_text_root
+      || e->type == ET_bracketed
+      || e->type == ET_bracketed_def_content
+      || e->type == ET_misc_line_arg
       || e->cmd == CM_image // why image?
       || e->cmd == CM_item && e->parent && e->parent->type == ET_row
       || e->cmd == CM_tab && e->parent && e->parent->type == ET_row
@@ -410,7 +416,8 @@ element_to_perl_hash (ELEMENT *e)
             case extra_node_spec:
               /* A complex structure - see "parse_node_manual" function
                  in end_line.c */
-              STORE(build_node_spec ((NODE_SPEC_EXTRA *) f));
+              if (f)
+                STORE(build_node_spec ((NODE_SPEC_EXTRA *) f));
               break;
             case extra_node_spec_array:
               {
@@ -724,6 +731,11 @@ build_single_index_data (INDEX *i)
               /* FIXME: Allow to be different. */
               STORE2("content_normalized",
                      newRV_inc ((SV *)(AV *)SvRV(*contents_array)));
+            }
+          else
+            {
+              STORE2("content", newRV_inc ((SV *)newAV ()));
+              STORE2("content_normalized", newRV_inc ((SV *)newAV ()));
             }
         }
       if (e->node)

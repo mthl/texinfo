@@ -1504,13 +1504,16 @@ end_line_misc_line (ELEMENT *current)
         is not empty (_check_empty_node).  */
       //check_node_label ();
 
-      add_extra_contents (current, "node_content",
+      if (nodes_manuals[0])
+        {
+          add_extra_contents (current, "node_content",
                               nodes_manuals[0]->node_content);
 
-      /* This sets 'node_content' and 'normalized' on the node, among
-         other things (which were already set in parse_node_manual).
-         Are we normalizing the name twice? */
-      register_label (current, nodes_manuals[0]);
+          /* This sets 'node_content' and 'normalized' on the node, among
+             other things (which were already set in parse_node_manual).
+             Are we normalizing the name twice? */
+          register_label (current, nodes_manuals[0]);
+        }
 
       current_node = current;
     }
