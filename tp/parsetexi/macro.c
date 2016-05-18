@@ -118,9 +118,10 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
   args_ptr++;
 
   index = 0;
-  do
+  while (1)
     {
-      /* args_ptr is after a '{' or ','. */
+      /* args_ptr is after a '{' or ','.  INDEX holds the number of
+         the macro argument */
 
       char *q, *q2;
       ELEMENT *arg;
@@ -148,29 +149,32 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
           // 1126 - argument is completely whitespace
           if (index == 0)
             break; /* Empty arg list, like "@macro m { }". */
-          abort ();
+          line_error ("bad or empty @%s formal argument:",
+                      command_name(cmd));
         }
-
-      arg = new_element (ET_macro_arg);
-      text_append_n (&arg->text, args_ptr, q2 - args_ptr);
-      add_to_element_args (macro, arg);
-
-      /* Check the argument name. */
-      {
-      char *p;
-      for (p = args_ptr; p < q2; p++)
+      else
         {
-          if (!isalnum (*p) && *p != '_' && *p != '-')
+          arg = new_element (ET_macro_arg);
+          text_append_n (&arg->text, args_ptr, q2 - args_ptr);
+          add_to_element_args (macro, arg);
+
+          /* Check the argument name. */
             {
-              char c = *q2; *q2 = 0;
-              line_error ("bad or empty @%s formal argument: %s",
-                          command_name(cmd), args_ptr);
-              *q2 = c;
-              add_extra_string (macro, "invalid_syntax", "1");
-              break;
+              char *p;
+              for (p = args_ptr; p < q2; p++)
+                {
+                  if (!isalnum (*p) && *p != '_' && *p != '-')
+                    {
+                      char c = *q2; *q2 = 0;
+                      line_error ("bad or empty @%s formal argument: %s",
+                                  command_name(cmd), args_ptr);
+                      *q2 = c;
+                      add_extra_string (macro, "invalid_syntax", "1");
+                      break;
+                    }
+                }
             }
         }
-      }
 
       args_ptr = q + 1;
 
@@ -179,7 +183,6 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
 
       index++;
     }
-  while (1);
   line = args_ptr;
 
   /* FIXME: What if there is stuff after the '}'? */
@@ -193,7 +196,9 @@ funexit:
 
 /* Macro use. */
 
-/* Return index into given arguments to look for the value of NAME. */
+/* Return index into given arguments to look for the value of NAME.
+   Return -1 if not found. */
+
 int
 lookup_macro_parameter (char *name, ELEMENT *macro)
 {
@@ -212,7 +217,6 @@ lookup_macro_parameter (char *name, ELEMENT *macro)
           pos++;
         }
     }
-  abort ();
   return -1;
 }
 
@@ -263,9 +267,15 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
       switch (*sep)
         {
         case '\\':
-          if (*pline)
-            text_append_n (&arg, pline, 1);
-          pline = sep + 1;
+          if (!strchr ("\\{}", sep[1]))
+            text_append_n (&arg, sep, 1);
+          if (sep[1])
+            {
+              text_append_n (&arg, &sep[1], 1);
+              pline = sep + 2;
+            }
+          else
+            pline = sep + 1;
           break;
         case '{':
           braces_level++;
@@ -326,6 +336,7 @@ funexit:
   return arg_list;
 }
 
+// 2063
 /* ARGUMENTS are the arguments used in the macro invocation.  EXPANDED gets the 
    result of the expansion. */
 static void
@@ -388,7 +399,8 @@ expand_macro_body (ELEMENT *macro, char *arguments[], TEXT *expanded)
                 abort ();
               *bs = '\\';
 
-              text_append (expanded, arguments[pos]);
+              if (arguments && arguments[pos])
+                text_append (expanded, arguments[pos]);
               ptext = bs + 1;
             }
         }
@@ -473,6 +485,15 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
   expand_macro_body (macro, arguments, &expanded);
   debug ("MACROBODY: %s||||||", expanded.text);
 
+
+  if (input_number >= 1000)
+    {
+      line_warn (
+         "macro call nested too deeply "
+         "(set MAX_NESTED_MACROS to override; current value %d)", 1000);
+      goto funexit;
+    }
+
   /* Free arguments. */
   if (arguments)
     {
@@ -493,6 +514,7 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
   line = strchr (line, '\0');
   input_push_text (expanded.text, command_name(cmd));
 
+funexit:
   *line_inout = line;
   return current;
 }

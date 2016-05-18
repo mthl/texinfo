@@ -39,8 +39,8 @@ typedef struct {
 } INPUT;
 
 static INPUT *input_stack = 0;
-size_t input_number = 0;
-static size_t input_space = 0;
+int input_number = 0;
+int input_space = 0;
 
 /* Current filename and line number.  Used for reporting. */
 LINE_NR line_nr;
@@ -205,7 +205,8 @@ input_push (char *text, char *macro, char *filename, int line_number)
 void
 input_push_text (char *text, char *macro)
 {
-  input_push (text, macro, 0, line_nr.line_nr);
+  if (text)
+    input_push (text, macro, 0, line_nr.line_nr);
 }
 
 /* Used in tests - like input_push_text, but the lines from the text have

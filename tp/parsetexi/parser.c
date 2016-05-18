@@ -649,6 +649,9 @@ is_end_current_command (ELEMENT *current, char **line,
     return 0;
 
   linep += strspn (linep, whitespace_chars);
+  if (!*linep)
+    return 0;
+
   cmdname = read_command_name (&linep);
   *end_cmd = lookup_command (cmdname);
   free (cmdname);
@@ -1413,6 +1416,8 @@ parse_texi (ELEMENT *root_elt)
       while (1)
         {
           if (!process_remaining_on_line (&current, &line))
+            break;
+          if (!line)
             break;
         }
     }

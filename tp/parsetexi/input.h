@@ -9,3 +9,5 @@ void input_push_text_with_line_nos (char *text, int starting);
 void input_push_file (char *filename);
 
 extern LINE_NR line_nr;
+
+extern int input_number;
