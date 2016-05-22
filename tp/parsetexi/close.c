@@ -263,6 +263,8 @@ close_current (ELEMENT *current,
         }
       else if (command_flags(current) & CF_block)
         {
+          enum command_id cmd = current->cmd;
+          ELEMENT *parent = 0;
           if (closed_command)
             {
               line_error ("`@end' expected `%s', but saw `%s'",
@@ -282,16 +284,21 @@ close_current (ELEMENT *current,
 
               /* Ignored conditional. */
               if (command_data(current->cmd).data == BLOCK_conditional)
-                destroy_element (pop_element_from_contents (current->parent));
+                {
+                  parent = current->parent;
+                  destroy_element (pop_element_from_contents (parent));
+                }
               /* FIXME: Why not avoid adding the element
                  in the first place? */
             }
-          if (command_flags(current)
+          if (command_data(cmd).flags
               & (CF_preformatted | CF_menu | CF_format_raw))
             {
               pop_context ();
             }
-          current = current->parent;
+          if (!parent)
+            parent = current->parent;
+          current = parent;
         }
       else
         {
