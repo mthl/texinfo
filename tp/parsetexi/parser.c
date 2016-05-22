@@ -614,8 +614,6 @@ start_empty_line_after_command (ELEMENT *current, char **line_inout,
 }
 
 
-/* Parts of parse_texi lines 3676 - 5372 */
-
 /* If the parent element takes a command as an argument, like
    @itemize @bullet. */
 int
@@ -627,6 +625,25 @@ command_with_command_as_argument (ELEMENT *current)
 //    && (current->contents.number == 1);
   //    || current->contents.number == 2 and the first child's text is
   // all non-whitespace characters??
+}
+
+// 3633
+/* If INVALID_PARENT is defined, then that command was used in the input
+   document and contained, incorrectly, a COMMAND command. Issue
+   a warning message. */
+void
+mark_and_warn_invalid (enum command_id command,
+                       enum command_id invalid_parent,
+                       ELEMENT *marked_as_invalid_command)
+{
+  if (invalid_parent)
+    {
+      line_warn ("@%s should not appear in @%s",
+                 command_name(command),
+                 command_name(invalid_parent));
+      if (marked_as_invalid_command)
+        add_extra_string (marked_as_invalid_command, "invalid_nesting", "1");
+    }
 }
 
 /* Used at line 3755 */
@@ -1091,10 +1108,9 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
   /* Any other @-command. */
   else if (cmd)
     {
+      enum command_id invalid_parent = 0;
       line = line_after_command;
       debug ("COMMAND %s", command_name(cmd));
-
-      /* TODO: Check if this is an alias command */
 
       /* 4172 @value */
       if (cmd == CM_value)
@@ -1196,12 +1212,37 @@ value_invalid:
                      command_name(cmd));
         }
 
-#if 0
       /* 4233 invalid nestings */
-#endif
+      if (current->parent && current->parent->cmd)
+        {
+          int ok = 0;
+          enum command_id outer = current->parent->cmd;
+          unsigned long outer_flags = command_data(outer).flags;
+
+          // much TODO here.
+
+          if (outer_flags & CF_index_entry_command)
+            {
+              // 563 in_simple_text_commands
+              if (outer_flags & (CF_brace | CF_nobrace))
+                ok = 1;
+              if (cmd == CM_caption
+                  || cmd == CM_shortcaption)
+                ok = 0;
+            }
+          else
+            {
+              ok = 1;
+            }
+
+          if (!ok)
+            invalid_parent = current->parent->cmd;
+        }
+      /* 4258 TODO in def */
 
       /* 4276 check command doesn't start a paragraph */
-      /* TODO store this in cmd->flags */
+      /* TODO store this in cmd->flags.  Or better, change the meaning
+         of CF_misc. */
       if (!(command_data(cmd).flags & (CF_misc | CF_block)
             || cmd == CM_titlefont
             || cmd == CM_caption
@@ -1250,7 +1291,8 @@ value_invalid:
       else if (command_data(cmd).flags & CF_misc)
         {
           int status;
-          current = handle_misc_command (current, &line, cmd, &status);
+          current = handle_misc_command (current, &line, cmd, &status,
+                                         invalid_parent);
           if (status == 1)
             {
               retval = GET_A_NEW_LINE;
@@ -1262,7 +1304,8 @@ value_invalid:
       else if (command_data(cmd).flags & CF_block)
         {
           int new_line = 0;
-          current = handle_block_command (current, &line, cmd, &new_line);
+          current = handle_block_command (current, &line, cmd, &new_line,
+                                          invalid_parent);
           if (new_line)
             {
               /* For @macro, to get a new line.  This is done instead of
@@ -1274,7 +1317,8 @@ value_invalid:
       else if (command_data(cmd).flags & CF_brace
                || command_data(cmd).flags & CF_accent) /* line 4835 */
         {
-          current = handle_brace_command (current, &line, cmd);
+          current = handle_brace_command (current, &line,
+                                          cmd, invalid_parent);
         }
 
       /* No-brace command */

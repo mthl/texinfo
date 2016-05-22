@@ -256,7 +256,8 @@ close_current (ELEMENT *current,
       debug ("CLOSING (close_current) %s", command_name(current->cmd));
       if (command_flags(current) & CF_brace)
         {
-          // pop_context ();
+          if (command_data(current->cmd).data == BRACE_context)
+            pop_context ();
           current = close_brace_command (current,
                                          closed_command, interrupting_command);
         }
@@ -284,6 +285,11 @@ close_current (ELEMENT *current,
                 destroy_element (pop_element_from_contents (current->parent));
               /* FIXME: Why not avoid adding the element
                  in the first place? */
+            }
+          if (command_flags(current)
+              & (CF_preformatted | CF_menu | CF_format_raw))
+            {
+              pop_context ();
             }
           current = current->parent;
         }
@@ -337,9 +343,9 @@ close_current (ELEMENT *current,
     }
   else
     {
+      /* should never get here */
       if (current->parent)
         current = current->parent;
-      /* error */
     }
 
   return current;

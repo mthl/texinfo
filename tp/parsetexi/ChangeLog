@@ -1,3 +1,7 @@
+2016-05-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* parser.c (mark_and_warn_invalid): Implement.
+
 2016-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* Parsetexi.pm: Remove commented-out code to use other methods 

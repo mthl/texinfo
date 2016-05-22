@@ -1,5 +1,5 @@
 /* handle_commands.c -- what to do when a command name is first read */
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
+/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -173,7 +173,8 @@ register_global_command (enum command_id cmd, ELEMENT *current)
 /* STATUS is set to 1 if we should get a new line after this. */
 ELEMENT *
 handle_misc_command (ELEMENT *current, char **line_inout,
-                     enum command_id cmd, int *status)
+                     enum command_id cmd, int *status,
+                     enum command_id invalid_parent)
 {
   ELEMENT *misc = 0;
   char *line = *line_inout;
@@ -290,7 +291,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
         {
         } */
 
-      // mark_and_warn_invalid ();
+      mark_and_warn_invalid (cmd, invalid_parent, misc);
       register_global_command (cmd, misc); // 4423
 
       if (arg_spec != MISC_special /* || !has_comment */ )
@@ -651,9 +652,9 @@ handle_misc_command (ELEMENT *current, char **line_inout,
         }
     }
 
-  /* line 4622 */
-  /* mark_and_warn_invalid (); */ /* possible error message due to invalid
-                                     nesting */
+  // 4622
+  mark_and_warn_invalid (cmd, invalid_parent, misc);
+
   register_global_command (cmd, misc);
 
 funexit:
@@ -745,7 +746,8 @@ add_expanded_format (char *format)
    "end_line_misc_line" in end_line.c processes the @end command. */
 ELEMENT *
 handle_block_command (ELEMENT *current, char **line_inout,
-                      enum command_id cmd, int *get_new_line)
+                      enum command_id cmd, int *get_new_line,
+                      enum command_id invalid_parent)
 {
   char *line = *line_inout;
   unsigned long flags = command_data(cmd).flags;
@@ -756,7 +758,8 @@ handle_block_command (ELEMENT *current, char **line_inout,
       ELEMENT *macro;
       macro = parse_macro_command_line (cmd, &line, current);
       add_to_element_contents (current, macro);
-      // mark_and_warn_invalid ();
+      mark_and_warn_invalid (cmd, invalid_parent,
+                             last_contents_child(current));
       current = macro;
 
       /* 4640 */
@@ -995,7 +998,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
 
           }
         } /* 4827 */
-      // mark_and_warn_invalid ();
+      mark_and_warn_invalid (cmd, invalid_parent, block);
       register_global_command (cmd, block);
       start_empty_line_after_command (current, &line, block);
     }
@@ -1008,7 +1011,8 @@ funexit:
 /* 4835 */
 ELEMENT *
 handle_brace_command (ELEMENT *current, char **line_inout,
-                      enum command_id cmd)
+                      enum command_id cmd,
+                      enum command_id invalid_parent)
 {
   char *line = *line_inout;
   ELEMENT *e;
@@ -1027,8 +1031,8 @@ handle_brace_command (ELEMENT *current, char **line_inout,
   add_to_element_contents (current, e);
   current = e;
 
-  // mark_and_warn_invalid
-  // click, kbd, definfoenclose
+  mark_and_warn_invalid (cmd, invalid_parent, e);
+  // TODO kbd
   if (cmd == CM_click)
     {
       add_extra_string (e, "clickstyle", global_clickstyle);

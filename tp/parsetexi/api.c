@@ -351,7 +351,8 @@ element_to_perl_hash (ELEMENT *e)
             case extra_element_contents:
               {
               int j;
-              STORE(build_perl_array (&f->contents));
+              if (f)
+                STORE(build_perl_array (&f->contents));
               break;
               }
             case extra_element_contents_array:
