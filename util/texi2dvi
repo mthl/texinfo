@@ -938,7 +938,7 @@ run_tex ()
     echo "$tex_cmd")`
 
   verbose "$0: Running $tex_cmd ..."
-  if eval "$tex_cmd" >&5; then
+  if (eval "$tex_cmd" >&5); then
     case $out_lang in
       dvi | pdf ) move_to_dest "$in_noext.$out_lang";;
     esac
@@ -1494,7 +1494,7 @@ EOF
     # ./ in case . isn't in path
     verbose "$0: running $tex_cmd ..."
     rm -fr "openout.$2"
-    eval "$tex_cmd" >/dev/null 2>&1
+    (eval "$tex_cmd" >/dev/null 2>&1)
 }
 
 # Check tex supports -recorder option

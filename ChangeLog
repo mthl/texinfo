@@ -1,3 +1,9 @@
+2016-05-22  Ingo Feinerer  <feinerer@logic.at>  (tiny change)
+
+	* util/texi2dvi (run_tex, make_openout_test): Use parentheses 
+	around "eval" command in order not to exit prematurely due to 
+	"set -e" with ksh under OpenBSD.
+
 2016-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi) <@abbr and @acronym>: Don't 
