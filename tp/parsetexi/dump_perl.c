@@ -442,8 +442,19 @@ dump_line_nr (LINE_NR *line_nr, TEXT *text)
     }
 
   /* TODO: macro. */
-  dump_indent (text);
-  text_append (text, "'macro' => ''\n");
+  if (line_nr->macro)
+    {
+      dump_indent (text);
+      text_append (text, "'macro' => ");
+      text_printf (text, "'%s'", line_nr->macro);
+      text_append (text, ",\n");
+    }
+  else
+    {
+      dump_indent (text);
+      text_append (text, "'macro' => ''\n");
+    }
+
 
   indent -= 2;
   dump_indent (text);

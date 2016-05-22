@@ -1218,6 +1218,7 @@ value_invalid:
           int ok = 0;
           enum command_id outer = current->parent->cmd;
           unsigned long outer_flags = command_data(outer).flags;
+          unsigned long cmd_flags = command_data(cmd).flags;
 
           // much TODO here.
 
@@ -1229,6 +1230,16 @@ value_invalid:
               if (cmd == CM_caption
                   || cmd == CM_shortcaption)
                 ok = 0;
+            }
+          else if (outer == CM_table
+                   || outer == CM_vtable
+                   || outer == CM_ftable)
+            {
+              /* FIXME: This nesting should be OK. */
+              if (cmd_flags & CF_INFOENCLOSE)
+                ;
+              else
+                ok = 1;
             }
           else
             {
