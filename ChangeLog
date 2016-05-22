@@ -1,5 +1,10 @@
 2016-05-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi) <@definfoenclose command>: 
+	Don't overwrite any 'extra' values, such as 'invalid_nesting'.
+
+2016-05-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Update with news since 6.1 release.
 
 2016-05-22  Ingo Feinerer  <feinerer@logic.at>  (tiny change)

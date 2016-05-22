@@ -4930,9 +4930,10 @@ sub _parse_texi($;$)
           }
           if ($self->{'definfoenclose'}->{$command}) {
             $current->{'type'} = 'definfoenclose_command';
-            $current->{'extra'} = { 
-                 'begin' => $self->{'definfoenclose'}->{$command}->[0], 
-                 'end' => $self->{'definfoenclose'}->{$command}->[1] };
+            $current->{'extra'}->{'begin'} =
+                 $self->{'definfoenclose'}->{$command}->[0]; 
+            $current->{'extra'}->{'end'} =
+                 $self->{'definfoenclose'}->{$command}->[1]; 
           }
         } elsif (exists ($no_brace_commands{$command})) {
           push @{$current->{'contents'}},

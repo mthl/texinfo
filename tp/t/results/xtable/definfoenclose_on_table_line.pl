@@ -73,7 +73,8 @@ $result_trees{'definfoenclose_on_table_line'} = {
               'contents' => [],
               'extra' => {
                 'begin' => ':',
-                'end' => ':'
+                'end' => ':',
+                'invalid_nesting' => 1
               },
               'parent' => {},
               'type' => 'definfoenclose_command'
