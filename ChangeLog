@@ -1,3 +1,7 @@
+2016-05-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Update with news since 6.1 release.
+
 2016-05-22  Ingo Feinerer  <feinerer@logic.at>  (tiny change)
 
 	* util/texi2dvi (run_tex, make_openout_test): Use parentheses 
