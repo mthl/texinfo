@@ -137,7 +137,7 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
   else if (e->contents.list[0]->cmd != CM_NONE) // 2363
     {
       ret = remove_from_contents (e, 0);
-      ret->parent = 0;
+      //ret->parent = 0;
       return ret;
     }
   else

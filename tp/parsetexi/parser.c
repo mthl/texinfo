@@ -427,9 +427,17 @@ abort_empty_line (ELEMENT **current_inout, char *additional_text)
             }
 
           if (current)
+            k = lookup_extra_key (current, "spaces_after_command");
+          if (k && k->value == last_contents_child(current))
             {
-              k = lookup_extra_key (current, "spaces_after_command");
-              if (k && k->value == last_contents_child(current))
+              k->key = "";
+              k->value = 0;
+              k->type = extra_deleted;
+            }
+          else if (current->parent)
+            {
+              k = lookup_extra_key (current->parent, "spaces_after_command");
+              if (k && k->value == last_contents_child (current))
                 {
                   k->key = "";
                   k->value = 0;
@@ -1249,7 +1257,12 @@ value_invalid:
           if (!ok)
             invalid_parent = current->parent->cmd;
         }
-      /* 4258 TODO in def */
+      /* 4274 */
+      if (current_context () == ct_def && cmd == CM_NEWLINE)
+        {
+          retval = GET_A_NEW_LINE;
+          goto funexit;
+        }
 
       /* 4276 check command doesn't start a paragraph */
       /* TODO store this in cmd->flags.  Or better, change the meaning
@@ -1452,7 +1465,8 @@ parse_texi (ELEMENT *root_elt)
       if (!((command_flags(current) & CF_block)
              && (command_data(current->cmd).data == BLOCK_raw
                  || command_data(current->cmd).data == BLOCK_conditional)
-            || current->parent && current->parent->cmd == CM_verb))
+            || current->parent && current->parent->cmd == CM_verb)
+          && current_context () != ct_def)
         {
           ELEMENT *e;
           int n;
