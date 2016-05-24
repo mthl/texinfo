@@ -951,11 +951,22 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
                 {
                   line_error ("unknown command `%s'", command); // 4877
                   line = line_after_command;
+                  debug ("COMMAND (UNKNOWN) %s", command);
                 }
             }
           free (command);
           if (!cmd)
-            0;//goto funexit;
+            {
+              ELEMENT *paragraph;
+              // 4226
+              abort_empty_line (&current, 0);
+
+              // 4276
+              paragraph = begin_paragraph (current);
+              if (paragraph)
+                current = paragraph;
+              //goto funexit;
+            }
         }
       if (cmd && (command_data(cmd).flags & CF_ALIAS))
         cmd = command_data(cmd).data;
@@ -1171,11 +1182,6 @@ value_valid:
                 }
               else
                 {
-                  /* TODO: The Perl code has cases for the value being
-                     an array or hash - check when this can happen. */
-                  /* This happens when the values are set by the "gdt" function 
-                     in Report.pm.  */
-
                   line++; /* past '}' */
                   input_push_text (strdup (line), 0);
                   input_push_text (strdup (value), 0);
@@ -1233,7 +1239,7 @@ value_invalid:
           if (outer_flags & CF_index_entry_command)
             {
               // 563 in_simple_text_commands
-              if (outer_flags & (CF_brace | CF_nobrace))
+              if (cmd_flags & (CF_brace | CF_nobrace))
                 ok = 1;
               if (cmd == CM_caption
                   || cmd == CM_shortcaption)
