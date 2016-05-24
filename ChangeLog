@@ -1,3 +1,9 @@
+2016-05-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_abort_empty_line): Look for a 
+	'spaces_after_command' empty extra value on the parent element 
+	as well to stop an 'empty_line_after_command' element lingering.
+
 2016-05-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi) <@definfoenclose command>: 
