@@ -51,10 +51,9 @@ reset_parser (void)
   init_index_commands ();
   wipe_errors ();
   reset_context_stack ();
+  reset_region_stack ();
   reset_floats ();
   clear_expanded_formats ();
-  //add_expanded_format ("plaintext");
-  //add_expanded_format ("info");
 
   current_node = current_section = 0;
 }
@@ -705,6 +704,11 @@ build_single_index_data (INDEX *i)
       STORE2("command",
              newRV_inc ((SV *)e->command->hv));
       STORE2("number", newSViv (j + 1));
+      if (e->region)
+        {
+          STORE2("region",
+                 newSVpv (command_name(e->region), 0));
+        }
       if (e->content)
         {
           SV **contents_array;

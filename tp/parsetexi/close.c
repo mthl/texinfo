@@ -296,6 +296,10 @@ close_current (ELEMENT *current,
             {
               pop_context ();
             }
+          if (command_data(cmd).flags & CF_region)
+            {
+              pop_region ();
+            }
           if (!parent)
             parent = current->parent;
           current = parent;
@@ -402,7 +406,10 @@ close_commands (ELEMENT *current, enum command_id closed_command,
             abort ();
         }
 
-      // 1784 maybe pop regions stack
+      // 1784
+      if (command_data(current->cmd).flags & CF_region)
+        pop_region ();
+
       *closed_element = current;
       current = current->parent; /* 1788 */
     }

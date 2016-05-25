@@ -937,7 +937,17 @@ handle_block_command (ELEMENT *current, char **line_inout,
               push_context (ct_rawpreformatted);
             }
 
-          // regionsstack
+          // 4775
+          if (command_data(cmd).flags & CF_region)
+            {
+              if (current_region ())
+                {
+                  line_error ("region %s inside region %s is not allowed",
+                              command_name(cmd),
+                              command_name(current_region ()));
+                }
+              push_region (cmd);
+            }
 
           // 4784 menu commands
           if (command_data(cmd).flags & CF_menu)

@@ -1,3 +1,7 @@
+2016-05-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* context_stack.c: Implement region stack.
+
 2016-05-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* parser.c (mark_and_warn_invalid): Implement.

@@ -263,6 +263,8 @@ enter_index_entry (enum command_id index_type_command,
   entry->command = current;
   entry->number = idx->index_number;
 
+  if (current_region ())
+    entry->region = current_region ();
   entry->node = current_node;
 
   entry->number = idx->index_number;
@@ -273,9 +275,7 @@ enter_index_entry (enum command_id index_type_command,
 
   add_extra_index_entry (current, "index_entry", ier);
 
-  if (current_node)
-    ; // TODO
-  else if (!current_section)
+  if (!current_node && !current_section)
     line_warn ("entry for index `%s' outside of any node", idx->name);
 }
 

@@ -420,9 +420,9 @@ indentedblock		block
 smallindentedblock	block
 
 # region commands
-titlepage		block,global_unique
-copying			block,global_unique
-documentdescription	block,global_unique
+titlepage		block,global_unique,region
+copying			block,global_unique,region
+documentdescription	block,global_unique,region
 
 # preformatted commands
 example			block,preformatted,preformatted_code

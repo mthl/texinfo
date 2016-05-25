@@ -41,5 +41,11 @@ enum context {
 void push_context (enum context c);
 enum context pop_context ();
 enum context current_context (void);
-
 void reset_context_stack (void);
+
+
+void push_region (enum command_id r);
+enum command_id pop_region ();
+enum command_id current_region (void);
+
+void reset_region_stack (void);
