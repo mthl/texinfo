@@ -117,6 +117,13 @@ COUNTER count_cells;
 GLOBAL_INFO global_info;
 char *global_clickstyle = "arrow";
 
+void
+wipe_global_info (void)
+{
+  global_clickstyle = "arrow";
+  memset (&global_info, 0, sizeof (global_info));
+}
+
 
 /* 835 */
 void

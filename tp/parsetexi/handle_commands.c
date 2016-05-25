@@ -89,28 +89,6 @@ check_no_text (ELEMENT *current)
 int
 register_global_command (enum command_id cmd, ELEMENT *current)
 {
-  if ((command_data(cmd).flags & CF_global_unique))
-    {
-      if (cmd == CM_shortcontents)
-        cmd == CM_summarycontents;
-      switch (cmd)
-        {
-        case CM_copying:
-          global_info.copying = current; break;
-        case CM_settitle:
-          global_info.settitle = current; break;
-        case CM_shorttitlepage:
-          global_info.shorttitlepage = current; break;
-        case CM_title:
-          global_info.title = current; break;
-        case CM_titlepage:
-          global_info.titlepage = current; break;
-        case CM_top:
-          global_info.top = current; break;
-        }
-    }
-
-
   // TODO: Why even give @author this flag in the first place?
   if (cmd != CM_author && (command_data(cmd).flags & CF_global))
     {
@@ -151,6 +129,10 @@ register_global_command (enum command_id cmd, ELEMENT *current)
     }
   else if ((command_data(cmd).flags & CF_global_unique))
     {
+      ELEMENT **where = 0;
+
+      if (cmd == CM_shortcontents)
+        cmd == CM_summarycontents;
       if (!current->line_nr.line_nr)
         current->line_nr = line_nr;
       switch (cmd)
@@ -160,8 +142,35 @@ register_global_command (enum command_id cmd, ELEMENT *current)
           /* Check if we are inside an @include, and if so, do nothing. */
           if (input_number > 1)
             break;
+          where = &global_info.setfilename;
+          break;
         case CM_settitle:
-          global_info.settitle = current;
+          where = &global_info.settitle;
+          break;
+        case CM_shorttitlepage:
+          where = &global_info.shorttitlepage;
+          break;
+        case CM_title:
+          where = &global_info.title;
+          break;
+        case CM_titlepage:
+          where = &global_info.titlepage;
+          break;
+        case CM_top:
+          where = &global_info.top;
+          break;
+        case CM_copying:
+          where = &global_info.copying;
+          break;
+        case CM_documentdescription:
+          where = &global_info.documentdescription;
+          break;
+        }
+      if (where)
+        {
+          if (*where)
+            line_warn ("multiple @%s", command_name(cmd));
+          *where = current;
         }
       return 1;
     }

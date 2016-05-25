@@ -54,6 +54,7 @@ reset_parser (void)
   reset_region_stack ();
   reset_floats ();
   clear_expanded_formats ();
+  wipe_global_info ();
 
   current_node = current_section = 0;
 }

@@ -80,6 +80,7 @@ extern ELEMENT *current_section;
 
 extern GLOBAL_INFO global_info;
 extern char *global_clickstyle;
+void wipe_global_info (void);
 
 #include "macro.h"
 

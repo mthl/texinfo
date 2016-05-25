@@ -112,12 +112,15 @@ typedef struct GLOBAL_INFO {
     char *input_encoding_name;
 
     /* Elements that should be unique. */
+    // 288 and Common.pm:164
     ELEMENT *settitle; /* Title of document. */
     ELEMENT *copying;
     ELEMENT *shorttitlepage;
     ELEMENT *title;
     ELEMENT *titlepage;
     ELEMENT *top;
+    ELEMENT *setfilename;
+    ELEMENT *documentdescription;
 
     /* Arrays of elements */
     ELEMENT footnotes;
