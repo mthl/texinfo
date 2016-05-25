@@ -146,7 +146,7 @@ typedef struct {
     ELEMENT *command;
     ELEMENT *node;
     int number; /* Index of entry in containing index, 1-based. */
-    enum command_id region;
+    ELEMENT *region;
 } INDEX_ENTRY;
 
 typedef struct INDEX {

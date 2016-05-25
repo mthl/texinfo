@@ -707,8 +707,7 @@ build_single_index_data (INDEX *i)
       STORE2("number", newSViv (j + 1));
       if (e->region)
         {
-          STORE2("region",
-                 newSVpv (command_name(e->region), 0));
+          STORE2("region", newRV_inc ((SV *)e->region->hv));
         }
       if (e->content)
         {

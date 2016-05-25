@@ -301,7 +301,8 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           if (1) // TODO check_node_label ()
             {
               register_label (current->parent, parsed_anchor);
-              // TODO "regions stack"
+              if (current_region ())
+                add_extra_element (current, "region", current_region ());
             }
         }
       else if (command_data(closed_command).flags & CF_ref) // 5062

@@ -949,13 +949,13 @@ handle_block_command (ELEMENT *current, char **line_inout,
           // 4775
           if (command_data(cmd).flags & CF_region)
             {
-              if (current_region ())
+              if (current_region_cmd ())
                 {
                   line_error ("region %s inside region %s is not allowed",
                               command_name(cmd),
-                              command_name(current_region ()));
+                              command_name(current_region_cmd ()));
                 }
-              push_region (cmd);
+              push_region (block);
             }
 
           // 4784 menu commands

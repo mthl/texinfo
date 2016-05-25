@@ -69,7 +69,7 @@ current_context (void)
 
 /* the valid regions are 'titlepage', 'copying', and 'documentdescription' */
 
-static enum command_id *region_stack;
+static ELEMENT **region_stack;
 static size_t region_top; /* One above last pushed region. */
 static size_t region_space;
 
@@ -80,20 +80,20 @@ reset_region_stack (void)
 }
 
 void
-push_region (enum command_id r)
+push_region (ELEMENT *e)
 {
   if (region_top >= region_space)
     {
       region_stack = realloc (region_stack,
-                              (region_space += 5) * sizeof (enum command_id));
+                              (region_space += 5) * sizeof (*region_stack));
     }
 
   debug (">>>>>>>>>>>>>>>>>PUSHING REGION STACK AT %d", region_top);
 
-  region_stack[region_top++] = r;
+  region_stack[region_top++] = e;
 }
 
-enum command_id
+ELEMENT *
 pop_region ()
 {
   if (region_top == 0)
@@ -104,10 +104,19 @@ pop_region ()
 }
 
 enum command_id
-current_region (void)
+current_region_cmd (void)
 {
   if (region_top == 0)
     return CM_NONE;
+
+  return region_stack[region_top - 1]->cmd;
+}
+
+ELEMENT *
+current_region (void)
+{
+  if (region_top == 0)
+    return 0;
 
   return region_stack[region_top - 1];
 }
