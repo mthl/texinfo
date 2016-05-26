@@ -1,5 +1,11 @@
 2016-05-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo-tex-test.texi (Test of auxiliary files): Note 
+	where cross-references should definitely work.  Add section 
+	testing `-' and `_' in a @value.
+
+2016-05-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\setref): Give \value a definition to match 
 	those in \xrdef, \refx and \xrefX, to fix @value in 
 	cross-reference targets.

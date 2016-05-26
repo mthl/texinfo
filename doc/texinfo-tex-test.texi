@@ -684,17 +684,26 @@ Xref to said anchor: @xref{@value{ho} ho}.
 @set auxvalue this is the value
 Defined value in anchor: @anchor{@value{auxvalue} ho}
 
-Xref to said anchor: @xref{@value{auxvalue} ho}.
+Xref to said anchor: @xref{@value{auxvalue} ho}.  (Should definitely 
+work.)
 
 @defindex ax
 
 value in index entry
 @axindex @value{ho} in index entry
 
-defined value in index entry
+defined value in index entry (this should definitely work)
 @axindex @value{auxvalue} in index entry
 
 @printindex ax
+
+@section Another test of @t{@@value}
+
+Underscores and hyphens in value
+
+@set foo-bar_ neenaw
+
+The value is @value{foo-bar_}.
 
 
 @chapter Cross-references
