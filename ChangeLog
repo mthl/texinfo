@@ -1,8 +1,14 @@
 2016-05-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\setref): Give \value a definition to match 
+	those in \xrdef, \refx and \xrefX, to fix @value in 
+	cross-reference targets.
+
+2016-05-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\dummyvalue): New definition of @value for 
 	writing to auxiliary files.  Expand the @value at the time of 
-	writing, reversing change on 2016-05-26.
+	writing, reversing change on 2016-05-07.
 	(\commondummies): Use \dummyvalue definition for @value.
 	(Files using @value's in section titles broken when value was 
 	@set after the table of contents, reported by Paul Eggert.
