@@ -1,5 +1,16 @@
 2016-05-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\commondummies): Move definitions of 
+	\definedummyword, \definedummyletter, \definedummyaccent out of 
+	\commondummies.  Reorder a comment to put content about control 
+	words next to content about \definedummyword.  Rename this macro 
+	\definedummies, to reduce confusion with \commondummiesnofonts.
+
+	(\commondummiesnofonts): Use different names for the parameters.
+	Add a comment saying what is listed here.
+
+2016-05-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo-tex-test.texi (Test of auxiliary files): Note 
 	where cross-references should definitely work.  Add section 
 	testing `-' and `_' in a @value.
