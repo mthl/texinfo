@@ -126,21 +126,15 @@ our %default_parser_state_configuration = (
                               # value is the reference on a macro element 
                               # as obtained by parsing the @macro
   'merged_indices' => {},     # the key is merged in the value
-  'novalidate' => 0,          # same as setting @novalidate.
   'validatemenus' => 0,       # same as setting @validatemenus.
   'sections_level' => 0,      # modified by raise/lowersections
   'values' => {'txicommandconditionals' => 1},
                               # the key is the name, the value the @set name 
                               # argument.  A Texinfo tree may also be used.
+  'info' => {
+    'novalidate' => 0,        # same as setting @novalidate.
+  }
 );
-
-# command-line options
-#my @command_line_settable_at_commands = ('footnotestyle', 'novalidate',
-#  'documentlanguage', 'paragraphindent');
-
-
-# FIXME maybe this should better be set as texinfo passed to texi2any as
-# texi2dvi --command 
 
 # customization options
 our %document_settable_at_commands = (

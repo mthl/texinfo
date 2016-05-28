@@ -4470,7 +4470,7 @@ sub _parse_texi($;$)
               } elsif ($command eq 'lowersections') {
                 $self->{'sections_level'}--;
               } elsif ($command eq 'novalidate') {
-                $self->{'novalidate'} = 1;
+                $self->{'info'}->{'novalidate'} = 1;
               }
             }
             _mark_and_warn_invalid($self, $command, $invalid_parent,
@@ -6188,6 +6188,11 @@ in the document.
 
 An array of menus that are not associated with a node.
 
+=item novalidate
+
+If set, it is as if C<@novalidate> was set in the document.
+
+
 =back
 
 =back
@@ -6434,10 +6439,6 @@ Is associated to a macro definition element
 
 The associated hash reference holds merged indices information, each key 
 is merged in the value.  Same as setting C<@synindex> or C<syncodeindex>.
-
-=item novalidate
-
-If set, it is as if C<@novalidate> was set in the document.
 
 =item sections_level
 

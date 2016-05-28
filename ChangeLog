@@ -1,4 +1,14 @@
-2016-05-26  Gavin Smith  <gavinsmith0123@gmail.com>
+2016-05-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@novalidate>,
+	* texi2any.pl <option processing>,
+	* tp/Texinfo/Structuring.pm (nodes_tree)
+	(associate_internal_references),
+	* tp/Texinfo/Common.pm (%default_parser_state_configuration): 
+	Use $self->{'info'}->{'novalidate'} instead of
+	$self->{'novalidate'}.  Delete some commented-out code.
+
+2016-05-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\indexnofontsvalue): New definition for a 
 	@value when expanded in an index entry sort key.
@@ -6,7 +16,7 @@
 	(\dummyvalue): If @value is undefined, pass through an 
 	unexpanded @value command to the auxiliary file.
 
-2016-05-26  Gavin Smith  <gavinsmith0123@gmail.com>
+2016-05-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\commondummies): Move definitions of 
 	\definedummyword, \definedummyletter, \definedummyaccent out of 

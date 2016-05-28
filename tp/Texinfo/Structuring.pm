@@ -575,7 +575,8 @@ sub nodes_tree($)
   my $top_node;
   my $top_node_up;
 
-  my $check_menu_entries = (!$self->{'novalidate'} and $self->{'SHOW_MENU'});
+  my $check_menu_entries = (!$self->{'info'}->{'novalidate'}
+                              and $self->{'SHOW_MENU'});
 
   foreach my $node (@{$self->{'nodes'}}) {
     if ($node->{'extra'}->{'normalized'} eq 'Top') {
@@ -777,8 +778,9 @@ sub nodes_tree($)
                = $self->{'labels'}->{$node_direction->{'normalized'}};
             $node->{'node_'.$direction} = $node_target;
 
-            if (! $self->{'novalidate'} and ! _check_node_same_texinfo_code(
-                $node_target, $node_direction)) {
+            if (!$self->{'info'}->{'novalidate'}
+                and !_check_node_same_texinfo_code($node_target,
+                                                   $node_direction)) {
               $self->line_warn(sprintf($self->
                 __("%s pointer `%s' (for node `%s') different from %s name `%s'"),
                   $direction_texts{$direction},
@@ -789,7 +791,7 @@ sub nodes_tree($)
                                      $node->{'line_nr'});
             }
           } else {
-            if ($self->{'novalidate'}) {
+            if ($self->{'info'}->{'novalidate'}) {
               $node->{'node_'.$direction} = { 'extra' => $node_direction };
             # special case of up for top an internal node and the same
             # as TOP_NODE_UP.  This is not the default case, since in the
@@ -1316,7 +1318,7 @@ sub associate_internal_references($;$$)
   return if (!defined($refs));
   foreach my $ref (@$refs) {
     if (!defined($labels->{$ref->{'extra'}{'node_argument'}{'normalized'}})) {
-      if (!$self->{'novalidate'}) {
+      if (!$self->{'info'}->{'novalidate'}) {
         $self->line_error(sprintf($self->__("\@%s reference to nonexistent node `%s'"),
                 $ref->{'cmdname'}, 
                 node_extra_to_texi($ref->{'extra'}->{'node_argument'})), 
@@ -1326,8 +1328,9 @@ sub associate_internal_references($;$$)
       my $node_target 
         = $labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}};
       $ref->{'extra'}->{'label'} = $node_target;
-      if (! $self->{'novalidate'} and ! _check_node_same_texinfo_code(
-          $node_target, $ref->{'extra'}->{'node_argument'})) {
+      if (!$self->{'info'}->{'novalidate'}
+          and !_check_node_same_texinfo_code($node_target,
+                                         $ref->{'extra'}->{'node_argument'})) {
         $self->line_warn(sprintf($self->
            __("\@%s to `%s', different from %s name `%s'"), 
            $ref->{'cmdname'},
