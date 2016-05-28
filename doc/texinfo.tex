@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-05-28.15}
+\def\texinfoversion{2016-05-28.16}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -4609,11 +4609,23 @@ end
 % Like \expandablevalue, but completely expandable (the \message in the
 % definition above operates at the execution level of TeX).  Used when
 % writing to auxiliary files, due to the expansion that \write does.
+% If flag is undefined, pass through an unexpanded @value command: maybe it 
+% will be set by the time it is read back in.
 %
 % NB flag names containing - or _ may not work here.
 \def\dummyvalue#1{%
   \expandafter\ifx\csname SET#1\endcsname\relax
-    [No value for ``#1'']%
+    \noexpand\value{#1}%
+  \else
+    \csname SET#1\endcsname
+  \fi
+}
+
+% Used for @value's in index entries to form the sort key: expand the @value
+% if possible, otherwise sort late.
+\def\indexnofontsvalue#1{%
+  \expandafter\ifx\csname SET#1\endcsname\relax
+    ZZZZZZZ
   \else
     \csname SET#1\endcsname
   \fi
@@ -5133,6 +5145,7 @@ end
   % goes to end-of-line is not handled.
   %
   \macrolist
+  \let\value\indexnofontsvalue
 }
 
 

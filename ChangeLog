@@ -1,5 +1,13 @@
 2016-05-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\indexnofontsvalue): New definition for a 
+	@value when expanded in an index entry sort key.
+	(\indexnofonts): Call it.
+	(\dummyvalue): If @value is undefined, pass through an 
+	unexpanded @value command to the auxiliary file.
+
+2016-05-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\commondummies): Move definitions of 
 	\definedummyword, \definedummyletter, \definedummyaccent out of 
 	\commondummies.  Reorder a comment to put content about control 
