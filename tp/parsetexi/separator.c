@@ -325,7 +325,11 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                   if (nse)
                     add_extra_node_spec (ref, "node_argument", nse);
                   if (closed_command != CM_inforef
-                      && ref->args.number <= 3
+                      && (args->contents.number <= 3
+                          || args->contents.number <= 4
+                             && !contents_child_by_index(args, 3)
+                          || (!contents_child_by_index(args, 3)
+                               && !contents_child_by_index(args, 4)))
                       && !nse->manual_content)
                     {
                       remember_internal_xref (ref);

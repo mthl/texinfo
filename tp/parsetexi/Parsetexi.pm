@@ -293,6 +293,7 @@ sub parse_texi_file ($$)
   parse_file ($file_name);
   $TREE = build_texinfo_tree ();
 
+
   $LABELS = build_label_list ();
   $FLOATS = build_float_list ();
 
@@ -418,6 +419,9 @@ sub parse_texi_text($$;$$$$)
 
     my $FLOATS = build_float_list ();
     $self->{'floats'} = $FLOATS;
+
+    my $GLOBAL_INFO = build_global_info ();
+    $self->{'info'} = $GLOBAL_INFO;
 
     my $GLOBAL_INFO2 = build_global_info2 ();
     $self->{'extra'} = $GLOBAL_INFO2;

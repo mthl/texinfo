@@ -45,6 +45,7 @@ reset_floats ()
 void
 reset_parser (void)
 {
+  debug ("!!!!!!!!!!!!!!!! RESETTING THE PARSER !!!!!!!!!!!!!!!!!!!!!");
   wipe_user_commands ();
   wipe_values ();
   wipe_macros ();
@@ -252,6 +253,7 @@ element_to_perl_hash (ELEMENT *e)
       || e->type == ET_menu_entry_name
       || e->type == ET_brace_command_arg
       || e->cmd == CM_TeX
+      || (command_flags(e) & CF_root)
       || (command_data(e->cmd).flags & CF_brace
           && (command_data(e->cmd).data >= 0
               || command_data(e->cmd).data == BRACE_style
@@ -827,8 +829,10 @@ build_global_info (void)
     hv_store (hv, "input_encoding_name", strlen ("input_encoding_name"),
               newSVpv (global_info.input_encoding_name, 0), 0);
   if (global_info.novalidate)
-    hv_store (hv, "novalidate", strlen ("novalidate"),
-              newSVpv ("1", 0), 0);
+    {
+      hv_store (hv, "novalidate", strlen ("novalidate"),
+                newSVpv ("1", 0), 0);
+    }
   return hv;
 }
 

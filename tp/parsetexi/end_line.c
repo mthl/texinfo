@@ -261,6 +261,7 @@ parse_line_command_args (ELEMENT *line_command)
           || t == ET_empty_spaces_after_close_brace
           || t == ET_spaces_at_end
           || t == ET_space_at_end_block_command
+          || t == ET_empty_line_after_command
           || contents_child_by_index(arg, i)->cmd == CM_c
           || contents_child_by_index(arg, i)->cmd == CM_comment)
         {
@@ -282,15 +283,18 @@ parse_line_command_args (ELEMENT *line_command)
         }
     }
 
-  if (!argarg || argarg->text.end == 0)
+  if (!argarg)
     {
       command_error (line_command, "@%s missing argument", command_name(cmd));
       add_extra_string (line_command, "missing_argument", "1");
       return 0;
     }
-
   if (argarg->text.end == 0)
-     return 0; // 5519
+    {
+      line_error ("superfluous argument to @%s",
+                   command_name (cmd));
+      return 0;
+    }
 
   line = argarg->text.text;
 
@@ -1669,6 +1673,8 @@ end_line_misc_line (ELEMENT *current)
               asprintf (&s, "%d", misc_args->value->contents.number);
               add_extra_string (current, "max_columns", s);
             }
+          else
+              add_extra_string (current, "max_columns", "0");
 
           before_item = new_element (ET_before_item);
           add_to_element_contents (current, before_item);
