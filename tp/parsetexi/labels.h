@@ -31,3 +31,12 @@ typedef struct {
 extern LABEL *labels_list;
 extern size_t labels_number;
 void register_label (ELEMENT *current, NODE_SPEC_EXTRA *label);
+void reset_labels (void);
+
+
+extern ELEMENT **internal_xref_list;
+extern size_t internal_xref_number;
+extern size_t internal_xref_space;
+
+void remember_internal_xref (ELEMENT *element);
+void reset_internal_xrefs (void);

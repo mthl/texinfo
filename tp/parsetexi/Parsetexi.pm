@@ -110,12 +110,12 @@ sub parser (;$$)
     'merged_indices' => {},
     'nodes' => [],
     'floats' => {},
-
-    # These aren't implemented yet.
     'internal_references' => [],
 
     # Not used but present in case we pass the object into 
     # Texinfo::Parser.
+    # FIXME check if we can remove these, because we never want to use
+    # Texinfo::Parser if the XS module is in use.
     'conditionals_stack' => [],
     'expanded_formats_stack' => [],
     'context_stack' => ['_root'],
@@ -288,7 +288,7 @@ sub parse_texi_file ($$)
 
   #print "Getting tree...\n";
 
-  my ($TREE, $LABELS, $FLOATS,
+  my ($TREE, $LABELS, $INTL_XREFS, $FLOATS,
       $INDEX_NAMES, $ERRORS, $GLOBAL_INFO, $GLOBAL_INFO2);
   parse_file ($file_name);
   $TREE = build_texinfo_tree ();
@@ -355,6 +355,7 @@ sub parse_texi_file ($$)
   $self->{'info'}->{'input_file_name'} = $file_name;
 
   $self->{'labels'} = $LABELS;
+  $self->{'internal_references'} = $INTL_XREFS;
   $self->{'floats'} = $FLOATS;
 
   _get_errors ($self);
@@ -407,8 +408,13 @@ sub parse_texi_text($$;$$$$)
       }
     }
 
+    # TODO: This code is duplicated from parse_texi_file
+
     my $LABELS = build_label_list ();
     $self->{'labels'} = $LABELS;
+
+    my $INTL_XREFS = build_internal_xref_list ();
+    $self->{'internal_references'} = $INTL_XREFS;
 
     my $FLOATS = build_float_list ();
     $self->{'floats'} = $FLOATS;

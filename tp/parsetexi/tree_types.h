@@ -110,6 +110,7 @@ typedef struct ELEMENT {
 typedef struct GLOBAL_INFO {
     char *input_file_name;
     char *input_encoding_name;
+    int novalidate;
 
     /* Elements that should be unique. */
     // 288 and Common.pm:164

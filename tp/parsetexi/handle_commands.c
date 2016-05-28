@@ -296,9 +296,16 @@ handle_misc_command (ELEMENT *current, char **line_inout,
             }
         }
 
-      /* if (!ignore_global_commands)
+      if (0 || cmd == CM_raisesections)
         {
-        } */
+        }
+      else if (0 || cmd == CM_raisesections)
+        {
+        }
+      else if (cmd == CM_novalidate)
+        {
+          global_info.novalidate = 1;
+        }
 
       mark_and_warn_invalid (cmd, invalid_parent, misc);
       register_global_command (cmd, misc); // 4423

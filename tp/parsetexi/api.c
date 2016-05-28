@@ -55,6 +55,8 @@ reset_parser (void)
   reset_floats ();
   clear_expanded_formats ();
   wipe_global_info ();
+  reset_internal_xrefs ();
+  reset_labels ();
 
   current_node = current_section = 0;
 }
@@ -579,6 +581,26 @@ build_label_list (void)
   return label_hash;
 }
 
+SV *
+build_internal_xref_list (void)
+{
+  AV *list_av;
+  SV *sv;
+  int i;
+
+  dTHX;
+
+  list_av = newAV ();
+
+  for (i = 0; i < internal_xref_number; i++)
+    {
+      sv = newRV_inc (internal_xref_list[i]->hv);
+      av_push (list_av, sv);
+    }
+
+  return newRV_inc ((SV *) list_av);
+}
+
 /* Return hash for list of @float's that appeared in the file. */
 HV *
 build_float_list (void)
@@ -804,6 +826,9 @@ build_global_info (void)
   if (global_info.input_encoding_name)
     hv_store (hv, "input_encoding_name", strlen ("input_encoding_name"),
               newSVpv (global_info.input_encoding_name, 0), 0);
+  if (global_info.novalidate)
+    hv_store (hv, "novalidate", strlen ("novalidate"),
+              newSVpv ("1", 0), 0);
   return hv;
 }
 

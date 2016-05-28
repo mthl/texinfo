@@ -324,7 +324,12 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                   nse = parse_node_manual (args_child_by_index (ref, 0));
                   if (nse)
                     add_extra_node_spec (ref, "node_argument", nse);
-                  // TODO 5078 global internal_references array
+                  if (closed_command != CM_inforef
+                      && ref->args.number <= 3
+                      && !nse->manual_content)
+                    {
+                      remember_internal_xref (ref);
+                    }
                 }
               // TODO 5085 check node name not empty after normalization
             }

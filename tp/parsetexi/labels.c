@@ -52,3 +52,33 @@ register_label (ELEMENT *current, NODE_SPEC_EXTRA *label)
   add_extra_string (current, "normalized", normalized);
   add_extra_contents (current, "node_content", label->node_content);
 }
+
+void
+reset_labels (void)
+{
+  labels_number = 0;
+}
+
+
+
+ELEMENT **internal_xref_list = 0;
+size_t internal_xref_number = 0;
+size_t internal_xref_space = 0;
+
+void
+remember_internal_xref (ELEMENT *element)
+{
+  if (internal_xref_number == internal_xref_space)
+    {
+      internal_xref_list = realloc (internal_xref_list,
+                             (internal_xref_space += 2)
+                             * sizeof (*internal_xref_list));
+    }
+  internal_xref_list[internal_xref_number++] = element;
+}
+
+void
+reset_internal_xrefs (void)
+{
+  internal_xref_number = 0;
+}
