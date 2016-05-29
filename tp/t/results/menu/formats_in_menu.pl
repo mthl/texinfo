@@ -603,7 +603,8 @@ $result_trees{'formats_in_menu'} = {
                                 {},
                                 {}
                               ]
-                            ]
+                            ],
+                            'explanation_contents' => []
                           },
                           'line_nr' => {
                             'file_name' => '',

@@ -81,7 +81,8 @@ $result_trees{'empty_commands'} = {
           'extra' => {
             'brace_command_contents' => [
               undef
-            ]
+            ],
+            'explanation_contents' => []
           },
           'line_nr' => {},
           'parent' => {}

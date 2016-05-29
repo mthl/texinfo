@@ -5229,24 +5229,7 @@ sub _parse_texi($;$)
                 $self->line_warn(
                    sprintf($self->__("\@%s missing first argument"),
                            $current_command->{'cmdname'}), $line_nr);
-              } else {
-                if ($explained_commands{$current_command->{'cmdname'}}) {
-                  my $normalized_type
-                    = Texinfo::Convert::NodeNameNormalization::normalize_node(
-                        {'contents' =>
-                         $current_command->{'extra'}->{'brace_command_contents'}->[0]});
-                  if (!$current_command->{'extra'}->{'brace_command_contents'}->[1]) {
-                    if ($self->{'explained_commands'}->{$current_command->{'cmdname'}}->{$normalized_type}) {
-                      $current_command->{'extra'}->{'explanation_contents'} 
-                        = $self->{'explained_commands'}->{$current_command->{'cmdname'}}->{$normalized_type};
-                    }
-                  } elsif (! _ignore_global_commands($self)) {
-                    $self->{'explained_commands'}->{$current_command->{'cmdname'}}->{$normalized_type} 
-                      = $current_command->{'extra'}->{'brace_command_contents'}->[1];
-                  }
-                }
               }
-
             } elsif ($current->{'parent'}->{'cmdname'} eq 'errormsg') {
               if (! _ignore_global_commands($self)) {
                 my $error_message_text 
@@ -7065,10 +7048,7 @@ the one appearing in the I<nodes_manuals> array for C<@node>.
 
 =item C<@acronym>
 
-The first argument normalized is in I<normalized>.  If there is no
-second argument, but a second argument appeared previously for the
-same first argument, the second argument content of the previous
-command is stored in I<explanation_contents>.
+The first argument normalized is in I<normalized>.
 
 =item definition command
 

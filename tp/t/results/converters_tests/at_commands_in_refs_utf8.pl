@@ -2807,7 +2807,8 @@ $result_trees{'at_commands_in_refs_utf8'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'explanation_contents' => []
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -2966,7 +2967,8 @@ $result_trees{'at_commands_in_refs_utf8'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'explanation_contents' => []
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -9445,7 +9447,8 @@ $result_trees{'at_commands_in_refs_utf8'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'explanation_contents' => []
               },
               'line_nr' => {},
               'parent' => {}
@@ -9596,7 +9599,8 @@ $result_trees{'at_commands_in_refs_utf8'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'explanation_contents' => []
               },
               'line_nr' => {},
               'parent' => {}
@@ -9749,7 +9753,8 @@ $result_trees{'at_commands_in_refs_utf8'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'explanation_contents' => []
               },
               'line_nr' => {},
               'parent' => {}
@@ -9900,7 +9905,8 @@ $result_trees{'at_commands_in_refs_utf8'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'explanation_contents' => []
               },
               'line_nr' => {},
               'parent' => {}
@@ -15249,7 +15255,8 @@ $result_trees{'at_commands_in_refs_utf8'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'explanation_contents' => []
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -15396,7 +15403,8 @@ $result_trees{'at_commands_in_refs_utf8'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'explanation_contents' => []
                       },
                       'line_nr' => {},
                       'parent' => {}

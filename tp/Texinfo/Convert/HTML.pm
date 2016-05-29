@@ -1478,17 +1478,48 @@ sub _convert_explained_command($$$$)
   my $args = shift;
 
   my $with_explanation;
+  my $explanation_result;
   my $explanation_string;
+  my $normalized_type
+    = Texinfo::Convert::NodeNameNormalization::normalize_node(
+    {'contents' =>
+      $command->{'extra'}->{'brace_command_contents'}->[0]});
+
   if ($args->[1] and defined($args->[1]->{'string'}) 
                  and $args->[1]->{'string'} =~ /\S/) {
     $with_explanation = 1;
     $explanation_string = $args->[1]->{'string'};
-  }
-  if ($command->{'extra'}->{'explanation_contents'}) {
+
+    # Convert the expanation of the acronym.  Must do this before we save
+    # the explanation for the future, otherwise we get infinite recursion
+    # for recursively-defined acronyms.
+    $explanation_result = $self->convert_tree( $args->[1]->{'tree'} );
+
+    $self->{'explained_commands'}->{$cmdname}->{$normalized_type} =
+       $command->{'extra'}->{'brace_command_contents'}->[1];
+  } elsif ($command->{'extra'}->{'explanation_contents'}) {
+    if (@{$command->{'extra'}->{'explanation_contents'}}) {
+      $explanation_string = $self->convert_tree_new_formatting_context(
+        {'type' => '_string', 
+         'contents' => $command->{'extra'}->{'explanation_contents'}},
+        $cmdname, $cmdname);
+    }
+  } elsif ($self->{'explained_commands'}->{$cmdname}->{$normalized_type}) {
     $explanation_string = $self->convert_tree_new_formatting_context(
       {'type' => '_string', 
-       'contents' => $command->{'extra'}->{'explanation_contents'}},
-      $cmdname, $cmdname);
+       'contents' => $self->{'explained_commands'}
+                       ->{$cmdname}->{$normalized_type}},
+    $cmdname, $cmdname);
+
+    $command->{'extra'}->{'explanation_contents'} 
+       = $self->{'explained_commands'}->{$cmdname}->{$normalized_type};
+  } else {
+    # Avoid ever giving an explanation for this element.  This prevents
+    # infinite recursion for a recursively-defined acronym, when an
+    # @acronym within the explanation could end up referring to the
+    # containing @acronym.
+
+    $command->{'extra'}->{'explanation_contents'} = [];
   }
   my $result = $args->[0]->{'normal'};
   if (!$self->in_string()) {
@@ -1503,8 +1534,10 @@ sub _convert_explained_command($$$$)
     $result = $self->convert_tree($self->gdt('{explained_string} ({explanation})',
           {'explained_string' => {'type' => '_converted',
                    'text' => $result},
-           'explanation' => $args->[1]->{'tree'} }));
+           'explanation' => {'type' => '_converted',
+                   'text' => $explanation_result}}));
   }
+
   return $result;
 }
 

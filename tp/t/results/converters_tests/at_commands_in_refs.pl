@@ -2720,7 +2720,8 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'explanation_contents' => []
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -2879,7 +2880,8 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'explanation_contents' => []
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -9358,7 +9360,8 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'explanation_contents' => []
               },
               'line_nr' => {},
               'parent' => {}
@@ -9509,7 +9512,8 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'explanation_contents' => []
               },
               'line_nr' => {},
               'parent' => {}
@@ -9662,7 +9666,8 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'explanation_contents' => []
               },
               'line_nr' => {},
               'parent' => {}
@@ -9813,7 +9818,8 @@ $result_trees{'at_commands_in_refs'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'explanation_contents' => []
               },
               'line_nr' => {},
               'parent' => {}
@@ -15162,7 +15168,8 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'explanation_contents' => []
                       },
                       'line_nr' => {},
                       'parent' => {}
@@ -15309,7 +15316,8 @@ $result_trees{'at_commands_in_refs'} = {
                           [
                             {}
                           ]
-                        ]
+                        ],
+                        'explanation_contents' => []
                       },
                       'line_nr' => {},
                       'parent' => {}

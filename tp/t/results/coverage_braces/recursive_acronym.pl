@@ -48,7 +48,8 @@ $result_trees{'recursive_acronym'} = {
                       [
                         {}
                       ]
-                    ]
+                    ],
+                    'explanation_contents' => []
                   },
                   'line_nr' => {
                     'file_name' => '',

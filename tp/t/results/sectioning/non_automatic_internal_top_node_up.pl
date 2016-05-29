@@ -94,7 +94,8 @@ $result_trees{'non_automatic_internal_top_node_up'} = [
                             [
                               {}
                             ]
-                          ]
+                          ],
+                          'explanation_contents' => []
                         },
                         'line_nr' => {
                           'file_name' => '',

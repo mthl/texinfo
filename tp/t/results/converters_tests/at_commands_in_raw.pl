@@ -1874,7 +1874,8 @@ $result_trees{'at_commands_in_raw'} = {
                   [
                     {}
                   ]
-                ]
+                ],
+                'explanation_contents' => []
               },
               'line_nr' => {
                 'file_name' => '',

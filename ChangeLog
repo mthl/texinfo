@@ -1,3 +1,12 @@
+2016-05-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@acronym, @abbr>: Don't
+	set 'explained_commands' hash or 'explanation_contents' extra 
+	value on elements.
+	* tp/Texinfo/Convert/HTML.pm (_convert_explained_command): Move 
+	the code for keeping track of previous acronym explanations
+	here.
+
 2016-05-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi) <@novalidate>,
