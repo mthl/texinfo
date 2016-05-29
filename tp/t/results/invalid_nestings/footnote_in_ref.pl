@@ -139,8 +139,7 @@ $result_trees{'footnote_in_ref'} = {
                 ]
               },
               'line_nr' => {},
-              'parent' => {},
-              'remaining_args' => 3
+              'parent' => {}
             }
           ],
           'parent' => {},

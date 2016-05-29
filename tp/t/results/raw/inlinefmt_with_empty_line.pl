@@ -63,8 +63,7 @@ $result_trees{'inlinefmt_with_empty_line'} = {
             'line_nr' => 1,
             'macro' => ''
           },
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         }
       ],
       'parent' => {},
@@ -144,8 +143,7 @@ $result_trees{'inlinefmt_with_empty_line'} = {
             'line_nr' => 4,
             'macro' => ''
           },
-          'parent' => {},
-          'remaining_args' => 0
+          'parent' => {}
         }
       ],
       'parent' => {},

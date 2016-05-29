@@ -184,8 +184,7 @@ $result_trees{'ref_in_center'} = {
                     'line_nr' => 5,
                     'macro' => ''
                   },
-                  'parent' => {},
-                  'remaining_args' => 2
+                  'parent' => {}
                 }
               ],
               'parent' => {},

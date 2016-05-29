@@ -404,7 +404,7 @@ my @node_keys = ('node_next', 'node_prev', 'node_up', 'menus',
   'associated_section');
 my %avoided_keys_tree;
 our @avoided_keys_tree = (@sections_keys, @menus_keys, @node_keys, 
-   'menu_child', 'element_next', 'directions', 'page_next');
+   'menu_child', 'element_next', 'directions', 'page_next', 'remaining_args');
 foreach my $avoided_key(@avoided_keys_tree) {
   $avoided_keys_tree{$avoided_key} = 1;
 }

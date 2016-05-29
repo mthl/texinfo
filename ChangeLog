@@ -1,5 +1,11 @@
 2016-05-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/test-utils.pl (@avoided_keys_tree): Don't compare 
+	'remaining_args' values.  This is for the XS module, which 
+	doesn't output them.
+
+2016-05-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_macro_command_line): Order of 
 	error messages changed.
 

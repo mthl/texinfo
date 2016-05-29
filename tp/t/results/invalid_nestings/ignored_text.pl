@@ -42,8 +42,7 @@ $result_trees{'ignored_text'} = {
         'line_nr' => 1,
         'macro' => ''
       },
-      'parent' => {},
-      'remaining_args' => 3
+      'parent' => {}
     }
   ],
   'type' => 'document_root'

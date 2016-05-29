@@ -162,8 +162,7 @@ $result_trees{'item_in_ref'} = {
                         'line_nr' => 5,
                         'macro' => ''
                       },
-                      'parent' => {},
-                      'remaining_args' => 2
+                      'parent' => {}
                     }
                   ],
                   'parent' => {},

@@ -496,8 +496,7 @@ $result_trees{'in_table'} = {
                                 'line_nr' => 10,
                                 'macro' => ''
                               },
-                              'parent' => {},
-                              'remaining_args' => 2
+                              'parent' => {}
                             }
                           ],
                           'parent' => {},

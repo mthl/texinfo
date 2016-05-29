@@ -88,8 +88,7 @@ $result_trees{'verbatim_in_ref'} = {
                 'line_nr' => 3,
                 'macro' => ''
               },
-              'parent' => {},
-              'remaining_args' => 3
+              'parent' => {}
             }
           ],
           'parent' => {},
