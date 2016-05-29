@@ -1,5 +1,10 @@
 2016-05-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_macro_command_line): Order of 
+	error messages changed.
+
+2016-05-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <@acronym, @abbr>: Don't
 	set 'explained_commands' hash or 'explanation_contents' extra 
 	value on elements.

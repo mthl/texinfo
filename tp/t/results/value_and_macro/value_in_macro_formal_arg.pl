@@ -145,21 +145,21 @@ macro_arg1
 
 $result_errors{'value_in_macro_formal_arg'} = [
   {
-    'error_line' => ':3: bad syntax for @macro argument: }
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => 'bad syntax for @macro argument: }',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':3: bad or empty @macro formal argument: the@value{argument
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
     'text' => 'bad or empty @macro formal argument: the@value{argument',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':3: bad syntax for @macro argument: }
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'bad syntax for @macro argument: }',
     'type' => 'error'
   },
   {

@@ -1177,14 +1177,6 @@ sub _parse_macro_command_line($$$$$;$)
       @args = split(/\s*,\s*/, $1);
     }
  
-    # accept an @-command after the arguments in case there is a @c or
-    # @comment
-    if ($args_def =~ /^\s*[^\@]/) {
-      $self->line_error(sprintf($self->__("bad syntax for \@%s argument: %s"), 
-                                 $command, $args_def),
-                        $line_nr);
-      $macro->{'extra'}->{'invalid_syntax'} = 1;
-    }
     print STDERR "MACRO \@$command $macro_name\n" if ($self->{'DEBUG'});
 
     $macro->{'args'} = [ 
@@ -1202,6 +1194,14 @@ sub _parse_macro_command_line($$$$$;$)
       }
       $macro->{'extra'}->{'args_index'}->{$formal_arg} = $index;
       $index++;
+    }
+    # accept an @-command after the arguments in case there is a @c or
+    # @comment
+    if ($args_def =~ /^\s*[^\@]/) {
+      $self->line_error(sprintf($self->__("bad syntax for \@%s argument: %s"), 
+                                 $command, $args_def),
+                        $line_nr);
+      $macro->{'extra'}->{'invalid_syntax'} = 1;
     }
   } elsif ($line !~ /\S/) {
     $self->line_error(sprintf($self->
