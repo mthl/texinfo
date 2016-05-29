@@ -2029,6 +2029,38 @@ end_line (ELEMENT *current)
     {
       current = end_line_misc_line (current);
     }
+  /* 3419 */
+  else if (current->contents.number == 1
+           && current->contents.list[0]->type == ET_empty_line_after_command
+           || current->contents.number == 2
+           && current->contents.list[0]->type == ET_empty_line_after_command
+           && (current->contents.list[1]->cmd == CM_c
+               || current->contents.list[1]->cmd == CM_comment))
+    {
+      if (current->type == ET_preformatted
+          || current->type == ET_rawpreformatted)
+        {
+          /* Empty line after a @menu, or before a preformatted.  Reparent
+             to the menu or other format. */
+          ELEMENT *parent, *to_reparent;
+
+          parent = current->parent;
+          if (parent->type == ET_menu_comment
+              && parent->contents.number == 1)
+            {
+              parent = parent->parent;
+            }
+          to_reparent = pop_element_from_contents (parent);
+          debug ("LINE AFTER COMMAND IN PREFORMATTED");
+          while (current->contents.number > 0)
+            {
+              ELEMENT *e;
+              e = remove_from_contents (current, 0);
+              add_to_element_contents (parent, e);
+            }
+          add_to_element_contents (parent, to_reparent);
+        }
+    }
 
   /* 'line' or 'def' at top of "context stack" - this happens when
      line commands are nested (always incorrectly?) */
@@ -2052,7 +2084,7 @@ end_line (ELEMENT *current)
             }
         }
 
-      /* 2471 Check for infinite loop bugs */
+      /* 3470 Check for infinite loop bugs */
       if (current == current_old)
         abort ();
 

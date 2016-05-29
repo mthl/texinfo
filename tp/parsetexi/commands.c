@@ -104,50 +104,54 @@ wipe_user_commands (void)
 /* We may replace this function with a macro, or represent this infomation in
    command_data. */
 int
-close_paragraph_command (enum command_id cmd_id)
+close_paragraph_command (enum command_id cmd)
 {
+  if (cmd == CM_verbatim)
+    return 1;
+
   /* Block commands except 'raw' and 'conditional'.  */
-  if (command_data(cmd_id).flags & CF_block)
+
+  if (command_data(cmd).flags & CF_block)
     {
-      if (command_data(cmd_id).data == BLOCK_conditional
-          || command_data(cmd_id).data == BLOCK_raw)
+      if (command_data(cmd).data == BLOCK_conditional
+          || command_data(cmd).data == BLOCK_raw)
         return 0;
-      if (command_data(cmd_id).flags & CF_format_raw)
+      if (command_data(cmd).flags & CF_format_raw)
         return 0;
 
       return 1;
     }
 
   /* several others Common.pm:852 */
-  if (cmd_id == CM_titlefont
-     || cmd_id == CM_insertcopying
-     || cmd_id == CM_sp
-     || cmd_id == CM_verbatiminclude
-     || cmd_id == CM_page
-     || cmd_id == CM_item
-     || cmd_id == CM_itemx
-     || cmd_id == CM_tab
-     || cmd_id == CM_headitem
-     || cmd_id == CM_printindex
-     || cmd_id == CM_listoffloats
-     || cmd_id == CM_center
-     || cmd_id == CM_dircategory
-     || cmd_id == CM_contents
-     || cmd_id == CM_shortcontents
-     || cmd_id == CM_summarycontents
-     || cmd_id == CM_caption
-     || cmd_id == CM_shortcaption
-     || cmd_id == CM_setfilename
-     || cmd_id == CM_exdent)
+  if (cmd == CM_titlefont
+     || cmd == CM_insertcopying
+     || cmd == CM_sp
+     || cmd == CM_verbatiminclude
+     || cmd == CM_page
+     || cmd == CM_item
+     || cmd == CM_itemx
+     || cmd == CM_tab
+     || cmd == CM_headitem
+     || cmd == CM_printindex
+     || cmd == CM_listoffloats
+     || cmd == CM_center
+     || cmd == CM_dircategory
+     || cmd == CM_contents
+     || cmd == CM_shortcontents
+     || cmd == CM_summarycontents
+     || cmd == CM_caption
+     || cmd == CM_shortcaption
+     || cmd == CM_setfilename
+     || cmd == CM_exdent)
     return 1;
 
   /* headings Common.pm:954 */
-  if ((command_data(cmd_id).flags & CF_sectioning)
-      && !(command_data(cmd_id).flags & CF_root))
+  if ((command_data(cmd).flags & CF_sectioning)
+      && !(command_data(cmd).flags & CF_root))
     return 1;
 
   /* def commands 866 */
-  if ((command_data(cmd_id).flags & CF_def))
+  if ((command_data(cmd).flags & CF_def))
     return 1;
 
   return 0;
