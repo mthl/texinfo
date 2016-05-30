@@ -240,12 +240,23 @@ path_vars='work_build workdir t2ddir work_bak in_input'
 cd_dir ()
 {
   cd "$1"
+
+  # Check if argument is absolute, and if so, make all the path variables
+  # absolute.
+  case "$1" in
+  [\\/]* | ?:[\\/]*)  # absolute path
+    for cdd_dir in $path_vars; do
+      eval "$cdd_dir=\`absolute \$$cdd_dir\`"
+    done
+    return ;;
+  esac
+
   # Replace each path component with ".." and remove any trailing slash.
   cdd_prefix=`echo "$1" | \$SED -e 's/[^/\\][^/\\]*/../g' -e 's/[/\\]$//'`
 
   # Add this prefix for some variables.
   for cdd_dir in $path_vars; do
-    eval "case \"$$cdd_dir\" in
+    eval "case \"\$$cdd_dir\" in
           [\\/]* | ?:[\\/]*) ;;  # absolute path - do nothing
           ?*)
              eval \"\$cdd_dir=\$cdd_prefix/\\\$\$cdd_dir\" ;;
@@ -273,6 +284,8 @@ cd_orig ()
   # - the next file is processed in correct conditions
   # - the temporary file can be removed
   cd "$orig_pwd" || exit 1
+
+  test -z "$cdd_prefix" && return
   
   # strip off ../../ from some variables
   # quote string by placing \ before each character (each either . or /)

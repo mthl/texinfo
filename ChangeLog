@@ -1,3 +1,11 @@
+2016-05-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (cd_dir): Check if argument is absolute, and if 
+	so, make all the path variables absolute.  Fix test of whether a 
+	variable is absolute or not.  Absolute path given to --build-dir 
+	broken reported by Daniel Gerbert.
+	(cd_orig): If cdd_prefix is empty, don't try to remove it.
+
 2016-05-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/test-utils.pl (@avoided_keys_tree): Don't compare 
