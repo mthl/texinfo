@@ -923,32 +923,36 @@ run_tex ()
 {
   make_tex_cmd
 
-  tex_cmd=`(LC_ALL=C
-    if (echo "$in_input" | grep [^a-zA-Z0-9/.]) >/dev/null ; then
-      # If the filename has funny characters, change the TeX category codes of 
-      # some characters within a group, and use \expandafter to input the file
-      # outside of the group.
+  # Check for any unusual characters in the filename.
+  # However, >, \ and any whitespace characters are not supported
+  # filenames.
+  in_input_funnies=`echo "$in_input" \
+    | $SED -e 's![^}#$%&^_{~]!!g' -e 's!\(.\)!\1\n!g' \
+    | uniq`
+  if test -n "$in_input_funnies" ; then
+    # Make > an end group character, as it's unlikely to appear in
+    # a filename.
+    tex_cmd="$tex_cmd '${escape}bgroup${escape}catcode62=2${escape}relax'"
 
-      # Make > an end group character, as it's unlikely to appear in
-      # a filename.
-      tex_cmd="$tex_cmd '${escape}bgroup${escape}catcode62=2'"
-      # make letter {   }   $  #  ~   ^   &
-      for w in      123 125 36 35 126 136 26; do
-        # TODO: check if letter actually in filename in order
-        # to simplifiy TeX command line.
-        tex_cmd="$tex_cmd '${escape}catcode$w=11${escape}relax'"
-      done
-      # Set \toks0 to "\input FILENAME\relax"
-      tex_cmd="$tex_cmd'${escape}toks0${escape}bgroup"
-      tex_cmd="$tex_cmd${escape}input $in_input${escape}relax>"
-      tex_cmd="$tex_cmd${escape}expandafter${escape}egroup"
-      tex_cmd="$tex_cmd${escape}the${escape}toks0${escape}relax'"
-    else
-      # In the case of a simple filename, just pass the filename
-      # with no funny tricks.
-      tex_cmd="$tex_cmd '${escape}input' '$in_input'"
-    fi
-    echo "$tex_cmd")`
+    # If the filename has funny characters, change the TeX category codes of 
+    # some characters within a group, and use \expandafter to input the file
+    # outside of the group.
+    for w in $in_input_funnies ; do
+      tex_cmd="$tex_cmd '${escape}catcode\`${escape}$w=12${escape}relax'"
+    done
+
+    # Set \toks0 to "\input FILENAME\relax"
+    tex_cmd="$tex_cmd'${escape}toks0${escape}bgroup"
+    tex_cmd="$tex_cmd${escape}input $in_input${escape}relax>"
+
+    # Expand \toks0 after the end of the group
+    tex_cmd="$tex_cmd${escape}expandafter${escape}egroup"
+    tex_cmd="$tex_cmd${escape}the${escape}toks0${escape}relax'"
+  else
+    # In the case of a simple filename, just pass the filename
+    # with no funny tricks.
+    tex_cmd="$tex_cmd '${escape}input' '$in_input'"
+  fi
 
   verbose "$0: Running $tex_cmd ..."
   if (eval "$tex_cmd" >&5); then
