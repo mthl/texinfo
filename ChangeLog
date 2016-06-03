@@ -1,8 +1,16 @@
+2016-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\UTFviiLoop): Add a missing % character in 
+	definition of non-initial bytes in UTF-8 sequences.
+	(\DeclareUnicodeCharacterUTFviii): Move definition of 
+	\UTFviiiTwoOctets (and others) out of this macro and rename 
+	them.  Add more comments.
+
 2016-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/texi2dvi (run_tex): Only check for certain unusual 
 	characters in the filename, using 'sed'.  (Suggestion from 
-	Vincent Belaïche.)  Loop through any that occured and change the 
+	Vincent Belaïche.)  Loop through any that occurred and change the
 	catcode to 12 within a TeX group.
 
 2016-05-30  Gavin Smith  <gavinsmith0123@gmail.com>
