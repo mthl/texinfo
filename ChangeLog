@@ -1,6 +1,12 @@
+2016-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (run_tex): Use \ followed by newline instead of 
+	"\n" in replacement text of 'sed' 's' command.  Problem with 
+	some versions of sed reported by Vincent Belaïche.
+
 2016-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* doc/texinfo.tex (\UTFviiLoop): Add a missing % character in 
+	* doc/texinfo.tex (\UTFviiiLoop): Add a missing % character in 
 	definition of non-initial bytes in UTF-8 sequences.
 	(\DeclareUnicodeCharacterUTFviii): Move definition of 
 	\UTFviiiTwoOctets (and others) out of this macro and rename 
