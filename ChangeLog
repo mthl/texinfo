@@ -1,3 +1,8 @@
+2016-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\txiescapepdf) <\pdfescapestring not defined>:
+	Completely expand argument, as is done in the other case.
+
 2016-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/texi2dvi (run_tex): Use \ followed by newline instead of 
