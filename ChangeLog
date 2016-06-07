@@ -1,4 +1,10 @@
 2016-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+	
+	* doc/texinfo.tex (\dopdfoutline): For display string for PDF 
+	bookmark, check if encoding is Latin-1, and if so, call 
+	\passthroughcharstrue.
+
+2016-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\pdfmkdest): Call \passthroughcharsfalse in 
 	order to use ASCII approximations in destination names.
