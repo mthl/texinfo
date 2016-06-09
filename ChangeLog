@@ -1,5 +1,10 @@
 2016-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/TextContent.pm: Remove commented-out and 
+	disabled code.
+
+2016-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo-text-test.texi (@set and @value): Add a chapter 
 	for tests of @set and @value.  Add a test of a value in an index 
 	entry which is only defined after the index entry.
