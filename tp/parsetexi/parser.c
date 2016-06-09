@@ -695,6 +695,7 @@ is_end_current_command (ELEMENT *current, char **line,
 }
 
 #define GET_A_NEW_LINE 0
+#define STILL_MORE_TO_PROCESS 1
 
 /* line 3725 */
 /* *LINEP is a pointer into the line being processed.  It is advanced past any
@@ -1186,15 +1187,15 @@ value_valid:
                      this happens in the first place. */
                   add_to_element_contents (current, new_element (ET_NONE));
                   line++; /* past '}' */
+                  retval = STILL_MORE_TO_PROCESS;
                 }
               else
                 {
                   line++; /* past '}' */
-                  input_push_text (strdup (line), 0);
+                  input_push_text (strdup (line), line_nr.macro);
                   input_push_text (strdup (value), 0);
-                  line = new_line ();
+                  retval = GET_A_NEW_LINE;
                 }
-              retval = 1;
               goto funexit;
             }
           else
@@ -1236,14 +1237,25 @@ value_invalid:
       /* 4233 invalid nestings */
       if (current->parent && current->parent->cmd)
         {
-          int ok = 0;
+          int ok = 0; /* Whether nesting is allowed. */
+
           enum command_id outer = current->parent->cmd;
           unsigned long outer_flags = command_data(outer).flags;
           unsigned long cmd_flags = command_data(cmd).flags;
 
           // much TODO here.
 
-          if (outer_flags & CF_index_entry_command)
+          if (outer_flags & CF_root && current->type != ET_misc_line_arg)
+            ok = 1; // 4242
+          else if (outer_flags & CF_block
+                   && current->type != ET_block_line_arg)
+            ok = 1; // 4247
+          else if (outer == CM_item
+                   || outer == CM_itemx
+                   && current->type != ET_misc_line_arg)
+            ok = 1; // 4252
+
+          else if (outer_flags & CF_index_entry_command)
             {
               // 563 in_simple_text_commands
               if (cmd_flags & (CF_brace | CF_nobrace))
@@ -1262,8 +1274,123 @@ value_invalid:
               else
                 ok = 1;
             }
+          else if (outer_flags & CF_accent) // 358
+            {
+              if (cmd_flags & (CF_nobrace | CF_accent))
+                ok = 1;
+              else if (cmd_flags & CF_brace
+                       && command_data(cmd).data == 0)
+                ok = 1; /* glyph command */
+              if (cmd == CM_c || cmd == CM_comment)
+                ok = 1;
+            }
+          else if ((outer_flags & CF_brace // full text
+                   && (command_data(outer).data == BRACE_style
+                       || command_data(outer).data == BRACE_inline))
+                   || outer == CM_center // full line
+                   || outer == CM_exdent
+                   || outer == CM_item
+                   || outer == CM_itemx
+                   || (outer_flags & (CF_sectioning | CF_def))) // full line
+                                                                // no refs
+            {
+              if (cmd_flags & (CF_brace | CF_nobrace)) // 370
+                ok = 1;
+              else if (cmd == CM_c
+                       || cmd == CM_comment
+                       || cmd == CM_refill
+                       || cmd == CM_noindent
+                       || cmd == CM_indent
+                       || cmd == CM_columnfractions
+                       || cmd == CM_set
+                       || cmd == CM_clear
+                       || cmd == CM_end) // 373
+                ok = 1;
+
+              if (outer == CM_center
+                  || outer == CM_exdent
+                  || outer == CM_item
+                  || outer == CM_itemx) // full line commands 445
+                {
+                  /* These are stricter than the "full text" commands
+                     about what they contain. */
+                  if (cmd == CM_indent || cmd == CM_noindent)
+                    ok = 0;
+                }
+              if (outer_flags & (CF_sectioning | CF_def))
+                // full line no refs 420
+                {
+                  if (cmd == CM_titlefont
+                      || cmd == CM_anchor
+                      || cmd == CM_footnote
+                      || cmd == CM_verb
+                      || cmd == CM_indent || cmd == CM_noindent)
+                    ok = 0;
+                }
+            }
+
+          /* 403 "commands that only accept simple text as an argument" */
+          else if ((outer_flags & CF_misc
+                    && (command_data(outer).data >= 0
+                        || (command_data(outer).data == MISC_line
+                            && !(outer_flags & (CF_def | CF_sectioning)))
+                        || command_data(outer).data == MISC_text)
+                    && outer != CM_center
+                    && outer != CM_exdent) // 423
+                   || outer == CM_titlefont // 425
+                   || outer == CM_anchor
+                   || outer == CM_xref
+                   || outer == CM_ref
+                   || outer == CM_pxref
+                   || outer == CM_inforef
+                   || outer == CM_shortcaption
+                   || outer == CM_math
+                   || outer == CM_indicateurl
+                   || outer == CM_email
+                   || outer == CM_uref
+                   || outer == CM_url
+                   || outer == CM_image
+                   || outer == CM_abbr
+                   || outer == CM_acronym
+                   || outer == CM_dmn
+                   || outer == CM_ctrl
+                   || outer == CM_errormsg
+                   || (outer_flags & CF_block // 475
+                       && !(outer_flags & CF_def)
+                       && command_data(outer).data != BLOCK_raw
+                       && command_data(outer).data != BLOCK_conditional))
+            {
+              if (cmd_flags & (CF_brace | CF_nobrace)) // 370
+                ok = 1;
+              else if (cmd == CM_c
+                       || cmd == CM_comment
+                       || cmd == CM_refill
+                       || cmd == CM_noindent
+                       || cmd == CM_indent
+                       || cmd == CM_columnfractions
+                       || cmd == CM_set
+                       || cmd == CM_clear
+                       || cmd == CM_end) // 373
+                ok = 1;
+              if (cmd == CM_titlefont
+                  || cmd == CM_anchor
+                  || cmd == CM_footnote
+                  || cmd == CM_verb
+                  || cmd == CM_indent
+                  || cmd == CM_noindent) // 397
+                ok = 0;
+
+              if (cmd == CM_xref
+                  || cmd == CM_ref
+                  || cmd == CM_pxref
+                  || cmd == CM_inforef) // 404
+                ok = 0;
+            }
           else
             {
+              /* Default to valid nesting, for example for commands for which 
+                 it is not defined which commands can occur within them (e.g. 
+                 @tab?). */
               ok = 1;
             }
 

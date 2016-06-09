@@ -35,7 +35,7 @@ close_brace_command (ELEMENT *current,
                         command_name(current->cmd));
       else if (interrupting_command)
         command_error (current,
-                        "%s seen before @%s closing brace",
+                        "@%s seen before @%s closing brace",
                         command_name(interrupting_command),
                         command_name(current->cmd));
       else
@@ -273,7 +273,7 @@ close_current (ELEMENT *current,
             }
           else if (interrupting_command)
             {
-              line_error ("`%s' seen before @end %s",
+              line_error ("@%s seen before @end %s",
                           command_name(interrupting_command),
                           command_name(current->cmd));
             }

@@ -141,14 +141,17 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
 
       /* Disregard trailing whitespace. */
       q2 = q;
-      while (q2 > q && strchr (whitespace_chars, q2[-1]))
+      while (q2 > args_ptr && strchr (whitespace_chars, q2[-1]))
         q2--;
 
       if (q2 == args_ptr)
         {
           // 1126 - argument is completely whitespace
           if (index == 0)
-            break; /* Empty arg list, like "@macro m { }". */
+            {
+              args_ptr = q + 1;
+              break; /* Empty arg list, like "@macro m { }". */
+            }
           line_error ("bad or empty @%s formal argument:",
                       command_name(cmd));
         }
@@ -185,8 +188,13 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
     }
   line = args_ptr;
 
-  /* FIXME: What if there is stuff after the '}'? */
-  line += strlen (line); /* Discard rest of line. */
+  line += strspn (line, whitespace_chars);
+  if (*line && *line != '@')
+    {
+      line_error ("bad syntax for @%s argument: %s",
+                  command_name(cmd), line);
+    }
+  //line += strlen (line); /* Discard rest of line. */
 
 funexit:
   *line_inout = line;
@@ -390,17 +398,27 @@ expand_macro_body (ELEMENT *macro, char *arguments[], TEXT *expanded)
               if (!bs)
                 {
                   // error - malformed
+                  return;
                   abort ();
                 }
 
               *bs = '\0';
               pos = lookup_macro_parameter (ptext, macro);
               if (pos == -1)
-                abort ();
+                {
+                  line_error ("\\ in @%s expansion followed `%s' instead of "
+                              "parameter name or \\",
+                              macro->args.list[0]->text.text,
+                              ptext);
+                  text_append (expanded, "\\");
+                  text_append (expanded, ptext);
+                }
+              else
+                {
+                  if (arguments && arguments[pos])
+                    text_append (expanded, arguments[pos]);
+                }
               *bs = '\\';
-
-              if (arguments && arguments[pos])
-                text_append (expanded, arguments[pos]);
               ptext = bs + 1;
             }
         }
