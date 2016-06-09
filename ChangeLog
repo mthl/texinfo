@@ -1,5 +1,10 @@
 2016-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README-hacking: Remove line referring to "parsetexi" 
+	subdirectory.
+
+2016-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Structuring.pm (nodes_tree): Refer to
 	Texinfo::Common::parse_node_manual instead of
 	Texinfo::Parser::_parse_node_manual.
