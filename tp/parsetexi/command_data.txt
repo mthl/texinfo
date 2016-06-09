@@ -163,8 +163,8 @@ refill				misc		MISC_noarg
 # TODO: Check what these two are.
 # They were obsolete and undocumented commands for macro definitions,
 # never supported in texinfo.tex.
-#quote-arg			misc		MISC_skipline
-#allow-recursion		misc		MISC_skipline
+#quote-arg			misc,deprecated		MISC_skipline
+#allow-recursion		misc,deprecated		MISC_skipline
 
 # line 515
 ##########################################################
@@ -293,7 +293,7 @@ slanted		brace	BRACE_style
 # use a different value for the other commands which
 # are said to take 1 argument in Common.pm.
 U		brace	1
-ctrl		brace	1
+ctrl		brace,deprecated	1
 dmn		brace	1
 titlefont	brace,global	1
 

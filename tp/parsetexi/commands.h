@@ -46,7 +46,7 @@ void init_index_commands (void);
 /* Available command flags.  Based on tp/Texinfo/Common.pm. */
 
 #define CF_misc			        0x0001
-#define CF_default_index	        0x0002
+#define CF_deprecated   	        0x0002
 #define CF_root			        0x0004
 #define CF_sectioning		        0x0008
 #define CF_brace		        0x0010
