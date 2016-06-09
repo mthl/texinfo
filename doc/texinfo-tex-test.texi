@@ -695,22 +695,7 @@ value in index entry
 defined value in index entry (this should definitely work)
 @axindex @value{auxvalue} in index entry
 
-value in index entry, but only defined afterwards
-@axindex @value{definedafter} index entry
-
-@axindex @b{another}
-
-some more text.
-
-@page
-
-@set definedafter Defining this now
-@set definedafter Defining this again
-
 @printindex ax
-
-
-@chapter @code{@@set} and @code{@@value}
 
 @section Another test of @t{@@value}
 
@@ -760,15 +745,12 @@ This manual is for blah-de-blah.@*
 Backslash \@*
 
 Copyrite @copyright{} 201X@*
-
 þ þ þ þ þ þ þ þ
 @end copying
 
 Now for the @@insertcopying:
 
-@tracingmacros=1
 @insertcopying
-@tracingmacros=0
 
 
 @section Captions

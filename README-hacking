@@ -86,6 +86,7 @@ directories in the source control repository:
 
 makeinfo/  - Implementation of makeinfo in C, distributed before version 5.0
 texi2html/ - Perl program to generate HTML from Texinfo, superseded by texi2any
+parsetexi/ - Incomplete reimplementation of Texinfo::Parser in C
 
 
 
