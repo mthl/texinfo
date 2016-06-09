@@ -1,3 +1,11 @@
+2016-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (nodes_tree): Refer to
+	Texinfo::Common::parse_node_manual instead of
+	Texinfo::Parser::_parse_node_manual.
+	* tp/t/test_utils.pl (cmp_trimmed): Put module name "Test::Deep"
+	in front of function "cmp_deeply" which comes from it.
+
 2016-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
 	
 	* doc/texinfo.tex (\dopdfoutline): For display string for PDF 

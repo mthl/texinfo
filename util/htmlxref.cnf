@@ -597,9 +597,6 @@ TEXINFO = ${GS}/texinfo/manual
 texinfo		mono	${TEXINFO}/texinfo/texinfo.html
 texinfo		node	${TEXINFO}/texinfo/html_node/
  #
- info		mono	${TEXINFO}/info/info.html
- info		node	${TEXINFO}/info/html_node/
- #
  info-stnd	mono	${TEXINFO}/info-stnd/info-stnd.html
  info-stnd	node	${TEXINFO}/info-stnd/html_node/
 

@@ -585,7 +585,7 @@ sub nodes_tree($)
                                                     $self->{'TOP_NODE_UP'});
       $top_node_up
         = {'type' => 'top_node_up',
-           'extra' => Texinfo::Parser::_parse_node_manual(
+           'extra' => Texinfo::Common::parse_node_manual(
                 {'contents' => $top_node_up_content_tree->{'contents'}})};
     }
     if ($node->{'menus'}) {

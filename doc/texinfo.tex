@@ -1205,6 +1205,31 @@ with PDF output, and none of those formats could be found.  (.eps cannot
 be supported due to the design of the PDF format; use regular TeX (DVI
 output) for that.)}
 
+% Used for UTF-16BE in outline entries
+\newif \ifwritingtooutlineone
+\writingtooutlineonefalse
+\newif \ifwritingtooutlinetwo
+\writingtooutlinetwofalse
+
+\def\swap#1#2{#2#1}
+
+%
+% Pass a control sequence name containing UTF-8.
+\def\convertutfsixteen#1{%
+  \expandafter\convertutfsixteenxx #1\finish}
+{\catcode0=12 %
+\gdef\convertutfsixteenxx#1{%
+  \ifx#1\finish\else
+  \if\noexpand#1\relax
+    % it's a control sequence
+    #1\expandafter\swap\expandafter\convertutfsixteenxx
+  \else
+    % it's a character
+    ^^00#1\expandafter\swap\expandafter\convertutfsixteenxx
+  \fi\fi}}
+
+
+
 \ifpdf
   %
   % Color manipulation macros using ideas from pdfcolor.tex,
@@ -1368,12 +1393,19 @@ output) for that.)}
           \passthroughcharstrue
         \fi
         \ifx \declaredencoding \utfeight
-          % TODO: the PDF format can use UTF-16 in bookmark strings, but the
-          % code for this isn't done yet.
+          \writingtooutlineonetrue
+          \writingtooutlinetwofalse
         \fi
         \globaldefs=1
         \edef\pdfoutlinetext{#1}%
         \txiescapepdf\pdfoutlinetext
+        \ifx \declaredencoding \utfeight
+          \writingtooutlineonefalse
+          \writingtooutlinetwotrue
+          \edef\pdfoutlinetext{%
+            \convertutfsixteen\pdfoutlinetext}%
+          \edef\pdfoutlinetext{\pdfbom\pdfoutlinetext}
+        \fi
       \egroup
       %
       \pdfoutline goto name{\pdfmkpgn{\pdfoutlinedest}}#2{\pdfoutlinetext}%
@@ -10243,6 +10275,8 @@ directory should work if nowhere else does.}
   \fi
 }
 
+\def\swaggle#1#2#3{#2#3#1}
+
 % Give non-ASCII bytes the active definitions for processing UTF-8 sequences
 \begingroup
   \catcode`\~13
@@ -10326,6 +10360,16 @@ directory should work if nowhere else does.}
 \def\UTFviiiFourOctetsName#1#2#3#4{%
   \csname u8:#1\string #2\string #3\string #4\endcsname}%
 
+{    
+\catcode`\^^ff=12 %
+\catcode`\^^fe=12 %
+\gdef\pdfbom{^^fe^^ff}}
+
+\def\expandaftergroup#1#2{\expandaftergroupxx#2{#1}}
+\def\expandaftergroupxx#1#2{\expandafter\expandaftergroupxxx#1{#2}}
+\def\expandaftergroupxxx#1#2{#2#1}
+%
+%
 % For UTF-8 byte sequence (TeX, e-TeX and pdfTeX)
 % Definition macro to replace the Unicode character
 % Definition macro that is used by @U command
@@ -10338,7 +10382,10 @@ directory should work if nowhere else does.}
   \catcode`\;=12
   \catcode`\!=12
   \catcode`\~=13
+  \catcode`\^^00=12
   \gdef\DeclareUnicodeCharacterUTFviii#1#2{%
+    \DeclareUnicodeCharacterUTFviiixx{#1}{#2}#1}%
+  \gdef\DeclareUnicodeCharacterUTFviiixx#1#2#3#4#5#6{%
     \countUTFz = "#1\relax
     \begingroup
       \parseXMLCharref
@@ -10353,7 +10400,39 @@ directory should work if nowhere else does.}
       \expandafter\expandafter
       \expandafter\expandafter
       \expandafter\expandafter
-      \expandafter\gdef       \UTFviiiTmp{#2}%
+      \expandafter\gdef
+      \expandafter\expandafter
+      \expandafter\expandafter
+      \expandafter\expandafter
+      \expandafter\seqname
+      \expandafter\expandafter
+      \expandafter\expandafter
+      \expandafter\expandafter
+      \expandafter{\UTFviiiTmp}%
+
+      \def\definethesequence##1##2##3{%
+        \gdef##1{%
+          \ifwritingtooutlineone
+            \noexpand##1%
+          \else\ifwritingtooutlinetwo
+             ##2##3%
+          \else
+            #2%
+          \fi\fi
+        }}%
+      
+      \uccode`\X="#3#4
+      \uccode`\Y="#5#6
+      \ifnum\uccode`\X=0 %
+        \uppercase{%
+          \expandafter\definethesequence\seqname ^^00Y}%
+      \else\ifnum\uccode`\Y=0 %
+        \uppercase{%
+          \expandafter\definethesequence\seqname X^^00}%
+      \else
+        \uppercase{%
+          \expandafter\definethesequence\seqname XY}%
+      \fi\fi
       % 
       \expandafter\ifx\csname uni:#1\endcsname \relax \else
        \message{Internal error, already defined: #1}%

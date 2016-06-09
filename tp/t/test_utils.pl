@@ -374,7 +374,7 @@ sub cmp_trimmed($$$$)
   my $test_name = shift;
   my $trimmed = remove_keys($compared, $deleted_keys);
 no warnings 'recursion';
-  cmp_deeply($trimmed, $reference, $test_name);
+  Test::Deep::cmp_deeply($trimmed, $reference, $test_name);
 }
 
 sub new_test($;$$$)
