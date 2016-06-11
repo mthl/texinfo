@@ -1908,7 +1908,7 @@ change it if you wish by setting the @code{tex-start-of-header} and/or
 
 The @code{@@setfilename} line specifies the name of the output file to
 be generated.
-When present, it should be the first Texinfo command (that is, afte
+When present, it should be the first Texinfo command (that is, after
 @samp{\input texinfo}).
 Write the @code{@@setfilename} command at the beginning of a line and
 follow it on the same line by the Info file name.

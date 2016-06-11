@@ -1,3 +1,7 @@
+2016-06-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (@setfilename): Fix typo.
+
 2016-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/TextContent.pm: Remove commented-out and 
