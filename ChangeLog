@@ -1,5 +1,11 @@
 2016-06-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_print_tree),
+	* tp/Texinfo/Common.pm (print_tree): Move implementation
+	to Common.pm.
+
+2016-06-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/NodeNameNormalization.pm: Remove 
 	commented-out code.
 

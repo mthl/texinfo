@@ -2427,6 +2427,24 @@ sub debug_hash
 
   warn "$str\n";
 }
+
+use Data::Dumper;
+
+my @kept_keys = ('contents', 'cmdname', 'type', 'text', 'args');
+my %kept_keys;
+foreach my $key (@kept_keys) {
+  $kept_keys{$key} = 1;
+}
+sub _filter_print_keys { [grep {$kept_keys{$_}} ( sort keys %{$_[0]} )] };
+sub print_tree($)
+{
+  my $tree = shift;
+  local $Data::Dumper::Sortkeys = \&_filter_print_keys;
+  local $Data::Dumper::Purity = 1;
+  local $Data::Dumper::Indent = 1;
+
+  return Data::Dumper->Dump([$tree]);
+}
 1;
 
 __END__
