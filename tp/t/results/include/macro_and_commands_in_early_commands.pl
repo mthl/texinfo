@@ -96,7 +96,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           'cmdname' => 'setfilename',
           'extra' => {
             'spaces_after_command' => {},
-            'text_arg' => 'macro_i--n_pass@texi_commands.info'
+            'text_arg' => 'macro_i--n_pass'
           },
           'line_nr' => {
             'file_name' => '',
@@ -194,7 +194,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           'cmdname' => 'documentencoding',
           'extra' => {
             'spaces_after_command' => {},
-            'text_arg' => 'ISO-8859-1@'
+            'text_arg' => 'ISO-8859-1'
           },
           'line_nr' => {
             'file_name' => '',
@@ -396,15 +396,51 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
         },
         {},
         {
-          'contents' => [
+          'args' => [
             {
+              'contents' => [
+                {
+                  'extra' => {
+                    'command' => {}
+                  },
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_after_command'
+                },
+                {
+                  'parent' => {},
+                  'text' => 'inc_'
+                },
+                {
+                  'cmdname' => '@',
+                  'parent' => {}
+                },
+                {
+                  'parent' => {},
+                  'text' => 'f--ile.texi'
+                },
+                {
+                  'parent' => {},
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
+              ],
               'parent' => {},
-              'text' => 'In included file.
-'
+              'type' => 'misc_line_arg'
             }
           ],
-          'parent' => {},
-          'type' => 'paragraph'
+          'cmdname' => 'include',
+          'extra' => {
+            'spaces_after_command' => {},
+            'text_arg' => 'inc_'
+          },
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 21,
+            'macro' => 'multiinclude'
+          },
+          'parent' => {}
         },
         {
           'parent' => {},
@@ -467,7 +503,7 @@ $result_trees{'macro_and_commands_in_early_commands'} = {
           'cmdname' => 'verbatiminclude',
           'extra' => {
             'spaces_after_command' => {},
-            'text_arg' => 'inc_@f--ile.texi'
+            'text_arg' => 'inc_'
           },
           'line_nr' => {
             'file_name' => '',
@@ -561,7 +597,14 @@ $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[1]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2];
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2];
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[2] = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[1]{'extra'}{'spaces_after_command'};
-$result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3];
+$result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3];
+$result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'args'}[0];
+$result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'args'}[0];
+$result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'args'}[0];
+$result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'args'}[0];
+$result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'args'}[0];
+$result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3];
+$result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2];
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2];
 $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'macro_and_commands_in_early_commands'}{'contents'}[2]{'contents'}[5];
@@ -603,7 +646,7 @@ macro_included.texi
 @macro themacro
 in themacro
 @end macro
-In included file.
+@include inc_@@f--ile.texi
 
 in themacro
 
@@ -619,7 +662,6 @@ $result_texts{'macro_and_commands_in_early_commands'} = '
 top
 ***
 
-In included file.
 
 in themacro
 
@@ -678,22 +720,40 @@ $result_menus{'macro_and_commands_in_early_commands'} = {
 
 $result_errors{'macro_and_commands_in_early_commands'} = [
   {
-    'error_line' => ':11: warning: encoding `ISO-8859-1@\' is not a canonical texinfo encoding
+    'error_line' => ':5: bad argument to @setfilename: macro_i--n_pass@@texi_commands.info
 ',
     'file_name' => '',
-    'line_nr' => 11,
+    'line_nr' => 5,
     'macro' => '',
-    'text' => 'encoding `ISO-8859-1@\' is not a canonical texinfo encoding',
-    'type' => 'warning'
+    'text' => 'bad argument to @setfilename: macro_i--n_pass@@texi_commands.info',
+    'type' => 'error'
   },
   {
-    'error_line' => ':11: warning: unrecognized encoding name `ISO-8859-1@\'
+    'error_line' => ':11: bad argument to @documentencoding: ISO-8859-1@@
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => 'unrecognized encoding name `ISO-8859-1@\'',
-    'type' => 'warning'
+    'text' => 'bad argument to @documentencoding: ISO-8859-1@@',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':21: bad argument to @include: inc_@@f--ile.texi (possibly involving @multiinclude)
+',
+    'file_name' => '',
+    'line_nr' => 21,
+    'macro' => 'multiinclude',
+    'text' => 'bad argument to @include: inc_@@f--ile.texi',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':25: bad argument to @verbatiminclude: inc_@@f--ile.texi
+',
+    'file_name' => '',
+    'line_nr' => 25,
+    'macro' => '',
+    'text' => 'bad argument to @verbatiminclude: inc_@@f--ile.texi',
+    'type' => 'error'
   }
 ];
 

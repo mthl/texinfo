@@ -268,6 +268,15 @@ $result_errors{'bad_documentlanguage'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':4: bad argument to @documentlanguage: en @documentlanguage  en
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'bad argument to @documentlanguage: en @documentlanguage  en',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':6: warning: en  after documentlanguage is not a valid language code
 ',
     'file_name' => '',

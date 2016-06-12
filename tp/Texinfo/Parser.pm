@@ -3145,12 +3145,26 @@ sub _end_line($$$)
         }
       }
     } elsif ($self->{'misc_commands'}->{$command} eq 'text') {
-      my $text = Texinfo::Convert::Text::convert($current->{'args'}->[0],
-                                                 {'code' => 1, 
-                                          Texinfo::Common::_convert_text_options($self)});
-      if ($text eq '') {
-        $self->_command_warn($current, $line_nr, 
-                             $self->__("\@%s missing argument"), $command);
+      my $text = '';
+      my $superfluous_arg = 0;
+      if (defined $current->{'args'}->[0]->{'contents'}) {
+        my @contents = @{$current->{'args'}->[0]->{'contents'}};
+        _trim_spaces_comment_from_content (\@contents);
+        if (scalar(@contents) > 1
+            or scalar(@contents) == 1
+               and not defined $contents[0]->{'text'}) {
+          # Too many arguments or @-commands used in argument.
+          $superfluous_arg = 1; # Used below to issue an error message.
+        }
+        $text = $contents[0]->{'text'}
+          if defined $contents[0]->{'text'};
+      }
+      if (not defined $text or $text eq '') {
+        if (not $superfluous_arg) {
+          $self->_command_warn($current, $line_nr, 
+                               $self->__("\@%s missing argument"), $command);
+        }
+        # Otherwise an error message is issued below.
         $current->{'extra'}->{'missing_argument'} = 1;
       } else {
         $current->{'extra'}->{'text_arg'} = $text;
@@ -3179,19 +3193,23 @@ sub _end_line($$$)
               $current->{'extra'}->{'command_argument'} = $end_command
                 if (defined($end_command));
             }
-            if ($line =~ /\S/ and defined($end_command)) {
+            if (($superfluous_arg or $line =~ /\S/)
+                and defined($end_command)) {
               my $texi_line 
                 = Texinfo::Convert::Texinfo::convert($current->{'args'}->[0]);
               $texi_line =~ s/^\s*([[:alnum:]][[:alnum:]-]+)//;
               $self->_command_error($current, $line_nr, 
                              $self->__("superfluous argument to \@%s %s: %s"),
                              $command, $end_command, $texi_line);
+              $superfluous_arg = 0; # Don't issue another error message below.
             }
           } else {
             $self->_command_error($current, $line_nr,
                               $self->__("bad argument to \@%s: %s"),
                               $command, $line);
           }
+        } elsif ($superfluous_arg) {
+          # An error message is issued below.
         } elsif ($command eq 'include') {
           my $file = Texinfo::Common::locate_include_file($self, $text) ;
           if (defined($file)) {
@@ -3260,6 +3278,17 @@ sub _end_line($$$)
             $self->{'documentlanguage'} = $text;
           }
         }
+      }
+      if ($superfluous_arg) {
+        my $texi_line 
+          = Texinfo::Convert::Texinfo::convert($current->{'args'}->[0]);
+        $texi_line =~ s/^\s*//;
+        $texi_line =~ s/\s*$//;
+
+        $self->_command_error($current, $line_nr, 
+                       $self->__("bad argument to \@%s: %s"),
+                       $command, $texi_line);
+        
       }
     } elsif ($command eq 'node') {
       foreach my $arg (@{$current->{'args'}}) {

@@ -152,7 +152,7 @@ $result_trees{'symbol_after_block'} = {
             'command' => {},
             'command_argument' => 'html',
             'spaces_after_command' => {},
-            'text_arg' => 'html@ On the line.'
+            'text_arg' => 'html'
           },
           'line_nr' => {
             'file_name' => '',
@@ -632,7 +632,7 @@ $result_trees{'symbol_after_block'} = {
             'command' => {},
             'command_argument' => 'table',
             'spaces_after_command' => {},
-            'text_arg' => 'table@'
+            'text_arg' => 'table'
           },
           'line_nr' => {
             'file_name' => '',
@@ -915,7 +915,7 @@ $result_trees{'symbol_after_block'} = {
             'command' => {},
             'command_argument' => 'itemize',
             'spaces_after_command' => {},
-            'text_arg' => 'itemize@'
+            'text_arg' => 'itemize'
           },
           'line_nr' => {
             'file_name' => '',
@@ -1488,7 +1488,7 @@ $result_trees{'symbol_after_block'} = {
             'command' => {},
             'command_argument' => 'multitable',
             'spaces_after_command' => {},
-            'text_arg' => 'multitable{'
+            'text_arg' => 'multitable'
           },
           'line_nr' => {
             'file_name' => '',
@@ -1671,7 +1671,7 @@ $result_trees{'symbol_after_block'} = {
             'command' => {},
             'command_argument' => 'flushleft',
             'spaces_after_command' => {},
-            'text_arg' => 'flushleft@'
+            'text_arg' => 'flushleft'
           },
           'line_nr' => {
             'file_name' => '',
@@ -1856,7 +1856,7 @@ $result_trees{'symbol_after_block'} = {
             'command' => {},
             'command_argument' => 'copying',
             'spaces_after_command' => {},
-            'text_arg' => 'copying@'
+            'text_arg' => 'copying'
           },
           'line_nr' => {
             'file_name' => '',

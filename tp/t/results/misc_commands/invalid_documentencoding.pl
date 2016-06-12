@@ -71,8 +71,6 @@ $result_trees{'invalid_documentencoding'} = {
       ],
       'cmdname' => 'documentencoding',
       'extra' => {
-        'input_encoding_name' => 'us-ascii',
-        'input_perl_encoding' => 'ascii',
         'spaces_after_command' => {},
         'text_arg' => 'us-ascii'
       },
@@ -137,7 +135,7 @@ $result_trees{'invalid_documentencoding'} = {
       'cmdname' => 'documentencoding',
       'extra' => {
         'spaces_after_command' => {},
-        'text_arg' => 'latin1a'
+        'text_arg' => 'latin1'
       },
       'line_nr' => {},
       'parent' => {}
@@ -337,8 +335,8 @@ $result_trees{'invalid_documentencoding'} = {
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
-            'spaces_after_command' => {},
-            'text_arg' => '@'
+            'missing_argument' => 1,
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -394,7 +392,7 @@ $result_trees{'invalid_documentencoding'} = {
           'cmdname' => 'documentencoding',
           'extra' => {
             'spaces_after_command' => {},
-            'text_arg' => 'AAATeX'
+            'text_arg' => 'AAA'
           },
           'line_nr' => {},
           'parent' => {}
@@ -451,7 +449,7 @@ $result_trees{'invalid_documentencoding'} = {
           'cmdname' => 'documentencoding',
           'extra' => {
             'spaces_after_command' => {},
-            'text_arg' => 'BBBe\''
+            'text_arg' => 'BBB'
           },
           'line_nr' => {},
           'parent' => {}
@@ -566,22 +564,22 @@ $result_texts{'invalid_documentencoding'} = '
 
 $result_errors{'invalid_documentencoding'} = [
   {
-    'error_line' => ':4: warning: encoding `latin1a\' is not a canonical texinfo encoding
+    'error_line' => ':2: bad argument to @documentencoding: us-ascii@asis{}
 ',
     'file_name' => '',
-    'line_nr' => 4,
+    'line_nr' => 2,
     'macro' => '',
-    'text' => 'encoding `latin1a\' is not a canonical texinfo encoding',
-    'type' => 'warning'
+    'text' => 'bad argument to @documentencoding: us-ascii@asis{}',
+    'type' => 'error'
   },
   {
-    'error_line' => ':4: warning: unrecognized encoding name `latin1a\'
+    'error_line' => ':4: bad argument to @documentencoding: latin1@asis{a}
 ',
     'file_name' => '',
     'line_nr' => 4,
     'macro' => '',
-    'text' => 'unrecognized encoding name `latin1a\'',
-    'type' => 'warning'
+    'text' => 'bad argument to @documentencoding: latin1@asis{a}',
+    'type' => 'error'
   },
   {
     'error_line' => ':5: warning: encoding `YS-ASCII\' is not a canonical texinfo encoding
@@ -665,58 +663,31 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':9: warning: encoding `@\' is not a canonical texinfo encoding
+    'error_line' => ':9: bad argument to @documentencoding: @@
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'encoding `@\' is not a canonical texinfo encoding',
-    'type' => 'warning'
+    'text' => 'bad argument to @documentencoding: @@',
+    'type' => 'error'
   },
   {
-    'error_line' => ':9: warning: unrecognized encoding name `@\'
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => 'unrecognized encoding name `@\'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':10: warning: encoding `AAATeX\' is not a canonical texinfo encoding
+    'error_line' => ':10: bad argument to @documentencoding: AAA@TeX{}
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'encoding `AAATeX\' is not a canonical texinfo encoding',
-    'type' => 'warning'
+    'text' => 'bad argument to @documentencoding: AAA@TeX{}',
+    'type' => 'error'
   },
   {
-    'error_line' => ':10: warning: unrecognized encoding name `AAATeX\'
-',
-    'file_name' => '',
-    'line_nr' => 10,
-    'macro' => '',
-    'text' => 'unrecognized encoding name `AAATeX\'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':11: warning: encoding `BBBe\'\' is not a canonical texinfo encoding
+    'error_line' => ':11: bad argument to @documentencoding: BBB@\'e
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => 'encoding `BBBe\'\' is not a canonical texinfo encoding',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':11: warning: unrecognized encoding name `BBBe\'\'
-',
-    'file_name' => '',
-    'line_nr' => 11,
-    'macro' => '',
-    'text' => 'unrecognized encoding name `BBBe\'\'',
-    'type' => 'warning'
+    'text' => 'bad argument to @documentencoding: BBB@\'e',
+    'type' => 'error'
   }
 ];
 

@@ -203,6 +203,24 @@ $result_errors{'include_setfilename_on_setfilename_line'} = [
     'macro' => '',
     'text' => '@include: could not find are you joking!',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':1: bad argument to @setfilename: other file @include are you joking!
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'bad argument to @setfilename: other file @include are you joking!',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':1: bad argument to @setfilename: file @setfilename other file @include are you joking!
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'bad argument to @setfilename: file @setfilename other file @include are you joking!',
+    'type' => 'error'
   }
 ];
 

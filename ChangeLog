@@ -1,5 +1,19 @@
 2016-06-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_end_line) <@end, @include>
+	<@documentencoding, @documentlanguage>: Do not call 
+	Texinfo::Convert::Text::convert to get the argument to the 
+	command.  Instead, call _trim_spaces_comment_from_content to 
+	find the element containing the text for the command.  Give an 
+	error message if there are excessive elements in the argument 
+	(e.g. @-commands).
+
+	This has the consequence that @@ can no longer be used to
+	refer to an @-sign in an @include command (similarly for "@ " 
+	for " ", and some other @-commands).
+
+2016-06-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (@setfilename): Fix typo.
 
 2016-06-09  Gavin Smith  <gavinsmith0123@gmail.com>
