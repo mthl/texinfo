@@ -1,3 +1,8 @@
+2016-06-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/NodeNameNormalization.pm: Remove 
+	commented-out code.
+
 2016-06-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_end_line) <@end, @include>

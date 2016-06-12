@@ -1134,6 +1134,8 @@ sub _collect_leading_trailing_spaces_arg($$)
   return @result;
 }
 
+use Parsetexi;
+
 sub _table_item_content_tree($$$)
 {
   my $self = shift;
@@ -1158,7 +1160,8 @@ sub _table_item_content_tree($$$)
                'contents' => $contents,
                'parent' => $command,};
     $command->{'args'} = [$arg];
-    $self->Texinfo::Parser::_register_command_arg($arg, 'brace_command_contents');
+    #$self->Parsetexi::_register_command_arg($arg, 'brace_command_contents');
+    #$self->Texinfo::Parser::_register_command_arg($arg, 'brace_command_contents');
     $contents = [$command];
   }
   $converted_tree->{'contents'} = $contents;
