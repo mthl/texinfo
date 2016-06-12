@@ -1172,8 +1172,11 @@ value_valid:
                      Texinfo::Report::gdt we deliberately pass
                      in undefined values. */
                   ELEMENT *value_elt;
+
                   line_error ("undefined flag: %.*s", line - arg_start, 
                                arg_start);
+
+                  abort_empty_line (&current, NULL);
                   value_elt = new_element (ET_NONE);
                   value_elt->cmd = CM_value;
                   text_append_n (&value_elt->text, arg_start,

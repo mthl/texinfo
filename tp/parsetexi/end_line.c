@@ -848,12 +848,15 @@ parse_node_manual (ELEMENT *node)
               /* TODO: Same as above re route_not_in_tree. */
               ELEMENT *before, *after;
 
-              before = new_element (ET_NONE);
-              before->parent_type = route_not_in_tree;
-              before->parent = node; // FIXME - try not to set this
-              text_append_n (&before->text, e->text.text,
-                             closing_bracket - e->text.text);
-              add_to_contents_as_array (manual, before);
+              if (closing_bracket > e->text.text)
+                {
+                  before = new_element (ET_NONE);
+                  before->parent_type = route_not_in_tree;
+                  before->parent = node; // FIXME - try not to set this
+                  text_append_n (&before->text, e->text.text,
+                                 closing_bracket - e->text.text);
+                  add_to_contents_as_array (manual, before);
+                }
 
               /* Skip ')' and any following whitespace.
                  Note that we don't manage to skip any multibyte

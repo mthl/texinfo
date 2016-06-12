@@ -36,7 +36,7 @@ text_convert (ELEMENT *e)
       if (which > 0 && e->contents.list[which]->text.text)
         return e->contents.list[which]->text.text;
     }
-  return "AAAAAAAAA";
+  return "";
 }
 
 /* Produce normalized node name recursively.  IN_UC is non-zero if we are 
@@ -48,6 +48,35 @@ convert_to_normalized_internal (ELEMENT *root, TEXT *result, int in_uc)
 
   /* Empty if ignored type, or ignored brace command, or has a misc arg or misc 
      line arg argument. */
+
+  if (root->cmd == CM_anchor
+      || root->cmd == CM_footnote
+      || root->cmd == CM_shortcaption
+      || root->cmd == CM_caption
+      || root->cmd == CM_hyphenation
+      || root->type == ET_empty_line
+      || root->type == ET_empty_line_after_command
+      || root->type == ET_preamble
+      || root->type == ET_empty_spaces_after_command
+      || root->type == ET_spaces_at_end
+      || root->type == ET_empty_spaces_before_argument
+
+      || root->type == ET_empty_spaces_before_paragraph
+      || root->type == ET_space_at_end_menu_node
+      || root->type == ET_empty_spaces_after_close_brace
+      || root->type == ET_empty_space_at_end_def_bracketed)
+    {
+      ADD ("");
+      return;
+    }
+
+  if (root->args.number >= 1 // 287
+      && (args_child_by_index(root, 0)->type == ET_misc_line_arg
+          || args_child_by_index(root, 0)->type == ET_misc_arg))
+    {
+      ADD ("");
+      return;
+    }
 
   if (root->text.end > 0)
     {

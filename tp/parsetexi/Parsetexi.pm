@@ -526,6 +526,7 @@ our $VERSION = '6.1';
 # Other values are treated at the moment as 'default'.
 
 my $TEXINFO_XS = $ENV{'TEXINFO_XS'};
+$TEXINFO_XS = "required";
 if (!defined($TEXINFO_XS)) {
   $TEXINFO_XS = '';
 }
