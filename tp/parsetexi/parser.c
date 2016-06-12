@@ -561,7 +561,6 @@ isolate_last_space (ELEMENT *current, enum element_type element_type)
 }
 
 // 5467, also in Common.pm 1334
-// TODO: Check the behaviour here is the same
 /* Return a new element whose contents are the same as those of ORIGINAL,
    but with some elements representing empty spaces removed.  Elements like 
    these are used to represent some of the "content" extra keys. */
@@ -569,30 +568,33 @@ ELEMENT *
 trim_spaces_comment_from_content (ELEMENT *original)
 {
   ELEMENT *trimmed;
-  int i;
+  int i, j, k;
+  enum element_type t;
 
   trimmed = new_element (ET_NONE);
   trimmed->parent_type = route_not_in_tree;
-  for (i = 0; i < original->contents.number; i++)
+
+  i = 1;
+  t = original->contents.list[0]->type;
+  if (t != ET_empty_line_after_command
+      && t != ET_empty_spaces_after_command
+      && t != ET_empty_spaces_before_argument
+      && t != ET_empty_space_at_end_def_bracketed
+      && t != ET_empty_spaces_after_close_brace)
+    i = 0;
+
+  for (j = original->contents.number - 1; j >= 0; j--)
     {
-      enum element_type t = original->contents.list[i]->type;
-      if (t != ET_empty_line_after_command
-          && t != ET_empty_spaces_after_command
-          && t != ET_empty_spaces_before_argument
-          && t != ET_empty_space_at_end_def_bracketed
-          && t != ET_empty_spaces_after_close_brace
+      enum element_type t = original->contents.list[j]->type;
+      if (original->contents.list[j]->cmd != CM_c
+          && original->contents.list[j]->cmd != CM_comment
           && t != ET_spaces_at_end
-          && t != ET_space_at_end_block_command
-          && original->contents.list[i]->cmd != CM_c
-          && original->contents.list[i]->cmd != CM_comment)
-        {
-          /* FIXME: Is this safe to serialize? */
-          /* For example, if there are extra keys in the elements under each 
-             argument?  They may not be set in a copy.
-             Hopefully there aren't many extra keys set on commands in 
-             node names. */
-          add_to_contents_as_array (trimmed, original->contents.list[i]);
-        }
+          && t != ET_space_at_end_block_command)
+        break;
+    }
+  for (k = i; k <= j; k++)
+    {
+      add_to_contents_as_array (trimmed, original->contents.list[k]);
     }
 
   return trimmed;

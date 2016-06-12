@@ -252,6 +252,8 @@ element_to_perl_hash (ELEMENT *e)
       || e->cmd == CM_multitable
       || e->type == ET_menu_entry_name
       || e->type == ET_brace_command_arg
+      || e->type == ET_before_item
+      || e->type == ET_inter_item
       || e->cmd == CM_TeX
       || (command_flags(e) & CF_root)
       || (command_data(e->cmd).flags & CF_brace
