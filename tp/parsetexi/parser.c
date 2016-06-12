@@ -1208,7 +1208,7 @@ value_invalid:
       /* Warn on deprecated command */
       if (command_data(cmd).flags & CF_deprecated)
         {
-          line_warn ("@%s is obsolete", command_name(cmd));
+          line_warn ("@%s is obsolete.", command_name(cmd));
         }
 
       /* warn on not appearing at line beginning 4226 */

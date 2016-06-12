@@ -2067,9 +2067,10 @@ end_line (ELEMENT *current)
   if (current_context () == ct_line || current_context () == ct_def)
     {
       debug ("Still opened line command");
-      if (current_context () == ct_line)
+      if (current_context () == ct_def)
         {
-          while (current->parent && current->type != ET_def_line)
+          while (current->parent
+                 && current->parent->type != ET_def_line)
             {
               current = close_current (current, 0, 0);
             }
