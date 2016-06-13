@@ -33,8 +33,6 @@ main (int argc, char **argv)
       fprintf (stderr, "Please give the name of a file to process.\n");
       exit (1);
     }
-  init_index_commands ();
-  add_include_directory (".");
   parse_texi_file (argv[1]);
   dump_tree_to_perl (Root);
   //build_texinfo_tree ();
