@@ -918,12 +918,6 @@ make_tex_cmd ()
   fi
 }
 
-list_funnies ()
-{
-  echo "$in_input" \
-    | $SED -e 's![^}#$%&^_{~]!!g' -e 's!\(.\)!\1\
-!g' | uniq
-}
 
 # run_tex - Run TeX as "$tex $in_input", taking care of errors and logs.
 run_tex ()
@@ -933,7 +927,9 @@ run_tex ()
   # Check for any unusual characters in the filename.
   # However, >, \ and any whitespace characters are not supported
   # filenames.
-  in_input_funnies=`list_funnies`
+  in_input_funnies=`echo "$in_input" \
+    | $SED -e 's![^}#$%&^_{~]!!g' -e 's!\(.\)!\1\''
+!g' | uniq`
 
   if test -n "$in_input_funnies" ; then
     # Make > an end group character, as it's unlikely to appear in
@@ -948,8 +944,7 @@ run_tex ()
     done
 
     # Set \toks0 to "\input FILENAME\relax"
-    tex_cmd="$tex_cmd'${escape}toks0${escape}bgroup"
-    tex_cmd="$tex_cmd${escape}input $in_input${escape}relax>"
+    tex_cmd="$tex_cmd '${escape}toks0${escape}bgroup${escape}input' '$in_input' '${escape}relax>"
 
     # Expand \toks0 after the end of the group
     tex_cmd="$tex_cmd${escape}expandafter${escape}egroup"

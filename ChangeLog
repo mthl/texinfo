@@ -1,3 +1,10 @@
+2016-06-13  Vincent Belaïche  <vincentb1@users.sourceforge.net>
+
+	* util/texi2dvi (run_tex): Inline function listing unusual 
+	characters and pass through literal backslash-newline sequence 
+	to sed by use of single quotes.  Also, pass input file as a 
+	separate argument for the benefit of MSYS path conversion.
+
 2016-06-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_print_tree),
