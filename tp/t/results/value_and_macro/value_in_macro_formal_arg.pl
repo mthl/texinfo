@@ -72,16 +72,7 @@ $result_trees{'value_in_macro_formal_arg'} = {
       'extra' => {
         'arg_line' => ' testvalue { arg , the@value{argument} }
 ',
-        'invalid_syntax' => 1,
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+        'invalid_syntax' => 1
       },
       'line_nr' => {
         'file_name' => '',
@@ -90,7 +81,15 @@ $result_trees{'value_in_macro_formal_arg'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -120,10 +119,9 @@ $result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'args'}[1]{'parent'} =
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'args'}[2]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[2];
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[2];
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[2];
-$result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[2];
-$result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'value_in_macro_formal_arg'};
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'parent'} = $result_trees{'value_in_macro_formal_arg'};
-$result_trees{'value_in_macro_formal_arg'}{'contents'}[3] = $result_trees{'value_in_macro_formal_arg'}{'contents'}[2]{'extra'}{'spaces_after_command'};
+$result_trees{'value_in_macro_formal_arg'}{'contents'}[3]{'extra'}{'command'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[2];
+$result_trees{'value_in_macro_formal_arg'}{'contents'}[3]{'parent'} = $result_trees{'value_in_macro_formal_arg'};
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[4]{'parent'} = $result_trees{'value_in_macro_formal_arg'};
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'value_in_macro_formal_arg'}{'contents'}[5];
 $result_trees{'value_in_macro_formal_arg'}{'contents'}[5]{'parent'} = $result_trees{'value_in_macro_formal_arg'};

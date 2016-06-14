@@ -1,3 +1,14 @@
+2016-06-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <closed raw block command>: 
+	Do not call _start_empty_line_after_command, and add an 
+	'empty_line_after_command' element.  This led to an inconsistent 
+	meaning for the 'spaces_after_command' extra value, and an 
+	existing extra value could be overwritten, for example for a 
+	@verbatim block, where the 'spaces_after_command' could be 
+	immediately after the '@verbatim' line, or after the entire 
+	block.
+
 2016-06-13  Vincent Belaïche  <vincentb1@users.sourceforge.net>
 
 	* util/texi2dvi (run_tex): Inline function listing unusual 

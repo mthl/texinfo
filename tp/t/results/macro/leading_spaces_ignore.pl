@@ -37,16 +37,7 @@ $result_trees{'leading_spaces_ignore'} = {
       ],
       'extra' => {
         'arg_line' => ' mymacro
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -55,7 +46,15 @@ $result_trees{'leading_spaces_ignore'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -85,10 +84,9 @@ $result_trees{'leading_spaces_ignore'}{'contents'}[0]{'args'}[0]{'parent'} = $re
 $result_trees{'leading_spaces_ignore'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'leading_spaces_ignore'}{'contents'}[0];
 $result_trees{'leading_spaces_ignore'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'leading_spaces_ignore'}{'contents'}[0];
 $result_trees{'leading_spaces_ignore'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'leading_spaces_ignore'}{'contents'}[0];
-$result_trees{'leading_spaces_ignore'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'leading_spaces_ignore'}{'contents'}[0];
-$result_trees{'leading_spaces_ignore'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'leading_spaces_ignore'};
 $result_trees{'leading_spaces_ignore'}{'contents'}[0]{'parent'} = $result_trees{'leading_spaces_ignore'};
-$result_trees{'leading_spaces_ignore'}{'contents'}[1] = $result_trees{'leading_spaces_ignore'}{'contents'}[0]{'extra'}{'spaces_after_command'};
+$result_trees{'leading_spaces_ignore'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'leading_spaces_ignore'}{'contents'}[0];
+$result_trees{'leading_spaces_ignore'}{'contents'}[1]{'parent'} = $result_trees{'leading_spaces_ignore'};
 $result_trees{'leading_spaces_ignore'}{'contents'}[2]{'parent'} = $result_trees{'leading_spaces_ignore'};
 $result_trees{'leading_spaces_ignore'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'leading_spaces_ignore'}{'contents'}[3];
 $result_trees{'leading_spaces_ignore'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'leading_spaces_ignore'}{'contents'}[3];

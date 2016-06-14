@@ -3886,7 +3886,13 @@ sub _parse_texi($;$)
             last;
           } else {
             print STDERR "CLOSED raw $end_command\n" if ($self->{'DEBUG'});
-            $line = _start_empty_line_after_command($line, $current, $raw_command);
+            $line =~ s/^([^\S\r\n]*)//;
+            push @{$current->{'contents'}},
+                        { 'type' => 'empty_line_after_command',
+                          'text' => $1,
+                          'parent' => $current,
+                          'extra' => {'command' => $raw_command }
+                        };
           }
         } else {
           if (@{$current->{'contents'}} 

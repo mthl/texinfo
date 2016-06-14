@@ -31,16 +31,7 @@ $result_trees{'macro_for_ignored_line_command'} = {
       ],
       'extra' => {
         'arg_line' => ' pagemacro
-',
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+'
       },
       'line_nr' => {
         'file_name' => '',
@@ -49,7 +40,15 @@ $result_trees{'macro_for_ignored_line_command'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'parent' => {},
       'text' => '
@@ -74,10 +73,9 @@ $result_trees{'macro_for_ignored_line_command'} = {
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'macro_for_ignored_line_command'}{'contents'}[0];
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_for_ignored_line_command'}{'contents'}[0];
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_for_ignored_line_command'}{'contents'}[0];
-$result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'macro_for_ignored_line_command'}{'contents'}[0];
-$result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'macro_for_ignored_line_command'};
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'parent'} = $result_trees{'macro_for_ignored_line_command'};
-$result_trees{'macro_for_ignored_line_command'}{'contents'}[1] = $result_trees{'macro_for_ignored_line_command'}{'contents'}[0]{'extra'}{'spaces_after_command'};
+$result_trees{'macro_for_ignored_line_command'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'macro_for_ignored_line_command'}{'contents'}[0];
+$result_trees{'macro_for_ignored_line_command'}{'contents'}[1]{'parent'} = $result_trees{'macro_for_ignored_line_command'};
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[2]{'parent'} = $result_trees{'macro_for_ignored_line_command'};
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'macro_for_ignored_line_command'}{'contents'}[3];
 $result_trees{'macro_for_ignored_line_command'}{'contents'}[3]{'parent'} = $result_trees{'macro_for_ignored_line_command'};

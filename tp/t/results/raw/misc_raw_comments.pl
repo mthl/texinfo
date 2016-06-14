@@ -267,15 +267,7 @@ $result_trees{'misc_raw_comments'} = {
         }
       ],
       'extra' => {
-        'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+        'spaces_after_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -284,7 +276,15 @@ $result_trees{'misc_raw_comments'} = {
       },
       'parent' => {}
     },
-    {}
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    }
   ],
   'type' => 'text_root'
 };
@@ -333,10 +333,10 @@ $result_trees{'misc_raw_comments'}{'contents'}[5]{'contents'}[0]{'extra'}{'comma
 $result_trees{'misc_raw_comments'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[5];
 $result_trees{'misc_raw_comments'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[5];
 $result_trees{'misc_raw_comments'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[5];
-$result_trees{'misc_raw_comments'}{'contents'}[5]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'misc_raw_comments'}{'contents'}[5];
-$result_trees{'misc_raw_comments'}{'contents'}[5]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'misc_raw_comments'};
+$result_trees{'misc_raw_comments'}{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'misc_raw_comments'}{'contents'}[5]{'contents'}[0];
 $result_trees{'misc_raw_comments'}{'contents'}[5]{'parent'} = $result_trees{'misc_raw_comments'};
-$result_trees{'misc_raw_comments'}{'contents'}[6] = $result_trees{'misc_raw_comments'}{'contents'}[5]{'extra'}{'spaces_after_command'};
+$result_trees{'misc_raw_comments'}{'contents'}[6]{'extra'}{'command'} = $result_trees{'misc_raw_comments'}{'contents'}[5];
+$result_trees{'misc_raw_comments'}{'contents'}[6]{'parent'} = $result_trees{'misc_raw_comments'};
 
 $result_texis{'misc_raw_comments'} = '
 @html @c comment space
