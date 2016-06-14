@@ -1,5 +1,12 @@
 2016-06-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi) <@U>: Change the error 
+	message given when argument exceeds size of integer.  (This is 
+	for consistency with the C implementation which may have a 
+	different size of integer.)
+
+2016-06-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <closed raw block command>: 
 	Do not call _start_empty_line_after_command, and add an 
 	'empty_line_after_command' element.  This led to an inconsistent 

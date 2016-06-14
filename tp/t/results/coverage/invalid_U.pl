@@ -285,12 +285,12 @@ $result_errors{'invalid_U'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: argument for @U exceeds size of integer: 9999999999999
+    'error_line' => ':1: argument for @U exceeds Unicode maximum 0x10FFFF: 9999999999999
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
-    'text' => 'argument for @U exceeds size of integer: 9999999999999',
+    'text' => 'argument for @U exceeds Unicode maximum 0x10FFFF: 9999999999999',
     'type' => 'error'
   },
   {

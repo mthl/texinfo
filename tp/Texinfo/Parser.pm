@@ -5292,12 +5292,10 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
                 if ($@) {
                   # leave clue in case something else went wrong.
                   warn "\@U hex($arg) eval failed: $@\n" if ($self->{'DEBUG'});
-                  $self->line_error(
-      sprintf($self->__("argument for \@U exceeds size of integer: %s"), $arg),
-                    $line_nr);
-
+                  # argument likely exceeds size of integer
+                }
                 # ok, value can be given to hex(), so try it.
-                } elsif (hex($arg) > 0x10FFFF) {
+                if ($@ or hex($arg) > 0x10FFFF) {
                   $self->line_error(
     sprintf($self->__("argument for \@U exceeds Unicode maximum 0x10FFFF: %s"),
             $arg),
