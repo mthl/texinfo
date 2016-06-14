@@ -372,6 +372,59 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           // if (!ignore_global_commands)
           line_error (text_convert (current));
         }
+      else if (closed_command == CM_U)
+        {
+          int i;
+          /* Find arg */
+          /* Should we use trim_spaces_comment_from_content instead? */
+          for (i = 0; i < current->contents.number; i++)
+            {
+              enum element_type t = current->contents.list[i]->type;
+              if (current->contents.list[i]->text.end > 0
+                  && t != ET_empty_line_after_command
+                  && t != ET_empty_spaces_after_command
+                  && t != ET_empty_spaces_before_argument
+                  && t != ET_empty_space_at_end_def_bracketed
+                  && t != ET_empty_spaces_after_close_brace)
+                break;
+            }
+          if (i == current->contents.number)
+            {
+              line_warn ("no argument specified for @U");
+            }
+          else
+            {
+              char *arg = current->contents.list[i]->text.text;
+              int n = strspn (arg, "0123456789ABCDEFabcdef");
+              if (arg[n])
+                {
+                  line_error ("non-hex digits in argument for @U: %s", arg);
+                }
+              else if (n < 4)
+                {
+                  line_warn
+                    ("fewer than four hex digits in argument for @U: %s", arg);
+                }
+              else
+                {
+                  int val;
+                  int ret = sscanf (arg, "%d", &val);
+                  if (ret != 1)
+                    {
+                      debug ("hex sscanf failed %s", arg);
+                      /* unknown error.  possibly argument is too large
+                         for an int. */
+                    }
+                  if (ret != 1 || val > 0x10FFF)
+                    {
+                      line_error
+                       ("argument for @U exceeds Unicode maximum 0x10FFFF: %s",
+                        arg);
+                    }
+                }
+
+            }
+        }
       else if (command_with_command_as_argument (current->parent->parent)
                && current->contents.number == 0)
         {

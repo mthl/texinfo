@@ -23,6 +23,7 @@
 #include "text.h"
 
 /* Stub for Texinfo::Convert::Text::convert */
+/* TODO: Don't use this function at all. */
 char *
 text_convert (ELEMENT *e)
 {
