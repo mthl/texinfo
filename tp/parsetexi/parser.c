@@ -849,8 +849,16 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
             }
           else
             {
+              ELEMENT *e;
+              int n;
+
               debug ("CLOSED raw %s", command_name(end_cmd)); // 3830
-              start_empty_line_after_command (current, &line, raw_command);
+              e = new_element (ET_empty_line_after_command);
+              n = strspn (line, whitespace_chars_except_newline);
+              text_append_n (&e->text, line, n);
+              line += n;
+              add_extra_element (e, "command", raw_command);
+              add_to_element_contents (current, e);
             }
         }
       else /* 3833 save the line verbatim */

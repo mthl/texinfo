@@ -19,18 +19,30 @@
 #include "parser.h"
 
 static void
-add_extra_key (ELEMENT *e, char *key, ELEMENT *value)
+add_extra_key (ELEMENT *e, char *key, ELEMENT *value,
+               enum extra_type type)
 {
-  if (e->extra_number == e->extra_space)
+  int i;
+  for (i = 0; i < e->extra_number; i++)
     {
-      e->extra = realloc (e->extra,
-                          (e->extra_space += 5) * sizeof (KEY_PAIR));
-      if (!e->extra)
-        abort ();
+      if (!strcmp (e->extra[i].key, key))
+        break;
+    }
+  if (i == e->extra_number)
+    {
+      if (e->extra_number == e->extra_space)
+        {
+          e->extra = realloc (e->extra,
+                              (e->extra_space += 5) * sizeof (KEY_PAIR));
+          if (!e->extra)
+            abort ();
+        }
+      e->extra_number++;
     }
 
-  e->extra[e->extra_number].key = key;
-  e->extra[e->extra_number++].value = value;
+  e->extra[i].key = key;
+  e->extra[i].value = value;
+  e->extra[i].type = type;
 }
 
 /* Add an extra key that is a reference to another element (for example, 
@@ -38,8 +50,7 @@ add_extra_key (ELEMENT *e, char *key, ELEMENT *value)
 void
 add_extra_element (ELEMENT *e, char *key, ELEMENT *value)
 {
-  add_extra_key (e, key, value);
-  e->extra[e->extra_number - 1].type = extra_element;
+  add_extra_key (e, key, value, extra_element);
 }
 
 /* Add an extra key that is a reference to the contents array of another
@@ -47,16 +58,14 @@ add_extra_element (ELEMENT *e, char *key, ELEMENT *value)
 void
 add_extra_contents (ELEMENT *e, char *key, ELEMENT *value)
 {
-  add_extra_key (e, key, value);
-  e->extra[e->extra_number - 1].type = extra_element_contents;
+  add_extra_key (e, key, value, extra_element_contents);
 }
 
 /* An array of content arrays. */
 void
 add_extra_contents_array (ELEMENT *e, char *key, ELEMENT *value)
 {
-  add_extra_key (e, key, value);
-  e->extra[e->extra_number - 1].type = extra_element_contents_array;
+  add_extra_key (e, key, value, extra_element_contents_array);
 }
 
 /* Add an extra key that is a reference to the text field of another
@@ -64,30 +73,26 @@ add_extra_contents_array (ELEMENT *e, char *key, ELEMENT *value)
 void
 add_extra_text (ELEMENT *e, char *key, ELEMENT *value)
 {
-  add_extra_key (e, key, value);
-  e->extra[e->extra_number - 1].type = extra_element_text;
+  add_extra_key (e, key, value, extra_element_text);
 }
 
 void
 add_extra_index_entry (ELEMENT *e, char *key, INDEX_ENTRY_REF *value)
 {
-  add_extra_key (e, key, (ELEMENT *) value);
-  e->extra[e->extra_number - 1].type = extra_index_entry;
+  add_extra_key (e, key, (ELEMENT *) value, extra_index_entry);
 }
 
 void
 add_extra_misc_args (ELEMENT *e, char *key, ELEMENT *value)
 {
   if (!value) return;
-  add_extra_key (e, key, value);
-  e->extra[e->extra_number - 1].type = extra_misc_args;
+  add_extra_key (e, key, value, extra_misc_args);
 }
 
 void
 add_extra_node_spec (ELEMENT *e, char *key, NODE_SPEC_EXTRA *value)
 {
-  add_extra_key (e, key, (ELEMENT *) value);
-  e->extra[e->extra_number - 1].type = extra_node_spec;
+  add_extra_key (e, key, (ELEMENT *) value, extra_node_spec);
 }
 
 /* Used for 'node_manuals' array for the arguments given on a
@@ -95,29 +100,25 @@ add_extra_node_spec (ELEMENT *e, char *key, NODE_SPEC_EXTRA *value)
 void
 add_extra_node_spec_array (ELEMENT *e, char *key, NODE_SPEC_EXTRA **value)
 {
-  add_extra_key (e, key, (ELEMENT *) value);
-  e->extra[e->extra_number - 1].type = extra_node_spec_array;
+  add_extra_key (e, key, (ELEMENT *) value, extra_node_spec_array);
 }
 
 void
 add_extra_def_args (ELEMENT *e, char *key, DEF_ARGS_EXTRA *value)
 {
-  add_extra_key (e, key, (ELEMENT *) value);
-  e->extra[e->extra_number - 1].type = extra_def_args;
+  add_extra_key (e, key, (ELEMENT *) value, extra_def_args);
 }
 
 void
 add_extra_float_type (ELEMENT *e, char *key, EXTRA_FLOAT_TYPE *value)
 {
-  add_extra_key (e, key, (ELEMENT *) value);
-  e->extra[e->extra_number - 1].type = extra_float_type;
+  add_extra_key (e, key, (ELEMENT *) value, extra_float_type);
 }
 
 void
 add_extra_string (ELEMENT *e, char *key, char *value)
 {
-  add_extra_key (e, key, (ELEMENT *) value);
-  e->extra[e->extra_number - 1].type = extra_string;
+  add_extra_key (e, key, (ELEMENT *) value, extra_string);
 }
 
 KEY_PAIR *

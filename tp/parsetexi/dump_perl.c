@@ -648,9 +648,9 @@ dump_tree_to_perl (ELEMENT *root)
   if (output.end > 0)
     printf ("%s", output.text);
 
-  dump_labels_information ();
+  //dump_labels_information ();
 
-  dump_indices_information ();
+  //dump_indices_information ();
 
   if (fixup_dump.end > 0)
     printf ("%s", fixup_dump.text);
