@@ -357,6 +357,15 @@ handle_close_brace (ELEMENT *current, char **line_inout)
         }
       else if (closed_command == CM_dotless)
         {
+          if (current->contents.number > 0)
+            {
+              char *text = current->contents.list[0]->text.text;
+              if (!text || (strcmp (text, "i") && strcmp (text, "j")))
+                {
+                  line_error ("@dotless expects `i' or `j' as argument, "
+                              "not `%s'", text);
+                }
+            }
         }
       else if ((command_data(closed_command).flags & CF_inline)
                || closed_command == CM_abbr

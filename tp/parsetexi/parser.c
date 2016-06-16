@@ -1074,7 +1074,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
                 }
               else
                 {
-                  line_warn ("accent command @%s must not be followed "
+                  line_warn ("accent command `@%s' must not be followed "
                              "by whitespace", command_name(current->cmd));
                   current = current->parent;
                 }
@@ -1112,7 +1112,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
             {
               debug ("STRANGE ACC");
               line_warn ("accent command `@%s' must not be followed by "
-                         "a new line", command_name(current->cmd));
+                         "new line", command_name(current->cmd));
               current = current->parent;
             }
           goto funexit;
