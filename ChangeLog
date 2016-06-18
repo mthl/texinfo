@@ -1,5 +1,10 @@
 2016-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo-tex-test.texi (Test of characters in section title):
+	New section testing characters in a section title.
+
+2016-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\balancecolumns): If the left column is 
 	longer than the page height, split the last double column 
 	material roughly in half.  Otherwise, a blank page could appear 

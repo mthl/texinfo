@@ -24,6 +24,8 @@
 @showboxdepth=1000
 @showboxbreadth=1000
 
+@documentencoding UTF-8
+
 @contents
 
 @part Part One@*Sample part page
@@ -821,6 +823,17 @@ Greek text:
 
 double accent --- ταΐζω
 
+
+@section Test of characters in section title
+
+Check table of contents.
+
+For PDF output, check the bookmarks pane in the reader.
+(Currently plain ASCII approximations are used for the UTF-8 encoding.)
+
+@section --- übersicht
+
+@section --- @"Ubersicht
 
 @chapter PDF link colours
 
