@@ -1,3 +1,11 @@
+2016-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\balancecolumns): If the left column is 
+	longer than the page height, split the last double column 
+	material roughly in half.  Otherwise, a blank page could appear 
+	before the last page of an index.  Blank page in index reported 
+	by Robert Weiner.
+
 2016-06-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi) <@U>: Change the error 
