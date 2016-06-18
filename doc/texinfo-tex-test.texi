@@ -646,6 +646,226 @@ See following pages
 \entry{cccc}{17}
 \finishindex
 
+@section Final page of index hard to balance
+
+The left column of the final page of the index should be shorter than the
+right column here, and no empty page should appear in the middle of the 
+index.  All index material should fit on the page within the margins.
+
+@commenceindex
+\entry {outline, importing into}{39}
+\entry {outline, inserting into}{39}
+\entry {outline, label separator}{35}
+\entry {outline, label type}{35}
+\entry {outline, mailing}{37}
+\entry {outline, motion}{38}
+\entry {outline, overview}{40}
+\entry {outline, show levels}{40}
+\entry {outline, showing}{40}
+\entry {outline, top-level}{40}
+\entry {outline, view specs}{41}
+\entry {outline, viewing}{40}
+\entry {outliner}{32}
+\entry {outliner commands}{33}
+\entry {outliner keys}{90}
+\entry {overview}{40}
+\initial {P}
+\entry {paragraph, filling}{38}
+\entry {Paste Key}{8}
+\entry {paste region}{11}
+\entry {pasting a region}{70, 71, 76}
+\entry {patch output}{15}
+\entry {pathname}{15}
+\entry {permanent identifier}{32, 36}
+\entry {pipe character}{41}
+\entry {posting buttons}{23}
+\entry {posting news}{24}
+\entry {programming interface}{57}
+\entry {promotion}{36}
+\entry {proportional scrolling}{62, 74}
+\initial {R}
+\entry {rdb-mode}{77}
+\entry {README file}{65}
+\entry {reference}{16}
+\entry {refilling}{38}
+\entry {region selection}{11}
+\entry {region, active}{72}
+\entry {relative autonumber}{32}
+\entry {relative identifier}{35}
+\entry {remote file}{15}
+\entry {remote path}{15}
+\entry {remote pathnames}{68}
+\entry {remove lines}{27}
+\entry {removing Hyperbole menu}{25}
+\entry {Request For Comment}{15, 16}
+\entry {restoring windows}{50}
+\entry {RFC}{15, 16}
+\entry {Rmail}{23}
+\entry {rolo}{44}
+\entry {rolo address}{14}
+\entry {rolo commands}{45}
+\entry {rolo entry}{44}
+\entry {rolo file}{44}
+\entry {rolo keys}{47}
+\entry {rolo menu}{45}
+\entry {rolo searching}{46}
+\entry {rolo, buttons in}{44}
+\entry {rolo, datestamps}{48}
+\entry {rolo, editing}{48}
+\entry {rolo, extending a match}{47}
+\entry {rolo, finding matches}{47}
+\entry {rolo, highlighting matches}{47, 49}
+\entry {rolo, interactive searching}{47}
+\entry {rolo, locating a name}{47}
+\entry {rolo, moving through matches}{47}
+\entry {rolo, moving to entries}{48}
+\entry {rolo, outlining}{47}
+\entry {rolo, personal}{48}
+\entry {rolo, quitting}{48}
+\entry {root cell}{34, 36}
+\initial {S}
+\entry {save lines}{27}
+\entry {saving window configurations}{50}
+\entry {screen}{29}
+\entry {Screen}{62}
+\entry {scrolling}{62, 74}
+\entry {search}{26, 69}
+\entry {searching, rolo}{46}
+\entry {selection}{11}
+\entry {set}{70, 76}
+\entry {setting the view spec}{41}
+\entry {sexp selection}{11}
+\entry {SGML tag pair}{11}
+\entry {show subtree}{40}
+\entry {show tree}{40}
+\entry {showing}{40}
+\entry {side drag}{71}
+\entry {signatures, hiding}{14}
+\entry {site initialization}{66}
+\entry {Smart Key}{8, 62, 99}
+\entry {smart key assignments}{8}
+\entry {smart key commands}{8}
+\entry {Smart Key help}{11}
+\entry {Smart Key operation}{9}
+\entry {Smart Key, default context}{11, 89}
+\entry {Smart Keyboard Keys}{73}
+\entry {smart marking}{11}
+\entry {Smart Menu}{74}
+\entry {Smart Mouse Key}{70, 76}
+\entry {Smart Mouse Key drag}{22}
+\entry {Smart Mouse Key toggle}{8}
+\entry {Smart Mouse Keys}{70}
+\entry {smart selection}{11}
+\entry {source line}{15}
+\entry {splitting a cell}{39}
+\entry {stack frame}{15}
+\entry {star outline}{39}
+\entry {starting Hyperbole}{65}
+\entry {storage manager}{56}
+\entry {string}{70, 76}
+\entry {submenus}{27}
+\entry {submodes}{29}
+\entry {subtree, hide}{40}
+\entry {subtree, show}{40}
+\entry {swapping}{31}
+\entry {system encapsulation}{57}
+\initial {T}
+\entry {table of contents}{16, 19}
+\entry {tabs, inserting}{37}
+\entry {tag}{16}
+\entry {tags file}{16}
+\entry {TAGS file}{16}
+\entry {tar archive}{66}
+\entry {tar archive browsing}{87}
+\entry {terminal use}{4}
+\entry {Texinfo cross-reference}{14}
+\entry {Texinfo manual}{65}
+\entry {text file}{39}
+\entry {thing}{70, 76}
+\entry {things}{11}
+\entry {toc action type}{19}
+\entry {toc implicit button type}{16}
+\entry {toggling blank lines}{41}
+\entry {top-level cell}{34, 36}
+\entry {top-level view}{40}
+\entry {Tramp}{15, 68}
+\entry {transposing cells}{38}
+\entry {tree, copying}{37}
+\entry {tree, demoting}{36}
+\entry {tree, exporting}{37}
+\entry {tree, filling}{38}
+\entry {tree, hide subtree}{40}
+\entry {tree, killing}{36}
+\entry {tree, mailing}{37}
+\entry {tree, moving}{37}
+\entry {tree, promoting}{36}
+\entry {tree, show}{40}
+\entry {tree, show subtree}{40}
+\entry {type definition}{53}
+\entry {type redefinition}{19, 53}
+\initial {U}
+\entry {unburying}{30}
+\entry {uncompressing archives}{66}
+\entry {UNIX manual}{15}
+\entry {unpacking archives}{66}
+\entry {URL}{14, 19, 87}
+\entry {URLs, abbreviated}{68}
+\entry {URLs, using with find-file}{68}
+\entry {USENET}{23, 24}
+\initial {V}
+\entry {variables}{52}
+\entry {vector}{70, 76}
+\entry {version description}{98}
+\entry {vertical drag}{72}
+\entry {view}{40}
+\entry {view mode}{75}
+\entry {view spec}{41}
+\entry {view spec klink}{42}
+\entry {view spec, all lines and levels}{41}
+\entry {view spec, blank lines}{41}
+\entry {view spec, changing}{41}
+\entry {view spec, characters}{41}
+\entry {view spec, ellipses}{41}
+\entry {view spec, example}{41}
+\entry {view spec, label type}{41}
+\entry {view spec, lines per cell}{41}
+\entry {view spec, setting}{41}
+\entry {view spec, show levels}{41}
+\entry {VM}{23}
+\initial {W}
+\entry {W3}{87}
+\entry {wconfig commands}{50}
+\entry {web pages, displaying}{68}
+\entry {window configuration commands}{50}
+\entry {window configuration ring}{50}
+\entry {window configurations}{50}
+\entry {window control}{29}
+\entry {window system}{68}
+\entry {windows}{58}
+\entry {word wrap}{38}
+\entry {world-wide web}{87}
+\entry {World-wide Web}{14, 19}
+\entry {wrolo}{44}
+\entry {wrolo commands}{45}
+\entry {wrolo matches}{88}
+\entry {wrolo menu}{47}
+\entry {WWW}{14, 19}
+\initial {X}
+\entry {xdb}{15}
+\entry {XEmacs}{2, 25}
+\entry {XEmacs support}{69}
+\initial {Y}
+\entry {yank region}{11}
+\entry {yank, reformatting}{53}
+\entry {yanking}{70, 71, 76}
+\initial {Z}
+\entry {zcat}{66}
+\entry {zip file}{66}
+\entry {zooming}{31}
+\finishindex
+
+
+
 @section Non-alphanumeric Index Initials
 
 / and \ should be mirror images.
@@ -834,6 +1054,8 @@ For PDF output, check the bookmarks pane in the reader.
 @section --- übersicht
 
 @section --- @"Ubersicht
+
+
 
 @chapter PDF link colours
 

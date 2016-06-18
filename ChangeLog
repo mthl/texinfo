@@ -1,5 +1,11 @@
 2016-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo-tex-test.texi (Final page of index hard to balance):
+	Add section testing the problematic situation reported by Robert 
+	Weiner.
+
+2016-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo-tex-test.texi (Test of characters in section title):
 	New section testing characters in a section title.
 
