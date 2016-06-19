@@ -2821,15 +2821,6 @@ sub _end_line($$$)
         last if ($arg->[0] eq 'arg' or $arg->[0] eq 'typearg' 
                   or $arg->[0] eq 'delimiter');
         next if ($arg->[0] eq 'spaces');
-        # change of type is done in _parse_def.
-        #if ($arg->[1]->{'type'} and $arg->[1]->{'type'} eq 'bracketed') {
-        #  $def_parsed_hash->{$arg->[0]} = { 'contents' => $arg->[1]->{'contents'},
-        #                                    'type' => 'bracketed_def_content',
-        #                                    'parent' => $arg->[1]->{'parent'}};
-        #} else {
-        #  $def_parsed_hash->{$arg->[0]} = $arg->[1];
-        #}
-        #print STDERR "DEF PARSED HASH $arg->[0] $arg->[1]|".Texinfo::Convert::Texinfo::convert($arg->[1])."|\n";
         $def_parsed_hash->{$arg->[0]} = $arg->[1];
       }
       $current->{'parent'}->{'extra'}->{'def_parsed_hash'} = $def_parsed_hash;
@@ -5400,10 +5391,6 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
           $current->{'remaining_args'}--;
           push @{$current->{'args'}},
                { 'type' => $type, 'parent' => $current, 'contents' => [] };
-          #if ($inline_commands{$current->{'cmdname'}} 
-          #    and ! $self->{'expanded_formats_stack'}->[-1]) {
-          #  $current->{'args'}->[-1]->{'extra'}->{'ignore'} = 1;
-          #} 
           $current = $current->{'args'}->[-1];
           push @{$current->{'contents'}}, 
                  {'type' => 'empty_spaces_before_argument',

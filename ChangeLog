@@ -1,5 +1,10 @@
 2016-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_end_line, _parse_texi): Remove some 
+	commented-out code.
+
+2016-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <@value>: Don't handle 
 	arrays or hashes as values any more.  These used to be used for 
 	string translation.
