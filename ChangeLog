@@ -1,3 +1,9 @@
+2016-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@value>: Don't handle 
+	arrays or hashes as values any more.  These used to be used for 
+	string translation.
+
 2016-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo-tex-test.texi (Final page of index hard to balance):

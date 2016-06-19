@@ -4244,7 +4244,6 @@ sub _parse_texi($;$)
         }
         print STDERR "COMMAND $command\n" if ($self->{'DEBUG'});
 
-
         if ($command eq 'value') {
           $line =~ s/^\s*// 
              if ($self->{'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME'});
@@ -4256,23 +4255,8 @@ sub _parse_texi($;$)
                 print STDERR "BUG? $value exists but not defined\n";
               } elsif (!ref($self->{'values'}->{$value})) {
                 $line = $self->{'values'}->{$value} . $line;
-              # the push @{$current->{'contents'}}, {}; prevents a trailing
-              # text to be merged, to avoid having the value tree modified.
-              } elsif (ref($self->{'values'}->{$value}) eq 'ARRAY') {
-                # we don't know for sure, but if we don't do it here it 
-                # won't be done
-                _abort_empty_line($self, $current);
-                foreach my $content (@{$self->{'values'}->{$value}}) {
-                  push @{$current->{'contents'}}, $content;
-                }
-                push @{$current->{'contents'}}, {};
-              } elsif (ref($self->{'values'}->{$value}) eq 'HASH') {
-                # we don't know for sure, but if we don't do it here it 
-                # won't be done
-                _abort_empty_line($self, $current);
-                my $content = $self->{'values'}->{$value};
-                push @{$current->{'contents'}}, $content;
-                push @{$current->{'contents'}}, {};
+              } else {
+                print STDERR "BUG? $value defined as reference\n";
               }
             } else {
               # Flag not defined.  This is an error if it comes from
