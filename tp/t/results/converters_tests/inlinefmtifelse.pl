@@ -49,7 +49,7 @@ $result_trees{'inlinefmtifelse'} = {
                 {}
               ]
             ],
-            'expand_index' => 2,
+            'expand_index' => 1,
             'format' => 'html'
           },
           'line_nr' => {
@@ -111,7 +111,7 @@ $result_trees{'inlinefmtifelse'} = {
                 {}
               ]
             ],
-            'expand_index' => 2,
+            'expand_index' => 1,
             'format' => 'html'
           },
           'line_nr' => {
@@ -172,6 +172,7 @@ $result_trees{'inlinefmtifelse'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'plaintext'
           },
           'line_nr' => {
@@ -233,7 +234,7 @@ $result_trees{'inlinefmtifelse'} = {
                 {}
               ]
             ],
-            'expand_index' => 2,
+            'expand_index' => 1,
             'format' => 'plaintext'
           },
           'line_nr' => {
@@ -300,7 +301,7 @@ $result_trees{'inlinefmtifelse'} = {
               ],
               undef
             ],
-            'expand_index' => 2,
+            'expand_index' => 1,
             'format' => 'xml'
           },
           'line_nr' => {
@@ -399,7 +400,7 @@ $result_trees{'inlinefmtifelse'} = {
                 {}
               ]
             ],
-            'expand_index' => 2,
+            'expand_index' => 1,
             'format' => 'docbook',
             'spaces_before_argument' => {}
           },
@@ -574,7 +575,7 @@ $result_trees{'inlinefmtifelse'} = {
                 {}
               ]
             ],
-            'expand_index' => 2,
+            'expand_index' => 1,
             'format' => 'docbook'
           },
           'line_nr' => {

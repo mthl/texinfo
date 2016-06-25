@@ -280,7 +280,9 @@ Math @math{ \\underline{ a, b} }.
 T
 @end deffn
 
-'],
+',
+{'expanded_formats' => ['tex'] }
+],
 ['spaces_info_lost',
 '@example  text on example line 
 in bad example

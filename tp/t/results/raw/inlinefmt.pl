@@ -75,6 +75,7 @@ $result_trees{'inlinefmt'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'plaintext'
           },
           'line_nr' => {},
@@ -159,6 +160,7 @@ $result_trees{'inlinefmt'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'html'
           },
           'line_nr' => {},

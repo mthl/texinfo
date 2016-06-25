@@ -54,6 +54,7 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'html'
           },
           'line_nr' => {
@@ -107,6 +108,7 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'plaintext'
           },
           'line_nr' => {
@@ -160,6 +162,7 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'xml'
           },
           'line_nr' => {
@@ -213,6 +216,7 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'docbook'
           },
           'line_nr' => {
@@ -383,6 +387,7 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'html'
           },
           'line_nr' => {
@@ -436,6 +441,7 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'plaintext'
           },
           'line_nr' => {
@@ -489,6 +495,7 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'xml'
           },
           'line_nr' => {
@@ -542,6 +549,7 @@ $result_trees{'inline'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'docbook'
           },
           'line_nr' => {

@@ -462,8 +462,7 @@ sub set_converter_option_defaults($$$)
   my $parser_options = shift;
   my $format = shift;
   $converter_options = {} if (!defined($converter_options));
-  if (!defined($parser_options->{'expanded_formats'})
-      and !defined($converter_options->{'expanded_formats'})) {
+  if (!defined($converter_options->{'expanded_formats'})) {
     $converter_options->{'expanded_formats'} = [$format];
   }
   return $converter_options;
@@ -684,6 +683,15 @@ sub test($$)
   $test_text = shift @$test_case;
   $parser_options = shift @$test_case if (@$test_case);
   $converter_options = shift @$test_case if (@$test_case);
+
+  if (!defined $parser_options->{'expanded_formats'}) {
+    $parser_options->{'expanded_formats'} = [
+      'docbook', 'html', 'xml', 'info', 'plaintext'];
+    #  'tex' is missed out here so that @ifnottex is expanded
+    # in the tests.  Put
+    #   {'expanded_formats' => ['tex']}
+    # where you need @tex expanded in the t/*.t files.
+  }
 
   my $test_file;
   if ($parser_options->{'test_file'}) {

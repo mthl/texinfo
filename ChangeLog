@@ -1,3 +1,24 @@
+2016-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/test_utils.pl (set_converter_option_defaults): Set 
+	default expanded formats hash for converter even if this was 
+	given in the parser options.  This helps to make the parser 
+	options and converter options separate.
+
+	(test) If expanded formats not defined in the parser options, 
+	expand all of the formats except 'tex'.
+
+	* t/16raw.t,
+	* t/50value.t,
+	* t/55conditionals.t,
+	* t/57invalid_nestings.t,
+	* t/60macro.t,
+	* t/converters_tests.t,
+	* t/html_tests.t,
+	* t/plaintext_tests.t:
+	Add 'expanded_formats' configuration values where required to 
+	minimize changes to the results of the tests.
+
 2016-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_end_line, _parse_texi): Remove some 

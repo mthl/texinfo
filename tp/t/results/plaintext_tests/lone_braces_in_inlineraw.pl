@@ -59,6 +59,7 @@ $result_trees{'lone_braces_in_inlineraw'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'plaintext'
           },
           'line_nr' => {},

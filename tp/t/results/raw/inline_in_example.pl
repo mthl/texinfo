@@ -100,6 +100,7 @@ $result_trees{'inline_in_example'} = {
                     {}
                   ]
                 ],
+                'expand_index' => 1,
                 'format' => 'plaintext'
               },
               'line_nr' => {
@@ -153,6 +154,7 @@ $result_trees{'inline_in_example'} = {
                     {}
                   ]
                 ],
+                'expand_index' => 1,
                 'format' => 'plaintext'
               },
               'line_nr' => {

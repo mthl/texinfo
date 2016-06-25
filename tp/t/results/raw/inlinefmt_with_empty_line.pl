@@ -56,6 +56,7 @@ $result_trees{'inlinefmt_with_empty_line'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'plaintext'
           },
           'line_nr' => {
@@ -136,6 +137,7 @@ $result_trees{'inlinefmt_with_empty_line'} = {
                 {}
               ]
             ],
+            'expand_index' => 1,
             'format' => 'html'
           },
           'line_nr' => {

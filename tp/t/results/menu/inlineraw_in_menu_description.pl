@@ -191,6 +191,7 @@ $result_trees{'inlineraw_in_menu_description'} = {
                                 {}
                               ]
                             ],
+                            'expand_index' => 1,
                             'format' => 'html'
                           },
                           'line_nr' => {
