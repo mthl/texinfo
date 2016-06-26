@@ -52,40 +52,9 @@ $result_trees{'ignored_value_definition'} = {
               'type' => 'brace_command_arg'
             },
             {
-              'contents' => [
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'empty_spaces_before_argument'
-                },
-                {
-                  'args' => [
-                    {
-                      'parent' => {},
-                      'text' => 'aa',
-                      'type' => 'misc_arg'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => 'in inlinefmt tex',
-                      'type' => 'misc_arg'
-                    }
-                  ],
-                  'cmdname' => 'set',
-                  'extra' => {
-                    'arg_line' => ' aa in inlinefmt tex
-',
-                    'misc_args' => [
-                      'aa',
-                      'in inlinefmt tex'
-                    ]
-                  },
-                  'parent' => {}
-                }
-              ],
+              'contents' => [],
               'parent' => {},
-              'type' => 'brace_command_arg'
+              'type' => 'elided'
             }
           ],
           'cmdname' => 'inlinefmt',
@@ -95,9 +64,7 @@ $result_trees{'ignored_value_definition'} = {
               [
                 {}
               ],
-              [
-                {}
-              ]
+              undef
             ],
             'format' => 'tex'
           },
@@ -143,13 +110,8 @@ $result_trees{'ignored_value_definition'}{'contents'}[0]{'parent'} = $result_tre
 $result_trees{'ignored_value_definition'}{'contents'}[1]{'parent'} = $result_trees{'ignored_value_definition'};
 $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0];
-$result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[1];
-$result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[1]{'contents'}[1];
-$result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[1]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[1]{'contents'}[1];
-$result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[1];
 $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0];
 $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'args'}[1]{'contents'}[1];
 $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'ignored_value_definition'}{'contents'}[2];
 $result_trees{'ignored_value_definition'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'ignored_value_definition'}{'contents'}[2];
 $result_trees{'ignored_value_definition'}{'contents'}[2]{'parent'} = $result_trees{'ignored_value_definition'};
@@ -159,9 +121,7 @@ $result_trees{'ignored_value_definition'}{'contents'}[4]{'parent'} = $result_tre
 
 $result_texis{'ignored_value_definition'} = '@set aa outside
 
-@inlinefmt{tex,
-@set aa in inlinefmt tex
-}
+@inlinefmt{tex,}
 
 outside.
 ';

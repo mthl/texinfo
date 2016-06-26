@@ -556,6 +556,7 @@ sub _deep_copy($)
 sub _ignore_global_commands($)
 {
   my $self = shift;
+  return 0;
   return !$self->{'expanded_formats_stack'}->[-1];
 }
 
@@ -1738,8 +1739,8 @@ sub _close_current($$$;$$)
           or $menu_commands{$current->{'cmdname'}}
           or $format_raw_commands{$current->{'cmdname'}}) {
         my $context = pop @{$self->{'context_stack'}};
-        pop @{$self->{'expanded_formats_stack'}} 
-          if ($format_raw_commands{$current->{'cmdname'}});
+        #pop @{$self->{'expanded_formats_stack'}} 
+        #  if ($format_raw_commands{$current->{'cmdname'}});
       }
       pop @{$self->{'regions_stack'}} 
          if ($region_commands{$current->{'cmdname'}});
@@ -1834,7 +1835,7 @@ sub _close_commands($$$;$$)
         $self->_bug_message("context $context instead of rawpreformatted for $closed_command", 
                             $line_nr, $current);
       }
-      pop @{$self->{'expanded_formats_stack'}};
+      #pop @{$self->{'expanded_formats_stack'}};
     } elsif ($menu_commands{$current->{'cmdname'}}) {
       my $context = pop @{$self->{'context_stack'}};
       # may be in menu, but context is preformatted if in a preformatted too.
@@ -4846,11 +4847,29 @@ sub _parse_texi($;$)
                 push @{$self->{'context_stack'}}, 'preformatted';
               } elsif ($format_raw_commands{$command}) {
                 push @{$self->{'context_stack'}}, 'rawpreformatted';
-                if ($self->{'expanded_formats_hash'}->{$command} 
-                    and $self->{'expanded_formats_stack'}->[-1]) {
-                  push @{$self->{'expanded_formats_stack'}}, $command;
-                } else {
-                  push @{$self->{'expanded_formats_stack'}}, 0;
+                if (not $self->{'expanded_formats_hash'}->{$command}) {
+                  push $current->{'contents'}, {
+                    'parent' => $current,
+                    'type' => 'elided_block',
+                    'contents' => []
+                  };
+                  while (not $line =~ /^\s*\@end\s+$command/) {
+                    ($line, $line_nr) = _new_line($self, $line_nr, $current);
+                    if (!$line) {
+                      # unclosed block
+                      $line = '';
+                      last;
+                    }
+                  }
+                  push @{$current->{'contents'}},
+                                     { 'type' => 'empty_line_after_command', 
+                                       'text' => "\n",
+                                       'parent' => $current };
+                  push @{$current->{'contents'}}, { 'type' => 'empty_line', 
+                                                    'text' => '',
+                                                    'parent' => $current };
+                  next;
+                  #push @{$self->{'expanded_formats_stack'}}, 0;
                 }
               }
               if ($region_commands{$command}) {
@@ -5037,7 +5056,7 @@ sub _parse_texi($;$)
               }
               if ($inline_commands{$command}) {
                 # this is changed when the first argument is known.
-                push @{$self->{'expanded_formats_stack'}}, 0;
+                #push @{$self->{'expanded_formats_stack'}}, 0;
                 push @{$self->{'context_stack'}}, $command
                   if ($command eq 'inlineraw');
               }
@@ -5090,7 +5109,6 @@ sub _parse_texi($;$)
 
         } elsif ($separator eq '}') {
           _abort_empty_line($self, $current);
-          #print STDERR "GGGGG". _print_current ($current);
           if ($current->{'type'} and ($current->{'type'} eq 'bracketed')) {
             $current = $current->{'parent'};
            # the following will not happen for footnote if there is 
@@ -5222,7 +5240,7 @@ sub _parse_texi($;$)
                     die;
                   }
                 }
-                pop @{$self->{'expanded_formats_stack'}};
+                #pop @{$self->{'expanded_formats_stack'}};
               }
               if (!@{$current_command->{'args'}} 
                   or !@{$current_command->{'extra'}->{'brace_command_contents'}}
@@ -5347,45 +5365,110 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
           my $type = $current->{'type'};
           $current = $current->{'parent'};
           if ($inline_commands{$current->{'cmdname'}}) {
+            my $expandp = 0;
             if (! $current->{'extra'}->{'format'}) {
-              # change the top of the raw_formats_stack now that we know the
-              # first arg of the inlineraw
-              my $inline_type
-                = Texinfo::Convert::Text::convert({'contents' =>
-                  $current->{'extra'}->{'brace_command_contents'}->[0]},
-                          {Texinfo::Common::_convert_text_options($self)});
-              if ($self->{'expanded_formats_stack'}->[-2]) {
-                if ($inline_format_commands{$current->{'cmdname'}}) {
-                  if ($self->{'expanded_formats_hash'}->{$inline_type}) { 
-                    $self->{'expanded_formats_stack'}->[-1] = $inline_type;
-                    $current->{'extra'}->{'expand_index'} = 1;
-                  } else {
-                    $self->{'expanded_formats_stack'}->[-1] = 0;
-                  }
-                } elsif (($current->{'cmdname'} eq 'inlineifset'
-                          and exists($self->{'values'}->{$inline_type}))
-                         or ($current->{'cmdname'} eq 'inlineifclear' 
-                             and ! exists($self->{'values'}->{$inline_type}))) {
-                  $self->{'expanded_formats_stack'}->[-1] 
-                         = "$current->{'cmdname'} $inline_type";
+              my @contents;
+              my $inline_type;
+              if (defined
+                    $current->{'extra'}->{'brace_command_contents'}->[0]) {
+                @contents
+                   = @{$current->{'extra'}->{'brace_command_contents'}->[0]};
+                _trim_spaces_comment_from_content (\@contents);
+                $inline_type = $contents[0]->{'text'};
+              }
+
+              if (!$inline_type) {
+                # condition is missing for some reason
+              } elsif ($inline_format_commands{$current->{'cmdname'}}) {
+                if ($self->{'expanded_formats_hash'}->{$inline_type}) { 
+                  $expandp = 1;
                   $current->{'extra'}->{'expand_index'} = 1;
                 } else {
-                  $self->{'expanded_formats_stack'}->[-1] = 0;
+                  $expandp = 0;
                 }
+              } elsif (($current->{'cmdname'} eq 'inlineifset'
+                        and exists($self->{'values'}->{$inline_type}))
+                       or ($current->{'cmdname'} eq 'inlineifclear' 
+                           and ! exists($self->{'values'}->{$inline_type}))) {
+                $expandp = 1;
+                $current->{'extra'}->{'expand_index'} = 1;
               } else {
-                $self->{'expanded_formats_stack'}->[-1] = 0;
+                $expandp = 0;
               }
               $current->{'extra'}->{'format'} = $inline_type;
-            } else {
-              # happens for the second arg of inlinefmtifelse
-              my $inline_type = $current->{'extra'}->{'format'};
-              if ($self->{'expanded_formats_stack'}->[-2]
-                  and ! ($self->{'expanded_formats_hash'}->{$inline_type})) {
-                $self->{'expanded_formats_stack'}->[-1] = $inline_type;
+
+              # Skip first argument for a false @inlinefmtifelse
+              if (!$expandp and $current->{'cmdname'} eq 'inlinefmtifelse') {
                 $current->{'extra'}->{'expand_index'} = 2;
-              } else {
-                $self->{'expanded_formats_stack'}->[-1] = 0;
+
+                # Add a dummy argument for the first argument.
+                push $current->{'args'}, {'type' => 'elided',
+                                          'parent' => $current,
+                                          'contents' => []};
+               _register_command_arg($self, $current->{'args'}->[-1],
+                                     'brace_command_contents');
+
+                # Scan forward to get the next argument.
+                my $brace_count = 1;
+                while ($brace_count > 0) {
+                  # Forward to next comma or brace
+                  if ($line =~ s/[^{,}]*([,{}])//) {
+                    if ($1 eq ',' and $brace_count == 1) {
+                      last;
+                    } elsif ($1 eq '{') {
+                      $brace_count++;
+                    } elsif ($1 eq '}') {
+                      $brace_count--;
+                    }
+                  } else {
+                    my $new_text;
+                    ($new_text, $line_nr) = _next_text($self,
+                                                       $line_nr, $current);
+                    if (!$new_text) {
+                      # ERROR - unbalanced brace
+                    }
+                    $line .= $new_text;
+                  }
+                }
+                if ($brace_count == 0) {
+                  # second arg missing
+                  $line = '}' . $line;
+                }
+                $current->{'remaining_args'}--;
+                $expandp = 1;
               }
+            } elsif ($current->{'cmdname'} eq 'inlinefmtifelse') {
+              # Second arg of @inlinefmtifelse when condition is true.
+              # Discard second argument.
+              $expandp = 0;
+            }
+            # If this command is not being expanded, add a dummy argument,
+            # and scan forward to the closing brace.
+            if (!$expandp) {
+              push $current->{'args'}, {'type' => 'elided',
+                                        'parent' => $current,
+                                        'contents' => []};
+              my $brace_count = 1;
+              while ($brace_count > 0) {
+                if ($line =~ s/[^{}]*([{}])//) {
+                  if ($1 eq '{') {
+                    $brace_count++;
+                  } else {
+                    $brace_count--;
+                  }
+                } else {
+                  my $new_text;
+                  ($new_text, $line_nr) = _next_text($self,
+                                                     $line_nr, $current);
+                  $line .= $new_text;
+                  if (!$line) {
+                    # ERROR - unbalanced brace
+                  }
+                }
+              }
+              $current = $current->{'args'}->[-1];
+              $line = '}' . $line;
+              next;
             }
           }
           $current->{'remaining_args'}--;

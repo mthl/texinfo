@@ -1,3 +1,20 @@
+2016-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): For raw block commands 
+	(like @tex) and raw inline commands (@inlinefmt), skip over the 
+	part of the conditional that isn't expanded, instead of parsing 
+	it as usual and using a stack of expanded conditionals.  Add a 
+	dummy argument to the parse tree for the skipped-over argument.
+	This will mean that there is no use for the 
+	_ignore_global_commands function.  This change is intended to 
+	make implementation of the parser module in C easier, and should 
+	also make the Perl module itself simpler.
+
+	(_close_current, _close_commands): Do not refer to 
+	$self->{'expanded_formats_stack'}.
+
+	(_ignore_global_commands): Always return 0.
+
 2016-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/test_utils.pl (set_converter_option_defaults): Set 

@@ -608,7 +608,7 @@ $raw_commands_text,
 {'expanded_formats' => ['tex']},
 ],
 ['inline',
-$inline_text
+$inline_text,
 ],
 ['inline_expand_tex',
 $inline_text, {'expanded_formats' => ['tex']},
@@ -630,7 +630,9 @@ $inline_text, {'expanded_formats' => ['tex']},
 @inlinefmtifelse{docbook,if docbook,else docbook}.
 
 @inlinefmtifelse{tex,if tex,else tex}.
-'],
+',
+{'expanded_formats' => []}
+],
 ['inlineifsetifclear',
 '@inlineifclear{aaa, iclear first }.
 

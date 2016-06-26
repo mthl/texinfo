@@ -262,6 +262,7 @@ $result_trees{'inline_in_example'} = {
                     {}
                   ]
                 ],
+                'expand_index' => 1,
                 'format' => 'html'
               },
               'line_nr' => {

@@ -26,7 +26,9 @@ in html <br> @end html
 in  v---erbatim`` <>
 in verbatim2
 @end verbatim
-'],
+',
+{'expanded_formats' => ['tex', 'html']}
+],
 ['misc_raw_comments','
 @html @c comment space
 in html @end html@c comment no space
@@ -38,7 +40,9 @@ in html @end html@c comment no space
 in verbatim @c in verbatim
 in verbatim2
 @end verbatim
-'],
+',
+{'expanded_formats' => ['tex', 'html']}
+],
 ['raw_in_para',
 'para
 @verbatim
@@ -59,7 +63,9 @@ in tex2
 @end tex
 
 End.
-'],
+',
+{'expanded_formats' => ['tex', 'html']}
+],
 ['raw_in_example',
 '@example
 @html
@@ -87,7 +93,9 @@ $$
 
 @end example
 
-'],
+',
+{'expanded_formats' => ['tex', 'html']}
+],
 ['braces_in_tex',
 '
 @tex
@@ -120,7 +128,9 @@ $$
 @html
 {
 @end html
-'],
+',
+{'expanded_formats' => ['html']}
+],
 ['verbatim_and_verbatiminclude',
 '@verbatim
 In verbatim                @@                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa       bbbbbbbbbbbbbb
@@ -272,7 +282,9 @@ in block
 Before the opening command @verbatim
 in block
 @end verbatim. A symbol after the closing command.
-'],
+',
+{'expanded_formats' => ['tex', 'html']}
+],
 ['inlinefmt',
 'A @inlinefmt{plaintext, plaintext `` @lbracechar{} } a.  Now html
 @inlinefmt{html, in <i>@acronym{HTML}</i>}.
@@ -294,7 +306,7 @@ A @inlineraw{plaintext, plaintext
 in <i>@acronym{HTML}</i>}.
 @end example
 ',
-{'expanded_formats' => ['plaintext']}
+{'expanded_formats' => ['plaintext', 'html']}
 ],
 ['raw_in_style',
 '@code{
