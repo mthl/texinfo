@@ -4848,7 +4848,7 @@ sub _parse_texi($;$)
               } elsif ($format_raw_commands{$command}) {
                 push @{$self->{'context_stack'}}, 'rawpreformatted';
                 if (not $self->{'expanded_formats_hash'}->{$command}) {
-                  push $current->{'contents'}, {
+                  push @{$current->{'contents'}}, {
                     'parent' => $current,
                     'type' => 'elided_block',
                     'contents' => []
@@ -5402,9 +5402,9 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
                 $current->{'extra'}->{'expand_index'} = 2;
 
                 # Add a dummy argument for the first argument.
-                push $current->{'args'}, {'type' => 'elided',
-                                          'parent' => $current,
-                                          'contents' => []};
+                push @{$current->{'args'}}, {'type' => 'elided',
+                                             'parent' => $current,
+                                             'contents' => []};
                _register_command_arg($self, $current->{'args'}->[-1],
                                      'brace_command_contents');
 
@@ -5445,9 +5445,9 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
             # If this command is not being expanded, add a dummy argument,
             # and scan forward to the closing brace.
             if (!$expandp) {
-              push $current->{'args'}, {'type' => 'elided',
-                                        'parent' => $current,
-                                        'contents' => []};
+              push @{$current->{'args'}}, {'type' => 'elided',
+                                           'parent' => $current,
+                                           'contents' => []};
               my $brace_count = 1;
               while ($brace_count > 0) {
                 if ($line =~ s/[^{}]*([{}])//) {
