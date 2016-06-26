@@ -1,5 +1,16 @@
 2016-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi, _register_global_command)
+	(_register_label, _enter_index_entry, _end_line)
+	(_parse_line_command_args, _parse_special_misc_commands): Remove 
+	uses of _ignore_global_commands.  Remove some commented-out 
+	lines of code.
+	(parser, simple_parser): Remove reference to 
+	$self->{'expanded_formats_stack'}.
+	(_ignore_global_commands): Removed.
+
+2016-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi): For raw block commands 
 	(like @tex) and raw inline commands (@inlinefmt), skip over the 
 	part of the conditional that isn't expanded, instead of parsing 
