@@ -107,5 +107,4 @@ void init_index_commands (void);
 #define BRACE_context -1 /* Can enclose paragraph breaks. */
 #define BRACE_accent -2
 #define BRACE_style -3
-#define BRACE_inline -4
-#define BRACE_other -5
+#define BRACE_other -4

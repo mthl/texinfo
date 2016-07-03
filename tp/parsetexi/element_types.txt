@@ -84,3 +84,7 @@ bracketed_def_content
 bracketed_multitable_prototype
 row_prototype
 
+# for unexpanded parts of conditionals
+elided
+elided_block
+

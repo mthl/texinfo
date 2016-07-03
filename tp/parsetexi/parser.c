@@ -61,7 +61,7 @@ read_command_name (char **ptr)
   if (!isalnum (*q))
     return 0; /* Invalid. */
 
-  while (isalnum (*q) || *q == '-')
+  while (isalnum (*q) || *q == '-' || *q == '_')
     q++;
   ret = strndup (p, q - p);
   p = q;
@@ -573,6 +573,9 @@ trim_spaces_comment_from_content (ELEMENT *original)
 
   trimmed = new_element (ET_NONE);
   trimmed->parent_type = route_not_in_tree;
+
+  if (original->contents.number == 0)
+    return trimmed;
 
   i = 1;
   t = original->contents.list[0]->type;
@@ -1303,7 +1306,7 @@ value_invalid:
             }
           else if ((outer_flags & CF_brace // full text
                    && (command_data(outer).data == BRACE_style
-                       || command_data(outer).data == BRACE_inline))
+                       || (outer_flags & CF_inline)))
                    || outer == CM_center // full line
                    || outer == CM_exdent
                    || outer == CM_item

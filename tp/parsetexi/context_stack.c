@@ -67,7 +67,8 @@ current_context (void)
 }
 
 
-/* the valid regions are 'titlepage', 'copying', and 'documentdescription' */
+/* The valid regions are 'titlepage', 'copying', and 'documentdescription'.
+   This stack isn't used that much. */
 
 static ELEMENT **region_stack;
 static size_t region_top; /* One above last pushed region. */

@@ -329,13 +329,13 @@ abbr		brace	2
 acronym		brace	2
 
 # inline format command
-inlineraw		brace,inline	BRACE_inline
-inlinefmt		brace,inline	BRACE_inline
-inlinefmtifelse		brace,inline	BRACE_inline
+inlineraw		brace,inline	2
+inlinefmt		brace,inline	2
+inlinefmtifelse		brace,inline	3
 
 # inline conditional commands
-inlineifclear		brace,inline	BRACE_inline
-inlineifset		brace,inline	BRACE_inline
+inlineifclear		brace,inline	2
+inlineifset		brace,inline	2
 
 email			brace	2
 

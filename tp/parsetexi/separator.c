@@ -179,11 +179,18 @@ handle_open_brace (ELEMENT *current, char **line_inout)
         {
           current->type = ET_brace_command_arg;
 
+          if (command_data(command).flags & CF_inline)
+            {
+              // 4956
+
+              if (command == CM_inlineraw)
+                push_context (ct_inlineraw);
+            }
           /* Commands which are said to take a positive number of arguments
              disregard leading and trailing whitespace.  In 
              'handle_close_brace', the 'brace_command_contents' array
              is set.  */
-          if (command_data(command).data > 0)
+          else if (command_data(command).data > 0)
             {
               ELEMENT *e;
               e = new_element (ET_empty_spaces_before_argument);
@@ -192,10 +199,6 @@ handle_open_brace (ELEMENT *current, char **line_inout)
               add_to_element_contents (current, e);
               add_extra_element (current->parent,
                                      "spaces_before_argument", e);
-            }
-          else if (command_data(command).data == BRACE_inline)
-            {
-              // 4956
             }
         }
       debug ("OPENED");
@@ -232,7 +235,6 @@ handle_open_brace (ELEMENT *current, char **line_inout)
   else if (current_context() == ct_math
            || current_context() == ct_rawpreformatted
            || current_context() == ct_inlineraw)
-    //     || ignore_global_commands () - whatever that is
     {
       ELEMENT *b = new_element (ET_bracketed);
       b->line_nr = line_nr;
@@ -272,8 +274,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           /* The Perl code here checks that the popped context and the
              parent command match as strings. */
         }
-      else if (command_data(current->parent->cmd).data > 0 /* sic */
-               || command_data(current->parent->cmd).data == BRACE_inline)
+      else if (command_data(current->parent->cmd).data > 0) /* sic */
         {
           // 5033
           /* @inline* always have end spaces considered as normal text */
@@ -371,14 +372,19 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                || closed_command == CM_abbr
                || closed_command == CM_acronym)
         { // 5129
-          /* TODO: For @abbr and @acronym, keep track of whether an expansion
-             for the abbreviation has been given.  This is used in the HTML
-             output for the <abbr title> attribute.  Or we could just move
-             the code to HTML.pm. */
+          if (current->parent->cmd == CM_inlineraw)
+            {
+              if (ct_inlineraw != pop_context ())
+                abort ();
+            }
+          if (current->parent->args.number == 0)
+            {
+              line_warn ("@%s missing first argument",
+                         command_name(current->parent->cmd));
+            }
         }
       else if (closed_command == CM_errormsg) // 5173
         {
-          // if (!ignore_global_commands)
           line_error (text_convert (current));
         }
       else if (closed_command == CM_U)
@@ -565,12 +571,133 @@ handle_comma (ELEMENT *current, char **line_inout)
   type = current->type;
   current = current->parent;
 
-#if 0
-  /* TODO 5244 */
-  if (current is an inline command (like inlineraw) all brace commands))
+  // 5244
+  if (command_flags(current) & CF_inline)
     {
+      KEY_PAIR *k;
+      int expandp = 0;
+      debug ("THE INLINE PART");
+      k = lookup_extra_key (current, "format");
+      if (!k)
+        {
+          KEY_PAIR *k;
+          char *inline_type = 0;
+          k = lookup_extra_key (current, "brace_command_contents");
+          if (k)
+            {
+              ELEMENT *args = 0, *arg = 0;
+              int i;
+              args = (ELEMENT *) k->value;
+              if (!args)
+                goto inline_no_arg;
+              if (args->contents.number == 0)
+                goto inline_no_arg;
+              arg = args->contents.list[0];
+              if (!arg)
+                goto inline_no_arg; /* Possible if registered as 'undef'. */
+              /* Find text argument.
+                 TODO: Should we use trim_spaces_comment_from_content instead?
+                 Or use a function for this? */
+              for (i = 0; i < arg->contents.number; i++)
+                {
+                  enum element_type t = arg->contents.list[i]->type;
+                  if (arg->contents.list[i]->text.end > 0
+                      && t != ET_empty_line_after_command
+                      && t != ET_empty_spaces_after_command
+                      && t != ET_empty_spaces_before_argument
+                      && t != ET_empty_space_at_end_def_bracketed
+                      && t != ET_empty_spaces_after_close_brace)
+                    break;
+                }
+              if (i != arg->contents.number)
+                {
+                  inline_type = arg->contents.list[i]->text.text;
+                }
+            }
+
+
+          debug ("INLINE <%s>", inline_type);
+          if (!inline_type)
+            {
+inline_no_arg:
+              /* Condition is missing */
+              debug ("INLINE COND MISSING");
+            }
+          else if (current->cmd == CM_inlineraw
+              || current->cmd == CM_inlinefmt
+              || current->cmd == CM_inlinefmtifelse)
+            {
+              if (format_expanded_p (inline_type))
+                {
+                  expandp = 1;
+                  add_extra_string (current, "expand_index", "1");
+                }
+              else
+                expandp = 0;
+            }
+          else if (current->cmd == CM_inlineifset
+                   || current->cmd == CM_inlineifclear)
+            {
+              expandp = 0;
+              if (fetch_value (current, inline_type, strlen (inline_type)))
+                expandp = 1;
+              if (current->cmd == CM_inlineifclear)
+                expandp = !expandp;
+            }
+          else
+            expandp = 0;
+
+          add_extra_string (current, "format", inline_type);
+
+          /* Skip first argument for a false @inlinefmtifelse */
+          if (!expandp && current->cmd == CM_inlinefmtifelse)
+            {
+              // TODO
+            }
+          counter_dec (&count_remaining_args);
+          expandp = 1;
+        }
+      else if (current->cmd == CM_inlinefmtifelse)
+        {
+          /* Second art of @inlinefmtifelse when condition is true.  Discard
+             second argument. */
+          expandp = 0;
+        }
+
+      /* If this command is not being expanded, add a dummy argument, and
+         scan forward to the closing brace. */
+      if (!expandp)
+        {
+          ELEMENT *e;
+          int brace_count = 1;
+          e = new_element (ET_elided);
+          add_to_element_args (current, e);
+          while (brace_count > 0)
+            {
+              line += strcspn (line, "{}");
+              switch (*line)
+                {
+                case '{':
+                  brace_count++;
+                  break;
+                case '}':
+                  brace_count--;
+                  break;
+                default:
+                  line = next_text ();
+                  if (!line)
+                    {
+                      /* ERROR - unbalanced brace */
+                    }
+                  continue;
+                }
+              line++;
+            }
+          current = last_args_child (current);
+          line--;  /* on '}' */
+          goto funexit;
+        }
     }
-#endif
 
   counter_dec (&count_remaining_args);
   new_arg = new_element (type);
@@ -580,6 +707,7 @@ handle_comma (ELEMENT *current, char **line_inout)
   text_append (&e->text, ""); /* See comment in parser.c:merge_text */
   add_to_element_contents (current, e);
   
+funexit:
   *line_inout = line;
   return current;
 }

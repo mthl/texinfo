@@ -756,6 +756,19 @@ add_expanded_format (char *format)
     add_expanded_format ("info");
 }
 
+int
+format_expanded_p (char *format)
+{
+  int i;
+  for (i = 0; i < sizeof (expanded_formats)/sizeof (*expanded_formats);
+       i++)
+    {
+      if (!strcmp (format, expanded_formats[i].format))
+        return expanded_formats[i].expandedp;
+    }
+  return 0;
+}
+
 /* line 4632 */
 /* A command name has been read that starts a multiline block, which should
    end in @end <command name>.  The block will be processed until 
@@ -938,7 +951,6 @@ handle_block_command (ELEMENT *current, char **line_inout,
           block = new_element (ET_NONE);
 
           block->cmd = cmd;
-          block->line_nr = line_nr;
           add_to_element_contents (current, block);
           current = block;
         }
@@ -951,6 +963,31 @@ handle_block_command (ELEMENT *current, char **line_inout,
           else if (command_data(cmd).flags & CF_format_raw)
             {
               push_context (ct_rawpreformatted);
+              if (!format_expanded_p (command_name(cmd)))
+                {
+                  ELEMENT *e;
+                  enum command_id dummy;
+                  char *line_dummy;
+
+                  e = new_element (ET_elided_block);
+                  add_to_element_contents (current, e);
+                  line_dummy = line;
+                  while (!is_end_current_command (current,
+                                                  &line_dummy, &dummy))
+                    {
+                      line = new_line ();
+                      if (!line)
+                        abort (); // TODO
+                      line_dummy = line;
+                    }
+                  e = new_element (ET_empty_line_after_command);
+                  text_append_n (&e->text, "\n", 1);
+                  add_to_element_contents (current, e);
+
+                  e = new_element (ET_empty_line);
+                  add_to_element_contents (current, e);
+                  goto funexit;
+                }
             }
 
           // 4775
@@ -1024,6 +1061,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
 
           }
         } /* 4827 */
+      block->line_nr = line_nr;
       mark_and_warn_invalid (cmd, invalid_parent, block);
       register_global_command (cmd, block);
       start_empty_line_after_command (current, &line, block);

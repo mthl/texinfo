@@ -58,5 +58,7 @@ char *element_type_names[] = {
 "bracketed_def_content",
 "bracketed_multitable_prototype",
 "row_prototype",
+"elided",
+"elided_block",
 
 };

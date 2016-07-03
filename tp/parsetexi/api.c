@@ -255,6 +255,8 @@ element_to_perl_hash (ELEMENT *e)
       || e->type == ET_before_item
       || e->type == ET_inter_item
       || e->cmd == CM_TeX
+      || e->type == ET_elided
+      || e->type == ET_elided_block
       || (command_flags(e) & CF_root)
       || (command_data(e->cmd).flags & CF_brace
           && (command_data(e->cmd).data >= 0
@@ -305,12 +307,12 @@ element_to_perl_hash (ELEMENT *e)
       else
         hv_store (e->hv, "type", strlen ("type"), sv, 0);
 
-      //SvUTF8_on (sv);
-      /* We will have to do something like that, but first we need to make sure 
-         the strings we have are in UTF-8 to start with.  This would lead to an 
-         unnecessary round trip with "@documentencoding ISO-8859-1" for Info 
-         and plain text output, when we first convert the characters in the 
-         input file to UTF-8, and convert them back again for the output.
+      SvUTF8_on (sv);
+      /* FIXME: Check that the strings we have are in UTF-8 to start with.
+         This would lead to an unnecessary round trip with "@documentencoding 
+         ISO-8859-1" for Info and plain text output, when we first convert the 
+         characters in the input file to UTF-8, and convert them back again for 
+         the output.
       
          The alternative is to leave the UTF-8 flag off, and hope that Perl 
          interprets 8-bit encodings like ISO-8859-1 correctly.  See
