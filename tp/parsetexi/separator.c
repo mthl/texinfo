@@ -179,18 +179,11 @@ handle_open_brace (ELEMENT *current, char **line_inout)
         {
           current->type = ET_brace_command_arg;
 
-          if (command_data(command).flags & CF_inline)
-            {
-              // 4956
-
-              if (command == CM_inlineraw)
-                push_context (ct_inlineraw);
-            }
           /* Commands which are said to take a positive number of arguments
              disregard leading and trailing whitespace.  In 
              'handle_close_brace', the 'brace_command_contents' array
              is set.  */
-          else if (command_data(command).data > 0)
+          if (command_data(command).data > 0)
             {
               ELEMENT *e;
               e = new_element (ET_empty_spaces_before_argument);
@@ -199,6 +192,9 @@ handle_open_brace (ELEMENT *current, char **line_inout)
               add_to_element_contents (current, e);
               add_extra_element (current->parent,
                                      "spaces_before_argument", e);
+
+              if (command == CM_inlineraw)
+                push_context (ct_inlineraw);
             }
         }
       debug ("OPENED");
@@ -372,12 +368,17 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                || closed_command == CM_abbr
                || closed_command == CM_acronym)
         { // 5129
+          KEY_PAIR *k;
           if (current->parent->cmd == CM_inlineraw)
             {
               if (ct_inlineraw != pop_context ())
                 abort ();
             }
-          if (current->parent->args.number == 0)
+          if (current->parent->args.number == 0
+              || !(k = lookup_extra_key (current->parent, 
+                                         "brace_command_contents"))
+              || !k->value || k->value->contents.number == 0
+              || !k->value->contents.list[0])
             {
               line_warn ("@%s missing first argument",
                          command_name(current->parent->cmd));
@@ -639,7 +640,7 @@ inline_no_arg:
                    || current->cmd == CM_inlineifclear)
             {
               expandp = 0;
-              if (fetch_value (current, inline_type, strlen (inline_type)))
+              if (fetch_value (inline_type, strlen (inline_type)))
                 expandp = 1;
               if (current->cmd == CM_inlineifclear)
                 expandp = !expandp;
@@ -652,10 +653,55 @@ inline_no_arg:
           /* Skip first argument for a false @inlinefmtifelse */
           if (!expandp && current->cmd == CM_inlinefmtifelse)
             {
-              // TODO
+              ELEMENT *e;
+              int brace_count = 1;
+
+              add_extra_string (current, "expand_index", "2");
+
+              /* Add a dummy argument for the first argument. */
+              e = new_element (ET_elided);
+              add_to_element_args (current, e);
+              register_command_arg (e, "brace_command_contents");
+
+              /* Scan forward to get the next argument. */
+              while (brace_count > 0)
+                {
+                  line += strcspn (line, "{},");
+                  switch (*line)
+                    {
+                    case ',':
+                      if (brace_count == 1)
+                        {
+                          line++;
+                          goto inlinefmtifelse_done;
+                        }
+                      break;
+                    case '{':
+                      brace_count++;
+                      break;
+                    case '}':
+                      brace_count--;
+                      break;
+                    default:
+                      line = next_text ();
+                      if (!line)
+                        {
+                          /* ERROR - unbalanced brace */
+                        }
+                      continue;
+                    }
+                  line++;
+                }
+inlinefmtifelse_done:
+              /* Check if the second argument is missing. */
+              if (brace_count == 0)
+                {
+                  line--; /* on '}' */
+                }
+
+              counter_dec (&count_remaining_args);
+              expandp = 1;
             }
-          counter_dec (&count_remaining_args);
-          expandp = 1;
         }
       else if (current->cmd == CM_inlinefmtifelse)
         {

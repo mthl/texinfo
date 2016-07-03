@@ -784,6 +784,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
         {
           ELEMENT *last_child;
           ELEMENT *raw_command = current;
+          char *tmp = 0;
 
           last_child = last_contents_child (current);
            
@@ -811,6 +812,26 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
                   add_to_element_contents (current, lrn);
                 }
             }
+
+          // 3779
+          /* 'line' is now advanced past the "@end ...".  Check if
+             there's anything after it. */
+          p = line + strspn (line, whitespace_chars);
+          if (*p && *p != '@')
+            goto superfluous_arg;
+          p++;
+          tmp = read_command_name (&p);
+          if (tmp && !strcmp (tmp, "c") && !strcmp (tmp, "comment"))
+            {
+            }
+          else if (0)
+            {
+superfluous_arg:
+              line_warn ("superfluous argument to @end %s: %s",
+                         command_name (current->cmd), line);
+            }
+          free (tmp);
+          
 
           /* For macros, define a new macro (unless we are in a nested
              macro definition). */
@@ -1326,6 +1347,8 @@ value_invalid:
                        || cmd == CM_clear
                        || cmd == CM_end) // 373
                 ok = 1;
+              else if (cmd_flags & CF_format_raw)
+                ok = 1; // 379
 
               if (outer == CM_center
                   || outer == CM_exdent
