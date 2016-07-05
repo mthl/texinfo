@@ -1,7 +1,8 @@
 # $Id$
 # Plaintext.pm: output tree as text with filling.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015,
+# 2016 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,6 +31,7 @@ use Texinfo::Convert::Paragraph;
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Line;
 use Texinfo::Convert::UnFilled;
+use Texinfo::Convert::NodeNameNormalization;
 
 
 use Carp qw(cluck);

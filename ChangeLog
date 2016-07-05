@@ -1,5 +1,11 @@
 2016-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Plaintext.pm: Add "use" directive for 
+	Texinfo::Convert::NodeNameNormalization instead of relying on 
+	this module being pulled in indirectly.
+
+2016-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm: Remove comment referring to 
 	'raw_formats_stack'.
 	(_parse_texi): Add debugging statement if the condition in an 
