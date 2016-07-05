@@ -167,9 +167,6 @@ foreach my $key(keys(%parser_default_configuration)) {
 #                         'math', 'footnote', 'caption', 'shortcaption', 
 #                         'inlineraw' are also added when in those commands
 # conditionals_stack      a stack of conditional commands that are expanded.
-# raw_formats_stack       a stack of 1 or 0 for raw formats (@html... or 
-#                         @inlineraw), is 0 if within a raw format that is
-#                         not expanded.
 # macro_stack             stack of macros being expanded (more recent first)
 # definfoenclose          an hash, key is the command name, value is an array
 #                         reference with 2 values, beginning and ending.
@@ -5334,6 +5331,8 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
 
               if (!$inline_type) {
                 # condition is missing for some reason
+                print STDERR "INLINE COND MISSING\n"
+                  if ($self->{'DEBUG'});
               } elsif ($inline_format_commands{$current->{'cmdname'}}) {
                 if ($self->{'expanded_formats_hash'}->{$inline_type}) { 
                   $expandp = 1;

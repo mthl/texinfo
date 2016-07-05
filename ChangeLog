@@ -1,3 +1,10 @@
+2016-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm: Remove comment referring to 
+	'raw_formats_stack'.
+	(_parse_texi): Add debugging statement if the condition in an 
+	inline command is missing.
+
 2016-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi, _register_global_command)
