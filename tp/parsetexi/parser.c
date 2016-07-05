@@ -701,6 +701,7 @@ is_end_current_command (ELEMENT *current, char **line,
 
 #define GET_A_NEW_LINE 0
 #define STILL_MORE_TO_PROCESS 1
+#define FINISHED_TOTALLY 2
 
 /* line 3725 */
 /* *LINEP is a pointer into the line being processed.  It is advanced past any
@@ -821,7 +822,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
             goto superfluous_arg;
           p++;
           tmp = read_command_name (&p);
-          if (tmp && !strcmp (tmp, "c") && !strcmp (tmp, "comment"))
+          if (tmp && (!strcmp (tmp, "c") || !strcmp (tmp, "comment")))
             {
             }
           else if (0)
@@ -1505,6 +1506,11 @@ value_invalid:
               retval = GET_A_NEW_LINE;
               goto funexit;
             }
+          else if (status == 2)
+            {
+              retval = FINISHED_TOTALLY;
+              goto funexit;
+            }
         }
 
       /* line 4632 */
@@ -1667,12 +1673,16 @@ parse_texi (ELEMENT *root_elt)
          of line. */
       while (1)
         {
-          if (!process_remaining_on_line (&current, &line))
+          int status = process_remaining_on_line (&current, &line);
+          if (status == GET_A_NEW_LINE)
             break;
+          if (status == FINISHED_TOTALLY)
+            goto finished_totally;
           if (!line)
             break;
         }
     }
+finished_totally:
 
   /* Check for unclosed conditionals */
   while (conditional_number > 0)

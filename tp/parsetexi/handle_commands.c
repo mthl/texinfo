@@ -179,7 +179,8 @@ register_global_command (enum command_id cmd, ELEMENT *current)
 }
 
 /* Line 4289 */
-/* STATUS is set to 1 if we should get a new line after this. */
+/* STATUS is set to 1 if we should get a new line after this,
+   2 if we should stop processing completely. */
 ELEMENT *
 handle_misc_command (ELEMENT *current, char **line_inout,
                      enum command_id cmd, int *status,
@@ -316,7 +317,8 @@ handle_misc_command (ELEMENT *current, char **line_inout,
       // 4429
       if (cmd == CM_bye)
         {
-          // last NEXT_LINE
+          *status = 2; /* Finish processing completely. */
+          goto funexit;
         }
 
       if (close_preformatted_command(cmd))
