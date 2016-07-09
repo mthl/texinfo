@@ -37,6 +37,9 @@ $result_trees{'test_errormsg'} = {
                   ],
                   'cmdname' => '~',
                   'contents' => [],
+                  'extra' => {
+                    'invalid_nesting' => 1
+                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 2,
@@ -63,6 +66,9 @@ $result_trees{'test_errormsg'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
+                  'extra' => {
+                    'invalid_nesting' => 1
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 }
@@ -129,12 +135,30 @@ $result_texts{'test_errormsg'} = 'Some text
 
 $result_errors{'test_errormsg'} = [
   {
-    'error_line' => ':2: Text e~ code
+    'error_line' => ':2: warning: @~ should not appear in @errormsg
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
-    'text' => 'Text e~ code',
+    'text' => '@~ should not appear in @errormsg',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':2: warning: @code should not appear in @errormsg
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@code should not appear in @errormsg',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':2: Text 
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => 'Text ',
     'type' => 'error'
   }
 ];

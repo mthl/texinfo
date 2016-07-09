@@ -444,15 +444,6 @@ $result_errors{'in_errormsg'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':3: in ref
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => 'in ref',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':5: @errormsg missing closing brace
 ',
     'file_name' => '',

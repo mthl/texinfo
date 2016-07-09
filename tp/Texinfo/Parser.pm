@@ -57,8 +57,6 @@ use Texinfo::Report;
 # encoding_alias
 use Texinfo::Encoding;
 
-# to expand file names in @include and similar @-commands
-use Texinfo::Convert::Text;
 # to normalize node name, anchor, float arg, listoffloats and first *ref argument.
 use Texinfo::Convert::NodeNameNormalization;
 # in error messages, and for macro body expansion
@@ -99,12 +97,6 @@ sub N__($)
 {
   return $_[0];
 }
-
-#sub __($$)
-#{
-#  my $self = shift;
-#  return &{$self->{'gettext'}}(@_);
-#}
 
 # Customization variables obeyed by the Parser, and the default values.
 our %default_customization_values = (
@@ -441,6 +433,12 @@ foreach my $command ('titlefont', 'anchor', 'xref','ref', 'pxref',
   $simple_text_commands{$command} = 1;
 }
 
+# Commands that don't contain other @-commands.
+my %no_command_commands;
+foreach my $command ('errormsg', 'U') {
+  $no_command_commands{$command} = 1;
+}
+
 # commands that accept full text, but no block or top-level commands
 my %full_text_commands;
 foreach my $brace_command (keys (%brace_commands)) {  
@@ -476,6 +474,9 @@ foreach my $command (keys(%full_text_commands)) {
 }
 foreach my $command (keys(%simple_text_commands)) {
   $default_valid_nestings{$command} = \%in_simple_text_commands;
+}
+foreach my $command (keys(%no_command_commands)) {
+  $default_valid_nestings{$command} = {};
 }
 foreach my $command (keys(%full_line_commands)) {
   $default_valid_nestings{$command} = \%in_full_line_commands;
@@ -632,9 +633,6 @@ sub parser(;$$)
 
   _setup_conf($parser, $conf, "Texinfo::Parser::parser");
 
-  #foreach my $value (keys %{$parser->{'values'}}) {
-  #  print STDERR "   ->  $value $parser->{'values'}->{$value}\n";
-  #}
   # Now initialize command hash that are dynamically modified, notably
   # those for index commands, and lists, based on defaults and user provided.
   $parser->{'misc_commands'} = dclone(\%misc_commands);
@@ -5205,14 +5203,15 @@ sub _parse_texi($;$)
                            $current_command->{'cmdname'}), $line_nr);
               }
             } elsif ($current->{'parent'}->{'cmdname'} eq 'errormsg') {
-              my $error_message_text 
-               = Texinfo::Convert::Text::convert($current,
-                          {Texinfo::Common::_convert_text_options($self)});
-              $self->line_error($error_message_text, $line_nr);
+              my @contents = @{$current->{'contents'}};
+              _trim_spaces_comment_from_content (\@contents);
+              my $error_message_text = $contents[0]->{'text'};
+              $self->line_error($error_message_text, $line_nr)
+                if $error_message_text;
             } elsif ($current->{'parent'}->{'cmdname'} eq 'U') {
-              my $arg 
-               = Texinfo::Convert::Text::convert($current,
-                          {Texinfo::Common::_convert_text_options($self)});
+              my @contents = @{$current->{'contents'}};
+              _trim_spaces_comment_from_content (\@contents);
+              my $arg = $contents[0]->{'text'};
               if (!defined($arg) || !$arg) {
                 $self->line_warn($self->__("no argument specified for \@U"),
                   $line_nr);
