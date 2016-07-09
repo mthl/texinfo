@@ -1397,8 +1397,6 @@ value_invalid:
                    || outer == CM_abbr
                    || outer == CM_acronym
                    || outer == CM_dmn
-                   || outer == CM_ctrl
-                   || outer == CM_errormsg
                    || (outer_flags & CF_block // 475
                        && !(outer_flags & CF_def)
                        && command_data(outer).data != BLOCK_raw
@@ -1429,6 +1427,11 @@ value_invalid:
                   || cmd == CM_pxref
                   || cmd == CM_inforef) // 404
                 ok = 0;
+            }
+          else if (outer == CM_ctrl
+                   || outer == CM_errormsg)
+            {
+              ok = 0;
             }
           else
             {

@@ -386,7 +386,27 @@ handle_close_brace (ELEMENT *current, char **line_inout)
         }
       else if (closed_command == CM_errormsg) // 5173
         {
-          line_error (text_convert (current));
+          int i;
+          /* Find arg */
+          /* Should we use trim_spaces_comment_from_content instead? */
+          for (i = 0; i < current->contents.number; i++)
+            {
+              enum element_type t = current->contents.list[i]->type;
+              if (current->contents.list[i]->text.end > 0
+                  && t != ET_empty_line_after_command
+                  && t != ET_empty_spaces_after_command
+                  && t != ET_empty_spaces_before_argument
+                  && t != ET_empty_space_at_end_def_bracketed
+                  && t != ET_empty_spaces_after_close_brace)
+                break;
+            }
+          if (i == current->contents.number)
+            ;
+          else
+            {
+              char *arg = current->contents.list[i]->text.text;
+              line_error (arg);
+            }
         }
       else if (closed_command == CM_U)
         {
