@@ -69,9 +69,7 @@ sub convert ($;$)
   die "convert: bad root type (".ref($root).") $root\n" 
      if (ref($root) ne 'HASH');
   my $result = '';
-  #print STDERR "$root ";
-  #print STDERR "$root->{'type'}" if (defined($root->{'type'}));
-  #print STDERR "\n";
+
   if (defined($root->{'text'})) {
     $result .= $root->{'text'};
   } else {
@@ -82,11 +80,9 @@ sub convert ($;$)
        or ($root->{'type'} and ($root->{'type'} eq 'def_line'
                                 or $root->{'type'} eq 'menu_entry'
                                 or $root->{'type'} eq 'menu_comment'))) {
-      #print STDERR "cmd: $root->{'cmdname'}\n";
       $result .= _expand_cmd_args_to_texi($root, $fix);
     }
     $result .= '{' if ($root->{'type'} and $root->{'type'} eq 'bracketed');
-    #print STDERR "$root->{'contents'} @{$root->{'contents'}}\n" if (defined($root->{'contents'}));
     if (defined($root->{'contents'})) {
       die "bad contents type(" . ref($root->{'contents'})
           . ") $root->{'contents'}\n" if (ref($root->{'contents'}) ne 'ARRAY');
@@ -102,7 +98,6 @@ sub convert ($;$)
       $result .= "\n" if ($block_commands{$root->{'cmdname'}} ne 'raw');
     } 
   }
-  #print STDERR "convert result: $result\n";
   return $result;
 }
 
@@ -131,7 +126,6 @@ sub _expand_cmd_args_to_texi ($;$) {
   $cmdname = '' if (!$cmd->{'cmdname'}); 
   my $result = '';
   $result = '@'.$cmdname if ($cmdname);
-  #print STDERR "Expand $result\n";
 
   # this is done here otherwise for some constructs, there are
   # no 'args', and so the space is never readded.
@@ -170,7 +164,6 @@ sub _expand_cmd_args_to_texi ($;$) {
     if ($cmdname eq 'verb') {
       $result .= $cmd->{'type'};
     }
-    #print STDERR "".Data::Dumper->Dump([$cmd]);
     my $arg_nr = 0;
     foreach my $arg (@{$cmd->{'args'}}) {
       if (exists($brace_commands{$cmdname}) or ($cmd->{'type'} 
@@ -187,7 +180,6 @@ sub _expand_cmd_args_to_texi ($;$) {
     $result .= '}' if ($braces);
   }
   $result .= '{'.$cmd->{'type'}.'}' if ($cmdname eq 'value');
-  #print STDERR "Result: $result\n";
   return $result;
 }
 

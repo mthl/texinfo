@@ -1,5 +1,10 @@
 2016-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Texinfo.pm: Remove commented-out debugging 
+	statements.
+
+2016-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS, doc/texinfo.texi (Conditional Commands) <@errormsg>: 
 	Update to reflect fact that @-commands inside @errormsg is no 
 	longer supported.
