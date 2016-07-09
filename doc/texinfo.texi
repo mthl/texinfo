@@ -12957,8 +12957,7 @@ version of the manual you are reading.
 In complex documents, you may want Texinfo to issue an error message
 in some conditionals that should not ever be processed.  The
 @code{@@errormsg@{@var{text}@}} command will do this; it takes one
-argument, the text of the error message, which is expanded more or
-less as if it were Info text.
+argument, the text of the error message.
 
 We mention @code{@@errormsg@{@}} here even though it is not strictly
 related to conditionals, since in practice it is most likely to be

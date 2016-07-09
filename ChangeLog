@@ -1,3 +1,22 @@
+2016-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS, doc/texinfo.texi (Conditional Commands) <@errormsg>: 
+	Update to reflect fact that @-commands inside @errormsg is no 
+	longer supported.
+	* NEWS: Move a news item to the right place.
+
+2016-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@errormsg, @U>: Don't use
+	Texinfo::Convert::Text::convert to get argument, because the 
+	dependence on Texinfo::Convert::Text is a significant 
+	complication.
+	(top level): Remove "use Texinfo::Convert::Text" directive.
+	(%default_valid_nestings): Don't allow anything inside @errormsg 
+	or @U.
+	(__): Remove commented-out definition of '__' sub.
+	(parser): Remove commented-out loop printing values.
+
 2016-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm: Add "use" directive for 
