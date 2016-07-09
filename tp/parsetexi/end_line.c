@@ -1332,12 +1332,13 @@ end_line_misc_line (ELEMENT *current)
                   && !trimmed->contents.list[0]->text.text))
             superfluous_arg = 1;
 
-          text = trimmed->contents.list[0]->text.text;
+          if (trimmed->contents.number > 0)
+            text = trimmed->contents.list[0]->text.text;
         }
 
       if (!text)
         text = "";
-      //destroy_element (trimmed);
+      destroy_element (trimmed);
 
       if (!text || !strcmp (text, ""))
         {
@@ -1421,7 +1422,7 @@ end_line_misc_line (ELEMENT *current)
                   command_error (current, "bad argument to @end: %s", line);
                 }
             }
-          else if (0 && superfluous_arg)
+          else if (superfluous_arg)
             {
               /* An error message is issued below. */
             }
