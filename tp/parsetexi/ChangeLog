@@ -1,3 +1,8 @@
+2016-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* convert.c (convert_to_texinfo): New function.
+	(text_convert): Remove.
+
 2016-06-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* Makefile.am (bin_PROGRAMS): Add an independent 'parsetexi' 

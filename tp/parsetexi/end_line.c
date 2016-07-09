@@ -1318,36 +1318,32 @@ end_line_misc_line (ELEMENT *current)
   else if (arg_type == MISC_text) /* 3118 */
     {
       char *text = 0;
-     
-      /* argument string has to be parsed as Texinfo. This calls convert in 
-         Common/Text.pm on the first element of current->args. */
-      /* however, this makes it impossible to decouple the parser and 
-         output stages...  Any use of Texinfo::Convert is problematic. */
-      /* Fortunately Text.pm is not too complicated (unlike Plaintext.pm). */
+      int superfluous_arg = 0;
+      int i;
+      ELEMENT *trimmed = 0;
 
-      // TODO: Convert properly.
       if (current->args.number > 0)
         {
-          int i;
-          ELEMENT *arg = current->args.list[0];
-          for (i = 0; i < arg->contents.number; i++)
-            {
-              ELEMENT *e = arg->contents.list[i];
-              if (e->type != ET_empty_spaces_after_command
-                  && e->type != ET_spaces_at_end
-                  && e->text.end > 0)
-                {
-                  text = e->text.text;
-                  break;
-                }
-            }
+          trimmed = trim_spaces_comment_from_content
+            (args_child_by_index(current, 0));
+
+          if (trimmed->contents.number > 1
+              || (trimmed->contents.number == 1
+                  && !trimmed->contents.list[0]->text.text))
+            superfluous_arg = 1;
+
+          text = trimmed->contents.list[0]->text.text;
         }
+
       if (!text)
         text = "";
+      //destroy_element (trimmed);
 
       if (!text || !strcmp (text, ""))
         {
-          line_warn ("@%s missing argument", command_name(cmd)); // 3123
+          if (!superfluous_arg)
+            line_warn ("@%s missing argument", command_name(cmd)); // 3123
+          add_extra_string (current, "missing_argument", "1");
         }
       else
         {
@@ -1402,11 +1398,21 @@ end_line_misc_line (ELEMENT *current)
                                             strdup (end_command));
                         }
                       if (end_command
-                          && line[strspn (line, whitespace_chars)] != '\0')
+                          && (superfluous_arg
+                             || line[strspn (line, whitespace_chars)] != '\0'))
                         {
+                          char *line, *line2;
+                          line = convert_to_texinfo (current->args.list[0]);
+
+                          line2 = line;
+                          line2 += strspn (line2, whitespace_chars);
+                          free (read_command_name (&line2));
                           command_error (current,
                                          "superfluous argument to @end %s: "
-                                         "%s", end_command, line);
+                                         "%s", end_command, line2);
+                          superfluous_arg = 0; /* Don't issue another error
+                                                 message below. */
+                          free (line);
                         }
                     }
                 }
@@ -1414,6 +1420,10 @@ end_line_misc_line (ELEMENT *current)
                 {
                   command_error (current, "bad argument to @end: %s", line);
                 }
+            }
+          else if (0 && superfluous_arg)
+            {
+              /* An error message is issued below. */
             }
           else if (current->cmd == CM_include) // 3166
             {
@@ -1479,6 +1489,12 @@ end_line_misc_line (ELEMENT *current)
           else if (current->cmd == CM_documentlanguage) // 3223
             {
             }
+        }
+      if (superfluous_arg)
+        {
+          command_error (current, "bad argument to @%s", 
+                         command_name(current->cmd));
+          // TODO say what the bad argument is
         }
     }
   else if (current->cmd == CM_node) /* 3235 */

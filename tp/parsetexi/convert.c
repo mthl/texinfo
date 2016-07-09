@@ -1,4 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
+/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -22,22 +22,104 @@
 #include "parser.h"
 #include "text.h"
 
-/* Stub for Texinfo::Convert::Text::convert */
-/* TODO: Don't use this function at all. */
-char *
-text_convert (ELEMENT *e)
-{
-  int which = e->contents.number;
-  which--;
-  if (which > 0)
-    {
-      if (e->contents.list[which]->type == ET_spaces_at_end)
-        which--;
+#define ADD(x) text_append (result, x)
 
-      if (which > 0 && e->contents.list[which]->text.text)
-        return e->contents.list[which]->text.text;
+static void expand_cmd_args_to_texi (ELEMENT *e, TEXT *result);
+static void convert_to_texinfo_internal (ELEMENT *e, TEXT *result);
+
+
+
+static void
+expand_cmd_args_to_texi (ELEMENT *e, TEXT *result)
+{
+  enum command_id cmd = e->cmd;
+
+  if (cmd)
+    {
+      ADD("@");  ADD(command_name(cmd));
     }
-  return "";
+
+  // TODO extra spaces
+
+  // TODO multitable or block command
+
+  // TODO macro
+
+  // TODO node
+
+  // TODO "fix" arg
+
+  if (e->args.number > 0)
+    {
+      int braces, arg_nr, i;
+      braces = (e->args.list[0]->type == ET_brace_command_arg
+                || e->args.list[0]->type == ET_brace_command_context);
+      if (braces)
+        ADD("{");
+
+      // TODO @verb
+
+      arg_nr = 0;
+      for (i = 0; i < e->args.number; i++)
+        {
+          if (command_data(cmd).flags & CF_brace)
+            {
+              if (arg_nr)
+                ADD(",");
+              arg_nr++;
+            }
+          convert_to_texinfo_internal (e->args.list[i], result);
+        }
+
+      // TODO @verb
+
+      if (braces)
+        ADD("}");
+    }
+}
+
+static void
+convert_to_texinfo_internal (ELEMENT *e, TEXT *result)
+{
+  if (e->text.end > 0)
+    ADD(e->text.text);
+  else
+    {
+      // TODO "fix" argument
+
+      if (e->cmd)
+        {
+          expand_cmd_args_to_texi (e, result);
+        }
+
+      if (e->type == ET_bracketed)
+        ADD("{");
+      if (e->contents.number > 0)
+        {
+          int i;
+          for (i = 0; i < e->contents.number; i++)
+            convert_to_texinfo_internal (e->contents.list[i], result);
+        }
+      if (e->type == ET_bracketed)
+        ADD("}");
+
+      // TODO: "fix" arg or raw block command
+    }
+
+  return;
+}
+#undef ADD
+
+char *
+convert_to_texinfo (ELEMENT *e)
+{
+  TEXT result;
+
+  if (!e)
+    return "";
+  text_init (&result);
+  convert_to_texinfo_internal (e, &result);
+  return result.text;
 }
 
 /* Produce normalized node name recursively.  IN_UC is non-zero if we are 

@@ -820,18 +820,21 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
           p = line + strspn (line, whitespace_chars);
           if (*p && *p != '@')
             goto superfluous_arg;
-          p++;
-          tmp = read_command_name (&p);
-          if (tmp && (!strcmp (tmp, "c") || !strcmp (tmp, "comment")))
+          if (*p)
             {
-            }
-          else if (0)
-            {
+              p++;
+              tmp = read_command_name (&p);
+              if (tmp && (!strcmp (tmp, "c") || !strcmp (tmp, "comment")))
+                {
+                }
+              else if (*p && p[strspn (p, whitespace_chars)])
+                {
 superfluous_arg:
-              line_warn ("superfluous argument to @end %s: %s",
-                         command_name (current->cmd), line);
+                  line_warn ("superfluous argument to @end %s: %s",
+                             command_name (current->cmd), line);
+                }
+              free (tmp);
             }
-          free (tmp);
           
 
           /* For macros, define a new macro (unless we are in a nested
