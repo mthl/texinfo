@@ -8100,30 +8100,35 @@ table, try @code{@@quotation} (@pxref{@code{@@quotation}}) or
 @code{@@indentedblock} (@pxref{@code{@@indentedblock}}).
 
 @node @code{@@ftable @@vtable}
-@subsection @code{@@ftable} and @code{@@vtable}
+@subsection @code{@@ftable}, @code{@@vtable} and @code{@@vtable}
 
 @anchor{ftable vtable}@c old name
 @findex ftable
 @findex vtable
+@findex ktable
 @cindex Tables with indexing
 @cindex Indexing table entries automatically
 
-The @code{@@ftable} and @code{@@vtable} commands are the same as the
-@code{@@table} command except that @code{@@ftable} automatically enters
-each of the items in the first column of the table into the index of
-functions and @code{@@vtable} automatically enters each of the items in
-the first column of the table into the index of variables.  This
-simplifies the task of creating indices.  Only the items on the same
-line as the @code{@@item} or @code{@@itemx} commands are indexed, and
-they are indexed in exactly the form that they appear on that line.
-@xref{Indices}, for more information about indices.
+The @code{@@ftable}, @code{@@vtable} and @code{@@ktable} commands are
+the same as the @code{@@table} command except that @code{@@ftable}
+automatically enters each of the items in the first column of the table
+into the index of functions, @code{@@vtable} automatically enters each
+of the items in the first column of the table into the index of
+variables, and @code{@@ktable} automatically enters each of the items in
+the first column of the table into the index of keys.  This simplifies
+the task of creating indices.
 
-Begin a two-column table using @code{@@ftable} or @code{@@vtable} by
-writing the @@-command at the beginning of a line, followed on the same
-line by an argument that is a Texinfo command such as @code{@@code},
-exactly as you would for a @code{@@table} command; and end the table
-with an @code{@@end ftable} or @code{@@end vtable} command on a line by
-itself.
+Only the items on the same line as the @code{@@item} or @code{@@itemx}
+commands are indexed, and they are indexed in exactly the form that they
+appear on that line.  @xref{Indices}, for more information about
+indices.
+
+Begin a two-column table using @code{@@ftable}, @code{@@vtable}, or
+@code{@@ktable} by writing the @@-command at the beginning of a line,
+followed on the same line by a Texinfo command such as @code{@@code},
+exactly as you would for a @code{@@table} command.  End the table with
+an @code{@@end ftable}, @code{@@end vtable} or @code{@@end ktable}
+command on a line by itself.
 
 See the example for @code{@@table} in the previous section.
 
@@ -19708,9 +19713,9 @@ Generate a right arrow glyph: @samp{@arrow{}}.  Used by default
 for @code{@@click}.  @xref{Click Sequences}.
 
 @item @@asis
-Used following @code{@@table}, @code{@@ftable}, and @code{@@vtable} to
-print the table's first column without highlighting (``as is'').
-@xref{@code{@@asis}}.
+Used following @code{@@table}, @code{@@ftable}, @code{@@vtable} and
+@code{@@ktable} to print the table's first column without highlighting
+(``as is'').  @xref{@code{@@asis}}.
 
 @item @@author @var{author}
 Typeset @var{author} flushleft and underline it.  @xref{@code{@@title
@@ -20327,6 +20332,12 @@ Indicate the name of a key on a keyboard.  @xref{@code{@@key}}.
 @item @@kindex @var{entry}
 Add @var{entry} to the index of keys.
 @xref{Index Entries, , Defining the Entries of an Index}.
+
+@item @@ktable @var{formatting-command}
+Begin a two-column table, using @code{@@item} for each entry.
+Automatically enter each of the items in the first column into the
+index of keys.  Pair with @code{@@end ktable}.  The same as
+@code{@@table}, except for indexing.  @xref{@code{@@ftable @@vtable}}.
 
 @item @@L@{@}
 @itemx @@l@{@}
