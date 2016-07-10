@@ -6575,13 +6575,13 @@ details below.
 =item command_as_argument
 
 This is the type of a command given in argument of C<@itemize>, 
-C<@table>, C<@vtable> or C<@ftable>.  For example in 
+C<@table>, C<@vtable>, C<@ftable> or C<@ktable>.  For example, in 
 
  @itemize @bullet
  @item item
  @end itemize
 
-the element corresponding with bullet has the following keys:
+the element corresponding to @bullet has the following keys:
 
   'cmdname' => 'bullet'
   'type' => 'command_as_argument'

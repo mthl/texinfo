@@ -2990,6 +2990,7 @@ sub _convert_xtable_command($$$$)
 $default_commands_conversion{'table'} = \&_convert_xtable_command;
 $default_commands_conversion{'ftable'} = \&_convert_xtable_command;
 $default_commands_conversion{'vtable'} = \&_convert_xtable_command;
+$default_commands_conversion{'ktable'} = \&_convert_xtable_command;
 
 sub _convert_item_command($$$$)
 {
@@ -3996,7 +3997,7 @@ sub _convert_before_item_type($$$$)
   if ($top_format eq 'itemize' or $top_format eq 'enumerate') {
     return '<li>'. $content .'</li>';
   } elsif ($top_format eq 'table' or $top_format eq 'vtable' 
-           or $top_format eq 'ftable') {
+           or $top_format eq 'ftable' or $top_format eq 'ktable') {
     return '<dd>'. $content .'</dd>'."\n";
   } elsif ($top_format eq 'multitable') {
     $content =~ s/^\s*//;

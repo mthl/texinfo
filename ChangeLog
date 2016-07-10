@@ -1,3 +1,20 @@
+2016-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (%block_commands, %block_item_commands)
+	(%item_line_commands): Add 'ktable'.
+	(%command_index): Add 'ktable'.
+	* tp/Texinfo/Parser.pm (module documentation part): Mention 
+	@ktable and small grammar changes.
+	* tp/Texinfo/Convert/HTML.pm (%default_commands_conversion):
+	Add conversion for @ktable.
+	(_convert_before_item_type): Add 'ktable' to a condition.
+	* tp/Texinfo/Convert/Plaintext.pm (%item_indent_format_length):
+	Add 'ktable'.
+	* tp/t/22xtable.t (ktable): New test.
+
+	@ktable requested by Robert Weiner, following pattern of @vtable 
+	and @ftable.
+
 2016-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Texinfo.pm: Remove commented-out debugging 
