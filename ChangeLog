@@ -1,5 +1,10 @@
 2016-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (forward_to_info_syntax): Avoid reading past 
+	end of string.  Report by Hanno Böck.
+
+2016-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Mention @ktable.
 	* doc/texinfo.texi (Command List) <@asis, @ktable>: Mention 
 	@ktable.

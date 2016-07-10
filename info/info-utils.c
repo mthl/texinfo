@@ -1576,7 +1576,10 @@ scan_info_tag (NODE *node, int *in_index, FILE_BUFFER *fb)
 static char *
 forward_to_info_syntax (char *contents)
 {
-  while (contents < input_start + input_length)
+  /* Loop until just before the end of the input.  The '- 3' prevents us
+     accessing memory after the end of the input, and none of the strings we 
+     are looking for are shorter than 3 bytes. */
+  while (contents < input_start + input_length - 3)
     {
       /* Menu entry comes first to optimize for the case of looking through a 
          long index node. */
