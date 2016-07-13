@@ -1,3 +1,10 @@
+2016-07-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\defmacro): Remove separate code for 
+	recursive and non-recursive macros, because the code is 
+	identical now (except possibly for macros of more than 9 
+	arguments).
+
 2016-07-11  Brandon Invergo  <brandon@gnu.org>
 
 	* util/htmlxref.cnf (gnat_ugn_unw, gnat_ugn): Change manual name 
