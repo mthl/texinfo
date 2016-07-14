@@ -1,7 +1,7 @@
 2016-07-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Command List) <@copying>: Correctly say
-	to end with "@end copying".  Reported by Daniel Birkett.
+	to end with "@end copying".  Reported by Daniel Birket.
 
 2016-07-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
