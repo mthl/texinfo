@@ -1,3 +1,8 @@
+2016-07-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Command List) <@copying>: Correctly say
+	to end with "@end copying".  Reported by Daniel Birkett.
+
 2016-07-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\defmacro): Remove separate code for 

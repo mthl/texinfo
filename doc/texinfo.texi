@@ -19816,8 +19816,8 @@ Print a complete table of contents.  Has no effect in Info, which uses
 menus instead.  @xref{Contents, , Generating a Table of Contents}.
 
 @item @@copying
-Specify copyright holders and copying conditions for the document Pair
-with @code{@@end cartouche}.  @xref{@code{@@copying}}.
+Specify copyright holders and copying conditions for the document.  Pair
+with @code{@@end copying}.  @xref{@code{@@copying}}.
 
 @item @@copyright@{@}
 Generate the copyright symbol @copyright{}.
