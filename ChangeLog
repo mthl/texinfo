@@ -1,5 +1,10 @@
 2016-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\ktable): Add to implement @ktable, following 
+	pattern of \ftable and \vtable.
+
+2016-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/dir.c (build_dir_node): Save contents of dir node.  This 
 	avoids a memory leak when hide-node-references=On due to 
 	scan_node_contents overwriting node->contents.
