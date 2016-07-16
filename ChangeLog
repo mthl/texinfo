@@ -1,5 +1,10 @@
 2016-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* dco/texinfo-tex-test.texi (Test of auxiliary files): Add test
+	of macro used in index entry.
+
+2016-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\macrolist, \addtomacrolist, \unmacro): Store
 	list of macros with "\commondummyword" instead of 
 	"\definedummyword", so that we remove the macro when writing an 

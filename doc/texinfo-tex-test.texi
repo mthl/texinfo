@@ -924,6 +924,13 @@ value in index entry, but only defined afterwards
 
 some more text.
 
+test of macro in index entry:
+@macro MyMac {arg}
+ffff\arg\ggggg
+@end macro
+
+@axindex @MyMac{bah}
+
 @page
 
 @set definedafter Defining this now
