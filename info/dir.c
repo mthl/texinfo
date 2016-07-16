@@ -56,6 +56,8 @@ get_dir_node (void)
   return node;
 }
 
+static char *dir_contents;
+
 static NODE *
 build_dir_node (void)
 {
@@ -139,6 +141,7 @@ build_dir_node (void)
     }
 
   node->flags |= N_IsDir;
+  dir_contents = node->contents;
   scan_node_contents (node, 0, 0);
   return node;
 }

@@ -1,5 +1,11 @@
 2016-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/dir.c (build_dir_node): Save contents of dir node.  This 
+	avoids a memory leak when hide-node-references=On due to 
+	scan_node_contents overwriting node->contents.
+
+2016-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/dir-merge.sh: New test.
 
 2016-07-14  Gavin Smith  <gavinsmith0123@gmail.com>
