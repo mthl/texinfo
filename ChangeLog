@@ -1,3 +1,7 @@
+2016-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/dir-merge.sh: New test.
+
 2016-07-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Command List) <@copying>: Correctly say

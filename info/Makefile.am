@@ -97,6 +97,7 @@ TESTS = \
 	t/dir.sh \
 	t/dir-file.sh \
 	t/dir-file-sloppily.sh \
+	t/dir-merge.sh \
 	t/dir-nondir.sh \
 	t/dir-no-file.sh \
 	t/dir-file-menu.sh \
