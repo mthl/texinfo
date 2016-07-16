@@ -1,5 +1,14 @@
 2016-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\macrolist, \addtomacrolist, \unmacro): Store
+	list of macros with "\commondummyword" instead of 
+	"\definedummyword", so that we remove the macro when writing an 
+	index sort key.  Otherwise, texindex can produce a broken sorted 
+	index file.  This fixes bug introduced on 2016-05-28, when the 
+	macros used in \commondummiesnofonts were changed.
+
+2016-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\ktable): Add to implement @ktable, following 
 	pattern of \ftable and \vtable.
 
@@ -368,7 +377,7 @@
 	writing to auxiliary files.  Expand the @value at the time of 
 	writing, reversing change on 2016-05-07.
 	(\commondummies): Use \dummyvalue definition for @value.
-	(Files using @value's in section titles broken when value was 
+	Files using @value's in section titles broken when value was 
 	@set after the table of contents, reported by Paul Eggert.
 
 2016-05-24  Gavin Smith  <gavinsmith0123@gmail.com>
