@@ -1284,11 +1284,48 @@ value_invalid:
         {
           int ok = 0; /* Whether nesting is allowed. */
 
+          /* Whether command is a "simple text" command.  Use a variable
+             to avoid repeating a complex conditional. */
+          int simple_text_command = 0;
+
           enum command_id outer = current->parent->cmd;
           unsigned long outer_flags = command_data(outer).flags;
           unsigned long cmd_flags = command_data(cmd).flags;
 
           // much TODO here.
+
+          /* 409 "simple text commands" */
+          if ((outer_flags & CF_misc
+                    && (command_data(outer).data >= 0
+                        || (command_data(outer).data == MISC_line
+                            && !(outer_flags & (CF_def | CF_sectioning)))
+                        || command_data(outer).data == MISC_text)
+                    && outer != CM_center
+                    && outer != CM_exdent) // 423
+              || outer == CM_titlefont // 425
+              || outer == CM_anchor
+              || outer == CM_xref
+              || outer == CM_ref
+              || outer == CM_pxref
+              || outer == CM_inforef
+              || outer == CM_shortcaption
+              || outer == CM_math
+              || outer == CM_indicateurl
+              || outer == CM_email
+              || outer == CM_uref
+              || outer == CM_url
+              || outer == CM_image
+              || outer == CM_abbr
+              || outer == CM_acronym
+              || outer == CM_dmn
+              || (outer_flags & CF_index_entry_command) // 563
+              || (outer_flags & CF_block // 475
+                  && !(outer_flags & CF_def)
+                  && command_data(outer).data != BLOCK_raw
+                  && command_data(outer).data != BLOCK_conditional))
+            {
+              simple_text_command = 1;
+            }
 
           if (outer_flags & CF_root && current->type != ET_misc_line_arg)
             ok = 1; // 4242
@@ -1319,17 +1356,35 @@ value_invalid:
               if (cmd == CM_c || cmd == CM_comment)
                 ok = 1;
             }
-          else if ((outer_flags & CF_brace // full text
-                   && (command_data(outer).data == BRACE_style
-                       || (outer_flags & CF_inline)))
-                   || outer == CM_center // full line
+
+
+          else if (outer == CM_ctrl
+                   || outer == CM_errormsg)
+            {
+              ok = 0;
+            }
+          // 432 "full text commands"
+          else if ((outer_flags & CF_brace
+                     && ((outer_flags & CF_inline)
+                         || command_data(outer).data == BRACE_style))
+
+          // 445 "full line commands"
+                   || outer == CM_center
                    || outer == CM_exdent
                    || outer == CM_item
                    || outer == CM_itemx
+
                    || (!current->parent->cmd && current_context () == ct_def)
-                   || (outer_flags & (CF_sectioning | CF_def))) // full line
-                                                                // no refs
+
+          // 420 "full line no refs commands"
+                   || (outer_flags & (CF_sectioning | CF_def))
+          // 4261
+                   || (!current->parent->cmd && current_context () == ct_def)
+
+          // 409 "simple text commands"
+                   || simple_text_command)
             {
+              // "in full text commands".
               if (cmd_flags & (CF_brace | CF_nobrace)) // 370
                 ok = 1;
               else if (cmd == CM_c
@@ -1344,20 +1399,26 @@ value_invalid:
                 ok = 1;
               else if (cmd_flags & CF_format_raw)
                 ok = 1; // 379
+              if (cmd == CM_caption || cmd == CM_shortcaption)
+                ok = 0; // 381
+              if (cmd_flags & CF_block
+                  && command_data(cmd).data == BLOCK_conditional)
+                ok = 1; // 384
 
-              if (outer == CM_center
-                  || outer == CM_exdent
-                  || outer == CM_item
-                  || outer == CM_itemx) // full line commands 445
+              // 390 exceptions for all of "full line commands",
+              //     "full line commands no refs" and "simple text commands"
+             if (!(outer_flags & CF_brace
+                     && (command_data(outer).data == 1)))
                 {
-                  /* These are stricter than the "full text" commands
-                     about what they contain. */
                   if (cmd == CM_indent || cmd == CM_noindent)
                     ok = 0;
                 }
+
+              // 396 exceptions for "full line no refs" and "simple text"
               if (outer_flags & (CF_sectioning | CF_def)
-                   || (!current->parent->cmd && current_context () == ct_def))
-                // full line no refs 420
+                  // 4261
+                  || (!current->parent->cmd && current_context () == ct_def)
+                  || simple_text_command)
                 {
                   if (cmd == CM_titlefont
                       || cmd == CM_anchor
@@ -1366,68 +1427,16 @@ value_invalid:
                       || cmd == CM_indent || cmd == CM_noindent)
                     ok = 0;
                 }
-            }
 
-          /* 403 "commands that only accept simple text as an argument" */
-          else if ((outer_flags & CF_misc
-                    && (command_data(outer).data >= 0
-                        || (command_data(outer).data == MISC_line
-                            && !(outer_flags & (CF_def | CF_sectioning)))
-                        || command_data(outer).data == MISC_text)
-                    && outer != CM_center
-                    && outer != CM_exdent) // 423
-                   || outer == CM_titlefont // 425
-                   || outer == CM_anchor
-                   || outer == CM_xref
-                   || outer == CM_ref
-                   || outer == CM_pxref
-                   || outer == CM_inforef
-                   || outer == CM_shortcaption
-                   || outer == CM_math
-                   || outer == CM_indicateurl
-                   || outer == CM_email
-                   || outer == CM_uref
-                   || outer == CM_url
-                   || outer == CM_image
-                   || outer == CM_abbr
-                   || outer == CM_acronym
-                   || outer == CM_dmn
-                   || (outer_flags & CF_index_entry_command) // 563
-                   || (outer_flags & CF_block // 475
-                       && !(outer_flags & CF_def)
-                       && command_data(outer).data != BLOCK_raw
-                       && command_data(outer).data != BLOCK_conditional))
-            {
-              if (cmd_flags & (CF_brace | CF_nobrace)) // 370
-                ok = 1;
-              else if (cmd == CM_c
-                       || cmd == CM_comment
-                       || cmd == CM_refill
-                       || cmd == CM_noindent
-                       || cmd == CM_indent
-                       || cmd == CM_columnfractions
-                       || cmd == CM_set
-                       || cmd == CM_clear
-                       || cmd == CM_end) // 373
-                ok = 1;
-              if (cmd == CM_titlefont
-                  || cmd == CM_anchor
-                  || cmd == CM_footnote
-                  || cmd == CM_verb
-                  || cmd == CM_indent
-                  || cmd == CM_noindent) // 397
-                ok = 0;
-
-              if (cmd == CM_xref
-                  || cmd == CM_ref
-                  || cmd == CM_pxref
-                  || cmd == CM_inforef) // 404
-                ok = 0;
-            }
-          else if (outer == CM_ctrl
-                   || outer == CM_errormsg)
-            {
-              ok = 0;
+              // 405 exceptions for "simple text commands" only
+              if (simple_text_command)
+                {
+                  if (cmd == CM_xref
+                      || cmd == CM_ref
+                      || cmd == CM_pxref
+                      || cmd == CM_inforef) // 404
+                    ok = 0;
+                }
             }
           else
             {
