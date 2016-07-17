@@ -1280,7 +1280,7 @@ value_invalid:
         }
 
       /* 4233 invalid nestings */
-      if (current->parent && current->parent->cmd)
+      if (current->parent)
         {
           int ok = 0; /* Whether nesting is allowed. */
 
@@ -1299,16 +1299,6 @@ value_invalid:
                    || outer == CM_itemx
                    && current->type != ET_misc_line_arg)
             ok = 1; // 4252
-
-          else if (outer_flags & CF_index_entry_command)
-            {
-              // 563 in_simple_text_commands
-              if (cmd_flags & (CF_brace | CF_nobrace))
-                ok = 1;
-              if (cmd == CM_caption
-                  || cmd == CM_shortcaption)
-                ok = 0;
-            }
           else if (outer == CM_table
                    || outer == CM_vtable
                    || outer == CM_ftable)
@@ -1336,6 +1326,7 @@ value_invalid:
                    || outer == CM_exdent
                    || outer == CM_item
                    || outer == CM_itemx
+                   || (!current->parent->cmd && current_context () == ct_def)
                    || (outer_flags & (CF_sectioning | CF_def))) // full line
                                                                 // no refs
             {
@@ -1364,7 +1355,8 @@ value_invalid:
                   if (cmd == CM_indent || cmd == CM_noindent)
                     ok = 0;
                 }
-              if (outer_flags & (CF_sectioning | CF_def))
+              if (outer_flags & (CF_sectioning | CF_def)
+                   || (!current->parent->cmd && current_context () == ct_def))
                 // full line no refs 420
                 {
                   if (cmd == CM_titlefont
@@ -1400,6 +1392,7 @@ value_invalid:
                    || outer == CM_abbr
                    || outer == CM_acronym
                    || outer == CM_dmn
+                   || (outer_flags & CF_index_entry_command) // 563
                    || (outer_flags & CF_block // 475
                        && !(outer_flags & CF_def)
                        && command_data(outer).data != BLOCK_raw
@@ -1445,8 +1438,21 @@ value_invalid:
             }
 
           if (!ok)
-            invalid_parent = current->parent->cmd;
+            {
+              invalid_parent = current->parent->cmd;
+              if (!invalid_parent)
+                {
+                  /* current_context () == ct_def.  Find def block containing 
+                     command.  4258 */
+                  ELEMENT *d = current;
+                  while (d->parent
+                         && d->parent->type != ET_def_line)
+                    d = d->parent;
+                  invalid_parent = d->parent->parent->cmd;
+                }
+            }
         }
+
       /* 4274 */
       if (current_context () == ct_def && cmd == CM_NEWLINE)
         {
