@@ -141,6 +141,8 @@ extern size_t info_loaded_files_slots;
    return a NULL FILE_BUFFER *. */
 FILE_BUFFER *info_find_file (char *filename);
 
+FILE_BUFFER *check_loaded_file (char *filename);
+
 FILE_BUFFER *info_find_subfile (char *filename);
 
 TAG *info_create_tag (void);

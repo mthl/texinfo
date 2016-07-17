@@ -544,24 +544,17 @@ static void get_file_character_encoding (FILE_BUFFER *fb);
 static void forget_info_file (FILE_BUFFER *file_buffer);
 static void info_reload_file_buffer_contents (FILE_BUFFER *fb);
 
-/* Locate the file named by FILENAME, and return the information structure
-   describing this file.  The file may appear in our list of loaded files
-   already, or it may not.  If it does not already appear, find the file,
-   and add it to the list of loaded files.  If the file cannot be found,
-   return a NULL FILE_BUFFER *. */
+/* Try to find a file in our list of already loaded files. */
 FILE_BUFFER *
-info_find_file (char *filename)
+check_loaded_file (char *filename)
 {
-  int i;
+  int is_fullpath, i;
   FILE_BUFFER *file_buffer;
-  char *fullpath;
-  int is_fullpath;
   
   /* If full path to the file has been given, we must find it exactly. */
   is_fullpath = IS_ABSOLUTE (filename)
                 || filename[0] == '.' && IS_SLASH(filename[1]);
 
-  /* First try to find the file in our list of already loaded files. */
   if (info_loaded_files)
     {
       for (i = 0; (file_buffer = info_loaded_files[i]); i++)
@@ -601,11 +594,31 @@ info_find_file (char *filename)
             return file_buffer;
           }
     }
+  return 0;
+}
+
+/* Locate the file named by FILENAME, and return the information structure
+   describing this file.  The file may appear in our list of loaded files
+   already, or it may not.  If it does not already appear, find the file,
+   and add it to the list of loaded files.  If the file cannot be found,
+   return a NULL FILE_BUFFER *. */
+FILE_BUFFER *
+info_find_file (char *filename)
+{
+  FILE_BUFFER *file_buffer;
+  char *fullpath;
+  int is_fullpath;
+  
+  file_buffer = check_loaded_file (filename);
+  if (file_buffer)
+    return file_buffer;
 
   /* The file wasn't loaded.  Try to load it now. */
 
   /* Get the full pathname of this file, as known by the info system.
      That is to say, search along INFOPATH and expand tildes, etc. */
+  is_fullpath = IS_ABSOLUTE (filename)
+                || filename[0] == '.' && IS_SLASH(filename[1]);
   if (!is_fullpath)
     fullpath = info_find_fullpath (filename, 0);
   else

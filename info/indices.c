@@ -558,7 +558,7 @@ apropos_in_all_indices (char *search_string, int inform)
   for (dir_index = 0; dir_menu[dir_index]; dir_index++)
     {
       REFERENCE **this_index, *this_item;
-      FILE_BUFFER *this_fb;
+      FILE_BUFFER *this_fb, *loaded_file = 0;
 
       this_item = dir_menu[dir_index];
       if (!this_item->filename)
@@ -574,10 +574,13 @@ apropos_in_all_indices (char *search_string, int inform)
       if (i < dir_index)
         continue;
 
-      this_fb = info_find_file (this_item->filename);
+      this_fb = check_loaded_file (this_item->filename);
 
       if (!this_fb)
-        continue;
+        this_fb = loaded_file = info_find_file (this_item->filename);
+
+      if (!this_fb)
+        continue; /* Couldn't load file. */
 
       if (this_fb && inform)
         message_in_echo_area (_("Scanning indices of '%s'..."), this_item->filename);
@@ -602,9 +605,16 @@ apropos_in_all_indices (char *search_string, int inform)
           free (old_indices);
           }
         }
-      /* Try to avoid running out of memory */
-      free (this_fb->contents);
-      this_fb->contents = NULL;
+
+      /* Try to avoid running out of memory by not loading all of the
+         Info files on the system into memory.  This is risky because we
+         may have a pointer into the file buffer, so only free the contents
+         if we have just loaded the file. */
+      if (loaded_file)
+        {
+          free (loaded_file->contents);
+          loaded_file->contents = NULL;
+        }
     }
 
   /* Build a list of the references which contain SEARCH_STRING. */

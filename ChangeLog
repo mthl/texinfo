@@ -1,3 +1,11 @@
+2016-07-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (apropos_in_all_indices): Only free file buffer 
+	if we had to load it.  Otherwise the file buffer could still be 
+	referenced.  Fixes crash reported by "mtsio@cryptolab.net".
+	* info/nodes.c (check_loaded_file): Function split out from 
+	info_find_file.
+
 2016-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* dco/texinfo-tex-test.texi (Test of auxiliary files): Add test
