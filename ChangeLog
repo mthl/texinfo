@@ -1,5 +1,11 @@
 2016-07-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi) <root commands>: Initialize 
+	contents here, so it will always be set.
+	(_end_line) <root commands>: Don't set contents here.
+
+2016-07-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/indices.c (apropos_in_all_indices): Only free file buffer 
 	if we had to load it.  Otherwise the file buffer could still be 
 	referenced.  Fixes crash reported by "mtsio@cryptolab.net".

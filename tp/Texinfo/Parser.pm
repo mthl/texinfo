@@ -3385,7 +3385,6 @@ sub _end_line($$$)
     } elsif ($root_commands{$command}) {
       $current = $current->{'contents'}->[-1];
       delete $current->{'remaining_args'};
-      $current->{'contents'} = [];
 
       # associate the section (not part) with the current node.
       if ($command ne 'node' and $command ne 'part') {
@@ -4562,6 +4561,9 @@ sub _parse_texi($;$)
                     = $self->{'sections_level'};
                 }
                 $misc->{'level'} = _section_level($misc);
+              }
+              if ($root_commands{$command}) {
+                $misc->{'contents'} = [];
               }
               # def*x
               if ($def_commands{$command}) {

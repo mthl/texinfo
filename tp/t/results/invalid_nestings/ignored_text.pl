@@ -34,6 +34,7 @@ $result_trees{'ignored_text'} = {
         }
       ],
       'cmdname' => 'node',
+      'contents' => [],
       'extra' => {
         'spaces_after_command' => {}
       },
