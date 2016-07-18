@@ -1,3 +1,8 @@
+2016-07-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <misc commands>: Add 
+	condition on call to _register_global_command.
+
 2016-07-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi) <root commands>: Initialize 
