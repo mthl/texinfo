@@ -221,10 +221,40 @@ handle_misc_command (ELEMENT *current, char **line_inout,
   /* noarg 4312 */
   if (arg_spec == MISC_noarg)
     {
-      // TODO
-      misc = new_element (ET_NONE);
-      misc->cmd = cmd;
-      add_to_element_contents (current, misc);
+      int ignored = 0;
+      int only_in_headings = 0;
+      if (cmd == CM_insertcopying)
+        {
+          ELEMENT *p = current;
+          while (p)
+            {
+              if (p->cmd == CM_copying)
+                {
+                  line_error ("@%s not allowed inside `@copying' block",
+                              command_name(cmd));
+                  ignored = 1;
+                  break;
+                }
+              p = p->parent;
+            }
+        }
+      else if (command_data(cmd).flags & CF_in_heading)
+        {
+          line_error ("@%s should only appear in heading or footing",
+                      command_name(cmd));
+          only_in_headings = 1;
+        }
+
+      if (!ignored)
+        {
+          misc = new_element (ET_NONE);
+          misc->cmd = cmd;
+          add_to_element_contents (current, misc);
+          if (only_in_headings)
+            add_extra_string (misc, "invalid_nesting", "1");
+          register_global_command (cmd, misc);
+        }
+      mark_and_warn_invalid (cmd, invalid_parent, misc);
       if (close_preformatted_command(cmd))
         current = begin_preformatted (current);
     }
@@ -673,7 +703,8 @@ handle_misc_command (ELEMENT *current, char **line_inout,
   // 4622
   mark_and_warn_invalid (cmd, invalid_parent, misc);
 
-  register_global_command (cmd, misc);
+  if (misc)
+    register_global_command (cmd, misc);
 
 funexit:
   *line_inout = line;
