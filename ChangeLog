@@ -1,5 +1,11 @@
 2016-07-20  Masamichi Hosoda  <trueroad@trueroad.jp>
 
+	* doc/texinfo.tex:
+	Add XeTeX `dvipdfmx:config' special
+	for avoiding PDF destination name replacement.
+
+2016-07-20  Masamichi Hosoda  <trueroad@trueroad.jp>
+
 	* doc/texinfo.tex (\pdfdest):
 	Fix XeTeX PDF destination.
 
