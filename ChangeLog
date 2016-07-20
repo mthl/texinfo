@@ -1,3 +1,8 @@
+2016-07-20  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\pdfdest):
+	Fix XeTeX PDF destination.
+
 2016-07-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi) <misc commands>: Add 
