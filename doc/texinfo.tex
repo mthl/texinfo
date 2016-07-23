@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-07-20.14}
+\def\texinfoversion{2016-07-23.13}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -3297,8 +3297,6 @@ end
 \let\atchar=\@
 
 % @{ @} @lbracechar{} @rbracechar{} all generate brace characters.
-% Unless we're in typewriter, use \ecfont because the CM text fonts do
-% not have braces, and we don't want to switch into math.
 \def\mylbrace{{\ifmonospace\char123\else\ensuremath\lbrace\fi}}
 \def\myrbrace{{\ifmonospace\char125\else\ensuremath\rbrace\fi}}
 \let\{=\mylbrace \let\lbracechar=\{
@@ -3309,8 +3307,6 @@ end
   \catcode`\{ = \other \catcode`\} = \other
   \catcode`\[ = 1 \catcode`\] = 2
   \catcode`\! = 0 \catcode`\\ = \other
-  !gdef!lbracecmd[\{]%
-  !gdef!rbracecmd[\}]%
   !gdef!lbraceatcmd[@{]%
   !gdef!rbraceatcmd[@}]%
 !endgroup
@@ -4818,15 +4814,13 @@ end
 %
 \def\indexdummies{%
   \escapechar = `\\     % use backslash in output files.
-  \def\@{@}% change to @@ when we switch to @ as escape char in index files.
+  \definedummyletter\@%
   \def\ {\realbackslash\space }%
   %
   % Need these unexpandable (because we define \tt as a dummy)
   % definitions when @{ or @} appear in index entry text.  Also, more
   % complicated, when \tex is in effect and \{ is a \delimiter again.
-  % We can't use \lbracecmd and \rbracecmd because texindex assumes
-  % braces and backslashes are used only as delimiters.  Perhaps we
-  % should use @lbracechar and @rbracechar?
+  % Perhaps we should use @lbracechar and @rbracechar?
   \def\{{{\tt\char123}}%
   \def\}{{\tt\char125}}%
   %

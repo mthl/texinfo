@@ -374,7 +374,7 @@ the start of a page.
 \entry {\code {pdfetex}}{167}
 \entry {\code {pdftex}}{176}
 \entry {\code {pdftex\r {, and images}}}{97}
-\entry {\code {pdftexi2dvi}}{166}
+\entry {\code {pdftxei2dvi}}{166}
 \entry {Period in node name}{37}
 \entry {Periods, inserting}{111}
 \entry {Perl format strings for translation}{199}
@@ -500,7 +500,7 @@ doesn't start with an initial.
 \entry {\code {pdfetex}}{167}
 \entry {\code {pdftex}}{176}
 \entry {\code {pdftex\r {, and images}}}{97}
-\entry {\code {pdftexi2dvi}}{166}
+\entry {\code {pdftxei2dvi}}{166}
 \entry {Period in node name}{37}
 \entry {Periods, inserting}{111}
 \entry {Perl format strings for translation}{199}
@@ -937,6 +937,23 @@ ffff\arg\ggggg
 @set definedafter Defining this again
 
 @printindex ax
+
+@section Test of macros with @samp{@@} in index
+
+@defindex BB
+
+@macro Mac {arg}
+\arg\@}
+@end macro
+
+@macro MacTwo {arg}
+@{@}
+@end macro
+
+@BBindex @Mac{CCCC @@}
+
+@BBindex @MacTwo{DDDD @@}
+@printindex BB
 
 
 @chapter @code{@@set} and @code{@@value}
