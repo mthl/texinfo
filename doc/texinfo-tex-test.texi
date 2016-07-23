@@ -1079,6 +1079,10 @@ For PDF output, check the bookmarks pane in the reader.
 
 @section --- @"Ubersicht
 
+@section @{ @} @@ @{@ @}
+
+This section should be called ``@{ @} @@ @{ @}''.
+
 
 
 @chapter PDF link colours

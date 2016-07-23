@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-07-23.13}
+\def\texinfoversion{2016-07-23.14}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -3297,19 +3297,10 @@ end
 \let\atchar=\@
 
 % @{ @} @lbracechar{} @rbracechar{} all generate brace characters.
-\def\mylbrace{{\ifmonospace\char123\else\ensuremath\lbrace\fi}}
-\def\myrbrace{{\ifmonospace\char125\else\ensuremath\rbrace\fi}}
-\let\{=\mylbrace \let\lbracechar=\{
-\let\}=\myrbrace \let\rbracechar=\}
-\begingroup
-  % Definitions to produce \{ and \} commands for indices,
-  % and @{ and @} for the aux/toc files.
-  \catcode`\{ = \other \catcode`\} = \other
-  \catcode`\[ = 1 \catcode`\] = 2
-  \catcode`\! = 0 \catcode`\\ = \other
-  !gdef!lbraceatcmd[@{]%
-  !gdef!rbraceatcmd[@}]%
-!endgroup
+\def\lbracechar{{\ifmonospace\char123\else\ensuremath\lbrace\fi}}
+\def\rbracechar{{\ifmonospace\char125\else\ensuremath\rbrace\fi}}
+\let\{=\lbracechar
+\let\}=\rbracechar
 
 % @comma{} to avoid , parsing problems.
 \let\comma = ,
@@ -4815,14 +4806,11 @@ end
 \def\indexdummies{%
   \escapechar = `\\     % use backslash in output files.
   \definedummyletter\@%
-  \def\ {\realbackslash\space }%
+  \definedummyletter\ %
   %
-  % Need these unexpandable (because we define \tt as a dummy)
-  % definitions when @{ or @} appear in index entry text.  Also, more
-  % complicated, when \tex is in effect and \{ is a \delimiter again.
-  % Perhaps we should use @lbracechar and @rbracechar?
-  \def\{{{\tt\char123}}%
-  \def\}{{\tt\char125}}%
+  % For texindex which always views { and } as separators.
+  \def\{{\lbracechar}%
+  \def\}{\rbracechar}%
   %
   % Do the redefinitions.
   \definedummies
@@ -4830,16 +4818,11 @@ end
 
 % Used for the aux and toc files, where @ is the escape character.
 %
-% For the aux and toc files, @ is the escape character.  So we want to
-% redefine everything using @ as the escape character (instead of
-% \realbackslash, still used for index files).  When everything uses @,
-% this will be simpler.
-%
 \def\atdummies{%
-  \def\@{@@}%
-  \def\ {@ }%
-  \let\{ = \lbraceatcmd
-  \let\} = \rbraceatcmd
+  \definedummyletter\@%
+  \definedummyletter\ %
+  \definedummyletter\{%
+  \definedummyletter\}%
   %
   % Do the redefinitions.
   \definedummies

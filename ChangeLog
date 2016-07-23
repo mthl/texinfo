@@ -3,7 +3,12 @@
 	* doc/texinfo.tex (\indexdummies): Use \definedummyletter\@ 
 	instead of outputting "@@" as "@" in index file.
 	(\mylbrace, \myrbrace): Remove out-of-date comment.
-	(\rbracecmd, \lbracecmd): Remove unused macros.
+	(\rbracecmd, \lbracecmd, \rbraceatcmd, \lbraceatcmd):
+	Remove unused macros.
+	(\atdummies): Use \definedummyletter for \{ and \} instead of 
+	using \lbraceatcmd and \rbraceatcmd.
+	(\atdummies, \indexdummies): Use \definedummyletter for 
+	\(SPACE).
 
 	* doc/texinfo-tex-test.texi (Test of macros with @ in index): 
 	New test.
