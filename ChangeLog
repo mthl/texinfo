@@ -1,3 +1,9 @@
+2016-07-27  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex:
+	Improve some Unicode and XeTeX, LuaTeX related comments
+	by Werner Lemberg's suggestion.
+
 2016-07-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\indexdummies): Use \definedummyletter\@ 
