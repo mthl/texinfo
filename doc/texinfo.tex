@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-07-27.14}
+\def\texinfoversion{2016-07-28.13}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -1566,7 +1566,7 @@ output) for that.)}
   %
   % Emulate pdfTeX primitive
   \def\pdfdest name#1 xyz{%
-    \special{pdf:dest (name#1) [@thispage /XYZ @xpos @ypos null]}%
+    \special{pdf:dest (#1) [@thispage /XYZ @xpos @ypos null]}%
   }
   \def\pdfmkdest#1{{%
     % We have to set dummies so commands such as @code, and characters
@@ -1599,7 +1599,7 @@ output) for that.)}
       \txiescapepdf\pdfoutlinetext
       %
       \special{pdf:out [-] #2 << /Title (\pdfoutlinetext) /A
-        << /S /GoTo /D (name\pdfoutlinedest) >> >> }%
+        << /S /GoTo /D (\pdfoutlinedest) >> >> }%
     }
   }
   %
@@ -1713,7 +1713,7 @@ output) for that.)}
     {\noexpand\pdflink{\the\toksC}}\toksC={}\global\countA=0}
   \def\pdflink#1{%
     \special{pdf:bann << /Border [0 0 0]
-      /Type /Annot /Subtype /Link /A << /S /GoTo /D (name#1) >> >>}%
+      /Type /Annot /Subtype /Link /A << /S /GoTo /D (#1) >> >>}%
     \setcolor{\linkcolor}#1\endlink}
   \def\done{\edef\st{\global\noexpand\toksA={\the\toksB}}\st}
 %
@@ -8876,10 +8876,10 @@ end
          % this command line option is no longer necessary
          % because we can use the `dvipdfmx:config' special.
          \special{pdf:bann << /Border [0 0 0] /Type /Annot /Subtype /Link /A
-           << /S /GoToR /F (\the\filename.pdf) /D (name\pdfxrefdest) >> >>}%
+           << /S /GoToR /F (\the\filename.pdf) /D (\pdfxrefdest) >> >>}%
        \else
          \special{pdf:bann << /Border [0 0 0] /Type /Annot /Subtype /Link /A
-           << /S /GoTo /D (name\pdfxrefdest) >> >>}%
+           << /S /GoTo /D (\pdfxrefdest) >> >>}%
        \fi
       }%
       \setcolor{\linkcolor}%

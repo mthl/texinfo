@@ -1,3 +1,9 @@
+2016-07-28  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex:
+	(\pdfdest, \dopdfoutline, \pdflink, \xrefX):
+	Fix XeTeX PDF destination name for consistent with pdfTeX.
+
 2016-07-27  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex:
