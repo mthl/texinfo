@@ -956,6 +956,21 @@ ffff\arg\ggggg
 @printindex BB
 
 
+@section Test of @code{@@synindex}
+
+@defindex foo
+@defindex bar
+
+@synindex foo bar
+
+@fooindex One
+@barindex Two
+
+Should be two entries, not one below.
+
+@printindex bar
+
+
 @chapter @code{@@set} and @code{@@value}
 
 @section Another test of @t{@@value}
