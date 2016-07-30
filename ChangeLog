@@ -1,4 +1,23 @@
-2016-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove --javascript-ref option, because nobody is using it.
+
+	* tp/texi2any.pl ($result_options): Remove option 
+	--javascript-ref.
+	($cmdline_options): Remove value 'JAVASCRIPT_REFS'.
+	* tp/Texinfo/Convert/HTML.pm
+	(default_javascript_lines): Remove function.
+	(%default_formatting_references): Remove 'javascript_lines'.
+	(output): Don't call default_javascript_lines.
+	(_file_header_informations): Don't use 'JAVASCRIPT_LINES' conf 
+	value.
+	(_default_begin_file, default_node_redirection_page): Don't 
+	include lines referring to a JavaScript file in the file header.
+	* tp/Texinfo/Common.pm (@variable_string_settables): Remove
+	'JAVASCRIPT_LINES'.
+	(@variable_other_settables): Remove 'JAVASCRIPT_REFS'.
+
+2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Common.pm (%block_commands, %block_item_commands)
 	(%item_line_commands): Remove 'ktable'.

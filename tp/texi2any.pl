@@ -117,10 +117,8 @@ my ($real_command_name, $command_directory, $command_suffix)
 # command line parsing.
 my @css_files = ();
 my @css_refs = ();
-my @javascript_refs = ();
 my $cmdline_options = { 'CSS_FILES' => \@css_files,
-                        'CSS_REFS' => \@css_refs,
-                        'JAVASCRIPT_REFS' => \@javascript_refs };
+                        'CSS_REFS' => \@css_refs };
 
 # determine the path separators
 my $path_separator = $Config{'path_sep'};
@@ -977,7 +975,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2016";
  },
  'css-include=s' => \@css_files,
  'css-ref=s' => \@css_refs,
- 'javascript-ref=s' => \@javascript_refs,
  'transliterate-file-names!' => 
      sub {set_from_cmdline('TRANSLITERATE_FILE_NAMES', $_[1]);},
  'error-limit|e=i' => sub { set_from_cmdline('ERROR_LIMIT', $_[1]); },

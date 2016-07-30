@@ -31,7 +31,6 @@ See the manual for detailed information.
     support file doc/txi-ja.tex for Japanese.
 
 * texi2any:
-  . New option `--javascript-ref'.  (TODO: Add documentation.)
   . Fix handling of compiler options when building Perl extension modules.
 
 * texi2dvi:

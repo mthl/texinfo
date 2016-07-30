@@ -4566,7 +4566,6 @@ my %default_formatting_references = (
      'comment' => \&_default_comment,
      'protect_text' => \&_default_protect_text,
      'css_lines' => \&_default_css_lines,
-     'javascript_lines' => \&_default_javascript_lines,
      'begin_file' => \&_default_begin_file, 
      'node_redirection_page' => \&_default_node_redirection_page, 
      'end_file' => \&_default_end_file, 
@@ -5029,24 +5028,6 @@ sub _prepare_css($)
   }
   $self->{'css_import_lines'} = \@css_import_lines;
   $self->{'css_rule_lines'} = \@css_rule_lines;
-}
-
-# Set 'JAVASCRIPT_LINES' conf value with text containing a reference to
-# an external JavaScript file.
-sub _default_javascript_lines ($)
-{
-  my $self = shift;
-
-  my $javascript_refs = $self->get_conf('JAVASCRIPT_REFS');
-  return if (!$javascript_refs or !@$javascript_refs);
-
-  my $javascript_text = '';
-  foreach my $script (@$javascript_refs) {
-    $javascript_text
-                .= '<script type="text/javascript" '
-                .  'src="' . $script . '"></script>' ."\n";
-  }
-  $self->set_conf('JAVASCRIPT_LINES', $javascript_text);
 }
 
 sub _node_id_file($$)
@@ -6268,12 +6249,6 @@ sub _file_header_informations($$)
   } else {
     $css_lines = '';
   }
-  my $javascript_lines;
-  if (defined($self->get_conf('JAVASCRIPT_LINES'))) {
-    $javascript_lines = $self->get_conf('JAVASCRIPT_LINES');
-  } else {
-    $javascript_lines = '';
-  }
   my $doctype = $self->get_conf('DOCTYPE');
   my $bodytext = $self->get_conf('BODYTEXT');
   my $copying_comment = '';
@@ -6293,8 +6268,8 @@ sub _file_header_informations($$)
     $generator = "\n<meta name=\"Generator\" content=\"$program\">";
   }
 
-  return ($title, $description, $encoding, $date, $css_lines,
-    $javascript_lines, $doctype, $bodytext, $copying_comment, $after_body_open,
+  return ($title, $description, $encoding, $date, $css_lines, 
+          $doctype, $bodytext, $copying_comment, $after_body_open,
           $extra_head, $program_and_version, $program_homepage,
           $program, $generator);
 }
@@ -6338,7 +6313,7 @@ sub _default_begin_file($$$)
     $command = $self->element_command($element);
   }
 
-  my ($title, $description, $encoding, $date, $css_lines, $javascript_lines,
+  my ($title, $description, $encoding, $date, $css_lines, 
           $doctype, $bodytext, $copying_comment, $after_body_open,
           $extra_head, $program_and_version, $program_homepage,
           $program, $generator) = $self->_file_header_informations($command);
@@ -6356,7 +6331,7 @@ $description
 <meta name=\"resource-type\" content=\"document\">
 <meta name=\"distribution\" content=\"global\">${generator}$date
 $encoding
-${links}$css_lines$javascript_lines
+${links}$css_lines
 $extra_head
 </head>
 
@@ -6371,7 +6346,7 @@ sub _default_node_redirection_page($$)
   my $self = shift;
   my $command = shift;
 
-  my ($title, $description, $encoding, $date, $css_lines, $javascript_lines,
+  my ($title, $description, $encoding, $date, $css_lines,
           $doctype, $bodytext, $copying_comment, $after_body_open,
           $extra_head, $program_and_version, $program_homepage,
           $program, $generator) = $self->_file_header_informations($command);
@@ -6394,7 +6369,7 @@ $description
 <meta name=\"resource-type\" content=\"document\">
 <meta name=\"distribution\" content=\"global\">${generator}$date
 $encoding
-$css_lines$javascript_lines
+$css_lines
 <meta http-equiv=\"Refresh\" content=\"0; url=$href\">
 $extra_head
 </head>
@@ -6880,7 +6855,6 @@ sub output($$)
   return undef unless($structure_status);
 
   &{$self->{'format_css_lines'}}($self);
-  &{$self->{'format_javascript_lines'}}($self);
 
   $self->set_conf('BODYTEXT',
                   'lang="' . $self->get_conf('documentlanguage') . '"');
