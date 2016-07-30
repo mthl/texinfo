@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-07-28.13}
+\def\texinfoversion{2016-07-30.16}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -4773,14 +4773,7 @@ end
 % #1 is \doindex or \docodeindex, #2 the index getting redefined (foo),
 % #3 the target index (bar).
 \def\dosynindex#1#2#3{%
-  % Only do \closeout if we haven't already done it, else we'll end up
-  % closing the target index.
-  \expandafter \ifx\csname donesynindex#2\endcsname \relax
-    % The \closeout helps reduce unnecessary open files; the limit on the
-    % Acorn RISC OS is a mere 16 files.
-    \expandafter\closeout\csname#2indfile\endcsname
-    \expandafter\let\csname donesynindex#2\endcsname = 1
-  \fi
+  \requireopenindexfile{#3}%
   % redefine \fooindfile:
   \expandafter\let\expandafter\temp\expandafter=\csname#3indfile\endcsname
   \expandafter\let\csname#2indfile\endcsname=\temp
