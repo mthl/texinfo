@@ -1,5 +1,9 @@
 2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/refcard/txicmdcheck: Ignore @setcontentsaftertitlepage.
+
+2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo-tex-test.texi (Test of @synindex): Add section.
 
 2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
