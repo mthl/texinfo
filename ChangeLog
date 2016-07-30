@@ -1,5 +1,9 @@
 2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\ktable): Remove.
+
+2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\dosynindex): Call \requireopenindexfile so 
 	that we copy a working file descriptor for the index.  Remove code
 	that closes the file for the index getting redefined.  Fixes 

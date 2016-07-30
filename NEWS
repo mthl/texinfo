@@ -12,8 +12,6 @@ See the manual for detailed information.
 
 -------------------------------------------------------------------------------
 * Language:
-  . New command `@ktable' for a table with entries added to the keystroke
-    index automatically.
   . The commands `@setcontentsaftertitlepage' and
     `@setshortcontentsaftertitlepage' have been removed.
   . @-commands are no longer supported within `@errormsg'.
