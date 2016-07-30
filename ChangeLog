@@ -1,6 +1,9 @@
 2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/refcard/txicmdcheck: Ignore @setcontentsaftertitlepage.
+	* doc/refcard/txivarcheck: Ignore HTMLXREF.
+	* doc/texinfo.texi (Customization Variables for @-Commands): Remove
+	@setcontentsaftertitlepage.
 
 2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
 

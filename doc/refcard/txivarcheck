@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 # $Id$
-# Copyright 2012, 2013 Free Software Foundation, Inc.
+# Copyright 2012, 2013, 2016 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -129,6 +129,7 @@ sub read_tp {
     next if ($where eq 'variable_other_settables'
              || $where eq 'parser_options');
     next if $var eq "OUTPUT_PERL_ENCODING";  # not for users
+    next if $var eq "HTMLXREF";  # not documented
     
     # these are documented, but their lowercase names don't match
     # everything 
