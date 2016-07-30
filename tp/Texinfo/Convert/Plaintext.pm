@@ -170,7 +170,6 @@ my %item_indent_format_length = ('enumerate' => 2,
     'table' => 0,
     'vtable' => 0,
     'ftable' => 0,
-    'ktable' => 0,
  );
 
 my $indent_length = 5;

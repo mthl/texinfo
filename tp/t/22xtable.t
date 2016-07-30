@@ -205,21 +205,6 @@ Double quotation
 @itemx in itemx
 @end table
 '],
-['ktable',
-'@ktable @kbd
-@item C-y
-yyy
-@item C-z
-zzz
-@end ktable
-
-@vtable @code
-@item y
-yyy
-@item z
-zzz
-@end vtable
-'],
 );
 
 my @test_invalid = (

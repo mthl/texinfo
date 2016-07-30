@@ -955,13 +955,17 @@ sub split_by_section($)
   return $elements;
 }
 
-# associate elements to pages according to the splitting specification.
+# Associate top-level elements with pages according to the splitting 
+# specification.  Set 'first_in_page' on each top-level element to the element 
+# that is the first in the output page.
 sub split_pages ($$)
 {
   my $elements = shift;
   my $split = shift;
 
   return undef if (!$elements or !@$elements);
+
+  warn "SPLIT BY $split";
 
   my $split_level;
   if (!$split) {

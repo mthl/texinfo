@@ -719,7 +719,6 @@ our %command_index;
 
 $command_index{'vtable'} = 'vr';
 $command_index{'ftable'} = 'fn';
-$command_index{'ktable'} = 'ky';
 
 foreach my $index_type (keys %index_type_def) {
   foreach my $def (@{$index_type_def{$index_type}}) {
@@ -816,7 +815,7 @@ $block_commands{'ifcommanddefined'} = 'conditional';
 $block_commands{'ifcommandnotdefined'} = 'conditional';
 
 # 'macro' ?
-foreach my $block_command_one_arg('table', 'ftable', 'vtable', 'ktable',
+foreach my $block_command_one_arg('table', 'ftable', 'vtable',
   'itemize', 'enumerate', 'quotation', 'smallquotation') {
   $block_commands{$block_command_one_arg} = 1;
   $block_item_commands{$block_command_one_arg} = 1 
@@ -854,7 +853,7 @@ foreach my $item_container_command ('itemize', 'enumerate') {
   $item_container_commands{$item_container_command} = 1;
 }
 our %item_line_commands;
-foreach my $item_line_command ('table', 'ftable', 'vtable', 'ktable') {
+foreach my $item_line_command ('table', 'ftable', 'vtable') {
   $item_line_commands{$item_line_command} = 1;
 }
 

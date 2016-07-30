@@ -1,3 +1,18 @@
+2016-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (%block_commands, %block_item_commands)
+	(%item_line_commands): Remove 'ktable'.
+	(%command_index): Remove 'ktable'.
+	* tp/Texinfo/Parser.pm (module documentation part): Remove @ktable.
+	* tp/Texinfo/Convert/HTML.pm (%default_commands_conversion):
+	Remove conversion for @ktable.
+	(_convert_before_item_type): Add 'ktable' to a condition.
+	* tp/Texinfo/Convert/Plaintext.pm (%item_indent_format_length):
+	Remove 'ktable'.
+	* tp/t/22xtable.t (ktable): Remove test.
+
+	@ktable is being removed because nobody wants it anymore.
+
 2016-07-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* NEWS: Remove @ktable.
