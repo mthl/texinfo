@@ -1,5 +1,18 @@
 2016-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\balancecolumns): Reduce height limit for 
+	splitting the final double-column material.  Remove glue from 
+	bottom of both left and right columns when comparing heights.
+	Compare heights of columns differently.  When not making the 
+	bottoms of the two columns flush, use the obtained height of the 
+	taller left column for the height of both columns.  (Otherwise, 
+	an overful column box could overlap material below.  An example 
+	of broken formatting due to this was reported in the AucTeX manual
+	by Arash Esbati.
+	Change some comments and edit for clarity.
+
+2016-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/Makefile.am (TXI_XLATE): Add txi-ja.tex.
 	(EXTRA_DIST): Add texinfo-ja.tex and short-sample-ja.tex.
 
