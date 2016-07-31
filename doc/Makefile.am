@@ -40,7 +40,7 @@ EXTRA_DIST = epsf.tex texinfo.tex \
              fdl.texi \
 	     $(man_MANS) $(TXI_XLATE) \
              $(refcard_files) texinfo-tex-test.texi \
-             texinfo-ja.tex short-sample-ja.tex
+             texinfo-ja.tex short-sample-ja.texi
 
 if INSTALL_WARNINGS
 install-data-local:
