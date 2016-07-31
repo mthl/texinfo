@@ -1,5 +1,10 @@
 2016-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/Makefile.am (TXI_XLATE): Add txi-ja.tex.
+	(EXTRA_DIST): Add texinfo-ja.tex and short-sample-ja.tex.
+
+2016-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\printindex): Set catcode of @ to 12 instead 
 	of 11 so that e.g. "\@math" is not viewed all as one control 
 	sequence when it should begin with the control letter "\@".
