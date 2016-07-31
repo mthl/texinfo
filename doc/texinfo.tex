@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-07-30.17}
+\def\texinfoversion{2016-07-31.07}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -5392,7 +5392,7 @@ end
   % \initial {@}
   % as its first line, TeX doesn't complain about mismatched braces
   % (because it thinks @} is a control sequence).
-  \catcode`\@ = 11
+  \catcode`\@ = 12
   % See comment in \requireopenindexfile.
   \def\indexname{#1}\ifx\indexname\indexisfl\def\indexname{f1}\fi
   \openin 1 \jobname.\indexname s
