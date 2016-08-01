@@ -1,3 +1,11 @@
+2016-08-01  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex
+	(\rgbDarkRed, \rgbBlack, \setcolor, \maincolor, \thiscolor)
+	(\lastcolordefs, \makefootline, \makeheadline):
+	Copy from the definition for pdfTeX.
+	(\pdfsetcolor): Add XeTeX PDF color support.
+
 2016-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\balancecolumns): Reduce height limit for 
