@@ -1,3 +1,10 @@
+2016-08-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line) <"misc text" commands>:
+	Convert @@, @} and @{ commands, so there is a way to include 
+	these characters in filenames.  (Previously this was done by the
+	Texinfo::Convert::Text module.)
+
 2016-08-01  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex

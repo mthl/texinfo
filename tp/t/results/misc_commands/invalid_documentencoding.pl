@@ -335,8 +335,8 @@ $result_trees{'invalid_documentencoding'} = {
           ],
           'cmdname' => 'documentencoding',
           'extra' => {
-            'missing_argument' => 1,
-            'spaces_after_command' => {}
+            'spaces_after_command' => {},
+            'text_arg' => '@'
           },
           'line_nr' => {
             'file_name' => '',
@@ -663,13 +663,22 @@ $result_errors{'invalid_documentencoding'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':9: bad argument to @documentencoding: @@
+    'error_line' => ':9: warning: encoding `@\' is not a canonical texinfo encoding
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'bad argument to @documentencoding: @@',
-    'type' => 'error'
+    'text' => 'encoding `@\' is not a canonical texinfo encoding',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':9: warning: unrecognized encoding name `@\'
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => 'unrecognized encoding name `@\'',
+    'type' => 'warning'
   },
   {
     'error_line' => ':10: bad argument to @documentencoding: AAA@TeX{}

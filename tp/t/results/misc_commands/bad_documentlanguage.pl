@@ -137,7 +137,7 @@ $result_trees{'bad_documentlanguage'} = {
       'cmdname' => 'documentlanguage',
       'extra' => {
         'spaces_after_command' => {},
-        'text_arg' => 'en'
+        'text_arg' => 'en '
       },
       'line_nr' => {},
       'parent' => {}

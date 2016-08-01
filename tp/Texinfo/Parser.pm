@@ -3100,19 +3100,25 @@ sub _end_line($$$)
     } elsif ($self->{'misc_commands'}->{$command} eq 'text') {
       my $text = '';
       my $superfluous_arg = 0;
-      if (defined $current->{'args'}->[0]->{'contents'}) {
-        my @contents = @{$current->{'args'}->[0]->{'contents'}};
-        _trim_spaces_comment_from_content (\@contents);
-        if (scalar(@contents) > 1
-            or scalar(@contents) == 1
-               and not defined $contents[0]->{'text'}) {
-          # Too many arguments or @-commands used in argument.
-          $superfluous_arg = 1; # Used below to issue an error message.
+      my @contents = @{$current->{'args'}->[0]->{'contents'}};
+      _trim_spaces_comment_from_content (\@contents);
+      for my $c (@contents) {
+        # Allow @@, @{ and @} to give a way for @, { and } to appear in
+        # filenames (although it's not a good idea to use these characters
+        # in filenames).
+        if ($c->{'text'}) {
+          $text .= $c->{'text'};
+        } elsif ($c->{'cmdname'} and $c->{'cmdname'} eq '@') {
+          $text .= '@';
+        } elsif ($c->{'cmdname'} and $c->{'cmdname'} eq '{') {
+          $text .= '{';
+        } elsif ($c->{'cmdname'} and $c->{'cmdname'} eq '}') {
+          $text .= '}';
+        } else {
+          $superfluous_arg = 1;
         }
-        $text = $contents[0]->{'text'}
-          if defined $contents[0]->{'text'};
       }
-      if (not defined $text or $text eq '') {
+      if ($text eq '') {
         if (not $superfluous_arg) {
           $self->_command_warn($current, $line_nr, 
                                $self->__("\@%s missing argument"), $command);

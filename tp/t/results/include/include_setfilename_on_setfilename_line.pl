@@ -98,7 +98,7 @@ $result_trees{'include_setfilename_on_setfilename_line'} = {
               'extra' => {
                 'invalid_nesting' => 1,
                 'spaces_after_command' => {},
-                'text_arg' => 'other file'
+                'text_arg' => 'other file '
               },
               'line_nr' => {},
               'parent' => {}
@@ -111,7 +111,7 @@ $result_trees{'include_setfilename_on_setfilename_line'} = {
       'cmdname' => 'setfilename',
       'extra' => {
         'spaces_after_command' => {},
-        'text_arg' => 'file'
+        'text_arg' => 'file '
       },
       'line_nr' => {},
       'parent' => {}
