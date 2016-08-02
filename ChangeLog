@@ -1,3 +1,9 @@
+2016-08-02  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\urlcolor, \linkcolor, \endlink):
+	Fix XeTeX PDF color support
+	by copying from the definition for pdfTeX.
+
 2016-08-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_end_line) <"misc text" commands>:
