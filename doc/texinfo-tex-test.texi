@@ -865,6 +865,22 @@ index.  All index material should fit on the page within the margins.
 \finishindex
 
 
+@section Test of index widow elimination
+
+First time shows without widow elimination.  Second time shows it with
+(uses @file{texinfo-tex-test.WIDOWs} file).  For test to work properly,
+@code{ordm} should be a widow in the first case, and not in the second 
+case.
+
+@commenceindex
+\input texinfo-tex-test.WIDOWs
+\finishindex
+
+
+@page
+
+@printindex WIDOW
+
 
 @section Non-alphanumeric Index Initials
 

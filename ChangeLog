@@ -1,5 +1,11 @@
 2016-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo-tex-test.texi (Test of index widow elimination):
+	New test.
+	* doc/texinfo-tex-test.WIDOWs: Add file used in test.
+
+2016-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\indexdummies): Put "{}" after use of 
 	\lbracechar and \rbracechar in index in order to avoid 
 	whitespace following a @{ or @} command in an index being lost 
