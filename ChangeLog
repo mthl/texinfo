@@ -1,3 +1,11 @@
+2016-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\balancecolumns) <right-hand column higher>:
+	Use height of right-hand column to avoid possibly overlapping
+	following text.
+	(\indexwidowpenalty): Rename from \indexwidowpenalty.
+	(\documentencoding): Change the spelling of a word in a message.
+	
 2016-08-03  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex (\pdfmkdest):
