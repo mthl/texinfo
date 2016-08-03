@@ -1,3 +1,11 @@
+2016-08-03  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\xref):
+	Fix XeTeX PDF destination names when \txiuseunicodedestnamefalse.
+	In order to replace Unicode characters with ASCII,
+	it is necessary that \edef\pdfxrefdest{#1} is
+	before \turnoffactive.
+
 2016-08-02  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex (\urlcolor, \linkcolor, \endlink):
