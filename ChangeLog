@@ -1,5 +1,12 @@
 2016-08-03  Masamichi Hosoda  <trueroad@trueroad.jp>
 
+	* doc/texinfo.tex (\pdfmkdest):
+	Fix LuaTeX PDF destination names.
+	LuaTeX can handle Unicode characters for destination names.
+	So pass through Unicode characters for LuaTeX.
+
+2016-08-03  Masamichi Hosoda  <trueroad@trueroad.jp>
+
 	* doc/texinfo.tex (\xref):
 	Fix pdfTeX PDF destination names.
 	In order to replace Unicode characters with ASCII,
