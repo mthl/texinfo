@@ -1,5 +1,13 @@
 2016-08-03  Masamichi Hosoda  <trueroad@trueroad.jp>
 
+	* doc/texinfo.tex (\xref):
+	Fix pdfTeX PDF destination names.
+	In order to replace Unicode characters with ASCII,
+	it is necessary that \edef\pdfxrefdest{#1} is
+	before \turnoffactive.
+
+2016-08-03  Masamichi Hosoda  <trueroad@trueroad.jp>
+
 	* doc/texinfo.tex (\documentencoding):
 	Add warning for XeTeX with non-UTF-8 encodings.
 
