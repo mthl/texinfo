@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-08-03.11}
+\def\texinfoversion{2016-08-03.12}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -9962,6 +9962,18 @@ directory should work if nowhere else does.}
   \fi % latone
   \fi % lattwo
   \fi % ascii
+  %
+  \ifx\XeTeXrevision\thisisundefined
+  \else
+    \ifx \declaredencoding \utfeight
+    \else
+      \ifx \declaredencoding \ascii
+      \else
+        \message{Warning: XeTeX with non-UTF-8 encodings cannot handle %
+        non-ASCII characters in auxiallity files.}%
+      \fi
+    \fi
+  \fi
 }
 
 % emacs-page

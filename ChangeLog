@@ -1,5 +1,10 @@
 2016-08-03  Masamichi Hosoda  <trueroad@trueroad.jp>
 
+	* doc/texinfo.tex (\documentencoding):
+	Add warning for XeTeX with non-UTF-8 encodings.
+
+2016-08-03  Masamichi Hosoda  <trueroad@trueroad.jp>
+
 	* doc/texinfo.tex (\xref):
 	Fix XeTeX PDF destination names when \txiuseunicodedestnamefalse.
 	In order to replace Unicode characters with ASCII,
