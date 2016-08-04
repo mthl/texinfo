@@ -1,5 +1,10 @@
 2016-08-04  Masamichi Hosoda  <trueroad@trueroad.jp>
 
+	* doc/texinfo.tex (\iftxiuseunicodedestname):
+	Add initializing for pdfTeX and LuaTeX.
+
+2016-08-04  Masamichi Hosoda  <trueroad@trueroad.jp>
+
 	* doc/texinfo.tex (\pdfmkdest, \dopdfoutline, \xrefX):
 	Change the method of destination name switching
 	Unicode or ASCII for XeTeX.
