@@ -1,3 +1,9 @@
+2016-08-04  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\pdfmkdest, \dopdfoutline, \xrefX):
+	Change the method of destination name switching
+	Unicode or ASCII for XeTeX.
+
 2016-08-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo-tex-test.texi (Test of index widow elimination):

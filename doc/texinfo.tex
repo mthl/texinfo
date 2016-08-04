@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-08-03.21}
+\def\texinfoversion{2016-08-04.14}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -1616,13 +1616,15 @@ output) for that.)}
     % We have to set dummies so commands such as @code, and characters
     % such as \, aren't expanded when present in a section title.
     \indexnofonts
-    \iftxiuseunicodedestname
-      \def\pdfdestname{#1}% Pass through Unicode characters.
-    \else
-      \edef\pdfdestname{#1}% Replace Unicode characters with ASCII.
-    \fi
-    \turnoffactive
     \makevalueexpandable
+    \turnoffactive
+    \iftxiuseunicodedestname
+      % Pass through Unicode characters.
+    \else
+      % Use ASCII approximations in destination names.
+      \passthroughcharsfalse
+    \fi
+    \def\pdfdestname{#1}%
     \txiescapepdf\pdfdestname
     \safewhatsit{\pdfdest name{\pdfdestname} xyz}%
   }}
@@ -1632,25 +1634,26 @@ output) for that.)}
   \def\linkcolor{\rgbBlack}
   \def\endlink{\setcolor{\maincolor}\pdfendlink}
   %
-  \def\dopdfoutline#1#2#3#4{%
+  \def\dopdfoutline#1#2#3#4{{%
+    \turnoffactive
+    % Always use Unicode characters in title texts.
+    \def\pdfoutlinetext{#1}%
+    \txiescapepdf\pdfoutlinetext
     \iftxiuseunicodedestname
-      \def\pdfoutlinedest{#3}% Pass through Unicode characters.
+      % Pass through Unicode characters.
     \else
-      \edef\pdfoutlinedest{#3}% Replace Unicode characters with ASCII.
+      % Use ASCII approximations in destination names.
+      \passthroughcharsfalse
     \fi
+    \def\pdfoutlinedest{#3}%
     \ifx\pdfoutlinedest\empty
       \def\pdfoutlinedest{#4}%
     \fi
-    {
-      \turnoffactive
-      \txiescapepdf\pdfoutlinedest
-      \edef\pdfoutlinetext{#1}%
-      \txiescapepdf\pdfoutlinetext
-      %
-      \special{pdf:out [-] #2 << /Title (\pdfoutlinetext) /A
-        << /S /GoTo /D (\pdfoutlinedest) >> >> }%
-    }
-  }
+    \txiescapepdf\pdfoutlinedest
+    %
+    \special{pdf:out [-] #2 << /Title (\pdfoutlinetext) /A
+      << /S /GoTo /D (\pdfoutlinedest) >> >> }%
+  }}
   %
   \def\pdfmakeoutlines{%
     \begingroup
@@ -8885,19 +8888,21 @@ end
       % For XeTeX
       {\indexnofonts
        \makevalueexpandable
-       %
-       % This (wrongly) does not take account of leading or trailing
-       % spaces in #1, which should be ignored.
-       \iftxiuseunicodedestname
-         \def\pdfxrefdest{#1}% Pass through Unicode characters.
-       \else
-         \edef\pdfxrefdest{#1}% Replace Unicode characters with ASCII.
-       \fi
        \turnoffactive
        % This expands tokens, so do it after making catcode changes, so _
        % etc. don't get their TeX definitions.  This ignores all spaces in
        % #4, including (wrongly) those in the middle of the filename.
        \getfilename{#4}%
+       %
+       % This (wrongly) does not take account of leading or trailing
+       % spaces in #1, which should be ignored.
+       \iftxiuseunicodedestname
+         % Pass through Unicode characters.
+       \else
+         % Use ASCII approximations in destination names.
+         \passthroughcharsfalse
+       \fi
+       \def\pdfxrefdest{#1}%
        %
        \ifx\pdfxrefdest\empty
          \def\pdfxrefdest{Top}% no empty targets
