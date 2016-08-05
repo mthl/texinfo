@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-08-04.15}
+\def\texinfoversion{2016-08-05.13}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -1319,11 +1319,21 @@ output) for that.)}
     \indexnofonts
     \makevalueexpandable
     \turnoffactive
-    \ifx\luatexversion\thisisundefined
-      % pdfTeX: Use ASCII approximations in destination names.
-      \passthroughcharsfalse
+    \iftxiuseunicodedestname
+      \ifx \declaredencoding \latone
+        % Pass through Latin-1 characters.
+        % LuaTeX with byte wise I/O converts Latin-1 characters to Unicode.
+      \else
+        \ifx \declaredencoding \utfeight
+          % Pass through Unicode characters.
+        \else
+          % Use ASCII approximations in destination names.
+          \passthroughcharsfalse
+        \fi
+      \fi
     \else
-      % LuaTeX: Pass through Unicode characters.
+      % Use ASCII approximations in destination names.
+      \passthroughcharsfalse
     \fi
     \def\pdfdestname{#1}%
     \txiescapepdf\pdfdestname
@@ -1358,32 +1368,64 @@ output) for that.)}
     % text in the case where a section has no node, but it doesn't
     % seem worth the trouble, since most documents are normally structured.
     {
-      \ifx\luatexversion\thisisundefined \else
-        \turnoffactive % LuaTeX can use Unicode strings for PDF
+      \turnoffactive
+      \ifx \declaredencoding \latone
+        % The PDF format can use an extended form of Latin-1 in bookmark
+        % strings.  See Appendix D of the PDF Reference, Sixth Edition, for
+        % the "PDFDocEncoding".
+        \passthroughcharstrue
+        % Pass through Latin-1 characters.
+        %   LuaTeX: Convert to Unicode
+        %   pdfTeX: Use Latin-1 as PDFDocEncoding
+        \edef\pdfoutlinetext{#1}%
+        \iftxiuseunicodedestname
+          % Pass through Latin-1 characters.
+          % LuaTeX with byte wise I/O converts Latin-1 characters to Unicode.
+          \edef\pdfoutlinedest{#3}%
+        \else
+          % Use ASCII approximations in destination names.
+          \passthroughcharsfalse
+          \edef\pdfoutlinedest{#3}% 
+        \fi
+      \else
+        \ifx \declaredencoding \utfeight
+          \ifx\luatexversion\thisisundefined
+            % For pdfTeX  with UTF-8.
+            % TODO: the PDF format can use UTF-16 in bookmark strings,
+            % but the code for this isn't done yet.
+            % Use ASCII approximations.
+            \passthroughcharsfalse
+            \edef\pdfoutlinetext{#1}%
+            \edef\pdfoutlinedest{#3}% 
+          \else
+            % For LuaTeX with UTF-8.
+            % Pass through Unicode characters for title texts.
+            \passthroughcharstrue
+            \edef\pdfoutlinetext{#1}%
+            \iftxiuseunicodedestname
+              % Pass through Unicode characters for destination names.
+              \edef\pdfoutlinedest{#3}%
+            \else
+              % Use ASCII approximations in destination names.
+              \passthroughcharsfalse
+              \edef\pdfoutlinedest{#3}% 
+            \fi
+          \fi
+        \else
+          % For non-Latin-1 or non-UTF-8 encodings.
+          % Use ASCII approximations.
+          \passthroughcharsfalse
+          \edef\pdfoutlinetext{#1}%
+          \edef\pdfoutlinedest{#3}% 
+        \fi
       \fi
-      \edef\pdfoutlinedest{#3}%
+      %
       \ifx\pdfoutlinedest\empty
         \def\pdfoutlinedest{#4}%
       \else
         \txiescapepdf\pdfoutlinedest
       \fi
-      %
-      % Also escape PDF chars in the display string.
-      \bgroup
-        \ifx \declaredencoding \latone
-          % The PDF format can use an extended form of Latin-1 in bookmark
-          % strings.  See Appendix D of the PDF Reference, Sixth Edition, for
-          % the "PDFDocEncoding".
-          \passthroughcharstrue
-        \fi
-        \ifx \declaredencoding \utfeight
-          % TODO: the PDF format can use UTF-16 in bookmark strings, but the
-          % code for this isn't done yet.
-        \fi
-        \globaldefs=1
-        \edef\pdfoutlinetext{#1}%
-        \txiescapepdf\pdfoutlinetext
-      \egroup
+      \txiescapepdf\pdfoutlinetext
       %
       \pdfoutline goto name{\pdfmkpgn{\pdfoutlinedest}}#2{\pdfoutlinetext}%
     }
@@ -8857,19 +8899,30 @@ end
     % For pdfTeX and LuaTeX
     {\indexnofonts
      \makevalueexpandable
-     %
-     % This (wrongly) does not take account of leading or trailing
-     % spaces in #1, which should be ignored.
-     \ifx\luatexversion\thisisundefined
-       \edef\pdfxrefdest{#1}% pdfTeX: Replace Unicode characters with ASCII.
-     \else
-       \def\pdfxrefdest{#1}% LuaTeX: Pass through Unicode characters.
-     \fi
      \turnoffactive
      % This expands tokens, so do it after making catcode changes, so _
      % etc. don't get their TeX definitions.  This ignores all spaces in
      % #4, including (wrongly) those in the middle of the filename.
      \getfilename{#4}%
+     %
+     % This (wrongly) does not take account of leading or trailing
+     % spaces in #1, which should be ignored.
+     \iftxiuseunicodedestname
+       \ifx \declaredencoding \latone
+         % Pass through Latin-1 characters.
+       \else
+         \ifx \declaredencoding \utfeight
+           % Pass through Unicode characters.
+         \else
+           % Use ASCII approximations in destination names.
+           \passthroughcharsfalse
+         \fi
+       \fi
+     \else
+       % Use ASCII approximations in destination names.
+       \passthroughcharsfalse
+     \fi
+     \def\pdfxrefdest{#1}%
      %
      \ifx\pdfxrefdest\empty
        \def\pdfxrefdest{Top}% no empty targets
