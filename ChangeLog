@@ -1,5 +1,17 @@
 2016-08-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\doublecolumntopgap, \pagesofar)
+	(\begindoublecolumns): Remove use of \doublecolumntopgap 
+	dimension.
+	(\begindoublecolumns): Don't touch \topskip or alter \vsize 
+	other than doubling it.
+	(\balancecolumns): Use a different height for boxes when 
+	splitting double column material roughly in two.
+	* doc/texinfo-tex-test.texi (Final page of index hard to balance):
+	Update so that test works properly.
+
+2016-08-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\entry): Remove stretch added before entry 
 	here.
 	(\begindoublecolumns): Put stretch into \baselineskip, so it can
@@ -113,7 +125,7 @@
 	Compare heights of columns differently.  When not making the 
 	bottoms of the two columns flush, use the obtained height of the 
 	taller left column for the height of both columns.  (Otherwise, 
-	an overful column box could overlap material below.  An example 
+	an overful column box could overlap material below.)  An example
 	of broken formatting due to this was reported in the AucTeX manual
 	by Arash Esbati.
 	Change some comments and edit for clarity.

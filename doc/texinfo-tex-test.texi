@@ -429,6 +429,13 @@ the start of a page.
 \entry {Programming, glyphs for}{119}
 \entry {Pronunciation of Texinfo}{3}
 \entry {Prototype row, column widths defined by}{93}
+\entry {Ragged left, without filling}{83}
+\entry {Ragged right, with filling}{84}
+\entry {Ragged right, without filling}{83}
+\entry {Raising and lowering sections}{51}
+\entry {Raw formatter commands}{146}
+\entry {Raw HTML}{213}
+\entry {raw text output}{188}
 \initial {Q}
 \entry {Quotation characters (`'), in source}{114}
 \entry {Quotation marks, French}{115}
@@ -439,13 +446,6 @@ the start of a page.
 \entry {Quote characters, inserting}{110}
 \entry {Quoting, automatic for some macros}{156}
 \initial {R}
-\entry {Ragged left, without filling}{83}
-\entry {Ragged right, with filling}{84}
-\entry {Ragged right, without filling}{83}
-\entry {Raising and lowering sections}{51}
-\entry {Raw formatter commands}{146}
-\entry {Raw HTML}{213}
-\entry {raw text output}{188}
 \entry {RCS $Id}{253}
 \entry {Recommended names for keys}{69}
 \entry {Rectangle, black in hardcopy}{174}
