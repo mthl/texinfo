@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-08-05.13}
+\def\texinfoversion{2016-08-06.12}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -5632,10 +5632,6 @@ end
     \def\*{\unskip\space\ignorespaces}%
     \def\entrybreak{\hfil\break}% An undocumented command
     %
-    % A bit of stretch before each entry for the benefit of balancing
-    % columns.
-    \vskip 0pt plus0.5pt
-    %
     % Swallow the left brace of the text (first parameter):
     \afterassignment\doentry
     \let\temp =
@@ -5691,11 +5687,10 @@ end
       \global\setbox\entryindexbox=\vbox{\unhbox\boxA}%
     \else
     \global\setbox\entryindexbox=\vbox\bgroup
-      \prevdepth=\entrylinedepth
-      \noindent
       % We want the text of the entries to be aligned to the left, and the
       % page numbers to be aligned to the right.
       %
+      \parindent = 0pt
       \advance\leftskip by 0pt plus 1fil
       \advance\leftskip by 0pt plus -1fill
       \rightskip = 0pt plus -1fil
@@ -5703,8 +5698,6 @@ end
       % Cause last line, which could consist of page numbers on their own
       % if the list of page numbers is long, to be aligned to the right.
       \parfillskip=0pt plus -1fill
-      %
-      \hangindent=1em
       %
       \advance\rightskip by \entryrightmargin
       % Determine how far we can stretch into the margin.
@@ -5725,17 +5718,21 @@ end
       \ifdim\dimen@ > 0.8\dimen@ii   % due to long index text
         \dimen@ = 0.7\dimen@ % Try to split the text roughly evenly
         \dimen@ii = \hsize
-        \advance \dimen@ii by -1em
         \ifnum\dimen@>\dimen@ii
           % If the entry is too long, use the whole line
           \dimen@ = \dimen@ii
         \fi
         \advance\leftskip by 0pt plus 1fill % ragged right
         \advance \dimen@ by 1\rightskip
-        \parshape = 2 0pt \dimen@ 1em \dimen@ii
-        % Ideally we'd add a finite glue at the end of the first line only, but
-        % TeX doesn't seem to provide a way to do such a thing.
+        \parshape = 2 0pt \dimen@ 0em \dimen@ii
+        % Ideally we'd add a finite glue at the end of the first line only,
+        % instead of using \parshape with explicit line lengths, but TeX
+        % doesn't seem to provide a way to do such a thing.
+        %
+        \leftskip = 1em
+        \parindent = -1em
       \fi\fi
+      \indent % start paragraph
       \unhbox\boxA
       %
       % Do not prefer a separate line ending with a hyphen to fewer lines.
@@ -5761,21 +5758,30 @@ end
 
 \newbox\entryindexbox
 \def\insertindexentrybox{%
-  \copy\entryindexbox
-  % The following gets the depth of the last box.  This is for even
-  % line spacing when entries span several lines.
-  \setbox\dummybox\vbox{%
-    \unvbox\entryindexbox
-    \nointerlineskip
-    \lastbox
-    \global\entrylinedepth=\prevdepth
-  }%
-  % Note that we couldn't simply \unvbox\entryindexbox followed by 
-  % \nointerlineskip\lastbox to remove the last box and then reinstate it, 
-  % because this resets how far the box has been \moveleft'ed to 0.  \unvbox
-  % doesn't affect \prevdepth either.
+  \ourunvbox\entryindexbox
 }
-\newdimen\entrylinedepth
+
+% Use \lastbox to take apart vbox box by box, and add each sub-box
+% to the current vertical list.
+\def\ourunvbox#1{%
+\bgroup % for local binding of \delayedbox
+  % Remove the last box from box #1
+  \global\setbox#1=\vbox{%
+    \unvbox#1%
+    \unskip % remove any glue
+    \unpenalty
+    \global\setbox\interbox=\lastbox
+  }%
+  \setbox\delayedbox=\box\interbox
+  \ifdim\ht#1=0pt\else
+    \ourunvbox#1 % Repeat on what's left of the box
+    \nobreak
+  \fi
+  \box\delayedbox
+\egroup
+}
+\newbox\delayedbox
+\newbox\interbox
 
 % Default is no penalty
 \let\entrywidowpenalty\egroup
@@ -5788,13 +5794,7 @@ end
   \def\isentry{\entry}%
   \ifx\firsttoken\isentry
   \else
-    \unskip\penalty 9000
-    % The \unskip here stops breaking before the glue.  It relies on the
-    % \vskip above being there, otherwise there is an error
-    % "You can't use `\unskip' in vertical mode".  There has to be glue
-    % in the current vertical list that hasn't been added to the
-    % "current page".  See Chapter 24 of the TeXbook.  This contradicts
-    % Section 8.3.7 in "TeX by Topic," though.
+    \penalty 9000
   \fi
   \egroup % now comes the box added with \aftergroup
 }
@@ -5923,7 +5923,9 @@ end
   \advance\vsize by -1\doublecolumntopgap
   \vsize = 2\vsize
   \topskip=0pt
-  \global\entrylinedepth=0pt\relax
+  %
+  % For the benefit of balancing columns
+  \advance\baselineskip by 0pt plus 0.5pt
 }
 
 % The double-column output routine for all double-column pages except

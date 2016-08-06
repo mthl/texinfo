@@ -1,3 +1,23 @@
+2016-08-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\entry): Remove stretch added before entry 
+	here.
+	(\begindoublecolumns): Put stretch into \baselineskip, so it can
+	appear between the lines of a multi-line entry as well as 
+	between entries.  This results in more even line spacing.
+	(\indexwidowpenalty): Remove \unskip, because the glue it 
+	removed isn't there anymore.
+	(\balancecolumns): Use \leftskip instead of indenting lines with
+	\parshape (which is equivalent to using \moveright), because 
+	this is lost when the box is taken apart with \lastbox.
+	Change comment about use of \parshape.  Do not set \hangindent 
+	either.
+	(\ourunvbox): New macro to take apart a vbox with \lastbox and 
+	re-add the boxes to the current vertical list.
+	(\insertindexentrybox): Use it to add the text of the index entry
+	to the current vertical list.
+	(\entrylinedepth): Remove \dimen.
+
 2016-08-05  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex (\pdfmkdest, \dopdfoutline, \xrefX):
