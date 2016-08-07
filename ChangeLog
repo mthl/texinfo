@@ -1,3 +1,13 @@
+2016-08-07  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex (\pdfescapestrutfsixteen):
+	Rename from \pdfescapestring for LuaTeX.
+	(PDFescstr): New Lua function.
+	(\pdfescapestring): New macro for LuaTeX.
+	(\txiescapepdfutfsixteen): New macro.
+	(\dopdfoutline): LuaTeX:
+	Use UTF-8 encodings instead of UTF-16 for PDF destination names.
+
 2016-08-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\doublecolumntopgap, \pagesofar)
