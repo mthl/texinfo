@@ -1,5 +1,17 @@
 2016-08-08  Masamichi Hosoda  <trueroad@trueroad.jp>
 
+	* doc/texinfo.tex (\setpdfdestname): New macro for XeTeX.
+	(\pdfdestname): Escaped PDF destination name
+	is set by \setpdfdestname.
+	(\setpdfoutlinetext): New macro for XeTeX.
+	(\pdfoutlinetext): Converted and escaped outline text
+	is set by \setpdfoutlinetext.
+	(\pdfmkdest): Use \setpdfdestname.
+	(\dopdfoutline): Use \setpdfdestname and \setpdfoutlinetext.
+	(\xrefX): Use \setpdfdestname.
+
+2016-08-08  Masamichi Hosoda  <trueroad@trueroad.jp>
+
 	* doc/texinfo.tex (\setpdfdestname): New macro for pdfTeX and LuaTeX.
 	(\pdfdestname): Escaped PDF destination name
 	is set by \setpdfdestname.
