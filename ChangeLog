@@ -1,3 +1,20 @@
+2016-08-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\balancecolumns): When making bottoms of the 
+	two columns flush, use \unskip to remove glue from bottom of 
+	columns.  Remove code which ignored glue at the bottom of 
+	columns when balancing columns, because this glue was there to 
+	help to break before an index initial.
+
+	* doc/texinfo-tex-test.texi
+	(Final page initial at top of both columns): New example of 
+	index formatting.
+	(Short indices): Add text saying what to look at for short 
+	indices.
+	(\commenceindex, \finishindex): Move use of \smallfonts in order 
+	not to cancel the change to \baselineskip done in 
+	\begindoublecolumns.
+
 2016-08-08  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex (\setpdfdestname): New macro for XeTeX.

@@ -298,9 +298,10 @@ Like an argument to @code{@@footnote}.
 
 @tex
 \gdef \commenceindex{%
+\begingroup
 \page
-\begindoublecolumns
 \smallfonts \rm
+\begindoublecolumns
 \tolerance = 9500
 \plainfrenchspacing
 \everypar = {}%
@@ -310,10 +311,16 @@ Like an argument to @code{@@footnote}.
 \gdef \finishindex{%
 \catcode`\@=0 \catcode`\\=13
 \enddoublecolumns
+\endgroup
+\hrule
 }
 @end tex
 
 @chapter Index display
+
+In these examples, a horizontal rule is at the end of each run of double 
+column material in order to show if any material extends below the
+box containing it.
 
 @section Long index entries
 
@@ -605,6 +612,9 @@ See following pages
 \entry{bbbb}{2}
 \finishindex
 
+If the above is in two columns, check that the space below the initials
+`A' and `B' is even.
+
 @commenceindex
 \initial{A}
 \entry{aaaa}{1}
@@ -862,6 +872,87 @@ index.  All index material should fit on the page within the margins.
 \entry {zcat}{66}
 \entry {zip file}{66}
 \entry {zooming}{31}
+\finishindex
+
+@section Final page initial at top of both columns
+
+@commenceindex
+\initial {P}
+\entry {\code {phi}}{397}
+\entry {\code {pi}}{397}
+\entry {\code {pi-over-180}}{397}
+\entry {\code {pi-over-2}}{397}
+\entry {\code {pi-over-4}}{397}
+\entry {\code {polar-complexp}}{392}
+\entry {\code {poly-mix}}{408}
+\entry {\code {poly-mul}}{408}
+\entry {\code {poly-simplify}}{408}
+\entry {\code {polynomial-base}}{408}
+\entry {\code {polynomial-p}}{408}
+\entry {\code {posp}}{391}
+\entry {\code {pow}}{397}
+\entry {\code {pow-mod}}{398}
+\entry {\code {power-of-2}}{398}
+\entry {\code {prime-test}}{399}
+\entry {\code {primp}}{393}
+\initial {Q}
+\entry {\code {quarter-circle}}{397}
+\entry {\code {quarter-integer}}{399}
+\entry {\code {quotient}}{397}
+\initial {R}
+\entry {\code {random-digit}}{398}
+\entry {\code {random-digits}}{399}
+\entry {\code {random-float}}{399}
+\entry {\code {ratp}}{392}
+\entry {\code {read-expr}}{409}
+\entry {\code {read-exprs}}{410}
+\entry {\code {read-number}}{409}
+\entry {\code {realp}}{392}
+\entry {\code {rect-complexp}}{392}
+\entry {\code {reduce-cols}}{400}
+\entry {\code {reduce-vec}}{400}
+\entry {\code {reject-arg}}{394}
+\entry {\code {remove-units}}{409}
+\entry {\code {rewrite}}{405}
+\entry {\code {rewrite-heads}}{405}
+\entry {\code {row-matrix}}{400}
+\initial {S}
+\entry {\code {scalarp}}{392}
+\entry {\code {scale-int}}{396}
+\entry {\code {scale-rounding}}{396}
+\entry {\code {simplify}}{403}
+\entry {\code {simplify-extended}}{403}
+\entry {\code {simplify-units}}{403}
+\entry {\code {single-units-in-expr-p}}{409}
+\entry {\code {solve-eqn}}{407}
+\entry {\code {solve-for}}{406}
+\entry {\code {solve-system}}{407}
+\entry {\code {sort-intv}}{396}
+\entry {\code {sqr}}{397}
+\entry {\code {sqrt-e}}{397}
+\entry {\code {sqrt-two-pi}}{397}
+\entry {\code {square-matrixp}}{393}
+\entry {\code {swap-rows}}{401}
+\initial {T}
+\entry {\code {tderiv}}{406}
+\entry {\code {to-fraction}}{399}
+\entry {\code {to-hms}}{398}
+\entry {\code {to-radians}}{398}
+\entry {\code {to-radians-2}}{398}
+\entry {\code {to-simple-fraction}}{399}
+\entry {\code {to-standard-units}}{409}
+\entry {\code {transpose}}{401}
+\entry {\code {two-pi}}{397}
+\initial {U}
+\entry {\code {underflow}}{394}
+\entry {\code {units-in-expr-p}}{409}
+\initial {V}
+\entry {\code {vec-length}}{399}
+\entry {\code {vectorp}}{393}
+\initial {W}
+\entry {\code {with-extra-prec}}{395}
+\initial {Z}
+\entry {\code {zerop}}{391}
 \finishindex
 
 
