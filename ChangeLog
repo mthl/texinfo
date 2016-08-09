@@ -1,5 +1,14 @@
 2016-08-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\indexdummies): Eat the {} following glyph 
+	commands, and add definitions for \atchar, \lbracechar and 
+	\rbracechar.
+	(\definedummies): Add dummy for @atchar.
+	* doc/texinfo-tex-test.texi (Document encoding): Test some glyph 
+	commands in section title.
+
+2016-08-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\balancecolumns): When making bottoms of the 
 	two columns flush, use \unskip to remove glue from bottom of 
 	columns.  Remove code which ignored glue at the bottom of 
