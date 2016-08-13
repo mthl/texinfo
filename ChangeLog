@@ -1,3 +1,8 @@
+2016-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Document encoding): Test glyph 
+	commands in section title.
+
 2016-08-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\indexdummies): Eat the {} following glyph 

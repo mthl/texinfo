@@ -1201,9 +1201,9 @@ For PDF output, check the bookmarks pane in the reader.
 
 @section --- @"Ubersicht
 
-@section @{ @} @@ @{@ @}
+@section @{ @} @@ @{@ @} @arrow{} @atchar{} @lbracechar{}
 
-This section should be called ``@{ @} @@ @{ @}''.
+This section should be called ``@{ @} @@ @{ @} @arrow{} @@ @{''.
 
 
 
