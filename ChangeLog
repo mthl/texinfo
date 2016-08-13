@@ -1,5 +1,9 @@
 2016-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* pretest 6.1.90
+
+2016-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo-tex-test.texi (Document encoding): Test glyph 
 	commands in section title.
 
