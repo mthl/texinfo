@@ -161,7 +161,11 @@ Update copyright years in many files for release; best to grep -r for
   No need (though it's ok) to change every source file at once, just the
   ones relevant to --version calls, etc., such as texindex.awk and info.c.
 make po-check             # update po/POTFILES.in as needed
-gnulib-tool --add-import  # for pretest
+
+# Under the top level, and also under tp/Texinfo/Convert/XSParagraph, which
+# uses a separate gnulib import.
+gnulib-tool --add-import
+
 util/srclist-txi          # for pretest, to sync files with other sources
 
 - Official releases only:
