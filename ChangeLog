@@ -1,3 +1,10 @@
+2016-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\entry): Disable output of marks for whole 
+	entry, instead of just for the page number.  This is intended to 
+	prevent an infinite loop in \ourunvbox when @uref is used in an 
+	index entry (reported by Karl Berry for latex refman manual).
+
 2016-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* README-hacking: Mention gnulib import in XSParagraph subdirectory.
