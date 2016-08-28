@@ -1,3 +1,8 @@
+2016-08-28  Emanuele Giaquinta  <emanuele.giaquinta@gmail.com>  (tiny change)
+
+	* util/texi2dvi (cleanup): Fix cleanup for "clean" build mode.  
+	Bug introduced on 2016-05-03.
+
 2016-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\entry): Disable output of marks for whole 

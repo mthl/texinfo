@@ -1677,7 +1677,7 @@ mostly_clean ()
 cleanup ()
 {
   case $clean:$tidy in
-    true:false) mostly_clean ;;               # build mode is "clean"
+    true:true) mostly_clean ;;                # build mode is "clean"
     false:false) cd_orig; remove "$t2ddir";;  # build mode is "local"
   esac
 }
