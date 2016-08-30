@@ -1,3 +1,8 @@
+2016-08-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph: Run gnulib-tool --add-import.
+	* (top-level): Run gnulib-tool --add-import.
+
 2016-08-28  Emanuele Giaquinta  <emanuele.giaquinta@gmail.com>  (tiny change)
 
 	* util/texi2dvi (cleanup): Fix cleanup for "clean" build mode.  
