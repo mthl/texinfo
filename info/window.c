@@ -894,81 +894,42 @@ window_make_modeline (WINDOW *window)
   /* Calculate the maximum size of the information to stick in MODELINE. */
   {
     int modeline_len = 0;
-    char *parent = NULL, *filename = "*no file*";
     char *nodename = "*no node*";
     NODE *node = window->node;
+    char *name;
+    int dot;
 
-    if (node)
+    if (node && node->nodename)
+      nodename = node->nodename;
+
+    name = filename_non_directory (node->fullpath);
+
+    /* 10 for the decimal representation of the number of lines in this
+       node, and the remainder of the text that can appear in the line. */
+    modeline_len += 10 + strlen (_("-----Info: (), lines ----, "));
+    modeline_len += 3; /* strlen (location_indicator) */
+    modeline_len += strlen (name);
+    if (nodename)
+      modeline_len += strlen (nodename);
+    if (modeline_len < window->width)
+      modeline_len = window->width;
+
+    modeline = xcalloc (1, 1 + modeline_len);
+
+    sprintf (modeline + strlen (modeline), "-----Info: ");
+
+    /* Omit any extension like ".info.gz" from file name. */
+    dot = strcspn (name, ".");
+
+    if (name && strcmp ("", name))
       {
-        if (node->nodename)
-          nodename = node->nodename;
-
-        if (node->subfile)
-          {
-            parent = filename_non_directory (node->fullpath);
-            filename = filename_non_directory (node->subfile);
-          }
-        else
-          {
-            parent = 0;
-            filename = filename_non_directory (node->fullpath);
-          }
+        sprintf (modeline + strlen (modeline), "(");
+        strncpy (modeline + strlen (modeline), name, dot);
+        sprintf (modeline + strlen (modeline), ")");
       }
-
-    if (preprocess_nodes_p)
-      {
-        char *name;
-        int dot;
-
-        name = filename_non_directory (node->fullpath);
-
-        modeline_len += strlen ("--Info:() --");
-        modeline_len += 3; /* strlen (location_indicator) */
-        modeline_len += strlen (name);
-        if (nodename) modeline_len += strlen (nodename);
-        if (modeline_len < window->width)
-          modeline_len = window->width;
-
-        modeline = xcalloc (1, 1 + modeline_len);
-
-        sprintf (modeline + strlen (modeline), "%s", location_indicator);
-        sprintf (modeline + strlen (modeline), "--Info: ");
-
-        /* Omit any extension like ".info.gz" from file name. */
-        dot = strcspn (name, ".");
-
-        if (name && strcmp ("", name))
-          {
-            sprintf (modeline + strlen (modeline), "(");
-            strncpy (modeline + strlen (modeline), name, dot);
-            sprintf (modeline + strlen (modeline), ")");
-          }
-        sprintf (modeline + strlen (modeline), "%s--", nodename);
-      }
-    else
-      {
-        modeline_len += strlen (filename);
-        modeline_len += strlen (nodename);
-        modeline_len += 4;          /* strlen (location_indicator). */
-
-        /* 10 for the decimal representation of the number of lines in this
-           node, and the remainder of the text that can appear in the line. */
-        modeline_len += 10 + strlen (_("-----Info: (), lines ----, "));
-        modeline_len += window->width;
-
-        modeline = xmalloc (1 + modeline_len);
-
-        /* Special internal windows have no filename. */
-        if (!filename || !*filename)
-          sprintf (modeline, _("-%s---Info: %s, %ld lines --%s--"),
-                   (window->flags & W_NoWrap) ? "$" : "-",
-                   nodename, window->line_count, location_indicator);
-        else
-          sprintf (modeline, _("-%s---Info: (%s)%s, %ld lines --%s--"),
-                   (window->flags & W_NoWrap) ? "$" : "-",
-                   parent ? parent : filename,
-                   nodename, window->line_count, location_indicator);
-      }
+    sprintf (modeline + strlen (modeline),
+             "%s, " "%ld lines --" "%s",
+             nodename, window->line_count, location_indicator);
 
     i = strlen (modeline);
 
