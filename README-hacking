@@ -150,6 +150,9 @@ process doc/texinfo-tex-test.texi with TeX and check that output is good.
 - First checks:
 Ensure texinfo.tex, texi2dvi, and htmlxref.cnf are updated on ftp.gnu.org.
 Ensure TXI_XLATE in doc/Makefile.am matches actual file list.
+Check that LINGUAS under po and po_document match actual file list.
+Have a look at the output of "svn status ." to check for files that
+  should be tracked in SVN or ignored.
 Check that TEXINFO_DTD_VERSION has been updated to the next version in
   configure.ac if the DTD has been modified since the last release.
   See comments in configure.ac, and run (at the top level) make dtd-check.

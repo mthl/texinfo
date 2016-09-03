@@ -1,5 +1,9 @@
 2016-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README-hacking: Mention LINGUAS files and "svn status .".
+
+2016-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/htmlxref-only_mono/test_scripts,
 	* tp/tests/htmlxref-only_split/test_scripts,
 	* tp/tests/htmlxref/test_scripts:
