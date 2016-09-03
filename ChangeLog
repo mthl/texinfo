@@ -1,5 +1,12 @@
 2016-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/htmlxref-only_mono/test_scripts,
+	* tp/tests/htmlxref-only_split/test_scripts,
+	* tp/tests/htmlxref/test_scripts:
+	Remove unused directories.
+
+2016-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/window.c (window_make_modeline): Do not make modeline 
 	depend on whether preprocess_nodes_p is set.
 
