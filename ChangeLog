@@ -1,5 +1,12 @@
 2016-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (scan_reference_target): Remove code that 
+	altered the line number of an index entry if 
+	preprocess_nodes_p=1, because this is is independent of whether 
+	the first line of the node is displayed or not.
+
+2016-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* po/el.po: Commit file.
 	* po/LINGUAS: List el.
 

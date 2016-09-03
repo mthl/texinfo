@@ -1495,14 +1495,6 @@ scan_reference_target (REFERENCE *entry, NODE *node, int in_parentheses)
         else
           entry->line_number = 0;
       }
-
-      if (preprocess_nodes_p && entry->line_number > 1)
-        /* Adjust line offset in file to one in displayed text.  This
-           does not work perfectly because we can't know exactly what
-           text will be inserted/removed: for example, due to expansion
-           of an image tag.  This subtracts 1 for a removed node information
-           line. */
-        entry->line_number--;
     }
 
   return 1;
