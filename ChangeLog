@@ -1,3 +1,8 @@
+2016-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* po_document/LINGUAS: List ca, de, el, hr, pt, pt_BR.
+
+
 2016-08-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph: Run gnulib-tool --add-import.
