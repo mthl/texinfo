@@ -928,7 +928,7 @@ window_make_modeline (WINDOW *window)
         sprintf (modeline + strlen (modeline), ")");
       }
     sprintf (modeline + strlen (modeline),
-             "%s, " "%ld lines --" "%s",
+             "%s, %ld lines --%s",
              nodename, window->line_count, location_indicator);
 
     i = strlen (modeline);
