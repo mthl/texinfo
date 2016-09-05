@@ -1,5 +1,9 @@
 2016-09-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* pretest 6.1.91
+
+2016-09-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* po, po_document: Synch with translationproject.org and run 
 	"make update_po".
 
