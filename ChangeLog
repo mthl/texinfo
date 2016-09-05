@@ -1,3 +1,8 @@
+2016-09-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* po, po_document: Synch with translationproject.org and run 
+	"make update_po".
+
 2016-09-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* README-hacking: Mention LINGUAS files and "svn status .".

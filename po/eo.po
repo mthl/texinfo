@@ -1,23 +1,24 @@
 # Esperanto translations for GNU Texinfo.
-# Copyright (C) 2015 Free Software Foundation, Inc.
+# Copyright (C) 2016 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
 #
-# « Le bonheur est dans le pré. »
+# "Zo rijk dat ze boter tegen het plafond gooien."
 #
-# Benno Schulenberg <benno@vertaalt.nl>, 2010, 2011, 2012, 2013, 2015.
+# Benno Schulenberg <benno@vertaalt.nl>, 2010, 2011, 2012, 2013, 2015, 2016.
 # Sergio Pokrovskij <sergio.pokrovskij@gmail.com>, 1999-2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 5.9.93\n"
+"Project-Id-Version: texinfo 6.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2016-07-30 20:22+0100\n"
-"PO-Revision-Date: 2015-06-07 10:23+0200\n"
+"POT-Creation-Date: 2016-09-05 20:01+0100\n"
+"PO-Revision-Date: 2016-08-21 11:22+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.0\n"
 
@@ -92,7 +93,7 @@ msgstr "Sukceso"
 
 #: gnulib/lib/regcomp.c:138
 msgid "No match"
-msgstr "Neniu trafo"
+msgstr "Neniu kongruo"
 
 #: gnulib/lib/regcomp.c:141
 msgid "Invalid regular expression"
@@ -115,7 +116,8 @@ msgid "Invalid back reference"
 msgstr "Nevalida retroreferenco"
 
 #: gnulib/lib/regcomp.c:156
-msgid "Unmatched [ or [^"
+#, fuzzy
+msgid "Unmatched [, [^, [:, [., or [="
 msgstr "Senpara [ aŭ [^"
 
 #: gnulib/lib/regcomp.c:159
@@ -154,7 +156,7 @@ msgstr "Regulesprimo tro grandas"
 msgid "Unmatched ) or \\)"
 msgstr "Senpara ) aŭ \\)"
 
-#: gnulib/lib/regcomp.c:711
+#: gnulib/lib/regcomp.c:687
 msgid "No previous regular expression"
 msgstr "Mankas antaŭa regulesprimo"
 
@@ -343,7 +345,7 @@ msgstr "Malestas antaŭa ĉeno por serĉo en indekso."
 #: info/indices.c:475
 #, c-format
 msgid "No more index entries containing '%s'."
-msgstr "Ne ekzistas pli da indekseroj enhavantaj «%s»."
+msgstr "Malestas pli da indekseroj enhavantaj «%s»."
 
 #: info/indices.c:476 info/indices.c:890
 #, c-format
@@ -1496,29 +1498,29 @@ msgstr "Serĉoĉeno tro mallongas"
 #: info/session.c:4473
 #, c-format
 msgid "Going back to last match from %s"
-msgstr ""
+msgstr "Reirante al lasta kongruo de %s"
 
 #: info/session.c:4497 info/session.c:4607
-#, fuzzy, c-format
+#, c-format
 msgid "No more matches."
-msgstr "Neniu trafo"
+msgstr "Malestas pluaj kongruoj."
 
 #: info/session.c:4634
 msgid "Search this node and subnodes for a string."
-msgstr ""
+msgstr "Serĉi signoĉenon en ĉi tiu nodo kaj subnodoj"
 
 #: info/session.c:4655
 msgid "Go to next match in Info sub-tree"
-msgstr ""
+msgstr "Iri al sekva kongruo en Info-subarbo"
 
 #: info/session.c:4659 info/session.c:4671
 #, c-format
 msgid "No active search"
-msgstr ""
+msgstr "Neniu aktiva serĉo"
 
 #: info/session.c:4667
 msgid "Go to previous match in Info sub-tree"
-msgstr ""
+msgstr "Iri al antaŭa kongruo en Info-subarbo"
 
 #: info/session.c:4680
 msgid "Read a string and search for it case-sensitively"
@@ -1709,9 +1711,8 @@ msgid "Method to use to track mouse events"
 msgstr "Uzenda metodo por atendadi musajn eventojn"
 
 #: info/variables.c:138
-#, fuzzy
 msgid "How to follow a cross-reference"
-msgstr "Iri al la sekva referenco"
+msgstr "Kiel sekvi referencon"
 
 #: info/variables.c:142
 msgid "Highlight search matches"
@@ -1719,20 +1720,19 @@ msgstr "Marki serĉajn kongruojn"
 
 #: info/variables.c:146
 msgid "Styles for links"
-msgstr ""
+msgstr "Stiloj por ligoj"
 
 #: info/variables.c:150
 msgid "Styles for active links"
-msgstr ""
+msgstr "Stiloj por aktivaj ligoj"
 
 #: info/variables.c:154
-#, fuzzy
 msgid "Styles for search matches"
-msgstr "Viŝi la montratajn serĉajn kongruojn"
+msgstr "Stiloj por serĉaj kongruoj"
 
 #: info/variables.c:158
 msgid "How to print the information line at the start of a node"
-msgstr ""
+msgstr "Kiel montri la infolinion ĉe komenco de nodo"
 
 #: info/variables.c:165
 msgid "Explain the use of a variable"
@@ -1760,19 +1760,9 @@ msgstr "Variablo %s ricevu la valoron (%d): "
 msgid "Set %s to value (%s): "
 msgstr "Variablo %s ricevu la valoron (%s): "
 
-#: info/window.c:956
+#: info/window.c:909
 msgid "-----Info: (), lines ----, "
 msgstr "-----Info: (), linioj ----, "
-
-#: info/window.c:963
-#, c-format
-msgid "-%s---Info: %s, %ld lines --%s--"
-msgstr "-%s---Info: %s, %ld linioj --%s--"
-
-#: info/window.c:967
-#, fuzzy, c-format
-msgid "-%s---Info: (%s)%s, %ld lines --%s--"
-msgstr "-%s%s-Info: (%s)%s, %ld linioj --%s--"
 
 #: install-info/install-info.c:292
 #, c-format
@@ -1948,7 +1938,7 @@ msgstr ""
 "  --version             montri programversion kaj eliri"
 
 #: install-info/install-info.c:642
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
 "topmost node of the Info hierarchy, called (dir)Top.\n"
@@ -1973,12 +1963,12 @@ msgstr ""
 "%s\tpinto de la INFO-hierarkio\n"
 "\n"
 "  Ĉi tie (en la Info-katalogo) estas menuo de la ĉefaj temoj.\n"
-"  Tajpu “q” por eliri; “?” por eligi ĉiujn komandojn de Info;\n"
+"  Tajpu “q” por eliri; “H” por vidi liston de ĉiuj Info-komandoj;\n"
 "  “d” por reveni ĉi tien; “h” vokas lernilon por komencantoj;\n"
-"  “mEmacs<Enter>” disponigas la manlibron pri Emakso; ktp.\n"
+"  “mls<Enter>” montras la manlibron pri «ls»; ktp.\n"
 "\n"
-"  Se vi legas per Emakso, alklaku menueron aŭ referencon per\n"
-"  la dua musbutono por elekti tiun temon.\n"
+"  Se vi legas per Emakso, eblas elekti menueron aŭ referencon\n"
+"  per alklako kun la dua musbutono.\n"
 "\n"
 "%s\n"
 
@@ -2071,12 +2061,15 @@ msgstr "argumentoj citatas defaŭlte"
 msgid ""
 "move your @contents command if you want the contents after the title page"
 msgstr ""
+"movu la @contents-komandon se vi deziras la enhavon post la titola paĝo"
 
 #: tp/Texinfo/Common.pm:869
 msgid ""
 "move your @shortcontents and @contents commands if you want the contents "
 "after the title page"
 msgstr ""
+"movu la @shortcontents- kaj @contents-komandojn se vi deziras la enhavon "
+"post la titola paĝo"
 
 #: tp/Texinfo/Common.pm:1093
 #, perl-format
@@ -2103,7 +2096,7 @@ msgstr "ne eblas legi %s: %s"
 msgid "error on closing @verbatiminclude file %s: %s"
 msgstr "eraro dum fermo de '@verbatiminclude'-dosiero %s: %s"
 
-#: tp/Texinfo/Common.pm:1164 tp/Texinfo/Parser.pm:3187
+#: tp/Texinfo/Common.pm:1164 tp/Texinfo/Parser.pm:3193
 #, perl-format
 msgid "@%s: could not find %s"
 msgstr "@%s: ne eblas trovi %s"
@@ -2161,7 +2154,7 @@ msgstr "ne eblas krei dosierujon «%s»: %s"
 msgid "@image file `%s' not found, using `%s'"
 msgstr "'@image'-dosiero «%s» ne troviĝas; «%s» uziĝas"
 
-#: tp/Texinfo/Convert/DocBook.pm:1084 tp/Texinfo/Parser.pm:5219
+#: tp/Texinfo/Convert/DocBook.pm:1084 tp/Texinfo/Parser.pm:5225
 msgid "no argument specified for @U"
 msgstr "mankas argumento je @U"
 
@@ -2275,7 +2268,7 @@ msgstr ""
 msgid "empty node name"
 msgstr "vaka nodnomo"
 
-#: tp/Texinfo/Convert/HTML.pm:7239 tp/Texinfo/Parser.pm:3536
+#: tp/Texinfo/Convert/HTML.pm:7239 tp/Texinfo/Parser.pm:3542
 #, perl-format
 msgid "syntax for an external node used for `%s'"
 msgstr "sintakso por ekstera nodo uziĝas por '%s'"
@@ -2399,16 +2392,16 @@ msgstr "misa aŭ vaka formala argumento de '@%s': %s"
 msgid "bad syntax for @%s argument: %s"
 msgstr "misa sintakso por argumento de '@%s': %s"
 
-#: tp/Texinfo/Parser.pm:1183 tp/Texinfo/Parser.pm:4701
-#: tp/Texinfo/Parser.pm:4727 tp/Texinfo/Parser.pm:5559
-#: tp/Texinfo/Parser.pm:5572 tp/Texinfo/Parser.pm:5586
+#: tp/Texinfo/Parser.pm:1183 tp/Texinfo/Parser.pm:4707
+#: tp/Texinfo/Parser.pm:4733 tp/Texinfo/Parser.pm:5565
+#: tp/Texinfo/Parser.pm:5578 tp/Texinfo/Parser.pm:5592
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s bezonas nomon"
 
-#: tp/Texinfo/Parser.pm:1187 tp/Texinfo/Parser.pm:4704
-#: tp/Texinfo/Parser.pm:4730 tp/Texinfo/Parser.pm:5562
-#: tp/Texinfo/Parser.pm:5575 tp/Texinfo/Parser.pm:5589
+#: tp/Texinfo/Parser.pm:1187 tp/Texinfo/Parser.pm:4710
+#: tp/Texinfo/Parser.pm:4736 tp/Texinfo/Parser.pm:5568
+#: tp/Texinfo/Parser.pm:5581 tp/Texinfo/Parser.pm:5595
 #, perl-format
 msgid "bad name for @%s"
 msgstr "misa nomo por '@%s'"
@@ -2424,7 +2417,7 @@ msgid "@%s seen before @%s closing brace"
 msgstr "'@%s' renkontiĝis antaŭ ferma '}' de '@%s'"
 
 #: tp/Texinfo/Parser.pm:1314
-#, fuzzy, perl-format
+#, perl-format
 msgid "%c%s missing closing brace"
 msgstr "%c%s sen “}”"
 
@@ -2462,13 +2455,13 @@ msgstr "'@%s' renkontiĝis antaŭ '@end %s'"
 msgid "no matching `%cend %s'"
 msgstr "mankas para '%cend %s'"
 
-#: tp/Texinfo/Parser.pm:1738 tp/Texinfo/Parser.pm:5064
-#: tp/Texinfo/Parser.pm:5302
+#: tp/Texinfo/Parser.pm:1738 tp/Texinfo/Parser.pm:5070
+#: tp/Texinfo/Parser.pm:5308
 #, perl-format
 msgid "misplaced %c"
 msgstr "misloka %c"
 
-#: tp/Texinfo/Parser.pm:1835 tp/Texinfo/Parser.pm:3142
+#: tp/Texinfo/Parser.pm:1835 tp/Texinfo/Parser.pm:3148
 #, perl-format
 msgid "unmatched `%c%s'"
 msgstr "senpara '%c%s'"
@@ -2479,7 +2472,7 @@ msgid "macro `%s' called with too many args"
 msgstr "makroo «%s» havas troajn argumentojn"
 
 #: tp/Texinfo/Parser.pm:2094
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s missing closing brace"
 msgstr "@%s sen “}”"
 
@@ -2523,13 +2516,13 @@ msgstr "neatendita argumento sur '@%s'-linio: %s"
 msgid "empty multitable"
 msgstr "vaka plurtabelo"
 
-#: tp/Texinfo/Parser.pm:2959 tp/Texinfo/Parser.pm:5667
+#: tp/Texinfo/Parser.pm:2959 tp/Texinfo/Parser.pm:5673
 #, perl-format
 msgid "superfluous argument to @%s"
 msgstr "troa argumento por '@%s'"
 
-#: tp/Texinfo/Parser.pm:2965 tp/Texinfo/Parser.pm:5688
-#: tp/Texinfo/Parser.pm:5699
+#: tp/Texinfo/Parser.pm:2965 tp/Texinfo/Parser.pm:5694
+#: tp/Texinfo/Parser.pm:5705
 #, perl-format
 msgid "bad argument to @%s"
 msgstr "misa argumento por '@%s'"
@@ -2551,121 +2544,121 @@ msgstr ""
 msgid "accent command `@%s' not allowed as @%s argument"
 msgstr "akcentkomando '@%s' ne permesatas kiel argumento de '@%s'"
 
-#: tp/Texinfo/Parser.pm:3118 tp/Texinfo/Parser.pm:3271
-#: tp/Texinfo/Parser.pm:5660
+#: tp/Texinfo/Parser.pm:3124 tp/Texinfo/Parser.pm:3277
+#: tp/Texinfo/Parser.pm:5666
 #, perl-format
 msgid "@%s missing argument"
 msgstr "Al '@%s' mankas argumento"
 
-#: tp/Texinfo/Parser.pm:3132
+#: tp/Texinfo/Parser.pm:3138
 #, perl-format
 msgid "unknown @end %s"
 msgstr "nekonata '@end %s'"
 
-#: tp/Texinfo/Parser.pm:3155 tp/Texinfo/Parser.pm:3782
+#: tp/Texinfo/Parser.pm:3161 tp/Texinfo/Parser.pm:3788
 #, perl-format
 msgid "superfluous argument to @%s %s: %s"
 msgstr "troa argumento por '@%s %s': %s"
 
-#: tp/Texinfo/Parser.pm:3161 tp/Texinfo/Parser.pm:3239
-#: tp/Texinfo/Parser.pm:5749 tp/Texinfo/Parser.pm:5792
-#: tp/Texinfo/Parser.pm:5821 tp/Texinfo/Parser.pm:5862
-#: tp/Texinfo/Parser.pm:5940
+#: tp/Texinfo/Parser.pm:3167 tp/Texinfo/Parser.pm:3245
+#: tp/Texinfo/Parser.pm:5755 tp/Texinfo/Parser.pm:5798
+#: tp/Texinfo/Parser.pm:5827 tp/Texinfo/Parser.pm:5868
+#: tp/Texinfo/Parser.pm:5946
 #, perl-format
 msgid "bad argument to @%s: %s"
 msgstr "misa argumento por '@%s': %s"
 
-#: tp/Texinfo/Parser.pm:3182
+#: tp/Texinfo/Parser.pm:3188
 #, perl-format
 msgid "@%s: could not open %s: %s"
 msgstr "@%s: ne eblas malfermi %s: %s"
 
-#: tp/Texinfo/Parser.pm:3194
+#: tp/Texinfo/Parser.pm:3200
 #, perl-format
 msgid "encoding `%s' is not a canonical texinfo encoding"
 msgstr "kodo «%s» ne estas kanonika Texinfo-kodo"
 
-#: tp/Texinfo/Parser.pm:3202
+#: tp/Texinfo/Parser.pm:3208
 #, perl-format
 msgid "unrecognized encoding name `%s'"
 msgstr "nekonata nomo de kodosistemo: «%s»"
 
-#: tp/Texinfo/Parser.pm:3358
+#: tp/Texinfo/Parser.pm:3364
 #, perl-format
 msgid "@%s after the first element"
 msgstr "'@%s' post la unua elemento"
 
-#: tp/Texinfo/Parser.pm:3365
+#: tp/Texinfo/Parser.pm:3371
 #, perl-format
 msgid "@%s only meaningful on a @multitable line"
 msgstr "'@%s' nur sencas en '@multitable'-linio"
 
-#: tp/Texinfo/Parser.pm:3402
+#: tp/Texinfo/Parser.pm:3408
 #, perl-format
 msgid "@%s should not be associated with @top"
 msgstr "'@%s' ne devus esti rilatita al '@top'"
 
-#: tp/Texinfo/Parser.pm:3414
+#: tp/Texinfo/Parser.pm:3420
 #, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgstr "'@node' antaŭ '@%s', sed partoj ne rajtas rilati al nodoj"
 
-#: tp/Texinfo/Parser.pm:3516
+#: tp/Texinfo/Parser.pm:3522
 #, perl-format
 msgid "empty argument in @%s"
 msgstr "vaka argumento en '@%s'"
 
-#: tp/Texinfo/Parser.pm:3520
+#: tp/Texinfo/Parser.pm:3526
 #, perl-format
 msgid "empty node name after expansion `%s'"
 msgstr "vaka nodnomo post etendo '%s'"
 
-#: tp/Texinfo/Parser.pm:3563
+#: tp/Texinfo/Parser.pm:3569
 #, perl-format
 msgid "empty menu entry name in `%s'"
 msgstr "vaka menuernomo en '%s'"
 
-#: tp/Texinfo/Parser.pm:3571
+#: tp/Texinfo/Parser.pm:3577
 msgid "empty node name in menu entry"
 msgstr "vaka nodnomo en menuero"
 
-#: tp/Texinfo/Parser.pm:3644
+#: tp/Texinfo/Parser.pm:3650
 #, perl-format
 msgid "@%s should not appear in @%s"
-msgstr "'@%s' ne devus aperi en '@%s'"
+msgstr "@%s ne devus aperi en @%s"
 
-#: tp/Texinfo/Parser.pm:3776
-#, fuzzy, perl-format
+#: tp/Texinfo/Parser.pm:3782
+#, perl-format
 msgid "@end %s should only appear at the beginning of a line"
-msgstr "'@end %s' devus aperi nur je komenco de linio"
+msgstr "@end %s devus aperi nur je komenco de linio"
 
-#: tp/Texinfo/Parser.pm:3798
+#: tp/Texinfo/Parser.pm:3804
 #, perl-format
 msgid "macro `%s' previously defined"
 msgstr "makroo «%s» jam difiniĝis antaŭe"
 
-#: tp/Texinfo/Parser.pm:3801
+#: tp/Texinfo/Parser.pm:3807
 #, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "ĉi tie estas la antaŭa difino de «%s»"
 
-#: tp/Texinfo/Parser.pm:3806
+#: tp/Texinfo/Parser.pm:3812
 #, perl-format
 msgid "redefining Texinfo language command: @%s"
 msgstr "redifino de Texinfo-komando: @%s"
 
-#: tp/Texinfo/Parser.pm:3873
+#: tp/Texinfo/Parser.pm:3879
 #, perl-format
 msgid "@%s without associated character"
 msgstr "@%s sen rilatata signo"
 
-#: tp/Texinfo/Parser.pm:3943
+#: tp/Texinfo/Parser.pm:3949
 #, perl-format
 msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr "'@%s' kiu difiniĝis kun nula aŭ pluraj argumentoj alvokiĝendus kun {}"
 
-#: tp/Texinfo/Parser.pm:3968
+#: tp/Texinfo/Parser.pm:3974
 #, perl-format
 msgid ""
 "macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
@@ -2674,334 +2667,334 @@ msgstr ""
 "makroalvoko ingiĝas tro profunde (agordu MAX_NESTED_MACROS se necesas; nuna "
 "valoro estas %d)"
 
-#: tp/Texinfo/Parser.pm:3977
+#: tp/Texinfo/Parser.pm:3983
 #, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr "rikura alvoko de makroo %s malpermesetas; uzu '@rmacro' se necesas"
 
-#: tp/Texinfo/Parser.pm:4032
+#: tp/Texinfo/Parser.pm:4038
 #, perl-format
 msgid "accent command `@%s' must not be followed by whitespace"
 msgstr "post akcentkomando '@%s' ne devus sekvi blankspaco"
 
-#: tp/Texinfo/Parser.pm:4038
+#: tp/Texinfo/Parser.pm:4044
 #, perl-format
 msgid "use braces to give a command as an argument to @%s"
 msgstr "uzu vinkulojn {} por pasigi komandan argumenton al '@%s'"
 
-#: tp/Texinfo/Parser.pm:4051 tp/Texinfo/Parser.pm:5183
+#: tp/Texinfo/Parser.pm:4057 tp/Texinfo/Parser.pm:5189
 #, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s atendas argumenton 'i' aŭ 'j', ne '%s'"
 
-#: tp/Texinfo/Parser.pm:4062
+#: tp/Texinfo/Parser.pm:4068
 #, perl-format
 msgid "accent command `@%s' must not be followed by new line"
 msgstr "post akcentkomando '@%s' ne devus sekvi linifino"
 
-#: tp/Texinfo/Parser.pm:4073
+#: tp/Texinfo/Parser.pm:4079
 #, perl-format
 msgid "@%s expected braces"
 msgstr "@%s postulas vinkulojn {}"
 
-#: tp/Texinfo/Parser.pm:4227
+#: tp/Texinfo/Parser.pm:4233
 #, perl-format
 msgid "undefined flag: %s"
 msgstr "Nedifinita flago: %s"
 
-#: tp/Texinfo/Parser.pm:4230
+#: tp/Texinfo/Parser.pm:4236
 msgid "bad syntax for @value"
 msgstr "misa sintakso por '@value'"
 
-#: tp/Texinfo/Parser.pm:4237
+#: tp/Texinfo/Parser.pm:4243
 #, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s arkaikiĝis."
 
-#: tp/Texinfo/Parser.pm:4240
+#: tp/Texinfo/Parser.pm:4246
 #, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s arkaikiĝis; %s"
 
-#: tp/Texinfo/Parser.pm:4249
-#, fuzzy, perl-format
+#: tp/Texinfo/Parser.pm:4255
+#, perl-format
 msgid "@%s should only appear at the beginning of a line"
 msgstr "@%s devus aperi nur je komenco de linio"
 
-#: tp/Texinfo/Parser.pm:4340
+#: tp/Texinfo/Parser.pm:4346
 #, perl-format
 msgid "@%s not allowed inside `@%s' block"
 msgstr "@%s ne permesatas ene de bloko '@%s'"
 
-#: tp/Texinfo/Parser.pm:4349
+#: tp/Texinfo/Parser.pm:4355
 #, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr "@%s devus aperi nur en ĉapo aŭ subumo"
 
-#: tp/Texinfo/Parser.pm:4473 tp/Texinfo/Parser.pm:4490
-#: tp/Texinfo/Parser.pm:4540
+#: tp/Texinfo/Parser.pm:4479 tp/Texinfo/Parser.pm:4496
+#: tp/Texinfo/Parser.pm:4546
 #, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s estas sensenca ene de bloko '@%s'"
 
-#: tp/Texinfo/Parser.pm:4500
+#: tp/Texinfo/Parser.pm:4506
 #, perl-format
 msgid "@%s in empty multitable"
 msgstr "@%s en vaka plurtabelo"
 
-#: tp/Texinfo/Parser.pm:4506
+#: tp/Texinfo/Parser.pm:4512
 msgid "@tab before @item"
 msgstr "'@tab' antaŭ '@item'"
 
-#: tp/Texinfo/Parser.pm:4509
+#: tp/Texinfo/Parser.pm:4515
 #, perl-format
 msgid "too many columns in multitable item (max %d)"
 msgstr "tro da kolumnoj en elemento de plurtabelo (%d maksimume)"
 
-#: tp/Texinfo/Parser.pm:4546
+#: tp/Texinfo/Parser.pm:4552
 msgid "ignoring @tab outside of multitable"
 msgstr "ignoriĝas komando '@tab' ekster plurtabelo"
 
-#: tp/Texinfo/Parser.pm:4550
+#: tp/Texinfo/Parser.pm:4556
 #, perl-format
 msgid "@%s outside of table or list"
 msgstr "@%s ekster tabelo aŭ listo"
 
-#: tp/Texinfo/Parser.pm:4590
+#: tp/Texinfo/Parser.pm:4596
 #, perl-format
 msgid "must be after `@%s' to use `@%s'"
 msgstr "nur post '@%s' eblas uzi '@%s'"
 
-#: tp/Texinfo/Parser.pm:4632
+#: tp/Texinfo/Parser.pm:4638
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "@%s sensencas ekster blokoj '@titlepage' aŭ '@quotation'"
 
-#: tp/Texinfo/Parser.pm:4636
+#: tp/Texinfo/Parser.pm:4642
 msgid "@dircategory after first node"
 msgstr "'@dircategory' post la unua nodo"
 
-#: tp/Texinfo/Parser.pm:4841
+#: tp/Texinfo/Parser.pm:4847
 #, perl-format
 msgid "region %s inside region %s is not allowed"
 msgstr "regiono %s ene de regiono %s malpermesatas"
 
-#: tp/Texinfo/Parser.pm:4858
+#: tp/Texinfo/Parser.pm:4864
 msgid "@direntry after first node"
 msgstr "'@direntry' post la unua nodo"
 
-#: tp/Texinfo/Parser.pm:4866
+#: tp/Texinfo/Parser.pm:4872
 #, perl-format
 msgid "@%s seen before first @node"
 msgstr "'@%s' renkontiĝis jam antaŭ la unua '@node'"
 
-#: tp/Texinfo/Parser.pm:4869
+#: tp/Texinfo/Parser.pm:4875
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "eble via @top-nodo staru sub @ifnottex anstataŭ sub @ifinfo?"
 
-#: tp/Texinfo/Parser.pm:4931
+#: tp/Texinfo/Parser.pm:4937
 #, perl-format
 msgid "@%s should only appear in math context"
 msgstr "@%s devus aperi nur en matematika kunteksto"
 
-#: tp/Texinfo/Parser.pm:4939
+#: tp/Texinfo/Parser.pm:4945
 #, perl-format
 msgid "unknown command `%s'"
 msgstr "nekonata komando '%s'"
 
-#: tp/Texinfo/Parser.pm:4949
+#: tp/Texinfo/Parser.pm:4955
 msgid "unexpected @"
 msgstr "neatendita '@'"
 
-#: tp/Texinfo/Parser.pm:4977
+#: tp/Texinfo/Parser.pm:4983
 #, perl-format
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "@%s sensencas ekster bloko '@float'"
 
-#: tp/Texinfo/Parser.pm:4982
+#: tp/Texinfo/Parser.pm:4988
 #, perl-format
 msgid "@%s should be right below `@float'"
 msgstr "@%s devus esti tuj sub '@float'"
 
-#: tp/Texinfo/Parser.pm:4990
+#: tp/Texinfo/Parser.pm:4996
 #, perl-format
 msgid "ignoring multiple @%s"
 msgstr "pluraj '@%s' ignoriĝas"
 
-#: tp/Texinfo/Parser.pm:5108
+#: tp/Texinfo/Parser.pm:5114
 #, perl-format
 msgid "command @%s does not accept arguments"
 msgstr "komando @%s ne toleras argumentojn"
 
-#: tp/Texinfo/Parser.pm:5132
+#: tp/Texinfo/Parser.pm:5138
 #, perl-format
 msgid "command @%s missing a node or external manual argument"
 msgstr "al komando '@%s' mankas nodo aŭ ekstera manlibra argumento"
 
-#: tp/Texinfo/Parser.pm:5150
+#: tp/Texinfo/Parser.pm:5156
 #, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
 msgstr "vaka referenca nomo en '@%s' post etendo '%s'"
 
-#: tp/Texinfo/Parser.pm:5161
+#: tp/Texinfo/Parser.pm:5167
 #, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
 msgstr "vaka referenca titolo en '@%s' post etendo '%s'"
 
-#: tp/Texinfo/Parser.pm:5174
+#: tp/Texinfo/Parser.pm:5180
 msgid "@image missing filename argument"
 msgstr "mankas dosiera argumento en komando '@image'"
 
-#: tp/Texinfo/Parser.pm:5205
+#: tp/Texinfo/Parser.pm:5211
 #, perl-format
 msgid "@%s missing first argument"
 msgstr "al '@%s' mankas unua argumento"
 
-#: tp/Texinfo/Parser.pm:5224
+#: tp/Texinfo/Parser.pm:5230
 #, perl-format
 msgid "non-hex digits in argument for @U: %s"
 msgstr "nedeksesumaj ciferoj en argumento por @U: %s"
 
-#: tp/Texinfo/Parser.pm:5230
+#: tp/Texinfo/Parser.pm:5236
 #, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
 msgstr "malpli ol kvar deksesumaj ciferoj en argumento por @U: %s"
 
-#: tp/Texinfo/Parser.pm:5247
+#: tp/Texinfo/Parser.pm:5253
 #, perl-format
 msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
 msgstr "argumento por @U preterpasas Unikodan maksimumon 0x10FFFF: %s"
 
-#: tp/Texinfo/Parser.pm:5442
+#: tp/Texinfo/Parser.pm:5448
 msgid "superfluous arguments for node"
 msgstr "troaj argumentoj por nodo"
 
-#: tp/Texinfo/Parser.pm:5492
+#: tp/Texinfo/Parser.pm:5498
 #, perl-format
 msgid "expected @end %s"
 msgstr "atendatas '@end %s'"
 
-#: tp/Texinfo/Parser.pm:5601
+#: tp/Texinfo/Parser.pm:5607
 #, perl-format
 msgid "@%s should only accept a @-command as argument, not `%s'"
 msgstr "@%s devas toleri nur @-komando kiel argumento, ne '%s'"
 
-#: tp/Texinfo/Parser.pm:5611
+#: tp/Texinfo/Parser.pm:5617
 #, perl-format
 msgid "remaining argument on @%s line: %s"
 msgstr "restanta argumento sur @%s-linio: %s"
 
-#: tp/Texinfo/Parser.pm:5683
+#: tp/Texinfo/Parser.pm:5689
 #, perl-format
 msgid "environment command %s as argument to @%s"
 msgstr "media komando %s uziĝas kiel argumento de @%s"
 
-#: tp/Texinfo/Parser.pm:5704
+#: tp/Texinfo/Parser.pm:5710
 #, perl-format
 msgid "empty @%s"
 msgstr "vaka '@%s'"
 
-#: tp/Texinfo/Parser.pm:5712
+#: tp/Texinfo/Parser.pm:5718
 #, perl-format
 msgid "column fraction not a number: %s"
 msgstr "kolumna frakcio ne estas nombro: %s"
 
-#: tp/Texinfo/Parser.pm:5721
+#: tp/Texinfo/Parser.pm:5727
 #, perl-format
 msgid "@sp arg must be numeric, not `%s'"
 msgstr "argumento de @sp devas esti nombro, ne '%s'"
 
-#: tp/Texinfo/Parser.pm:5730
+#: tp/Texinfo/Parser.pm:5736
 #, perl-format
 msgid "reserved index name %s"
 msgstr "rezervita indeksnomo %s"
 
-#: tp/Texinfo/Parser.pm:5756
+#: tp/Texinfo/Parser.pm:5762
 #, perl-format
 msgid "unknown source index in @%s: %s"
 msgstr "nekonata fontindekso en @%s: %s"
 
-#: tp/Texinfo/Parser.pm:5759
+#: tp/Texinfo/Parser.pm:5765
 #, perl-format
 msgid "unknown destination index in @%s: %s"
 msgstr "nekonata celindekso en @%s: %s"
 
-#: tp/Texinfo/Parser.pm:5787
+#: tp/Texinfo/Parser.pm:5793
 #, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr "@%s kondukus al kunfando de %s en si mem; ignoriĝas"
 
-#: tp/Texinfo/Parser.pm:5800
+#: tp/Texinfo/Parser.pm:5806
 #, perl-format
 msgid "unknown index `%s' in @printindex"
 msgstr "nekonata indekso «%s» en @printindex"
 
-#: tp/Texinfo/Parser.pm:5806
+#: tp/Texinfo/Parser.pm:5812
 #, perl-format
 msgid "printing an index `%s' merged in another one `%s'"
 msgstr "presiĝas indekso '%s' kiu kunfandiĝis en alia '%s'"
 
-#: tp/Texinfo/Parser.pm:5814
+#: tp/Texinfo/Parser.pm:5820
 #, perl-format
 msgid "printindex before document beginning: @printindex %s"
 msgstr "preskomando antaŭ komenco de dokumento: @printindex %s"
 
-#: tp/Texinfo/Parser.pm:5830
+#: tp/Texinfo/Parser.pm:5836
 #, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr "argumento de '@%s' devus esti 'top' aŭ 'bottom', ne '%s'"
 
-#: tp/Texinfo/Parser.pm:5838
+#: tp/Texinfo/Parser.pm:5844
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "por '@%s' nur '10' aŭ '11' eblas, ne '%s'"
 
-#: tp/Texinfo/Parser.pm:5846
+#: tp/Texinfo/Parser.pm:5852
 #, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr "argumento de '@%s' devus esti 'separate' aŭ 'end', ne '%s'"
 
-#: tp/Texinfo/Parser.pm:5854
+#: tp/Texinfo/Parser.pm:5860
 #, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr "argumento de '@%s' devus esti 'on' aŭ 'off' aŭ 'odd', ne '%s'"
 
-#: tp/Texinfo/Parser.pm:5872 tp/Texinfo/Parser.pm:5877
+#: tp/Texinfo/Parser.pm:5878 tp/Texinfo/Parser.pm:5883
 #, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr ""
 "argumento de '@paragraphindent' devus esti numera aŭ 'none' aŭ 'asis', ne "
 "'%s'"
 
-#: tp/Texinfo/Parser.pm:5885
+#: tp/Texinfo/Parser.pm:5891
 #, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr ""
 "argumento de '@firstparagraphindent' devus esti 'none' aŭ 'insert', ne '%s'"
 
-#: tp/Texinfo/Parser.pm:5895
+#: tp/Texinfo/Parser.pm:5901
 #, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr "argumento de '@exampleindent' devus esti numera aŭ 'asis', ne '%s'"
 
-#: tp/Texinfo/Parser.pm:5907
+#: tp/Texinfo/Parser.pm:5913
 #, perl-format
 msgid "expected @%s on or off, not `%s'"
 msgstr "post @%s devas sekvi 'on' aŭ 'off', ne '%s'"
 
-#: tp/Texinfo/Parser.pm:5916
+#: tp/Texinfo/Parser.pm:5922
 #, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr ""
 "argumento de '@kbdinputstyle' devus esti 'code'/'example'/'distinct', ne '%s'"
 
-#: tp/Texinfo/Parser.pm:5924
+#: tp/Texinfo/Parser.pm:5930
 #, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr "argumento de '@allowcodebreaks' devus esti 'true' aŭ 'false', ne '%s'"
 
-#: tp/Texinfo/Parser.pm:5932
+#: tp/Texinfo/Parser.pm:5938
 #, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr ""
@@ -3647,6 +3640,12 @@ msgstr "%s: eraro dum fermo de %s (dosiero de internaj ligoj): %s\n"
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: ne eblas malfermi %s por skribi: %s\n"
+
+#~ msgid "-%s---Info: %s, %ld lines --%s--"
+#~ msgstr "-%s---Info: %s, %ld linioj --%s--"
+
+#~ msgid "-%s---Info: (%s)%s, %ld lines --%s--"
+#~ msgstr "-%s---Info: (%s)%s, %ld linioj --%s--"
 
 #~ msgid "No file given for node '%s'."
 #~ msgstr "Neniu dosiero indikatas por nodo «%s»."
