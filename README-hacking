@@ -191,6 +191,8 @@ Check that translations have been updated, e.g.:
                  texinfo_document
     followed by copying updated translation files to po/ and po_document/.
 pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
+
+check that the svn checkout is up-to-date (run "svnversion" and "svn update")
 make
 make update-po            # both po and po_document needed, build a dist first
 make -C doc wwwdoc-build  # and -install for official (and eventual commit)

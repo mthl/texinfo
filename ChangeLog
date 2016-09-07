@@ -1,3 +1,8 @@
+2016-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Add note about checking svn checkout is 
+	up-to-date.
+
 2016-09-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* pretest 6.1.91
