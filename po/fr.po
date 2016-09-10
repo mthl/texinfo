@@ -13,10 +13,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 6.1.90\n"
+"Project-Id-Version: texinfo 6.1.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2016-09-05 20:01+0100\n"
-"PO-Revision-Date: 2016-08-16 20:54+0200\n"
+"POT-Creation-Date: 2016-09-10 12:45+0100\n"
+"PO-Revision-Date: 2016-09-10 12:47+0200\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@orange.fr>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -121,9 +121,8 @@ msgid "Invalid back reference"
 msgstr "Référence arrière incorrecte"
 
 #: gnulib/lib/regcomp.c:156
-#, fuzzy
 msgid "Unmatched [, [^, [:, [., or [="
-msgstr "[ ou [^ sans correspondance"
+msgstr "[, [^, [:, [., ou [= sans correspondance"
 
 #: gnulib/lib/regcomp.c:159
 msgid "Unmatched ( or \\("
@@ -3707,9 +3706,3 @@ msgstr "%s : erreur de fermeture du fichiers de liens internes %s : %s\n"
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s : impossible d'ouvrir %s en écriture : %s\n"
-
-#~ msgid "-%s---Info: %s, %ld lines --%s--"
-#~ msgstr "-%s---Info : %s, %ld lignes --%s--"
-
-#~ msgid "-%s---Info: (%s)%s, %ld lines --%s--"
-#~ msgstr "-%s---Info : (%s)%s, %ld lignes --%s--"

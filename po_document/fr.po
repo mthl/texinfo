@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo_document 6.0.90\n"
+"Project-Id-Version: texinfo_document 6.1.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2016-09-05 20:01+0100\n"
-"PO-Revision-Date: 2015-12-23 14:42+0100\n"
+"POT-Creation-Date: 2016-09-10 12:46+0100\n"
+"PO-Revision-Date: 2016-09-10 13:03+0200\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@orange.fr>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -65,7 +65,7 @@ msgstr "le {day} {month} {year}"
 #: tp/Texinfo/Convert/HTML.pm:516
 #, perl-brace-format
 msgid "Appendix {number} {section_title}"
-msgstr "Appendice {number} {section_title}"
+msgstr "Annexe {number} {section_title}"
 
 #: tp/Texinfo/Common.pm:1245 tp/Texinfo/Convert/Plaintext.pm:1138
 #: tp/Texinfo/Convert/HTML.pm:522
@@ -483,7 +483,7 @@ msgstr "N@oe{}ud pr@'ec@'edent"
 
 #: tp/Texinfo/Convert/HTML.pm:777
 msgid "Next node in node reading order"
-msgstr "N@oe{}ud suivante dans l'ordre de lecture"
+msgstr "N@oe{}ud suivant dans l'ordre de lecture"
 
 #: tp/Texinfo/Convert/HTML.pm:778
 msgid "Previous node in node reading order"
@@ -813,7 +813,7 @@ msgid ""
 "@uref{{program_homepage}, @emph{{program}}}."
 msgstr ""
 "Ce document a @'et@'e g@'en@'er@'e @emph{@today{}} en utilisant "
-"@uref{{program_homepage}, @emph{{program}}}"
+"@uref{{program_homepage}, @emph{{program}}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6175
 msgid "This document was generated on @emph{@today{}}."

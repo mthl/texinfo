@@ -1,3 +1,14 @@
+2016-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	6.2 release.
+	* configure.ac, NEWS, util/texi2dvi, util/texi2pdf,
+	doc/refcard/txirefcard.tex, texindex/texindex.awk:
+	Version number.
+	* tp/Texinfo: Update version numbers in modules.
+	* po, po_document: Synch with translationproject.org and run 
+	"make update_po".
+	* build-aux/texinfo.tex: Update from doc/texinfo.tex.
+
 2016-09-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* pretest 6.1.92

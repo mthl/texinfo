@@ -8,10 +8,10 @@
 # Božidar Putanec <bozidarp@yahoo.com>, 2016.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo-6.1.90\n"
+"Project-Id-Version: texinfo-6.1.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2016-09-05 20:01+0100\n"
-"PO-Revision-Date: 2016-08-17 16:26+0200\n"
+"POT-Creation-Date: 2016-09-10 12:45+0100\n"
+"PO-Revision-Date: 2016-09-09 20:05+0200\n"
 "Last-Translator: Božidar Putanec <bozidarp@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "Language: hr\n"
@@ -118,9 +118,8 @@ msgid "Invalid back reference"
 msgstr "Neispravna povratna referencija"
 
 #: gnulib/lib/regcomp.c:156
-#, fuzzy
 msgid "Unmatched [, [^, [:, [., or [="
-msgstr "Neuparena [ ili [^"
+msgstr "Neupareni [, [^, [:, [., or [="
 
 #: gnulib/lib/regcomp.c:159
 msgid "Unmatched ( or \\("

@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 6.1.90\n"
+"Project-Id-Version: texinfo 6.1.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2016-09-05 20:01+0100\n"
-"PO-Revision-Date: 2016-08-22 18:49+0200\n"
+"POT-Creation-Date: 2016-09-10 12:45+0100\n"
+"PO-Revision-Date: 2016-09-09 19:09+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "Language: pl\n"
@@ -113,9 +113,8 @@ msgid "Invalid back reference"
 msgstr "Błędne odniesienie wstecz"
 
 #: gnulib/lib/regcomp.c:156
-#, fuzzy
 msgid "Unmatched [, [^, [:, [., or [="
-msgstr "Niesparowane [ lub [^"
+msgstr "Niesparowane [, [^, [:, [. lub [="
 
 #: gnulib/lib/regcomp.c:159
 msgid "Unmatched ( or \\("
@@ -3682,9 +3681,3 @@ msgstr "%s: błąd podczas zamykania pliku odnośników wewnętrznych %s: %s\n"
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: nie można otworzyć pliku %s do zapisu: %s\n"
-
-#~ msgid "-%s---Info: %s, %ld lines --%s--"
-#~ msgstr "-%s---Info: %s, %ld linii --%s--"
-
-#~ msgid "-%s---Info: (%s)%s, %ld lines --%s--"
-#~ msgstr "-%s---Info: (%s)%s, %ld linii --%s--"
