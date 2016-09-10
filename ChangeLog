@@ -1,5 +1,10 @@
 2016-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/README: Mention that the tests must be run before the 
+	reference results can be updated.
+
+2016-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* README-hacking: Add note about updating the version number 
 	under tp/Texinfo/Convert/XSParagraph.
 
