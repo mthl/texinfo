@@ -1,5 +1,10 @@
 2016-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README-hacking: Add note about updating the version number 
+	under tp/Texinfo/Convert/XSParagraph.
+
+2016-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	6.2 release.
 	* configure.ac, NEWS, util/texi2dvi, util/texi2pdf,
 	doc/refcard/txirefcard.tex, texindex/texindex.awk:
