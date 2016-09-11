@@ -1,4 +1,10 @@
 2016-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
+	
+	* doc/texinfo.tex: Remove 'arch-tag' marker at end of file.
+	(Added on 2003-10-09 for use by Miles Bader in arch mirror of 
+	emacs sources.)
+
+2016-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	6.3 release.
 	* configure.ac, NEWS, util/texi2dvi, util/texi2pdf,
