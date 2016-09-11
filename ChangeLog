@@ -1,4 +1,10 @@
-2016-09-10  Gavin Smith  <gavinsmith0123@gmail.com>
+2016-09-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* texinfo.tex (\|): Remove definition for changebars, as it is 
+	not used, doesn't work for multiple lines, and isn't supported 
+	in texi2any.
+
+2016-09-11  Gavin Smith  <gavinsmith0123@gmail.com>
 	
 	* doc/texinfo.tex: Remove 'arch-tag' marker at end of file.
 	(Added on 2003-10-09 for use by Miles Bader in arch mirror of 
