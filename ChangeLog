@@ -2,6 +2,7 @@
 
 	* doc/texinfo-tex-test.texi (Non-existent target): New example 
 	of an @xref.
+	(Fonts): New test of the fonts used.
 
 2016-09-11  Gavin Smith  <gavinsmith0123@gmail.com>
 

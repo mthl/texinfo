@@ -30,6 +30,32 @@
 
 @part Part One@*Sample part page
 
+@chapter Fonts
+
+@macro headerline
+@r{roman} @i{italic} @b{bold} @t{typewriter} @slanted{slant} @*
+@sansserif{`sans serif'} @sc{`small caps'} {@ensuremath@clubsuit}
+@hrule
+@end macro
+
+A test of the fonts used in @file{texinfo.tex}.
+
+{@titlefonts @headerline}
+
+{@textfonts @headerline}
+
+{@chapfonts @headerline}
+
+{@secfonts @headerline}
+
+{@subsecfonts @headerline}
+
+{@reducedfonts @headerline}
+
+{@smallfonts @headerline}
+
+{@smallerfonts @headerline}
+
 @chapter Macros
 @section Backslashes in macro arguments
 
