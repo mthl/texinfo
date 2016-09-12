@@ -1,6 +1,11 @@
 2016-09-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* texinfo.tex (\|): Remove definition for changebars, as it is 
+	* doc/texinfo-tex-test.texi (Non-existent target): New example 
+	of an @xref.
+
+2016-09-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\|): Remove definition for changebars, as it is
 	not used, doesn't work for multiple lines, and isn't supported 
 	in texi2any.
 

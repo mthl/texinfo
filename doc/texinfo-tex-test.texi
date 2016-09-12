@@ -1091,6 +1091,8 @@ The value is @value{foo-bar_}.
 
 @chapter Cross-references
 
+@section Comma insertion
+
 Check commas surrounding page number:
 
 @noindent
@@ -1114,8 +1116,13 @@ See @ref{Target}.@*
 (@pxref{Target}) (@code{@@pxref})@*
 (@pxref{Target,, Hurricanes})
 
+
 @node Target
 @section Target
+
+@section Non-existent target
+
+@xref{blllllllrrrrrrghhh}.
 
 @chapter Copying and captions
 
