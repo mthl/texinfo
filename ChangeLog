@@ -1,4 +1,21 @@
-2016-09-11  Gavin Smith  <gavinsmith0123@gmail.com>
+2016-09-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex
+	(\tenrm, \tenit, \tensl, \tenbf, \tentt, \tensf, \teni)
+	(\tensy, \tenttsl):
+	Rename as \rmfont, \itfont, \slfont, \bffont, \ttfont, \sffont,
+	\ifont, \syfont and \ttslfont respectively, because these fonts 
+	are not always ten points in size.  No functional changes intended.
+	(\setfontstyle, \selectfonts, \rmisbold)
+	(\rm, \it, \sl, \bf, \tt, \sf, \ttsl): Move after section on PDF 
+	CMaps and font definitions so that \setfontstyle is closer to 
+	the definition of the fonts it uses, and \rm etc. are closer to 
+	\textfonts etc. which use them.
+	(\li): Remove synonym of \sf.
+	(\shortcontrm, \shortcontbf, \shortcontsl, \shortconttt): Move 
+	to be with the other fonts defined with \setfont.
+
+2016-09-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo-tex-test.texi (Non-existent target): New example 
 	of an @xref.
