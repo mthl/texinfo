@@ -1,3 +1,14 @@
+2016-09-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\assignfonts): New macro, in order to reduce
+	duplicated code in \textfonts, \titlefonts, \chapfonts, 
+	\secfonts, \subsecfonts, \reducedfonts and \smallfonts, 
+	(\smallerfonts \textfonts, \titlefonts, \chapfonts, \secfonts)
+	(\subsecfonts, \reducedfonts, \smallfonts, \smallerfonts):
+	Use \assignfonts.
+	(\ttslfont): Assign correctly (previous patch called it \ttfontsl
+	by mistake).
+
 2016-09-17  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo.tex

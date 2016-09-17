@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-09-17.16}
+\def\texinfoversion{2016-09-17.17}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -2537,71 +2537,61 @@ end
 %
 % This all needs generalizing, badly.
 %
+
+\def\assignfonts#1{%
+  \expandafter\let\expandafter\rmfont\csname #1rm\endcsname
+  \expandafter\let\expandafter\itfont\csname #1it\endcsname
+  \expandafter\let\expandafter\slfont\csname #1sl\endcsname
+  \expandafter\let\expandafter\bffont\csname #1bf\endcsname
+  \expandafter\let\expandafter\ttfont\csname #1tt\endcsname
+  \expandafter\let\expandafter\smallcaps\csname #1sc\endcsname
+  \expandafter\let\expandafter\sffont  \csname #1sf\endcsname
+  \expandafter\let\expandafter\ifont   \csname #1i\endcsname
+  \expandafter\let\expandafter\syfont  \csname #1sy\endcsname
+  \expandafter\let\expandafter\ttslfont\csname #1ttsl\endcsname
+}
+
 \def\textfonts{%
-  \let\rmfont=\textrm \let\itfont=\textit \let\slfont=\textsl
-  \let\bffont=\textbf \let\ttfont=\texttt \let\smallcaps=\textsc
-  \let\sffont=\textsf \let\ifont=\texti \let\syfont=\textsy
-  \let\ttfontsl=\textttsl
   \def\curfontsize{text}%
   \def\lsize{reduced}\def\lllsize{smaller}%
+  \assignfonts{text}%
   \resetmathfonts \setleading{\textleading}}
 \def\titlefonts{%
-  \let\rmfont=\titlerm \let\itfont=\titleit \let\slfont=\titlesl
-  \let\bffont=\titlebf \let\ttfont=\titlett \let\smallcaps=\titlesc
-  \let\sffont=\titlesf \let\ifont=\titlei \let\syfont=\titlesy
-  \let\ttfontsl=\titlettsl
   \def\curfontsize{title}%
   \def\lsize{chap}\def\lllsize{subsec}%
+  \assignfonts{title}%
   \resetmathfonts \setleading{27pt}}
 \def\titlefont#1{{\titlefonts\rmisbold #1}}
 \def\chapfonts{%
-  \let\rmfont=\chaprm \let\itfont=\chapit \let\slfont=\chapsl
-  \let\bffont=\chapbf \let\ttfont=\chaptt \let\smallcaps=\chapsc
-  \let\sffont=\chapsf \let\ifont=\chapi \let\syfont=\chapsy
-  \let\ttfontsl=\chapttsl
   \def\curfontsize{chap}%
   \def\lsize{sec}\def\lllsize{text}%
+  \assignfonts{chap}%
   \resetmathfonts \setleading{19pt}}
 \def\secfonts{%
-  \let\rmfont=\secrm \let\itfont=\secit \let\slfont=\secsl
-  \let\bffont=\secbf \let\ttfont=\sectt \let\smallcaps=\secsc
-  \let\sffont=\secsf \let\ifont=\seci \let\syfont=\secsy
-  \let\ttfontsl=\secttsl
   \def\curfontsize{sec}%
   \def\lsize{subsec}\def\lllsize{reduced}%
+  \assignfonts{sec}%
   \resetmathfonts \setleading{17pt}}
 \def\subsecfonts{%
-  \let\rmfont=\ssecrm \let\itfont=\ssecit \let\slfont=\ssecsl
-  \let\bffont=\ssecbf \let\ttfont=\ssectt \let\smallcaps=\ssecsc
-  \let\sffont=\ssecsf \let\ifont=\sseci \let\syfont=\ssecsy
-  \let\ttfontsl=\ssecttsl
   \def\curfontsize{ssec}%
   \def\lsize{text}\def\lllsize{small}%
+  \assignfonts{ssec}%
   \resetmathfonts \setleading{15pt}}
 \let\subsubsecfonts = \subsecfonts
 \def\reducedfonts{%
-  \let\rmfont=\reducedrm \let\itfont=\reducedit \let\slfont=\reducedsl
-  \let\bffont=\reducedbf \let\ttfont=\reducedtt \let\reducedcaps=\reducedsc
-  \let\sffont=\reducedsf \let\ifont=\reducedi \let\syfont=\reducedsy
-  \let\ttfontsl=\reducedttsl
   \def\curfontsize{reduced}%
   \def\lsize{small}\def\lllsize{smaller}%
+  \assignfonts{reduced}%
   \resetmathfonts \setleading{10.5pt}}
 \def\smallfonts{%
-  \let\rmfont=\smallrm \let\itfont=\smallit \let\slfont=\smallsl
-  \let\bffont=\smallbf \let\ttfont=\smalltt \let\smallcaps=\smallsc
-  \let\sffont=\smallsf \let\ifont=\smalli \let\syfont=\smallsy
-  \let\ttfontsl=\smallttsl
   \def\curfontsize{small}%
   \def\lsize{smaller}\def\lllsize{smaller}%
+  \assignfonts{small}%
   \resetmathfonts \setleading{10.5pt}}
 \def\smallerfonts{%
-  \let\rmfont=\smallerrm \let\itfont=\smallerit \let\slfont=\smallersl
-  \let\bffont=\smallerbf \let\ttfont=\smallertt \let\smallcaps=\smallersc
-  \let\sffont=\smallersf \let\ifont=\smalleri \let\syfont=\smallersy
-  \let\ttfontsl=\smallerttsl
   \def\curfontsize{smaller}%
   \def\lsize{smaller}\def\lllsize{smaller}%
+  \assignfonts{smaller}%
   \resetmathfonts \setleading{9.5pt}}
 
 % Define these just so they can be easily changed for other fonts.
