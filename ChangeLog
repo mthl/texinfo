@@ -1,3 +1,10 @@
+2016-09-17  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo.tex
+	(\latonechardefs, \latninechardefs)
+	(\lattwochardefs, \unicodechardefs):
+	Add missing braces for symbol insertion commands with no arguments.
+
 2016-09-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex
