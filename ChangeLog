@@ -8,6 +8,7 @@
 	Use \assignfonts.
 	(\ttslfont): Assign correctly (previous patch called it \ttfontsl
 	by mistake).
+	(\df): Refer to \ttslfont.
 
 2016-09-17  Masamichi Hosoda  <trueroad@trueroad.jp>
 
