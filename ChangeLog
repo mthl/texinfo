@@ -1,5 +1,13 @@
 2016-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Plaintext.pm (_compute_spaces_align_line):
+	Change a ">" to a ">=" to avoid the possibility of a negative 
+	return value when $line_width equals $max_column exactly.  Error 
+	message "Negative repeat count does nothing" reported by
+	Paul Eggert.
+
+2016-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/indices.c (info_virtual_index): Put text within a
 	call to gettext so that it can be translated.
 

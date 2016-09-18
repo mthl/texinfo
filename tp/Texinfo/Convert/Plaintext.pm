@@ -940,7 +940,7 @@ sub _compute_spaces_align_line($$$;$)
   my $no_align = shift;
 
   my $spaces_prepended;
-  if ($line_width > $max_column or $no_align) {
+  if ($line_width >= $max_column or $no_align) {
     $spaces_prepended = 0;
   } elsif ($direction eq 'center') {
     # if no int we may end up with floats...
