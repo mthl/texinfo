@@ -1,5 +1,10 @@
 2016-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/indices.c (info_virtual_index): Put text within a
+	call to gettext so that it can be translated.
+
+2016-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\definefontsetatsize): New macro to reduce 
 	repetition in \textfonts, \titlefonts etc.
 	(\reducedrm): Comment changed.

@@ -857,11 +857,12 @@ DECLARE_INFO_COMMAND (info_virtual_index,
   
   text_buffer_init (&text);
   text_buffer_printf (&text,
-		      "File: %s,  Node: Index for '%s'\n\n"
-		      "Virtual Index\n"
-		      "*************\n\n"
-                      "Index entries that match '%s':\n",
-                      fb->filename, index_search, index_search);
+                      "File: %s,  Node: Index for '%s'\n\n",
+                      fb->filename, index_search);
+  text_buffer_printf (&text, _("Virtual Index\n"
+                               "*************\n\n"
+                               "Index entries that match '%s':\n"),
+                      index_search);
   text_buffer_add_string (&text, "\0\b[index\0\b]", 11);
   text_buffer_printf (&text, "\n* Menu:\n\n");
 
