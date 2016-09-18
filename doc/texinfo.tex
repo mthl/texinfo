@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2016-09-17.18}
+\def\texinfoversion{2016-09-18.11}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -2497,10 +2497,6 @@ end
 \def\bf{\fam=\bffam \setfontstyle{bf}}\def\bfstylename{bf}
 \def\tt{\fam=\ttfam \setfontstyle{tt}}
 
-% Unfortunately, we have to override this for titles and the like, since
-% in those cases "rm" is bold.  Sigh.
-\def\rmisbold{\rm\def\curfontstyle{bf}}
-
 % Texinfo sort of supports the sans serif font style, which plain TeX does not.
 % So we set up a \sf.
 \newfam\sffam
@@ -2520,16 +2516,12 @@ end
   \textfont\ttfam=\ttfont \textfont\sffam=\sffont
 }
 
-% Select #1 fonts with the current style.  Used to change font size
-% in, e.g., the LaTeX logo and acronyms.
 %
-\def\selectfonts#1{\csname #1fonts\endcsname \csname\curfontstyle\endcsname}
 
-% The font-changing commands (all called \...fonts) redefine the meanings of 
-% \STYLEfont, instead
-% of just \STYLE.  We do this because \STYLE needs to also set the
-% current \fam for math mode.  Our \STYLE (e.g., \rm) commands hardwire
-% \STYLEfont to set the current font.
+% The font-changing commands (all called \...fonts) redefine the meanings
+% of \STYLEfont, instead of just \STYLE.  We do this because \STYLE needs
+% to also set the current \fam for math mode.  Our \STYLE (e.g., \rm)
+% commands hardwire \STYLEfont to set the current font.
 %
 % Each font-changing command also sets the names \lsize (one size lower)
 % and \lllsize (three sizes lower).  These relative commands are used
@@ -2551,46 +2543,75 @@ end
   \expandafter\let\expandafter\ttslfont\csname #1ttsl\endcsname
 }
 
+\newif\ifrmisbold
+
+% Select smaller font size with the current style.  Used to change font size
+% in, e.g., the LaTeX logo and acronyms.  If we are using bold fonts for
+% normal roman text, also use bold fonts for roman text in the smaller size.
+\def\switchtolllsize{%
+   \expandafter\assignfonts\expandafter{\lllsize}%
+   \ifrmisbold
+     \let\rmfont\bffont
+   \fi
+   \csname\curfontstyle\endcsname
+}%
+
+\def\switchtolsize{%
+   \expandafter\assignfonts\expandafter{\lsize}%
+   \ifrmisbold
+     \let\rmfont\bffont
+   \fi
+   \csname\curfontstyle\endcsname
+}%
+
 \def\textfonts{%
   \def\curfontsize{text}%
   \def\lsize{reduced}\def\lllsize{smaller}%
+  \rmisboldfalse
   \assignfonts{text}%
   \resetmathfonts \setleading{\textleading}}
 \def\titlefonts{%
   \def\curfontsize{title}%
   \def\lsize{chap}\def\lllsize{subsec}%
+  \rmisboldtrue
   \assignfonts{title}%
   \resetmathfonts \setleading{27pt}}
-\def\titlefont#1{{\titlefonts\rmisbold #1}}
+\def\titlefont#1{{\titlefonts\rm #1}}
 \def\chapfonts{%
   \def\curfontsize{chap}%
   \def\lsize{sec}\def\lllsize{text}%
+  \rmisboldtrue
   \assignfonts{chap}%
   \resetmathfonts \setleading{19pt}}
 \def\secfonts{%
   \def\curfontsize{sec}%
   \def\lsize{subsec}\def\lllsize{reduced}%
+  \rmisboldtrue
   \assignfonts{sec}%
   \resetmathfonts \setleading{17pt}}
 \def\subsecfonts{%
   \def\curfontsize{ssec}%
   \def\lsize{text}\def\lllsize{small}%
+  \rmisboldtrue
   \assignfonts{ssec}%
   \resetmathfonts \setleading{15pt}}
 \let\subsubsecfonts = \subsecfonts
 \def\reducedfonts{%
   \def\curfontsize{reduced}%
   \def\lsize{small}\def\lllsize{smaller}%
+  \rmisboldfalse
   \assignfonts{reduced}%
   \resetmathfonts \setleading{10.5pt}}
 \def\smallfonts{%
   \def\curfontsize{small}%
   \def\lsize{smaller}\def\lllsize{smaller}%
+  \rmisboldfalse
   \assignfonts{small}%
   \resetmathfonts \setleading{10.5pt}}
 \def\smallerfonts{%
   \def\curfontsize{smaller}%
   \def\lsize{smaller}\def\lllsize{smaller}%
+  \rmisboldfalse
   \assignfonts{smaller}%
   \resetmathfonts \setleading{9.5pt}}
 
@@ -3217,7 +3238,7 @@ end
 %
 \def\acronym#1{\doacronym #1,,\finish}
 \def\doacronym#1,#2,#3\finish{%
-  {\selectfonts\lsize #1}%
+  {\switchtolsize #1}%
   \def\temp{#2}%
   \ifx\temp\empty \else
     \space ({\unsepspaces \ignorespaces \temp \unskip})%
@@ -3310,10 +3331,10 @@ end
 % fix it (significant additions to font machinery) until someone notices.
 %
 \def\sub{\ifmmode \expandafter\sb \else \expandafter\finishsub\fi}
-\def\finishsub#1{$\sb{\hbox{\selectfonts\lllsize #1}}$}%
+\def\finishsub#1{$\sb{\hbox{\switchtolllsize #1}}$}%
 %
 \def\sup{\ifmmode \expandafter\ptexsp \else \expandafter\finishsup\fi}
-\def\finishsup#1{$\ptexsp{\hbox{\selectfonts\lllsize #1}}$}%
+\def\finishsup#1{$\ptexsp{\hbox{\switchtolllsize #1}}$}%
 
 % @inlinefmt{FMTNAME,PROCESSED-TEXT} and @inlineraw{FMTNAME,RAW-TEXT}.
 % Ignore unless FMTNAME == tex; then it is like @iftex and @tex,
@@ -3398,8 +3419,8 @@ end
 % Plain TeX defines: @AA @AE @O @OE @L (plus lowercase versions) @ss.
 \def\questiondown{?`}
 \def\exclamdown{!`}
-\def\ordf{\leavevmode\raise1ex\hbox{\selectfonts\lllsize \underbar{a}}}
-\def\ordm{\leavevmode\raise1ex\hbox{\selectfonts\lllsize \underbar{o}}}
+\def\ordf{\leavevmode\raise1ex\hbox{\switchtolllsize \underbar{a}}}
+\def\ordm{\leavevmode\raise1ex\hbox{\switchtolllsize \underbar{o}}}
 
 % Dotless i and dotless j, used for accents.
 \def\imacro{i}
@@ -3428,12 +3449,12 @@ end
   {\setbox0=\hbox{T}%
    \vbox to \ht0{\hbox{%
      \ifx\textnominalsize\xwordpt
-       % for 10pt running text, \lllsize (8pt) is too small for the A in LaTeX.
+       % for 10pt running text, lllsize (8pt) is too small for the A in LaTeX.
        % Revert to plain's \scriptsize, which is 7pt.
        \count255=\the\fam $\fam\count255 \scriptstyle A$%
      \else
        % For 11pt, we can use our lllsize.
-       \selectfonts\lllsize A%
+       \switchtolllsize A%
      \fi
      }%
      \vss
@@ -3650,7 +3671,7 @@ end
 % Adapted from the plain.tex definition of \copyright.
 %
 \def\registeredsymbol{%
-  $^{{\ooalign{\hfil\raise.07ex\hbox{\selectfonts\lllsize R}%
+  $^{{\ooalign{\hfil\raise.07ex\hbox{\switchtolllsize R}%
                \hfil\crcr\Orb}}%
     }$%
 }
@@ -3744,12 +3765,11 @@ end
 
 % Settings used for typesetting titles: no hyphenation, no indentation,
 % don't worry much about spacing, ragged right.  This should be used
-% inside a \vbox, and fonts need to be set appropriately first.  Because
-% it is always used for titles, nothing else, we call \rmisbold.  \par
-% should be specified before the end of the \vbox, since a vbox is a group.
+% inside a \vbox, and fonts need to be set appropriately first. \par should
+% be specified before the end of the \vbox, since a vbox is a group.
 % 
 \def\raggedtitlesettings{%
-  \rmisbold
+  \rm
   \hyphenpenalty=10000
   \parindent=0pt
   \tolerance=5000
@@ -3784,7 +3804,7 @@ end
   \else
     \checkenv\titlepage
     \ifseenauthor\else \vskip 0pt plus 1filll \seenauthortrue \fi
-    {\secfonts\rmisbold \leftline{#1}}%
+    {\secfonts\rm \leftline{#1}}%
   \fi
 }
 
@@ -6059,7 +6079,7 @@ end
   \null
   \vskip.3\vsize  % move it down on the page a bit
   \begingroup
-    \noindent \titlefonts\rmisbold #1\par % the text
+    \noindent \titlefonts\rm #1\par % the text
     \let\lastnode=\empty      % no node to associate with
     \writetocentry{part}{#1}{}% but put it in the toc
     \headingsoff              % no headline or footline on the part page
@@ -6545,7 +6565,7 @@ end
   \domark
   %
   {%
-    \chapfonts \rmisbold
+    \chapfonts \rm
     \let\footnote=\errfootnoteheading % give better error message
     %
     % Have to define \lastsection before calling \donoderef, because the
@@ -6637,7 +6657,7 @@ end
     \let\footnote=\errfootnoteheading
     %
     % Switch to the right set of fonts.
-    \csname #2fonts\endcsname \rmisbold
+    \csname #2fonts\endcsname \rm
     %
     % Insert first mark before the heading break (see notes for \domark).
     \let\prevsectiondefs=\lastsectiondefs

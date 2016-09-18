@@ -1,3 +1,20 @@
+2016-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\ifrmisbold): Define with \newif.
+	(\switchtolsize, \switchtolllsize): Define for each font size.  
+	If \ifrmisbold is true, override \rmfont with \bffont.  This 
+	guarantees that the roman font will be overridden, instead of 
+	having to call \rmisbold everywhere large font sizes are used.
+	It also ensures that superscripts are in bold for large font 
+	sizes when style commands are nested.
+	(\textfonts, \titlefonts, \chapfonts, \secfonts, \subsecfonts)
+	(\reducedfonts and \smallfonts, \smallerfonts \textfonts)
+	(\titlefonts, \chapfonts, \secfonts): Specify \rmisboldtrue or
+	\rmisboldfalse.
+	(\rmisbold): Remove macro, and replace with \rm everywhere it is 
+	used.
+	(\selectfonts): Use \switchtolllsize, \switchtolsize instead.
+
 2016-09-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\assignfonts): New macro, in order to reduce
