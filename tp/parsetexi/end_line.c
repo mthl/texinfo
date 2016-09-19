@@ -703,14 +703,22 @@ parse_line_command_args (ELEMENT *line_command)
       }
     case CM_kbdinputstyle:
       {
-        if (!strcmp (line, "code") || !strcmp (line, "example")
-            || !strcmp (line, "distinct"))
+        if (!strcmp (line, "code"))
+          global_kbdinputstyle = kbd_code;
+        else if (!strcmp (line, "example"))
+          global_kbdinputstyle = kbd_example;
+        else if (!strcmp (line, "distinct"))
+          global_kbdinputstyle = kbd_distinct;
+        else goto kdbinputstyle_invalid;
+
+        ADD_ARG(line);
+
+        if (0)
           {
-            ADD_ARG(line);
-          }
-        else
+kdbinputstyle_invalid:
           line_error ("@kbdinputstyle arg must be "
                        "`code'/`example'/`distinct', not `%s'", line);
+          }
         break;
       }
     case CM_allowcodebreaks:

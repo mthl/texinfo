@@ -81,6 +81,10 @@ extern ELEMENT *current_section;
 
 extern GLOBAL_INFO global_info;
 extern char *global_clickstyle;
+
+enum kbd_enum {kbd_none, kbd_code, kbd_example, kbd_distinct };
+extern enum kbd_enum global_kbdinputstyle;
+
 void wipe_global_info (void);
 
 #include "macro.h"

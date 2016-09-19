@@ -117,10 +117,13 @@ COUNTER count_cells;
 GLOBAL_INFO global_info;
 char *global_clickstyle = "arrow";
 
+enum kbd_enum global_kbdinputstyle = kbd_distinct;
+
 void
 wipe_global_info (void)
 {
   global_clickstyle = "arrow";
+  global_kbdinputstyle = kbd_distinct;
   memset (&global_info, 0, sizeof (global_info));
 }
 

@@ -1140,10 +1140,38 @@ handle_brace_command (ELEMENT *current, char **line_inout,
   current = e;
 
   mark_and_warn_invalid (cmd, invalid_parent, e);
-  // TODO kbd
   if (cmd == CM_click)
     {
       add_extra_string (e, "clickstyle", global_clickstyle);
+    }
+  else if (cmd == CM_kbd)
+    {
+      if (current_context () == ct_preformatted
+          && global_kbdinputstyle != kbd_distinct
+          || global_kbdinputstyle == kbd_code)
+        {
+          add_extra_string (e, "code", "1");
+        }
+      else if (global_kbdinputstyle == kbd_example)
+        {
+          // _in_code line 1277
+          // TODO: Understand what is going on here.
+
+          ELEMENT *tmp = current->parent;
+          while (tmp->parent
+                 && (command_flags(tmp->parent) & CF_brace)
+                 && command_data(tmp->parent->cmd).data != BRACE_context)
+            {
+              if (command_flags(tmp->parent) & CF_code_style)
+                goto yes_kbd_code;
+              tmp = tmp->parent->parent;
+            }
+          if (0)
+            {
+yes_kbd_code:
+              add_extra_string (e, "code", "1");
+            }
+        }
     }
   else if (command_data(cmd).flags & CF_INFOENCLOSE)
     {

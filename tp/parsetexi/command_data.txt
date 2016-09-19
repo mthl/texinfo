@@ -270,13 +270,13 @@ sc		brace	BRACE_style
 t		brace	BRACE_style
 var		brace	BRACE_style
 headitemfont	brace	BRACE_style
-code		brace	BRACE_style
-command		brace	BRACE_style
-env		brace	BRACE_style
-file		brace	BRACE_style
-kbd		brace	BRACE_style
-option		brace	BRACE_style
-samp		brace	BRACE_style
+code		brace,code_style	BRACE_style
+command		brace,code_style,code_style	BRACE_style
+env		brace,code_style,code_style	BRACE_style
+file		brace,code_style,code_style	BRACE_style
+kbd		brace,code_style,code_style	BRACE_style
+option		brace,code_style,code_style	BRACE_style
+samp		brace,code_style,code_style	BRACE_style
 strong		brace	BRACE_style
 sub		brace	BRACE_style
 sup		brace	BRACE_style
@@ -304,19 +304,10 @@ hyphenation	brace,global	BRACE_other
 anchor		brace	1
 errormsg	brace	1
 
-# code style commands
-# fixme: duplicated from above!!
-#code		brace	BRACE_other
-#command		brace	BRACE_other
-#env		brace	BRACE_other
-#file		brace	BRACE_other
-#kbd		brace	BRACE_other
-key		brace	BRACE_other
-#option		brace	BRACE_other
-#samp		brace	BRACE_other
-indicateurl	brace	1
-verb		brace	BRACE_other
-t		brace	BRACE_other
+# more code style commands
+indicateurl	brace,code_style	1
+verb		brace,code_style	BRACE_other
+t		brace,code_style	BRACE_other
 
 # context brace commands - commands that enclose full texts
 footnote	brace,global	BRACE_context
