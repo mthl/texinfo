@@ -5604,7 +5604,7 @@ sub _parse_special_misc_command($$$$)
       $has_comment = 1 if (defined($4));
     } else {
       $self->line_error (sprintf($self->__(
-                 "\@%s should only accept a \@-command as argument, not `%s'"),
+                "\@%s should only accept an \@-command as argument, not `%s'"),
                                  $command, $line), $line_nr);
     }
   } else {
@@ -5626,7 +5626,7 @@ sub _trim_spaces_comment_from_content($)
   Texinfo::Common::trim_spaces_comment_from_content($_[0]);
 }
 
-# at the end of a @-command line with arguments, parse the resulting 
+# at the end of an @-command line with arguments, parse the resulting 
 # text, to collect aliases, definfoenclose and collect errors on 
 # wrong arguments.
 sub _parse_line_command_args($$$)

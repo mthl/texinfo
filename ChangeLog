@@ -1,3 +1,9 @@
+2016-09-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_special_misc_command): Change
+	"a @-command" to "an @-command" in a message.
+	(_parse_line_command_args): Comment changed.
+
 2016-09-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm (_compute_spaces_align_line):
