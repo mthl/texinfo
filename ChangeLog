@@ -1,5 +1,10 @@
 2016-09-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_check_contents_location): Remove unused 
+	function.
+
+2016-09-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_special_misc_command): Change
 	"a @-command" to "an @-command" in a message.
 	(_parse_line_command_args): Comment changed.

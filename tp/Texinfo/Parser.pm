@@ -845,49 +845,6 @@ sub parse_texi_text($$;$$$$)
   return $tree;
 }
 
-# Not used for now, as a @contents after the first sectioning command
-# is correct if not using TeX.
-sub _check_contents_location($$)
-{
-  my $self = shift;
-  my $tree = shift;
-
-  my $commands = $self->global_commands_information();
-  return unless ($commands);
-  # Find the last sectioning command
-  my $index = -1;
-  my %ending_root_commands;
-  my $found = 0;
-  while ($tree->{'contents'}->[$index]) {
-    if (defined($tree->{'contents'}->[$index]->{'cmdname'})) {
-      $ending_root_commands{$tree->{'contents'}->[$index]} = 1;
-      if ($sectioning_commands{$tree->{'contents'}->[$index]->{'cmdname'}}) {
-        $found = 1;
-        last;
-      }
-    }
-    $index--;
-  }
-  return if (!$found);
-
-  #print STDERR "ending_root_commands ".join('|',keys(%ending_root_commands))."\n";
-  #print STDERR "tree contents: ".join('|', @{$tree->{'contents'}})."\n";
-  foreach my $command ('contents', 'shortcontents', 'summarycontents') {
-    if ($commands->{$command}) {
-      foreach my $current (@{$commands->{$command}}) {
-        my $root_command = $self->Texinfo::Common::find_parent_root_command($current);
-        #print STDERR "root_command for $current->{'cmdname'}: $root_command\n";
-        if (defined($root_command) 
-            and !$ending_root_commands{$root_command}) {
-          $self->line_warn(sprintf($self->__(
-                  "\@%s should only appear at beginning or end of document"),
-                            $current->{'cmdname'}), $current->{'line_nr'});                       
-        }
-      }
-    }
-  }
-}
-
 # parse a texi file
 sub parse_texi_file($$)
 {
