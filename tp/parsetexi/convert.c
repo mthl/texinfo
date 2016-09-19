@@ -53,12 +53,18 @@ expand_cmd_args_to_texi (ELEMENT *e, TEXT *result)
   if (e->args.number > 0)
     {
       int braces, arg_nr, i;
+      static char s[2];
       braces = (e->args.list[0]->type == ET_brace_command_arg
                 || e->args.list[0]->type == ET_brace_command_context);
       if (braces)
         ADD("{");
 
-      // TODO @verb
+      if (e->cmd == CM_verb)
+        {
+          s[0] = (char ) e->type;
+          s[1] = '\0';
+          ADD(s);
+        }
 
       arg_nr = 0;
       for (i = 0; i < e->args.number; i++)
@@ -72,7 +78,8 @@ expand_cmd_args_to_texi (ELEMENT *e, TEXT *result)
           convert_to_texinfo_internal (e->args.list[i], result);
         }
 
-      // TODO @verb
+      if (e->cmd == CM_verb)
+        ADD(s);
 
       if (braces)
         ADD("}");
