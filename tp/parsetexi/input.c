@@ -218,6 +218,13 @@ input_push_text_with_line_nos (char *text, int starting)
   input_stack[input_number - 1].type = IN_text;
 }
 
+void
+input_reset_input_stack (void)
+{
+  input_number = 0;
+  /* TODO: free the memory */
+}
+
 
 static char **include_dirs;
 static size_t include_dirs_number;

@@ -58,6 +58,7 @@ reset_parser (void)
   wipe_global_info ();
   reset_internal_xrefs ();
   reset_labels ();
+  input_reset_input_stack ();
 
   current_node = current_section = 0;
 }
