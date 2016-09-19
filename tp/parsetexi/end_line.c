@@ -1332,8 +1332,7 @@ end_line_misc_line (ELEMENT *current)
                   && !trimmed->contents.list[0]->text.text))
             superfluous_arg = 1;
 
-          if (trimmed->contents.number > 0)
-            text = trimmed->contents.list[0]->text.text;
+          text = convert_to_text (trimmed, &superfluous_arg);
         }
 
       if (!text)

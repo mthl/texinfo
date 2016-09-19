@@ -21,13 +21,14 @@
 
 #include "parser.h"
 #include "text.h"
+#include "convert.h"
 
-#define ADD(x) text_append (result, x)
 
 static void expand_cmd_args_to_texi (ELEMENT *e, TEXT *result);
 static void convert_to_texinfo_internal (ELEMENT *e, TEXT *result);
 
 
+#define ADD(x) text_append (result, x)
 
 static void
 expand_cmd_args_to_texi (ELEMENT *e, TEXT *result)
@@ -121,6 +122,38 @@ convert_to_texinfo (ELEMENT *e)
   convert_to_texinfo_internal (e, &result);
   return result.text;
 }
+
+/* Very stripped-down version of Texinfo::Convert::Text.
+   Convert the contents of E to plain text.  Suitable for specifying a file
+   name containing an at sign or braces.  Set *SUPERFLUOUS_ARG if the contents
+   of E are too complicated to convert properly. */
+char *
+convert_to_text (ELEMENT *e, int *superfluous_arg)
+{
+#define ADD(x) text_append (&result, x)
+
+  TEXT result; int i;
+
+  if (!e)
+    return "";
+  text_init (&result);
+  for (i = 0; i < e->contents.number; i++)
+    {
+      ELEMENT *e1 = contents_child_by_index (e, i);
+      if (e1->text.end > 0)
+        ADD(e1->text.text);
+      else if (e1->cmd == CM_AT_SIGN)
+        ADD("@");
+      else if (e1->cmd == CM_OPEN_BRACE)
+        ADD("{");
+      else if (e1->cmd == CM_CLOSE_BRACE)
+        ADD("}");
+      else
+        *superfluous_arg = 1;
+    }
+  return result.text;
+}
+#undef ADD
 
 /* Produce normalized node name recursively.  IN_UC is non-zero if we are 
    converting to upper case.  */
