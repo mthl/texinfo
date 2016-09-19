@@ -1,5 +1,12 @@
 2016-09-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Documentlanguages.pm: Regenerate by running
+	maintain/regenerate_documentlanguages.pl.
+	* README-hacking: Mention running this command for a new 
+	release.
+
+2016-09-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_check_contents_location): Remove unused 
 	function.
 

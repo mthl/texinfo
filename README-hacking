@@ -176,6 +176,9 @@ version and date in NEWS.
 version number in texi2dvi, texi2pdf, txirefcard.tex.
 (cd tp && ./maintain/change_perl_modules_version.sh auto)
   -- this updates all the version numbers in the Perl modules
+(cd tp && maintain/regenerate_documentlanguages.pl)
+  -- regenerates tp/Texinfo/Documentlanguages.pm
+
 version number in
   tp/Texinfo/Convert/XSParagraph/configure.ac, and
   tp/Texinfo/Convert/XSParagraph/TestXS.pm
