@@ -310,7 +310,18 @@ handle_close_brace (ELEMENT *current, char **line_inout)
             {
               k = lookup_extra_key (ref, "brace_command_contents");
               args = k->value;
-              if (0)
+              if ((closed_command == CM_inforef
+                   && (args->contents.number <= 0
+                       || !args->contents.list[0])
+                   && (args->contents.number <= 2
+                       || !args->contents.list[2]))
+                  || (closed_command != CM_inforef
+                       && (args->contents.number <= 0
+                           || !args->contents.list[0])
+                       && (args->contents.number <= 3
+                           || !args->contents.list[3])
+                       && (args->contents.number <= 4
+                           || !args->contents.list[4])))
                 {
                   line_warn ("command @%s missing a node or external manual "
                              "argument", command_name(closed_command));
@@ -319,8 +330,10 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                 {
                   NODE_SPEC_EXTRA *nse;
                   nse = parse_node_manual (args_child_by_index (ref, 0));
-                  if (nse)
+                  if (nse && (nse->manual_content || nse->node_content))
                     add_extra_node_spec (ref, "node_argument", nse);
+                  else
+                    free (nse);
                   if (closed_command != CM_inforef
                       && (args->contents.number <= 3
                           || args->contents.number <= 4
