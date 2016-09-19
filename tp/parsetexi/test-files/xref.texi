@@ -1,7 +1,0 @@
-@node Top
-
-@xref{Second}.
-
-@node Second
-
-Got here.

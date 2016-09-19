@@ -1,5 +1,0 @@
-@set foo This is a string.
-
-blah ger erg er rtggtrg @value{foo} ferfsergr @value{foo}
-
-@value{foo}

@@ -1,1 +1,0 @@
-@email{ bug-texinfo , same place }
