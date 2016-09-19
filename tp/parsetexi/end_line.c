@@ -128,7 +128,6 @@ parse_special_misc_command (char *line, enum command_id cmd
 
       store_value (args->contents.list[0]->text.text,
                    args->contents.list[1]->text.text);
-      /* TODO - unless ignore_global_commands is on */
 
       break;
 set_no_name:
@@ -543,7 +542,6 @@ parse_line_command_args (ELEMENT *line_command)
 
             if (current_to != from_index)
               {
-                /* TODO: unless "ignore_global_commands" */
                 from_index->merged_in = current_to;
                 ADD_ARG(from);
                 ADD_ARG(to);
@@ -1432,15 +1430,22 @@ end_line_misc_line (ELEMENT *current)
             }
           else if (current->cmd == CM_documentencoding) // 3190
             {
-              int i; char *p;
-              // TODO: ignore_global_commands
+              int i; char *p, *text2;
+              char *texinfo_encoding, *perl_encoding, *input_encoding;
               /* See tp/Texinfo/Encoding.pm (whole file) */
 
-              text = strdup (text);
-              for (p = text; *p; p++)
-                *p = tolower (*p);
-              add_extra_string (current, "input_encoding_name", text); // 3199
+              /* Three concepts of encoding:
+                 texinfo_encoding -- one of the encodings supported as an
+                                     argument to @documentencoding, documented 
+                                     in Texinfo manual
+                 perl_encoding -- used for charset conversion within Perl
+                 input_encoding -- for output within an HTML file */
 
+              text2 = strdup (text);
+              for (p = text2; *p; p++)
+                *p = tolower (*p);
+
+              /* Get texinfo_encoding from what was in the document */
               {
               static char *canonical_encodings[] = {
                 "us-ascii", "utf-8", "iso-8859-1",
@@ -1448,40 +1453,100 @@ end_line_misc_line (ELEMENT *current)
                 0
               };
 
+              texinfo_encoding = 0;
               for (i = 0; (canonical_encodings[i]); i++)
                 {
-                  if (!strcasecmp (text, canonical_encodings[i]))
-                    break;
-                }
-              if (!(canonical_encodings[i]))
-                {
-                  command_warn (current, "encoding `%s' is not a "
-                                "canonical texinfo encoding");
-                }
-              }
-
-              {
-              struct encoding_map {
-                  char *from; char *to;
-              };
-              static struct encoding_map map[] = {
-                  "utf-8", "utf-8-strict"
-              };
-              char *perl_encoding = text;
-              for (i = 0; i < sizeof map / sizeof *map; i++)
-                {
-                  if (!strcasecmp (text, map[i].from))
+                  if (!strcmp (text2, canonical_encodings[i]))
                     {
-                      perl_encoding = map[i].to;
+                      texinfo_encoding = canonical_encodings[i];
                       break;
                     }
                 }
-              add_extra_string (current, "input_perl_encoding",
-                                perl_encoding);
+              if (!texinfo_encoding)
+                {
+                  command_warn (current, "encoding `%s' is not a "
+                                "canonical texinfo encoding", text);
+                }
               }
 
+              /* Get perl_encoding. */
+              perl_encoding = 0;
+              if (texinfo_encoding)
+                {
+                  struct encoding_map {
+                      char *from; char *to;
+                  };
+                  static struct encoding_map map[] = {
+                      "utf-8", "utf-8-strict"
+                  };
+                  perl_encoding = texinfo_encoding;
+                  for (i = 0; i < sizeof map / sizeof *map; i++)
+                    {
+                      if (!strcmp (perl_encoding, map[i].from))
+                        {
+                          perl_encoding = map[i].to;
+                          break;
+                        }
+                    }
+                }
+              if (perl_encoding)
+                {
+                  add_extra_string (current, "input_perl_encoding",
+                                    perl_encoding);
+                }
+              else
+                {
+                  command_warn (current, "unrecognized encoding name `%s'",
+                                text);
+                  /* Texinfo::Encoding calls Encode::Alias, so knows
+                     about more encodings than what we know about here.
+                     TODO: Check when perl_encoding could be defined when 
+                     texinfo_encoding isn't.
+                     Maybe we should check if an iconv conversion is possible
+                     from this encoding to UTF-8. */
 
-              global_info.input_encoding_name = text; // 3210
+                }
+
+              /* Set input_encoding from perl_encoding */
+              input_encoding = 0;
+              if (perl_encoding)
+                {
+                  struct encoding_map {
+                      char *from; char *to;
+                  };
+                  static struct encoding_map map[] = {
+                      "utf8",        "utf-8",
+                      "utf-8-strict","utf-8",
+                      "ascii",       "us-ascii",
+                      "shiftjis",    "shift_jis",
+                      "latin-1",     "iso-8859-1",
+                      "iso-8859-1",  "iso8859_1",
+                      "iso-8859-2",  "iso8859_2",
+                      "iso-8859-15", "iso8859_15",
+                      "koi8-r",      "koi8",
+                      "koi8-u",      "koi8",
+                  };
+                  input_encoding = perl_encoding;
+                  for (i = 0; i < sizeof map / sizeof *map; i++)
+                    {
+                      /* Elements in first column map to elements in
+                         second column.  Elements in second column map
+                         to themselves. */
+                      if (!strcasecmp (input_encoding, map[i].from)
+                          || !strcasecmp (input_encoding, map[i].to))
+                        {
+                          input_encoding = map[i].to;
+                          break;
+                        }
+                    }
+                }
+              if (input_encoding)
+                {
+                  add_extra_string (current, "input_encoding_name",
+                                    input_encoding);
+
+                  global_info.input_encoding_name = text; // 3210
+                }
 
               // TODO: Need to convert input in input.c from this encoding.
               // (INPUT_PERL_ENCODING in Perl version)
