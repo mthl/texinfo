@@ -80,7 +80,7 @@ parse_special_misc_command (char *line, enum command_id cmd
 } while (0)
 
   ELEMENT *args = new_element (ET_NONE);
-  char *p, *q, *r;
+  char *p = 0, *q = 0, *r = 0;
   char *value;
 
   switch (cmd)
@@ -194,18 +194,9 @@ unmacro_badname:
       if (!value)
         goto clickstyle_invalid;
       ADD_ARG (p - 1, q - p + 1);
-      global_clickstyle = malloc (q - p + 1);
-      {
-        enum command_id c;
-        c = lookup_command (value);
-        if (!c)
-          ; // TODO
-        global_clickstyle = command_name(c);
-      }
-      /* TODO: Check if it is a real command */
-      if (memcmp (q, "{}", 2))
+      global_clickstyle = value;
+      if (!memcmp (q, "{}", 2))
         q += 2;
-      free (value);
       /* TODO: check comment */
       break;
 clickstyle_invalid:
@@ -216,6 +207,15 @@ clickstyle_invalid:
       abort ();
     }
 
+  if (q)
+    {
+      q += strspn (q, whitespace_chars);
+      if (*q)
+        {
+          line_warn ("remaining argument on @%s line: %s",
+                     command_name(cmd), q);
+        }
+    }
   return args;
 #undef ADD_ARG
 }
