@@ -1333,11 +1333,6 @@ end_line_misc_line (ELEMENT *current)
           trimmed = trim_spaces_comment_from_content
             (args_child_by_index(current, 0));
 
-          if (trimmed->contents.number > 1
-              || (trimmed->contents.number == 1
-                  && !trimmed->contents.list[0]->text.text))
-            superfluous_arg = 1;
-
           text = convert_to_text (trimmed, &superfluous_arg);
         }
 
