@@ -1,6 +1,6 @@
 Index: Texinfo/Convert/Converter.pm
 ===================================================================
---- Texinfo/Convert/Converter.pm	(revision 7219)
+--- Texinfo/Convert/Converter.pm	(revision 7357)
 +++ Texinfo/Convert/Converter.pm	(working copy)
 @@ -1134,6 +1134,8 @@ sub _collect_leading_trailing_spaces_arg($$)
    return @result;
@@ -23,7 +23,7 @@ Index: Texinfo/Convert/Converter.pm
    $converted_tree->{'contents'} = $contents;
 Index: Texinfo/ModulePath.pm.in
 ===================================================================
---- Texinfo/ModulePath.pm.in	(revision 7149)
+--- Texinfo/ModulePath.pm.in	(revision 7357)
 +++ Texinfo/ModulePath.pm.in	(working copy)
 @@ -19,6 +19,8 @@ sub init (;$$) {
  
@@ -44,7 +44,7 @@ Index: Texinfo/ModulePath.pm.in
    if (!$libexec_dir) {
 Index: Texinfo/Parser.pm
 ===================================================================
---- Texinfo/Parser.pm	(revision 7252)
+--- Texinfo/Parser.pm	(revision 7386)
 +++ Texinfo/Parser.pm	(working copy)
 @@ -33,6 +33,9 @@ package Texinfo::Parser;
  use 5.006;
@@ -58,7 +58,7 @@ Index: Texinfo/Parser.pm
  
 Index: Texinfo/Report.pm
 ===================================================================
---- Texinfo/Report.pm	(revision 7149)
+--- Texinfo/Report.pm	(revision 7357)
 +++ Texinfo/Report.pm	(working copy)
 @@ -48,7 +48,8 @@ use File::Basename;
  
@@ -82,9 +82,9 @@ Index: Texinfo/Report.pm
    }
 Index: Texinfo/Structuring.pm
 ===================================================================
---- Texinfo/Structuring.pm	(revision 7208)
+--- Texinfo/Structuring.pm	(revision 7357)
 +++ Texinfo/Structuring.pm	(working copy)
-@@ -581,7 +581,7 @@ sub nodes_tree($)
+@@ -582,7 +582,7 @@ sub nodes_tree($)
    foreach my $node (@{$self->{'nodes'}}) {
      if ($node->{'extra'}->{'normalized'} eq 'Top') {
        $top_node = $node;
@@ -93,7 +93,7 @@ Index: Texinfo/Structuring.pm
                                                      $self->{'TOP_NODE_UP'});
        $top_node_up
          = {'type' => 'top_node_up',
-@@ -804,7 +804,7 @@ sub nodes_tree($)
+@@ -805,7 +805,7 @@ sub nodes_tree($)
                                                'extra' => $node_direction };
                $node->{'node_'.$direction}->{'extra'}->{'top_node_up'} 
                  = $node;
@@ -104,7 +104,7 @@ Index: Texinfo/Structuring.pm
                      $direction_texts{$direction},
 Index: t/test_utils.pl
 ===================================================================
---- t/test_utils.pl	(revision 7235)
+--- t/test_utils.pl	(revision 7357)
 +++ t/test_utils.pl	(working copy)
 @@ -43,7 +43,8 @@ Texinfo::ModulePath::init();
  
@@ -128,9 +128,9 @@ Index: t/test_utils.pl
                                            't/include/',
 Index: texi2any.pl
 ===================================================================
---- texi2any.pl	(revision 7191)
+--- texi2any.pl	(revision 7357)
 +++ texi2any.pl	(working copy)
-@@ -275,8 +275,8 @@ if ($configured_version eq '@' . 'PACKAGE_VERSION@
+@@ -273,8 +273,8 @@ if ($configured_version eq '@' . 'PACKAGE_VERSION@
    } else {
      # used in the standalone perl module, as $hardcoded_version is undef
      # and it should never be configured in that setup
@@ -141,7 +141,7 @@ Index: texi2any.pl
    }
  }
  my $configured_package = '@PACKAGE@';
-@@ -1071,7 +1071,14 @@ if ($call_texi2dvi) {
+@@ -1068,7 +1068,14 @@ if ($call_texi2dvi) {
    document_warn(__('--Xopt option without printed output')); 
  }
  
