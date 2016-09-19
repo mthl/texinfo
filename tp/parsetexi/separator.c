@@ -823,7 +823,15 @@ handle_separator (ELEMENT *current, char separator, char **line_inout)
     }
   else if (separator == '\f' && current->type == ET_paragraph)
     {
+      ELEMENT *e;
+
       /* A form feed stops and restarts a paragraph. */
+      current = end_paragraph (current, 0, 0);
+      e = new_element (ET_empty_line);
+      text_append_n (&e->text, "\f", 1);
+      add_to_element_contents (current, e);
+      e = new_element (ET_empty_line);
+      add_to_element_contents (current, e);
     }
   else // 5322
     {
