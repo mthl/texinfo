@@ -81,6 +81,7 @@ extern ELEMENT *current_section;
 
 extern GLOBAL_INFO global_info;
 extern char *global_clickstyle;
+extern char *global_documentlanguage;
 
 enum kbd_enum {kbd_none, kbd_code, kbd_example, kbd_distinct };
 extern enum kbd_enum global_kbdinputstyle;

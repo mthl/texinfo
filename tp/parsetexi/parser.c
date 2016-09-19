@@ -116,6 +116,7 @@ COUNTER count_cells;
    for example document language and encoding. */
 GLOBAL_INFO global_info;
 char *global_clickstyle = "arrow";
+char *global_documentlanguage = "";
 
 enum kbd_enum global_kbdinputstyle = kbd_distinct;
 
@@ -124,6 +125,7 @@ wipe_global_info (void)
 {
   global_clickstyle = "arrow";
   global_kbdinputstyle = kbd_distinct;
+  global_documentlanguage = "";
   memset (&global_info, 0, sizeof (global_info));
 }
 

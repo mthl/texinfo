@@ -118,11 +118,11 @@ parse_special_misc_command (char *line, enum command_id cmd
 
       /* Find trailing whitespace on line. */
       q = strchr (p, '\0');
-      while (strchr (whitespace_chars, *q))
+      while (strchr (whitespace_chars, q[-1]))
         q--;
 
       if (q >= p)
-        ADD_ARG(p, q - p + 1); /* value */
+        ADD_ARG(p, q - p); /* value */
       else
         ADD_ARG("", 0);
 
@@ -1561,13 +1561,62 @@ end_line_misc_line (ELEMENT *current)
             }
           else if (current->cmd == CM_documentlanguage) // 3223
             {
+              char *p, *q;
+
+              /* Texinfo::Common::warn_unknown_language checks with
+                 tp/Texinfo/Documentlanguages.pm, which is an automatically
+                 generated list of official IANA language codes.  For now,
+                 just check if the language code looks right. */
+
+              p = text;
+              while (isalpha (*p))
+                p++;
+              if (*p == '_')
+                {
+                  q = p + 1;
+                  /* Language code should be of the form LL_CC, language code
+                     followed by country code. */
+                  while (isalpha (*p))
+                    p++;
+                  if (*p)
+                    {
+                      /* non-alphabetic char in country code */
+                      command_warn (current, "%s is not a valid region code",
+                                    q);
+                    }
+                }
+              else if (*p)
+                {
+                   /* non-alphabetic char in language code */
+                  command_warn (current, "%s is not a valid language code",
+                                text);
+                }
+
+              global_documentlanguage = text;
+              /* TODO: check customization variable */
             }
         }
       if (superfluous_arg)
         {
-          command_error (current, "bad argument to @%s", 
-                         command_name(current->cmd));
-          // TODO say what the bad argument is
+          char *texi_line, *p, *p1;
+          p = convert_to_texinfo (args_child_by_index(current, 0));
+
+          texi_line = p;
+          while (isspace (*texi_line))
+            texi_line++;
+
+          /* Trim leading and trailing whitespace. */
+          p1 = strchr (texi_line, '\0');
+          if (p1 > texi_line)
+            {
+              while (p1 > texi_line && isspace (p1[-1]))
+                p1--;
+              c = *p1;
+              *p1 = '\0';
+            }
+          command_error (current, "bad argument to @%s: %s", 
+                         command_name(current->cmd), texi_line);
+          free (p);
         }
     }
   else if (current->cmd == CM_node) /* 3235 */
