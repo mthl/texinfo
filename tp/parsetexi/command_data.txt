@@ -67,7 +67,7 @@ raisesections			misc		MISC_skipline
 lowersections			misc		MISC_skipline
 contents			misc,global		MISC_skipline
 shortcontents			misc,global		MISC_skipline
-summarycontents			misc		MISC_skipline
+summarycontents			misc,global		MISC_skipline
 insertcopying			misc,global		MISC_noarg
 clickstyle			misc,global		MISC_special
 # more relevant in preamble
