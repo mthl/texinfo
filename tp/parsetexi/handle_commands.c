@@ -144,27 +144,40 @@ register_global_command (enum command_id cmd, ELEMENT *current)
             break;
           where = &global_info.setfilename;
           break;
-        case CM_settitle:
-          where = &global_info.settitle;
-          break;
-        case CM_shorttitlepage:
-          where = &global_info.shorttitlepage;
-          break;
-        case CM_title:
-          where = &global_info.title;
-          break;
-        case CM_titlepage:
-          where = &global_info.titlepage;
-          break;
-        case CM_top:
-          where = &global_info.top;
-          break;
-        case CM_copying:
-          where = &global_info.copying;
-          break;
-        case CM_documentdescription:
-          where = &global_info.documentdescription;
-          break;
+
+#define GLOBAL_UNIQUE_CASE(cmd) \
+        case CM_##cmd: \
+          where = &global_info.cmd; \
+          break
+
+        GLOBAL_UNIQUE_CASE(settitle);
+        GLOBAL_UNIQUE_CASE(copying);
+        GLOBAL_UNIQUE_CASE(titlepage);
+        GLOBAL_UNIQUE_CASE(top);
+        GLOBAL_UNIQUE_CASE(documentdescription);
+        GLOBAL_UNIQUE_CASE(setcontentsaftertitlepage);
+        GLOBAL_UNIQUE_CASE(setshortcontentsaftertitlepage);
+        GLOBAL_UNIQUE_CASE(novalidate);
+        GLOBAL_UNIQUE_CASE(validatemenus);
+        GLOBAL_UNIQUE_CASE(pagesizes);
+        GLOBAL_UNIQUE_CASE(fonttextsize);
+        GLOBAL_UNIQUE_CASE(footnotestyle);
+        GLOBAL_UNIQUE_CASE(setchapternewpage);
+        GLOBAL_UNIQUE_CASE(everyheading);
+        GLOBAL_UNIQUE_CASE(everyfooting);
+        GLOBAL_UNIQUE_CASE(evenheading);
+        GLOBAL_UNIQUE_CASE(evenfooting);
+        GLOBAL_UNIQUE_CASE(oddheading);
+        GLOBAL_UNIQUE_CASE(oddfooting);
+        GLOBAL_UNIQUE_CASE(everyheadingmarks);
+        GLOBAL_UNIQUE_CASE(everyfootingmarks);
+        GLOBAL_UNIQUE_CASE(evenheadingmarks);
+        GLOBAL_UNIQUE_CASE(oddheadingmarks);
+        GLOBAL_UNIQUE_CASE(evenfootingmarks);
+        GLOBAL_UNIQUE_CASE(oddfootingmarks);
+        GLOBAL_UNIQUE_CASE(shorttitlepage);
+        GLOBAL_UNIQUE_CASE(title);
+#undef GLOBAL_UNIQUE_CASE
         }
       if (where)
         {
@@ -335,7 +348,6 @@ handle_misc_command (ELEMENT *current, char **line_inout,
         }
       else if (cmd == CM_novalidate)
         {
-          global_info.novalidate = 1;
         }
 
       mark_and_warn_invalid (cmd, invalid_parent, misc);
@@ -354,9 +366,8 @@ handle_misc_command (ELEMENT *current, char **line_inout,
       if (close_preformatted_command(cmd))
         current = begin_preformatted (current);
 
-      //line += strlen (line); /* FIXME: Where does the control flow go? */
-      // last; go to line 3687
       *status = 1; /* Get a new line */
+      goto funexit;
     }
   else
     {

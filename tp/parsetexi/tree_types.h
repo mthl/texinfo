@@ -110,18 +110,37 @@ typedef struct ELEMENT {
 typedef struct GLOBAL_INFO {
     char *input_file_name;
     char *input_encoding_name;
-    int novalidate;
 
     /* Elements that should be unique. */
     // 288 and Common.pm:164
     ELEMENT *settitle; /* Title of document. */
     ELEMENT *copying;
-    ELEMENT *shorttitlepage;
     ELEMENT *title;
     ELEMENT *titlepage;
     ELEMENT *top;
     ELEMENT *setfilename;
     ELEMENT *documentdescription;
+    ELEMENT *setcontentsaftertitlepage;
+    ELEMENT *setshortcontentsaftertitlepage;
+    ELEMENT *novalidate;
+    ELEMENT *validatemenus;
+    ELEMENT *pagesizes;
+    ELEMENT *fonttextsize;
+    ELEMENT *footnotestyle;
+    ELEMENT *setchapternewpage;
+    ELEMENT *everyheading;
+    ELEMENT *everyfooting;
+    ELEMENT *evenheading;
+    ELEMENT *evenfooting;
+    ELEMENT *oddheading;
+    ELEMENT *oddfooting;
+    ELEMENT *everyheadingmarks;
+    ELEMENT *everyfootingmarks;
+    ELEMENT *evenheadingmarks;
+    ELEMENT *oddheadingmarks;
+    ELEMENT *evenfootingmarks;
+    ELEMENT *oddfootingmarks;
+    ELEMENT *shorttitlepage;
 
     /* Arrays of elements */
     ELEMENT footnotes;
