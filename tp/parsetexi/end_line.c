@@ -1663,6 +1663,7 @@ end_line_misc_line (ELEMENT *current)
     }
   else
     {
+      /* All the other "line" commands" */
       ELEMENT *misc_content;
 
       misc_content = trim_spaces_comment_from_content 
@@ -1691,21 +1692,18 @@ end_line_misc_line (ELEMENT *current)
               // 3273 possibly check for @def... command
             }
 
-        }
 
-      /* All the other "line" commands" */
-      // 3273 - warning about missing argument
+          /* Index commands */
+          if (command_flags(current) & CF_index_entry_command)
+            {
+              ELEMENT *contents;
+              contents = last_args_child(current);
 
-      /* Index commands */
-      if (command_flags(current) & CF_index_entry_command)
-        {
-          ELEMENT *contents;
-          contents = last_args_child(current);
-
-          // 3274
-          enter_index_entry (current->cmd, current->cmd, current,
-                             misc_content);
-          current->type = ET_index_entry_command;
+              // 3274
+              enter_index_entry (current->cmd, current->cmd, current,
+                                 misc_content);
+              current->type = ET_index_entry_command;
+            }
         }
     }
 
