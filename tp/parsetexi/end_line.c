@@ -528,11 +528,11 @@ parse_line_command_args (ELEMENT *line_command)
         from_index = index_by_name (from);
         to_index = index_by_name (to);
         if (!from_index)
-          line_error ("unknown source index in @%s: %s", command_name(cmd),
-                       from);
+          line_error ("unknown source index in @%s: %s",
+                      command_name(cmd), from);
         if (!to_index)
-          line_error ("unknown source index in @%s: %s", command_name(cmd),
-                       to);
+          line_error ("unknown destination index in @%s: %s",
+                      command_name(cmd), to);
 
         if (from_index && to_index) // 5606
           {
