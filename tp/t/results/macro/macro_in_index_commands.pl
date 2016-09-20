@@ -1319,12 +1319,12 @@ $result_menus{'macro_in_index_commands'} = {
 
 $result_errors{'macro_in_index_commands'} = [
   {
-    'error_line' => ':49: warning: printing an index `cp\' merged in another one `fn\'
+    'error_line' => ':49: warning: printing an index `cp\' merged in another one, `fn\'
 ',
     'file_name' => '',
     'line_nr' => 49,
     'macro' => '',
-    'text' => 'printing an index `cp\' merged in another one `fn\'',
+    'text' => 'printing an index `cp\' merged in another one, `fn\'',
     'type' => 'warning'
   }
 ];

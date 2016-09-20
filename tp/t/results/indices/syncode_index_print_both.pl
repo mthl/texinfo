@@ -497,12 +497,12 @@ $result_menus{'syncode_index_print_both'} = {
 
 $result_errors{'syncode_index_print_both'} = [
   {
-    'error_line' => ':11: warning: printing an index `fn\' merged in another one `cp\'
+    'error_line' => ':11: warning: printing an index `fn\' merged in another one, `cp\'
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => 'printing an index `fn\' merged in another one `cp\'',
+    'text' => 'printing an index `fn\' merged in another one, `cp\'',
     'type' => 'warning'
   }
 ];

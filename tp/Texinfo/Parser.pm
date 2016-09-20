@@ -5771,7 +5771,7 @@ sub _parse_line_command_args($$$)
       } else {
         if ($self->{'merged_indices'}->{$name}) {
           $self->line_warn(sprintf($self->__(
-                       "printing an index `%s' merged in another one `%s'"), 
+                       "printing an index `%s' merged in another one, `%s'"), 
                                    $name, $self->{'merged_indices'}->{$name}),
                            $line_nr); 
         }

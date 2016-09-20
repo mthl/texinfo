@@ -1479,39 +1479,39 @@ $result_errors{'complex_recursive_synindex'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':29: warning: printing an index `aaa\' merged in another one `bbb\'
+    'error_line' => ':29: warning: printing an index `aaa\' merged in another one, `bbb\'
 ',
     'file_name' => '',
     'line_nr' => 29,
     'macro' => '',
-    'text' => 'printing an index `aaa\' merged in another one `bbb\'',
+    'text' => 'printing an index `aaa\' merged in another one, `bbb\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':32: warning: printing an index `ccc\' merged in another one `bbb\'
+    'error_line' => ':32: warning: printing an index `ccc\' merged in another one, `bbb\'
 ',
     'file_name' => '',
     'line_nr' => 32,
     'macro' => '',
-    'text' => 'printing an index `ccc\' merged in another one `bbb\'',
+    'text' => 'printing an index `ccc\' merged in another one, `bbb\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':35: warning: printing an index `ddd\' merged in another one `bbb\'
+    'error_line' => ':35: warning: printing an index `ddd\' merged in another one, `bbb\'
 ',
     'file_name' => '',
     'line_nr' => 35,
     'macro' => '',
-    'text' => 'printing an index `ddd\' merged in another one `bbb\'',
+    'text' => 'printing an index `ddd\' merged in another one, `bbb\'',
     'type' => 'warning'
   },
   {
-    'error_line' => ':38: warning: printing an index `eee\' merged in another one `bbb\'
+    'error_line' => ':38: warning: printing an index `eee\' merged in another one, `bbb\'
 ',
     'file_name' => '',
     'line_nr' => 38,
     'macro' => '',
-    'text' => 'printing an index `eee\' merged in another one `bbb\'',
+    'text' => 'printing an index `eee\' merged in another one, `bbb\'',
     'type' => 'warning'
   }
 ];

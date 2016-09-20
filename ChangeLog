@@ -1,5 +1,10 @@
 2016-09-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_line_command_args): Add a comma 
+	to a message.
+
+2016-09-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi): Don't store the line 
 	number for a command defined with @definfoenclose, even if it 
 	was previously a built-in command.
