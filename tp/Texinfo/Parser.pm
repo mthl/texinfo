@@ -4863,7 +4863,8 @@ sub _parse_texi($;$)
                                             'parent' => $current,
                                             'contents' => [] };
           $current->{'contents'}->[-1]->{'line_nr'} = $line_nr
-            if ($keep_line_nr_brace_commands{$command});
+            if ($keep_line_nr_brace_commands{$command}
+                and !$self->{'definfoenclose'}->{$command});
           _mark_and_warn_invalid($self, $command, $invalid_parent,
                                  $line_nr, $current->{'contents'}->[-1]);
           $current = $current->{'contents'}->[-1];
@@ -5657,6 +5658,10 @@ sub _parse_line_command_args($$$)
       $args = [$1, $2, $3 ];
       $self->{'definfoenclose'}->{$1} = [ $2, $3 ];
       print STDERR "DEFINFOENCLOSE \@$1: $2, $3\n" if ($self->{'DEBUG'});
+
+      # Warning: there is a risk of mixing of data between a built-in 
+      # command and a user command defined with @definfoenclose.
+      # %keep_line_nr_brace_commands is one example of this.
     } else {
       $self->line_error(sprintf($self->
                               __("bad argument to \@%s"), $command), $line_nr);

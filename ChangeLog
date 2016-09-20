@@ -1,3 +1,11 @@
+2016-09-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): Don't store the line 
+	number for a command defined with @definfoenclose, even if it 
+	was previously a built-in command.
+	(_parse_line_command_args) <@definfoenclose>: Add a comment 
+	warning about redefining a built-in command.
+
 2016-09-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Documentlanguages.pm: Regenerate by running
