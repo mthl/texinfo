@@ -82,6 +82,8 @@ void init_index_commands (void);
 /* NOTE: We've run out of spaces for flags, but some of these may not
    be used, or may not be necessary. For example, region could be done
    as BLOCK_region in data instead.
+     CF_code_style, CF_deprecated are hardly used.
+
    Candidates for flags:
      CF_close_paragraph
 

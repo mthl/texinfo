@@ -44,6 +44,19 @@ lookup_command (char *cmdname)
 
   target.cmdname = cmdname;
 
+  /* Check for user-defined commands: macros, indexes, etc. */
+  /* Do this before looking in the built-in commands, in case the user uses 
+     @definfoenclose or similar to override a command.
+     If speed is a problem, then we could set a bit in the flags on the
+     builtin command (maybe reusing CF_INFOENCLOSE) to say to look in the
+     user commands instead. */
+
+  for (i = 0; i < user_defined_number; i++)
+    {
+      if (!strcmp (user_defined_command_data[i].cmdname, cmdname))
+        return ((enum command_id) i) | USER_COMMAND_BIT;
+    }
+
   c = (COMMAND *) bsearch (&target, builtin_command_data + 1,
         /* number of elements */
         sizeof (builtin_command_data) / sizeof (builtin_command_data[0]) - 1,
@@ -53,12 +66,6 @@ lookup_command (char *cmdname)
   if (c)
     return c - &builtin_command_data[0];
 
-  /* Check for user-defined commands: macros, indexes, etc. */
-  for (i = 0; i < user_defined_number; i++)
-    {
-      if (!strcmp (user_defined_command_data[i].cmdname, cmdname))
-        return ((enum command_id) i) | USER_COMMAND_BIT;
-    }
 
   return 0;
 }

@@ -1165,13 +1165,11 @@ handle_brace_command (ELEMENT *current, char **line_inout,
                  && command_data(tmp->parent->cmd).data != BRACE_context)
             {
               if (command_flags(tmp->parent) & CF_code_style)
-                goto yes_kbd_code;
+                {
+                  add_extra_string (e, "code", "1");
+                  break;
+                }
               tmp = tmp->parent->parent;
-            }
-          if (0)
-            {
-yes_kbd_code:
-              add_extra_string (e, "code", "1");
             }
         }
     }
