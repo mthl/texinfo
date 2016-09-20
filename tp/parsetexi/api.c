@@ -858,36 +858,44 @@ build_global_info2 (void)
 
   /* These should be unique elements. */
 
-  if (global_info.settitle && global_info.settitle->hv)
-    {
-      hv_store (hv, "settitle", strlen ("settitle"),
-                newRV_inc ((SV *) global_info.settitle->hv), 0);
+#define BUILD_GLOBAL_UNIQ(cmd) \
+  if (global_info.cmd && global_info.cmd->hv) \
+    { \
+      hv_store (hv, #cmd, strlen (#cmd), \
+                newRV_inc ((SV *) global_info.cmd->hv), 0); \
     }
-  if (global_info.copying && global_info.copying->hv)
-    {
-      hv_store (hv, "copying", strlen ("copying"),
-                newRV_inc ((SV *) global_info.copying->hv), 0);
-    }
-  if (global_info.shorttitlepage && global_info.shorttitlepage->hv)
-    {
-      hv_store (hv, "shorttitlepage", strlen ("shorttitlepage"),
-                newRV_inc ((SV *) global_info.shorttitlepage->hv), 0);
-    }
-  if (global_info.title && global_info.title->hv)
-    {
-      hv_store (hv, "title", strlen ("title"),
-                newRV_inc ((SV *) global_info.title->hv), 0);
-    }
-  if (global_info.titlepage && global_info.titlepage->hv)
-    {
-      hv_store (hv, "titlepage", strlen ("titlepage"),
-                newRV_inc ((SV *) global_info.titlepage->hv), 0);
-    }
-  if (global_info.top && global_info.top->hv)
-    {
-      hv_store (hv, "top", strlen ("top"),
-                newRV_inc ((SV *) global_info.top->hv), 0);
-    }
+
+  BUILD_GLOBAL_UNIQ(setfilename);
+  BUILD_GLOBAL_UNIQ(settitle);
+  BUILD_GLOBAL_UNIQ(copying);
+  BUILD_GLOBAL_UNIQ(titlepage);
+  BUILD_GLOBAL_UNIQ(top);
+  BUILD_GLOBAL_UNIQ(documentdescription);
+  BUILD_GLOBAL_UNIQ(setcontentsaftertitlepage);
+  BUILD_GLOBAL_UNIQ(setshortcontentsaftertitlepage);
+  BUILD_GLOBAL_UNIQ(novalidate);
+  BUILD_GLOBAL_UNIQ(validatemenus);
+  BUILD_GLOBAL_UNIQ(pagesizes);
+  BUILD_GLOBAL_UNIQ(fonttextsize);
+  BUILD_GLOBAL_UNIQ(footnotestyle);
+  BUILD_GLOBAL_UNIQ(setchapternewpage);
+  BUILD_GLOBAL_UNIQ(everyheading);
+  BUILD_GLOBAL_UNIQ(everyfooting);
+  BUILD_GLOBAL_UNIQ(evenheading);
+  BUILD_GLOBAL_UNIQ(evenfooting);
+  BUILD_GLOBAL_UNIQ(oddheading);
+  BUILD_GLOBAL_UNIQ(oddfooting);
+  BUILD_GLOBAL_UNIQ(everyheadingmarks);
+  BUILD_GLOBAL_UNIQ(everyfootingmarks);
+  BUILD_GLOBAL_UNIQ(evenheadingmarks);
+  BUILD_GLOBAL_UNIQ(oddheadingmarks);
+  BUILD_GLOBAL_UNIQ(evenfootingmarks);
+  BUILD_GLOBAL_UNIQ(oddfootingmarks);
+  BUILD_GLOBAL_UNIQ(shorttitlepage);
+  BUILD_GLOBAL_UNIQ(title);
+#undef BUILD_GLOBAL_UNIQ
+
+  /* NOTE: Same list in handle_commands.c:register_global_command. */
 
   /* The following are arrays of elements. */
 

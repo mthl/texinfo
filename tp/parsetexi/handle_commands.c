@@ -178,12 +178,14 @@ register_global_command (enum command_id cmd, ELEMENT *current)
         GLOBAL_UNIQUE_CASE(shorttitlepage);
         GLOBAL_UNIQUE_CASE(title);
 #undef GLOBAL_UNIQUE_CASE
+        /* NOTE: Same list in api.c:build_global_info2. */
         }
       if (where)
         {
           if (*where)
             line_warn ("multiple @%s", command_name(cmd));
-          *where = current;
+          else
+            *where = current;
         }
       return 1;
     }
