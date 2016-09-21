@@ -1520,9 +1520,6 @@ $result_errors{'complex_recursive_synindex'} = [
 $result_indices{'complex_recursive_synindex'} = {
   'index_names' => {
     'aaa' => {
-      'contained_indices' => {
-        'aaa' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'bbb',
       'name' => 'aaa'
@@ -1539,9 +1536,6 @@ $result_indices{'complex_recursive_synindex'} = {
       'name' => 'bbb'
     },
     'ccc' => {
-      'contained_indices' => {
-        'ccc' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'bbb',
       'name' => 'ccc'
@@ -1554,17 +1548,11 @@ $result_indices{'complex_recursive_synindex'} = {
       'name' => 'cp'
     },
     'ddd' => {
-      'contained_indices' => {
-        'ddd' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'bbb',
       'name' => 'ddd'
     },
     'eee' => {
-      'contained_indices' => {
-        'eee' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'bbb',
       'name' => 'eee'

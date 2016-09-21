@@ -2005,9 +2005,6 @@ $result_errors{'def_syn_indices'} = [
 $result_indices{'def_syn_indices'} = {
   'index_names' => {
     'abc' => {
-      'contained_indices' => {
-        'abc' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'pg',
       'name' => 'abc'
@@ -2020,18 +2017,11 @@ $result_indices{'def_syn_indices'} = {
       'name' => 'codeidx'
     },
     'cp' => {
-      'contained_indices' => {
-        'cp' => 1
-      },
       'in_code' => 1,
       'merged_in' => 'fn',
       'name' => 'cp'
     },
     'defg' => {
-      'contained_indices' => {
-        'abc' => 1,
-        'defg' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'pg',
       'name' => 'defg'
@@ -2046,9 +2036,6 @@ $result_indices{'def_syn_indices'} = {
       'name' => 'fn'
     },
     'ky' => {
-      'contained_indices' => {
-        'ky' => 1
-      },
       'in_code' => 1,
       'merged_in' => 'pg',
       'name' => 'ky'
@@ -2071,9 +2058,6 @@ $result_indices{'def_syn_indices'} = {
       'name' => 'tp'
     },
     'truc' => {
-      'contained_indices' => {
-        'truc' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'fn',
       'name' => 'truc'

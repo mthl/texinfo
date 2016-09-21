@@ -1167,9 +1167,6 @@ $result_indices{'value_in_index_commands'} = {
       'name' => 'codeidx'
     },
     'cp' => {
-      'contained_indices' => {
-        'cp' => 1
-      },
       'in_code' => 1,
       'merged_in' => 'fn',
       'name' => 'cp'

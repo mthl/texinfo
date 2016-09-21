@@ -226,9 +226,6 @@ $result_indices{'print_merged_index'} = {
       'name' => 'cp'
     },
     'fn' => {
-      'contained_indices' => {
-        'fn' => 1
-      },
       'in_code' => 1,
       'merged_in' => 'cp',
       'name' => 'fn'

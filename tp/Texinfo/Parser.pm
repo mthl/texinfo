@@ -5743,10 +5743,11 @@ sub _parse_line_command_args($$$)
           $in_code = 1 if ($command eq 'syncodeindex');
           $self->{'merged_indices'}->{$index_from} = $current_to;
           $index_from_info->{'in_code'} = $in_code;
-          foreach my $contained_index (keys %{$index_from_info->{'contained_indices'}}) {
+          foreach my $contained_index (keys %{$index_from_info->{'ontained_indices'}}) {
             $index_to_info->{'contained_indices'}->{$contained_index} = 1;
             $self->{'index_names'}->{$contained_index}->{'merged_in'} = $current_to;
           }
+          delete $index_from_info->{'contained_indices'};
           $index_from_info->{'merged_in'} = $current_to;
           $index_to_info->{'contained_indices'}->{$index_from} = 1;
           $args = [$index_from, $index_to];
@@ -6249,9 +6250,9 @@ merged indices.
 
 =item contained_indices
 
-An hash reference holding names of indices that are merged to the index,
+An hash reference holding names of indices that are merged into the index,
 including itself.  It also contains indirectly merged indices.  This key 
-is present even if the index is itself later merged to another index.
+is removed if the index is itself later merged to another index.
 
 =item index_entries
 

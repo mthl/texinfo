@@ -939,9 +939,6 @@ $result_indices{'colon_in_index_entry'} = {
       'name' => 'tp'
     },
     'vr' => {
-      'contained_indices' => {
-        'vr' => 1
-      },
       'in_code' => 0,
       'merged_in' => 'cp',
       'name' => 'vr'

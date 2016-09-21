@@ -762,9 +762,6 @@ $result_indices{'same_index_entry_merged_indices'} = {
       'name' => 'tp'
     },
     'vr' => {
-      'contained_indices' => {
-        'vr' => 1
-      },
       'in_code' => 1,
       'merged_in' => 'fn',
       'name' => 'vr'

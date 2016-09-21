@@ -486,9 +486,6 @@ $result_errors{'double_syncodeindex'} = [
 $result_indices{'double_syncodeindex'} = {
   'index_names' => {
     'cp' => {
-      'contained_indices' => {
-        'cp' => 1
-      },
       'in_code' => 1,
       'merged_in' => 'fn',
       'name' => 'cp'

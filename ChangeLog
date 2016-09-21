@@ -1,3 +1,16 @@
+2016-09-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_line_command_args) <@synindex>:
+	Remove 'contained_indices' hash when an index is merged into 
+	another index.  This simplifies the result in the following 
+	situation: Index B is merged into index A, then index C is 
+	merged into index B.  Previously, index C would not be in the 
+	'contained_indices' of index B: it would only be in those of 
+	index A.  Had index C been merged into index B first, index C 
+	would have been recorded as being in both.  Eliminating the 
+	'contained_indices' hash on the intermediate indices removes the 
+	dependency on the order that the '@synindex' commands occurred.
+
 2016-09-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_line_command_args): Add a comma 

@@ -519,9 +519,6 @@ $result_indices{'syncode_index_print_both'} = {
       'name' => 'cp'
     },
     'fn' => {
-      'contained_indices' => {
-        'fn' => 1
-      },
       'in_code' => 1,
       'merged_in' => 'cp',
       'name' => 'fn'
