@@ -1,3 +1,8 @@
+2016-09-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* input.c (convert_to_utf8): Start on converting the character 
+	encoding of the input.
+
 2016-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* convert.c (convert_to_texinfo): New function.

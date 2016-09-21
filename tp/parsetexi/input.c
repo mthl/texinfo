@@ -19,6 +19,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <iconv.h>
+#include <errno.h>
 
 #include "tree_types.h"
 #include "input.h"
@@ -27,10 +29,16 @@
 
 enum input_type { IN_file, IN_text };
 
+enum character_encoding {
+    ce_latin1,
+    ce_utf8
+};
+
 typedef struct {
     enum input_type type;
 
     FILE *file;
+    enum character_encoding input_encoding;
     LINE_NR line_nr;
 
     char *text;  /* Input text to be parsed as Texinfo. */
@@ -79,6 +87,113 @@ new_line (void)
     return 0;
 }
 
+
+/* TODO: integrate with gnulib */
+#define ICONV_CONST
+
+static iconv_t iconv_from_latin1 = (iconv_t) 0;
+
+/* Run iconv using text buffer as output buffer. */
+size_t
+text_buffer_iconv (TEXT *buf, iconv_t iconv_state,
+                   ICONV_CONST char **inbuf, size_t *inbytesleft)
+{
+  size_t out_bytes_left;
+  char *outptr;
+  size_t iconv_ret;
+
+  outptr = buf->text + buf->end;
+  out_bytes_left = buf->space - buf->end;
+  iconv_ret = iconv (iconv_state, inbuf, inbytesleft,
+                     &outptr, &out_bytes_left);
+
+  buf->end = outptr - buf->text;
+
+  return iconv_ret;
+}
+
+
+
+/* Return conversion of S according to ENC.  This function frees S. */
+static char *
+convert_to_utf8 (char *s, enum character_encoding enc)
+{
+  iconv_t our_iconv;
+  static TEXT t;
+  char *inptr; size_t bytes_left;
+  size_t iconv_ret;
+
+  /* Convert from @documentencoding to UTF-8.
+       It might be possible not to convert to UTF-8 and use an 8-bit encoding
+     throughout, but then we'd have to not set the UTF-8 flag on the Perl 
+     strings in api.c.  If multiple character encodings were used in a single 
+     file, then we'd have to keep track of which strings needed the UTF-8 flag
+     and which didn't. */
+
+  /* Could and check for malformed input: see
+     <http://savannah.gnu.org/bugs/?42896>. */
+
+  if (iconv_from_latin1 == (iconv_t) 0)
+    {
+      /* Initialize the conversion for the first time. */
+      iconv_from_latin1 = iconv_open ("UTF-8", "ISO-8859-1");
+      if (iconv_from_latin1 == (iconv_t) -1)
+        {
+          abort ();
+
+          /* big trouble.  if we do return it unconverted, we will have to
+             remember not to set the UTF-8 flags on the Perl strings, otherwise
+             Perl will choke. */
+          return s;
+        }
+    }
+
+  switch (enc)
+    {
+    case ce_latin1:
+      our_iconv = iconv_from_latin1;
+      break;
+    case ce_utf8:
+      return s; /* no conversion required. */
+      break;
+    }
+
+  t.end = 0;
+  inptr = s;
+  bytes_left = strlen (s);
+  text_alloc (&t, 10);
+
+  while (1)
+    {
+      iconv_ret = text_buffer_iconv (&t, our_iconv,
+                                     &inptr, &bytes_left);
+
+      /* Make sure libiconv flushes out the last converted character.
+         This is required when the conversion is stateful, in which
+         case libiconv might not output the last character, waiting to
+         see whether it should be combined with the next one.  */
+      if (iconv_ret != (size_t) -1
+          && text_buffer_iconv (&t, our_iconv, 0, 0) != (size_t) -1)
+        /* Success: all of input converted. */
+        break;
+
+      switch (errno)
+        {
+        case E2BIG:
+          text_alloc (&t, t.space + 20);
+          break;
+        default:
+          abort ();
+          break;
+        }
+    }
+
+  free (s);
+  t.text[t.end] = '\0';
+  //fprintf (stderr, "CONVERTED STRING IS <<%s>>", t.text);
+  return strdup (t.text);
+}
+
 /* Return value to be freed by caller.  Return null if we are out of input. */
 char *
 next_text (void)
@@ -116,7 +231,7 @@ next_text (void)
 
           line_nr = i->line_nr;
 
-          return new;
+          return convert_to_utf8 (new, 0); // i->input_encoding);
 
           break;
         case IN_file: // 1911
@@ -139,18 +254,12 @@ next_text (void)
               if (comment)
                 *comment = '\0';
 
-              /* TODO: convert from @documentencoding to UTF-8, assuming we 
-                 want to use UTF-8 internally. */
-
-              /* Could and check for malformed input: see
-                 <http://savannah.gnu.org/bugs/?42896>. */
-
               // 1920 CPP_LINE_DIRECTIVES
 
               i->line_nr.line_nr++;
               line_nr = i->line_nr;
 
-              return line;
+              return convert_to_utf8 (line, 0); // i->input_encoding);
             }
           free (line); line = 0;
           break;

@@ -23,7 +23,7 @@
 #include "text.h"
 
 /* Make sure there are LEN free bytes. */
-static void
+void
 text_alloc (TEXT *t, size_t len)
 {
   if (t->end + len > t->space)

@@ -578,9 +578,14 @@ parse_line_command_args (ELEMENT *line_command)
               {
                 // 5650
                 if (idx->merged_in)
-                  line_warn
-                    ("printing an index `%s' merged in another one, `%s'",
-                     arg, idx->merged_in->name);
+                  {
+                    INDEX *i2;
+                    for (i2 = idx; (i2->merged_in); i2 = i2->merged_in)
+                      ;
+                    line_warn
+                      ("printing an index `%s' merged in another one, `%s'",
+                       arg, i2->name);
+                  }
                 if (!current_node && !current_section && !current_region ())
                   {
                     line_warn ("printindex before document beginning: "
@@ -1480,7 +1485,8 @@ end_line_misc_line (ELEMENT *current)
                       char *from; char *to;
                   };
                   static struct encoding_map map[] = {
-                      "utf-8", "utf-8-strict"
+                      "utf-8", "utf-8-strict",
+                      "us-ascii", "ascii"
                   };
                   perl_encoding = texinfo_encoding;
                   for (i = 0; i < sizeof map / sizeof *map; i++)
