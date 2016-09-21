@@ -543,6 +543,7 @@ parse_line_command_args (ELEMENT *line_command)
             if (current_to != from_index)
               {
                 from_index->merged_in = current_to;
+                from_index->in_code = (cmd == CM_syncodeindex);
                 ADD_ARG(from);
                 ADD_ARG(to);
               }
@@ -580,8 +581,7 @@ parse_line_command_args (ELEMENT *line_command)
                   line_warn
                     ("printing an index `%s' merged in another one, `%s'",
                      arg, idx->merged_in->name);
-                if (!current_node && !current_section)
-                  // TODO && nothing on regions stack?
+                if (!current_node && !current_section && !current_region ())
                   {
                     line_warn ("printindex before document beginning: "
                                 "@printindex %s", arg);
