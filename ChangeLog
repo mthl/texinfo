@@ -1,5 +1,11 @@
 2016-09-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_line_command_args) <@synindex>: 
+	Update $self->{'merged_indices'} for any indices already merged
+	into the source index.
+
+2016-09-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_line_command_args) <@synindex>:
 	Remove 'contained_indices' hash when an index is merged into 
 	another index.  This simplifies the result in the following 

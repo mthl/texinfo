@@ -1991,12 +1991,12 @@ $result_errors{'def_syn_indices'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':57: warning: printing an index `abc\' merged in another one, `defg\'
+    'error_line' => ':57: warning: printing an index `abc\' merged in another one, `pg\'
 ',
     'file_name' => '',
     'line_nr' => 57,
     'macro' => '',
-    'text' => 'printing an index `abc\' merged in another one, `defg\'',
+    'text' => 'printing an index `abc\' merged in another one, `pg\'',
     'type' => 'warning'
   }
 ];
@@ -2071,7 +2071,7 @@ $result_indices{'def_syn_indices'} = {
     }
   },
   'merged_indices' => {
-    'abc' => 'defg',
+    'abc' => 'pg',
     'cp' => 'fn',
     'defg' => 'pg',
     'ky' => 'pg',

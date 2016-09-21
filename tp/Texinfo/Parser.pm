@@ -5743,9 +5743,10 @@ sub _parse_line_command_args($$$)
           $in_code = 1 if ($command eq 'syncodeindex');
           $self->{'merged_indices'}->{$index_from} = $current_to;
           $index_from_info->{'in_code'} = $in_code;
-          foreach my $contained_index (keys %{$index_from_info->{'ontained_indices'}}) {
+          foreach my $contained_index (keys %{$index_from_info->{'contained_indices'}}) {
             $index_to_info->{'contained_indices'}->{$contained_index} = 1;
             $self->{'index_names'}->{$contained_index}->{'merged_in'} = $current_to;
+            $self->{'merged_indices'}->{$contained_index} = $current_to;
           }
           delete $index_from_info->{'contained_indices'};
           $index_from_info->{'merged_in'} = $current_to;
