@@ -2097,16 +2097,17 @@ end_line (ELEMENT *current)
 
           if (name) // 2811
             {
+              char *t;
               /* Set index_entry unless an empty ET_bracketed_def_content. */
-              if (name->type != ET_bracketed_def_content
-                  || name->contents.number >= 2)
-                index_entry = name;
-              else if (name->contents.number == 1)
+              if (name->type == ET_bracketed_def_content
+                  && (name->contents.number == 0
+                      || (name->contents.number == 1
+                          && (t = name->contents.list[0]->text.text)
+                          && t[strspn (t, whitespace_chars)] == '\0')))
                 {
-                  char *t = name->contents.list[0]->text.text;
-                  if (t && t[strspn (t, whitespace_chars)] != '\0')
-                    index_entry = name;
                 }
+              else
+                index_entry = name;
             }
 
           if (index_entry) // 2822
