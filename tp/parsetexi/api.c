@@ -696,18 +696,28 @@ build_single_index_data (INDEX *i)
 
       STORE("merged_in", newSVpv (ultimate->name, 0));
 
+      if (i->contained_hv)
+        {
+          hv_delete (i->hv,
+                     "contained_indices", strlen ("contained_indices"),
+                     G_DISCARD);
+          i->contained_hv = 0;
+        }
+
       /* See also code in end_line.c (parse_line_command_args) <CM_synindex>.
          FIXME: Do we need to keep the original values of contained_indices?
          I don't think so. */
     }
-
-  if (!i->contained_hv)
+  else
     {
-      i->contained_hv = newHV ();
-      STORE("contained_indices", newRV_inc ((SV *)(HV *) i->contained_hv));
+      if (!i->contained_hv)
+        {
+          i->contained_hv = newHV ();
+          STORE("contained_indices", newRV_inc ((SV *)(HV *) i->contained_hv));
+        }
+      /* Record that this index "contains itself". */
+      hv_store (i->contained_hv, i->name, strlen (i->name), newSViv(1), 0);
     }
-  /* Record that this index "contains itself". */
-  hv_store (i->contained_hv, i->name, strlen (i->name), newSViv(1), 0);
 
   if (i->index_number > 0)
     {
