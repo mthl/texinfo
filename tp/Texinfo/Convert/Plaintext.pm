@@ -22,6 +22,7 @@
 package Texinfo::Convert::Plaintext;
 
 use 5.00405;
+use feature 'unicode_strings';
 use strict;
 
 use Texinfo::Convert::Converter;

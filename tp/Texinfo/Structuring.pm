@@ -23,6 +23,7 @@
 package Texinfo::Structuring;
 
 use 5.00405;
+use feature 'unicode_strings';
 use strict;
 
 # for debugging.  Also for index entries sorting.
