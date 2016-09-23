@@ -1,5 +1,12 @@
 2016-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (indices_information): Do not return
+	'merged_indices' hash, as this information is not used anywhere.  
+	Callers updated.
+	* tp/t/test_utils.pl: Don't use 'merged_indices' hash.
+
+2016-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Report.pm (line_error): Remove 'error continuation' 
 	functionality.  Callers updated.  This has few user-visible 
 	changes, except that the continuation lines will be printed for
