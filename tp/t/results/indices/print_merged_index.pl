@@ -258,9 +258,6 @@ $result_indices{'print_merged_index'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'fn' => 'cp'
   }
 };
 

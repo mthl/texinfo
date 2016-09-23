@@ -2069,13 +2069,6 @@ $result_indices{'def_syn_indices'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'abc' => 'pg',
-    'cp' => 'fn',
-    'defg' => 'pg',
-    'ky' => 'pg',
-    'truc' => 'fn'
   }
 };
 

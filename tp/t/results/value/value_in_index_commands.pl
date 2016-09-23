@@ -1214,9 +1214,6 @@ $result_indices{'value_in_index_commands'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'cp' => 'fn'
   }
 };
 

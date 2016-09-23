@@ -959,8 +959,7 @@ sub parse_texi_line($$;$$$$)
 sub indices_information($)
 {
   my $self = shift;
-  return ($self->{'index_names'}, $self->{'merged_indices'});
-  #return ($self->{'index_names'}, $self->{'merged_indices'}, $self->{'index_entries'});
+  return $self->{'index_names'};
 }
 
 sub floats_information($)
@@ -5930,8 +5929,7 @@ Texinfo::Parser - Parse Texinfo code into a Perl tree
     warn $error_message->{'error_line'};
   }
 
-  my ($index_names, $merged_indices_hash)
-      = $parser->indices_information();
+  my $index_names = $parser->indices_information();
   my $float_types_arrays = $parser->floats_information();
   my $internal_references_array
     = $parser->internal_references_information();
@@ -6224,8 +6222,7 @@ also available through the C<indices_information> method.
 
 =item indices_information
 
-  ($index_names, $merged_indices_hash)
-    = indices_information($parser);
+  $index_names = indices_information($parser);
 
 The index names is a hash reference.  The keys are
 
@@ -6323,9 +6320,6 @@ the indices corresponding to the following texinfo
                   'code' => {'in_code' => 1}};
 
 If C<name> is not set, it is set to the index name.
-
-I<$merged_indices_hash> is a hash reference, the key is an index
-name merged in the value.
 
 =back
 

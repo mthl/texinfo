@@ -766,9 +766,6 @@ $result_indices{'same_index_entry_merged_indices'} = {
       'merged_in' => 'fn',
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'vr' => 'fn'
   }
 };
 

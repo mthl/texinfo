@@ -572,9 +572,6 @@ $result_indices{'syncodeindex_to_plain'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'ky' => 'cp'
   }
 };
 

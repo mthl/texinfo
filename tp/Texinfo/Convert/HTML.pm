@@ -5721,10 +5721,8 @@ sub _prepare_index_entries($)
     $no_unidecode = 1 if (defined($self->get_conf('USE_UNIDECODE'))
                           and !$self->get_conf('USE_UNIDECODE'));
 
-    my ($index_names, $merged_indices)
-       = $self->{'parser'}->indices_information();
+    my $index_names = $self->{'parser'}->indices_information();
     $self->{'index_names'} = $index_names;
-    #print STDERR "IIII ($index_names, $merged_indices, $index_entries)\n";
     my $merged_index_entries 
         = Texinfo::Structuring::merge_indices($index_names);
     $self->{'index_entries_by_letter'}

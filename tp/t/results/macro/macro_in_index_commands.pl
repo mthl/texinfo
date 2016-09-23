@@ -1387,9 +1387,6 @@ $result_indices{'macro_in_index_commands'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'cp' => 'fn'
   }
 };
 

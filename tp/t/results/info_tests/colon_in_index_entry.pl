@@ -943,9 +943,6 @@ $result_indices{'colon_in_index_entry'} = {
       'merged_in' => 'cp',
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'vr' => 'cp'
   }
 };
 

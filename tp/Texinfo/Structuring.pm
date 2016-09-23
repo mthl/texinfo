@@ -2249,8 +2249,7 @@ Texinfo::Structuring - informations and transformations in Texinfo::Parser tree
   elements_directions($parser, $elements);
   elements_file_directions($parser, $elements);
 
-  my ($index_names, $merged_indices) 
-     = $parser->indices_information();
+  my $index_names = $parser->indices_information();
   my $merged_index_entries
      = merge_indices($index_names);
   my $index_entries_sorted;

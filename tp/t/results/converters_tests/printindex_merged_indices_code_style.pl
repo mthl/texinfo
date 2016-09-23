@@ -957,12 +957,6 @@ $result_indices{'printindex_merged_indices_code_style'} = {
       'merged_in' => 'fn',
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'cdi' => 'fn',
-    'cp' => 'fn',
-    'ddi' => 'fn',
-    'vr' => 'fn'
   }
 };
 

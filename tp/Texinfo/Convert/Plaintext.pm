@@ -1246,8 +1246,7 @@ sub _printindex_formatted($$;$)
   # this is not redone for each index, only once
   if (!defined($self->{'index_entries'}) and $self->{'parser'}) {
 
-    my ($index_names, $merged_indices)
-       = $self->{'parser'}->indices_information();
+    my $index_names = $self->{'parser'}->indices_information();
     my $merged_index_entries 
       = Texinfo::Structuring::merge_indices($index_names);
     $self->{'index_entries'} 

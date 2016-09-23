@@ -416,9 +416,6 @@ $result_indices{'default_cp_index_and_one_letter_syncodeindex'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'cp' => 'fn'
   }
 };
 

@@ -202,32 +202,6 @@ sub _parse_texi ($;$)
 
 use Data::Dumper;
 
-sub _add_parents ($);
-
-sub _add_parents ($) {
-  my $elt = shift;
-
-  if (exists $elt->{'contents'}) {
-    foreach my $child (@{$elt->{'contents'}}) {
-      #$child->{'parent'} = $elt;
-      _add_parents ($child);
-    }
-  }
-
-  if (exists $elt->{'args'}) {
-    foreach my $child (@{$elt->{'args'}}) {
-      #$child->{'parent'} = $elt;
-      _add_parents ($child);
-    }
-  }
-
-  # 'level' is set in Parser.pm, but not under 'extra'.
-  # currently this isn't needed as level is set in api.c instead.
-  if (defined ($elt->{'extra'}) and defined $elt->{'extra'}{'level'}) {
-    $elt->{'level'} = $elt->{'extra'}{'level'};
-  }
-}
-
 # Look for a menu in the node, saving in the 'menus' array reference
 # of the node element
 # This array was built on line 4800 of Parser.pm.
@@ -303,7 +277,6 @@ sub parse_texi_file ($$)
 
   $GLOBAL_INFO2 = build_global_info2 ();
 
-  _add_parents ($TREE);
   _complete_node_list ($self, $TREE);
 
   # line 899
@@ -427,7 +400,6 @@ sub parse_texi_text($$;$$$$)
     $self->{'extra'} = $GLOBAL_INFO2;
 
     _get_errors ($self);
-    _add_parents ($tree);
     _complete_node_list ($self, $tree);
     return $tree;
 }
@@ -447,7 +419,6 @@ sub parse_texi_line($$;$$$$)
     $self = parser() if (!defined($self));
     parse_string($text);
     my $tree = build_texinfo_tree ();
-    _add_parents ($tree);
     return $tree;
 }
 

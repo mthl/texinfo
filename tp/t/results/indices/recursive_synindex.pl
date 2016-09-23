@@ -272,9 +272,6 @@ $result_indices{'recursive_synindex'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'aaa' => 'bbb'
   }
 };
 

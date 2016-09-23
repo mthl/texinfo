@@ -551,9 +551,6 @@ $result_indices{'syncode_index_print_both'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'fn' => 'cp'
   }
 };
 

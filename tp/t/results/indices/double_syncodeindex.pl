@@ -526,9 +526,6 @@ $result_indices{'double_syncodeindex'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'cp' => 'fn'
   }
 };
 

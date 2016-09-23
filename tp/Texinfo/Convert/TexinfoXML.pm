@@ -436,9 +436,7 @@ sub converter_initialize($)
          if $self->{'expanded_formats_hash'}->{$raw};
   } 
   if ($self->{'parser'}) {
-    my ($index_names, $merged_indices)
-       = $self->{'parser'}->indices_information();
-    $self->{'index_names'} = $index_names;
+    $self->{'index_names'} = $self->{'parser'}->indices_information();
   }
 }
 

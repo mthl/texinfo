@@ -1592,12 +1592,6 @@ $result_indices{'complex_recursive_synindex'} = {
       'in_code' => 1,
       'name' => 'vr'
     }
-  },
-  'merged_indices' => {
-    'aaa' => 'bbb',
-    'ccc' => 'bbb',
-    'ddd' => 'bbb',
-    'eee' => 'bbb'
   }
 };
 
