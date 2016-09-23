@@ -1,5 +1,13 @@
 2016-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Customization Variables and Options): Remove 
+	index entries for some customization variables with index 
+	entries duplicated elsewhere.  These variables are 
+	'documentlanguage', 'HEADERS', and 'SHOW_MENU'.
+	(Other Customization Variables): Add index entry for 'HEADERS'.
+
+2016-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (indices_information): Do not return
 	'merged_indices' hash, as this information is not used anywhere.  
 	Callers updated.

@@ -16717,7 +16717,6 @@ meaning of the options.
 @item
 @vindex ENABLE_ENCODING
 @option{--enable-encoding}   @tab @code{ENABLE_ENCODING}
-@vindex documentlanguage
 @item
 @option{--document-language} @tab @code{documentlanguage}
 @item
@@ -16739,8 +16738,6 @@ meaning of the options.
 @vindex MACRO_EXPAND
 @option{--macro-expand}      @tab @code{MACRO_EXPAND}
 @item
-@vindex HEADERS
-@vindex SHOW_MENU
 @option{--headers}           @tab @code{HEADERS}, @code{SHOW_MENU}
 @item
 @vindex NO_WARN
@@ -17376,6 +17373,7 @@ If set, create redirection files for renamed nodes.  Set by default
 when generating HTML@.
 
 @item SHOW_MENU
+@vindex HEADERS
 @opindex --no-headers
 If set, Texinfo menus are output.  By default, it is set unless
 generating Docbook or if @option{--no-headers} is specified.
