@@ -632,7 +632,7 @@ $result_errors{'simple'} = [
     'line_nr' => 4,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
+    'type' => 'error'
   }
 ];
 

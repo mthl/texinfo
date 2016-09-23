@@ -2462,7 +2462,7 @@ sub _register_label($$$$)
                            $line_nr);
     $self->line_error(sprintf($self->__("here is the previous definition as \@%s"),
                                $self->{'labels'}->{$normalized}->{'cmdname'}),
-                       $self->{'labels'}->{$normalized}->{'line_nr'}, 1);
+                       $self->{'labels'}->{$normalized}->{'line_nr'});
     return 0;
   } else {
     $current->{'extra'}->{'normalized'} = $normalized;
@@ -4830,7 +4830,7 @@ sub _parse_texi($;$)
                                               $command), $line_nr);
                     $self->line_error($self->__(
       "perhaps your \@top node should be wrapped in \@ifnottex rather than \@ifinfo?"), 
-                                  $line_nr, 1);
+                                  $line_nr);
                   }
                   if ($command eq 'menu') {
                     push @{$self->{'info'}->{'unassociated_menus'}}, $current;

@@ -1,5 +1,15 @@
 2016-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Report.pm (line_error): Remove 'error continuation' 
+	functionality.  Callers updated.  This has few user-visible 
+	changes, except that the continuation lines will be printed for
+	'-c NO_WARN=1', and that processing may be aborted sooner when
+	'ERROR_LIMIT' is used due to multi-line errors counting as more
+	than one.
+	(gdt): Remove some commented-out statements for debugging.
+
+2016-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/HTML.pm,
 	* tp/Texinfo/Convert/Plaintext.pm,
 	* tp/Texinfo/Structuring.pm: Add a "use feature 'unicode_strings'"

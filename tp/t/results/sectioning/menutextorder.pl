@@ -1868,7 +1868,7 @@ $result_errors{'menutextorder'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => 'perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?',
-    'type' => 'error continuation'
+    'type' => 'error'
   },
   {
     'error_line' => ':6: warning: node `foo\' is next for `bar\' in sectioning but not in menu
