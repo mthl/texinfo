@@ -2,7 +2,7 @@ Index: Texinfo/Convert/Converter.pm
 ===================================================================
 --- Texinfo/Convert/Converter.pm	(revision 7357)
 +++ Texinfo/Convert/Converter.pm	(working copy)
-@@ -1134,6 +1134,8 @@ sub _collect_leading_trailing_spaces_arg($$)
+@@ -1134,6 +1134,8 @@
    return @result;
  }
  
@@ -11,7 +11,7 @@ Index: Texinfo/Convert/Converter.pm
  sub _table_item_content_tree($$$)
  {
    my $self = shift;
-@@ -1158,7 +1160,8 @@ sub _table_item_content_tree($$$)
+@@ -1158,7 +1160,8 @@
                 'contents' => $contents,
                 'parent' => $command,};
      $command->{'args'} = [$arg];
@@ -25,7 +25,7 @@ Index: Texinfo/ModulePath.pm.in
 ===================================================================
 --- Texinfo/ModulePath.pm.in	(revision 7357)
 +++ Texinfo/ModulePath.pm.in	(working copy)
-@@ -19,6 +19,8 @@ sub init (;$$) {
+@@ -19,6 +19,8 @@
  
    if (defined($ENV{'top_builddir'}) and !defined($ENV{'top_srcdir'})) {
      $ENV{'top_srcdir'} = $ENV{'top_builddir'};
@@ -34,7 +34,7 @@ Index: Texinfo/ModulePath.pm.in
    }
     
    if (!$lib_dir) {
-@@ -46,6 +48,7 @@ sub init (;$$) {
+@@ -46,6 +48,7 @@
      if ('@USE_EXTERNAL_UNIDECODE@' ne 'yes') {
        unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'));
      }
@@ -44,9 +44,9 @@ Index: Texinfo/ModulePath.pm.in
    if (!$libexec_dir) {
 Index: Texinfo/Parser.pm
 ===================================================================
---- Texinfo/Parser.pm	(revision 7386)
+--- Texinfo/Parser.pm	(revision 7408)
 +++ Texinfo/Parser.pm	(working copy)
-@@ -33,6 +33,9 @@ package Texinfo::Parser;
+@@ -33,6 +33,9 @@
  use 5.006;
  use strict;
  
@@ -58,9 +58,9 @@ Index: Texinfo/Parser.pm
  
 Index: Texinfo/Report.pm
 ===================================================================
---- Texinfo/Report.pm	(revision 7357)
+--- Texinfo/Report.pm	(revision 7408)
 +++ Texinfo/Report.pm	(working copy)
-@@ -48,7 +48,8 @@ use File::Basename;
+@@ -48,7 +48,8 @@
  
  use Locale::Messages;
  # to be able to load a parser if none was given to gdt.
@@ -70,7 +70,7 @@ Index: Texinfo/Report.pm
  
  # return the errors and warnings
  sub errors($)
-@@ -404,7 +405,8 @@ sub gdt($$;$$)
+@@ -385,7 +386,8 @@
      }
    }
    #my $parser = Texinfo::Parser::parser($parser_conf);
@@ -82,9 +82,9 @@ Index: Texinfo/Report.pm
    }
 Index: Texinfo/Structuring.pm
 ===================================================================
---- Texinfo/Structuring.pm	(revision 7357)
+--- Texinfo/Structuring.pm	(revision 7407)
 +++ Texinfo/Structuring.pm	(working copy)
-@@ -582,7 +582,7 @@ sub nodes_tree($)
+@@ -583,7 +583,7 @@
    foreach my $node (@{$self->{'nodes'}}) {
      if ($node->{'extra'}->{'normalized'} eq 'Top') {
        $top_node = $node;
@@ -93,7 +93,7 @@ Index: Texinfo/Structuring.pm
                                                      $self->{'TOP_NODE_UP'});
        $top_node_up
          = {'type' => 'top_node_up',
-@@ -805,7 +805,7 @@ sub nodes_tree($)
+@@ -806,7 +806,7 @@
                                                'extra' => $node_direction };
                $node->{'node_'.$direction}->{'extra'}->{'top_node_up'} 
                  = $node;
@@ -106,7 +106,7 @@ Index: t/test_utils.pl
 ===================================================================
 --- t/test_utils.pl	(revision 7357)
 +++ t/test_utils.pl	(working copy)
-@@ -43,7 +43,8 @@ Texinfo::ModulePath::init();
+@@ -43,7 +43,8 @@
  
  use Test::More;
  
@@ -116,7 +116,7 @@ Index: t/test_utils.pl
  use Texinfo::Convert::Text;
  use Texinfo::Convert::Texinfo;
  use Texinfo::Structuring;
-@@ -730,7 +731,8 @@ sub test($$)
+@@ -730,7 +731,8 @@
    #  push @tested_formats, @{$self->{'test_formats'}};
    }
  
@@ -130,7 +130,7 @@ Index: texi2any.pl
 ===================================================================
 --- texi2any.pl	(revision 7357)
 +++ texi2any.pl	(working copy)
-@@ -273,8 +273,8 @@ if ($configured_version eq '@' . 'PACKAGE_VERSION@
+@@ -273,8 +273,8 @@
    } else {
      # used in the standalone perl module, as $hardcoded_version is undef
      # and it should never be configured in that setup
@@ -141,7 +141,7 @@ Index: texi2any.pl
    }
  }
  my $configured_package = '@PACKAGE@';
-@@ -1068,7 +1068,14 @@ if ($call_texi2dvi) {
+@@ -1068,7 +1068,14 @@
    document_warn(__('--Xopt option without printed output')); 
  }
  
