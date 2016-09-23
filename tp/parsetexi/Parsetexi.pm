@@ -432,18 +432,7 @@ sub indices_information($)
     $INDEX_NAMES = build_index_data ();
     $self->{'index_names'} = $INDEX_NAMES;
   }
-  if (!$self->{'merged_indices'}) {
-    $self->{'merged_indices'} = {};
-    $INDEX_NAMES = $self->{'index_names'};
-    for my $index (keys %$INDEX_NAMES) {
-      if ($INDEX_NAMES->{$index}->{'merged_in'}) {
-        $self->{'merged_indices'}-> {$index}
-          = $INDEX_NAMES->{$index}->{'merged_in'};
-       }
-    }
-  }
-
-  return ($self->{'index_names'}, $self->{'merged_indices'});
+  return $self->{'index_names'};
 }
 
 sub floats_information($)
