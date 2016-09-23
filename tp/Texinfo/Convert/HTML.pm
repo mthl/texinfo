@@ -22,6 +22,12 @@
 package Texinfo::Convert::HTML;
 
 use 5.00405;
+
+use feature 'unicode_strings';
+# See 'The "Unicode Bug"' under 'perlunicode' man page.  This means
+# that regular expressions will treat characters 128-255 in a Perl string
+# the same regardless of whether the string is using a UTF-8 encoding.
+
 use strict;
 
 use Texinfo::Convert::Converter;

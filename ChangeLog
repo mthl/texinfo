@@ -1,3 +1,8 @@
+2016-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm: Add a "use feature 'unicode_strings'"
+	directive.
+
 2016-09-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_line_command_args) <@synindex>: 
