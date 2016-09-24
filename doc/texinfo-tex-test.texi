@@ -28,7 +28,7 @@
 
 @contents
 
-@part Part One@*Sample part page
+@part Part One@*Sample part page@sup{superscript}
 
 @chapter Fonts
 
@@ -44,17 +44,52 @@ A test of the fonts used in @file{texinfo.tex}.
 
 {@textfonts @headerline}
 
+{@reducedfonts @headerline}
+
 {@chapfonts @headerline}
 
 {@secfonts @headerline}
 
 {@subsecfonts @headerline}
 
-{@reducedfonts @headerline}
-
 {@smallfonts @headerline}
 
 {@smallerfonts @headerline}
+
+@majorheading Test of @LaTeX{} logo
+
+{@rm @LaTeX{}}
+
+{@it @LaTeX{}}
+
+{@sl @LaTeX{}}
+
+{@bf @LaTeX{}}
+
+{@tt @LaTeX{}}
+
+@majorheading roman @b{bold}@sup{superscript} @LaTeX{}
+
+@majorheading roman@sup{sup} @b{now bold@sup{sup}@r{now roman@sup{superscript}}}
+
+
+@heading roman @b{bold} @LaTeX{}
+
+@subheading roman @b{bold} @LaTeX{}
+
+roman@sub{sub} @b{bold@sub{sub}}
+
+@section Acronyms
+
+Test of @acronym{ACRONYM}'s.  {ACRONYM}'s.
+
+@majorheading Test of @acronym{ACRONYM}'s.  ACRONYM's hippopotamus
+
+
+@chapter Glyph commands
+
+@ordf{} @ordm{}
+
 
 @chapter Macros
 @section Backslashes in macro arguments
@@ -459,7 +494,7 @@ the start of a page.
 \entry {\code {PROGRAM}}{196}
 \entry {Program names, indicating}{72}
 \entry {\code {PROGRAM_NAME_IN_FOOTER}}{192}
-\entry {Programming, glyphs for}{119}
+\entry {Programming, glyhs for}{119}
 \entry {Pronunciation of Texinfo}{3}
 \entry {Prototype row, column widths defined by}{93}
 \entry {Ragged left, without filling}{83}
@@ -585,7 +620,7 @@ doesn't start with an initial.
 \entry {\code {PROGRAM}}{196}
 \entry {Program names, indicating}{72}
 \entry {\code {PROGRAM_NAME_IN_FOOTER}}{192}
-\entry {Programming, glyphs for}{119}
+\entry {Programming, glyhs for}{119}
 \entry {Pronunciation of Texinfo}{3}
 \entry {Prototype row, column widths defined by}{93}
 \initial {Q}
