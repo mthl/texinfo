@@ -138,7 +138,7 @@ if (!$dlpath) {
 #print STDERR "loadable object is at $dlpath\n";
 
 my $module = "TestXS";
-our $module_version = '6.3';
+our $module_version = '6.3dev';
 
 my $flags = 0;
 my $libref = DynaLoader::dl_load_file($dlpath, $flags);
