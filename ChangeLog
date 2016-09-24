@@ -1,5 +1,14 @@
 2016-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/configure.ac,
+	tp/Texinfo/Convert/XSParagraph/TestXS.pm: Change version number 
+	to "0" as (a) alphabetic characters in the version don't work 
+	here, and (b) this saves us having to update the version here.
+	* README-hacking: Remove note to update the version number in 
+	these two files.
+
+2016-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* configure.ac, tp/Texinfo/Convert/XSParagraph/configure.ac,
 	tp/Texinfo/Convert/XSParagraph/TestXS.pm: Bump version to 6.3dev.
 	Remove "dist-xz" option for testing.
