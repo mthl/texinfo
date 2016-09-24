@@ -179,9 +179,6 @@ version number in texi2dvi, texi2pdf, txirefcard.tex.
 (cd tp && maintain/regenerate_documentlanguages.pl)
   -- regenerates tp/Texinfo/Documentlanguages.pm
 
-sync texi2html/test/ results with tp/.
-
-ensure building standalone modules for CPAN still works.
 make V=1 pdf and fix underfull/overfull boxes.
 
 - Changes to sources:
@@ -198,7 +195,6 @@ pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
 check that the svn checkout is up-to-date (run "svnversion" and "svn update")
 make
 make update-po            # both po and po_document needed, build a dist first
-make -C doc wwwdoc-build  # and -install for official (and eventual commit)
 make long-checks          # distcheck does not do this
 (export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
 svn commit                # when clean, then distcheck to be sure
@@ -257,6 +253,9 @@ update home page (texinfo.html) and commit as needed.
 including:
   pod2html $txi/Pod-Simple-Texinfo/pod2texi.pl \
   | fgrep -v 'rev="made"' >manual/pod2texi.html
+
+Build web documentation with
+  make -C doc wwwdoc-build
 Copy documentation files to web checkout with, e.g.
   make -C doc \
   wwwdoc-install www_target=../../TEXINFO_WEB_PAGES/texinfo/manual/

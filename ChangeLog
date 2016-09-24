@@ -1,5 +1,11 @@
 2016-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README-hacking: Remove note about updating texi2html tests, 
+	and note about building standalone modules for CPAN.  Move
+	advice on updating web pages together.
+
+2016-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/configure.ac,
 	tp/Texinfo/Convert/XSParagraph/TestXS.pm: Change version number 
 	to "0" as (a) alphabetic characters in the version don't work 
