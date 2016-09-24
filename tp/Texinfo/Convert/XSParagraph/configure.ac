@@ -52,11 +52,15 @@ AC_ARG_ENABLE([perl-xs],
 if test x$disable_xs != xyes; then
   AC_PATH_PROG([PERL], [perl])
   
-  # It's essential that we use the same compiler that was used to build
-  # Perl.  Otherwise Perl's "config.h" will be incorrect.  This overrides
-  # the check in AC_PROG_CC below.
-  lookup_perl_conf([cc])
-  CC=$conf_value
+  if test -v PERL_EXT_CC ; then
+    CC=$PERL_EXT_CC
+  else
+    # It's essential that we use the same compiler that was used to build
+    # Perl.  Otherwise Perl's "config.h" will be incorrect.  This overrides
+    # the check in AC_PROG_CC below.
+    lookup_perl_conf([cc])
+    CC=$conf_value
+  fi
 
   # Wipe the cache value in case -C was given at the top level
   ac_cv_prog_CC= ; unset ac_cv_prog_CC
@@ -85,6 +89,7 @@ LT_INIT
 AC_ARG_VAR([PERL_EXT_CFLAGS], [Compiler flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_CPPFLAGS], [C preprocessor flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_LDFLAGS], [Linker flags for a Perl extension])
+AC_ARG_VAR([PERL_EXT_CC], [Compiler for a Perl extension])
 
 # version of the XSParagraph interface
 XSPARAGRAPH_INTERFACE_VERSION=1

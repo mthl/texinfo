@@ -1,3 +1,9 @@
+2016-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac, configure.ac
+	(PERL_EXT_CC): New variable to override compiler used to build 
+	XS extension.
+
 2016-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Customization Variables and Options): Remove 
