@@ -23,10 +23,20 @@ package Texinfo::Convert::HTML;
 
 use 5.00405;
 
-use feature 'unicode_strings';
 # See 'The "Unicode Bug"' under 'perlunicode' man page.  This means
 # that regular expressions will treat characters 128-255 in a Perl string
 # the same regardless of whether the string is using a UTF-8 encoding.
+# If the Perl version is too old for "use feature 'unicode_strings';",
+# attempt to get the same result with 'use locale;' with a Latin-1 locale.
+use POSIX qw(locale_h);
+BEGIN {
+  if ($] >= 5.012) {
+    require feature; feature->import('unicode_strings');
+  } else {
+    setlocale(LC_CTYPE, "en_US");
+    require locale; locale->import();
+  }
+}
 
 use strict;
 

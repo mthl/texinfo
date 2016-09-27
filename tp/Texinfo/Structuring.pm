@@ -23,7 +23,18 @@
 package Texinfo::Structuring;
 
 use 5.00405;
-use feature 'unicode_strings';
+
+# See comment at start of HTML.pm
+use POSIX qw(locale_h);
+BEGIN {
+  if ($] >= 5.012) {
+    require feature; feature->import('unicode_strings');
+  } else {
+    setlocale(LC_CTYPE, "en_US");
+    require locale; locale->import();
+  }
+}
+
 use strict;
 
 # for debugging.  Also for index entries sorting.

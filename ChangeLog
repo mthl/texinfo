@@ -1,5 +1,14 @@
 2016-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/HTML.pm,
+	* tp/Texinfo/Convert/Plaintext.pm,
+	* tp/Texinfo/Structuring.pm: Test perl version and only
+	"use feature 'unicode_strings'" if perl version is at
+	least 5.012.  Otherwise, "use locale;" and try to set a
+	Latin-1 locale.
+
+2016-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo-tex-test.texi (Fonts): More tests of fonts.  Add 
 	section testing glyph commands.
 
