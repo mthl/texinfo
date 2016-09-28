@@ -255,10 +255,6 @@ sub gdt($$;$$)
 
   my $saved_env_LC_ALL = $ENV{'LC_ALL'};
   my $saved_LANGUAGE = $ENV{'LANGUAGE'};
-#  my $saved_LANG = $ENV{'LANG'};
-#  my $saved_LC_ALL = POSIX::setlocale (LC_ALL);
-#  my $saved_LC_CTYPE = POSIX::setlocale (LC_CTYPE);
-#  my $saved_LC_MESSAGES = POSIX::setlocale (LC_MESSAGES);
 
   Locale::Messages::textdomain($strings_textdomain);
 

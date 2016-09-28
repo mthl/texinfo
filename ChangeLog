@@ -1,3 +1,10 @@
+2016-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm: Remove commented out "use POSIX" 
+	declaration.
+	* tp/Texinfo/Report.pm (gdt): Remove commented-out calls to 
+	POSIX::setlocale.
+
 2016-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/HTML.pm,

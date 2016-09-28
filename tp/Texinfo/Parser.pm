@@ -48,8 +48,6 @@ use File::Basename;
 # here, but Clone is not in perl core modules, so we use Storable::dclone.
 use Storable qw(dclone); # standard in 5.007003
 
-#use POSIX qw(setlocale LC_ALL LC_CTYPE LC_MESSAGES);
-
 # commands definitions
 use Texinfo::Common;
 # Error reporting and counting, translation of strings.
