@@ -1,3 +1,15 @@
+2016-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm,
+	* tp/Texinfo/Convert/Plaintext.pm,
+	* tp/Texinfo/Structuring.pm: Remove 'use locale' directives for 
+	older Perl versions.  There were subtle differences,
+	for example whether German eszet uppercased to "SS" or
+	itself.  It would also need the locale to be set and restored 
+	everywhere it mattered.
+	* tp/Texinfo/Structuring.pm (_do_index_strings): Call 
+	utf8::upgrade on the index entry sort key.
+
 2016-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm: Remove commented out "use POSIX" 

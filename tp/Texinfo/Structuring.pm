@@ -25,15 +25,7 @@ package Texinfo::Structuring;
 use 5.00405;
 
 # See comment at start of HTML.pm
-use POSIX qw(locale_h);
-BEGIN {
-  if ($] >= 5.012) {
-    require feature; feature->import('unicode_strings');
-  } else {
-    setlocale(LC_CTYPE, "en_US");
-    require locale; locale->import();
-  }
-}
+use if $] >= 5.012, feature => 'unicode_strings';
 
 use strict;
 
@@ -2080,6 +2072,10 @@ sub _do_index_keys($$$)
                                  $entry->{'index_at_command'}),
                         $entry->{'command'}->{'line_nr'});
       }
+      # This avoids varying results depending on whether the string is
+      # represented internally in UTF-8.  See "the Unicode bug" in the
+      # "perlunicode" man page.
+      utf8::upgrade($entry->{'key'});
     }
   }
 }

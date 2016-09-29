@@ -24,15 +24,7 @@ package Texinfo::Convert::Plaintext;
 use 5.00405;
 
 # See comment at start of HTML.pm
-use POSIX qw(locale_h);
-BEGIN {
-  if ($] >= 5.012) {
-    require feature; feature->import('unicode_strings');
-  } else {
-    setlocale(LC_CTYPE, "en_US");
-    require locale; locale->import();
-  }
-}
+use if $] >= 5.012, feature => qw(unicode_strings);
 
 use strict;
 
