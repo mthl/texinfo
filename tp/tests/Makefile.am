@@ -68,7 +68,7 @@ tex-html-checks tex-html-check: all
 # Some files are in 2 directories in order to get the same result
 # in both test run locations.
 all-local: htmlxref/htmlxref.cnf htmlxref-only_mono/htmlxref.cnf \
- htmlxref-only_split/htmlxref.cnf htmlxref-only_split/.texinfo/htmlxref.cnf \
+ htmlxref-only_split/htmlxref.cnf \
  equivalent_nodes-noderename.cnf sectioning/equivalent_nodes-noderename.cnf \
  unknown_nodes_renamed-noderename.cnf \
  formatting/unknown_nodes_renamed-noderename.cnf coverage_macro-cr.texi
@@ -81,13 +81,6 @@ htmlxref-only_mono/htmlxref.cnf: htmlxref-only_mono/htmlxref.cnf-ref
 
 htmlxref-only_split/htmlxref.cnf: htmlxref-only_split/htmlxref.cnf-ref
 	${INSTALL_DATA} $(srcdir)/htmlxref-only_split/htmlxref.cnf-ref $@
-
-htmlxref-only_split/.texinfo/htmlxref.cnf: \
- htmlxref-only_split/htmlxref.cnf-texinfo htmlxref-only_split/.texinfo
-	${INSTALL_DATA} $(srcdir)/htmlxref-only_split/htmlxref.cnf-texinfo $@
-
-htmlxref-only_split/.texinfo:
-	$(MKDIR_P) $@
 
 sectioning/equivalent_nodes-noderename.cnf: sectioning/renamednodes.cnf-ref
 	${INSTALL_DATA} $(srcdir)/sectioning/renamednodes.cnf-ref $@

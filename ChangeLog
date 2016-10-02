@@ -2,6 +2,9 @@
 
 	* tp/Texinfo/Convert/XSParagraph/t/XSParagraph.t: Remove unused 
 	file.
+	* tp/tests/htmlxref-only_split/Makefile.am,
+	* tp/tests/Makefile.am: Remove reference to removed .texinfo 
+	subdirectory.
 
 2016-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
