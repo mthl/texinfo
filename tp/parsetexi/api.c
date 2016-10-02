@@ -260,6 +260,7 @@ element_to_perl_hash (ELEMENT *e)
       || e->cmd == CM_TeX
       || e->type == ET_elided
       || e->type == ET_elided_block
+      || e->type == ET_preformatted
       || (command_flags(e) & CF_root)
       || (command_data(e->cmd).flags & CF_brace
           && (command_data(e->cmd).data >= 0

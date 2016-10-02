@@ -215,18 +215,28 @@ sub _find_menus_of_node ($) {
   # "(texinfo)Info Format Preamble" and some other nodes in
   # doc/texinfo.texi.  Avoid referencing it which would create
   # it by mistake, which would cause problems in Structuring.pm.
+  #
+  # Also, check for menu elements under both the node element and the
+  # sectioning element.  This is for malformed input with a @menu between
+  # the two commands.
 
   my $contents;
+
+  if ($node->{'contents'}) {
+    $contents = $node->{'contents'};
+    foreach my $child (@{$contents}) {
+      if ($child->{'cmdname'} and $child->{'cmdname'} eq 'menu') {
+        push @{$node->{'menus'}}, $child;
+      }
+    }
+  }
+
   if (defined $node->{'extra'}{'associated_section'}) {
     $contents = $node->{'extra'}{'associated_section'}->{'contents'};
-  } else {
-    $contents = $node->{'contents'};
-  }
-    
-
-  foreach my $child (@{$contents}) {
-    if ($child->{'cmdname'} and $child->{'cmdname'} eq 'menu') {
-      push @{$node->{'menus'}}, $child;
+    foreach my $child (@{$contents}) {
+      if ($child->{'cmdname'} and $child->{'cmdname'} eq 'menu') {
+        push @{$node->{'menus'}}, $child;
+      }
     }
   }
 }
