@@ -957,10 +957,8 @@ handle_block_command (ELEMENT *current, char **line_inout,
           && (current->type == ET_menu_comment
               || current->type == ET_menu_entry_description))
         {
-#if 0
           /* This is for @detailmenu within @menu */
           ELEMENT *menu = current->parent;
-          //abort ();
           if (current->contents.number == 0)
             {
               destroy_element (pop_element_from_contents (menu));
@@ -969,8 +967,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
             }
           if (menu->type == ET_menu_entry)
             menu = menu->parent;
-          current = last_contents_child (menu);
-#endif
+          current = menu;
         }
 
       // 4740
