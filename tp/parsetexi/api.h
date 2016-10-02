@@ -27,3 +27,6 @@ void init_index_commands (void);
 
 /* In api.c */
 void reset_context_stack (void);
+
+void conf_set_show_menu (int i);
+void reset_conf (void);

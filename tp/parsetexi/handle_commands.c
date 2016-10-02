@@ -1062,21 +1062,25 @@ handle_block_command (ELEMENT *current, char **line_inout,
 
               if (current_node) // 4793
                 {
-                  if (cmd == CM_direntry)
+                  if (cmd == CM_direntry && conf.show_menu)
                     {
                       line_warn ("@direntry after first node");
                     }
                   else if (cmd == CM_menu)
                     {
-                      // add to array of menus for current node
+                      /* Add to array of menus for current node.  Currently
+                         done in Perl code. */
                     }
                 }
               else if (cmd != CM_direntry)
                 {
-                  line_error ("@%s seen before first @node",
-                              command_name(cmd));
-                  line_error ("perhaps your @top node should be "
-                              "wrapped in @ifnottex rather than @ifinfo?");
+                  if (conf.show_menu)
+                    {
+                      line_error ("@%s seen before first @node",
+                                  command_name(cmd));
+                      line_error ("perhaps your @top node should be "
+                                  "wrapped in @ifnottex rather than @ifinfo?");
+                    }
                   // 4810 unassociated menus
                 }
             }

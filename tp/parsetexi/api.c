@@ -59,6 +59,7 @@ reset_parser (void)
   reset_internal_xrefs ();
   reset_labels ();
   input_reset_input_stack ();
+  reset_conf ();
 
   current_node = current_section = 0;
 }
@@ -1018,4 +1019,21 @@ build_global_info2 (void)
         }
     }
   return hv;
+}
+
+
+/* Configuration values. */
+CONF conf;
+
+void
+conf_set_show_menu (int i)
+{
+  conf.show_menu = i;
+}
+
+void
+reset_conf (void)
+{
+  memset (&conf, 0, sizeof (conf));
+  conf.show_menu = 1;
 }

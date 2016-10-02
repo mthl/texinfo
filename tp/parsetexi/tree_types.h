@@ -154,6 +154,10 @@ typedef struct GLOBAL_INFO {
     ELEMENT part;
 } GLOBAL_INFO;
 
+typedef struct CONF {
+    int show_menu;
+} CONF;
+
 typedef struct {
     char *index_name;
     char *index_prefix;

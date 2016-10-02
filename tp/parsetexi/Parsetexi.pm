@@ -170,6 +170,8 @@ sub parser (;$$)
         for my $f (@{$parser->{$key}}) {
           add_expanded_format ($f);
         }
+      } elsif ($key eq 'SHOW_MENU') {
+        conf_set_show_menu ($conf->{$key});
       } else {
 	#warn "ignoring parser configuration value \"$key\"\n";
       }

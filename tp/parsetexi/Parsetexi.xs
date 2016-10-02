@@ -130,3 +130,5 @@ void
 add_expanded_format (format)
      char *format
 
+void
+conf_set_show_menu (int i)

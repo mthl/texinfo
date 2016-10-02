@@ -46,10 +46,14 @@ register_extra_menu_entry_information (ELEMENT *current)
           isolate_last_space (arg, ET_space_at_end_menu_node);
 
           parsed_entry_node = parse_node_manual (arg);
-          if (1)
+          if (!parsed_entry_node)
             {
-              add_extra_node_spec (current, "menu_entry_node", parsed_entry_node);
+              if (conf.show_menu)
+                line_error ("empty node name in menu entry");
             }
+          else
+            add_extra_node_spec (current, "menu_entry_node",
+                                 parsed_entry_node);
         }
       else if (arg->type == ET_menu_entry_description)
         {
