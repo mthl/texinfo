@@ -1,3 +1,8 @@
+2016-10-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/t/XSParagraph.t: Remove unused 
+	file.
+
 2016-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/HTML.pm,
