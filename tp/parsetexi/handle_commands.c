@@ -960,11 +960,10 @@ handle_block_command (ELEMENT *current, char **line_inout,
           /* This is for @detailmenu within @menu */
           ELEMENT *menu = current->parent;
           if (current->contents.number == 0)
-            {
-              destroy_element (pop_element_from_contents (menu));
-              if (pop_context () != ct_preformatted)
-                abort ();
-            }
+            destroy_element (pop_element_from_contents (menu));
+
+          if (pop_context () != ct_preformatted)
+            abort ();
           if (menu->type == ET_menu_entry)
             menu = menu->parent;
           current = menu;
