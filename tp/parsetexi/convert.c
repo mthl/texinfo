@@ -210,6 +210,12 @@ convert_to_normalized_internal (ELEMENT *root, TEXT *result, int in_uc)
           while (isalnum (*q))
             q++;
           text_append_n (result, p, q - p);
+          if (in_uc)
+            {
+              char *p2;
+              for (p2 = result->text + result->end - (q - p); *p2; p2++)
+                *p2 = toupper (*p2);
+            }
           p = q;
           if (isspace (*p))
             {
