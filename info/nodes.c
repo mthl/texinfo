@@ -207,6 +207,11 @@ build_tag_table (FILE_BUFFER *file_buffer)
       /* Record nodename and nodestart. */
       entry = info_create_tag ();
       read_quoted_string (nodeline + start, ",\n\r\t", 0, &entry->nodename);
+      if (!entry->nodename || !*entry->nodename)
+        {
+          free (entry);
+          continue;
+        }
       entry->nodestart = nodestart;
 
       init_file_buffer_tag (file_buffer, entry);

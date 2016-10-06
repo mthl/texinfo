@@ -1,3 +1,9 @@
+2016-10-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/ (build_tag_table): Check if node name in tag table
+	is empty (possible for malformed input).  Crash reported
+	by Hanno Böck.
+
 2016-10-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/t/XSParagraph.t: Remove unused 
