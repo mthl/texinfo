@@ -2791,6 +2791,9 @@ sub _end_line($$$)
         # 'root_line' is the container returned by gdt.
         if ($index_entry->{'type'} and $index_entry->{'type'} eq 'root_line') {
           $index_contents = $index_entry->{'contents'};
+          for my $child (@$index_contents) {
+            delete $child->{'parent'};
+          }
         } else {
           $index_contents = [$index_entry];
         }

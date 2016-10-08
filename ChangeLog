@@ -1,5 +1,10 @@
 2016-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_end_line) <def commands>: Remove parent 
+	values pointing to 'root_line' element returned from 'gdt'.
+
+2016-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi): Include 'parent' on 
 	'menu_star' element.
 
