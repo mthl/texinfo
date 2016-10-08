@@ -1313,10 +1313,6 @@ while(@input_files) {
     Texinfo::Structuring::add_missing_menus($parser, $tree);
   }
 
-  if ($tree_transformations{'indent_menu_descriptions'}) {
-    Texinfo::Convert::Plaintext::indent_menu_descriptions(undef, $parser);
-  }
-
   if ($tree_transformations{'regenerate_master_menu'}) {
     Texinfo::Structuring::regenerate_master_menu($parser);
   }

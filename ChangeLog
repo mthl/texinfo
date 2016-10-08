@@ -1,3 +1,23 @@
+2016-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm
+	(indent_menu_descriptions, indent_one_menu_descriptions):
+	Remove.  This feature has not worked in any released version of 
+	Texinfo due to calling 'indent_menu_descriptions' (itself) 
+	instead of 'indent_one_menu_descriptions'.  This also simplifies
+	matters, as the 'menus' list for each node is not used anywhere
+	else in the modules under tp/Texinfo/Convert/.
+	* tp/texi2any.pl: Don't call indent_menu_descriptions if 
+	'indent_menu_descriptions' was present in TREE_TRANSFORMATIONS.
+	* tp/t/indent_menu_descriptions.t: Remove.
+	* doc/texinfo.texi (Other Customization Variables) 
+	<TREE_TRANSFORMATIONS>: Remove mention of 'indent_menu_descriptions'
+	feature.
+	<TEXINFO_COLUMN_FOR_DESCRIPTION>: Remove mention.
+	* tp/Texinfo/Converter/Converter.pm (%all_converters_defaults),
+	* tp/Texinfo/Converter/Common.pm (@variable_string_settables):
+	Remove 'TEXINFO_COLUMN_FOR_DESCRIPTION'.
+
 2016-10-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.c (build_tag_table): Check if node name in tag table
