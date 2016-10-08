@@ -1,5 +1,11 @@
 2016-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi): If 'menu' element is not 
+	directly under a "root element" (@node or sectioning), don't record
+	it in the list of menus for that node, and issue a warning.
+
+2016-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Plaintext.pm
 	(indent_menu_descriptions, indent_one_menu_descriptions):
 	Remove.  This feature has not worked in any released version of 
