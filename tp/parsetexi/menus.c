@@ -36,6 +36,9 @@ register_extra_menu_entry_information (ELEMENT *current)
       if (arg->type == ET_menu_entry_name)
         {
           add_extra_element (current, "menu_entry_name", arg);
+          if (arg->contents.number == 0)
+            line_warn ("empty menu entry name in `%s'",
+                       convert_to_texinfo (current));
 
           // Check menu label isn't empty
         }
@@ -175,7 +178,7 @@ handle_menu (ELEMENT **current_inout, char **line_inout)
            && last_contents_child(current)->type == ET_menu_star)
     {
       debug ("ABORT MENU STAR");
-      destroy_element (pop_element_from_contents (current));
+      last_contents_child(current)->type = ET_NONE;
     }
   // 4122
   /* After a separator in a menu (which would have been added in

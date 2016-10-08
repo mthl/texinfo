@@ -95,7 +95,10 @@ convert_to_texinfo_internal (ELEMENT *e, TEXT *result)
     {
       // TODO "fix" argument
 
-      if (e->cmd)
+      if (e->cmd
+          || e->type == ET_def_line
+          || e->type == ET_menu_entry
+          || e->type == ET_menu_comment)
         {
           expand_cmd_args_to_texi (e, result);
         }
