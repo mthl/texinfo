@@ -1052,8 +1052,6 @@ handle_block_command (ELEMENT *current, char **line_inout,
               else
                 push_context (ct_menu);
 
-              /* Check if we are ignoring "global commands". */
-
               // Record dir entry here
 
               if (current_node) // 4793
@@ -1064,6 +1062,8 @@ handle_block_command (ELEMENT *current, char **line_inout,
                     }
                   else if (cmd == CM_menu)
                     {
+                      if (!(command_flags(current->parent) & CF_root))
+                        line_warn ("@menu in invalid context");
                       /* Add to array of menus for current node.  Currently
                          done in Perl code. */
                     }
