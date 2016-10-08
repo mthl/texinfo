@@ -4048,7 +4048,8 @@ sub _parse_texi($;$)
         print STDERR "MENU STAR\n" if ($self->{'DEBUG'});
         _abort_empty_line($self, $current);
         $line =~ s/^\*//;
-        push @{$current->{'contents'}}, { 'type' => 'menu_star',
+        push @{$current->{'contents'}}, { 'parent' => $current,
+                                          'type' => 'menu_star',
                                           'text' => '*' };
       # a space after a * at the beginning of a menu line
       } elsif ($current->{'contents'} and @{$current->{'contents'}} 

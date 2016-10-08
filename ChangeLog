@@ -1,5 +1,10 @@
 2016-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi): Include 'parent' on 
+	'menu_star' element.
+
+2016-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi): If 'menu' element is not 
 	directly under a "root element" (@node or sectioning), don't record
 	it in the list of menus for that node, and issue a warning.
