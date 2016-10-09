@@ -88,3 +88,6 @@ row_prototype
 elided
 elided_block
 
+# for def commands
+delimiter
+

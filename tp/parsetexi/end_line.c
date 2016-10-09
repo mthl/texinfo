@@ -2119,8 +2119,46 @@ end_line (ELEMENT *current)
           if (index_entry) // 2822
             {
               ELEMENT *index_contents = new_element (ET_NONE);
+              ELEMENT *e;
+
+              // 2824
+              if (class)
+                {
+                  if (def_command == CM_defop
+                      || def_command == CM_deftypeop
+                      || def_command == CM_defmethod
+                      || def_command == CM_deftypemethod)
+                    {
+                      /* NAME on CLASS */
+
+                      add_to_contents_as_array (index_contents, name);
+
+                      e = new_element (ET_NONE);
+                      /* TODO should translate this */
+                      text_append (&e->text, " on ");
+                      add_to_contents_as_array (index_contents, e);
+
+                      add_to_contents_as_array (index_contents, class);
+                    }
+                  else if (def_command == CM_defivar
+                           || def_command == CM_deftypeivar)
+                    {
+                      /* NAME of CLASS */
+                      add_to_contents_as_array (index_contents, name);
+
+                      e = new_element (ET_NONE);
+                      /* TODO should translate this */
+                      text_append (&e->text, " of ");
+                      add_to_contents_as_array (index_contents, e);
+
+                      add_to_contents_as_array (index_contents, class);
+                    }
+                }
               index_contents->parent_type = route_not_in_tree;
-              add_to_contents_as_array (index_contents, index_entry);
+
+              if (index_contents->contents.number == 0)
+                add_to_contents_as_array (index_contents, index_entry);
+
               enter_index_entry (def_command,
                                  original_def_command,
                                  current->parent,

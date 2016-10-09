@@ -121,18 +121,12 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
   if (e->contents.list[0]->type == ET_bracketed)
     {
       ELEMENT *bracketed = remove_from_contents (e, 0);
-      ELEMENT *returned = new_element (ET_bracketed_def_content);
-      KEY_PAIR *k;
 
-      isolate_last_space (bracketed, ET_empty_space_at_end_def_bracketed);
+      bracketed->type = ET_bracketed_def_content;
 
-      returned->contents = bracketed->contents;
-      returned->parent_type = route_not_in_tree;
-      k = lookup_extra_key (bracketed, "spaces_before_argument");
-      if (k)
-        add_extra_element (returned, "spaces_before_argument", k->value);
+      isolate_last_space (bracketed, 0);
 
-      return returned;
+      return bracketed;
     }
   else if (e->contents.list[0]->cmd != CM_NONE) // 2363
     {
@@ -222,7 +216,7 @@ parse_def (enum command_id command, ELEMENT_LIST contents)
 {
   /* The return value - suitable for "def_args" extra value. */
   DEF_ARGS_EXTRA *def_args;
-  int i;
+  int i, args_start;
 
   ELEMENT *arg_line; /* Copy of argument line. */
   ELEMENT *arg, *spaces; /* Arguments and spaces extracted from line. */
@@ -295,6 +289,7 @@ found:
           e = new_element (ET_NONE);
           text_append (&e->text, category);
           insert_into_contents (arg_line, e, 0);
+          e->parent = 0;
           e->parent_type = route_not_in_tree;
         }
       else
@@ -302,6 +297,7 @@ found:
           /* Used when category text has a space in it. */
           e = new_element (ET_bracketed);
           insert_into_contents (arg_line, e, 0);
+          e->parent = 0;
           e->parent_type = route_not_in_tree;
           e1 = new_element (ET_NONE);
           text_append_n (&e1->text, category + 1, strlen (category) - 2);
@@ -363,6 +359,8 @@ found:
   add_to_def_args_extra (def_args, "name", arg);
 
   /* ARGUMENTS */
+
+  args_start = def_args->nelements;
   // 2441
   while (arg_line->contents.number > 0)
     {
@@ -395,9 +393,8 @@ found:
               if (len == 0)
                 break;
 
-              e = new_element (ET_NONE);
+              e = new_element (ET_delimiter);
               e->parent_type = route_not_in_tree;
-              // e = new_element (ET_delimiter); //TODO : No such type
               text_append_n (&e->text, p, len);
               add_to_def_args_extra (def_args, "delimiter", e);
               p += len;
@@ -412,11 +409,34 @@ found:
 
 
   // 2460 - argtype
-  /* TODO: Change some of the left sides to 'typearg'.
-     What's the difference between this and type? */
+  /* Change some of the left sides to 'typearg'.  This matters for
+     the DocBook output. */
   if (command == CM_deftypefn || command == CM_deftypeop
       || command == CM_deftp)
     {
+      int i, next_is_type = 1;
+      for (i = args_start; i < def_args->nelements; i++)
+        {
+          if (!strcmp ("spaces", def_args->labels[i]))
+            {
+            }
+          else if (!strcmp ("delimiter", def_args->labels[i]))
+            {
+              next_is_type = 1;
+            }
+          else if (def_args->elements[i]->cmd
+                   && def_args->elements[i]->cmd != CM_code)
+            {
+              next_is_type = 1;
+            }
+          else if (next_is_type)
+            {
+              def_args->labels[i] = "typearg";
+              next_is_type = 0;
+            }
+          else
+            next_is_type = 0;
+        }
     }
 
   destroy_element (arg_line);

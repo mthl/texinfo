@@ -61,6 +61,7 @@ ET_bracketed_multitable_prototype,
 ET_row_prototype,
 ET_elided,
 ET_elided_block,
+ET_delimiter,
 };
 
 extern char *element_type_names[];

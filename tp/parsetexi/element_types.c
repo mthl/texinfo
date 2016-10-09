@@ -60,5 +60,6 @@ char *element_type_names[] = {
 "row_prototype",
 "elided",
 "elided_block",
+"delimiter",
 
 };
