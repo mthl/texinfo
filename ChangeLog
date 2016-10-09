@@ -1,5 +1,24 @@
 2016-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* Texinfo/Parser.pm (_next_bracketed_or_word): When returning
+	a bracketed element, change the type of the in-tree element
+	from 'bracketed' to 'bracketed_def_content' instead of creating
+	a new 'bracketed_def_content' with the same contents.  Do not
+	pass 'empty_space_at_end_def_bracketed' to _isolate_last_space.
+
+	* Texinfo/Convert/Texinfo.pm (convert): Handle 
+	'bracketed_def_content' the same as 'bracketed'.
+
+	* Texinfo/Convert/DocBook.pm (%ignored_types),
+	* Texinfo/Convert/HTML.pm (%ignored_types),
+	* Texinfo/Convert/NodeNameNormalization.pm (%ignored_types),
+	* Texinfo/Convert/Plaintext.pm (%ignored_types),
+	* Texinfo/Convert/Text.pm (%ignored_types),
+	* Texinfo/Convert/TextContent.pm (%ignored_types):
+	Remove 'empty_spaces_at_end_def_bracketed'.
+
+2016-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/man.c (find_reference_section): Remove this unused function.
 	(xrefs_of_manpage): Allow only two characters in manpage section.
 

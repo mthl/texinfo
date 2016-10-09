@@ -1338,7 +1338,6 @@ sub trim_spaces_comment_from_content($)
        and ($contents->[0]->{'type'} eq 'empty_line_after_command'
             or $contents->[0]->{'type'} eq 'empty_spaces_after_command'
             or $contents->[0]->{'type'} eq 'empty_spaces_before_argument'
-            or $contents->[0]->{'type'} eq 'empty_space_at_end_def_bracketed'
             or $contents->[0]->{'type'} eq 'empty_spaces_after_close_brace'));
 
   while (@$contents 

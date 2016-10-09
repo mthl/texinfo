@@ -232,7 +232,6 @@ my %def_argument_types_docbook = (
 my %ignored_types;
 foreach my $type (
 	    'empty_line_after_command',
-            'empty_space_at_end_def_bracketed',
             'empty_spaces_after_close_brace', 
             'empty_spaces_after_command', 
             'empty_spaces_before_argument',

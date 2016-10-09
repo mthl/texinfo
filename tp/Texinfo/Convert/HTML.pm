@@ -3607,8 +3607,7 @@ foreach my $type ('empty_line_after_command', 'preamble',
             'preamble_before_setfilename',
             'empty_spaces_after_command', 'spaces_at_end',
             'empty_spaces_before_argument', 'empty_spaces_before_paragraph',
-            'empty_spaces_after_close_brace', 
-            'empty_space_at_end_def_bracketed') {
+            'empty_spaces_after_close_brace') {
   $default_types_conversion{$type} = undef;
 }
 

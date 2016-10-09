@@ -2266,14 +2266,9 @@ sub _next_bracketed_or_word($$)
   if ($contents->[0]->{'type'} and $contents->[0]->{'type'} eq 'bracketed') {
     #print STDERR "Return bracketed\n";
     my $bracketed = shift @{$contents};
-    _isolate_last_space($self, $bracketed, 'empty_space_at_end_def_bracketed');
-    my $bracketed_def_content = { 'contents' => $bracketed->{'contents'},
-                                  'type' => 'bracketed_def_content', };
-    if ($bracketed->{'extra'} and $bracketed->{'extra'}->{'spaces_before_argument'}) {
-      $bracketed_def_content->{'extra'}->{'spaces_before_argument'}
-        = $bracketed->{'extra'}->{'spaces_before_argument'};
-    }
-    return ($spaces, $bracketed_def_content);
+    _isolate_last_space($self, $bracketed);
+    $bracketed->{'type'} = 'bracketed_def_content';
+    return ($spaces, $bracketed);
   } elsif ($contents->[0]->{'cmdname'}) {
     #print STDERR "Return command $contents->[0]->{'cmdname'}\n";
     return ($spaces, shift @{$contents});
@@ -6631,11 +6626,7 @@ comma separating a command's arguments.
 
 Space at the end of an argument to a line command, at the end of an
 comma-separated argument for some brace commands, or at the end of
-bracketed content on a C<@multitable> line.
-
-=item empty_space_at_end_def_bracketed
-
-Space at the end of a bracketed content on definition line.
+bracketed content on a C<@multitable> line or definition line.
 
 =item space_at_end_block_command
 

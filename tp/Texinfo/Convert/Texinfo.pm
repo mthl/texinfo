@@ -82,7 +82,9 @@ sub convert ($;$)
                                 or $root->{'type'} eq 'menu_comment'))) {
       $result .= _expand_cmd_args_to_texi($root, $fix);
     }
-    $result .= '{' if ($root->{'type'} and $root->{'type'} eq 'bracketed');
+    $result .= '{' if ($root->{'type'}
+                       and ($root->{'type'} eq 'bracketed'
+                            or $root->{'type'} eq 'bracketed_def_content'));
     if (defined($root->{'contents'})) {
       die "bad contents type(" . ref($root->{'contents'})
           . ") $root->{'contents'}\n" if (ref($root->{'contents'}) ne 'ARRAY');
@@ -90,7 +92,9 @@ sub convert ($;$)
         $result .= convert($child, $fix);
       }
     }
-    $result .= '}' if ($root->{'type'} and $root->{'type'} eq 'bracketed');
+    $result .= '}' if ($root->{'type'}
+                       and ($root->{'type'} eq 'bracketed'
+                            or $root->{'type'} eq 'bracketed_def_content'));
     if ($root->{'cmdname'} and (defined($block_commands{$root->{'cmdname'}}))
         and ($block_commands{$root->{'cmdname'}} eq 'raw' 
           or ($fix and !($root->{'extra'} and $root->{'extra'}->{'end_command'})))) {
