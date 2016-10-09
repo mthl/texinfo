@@ -1,3 +1,8 @@
+2016-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/man.c (find_reference_section): Remove this unused function.
+	(xrefs_of_manpage): Allow only two characters in manpage section.
+
 2016-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_end_line) <def commands>: Remove parent 
