@@ -528,7 +528,9 @@ CAT(1)                           User Commands                          CAT(1)
         if (!isalnum (s.buffer[name_end])
             && s.buffer[name_end] != '_'
             && s.buffer[name_end] != '.'
-            && s.buffer[name_end] != '-')
+            && s.buffer[name_end] != '-'
+            && s.buffer[name_end] != '\033' /* possible in SGR sequence */
+            && s.buffer[name_end] != '[')
           goto skip;
 
       section = position;
@@ -542,7 +544,7 @@ CAT(1)                           User Commands                          CAT(1)
         ; /* end of buffer */
       else if (s.buffer[section + 2] == ')')
         section_end = section + 3;
-      else if (!isalpha(s.buffer[section + 3]))
+      else if (!isalpha(s.buffer[section + 2]))
         ;
       else if (s.buffer[section + 3] == ')')
         section_end = section + 4;

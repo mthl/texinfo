@@ -1,5 +1,10 @@
 2016-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/man.c (xrefs_of_manpage): Allow SGR sequence in manpage
+	name, and fix code checking for two-character manpage section.
+
+2016-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* Texinfo/Parser.pm (_next_bracketed_or_word): When returning
 	a bracketed element, change the type of the in-tree element
 	from 'bracketed' to 'bracketed_def_content' instead of creating
