@@ -324,8 +324,6 @@ get_initial_file (int *argc, char ***argv, char **error)
         }
     }
 
-  /* Otherwise, use the dir node. */
-  initial_file = xstrdup("dir");
   return;
 }
 
@@ -1030,9 +1028,10 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
       exit (0);
     }
 
-  if (user_filename && error)
+  if (ref_index == 0)
     {
-      info_error ("%s", error);
+      if (error)
+        info_error ("%s", error);
       exit (0);
     }
     

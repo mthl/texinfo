@@ -1,5 +1,11 @@
 2016-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info.c (get_initial_file): Don't fall back to the dir node.
+	(main): Quit if there are no nodes to show.
+	* info/t/dir-dangling-entry.sh: Update to match this new behaviour.
+
+2016-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (parse_top_node_line):  Check if the
 	buffer ends before the end of the first line.  Out-of-bounds
 	read reported by Hanno Böck.  Some comments changed.
