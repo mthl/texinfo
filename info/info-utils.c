@@ -1150,13 +1150,15 @@ parse_top_node_line (NODE *node)
         }
       ptr += skip_whitespace (ptr);
 
+      /* Get length of a bracketed filename component. */
       if (*ptr != '(')
         value_length = 0;
       else
         value_length = read_bracketed_filename (ptr, 0);
 
-      /* Separate at commas or newlines, so it will work for
-         filenames including full stops. */
+      /* Get length of node name, or filename if following "File:".  Note 
+         that .  is not included in the second argument here in order to 
+         support this character in file names. */
       value_length += read_quoted_string (ptr + value_length,
                                           "\n\r\t,", 1, &nodename);
       if (store_in)
@@ -1169,11 +1171,8 @@ parse_top_node_line (NODE *node)
       free (nodename);
       ptr += value_length;
 
-      if (*ptr == '\n')
-        {
-          ptr++;
-          break;
-        }
+      if (*ptr == '\n' || !*ptr)
+        break;
 
       ptr += 1; /* Point after field terminator */
     }

@@ -1,3 +1,13 @@
+2016-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (parse_top_node_line):  Check if the
+	buffer ends before the end of the first line.  Out-of-bounds
+	read reported by Hanno Böck.  Some comments changed.
+	* info/nodes.c (node_set_body_start): Don't try to advance the
+	'body_start' past the end of the first line of the node: it is 
+	not necessary, and the current code breaks if the buffer ends 
+	during the first line.
+
 2016-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/man.c (xrefs_of_manpage): Allow SGR sequence in manpage

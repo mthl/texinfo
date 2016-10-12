@@ -1061,8 +1061,6 @@ node_set_body_start (NODE *node)
   int n = skip_node_separator (node->contents);
   node->body_start = strcspn(node->contents + n, "\n");
   node->body_start += n;
-  if (node->contents[++node->body_start] == '\n')
-    ++node->body_start;
 }
 
 /* Return a pointer to a NODE structure for the Info node NODENAME in
