@@ -2120,6 +2120,7 @@ end_line (ELEMENT *current)
             {
               ELEMENT *index_contents = new_element (ET_NONE);
               ELEMENT *e;
+              int translation_used = 0, i;
 
               // 2824
               if (class)
@@ -2139,9 +2140,11 @@ end_line (ELEMENT *current)
                       add_to_contents_as_array (index_contents, e);
 
                       add_to_contents_as_array (index_contents, class);
+                      translation_used = 1;
                     }
                   else if (def_command == CM_defivar
-                           || def_command == CM_deftypeivar)
+                           || def_command == CM_deftypeivar
+                           || def_command == CM_deftypecv)
                     {
                       /* NAME of CLASS */
                       add_to_contents_as_array (index_contents, name);
@@ -2152,12 +2155,22 @@ end_line (ELEMENT *current)
                       add_to_contents_as_array (index_contents, e);
 
                       add_to_contents_as_array (index_contents, class);
+                      translation_used = 1;
                     }
                 }
               index_contents->parent_type = route_not_in_tree;
 
               if (index_contents->contents.number == 0)
                 add_to_contents_as_array (index_contents, index_entry);
+              if (translation_used)
+                {
+                  for (i = 0; i < index_contents->contents.number; i++)
+                    {
+                      index_contents->contents.list[i]->parent = 0;
+                      /* These elements appear in both the main tree
+                         and in the index information. */
+                    }
+                }
 
               enter_index_entry (def_command,
                                  original_def_command,

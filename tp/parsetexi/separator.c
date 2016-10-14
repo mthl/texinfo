@@ -81,8 +81,6 @@ handle_open_brace (ELEMENT *current, char **line_inout)
                     command_data(current->cmd).data);
       counter_dec (&count_remaining_args);
 
-      // TODO 4899 definfoenclose
-
       arg = new_element (ET_NONE);
       add_to_element_args (current, arg);
       current = arg;

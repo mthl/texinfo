@@ -81,7 +81,7 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
 {
   char *text;
   ELEMENT *spaces = 0;
-  int space_len;
+  int space_len = 0;
   ELEMENT *ret;
 
   *spaces_out = 0;
@@ -389,15 +389,17 @@ found:
                   add_to_def_args_extra (def_args, "arg", e);
                   p += len;
                 }
-              len = strspn (p, "[](),");
-              if (len == 0)
+              if (!*p)
                 break;
-
-              e = new_element (ET_delimiter);
-              e->parent_type = route_not_in_tree;
-              text_append_n (&e->text, p, len);
-              add_to_def_args_extra (def_args, "delimiter", e);
-              p += len;
+              while (*p && strchr ("[](),", *p))
+                {
+                  e = new_element (ET_delimiter);
+                  e->parent_type = route_not_in_tree;
+                  text_append_n (&e->text, p++, 1);
+                  add_to_def_args_extra (def_args, "delimiter", e);
+                }
+              if (!*p)
+                break;
             }
           destroy_element (arg);
         }
@@ -435,7 +437,7 @@ found:
               next_is_type = 0;
             }
           else
-            next_is_type = 0;
+            next_is_type = 1;
         }
     }
 
