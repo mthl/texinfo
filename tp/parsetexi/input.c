@@ -103,7 +103,12 @@ text_buffer_iconv (TEXT *buf, iconv_t iconv_state,
   size_t iconv_ret;
 
   outptr = buf->text + buf->end;
-  out_bytes_left = buf->space - buf->end;
+  if (buf->end == buf->space - 1)
+    {
+      errno = E2BIG;
+      return (size_t) -1;
+    }
+  out_bytes_left = buf->space - buf->end - 1;
   iconv_ret = iconv (iconv_state, inbuf, inbytesleft,
                      &outptr, &out_bytes_left);
 

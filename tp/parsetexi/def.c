@@ -357,10 +357,10 @@ found:
       || command == CM_defop)
     {
       arg = next_bracketed_or_word (arg_line, &spaces, 1);
-      if (!arg)
-        goto finished;
       if (spaces)
         add_to_def_args_extra (def_args, "spaces", spaces);
+      if (!arg)
+        goto finished;
       add_to_def_args_extra (def_args, "class", arg);
     }
 
@@ -371,20 +371,20 @@ found:
       || command == CM_deftypecv)
     {
       arg = next_bracketed_or_word (arg_line, &spaces, 1);
-      if (!arg)
-        goto finished;
       if (spaces)
         add_to_def_args_extra (def_args, "spaces", spaces);
+      if (!arg)
+        goto finished;
       add_to_def_args_extra (def_args, "type", arg);
     }
 
   /* NAME */
   /* All command types get a name. */
   arg = next_bracketed_or_word (arg_line, &spaces, 1);
-  if (!arg)
-    goto finished;
   if (spaces)
     add_to_def_args_extra (def_args, "spaces", spaces);
+  if (!arg)
+    goto finished;
   add_to_def_args_extra (def_args, "name", arg);
 
   /* ARGUMENTS */
