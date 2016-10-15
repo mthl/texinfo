@@ -238,7 +238,7 @@ parse_def (enum command_id command, ELEMENT_LIST contents)
 {
   /* The return value - suitable for "def_args" extra value. */
   DEF_ARGS_EXTRA *def_args;
-  int i, args_start;
+  int i, args_start = 0;
 
   ELEMENT *arg_line; /* Copy of argument line. */
   ELEMENT *arg, *spaces; /* Arguments and spaces extracted from line. */
@@ -344,7 +344,8 @@ found:
 
   /* CATEGORY */
   arg = next_bracketed_or_word (arg_line, &spaces, 1);
-
+  if (!arg)
+    goto finished;
   if (spaces)
     add_to_def_args_extra (def_args, "spaces", spaces);
   add_to_def_args_extra (def_args, "category", arg);
@@ -356,6 +357,8 @@ found:
       || command == CM_defop)
     {
       arg = next_bracketed_or_word (arg_line, &spaces, 1);
+      if (!arg)
+        goto finished;
       if (spaces)
         add_to_def_args_extra (def_args, "spaces", spaces);
       add_to_def_args_extra (def_args, "class", arg);
@@ -368,6 +371,8 @@ found:
       || command == CM_deftypecv)
     {
       arg = next_bracketed_or_word (arg_line, &spaces, 1);
+      if (!arg)
+        goto finished;
       if (spaces)
         add_to_def_args_extra (def_args, "spaces", spaces);
       add_to_def_args_extra (def_args, "type", arg);
@@ -376,6 +381,8 @@ found:
   /* NAME */
   /* All command types get a name. */
   arg = next_bracketed_or_word (arg_line, &spaces, 1);
+  if (!arg)
+    goto finished;
   if (spaces)
     add_to_def_args_extra (def_args, "spaces", spaces);
   add_to_def_args_extra (def_args, "name", arg);
@@ -390,7 +397,7 @@ found:
       if (spaces)
         add_to_def_args_extra (def_args, "spaces", spaces);
       if (!arg)
-        break;
+        goto finished;
       if (arg->text.end > 0) // 2445
         {
           ELEMENT *e;
@@ -431,12 +438,14 @@ found:
         }
     }
 
+finished:
 
   // 2460 - argtype
   /* Change some of the left sides to 'typearg'.  This matters for
      the DocBook output. */
-  if (command == CM_deftypefn || command == CM_deftypeop
-      || command == CM_deftp)
+  if (args_start > 0
+      && (command == CM_deftypefn || command == CM_deftypeop
+          || command == CM_deftp))
     {
       int i, next_is_type = 1;
       for (i = args_start; i < def_args->nelements; i++)
@@ -464,17 +473,5 @@ found:
     }
 
   destroy_element (arg_line);
-  add_to_def_args_extra (def_args, 0, 0);
   return def_args;
-
-#if 0
-  // In calling code at 2788, this array is saved in the extra key.
-
-  // 2853 an index entry is also entered
-  enter_index_entry (command, original_command, name
-                     /* , index_entry_normalized */ );
-  
-  /* Notes: See 2812 for value of 'name'. */
-#endif
-
 }

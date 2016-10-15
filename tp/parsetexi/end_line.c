@@ -2082,7 +2082,7 @@ end_line (ELEMENT *current)
       arguments = parse_def (def_command, current->contents);
 
       /* Now record the index entry. */
-      if (arguments)
+      if (arguments && arguments->nelements > 0)
         {
           ELEMENT *name = 0, *class = 0; /* From arguments. */
           ELEMENT *index_entry = 0; /* Index entry text. */

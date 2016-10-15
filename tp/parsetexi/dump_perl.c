@@ -321,8 +321,9 @@ dump_extra (ELEMENT *e, TEXT *text)
               text_append (text, e->extra[i].key);
               text_append (text, "' => [\n");
 
-              for (j = 0; (label = value->labels[j]); j++)
+              for (j = 0; j < value->nelements; j++)
                 {
+                  label = value->labels[j];
                   dump_indent (text);
                   text_append_n (text, "['", 2);
                   text_append (text, label);

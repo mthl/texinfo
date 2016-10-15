@@ -33,6 +33,7 @@ main (int argc, char **argv)
       fprintf (stderr, "Please give the name of a file to process.\n");
       exit (1);
     }
+  reset_parser ();
   parse_texi_file (argv[1]);
   dump_tree_to_perl (Root);
   //build_texinfo_tree ();
