@@ -369,27 +369,27 @@ defmethod		block,def,def_alias
 deftypemethod		block,def,def_alias
 
 # def*x
-deffnx			misc,def
-defvrx			misc,def
-deftypefnx		misc,def
-deftypeopx		misc,def
-deftypevrx		misc,def
-defcvx			misc,def
-deftypecvx		misc,def
-defopx			misc,def
-deftpx			misc,def
+deffnx			misc,def                MISC_line
+defvrx			misc,def                MISC_line
+deftypefnx		misc,def                MISC_line
+deftypeopx		misc,def                MISC_line
+deftypevrx		misc,def                MISC_line
+defcvx			misc,def                MISC_line
+deftypecvx		misc,def                MISC_line
+defopx			misc,def                MISC_line
+deftpx			misc,def                MISC_line
 #   shortcuts
-defunx			misc,def,def_alias
-defmacx			misc,def,def_alias
-defspecx		misc,def,def_alias
-defvarx			misc,def,def_alias
-defoptx			misc,def,def_alias
-deftypefunx		misc,def,def_alias
-deftypevarx		misc,def,def_alias
-defivarx		misc,def,def_alias
-deftypeivarx		misc,def,def_alias
-defmethodx		misc,def,def_alias
-deftypemethodx		misc,def,def_alias
+defunx			misc,def,def_alias              MISC_line
+defmacx			misc,def,def_alias              MISC_line
+defspecx		misc,def,def_alias              MISC_line
+defvarx			misc,def,def_alias              MISC_line
+defoptx			misc,def,def_alias              MISC_line
+deftypefunx		misc,def,def_alias              MISC_line
+deftypevarx		misc,def,def_alias              MISC_line
+defivarx		misc,def,def_alias              MISC_line
+deftypeivarx		misc,def,def_alias              MISC_line
+defmethodx		misc,def,def_alias              MISC_line
+deftypemethodx		misc,def,def_alias              MISC_line
 
 # 760
 multitable		block,blockitem		BLOCK_multitable

@@ -26,10 +26,6 @@
 #include "api.h"
 #include "errors.h"
 
-/* Parser state - see Parser.pm:135. */
-
-//macro_stack;
-
 
 /* Utility functions */
 
@@ -1287,6 +1283,9 @@ value_invalid:
       /* 4233 invalid nestings */
       if (current->parent)
         {
+          /* Check whether outer command can contain cmd.  Commands are
+             classified according to what commands they can contain. */
+
           int ok = 0; /* Whether nesting is allowed. */
 
           /* Whether command is a "simple text" command.  Use a variable
