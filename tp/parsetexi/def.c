@@ -77,94 +77,116 @@ shallow_destroy_element (ELEMENT *e)
    in the argument line.  *SPACES_OUT is set to an element with spaces before 
    the line. */
 static ELEMENT *
-next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out)
+next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out, int join)
 {
   char *text;
   ELEMENT *spaces = 0;
   int space_len = 0;
   ELEMENT *ret;
+  ELEMENT *f;
 
   *spaces_out = 0;
   if (e->contents.number == 0)
     return 0; /* No more arguments */
 
-  text = e->contents.list[0]->text.text;
+  f = e->contents.list[0];
+  text = f->text.text;
   if (text)
+    space_len = strspn (text, whitespace_chars);
+  if (space_len)
     {
-      space_len = strspn (text, whitespace_chars);
-      if (text[space_len] == '\0')
+      /* Remove a trailing newline. */
+      if (text[space_len - 1] == '\n')
         {
-          /* Text is completely spaces. */
-          spaces = remove_from_contents (e, 0); // 2341
-          spaces->type = ET_spaces;
-
-          /* Remove a trailing newline. */
-          if (spaces->text.end > 0
-              && spaces->text.text[spaces->text.end - 1] == '\n')
-            {
-              spaces->text.text[--spaces->text.end] = '\0';
-            }
-
-          if (spaces->text.end > 0)
-            {
-              *spaces_out = spaces;
-              (*spaces_out)->parent = 0;
-            }
-          else
-            shallow_destroy_element (spaces);
+          text[--space_len] == '\0';
+          f->text.end--;
         }
+
+      if (space_len)
+        {
+          spaces = new_element (ET_spaces);
+          spaces->parent_type = route_not_in_tree;
+          text_append_n (&spaces->text, text, space_len);
+          memmove (f->text.text,
+                   f->text.text + space_len,
+                   f->text.end - space_len + 1);
+          f->text.end -= space_len;
+        }
+
+      if (f->text.end == 0)
+        {
+          (void ) remove_from_contents (e, 0);
+          shallow_destroy_element (f);
+        }
+      *spaces_out = spaces;
     }
 
   if (e->contents.number == 0)
     return 0; /* No more arguments */
 
-  if (e->contents.list[0]->type == ET_bracketed)
+  ret = new_element (ET_NONE);
+  ret->parent_type = route_not_in_tree;
+  while (e->contents.number > 0)
     {
-      ELEMENT *bracketed = remove_from_contents (e, 0);
-
-      bracketed->type = ET_bracketed_def_content;
-
-      isolate_last_space (bracketed, 0);
-
-      return bracketed;
-    }
-  else if (e->contents.list[0]->cmd != CM_NONE) // 2363
-    {
-      ret = remove_from_contents (e, 0);
-      //ret->parent = 0;
-      return ret;
-    }
-  else
-    {
-      /* Extract span of whitespace characters followed by a span of
-         non-whitespace characters. */
-      ELEMENT *f = e->contents.list[0];
-      ELEMENT *returned = new_element (ET_NONE);
-      int arg_len;
-      text = f->text.text;
-      space_len = strspn (text, whitespace_chars);
-      if (space_len > 0)
+      f = e->contents.list[0];
+      if (f->type == ET_bracketed)
         {
-          spaces = new_element (ET_spaces);
-          spaces->parent_type = route_not_in_tree;
-          text_append_n (&spaces->text, text, space_len);
-          text += space_len;
-          *spaces_out = spaces;
-          //(*spaces_out)->parent = 0;
+          (void) remove_from_contents (e, 0);
+          f->type = ET_bracketed_def_content;
+          isolate_last_space (f, 0);
+          add_to_contents_as_array (ret, f);
+          if (!join)
+            break;
         }
-      arg_len = strcspn (text, whitespace_chars);
-      text_append_n (&returned->text, text, arg_len);
+      else if (f->cmd) // 2363
+        {
+          (void ) remove_from_contents (e, 0);
+          add_to_contents_as_array (ret, f);
+          if (!join)
+            break;
+        }
+      else
+        {
+          /* Extract span of non-whitespace characters. */
+          ELEMENT *returned;
+          int arg_len;
 
-      memmove (f->text.text, f->text.text + space_len + arg_len,
-               f->text.end - (space_len + arg_len) + 1);
-      f->text.end -= space_len + arg_len;
-      if (f->text.end == 0)
-        shallow_destroy_element (remove_from_contents (e, 0));
+          text = f->text.text;
+          if (!*text)
+            {
+              /* Finished with this element */
+              remove_from_contents (e, 0);
+              shallow_destroy_element (f);
+              continue;
+            }
 
-      returned->parent_type = route_not_in_tree;
-      //returned->parent = 0;
-      return returned;
+          space_len = strspn (text, whitespace_chars);
+          if (space_len > 0)
+            break; /* Finished */
+
+          returned = new_element (ET_NONE);
+          returned->parent_type = route_not_in_tree;
+          arg_len = strcspn (text, whitespace_chars);
+          text_append_n (&returned->text, text, arg_len);
+          memmove (f->text.text, f->text.text + space_len + arg_len,
+                   f->text.end - (space_len + arg_len) + 1);
+          f->text.end -= space_len + arg_len;
+
+          add_to_contents_as_array (ret, returned);
+          if (!join)
+            break;
+       }
     }
+  if (ret->contents.number == 1)
+    {
+      ELEMENT *tmp = ret;
+      ret = ret->contents.list[0];
+      shallow_destroy_element (tmp);
+    }
+  else if (ret->contents.number == 0)
+    abort ();
+
+  return ret;
 }
 
 typedef struct {
@@ -321,7 +343,7 @@ found:
      ARGUMENTS - arguments to a function or macro                  */
 
   /* CATEGORY */
-  arg = next_bracketed_or_word (arg_line, &spaces);
+  arg = next_bracketed_or_word (arg_line, &spaces, 1);
 
   if (spaces)
     add_to_def_args_extra (def_args, "spaces", spaces);
@@ -333,7 +355,7 @@ found:
       || command == CM_deftypecv
       || command == CM_defop)
     {
-      arg = next_bracketed_or_word (arg_line, &spaces);
+      arg = next_bracketed_or_word (arg_line, &spaces, 1);
       if (spaces)
         add_to_def_args_extra (def_args, "spaces", spaces);
       add_to_def_args_extra (def_args, "class", arg);
@@ -345,7 +367,7 @@ found:
       || command == CM_deftypevr
       || command == CM_deftypecv)
     {
-      arg = next_bracketed_or_word (arg_line, &spaces);
+      arg = next_bracketed_or_word (arg_line, &spaces, 1);
       if (spaces)
         add_to_def_args_extra (def_args, "spaces", spaces);
       add_to_def_args_extra (def_args, "type", arg);
@@ -353,7 +375,7 @@ found:
 
   /* NAME */
   /* All command types get a name. */
-  arg = next_bracketed_or_word (arg_line, &spaces);
+  arg = next_bracketed_or_word (arg_line, &spaces, 1);
   if (spaces)
     add_to_def_args_extra (def_args, "spaces", spaces);
   add_to_def_args_extra (def_args, "name", arg);
@@ -364,7 +386,7 @@ found:
   // 2441
   while (arg_line->contents.number > 0)
     {
-      arg = next_bracketed_or_word (arg_line, &spaces);
+      arg = next_bracketed_or_word (arg_line, &spaces, 0);
       if (spaces)
         add_to_def_args_extra (def_args, "spaces", spaces);
       if (!arg)
