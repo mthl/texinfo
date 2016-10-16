@@ -35,7 +35,6 @@ use Texinfo::Convert::Paragraph;
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Line;
 use Texinfo::Convert::UnFilled;
-use Texinfo::Convert::NodeNameNormalization;
 
 
 use Carp qw(cluck);
@@ -872,14 +871,10 @@ sub _footnotes($;$)
 
       my $node_contents = [@{$element->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
                                      {'text' => '-Footnotes'}];
-      my $normalized
-        = Texinfo::Convert::NodeNameNormalization::normalize_node(
-                                                {'contents' => $node_contents});
       my $footnotes_node = {
         'cmdname' => 'node',
         'node_up' => $element->{'extra'}->{'node'},
-        'extra' => {'node_content' => $node_contents,
-                    'normalized' => $normalized}
+        'extra' => {'node_content' => $node_contents }
       };
       $result .= $self->_node($footnotes_node);
       $self->{'node'} = $footnotes_node;
@@ -895,11 +890,8 @@ sub _footnotes($;$)
       if ($element) {
         my $node_contents = [@{$element->{'extra'}->{'node'}->{'extra'}->{'node_content'}},
                     {'text' => "-Footnote-$footnote->{'number'}"}];
-        my $normalized 
-          = Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $node_contents});
         $self->_add_location({'cmdname' => 'anchor',
-                        'extra' => {'node_content' => $node_contents,
-                                    'normalized' => $normalized}
+                        'extra' => {'node_content' => $node_contents }
                        });
       }
       # this pushes on 'context', 'formatters', 'format_context',
@@ -2530,7 +2522,7 @@ sub _convert($$)
         $self->{'document_context'}->[-1]->{'in_multitable'}++;
       } elsif ($root->{'cmdname'} eq 'float') {
         $result .= _add_newline_if_needed($self);
-        if ($root->{'extra'} and $root->{'extra'}->{'normalized'}) {
+        if ($root->{'extra'} and $root->{'extra'}->{'node_content'}) {
           $result .= $self->_anchor($root);
         }
       }

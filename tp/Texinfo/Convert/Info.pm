@@ -237,25 +237,28 @@ sub output($)
   # This may happen for anchors in @insertcopying
   my %seen_anchors;
   foreach my $label (@{$self->{'count_context'}->[-1]->{'locations'}}) {
-    next unless ($label->{'root'} and $label->{'root'}->{'extra'} 
-                  and defined($label->{'root'}->{'extra'}->{'normalized'}));
+    next unless ($label->{'root'} and $label->{'root'}->{'extra'}
+                   and defined($label->{'root'}->{'extra'}->{'node_content'}));
     my $prefix;
+    
     if ($label->{'root'}->{'cmdname'} eq 'node') {
       $prefix = 'Node';
     } else {
-      if ($seen_anchors{$label->{'root'}->{'extra'}->{'normalized'}}) {
-        $self->line_error(sprintf($self->__("\@%s output more than once: %s"),
-                       $label->{'root'}->{'cmdname'},
-                 Texinfo::Convert::Texinfo::convert({'contents' =>
-                      $label->{'root'}->{'extra'}->{'node_content'}})),
-                      $label->{'root'}->{'line_nr'});
-        next;
-      } else {
-        $seen_anchors{$label->{'root'}->{'extra'}->{'normalized'}} = $label;
-      }
       $prefix = 'Ref';
     }
     my ($label_text, $byte_count) = $self->_node_line($label->{'root'});
+
+    if ($seen_anchors{$label_text}) {
+      $self->line_error(sprintf($self->__("\@%s output more than once: %s"),
+          $label->{'root'}->{'cmdname'},
+          Texinfo::Convert::Texinfo::convert({'contents' =>
+              $label->{'root'}->{'extra'}->{'node_content'}})),
+        $label->{'root'}->{'line_nr'});
+      next;
+    } else {
+      $seen_anchors{$label_text} = 1;
+    }
+
     $tag_text .=  "$prefix: $label_text\x{7F}$label->{'bytes'}\n";
   }
   $tag_text .=  "\x{1F}\nEnd Tag Table\n";
@@ -388,7 +391,7 @@ sub _node($$)
   my $node = shift;
   
   my $result = '';
-  return '' if (!defined($node->{'extra'}->{'normalized'}));
+  return '' if (!defined($node->{'extra'}->{'node_content'}));
   if (!$self->{'empty_lines_count'}) {
     $result .= "\n";
     $self->_add_text_count("\n");

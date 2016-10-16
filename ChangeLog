@@ -1,5 +1,19 @@
 2016-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Info.pm (output) <anchors and nodes>,
+	(_node): Don't refer to 'normalized' value on an element defining an
+	xref target; use 'node_content' instead.
+	(output) <anchors and nodes>: Convert the anchor with _node_line
+	to check for duplicates, instead of using the 'normalized' value.
+	* tp/Texinfo/Convert/Plaintext.pm:
+	Remove "use Texinfo::Convert::NodeNameNormalization".
+	(_footnotes): Don't set 'normalized' on the elements we create
+	representing footnote anchors.
+	(_convert) <float>: Use 'node_content' instead of 'normalized'
+	to check if this float should be an anchor.
+
+2016-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Plaintext.pm (_convert): For 'float'
 	elements, change check on 'content' value back to check on 
 	'normalized' value on 'type' hash.
