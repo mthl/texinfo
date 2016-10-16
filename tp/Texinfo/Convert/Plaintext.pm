@@ -969,7 +969,6 @@ sub _align_lines($$$$$$)
   if ($locations and @$locations) {
     foreach my $location (@$locations) {
       next unless (defined($location->{'bytes'}));
-      #print STDERR "L anchor $location->{'root'}->{'extra'}->{'normalized'}: $location->{'lines'} ($location->{'bytes'})\n";
       push @{$updated_locations->{$location->{'lines'}}}, $location;
     }
   }
@@ -1072,12 +1071,10 @@ sub _align_lines($$$$$$)
       foreach my $location (@{$updated_locations->{$line_index}}) {
         $location->{'bytes'} += $line_bytes_begin + $removed_line_bytes_begin 
                                 + $delta_bytes;
-        #print STDERR "UPDATE ALIGN: $location->{'root'}->{'extra'}->{'normalized'}: ($location->{'bytes'})\n";
       }
     }
     $delta_bytes += $line_bytes_begin + $line_bytes_end 
              + $removed_line_bytes_begin + $removed_line_bytes_end;
-    #print STDERR "ALIGN $orig_line ($line_index. lbb $line_bytes_begin, lbe $line_bytes_end, rlbb $removed_line_bytes_begin, rlbe $removed_line_bytes_end delta $delta_bytes, bytes_count $bytes_count)\n";
     $line_index++;
   }
   return ($result, $bytes_count);
@@ -3062,15 +3059,6 @@ sub _convert($$)
         print STDERR "     --> $result" if ($self->{'debug'});
       }
     } elsif ($root->{'type'} eq 'menu_entry') {
-      #my $menu_entry_internal_node;
-      #if ($root->{'extra'} and $root->{'extra'}->{'menu_entry_node'}
-      #    and defined($root->{'extra'}->{'menu_entry_node'}->{'normalized'})
-      #    and !$root->{'extra'}->{'menu_entry_node'}->{'manual_content'}
-      #    and $self->{'labels'}
-      #    and $self->{'labels'}->{$root->{'extra'}->{'menu_entry_node'}->{'normalized'}}) {
-      #  $menu_entry_internal_node 
-      #    = $self->{'labels'}->{$root->{'extra'}->{'menu_entry_node'}->{'normalized'}};
-      #}
       my $entry_name_seen = 0;
       foreach my $arg (@{$root->{'args'}}) {
         my ($pre_quote, $post_quote);
@@ -3210,7 +3198,7 @@ sub _convert($$)
           next unless (defined($location->{'bytes'}) and defined($location->{'lines'}));
           push @{$cell_updated_locations->[$cell_idx]->{$location->{'lines'}}},
                  $location;
-          print STDERR "MULTITABLE anchor $location->{'root'}->{'extra'}->{'normalized'}: c $cell_idx, l $location->{'lines'} ($location->{'bytes'})\n"
+          print STDERR "MULTITABLE anchor: c $cell_idx, l $location->{'lines'} ($location->{'bytes'})\n"
                 if ($self->{'debug'});
           $max_lines = $location->{'lines'}+1 
                             if ($location->{'lines'}+1 > $max_lines);
@@ -3254,7 +3242,7 @@ sub _convert($$)
           }
           if (defined($cell_updated_locations->[$cell_idx]->{$line_idx})) {
             foreach my $location (@{$cell_updated_locations->[$cell_idx]->{$line_idx}}) {
-              print STDERR "MULTITABLE UPDATE ANCHOR (l $line_idx, c $cell_idx): $location->{'root'}->{'extra'}->{'normalized'}: $location->{'bytes'} -> $bytes_count\n"
+              print STDERR "MULTITABLE UPDATE ANCHOR (l $line_idx, c $cell_idx): $location->{'bytes'} -> $bytes_count\n"
                 if ($self->{'debug'});
               $location->{'bytes'} = $bytes_count;
             }
@@ -3334,16 +3322,12 @@ sub _convert($$)
   if ($root->{'cmdname'}) {
     if ($root->{'cmdname'} eq 'float') {
       if ($self->{'debug'}) {
-        my $type_texi = '';
-        $type_texi = Texinfo::Convert::Texinfo::convert({'contents' => $root->{'extra'}->{'type'}->{'content'}})
-          if ($root->{'extra'} and $root->{'extra'}->{'type'}->{'normalized'} ne '');
-        my $number = '';
-        $number = $root->{'number'} if (defined($root->{'number'}));
-        print STDERR "FLOAT: ($number) ($type_texi)\n";
+        my $number = $root->{'number'} if (defined($root->{'number'}));
+        print STDERR "FLOAT: ($number)\n";
       }
 
       if ($root->{'extra'}
-          and ($root->{'extra'}->{'type'}->{'normalized'} ne '' 
+          and ($root->{'extra'}->{'type'}->{'content'} ne '' 
                or defined($root->{'number'})
                or $root->{'extra'}->{'caption'} or $root->{'extra'}->{'shortcaption'})) {
         
