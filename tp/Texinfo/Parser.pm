@@ -55,7 +55,7 @@ use Texinfo::Report;
 # encoding_alias
 use Texinfo::Encoding;
 
-# to normalize node name, anchor, float arg, listoffloats and first *ref argument.
+# to normalize node name, anchor, float arg, and first *ref argument.
 use Texinfo::Convert::NodeNameNormalization;
 # in error messages, and for macro body expansion
 use Texinfo::Convert::Texinfo;
@@ -2232,13 +2232,10 @@ sub _parse_float_type($)
     _trim_spaces_comment_from_content(\@type_contents);
     if (@type_contents) {
       my $normalized 
-        = Texinfo::Convert::NodeNameNormalization::normalize_node(
-                                               {'contents' => \@type_contents});
+        = Texinfo::Convert::Texinfo::convert({'contents' => \@type_contents});
       $current->{'extra'}->{'type'}->{'content'} = \@type_contents;
-      if ($normalized =~ /[^-]/) {
-        $current->{'extra'}->{'type'}->{'normalized'} = $normalized;
-        return 1;
-      }
+      $current->{'extra'}->{'type'}->{'normalized'} = $normalized;
+      return 1;
     }
   }
   $current->{'extra'}->{'type'}->{'normalized'} = '';
@@ -3212,12 +3209,7 @@ sub _end_line($$$)
         }
       }
     } elsif ($command eq 'listoffloats') {
-      # Empty listoffloats is allowed
       _parse_float_type($current);
-      #if (!_parse_float_type($current)) {
-      #  $self->line_error (sprintf($self->__("\@%s missing argument"), 
-      #     $command), $line_nr);
-      #}
     # handle all the other 'line' commands.  Here just check that they 
     # have an argument and prepare contents without spaces.
     } else {

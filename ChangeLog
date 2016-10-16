@@ -1,5 +1,13 @@
 2016-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_float_type): Convert type of
+	float with Texinfo::Convert::Texinfo instead of with 
+	Texinfo::Convert::NodeNameNormalization.
+	* tp/Texinfo/Parser.pm (_end_line) <@listoffloats>: Remove 
+	commented-out code.
+
+2016-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Info.pm (output) <anchors and nodes>,
 	(_node): Don't refer to 'normalized' value on an element defining an
 	xref target; use 'node_content' instead.
