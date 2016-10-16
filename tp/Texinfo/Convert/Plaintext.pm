@@ -3327,7 +3327,7 @@ sub _convert($$)
       }
 
       if ($root->{'extra'}
-          and ($root->{'extra'}->{'type'}->{'content'} ne '' 
+          and ($root->{'extra'}->{'type'}->{'normalized'} ne '' 
                or defined($root->{'number'})
                or $root->{'extra'}->{'caption'} or $root->{'extra'}->{'shortcaption'})) {
         

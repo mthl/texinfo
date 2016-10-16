@@ -1,5 +1,11 @@
 2016-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Plaintext.pm (_convert): For 'float'
+	elements, change check on 'content' value back to check on 
+	'normalized' value on 'type' hash.
+
+2016-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Plaintext.pm (_align_lines, _convert):
 	Remove some commented-out lines for debugging purposes.  Reduce 
 	references to 'normalized' values on elements.  For 'float' 
