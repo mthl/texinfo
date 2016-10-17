@@ -931,11 +931,9 @@ parse_float_type (ELEMENT *current)
       if (type_contents->contents.number > 0)
         {
           char *normalized;
-          normalized = convert_to_normalized (type_contents);
+          normalized = convert_to_texinfo (type_contents);
           eft->content = type_contents;
-          if (normalized[strspn (normalized, "-")] != '\0')
-            eft->normalized = normalized;
-          /* TODO: why do we check there's a character that isn't '-'? */
+          eft->normalized = normalized;
 
           add_extra_float_type (current, "type", eft);
           return 1;
