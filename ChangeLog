@@ -1,3 +1,10 @@
+2016-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (_check_menu_entry): Remove 
+	'$check_menu_entries' argument, and don't return anything.  
+	Callers updated.
+	(nodes_tree): Some comments changed.
+
 2016-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_float_type): Convert type of

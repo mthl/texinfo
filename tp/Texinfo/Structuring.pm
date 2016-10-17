@@ -536,28 +536,25 @@ my %direction_texts = (
  'up' => 'Up'
 );
 
-sub _check_menu_entry($$$$)
+sub _check_menu_entry($$$)
 {
   my $self = shift;
   my $command = shift;
   my $menu_content = shift;
-  my $check_menu_entries = shift;
 
-  my $menu_node;
-
-  if (!$self->{'labels'}->{$menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'}}) {
-    if ($check_menu_entries) {
-      $self->line_error(sprintf($self->
-       __("\@%s reference to nonexistent node `%s'"), $command,
-          node_extra_to_texi($menu_content->{'extra'}->{'menu_entry_node'})), 
-       $menu_content->{'line_nr'});
-    }
-  } else {
-    my $normalized_menu_node
+  my $normalized_menu_node
       = $menu_content->{'extra'}->{'menu_entry_node'}->{'normalized'};
-    $menu_node = $self->{'labels'}->{$normalized_menu_node};
-    if ($check_menu_entries and ! _check_node_same_texinfo_code($menu_node, 
-        $menu_content->{'extra'}->{'menu_entry_node'})) {
+
+  my $menu_node = $self->{'labels'}->{$normalized_menu_node};
+
+  if (!$menu_node) {
+    $self->line_error(sprintf($self->
+     __("\@%s reference to nonexistent node `%s'"), $command,
+        node_extra_to_texi($menu_content->{'extra'}->{'menu_entry_node'})), 
+     $menu_content->{'line_nr'});
+  } else {
+    if (!_check_node_same_texinfo_code($menu_node, 
+                           $menu_content->{'extra'}->{'menu_entry_node'})) {
       $self->line_warn(sprintf($self->
        __("\@%s entry node name `%s' different from %s name `%s'"), 
          $command,
@@ -567,12 +564,11 @@ sub _check_menu_entry($$$$)
                             $menu_content->{'line_nr'});
     }
   }
-  return $menu_node;
 }
 
-# first go through all the menu and set menu_up, menu_next, menu_prev
+# First go through all the menus and set menu_up, menu_next and menu_prev,
 # and warn for unknown nodes.
-# then go through all the nodes and set directions
+# Then go through all the nodes and set directions.
 sub nodes_tree($)
 {
   my $self = shift;
@@ -601,8 +597,9 @@ sub nodes_tree($)
         }
       }
       # Remark: since the @menu are only checked if they are in @node, 
-      # menu entry before the first node may be treated slightly differently.
-      # at least, there are no error messages for them
+      # menu entries before the first node, or @menu nested inside
+      # another command such as @format, may be treated slightly
+      # differently; at least, there are no error messages for them.
 
       foreach my $menu (@{$node->{'menus'}}) {
         my $previous_node;
@@ -612,8 +609,13 @@ sub nodes_tree($)
             my $menu_node;
             my $external_node;
             if (!$menu_content->{'extra'}->{'menu_entry_node'}->{'manual_content'}) {
-              $menu_node = _check_menu_entry($self, 'menu', $menu_content, 
-                                                    $check_menu_entries);
+              $menu_node = $self->{'labels'}->{
+                      $menu_content->{'extra'}
+                                   ->{'menu_entry_node'}->{'normalized'}};
+
+              if ($check_menu_entries) {
+                _check_menu_entry($self, 'menu', $menu_content);
+              }
               # this may happen more than once for a given node if the node 
               # is in more than one menu.  Therefore all the menu up node 
               # are kept in $menu_node->{'menu_up_hash'}
@@ -643,6 +645,7 @@ sub nodes_tree($)
       }
     }
   }
+  # Check @detailmenu
   if ($check_menu_entries) {
     my $global_commands = $self->global_commands_information();
     if ($global_commands->{'detailmenu'}) {
@@ -651,8 +654,7 @@ sub nodes_tree($)
           if ($menu_content->{'extra'}
              and $menu_content->{'extra'}->{'menu_entry_node'}) {
             if (!$menu_content->{'extra'}->{'menu_entry_node'}->{'manual_content'}) {
-              _check_menu_entry($self, 'detailmenu', $menu_content, 
-                                $check_menu_entries);
+              _check_menu_entry($self, 'detailmenu', $menu_content);
             }
           }
         }
