@@ -102,7 +102,8 @@ $unnumbered_commands{'top'} = 1;
 $unnumbered_commands{'centerchap'} = 1;
 $unnumbered_commands{'part'} = 1;
 
-# sets:
+# Go through the sectioning commands (e.g. @chapter, not @node), and
+# set:
 # 'number'
 # 'section_childs'
 # 'section_up'
@@ -137,160 +138,155 @@ sub sectioning_structure($$)
   # keep track of the unnumbered
   my @command_unnumbered;
   foreach my $content (@{$root->{'contents'}}) {
-    if ($content->{'cmdname'} and $content->{'cmdname'} ne 'node'
-        and $content->{'cmdname'} ne 'bye') {
-      push @sections_list, $content;
-      if ($content->{'cmdname'} eq 'top') {
-        if (! $section_top) {
-          $section_top = $content;
+    if (!$content->{'cmdname'} or $content->{'cmdname'} eq 'node'
+        or $content->{'cmdname'} eq 'bye') {
+      next;
+    }
+    push @sections_list, $content;
+    if ($content->{'cmdname'} eq 'top') {
+      if (! $section_top) {
+        $section_top = $content;
+      }
+    }
+    my $level = $content->{'level'};
+    if (!defined($level)) {
+      warn "bug: level not defined for $content->{'cmdname'}\n";
+      $level = $content->{'level'} = 0;
+    }
+
+    if ($previous_section) {
+      # new command is below
+      if ($previous_section->{'level'} < $level) {
+        if ($level - $previous_section->{'level'} > 1) {
+          $self->line_error(sprintf($self->
+              __("raising the section level of \@%s which is too low"), 
+              $content->{'cmdname'}), $content->{'line_nr'});
+          $content->{'level'} = $previous_section->{'level'} + 1;
         }
-      }
-      my $level = $content->{'level'};
-      if (!defined($level)) {
-        warn "bug: level not defined for $content->{'cmdname'}\n";
-        $level = $content->{'level'} = 0;
-      }
+        $previous_section->{'section_childs'} = [$content];
+        $content->{'section_up'} = $previous_section;
 
-      if ($previous_section) {
-        # new command is below
-        if ($previous_section->{'level'} < $level) {
-          if ($level - $previous_section->{'level'} > 1) {
-            $self->line_error(sprintf($self->
-                  __("raising the section level of \@%s which is too low"), 
-                  $content->{'cmdname'}), $content->{'line_nr'});
-            $content->{'level'} = $previous_section->{'level'} + 1;
-          }
-          $previous_section->{'section_childs'} = [$content];
-          $content->{'section_up'} = $previous_section;
-
-          # if the up is unnumbered, the number information has to be kept,
-          # to avoid reusing an already used number.
-          if (!$unnumbered_commands{$previous_section->{'cmdname'}}) {
-            $command_numbers[$content->{'level'}] = undef;
-          } elsif (!$unnumbered_commands{$content->{'cmdname'}}) {
-            $command_numbers[$content->{'level'}]++;
-          }
-          if ($unnumbered_commands{$content->{'cmdname'}}) {
-            $command_unnumbered[$content->{'level'}] = 1;
-          } else {
-            $command_unnumbered[$content->{'level'}] = 0;
-          }
+        # if the up is unnumbered, the number information has to be kept,
+        # to avoid reusing an already used number.
+        if (!$unnumbered_commands{$previous_section->{'cmdname'}}) {
+          $command_numbers[$content->{'level'}] = undef;
+        } elsif (!$unnumbered_commands{$content->{'cmdname'}}) {
+          $command_numbers[$content->{'level'}]++;
+        }
+        if ($unnumbered_commands{$content->{'cmdname'}}) {
+          $command_unnumbered[$content->{'level'}] = 1;
         } else {
-          my $up = $previous_section->{'section_up'};
-          my $new_upper_part_element;
-          if ($previous_section->{'level'} != $level) {
-            # means it is above the previous command, the up is to be found
-            while ($up->{'section_up'} and $up->{'level'} >= $level) {
-              $up = $up->{'section_up'};
-            }
-            if ($level <= $up->{'level'}) {
-              if ($content->{'cmdname'} eq 'part') {
-                $new_upper_part_element = 1;
-                if ($level < $up->{'level'}) {
-                  $self->line_warn(sprintf($self->__(
-                    "no chapter-level command before \@%s"),
-                          $content->{'cmdname'}), $content->{'line_nr'});
-                }
-              } else {
-                $self->line_warn(sprintf($self->__(
-         "lowering the section level of \@%s appearing after a lower element"), 
-                  $content->{'cmdname'}), $content->{'line_nr'});
-                $content->{'level'} = $up->{'level'} + 1;
-              }
-            }
-          }
-          if ($appendix_commands{$content->{'cmdname'}} and !$in_appendix
-              and $content->{'level'} <= $number_top_level 
-              and $up->{'cmdname'} and $up->{'cmdname'} eq 'part') {
+          $command_unnumbered[$content->{'level'}] = 0;
+        }
+      } else {
+        my $up = $previous_section->{'section_up'};
+        my $new_upper_part_element;
+        if ($previous_section->{'level'} != $level) {
+          # means it is above the previous command, the up is to be found
+          while ($up->{'section_up'} and $up->{'level'} >= $level) {
             $up = $up->{'section_up'};
           }
-          if ($new_upper_part_element) {
-            # In that case the root has to be updated because the first 
-            # 'part' just appeared
-            $content->{'section_up'} = $sec_root;
-            $sec_root->{'level'} = $level - 1;
-            push @{$sec_root->{'section_childs'}}, $content;
-            $number_top_level = $level;
-            $number_top_level++ if (!$number_top_level);
-          } else {
-            push @{$up->{'section_childs'}}, $content;
-            $content->{'section_up'} = $up;
-            $content->{'section_prev'} = $up->{'section_childs'}->[-2];
-            $content->{'section_prev'}->{'section_next'} = $content;
-          }
-          if (!$unnumbered_commands{$content->{'cmdname'}}) {
-            $command_numbers[$content->{'level'}]++;
-            $command_unnumbered[$content->{'level'}] = 0;
-          } else {
-            $command_unnumbered[$content->{'level'}] = 1;
-          }
-        }
-      } else { # first section determines the level of the root.  It is 
-               # typically -1 when there is a @top.
-        $content->{'section_up'} = $sec_root;
-        $sec_root->{'level'} = $level - 1;
-        $sec_root->{'section_childs'} = [$content];
-        $number_top_level = $level;
-        # if $level of top sectioning element is 0, which means that
-        # it is a @top, $number_top_level is 1 as it is associated to
-        # the level of chapter/unnumbered...
-        $number_top_level++ if (!$number_top_level);
-        if ($content->{'cmdname'} ne 'top') {
-          if (!$unnumbered_commands{$content->{'cmdname'}}) {
-            $command_unnumbered[$content->{'level'}] = 0;
-          } else {
-            $command_unnumbered[$content->{'level'}] = 1;
-          }
-        }
-      }
-      if (!defined($command_numbers[$content->{'level'}])) {
-        if ($unnumbered_commands{$content->{'cmdname'}}) {
-          $command_numbers[$content->{'level'}] = 0;
-        } else {
-          $command_numbers[$content->{'level'}] = 1;
-        }
-      }
-      if ($appendix_commands{$content->{'cmdname'}} and !$in_appendix) {
-        $in_appendix = 1;
-        $command_numbers[$content->{'level'}] = 'A';
-      }
-      if (!$unnumbered_commands{$content->{'cmdname'}}) {
-        # construct the number, if not below an unnumbered
-        if (!$command_unnumbered[$number_top_level]) {
-          $content->{'number'} = $command_numbers[$number_top_level];
-          for (my $i = $number_top_level+1; $i <= $content->{'level'}; $i++) {
-            $content->{'number'} .= ".$command_numbers[$i]";
-            # If there is an unnumbered above, then no number is added.
-            if ($command_unnumbered[$i]) {
-              delete $content->{'number'};
-              last;
+          if ($level <= $up->{'level'}) {
+            if ($content->{'cmdname'} eq 'part') {
+              $new_upper_part_element = 1;
+              if ($level < $up->{'level'}) {
+                $self->line_warn(sprintf($self->__(
+                      "no chapter-level command before \@%s"),
+                    $content->{'cmdname'}), $content->{'line_nr'});
+              }
+            } else {
+              $self->line_warn(sprintf($self->__(
+                    "lowering the section level of \@%s appearing after a lower element"), 
+                  $content->{'cmdname'}), $content->{'line_nr'});
+              $content->{'level'} = $up->{'level'} + 1;
             }
           }
         }
+        if ($appendix_commands{$content->{'cmdname'}} and !$in_appendix
+            and $content->{'level'} <= $number_top_level 
+            and $up->{'cmdname'} and $up->{'cmdname'} eq 'part') {
+          $up = $up->{'section_up'};
+        }
+        if ($new_upper_part_element) {
+          # In that case the root has to be updated because the first 
+          # 'part' just appeared
+          $content->{'section_up'} = $sec_root;
+          $sec_root->{'level'} = $level - 1;
+          push @{$sec_root->{'section_childs'}}, $content;
+          $number_top_level = $level;
+          $number_top_level++ if (!$number_top_level);
+        } else {
+          push @{$up->{'section_childs'}}, $content;
+          $content->{'section_up'} = $up;
+          $content->{'section_prev'} = $up->{'section_childs'}->[-2];
+          $content->{'section_prev'}->{'section_next'} = $content;
+        }
+        if (!$unnumbered_commands{$content->{'cmdname'}}) {
+          $command_numbers[$content->{'level'}]++;
+          $command_unnumbered[$content->{'level'}] = 0;
+        } else {
+          $command_unnumbered[$content->{'level'}] = 1;
+        }
       }
-      $previous_section = $content;
-      if ($content->{'cmdname'} ne 'part' 
-          and $content->{'level'} <= $number_top_level) {
-        if ($previous_toplevel) {
-          $previous_toplevel->{'toplevel_next'} = $content;
-          $content->{'toplevel_prev'} = $previous_toplevel;
+    } else { # first section determines the level of the root.  It is 
+      # typically -1 when there is a @top.
+      $content->{'section_up'} = $sec_root;
+      $sec_root->{'level'} = $level - 1;
+      $sec_root->{'section_childs'} = [$content];
+      $number_top_level = $level;
+      # if $level of top sectioning element is 0, which means that
+      # it is a @top, $number_top_level is 1 as it is associated to
+      # the level of chapter/unnumbered...
+      $number_top_level++ if (!$number_top_level);
+      if ($content->{'cmdname'} ne 'top') {
+        if (!$unnumbered_commands{$content->{'cmdname'}}) {
+          $command_unnumbered[$content->{'level'}] = 0;
+        } else {
+          $command_unnumbered[$content->{'level'}] = 1;
         }
-        $previous_toplevel = $content;
-        if ($section_top and $content ne $section_top) {
-          $content->{'toplevel_up'} = $section_top;
+      }
+    }
+    if (!defined($command_numbers[$content->{'level'}])) {
+      if ($unnumbered_commands{$content->{'cmdname'}}) {
+        $command_numbers[$content->{'level'}] = 0;
+      } else {
+        $command_numbers[$content->{'level'}] = 1;
+      }
+    }
+    if ($appendix_commands{$content->{'cmdname'}} and !$in_appendix) {
+      $in_appendix = 1;
+      $command_numbers[$content->{'level'}] = 'A';
+    }
+    if (!$unnumbered_commands{$content->{'cmdname'}}) {
+      # construct the number, if not below an unnumbered
+      if (!$command_unnumbered[$number_top_level]) {
+        $content->{'number'} = $command_numbers[$number_top_level];
+        for (my $i = $number_top_level+1; $i <= $content->{'level'}; $i++) {
+          $content->{'number'} .= ".$command_numbers[$i]";
+          # If there is an unnumbered above, then no number is added.
+          if ($command_unnumbered[$i]) {
+            delete $content->{'number'};
+            last;
+          }
         }
-      } elsif ($content->{'cmdname'} eq 'part' 
-               and !$content->{'extra'}->{'part_associated_section'}) {
-        $self->line_warn(sprintf($self->__(
+      }
+    }
+    $previous_section = $content;
+    if ($content->{'cmdname'} ne 'part' 
+        and $content->{'level'} <= $number_top_level) {
+      if ($previous_toplevel) {
+        $previous_toplevel->{'toplevel_next'} = $content;
+        $content->{'toplevel_prev'} = $previous_toplevel;
+      }
+      $previous_toplevel = $content;
+      if ($section_top and $content ne $section_top) {
+        $content->{'toplevel_up'} = $section_top;
+      }
+    } elsif ($content->{'cmdname'} eq 'part' 
+        and !$content->{'extra'}->{'part_associated_section'}) {
+      $self->line_warn(sprintf($self->__(
             "no sectioning command associated with \@%s"),
-                $content->{'cmdname'}), $content->{'line_nr'});
-      }
-
-      if ($self->{'DEBUG'}) {
-        my $number = '';
-        $number = $content->{'number'} if defined($content->{'number'});
-        print STDERR "($content->{'level'}|$level|$command_structuring_level{$content->{'cmdname'}})[$command_numbers[$content->{'level'}]]($in_appendix) $number \@$content->{'cmdname'} ".Texinfo::Convert::Text::convert($content->{'args'}->[0])."\n";
-      }
+          $content->{'cmdname'}), $content->{'line_nr'});
     }
   }
   $self->{'structuring'}->{'sectioning_root'} = $sec_root;

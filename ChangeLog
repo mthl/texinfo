@@ -1,5 +1,12 @@
 2016-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Structuring.pm (sectioning_structure): Use 'next' 
+	instead of putting whole body of loop within a condition.  
+	Change comment at start of function.  Delete some code used for 
+	debugging.
+
+2016-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Structuring.pm (_next_content, _collect_structure):
 	Remove unused functions.
 
