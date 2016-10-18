@@ -1,3 +1,8 @@
+2016-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (_next_content, _collect_structure):
+	Remove unused functions.
+
 2016-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Structuring.pm (_check_menu_entry): Remove 

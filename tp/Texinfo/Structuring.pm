@@ -86,67 +86,6 @@ foreach my $type_to_enter ('brace_command_arg', 'misc_line_arg',
   $types_to_enter{$type_to_enter} = 1;
 }
 
-# anchor may appear in @center? @item/x?
-# going in node, sectioning 
-# not going in: pagesizes listoffloats shorttitlepage 
-#               settitle author subtitle title
-# index entries
-# footnote? section node
-# float printindex contents shortcontents
-# anchor
-
-# Not used for now
-sub _next_content($)
-{
-  my $current = shift;
-  if ($current->{'contents'} and scalar(@{$current->{'contents'}})) {
-    $current = $current->{'contents'}->[0];
-  } elsif ($current->{'args'} and @{$current->{'args'}}
-           and (!defined($current->{'args'}->[0]->{'type'})
-               or ($current->{'args'}->[0]->{'type'} 
-                  and $types_to_enter{$current->{'args'}->[0]->{'type'}}
-                  and !($current->{'extra'} 
-                        and $current->{'extra'}->{'misc_args'}))
-               or $current->{'type'} and $current->{'type'} eq 'menu_entry')) {
-    $current = $current->{'args'}->[0];
-  } elsif ($current->{'next'}) {
-    $current = $current->{'next'};
-  } else {
-    while ($current->{'parent'} and !$current->{'parent'}->{'next'}) {
-      $current = $current->{'parent'};
-    }
-    if ($current->{'parent'} and $current->{'parent'}->{'next'}) {
-      $current = $current->{'parent'}->{'next'}
-    } else {
-      $current = undef;
-    }
-  }
-  return $current;
-}
-
-# Not used for now
-# the tree is modified: 'next' pointers are added.
-sub _collect_structure($)
-{
-  my $current = shift;
-
-  while ($current) {
-    if ($current->{'contents'} and scalar(@{$current->{'contents'}})) {
-      for (my $i = 0; $i < scalar(@{$current->{'contents'}}) -1; $i++) {
-        $current->{'contents'}->[$i]->{'next'} = $current->{'contents'}->[$i+1];
-      }
-    }
-    if ($current->{'args'} and scalar(@{$current->{'args'}}) > 1
-        and !($current->{'extra'} 
-              and $current->{'extra'}->{'misc_args'})) {
-      for (my $i = 0; $i < scalar(@{$current->{'args'}}) -1; $i++) {
-        $current->{'args'}->[$i]->{'next'} = $current->{'args'}->[$i+1];
-      }
-    }
-    print STDERR "".Texinfo::Parser::_print_current($current);
-    $current = _next_content($current);
-  }
-}
 
 my %command_structuring_level = %Texinfo::Common::command_structuring_level;
 
