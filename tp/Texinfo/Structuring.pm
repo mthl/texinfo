@@ -622,11 +622,13 @@ sub nodes_tree($)
           }
           if ($node->{'extra'}->{'associated_section'}) {
             my $section = $node->{'extra'}->{'associated_section'};
-            # prefer the section associated to the part for node directions.
+
+            # Prefer the section associated with a @part for node directions.
             if ($section->{'extra'}->{'part_associated_section'}) {
               $section = $section->{'extra'}->{'part_associated_section'};
             }
-            # use toplevel to go through parts.  But not for @top as prev
+            # Set node_$direction, usually from section_$direction.
+            # 'toplevel' is to go through parts, except for @top as prev
             # or next.
             foreach my $direction_base ('section', 'toplevel') {
               if ($section->{$direction_base.'_'.$direction}
@@ -640,18 +642,31 @@ sub nodes_tree($)
                 last;
               }
             }
-            # if set, a direction was found using sections.  Check consistency
-            # with menu before going to the next direction
+            # If set, a direction was found using sections.  Check consistency
+            # with menus.
             if ($node->{'node_'.$direction}) {
               if ($self->{'SHOW_MENU'}) {
-                if (!$node->{'menu_'.$direction}) {
+
+                if (($node->{'extra'}
+            and $node->{'extra'}{'associated_section'}
+            and $node->{'extra'}{'associated_section'}{'section_up'}{'extra'}
+            and $node->{'extra'}{'associated_section'}{'section_up'}{'extra'}
+                       {'associated_node'}
+            and $node->{'extra'}{'associated_section'}{'section_up'}{'extra'}
+                       {'associated_node'}{'menus'}
+            and @{$node->{'extra'}{'associated_section'}{'section_up'}{'extra'}
+                         {'associated_node'}{'menus'}}
+                     or $self->{'validatemenus'})
+                    and !$node->{'menu_'.$direction}) {
                   $self->line_warn(sprintf($self->
-                    __("node `%s' is %s for `%s' in sectioning but not in menu"), 
-                  node_extra_to_texi($node->{'node_'.$direction}->{'extra'}), 
-                  $direction,
-                  node_extra_to_texi($node->{'extra'})),
-                  $node->{'line_nr'});
-                } elsif ($node->{'menu_'.$direction} ne $node->{'node_'.$direction}) {
+               __("node `%s' is %s for `%s' in sectioning but not in menu"), 
+                    node_extra_to_texi($node->{'node_'.$direction}->{'extra'}), 
+                                       $direction,
+                    node_extra_to_texi($node->{'extra'})),
+                                       $node->{'line_nr'});
+                } elsif ($node->{'menu_'.$direction}
+                         and $node->{'menu_'.$direction}
+                             ne $node->{'node_'.$direction}) {
                   $self->line_warn(sprintf($self->
                     __("node %s `%s' in menu `%s' and in sectioning `%s' differ"), 
                     $direction,
@@ -766,7 +781,9 @@ sub nodes_tree($)
         and ($node->{'node_up'}->{'extra'}->{'manual_content'}
          or !$node->{'menu_up_hash'}
          or !$node->{'menu_up_hash'}->{$node->{'node_up'}->{'extra'}->{'normalized'}})) {
-      if (!$node->{'node_up'}->{'extra'}->{'manual_content'}) {
+      if (($node->{'node_up'}->{'menus'} and @{$node->{'node_up'}->{'menus'}}
+           or $self->{'validatemenus'})
+          and !$node->{'node_up'}->{'extra'}->{'manual_content'}) {
       # up node is a real node but has no menu entry
         $self->line_error(sprintf($self->
            __("node `%s' lacks menu item for `%s' despite being its Up target"), 

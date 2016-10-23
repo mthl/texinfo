@@ -1,5 +1,14 @@
 2016-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Structuring.pm (nodes_tree): If 'validatemenus' is 
+	not on, do not complain about a node lacking a menu item if that 
+	node has no menu at all.  If 'validatemenus' is not on, in order 
+	to complain about the menu structure not matching the section 
+	structure, the nodes must be associated with sections and 
+	contain menus.  Some comments changed.
+
+2016-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Structuring.pm (nodes_tree): Only check whether 
 	node is in a menu if 'validatemenus' is on.
 
