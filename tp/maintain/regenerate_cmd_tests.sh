@@ -31,11 +31,9 @@ shift
 destdir=$1
 shift
 
-while test z"$1" = 'z-base' -o z"$1" = 'z-long' -o z"$1" = 'z-tex_html'; do
+while test z"$1" = 'z-base' -o z"$1" = 'z-tex_html'; do
   if test z"$1" = 'z-base'; then
     base_test_dirs=$2
-  elif test z"$1" = 'z-long'; then
-    long_test_dirs=$2
   elif test z"$1" = 'z-tex_html'; then
     tex_html_test_dirs=$2
   else
@@ -98,25 +96,8 @@ one_test_logs_dir=test_log
 diffs_dir=diffs
 
 ' > $one_test_file
-    if test $type = 'base'; then
-      echo '
-if test "z$LONG_TESTS" = z"yes"; then
-  echo "Skipping short tests because we are only doing long tests"
-  exit 77
-fi' >> $one_test_file
-    elif test $type = 'long'; then
-      echo '
-if test "z$LONG_TESTS" != z"yes" && test "z$ALL_TESTS" != z"yes"; then
-  echo "Skipping long tests that take a lot of time to run"
-  exit 77
-fi
 
-if test "z$TEX_HTML_TESTS" = z"yes"; then
-  echo "Skipping long tests, only doing HTML TeX tests"
-  exit 77
-fi
-' >> $one_test_file
-    elif test $type = 'tex_html'; then
+    if test $type = 'tex_html'; then
       echo '
 if test "z$TEX_HTML_TESTS" != z"yes"; then
   echo "Skipping HTML TeX tests that are not easily reproducible"
@@ -164,7 +145,6 @@ cat >$outfile <<END_HEADER
 
 END_HEADER
 
-gather_tests long "$long_test_dirs"
 gather_tests base "$base_test_dirs"
 gather_tests tex_html "$tex_html_test_dirs"
 

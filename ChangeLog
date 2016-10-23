@@ -1,5 +1,20 @@
 2016-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/Makefile.am (long-checks, long-checks-all): Remove.
+	(tex-html-checks tex-html-check): Remove use of LONG_TESTS.
+	(long_tests): Add contents to 'base_tests' variable and 
+	remove.
+	(copy-long): Remove.
+	(Makefile.onetst, DIST_SUBDIRS, clean-tests): Remove use of 
+	'long_tests' variable.
+	* tp/tests/README: Remove discussion of "long tests".
+
+	* tp/Makefile.am (long-checks): Remove target.
+	* tp/maintain/regenerate_cmd_tests.sh: Remove handling of "long 
+	tests".
+
+2016-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi): Record menu regardless of 
 	where it occurred.  (Revert change on 2016-10-08 in order to 
 	avoid failure of "long tests" under tp/tests.)

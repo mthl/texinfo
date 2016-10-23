@@ -9,11 +9,6 @@ one_test_logs_dir=test_log
 diffs_dir=diffs
 
 
-
-if test "z$LONG_TESTS" = z"yes"; then
-  echo "Skipping short tests because we are only doing long tests"
-  exit 77
-fi
 dir=formatting
 arg='cond'
 name='cond'

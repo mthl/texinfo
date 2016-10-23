@@ -200,10 +200,6 @@ AM_T_LOG_FLAGS += -I$(srcdir)/Texinfo/Convert/XSParagraph
 
 AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir; builddir="$(builddir)"; export buildir; top_builddir="$(top_builddir)"; export top_builddir;
 
-# just a convenience for running these additional tests.
-long-checks:
-	cd tests && $(MAKE) long-checks
-
 maintenance_files = \
   maintain/all_tests.sh \
   maintain/change_perl_modules_version.sh \
