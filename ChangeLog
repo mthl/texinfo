@@ -1,5 +1,9 @@
 2016-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/30sectioning.t (no_menu): New test.
+
+2016-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/Makefile.am (long-checks, long-checks-all): Remove.
 	(tex-html-checks tex-html-check): Remove use of LONG_TESTS.
 	(long_tests): Add contents to 'base_tests' variable and 
