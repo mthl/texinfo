@@ -726,4 +726,112 @@ $result_errors{'no_menu'} = [
 ];
 
 
+
+$result_converted{'plaintext'}->{'no_menu'} = '1 c1
+****
+
+2 c2
+****
+
+3 c3
+****
+
+';
+
+
+$result_converted{'html'}->{'no_menu'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>Untitled Document</title>
+
+<meta name="description" content="Untitled Document">
+<meta name="keywords" content="Untitled Document">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="#Top" rel="start" title="Top">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<a name="Top"></a>
+<div class="header">
+<p>
+Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+</div>
+<a name="SEC_Top"></a>
+
+<hr>
+<a name="c1"></a>
+<div class="header">
+<p>
+Next: <a href="#c2" accesskey="n" rel="next">c2</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<a name="c1-1"></a>
+<h2 class="chapter">1 c1</h2>
+
+<hr>
+<a name="c2"></a>
+<div class="header">
+<p>
+Next: <a href="#c3" accesskey="n" rel="next">c3</a>, Previous: <a href="#c1" accesskey="p" rel="prev">c1</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<a name="c2-1"></a>
+<h2 class="chapter">2 c2</h2>
+
+<hr>
+<a name="c3"></a>
+<div class="header">
+<p>
+Previous: <a href="#c2" accesskey="p" rel="prev">c2</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+</div>
+<a name="c3-1"></a>
+<h2 class="chapter">3 c3</h2>
+<hr>
+
+
+
+</body>
+</html>
+';
+
+$result_converted_errors{'html'}->{'no_menu'} = [
+  {
+    'error_line' => 'warning: must specify a title with a title command or @top
+',
+    'text' => 'must specify a title with a title command or @top',
+    'type' => 'warning'
+  }
+];
+
+
 1;

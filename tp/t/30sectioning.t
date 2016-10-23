@@ -1843,7 +1843,7 @@ $top_chapter_sections_text,
 
 @node c3
 @chapter c3
-'
+', {'test_formats' => ['plaintext', 'html']}
 ],
 ['contents_at_document_begin',
 undef, {'test_file' => 'contents_at_document_begin.texi'}],
