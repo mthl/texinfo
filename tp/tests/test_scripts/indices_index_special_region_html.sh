@@ -9,17 +9,6 @@ one_test_logs_dir=test_log
 diffs_dir=diffs
 
 
-
-if test "z$LONG_TESTS" != z"yes" && test "z$ALL_TESTS" != z"yes"; then
-  echo "Skipping long tests that take a lot of time to run"
-  exit 77
-fi
-
-if test "z$TEX_HTML_TESTS" = z"yes"; then
-  echo "Skipping long tests, only doing HTML TeX tests"
-  exit 77
-fi
-
 dir=indices
 arg='index_special_region_html'
 name='index_special_region_html'
