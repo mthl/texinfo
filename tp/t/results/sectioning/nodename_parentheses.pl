@@ -1339,15 +1339,6 @@ $result_errors{'nodename_parentheses'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':22: warning: unreferenced node `node\'
-',
-    'file_name' => '',
-    'line_nr' => 22,
-    'macro' => '',
-    'text' => 'unreferenced node `node\'',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':22: warning: node `Other node\' is prev for `node\' in sectioning but not in menu
 ',
     'file_name' => '',

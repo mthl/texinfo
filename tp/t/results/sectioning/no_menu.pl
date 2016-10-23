@@ -607,15 +607,6 @@ $result_menus{'no_menu'} = {
 
 $result_errors{'no_menu'} = [
   {
-    'error_line' => ':4: warning: unreferenced node `c1\'
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => 'unreferenced node `c1\'',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':4: warning: node `c2\' is next for `c1\' in sectioning but not in menu
 ',
     'file_name' => '',
@@ -641,15 +632,6 @@ $result_errors{'no_menu'} = [
     'macro' => '',
     'text' => 'node `Top\' lacks menu item for `c1\' despite being its Up target',
     'type' => 'error'
-  },
-  {
-    'error_line' => ':7: warning: unreferenced node `c2\'
-',
-    'file_name' => '',
-    'line_nr' => 7,
-    'macro' => '',
-    'text' => 'unreferenced node `c2\'',
-    'type' => 'warning'
   },
   {
     'error_line' => ':7: warning: node `c3\' is next for `c2\' in sectioning but not in menu
@@ -686,15 +668,6 @@ $result_errors{'no_menu'} = [
     'macro' => '',
     'text' => 'node `Top\' lacks menu item for `c2\' despite being its Up target',
     'type' => 'error'
-  },
-  {
-    'error_line' => ':10: warning: unreferenced node `c3\'
-',
-    'file_name' => '',
-    'line_nr' => 10,
-    'macro' => '',
-    'text' => 'unreferenced node `c3\'',
-    'type' => 'warning'
   },
   {
     'error_line' => ':10: warning: node `c2\' is prev for `c3\' in sectioning but not in menu

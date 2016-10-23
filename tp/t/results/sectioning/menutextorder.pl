@@ -1880,15 +1880,6 @@ $result_errors{'menutextorder'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':13: warning: unreferenced node `onesub1\'
-',
-    'file_name' => '',
-    'line_nr' => 13,
-    'macro' => '',
-    'text' => 'unreferenced node `onesub1\'',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':13: warning: node `onesub2\' is next for `onesub1\' in sectioning but not in menu
 ',
     'file_name' => '',
@@ -1922,15 +1913,6 @@ $result_errors{'menutextorder'} = [
     'line_nr' => 16,
     'macro' => '',
     'text' => 'node `onesub1\' is prev for `onesub2\' in sectioning but not in menu',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':20: warning: unreferenced node `foo\'
-',
-    'file_name' => '',
-    'line_nr' => 20,
-    'macro' => '',
-    'text' => 'unreferenced node `foo\'',
     'type' => 'warning'
   },
   {

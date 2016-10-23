@@ -615,15 +615,6 @@ $result_menus{'character_and_spaces_in_node'} = {
 
 $result_errors{'character_and_spaces_in_node'} = [
   {
-    'error_line' => ':3: warning: unreferenced node `other nodes\'
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => 'unreferenced node `other nodes\'',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':2: node `Top\' lacks menu item for `other nodes\' despite being its Up target
 ',
     'file_name' => '',
@@ -631,15 +622,6 @@ $result_errors{'character_and_spaces_in_node'} = [
     'macro' => '',
     'text' => 'node `Top\' lacks menu item for `other nodes\' despite being its Up target',
     'type' => 'error'
-  },
-  {
-    'error_line' => ':4: warning: unreferenced node `!_"#$%&\'()*+-.\'
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => 'unreferenced node `!_"#$%&\'()*+-.\'',
-    'type' => 'warning'
   },
   {
     'error_line' => ':3: node `other nodes\' lacks menu item for `!_"#$%&\'()*+-.\' despite being its Up target
@@ -651,15 +633,6 @@ $result_errors{'character_and_spaces_in_node'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':5: warning: unreferenced node `/;<=>?[\\]^_`|~\'
-',
-    'file_name' => '',
-    'line_nr' => 5,
-    'macro' => '',
-    'text' => 'unreferenced node `/;<=>?[\\]^_`|~\'',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':3: node `other nodes\' lacks menu item for `/;<=>?[\\]^_`|~\' despite being its Up target
 ',
     'file_name' => '',
@@ -667,15 +640,6 @@ $result_errors{'character_and_spaces_in_node'} = [
     'macro' => '',
     'text' => 'node `other nodes\' lacks menu item for `/;<=>?[\\]^_`|~\' despite being its Up target',
     'type' => 'error'
-  },
-  {
-    'error_line' => ':6: warning: unreferenced node `local   node\'
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => 'unreferenced node `local   node\'',
-    'type' => 'warning'
   },
   {
     'error_line' => ':3: node `other nodes\' lacks menu item for `local   node\' despite being its Up target
