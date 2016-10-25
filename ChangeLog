@@ -1,3 +1,9 @@
+2016-10-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (count_bytes): Call throughout
+	without using method call syntax.
+	(_align_lines): Remove some commented-out lines of code.
+
 2016-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Structuring.pm (nodes_tree): If 'validatemenus' is 

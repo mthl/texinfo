@@ -1013,27 +1013,24 @@ sub _align_lines($$$$$$)
       my $chomped = chomp($line);
       # for debugging.
       $orig_line = $line;
-      $removed_line_bytes_end -= $self->count_bytes($chomped);
-      #$line_bytes_end -= $self->count_bytes($chomped);
+      $removed_line_bytes_end -= count_bytes($self, $chomped);
       $line =~ s/^(\s*)//;
-      $removed_line_bytes_begin -= $self->count_bytes($1);
-      #$line_bytes_begin -= $self->count_bytes($1);
+      $removed_line_bytes_begin -= count_bytes($self, $1);
       $line =~ s/(\s*)$//;
-      $removed_line_bytes_end -= $self->count_bytes($1);
-      #$line_bytes_end -= $self->count_bytes($1);
+      $removed_line_bytes_end -= count_bytes($self, $1);
       my $line_width = Texinfo::Convert::Unicode::string_width($line);
       if ($line_width == 0) {
         $result .= "\n";
-        $line_bytes_end += $self->count_bytes("\n");
-        $bytes_count += $self->count_bytes("\n");
+        $line_bytes_end += count_bytes($self, "\n");
+        $bytes_count += count_bytes($self, "\n");
       } else {
         my $spaces_prepended 
          = _compute_spaces_align_line($line_width, $max_column, $direction);
         $result .= ' ' x$spaces_prepended . $line ."\n";
-        $line_bytes_begin += $self->count_bytes(' ' x$spaces_prepended);
-        $line_bytes_end += $self->count_bytes("\n");
+        $line_bytes_begin += count_bytes($self, ' ' x$spaces_prepended);
+        $line_bytes_end += count_bytes($self, "\n");
         $bytes_count += $line_bytes_begin + $line_bytes_end 
-                        + $self->count_bytes($line);
+                        + count_bytes($self, $line);
       }
     } else {
       $image_lines_count++;
@@ -1047,8 +1044,8 @@ sub _align_lines($$$$$$)
         $prepended_spaces = 0 if ($prepended_spaces < 0);
       }
       $result .= ' ' x$prepended_spaces . $line;
-      $line_bytes_begin += $self->count_bytes(' ' x$prepended_spaces);
-      $bytes_count += $line_bytes_begin + $self->count_bytes($line);
+      $line_bytes_begin += count_bytes($self, ' ' x$prepended_spaces);
+      $bytes_count += $line_bytes_begin + count_bytes($self, $line);
       if ($new_image) {
         $image = $new_image;
         $image_prepended_spaces = $new_image_prepended_spaces;
@@ -1448,7 +1445,7 @@ sub ensure_end_of_line($$)
   my $text = shift;
   my $chomped = chomp ($text);
   if ($chomped) {
-    $self->{'count_context'}->[-1]->{'bytes'} -= $self->count_bytes($chomped);
+    $self->{'count_context'}->[-1]->{'bytes'} -= count_bytes($self, $chomped);
     $self->{'count_context'}->[-1]->{'lines'} -= 1;
   }
   $text .= "\n";
@@ -3225,11 +3222,11 @@ sub _convert($$)
             chomp($cell_text);
             if ($line eq '' and $cell_text ne '') {
               $line = ' ' x $indent_len;
-              $bytes_count += $self->count_bytes($line);
+              $bytes_count += count_bytes($self, $line);
             }
             print STDERR "  C($cell_idx) `$cell_text'\n" if ($self->{'debug'});
             $line .= $cell_text;
-            $bytes_count += $self->count_bytes($cell_text);
+            $bytes_count += count_bytes($self, $cell_text);
             $line_width += Texinfo::Convert::Unicode::string_width($cell_text);
           }
           if (defined($cell_updated_locations->[$cell_idx]->{$line_idx})) {
@@ -3243,24 +3240,24 @@ sub _convert($$)
             if ($line_width < $indent_len + $cell_beginnings[$cell_idx+1]) {
               if ($line eq '') {
                 $line = ' ' x $indent_len;
-                $bytes_count += $self->count_bytes($line);
+                $bytes_count += count_bytes($self, $line);
               }
               my $spaces = ' ' x ($indent_len + $cell_beginnings[$cell_idx+1] - $line_width);
               $line_width += Texinfo::Convert::Unicode::string_width($spaces);
               $line .= $spaces;
-              $bytes_count += $self->count_bytes($spaces);
+              $bytes_count += count_bytes($self, $spaces);
             }
           }
         }
         $line .= "\n";
-        $bytes_count += $self->count_bytes("\n");
+        $bytes_count += count_bytes($self, "\n");
         $result .= $line;
       }
       if ($self->{'format_context'}->[-1]->{'item_command'} eq 'headitem') {
         # at this point cell_beginning is at the beginning of
         # the cell following the end of the table -> full width
         my $line = ' ' x $indent_len . '-' x $cell_beginning . "\n";
-        $bytes_count += $self->count_bytes($line);
+        $bytes_count += count_bytes($self, $line);
         $result .= $line;
         $self->{'empty_lines_count'} = 0;
         $max_lines++;

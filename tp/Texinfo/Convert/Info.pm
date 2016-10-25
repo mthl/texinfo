@@ -85,7 +85,7 @@ sub output($)
   pop @{$self->{'count_context'}};
   return undef unless $self->_create_destination_directory();
 
-  my $header_bytes = $self->count_bytes($header);
+  my $header_bytes = Texinfo::Convert::Plaintext::count_bytes($self, $header);
   my $complete_header_bytes = $header_bytes;
   my $elements = Texinfo::Structuring::split_by_node($root);
 
@@ -134,7 +134,7 @@ sub output($)
         $first_node = 1;
         if (defined($self->{'text_before_first_node'})) {
           $complete_header .= $self->{'text_before_first_node'};
-          $complete_header_bytes += $self->count_bytes($self->{'text_before_first_node'});
+          $complete_header_bytes += Texinfo::Convert::Plaintext::count_bytes($self, $self->{'text_before_first_node'});
         }
         # for the first node, header is prepended, not complete_header
         # as 'text_before_first_node' is already part of the node
