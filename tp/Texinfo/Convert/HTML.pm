@@ -2387,6 +2387,25 @@ sub _convert_heading_command($$$$$)
     }
   }
   $result .= $content if (defined($content));
+
+  if ($cmdname ne 'node'
+      and $self->{'current_node'}
+      and !$self->{'seenmenus'}->{$self->{'current_node'}}) {
+    $self->{'seenmenus'}->{$self->{'current_node'}} = 1;
+    # Generate a menu for this node.
+    my $menu_text;
+    my $parser = Texinfo::Parser::simple_parser();
+
+    my $menu_node = Texinfo::Structuring::menu_of_node ($parser,
+      $command->{'extra'}{'associated_node'});
+    if ($menu_node) {
+      $menu_text = _convert ($self, $menu_node);
+      if ($menu_text) {
+        $result .= $menu_text;
+        $result .= "\n";
+      }
+    }
+  }
   return $result;
 }
 
@@ -2773,6 +2792,9 @@ sub _convert_menu_command($$$$)
   if ($self->_in_preformatted_in_menu()) {
     $begin_row = '<tr><td>';
     $end_row = '</td></tr>';
+  }
+  if ($self->{'current_node'}) {
+    $self->{'seenmenus'}->{$self->{'current_node'}} = 1;
   }
   return $self->_attribute_class('table', 'menu')
     ." border=\"0\" cellspacing=\"0\">${begin_row}\n"
@@ -7551,6 +7573,9 @@ sub _convert($$;$)
         pop @{$self->{'document_context'}};
       }
 
+      if ($root->{'cmdname'} eq 'node') {
+        $self->{'current_node'} = $root;
+      }
       # args are formatted, now format the command itself
       my $result;
       if ($args_formatted) {

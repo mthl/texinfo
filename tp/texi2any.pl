@@ -1309,8 +1309,6 @@ while(@input_files) {
 
   if ($tree_transformations{'complete_tree_nodes_menus'}) {
     Texinfo::Structuring::complete_tree_nodes_menus($parser, $tree);
-  } elsif (!$parser->{'validatemenus'}) {
-    Texinfo::Structuring::add_missing_menus($parser, $tree);
   }
 
   if ($tree_transformations{'regenerate_master_menu'}) {

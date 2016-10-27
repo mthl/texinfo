@@ -609,15 +609,45 @@ $result_errors{'no_menu'} = [];
 
 
 
-$result_converted{'plaintext'}->{'no_menu'} = '1 c1
+$result_converted{'info'}->{'no_menu'} = 'This is , produced from .
+
+
+File: ,  Node: Top,  Up: (dir)
+
+* Menu:
+
+* c1::
+* c2::
+* c3::
+
+
+
+File: ,  Node: c1,  Next: c2,  Up: Top
+
+1 c1
 ****
+
+
+File: ,  Node: c2,  Next: c3,  Prev: c1,  Up: Top
 
 2 c2
 ****
 
+
+File: ,  Node: c3,  Prev: c2,  Up: Top
+
 3 c3
 ****
 
+
+
+Tag Table:
+Node: Top27
+Node: c192
+Node: c2145
+Node: c3209
+
+End Tag Table
 ';
 
 
@@ -671,6 +701,15 @@ ul.no-bullet {list-style: none}
 Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
 <a name="SEC_Top"></a>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="#c1" accesskey="1">c1</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#c2" accesskey="2">c2</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="#c3" accesskey="3">c3</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <hr>
 <a name="c1"></a>

@@ -1174,6 +1174,9 @@ sub _menu($$)
     my $result = "* Menu:\n\n";
     _add_text_count($self, $result);
     _add_lines_count($self, 2);
+    if ($self->{'node'}) {
+      $self->{'seenmenus'}->{$self->{'node'}} = 1;
+    }
     return $result;
   } else {
     return '';
@@ -3348,6 +3351,25 @@ sub _convert($$)
       }
     } elsif (($root->{'cmdname'} eq 'multitable')) {
       $self->{'document_context'}->[-1]->{'in_multitable'}--;
+    } elsif ($root_commands{$root->{'cmdname'}}
+        and $sectioning_commands{$root->{'cmdname'}}
+        and $root->{'cmdname'} ne 'part') {
+      # add menu if missing
+      my $node = $self->{'node'};
+      if ($node) {
+        if (!$self->{'seenmenus'}->{$node}) {
+          $self->{'seenmenus'}->{$node} = 1;
+          my $parser = Texinfo::Parser::simple_parser();
+          my $menu_node = Texinfo::Structuring::menu_of_node ($parser, $node);
+          if ($menu_node) {
+            my $menu_text = $self->_convert ($menu_node);
+            if ($menu_text) {
+              $result .= $menu_text;
+              $result .= "\n";
+            }
+          }
+        }
+      }
     }
  
     # close the contexts and register the cells

@@ -1621,13 +1621,12 @@ sub _new_block_command($$$)
   return $new_block;
 }
 
-sub add_node_menu_if_missing($$)
+sub menu_of_node
 {
   my $self = shift;
   my $node = shift;
-  
-  if (!$node->{'extra'}->{'associated_section'}->{'section_childs'}
-      or $node->{'menus'} and @{$node->{'menus'}}) {
+
+  if (!$node->{'extra'}->{'associated_section'}->{'section_childs'}) {
     return;
   }
 
@@ -1649,9 +1648,28 @@ sub add_node_menu_if_missing($$)
     push @pending, $entry;
   }
 
-  # Add a menu to this node
   my $section = $node->{'extra'}->{'associated_section'};
   my $current_menu = _new_block_command (\@pending, $section, 'menu');
+
+  return $current_menu;
+}
+
+
+sub add_node_menu_if_missing($$)
+{
+  my $self = shift;
+  my $node = shift;
+
+  if ($node->{'menus'} and @{$node->{'menus'}}) {
+    return;
+  }
+
+  my $current_menu = menu_of_node($self, $node);
+  if (!$current_menu) {
+    return;
+  }
+
+  my $section = $node->{'extra'}->{'associated_section'};
   push @{$section->{'contents'}}, $current_menu;
   push @{$section->{'contents'}}, {'type' => 'empty_line',
                                    'text' => "\n", 

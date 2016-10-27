@@ -1,3 +1,27 @@
+2016-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/texi2any.pl: Remove code for calling 'add_missing_menus' if 
+	'validatemenus' is off.  It can add menus incorrectly if all the 
+	menus in the node are not recorded, which could be the case
+	for menus incorrectly nested inside another command.
+
+	* tp/Texinfo/Convert/Structuring.pm (add_node_menu_if_missing)
+	Split out new function 'menu_of_node'.
+
+	* tp/Texinfo/Convert/HTML.pm
+	(_convert_menu_command): Record that a menu has been seen in the
+	current node.
+	(_convert_heading_command): If no menu has been seen in the 
+	node, call 'menu_of_node' and convert the result.
+
+	* tp/Texinfo/Convert/Plaintext.pm
+	(_menu): Record that a menu has been seen in the current node.
+	(_convert): If no menu has been seen in the node, call 
+	menu_of_node and convert the result.
+
+	* tp/t/30sectioning.t (no_menu): Test 'info' format instead of
+	'plaintext'.
+
 2016-10-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm (count_bytes): Call throughout
