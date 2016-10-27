@@ -1,5 +1,13 @@
 2016-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Reinstate change made on 2016-10-08 and reverted on 2016-10-23.
+
+	* tp/Texinfo/Parser.pm (_parse_texi): If 'menu' element is not 
+	directly under a "root element" (@node or sectioning), don't 
+	record it in the list of menus for that node, and issue a warning.
+
+2016-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl: Remove code for calling 'add_missing_menus' if 
 	'validatemenus' is off.  It can add menus incorrectly if all the 
 	menus in the node are not recorded, which could be the case

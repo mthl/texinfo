@@ -4810,7 +4810,12 @@ sub _parse_texi($;$)
                                 $line_nr);
                     }
                   } elsif ($command eq 'menu') {
-                    push @{$self->{'current_node'}->{'menus'}}, $current;
+                    if ($root_commands{$current->{'parent'}->{'cmdname'}}) {
+                      push @{$self->{'current_node'}->{'menus'}}, $current;
+                    } else {
+                      $self->line_warn($self->__("\@menu in invalid context"), 
+                                       $line_nr);
+                    }
                   }
                 } elsif ($command ne 'direntry') {
                   if ($self->{'SHOW_MENU'}) {
