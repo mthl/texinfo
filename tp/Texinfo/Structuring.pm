@@ -1584,7 +1584,11 @@ sub _new_node_menu_entry($$)
   foreach my $arg(@{$entry->{'args'}}) {
     $arg->{'parent'} = $entry;
   }
-  $self->Texinfo::Parser::_register_extra_menu_entry_information($entry);
+  $entry->{'extra'}->{'menu_entry_node'} =
+    Texinfo::Common::parse_node_manual($menu_entry_node);
+
+  $entry->{'extra'}->{'menu_entry_description'} = $description;
+
   return $entry;
 }
 
