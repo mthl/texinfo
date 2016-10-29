@@ -2394,9 +2394,7 @@ sub _convert_heading_command($$$$$)
     $self->{'seenmenus'}->{$self->{'current_node'}} = 1;
     # Generate a menu for this node.
     my $menu_text;
-    my $parser = Texinfo::Parser::simple_parser();
-
-    my $menu_node = Texinfo::Structuring::menu_of_node ($parser,
+    my $menu_node = Texinfo::Structuring::menu_of_node (undef,
       $command->{'extra'}{'associated_node'});
     if ($menu_node) {
       $menu_text = _convert ($self, $menu_node);

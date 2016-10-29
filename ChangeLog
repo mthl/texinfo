@@ -1,5 +1,12 @@
 2016-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Plaintext.pm (_convert),
+	* tp/Texinfo/Convert/HTML.pm (convert_heading_command):
+	Call 'menu_of_node' with first argument undef instead of 
+	creating a new Texinfo::Parser object.
+
+2016-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Structuring.pm (_new_node_menu_entry): Set 
 	'menu_entry_node' and 'menu_entry_separator' extra values on 
 	menu entry directly instead of calling 
