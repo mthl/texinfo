@@ -213,6 +213,15 @@ sub in_align($)
   }
 }
 
+# $COMMAND should be a tree element which is a possible target of a link.
+#
+# Returns a hash that may have these keys set:
+# 'target': A unique string representing the target.
+# 'id': String used as argument to 'name' attribute inside <a>.
+#       Practically the same as 'target' except it can differ
+#       from 'target' depending on whether 'USE_NODE_TARGET' is true.
+# 'node_filename', 'section_filename',
+# 'misc_filename', 'filename'.  Possibly others.
 sub _get_target($$)
 {
   my $self = shift;
@@ -375,6 +384,7 @@ sub command_node($$)
   return undef;
 }
 
+# Return string for linking to $COMMAND with <a href>
 sub command_href($$;$$)
 {
   my $self = shift;
@@ -570,6 +580,7 @@ sub command_text($$;$)
   return undef;
 }
 
+# Return the element in the tree that $LABEL refers to.
 sub label_command($$)
 {
   my $self = shift;
@@ -5057,6 +5068,8 @@ sub _prepare_css($)
   $self->{'css_rule_lines'} = \@css_rule_lines;
 }
 
+# Get the name of a file containing a node, as well as the anchor within
+# that file to link to that node.
 sub _node_id_file($$)
 {
   my $self = shift;

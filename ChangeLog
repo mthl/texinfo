@@ -1,5 +1,10 @@
 2016-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/HTML.pm (_get_target, command_href)
+	(label_command, _node_id_file): Comments added.
+
+2016-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Plaintext.pm (_convert),
 	* tp/Texinfo/Convert/HTML.pm (convert_heading_command):
 	Call 'menu_of_node' with first argument undef instead of 
