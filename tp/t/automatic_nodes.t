@@ -15,7 +15,7 @@ use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use lib 'maintain/lib/libintl-perl/lib/';
 use lib 'maintain/lib/Text-Unidecode/lib/';
 use Texinfo::Parser qw(parse_texi_text);
-use Texinfo::Structuring;
+use Texinfo::Transformations;
 use Texinfo::Convert::Texinfo;
 
 use Data::Dumper;
@@ -31,7 +31,7 @@ sub test_new_node($$$$)
 
   my $parser = Texinfo::Parser::parser();
   my $line = $parser->parse_texi_line ($in);
-  my $node = Texinfo::Structuring::_new_node($parser, $line);
+  my $node = Texinfo::Transformations::_new_node($parser, $line);
   
   my ($texi_result, $normalized);
   if (defined($node)) {
@@ -72,7 +72,7 @@ my $parser = Texinfo::Parser::parser();
 my $tree = $parser->parse_texi_text('@node a node
 ');
 my $line_tree = Texinfo::Parser::parse_texi_line (undef, 'a node');
-my $node = Texinfo::Structuring::_new_node($parser, $line_tree);
+my $node = Texinfo::Transformations::_new_node($parser, $line_tree);
 is ('@node a node 1
 ',  Texinfo::Convert::Texinfo::convert($node), 'duplicate node added');
 #print STDERR Texinfo::Convert::Texinfo::convert($node);
@@ -142,8 +142,7 @@ Text.
 
   $parser = Texinfo::Parser::parser();
   $tree = $parser->parse_texi_text ($sections_text);
-  my ($new_content, $added_nodes)
-   = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
+  my ($new_content, $added_nodes) = Texinfo::Transformations::insert_nodes_for_sectioning_commands($parser, $tree);
   $tree->{'contents'} = $new_content;
   my $result = Texinfo::Convert::Texinfo::convert($tree);
   is ($reference, $result, 'add nodes');
@@ -162,7 +161,7 @@ $tree = $parser->parse_texi_text ('@node Top
 @end menu
 ');
 ($new_content, $added_nodes)
-   = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
+   = Texinfo::Transformations::insert_nodes_for_sectioning_commands($parser, $tree);
 $tree->{'contents'} = $new_content;
 my ($index_names, $merged_indices) = $parser->indices_information();
 my $labels = $parser->labels_information();
@@ -192,7 +191,7 @@ my $text_duplicate_nodes =
 $tree = $parser->parse_texi_text ($text_duplicate_nodes);
 # In fact, here we also check that there is no debugging message...
 ($new_content, $added_nodes)
-   = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
+   = Texinfo::Transformations::insert_nodes_for_sectioning_commands($parser, $tree);
 ($index_names, $merged_indices) = $parser->indices_information();
 $labels = $parser->labels_information();
 is ($labels->{'SEE-ALSO'}, $index_names->{'cp'}->{'index_entries'}->[0]->{'node'},

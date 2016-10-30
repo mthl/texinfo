@@ -784,7 +784,8 @@ sub test($$)
                                                      $index_names);
   }
   if ($parser_options->{'SIMPLE_MENU'}) {
-    $parser->Texinfo::Structuring::set_menus_to_simple_menu();
+    require Texinfo::Transformations;
+    $parser->Texinfo::Transformations::set_menus_to_simple_menu();
   }
 
   my $converted_text = Texinfo::Convert::Text::convert($result, {'TEST' => 1});

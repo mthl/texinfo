@@ -71,6 +71,7 @@ dist_modules_DATA = \
  Texinfo/Common.pm \
  Texinfo/Encoding.pm \
  Texinfo/Structuring.pm \
+ Texinfo/Transformations.pm \
  Texinfo/Documentlanguages.pm
 
 dist_noinst_DATA = \

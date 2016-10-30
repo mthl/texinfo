@@ -1070,6 +1070,7 @@ if ($call_texi2dvi) {
 
 require Texinfo::Parser;
 require Texinfo::Structuring;
+require Texinfo::Transformations;
 # Avoid loading these modules until down here to speed up the case
 # when they are not needed.
 
@@ -1234,7 +1235,7 @@ while(@input_files) {
 
   if ($tree_transformations{'fill_gaps_in_sectioning'}) {
     my ($filled_contents, $added_sections) 
-      = Texinfo::Structuring::fill_gaps_in_sectioning($tree);
+      = Texinfo::Transformations::fill_gaps_in_sectioning($tree);
     if (!defined($filled_contents)) {
       document_warn(__("fill_gaps_in_sectioning transformation return no result. No section?"));
     } else {
@@ -1244,7 +1245,7 @@ while(@input_files) {
   if ((get_conf('SIMPLE_MENU')
        and $formats_table{$format}->{'simple_menu'})
       or $tree_transformations{'simple_menus'}) {
-    $parser->Texinfo::Structuring::set_menus_to_simple_menu();
+    $parser->Texinfo::Transformations::set_menus_to_simple_menu();
   }
 
   if (defined(get_conf('MACRO_EXPAND')) and $file_number == 0) {
@@ -1287,7 +1288,7 @@ while(@input_files) {
 
   if ($tree_transformations{'insert_nodes_for_sectioning_commands'}) {
     my ($modified_contents, $added_nodes)
-     = Texinfo::Structuring::insert_nodes_for_sectioning_commands($parser, $tree);
+     = Texinfo::Transformations::insert_nodes_for_sectioning_commands($parser, $tree);
     if (!defined($modified_contents)) {
       document_warn(__(
        "insert_nodes_for_sectioning_commands transformation return no result. No section?"));
@@ -1308,11 +1309,11 @@ while(@input_files) {
   }
 
   if ($tree_transformations{'complete_tree_nodes_menus'}) {
-    Texinfo::Structuring::complete_tree_nodes_menus($parser, $tree);
+    Texinfo::Transformations::complete_tree_nodes_menus($parser, $tree);
   }
 
   if ($tree_transformations{'regenerate_master_menu'}) {
-    Texinfo::Structuring::regenerate_master_menu($parser);
+    Texinfo::Transformations::regenerate_master_menu($parser);
   }
 
   # this can be done for every format, since information is already gathered

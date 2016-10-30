@@ -15,7 +15,7 @@ use lib 'maintain/lib/Unicode-EastAsianWidth/lib/';
 use lib 'maintain/lib/libintl-perl/lib/';
 use lib 'maintain/lib/Text-Unidecode/lib/';
 use Texinfo::Parser qw(parse_texi_text);
-use Texinfo::Structuring;
+use Texinfo::Transformations;
 use Texinfo::Convert::Texinfo;
 
 use Data::Dumper;
@@ -130,7 +130,7 @@ my $no_detailmenu = _get_in('');
 
 my $parser = Texinfo::Parser::parser();
 my $tree = $parser->parse_texi_text($in_detailmenu);
-my $master_menu = Texinfo::Structuring::new_master_menu($parser);
+my $master_menu = Texinfo::Transformations::new_master_menu($parser);
 my $out = Texinfo::Convert::Texinfo::convert($master_menu);
 
 my $reference = '@detailmenu
@@ -169,13 +169,13 @@ is ($out, $reference, 'master menu');
 
 $parser = Texinfo::Parser::parser();
 $tree = $parser->parse_texi_text($no_detailmenu);
-$master_menu = Texinfo::Structuring::new_master_menu($parser);
+$master_menu = Texinfo::Transformations::new_master_menu($parser);
 $out = Texinfo::Convert::Texinfo::convert($master_menu);
 is ($out, $reference, 'master menu no detailmenu');
 
 $parser = Texinfo::Parser::parser();
 $tree = $parser->parse_texi_text($in_detailmenu);
-Texinfo::Structuring::regenerate_master_menu($parser);
+Texinfo::Transformations::regenerate_master_menu($parser);
 $out = Texinfo::Convert::Texinfo::convert($tree);
 
 is ($out, _get_in($reference), 'regenerate with existing detailmenu');
@@ -184,7 +184,7 @@ is ($out, _get_in($reference), 'regenerate with existing detailmenu');
 
 $parser = Texinfo::Parser::parser();
 $tree = $parser->parse_texi_text($no_detailmenu);
-Texinfo::Structuring::regenerate_master_menu($parser);
+Texinfo::Transformations::regenerate_master_menu($parser);
 $out = Texinfo::Convert::Texinfo::convert($tree);
 
 is ($out, _get_in('',"\n".$reference), 'regenerate with no detailmenu');
