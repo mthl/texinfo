@@ -13,6 +13,9 @@
 	(_new_node_menu_entry, new_node_menu_entry): Rename.
 	(add_missing_menus): Remove, as it isn't used anywhere.
 
+	* Pod-Simple-Texinfo/pod2texi.pl: Call functions in their new 
+	locations.
+
 2016-10-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Structuring.pm (nodes_tree): Use a hash reference
