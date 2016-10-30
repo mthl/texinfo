@@ -34,6 +34,7 @@ use Texinfo::Convert::Texinfo;
 use Texinfo::Convert::TextContent;
 use Texinfo::Common qw(protect_comma_in_tree protect_first_parenthesis
                        protect_hashchar_at_line_beginning);
+use Texinfo::Transformations;
 
 use vars qw(
   @ISA $VERSION
