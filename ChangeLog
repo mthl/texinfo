@@ -1,3 +1,44 @@
+2016-10-30 Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm
+	(_new_sectioning_command_target): Do not set 'id' on target 
+	record: only set 'target'.  Do not set 'contents_id' or
+	'shortcontents_id'.
+	(_prepare_special_elements): Don't call 
+	Texinfo::Config::special_element_target_file_name with $id
+	argument, and don't set 'id' on target record.
+	(_prepare_index_entries): Don't set 'id' on target record 
+	separately from 'target'.
+	(_prepare_contents_element): Don't set 'id' on target records.
+	Don't call Texinfo::Config::special_element_target_file_name
+	with 'id' argument.
+	(_get_target): Comment updated.
+
+	(_node_id_file): Don't call Texinfo::Config::node_target_name with
+	$id argument, and don't include $id in return value.
+	(_set_root_commands_targets_node_files): Don't get $id from 
+	return value of '_node_id_file', and don't set 'id' on target 
+	records for the "root commands".
+
+	(command_target): Check if the element has an 'associated_node',
+	and if so, use it instead.
+	(command_id): Use 'target' value on target record instead of 'id'.
+	(command_contents_id): Remove function.
+	(_default_contents): Call command_contents_target instead.
+	(_element_direction): Do not accept 'id' as the $type argument.
+	(_convert_printindex_command): Pass 'target' to 
+	_element_direction instead of 'id'.
+
+	(_prepare_footnotes): Previously, in the 'targets' record for 
+	the footnote, the anchor name for the footnote was in 'target' 
+	and the anchor name for linking back to the main text was in 
+	'id'.  Now, only store the anchor name for the footnote itself.
+	(_convert_footnote_command): Get the anchor name for linking 
+	back to the main text from the anchor name for the footnote.
+
+	* tp/t/init/only_toc_out.init (special_element_target_file_name):
+	Remove '$id' from both argument list and return value.
+
 2016-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/HTML.pm (_get_target, command_href)
