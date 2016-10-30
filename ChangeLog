@@ -1,4 +1,9 @@
-2016-10-30 Gavin Smith  <gavinsmith0123@gmail.com>
+2016-10-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm: Rename 'ids' hash to 'seen_ids'
+	and use 1 as its values instead of references to tree elements.
+
+2016-10-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/HTML.pm
 	(_new_sectioning_command_target): Do not set 'id' on target 

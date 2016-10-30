@@ -5101,7 +5101,7 @@ sub _new_sectioning_command_target($$)
   my $nr=1;
   my $target = $target_base;
   if ($target ne '') {
-    while ($self->{'ids'}->{$target}) {
+    while ($self->{'seen_ids'}->{$target}) {
       $target = $target_base.'-'.$nr;
       $nr++;
       # Avoid integer overflow
@@ -5118,7 +5118,7 @@ sub _new_sectioning_command_target($$)
       $target_base_contents =~ s/^g_t//;
       $target_contents = 'toc-'.$target_base_contents;
       my $toc_nr = $nr -1;
-      while ($self->{'ids'}->{$target_contents}) {
+      while ($self->{'seen_ids'}->{$target_contents}) {
         $target_contents = 'toc-'.$target_base_contents.'-'.$toc_nr;
         $toc_nr++;
         # Avoid integer overflow
@@ -5129,7 +5129,7 @@ sub _new_sectioning_command_target($$)
       my $target_base_shortcontents = $target_base;
       $target_base_shortcontents =~ s/^g_t//;
       my $stoc_nr = $nr -1;
-      while ($self->{'ids'}->{$target_shortcontents}) {
+      while ($self->{'seen_ids'}->{$target_shortcontents}) {
         $target_shortcontents = 'stoc-'.$target_base_shortcontents
                                    .'-'.$stoc_nr;
         $stoc_nr++;
@@ -5155,7 +5155,7 @@ sub _new_sectioning_command_target($$)
                            'target' => $target,
                            'section_filename' => $filename,
                           };
-  $self->{'ids'}->{$target} = $command;
+  $self->{'seen_ids'}->{$target} = 1;
   if (defined($target_contents)) {
     $self->{'targets'}->{$command}->{'contents_target'} = $target_contents;
   } else {
@@ -5199,7 +5199,7 @@ sub _set_root_commands_targets_node_files($$)
       }
       $self->{'targets'}->{$root_command} = {'target' => $target, 
                                              'node_filename' => $filename};
-      $self->{'ids'}->{$target} = $root_command;
+      $self->{'seen_ids'}->{$target} = 1;
     }
   }
 
@@ -5550,7 +5550,7 @@ sub _prepare_special_elements($$)
     $self->{'targets'}->{$element} = {'target' => $target,
                                       'misc_filename' => $filename,
                                      };
-    $self->{'ids'}->{$target} = $element;
+    $self->{'seen_ids'}->{$target} = 1;
   }
   if ($self->get_conf('FRAMES')) {
     foreach my $type (keys(%{$self->{'frame_pages_file_string'}})) {
@@ -5723,13 +5723,13 @@ sub _prepare_index_entries($)
         my $target_base = "index-" . $region .$normalized_index;
         my $nr=1;
         my $target = $target_base;
-        while ($self->{'ids'}->{$target}) {
+        while ($self->{'seen_ids'}->{$target}) {
           $target = $target_base.'-'.$nr;
           $nr++;
           # Avoid integer overflow
           die if ($nr == 0);
         }
-        $self->{'ids'}->{$target} = $index_entry->{'command'};
+        $self->{'seen_ids'}->{$target} = 1;
         $self->{'targets'}->{$index_entry->{'command'}} = {'target' => $target,
                                                         };
       }
@@ -5748,15 +5748,15 @@ sub _prepare_footnotes($)
       my $nr = $footnote_nr;
       my $footid = $footid_base.$nr;
       my $docid = $docid_base.$nr;
-      while ($self->{'ids'}->{$docid} or $self->{'ids'}->{$footid}) {
+      while ($self->{'seen_ids'}->{$docid} or $self->{'seen_ids'}->{$footid}) {
         $nr++;
         $footid = $footid_base.$nr;
         $docid = $docid_base.$nr;
         # Avoid integer overflow
         die if ($nr == 0);
       }
-      $self->{'ids'}->{$footid} = $footnote;
-      $self->{'ids'}->{$docid} = $footnote;
+      $self->{'seen_ids'}->{$footid} = 1;
+      $self->{'seen_ids'}->{$docid} = 1;
       $self->{'targets'}->{$footnote} = { 'target' => $footid };
       print STDERR "Enter footnote $footnote: target $footid, nr $footnote_nr\n"
        .Texinfo::Convert::Texinfo::convert($footnote)."\n"
