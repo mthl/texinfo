@@ -647,15 +647,10 @@ sub nodes_tree($)
             if ($node->{'node_'.$direction}) {
               if ($self->{'SHOW_MENU'}) {
 
-                if (($node->{'extra'}
-            and $node->{'extra'}{'associated_section'}
-            and $node->{'extra'}{'associated_section'}{'section_up'}{'extra'}
-            and $node->{'extra'}{'associated_section'}{'section_up'}{'extra'}
-                       {'associated_node'}
-            and $node->{'extra'}{'associated_section'}{'section_up'}{'extra'}
-                       {'associated_node'}{'menus'}
-            and @{$node->{'extra'}{'associated_section'}{'section_up'}{'extra'}
-                         {'associated_node'}{'menus'}}
+                if (($section->{'section_up'}{'extra'}
+          and $section->{'section_up'}{'extra'}{'associated_node'}
+          and $section->{'section_up'}{'extra'}{'associated_node'}{'menus'}
+          and @{$section->{'section_up'}{'extra'}{'associated_node'}{'menus'}}
                      or $self->{'validatemenus'})
                     and !$node->{'menu_'.$direction}) {
                   $self->line_warn(sprintf($self->
