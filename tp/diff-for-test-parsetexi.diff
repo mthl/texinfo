@@ -82,9 +82,9 @@ Index: Texinfo/Report.pm
    }
 Index: Texinfo/Structuring.pm
 ===================================================================
---- Texinfo/Structuring.pm	(revision 7473)
+--- Texinfo/Structuring.pm	(revision 7480)
 +++ Texinfo/Structuring.pm	(working copy)
-@@ -517,7 +517,7 @@ sub nodes_tree($)
+@@ -396,7 +396,7 @@ sub nodes_tree($)
    foreach my $node (@{$self->{'nodes'}}) {
      if ($node->{'extra'}->{'normalized'} eq 'Top') {
        $top_node = $node;
@@ -93,7 +93,7 @@ Index: Texinfo/Structuring.pm
                                                      $self->{'TOP_NODE_UP'});
        $top_node_up
          = {'type' => 'top_node_up',
-@@ -763,7 +763,7 @@ sub nodes_tree($)
+@@ -637,7 +637,7 @@ sub nodes_tree($)
                                                'extra' => $node_direction };
                $node->{'node_'.$direction}->{'extra'}->{'top_node_up'} 
                  = $node;
@@ -104,7 +104,7 @@ Index: Texinfo/Structuring.pm
                      $direction_texts{$direction},
 Index: t/test_utils.pl
 ===================================================================
---- t/test_utils.pl	(revision 7422)
+--- t/test_utils.pl	(revision 7480)
 +++ t/test_utils.pl	(working copy)
 @@ -43,7 +43,8 @@ Texinfo::ModulePath::init();
  
@@ -128,7 +128,7 @@ Index: t/test_utils.pl
                                            't/include/',
 Index: texi2any.pl
 ===================================================================
---- texi2any.pl	(revision 7471)
+--- texi2any.pl	(revision 7480)
 +++ texi2any.pl	(working copy)
 @@ -273,8 +273,8 @@ if ($configured_version eq '@' . 'PACKAGE_VERSION@
    } else {
@@ -155,5 +155,5 @@ Index: texi2any.pl
 +print *Parsetexi::{PACKAGE};
 +
  require Texinfo::Structuring;
+ require Texinfo::Transformations;
  # Avoid loading these modules until down here to speed up the case
- # when they are not needed.
