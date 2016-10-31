@@ -154,7 +154,6 @@ sub parser (;$$)
 	# This is used by Texinfo::Report::gdt for substituted values
 	for my $v (keys %{$conf->{'values'}}) {
 	  if (!ref($conf->{'values'}->{$v})) {
-            warn "v is $v", "\n";
 	    store_value ($v, $conf->{'values'}->{$v});
           } elsif (ref($conf->{'values'}->{$v}) eq 'HASH') {
             store_value ($v, "<<HASH VALUE>>");

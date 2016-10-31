@@ -1236,7 +1236,8 @@ value_valid:
                   line++; /* past '}' */
                   input_push_text (strdup (line), line_nr.macro);
                   input_push_text (strdup (value), 0);
-                  retval = GET_A_NEW_LINE;
+                  line += strlen (line);
+                  retval = STILL_MORE_TO_PROCESS;
                 }
               goto funexit;
             }
