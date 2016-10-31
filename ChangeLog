@@ -1,5 +1,10 @@
 2016-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/HTML.pm (_get_target, command_text)
+	(_node_id_file): Comments added or changed.
+
+2016-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* configure.ac (TEXINFO_DTD_VERSION): Bump version to 6.3dev.
 	Although the DTD hasn't changed, the meaning has due to change
 	in 'type' attribute of 'float' element on 2016-10-16.

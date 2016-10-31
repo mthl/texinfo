@@ -220,6 +220,8 @@ sub in_align($)
 #           'name' attribute inside <a>.
 # 'node_filename', 'section_filename',
 # 'misc_filename', 'filename'.  Possibly others.
+#
+# Some functions cache their results in these hashes.
 sub _get_target($$)
 {
   my $self = shift;
@@ -445,6 +447,13 @@ sub command_contents_href($$$$)
   return $href;
 }
 
+# Return text to be used for a hyperlink to $COMMAND.
+# $TYPE refers to the type of value returned from this function:
+#  'text' - return text
+#  'tree' - return a tree
+#  'tree_nonumber' - return tree representing text without a chapter number
+#                    being included.
+#  'string'
 sub command_text($$;$)
 {
   my $self = shift;
@@ -5062,7 +5071,8 @@ sub _prepare_css($)
 }
 
 # Get the name of a file containing a node, as well as the anchor within
-# that file to link to that node.
+# that file to link to that node.  Argument is the 'extra' value on
+# an element hash, or something that looks like it.
 sub _node_id_file($$)
 {
   my $self = shift;
