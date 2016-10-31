@@ -35,7 +35,7 @@ AC_CONFIG_SRCDIR([info/info.c])
 # 3. It may be kept as is in case there were no change in the DTD
 #    between releases.  This is rare, but has happened.
 #
-TEXINFO_DTD_VERSION=6.0
+TEXINFO_DTD_VERSION=6.3dev
 AC_SUBST([TEXINFO_DTD_VERSION])
 
 # Conditional texi2html support.
