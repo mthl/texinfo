@@ -1,5 +1,10 @@
 2016-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/HTML.pm (output): Check for existence of a 
+	string before testing equality.
+
+2016-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Experimental change to reduce use of normalized labels.
 
 	* tp/Texinfo/Parser.pm (_register_label): For @float's only,

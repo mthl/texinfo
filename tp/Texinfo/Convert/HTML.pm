@@ -7077,7 +7077,8 @@ sub output($$)
       # NOTE 'node_filename' is not used for Top, so the other manual
       # must use the same convention to get it right.  We avoid doing
       # also 'node_filename' to avoid unneeded redirection files.
-      if ($node->{'extra'}->{'normalized'} eq 'Top' 
+      if ($node->{'extra'} and $node->{'extra'}->{'normalized'}
+          and $node->{'extra'}->{'normalized'} eq 'Top' 
           and defined($self->get_conf('TOP_NODE_FILE_TARGET'))) {
         my $extension = '';
         $extension = "." . $self->get_conf('NODE_FILE_EXTENSION')
