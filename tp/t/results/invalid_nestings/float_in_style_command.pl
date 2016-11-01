@@ -184,7 +184,6 @@ $result_trees{'float_in_style_command'} = {
         'node_content' => [
           {}
         ],
-        'normalized' => 'B',
         'spaces_after_command' => {},
         'type' => {
           'content' => [
@@ -305,7 +304,6 @@ $result_floats{'float_in_style_command'} = {
             'text_arg' => 'float'
           }
         },
-        'normalized' => 'B',
         'type' => {
           'content' => [
             {

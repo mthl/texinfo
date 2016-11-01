@@ -117,7 +117,6 @@ $result_trees{'empty_listoffloats_with_floats'} = {
         'node_content' => [
           {}
         ],
-        'normalized' => 'label1',
         'spaces_after_command' => {},
         'type' => {
           'normalized' => ''
@@ -278,7 +277,6 @@ $result_trees{'empty_listoffloats_with_floats'} = {
         'node_content' => [
           {}
         ],
-        'normalized' => 'label2',
         'spaces_after_command' => {},
         'type' => {
           'normalized' => ''
@@ -695,7 +693,6 @@ $result_floats{'empty_listoffloats_with_floats'} = {
             'text_arg' => 'float'
           }
         },
-        'normalized' => 'label1',
         'type' => {
           'normalized' => ''
         }
@@ -719,7 +716,6 @@ $result_floats{'empty_listoffloats_with_floats'} = {
             'text_arg' => 'float'
           }
         },
-        'normalized' => 'label2',
         'type' => {
           'normalized' => ''
         }

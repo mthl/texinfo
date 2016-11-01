@@ -570,6 +570,9 @@ sub _node_filename($$)
     } else {
       $filename = $node_info->{'normalized'};
     }
+  } elsif (defined($node_info->{'node_content'})) { 
+    $filename = Texinfo::Convert::NodeNameNormalization::normalize_node (
+             { 'contents' => $node_info->{'node_content'} });
   } else {
     $filename = '';
   }

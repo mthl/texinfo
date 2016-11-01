@@ -1276,8 +1276,11 @@ sub _convert($$;$)
                and $root->{'extra'}->{'enumerate_specification'}) {
         push @$attribute,('first', $root->{'extra'}->{'enumerate_specification'});
       } elsif ($root->{'cmdname'} eq 'float' and $root->{'extra'}) {
-        if (defined($root->{'extra'}->{'normalized'})) {
-          push @$attribute, ('name', $root->{'extra'}->{'normalized'});
+        if (defined($root->{'extra'}->{'node_content'})) {
+          my $normalized =
+            Texinfo::Convert::NodeNameNormalization::normalize_node (
+                   { 'contents' => $root->{'extra'}->{'node_content'} });
+          push @$attribute, ('name', $normalized);
         }
         if ($root->{'extra'}->{'type'} and 
             defined($root->{'extra'}->{'type'}->{'normalized'})) {

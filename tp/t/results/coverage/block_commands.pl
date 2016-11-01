@@ -375,7 +375,6 @@ $result_trees{'block_commands'} = {
         'node_content' => [
           {}
         ],
-        'normalized' => 'b-float',
         'spaces_after_command' => {},
         'type' => {
           'content' => [
@@ -525,7 +524,6 @@ $result_floats{'block_commands'} = {
             'text_arg' => 'float'
           }
         },
-        'normalized' => 'b-float',
         'type' => {
           'content' => [
             {

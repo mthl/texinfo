@@ -1188,7 +1188,7 @@ sub number_floats($)
     my $float_index = 0;
     foreach my $float (@{$floats->{$style}}) {
       next if (!$float->{'extra'} 
-               or !defined($float->{'extra'}->{'normalized'}));
+               or !defined($float->{'extra'}->{'node_content'}));
       $float_index++;
       my $number;
       if ($float->{'extra'}->{'float_section'}) {

@@ -274,7 +274,6 @@ $result_trees{'footnote_in_caption_and_error'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'label',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -453,7 +452,6 @@ $result_floats{'footnote_in_caption_and_error'} = {
             'text_arg' => 'float'
           }
         },
-        'normalized' => 'label',
         'type' => {
           'content' => [
             {

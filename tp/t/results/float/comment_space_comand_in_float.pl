@@ -180,7 +180,6 @@ $result_trees{'comment_space_comand_in_float'} = {
               {},
               {}
             ],
-            'normalized' => 'label--',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -405,7 +404,6 @@ $result_floats{'comment_space_comand_in_float'} = {
             'text_arg' => 'float'
           }
         },
-        'normalized' => 'label--',
         'type' => {
           'content' => [
             {

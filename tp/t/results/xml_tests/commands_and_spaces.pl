@@ -960,7 +960,6 @@ $result_trees{'commands_and_spaces'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'b',
             'shortcaption' => {},
             'spaces_after_command' => {},
             'type' => {
@@ -2809,7 +2808,6 @@ $result_floats{'commands_and_spaces'} = {
             'text_arg' => 'float'
           }
         },
-        'normalized' => 'b',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {

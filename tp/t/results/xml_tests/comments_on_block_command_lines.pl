@@ -2044,7 +2044,6 @@ $result_trees{'comments_on_block_command_lines'} = {
         'node_content' => [
           {}
         ],
-        'normalized' => 'g',
         'spaces_after_command' => {},
         'type' => {
           'content' => [
@@ -2820,7 +2819,6 @@ $result_floats{'comments_on_block_command_lines'} = {
             'text_arg' => 'float'
           }
         },
-        'normalized' => 'g',
         'type' => {
           'content' => [
             {

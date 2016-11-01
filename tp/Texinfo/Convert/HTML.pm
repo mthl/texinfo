@@ -5079,7 +5079,14 @@ sub _node_id_file($$)
   my $node_info = shift;
 
   my $target;
-  my $normalized = $node_info->{'normalized'};
+  my $normalized; 
+  if ($node_info->{'normalized'}) {
+    $normalized = $node_info->{'normalized'};
+  } elsif ($node_info->{'node_content'}) {
+    $normalized = Texinfo::Convert::NodeNameNormalization::normalize_node (
+      { 'contents' => $node_info->{'node_content'} });
+  }
+
   if (defined($normalized)) {
     $target = _normalized_to_id($normalized);
   } else {

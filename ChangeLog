@@ -1,3 +1,21 @@
+2016-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Experimental change to reduce use of normalized labels.
+
+	* tp/Texinfo/Parser.pm (_register_label): For @float's only,
+	do not save the normalized HTML target name.  (This does not
+	gain anything at the moment because the normalized name is still
+	calculated in Parser.pm.)
+	* tp/Texinfo/Structuring.pm (number_floats): Check that 
+	'node_content' value exists for float instead of 'normalized'.
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert) <@float>,
+	* tp/Texinfo/Convert/DocBook.pm (_convert) <@float>: Call
+	Texinfo::Convert::NodeNameNormalization::normalize_node to 
+	compensate for loss of 'normalized' value.
+	* tp/Texinfo/Convert/HTML.pm (_node_id_file),
+	* tp/Texinfo/Convert/Converter.pm (_node_filename): Fall back to
+	use 'node_content' if 'normalized' is not available.
+
 2016-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/HTML.pm (_get_target, command_text)

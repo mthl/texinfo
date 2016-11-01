@@ -607,7 +607,6 @@ $result_trees{'comment_space_command_on_line'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'label',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -970,7 +969,6 @@ $result_floats{'comment_space_command_on_line'} = {
           'extra' => {},
           'level' => 0
         },
-        'normalized' => 'label',
         'type' => {
           'content' => [
             {

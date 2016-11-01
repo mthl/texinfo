@@ -2454,7 +2454,8 @@ sub _register_label($$$$)
                        $self->{'labels'}->{$normalized}->{'line_nr'});
     return 0;
   } else {
-    $current->{'extra'}->{'normalized'} = $normalized;
+    $current->{'extra'}->{'normalized'} = $normalized
+      unless $current->{'cmdname'} eq 'float';
     $current->{'extra'}->{'node_content'} = $label->{'node_content'};
     $self->{'labels'}->{$normalized} = $current;
     return 1;

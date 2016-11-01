@@ -1028,7 +1028,6 @@ $result_trees{'comments_end_lines'} = {
         'node_content' => [
           {}
         ],
-        'normalized' => 'g',
         'spaces_after_command' => {},
         'type' => {
           'content' => [
@@ -1554,7 +1553,6 @@ $result_floats{'comments_end_lines'} = {
             'text_arg' => 'float'
           }
         },
-        'normalized' => 'g',
         'type' => {
           'content' => [
             {

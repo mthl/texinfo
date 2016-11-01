@@ -545,7 +545,6 @@ $result_trees{'punctuation_in_line_commands'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'float-label_0021-After-punc',
             'shortcaption' => {},
             'spaces_after_command' => {},
             'type' => {
@@ -717,7 +716,6 @@ $result_trees{'punctuation_in_line_commands'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'label-with-caption',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -1408,7 +1406,6 @@ $result_floats{'punctuation_in_line_commands'} = {
           'extra' => {},
           'level' => 0
         },
-        'normalized' => 'float-label_0021-After-punc',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
@@ -1444,7 +1441,6 @@ $result_floats{'punctuation_in_line_commands'} = {
           }
         },
         'float_section' => {},
-        'normalized' => 'label-with-caption',
         'type' => {
           'content' => [
             {

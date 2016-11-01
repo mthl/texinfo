@@ -307,7 +307,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'text-with-a-lot-of-features',
             'shortcaption' => {},
             'spaces_after_command' => {},
             'type' => {
@@ -701,7 +700,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'label-but-no-type',
             'shortcaption' => {},
             'spaces_after_command' => {},
             'type' => {
@@ -834,7 +832,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'label-but-no-type-and-no-caption',
             'spaces_after_command' => {},
             'type' => {
               'normalized' => ''
@@ -1291,7 +1288,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'label-but-no-type-2',
             'shortcaption' => {},
             'spaces_after_command' => {},
             'type' => {
@@ -1502,7 +1498,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'warning-in-top',
             'shortcaption' => {},
             'spaces_after_command' => {},
             'type' => {
@@ -2135,7 +2130,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'text-in-chapter',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -2314,7 +2308,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'float-with-a-lot-of-features-and-no-shortcaption',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -2635,7 +2628,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'theoreme',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -2837,7 +2829,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'label-but-no-type-in-chapter',
             'shortcaption' => {},
             'spaces_after_command' => {},
             'type' => {
@@ -3048,7 +3039,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'warning-in-chapter',
             'shortcaption' => {},
             'spaces_after_command' => {},
             'type' => {
@@ -3423,7 +3413,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'text-in-section',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -3852,7 +3841,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'unnumbered-float',
             'shortcaption' => {},
             'spaces_after_command' => {},
             'type' => {
@@ -4049,7 +4037,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'label-but-no-type-in-unnumbered',
             'shortcaption' => {},
             'spaces_after_command' => {},
             'type' => {
@@ -4365,7 +4352,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'Section-within-unnumbered-float',
             'shortcaption' => {},
             'spaces_after_command' => {},
             'type' => {
@@ -4794,7 +4780,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'Chapter-with-subsec-float',
             'shortcaption' => {},
             'spaces_after_command' => {},
             'type' => {
@@ -5102,7 +5087,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'unnumbered-sec-float',
             'shortcaption' => {},
             'spaces_after_command' => {},
             'type' => {
@@ -5305,7 +5289,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'label-but-no-type-in-unnumbered-subsec-in-chapter',
             'shortcaption' => {},
             'spaces_after_command' => {},
             'type' => {
@@ -5615,7 +5598,6 @@ $result_trees{'numbering_captions_listoffloats'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'appendix-sec-float',
             'shortcaption' => {},
             'spaces_after_command' => {},
             'type' => {
@@ -8551,7 +8533,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           'extra' => {},
           'level' => 0
         },
-        'normalized' => 'label-but-no-type',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
@@ -8576,7 +8557,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           }
         },
         'float_section' => {},
-        'normalized' => 'label-but-no-type-and-no-caption',
         'type' => {
           'normalized' => ''
         }
@@ -8647,7 +8627,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           }
         },
         'float_section' => {},
-        'normalized' => 'label-but-no-type-2',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
@@ -8683,7 +8662,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           'level' => 1,
           'number' => 1
         },
-        'normalized' => 'label-but-no-type-in-chapter',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
@@ -8718,7 +8696,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           'extra' => {},
           'level' => 1
         },
-        'normalized' => 'label-but-no-type-in-unnumbered',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
@@ -8753,7 +8730,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           'extra' => {},
           'level' => 2
         },
-        'normalized' => 'label-but-no-type-in-unnumbered-subsec-in-chapter',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
@@ -8790,7 +8766,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           }
         },
         'float_section' => {},
-        'normalized' => 'text-with-a-lot-of-features',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
@@ -8860,7 +8835,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           }
         },
         'float_section' => {},
-        'normalized' => 'text-in-chapter',
         'type' => {
           'content' => [
             {
@@ -8894,7 +8868,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           }
         },
         'float_section' => {},
-        'normalized' => 'float-with-a-lot-of-features-and-no-shortcaption',
         'type' => {
           'content' => [
             {
@@ -8923,7 +8896,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           'level' => 2,
           'number' => '1.1'
         },
-        'normalized' => 'text-in-section',
         'type' => {
           'content' => [
             {
@@ -8953,7 +8925,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           }
         },
         'float_section' => {},
-        'normalized' => 'unnumbered-float',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
@@ -8993,7 +8964,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           'extra' => {},
           'level' => 2
         },
-        'normalized' => 'Section-within-unnumbered-float',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
@@ -9034,7 +9004,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           'level' => 1,
           'number' => 2
         },
-        'normalized' => 'Chapter-with-subsec-float',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
@@ -9070,7 +9039,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           }
         },
         'float_section' => {},
-        'normalized' => 'unnumbered-sec-float',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
@@ -9111,7 +9079,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           'level' => 1,
           'number' => 'A'
         },
-        'normalized' => 'appendix-sec-float',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
@@ -9149,7 +9116,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           }
         },
         'float_section' => {},
-        'normalized' => 'warning-in-top',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
@@ -9185,7 +9151,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           }
         },
         'float_section' => {},
-        'normalized' => 'warning-in-chapter',
         'shortcaption' => {
           'cmdname' => 'shortcaption',
           'extra' => {
@@ -9223,7 +9188,6 @@ $result_floats{'numbering_captions_listoffloats'} = {
           }
         },
         'float_section' => {},
-        'normalized' => 'theoreme',
         'type' => {
           'content' => [
             {

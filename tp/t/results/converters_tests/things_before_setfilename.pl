@@ -443,7 +443,6 @@ $result_trees{'things_before_setfilename'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'float-anchor',
                 'spaces_after_command' => {},
                 'type' => {
                   'normalized' => ''
@@ -674,7 +673,6 @@ $result_trees{'things_before_setfilename'} = {
                 'node_content' => [
                   {}
                 ],
-                'normalized' => 'ta',
                 'spaces_after_command' => {},
                 'type' => {
                   'content' => [
@@ -1700,7 +1698,6 @@ $result_floats{'things_before_setfilename'} = {
             'text_arg' => 'float'
           }
         },
-        'normalized' => 'float-anchor',
         'type' => {
           'normalized' => ''
         }
@@ -1726,7 +1723,6 @@ $result_floats{'things_before_setfilename'} = {
             'text_arg' => 'float'
           }
         },
-        'normalized' => 'ta',
         'type' => {
           'content' => [
             {

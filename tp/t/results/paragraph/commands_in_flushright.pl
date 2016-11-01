@@ -1038,7 +1038,6 @@ $result_trees{'commands_in_flushright'} = {
             'node_content' => [
               {}
             ],
-            'normalized' => 'type',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -1875,7 +1874,6 @@ $result_floats{'commands_in_flushright'} = {
             'text_arg' => 'float'
           }
         },
-        'normalized' => 'type',
         'type' => {
           'content' => [
             {
