@@ -6,12 +6,15 @@
 package Texinfo::ModulePath;
 use File::Spec;
 
-BEGIN {
-
-} # end BEGIN
-
-# If $LIB_DIR and $LIBEXEC_DIR are given, use them to add directories
-# to @INC (likely the installation directories), otherwise use 'top_srcdir'
+# If $LIB_DIR and $LIBEXEC_DIR are given,
+# (likely the installation directories)
+# use them to add directories
+# to @INC.
+#
+# LIB_DIR is for bundled libraries.
+# LIBEXEC_DIR is for XS modules.
+#
+# otherwise use 'top_srcdir'
 # and 'top_builddir' environment variables.
 sub init (;$$) {
   my $lib_dir = shift;
@@ -19,6 +22,8 @@ sub init (;$$) {
 
   if (defined($ENV{'top_builddir'}) and !defined($ENV{'top_srcdir'})) {
     $ENV{'top_srcdir'} = $ENV{'top_builddir'};
+  } elsif (defined($ENV{'top_builddir'}) and !defined($ENV{'top_srcdir'})) {
+    $ENV{'top_builddir'} = $ENV{'top_srcdir'};
   }
    
   if (!$lib_dir) {
@@ -36,7 +41,7 @@ sub init (;$$) {
 
     unshift @INC, $lib_dir;
 
-    # '@USE_EXTERNAL_LIBINTL @ and similar are substituted
+    # '@USE_EXTERNAL_LIBINTL @' and similar are substituted
     if ('@USE_EXTERNAL_LIBINTL@' ne 'yes') {
       unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'libintl-perl', 'lib'));
     }

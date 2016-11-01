@@ -1,5 +1,11 @@
 2016-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/ModulePath.pm.in: Set $top_builddir from 
+	$top_srcdir as well as the other way around.  This is so that
+	XS modules can be used from tests run from the command-line.
+
+2016-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/HTML.pm (output): Check for existence of a 
 	string before testing equality.
 
