@@ -1,5 +1,10 @@
 2016-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Structuring.pm (associate_internal_references): 
+	Remove unused arguments.
+
+2016-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/ModulePath.pm.in: Set $top_builddir from 
 	$top_srcdir as well as the other way around.  This is so that
 	XS modules can be used from tests run from the command-line.

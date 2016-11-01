@@ -1144,14 +1144,14 @@ sub _unsplit($)
   return $root;
 }
 
-# associate internal reference commands like @*ref to labels
-sub associate_internal_references($;$$)
+# For each internal reference command, set the 'label' key in the 'extra' 
+# hash of the reference tree element to the associated labeled tree element.
+sub associate_internal_references($)
 {
   my $self = shift;
-  my $labels = shift;
-  my $refs = shift;
-  $labels = $self->labels_information() if (!defined($labels));
-  $refs = $self->internal_references_information() if (!defined($refs));
+
+  my $labels = $self->labels_information();
+  my $refs = $self->internal_references_information();
   return if (!defined($refs));
   foreach my $ref (@$refs) {
     if (!defined($labels->{$ref->{'extra'}{'node_argument'}{'normalized'}})) {
