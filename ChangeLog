@@ -1,3 +1,12 @@
+2016-11-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/DocBook.pm (_convert) <xref commands>: 
+	Instead of using 'normalized' value to see if the 
+	cross-reference refers to the "Top" node, convert the first 
+	argument to the command (into DocBook) and check if the 
+	resulting string is "Top".  Later on in function, re-use this
+	value for the contents of the <link> element.
+
 2016-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Structuring.pm (associate_internal_references): 

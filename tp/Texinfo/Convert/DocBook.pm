@@ -851,20 +851,36 @@ sub _convert($$;$)
                 and defined($root->{'extra'}->{'brace_command_contents'}->[3])) {
               $manual_file_contents = $root->{'extra'}->{'brace_command_contents'}->[3];
             }
-            my $section_name_contents;
+            my ($section_name_contents, $section_name);
             if (defined($root->{'extra'}->{'brace_command_contents'}->[2])) {
               $section_name_contents 
                 = $root->{'extra'}->{'brace_command_contents'}->[2];
+              $section_name = $self->_convert(
+                     {'contents' => $section_name_contents});
             } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
               $section_name_contents
                 = $root->{'extra'}->{'brace_command_contents'}->[1];
-            } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[0])
-                     and (!$book_contents 
-                          or $root->{'extra'}->{'node_argument'}->{'manual_content'}
-                          or $root->{'extra'}->{'node_argument'}->{'normalized'} ne 'Top')) {
+              $section_name = $self->_convert(
+                     {'contents' => $section_name_contents});
+            } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
               $section_name_contents
                 = $root->{'extra'}->{'brace_command_contents'}->[0];
+              $section_name = $self->_convert(
+                     {'contents' => $section_name_contents});
+
+               if ($book_contents
+                   and !$root->{'extra'}->{'node_argument'}->{'manual_content'}) {
+                 if ($section_name eq 'Top') {
+                   $section_name = undef;
+                   $section_name_contents = undef;
+                 }
+               }
+               # Note: it would be nice to re-use $section_name instead of
+               # having 'gdt' convert $section_name_contents again, but
+               # there isn't a good way to pass an already-converted string 
+               # into 'gdt'.
             }
+
             # external ref
             if ($book_contents or $manual_file_contents) {
               return '' if (!$book_contents);
@@ -907,8 +923,7 @@ sub _convert($$;$)
                   and !$root->{'extra'}->{'node_argument'}->{'manual_content'}) {
                 $linkend = " linkend=\"$root->{'extra'}->{'node_argument'}->{'normalized'}\"";
               }
-              my $argument = "<link${linkend}>".$self->_convert({'contents' => 
-                        $section_name_contents}) ."</link>";
+              my $argument = "<link${linkend}>".$section_name."</link>";
               if ($root->{'cmdname'} eq 'ref') {
                 return $self->_convert(
                         $self->gdt('{title_ref}', {'title_ref' => 
