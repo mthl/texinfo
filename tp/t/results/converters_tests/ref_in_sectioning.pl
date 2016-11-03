@@ -1692,8 +1692,7 @@ $result_trees{'ref_in_sectioning'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'a'
+                  ]
                 }
               },
               'line_nr' => {

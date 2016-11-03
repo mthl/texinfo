@@ -5092,16 +5092,15 @@ sub _parse_texi($;$)
                                         $closed_command), $line_nr);
                 } else {
                   my $parsed_ref_node = _parse_node_manual($ref->{'args'}->[0]);
-                  if (defined($parsed_ref_node)) {
-                    if ($args[3] or $args[4]) {
+                  if (defined $parsed_ref_node) {
+                    if ($closed_command ne 'inforef' 
+                        and !defined($args[3]) and !defined($args[4])
+                        and !$parsed_ref_node->{'manual_content'}) {
+                      push @{$self->{'internal_references'}}, $ref;
+                    } else {
                       delete $parsed_ref_node->{'normalized'};
                     }
                     $ref->{'extra'}->{'node_argument'} = $parsed_ref_node
-                  }
-                  if ($closed_command ne 'inforef' 
-                      and !defined($args[3]) and !defined($args[4])
-                      and !$parsed_ref_node->{'manual_content'}) {
-                    push @{$self->{'internal_references'}}, $ref;
                   }
                 }
                 if (defined($args[1])) {

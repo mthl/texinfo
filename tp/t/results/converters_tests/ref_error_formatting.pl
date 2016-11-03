@@ -3544,8 +3544,7 @@ $result_trees{'ref_error_formatting'} = {
             'node_argument' => {
               'node_content' => [
                 {}
-              ],
-              'normalized' => 'node'
+              ]
             }
           },
           'line_nr' => {},
@@ -3622,8 +3621,7 @@ $result_trees{'ref_error_formatting'} = {
             'node_argument' => {
               'node_content' => [
                 {}
-              ],
-              'normalized' => 'node'
+              ]
             }
           },
           'line_nr' => {},
@@ -3718,8 +3716,7 @@ $result_trees{'ref_error_formatting'} = {
             'node_argument' => {
               'node_content' => [
                 {}
-              ],
-              'normalized' => 'node'
+              ]
             }
           },
           'line_nr' => {},
@@ -3815,8 +3812,7 @@ $result_trees{'ref_error_formatting'} = {
             'node_argument' => {
               'node_content' => [
                 {}
-              ],
-              'normalized' => 'node'
+              ]
             }
           },
           'line_nr' => {},

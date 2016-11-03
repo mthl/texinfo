@@ -531,8 +531,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
                       'parent' => {},
                       'text' => 'Cross References'
                     }
-                  ],
-                  'normalized' => 'Cross-References'
+                  ]
                 }
               },
               'line_nr' => {

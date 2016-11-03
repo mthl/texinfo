@@ -1732,8 +1732,7 @@ $result_trees{'top_in_ref'} = {
                       'parent' => {},
                       'text' => 'Top'
                     }
-                  ],
-                  'normalized' => 'Top'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -1838,8 +1837,7 @@ $result_trees{'top_in_ref'} = {
                       'parent' => {},
                       'text' => 'Top'
                     }
-                  ],
-                  'normalized' => 'Top'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -2185,8 +2183,7 @@ $result_trees{'top_in_ref'} = {
                       'parent' => {},
                       'text' => 'Top'
                     }
-                  ],
-                  'normalized' => 'Top'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -3464,8 +3461,7 @@ $result_trees{'top_in_ref'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'Top'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -3542,8 +3538,7 @@ $result_trees{'top_in_ref'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'Top'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -3638,8 +3633,7 @@ $result_trees{'top_in_ref'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'Top'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -3735,8 +3729,7 @@ $result_trees{'top_in_ref'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'Top'
+                  ]
                 }
               },
               'line_nr' => {},

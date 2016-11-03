@@ -1781,8 +1781,7 @@ $result_trees{'refs_formatting'} = {
                       'parent' => {},
                       'text' => 'anode'
                     }
-                  ],
-                  'normalized' => 'anode'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -1887,8 +1886,7 @@ $result_trees{'refs_formatting'} = {
                       'parent' => {},
                       'text' => 'anode'
                     }
-                  ],
-                  'normalized' => 'anode'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -2234,8 +2232,7 @@ $result_trees{'refs_formatting'} = {
                       'parent' => {},
                       'text' => 'anode'
                     }
-                  ],
-                  'normalized' => 'anode'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -3513,8 +3510,7 @@ $result_trees{'refs_formatting'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'chapter'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -3591,8 +3587,7 @@ $result_trees{'refs_formatting'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'chapter'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -3687,8 +3682,7 @@ $result_trees{'refs_formatting'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'chapter'
+                  ]
                 }
               },
               'line_nr' => {},
@@ -3784,8 +3778,7 @@ $result_trees{'refs_formatting'} = {
                 'node_argument' => {
                   'node_content' => [
                     {}
-                  ],
-                  'normalized' => 'chapter'
+                  ]
                 }
               },
               'line_nr' => {},

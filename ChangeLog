@@ -1,6 +1,12 @@
 2016-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi) <cross-reference commands>:
+	Don't record 'normalized' for @inforef, and for any reference 
+	that is not recorded in the 'internal_references' array.
+
+2016-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <cross-reference commands>:
 	Don't record 'normalized' value on command if cross-reference is
 	to another manual.
 	(_check_empty_node): Check that 'normalized' value is defined.
