@@ -3467,7 +3467,8 @@ sub _check_empty_node($$$$)
     $self->line_error (sprintf($self->__("empty argument in \@%s"),
                 $command), $line_nr);
     return 0;
-  } elsif ($parsed_node->{'normalized'} !~ /[^-]/) {
+  } elsif (defined($parsed_node->{'normalized'})
+             and $parsed_node->{'normalized'} !~ /[^-]/) {
     $self->line_error (sprintf($self->__("empty node name after expansion `%s'"),
                 Texinfo::Convert::Texinfo::convert({'contents' 
                                         => $parsed_node->{'node_content'}})), 
@@ -5091,8 +5092,12 @@ sub _parse_texi($;$)
                                         $closed_command), $line_nr);
                 } else {
                   my $parsed_ref_node = _parse_node_manual($ref->{'args'}->[0]);
-                  $ref->{'extra'}->{'node_argument'} = $parsed_ref_node
-                     if (defined($parsed_ref_node));
+                  if (defined($parsed_ref_node)) {
+                    if ($args[3] or $args[4]) {
+                      delete $parsed_ref_node->{'normalized'};
+                    }
+                    $ref->{'extra'}->{'node_argument'} = $parsed_ref_node
+                  }
                   if ($closed_command ne 'inforef' 
                       and !defined($args[3]) and !defined($args[4])
                       and !$parsed_ref_node->{'manual_content'}) {

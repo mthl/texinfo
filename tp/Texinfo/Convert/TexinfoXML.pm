@@ -1219,11 +1219,18 @@ sub _convert($$;$)
         }
       } elsif ($Texinfo::Common::ref_commands{$root->{'cmdname'}}) {
         if ($root->{'extra'}->{'brace_command_contents'}) {
+          my $normalized;
           if ($root->{'extra'}->{'node_argument'}
-              and $root->{'extra'}->{'node_argument'}->{'node_content'}
-              and defined($root->{'extra'}->{'node_argument'}->{'normalized'})) {
-            push @$attribute, ('label', 
-                 $root->{'extra'}->{'node_argument'}->{'normalized'});
+              and $root->{'extra'}->{'node_argument'}->{'node_content'}) {
+            my $normalized;
+            if (defined($root->{'extra'}->{'node_argument'}->{'normalized'})) {
+              $normalized = $root->{'extra'}->{'node_argument'}->{'normalized'};
+            } else {
+              $normalized = Texinfo::Convert::NodeNameNormalization::normalize_node( {'contents' => $root->{'extra'}->{'node_argument'}->{'node_content'} } );
+            }
+            if ($normalized) {
+              push @$attribute, ('label', $normalized);
+            }
           }
           my $manual;
           my $manual_arg_index = 3;
