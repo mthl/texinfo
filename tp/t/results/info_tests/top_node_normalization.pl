@@ -409,6 +409,15 @@ $result_menus{'top_node_normalization'}{'menu_up'} = $result_menus{'top_node_nor
 
 $result_errors{'top_node_normalization'} = [
   {
+    'error_line' => ':1: warning: for `ToP\', up in menu `ToP\' and up `(dir)\' don\'t match
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'for `ToP\', up in menu `ToP\' and up `(dir)\' don\'t match',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':3: warning: @xref to `TOP\', different from node name `ToP\'
 ',
     'file_name' => '',
@@ -433,15 +442,6 @@ $result_errors{'top_node_normalization'} = [
     'line_nr' => 6,
     'macro' => '',
     'text' => '@menu entry node name `tOP\' different from node name `ToP\'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':1: warning: for `ToP\', up in menu `ToP\' and up `(dir)\' don\'t match
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => 'for `ToP\', up in menu `ToP\' and up `(dir)\' don\'t match',
     'type' => 'warning'
   }
 ];

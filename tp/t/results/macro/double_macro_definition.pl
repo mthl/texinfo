@@ -99,21 +99,21 @@ $result_texts{'double_macro_definition'} = '
 
 $result_errors{'double_macro_definition'} = [
   {
-    'error_line' => ':4: warning: macro `foo\' previously defined
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => 'macro `foo\' previously defined',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':1: warning: here is the previous definition of `foo\'
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => 'here is the previous definition of `foo\'',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':4: warning: macro `foo\' previously defined
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'macro `foo\' previously defined',
     'type' => 'warning'
   }
 ];

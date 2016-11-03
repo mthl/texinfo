@@ -22897,19 +22897,19 @@ in r SC *str* t VAR dfn i:: *note env code option samp command file C-x
 
 $result_converted_errors{'plaintext'}->{'at_commands_in_refs'} = [
   {
-    'error_line' => ':92: warning: could not find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':90: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
     'file_name' => '',
-    'line_nr' => 92,
+    'line_nr' => 90,
     'macro' => '',
     'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning'
   },
   {
-    'error_line' => ':90: warning: could not find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':92: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
     'file_name' => '',
-    'line_nr' => 90,
+    'line_nr' => 92,
     'macro' => '',
     'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning'
@@ -24032,19 +24032,19 @@ $result_converted_errors{'info'}->{'at_commands_in_refs'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':92: warning: could not find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':90: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
     'file_name' => '',
-    'line_nr' => 92,
+    'line_nr' => 90,
     'macro' => '',
     'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning'
   },
   {
-    'error_line' => ':90: warning: could not find @image file `f--ile1.txt\' nor alternate text
+    'error_line' => ':92: warning: could not find @image file `f--ile1.txt\' nor alternate text
 ',
     'file_name' => '',
-    'line_nr' => 90,
+    'line_nr' => 92,
     'macro' => '',
     'text' => 'could not find @image file `f--ile1.txt\' nor alternate text',
     'type' => 'warning'

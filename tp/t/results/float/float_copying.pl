@@ -1804,15 +1804,6 @@ $result_converted_errors{'info'}->{'float_copying'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':19: @anchor output more than once: public domain anchor
-',
-    'file_name' => '',
-    'line_nr' => 19,
-    'macro' => '',
-    'text' => '@anchor output more than once: public domain anchor',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':3: @float output more than once: public domain
 ',
     'file_name' => '',
@@ -1822,6 +1813,24 @@ $result_converted_errors{'info'}->{'float_copying'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':10: @anchor output more than once: caption copying footnote anchor
+',
+    'file_name' => '',
+    'line_nr' => 10,
+    'macro' => '',
+    'text' => '@anchor output more than once: caption copying footnote anchor',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':10: @anchor output more than once: caption copying footnote anchor
+',
+    'file_name' => '',
+    'line_nr' => 10,
+    'macro' => '',
+    'text' => '@anchor output more than once: caption copying footnote anchor',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':19: @anchor output more than once: public domain anchor
 ',
     'file_name' => '',
@@ -1831,21 +1840,12 @@ $result_converted_errors{'info'}->{'float_copying'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':10: @anchor output more than once: caption copying footnote anchor
+    'error_line' => ':19: @anchor output more than once: public domain anchor
 ',
     'file_name' => '',
-    'line_nr' => 10,
+    'line_nr' => 19,
     'macro' => '',
-    'text' => '@anchor output more than once: caption copying footnote anchor',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':10: @anchor output more than once: caption copying footnote anchor
-',
-    'file_name' => '',
-    'line_nr' => 10,
-    'macro' => '',
-    'text' => '@anchor output more than once: caption copying footnote anchor',
+    'text' => '@anchor output more than once: public domain anchor',
     'type' => 'error'
   }
 ];

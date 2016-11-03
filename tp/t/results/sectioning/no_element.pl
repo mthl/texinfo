@@ -1090,21 +1090,21 @@ $result_converted_errors{'info'}->{'no_element'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':21: warning: @float outside of any node
-',
-    'file_name' => '',
-    'line_nr' => 21,
-    'macro' => '',
-    'text' => '@float outside of any node',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':15: warning: @anchor outside of any node
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
     'text' => '@anchor outside of any node',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':21: warning: @float outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 21,
+    'macro' => '',
+    'text' => '@float outside of any node',
     'type' => 'warning'
   }
 ];

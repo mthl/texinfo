@@ -1311,21 +1311,12 @@ $result_menus{'nodename_parentheses'}{'menu_child'}{'menu_up'} = $result_menus{'
 
 $result_errors{'nodename_parentheses'} = [
   {
-    'error_line' => ':22: syntax for an external node used for `(manual)node\'
+    'error_line' => ':1: node `Top\' lacks menu item for `node\' despite being its Up target
 ',
     'file_name' => '',
-    'line_nr' => 22,
+    'line_nr' => 1,
     'macro' => '',
-    'text' => 'syntax for an external node used for `(manual)node\'',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':27: syntax for an external node used for `(manual)anchor\'
-',
-    'file_name' => '',
-    'line_nr' => 27,
-    'macro' => '',
-    'text' => 'syntax for an external node used for `(manual)anchor\'',
+    'text' => 'node `Top\' lacks menu item for `node\' despite being its Up target',
     'type' => 'error'
   },
   {
@@ -1336,6 +1327,15 @@ $result_errors{'nodename_parentheses'} = [
     'macro' => '',
     'text' => 'node next `Other node\' in menu `(manual)node\' and in sectioning `node\' differ',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':22: syntax for an external node used for `(manual)node\'
+',
+    'file_name' => '',
+    'line_nr' => 22,
+    'macro' => '',
+    'text' => 'syntax for an external node used for `(manual)node\'',
+    'type' => 'error'
   },
   {
     'error_line' => ':22: warning: node `Other node\' is prev for `node\' in sectioning but not in menu
@@ -1356,12 +1356,12 @@ $result_errors{'nodename_parentheses'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: node `Top\' lacks menu item for `node\' despite being its Up target
+    'error_line' => ':27: syntax for an external node used for `(manual)anchor\'
 ',
     'file_name' => '',
-    'line_nr' => 1,
+    'line_nr' => 27,
     'macro' => '',
-    'text' => 'node `Top\' lacks menu item for `node\' despite being its Up target',
+    'text' => 'syntax for an external node used for `(manual)anchor\'',
     'type' => 'error'
   }
 ];

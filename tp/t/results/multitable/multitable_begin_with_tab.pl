@@ -414,15 +414,6 @@ it
 
 $result_errors{'multitable_begin_with_tab'} = [
   {
-    'error_line' => ':2: @tab before @item
-',
-    'file_name' => '',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => '@tab before @item',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':1: warning: @multitable has text but no @item
 ',
     'file_name' => '',
@@ -430,6 +421,15 @@ $result_errors{'multitable_begin_with_tab'} = [
     'macro' => '',
     'text' => '@multitable has text but no @item',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':2: @tab before @item
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@tab before @item',
+    'type' => 'error'
   },
   {
     'error_line' => ':6: @tab before @item

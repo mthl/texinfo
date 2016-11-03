@@ -2206,6 +2206,15 @@ $result_menus{'lowered_subsubsection'}{'menu_child'}{'menu_up'} = $result_menus{
 
 $result_errors{'lowered_subsubsection'} = [
   {
+    'error_line' => ':22: node `Subsection\' lacks menu item for `Lowered subsubsection\' despite being its Up target
+',
+    'file_name' => '',
+    'line_nr' => 22,
+    'macro' => '',
+    'text' => 'node `Subsection\' lacks menu item for `Lowered subsubsection\' despite being its Up target',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':34: warning: node `Lowered subsubsection\' is next for `Lowered subsec\' in sectioning but not in menu
 ',
     'file_name' => '',
@@ -2231,15 +2240,6 @@ $result_errors{'lowered_subsubsection'} = [
     'macro' => '',
     'text' => 'node up `Lowered subsubsection\' in menu `Lowered subsec\' and in sectioning `Subsection\' differ',
     'type' => 'warning'
-  },
-  {
-    'error_line' => ':22: node `Subsection\' lacks menu item for `Lowered subsubsection\' despite being its Up target
-',
-    'file_name' => '',
-    'line_nr' => 22,
-    'macro' => '',
-    'text' => 'node `Subsection\' lacks menu item for `Lowered subsubsection\' despite being its Up target',
-    'type' => 'error'
   }
 ];
 

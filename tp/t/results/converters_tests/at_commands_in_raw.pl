@@ -1169,6 +1169,15 @@ $result_errors{'at_commands_in_raw'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':67: @ref reference to nonexistent node `anchor in tex\'
+',
+    'file_name' => '',
+    'line_nr' => 67,
+    'macro' => '',
+    'text' => '@ref reference to nonexistent node `anchor in tex\'',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':70: unknown command `newindex\'
 ',
     'file_name' => '',
@@ -1283,15 +1292,6 @@ $result_errors{'at_commands_in_raw'} = [
     'line_nr' => 85,
     'macro' => '',
     'text' => 'misplaced }',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':67: @ref reference to nonexistent node `anchor in tex\'
-',
-    'file_name' => '',
-    'line_nr' => 67,
-    'macro' => '',
-    'text' => '@ref reference to nonexistent node `anchor in tex\'',
     'type' => 'error'
   }
 ];

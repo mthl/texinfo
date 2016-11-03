@@ -1871,6 +1871,15 @@ $result_errors{'menutextorder'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':6: node `bar\' lacks menu item for `onesub1\' despite being its Up target
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => 'node `bar\' lacks menu item for `onesub1\' despite being its Up target',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':13: warning: node `onesub2\' is next for `onesub1\' in sectioning but not in menu
 ',
     'file_name' => '',
@@ -1887,15 +1896,6 @@ $result_errors{'menutextorder'} = [
     'macro' => '',
     'text' => 'node `bar\' is up for `onesub1\' in sectioning but not in menu',
     'type' => 'warning'
-  },
-  {
-    'error_line' => ':6: node `bar\' lacks menu item for `onesub1\' despite being its Up target
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => 'node `bar\' lacks menu item for `onesub1\' despite being its Up target',
-    'type' => 'error'
   },
   {
     'error_line' => ':16: warning: node `onesub1\' is prev for `onesub2\' in sectioning but not in menu
