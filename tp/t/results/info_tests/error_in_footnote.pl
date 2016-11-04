@@ -324,6 +324,7 @@ $result_trees{'error_in_footnote'} = {
             'node_content' => [
               {}
             ],
+            'normalized' => 'label',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -648,6 +649,7 @@ $result_floats{'error_in_footnote'} = {
             'text_arg' => 'float'
           }
         },
+        'normalized' => 'label',
         'type' => {
           'content' => [
             {

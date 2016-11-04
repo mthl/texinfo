@@ -576,6 +576,7 @@ $result_trees{'double_node_anchor_float'} = {
             'node_content' => [
               {}
             ],
+            'normalized' => 'float1',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -1007,6 +1008,7 @@ $result_floats{'double_node_anchor_float'} = {
             'text_arg' => 'float'
           }
         },
+        'normalized' => 'float1',
         'type' => {
           'content' => [
             {

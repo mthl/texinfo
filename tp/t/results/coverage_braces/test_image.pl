@@ -3304,6 +3304,7 @@ $result_trees{'test_image'} = {
             'node_content' => [
               {}
             ],
+            'normalized' => 'Image-with-commands',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -4619,6 +4620,7 @@ $result_floats{'test_image'} = {
             'text_arg' => 'float'
           }
         },
+        'normalized' => 'Image-with-commands',
         'type' => {
           'content' => [
             {

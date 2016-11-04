@@ -515,6 +515,7 @@ $result_trees{'no_element'} = {
         'node_content' => [
           {}
         ],
+        'normalized' => 'float-anchor',
         'spaces_after_command' => {},
         'type' => {
           'normalized' => ''
@@ -1013,6 +1014,7 @@ $result_floats{'no_element'} = {
             'text_arg' => 'float'
           }
         },
+        'normalized' => 'float-anchor',
         'type' => {
           'normalized' => ''
         }

@@ -221,6 +221,7 @@ $result_trees{'equivalent_labels'} = {
             'node_content' => [
               {}
             ],
+            'normalized' => 'floa',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -652,6 +653,7 @@ $result_menus{'equivalent_labels'} = {
             'text_arg' => 'float'
           }
         },
+        'normalized' => 'floa',
         'type' => {
           'content' => [
             {
@@ -714,6 +716,7 @@ $result_floats{'equivalent_labels'} = {
             'text_arg' => 'float'
           }
         },
+        'normalized' => 'floa',
         'type' => {
           'content' => [
             {

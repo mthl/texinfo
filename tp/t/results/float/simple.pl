@@ -154,6 +154,7 @@ $result_trees{'simple'} = {
         'node_content' => [
           {}
         ],
+        'normalized' => 'Label',
         'spaces_after_command' => {},
         'type' => {
           'content' => [
@@ -241,6 +242,7 @@ $result_floats{'simple'} = {
             'text_arg' => 'float'
           }
         },
+        'normalized' => 'Label',
         'type' => {
           'content' => [
             {

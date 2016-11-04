@@ -338,6 +338,7 @@ $result_trees{'float_with_at_commands'} = {
           {},
           {}
         ],
+        'normalized' => 'premi_00e8re-entr_00e9e',
         'spaces_after_command' => {},
         'type' => {
           'content' => [
@@ -576,6 +577,7 @@ $result_floats{'float_with_at_commands'} = {
             'text_arg' => 'float'
           }
         },
+        'normalized' => 'premi_00e8re-entr_00e9e',
         'type' => {
           'content' => [
             {

@@ -1706,6 +1706,7 @@ $result_trees{'image_inline_or_not'} = {
             'node_content' => [
               {}
             ],
+            'normalized' => 'g',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -2305,6 +2306,7 @@ $result_floats{'image_inline_or_not'} = {
           'level' => 1,
           'number' => 1
         },
+        'normalized' => 'g',
         'type' => {
           'content' => [
             {

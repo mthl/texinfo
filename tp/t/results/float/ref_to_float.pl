@@ -117,6 +117,7 @@ $result_trees{'ref_to_float'} = {
         'node_content' => [
           {}
         ],
+        'normalized' => 'Label1',
         'spaces_after_command' => {},
         'type' => {
           'content' => [
@@ -243,6 +244,7 @@ $result_trees{'ref_to_float'} = {
         'node_content' => [
           {}
         ],
+        'normalized' => 'Label2',
         'spaces_after_command' => {},
         'type' => {
           'normalized' => ''
@@ -473,6 +475,7 @@ $result_floats{'ref_to_float'} = {
             'text_arg' => 'float'
           }
         },
+        'normalized' => 'Label2',
         'type' => {
           'normalized' => ''
         }
@@ -492,6 +495,7 @@ $result_floats{'ref_to_float'} = {
             'text_arg' => 'float'
           }
         },
+        'normalized' => 'Label1',
         'type' => {
           'content' => [
             {

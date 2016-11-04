@@ -183,6 +183,7 @@ $result_trees{'float_long_captions'} = {
             'node_content' => [
               {}
             ],
+            'normalized' => 'text1',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -341,6 +342,7 @@ $result_trees{'float_long_captions'} = {
             'node_content' => [
               {}
             ],
+            'normalized' => 'text2',
             'spaces_after_command' => {},
             'type' => {
               'content' => [
@@ -586,6 +588,7 @@ $result_floats{'float_long_captions'} = {
             'text_arg' => 'float'
           }
         },
+        'normalized' => 'text1',
         'type' => {
           'content' => [
             {
@@ -614,6 +617,7 @@ $result_floats{'float_long_captions'} = {
             'text_arg' => 'float'
           }
         },
+        'normalized' => 'text2',
         'type' => {
           'content' => [
             {

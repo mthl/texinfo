@@ -1,3 +1,9 @@
+2016-11-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_register_label): Remove exemption for
+	recording 'normalized' names for floats.  Reverses change on
+	2016-11-01.
+
 2016-11-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Report.pm (errors): Sort the errors by filename and 

@@ -654,6 +654,7 @@ $result_trees{'float_copying'} = {
                 'node_content' => [
                   {}
                 ],
+                'normalized' => 'public-domain',
                 'spaces_after_command' => {},
                 'type' => {
                   'content' => [
@@ -1630,6 +1631,7 @@ $result_floats{'float_copying'} = {
             'text_arg' => 'float'
           }
         },
+        'normalized' => 'public-domain',
         'type' => {
           'content' => [
             {
