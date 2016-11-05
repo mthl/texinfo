@@ -30,6 +30,7 @@ sub test($$$)
 
   my $parser = Texinfo::Parser::parser();
   my $tree = $parser->parse_texi_text($in);
+  $parser->Texinfo::Structuring::associate_internal_references();
   my $sectioning = $parser->Texinfo::Structuring::sectioning_structure($tree);
   $parser->Texinfo::Transformations::complete_tree_nodes_menus($tree);
   my $texi_result = Texinfo::Convert::Texinfo::convert($tree);

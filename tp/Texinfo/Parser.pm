@@ -3522,6 +3522,7 @@ sub _register_extra_menu_entry_information($$;$)
           $self->line_error ($self->__("empty node name in menu entry"), $line_nr);
         }
       } else {
+        delete $parsed_entry_node->{'normalized'};
         $current->{'extra'}->{'menu_entry_node'} = $parsed_entry_node;
       }
     } elsif ($arg->{'type'} eq 'menu_entry_description') {
@@ -3541,6 +3542,8 @@ sub _enter_menu_entry_node($$$)
   push @{$current->{'args'}}, $description;
   _register_extra_menu_entry_information($self, $current, $line_nr);
   $current->{'line_nr'} = $line_nr;
+  push @{$self->{'internal_references'}}, $current;
+
   $current = $description;
   push @{$current->{'contents'}}, {'type' => 'preformatted',
                                    'parent' => $current,

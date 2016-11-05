@@ -1,3 +1,17 @@
+2016-11-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_register_extra_menu_entry_information):
+	Delete 'normalized' value of 'menu_entry_node' hash.
+	(_enter_menu_entry_node): Add menu entry to 'internal_references'
+	array.
+	* tp/Texinfo/Structuring.pm (associate_internal_references): 
+	Check for menu entries in the 'internal_references' array
+	and set 'normalized' on them.  Shorten code by storing a 
+	reference in a variable.
+	* t/automatic_menus.t,  t/do_master_menu.t: Call 
+	'associate_internal_references' in order to have the 'normalized'
+	values set.
+
 2016-11-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_register_label): Remove exemption for

@@ -1154,24 +1154,43 @@ sub associate_internal_references($)
   my $refs = $self->internal_references_information();
   return if (!defined($refs));
   foreach my $ref (@$refs) {
-    if (!defined($labels->{$ref->{'extra'}{'node_argument'}{'normalized'}})) {
+    my $node_arg;
+    $node_arg = $ref->{'extra'}{'menu_entry_node'};
+    
+    if (defined $node_arg) {
+      if ($node_arg->{'node_content'}) {
+        my $normalized =
+             Texinfo::Convert::NodeNameNormalization::normalize_node(
+                {'contents' => $node_arg->{'node_content'} });
+        $node_arg->{'normalized'} = $normalized
+          if (defined $normalized and $normalized ne '');
+      }
+      next;
+    }
+    
+    $node_arg = $ref->{'extra'}{'node_argument'};
+    if ($node_arg->{'node_content'}) {
+      my $normalized =
+           Texinfo::Convert::NodeNameNormalization::normalize_node(
+              {'contents' => $node_arg->{'node_content'} });
+      $node_arg->{'normalized'} = $normalized
+        if (defined $normalized and $normalized ne '');
+    }
+    if (!defined($labels->{$node_arg->{'normalized'}})) {
       if (!$self->{'info'}->{'novalidate'}) {
         $self->line_error(sprintf($self->__("\@%s reference to nonexistent node `%s'"),
-                $ref->{'cmdname'}, 
-                node_extra_to_texi($ref->{'extra'}->{'node_argument'})), 
-                          $ref->{'line_nr'})
+                $ref->{'cmdname'}, node_extra_to_texi($node_arg)),
+                $ref->{'line_nr'});
       }
     } else {
-      my $node_target 
-        = $labels->{$ref->{'extra'}->{'node_argument'}->{'normalized'}};
+      my $node_target = $labels->{$node_arg->{'normalized'}};
       $ref->{'extra'}->{'label'} = $node_target;
       if (!$self->{'info'}->{'novalidate'}
-          and !_check_node_same_texinfo_code($node_target,
-                                         $ref->{'extra'}->{'node_argument'})) {
+          and !_check_node_same_texinfo_code($node_target, $node_arg)) {
         $self->line_warn(sprintf($self->
            __("\@%s to `%s', different from %s name `%s'"), 
            $ref->{'cmdname'},
-           node_extra_to_texi($ref->{'extra'}->{'node_argument'}),
+           node_extra_to_texi($node_arg),
            $node_target->{'cmdname'},
            node_extra_to_texi($node_target->{'extra'})), $ref->{'line_nr'});
       }
