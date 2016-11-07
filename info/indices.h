@@ -35,6 +35,7 @@ void next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
                   REFERENCE **result, int *found_offset, int *match_offset);
 void report_index_match (int i, int match_offset);
 REFERENCE *look_in_indices (FILE_BUFFER *fb, char *string, int sloppy);
+NODE *create_virtual_index (FILE_BUFFER *file_buffer, char *index_search);
 
 #define APROPOS_NONE \
    N_("No available info files have '%s' in their indices.")

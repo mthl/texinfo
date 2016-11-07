@@ -3689,7 +3689,6 @@ enum
     DUMP_SYS_ERROR
   };
 
-static int write_node_to_stream (NODE *node, FILE *stream);
 static int dump_node_to_stream (char *filename, char *nodename,
 				FILE *stream, int dump_subnodes);
 static void initialize_dumping (void);
@@ -3878,7 +3877,7 @@ DECLARE_INFO_COMMAND (info_print_node,
   debug (1, (_("finished printing node %s"), node_printed_rep (window->node)));
 }
 
-static int
+int
 write_node_to_stream (NODE *node, FILE *stream)
 {
   return fwrite (node->contents, node->nodelen, 1, stream) != 1;

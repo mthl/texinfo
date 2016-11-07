@@ -42,6 +42,10 @@ static char *apropos_search_string = NULL;
    apropos, this puts the user at the node, running info. */
 static int index_search_p = 0;
 
+/* Searching all indices for INDEX_SEARCH_STRING, and display a list of
+   the results. */
+static int virtual_index_p = 0;
+
 /* Non-zero means look for the node which describes the invocation
    and command-line options of the program, and start the info
    session at that node.  */
@@ -117,6 +121,7 @@ int speech_friendly = 0;
 #define RESTORE_OPTION 3
 #define IDXSRCH_OPTION 4
 #define INITFLE_OPTION 5
+#define VIRTIDX_OPTION 6
 
 static struct option long_options[] = {
   { "all", 0, 0, 'a' },
@@ -143,6 +148,7 @@ static struct option long_options[] = {
   { "variable", 1, 0, 'v' },
   { "version", 0, &print_version_p, 1 },
   { "vi-keys", 0, &vi_keys_p, 1 },
+  { "virtual-index", 1, 0, VIRTIDX_OPTION },
   { "where", 0, &print_where_p, 1 },
 #if defined(__MSDOS__) || defined(__MINGW32__)
   { "speech-friendly", 0, &speech_friendly, 1 },
@@ -793,6 +799,9 @@ main (int argc, char *argv[])
           break;
 
           /* User has specified a string to search all indices for. */
+        case VIRTIDX_OPTION:
+          virtual_index_p = 1;
+          /* fall through */
         case IDXSRCH_OPTION:
           index_search_p = 1;
           free (index_search_string);
@@ -968,10 +977,47 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
 
       get_initial_file (&argc, &argv, &error);
 
+      /* If the user specified `--virtual-index=STRING', create
+         and display the menu of results. */
+      if (virtual_index_p && initial_file)
+        {
+          FILE_BUFFER *initial_fb;
+          initial_fb = info_find_file (initial_file);
+          if (initial_fb)
+            {
+              NODE *node = create_virtual_index (initial_fb,
+                                                 index_search_string);
+              if (node)
+                {
+                  if (user_output_filename)
+                    {
+                      FILE *output_stream = 0;
+                      if (strcmp (user_output_filename, "-") == 0)
+                        output_stream = stdout;
+                      else
+                        output_stream = fopen (user_output_filename, "w");
+                      if (output_stream)
+                        {
+                          write_node_to_stream (node, output_stream);
+                        }
+                      exit (0);
+                    }
+                  else
+                    {
+                      initialize_info_session ();
+                      info_set_node_of_window (active_window, node);
+                      info_read_and_dispatch ();
+                      close_info_session ();
+                      exit (0);
+                    }
+                }
+            }
+        }
+
       /* If the user specified `--index-search=STRING', 
          start the info session in the node corresponding
          to what they want. */
-      if (index_search_p && initial_file && !user_output_filename)
+      else if (index_search_p && initial_file && !user_output_filename)
         {
           FILE_BUFFER *initial_fb;
           initial_fb = info_find_file (initial_file);

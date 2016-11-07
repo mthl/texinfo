@@ -1,3 +1,13 @@
+2016-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (create_virtual_index): Split function out from
+	'info_virtual_index'.
+	* info/info.c (virtual_index_p): New variable.
+	(long_options): New option "--virtual-index".
+	(main): If --virtual-index given, then call create_virtual_index
+	and output the result, either in an interactive session or to
+	an output file.
+
 2016-11-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_register_extra_menu_entry_information):
