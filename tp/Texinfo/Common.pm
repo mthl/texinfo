@@ -122,6 +122,7 @@ our %default_parser_state_configuration = (
   'labels'          => {},    # keys are normalized label names, as described
                               # in the `HTML Xref' node.  Value should be
                               # a node/anchor or float in the tree.
+  'targets' => [],            # array of elements used to build 'labels'
   'macros' => {},             # the key is the user-defined macro name.  The 
                               # value is the reference on a macro element 
                               # as obtained by parsing the @macro
@@ -1404,14 +1405,12 @@ sub _count_opened_tree_braces($$)
   return $braces_count;
 }
 
-# $NODE->{'contents'} is the Texinfo fo the specification of a node.
-# Returned object is a hash with three fields:
+# $NODE->{'contents'} is the Texinfo for the specification of a node.
+# Returned object is a hash with two fields:
 #
 #     manual_content - Texinfo tree for a manual name extracted from the
 #                      node specification.
 #     node_content - Texinfo tree for the node name on its own
-#     normalized - a string with the node name after HTML node name
-#                  normalization is applied
 #
 # retrieve a leading manual name in parentheses, if there is one.
 sub parse_node_manual($)
@@ -1464,8 +1463,6 @@ sub parse_node_manual($)
   }
   if (@contents) {
     $result->{'node_content'} = \@contents;
-    $result->{'normalized'} =
-      Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => \@contents});
   }
   return $result;
 }

@@ -234,6 +234,11 @@ sub _new_node($$)
       $content->{'parent'} = $node_arg;
     }
     $parsed_node = Texinfo::Parser::_parse_node_manual($node_arg);
+    if ($parsed_node and $parsed_node->{'node_content'}) {
+      $parsed_node->{'normalized'} =
+      Texinfo::Convert::NodeNameNormalization::normalize_node (
+        { 'contents' => $parsed_node->{'node_content'} });
+    }
     if (!defined($parsed_node) or !$parsed_node->{'node_content'}
         or $parsed_node->{'normalized'} !~ /[^-]/) {
       if ($appended_number) {
@@ -246,6 +251,10 @@ sub _new_node($$)
   }
 
   push @{$node->{'extra'}->{'nodes_manuals'}}, $parsed_node;
+  if ($parsed_node->{'normalized'} ne '') {
+    $self->{'labels'}->{$parsed_node->{'normalized'}} = $node;
+    $node->{'extra'}->{'normalized'} = $parsed_node->{'normalized'};
+  }
   if (!Texinfo::Parser::_register_label($self, $node, $parsed_node, undef)) {
     print STDERR "BUG: node unique, register failed:  $parsed_node->{'normalized'}\n";
   }

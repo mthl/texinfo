@@ -402,6 +402,12 @@ sub nodes_tree($)
         = {'type' => 'top_node_up',
            'extra' => Texinfo::Common::parse_node_manual(
                 {'contents' => $top_node_up_content_tree->{'contents'}})};
+      if ($top_node_up->{'extra'}->{'node_content'}) {
+        $top_node_up->{'extra'}->{'normalized'} =
+        Texinfo::Convert::NodeNameNormalization::normalize_node(
+         {'contents' => $top_node_up->{'extra'}->{'node_content'}}
+        );
+      }
     }
     if ($node->{'menus'}) {
       if ($self->{'SHOW_MENU'} and @{$node->{'menus'}} > 1) {
@@ -1173,8 +1179,7 @@ sub associate_internal_references($)
       my $normalized =
            Texinfo::Convert::NodeNameNormalization::normalize_node(
               {'contents' => $node_arg->{'node_content'} });
-      $node_arg->{'normalized'} = $normalized
-        if (defined $normalized and $normalized ne '');
+      $node_arg->{'normalized'} = $normalized;
     }
     if (!defined($labels->{$node_arg->{'normalized'}})) {
       if (!$self->{'info'}->{'novalidate'}) {
@@ -1271,6 +1276,12 @@ sub new_node_menu_entry($$)
   }
   $entry->{'extra'}->{'menu_entry_node'} =
     Texinfo::Common::parse_node_manual($menu_entry_node);
+  my $content = $entry->{'extra'}->{'menu_entry_node'}->{'node_content'};
+  if ($content) {
+    $entry->{'extra'}->{'menu_entry_node'}->{'normalized'}
+     = Texinfo::Convert::NodeNameNormalization::normalize_node(
+         {'contents' => $content } );
+  }
 
   $entry->{'extra'}->{'menu_entry_description'} = $description;
 

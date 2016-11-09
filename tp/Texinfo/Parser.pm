@@ -989,9 +989,70 @@ sub global_informations($)
   return $self->{'info'};
 }
 
+# Setup labels and nodes info and return labels
 sub labels_information($)
 {
   my $self = shift;
+  if (!%{$self->{'labels'}}
+       and defined $self->{'targets'}) {
+    my %labels = ();
+    for my $target (@{$self->{'targets'}}) {
+      if ($target->{'cmdname'} eq 'node') {
+        if ($target->{'extra'}->{'nodes_manuals'}) {
+          for my $node_manual (@{$target->{'extra'}{'nodes_manuals'}}) {
+            if (defined $node_manual
+                  and defined $node_manual->{'node_content'}) {
+              my $normalized = Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $node_manual->{'node_content'}});
+              $node_manual->{'normalized'} = $normalized;
+            }
+          }
+        }
+      }
+      if (defined $target->{'extra'}->{'node_content'}) {
+        my $normalized = Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $target->{'extra'}->{'node_content'}});
+
+        if ($normalized !~ /[^-]/) {
+          $self->line_error (sprintf($self->__("empty node name after expansion `%s'"),
+                Texinfo::Convert::Texinfo::convert({'contents' 
+                               => $target->{'extra'}->{'node_content'}})), 
+                $target->{'line_nr'});
+          delete $target->{'extra'}->{'node_content'};
+        } else {
+          if (defined $labels{$normalized}) {
+            $self->line_error(
+              sprintf($self->__("\@%s `%s' previously defined"), 
+                         $target->{'cmdname'}, 
+                   Texinfo::Convert::Texinfo::convert({'contents' => 
+                       $target->{'extra'}->{'node_content'}})), 
+                           $target->{'line_nr'});
+            $self->line_error(
+              sprintf($self->__("here is the previous definition as \@%s"),
+                               $labels{$normalized}->{'cmdname'}),
+                       $labels{$normalized}->{'line_nr'});
+            delete $target->{'extra'}->{'node_content'};
+          } else {
+            $labels{$normalized} = $target;
+            $target->{'extra'}->{'normalized'} = $normalized;
+            if ($target->{'cmdname'} eq 'node') {
+              if ($target->{'extra'}
+                  and $target->{'extra'}{'node_argument'}) {
+                $target->{'extra'}{'node_argument'}{'normalized'}
+                  = $normalized;
+              }
+              push @{$self->{'nodes'}}, $target;
+            }
+          }
+        }
+      } else {
+        if ($target->{'cmdname'} eq 'node') {
+          $self->line_error (sprintf($self->__("empty argument in \@%s"),
+                  $target->{'cmdname'}), $target->{'line_nr'});
+          delete $target->{'extra'}->{'node_content'};
+        }
+      }
+    }
+    $self->{'labels'} = \%labels;
+  }
   return $self->{'labels'};
 }
 
@@ -2443,22 +2504,13 @@ sub _register_label($$$$)
   my $line_nr = shift;
   my $normalized = $label->{'normalized'};
 
-  if ($self->{'labels'}->{$normalized}) {
-    $self->line_error(sprintf($self->__("\@%s `%s' previously defined"), 
-                         $current->{'cmdname'}, 
-                   Texinfo::Convert::Texinfo::convert({'contents' => 
-                                                $label->{'node_content'}})), 
-                           $line_nr);
-    $self->line_error(sprintf($self->__("here is the previous definition as \@%s"),
-                               $self->{'labels'}->{$normalized}->{'cmdname'}),
-                       $self->{'labels'}->{$normalized}->{'line_nr'});
-    return 0;
-  } else {
-    $current->{'extra'}->{'normalized'} = $normalized;
+  if ($label->{'node_content'}) {
     $current->{'extra'}->{'node_content'} = $label->{'node_content'};
-    $self->{'labels'}->{$normalized} = $current;
-    return 1;
   }
+
+  push @{$self->{'targets'}}, $current;
+
+  return 1;
 }
 
 sub _non_bracketed_contents($)
@@ -2866,14 +2918,12 @@ sub _end_line($$$)
       $float->{'line_nr'} = $line_nr;
       my $type = '';
       if (@{$float->{'args'}}) {
+        my $float_label;
         if ($float->{'args'}->[1]) {
-          my $float_label = _parse_node_manual($float->{'args'}->[1]);
+          $float_label = _parse_node_manual($float->{'args'}->[1]);
           _check_internal_node($self, $float_label, $line_nr);
-          if (defined($float_label) and $float_label->{'node_content'}
-             and $float_label->{'normalized'} =~ /[^-]/) {
-            _register_label($self, $float, $float_label, $line_nr);
-          }
         }
+        _register_label($self, $float, $float_label, $line_nr);
         _parse_float_type($float);
         $type = $float->{'extra'}->{'type'}->{'normalized'};
       }
@@ -3200,14 +3250,12 @@ sub _end_line($$$)
         my $node = _parse_node_manual($arg);
         push @{$current->{'extra'}->{'nodes_manuals'}}, $node;
       }
-      if (_check_node_label($self, $current->{'extra'}->{'nodes_manuals'}->[0],
-                        $command, $line_nr)) {
-        if (_register_label($self, $current, 
-                    $current->{'extra'}->{'nodes_manuals'}->[0], $line_nr)) {
-          $self->{'current_node'} = $current;
-          push @{$self->{'nodes'}}, $current;
-        }
-      }
+      _check_internal_node($self,
+        $current->{'extra'}->{'nodes_manuals'}->[0],
+        $line_nr);
+     _register_label($self, $current, 
+                   $current->{'extra'}->{'nodes_manuals'}->[0], $line_nr);
+     $self->{'current_node'} = $current;
     } elsif ($command eq 'listoffloats') {
       _parse_float_type($current);
     # handle all the other 'line' commands.  Here just check that they 
@@ -3465,13 +3513,6 @@ sub _check_empty_node($$$$)
   if (!defined($parsed_node) or !$parsed_node->{'node_content'}) {
     $self->line_error (sprintf($self->__("empty argument in \@%s"),
                 $command), $line_nr);
-    return 0;
-  } elsif (defined($parsed_node->{'normalized'})
-             and $parsed_node->{'normalized'} !~ /[^-]/) {
-    $self->line_error (sprintf($self->__("empty node name after expansion `%s'"),
-                Texinfo::Convert::Texinfo::convert({'contents' 
-                                        => $parsed_node->{'node_content'}})), 
-                $line_nr);
     return 0;
   } else {
     return 1;

@@ -1,3 +1,37 @@
+2016-11-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Delay node name normalization until after parser is finished.
+
+	* tp/Texinfo/Common.pm (parse_node_manual): Do not record 
+	'normalized' value in return value.
+	(%default_parser_state_configuration): Add array value 'targets'.
+
+	* tp/Texinfo/Convert/HTML.pm (_parse_node_and_warn_external):
+	Call 'normalize_node' and set 'normalized' value on return value.
+
+	* tp/Texinfo/Parser.pm
+	(_register_label): Store target in 'targets' array, instead
+	of in 'labels' hash.  Don't do any error checking.
+	(labels_information): If 'labels' hash is not already set on 
+	parser object, generate it from the 'targets' array.  Check for 
+	empty and duplicate node names.  Create 'nodes' array.
+	(_check_empty_node): Remove check for empty node name after
+	expansion.
+
+	(_end_line) <@float, @node>: Always call _register_label, with
+	less error checking.  Do not record node in 'nodes' array.
+
+	* tp/Texinfo/Transformations.pm (_new_node): Set 'normalized'
+	for the new node that is being created, and store it in the
+	'labels' hash.
+	* tp/Texinfo/Structuring.pm (nodes_tree)
+	(associate_internal_references, new_node_menu_entry): Set 
+	'normalized' values on tree elements.
+
+	* tp/t/automatic_nodes.t: Add several calls to 
+	'associate_internal_references'.
+	(index entry reassociated duplicate node ignored): Disable test.
+
 2016-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (create_virtual_index): Split function out from

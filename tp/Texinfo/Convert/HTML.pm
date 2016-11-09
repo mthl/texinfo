@@ -7232,6 +7232,11 @@ sub _parse_node_and_warn_external($$$$$)
          $node_texi), $line_nr);
 
     } else {
+      if ($node_normalized_result->{'node_content'}) {
+        $node_normalized_result->{'normalized'} =
+          Texinfo::Convert::NodeNameNormalization::normalize_node(
+            {'contents' => $node_normalized_result->{'node_content'}});
+      }
       return $node_normalized_result;
     }
   }
