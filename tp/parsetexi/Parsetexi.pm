@@ -104,6 +104,7 @@ sub parser (;$$)
 
   my %parser_blanks = (
     'labels' => {},
+    'targets' => [],
     'extra' => {},
     'info' => {},
     'index_names' => {},
@@ -262,6 +263,29 @@ sub _complete_node_list ($$) {
   }
 }
 
+sub get_parser_info {
+  my $self = shift;
+
+  my ($TARGETS, $INTL_XREFS, $FLOATS,
+      $INDEX_NAMES, $ERRORS, $GLOBAL_INFO, $GLOBAL_INFO2);
+
+  $TARGETS = build_label_list ();
+  $INTL_XREFS = build_internal_xref_list ();
+  $FLOATS = build_float_list ();
+  $INDEX_NAMES = build_index_data ();
+  $GLOBAL_INFO = build_global_info ();
+  $GLOBAL_INFO2 = build_global_info2 ();
+
+  $self->{'targets'} = $TARGETS;
+  $self->{'labels'} = {};
+  $self->{'internal_references'} = $INTL_XREFS;
+  $self->{'floats'} = $FLOATS;
+  $self->{'info'} = $GLOBAL_INFO;
+  $self->{'extra'} = $GLOBAL_INFO2;
+
+  _get_errors ($self);
+}
+
 # Replacement for Texinfo::Parser::parse_texi_file (line 835)
 sub parse_texi_file ($$)
 {
@@ -271,23 +295,9 @@ sub parse_texi_file ($$)
 
   $self->{'info'}->{'input_file_name'} = $file_name;
 
-  #print "Getting tree...\n";
-
-  my ($TREE, $LABELS, $INTL_XREFS, $FLOATS,
-      $INDEX_NAMES, $ERRORS, $GLOBAL_INFO, $GLOBAL_INFO2);
   parse_file ($file_name);
-  $TREE = build_texinfo_tree ();
-
-
-  $LABELS = build_label_list ();
-  $FLOATS = build_float_list ();
-
-  $INDEX_NAMES = build_index_data ();
-
-  $GLOBAL_INFO = build_global_info ();
-
-  $GLOBAL_INFO2 = build_global_info2 ();
-
+  my $TREE = build_texinfo_tree ();
+  get_parser_info ($self);
   _complete_node_list ($self, $TREE);
 
   # line 899
@@ -328,9 +338,6 @@ sub parse_texi_file ($$)
 
   ############################################################
 
-  $self->{'info'} = $GLOBAL_INFO;
-  $self->{'extra'} = $GLOBAL_INFO2;
-
   if (defined($self->{'info'}->{'input_encoding_name'})) {
     my ($texinfo_encoding, $perl_encoding, $input_encoding)
       = Texinfo::Encoding::encoding_alias(
@@ -338,12 +345,6 @@ sub parse_texi_file ($$)
     $self->{'info'}->{'input_encoding_name'} = $input_encoding;
   }
   $self->{'info'}->{'input_file_name'} = $file_name;
-
-  $self->{'labels'} = $LABELS;
-  $self->{'internal_references'} = $INTL_XREFS;
-  $self->{'floats'} = $FLOATS;
-
-  _get_errors ($self);
 
   return $TREE;
 }
@@ -393,24 +394,7 @@ sub parse_texi_text($$;$$$$)
       }
     }
 
-    # TODO: This code is duplicated from parse_texi_file
-
-    my $LABELS = build_label_list ();
-    $self->{'labels'} = $LABELS;
-
-    my $INTL_XREFS = build_internal_xref_list ();
-    $self->{'internal_references'} = $INTL_XREFS;
-
-    my $FLOATS = build_float_list ();
-    $self->{'floats'} = $FLOATS;
-
-    my $GLOBAL_INFO = build_global_info ();
-    $self->{'info'} = $GLOBAL_INFO;
-
-    my $GLOBAL_INFO2 = build_global_info2 ();
-    $self->{'extra'} = $GLOBAL_INFO2;
-
-    _get_errors ($self);
+    get_parser_info($self);
     _complete_node_list ($self, $tree);
     return $tree;
 }
@@ -470,9 +454,72 @@ sub global_informations($)
   return $self->{'info'};
 }
 
+# Setup labels and nodes info and return labels
+# FIXME : should share this with the non-XS code.
 sub labels_information($)
 {
   my $self = shift;
+
+  if (!%{$self->{'labels'}}
+       and defined $self->{'targets'}) {
+    my %labels = ();
+    for my $target (@{$self->{'targets'}}) {
+      if ($target->{'cmdname'} eq 'node') {
+        if ($target->{'extra'}->{'nodes_manuals'}) {
+          for my $node_manual (@{$target->{'extra'}{'nodes_manuals'}}) {
+            if (defined $node_manual
+                  and defined $node_manual->{'node_content'}) {
+              my $normalized = Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $node_manual->{'node_content'}});
+              $node_manual->{'normalized'} = $normalized;
+            }
+          }
+        }
+      }
+      if (defined $target->{'extra'}->{'node_content'}) {
+        my $normalized = Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $target->{'extra'}->{'node_content'}});
+
+        if ($normalized !~ /[^-]/) {
+          $self->line_error (sprintf($self->__("empty node name after expansion `%s'"),
+                Texinfo::Convert::Texinfo::convert({'contents' 
+                               => $target->{'extra'}->{'node_content'}})), 
+                $target->{'line_nr'});
+          delete $target->{'extra'}->{'node_content'};
+        } else {
+          if (defined $labels{$normalized}) {
+            $self->line_error(
+              sprintf($self->__("\@%s `%s' previously defined"), 
+                         $target->{'cmdname'}, 
+                   Texinfo::Convert::Texinfo::convert({'contents' => 
+                       $target->{'extra'}->{'node_content'}})), 
+                           $target->{'line_nr'});
+            $self->line_error(
+              sprintf($self->__("here is the previous definition as \@%s"),
+                               $labels{$normalized}->{'cmdname'}),
+                       $labels{$normalized}->{'line_nr'});
+            delete $target->{'extra'}->{'node_content'};
+          } else {
+            $labels{$normalized} = $target;
+            $target->{'extra'}->{'normalized'} = $normalized;
+            if ($target->{'cmdname'} eq 'node') {
+              if ($target->{'extra'}
+                  and $target->{'extra'}{'node_argument'}) {
+                $target->{'extra'}{'node_argument'}{'normalized'}
+                  = $normalized;
+              }
+              push @{$self->{'nodes'}}, $target;
+            }
+          }
+        }
+      } else {
+        if ($target->{'cmdname'} eq 'node') {
+          $self->line_error (sprintf($self->__("empty argument in \@%s"),
+                  $target->{'cmdname'}), $target->{'line_nr'});
+          delete $target->{'extra'}->{'node_content'};
+        }
+      }
+    }
+    $self->{'labels'} = \%labels;
+  }
   return $self->{'labels'};
 }
 

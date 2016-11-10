@@ -76,8 +76,9 @@ enter_menu_entry_node (ELEMENT *current)
   add_to_element_args (current, description);
   register_extra_menu_entry_information (current);
   current->line_nr = line_nr;
-  current = description;
+  remember_internal_xref (current);
 
+  current = description;
   preformatted = new_element (ET_preformatted);
   add_to_element_contents (current, preformatted);
   current = preformatted;
@@ -85,8 +86,8 @@ enter_menu_entry_node (ELEMENT *current)
   return current;
 }
 
-/* Called from 'big_loop' in parser.c.  Return 1 if we find menu syntax to 
-   process, otherwise return 0. */
+/* Called from 'process_remaining_on_line' in parser.c.  Return 1 if we find 
+   menu syntax to process, otherwise return 0. */
 int
 handle_menu (ELEMENT **current_inout, char **line_inout)
 {

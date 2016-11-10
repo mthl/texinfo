@@ -899,12 +899,10 @@ parse_node_manual (ELEMENT *node)
       trimmed->parent_type = route_not_in_tree;
       trimmed->parent = node;
       result->node_content = trimmed;
-      result->normalized = convert_to_normalized (trimmed);
     }
   else
     {
       result->node_content = 0;
-      result->normalized = "";
       destroy_element (trimmed);
     }
   return result;
@@ -1052,14 +1050,7 @@ end_line_starting_block (ELEMENT *current)
               float_label = parse_node_manual (args_child_by_index (f, 1));
               // TODO check_internal_node
 
-              if (float_label
-                  && float_label->node_content
-                  && *(float_label->normalized
-                       + strspn (float_label->normalized, "-")) != '\0')
-                {
-                  /* TODO: Why check if there is a character that isn't '-'? */
-                  register_label (f, float_label);
-                }
+              register_label (f, float_label);
             }
           parse_float_type (f);
           k = lookup_extra_key (f, "type");
@@ -1638,14 +1629,9 @@ end_line_misc_line (ELEMENT *current)
 
       add_extra_node_spec_array (current, "nodes_manuals", nodes_manuals);
 
-      /* Also set 'normalized' here.  The normalized labels are actually 
-         the keys of "labels_information($parser)". */
-      //nodes_manuals[0]->normalized
-       // = convert_to_normalized (nodes_manuals[0]->node_content);
-
-      /*Check that the node name doesn't have a filename element for 
-        referring to an external manual (_check_internal_node), and that it 
-        is not empty (_check_empty_node).  */
+      /*Check that the node name doesn't have a filename element for referring 
+        to an external manual (_check_internal_node), and that it is not empty 
+        (_check_empty_node).  */
       //check_node_label ();
 
       if (nodes_manuals[0])

@@ -1,4 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
+/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -201,7 +201,6 @@ typedef struct {
 typedef struct {
     ELEMENT *manual_content;
     ELEMENT *node_content;
-    char *normalized;
 } NODE_SPEC_EXTRA;
 
 typedef struct {

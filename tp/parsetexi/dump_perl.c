@@ -204,13 +204,6 @@ dump_node_spec (NODE_SPEC_EXTRA *value, TEXT *text)
       text_append (text, "'node_content' => ");
       dump_contents (value->node_content, text);
     }
-  if (value->normalized)
-    {
-      dump_indent (text);
-      text_append (text, "'normalized' => '");
-      dump_string (value->normalized, text);
-      text_append_n (text, "'\n", 2);
-    }
   indent -= 2;
   dump_indent (text);
   text_append_n (text, "},\n", 3);
@@ -539,16 +532,15 @@ dump_labels_information (void)
 {
   int i;
 
-  text_append (&fixup_dump, "\n$LABELS = {\n");
+  text_append (&fixup_dump, "\n$TARGETS = [\n");
 
   for (i = 0; i < labels_number; i++)
     {
-      text_printf (&fixup_dump, "'%s' => ", labels_list[i].label);
       dump_route_to_element (labels_list[i].target, &fixup_dump);
       text_append (&fixup_dump, ",\n");
     }
 
-  text_append (&fixup_dump, "};\n");
+  text_append (&fixup_dump, "];\n");
 }
 
 static void

@@ -178,11 +178,6 @@ build_node_spec (NODE_SPEC_EXTRA *value)
                 build_perl_array (&value->node_content->contents), 0);
     }
 
-  if (value->normalized && *value->normalized)
-    {
-      hv_store (hv, "normalized", strlen ("normalized"),
-                newSVpv (value->normalized, 0), 0);
-    }
   return newRV_inc ((SV *)hv);
 }
 
@@ -567,31 +562,29 @@ build_texinfo_tree (void)
   return Root->hv;
 }
 
-/* Return hash object from label names to target elements.  build_texinfo_tree
-   must be called first. */
-HV *
+/* Return array of target elements.  build_texinfo_tree must
+   be called first. */
+AV *
 build_label_list (void)
 {
-  HV *label_hash;
+  AV *target_array;
   SV *sv;
   int i;
 
   dTHX;
 
-  label_hash = newHV ();
+  target_array = newAV ();
 
   for (i = 0; i < labels_number; i++)
     {
       sv = newRV_inc (labels_list[i].target->hv);
-      hv_store (label_hash,
-                labels_list[i].label, strlen (labels_list[i].label),
-                sv, 0);
+      av_push (target_array, sv);
     }
 
-  return label_hash;
+  return target_array;
 }
 
-SV *
+AV *
 build_internal_xref_list (void)
 {
   AV *list_av;
@@ -608,7 +601,7 @@ build_internal_xref_list (void)
       av_push (list_av, sv);
     }
 
-  return newRV_inc ((SV *) list_av);
+  return list_av;
 }
 
 /* Return hash for list of @float's that appeared in the file. */

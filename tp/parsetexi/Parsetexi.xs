@@ -12,8 +12,8 @@
 #include "macro.h"
 
 HV *build_texinfo_tree (void);
-HV *build_label_list (void);
-SV *build_internal_xref_list (void);
+AV *build_label_list (void);
+AV *build_internal_xref_list (void);
 HV *build_float_list (void);
 HV *build_index_data (void);
 HV *build_global_info (void);
@@ -102,10 +102,10 @@ add_include_directory (filename)
 HV *
 build_texinfo_tree ()
 
-HV *
+AV *
 build_label_list ()
 
-SV *
+AV *
 build_internal_xref_list ()
 
 HV *

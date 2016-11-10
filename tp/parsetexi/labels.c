@@ -31,12 +31,6 @@ size_t labels_space = 0;
 void
 register_label (ELEMENT *current, NODE_SPEC_EXTRA *label)
 {
-  char *normalized = label->normalized;
-
-  // 2494 TODO: check whether previously defined
-
-  if (!normalized)
-    return;
   if (labels_number == labels_space)
     {
       labels_space += 1;
@@ -45,11 +39,9 @@ register_label (ELEMENT *current, NODE_SPEC_EXTRA *label)
       if (!labels_list)
         abort ();
     }
-  labels_list[labels_number].label = normalized;
   labels_list[labels_number++].target = current;
 
   // 2504
-  add_extra_string (current, "normalized", normalized);
   add_extra_contents (current, "node_content", label->node_content);
 }
 
