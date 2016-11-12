@@ -1,3 +1,7 @@
+2016-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* convert.c (convert_to_normalized): Remove.
+
 2016-09-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* input.c (convert_to_utf8): Start on converting the character 

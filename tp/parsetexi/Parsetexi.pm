@@ -241,10 +241,8 @@ sub _find_menus_of_node ($) {
   }
 }
 
-# Loop through the top-level elements in the tree, collecting node 
-# elements into $ROOT->{'nodes').  This is used in 
-# Structuring.pm:nodes_tree.
-sub _complete_node_list ($$) {
+# For each node, call _find_menus_of_node.
+sub _complete_node_menus ($$) {
   my $self = shift;
   my $root = shift;
 
@@ -253,11 +251,6 @@ sub _complete_node_list ($$) {
   }
   foreach my $child (@{$root->{'contents'}}) {
     if ($child->{'cmdname'} and $child->{'cmdname'} eq 'node') {
-      push $self->{'nodes'}, $child;
-
-      $child->{'extra'}->{'normalized'} = 
-	$child->{'extra'}{'nodes_manuals'}[0]{'normalized'};
-
       _find_menus_of_node ($child);
     }
   }
@@ -298,7 +291,7 @@ sub parse_texi_file ($$)
   parse_file ($file_name);
   my $TREE = build_texinfo_tree ();
   get_parser_info ($self);
-  _complete_node_list ($self, $TREE);
+  _complete_node_menus ($self, $TREE);
 
   # line 899
   my $text_root;
@@ -395,7 +388,7 @@ sub parse_texi_text($$;$$$$)
     }
 
     get_parser_info($self);
-    _complete_node_list ($self, $tree);
+    _complete_node_menus ($self, $tree);
     return $tree;
 }
 
