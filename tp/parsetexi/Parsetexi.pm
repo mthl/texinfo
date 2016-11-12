@@ -26,6 +26,7 @@ use warnings;
 require Exporter;
 
 use Texinfo::Encoding;
+use Texinfo::Convert::NodeNameNormalization;
 
 our @ISA = qw(Exporter DynaLoader Texinfo::Report);
 # Items to export into callers namespace by default. Note: do not export

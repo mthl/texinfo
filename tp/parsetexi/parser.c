@@ -403,8 +403,9 @@ abort_empty_line (ELEMENT **current_inout, char *additional_text)
           || last_child->type == ET_empty_spaces_before_argument
           || last_child->type == ET_empty_spaces_after_close_brace))
     {
-      debug ("ABORT EMPTY additional text |%s| "
+      debug ("ABORT EMPTY %s additional text |%s| "
              "current |%s|",
+             element_type_name(last_child),
              additional_text,
              last_child->text.text);
       text_append (&last_child->text, additional_text);

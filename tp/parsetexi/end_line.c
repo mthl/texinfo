@@ -1072,7 +1072,8 @@ end_line_starting_block (ELEMENT *current)
         add_extra_element (f, "float_section", current_section);
     }
   current = current->parent; //2965
-  //counter_pop (&count_remaining_args);
+  if (counter_value (&count_remaining_args, current) != -1)
+    counter_pop (&count_remaining_args);
 
   /* Don't consider empty argument of block @-command as argument,
      reparent them as contents. */
