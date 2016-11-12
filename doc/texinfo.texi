@@ -7165,7 +7165,7 @@ Examples are often, logically speaking, ``in the middle'' of a
 paragraph, and the text that continues afterwards should not be
 indented, as in the example above.  The @code{@@noindent} command
 prevents a piece of text from being indented as if it were a new
-paragraph (@pxref{@code{@@noindent}}.
+paragraph (@pxref{@code{@@noindent}}).
 
 If you want to embed code fragments within sentences, instead of
 displaying them, use the @code{@@code} command or its relatives
@@ -7600,7 +7600,7 @@ Info, you'll see the @code{@@cartouche} had no effect):
 @cartouche
 @example
 % pwd
-/usr/local/info
+/usr/local/share/emacs
 @end example
 @end cartouche
 
@@ -8025,7 +8025,7 @@ with each one, such as a list of definitions.
 
 Write the @code{@@table} command at the beginning of a line, after a
 blank line, and follow it on the same line with an argument that is an
-`indicating'' command, such as @code{@@code}, @code{@@samp},
+`indicating' command, such as @code{@@code}, @code{@@samp},
 @code{@@var}, @code{@@option}, or @code{@@kbd} (@pxref{Indicating}).
 This command will be applied to the text in the first column.  For 
 example, @code{@@table @@code} will cause the text in the first column 
@@ -12616,7 +12616,7 @@ that for functions except that variables do not take arguments.
 @cindex Internationalization
 Texinfo has some support for writing in languages other than English,
 although this area still needs considerable work.  (If you are
-yourself helping to translate the fixed strings written to documents,
+the one helping to translate the fixed strings written to documents,
 @pxref{Internationalization of Document Strings}.)
 
 For a list of the various accented and special characters Texinfo
@@ -12659,7 +12659,7 @@ Germany).
 @cindex Document strings, translation of
 For Info and other online output, this command changes the translation
 of various @dfn{document strings} such as ``see'' in cross-references
-(@pxref{Cross References}), ``Function' in defuns (@pxref{Definition
+(@pxref{Cross References}), ``Function'' in defuns (@pxref{Definition
 Commands}), and so on.  Some strings, such as ``Node:'', ``Next:'',
 ``Menu:'', etc., are keywords in Info output, so are not translated
 there; they are translated in other output formats.
@@ -13576,10 +13576,10 @@ Good, @@samp@{@@@@node@} is defined.
 
 @noindent will output the expected `Good, @samp{@@node} is defined.'.
 
-This conditional will also consider true any new commands defined by
+This conditional will also consider any new commands defined by
 the document via @code{@@macro}, @code{@@alias},
 @code{@@definfoenclose}, and @code{@@def@r{(}code@r{)}index}
-(@pxref{Defining New Texinfo Commands}).  Caveat: the @TeX{}
+(@pxref{Defining New Texinfo Commands}) to be true.  Caveat: the @TeX{}
 implementation reports internal @TeX{} commands, in addition to all
 the Texinfo commands, as being ``defined''; the @code{makeinfo}
 implementation is reliable in this regard, however.
@@ -14869,7 +14869,7 @@ instead of DVI (@pxref{PDF Output}), by running @command{pdftex}
 instead of @command{tex}.  Alternatively, the command
 @command{texi2pdf} is an abbreviation for running @samp{texi2dvi
 --pdf}.  The command @command{pdftexi2dvi} is also provided as a
-convenience for AUC-@TeX{} (@pxref{Top,,, auctex, AUC-@TeX{}}, as it
+convenience for AUC-@TeX{} (@pxref{Top,,, auctex, AUC-@TeX{}}), as it
 prefers to merely prepend @samp{pdf} to DVI producing tools to have
 PDF producing tools.
 
@@ -16022,7 +16022,7 @@ turn.  If an input file name is @samp{-}, standard input is read.
 @cindex @code{texi2any} options
 @cindex Options for @code{texi2any}
 
-The @command{texi2any} program accept many options.  Perhaps the
+The @command{texi2any} program accepts many options.  Perhaps the
 most basic are those that change the output format.  By default,
 @command{texi2any} outputs Info.
 
@@ -18682,7 +18682,7 @@ To achieve maximum portability and accessibility among browsers (both
 graphical and text-based), systems, and users, the HTML output is
 intentionally quite plain and generic.  It has always been our goal
 for users to be able to customize the output to their wishes via CSS
-(@pxref{HTML CSS}) or other means (@pxref{Customization Variables}.
+(@pxref{HTML CSS}) or other means (@pxref{Customization Variables}).
 If you cannot accomplish a reasonable customization, feel free to
 report that.
 

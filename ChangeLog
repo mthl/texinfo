@@ -1,5 +1,22 @@
 2016-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (@example): Add missing ) after @pxref.
+	(@cartouche): Make example and output match.
+	(@table): Remove superfluous closing quote (`indicating'' to 
+	`indicating').
+	(Internationalization): Change the word "yourself" to "the one".
+	(@documentlanguage): Add missing closing quote.
+	(Testing for Texinfo Commands): Change "consider true X" to
+	"consider X to be true".
+	(Format with texi2dvi): Add missing ) after @pxref.
+	(Invoking texi2any): Change "texi2any accept" to "texi2any 
+	accepts".
+	(HTML Translation): Add missing ) after @pxref.
+
+	All reports by Wensheng Xie <xiewensheng@gmail.com>.
+
+2016-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Top): In @detailmenu for Info format 
 	description, refer to nodes with their names instead of shorter 
 	labels.  This is so that, for example, "info texinfo printindex"
