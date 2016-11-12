@@ -1,3 +1,13 @@
+2016-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Top): In @detailmenu for Info format 
+	description, refer to nodes with their names instead of shorter 
+	labels.  This is so that, for example, "info texinfo printindex"
+	goes to the index entry for "printindex" instead of the
+	"Info Format Printindex" node.
+	(Other Customization Variables): Remove 
+	'TEXINFO_COLUMN_FOR_DESCRIPTION' and 'indent_menu_descriptions'.
+
 2016-11-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Delay node name normalization until after parser is finished.

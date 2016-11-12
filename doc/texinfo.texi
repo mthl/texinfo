@@ -707,10 +707,10 @@ Info Format General Layout
 
 Info Format Text Constructs
 
-* Menu:  Info Format Menu.
-* Image: Info Format Image.
-* Printindex: Info Format Printindex.
-* Xref:  Info Format Cross Reference.
+* Info Format Menu::
+* Info Format Image::
+* Info Format Printindex::
+* Info Format Cross Reference::
 
 @end detailmenu
 @end menu
@@ -17414,11 +17414,6 @@ Name of the command used to produce PostScript, PDF, and DVI; default
 Generate HTML and try to be as compatible as possible with
 @command{texi2html}; default false.
 
-@item TEXINFO_COLUMN_FOR_DESCRIPTION
-Used with the @code{indent_menu_descriptions} tree transformation,
-described below; default 32 (matching
-@code{texinfo-column-for-description} in Emacs)).
-
 @item TEXINFO_DTD_VERSION
 For XML@.  Version of the DTD used in the XML output preamble.  The
 default is set based on a variable in @file{configure.ac}.
@@ -17469,10 +17464,6 @@ any level, based on the sectioning tree.
 Adds empty @code{@@unnumbered...} sections in a tree to fill gaps in
 sectioning.  For example, an @code{@@unnumberedsec} will be inserted
 if a @code{@@chapter} is followed by a @code{@@subsection}.
-
-@item indent_menu_descriptions
-Reformat menus so that descriptions start at column
-@code{TEXINFO_COLUMN_DESCRIPTION}.
 
 @item insert_nodes_for_sectioning_commands
 Insert nodes for sectioning commands lacking a corresponding node.
@@ -23922,13 +23913,6 @@ described next.
 @cindex text constructs, Info format
 
 These special Info constructs can appear within the text of a node.
-
-@menu
-* Menu:  Info Format Menu.
-* Image: Info Format Image.
-* Printindex: Info Format Printindex.
-* Xref:  Info Format Cross Reference.
-@end menu
 
 
 @node Info Format Menu
