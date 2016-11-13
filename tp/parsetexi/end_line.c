@@ -28,6 +28,37 @@
 #include "indices.h"
 #include "errors.h"
 
+void
+check_internal_node (NODE_SPEC_EXTRA *nse)
+{
+  if (nse && nse->manual_content
+      && nse->manual_content->contents.number > 0)
+    {
+      line_error ("syntax for an external node used for `%s'",
+                  node_extra_to_texi (nse));
+    }
+}
+
+int
+check_empty_node (NODE_SPEC_EXTRA *nse,
+                  enum command_id cmd)
+{
+  if (!nse || !nse->node_content || nse->node_content->contents.number == 0)
+    {
+      line_error ("empty argument in @%s", command_name(cmd));
+    }
+  else
+    return 1;
+}
+
+int
+check_node_label (NODE_SPEC_EXTRA *nse,
+                  enum command_id cmd)
+{
+  check_internal_node (nse);
+  return check_empty_node (nse, cmd);
+}
+
 static int
 is_decimal_number (char *string)
 {
@@ -1048,7 +1079,7 @@ end_line_starting_block (ELEMENT *current)
               // 2950
               NODE_SPEC_EXTRA *float_label;
               float_label = parse_node_manual (args_child_by_index (f, 1));
-              // TODO check_internal_node
+              check_internal_node (float_label);
 
               register_label (f, float_label);
             }
@@ -1630,19 +1661,12 @@ end_line_misc_line (ELEMENT *current)
 
       add_extra_node_spec_array (current, "nodes_manuals", nodes_manuals);
 
-      /*Check that the node name doesn't have a filename element for referring 
-        to an external manual (_check_internal_node), and that it is not empty 
-        (_check_empty_node).  */
-      //check_node_label ();
+      check_internal_node (nodes_manuals[0]);
 
       if (nodes_manuals[0])
         {
           add_extra_contents (current, "node_content",
                               nodes_manuals[0]->node_content);
-
-          /* This sets 'node_content' and 'normalized' on the node, among
-             other things (which were already set in parse_node_manual).
-             Are we normalizing the name twice? */
           register_label (current, nodes_manuals[0]);
         }
 

@@ -293,7 +293,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           NODE_SPEC_EXTRA *parsed_anchor;
           current->parent->line_nr = line_nr;
           parsed_anchor = parse_node_manual (current);
-          if (1) // TODO check_node_label ()
+          if (check_node_label (parsed_anchor, CM_anchor))
             {
               register_label (current->parent, parsed_anchor);
               if (current_region ())
