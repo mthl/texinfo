@@ -2178,7 +2178,11 @@ sub _abort_empty_line($$;$)
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command'
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_before_argument'
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_after_close_brace')) {
-    print STDERR "ABORT EMPTY additional text |$additional_text|, current |$current->{'contents'}->[-1]->{'text'}|\n" if ($self->{'DEBUG'});
+    print STDERR "ABORT EMPTY "
+    .$current->{'contents'}->[-1]->{'type'}
+    ." additional text |$additional_text|,"
+    ." current |$current->{'contents'}->[-1]->{'text'}|\n"
+      if ($self->{'DEBUG'});
     $current->{'contents'}->[-1]->{'text'} .= $additional_text;
     # remove empty 'empty*before'.
     if ($current->{'contents'}->[-1]->{'text'} eq '') {
@@ -2270,13 +2274,11 @@ sub _isolate_last_space($$;$)
 }
 
 # $NODE->{'contents'} is the Texinfo fo the specification of a node.
-# Returned object is a hash with three fields:
+# Returned object is a hash with two fields:
 #
 #     manual_content - Texinfo tree for a manual name extracted from the
 #                      node specification.
 #     node_content - Texinfo tree for the node name on its own
-#     normalized - a string with the node name after HTML node name
-#                  normalization is applied
 #
 # retrieve a leading manual name in parentheses, if there is one.
 sub _parse_node_manual($)
@@ -5140,8 +5142,6 @@ sub _parse_texi($;$)
                         and !defined($args[3]) and !defined($args[4])
                         and !$parsed_ref_node->{'manual_content'}) {
                       push @{$self->{'internal_references'}}, $ref;
-                    } else {
-                      delete $parsed_ref_node->{'normalized'};
                     }
                     $ref->{'extra'}->{'node_argument'} = $parsed_ref_node
                   }

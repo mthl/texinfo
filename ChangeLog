@@ -1,3 +1,13 @@
+2016-11-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_abort_empty_line): Include element type
+	in "ABORT EMPTY" debugging message.
+	(_parse_node_manual): Update comment.
+	(_parse_texi): Remove unnecessary deletion of 'normalized'
+	value.
+	* tp/Texinfo/Structuring.pm (nodes_tree): Create a new parser 
+	object to parse the "TOP_NODE_UP" string.
+
 2016-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (@example): Add missing ) after @pxref.

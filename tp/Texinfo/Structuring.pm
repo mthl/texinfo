@@ -396,8 +396,9 @@ sub nodes_tree($)
   foreach my $node (@{$self->{'nodes'}}) {
     if ($node->{'extra'}->{'normalized'} eq 'Top') {
       $top_node = $node;
-      my $top_node_up_content_tree = Texinfo::Parser::parse_texi_line($self, 
-                                                    $self->{'TOP_NODE_UP'});
+      my $parser = Texinfo::Parser::simple_parser ($self->{'conf'});
+      my $top_node_up_content_tree
+                         = $parser->parse_texi_line($self->{'TOP_NODE_UP'});
       $top_node_up
         = {'type' => 'top_node_up',
            'extra' => Texinfo::Common::parse_node_manual(
