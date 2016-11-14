@@ -98,6 +98,40 @@ is_whole_number (char *string)
   return 0;
 }
 
+/* Return end of argument before comment and whitespace. */
+char *
+skip_comment (char *q)
+{
+  char *q1;
+  while (1)
+    {
+      q1 = strstr (q, "@c");
+      if (!q1)
+        {
+          q = q + strlen (q);
+          break;
+        }
+      q = q1 + 2;
+      if (!memcmp (q, "omment", 6))
+        q += 6;
+
+      /* TeX control sequence name ends at an escape character or
+         whitespace. */
+      if (*q == '@' || strchr (whitespace_chars, *q))
+        {
+          q = q1;
+          break;
+        }
+    }
+
+  /* q is now either at the end of the string, or at the start of a comment.
+     Find the start of any trailing whitespace. */
+  while (strchr (whitespace_chars, q[-1]))
+    q--;
+
+  return q;
+}
+
 /* Process argument to special line command. */
 // 5377
 ELEMENT *
@@ -112,7 +146,7 @@ parse_special_misc_command (char *line, enum command_id cmd
 
   ELEMENT *args = new_element (ET_NONE);
   char *p = 0, *q = 0, *r = 0;
-  char *value;
+  char *value, *remaining = 0;;
 
   switch (cmd)
     {
@@ -138,19 +172,11 @@ parse_special_misc_command (char *line, enum command_id cmd
 
       ADD_ARG(p, q - p); /* name */
 
-      /* TODO: Skip optional comment. */
-      /* This is strange - how can you have a comment in the middle
-         of a line?  And what does "@comment@" mean?
-         I guess this is following TeX syntax in ending reading a control
-         sequence name at an escape character. */
 
       p = q + strspn (q, whitespace_chars);
       /* Actually, whitespace characters except form feed. */
 
-      /* Find trailing whitespace on line. */
-      q = strchr (p, '\0');
-      while (strchr (whitespace_chars, q[-1]))
-        q--;
+      q = skip_comment (p);
 
       if (q >= p)
         ADD_ARG(p, q - p); /* value */
@@ -228,6 +254,7 @@ unmacro_badname:
       global_clickstyle = value;
       if (!memcmp (q, "{}", 2))
         q += 2;
+      remaining = q;
       /* TODO: check comment */
       break;
 clickstyle_invalid:
@@ -238,13 +265,13 @@ clickstyle_invalid:
       abort ();
     }
 
-  if (q)
+  if (remaining)
     {
-      q += strspn (q, whitespace_chars);
-      if (*q)
+      remaining += strspn (remaining, whitespace_chars);
+      if (*remaining)
         {
           line_warn ("remaining argument on @%s line: %s",
-                     command_name(cmd), q);
+                     command_name(cmd), remaining);
         }
     }
   return args;
@@ -837,11 +864,11 @@ parse_node_manual (ELEMENT *node)
   if (trimmed->contents.number > 0 && trimmed->contents.list[0]->text.end > 0
       && trimmed->contents.list[0]->text.text[0] == '(')
     {
-      /* The Perl code here accounts for matching parentheses in the manual 
-         name.  The Info reader also handles this, for whatever reason. */
+      /* Handle nested parentheses in the manual name, for whatever reason. */
 
       ELEMENT *e;
-      char *closing_bracket;
+      char *opening_bracket, *closing_bracket;
+      int bracket_count = 0;
 
       manual = new_element (ET_NONE);
 
@@ -871,18 +898,54 @@ parse_node_manual (ELEMENT *node)
           /* Note the removed element still is present in the original
              node->contents in the main tree. */
         }
+      bracket_count++;
 
       while (trimmed->contents.number > 0)
         {
           ELEMENT *e = remove_from_contents (trimmed, 0);
+          char *p;
 
-          if (e->text.end == 0
-              || !(closing_bracket = strchr (e->text.text, ')')))
+          if (e->text.end == 0)
             {
               /* Put this element in the manual contents. */
               add_to_contents_as_array (manual, e);
+              continue;
             }
-          else /* ')' in text - possible end of filename component */
+          p = e->text.text;
+          while (p < e->text.text + e->text.end
+                 && bracket_count > 0)
+            {
+              opening_bracket = strchr (p, '(');
+              closing_bracket = strchr (p, ')');
+              if (!opening_bracket && !closing_bracket)
+                {
+                  break;
+                }
+              else if (opening_bracket && !closing_bracket)
+                {
+                  bracket_count++;
+                  p = opening_bracket + 1;
+                }
+              else if (!opening_bracket && closing_bracket)
+                {
+                  bracket_count--;
+                  p = closing_bracket + 1;
+                }
+              else if (opening_bracket < closing_bracket)
+                {
+                  bracket_count++;
+                  p = opening_bracket + 1;
+                }
+              else if (opening_bracket > closing_bracket)
+                {
+                  bracket_count--;
+                  p = closing_bracket + 1;
+                }
+            }
+
+          if (bracket_count > 0)
+            add_to_contents_as_array (manual, e);
+          else /* end of filename component */
             {
               /* Split the element in two, putting the part before the ")"
                  in the manual name, leaving the part afterwards for the
@@ -890,26 +953,27 @@ parse_node_manual (ELEMENT *node)
               /* TODO: Same as above re route_not_in_tree. */
               ELEMENT *before, *after;
 
-              if (closing_bracket > e->text.text)
+              p--; /* point at ) */
+              if (p > e->text.text)
                 {
                   before = new_element (ET_NONE);
                   before->parent_type = route_not_in_tree;
                   before->parent = node; // FIXME - try not to set this
                   text_append_n (&before->text, e->text.text,
-                                 closing_bracket - e->text.text);
+                                 p - e->text.text);
                   add_to_contents_as_array (manual, before);
                 }
 
               /* Skip ')' and any following whitespace.
                  Note that we don't manage to skip any multibyte
                  UTF-8 space characters here. */
-              closing_bracket++;
-              closing_bracket += strspn (closing_bracket, whitespace_chars);
-              if (*closing_bracket)
+              p++;
+              p += strspn (p, whitespace_chars);
+              if (*p)
                 {
                   after = new_element (ET_NONE);
-                  text_append_n (&after->text, closing_bracket,
-                                 e->text.text + e->text.end - closing_bracket);
+                  text_append_n (&after->text, p,
+                                 e->text.text + e->text.end - p);
 
                   insert_into_contents (trimmed, after, 0);
                   after->parent_type = route_not_in_tree;
@@ -921,7 +985,13 @@ parse_node_manual (ELEMENT *node)
             }
         }
 
-      result->manual_content = manual;
+      if (bracket_count == 0)
+        result->manual_content = manual;
+      else /* unbalanced */
+        {
+          destroy_element (trimmed);
+          trimmed = manual;
+        }
     }
 
   /* If anything left, it is the node name. */
