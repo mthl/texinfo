@@ -1390,18 +1390,6 @@ sub _count_opened_tree_braces($$)
     ($before, $after, $braces_count) = _find_end_brace($current->{'text'},
                                                           $braces_count);
   }
-  if ($current->{'args'}) {
-    foreach my $arg (@{$current->{'args'}}) {
-      $braces_count = _count_opened_tree_braces($arg, $braces_count);
-      return $braces_count if ($braces_count == 0);
-    }
-  }
-  if ($current->{'contents'}) {
-    foreach my $content (@{$current->{'contents'}}) {
-      $braces_count = _count_opened_tree_braces($content, $braces_count);
-      return $braces_count if ($braces_count == 0);
-    }
-  }
   return $braces_count;
 }
 
@@ -1459,7 +1447,11 @@ sub parse_node_manual($)
         }
       }
     }
-    $result->{'manual_content'} = $manual if (defined($manual));
+    if ($braces_count == 0) {
+      $result->{'manual_content'} = $manual if (defined($manual));
+    } else {
+      @contents = @$manual;
+    }
   }
   if (@contents) {
     $result->{'node_content'} = \@contents;

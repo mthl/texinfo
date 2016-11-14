@@ -1,3 +1,11 @@
+2016-11-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (_count_opened_tree_braces): Don't
+	check for parentheses in the arguments or contents when 
+	balancing parentheses.
+	(parse_node_manual): If parentheses do not balance, consider the 
+	whole argument to be the node name.
+
 2016-11-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_abort_empty_line): Include element type
