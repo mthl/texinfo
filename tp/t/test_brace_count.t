@@ -2,7 +2,7 @@ use strict;
 
 use Test::More;
 use File::Spec;
-BEGIN { plan tests => 11;
+BEGIN { plan tests => 7;
         if (defined($ENV{'top_srcdir'})) {
           unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
           my $lib_dir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp', 'maintain');
@@ -59,9 +59,12 @@ sub run_test($$$$)
   }
 }
 
-run_test('@code{(sdffsd)} other @code{(gg} ))', 1, 0, 'brace in code');
-run_test('@code{(sdffsd)) aaa}', 1, 0, 'too much braces');
-run_test(' aaa) @asis{)}  @code{( (}', 2, 0, 'more reopened');
-run_test(' aaa) @asis{}  @code{( (}', 2, 3, 'still open');
+# Note: these tests are disabled because the code doesn't look at
+# parentheses nested inside commands anymore.
+
+# run_test('@code{(sdffsd)} other @code{(gg} ))', 1, 0, 'brace in code');
+# run_test('@code{(sdffsd)) aaa}', 1, 0, 'too much braces');
+# run_test(' aaa) @asis{)}  @code{( (}', 2, 0, 'more reopened');
+# run_test(' aaa) @asis{}  @code{( (}', 2, 3, 'still open');
 
 
