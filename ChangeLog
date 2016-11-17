@@ -1,3 +1,10 @@
+2016-11-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): Supply 'contents' and 
+	'parent' for empty @value element.
+	* tp/Texinfo/Report.pm (_substitute_element_array): Add a case
+	for values not defined.
+
 2016-11-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/test_brace_count.t: Disable some tests.

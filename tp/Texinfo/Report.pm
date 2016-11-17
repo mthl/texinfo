@@ -417,9 +417,11 @@ sub _substitute_element_array ($$) {
       my $name = $_->{'type'};
       $name =~ s/^_//;
       if (ref($context->{$name}) eq 'HASH') {
-        ( $context->{$name} );
+        $context->{$name};
       } elsif (ref($context->{$name}) eq 'ARRAY') {
         @{$context->{$name}};
+      } else {
+        (); # undefined - shouldn't happen?
       }
     } else {
       _substitute($_, $context);

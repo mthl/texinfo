@@ -4220,7 +4220,9 @@ sub _parse_texi($;$)
               # caller should expand something along 
               # gdt('@{No value for `{value}\'@}', {'value' => $value}, {'keep_texi'=> 1});
               push @{$current->{'contents'}}, { 'cmdname' => 'value',
-                                                'type' => $value };
+                                                'type' => $value,
+                                                'contents' => [],
+                                                'parent' => $current };
               $self->line_warn(
                   sprintf($self->__("undefined flag: %s"), $value), $line_nr);
             }

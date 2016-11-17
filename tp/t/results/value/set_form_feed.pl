@@ -81,6 +81,8 @@ $result_trees{'set_form_feed'} = {
                 },
                 {
                   'cmdname' => 'value',
+                  'contents' => [],
+                  'parent' => {},
                   'type' => 'hh'
                 },
                 {
@@ -122,6 +124,7 @@ $result_trees{'set_form_feed'}{'contents'}[2]{'args'}[1]{'parent'} = $result_tre
 $result_trees{'set_form_feed'}{'contents'}[2]{'parent'} = $result_trees{'set_form_feed'};
 $result_trees{'set_form_feed'}{'contents'}[3]{'parent'} = $result_trees{'set_form_feed'};
 $result_trees{'set_form_feed'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'set_form_feed'}{'contents'}[4]{'contents'}[0]{'args'}[0];
+$result_trees{'set_form_feed'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'set_form_feed'}{'contents'}[4]{'contents'}[0]{'args'}[0];
 $result_trees{'set_form_feed'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'set_form_feed'}{'contents'}[4]{'contents'}[0]{'args'}[0];
 $result_trees{'set_form_feed'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'set_form_feed'}{'contents'}[4]{'contents'}[0];
 $result_trees{'set_form_feed'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'set_form_feed'}{'contents'}[4];
