@@ -152,14 +152,6 @@ parse_special_misc_command (char *line, enum command_id cmd
     {
     case CM_set:
       {
-        
-        /* Check if the line matches the Perl regular expression
-
-        /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)
-        (\@(c|comment)((\@|\s+).*)?|[^\S\f]+(.*?))?[^\S\f]*$/
-
-          */
-
       p = line;
       p += strspn (p, whitespace_chars);
       if (!*p)
@@ -170,16 +162,25 @@ parse_special_misc_command (char *line, enum command_id cmd
                    " \t\f\r\n"       /* whitespace */
                    "{\\}~^+\"<>|@"); /* other bytes that aren't allowed */
 
-      ADD_ARG(p, q - p); /* name */
+      r = skip_comment (p);
 
+      if (!strchr (whitespace_chars, *q) && *q != '@')
+        goto set_invalid;
+
+      if (*q == '@')
+        {
+          /* Check for a comment, e.g. "@set flag@c comment" */
+          if (q != r)
+            goto set_invalid;
+        }
+
+      ADD_ARG(p, q - p); /* name */
 
       p = q + strspn (q, whitespace_chars);
       /* Actually, whitespace characters except form feed. */
 
-      q = skip_comment (p);
-
-      if (q >= p)
-        ADD_ARG(p, q - p); /* value */
+      if (r >= p)
+        ADD_ARG(p, r - p); /* value */
       else
         ADD_ARG("", 0);
 

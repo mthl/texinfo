@@ -368,6 +368,7 @@ merge_text (ELEMENT *current, char *text)
       && (last_child->text.space > 0
             && !strchr (last_child->text.text, '\n')
              ) //|| last_child->type == ET_empty_spaces_before_argument)
+      && last_child->cmd != CM_value
       && !no_merge_with_following_text)
     {
       /* Append text to contents */
@@ -1188,7 +1189,10 @@ superfluous_arg:
 
           line++;
           if (!isalnum (*line) && *line != '-' && *line != '_')
-            goto value_invalid;
+            {
+              line--;
+              goto value_invalid;
+            }
           arg_start = line;
 
           line++;
@@ -1196,7 +1200,10 @@ superfluous_arg:
                    " \t\f\r\n"       /* whitespace */
                    "{\\}~^+\"<>|@"); /* other bytes that aren't allowed */
           if (*line != '}')
-            goto value_invalid;
+            {
+              line = arg_start - 1;
+              goto value_invalid;
+            }
 
           if (1) /* @value syntax is valid */
             {
@@ -1211,8 +1218,8 @@ value_valid:
                      in undefined values. */
                   ELEMENT *value_elt;
 
-                  line_error ("undefined flag: %.*s", line - arg_start, 
-                               arg_start);
+                  line_warn ("undefined flag: %.*s", line - arg_start, 
+                             arg_start);
 
                   abort_empty_line (&current, NULL);
                   value_elt = new_element (ET_NONE);
@@ -1226,9 +1233,6 @@ value_valid:
 
                   add_to_element_contents (current, value_elt);
 
-                  /* Prevent merging with following.  TODO: Check why
-                     this happens in the first place. */
-                  add_to_element_contents (current, new_element (ET_NONE));
                   line++; /* past '}' */
                   retval = STILL_MORE_TO_PROCESS;
                 }
@@ -1246,6 +1250,8 @@ value_valid:
             {
 value_invalid:
               line_error ("bad syntax for @value");
+              retval = STILL_MORE_TO_PROCESS;
+              goto funexit;
             }
         }
 
