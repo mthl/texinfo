@@ -691,6 +691,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           if (spaces > 0)
             {
               char saved = line[spaces];
+              line[spaces] = '\0';
               current = merge_text (current, line);
               line[spaces] = saved;
               line += spaces;

@@ -974,6 +974,31 @@ superfluous_arg:
   /* Skip empty lines.  If we reach the end of input, continue in case there
      is an @include. */
 
+  /* There are cases when we need more input, but we don't want to
+     get it in the top-level loop in parse_texi - this is mostly
+     (always?) when we don't want to start a new, empty line, and
+     need to get more from the current, incomplete line of input. */
+  // 3878
+  while (*line == '\0')
+    {
+      static char *allocated_text;
+      debug ("EMPTY TEXT");
+
+      /* Each place we supply Texinfo input we store the supplied
+         input in a static variable like allocated_text, to prevent
+         memory leaks.  */
+      free (allocated_text);
+      line = allocated_text = next_text ();
+
+      if (!line)
+        {
+          /* TODO: Can this only happen at end of file? */
+          current = end_line (current);
+          retval = GET_A_NEW_LINE;
+          goto funexit;
+        }
+    }
+
   if (*line == '@')
     {
       line_after_command = line + 1;
@@ -1019,31 +1044,6 @@ superfluous_arg:
         }
       if (cmd && (command_data(cmd).flags & CF_ALIAS))
         cmd = command_data(cmd).data;
-    }
-
-  /* There are cases when we need more input, but we don't want to
-     get it in the top-level loop in parse_texi - this is mostly
-     (always?) when we don't want to start a new, empty line, and
-     need to get more from the current, incomplete line of input. */
-  // 3878
-  while (*line == '\0')
-    {
-      static char *allocated_text;
-      debug ("EMPTY TEXT");
-
-      /* Each place we supply Texinfo input we store the supplied
-         input in a static variable like allocated_text, to prevent
-         memory leaks.  */
-      free (allocated_text);
-      line = allocated_text = next_text ();
-
-      if (!line)
-        {
-          /* TODO: Can this only happen at end of file? */
-          current = end_line (current);
-          retval = GET_A_NEW_LINE;
-          goto funexit;
-        }
     }
 
   /* Handle user-defined macros before anything else because their expansion 
@@ -1184,6 +1184,7 @@ superfluous_arg:
       if (cmd == CM_value)
         {
           char *arg_start;
+          line += strspn (line, whitespace_chars);
           if (*line != '{')
             goto value_invalid;
 
