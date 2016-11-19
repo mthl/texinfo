@@ -280,6 +280,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
            || arg_spec == MISC_special)
     {
       ELEMENT *args = 0;
+      enum command_id equivalent_cmd = 0;
       /* 4350 If the current input is the result of a macro expansion,
          it may not be a complete line.  Check for this and acquire the rest
          of the line if necessary. */
@@ -309,11 +310,69 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           add_extra_string (misc, "arg_line", strdup (line));
         }
 
-      if ((cmd == CM_set || cmd == CM_clear)
-          && 0 )
+      /* Handle @set txicodequoteundirected as an
+         obsolete alternative to @codequoteundirected. */
+      if (cmd == CM_set || cmd == CM_clear)
         {
-          /* TODO: Handle @set txicodequoteundirected as an
-             obsolete alternative to @codequoteundirected. */
+          if (args->contents.number > 0
+              && args->contents.list[0]->text.end > 0)
+            {
+              if (!strcmp (args->contents.list[0]->text.text,
+                           "txicodequoteundirected"))
+                equivalent_cmd = CM_codequoteundirected;
+              else if (!strcmp (args->contents.list[0]->text.text,
+                                "txicodequotebacktick"))
+                equivalent_cmd = CM_codequotebacktick;
+            }
+        }
+      if (equivalent_cmd)
+        {
+          char *arg = 0;
+          ELEMENT *misc_line_args;
+          ELEMENT *spaces_after_command;
+          ELEMENT *e;
+
+          if (cmd == CM_set)
+            arg = "on";
+          else
+            arg = "off";
+
+          /* Now manufacture the parse tree for the equivalent
+             command and add it to the tree. */
+
+          destroy_element (args);
+          args = new_element (ET_NONE);
+          e = new_element (ET_NONE);
+          text_append (&e->text, arg);
+          add_to_element_contents (args, e);
+
+          destroy_element (misc);
+          misc = new_element (ET_NONE);
+          misc->cmd = equivalent_cmd;
+          misc->line_nr = line_nr;
+
+          misc_line_args = new_element (ET_misc_line_arg);
+          add_to_element_args (misc, misc_line_args);
+          add_extra_misc_args (misc, "misc_args", args);
+
+          spaces_after_command = new_element 
+            (ET_empty_spaces_after_command);
+          text_append_n (&spaces_after_command->text, " ", 1);
+          add_extra_element (misc, "spaces_after_command",
+                             spaces_after_command);
+          add_extra_element (spaces_after_command, "command", misc);
+
+          add_to_element_contents (misc_line_args, spaces_after_command);
+
+          e = new_element (ET_NONE);
+          text_append (&e->text, arg);
+          add_to_element_contents (misc_line_args, e);
+
+          e = new_element (ET_spaces_at_end);
+          text_append_n (&e->text, "\n", 1);
+          add_to_element_contents (misc_line_args, e);
+
+          add_to_element_contents (current, misc);
         }
       else // 4402
         {
