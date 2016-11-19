@@ -1293,7 +1293,15 @@ value_invalid:
       if (current->parent)
         {
           /* Check whether outer command can contain cmd.  Commands are
-             classified according to what commands they can contain. */
+             classified according to what commands they can contain:
+
+             accents
+             full text
+             simple text
+             full line
+             full line no refs
+
+           */
 
           int ok = 0; /* Whether nesting is allowed. */
 
@@ -1345,20 +1353,10 @@ value_invalid:
           else if (outer_flags & CF_block
                    && current->type != ET_block_line_arg)
             ok = 1; // 4247
-          else if (outer == CM_item
-                   || outer == CM_itemx
+          else if ((outer == CM_item
+                   || outer == CM_itemx)
                    && current->type != ET_misc_line_arg)
             ok = 1; // 4252
-          else if (outer == CM_table
-                   || outer == CM_vtable
-                   || outer == CM_ftable)
-            {
-              /* FIXME: This nesting should be OK. */
-              if (cmd_flags & CF_INFOENCLOSE)
-                ;
-              else
-                ok = 1;
-            }
           else if (outer_flags & CF_accent) // 358
             {
               if (cmd_flags & (CF_nobrace | CF_accent))
@@ -1398,7 +1396,9 @@ value_invalid:
                    || simple_text_command)
             {
               // "in full text commands".
-              if (cmd_flags & (CF_brace | CF_nobrace)) // 370
+              if (cmd_flags & CF_nobrace) // 370
+                ok = 1;
+              if (cmd_flags & CF_brace && !(cmd_flags & CF_INFOENCLOSE)) // 370
                 ok = 1;
               else if (cmd == CM_c
                        || cmd == CM_comment
