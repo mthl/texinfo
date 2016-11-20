@@ -1,5 +1,10 @@
 2016-11-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_macro_command_line): Permit _ in 
+	macro name.
+
+2016-11-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_special_misc_command) <@set>: 
 	Treat form feed characters the same as any other whitespace.
 
