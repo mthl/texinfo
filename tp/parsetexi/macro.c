@@ -371,6 +371,7 @@ expand_macro_body (ELEMENT *macro, char *arguments[], TEXT *expanded)
   int i; /* Index into macro contents. */
   char *macrobody;
   ELEMENT tmp;
+  char *ptext;
 
   memset (&tmp, 0, sizeof (ELEMENT));
   tmp.contents = macro->contents;
@@ -382,58 +383,53 @@ expand_macro_body (ELEMENT *macro, char *arguments[], TEXT *expanded)
   if (!macrobody)
     return;
 
+  ptext = macrobody;
+  while (1)
     {
-      char *ptext;
+      /* At the start of this loop ptext is at the beginning or
+         just after the last backslash sequence. */
 
-      ptext = macrobody;
-      
-      while (1)
+      char *bs; /* Pointer to next backslash. */
+
+      bs = strchrnul (ptext, '\\');
+      text_append_n (expanded, ptext, bs - ptext);
+      if (!*bs)
+        break; /* End of line. */
+
+      ptext = bs + 1;
+      if (*ptext == '\\')
         {
-          /* At the start of this loop ptext is at the beginning or
-             just after the last backslash sequence. */
-
-          char *bs; /* Pointer to next backslash. */
-
-          bs = strchrnul (ptext, '\\');
-          text_append_n (expanded, ptext, bs - ptext);
-          if (!*bs)
-            break; /* End of line. */
-
-          ptext = bs + 1;
-          if (*ptext == '\\')
+          text_append_n (expanded, "\\", 1); /* Escaped backslash (\\). */
+          ptext++;
+        }
+      else
+        {
+          bs = strchr (ptext, '\\');
+          if (!bs)
             {
-              text_append_n (expanded, "\\", 1); /* Escaped backslash (\\). */
-              ptext++;
+              // error - malformed
+              return;
+              abort ();
+            }
+
+          *bs = '\0';
+          pos = lookup_macro_parameter (ptext, macro);
+          if (pos == -1)
+            {
+              line_error ("\\ in @%s expansion followed `%s' instead of "
+                          "parameter name or \\",
+                          macro->args.list[0]->text.text,
+                          ptext);
+              text_append (expanded, "\\");
+              text_append (expanded, ptext);
             }
           else
             {
-              bs = strchr (ptext, '\\');
-              if (!bs)
-                {
-                  // error - malformed
-                  return;
-                  abort ();
-                }
-
-              *bs = '\0';
-              pos = lookup_macro_parameter (ptext, macro);
-              if (pos == -1)
-                {
-                  line_error ("\\ in @%s expansion followed `%s' instead of "
-                              "parameter name or \\",
-                              macro->args.list[0]->text.text,
-                              ptext);
-                  text_append (expanded, "\\");
-                  text_append (expanded, ptext);
-                }
-              else
-                {
-                  if (arguments && arguments[pos])
-                    text_append (expanded, arguments[pos]);
-                }
-              *bs = '\\';
-              ptext = bs + 1;
+              if (arguments && arguments[pos])
+                text_append (expanded, arguments[pos]);
             }
+          *bs = '\\';
+          ptext = bs + 1;
         }
     }
 }
@@ -544,6 +540,8 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
   expand_macro_body (macro, arguments, &expanded);
   debug ("MACROBODY: %s||||||", expanded.text);
 
+  if (expanded.end > 0 && expanded.text[expanded.end - 1] == '\n')
+    expanded.text[--expanded.end] = '\0';
 
   if (input_number >= 1000)
     {
