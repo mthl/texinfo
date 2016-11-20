@@ -1158,7 +1158,7 @@ sub _parse_macro_command_line($$$$$;$)
   my $macro = { 'cmdname' => $command, 'parent' => $parent, 'contents' => [],
                'extra' => {'arg_line' => $line}, 'line_nr' => $line_nr };
   # REMACRO
-  if ($line =~ /^\s+([[:alnum:]][[:alnum:]-_]*)\s*(.*)/) {
+  if ($line =~ /^\s+([[:alnum:]][[:alnum:]_-]*)\s*(.*)/) {
     my $macro_name = $1;
     my $args_def = $2;
     my @args;

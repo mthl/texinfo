@@ -24,6 +24,7 @@
 #include "text.h"
 #include "input.h"
 #include "errors.h"
+#include "convert.h"
 
 static MACRO *macro_list;
 static size_t macro_number;
@@ -280,7 +281,7 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
       switch (*sep)
         {
         case '\\':
-          if (!strchr ("\\{}", sep[1]))
+          if (!strchr ("\\{},", sep[1]))
             text_append_n (&arg, sep, 1);
           if (sep[1])
             {
@@ -368,26 +369,23 @@ expand_macro_body (ELEMENT *macro, char *arguments[], TEXT *expanded)
   char *arg;
   int pos; /* Index into arguments. */
   int i; /* Index into macro contents. */
-  ELEMENT **body;
+  char *macrobody;
+  ELEMENT tmp;
+
+  memset (&tmp, 0, sizeof (ELEMENT));
+  tmp.contents = macro->contents;
+  macrobody = convert_to_texinfo (&tmp);
   
   /* Initialize TEXT object. */
   expanded->end = 0;
 
-  body = macro->contents.list;
-  for (i = 0; i < macro->contents.number; i++)
+  if (!macrobody)
+    return;
+
     {
       char *ptext;
 
-      if (body[i]->type != ET_raw)
-        continue; /* Could be an ET_last_raw_newline. */
-
-      /* There should be at least a newline. */
-      if (body[i]->text.end == 0)
-        continue;
-
-      ptext = body[i]->text.text;
-      if (i == macro->contents.number - 1)
-        ; // TODO: strip newline
+      ptext = macrobody;
       
       while (1)
         {

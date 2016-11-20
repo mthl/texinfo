@@ -68,7 +68,19 @@ expand_cmd_args_to_texi (ELEMENT *e, TEXT *result)
 
   // TODO multitable or block command
 
-  // TODO macro
+  if (cmd == CM_macro || cmd == CM_rmacro)
+    {
+      KEY_PAIR *k;
+      char *s = 0;
+      k = lookup_extra_key (e, "arg_line");
+      if (k)
+        s = (char *)k->value;
+      if (s)
+        {
+          ADD(s);
+          return;
+        }
+    }
 
   // TODO node
 
@@ -139,6 +151,13 @@ convert_to_texinfo_internal (ELEMENT *e, TEXT *result)
         ADD("}");
 
       // TODO: "fix" arg or raw block command
+      if (command_flags (e) & CF_block)
+        {
+          ADD("@end ");
+          ADD(command_name(e->cmd));
+          if (command_data(e->cmd).data != BLOCK_raw)
+            ADD("\n");
+        }
     }
 
   return;
