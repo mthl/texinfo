@@ -24,7 +24,8 @@ ELEMENT *close_current (ELEMENT *current,
 /* In end_line.c */
 NODE_SPEC_EXTRA *parse_node_manual (ELEMENT *node);
 ELEMENT *end_line (ELEMENT *current);
-ELEMENT *parse_special_misc_command (char *line, enum command_id cmd);
+ELEMENT *parse_special_misc_command (char *line, enum command_id cmd,
+                                     int *has_commment);
 int check_node_label (NODE_SPEC_EXTRA *nse, enum command_id cmd);
 
 typedef struct {

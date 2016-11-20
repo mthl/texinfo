@@ -100,7 +100,7 @@ is_whole_number (char *string)
 
 /* Return end of argument before comment and whitespace. */
 char *
-skip_comment (char *q)
+skip_comment (char *q, int *has_comment)
 {
   char *q1;
   while (1)
@@ -120,6 +120,7 @@ skip_comment (char *q)
       if (*q == '@' || strchr (whitespace_chars, *q))
         {
           q = q1;
+          *has_comment = 1;
           break;
         }
     }
@@ -135,8 +136,7 @@ skip_comment (char *q)
 /* Process argument to special line command. */
 // 5377
 ELEMENT *
-parse_special_misc_command (char *line, enum command_id cmd
-                           /* , int *has_comment */)
+parse_special_misc_command (char *line, enum command_id cmd, int *has_comment)
 {
 #define ADD_ARG(string, len) do { \
   ELEMENT *E = new_element (ET_NONE); \
@@ -162,7 +162,7 @@ parse_special_misc_command (char *line, enum command_id cmd
                    " \t\f\r\n"       /* whitespace */
                    "{\\}~^+\"<>|@"); /* other bytes that aren't allowed */
 
-      r = skip_comment (p);
+      r = skip_comment (p, has_comment);
 
       if (!strchr (whitespace_chars, *q) && *q != '@')
         goto set_invalid;

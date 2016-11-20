@@ -281,6 +281,8 @@ handle_misc_command (ELEMENT *current, char **line_inout,
     {
       ELEMENT *args = 0;
       enum command_id equivalent_cmd = 0;
+      int has_comment = 0;
+
       /* 4350 If the current input is the result of a macro expansion,
          it may not be a complete line.  Check for this and acquire the rest
          of the line if necessary. */
@@ -306,7 +308,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
         }
       else /* arg_spec == MISC_special */
         {
-          args = parse_special_misc_command (line, cmd); //4362
+          args = parse_special_misc_command (line, cmd, &has_comment); //4362
           add_extra_string (misc, "arg_line", strdup (line));
         }
 
@@ -414,7 +416,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
       mark_and_warn_invalid (cmd, invalid_parent, misc);
       register_global_command (cmd, misc); // 4423
 
-      if (arg_spec != MISC_special /* || !has_comment */ )
+      if (arg_spec != MISC_special || !has_comment)
         current = end_line (current);
 
       // 4429
