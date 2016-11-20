@@ -1,4 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
+/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -94,7 +94,14 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
 
   line += strspn (line, whitespace_chars);
   name = read_command_name (&line);
-  if (!name)
+
+  if (*line && *line != '{' && !strchr (whitespace_chars, *line))
+    {
+      line_error ("bad name for @%s", command_name (cmd));
+      add_extra_string (macro, "invalid_syntax", "1");
+      return macro;
+    }
+  else if (!name)
     {
       line_error ("@%s requires a name", command_name (cmd));
       add_extra_string (macro, "invalid_syntax", "1");
@@ -112,8 +119,7 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
   if (*args_ptr != '{')
     {
       /* Either error or no args. */
-      line = args_ptr;
-      goto funexit;
+      goto check_trailing;
     }
   args_ptr++;
 
@@ -147,13 +153,9 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
       if (q2 == args_ptr)
         {
           // 1126 - argument is completely whitespace
-          if (index == 0)
-            {
-              args_ptr = q + 1;
-              break; /* Empty arg list, like "@macro m { }". */
-            }
-          line_error ("bad or empty @%s formal argument:",
-                      command_name(cmd));
+          if (*q == ',')
+            line_error ("bad or empty @%s formal argument:",
+                        command_name(cmd));
         }
       else
         {
@@ -186,13 +188,15 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
 
       index++;
     }
-  line = args_ptr;
 
+check_trailing:
+  line = args_ptr;
   line += strspn (line, whitespace_chars);
   if (*line && *line != '@')
     {
       line_error ("bad syntax for @%s argument: %s",
                   command_name(cmd), line);
+      add_extra_string (macro, "invalid_syntax", "1");
     }
   //line += strlen (line); /* Discard rest of line. */
 
