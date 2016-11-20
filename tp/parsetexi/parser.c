@@ -847,11 +847,29 @@ superfluous_arg:
                   || (current->parent->cmd != CM_macro
                       && current->parent->cmd != CM_rmacro)))
             {
-              if (!lookup_extra_key (current, "invalid_syntax"))
+              char *name;
+              enum command_id existing;
+              if (current->args.number > 0)
                 {
-                  char *name;
                   name = element_text (args_child_by_index (current, 0));
-                  new_macro (name, current); // 3808
+
+                  existing = lookup_command (name);
+                  if (existing)
+                    {
+                      MACRO *macro;
+                      macro = lookup_macro (existing);
+                      if (macro)
+                        {
+                          line_error_ext (1, &current->line_nr,
+                             "macro `%s' previously defined", name);
+                          line_error_ext (1, &macro->element->line_nr,
+                             "here is the previous definition of `%s'", name);
+                        }
+                    }
+                  if (!lookup_extra_key (current, "invalid_syntax"))
+                    {
+                      new_macro (name, current); // 3808
+                    }
                 }
             }
 

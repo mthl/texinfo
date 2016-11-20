@@ -25,20 +25,12 @@
 #include "input.h"
 #include "errors.h"
 
-typedef struct {
-    char *macro_name;
-    ELEMENT *element;
-    enum command_id cmd;
-} MACRO;
-
 static MACRO *macro_list;
 static size_t macro_number;
 static size_t macro_space;
 
 
 /* Macro definition. */
-
-static MACRO *lookup_macro (enum command_id cmd);
 
 void
 new_macro (char *name, ELEMENT *macro)
@@ -154,8 +146,14 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
         {
           // 1126 - argument is completely whitespace
           if (*q == ',')
-            line_error ("bad or empty @%s formal argument:",
-                        command_name(cmd));
+            {
+              line_error ("bad or empty @%s formal argument: ",
+                          command_name(cmd));
+              arg = new_element (ET_macro_arg);
+              add_to_element_args (macro, arg);
+              text_append_n (&arg->text, "", 0);
+              add_extra_string (macro, "invalid_syntax", "1");
+            }
         }
       else
         {
@@ -243,12 +241,14 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
   char *pline = line;
   TEXT arg;
   int braces_level = 1;
+  int args_total;
 
   char **arg_list = 0;
   size_t arg_number = 0;
   size_t arg_space = 0;
 
   arg_list = malloc (sizeof (char *));
+  args_total = macro->args.number - 1;
 
   text_init (&arg);
 
@@ -314,30 +314,40 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
             }
 
           // 2021 check for too many args
-
-          /* Add the last argument read to the list. */
-          if (arg_number == arg_space)
+          if (*sep == '}' || arg_number < args_total - 1)
             {
-              arg_list = realloc (arg_list,
-                                  (1+(arg_space += 5)) * sizeof (char *));
-              /* Include space for terminating null element. */
-              if (!arg_list)
-                abort ();
-            }
-          if (arg.space > 0)
-            arg_list[arg_number++] = arg.text;
-          else
-            arg_list[arg_number++] = strdup ("");
-          text_init (&arg);
-          // TODO: is "@m {     }" one empty argument or none?
+              /* Add the last argument read to the list. */
+              if (arg_number == arg_space)
+                {
+                  arg_list = realloc (arg_list,
+                                      (1+(arg_space += 5)) * sizeof (char *));
+                  /* Include space for terminating null element. */
+                  if (!arg_list)
+                    abort ();
+                }
+              if (arg.space > 0)
+                arg_list[arg_number++] = arg.text;
+              else
+                arg_list[arg_number++] = strdup ("");
+              text_init (&arg);
+              // TODO: is "@m {     }" one empty argument or none?
 
-          debug ("MACRO NEW ARG");
-          pline = sep + 1;
+              debug ("MACRO NEW ARG");
+              pline = sep + 1;
+
+              if (*sep == ',')
+                pline += strspn (pline, whitespace_chars);
+            }
+          else
+            {
+              if (args_total != 1)
+                line_error ("macro `%s' called with too many args",
+                            command_name(cmd));
+              text_append_n (&arg, ",", 1);
+              pline = sep + 1;
+            }
           break;
         }
-
-      if (*sep == ',')
-        pline += strspn (pline, whitespace_chars);
     }
 
   debug ("END MACRO ARGS EXPANSION");
@@ -430,7 +440,7 @@ expand_macro_body (ELEMENT *macro, char *arguments[], TEXT *expanded)
     }
 }
 
-static MACRO *
+MACRO *
 lookup_macro (enum command_id cmd)
 {
   int i;

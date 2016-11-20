@@ -215,4 +215,12 @@ typedef struct {
     char *normalized;
 } EXTRA_FLOAT_TYPE;
 
+enum error_type { error, warning };
+
+typedef struct {
+    char *macro_name;
+    ELEMENT *element;
+    enum command_id cmd;
+} MACRO;
+
 

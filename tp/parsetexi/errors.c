@@ -25,8 +25,6 @@
 #include "dump_perl.h"
 #include "errors.h"
 
-enum error_type { error, warning };
-
 typedef struct {
     char *message;
     enum error_type type;
@@ -61,6 +59,16 @@ line_error_internal (enum error_type type, LINE_NR *cmd_line_nr,
     }
   else
     error_list[error_number++].line_nr = line_nr;
+}
+
+void
+line_error_ext (enum error_type type, LINE_NR *cmd_line_nr,
+                char *format, ...)
+{
+  va_list v;
+
+  va_start (v, format);
+  line_error_internal (type, cmd_line_nr, format, v);
 }
 
 void
