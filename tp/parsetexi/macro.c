@@ -229,7 +229,8 @@ lookup_macro_parameter (char *name, ELEMENT *macro)
 }
 
 /* LINE points to after the opening brace in a macro invocation.  CMD is the
-   command identifier of the macro command. */
+   command identifier of the macro command.  Return array of the arguments.
+   Return value to be freed by caller.  */
 // 1984
 char **
 expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
@@ -471,6 +472,7 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
   ELEMENT *macro;
   TEXT expanded;
   char **arguments = 0;
+  int args_number;
 
   line = *line_inout;
   text_init (&expanded);
@@ -480,7 +482,8 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
     abort ();
   macro = macro_record->element;
 
-  // 3907 Get number of args.
+  // 3907 Get number of args. - 1 for the macro name.
+  args_number = macro->args.number - 1;
 
   p = line + strspn (line, whitespace_chars);
   if (*p == '{')
@@ -491,13 +494,39 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
       line += strspn (line, whitespace_chars);
       arguments = expand_macro_arguments (macro, &line, cmd);
     }
+  /* Warning depending on the number of arguments this macro
+     is supposed to take. */
+  else if (args_number != 1)
+    {
+      if (args_number > 1)
+        line_warn ("@%s defined with zero or more than one argument should "
+                   "be invoked with {}", command_name(cmd));
+      /* As agreed on the bug-texinfo mailing list, no warn when zero
+         arg and not called with {}. */
+    }
   else
     {
-      /* TODO: Warning depending on the number of arguments this macro
-         is supposed to take. */
+      char *p;
+      /* If it takes a single line of input, and we don't have a full line of 
+         input already, call new_line. */
+      if (!strchr (line, '\n'))
+        {
+          line = new_line ();
+          if (!line)
+            line = "";
+        }
+      line += strspn (line, whitespace_chars);
 
-      /* TODO: Otherwise, if it takes a single line of input,
-         and we don't have a full line of input already, call new_line. */
+      arguments = malloc (sizeof (char *) * 2);
+      arguments[0] = strdup (line);
+      arguments[1] = 0;
+
+      p = strchr (arguments[0], '\n');
+      if (p)
+        {
+          *p = '\0';
+          line = "\n";
+        }
     }
 
   expand_macro_body (macro, arguments, &expanded);
