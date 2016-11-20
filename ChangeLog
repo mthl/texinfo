@@ -1,3 +1,8 @@
+2016-11-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_special_misc_command) <@set>: 
+	Treat form feed characters the same as any other whitespace.
+
 2016-11-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi): Supply 'contents' and 

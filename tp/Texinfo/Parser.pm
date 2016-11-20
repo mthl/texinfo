@@ -5551,11 +5551,11 @@ sub _parse_special_misc_command($$$$)
   my $remaining;
   if ($command eq 'set') {
     # REVALUE
-    if ($line =~ /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)(\@(c|comment)((\@|\s+).*)?|[^\S\f]+(.*?))?[^\S\f]*$/) {
+    if ($line =~ /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)(\@(c|comment)((\@|\s+).*)?|\s+(.*?))?\s*$/) {
       if ($line =~ s/\@(c|comment)((\@|\s+).*)?$//) {
         $has_comment = 1;
       }
-      $line =~ /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)([^\S\f]+(.*?))?[^\S\f]*$/;
+      $line =~ /^\s+([\w\-][^\s{\\}~`\^+"<>|@]*)(\s+(.*?))?\s*$/;
       my $name = $1;
       my $arg = $3;
       $arg = '' if (!defined($arg));
