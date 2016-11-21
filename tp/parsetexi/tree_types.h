@@ -221,6 +221,7 @@ typedef struct {
     char *macro_name;
     ELEMENT *element;
     enum command_id cmd;
+    char *macrobody;
 } MACRO;
 
 

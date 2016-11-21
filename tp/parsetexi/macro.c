@@ -38,6 +38,7 @@ new_macro (char *name, ELEMENT *macro)
 {
   enum command_id new;
   MACRO *m = 0;
+  ELEMENT tmp;
 
   /* Check for an existing definition first for us to overwrite. */
   new = lookup_command (name);
@@ -60,8 +61,12 @@ new_macro (char *name, ELEMENT *macro)
       user_defined_command_data[new].flags |= CF_MACRO;
     }
 
-  m->macro_name = name; /* strdup ? */
+  m->macro_name = strdup (name);
   m->element = macro;
+
+  memset (&tmp, 0, sizeof (ELEMENT));
+  tmp.contents = macro->contents;
+  m->macrobody = convert_to_texinfo (&tmp);
 }
 
 // 1088
@@ -364,18 +369,18 @@ funexit:
 /* ARGUMENTS are the arguments used in the macro invocation.  EXPANDED gets the 
    result of the expansion. */
 static void
-expand_macro_body (ELEMENT *macro, char *arguments[], TEXT *expanded)
+expand_macro_body (MACRO *macro_record, char *arguments[], TEXT *expanded)
 {
   char *arg;
   int pos; /* Index into arguments. */
   int i; /* Index into macro contents. */
+  ELEMENT *macro;
   char *macrobody;
-  ELEMENT tmp;
   char *ptext;
 
-  memset (&tmp, 0, sizeof (ELEMENT));
-  tmp.contents = macro->contents;
-  macrobody = convert_to_texinfo (&tmp);
+  macro = macro_record->element;
+
+  macrobody = macro_record->macrobody;
   
   /* Initialize TEXT object. */
   expanded->end = 0;
@@ -537,7 +542,7 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
         }
     }
 
-  expand_macro_body (macro, arguments, &expanded);
+  expand_macro_body (macro_record, arguments, &expanded);
   debug ("MACROBODY: %s||||||", expanded.text);
 
   if (expanded.end > 0 && expanded.text[expanded.end - 1] == '\n')
