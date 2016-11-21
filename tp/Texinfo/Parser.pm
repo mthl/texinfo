@@ -2077,7 +2077,7 @@ sub _expand_macro_arguments($$$$)
         if ($braces_level == 1) {
           if (scalar(@$arguments) < $args_total) {
             push @$arguments, '';
-            $line =~ s/^[^\S\f]*//;
+            $line =~ s/^\s*//;
             print STDERR "MACRO NEW ARG\n" if ($self->{'DEBUG'});
           } else {
             # implicit quoting when there is one argument.
@@ -2111,7 +2111,7 @@ sub _expand_macro_arguments($$$$)
       }
     }
   }
-  if ($args_total == 0 and $arguments->[0] =~ /[\S\f]/) {
+  if ($args_total == 0 and $arguments->[0] =~ /\S/) {
     $self->line_error(sprintf($self->__(
                "macro `%s' declared without argument called with an argument"), 
                                 $name), $line_nr);
@@ -3918,7 +3918,7 @@ sub _parse_texi($;$)
         my $expanded_macro = $self->{'macros'}->{$command}->{'element'};
         my $args_number = scalar(@{$expanded_macro->{'args'}}) -1;
         my $arguments = [];
-        if ($line =~ s/^\s*{[^\S\f]*//) { # macro with args
+        if ($line =~ s/^\s*{\s*//) { # macro with args
           ($arguments, $line, $line_nr) = 
             _expand_macro_arguments($self, $expanded_macro, $line, $line_nr);
         } elsif (($args_number >= 2) or ($args_number <1)) {
@@ -3933,7 +3933,7 @@ sub _parse_texi($;$)
             ($line, $line_nr) = _new_line($self, $line_nr, $expanded_macro);
             $line = '' if (!defined($line));
           }
-          $line =~ s/^[^\S\f]*// if ($line =~ /[\S\f]/);
+          $line =~ s/^\s*// if ($line =~ /\S/);
           my $has_end_of_line = chomp $line;
           $arguments = [$line];
           $line = "\n" if ($has_end_of_line);
