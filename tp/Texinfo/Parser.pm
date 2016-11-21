@@ -104,7 +104,6 @@ our %default_customization_values = (
   'SHOW_MENU' => 1,             # if false no menu error related.
   'INLINE_INSERTCOPYING' => 0,
   'IGNORE_BEFORE_SETFILENAME' => 1,
-  'MACRO_BODY_IGNORES_LEADING_SPACE' => 0,
   'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME' => 1,
   'INPUT_PERL_ENCODING' => undef, # input perl encoding name, set from 
                               # @documentencoding in the default case
@@ -2594,16 +2593,6 @@ sub _remove_empty_content_arguments($)
   }
 }
 
-sub _strip_macrobody_leading_space($$)
-{
-  my $self = shift;
-  my $text = shift;
-  if ($self->{'MACRO_BODY_IGNORES_LEADING_SPACE'}) {
-    $text =~ s/^\s*//mg;
-  }
-  return $text;
-}
-
 # close constructs and do stuff at end of line (or end of the document)
 sub _end_line($$$);
 sub _end_line($$$)
@@ -3318,7 +3307,7 @@ sub _end_line($$$)
             { 'element' => {
                     'args' => [{'text' => 'insertcopying', 'type' => 'macro_name'}],
                     'cmdname' => 'macro', },
-              'macrobody' => $self->_strip_macrobody_leading_space($body)
+              'macrobody' => $body
             };
             $inline_copying = 1;
             print STDERR "INLINE_INSERTCOPYING as macro\n" if ($self->{'DEBUG'});
@@ -3786,9 +3775,8 @@ sub _parse_texi($;$)
                     or ($current->{'parent'}->{'cmdname'} ne 'macro'
                         and $current->{'parent'}->{'cmdname'} ne 'rmacro'))) {
             my $macrobody =
-             $self->_strip_macrobody_leading_space(
                Texinfo::Convert::Texinfo::convert({ 'contents' 
-                                             => $current->{'contents'} }));
+                                             => $current->{'contents'} });
             if ($current->{'args'} and $current->{'args'}->[0]) {
               my $name = $current->{'args'}->[0]->{'text'};
               if (exists($self->{'macros'}->{$name})) {
@@ -6058,10 +6046,6 @@ This option is set in the default case.
 
 If set, spaces after an @-command name that take braces are ignored.
 Default on.
-
-=item MACRO_BODY_IGNORES_LEADING_SPACE
-
-If set, leading spaces are stripped from user-defined macro bodies.
 
 =item MAX_MACRO_CALL_NESTING
 

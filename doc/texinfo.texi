@@ -17285,10 +17285,6 @@ Perl encoding used to process the Texinfo source.  You should not need
 to use that variable, since it is set by @code{@@documentencoding}
 (@pxref{@code{@@documentencoding}}).
 
-@item MACRO_BODY_IGNORES_LEADING_SPACE
-Ignore white space at the beginning of user defined macro body line,
-mimicking a @TeX{} limitation (@pxref{Macro Details}).  Default off.
-
 @item MAX_MACRO_CALL_NESTING
 The maximal number of recursive calls of @@-commands defined through
 @code{@@rmacro}; default 100000.  The purpose of this variable is to

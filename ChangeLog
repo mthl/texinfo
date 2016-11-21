@@ -1,3 +1,24 @@
+2016-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (@obsolete_variables): Add 
+	'MACRO_BODY_IGNORES_LEADING_SPACE'.
+	(@variable_string_settables): Remove the same.
+
+	* tp/Texinfo/Parser.pm (%default_customization_values): Remove 
+	'MACRO_BODY_IGNORES_LEADING_SPACE'.
+	(_strip_macrobody_leading_space): Remove function.
+	* tp/t/60macro.t (leading_spaces_ignore): Remove test.
+
+	* doc/texinfo.texi (Other Customization Variables): Remove 
+	mention of this variable.
+
+	The 'MACRO_BODY_IGNORES_LEADING_SPACE' variable attempted to
+	match a failing of the implementation of macros in texinfo.tex
+	where spaces at the start of a line could be ignored, but it 
+	didn't match it perfectly: specifically, a macro used inside
+	a command like @example where the catcode of space had been 
+	changed didn't have leading spaces skipped.
+
 2016-11-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_macro_command_line): Permit _ in 
