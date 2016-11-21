@@ -199,6 +199,21 @@ convert_to_utf8 (char *s, enum character_encoding enc)
   return strdup (t.text);
 }
 
+int
+expanding_macro (char *macro)
+{
+  int i;
+  for (i = 0; i < input_number; i++)
+    {
+      if (input_stack[i].line_nr.macro
+          && !strcmp (input_stack[i].line_nr.macro, macro))
+        {
+          return 1;
+        }
+    }
+  return 0;
+}
+
 /* Return value to be freed by caller.  Return null if we are out of input. */
 char *
 next_text (void)

@@ -551,6 +551,16 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
       goto funexit;
     }
 
+  if (macro->cmd == CM_macro)
+    {
+      if (expanding_macro (command_name(cmd)))
+        {
+          line_error ("recursive call of macro %s is not allowed; "
+                      "use @rmacro if needed", command_name(cmd));
+          goto funexit;
+        }
+    }
+
   /* Free arguments. */
   if (arguments)
     {

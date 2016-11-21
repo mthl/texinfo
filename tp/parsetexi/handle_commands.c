@@ -132,7 +132,7 @@ register_global_command (enum command_id cmd, ELEMENT *current)
       ELEMENT **where = 0;
 
       if (cmd == CM_shortcontents)
-        cmd == CM_summarycontents;
+        cmd = CM_summarycontents;
       if (!current->line_nr.line_nr)
         current->line_nr = line_nr;
       switch (cmd)
@@ -289,10 +289,17 @@ handle_misc_command (ELEMENT *current, char **line_inout,
       if (!strchr (line, '\n'))
         {
           char *line2;
+          LINE_NR save_ln; 
+
           input_push_text (strdup (line), 0);
+
+          save_ln = line_nr;
           line2 = new_line ();
           if (line2)
-            line = line2;
+            {
+              line = line2;
+              line_nr = save_ln;
+            }
         }
 
       misc = new_element (ET_NONE);

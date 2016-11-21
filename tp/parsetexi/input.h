@@ -8,6 +8,7 @@ void input_push_text (char *line, char *macro);
 void input_push_text_with_line_nos (char *text, int starting);
 void input_push_file (char *filename);
 void input_reset_input_stack (void);
+int expanding_macro (char *macro);
 
 extern LINE_NR line_nr;
 

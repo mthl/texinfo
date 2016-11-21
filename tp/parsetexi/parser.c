@@ -865,6 +865,12 @@ superfluous_arg:
                           line_error_ext (1, &macro->element->line_nr,
                              "here is the previous definition of `%s'", name);
                         }
+                      else if (!(existing & USER_COMMAND_BIT))
+                        {
+                          line_error_ext (1, &current->line_nr,
+                            "redefining Texinfo language command: @%s",
+                            name);
+                        }
                     }
                   if (!lookup_extra_key (current, "invalid_syntax"))
                     {
