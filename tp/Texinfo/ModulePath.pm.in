@@ -22,7 +22,7 @@ sub init (;$$) {
 
   if (defined($ENV{'top_builddir'}) and !defined($ENV{'top_srcdir'})) {
     $ENV{'top_srcdir'} = $ENV{'top_builddir'};
-  } elsif (defined($ENV{'top_builddir'}) and !defined($ENV{'top_srcdir'})) {
+  } elsif (!defined($ENV{'top_builddir'}) and defined($ENV{'top_srcdir'})) {
     $ENV{'top_builddir'} = $ENV{'top_srcdir'};
   }
    

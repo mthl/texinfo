@@ -1,3 +1,7 @@
+2016-11-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/ModulePath.pm.in: Correct a condition.
+
 2016-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_expand_macro_arguments, _parse_texi):
