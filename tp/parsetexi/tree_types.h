@@ -152,6 +152,24 @@ typedef struct GLOBAL_INFO {
     ELEMENT listoffloats;
     ELEMENT detailmenu;
     ELEMENT part;
+
+    ELEMENT allowcodebreaks;
+    ELEMENT clickstyle;
+    ELEMENT codequotebacktick;
+    ELEMENT codequoteundirected;
+    ELEMENT contents;
+    ELEMENT deftypefnnewline;
+    ELEMENT documentencoding;
+    ELEMENT documentlanguage;
+    ELEMENT exampleindent;
+    ELEMENT firstparagraphindent;
+    ELEMENT frenchspacing;
+    ELEMENT headings;
+    ELEMENT kbdinputstyle;
+    ELEMENT paragraphindent;
+    ELEMENT shortcontents;
+    ELEMENT urefbreakstyle;
+    ELEMENT xrefautomaticsectiontitle;
 } GLOBAL_INFO;
 
 typedef struct CONF {

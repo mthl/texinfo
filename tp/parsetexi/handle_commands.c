@@ -96,33 +96,43 @@ register_global_command (enum command_id cmd, ELEMENT *current)
         current->line_nr = line_nr;
       switch (cmd)
         {
+#define GLOBAL_CASE(cmx) \
+        case CM_##cmx:   \
+          add_to_contents_as_array (&global_info.cmx, current); \
+          break
+
         case CM_footnote:
           add_to_contents_as_array (&global_info.footnotes, current);
           break;
-        case CM_hyphenation:
-          add_to_contents_as_array (&global_info.hyphenation, current);
-          break;
-        case CM_insertcopying:
-          add_to_contents_as_array (&global_info.insertcopying, current);
-          break;
-        case CM_printindex:
-          add_to_contents_as_array (&global_info.printindex, current);
-          break;
-        case CM_subtitle:
-          add_to_contents_as_array (&global_info.subtitle, current);
-          break;
-        case CM_titlefont:
-          add_to_contents_as_array (&global_info.titlefont, current);
-          break;
-        case CM_listoffloats:
-          add_to_contents_as_array (&global_info.listoffloats, current);
-          break;
-        case CM_detailmenu:
-          add_to_contents_as_array (&global_info.detailmenu, current);
-          break;
-        case CM_part:
-          add_to_contents_as_array (&global_info.part, current);
-          break;
+
+        GLOBAL_CASE(hyphenation);
+        GLOBAL_CASE(insertcopying);
+        GLOBAL_CASE(printindex);
+        GLOBAL_CASE(subtitle);
+        GLOBAL_CASE(titlefont);
+        GLOBAL_CASE(listoffloats);
+        GLOBAL_CASE(detailmenu);
+        GLOBAL_CASE(part);
+
+        /* from Common.pm %document_settable_at_commands */
+        GLOBAL_CASE(allowcodebreaks);
+        GLOBAL_CASE(clickstyle);
+        GLOBAL_CASE(codequotebacktick);
+        GLOBAL_CASE(codequoteundirected);
+        GLOBAL_CASE(contents);
+        GLOBAL_CASE(deftypefnnewline);
+        GLOBAL_CASE(documentencoding);
+        GLOBAL_CASE(documentlanguage);
+        GLOBAL_CASE(exampleindent);
+        GLOBAL_CASE(firstparagraphindent);
+        GLOBAL_CASE(frenchspacing);
+        GLOBAL_CASE(headings);
+        GLOBAL_CASE(kbdinputstyle);
+        GLOBAL_CASE(paragraphindent);
+        GLOBAL_CASE(shortcontents);
+        GLOBAL_CASE(urefbreakstyle);
+        GLOBAL_CASE(xrefautomaticsectiontitle);
+#undef GLOBAL_CASE
         }
       /* TODO: Check if all of these are necessary. */
       return 1;

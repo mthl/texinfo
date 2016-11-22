@@ -904,6 +904,7 @@ build_global_info2 (void)
 
   /* The following are arrays of elements. */
 
+  
   if (global_info.footnotes.contents.number > 0)
     {
       av = newAV ();
@@ -916,102 +917,48 @@ build_global_info2 (void)
             av_push (av, newRV_inc ((SV *) e->hv));
         }
     }
-  if (global_info.hyphenation.contents.number > 0)
-    {
-      av = newAV ();
-      hv_store (hv, "hyphenation", strlen ("hyphenation"),
-                newRV_inc ((SV *) av), 0);
-      for (i = 0; i < global_info.hyphenation.contents.number; i++)
-        {
-          e = contents_child_by_index (&global_info.hyphenation, i);
-          if (e->hv)
-            av_push (av, newRV_inc ((SV *) e->hv));
-        }
+
+#define BUILD_GLOBAL_ARRAY(cmd) \
+  if (global_info.cmd.contents.number > 0)                              \
+    {                                                                   \
+      av = newAV ();                                                    \
+      hv_store (hv, #cmd, strlen (#cmd),                                \
+                newRV_inc ((SV *) av), 0);                              \
+      for (i = 0; i < global_info.cmd.contents.number; i++)             \
+        {                                                               \
+          e = contents_child_by_index (&global_info.cmd, i);            \
+          if (e->hv)                                                    \
+            av_push (av, newRV_inc ((SV *) e->hv));                     \
+        }                                                               \
     }
-  if (global_info.insertcopying.contents.number > 0)
-    {
-      av = newAV ();
-      hv_store (hv, "insertcopying", strlen ("insertcopying"),
-                newRV_inc ((SV *) av), 0);
-      for (i = 0; i < global_info.insertcopying.contents.number; i++)
-        {
-          e = contents_child_by_index (&global_info.insertcopying, i);
-          if (e->hv)
-            av_push (av, newRV_inc ((SV *) e->hv));
-        }
-    }
-  if (global_info.printindex.contents.number > 0)
-    {
-      av = newAV ();
-      hv_store (hv, "printindex", strlen ("printindex"),
-                newRV_inc ((SV *) av), 0);
-      for (i = 0; i < global_info.printindex.contents.number; i++)
-        {
-          e = contents_child_by_index (&global_info.printindex, i);
-          if (e->hv)
-            av_push (av, newRV_inc ((SV *) e->hv));
-        }
-    }
-  if (global_info.subtitle.contents.number > 0)
-    {
-      av = newAV ();
-      hv_store (hv, "subtitle", strlen ("subtitle"),
-                newRV_inc ((SV *) av), 0);
-      for (i = 0; i < global_info.subtitle.contents.number; i++)
-        {
-          e = contents_child_by_index (&global_info.subtitle, i);
-          if (e->hv)
-            av_push (av, newRV_inc ((SV *) e->hv));
-        }
-    }
-  if (global_info.titlefont.contents.number > 0)
-    {
-      av = newAV ();
-      hv_store (hv, "titlefont", strlen ("titlefont"),
-                newRV_inc ((SV *) av), 0);
-      for (i = 0; i < global_info.titlefont.contents.number; i++)
-        {
-          e = contents_child_by_index (&global_info.titlefont, i);
-          if (e->hv)
-            av_push (av, newRV_inc ((SV *) e->hv));
-        }
-    }
-  if (global_info.listoffloats.contents.number > 0)
-    {
-      av = newAV ();
-      hv_store (hv, "listoffloats", strlen ("listoffloats"),
-                newRV_inc ((SV *) av), 0);
-      for (i = 0; i < global_info.listoffloats.contents.number; i++)
-        {
-          e = contents_child_by_index (&global_info.listoffloats, i);
-          if (e->hv)
-            av_push (av, newRV_inc ((SV *) e->hv));
-        }
-    }
-  if (global_info.detailmenu.contents.number > 0)
-    {
-      av = newAV ();
-      hv_store (hv, "detailmenu", strlen ("detailmenu"),
-                newRV_inc ((SV *) av), 0);
-      for (i = 0; i < global_info.detailmenu.contents.number; i++)
-        {
-          e = contents_child_by_index (&global_info.detailmenu, i);
-          if (e->hv)
-            av_push (av, newRV_inc ((SV *) e->hv));
-        }
-    }
-  if (global_info.part.contents.number > 0)
-    {
-      av = newAV ();
-      hv_store (hv, "part", strlen ("part"),
-                newRV_inc ((SV *) av), 0);
-      for (i = 0; i < global_info.part.contents.number; i++)
-        {
-          e = contents_child_by_index (&global_info.part, i);
-          if (e->hv)
-            av_push (av, newRV_inc ((SV *) e->hv));
-        }
-    }
+
+  BUILD_GLOBAL_ARRAY(hyphenation);
+  BUILD_GLOBAL_ARRAY(insertcopying);
+  BUILD_GLOBAL_ARRAY(printindex);
+  BUILD_GLOBAL_ARRAY(subtitle);
+  BUILD_GLOBAL_ARRAY(titlefont);
+  BUILD_GLOBAL_ARRAY(listoffloats);
+  BUILD_GLOBAL_ARRAY(detailmenu);
+  BUILD_GLOBAL_ARRAY(part);
+
+  /* from Common.pm %document_settable_at_commands */
+  BUILD_GLOBAL_ARRAY(allowcodebreaks);
+  BUILD_GLOBAL_ARRAY(clickstyle);
+  BUILD_GLOBAL_ARRAY(codequotebacktick);
+  BUILD_GLOBAL_ARRAY(codequoteundirected);
+  BUILD_GLOBAL_ARRAY(contents);
+  BUILD_GLOBAL_ARRAY(deftypefnnewline);
+  BUILD_GLOBAL_ARRAY(documentencoding);
+  BUILD_GLOBAL_ARRAY(documentlanguage);
+  BUILD_GLOBAL_ARRAY(exampleindent);
+  BUILD_GLOBAL_ARRAY(firstparagraphindent);
+  BUILD_GLOBAL_ARRAY(frenchspacing);
+  BUILD_GLOBAL_ARRAY(headings);
+  BUILD_GLOBAL_ARRAY(kbdinputstyle);
+  BUILD_GLOBAL_ARRAY(paragraphindent);
+  BUILD_GLOBAL_ARRAY(shortcontents);
+  BUILD_GLOBAL_ARRAY(urefbreakstyle);
+  BUILD_GLOBAL_ARRAY(xrefautomaticsectiontitle);
   return hv;
 }
 

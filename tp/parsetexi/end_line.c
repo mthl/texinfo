@@ -1662,7 +1662,7 @@ end_line_misc_line (ELEMENT *current)
                   add_extra_string (current, "input_encoding_name",
                                     input_encoding);
 
-                  global_info.input_encoding_name = text; // 3210
+                  global_info.input_encoding_name = input_encoding; // 3210
                   set_input_encoding (input_encoding);
                 }
             }
