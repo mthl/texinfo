@@ -1572,15 +1572,34 @@ end_line_misc_line (ELEMENT *current)
               /* Get perl_encoding. */
               perl_encoding = 0;
               if (texinfo_encoding)
+                perl_encoding = texinfo_encoding;
+              else
+                {
+                  int i;
+                  static char *known_encodings[] = {
+                      "shift_jis",
+                      0
+                  };
+                  for (i = 0; (known_encodings[i]); i++)
+                    {
+                      if (!strcmp (text2, known_encodings[i]))
+                        {
+                          perl_encoding = known_encodings[i];
+                          break;
+                        }
+                    }
+                }
+
+              if (perl_encoding)
                 {
                   struct encoding_map {
                       char *from; char *to;
                   };
                   static struct encoding_map map[] = {
                       "utf-8", "utf-8-strict",
-                      "us-ascii", "ascii"
+                      "us-ascii", "ascii",
+                      "shift_jis",   "shiftjis"
                   };
-                  perl_encoding = texinfo_encoding;
                   for (i = 0; i < sizeof map / sizeof *map; i++)
                     {
                       if (!strcmp (perl_encoding, map[i].from))
@@ -1589,9 +1608,6 @@ end_line_misc_line (ELEMENT *current)
                           break;
                         }
                     }
-                }
-              if (perl_encoding)
-                {
                   add_extra_string (current, "input_perl_encoding",
                                     perl_encoding);
                 }
@@ -1621,9 +1637,9 @@ end_line_misc_line (ELEMENT *current)
                       "ascii",       "us-ascii",
                       "shiftjis",    "shift_jis",
                       "latin-1",     "iso-8859-1",
-                      "iso-8859-1",  "iso8859_1",
-                      "iso-8859-2",  "iso8859_2",
-                      "iso-8859-15", "iso8859_15",
+                      "iso-8859-1",  "iso-8859-1",
+                      "iso-8859-2",  "iso-8859-2",
+                      "iso-8859-15", "iso-8859-15",
                       "koi8-r",      "koi8",
                       "koi8-u",      "koi8",
                   };
@@ -1647,10 +1663,8 @@ end_line_misc_line (ELEMENT *current)
                                     input_encoding);
 
                   global_info.input_encoding_name = text; // 3210
+                  set_input_encoding (input_encoding);
                 }
-
-              // TODO: Need to convert input in input.c from this encoding.
-              // (INPUT_PERL_ENCODING in Perl version)
             }
           else if (current->cmd == CM_documentlanguage) // 3223
             {

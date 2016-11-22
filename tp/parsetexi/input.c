@@ -31,14 +31,16 @@ enum input_type { IN_file, IN_text };
 
 enum character_encoding {
     ce_latin1,
-    ce_utf8
+    ce_latin2,
+    ce_utf8,
+    ce_shiftjis
 };
 
 typedef struct {
     enum input_type type;
 
     FILE *file;
-    enum character_encoding input_encoding;
+    char *input_encoding;
     LINE_NR line_nr;
 
     char *text;  /* Input text to be parsed as Texinfo. */
@@ -92,6 +94,8 @@ new_line (void)
 #define ICONV_CONST
 
 static iconv_t iconv_from_latin1 = (iconv_t) 0;
+static iconv_t iconv_from_latin2;
+static iconv_t iconv_from_shiftjis;
 
 /* Run iconv using text buffer as output buffer. */
 size_t
@@ -121,12 +125,13 @@ text_buffer_iconv (TEXT *buf, iconv_t iconv_state,
 
 /* Return conversion of S according to ENC.  This function frees S. */
 static char *
-convert_to_utf8 (char *s, enum character_encoding enc)
+convert_to_utf8 (char *s, char *input_encoding)
 {
   iconv_t our_iconv;
   static TEXT t;
   char *inptr; size_t bytes_left;
   size_t iconv_ret;
+  enum character_encoding enc;
 
   /* Convert from @documentencoding to UTF-8.
        It might be possible not to convert to UTF-8 and use an 8-bit encoding
@@ -152,14 +157,44 @@ convert_to_utf8 (char *s, enum character_encoding enc)
           return s;
         }
     }
+  if (iconv_from_latin2 == (iconv_t) 0)
+    {
+      /* Initialize the conversion for the first time. */
+      iconv_from_latin2 = iconv_open ("UTF-8", "ISO-8859-2");
+      if (iconv_from_latin2 == (iconv_t) -1)
+        iconv_from_latin2 = iconv_from_latin1;
+    }
+  if (iconv_from_shiftjis == (iconv_t) 0)
+    {
+      /* Initialize the conversion for the first time. */
+      iconv_from_shiftjis = iconv_open ("UTF-8", "SHIFT-JIS");
+      if (iconv_from_shiftjis == (iconv_t) -1)
+        iconv_from_shiftjis = iconv_from_latin1;
+    }
+
+  enc = ce_latin1;
+  if (!input_encoding)
+    ;
+  else if (!strcmp (input_encoding, "utf-8"))
+    enc = ce_utf8;
+  else if (!strcmp (input_encoding, "iso-8859-2"))
+    enc = ce_latin2;
+  else if (!strcmp (input_encoding, "shift_jis"))
+    enc = ce_shiftjis;
 
   switch (enc)
     {
+    case ce_utf8:
+      return s; /* no conversion required. */
+      break;
     case ce_latin1:
       our_iconv = iconv_from_latin1;
       break;
-    case ce_utf8:
-      return s; /* no conversion required. */
+    case ce_latin2:
+      our_iconv = iconv_from_latin2;
+      break;
+    case ce_shiftjis:
+      our_iconv = iconv_from_shiftjis;
       break;
     }
 
@@ -279,7 +314,7 @@ next_text (void)
               i->line_nr.line_nr++;
               line_nr = i->line_nr;
 
-              return convert_to_utf8 (line, 0); // i->input_encoding);
+              return convert_to_utf8 (line, i->input_encoding);
             }
           free (line); line = 0;
           break;
@@ -319,6 +354,7 @@ input_push (char *text, char *macro, char *filename, int line_number)
   input_stack[input_number].file = 0;
   input_stack[input_number].text = text;
   input_stack[input_number].ptext = text;
+  input_stack[input_number].input_encoding = 0;
 
   if (!macro)
     line_number--;
@@ -352,6 +388,19 @@ input_reset_input_stack (void)
 {
   input_number = 0;
   /* TODO: free the memory */
+}
+
+void
+set_input_encoding (char *encoding)
+{
+  int i;
+
+  /* Set encoding of top file in stack. */
+  i = input_number - 1;
+  while (i >= 0 && input_stack[i].type != IN_file)
+    i--;
+  if (i >= 0)
+    input_stack[i].input_encoding = encoding;
 }
 
 
@@ -413,6 +462,7 @@ input_push_file (char *filename)
   input_stack[input_number].line_nr.macro = 0;
   input_stack[input_number].text = 0;
   input_stack[input_number].ptext = 0;
+  input_stack[input_number].input_encoding = 0;
   input_number++;
 
   return;
