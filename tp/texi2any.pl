@@ -1326,6 +1326,8 @@ while(@input_files) {
   if ($formats_table{$format}->{'floats'}) {
     Texinfo::Structuring::number_floats($floats);
   }
+  Texinfo::Structuring::do_index_keys ($parser,
+                                       $parser->indices_information());
   $error_count = handle_errors($parser, $error_count, \@opened_files);
 
   if ($format eq 'structure') {

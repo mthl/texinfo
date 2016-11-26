@@ -1401,10 +1401,11 @@ sub _sort_index_entries_in_letter($$)
   return $res;
 }
 
-sub _do_index_keys($$$)
+# Go through all the index entries and set 'key', the sort key, on
+# each one.
+sub do_index_keys($$)
 {
   my $self = shift;
-  my $index_entries = shift;
   my $index_names = shift;
 
   my $options = {'sort_string' => 1};
@@ -1414,8 +1415,8 @@ sub _do_index_keys($$$)
   }
   my %convert_text_options = Texinfo::Common::_convert_text_options($self);
   $options = {%$options, %convert_text_options};
-  foreach my $index_name (keys(%$index_entries)) {
-    foreach my $entry (@{$index_entries->{$index_name}}) {
+  foreach my $index_name (keys(%$index_names)) {
+    foreach my $entry (@{$index_names->{$index_name}->{'index_entries'}}) {
       $entry->{'in_code'} = $index_names->{$entry->{'index_name'}}->{'in_code'};
       $options->{'code'} = $entry->{'in_code'};
       $entry->{'key'} = Texinfo::Convert::Text::convert(
@@ -1439,7 +1440,7 @@ sub sort_indices($$$)
   my $index_entries = shift;
   my $index_names = shift;
   my $sorted_index_entries;
-  _do_index_keys($self, $index_entries, $index_names);
+  do_index_keys($self, $index_names);
   foreach my $index_name (keys(%$index_entries)) {
     @{$sorted_index_entries->{$index_name}} = 
         sort _sort_index_entries 
@@ -1454,7 +1455,7 @@ sub sort_indices_by_letter($$$)
   my $index_entries = shift;
   my $index_names = shift;
   my $indices_sorted_by_letters;
-  _do_index_keys($self, $index_entries, $index_names);
+  do_index_keys($self, $index_names);
   foreach my $index_name (keys(%$index_entries)) {
     my $index_letter_hash;
     foreach my $index_entry (@{$index_entries->{$index_name}}) {

@@ -1,3 +1,11 @@
+2016-11-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (_do_index_keys, do_index_keys): 
+	Rename, and remove second argument.
+	* tp/texi2any.pl: Call 'do_index_keys' so that the data set in 
+	this function, for example the 'in_code' value on index entries, 
+	will be set in case 'do_index_keys' is not called again.
+
 2016-11-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/ModulePath.pm.in: Correct a condition.
