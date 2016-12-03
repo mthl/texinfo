@@ -1,3 +1,20 @@
+2016-12-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/ParagraphNonXS.pm
+	(add_text): Do not remove end-of-sentence flag here, as adding 
+	more spaces later on would cancel the doubled space.
+	    When adding spaces, leave existing spaces untouched.
+	    Do not handle end-of-sentence disinhibition in this
+	function, as it is dealt with in '_add_next'.
+	    Use 'last_char' value from before calling '_add_next' to
+	decide whether we've reached the end of a sentence, along with a 
+	different regular expression.
+	(_add_next): Remove any backspace marker characters, not just 
+	the last one.
+
+	These changes are intended to match the implementation under 
+	tp/Texinfo/Convert/XSParagraph.
+
 2016-11-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Structuring.pm (_do_index_keys, do_index_keys): 
