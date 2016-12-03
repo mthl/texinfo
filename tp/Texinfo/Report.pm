@@ -54,18 +54,6 @@ use Texinfo::Parser;
 sub errors($)
 {
   my $self = shift;
-  #print STDERR "REPORT ERRORS $self $self->{'errors_warnings'}\n";
-
-  # Sort by filename, then by line number.
-  @{$self->{'errors_warnings'}} = sort {
-    defined($a->{'file_name'}) and defined($b->{'file_name'})
-      and $a->{'file_name'} ne $b->{'file_name'}
-    ? ($a->{'file_name'} cmp $b->{'filename'})
-    : (defined($a->{'line_nr'}) and defined($b->{'line_nr'})
-        ? ($a->{'line_nr'} <=> $b->{'line_nr'})
-        : 0)
-  } @{$self->{'errors_warnings'}};
-
   return ($self->{'errors_warnings'}, $self->{'error_nrs'});
 }
 

@@ -862,6 +862,15 @@ $result_menus{'node'} = {
 
 $result_errors{'node'} = [
   {
+    'error_line' => ':6: warning: superfluous arguments for node
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => 'superfluous arguments for node',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':3: Next reference to nonexistent `two arg\'
 ',
     'file_name' => '',
@@ -914,15 +923,6 @@ $result_errors{'node'} = [
     'macro' => '',
     'text' => 'Up reference to nonexistent `four arg\'',
     'type' => 'error'
-  },
-  {
-    'error_line' => ':6: warning: superfluous arguments for node
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => 'superfluous arguments for node',
-    'type' => 'warning'
   },
   {
     'error_line' => ':6: Next reference to nonexistent `two arg\'

@@ -173,15 +173,6 @@ Item line
 
 $result_errors{'invalid_command_and_brace_in_table'} = [
   {
-    'error_line' => ':1: warning: @table has text but no @item
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@table has text but no @item',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':2: misplaced {
 ',
     'file_name' => '',
@@ -207,6 +198,15 @@ $result_errors{'invalid_command_and_brace_in_table'} = [
     'macro' => '',
     'text' => 'misplaced }',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':1: warning: @table has text but no @item
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@table has text but no @item',
+    'type' => 'warning'
   }
 ];
 

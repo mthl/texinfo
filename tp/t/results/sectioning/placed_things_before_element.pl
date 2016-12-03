@@ -1211,21 +1211,21 @@ $result_converted_errors{'info'}->{'placed_things_before_element'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':11: warning: @anchor outside of any node
-',
-    'file_name' => '',
-    'line_nr' => 11,
-    'macro' => '',
-    'text' => '@anchor outside of any node',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':17: warning: @float outside of any node
 ',
     'file_name' => '',
     'line_nr' => 17,
     'macro' => '',
     'text' => '@float outside of any node',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':11: warning: @anchor outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 11,
+    'macro' => '',
+    'text' => '@anchor outside of any node',
     'type' => 'warning'
   }
 ];

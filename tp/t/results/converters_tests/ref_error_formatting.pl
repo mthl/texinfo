@@ -4675,15 +4675,6 @@ $result_texts{'ref_error_formatting'} = '
 
 $result_errors{'ref_error_formatting'} = [
   {
-    'error_line' => ':2: @ref reference to nonexistent node `node\'
-',
-    'file_name' => '',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => '@ref reference to nonexistent node `node\'',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':4: warning: command @ref missing a node or external manual argument
 ',
     'file_name' => '',
@@ -4700,33 +4691,6 @@ $result_errors{'ref_error_formatting'} = [
     'macro' => '',
     'text' => 'command @ref missing a node or external manual argument',
     'type' => 'warning'
-  },
-  {
-    'error_line' => ':8: @ref reference to nonexistent node `node\'
-',
-    'file_name' => '',
-    'line_nr' => 8,
-    'macro' => '',
-    'text' => '@ref reference to nonexistent node `node\'',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':9: @ref reference to nonexistent node `node\'
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => '@ref reference to nonexistent node `node\'',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':12: @ref reference to nonexistent node `node\'
-',
-    'file_name' => '',
-    'line_nr' => 12,
-    'macro' => '',
-    'text' => '@ref reference to nonexistent node `node\'',
-    'type' => 'error'
   },
   {
     'error_line' => ':22: warning: command @ref missing a node or external manual argument
@@ -4754,6 +4718,42 @@ $result_errors{'ref_error_formatting'} = [
     'macro' => '',
     'text' => 'command @inforef missing a node or external manual argument',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':2: @ref reference to nonexistent node `node\'
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@ref reference to nonexistent node `node\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':8: @ref reference to nonexistent node `node\'
+',
+    'file_name' => '',
+    'line_nr' => 8,
+    'macro' => '',
+    'text' => '@ref reference to nonexistent node `node\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':9: @ref reference to nonexistent node `node\'
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => '@ref reference to nonexistent node `node\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':12: @ref reference to nonexistent node `node\'
+',
+    'file_name' => '',
+    'line_nr' => 12,
+    'macro' => '',
+    'text' => '@ref reference to nonexistent node `node\'',
+    'type' => 'error'
   }
 ];
 

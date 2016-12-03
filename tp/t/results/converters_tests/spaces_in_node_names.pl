@@ -1087,15 +1087,6 @@ $result_menus{'spaces_in_node_names'}{'menu_child'}{'menu_up'} = $result_menus{'
 
 $result_errors{'spaces_in_node_names'} = [
   {
-    'error_line' => ':6: warning: @menu entry node name `c@ \' different from node name `c@w{  }\'
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => '@menu entry node name `c@ \' different from node name `c@w{  }\'',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':11: warning: @verb should not appear in @node
 ',
     'file_name' => '',
@@ -1111,6 +1102,15 @@ $result_errors{'spaces_in_node_names'} = [
     'line_nr' => 17,
     'macro' => '',
     'text' => '@verb should not appear in @ref',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':6: warning: @menu entry node name `c@ \' different from node name `c@w{  }\'
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => '@menu entry node name `c@ \' different from node name `c@w{  }\'',
     'type' => 'warning'
   }
 ];

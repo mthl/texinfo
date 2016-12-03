@@ -474,15 +474,6 @@ in nested enumerate itemx
 
 $result_errors{'itemx_in_itemize_enumerate_in_table'} = [
   {
-    'error_line' => ':5: warning: @itemize has text but no @item
-',
-    'file_name' => '',
-    'line_nr' => 5,
-    'macro' => '',
-    'text' => '@itemize has text but no @item',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':6: @itemx not meaningful inside `@itemize\' block
 ',
     'file_name' => '',
@@ -492,12 +483,12 @@ $result_errors{'itemx_in_itemize_enumerate_in_table'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':9: warning: @enumerate has text but no @item
+    'error_line' => ':5: warning: @itemize has text but no @item
 ',
     'file_name' => '',
-    'line_nr' => 9,
+    'line_nr' => 5,
     'macro' => '',
-    'text' => '@enumerate has text but no @item',
+    'text' => '@itemize has text but no @item',
     'type' => 'warning'
   },
   {
@@ -508,6 +499,15 @@ $result_errors{'itemx_in_itemize_enumerate_in_table'} = [
     'macro' => '',
     'text' => '@itemx not meaningful inside `@enumerate\' block',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':9: warning: @enumerate has text but no @item
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => '@enumerate has text but no @item',
+    'type' => 'warning'
   }
 ];
 

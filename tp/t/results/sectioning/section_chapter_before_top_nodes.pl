@@ -890,24 +890,6 @@ $result_menus{'section_chapter_before_top_nodes'}{'menu_child'}{'menu_up'} = $re
 
 $result_errors{'section_chapter_before_top_nodes'} = [
   {
-    'error_line' => ':1: warning: node `chapter node\' is up for `section node\' in menu but not in sectioning
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => 'node `chapter node\' is up for `section node\' in menu but not in sectioning',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':4: warning: node `Top\' is up for `chapter node\' in menu but not in sectioning
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => 'node `Top\' is up for `chapter node\' in menu but not in sectioning',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':5: warning: lowering the section level of @chapter appearing after a lower element
 ',
     'file_name' => '',
@@ -923,6 +905,24 @@ $result_errors{'section_chapter_before_top_nodes'} = [
     'line_nr' => 12,
     'macro' => '',
     'text' => 'lowering the section level of @top appearing after a lower element',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':1: warning: node `chapter node\' is up for `section node\' in menu but not in sectioning
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'node `chapter node\' is up for `section node\' in menu but not in sectioning',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':4: warning: node `Top\' is up for `chapter node\' in menu but not in sectioning
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'node `Top\' is up for `chapter node\' in menu but not in sectioning',
     'type' => 'warning'
   }
 ];

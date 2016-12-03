@@ -506,12 +506,12 @@ $result_menus{'equivalent_nodes'}{'menu_child'}{'menu_up'} = $result_menus{'equi
 
 $result_errors{'equivalent_nodes'} = [
   {
-    'error_line' => ':1: warning: Next pointer `@emph{node}\' (for node `Top\') different from node name `@samp{node}\'
+    'error_line' => ':9: warning: @xref to `node\', different from node name `@samp{node}\'
 ',
     'file_name' => '',
-    'line_nr' => 1,
+    'line_nr' => 9,
     'macro' => '',
-    'text' => 'Next pointer `@emph{node}\' (for node `Top\') different from node name `@samp{node}\'',
+    'text' => '@xref to `node\', different from node name `@samp{node}\'',
     'type' => 'warning'
   },
   {
@@ -524,12 +524,12 @@ $result_errors{'equivalent_nodes'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':9: warning: @xref to `node\', different from node name `@samp{node}\'
+    'error_line' => ':1: warning: Next pointer `@emph{node}\' (for node `Top\') different from node name `@samp{node}\'
 ',
     'file_name' => '',
-    'line_nr' => 9,
+    'line_nr' => 1,
     'macro' => '',
-    'text' => '@xref to `node\', different from node name `@samp{node}\'',
+    'text' => 'Next pointer `@emph{node}\' (for node `Top\') different from node name `@samp{node}\'',
     'type' => 'warning'
   }
 ];

@@ -1220,15 +1220,6 @@ End Tag Table
 
 $result_converted_errors{'info'}->{'before_node_and_section'} = [
   {
-    'error_line' => ':3: warning: entry for index `cp\' outside of any node
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => 'entry for index `cp\' outside of any node',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':4: warning: @footnote outside of any node
 ',
     'file_name' => '',
@@ -1244,6 +1235,15 @@ $result_converted_errors{'info'}->{'before_node_and_section'} = [
     'line_nr' => 5,
     'macro' => '',
     'text' => '@anchor outside of any node',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':3: warning: entry for index `cp\' outside of any node
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
   }
 ];

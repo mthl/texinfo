@@ -1364,15 +1364,6 @@ $result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_up'} = $result_m
 
 $result_errors{'special_docbook_unnumbered'} = [
   {
-    'error_line' => ':1: node `Top\' lacks menu item for `colophon\' despite being its Up target
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => 'node `Top\' lacks menu item for `colophon\' despite being its Up target',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':9: @menu reference to nonexistent node `glossary\'
 ',
     'file_name' => '',
@@ -1416,6 +1407,15 @@ $result_errors{'special_docbook_unnumbered'} = [
     'macro' => '',
     'text' => 'node `Top\' is up for `colophon\' in sectioning but not in menu',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':1: node `Top\' lacks menu item for `colophon\' despite being its Up target
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'node `Top\' lacks menu item for `colophon\' despite being its Up target',
+    'type' => 'error'
   },
   {
     'error_line' => ':28: warning: node prev `acknowledgements\' in menu `preface\' and in sectioning `colophon\' differ

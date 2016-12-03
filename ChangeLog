@@ -1,8 +1,14 @@
 2016-12-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Report.pm (errors): Do not sort errors by line 
+	number, as this can cause error continuations to be separated 
+	from the first error line.
+
+2016-12-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/paragraph.t (two_words_dot_paren_dot, two_words_dot_dot)
 	(three_newlines): New tests.
-	* tp/t/plaintext.t (punctuation_in_sc): New tests.
+	* tp/t/plaintext.t (punctuation_in_sc): New test.
 
 2016-12-03  Gavin Smith  <gavinsmith0123@gmail.com>
 

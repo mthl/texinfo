@@ -934,31 +934,22 @@ $result_menus{'spaces_in_empty_node_names'} = {
 
 $result_errors{'spaces_in_empty_node_names'} = [
   {
-    'error_line' => ':4: @menu reference to nonexistent node `@ @ \'
+    'error_line' => ':11: warning: @verb should not appear in @node
 ',
     'file_name' => '',
-    'line_nr' => 4,
+    'line_nr' => 11,
     'macro' => '',
-    'text' => '@menu reference to nonexistent node `@ @ \'',
-    'type' => 'error'
+    'text' => '@verb should not appear in @node',
+    'type' => 'warning'
   },
   {
-    'error_line' => ':5: @menu reference to nonexistent node `@verb{:  :}\'
+    'error_line' => ':17: warning: @verb should not appear in @ref
 ',
     'file_name' => '',
-    'line_nr' => 5,
+    'line_nr' => 17,
     'macro' => '',
-    'text' => '@menu reference to nonexistent node `@verb{:  :}\'',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':6: @menu reference to nonexistent node `@ \'
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => '@menu reference to nonexistent node `@ \'',
-    'type' => 'error'
+    'text' => '@verb should not appear in @ref',
+    'type' => 'warning'
   },
   {
     'error_line' => ':9: empty node name after expansion `@ @ \'
@@ -968,15 +959,6 @@ $result_errors{'spaces_in_empty_node_names'} = [
     'macro' => '',
     'text' => 'empty node name after expansion `@ @ \'',
     'type' => 'error'
-  },
-  {
-    'error_line' => ':11: warning: @verb should not appear in @node
-',
-    'file_name' => '',
-    'line_nr' => 11,
-    'macro' => '',
-    'text' => '@verb should not appear in @node',
-    'type' => 'warning'
   },
   {
     'error_line' => ':11: empty node name after expansion `@verb{:  :}\'
@@ -1006,15 +988,6 @@ $result_errors{'spaces_in_empty_node_names'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':17: warning: @verb should not appear in @ref
-',
-    'file_name' => '',
-    'line_nr' => 17,
-    'macro' => '',
-    'text' => '@verb should not appear in @ref',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':17: @ref reference to nonexistent node `@verb{:  :}\'
 ',
     'file_name' => '',
@@ -1030,6 +1003,33 @@ $result_errors{'spaces_in_empty_node_names'} = [
     'line_nr' => 19,
     'macro' => '',
     'text' => '@ref reference to nonexistent node `@w{  }\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':4: @menu reference to nonexistent node `@ @ \'
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => '@menu reference to nonexistent node `@ @ \'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':5: @menu reference to nonexistent node `@verb{:  :}\'
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => '@menu reference to nonexistent node `@verb{:  :}\'',
+    'type' => 'error'
+  },
+  {
+    'error_line' => ':6: @menu reference to nonexistent node `@ \'
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => '@menu reference to nonexistent node `@ \'',
     'type' => 'error'
   }
 ];

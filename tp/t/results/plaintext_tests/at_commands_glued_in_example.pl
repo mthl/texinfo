@@ -763,15 +763,6 @@ index';
 
 $result_errors{'at_commands_glued_in_example'} = [
   {
-    'error_line' => ':8: @ref reference to nonexistent node `Top\'
-',
-    'file_name' => '',
-    'line_nr' => 8,
-    'macro' => '',
-    'text' => '@ref reference to nonexistent node `Top\'',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':15: warning: @cindex should only appear at the beginning of a line
 ',
     'file_name' => '',
@@ -788,6 +779,15 @@ $result_errors{'at_commands_glued_in_example'} = [
     'macro' => '',
     'text' => 'entry for index `cp\' outside of any node',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':8: @ref reference to nonexistent node `Top\'
+',
+    'file_name' => '',
+    'line_nr' => 8,
+    'macro' => '',
+    'text' => '@ref reference to nonexistent node `Top\'',
+    'type' => 'error'
   }
 ];
 

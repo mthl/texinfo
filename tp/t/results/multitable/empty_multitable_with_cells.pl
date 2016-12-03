@@ -194,15 +194,6 @@ $result_errors{'empty_multitable_with_cells'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: warning: @multitable has text but no @item
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@multitable has text but no @item',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':2: warning: @item in empty multitable
 ',
     'file_name' => '',
@@ -236,6 +227,15 @@ $result_errors{'empty_multitable_with_cells'} = [
     'line_nr' => 3,
     'macro' => '',
     'text' => '@item in empty multitable',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':1: warning: @multitable has text but no @item
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@multitable has text but no @item',
     'type' => 'warning'
   }
 ];

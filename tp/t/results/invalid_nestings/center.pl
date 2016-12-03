@@ -2359,15 +2359,6 @@ $result_errors{'center'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':21: warning: @table has text but no @item
-',
-    'file_name' => '',
-    'line_nr' => 21,
-    'macro' => '',
-    'text' => '@table has text but no @item',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':22: @item outside of table or list
 ',
     'file_name' => '',
@@ -2383,6 +2374,15 @@ $result_errors{'center'} = [
     'line_nr' => 22,
     'macro' => '',
     'text' => '@item should not appear in @center',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':21: warning: @table has text but no @item
+',
+    'file_name' => '',
+    'line_nr' => 21,
+    'macro' => '',
+    'text' => '@table has text but no @item',
     'type' => 'warning'
   },
   {
