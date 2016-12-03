@@ -50,6 +50,7 @@ And ? ?@:. ?@:
 Now ! !@:@@ !@:
 but , ,@:
 '],
+['punctuation_in_sc', 'one @sc{two.} three @sc{FOUR.} five'],
 ['accent_command_punctuation',
 '@dotaccent{e} after'],
 ['empty_line_in_example_end',

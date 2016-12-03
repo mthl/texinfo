@@ -6,7 +6,9 @@ use File::Basename;
 
 BEGIN {
 
-plan tests => 127 * 2 - 45;
+# X * 2 - Y: X is the total number of tests, Y the number of tests only to
+# be run once.
+plan tests => 130 * 2 - 45;
 
 my ($real_command_name, $command_directory, $command_suffix)
   = fileparse($0, '.t');
@@ -78,9 +80,12 @@ test_para(['word.  other'], "word.  other\n", 'two_words_dot');
 #test_para(['word. other'], "word.  other\n", 'two_words_dot_one_space');
 test_para(['word. other'], "word.  other\n", 'two_words_dot_one_space');
 test_para(['word.) other'], "word.)  other\n", 'two_words_dot_paren_one_space');
+test_para(['word.). other'], "word.).  other\n", 'two_words_dot_paren_dot');
+test_para(['word.. other'], "word..  other\n", 'two_words_dot_dot');
 test_para(['worD.  other'], "worD. other\n", 'two_words_dot_upper');
 test_para(['worD.)  other'], "worD.) other\n", 'two_words_dot_paren_upper');
 test_para(['worD).  other'], "worD). other\n", 'two_words_paren_dot_upper');
+test_para(["word.\n", "\n", "\n", 'other',], "word.  other\n", 'three_newlines');
 test_para(['word','other'], "wordother\n", 'concatenate');
 test_para(['word.', ' A'], "word.  A\n", 'punctuation_at_end_fragment');
 test_para(['word','other'], "wordother\n", 'concatenate_max', {'max' => 2});
