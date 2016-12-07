@@ -1,3 +1,8 @@
+2016-12-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc: Use mkfifo instead of mknod for better 
+	portability.
+
 2016-12-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Report.pm (errors): Do not sort errors by line 
