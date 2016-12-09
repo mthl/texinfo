@@ -5498,6 +5498,9 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
     }
     @{$self->{'context_stack'}} = ($self->{'context'});
   }
+
+  # Call 'labels_information' to initialize labels.
+  my $labels = labels_information($self);
   return $root;
 }
 

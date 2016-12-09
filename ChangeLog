@@ -1,3 +1,14 @@
+2016-12-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): Call 'labels_information' 
+	to initialize some data for the first time.
+
+2016-12-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc: Always use ':' as the path separator, 
+	instead of trying to check whether ';' should be used.  Ken Brown
+	reported that this check was broken due to an undefined variable.
+
 2016-12-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-inter.inc: Use mkfifo instead of mknod for better 
