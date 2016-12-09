@@ -992,8 +992,7 @@ sub global_informations($)
 sub labels_information($)
 {
   my $self = shift;
-  if (!%{$self->{'labels'}}
-       and defined $self->{'targets'}) {
+  if (defined $self->{'targets'}) {
     my %labels = ();
     for my $target (@{$self->{'targets'}}) {
       if ($target->{'cmdname'} eq 'node') {
@@ -1051,6 +1050,7 @@ sub labels_information($)
       }
     }
     $self->{'labels'} = \%labels;
+    delete $self->{'targets'};
   }
   return $self->{'labels'};
 }

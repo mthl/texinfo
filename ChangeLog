@@ -2,6 +2,10 @@
 
 	* tp/Texinfo/Parser.pm (_parse_texi): Call 'labels_information' 
 	to initialize some data for the first time.
+	(labels_information): Use presence of $self->{'targets'} to 
+	decide whether 'labels' has been initialized, because it is 
+	possible that 'labels' could be initialized to an empty hash, 
+	which would still test as false.
 
 2016-12-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
