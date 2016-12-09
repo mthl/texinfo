@@ -1,5 +1,10 @@
 2016-12-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Plaintext.pm (_convert): Remove extra blank 
+	line inserted after a menu that has been created.
+
+2016-12-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi): Call 'labels_information' 
 	to initialize some data for the first time.
 	(labels_information): Use presence of $self->{'targets'} to 

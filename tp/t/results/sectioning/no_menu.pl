@@ -620,7 +620,6 @@ File: ,  Node: Top,  Up: (dir)
 * c2::
 * c3::
 
-
 
 File: ,  Node: c1,  Next: c2,  Up: Top
 

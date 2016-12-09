@@ -3364,7 +3364,6 @@ sub _convert($$)
             my $menu_text = $self->_convert ($menu_node);
             if ($menu_text) {
               $result .= $menu_text;
-              $result .= "\n";
             }
           }
         }
