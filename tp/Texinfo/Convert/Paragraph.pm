@@ -25,12 +25,28 @@ our $VERSION = '6.2';
 use Texinfo::XSLoader;
 
 BEGIN {
+  our $warning_message = undef;
+  our $fatal_message = undef;
+ # Check for a UTF-8 locale.  Skip the check if the 'locale' command doesn't
+ # work.
+  our $a;
+  if ($^O ne 'MSWin32') {
+    $a = `locale -a 2>/dev/null`;
+  }
+  if ($a and $a !~ /UTF-8/ and $a !~ /utf8/) {
+    $fatal_message = "couldn't find a UTF-8 locale";
+  }
+  if (!$a) {
+    $warning_message = "couldn't run 'locale -a': skipping check for a UTF-8 locale";
+  }
   Texinfo::XSLoader::init (
     "Texinfo::Convert::Paragraph",
     "Texinfo::Convert::XSParagraph::XSParagraph",
     "Texinfo::Convert::ParagraphNonXS",
     "Paragraph",
-    1
+    1,
+    $warning_message,
+    $fatal_message
   );
 }
 

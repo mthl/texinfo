@@ -1,5 +1,12 @@
 2016-12-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XSLoader.pm,
+	* tp/Texinfo/Convert/Paragraph.pm: Move check for UTF-8 locale 
+	into Paragraph.pm, and allow it to pass strings into XSLoader.pm 
+	to print messages for debugging purposes.
+
+2016-12-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XSLoader.pm: New file.
 	* tp/Texinfo/Convert/Paragraph.pm: Move all the code into 
 	XSLoader.pm.  This is intended to allow the code for loading XS 

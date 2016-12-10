@@ -25,6 +25,8 @@ our $TEXINFO_XS;
 
 our $VERSION = '6.2';
 
+our $disable_XS;
+
 # For verbose information about what's being done
 sub _debug($) {
   if ($TEXINFO_XS eq 'debug') {
@@ -66,16 +68,20 @@ sub init {
  # The value used for the .xs file compilation is set in configure.ac.  
  # Both should correspond, but it should be manually changed here to make
  # sure that a changed interface has not been missed.
-     $interface_version
+     $interface_version,
+     $warning_message,
+     $fatal_message
    ) = @_;
  
  # Possible values for TEXINFO_XS environment variable:
  #
  # TEXINFO_XS=omit         # don't try loading xs at all
- # TEXINFO_XS=default      # try xs, libtool and then perl paths, silent fallback
+ # TEXINFO_XS=default      # try xs, libtool and then perl paths,
+ #                         # silent fallback
  # TEXINFO_XS=libtool      # try xs, libtool only, silent fallback
  # TEXINFO_XS=standalone   # try xs, perl paths only, silent fallback
- # TEXINFO_XS=warn         # try xs, libtool and then perl paths, warn on failure
+ # TEXINFO_XS=warn         # try xs, libtool and then perl paths, warn
+ #                         # on failure
  # TEXINFO_XS=required     # abort if not loadable, no fallback
  # TEXINFO_XS=debug        # voluminuous debugging
  #
@@ -91,26 +97,19 @@ sub init {
    goto FALLBACK;
  }
  
- our $disable_XS;
  if ($disable_XS) {
    _fatal "use of XS modules was disabled when Texinfo was built";
    goto FALLBACK;
  }
- 
- # Check for a UTF-8 locale.  Skip the check if the 'locale' command doesn't
- # work.
- my $a;
- if ($^O ne 'MSWin32') {
-   $a = `locale -a 2>/dev/null`;
+
+ if ($warning_message) {
+   _debug $warning_message;
  }
- if ($a and $a !~ /UTF-8/ and $a !~ /utf8/) {
-   _fatal "couldn't find a UTF-8 locale";
+
+ if ($fatal_message) {
+   _fatal $fatal_message;
    goto FALLBACK;
  }
- if (!$a) {
-   _debug "couldn't run 'locale -a': skipping check for a UTF-8 locale";
- }
- 
  
  my ($libtool_dir, $libtool_archive);
  if ($TEXINFO_XS ne 'standalone') {
