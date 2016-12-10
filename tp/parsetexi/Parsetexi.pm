@@ -15,7 +15,7 @@
 
 package Parsetexi;
 
-use DynaLoader;
+use Texinfo::XSLoader;
 
 # same as texi2any.pl, although I don't know what the real requirement
 # is for this module.
@@ -517,205 +517,14 @@ sub labels_information($)
   return $self->{'labels'};
 }
 
-## From XSParagraph loading code
-
 BEGIN {
+  Texinfo::XSLoader::init (
+    "Texinfo::Parser",
+    "Parsetexi",
+    undef,
+    "Parsetexi",
+    1);
 
-my $module = "Parsetexi";
-my $modulename = "Parsetexi"; # Used in messages.
-our $VERSION = '6.1';
-
-# Possible values for TEXINFO_XS environment variable:
-#
-# TEXINFO_XS=omit         # don't try loading xs at all
-# TEXINFO_XS=default      # try xs, libtool and then perl paths, silent fallback
-# TEXINFO_XS=libtool      # try xs, libtool only, silent fallback
-# TEXINFO_XS=standalone   # try xs, perl paths only, silent fallback
-# TEXINFO_XS=warn         # try xs, libtool and then perl paths, warn on failure
-# TEXINFO_XS=required     # abort if not loadable, no fallback
-# TEXINFO_XS=debug        # voluminuous debugging
-#
-# Other values are treated at the moment as 'default'.
-
-my $TEXINFO_XS = $ENV{'TEXINFO_XS'};
-$TEXINFO_XS = "required";
-if (!defined($TEXINFO_XS)) {
-  $TEXINFO_XS = '';
-}
-
-if ($TEXINFO_XS eq 'omit') {
-  # Don't try to use the XS module
-  goto FALLBACK;
-}
-
-# For verbose information about what's being done
-sub _debug($) {
-  if ($TEXINFO_XS eq 'debug') {
-    my $msg = shift;
-    warn $msg . "\n";
-  }
-}
-
-# For messages to say that XS module couldn't be loaded
-sub _fatal($) {
-  if ($TEXINFO_XS eq 'debug'
-      or $TEXINFO_XS eq 'required'
-      or $TEXINFO_XS eq 'warn') {
-    my $msg = shift;
-    warn $msg . "\n";
-  }
-}
-
-# We look for the .la and .so files in @INC because this allows us to override
-# which modules are used using -I flags to "perl".
-sub _find_file($) {
-  my $file = shift;
-  for my $dir (@INC) {
-    _debug "checking $dir/$file";
-    if (-f "$dir/$file") {
-      _debug "found $dir/$file";
-      return ($dir, "$dir/$file");
-    }
-  }
-  return undef;
-}
-
-our $disable_XS;
-if ($disable_XS) {
-  _fatal "use of XS modules was disabled when Texinfo was built";
-  goto FALLBACK;
-}
-
-# Check for a UTF-8 locale.  Skip the check if the 'locale' command doesn't
-# work.
-my $a;
-if ($^O ne 'MSWin32') {
-  $a = `locale -a 2>/dev/null`;
-}
-if ($a and $a !~ /UTF-8/ and $a !~ /utf8/) {
-  _fatal "couldn't find a UTF-8 locale";
-  goto FALLBACK;
-}
-if (!$a) {
-  _debug "couldn't run 'locale -a': skipping check for a UTF-8 locale";
-}
-
-
-my ($libtool_dir, $libtool_archive);
-if ($TEXINFO_XS ne 'standalone') {
-  ($libtool_dir, $libtool_archive) = _find_file("Parsetexi.la");
-  if (!$libtool_archive) {
-    if ($TEXINFO_XS eq 'libtool') {
-      _fatal "$modulename couldn't find Libtool archive file";
-      goto FALLBACK;
-    }
-    _debug "$modulename: couldn't find Libtool archive file";
-  }
-}
-
-my $dlname = undef;
-my $dlpath = undef;
-
-# Try perl paths
-if (!$libtool_archive) {
-  my @modparts = split(/::/,$module);
-  my $dlname = $modparts[-1];
-  my $modpname = join('/',@modparts);
-  # the directories with -L prepended setup directories to
-  # be in the search path. Then $dlname is prepended as it is
-  # the name really searched for.
-  $dlpath = DynaLoader::dl_findfile(map("-L$_/auto/$modpname", @INC), $dlname);
-  if (!$dlpath) {
-    _fatal "$modulename: couldn't find $module";
-    goto FALLBACK;
-  }
-  goto LOAD;
-}
-
-my $fh;
-open $fh, $libtool_archive;
-if (!$fh) {
-  _fatal "$modulename: couldn't open Libtool archive file";
-  goto FALLBACK;
-}
-
-# Look for the line in the .la file giving the name of the loadable object.
-while (my $line = <$fh>) {
-  if ($line =~ /^\s*dlname\s*=\s*'([^']+)'\s$/) {
-    $dlname = $1;
-    last;
-  }
-}
-if (!$dlname) {
-  _fatal "$modulename: couldn't find name of shared object";
-  goto FALLBACK;
-}
-
-# The *.so file is under .libs in the source directory.
-push @DynaLoader::dl_library_path, $libtool_dir;
-push @DynaLoader::dl_library_path, "$libtool_dir/.libs";
-
-$dlpath = DynaLoader::dl_findfile($dlname);
-if (!$dlpath) {
-  _fatal "$modulename: couldn't find $dlname";
-  goto FALLBACK;
-}
-
-LOAD:
-
-#my $flags = dl_load_flags $module; # This is 0 in DynaLoader
-my $flags = 0;
-my $libref = DynaLoader::dl_load_file($dlpath, $flags);
-if (!$libref) {
-  _fatal "$modulename: couldn't load file $dlpath";
-  goto FALLBACK;
-}
-_debug "$dlpath loaded";
-my @undefined_symbols = DynaLoader::dl_undef_symbols();
-if ($#undefined_symbols+1 != 0) {
-  _fatal "$modulename: still have undefined symbols after dl_load_file";
-}
-my $bootname = "boot_$module";
-$bootname =~ s/:/_/g;
-_debug "looking for $bootname";
-my $symref = DynaLoader::dl_find_symbol($libref, $bootname);
-if (!$symref) {
-  _fatal "$modulename: couldn't find $bootname symbol";
-  goto FALLBACK;
-}
-my $boot_fn = DynaLoader::dl_install_xsub("${module}::bootstrap",
-                                                $symref, $dlname);
-
-if (!$boot_fn) {
-  _fatal "$modulename: couldn't bootstrap";
-  goto FALLBACK;
-}
-
-push @DynaLoader::dl_shared_objects, $dlpath; # record files loaded
-
-# This is the module bootstrap function, which causes all the other
-# functions (XSUB's) provided by the module to become available to
-# be called from Perl code.
-&$boot_fn($module, "1");
-
-## if (!Parsetexi::init ()) {
-##   _fatal "$modulename: error initializing";
-##   goto FALLBACK;
-## }
-goto DONTFALLBACK;
-
-FALLBACK:
-  if ($TEXINFO_XS eq 'required') {
-    die "unset the TEXINFO_XS environment variable to use the "
-       ."pure Perl modules\n";
-  } elsif ($TEXINFO_XS eq 'warn' or $TEXINFO_XS eq 'debug') {
-    #warn "falling back to pure Perl modules\n";
-    die "falling back to pure Perl modules\n";
-  }
-  # Fall back to using the Perl code.
-  #require Texinfo::Convert::ParagraphNonXS;
-  #*Texinfo::Convert::Paragraph:: = *Texinfo::Convert::ParagraphNonXS::;
-DONTFALLBACK: ;
 } # end BEGIN
 
 # NB Don't add more functions down here, because this can cause an error

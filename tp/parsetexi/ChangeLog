@@ -1,3 +1,7 @@
+2016-12-102-10vin Smith  <gavinsmith0123@gmail.com>
+
+	* Parsetexi.pm: Use Texinfo::XSLoader module.
+
 2016-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* convert.c (convert_to_normalized): Remove.
