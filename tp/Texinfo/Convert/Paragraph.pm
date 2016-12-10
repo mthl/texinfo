@@ -43,7 +43,7 @@ BEGIN {
     "Texinfo::Convert::Paragraph",
     "Texinfo::Convert::XSParagraph::XSParagraph",
     "Texinfo::Convert::ParagraphNonXS",
-    "Paragraph",
+    "XSParagraph",
     1,
     $warning_message,
     $fatal_message

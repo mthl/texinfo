@@ -113,13 +113,13 @@ sub init {
  
  my ($libtool_dir, $libtool_archive);
  if ($TEXINFO_XS ne 'standalone') {
-   ($libtool_dir, $libtool_archive) = _find_file("XS$module_name.la");
+   ($libtool_dir, $libtool_archive) = _find_file("$module_name.la");
    if (!$libtool_archive) {
      if ($TEXINFO_XS eq 'libtool') {
-       _fatal "XS for $module_name: couldn't find Libtool archive file";
+       _fatal "$module_name: couldn't find Libtool archive file";
        goto FALLBACK;
      }
-     _debug "XS for $module_name: couldn't find Libtool archive file";
+     _debug "$module_name: couldn't find Libtool archive file";
    }
  }
  
@@ -136,7 +136,7 @@ sub init {
    # the name really searched for.
    $dlpath = DynaLoader::dl_findfile(map("-L$_/auto/$modpname", @INC), $dlname);
    if (!$dlpath) {
-     _fatal "XS for $module_name:  couldn't find $module";
+     _fatal "$module_name:  couldn't find $module";
      goto FALLBACK;
    }
    goto LOAD;
@@ -145,7 +145,7 @@ sub init {
  my $fh;
  open $fh, $libtool_archive;
  if (!$fh) {
-   _fatal "XS for $module_name: couldn't open Libtool archive file";
+   _fatal "$module_name: couldn't open Libtool archive file";
    goto FALLBACK;
  }
  
@@ -157,7 +157,7 @@ sub init {
    }
  }
  if (!$dlname) {
-   _fatal "XS for $module_name: couldn't find name of shared object";
+   _fatal "$module_name: couldn't find name of shared object";
    goto FALLBACK;
  }
  
@@ -167,7 +167,7 @@ sub init {
  
  $dlpath = DynaLoader::dl_findfile($dlname);
  if (!$dlpath) {
-   _fatal "XS for $module_name: couldn't find $dlname";
+   _fatal "$module_name: couldn't find $dlname";
    goto FALLBACK;
  }
  
@@ -177,27 +177,27 @@ LOAD:
   my $flags = 0;
   my $libref = DynaLoader::dl_load_file($dlpath, $flags);
   if (!$libref) {
-    _fatal "XS for $module_name: couldn't load file $dlpath";
+    _fatal "$module_name: couldn't load file $dlpath";
     goto FALLBACK;
   }
   _debug "$dlpath loaded";
   my @undefined_symbols = DynaLoader::dl_undef_symbols();
   if ($#undefined_symbols+1 != 0) {
-    _fatal "XS for $module_name: still have undefined symbols after dl_load_file";
+    _fatal "$module_name: still have undefined symbols after dl_load_file";
   }
   my $bootname = "boot_$module";
   $bootname =~ s/:/_/g;
   _debug "looking for $bootname";
   my $symref = DynaLoader::dl_find_symbol($libref, $bootname);
   if (!$symref) {
-    _fatal "XS for $module_name: couldn't find $bootname symbol";
+    _fatal "$module_name: couldn't find $bootname symbol";
     goto FALLBACK;
   }
   my $boot_fn = DynaLoader::dl_install_xsub("${module}::bootstrap",
                                                   $symref, $dlname);
   
   if (!$boot_fn) {
-    _fatal "XS for $module_name: couldn't bootstrap";
+    _fatal "$module_name: couldn't bootstrap";
     goto FALLBACK;
   }
   
@@ -211,8 +211,8 @@ LOAD:
   # This makes it easier to refer to packages and symbols by name.
   no strict 'refs';
   
-  if (!&{"${module}::init"} ()) {
-    _fatal "XS for $module_name: error initializing";
+  if (defined &{"${module}::init"} and !&{"${module}::init"} ()) {
+    _fatal "$module_name: error initializing";
     goto FALLBACK;
   }
   
@@ -227,6 +227,10 @@ FALLBACK:
   } elsif ($TEXINFO_XS eq 'warn' or $TEXINFO_XS eq 'debug') {
     warn "falling back to pure Perl modules\n";
   }
+  if (!defined $fallback_module) {
+    die "no fallback module for $full_module_name";
+  }
+
   # Fall back to using the Perl code.
   # Use eval here to interpret :: properly in module name.
   eval "require $fallback_module";
