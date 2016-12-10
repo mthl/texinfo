@@ -21,15 +21,7 @@ test -x pseudotty || exit 77
 
 #  we may look up whether a couple of utilities exist.
 
-# Systems which define $COMSPEC or $ComSpec use semicolons to separate
-# directories in TEXINPUTS -- except for Cygwin et al., where COMSPEC
-# might be inherited, but : is used.
-if test -n "$COMSPEC$ComSpec" \
-   && uname | $EGREP -iv 'cygwin|mingw|djgpp' >/dev/null; then
-  path_sep=";"
-else
-  path_sep=":"
-fi
+path_sep=":"
 
 # findprog PROG - Return true if PROG is somewhere in PATH, else false.
 findprog ()
