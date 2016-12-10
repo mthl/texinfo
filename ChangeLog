@@ -1,3 +1,10 @@
+2016-12-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/XSLoader.pm: New file.
+	* tp/Texinfo/Convert/Paragraph.pm: Move all the code into 
+	XSLoader.pm.  This is intended to allow the code for loading XS 
+	modules to be shared among multiple modules.
+
 2016-12-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/terminal.c (terminal_switch_rendition): If turning off 

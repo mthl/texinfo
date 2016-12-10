@@ -72,6 +72,7 @@ dist_modules_DATA = \
  Texinfo/Encoding.pm \
  Texinfo/Structuring.pm \
  Texinfo/Transformations.pm \
+ Texinfo/XSLoader.pm \
  Texinfo/Documentlanguages.pm
 
 dist_noinst_DATA = \
