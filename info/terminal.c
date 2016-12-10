@@ -648,16 +648,16 @@ terminal_switch_rendition (unsigned long new)
       terminal_end_all_modes ();
       old = 0;
     }
+  else if (!(new & COLOUR_MASK) && (old & COLOUR_MASK)
+           || !(new & BGCOLOUR_MASK) && (old & BGCOLOUR_MASK))
+    {
+      terminal_default_colour ();
+      old &= ~(COLOUR_MASK|BGCOLOUR_MASK);
+    }
 
   if ((new & COLOUR_MASK) != (old & COLOUR_MASK))
     {
-      /* Switch colour. */
-      if ((new & COLOUR_MASK) == 00)
-        {
-          terminal_default_colour ();
-          old &= ~BGCOLOUR_MASK;
-        }
-      else if ((new & COLOUR_MASK) >= 8)
+      if ((new & COLOUR_MASK) >= 8)
         {
           terminal_set_colour ((new & COLOUR_MASK) - 8);
         }
@@ -666,16 +666,13 @@ terminal_switch_rendition (unsigned long new)
   if ((new & BGCOLOUR_MASK) != (old & BGCOLOUR_MASK))
     {
       /* Switch colour. */
-      if ((new & BGCOLOUR_MASK) == 00)
-        {
-          terminal_default_colour ();
-        }
-      else if ((new & BGCOLOUR_MASK) >> 9 >= 8)
+      if ((new & BGCOLOUR_MASK) >> 9 >= 8)
         {
           terminal_set_bgcolour (((new & BGCOLOUR_MASK) >> 9) - 8);
         }
       /* Colour values from 1 to 7 don't do anything right now. */
     }
+
   if ((new & UNDERLINE_MASK) != (old & UNDERLINE_MASK))
     {
       if ((new & UNDERLINE_MASK))

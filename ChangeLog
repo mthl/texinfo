@@ -1,3 +1,12 @@
+2016-12-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/terminal.c (terminal_switch_rendition): If turning off 
+	either foreground or background colour, call 
+	'terminal_default_colour' and reinstate any remaining foreground 
+	or background colour afterwards.  This fixes a bug where 
+	foreground colour might not be turned on again if background 
+	colour was turned off.
+
 2016-12-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm (_convert): Remove extra blank 
