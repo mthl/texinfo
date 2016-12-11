@@ -66,23 +66,14 @@ Texinfo/Convert/Text.pm
 Texinfo/Convert/TextContent.pm
 Texinfo/Convert/UnFilled.pm
 Texinfo/Convert/Unicode.pm
-Texinfo/Convert/XSParagraph/MANIFEST
-Texinfo/Convert/XSParagraph/Makefile.PL
-Texinfo/Convert/XSParagraph/README
-Texinfo/Convert/XSParagraph/XSParagraph.pm
-Texinfo/Convert/XSParagraph/XSParagraph.xs
-Texinfo/Convert/XSParagraph/ppport.h
-Texinfo/Convert/XSParagraph/t/XSParagraph.t
-Texinfo/Convert/XSParagraph/text.c
-Texinfo/Convert/XSParagraph/text.h
-Texinfo/Convert/XSParagraph/xspara.c
-Texinfo/Convert/XSParagraph/xspara.h
 Texinfo/Documentlanguages.pm
 Texinfo/Encoding.pm
 Texinfo/ModulePath.pm
 Texinfo/Parser.pm
 Texinfo/Report.pm
 Texinfo/Structuring.pm
+Texinfo/Transformations.pm
+Texinfo/XSLoader.pm
 init/book.pm
 init/chm.pm
 init/html32.pm
@@ -228,7 +219,6 @@ t/include_reference/inc_file.texi
 t/include_reference/incl-incl.txi
 t/include_reference/macro_included.texi
 t/include_reference/section_file.texi
-t/indent_menu_descriptions.t
 t/index_before_item.t
 t/info_tests.t
 t/init/cvs.init
@@ -908,7 +898,6 @@ t/results/macro/ifset_in_macro_set.pl
 t/results/macro/ignored_macro_definition.pl
 t/results/macro/implicit_quoting_one_arg.pl
 t/results/macro/implicit_quoting_recursion.pl
-t/results/macro/leading_spaces_ignore.pl
 t/results/macro/leading_spaces_no_ignore.pl
 t/results/macro/macro_expands_to_empty.pl
 t/results/macro/macro_expansion.pl
@@ -1130,6 +1119,7 @@ t/results/plaintext_tests/punctuation_commands_frenchspacing.pl
 t/results/plaintext_tests/punctuation_frenchspacing.pl
 t/results/plaintext_tests/punctuation_in_command.pl
 t/results/plaintext_tests/punctuation_in_command_end_line.pl
+t/results/plaintext_tests/punctuation_in_sc.pl
 t/results/plaintext_tests/quote_node_names.pl
 t/results/plaintext_tests/quote_node_names/res_plaintext/quote_node_names.txt
 t/results/plaintext_tests/sc_with_utf8_enable_encoding.pl
@@ -1251,6 +1241,7 @@ t/results/sectioning/next_in_menu_is_below.pl
 t/results/sectioning/next_no_prev_to_node.pl
 t/results/sectioning/no_argument_and_contents.pl
 t/results/sectioning/no_element.pl
+t/results/sectioning/no_menu.pl
 t/results/sectioning/node.pl
 t/results/sectioning/node_empty_direction.pl
 t/results/sectioning/node_nested_parentheses.pl
