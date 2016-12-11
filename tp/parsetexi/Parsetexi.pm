@@ -454,7 +454,7 @@ sub labels_information($)
 {
   my $self = shift;
 
-  if (!%{$self->{'labels'}}
+  if (!defined $self->{'labels'}
        and defined $self->{'targets'}) {
     my %labels = ();
     for my $target (@{$self->{'targets'}}) {
@@ -513,6 +513,7 @@ sub labels_information($)
       }
     }
     $self->{'labels'} = \%labels;
+    delete $self->{'targets'};
   }
   return $self->{'labels'};
 }
