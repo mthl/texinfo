@@ -2514,19 +2514,6 @@ sub _register_label($$$$)
   return 1;
 }
 
-sub _non_bracketed_contents($)
-{
-  my $current = shift;
-  if ($current->{'type'} and $current->{'type'} eq 'bracketed') {
-    my $new = {};
-    $new->{'contents'} = $current->{'contents'} if ($current->{'parent'});
-    $new->{'parent'} = $current->{'parent'} if ($current->{'parent'});
-    return $new;
-  } else {
-    return $current;
-  }
-}
-
 # store an index entry.
 # $current is the command element.
 # $content holds the actual content.
@@ -2801,37 +2788,24 @@ sub _end_line($$$)
       if (defined($index_entry)) {
         my $index_contents_normalized;
         if ($def_parsed_hash->{'class'}) {
-          if ($command_index{$def_command} eq 'fn') {
-            $index_entry = $self->gdt('{name} on {class}', 
-                                  {'name' => $def_parsed_hash->{'name'},
-                                   'class' => $def_parsed_hash->{'class'}});
-           $index_contents_normalized
-             = [_non_bracketed_contents($def_parsed_hash->{'name'}),
-                { 'text' => ' on '},
-                _non_bracketed_contents($def_parsed_hash->{'class'})];
-          } elsif ($command_index{$def_command} eq 'vr'
+          # Delay getting the text until Texinfo::Structuring::sort_index_keys
+          # in order to avoid using gdt.
+          # We need to store the language as well in case there are multiple
+          # languages in the document.
+          if ($command_index{$def_command} eq 'fn'
+              or $command_index{$def_command} eq 'vr'
                   and $def_command ne 'defcv') {
-            $index_entry = $self->gdt('{name} of {class}', 
-                                     {'name' => $def_parsed_hash->{'name'},
-                                     'class' => $def_parsed_hash->{'class'}});
-            $index_contents_normalized
-              = [_non_bracketed_contents($def_parsed_hash->{'name'}),
-                 { 'text' => ' of '},
-                 _non_bracketed_contents($def_parsed_hash->{'class'})];
+            undef $index_entry;
+            $current->{'parent'}->{'extra'}->{'documentlanguage'}
+                     = $self->{'documentlanguage'};
           }
         }
-        $index_contents_normalized = [$index_entry]
-          if (!defined($index_contents_normalized));
         my $index_contents;
-        # 'root_line' is the container returned by gdt.
-        if ($index_entry->{'type'} and $index_entry->{'type'} eq 'root_line') {
-          $index_contents = $index_entry->{'contents'};
-          for my $child (@$index_contents) {
-            delete $child->{'parent'};
-          }
-        } else {
+        if ($index_entry) {
+          $index_contents_normalized = [$index_entry];
           $index_contents = [$index_entry];
         }
+
         _enter_index_entry($self, 
           $current->{'parent'}->{'extra'}->{'def_command'},
           $current->{'parent'}->{'extra'}->{'original_def_cmdname'},

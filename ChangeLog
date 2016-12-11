@@ -1,5 +1,21 @@
 2016-12-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_end_line): For some index commands
+	(e.g., @defcv), do not record the text of the index entry in
+	order to avoid needing to call Texinfo::Report::gdt, which
+	would be difficult to do in the XS rewrite.  Store
+	the current document language for the index entry.
+
+	* tp/Texinfo/Structuring.pm (do_index_keys): Fill in the text
+	of the index entries where missing.  Account for the $self 
+	argument being either a Texinfo::Parser object or a converter 
+	object.
+
+	* tp/Texinfo/Parser.pm, tp/Texinfo/Structuring.pm 
+	(_non_bracketed_contents): Move function to Structuring.pm.
+
+2016-12-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Structuring.pm (merge_indices): Remove some 
 	commented-out statements for debugging.
 
