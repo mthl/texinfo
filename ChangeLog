@@ -1,3 +1,8 @@
+2016-12-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (merge_indices): Remove some 
+	commented-out statements for debugging.
+
 2016-12-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/XSLoader.pm,

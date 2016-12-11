@@ -1480,12 +1480,9 @@ sub merge_indices($)
   my $merged_index_entries;
   foreach my $index_name (keys(%$index_names)) {
     my $index_info = $index_names->{$index_name};
-    #print STDERR "MERGE_INDICES: $index_name\n";
     next if ($index_info->{'merged_in'});
     foreach my $contained_index (keys (%{$index_info->{'contained_indices'}})) {
-      #print STDERR "MERGE_INDICES: $index_name, prefix $index_prefix\n";
       if ($index_names->{$contained_index}->{'index_entries'}) {
-        #print STDERR "MERGE_INDICES: final $index_name <- $index_prefix\n";
         push @{$merged_index_entries->{$index_name}},
           @{$index_names->{$contained_index}->{'index_entries'}};
       }
