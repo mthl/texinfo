@@ -2212,58 +2212,27 @@ end_line (ELEMENT *current)
 
           if (index_entry) // 2822
             {
-              ELEMENT *index_contents = new_element (ET_NONE);
-              ELEMENT *e;
-              int translation_used = 0, i;
+              ELEMENT *index_contents = 0;
 
               // 2824
-              if (class)
-                {
-                  if (def_command == CM_defop
+              if (class &&
+                  (def_command == CM_defop
                       || def_command == CM_deftypeop
                       || def_command == CM_defmethod
-                      || def_command == CM_deftypemethod)
-                    {
-                      /* NAME on CLASS */
-
-                      add_to_contents_as_array (index_contents, name);
-
-                      e = new_element (ET_NONE);
-                      /* TODO should translate this */
-                      text_append (&e->text, " on ");
-                      add_to_contents_as_array (index_contents, e);
-
-                      add_to_contents_as_array (index_contents, class);
-                      translation_used = 1;
-                    }
-                  else if (def_command == CM_defivar
-                           || def_command == CM_deftypeivar
-                           || def_command == CM_deftypecv)
-                    {
-                      /* NAME of CLASS */
-                      add_to_contents_as_array (index_contents, name);
-
-                      e = new_element (ET_NONE);
-                      /* TODO should translate this */
-                      text_append (&e->text, " of ");
-                      add_to_contents_as_array (index_contents, e);
-
-                      add_to_contents_as_array (index_contents, class);
-                      translation_used = 1;
-                    }
-                }
-              index_contents->parent_type = route_not_in_tree;
-
-              if (index_contents->contents.number == 0)
-                add_to_contents_as_array (index_contents, index_entry);
-              if (translation_used)
+                      || def_command == CM_deftypemethod
+                      || def_command == CM_defivar
+                      || def_command == CM_deftypeivar
+                      || def_command == CM_deftypecv))
                 {
-                  for (i = 0; i < index_contents->contents.number; i++)
-                    {
-                      index_contents->contents.list[i]->parent = 0;
-                      /* These elements appear in both the main tree
-                         and in the index information. */
-                    }
+                  add_extra_string (current->parent, "documentlanguage",
+                                    global_documentlanguage);
+                }
+              else
+                {
+                  index_contents = new_element (ET_NONE);
+                  index_contents->parent_type = route_not_in_tree;
+                  if (index_contents->contents.number == 0)
+                    add_to_contents_as_array (index_contents, index_entry);
                 }
 
               enter_index_entry (def_command,

@@ -104,7 +104,6 @@ sub parser (;$$)
   my $conf = shift;
 
   my %parser_blanks = (
-    'labels' => {},
     'targets' => [],
     'extra' => {},
     'info' => {},
@@ -454,8 +453,7 @@ sub labels_information($)
 {
   my $self = shift;
 
-  if (!defined $self->{'labels'}
-       and defined $self->{'targets'}) {
+  if (defined $self->{'targets'}) {
     my %labels = ();
     for my $target (@{$self->{'targets'}}) {
       if ($target->{'cmdname'} eq 'node') {
