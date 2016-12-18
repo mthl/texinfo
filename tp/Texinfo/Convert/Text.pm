@@ -1,6 +1,7 @@
 # Text.pm: output tree as simple text.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 
+# Inc., 
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -349,20 +350,6 @@ sub _convert($;$)
 {
   my $root = shift;
   my $options = shift;
-
-  if (0) {
-    print STDERR "root $root";
-    print STDERR " cmd: \@$root->{'cmdname'}," if ($root->{'cmdname'});
-    print STDERR " type: $root->{'type'}," if ($root->{'type'});
-    my $text = $root->{'text'};
-    if (defined($text)) {
-      $text =~ s/\n/\\n/;
-      print STDERR " text: `$text'";
-    }
-    print STDERR "\n";
-    #print STDERR "  Special def_command: $root->{'extra'}->{'def_command'}\n"
-    #  if (defined($root->{'extra'}) and $root->{'extra'}->{'def_command'});
-  }
 
   return '' if (!($root->{'type'} and $root->{'type'} eq 'def_line')
      and (($root->{'type'} and $ignored_types{$root->{'type'}})

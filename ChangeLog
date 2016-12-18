@@ -1,5 +1,10 @@
 2016-12-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Text.pm (_convert): Delete disabled code 
+	used for debugging.
+
+2016-12-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Structuring.pm (do_index_keys): Explicitly list the 
 	commands to get the text of index entries for.
 
