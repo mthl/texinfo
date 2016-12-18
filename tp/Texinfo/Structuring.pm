@@ -1449,7 +1449,6 @@ sub do_index_keys($$)
           }
         }
         my $def_command = $entry->{'command'}->{'extra'}->{'def_command'};
-        my $command_index = $parser->{'command_index'};
 
         my $def_parsed_hash = $entry->{'command'}->{'extra'}->{'def_parsed_hash'}; 
         if ($def_parsed_hash and $def_parsed_hash->{'class'}
@@ -1458,7 +1457,10 @@ sub do_index_keys($$)
           # used for getting the translation.
           $self->{'documentlanguage'} = $entry->{'command'}->{'extra'}->{'documentlanguage'};
           delete $entry->{'command'}->{'extra'}->{'documentlanguage'};
-          if ($command_index->{$def_command} eq 'fn') {
+          if ($def_command eq 'defop'
+              or $def_command eq 'deftypeop'
+              or $def_command eq 'defmethod'
+              or $def_command eq 'deftypemethod') {
             $index_entry = $self->gdt('{name} on {class}',
                                   {'name' => $def_parsed_hash->{'name'},
                                    'class' => $def_parsed_hash->{'class'}});
@@ -1466,8 +1468,9 @@ sub do_index_keys($$)
              = [_non_bracketed_contents($def_parsed_hash->{'name'}),
                 { 'text' => ' on '},
                 _non_bracketed_contents($def_parsed_hash->{'class'})];
-          } elsif ($command_index->{$def_command} eq 'vr'
-                  and $def_command ne 'defcv') {
+          } elsif ($def_command eq 'defivar'
+                   or $def_command eq 'deftypeivar'
+                   or $def_command eq 'deftypecv') {
             $index_entry = $self->gdt('{name} of {class}',
                                      {'name' => $def_parsed_hash->{'name'},
                                      'class' => $def_parsed_hash->{'class'}});

@@ -1,3 +1,8 @@
+2016-12-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (do_index_keys): Explicitly list the 
+	commands to get the text of index entries for.
+
 2016-12-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_end_line): For some index commands
