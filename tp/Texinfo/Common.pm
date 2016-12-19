@@ -697,13 +697,13 @@ our %def_map = (
     # shortcuts
     'defun',         {'deffn'     => gdt('Function')},
     'defmac',        {'deffn'     => gdt('Macro')},
-    'defspec',       {'deffn'     => '{'.gdt('Special Form').'}'},
+    'defspec',       {'deffn'     => gdt('Special Form')},
     'defvar',        {'defvr'     => gdt('Variable')},
-    'defopt',        {'defvr'     => '{'.gdt('User Option').'}'},
+    'defopt',        {'defvr'     => gdt('User Option')},
     'deftypefun',    {'deftypefn' => gdt('Function')},
     'deftypevar',    {'deftypevr' => gdt('Variable')},
-    'defivar',       {'defcv'     => '{'.gdt('Instance Variable').'}'},
-    'deftypeivar',   {'deftypecv' => '{'.gdt('Instance Variable').'}'},
+    'defivar',       {'defcv'     => gdt('Instance Variable')},
+    'deftypeivar',   {'deftypecv' => gdt('Instance Variable')},
     'defmethod',     {'defop'     => gdt('Method')},
     'deftypemethod', {'deftypeop' => gdt('Method')},
 );

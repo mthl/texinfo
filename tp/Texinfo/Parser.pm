@@ -2357,26 +2357,13 @@ sub _parse_def($$$)
     my $prepended = $def_map{$command}->{$real_command};
     my @prepended_content;
 
-    my $text;
-    my $in_bracketed;
-    if ($prepended =~ /^\{/) {
-      $text = $prepended;
-      $text =~ s/\{([^\}]+)\}/$1/;
-      $in_bracketed = 1;
-    } else {
-      $text = $prepended;
+    my $tree = $self->gdt($prepended);
+    my $bracketed = { 'type' => 'bracketed' };
+    $bracketed->{'contents'} = $tree->{'contents'};
+    foreach my $content (@{$tree->{'contents'}}) {
+      $content->{'parent'} = $bracketed;
     }
-    my $tree = $self->gdt($text);
-    if ($in_bracketed or @{$tree->{'contents'}} > 1) {
-      my $bracketed = { 'type' => 'bracketed' };
-      $bracketed->{'contents'} = $tree->{'contents'};
-      foreach my $content (@{$tree->{'contents'}}) {
-        $content->{'parent'} = $bracketed;
-      }
-      @prepended_content = ($bracketed);
-    } else {
-      @prepended_content = (@{$tree->{'contents'}});
-    }
+    @prepended_content = ($bracketed);
     push @prepended_content, { 'text' => ' ' };
 
     unshift @contents, @prepended_content;
