@@ -1681,6 +1681,7 @@ end_line_misc_line (ELEMENT *current)
               if (*p == '_')
                 {
                   q = p + 1;
+                  p = q;
                   /* Language code should be of the form LL_CC, language code
                      followed by country code. */
                   while (isalpha (*p))

@@ -61,5 +61,6 @@ char *element_type_names[] = {
 "elided",
 "elided_block",
 "delimiter",
+"untranslated",
 
 };

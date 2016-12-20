@@ -62,6 +62,7 @@ ET_row_prototype,
 ET_elided,
 ET_elided_block,
 ET_delimiter,
+ET_untranslated,
 };
 
 extern char *element_type_names[];

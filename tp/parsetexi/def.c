@@ -198,13 +198,13 @@ typedef struct {
 DEF_ALIAS def_aliases[] = {
   CM_defun, CM_deffn, "Function",
   CM_defmac, CM_deffn, "Macro",
-  CM_defspec, CM_deffn, "{Special Form}",
+  CM_defspec, CM_deffn, "Special Form",
   CM_defvar, CM_defvr, "Variable",
-  CM_defopt, CM_defvr, "{User Option}",
+  CM_defopt, CM_defvr, "User Option",
   CM_deftypefun, CM_deftypefn, "Function",
   CM_deftypevar, CM_deftypevr, "Variable",
-  CM_defivar, CM_defcv, "{Instance Variable}",
-  CM_deftypeivar, CM_deftypecv, "{Instance Variable}",
+  CM_defivar, CM_defcv, "Instance Variable",
+  CM_deftypeivar, CM_deftypecv, "Instance Variable",
   CM_defmethod, CM_defop, "Method",
   CM_deftypemethod, CM_deftypeop, "Method",
   0, 0, 0
@@ -302,30 +302,21 @@ found:
       original_command = command;
       command = def_aliases[i].command;
 
-      /* TODO: Get the gettext translation of "Function" etc.  The result of
-         this is actually a general Texinfo tree, instead of just a string. */
-      /* tree = gdt (category); */
-
-      if (*category != '{')
+      /* Used when category text has a space in it. */
+      e = new_element (ET_bracketed);
+      insert_into_contents (arg_line, e, 0);
+      e->parent = 0;
+      e->parent_type = route_not_in_tree;
+      e1 = new_element (ET_NONE);
+      text_append_n (&e1->text, category, strlen (category));
+      add_to_element_contents (e, e1);
+      if (global_documentlanguage && *global_documentlanguage)
         {
-          e = new_element (ET_NONE);
-          text_append (&e->text, category);
-          insert_into_contents (arg_line, e, 0);
-          e->parent = 0;
-          e->parent_type = route_not_in_tree;
+          e1->type = ET_untranslated;
+          add_extra_string (e1, "documentlanguage",
+                            global_documentlanguage);
         }
-      else
-        {
-          /* Used when category text has a space in it. */
-          e = new_element (ET_bracketed);
-          insert_into_contents (arg_line, e, 0);
-          e->parent = 0;
-          e->parent_type = route_not_in_tree;
-          e1 = new_element (ET_NONE);
-          text_append_n (&e1->text, category + 1, strlen (category) - 2);
-          add_to_element_contents (e, e1);
-          e1->parent_type = route_not_in_tree;
-        }
+      e1->parent_type = route_not_in_tree;
 
       e = new_element (ET_NONE);
       text_append_n (&e->text, " ", 1);

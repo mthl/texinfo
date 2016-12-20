@@ -91,3 +91,6 @@ elided_block
 # for def commands
 delimiter
 
+# for inserted text in def commands
+untranslated
+
