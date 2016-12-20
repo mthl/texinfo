@@ -125,8 +125,12 @@ $result_trees{'unknown_region'} = {
                     {
                       'contents' => [
                         {
+                          'extra' => {
+                            'documentlanguage' => 'fr_NOWHERE'
+                          },
                           'parent' => {},
-                          'text' => 'Variable d\'instance'
+                          'text' => 'Instance Variable',
+                          'type' => 'untranslated'
                         }
                       ],
                       'type' => 'bracketed_def_content'
@@ -343,7 +347,7 @@ $result_texis{'unknown_region'} = '@documentlanguage fr_NOWHERE
 
 $result_texts{'unknown_region'} = '
 
-Variable d\'instance of AAA: BBB CCC
+Instance Variable of AAA: BBB CCC
 ';
 
 $result_sectioning{'unknown_region'} = {};

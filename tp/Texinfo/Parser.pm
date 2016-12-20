@@ -2357,11 +2357,17 @@ sub _parse_def($$$)
     my $prepended = $def_map{$command}->{$real_command};
     my @prepended_content;
 
-    my $tree = $self->gdt($prepended);
+    my $tree = parse_texi_line(undef, $prepended);
+
     my $bracketed = { 'type' => 'bracketed' };
     $bracketed->{'contents'} = $tree->{'contents'};
     foreach my $content (@{$tree->{'contents'}}) {
       $content->{'parent'} = $bracketed;
+      if (!$content->{'type'} and $self->{'documentlanguage'}) {
+        $content->{'type'} = 'untranslated';
+        $content->{'extra'}->{'documentlanguage'}
+        = $self->{'documentlanguage'};
+      }
     }
     @prepended_content = ($bracketed);
     push @prepended_content, { 'text' => ' ' };

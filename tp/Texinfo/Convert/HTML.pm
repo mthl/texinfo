@@ -7376,6 +7376,11 @@ sub _convert($$;$)
     if ($root->{'type'} and $root->{'type'} eq '_converted') {
       return $root->{'text'};
     }
+    if ($root->{'type'} and $root->{'type'} eq 'untranslated') {
+      my $translated = $self->gdt($root->{'text'});
+      my $result = $self->_convert($translated);
+      return $result;
+    }
     my $result = &{$self->{'types_conversion'}->{'text'}} ($self, 
                                                       $root->{'type'},
                                                       $root,

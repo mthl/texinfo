@@ -98,8 +98,12 @@ $result_trees{'multiple'} = {
                         {
                           'contents' => [
                             {
+                              'extra' => {
+                                'documentlanguage' => 'fr'
+                              },
                               'parent' => {},
-                              'text' => 'Variable d\'instance'
+                              'text' => 'Instance Variable',
+                              'type' => 'untranslated'
                             }
                           ],
                           'type' => 'bracketed_def_content'
@@ -364,8 +368,12 @@ $result_trees{'multiple'} = {
                     {
                       'contents' => [
                         {
+                          'extra' => {
+                            'documentlanguage' => 'fr'
+                          },
                           'parent' => {},
-                          'text' => 'Variable d\'instance'
+                          'text' => 'Instance Variable',
+                          'type' => 'untranslated'
                         }
                       ],
                       'type' => 'bracketed_def_content'
@@ -603,8 +611,12 @@ $result_trees{'multiple'} = {
                     {
                       'contents' => [
                         {
+                          'extra' => {
+                            'documentlanguage' => 'pt'
+                          },
                           'parent' => {},
-                          'text' => 'Instance Variable'
+                          'text' => 'Instance Variable',
+                          'type' => 'untranslated'
                         }
                       ],
                       'type' => 'bracketed_def_content'
@@ -939,7 +951,7 @@ $result_texis{'multiple'} = '@documentlanguage fr
 $result_texts{'multiple'} = '
 
 
-Variable d\'instance of fr: BBB CCC
+Instance Variable of fr: BBB CCC
 
 
 
@@ -987,7 +999,7 @@ $result_converted{'plaintext'}->{'multiple'} = ' -- Variable d\'instance de fr :
 
  -- Instance Variable da pt: BBB CCC
 
- -- Variable d\'instance da copying: a b
+ -- Instance Variable da copying: a b
 ';
 
 
@@ -1004,7 +1016,7 @@ File: ,  Node: Top,  Up: (dir)
 
  -- Instance Variable da pt: BBB CCC
 
- -- Variable d\'instance da copying: a b
+ -- Instance Variable da copying: a b
 
 
 Tag Table:
@@ -1016,7 +1028,7 @@ End Tag Table
 
 $result_converted{'html'}->{'multiple'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Variable d\'instance da copying: a b -->
+<!-- Instance Variable da copying: a b -->
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
 <title>Documento Sem Nome</title>
@@ -1079,7 +1091,7 @@ ul.no-bullet {list-style: none}
 </dl>
 
 <dl>
-<dt><a name="index-copying-a-of-copying"></a>Variable d\'instance da copying: <strong>a</strong> <em>b</em></dt>
+<dt><a name="index-copying-a-of-copying"></a>Instance Variable da copying: <strong>a</strong> <em>b</em></dt>
 </dl>
 
 <hr>

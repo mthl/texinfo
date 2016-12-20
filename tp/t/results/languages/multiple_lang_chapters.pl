@@ -760,8 +760,12 @@ $result_trees{'multiple_lang_chapters'} = {
                     {
                       'contents' => [
                         {
+                          'extra' => {
+                            'documentlanguage' => 'ja'
+                          },
                           'parent' => {},
-                          'text' => 'Instance Variable'
+                          'text' => 'Instance Variable',
+                          'type' => 'untranslated'
                         }
                       ],
                       'type' => 'bracketed_def_content'
@@ -1124,8 +1128,12 @@ $result_trees{'multiple_lang_chapters'} = {
                     {
                       'contents' => [
                         {
+                          'extra' => {
+                            'documentlanguage' => 'en'
+                          },
                           'parent' => {},
-                          'text' => 'Instance Variable'
+                          'text' => 'Instance Variable',
+                          'type' => 'untranslated'
                         }
                       ],
                       'type' => 'bracketed_def_content'
@@ -1437,8 +1445,12 @@ $result_trees{'multiple_lang_chapters'} = {
                     {
                       'contents' => [
                         {
+                          'extra' => {
+                            'documentlanguage' => 'fr_FR'
+                          },
                           'parent' => {},
-                          'text' => 'Variable d\'instance'
+                          'text' => 'Instance Variable',
+                          'type' => 'untranslated'
                         }
                       ],
                       'type' => 'bracketed_def_content'
@@ -2336,7 +2348,7 @@ Instance Variable of AAA: BBB CCC
 3 fr_FR
 *******
 
-Variable d\'instance of AAA: BBB CCC
+Instance Variable of AAA: BBB CCC
 
 4 de
 ****

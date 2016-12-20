@@ -1,3 +1,26 @@
+2016-12-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_def): Instead of calling 'gdt' on 
+	inserted text, add an 'untranslated' element containing the 
+	untranslated text.
+	* tp/Texinfo/Convert/HTML.pm (_convert),
+	* tp/Texinfo/Convert/Text.pm (_convert):,
+	For 'untranslated' elements, call 'gdt' on the text.
+
+	This results in some changes to the test results:
+	  Strings not translated in the results from Text.pm, but they
+	weren't properly translated before either.
+	  Strings inside @copying translated according to document
+	language at time of @insertcopying, not time of @copying.
+
+
+2016-12-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (%def_map): Don't surround values 
+	containing spaces with braces.
+	* tp/Texinfo/Parser.pm (_parse_def): Always create a 'bracketed' 
+	element to contain prepended text.
+
 2016-12-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Text.pm (_convert): Delete disabled code 

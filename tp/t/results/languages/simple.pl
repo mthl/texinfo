@@ -125,8 +125,12 @@ $result_trees{'simple'} = {
                     {
                       'contents' => [
                         {
+                          'extra' => {
+                            'documentlanguage' => 'fr'
+                          },
                           'parent' => {},
-                          'text' => 'Variable d\'instance'
+                          'text' => 'Instance Variable',
+                          'type' => 'untranslated'
                         }
                       ],
                       'type' => 'bracketed_def_content'
@@ -343,7 +347,7 @@ $result_texis{'simple'} = '@documentlanguage fr
 
 $result_texts{'simple'} = '
 
-Variable d\'instance of AAA: BBB CCC
+Instance Variable of AAA: BBB CCC
 ';
 
 $result_sectioning{'simple'} = {};

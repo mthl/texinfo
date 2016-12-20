@@ -1649,25 +1649,31 @@ sub _convert($$)
 
   # process text
   if (defined($root->{'text'})) {
-    if (!$formatter->{'_top_formatter'}) {
-      if ($root->{'type'} and ($root->{'type'} eq 'raw' 
-                               or $root->{'type'} eq 'last_raw_newline')) {
-        $result = _count_added($self, $formatter->{'container'},
-                    $formatter->{'container'}->add_next($root->{'text'}));
-      } else {
-        my $text = _process_text($self, $root, $formatter);
-        $result = _count_added($self, $formatter->{'container'},
-                    $formatter->{'container'}->add_text($text));
+    if (!$root->{'type'} or $root->{'type'} ne 'untranslated') {
+      if (!$formatter->{'_top_formatter'}) {
+        if ($root->{'type'} and ($root->{'type'} eq 'raw' 
+                                 or $root->{'type'} eq 'last_raw_newline')) {
+          $result = _count_added($self, $formatter->{'container'},
+                      $formatter->{'container'}->add_next($root->{'text'}));
+        } else {
+          my $text = _process_text($self, $root, $formatter);
+          $result = _count_added($self, $formatter->{'container'},
+                      $formatter->{'container'}->add_text($text));
+        }
+        return $result;
+      # the following is only possible if paragraphindent is set to asis
+      } elsif ($root->{'type'} and $root->{'type'} eq 'empty_spaces_before_paragraph') {
+        _add_text_count($self, $root->{'text'});
+        return $root->{'text'};
+      # ignore text outside of any format, but warn if ignored text not empty
+      } elsif ($root->{'text'} =~ /\S/) {
+        $self->_bug_message("ignored text not empty `$root->{'text'}'", $root);
+        return '';
       }
-      return $result;
-    # the following is only possible if paragraphindent is set to asis
-    } elsif ($root->{'type'} and $root->{'type'} eq 'empty_spaces_before_paragraph') {
-      _add_text_count($self, $root->{'text'});
-      return $root->{'text'};
-    # ignore text outside of any format, but warn if ignored text not empty
-    } elsif ($root->{'text'} =~ /\S/) {
-      $self->_bug_message("ignored text not empty `$root->{'text'}'", $root);
-      return '';
+    } else {
+      my $tree = $self->gdt($root->{'text'});
+      my $converted = $self->_convert($tree);
+      return $converted;
     }
   }
 
