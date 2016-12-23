@@ -1210,8 +1210,12 @@ end_line_starting_block (ELEMENT *current)
                     command_error (current, "superfluous argument to @%s",
                                    command_name(current->cmd));
                   g = contents_child_by_index (f, 0);
-                  if (g->text.end == 1
-                      && isalnum (g->text.text[0]))
+                  /* Check if @enumerate specification is either a single
+                     letter or a string of digits. */
+                  if (g->text.end == 1 && isalpha (g->text.text[0])
+                      || (g->text.end > 0
+                          && !*(g->text.text
+                                + strspn (g->text.text, "0123456789"))))
                     {
                       spec = strdup (g->text.text);
                     }

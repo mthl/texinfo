@@ -675,6 +675,8 @@ inline_no_arg:
                 expandp = 1;
               if (current->cmd == CM_inlineifclear)
                 expandp = !expandp;
+              if (expandp)
+                add_extra_string (current, "expand_index", "1");
             }
           else
             expandp = 0;
