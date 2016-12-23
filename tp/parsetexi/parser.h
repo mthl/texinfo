@@ -53,7 +53,7 @@ ELEMENT *parse_texi (ELEMENT *root_elt);
 void push_conditional_stack (enum command_id cond);
 enum command_id pop_conditional_stack (void);
 extern size_t conditional_number;
-void parse_texi_file (const char *filename);
+void parse_texi_file (char *filename);
 int abort_empty_line (ELEMENT **current_inout, char *additional);
 ELEMENT *end_paragraph (ELEMENT *current,
                         enum command_id closed_command,

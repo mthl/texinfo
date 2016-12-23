@@ -21,6 +21,7 @@
 #include <string.h>
 #include <iconv.h>
 #include <errno.h>
+#include <sys/stat.h>
 
 #include "tree_types.h"
 #include "input.h"
@@ -418,12 +419,51 @@ static size_t include_dirs_space;
 void
 add_include_directory (char *filename)
 {
+  int len;
   if (include_dirs_number == include_dirs_space)
     {
       include_dirs = realloc (include_dirs,
                               sizeof (char *) * (include_dirs_space += 5));
     }
-  include_dirs[include_dirs_number++] = strdup (filename);
+  filename = strdup (filename);
+  include_dirs[include_dirs_number++] = filename;
+  len = strlen (filename);
+  if (len > 0 && filename[len - 1] == '/')
+    filename[len - 1] = '\0';
+}
+
+char *
+locate_include_file (char *filename)
+{
+  char *fullpath;
+  struct stat dummy;
+  int i, status;
+
+  /* Checks if filename is absolute or relative to current directory.
+     TODO: Could use macros in top-level config.h for this. */
+  /* TODO: The Perl code (in Common.pm, 'locate_include_file') handles 
+     a volume in a path (like "A:"), possibly more general treatment 
+     with File::Spec module. */
+  if (!memcmp (filename, "/", 1)
+      || !memcmp (filename, "../", 3)
+      || !memcmp (filename, "./", 2))
+    {
+      status = stat (filename, &dummy);
+      if (status == 0)
+        return filename;
+    }
+  else
+    {
+      for (i = 0; i < include_dirs_number; i++)
+        {
+          asprintf (&fullpath, "%s/%s", include_dirs[i], filename);
+          status = stat (fullpath, &dummy);
+          if (status == 0)
+            return fullpath;
+          free (fullpath);
+        }
+    }
+  return 0;
 }
 
 /* Try to open a file called FILENAME, looking for it in the list of include
@@ -432,33 +472,10 @@ int
 input_push_file (char *filename)
 {
   FILE *stream;
-  int i;
 
-  for (i = 0; i < include_dirs_number; i++)
-    {
-      /* TODO: The Perl code (in Common.pm, 'locate_include_file') handles a 
-         volume in a path (like "A:"), possibly more general treatment with 
-         File::Spec module. */
-
-      /* Checks if filename is absolute or relative to current directory.
-         TODO: Could use macros in top-level config.h for this. */
-      if (!memcmp (filename, "/", 1)
-          || !memcmp (filename, "../", 3)
-          || !memcmp (filename, "./", 2))
-        stream = fopen (filename, "r");
-      else
-        {
-          char *fullpath;
-          asprintf (&fullpath, "%s/%s", include_dirs[i], filename);
-          stream = fopen (fullpath, "r");
-          free (fullpath);
-        }
-      if (stream)
-        break;
-    }
-
+  stream = fopen (filename, "r");
   if (!stream)
-    return 0;
+    return errno;
 
   if (input_number == input_space)
     {
@@ -466,6 +483,18 @@ input_push_file (char *filename)
       if (!input_stack)
         abort ();
     }
+
+  /* Strip off a leading directory path. */
+  char *p, *q;
+  p = 0;
+  q = strchr (filename, '/');
+  while (q)
+    {
+      p = q;
+      q = strchr (q + 1, '/');
+    }
+  if (p)
+    filename = strdup (p+1);
 
   input_stack[input_number].type = IN_file;
   input_stack[input_number].file = stream;
@@ -477,6 +506,6 @@ input_push_file (char *filename)
   input_stack[input_number].input_encoding = 0;
   input_number++;
 
-  return 1;
+  return 0;
 }
 

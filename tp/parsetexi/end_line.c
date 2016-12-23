@@ -1531,15 +1531,28 @@ end_line_misc_line (ELEMENT *current)
           else if (current->cmd == CM_include) // 3166
             {
               int status;
+              char *fullpath;
               debug ("Include %s", text);
-              status = input_push_file (text);
-              if (!status)
+
+              fullpath = locate_include_file (text);
+              if (!fullpath)
                 {
                   command_error (current,
                                  "@include: could not find %s", text);
                 }
               else
-                included_file = 1;
+                {
+                  status = input_push_file (fullpath);
+                  if (status)
+                    {
+                      command_error (current,
+                                     "@include: could not open %s:",
+                                     text,
+                                     strerror (status));
+                    }
+                  else
+                    included_file = 1;
+                }
             }
           else if (current->cmd == CM_documentencoding) // 3190
             {

@@ -128,13 +128,24 @@ wipe_global_info (void)
 
 /* 835 */
 void
-parse_texi_file (const char *filename_in)
+parse_texi_file (char *filename)
 {
   char *p, *q;
   char *linep, *line = 0;
   ELEMENT *root = new_element (ET_text_root);
   ELEMENT *preamble = 0;
-  char *filename = strdup (filename_in);
+  char c;
+
+  int status;
+  
+  status = input_push_file (filename);
+  if (status)
+    {
+      /* TODO document_error */
+      abort ();
+    }
+
+  //filename = strdup (filename);
 
   /* Strip off a leading directory path, by looking for the last
      '/' in filename. */
@@ -148,15 +159,14 @@ parse_texi_file (const char *filename_in)
 
   if (p)
     {
+      c = *p;
       *p = '\0';
       add_include_directory (filename);
-      filename = p + 1;
+      *p = c;
     }
 
-  input_push_file (filename);
-
   /* Check for preamble. */
-  do
+  while (1)
     {
       ELEMENT *l;
 
@@ -183,7 +193,6 @@ parse_texi_file (const char *filename_in)
       text_append (&l->text, line);
       add_to_element_contents (preamble, l);
     }
-  while (1);
 
   if (preamble)
     add_to_element_contents (root, preamble);

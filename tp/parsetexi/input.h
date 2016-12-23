@@ -10,6 +10,7 @@ int input_push_file (char *filename);
 void input_reset_input_stack (void);
 int expanding_macro (char *macro);
 int top_file_index (void);
+char *locate_include_file (char *filename);
 
 extern LINE_NR line_nr;
 
