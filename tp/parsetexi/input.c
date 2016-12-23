@@ -390,15 +390,22 @@ input_reset_input_stack (void)
   /* TODO: free the memory */
 }
 
+int
+top_file_index (void)
+{
+  int i = input_number - 1;
+  while (i >= 0 && input_stack[i].type != IN_file)
+    i--;
+  return i;
+}
+
 void
 set_input_encoding (char *encoding)
 {
   int i;
 
   /* Set encoding of top file in stack. */
-  i = input_number - 1;
-  while (i >= 0 && input_stack[i].type != IN_file)
-    i--;
+  i = top_file_index ();
   if (i >= 0)
     input_stack[i].input_encoding = encoding;
 }
@@ -416,12 +423,12 @@ add_include_directory (char *filename)
       include_dirs = realloc (include_dirs,
                               sizeof (char *) * (include_dirs_space += 5));
     }
-  include_dirs[include_dirs_number++] = filename;
+  include_dirs[include_dirs_number++] = strdup (filename);
 }
 
 /* Try to open a file called FILENAME, looking for it in the list of include
    directories. */
-void
+int
 input_push_file (char *filename)
 {
   FILE *stream;
@@ -432,21 +439,26 @@ input_push_file (char *filename)
       /* TODO: The Perl code (in Common.pm, 'locate_include_file') handles a 
          volume in a path (like "A:"), possibly more general treatment with 
          File::Spec module. */
-      /* Also checks if filename is absolute. */
 
-      char *fullpath;
-      asprintf (&fullpath, "%s/%s", include_dirs[i], filename);
-      stream = fopen (fullpath, "r");
-      free (fullpath);
+      /* Checks if filename is absolute or relative to current directory.
+         TODO: Could use macros in top-level config.h for this. */
+      if (!memcmp (filename, "/", 1)
+          || !memcmp (filename, "../", 3)
+          || !memcmp (filename, "./", 2))
+        stream = fopen (filename, "r");
+      else
+        {
+          char *fullpath;
+          asprintf (&fullpath, "%s/%s", include_dirs[i], filename);
+          stream = fopen (fullpath, "r");
+          free (fullpath);
+        }
       if (stream)
         break;
     }
 
   if (!stream)
-    {
-      fprintf (stderr, "Could not open %s\n", filename);
-      exit (1);
-    }
+    return 0;
 
   if (input_number == input_space)
     {
@@ -465,6 +477,6 @@ input_push_file (char *filename)
   input_stack[input_number].input_encoding = 0;
   input_number++;
 
-  return;
+  return 1;
 }
 

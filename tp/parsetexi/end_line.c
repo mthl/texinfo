@@ -1394,6 +1394,7 @@ end_line_misc_line (ELEMENT *current)
   ELEMENT *misc_cmd;
   char *end_command = 0;
   enum command_id end_id;
+  int included_file = 0;
 
   isolate_last_space (current, 0);
 
@@ -1529,8 +1530,16 @@ end_line_misc_line (ELEMENT *current)
             }
           else if (current->cmd == CM_include) // 3166
             {
+              int status;
               debug ("Include %s", text);
-              input_push_file (text);
+              status = input_push_file (text);
+              if (!status)
+                {
+                  command_error (current,
+                                 "@include: could not find %s", text);
+                }
+              else
+                included_file = 1;
             }
           else if (current->cmd == CM_documentencoding) // 3190
             {
@@ -1878,10 +1887,14 @@ end_line_misc_line (ELEMENT *current)
         current = begin_preformatted (current);
     }
 
-  /* 3346 included file */
+  /* 3346 */
+  /* If a file was included, remove the include command completely.
+     Also ignore @setfilename in included file, as said in the manual. */
+  if (included_file || (cmd == CM_setfilename && top_file_index () > 0))
+    destroy_element (pop_element_from_contents (current));
 
   /* 3350 */
-  if (cmd == CM_setfilename && (current_node || current_section))
+  else if (cmd == CM_setfilename && (current_node || current_section))
     {
       command_warn (misc_cmd, "@setfilename after the first element");
     }
