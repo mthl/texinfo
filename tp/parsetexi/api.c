@@ -238,6 +238,7 @@ element_to_perl_hash (ELEMENT *e)
   /* FIXME sort out all these special cases */
   if (e->contents.number > 0
       || e->type == ET_text_root
+      || e->type == ET_root_line
       || e->type == ET_bracketed
       || e->type == ET_bracketed_def_content
       || e->type == ET_misc_line_arg
