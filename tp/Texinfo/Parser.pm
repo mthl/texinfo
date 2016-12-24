@@ -3135,6 +3135,9 @@ sub _end_line($$$)
               binmode($filehandle, ":encoding($self->{'INPUT_PERL_ENCODING'})")
                 if (defined($self->{'INPUT_PERL_ENCODING'}));
               print STDERR "Included $file($filehandle)\n" if ($self->{'DEBUG'});
+              my ($directories, $suffix);
+              ($file, $directories, $suffix) = fileparse($file)
+                  if ($self->{'TEST'});
               unshift @{$self->{'input'}}, { 
                 'name' => $file,
                 'line_nr' => 0,

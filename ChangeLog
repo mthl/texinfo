@@ -1,3 +1,9 @@
+2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* (_end_line) <@include> If in the tests, strip off leading 
+	directories when recording filename.  This is to be consistent 
+	with what is done in 'parse_texi_file'.
+
 2016-12-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_def): Instead of calling 'gdt' on 
