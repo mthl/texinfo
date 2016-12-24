@@ -1,5 +1,10 @@
 2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_def): Avoid an unnecessary
+	call to 'parse_texi_line'.
+
+2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_end_line) <@include> If in the tests, 
 	strip off leading directories when recording filename.  This is 
 	to be consistent with what is done in 'parse_texi_file'.
