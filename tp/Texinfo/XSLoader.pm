@@ -59,15 +59,18 @@ sub _find_file($) {
   return undef;
 }
  
+# Make symbols accessible under
+# namespace $FULL_MODULE_NAME (e.g. Texinfo::Convert::Paragraph),
+# either from XS implementation in $MODULE, or non-XS implementation 
+# $FALLBACK_MODULE.  $MODULE_NAME is the name of a Libtool file used for
+# loading the XS subroutines.
+# $INTERFACE_VERSION is a module interface number, to be changed when the XS 
+# interface changes.  
 sub init {
  my ($full_module_name,
      $module,
      $fallback_module,
      $module_name,
- # Module interface number, to be changed when the XS interface changes.  
- # The value used for the .xs file compilation is set in configure.ac.  
- # Both should correspond, but it should be manually changed here to make
- # sure that a changed interface has not been missed.
      $interface_version,
      $warning_message,
      $fatal_message
@@ -238,13 +241,15 @@ FALLBACK:
   *{"${full_module_name}::"} = \%{"${fallback_module}::"};
 } # end init
 
-# NB Don't add more functions down here, because this can cause an error
-# with some versions of Perl, connected with the typeglob assignment just
-# above.  ("Can't call mro_method_changed_in() on anonymous symbol table").
-#
-# See http://perl5.git.perl.org/perl.git/commitdiff/03d9f026ae253e9e69212a3cf6f1944437e9f070?hp=ac73ea1ec401df889d312b067f78b618f7ffecc3
-#
-# (change to Perl interpreter on 22 Oct 2011)
+# Override subroutine $TARGET with $SOURCE.
+sub override {
+  my ($target, $source) = @_;
+
+  no strict 'refs'; # access modules and symbols by name.
+  no warnings 'redefine'; # do not warn about redefining a function.
+
+  *{"${target}"} = \&{"${source}"};
+}
 
 
 1;

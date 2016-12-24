@@ -1,5 +1,20 @@
 2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/MiscXS.pm: New file.
+	* tp/Texinfo/MiscXS/,
+	tp/Texinfo/MiscXS/configure.ac,
+	tp/Texinfo/MiscXS/Makefile.am,
+	tp/Texinfo/MiscXS/MiscXS.xs,
+	tp/Texinfo/MiscXS/miscxs.c,
+	tp/Texinfo/MiscXS/miscxs.h: New files.
+	* tp/Texinfo/ModulePath.pm.in: Add 'Texinfo/MiscXS' directory to
+	module search path.
+	* tp/Texinfo/XSLoader (override): New function.
+	* tp/Texinfo/Convert/Unicode.pm: Add 'UNITCHECK' section calling
+	'Texinfo::MiscXS::unicode_text' to override 'unicode_text'.
+
+2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Plaintext.pm (_count_added): Inline call
 	to _add_lines_count and use variable to shorten expressions.
 

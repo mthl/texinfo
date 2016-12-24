@@ -34,6 +34,15 @@ require Exporter;
 use vars qw(@ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter);
 
+use Texinfo::MiscXS;
+
+# Override subroutines after this module has been loaded.
+UNITCHECK {
+  Texinfo::XSLoader::override("Texinfo::Convert::Unicode::unicode_text",
+                              "Texinfo::MiscXS::unicode_text");
+}
+
+
 # Items to export into callers namespace by default. Note: do not export
 # names by default without a very good reason. Use EXPORT_OK instead.
 # Do not simply export all your public functions/methods/constants.
@@ -1225,8 +1234,7 @@ sub unicode_accent($$)
   }
 }
 
-sub unicode_text($$)
-{
+sub unicode_text {
   my $text = shift;
   my $in_code = shift;
 

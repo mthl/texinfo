@@ -64,6 +64,10 @@ sub init (;$$) {
   if (defined($libexec_dir)) {
     unshift @INC, (File::Spec->catdir($libexec_dir));
   }
+  if (defined $ENV{'top_builddir'}) {
+    unshift @INC, (File::Spec->catdir($ENV{'top_builddir'}, 'tp',
+        'Texinfo', 'MiscXS'));
+  }
 }
 
 1;
