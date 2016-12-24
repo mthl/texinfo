@@ -248,7 +248,9 @@ sub override {
   no strict 'refs'; # access modules and symbols by name.
   no warnings 'redefine'; # do not warn about redefining a function.
 
-  *{"${target}"} = \&{"${source}"};
+  if (defined &{"${source}"}) {
+    *{"${target}"} = \&{"${source}"};
+  }
 }
 
 

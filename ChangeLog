@@ -1,5 +1,10 @@
 2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XSLoader (override): Check if source subroutine is
+	defined.
+
+2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/MiscXS.pm: New file.
 	* tp/Texinfo/MiscXS/,
 	tp/Texinfo/MiscXS/configure.ac,
