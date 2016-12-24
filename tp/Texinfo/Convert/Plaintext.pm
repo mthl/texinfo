@@ -810,16 +810,13 @@ sub _count_added($$$)
   my $container = shift;
   my $text = shift;
 
-  $self->_add_lines_count($container->end_line_count());
+  my $count_context = $self->{'count_context'}->[-1];
+  $count_context->{'lines'} += $container->end_line_count();
 
-  #$self->_add_text_count($text);
-  #$self->{'count_context'}->[-1]->{'bytes'} +=
-  #  Texinfo::Common::count_bytes($self, $text,
-  #                               $self->{'output_perl_encoding'});
-  if (!defined $self->{'count_context'}->[-1]->{'pending_text'}) {
-    $self->{'count_context'}->[-1]->{'pending_text'} = '';
+  if (!defined $count_context->{'pending_text'}) {
+    $count_context->{'pending_text'} = '';
   }
-  $self->{'count_context'}->[-1]->{'pending_text'} .= $text;
+  $count_context->{'pending_text'} .= $text;
   return $text;
 }
 
