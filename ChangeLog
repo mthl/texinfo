@@ -1,5 +1,10 @@
 2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/texi2any.pl: Set '$Texinfo::XSLoader::disable_XS'
+	instead of '$Texinfo::Paragraph::disable_XS'.
+
+2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_def): Avoid an unnecessary
 	call to 'parse_texi_line'.
 
