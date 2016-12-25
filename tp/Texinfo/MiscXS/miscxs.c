@@ -53,27 +53,27 @@ xs_unicode_text (char *text, int in_code)
   new = malloc (new_space + 1);
   new_len = 0;
 #define ADD3(s) \
-  if (new_len + 2 >= new_space - 1)       \
+  if (new_len + 2 >= new_space - 1)               \
     {                                             \
       new_space += 2;                             \
-      new = realloc (new, new_space *= 2);       \
+      new = realloc (new, new_space *= 2);        \
     }                                             \
-  new[new_len++] = s[0];  \
-  new[new_len++] = s[1];  \
+  new[new_len++] = s[0];                          \
+  new[new_len++] = s[1];                          \
   new[new_len++] = s[2];
 
 #define ADD1(s) \
-  if (new_len >= new_space - 1)       \
-    new = realloc (new, (new_space *= 2) + 1);       \
+  if (new_len >= new_space - 1)                   \
+    new = realloc (new, (new_space *= 2) + 1);    \
   new[new_len++] = s;
 
 #define ADDN(s, n) \
-  if (new_len + n - 1 >= new_space - 1)       \
-    { \
-      new_space += n; \
-      new = realloc (new, (new_space *= 2) + 1);       \
-    } \
-  memcpy(new + new_len, s, n);    \
+  if (new_len + n - 1 >= new_space - 1)           \
+    {                                             \
+      new_space += n;                             \
+      new = realloc (new, (new_space *= 2) + 1);  \
+    }                                             \
+  memcpy(new + new_len, s, n);                    \
   new_len += n;
 
   while (1)
