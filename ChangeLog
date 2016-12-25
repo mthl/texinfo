@@ -1,5 +1,10 @@
 2016-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi) <@menu> Check if parent
+	command is defined before using it as a hash key.
+
+2016-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/ModulePath.pm.in (init): Take extra argument 'updirs'
 	allowing to find 'top_srcdir' from the path of the currently
 	running Perl script.

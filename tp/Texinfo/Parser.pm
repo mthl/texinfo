@@ -4812,7 +4812,8 @@ sub _parse_texi($;$)
                                 $line_nr);
                     }
                   } elsif ($command eq 'menu') {
-                    if ($root_commands{$current->{'parent'}->{'cmdname'}}) {
+                    if (!(defined $current->{'parent'}->{'cmdname'})
+                        or $root_commands{$current->{'parent'}->{'cmdname'}}) {
                       push @{$self->{'current_node'}->{'menus'}}, $current;
                     } else {
                       $self->line_warn($self->__("\@menu in invalid context"), 
