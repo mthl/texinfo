@@ -23,21 +23,10 @@ use strict;
 
 use 5.006;
 
-use File::Basename;
-use File::Spec;
-
 BEGIN {
 
-if (!$ENV{'top_srcdir'}) {
-  my ($real_command_name, $command_directory, $command_suffix) 
-     = fileparse($0, '.pl');
-  my $updir = File::Spec->updir();
-
-  # tp/t -> tp/t/../..
-  $ENV{'top_srcdir'} = File::Spec->catdir($command_directory, $updir, $updir);
-}
 require Texinfo::ModulePath;
-Texinfo::ModulePath::init();
+Texinfo::ModulePath::init(undef, undef, 'updirs' => 2);
 
 } # end BEGIN
 

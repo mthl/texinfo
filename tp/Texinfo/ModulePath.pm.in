@@ -4,6 +4,8 @@
 # either in the source or build directories.
 
 package Texinfo::ModulePath;
+
+use File::Basename;
 use File::Spec;
 
 # If $LIB_DIR and $LIBEXEC_DIR are given,
@@ -19,6 +21,22 @@ use File::Spec;
 sub init (;$$) {
   my $lib_dir = shift;
   my $libexec_dir = shift;
+  my %named_args = @_;
+
+  if (!$ENV{'top_srcdir'} and !$ENV{'top_builddir'}
+      and $named_args{'updirs'}) {
+    my ($real_command_name, $command_directory, $command_suffix) 
+            = fileparse($0, '.pl');
+    my $updir = File::Spec->updir();
+
+    # e.g. tp/t -> tp/t/../.. for 'updirs' = 2.
+    my $count = $named_args{'updirs'};
+    my $top_srcdir = $command_directory;
+    while ($count-- > 0) {
+      $top_srcdir = File::Spec->catdir($top_srcdir, $updir);
+    }
+    $ENV{'top_srcdir'} = $top_srcdir;
+  }
 
   if (defined($ENV{'top_builddir'}) and !defined($ENV{'top_srcdir'})) {
     $ENV{'top_srcdir'} = $ENV{'top_builddir'};
