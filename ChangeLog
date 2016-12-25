@@ -1,5 +1,11 @@
 2016-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_convert): Remove some statements for 
+	debugging.  Shorten access to data structures by using 
+	variables.
+
+2016-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/MiscXS/MiscXS.xs,
 	* tp/Texinfo/MiscXS/miscxs.c (merge_text): New function.
 	* tp/Texinfo/Parser.pm: Add a 'UNITCHECK' section to override
