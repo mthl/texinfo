@@ -1,3 +1,15 @@
+2016-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/ModulePath.pm.in (init): Take extra argument 'updirs'
+	allowing to find 'top_srcdir' from the path of the currently
+	running Perl script.
+
+	* tp/t/test_sort.t, tp/t/accents.t, tp/t/automatic_menus.t, 
+	t/collect_spaces.t, tp/t/do_master_menu.t, tp/t/fix_texinfo.t, 
+	t/index_before_item.t, tp/t/nodenormalization.t: Use 
+	Texinfo::ModulePath module instead of adding directories to @INC
+	manually.
+
 2016-12-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/XSLoader (override): Check if source subroutine is
