@@ -30,8 +30,11 @@ MODULE = Texinfo::MiscXSXS PACKAGE = Texinfo::MiscXSXS PREFIX = xs_
 
 PROTOTYPES: DISABLE
 
-int
-xspara_init ()
+HV *
+xs_merge_text (self, current, text_in)
+     HV *self
+     HV *current
+     SV *text_in
 
 SV *
 xs_unicode_text (text_in, ...)

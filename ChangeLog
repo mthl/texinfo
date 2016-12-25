@@ -1,5 +1,14 @@
 2016-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/MiscXS/MiscXS.xs,
+	* tp/Texinfo/MiscXS/miscxs.c (merge_text): New function.
+	* tp/Texinfo/Parser.pm: Add a 'UNITCHECK' section to override
+	'_merge_text' with Texinfo::MiscXS::merge_text.
+	(_merge_text): Reorder a condition to make executing a regex
+	less likely.
+
+2016-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/protect_character_in_texinfo.t,
 	tp/t/reference_to_text_in_tree.t, tp/t/test_brace_count.t, 
 	tp/t/test_fill_gaps_in_sectioning.t, 

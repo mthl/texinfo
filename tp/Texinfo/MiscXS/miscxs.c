@@ -38,6 +38,172 @@
 
 #include "miscxs.h"
 
+const char *whitespace_chars = " \t\f\v\r\n";
+
+HV *
+xs_merge_text (HV *self, HV *current, SV *text_in)
+{
+  AV *contents_array;
+
+  int no_merge_with_following_text = 0;
+  char *text;
+  int leading_spaces;
+  SV *leading_spaces_sv = 0;
+  int call_ret;
+  SV *returned_sv;
+
+  SV *contents_ref;
+  int contents_num;
+  HV *last_elt;
+  SV *existing_text_sv;
+  char *existing_text;
+  SV **svp;
+
+  dTHX;
+
+  dSP;
+
+  if (!SvUTF8 (text_in))
+    sv_utf8_upgrade (text_in);
+
+  text = SvPV_nolen (text_in);
+
+  leading_spaces = strspn (text, whitespace_chars);
+  if (text[leading_spaces])
+    {
+      int contents_num;
+
+      if (leading_spaces > 0)
+        {
+          leading_spaces_sv = newSVpv (text, leading_spaces);
+        }
+
+      svp = hv_fetch (current,
+                      "contents", strlen ("contents"), 0);
+      contents_array = (AV *)SvRV(*svp);
+      
+      contents_num = av_top_index(contents_array) + 1;
+      if (contents_num > 0)
+        {
+          HV *last_elt;
+          char *type = 0;
+
+          last_elt = (HV *)
+            SvRV (*av_fetch (contents_array, contents_num - 1, 0));
+
+          svp = hv_fetch (last_elt, "type", strlen ("type"), 0);
+          if (svp)
+            type = SvPV_nolen (*svp);
+          if (type
+              && (!strcmp (type, "empty_line_after_command")
+                  || !strcmp (type, "empty_spaces_after_command")
+                  || !strcmp (type, "empty_spaces_before_argument")
+                  || !strcmp (type, "empty_spaces_after_close_brace")))
+            {
+              no_merge_with_following_text = 1;
+            }
+        }
+
+      /* See 'perlcall' man page. */
+      ENTER;
+      SAVETMPS;
+
+      /**********************/
+      PUSHMARK(SP);
+      XPUSHs(sv_2mortal(newRV_inc((SV *)self)));
+      XPUSHs(sv_2mortal(newRV_inc((SV *)current)));
+      XPUSHs(leading_spaces_sv);
+      PUTBACK;
+
+      call_ret = call_pv ("Texinfo::Parser::_abort_empty_line", G_SCALAR);
+
+      SPAGAIN;
+
+      returned_sv = POPs;
+      if (returned_sv && SvRV(returned_sv))
+        {
+          text += leading_spaces;
+        }
+
+      /************************/
+
+      PUSHMARK(SP);
+      XPUSHs(sv_2mortal(newRV_inc((SV *)self)));
+      XPUSHs(sv_2mortal(newRV_inc((SV *)current)));
+      PUTBACK;
+
+      call_ret = call_pv ("Texinfo::Parser::_begin_paragraph", G_SCALAR);
+
+      SPAGAIN;
+
+      returned_sv = POPs;
+
+      /************************/
+
+      if (returned_sv && SvRV(returned_sv))
+        {
+          current = (HV *)SvRV(returned_sv);
+        }
+
+      FREETMPS;
+      LEAVE;
+    }
+
+  svp = hv_fetch (current, "contents", strlen ("contents"), 0);
+  if (!svp)
+    {
+      contents_array = newAV ();
+      contents_ref = newRV_inc ((SV *) contents_array);
+      hv_store (current, "contents", strlen ("contents"),
+                contents_ref, 0);
+      fprintf (stderr, "NEW CONTENTS %p\n", contents_array);
+      goto NEW_TEXT;
+    }
+  else
+    {
+      contents_ref = *svp;
+      contents_array = (AV *)SvRV(contents_ref);
+    }
+
+  if (no_merge_with_following_text)
+    goto NEW_TEXT;
+
+  contents_num = av_top_index(contents_array) + 1;
+  if (contents_num == 0)
+    goto NEW_TEXT;
+
+  last_elt = (HV *)
+    SvRV (*av_fetch (contents_array, contents_num - 1, 0));
+  svp = hv_fetch (last_elt, "text", strlen ("text"), 0);
+  if (!svp)
+    goto NEW_TEXT;
+  existing_text_sv = *svp;
+  existing_text = SvPV_nolen (existing_text_sv);
+  if (strchr (existing_text, '\n'))
+    goto NEW_TEXT;
+
+MERGED_TEXT:
+  sv_catpv (existing_text_sv, text);
+  //fprintf (stderr, "MERGED TEXT: %s|||\n", text);
+
+  if (0)
+    {
+      HV *hv;
+      SV *sv;
+NEW_TEXT:
+      hv = newHV ();
+      sv = newSVpv (text, 0);
+      hv_store (hv, "text", strlen ("text"), sv, 0);
+      SvUTF8_on (sv);
+      hv_store (hv, "parent", strlen ("parent"),
+                newRV_inc ((SV *)current), 0);
+      av_push (contents_array, newRV_inc ((SV *)hv));
+      //fprintf (stderr, "NEW TEXT: %s|||\n", text);
+    }
+
+  return current;
+}
+
 char *
 xs_unicode_text (char *text, int in_code)
 {

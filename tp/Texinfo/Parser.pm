@@ -533,7 +533,6 @@ sub _bug_message($$;$$)
   warn "You found a bug: $message\n\n".
        "Additional informations:\n".
        $line_message.$message_context_stack.$current_element_message;
-  
 }
 
 # simple deep copy of a structure
@@ -1852,10 +1851,14 @@ sub _close_commands($$$;$$)
   return ($closed_element, $current);
 }
 
+UNITCHECK {
+   Texinfo::XSLoader::override ("Texinfo::Parser::_merge_text",
+     "Texinfo::MiscXS::merge_text");
+}
+
 # begin paragraph if needed.  If not try to merge with the previous
 # content if it is also some text.
-sub _merge_text($$$)
-{
+sub _merge_text {
   my $self = shift;
   my $current = shift;
   my $text = shift;
@@ -1890,10 +1893,10 @@ sub _merge_text($$$)
     die;
   }
 
-  if (@{$current->{'contents'}} 
+  if (!$no_merge_with_following_text
+      and @{$current->{'contents'}} 
       and exists($current->{'contents'}->[-1]->{'text'}) 
-      and $current->{'contents'}->[-1]->{'text'} !~ /\n/
-      and !$no_merge_with_following_text) {
+      and $current->{'contents'}->[-1]->{'text'} !~ /\n/) {
     $current->{'contents'}->[-1]->{'text'} .= $text;
     print STDERR "MERGED TEXT: $text|||\n" if ($self->{'DEBUG'});
   } else {
