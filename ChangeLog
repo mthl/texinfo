@@ -1,5 +1,11 @@
 2016-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (whole file): Use assignment from @_
+	for subroutine arguments instead of "shift".  This shortens the
+	code and may be slightly more efficient.
+
+2016-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/MiscXS/miscxs.c (merge_text): Call C function
 	'xs_abort_empty_line' directly instead of going through Perl 
 	subroutine call infrastructure.
