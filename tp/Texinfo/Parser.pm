@@ -1854,6 +1854,8 @@ sub _close_commands($$$;$$)
 UNITCHECK {
    Texinfo::XSLoader::override ("Texinfo::Parser::_merge_text",
      "Texinfo::MiscXS::merge_text");
+   Texinfo::XSLoader::override ("Texinfo::Parser::_abort_empty_line",
+     "Texinfo::MiscXS::abort_empty_line");
 }
 
 # begin paragraph if needed.  If not try to merge with the previous
@@ -2168,8 +2170,7 @@ sub _expand_macro_body($$$$) {
 # each time a new line appeared, a container is opened to hold the text
 # consisting only of spaces.  This container is removed here, typically
 # this is called when non-space happens on a line.
-sub _abort_empty_line($$;$)
-{
+sub _abort_empty_line {
   my $self = shift;
   my $current = shift;
   my $additional_text = shift;

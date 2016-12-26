@@ -40,6 +40,204 @@
 
 const char *whitespace_chars = " \t\f\v\r\n";
 
+int
+xs_abort_empty_line (HV *self, HV *current, SV *additional_text_in)
+{
+  char *additional_text;
+  AV *contents_array;
+  SV **svp;
+  int contents_num;
+  HV *last_elt;
+  char *type;
+  SV *existing_text_sv;
+
+  dTHX;
+
+  /* Get additional text in UTF-8. */
+  if (additional_text_in)
+    {
+      if (!SvUTF8 (additional_text_in))
+        sv_utf8_upgrade (additional_text_in);
+
+      additional_text = SvPV_nolen (additional_text_in);
+    }
+  else
+    additional_text = "";
+
+  svp = hv_fetch (current, "contents", strlen("contents"), 0);
+  if (!svp)
+    return 0;
+  contents_array = (AV *)SvRV(*svp);
+
+  contents_num = av_top_index(contents_array) + 1;
+  if (contents_num == 0)
+    return 0;
+
+  last_elt = (HV *) SvRV (*av_fetch (contents_array, contents_num - 1, 0));
+
+  svp = hv_fetch (last_elt, "type", strlen ("type"), 0);
+  if (!svp)
+    return 0;
+
+  type = SvPV_nolen (*svp);
+  if (!type)
+    return 0;
+
+  /* Must be one of these types to continue. */
+  if (strcmp (type, "empty_line")
+       && strcmp (type, "empty_line_after_command")
+       && strcmp (type, "empty_spaces_before_argument")
+       && strcmp (type, "empty_spaces_after_close_brace"))
+    {
+      return 0;
+    }
+  
+  //fprintf (stderr, "ABORT EMPTY\n");
+
+  svp = hv_fetch (last_elt, "text", strlen ("text"), 0);
+  if (!svp)
+    return 0; /* or create it? change last arg from 0 to 1 */
+  existing_text_sv = *svp;
+
+  /* Append the 'additional_text' argument. */
+  sv_utf8_upgrade (existing_text_sv);
+  sv_catpv (existing_text_sv, additional_text);
+
+  if (!*SvPV_nolen (existing_text_sv)) /* existing text is empty */
+    {
+      HV *test_extra;
+      char *key;
+      HV *test_elt;
+
+      /* Look for another reference to last_elt. */
+
+      test_elt = current;
+
+      svp = hv_fetch (test_elt, "extra", strlen ("extra"), 0);
+      if (svp)
+        {
+          test_extra = (HV *) SvRV (*svp);
+          key = "spaces_before_argument";
+          svp = hv_fetch (test_extra, key, strlen (key), 0);
+          if (svp)
+            {
+              if ((HV *) SvRV (*svp) == last_elt)
+                goto found;
+            }
+
+          key = "spaces_after_command";
+          svp = hv_fetch (test_extra, key, strlen (key), 0);
+          if (svp)
+            {
+              if ((HV *) SvRV (*svp) == last_elt)
+                goto found;
+            }
+        }
+
+      svp = hv_fetch (current, "parent", strlen ("parent"), 0);
+      if (svp)
+        {
+          test_elt = (HV *) SvRV (*svp);
+          svp = hv_fetch (test_elt, "extra", strlen ("extra"), 0);
+          if (svp)
+            {
+              test_extra = (HV *) SvRV (*svp);
+              key = "spaces_before_argument";
+              svp = hv_fetch (test_extra, key, strlen (key), 0);
+              if (svp)
+                {
+                  if ((HV *) SvRV (*svp) == last_elt)
+                    goto found;
+                }
+
+              key = "spaces_after_command";
+              svp = hv_fetch (test_extra, key, strlen (key), 0);
+              if (svp)
+                {
+                  if ((HV *) SvRV (*svp) == last_elt)
+                    goto found;
+                }
+            }
+        }
+
+      if (0)
+        {
+found:
+          /* We found an "extra" reference to this element.  Remove it. */
+          hv_delete (test_extra, key, strlen (key), G_DISCARD);
+
+          /* If the extra hash now empty, remove it as well. */
+          hv_iterinit (test_extra);
+          if (!hv_iternext (test_extra))
+            hv_delete (test_elt, "extra", strlen ("extra"), G_DISCARD);
+        }
+
+      /* Remove last_elt */
+      av_pop (contents_array);
+    }
+  else if (!strcmp (type, "empty_line"))
+    {
+      char *current_type;
+      AV *context_stack;
+      SV *top_context_sv;
+      char *top_context;
+      int top_index;
+      
+      svp = hv_fetch (current, "type", strlen ("type"), 0);
+      if (!svp)
+        current_type = 0;
+      else
+        current_type = SvPV_nolen (*svp);
+
+      /* "Types with paragraphs".  Remove the type unless we are inside
+         one of these types. */
+      if (current_type
+          && strcmp (current_type, "before_item")
+          && strcmp (current_type, "text_root")
+          && strcmp (current_type, "document_root")
+          && strcmp (current_type, "brace_command_context"))
+        goto delete_type;
+
+      /* Check the context stack. */
+      svp = hv_fetch (self, "context_stack", strlen ("context_stack"), 0);
+      if (!svp)
+        goto delete_type; /* shouldn't happen */
+      context_stack = (AV *) SvRV (*svp);
+      top_index = av_top_index (context_stack);
+      if (top_index < 0)
+        goto delete_type; /* shouldn't happen */
+      svp = av_fetch (context_stack, top_index, 0);
+      if (!svp)
+        goto delete_type; /* shouldn't happen */
+      top_context_sv = *svp;
+      top_context = SvPV_nolen (top_context_sv);
+
+      /* Change type to "empty_spaces_before_paragraph" unless we are in
+         one of these contexts. */
+      if (strcmp (top_context, "math")
+          && strcmp (top_context, "menu")
+          && strcmp (top_context, "preformatted")
+          && strcmp (top_context, "rawpreformatted")
+          && strcmp (top_context, "def")
+          && strcmp (top_context, "inlineraw"))
+        {
+          hv_store (last_elt, "type", strlen ("type"),
+                    newSVpv ("empty_spaces_before_paragraph", 0), 0);
+        }
+      else
+        {
+delete_type:
+          hv_delete (last_elt, "type", strlen ("type"), G_DISCARD);
+        }
+    }
+  else if (!strcmp (type, "empty_line_after_command"))
+    {
+      hv_store (last_elt, "type", strlen ("type"),
+                newSVpv ("empty_spaces_after_command", 0), 0);
+    }
+  return 1;
+}
+
 HV *
 xs_merge_text (HV *self, HV *current, SV *text_in)
 {

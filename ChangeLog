@@ -1,3 +1,10 @@
+2016-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS/MiscXS.xs,
+	* tp/Texinfo/MiscXS/miscxs.c (abort_empty_line): New function.
+	* tp/Texinfo/Parser.pm: Add a 'UNITCHECK' section to override
+	'_abort_empty_line' with Texinfo::MiscXS::abort_empty_line.
+
 2016-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_convert): Remove some statements for 

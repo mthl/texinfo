@@ -30,6 +30,22 @@ MODULE = Texinfo::MiscXSXS PACKAGE = Texinfo::MiscXSXS PREFIX = xs_
 
 PROTOTYPES: DISABLE
 
+int
+xs_abort_empty_line (self, current, ...)
+     HV *self
+     HV *current
+PREINIT:
+     SV *additional_text = 0;
+CODE:
+     items -= 2;
+     if (items > 0)
+       {
+         additional_text = ST(2);
+       }
+     RETVAL = xs_abort_empty_line (self, current, additional_text);
+OUTPUT:
+     RETVAL
+
 HV *
 xs_merge_text (self, current, text_in)
      HV *self
