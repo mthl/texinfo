@@ -302,28 +302,16 @@ xs_merge_text (HV *self, HV *current, SV *text_in)
             }
         }
 
-      /* See 'perlcall' man page. */
-      ENTER;
-      SAVETMPS;
-
-      /**********************/
-      PUSHMARK(SP);
-      XPUSHs(sv_2mortal(newRV_inc((SV *)self)));
-      XPUSHs(sv_2mortal(newRV_inc((SV *)current)));
-      XPUSHs(leading_spaces_sv);
-      PUTBACK;
-
-      call_ret = call_pv ("Texinfo::Parser::_abort_empty_line", G_SCALAR);
-
-      SPAGAIN;
-
-      returned_sv = POPs;
-      if (returned_sv && SvRV(returned_sv))
+      if (xs_abort_empty_line(self, current, leading_spaces_sv))
         {
           text += leading_spaces;
         }
 
       /************************/
+      /* See 'perlcall' man page. */
+      ENTER;
+      SAVETMPS;
+
 
       PUSHMARK(SP);
       XPUSHs(sv_2mortal(newRV_inc((SV *)self)));

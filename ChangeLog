@@ -1,5 +1,11 @@
 2016-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/MiscXS/miscxs.c (merge_text): Call C function
+	'xs_abort_empty_line' directly instead of going through Perl 
+	subroutine call infrastructure.
+
+2016-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/MiscXS/MiscXS.xs,
 	* tp/Texinfo/MiscXS/miscxs.c (abort_empty_line): New function.
 	* tp/Texinfo/Parser.pm: Add a 'UNITCHECK' section to override
