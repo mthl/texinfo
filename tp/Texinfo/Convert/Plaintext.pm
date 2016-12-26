@@ -1550,13 +1550,10 @@ sub _get_form_feeds($)
 
 sub _convert($$);
 
-# Convert the Texinfo tree under $ROOT to plain text.  Note that this
-# function should be called as "$self->_convert" to allow the
-# DebugTexinfo::DebugCount::_convert method to override this one.
+# Convert the Texinfo tree under $ROOT to plain text.
 sub _convert($$)
 {
-  my $self = shift;
-  my $root = shift;
+  my ($self, $root) = @_;
 
   my $formatter = $self->{'formatters'}->[-1];
 
@@ -1642,7 +1639,7 @@ sub _convert($$)
       }
     } else {
       my $tree = $self->gdt($root->{'text'});
-      my $converted = $self->_convert($tree);
+      my $converted = _convert($self, $tree);
       return $converted;
     }
   }
@@ -1883,7 +1880,7 @@ sub _convert($$)
                $formatter->{'container'}->add_next($text_before, 1))
          if ($text_before ne '');
       if ($root->{'args'}) {
-        $result .= $self->_convert($root->{'args'}->[0]);
+        $result .= _convert($self, $root->{'args'}->[0]);
         if ($command eq 'strong' 
              and scalar (@{$root->{'args'}->[0]->{'contents'}})
              and $root->{'args'}->[0]->{'contents'}->[0]->{'text'}
@@ -2022,7 +2019,7 @@ sub _convert($$)
            $formatter->{'container'}->add_next
                                         ("($formatted_footnote_number)", 1));
       if ($self->get_conf('footnotestyle') eq 'separate' and $self->{'node'}) {
-        $result .= $self->_convert({'contents' => 
+        $result .= _convert($self, {'contents' => 
          [{'text' => ' ('},
           {'cmdname' => 'pxref',
            'extra' => {'brace_command_contents' => 
@@ -2090,9 +2087,9 @@ sub _convert($$)
   ->set_space_protection(undef,undef,undef,undef,1); # double_width_no_break
 
         if ($command eq 'xref') {
-          $result = $self->_convert({'contents' => [{'text' => '*Note '}]});
+          $result = _convert($self, {'contents' => [{'text' => '*Note '}]});
         } else {
-          $result = $self->_convert({'contents' => [{'text' => '*note '}]});
+          $result = _convert($self, {'contents' => [{'text' => '*note '}]});
         }
         my $name;
         if (defined($args[1])) {
@@ -2113,7 +2110,7 @@ sub _convert($$)
         }
          
         if ($name) {
-          my $name_text = $self->_convert({'contents' => $name});
+          my $name_text = _convert($self, {'contents' => $name});
           # needed, as last word is added only when : is added below
           my $name_text_checked = $name_text
              .$self->{'formatters'}->[-1]->{'container'}->get_pending();
@@ -2130,7 +2127,7 @@ sub _convert($$)
           }
           my $pre_quote = $quoting_required ? "\x{7f}" : '';
           my $post_quote = $pre_quote;
-          $name_text .= $self->_convert({'contents' => [
+          $name_text .= _convert($self, {'contents' => [
                 {'text' => "$post_quote: "}]});
           $name_text =~ s/^(\s*)/$1$pre_quote/ if $pre_quote;
           $result .= $name_text;
@@ -2139,11 +2136,11 @@ sub _convert($$)
             if $pre_quote;
 
           if ($file) {
-            $result .= $self->_convert({'contents' => $file});
+            $result .= _convert($self, {'contents' => $file});
           }
           # node name
           $self->{'formatters'}->[-1]->{'suppress_styles'} = 1;
-          my $node_text = $self->_convert({'type' => '_code',
+          my $node_text = _convert($self, {'type' => '_code',
                                            'contents' => $node_content});
           delete $self->{'formatters'}->[-1]->{'suppress_styles'};
 
@@ -2173,10 +2170,10 @@ sub _convert($$)
                  if $post_quote;
         } else { # Label same as node specification
           if ($file) {
-            $result .= $self->_convert({'contents' => $file});
+            $result .= _convert($self, {'contents' => $file});
           }
           $self->{'formatters'}->[-1]->{'suppress_styles'} = 1;
-          my $node_text = $self->_convert({'type' => '_code',
+          my $node_text = _convert($self, {'type' => '_code',
                                            'contents' => $node_content});
           delete $self->{'formatters'}->[-1]->{'suppress_styles'};
 
@@ -2195,7 +2192,7 @@ sub _convert($$)
           }
           my $pre_quote = $quoting_required ? "\x{7f}" : '';
           my $post_quote = $pre_quote;
-          $node_text .= $self->_convert({'contents' => [
+          $node_text .= _convert($self, {'contents' => [
                 {'text' => "${post_quote}::"}]});
           _count_added($self,$self->{'formatters'}[-1]{'container'},
                        $pre_quote)
@@ -2206,7 +2203,7 @@ sub _convert($$)
             # punctuation in the word.
             my $next = $self->{'current_contents'}->[-1]->[0];
             if ($next) {
-              $node_text .= $self->_convert($next);
+              $node_text .= _convert($self, $next);
               shift @{$self->{'current_contents'}->[-1]};
             }
 
@@ -2278,7 +2275,7 @@ sub _convert($$)
           unshift @{$self->{'current_contents'}->[-1]}, $prepended;
           return '';
         } else {
-          $result = $self->_convert($argument);
+          $result = _convert($self, $argument);
 
           # We want to permit an end of sentence, but not force it as @. does.
           $formatter->{'container'}->allow_end_sentence();
@@ -2307,7 +2304,7 @@ sub _convert($$)
     } elsif ($command eq 'math') {
       push @{$self->{'context'}}, 'math';
       if ($root->{'args'}) {
-        $result .= $self->_convert({'type' => 'frenchspacing',
+        $result .= _convert($self, {'type' => 'frenchspacing',
              'contents' => [{'type' => '_code',
                             'contents' => [$root->{'args'}->[0]]}]});
       }
@@ -2387,7 +2384,7 @@ sub _convert($$)
         $expansion = {'type' => 'paragraph',
                       'contents' => [$expansion]};
       }
-      $result .= $self->_convert($expansion);
+      $result .= _convert($self, $expansion);
       #  unshift @{$self->{'current_contents'}->[-1]}, $expansion;
       #return '';
       return $result;
@@ -2575,7 +2572,7 @@ sub _convert($$)
       } elsif ($root->{'parent'}->{'extra'}->{'block_command_line_contents'}) {
         # this is the text prepended to items.
         
-        $result = $self->_convert(
+        $result = _convert($self, 
           {'contents' => 
              [@{$root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]},
               { 'text' => ' ' }]
@@ -2709,7 +2706,7 @@ sub _convert($$)
             #if ($caption->{'cmdname'} eq 'shortcaption') {
             #  $tree->{'type'} = 'frenchspacing';
             #}
-            my $caption_text = $self->_convert($tree);
+            my $caption_text = _convert($self, $tree);
             my $old_context = pop @{$self->{'context'}};
             delete $self->{'multiple_pass'};
             die if ($old_context ne 'listoffloats');
@@ -3012,7 +3009,7 @@ sub _convert($$)
            'indent_length_next' => (1+$self->{'format_context'}->[-1]->{'indent_level'})*$indent_length});
         push @{$self->{'formatters'}}, $def_paragraph;
 
-        $result .= $self->_convert({'type' => '_code', 'contents' => [$tree]});
+        $result .= _convert($self, {'type' => '_code', 'contents' => [$tree]});
         $result .= _count_added($self, $def_paragraph->{'container'},
                                       $def_paragraph->{'container'}->end());
 
@@ -3027,7 +3024,7 @@ sub _convert($$)
         my ($pre_quote, $post_quote);
         if ($arg->{'type'} eq 'menu_entry_node') {
           $self->{'formatters'}->[-1]->{'suppress_styles'} = 1;
-          my $node_text = $self->_convert({'type' => '_code',
+          my $node_text = _convert($self, {'type' => '_code',
                                       'contents' => $arg->{'contents'}});
 
           delete $self->{'formatters'}->[-1]->{'suppress_styles'};
@@ -3057,7 +3054,7 @@ sub _convert($$)
           }
           $result .= $pre_quote . $node_text . $post_quote;
         } elsif ($arg->{'type'} eq 'menu_entry_name') {
-          my $entry_name = $self->_convert($arg);
+          my $entry_name = _convert($self, $arg);
           $entry_name_seen = 1;
           $pre_quote = $post_quote = '';
           if ($entry_name =~ /:/) {
@@ -3072,7 +3069,7 @@ sub _convert($$)
           }
           $result .= $pre_quote . $entry_name . $post_quote;
         } else {
-          $result .= $self->_convert($arg);
+          $result .= _convert($self, $arg);
         }
       }
       $result = $self->ensure_end_of_line($result) 
@@ -3105,7 +3102,7 @@ sub _convert($$)
     push @{$self->{'current_roots'}}, $root;
     while (@contents) {
       my $content = shift @contents;
-      my $text = $self->_convert($content);
+      my $text = _convert($self, $content);
       $self->{'empty_lines_count'} = 0 
         if ($preformatted and $text =~ /\S/);
       $result .= $text;
@@ -3309,14 +3306,14 @@ sub _convert($$)
         if ($caption) {
           $self->{'format_context'}->[-1]->{'paragraph_count'} = 0;
           my $tree = $caption->{'args'}->[0];
-          $result .= $self->_convert($tree);
+          $result .= _convert($self, $tree);
         }
       }
     } elsif (($command eq 'quotation' 
                or $command eq 'smallquotation')
              and $root->{'extra'} and $root->{'extra'}->{'authors'}) {
       foreach my $author (@{$root->{'extra'}->{'authors'}}) {
-        $result .= $self->_convert(
+        $result .= _convert($self, 
                  $self->gdt("\@center --- \@emph{{author}}\n",
                     {'author' => $author->{'extra'}->{'misc_content'}}));
       }

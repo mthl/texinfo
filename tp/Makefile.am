@@ -105,7 +105,6 @@ dist_converters_DATA = \
 
 debugmodulesdir = $(pkgdatadir)/DebugTexinfo
 dist_debugmodules_DATA = \
- DebugTexinfo/DebugCount.pm \
  DebugTexinfo/DebugTree.pm
 
 initdir = $(datadir)/texinfo/init

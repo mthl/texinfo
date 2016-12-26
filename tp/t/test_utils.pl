@@ -41,7 +41,6 @@ use Texinfo::Convert::Info;
 use Texinfo::Convert::HTML;
 use Texinfo::Convert::TexinfoXML;
 use Texinfo::Convert::DocBook;
-use DebugTexinfo::DebugCount;
 use File::Basename;
 use File::Copy;
 use File::Compare; # standard since 5.004
@@ -132,12 +131,10 @@ our %formats = (
   'file_xml' => \&convert_to_xml,
   'docbook' => \&convert_to_docbook,
   'file_docbook' => \&convert_to_docbook,
-  'debugcount' => \&debugcount,
 );
 
 our %extensions = (
   'plaintext' => 'txt',
-  'debugcount' => 'txt',
   'html_text' => 'html',
   'xml' => 'xml',
   'docbook' => 'dbk',
@@ -630,26 +627,6 @@ sub convert_to_docbook($$$$$$;$)
     close_files($converter);
     $result = undef if (defined($result and $result eq ''));
   }
-  my ($errors, $error_nrs) = $converter->errors();
-  return ($errors, $result);
-}
-
-sub debugcount($$$$$$;$)
-{
-  my $self = shift;
-  my $test_name = shift;
-  my $format = shift;
-  my $tree = shift;
-  my $parser = shift;
-  my $parser_options = shift;
-  my $converter_options = shift;
-  $converter_options = {} if (!defined($converter_options));
-  my $converter =
-     DebugTexinfo::DebugCount->converter({'DEBUG' => $self->{'DEBUG'},
-                                         'parser' => $parser,
-                                         'output_format' => 'info',
-                                          %$converter_options });
-  my $result = $converter->convert($tree);
   my ($errors, $error_nrs) = $converter->errors();
   return ($errors, $result);
 }

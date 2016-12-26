@@ -1,5 +1,17 @@
 2016-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Plaintext.pm (_convert): Don't use method 
+	call syntax for recursive calls.
+	* tp/DebugTexinfo/DebugCount.pm: Remove, as it isn't used much.
+	* doc/texinfo.texi (Customization Variables and Options) 
+	<TEXINFO_OUTPUT_FORMAT>: Remove mention of
+	'debugcount'.
+	* tp/t/test_count.t: Delete test.
+	* tp/t/test_utils.pl: Don't use "DebugTexinfo::DebugCount" 
+	module.
+
+2016-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (whole file): Use assignment from @_
 	for subroutine arguments instead of "shift".  This shortens the
 	code and may be slightly more efficient.
