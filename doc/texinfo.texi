@@ -16804,10 +16804,6 @@ These correspond to the command-line options (and
 @code{TEXINFO_OUTPUT_FORMAT} environment variable values) of the same
 name.  @xref{Invoking @command{texi2any}}.
 
-@item debugcount
-Instead of generating a regular output format, output the count of
-bytes and lines obtained when converting to Info, and other information.
-
 @item debugtree
 @cindex tree representation, for debugging
 @cindex debugging document, with tree representation
