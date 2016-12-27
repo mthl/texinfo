@@ -362,11 +362,11 @@ AC_ARG_ENABLE([perl-xs],
 # Set xs_srcdir to the path from XSParagraph builddir to srcdir
 case $srcdir in
   .)  # We are building in place.
-    xs_srcdir=. ;;
+    xs_srcdir=../../.. ;;
   [[\\/]]* | ?:[[\\/]]* )  # Absolute name.
-    xs_srcdir=$srcdir/tp/Texinfo/Convert/XSParagraph ;;
+    xs_srcdir=$srcdir/tp ;;
   *) # Relative name.
-    xs_srcdir=../../../../$srcdir/tp/Texinfo/Convert/XSParagraph ;;
+    xs_srcdir=../../../../$srcdir/tp ;;
 esac
 
 # Pass on all the options we were given to the subsidiary configure 
@@ -394,7 +394,7 @@ if test $enable_xs = check; then
    && make TestXS.la \
    && ${PERL} -I . \
               -I ${xs_srcdir} \
-              -w ${xs_srcdir}/fail.pl \
+              -w ${xs_srcdir}/Texinfo/Convert/XSParagraph/fail.pl \
       | grep 'message from XS module') \
   && enable_xs=yes
   AC_MSG_CHECKING([whether we can build Perl extension (XS) modules])
