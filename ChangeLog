@@ -1,3 +1,18 @@
+2016-12-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/fail.pl: Change path given for 
+	TestXS module so that it will be found when source is configured
+	for an out-of-source build.
+	* tp/Makefile.am (SUBDIRS, DIST_SUBDIRS): List MiscXS.pm and 
+	MiscXS subdirectory.
+
+2016-12-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/TestXS.pm: Use 
+	Texinfo::XSLoader module.
+	* configure.ac: Change path passed with "-I" to perl so 
+	Texinfo::XSLoader module can be found.
+
 2016-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm (_convert): Don't use method 

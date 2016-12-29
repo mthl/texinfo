@@ -29,12 +29,12 @@ $(srcdir)/Makefile.docstr: maintain/regenerate_docstr.sh \
 
 SUBDIRS =
 if ! DISABLE_XS
-SUBDIRS += Texinfo/Convert/XSParagraph
+SUBDIRS += Texinfo/Convert/XSParagraph Texinfo/MiscXS
 endif
 
 SUBDIRS += . tests
 
-DIST_SUBDIRS = Texinfo/Convert/XSParagraph tests
+DIST_SUBDIRS = Texinfo/Convert/XSParagraph Texinfo/MiscXS tests
 
 
 bin_SCRIPTS = texi2any
@@ -72,6 +72,7 @@ dist_modules_DATA = \
  Texinfo/Encoding.pm \
  Texinfo/Structuring.pm \
  Texinfo/Transformations.pm \
+ Texinfo/MiscXS.pm \
  Texinfo/XSLoader.pm \
  Texinfo/Documentlanguages.pm
 

@@ -67,6 +67,7 @@ Texinfo/Convert/UnFilled.pm
 Texinfo/Convert/Unicode.pm
 Texinfo/Documentlanguages.pm
 Texinfo/Encoding.pm
+Texinfo/MiscXS.pm
 Texinfo/ModulePath.pm
 Texinfo/Parser.pm
 Texinfo/Report.pm
