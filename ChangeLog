@@ -2,6 +2,7 @@
 
 	* configure.ac: If XS modules are enabled, configure in 
 	tp/Texinfo/MiscXS directory.
+	* autogen.sh: Run autoreconf in MiscXS directory.
 
 2016-12-29  Gavin Smith  <gavinsmith0123@gmail.com>
 

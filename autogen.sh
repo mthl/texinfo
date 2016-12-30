@@ -54,6 +54,12 @@ cmd="(cd tp/Texinfo/Convert/XSParagraph && ${LIBTOOLIZE} \
 echo "  $cmd"
 $chicken eval $cmd || exit 1
 
+: ${LIBTOOLIZE=libtoolize}
+cmd="(cd tp/Texinfo/MiscXS && ${LIBTOOLIZE} \
+ && autoreconf --force --verbose --install)"
+echo "  $cmd"
+$chicken eval $cmd || exit 1
+
 echo
 echo "Now run configure with your desired options, for instance:"
 echo "  ./configure CFLAGS='-g'"
