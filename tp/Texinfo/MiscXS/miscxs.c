@@ -203,7 +203,7 @@ found:
       if (!svp)
         goto delete_type; /* shouldn't happen */
       context_stack = (AV *) SvRV (*svp);
-      top_index = av_top_index (context_stack);
+      top_index = av_len (context_stack);
       if (top_index < 0)
         goto delete_type; /* shouldn't happen */
       svp = av_fetch (context_stack, top_index, 0);
@@ -280,7 +280,7 @@ xs_merge_text (HV *self, HV *current, SV *text_in)
                       "contents", strlen ("contents"), 0);
       contents_array = (AV *)SvRV(*svp);
       
-      contents_num = av_top_index(contents_array) + 1;
+      contents_num = av_len(contents_array) + 1;
       if (contents_num > 0)
         {
           HV *last_elt;
