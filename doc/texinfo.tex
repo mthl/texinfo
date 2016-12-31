@@ -165,6 +165,9 @@
 % Give the space character the catcode for a space.
 \def\spaceisspace{\catcode`\ =10\relax}
 
+% Likewise for ^^M, the end of line character.
+\def\endlineisspace{\catcode13=10\relax}
+
 \chardef\dashChar  = `\-
 \chardef\slashChar = `\/
 \chardef\underChar = `\_
@@ -950,21 +953,14 @@ where each line of input produces a line of output.}
 % @comment ...line which is ignored...
 % @c is the same as @comment
 % @ignore ... @end ignore  is another way to write a comment
-%
-\def\comment{\begingroup \catcode`\^^M=\active%
-\catcode`\@=\other \catcode`\{=\other \catcode`\}=\other\commentxxx}%
 
-{\catcode`\^^M=\active%
-\gdef\commentxxx#1^^M{\endgroup%
-\futurelet\nexttoken\commentxxxx}%
-\gdef\commentxxxx{\ifx\nexttoken\aftermacro\expandafter\comment\fi}%
-}
 
 \def\c{\begingroup \catcode`\^^M=\active%
 \catcode`\@=\other \catcode`\{=\other \catcode`\}=\other%
 \cxxx}
 {\catcode`\^^M=\active \gdef\cxxx#1^^M{\endgroup}}
-% See comment in \scanmacro about why the definitions of @c and @comment differ
+%
+\let\comment\c
 
 % @paragraphindent NCHARS
 % We'll use ems for NCHARS, close enough.
@@ -8031,9 +8027,6 @@ end
   }
 \fi
 
-\let\aftermacroxxx\relax
-\def\aftermacro{\aftermacroxxx}
-
 % alias because \c means cedilla in @tex or @math
 \let\texinfoc=\c
 
@@ -8055,18 +8048,13 @@ end
   \catcode`\\=\active
   %
   % Process the macro body under the current catcode regime.
-  \scantokens{#1@texinfoc}\aftermacro%
+  \scantokens{#1@texinfoc}%
   %
   \catcode`\@=\savedcatcodeone
   \catcode`\\=\savedcatcodetwo
   %
   % The \texinfoc is to remove the \newlinechar added by \scantokens, and
   % can be noticed by \parsearg.
-  %   The \aftermacro allows a \comment at the end of the macro definition
-  % to duplicate itself past the final \newlinechar added by \scantokens:
-  % this is used in the definition of \group to comment out a newline.  We
-  % don't do the same for \c to support Texinfo files with macros that ended
-  % with a @c, which should no longer be necessary.
   %   We avoid surrounding the call to \scantokens with \bgroup and \egroup
   % to allow macros to open or close groups themselves.
 }
@@ -8538,7 +8526,13 @@ end
   \ifcase\paramno
   % 0
     \expandafter\xdef\csname\the\macname\endcsname{%
-      \noexpand\scanmacro{\macrobody}}%
+      \bgroup
+      \noexpand\spaceisspace
+      \noexpand\endlineisspace
+      \noexpand\expandafter % skip any spaces after the macro invocation.
+      \expandafter\noexpand\csname\the\macname @@@\endcsname}%
+    \expandafter\xdef\csname\the\macname @@@\endcsname{%
+      \egroup\noexpand\scanmacro{\macrobody}}%
   \or % 1
     \expandafter\xdef\csname\the\macname\endcsname{%
        \bgroup

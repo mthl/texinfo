@@ -52,7 +52,7 @@ AC_ARG_ENABLE([perl-xs],
 if test x$disable_xs != xyes; then
   AC_PATH_PROG([PERL], [perl])
   
-  if test -v PERL_EXT_CC ; then
+  if test -n "$PERL_EXT_CC" ; then
     CC=$PERL_EXT_CC
   else
     # It's essential that we use the same compiler that was used to build
@@ -62,8 +62,9 @@ if test x$disable_xs != xyes; then
     CC=$conf_value
   fi
 
-  # Wipe the cache value in case -C was given at the top level
+  # Wipe cache values in case -C was given at the top level
   ac_cv_prog_CC= ; unset ac_cv_prog_CC
+  ac_cv_prog_ac_ct_CC= ; unset ac_cv_prog_ac_ct_CC
 fi
 
 AC_PROG_CC

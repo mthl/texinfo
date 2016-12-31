@@ -294,6 +294,59 @@ groff [ -abceghijklpstvzCEGNRSUVXZ ]
 @end example
 x
 
+x
+@example
+@group
+groff [ -abceghijklpstvzCEGNRSUVXZ ]
+@end group
+@end example
+x
+
+x
+@example
+@group@c
+groff [ -abceghijklpstvzCEGNRSUVXZ ]
+@end group
+@end example
+x
+
+xxxxxxxxxxxxxxxxxxxxxx
+
+@example
+@group@c
+groff [ -abceghijklpstvzCEGNRSUVXZ ]
+@end group
+@end example
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+xxxxxxxxxxxxxxxxxxxxxx
+
+@Example
+groff [ -abceghijklpstvzCEGNRSUVXZ ]
+@endExample
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+@section Braceless at end of line
+
+@macro Mac
+value
+@end macro
+
+Okay, we are here. The @Mac
+on next line now.
+
+With braces. The @Mac{}
+on next line now.
+
+With space and braces. The @Mac{}
+on next line now.
+
+With space and braces. The @Mac{}
+
+in next paragraph now.
+
 @section @,c in macro argument
 
 @macro mactwo{argfirst, argsecond}

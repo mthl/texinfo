@@ -1,3 +1,10 @@
+2016-12-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac,
+	* tp/Texinfo/MiscXS/configure.ac: Use 'test -n' instead of
+	'test -v' for better portability.  Clear another cache variable 
+	used internally by autoconf.
+
 2016-12-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/MiscXS/miscxs.c (xs_merge_text, xs_abort_empty_line):
