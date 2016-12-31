@@ -266,10 +266,18 @@ xs_merge_text (HV *self, HV *current, SV *text_in)
 
   dSP;
 
-  if (!SvUTF8 (text_in))
-    sv_utf8_upgrade (text_in);
-
-  text = SvPV_nolen (text_in);
+  /* Get text in UTF-8. */
+  {
+    STRLEN len;
+    static char *new_string;
+    text = SvPV (text_in, len);
+    if (!SvUTF8 (text_in))
+      {
+        free (new_string);
+        new_string = bytes_to_utf8 (text, &len);
+        text = new_string;
+      }
+  }
 
   leading_spaces = strspn (text, whitespace_chars);
   if (text[leading_spaces])
