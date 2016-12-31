@@ -38,7 +38,7 @@ PREINIT:
      SV *additional_text = 0;
 CODE:
      items -= 2;
-     if (items > 0)
+     if (items > 0 && SvOK(ST(2)))
        {
          additional_text = ST(2);
        }

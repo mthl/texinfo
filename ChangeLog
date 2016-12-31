@@ -1,5 +1,14 @@
 2016-12-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/MiscXS/miscxs.c (xs_abort_empty_line): Use 
+	'bytes_to_utf8' instead of calling 'sv_utf8_upgrade'.  The 
+	latter appears to cause strange results under perl 5.10.1 
+	(possibly involving the value of $1), and there is a warning 
+	about using 'sv_utf8_upgrade' in the perlguts
+	man page.
+
+2016-12-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/configure.ac,
 	* tp/Texinfo/MiscXS/configure.ac: Use 'test -n' instead of
 	'test -v' for better portability.  Clear another cache variable 

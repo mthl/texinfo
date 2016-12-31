@@ -56,10 +56,15 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_text_in)
   /* Get additional text in UTF-8. */
   if (additional_text_in)
     {
+      STRLEN len;
+      static char *new_string;
+      additional_text = SvPV (additional_text_in, len);
       if (!SvUTF8 (additional_text_in))
-        sv_utf8_upgrade (additional_text_in);
-
-      additional_text = SvPV_nolen (additional_text_in);
+        {
+          free (new_string);
+          new_string = bytes_to_utf8 (additional_text, &len);
+          additional_text = new_string;
+        }
     }
   else
     additional_text = "";
