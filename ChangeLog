@@ -1,5 +1,11 @@
 2016-12-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/MiscXS/miscxs.c (xs_merge_text, xs_abort_empty_line):
+	Use 'av_len' instead of 'av_top_index' for compatibility with 
+	older versions of Perl.
+
+2016-12-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* configure.ac: If XS modules are enabled, configure in 
 	tp/Texinfo/MiscXS directory.
 	* autogen.sh: Run autoreconf in MiscXS directory.

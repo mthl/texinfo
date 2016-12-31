@@ -69,7 +69,7 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_text_in)
     return 0;
   contents_array = (AV *)SvRV(*svp);
 
-  contents_num = av_top_index(contents_array) + 1;
+  contents_num = av_len(contents_array) + 1;
   if (contents_num == 0)
     return 0;
 
@@ -354,7 +354,7 @@ xs_merge_text (HV *self, HV *current, SV *text_in)
   if (no_merge_with_following_text)
     goto NEW_TEXT;
 
-  contents_num = av_top_index(contents_array) + 1;
+  contents_num = av_len(contents_array) + 1;
   if (contents_num == 0)
     goto NEW_TEXT;
 
