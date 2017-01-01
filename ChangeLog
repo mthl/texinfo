@@ -1,5 +1,9 @@
 2017-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/automatic_nodes.t: Use the "Texinfo::ModulePath" module.
+
+2017-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/MiscXS/MiscXS.xs,
 	* tp/Texinfo/MiscXS/miscxs.c (xs_process_text): New function.
 	* tp/Texinfo/Convert/Plaintext.pm: Add a 'UNITCHECK' section to 
