@@ -49,6 +49,7 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_text_in)
   int contents_num;
   HV *last_elt;
   char *type;
+  int type_len;
   SV *existing_text_sv;
 
   dTHX;
@@ -84,15 +85,15 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_text_in)
   if (!svp)
     return 0;
 
-  type = SvPV_nolen (*svp);
+  type = SvPV (*svp, type_len);
   if (!type)
     return 0;
 
   /* Must be one of these types to continue. */
-  if (strcmp (type, "empty_line")
-       && strcmp (type, "empty_line_after_command")
-       && strcmp (type, "empty_spaces_before_argument")
-       && strcmp (type, "empty_spaces_after_close_brace"))
+  if (memcmp (type, "empty_line", type_len)
+       && memcmp (type, "empty_line_after_command", type_len)
+       && memcmp (type, "empty_spaces_before_argument", type_len)
+       && memcmp (type, "empty_spaces_after_close_brace", type_len))
     {
       return 0;
     }
@@ -183,6 +184,7 @@ found:
   else if (!strcmp (type, "empty_line"))
     {
       char *current_type;
+      int len;
       AV *context_stack;
       SV *top_context_sv;
       char *top_context;
@@ -192,15 +194,15 @@ found:
       if (!svp)
         current_type = 0;
       else
-        current_type = SvPV_nolen (*svp);
+        current_type = SvPV (*svp, len);
 
       /* "Types with paragraphs".  Remove the type unless we are inside
          one of these types. */
       if (current_type
-          && strcmp (current_type, "before_item")
-          && strcmp (current_type, "text_root")
-          && strcmp (current_type, "document_root")
-          && strcmp (current_type, "brace_command_context"))
+          && memcmp (current_type, "before_item", len)
+          && memcmp (current_type, "text_root", len)
+          && memcmp (current_type, "document_root", len)
+          && memcmp (current_type, "brace_command_context", len))
         goto delete_type;
 
       /* Check the context stack. */
@@ -215,16 +217,16 @@ found:
       if (!svp)
         goto delete_type; /* shouldn't happen */
       top_context_sv = *svp;
-      top_context = SvPV_nolen (top_context_sv);
+      top_context = SvPV (top_context_sv, len);
 
       /* Change type to "empty_spaces_before_paragraph" unless we are in
          one of these contexts. */
-      if (strcmp (top_context, "math")
-          && strcmp (top_context, "menu")
-          && strcmp (top_context, "preformatted")
-          && strcmp (top_context, "rawpreformatted")
-          && strcmp (top_context, "def")
-          && strcmp (top_context, "inlineraw"))
+      if (memcmp (top_context, "math", len)
+          && memcmp (top_context, "menu", len)
+          && memcmp (top_context, "preformatted", len)
+          && memcmp (top_context, "rawpreformatted", len)
+          && memcmp (top_context, "def", len)
+          && memcmp (top_context, "inlineraw", len))
         {
           hv_store (last_elt, "type", strlen ("type"),
                     newSVpv ("empty_spaces_before_paragraph", 0), 0);
@@ -298,18 +300,20 @@ xs_merge_text (HV *self, HV *current, SV *text_in)
         {
           HV *last_elt;
           char *type = 0;
+          int type_len;
 
           last_elt = (HV *)
             SvRV (*av_fetch (contents_array, contents_num - 1, 0));
 
           svp = hv_fetch (last_elt, "type", strlen ("type"), 0);
           if (svp)
-            type = SvPV_nolen (*svp);
+            type = SvPV (*svp, type_len);
           if (type
-              && (!strcmp (type, "empty_line_after_command")
-                  || !strcmp (type, "empty_spaces_after_command")
-                  || !strcmp (type, "empty_spaces_before_argument")
-                  || !strcmp (type, "empty_spaces_after_close_brace")))
+              && (!memcmp (type, "empty_line_after_command", type_len)
+                  || !memcmp (type, "empty_spaces_after_command", type_len)
+                  || !memcmp (type, "empty_spaces_before_argument", type_len)
+                  || !memcmp (type, "empty_spaces_after_close_brace", 
+                              type_len)))
             {
               no_merge_with_following_text = 1;
             }
