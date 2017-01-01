@@ -553,3 +553,80 @@ xs_unicode_text (char *text, int in_code)
   new[new_len] = '\0';
   return new;
 }
+
+/* Return list ($at_command, $open_brace, $asterisk, $single_letter_command,
+       $separator_match) */
+void xs_parse_texi_regex (SV *text_in,
+                          char **at_command,
+                          char **open_brace,
+                          char **asterisk,
+                          char **single_letter_command,
+                          char **separator_match,
+                          char **new_text)
+{
+  char *text;
+
+  dTHX;
+
+  /* Make sure the input is in UTF8. */
+  if (!SvUTF8 (text_in))
+    sv_utf8_upgrade (text_in);
+  text = SvPV_nolen (text_in);
+
+  *at_command = *open_brace = *asterisk = *single_letter_command
+          = *separator_match = *new_text = 0;
+
+  if (*text == '@' && isalnum(text[1]))
+    {
+      char *p, *q;
+
+      p = text + 1;
+      q = text + 2;
+      while (isalnum (*q) || *q == '-' || *q == '_')
+        q++;
+      *at_command = strndup (p, q - p);
+    }
+  else
+    {
+      if (*text == '{')
+        {
+          *open_brace = strdup ("{");
+          *separator_match = strdup ("{");
+        }
+
+      else if (*text == '@'
+                 && text[1] && strchr ("([\"'~@}{,.!?"
+                                       " \f\n\r\t"
+                                       "*-^`=:|/\\",
+                                       text[1]))
+        {
+          *single_letter_command = malloc (2);
+          (*single_letter_command)[0] = text[1];
+          (*single_letter_command)[1] = '\0';
+        }
+
+      else if (strchr ("{}@,:\t.\f", *text))
+        {
+          *separator_match = malloc (2);
+          (*separator_match)[0] = *text;
+          (*separator_match)[1] = '\0';
+        }
+
+      else
+        {
+          char *p;
+
+          if (*text == '*')
+            {
+              *asterisk = strdup ("*");
+            }
+
+          p = text;
+          p += strcspn (p, "{}@,:\t.\n\f");
+          if (p > text)
+            *new_text = strndup (text, p - text);
+        }
+  }
+
+  return;
+}

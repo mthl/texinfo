@@ -3515,6 +3515,37 @@ sub _mark_and_warn_invalid($$$$$)
       if (defined($marked_as_invalid_command));
   }
 }
+
+UNITCHECK {
+  Texinfo::XSLoader::override ("Texinfo::Parser::_parse_texi_regex",
+    "Texinfo::MiscXS::parse_texi_regex");
+}
+
+# This combines several regular expressions used in '_parse_texi' to
+# look at what is next on the remaining part of the line.
+sub _parse_texi_regex {
+  my ($line) = @_;
+
+  my ($at_command, $open_brace, $asterisk, $single_letter_command,
+      $separator_match, $misc_text)
+    = ($line =~ /^\@([[:alnum:]][[:alnum:]-]*)
+                |^(\{)
+                |^(\*)
+                |^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])
+                |^([{}@,:\t.\f])
+                |^([^{}@,:\t.\n\f]+)
+                /x);
+
+  if ($open_brace) {
+    $separator_match = $open_brace;
+  } elsif ($asterisk) {
+    ($misc_text) = ($line =~ /^([^{}@,:\t.\n\f]+)/);
+  }
+
+  return ($at_command, $open_brace, $asterisk, $single_letter_command,
+    $separator_match, $misc_text);
+}
+
 # the different types
 #c 'menu_entry'
 #c 'menu_entry'
@@ -3776,13 +3807,13 @@ sub _parse_texi($;$)
       # handle user defined macros before anything else since
       # their expansion may lead to changes in the line
       # REMACRO
-      my $at_command = undef;
       my $at_command_length;
-      if ($line =~ /^\@([[:alnum:]][[:alnum:]-]*)/g) {
-        $at_command = $1;
-        # Get length with pos instead of length($1) for efficiency
-        $at_command_length = pos($line);
-        pos($line) = 0;
+      
+      my ($at_command, $open_brace, $asterisk, $single_letter_command,
+        $separator_match, $misc_text) = _parse_texi_regex ($line);
+
+      if ($at_command) {
+        $at_command_length = length($at_command) + 1;
       }
       if ($at_command
             and ($self->{'macros'}->{$at_command} 
@@ -3877,7 +3908,7 @@ sub _parse_texi($;$)
       } elsif ($current->{'cmdname'} and 
           (defined($brace_commands{$current->{'cmdname'}}) or 
             $self->{'definfoenclose'}->{$current->{'cmdname'}})
-           and $line !~ /^{/) {
+          and !$open_brace) {
         # special case for @-command as argument of @itemize or @*table.
         if (_command_with_command_as_argument($current->{'parent'})) {
           print STDERR "FOR PARENT \@$current->{'parent'}->{'parent'}->{'cmdname'} command_as_argument $current->{'cmdname'}\n" if ($self->{'DEBUG'});
@@ -3946,7 +3977,7 @@ sub _parse_texi($;$)
                 and $current->{'parent'}->{'type'} 
                 and ($current->{'parent'}->{'type'} eq 'menu_comment'
                      or $current->{'parent'}->{'type'} eq 'menu_entry_description')
-                and $line =~ /^\*/
+                and $asterisk
                 and @{$current->{'contents'}} 
                 and $current->{'contents'}->[-1]->{'type'}
                 and $current->{'contents'}->[-1]->{'type'} eq 'empty_line'
@@ -4050,11 +4081,11 @@ sub _parse_texi($;$)
           $current = _enter_menu_entry_node($self, $current, $line_nr);
         }
         # REMACRO
-      } elsif ($at_command
-               or $line =~ s/^\@(["'~\@\}\{,\.!\?\s\*\-\^`=:\|\/\\])//o) {
+      } elsif ($at_command or $single_letter_command) {
         my $command;
         if (!$at_command) {
-          $command = $1;
+          $command = $single_letter_command;
+          substr($line, 0, 2) = '';
         } else {
           $command = $at_command;
           substr($line, 0, $at_command_length) = '';
@@ -4815,9 +4846,9 @@ sub _parse_texi($;$)
           $self->line_error(sprintf($self->__("unknown command `%s'"), 
                                       $command), $line_nr);
         }
-
-      } elsif ($line =~ s/^([{}@,:\t.\f])//) {
-        my $separator = $1;
+      } elsif ($separator_match) {
+        my $separator = $separator_match;
+        substr ($line, 0, 1) = '';
         print STDERR "SEPARATOR: $separator\n" if ($self->{'DEBUG'});
         if ($separator eq '@') {
           # this may happen with a @ at the very end of a file, therefore
@@ -5341,8 +5372,9 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
           $current = _merge_text($self, $current, $separator);
         }
       # Misc text except end of line
-      } elsif ($line =~ s/^([^{}@,:\t.\n\f]+)//) {
-        my $new_text = $1;
+      } elsif (defined $misc_text) {
+        my $new_text = $misc_text;
+        substr ($line, 0, length ($misc_text)) = '';
         $current = _merge_text($self, $current, $new_text);
       # end of line
       } else {

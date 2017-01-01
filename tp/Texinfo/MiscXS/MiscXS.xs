@@ -99,3 +99,36 @@ xs_unicode_text (text_in, ...)
 
  OUTPUT:
      RETVAL
+
+void
+xs_parse_texi_regex (text)
+     SV *text
+  PREINIT:
+     char *at_command;
+     char *open_brace;
+     char *asterisk;
+     char *single_letter_command;
+     char *separator_match;
+     char *new_text;
+  PPCODE:
+     xs_parse_texi_regex(text, &at_command, &open_brace, &asterisk, 
+                         &single_letter_command, &separator_match, &new_text);
+     EXTEND(SP,6);
+     PUSHs(sv_newmortal());
+     sv_setpv((SV*)ST(0), at_command);
+     SvUTF8_on(ST(0));
+     PUSHs(sv_newmortal());
+     sv_setpv((SV*)ST(1), open_brace);
+     SvUTF8_on(ST(1));
+     PUSHs(sv_newmortal());
+     sv_setpv((SV*)ST(2), asterisk);
+     SvUTF8_on(ST(2));
+     PUSHs(sv_newmortal());
+     sv_setpv((SV*)ST(3), single_letter_command);
+     SvUTF8_on(ST(3));
+     PUSHs(sv_newmortal());
+     sv_setpv((SV*)ST(4), separator_match);
+     SvUTF8_on(ST(4));
+     PUSHs(sv_newmortal());
+     sv_setpv((SV*)ST(5), new_text);
+     SvUTF8_on(ST(5));

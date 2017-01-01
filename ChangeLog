@@ -1,5 +1,15 @@
 2017-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi, _parse_texi_regex): Split 
+	out several regexes used at the start of the remaining part of 
+	the line.
+	* tp/Texinfo/MiscXS/MiscXS.xs,
+	* tp/Texinfo/MiscXS/miscxs.c (xs_parse_texi_regex): New function.
+	* tp/Texinfo/Parser.pm: Add a 'UNITCHECK' section to override 
+	'_parse_texi_regex'.
+
+2017-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/automatic_nodes.t: Use the "Texinfo::ModulePath" module.
 
 2017-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
