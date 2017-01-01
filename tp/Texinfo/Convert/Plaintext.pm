@@ -588,6 +588,25 @@ sub _protect_sentence_ends ($) {
   return $text;
 }
 
+UNITCHECK {
+  Texinfo::XSLoader::override(
+    "Texinfo::Convert::Plaintext::_process_text_internal",
+    "Texinfo::MiscXS::process_text");
+}
+
+sub _process_text_internal {
+  my ($text) = @_;
+
+  $text =~ s/---/\x{1F}/g;
+  $text =~ s/--/-/g;
+  $text =~ s/\x{1F}/--/g;
+  $text =~ s/``/"/g;
+  $text =~ s/\'\'/"/g;
+  $text =~ s/`/'/g;
+
+  return $text;
+}
+
 # Convert ``, '', `, ', ---, -- in $COMMAND->{'text'} to their output,
 # possibly coverting to upper case as well.
 sub _process_text($$$)
@@ -614,12 +633,7 @@ sub _process_text($$$)
     return Texinfo::Convert::Unicode::unicode_text($text, 
             $context->{'font_type_stack'}->[-1]->{'monospace'});
   } elsif (!$context->{'font_type_stack'}->[-1]->{'monospace'}) {
-    $text =~ s/---/\x{1F}/g;
-    $text =~ s/--/-/g;
-    $text =~ s/\x{1F}/--/g;
-    $text =~ s/``/"/g;
-    $text =~ s/\'\'/"/g;
-    $text =~ s/`/'/g;
+    return _process_text_internal($text);
   }
   return $text;
 }
