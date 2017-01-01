@@ -404,6 +404,57 @@ NEW_TEXT:
 }
 
 char *
+xs_process_text (char *text)
+{
+  char *new, *p, *q;
+
+  new = strdup (text);
+
+  p = q = new;
+  while (*p)
+    {
+      if (*p == '-' && p[1] == '-')
+        {
+          if (p[2] == '-')
+            {
+              *q = '-'; q[1] = '-';
+              p += 3; q += 2;
+            }
+          else
+            {
+              *q = '-';
+              p += 2; q += 1;
+            }
+        }
+      else if (*p == '\'' && p[1] == '\'')
+        {
+          *q = '"';
+          p += 2; q += 1;
+        }
+      else if (*p == '`')
+        {
+          if (p[1] == '`')
+            {
+              *q = '"';
+              p += 2; q += 1;
+            }
+          else
+            {
+              *q = '\'';
+              p += 1; q += 1;
+            }
+        }
+      else
+        {
+          *q++ = *p++;
+        }
+    }
+  *q = '\0';
+
+  return new;
+}
+
+char *
 xs_unicode_text (char *text, int in_code)
 {
   char *p, *q;

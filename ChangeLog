@@ -1,3 +1,10 @@
+2017-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS/MiscXS.xs,
+	* tp/Texinfo/MiscXS/miscxs.c (xs_process_text): New function.
+	* tp/Texinfo/Convert/Plaintext.pm: Add a 'UNITCHECK' section to 
+	use 'Texinfo::MiscXS::process_text' inside '_process_text' function.
+
 2016-12-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/MiscXS/miscxs.c (xs_abort_empty_line)

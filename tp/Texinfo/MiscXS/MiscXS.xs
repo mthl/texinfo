@@ -53,6 +53,26 @@ xs_merge_text (self, current, text_in)
      SV *text_in
 
 SV *
+xs_process_text (text_in)
+     SV *text_in
+ PREINIT:
+     char *text;
+     char *retval;
+ CODE:
+     /* Make sure the input is in UTF8. */
+     if (!SvUTF8 (text_in))
+       sv_utf8_upgrade (text_in);
+
+     text = SvPV_nolen (text_in);
+
+     retval = xs_process_text (text);
+
+     RETVAL = newSVpv (retval, 0);
+     SvUTF8_on (RETVAL);
+ OUTPUT:
+     RETVAL
+
+SV *
 xs_unicode_text (text_in, ...)
      SV *text_in
  PREINIT:
