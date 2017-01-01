@@ -1,8 +1,3 @@
-2017-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
-
-	* tp/Texinfo/MiscXS/miscxs.c (xs_merge_text): Use "memcmp" with 
-	length of string instead of "strcmp".
-
 2016-12-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/MiscXS/miscxs.c (xs_abort_empty_line)
