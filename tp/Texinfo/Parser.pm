@@ -3517,8 +3517,8 @@ sub _mark_and_warn_invalid($$$$$)
 }
 
 UNITCHECK {
-  Texinfo::XSLoader::override ("Texinfo::Parser::_parse_texi_regex",
-    "Texinfo::MiscXS::parse_texi_regex");
+   Texinfo::XSLoader::override ("Texinfo::Parser::_parse_texi_regex",
+     "Texinfo::MiscXS::parse_texi_regex");
 }
 
 # This combines several regular expressions used in '_parse_texi' to
