@@ -1,3 +1,9 @@
+2017-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_output_old): Remove unused 
+	function.
+	Whole file: Get subroutine arguments by assigning from @_.
+
 2017-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi, _parse_texi_regex): Split 

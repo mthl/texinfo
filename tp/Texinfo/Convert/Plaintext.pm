@@ -331,8 +331,8 @@ my %defaults = (
 
 sub push_top_formatter($$)
 {
-  my $self = shift;
-  my $top_context = shift;
+  my ($self, $top_context) = @_;
+
   push @{$self->{'context'}}, $top_context;
   push @{$self->{'format_context'}}, {
                                      'cmdname' => '_top_format',
@@ -444,9 +444,7 @@ sub converter_initialize($)
 
 sub _count_context_bug_message($$$)
 {
-  my $self = shift;
-  my $precision = shift; 
-  my $element = shift;
+  my ($self, $precision, $element) = @_;
 
   if (scalar(@{$self->{'count_context'}}) != 1) {
     my $element_text;
@@ -464,8 +462,7 @@ sub _count_context_bug_message($$$)
 
 sub _convert_element($$)
 {
-  my $self = shift;
-  my $element = shift;
+  my ($self, $element) = @_;
 
   my $result = '';
 
@@ -488,8 +485,7 @@ sub _convert_element($$)
 
 sub convert($$)
 {
-  my $self = shift;
-  my $root = shift;
+  my ($self, $root) = @_;
 
   my $result = '';
 
@@ -513,8 +509,7 @@ sub convert($$)
 
 sub convert_tree($$)
 {
-  my $self = shift;
-  my $root = shift;
+  my ($self, $root) = @_;
 
   $self->{'empty_lines_count'} = 1;
   my $result;
@@ -524,42 +519,6 @@ sub convert_tree($$)
     $result = $self->_convert($root);
   }
   return $result;
-}
-
-# old implementation of output that does not allow for splitting.
-sub _output_old($$)
-{
-  my $self = shift;
-  my $root = shift;
-
-  my $outfile = '-';
-  $self->set_conf('OUTFILE', '-');
-  $self->_set_outfile();
-  if (defined($self->{'output_file'})) {
-    $outfile = $self->{'output_file'};
-  }
-  
-  my $fh;
-  if ($outfile ne '') {
-    if ($self->get_conf('VERBOSE')) {
-      print STDERR "Output file $outfile\n";
-    }
-    $fh = $self->Texinfo::Common::open_out($outfile);
-    if (!$fh) {
-      $self->document_error(sprintf($self->__("could not open %s for writing: %s"),
-                                    $outfile, $!));
-      return undef;
-    }
-  }
-  my $result = $self->convert($root);
-  if (defined($result)) {
-    if (defined($fh)) {
-      print $fh $result;
-    } else {
-      return $result;
-    }
-  }
-  return undef;
 }
 
 my $end_sentence = quotemeta('.?!');
@@ -611,9 +570,8 @@ sub _process_text_internal {
 # possibly coverting to upper case as well.
 sub _process_text($$$)
 {
-  my $self = shift;
-  my $command = shift;
-  my $context = shift;
+  my ($self, $command, $context) = @_;
+
   my $text = $command->{'text'};
 
   if ($context->{'upper_case'}
@@ -640,9 +598,7 @@ sub _process_text($$$)
 
 sub new_formatter($$;$)
 {
-  my $self = shift;
-  my $type = shift;
-  my $conf = shift;
+  my ($self, $type, $conf) = @_;
 
   my $first_indent_length = $conf->{'first_indent_length'};
   delete $conf->{'first_indent_length'};
@@ -714,9 +670,7 @@ sub new_formatter($$;$)
 
 sub convert_line($$;$)
 {
-  my $self = shift;
-  my $converted = shift;
-  my $conf = shift;
+  my ($self, $converted, $conf) = @_;
   my $formatter = $self->new_formatter('line', $conf);
   push @{$self->{'formatters'}}, $formatter;
   my $text = $self->_convert($converted);
@@ -728,9 +682,7 @@ sub convert_line($$;$)
 
 sub convert_unfilled($$;$)
 {
-  my $self = shift;
-  my $converted = shift;
-  my $conf = shift;
+  my ($self, $converted, $conf) = @_;
   my $formatter = $self->new_formatter('unfilled', $conf);
   #$formatter->{'code'} = 1;
   $formatter->{'font_type_stack'}->[-1]->{'monospace'} = 1;
@@ -744,8 +696,7 @@ sub convert_unfilled($$;$)
 
 sub count_bytes($$) 
 {
-  my $self = shift;
-  my $string = shift;
+  my ($self, $string) = @_;
 
   return Texinfo::Common::count_bytes($self, $string, 
                                       $self->{'output_perl_encoding'});
@@ -753,8 +704,7 @@ sub count_bytes($$)
 
 sub _add_text_count($$)
 {
-  my $self = shift;
-  my $text = shift;
+  my ($self, $text) = @_;
   if (!$self->{'count_context'}->[-1]->{'pending_text'}) {
     $self->{'count_context'}->[-1]->{'pending_text'} = '';
   }
@@ -763,8 +713,7 @@ sub _add_text_count($$)
 
 sub _add_lines_count($$)
 {
-  my $self = shift;
-  my $lines_count = shift;
+  my ($self, $lines_count) = @_;
   $self->{'count_context'}->[-1]->{'lines'} += $lines_count;
 }
 
@@ -786,8 +735,7 @@ sub _update_count_context($)
 # Save the line and byte offset of $ROOT.
 sub _add_location($$)
 {
-  my $self = shift;
-  my $root = shift;
+  my ($self, $root) = @_;
   my $location = { 'lines' => $self->{'count_context'}->[-1]->{'lines'} };
   push @{$self->{'count_context'}->[-1]->{'locations'}}, $location;
   if (!($root->{'extra'} and $root->{'extra'}->{'index_entry'})) {
@@ -802,11 +750,7 @@ sub _add_location($$)
 
 sub _add_image($$$$;$)
 {
-  my $self = shift;
-  my $root = shift;
-  my $lines_count = shift;
-  my $image_width = shift;
-  my $no_align = shift;
+  my ($self, $root, $lines_count, $image_width, $no_align) = @_;
 
   push @{$self->{'count_context'}->[-1]->{'images'}}, {
     'lines' => $self->{'count_context'}->[-1]->{'lines'},
@@ -820,9 +764,7 @@ sub _add_image($$$$;$)
 
 sub _count_added($$$)
 {
-  my $self = shift;
-  my $container = shift;
-  my $text = shift;
+  my ($self, $container, $text) = @_;
 
   my $count_context = $self->{'count_context'}->[-1];
   $count_context->{'lines'} += $container->end_line_count();
@@ -836,8 +778,8 @@ sub _count_added($$$)
 
 sub _update_locations_counts($$)
 {
-  my $self = shift;
-  my $locations = shift;
+  my ($self, $locations) = @_;
+
   _update_count_context($self);
   foreach my $location (@$locations) {
     $location->{'bytes'} += $self->{'count_context'}->[-1]->{'bytes'}
@@ -862,8 +804,7 @@ sub _add_newline_if_needed($) {
 my $footnote_indent = 3;
 sub _footnotes($;$)
 {
-  my $self = shift;
-  my $element = shift;
+  my ($self, $element) = @_;
 
   $element = undef if ($element and $element->{'extra'}->{'no_node'});
 
@@ -940,10 +881,7 @@ sub _footnotes($;$)
 
 sub _compute_spaces_align_line($$$;$)
 {
-  my $line_width = shift;
-  my $max_column = shift;
-  my $direction = shift;
-  my $no_align = shift;
+  my ($line_width, $max_column, $direction, $no_align) = @_;
 
   my $spaces_prepended;
   if ($line_width >= $max_column or $no_align) {
@@ -959,12 +897,7 @@ sub _compute_spaces_align_line($$$;$)
 
 sub _align_lines($$$$$$)
 {
-  my $self = shift;
-  my $text = shift;
-  my $max_column = shift;
-  my $direction = shift;
-  my $locations = shift;
-  my $images = shift;
+  my ($self, $text, $max_column, $direction, $locations, $images) = @_;
 
   my $result = '';
 
@@ -1082,10 +1015,7 @@ sub _align_lines($$$$$$)
 
 sub _align_environment($$$$)
 {
-  my $self = shift;
-  my $result = shift;
-  my $max = shift;
-  my $align = shift;
+  my ($self, $result, $max, $align) = @_;
 
   _update_count_context($self);
   my $counts = pop @{$self->{'count_context'}};
@@ -1102,9 +1032,7 @@ sub _align_environment($$$$)
 
 sub _contents($$$)
 {
-  my $self = shift;
-  my $section_root = shift;
-  my $contents_or_shortcontents = shift;
+  my ($self, $section_root, $contents_or_shortcontents) = @_;
 
   my $contents = 1 if ($contents_or_shortcontents eq 'contents');
 
@@ -1178,8 +1106,7 @@ sub _contents($$$)
 
 sub _menu($$)
 {
-  my $self = shift;
-  my $menu_command = shift;
+  my ($self, $menu_command) = @_;
 
   if ($menu_command->{'cmdname'} eq 'menu') {
     my $result = "* Menu:\n\n";
@@ -1196,8 +1123,7 @@ sub _menu($$)
 
 sub _printindex($$)
 {
-  my $self = shift;
-  my $printindex = shift;
+  my ($self, $printindex) = @_;
   return $self->_printindex_formatted($printindex);
 }
 
@@ -1210,8 +1136,7 @@ sub _normalize_top_node($)
 # convert and cache a node name.  $NODE is a node element.
 sub _node_line($$)
 {
-  my $self = shift;
-  my $node = shift;
+  my ($self, $node) = @_;
   if (!$self->{'node_lines_text'}->{$node}) {
     my $node_text = {'type' => '_code',
               'contents' => $node->{'extra'}->{'node_content'}};
@@ -1232,9 +1157,7 @@ my $index_length_to_node = 41;
 
 sub _printindex_formatted($$;$)
 {
-  my $self = shift;
-  my $printindex = shift;
-  my $in_info = shift;
+  my ($self, $printindex, $in_info) = @_;
 
   my $index_name;
 
@@ -1455,8 +1378,8 @@ my $listoffloat_append = '...';
 
 sub ensure_end_of_line($$)
 {
-  my $self = shift;
-  my $text = shift;
+  my ($self, $text) = @_;
+
   my $chomped = chomp ($text);
   if ($chomped) {
     $self->{'count_context'}->[-1]->{'bytes'} -= count_bytes($self, $chomped);
@@ -1470,9 +1393,7 @@ sub ensure_end_of_line($$)
 
 sub _image_text($$$)
 {
-  my $self = shift;
-  my $root = shift;
-  my $basefile = shift;
+  my ($self, $root, $basefile) = @_;
 
   my $txt_file = $self->Texinfo::Common::locate_include_file($basefile.'.txt');
   if (!defined($txt_file)) {
@@ -1509,10 +1430,7 @@ sub _image_text($$$)
 
 sub _image_formatted_text($$$$)
 {
-  my $self = shift;
-  my $root = shift;
-  my $basefile = shift;
-  my $text = shift;
+  my ($self, $root, $basefile, $text) = @_;
 
   my $result;
   if (defined($text)) {
@@ -1532,8 +1450,7 @@ sub _image_formatted_text($$$$)
 
 sub _image($$)
 {
-  my $self = shift;
-  my $root = shift;
+  my ($self, $root) = @_;
 
   if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
     my $basefile = Texinfo::Convert::Text::convert(
