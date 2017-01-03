@@ -1,5 +1,10 @@
 2017-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/MiscXS/miscxs.c (xs_parse_texi_regex): Use malloc
+	and memcpy instead of strndup for better portability.
+
+2017-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Plaintext.pm (_output_old): Remove unused 
 	function.
 	Whole file: Get subroutine arguments by assigning from @_.

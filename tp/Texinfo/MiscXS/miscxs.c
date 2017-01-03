@@ -584,7 +584,9 @@ void xs_parse_texi_regex (SV *text_in,
       q = text + 2;
       while (isalnum (*q) || *q == '-' || *q == '_')
         q++;
-      *at_command = strndup (p, q - p);
+      *at_command = malloc (q - p + 1);
+      memcpy (*at_command, p, q - p);
+      (*at_command)[q - p] = '\0';
     }
   else
     {
@@ -624,9 +626,13 @@ void xs_parse_texi_regex (SV *text_in,
           p = text;
           p += strcspn (p, "{}@,:\t.\n\f");
           if (p > text)
-            *new_text = strndup (text, p - text);
+            {
+              *new_text = malloc (p - text + 1);
+              memcpy (*new_text, text, p - text);
+              (*new_text)[p - text] = '\0';
+            }
         }
-  }
+    }
 
   return;
 }
