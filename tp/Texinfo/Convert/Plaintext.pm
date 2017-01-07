@@ -645,7 +645,6 @@ sub new_formatter($$;$)
   }
 
   my $formatter = {'container' => $container, 'upper_case' => 0,
-                   #'code' => 0, 'code_command'=> 0,
                    'font_type_stack' => [{}],
                    'w' => 0, 'type' => $type,
               'frenchspacing_stack' => [$self->{'conf'}->{'frenchspacing'}],
@@ -684,7 +683,6 @@ sub convert_unfilled($$;$)
 {
   my ($self, $converted, $conf) = @_;
   my $formatter = $self->new_formatter('unfilled', $conf);
-  #$formatter->{'code'} = 1;
   $formatter->{'font_type_stack'}->[-1]->{'monospace'} = 1;
   push @{$self->{'formatters'}}, $formatter;
   my $result = $self->_convert($converted);
@@ -1762,7 +1760,6 @@ sub _convert($$)
         } else {
           $formatter->{'font_type_stack'}->[-1]->{'monospace'}++;
         }
-        #$formatter->{'code'}++;
       } elsif ($regular_font_style_commands{$command}) {
         if ($formatter->{'font_type_stack'}->[-1]->{'monospace'}) {
           push @{$formatter->{'font_type_stack'}}, {'monospace' => 0, 
@@ -1833,7 +1830,6 @@ sub _convert($$)
           if ($formatter->{'w'} == 0);
       }
       if ($code_style_commands{$command}) {
-        #$formatter->{'code'}--;
         $formatter->{'font_type_stack'}->[-1]->{'monospace'}--;
         $formatter->{'container'}->allow_end_sentence();
         pop @{$formatter->{'font_type_stack'}}
@@ -3035,7 +3031,6 @@ sub _convert($$)
       $formatter->{'container'}->set_space_protection(undef,
         undef,undef,1);
     } elsif ($root->{'type'} eq '_code') {
-      #$formatter->{'code'}++;
       if (!$formatter->{'font_type_stack'}->[-1]->{'monospace'}) {
         push @{$formatter->{'font_type_stack'}}, {'monospace' => 1};
       } else {
@@ -3075,7 +3070,6 @@ sub _convert($$)
       $formatter->{'container'}->set_space_protection(undef,
         undef, undef, $frenchspacing);
     } elsif ($root->{'type'} eq '_code') {
-      #$formatter->{'code'}--;
       $formatter->{'font_type_stack'}->[-1]->{'monospace'}--;
       pop @{$formatter->{'font_type_stack'}}
         if !$formatter->{'font_type_stack'}->[-1]->{'monospace'};
