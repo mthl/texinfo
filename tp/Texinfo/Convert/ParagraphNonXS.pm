@@ -36,7 +36,8 @@ sub new($;$)
   my $conf = shift;
   my $self = {'max' => 72, 'indent_length' => 0, 'counter' => 0, 
               'word_counter' => 0, 'space' => '', 'frenchspacing' => 0,
-              'lines_counter' => 0, 'end_line_count' => 0};
+              'lines_counter' => 0, 'end_line_count' => 0,
+              'unfilled' => 0 };
   if (defined($conf)) {
     foreach my $key (keys(%$conf)) {
       $self->{$key} = $conf->{$key};
@@ -128,7 +129,9 @@ sub _add_pending_word($;$)
       $paragraph->{'counter'} = $paragraph->{'indent_length'};
       print STDERR "INDENT($paragraph->{'counter'}+$paragraph->{'word_counter'})\n" 
                    if ($paragraph->{'DEBUG'});
-    } elsif ($paragraph->{'space'}) {
+      delete $paragraph->{'space'} unless $paragraph->{'unfilled'};
+    }
+    if ($paragraph->{'space'}) {
       $result .= $paragraph->{'space'};
       $paragraph->{'counter'} += length($paragraph->{'space'});
       print STDERR "ADD_SPACES($paragraph->{'counter'}+$paragraph->{'word_counter'})\n" 
@@ -156,7 +159,7 @@ sub end($)
   $paragraph->{'end_line_count'} = 0;
   print STDERR "PARA END\n" if ($paragraph->{'DEBUG'});
   my $result = _add_pending_word($paragraph);
-  if ($paragraph->{'counter'} != 0) {
+  if (!$paragraph->{'unfilled'} and $paragraph->{'counter'} != 0) {
     $result .= "\n"; 
     $paragraph->{'lines_counter'}++;
     $paragraph->{'end_line_count'}++;
@@ -227,9 +230,7 @@ sub _add_next($;$$$)
     }
 
     if (!$newlines_impossible and $word =~ /\n/) {
-      $result .= $paragraph->{'space'};
-      $paragraph->{'space'} = '';
-      $result .= $paragraph->{'word'};
+      $result .= _add_pending_word ($paragraph);
       _end_line($paragraph);
       $paragraph->{'word_counter'} = 0;
       $paragraph->{'word'} = undef;
@@ -365,10 +366,11 @@ sub add_text($$)
         }
       } else {
         $result .= _add_pending_word($paragraph);
-        if ($paragraph->{'counter'} != 0) {
+        if ($paragraph->{'counter'} != 0 or $paragraph->{'unfilled'}) {
           if ($paragraph->{'end_sentence'} 
               and $paragraph->{'end_sentence'} > 0
-              and !$paragraph->{'frenchspacing'}) {
+              and !$paragraph->{'frenchspacing'}
+              and !$paragraph->{'unfilled'}) {
             if (length($paragraph->{'space'}) >= 1 or length($spaces) > 1) {
               # more than one space, we can make sure tht there are only 
               # 2 spaces
@@ -384,11 +386,22 @@ sub add_text($$)
             }
           } else {
             # Only save the first space
-            if (length($paragraph->{'space'}) < 1) {
-              $paragraph->{'space'} = substr($spaces, 0, 1);
-              if ($paragraph->{'space'} eq "\n"
-                  or $paragraph->{'space'} eq "\r") {
-                $paragraph->{'space'} = " ";
+            if ($paragraph->{'unfilled'}
+                or length($paragraph->{'space'}) < 1) {
+              if ($spaces =~ /\n/) {
+                if (!$paragraph->{'unfilled'}) {
+                  $paragraph->{'space'} = ' ';
+                } elsif ($spaces =~ /\n/) {
+                  $result .= _add_pending_word ($paragraph);
+                  $result .= _end_line ($paragraph);
+                }
+              } else {
+                if (!$paragraph->{'unfilled'}) {
+                  $spaces =~ s/\r/ /g;
+                  $paragraph->{'space'} .= substr ($spaces, 0, 1);
+                } else {
+                  $paragraph->{'space'} .= $spaces;
+                }
               }
             }
           }
@@ -401,7 +414,7 @@ sub add_text($$)
                       > $paragraph->{'max'}) {
         $result .= _cut_line($paragraph);
       }
-      if ($newline_possible_flag
+      if ($newline_possible_flag and !$paragraph->{'unfilled'}
           and $paragraph->{'keep_end_lines'} and $spaces =~ /\n/) {
         $result .= _end_line($paragraph);
       }
@@ -421,7 +434,8 @@ sub add_text($$)
       if (defined($paragraph->{'end_sentence'})
           and $added_word =~ /^[$after_punctuation_characters]*$/o) {
         # do nothing in the case of a continuation of after_punctuation_characters
-      } elsif ($tmp =~
+      } elsif (!$paragraph->{'unfilled'}
+          and $tmp =~
         /(^|[^[:upper:]$after_punctuation_characters$end_sentence_character])
          [$after_punctuation_characters]*[$end_sentence_character]
          [$end_sentence_character\x08$after_punctuation_characters]*$/x) {

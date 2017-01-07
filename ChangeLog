@@ -1,5 +1,28 @@
 2017-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/ParagraphNonXS.pm
+	(add_pending_word) <unfilled>: Include leading spaces after 
+	indent.
+	(add_text) <unfilled>:
+	Do not detect end of sentence, save spaces at beginnings of 
+	lines, do not condense multiple spaces to one space.
+	(add_next): Call '_add_pending_word' to make sure a leading line
+	indent is added.
+	(end) <unfilled>: No newline at end of output.
+	(new): Initialize 'unfilled' value.
+
+	These changes nearly match the behaviour of the C 
+	implementation, except for a test failure where the C code 
+	doesn't handle nested formatters correctly
+	(t/results/raw/raw_expanded_in_style.pl).
+
+2017-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert, convert_unfilled): 
+	Remove commented-out code incrementing and decrementing a 'code' value.
+
+2017-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/xspara.c (PARAGRAPH): New
 	configuration field 'unfilled'.
 	(xspara_set_state): Set 'unfilled' from argument.
