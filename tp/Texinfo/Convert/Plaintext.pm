@@ -2670,6 +2670,8 @@ sub _convert($$)
       return $result;
     } elsif ($command eq 'sp') {
       if ($root->{'extra'}->{'misc_args'}->[0]) {
+        $result = _count_added($self, $formatter->{'container'},
+                              $formatter->{'container'}->add_pending_word());
         # this useless copy avoids perl changing the type to integer!
         my $sp_nr = $root->{'extra'}->{'misc_args'}->[0];
         for (my $i = 0; $i < $sp_nr; $i++) {
@@ -2958,6 +2960,9 @@ sub _convert($$)
           my $node_text = _convert($self, {'type' => '_code',
                                       'contents' => $arg->{'contents'}});
 
+          $node_text .= _count_added($self,
+                           $formatter->{'container'},
+                           $formatter->{'container'}->add_pending_word(1));
           delete $self->{'formatters'}->[-1]->{'suppress_styles'};
           $pre_quote = $post_quote = '';
           if ($entry_name_seen) {
@@ -2986,6 +2991,10 @@ sub _convert($$)
           $result .= $pre_quote . $node_text . $post_quote;
         } elsif ($arg->{'type'} eq 'menu_entry_name') {
           my $entry_name = _convert($self, $arg);
+          my $formatter = $self->{'formatters'}->[-1];
+          $entry_name .= _count_added($self,
+                           $formatter->{'container'},
+                           $formatter->{'container'}->add_pending_word(1));
           $entry_name_seen = 1;
           $pre_quote = $post_quote = '';
           if ($entry_name =~ /:/) {
@@ -3003,9 +3012,24 @@ sub _convert($$)
           $result .= _convert($self, $arg);
         }
       }
-      $result = $self->ensure_end_of_line($result) 
-        unless ($root->{'parent'}->{'type'} 
-                and $root->{'parent'}->{'type'} eq 'preformatted');
+
+      # If we are nested inside an @example, a 'menu_entry_description' may not 
+      # have been processed yet, and we need to output any pending spaces 
+      # before 'end_line' throws them away.  The argument to 'add_pending_word' 
+      # does this.
+      if ($root->{'parent'}->{'type'} 
+              and $root->{'parent'}->{'type'} eq 'preformatted') {
+        $result .= _count_added($self,
+                         $formatter->{'container'},
+                         $formatter->{'container'}->add_pending_word(1));
+      } else {
+        $result .= _count_added($self,
+                         $formatter->{'container'},
+                         $formatter->{'container'}->add_pending_word());
+        $formatter->{'container'}->end_line();
+        $result = $self->ensure_end_of_line($result) ;
+      }
+
     } elsif ($root->{'type'} eq 'frenchspacing') {
       push @{$formatter->{'frenchspacing_stack'}}, 'on';
       $formatter->{'container'}->set_space_protection(undef,

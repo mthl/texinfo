@@ -645,7 +645,7 @@ $result_converted{'plaintext'}->{'simple'} = 'Before menu.
 comment
 * menu entry name : node.    description
 * node name::                description new
-* other entry: node,    
+* other entry: node,
 * last::
                  description next line
                  still description

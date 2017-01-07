@@ -81,6 +81,9 @@ typedef struct {
                            Used by @flushleft and @flushright. */
     int french_spacing; /* Only one space, not two, after a full stop. */
     int double_width_no_break; /* No line break between double width chars. */
+
+    /* No wrapping of lines and spaces are kept as-is. */
+    int unfilled;
 } PARAGRAPH;
 
 static PARAGRAPH state;
@@ -368,6 +371,8 @@ xspara_set_state (HV *hash)
   FETCH_INT("keep_end_lines", state.keep_end_lines);
   FETCH_INT("frenchspacing", state.french_spacing);
 
+  FETCH_INT("unfilled", state.unfilled);
+
   val = FETCH("word");
   if (val)
     {
@@ -499,8 +504,14 @@ xspara__add_pending_word (TEXT *result, int add_spaces)
       for (i = 0; i < state.indent_length - state.counter; i++)
         text_append (result, " ");
       state.counter = state.indent_length;
+
+      /* Do not output leading spaces after the indent, unless 'unfilled'
+         is on.  */
+      if (!state.unfilled)
+        state.space.end = 0;
     }
-  else if (state.space.end > 0)
+
+  if (state.space.end > 0)
     {
       text_append_n (result, state.space.text, state.space.end);
 
@@ -543,7 +554,7 @@ xspara_end (void)
   text_init (&ret);
   state.end_line_count = 0;
   xspara__add_pending_word (&ret, 0);
-  if (state.counter != 0)
+  if (!state.unfilled && state.counter != 0)
     {
       text_append (&ret, "\n");
       state.lines_counter++;
@@ -638,18 +649,8 @@ xspara__add_next (TEXT *result, char *word, int word_len, int transparent)
   if (strchr (word, '\n'))
     {
       /* If there was a newline in the word we just added, put the entire
-         pending ouput in the results string, and start a new line.
-         TODO: Does line_counter get incremented properly in this 
-         circumstance? */
-      /* TODO: Could we just call _add_pending_word here? */
-      text_append_n (result, state.space.text, state.space.end);
-      state.space.end = 0;
-      state.space_counter = 0;
-      text_append_n (result, state.word.text, state.word.end);
-      state.word.end = 0;
-      state.word_counter = 0;
-      state.invisible_pending_word = 0;
-
+         pending ouput in the results string, and start a new line. */
+      xspara__add_pending_word (result, 0);
       xspara__end_line ();
     }
   else
@@ -852,12 +853,13 @@ xspara_add_text (char *text)
             {
               xspara__add_pending_word (&result, 0);
 
-              if (state.counter != 0)
+              if (state.counter != 0 || state.unfilled)
                 {
                   /* If we are at the end of a sentence where two spaces
                      are required. */
                   if (state.end_sentence == 1
-                      && !state.french_spacing)
+                      && !state.french_spacing
+                      && !state.unfilled)
                     {
                       wchar_t q_char;
                       size_t q_len;
@@ -974,13 +976,27 @@ xspara_add_text (char *text)
                   else /* Not at end of sentence. */
                     {
                       /* Only save the first space. */
-                      if (state.space_counter < 1)
+                      if (state.unfilled || state.space_counter < 1)
                         {
                           if (*p == '\n' || *p == '\r')
-                            text_append_n (&state.space, " ", 1);
+                            {
+                              if (!state.unfilled)
+                                {
+                                  text_append_n (&state.space, " ", 1);
+                                  state.space_counter++;
+                                }
+                              else if (*p == '\n')
+                                {
+                                  xspara__add_pending_word (&result, 0);
+                                  xspara__end_line ();
+                                  text_append (&result, "\n");
+                                }
+                            }
                           else
-                            text_append_n (&state.space, p, char_len);
-                          state.space_counter++;
+                            {
+                              text_append_n (&state.space, p, char_len);
+                              state.space_counter++;
+                            }
                         }
                     }
                 }
@@ -993,7 +1009,7 @@ xspara_add_text (char *text)
               xspara__cut_line (&result);
             }
 
-          if (*p == '\n' && state.keep_end_lines)
+          if (!state.unfilled && *p == '\n' && state.keep_end_lines)
             {
               xspara__end_line ();
               text_append (&result, "\n");
@@ -1043,7 +1059,7 @@ xspara_add_text (char *text)
               /* Now check if it is considered as an end of sentence, and
                  set state.end_sentence if it is. */
 
-              if (strchr (".?!", *p))
+              if (strchr (".?!", *p) && !state.unfilled)
                 {
                   /* Doesn't count if preceded by an upper-case letter. */
                   if (!iswupper (state.last_letter))

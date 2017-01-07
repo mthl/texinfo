@@ -1,3 +1,40 @@
+2017-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (PARAGRAPH): New
+	configuration field 'unfilled'.
+	(xspara_set_state): Set 'unfilled' from argument.
+
+	(xspara__add_pending_word): Include leading spaces after indent 
+	if 'unfilled' is on.
+
+	(xspara__add_next): Call 'xspara__add_pending_word'.  This 
+	shortens the code and makes sure that a leading line indent is added.
+
+	(xspara_add_text) <unfilled>: Record spaces at the beginning of 
+	lines, do not convert newlines to spaces, and no end of sentence 
+	detection.
+
+	(xspara_end) <unfilled>: Don't append a newline.
+
+	Note: ParagraphNonXS.pm not done yet.
+
+	* tp/Texinfo/Convert/UnFilled.pm: Remove code of module, and 
+	replace with wrapper around Texinfo::Paragraph using the 
+	'unfilled' option.
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert)
+	<@sp, node names in menus>: Call 'add_pending_word' to flush 
+	output.
+
+	This change leads to some changes in output:
+	  Spaces included at ends of lines in @verbatiminclude.
+	  Spaces lost at ends of lines in most other contexts, like
+	menus.  Spaces were already removed at the end of a line,
+	but not consistently.
+
+	* tp/t/paragraph.t (unfilled lines_counter tests): Remove tests,
+	as 'lines_counter' is not available any more.
+
 2017-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/MiscXS/miscxs.c (xs_parse_texi_regex): Use malloc

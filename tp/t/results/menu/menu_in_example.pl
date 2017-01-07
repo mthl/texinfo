@@ -779,7 +779,7 @@ $result_converted{'plaintext'}->{'menu_in_example'} = '* Menu:
      in cartouche in menu comment in menu in example
 
      * (node) menu::      a node in menu
-     * a menu name:(other) node. 
+     * a menu name:(other) node.
 ';
 
 

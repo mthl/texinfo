@@ -8,7 +8,7 @@ BEGIN {
 
 # X * 2 - Y: X is the total number of tests, Y the number of tests only to
 # be run once.
-plan tests => 130 * 2 - 45;
+plan tests => 125 * 2 - 40;
 
 my ($real_command_name, $command_directory, $command_suffix)
   = fileparse($0, '.t');
@@ -717,17 +717,5 @@ is ($line->{'lines_counter'}, 1, 'line count line first line end');
 $result .= $line->add_text("\n");
 $result .= $line->end();
 is ($line->{'lines_counter'}, 2, 'line count line end line');
-
-my $unfilled = Texinfo::Convert::UnFilled->new({'indent_length' => 5});
-$result = '';
-is ($unfilled->{'lines_counter'}, 0, 'line count unfilled first line begin');
-$result .= $unfilled->add_text("something\n");
-is ($unfilled->{'lines_counter'}, 1, 'line count unfilled first line');
-$result .= $unfilled->add_text("\n");
-is ($unfilled->{'lines_counter'}, 2, 'line count unfilled second line');
-$result .= $unfilled->add_text(" other\n");
-$result .= $unfilled->end();
-is ($unfilled->{'lines_counter'}, 3, 'line count unfilled third line');
-is ($result, "     something\n\n      other\n", 'unfilled and indent');
 
 1;
