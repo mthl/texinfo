@@ -84,6 +84,8 @@ typedef struct {
 
     /* No wrapping of lines and spaces are kept as-is. */
     int unfilled;
+
+    int in_use;
 } PARAGRAPH;
 
 static PARAGRAPH state;
@@ -305,36 +307,84 @@ success: ;
     }
 }
 
+/* Array for storing paragraph states which aren't in use. */
+static PARAGRAPH *state_array;
+static int state_array_size;
+
+/* The slot in state_array for saving the current state. */
+static int current_state;
+
+static void
+xspara__switch_state (int id)
+{
+  if (current_state == id)
+    return;
+  if (current_state != -1)
+    memcpy (&state_array[current_state], &state, sizeof (PARAGRAPH));
+
+  memcpy (&state, &state_array[id], sizeof (PARAGRAPH));
+  current_state = id;
+}
+
 int
 xspara_new (HV *conf)
 {
+  int i;
+
   dTHX; /* Perl boiler plate */
 
-  /* Avoid leaking the memory used last time. */
-  TEXT saved_space = state.space, saved_word = state.word;
+  TEXT saved_space, saved_word;
 
-  /* Default values for formatter, reusing storage. */
+  /* Find an unused slot in state_array */
+  for (i = 0; i < state_array_size; i++)
+    {
+      if (!state_array[i].in_use)
+        break;
+    }
+  if (i == state_array_size)
+    {
+      state_array = realloc (state_array,
+                             (state_array_size += 10) * sizeof (PARAGRAPH));
+      memset (state_array + i, 0, 10 * sizeof (PARAGRAPH));
+    }
+
+  state_array[i].in_use = 1;
+  xspara__switch_state (i);
+
+  /* Zero formatter, reusing storage. */
+  saved_space = state.space;
+  saved_word = state.word;
   memset (&state, 0, sizeof (state));
   state.space = saved_space;
   state.word = saved_word;
   state.space.end = state.word.end = 0;
 
+  /* Default values. */
   state.max = 72;
   state.indent_length_next = -1; /* Special value meaning undefined. */
   state.end_sentence = -2; /* Special value meaning undefined. */
   state.last_letter = L'\0';
 
   if (conf)
-    xspara_set_state (conf);
+    xspara_init_state (conf);
 
-  /* This could be a paragraph ID. */
-  return 0;
+  /* The paragraph ID. */
+  return i;
 }
 
 
+/* SV is a blessed reference to an integer containing the paragraph ID. */
+void
+xspara_set_state (SV *sv)
+{
+  dTHX;
+
+  xspara__switch_state (SvIV (SvRV (sv)));
+}
+
 /* Set the state internal to this C module from the Perl hash. */
 void
-xspara_set_state (HV *hash)
+xspara_init_state (HV *hash)
 {
 #define FETCH(key) hv_fetch (hash, key, strlen (key), 0)
 #define FETCH_INT(key,where) { val = FETCH(key); \
@@ -560,6 +610,13 @@ xspara_end (void)
       state.lines_counter++;
       state.end_line_count++;
     }
+
+  /* Now it's time to forget about the state. */
+  state_array[current_state].in_use = 0;
+
+  /* Don't do this so we can get the closing line counts. */
+  /* current_state = -1; */
+
   if (ret.text)
     return ret.text;
   else
