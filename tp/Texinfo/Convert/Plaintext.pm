@@ -1864,6 +1864,8 @@ sub _convert($$)
     } elsif ($command eq 'image') {
       $result = _count_added($self, $formatter->{'container'},
                    $formatter->{'container'}->add_pending_word(1));
+      # add an empty word so that following spaces aren't lost
+      $formatter->{'container'}->add_next('');
       my ($image, $lines_count) = $self->_image($root);
       _add_lines_count($self, $lines_count);
       _add_text_count($self, $image);
