@@ -1,5 +1,12 @@
 2017-01-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/ParagraphNonXS.pm,
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (add_text): If
+	there is an empty pending word at the very start of a line,
+	allow spaces to be output after it.
+
+2017-01-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/XSParagraph.xs: Uncomment calls
 	to xspara_set_state, and remove calls to xspara_get-state.  
 	Receive paragraph object as an SV *, not an HV *.

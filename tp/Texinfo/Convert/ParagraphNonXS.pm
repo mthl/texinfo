@@ -365,8 +365,11 @@ sub add_text($$)
           $result .= _cut_line($paragraph);
         }
       } else {
+        my $pending_word = $paragraph->{'word'};
+
         $result .= _add_pending_word($paragraph);
-        if ($paragraph->{'counter'} != 0 or $paragraph->{'unfilled'}) {
+        if ($paragraph->{'counter'} != 0 or $paragraph->{'unfilled'}
+            or (defined $pending_word)) {
           if ($paragraph->{'end_sentence'} 
               and $paragraph->{'end_sentence'} > 0
               and !$paragraph->{'frenchspacing'}

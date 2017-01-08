@@ -908,9 +908,10 @@ xspara_add_text (char *text)
             }
           else /* protect_spaces off */
             {
+              int pending = state.invisible_pending_word;
               xspara__add_pending_word (&result, 0);
 
-              if (state.counter != 0 || state.unfilled)
+              if (state.counter != 0 || state.unfilled || pending)
                 {
                   /* If we are at the end of a sentence where two spaces
                      are required. */
