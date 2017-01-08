@@ -675,6 +675,8 @@ xspara__add_next (TEXT *result, char *word, int word_len, int transparent)
     }
 
   text_append_n (&state.word, word, word_len);
+  if (word_len == 0 && word)
+    state.invisible_pending_word = 1;
 
   if (!transparent)
     {

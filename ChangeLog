@@ -1,5 +1,10 @@
 2017-01-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (add_next): If given
+	empty argument, set 'invisible_pending_word'.
+
+2017-01-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Plaintext.pm (_convert) <@image>: Call
 	'add_next' with an empty string argument so that any spaces 
 	following the command aren't lost.
