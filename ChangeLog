@@ -1,5 +1,28 @@
 2017-01-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (PARAGRAPH): New 
+	configuration fields 'no_final_newline' and 'add_final_space'.
+	(xspara_new): Set 'in_use' on state so that it is saved properly.
+	(xspara_init_state): Remove some out-of-date comments.  Retrieve
+	'no_final_newline' and 'add_final_space' values.
+	(xspara_end): Use 'no_final_newline' to decide whether to add
+	a final newline, and pass value of 'add_final_space' to
+	_add_pending_word.
+
+	* tp/Texinfo/Convert/ParagraphNonXS.pm (end): Use 
+	'no_final_newline' to decide whether to add a final newline, and 
+	pass value of 'add_final_space' to _add_pending_word.
+
+	* tp/Texinfo/Convert/Line.pm: Replace with wrapper around 
+	Texinfo::Paragraph.
+	* tp/Texinfo/Convert/UnFilled.pm (new): Use 'no_final_newline'
+	option.
+
+	* tp/t/paragraph.t (line count line tests): Remove, as the
+	'lines_counter' information isn't available any more.
+
+2017-01-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/xspara.c (add_next): If given
 	empty argument, set 'invisible_pending_word'.
 

@@ -158,8 +158,8 @@ sub end($)
   my $paragraph = shift;
   $paragraph->{'end_line_count'} = 0;
   print STDERR "PARA END\n" if ($paragraph->{'DEBUG'});
-  my $result = _add_pending_word($paragraph);
-  if (!$paragraph->{'unfilled'} and $paragraph->{'counter'} != 0) {
+  my $result = _add_pending_word($paragraph, $paragraph->{'add_final_space'});
+  if (!$paragraph->{'no_final_newline'} and $paragraph->{'counter'} != 0) {
     $result .= "\n"; 
     $paragraph->{'lines_counter'}++;
     $paragraph->{'end_line_count'}++;

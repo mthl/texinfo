@@ -8,7 +8,7 @@ BEGIN {
 
 # X * 2 - Y: X is the total number of tests, Y the number of tests only to
 # be run once.
-plan tests => 125 * 2 - 40;
+plan tests => 122 * 2 - 37;
 
 my ($real_command_name, $command_directory, $command_suffix)
   = fileparse($0, '.t');
@@ -707,15 +707,5 @@ $result .= $line->set_space_protection(0,0);
 $result .= $line->add_text("  after");
 $result .= $line->end();
 is ($result, "protected after", 'line 2 spaces after end space protection with dot');
-
-$line = Texinfo::Convert::Line->new();
-$result = '';
-$result .= $line->add_text('aaaa ');
-is ($line->{'lines_counter'}, 0, 'line count line first line begin');
-$result .= $line->add_text("bbbb\n");
-is ($line->{'lines_counter'}, 1, 'line count line first line end');
-$result .= $line->add_text("\n");
-$result .= $line->end();
-is ($line->{'lines_counter'}, 2, 'line count line end line');
 
 1;

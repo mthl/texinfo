@@ -85,6 +85,12 @@ typedef struct {
     /* No wrapping of lines and spaces are kept as-is. */
     int unfilled;
 
+    /* Do not terminate with a final newline. */
+    int no_final_newline;
+
+    /* Terminate with any trailing space. */
+    int add_final_space;
+
     int in_use;
 } PARAGRAPH;
 
@@ -358,6 +364,7 @@ xspara_new (HV *conf)
   state.space = saved_space;
   state.word = saved_word;
   state.space.end = state.word.end = 0;
+  state.in_use = 1;
 
   /* Default values. */
   state.max = 72;
@@ -394,15 +401,6 @@ xspara_init_state (HV *hash)
   
   dTHX; /* This is boilerplate for interacting with Perl. */
 
-  /* None of this is really needed, under the big assumption that
-     we only have one "paragraph" object going at once. */
-
-  /* If we did need it, the "paragraph" object could be an integer giving
-     an index into an array of PARAGRAPH objects. */
-
-  /* You might imagine we would have multiple paragraphs going at once for a 
-     footnote, but this appears not to happen.  */
-
   /* Fetch all these so they are set, and reset for each paragraph. */
   FETCH_INT("end_sentence", state.end_sentence);
   FETCH_INT("max", state.max);
@@ -422,6 +420,8 @@ xspara_init_state (HV *hash)
   FETCH_INT("frenchspacing", state.french_spacing);
 
   FETCH_INT("unfilled", state.unfilled);
+  FETCH_INT("no_final_newline", state.no_final_newline);
+  FETCH_INT("add_final_space", state.add_final_space);
 
   val = FETCH("word");
   if (val)
@@ -603,8 +603,8 @@ xspara_end (void)
   TEXT ret;
   text_init (&ret);
   state.end_line_count = 0;
-  xspara__add_pending_word (&ret, 0);
-  if (!state.unfilled && state.counter != 0)
+  xspara__add_pending_word (&ret, state.add_final_space);
+  if (!state.no_final_newline && state.counter != 0)
     {
       text_append (&ret, "\n");
       state.lines_counter++;

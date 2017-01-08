@@ -36,6 +36,7 @@ sub new($;$)
 
   $conf->{'frenchspacing'} = 1;
   $conf->{'unfilled'} = 1;
+  $conf->{'no_final_newline'} = 1;
 
   my $paragraph = Texinfo::Convert::Paragraph->new($conf);
 
