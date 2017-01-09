@@ -1,3 +1,10 @@
+2017-01-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/MiscXS/miscxs.c,
+	* tp/Texinfo/MiscXS/misc.c: Rename file in order to avoid 
+	clashing with MiscXS.c (file generated from MiscXS.xs by xsubpp)
+	on case-insensitive file systems.
+
 2017-01-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/xspara.c (PARAGRAPH): New 

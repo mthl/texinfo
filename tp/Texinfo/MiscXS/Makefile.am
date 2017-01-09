@@ -47,7 +47,7 @@ XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
 CLEANFILES =
 
 xs_LTLIBRARIES = MiscXS.la
-MiscXS_la_SOURCES = MiscXS.c miscxs.c miscxs.h ppport.h
+MiscXS_la_SOURCES = MiscXS.c misc.c miscxs.h ppport.h
 
 CLEANFILES += MiscXS.c
 EXTRA_DIST += MiscXS.xs
