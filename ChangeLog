@@ -1,5 +1,11 @@
 2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Plaintext.pm:  Remove remaining usage
+	of method call syntax when calling subroutines in the
+	Texinfo::Convert::Paragraph module.
+
+2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/MiscXS/Makefile.am,
 	* tp/Texinfo/MiscXS/configure.ac: Remove code for using gnulib, 
 	as it isn't required for this module, and this saves the 

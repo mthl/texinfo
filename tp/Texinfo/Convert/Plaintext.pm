@@ -2,7 +2,7 @@
 # Plaintext.pm: output tree as text with filling.
 #
 # Copyright 2010, 2011, 2012, 2013, 2014, 2015,
-# 2016 Free Software Foundation, Inc.
+# 2016, 2017 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -36,6 +36,11 @@ use Texinfo::Convert::Paragraph;
 *add_text = \&Texinfo::Convert::Paragraph::add_text;
 *add_next = \&Texinfo::Convert::Paragraph::add_next;
 *set_space_protection = \&Texinfo::Convert::Paragraph::set_space_protection;
+*remove_end_sentence = \&Texinfo::Convert::Paragraph::remove_end_sentence;
+*allow_end_sentence = \&Texinfo::Convert::Paragraph::allow_end_sentence;
+*add_end_sentence = \&Texinfo::Convert::Paragraph::add_end_sentence;
+*end_line = \&Texinfo::Convert::Paragraph::end_line;
+*add_pending_word = \&Texinfo::Convert::Paragraph::add_pending_word;
 
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Line;
@@ -1644,17 +1649,17 @@ sub _convert($$)
     my $unknown_command;
     if (defined($no_brace_commands{$command})) {
       if ($command eq ':') {
-        $formatter->{'container'}->remove_end_sentence();
+        remove_end_sentence($formatter->{'container'});
         return '';
       } elsif ($command eq '*') {
         $result = _count_added($self, $formatter->{'container'},
-                              $formatter->{'container'}->add_pending_word());
+                              add_pending_word($formatter->{'container'}));
         $result .= _count_added($self, $formatter->{'container'},
-                              $formatter->{'container'}->end_line());
+                              end_line($formatter->{'container'}));
       } elsif ($command eq '.' or $command eq '?' or $command eq '!') {
         $result .= _count_added($self, $formatter->{'container'},
             add_next($formatter->{'container'}, $command));
-        $formatter->{'container'}->add_end_sentence(1);
+        add_end_sentence($formatter->{'container'}, 1);
       } elsif ($command eq ' ' or $command eq "\n" or $command eq "\t") {
         $result .= _count_added($self, $formatter->{'container'}, 
             add_next($formatter->{'container'}, $no_brace_commands{$command}));
@@ -1694,7 +1699,7 @@ sub _convert($$)
       if ($punctuation_no_arg_commands{$command}) {
         $result .= _count_added($self, $formatter->{'container'},
                     add_next($formatter->{'container'}, $text));
-        $formatter->{'container'}->add_end_sentence(1);
+        add_end_sentence($formatter->{'container'}, 1);
       } elsif ($command eq 'tie') {
         $formatter->{'w'}++;
         $result .= _count_added($self, $formatter->{'container'},
@@ -1712,16 +1717,16 @@ sub _convert($$)
 
         # This is to have @TeX{}, for example, not to prevent end sentences.
         if (!$letter_no_arg_commands{$command}) {
-          $formatter->{'container'}->allow_end_sentence();
+          allow_end_sentence($formatter->{'container'});
         }
 
         if ($command eq 'dots') {
-          $formatter->{'container'}->remove_end_sentence();
+          remove_end_sentence($formatter->{'container'});
         }
       }
       if ($formatter->{'var'} 
           or $formatter->{'font_type_stack'}->[-1]->{'monospace'}) {
-        $formatter->{'container'}->allow_end_sentence();
+        allow_end_sentence($formatter->{'container'});
       }
       return $result;
     # commands with braces
@@ -1749,13 +1754,13 @@ sub _convert($$)
             and $accented_text_original !~ /[[:upper:]]/
           or $formatter->{'var'} 
           or $formatter->{'font_type_stack'}->[-1]->{'monospace'}) {
-        $formatter->{'container'}->allow_end_sentence();
+        allow_end_sentence($formatter->{'container'});
       }
 
       # in case the text added ends with punctuation.  
       # If the text is empty (likely because of an error) previous 
       # punctuation will be cancelled, we don't want that.
-      $formatter->{'container'}->remove_end_sentence()
+      remove_end_sentence($formatter->{'container'})
         if ($accented_text ne '');
       return $result;
     } elsif ($self->{'style_map'}->{$command} 
@@ -1837,7 +1842,7 @@ sub _convert($$)
       }
       if ($code_style_commands{$command}) {
         $formatter->{'font_type_stack'}->[-1]->{'monospace'}--;
-        $formatter->{'container'}->allow_end_sentence();
+        allow_end_sentence($formatter->{'container'});
         pop @{$formatter->{'font_type_stack'}}
           if !$formatter->{'font_type_stack'}->[-1]->{'monospace'};
       } elsif ($regular_font_style_commands{$command}) {
@@ -1863,13 +1868,13 @@ sub _convert($$)
         if ($command eq 'var') {
           $formatter->{'var'}--;
           # Allow a following full stop to terminate a sentence.
-          $formatter->{'container'}->allow_end_sentence();
+          allow_end_sentence($formatter->{'container'});
         }
       }
       return $result;
     } elsif ($command eq 'image') {
       $result = _count_added($self, $formatter->{'container'},
-                   $formatter->{'container'}->add_pending_word(1));
+                   add_pending_word($formatter->{'container'}, 1));
       # add an empty word so that following spaces aren't lost
       add_next($formatter->{'container'},'');
       my ($image, $lines_count) = $self->_image($root);
@@ -1966,7 +1971,7 @@ sub _convert($$)
       return $result;
     } elsif ($command eq 'anchor') {
       $result = _count_added($self, $formatter->{'container'},
-                   $formatter->{'container'}->add_pending_word());
+                   add_pending_word($formatter->{'container'}));
       $result .= $self->_anchor($root);
       return $result;
     } elsif ($ref_commands{$command}) {
@@ -2048,7 +2053,7 @@ sub _convert($$)
           my $name_text = _convert($self, {'contents' => $name});
           # needed, as last word is added only when : is added below
           my $name_text_checked = $name_text
-             .$self->{'formatters'}->[-1]->{'container'}->get_pending();
+             .get_pending($self->{'formatters'}->[-1]->{'container'});
           my $quoting_required = 0;
           if ($name_text_checked =~ /:/m) { 
               if ($self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
@@ -2080,7 +2085,7 @@ sub _convert($$)
           delete $self->{'formatters'}->[-1]->{'suppress_styles'};
 
           my $node_text_checked = $node_text 
-             .$self->{'formatters'}->[-1]->{'container'}->get_pending();
+             .get_pending($self->{'formatters'}->[-1]->{'container'});
           $quoting_required = 0;
           if ($node_text_checked =~ /([,\t\.])/m ) {
               if ($self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
@@ -2113,7 +2118,7 @@ sub _convert($$)
           delete $self->{'formatters'}->[-1]->{'suppress_styles'};
 
           my $node_text_checked = $node_text 
-             .$self->{'formatters'}->[-1]->{'container'}->get_pending();
+             .get_pending($self->{'formatters'}->[-1]->{'container'});
           my $quoting_required = 0;
           if ($node_text_checked =~ /:/m) {
             if ($self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
@@ -2149,7 +2154,7 @@ sub _convert($$)
         # we could use $formatter, but in case it was changed in _convert 
         # we play it safe.
         my $pending = $result 
-            .$self->{'formatters'}->[-1]->{'container'}->get_pending();
+             .get_pending($self->{'formatters'}->[-1]->{'container'});
 
         # If command is @xref, the punctuation must always follow the
         # command, for other commands it may be in the argument, hence the
@@ -2213,7 +2218,7 @@ sub _convert($$)
           $result = _convert($self, $argument);
 
           # We want to permit an end of sentence, but not force it as @. does.
-          $formatter->{'container'}->allow_end_sentence();
+          allow_end_sentence($formatter->{'container'});
           return $result;
         }
       }
@@ -2341,9 +2346,9 @@ sub _convert($$)
         if ($self->{'formatters'}->[-1]->{'type'} eq 'paragraph'
             and $format_raw_commands{$command}) {
           $result .= _count_added($self, $formatter->{'container'},
-                              $formatter->{'container'}->add_pending_word(1));
+                              add_pending_word($formatter->{'container'}, 1));
           $result .= _count_added($self, $formatter->{'container'},
-                              $formatter->{'container'}->end_line());
+                              end_line($formatter->{'container'}));
         }
         push @{$self->{'context'}}, $command;
       } elsif ($flush_commands{$command}) {
@@ -2352,9 +2357,9 @@ sub _convert($$)
         if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
           # reuse the current formatter if not in top level
           $result .= _count_added($self, $formatter->{'container'},
-                              $formatter->{'container'}->add_pending_word(1));
+                              add_pending_word($formatter->{'container'}, 1));
           $result .= _count_added($self, $formatter->{'container'},
-                              $formatter->{'container'}->end_line());
+                              end_line($formatter->{'container'}));
         } else {
           # if in top level, the raw block command is turned into a 
           # simple preformatted command (alike @verbatim), to have a 
@@ -2514,7 +2519,7 @@ sub _convert($$)
           });
       }
       $result .= _count_added($self, $line->{'container'}, 
-                                     $line->{'container'}->end());
+                      Texinfo::Convert::Paragraph::end($line->{'container'}));
       print STDERR "  $root->{'parent'}->{'cmdname'}($root->{'extra'}->{'item_number'}) -> |$result|\n" 
          if ($self->{'debug'});
       pop @{$self->{'formatters'}};
@@ -2675,12 +2680,12 @@ sub _convert($$)
     } elsif ($command eq 'sp') {
       if ($root->{'extra'}->{'misc_args'}->[0]) {
         $result = _count_added($self, $formatter->{'container'},
-                              $formatter->{'container'}->add_pending_word());
+                              add_pending_word($formatter->{'container'}));
         # this useless copy avoids perl changing the type to integer!
         my $sp_nr = $root->{'extra'}->{'misc_args'}->[0];
         for (my $i = 0; $i < $sp_nr; $i++) {
           $result .= _count_added($self, $formatter->{'container'},
-                $formatter->{'container'}->end_line());
+                end_line($formatter->{'container'}));
         }
         
         $self->{'empty_lines_count'} += $sp_nr;
@@ -2948,7 +2953,7 @@ sub _convert($$)
 
         $result .= _convert($self, {'type' => '_code', 'contents' => [$tree]});
         $result .= _count_added($self, $def_paragraph->{'container'},
-                                      $def_paragraph->{'container'}->end());
+              Texinfo::Convert::Paragraph::end($def_paragraph->{'container'}));
 
         pop @{$self->{'formatters'}};
         delete $self->{'text_element_context'}->[-1]->{'counter'};
@@ -2964,9 +2969,8 @@ sub _convert($$)
           my $node_text = _convert($self, {'type' => '_code',
                                       'contents' => $arg->{'contents'}});
 
-          $node_text .= _count_added($self,
-                           $formatter->{'container'},
-                           $formatter->{'container'}->add_pending_word(1));
+          $node_text .= _count_added($self, $formatter->{'container'},
+                           add_pending_word($formatter->{'container'}, 1));
           delete $self->{'formatters'}->[-1]->{'suppress_styles'};
           $pre_quote = $post_quote = '';
           if ($entry_name_seen) {
@@ -2998,7 +3002,7 @@ sub _convert($$)
           my $formatter = $self->{'formatters'}->[-1];
           $entry_name .= _count_added($self,
                            $formatter->{'container'},
-                           $formatter->{'container'}->add_pending_word(1));
+                           add_pending_word($formatter->{'container'}, 1));
           $entry_name_seen = 1;
           $pre_quote = $post_quote = '';
           if ($entry_name =~ /:/) {
@@ -3025,12 +3029,12 @@ sub _convert($$)
               and $root->{'parent'}->{'type'} eq 'preformatted') {
         $result .= _count_added($self,
                          $formatter->{'container'},
-                         $formatter->{'container'}->add_pending_word(1));
+                         add_pending_word($formatter->{'container'}, 1));
       } else {
         $result .= _count_added($self,
                          $formatter->{'container'},
-                         $formatter->{'container'}->add_pending_word());
-        $formatter->{'container'}->end_line();
+                         add_pending_word($formatter->{'container'}));
+        end_line($formatter->{'container'});
         $result = $self->ensure_end_of_line($result) ;
       }
 
@@ -3212,7 +3216,7 @@ sub _convert($$)
   # close paragraphs and preformatted
   if ($paragraph) {
     $result .= _count_added($self, $paragraph->{'container'},
-                                   $paragraph->{'container'}->end());
+               Texinfo::Convert::Paragraph::end($paragraph->{'container'}));
     if ($self->{'context'}->[-1] eq 'flushright') {
       $result = $self->_align_environment($result, 
         $self->{'text_element_context'}->[-1]->{'max'}, 'right');
@@ -3221,7 +3225,7 @@ sub _convert($$)
     delete $self->{'text_element_context'}->[-1]->{'counter'};
   } elsif ($preformatted) {
     $result .= _count_added($self, $preformatted->{'container'},
-                                   $preformatted->{'container'}->end());
+               Texinfo::Convert::Paragraph::end($preformatted->{'container'}));
     if ($result ne '') {
       $result = $self->ensure_end_of_line($result);
     }
