@@ -1,5 +1,12 @@
 2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Plaintext.pm: Import some symbols for 
+	subroutines from the Texinfo::Convert::Paragraph module.  Reduce
+	usage of method call syntax when calling subroutines in the
+	Texinfo::Convert::Paragraph module.
+
+2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_end): Clear
 	'in_use' on 'state' structure as well as in the 'saved_states'.
 	This avoids the storage being lost if 'xspara__switch_state' 

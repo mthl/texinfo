@@ -32,6 +32,11 @@ use Texinfo::Convert::Converter;
 use Texinfo::Common;
 use Texinfo::Convert::Texinfo;
 use Texinfo::Convert::Paragraph;
+
+*add_text = \&Texinfo::Convert::Paragraph::add_text;
+*add_next = \&Texinfo::Convert::Paragraph::add_next;
+*set_space_protection = \&Texinfo::Convert::Paragraph::set_space_protection;
+
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Line;
 use Texinfo::Convert::UnFilled;
@@ -641,7 +646,7 @@ sub new_formatter($$;$)
   }
 
   if ($flush_commands{$self->{'context'}->[-1]}) {
-    $container->set_space_protection(undef, 1, 1);
+    set_space_protection($container, undef, 1, 1);
   }
 
   my $formatter = {'container' => $container, 'upper_case' => 0,
@@ -674,7 +679,7 @@ sub convert_line($$;$)
   push @{$self->{'formatters'}}, $formatter;
   my $text = $self->_convert($converted);
   $text .= _count_added($self, $formatter->{'container'},
-                               $formatter->{'container'}->end());
+                Texinfo::Convert::Paragraph::end($formatter->{'container'}));
   pop @{$self->{'formatters'}};
   return $text;
 }
@@ -687,7 +692,7 @@ sub convert_unfilled($$;$)
   push @{$self->{'formatters'}}, $formatter;
   my $result = $self->_convert($converted);
   $result .= _count_added($self, $formatter->{'container'},
-                                 $formatter->{'container'}->end());
+                Texinfo::Convert::Paragraph::end($formatter->{'container'}));
   pop @{$self->{'formatters'}};
   return $result;
 }
@@ -765,7 +770,8 @@ sub _count_added($$$)
   my ($self, $container, $text) = @_;
 
   my $count_context = $self->{'count_context'}->[-1];
-  $count_context->{'lines'} += $container->end_line_count();
+  $count_context->{'lines'}
+    += Texinfo::Convert::Paragraph::end_line_count($container);
 
   if (!defined $count_context->{'pending_text'}) {
     $count_context->{'pending_text'} = '';
@@ -1536,7 +1542,7 @@ sub _convert($$)
         _add_text_count($self, $result);
       }
       $result .= _count_added($self, $formatter->{'container'},
-                $formatter->{'container'}->add_text("\n"));
+                add_text($formatter->{'container'}, "\n"));
       return $result;
     } else {
       return '';
@@ -1550,11 +1556,11 @@ sub _convert($$)
         if ($type and ($type eq 'raw' 
                                  or $type eq 'last_raw_newline')) {
           $result = _count_added($self, $formatter->{'container'},
-                      $formatter->{'container'}->add_next($root->{'text'}));
+                      add_next($formatter->{'container'}, $root->{'text'}));
         } else {
           my $text = _process_text($self, $root, $formatter);
           $result = _count_added($self, $formatter->{'container'},
-                      $formatter->{'container'}->add_text($text));
+                      add_text ($formatter->{'container'}, $text));
         }
         return $result;
       # the following is only possible if paragraphindent is set to asis
@@ -1647,14 +1653,14 @@ sub _convert($$)
                               $formatter->{'container'}->end_line());
       } elsif ($command eq '.' or $command eq '?' or $command eq '!') {
         $result .= _count_added($self, $formatter->{'container'},
-            $formatter->{'container'}->add_next($command));
+            add_next($formatter->{'container'}, $command));
         $formatter->{'container'}->add_end_sentence(1);
       } elsif ($command eq ' ' or $command eq "\n" or $command eq "\t") {
         $result .= _count_added($self, $formatter->{'container'}, 
-            $formatter->{'container'}->add_next($no_brace_commands{$command}));
+            add_next($formatter->{'container'}, $no_brace_commands{$command}));
       } else {
         $result .= _count_added($self, $formatter->{'container'}, 
-            $formatter->{'container'}->add_text($no_brace_commands{$command}));
+            add_text($formatter->{'container'}, $no_brace_commands{$command}));
       }
       return $result;
     } elsif ($command eq 'today') {
@@ -1687,22 +1693,22 @@ sub _convert($$)
 
       if ($punctuation_no_arg_commands{$command}) {
         $result .= _count_added($self, $formatter->{'container'},
-                    $formatter->{'container'}->add_next($text));
+                    add_next($formatter->{'container'}, $text));
         $formatter->{'container'}->add_end_sentence(1);
       } elsif ($command eq 'tie') {
         $formatter->{'w'}++;
         $result .= _count_added($self, $formatter->{'container'},
-            $formatter->{'container'}->set_space_protection(1,undef))
+            set_space_protection($formatter->{'container'}, 1, undef))
           if ($formatter->{'w'} == 1);
         $result .= _count_added($self, $formatter->{'container'}, 
-                       $formatter->{'container'}->add_text($text));
+                       add_text($formatter->{'container'}, $text));
         $formatter->{'w'}--;
         $result .= _count_added($self, $formatter->{'container'},
-            $formatter->{'container'}->set_space_protection(0,undef))
+            set_space_protection($formatter->{'container'}, 0, undef))
           if ($formatter->{'w'} == 0);
       } else {
         $result .= _count_added($self, $formatter->{'container'}, 
-                       $formatter->{'container'}->add_text($text));
+                       add_text($formatter->{'container'}, $text));
 
         # This is to have @TeX{}, for example, not to prevent end sentences.
         if (!$letter_no_arg_commands{$command}) {
@@ -1731,7 +1737,7 @@ sub _convert($$)
       my $accented_text 
          = Texinfo::Convert::Text::text_accents($root, $encoding, $sc);
       $result .= _count_added($self, $formatter->{'container'},
-         $formatter->{'container'}->add_text($accented_text));
+         add_text($formatter->{'container'}, $accented_text));
 
       my $accented_text_original;
       if ($formatter->{'upper_case'}) {
@@ -1770,7 +1776,7 @@ sub _convert($$)
       }
       if ($no_punctation_munging_commands{$command}) {
         push @{$formatter->{'frenchspacing_stack'}}, 'on';
-        $formatter->{'container'}->set_space_protection(undef,
+        set_space_protection($formatter->{'container'}, undef,
           undef,undef,1);
       }
       if ($upper_case_commands{$command}) {
@@ -1780,7 +1786,7 @@ sub _convert($$)
       if ($command eq 'w') {
         $formatter->{'w'}++;
         $result .= _count_added($self, $formatter->{'container'},
-            $formatter->{'container'}->set_space_protection(1,undef))
+            set_space_protection($formatter->{'container'}, 1,undef))
           if ($formatter->{'w'} == 1);
       }
       my ($text_before, $text_after);
@@ -1805,7 +1811,7 @@ sub _convert($$)
         $formatter->{'font_type_stack'}->[-1]->{'code_command'}++;
       }
       $result .= _count_added($self, $formatter->{'container'},
-               $formatter->{'container'}->add_next($text_before, 1))
+               add_next($formatter->{'container'}, $text_before, 1))
          if ($text_before ne '');
       if ($root->{'args'}) {
         $result .= _convert($self, $root->{'args'}->[0]);
@@ -1821,12 +1827,12 @@ sub _convert($$)
         }
       }
       $result .= _count_added($self, $formatter->{'container'},
-               $formatter->{'container'}->add_next($text_after, 1))
+               add_next($formatter->{'container'}, $text_after, 1))
          if ($text_after ne '');
       if ($command eq 'w') {
         $formatter->{'w'}--;
         $result .= _count_added($self, $formatter->{'container'},
-            $formatter->{'container'}->set_space_protection(0,undef))
+            set_space_protection($formatter->{'container'},0,undef))
           if ($formatter->{'w'} == 0);
       }
       if ($code_style_commands{$command}) {
@@ -1849,7 +1855,7 @@ sub _convert($$)
         pop @{$formatter->{'frenchspacing_stack'}};
         my $frenchspacing = 0;
         $frenchspacing = 1 if ($formatter->{'frenchspacing_stack'}->[-1] eq 'on');
-        $formatter->{'container'}->set_space_protection(undef,
+        set_space_protection($formatter->{'container'}, undef,
           undef, undef, $frenchspacing);
       }
       if ($upper_case_commands{$command}) {
@@ -1865,7 +1871,7 @@ sub _convert($$)
       $result = _count_added($self, $formatter->{'container'},
                    $formatter->{'container'}->add_pending_word(1));
       # add an empty word so that following spaces aren't lost
-      $formatter->{'container'}->add_next('');
+      add_next($formatter->{'container'},'');
       my ($image, $lines_count) = $self->_image($root);
       _add_lines_count($self, $lines_count);
       _add_text_count($self, $image);
@@ -1945,8 +1951,8 @@ sub _convert($$)
         $self->_error_outside_of_any_node($root);
       }
       $result .= _count_added($self, $formatter->{'container'},
-           $formatter->{'container'}->add_next
-                                        ("($formatted_footnote_number)", 1));
+           add_next($formatter->{'container'},
+                    "($formatted_footnote_number)", 1));
       if ($self->get_conf('footnotestyle') eq 'separate' and $self->{'node'}) {
         $result .= _convert($self, {'contents' => 
          [{'text' => ' ('},
@@ -2006,14 +2012,14 @@ sub _convert($$)
           $in_multitable = 1;
           $formatter->{'w'}++;
           $result .= _count_added($self, $formatter->{'container'},
-            $formatter->{'container'}->set_space_protection(1,undef))
+            set_space_protection($formatter->{'container'},1,undef))
           if ($formatter->{'w'} == 1);
         }
         # Disallow breaks in runs of Chinese text in node names, because a 
         # break would be normalized to a single space by the Info reader, and 
         # the node wouldn't be found.
-        $formatter->{'container'}
-  ->set_space_protection(undef,undef,undef,undef,1); # double_width_no_break
+        set_space_protection($formatter->{'container'},
+                    undef,undef,undef,undef,1); # double_width_no_break
 
         if ($command eq 'xref') {
           $result = _convert($self, {'contents' => [{'text' => '*Note '}]});
@@ -2095,7 +2101,7 @@ sub _convert($$)
           }
           $result .= $node_text;
           _count_added($self, $self->{'formatters'}[-1]{'container'},
-            $self->{'formatters'}->[-1]->{'container'}->add_next($post_quote))
+            add_next($self->{'formatters'}->[-1]->{'container'}, $post_quote))
                  if $post_quote;
         } else { # Label same as node specification
           if ($file) {
@@ -2175,11 +2181,11 @@ sub _convert($$)
         if ($in_multitable) {
           $formatter->{'w'}--;
           $result .= _count_added($self, $formatter->{'container'},
-              $formatter->{'container'}->set_space_protection(0,undef))
+              set_space_protection($formatter->{'container'},0,undef))
             if ($formatter->{'w'} == 0);
         }
-        $formatter->{'container'}
-  ->set_space_protection(undef,undef,undef,undef,0); # double_width_no_break
+        set_space_protection($formatter->{'container'},
+          undef,undef,undef,undef,0); # double_width_no_break
         return $result;
       }
       return '';
@@ -2300,7 +2306,7 @@ sub _convert($$)
           $res = "U+$arg";  # not outputting UTF-8
         }
         $result .= _count_added($self, $formatter->{'container'}, 
-                   $formatter->{'container'}->add_text($res));
+                   add_text($formatter->{'container'}, $res));
       } else {
         $result = '';  # arg was not defined
       }
@@ -2494,7 +2500,7 @@ sub _convert($$)
       push @{$self->{'formatters'}}, $line;
       if ($root->{'parent'}->{'cmdname'} eq 'enumerate') {
         $result = _count_added($self, $line->{'container'},
-            $line->{'container'}->add_next(
+            add_next($line->{'container'},
                Texinfo::Common::enumerate_item_representation(
                  $root->{'parent'}->{'extra'}->{'enumerate_specification'},
                  $root->{'extra'}->{'item_number'}) . '. '));
@@ -3030,7 +3036,7 @@ sub _convert($$)
 
     } elsif ($root->{'type'} eq 'frenchspacing') {
       push @{$formatter->{'frenchspacing_stack'}}, 'on';
-      $formatter->{'container'}->set_space_protection(undef,
+      set_space_protection($formatter->{'container'}, undef,
         undef,undef,1);
     } elsif ($root->{'type'} eq '_code') {
       if (!$formatter->{'font_type_stack'}->[-1]->{'monospace'}) {
@@ -3039,11 +3045,11 @@ sub _convert($$)
         $formatter->{'font_type_stack'}->[-1]->{'monospace'}++;
       }
       push @{$formatter->{'frenchspacing_stack'}}, 'on';
-      $formatter->{'container'}->set_space_protection(undef,
+      set_space_protection($formatter->{'container'},undef,
         undef,undef,1);
     } elsif ($root->{'type'} eq 'bracketed') {
       $result .= _count_added($self, $formatter->{'container'}, 
-                   $formatter->{'container'}->add_text('{'));
+                   add_text($formatter->{'container'}, '{'));
     }
   }
 
@@ -3069,7 +3075,7 @@ sub _convert($$)
       pop @{$formatter->{'frenchspacing_stack'}};
       my $frenchspacing = 0;
       $frenchspacing = 1 if ($formatter->{'frenchspacing_stack'}->[-1] eq 'on');
-      $formatter->{'container'}->set_space_protection(undef,
+      set_space_protection($formatter->{'container'},undef,
         undef, undef, $frenchspacing);
     } elsif ($root->{'type'} eq '_code') {
       $formatter->{'font_type_stack'}->[-1]->{'monospace'}--;
@@ -3078,11 +3084,11 @@ sub _convert($$)
       pop @{$formatter->{'frenchspacing_stack'}};
       my $frenchspacing = 0;
       $frenchspacing = 1 if ($formatter->{'frenchspacing_stack'}->[-1] eq 'on');
-      $formatter->{'container'}->set_space_protection(undef,
+      set_space_protection($formatter->{'container'},undef,
         undef, undef, $frenchspacing);
     } elsif ($root->{'type'} eq 'bracketed') {
       $result .= _count_added($self, $formatter->{'container'}, 
-                                     $formatter->{'container'}->add_text('}'));
+                                     add_text($formatter->{'container'}, '}'));
     } elsif ($root->{'type'} eq 'row') {
       my @cell_beginnings;
       my @cell_lines;
