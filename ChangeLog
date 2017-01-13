@@ -4,7 +4,9 @@
 	* tp/Texinfo/MiscXS/configure.ac: Remove code for using gnulib, 
 	as it isn't required for this module, and this saves the 
 	complication of having an extra gnulib checkout.
-	* tp/Texinfo/MiscXS/lib: Remove all files.
+	* tp/Texinfo/MiscXS/lib,
+	* tp/Texinfo/MiscXS/snippet: Remove all files.
+	* tp/Texinfo/MiscXS/m4: Remove all gnulib files.
 
 2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
