@@ -386,7 +386,7 @@ xspara_set_state (SV *sv)
 {
   dTHX;
 
-  xspara__switch_state (SvIV (SvRV (sv)));
+  xspara__switch_state (SvIV (sv));
 }
 
 /* Set the state internal to this C module from the Perl hash. */

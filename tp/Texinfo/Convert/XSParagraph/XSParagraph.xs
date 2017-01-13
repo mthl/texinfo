@@ -59,8 +59,7 @@ xspara_new (class, ...)
         /* Create a blessed integer, which the other functions
            need as their first argument. */
         pkg = gv_stashpv ("Texinfo::Convert::XSParagraph::XSParagraph", 0);
-        RETVAL = newRV_inc (newSViv (id));
-        sv_bless (RETVAL, pkg);
+        RETVAL = newSViv (id);
     OUTPUT:
         RETVAL
 

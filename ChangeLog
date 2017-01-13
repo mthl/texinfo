@@ -1,5 +1,12 @@
 2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_set_state),
+	* tp/Texinfo/Convert/XSParagraph/XSParagraph.xs (xspara_new):
+	Use an integer-valued SV to represent a paragraph formatting
+	state instead of a blessed reference to an integer-valued SV.
+
+2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Info.pm:  Remove usage of method call
 	syntax when calling subroutines in the 
 	Texinfo::Convert::Paragraph module.
