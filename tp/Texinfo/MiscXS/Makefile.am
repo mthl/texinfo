@@ -1,6 +1,6 @@
 # Makefile.am for MiscXS
 #
-# Copyright 2015, 2016 Free Software Foundation, Inc.
+# Copyright 2015, 2016, 2017 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -13,24 +13,6 @@
 AUTOMAKE_OPTIONS=foreign subdir-objects
 
 EXTRA_DIST=
-
-######################## Gnulib ################################
-
-AM_CPPFLAGS =                \
-  -I$(srcdir)                \
-  -I$(srcdir)/lib     \
-  -I$(builddir)/lib
-
-MiscXS_la_LIBADD = $(builddir)/lib/libgnu.la \
-	                $(TERMLIBS) $(LIBINTL) $(LIBICONV)
-
-ACLOCAL_AMFLAGS = -I m4
-
-SUBDIRS=lib
-
-EXTRA_DIST+=m4/gnulib-cache.m4
-
-################### End Gnulib section #########################
 
 modulesdir = $(pkgdatadir)/Texinfo/Convert/XSParagraph
 xsdir = $(pkglibdir)

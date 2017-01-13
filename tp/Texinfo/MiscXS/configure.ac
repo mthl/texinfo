@@ -127,5 +127,5 @@ lookup_perl_conf([privlibexp])
 AC_CONFIG_HEADERS([config.h:config.in])
 fi # not disable_xs
 
-AC_CONFIG_FILES([Makefile lib/Makefile])
+AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
