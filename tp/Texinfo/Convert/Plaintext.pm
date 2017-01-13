@@ -41,6 +41,7 @@ use Texinfo::Convert::Paragraph;
 *add_end_sentence = \&Texinfo::Convert::Paragraph::add_end_sentence;
 *end_line = \&Texinfo::Convert::Paragraph::end_line;
 *add_pending_word = \&Texinfo::Convert::Paragraph::add_pending_word;
+*get_pending = \&Texinfo::Convert::Paragraph::get_pending;
 
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Line;

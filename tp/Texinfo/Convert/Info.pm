@@ -25,6 +25,19 @@ use strict;
 use Texinfo::Convert::Plaintext;
 use Texinfo::Convert::Text;
 
+use Texinfo::Convert::Paragraph;
+
+*add_text = \&Texinfo::Convert::Paragraph::add_text;
+*add_next = \&Texinfo::Convert::Paragraph::add_next;
+*set_space_protection = \&Texinfo::Convert::Paragraph::set_space_protection;
+*remove_end_sentence = \&Texinfo::Convert::Paragraph::remove_end_sentence;
+*allow_end_sentence = \&Texinfo::Convert::Paragraph::allow_end_sentence;
+*add_end_sentence = \&Texinfo::Convert::Paragraph::add_end_sentence;
+*end_line = \&Texinfo::Convert::Paragraph::end_line;
+*add_pending_word = \&Texinfo::Convert::Paragraph::add_pending_word;
+*get_pending = \&Texinfo::Convert::Paragraph::get_pending;
+
+
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Texinfo::Convert::Plaintext);
@@ -308,19 +321,19 @@ sub _info_header($)
 
   $self->_set_global_multiple_commands();
   my $paragraph = Texinfo::Convert::Paragraph->new();
-  my $result = $paragraph->add_text("This is ");
+  my $result = add_text($paragraph, "This is ");
   # This ensures that spaces in file are kept.
-  $result .= $paragraph->add_next($self->{'output_filename'});
+  $result .= add_next($paragraph, $self->{'output_filename'});
   my $program = $self->get_conf('PROGRAM');
   my $version = $self->get_conf('PACKAGE_VERSION');
   if (defined($program) and $program ne '') {
-    $result .= $paragraph->add_text(", produced by $program version $version from ");
+    $result .= add_text($paragraph, ", produced by $program version $version from ");
   } else {
-    $result .= $paragraph->add_text(", produced from ");
+    $result .= add_text($paragraph, ", produced from ");
   }
-  $result .= $paragraph->add_next($self->{'input_basename'});
-  $result .= $paragraph->add_text('.');
-  $result .= $paragraph->end();
+  $result .= add_next($paragraph, $self->{'input_basename'});
+  $result .= add_text($paragraph, '.');
+  $result .= Texinfo::Convert::Paragraph::end($paragraph);
   $result .= "\n";
   $self->{'empty_lines_count'} = 1;
 

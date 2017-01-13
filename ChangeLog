@@ -1,5 +1,11 @@
 2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Info.pm:  Remove usage of method call
+	syntax when calling subroutines in the 
+	Texinfo::Convert::Paragraph module.
+
+2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/paragraph.t: Avoid using method call syntax to call 
 	subroutines in Texinfo::Convert::Paragraph.  Only run each test 
 	once.  Remove tests using 'lines_counter' value on paragraph 
