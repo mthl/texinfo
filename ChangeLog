@@ -1,3 +1,10 @@
+2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_end): Clear
+	'in_use' on 'state' structure as well as in the 'saved_states'.
+	This avoids the storage being lost if 'xspara__switch_state' 
+	copies 'state' into 'saved_states'.
+
 2017-01-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/MiscXS/miscxs.c,

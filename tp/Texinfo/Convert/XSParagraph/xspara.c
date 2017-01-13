@@ -613,6 +613,7 @@ xspara_end (void)
 
   /* Now it's time to forget about the state. */
   state_array[current_state].in_use = 0;
+  state.in_use = 0;
 
   /* Don't do this so we can get the closing line counts. */
   /* current_state = -1; */
