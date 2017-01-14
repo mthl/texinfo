@@ -476,20 +476,10 @@ sub _convert_element($$)
   my ($self, $element) = @_;
 
   my $result = '';
-
-  print STDERR "NEW NODE\n" if ($self->{'debug'});
-
   $result .= $self->_convert($element);
-
   $self->_count_context_bug_message('', $element);
-
-  print STDERR "END NODE ($self->{'count_context'}->[-1]->{'lines'},$self->{'count_context'}->[-1]->{'bytes'})\n" if ($self->{'debug'});
-
   $result .= $self->_footnotes($element);
-
   $self->_count_context_bug_message('footnotes ', $element);
-
-  print STDERR "AFTER FOOTNOTES ($self->{'count_context'}->[-1]->{'lines'},$self->{'count_context'}->[-1]->{'bytes'})\n" if ($self->{'debug'});
 
   return $result;
 }
@@ -588,13 +578,6 @@ sub _process_text($$$)
   if ($context->{'upper_case'}
       or $self->{'formatters'}[-1]->{'var'}) {
     $text = _protect_sentence_ends($text);
-
-    if ($self->{'debug'}) {
-      my $debug_text = $text;
-      $debug_text =~ s/\x08/!!/g;
-      print STDERR "markers:<$debug_text>\n";
-    }
-
     $text = uc($text);
   }
 
@@ -674,7 +657,6 @@ sub new_formatter($$;$)
       }
     }
   }
-  print STDERR "NEW FORMATTER($type)\n" if ($self->{'debug'});
   return $formatter;
 }
 
@@ -821,8 +803,6 @@ sub _footnotes($;$)
   my $result = '';
   if (scalar(@{$self->{'pending_footnotes'}})) {
     $result .= _add_newline_if_needed($self);
-    print STDERR "FOOTNOTES ".scalar(@{$self->{'pending_footnotes'}})."\n"
-        if ($self->{'debug'});
     if ($self->get_conf('footnotestyle') eq 'end' or !defined($element)) {
       my $footnotes_header = "   ---------- Footnotes ----------\n\n";
       $result .= $footnotes_header;
@@ -921,7 +901,6 @@ sub _align_lines($$$$$$)
   my $images_marks = {};
   if ($images and @$images) {
     foreach my $image (@$images) {
-      #print STDERR "I $image->{'lines'}, $image->{'lines_count'}, $image->{'image_width'}\n";
       if ($image->{'lines_count'} > 1) {
         if (!$images_marks->{$image->{'lines'}}) {
           $images_marks->{$image->{'lines'}} = $image;
@@ -1252,8 +1231,6 @@ sub _printindex_formatted($$;$)
   my %entry_counts = ();
 
   foreach my $entry (@{$self->{'index_entries'}->{$index_name}}) {
-    #my @keys = keys(%$entry);
-    #print STDERR "$index_name $entry: @keys\n";
     next if ($ignored_entries{$entry});
     my $entry_tree = {'contents' => $entry->{'content'}};
     if ($entry->{'in_code'}) {
@@ -1508,7 +1485,6 @@ sub _convert($$)
                                or !$self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}))
                          or (!$inline_format_commands{$root->{'cmdname'}}
                              and !defined($root->{'extra'}->{'expand_index'}))))))) {
-    print STDERR "IGNORED\n" if ($self->{'debug'});
     return '';
   }
   my $result = '';
@@ -1524,7 +1500,6 @@ sub _convert($$)
       $result = _get_form_feeds($root->{'text'});
     }
     _add_text_count($self, $result);
-    print STDERR "IGNORABLE SPACE: ($result)\n" if ($self->{'debug'});
     return $result;
   }
 
@@ -1533,11 +1508,6 @@ sub _convert($$)
   # especially
   if ($type and ($type eq 'empty_line' 
                            or $type eq 'after_description_line')) {
-    if ($self->{'debug'}) {
-      my $count = $self->{'empty_lines_count'};
-      $count = '' if (!defined($count));
-      print STDERR "EMPTY_LINE ($count)\n";
-    }
     delete $self->{'text_element_context'}->[-1]->{'counter'};
     $self->{'empty_lines_count'}++;
     if ($self->{'empty_lines_count'} <= 1
@@ -1588,7 +1558,6 @@ sub _convert($$)
   if ($root->{'extra'}) {
     if ($root->{'extra'}->{'missing_argument'} 
              and (!$root->{'contents'} or !@{$root->{'contents'}})) {
-      print STDERR "MISSING_ARGUMENT\n" if ($self->{'debug'});
       return '';
     }
   }
@@ -1626,8 +1595,6 @@ sub _convert($$)
         }
       }
       if (! $following_not_empty) {
-        print STDERR "INDEX ENTRY $command followed by empty lines\n"
-            if ($self->{'debug'});
         $location->{'lines'}--;
       }
     }
@@ -1640,8 +1607,6 @@ sub _convert($$)
       $location->{'node'} = $self->{'node'};
     }
     $self->{'index_entries_line_location'}->{$root} = $location;
-    print STDERR "INDEX ENTRY lines_count $location->{'lines'}, index_entry $location->{'index_entry'}\n" 
-       if ($self->{'debug'});
   }
 
   my $cell;
@@ -1689,12 +1654,6 @@ sub _convert($$)
           and $letter_no_arg_commands{$command}) {
         $text = _protect_sentence_ends($text);
         $text = uc($text);
-
-        if ($self->{'DEBUG'}) {
-          my $debug_text = $text;
-          $debug_text =~ s/\x08/!!/g;
-          print STDERR "accent markers:$debug_text\n";
-        }
       }
 
       if ($punctuation_no_arg_commands{$command}) {
@@ -2212,7 +2171,6 @@ sub _convert($$)
                            {'abbr_or_acronym' => $argument, 
                             'explanation' => 
                              $root->{'extra'}->{'brace_command_contents'}->[-1]});
-          #print STDERR "".Data::Dumper->Dump([$prepended])."\n";
           unshift @{$self->{'current_contents'}->[-1]}, $prepended;
           return '';
         } else {
@@ -2332,8 +2290,6 @@ sub _convert($$)
     } elsif ($root->{'args'} and $root->{'args'}->[0] 
              and $root->{'args'}->[0]->{'type'}
              and $root->{'args'}->[0]->{'type'} eq 'brace_command_arg') {
-      print STDERR "Unknown command with braces `$command'\n"
-       if ($self->get_conf('VERBOSE') or $self->{'debug'});
     # block commands
     } elsif (exists($block_commands{$command})) {
       # remark:
@@ -2396,7 +2352,6 @@ sub _convert($$)
         if ($root->{'extra'} and $root->{'extra'}->{'block_command_line_contents'}) {
           my $prepended = $self->gdt('@b{{quotation_arg}:} ', 
              {'quotation_arg' => $root->{'extra'}->{'block_command_line_contents'}->[0]});
-          #print STDERR Data::Dumper->Dump([$prepended]);
           $prepended->{'type'} = 'frenchspacing';
           $result .= $self->convert_line($prepended);
           $self->{'text_element_context'}->[-1]->{'counter'} += 
@@ -2417,14 +2372,10 @@ sub _convert($$)
             my ($formatted_prototype) = $self->convert_line($prototype, 
                                                         {'indent_length' => 0});
             pop @{$self->{'count_context'}};
-            print STDERR " MULTITABLE_PROTO {$formatted_prototype}\n" 
-              if ($self->{'debug'});
             push @$columnsize, 
                  2+Texinfo::Convert::Unicode::string_width($formatted_prototype);
           }
         }
-        print STDERR "MULTITABLE_SIZES @$columnsize\n" if ($columnsize 
-                                                and $self->{'debug'});
         $self->{'format_context'}->[-1]->{'columns_size'} = $columnsize;
         $self->{'format_context'}->[-1]->{'row_empty_lines_count'} 
           = $self->{'empty_lines_count'};
@@ -2521,8 +2472,6 @@ sub _convert($$)
       }
       $result .= _count_added($self, $line->{'container'}, 
                       Texinfo::Convert::Paragraph::end($line->{'container'}));
-      print STDERR "  $root->{'parent'}->{'cmdname'}($root->{'extra'}->{'item_number'}) -> |$result|\n" 
-         if ($self->{'debug'});
       pop @{$self->{'formatters'}};
       $self->{'text_element_context'}->[-1]->{'counter'} += 
          Texinfo::Convert::Unicode::string_width($result);
@@ -2533,8 +2482,6 @@ sub _convert($$)
       my $cell_width = $self->{'format_context'}->[-1]->{'columns_size'}->[$root->{'extra'}->{'cell_number'}-1];
       $self->{'format_context'}->[-1]->{'item_command'} = $command
         if ($command ne 'tab');
-      print STDERR "CELL [$root->{'extra'}->{'cell_number'}]: \@$command. Width: $cell_width\n"
-            if ($self->{'debug'});
       die if (!defined($cell_width));
       $self->{'empty_lines_count'} 
          = $self->{'format_context'}->[-1]->{'row_empty_lines_count'};
@@ -2744,15 +2691,6 @@ sub _convert($$)
       $self->{'empty_lines_count'} = 0;
       my $conf;
       # indent. Not first paragraph.
-      if ($self->{'debug'}) {
-        print STDERR "OPEN PARA ($self->{'format_context'}->[-1]->{'cmdname'}) "
-           . "cnt ". 
-            (defined($self->{'text_element_context'}->[-1]->{'counter'}) ? 
-             $self->{'text_element_context'}->[-1]->{'counter'} : 'UNDEF'). ' '
-           . "para cnt $self->{'format_context'}->[-1]->{'paragraph_count'} "
-           . "fparaindent ".$self->get_conf('firstparagraphindent')." "
-           . "paraindent ".$self->get_conf('paragraphindent')."\n";
-      }
       if ($self->{'format_context'}->[-1]->{'cmdname'} eq '_top_format'
           and $self->get_conf('paragraphindent') ne 'asis' 
           and $self->get_conf('paragraphindent')
@@ -2959,7 +2897,6 @@ sub _convert($$)
         pop @{$self->{'formatters'}};
         delete $self->{'text_element_context'}->[-1]->{'counter'};
         $self->{'empty_lines_count'} = 0;
-        print STDERR "     --> $result" if ($self->{'debug'});
       }
     } elsif ($root->{'type'} eq 'menu_entry') {
       my $entry_name_seen = 0;
@@ -3120,8 +3057,6 @@ sub _convert($$)
           next unless (defined($location->{'bytes'}) and defined($location->{'lines'}));
           push @{$cell_updated_locations->[$cell_idx]->{$location->{'lines'}}},
                  $location;
-          print STDERR "MULTITABLE anchor: c $cell_idx, l $location->{'lines'} ($location->{'bytes'})\n"
-                if ($self->{'debug'});
           $max_lines = $location->{'lines'}+1 
                             if ($location->{'lines'}+1 > $max_lines);
         }
@@ -3129,9 +3064,6 @@ sub _convert($$)
         $cell_idx++;
       }
 
-      print STDERR "ROW, max_lines $max_lines, indent_len $indent_len\n" 
-         if ($self->{'debug'});
-      
       # this is used to keep track of the last cell with content.
       my $max_cell = scalar(@{$self->{'format_context'}->[-1]->{'row'}});
       my $bytes_count = 0;
@@ -3146,8 +3078,6 @@ sub _convert($$)
           $last_cell = $cell_idx+1 if (defined($cell_lines[$cell_idx]->[$line_idx])
                                        or defined($cell_updated_locations->[$cell_idx]->{$line_idx}));
         }
-        print STDERR "  L(last_cell $last_cell): $line_idx\n"
-          if ($self->{'debug'});
 
         for (my $cell_idx = 0; $cell_idx < $last_cell; $cell_idx++) {
           my $cell_text = $cell_lines[$cell_idx]->[$line_idx];
@@ -3157,15 +3087,12 @@ sub _convert($$)
               $line = ' ' x $indent_len;
               $bytes_count += count_bytes($self, $line);
             }
-            print STDERR "  C($cell_idx) `$cell_text'\n" if ($self->{'debug'});
             $line .= $cell_text;
             $bytes_count += count_bytes($self, $cell_text);
             $line_width += Texinfo::Convert::Unicode::string_width($cell_text);
           }
           if (defined($cell_updated_locations->[$cell_idx]->{$line_idx})) {
             foreach my $location (@{$cell_updated_locations->[$cell_idx]->{$line_idx}}) {
-              print STDERR "MULTITABLE UPDATE ANCHOR (l $line_idx, c $cell_idx): $location->{'bytes'} -> $bytes_count\n"
-                if ($self->{'debug'});
               $location->{'bytes'} = $bytes_count;
             }
           }
@@ -3243,11 +3170,6 @@ sub _convert($$)
   # close commands
   if ($command) {
     if ($command eq 'float') {
-      if ($self->{'debug'}) {
-        my $number = $root->{'number'} if (defined($root->{'number'}));
-        print STDERR "FLOAT: ($number)\n";
-      }
-
       if ($root->{'extra'}
           and ($root->{'extra'}->{'type'}->{'normalized'} ne '' 
                or defined($root->{'number'})
@@ -3257,7 +3179,6 @@ sub _convert($$)
         my ($caption, $prepended) = Texinfo::Common::float_name_caption($self,
                                                                         $root);
         if ($prepended) {
-          #print STDERR "PREPENDED ".Data::Dumper->Dump([$prepended]);
           $prepended->{'type'} = 'frenchspacing';
           my $float_number = $self->convert_line ($prepended);
           $result .= $float_number;

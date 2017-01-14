@@ -1,5 +1,10 @@
 2017-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Plaintext.pm (_convert, _convert_element)
+	(_process_text): Remove debugging statements.
+
+2017-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Macro Details): Remove mention of a 
 	difference between @comment and @c.
 
