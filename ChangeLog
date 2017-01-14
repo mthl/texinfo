@@ -1,5 +1,10 @@
 2017-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Macro Details): Remove mention of a 
+	difference between @comment and @c.
+
+2017-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\endlineisspace): New.
 	(\defmacro) <0 arguments> Skip any whitespace after the macro 
 	name.

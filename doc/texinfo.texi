@@ -14075,11 +14075,10 @@ Fran@,cois+.
 @item
 Ending a macro body with @samp{@@c} may cause text following the macro
 invocation to be ignored as a comment in @command{makeinfo}.  This is 
-not the case when processing with @TeX{} (in case you really want to 
-comment out following text, use @samp{@@comment} instead).  This was
-often done to ``comment out'' an unwanted newline at the end of a macro 
-body, but this is not necessary any more, as the final newline before 
-@samp{@@end macro} is not included in the macro body anyway.
+not the case when processing with @TeX{}.  This was often done
+to ``comment out'' an unwanted newline at the end of a macro body, but 
+this is not necessary any more, as the final newline before @samp{@@end 
+macro} is not included in the macro body anyway.
 
 @item
 In general, you can't arbitrarily substitute a macro (or
