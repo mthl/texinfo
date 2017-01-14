@@ -44,9 +44,6 @@ use Texinfo::Convert::Paragraph;
 *get_pending = \&Texinfo::Convert::Paragraph::get_pending;
 
 use Texinfo::Convert::Text;
-use Texinfo::Convert::Line;
-use Texinfo::Convert::UnFilled;
-
 
 use Carp qw(cluck);
 
@@ -625,11 +622,23 @@ sub new_formatter($$;$)
   }
     
   if ($type eq 'line') {
-    $container = Texinfo::Convert::Line->new($container_conf);
+    $container_conf->{'max'} = 10000001;
+    $container_conf->{'keep_end_lines'} = 1;
+    $container_conf->{'no_final_newline'} = 1;
+    $container_conf->{'add_final_space'} = 1;
+
+    $container = Texinfo::Convert::Paragraph->new($container_conf);
   } elsif ($type eq 'paragraph') {
     $container = Texinfo::Convert::Paragraph->new($container_conf);
   } elsif ($type eq 'unfilled') {
-    $container = Texinfo::Convert::UnFilled->new($container_conf);
+    $container_conf->{'max'} = 10000000;
+    $container_conf->{'ignore_columns'} = 1;
+    $container_conf->{'keep_end_lines'} = 1;
+    $container_conf->{'frenchspacing'} = 1;
+    $container_conf->{'unfilled'} = 1;
+    $container_conf->{'no_final_newline'} = 1;
+
+    $container = Texinfo::Convert::Paragraph->new($container_conf);
   } else {
     die "Unknown container type $type\n";
   }
