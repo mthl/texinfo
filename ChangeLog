@@ -1,3 +1,12 @@
+2017-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\endlineisspace): New.
+	(\defmacro) <0 arguments> Skip any whitespace after the macro 
+	name.
+	(\scanmacro): Remove code for propagating a final @comment in
+	a macro body.
+	(\comment): Give the same definition as \c.
+
 2017-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_set_state),
