@@ -219,9 +219,10 @@ LOAD:
     goto FALLBACK;
   }
   
-  *{"${full_module_name}::"} = *{"${module}::"};
+  *{"${full_module_name}::"} = \%{"${module}::"};
+
   
-  return;
+  return $module;
   
 FALLBACK:
   if ($TEXINFO_XS eq 'required') {
@@ -239,6 +240,8 @@ FALLBACK:
   eval "require $fallback_module";
 
   *{"${full_module_name}::"} = \%{"${fallback_module}::"};
+
+  return  $fallback_module;
 } # end init
 
 # Override subroutine $TARGET with $SOURCE.

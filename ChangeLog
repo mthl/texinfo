@@ -1,3 +1,16 @@
+2017-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Paragraph.pm (import): New function to
+	export symbols.  Set it in the symbol table of the paragraph 
+	formatting module.
+	* tp/Texinfo/XSLoader.pm (init): Return name of module that was 
+	loaded as a string.  Override module the same way regardless of
+	whether it is the XS or non-XS module that was loaded.
+	* tp/t/paragraph.t, tp/Texinfo/Convert/Plaintext.pm,
+	tp/Texinfo/Convert/Info.pm: Do not import symbols from 
+	Texinfo::Convert::Paragraph explicitly.
+
+
 2017-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm (new_formatter): Call 

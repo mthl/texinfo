@@ -1,6 +1,7 @@
 # Info.pm: output tree as Info.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+# Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,16 +27,6 @@ use Texinfo::Convert::Plaintext;
 use Texinfo::Convert::Text;
 
 use Texinfo::Convert::Paragraph;
-
-*add_text = \&Texinfo::Convert::Paragraph::add_text;
-*add_next = \&Texinfo::Convert::Paragraph::add_next;
-*set_space_protection = \&Texinfo::Convert::Paragraph::set_space_protection;
-*remove_end_sentence = \&Texinfo::Convert::Paragraph::remove_end_sentence;
-*allow_end_sentence = \&Texinfo::Convert::Paragraph::allow_end_sentence;
-*add_end_sentence = \&Texinfo::Convert::Paragraph::add_end_sentence;
-*end_line = \&Texinfo::Convert::Paragraph::end_line;
-*add_pending_word = \&Texinfo::Convert::Paragraph::add_pending_word;
-*get_pending = \&Texinfo::Convert::Paragraph::get_pending;
 
 
 require Exporter;

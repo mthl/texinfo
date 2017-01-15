@@ -33,19 +33,7 @@ use Texinfo::Common;
 use Texinfo::Convert::Texinfo;
 use Texinfo::Convert::Paragraph;
 
-*add_text = \&Texinfo::Convert::Paragraph::add_text;
-*add_next = \&Texinfo::Convert::Paragraph::add_next;
-*set_space_protection = \&Texinfo::Convert::Paragraph::set_space_protection;
-*remove_end_sentence = \&Texinfo::Convert::Paragraph::remove_end_sentence;
-*allow_end_sentence = \&Texinfo::Convert::Paragraph::allow_end_sentence;
-*add_end_sentence = \&Texinfo::Convert::Paragraph::add_end_sentence;
-*end_line = \&Texinfo::Convert::Paragraph::end_line;
-*add_pending_word = \&Texinfo::Convert::Paragraph::add_pending_word;
-*get_pending = \&Texinfo::Convert::Paragraph::get_pending;
-
 use Texinfo::Convert::Text;
-
-use Carp qw(cluck);
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);

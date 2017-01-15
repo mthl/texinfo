@@ -24,6 +24,30 @@ our $VERSION = '6.2';
 
 use Texinfo::XSLoader;
 
+
+# Import symbols into the module that is using this one.  We don't
+# use the Exporter module because its symbols are lost when we override
+# this module with Texinfo::XSLoader::init.
+sub import {
+  my @EXPORT = qw(
+    add_text 
+    add_next 
+    set_space_protection 
+    remove_end_sentence 
+    allow_end_sentence 
+    add_end_sentence 
+    end_line 
+    add_pending_word 
+    get_pending 
+  );
+
+  my ($callpkg, $filename, $line) = caller(0);
+  for my $sym (@EXPORT) {
+    no strict 'refs';
+    *{"${callpkg}::$sym"} = \&{"Texinfo::Convert::Paragraph::${sym}"};
+  }
+}
+
 BEGIN {
   our $warning_message = undef;
   our $fatal_message = undef;
@@ -39,7 +63,11 @@ BEGIN {
   if (!$a) {
     $warning_message = "couldn't run 'locale -a': skipping check for a UTF-8 locale";
   }
-  Texinfo::XSLoader::init (
+
+  # Save reference to subroutine before we do anything.
+  my $import_fn = \&import;
+
+  my $package = Texinfo::XSLoader::init (
     "Texinfo::Convert::Paragraph",
     "Texinfo::Convert::XSParagraph::XSParagraph",
     "Texinfo::Convert::ParagraphNonXS",
@@ -48,7 +76,11 @@ BEGIN {
     $warning_message,
     $fatal_message
   );
+
+  no strict 'refs';
+  *{"${package}::import"} = $import_fn;
 }
+
 
 # NB Don't add more functions down here, because this can cause an error
 # with some versions of Perl, connected with any typeglob assignments done
