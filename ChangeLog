@@ -1,5 +1,12 @@
 2017-01-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/run_parser_all: Include ${srcdir} when replacing
+	"@PATH_SEPARATOR@" so that test will work when run out-of-source
+	(used only in tp/tests/sectioning/tests-parser.txt).  Include 
+	$srcdir/$testdir as well as $test dir when running texi2any.pl.
+
+2017-01-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/MiscXS/configure.ac: Remove calls to gl_EARLY and 
 	gl_INIT.  (Report from Hans Bernhard Bröker.)
 
