@@ -69,14 +69,10 @@ fi
 
 AC_PROG_CC
 
-gl_EARLY
-
 AC_PATH_PROG([XSUBPP], [xsubpp])
 if test x$ac_cv_path_XSUBPP = x ; then
   AC_MSG_ERROR([xsubpp not found])
 fi
-
-gl_INIT
 
 LT_INIT
 

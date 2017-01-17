@@ -1,5 +1,10 @@
 2017-01-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/MiscXS/configure.ac: Remove calls to gl_EARLY and 
+	gl_INIT.  (Report from Hans Bernhard Bröker.)
+
+2017-01-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo-tex-test.texi (Open or close group in a macro): 
 	More examples with @comment.
 	(Braceless at end of line) New section.
