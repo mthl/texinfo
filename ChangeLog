@@ -1,3 +1,10 @@
+2017-01-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/man.c (xrefs_of_manpage): Check that names of man pages
+	only contain certain characters, and don't allow "0" as the 
+	section number.  This reduces the chance of incorrectly
+	identifying text in a man page as a cross-reference.
+
 2017-01-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/man.c (xrefs_of_manpage): Fix code finding end of the

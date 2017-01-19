@@ -503,18 +503,41 @@ CAT(1)                           User Commands                          CAT(1)
       register int name, name_end;
       int section, section_end;
 
-      for (name = position; name > 0; name--)
-        if (whitespace_or_newline (s.buffer[name]))
-          break;
-
+      name = position;
       if (name == 0)
         goto skip;
+      else
+        name--;
+
+      /* Go to the start of a sequence of non-whitespace characters,
+         checking the characters are those that should appear in a man
+         page name. */
+      for (; name > 0; name--)
+        if (whitespace_or_newline (s.buffer[name])
+            || (!isalnum (s.buffer[name])
+                && s.buffer[name] != '_'
+                && s.buffer[name] != '.'
+                && s.buffer[name] != '-'
+                && s.buffer[name] != '\033'
+                && s.buffer[name] != '['))
+          break;
+
+      /* Check if reached start of buffer. */
+      if (name == 0)
+        goto skip;
+
+      /* Check for invalid sequence in name. */
+      if (!whitespace_or_newline (s.buffer[name]))
+        goto skip;
+
       name++;
 
       if (name == position)
         goto skip; /* Whitespace immediately before '('. */
 
-      /* If we are on an ECMA-48 SGR escape sequence, skip past it. */
+      /* 'name' is now at the start of a sequence of non-whitespace
+         characters.  If we are on an ECMA-48 SGR escape sequence, skip
+         past it. */
       if (s.buffer[name] == '\033' && s.buffer[name + 1] == '[')
         {
           name += 2;
@@ -525,6 +548,7 @@ CAT(1)                           User Commands                          CAT(1)
             goto skip;
         }
 
+      /* Set name_end to the end of the name, but before any SGR sequence. */
       for (name_end = name; name_end < position; name_end++)
         if (!isalnum (s.buffer[name_end])
             && s.buffer[name_end] != '_'
@@ -536,8 +560,9 @@ CAT(1)                           User Commands                          CAT(1)
       section_end = 0;
 
       /* Look for one or two characters within the brackets, the
-         first of which must be a digit and the second a letter. */
-      if (!isdigit (s.buffer[section + 1]))
+         first of which must be a non-zero digit and the second a letter. */
+      if (!isdigit (s.buffer[section + 1])
+          || s.buffer[section + 1] == '0')
         ;
       else if (!s.buffer[section + 2])
         ; /* end of buffer */
