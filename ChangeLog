@@ -1,5 +1,11 @@
 2017-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (build_tags_and_nodes): Simplify code by moving 
+	code inside a 'while' loop up one level, as the loop never 
+	executes more than once.
+
+2017-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (read_quoted_string): If no 177 byte is
 	found to close a string, return 0 as intended.  This is intended 
 	to avoid reading past the end of allocated memory, which could 
