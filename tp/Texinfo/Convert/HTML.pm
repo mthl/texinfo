@@ -6202,7 +6202,7 @@ sub _file_header_informations($$)
         and $command_string ne $self->{'title_string'}) {
       print STDERR "DO <title>\n"
         if ($self->get_conf('DEBUG'));
-      my $title_tree = $self->gdt('{title}: {element_text}', 
+      my $title_tree = $self->gdt('{element_text} ({title})', 
                    { 'title' => $self->{'title_tree'}, 
                    'element_text' => $self->command_text($command, 'tree')});
       $title = $self->convert_tree_new_formatting_context(
