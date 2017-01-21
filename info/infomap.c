@@ -583,7 +583,11 @@ fetch_user_maps (char *init_file)
   /* Find and open file. */
   if (init_file)
     filename = xstrdup (init_file);
-  else if ((homedir = getenv ("HOME")) != NULL)
+  else if ((homedir = getenv ("HOME")) != NULL
+#ifdef __MINGW32__
+	    || (homedir = getenv ("USERPROFILE")) != NULL
+#endif
+	  )
     {
       filename = xmalloc (strlen (homedir) + 2 + strlen (INFOKEY_FILE));
       strcpy (filename, homedir);

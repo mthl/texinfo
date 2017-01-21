@@ -1,5 +1,10 @@
 2017-01-21  Jason Hood  <jadoxa@yahoo.com.au>  (tiny change)
 
+	* info/infomap.c (fetch_user_maps) [__MINGW32__]: Try to get
+	home directory from value of 'USERPROFILE' environment variable.
+
+2017-01-21  Jason Hood  <jadoxa@yahoo.com.au>  (tiny change)
+
 	 * doc/info-stnd.texi (Colors and Styles): Correct "nocolour" to 
 	 "bgnocolour".
 
