@@ -188,6 +188,7 @@ read_quoted_string (char *start, char *terminator, int lines, char **output)
 
       if (*terminator && !(start + 1)[len])
         {
+          /* No closing 177 byte. */
           len = 0;
           *output = 0;
         }
@@ -196,9 +197,9 @@ read_quoted_string (char *start, char *terminator, int lines, char **output)
           *output = xmalloc (len + 1);
           strncpy (*output, start + 1, len);
           (*output)[len] = '\0';
+          len += 2; /* Count the two 177 bytes. */
         }
 
-      len += 2;
     }
 
   if (nl)
