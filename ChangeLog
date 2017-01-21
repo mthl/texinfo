@@ -1,5 +1,11 @@
 2017-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (get_tags_of_indirect_tags_table): Check if 
+	'tags' field of file buffer record is null.  This avoids 
+	dereferencing a null pointer.  (Report from Hanno Böck.)
+
+2017-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/HTML.pm (_file_header_information):
 	Place name of manual in parentheses after the name of the page, 
 	instead of before it.  This is so that if several pages from a 

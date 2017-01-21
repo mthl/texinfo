@@ -356,6 +356,8 @@ get_tags_of_indirect_tags_table (FILE_BUFFER *file_buffer,
   /* First get the list of tags from the tags table.  Then lookup the
      associated file in the indirect list for each tag, and update it. */
   get_nodes_of_tags_table (file_buffer, tags_binding);
+  if (!file_buffer->tags)
+    return;
 
   /* We have the list of tags in file_buffer->tags.  Get the list of
      subfiles from the indirect table. */
