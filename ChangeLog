@@ -1,5 +1,12 @@
 2017-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (build_tags_and_nodes): Check that a buffer 
+	offset isn't 0 before subtracting 1 from it.  This is to avoid 
+	reading outside allocated memory for malformed input.  (Report 
+	from Hanno Böck.)
+
+2017-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c (build_tags_and_nodes): Simplify code by moving 
 	code inside a 'while' loop up one level, as the loop never 
 	executes more than once.

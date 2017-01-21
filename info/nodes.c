@@ -82,7 +82,10 @@ build_tags_and_nodes (FILE_BUFFER *file_buffer)
      extracting tag information. */
 
   /* Remember the end of the tags table. */
-  tags_table_end = position - 1;
+  if (position == 0)
+    goto no_tags_table;
+  else
+    tags_table_end = position - 1;
 
   /* Locate the start of the tags table. */
   binding.start = tags_table_end;
