@@ -2390,8 +2390,8 @@ Turn off any color that was in effect, using the terminal's default color.
 @cindex Coloured background
 Use the color specified for the background.
 
-@item nocolour
-@itemx nocolor
+@item bgnocolour
+@itemx bgnocolor
 Use the terminal's default background color.
 
 @item underline

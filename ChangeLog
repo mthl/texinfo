@@ -1,3 +1,8 @@
+2017-01-21  Jason Hood  <jadoxa@yahoo.com.au>  (tiny change)
+
+	 * doc/info-stnd.texi (Colors and Styles): Correct "nocolour" to 
+	 "bgnocolour".
+
 2017-01-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/man.c (xrefs_of_manpage): Check that names of man pages
