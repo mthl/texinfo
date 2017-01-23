@@ -1262,7 +1262,8 @@ static int
 scan_reference_label (REFERENCE *entry)
 {
   char *dummy;
-  int label_len = 0;
+  int max_lines;
+  int len, label_len = 0;
 
   /* Handle case of cross-reference like (FILE)^?NODE^?::. */
   if (inptr[0] == '(')
@@ -1271,13 +1272,14 @@ scan_reference_label (REFERENCE *entry)
   /* Search forward to ":" to get label name.  Cross-references may have
      a newline in the middle. */
   if (entry->type == REFERENCE_MENU_ITEM)
-    label_len += read_quoted_string (inptr + label_len, ":", 1, &dummy);
+    max_lines = 1;
   else
-    label_len += read_quoted_string (inptr + label_len, ":", 2, &dummy);
+    max_lines = 2;
+  len = read_quoted_string (inptr + label_len, ":", max_lines, &dummy);
   free (dummy);
-    
-  if (label_len == 0)
-    return 0;
+  if (!len)
+    return 0; /* Input invalid. */
+  label_len += len;
 
   entry->label = xmalloc (label_len + 1);
   memcpy (entry->label, inptr, label_len);
