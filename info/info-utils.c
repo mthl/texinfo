@@ -1693,7 +1693,7 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
           add_pointer_to_array (entry, refs_index, refs, refs_slots, 50);
         }
       /* Was "* Menu:" seen?  If so, search for menu entries hereafter. */
-      else if (!in_menu && !memcmp (match, INFO_MENU_LABEL,
+      else if (!in_menu && !strncmp (match, INFO_MENU_LABEL,
                                strlen (INFO_MENU_LABEL)))
         {
           in_menu = 1;

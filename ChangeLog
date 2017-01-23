@@ -1,5 +1,13 @@
 2017-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info-utils.c (scan_node_contents): Use 'strncmp' instead 
+	of 'memcmp' when checking for "* Menu:" string to avoid possibly 
+	looking past the end of the file buffer, detected with 
+	'-fsanitize=address' passed to gcc.  Invalid read reported by 
+	Hanno Böck.
+
+2017-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info-utils.c (scan_reference_label): Properly check 
 	return value of 'read_quoted_string' to avoid reading past the 
 	end of the buffer.  Invalid read reported by Hanno Böck.
