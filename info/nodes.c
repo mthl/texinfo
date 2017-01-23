@@ -2,7 +2,8 @@
    $Id$
 
    Copyright 1993, 1998, 1999, 2000, 2002, 2003, 2004, 2006, 2007,
-   2008, 2009, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+   2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software 
+   Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1192,6 +1193,8 @@ adjust_nodestart (FILE_BUFFER *fb, TAG *node, int slack)
 
       if (s.start < 0)
         s.start = 0;
+      else if (s.start > fb->filesize)
+        s.start = fb->filesize;
       if (s.end > fb->filesize)
         s.end = fb->filesize;
 

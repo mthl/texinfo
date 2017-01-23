@@ -1,3 +1,11 @@
+2017-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (adjust_nodestart): Check that both the start and 
+	end of the region where we search for the node separator are
+	within the file buffer, to avoid invalidly reading memory in 
+	case the file tags table had an incorrect offset.  Invalid read
+	reported by Hanno Böck.
+
 2017-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.c (get_tags_of_indirect_tags_table): Check if 
