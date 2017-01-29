@@ -43,6 +43,13 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
+#ifndef ENABLE_VIRTUAL_TERMINAL_PROCESSING
+#define ENABLE_VIRTUAL_TERMINAL_PROCESSING 4
+#endif
+#ifndef COMMON_LVB_UNDERSCORE
+#define COMMON_LVB_UNDERSCORE 0x8000
+#endif
+
 struct text_info {
     WORD normattr;
     WORD attribute;
@@ -91,8 +98,8 @@ extern int speech_friendly;	/* defined in info.c */
 
 static struct text_info outside_info;  /* holds screen params outside Info */
 #ifdef _WIN32
-static SHORT norm_attr, inv_attr, xref_attr;
-static SHORT current_attr;
+static WORD norm_attr, inv_attr, xref_attr;
+static WORD current_attr;
 static HANDLE hstdin = INVALID_HANDLE_VALUE;
 static HANDLE hstdout = INVALID_HANDLE_VALUE;
 static HANDLE hinfo = INVALID_HANDLE_VALUE;
@@ -114,12 +121,17 @@ w32_info_prep (void)
 {
   if (hinfo != INVALID_HANDLE_VALUE)
     {
+      DWORD new_mode;
+
       SetConsoleActiveScreenBuffer (hinfo);
       current_attr = norm_attr;
       hscreen = hinfo;
       SetConsoleMode (hstdin, ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT);
       GetConsoleMode (hscreen, &old_outpmode);
-      SetConsoleMode (hscreen, old_outpmode & ~ENABLE_WRAP_AT_EOL_OUTPUT);
+      new_mode = old_outpmode & ~ENABLE_WRAP_AT_EOL_OUTPUT;
+      SetConsoleMode (hscreen, new_mode);
+      /* Enable underline, if available. */
+      SetConsoleMode (hscreen, new_mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
     }
 }
 
@@ -243,6 +255,7 @@ highvideo (void)
 
   GetConsoleScreenBufferInfo (hscreen, &csbi);
   attr = csbi.wAttributes | FOREGROUND_INTENSITY;
+  attr ^= norm_attr & FOREGROUND_INTENSITY;
   textattr (attr);
 }
 
@@ -253,14 +266,33 @@ normvideo (void)
   CONSOLE_SCREEN_BUFFER_INFO csbi;
 
   GetConsoleScreenBufferInfo (hscreen, &csbi);
-  attr = csbi.wAttributes & ~FOREGROUND_INTENSITY;
+  attr = csbi.wAttributes & ~(FOREGROUND_INTENSITY | BACKGROUND_INTENSITY
+			      | COMMON_LVB_UNDERSCORE);
+  attr |= norm_attr & (FOREGROUND_INTENSITY | BACKGROUND_INTENSITY);
   textattr (attr);
 }
 
 void
 blinkvideo (void)
 {
-  highvideo ();
+  int attr;
+  CONSOLE_SCREEN_BUFFER_INFO csbi;
+
+  GetConsoleScreenBufferInfo (hscreen, &csbi);
+  attr = csbi.wAttributes | BACKGROUND_INTENSITY;
+  attr ^= norm_attr & BACKGROUND_INTENSITY;
+  textattr (attr);
+}
+
+void
+underline (void)
+{
+  int attr;
+  CONSOLE_SCREEN_BUFFER_INFO csbi;
+
+  GetConsoleScreenBufferInfo (hscreen, &csbi);
+  attr = csbi.wAttributes | COMMON_LVB_UNDERSCORE;
+  textattr (attr);
 }
 
 void
@@ -270,7 +302,7 @@ textcolor (int color)
   CONSOLE_SCREEN_BUFFER_INFO csbi;
 
   GetConsoleScreenBufferInfo (hscreen, &csbi);
-  attr = (csbi.wAttributes & 0xf0) | (color & 0x0f);
+  attr = (csbi.wAttributes & (COMMON_LVB_UNDERSCORE | 0xf0)) | (color & 0x0f);
   textattr (attr);
 }
 
@@ -281,7 +313,7 @@ textbackground (int color)
   CONSOLE_SCREEN_BUFFER_INFO csbi;
 
   GetConsoleScreenBufferInfo (hscreen, &csbi);
-  attr = (csbi.wAttributes & 0x0f) | ((color & 0x0f) << 4);
+  attr = (csbi.wAttributes & (COMMON_LVB_UNDERSCORE | 0x0f)) | ((color & 0x0f) << 4);
   textattr (attr);
 }
 
@@ -834,18 +866,24 @@ pc_end_inverse (void)
 }
 
 /* The implementation of the underlined text.  The DOS/Windows console
-   doesn't support underlined text, so we make it blue instead (blue,
-   because this face is used for hyperlinks).  */
+   doesn't support underlined text (until Win10), so we make it blue instead
+   (blue, because this face is used for hyperlinks).  */
 static void
 pc_begin_underline (void)
 {
-  textattr (xref_attr);
+  if (xref_attr != COMMON_LVB_UNDERSCORE)
+    textattr (xref_attr);
+  else
+    underline ();
 }
 
 static void
 pc_end_underline (void)
 {
-  textattr (norm_attr);
+  if (xref_attr != COMMON_LVB_UNDERSCORE)
+    textattr (norm_attr);
+  else
+    normvideo ();
 }
 
 /* Standout (a.k.a. "high video") text.  */
@@ -886,23 +924,25 @@ convert_color (int terminal_color)
   static int pc_color_map[] = {
     0, 4, 2, 6, 1, 5, 3, 7
   };
+  int intensity = terminal_color & (FOREGROUND_INTENSITY | BACKGROUND_INTENSITY);
+  terminal_color &= ~(FOREGROUND_INTENSITY | BACKGROUND_INTENSITY);
 
   if (terminal_color >= 0
       && terminal_color < sizeof(pc_color_map) / sizeof (pc_color_map[0]))
-    return pc_color_map[terminal_color];
+    return pc_color_map[terminal_color] | intensity;
   return 7;	/* lightgray */
 }
 
 static void
 pc_set_fg_color (int color)
 {
-  textcolor (convert_color (color));
+  textcolor (convert_color (color) | (norm_attr & FOREGROUND_INTENSITY));
 }
 
 static void
 pc_set_bg_color (int color)
 {
-  textbackground (convert_color (color));
+  textbackground (convert_color (color) | (norm_attr & BACKGROUND_INTENSITY));
 }
 
 /* Move the cursor up one line. */
@@ -1146,6 +1186,7 @@ pc_initialize_terminal (term_name)
 #ifdef _WIN32
   xref_attr = FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY;
 #endif
+  xref_attr |= outside_info.normattr & 0xf0;
 
   /* Does the user want non-default colors?  */
   info_colors = getenv ("INFO_COLORS");
@@ -1169,9 +1210,29 @@ pc_initialize_terminal (term_name)
       if (color_desc <= UCHAR_MAX)
 	{
 	  norm_attr = (unsigned char)color_desc;
+	  xref_attr = (xref_attr & 0x0f) | (norm_attr & 0xf0);
 	  color_desc = strtoul (endp + 1, &endp, 0);
 	  if (color_desc <= UCHAR_MAX)
 	    inv_attr = (unsigned char)color_desc;
+#ifdef _WIN32
+	  if (*endp == 'u')
+	    xref_attr = COMMON_LVB_UNDERSCORE;
+	  else
+#endif
+	  if (*endp != '\0')
+	    {
+	      color_desc = strtoul (endp + 1, &endp, 0);
+	      if (color_desc <= UCHAR_MAX)
+		{
+#ifdef _WIN32
+		  if (*endp == 'u')
+		    color_desc |= COMMON_LVB_UNDERSCORE;
+		  xref_attr = (WORD)color_desc;
+#else
+		  xref_attr = (unsigned char)color_desc;
+#endif
+		}
+	    }
 	}
     }
 
@@ -1221,7 +1282,7 @@ pc_initialize_terminal (term_name)
   terminal_end_underline_hook       = pc_end_underline;
   terminal_begin_bold_hook          = pc_begin_standout;
   terminal_begin_blink_hook         = pc_begin_blink;
-  terminal_end_all_modes_hook       = pc_end_standout;
+  terminal_end_all_modes_hook       = pc_default_color;
   terminal_default_colour_hook      = pc_default_color;
   terminal_set_colour_hook          = pc_set_fg_color;
   terminal_set_bgcolour_hook        = pc_set_bg_color;

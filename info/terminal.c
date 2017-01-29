@@ -454,7 +454,7 @@ void
 terminal_begin_blink (void)
 {
   if (terminal_begin_blink_hook)
-    (*terminal_begin_underline_hook) ();
+    (*terminal_begin_blink_hook) ();
   else
     {
       send_to_terminal (term_mb);

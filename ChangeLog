@@ -1,3 +1,30 @@
+2017-01-29  Jason Hood  <jadoxa@yahoo.com.au>
+
+	* info/pcterm.c
+	(norm_attr, inv_attr, xref_attr, current_attr): Define as WORD 
+	instead of SHORT.
+	(w32_info_prep): Enable underline, if available.
+	(highvideo):
+	(blinkvideo): Use intense background instead of intense 
+	foreground.
+	(underline): New function.
+	(textcolor, textbackground): Include bit for underlined text 
+	when calling 'textattr'.
+	(pc_begin_underline, pc_end_underline): Use underline if it is
+	available, instead of the colour blue.
+	(convert_color): Extract 'intensity' bit from argument.
+	(pc_set_fg_color): Include foreground intensity when calling 
+	textcolor.
+	(pc_set_bg_color): Include background intensity when calling 
+	textcolor.
+	(pc_initialize_terminal): Initialized the 'normattr' bit on 
+	'xref_attr' from outside_info.normattr.  Support underline in 
+	INFO_COLORS.  Set 'terminal_end_all_modes_hook' to 
+	'pc_default_color' instead of 'pc_end_standout'.
+
+	* info/terminal.c (terminal_begin_blink): Use
+	'terminal_begin_blink_hook'.
+
 2017-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_init): Remove
