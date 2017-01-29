@@ -1525,6 +1525,11 @@ echo_area_stack_contains_completions_p (void)
 #  define HAVE_STRUCT_TIMEVAL
 #endif /* HAVE_SYS_TIME_H */
 
+#if !defined (FD_SET) && defined (__MINGW32__)
+#  define WIN32_LEAN_AND_MEAN
+#  include <windows.h>
+#endif
+
 static void
 pause_or_input (void)
 {
@@ -1537,6 +1542,11 @@ pause_or_input (void)
   timer.tv_sec = 2;
   timer.tv_usec = 0;
   select (fileno (stdin) + 1, &readfds, NULL, NULL, &timer);
+#elif defined (__MINGW32__)
+  /* This is signalled on key release, so flush it and wait again. */
+  WaitForSingleObject (GetStdHandle (STD_INPUT_HANDLE), 2000);
+  FlushConsoleInputBuffer (GetStdHandle (STD_INPUT_HANDLE));
+  WaitForSingleObject (GetStdHandle (STD_INPUT_HANDLE), 2000);
 #endif /* FD_SET */
 }
 

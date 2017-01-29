@@ -174,10 +174,11 @@ gettextinfo (struct text_info *ti)
   hstdin = GetStdHandle (STD_INPUT_HANDLE);
   hstdout = GetStdHandle (STD_OUTPUT_HANDLE);
 
-  if (hstdin != INVALID_HANDLE_VALUE
-      && hstdout != INVALID_HANDLE_VALUE
-      && GetConsoleMode (hstdout, &ignored)
-      && GetConsoleMode (hstdin, &old_inpmode))
+  if (!GetConsoleMode (hstdin, &ignored))
+    hstdin = INVALID_HANDLE_VALUE;
+
+  if (hstdout != INVALID_HANDLE_VALUE
+      && GetConsoleMode (hstdout, &ignored))
     {
       hinfo = CreateConsoleScreenBuffer (GENERIC_READ | GENERIC_WRITE,
 					 FILE_SHARE_READ | FILE_SHARE_WRITE,
@@ -486,15 +487,9 @@ sleep (unsigned sec)
 static int
 w32_our_tty (int fd)
 {
-  return
-    isatty (fd)
-   /* Windows `isatty' actually tests for character devices, so the
-     null device gets reported as a tty.  Fix that by calling
-     `lseek'.  */
-    && lseek (fd, SEEK_CUR, 0) == -1
-    /* Is this our tty?  */
-    && hstdin != INVALID_HANDLE_VALUE
-    && hstdin == (HANDLE)_get_osfhandle (fd);
+  /* Is this our tty?  */
+  return hstdin != INVALID_HANDLE_VALUE
+	 && hstdin == (HANDLE)_get_osfhandle (fd);
 }
 
 /* Translate a Windows key event into the equivalent sequence of bytes
@@ -1211,6 +1206,10 @@ pc_initialize_terminal (term_name)
   term_ke = (char *)find_sequence (K_End);
   term_ki = (char *)find_sequence (K_Insert);
   term_kD = (char *)find_sequence (K_Delete);
+#elif defined _WIN32
+  term_kh = "\033<";
+  term_ke = "\033>";
+  term_ki = "\033[L";
 #endif	/* __MSDOS__ */
 
   /* Set all the hooks to our PC-specific functions.  */

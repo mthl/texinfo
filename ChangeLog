@@ -1,3 +1,17 @@
+2017-01-29  Jason Hood  <jadoxa@yahoo.com.au>
+
+	* info/echo-area.c (pause_or_input) [__MINGW32__]: Add an 
+	working implementation of this function, allowing echo area 
+	messages to be seen.
+	* info/pcterm.c (gettextinfo):  Windows 10 can now apparently 
+	seek console input, so just use GetConsoleMode to determine 
+	that.
+	(pc_initialize_terminal) [_WIN32]: Sets the 'term_??'
+	definitions for KEY_HOME, KEY_END (and KEY_INSERT), allowing 
+	Home and End to be used in the echo area (rather than having to
+	explicitly define 'M-<' and 'M->').
+	(w32_our_tty): Shorten function.
+
 2017-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (scan_node_contents): Use 'strncmp' instead 
