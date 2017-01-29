@@ -4,7 +4,7 @@
 	(norm_attr, inv_attr, xref_attr, current_attr): Define as WORD 
 	instead of SHORT.
 	(w32_info_prep): Enable underline, if available.
-	(highvideo):
+	(highvideo): Toggle foreground intensity bit.
 	(blinkvideo): Use intense background instead of intense 
 	foreground.
 	(underline): New function.
