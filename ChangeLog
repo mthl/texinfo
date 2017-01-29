@@ -1,3 +1,12 @@
+2017-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_init): Remove
+	error message printed if a UTF-8 locale couldn't be found, so
+	that we fall back to the pure Perl module.  This error message
+	caused tests comparing the output on standard error to fail on 
+	systems where a UTF-8 locale couldn't be found.  Reported by
+	Michael Deutschmann for uClibc with locales compiled out.
+
 2017-01-29  Jason Hood  <jadoxa@yahoo.com.au>
 
 	* info/echo-area.c (pause_or_input) [__MINGW32__]: Add an 

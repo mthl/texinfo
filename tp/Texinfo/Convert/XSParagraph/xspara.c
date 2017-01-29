@@ -297,7 +297,6 @@ xspara_init (void)
   if (1)
     {
 failure:
-      fprintf (stderr, "Couldn't set UTF-8 character type in locale.\n");
       return 0; /* failure */
     }
   else
