@@ -4,23 +4,21 @@
 	(norm_attr, inv_attr, xref_attr, current_attr): Define as WORD 
 	instead of SHORT.
 	(w32_info_prep): Enable underline, if available.
-	(highvideo): Toggle foreground intensity bit.
-	(blinkvideo): Use intense background instead of intense 
-	foreground.
+	(highvideo): Invert the normal foreground intensity, instead of
+	just setting it.
+	(normvideo): Remove underline attribute.  Use the normal
+	intensities, instead of just removing them.
+	(blinkvideo): Invert the normal background intensity, instead of
+	using highvideo.
 	(underline): New function.
-	(textcolor, textbackground): Include bit for underlined text 
-	when calling 'textattr'.
+	(textcolor, textbackground): Preserve underline attribute.
 	(pc_begin_underline, pc_end_underline): Use underline if it is
 	available, instead of the colour blue.
-	(convert_color): Extract 'intensity' bit from argument.
-	(pc_set_fg_color): Include foreground intensity when calling 
-	textcolor.
-	(pc_set_bg_color): Include background intensity when calling 
-	textcolor.
-	(pc_initialize_terminal): Initialized the 'normattr' bit on 
-	'xref_attr' from outside_info.normattr.  Support underline in 
-	INFO_COLORS.  Set 'terminal_end_all_modes_hook' to 
-	'pc_default_color' instead of 'pc_end_standout'.
+	(convert_color, pc_set_fg_color, pc_set_bg_color): Use the 
+	normal intensities.
+	(pc_initialize_terminal): Use the normal background for 
+	'xref_attr', instead of black.  Support underline in 
+	INFO_COLORS.  Really end all modes, not just standout.
 
 	* info/terminal.c (terminal_begin_blink): Use
 	'terminal_begin_blink_hook'.
