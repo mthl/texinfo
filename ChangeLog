@@ -36,7 +36,7 @@
 
 2017-01-29  Jason Hood  <jadoxa@yahoo.com.au>
 
-	* info/echo-area.c (pause_or_input) [__MINGW32__]: Add an 
+	* info/echo-area.c (pause_or_input) [__MINGW32__]: Add a
 	working implementation of this function, allowing echo area 
 	messages to be seen.
 	* info/pcterm.c (gettextinfo):  Windows 10 can now apparently 
