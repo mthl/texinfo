@@ -1,3 +1,10 @@
+2017-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/tag.c (tag_expand): Take a pointer as an argument 
+	pointing to the end of the buffer that is being processed, and 
+	check against this pointer to make sure we don't read too far.  
+	Invalid read reported by Hanno Böck.
+
 2017-01-29  Jason Hood  <jadoxa@yahoo.com.au>
 
 	* info/pcterm.c

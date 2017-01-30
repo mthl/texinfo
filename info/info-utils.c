@@ -1530,7 +1530,7 @@ scan_info_tag (NODE *node, int *in_index, FILE_BUFFER *fb)
 
   text_buffer_init (expansion);
 
-  if (tag_expand (&p1, expansion, in_index))
+  if (tag_expand (&p1, input_start + input_length, expansion, in_index))
     {
       if (*in_index)
         node->flags |= N_IsIndex;
