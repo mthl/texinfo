@@ -713,7 +713,7 @@ display_update_one_window (WINDOW *win)
 
       /* If this line has text on it, or if we don't know what is on the line,
          clear this line. */
-      if (entry && entry->textlen || entry->inverse)
+      if (entry->textlen || entry->inverse)
         {
           entry->textlen = 0;
           entry->text[0] = '\0';
