@@ -1,5 +1,10 @@
 2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/search.c (skip_line): Remove unused function (which had a
+	useless null pointer check in it.) (Report from Hans-Bernhard Bröker.)
+
+2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/indices.c (next_index_match): Return a value instead of
 	passing a pointer to a value to be set so that it is clear that
 	calling code does not depend on an uninitialized value.  All 

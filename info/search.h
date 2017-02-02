@@ -1,8 +1,8 @@
 /* search.h -- Structure used to search large bodies of text, with bounds.
    $Id$
 
-   Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2009, 2011, 2013, 2014, 2016
-   Free Software Foundation, Inc.
+   Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2009, 2011, 2013, 2014,
+   2016, 2017 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -78,7 +78,6 @@ int string_in_line (char *string, char *line);
 int skip_whitespace (char *string);
 int skip_non_whitespace (char *string);
 int skip_whitespace_and_newlines (char *string);
-int skip_line (char *string);
 int skip_node_separator (char *body);
 
 long find_node_separator (SEARCH_BINDING *binding);

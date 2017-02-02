@@ -2,7 +2,7 @@
    $Id$
 
    Copyright 1993, 1997, 1998, 2002, 2004, 2007, 2008, 2009, 2011, 2013,
-   2014, 2015, 2016 Free Software Foundation, Inc.
+   2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -514,21 +514,6 @@ skip_node_separator (char *body)
 
   if (body[i++] != '\n')
     return 0;
-
-  return i;
-}
-
-/* Return the number of characters from STRING to the start of
-   the next line. */
-int
-skip_line (char *string)
-{
-  register int i;
-
-  for (i = 0; string && string[i] && string[i] != '\n'; i++);
-
-  if (string[i] == '\n')
-    i++;
 
   return i;
 }
