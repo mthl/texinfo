@@ -1,5 +1,12 @@
 2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/window.c (window_change_window_height): Simplify some 
+	conditions to avoid appearing to possibly dereference a pointer
+	after it has been checked for being null.
+	(Report from Hans-Bernhard Bröker.)
+
+2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/search.c (skip_line): Remove unused function (which had a
 	useless null pointer check in it.) (Report from Hans-Bernhard Bröker.)
 
