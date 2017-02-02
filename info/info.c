@@ -432,7 +432,7 @@ add_initial_nodes (int argc, char **argv, char **error)
 
   if (goto_invocation_p)
     {
-      NODE *top_node;
+      NODE *top_node = 0;
       REFERENCE *invoc_ref = 0;
 
       char *program;
