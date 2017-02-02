@@ -3496,9 +3496,9 @@ info_intuit_options_node (NODE *node, char *program)
       {
         NODE *node2;
         node2 = info_get_node (entry->filename, entry->nodename);
-        free_history_node (node);
         if (!node2)
           break;
+        free_history_node (node);
         node = node2;
       }
     }
