@@ -1,5 +1,12 @@
 2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/indices.c (next_index_match): Return a value instead of
+	passing a pointer to a value to be set so that it is clear that
+	calling code does not depend on an uninitialized value.  All 
+	callers updated.  (Report from Hans-Bernhard Bröker.)
+
+2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/display.c (display_update_one_window): Remove a useless
 	check of a null pointer.  Report from Hans-Bernhard Bröker, 
 	found using static code analysis with clang.

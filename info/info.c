@@ -2,8 +2,8 @@
    $Id$
 
    Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-   2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015
-   Free Software Foundation, Inc.
+   2004, 2005, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015,
+   2016, 2017 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1026,8 +1026,8 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
               REFERENCE *result;
               int i, match_offset;
 
-              next_index_match (initial_fb, index_search_string, 0, 1,
-                                  &result, &i, &match_offset);
+              result = next_index_match (initial_fb, index_search_string, 0, 1,
+                                         &i, &match_offset);
 
               if (result)
                 {

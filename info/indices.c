@@ -2,7 +2,7 @@
    $Id$
 
    Copyright 1993, 1997, 1998, 1999, 2002, 2003, 2004, 2007, 2008, 2011,
-   2013, 2014, 2015, 2016 Free Software Foundation, Inc.
+   2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -300,17 +300,18 @@ index_entry_matches (REFERENCE *ent, const char *str, size_t len)
    initial matches, then non-initial substrings, updating the values of 
    INDEX_INITIAL and INDEX_PARTIAL.
 
-   If a match is found, set *RESULT to the matching index entry, and
-   *FOUND_OFFSET to its offset in INDEX_INDEX.  Otherwise set *RESULT to null.  
+   If a match is found, return a pointer to the matching index entry, and
+   set *FOUND_OFFSET to its offset in INDEX_INDEX.  Otherwise, return null.
    If we found a partial match, set *MATCH_OFFSET to the end of the match 
    within the index entry text, else to 0.  */
-void
+REFERENCE *
 next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
-                  REFERENCE **result, int *found_offset, int *match_offset)
+                  int *found_offset, int *match_offset)
 {
   int i;
   int partial_match;
   size_t search_len;
+  REFERENCE *result;
 
   partial_match = 0;
   search_len = strlen (string);
@@ -319,7 +320,7 @@ next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
   if (!index_index)
     {
       info_error (_("No indices found."));
-      return;
+      return 0;
     }
 
   if (index_search != string)
@@ -382,14 +383,15 @@ next_index_match (FILE_BUFFER *fb, char *string, int offset, int dir,
     }
 
   if (i < 0 || !index_index[i])
-    *result = 0;
+    result = 0;
   else
     {
       index_offset = i;
-      *result = index_index[i];
+      result = index_index[i];
     }
 
   *found_offset = i;
+  return result;
 }
 
 /* Display a message saying where the index match was found. */
@@ -465,8 +467,8 @@ DECLARE_INFO_COMMAND (info_next_index_match,
   else
     dir = 1;
 
-  next_index_match (file_buffer_of_window (window), index_search, index_offset,
-                    dir, &result, &i, &match_offset);
+  result = next_index_match (file_buffer_of_window (window), index_search, 
+                             index_offset, dir, &i, &match_offset);
 
   /* If that failed, print an error. */
   if (!result)
@@ -832,8 +834,8 @@ create_virtual_index (FILE_BUFFER *file_buffer, char *index_search)
       REFERENCE *result;
       int match_offset;
 
-      next_index_match (file_buffer, index_search, index_offset, 1, &result, 
-                        &i, &match_offset);
+      result = next_index_match (file_buffer, index_search, index_offset, 1,
+                                 &i, &match_offset);
       if (!result)
         break;
       format_reference (index_index[i],
