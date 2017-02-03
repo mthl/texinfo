@@ -2,7 +2,7 @@
    $Id$
 
    Copyright 1993, 1997, 1998, 2001, 2002, 2004, 2007, 2008, 2011, 2013,
-   2014 Free Software Foundation, Inc.
+   2014, 2017 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -140,13 +140,8 @@ DECLARE_INFO_COMMAND (info_execute_command,
     command = named_function (line);
     free (line);
 
-    if (!command)
-      return;
-
-    if (command->func)
+    if (command && command->func)
       (*command->func) (active_window, count, 0);
-    else
-      info_error (_("Undefined command: %s"), line);
   }
 }
 

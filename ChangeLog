@@ -1,5 +1,12 @@
 2017-02-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/m-x.c (info_execute_command): Remove code printing an 
+	error message that would use a freed pointer.  (It is not 
+	actually executed because info_read_completing_in_echo_area will 
+	not return anything outside the list of permissible completions.)
+
+2017-02-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_search_internal): Initialize some 
 	variables so they do not appear to be used uninitialized.  (They 
 	were not actually used uninitialized because if they were not 
