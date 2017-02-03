@@ -4102,7 +4102,7 @@ info_search_internal (char *string, WINDOW *window,
   long start;
   enum search_result result;
   int search_other_nodes = 1;
-  int number_of_tags, starting_tag, current_tag = -1;
+  int number_of_tags = -1, starting_tag = -1, current_tag = -1;
   NODE *node = window->node; /* Node to search in. */
   char *subfile_name = 0;
   TAG *tag;

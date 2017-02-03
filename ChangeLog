@@ -1,3 +1,11 @@
+2017-02-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_search_internal): Initialize some 
+	variables so they do not appear to be used uninitialized.  (They 
+	were not actually used uninitialized because if they were not 
+	initialized, the loop where they were used was broken out of 
+	beforehand.)  (Report from Hans-Bernhard Bröker.)
+
 2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_intuit_options_node): Do not free a 
