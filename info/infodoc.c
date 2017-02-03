@@ -661,7 +661,7 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
   free (result);
   result = xmalloc (1 + reslen);
 
-  i = next = start = 0;
+  next = start = 0;
 
   /* Skip to the beginning of a replaceable function. */
   for (i = start; string[i]; i++)

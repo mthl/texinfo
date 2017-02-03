@@ -1,9 +1,15 @@
 2017-02-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/infodoc.c (replace_in_documentation): Remove redundant 
+	assignment.  (Report from Hans-Bernhard Bröker.)
+
+2017-02-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/m-x.c (info_execute_command): Remove code printing an 
 	error message that would use a freed pointer.  (It is not 
 	actually executed because info_read_completing_in_echo_area will 
 	not return anything outside the list of permissible completions.)
+	(Report from Hans-Bernhard Bröker.)
 
 2017-02-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
