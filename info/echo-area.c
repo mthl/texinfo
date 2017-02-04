@@ -124,11 +124,7 @@ restore_calling_window (void)
 static void
 initialize_input_line (const char *prompt)
 {
-  if (prompt)
-    strcpy (input_line, prompt);
-  else
-    input_line[0] = '\0';
-
+  strcpy (input_line, prompt);
   input_line_beg = input_line_end = input_line_point = strlen (prompt);
 }
 
@@ -200,8 +196,8 @@ read_and_dispatch_in_echo_area (void)
 }
 
 /* Read a line of text in the echo area.  Return a malloc ()'ed string,
-   or NULL if the user aborted out of this read.  PROMPT, if
-   non-null, is a prompt to print before reading the line. */
+   or NULL if the user aborted out of this read.  PROMPT is the prompt
+   to print before reading the line. */
 char *
 info_read_in_echo_area (const char *prompt)
 {

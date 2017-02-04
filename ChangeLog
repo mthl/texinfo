@@ -1,3 +1,13 @@
+2017-02-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/echo-area.c (initialize_input_line): Don't consider
+	possibility that the prompt argument is null.  This removes the
+	appearance that we call 'strlen' on a pointer when it could be 
+	null.  (Report from Hans-Bernhard Bröker.)
+	(info_read_in_echo_area): Don't mention the possibility of a 
+	null prompt argument in a comment.
+	* info/variables.c (read_variable_name): Declare as static.
+
 2017-02-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infodoc.c (replace_in_documentation): Remove redundant 
