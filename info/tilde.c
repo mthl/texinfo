@@ -2,7 +2,8 @@
    $Id$
 
    Copyright 1988, 1989, 1990, 1991, 1992, 1993, 1996, 1998, 1999,
-   2002, 2004, 2006, 2007, 2008, 2012, 2013 Free Software Foundation, Inc.
+   2002, 2004, 2006, 2007, 2008, 2012, 2013, 2017 Free Software
+   Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,10 +22,6 @@
 
 #include "info.h"
 #include "tilde.h"
-
-#if defined (TEST) || defined (STATIC_MALLOC)
-static void *xmalloc (), *xrealloc ();
-#endif /* TEST || STATIC_MALLOC */
 
 /* The default value of tilde_additional_prefixes.  This is set to
    whitespace preceding a tilde so that simple programs which do not
@@ -288,78 +285,3 @@ tilde_expand_word (const char *filename)
     }
   return dirname;
 }
-
-
-#if defined (TEST)
-#undef NULL
-#include <stdio.h>
-
-main (argc, argv)
-     int argc;
-     char **argv;
-{
-  char *result, line[512];
-  int done = 0;
-
-  while (!done)
-    {
-      printf ("~expand: ");
-      fflush (stdout);
-
-      if (!gets (line))
-        strcpy (line, "done");
-
-      if ((strcmp (line, "done") == 0) ||
-          (strcmp (line, "quit") == 0) ||
-          (strcmp (line, "exit") == 0))
-        {
-          done = 1;
-          break;
-        }
-
-      result = tilde_expand (line);
-      printf ("  --> %s\n", result);
-      free (result);
-    }
-  exit (EXIT_SUCCESS);
-}
-
-static void memory_error_and_abort ();
-
-static void *
-xmalloc (bytes)
-     int bytes;
-{
-  void *temp = (void *)malloc (bytes);
-
-  if (!temp)
-    memory_error_and_abort ();
-  return temp;
-}
-
-static void *
-xrealloc (pointer, bytes)
-     void *pointer;
-     int bytes;
-{
-  void *temp;
-
-  if (!pointer)
-    temp = (char *)malloc (bytes);
-  else
-    temp = (char *)realloc (pointer, bytes);
-
-  if (!temp)
-    memory_error_and_abort ();
-
-  return temp;
-}
-
-static void
-memory_error_and_abort ()
-{
-  fprintf (stderr, _("readline: Out of virtual memory!\n"));
-  abort ();
-}
-#endif /* TEST */
-
