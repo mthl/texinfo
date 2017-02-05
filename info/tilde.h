@@ -24,9 +24,6 @@
 
 #include "info.h"
 
-/* Return a new string which is the result of tilde expanding STRING. */
-extern char *tilde_expand (char *string);
-
 /* Do the work of tilde expansion on FILENAME.  FILENAME starts with a
    tilde. */
 extern char *tilde_expand_word (const char *filename);
