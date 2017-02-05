@@ -1,3 +1,13 @@
+2017-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/tilde.c (tilde_expansion_failure_hook): Remove unused 
+	variable.
+	(tilde_expand_word): Do not look at tilde_expansion_failure_hook.
+
+2017-02-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/tilde.c [TEST] (main, xmalloc, xrealloc): Remove.
+
 2017-02-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/echo-area.c (initialize_input_line): Don't consider

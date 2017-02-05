@@ -35,12 +35,6 @@ static char *default_prefixes[] =
 static char *default_suffixes[] =
   { " ", "\n", NULL };
 
-/* If non-null, this contains the address of a function to call if the
-   standard meaning for expanding a tilde fails.  The function is called
-   with the text (sans tilde, as in "foo"), and returns a malloc()'ed string
-   which is the expansion, or a NULL pointer if there is no expansion. */
-CFunction *tilde_expansion_failure_hook = NULL;
-
 /* When non-null, this is a NULL terminated array of strings which
    are duplicates for a tilde prefix.  Bash uses this to expand
    `=~' and `:~'. */
@@ -169,7 +163,7 @@ tilde_expand (char *string)
 }
 
 /* Do the work of tilde expansion on FILENAME.  FILENAME starts with a
-   tilde.  If there is no expansion, call tilde_expansion_failure_hook. */
+   tilde. */
 char *
 tilde_expand_word (const char *filename)
 {
@@ -227,35 +221,14 @@ tilde_expand_word (const char *filename)
           username[i - 1] = 0;
 
 #ifndef __MINGW32__
-          if (!(user_entry = (struct passwd *) getpwnam (username)))
-            {
-              /* If the calling program has a special syntax for
-                 expanding tildes, and we couldn't find a standard
-                 expansion, then let them try. */
-              if (tilde_expansion_failure_hook)
-                {
-                  char *expansion = (*tilde_expansion_failure_hook) (username);
-
-                  if (expansion)
-                    {
-                      temp_name = xmalloc (1 + strlen (expansion)
-                                           + strlen (&dirname[i])); 
-                      strcpy (temp_name, expansion);
-                      strcat (temp_name, &dirname[i]);
-                      free (expansion);
-                      goto return_name;
-                    }
-                }
-              /* We shouldn't report errors. */
-            }
-          else
+          user_entry = (struct passwd *) getpwnam (username);
+          if (user_entry)
             {
               temp_name = xmalloc (1 + strlen (user_entry->pw_dir)
                                    + strlen (&dirname[i])); 
               strcpy (temp_name, user_entry->pw_dir);
               strcat (temp_name, &dirname[i]);
 
-            return_name:
               free (dirname);
               dirname = xstrdup (temp_name);
               free (temp_name);
@@ -264,19 +237,6 @@ tilde_expand_word (const char *filename)
           endpwent ();
           free (username);
 #else
-	  if (tilde_expansion_failure_hook)
-	    {
-	      char *expansion = (*tilde_expansion_failure_hook) (username);
-
-	      if (expansion)
-		{
-		  temp_name = xmalloc (1 + strlen (expansion)
-				       + strlen (&dirname[i]));
-		  strcpy (temp_name, expansion);
-		  strcat (temp_name, &dirname[i]);
-		  free (expansion);
-		}
-	    }
 	  free (dirname);
 	  dirname = xstrdup (temp_name);
 	  free (temp_name);

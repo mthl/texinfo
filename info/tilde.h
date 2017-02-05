@@ -1,7 +1,7 @@
 /* tilde.h: tilde expansion.
    $Id$
 
-   Copyright 1988, 1989, 1990, 1991, 1992, 1993, 2004, 2007, 2013
+   Copyright 1988, 1989, 1990, 1991, 1992, 1993, 2004, 2007, 2013, 2017
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -24,12 +24,6 @@
 
 #include "info.h"
 
-/* If non-null, this contains the address of a function to call if the
-   standard meaning for expanding a tilde fails.  The function is called
-   with the text (sans tilde, as in "foo"), and returns a malloc()'ed string
-   which is the expansion, or a NULL pointer if there is no expansion. */
-extern CFunction *tilde_expansion_failure_hook;
-
 /* When non-null, this is a NULL terminated array of strings which
    are duplicates for a tilde prefix.  Bash uses this to expand
    `=~' and `:~'. */
@@ -44,7 +38,7 @@ extern char **tilde_additional_suffixes;
 extern char *tilde_expand (char *string);
 
 /* Do the work of tilde expansion on FILENAME.  FILENAME starts with a
-   tilde.  If there is no expansion, call tilde_expansion_failure_hook. */
+   tilde. */
 extern char *tilde_expand_word (const char *filename);
 
 #endif /* not TILDE_H */
