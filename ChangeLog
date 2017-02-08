@@ -1,5 +1,10 @@
 2017-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (forward_move_node_structure) 
+	(backward_move_node_structure): Don't do anything for a man page.
+
+2017-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/tilde.c (tilde_expand): Delete function, as it is not 
 	actually called anywhere.
 	(tilde_additional_prefixes, tilde_additional_suffixes)

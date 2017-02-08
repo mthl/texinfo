@@ -3063,13 +3063,13 @@ DECLARE_INFO_COMMAND (info_first_node, _("Select the first node in this file"))
    last node. */
 int scroll_last_node = SLN_Stop;
 
-/* Move to 1st menu item, Next, Up/Next, or error in this window. Return
+/* Move to 1st menu item, Next, Up/Next, or error in this window.  Return
    non-zero on error, 0 on success.  Display an error message if there is an
    error. */
 static int
 forward_move_node_structure (WINDOW *window, int behaviour)
 {
-  if (window->node->flags & N_IsInternal)
+  if (window->node->flags & (N_IsInternal | N_IsManPage))
     return 1;
 
   switch (behaviour)
@@ -3185,7 +3185,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
 static int
 backward_move_node_structure (WINDOW *window, int behaviour)
 {
-  if (window->node->flags & N_IsInternal)
+  if (window->node->flags & (N_IsInternal | N_IsManPage))
     return 1;
 
   switch (behaviour)
