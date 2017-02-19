@@ -1,5 +1,12 @@
 2017-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-stnd.texi (Cursor Commands, Scrolling Commands)
+	(Node Commands, Selecting Xrefs, Miscellaneous):
+	Remove documentation of --vi-keys key bindings, except for
+	M-1 ... M-9 as these can't be specified in .infokey.
+
+2017-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi (infokey format): Document the --vi-keys 
 	key bindings here.
 	(Invoking Info) <--vi-keys>: Refer to 'infokey format' node.
