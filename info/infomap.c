@@ -490,16 +490,6 @@ static int default_vi_like_info_keys[] =
 
 static int default_vi_like_ea_keys[] =
 {
-  ESC, '1', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '2', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '3', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '4', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '5', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '6', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '7', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '8', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '9', NUL,                  A_info_add_digit_to_numeric_arg,
-  ESC, '-', NUL,                  A_info_add_digit_to_numeric_arg,
   KEYMAP_META('1'), NUL,                 A_info_add_digit_to_numeric_arg,
   KEYMAP_META('2'), NUL,                 A_info_add_digit_to_numeric_arg,
   KEYMAP_META('3'), NUL,                 A_info_add_digit_to_numeric_arg,
@@ -533,6 +523,7 @@ static int default_vi_like_ea_keys[] =
   CONTROL('e'), NUL,              A_ea_end_of_line,
   CONTROL('f'), NUL,              A_ea_forward,
   CONTROL('g'), NUL,              A_ea_abort,
+  ESC, NUL,                       A_ea_abort,
   CONTROL('h'), NUL,              A_ea_rubout,
   CONTROL('k'), NUL,              A_ea_kill_line,
   CONTROL('l'), NUL,              A_info_redraw_display,

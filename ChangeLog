@@ -1,5 +1,11 @@
 2017-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/infomap.c (default_vi_like_ea_keys): Add ESC as an
+	abort key, and remove bindings ESC 1 ... ESC 9 that conflict
+	with this.
+
+2017-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infomap.c (default_vi_like_ea_keys): Interchange the 
 	meanings of M-h and M-l to match line editing commands of GNU 
 	Less.  (The former bindings appear to have been in place since 
