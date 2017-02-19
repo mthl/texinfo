@@ -1,5 +1,14 @@
 2017-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/infomap.c (default_vi_like_ea_keys): Interchange the 
+	meanings of M-h and M-l to match line editing commands of GNU 
+	Less.  (The former bindings appear to have been in place since 
+	the beginning, so likely no-one has ever used them).
+	* doc/info-stnd.texi (infokey format): Interchange M-h and M-l
+	in sample infokey file.
+
+2017-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi (Cursor Commands, Scrolling Commands)
 	(Node Commands, Selecting Xrefs, Miscellaneous):
 	Remove documentation of --vi-keys key bindings, except for

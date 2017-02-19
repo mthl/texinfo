@@ -2429,8 +2429,8 @@ N       search-previous
 ZZ      quit
 
 #echo-area
-\mh     echo-area-forward
-\ml     echo-area-backward
+\mh     echo-area-backward
+\ml     echo-area-forward
 \m0     echo-area-beg-of-line
 \m$     echo-area-end-of-line
 \mw     echo-area-forward-word
