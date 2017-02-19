@@ -545,9 +545,9 @@ Prints the version information of Info and exits.
 @cindex vi-like key bindings
 @cindex Less-like key bindings
 This option binds functions to keys differently, to emulate the key
-bindings of @code{vi} and Less.  The default key bindings are generally
-modeled after Emacs.  (@xref{Custom Key Bindings} for a more general way 
-of altering GNU Info's key bindings.)
+bindings of @code{vi} and Less.  The bindings activated by this option
+are documented in @ref{@t{infokey} format}.  (@xref{Custom Key Bindings} 
+for a more general way of altering GNU Info's key bindings.)
 
 @item --where
 @itemx --location
@@ -1932,7 +1932,7 @@ the most concise information about GNU Info available.
 @kindex M-h, vi-like operation
 @findex get-info-help-node
 Try hard to visit the node @code{(info)Help}.  The Info file
-@file{info.texi} distributed with GNU Info (and GNU Emacs) contains
+@file{info.texi} distributed with GNU Emacs contains
 this node.  Of course, the file must first be processed with
 @code{makeinfo}, and then placed into the location of your Info directory.
 
@@ -2476,36 +2476,77 @@ file.
 @cindex @file{.infokey} format
 @cindex format of @file{.infokey}
 
-The format of the @file{.infokey} file is most easily illustrated by
-example.  For instance, here is a sample init file suitable for aficionados
-of @command{vi} or @command{less}:
+Here is an example @file{.infokey} file which specifies the key
+bindings that are activated by the @option{--vi-keys} option to Info 
+(@pxref{--vi-keys}).
 
 @example
 #info
+g       beginning-of-node
+G       end-of-node
+\mb     beginning-of-node
+\me     end-of-node
 j       next-line
 k       prev-line
-l       forward-char
-h       backward-char
-\kd     down-line
-\ku     up-line
-\       scroll-forward
-\kD     scroll-forward-page-only
+
+f       scroll-forward-page-only
+^f      scroll-forward-page-only
+\m\     scroll-forward-page-only
+z       scroll-forward-page-only-set-window
+
 b       scroll-backward
-\kU     scroll-backward-page-only
-g       beginning-of-node
-\kh     beginning-of-node
-G       end-of-node
-\ke     end-of-node
-\t      select-reference-this-line
--       history-node
-n       next-node
-p       prev-node
-u       up-node
-t       top-node
-d       dir-node
-\mu     clear-search
-#var
-highlight-searches=On
+^b      scroll-backward-page-only
+w       scroll-backward-page-only-set-window
+
+\kd     down-line
+^e      down-line
+^j      down-line
+^m      down-line
+\ku     up-line
+^y      up-line
+^k      up-line
+
+d       scroll-half-screen-down
+^d      scroll-half-screen-down
+u       scroll-half-screen-up
+^u      scroll-half-screen-up
+
+^xn     next-node
+^xu     up-node
+'       last-node
+\mt     top-node
+\md     dir-node
+
+^xg     goto-node
+I       goto-invocation-node
+
+n       search-next
+N       search-previous
+
+\mf     xref-item
+\xr     xref-item
+
+\mf     select-reference-this-line
+^x^j    select-reference-this-line
+^x^m    select-reference-this-line
+
+^c      abort-key
+
+\mh     get-info-help-node
+
+:q      quit
+ZZ      quit
+
+#echo-area
+\mh     echo-area-forward
+\ml     echo-area-backward
+\m0     echo-area-beg-of-line
+\m$     echo-area-end-of-line
+\mw     echo-area-forward-word
+\mx     echo-area-delete
+\mu     echo-area-abort
+^v      echo-area-quoted-insert
+\mX     echo-area-kill-word
 @end example
 
 The file consists of one or more @dfn{sections}.  Each section starts with

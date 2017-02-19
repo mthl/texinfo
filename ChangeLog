@@ -1,3 +1,11 @@
+2017-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (infokey format): Document the --vi-keys 
+	key bindings here.
+	(Invoking Info) <--vi-keys>: Refer to 'infokey format' node.
+	(Miscellaneous Commands) <get-info-help-node>: Don't say that
+	info.texi is distributed with GNU Info.
+
 2017-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (forward_move_node_structure) 
