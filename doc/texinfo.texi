@@ -7514,7 +7514,7 @@ beginning of the line is fully flush left with the
 line that follows after it.
 @end display
 
-The standard usage of @code{@@indent} is just as above: at the
+The standard usage of @code{@@noindent} is just as above: at the
 beginning of what would otherwise be a paragraph, to eliminate the
 indentation that normally happens there.  It can either be followed by
 text or be on a line by itself.  There is no reason to use it

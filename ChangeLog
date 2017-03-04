@@ -1,3 +1,7 @@
+2017-03-04  Thien-Thi Nguyen  <ttn@gnu.org>  (tiny change)
+
+	* doc/texinfo.texi (@noindent): Spell "@noindent" correctly.
+
 2017-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infomap.c (default_vi_like_ea_keys): Add ESC as an
