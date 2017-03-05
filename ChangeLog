@@ -1,3 +1,12 @@
+2017-03-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\internalpagesizes) <dvi output>: Output
+	a \special setting the page size.  This has the effect that a
+	completely empty page can be output if a document has nothing in
+	it.  This changed on 2015-08-25 when index files were no longer 
+	opened automatically.  This made a test in the Automake 
+	distribution fail, reported by Mathieu Lirzin.
+
 2017-03-04  Thien-Thi Nguyen  <ttn@gnu.org>  (tiny change)
 
 	* doc/texinfo.texi (@noindent): Spell "@noindent" correctly.
