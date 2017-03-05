@@ -1,3 +1,9 @@
+2017-03-05  Mathieu Lirzin  <mthl@gnu.org>  (tiny change)
+
+	* util/tests/texi2dvi_empty_text.sh: New test.
+	* util/Makefile.am (AM_TESTS_ENVIRONMENT): Use 'texinfo.tex'
+	from "$(top_srcdir)/doc".
+
 2017-03-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\internalpagesizes) <dvi output>: Output
