@@ -1,3 +1,7 @@
+2017-03-06  Masamichi Hosoda  <trueroad@trueroad.jp>
+
+	* doc/texinfo-ja.tex: Fix error message for XeTeX.
+
 2017-03-05  Mathieu Lirzin  <mthl@gnu.org>  (tiny change)
 
 	* util/tests/texi2dvi_empty_text.sh: New test.
