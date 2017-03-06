@@ -1,3 +1,8 @@
+2017-03-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\doublecolumnout, \balancecolumns):
+	Use \PAGE instead of literal 255 for the box number.
+
 2017-03-06  Masamichi Hosoda  <trueroad@trueroad.jp>
 
 	* doc/texinfo-ja.tex: Fix error message for XeTeX.
