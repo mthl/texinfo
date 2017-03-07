@@ -1,3 +1,24 @@
+2017-03-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\begindoublecolumns): Reduce \vsize to
+	account for what has appeared on the page so far.
+	(\doublecolumnout): Do not subtract the height of what has
+	appeared on the page so far before dividing \vsize in two.
+	Add it back on again before exiting the output routine.
+	(\enddoublecolumns): Restore \vsize from \txipageheight.
+
+	This fixes a problem with the formatting when the index material 
+	would not fit on the page after the partial page, but there was
+	not enough of it to make the output routine (\doublecolumnout)
+	fire before the output routine was changed to \balancecolumns.
+	Hence \balancecolumns was caused to balance too much material 
+	and would output a box that was too tall for the page.
+
+2017-03-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Medium length index): New test
+	of index formatting.
+
 2017-03-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\doublecolumnout, \balancecolumns):
