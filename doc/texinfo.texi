@@ -583,6 +583,7 @@ Format with @command{tex}/@command{texindex}
 
 * Reference Implementation::    @command{texi2any}: the reference implementation.
 * Invoking @command{texi2any}::           Running the translator from a shell.
+* @command{texi2any} Environment Variables::
 * @command{texi2any} Printed Output::     Calling @command{texi2dvi}.
 * Pointer Validation::          How to check that pointers point somewhere.
 * Customization Variables::     Configuring @command{texi2any}.
@@ -15927,6 +15928,7 @@ The rest of this chapter goes into the details.
 @menu
 * Reference Implementation::    @command{texi2any}: the reference implementation.
 * Invoking @command{texi2any}::           Running the translator from a shell.
+* @command{texi2any} Environment Variables::
 * @command{texi2any} Printed Output::     Calling @command{texi2dvi}.
 * Pointer Validation::          How to check that pointers point somewhere.
 * Customization Variables::     Configuring @command{texi2any}.
@@ -16500,6 +16502,10 @@ Generate Texinfo XML output (rather than Info).
 
 @end table
 
+
+@node @command{texi2any} Environment Variables
+@section Environment Variables Recognized by @command{texi2any}
+
 @vindex TEXINFO_OUTPUT_FORMAT
 @cindex Environment variable @code{TEXINFO_OUTPUT_FORMAT}
 @command{makeinfo} also reads the environment variable
@@ -16515,6 +16521,38 @@ If not set or otherwise specified, Info output is the default.
 The customization variable of the same name is also read; if set, that
 overrides an environment variable setting, but not a command-line
 option.  @xref{Customization Variables and Options}.
+
+@vindex TEXINFO_XS
+@cindex Perl extension modules (XS)
+You can control @command{texi2any}'s use of Perl extension modules
+by setting the @env{TEXINFO_XS} environment variable.  These modules
+are compiled native code that the interpreted Perl code can use.
+Ideally, these extension modules should just work, and the only noticable
+difference they should make is that @command{texi2any} finishes running
+sooner.  However, you can use this environment variable for the purposes
+of troubleshooting: for example, if you have problems with the output of
+@command{texi2any} varying depending on whether the extension modules are
+in use.
+
+The following values of @env{TEXINFO_XS} are recognized by
+@command{texi2any}:
+
+@table @samp
+@item default
+The default behavior.  Try to load extension modules, and silently fall
+back to the interpreted Perl implementations if this fails.
+
+@item warn
+Try to load extension modules, and if this fails, give a warning message
+before falling back to the interpreted Perl implementations.
+
+@item debug
+Try to load extension modules, printing many messages while doing so.
+
+@item omit
+Do not use extension modules.
+
+@end table
 
 
 @node @command{texi2any} Printed Output
