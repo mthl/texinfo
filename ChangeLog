@@ -1,3 +1,7 @@
+2017-03-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Update with news since last release.
+
 2017-03-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (texi2any Environment Variables): New node.
