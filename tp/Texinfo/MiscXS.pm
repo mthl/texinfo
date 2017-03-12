@@ -27,9 +27,21 @@ our $VERSION = '6.2';
 use Texinfo::XSLoader;
 
 BEGIN {
+  our $xsmodule = "Texinfo::MiscXS";
+ # Check for a UTF-8 locale.  Skip the check if the 'locale' command doesn't
+ # work.
+  our $a;
+  if ($^O ne 'MSWin32') {
+    $a = `locale -a 2>/dev/null`;
+  }
+  if ($a and $a !~ /UTF-8/ and $a !~ /utf8/) {
+    # Do not use XS module
+    $xsmodule = undef;
+  }
+
   Texinfo::XSLoader::init (
     "Texinfo::MiscXS",
-    "Texinfo::MiscXSXS",
+    $xsmodule,
     "Texinfo::MiscXS",
     "MiscXS",
     0,

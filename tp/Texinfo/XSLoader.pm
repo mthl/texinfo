@@ -113,6 +113,10 @@ sub init {
    _fatal $fatal_message;
    goto FALLBACK;
  }
+
+ if (!$module) {
+   goto FALLBACK;
+ }
  
  my ($libtool_dir, $libtool_archive);
  if ($TEXINFO_XS ne 'standalone') {
