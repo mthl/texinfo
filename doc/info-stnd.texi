@@ -572,15 +572,15 @@ settings.
 @cindex moving the cursor
 
 GNU Info has several commands which allow you to move the cursor about
-the screen.  The notation used in this manual to describe keystrokes
-is the same as the notation used within the Emacs manual, and the GNU
-Readline manual.  @xref{User Input,,, emacs, The GNU Emacs Manual}
-if you are unfamiliar with the notation.  @footnote{Here's a short
-summary.  @kbd{C-@var{x}} means press the @kbd{CTRL} key and the
+the screen.
+The notation used in this manual to describe keystrokes
+is the same as the notation used within the Emacs manual
+(@pxref{User Input,,, emacs, The GNU Emacs Manual}).
+@kbd{C-@var{x}} means press the @kbd{CTRL} key and the
 key @var{x}.  @kbd{M-@var{x}} means press the @kbd{META} key and
 the key @var{x}.  On many terminals the @kbd{META} key is known as
 the @kbd{ALT} key.  @kbd{SPC} is the space bar.  The other keys are
-usually called by the names imprinted on them.}
+usually called by the names imprinted on them.
 
 The following table lists the basic cursor movement commands in Info.
 Each entry consists of the key sequence you should type to execute the
@@ -1125,7 +1125,7 @@ Toggle between using regular expressions and literal strings for
 searching.  Info uses so-called `extended' regular expression syntax
 (@pxref{Regular Expressions,,, grep, GNU Grep}).
 
-@item @kbd{S} (@code{search-case-sensitively}
+@item @kbd{S} (@code{search-case-sensitively})
 @kindex S
 @findex search-case-sensitively
 @cindex search, case-sensitive
