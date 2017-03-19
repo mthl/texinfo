@@ -1,5 +1,11 @@
 2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (HTML Customization Variable) <WORDS_IN_PAGE>:
+	Add index entry "Navigation footer" to make this information 
+	easier to find.
+
+2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info.c: If not loading any nodes at all, and outputting
 	an error message, exit with a non-zero status.
 

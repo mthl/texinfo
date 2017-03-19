@@ -17171,6 +17171,7 @@ For HTML@.  If set, a vertical navigation panel is used; default false.
 
 @item WORDS_IN_PAGE
 @cindex Navigation panel, bottom of page
+@cindex Navigation footer
 For HTML, with output split at nodes.  Specifies the approximate
 minimum page length at which a navigation panel is placed at the
 bottom of a page.  To avoid ever having the navigation buttons at the
