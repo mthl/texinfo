@@ -1,3 +1,7 @@
+2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp: Run maintain/change_perl_modules.sh.
+
 2017-03-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/MiscXS.pm: Check for UTF-8 locale, copied from
