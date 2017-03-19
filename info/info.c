@@ -42,10 +42,6 @@ static char *apropos_search_string = NULL;
    apropos, this puts the user at the node, running info. */
 static int index_search_p = 0;
 
-/* Searching all indices for INDEX_SEARCH_STRING, and display a list of
-   the results. */
-static int virtual_index_p = 0;
-
 /* Non-zero means look for the node which describes the invocation
    and command-line options of the program, and start the info
    session at that node.  */
@@ -148,7 +144,6 @@ static struct option long_options[] = {
   { "variable", 1, 0, 'v' },
   { "version", 0, &print_version_p, 1 },
   { "vi-keys", 0, &vi_keys_p, 1 },
-  { "virtual-index", 1, 0, VIRTIDX_OPTION },
   { "where", 0, &print_where_p, 1 },
 #if defined(__MSDOS__) || defined(__MINGW32__)
   { "speech-friendly", 0, &speech_friendly, 1 },
@@ -799,9 +794,6 @@ main (int argc, char *argv[])
           break;
 
           /* User has specified a string to search all indices for. */
-        case VIRTIDX_OPTION:
-          virtual_index_p = 1;
-          /* fall through */
         case IDXSRCH_OPTION:
           index_search_p = 1;
           free (index_search_string);
@@ -930,7 +922,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   add_pointer_to_array (0, ref_index, ref_list, ref_slots, 2);
   ref_index--;
 
-  if (all_matches_p)
+  if (all_matches_p && !index_search_p)
     {
       /* --all */
       if (!user_filename && argv[0])
@@ -977,9 +969,9 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
 
       get_initial_file (&argc, &argv, &error);
 
-      /* If the user specified `--virtual-index=STRING', create
+      /* If the user specified `--index-search=STRING --all', create
          and display the menu of results. */
-      if (virtual_index_p && initial_file)
+      if (index_search_p && all_matches_p && initial_file)
         {
           FILE_BUFFER *initial_fb;
           initial_fb = info_find_file (initial_file);

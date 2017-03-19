@@ -1,5 +1,12 @@
 2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info.c (virtual_index_p): Remove variable.
+	(long_options): Remove "--virtual-index".
+	(main): Don't check for --virtual-index option.  Use the
+	combination of --index-search and --all for this functionality.
+
+2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/ModulePath.pm.in ($VERSION): Define variable.
 
 2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
