@@ -1,5 +1,16 @@
 2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info.c: If not loading any nodes at all, and outputting
+	an error message, exit with a non-zero status.
+
+2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Invoking Info): Mention combination of 
+	--all and --index-search.
+	* NEWS: Mention this feature.
+
+2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info.c (virtual_index_p): Remove variable.
 	(long_options): Remove "--virtual-index".
 	(main): Don't check for --virtual-index option.  Use the

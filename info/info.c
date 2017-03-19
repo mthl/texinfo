@@ -1069,7 +1069,10 @@ There is NO WARRANTY, to the extent permitted by law.\n"),
   if (ref_index == 0)
     {
       if (error)
-        info_error ("%s", error);
+        {
+          info_error ("%s", error);
+          exit (1);
+        }
       exit (0);
     }
     
