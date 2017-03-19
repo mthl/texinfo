@@ -5,6 +5,10 @@
 
 package Texinfo::ModulePath;
 
+use vars qw($VERSION);
+
+$VERSION = '6.3dev';
+
 use File::Basename;
 use File::Spec;
 
