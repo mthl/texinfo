@@ -277,6 +277,21 @@ if ($configured_version eq '@' . 'PACKAGE_VERSION@') {
     $configured_version = $Texinfo::Parser::VERSION;
   }
 }
+
+# Compare the version of this file with the version of the modules
+# it is using.  If they are different, don't go any further.  This
+# can happen if multiple versions of texi2any are installed under a
+# different names, e.g. with the --program-suffix option to 'configure'.
+# The version in Common.pm is checked because that file has been present
+# since Texinfo 5.0 (the first release with texi2any in Perl).
+if ($configured_version ne $Texinfo::Common::VERSION
+    and $configured_version ne $Texinfo::Common::VERSION."+dev") {
+  warn "This is texi2any $configured_version but modules ".
+       "for texi2any $Texinfo::Common::VERSION found!\n";
+  die "Your installation of Texinfo is broken; aborting.\n";
+}
+
+
 my $configured_package = '@PACKAGE@';
 $configured_package = 'Texinfo' if ($configured_package eq '@' . 'PACKAGE@');
 my $configured_name = '@PACKAGE_NAME@';
