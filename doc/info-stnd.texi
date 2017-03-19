@@ -280,8 +280,11 @@ to select one.  This menu node can be brought back at any time by
 pressing @kbd{C-x f}.  If there is only one match, @command{info}
 starts as usual.
 
-The @option{--index-search} and @option{--node} options cannot be used
-together with this option.
+When used with the @option{--index-search} option, @command{info}
+displays a menu of matching index entries (just as the
+@code{virtual-index} command does; see @ref{Index Commands}).
+
+The @option{--node} option cannot be used together with this option.
 
 @anchor{--apropos}
 @item --apropos=@var{string}
@@ -410,6 +413,10 @@ such entry exists, print @samp{no entries found} and exit with nonzero
 status.  This can be used from another program as a way to provide
 online help, or as a quick way of starting to read an Info file at a
 certain node when you don't know the exact name of that node.
+
+When used with the @option{--all} option, @command{info}
+displays a menu of matching index entries (just as the
+@code{virtual-index} command does; see @ref{Index Commands}).
 
 This command can also be invoked from inside Info; @pxref{Searching
 Commands}.
