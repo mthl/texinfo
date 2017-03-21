@@ -1,5 +1,18 @@
 2017-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Implement lazy search match lists.
+
+	* info/window.h (MATCH_STATE): Add 'regex' field of type regex_t.
+	Add fields 'match_alloc', 'finished', 'buffer' and 'buflen'.
+	* info/search.c (free_matches): Update for new fields.
+	(regexp_search): Do not call regfree on regex_t variable; copy
+	it to MATCH_STATE object instead.  Set new fields on MATCH_STATE.
+	(extend_matches): New function, split out from regexp_search.
+	(regexp_search, match_in_match_list, match_by_index)
+	(at_end_of_matches): Call extend_matches as necessary.
+
+2017-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/search.c (copy_binding): Remove this function, which is
 	not used much.  Remove comment before this function.
 	* info/nodes.c (get_nodes_of_tags_table): Use struct assignment 

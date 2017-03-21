@@ -65,8 +65,13 @@ typedef struct {
 
 typedef struct match_struct
 {
-  regmatch_t *matches;
+  regmatch_t *matches; /* Array of matches */
   size_t match_count;
+  size_t match_alloc;
+  int finished;        /* Non-zero if all possible matches are stored. */
+  regex_t regex;
+  char *buffer;
+  size_t buflen;
 } MATCH_STATE;
 
 /* Structure which defines a window.  Windows are doubly linked, next

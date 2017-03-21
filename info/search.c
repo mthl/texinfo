@@ -26,16 +26,6 @@
 #include "info-utils.h"
 #include "search.h"
 
-/* The search functions take two arguments:
-
-     1) a string to search for, and
-
-     2) a pointer to a SEARCH_BINDING which contains the buffer, start,
-        and end of the search.
-
-   They return a long, which is the offset from the start of the buffer
-   at which the match was found.  An offset of -1 indicates failure. */
-
 
 /* **************************************************************** */
 /*                                                                  */
@@ -118,50 +108,40 @@ regexp_escape_string (char *search_string)
 }
 
 
-/* Search BUFFER for REGEXP.  Pass back the list of matches in MATCHES. */
-enum search_result
-regexp_search (char *regexp, int is_literal, int is_insensitive,
-               char *buffer, size_t buflen,
-               MATCH_STATE *match_state)
+static void
+extend_matches (MATCH_STATE *state)
 {
-  regmatch_t *matches = 0; /* List of found matches. */
-  size_t match_alloc = 0;
-  size_t match_count;
+  regmatch_t *matches = state->matches;
+  size_t match_alloc = state->match_alloc;
+  size_t match_count = state->match_count;
+  char *buffer = state->buffer;
+  size_t buflen = state->buflen;
 
-  regex_t preg; /* Compiled pattern buffer for regexp. */
-  int result;
-  char *regexp_str;
-  char saved_char;
   regoff_t offset = 0;
+  char saved_char;
+  size_t initial_match_count = match_count;
 
-  if (!is_literal)
-    regexp_str = regexp_expand_newlines_and_tabs (regexp);
-  else
-    regexp_str = regexp_escape_string (regexp);
-
-  result = regcomp (&preg, regexp_str,
-                    REG_EXTENDED | REG_NEWLINE
-                    | (is_insensitive ? REG_ICASE : 0));
-  free (regexp_str);
-
-  if (result != 0)
-    {
-      int size = regerror (result, &preg, NULL, 0);
-      char *buf = xmalloc (size);
-      regerror (result, &preg, buf, size);
-      info_error (_("regexp error: %s"), buf);
-      return search_invalid;
-    }
+  if (state->finished)
+    return;
 
   saved_char = buffer[buflen];
   buffer[buflen] = '\0';
 
-  for (match_count = 0; offset < buflen; )
+  if (match_count > 0)
+    {
+      offset = matches[match_count - 1].rm_eo;
+
+      /* move past zero-length match */
+      if (offset == matches[match_count - 1].rm_so)
+        offset++;
+    }
+
+  while (offset < buflen && match_count < initial_match_count + 5)
     {
       int result = 0;
       regmatch_t m;
 
-      result = regexec (&preg, &buffer[offset], 1, &m, REG_NOTBOL);
+      result = regexec (&state->regex, &buffer[offset], 1, &m, REG_NOTBOL);
       if (result == 0)
         {
           if (match_count == match_alloc)
@@ -182,15 +162,59 @@ regexp_search (char *regexp, int is_literal, int is_insensitive,
             offset++; /* Avoid finding match again for a pattern of "$". */
         }
       else
-        break;
+        {
+          state->finished = 1;
+          break;
+        }
     }
   buffer[buflen] = saved_char;
-  regfree (&preg);
 
-  match_state->matches = matches;
-  match_state->match_count = match_count;
+  state->matches = matches;
+  state->match_alloc = match_alloc;
+  state->match_count = match_count;
+}
 
-  if (match_count == 0)
+/* Search BUFFER for REGEXP.  Pass back the list of matches
+   in MATCH_STATE. */
+enum search_result
+regexp_search (char *regexp, int is_literal, int is_insensitive,
+               char *buffer, size_t buflen,
+               MATCH_STATE *match_state)
+{
+  regex_t preg; /* Compiled pattern buffer for regexp. */
+  int result;
+  char *regexp_str;
+
+  if (!is_literal)
+    regexp_str = regexp_expand_newlines_and_tabs (regexp);
+  else
+    regexp_str = regexp_escape_string (regexp);
+
+  result = regcomp (&preg, regexp_str,
+                    REG_EXTENDED | REG_NEWLINE
+                    | (is_insensitive ? REG_ICASE : 0));
+  free (regexp_str);
+
+  if (result != 0)
+    {
+      int size = regerror (result, &preg, NULL, 0);
+      char *buf = xmalloc (size);
+      regerror (result, &preg, buf, size);
+      info_error (_("regexp error: %s"), buf);
+      return search_invalid;
+    }
+
+  match_state->matches = 0;
+  match_state->match_count = 0;
+  match_state->match_alloc = 0;
+  match_state->finished = 0;
+  match_state->regex = preg;
+  match_state->buffer = buffer;
+  match_state->buflen = buflen;
+
+  extend_matches (match_state);
+
+  if (match_state->match_count == 0)
     return search_not_found;
   else
     return search_success;
@@ -417,6 +441,14 @@ match_in_match_list (MATCH_STATE *match_state,
     {
       /* searching backward */
       int i;
+
+      /* get all matches */
+      while (!match_state->finished)
+        extend_matches (match_state);
+
+      matches = match_state->matches;
+      match_count = match_state->match_count;
+
       for (i = match_count - 1; i >= 0; i--)
         {
           if (matches[i].rm_so < start)
@@ -433,8 +465,19 @@ match_in_match_list (MATCH_STATE *match_state,
     {
       /* searching forward */
       int i;
-      for (i = 0; i < match_count; i++)
+      for (i = 0; i < match_count || !match_state->finished; i++)
         {
+          /* get more matches as we need them */
+          if (i == match_count)
+            {
+              extend_matches (match_state);
+              matches = match_state->matches;
+              match_count = match_state->match_count;
+
+              if (i == match_count)
+                break;
+            }
+
           if (matches[i].rm_so >= end)
             break; /* No matches found in search area. */
 
@@ -450,18 +493,25 @@ match_in_match_list (MATCH_STATE *match_state,
   return search_not_found;
 }
 
+/* Return match INDEX in STATE.  INDEX must be a valid index. */
 regmatch_t
 match_by_index (MATCH_STATE *state, int index)
 {
+  while (state->match_alloc <= index)
+    extend_matches (state);
   return state->matches[index];
 }
 
+/* Free and clear all data in STATE. */
 void
 free_matches (MATCH_STATE *state)
 {
   free (state->matches);
   state->matches = 0;
-  state->match_count = 0;
+  state->match_count = state->match_alloc = state->finished = 0;
+  state->buffer = 0; /* do not free as it is kept elsewhere */
+  state->buflen = 0;
+  regfree (&state->regex);
 }
 
 int
@@ -500,7 +550,13 @@ decide_if_in_match (long off, int *in_match,
 int
 at_end_of_matches (MATCH_STATE *state, int index)
 {
-  return (state->match_count == index) ? 1 : 0;
+  if (!state->finished)
+    extend_matches (state);
+
+  if (state->finished)
+    return (state->match_count == index) ? 1 : 0;
+  else
+    return 0;
 }
 
 
