@@ -1,3 +1,32 @@
+2017-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Access list of search matches through accessor functions only.
+
+	* info/window.h (MATCH_STATE): New struct type.
+	(WINDOW): Use it for new field 'matches', replacing previous 
+	'matches' and 'match_count' fields.
+
+	* info/search.c (match_by_index, free_matches, matches_ready)
+	(at_end_of_matches):
+	New functions.
+	* info/session.c (info_search_in_node_internal, put_node_in_window)
+	(info_search_internal, info_clear_search, incremental_search),
+	* info/window.c (window_set_node_of_window, tree_search_check_node),
+	* info/display.c (display_process_line): Use them.
+
+	* info/session.c, info/search.c (match_in_match_list): Move 
+	function to search.c, and take MATCH_STATE argument.
+	* info/search.c (regexp_search): Return result via a pointer to 
+	a MATCH_STATE.
+
+	* info/display.c, info/search.c (decide_if_in_match): Move to
+	search.c.
+	* info/display.c (matches): Variable is of type MATCH_STATE *.
+
+	This opens the way to not calculating an entire list of matches
+	in one go, which may take a long time if there are too many (thus
+	leading to the need for the 'min-search-length' variable).
+
 2017-03-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (HTML Customization Variable) <WORDS_IN_PAGE>:

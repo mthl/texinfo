@@ -62,7 +62,7 @@ enum search_result search (char *string, SEARCH_BINDING *binding,
 enum search_result regexp_search (char *regexp,
                int is_literal, int is_insensitive,
                char *buffer, size_t buflen,
-               regmatch_t **matches_out, size_t *match_count_out);
+               MATCH_STATE *match_state);
 int looking_at (char *string, SEARCH_BINDING *binding);
 int looking_at_line (char *string, char *pointer);
 
@@ -83,5 +83,15 @@ int skip_node_separator (char *body);
 long find_node_separator (SEARCH_BINDING *binding);
 long find_file_section (SEARCH_BINDING *binding, char *label);
 long find_node_in_binding (char *nodename, SEARCH_BINDING *binding);
+
+regmatch_t match_by_index (MATCH_STATE *state, int index);
+enum search_result match_in_match_list (MATCH_STATE *state,
+                     long start_in, long end_in, int *match_index);
+
+void free_matches (MATCH_STATE *state);
+int matches_ready (MATCH_STATE *state);
+int at_end_of_matches (MATCH_STATE *state, int index);
+void decide_if_in_match (long off, int *in_match, MATCH_STATE *matches,
+                         size_t *match_index);
 
 #endif /* not INFO_SEARCH_H */

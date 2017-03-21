@@ -1,7 +1,7 @@
 /* window.h -- Structure and flags used in manipulating Info windows.
    $Id$
 
-   Copyright 1993, 1997, 2004, 2007, 2011 2013, 2014, 2015, 2016
+   Copyright 1993, 1997, 2004, 2007, 2011 2013, 2014, 2015, 2016, 2017
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -63,6 +63,12 @@ typedef struct {
   WINDOW_STATE_DECL;            /* What gets saved. */
 } WINDOW_STATE;
 
+typedef struct match_struct
+{
+  regmatch_t *matches;
+  size_t match_count;
+} MATCH_STATE;
+
 /* Structure which defines a window.  Windows are doubly linked, next
    and prev. The list of windows is kept on WINDOWS.  The structure member
    window->height is the total height of the window.  The position location
@@ -92,8 +98,7 @@ typedef struct window_struct
   /* Used for highlighting search matches. */
   char *search_string;
   int search_is_case_sensitive;
-  regmatch_t *matches;
-  size_t match_count;
+  MATCH_STATE matches;
 
   /* History of nodes visited in this window. */
   WINDOW_STATE **hist;  /* Nodes visited in this window, including current. */  

@@ -2,7 +2,7 @@
    $Id$
 
    Copyright 1993, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
-   2004, 2007, 2008, 2009, 2011, 2012, 2013, 2014, 2015
+   2004, 2007, 2008, 2009, 2011, 2012, 2013, 2014, 2015, 2016, 2017
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -890,7 +890,7 @@ put_node_in_window (WINDOW *win, NODE *node)
   win->node = node;
   win->pagetop = 0;
   win->point = 0;
-  free (win->matches); win->matches = 0;
+  free_matches (&win->matches);
   free (win->line_starts); win->line_starts = 0;
   free (win->log_line_no); win->log_line_no = 0;
   win->flags |= W_UpdateWindow;
@@ -3914,64 +3914,6 @@ DECLARE_INFO_COMMAND (info_toggle_regexp,
                                : _("Using literal strings for searches."));
 }
 
-/* Search forwards or backwards for entries in MATCHES that start within
-   the search area.  The search is forwards if START_IN is greater than
-   END_IN.  Return offset of match in *MATCH_INDEX. */
-static enum search_result
-match_in_match_list (regmatch_t *matches, size_t match_count,
-                     long start_in, long end_in, int *match_index)
-{
-  regoff_t start, end;
-  if (start_in < end_in)
-    {
-      start = start_in;
-      end = end_in;
-    }
-  else
-    {
-      /* Include the byte with offset 'start_in' in our range, but not
-         the byte with offset 'end_in'. */
-      start = end_in - 1;
-      end = start_in + 1;
-    }
-  
-  if (start_in > end_in)
-    {
-      /* searching backward */
-      int i;
-      for (i = match_count - 1; i >= 0; i--)
-        {
-          if (matches[i].rm_so < start)
-            break; /* No matches found in search area. */
-
-          if (matches[i].rm_so < end)
-	    {
-              *match_index = i;
-	      return search_success;
-	    }
-        }
-    }
-  else
-    {
-      /* searching forward */
-      int i;
-      for (i = 0; i < match_count; i++)
-        {
-          if (matches[i].rm_so >= end)
-            break; /* No matches found in search area. */
-
-          if (matches[i].rm_so >= start)
-            {
-              *match_index = i;
-	      return search_success;
-            }
-        }
-    }
-
-  /* not found */
-  return search_not_found;
-}
-
 /* Search for STRING in NODE starting at START.  The DIR argument says which
    direction to search in.  If it is positive, search forward, else backwards.
 
@@ -3990,30 +3932,27 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
   enum search_result result = search_not_found;
 
   long start1, end1;
-  regmatch_t *matches;
-  size_t match_count;
   int match_index;
   long new_point;
+
+  MATCH_STATE matches;
     
   /* Check if we need to calculate new results. */
-  if (!window->matches
+  if (!matches_ready (&window->matches)
       || strcmp (window->search_string, string)
       || window->search_is_case_sensitive != case_sensitive)
     {
-      free (window->matches);
-      window->matches = 0;
+      free_matches (&window->matches);
 
       free (window->search_string);
       window->search_string = xstrdup (string);
       window->search_is_case_sensitive = case_sensitive;
       result = regexp_search (string, !match_regexp, !case_sensitive,
-                              node->contents, node->nodelen,
-                              &matches, &match_count);
+                              node->contents, node->nodelen, &matches);
     }
   else
     {
       matches = window->matches;
-      match_count = window->match_count;
       result = search_success;
     }
   
@@ -4027,7 +3966,7 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
       enum search_result subresult;
       NODE *full_node;
 
-      free (matches);
+      free_matches (&matches);
       full_node = info_get_node (node->fullpath, node->nodename);
       subresult = info_search_in_node_internal (window, full_node,
                                     string, start,
@@ -4052,28 +3991,23 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
       end1 = node->body_start;
     }
   
-  result = match_in_match_list (matches, match_count,
-                                start1, end1, &match_index);
+  result = match_in_match_list (&matches, start1, end1, &match_index);
   if (result != search_success)
     return result;
 
-  *poff = matches[match_index].rm_so;
+  *poff = match_by_index (&matches, match_index).rm_so;
 
   window->flags |= W_UpdateWindow;
   if (window->node != node)
     info_set_node_of_window (window, node);
 
-  if (window->matches != matches)
-    {
-      free (window->matches);
-      window->matches = matches;
-      window->match_count = match_count;
-    }
+  if (!matches_ready (&window->matches))
+    window->matches = matches;
 
   if (isearch_is_active && dir > 0)
-    new_point = matches[match_index].rm_eo;
+    new_point = match_by_index (&matches, match_index).rm_eo;
   else
-    new_point = matches[match_index].rm_so;
+    new_point = match_by_index (&matches, match_index).rm_so;
 
   window->point = new_point;
 
@@ -4201,8 +4135,7 @@ info_search_internal (char *string, WINDOW *window,
         }
 
       /* Get a new node to search in. */
-      free (window->matches);
-      window->matches = 0;
+      free_matches (&window->matches);
 
       node = info_node_of_tag_fast (file_buffer, &tag);
       if (!node)
@@ -4414,7 +4347,7 @@ check_node:
     }
 
   /* Otherwise, try each menu entry in turn. */
-  if (window->matches)
+  if (matches_ready (&window->matches))
     window->point++; /* Find this match again if/when we come back. */
   goto check_menus;
 
@@ -4789,8 +4722,7 @@ DECLARE_INFO_COMMAND (info_search_previous,
 DECLARE_INFO_COMMAND (info_clear_search,
                       _("Clear displayed search matches"))
 {
-  free (window->matches);
-  window->matches = 0;
+  free_matches (&window->matches);
   window->flags |= W_UpdateWindow;
 }
 
@@ -5134,8 +5066,7 @@ gotfunc:
               if (isearch_string_index == 0)
                 {
                   /* Don't search for an empty string.  Clear the search. */
-                  free (window->matches);
-                  window->matches = 0;
+                  free_matches (&window->matches);
                   display_update_one_window (window);
                   continue;
                 }

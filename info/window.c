@@ -575,10 +575,8 @@ window_set_node_of_window (WINDOW *window, NODE *node)
   calculate_line_starts (window);
   window_compute_line_map (window);
 
-  /* Clear displayed search matches if any.  TODO: do search again in new
-     node? */
-  free (window->matches);
-  window->matches = 0;
+  /* Clear displayed search matches if any. */
+  free_matches (&window->matches);
 
   window->flags |= W_UpdateWindow;
   if (node)

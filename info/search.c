@@ -136,7 +136,7 @@ regexp_escape_string (char *search_string)
 enum search_result
 regexp_search (char *regexp, int is_literal, int is_insensitive,
                char *buffer, size_t buflen,
-               regmatch_t **matches_out, size_t *match_count_out)
+               MATCH_STATE *match_state)
 {
   regmatch_t *matches = 0; /* List of found matches. */
   size_t match_alloc = 0;
@@ -201,8 +201,8 @@ regexp_search (char *regexp, int is_literal, int is_insensitive,
   buffer[buflen] = saved_char;
   regfree (&preg);
 
-  *matches_out = matches;
-  *match_count_out = match_count;
+  match_state->matches = matches;
+  match_state->match_count = match_count;
 
   if (match_count == 0)
     return search_not_found;
@@ -397,6 +397,127 @@ looking_at_line (char *string, char *pointer)
     return 1;
   return 0;
 }
+
+/* **************************************************************** */
+/*                                                                  */
+/*                      Accessing matches                           */
+/*                                                                  */
+/* **************************************************************** */
+/* Search forwards or backwards for entries in MATCHES that start within
+   the search area.  The search is forwards if START_IN is greater than
+   END_IN.  Return offset of match in *MATCH_INDEX. */
+enum search_result
+match_in_match_list (MATCH_STATE *match_state,
+                     long start_in, long end_in, int *match_index)
+{
+  regmatch_t *matches = match_state->matches;
+  size_t match_count = match_state->match_count;
+
+  regoff_t start, end;
+  if (start_in < end_in)
+    {
+      start = start_in;
+      end = end_in;
+    }
+  else
+    {
+      /* Include the byte with offset 'start_in' in our range, but not
+         the byte with offset 'end_in'. */
+      start = end_in - 1;
+      end = start_in + 1;
+    }
+  
+  if (start_in > end_in)
+    {
+      /* searching backward */
+      int i;
+      for (i = match_count - 1; i >= 0; i--)
+        {
+          if (matches[i].rm_so < start)
+            break; /* No matches found in search area. */
+
+          if (matches[i].rm_so < end)
+	    {
+              *match_index = i;
+	      return search_success;
+	    }
+        }
+    }
+  else
+    {
+      /* searching forward */
+      int i;
+      for (i = 0; i < match_count; i++)
+        {
+          if (matches[i].rm_so >= end)
+            break; /* No matches found in search area. */
+
+          if (matches[i].rm_so >= start)
+            {
+              *match_index = i;
+	      return search_success;
+            }
+        }
+    }
+
+  /* not found */
+  return search_not_found;
+}
+
+regmatch_t
+match_by_index (MATCH_STATE *state, int index)
+{
+  return state->matches[index];
+}
+
+void
+free_matches (MATCH_STATE *state)
+{
+  free (state->matches);
+  state->matches = 0;
+  state->match_count = 0;
+}
+
+int
+matches_ready (MATCH_STATE *state)
+{
+  return state->matches ? 1 : 0;
+}
+
+/* Starting at index *MATCH_INDEX, decide if we are inside a match
+   in MATCHES at offset OFF.  The matches are assumed not to overlap
+   and to be in order. */
+void
+decide_if_in_match (long off, int *in_match,
+                    MATCH_STATE *matches, size_t *match_index)
+{
+  size_t i = *match_index;
+  int m = *in_match;
+
+  for (; i < matches->match_count; i++)
+    {
+      if (matches->matches[i].rm_so > off)
+        break;
+
+      m = 1;
+
+      if (matches->matches[i].rm_eo > off)
+        break;
+
+      m = 0;
+    }
+
+  *match_index = i;
+  *in_match = m;
+}
+
+int
+at_end_of_matches (MATCH_STATE *state, int index)
+{
+  return (state->match_count == index) ? 1 : 0;
+}
+
+
 
 /* **************************************************************** */
 /*                                                                  */

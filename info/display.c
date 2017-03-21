@@ -2,7 +2,7 @@
    $Id$
 
    Copyright 1993, 1997, 2003, 2004, 2006, 2007, 2008, 2012, 2013,
-   2014, 2015 Free Software Foundation, Inc.
+   2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -225,34 +225,10 @@ display_update_line (long pl_num, char *printed_line,
 }
 
 
-/* Given an array MATCHES with regions, and an offset *MATCH_INDEX, decide
-   if we are inside a region at offset OFF.  The matches are assumed not
+/* Similar to decide_if_in_match, but used for reference highlighting.
+   Given an array REFERENCES with regions, starting at *REF_INDEX decide
+   if we are inside a region at offset OFF.  The regions are assumed not
    to overlap and to be in order. */
-static void
-decide_if_in_match (long off, int *in_match, regmatch_t *matches,
-                    size_t match_count, size_t *match_index)
-{
-  size_t i = *match_index;
-  int m = *in_match;
-
-  for (; i < match_count; i++)
-    {
-      if (matches[i].rm_so > off)
-        break;
-
-      m = 1;
-
-      if (matches[i].rm_eo > off)
-        break;
-
-      m = 0;
-    }
-
-  *match_index = i;
-  *in_match = m;
-}
-
-/* Similar to decide_if_in_match, but used for reference highlighting. */
 static void
 decide_if_in_reference (long off, int *in_ref, REFERENCE **references,
                         int *ref_index)
@@ -324,7 +300,7 @@ wrap_terminal_switch_rendition (struct text_buffer *printed_line,
 
 /* Set in display_update_node_text if matches or references are to be 
    distinguished with terminal appearance modes. */
-static regmatch_t *matches;
+static MATCH_STATE *matches;
 static REFERENCE **refs;
 static size_t match_index;
 static int ref_index;
@@ -381,12 +357,12 @@ display_process_line (WINDOW *win,
         break;
       cur_ptr = mbi_cur_ptr (iter);
 
-      if (matches && match_index != win->match_count)
+      if (matches_ready (matches)
+          && !at_end_of_matches (matches, match_index))
         {
           int was_in_match = in_match;
           decide_if_in_match (cur_ptr - win->node->contents,
-                              &in_match, matches, win->match_count,
-                              &match_index);
+                              &in_match, matches, &match_index);
 
           if (!was_in_match && in_match && writing_out == DEFAULT)
             writing_out = COLLECT;
@@ -524,7 +500,7 @@ display_update_node_text (WINDOW *win)
   matches = 0;
   refs = 0;
   if (match_rendition.mask)
-    matches = win->matches;
+    matches = &win->matches;
   if (ref_rendition.mask || hl_ref_rendition.mask)
     refs = win->node->references;
 
