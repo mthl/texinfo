@@ -1,5 +1,10 @@
 2017-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/search.c (at_end_of_matches): Avoid calling 
+	'extend_matches' if not necessary.
+
+2017-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Implement lazy search match lists.
 
 	* info/window.h (MATCH_STATE): Add 'regex' field of type regex_t.

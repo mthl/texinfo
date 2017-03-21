@@ -547,16 +547,22 @@ decide_if_in_match (long off, int *in_match,
   *in_match = m;
 }
 
+/* Used for iterating through a match list. */
 int
 at_end_of_matches (MATCH_STATE *state, int index)
 {
-  if (!state->finished)
-    extend_matches (state);
-
-  if (state->finished)
-    return (state->match_count == index) ? 1 : 0;
-  else
+  if (index < state->match_count)
     return 0;
+  else
+    {
+      if (!state->finished)
+        extend_matches (state);
+
+      if (state->finished)
+        return (state->match_count == index) ? 1 : 0;
+      else
+        return 0;
+    }
 }
 
 
