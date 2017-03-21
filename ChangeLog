@@ -1,5 +1,12 @@
 2017-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/search.c (copy_binding): Remove this function, which is
+	not used much.  Remove comment before this function.
+	* info/nodes.c (get_nodes_of_tags_table): Use struct assignment 
+	to a local struct instead of copy_binding.
+
+2017-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Access list of search matches through accessor functions only.
 
 	* info/window.h (MATCH_STATE): New struct type.

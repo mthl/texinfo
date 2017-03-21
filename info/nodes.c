@@ -240,11 +240,12 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
     SEARCH_BINDING *buffer_binding)
 {
   int name_offset;
-  SEARCH_BINDING *tmp_search;
+  SEARCH_BINDING s;
   long position;
   size_t tags_index = 0;
 
-  tmp_search = copy_binding (buffer_binding);
+  /* Copy buffer_binding */
+  s = *buffer_binding;
 
   /* Find the start of the tags table. */
   position = buffer_binding->start;
@@ -254,14 +255,13 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
     return;
 
   /* Move to one character before the start of the actual table. */
-  tmp_search->start = position;
-  tmp_search->start += skip_node_separator
-    (tmp_search->buffer + tmp_search->start);
-  tmp_search->start += strlen (TAGS_TABLE_BEG_LABEL);
+  s.start = position;
+  s.start += skip_node_separator (s.buffer + s.start);
+  s.start += strlen (TAGS_TABLE_BEG_LABEL);
 
   /* The tag table consists of lines containing node names and positions.
      Do each line until we find one that doesn't contain a node name. */
-  while (search_forward ("\n", tmp_search, &position) == search_success)
+  while (search_forward ("\n", &s, &position) == search_success)
     {
       TAG *entry;
       char *nodedef;
@@ -269,22 +269,20 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
       int anchor = 0;
 
       /* Prepare to skip this line. */
-      tmp_search->start = position;
-      tmp_search->start++;
+      s.start = position;
+      s.start++;
 
       /* Skip past informative "(Indirect)" tags table line. */
-      if (!tags_index && looking_at (TAGS_TABLE_IS_INDIRECT_LABEL, tmp_search))
+      if (!tags_index && looking_at (TAGS_TABLE_IS_INDIRECT_LABEL, &s))
         continue;
 
       /* Find the label preceding the node name. */
-      name_offset =
-        string_in_line (INFO_NODE_LABEL, tmp_search->buffer + tmp_search->start);
+      name_offset = string_in_line (INFO_NODE_LABEL, s.buffer + s.start);
 
       /* If no node label, maybe it's an anchor.  */
       if (name_offset == -1)
         {
-          name_offset = string_in_line (INFO_REF_LABEL,
-              tmp_search->buffer + tmp_search->start);
+          name_offset = string_in_line (INFO_REF_LABEL, s.buffer + s.start);
           if (name_offset != -1)
             anchor = 1;
         }
@@ -299,8 +297,8 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
       init_file_buffer_tag (file_buffer, entry);
 
       /* Find the beginning of the node definition. */
-      tmp_search->start += name_offset;
-      nodedef = tmp_search->buffer + tmp_search->start;
+      s.start += name_offset;
+      nodedef = s.buffer + s.start;
       nodedef += skip_whitespace (nodedef);
 
       /* Move past the node's name in this tag to the TAGSEP character. */
@@ -328,7 +326,6 @@ get_nodes_of_tags_table (FILE_BUFFER *file_buffer,
       add_pointer_to_array (entry, tags_index, file_buffer->tags,
                             file_buffer->tags_slots, 100);
     }
-  free (tmp_search);
 }
 
 /* Remember in FILE_BUFFER the nodenames, subfilenames, and offsets within the

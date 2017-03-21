@@ -36,20 +36,6 @@
    They return a long, which is the offset from the start of the buffer
    at which the match was found.  An offset of -1 indicates failure. */
 
-/* Make a copy of BINDING without duplicating the data. */
-SEARCH_BINDING *
-copy_binding (SEARCH_BINDING *binding)
-{
-  SEARCH_BINDING *copy;
-
-  copy = xmalloc (sizeof (SEARCH_BINDING));
-  copy->buffer = binding->buffer;
-  copy->start = binding->start;
-  copy->end = binding->end;
-  copy->flags = binding->flags;
-  return copy;
-}
-
 
 /* **************************************************************** */
 /*                                                                  */

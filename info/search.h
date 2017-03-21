@@ -51,7 +51,6 @@ enum search_result
     search_invalid
   };
 
-SEARCH_BINDING *copy_binding (SEARCH_BINDING *binding);
 enum search_result search_forward (char *string,
                                  SEARCH_BINDING *binding, long *poff);
 enum search_result search_backward (char *input_string,
