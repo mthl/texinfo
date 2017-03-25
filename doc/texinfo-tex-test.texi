@@ -1349,6 +1349,16 @@ Should be two entries, not one below.
 @printindex bar
 
 
+@section Test of index sort keys
+
+@defindex SK
+
+@SKindex @sortas{A} bbbbbbb (first)
+@SKindex @sortas{B} aaaaaaa (second)
+
+@printindex SK
+
+
 @chapter @code{@@set} and @code{@@value}
 
 @section Another test of @t{@@value}

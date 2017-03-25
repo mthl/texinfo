@@ -1,10 +1,12 @@
 2017-03-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo-tex-test.texi (Test of index sort keys): New example.
+
+2017-03-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\smallbook, \smallerbook, \afourpaper)
 	\afivepaper): Remove paper-size-specific values of \hfuzz.  Set 
 	\hfuzz at top-level to 1pt.  Suggestion from Karl Berry.
-
-
 
 2017-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
