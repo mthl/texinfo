@@ -1,3 +1,11 @@
+2017-03-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\smallbook, \smallerbook, \afourpaper)
+	\afivepaper): Remove paper-size-specific values of \hfuzz.  Set 
+	\hfuzz at top-level to 1pt.  Suggestion from Karl Berry.
+
+
+
 2017-03-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/search.c (at_end_of_matches): Avoid calling 
