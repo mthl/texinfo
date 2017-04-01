@@ -1,5 +1,12 @@
 2017-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Structuring.pm (do_index_keys): Strip '-', '\',
+	'<', '@' if there has been @set txiindexhyphenignore,
+	txiindexbackslashignore, txiindexlessthanignore,
+	or txiindexatsignignore respectively.
+
+2017-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (%command_ignore_space_after): Add 
 	'sortas', in order to ignore spaces after its argument.
 
