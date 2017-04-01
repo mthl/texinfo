@@ -1,3 +1,22 @@
+2017-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <close brace, @sortas>: Set 
+	'sortas' value on index entry element.
+	(_enter_index_entry): Set 'sortas' value on index entry from 
+	'extra' value on element.
+
+	* tp/Texinfo/Structuring.pm (_do_index_keys): Check for 'sortas' 
+	value on index entry and, if present, use that as the sort key 
+	instead of using the text of the index entry.
+
+	* tp/Texinfo/Parser.pm (%in_index_commands): New hash,
+	containing 'sortas'.
+	(_parse_line_command_args) <@defindex, @defcodeindex>: Use 
+	%in_index_commands instead of %in_simple_text_commands for valid 
+	nestings hash.
+	(%no_command_cmds): Add 'sortas'.
+	(%in_full_text_commands, %full_text_commands): Remove 'sortas'.
+
 2017-03-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo-tex-test.texi (Test of index sort keys): New example.

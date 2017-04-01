@@ -381,6 +381,7 @@ foreach my $out_format (keys(%format_raw_commands)) {
 }
 delete $in_full_text_commands{'caption'};
 delete $in_full_text_commands{'shortcaption'};
+delete $in_full_text_commands{'sortas'};
 foreach my $block_command (keys(%block_commands)) {
   $in_full_text_commands{$block_command} = 1 
     if ($block_commands{$block_command} eq 'conditional');
@@ -404,6 +405,12 @@ foreach my $not_in_full_line_commands_no_refs ('titlefont',
 my %in_simple_text_commands = %in_full_line_commands_no_refs;
 foreach my $not_in_simple_text_command('xref', 'ref', 'pxref', 'inforef') {
   delete $in_simple_text_commands{$not_in_simple_text_command};
+}
+
+# commands that may occur in index entries
+my %in_index_commands = %in_simple_text_commands;
+foreach my $in_index_command ('sortas') {
+  $in_index_commands{$in_index_command} = 1;
 }
 
 # commands that only accept simple text as argument in any context.
@@ -432,7 +439,7 @@ foreach my $command ('titlefont', 'anchor', 'xref','ref', 'pxref',
 
 # Commands that don't contain other @-commands.
 my %no_command_commands;
-foreach my $command ('errormsg', 'U') {
+foreach my $command ('errormsg', 'U', 'sortas') {
   $no_command_commands{$command} = 1;
 }
 
@@ -441,6 +448,7 @@ my %full_text_commands;
 foreach my $brace_command (keys (%brace_commands)) {  
   if ($brace_commands{$brace_command} == 1 
       and !$simple_text_commands{$brace_command} 
+      and $brace_command ne 'sortas'
       and !$context_brace_commands{$brace_command}
       and !$accent_commands{$brace_command}) {
     $full_text_commands{$brace_command} = 1;
@@ -460,7 +468,7 @@ $full_line_commands{'itemx'} = 1;
 # context tests, to make sure, for instance that we are testing
 # @-commands on the block, misc or node @-command line and not
 # in the content.
-# index entry commands are dynamically set as in_simple_text_commands
+# index entry commands are dynamically set as in_index_commands
 my %default_valid_nestings;
 
 foreach my $command (keys(%accent_commands)) {
@@ -656,7 +664,7 @@ sub parser(;$$)
     foreach my $prefix ($index, substr($index, 0, 1)) {
       $parser->{'misc_commands'}->{$prefix.'index'} = 'line';
       $parser->{'no_paragraph_commands'}->{$prefix.'index'} = 1;
-      $parser->{'valid_nestings'}->{$prefix.'index'} = \%in_simple_text_commands;
+      $parser->{'valid_nestings'}->{$prefix.'index'} = \%in_index_commands;
       $parser->{'command_index'}->{$prefix.'index'} = $index;
     }
   }
@@ -2466,6 +2474,9 @@ sub _enter_index_entry($$$$$$$)
                       'command'              => $current,
                       'number'               => $number,
                     };
+  if (defined $current->{'extra'}->{'sortas'}) {
+    $index_entry->{'sortas'} = $current->{'extra'}->{'sortas'};
+  }
   if (@{$self->{'regions_stack'}}) {
     $index_entry->{'region'} = $self->{'regions_stack'}->[-1];
   } elsif ($self->{'current_node'}) {
@@ -5165,6 +5176,17 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
                   if (!$current->{'parent'}->{'type'});
                $current->{'parent'}->{'parent'}->{'parent'}->{'extra'}->{'command_as_argument'} 
                   = $current->{'parent'};
+            } elsif ($current->{'parent'}->{'cmdname'} eq 'sortas') {
+              my @contents = @{$current->{'contents'}};
+              _trim_spaces_comment_from_content (\@contents);
+              my $arg = $contents[0]->{'text'};
+              if (defined($arg)) {
+                my $index_element = $current->{'parent'}->{'parent'}->{'parent'};
+                if ($index_element->{'type'}
+                    and $index_element->{'type'} eq 'index_entry_command') {
+                  $index_element->{'extra'}->{'sortas'} = $arg;
+                }
+              }
             }
             _register_global_command($self, $current->{'parent'}->{'cmdname'},
                                      $current->{'parent'}, $line_nr);
@@ -5653,7 +5675,7 @@ sub _parse_line_command_args($$$)
         }
         $self->{'misc_commands'}->{$name.'index'} = 'line';
         $self->{'no_paragraph_commands'}->{$name.'index'} = 1;
-        $self->{'valid_nestings'}->{$name.'index'} = \%in_simple_text_commands;
+        $self->{'valid_nestings'}->{$name.'index'} = \%in_index_commands;
         $self->{'command_index'}->{$name.'index'} = $name;
       }
     } else {

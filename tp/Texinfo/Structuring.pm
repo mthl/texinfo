@@ -1493,8 +1493,12 @@ sub do_index_keys($$)
       }
       $entry->{'in_code'} = $index_names->{$entry->{'index_name'}}->{'in_code'};
       $options->{'code'} = $entry->{'in_code'};
-      $entry->{'key'} = Texinfo::Convert::Text::convert(
+      if (defined $entry->{'sortas'}) {
+        $entry->{'key'} = $entry->{'sortas'};
+      } else {
+        $entry->{'key'} = Texinfo::Convert::Text::convert(
                               {'contents' => $entry->{'content'}}, $options);
+      }
       if ($entry->{'key'} !~ /\S/) {
         $self->line_warn(sprintf($self->__("empty index key in \@%s"), 
                                  $entry->{'index_at_command'}),
