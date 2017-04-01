@@ -1,5 +1,14 @@
 2017-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi) <@sortas>: Check if inside 
+	index entry differently.
+
+2017-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* t/09indices.t (explicit_sort_key): New test.
+
+2017-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <close brace, @sortas>: Set 
 	'sortas' value on index entry element.
 	(_enter_index_entry): Set 'sortas' value on index entry from 

@@ -5182,8 +5182,8 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
               my $arg = $contents[0]->{'text'};
               if (defined($arg)) {
                 my $index_element = $current->{'parent'}->{'parent'}->{'parent'};
-                if ($index_element->{'type'}
-                    and $index_element->{'type'} eq 'index_entry_command') {
+                if ($index_element and $index_element->{'cmdname'}
+             and $self->{'command_index'}->{$index_element->{'cmdname'}}) {
                   $index_element->{'extra'}->{'sortas'} = $arg;
                 }
               }

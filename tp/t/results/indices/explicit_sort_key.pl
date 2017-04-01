@@ -196,11 +196,13 @@ $result_trees{'explicit_sort_key'} = {
               'index_at_command' => 'SKindex',
               'index_name' => 'SK',
               'index_type_command' => 'SKindex',
-              'key' => 'A bbbbbbb (first)',
+              'key' => 'A',
               'node' => {},
-              'number' => 1
+              'number' => 1,
+              'sortas' => 'A'
             },
             'misc_content' => [],
+            'sortas' => 'A',
             'spaces_after_command' => {}
           },
           'line_nr' => {},
@@ -269,11 +271,13 @@ $result_trees{'explicit_sort_key'} = {
               'index_at_command' => 'SKindex',
               'index_name' => 'SK',
               'index_type_command' => 'SKindex',
-              'key' => 'B aaaaaaa (second)',
+              'key' => 'B',
               'node' => {},
-              'number' => 2
+              'number' => 2,
+              'sortas' => 'B'
             },
             'misc_content' => [],
+            'sortas' => 'B',
             'spaces_after_command' => {}
           },
           'line_nr' => {},
@@ -342,11 +346,13 @@ $result_trees{'explicit_sort_key'} = {
               'index_at_command' => 'SKindex',
               'index_name' => 'SK',
               'index_type_command' => 'SKindex',
-              'key' => '0 zero sort key',
+              'key' => '0',
               'node' => {},
-              'number' => 3
+              'number' => 3,
+              'sortas' => '0'
             },
             'misc_content' => [],
+            'sortas' => '0',
             'spaces_after_command' => {}
           },
           'line_nr' => {},
