@@ -1,5 +1,10 @@
 2017-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (%command_ignore_space_after): Add 
+	'sortas', in order to ignore spaces after its argument.
+
+2017-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <@sortas>: Check if inside 
 	index entry differently.
 

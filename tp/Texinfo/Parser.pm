@@ -271,7 +271,8 @@ foreach my $type ('before_item', 'text_root', 'document_root',
 }
 
 my %command_ignore_space_after;
-foreach my $command ('anchor', 'hyphenation', 'caption', 'shortcaption') {
+foreach my $command ('anchor', 'hyphenation', 'caption', 'shortcaption',
+                     'sortas') {
   $command_ignore_space_after{$command} = 1;
 }
 
