@@ -1259,7 +1259,7 @@ scan_reference_marker (REFERENCE *entry, int in_parentheses)
    at the first character after the colon terminating the label.  Return 0 if
    invalid syntax is encountered. */
 static int
-scan_reference_label (REFERENCE *entry)
+scan_reference_label (REFERENCE *entry, int in_index)
 {
   char *dummy;
   int max_lines;
@@ -1275,11 +1275,40 @@ scan_reference_label (REFERENCE *entry)
     max_lines = 1;
   else
     max_lines = 2;
-  len = read_quoted_string (inptr + label_len, ":", max_lines, &dummy);
-  free (dummy);
-  if (!len)
-    return 0; /* Input invalid. */
-  label_len += len;
+  if (!in_index || inptr[label_len] == '\177')
+    {
+      len = read_quoted_string (inptr + label_len, ":", max_lines, &dummy);
+      free (dummy);
+      if (!len)
+        return 0; /* Input invalid. */
+      label_len += len;
+    }
+  else
+    {
+      /* If in an index node, go forward to the last colon on the line
+         (not preceded by a newline, NUL or DEL).  This is in order to
+         support index entries containing colons.  This should work fine
+         as long as the node name does not contain a colon as well. */
+
+      char *p;
+      int n, m = 0;
+      p = inptr + label_len;
+
+      while (1)
+        {
+          n = strcspn (p, ":\n\177");
+          if (p[n] == ':')
+            {
+              m += n + 1;
+              p += n + 1;
+              continue;
+            }
+          break;
+        }
+      if (m == 0)
+        return 0; /* no : found */
+      label_len += m - 1;
+    }
 
   entry->label = xmalloc (label_len + 1);
   memcpy (entry->label, inptr, label_len);
@@ -1677,7 +1706,7 @@ scan_node_contents (NODE *node, FILE_BUFFER *fb, TAG **tag_ptr)
           save_conversion_state ();
           
           if (!scan_reference_marker (entry, in_parentheses)
-              || !scan_reference_label (entry)
+              || !scan_reference_label (entry, in_index)
               || !scan_reference_target (entry, node, in_parentheses))
             {
               /* This is not a menu entry or reference.  Do not add to our 

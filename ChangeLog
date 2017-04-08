@@ -1,3 +1,9 @@
+2017-04-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (scan_reference_label): If inside an index 
+	node, scan forward to the last colon on the line to get the
+	index entry, instead of the first colon.
+
 2017-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Structuring.pm (do_index_keys): Strip '-', '\',
