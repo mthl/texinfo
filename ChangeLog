@@ -1,5 +1,11 @@
 2017-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/search.c (match_in_match_list): Combine code for 
+	searching backwards and forwards, and do not get all the matches 
+	in the node if searching backwards.
+
+2017-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/file-index-colons.sh: New test of reading an index 
 	entry with a colon.
 

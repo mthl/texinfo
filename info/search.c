@@ -415,13 +415,16 @@ looking_at_line (char *string, char *pointer)
 /* **************************************************************** */
 /* Search forwards or backwards for entries in MATCHES that start within
    the search area.  The search is forwards if START_IN is greater than
-   END_IN.  Return offset of match in *MATCH_INDEX. */
+   END_IN.  Return index of match in *MATCH_INDEX. */
 enum search_result
 match_in_match_list (MATCH_STATE *match_state,
                      long start_in, long end_in, int *match_index)
 {
   regmatch_t *matches = match_state->matches;
   size_t match_count = match_state->match_count;
+  int searching_backwards = 0;
+  int i;
+  int index = -1;
 
   regoff_t start, end;
   if (start_in < end_in)
@@ -438,55 +441,39 @@ match_in_match_list (MATCH_STATE *match_state,
     }
   
   if (start_in > end_in)
+    searching_backwards = 1;
+
+  for (i = 0; i < match_count || !match_state->finished; i++)
     {
-      /* searching backward */
-      int i;
-
-      /* get all matches */
-      while (!match_state->finished)
-        extend_matches (match_state);
-
-      matches = match_state->matches;
-      match_count = match_state->match_count;
-
-      for (i = match_count - 1; i >= 0; i--)
+      /* get more matches as we need them */
+      if (i == match_count)
         {
-          if (matches[i].rm_so < start)
-            break; /* No matches found in search area. */
+          extend_matches (match_state);
+          matches = match_state->matches;
+          match_count = match_state->match_count;
 
-          if (matches[i].rm_so < end)
-	    {
-              *match_index = i;
-	      return search_success;
-	    }
+          if (i == match_count)
+            break;
+        }
+
+      if (matches[i].rm_so >= end)
+        break; /* No matches found in search area. */
+
+      if (matches[i].rm_so >= start)
+        {
+          index = i;
+          if (!searching_backwards)
+            {
+              *match_index = index;
+              return search_success;
+            }
         }
     }
-  else
+
+  if (index != -1)
     {
-      /* searching forward */
-      int i;
-      for (i = 0; i < match_count || !match_state->finished; i++)
-        {
-          /* get more matches as we need them */
-          if (i == match_count)
-            {
-              extend_matches (match_state);
-              matches = match_state->matches;
-              match_count = match_state->match_count;
-
-              if (i == match_count)
-                break;
-            }
-
-          if (matches[i].rm_so >= end)
-            break; /* No matches found in search area. */
-
-          if (matches[i].rm_so >= start)
-            {
-              *match_index = i;
-	      return search_success;
-            }
-        }
+      *match_index = index;
+      return search_success;
     }
 
   /* not found */
