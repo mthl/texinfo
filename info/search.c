@@ -517,14 +517,14 @@ decide_if_in_match (long off, int *in_match,
   size_t i = *match_index;
   int m = *in_match;
 
-  for (; i < matches->match_count; i++)
+  for (; !at_end_of_matches (matches, i); i++)
     {
-      if (matches->matches[i].rm_so > off)
+      if (match_by_index (matches, i).rm_so > off)
         break;
 
       m = 1;
 
-      if (matches->matches[i].rm_eo > off)
+      if (match_by_index (matches, i).rm_eo > off)
         break;
 
       m = 0;

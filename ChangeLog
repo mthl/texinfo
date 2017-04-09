@@ -1,5 +1,10 @@
 2017-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/search.c (match_in_match_list): Use helper functions
+	at_end_of_matches and match_by_index.
+
+2017-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_search_in_node_internal): Always save
 	the updated match state for a window.
 
