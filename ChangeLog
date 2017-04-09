@@ -1,3 +1,8 @@
+2017-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/display.c (display_update_one_window): Update modeline 
+	before anything else.
+
 2017-04-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (scan_reference_label): If inside an index 

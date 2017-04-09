@@ -670,6 +670,32 @@ display_update_one_window (WINDOW *win)
   if ((win->first_row < 0) || (win->first_row > the_screen->height))
     goto funexit;
 
+  /* If this window has a modeline, it might need to be redisplayed.  Do
+     this before the rest of the window to aid in navigation in case the
+     rest of the window is slow to update (for example, if it has lots of
+     search matches to be displayed). */
+  if (!(win->flags & W_InhibitMode))
+    {
+      window_make_modeline (win);
+      line_index = win->first_row + win->height;
+
+      /* This display line must both be in inverse, and have the same
+         contents. */
+      if ((!display[line_index]->inverse
+           || (strcmp (display[line_index]->text, win->modeline) != 0))
+          /* Check screen isn't very small. */
+          && line_index < the_screen->height)
+        {
+          terminal_goto_xy (0, line_index);
+          terminal_begin_inverse ();
+          terminal_put_text (win->modeline);
+          terminal_end_inverse ();
+          strcpy (display[line_index]->text, win->modeline);
+          display[line_index]->inverse = 1;
+          display[line_index]->textlen = strlen (win->modeline);
+        }
+    }
+
   if (win->node)
     {
       if (!win->line_starts)
@@ -704,31 +730,6 @@ display_update_one_window (WINDOW *win)
               display_was_interrupted_p = 1;
               goto funexit;
             }
-        }
-    }
-
-  /* Finally, if this window has a modeline it might need to be redisplayed.
-     Check the window's modeline against the one in the display, and update
-     if necessary. */
-  if (!(win->flags & W_InhibitMode))
-    {
-      window_make_modeline (win);
-      line_index = win->first_row + win->height;
-
-      /* This display line must both be in inverse, and have the same
-         contents. */
-      if ((!display[line_index]->inverse
-           || (strcmp (display[line_index]->text, win->modeline) != 0))
-          /* Check screen isn't very small. */
-          && line_index < the_screen->height)
-        {
-          terminal_goto_xy (0, line_index);
-          terminal_begin_inverse ();
-          terminal_put_text (win->modeline);
-          terminal_end_inverse ();
-          strcpy (display[line_index]->text, win->modeline);
-          display[line_index]->inverse = 1;
-          display[line_index]->textlen = strlen (win->modeline);
         }
     }
 
