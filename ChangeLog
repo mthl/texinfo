@@ -1,5 +1,10 @@
 2017-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/file-index-colons.sh: New test of reading an index 
+	entry with a colon.
+
+2017-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/display.c (display_update_one_window): Update modeline 
 	before anything else.
 
