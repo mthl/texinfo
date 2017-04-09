@@ -4001,8 +4001,7 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
   if (window->node != node)
     info_set_node_of_window (window, node);
 
-  if (!matches_ready (&window->matches))
-    window->matches = matches;
+  window->matches = matches;
 
   if (isearch_is_active && dir > 0)
     new_point = match_by_index (&matches, match_index).rm_eo;
