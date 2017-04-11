@@ -85,7 +85,7 @@ long find_node_in_binding (char *nodename, SEARCH_BINDING *binding);
 
 regmatch_t match_by_index (MATCH_STATE *state, int index);
 enum search_result match_in_match_list (MATCH_STATE *state,
-                     long start_in, long end_in, int *match_index);
+                     long start, long end, int dir, int *match_index);
 
 void free_matches (MATCH_STATE *state);
 int matches_ready (MATCH_STATE *state);

@@ -1,3 +1,12 @@
+2017-04-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (match_in_match_list): Take a argument to say
+	which direction to search in, instead of using the order of the
+	start and end arguments.
+	(info_search_in_node_internal): Update, and make sure that both
+	the start and end of the search area are after the 'body_start'
+	of the node.
+
 2017-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/search.c (match_in_match_list): Use helper functions

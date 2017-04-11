@@ -414,34 +414,18 @@ looking_at_line (char *string, char *pointer)
 /*                                                                  */
 /* **************************************************************** */
 /* Search forwards or backwards for entries in MATCHES that start within
-   the search area.  The search is forwards if START_IN is greater than
-   END_IN.  Return index of match in *MATCH_INDEX. */
+   the search area.  The search is forwards if DIR > 0, backward if
+   DIR < 0.  Return index of match in *MATCH_INDEX. */
 enum search_result
 match_in_match_list (MATCH_STATE *match_state,
-                     long start_in, long end_in, int *match_index)
+                     long start, long end, int dir,
+                     int *match_index)
 {
   regmatch_t *matches = match_state->matches;
   size_t match_count = match_state->match_count;
-  int searching_backwards = 0;
+
   int i;
   int index = -1;
-
-  regoff_t start, end;
-  if (start_in < end_in)
-    {
-      start = start_in;
-      end = end_in;
-    }
-  else
-    {
-      /* Include the byte with offset 'start_in' in our range, but not
-         the byte with offset 'end_in'. */
-      start = end_in - 1;
-      end = start_in + 1;
-    }
-  
-  if (start_in > end_in)
-    searching_backwards = 1;
 
   for (i = 0; i < match_count || !match_state->finished; i++)
     {
@@ -457,12 +441,12 @@ match_in_match_list (MATCH_STATE *match_state,
         }
 
       if (matches[i].rm_so >= end)
-        break; /* No matches found in search area. */
+        break; /* No  more matches found in search area. */
 
       if (matches[i].rm_so >= start)
         {
           index = i;
-          if (!searching_backwards)
+          if (dir > 0)
             {
               *match_index = index;
               return search_success;

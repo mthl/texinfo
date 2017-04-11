@@ -3979,19 +3979,21 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
 
   if (dir > 0)
     {
-      if (start >= node->body_start)
-        start1 = start;
-      else
-        start1 = node->body_start;
+      start1 = start;
       end1 = node->nodelen;
     }
   else
     {
-      start1 = start;
-      end1 = node->body_start;
+      start1 = 0;
+      end1 = start + 1; /* include start byte in search area */
     }
+
+  if (start1 < node->body_start)
+    start1 = node->body_start;
+  if (end1 < node->body_start)
+    end1 = node->body_start;
   
-  result = match_in_match_list (&matches, start1, end1, &match_index);
+  result = match_in_match_list (&matches, start1, end1, dir, &match_index);
   if (result != search_success)
     return result;
 
