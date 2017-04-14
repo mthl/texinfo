@@ -2981,7 +2981,7 @@ sub _convert_enumerate_command($$$$)
   if ($content eq '') {
     return '';
   }
-  if ($command->{'extra'}{'enumerate_specification'}
+  if (defined $command->{'extra'}{'enumerate_specification'}
       and $command->{'extra'}{'enumerate_specification'} =~ /^\d*$/
       and $command->{'extra'}{'enumerate_specification'} ne '1') {
     return "<ol start=\"$command->{'extra'}{'enumerate_specification'}\">\n"
