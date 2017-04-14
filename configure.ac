@@ -339,7 +339,7 @@ AC_SUBST([USE_EXTERNAL_UNIDECODE])
 # i18n support.  To update to a new version of gettext, run:
 #   gettextize -f -c
 # See http://gnu.org/s/gnulib/manual/html_node/gettextize-and-autopoint.html.
-AM_GNU_GETTEXT_VERSION([0.19.6])
+AM_GNU_GETTEXT_VERSION([0.19.8])
 AM_GNU_GETTEXT([external])
 
 USE_EXTERNAL_LIBINTL=no

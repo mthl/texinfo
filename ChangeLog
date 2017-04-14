@@ -1,3 +1,8 @@
+2017-04-14  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* gnulib/m4/progtest.m4: Upgrade to gettext-0.19.8.
+	* configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.19.8.
+
 2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\enablebackslashhack, \fixbackslash):
