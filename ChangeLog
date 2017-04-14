@@ -1,5 +1,10 @@
 2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README-hacking: Update instructions for updating translation
+	files.
+
+2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* configure.ac, README-hacking: Change instructions for
 	upgrading gettext.
 

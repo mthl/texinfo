@@ -190,10 +190,9 @@ update version in configure.ac, notice in ChangeLog.
 check that texindex version is updated properly
   (rm texindex.awk ; make)
 Check that translations have been updated, e.g.:
-  rsync  -Lrtzv  translationproject.org::tp/latest/texinfo/  texinfo
+  rsync  -Lrtzv  translationproject.org::tp/latest/texinfo/ po
   rsync  -Lrtzv  translationproject.org::tp/latest/texinfo_document/ \
-                 texinfo_document
-    followed by copying updated translation files to po/ and po_document/.
+                 po_document # note the trailing slashes in these commands
 pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
 
 check that the svn checkout is up-to-date (run "svnversion" and "svn update")
