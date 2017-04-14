@@ -1,5 +1,9 @@
 2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* po_document/LINGUAS: Add cs, da.
+
+2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* README-hacking: Update instructions for updating translation
 	files.
 
