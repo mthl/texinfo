@@ -141,6 +141,10 @@ Steps for making a release (pretest or official):
 
 - When close to official release:
 check at latest automake/autoconf/gettext version, and mention in NEWS
+(to upgrade gettext, run
+  gettextize -f --po-dir=po --po-dir=po_document
+after installing new version of gettext)
+
 special pleading with bug-texinfo / beebe / platform-testers to try.
 check OpenCSW build reports at
   https://buildfarm.opencsw.org/buildbot/waterfall?category=texinfo
