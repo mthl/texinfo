@@ -1,5 +1,10 @@
 2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph: Run gnulib-tool --add-import.
+	* (top-level): Run gnulib-tool --add-import.
+
+2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* po_document/LINGUAS: Add cs, da.
 
 2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
