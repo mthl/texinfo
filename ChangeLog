@@ -1,5 +1,13 @@
 2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/HTML.pm (_convert_enumerate_command): 
+	Handle case of labelling list entries with letters, using 'type' 
+	and 'start' attributes on the <ol> tag.  This worked in the 
+	makeinfo implementation from Texinfo 4.13 and earlier.  Report
+	from Andreas Schwab.
+
+2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/HTML.pm (_convert_enumerate_command):
 	Check if the 'enumerate_specification' is defined, rather than
 	true, as if the value is '0', this is considered to be false.

@@ -2981,14 +2981,25 @@ sub _convert_enumerate_command($$$$)
   if ($content eq '') {
     return '';
   }
-  if (defined $command->{'extra'}{'enumerate_specification'}
-      and $command->{'extra'}{'enumerate_specification'} =~ /^\d*$/
-      and $command->{'extra'}{'enumerate_specification'} ne '1') {
-    return "<ol start=\"$command->{'extra'}{'enumerate_specification'}\">\n"
-           . $content . "</ol>\n";
-  } else {
-    return "<ol>\n" . $content . "</ol>\n";
+  my $specification = $command->{'extra'}{'enumerate_specification'};
+  if (defined $specification) {
+    my ($start, $type);
+    if ($specification =~ /^\d*$/ and $specification ne '1') {
+      $start = $specification;
+    } elsif ($specification =~ /^[A-Z]$/) {
+      $start = 1 + ord($specification) - ord('A');
+      $type = 'A';
+    } elsif ($specification =~ /^[a-z]$/) {
+      $start = 1 + ord($specification) - ord('a');
+      $type = 'a';
+    }
+    if (defined $type and defined $start) {
+      return "<ol type=\"$type\" start=\"$start\">\n" . $content . "</ol>\n";
+    } elsif (defined $start) {
+      return "<ol start=\"$start\">\n" . $content . "</ol>\n";
+    }
   }
+  return "<ol>\n" . $content . "</ol>\n";
 }
 
 $default_commands_conversion{'enumerate'} = \&_convert_enumerate_command;
