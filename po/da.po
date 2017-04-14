@@ -9,15 +9,16 @@
 #  Is there a difference between closing brace and close brace? There's no difference, and in my opinion we 
 #  should use "closing brace" consistently.
 # entry -> post
+# expansion -> udfoldning
 # item -> element
 # node -> emne
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 6.0.90\n"
+"Project-Id-Version: texinfo 6.1.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2016-09-10 12:45+0100\n"
-"PO-Revision-Date: 2016-03-27 09:13GMT\n"
+"POT-Creation-Date: 2016-09-05 20:01+0100\n"
+"PO-Revision-Date: 2016-09-27 09:13GMT\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -122,9 +123,8 @@ msgid "Invalid back reference"
 msgstr "Ugyldig tilbagereference"
 
 #: gnulib/lib/regcomp.c:156
-#, fuzzy
 msgid "Unmatched [, [^, [:, [., or [="
-msgstr "Uparret [ eller [^"
+msgstr "Uparret [, [^, [:, [. eller [="
 
 #: gnulib/lib/regcomp.c:159
 msgid "Unmatched ( or \\("
@@ -338,8 +338,7 @@ msgid "Found '%s' in %s. ('\\[next-index-match]' tries to find next.)"
 msgstr "Fandt »%s« i %s. (»\\[next-index-match]« søger efter den næste.)"
 
 #: info/indices.c:446
-msgid ""
-"Go to the next matching index item from the last '\\[index-search]' command"
+msgid "Go to the next matching index item from the last '\\[index-search]' command"
 msgstr "Gå til næste fundne indekspunkt fra sidste »\\[index-search]«-kommando"
 
 #: info/indices.c:457
@@ -364,8 +363,7 @@ msgstr "Skanner indeks for »%s« ..."
 
 #: info/indices.c:646
 msgid "Grovel all known info file's indices for a string and build a menu"
-msgstr ""
-"Gennemtrævl alle kendte Info-filers indekser for en tekst og opbyg en menu"
+msgstr "Gennemtrævl alle kendte Info-filers indekser for en tekst og opbyg en menu"
 
 #: info/indices.c:654 info/indices.c:656
 msgid "Index apropos"
@@ -438,16 +436,13 @@ msgstr "Prøv --help for yderligere information.\n"
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
-"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl."
-"html>\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
 "This is free software: you are free to change and redistribute it.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 msgstr ""
 "Ophavsret (C) %s Free Software Foundation, Inc.\n"
-"Licens GPLv3+: GNU GPL version 3 eller senere <http://gnu.org/licenses/gpl."
-"html>.\n"
-"Dette er et frit program: du kan frit ændre og videredistribuere "
-"programmet.\n"
+"Licens GPLv3+: GNU GPL version 3 eller senere <http://gnu.org/licenses/gpl.html>.\n"
+"Dette er et frit program: du kan frit ændre og videredistribuere programmet.\n"
 "Der er ingen GARANTI, inden for lovens udstrækning.\n"
 "\n"
 
@@ -471,16 +466,14 @@ msgstr ""
 msgid ""
 "Options:\n"
 "  -a, --all                    use all matching manuals.\n"
-"  -k, --apropos=STRING         look up STRING in all indices of all "
-"manuals.\n"
+"  -k, --apropos=STRING         look up STRING in all indices of all manuals.\n"
 "  -d, --directory=DIR          add DIR to INFOPATH.\n"
 "      --dribble=FILE           remember user keystrokes in FILENAME.\n"
 "  -f, --file=MANUAL            specify Info manual to visit."
 msgstr ""
 "Tilvalg:\n"
 "  -a, --all                    brug alle matchende manualer.\n"
-"  -k, --apropos=STRENG         slå STRENG op i alle indeks for alle "
-"manualer.\n"
+"  -k, --apropos=STRENG         slå STRENG op i alle indeks for alle manualer.\n"
 "  -d, --directory=MAPPE        tilføj MAPPE til INFOSTI.\n"
 "      --dribble=FIL            husk brugertast i FILNAVN.\n"
 "  -f, --file=MANUAL            specificer Info-manual der skal besøges."
@@ -495,7 +488,7 @@ msgstr ""
 "  -h, --help                   vis denne hjælpetekst og afslut.\n"
 "      --index-search=STRENG    gå til emne som peget på af indekspost-\n"
 "                               STRENG.\n"
-"  -n, --node=EMNENAV           specificer emner i først besøgte Info-fil.\n"
+"  -n, --node=EMNENAVN          specificer emner i først besøgte Info-fil.\n"
 "  -o, --output=FIL             dan valgte emner i FIL."
 
 #: info/info.c:1069
@@ -516,8 +509,7 @@ msgstr "  -b, --speech-friendly        vær talesyntese-venlig."
 
 #: info/info.c:1080
 msgid ""
-"      --strict-node-location   (for debugging) use Info file pointers as-"
-"is.\n"
+"      --strict-node-location   (for debugging) use Info file pointers as-is.\n"
 "      --subnodes               recursively output menu items.\n"
 "  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR.\n"
 "      --vi-keys                use vi-like and less-like key bindings.\n"
@@ -525,12 +517,10 @@ msgid ""
 "  -w, --where, --location      print physical location of Info file.\n"
 "  -x, --debug=NUMBER           set debugging level (-1 for all).\n"
 msgstr ""
-"      --strict-node-location   (for fejlsøgning) brug Info-filpegere som de "
-"er.\n"
+"      --strict-node-location   (for fejlsøgning) brug Info-filpegere som de er.\n"
 "      --subnodes               rekursive uddatamenuelementer.\n"
 "  -v, --variable VAR=VÆRDI     tildel VÆRDI til Info-variablen VAR.\n"
-"      --vi-keys                brug vi-lignende og less-lignende "
-"genvejstaster.\n"
+"      --vi-keys                brug vi-lignende og less-lignende genvejstaster.\n"
 "      --version                vis versionsinformation og afslut.\n"
 "  -w, --where, --location      udskriv fysisk placering for Info-fil.\n"
 "  -x, --debug=NUMMER           angiv fejlsøgningsniveau (-1 for alle).\n"
@@ -545,9 +535,9 @@ msgid ""
 "items relative to the initial node visited."
 msgstr ""
 "\n"
-"Den første ikketilvalgs parameter, hvis til stede, er det menupunktet der\n"
-"startes fra; der søges efter det i alle »mappefiler« sammen med INFOSTI.\n"
-"Hvis det ikke er til stede, sammenføjer info alle mappefiler og viser\n"
+"Første parameter som ikke er et tilvalg, hvis til stede, er menupunktet, der\n"
+"skal startes fra; der søges efter det i alle »dir«-filer sammen med INFOSTI.\n"
+"Hvis den ikke er til stede, sammenføjer info alle mappefiler og viser\n"
 "resultatet. Alle resterende parametre opfattes som navne for menu-elementer\n"
 "for det oprindeligt besøgte emne."
 
@@ -557,7 +547,7 @@ msgid ""
 "For a summary of key bindings, type H within Info."
 msgstr ""
 "\n"
-"For et overblik over genvejstaster, tast H indenfor Info."
+"Tast H indenfor Info for et overblik over genvejstaster."
 
 #: info/info.c:1099
 msgid ""
@@ -578,14 +568,13 @@ msgstr ""
 "Eksempler:\n"
 "  info                       vis mappemenu på øverste niveau\n"
 "  info info                  vis den generelle manual for Info-læsere\n"
-"  info info-stnd             vis manualen specifik for dette Info-program\n"
-"  info emacs                 start ved emacs-emne fra mappe på øverste "
-"niveau\n"
-"  info emacs buffers         vælg buffers menupunkt i emacs-manualen\n"
+"  info info-stnd             vis manualen specifikt for dette Info-program\n"
+"  info emacs                 start ved emacs-emne fra mappe på øverste niveau\n"
+"  info emacs buffers         vælg menupunktet buffers i emacs-manualen\n"
 "  info emacs -n filer        start ved filer-emne inden i emacs-manualen\n"
 "  info '(emacs)filer'        alternativ måde at starte ved filer-emne\n"
 "  info --show-options emacs  start ved emne med emacs' kommandolinjetilvalg\n"
-"  info --subnodes -o ud.txt  emacs dumper hele manualen til ud.txt\n"
+"  info --subnodes -o ud.txt emacs  dump hele manualen til ud.txt\n"
 "  info -f ./foo.info         vis filen ./foo.info, uden at søge i mapper"
 
 #: info/info.c:1114 install-info/install-info.c:616 tp/texi2any.pl:861
@@ -708,12 +697,8 @@ msgid "\\%-10[move-to-next-xref]  Skip to the next hypertext link.\n"
 msgstr "\\%-10[move-to-next-xref]  Hop til næste hypertekst-henvisning.\n"
 
 #: info/infodoc.c:54
-msgid ""
-"\\%-10[select-reference-this-line]  Follow the hypertext link under the "
-"cursor.\n"
-msgstr ""
-"\\%-10[select-reference-this-line]  Følg hypertekst-henvisningen under "
-"markøren.\n"
+msgid "\\%-10[select-reference-this-line]  Follow the hypertext link under the cursor.\n"
+msgstr "\\%-10[select-reference-this-line]  Følg hypertekst-henvisningen under markøren.\n"
 
 #: info/infodoc.c:55
 msgid "\\%-10[history-node]  Go back to the last node seen in this window.\n"
@@ -1069,12 +1054,8 @@ msgstr "Intet filindeks"
 #. displayed on an 80-column terminal.
 #: info/session.c:192
 #, c-format
-msgid ""
-"Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-"
-"help-node] for tutorial."
-msgstr ""
-"Velkommen til Info version %s. Skriv \\[get-help-window] for hjælp. [get-"
-"info-help-node] for øvelse."
+msgid "Welcome to Info version %s.  Type \\[get-help-window] for help, \\[get-info-help-node] for tutorial."
+msgstr "Velkommen til Info version %s. Skriv \\[get-help-window] for hjælp. [get-info-help-node] for øvelse."
 
 #: info/session.c:776
 #, c-format
@@ -1139,16 +1120,12 @@ msgid "Scroll backward in this window staying within node"
 msgstr "Rul tilbage i vinduet indenfor samme emne"
 
 #: info/session.c:1607
-msgid ""
-"Scroll forward in this window staying within node and set default window size"
+msgid "Scroll forward in this window staying within node and set default window size"
 msgstr "Rul frem i vinduet i samme emne og sæt standard vinduesstørrelse"
 
 #: info/session.c:1634
-msgid ""
-"Scroll backward in this window staying within node and set default window "
-"size"
-msgstr ""
-"Rul tilbage i vinduet indenfor samme emne og sæt standard vinduesstørrelse"
+msgid "Scroll backward in this window staying within node and set default window size"
+msgstr "Rul tilbage i vinduet indenfor samme emne og sæt standard vinduesstørrelse"
 
 #: info/session.c:1640
 msgid "Scroll down by lines"
@@ -1410,8 +1387,7 @@ msgstr "skriver emne %s ..."
 
 #: info/session.c:3837
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
-msgstr ""
-"Send via en datakanal indholdet af dette emne gennem INFO_PRINT_COMMAND"
+msgstr "Send via en datakanal indholdet af dette emne gennem INFO_PRINT_COMMAND"
 
 #: info/session.c:3865
 #, c-format
@@ -1631,9 +1607,7 @@ msgstr "Når »On«, vises og skjules fodnoter automatisk"
 
 #: info/variables.c:69
 msgid "When \"On\", creating or deleting a window resizes other windows"
-msgstr ""
-"Når »On«, ændres størrelsen på andre vinduer, når det vindues oprettes eller "
-"fjernes"
+msgstr "Når »On«, ændres størrelsen på andre vinduer, når det vindues oprettes eller fjernes"
 
 #: info/variables.c:73
 msgid "When \"On\", flash the screen instead of ringing the bell"
@@ -1672,10 +1646,8 @@ msgid "When \"On\", Info accepts and displays ISO Latin characters"
 msgstr "Når »On«, vil Info benytte og vise ISO Latin-tegn"
 
 #: info/variables.c:109
-msgid ""
-"What to do when a scrolling command is issued at the end of the last node"
-msgstr ""
-"Hvad der sker, når rulningskommando udstedes i slutningen af det sidste emne"
+msgid "What to do when a scrolling command is issued at the end of the last node"
+msgstr "Hvad der sker, når rulningskommando udstedes i slutningen af det sidste emne"
 
 #: info/variables.c:114
 msgid "Minimal length of a search string"
@@ -1694,12 +1666,8 @@ msgid "Hide some Info file syntax in the text of nodes"
 msgstr "Skjul lidt Info-filsyntaks i teksten for emner"
 
 #: info/variables.c:130
-msgid ""
-"Length of time in milliseconds to wait for the next byte in a sequence "
-"indicating that a key has been pressed"
-msgstr ""
-"Tidslængden i millisekunder som der ventes på for den næste bye i en "
-"sekvens, der indikerer at en tast er trykket ned"
+msgid "Length of time in milliseconds to wait for the next byte in a sequence indicating that a key has been pressed"
+msgstr "Tidslængden i millisekunder som der ventes på for den næste bye i en sekvens, der indikerer at en tast er trykket ned"
 
 #: info/variables.c:134
 msgid "Method to use to track mouse events"
@@ -1727,7 +1695,7 @@ msgstr "Stile for søgematch"
 
 #: info/variables.c:158
 msgid "How to print the information line at the start of a node"
-msgstr "Hvordan informationslinjen skal udskrive i begyndelsen af et emne"
+msgstr "Hvordan informationslinjen skal udskrives i begyndelsen af et emne"
 
 #: info/variables.c:165
 msgid "Explain the use of a variable"
@@ -1800,7 +1768,7 @@ msgid ""
 "                       start at column COL."
 msgstr ""
 "Tilvalg:\n"
-" --add-once          tilføj kun til første matchende sektion, ikke alle.\n"
+" --add-once          tilføj kun til første matchende afsnit, ikke alle.\n"
 " --align=KOL         start beskrivelse af nye poster ved kolonne KOL.\n"
 " --calign=KOL        formater anden og efterfølgende beskrivelseslinjer til\n"
 "                     start ved kolonne KOL."
@@ -1811,8 +1779,7 @@ msgid ""
 " --delete            delete existing entries for INFO-FILE from DIR-FILE;\n"
 "                      don't insert any new entries.\n"
 " --defsection=TEXT   like --section, but only use TEXT if no sections\n"
-"                      are present in INFO-FILE (replacing \"Miscellaneous"
-"\").\n"
+"                      are present in INFO-FILE (replacing \"Miscellaneous\").\n"
 " --description=TEXT  the description of the entry is TEXT; used with\n"
 "                      the --name option to become synonymous with the\n"
 "                      --entry option.\n"
@@ -1825,9 +1792,9 @@ msgstr ""
 "                     indsæt ikke nye poster.\n"
 " --defsection=TEKST  som --section, men brug kun TEKST hvis ingen afsnit\n"
 "                     er til stede i INFO-FIL (erstatter »Miscellaneous«).\n"
-" --description=TEKST beskrivelsen for posten er TEKST; brugt med tilvalget\n"
+" --description=TEKST beskrivelsen for posten er TEKST; bruges med tilvalget\n"
 "                     --name for at blive synonym med tilvalget --entry.\n"
-" --dir-file=NAVN     specificer filnavn for Info-mappefil;\n"
+" --dir-file=NAVN     angiv filnavn for Info-mappefil;\n"
 "                     svarende til brug af parameteren MAPPE-FIL.\n"
 " --dry-run           svarer til --test."
 
@@ -1836,21 +1803,18 @@ msgid ""
 " --entry=TEXT        insert TEXT as an Info directory entry,\n"
 "                      overriding any corresponding entry from DIR-FILE.\n"
 "                      TEXT is written as an Info menu item line followed\n"
-"                       by zero or more extra lines starting with "
-"whitespace.\n"
+"                       by zero or more extra lines starting with whitespace.\n"
 "                      If you specify more than one entry, all are added.\n"
 "                      If you don't specify any entries, they are determined\n"
 "                       from information in the Info file itself."
 msgstr ""
 " --entry=TEKST        indsæt TEKST som en Info-mappepost, der\n"
-"                      overskriver enhver tilsvarende post fra MAPPE-FIL.\n"
+"                      tilsidesætter enhver tilsvarende post fra MAPPE-FIL.\n"
 "                      TEKST skrives som en Info-menuelementlinje efterfulgt\n"
-"                      af nul eller flere ekstra linjer startende med "
-"mellemrum.\n"
-"                      Hvis du specificerer mere end en post, så tilføjes "
-"alle.\n"
-"                      Hvis du ikke specificerer nogle poster, så bestemmes "
-"de\n"
+"                      af nul eller flere ekstra linjer startende med\n"
+"                      mellemrum.\n"
+"                      Hvis du angiver mere end en post, så tilføjes alle.\n"
+"                      Hvis du ikke angiver nogle poster, så bestemmes de\n"
 "                      fra information i selve Info-filen."
 
 #: install-info/install-info.c:577
@@ -1863,9 +1827,9 @@ msgid ""
 " --keep-old          do not replace entries, or remove empty sections."
 msgstr ""
 " --help              vis denne hjælpetekst og afslut.\n"
-" --info-dir=MAPPE    svarer til --dir-file=MAPPE/mappe.\n"
-" --info-file=FIL     specificer i informationsfilen installation i mappen;\n"
-"                     svarende til brug af INFO-FILE-parameteren.\n"
+" --info-dir=MAPPE    svarer til --dir-file=Mappe/dir.\n"
+" --info-file=FIL     angiv Info-filen, der skal installeres i mappen;\n"
+"                     svarende til brug af parameteren INFO-FILE.\n"
 " --item=TEKST        svarer til --entry=TEKST.\n"
 " --keep-old          erstat ikke poster, eller fjern tomme afsnit."
 
@@ -1895,8 +1859,7 @@ msgid ""
 " --section=SEC       put entries in section SEC of the directory.\n"
 "                      If you specify more than one section, all the entries\n"
 "                       are added in each of the sections.\n"
-"                      If you don't specify any sections, they are "
-"determined\n"
+"                      If you don't specify any sections, they are determined\n"
 "                       from information in the Info file itself;\n"
 "                       if nothing is available there, the --defsection\n"
 "                       value is used; if that is not specified, the\n"
@@ -1909,13 +1872,12 @@ msgstr ""
 " --remove-exactly    fjern kun hvis info-filnavnene matcher præcis;\n"
 "                     suffiks såsom .info og .gz bliver ikke ignoreret.\n"
 " --section=SEK       placer poster i afsnit SEK for mappen.\n"
-"                     Hvis du specificerer mere end et afsnit, tilføjes alle\n"
+"                     Hvis du angiver mere end et afsnit, tilføjes alle\n"
 "                     posterne i hvert af afsnittene.\n"
-"                     Hvis du ikke specificerer nogle afsnit, så bestemmes "
-"de\n"
+"                     Hvis du ikke angiver nogle afsnit, så bestemmes de\n"
 "                     ud fra information i selve Info-filerne;\n"
 "                     hvis intet er tilgængeligt der, bruges værdien for\n"
-"                     --defsection; hvis den ikke er specificeret, er\n"
+"                     --defsection; hvis den ikke er angivet, er\n"
 "                     standardværdien »Miscellaneous«.\n"
 " --section R SEK     svarer til --regex=R --section=SEK --add-once."
 
@@ -1930,7 +1892,7 @@ msgstr ""
 " --version           vis versionsinformation og afslut."
 
 #: install-info/install-info.c:642
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "This is the file .../info/dir, which contains the\n"
 "topmost node of the Info hierarchy, called (dir)Top.\n"
@@ -1955,8 +1917,8 @@ msgstr ""
 "%s\tDette er toppen af INFO-træet\n"
 "\n"
 "  Dette (mappeemnet) indeholder en menu med hovedemner.\n"
-"  Afslut med »q«, »?« viser alle Info-kommandoer, »d« returnerer   hertil, "
-"»h« introducerer nybegyndere for Info,\n"
+"  Afslut med »q«, »H« viser alle Info-kommandoer, »d« returnerer hertil,\n"
+"  »h« introducerer nybegyndere,\n"
 "  »mEmacs<Return>« besøger Emacs-manualen, osv.\n"
 "\n"
 "  I Emacs kan du klikke med museknap 2 på et menupunkt eller krydsreference\n"
@@ -2002,7 +1964,7 @@ msgstr "Fejl i regulært udtryk »%s«: %s"
 #: install-info/install-info.c:2277
 #, c-format
 msgid "excess command line argument `%s'"
-msgstr "overskydende parameter for kommandolinjen »%s«"
+msgstr "overskydende kommandolinjeparameter »%s«"
 
 #: install-info/install-info.c:2281
 #, c-format
@@ -2050,15 +2012,12 @@ msgid "arguments are quoted by default"
 msgstr "parametre placeres som standard i citationstegn"
 
 #: tp/Texinfo/Common.pm:866
-msgid ""
-"move your @contents command if you want the contents after the title page"
-msgstr ""
+msgid "move your @contents command if you want the contents after the title page"
+msgstr "flyt din @contents-kommando hvis du ønsker indholdet efter titelsiden"
 
 #: tp/Texinfo/Common.pm:869
-msgid ""
-"move your @shortcontents and @contents commands if you want the contents "
-"after the title page"
-msgstr ""
+msgid "move your @shortcontents and @contents commands if you want the contents after the title page"
+msgstr "flyt dine @shortcontents- og @contents-kommandoer hvis du ønsker indholdet efter titelsiden"
 
 #: tp/Texinfo/Common.pm:1093
 #, perl-format
@@ -2146,7 +2105,7 @@ msgstr "@image-filen »%s« blev ikke fundet, anvender »%s«"
 
 #: tp/Texinfo/Convert/DocBook.pm:1084 tp/Texinfo/Parser.pm:5225
 msgid "no argument specified for @U"
-msgstr "Intet parameter specificeret for @U"
+msgstr "Ingen parameter angivet for @U"
 
 #: tp/Texinfo/Convert/HTML.pm:1715
 #, perl-format
@@ -2175,8 +2134,7 @@ msgstr "typen blev ikke genkendt: %s"
 #: tp/Texinfo/Convert/HTML.pm:4677
 #, perl-format
 msgid "error on closing html refs config file %s: %s"
-msgstr ""
-"der opstod en fejl under lukning af html-referencekonfigurationsfilen %s: %s"
+msgstr "der opstod en fejl under lukning af html-referencekonfigurationsfilen %s: %s"
 
 #: tp/Texinfo/Convert/HTML.pm:4962
 msgid "string not closed in css file"
@@ -2218,8 +2176,7 @@ msgstr "der opstod en fejl under lukning af frame-filen %s: %s"
 #: tp/Texinfo/Convert/HTML.pm:6592
 #, perl-format
 msgid "error on closing TOC frame file %s: %s"
-msgstr ""
-"der opstod en fejl under lukning af indholdsfortegnelsens frame-fil %s: %s"
+msgstr "der opstod en fejl under lukning af indholdsfortegnelsens frame-fil %s: %s"
 
 #: tp/Texinfo/Convert/HTML.pm:6707
 #, perl-format
@@ -2228,7 +2185,7 @@ msgstr "håndtering %s for trin %s prioritet %s mislykkedes"
 
 #: tp/Texinfo/Convert/HTML.pm:6912
 msgid "must specify a title with a title command or @top"
-msgstr "skal specificere en titel med en titelkommando eller @top"
+msgstr "skal angive en titel med en titelkommando eller @top"
 
 #: tp/Texinfo/Convert/HTML.pm:7122
 #, perl-format
@@ -2253,8 +2210,7 @@ msgstr "målemne (nyt navn for »%s«) er ikke i dokument: %s"
 #: tp/Texinfo/Convert/HTML.pm:7199
 #, perl-format
 msgid "error on closing renamed node redirection file %s: %s"
-msgstr ""
-"der opstod en fejl under lukning af omdøbt emnevideresendelsesfil %s: %s"
+msgstr "der opstod en fejl under lukning af omdøbt emnevideresendelsesfil %s: %s"
 
 #: tp/Texinfo/Convert/HTML.pm:7237
 msgid "empty node name"
@@ -2321,12 +2277,8 @@ msgid "could not find @image file `%s.txt' nor alternate text"
 msgstr "kunne ikke finde @image-filen »%s.txt« eller alternativ tekst"
 
 #: tp/Texinfo/Convert/Plaintext.pm:1932
-msgid ""
-"@strong{Note...} produces a spurious cross-reference in Info; reword to "
-"avoid that"
-msgstr ""
-"@strong{Note...} laver en uægte krydsreference i Info; ændr for at undgå "
-"dette"
+msgid "@strong{Note...} produces a spurious cross-reference in Info; reword to avoid that"
+msgstr "@strong{Note...} laver en uægte krydsreference i Info; ændr for at undgå dette"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2162
 #, perl-format
@@ -2410,7 +2362,7 @@ msgid "@%s seen before @%s closing brace"
 msgstr "@%s set før @%s-afsluttende tuborgklamme"
 
 #: tp/Texinfo/Parser.pm:1314
-#, fuzzy, perl-format
+#, perl-format
 msgid "%c%s missing closing brace"
 msgstr "%c%s mangler afsluttende tuborgklamme"
 
@@ -2465,7 +2417,7 @@ msgid "macro `%s' called with too many args"
 msgstr "makro »%s« kaldt med for mange parametre"
 
 #: tp/Texinfo/Parser.pm:2094
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s missing closing brace"
 msgstr "@%s mangler afsluttende tuborgklamme"
 
@@ -2527,9 +2479,7 @@ msgstr "%s kræver en parameter: formateringsprogrammet for %citem"
 #: tp/Texinfo/Parser.pm:2981
 #, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
-msgstr ""
-"kommandoen @%s der ikke accepterer parametre i tuborgklamme bør ikke være på "
-"@%s linje"
+msgstr "kommandoen @%s der ikke accepterer parametre i tuborgklamme bør ikke være på @%s linje"
 
 #: tp/Texinfo/Parser.pm:3016
 #, perl-format
@@ -2593,7 +2543,7 @@ msgstr "@%s bør ikke associeres med @top"
 #: tp/Texinfo/Parser.pm:3420
 #, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
-msgstr "@node går forud for @%s, men dele er måske ikke associeret med emner"
+msgstr "@node går forud for @%s, men dele er måske ikke tilknyttet emner"
 
 #: tp/Texinfo/Parser.pm:3522
 #, perl-format
@@ -2603,7 +2553,7 @@ msgstr "tom parameter i @%s"
 #: tp/Texinfo/Parser.pm:3526
 #, perl-format
 msgid "empty node name after expansion `%s'"
-msgstr "tomt emnenavn efter udtryk »%s«"
+msgstr "tomt emnenavn efter udfoldning »%s«"
 
 #: tp/Texinfo/Parser.pm:3569
 #, perl-format
@@ -2620,9 +2570,9 @@ msgid "@%s should not appear in @%s"
 msgstr "@%s bør ikke fremgå i @%s"
 
 #: tp/Texinfo/Parser.pm:3782
-#, fuzzy, perl-format
+#, perl-format
 msgid "@end %s should only appear at the beginning of a line"
-msgstr "@end %s bør kun fremgå på en linjebegyndelse"
+msgstr "@end %s bør kun fremgå i begyndelsen af en linje"
 
 #: tp/Texinfo/Parser.pm:3804
 #, perl-format
@@ -2646,23 +2596,18 @@ msgstr "@%s uden associeret tegn"
 
 #: tp/Texinfo/Parser.pm:3949
 #, perl-format
-msgid ""
-"@%s defined with zero or more than one argument should be invoked with {}"
+msgid "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr "@%s defineret med nul eller mere end en parameter skal startes med {}"
 
 #: tp/Texinfo/Parser.pm:3974
 #, perl-format
-msgid ""
-"macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
-"value %d)"
-msgstr ""
-"makrokald indlejret for dybt (indstil MAX_NESTED_MACROS til overskrivning; "
-"nuværende værdi %d)"
+msgid "macro call nested too deeply (set MAX_NESTED_MACROS to override; current value %d)"
+msgstr "makrokald indlejret for dybt (indstil MAX_NESTED_MACROS for at tilsidesætte; nuværende værdi %d)"
 
 #: tp/Texinfo/Parser.pm:3983
 #, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
-msgstr "rekursiv kald af makro %s er ikke tilladt; brug @rmacro hvis krævet"
+msgstr "rekursivt kald af makro %s er ikke tilladt; brug @rmacro hvis krævet"
 
 #: tp/Texinfo/Parser.pm:4038
 #, perl-format
@@ -2709,9 +2654,9 @@ msgid "%c%s is obsolete; %s"
 msgstr "%c%s er forældet; %s"
 
 #: tp/Texinfo/Parser.pm:4255
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s should only appear at the beginning of a line"
-msgstr "@%s bør kun fremgår ved en linjes begyndelse"
+msgstr "@%s bør kun fremgå ved en linjes begyndelse"
 
 #: tp/Texinfo/Parser.pm:4346
 #, perl-format
@@ -2781,8 +2726,7 @@ msgid "@%s seen before first @node"
 msgstr "@%s fundet før første @node"
 
 #: tp/Texinfo/Parser.pm:4875
-msgid ""
-"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgid "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "måske skulle dit @top emne indsættes i @ifnottex i stedet for @ifinfo?"
 
 #: tp/Texinfo/Parser.pm:4937
@@ -2822,17 +2766,17 @@ msgstr "kommandoen @%s tillader ikke parametre"
 #: tp/Texinfo/Parser.pm:5138
 #, perl-format
 msgid "command @%s missing a node or external manual argument"
-msgstr "kommandoen @%s mangler et emne eller et eksternt manuelt parameter"
+msgstr "kommandoen @%s mangler et emne eller en ekstern manuel parameter"
 
 #: tp/Texinfo/Parser.pm:5156
 #, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
-msgstr "i @%s tomt krydsreferencenavn efter udvidelse »%s«"
+msgstr "i @%s tomt krydsreferencenavn efter udfoldning »%s«"
 
 #: tp/Texinfo/Parser.pm:5167
 #, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
-msgstr "i @%s tomt krydsreferencetitel efter udvidelse »%s«"
+msgstr "i @%s tomt krydsreferencetitel efter udfoldning »%s«"
 
 #: tp/Texinfo/Parser.pm:5180
 msgid "@image missing filename argument"
@@ -2915,7 +2859,7 @@ msgstr "ukendt destinatinsindeks i @%s: %s"
 #: tp/Texinfo/Parser.pm:5793
 #, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
-msgstr "@%s fører til en sammenføjning af %s i sig selv, ignorerer"
+msgstr "@%s fører til en sammenføjning af %s i sig selv; ignorerer"
 
 #: tp/Texinfo/Parser.pm:5806
 #, perl-format
@@ -2960,8 +2904,7 @@ msgstr "@paragraphindent-parameter skal være numerisk/»none«/»asis«, ikke �
 #: tp/Texinfo/Parser.pm:5891
 #, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
-msgstr ""
-"@firstparagraphindent-parameter skal være »none« eller »insert«, ikke »%s«"
+msgstr "@firstparagraphindent-parameter skal være »none« eller »insert«, ikke »%s«"
 
 #: tp/Texinfo/Parser.pm:5901
 #, perl-format
@@ -2976,8 +2919,7 @@ msgstr "forventede @%s aktiveret eller deaktiveret, ikke »%s«"
 #: tp/Texinfo/Parser.pm:5922
 #, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
-msgstr ""
-"@kbdinputstyle-parameter skal være »code«/»example«/»distinct«, ikke »%s«"
+msgstr "@kbdinputstyle-parameter skal være »code«/»example«/»distinct«, ikke »%s«"
 
 #: tp/Texinfo/Parser.pm:5930
 #, perl-format
@@ -3002,8 +2944,7 @@ msgstr "ingen afsnitsniveaukommando før @%s"
 #: tp/Texinfo/Structuring.pm:253
 #, perl-format
 msgid "lowering the section level of @%s appearing after a lower element"
-msgstr ""
-"formindsker afsnitniveauet for @%s, der fremgår efter et lavere element"
+msgstr "formindsker afsnitniveauet for @%s, der fremgår efter et lavere element"
 
 #: tp/Texinfo/Structuring.pm:342
 #, perl-format
@@ -3048,7 +2989,7 @@ msgstr "emne »%s« er %s for »%s« i menu men ikke i afsnitsopdeling"
 #: tp/Texinfo/Structuring.pm:786
 #, perl-format
 msgid "%s pointer `%s' (for node `%s') different from %s name `%s'"
-msgstr "%s peger »%s« (for emne »%s«) er forskellig fra %s navn »%s«"
+msgstr "%s-peger »%s« (for emne »%s«) er forskellig fra %s navn »%s«"
 
 #: tp/Texinfo/Structuring.pm:810
 #, perl-format
@@ -3058,8 +2999,7 @@ msgstr "%s-reference til ikkeeksisterende »%s«"
 #: tp/Texinfo/Structuring.pm:829
 #, perl-format
 msgid "node `%s' lacks menu item for `%s' despite being its Up target"
-msgstr ""
-"emnet »%s« mangler menupunkt for »%s« på trods af at det er dens »Op«-mål"
+msgstr "emnet »%s« mangler menupunkt for »%s« på trods af at det er dens »Op«-mål"
 
 #: tp/Texinfo/Structuring.pm:837
 #, perl-format
@@ -3126,12 +3066,8 @@ msgstr "latex2html.pm: slutningen på @%s post %d ikke fundet"
 
 #: tp/init/latex2html.pm:504
 #, perl-format
-msgid ""
-"latex2html.pm: processing produced %d items in HTML; expected %d, the number "
-"of items found in the document"
-msgstr ""
-"latex2html.pm: behandling fremstillede %d elementer i HTML; forventede %d, "
-"antallet af elementer fundet i dokumentet"
+msgid "latex2html.pm: processing produced %d items in HTML; expected %d, the number of items found in the document"
+msgstr "latex2html.pm: behandling fremstillede %d elementer i HTML; forventede %d, antallet af elementer fundet i dokumentet"
 
 #: tp/init/latex2html.pm:534
 #, perl-format
@@ -3140,11 +3076,8 @@ msgstr "l2h: kunne ikke bestemme fragmentet %d for @%s"
 
 #: tp/init/latex2html.pm:560
 #, perl-format
-msgid ""
-"l2h: could not extract the fragment %d for @%s with output counter %d from "
-"HTML"
-msgstr ""
-"l2h: kunne ikke udtrække fragmentet %d for @%s med uddatatælleren %d fra HTML"
+msgid "l2h: could not extract the fragment %d for @%s with output counter %d from HTML"
+msgstr "l2h: kunne ikke udtrække fragmentet %d for @%s med uddatatælleren %d fra HTML"
 
 #: tp/init/latex2html.pm:621
 #, perl-format
@@ -3188,12 +3121,8 @@ msgstr "tex4ht.pm: slutningen på @%s-elementet %d blev ikke fundet"
 
 #: tp/init/tex4ht.pm:301
 #, perl-format
-msgid ""
-"tex4ht.pm: processing produced %d items in HTML; expected %d, the number of "
-"items found in the document for @%s"
-msgstr ""
-"tex4ht.pm: behandling fremstillede %d elementer i HTML; forventede %d, "
-"antallet af elementer fundet i dokumentet for @%s"
+msgid "tex4ht.pm: processing produced %d items in HTML; expected %d, the number of items found in the document for @%s"
+msgstr "tex4ht.pm: behandling fremstillede %d elementer i HTML; forventede %d, antallet af elementer fundet i dokumentet for @%s"
 
 #: tp/init/tex4ht.pm:321
 #, perl-format
@@ -3202,12 +3131,8 @@ msgstr "tex4ht.pm: uddata har intet HTML-element for @%s %s"
 
 #: tp/init/tex4ht.pm:336
 #, perl-format
-msgid ""
-"tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of "
-"items found in the document for @%s"
-msgstr ""
-"tex4ht.pm: behandling hentede %d elementer i HTML; forventede %d, antallet "
-"af elementer fundet i dokumentet for @%s"
+msgid "tex4ht.pm: processing retrieved %d items in HTML; expected %d, the number of items found in the document for @%s"
+msgstr "tex4ht.pm: behandling hentede %d elementer i HTML; forventede %d, antallet af elementer fundet i dokumentet for @%s"
 
 #: tp/texi2any.pl:383
 #, perl-format
@@ -3257,13 +3182,11 @@ msgid ""
 "This program is commonly installed as both `makeinfo' and `texi2any';\n"
 "the behavior is identical, and does not depend on the installed name.\n"
 msgstr ""
-"Oversæt Texinfo kildedokumentation til flere andre formater, som standard "
-"til\n"
-"Info-filer, der er lavet til at blive læst på skærmen med Emacs eller GNU "
-"Info.\n"
+"Oversæt Texinfokildedokumentation til flere andre formater, som standard til\n"
+"Info-filer, der er lavet til at blive læst på skærmen med Emacs eller GNU Info.\n"
 "\n"
 "Programmet installeres ofte som både »makeinfo« og »texi2any«;\n"
-"opførelsen er identisk, og afhænger ikke af det installerede navn.\n"
+"opførslen er identisk, og afhænger ikke af det installerede navn.\n"
 
 #: tp/texi2any.pl:739
 #, perl-format
@@ -3284,9 +3207,9 @@ msgid ""
 "      --version               display version information and exit.\n"
 msgstr ""
 "Generelle tilvalg:\n"
-"      --document-language=STR sprog der skal anvendes i oversættelsen af "
-"Texinfo-nøgleord\n"
-"                              for uddatadokumentet (standard er C).\n"
+"      --document-language=STR sprog der skal anvendes i oversættelsen af\n"
+"                              Texinfo-nøgleord for uddatadokumentet\n"
+"                              (standard er C).\n"
 "      --error-limit=ANTAL     afbryd efter ANTAL fejl (standard %d).\n"
 "      --force                 bevar uddata selvom der opstår fejl.\n"
 "      --help                  vis denne hjælp og afslut.\n"
@@ -3294,8 +3217,7 @@ msgstr ""
 "      --no-warn               undertryk advarsler (men ikke fejl).\n"
 "      --conf-dir=MAPPE        søg også for initialiseringsfiler i MAPPE.\n"
 "      --init-file=FIL         indlæs FIL for at ændre standardopførelsen.\n"
-"  -c, --set-customization-variable VAR=VÆRDI  indstil tilpasningsvariabel "
-"VAR \n"
+"  -c, --set-customization-variable VAR=VÆRDI  indstil tilpasningsvariabel VAR \n"
 "                              til værdien VÆRDI.\n"
 "  -v, --verbose               forklar, hvad der sker.\n"
 "      --version               vis versionsoplysninger og afslut.\n"
@@ -3311,10 +3233,10 @@ msgid ""
 "                                after checking validity of TEXINFO-FILE.\n"
 msgstr ""
 "Valg af format på uddata (ellers laves Info):\n"
-"      --docbook                    lav DocBook XML i stedet for Info.\n"
+"      --docbook                    lav DocBook-XML i stedet for Info.\n"
 "      --html                       lav HTML i stedet for Info.\n"
-"      --plaintext                  lav klartekst i stedet for Info.\n"
-"      --xml                        lav Texinfo XML i stedet for Info.\n"
+"      --plaintext                  lav almindelig tekst i stedet for Info.\n"
+"      --xml                        lav Texinfo-XML i stedet for Info.\n"
 "      --dvi, --dvipdf, --ps, --pdf kald texi2dvi for at oprette angivet\n"
 "                                   format, efter kontrol af validitet for\n"
 "                                   TEXINFO-FIL.\n"
@@ -3324,12 +3246,9 @@ msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
 "                                ignoring any @setfilename.\n"
-"      --no-headers            suppress node separators, Node: lines, and "
-"menus\n"
-"                                from Info output (thus producing plain "
-"text)\n"
-"                                or from HTML (thus producing shorter "
-"output).\n"
+"      --no-headers            suppress node separators, Node: lines, and menus\n"
+"                                from Info output (thus producing plain text)\n"
+"                                or from HTML (thus producing shorter output).\n"
 "                                Also, if producing Info, write to\n"
 "                                standard output by default.\n"
 "      --no-split              suppress any splitting of the output;\n"
@@ -3337,8 +3256,7 @@ msgid ""
 "      --[no-]number-sections  output chapter and sectioning numbers;\n"
 "                                default is on.\n"
 "  -o, --output=DEST           output to DEST.\n"
-"                                With split output, create DEST as a "
-"directory\n"
+"                                With split output, create DEST as a directory\n"
 "                                 and put the output files there.\n"
 "                                With non-split output, if DEST is already\n"
 "                                 a directory or ends with a /,\n"
@@ -3346,10 +3264,9 @@ msgid ""
 "                                Otherwise, DEST names the output file.\n"
 msgstr ""
 "Generelle uddatatilvalg:\n"
-"  -E, --macro-expand FIL      send makroekspanderet kildetekst til FIL.\n"
+"  -E, --macro-expand=FIL      send makroekspanderet kildetekst til FIL.\n"
 "                              ignorer eventuelle @setfilename.\n"
-"      --no-headers            undertryk emneadskillere, Node:­linjer og "
-"menuer\n"
+"      --no-headers            undertryk emneadskillere, Node:­linjer og menuer\n"
 "                              fra Infos uddata (og lav dermed simpel tekst)\n"
 "                              eller fra HTML (lav dermed kortere uddata).\n"
 "                              Hvis der fremstilles Info, så skriv til\n"
@@ -3373,42 +3290,29 @@ msgid ""
 "      --disable-encoding      do not output accented and special characters\n"
 "                                in Info output based on @documentencoding.\n"
 "      --enable-encoding       override --disable-encoding (default).\n"
-"      --fill-column=NUM       break Info lines at NUM characters (default "
-"%d).\n"
+"      --fill-column=NUM       break Info lines at NUM characters (default %d).\n"
 "      --footnote-style=STYLE  output footnotes in Info according to STYLE:\n"
 "                                `separate' to put them in their own node;\n"
-"                                `end' to put them at the end of the node, "
-"in\n"
-"                                which they are defined (this is the "
-"default).\n"
-"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default "
-"%d).\n"
+"                                `end' to put them at the end of the node, in\n"
+"                                which they are defined (this is the default).\n"
+"      --paragraph-indent=VAL  indent Info paragraphs by VAL spaces (default %d).\n"
 "                                If VAL is `none', do not indent; if VAL is\n"
 "                                `asis', preserve existing indentation.\n"
 "      --split-size=NUM        split Info files at size NUM (default %d).\n"
 msgstr ""
-"Tilvalg for Info og ren tekst:\n"
-"      --disable-encoding       lav ikke specielle tegn eller tegn med "
-"accent\n"
+"Tilvalg for Info og almindelig tekst:\n"
+"      --disable-encoding       lav ikke specielle tegn eller tegn med accent\n"
 "                               i Info-uddata baseret på @documentencoding.\n"
-"      --enable-encoding        konstruer specialtegn i Info-uddata i henhold "
-"til\n"
-"                               @documentencoding.\n"
-"      --fill-column=ANTAL      opdel Info-linjer ved ANTAL tegn (standard "
-"%d).\n"
+"      --enable-encoding        tilsidesæt --disable-encodning (standard).\n"
+"      --fill-column=ANTAL      opdel Info-linjer ved ANTAL tegn (standard %d).\n"
 "      --footnote-style=STIL    vis fodnoter i Info med valgt STIL:\n"
-"                               »separate« for at placere dem i deres eget "
-"emne;\n"
-"                               »end« for at placere dem i slutningen af det "
-"emne,\n"
-"                               de er defineret (standard).\n"
-"      --paragraph-indent=ANTAL indryk Info-afsnit med ANTAL mellemrum "
-"(standard %d).\n"
-"                               Hvis ANTAL er »none« indrykkes ikke. Hvis "
-"ANTAL er\n"
+"                               »separate« for at placere dem i deres eget emne;\n"
+"                               »end« for at placere dem i slutningen af det emne,\n"
+"                               de er defineret i (standard).\n"
+"      --paragraph-indent=ANTAL indryk Info-afsnit med ANTAL mellemrum (standard %d).\n"
+"                               Hvis ANTAL er »none« indrykkes ikke. Hvis ANTAL er\n"
 "                               »asis«, bevares eksisterende indrykning.\n"
-"      --split-size=ANTAL       opdel Info-filer ved størrelsen ANTAL "
-"(standard %d).\n"
+"      --split-size=ANTAL       opdel Info-filer ved størrelsen ANTAL (standard %d).\n"
 
 #: tp/texi2any.pl:800
 msgid ""
@@ -3427,14 +3331,13 @@ msgstr ""
 "      --css-include=FIL       inkluder FIL i HTML <style> uddata;\n"
 "                              læs standardind hvis FIL er -.\n"
 "      --css-ref=URL           opret CSS-reference til adresse.\n"
-"      --internal-links=FIL    fremstil en liste over interne henvisninger i "
-"FIL.\n"
-"      --split=SPLIT           opdelt ved SPLIT, hvor SPLIT kan være "
-"»chapter«,\n"
+"      --internal-links=FIL    fremstil en liste over interne henvisninger\n"
+"                              i FIL.\n"
+"      --split=SPLIT           opdel ved SPLIT, hvor SPLIT kan være »chapter«,\n"
 "                              »section« eller »node«.\n"
 "      --transliterate-file-names  brug filnavne i ASCII-translitteration.\n"
-"      --node-files            frem videresendelsesfiler for emner og\n"
-"                              ankre; standard indstilles kun hvis opdelt.\n"
+"      --node-files            fremstil videresendelsesfiler for emner og\n"
+"                              ankre; som standard indstilles kun hvis opdelt.\n"
 
 #: tp/texi2any.pl:811
 msgid ""
@@ -3468,7 +3371,7 @@ msgstr ""
 "  -D »VAR VAL«                  definer VAR til VAL (en skalparameter).\n"
 "  -I MAPPE                      tilføj MAPPE til @include-søgestien.\n"
 "  -P MAPPE                      indsæt MAPPE forrest i @include-søgestien.\n"
-"  -U VAR                        fjern definitione for variablen VAR, som\n"
+"  -U VAR                        fjern definitionen af variablen VAR, som\n"
 "                                med @clear.\n"
 
 #: tp/texi2any.pl:825
@@ -3494,9 +3397,9 @@ msgstr ""
 "  --ifdocbook       behandl @ifdocbook og @docbook selv hvis\n"
 "                    Docbook ikke oprettes.\n"
 "  --ifhtml          behandl @ifhtml og @html selvom der ikke laves HTML.\n"
-"  --ifinfo          behandl @ifinfo-tekst selvom der laves HTML.\n"
+"  --ifinfo          behandl @ifinfo-tekst selvom der ikke laves INFO.\n"
 "  --ifplaintext     behandl @ifplaintext selvom der ikke laves ren tekst.\n"
-"  --iftex           behandl @iftex og @tex; underforstår --no-split.\n"
+"  --iftex           behandl @iftex og @tex.\n"
 "  --ifxml           behandl @ifxml og @xml.\n"
 "  --no-ifdocbook    behandl ikke @ifdocbook- og @docbook-tekst.\n"
 "  --no-ifhtml       behandl ikke @ifhtml og @html-tekst.\n"
@@ -3515,13 +3418,10 @@ msgid ""
 "  if generating XML, --ifxml is on and the others are off.\n"
 msgstr ""
 "  Standarden for @if... betingelser afhænger af uddataformatet:\n"
-"  hvis der laves Docbook, er --ifdocbook aktiveret og de andre er "
-"deaktiveret\n"
-"  hvis der laves HTML, er --ifhtml aktiveret, mens de andre er   "
-"deaktiverede;\n"
+"  hvis der laves Docbook, er --ifdocbook aktiveret og de andre er deaktiveret\n"
+"  hvis der laves HTML, er --ifhtml aktiveret, mens de andre er   deaktiverede;\n"
 "  hvis der laves Info er --ifinfo aktiveret og de andre er deaktiverede;\n"
-"  hvis der laves ren tekst er --ifplaintext aktiveret og de andre   "
-"deaktiverede.\n"
+"  hvis der laves ren tekst er --ifplaintext aktiveret og de andre   deaktiverede.\n"
 "  hvis der laves XML, er --ifxml aktiveret, mens de andre er deaktiverede.\n"
 
 #: tp/texi2any.pl:849
@@ -3531,47 +3431,38 @@ msgid ""
 "  makeinfo --html foo.texi               write HTML to @setfilename\n"
 "  makeinfo --xml foo.texi                write Texinfo XML to @setfilename\n"
 "  makeinfo --docbook foo.texi            write Docbook XML to @setfilename\n"
-"  makeinfo --plaintext foo.texi          write plain text to standard "
-"output\n"
+"  makeinfo --plaintext foo.texi          write plain text to standard output\n"
 "  makeinfo --pdf foo.texi                write PDF using texi2dvi\n"
 "\n"
-"  makeinfo --html --no-headers foo.texi  write html without node lines, "
-"menus\n"
+"  makeinfo --html --no-headers foo.texi  write html without node lines, menus\n"
 "  makeinfo --number-sections foo.texi    write Info with numbered sections\n"
 "  makeinfo --no-split foo.texi           write one Info file however big\n"
 msgstr ""
 "Eksempler:\n"
 "  makeinfo foo.texi                      skriv Info til xxx's @setfilename\n"
 "  makeinfo --html xxx.texi               skriv HTML til @setfilename\n"
-"  makeinfo --xml xxx.texi                skriv Texinfo XML til  "
-"@setfilename\n"
-"  makeinfo --docbook xxx.texi            skriv Docbook XML til @setfilename\n"
-"  makeinfo --plaintext xxx.texi          skriv klartekst til standardud  "
-"makeinfo --pdf xxx.texi                skriv PDF via texi2dvi\n"
+"  makeinfo --xml xxx.texi                skriv Texinfo-XML til  @setfilename\n"
+"  makeinfo --docbook xxx.texi            skriv Docbook-XML til @setfilename\n"
+"  makeinfo --plaintext xxx.texi          skriv klartekst til standardud  makeinfo --pdf xxx.texi                skriv PDF via texi2dvi\n"
 "\n"
-"  makeinfo --html --no-headers xxx.texi  skriv html uden emnelinjer og "
-"menuer\n"
+"  makeinfo --html --no-headers xxx.texi  skriv html uden emnelinjer og menuer\n"
 "  makeinfo --number-sections xxx.texi    skriv Info med nummererede afsnit\n"
-"  makeinfo --no-split xxx.texi           skriv en Info-fil, uanset "
-"størrelsen\n"
+"  makeinfo --no-split xxx.texi           skriv en Info-fil, uanset størrelsen\n"
 
 #: tp/texi2any.pl:896
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
-msgstr ""
-"%s: --footnote-style parameter skal være 'separate' eller 'end', ikke '%s'.\n"
+msgstr "%s: --footnote-style parameter skal være 'separate' eller 'end', ikke '%s'.\n"
 
 #: tp/texi2any.pl:987
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
-msgstr ""
-"%s: --paragraph-indent parameter skal være tal/»none«/»asis«, ikke »%s«.\n"
+msgstr "%s: --paragraph-indent parameter skal være tal/»none«/»asis«, ikke »%s«.\n"
 
 #: tp/texi2any.pl:1064
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
-msgstr ""
-"%s: under oprettelse af %s, kan kun en inddata-FIL specificeres med -o\n"
+msgstr "%s: under oprettelse af %s, kan kun en inddata-FIL angivet med -o\n"
 
 #: tp/texi2any.pl:1068
 msgid "--Xopt option without printed output"
@@ -3599,8 +3490,7 @@ msgstr "Prøv »%s --help« for yderligere information.\n"
 
 #: tp/texi2any.pl:1239
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
-msgstr ""
-"fill_gaps_in_sectioning-transformering gav intet resultat. Ingen sektion?"
+msgstr "fill_gaps_in_sectioning-transformering gav intet resultat. Ingen sektion?"
 
 #: tp/texi2any.pl:1262
 #, perl-format
@@ -3613,12 +3503,8 @@ msgid "could not open %s for writing: %s\n"
 msgstr "kunne ikke åbne %s for skrivning: %s\n"
 
 #: tp/texi2any.pl:1293
-msgid ""
-"insert_nodes_for_sectioning_commands transformation return no result. No "
-"section?"
-msgstr ""
-"insert_nodes_for_sectioning_commands-transformation returnerer intet "
-"resultat. Manglende afsnit?"
+msgid "insert_nodes_for_sectioning_commands transformation return no result. No section?"
+msgstr "insert_nodes_for_sectioning_commands-transformation returnerer intet resultat. Manglende afsnit?"
 
 #: tp/texi2any.pl:1366 tp/texi2any.pl:1442
 #, perl-format
