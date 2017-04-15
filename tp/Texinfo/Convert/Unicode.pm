@@ -1,6 +1,6 @@
 # Unicode.pm: handle conversion to unicode.
 #
-# Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2015, 2016, 2017 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -32,14 +32,21 @@ use Unicode::EastAsianWidth;
 
 require Exporter;
 use vars qw(@ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-@ISA = qw(Exporter);
 
 use Texinfo::MiscXS;
 
-# Override subroutines after this module has been loaded.
-UNITCHECK {
-  Texinfo::XSLoader::override("Texinfo::Convert::Unicode::unicode_text",
-                              "Texinfo::MiscXS::unicode_text");
+# Some extra initialization for the first time this module is loaded.
+# This could be done in a UNITCHECK block, but they were introduced in
+# Perl 5.10.
+our $module_loaded = 0;
+sub import {
+  if (!$module_loaded) {
+    Texinfo::XSLoader::override("Texinfo::Convert::Unicode::unicode_text",
+                                "Texinfo::MiscXS::unicode_text");
+    $module_loaded = 1;
+  }
+  # The usual import method.
+  goto &Exporter::import;
 }
 
 

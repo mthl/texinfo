@@ -64,6 +64,23 @@ require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter Texinfo::Report);
 
+our $module_loaded = 0;
+sub import {
+  if (!$module_loaded) {
+    Texinfo::XSLoader::override ("Texinfo::Parser::_merge_text",
+      "Texinfo::MiscXS::merge_text");
+    Texinfo::XSLoader::override ("Texinfo::Parser::_abort_empty_line",
+      "Texinfo::MiscXS::abort_empty_line");
+    Texinfo::XSLoader::override ("Texinfo::Parser::_parse_texi_regex",
+      "Texinfo::MiscXS::parse_texi_regex");
+    $module_loaded = 1;
+  }
+  # The usual import method
+  goto &Exporter::import;
+}
+
+
+
 # Items to export into callers namespace by default. Note: do not export
 # names by default without a very good reason. Use EXPORT_OK instead.
 # Do not simply export all your public functions/methods/constants.
@@ -1809,13 +1826,6 @@ sub _close_commands($$$;$$)
   return ($closed_element, $current);
 }
 
-UNITCHECK {
-   Texinfo::XSLoader::override ("Texinfo::Parser::_merge_text",
-     "Texinfo::MiscXS::merge_text");
-   Texinfo::XSLoader::override ("Texinfo::Parser::_abort_empty_line",
-     "Texinfo::MiscXS::abort_empty_line");
-}
-
 # begin paragraph if needed.  If not try to merge with the previous
 # content if it is also some text.
 sub _merge_text {
@@ -3526,11 +3536,6 @@ sub _mark_and_warn_invalid($$$$$)
     $marked_as_invalid_command->{'extra'}->{'invalid_nesting'} = 1
       if (defined($marked_as_invalid_command));
   }
-}
-
-UNITCHECK {
-   Texinfo::XSLoader::override ("Texinfo::Parser::_parse_texi_regex",
-     "Texinfo::MiscXS::parse_texi_regex");
 }
 
 # This combines several regular expressions used in '_parse_texi' to

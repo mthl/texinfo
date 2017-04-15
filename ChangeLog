@@ -1,3 +1,13 @@
+2017-04-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm,
+	* tp/Texinfo/Parser.pm,
+	* tp/Texinfo/Convert/Unicode.pm:
+	Move calls to Texinfo::XSLoader::override to a custom 'import'
+	method, wrapping the one from the Exporter module, instead of 
+	occurring inside a UNITCHECK block.  This is to try to work
+	on older versions of Perl where UNITCHECK didn't exist.
+
 2017-04-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph: Run gnulib-tool --add-import.

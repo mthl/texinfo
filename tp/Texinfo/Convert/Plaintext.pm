@@ -37,7 +37,21 @@ use Texinfo::Convert::Text;
 
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-@ISA = qw(Exporter Texinfo::Convert::Converter);
+@ISA = qw(Texinfo::Convert::Converter);
+
+# Some extra initialization for the first time this module is loaded.
+# This could be done in a UNITCHECK block, introduced in Perl 5.10.
+our $module_loaded = 0;
+sub import {
+  if (!$module_loaded) {
+    Texinfo::XSLoader::override(
+      "Texinfo::Convert::Plaintext::_process_text_internal",
+      "Texinfo::MiscXS::process_text");
+    $module_loaded = 1;
+  }
+  # The usual import method
+  goto &Exporter::import;
+}
 
 # Items to export into callers namespace by default. Note: do not export
 # names by default without a very good reason. Use EXPORT_OK instead.
@@ -531,12 +545,6 @@ sub _protect_sentence_ends ($) {
   $text = reverse $text;
 
   return $text;
-}
-
-UNITCHECK {
-  Texinfo::XSLoader::override(
-    "Texinfo::Convert::Plaintext::_process_text_internal",
-    "Texinfo::MiscXS::process_text");
 }
 
 sub _process_text_internal {
