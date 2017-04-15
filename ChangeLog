@@ -1,5 +1,10 @@
 2017-04-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/MiscXS.pm: Call Texinfo::XSLoader::init with the
+	real name of the package with the XS routines.
+
+2017-04-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Plaintext.pm,
 	* tp/Texinfo/Parser.pm,
 	* tp/Texinfo/Convert/Unicode.pm:

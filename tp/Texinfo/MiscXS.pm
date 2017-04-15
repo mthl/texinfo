@@ -27,7 +27,7 @@ our $VERSION = '6.3dev';
 use Texinfo::XSLoader;
 
 BEGIN {
-  our $xsmodule = "Texinfo::MiscXS";
+  our $xsmodule = "Texinfo::MiscXSXS";
  # Check for a UTF-8 locale.  Skip the check if the 'locale' command doesn't
  # work.
   our $a;
