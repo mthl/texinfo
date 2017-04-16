@@ -1,3 +1,8 @@
+2017-04-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/maintain/regenerate_docstr.sh: Use Makefile in build 
+	directory to build .gmo files.  Report from Hans Bernhard-Bröker.
+
 2017-04-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/MiscXS.pm: Call Texinfo::XSLoader::init with the
