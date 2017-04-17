@@ -182,7 +182,7 @@ test_files = \
 document_domain = $(PACKAGE)_document
 
 # $(document_strings_mo_files) and $(test_copied_include_files) come from
-# generated makefiles, Makefile.tres and Makefile.documents_strings_mo_files
+# the generated makefiles Makefile.docstr and Makefile.tres.
 all-local: maintain/catalog.xml $(document_strings_mo_files) \
            $(test_copied_include_files)
 

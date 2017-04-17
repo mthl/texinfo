@@ -1,3 +1,8 @@
+2017-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Makefile.am: Correct the name of an included file in a 
+	comment.
+
 2017-04-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/maintain/regenerate_docstr.sh: Use Makefile in build 
