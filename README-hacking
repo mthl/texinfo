@@ -198,7 +198,6 @@ pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
 check that the svn checkout is up-to-date (run "svnversion" and "svn update")
 make
 make update-po            # both po and po_document needed, build a dist first
-make long-checks          # distcheck does not do this
 (export MALLOC_CHECK_=2; make distcheck)  # repeat until clean
 svn commit                # when clean, then distcheck to be sure
 

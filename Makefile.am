@@ -79,10 +79,6 @@ install:
 
 endif
 
-# just a convenience for running these additional tests.
-long-checks:
-	cd tp/tests && $(MAKE) long-checks
-
 # to be run before making a distribution: ensure that the texinfo.dtd on
 # the web is what we will be releasing.  See README-hacking.
 wget = wget
