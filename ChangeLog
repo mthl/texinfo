@@ -1,5 +1,10 @@
 2017-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Inserting Quotation Marks): Include sort 
+	keys for two index entries (< and <<).
+
+2017-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* Makefile.am, README-hacking: Remove mention of 'long-checks',
 	as these don't exist anymore.
 

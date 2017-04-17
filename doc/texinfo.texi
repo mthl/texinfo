@@ -10249,12 +10249,12 @@ Both distributions include installation instructions.
 @cindex Single right-pointing angle quotation mark
 @findex guillemetleft
 @findex guillemotleft
-@cindex @guillemetleft{}
+@cindex @sortas{<<} @guillemetleft{}
 @findex guillemetright
 @findex guillemotright
 @cindex @guillemetright{}
 @findex guilsinglleft
-@cindex @guilsinglleft{}
+@cindex @sortas{<} @guilsinglleft{}
 @findex guilsinglright
 @cindex @guilsinglright{}
 @c The third column doesn't have the full text in the prototype so that
