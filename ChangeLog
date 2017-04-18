@@ -1,3 +1,7 @@
+2017-04-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/XSLoader.pm: Add more debugging messages.
+
 2017-04-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Inserting Quotation Marks): Include sort 

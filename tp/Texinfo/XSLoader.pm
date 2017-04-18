@@ -200,6 +200,7 @@ LOAD:
     _fatal "$module_name: couldn't find $bootname symbol";
     goto FALLBACK;
   }
+  _debug "trying to call $bootname...";
   my $boot_fn = DynaLoader::dl_install_xsub("${module}::bootstrap",
                                                   $symref, $dlname);
   
@@ -207,6 +208,7 @@ LOAD:
     _fatal "$module_name: couldn't bootstrap";
     goto FALLBACK;
   }
+  _debug "  ...succeeded";
   
   push @DynaLoader::dl_shared_objects, $dlpath; # record files loaded
   
@@ -233,7 +235,7 @@ FALLBACK:
     die "unset the TEXINFO_XS environment variable to use the "
        ."pure Perl modules\n";
   } elsif ($TEXINFO_XS eq 'warn' or $TEXINFO_XS eq 'debug') {
-    warn "falling back to pure Perl modules\n";
+    warn "falling back to pure Perl module\n";
   }
   if (!defined $fallback_module) {
     die "no fallback module for $full_module_name";
@@ -252,11 +254,16 @@ FALLBACK:
 sub override {
   my ($target, $source) = @_;
 
+  _debug "attempting to override $target with $source...";
+
   no strict 'refs'; # access modules and symbols by name.
   no warnings 'redefine'; # do not warn about redefining a function.
 
   if (defined &{"${source}"}) {
     *{"${target}"} = \&{"${source}"};
+    _debug "  ...succeeded";
+  } else {
+    _debug "  ...failed";
   }
 }
 
