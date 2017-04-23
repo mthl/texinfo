@@ -1,5 +1,20 @@
 2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_complete_indices): New function.
+	* tp/Texinfo/Structuring.pm (do_index_keys): Move code from
+	do_index_keys to _complete_indices to complete index entries for 
+	@defop and similar, and also code to set the 'in_code' value for 
+	index entries.
+	* tp/Texinfo/Parser.pm (_parse_texi): Call it after parsing
+	the whole input.
+	* tp/Texinfo/Structuring.pm, tp/Texinfo/Parser.pm
+	(_non_bracketed_contents): Move function to Parser.pm.
+
+	* tp/texi2any.pl: Do not call do_index_keys.  This avoids a 
+	duplicate error message for an empty index entry sort key.
+
+2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/maintain/regenerate_cmd_tests.sh: In test scripts generated 
 	in tp/tests/test_scripts directory, include a comment saying
 	it is a generated file
