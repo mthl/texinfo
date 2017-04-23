@@ -1,3 +1,9 @@
+2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/maintain/regenerate_cmd_tests.sh: In test scripts generated 
+	in tp/tests/test_scripts directory, include a comment saying
+	it is a generated file
+
 2017-04-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/XSLoader.pm: Add more debugging messages.
