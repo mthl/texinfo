@@ -1,5 +1,10 @@
 2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Macro Details): Mention possibility of 
+	interchanging a macro and a conditional.
+
+2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* Makefile.am (po-check): Change parsetexi/ to tp/parsetexi.
 
 2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>

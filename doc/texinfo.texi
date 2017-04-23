@@ -14034,6 +14034,38 @@ macros containing line-oriented commands or text, such as
 @code{@@example} environments, may behave unpredictably in @TeX{}.
 
 @item
+If you have problems using conditionals within a macro, an alternative
+is to use separate macro definitions inside conditional blocks.  For
+example, instead of
+
+@example
+@@macro Mac
+@@iftex
+text for TeX output
+@@end iftex
+@@ifnottex
+text for not TeX output
+@@end ifnottex
+@@end macro
+@end example
+
+@noindent you can do the following instead:
+
+@example
+@@iftex
+@@macro Mac
+text for TeX output
+@@end macro
+@@end iftex
+
+@@ifnottex
+@@macro Mac
+text for not TeX output
+@@end macro
+@@end ifnottex
+@end example
+
+@item
 Texinfo commands in the expansion of a macro in the text of an index 
 entry may end up being typeset as literal text (including an ``@@'' 
 sign), instead of being interpreted with their intended meaning.
