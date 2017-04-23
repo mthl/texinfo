@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-04-17 08:38+0100\n"
+"POT-Creation-Date: 2017-04-23 13:58+0100\n"
 "PO-Revision-Date: 2015-12-28 09:13GMT\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -111,12 +111,12 @@ msgstr ""
 msgid "{float_number}\n"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:1475
+#: tp/Texinfo/Parser.pm:1002
 #, perl-brace-format
 msgid "{name} on {class}"
 msgstr ""
 
-#: tp/Texinfo/Structuring.pm:1485
+#: tp/Texinfo/Parser.pm:1012
 #, perl-brace-format
 msgid "{name} of {class}"
 msgstr ""

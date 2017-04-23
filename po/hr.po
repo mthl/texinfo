@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-6.1.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-04-17 08:38+0100\n"
+"POT-Creation-Date: 2017-04-23 13:58+0100\n"
 "PO-Revision-Date: 2016-09-09 20:05+0200\n"
 "Last-Translator: Božidar Putanec <bozidarp@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -1033,7 +1033,7 @@ msgstr "Referencija je nestala! (%s)."
 msgid "Terminal cannot be initialized: %s\n"
 msgstr "Terminal se ne može inicijalizirati: %s\n"
 
-#: info/search.c:215
+#: info/search.c:203
 #, c-format
 msgid "regexp error: %s"
 msgstr "greška regularnog izraza: %s"
@@ -2072,7 +2072,7 @@ msgstr "ne mogu čitati %s: %s"
 msgid "error on closing @verbatiminclude file %s: %s"
 msgstr "greška pri zatvaranju @verbatiminclude datoteke %s: %s"
 
-#: tp/Texinfo/Common.pm:1165 tp/Texinfo/Parser.pm:3100
+#: tp/Texinfo/Common.pm:1165 tp/Texinfo/Parser.pm:3178
 #, perl-format
 msgid "@%s: could not find %s"
 msgstr "@%s: ne mogu pronaći %s"
@@ -2110,7 +2110,7 @@ msgstr "%s: izlaz nije u skladu s podjelom (with split)"
 #: tp/Texinfo/Convert/HTML.pm:7065 tp/Texinfo/Convert/IXIN.pm:914
 #: tp/Texinfo/Convert/Info.pm:165 tp/Texinfo/Convert/Info.pm:191
 #: tp/Texinfo/Convert/Info.pm:219 tp/Texinfo/Convert/Info.pm:282
-#: tp/Texinfo/Convert/TexinfoXML.pm:475 tp/Texinfo/Parser.pm:1979
+#: tp/Texinfo/Convert/TexinfoXML.pm:475 tp/Texinfo/Parser.pm:2057
 #, perl-format
 msgid "error on closing %s: %s"
 msgstr "greška pri zatvaranju %s: %s"
@@ -2130,7 +2130,7 @@ msgstr "ne mogu napraviti direktorij „%s“: %s"
 msgid "@image file `%s' not found, using `%s'"
 msgstr "@image datoteka „%s“ nije pronađena, koristim „%s“"
 
-#: tp/Texinfo/Convert/DocBook.pm:1098 tp/Texinfo/Parser.pm:5144
+#: tp/Texinfo/Convert/DocBook.pm:1098 tp/Texinfo/Parser.pm:5222
 msgid "no argument specified for @U"
 msgstr "nijedan argument nije specificran za @U"
 
@@ -2244,7 +2244,7 @@ msgstr ""
 msgid "empty node name"
 msgstr "prazno ime čvora"
 
-#: tp/Texinfo/Convert/HTML.pm:7242 tp/Texinfo/Parser.pm:3432
+#: tp/Texinfo/Convert/HTML.pm:7242 tp/Texinfo/Parser.pm:3510
 #, perl-format
 msgid "syntax for an external node used for `%s'"
 msgstr "sintaksa za vanjski čvor korištena za „%s“"
@@ -2282,7 +2282,7 @@ msgstr "@node ime ne smije sadržavati  „,“: %s"
 msgid "Index entry in @%s with : produces invalid Info: %s"
 msgstr "Stavka u indeksu @%s s(a) : pravi neispravni Info: %s"
 
-#: tp/Texinfo/Convert/Plaintext.pm:1299 tp/Texinfo/Parser.pm:2496
+#: tp/Texinfo/Convert/Plaintext.pm:1299 tp/Texinfo/Parser.pm:2574
 #, perl-format
 msgid "entry for index `%s' outside of any node"
 msgstr "stavka za indeks „%s“ je izvan svih čvorova"
@@ -2348,287 +2348,287 @@ msgstr "ime stavke izbornika čvora ne smije sadržavati „:“"
 msgid "menu entry name should not contain `:'"
 msgstr "ime stavke u izborniku ne smije sadržavati „:“"
 
-#: tp/Texinfo/Parser.pm:1017
+#: tp/Texinfo/Parser.pm:1095
 #, perl-format
 msgid "empty node name after expansion `%s'"
 msgstr "prazno ime čvora nakon proširenja „%s“"
 
-#: tp/Texinfo/Parser.pm:1025
+#: tp/Texinfo/Parser.pm:1103
 #, perl-format
 msgid "@%s `%s' previously defined"
 msgstr "@%s „%s“ prethodno definiran"
 
-#: tp/Texinfo/Parser.pm:1031
+#: tp/Texinfo/Parser.pm:1109
 #, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "ovdje je prethodna definicija kao @%s"
 
-#: tp/Texinfo/Parser.pm:1050 tp/Texinfo/Parser.pm:3419
+#: tp/Texinfo/Parser.pm:1128 tp/Texinfo/Parser.pm:3497
 #, perl-format
 msgid "empty argument in @%s"
 msgstr "prazan argument u @%s"
 
-#: tp/Texinfo/Parser.pm:1141 tp/Texinfo/Structuring.pm:416
+#: tp/Texinfo/Parser.pm:1219 tp/Texinfo/Structuring.pm:416
 #, perl-format
 msgid "multiple @%s"
 msgstr "višestruki @%s"
 
-#: tp/Texinfo/Parser.pm:1179
+#: tp/Texinfo/Parser.pm:1257
 #, perl-format
 msgid "bad or empty @%s formal argument: %s"
 msgstr "neispravan ili prazan @%s formalni argument: %s"
 
-#: tp/Texinfo/Parser.pm:1189
+#: tp/Texinfo/Parser.pm:1267
 #, perl-format
 msgid "bad syntax for @%s argument: %s"
 msgstr "neispravna sintaksa za @%s argument: %s"
 
-#: tp/Texinfo/Parser.pm:1196 tp/Texinfo/Parser.pm:4618
-#: tp/Texinfo/Parser.pm:4644 tp/Texinfo/Parser.pm:5497
-#: tp/Texinfo/Parser.pm:5510 tp/Texinfo/Parser.pm:5524
+#: tp/Texinfo/Parser.pm:1274 tp/Texinfo/Parser.pm:4696
+#: tp/Texinfo/Parser.pm:4722 tp/Texinfo/Parser.pm:5576
+#: tp/Texinfo/Parser.pm:5589 tp/Texinfo/Parser.pm:5603
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s zahtijeva ime"
 
-#: tp/Texinfo/Parser.pm:1200 tp/Texinfo/Parser.pm:4621
-#: tp/Texinfo/Parser.pm:4647 tp/Texinfo/Parser.pm:5500
-#: tp/Texinfo/Parser.pm:5513 tp/Texinfo/Parser.pm:5527
+#: tp/Texinfo/Parser.pm:1278 tp/Texinfo/Parser.pm:4699
+#: tp/Texinfo/Parser.pm:4725 tp/Texinfo/Parser.pm:5579
+#: tp/Texinfo/Parser.pm:5592 tp/Texinfo/Parser.pm:5606
 #, perl-format
 msgid "bad name for @%s"
 msgstr "nema imena za @%s"
 
-#: tp/Texinfo/Parser.pm:1313
+#: tp/Texinfo/Parser.pm:1391
 #, perl-format
 msgid "@end %s seen before @%s closing brace"
 msgstr "@end %s pronađen prije @%s zatvorene zagrade"
 
-#: tp/Texinfo/Parser.pm:1317
+#: tp/Texinfo/Parser.pm:1395
 #, perl-format
 msgid "@%s seen before @%s closing brace"
 msgstr "@%s pronađen prije @%s zatvorene zagrade"
 
-#: tp/Texinfo/Parser.pm:1322
+#: tp/Texinfo/Parser.pm:1400
 #, perl-format
 msgid "%c%s missing closing brace"
 msgstr "%c%s nedostaje zatvorena zagrada"
 
-#: tp/Texinfo/Parser.pm:1326
+#: tp/Texinfo/Parser.pm:1404
 #, perl-format
 msgid "@%s missing closing delimiter sequence: %s}"
 msgstr "@%s nema završni niz znakova za razdvajanje: %s}"
 
-#: tp/Texinfo/Parser.pm:1435
+#: tp/Texinfo/Parser.pm:1513
 #, perl-format
 msgid "@itemx should not begin @%s"
 msgstr "@itemx ne smije započeti @%s"
 
-#: tp/Texinfo/Parser.pm:1503
+#: tp/Texinfo/Parser.pm:1581
 msgid "@itemx must follow @item"
 msgstr "@itemx mora slijediti @item"
 
-#: tp/Texinfo/Parser.pm:1670
+#: tp/Texinfo/Parser.pm:1748
 #, perl-format
 msgid "@%s has text but no @item"
 msgstr "@%s ima tekst, ali nema @item"
 
-#: tp/Texinfo/Parser.pm:1698
+#: tp/Texinfo/Parser.pm:1776
 #, perl-format
 msgid "`@end' expected `%s', but saw `%s'"
 msgstr "„@end“ očekuje „%s“, pronašao „%s“"
 
-#: tp/Texinfo/Parser.pm:1701
+#: tp/Texinfo/Parser.pm:1779
 #, perl-format
 msgid "@%s seen before @end %s"
 msgstr "@%s pronađen prije @end %s"
 
-#: tp/Texinfo/Parser.pm:1705
+#: tp/Texinfo/Parser.pm:1783
 #, perl-format
 msgid "no matching `%cend %s'"
 msgstr "nema odgovarajućeg „%cend %s“"
 
-#: tp/Texinfo/Parser.pm:1729 tp/Texinfo/Parser.pm:4988
-#: tp/Texinfo/Parser.pm:5238
+#: tp/Texinfo/Parser.pm:1807 tp/Texinfo/Parser.pm:5066
+#: tp/Texinfo/Parser.pm:5316
 #, perl-format
 msgid "misplaced %c"
 msgstr "%c na krivom mjestu"
 
-#: tp/Texinfo/Parser.pm:1823 tp/Texinfo/Parser.pm:3052
+#: tp/Texinfo/Parser.pm:1901 tp/Texinfo/Parser.pm:3130
 #, perl-format
 msgid "unmatched `%c%s'"
 msgstr "neuparen „%c%s“"
 
-#: tp/Texinfo/Parser.pm:2052
+#: tp/Texinfo/Parser.pm:2130
 #, perl-format
 msgid "macro `%s' called with too many args"
 msgstr "makro naredba „%s“ pozvana s previše argumenata"
 
-#: tp/Texinfo/Parser.pm:2074
+#: tp/Texinfo/Parser.pm:2152
 #, perl-format
 msgid "@%s missing closing brace"
 msgstr "@%s nedostaje zatvorena zagrada"
 
-#: tp/Texinfo/Parser.pm:2082
+#: tp/Texinfo/Parser.pm:2160
 #, perl-format
 msgid "macro `%s' declared without argument called with an argument"
 msgstr "makro „%s“ je deklariran bez argumenata a pozvan je s argumentom"
 
-#: tp/Texinfo/Parser.pm:2115
+#: tp/Texinfo/Parser.pm:2193
 #, perl-format
 msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
 msgstr "nakon \\ u proširenju @%s slijedi „%s“ umjesto imena parametra ili \\"
 
-#: tp/Texinfo/Parser.pm:2756
+#: tp/Texinfo/Parser.pm:2834
 #, perl-format
 msgid "missing name for @%s"
 msgstr "nema imena za @%s"
 
-#: tp/Texinfo/Parser.pm:2761
+#: tp/Texinfo/Parser.pm:2839
 #, perl-format
 msgid "missing category for @%s"
 msgstr "nema kategorije za @%s"
 
-#: tp/Texinfo/Parser.pm:2796
+#: tp/Texinfo/Parser.pm:2874
 #, perl-format
 msgid "unexpected argument on @%s line: %s"
 msgstr "neočekivani argument u @%s retku: %s"
 
 # ? (TK)
-#: tp/Texinfo/Parser.pm:2811
+#: tp/Texinfo/Parser.pm:2889
 msgid "empty multitable"
 msgstr "prazna multitablica (multitable)"
 
-#: tp/Texinfo/Parser.pm:2863 tp/Texinfo/Parser.pm:5603
+#: tp/Texinfo/Parser.pm:2941 tp/Texinfo/Parser.pm:5682
 #, perl-format
 msgid "superfluous argument to @%s"
 msgstr "suvišan argument za @%s"
 
-#: tp/Texinfo/Parser.pm:2869 tp/Texinfo/Parser.pm:5624
-#: tp/Texinfo/Parser.pm:5639
+#: tp/Texinfo/Parser.pm:2947 tp/Texinfo/Parser.pm:5703
+#: tp/Texinfo/Parser.pm:5718
 #, perl-format
 msgid "bad argument to @%s"
 msgstr "neispravan argument za @%s"
 
-#: tp/Texinfo/Parser.pm:2880
+#: tp/Texinfo/Parser.pm:2958
 #, perl-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s zahtijeva argument: oblikovatelj za %citem"
 
-#: tp/Texinfo/Parser.pm:2885
+#: tp/Texinfo/Parser.pm:2963
 #, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
 msgstr ""
 "naredba @%s koja ne prihvaća argument u zagradama ne smije biti u @%s retku"
 
-#: tp/Texinfo/Parser.pm:2920
+#: tp/Texinfo/Parser.pm:2998
 #, perl-format
 msgid "accent command `@%s' not allowed as @%s argument"
 msgstr "naredba naglaska „@%s“ nije dopuštena kao @%s argument"
 
-#: tp/Texinfo/Parser.pm:3028 tp/Texinfo/Parser.pm:3177
-#: tp/Texinfo/Parser.pm:5596
+#: tp/Texinfo/Parser.pm:3106 tp/Texinfo/Parser.pm:3255
+#: tp/Texinfo/Parser.pm:5675
 #, perl-format
 msgid "@%s missing argument"
 msgstr "@%s nedostaje argument"
 
-#: tp/Texinfo/Parser.pm:3042
+#: tp/Texinfo/Parser.pm:3120
 #, perl-format
 msgid "unknown @end %s"
 msgstr "nepoznat @end %s"
 
-#: tp/Texinfo/Parser.pm:3065 tp/Texinfo/Parser.pm:3697
+#: tp/Texinfo/Parser.pm:3143 tp/Texinfo/Parser.pm:3775
 #, perl-format
 msgid "superfluous argument to @%s %s: %s"
 msgstr "suvišan argument za @%s %s: %s"
 
-#: tp/Texinfo/Parser.pm:3071 tp/Texinfo/Parser.pm:3152
-#: tp/Texinfo/Parser.pm:5689 tp/Texinfo/Parser.pm:5734
-#: tp/Texinfo/Parser.pm:5763 tp/Texinfo/Parser.pm:5804
-#: tp/Texinfo/Parser.pm:5882
+#: tp/Texinfo/Parser.pm:3149 tp/Texinfo/Parser.pm:3230
+#: tp/Texinfo/Parser.pm:5768 tp/Texinfo/Parser.pm:5813
+#: tp/Texinfo/Parser.pm:5842 tp/Texinfo/Parser.pm:5883
+#: tp/Texinfo/Parser.pm:5961
 #, perl-format
 msgid "bad argument to @%s: %s"
 msgstr "neispravan argument za @%s: %s"
 
-#: tp/Texinfo/Parser.pm:3095
+#: tp/Texinfo/Parser.pm:3173
 #, perl-format
 msgid "@%s: could not open %s: %s"
 msgstr "@%s: ne mogu otvoriti %s: %s"
 
-#: tp/Texinfo/Parser.pm:3107
+#: tp/Texinfo/Parser.pm:3185
 #, perl-format
 msgid "encoding `%s' is not a canonical texinfo encoding"
 msgstr "kodiranje „%s“ nije kanonsko texinfo kodiranje"
 
-#: tp/Texinfo/Parser.pm:3115
+#: tp/Texinfo/Parser.pm:3193
 #, perl-format
 msgid "unrecognized encoding name `%s'"
 msgstr "neprepoznato ime kodiranja „%s“"
 
-#: tp/Texinfo/Parser.pm:3264
+#: tp/Texinfo/Parser.pm:3342
 #, perl-format
 msgid "@%s after the first element"
 msgstr "@%s nakon prvog elementa"
 
-#: tp/Texinfo/Parser.pm:3271
+#: tp/Texinfo/Parser.pm:3349
 #, perl-format
 msgid "@%s only meaningful on a @multitable line"
 msgstr "@%s nema značenje u retku @multitable"
 
-#: tp/Texinfo/Parser.pm:3308
+#: tp/Texinfo/Parser.pm:3386
 #, perl-format
 msgid "@%s should not be associated with @top"
 msgstr "@%s ne bi trebao biti povezan s @top"
 
-#: tp/Texinfo/Parser.pm:3320
+#: tp/Texinfo/Parser.pm:3398
 #, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgstr "@node prethodi @%s, ali dijelovi možda nisu povezani s čvorovima"
 
-#: tp/Texinfo/Parser.pm:3455
+#: tp/Texinfo/Parser.pm:3533
 #, perl-format
 msgid "empty menu entry name in `%s'"
 msgstr "prazno ime stavke izbornika u „%s“"
 
-#: tp/Texinfo/Parser.pm:3463
+#: tp/Texinfo/Parser.pm:3541
 msgid "empty node name in menu entry"
 msgstr "prazan čvor u stavci izbornika"
 
-#: tp/Texinfo/Parser.pm:3534
+#: tp/Texinfo/Parser.pm:3612
 #, perl-format
 msgid "@%s should not appear in @%s"
 msgstr "@%s se ne smije pojaviti u @%s"
 
-#: tp/Texinfo/Parser.pm:3691
+#: tp/Texinfo/Parser.pm:3769
 #, perl-format
 msgid "@end %s should only appear at the beginning of a line"
 msgstr "@end %s smije se pojaviti samo na početku retka"
 
-#: tp/Texinfo/Parser.pm:3712
+#: tp/Texinfo/Parser.pm:3790
 #, perl-format
 msgid "macro `%s' previously defined"
 msgstr "makro naredba „%s“ prethodno definirana"
 
-#: tp/Texinfo/Parser.pm:3715
+#: tp/Texinfo/Parser.pm:3793
 #, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "ovdje je prethodna definicija „%s“"
 
-#: tp/Texinfo/Parser.pm:3720
+#: tp/Texinfo/Parser.pm:3798
 #, perl-format
 msgid "redefining Texinfo language command: @%s"
 msgstr "ponovo definiram naredbu Texinfo jezika: @%s"
 
-#: tp/Texinfo/Parser.pm:3787
+#: tp/Texinfo/Parser.pm:3865
 #, perl-format
 msgid "@%s without associated character"
 msgstr "@%s bez pridruženog znaka"
 
-#: tp/Texinfo/Parser.pm:3857
+#: tp/Texinfo/Parser.pm:3935
 #, perl-format
 msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr "@%s definiranu bez ijednog ili više argumenata treba pozivati s {}"
 
-#: tp/Texinfo/Parser.pm:3882
+#: tp/Texinfo/Parser.pm:3960
 #, perl-format
 msgid ""
 "macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
@@ -2637,338 +2637,338 @@ msgstr ""
 "poziv makro naredbe je preduboko ugniježđen (postavite MAX_NESTED_MACROS za "
 "promjenu; trenutačna vrijednost %d)"
 
-#: tp/Texinfo/Parser.pm:3891
+#: tp/Texinfo/Parser.pm:3969
 #, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr ""
 "rekurzivno pozivanje makro naredbe %s nije dopušteno; koristite @rmacro ako "
 "je potrebno"
 
-#: tp/Texinfo/Parser.pm:3946
+#: tp/Texinfo/Parser.pm:4024
 #, perl-format
 msgid "accent command `@%s' must not be followed by whitespace"
 msgstr "nakon naredbe naglaska „@%s“ ne smije slijediti bjelina (whitespace)"
 
-#: tp/Texinfo/Parser.pm:3952
+#: tp/Texinfo/Parser.pm:4030
 #, perl-format
 msgid "use braces to give a command as an argument to @%s"
 msgstr "koristite zagrade da biste naveli naredbu kao argument za @%s."
 
-#: tp/Texinfo/Parser.pm:3965 tp/Texinfo/Parser.pm:5108
+#: tp/Texinfo/Parser.pm:4043 tp/Texinfo/Parser.pm:5186
 #, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s očekuje „i“ ili „j“ kao argument, ne „%s“"
 
-#: tp/Texinfo/Parser.pm:3976
+#: tp/Texinfo/Parser.pm:4054
 #, perl-format
 msgid "accent command `@%s' must not be followed by new line"
 msgstr "nakon naredbe naglaska „@%s“ ne smije slijediti novi redak"
 
-#: tp/Texinfo/Parser.pm:3987
+#: tp/Texinfo/Parser.pm:4065
 #, perl-format
 msgid "@%s expected braces"
 msgstr "@%s očekuje zagrade"
 
-#: tp/Texinfo/Parser.pm:4144
+#: tp/Texinfo/Parser.pm:4222
 #, perl-format
 msgid "undefined flag: %s"
 msgstr "nedefinirana zastavica: %s"
 
-#: tp/Texinfo/Parser.pm:4147
+#: tp/Texinfo/Parser.pm:4225
 msgid "bad syntax for @value"
 msgstr "neispravna sintaksa za @value"
 
-#: tp/Texinfo/Parser.pm:4154
+#: tp/Texinfo/Parser.pm:4232
 #, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s je zastarjelo."
 
-#: tp/Texinfo/Parser.pm:4157
+#: tp/Texinfo/Parser.pm:4235
 #, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s je zastarjelo; %s"
 
-#: tp/Texinfo/Parser.pm:4166
+#: tp/Texinfo/Parser.pm:4244
 #, perl-format
 msgid "@%s should only appear at the beginning of a line"
 msgstr "@%s smije se pojaviti samo na početku retka"
 
-#: tp/Texinfo/Parser.pm:4257
+#: tp/Texinfo/Parser.pm:4335
 #, perl-format
 msgid "@%s not allowed inside `@%s' block"
 msgstr "@%s nije dopušten unutar bloka „@%s“"
 
-#: tp/Texinfo/Parser.pm:4266
+#: tp/Texinfo/Parser.pm:4344
 #, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr "@%s se smije pojaviti samo u zaglavlju ili podnožju"
 
-#: tp/Texinfo/Parser.pm:4390 tp/Texinfo/Parser.pm:4407
-#: tp/Texinfo/Parser.pm:4457
+#: tp/Texinfo/Parser.pm:4468 tp/Texinfo/Parser.pm:4485
+#: tp/Texinfo/Parser.pm:4535
 #, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s nema značenje unutar bloka „@%s“"
 
-#: tp/Texinfo/Parser.pm:4417
+#: tp/Texinfo/Parser.pm:4495
 #, perl-format
 msgid "@%s in empty multitable"
 msgstr "@%s u praznoj multitablici (multitable)"
 
-#: tp/Texinfo/Parser.pm:4423
+#: tp/Texinfo/Parser.pm:4501
 msgid "@tab before @item"
 msgstr "@tab prije @item"
 
-#: tp/Texinfo/Parser.pm:4426
+#: tp/Texinfo/Parser.pm:4504
 #, perl-format
 msgid "too many columns in multitable item (max %d)"
 msgstr "previše stupaca u multitablici (multitable) predmetu (više od %d)"
 
-#: tp/Texinfo/Parser.pm:4463
+#: tp/Texinfo/Parser.pm:4541
 msgid "ignoring @tab outside of multitable"
 msgstr "zanemarujem @tab izvan multitablice (multitable)"
 
-#: tp/Texinfo/Parser.pm:4467
+#: tp/Texinfo/Parser.pm:4545
 #, perl-format
 msgid "@%s outside of table or list"
 msgstr "@%s izvan tablice ili popisa"
 
-#: tp/Texinfo/Parser.pm:4507
+#: tp/Texinfo/Parser.pm:4585
 #, perl-format
 msgid "must be after `@%s' to use `@%s'"
 msgstr "mora biti nakon „@%s“ za korištenje „@%s“"
 
-#: tp/Texinfo/Parser.pm:4549
+#: tp/Texinfo/Parser.pm:4627
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr "@%s nema značenje izvan okolina „@titlepage“ i „@quotation“"
 
-#: tp/Texinfo/Parser.pm:4553
+#: tp/Texinfo/Parser.pm:4631
 msgid "@dircategory after first node"
 msgstr "@dircategory nakon prvog čvora"
 
-#: tp/Texinfo/Parser.pm:4758
+#: tp/Texinfo/Parser.pm:4836
 #, perl-format
 msgid "region %s inside region %s is not allowed"
 msgstr "područje %s unutar područja %s nije dopušteno"
 
-#: tp/Texinfo/Parser.pm:4775
+#: tp/Texinfo/Parser.pm:4853
 msgid "@direntry after first node"
 msgstr "@direntry nakon prvog čvora"
 
-#: tp/Texinfo/Parser.pm:4783
+#: tp/Texinfo/Parser.pm:4861
 msgid "@menu in invalid context"
 msgstr ""
 
-#: tp/Texinfo/Parser.pm:4789
+#: tp/Texinfo/Parser.pm:4867
 #, perl-format
 msgid "@%s seen before first @node"
 msgstr "@%s pronađen prije prvog @node"
 
-#: tp/Texinfo/Parser.pm:4792
+#: tp/Texinfo/Parser.pm:4870
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr "možda vaš @top čvor treba biti unutar @ifnottex umjesto @ifinfo?"
 
-#: tp/Texinfo/Parser.pm:4855
+#: tp/Texinfo/Parser.pm:4933
 #, perl-format
 msgid "@%s should only appear in math context"
 msgstr "@%s se smije pojaviti samo u matematičkom kontekstu"
 
-#: tp/Texinfo/Parser.pm:4863
+#: tp/Texinfo/Parser.pm:4941
 #, perl-format
 msgid "unknown command `%s'"
 msgstr "nepoznata naredba „%s“"
 
-#: tp/Texinfo/Parser.pm:4873
+#: tp/Texinfo/Parser.pm:4951
 msgid "unexpected @"
 msgstr "neočekivani @"
 
-#: tp/Texinfo/Parser.pm:4901
+#: tp/Texinfo/Parser.pm:4979
 #, perl-format
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "@%s nema značenje izvan okoline „@float“"
 
-#: tp/Texinfo/Parser.pm:4906
+#: tp/Texinfo/Parser.pm:4984
 #, perl-format
 msgid "@%s should be right below `@float'"
 msgstr "@%s mora biti odmah ispod „@float“"
 
-#: tp/Texinfo/Parser.pm:4914
+#: tp/Texinfo/Parser.pm:4992
 #, perl-format
 msgid "ignoring multiple @%s"
 msgstr "zanemarujem višestruke @%s"
 
-#: tp/Texinfo/Parser.pm:5032
+#: tp/Texinfo/Parser.pm:5110
 #, perl-format
 msgid "command @%s does not accept arguments"
 msgstr "naredba @%s ne prihvaća argumente"
 
-#: tp/Texinfo/Parser.pm:5056
+#: tp/Texinfo/Parser.pm:5134
 #, perl-format
 msgid "command @%s missing a node or external manual argument"
 msgstr "naredbi @%s nedostaje čvor ili vanjski ručni argument"
 
-#: tp/Texinfo/Parser.pm:5075
+#: tp/Texinfo/Parser.pm:5153
 #, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
 msgstr "u @%s prazno ime uputnice (cross-reference) nakon proširenja „%s“"
 
-#: tp/Texinfo/Parser.pm:5086
+#: tp/Texinfo/Parser.pm:5164
 #, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
 msgstr "u @%s prazan naslov uputnice (cross reference) nakon proširenja „%s“"
 
-#: tp/Texinfo/Parser.pm:5099
+#: tp/Texinfo/Parser.pm:5177
 msgid "@image missing filename argument"
 msgstr "@image nedostaje argument imena datoteke"
 
-#: tp/Texinfo/Parser.pm:5130
+#: tp/Texinfo/Parser.pm:5208
 #, perl-format
 msgid "@%s missing first argument"
 msgstr "@%s nedostaje prvi argument"
 
-#: tp/Texinfo/Parser.pm:5149
+#: tp/Texinfo/Parser.pm:5227
 #, perl-format
 msgid "non-hex digits in argument for @U: %s"
 msgstr "ne-heksadecimalne znamenke (non-hex digits) u argumentu za @U: %s"
 
-#: tp/Texinfo/Parser.pm:5155
+#: tp/Texinfo/Parser.pm:5233
 #, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
 msgstr ""
 "manje od četiri heksadecimalnih znamenki (hex digits) u argumentu za @U: %s"
 
-#: tp/Texinfo/Parser.pm:5172
+#: tp/Texinfo/Parser.pm:5250
 #, perl-format
 msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
 msgstr "argument za  @U je veći od unikodnog (Unicode) maksimuma 0x10FFFF: %s"
 
-#: tp/Texinfo/Parser.pm:5378
+#: tp/Texinfo/Parser.pm:5456
 msgid "superfluous arguments for node"
 msgstr "suvišni argumenti za čvor"
 
-#: tp/Texinfo/Parser.pm:5429
+#: tp/Texinfo/Parser.pm:5507
 #, perl-format
 msgid "expected @end %s"
 msgstr "očekujem @end %s"
 
-#: tp/Texinfo/Parser.pm:5539
+#: tp/Texinfo/Parser.pm:5618
 #, fuzzy, perl-format
 msgid "@%s should only accept an @-command as argument, not `%s'"
 msgstr "@%s prihvaća samo @-naredbe kao argumente, ne „%s“"
 
-#: tp/Texinfo/Parser.pm:5549
+#: tp/Texinfo/Parser.pm:5628
 #, perl-format
 msgid "remaining argument on @%s line: %s"
 msgstr "preostali argumenti u @%s retku: %s"
 
-#: tp/Texinfo/Parser.pm:5619
+#: tp/Texinfo/Parser.pm:5698
 #, perl-format
 msgid "environment command %s as argument to @%s"
 msgstr "naredba okoline %s kao argument za @%s"
 
-#: tp/Texinfo/Parser.pm:5644
+#: tp/Texinfo/Parser.pm:5723
 #, perl-format
 msgid "empty @%s"
 msgstr "prazan @%s"
 
-#: tp/Texinfo/Parser.pm:5652
+#: tp/Texinfo/Parser.pm:5731
 #, perl-format
 msgid "column fraction not a number: %s"
 msgstr "dio stupca nije broj: %s"
 
-#: tp/Texinfo/Parser.pm:5661
+#: tp/Texinfo/Parser.pm:5740
 #, perl-format
 msgid "@sp arg must be numeric, not `%s'"
 msgstr "@sp argument mora biti broj, ne „%s“"
 
-#: tp/Texinfo/Parser.pm:5670
+#: tp/Texinfo/Parser.pm:5749
 #, perl-format
 msgid "reserved index name %s"
 msgstr "zauzeto ime indeksa %s"
 
-#: tp/Texinfo/Parser.pm:5696
+#: tp/Texinfo/Parser.pm:5775
 #, perl-format
 msgid "unknown source index in @%s: %s"
 msgstr "nepoznat indeks izvora u @%s: %s"
 
-#: tp/Texinfo/Parser.pm:5699
+#: tp/Texinfo/Parser.pm:5778
 #, perl-format
 msgid "unknown destination index in @%s: %s"
 msgstr "nepoznat indeks odredišta u @%s: %s"
 
-#: tp/Texinfo/Parser.pm:5729
+#: tp/Texinfo/Parser.pm:5808
 #, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr "@%s uzrokuje unutarnje spajanje u %s, zanemarujem"
 
-#: tp/Texinfo/Parser.pm:5742
+#: tp/Texinfo/Parser.pm:5821
 #, perl-format
 msgid "unknown index `%s' in @printindex"
 msgstr "nepoznat indeks „%s“ u @printindex"
 
-#: tp/Texinfo/Parser.pm:5748
+#: tp/Texinfo/Parser.pm:5827
 #, fuzzy, perl-format
 msgid "printing an index `%s' merged in another one, `%s'"
 msgstr "ispisivanje indeksa „%s“ spojeno u drugom „%s“"
 
-#: tp/Texinfo/Parser.pm:5756
+#: tp/Texinfo/Parser.pm:5835
 #, perl-format
 msgid "printindex before document beginning: @printindex %s"
 msgstr "printindex prije početka dokumenta: @printindex %s"
 
-#: tp/Texinfo/Parser.pm:5772
+#: tp/Texinfo/Parser.pm:5851
 #, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr "@%s argument mora biti „top“ ili „bottom“, ne „%s“"
 
-#: tp/Texinfo/Parser.pm:5780
+#: tp/Texinfo/Parser.pm:5859
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "Podržano je samo @%s 10 ili 11, ne „%s“"
 
-#: tp/Texinfo/Parser.pm:5788
+#: tp/Texinfo/Parser.pm:5867
 #, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr "@%s argument mora biti „separate“ ili „end“, ne „%s“"
 
-#: tp/Texinfo/Parser.pm:5796
+#: tp/Texinfo/Parser.pm:5875
 #, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr "@%s argument mora biti „on“, „off“ ili „odd“, ne „%s“"
 
-#: tp/Texinfo/Parser.pm:5814 tp/Texinfo/Parser.pm:5819
+#: tp/Texinfo/Parser.pm:5893 tp/Texinfo/Parser.pm:5898
 #, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
 msgstr "@paragraphindent argument mora biti broj, „none“ ili „asis“, ne „%s“"
 
-#: tp/Texinfo/Parser.pm:5827
+#: tp/Texinfo/Parser.pm:5906
 #, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr "@firstparagraphindent argument mora biti „none“ ili „insert“, ne „%s“"
 
-#: tp/Texinfo/Parser.pm:5837
+#: tp/Texinfo/Parser.pm:5916
 #, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr "@exampleindent argument mora biti broj ili „asis“, ne „%s“"
 
-#: tp/Texinfo/Parser.pm:5849
+#: tp/Texinfo/Parser.pm:5928
 #, perl-format
 msgid "expected @%s on or off, not `%s'"
 msgstr "očekujem @%s on ili off, ne „%s“"
 
-#: tp/Texinfo/Parser.pm:5858
+#: tp/Texinfo/Parser.pm:5937
 #, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr ""
 "@kbdinputstyle argument mora biti „code“, „example“ ili „distinct“, ne „%s“"
 
-#: tp/Texinfo/Parser.pm:5866
+#: tp/Texinfo/Parser.pm:5945
 #, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr "@allowcodebreaks argument mora biti „true“ ili „false“, ne „%s“"
 
-#: tp/Texinfo/Parser.pm:5874
+#: tp/Texinfo/Parser.pm:5953
 #, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr ""
@@ -3054,7 +3054,7 @@ msgstr "za „%s“, gore (up) u izborniku „%s“ i gore (up) „%s“ su razl
 msgid "@%s to `%s', different from %s name `%s'"
 msgstr "@%s za „%s“, različit od %s imena „%s“"
 
-#: tp/Texinfo/Structuring.pm:1517
+#: tp/Texinfo/Structuring.pm:1449
 #, perl-format
 msgid "empty index key in @%s"
 msgstr "prazan ključ indeksa u @%s"
@@ -3604,17 +3604,17 @@ msgstr ""
 "insert_nodes_for_sectioning_commands transformacija ne vraća rezultat. Nema "
 "odjeljka?"
 
-#: tp/texi2any.pl:1378 tp/texi2any.pl:1454
+#: tp/texi2any.pl:1377 tp/texi2any.pl:1453
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr "%s: greška pri zatvaranju %s: %s\n"
 
-#: tp/texi2any.pl:1401 tp/texi2any.pl:1435
+#: tp/texi2any.pl:1400 tp/texi2any.pl:1434
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "%s: greška pri zatvaranju datoteke unutarnjih veza %s: %s\n"
 
-#: tp/texi2any.pl:1407 tp/texi2any.pl:1441
+#: tp/texi2any.pl:1406 tp/texi2any.pl:1440
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: ne mogu otvoriti %s za pisanje: %s\n"

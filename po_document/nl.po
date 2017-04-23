@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo_document-5.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-04-17 08:38+0100\n"
+"POT-Creation-Date: 2017-04-23 13:58+0100\n"
 "PO-Revision-Date: 2013-02-27 20:31+0100\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -106,12 +106,12 @@ msgstr "{float_number}: "
 msgid "{float_number}\n"
 msgstr "{float_number}\n"
 
-#: tp/Texinfo/Structuring.pm:1475
+#: tp/Texinfo/Parser.pm:1002
 #, perl-brace-format
 msgid "{name} on {class}"
 msgstr "{name} over {class}"
 
-#: tp/Texinfo/Structuring.pm:1485
+#: tp/Texinfo/Parser.pm:1012
 #, perl-brace-format
 msgid "{name} of {class}"
 msgstr "{name} van {class}"
