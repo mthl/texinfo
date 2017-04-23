@@ -1,7 +1,8 @@
 2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* texindex/ti.twjr,
-	* info/info.c: Copyright 2017.
+	* info/info.c,
+	* tp/texi2any.pl: Copyright 2017.
 
 2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
