@@ -1,5 +1,10 @@
 2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* po/POTFILES.in: Remove info/tilde.c and add 
+	tp/Texinfo/Convert/Text.pm.
+
+2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Macro Details): Mention possibility of 
 	interchanging a macro and a conditional.
 
