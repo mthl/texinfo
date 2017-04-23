@@ -1,5 +1,9 @@
 2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* Makefile.am (po-check): Change parsetexi/ to tp/parsetexi.
+
+2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_complete_indices): New function.
 	* tp/Texinfo/Structuring.pm (do_index_keys): Move code from
 	do_index_keys to _complete_indices to complete index entries for 

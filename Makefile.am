@@ -111,7 +111,7 @@ po-check:
 	    case $$file in						\
 	      contrib/* ) continue;;					\
 	      djgpp/* | makeinfo/* | man/* | texi2html/* ) continue;;	\
-	      parsetexi/*) continue;;					\
+	      tp/parsetexi/*) continue;;				\
 	      texinfo-*/*) continue;;					\
               tp/maintain/* ) continue;;				\
 	    esac;							\
