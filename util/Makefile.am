@@ -69,6 +69,4 @@ AM_TESTS_ENVIRONMENT = \
   TEXINPUTS="$(top_srcdir)/doc$(PATH_SEPARATOR)$$TEXINPUTS"; \
   export TEXINPUTS;
 
-TESTS= \
-  tests/texi2dvi_helpversion.sh \
-  tests/texi2dvi_empty_text.sh
+TESTS = tests/texi2dvi_helpversion.sh

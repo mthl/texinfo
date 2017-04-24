@@ -1,3 +1,8 @@
+2017-04-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/tests/texi2dvi_empty_text.sh: Remove test, as it does not
+	work if TeX is not installed.  Report by Assaf Gordon.
+
 2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* pretest 6.3.90.
