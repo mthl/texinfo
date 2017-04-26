@@ -4575,7 +4575,8 @@ DECLARE_INFO_COMMAND (info_tree_search,
   int i;
 
   /* TODO: Display manual name */
-  asprintf (&prompt, "Search under %s: ",
+  /* TRANSLATORS: %s is the title of a node. */
+  asprintf (&prompt, _("Search under %s: "),
             window->node->nodename);
   line = info_read_in_echo_area (prompt); free (prompt);
   if (!line)
