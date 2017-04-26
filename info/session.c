@@ -4042,6 +4042,7 @@ info_search_internal (char *string, WINDOW *window,
   char *subfile_name = 0;
   TAG *tag;
   char *msg = 0;
+  int first_time = 1;
   
   /* If this node isn't part of a larger file, search this node only. */
   file_buffer = file_buffer_of_window (window);
@@ -4100,9 +4101,16 @@ info_search_internal (char *string, WINDOW *window,
 
       if (!search_other_nodes)
         break;
+
+      /* If we've searched our starting node twice, there are no matches.
+         Bail out.  (We searched the second time in case there were matches 
+         before the starting offset.) */
+      if (current_tag == starting_tag && !first_time)
+        break;
+      first_time = 0;
   
       /* Find the next tag that isn't an anchor.  */
-      for (i = current_tag + dir; i != starting_tag; i += dir)
+      for (i = current_tag + dir; ; i += dir)
         {
           if (i < 0)
             {
@@ -4120,9 +4128,6 @@ info_search_internal (char *string, WINDOW *window,
             break;
         }
 
-      /* If we got past our starting point, bail out.  */
-      if (i == starting_tag)
-        break;
       current_tag = i;
 
       /* Display message when searching a new subfile. */

@@ -1,3 +1,11 @@
+2017-04-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_search_internal): Search starting node at 
+	most twice in order to be able to find matches before starting 
+	offset in starting node.  Otherwise searches do not wrap around 
+	the first and last nodes in a file if all the matches are in a 
+	single node.  Report from Benno Schulenberg.
+
 2017-04-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/tests/texi2dvi_empty_text.sh: Remove test, as it does not
