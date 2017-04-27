@@ -357,7 +357,7 @@ display_process_line (WINDOW *win,
         break;
       cur_ptr = mbi_cur_ptr (iter);
 
-      if (matches_ready (matches)
+      if (matches && matches_ready (matches)
           && !at_end_of_matches (matches, match_index))
         {
           int was_in_match = in_match;
