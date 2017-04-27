@@ -1,5 +1,12 @@
 2017-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (tree_search_check_node)
+	(tree_search_check_node_backwards): Adjust failure message 
+	according to whether a search match was previously found.  
+	Suggestion by Benno Schulenberg.
+
+2017-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/display.c (display_process_line): Avoid possibly
 	dereferencing a null pointer.  This could happen if the 
 	'match-rendition' value was set to an empty value in .infokey.

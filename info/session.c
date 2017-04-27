@@ -4432,7 +4432,7 @@ go_up:
       window->point = window->node->body_start;
       tree_search_check_node_backwards (window);
     }
-  info_error (_("No more matches."));
+  info_error (previous_match ?  _("No more matches.") : _("Search failed."));
 
 funexit:
   free (string);
@@ -4446,6 +4446,9 @@ tree_search_check_node_backwards (WINDOW *window)
   long start_off;
   enum search_result result;
   char *string;
+  int previous_match;
+
+  previous_match = (window->node->active_menu != 0);
 
   string = xstrdup (window->search_string);
   goto check_node;
@@ -4542,7 +4545,7 @@ go_up:
     }
 
   /* Otherwise, no result. */
-  info_error (_("No more matches."));
+  info_error (previous_match ?  _("No more matches.") : _("Search failed."));
 
 funexit:
   free (string);
