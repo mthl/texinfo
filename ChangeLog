@@ -1,3 +1,10 @@
+2017-04-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi_regex),
+	* tp/Texinfo/MiscXS/misc.c (xs_parse_texi_regex): Do not
+	consider any whitespace other than space, tab or newline
+	to be a possible Texinfo command.
+
 2017-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (tree_search_check_node)

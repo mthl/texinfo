@@ -598,7 +598,7 @@ void xs_parse_texi_regex (SV *text_in,
 
       else if (*text == '@'
                  && text[1] && strchr ("([\"'~@}{,.!?"
-                                       " \f\n\r\t"
+                                       " \t\n"
                                        "*-^`=:|/\\",
                                        text[1]))
         {
