@@ -1,5 +1,13 @@
 2017-04-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_next_text): Strip \r from end of line.
+	This produces changes in the results of the
+	test_scripts/coverage_formatting_cr.sh test.  (Eli Zaretskii
+	reported that the results of this test were different under 
+	MinGW on MS-Windows.)
+
+2017-04-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi_regex),
 	* tp/Texinfo/MiscXS/misc.c (xs_parse_texi_regex): Do not
 	consider any whitespace other than space, tab or newline
