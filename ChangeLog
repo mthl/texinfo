@@ -1,5 +1,9 @@
 2017-04-30  Eli Zaretskii  <eliz@gnu.org>
 
+	* info/terminal.c [HAVE_TERMCAP_H]: Don't take this branch for
+	MinGW, as some MinGW ports of ncurses install termcap.h in
+	addition to ncurses/termcap.h.
+
 	* tp/Texinfo/Convert/XSParagraph/xspara.c [_WIN32]: Include
 	ctype.h, to work around MinGW compilation errors due to Gnulib
 	replacement of wint_t type.

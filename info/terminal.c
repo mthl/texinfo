@@ -30,13 +30,13 @@
 #include <signal.h>
 
 /* The Unix termcap interface code. */
-/* With MinGW, if the user has ncurses installed, including
-   ncurses/termcap.h will cause the Info binary depend on the ncurses
+/* With MinGW, if the user has ncurses installed, including termcap.h
+   or ncurses/termcap.h will cause the Info binary depend on the ncurses
    DLL, just because BC and PC are declared there, although they are
    never used in the MinGW build.  Avoid that useless dependency.  */
 #if defined (HAVE_NCURSES_TERMCAP_H) && !defined (__MINGW32__)
 #include <ncurses/termcap.h>
-#elif defined (HAVE_TERMCAP_H)
+#elif defined (HAVE_TERMCAP_H) && !defined (__MINGW32__)
 #include <termcap.h>
 #else  /* (!HAVE_NCURSES_TERMCAP_H || __MINGW32__) && !HAVE_TERMCAP_H */
 /* On Solaris2, sys/types.h #includes sys/reg.h, which #defines PC.
