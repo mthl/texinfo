@@ -1,3 +1,20 @@
+2017-04-30  Eli Zaretskii  <eliz@gnu.org>
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c [_WIN32]: Include
+	ctype.h, to work around MinGW compilation errors due to Gnulib
+	replacement of wint_t type.
+	(iswspace, iswupper) [_WIN32]: Rename to call w32_iswspace and
+	w32_iswupper, to avoid conflicts with system headers, due to
+	Gnulib replacement of wint_t type.
+	(iswupper) [_WIN32]: Copy argument from wint_t variable to a
+	wchar_t variable, which is what GetStringTypeW expects.
+
+	* tp/Texinfo/MiscXS/misc.c [_WIN32]: Include ctype.h, to work
+	around MinGW compilation errors due to Gnulib replacement of
+	wint_t type.
+	(xs_unicode_text): Use dTHX to avoid perl error about undefined
+	"my_perl" due to Perl's 'malloc' being used.
+
 2017-04-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_next_text): Strip \r from end of line.
