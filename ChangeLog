@@ -1,3 +1,8 @@
+2017-05-01  Eli Zaretskii  <eliz@gnu.org>
+
+	* tp/Texinfo/MiscXS/misc.c (xs_unicode_text): Fix a typo in a
+	comment.
+
 2017-04-30  Eli Zaretskii  <eliz@gnu.org>
 
 	* info/terminal.c [HAVE_TERMCAP_H]: Don't take this branch for

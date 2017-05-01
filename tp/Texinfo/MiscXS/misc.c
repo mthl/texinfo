@@ -518,7 +518,7 @@ xs_unicode_text (char *text, int in_code)
           else if (!memcmp (q, "--", 2))
             {
               p = q + 2;
-              /* Unicode em dash U+2013 (0xE2 0x80 0x93) */
+              /* Unicode en dash U+2013 (0xE2 0x80 0x93) */
               ADD3("\xE2\x80\x93");
             }
           else
