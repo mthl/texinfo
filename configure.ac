@@ -392,6 +392,7 @@ if test $enable_xs = check; then
   (cd tp/Texinfo/Convert/XSParagraph \
    && make clean \
    && make TestXS.la \
+   && TEXINFO_XS=debug ; export TEXINFO_XS \
    && ${PERL} -I . \
               -I ${xs_srcdir} \
               -w ${xs_srcdir}/Texinfo/Convert/XSParagraph/fail.pl \
