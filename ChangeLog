@@ -1,3 +1,15 @@
+2017-01-29  Jason Hood  <jadoxa@yahoo.com.au>
+
+	Allow style variables to be described and set.
+	(Patch originally submitted 2017-01-29 on bug-texinfo.)
+
+	* info/variables.c (rendition_variable): Remove.
+	(rendition_choices): New variable.
+	(info_variables): Use rendition_choices for the style variables.
+	(rendition_to_string): New variable.
+	(describe_variable, set_variable, set_variable_to_value): 
+	Special handling for style variables.
+
 2017-05-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* configure.ac: When checking for Perl XS support, set
