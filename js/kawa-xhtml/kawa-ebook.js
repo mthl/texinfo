@@ -32,19 +32,6 @@ withSidebarQuery (href)
 }
 
 function
-filename (loc)
-{
-  var fname = loc.pathname;
-  var sl = fname.lastIndexOf ("/");
-  if (sl >= 0)
-    fname = fname.substring (sl+1);
-  var hash = loc.hash;
-  if (hash)
-    fname = fname + hash.replace ('#', '*');
-  return fname;
-}
-
-function
 onMainLoad (evt)
 {
   if (top == window)
