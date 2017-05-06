@@ -37,7 +37,7 @@ onMainLoad (evt)
   if (top == window)
     {
       mainFilename = window.location.pathname.replace (/.*[/]/, "");
-      var body = document.getElementsByTagName ("body")[0];
+      var body = document.body;
 
       /* Move contents of <body> into a a fresh <div>.  */
       var div = document.createElement ("div");
@@ -211,8 +211,7 @@ onSidebarLoad (evt)
   base.setAttribute ("href",
                      window.location.href.replace (/[/][^/]*$/, "/"));
   document.head.appendChild (base);
-  var body = document.getElementsByTagName ("body")[0];
-  body.setAttribute ("class", "toc-sidebar");
+  document.body.setAttribute ("class", "toc-sidebar");
   var links = document.getElementsByTagName ("a");
   var nlinks = links.length;
 
@@ -249,7 +248,7 @@ onSidebarLoad (evt)
         }
     }
   if (mainFilename != null)
-    scanToc (body, mainFilename);
+    scanToc (document.body, mainFilename);
 
   nodes.message_kind = "node-list";
   top.postMessage (nodes, "*");
@@ -305,7 +304,6 @@ receiveMessage (event)
     {
     case "node-list":           /* from sidebar to top frame */
       {
-        var body = document.getElementsByTagName ("body")[0];
         for (var i = 0; i < data.length; i++)
           {
             var name = data[i];
@@ -315,7 +313,7 @@ receiveMessage (event)
             div.setAttribute ("id", name);
             div.setAttribute ("node", name);
             div.setAttribute ("hidden", "true");
-            body.appendChild (div);
+            document.body.appendChild (div);
           }
         if (window.location.hash)
           {
@@ -340,9 +338,8 @@ receiveMessage (event)
     case "update-sidebar":
       {
         var selected = data.selected;
-        var sideBody = document.body;
-        clearTocStyles (sideBody);
-        scanToc (sideBody,
+        clearTocStyles (document.body);
+        scanToc (document.body,
                  (selected == "index") ? "index.html" : (selected + ".xhtml"));
         break;
       }
